@@ -1,0 +1,7 @@
+templateDir: ./sdk-resources/cc-resources
+packageName: sailpointccsdk
+packageVersion: 0.1.0
+generateInterfaces: false
+enumClassPrefix: false
+disallowAdditionalPropertiesIfNotPresent: false
+useOneOfDiscriminatorLookup: false
