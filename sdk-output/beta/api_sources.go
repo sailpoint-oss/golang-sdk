@@ -2891,7 +2891,7 @@ type ApiListSourcesRequest struct {
 	forSubadmin *string
 }
 
-// Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListSourcesRequest) Limit(limit int32) ApiListSourcesRequest {
 	r.limit = &limit
 	return r

@@ -110,6 +110,7 @@ type Configuration struct {
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *http.Client
+	Tenant			 string
     {{#withCustomMiddlewareFunction}}
 	Middleware       MiddlewareFunction
     {{/withCustomMiddlewareFunction}}
@@ -118,6 +119,7 @@ type Configuration struct {
 // NewConfiguration returns a new Configuration object
 func NewConfiguration(tenant string) *Configuration {
 	cfg := &Configuration{
+		Tenant: tenant,
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "{{{httpUserAgent}}}{{^httpUserAgent}}OpenAPI-Generator/{{{packageVersion}}}/go{{/httpUserAgent}}",
 		Debug:            false,

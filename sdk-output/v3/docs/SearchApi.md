@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-    search1 := *openapiclient.NewSearch1([]openapiclient.Index{openapiclient.Index("accessprofiles")}) // Search1 | 
+    search1 := *openapiclient.NewSearch1() // Search1 | 
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-    search1 := *openapiclient.NewSearch1([]openapiclient.Index{openapiclient.Index("accessprofiles")}) // Search1 | 
+    search1 := *openapiclient.NewSearch1() // Search1 | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -241,7 +241,7 @@ import (
 )
 
 func main() {
-    search1 := *openapiclient.NewSearch1([]openapiclient.Index{openapiclient.Index("accessprofiles")}) // Search1 | 
+    search1 := *openapiclient.NewSearch1() // Search1 | 
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)

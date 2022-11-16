@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetLatestOutlierSnapshots**](IAIOutliersApi.md#GetLatestOutlierSnapshots) | **Get** /outlier-summaries/latest | IAI Identity Outliers Latest Summary
 [**GetOutlierSnapshots**](IAIOutliersApi.md#GetOutlierSnapshots) | **Get** /outlier-summaries | IAI Identity Outliers Summary
 [**GetOutliers**](IAIOutliersApi.md#GetOutliers) | **Get** /outliers | IAI Get Identity Outliers
+[**GetOutliersContributingFeatures**](IAIOutliersApi.md#GetOutliersContributingFeatures) | **Get** /outliers/{outlierId}/contributing-features | IAI Get an Identity Outlier&#39;s Contibuting Features
 [**IgnoreOutliers**](IAIOutliersApi.md#IgnoreOutliers) | **Post** /outliers/ignore | IAI Identity Outliers Ignore
 [**UnIgnoreOutliers**](IAIOutliersApi.md#UnIgnoreOutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
 
@@ -280,6 +281,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]Outlier**](Outlier.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOutliersContributingFeatures
+
+> []OutlierContributingFeature GetOutliersContributingFeatures(ctx).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
+
+IAI Get an Identity Outlier's Contibuting Features
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+    includeTranslationMessages := "include-translation-messages=" // string | Whether or not to include translation messages object in returned response (optional)
+    sorters := "importance" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard_collection_parameters.html) Sorting is supported for the following fields: **importance** (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IAIOutliersApi.GetOutliersContributingFeatures(context.Background()).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetOutliersContributingFeatures``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOutliersContributingFeatures`: []OutlierContributingFeature
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetOutliersContributingFeatures`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOutliersContributingFeaturesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+ **includeTranslationMessages** | **string** | Whether or not to include translation messages object in returned response | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard_collection_parameters.html) Sorting is supported for the following fields: **importance** | 
+
+### Return type
+
+[**[]OutlierContributingFeature**](OutlierContributingFeature.md)
 
 ### Authorization
 

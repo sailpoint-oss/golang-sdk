@@ -5,6 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CancelAccessRequest**](AccessRequestsApi.md#CancelAccessRequest) | **Post** /access-requests/cancel | Cancel Access Request
+[**CloseAccessRequest**](AccessRequestsApi.md#CloseAccessRequest) | **Post** /access-requests/close | Close Access Request
 [**CreateAccessRequest**](AccessRequestsApi.md#CreateAccessRequest) | **Post** /access-requests | Submit an Access Request
 [**GetAccessRequestConfig**](AccessRequestsApi.md#GetAccessRequestConfig) | **Get** /access-request-config | Get Access Request Configuration
 [**ListAccessRequestStatus**](AccessRequestsApi.md#ListAccessRequestStatus) | **Get** /access-request-status | Access Request Status
@@ -59,6 +60,72 @@ Other parameters are passed through a pointer to a apiCancelAccessRequestRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cancelAccessRequest** | [**CancelAccessRequest**](CancelAccessRequest.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CloseAccessRequest
+
+> map[string]interface{} CloseAccessRequest(ctx).CloseAccessRequest(closeAccessRequest).Execute()
+
+Close Access Request
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    closeAccessRequest := *openapiclient.NewCloseAccessRequest([]string{"AccessRequestIds_example"}) // CloseAccessRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccessRequestsApi.CloseAccessRequest(context.Background()).CloseAccessRequest(closeAccessRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsApi.CloseAccessRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CloseAccessRequest`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsApi.CloseAccessRequest`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCloseAccessRequestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **closeAccessRequest** | [**CloseAccessRequest**](CloseAccessRequest.md) |  | 
 
 ### Return type
 

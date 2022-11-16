@@ -271,8 +271,8 @@ import (
 )
 
 func main() {
-    attributeId := "attributeId_example" // string | The Schema Attribute Id (UUID)
-    sourceId := "sourceId_example" // string | The Source id
+    attributeId := "2c918085842e69ae018432d22ccb212f" // string | The Schema Attribute Id (UUID)
+    sourceId := "2c918085842e69ae018432d22ccb212f" // string | The Source id
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -344,7 +344,7 @@ import (
 )
 
 func main() {
-    sourceId := "sourceId_example" // string | The Source id
+    sourceId := "2c918085842e69ae018432d22ccb212f" // string | The Source id
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -414,8 +414,8 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | Non-Employee approval item id (UUID)
-    includeDetail := "includeDetail_example" // string | The object nonEmployeeRequest will not be included detail when set to false. *Default value is true* (optional)
+    id := "ac10d20a-841e-1e7d-8184-32d2e22c0179" // string | Non-Employee approval item id (UUID)
+    includeDetail := "include-detail=false" // string | The object nonEmployeeRequest will not be included detail when set to false. *Default value is true* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -486,12 +486,12 @@ import (
 )
 
 func main() {
-    requestedFor := "requestedFor_example" // string | The identity for whom the request was made. *me* indicates the current user. (optional)
+    requestedFor := "ac10d20a-841e-1e7d-8184-32d2e22c0179" // string | The identity for whom the request was made. *me* indicates the current user. (optional)
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "filters_example" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)<br/><br/> Filtering is supported for the following fields and operators:<br/><br/> **approvalStatus**: *eq* <br/><br/> *Example:* approvalStatus eq \"PENDING\" (optional)
-    sorters := "sorters_example" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)<br/><br/> Sorting is supported for the following fields: **created, modified** (optional)
+    filters := "filters=approvalStatus eq 'PENDING'" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)<br/><br/> Filtering is supported for the following fields and operators:<br/><br/> **approvalStatus**: *eq* <br/><br/> *Example:* approvalStatus eq \"PENDING\" (optional)
+    sorters := "sorters=-created" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)<br/><br/> Sorting is supported for the following fields: **created, modified** (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -562,7 +562,7 @@ import (
 )
 
 func main() {
-    requestedFor := "requestedFor_example" // string | The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
+    requestedFor := "ac10d20a-841e-1e7d-8184-32d2e22c0179" // string | The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -704,7 +704,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | Source ID (UUID)
+    id := "2c918085842e69ae018432d22ccb212f" // string | Source ID (UUID)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -774,7 +774,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | Source Id (UUID)
+    id := "2c918085842e69ae018432d22ccb212f" // string | Source Id (UUID)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1402,7 +1402,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | Source Id (UUID)
+    id := "2c918085842e69ae018432d22ccb212f" // string | Source Id (UUID)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1823,7 +1823,7 @@ import (
 )
 
 func main() {
-    requestedFor := "requestedFor_example" // string | The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
+    requestedFor := "ac10d20a-841e-1e7d-8184-32d2e22c0179" // string | The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

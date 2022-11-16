@@ -17,7 +17,7 @@ import (
 // NonEmployeeSourceWithNECountAllOf struct for NonEmployeeSourceWithNECountAllOf
 type NonEmployeeSourceWithNECountAllOf struct {
 	// Number of non-employee records associated with this source.
-	NonEmployeeCount *float32 `json:"nonEmployeeCount,omitempty"`
+	NonEmployeeCount *int32 `json:"nonEmployeeCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -41,9 +41,9 @@ func NewNonEmployeeSourceWithNECountAllOfWithDefaults() *NonEmployeeSourceWithNE
 }
 
 // GetNonEmployeeCount returns the NonEmployeeCount field value if set, zero value otherwise.
-func (o *NonEmployeeSourceWithNECountAllOf) GetNonEmployeeCount() float32 {
+func (o *NonEmployeeSourceWithNECountAllOf) GetNonEmployeeCount() int32 {
 	if o == nil || isNil(o.NonEmployeeCount) {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.NonEmployeeCount
@@ -51,7 +51,7 @@ func (o *NonEmployeeSourceWithNECountAllOf) GetNonEmployeeCount() float32 {
 
 // GetNonEmployeeCountOk returns a tuple with the NonEmployeeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonEmployeeSourceWithNECountAllOf) GetNonEmployeeCountOk() (*float32, bool) {
+func (o *NonEmployeeSourceWithNECountAllOf) GetNonEmployeeCountOk() (*int32, bool) {
 	if o == nil || isNil(o.NonEmployeeCount) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *NonEmployeeSourceWithNECountAllOf) HasNonEmployeeCount() bool {
 	return false
 }
 
-// SetNonEmployeeCount gets a reference to the given float32 and assigns it to the NonEmployeeCount field.
-func (o *NonEmployeeSourceWithNECountAllOf) SetNonEmployeeCount(v float32) {
+// SetNonEmployeeCount gets a reference to the given int32 and assigns it to the NonEmployeeCount field.
+func (o *NonEmployeeSourceWithNECountAllOf) SetNonEmployeeCount(v int32) {
 	o.NonEmployeeCount = &v
 }
 

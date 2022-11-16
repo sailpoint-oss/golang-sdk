@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    identityProfileId := "identityProfileId_example" // string | Identity Profile ID
+    identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Profile ID
     lifecycleState := *openapiclient.NewLifecycleState("aName", "Technical Name") // LifecycleState | Lifecycle State
 
     configuration := openapiclient.NewConfiguration()
@@ -106,8 +106,8 @@ import (
 )
 
 func main() {
-    identityProfileId := "identityProfileId_example" // string | Identity Profile ID
-    lifecycleStateId := "lifecycleStateId_example" // string | Lifecycle State ID
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity Profile ID
+    lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle State ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -179,7 +179,7 @@ import (
 )
 
 func main() {
-    identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Profile ID
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity Profile ID
     lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle State ID
 
     configuration := openapiclient.NewConfiguration()
@@ -402,8 +402,8 @@ import (
 )
 
 func main() {
-    identityProfileId := "identityProfileId_example" // string | Identity Profile ID
-    lifecycleStateId := "lifecycleStateId_example" // string | Lifecycle State ID
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity Profile ID
+    lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle State ID
     jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption 
 
     configuration := openapiclient.NewConfiguration()

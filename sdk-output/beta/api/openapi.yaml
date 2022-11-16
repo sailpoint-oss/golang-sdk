@@ -1850,6 +1850,100 @@ paths:
       summary: Cancel Access Request
       tags:
       - Access Requests
+  /access-requests/close:
+    post:
+      description: |
+        This endpoint closes access requests that are stuck in a pending state. It can be used throughout a request's lifecycle (even after the approval state, unlike <a href="https://developer.sailpoint.com/idn/api/v3/cancel-access-request">Cancel Access Request</a>). A token with ORG_ADMIN authority is required.
+
+        To find pending access requests via the UI, navigate to Search and use this query: status: Pending AND "Access Request". Use the Column Chooser to select "Tracking Number," and the Download button to export a CSV containing the Tracking Numbers.
+
+        To find pending access requests via the API, use <a href="https://developer.sailpoint.com/idn/api/v3/list-account-activities">List Account Activities</a>.
+
+        Input the ids from either source
+
+        To track the status of endpoint requests, navigate to Search and use this query: name:"Close Identity Requests". Search will include "Close Identity Requests Started" audits when requests are initiated, and "Close Identity Requests Completed" audits when requests are completed. The completion audit will list the Identity Request IDs that finished in error.
+
+        This API triggers the <a href="https://developer.sailpoint.com/idn/docs/event-triggers/triggers/provisioning-action-completed">Provisioning Action Completed</a> event trigger for each access request that is closed.
+      operationId: closeAccessRequest
+      requestBody:
+        content:
+          application/json:
+            example:
+              accessRequestIds:
+              - 2c90ad2a70ace7d50170acf22ca90010
+              executionStatus: Terminated
+              completionStatus: Failure
+              message: The IdentityNow Administrator manually closed this request.
+            schema:
+              $ref: '#/components/schemas/CloseAccessRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Close Access Request
+      tags:
+      - Access Requests
   /access-request-config:
     get:
       description: This endpoint returns the current access-request configuration.
@@ -14045,7 +14139,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:read
       summary: List Non-Employee Records
       tags:
       - Non-Employee Lifecycle Management
@@ -14125,6 +14220,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: Create Non-Employee Record
       tags:
       - Non-Employee Lifecycle Management
@@ -14202,6 +14300,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: Delete Non-Employee Record
       tags:
       - Non-Employee Lifecycle Management
@@ -14282,6 +14383,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:read
       summary: Get a Non-Employee Record
       tags:
       - Non-Employee Lifecycle Management
@@ -14394,7 +14498,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:manage
       summary: Patch Non-Employee Record
       tags:
       - Non-Employee Lifecycle Management
@@ -14499,7 +14604,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:manage
       summary: Update Non-Employee Record
       tags:
       - Non-Employee Lifecycle Management
@@ -14577,6 +14683,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: Delete Multiple Non-Employee Records
       tags:
       - Non-Employee Lifecycle Management
@@ -14718,7 +14827,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:read
       summary: List Non-Employee Requests
       tags:
       - Non-Employee Lifecycle Management
@@ -14817,7 +14927,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:manage
       summary: Create Non-Employee Request
       tags:
       - Non-Employee Lifecycle Management
@@ -14912,6 +15023,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: Delete Non-Employee Request
       tags:
       - Non-Employee Lifecycle Management
@@ -15008,7 +15122,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:read
       summary: Get a Non-Employee Request
       tags:
       - Non-Employee Lifecycle Management
@@ -15027,6 +15142,7 @@ paths:
       - description: The identity (UUID) of the non-employee account manager for whom
           the summary is being retrieved. Use "me" instead to indicate the current
           user.
+        example: ac10d20a-841e-1e7d-8184-32d2e22c0179
         in: path
         name: requested-for
         required: true
@@ -15097,7 +15213,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:read
       summary: Get Summary of Non-Employee Requests
       tags:
       - Non-Employee Lifecycle Management
@@ -15236,7 +15353,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:read
       summary: List Non-Employee Sources
       tags:
       - Non-Employee Lifecycle Management
@@ -15316,6 +15434,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: Create Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -15393,6 +15514,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: Delete Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -15471,7 +15595,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:read
       summary: Get a Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -15571,6 +15696,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: Patch a Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -15583,6 +15711,7 @@ paths:
       operationId: nonEmployeeRecordsExport
       parameters:
       - description: Source Id (UUID)
+        example: 2c918085842e69ae018432d22ccb212f
         in: path
         name: id
         required: true
@@ -15671,6 +15800,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:read
       summary: Exports Non-Employee Records to CSV
       tags:
       - Non-Employee Lifecycle Management
@@ -15785,6 +15917,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: "Imports, or Updates, Non-Employee Records"
       tags:
       - Non-Employee Lifecycle Management
@@ -15799,6 +15934,7 @@ paths:
       operationId: nonEmployeeBulkUploadStatus
       parameters:
       - description: Source ID (UUID)
+        example: 2c918085842e69ae018432d22ccb212f
         in: path
         name: id
         required: true
@@ -15867,6 +16003,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:read
       summary: Obtain the status of bulk upload on the source
       tags:
       - Non-Employee Lifecycle Management
@@ -15879,6 +16018,7 @@ paths:
       operationId: nonEmployeeExportSourceSchemaTemplate
       parameters:
       - description: Source Id (UUID)
+        example: 2c918085842e69ae018432d22ccb212f
         in: path
         name: id
         required: true
@@ -15965,6 +16105,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:read
       summary: Exports Source Schema Template
       tags:
       - Non-Employee Lifecycle Management
@@ -15975,6 +16118,7 @@ paths:
       parameters:
       - description: The identity for whom the request was made. *me* indicates the
           current user.
+        example: ac10d20a-841e-1e7d-8184-32d2e22c0179
         in: query
         name: requested-for
         required: false
@@ -16022,6 +16166,7 @@ paths:
           \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)<br/><br/>\
           \ Filtering is supported for the following fields and operators:<br/><br/>\
           \ **approvalStatus**: *eq* <br/><br/> *Example:* approvalStatus eq \"PENDING\""
+        example: filters=approvalStatus eq 'PENDING'
         in: query
         name: filters
         schema:
@@ -16029,6 +16174,7 @@ paths:
       - description: "Sort results using the standard syntax described in [V3 API\
           \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)<br/><br/>\
           \ Sorting is supported for the following fields: **created, modified**"
+        example: sorters=-created
         in: query
         name: sorters
         schema:
@@ -16100,7 +16246,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:read
       summary: Get List of Non-Employee Approval Requests
       tags:
       - Non-Employee Lifecycle Management
@@ -16111,6 +16258,7 @@ paths:
       operationId: nonEmployeeApprovalGet
       parameters:
       - description: Non-Employee approval item id (UUID)
+        example: ac10d20a-841e-1e7d-8184-32d2e22c0179
         in: path
         name: id
         required: true
@@ -16118,6 +16266,7 @@ paths:
           type: string
       - description: The object nonEmployeeRequest will not be included detail when
           set to false. *Default value is true*
+        example: include-detail=false
         in: query
         name: include-detail
         required: false
@@ -16187,7 +16336,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:read
       summary: Get a non-employee approval item detail
       tags:
       - Non-Employee Lifecycle Management
@@ -16273,7 +16423,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:manage
       summary: Approve a Non-Employee Request
       tags:
       - Non-Employee Lifecycle Management
@@ -16358,7 +16509,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:manage
       summary: Reject a Non-Employee Request
       tags:
       - Non-Employee Lifecycle Management
@@ -16376,6 +16528,7 @@ paths:
       parameters:
       - description: The identity (UUID) of the approver for whom for whom the summary
           is being retrieved. Use "me" instead to indicate the current user.
+        example: ac10d20a-841e-1e7d-8184-32d2e22c0179
         in: path
         name: requested-for
         required: true
@@ -16445,7 +16598,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:read
       summary: Get Summary of Non-Employee Approval Requests
       tags:
       - Non-Employee Lifecycle Management
@@ -16523,6 +16677,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: Delete all custom schema attributes for Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -16535,6 +16692,7 @@ paths:
       operationId: getSchemaAttributes
       parameters:
       - description: The Source id
+        example: 2c918085842e69ae018432d22ccb212f
         in: path
         name: sourceId
         required: true
@@ -16545,11 +16703,24 @@ paths:
           content:
             application/json:
               schema:
+                example:
+                - type: TEXT
+                  label: string
+                  technicalName: string
+                  helpText: string
+                  placeholder: string
+                  required: true
                 items:
                   $ref: '#/components/schemas/NonEmployeeSchemaAttribute'
                 maxItems: 18
                 type: array
           description: A list of Schema Attributes
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -16705,6 +16876,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: Create a new Schema Attribute for Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -16790,6 +16964,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: Delete a Schema Attribute for Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -16799,12 +16976,14 @@ paths:
       operationId: getSchemaAttribute
       parameters:
       - description: The Schema Attribute Id (UUID)
+        example: 2c918085842e69ae018432d22ccb212f
         in: path
         name: attributeId
         required: true
         schema:
           type: string
       - description: The Source id
+        example: 2c918085842e69ae018432d22ccb212f
         in: path
         name: sourceId
         required: true
@@ -16814,9 +16993,17 @@ paths:
         "200":
           content:
             application/json:
+              example: |
+                id,system,modified,created,type,label,technicalName,helpText,placeholder,required
               schema:
                 $ref: '#/components/schemas/NonEmployeeSchemaAttribute'
           description: The Schema Attribute
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -16868,7 +17055,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:nelm:read
       summary: Get Schema Attribute Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -16991,6 +17179,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:nelm:manage
       summary: Patch a Schema Attribute for Non-Employee Source
       tags:
       - Non-Employee Lifecycle Management
@@ -19429,6 +19620,166 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       summary: IAI Get Identity Outliers
+      tags:
+      - IAI Outliers
+  /outliers/{outlierId}/contributing-features:
+    get:
+      description: |-
+        This API returns a list of contributing feature objects for a single outlier. The object contains: feature name, feature value type, value, importance, display name (translated text or message key), description (translated text or message key), translation messages object
+        Requires authorization scope of 'iai:outliers-management:read'
+      operationId: getOutliersContributingFeatures
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: Whether or not to include translation messages object in returned
+          response
+        in: query
+        name: include-translation-messages
+        required: false
+        schema:
+          example: include-translation-messages=
+          type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard_collection_parameters.html)
+          Sorting is supported for the following fields: **importance**
+        in: query
+        name: sorters
+        required: false
+        schema:
+          example: importance
+          format: comma-separated
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/OutlierContributingFeature'
+                type: array
+          description: Succeeded. Returns list of objects. Each object contains a
+            feature and metadata about that feature
+          headers:
+            X-Total-Count:
+              description: The total result count.
+              schema:
+                type: integer
+            accept-language:
+              description: The locale to use for translations for displayName and
+                description text
+              schema:
+                type: string
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: IAI Get an Identity Outlier's Contibuting Features
       tags:
       - IAI Outliers
   /outliers/ignore:
@@ -27918,16 +28269,16 @@ paths:
       operationId: listSources
       parameters:
       - description: |-
-          Note that for this API the maximum value for limit is 50.
+          Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: 50
+        example: 250
         in: query
         name: limit
         required: false
         schema:
-          default: 50
+          default: 250
           format: int32
-          maximum: 50
+          maximum: 250
           minimum: 0
           type: integer
       - description: |-
@@ -41967,6 +42318,49 @@ components:
       - accountActivityId
       - comment
       type: object
+    CloseAccessRequest:
+      description: Request body payload for close access requests endpoint.
+      example:
+        executionStatus: Terminated
+        accessRequestIds:
+        - 2c90ad2a70ace7d50170acf22ca90010
+        completionStatus: Failure
+        message: The IdentityNow Administrator manually closed this request.
+      properties:
+        accessRequestIds:
+          description: Access Request IDs for the requests to be closed. Accepts 1-500
+            Identity Request IDs per request.
+          example:
+          - 2c90ad2a70ace7d50170acf22ca90010
+          items:
+            type: string
+          type: array
+        message:
+          default: The IdentityNow Administrator manually closed this request.
+          description: Reason for closing the access request. Displayed under Warnings
+            in IdentityNow.
+          example: The IdentityNow Administrator manually closed this request.
+          type: string
+        executionStatus:
+          default: Terminated
+          description: The request's provisioning status. Displayed as Stage in IdentityNow.
+          enum:
+          - Terminated
+          - Completed
+          example: Terminated
+          type: string
+        completionStatus:
+          default: Failure
+          description: The request's overall status. Displayed as Status in IdentityNow.
+          enum:
+          - Success
+          - Incomplete
+          - Failure
+          example: Failure
+          type: string
+      required:
+      - accessRequestIds
+      type: object
     AccessRequestConfig:
       example:
         requestOnBehalfOfConfig:
@@ -42171,7 +42565,7 @@ components:
             type: IDENTITY
           modified: 2019-12-20T09:17:12.192Z
           comment: Nisl quis ipsum quam quisque condimentum nunc ut dolor nunc.
-        accessRequestId: ef38f94347e94562b5bb8424a56397d8
+        accessRequestId: 2b838de9-db9b-abcf-e646-d4f274ad4238
         provisioningDetails:
           orderedSubPhaseReferences: manualWorkItemDetails
         accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
@@ -42299,7 +42693,7 @@ components:
           type: boolean
         accessRequestId:
           description: This is the account activity id.
-          example: ef38f94347e94562b5bb8424a56397d8
+          example: 2b838de9-db9b-abcf-e646-d4f274ad4238
           format: string
           type: string
         clientMetadata:
@@ -46457,6 +46851,58 @@ components:
           example: 2021-06-01T18:40:35.772Z
           format: date-time
           type: string
+      type: object
+    OutlierContributingFeature:
+      example:
+        translationMessages:
+          displayName:
+            values:
+            - "75"
+            - department
+            key: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+          description:
+            values:
+            - "75"
+            - department
+            key: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+        importance: -0.15
+        displayName: Number of entitlements
+        valueType: INTEGER
+        name: entitlement_count
+        description: The total number of entitlements belonging to an identity
+        value: 0.92
+      properties:
+        name:
+          description: The name of the feature
+          example: entitlement_count
+          type: string
+        valueType:
+          description: The data type of the value field
+          enum:
+          - INTEGER
+          - FLOAT
+          example: INTEGER
+          type: string
+        value:
+          $ref: '#/components/schemas/OutlierContributingFeature_value'
+        importance:
+          description: The importance of the feature. This can also be a negative
+            value
+          example: -0.15
+          format: float
+          maximum: 1.0
+          minimum: -1.0
+          type: number
+        displayName:
+          description: The (translated if header is passed) displayName for the feature
+          example: Number of entitlements
+          type: string
+        description:
+          description: The (translated if header is passed) description for the feature
+          example: The total number of entitlements belonging to an identity
+          type: string
+        translationMessages:
+          $ref: '#/components/schemas/OutlierFeatureTranslation'
       type: object
     PasswordInfoQueryDTO:
       example:
@@ -52285,6 +52731,11 @@ components:
           type: string
       type: object
     TranslationMessage:
+      example:
+        values:
+        - "75"
+        - department
+        key: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
       properties:
         key:
           description: The key of the translation message
@@ -53099,6 +53550,24 @@ components:
           maximum: 2147483647
           minimum: 0
           type: integer
+      type: object
+    OutlierFeatureTranslation:
+      example:
+        displayName:
+          values:
+          - "75"
+          - department
+          key: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+        description:
+          values:
+          - "75"
+          - department
+          key: recommender-api.V2_WEIGHT_FEATURE_PRODUCT_INTERPRETATION_HIGH
+      properties:
+        displayName:
+          $ref: '#/components/schemas/TranslationMessage'
+        description:
+          $ref: '#/components/schemas/TranslationMessage'
       type: object
     PasswordInfoAccount:
       example:
@@ -54846,6 +55315,7 @@ components:
       properties:
         taskResultId:
           description: The id of the task result.
+          example: 2b838de9-db9b-abcf-e646-d4f274ad4238
           format: uuid
           type: string
         reportName:
@@ -58034,7 +58504,9 @@ components:
       properties:
         nonEmployeeCount:
           description: Number of non-employee records associated with this source.
-          type: number
+          example: 2
+          format: int32
+          type: integer
       type: object
       example: null
     NonEmployeeSourceWithCloudExternalId_allOf:
@@ -58069,6 +58541,13 @@ components:
           example: 2019-08-23T18:40:35.772Z
           format: date-time
           type: string
+        nonEmployeeCount:
+          description: The number of non-employee records on all sources that *requested-for*
+            user manages.
+          example: 2
+          format: int32
+          nullable: true
+          type: integer
       type: object
       example: null
     NonEmployeeApprovalItem_allOf:
@@ -58083,6 +58562,16 @@ components:
           $ref: '#/components/schemas/NonEmployeeRequestWithoutApprovalItem'
       type: object
       example: null
+    OutlierContributingFeature_value:
+      description: The feature value
+      example: 0.92
+      oneOf:
+      - format: float
+        maximum: 1.0
+        minimum: 0.0
+        type: number
+      - format: int64
+        type: integer
     RoleMiningPotentialRoleExportResponse_allOf:
       properties:
         exportId:

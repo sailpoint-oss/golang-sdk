@@ -16,8 +16,8 @@ import (
 
 // Search1 struct for Search1
 type Search1 struct {
-	// The names of the Elasticsearch indices in which to search.
-	Indices []Index `json:"indices"`
+	// The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.
+	Indices []Index `json:"indices,omitempty"`
 	QueryType *QueryType `json:"queryType,omitempty"`
 	QueryVersion *string `json:"queryVersion,omitempty"`
 	Query *Query `json:"query,omitempty"`
@@ -47,9 +47,8 @@ type _Search1 Search1
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSearch1(indices []Index) *Search1 {
+func NewSearch1() *Search1 {
 	this := Search1{}
-	this.Indices = indices
 	var queryType QueryType = QUERYTYPE_SAILPOINT
 	this.QueryType = &queryType
 	var includeNested bool = true
@@ -73,26 +72,34 @@ func NewSearch1WithDefaults() *Search1 {
 	return &this
 }
 
-// GetIndices returns the Indices field value
+// GetIndices returns the Indices field value if set, zero value otherwise.
 func (o *Search1) GetIndices() []Index {
-	if o == nil {
+	if o == nil || isNil(o.Indices) {
 		var ret []Index
 		return ret
 	}
-
 	return o.Indices
 }
 
-// GetIndicesOk returns a tuple with the Indices field value
+// GetIndicesOk returns a tuple with the Indices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Search1) GetIndicesOk() ([]Index, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Indices) {
 		return nil, false
 	}
 	return o.Indices, true
 }
 
-// SetIndices sets field value
+// HasIndices returns a boolean if a field has been set.
+func (o *Search1) HasIndices() bool {
+	if o != nil && !isNil(o.Indices) {
+		return true
+	}
+
+	return false
+}
+
+// SetIndices gets a reference to the given []Index and assigns it to the Indices field.
 func (o *Search1) SetIndices(v []Index) {
 	o.Indices = v
 }
@@ -547,7 +554,7 @@ func (o *Search1) SetFilters(v map[string]Filter) {
 
 func (o Search1) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if !isNil(o.Indices) {
 		toSerialize["indices"] = o.Indices
 	}
 	if !isNil(o.QueryType) {

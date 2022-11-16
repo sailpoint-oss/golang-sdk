@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 *AccessRequestApprovalsApi* | [**ListPendingApprovals**](docs/AccessRequestApprovalsApi.md#listpendingapprovals) | **Get** /access-request-approvals/pending | Pending Access Request Approvals List
 *AccessRequestApprovalsApi* | [**RejectRequest**](docs/AccessRequestApprovalsApi.md#rejectrequest) | **Post** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
 *AccessRequestsApi* | [**CancelAccessRequest**](docs/AccessRequestsApi.md#cancelaccessrequest) | **Post** /access-requests/cancel | Cancel Access Request
+*AccessRequestsApi* | [**CloseAccessRequest**](docs/AccessRequestsApi.md#closeaccessrequest) | **Post** /access-requests/close | Close Access Request
 *AccessRequestsApi* | [**CreateAccessRequest**](docs/AccessRequestsApi.md#createaccessrequest) | **Post** /access-requests | Submit an Access Request
 *AccessRequestsApi* | [**GetAccessRequestConfig**](docs/AccessRequestsApi.md#getaccessrequestconfig) | **Get** /access-request-config | Get Access Request Configuration
 *AccessRequestsApi* | [**ListAccessRequestStatus**](docs/AccessRequestsApi.md#listaccessrequeststatus) | **Get** /access-request-status | Access Request Status
@@ -170,6 +171,7 @@ Class | Method | HTTP request | Description
 *IAIOutliersApi* | [**GetLatestOutlierSnapshots**](docs/IAIOutliersApi.md#getlatestoutliersnapshots) | **Get** /outlier-summaries/latest | IAI Identity Outliers Latest Summary
 *IAIOutliersApi* | [**GetOutlierSnapshots**](docs/IAIOutliersApi.md#getoutliersnapshots) | **Get** /outlier-summaries | IAI Identity Outliers Summary
 *IAIOutliersApi* | [**GetOutliers**](docs/IAIOutliersApi.md#getoutliers) | **Get** /outliers | IAI Get Identity Outliers
+*IAIOutliersApi* | [**GetOutliersContributingFeatures**](docs/IAIOutliersApi.md#getoutlierscontributingfeatures) | **Get** /outliers/{outlierId}/contributing-features | IAI Get an Identity Outlier&#39;s Contibuting Features
 *IAIOutliersApi* | [**IgnoreOutliers**](docs/IAIOutliersApi.md#ignoreoutliers) | **Post** /outliers/ignore | IAI Identity Outliers Ignore
 *IAIOutliersApi* | [**UnIgnoreOutliers**](docs/IAIOutliersApi.md#unignoreoutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
 *IAIPeerGroupStrategiesApi* | [**GetOutliers**](docs/IAIPeerGroupStrategiesApi.md#getoutliers) | **Get** /peer-group-strategies/{strategy}/identity-outliers | Identity Outliers List
@@ -563,6 +565,7 @@ Class | Method | HTTP request | Description
  - [CertifierResponse](docs/CertifierResponse.md)
  - [ClientLogConfiguration](docs/ClientLogConfiguration.md)
  - [ClientType](docs/ClientType.md)
+ - [CloseAccessRequest](docs/CloseAccessRequest.md)
  - [Comment](docs/Comment.md)
  - [CommentDto](docs/CommentDto.md)
  - [CommentDto1](docs/CommentDto1.md)
@@ -761,6 +764,9 @@ Class | Method | HTTP request | Description
  - [ObjectImportResult](docs/ObjectImportResult.md)
  - [OrgConfig](docs/OrgConfig.md)
  - [Outlier](docs/Outlier.md)
+ - [OutlierContributingFeature](docs/OutlierContributingFeature.md)
+ - [OutlierContributingFeatureValue](docs/OutlierContributingFeatureValue.md)
+ - [OutlierFeatureTranslation](docs/OutlierFeatureTranslation.md)
  - [OutlierSummary](docs/OutlierSummary.md)
  - [OwnerReference](docs/OwnerReference.md)
  - [PasswordChangeRequest](docs/PasswordChangeRequest.md)

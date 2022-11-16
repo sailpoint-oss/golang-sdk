@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **AccountManagers** | Pointer to [**[]IdentityReferenceWithId**](IdentityReferenceWithId.md) | List of account managers | [optional] 
 **Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
 **Created** | Pointer to **time.Time** | When the request was created. | [optional] 
+**NonEmployeeCount** | Pointer to **NullableInt32** | The number of non-employee records on all sources that *requested-for* user manages. | [optional] 
 **CloudExternalId** | Pointer to **string** | Legacy ID used for sources from the V1 API. This attribute will be removed from a future version of the API and will not be considered a breaking change. No clients should rely on this ID always being present. | [optional] 
 
 ## Methods
@@ -233,6 +234,41 @@ SetCreated sets Created field to given value.
 
 HasCreated returns a boolean if a field has been set.
 
+### GetNonEmployeeCount
+
+`func (o *NonEmployeeSourceWithCloudExternalId) GetNonEmployeeCount() int32`
+
+GetNonEmployeeCount returns the NonEmployeeCount field if non-nil, zero value otherwise.
+
+### GetNonEmployeeCountOk
+
+`func (o *NonEmployeeSourceWithCloudExternalId) GetNonEmployeeCountOk() (*int32, bool)`
+
+GetNonEmployeeCountOk returns a tuple with the NonEmployeeCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNonEmployeeCount
+
+`func (o *NonEmployeeSourceWithCloudExternalId) SetNonEmployeeCount(v int32)`
+
+SetNonEmployeeCount sets NonEmployeeCount field to given value.
+
+### HasNonEmployeeCount
+
+`func (o *NonEmployeeSourceWithCloudExternalId) HasNonEmployeeCount() bool`
+
+HasNonEmployeeCount returns a boolean if a field has been set.
+
+### SetNonEmployeeCountNil
+
+`func (o *NonEmployeeSourceWithCloudExternalId) SetNonEmployeeCountNil(b bool)`
+
+ SetNonEmployeeCountNil sets the value for NonEmployeeCount to be an explicit nil
+
+### UnsetNonEmployeeCount
+`func (o *NonEmployeeSourceWithCloudExternalId) UnsetNonEmployeeCount()`
+
+UnsetNonEmployeeCount ensures that no value is present for NonEmployeeCount, not even an explicit nil
 ### GetCloudExternalId
 
 `func (o *NonEmployeeSourceWithCloudExternalId) GetCloudExternalId() string`

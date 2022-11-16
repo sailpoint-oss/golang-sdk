@@ -23,9 +23,9 @@ type AccountAttribute struct {
 	// The value of this configuration is a string name of the attribute to use when determining the ordering of returned accounts when there are multiple entries
 	AccountSortAttribute *string `json:"accountSortAttribute,omitempty"`
 	// The value of this configuration is a boolean (true/false). Controls the order of the sort when there are multiple accounts. If not defined, the transform will default to false (ascending order)
-	AccountSortDescending *string `json:"accountSortDescending,omitempty"`
+	AccountSortDescending *bool `json:"accountSortDescending,omitempty"`
 	// The value of this configuration is a boolean (true/false). Controls which account to source a value from for an attribute.  If this flag is set to true, the transform returns the value from the first account in the list, even if it is null. If it is set to false, the transform returns the first non-null value. If not defined, the transform will default to false
-	AccountReturnFirstLink *string `json:"accountReturnFirstLink,omitempty"`
+	AccountReturnFirstLink *bool `json:"accountReturnFirstLink,omitempty"`
 	// This expression queries the database to narrow search results. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the database.  The default filter will always include the source and identity, and any subsequent expressions will be combined in an AND operation to the existing search criteria.  Only certain searchable attributes are available: </br> - `nativeIdentity` - the Account ID </br> - `displayName` - the Account Name </br> - `entitlements` - a boolean value to determine if the account has entitlements
 	AccountFilter *string `json:"accountFilter,omitempty"`
 	// This expression is used to search and filter accounts in memory. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the returned resultset.  All account attributes are available for filtering as this operation is performed in memory.
@@ -143,9 +143,9 @@ func (o *AccountAttribute) SetAccountSortAttribute(v string) {
 }
 
 // GetAccountSortDescending returns the AccountSortDescending field value if set, zero value otherwise.
-func (o *AccountAttribute) GetAccountSortDescending() string {
+func (o *AccountAttribute) GetAccountSortDescending() bool {
 	if o == nil || isNil(o.AccountSortDescending) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.AccountSortDescending
@@ -153,7 +153,7 @@ func (o *AccountAttribute) GetAccountSortDescending() string {
 
 // GetAccountSortDescendingOk returns a tuple with the AccountSortDescending field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountAttribute) GetAccountSortDescendingOk() (*string, bool) {
+func (o *AccountAttribute) GetAccountSortDescendingOk() (*bool, bool) {
 	if o == nil || isNil(o.AccountSortDescending) {
 		return nil, false
 	}
@@ -169,15 +169,15 @@ func (o *AccountAttribute) HasAccountSortDescending() bool {
 	return false
 }
 
-// SetAccountSortDescending gets a reference to the given string and assigns it to the AccountSortDescending field.
-func (o *AccountAttribute) SetAccountSortDescending(v string) {
+// SetAccountSortDescending gets a reference to the given bool and assigns it to the AccountSortDescending field.
+func (o *AccountAttribute) SetAccountSortDescending(v bool) {
 	o.AccountSortDescending = &v
 }
 
 // GetAccountReturnFirstLink returns the AccountReturnFirstLink field value if set, zero value otherwise.
-func (o *AccountAttribute) GetAccountReturnFirstLink() string {
+func (o *AccountAttribute) GetAccountReturnFirstLink() bool {
 	if o == nil || isNil(o.AccountReturnFirstLink) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.AccountReturnFirstLink
@@ -185,7 +185,7 @@ func (o *AccountAttribute) GetAccountReturnFirstLink() string {
 
 // GetAccountReturnFirstLinkOk returns a tuple with the AccountReturnFirstLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountAttribute) GetAccountReturnFirstLinkOk() (*string, bool) {
+func (o *AccountAttribute) GetAccountReturnFirstLinkOk() (*bool, bool) {
 	if o == nil || isNil(o.AccountReturnFirstLink) {
 		return nil, false
 	}
@@ -201,8 +201,8 @@ func (o *AccountAttribute) HasAccountReturnFirstLink() bool {
 	return false
 }
 
-// SetAccountReturnFirstLink gets a reference to the given string and assigns it to the AccountReturnFirstLink field.
-func (o *AccountAttribute) SetAccountReturnFirstLink(v string) {
+// SetAccountReturnFirstLink gets a reference to the given bool and assigns it to the AccountReturnFirstLink field.
+func (o *AccountAttribute) SetAccountReturnFirstLink(v bool) {
 	o.AccountReturnFirstLink = &v
 }
 

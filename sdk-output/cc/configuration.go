@@ -97,11 +97,13 @@ type Configuration struct {
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *http.Client
+	Tenant			 string
 }
 
 // NewConfiguration returns a new Configuration object
 func NewConfiguration(tenant string) *Configuration {
 	cfg := &Configuration{
+		Tenant: tenant,
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "OpenAPI-Generator/0.1.0/go",
 		Debug:            false,

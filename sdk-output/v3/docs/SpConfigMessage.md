@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** | Message key. | 
 **Text** | **string** | Message text. | 
-**Details** | **map[string]map[string]interface{}** | Message details if any, in key:value pairs. | 
+**Details** | **map[string]interface{}** | Message details if any, in key:value pairs. | 
 
 ## Methods
 
 ### NewSpConfigMessage
 
-`func NewSpConfigMessage(key string, text string, details map[string]map[string]interface{}, ) *SpConfigMessage`
+`func NewSpConfigMessage(key string, text string, details map[string]interface{}, ) *SpConfigMessage`
 
 NewSpConfigMessage instantiates a new SpConfigMessage object
 This constructor will assign default values to properties that have it defined,
@@ -69,20 +69,20 @@ SetText sets Text field to given value.
 
 ### GetDetails
 
-`func (o *SpConfigMessage) GetDetails() map[string]map[string]interface{}`
+`func (o *SpConfigMessage) GetDetails() map[string]interface{}`
 
 GetDetails returns the Details field if non-nil, zero value otherwise.
 
 ### GetDetailsOk
 
-`func (o *SpConfigMessage) GetDetailsOk() (*map[string]map[string]interface{}, bool)`
+`func (o *SpConfigMessage) GetDetailsOk() (*map[string]interface{}, bool)`
 
 GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDetails
 
-`func (o *SpConfigMessage) SetDetails(v map[string]map[string]interface{})`
+`func (o *SpConfigMessage) SetDetails(v map[string]interface{})`
 
 SetDetails sets Details field to given value.
 

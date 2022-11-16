@@ -107,7 +107,7 @@ import (
 )
 
 func main() {
-    identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | The Identity Profile ID.
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | The Identity Profile ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -177,7 +177,7 @@ import (
 )
 
 func main() {
-    identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | The Identity Profile ID.
+    identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | The Identity Profile ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

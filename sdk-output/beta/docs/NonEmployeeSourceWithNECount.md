@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **AccountManagers** | Pointer to [**[]IdentityReferenceWithId**](IdentityReferenceWithId.md) | List of account managers | [optional] 
 **Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
 **Created** | Pointer to **time.Time** | When the request was created. | [optional] 
-**NonEmployeeCount** | Pointer to **float32** | Number of non-employee records associated with this source. | [optional] 
+**NonEmployeeCount** | Pointer to **int32** | Number of non-employee records associated with this source. | [optional] 
 
 ## Methods
 
@@ -235,20 +235,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetNonEmployeeCount
 
-`func (o *NonEmployeeSourceWithNECount) GetNonEmployeeCount() float32`
+`func (o *NonEmployeeSourceWithNECount) GetNonEmployeeCount() int32`
 
 GetNonEmployeeCount returns the NonEmployeeCount field if non-nil, zero value otherwise.
 
 ### GetNonEmployeeCountOk
 
-`func (o *NonEmployeeSourceWithNECount) GetNonEmployeeCountOk() (*float32, bool)`
+`func (o *NonEmployeeSourceWithNECount) GetNonEmployeeCountOk() (*int32, bool)`
 
 GetNonEmployeeCountOk returns a tuple with the NonEmployeeCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNonEmployeeCount
 
-`func (o *NonEmployeeSourceWithNECount) SetNonEmployeeCount(v float32)`
+`func (o *NonEmployeeSourceWithNECount) SetNonEmployeeCount(v int32)`
 
 SetNonEmployeeCount sets NonEmployeeCount field to given value.
 

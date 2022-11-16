@@ -338,7 +338,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | The identity campaign certification ID
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The identity campaign certification ID
     reviewReassign := *openapiclient.NewReviewReassign([]openapiclient.ReassignReference{*openapiclient.NewReassignReference("ef38f94347e94562b5bb8424a56397d8", "ITEM")}, "ef38f94347e94562b5bb8424a56397d8", "reassigned for some reason") // ReviewReassign | 
 
     configuration := openapiclient.NewConfiguration()

@@ -33,6 +33,8 @@ type NonEmployeeSourceWithCloudExternalId struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// When the request was created.
 	Created *time.Time `json:"created,omitempty"`
+	// The number of non-employee records on all sources that *requested-for* user manages.
+	NonEmployeeCount NullableInt32 `json:"nonEmployeeCount,omitempty"`
 	// Legacy ID used for sources from the V1 API. This attribute will be removed from a future version of the API and will not be considered a breaking change. No clients should rely on this ID always being present.
 	CloudExternalId *string `json:"cloudExternalId,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -313,6 +315,48 @@ func (o *NonEmployeeSourceWithCloudExternalId) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
+// GetNonEmployeeCount returns the NonEmployeeCount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *NonEmployeeSourceWithCloudExternalId) GetNonEmployeeCount() int32 {
+	if o == nil || isNil(o.NonEmployeeCount.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NonEmployeeCount.Get()
+}
+
+// GetNonEmployeeCountOk returns a tuple with the NonEmployeeCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *NonEmployeeSourceWithCloudExternalId) GetNonEmployeeCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NonEmployeeCount.Get(), o.NonEmployeeCount.IsSet()
+}
+
+// HasNonEmployeeCount returns a boolean if a field has been set.
+func (o *NonEmployeeSourceWithCloudExternalId) HasNonEmployeeCount() bool {
+	if o != nil && o.NonEmployeeCount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNonEmployeeCount gets a reference to the given NullableInt32 and assigns it to the NonEmployeeCount field.
+func (o *NonEmployeeSourceWithCloudExternalId) SetNonEmployeeCount(v int32) {
+	o.NonEmployeeCount.Set(&v)
+}
+// SetNonEmployeeCountNil sets the value for NonEmployeeCount to be an explicit nil
+func (o *NonEmployeeSourceWithCloudExternalId) SetNonEmployeeCountNil() {
+	o.NonEmployeeCount.Set(nil)
+}
+
+// UnsetNonEmployeeCount ensures that no value is present for NonEmployeeCount, not even an explicit nil
+func (o *NonEmployeeSourceWithCloudExternalId) UnsetNonEmployeeCount() {
+	o.NonEmployeeCount.Unset()
+}
+
 // GetCloudExternalId returns the CloudExternalId field value if set, zero value otherwise.
 func (o *NonEmployeeSourceWithCloudExternalId) GetCloudExternalId() string {
 	if o == nil || isNil(o.CloudExternalId) {
@@ -371,6 +415,9 @@ func (o NonEmployeeSourceWithCloudExternalId) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
+	if o.NonEmployeeCount.IsSet() {
+		toSerialize["nonEmployeeCount"] = o.NonEmployeeCount.Get()
+	}
 	if !isNil(o.CloudExternalId) {
 		toSerialize["cloudExternalId"] = o.CloudExternalId
 	}
@@ -400,6 +447,7 @@ func (o *NonEmployeeSourceWithCloudExternalId) UnmarshalJSON(bytes []byte) (err 
 		delete(additionalProperties, "accountManagers")
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "created")
+		delete(additionalProperties, "nonEmployeeCount")
 		delete(additionalProperties, "cloudExternalId")
 		o.AdditionalProperties = additionalProperties
 	}

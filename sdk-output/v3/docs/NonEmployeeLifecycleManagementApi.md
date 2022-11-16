@@ -60,7 +60,7 @@ import (
 )
 
 func main() {
-    sourceId := "sourceId_example" // string | The Source id
+    sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | The Source id
     nonEmployeeSchemaAttributeBody := *openapiclient.NewNonEmployeeSchemaAttributeBody("TEXT", "Account Name", "account.name") // NonEmployeeSchemaAttributeBody | 
 
     configuration := openapiclient.NewConfiguration()
@@ -132,8 +132,8 @@ import (
 )
 
 func main() {
-    attributeId := "attributeId_example" // string | The Schema Attribute Id (UUID)
-    sourceId := "sourceId_example" // string | The Source id
+    attributeId := "ef38f94347e94562b5bb8424a56397d8" // string | The Schema Attribute Id (UUID)
+    sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | The Source id
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -203,7 +203,7 @@ import (
 )
 
 func main() {
-    sourceId := "sourceId_example" // string | The Source id
+    sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | The Source id
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1609,7 +1609,7 @@ import (
 )
 
 func main() {
-    id := "e136567de87e4d029e60b3c3c55db56d" // string | Non-Employee request id in the UUID format
+    id := "ac110005-7156-1150-8171-5b292e3e0084" // string | Non-Employee request id in the UUID format
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1677,7 +1677,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | Non-Employee request id (UUID)
+    id := "ac110005-7156-1150-8171-5b292e3e0084" // string | Non-Employee request id (UUID)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2245,8 +2245,8 @@ import (
 )
 
 func main() {
-    attributeId := "attributeId_example" // string | The Schema Attribute Id (UUID)
-    sourceId := "sourceId_example" // string | The Source id
+    attributeId := "ef38f94347e94562b5bb8424a56397d8" // string | The Schema Attribute Id (UUID)
+    sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | The Source id
     jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
 
     configuration := openapiclient.NewConfiguration()

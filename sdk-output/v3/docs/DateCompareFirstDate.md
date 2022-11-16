@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **SourceName** | **string** | A reference to the source to search for the account | 
 **AttributeName** | **string** | The name of the attribute on the account to return. This should match the name of the account attribute name visible in the user interface, or on the source schema. | 
 **AccountSortAttribute** | Pointer to **string** | The value of this configuration is a string name of the attribute to use when determining the ordering of returned accounts when there are multiple entries | [optional] 
-**AccountSortDescending** | Pointer to **string** | The value of this configuration is a boolean (true/false). Controls the order of the sort when there are multiple accounts. If not defined, the transform will default to false (ascending order) | [optional] 
-**AccountReturnFirstLink** | Pointer to **string** | The value of this configuration is a boolean (true/false). Controls which account to source a value from for an attribute.  If this flag is set to true, the transform returns the value from the first account in the list, even if it is null. If it is set to false, the transform returns the first non-null value. If not defined, the transform will default to false | [optional] 
+**AccountSortDescending** | Pointer to **bool** | The value of this configuration is a boolean (true/false). Controls the order of the sort when there are multiple accounts. If not defined, the transform will default to false (ascending order) | [optional] 
+**AccountReturnFirstLink** | Pointer to **bool** | The value of this configuration is a boolean (true/false). Controls which account to source a value from for an attribute.  If this flag is set to true, the transform returns the value from the first account in the list, even if it is null. If it is set to false, the transform returns the first non-null value. If not defined, the transform will default to false | [optional] 
 **AccountFilter** | Pointer to **string** | This expression queries the database to narrow search results. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the database.  The default filter will always include the source and identity, and any subsequent expressions will be combined in an AND operation to the existing search criteria.  Only certain searchable attributes are available: &lt;/br&gt; - &#x60;nativeIdentity&#x60; - the Account ID &lt;/br&gt; - &#x60;displayName&#x60; - the Account Name &lt;/br&gt; - &#x60;entitlements&#x60; - a boolean value to determine if the account has entitlements | [optional] 
 **AccountPropertyFilter** | Pointer to **string** | This expression is used to search and filter accounts in memory. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the returned resultset.  All account attributes are available for filtering as this operation is performed in memory. | [optional] 
 **RequiresPeriodicRefresh** | Pointer to **bool** | A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process | [optional] [default to false]
@@ -102,20 +102,20 @@ HasAccountSortAttribute returns a boolean if a field has been set.
 
 ### GetAccountSortDescending
 
-`func (o *DateCompareFirstDate) GetAccountSortDescending() string`
+`func (o *DateCompareFirstDate) GetAccountSortDescending() bool`
 
 GetAccountSortDescending returns the AccountSortDescending field if non-nil, zero value otherwise.
 
 ### GetAccountSortDescendingOk
 
-`func (o *DateCompareFirstDate) GetAccountSortDescendingOk() (*string, bool)`
+`func (o *DateCompareFirstDate) GetAccountSortDescendingOk() (*bool, bool)`
 
 GetAccountSortDescendingOk returns a tuple with the AccountSortDescending field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountSortDescending
 
-`func (o *DateCompareFirstDate) SetAccountSortDescending(v string)`
+`func (o *DateCompareFirstDate) SetAccountSortDescending(v bool)`
 
 SetAccountSortDescending sets AccountSortDescending field to given value.
 
@@ -127,20 +127,20 @@ HasAccountSortDescending returns a boolean if a field has been set.
 
 ### GetAccountReturnFirstLink
 
-`func (o *DateCompareFirstDate) GetAccountReturnFirstLink() string`
+`func (o *DateCompareFirstDate) GetAccountReturnFirstLink() bool`
 
 GetAccountReturnFirstLink returns the AccountReturnFirstLink field if non-nil, zero value otherwise.
 
 ### GetAccountReturnFirstLinkOk
 
-`func (o *DateCompareFirstDate) GetAccountReturnFirstLinkOk() (*string, bool)`
+`func (o *DateCompareFirstDate) GetAccountReturnFirstLinkOk() (*bool, bool)`
 
 GetAccountReturnFirstLinkOk returns a tuple with the AccountReturnFirstLink field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountReturnFirstLink
 
-`func (o *DateCompareFirstDate) SetAccountReturnFirstLink(v string)`
+`func (o *DateCompareFirstDate) SetAccountReturnFirstLink(v bool)`
 
 SetAccountReturnFirstLink sets AccountReturnFirstLink field to given value.
 

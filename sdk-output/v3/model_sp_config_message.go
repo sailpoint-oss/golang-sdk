@@ -21,7 +21,7 @@ type SpConfigMessage struct {
 	// Message text.
 	Text string `json:"text"`
 	// Message details if any, in key:value pairs.
-	Details map[string]map[string]interface{} `json:"details"`
+	Details map[string]interface{} `json:"details"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ type _SpConfigMessage SpConfigMessage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpConfigMessage(key string, text string, details map[string]map[string]interface{}) *SpConfigMessage {
+func NewSpConfigMessage(key string, text string, details map[string]interface{}) *SpConfigMessage {
 	this := SpConfigMessage{}
 	this.Key = key
 	this.Text = text
@@ -96,9 +96,9 @@ func (o *SpConfigMessage) SetText(v string) {
 }
 
 // GetDetails returns the Details field value
-func (o *SpConfigMessage) GetDetails() map[string]map[string]interface{} {
+func (o *SpConfigMessage) GetDetails() map[string]interface{} {
 	if o == nil {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -107,15 +107,15 @@ func (o *SpConfigMessage) GetDetails() map[string]map[string]interface{} {
 
 // GetDetailsOk returns a tuple with the Details field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigMessage) GetDetailsOk() (map[string]map[string]interface{}, bool) {
+func (o *SpConfigMessage) GetDetailsOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return map[string]map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Details, true
 }
 
 // SetDetails sets field value
-func (o *SpConfigMessage) SetDetails(v map[string]map[string]interface{}) {
+func (o *SpConfigMessage) SetDetails(v map[string]interface{}) {
 	o.Details = v
 }
 

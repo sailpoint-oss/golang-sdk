@@ -173,6 +173,7 @@ docs/CertificationsApi.md
 docs/CertifierResponse.md
 docs/ClientLogConfiguration.md
 docs/ClientType.md
+docs/CloseAccessRequest.md
 docs/Comment.md
 docs/CommentDto.md
 docs/CommentDto1.md
@@ -392,6 +393,9 @@ docs/ObjectImportResult.md
 docs/OrgConfig.md
 docs/OrgConfigApi.md
 docs/Outlier.md
+docs/OutlierContributingFeature.md
+docs/OutlierContributingFeatureValue.md
+docs/OutlierFeatureTranslation.md
 docs/OutlierSummary.md
 docs/OwnerReference.md
 docs/PasswordChangeRequest.md
@@ -838,6 +842,7 @@ model_certification_task.go
 model_certifier_response.go
 model_client_log_configuration.go
 model_client_type.go
+model_close_access_request.go
 model_comment.go
 model_comment_dto.go
 model_comment_dto_1.go
@@ -1036,6 +1041,9 @@ model_object_export_import_options.go
 model_object_import_result.go
 model_org_config.go
 model_outlier.go
+model_outlier_contributing_feature.go
+model_outlier_contributing_feature_value.go
+model_outlier_feature_translation.go
 model_outlier_summary.go
 model_owner_reference.go
 model_password_change_request.go

@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | ID of the transform to delete
+    id := "2cd78adghjkja34jh2b1hkjhasuecd" // string | ID of the transform to delete
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -311,7 +311,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | ID of the transform to update
+    id := "2cd78adghjkja34jh2b1hkjhasuecd" // string | ID of the transform to update
     transform := *openapiclient.NewTransform("Timestamp To Date", "dateFormat", openapiclient.Transform_attributes{AccountAttribute: openapiclient.NewAccountAttribute("Workday", "DEPARTMENT")}) // Transform | The updated transform object (must include \"name\", \"type\", and \"attributes\" fields). (optional)
 
     configuration := openapiclient.NewConfiguration()

@@ -25,6 +25,8 @@ type NonEmployeeSourceAllOf struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// When the request was created.
 	Created *time.Time `json:"created,omitempty"`
+	// The number of non-employee records on all sources that *requested-for* user manages.
+	NonEmployeeCount NullableInt32 `json:"nonEmployeeCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -175,6 +177,48 @@ func (o *NonEmployeeSourceAllOf) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
+// GetNonEmployeeCount returns the NonEmployeeCount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *NonEmployeeSourceAllOf) GetNonEmployeeCount() int32 {
+	if o == nil || isNil(o.NonEmployeeCount.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NonEmployeeCount.Get()
+}
+
+// GetNonEmployeeCountOk returns a tuple with the NonEmployeeCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *NonEmployeeSourceAllOf) GetNonEmployeeCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NonEmployeeCount.Get(), o.NonEmployeeCount.IsSet()
+}
+
+// HasNonEmployeeCount returns a boolean if a field has been set.
+func (o *NonEmployeeSourceAllOf) HasNonEmployeeCount() bool {
+	if o != nil && o.NonEmployeeCount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNonEmployeeCount gets a reference to the given NullableInt32 and assigns it to the NonEmployeeCount field.
+func (o *NonEmployeeSourceAllOf) SetNonEmployeeCount(v int32) {
+	o.NonEmployeeCount.Set(&v)
+}
+// SetNonEmployeeCountNil sets the value for NonEmployeeCount to be an explicit nil
+func (o *NonEmployeeSourceAllOf) SetNonEmployeeCountNil() {
+	o.NonEmployeeCount.Set(nil)
+}
+
+// UnsetNonEmployeeCount ensures that no value is present for NonEmployeeCount, not even an explicit nil
+func (o *NonEmployeeSourceAllOf) UnsetNonEmployeeCount() {
+	o.NonEmployeeCount.Unset()
+}
+
 func (o NonEmployeeSourceAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Approvers) {
@@ -188,6 +232,9 @@ func (o NonEmployeeSourceAllOf) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Created) {
 		toSerialize["created"] = o.Created
+	}
+	if o.NonEmployeeCount.IsSet() {
+		toSerialize["nonEmployeeCount"] = o.NonEmployeeCount.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -211,6 +258,7 @@ func (o *NonEmployeeSourceAllOf) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "accountManagers")
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "created")
+		delete(additionalProperties, "nonEmployeeCount")
 		o.AdditionalProperties = additionalProperties
 	}
 

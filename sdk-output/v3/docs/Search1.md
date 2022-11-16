@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Indices** | [**[]Index**](Index.md) | The names of the Elasticsearch indices in which to search. | 
+**Indices** | Pointer to [**[]Index**](Index.md) | The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched. | [optional] 
 **QueryType** | Pointer to [**QueryType**](QueryType.md) |  | [optional] [default to QUERYTYPE_SAILPOINT]
 **QueryVersion** | Pointer to **string** |  | [optional] 
 **Query** | Pointer to [**Query**](Query.md) |  | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewSearch1
 
-`func NewSearch1(indices []Index, ) *Search1`
+`func NewSearch1() *Search1`
 
 NewSearch1 instantiates a new Search1 object
 This constructor will assign default values to properties that have it defined,
@@ -58,6 +58,11 @@ and a boolean to check if the value has been set.
 
 SetIndices sets Indices field to given value.
 
+### HasIndices
+
+`func (o *Search1) HasIndices() bool`
+
+HasIndices returns a boolean if a field has been set.
 
 ### GetQueryType
 

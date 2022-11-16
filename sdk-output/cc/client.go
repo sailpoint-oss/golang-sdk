@@ -392,7 +392,7 @@ func (c *APIClient) prepareRequest(
 
 		if c.token == "" {
 			if  auth, ok := ctx.Value(ContextClientCredentials).(interface{}); ok {
-				auth, err := getAccessToken(reflect.ValueOf(reflect.ValueOf(&auth).Elem().Elem().Field(0).Interface()).String(), reflect.ValueOf(reflect.ValueOf(&auth).Elem().Elem().Field(1).Interface()).String())
+				auth, err := getAccessToken(reflect.ValueOf(reflect.ValueOf(&auth).Elem().Elem().Field(0).Interface()).String(), reflect.ValueOf(reflect.ValueOf(&auth).Elem().Elem().Field(1).Interface()).String(), c.cfg.Tenant)
 				if err != nil {
 					return nil, err
 				}
@@ -427,8 +427,8 @@ type AccessToken struct {
 	Jti                 string `json:"jti"`
 }
 
-func getAccessToken(clientId string, clientSecret string) (string, error) {
-	url := "https://devrel.api.identitynow.com/oauth/token?grant_type=client_credentials&client_id=" + clientId + "&client_secret=" + clientSecret
+func getAccessToken(clientId string, clientSecret string, tenant string) (string, error) {
+	url := "https://" + tenant + ".api.identitynow.com/oauth/token?grant_type=client_credentials&client_id=" + clientId + "&client_secret=" + clientSecret
 	method := "POST"
 	fmt.Println(url)
 	client := &http.Client{}

@@ -3697,6 +3697,7 @@ paths:
       operationId: reassignIdentityCertifications
       parameters:
       - description: The identity campaign certification ID
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
         required: true
@@ -4734,6 +4735,7 @@ paths:
       operationId: createLifecycleState
       parameters:
       - description: Identity Profile ID
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: identity-profile-id
         required: true
@@ -4823,12 +4825,14 @@ paths:
       operationId: deleteLifecycleState
       parameters:
       - description: Identity Profile ID
+        example: 2b838de9-db9b-abcf-e646-d4f274ad4238
         in: path
         name: identity-profile-id
         required: true
         schema:
           type: string
       - description: Lifecycle State ID
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: lifecycle-state-id
         required: true
@@ -4928,7 +4932,7 @@ paths:
       operationId: getLifecycleState
       parameters:
       - description: Identity Profile ID
-        example: ef38f94347e94562b5bb8424a56397d8
+        example: 2b838de9-db9b-abcf-e646-d4f274ad4238
         in: path
         name: identity-profile-id
         required: true
@@ -5035,12 +5039,14 @@ paths:
       operationId: updateLifecycleStates
       parameters:
       - description: Identity Profile ID
+        example: 2b838de9-db9b-abcf-e646-d4f274ad4238
         in: path
         name: identity-profile-id
         required: true
         schema:
           type: string
       - description: Lifecycle State ID
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: lifecycle-state-id
         required: true
@@ -5551,7 +5557,7 @@ paths:
       operationId: getIdentityProfile
       parameters:
       - description: The Identity Profile ID.
-        example: ef38f94347e94562b5bb8424a56397d8
+        example: 2b838de9-db9b-abcf-e646-d4f274ad4238
         in: path
         name: identity-profile-id
         required: true
@@ -5653,7 +5659,7 @@ paths:
       operationId: getDefaultIdentityAttributeConfig
       parameters:
       - description: The Identity Profile ID.
-        example: ef38f94347e94562b5bb8424a56397d8
+        example: 2b838de9-db9b-abcf-e646-d4f274ad4238
         in: path
         name: identity-profile-id
         required: true
@@ -6676,7 +6682,7 @@ paths:
       operationId: nonEmployeeRequestDeletion
       parameters:
       - description: Non-Employee request id in the UUID format
-        example: e136567de87e4d029e60b3c3c55db56d
+        example: ac110005-7156-1150-8171-5b292e3e0084
         in: path
         name: id
         required: true
@@ -6774,7 +6780,7 @@ paths:
       operationId: nonEmployeeRequestGet
       parameters:
       - description: Non-Employee request id (UUID)
-        example: ef38f94347e94562b5bb8424a56397d8
+        example: ac110005-7156-1150-8171-5b292e3e0084
         in: path
         name: id
         required: true
@@ -8326,6 +8332,7 @@ paths:
       operationId: deleteSchemaAttributes
       parameters:
       - description: The Source id
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: sourceId
         required: true
@@ -8503,6 +8510,7 @@ paths:
       operationId: createSchemaAttribute
       parameters:
       - description: The Source id
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: sourceId
         required: true
@@ -8588,12 +8596,14 @@ paths:
       operationId: deleteSchemaAttribute
       parameters:
       - description: The Schema Attribute Id (UUID)
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: attributeId
         required: true
         schema:
           type: string
       - description: The Source id
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: sourceId
         required: true
@@ -8757,12 +8767,14 @@ paths:
       operationId: patchSchemaAttribute
       parameters:
       - description: The Schema Attribute Id (UUID)
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: attributeId
         required: true
         schema:
           type: string
       - description: The Source id
+        example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: sourceId
         required: true
@@ -10215,6 +10227,7 @@ paths:
             X-Total-Count:
               description: The total result count (returned only if the *count* parameter
                 is specified as *true*).
+              example: 5
               schema:
                 type: integer
         "400":
@@ -10630,6 +10643,7 @@ paths:
             X-Total-Count:
               description: The total result count (returned only if the *count* parameter
                 is specified as *true*).
+              example: 5
               schema:
                 type: integer
         "400":
@@ -11035,6 +11049,7 @@ paths:
             X-Total-Count:
               description: The total result count (returned only if the *count* parameter
                 is specified as *true*).
+              example: 30
               schema:
                 type: integer
         "400":
@@ -11117,6 +11132,7 @@ paths:
           headers:
             X-Total-Count:
               description: The total result count.
+              example: 5
               schema:
                 type: integer
         "400":
@@ -11230,6 +11246,7 @@ paths:
             X-Total-Count:
               description: The total result count (returned only if the *count* parameter
                 is specified as *true*).
+              example: 5
               schema:
                 type: integer
         "400":
@@ -12699,16 +12716,16 @@ paths:
       operationId: listSources
       parameters:
       - description: |-
-          Note that for this API the maximum value for limit is 50.
+          Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: 50
+        example: 250
         in: query
         name: limit
         required: false
         schema:
-          default: 50
+          default: 250
           format: int32
-          maximum: 50
+          maximum: 250
           minimum: 0
           type: integer
       - description: |-
@@ -12884,6 +12901,7 @@ paths:
       operationId: createSource
       parameters:
       - description: Configures the source as a DelimitedFile type of source.
+        example: false
         in: query
         name: provisionAsCsv
         required: false
@@ -15821,6 +15839,7 @@ paths:
       operationId: deleteTransform
       parameters:
       - description: ID of the transform to delete
+        example: 2cd78adghjkja34jh2b1hkjhasuecd
         explode: false
         in: path
         name: id
@@ -16021,6 +16040,7 @@ paths:
       operationId: updateTransform
       parameters:
       - description: ID of the transform to update
+        example: 2cd78adghjkja34jh2b1hkjhasuecd
         explode: false
         in: path
         name: id
@@ -18146,20 +18166,6 @@ components:
       required: true
       schema:
         type: string
-    limit50:
-      description: |-
-        Note that for this API the maximum value for limit is 50.
-        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-      example: 50
-      in: query
-      name: limit
-      required: false
-      schema:
-        default: 50
-        format: int32
-        maximum: 50
-        minimum: 0
-        type: integer
   responses:
     "202":
       content:
@@ -20111,7 +20117,7 @@ components:
             type: IDENTITY
           modified: 2019-12-20T09:17:12.192Z
           comment: Nisl quis ipsum quam quisque condimentum nunc ut dolor nunc.
-        accessRequestId: ef38f94347e94562b5bb8424a56397d8
+        accessRequestId: 2b838de9-db9b-abcf-e646-d4f274ad4238
         provisioningDetails:
           orderedSubPhaseReferences: manualWorkItemDetails
         accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
@@ -20239,7 +20245,7 @@ components:
           type: boolean
         accessRequestId:
           description: This is the account activity id.
-          example: ef38f94347e94562b5bb8424a56397d8
+          example: 2b838de9-db9b-abcf-e646-d4f274ad4238
           format: string
           type: string
         clientMetadata:
@@ -22960,10 +22966,8 @@ components:
             identity:
             - field: displayName
               header: Display Name
-            - field: email
+            - field: e-mail
               header: Work Email
-            - field: attributes.cloudLifecycleState
-              header: Lifecycle State
           type: object
         query:
           description: |
@@ -23050,7 +23054,8 @@ components:
     Search_1:
       properties:
         indices:
-          description: The names of the Elasticsearch indices in which to search.
+          description: "The names of the Elasticsearch indices in which to search.\
+            \ If none are provided, then all indices will be searched."
           example:
           - identities
           externalDocs:
@@ -23126,8 +23131,6 @@ components:
           description: The filters to be applied for each filtered field name.
           example: {}
           type: object
-      required:
-      - indices
       type: object
     AggregationResult:
       example:
@@ -23860,6 +23863,7 @@ components:
       properties:
         taskResultId:
           description: The id of the task result.
+          example: 2b838de9-db9b-abcf-e646-d4f274ad4238
           format: uuid
           type: string
         reportName:
@@ -24077,8 +24081,8 @@ components:
           description: "The value of this configuration is a boolean (true/false).\
             \ Controls the order of the sort when there are multiple accounts. If\
             \ not defined, the transform will default to false (ascending order)"
-          example: "false"
-          type: string
+          example: false
+          type: boolean
         accountReturnFirstLink:
           description: "The value of this configuration is a boolean (true/false).\
             \ Controls which account to source a value from for an attribute.  If\
@@ -24086,8 +24090,8 @@ components:
             \ account in the list, even if it is null. If it is set to false, the\
             \ transform returns the first non-null value. If not defined, the transform\
             \ will default to false"
-          example: "false"
-          type: string
+          example: false
+          type: boolean
         accountFilter:
           description: |-
             This expression queries the database to narrow search results. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the database.  The default filter will always include the source and identity, and any subsequent expressions will be combined in an AND operation to the existing search criteria.
@@ -26155,8 +26159,7 @@ components:
             \ name: random identity]"
           type: string
         details:
-          additionalProperties:
-            type: object
+          additionalProperties: true
           description: "Message details if any, in key:value pairs."
           example:
             details: message details
@@ -26275,7 +26278,7 @@ components:
       properties:
         id:
           description: Non-Employee request id.
-          example: ef38f94347e94562b5bb8424a56397d8
+          example: ac110005-7156-1150-8171-5b292e3e0084
           format: UUID
           type: string
         requester:
@@ -27634,6 +27637,9 @@ components:
       properties:
         ids:
           description: List of non-employee ids.
+          example:
+          - 2b838de9-db9b-abcf-e646-d4f274ad4238
+          - 2d838de9-db9b-abcf-e646-d4f274ad4238
           items:
             format: uuid
             type: string
@@ -27693,6 +27699,7 @@ components:
             $ref: '#/components/schemas/BaseEntitlement'
           type: array
         entitlementCount:
+          example: 5
           type: integer
         tags:
           example:
