@@ -1,4 +1,4 @@
-module github.com/sailpoint-oss/golang-sdk/sdk-output/v3
+module github.com/sailpoint-oss/golang-sdk/sdk-output/beta
 
 go 1.13
 
