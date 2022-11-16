@@ -15,9 +15,9 @@ import (
 	"net/http"
 	"regexp"
 
-	sailpointsdk "github.com/philip-ellis-sp/golang-sdk/sdk-output/v3"
-	sailpointbetasdk "github.com/philip-ellis-sp/golang-sdk/sdk-output/beta"
-	sailpointccsdk "github.com/philip-ellis-sp/golang-sdk/sdk-output/cc"
+	sailpointsdk "github.com/sailpoint-oss/golang-sdk/sdk-output/v3"
+	sailpointbetasdk "github.com/sailpoint-oss/golang-sdk/sdk-output/beta"
+	sailpointccsdk "github.com/sailpoint-oss/golang-sdk/sdk-output/cc"
 )
 
 var (

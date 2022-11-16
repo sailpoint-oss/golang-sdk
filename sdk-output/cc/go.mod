@@ -1,4 +1,4 @@
-module github.com/philip-ellis-sp/golang-sdk/sdk-output/cc
+module github.com/sailpoint-oss/golang-sdk/sdk-output/cc
 
 go 1.13
 
