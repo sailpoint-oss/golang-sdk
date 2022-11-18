@@ -460,7 +460,6 @@ type AccessToken struct {
 func getAccessToken(clientId string, clientSecret string, tenant string) (string, error) {
 	url := "https://" + tenant + ".api.identitynow.com/oauth/token?grant_type=client_credentials&client_id=" + clientId + "&client_secret=" + clientSecret
 	method := "POST"
-	fmt.Println(url)
 	client := &http.Client{}
 	req, err := http.NewRequest(method, url, nil)
 

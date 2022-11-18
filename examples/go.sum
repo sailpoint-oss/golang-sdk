@@ -140,6 +140,14 @@ github.com/philip-ellis-sp/golang-sdk/sdk-output/v3 v3.0.0-20221111211029-6518cc
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
+github.com/sailpoint-oss/golang-sdk/sdk-output v0.0.0-20221116155925-2f7caec30448 h1:OLpQyIP9taTx2vU8gfeHRfugeEaqqlaNh6oszj6X3TQ=
+github.com/sailpoint-oss/golang-sdk/sdk-output v0.0.0-20221116155925-2f7caec30448/go.mod h1:HvAAy556krEX33XdOLhUQUz3u0RiqhoZ0TGB/1rC8vE=
+github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20221116155925-2f7caec30448 h1:i270ohSZ0caPw6235AEfWsJZQv7apkf3ARp92JMcfSs=
+github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20221116155925-2f7caec30448/go.mod h1:bGEVY9c7Fj63TYhQ/tQCsRdvupAmzDOVFren9PzyWSU=
+github.com/sailpoint-oss/golang-sdk/sdk-output/cc v0.0.0-20221116152442-a3c7e3632f42 h1:zkOk9sqAMdg5ID0MArkGZ6Ky6OClLuS8JkhIz64oKLo=
+github.com/sailpoint-oss/golang-sdk/sdk-output/cc v0.0.0-20221116152442-a3c7e3632f42/go.mod h1:N+Xv6R7BL6xMiqALI6DbmviDMimjzeB7sMUbVyQA7j0=
+github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20221116152442-a3c7e3632f42 h1:9KwpF1DDhQaV4l0bdazYT6WUmg+3ZoGzl0ZIxI2cHpg=
+github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20221116152442-a3c7e3632f42/go.mod h1:qG5h5NkEooD0drKVobheKnZxOzSHXm6LkKN9g1iRxW0=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=

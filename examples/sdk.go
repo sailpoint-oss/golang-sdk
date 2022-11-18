@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	sailpoint "github.com/philip-ellis-sp/golang-sdk/sdk-output"
+	sailpoint "github.com/sailpoint-oss/golang-sdk/sdk-output"
 )
 
 func main() {
