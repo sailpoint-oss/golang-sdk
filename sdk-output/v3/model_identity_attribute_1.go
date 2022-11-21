@@ -16,12 +16,11 @@ import (
 
 // IdentityAttribute1 struct for IdentityAttribute1
 type IdentityAttribute1 struct {
-	// The attribute key
-	Key *string `json:"key,omitempty"`
-	// Human-readable display name of the attribute
-	Name *string `json:"name,omitempty"`
-	// The attribute value
-	Value *string `json:"value,omitempty"`
+	// The system (camel-cased) name of the identity attribute to bring in
+	Name string `json:"name"`
+	// A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process
+	RequiresPeriodicRefresh *bool `json:"requiresPeriodicRefresh,omitempty"`
+	Input *Input `json:"input,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,8 +30,11 @@ type _IdentityAttribute1 IdentityAttribute1
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityAttribute1() *IdentityAttribute1 {
+func NewIdentityAttribute1(name string) *IdentityAttribute1 {
 	this := IdentityAttribute1{}
+	this.Name = name
+	var requiresPeriodicRefresh bool = false
+	this.RequiresPeriodicRefresh = &requiresPeriodicRefresh
 	return &this
 }
 
@@ -41,115 +43,109 @@ func NewIdentityAttribute1() *IdentityAttribute1 {
 // but it doesn't guarantee that properties required by API are set
 func NewIdentityAttribute1WithDefaults() *IdentityAttribute1 {
 	this := IdentityAttribute1{}
+	var requiresPeriodicRefresh bool = false
+	this.RequiresPeriodicRefresh = &requiresPeriodicRefresh
 	return &this
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
-func (o *IdentityAttribute1) GetKey() string {
-	if o == nil || isNil(o.Key) {
-		var ret string
-		return ret
-	}
-	return *o.Key
-}
-
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IdentityAttribute1) GetKeyOk() (*string, bool) {
-	if o == nil || isNil(o.Key) {
-		return nil, false
-	}
-	return o.Key, true
-}
-
-// HasKey returns a boolean if a field has been set.
-func (o *IdentityAttribute1) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given string and assigns it to the Key field.
-func (o *IdentityAttribute1) SetKey(v string) {
-	o.Key = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *IdentityAttribute1) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *IdentityAttribute1) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *IdentityAttribute1) HasName() bool {
-	if o != nil && !isNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *IdentityAttribute1) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
-func (o *IdentityAttribute1) GetValue() string {
-	if o == nil || isNil(o.Value) {
-		var ret string
+// GetRequiresPeriodicRefresh returns the RequiresPeriodicRefresh field value if set, zero value otherwise.
+func (o *IdentityAttribute1) GetRequiresPeriodicRefresh() bool {
+	if o == nil || isNil(o.RequiresPeriodicRefresh) {
+		var ret bool
 		return ret
 	}
-	return *o.Value
+	return *o.RequiresPeriodicRefresh
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetRequiresPeriodicRefreshOk returns a tuple with the RequiresPeriodicRefresh field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityAttribute1) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+func (o *IdentityAttribute1) GetRequiresPeriodicRefreshOk() (*bool, bool) {
+	if o == nil || isNil(o.RequiresPeriodicRefresh) {
 		return nil, false
 	}
-	return o.Value, true
+	return o.RequiresPeriodicRefresh, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *IdentityAttribute1) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+// HasRequiresPeriodicRefresh returns a boolean if a field has been set.
+func (o *IdentityAttribute1) HasRequiresPeriodicRefresh() bool {
+	if o != nil && !isNil(o.RequiresPeriodicRefresh) {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
-func (o *IdentityAttribute1) SetValue(v string) {
-	o.Value = &v
+// SetRequiresPeriodicRefresh gets a reference to the given bool and assigns it to the RequiresPeriodicRefresh field.
+func (o *IdentityAttribute1) SetRequiresPeriodicRefresh(v bool) {
+	o.RequiresPeriodicRefresh = &v
+}
+
+// GetInput returns the Input field value if set, zero value otherwise.
+func (o *IdentityAttribute1) GetInput() Input {
+	if o == nil || isNil(o.Input) {
+		var ret Input
+		return ret
+	}
+	return *o.Input
+}
+
+// GetInputOk returns a tuple with the Input field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityAttribute1) GetInputOk() (*Input, bool) {
+	if o == nil || isNil(o.Input) {
+		return nil, false
+	}
+	return o.Input, true
+}
+
+// HasInput returns a boolean if a field has been set.
+func (o *IdentityAttribute1) HasInput() bool {
+	if o != nil && !isNil(o.Input) {
+		return true
+	}
+
+	return false
+}
+
+// SetInput gets a reference to the given Input and assigns it to the Input field.
+func (o *IdentityAttribute1) SetInput(v Input) {
+	o.Input = &v
 }
 
 func (o IdentityAttribute1) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Key) {
-		toSerialize["key"] = o.Key
-	}
-	if !isNil(o.Name) {
+	if true {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if !isNil(o.RequiresPeriodicRefresh) {
+		toSerialize["requiresPeriodicRefresh"] = o.RequiresPeriodicRefresh
+	}
+	if !isNil(o.Input) {
+		toSerialize["input"] = o.Input
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -169,9 +165,9 @@ func (o *IdentityAttribute1) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "key")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "value")
+		delete(additionalProperties, "requiresPeriodicRefresh")
+		delete(additionalProperties, "input")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -16,8 +16,11 @@ import (
 
 // Reference1 struct for Reference1
 type Reference1 struct {
-	Id *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
+	// This ID specifies the name of the pre-existing transform which you want to use within your current transform
+	Id string `json:"id"`
+	// A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process
+	RequiresPeriodicRefresh *bool `json:"requiresPeriodicRefresh,omitempty"`
+	Input *Input `json:"input,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -27,8 +30,11 @@ type _Reference1 Reference1
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewReference1() *Reference1 {
+func NewReference1(id string) *Reference1 {
 	this := Reference1{}
+	this.Id = id
+	var requiresPeriodicRefresh bool = false
+	this.RequiresPeriodicRefresh = &requiresPeriodicRefresh
 	return &this
 }
 
@@ -37,80 +43,109 @@ func NewReference1() *Reference1 {
 // but it doesn't guarantee that properties required by API are set
 func NewReference1WithDefaults() *Reference1 {
 	this := Reference1{}
+	var requiresPeriodicRefresh bool = false
+	this.RequiresPeriodicRefresh = &requiresPeriodicRefresh
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *Reference1) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *Reference1) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *Reference1) HasId() bool {
-	if o != nil && !isNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *Reference1) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *Reference1) GetName() string {
-	if o == nil || isNil(o.Name) {
-		var ret string
+// GetRequiresPeriodicRefresh returns the RequiresPeriodicRefresh field value if set, zero value otherwise.
+func (o *Reference1) GetRequiresPeriodicRefresh() bool {
+	if o == nil || isNil(o.RequiresPeriodicRefresh) {
+		var ret bool
 		return ret
 	}
-	return *o.Name
+	return *o.RequiresPeriodicRefresh
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetRequiresPeriodicRefreshOk returns a tuple with the RequiresPeriodicRefresh field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Reference1) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+func (o *Reference1) GetRequiresPeriodicRefreshOk() (*bool, bool) {
+	if o == nil || isNil(o.RequiresPeriodicRefresh) {
 		return nil, false
 	}
-	return o.Name, true
+	return o.RequiresPeriodicRefresh, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *Reference1) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+// HasRequiresPeriodicRefresh returns a boolean if a field has been set.
+func (o *Reference1) HasRequiresPeriodicRefresh() bool {
+	if o != nil && !isNil(o.RequiresPeriodicRefresh) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Reference1) SetName(v string) {
-	o.Name = &v
+// SetRequiresPeriodicRefresh gets a reference to the given bool and assigns it to the RequiresPeriodicRefresh field.
+func (o *Reference1) SetRequiresPeriodicRefresh(v bool) {
+	o.RequiresPeriodicRefresh = &v
+}
+
+// GetInput returns the Input field value if set, zero value otherwise.
+func (o *Reference1) GetInput() Input {
+	if o == nil || isNil(o.Input) {
+		var ret Input
+		return ret
+	}
+	return *o.Input
+}
+
+// GetInputOk returns a tuple with the Input field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Reference1) GetInputOk() (*Input, bool) {
+	if o == nil || isNil(o.Input) {
+		return nil, false
+	}
+	return o.Input, true
+}
+
+// HasInput returns a boolean if a field has been set.
+func (o *Reference1) HasInput() bool {
+	if o != nil && !isNil(o.Input) {
+		return true
+	}
+
+	return false
+}
+
+// SetInput gets a reference to the given Input and assigns it to the Input field.
+func (o *Reference1) SetInput(v Input) {
+	o.Input = &v
 }
 
 func (o Reference1) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
+	if true {
 		toSerialize["id"] = o.Id
 	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if !isNil(o.RequiresPeriodicRefresh) {
+		toSerialize["requiresPeriodicRefresh"] = o.RequiresPeriodicRefresh
+	}
+	if !isNil(o.Input) {
+		toSerialize["input"] = o.Input
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -131,7 +166,8 @@ func (o *Reference1) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
+		delete(additionalProperties, "requiresPeriodicRefresh")
+		delete(additionalProperties, "input")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Sources** | Pointer to [**[]Reference1**](Reference1.md) |  | [optional] 
-**Entitlements** | Pointer to [**[]Reference1**](Reference1.md) |  | [optional] 
-**AccessProfiles** | Pointer to [**[]Reference1**](Reference1.md) |  | [optional] 
-**Roles** | Pointer to [**[]Reference1**](Reference1.md) |  | [optional] 
-**Apps** | Pointer to [**[]Reference1**](Reference1.md) |  | [optional] 
-**GovernanceGroups** | Pointer to [**[]Reference1**](Reference1.md) |  | [optional] 
+**Sources** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
+**Entitlements** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
+**AccessProfiles** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
+**Roles** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
+**Apps** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
+**GovernanceGroups** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
 **FallbackApprover** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSources
 
-`func (o *Owns) GetSources() []Reference1`
+`func (o *Owns) GetSources() []Reference`
 
 GetSources returns the Sources field if non-nil, zero value otherwise.
 
 ### GetSourcesOk
 
-`func (o *Owns) GetSourcesOk() (*[]Reference1, bool)`
+`func (o *Owns) GetSourcesOk() (*[]Reference, bool)`
 
 GetSourcesOk returns a tuple with the Sources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSources
 
-`func (o *Owns) SetSources(v []Reference1)`
+`func (o *Owns) SetSources(v []Reference)`
 
 SetSources sets Sources field to given value.
 
@@ -58,20 +58,20 @@ HasSources returns a boolean if a field has been set.
 
 ### GetEntitlements
 
-`func (o *Owns) GetEntitlements() []Reference1`
+`func (o *Owns) GetEntitlements() []Reference`
 
 GetEntitlements returns the Entitlements field if non-nil, zero value otherwise.
 
 ### GetEntitlementsOk
 
-`func (o *Owns) GetEntitlementsOk() (*[]Reference1, bool)`
+`func (o *Owns) GetEntitlementsOk() (*[]Reference, bool)`
 
 GetEntitlementsOk returns a tuple with the Entitlements field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEntitlements
 
-`func (o *Owns) SetEntitlements(v []Reference1)`
+`func (o *Owns) SetEntitlements(v []Reference)`
 
 SetEntitlements sets Entitlements field to given value.
 
@@ -83,20 +83,20 @@ HasEntitlements returns a boolean if a field has been set.
 
 ### GetAccessProfiles
 
-`func (o *Owns) GetAccessProfiles() []Reference1`
+`func (o *Owns) GetAccessProfiles() []Reference`
 
 GetAccessProfiles returns the AccessProfiles field if non-nil, zero value otherwise.
 
 ### GetAccessProfilesOk
 
-`func (o *Owns) GetAccessProfilesOk() (*[]Reference1, bool)`
+`func (o *Owns) GetAccessProfilesOk() (*[]Reference, bool)`
 
 GetAccessProfilesOk returns a tuple with the AccessProfiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessProfiles
 
-`func (o *Owns) SetAccessProfiles(v []Reference1)`
+`func (o *Owns) SetAccessProfiles(v []Reference)`
 
 SetAccessProfiles sets AccessProfiles field to given value.
 
@@ -108,20 +108,20 @@ HasAccessProfiles returns a boolean if a field has been set.
 
 ### GetRoles
 
-`func (o *Owns) GetRoles() []Reference1`
+`func (o *Owns) GetRoles() []Reference`
 
 GetRoles returns the Roles field if non-nil, zero value otherwise.
 
 ### GetRolesOk
 
-`func (o *Owns) GetRolesOk() (*[]Reference1, bool)`
+`func (o *Owns) GetRolesOk() (*[]Reference, bool)`
 
 GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoles
 
-`func (o *Owns) SetRoles(v []Reference1)`
+`func (o *Owns) SetRoles(v []Reference)`
 
 SetRoles sets Roles field to given value.
 
@@ -133,20 +133,20 @@ HasRoles returns a boolean if a field has been set.
 
 ### GetApps
 
-`func (o *Owns) GetApps() []Reference1`
+`func (o *Owns) GetApps() []Reference`
 
 GetApps returns the Apps field if non-nil, zero value otherwise.
 
 ### GetAppsOk
 
-`func (o *Owns) GetAppsOk() (*[]Reference1, bool)`
+`func (o *Owns) GetAppsOk() (*[]Reference, bool)`
 
 GetAppsOk returns a tuple with the Apps field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApps
 
-`func (o *Owns) SetApps(v []Reference1)`
+`func (o *Owns) SetApps(v []Reference)`
 
 SetApps sets Apps field to given value.
 
@@ -158,20 +158,20 @@ HasApps returns a boolean if a field has been set.
 
 ### GetGovernanceGroups
 
-`func (o *Owns) GetGovernanceGroups() []Reference1`
+`func (o *Owns) GetGovernanceGroups() []Reference`
 
 GetGovernanceGroups returns the GovernanceGroups field if non-nil, zero value otherwise.
 
 ### GetGovernanceGroupsOk
 
-`func (o *Owns) GetGovernanceGroupsOk() (*[]Reference1, bool)`
+`func (o *Owns) GetGovernanceGroupsOk() (*[]Reference, bool)`
 
 GetGovernanceGroupsOk returns a tuple with the GovernanceGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGovernanceGroups
 
-`func (o *Owns) SetGovernanceGroups(v []Reference1)`
+`func (o *Owns) SetGovernanceGroups(v []Reference)`
 
 SetGovernanceGroups sets GovernanceGroups field to given value.
 

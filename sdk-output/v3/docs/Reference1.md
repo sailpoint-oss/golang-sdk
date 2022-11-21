@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Id** | **string** | This ID specifies the name of the pre-existing transform which you want to use within your current transform | 
+**RequiresPeriodicRefresh** | Pointer to **bool** | A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process | [optional] [default to false]
+**Input** | Pointer to [**Input**](Input.md) |  | [optional] 
 
 ## Methods
 
 ### NewReference1
 
-`func NewReference1() *Reference1`
+`func NewReference1(id string, ) *Reference1`
 
 NewReference1 instantiates a new Reference1 object
 This constructor will assign default values to properties that have it defined,
@@ -45,36 +46,56 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
 
-`func (o *Reference1) HasId() bool`
+### GetRequiresPeriodicRefresh
 
-HasId returns a boolean if a field has been set.
+`func (o *Reference1) GetRequiresPeriodicRefresh() bool`
 
-### GetName
+GetRequiresPeriodicRefresh returns the RequiresPeriodicRefresh field if non-nil, zero value otherwise.
 
-`func (o *Reference1) GetName() string`
+### GetRequiresPeriodicRefreshOk
 
-GetName returns the Name field if non-nil, zero value otherwise.
+`func (o *Reference1) GetRequiresPeriodicRefreshOk() (*bool, bool)`
 
-### GetNameOk
-
-`func (o *Reference1) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+GetRequiresPeriodicRefreshOk returns a tuple with the RequiresPeriodicRefresh field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetName
+### SetRequiresPeriodicRefresh
 
-`func (o *Reference1) SetName(v string)`
+`func (o *Reference1) SetRequiresPeriodicRefresh(v bool)`
 
-SetName sets Name field to given value.
+SetRequiresPeriodicRefresh sets RequiresPeriodicRefresh field to given value.
 
-### HasName
+### HasRequiresPeriodicRefresh
 
-`func (o *Reference1) HasName() bool`
+`func (o *Reference1) HasRequiresPeriodicRefresh() bool`
 
-HasName returns a boolean if a field has been set.
+HasRequiresPeriodicRefresh returns a boolean if a field has been set.
+
+### GetInput
+
+`func (o *Reference1) GetInput() Input`
+
+GetInput returns the Input field if non-nil, zero value otherwise.
+
+### GetInputOk
+
+`func (o *Reference1) GetInputOk() (*Input, bool)`
+
+GetInputOk returns a tuple with the Input field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInput
+
+`func (o *Reference1) SetInput(v Input)`
+
+SetInput sets Input field to given value.
+
+### HasInput
+
+`func (o *Reference1) HasInput() bool`
+
+HasInput returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | The attribute key | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the attribute | [optional] 
-**Value** | Pointer to **string** | The attribute value | [optional] 
+**Name** | **string** | The system (camel-cased) name of the identity attribute to bring in | 
+**RequiresPeriodicRefresh** | Pointer to **bool** | A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process | [optional] [default to false]
+**Input** | Pointer to [**Input**](Input.md) |  | [optional] 
 
 ## Methods
 
 ### NewIdentityAttribute1
 
-`func NewIdentityAttribute1() *IdentityAttribute1`
+`func NewIdentityAttribute1(name string, ) *IdentityAttribute1`
 
 NewIdentityAttribute1 instantiates a new IdentityAttribute1 object
 This constructor will assign default values to properties that have it defined,
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewIdentityAttribute1WithDefaults instantiates a new IdentityAttribute1 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetKey
-
-`func (o *IdentityAttribute1) GetKey() string`
-
-GetKey returns the Key field if non-nil, zero value otherwise.
-
-### GetKeyOk
-
-`func (o *IdentityAttribute1) GetKeyOk() (*string, bool)`
-
-GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKey
-
-`func (o *IdentityAttribute1) SetKey(v string)`
-
-SetKey sets Key field to given value.
-
-### HasKey
-
-`func (o *IdentityAttribute1) HasKey() bool`
-
-HasKey returns a boolean if a field has been set.
 
 ### GetName
 
@@ -71,36 +46,56 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
 
-`func (o *IdentityAttribute1) HasName() bool`
+### GetRequiresPeriodicRefresh
 
-HasName returns a boolean if a field has been set.
+`func (o *IdentityAttribute1) GetRequiresPeriodicRefresh() bool`
 
-### GetValue
+GetRequiresPeriodicRefresh returns the RequiresPeriodicRefresh field if non-nil, zero value otherwise.
 
-`func (o *IdentityAttribute1) GetValue() string`
+### GetRequiresPeriodicRefreshOk
 
-GetValue returns the Value field if non-nil, zero value otherwise.
+`func (o *IdentityAttribute1) GetRequiresPeriodicRefreshOk() (*bool, bool)`
 
-### GetValueOk
-
-`func (o *IdentityAttribute1) GetValueOk() (*string, bool)`
-
-GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
+GetRequiresPeriodicRefreshOk returns a tuple with the RequiresPeriodicRefresh field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetValue
+### SetRequiresPeriodicRefresh
 
-`func (o *IdentityAttribute1) SetValue(v string)`
+`func (o *IdentityAttribute1) SetRequiresPeriodicRefresh(v bool)`
 
-SetValue sets Value field to given value.
+SetRequiresPeriodicRefresh sets RequiresPeriodicRefresh field to given value.
 
-### HasValue
+### HasRequiresPeriodicRefresh
 
-`func (o *IdentityAttribute1) HasValue() bool`
+`func (o *IdentityAttribute1) HasRequiresPeriodicRefresh() bool`
 
-HasValue returns a boolean if a field has been set.
+HasRequiresPeriodicRefresh returns a boolean if a field has been set.
+
+### GetInput
+
+`func (o *IdentityAttribute1) GetInput() Input`
+
+GetInput returns the Input field if non-nil, zero value otherwise.
+
+### GetInputOk
+
+`func (o *IdentityAttribute1) GetInputOk() (*Input, bool)`
+
+GetInputOk returns a tuple with the Input field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInput
+
+`func (o *IdentityAttribute1) SetInput(v Input)`
+
+SetInput sets Input field to given value.
+
+### HasInput
+
+`func (o *IdentityAttribute1) HasInput() bool`
+
+HasInput returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
