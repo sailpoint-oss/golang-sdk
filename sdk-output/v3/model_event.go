@@ -19,7 +19,7 @@ import (
 type Event struct {
 	Id string `json:"id"`
 	Name string `json:"name"`
-	DocumentType DocumentType `json:"_type"`
+	DocumentDocumentDocumentType DocumentType `json:"_type"`
 	// A date-time in ISO-8601 format
 	Created NullableTime `json:"created,omitempty"`
 	// A date-time in ISO-8601 format

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **End** | Pointer to **int32** | The index of the first character to exclude from the returned substring.  If end is -1 or not provided at all, the substring transform will return everything up to the end of the input string.  | [optional] 
 **EndOffset** | Pointer to **int32** | This integer value is the number of characters to add to the end attribute when returning a substring.   This attribute is only used if end is provided and is not -1.  | [optional] 
 **RequiresPeriodicRefresh** | Pointer to **bool** | A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process | [optional] [default to false]
-**Input** | Pointer to **map[string]interface{}** | This is an optional attribute that can explicitly define the input data which will be fed into the transform logic. If input is not provided, the transform will take its input from the source and attribute combination configured via the UI. | [optional] 
+**Input** | Pointer to [**Input**](Input.md) |  | [optional] 
 
 ## Methods
 
@@ -152,20 +152,20 @@ HasRequiresPeriodicRefresh returns a boolean if a field has been set.
 
 ### GetInput
 
-`func (o *Substring) GetInput() map[string]interface{}`
+`func (o *Substring) GetInput() Input`
 
 GetInput returns the Input field if non-nil, zero value otherwise.
 
 ### GetInputOk
 
-`func (o *Substring) GetInputOk() (*map[string]interface{}, bool)`
+`func (o *Substring) GetInputOk() (*Input, bool)`
 
 GetInputOk returns a tuple with the Input field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInput
 
-`func (o *Substring) SetInput(v map[string]interface{})`
+`func (o *Substring) SetInput(v Input)`
 
 SetInput sets Input field to given value.
 

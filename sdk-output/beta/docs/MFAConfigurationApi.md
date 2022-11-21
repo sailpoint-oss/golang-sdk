@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-    method := "okta-verify" // string | The name of the MFA method. </br> The currently supported method name is okta-verify.
+    method := "okta-verify" // string | The name of the MFA method. The currently supported method name is okta-verify.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -51,7 +51,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**method** | **string** | The name of the MFA method. &lt;/br&gt; The currently supported method name is okta-verify. | 
+**method** | **string** | The name of the MFA method. The currently supported method name is okta-verify. | 
 
 ### Other Parameters
 
@@ -101,7 +101,7 @@ import (
 )
 
 func main() {
-    method := "okta-verify" // string | The name of the MFA method. </br> The currently supported method name is okta-verify.
+    method := "okta-verify" // string | The name of the MFA method. The currently supported method name is okta-verify.
     mfaConfig := *openapiclient.NewMfaConfig() // MfaConfig | 
 
     configuration := openapiclient.NewConfiguration()
@@ -122,7 +122,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**method** | **string** | The name of the MFA method. &lt;/br&gt; The currently supported method name is okta-verify. | 
+**method** | **string** | The name of the MFA method. The currently supported method name is okta-verify. | 
 
 ### Other Parameters
 
@@ -173,7 +173,7 @@ import (
 )
 
 func main() {
-    method := "okta-verify" // string | The name of the MFA method. </br> The currently supported method name is okta-verify.
+    method := "okta-verify" // string | The name of the MFA method. The currently supported method name is okta-verify.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -193,7 +193,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**method** | **string** | The name of the MFA method. &lt;/br&gt; The currently supported method name is okta-verify. | 
+**method** | **string** | The name of the MFA method. The currently supported method name is okta-verify. | 
 
 ### Other Parameters
 

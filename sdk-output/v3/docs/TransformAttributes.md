@@ -9,10 +9,10 @@ Name | Type | Description | Notes
 **AccountSortAttribute** | Pointer to **string** | The value of this configuration is a string name of the attribute to use when determining the ordering of returned accounts when there are multiple entries | [optional] 
 **AccountSortDescending** | Pointer to **bool** | The value of this configuration is a boolean (true/false). Controls the order of the sort when there are multiple accounts. If not defined, the transform will default to false (ascending order) | [optional] 
 **AccountReturnFirstLink** | Pointer to **bool** | The value of this configuration is a boolean (true/false). Controls which account to source a value from for an attribute.  If this flag is set to true, the transform returns the value from the first account in the list, even if it is null. If it is set to false, the transform returns the first non-null value. If not defined, the transform will default to false | [optional] 
-**AccountFilter** | Pointer to **string** | This expression queries the database to narrow search results. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the database.  The default filter will always include the source and identity, and any subsequent expressions will be combined in an AND operation to the existing search criteria.  Only certain searchable attributes are available: &lt;/br&gt; - &#x60;nativeIdentity&#x60; - the Account ID &lt;/br&gt; - &#x60;displayName&#x60; - the Account Name &lt;/br&gt; - &#x60;entitlements&#x60; - a boolean value to determine if the account has entitlements | [optional] 
+**AccountFilter** | Pointer to **string** | This expression queries the database to narrow search results. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the database.  The default filter will always include the source and identity, and any subsequent expressions will be combined in an AND operation to the existing search criteria. Only certain searchable attributes are available:  - &#x60;nativeIdentity&#x60; - the Account ID  - &#x60;displayName&#x60; - the Account Name  - &#x60;entitlements&#x60; - a boolean value to determine if the account has entitlements | [optional] 
 **AccountPropertyFilter** | Pointer to **string** | This expression is used to search and filter accounts in memory. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the returned resultset.  All account attributes are available for filtering as this operation is performed in memory. | [optional] 
 **RequiresPeriodicRefresh** | Pointer to **bool** | A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process | [optional] [default to false]
-**Input** | Pointer to **map[string]interface{}** | This is an optional attribute that can explicitly define the input data which will be fed into the transform logic. If input is not provided, the transform will take its input from the source and attribute combination configured via the UI. | [optional] 
+**Input** | Pointer to [**Input**](Input.md) |  | [optional] 
 **Values** | **string** | This must evaluate to a JSON string, either through a fixed value or through conditional logic using the Apache Velocity Template Language. | 
 **Expression** | **string** | A string value of the date and time components to operation on, along with the math operations to execute.  | 
 **PositiveCondition** | **string** | The output of the transform if the expression evalutes to true | 
@@ -257,20 +257,20 @@ HasRequiresPeriodicRefresh returns a boolean if a field has been set.
 
 ### GetInput
 
-`func (o *TransformAttributes) GetInput() map[string]interface{}`
+`func (o *TransformAttributes) GetInput() Input`
 
 GetInput returns the Input field if non-nil, zero value otherwise.
 
 ### GetInputOk
 
-`func (o *TransformAttributes) GetInputOk() (*map[string]interface{}, bool)`
+`func (o *TransformAttributes) GetInputOk() (*Input, bool)`
 
 GetInputOk returns a tuple with the Input field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInput
 
-`func (o *TransformAttributes) SetInput(v map[string]interface{})`
+`func (o *TransformAttributes) SetInput(v Input)`
 
 SetInput sets Input field to given value.
 

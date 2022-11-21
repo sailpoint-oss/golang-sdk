@@ -19,7 +19,7 @@ type AccessCriteria struct {
 	// Business name for the access construct list
 	Name *string `json:"name,omitempty"`
 	// List of criteria.  There is a min of 1 and max of 50 items in the list.
-	CriteriaList []BaseReferenceDto `json:"criteriaList,omitempty"`
+	CriteriaList []AccessCriteriaCriteriaListInner `json:"criteriaList,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,9 +75,9 @@ func (o *AccessCriteria) SetName(v string) {
 }
 
 // GetCriteriaList returns the CriteriaList field value if set, zero value otherwise.
-func (o *AccessCriteria) GetCriteriaList() []BaseReferenceDto {
+func (o *AccessCriteria) GetCriteriaList() []AccessCriteriaCriteriaListInner {
 	if o == nil || isNil(o.CriteriaList) {
-		var ret []BaseReferenceDto
+		var ret []AccessCriteriaCriteriaListInner
 		return ret
 	}
 	return o.CriteriaList
@@ -85,7 +85,7 @@ func (o *AccessCriteria) GetCriteriaList() []BaseReferenceDto {
 
 // GetCriteriaListOk returns a tuple with the CriteriaList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessCriteria) GetCriteriaListOk() ([]BaseReferenceDto, bool) {
+func (o *AccessCriteria) GetCriteriaListOk() ([]AccessCriteriaCriteriaListInner, bool) {
 	if o == nil || isNil(o.CriteriaList) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *AccessCriteria) HasCriteriaList() bool {
 	return false
 }
 
-// SetCriteriaList gets a reference to the given []BaseReferenceDto and assigns it to the CriteriaList field.
-func (o *AccessCriteria) SetCriteriaList(v []BaseReferenceDto) {
+// SetCriteriaList gets a reference to the given []AccessCriteriaCriteriaListInner and assigns it to the CriteriaList field.
+func (o *AccessCriteria) SetCriteriaList(v []AccessCriteriaCriteriaListInner) {
 	o.CriteriaList = v
 }
 

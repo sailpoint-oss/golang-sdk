@@ -47,8 +47,6 @@ func NewClientLogConfiguration(durationMinutes int32, rootLevel StandardLevel) *
 // but it doesn't guarantee that properties required by API are set
 func NewClientLogConfigurationWithDefaults() *ClientLogConfiguration {
 	this := ClientLogConfiguration{}
-	var durationMinutes int32 = 240
-	this.DurationMinutes = durationMinutes
 	return &this
 }
 

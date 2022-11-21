@@ -1027,13 +1027,13 @@ func (r ApiNonEmployeeApprovalListRequest) Count(count bool) ApiNonEmployeeAppro
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)&lt;br/&gt;&lt;br/&gt; Filtering is supported for the following fields and operators:&lt;br/&gt;&lt;br/&gt; **approvalStatus**: *eq* &lt;br/&gt;&lt;br/&gt; *Example:* approvalStatus eq \&quot;PENDING\&quot;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **approvalStatus**: *eq*  *Example:* approvalStatus eq \&quot;PENDING\&quot;
 func (r ApiNonEmployeeApprovalListRequest) Filters(filters string) ApiNonEmployeeApprovalListRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)&lt;br/&gt;&lt;br/&gt; Sorting is supported for the following fields: **created, modified**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **created, modified**
 func (r ApiNonEmployeeApprovalListRequest) Sorters(sorters string) ApiNonEmployeeApprovalListRequest {
 	r.sorters = &sorters
 	return r
@@ -1218,7 +1218,7 @@ func (r ApiNonEmployeeApprovalSummaryRequest) Execute() (*NonEmployeeApprovalSum
 /*
 NonEmployeeApprovalSummary Get Summary of Non-Employee Approval Requests
 
-This request will retrieve a summary of non-employee approval requests.<br><br> There are two contextual uses for the `requested-for` path parameter:<br> 1. The current user is the Org Admin, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id.<br> 2. The current user is an approver, in which case "me" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
+This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter: 1. The current user is the Org Admin, in which case he or she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id. 2. The current user is an approver, in which case "me" should be provided as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param requestedFor The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
@@ -2509,13 +2509,13 @@ func (r ApiNonEmployeeRecordListRequest) Count(count bool) ApiNonEmployeeRecordL
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)&lt;br/&gt;&lt;br/&gt; Sorting is supported for the following fields: **id, accountName, sourceId, manager, firstName, lastName, email, phone, startDate, endDate, created, modified**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, accountName, sourceId, manager, firstName, lastName, email, phone, startDate, endDate, created, modified**
 func (r ApiNonEmployeeRecordListRequest) Sorters(sorters string) ApiNonEmployeeRecordListRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)&lt;br/&gt;&lt;br/&gt; Filtering is supported for the following fields and operators:&lt;br/&gt;&lt;br/&gt; **sourceId**: *eq* &lt;br/&gt;&lt;br/&gt; *Example:* sourceId eq \&quot;2c91808568c529c60168cca6f90c1313\&quot;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **sourceId**: *eq*  *Example:* sourceId eq \&quot;2c91808568c529c60168cca6f90c1313\&quot;
 func (r ApiNonEmployeeRecordListRequest) Filters(filters string) ApiNonEmployeeRecordListRequest {
 	r.filters = &filters
 	return r
@@ -4078,13 +4078,13 @@ func (r ApiNonEmployeeRequestListRequest) Count(count bool) ApiNonEmployeeReques
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)&lt;br/&gt;&lt;br/&gt; Sorting is supported for the following fields: **created, approvalStatus, firstName, lastName, email, phone, accountName, startDate, endDate**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **created, approvalStatus, firstName, lastName, email, phone, accountName, startDate, endDate**
 func (r ApiNonEmployeeRequestListRequest) Sorters(sorters string) ApiNonEmployeeRequestListRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)&lt;br/&gt;&lt;br/&gt; Filtering is supported for the following fields and operators:&lt;br/&gt;&lt;br/&gt; **sourceId**: *eq* &lt;br/&gt;&lt;br/&gt; *Example:* sourceId eq \&quot;2c91808568c529c60168cca6f90c1313\&quot;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **sourceId**: *eq*  *Example:* sourceId eq \&quot;2c91808568c529c60168cca6f90c1313\&quot;
 func (r ApiNonEmployeeRequestListRequest) Filters(filters string) ApiNonEmployeeRequestListRequest {
 	r.filters = &filters
 	return r
@@ -4270,7 +4270,7 @@ func (r ApiNonEmployeeRequestSummaryGetRequest) Execute() (*NonEmployeeRequestSu
 /*
 NonEmployeeRequestSummaryGet Get Summary of Non-Employee Requests
 
-This request will retrieve a summary of non-employee requests.<br><br> There are two contextual uses for the `requested-for` path parameter:<br> 1. The current user is the Org Admin, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id.<br> 2. The current user is an account manager, in which case "me" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
+This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter: 1. The current user is the Org Admin, in which case he or she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id. 2. The current user is an account manager, in which case "me" should be provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param requestedFor The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
@@ -4739,7 +4739,7 @@ func (r ApiNonEmployeeSourcePatchRequest) Execute() (*NonEmployeeSource, *http.R
 /*
 NonEmployeeSourcePatch Patch a Non-Employee Source
 
-patch a non-employee source. (Partial Update) <br/> Patchable field: **name, description, approvers, accountManagers**
+patch a non-employee source. (Partial Update)  Patchable field: **name, description, approvers, accountManagers**
 Request will require the following security scope:
 'idn:nesr:update'
 
@@ -5098,7 +5098,7 @@ func (r ApiNonEmployeeSourcesListRequest) Count(count bool) ApiNonEmployeeSource
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)&lt;br/&gt;&lt;br/&gt; Sorting is supported for the following fields: **name, created**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created**
 func (r ApiNonEmployeeSourcesListRequest) Sorters(sorters string) ApiNonEmployeeSourcesListRequest {
 	r.sorters = &sorters
 	return r

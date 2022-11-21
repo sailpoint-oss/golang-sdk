@@ -56,6 +56,7 @@ client.go
 configuration.go
 docs/AccessConstraint.md
 docs/AccessCriteria.md
+docs/AccessCriteriaCriteriaListInner.md
 docs/AccessItemAccessProfileResponse.md
 docs/AccessItemAccountResponse.md
 docs/AccessItemAppResponse.md
@@ -733,6 +734,7 @@ go.mod
 go.sum
 model_access_constraint.go
 model_access_criteria.go
+model_access_criteria_criteria_list_inner.go
 model_access_item_access_profile_response.go
 model_access_item_account_response.go
 model_access_item_app_response.go

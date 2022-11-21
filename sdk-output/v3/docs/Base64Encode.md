@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RequiresPeriodicRefresh** | Pointer to **bool** | A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process | [optional] [default to false]
-**Input** | Pointer to **map[string]interface{}** | This is an optional attribute that can explicitly define the input data which will be fed into the transform logic. If input is not provided, the transform will take its input from the source and attribute combination configured via the UI. | [optional] 
+**Input** | Pointer to [**Input**](Input.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasRequiresPeriodicRefresh returns a boolean if a field has been set.
 
 ### GetInput
 
-`func (o *Base64Encode) GetInput() map[string]interface{}`
+`func (o *Base64Encode) GetInput() Input`
 
 GetInput returns the Input field if non-nil, zero value otherwise.
 
 ### GetInputOk
 
-`func (o *Base64Encode) GetInputOk() (*map[string]interface{}, bool)`
+`func (o *Base64Encode) GetInputOk() (*Input, bool)`
 
 GetInputOk returns a tuple with the Input field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInput
 
-`func (o *Base64Encode) SetInput(v map[string]interface{})`
+`func (o *Base64Encode) SetInput(v Input)`
 
 SetInput sets Input field to given value.
 

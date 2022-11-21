@@ -208,6 +208,7 @@ docs/IdentitySummary.md
 docs/Index.md
 docs/IndexOf.md
 docs/InnerHit.md
+docs/Input.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
@@ -591,6 +592,7 @@ model_identity_summary.go
 model_index.go
 model_index_of.go
 model_inner_hit.go
+model_input.go
 model_iso3166.go
 model_json_patch.go
 model_json_patch_operation.go

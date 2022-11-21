@@ -456,6 +456,7 @@ Class | Method | HTTP request | Description
 
  - [AccessConstraint](docs/AccessConstraint.md)
  - [AccessCriteria](docs/AccessCriteria.md)
+ - [AccessCriteriaCriteriaListInner](docs/AccessCriteriaCriteriaListInner.md)
  - [AccessItemAccessProfileResponse](docs/AccessItemAccessProfileResponse.md)
  - [AccessItemAccountResponse](docs/AccessItemAccountResponse.md)
  - [AccessItemAppResponse](docs/AccessItemAppResponse.md)

@@ -22,8 +22,7 @@ type Replace struct {
 	Replacement string `json:"replacement"`
 	// A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process
 	RequiresPeriodicRefresh *bool `json:"requiresPeriodicRefresh,omitempty"`
-	// This is an optional attribute that can explicitly define the input data which will be fed into the transform logic. If input is not provided, the transform will take its input from the source and attribute combination configured via the UI.
-	Input map[string]interface{} `json:"input,omitempty"`
+	Input *Input `json:"input,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -133,19 +132,19 @@ func (o *Replace) SetRequiresPeriodicRefresh(v bool) {
 }
 
 // GetInput returns the Input field value if set, zero value otherwise.
-func (o *Replace) GetInput() map[string]interface{} {
+func (o *Replace) GetInput() Input {
 	if o == nil || isNil(o.Input) {
-		var ret map[string]interface{}
+		var ret Input
 		return ret
 	}
-	return o.Input
+	return *o.Input
 }
 
 // GetInputOk returns a tuple with the Input field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Replace) GetInputOk() (map[string]interface{}, bool) {
+func (o *Replace) GetInputOk() (*Input, bool) {
 	if o == nil || isNil(o.Input) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Input, true
 }
@@ -159,9 +158,9 @@ func (o *Replace) HasInput() bool {
 	return false
 }
 
-// SetInput gets a reference to the given map[string]interface{} and assigns it to the Input field.
-func (o *Replace) SetInput(v map[string]interface{}) {
-	o.Input = v
+// SetInput gets a reference to the given Input and assigns it to the Input field.
+func (o *Replace) SetInput(v Input) {
+	o.Input = &v
 }
 
 func (o Replace) MarshalJSON() ([]byte, error) {

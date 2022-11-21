@@ -26,14 +26,13 @@ type AccountAttribute struct {
 	AccountSortDescending *bool `json:"accountSortDescending,omitempty"`
 	// The value of this configuration is a boolean (true/false). Controls which account to source a value from for an attribute.  If this flag is set to true, the transform returns the value from the first account in the list, even if it is null. If it is set to false, the transform returns the first non-null value. If not defined, the transform will default to false
 	AccountReturnFirstLink *bool `json:"accountReturnFirstLink,omitempty"`
-	// This expression queries the database to narrow search results. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the database.  The default filter will always include the source and identity, and any subsequent expressions will be combined in an AND operation to the existing search criteria.  Only certain searchable attributes are available: </br> - `nativeIdentity` - the Account ID </br> - `displayName` - the Account Name </br> - `entitlements` - a boolean value to determine if the account has entitlements
+	// This expression queries the database to narrow search results. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the database.  The default filter will always include the source and identity, and any subsequent expressions will be combined in an AND operation to the existing search criteria. Only certain searchable attributes are available:  - `nativeIdentity` - the Account ID  - `displayName` - the Account Name  - `entitlements` - a boolean value to determine if the account has entitlements
 	AccountFilter *string `json:"accountFilter,omitempty"`
 	// This expression is used to search and filter accounts in memory. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the returned resultset.  All account attributes are available for filtering as this operation is performed in memory.
 	AccountPropertyFilter *string `json:"accountPropertyFilter,omitempty"`
 	// A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process
 	RequiresPeriodicRefresh *bool `json:"requiresPeriodicRefresh,omitempty"`
-	// This is an optional attribute that can explicitly define the input data which will be fed into the transform logic. If input is not provided, the transform will take its input from the source and attribute combination configured via the UI.
-	Input map[string]interface{} `json:"input,omitempty"`
+	Input *Input `json:"input,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -303,19 +302,19 @@ func (o *AccountAttribute) SetRequiresPeriodicRefresh(v bool) {
 }
 
 // GetInput returns the Input field value if set, zero value otherwise.
-func (o *AccountAttribute) GetInput() map[string]interface{} {
+func (o *AccountAttribute) GetInput() Input {
 	if o == nil || isNil(o.Input) {
-		var ret map[string]interface{}
+		var ret Input
 		return ret
 	}
-	return o.Input
+	return *o.Input
 }
 
 // GetInputOk returns a tuple with the Input field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountAttribute) GetInputOk() (map[string]interface{}, bool) {
+func (o *AccountAttribute) GetInputOk() (*Input, bool) {
 	if o == nil || isNil(o.Input) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Input, true
 }
@@ -329,9 +328,9 @@ func (o *AccountAttribute) HasInput() bool {
 	return false
 }
 
-// SetInput gets a reference to the given map[string]interface{} and assigns it to the Input field.
-func (o *AccountAttribute) SetInput(v map[string]interface{}) {
-	o.Input = v
+// SetInput gets a reference to the given Input and assigns it to the Input field.
+func (o *AccountAttribute) SetInput(v Input) {
+	o.Input = &v
 }
 
 func (o AccountAttribute) MarshalJSON() ([]byte, error) {

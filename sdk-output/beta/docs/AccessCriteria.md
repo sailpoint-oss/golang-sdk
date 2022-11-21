@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Business name for the access construct list | [optional] 
-**CriteriaList** | Pointer to [**[]BaseReferenceDto**](BaseReferenceDto.md) | List of criteria.  There is a min of 1 and max of 50 items in the list. | [optional] 
+**CriteriaList** | Pointer to [**[]AccessCriteriaCriteriaListInner**](AccessCriteriaCriteriaListInner.md) | List of criteria.  There is a min of 1 and max of 50 items in the list. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetCriteriaList
 
-`func (o *AccessCriteria) GetCriteriaList() []BaseReferenceDto`
+`func (o *AccessCriteria) GetCriteriaList() []AccessCriteriaCriteriaListInner`
 
 GetCriteriaList returns the CriteriaList field if non-nil, zero value otherwise.
 
 ### GetCriteriaListOk
 
-`func (o *AccessCriteria) GetCriteriaListOk() (*[]BaseReferenceDto, bool)`
+`func (o *AccessCriteria) GetCriteriaListOk() (*[]AccessCriteriaCriteriaListInner, bool)`
 
 GetCriteriaListOk returns a tuple with the CriteriaList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCriteriaList
 
-`func (o *AccessCriteria) SetCriteriaList(v []BaseReferenceDto)`
+`func (o *AccessCriteria) SetCriteriaList(v []AccessCriteriaCriteriaListInner)`
 
 SetCriteriaList sets CriteriaList field to given value.
 

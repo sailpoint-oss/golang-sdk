@@ -418,6 +418,7 @@ Class | Method | HTTP request | Description
  - [Index](docs/Index.md)
  - [IndexOf](docs/IndexOf.md)
  - [InnerHit](docs/InnerHit.md)
+ - [Input](docs/Input.md)
  - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
