@@ -18,12 +18,20 @@ import (
 // TransformAttributes - Meta-data about the transform. Values in this list are specific to the type of transform to be executed.
 type TransformAttributes struct {
 	AccountAttribute *AccountAttribute
+	Base64Decode *Base64Decode
 }
 
 // AccountAttributeAsTransformAttributes is a convenience function that returns AccountAttribute wrapped in TransformAttributes
 func AccountAttributeAsTransformAttributes(v *AccountAttribute) TransformAttributes {
 	return TransformAttributes{
 		AccountAttribute: v,
+	}
+}
+
+// Base64DecodeAsTransformAttributes is a convenience function that returns Base64Decode wrapped in TransformAttributes
+func Base64DecodeAsTransformAttributes(v *Base64Decode) TransformAttributes {
+	return TransformAttributes{
+		Base64Decode: v,
 	}
 }
 
@@ -45,9 +53,23 @@ func (dst *TransformAttributes) UnmarshalJSON(data []byte) error {
 		dst.AccountAttribute = nil
 	}
 
+	// try to unmarshal data into Base64Decode
+	err = newStrictDecoder(data).Decode(&dst.Base64Decode)
+	if err == nil {
+		jsonBase64Decode, _ := json.Marshal(dst.Base64Decode)
+		if string(jsonBase64Decode) == "{}" { // empty struct
+			dst.Base64Decode = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.Base64Decode = nil
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.AccountAttribute = nil
+		dst.Base64Decode = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(TransformAttributes)")
 	} else if match == 1 {
@@ -63,6 +85,10 @@ func (src TransformAttributes) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AccountAttribute)
 	}
 
+	if src.Base64Decode != nil {
+		return json.Marshal(&src.Base64Decode)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -73,6 +99,10 @@ func (obj *TransformAttributes) GetActualInstance() (interface{}) {
 	}
 	if obj.AccountAttribute != nil {
 		return obj.AccountAttribute
+	}
+
+	if obj.Base64Decode != nil {
+		return obj.Base64Decode
 	}
 
 	// all schemas are nil

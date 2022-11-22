@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Unique ID of this transform | [optional] [readonly] 
 **Name** | **string** | Unique name of this transform | 
 **Type** | **string** | The type of transform operation | 
-**Attributes** | [**TransformAttributes**](TransformAttributes.md) |  | 
+**Attributes** | Pointer to [**TransformAttributes**](TransformAttributes.md) |  | [optional] 
 **Internal** | Pointer to **bool** | Indicates whether this is an internal SailPoint-created transform or a customer-created transform | [optional] [readonly] 
 
 ## Methods
 
 ### NewTransform
 
-`func NewTransform(name string, type_ string, attributes TransformAttributes, ) *Transform`
+`func NewTransform(name string, type_ string, ) *Transform`
 
 NewTransform instantiates a new Transform object
 This constructor will assign default values to properties that have it defined,
@@ -113,6 +113,11 @@ and a boolean to check if the value has been set.
 
 SetAttributes sets Attributes field to given value.
 
+### HasAttributes
+
+`func (o *Transform) HasAttributes() bool`
+
+HasAttributes returns a boolean if a field has been set.
 
 ### GetInternal
 

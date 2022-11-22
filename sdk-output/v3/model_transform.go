@@ -22,7 +22,7 @@ type Transform struct {
 	Name string `json:"name"`
 	// The type of transform operation
 	Type string `json:"type"`
-	Attributes TransformAttributes `json:"attributes"`
+	Attributes *TransformAttributes `json:"attributes,omitempty"`
 	// Indicates whether this is an internal SailPoint-created transform or a customer-created transform
 	Internal *bool `json:"internal,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -34,11 +34,10 @@ type _Transform Transform
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransform(name string, type_ string, attributes TransformAttributes) *Transform {
+func NewTransform(name string, type_ string) *Transform {
 	this := Transform{}
 	this.Name = name
 	this.Type = type_
-	this.Attributes = attributes
 	return &this
 }
 
@@ -130,28 +129,36 @@ func (o *Transform) SetType(v string) {
 	o.Type = v
 }
 
-// GetAttributes returns the Attributes field value
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
 func (o *Transform) GetAttributes() TransformAttributes {
-	if o == nil {
+	if o == nil || isNil(o.Attributes) {
 		var ret TransformAttributes
 		return ret
 	}
-
-	return o.Attributes
+	return *o.Attributes
 }
 
-// GetAttributesOk returns a tuple with the Attributes field value
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Transform) GetAttributesOk() (*TransformAttributes, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Attributes) {
 		return nil, false
 	}
-	return &o.Attributes, true
+	return o.Attributes, true
 }
 
-// SetAttributes sets field value
+// HasAttributes returns a boolean if a field has been set.
+func (o *Transform) HasAttributes() bool {
+	if o != nil && !isNil(o.Attributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given TransformAttributes and assigns it to the Attributes field.
 func (o *Transform) SetAttributes(v TransformAttributes) {
-	o.Attributes = v
+	o.Attributes = &v
 }
 
 // GetInternal returns the Internal field value if set, zero value otherwise.
@@ -197,7 +204,7 @@ func (o Transform) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["type"] = o.Type
 	}
-	if true {
+	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
 	if !isNil(o.Internal) {

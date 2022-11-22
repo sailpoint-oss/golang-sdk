@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **AccountFilter** | Pointer to **string** | This expression queries the database to narrow search results. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the database.  The default filter will always include the source and identity, and any subsequent expressions will be combined in an AND operation to the existing search criteria. Only certain searchable attributes are available:  - &#x60;nativeIdentity&#x60; - the Account ID  - &#x60;displayName&#x60; - the Account Name  - &#x60;entitlements&#x60; - a boolean value to determine if the account has entitlements | [optional] 
 **AccountPropertyFilter** | Pointer to **string** | This expression is used to search and filter accounts in memory. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the returned resultset.  All account attributes are available for filtering as this operation is performed in memory. | [optional] 
 **RequiresPeriodicRefresh** | Pointer to **bool** | A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process | [optional] [default to false]
-**Input** | Pointer to [**Input**](Input.md) |  | [optional] 
+**Input** | Pointer to **map[string]interface{}** | This is an optional attribute that can explicitly define the input data which will be fed into the transform logic. If input is not provided, the transform will take its input from the source and attribute combination configured via the UI. | [optional] 
 
 ## Methods
 
@@ -225,20 +225,20 @@ HasRequiresPeriodicRefresh returns a boolean if a field has been set.
 
 ### GetInput
 
-`func (o *TransformAttributes) GetInput() Input`
+`func (o *TransformAttributes) GetInput() map[string]interface{}`
 
 GetInput returns the Input field if non-nil, zero value otherwise.
 
 ### GetInputOk
 
-`func (o *TransformAttributes) GetInputOk() (*Input, bool)`
+`func (o *TransformAttributes) GetInputOk() (*map[string]interface{}, bool)`
 
 GetInputOk returns a tuple with the Input field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInput
 
-`func (o *TransformAttributes) SetInput(v Input)`
+`func (o *TransformAttributes) SetInput(v map[string]interface{})`
 
 SetInput sets Input field to given value.
 

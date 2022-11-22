@@ -18,7 +18,8 @@ import (
 type Base64Decode struct {
 	// A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process
 	RequiresPeriodicRefresh *bool `json:"requiresPeriodicRefresh,omitempty"`
-	Input *Input `json:"input,omitempty"`
+	// This is an optional attribute that can explicitly define the input data which will be fed into the transform logic. If input is not provided, the transform will take its input from the source and attribute combination configured via the UI.
+	Input map[string]interface{} `json:"input,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,19 +79,19 @@ func (o *Base64Decode) SetRequiresPeriodicRefresh(v bool) {
 }
 
 // GetInput returns the Input field value if set, zero value otherwise.
-func (o *Base64Decode) GetInput() Input {
+func (o *Base64Decode) GetInput() map[string]interface{} {
 	if o == nil || isNil(o.Input) {
-		var ret Input
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Input
+	return o.Input
 }
 
 // GetInputOk returns a tuple with the Input field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Base64Decode) GetInputOk() (*Input, bool) {
+func (o *Base64Decode) GetInputOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Input) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Input, true
 }
@@ -104,9 +105,9 @@ func (o *Base64Decode) HasInput() bool {
 	return false
 }
 
-// SetInput gets a reference to the given Input and assigns it to the Input field.
-func (o *Base64Decode) SetInput(v Input) {
-	o.Input = &v
+// SetInput gets a reference to the given map[string]interface{} and assigns it to the Input field.
+func (o *Base64Decode) SetInput(v map[string]interface{}) {
+	o.Input = v
 }
 
 func (o Base64Decode) MarshalJSON() ([]byte, error) {
