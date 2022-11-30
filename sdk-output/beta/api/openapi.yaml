@@ -10540,14 +10540,13 @@ paths:
       - Entitlements
   /entitlements/bulk-update:
     post:
-      description: |-
-        This API applies an update to every entitlement of the list.
-
-        The number of entitlements to update is limited to 50 items maximum.
-
-        The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.<br/> allowed operations :<br/> **{ "op": "replace", "path": "/privileged", "value": boolean }** <br/> **{ "op": "replace", "path": "/requestable","value": boolean }** <br/>
-
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: "This API applies an update to every entitlement of the list.\n\
+        \nThe number of entitlements to update is limited to 50 items maximum.\n\n\
+        The JsonPatch update follows the [JSON Patch](https://tools.ietf.org/html/rfc6902)\
+        \ standard. allowed operations : **{ \"op\": \"replace\", \"path\": \"/privileged\"\
+        , \"value\": boolean }**  **{ \"op\": \"replace\", \"path\": \"/requestable\"\
+        ,\"value\": boolean }** \n\nA token with ORG_ADMIN or API authority is required\
+        \ to call this API."
       operationId: entitlementsBulkUpdate
       requestBody:
         content:
@@ -14052,7 +14051,7 @@ paths:
           default: false
           type: boolean
       - description: "Sort results using the standard syntax described in [V3 API\
-          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)<br/><br/>\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)\
           \ Sorting is supported for the following fields: **id, accountName, sourceId,\
           \ manager, firstName, lastName, email, phone, startDate, endDate, created,\
           \ modified**"
@@ -14064,9 +14063,9 @@ paths:
           format: comma-separated
           type: string
       - description: "Filter results using the standard syntax described in [V3 API\
-          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)<br/><br/>\
-          \ Filtering is supported for the following fields and operators:<br/><br/>\
-          \ **sourceId**: *eq* <br/><br/> *Example:* sourceId eq \"2c91808568c529c60168cca6f90c1313\""
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\
+          \ Filtering is supported for the following fields and operators: **sourceId**:\
+          \ *eq*  *Example:* sourceId eq \"2c91808568c529c60168cca6f90c1313\""
         example: sourceId eq "2c91808568c529c60168cca6f90c1313"
         in: query
         name: filters
@@ -14741,7 +14740,7 @@ paths:
         schema:
           type: string
       - description: "Sort results using the standard syntax described in [V3 API\
-          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)<br/><br/>\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)\
           \ Sorting is supported for the following fields: **created, approvalStatus,\
           \ firstName, lastName, email, phone, accountName, startDate, endDate**"
         example: "approvalStatus,firstName"
@@ -14752,9 +14751,9 @@ paths:
           format: comma-separated
           type: string
       - description: "Filter results using the standard syntax described in [V3 API\
-          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)<br/><br/>\
-          \ Filtering is supported for the following fields and operators:<br/><br/>\
-          \ **sourceId**: *eq* <br/><br/> *Example:* sourceId eq \"2c91808568c529c60168cca6f90c1313\""
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\
+          \ Filtering is supported for the following fields and operators: **sourceId**:\
+          \ *eq*  *Example:* sourceId eq \"2c91808568c529c60168cca6f90c1313\""
         example: sourceId eq "2c91808568c529c60168cca6f90c1313"
         in: query
         name: filters
@@ -15129,12 +15128,12 @@ paths:
       - Non-Employee Lifecycle Management
   /non-employee-requests/summary/{requested-for}:
     get:
-      description: "This request will retrieve a summary of non-employee requests.<br><br>\
-        \ There are two contextual uses for the `requested-for` path parameter:<br>\
-        \ 1. The current user is the Org Admin, in which case he or she may request\
-        \ a summary of all non-employee approval requests assigned to a particular\
-        \ account manager by passing in that manager's id.<br> 2. The current user\
-        \ is an account manager, in which case \"me\" should be provided as the `requested-for`\
+      description: "This request will retrieve a summary of non-employee requests.\
+        \ There are two contextual uses for the `requested-for` path parameter: 1.\
+        \ The current user is the Org Admin, in which case he or she may request a\
+        \ summary of all non-employee approval requests assigned to a particular account\
+        \ manager by passing in that manager's id. 2. The current user is an account\
+        \ manager, in which case \"me\" should be provided as the `requested-for`\
         \ value. This will provide the user with a summary of the non-employee requests\
         \ in the source(s) he or she manages."
       operationId: nonEmployeeRequestSummaryGet
@@ -15278,7 +15277,7 @@ paths:
         schema:
           type: boolean
       - description: "Sort results using the standard syntax described in [V3 API\
-          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)<br/><br/>\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)\
           \ Sorting is supported for the following fields: **name, created**"
         example: "name,created"
         in: query
@@ -15602,7 +15601,7 @@ paths:
       - Non-Employee Lifecycle Management
     patch:
       description: |-
-        patch a non-employee source. (Partial Update) <br/> Patchable field: **name, description, approvers, accountManagers**
+        patch a non-employee source. (Partial Update)  Patchable field: **name, description, approvers, accountManagers**
         Request will require the following security scope:
         'idn:nesr:update'
       operationId: nonEmployeeSourcePatch
@@ -16163,16 +16162,16 @@ paths:
           default: false
           type: boolean
       - description: "Filter results using the standard syntax described in [V3 API\
-          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)<br/><br/>\
-          \ Filtering is supported for the following fields and operators:<br/><br/>\
-          \ **approvalStatus**: *eq* <br/><br/> *Example:* approvalStatus eq \"PENDING\""
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\
+          \ Filtering is supported for the following fields and operators: **approvalStatus**:\
+          \ *eq*  *Example:* approvalStatus eq \"PENDING\""
         example: filters=approvalStatus eq 'PENDING'
         in: query
         name: filters
         schema:
           type: string
       - description: "Sort results using the standard syntax described in [V3 API\
-          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)<br/><br/>\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)\
           \ Sorting is supported for the following fields: **created, modified**"
         example: sorters=-created
         in: query
@@ -16517,13 +16516,13 @@ paths:
   /non-employee-approvals/summary/{requested-for}:
     get:
       description: "This request will retrieve a summary of non-employee approval\
-        \ requests.<br><br> There are two contextual uses for the `requested-for`\
-        \ path parameter:<br> 1. The current user is the Org Admin, in which case\
-        \ he or she may request a summary of all non-employee approval requests assigned\
-        \ to a particular approver by passing in that approver's id.<br> 2. The current\
-        \ user is an approver, in which case \"me\" should be provided as the `requested-for`\
-        \ value. This will provide the approver with a summary of the approval items\
-        \ assigned to him or her."
+        \ requests. There are two contextual uses for the `requested-for` path parameter:\
+        \ 1. The current user is the Org Admin, in which case he or she may request\
+        \ a summary of all non-employee approval requests assigned to a particular\
+        \ approver by passing in that approver's id. 2. The current user is an approver,\
+        \ in which case \"me\" should be provided as the `requested-for` value. This\
+        \ will provide the approver with a summary of the approval items assigned\
+        \ to him or her."
       operationId: nonEmployeeApprovalSummary
       parameters:
       - description: The identity (UUID) of the approver for whom for whom the summary
@@ -17737,12 +17736,12 @@ paths:
       - Managed Clusters
   /mfa/{method}/config:
     get:
-      description: This API returns the configuration of a given MFA method. </br>
-        A token with ORG_ADMIN authority is required to call this API.
+      description: This API returns the configuration of a given MFA method. A token
+        with ORG_ADMIN authority is required to call this API.
       operationId: getMFAConfig
       parameters:
-      - description: The name of the MFA method. </br> The currently supported method
-          name is okta-verify.
+      - description: The name of the MFA method. The currently supported method name
+          is okta-verify.
         in: path
         name: method
         required: true
@@ -17824,12 +17823,12 @@ paths:
       tags:
       - MFA Configuration
     put:
-      description: This API sets the configuration of a given MFA method. </br> A
-        token with ORG_ADMIN authority is required to call this API.
+      description: This API sets the configuration of a given MFA method. A token
+        with ORG_ADMIN authority is required to call this API.
       operationId: setMFAConfig
       parameters:
-      - description: The name of the MFA method. </br> The currently supported method
-          name is okta-verify.
+      - description: The name of the MFA method. The currently supported method name
+          is okta-verify.
         in: path
         name: method
         required: true
@@ -17923,13 +17922,13 @@ paths:
       - MFA Configuration
   /mfa/{method}/test:
     get:
-      description: This API validates that the configuration is valid and will properly
-        authenticate with the MFA provider identified by the method path parameter.
-        </br> A token with ORG_ADMIN authority is required to call this API.
+      description: |-
+        This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
+        A token with ORG_ADMIN authority is required to call this API.
       operationId: testMFAConfig
       parameters:
-      - description: The name of the MFA method. </br> The currently supported method
-          name is okta-verify.
+      - description: The name of the MFA method. The currently supported method name
+          is okta-verify.
         in: path
         name: method
         required: true
@@ -21268,22 +21267,21 @@ paths:
       - IAI Peer Group Strategies
   /personal-access-tokens:
     get:
-      description: |-
-        This gets a collection of personal access tokens associated with the optional <code>owner-id</code>. </br> query parameter. If the <code>owner-id</code> query parameter is omitted, all personal access tokens </br> for a tenant will be retrieved, but the caller must have the 'idn:all-personal-access-tokens:read' right. </br> </br> Any of the following rights are required to access this resource: <ul>
-          <li>idn:my-personal-access-tokens:read</li>
-          <li>idn:all-personal-access-tokens:read</li>
-          <li>idn:managed-personal-access-tokens:read</li>
-        </ul>
+      description: "This gets a collection of personal access tokens associated with\
+        \ the optional `owner-id`.  query parameter. If the `owner-id` query parameter\
+        \ is omitted, all personal access tokens  for a tenant will be retrieved,\
+        \ but the caller must have the 'idn:all-personal-access-tokens:read' right.\
+        \ \nAny of the following rights are required to access this resource:\n\n\
+        \  - idn:my-personal-access-tokens:read\n  - idn:all-personal-access-tokens:read\n\
+        \  - idn:managed-personal-access-tokens:read"
       operationId: listPersonalAccessTokens
       parameters:
       - description: "The identity ID of the owner whose personal access tokens should\
-          \ be listed. </br> If \"me\", the caller should have the following right:\
-          \ 'idn:my-personal-access-tokens:read'</br> </br> If an actual owner ID\
-          \ or if the <code>owner-id</code> parameter is omitted in the request, </br>\
-          \ the caller should have the following right: 'idn:all-personal-access-tokens:read'.\
-          \ </br> </br> If the caller has the following right, then managed personal\
-          \ access tokens associated with <code>owner-id</code> </br> will be retrieved:\
-          \ 'idn:managed-personal-access-tokens:read'"
+          \ be listed.  If \"me\", the caller should have the following right: 'idn:my-personal-access-tokens:read'\n\
+          If an actual owner ID or if the `owner-id` parameter is omitted in the request,\
+          \  the caller should have the following right: 'idn:all-personal-access-tokens:read'.\
+          \ \nIf the caller has the following right, then managed personal access\
+          \ tokens associated with `owner-id` will be retrieved: 'idn:managed-personal-access-tokens:read'"
         in: query
         name: owner-id
         required: false
@@ -21359,12 +21357,9 @@ paths:
       tags:
       - Personal Access Tokens
     post:
-      description: |-
-        This creates a personal access token. </br> </br> Any of the following rights are required to access this resource: <ul>
-          <li>idn:my-personal-access-tokens:create</li>
-          <li>idn:all-personal-access-tokens:create</li>
-          <li>idn:managed-personal-access-tokens:create</li>
-        </ul>
+      description: "This creates a personal access token. \nAny of the following rights\
+        \ are required to access this resource:\n\n  - idn:my-personal-access-tokens:create\n\
+        \  - idn:all-personal-access-tokens:create\n  - idn:managed-personal-access-tokens:create"
       operationId: createPersonalAccessToken
       requestBody:
         content:
@@ -21442,12 +21437,9 @@ paths:
       - Personal Access Tokens
   /personal-access-tokens/{id}:
     delete:
-      description: |-
-        This deletes a personal access token </br> </br> Any of the following rights are required to access this resource: <ul>
-          <li>idn:my-personal-access-tokens:delete</li>
-          <li>idn:all-personal-access-tokens:delete</li>
-          <li>idn:managed-personal-access-tokens:delete</li>
-        </ul>
+      description: "This deletes a personal access token \nAny of the following rights\
+        \ are required to access this resource:\n\n  - idn:my-personal-access-tokens:delete\n\
+        \  - idn:all-personal-access-tokens:delete\n  - idn:managed-personal-access-tokens:delete"
       operationId: deletePersonalAccessToken
       parameters:
       - description: The personal access token id
@@ -34781,7 +34773,7 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **id**: *eq* <br/> **name**: *eq* <br/> **state**: *eq*
+          **id**: *eq*  **name**: *eq*  **state**: *eq*
         example: id eq "bc693f07e7b645539626c25954c58554"
         in: query
         name: filters
@@ -45995,7 +45987,6 @@ components:
           example: aClientId
           type: string
         durationMinutes:
-          default: 240
           description: duration in minutes for the log configuration to remain in
             effect before resetting to defaults
           example: 120
@@ -46065,11 +46056,11 @@ components:
       type: object
     TemplateDtoDefault:
       example:
-        footer: "<br/>Thanks,<br/> The $__global.productName Team<br/>"
+        footer: "Thanks, The $__global.productName Team"
         subject: "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}."
         name: Task Manager Subscription
         replyTo: $__global.emailFromAddress
-        header: "Dear $__recipient.name,<br/>"
+        header: "Dear $__recipient.name,"
         description: Daily digest - sent if number of outstanding tasks for task owner
           > 0
         from: $__global.emailFromAddress
@@ -46102,13 +46093,13 @@ components:
           example: "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}."
           type: string
         header:
-          example: "Dear $__recipient.name,<br/>"
+          example: "Dear $__recipient.name,"
           type: string
         body:
           example: Please go to the task manager
           type: string
         footer:
-          example: "<br/>Thanks,<br/> The $__global.productName Team<br/>"
+          example: "Thanks, The $__global.productName Team"
           type: string
         from:
           example: $__global.emailFromAddress
@@ -46123,7 +46114,7 @@ components:
       type: object
     TemplateDto:
       example:
-        footer: "<br/>Thanks,<br/> The $__global.productName Team<br/>"
+        footer: "Thanks, The $__global.productName Team"
         subject: "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}."
         created: 2020-01-01T00:00:00Z
         description: Daily digest - sent if number of outstanding tasks for task owner
@@ -46133,7 +46124,7 @@ components:
         body: Please go to the task manager
         name: Task Manager Subscription
         replyTo: $__global.emailFromAddress
-        header: "Dear $__recipient.name,<br/>"
+        header: "Dear $__recipient.name,"
         modified: 2020-01-01T00:00:00Z
         from: $__global.emailFromAddress
         id: c17bea3a-574d-453c-9e04-4365fbf5af0b
@@ -46163,13 +46154,13 @@ components:
           example: "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}."
           type: string
         header:
-          example: "Dear $__recipient.name,<br/>"
+          example: "Dear $__recipient.name,"
           type: string
         body:
           example: Please go to the task manager
           type: string
         footer:
-          example: "<br/>Thanks,<br/> The $__global.productName Team<br/>"
+          example: "Thanks, The $__global.productName Team"
           type: string
         from:
           example: $__global.emailFromAddress
@@ -55635,7 +55626,7 @@ components:
             id: 2c9180866166b5b0016167c32ef31a67
             name: Administrator
           items:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/AccessCriteria_criteriaList_inner'
           type: array
       type: object
     ScheduleType:
@@ -59278,6 +59269,24 @@ components:
           type: array
       type: object
       example: null
+    AccessCriteria_criteriaList_inner:
+      properties:
+        type:
+          description: DTO type
+          enum:
+          - ENTITLEMENT
+          example: ENTITLEMENT
+          type: string
+        id:
+          description: ID of the object to which this reference applies to
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies to
+          example: Administrator
+          type: string
+      type: object
     SodViolationContext_conflictingAccessCriteria_leftCriteria:
       example:
         criteriaList:

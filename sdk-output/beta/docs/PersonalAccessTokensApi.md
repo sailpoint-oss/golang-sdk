@@ -165,7 +165,7 @@ import (
 )
 
 func main() {
-    ownerId := "2c9180867b50d088017b554662fb281e" // string | The identity ID of the owner whose personal access tokens should be listed. </br> If \"me\", the caller should have the following right: 'idn:my-personal-access-tokens:read'</br> </br> If an actual owner ID or if the <code>owner-id</code> parameter is omitted in the request, </br> the caller should have the following right: 'idn:all-personal-access-tokens:read'. </br> </br> If the caller has the following right, then managed personal access tokens associated with <code>owner-id</code> </br> will be retrieved: 'idn:managed-personal-access-tokens:read' (optional)
+    ownerId := "2c9180867b50d088017b554662fb281e" // string | The identity ID of the owner whose personal access tokens should be listed.  If \"me\", the caller should have the following right: 'idn:my-personal-access-tokens:read' If an actual owner ID or if the `owner-id` parameter is omitted in the request,  the caller should have the following right: 'idn:all-personal-access-tokens:read'.  If the caller has the following right, then managed personal access tokens associated with `owner-id` will be retrieved: 'idn:managed-personal-access-tokens:read' (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -190,7 +190,7 @@ Other parameters are passed through a pointer to a apiListPersonalAccessTokensRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ownerId** | **string** | The identity ID of the owner whose personal access tokens should be listed. &lt;/br&gt; If \&quot;me\&quot;, the caller should have the following right: &#39;idn:my-personal-access-tokens:read&#39;&lt;/br&gt; &lt;/br&gt; If an actual owner ID or if the &lt;code&gt;owner-id&lt;/code&gt; parameter is omitted in the request, &lt;/br&gt; the caller should have the following right: &#39;idn:all-personal-access-tokens:read&#39;. &lt;/br&gt; &lt;/br&gt; If the caller has the following right, then managed personal access tokens associated with &lt;code&gt;owner-id&lt;/code&gt; &lt;/br&gt; will be retrieved: &#39;idn:managed-personal-access-tokens:read&#39; | 
+ **ownerId** | **string** | The identity ID of the owner whose personal access tokens should be listed.  If \&quot;me\&quot;, the caller should have the following right: &#39;idn:my-personal-access-tokens:read&#39; If an actual owner ID or if the &#x60;owner-id&#x60; parameter is omitted in the request,  the caller should have the following right: &#39;idn:all-personal-access-tokens:read&#39;.  If the caller has the following right, then managed personal access tokens associated with &#x60;owner-id&#x60; will be retrieved: &#39;idn:managed-personal-access-tokens:read&#39; | 
 
 ### Return type
 

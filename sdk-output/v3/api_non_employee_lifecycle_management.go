@@ -42,7 +42,7 @@ func (r ApiCreateSchemaAttributeRequest) Execute() (*NonEmployeeSchemaAttribute,
 /*
 CreateSchemaAttribute Create a new Schema Attribute for Non-Employee Source
 
-This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a "400.1.409 Reference conflict" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a "400.1.4 Limit violation" response.<br><br>
+This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a "400.1.409 Reference conflict" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a "400.1.4 Limit violation" response.
 Requires role context of `idn:nesr:create`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -206,7 +206,7 @@ func (r ApiDeleteSchemaAttributeRequest) Execute() (*http.Response, error) {
 /*
 DeleteSchemaAttribute Delete a Schema Attribute for Non-Employee Source
 
-This end-point deletes a specific schema attribute for a non-employee source.<br><br>
+This end-point deletes a specific schema attribute for a non-employee source.
 Requires role context of `idn:nesr:delete`
 
 
@@ -357,7 +357,7 @@ func (r ApiDeleteSchemaAttributesRequest) Execute() (*http.Response, error) {
 /*
 DeleteSchemaAttributes Delete all custom schema attributes for Non-Employee Source
 
-This end-point deletes all custom schema attributes for a non-employee source.<br><br> Requires role context of `idn:nesr:delete`
+This end-point deletes all custom schema attributes for a non-employee source. Requires role context of `idn:nesr:delete`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id
@@ -504,7 +504,7 @@ func (r ApiGetSchemaAttributeRequest) Execute() (*NonEmployeeSchemaAttribute, *h
 /*
 GetSchemaAttribute Get Schema Attribute Non-Employee Source
 
-This API gets a schema attribute by Id for the specified Non-Employee SourceId.<br><br> Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
+This API gets a schema attribute by Id for the specified Non-Employee SourceId. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param attributeId The Schema Attribute Id (UUID)
@@ -664,7 +664,7 @@ func (r ApiGetSchemaAttributesRequest) Execute() ([]NonEmployeeSchemaAttribute, 
 /*
 GetSchemaAttributes List Schema Attributes Non-Employee Source
 
-This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned.<br><br>
+This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned.
 Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -840,9 +840,9 @@ func (r ApiNonEmployeeApprovalGetRequest) Execute() (*NonEmployeeApprovalItemDet
 /*
 NonEmployeeApprovalGet Get a non-employee approval item detail
 
-Gets a non-employee approval item detail.<br><br> There are two contextual uses for this endpoint:<br>
+Gets a non-employee approval item detail. There are two contextual uses for this endpoint:
   1. The user has the role context of `idn:nesr:read`, in which case they
-can get any approval.<br>
+can get any approval.
   2. The user owns the requested approval.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1025,13 +1025,13 @@ func (r ApiNonEmployeeApprovalListRequest) Count(count bool) ApiNonEmployeeAppro
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407)&lt;br/&gt;&lt;br/&gt; Filtering is supported for the following fields and operators:&lt;br/&gt;&lt;br/&gt; **approvalStatus**: *eq* &lt;br/&gt;&lt;br/&gt; *Example:* approvalStatus eq \&quot;PENDING\&quot;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407) Filtering is supported for the following fields and operators: **approvalStatus**: *eq*  *Example:* approvalStatus eq \&quot;PENDING\&quot;
 func (r ApiNonEmployeeApprovalListRequest) Filters(filters string) ApiNonEmployeeApprovalListRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407#toc-hId-2058949)&lt;br/&gt;&lt;br/&gt; Sorting is supported for the following fields: **created, modified**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407#toc-hId-2058949) Sorting is supported for the following fields: **created, modified**
 func (r ApiNonEmployeeApprovalListRequest) Sorters(sorters string) ApiNonEmployeeApprovalListRequest {
 	r.sorters = &sorters
 	return r
@@ -1044,10 +1044,10 @@ func (r ApiNonEmployeeApprovalListRequest) Execute() ([]NonEmployeeApprovalItem,
 /*
 NonEmployeeApprovalList Get List of Non-Employee Approval Requests
 
-This gets a list of non-employee approval requests.<br><br>
-There are two contextual uses for this endpoint:<br>
+This gets a list of non-employee approval requests.
+There are two contextual uses for this endpoint:
   1. The user has the role context of `idn:nesr:read`, in which case they
-can list the approvals for any approver.<br>
+can list the approvals for any approver.
   2. The user owns the requested approval.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1220,9 +1220,9 @@ func (r ApiNonEmployeeApprovalSummaryRequest) Execute() (*NonEmployeeApprovalSum
 /*
 NonEmployeeApprovalSummary Get Summary of Non-Employee Approval Requests
 
-This request will retrieve a summary of non-employee approval requests.<br><br> There are two contextual uses for the `requested-for` path parameter:<br>
+This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter:
   1. The user has the role context of `idn:nesr:read`, in which case he or
-she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id.<br>
+she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id.
   2. The current user is an approver, in which case "me" should be provided
 as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
 
@@ -1387,7 +1387,7 @@ func (r ApiNonEmployeeApproveRequestRequest) Execute() (*NonEmployeeApprovalItem
 /*
 NonEmployeeApproveRequest Approve a Non-Employee Request
 
-Approves a non-employee approval request and notifies the next approver.<br><br> The current user must be the requested approver.
+Approves a non-employee approval request and notifies the next approver. The current user must be the requested approver.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-Employee approval item id (UUID)
@@ -1549,7 +1549,7 @@ func (r ApiNonEmployeeBulkUploadStatusRequest) Execute() (*NonEmployeeBulkUpload
 /*
 NonEmployeeBulkUploadStatus Obtain the status of bulk upload on the source
 
-The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source.<br><br>
+The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source.
 Requires role context of `idn:nesr:read`
 
 
@@ -1708,7 +1708,7 @@ func (r ApiNonEmployeeExportSourceSchemaTemplateRequest) Execute() (*http.Respon
 /*
 NonEmployeeExportSourceSchemaTemplate Exports Source Schema Template
 
-This requests a download for the Source Schema Template for a provided source.<br><br> Requires role context of `idn:nesr:read`
+This requests a download for the Source Schema Template for a provided source. Requires role context of `idn:nesr:read`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source Id (UUID)
@@ -1871,7 +1871,7 @@ func (r ApiNonEmployeeRecordBulkDeleteRequest) Execute() (*http.Response, error)
 /*
 NonEmployeeRecordBulkDelete Delete Multiple Non-Employee Records
 
-This request will delete multiple non-employee records based on the non-employee ids provided.<br><br> Requires role context of `idn:nesr:delete`
+This request will delete multiple non-employee records based on the non-employee ids provided. Requires role context of `idn:nesr:delete`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiNonEmployeeRecordBulkDeleteRequest
@@ -2025,8 +2025,8 @@ func (r ApiNonEmployeeRecordCreationRequest) Execute() (*NonEmployeeRecord, *htt
 /*
 NonEmployeeRecordCreation Create Non-Employee Record
 
-This request will create a non-employee record.<br><br>
-Requires role context of `idn:nesr:create` 
+This request will create a non-employee record.
+Requires role context of `idn:nesr:create`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiNonEmployeeRecordCreationRequest
@@ -2185,7 +2185,7 @@ func (r ApiNonEmployeeRecordDeleteRequest) Execute() (*http.Response, error) {
 /*
 NonEmployeeRecordDelete Delete Non-Employee Record
 
-This request will delete a non-employee record.<br><br>
+This request will delete a non-employee record.
 Requires role context of `idn:nesr:delete`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2332,7 +2332,7 @@ func (r ApiNonEmployeeRecordGetRequest) Execute() (*NonEmployeeRecord, *http.Res
 /*
 NonEmployeeRecordGet Get a Non-Employee Record
 
-This gets a non-employee record.<br><br>
+This gets a non-employee record.
 Requires role context of `idn:nesr:read`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2505,13 +2505,13 @@ func (r ApiNonEmployeeRecordListRequest) Count(count bool) ApiNonEmployeeRecordL
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407#toc-hId-2058949)&lt;br/&gt;&lt;br/&gt; Sorting is supported for the following fields: **id, accountName, sourceId, manager, firstName, lastName, email, phone, startDate, endDate, created, modified**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407#toc-hId-2058949) Sorting is supported for the following fields: **id, accountName, sourceId, manager, firstName, lastName, email, phone, startDate, endDate, created, modified**
 func (r ApiNonEmployeeRecordListRequest) Sorters(sorters string) ApiNonEmployeeRecordListRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407)&lt;br/&gt;&lt;br/&gt; Filtering is supported for the following fields and operators:&lt;br/&gt;&lt;br/&gt; **sourceId**: *eq* &lt;br/&gt;&lt;br/&gt; *Example:* sourceId eq \&quot;2c91808568c529c60168cca6f90c1313\&quot;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407) Filtering is supported for the following fields and operators: **sourceId**: *eq*  *Example:* sourceId eq \&quot;2c91808568c529c60168cca6f90c1313\&quot;
 func (r ApiNonEmployeeRecordListRequest) Filters(filters string) ApiNonEmployeeRecordListRequest {
 	r.filters = &filters
 	return r
@@ -2524,8 +2524,8 @@ func (r ApiNonEmployeeRecordListRequest) Execute() ([]NonEmployeeRecord, *http.R
 /*
 NonEmployeeRecordList List Non-Employee Records
 
-This gets a list of non-employee records.<br><br> There are two contextual uses for this endpoint:<br>
-  1. The user has the role context of `idn:nesr:read`, in which case they can get a list of all of the non-employees.<br>
+This gets a list of non-employee records. There are two contextual uses for this endpoint:
+  1. The user has the role context of `idn:nesr:read`, in which case they can get a list of all of the non-employees.
   2. The user is an account manager, in which case they can get a list of the non-employees that they manage.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2702,9 +2702,9 @@ func (r ApiNonEmployeeRecordPatchRequest) Execute() (*NonEmployeeRecord, *http.R
 /*
 NonEmployeeRecordPatch Patch Non-Employee Record
 
-This request will patch a non-employee record.<br><br> There are two contextual uses for this endpoint:<br>
+This request will patch a non-employee record. There are two contextual uses for this endpoint:
   1. The user has the role context of `idn:nesr:update`, in which case they
-update all available fields.<br>
+update all available fields.
   2. The user is owner of the source, in this case they can only update the
 end date.
 
@@ -2886,9 +2886,9 @@ func (r ApiNonEmployeeRecordUpdateRequest) Execute() (*NonEmployeeRecord, *http.
 /*
 NonEmployeeRecordUpdate Update Non-Employee Record
 
-This request will update a non-employee record.<br><br> There are two contextual uses for this endpoint:<br>
+This request will update a non-employee record. There are two contextual uses for this endpoint:
   1. The user has the role context of `idn:nesr:update`, in which case they
-update all available fields.<br>
+update all available fields.
   2. The user is owner of the source, in this case they can only update the
 end date.
 
@@ -3069,7 +3069,7 @@ func (r ApiNonEmployeeRecordsBulkUploadRequest) Execute() (*NonEmployeeBulkUploa
 /*
 NonEmployeeRecordsBulkUpload Imports, or Updates, Non-Employee Records
 
-This post will import, or update, Non-Employee records found in the CSV.<br><br> Requires role context of `idn:nesr:create`
+This post will import, or update, Non-Employee records found in the CSV. Requires role context of `idn:nesr:create`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source Id (UUID)
@@ -3241,7 +3241,7 @@ func (r ApiNonEmployeeRecordsExportRequest) Execute() (*http.Response, error) {
 /*
 NonEmployeeRecordsExport Exports Non-Employee Records to CSV
 
-This requests a CSV download for all non-employees from a provided source.<br><br> Requires role context of `idn:nesr:read`
+This requests a CSV download for all non-employees from a provided source. Requires role context of `idn:nesr:read`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source Id (UUID)
@@ -3404,7 +3404,7 @@ func (r ApiNonEmployeeRejectRequestRequest) Execute() (*NonEmployeeApprovalItem,
 /*
 NonEmployeeRejectRequest Reject a Non-Employee Request
 
-This endpoint will reject an approval item request and notify user.<br><br> The current user must be the requested approver.
+This endpoint will reject an approval item request and notify user. The current user must be the requested approver.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-Employee approval item id (UUID)
@@ -3572,7 +3572,7 @@ func (r ApiNonEmployeeRequestCreationRequest) Execute() (*NonEmployeeRequest, *h
 /*
 NonEmployeeRequestCreation Create Non-Employee Request
 
-This request will create a non-employee request and notify the approver.<br><br> Requires role context of `idn:nesr:create` or the user must own the source.
+This request will create a non-employee request and notify the approver. Requires role context of `idn:nesr:create` or the user must own the source.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiNonEmployeeRequestCreationRequest
@@ -3731,7 +3731,7 @@ func (r ApiNonEmployeeRequestDeletionRequest) Execute() (*http.Response, error) 
 /*
 NonEmployeeRequestDeletion Delete Non-Employee Request
 
-This request will delete a non-employee request.<br><br> 
+This request will delete a non-employee request. 
 Requires role context of `idn:nesr:delete`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -3889,10 +3889,10 @@ func (r ApiNonEmployeeRequestGetRequest) Execute() (*NonEmployeeRequest, *http.R
 /*
 NonEmployeeRequestGet Get a Non-Employee Request
 
-This gets a non-employee request.<br><br>
-There are two contextual uses for this endpoint:<br>
+This gets a non-employee request.
+There are two contextual uses for this endpoint:
   1. The user has the role context of `idn:nesr:read`, in this case the user
-can get the non-employee request for any user.<br>
+can get the non-employee request for any user.
   2. The user must be the owner of the non-employee request.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -4083,13 +4083,13 @@ func (r ApiNonEmployeeRequestListRequest) Count(count bool) ApiNonEmployeeReques
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407#toc-hId-2058949)&lt;br/&gt;&lt;br/&gt; Sorting is supported for the following fields: **created, approvalStatus, firstName, lastName, email, phone, accountName, startDate, endDate**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407#toc-hId-2058949) Sorting is supported for the following fields: **created, approvalStatus, firstName, lastName, email, phone, accountName, startDate, endDate**
 func (r ApiNonEmployeeRequestListRequest) Sorters(sorters string) ApiNonEmployeeRequestListRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407)&lt;br/&gt;&lt;br/&gt; Filtering is supported for the following fields and operators:&lt;br/&gt;&lt;br/&gt; **sourceId**: *eq* &lt;br/&gt;&lt;br/&gt; *Example:* sourceId eq \&quot;2c91808568c529c60168cca6f90c1313\&quot;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407) Filtering is supported for the following fields and operators: **sourceId**: *eq*  *Example:* sourceId eq \&quot;2c91808568c529c60168cca6f90c1313\&quot;
 func (r ApiNonEmployeeRequestListRequest) Filters(filters string) ApiNonEmployeeRequestListRequest {
 	r.filters = &filters
 	return r
@@ -4102,9 +4102,9 @@ func (r ApiNonEmployeeRequestListRequest) Execute() ([]NonEmployeeRequest, *http
 /*
 NonEmployeeRequestList List Non-Employee Requests
 
-This gets a list of non-employee requests.<br><br> There are two contextual uses for the `requested-for` path parameter:<br>
+This gets a list of non-employee requests. There are two contextual uses for the `requested-for` path parameter:
   1. The user has the role context of `idn:nesr:read`, in which case he or
-she may request a list non-employee requests assigned to a particular account manager by passing in that manager's id.<br>
+she may request a list non-employee requests assigned to a particular account manager by passing in that manager's id.
   2. The current user is an account manager, in which case "me" should be
 provided as the `requested-for` value. This will provide the user with a list of the non-employee requests in the source(s) he or she manages.
 
@@ -4279,9 +4279,9 @@ func (r ApiNonEmployeeRequestSummaryGetRequest) Execute() (*NonEmployeeRequestSu
 /*
 NonEmployeeRequestSummaryGet Get Summary of Non-Employee Requests
 
-This request will retrieve a summary of non-employee requests.<br><br> There are two contextual uses for the `requested-for` path parameter:<br>
+This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter:
   1. The user has the role context of `idn:nesr:read`, in which case he or
-she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id.<br>
+she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id.
   2. The current user is an account manager, in which case "me" should be
 provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
 
@@ -4440,7 +4440,7 @@ func (r ApiNonEmployeeSourceDeleteRequest) Execute() (*http.Response, error) {
 /*
 NonEmployeeSourceDelete Delete Non-Employee Source
 
-This request will delete a non-employee source.<br><br> Requires role context of `idn:nesr:delete`.
+This request will delete a non-employee source. Requires role context of `idn:nesr:delete`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source Id
@@ -4586,9 +4586,9 @@ func (r ApiNonEmployeeSourceGetRequest) Execute() (*NonEmployeeSource, *http.Res
 /*
 NonEmployeeSourceGet Get a Non-Employee Source
 
-This gets a non-employee source.<br><br> There are two contextual uses for the requested-for path parameter: <br>
+This gets a non-employee source. There are two contextual uses for the requested-for path parameter: 
   1. The user has the role context of `idn:nesr:read`, in which case he or
-she may request any source.<br>
+she may request any source.
   2. The current user is an account manager, in which case the user can only
 request sources that they own.
 
@@ -4754,7 +4754,7 @@ func (r ApiNonEmployeeSourcePatchRequest) Execute() (*NonEmployeeSource, *http.R
 /*
 NonEmployeeSourcePatch Patch a Non-Employee Source
 
-patch a non-employee source. (partial update) <br/> Patchable field: **name, description, approvers, accountManagers**<br><br> Requires role context of `idn:nesr:update`.
+patch a non-employee source. (partial update) <br/> Patchable field: **name, description, approvers, accountManagers** Requires role context of `idn:nesr:update`.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source Id
@@ -4922,7 +4922,7 @@ func (r ApiNonEmployeeSourcesCreationRequest) Execute() (*NonEmployeeSourceWithC
 /*
 NonEmployeeSourcesCreation Create Non-Employee Source
 
-This request will create a non-employee source.<br><br> Requires role context of `idn:nesr:create`
+This request will create a non-employee source. Requires role context of `idn:nesr:create`
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiNonEmployeeSourcesCreationRequest
@@ -5109,7 +5109,7 @@ func (r ApiNonEmployeeSourcesListRequest) NonEmployeeCount(nonEmployeeCount bool
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407#toc-hId-2058949)&lt;br/&gt;&lt;br/&gt; Sorting is supported for the following fields: **name, created**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407#toc-hId-2058949) Sorting is supported for the following fields: **name, created**
 func (r ApiNonEmployeeSourcesListRequest) Sorters(sorters string) ApiNonEmployeeSourcesListRequest {
 	r.sorters = &sorters
 	return r
@@ -5122,9 +5122,11 @@ func (r ApiNonEmployeeSourcesListRequest) Execute() ([]NonEmployeeSourceWithNECo
 /*
 NonEmployeeSourcesList List Non-Employee Sources
 
-This gets a list of non-employee sources.<br><br> There are two contextual uses for the requested-for path parameter: <br>
-  1. The user has the role context of `idn:nesr:read`, in which case he or she may request a list sources assigned to a particular account manager by passing in that manager's id.<br>
-  2. The current user is an account manager, in which case "me" should be provided as the `requested-for` value. This will provide the user with a list of the sources that he or she owns.
+This gets a list of non-employee sources. There are two contextual uses for the requested-for path parameter: 
+  1. The user has the role context of `idn:nesr:read`, in which case he or
+she may request a list sources assigned to a particular account manager by passing in that manager's id.
+  2. The current user is an account manager, in which case "me" should be
+provided as the `requested-for` value. This will provide the user with a list of the sources that he or she owns.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiNonEmployeeSourcesListRequest
@@ -5305,7 +5307,7 @@ func (r ApiPatchSchemaAttributeRequest) Execute() (*NonEmployeeSchemaAttribute, 
 /*
 PatchSchemaAttribute Patch a Schema Attribute for Non-Employee Source
 
-This end-point patches a specific schema attribute for a non-employee SourceId.<br><br>
+This end-point patches a specific schema attribute for a non-employee SourceId.
 Requires role context of `idn:nesr:update`
 
 

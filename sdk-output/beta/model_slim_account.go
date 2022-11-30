@@ -11,7 +11,6 @@ API version: 3.1.0-beta
 package sailpointbetasdk
 
 import (
-	"time"
 	"encoding/json"
 )
 

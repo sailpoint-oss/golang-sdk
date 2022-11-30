@@ -17,15 +17,15 @@ import (
 
 // TriggerInputAccountAttributesChangedChangesInnerOldValue - The previous value of the attribute.
 type TriggerInputAccountAttributesChangedChangesInnerOldValue struct {
-	ArrayOfstring *[]*string
+	ArrayOf*string *[]*string
 	Bool *bool
 	String *string
 }
 
 // []*stringAsTriggerInputAccountAttributesChangedChangesInnerOldValue is a convenience function that returns []*string wrapped in TriggerInputAccountAttributesChangedChangesInnerOldValue
-func ArrayOfstringAsTriggerInputAccountAttributesChangedChangesInnerOldValue(v *[]*string) TriggerInputAccountAttributesChangedChangesInnerOldValue {
+func ArrayOf*stringAsTriggerInputAccountAttributesChangedChangesInnerOldValue(v *[]*string) TriggerInputAccountAttributesChangedChangesInnerOldValue {
 	return TriggerInputAccountAttributesChangedChangesInnerOldValue{
-		ArrayOfstring: v,
+		ArrayOf*string: v,
 	}
 }
 
@@ -53,17 +53,17 @@ func (dst *TriggerInputAccountAttributesChangedChangesInnerOldValue) UnmarshalJS
 	}
 
 	match := 0
-	// try to unmarshal data into ArrayOfstring
-	err = newStrictDecoder(data).Decode(&dst.ArrayOfstring)
+	// try to unmarshal data into ArrayOf*string
+	err = newStrictDecoder(data).Decode(&dst.ArrayOf*string)
 	if err == nil {
-		jsonArrayOfstring, _ := json.Marshal(dst.ArrayOfstring)
-		if string(jsonArrayOfstring) == "{}" { // empty struct
-			dst.ArrayOfstring = nil
+		jsonArrayOf*string, _ := json.Marshal(dst.ArrayOf*string)
+		if string(jsonArrayOf*string) == "{}" { // empty struct
+			dst.ArrayOf*string = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.ArrayOfstring = nil
+		dst.ArrayOf*string = nil
 	}
 
 	// try to unmarshal data into Bool
@@ -94,7 +94,7 @@ func (dst *TriggerInputAccountAttributesChangedChangesInnerOldValue) UnmarshalJS
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.ArrayOfstring = nil
+		dst.ArrayOf*string = nil
 		dst.Bool = nil
 		dst.String = nil
 
@@ -108,8 +108,8 @@ func (dst *TriggerInputAccountAttributesChangedChangesInnerOldValue) UnmarshalJS
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src TriggerInputAccountAttributesChangedChangesInnerOldValue) MarshalJSON() ([]byte, error) {
-	if src.ArrayOfstring != nil {
-		return json.Marshal(&src.ArrayOfstring)
+	if src.ArrayOf*string != nil {
+		return json.Marshal(&src.ArrayOf*string)
 	}
 
 	if src.Bool != nil {
@@ -128,8 +128,8 @@ func (obj *TriggerInputAccountAttributesChangedChangesInnerOldValue) GetActualIn
 	if obj == nil {
 		return nil
 	}
-	if obj.ArrayOfstring != nil {
-		return obj.ArrayOfstring
+	if obj.ArrayOf*string != nil {
+		return obj.ArrayOf*string
 	}
 
 	if obj.Bool != nil {

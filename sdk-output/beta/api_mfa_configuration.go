@@ -36,10 +36,10 @@ func (r ApiGetMFAConfigRequest) Execute() (*MfaConfig, *http.Response, error) {
 /*
 GetMFAConfig Get configuration of a MFA method
 
-This API returns the configuration of a given MFA method. </br> A token with ORG_ADMIN authority is required to call this API.
+This API returns the configuration of a given MFA method. A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param method The name of the MFA method. </br> The currently supported method name is okta-verify.
+ @param method The name of the MFA method. The currently supported method name is okta-verify.
  @return ApiGetMFAConfigRequest
 */
 func (a *MFAConfigurationApiService) GetMFAConfig(ctx context.Context, method string) ApiGetMFAConfigRequest {
@@ -199,10 +199,10 @@ func (r ApiSetMFAConfigRequest) Execute() (*MfaConfig, *http.Response, error) {
 /*
 SetMFAConfig Set configuration of a MFA method
 
-This API sets the configuration of a given MFA method. </br> A token with ORG_ADMIN authority is required to call this API.
+This API sets the configuration of a given MFA method. A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param method The name of the MFA method. </br> The currently supported method name is okta-verify.
+ @param method The name of the MFA method. The currently supported method name is okta-verify.
  @return ApiSetMFAConfigRequest
 */
 func (a *MFAConfigurationApiService) SetMFAConfig(ctx context.Context, method string) ApiSetMFAConfigRequest {
@@ -361,10 +361,11 @@ func (r ApiTestMFAConfigRequest) Execute() (*MfaConfigTestResponse, *http.Respon
 /*
 TestMFAConfig Test configuration of a MFA method
 
-This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter. </br> A token with ORG_ADMIN authority is required to call this API.
+This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
+A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param method The name of the MFA method. </br> The currently supported method name is okta-verify.
+ @param method The name of the MFA method. The currently supported method name is okta-verify.
  @return ApiTestMFAConfigRequest
 */
 func (a *MFAConfigurationApiService) TestMFAConfig(ctx context.Context, method string) ApiTestMFAConfigRequest {

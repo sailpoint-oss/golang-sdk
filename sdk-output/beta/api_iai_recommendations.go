@@ -23,13 +23,13 @@ import (
 // IAIRecommendationsApiService IAIRecommendationsApi service
 type IAIRecommendationsApiService service
 
-type ApiGetMessageCatalogsRequest2 struct {
+type ApiGetMessageCatalogsRequest struct {
 	ctx context.Context
 	ApiService *IAIRecommendationsApiService
 	catalogId string
 }
 
-func (r ApiGetMessageCatalogsRequest2) Execute() ([]MessageCatalogDto, *http.Response, error) {
+func (r ApiGetMessageCatalogsRequest) Execute() ([]MessageCatalogDto, *http.Response, error) {
 	return r.ApiService.GetMessageCatalogsExecute(r)
 }
 
@@ -40,10 +40,10 @@ The getMessageCatalogs API returns message catalog based on the language headers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param catalogId The ID of the message catalog.
- @return ApiGetMessageCatalogsRequest2
+ @return ApiGetMessageCatalogsRequest
 */
-func (a *IAIRecommendationsApiService) GetMessageCatalogs(ctx context.Context, catalogId string) ApiGetMessageCatalogsRequest2 {
-	return ApiGetMessageCatalogsRequest2{
+func (a *IAIRecommendationsApiService) GetMessageCatalogs(ctx context.Context, catalogId string) ApiGetMessageCatalogsRequest {
+	return ApiGetMessageCatalogsRequest{
 		ApiService: a,
 		ctx: ctx,
 		catalogId: catalogId,
@@ -52,7 +52,7 @@ func (a *IAIRecommendationsApiService) GetMessageCatalogs(ctx context.Context, c
 
 // Execute executes the request
 //  @return []MessageCatalogDto
-func (a *IAIRecommendationsApiService) GetMessageCatalogsExecute(r ApiGetMessageCatalogsRequest2) ([]MessageCatalogDto, *http.Response, error) {
+func (a *IAIRecommendationsApiService) GetMessageCatalogsExecute(r ApiGetMessageCatalogsRequest) ([]MessageCatalogDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
