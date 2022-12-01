@@ -23,7 +23,7 @@ import (
 // IAIPeerGroupStrategiesApiService IAIPeerGroupStrategiesApi service
 type IAIPeerGroupStrategiesApiService service
 
-type ApiGetOutliersRequest struct {
+type ApiGetOutliersRequest2 struct {
 	ctx context.Context
 	ApiService *IAIPeerGroupStrategiesApiService
 	strategy string
@@ -33,24 +33,24 @@ type ApiGetOutliersRequest struct {
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetOutliersRequest) Limit(limit int32) ApiGetOutliersRequest {
+func (r ApiGetOutliersRequest2) Limit(limit int32) ApiGetOutliersRequest2 {
 	r.limit = &limit
 	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetOutliersRequest) Offset(offset int32) ApiGetOutliersRequest {
+func (r ApiGetOutliersRequest2) Offset(offset int32) ApiGetOutliersRequest2 {
 	r.offset = &offset
 	return r
 }
 
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetOutliersRequest) Count(count bool) ApiGetOutliersRequest {
+func (r ApiGetOutliersRequest2) Count(count bool) ApiGetOutliersRequest2 {
 	r.count = &count
 	return r
 }
 
-func (r ApiGetOutliersRequest) Execute() ([]PeerGroupMember, *http.Response, error) {
+func (r ApiGetOutliersRequest2) Execute() ([]PeerGroupMember, *http.Response, error) {
 	return r.ApiService.GetOutliersExecute(r)
 }
 
@@ -61,10 +61,10 @@ This API will be used by Identity Governance systems to identify identities that
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param strategy The strategy used to create peer groups. Currently, 'entitlement' is supported.
- @return ApiGetOutliersRequest
+ @return ApiGetOutliersRequest2
 */
-func (a *IAIPeerGroupStrategiesApiService) GetOutliers(ctx context.Context, strategy string) ApiGetOutliersRequest {
-	return ApiGetOutliersRequest{
+func (a *IAIPeerGroupStrategiesApiService) GetOutliers(ctx context.Context, strategy string) ApiGetOutliersRequest2 {
+	return ApiGetOutliersRequest2{
 		ApiService: a,
 		ctx: ctx,
 		strategy: strategy,
@@ -73,7 +73,7 @@ func (a *IAIPeerGroupStrategiesApiService) GetOutliers(ctx context.Context, stra
 
 // Execute executes the request
 //  @return []PeerGroupMember
-func (a *IAIPeerGroupStrategiesApiService) GetOutliersExecute(r ApiGetOutliersRequest) ([]PeerGroupMember, *http.Response, error) {
+func (a *IAIPeerGroupStrategiesApiService) GetOutliersExecute(r ApiGetOutliersRequest2) ([]PeerGroupMember, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

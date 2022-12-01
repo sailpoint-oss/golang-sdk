@@ -43,7 +43,7 @@ CreateOauthClient Create OAuth Client
 
 This creates an OAuth client.
 Request will require the following security scope:
-- 'idn:oathkeeper-client:create' - 'idn:oathkeeper-internal-client:create'
+- sp:oauth-client:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateOauthClientRequest
@@ -204,7 +204,7 @@ DeleteOauthClient Delete OAuth Client
 
 This deletes an OAuth client.
 Request will require the following security scopes:
-- 'idn:oathkeeper-client:delete' - 'idn:oathkeeper-internal-client:delete'
+- sp:oauth-client:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The OAuth client id
@@ -363,7 +363,7 @@ GetOauthClient Get OAuth Client
 
 This gets details of an OAuth client.
 Request will require the following security scope:
-- 'idn:oathkeeper-client:read'
+- sp:oauth-client:manage - sp:oauth-client:read
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The OAuth client id
@@ -532,7 +532,7 @@ ListOauthClients List OAuth Clients
 
 This gets a list of OAuth clients.
 Request will require the following security scope:
-- 'idn:oathkeeper-client-list:read'
+- sp:oauth-client:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListOauthClientsRequest
@@ -695,7 +695,7 @@ PatchOauthClient Patch OAuth Client
 
 This performs a targeted update to the field(s) of an OAuth client.
 Request will require a security scope of 
-'idn:oathkeeper-client:update'
+- sp:oauth-client:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The OAuth client id

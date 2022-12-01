@@ -346,9 +346,9 @@ func (o *SpConfigObject) SetImportLimit(v int32) {
 	o.ImportLimit = &v
 }
 
-// GetReferenceExtractors returns the ReferenceExtractors field value if set, zero value otherwise.
+// GetReferenceExtractors returns the ReferenceExtractors field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpConfigObject) GetReferenceExtractors() []string {
-	if o == nil || isNil(o.ReferenceExtractors) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -357,6 +357,7 @@ func (o *SpConfigObject) GetReferenceExtractors() []string {
 
 // GetReferenceExtractorsOk returns a tuple with the ReferenceExtractors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpConfigObject) GetReferenceExtractorsOk() ([]string, bool) {
 	if o == nil || isNil(o.ReferenceExtractors) {
 		return nil, false
@@ -366,7 +367,7 @@ func (o *SpConfigObject) GetReferenceExtractorsOk() ([]string, bool) {
 
 // HasReferenceExtractors returns a boolean if a field has been set.
 func (o *SpConfigObject) HasReferenceExtractors() bool {
-	if o != nil && !isNil(o.ReferenceExtractors) {
+	if o != nil && isNil(o.ReferenceExtractors) {
 		return true
 	}
 
@@ -439,7 +440,7 @@ func (o SpConfigObject) MarshalJSON() ([]byte, error) {
 	if !isNil(o.ImportLimit) {
 		toSerialize["importLimit"] = o.ImportLimit
 	}
-	if !isNil(o.ReferenceExtractors) {
+	if o.ReferenceExtractors != nil {
 		toSerialize["referenceExtractors"] = o.ReferenceExtractors
 	}
 	if !isNil(o.SignatureRequired) {

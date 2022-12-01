@@ -18479,7 +18479,7 @@ paths:
       description: |-
         This gets a list of OAuth clients.
         Request will require the following security scope:
-        - 'idn:oathkeeper-client-list:read'
+        - sp:oauth-client:manage
       operationId: listOauthClients
       responses:
         "200":
@@ -18553,7 +18553,7 @@ paths:
       description: |-
         This creates an OAuth client.
         Request will require the following security scope:
-        - 'idn:oathkeeper-client:create' - 'idn:oathkeeper-internal-client:create'
+        - sp:oauth-client:manage
       operationId: createOauthClient
       requestBody:
         content:
@@ -18632,7 +18632,7 @@ paths:
       description: |-
         This deletes an OAuth client.
         Request will require the following security scopes:
-        - 'idn:oathkeeper-client:delete' - 'idn:oathkeeper-internal-client:delete'
+        - sp:oauth-client:manage
       operationId: deleteOauthClient
       parameters:
       - description: The OAuth client id
@@ -18726,7 +18726,7 @@ paths:
       description: |-
         This gets details of an OAuth client.
         Request will require the following security scope:
-        - 'idn:oathkeeper-client:read'
+        - sp:oauth-client:manage - sp:oauth-client:read
       operationId: getOauthClient
       parameters:
       - description: The OAuth client id
@@ -18822,7 +18822,7 @@ paths:
       - OAuth Clients
     patch:
       description: "This performs a targeted update to the field(s) of an OAuth client.\n\
-        Request will require a security scope of \n'idn:oathkeeper-client:update'"
+        Request will require a security scope of \n- sp:oauth-client:manage"
       operationId: patchOauthClient
       parameters:
       - description: The OAuth client id
@@ -21271,9 +21271,9 @@ paths:
         \ the optional `owner-id`.  query parameter. If the `owner-id` query parameter\
         \ is omitted, all personal access tokens  for a tenant will be retrieved,\
         \ but the caller must have the 'idn:all-personal-access-tokens:read' right.\
-        \ \nAny of the following rights are required to access this resource:\n\n\
-        \  - idn:my-personal-access-tokens:read\n  - idn:all-personal-access-tokens:read\n\
-        \  - idn:managed-personal-access-tokens:read"
+        \ \nRequest will require one of the following security scopes:\n\n  - sp:my-personal-access-tokens:read\n\
+        \  - sp:my-personal-access-tokens:manage\n  - sp:all-personal-access-tokens:read\n\
+        \  - sp:all-personal-access-tokens:manage"
       operationId: listPersonalAccessTokens
       parameters:
       - description: "The identity ID of the owner whose personal access tokens should\
@@ -21357,9 +21357,9 @@ paths:
       tags:
       - Personal Access Tokens
     post:
-      description: "This creates a personal access token. \nAny of the following rights\
-        \ are required to access this resource:\n\n  - idn:my-personal-access-tokens:create\n\
-        \  - idn:all-personal-access-tokens:create\n  - idn:managed-personal-access-tokens:create"
+      description: "This creates a personal access token. \nRequest will require one\
+        \ of the following security scopes:\n\n  - sp:my-personal-access-tokens:manage\n\
+        \  - sp:all-personal-access-tokens:manage"
       operationId: createPersonalAccessToken
       requestBody:
         content:
@@ -21437,9 +21437,9 @@ paths:
       - Personal Access Tokens
   /personal-access-tokens/{id}:
     delete:
-      description: "This deletes a personal access token \nAny of the following rights\
-        \ are required to access this resource:\n\n  - idn:my-personal-access-tokens:delete\n\
-        \  - idn:all-personal-access-tokens:delete\n  - idn:managed-personal-access-tokens:delete"
+      description: "This deletes a personal access token \nRequest will require one\
+        \ of the following security scopes:\n\n  - sp:my-personal-access-tokens:manage\n\
+        \  - sp:all-personal-access-tokens:manage"
       operationId: deletePersonalAccessToken
       parameters:
       - description: The personal access token id
@@ -27424,8 +27424,8 @@ paths:
     post:
       description: |-
         This post will export objects from the tenant to a JSON configuration file.
-        Request will need the following security scope:
-        'sp:config:export'
+        Request will need one of the following security scopes:
+        - sp:config:read - sp:config:manage
       operationId: spConfigExport
       requestBody:
         content:
@@ -27590,8 +27590,8 @@ paths:
     get:
       description: |-
         This gets the status of the export job identified by the id parameter.
-        Request will need the following security scope:
-        'sp:config:export'
+        Request will need one of the following security scopes:
+        - sp:config:read - sp:config:manage
       operationId: spConfigExportJobStatus
       parameters:
       - description: The ID of the export job for which status will be returned.
@@ -27699,8 +27699,8 @@ paths:
     get:
       description: |-
         This gets export file resulting from the export job with the requested id and downloads it to a file.
-        Request will need the following security scope:
-        'sp:config:export'
+        Request will need one of the following security scopes:
+        - sp:config:read - sp:config:manage
       operationId: spConfigExportDownload
       parameters:
       - description: The ID of the export job for which the results will be downloaded.
@@ -27799,7 +27799,7 @@ paths:
       description: |-
         This post will import objects from a JSON configuration file into a tenant.
         Request will need the following security scope:
-        'sp:config:import'
+        - sp:config:manage
       operationId: spConfigImport
       parameters:
       - description: "This option is intended to give the user information about how\
@@ -27953,7 +27953,7 @@ paths:
       description: |-
         This gets the status of the import job identified by the id parameter.
         Request will need the following security scope:
-        'sp:config:import'
+        - sp:config:manage
       operationId: spConfigImportJobStatus
       parameters:
       - description: The ID of the import job for which status will be returned.
@@ -28062,7 +28062,7 @@ paths:
       description: |-
         This gets import file resulting from the import job with the requested id and downloads it to a file. The downloaded file will contain the results of the import operation, including any error, warning or informational messages associated with the import.
         Request will need the following security scope:
-        'sp:config:import'
+        - sp:config:manage
       operationId: spConfigImportDownload
       parameters:
       - description: The ID of the import job for which the results will be downloaded.
@@ -28161,8 +28161,8 @@ paths:
     get:
       description: |-
         This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain "importUrl" and "exportUrl" are available for export/import.
-        Request will need the following security scope:
-        'sp:config:export'
+        Request will need one of the following security scopes:
+        - sp:config:read - sp:config:manage
       operationId: spConfigObjects
       responses:
         "200":
@@ -48694,6 +48694,7 @@ components:
           - $.owner
           items:
             type: string
+          nullable: true
           type: array
         signatureRequired:
           description: "If true, this type of object will be JWS signed and cannot\

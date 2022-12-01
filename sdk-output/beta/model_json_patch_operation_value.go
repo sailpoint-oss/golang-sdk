@@ -17,26 +17,26 @@ import (
 
 // JsonPatchOperationValue The value to be used for the operation, required for \"add\" and \"replace\" operations
 type JsonPatchOperationValue struct {
-	[]JsonPatchOperationValueAnyOfInnervar *[]JsonPatchOperationValueAnyOfInner
+	jsonPatchOperationValueAnyOfInnervar *[]JsonPatchOperationValueAnyOfInner
 	int32var *int32
-	map[string]interface{}var *map[string]interface{}
+	mapvar *map[string]interface{}
 	stringvar *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *JsonPatchOperationValue) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into []JsonPatchOperationValueAnyOfInnervar
-	err = json.Unmarshal(data, &dst.[]JsonPatchOperationValueAnyOfInnervar);
+	// try to unmarshal JSON data into jsonPatchOperationValueAnyOfInnervar
+	err = json.Unmarshal(data, &dst.jsonPatchOperationValueAnyOfInnervar);
 	if err == nil {
-		json[]JsonPatchOperationValueAnyOfInnervar, _ := json.Marshal(dst.[]JsonPatchOperationValueAnyOfInnervar)
-		if string(json[]JsonPatchOperationValueAnyOfInnervar) == "{}" { // empty struct
-			dst.[]JsonPatchOperationValueAnyOfInnervar = nil
+		jsonjsonPatchOperationValueAnyOfInnervar, _ := json.Marshal(dst.jsonPatchOperationValueAnyOfInnervar)
+		if string(jsonjsonPatchOperationValueAnyOfInnervar) == "{}" { // empty struct
+			dst.jsonPatchOperationValueAnyOfInnervar = nil
 		} else {
-			return nil // data stored in dst.[]JsonPatchOperationValueAnyOfInnervar, return on the first match
+			return nil // data stored in dst.jsonPatchOperationValueAnyOfInnervar, return on the first match
 		}
 	} else {
-		dst.[]JsonPatchOperationValueAnyOfInnervar = nil
+		dst.jsonPatchOperationValueAnyOfInnervar = nil
 	}
 
 	// try to unmarshal JSON data into int32var
@@ -52,17 +52,17 @@ func (dst *JsonPatchOperationValue) UnmarshalJSON(data []byte) error {
 		dst.int32var = nil
 	}
 
-	// try to unmarshal JSON data into map[string]interface{}var
-	err = json.Unmarshal(data, &dst.map[string]interface{}var);
+	// try to unmarshal JSON data into mapvar
+	err = json.Unmarshal(data, &dst.mapvar);
 	if err == nil {
-		jsonmap[string]interface{}var, _ := json.Marshal(dst.map[string]interface{}var)
-		if string(jsonmap[string]interface{}var) == "{}" { // empty struct
-			dst.map[string]interface{}var = nil
+		jsonmapvar, _ := json.Marshal(dst.mapvar)
+		if string(jsonmapvar) == "{}" { // empty struct
+			dst.mapvar = nil
 		} else {
-			return nil // data stored in dst.map[string]interface{}var, return on the first match
+			return nil // data stored in dst.mapvar, return on the first match
 		}
 	} else {
-		dst.map[string]interface{}var = nil
+		dst.mapvar = nil
 	}
 
 	// try to unmarshal JSON data into stringvar
@@ -83,16 +83,16 @@ func (dst *JsonPatchOperationValue) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *JsonPatchOperationValue) MarshalJSON() ([]byte, error) {
-	if src.[]JsonPatchOperationValueAnyOfInnervar != nil {
-		return json.Marshal(&src.[]JsonPatchOperationValueAnyOfInnervar)
+	if src.jsonPatchOperationValueAnyOfInnervar != nil {
+		return json.Marshal(&src.jsonPatchOperationValueAnyOfInnervar)
 	}
 
 	if src.int32var != nil {
 		return json.Marshal(&src.int32var)
 	}
 
-	if src.map[string]interface{}var != nil {
-		return json.Marshal(&src.map[string]interface{}var)
+	if src.mapvar != nil {
+		return json.Marshal(&src.mapvar)
 	}
 
 	if src.stringvar != nil {

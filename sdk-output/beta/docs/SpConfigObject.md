@@ -285,6 +285,16 @@ SetReferenceExtractors sets ReferenceExtractors field to given value.
 
 HasReferenceExtractors returns a boolean if a field has been set.
 
+### SetReferenceExtractorsNil
+
+`func (o *SpConfigObject) SetReferenceExtractorsNil(b bool)`
+
+ SetReferenceExtractorsNil sets the value for ReferenceExtractors to be an explicit nil
+
+### UnsetReferenceExtractors
+`func (o *SpConfigObject) UnsetReferenceExtractors()`
+
+UnsetReferenceExtractors ensures that no value is present for ReferenceExtractors, not even an explicit nil
 ### GetSignatureRequired
 
 `func (o *SpConfigObject) GetSignatureRequired() bool`

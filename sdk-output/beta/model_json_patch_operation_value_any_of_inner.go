@@ -18,7 +18,7 @@ import (
 // JsonPatchOperationValueAnyOfInner struct for JsonPatchOperationValueAnyOfInner
 type JsonPatchOperationValueAnyOfInner struct {
 	int32var *int32
-	map[string]interface{}var *map[string]interface{}
+	mapvar *map[string]interface{}
 	stringvar *string
 }
 
@@ -38,17 +38,17 @@ func (dst *JsonPatchOperationValueAnyOfInner) UnmarshalJSON(data []byte) error {
 		dst.int32var = nil
 	}
 
-	// try to unmarshal JSON data into map[string]interface{}var
-	err = json.Unmarshal(data, &dst.map[string]interface{}var);
+	// try to unmarshal JSON data into mapvar
+	err = json.Unmarshal(data, &dst.mapvar);
 	if err == nil {
-		jsonmap[string]interface{}var, _ := json.Marshal(dst.map[string]interface{}var)
-		if string(jsonmap[string]interface{}var) == "{}" { // empty struct
-			dst.map[string]interface{}var = nil
+		jsonmapvar, _ := json.Marshal(dst.mapvar)
+		if string(jsonmapvar) == "{}" { // empty struct
+			dst.mapvar = nil
 		} else {
-			return nil // data stored in dst.map[string]interface{}var, return on the first match
+			return nil // data stored in dst.mapvar, return on the first match
 		}
 	} else {
-		dst.map[string]interface{}var = nil
+		dst.mapvar = nil
 	}
 
 	// try to unmarshal JSON data into stringvar
@@ -73,8 +73,8 @@ func (src *JsonPatchOperationValueAnyOfInner) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.int32var)
 	}
 
-	if src.map[string]interface{}var != nil {
-		return json.Marshal(&src.map[string]interface{}var)
+	if src.mapvar != nil {
+		return json.Marshal(&src.mapvar)
 	}
 
 	if src.stringvar != nil {

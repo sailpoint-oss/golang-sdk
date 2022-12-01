@@ -9,8 +9,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello, World!")
-	fmt.Println("Hello, World1!")
 
 	auth := context.WithValue(context.Background(), sailpoint.ContextClientCredentials, sailpoint.ClientCredentials{ClientId: "", ClientSecret: ""})
 

@@ -43,8 +43,8 @@ func (r ApiSpConfigExportRequest) Execute() (*SpConfigJob, *http.Response, error
 SpConfigExport Initiates Configuration Objects Export Job.
 
 This post will export objects from the tenant to a JSON configuration file.
-Request will need the following security scope:
-'sp:config:export'
+Request will need one of the following security scopes:
+- sp:config:read - sp:config:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSpConfigExportRequest
@@ -215,8 +215,8 @@ func (r ApiSpConfigExportDownloadRequest) Execute() (*SpConfigExportResults, *ht
 SpConfigExportDownload Download Result of Export Job
 
 This gets export file resulting from the export job with the requested id and downloads it to a file.
-Request will need the following security scope:
-'sp:config:export'
+Request will need one of the following security scopes:
+- sp:config:read - sp:config:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the export job for which the results will be downloaded.
@@ -385,8 +385,8 @@ func (r ApiSpConfigExportJobStatusRequest) Execute() (*SpConfigJob, *http.Respon
 SpConfigExportJobStatus Get Status of Export Job
 
 This gets the status of the export job identified by the id parameter.
-Request will need the following security scope:
-'sp:config:export'
+Request will need one of the following security scopes:
+- sp:config:read - sp:config:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the export job for which status will be returned.
@@ -575,7 +575,7 @@ SpConfigImport Initiates Configuration Objects Import Job.
 
 This post will import objects from a JSON configuration file into a tenant.
 Request will need the following security scope:
-'sp:config:import'
+- sp:config:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSpConfigImportRequest
@@ -756,7 +756,7 @@ SpConfigImportDownload Download Result of Import Job
 
 This gets import file resulting from the import job with the requested id and downloads it to a file. The downloaded file will contain the results of the import operation, including any error, warning or informational messages associated with the import.
 Request will need the following security scope:
-'sp:config:import'
+- sp:config:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the import job for which the results will be downloaded.
@@ -926,7 +926,7 @@ SpConfigImportJobStatus Get Status of Import Job
 
 This gets the status of the import job identified by the id parameter.
 Request will need the following security scope:
-'sp:config:import'
+- sp:config:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the import job for which status will be returned.
@@ -1094,8 +1094,8 @@ func (r ApiSpConfigObjectsRequest) Execute() ([]SpConfigObject, *http.Response, 
 SpConfigObjects Get Config Object details
 
 This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain "importUrl" and "exportUrl" are available for export/import.
-Request will need the following security scope:
-'sp:config:export'
+Request will need one of the following security scopes:
+- sp:config:read - sp:config:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSpConfigObjectsRequest
