@@ -1,6 +1,6 @@
 # golang-sdk
 
-### Create your project with
+### Create your project
 
 ```bash
 go mod init github.com/github-repo-name/projectname
