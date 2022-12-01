@@ -8889,7 +8889,7 @@ paths:
       description: |-
         This gets a list of OAuth clients.
         Request will require the following security scope:
-        - 'idn:oathkeeper-client-list:read'
+        - sp:oauth-client:manage
       operationId: listOauthClients
       responses:
         "200":
@@ -8963,7 +8963,7 @@ paths:
       description: |-
         This creates an OAuth client.
         Request will require the following security scope:
-        - 'idn:oathkeeper-client:create' - 'idn:oathkeeper-internal-client:create'
+        - sp:oauth-client:manage
       operationId: createOauthClient
       requestBody:
         content:
@@ -9042,7 +9042,7 @@ paths:
       description: |-
         This deletes an OAuth client.
         Request will require the following security scopes:
-        - 'idn:oathkeeper-client:delete' - 'idn:oathkeeper-internal-client:delete'
+        - sp:oauth-client:manage
       operationId: deleteOauthClient
       parameters:
       - description: The OAuth client id
@@ -9136,7 +9136,7 @@ paths:
       description: |-
         This gets details of an OAuth client.
         Request will require the following security scope:
-        - 'idn:oathkeeper-client:read'
+        - sp:oauth-client:manage - sp:oauth-client:read
       operationId: getOauthClient
       parameters:
       - description: The OAuth client id
@@ -9234,7 +9234,7 @@ paths:
       description: |-
         This performs a targeted update to the field(s) of an OAuth client.
         Request will require a security scope of
-        'idn:oathkeeper-client:update'
+        - sp:oauth-client:manage
       operationId: patchOauthClient
       parameters:
       - description: The OAuth client id
@@ -9367,9 +9367,9 @@ paths:
         \ the optional `owner-id`.  query parameter. If the `owner-id` query parameter\
         \ is omitted, all personal access tokens  for a tenant will be retrieved,\
         \ but the caller must have the 'idn:all-personal-access-tokens:read' right.\
-        \ \nAny of the following rights are required to access this resource:\n\n\
-        \  - idn:my-personal-access-tokens:read\n  - idn:all-personal-access-tokens:read\n\
-        \  - idn:managed-personal-access-tokens:read"
+        \ \nRequest will require one of the following security scopes:\n\n  - sp:my-personal-access-tokens:read\n\
+        \  - sp:my-personal-access-tokens:manage\n  - sp:all-personal-access-tokens:read\n\
+        \  - sp:all-personal-access-tokens:manage"
       operationId: listPersonalAccessTokens
       parameters:
       - description: "The identity ID of the owner whose personal access tokens should\
@@ -9453,9 +9453,9 @@ paths:
       tags:
       - Personal Access Tokens
     post:
-      description: "This creates a personal access token. \nAny of the following rights\
-        \ are required to access this resource:\n\n  - idn:my-personal-access-tokens:create\n\
-        \  - idn:all-personal-access-tokens:create\n  - idn:managed-personal-access-tokens:create"
+      description: "This creates a personal access token. \nRequest will require one\
+        \ of the following security scopes:\n\n  - sp:my-personal-access-tokens:manage\n\
+        \  - sp:all-personal-access-tokens:manage"
       operationId: createPersonalAccessToken
       requestBody:
         content:
@@ -9533,9 +9533,9 @@ paths:
       - Personal Access Tokens
   /personal-access-tokens/{id}:
     delete:
-      description: "This deletes a personal access token \nAny of the following rights\
-        \ are required to access this resource:\n\n  - idn:my-personal-access-tokens:delete\n\
-        \  - idn:all-personal-access-tokens:delete\n  - idn:managed-personal-access-tokens:delete"
+      description: "This deletes a personal access token \nRequest will require one\
+        \ of the following security scopes:\n\n  - sp:my-personal-access-tokens:manage\n\
+        \  - sp:all-personal-access-tokens:manage"
       operationId: deletePersonalAccessToken
       parameters:
       - description: The personal access token id

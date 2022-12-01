@@ -43,11 +43,10 @@ func (r ApiCreatePersonalAccessTokenRequest) Execute() (*CreatePersonalAccessTok
 CreatePersonalAccessToken Create Personal Access Token
 
 This creates a personal access token. 
-Any of the following rights are required to access this resource:
+Request will require one of the following security scopes:
 
-  - idn:my-personal-access-tokens:create
-  - idn:all-personal-access-tokens:create
-  - idn:managed-personal-access-tokens:create
+  - sp:my-personal-access-tokens:manage
+  - sp:all-personal-access-tokens:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreatePersonalAccessTokenRequest
@@ -207,11 +206,10 @@ func (r ApiDeletePersonalAccessTokenRequest) Execute() (*http.Response, error) {
 DeletePersonalAccessToken Delete Personal Access Token
 
 This deletes a personal access token 
-Any of the following rights are required to access this resource:
+Request will require one of the following security scopes:
 
-  - idn:my-personal-access-tokens:delete
-  - idn:all-personal-access-tokens:delete
-  - idn:managed-personal-access-tokens:delete
+  - sp:my-personal-access-tokens:manage
+  - sp:all-personal-access-tokens:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The personal access token id
@@ -375,11 +373,12 @@ func (r ApiListPersonalAccessTokensRequest) Execute() ([]GetPersonalAccessTokenR
 ListPersonalAccessTokens List Personal Access Tokens
 
 This gets a collection of personal access tokens associated with the optional `owner-id`.  query parameter. If the `owner-id` query parameter is omitted, all personal access tokens  for a tenant will be retrieved, but the caller must have the 'idn:all-personal-access-tokens:read' right. 
-Any of the following rights are required to access this resource:
+Request will require one of the following security scopes:
 
-  - idn:my-personal-access-tokens:read
-  - idn:all-personal-access-tokens:read
-  - idn:managed-personal-access-tokens:read
+  - sp:my-personal-access-tokens:read
+  - sp:my-personal-access-tokens:manage
+  - sp:all-personal-access-tokens:read
+  - sp:all-personal-access-tokens:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListPersonalAccessTokensRequest
