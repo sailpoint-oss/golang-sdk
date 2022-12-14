@@ -1,0 +1,7 @@
+templateDir: ./sdk-resources/v2-resources
+packageName: sailpointv2sdk
+packageVersion: 0.1.0
+generateInterfaces: false
+enumClassPrefix: false
+disallowAdditionalPropertiesIfNotPresent: false
+useOneOfDiscriminatorLookup: false

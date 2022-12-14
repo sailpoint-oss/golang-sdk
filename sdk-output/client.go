@@ -16,6 +16,7 @@ import (
 	"regexp"
 
 	sailpointsdk "github.com/sailpoint-oss/golang-sdk/sdk-output/v3"
+	sailpointv2sdk "github.com/sailpoint-oss/golang-sdk/sdk-output/v2"
 	sailpointbetasdk "github.com/sailpoint-oss/golang-sdk/sdk-output/beta"
 	sailpointccsdk "github.com/sailpoint-oss/golang-sdk/sdk-output/cc"
 )
@@ -34,6 +35,7 @@ type APIClient struct {
 	// API Services
 
 	V3 *sailpointsdk.APIClient
+	V2 *sailpointv2sdk.APIClient
 	Beta *sailpointbetasdk.APIClient
 	CC *sailpointccsdk.APIClient
 	token string
@@ -41,6 +43,7 @@ type APIClient struct {
 
 type service struct {
 	client *sailpointsdk.APIClient
+	v2client *sailpointv2sdk.APIClient
 	betaClient *sailpointbetasdk.APIClient
 	ccClient *sailpointccsdk.APIClient
 }
@@ -56,6 +59,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	
 	c.V3 = sailpointsdk.NewAPIClient(sailpointsdk.NewConfiguration(cfg.Tenant))
+	c.V2 = sailpointv2sdk.NewAPIClient(sailpointv2sdk.NewConfiguration(cfg.Tenant))
 	c.Beta = sailpointbetasdk.NewAPIClient(sailpointbetasdk.NewConfiguration(cfg.Tenant))
 	c.CC = sailpointccsdk.NewAPIClient(sailpointccsdk.NewConfiguration(cfg.Tenant))
 
