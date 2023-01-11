@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The saved search ID.  | [optional] 
 **Owner** | Pointer to [**TypedReference**](TypedReference.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the saved search.  | [optional] 
-**Description** | Pointer to **string** | The description of the saved search.  | [optional] 
+**Description** | Pointer to **NullableString** | The description of the saved search.  | [optional] 
 **Public** | Pointer to **bool** | Indicates if the saved search is public.  | [optional] [default to false]
 **Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
@@ -137,6 +137,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *SavedSearch) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *SavedSearch) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetPublic
 
 `func (o *SavedSearch) GetPublic() bool`
@@ -322,6 +332,16 @@ SetFields sets Fields field to given value.
 
 HasFields returns a boolean if a field has been set.
 
+### SetFieldsNil
+
+`func (o *SavedSearch) SetFieldsNil(b bool)`
+
+ SetFieldsNil sets the value for Fields to be an explicit nil
+
+### UnsetFields
+`func (o *SavedSearch) UnsetFields()`
+
+UnsetFields ensures that no value is present for Fields, not even an explicit nil
 ### GetSort
 
 `func (o *SavedSearch) GetSort() []string`

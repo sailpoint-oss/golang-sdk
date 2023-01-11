@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | The name of the scheduled search.  | [optional] 
-**Description** | Pointer to **string** | The description of the scheduled search.  | [optional] 
+**Description** | Pointer to **NullableString** | The description of the scheduled search.  | [optional] 
 **SavedSearchId** | **string** | The ID of the saved search that will be executed.  | 
 **Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
@@ -87,6 +87,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *ScheduledSearch) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *ScheduledSearch) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetSavedSearchId
 
 `func (o *ScheduledSearch) GetSavedSearchId() string`

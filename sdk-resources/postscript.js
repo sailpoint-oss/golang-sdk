@@ -7,7 +7,7 @@ const getAllFiles = function (dirPath, arrayOfFiles) {
     if (fs.statSync(dirPath + "/" + file).isDirectory()) {
       arrayOfFiles = getAllFiles(dirPath + "/" + file, arrayOfFiles);
     } else {
-      arrayOfFiles.push(path.join(__dirname, dirPath, "/", file));
+      arrayOfFiles.push(path.join(__dirname.replaceAll('sdk-resources',''), dirPath, "/", file));
     }
   });
   return arrayOfFiles;
@@ -140,12 +140,7 @@ const fixFiles = function (myArray) {
 
 
 let myArray = [];
-getAllFiles("../sdk-output/v3", myArray);
-
-fixFiles(myArray)
-
-myArray = [];
-getAllFiles("../sdk-output/beta", myArray);
+getAllFiles(process.argv[2], myArray);
 
 fixFiles(myArray)
 

@@ -3580,14 +3580,21 @@ func (r ApiUpdateSchemaRequest) Execute() (*Schema, *http.Response, error) {
 UpdateSchema Update Source Schema (Partial)
 
 Use this API to selectively update an existing Schema using a JSONPatch payload. 
-The following schema fields are immutable and cannot be updated:
-* id
-* name
-* created
-* modified
 
-To switch an account attribute to a group, you need to have the following in place:
-* `isEntitlement: true` * Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/v3/create-schema) before updating the `isGroup` flag.  For example, here is the `group` account attribute referencing a schema that defines the group: ```json {
+The following schema fields are immutable and cannot be updated:
+
+- id
+- name
+- created
+- modified
+
+
+To switch an account attribute to a group entitlement, you need to have the following in place:
+
+- `isEntitlement: true`
+- Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/v3/create-schema) before updating the `isGroup` flag.  For example, here is the `group` account attribute referencing a schema that defines the group:
+```json
+{
     "name": "groups",
     "type": "STRING",
     "schema": {
@@ -3599,7 +3606,9 @@ To switch an account attribute to a group, you need to have the following in pla
     "isMulti": true,
     "isEntitlement": true,
     "isGroup": true
-} ```
+}
+```
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id.

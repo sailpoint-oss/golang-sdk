@@ -19,7 +19,7 @@ type Name struct {
 	// The name of the saved search. 
 	Name *string `json:"name,omitempty"`
 	// The description of the saved search. 
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -74,36 +74,46 @@ func (o *Name) SetName(v string) {
 	o.Name = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Name) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Name) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Name) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *Name) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *Name) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *Name) UnsetDescription() {
+	o.Description.Unset()
 }
 
 func (o Name) MarshalJSON() ([]byte, error) {
@@ -111,8 +121,8 @@ func (o Name) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

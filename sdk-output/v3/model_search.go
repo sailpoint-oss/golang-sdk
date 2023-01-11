@@ -258,9 +258,9 @@ func (o *Search) SetQuery(v string) {
 	o.Query = v
 }
 
-// GetFields returns the Fields field value if set, zero value otherwise.
+// GetFields returns the Fields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Search) GetFields() []string {
-	if o == nil || isNil(o.Fields) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -269,6 +269,7 @@ func (o *Search) GetFields() []string {
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Search) GetFieldsOk() ([]string, bool) {
 	if o == nil || isNil(o.Fields) {
 		return nil, false
@@ -278,7 +279,7 @@ func (o *Search) GetFieldsOk() ([]string, bool) {
 
 // HasFields returns a boolean if a field has been set.
 func (o *Search) HasFields() bool {
-	if o != nil && !isNil(o.Fields) {
+	if o != nil && isNil(o.Fields) {
 		return true
 	}
 
@@ -384,7 +385,7 @@ func (o Search) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["query"] = o.Query
 	}
-	if !isNil(o.Fields) {
+	if o.Fields != nil {
 		toSerialize["fields"] = o.Fields
 	}
 	if !isNil(o.Sort) {

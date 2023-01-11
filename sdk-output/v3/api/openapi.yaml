@@ -374,9 +374,75 @@ tags:
     \ implementing and customizing access request functionality as a way of checking\
     \ which items are requestable as they are created, assigned, and made available.\n"
   name: Requestable Objects
-- name: Saved Search
-- name: Scheduled Search
-- name: Search
+- description: "Use this API to implement saved search functionality. \nWith saved\
+    \ search functionality in place, users can save search queries and then view those\
+    \ saved searches, as well as rerun them. \n\nSearch queries in IdentityNow can\
+    \ grow very long and specific, which can make reconstructing them difficult or\
+    \ tedious, so it can be especially helpful to save search queries. \nIt also opens\
+    \ the possibility to configure IdentityNow to run the saved queries on a schedule,\
+    \ which is essential to detecting user information and access changes throughout\
+    \ an organization's tenant and across all its sources. \nRefer to [Scheduled Search](https://developer.sailpoint.com/idn/api/v3/scheduled-search)\
+    \ for more information about running saved searches on a schedule. \n\nIn IdentityNow,\
+    \ users can save searches under a name, and then they can access that saved search\
+    \ and run it again when they want. \n\nRefer to [Managing Saved Searches](https://documentation.sailpoint.com/saas/help/search/saved-searches.html)\
+    \ for more information about saving searches and using them. \n"
+  name: Saved Search
+- description: "Use this API to implement scheduled search functionality. \nWith scheduled\
+    \ search functionality in place, users can run saved search queries on their tenants\
+    \ on a schedule, and IdentityNow emails them the search results. \nUsers can also\
+    \ share these search results with other users by email by adding those users as\
+    \ subscribers, or those users can subscribe themselves. \n\nOne of the greatest\
+    \ benefits of saving searches is the ability to run those searches on a schedule.\
+    \ \nThis is essential for organizations to constantly detect any changes to user\
+    \ information or access throughout their tenants and across all their sources.\
+    \ \nFor example, the manager Amanda Ross can schedule a saved search \"manager.name:amanda.ross\
+    \ AND attributes.location:austin\" on a schedule to regularly stay aware of changes\
+    \ with the Austin employees reporting to her.\nIdentityNow emails her the search\
+    \ results when the search runs, so she can work on other tasks instead of actively\
+    \ running this search.\n\nIn IdentityNow, scheduling a search involves a subscription.\
+    \ \nUsers can create a subscription for a saved search and schedule it to run\
+    \ daily, weekly, or monthly (you can only use one schedule option at a time).\
+    \ \nThe user can add other identities as subscribers so when the scheduled search\
+    \ runs, the subscribers and the user all receive emails. \n\nBy default, subscriptions\
+    \ exclude detailed results from the emails, for security purposes. \nIncluding\
+    \ detailed results about user access in an email may expose sensitive information.\n\
+    However, the subscription creator can choose to include the information in the\
+    \ emails.  \n\nBy default, IdentityNow sends emails to the subscribers even when\
+    \ the searches do not return new results. \nHowever, the subscription creator\
+    \ can choose to suppress these empty emails. \n\nUsers can also subscribe to saved\
+    \ searches that already have existing subscriptions so they receive emails when\
+    \ the searches run. \nA saved search can have up to 10 subscriptions configured\
+    \ at a time. \n\nThe subscription creator can enable, disable, or delete the subscription.\
+    \ \n\nRefer to [Subscribing to Saved Searches](https://documentation.sailpoint.com/saas/help/search/saved-searches.html#subscribing-to-saved-searches)\
+    \ for more information about scheduling searches and subscribing to them.\n"
+  name: Scheduled Search
+- description: "Use this API to implement search functionality. \nWith search functionality\
+    \ in place, users can search their tenants for nearly any information from throughout\
+    \ their organizations. \n\nIdentityNow enables organizations to store user data\
+    \ from across all their connected sources and manage the users' access, so the\
+    \ ability to query and filter that data is essential.  \nIts search goes through\
+    \ all those sources and finds the results quickly and specifically. \n\nThe search\
+    \ query is flexible - it can be very broad or very narrow. \nThe search only returns\
+    \ results for searchable objects it is filtering for. \nThe following objects\
+    \ are searchable: identities, roles, access profiles, entitlements, events, and\
+    \ account activities. \nBy default, no filter is applied, so a search for \"Ad\"\
+    \ returns both the identity \"Adam.Archer\" as well as the role \"Administrator.\"\
+    \n\nUsers can further narrow their results by using IdentityNow's specific syntax\
+    \ and punctuation to structure their queries. \nFor example, the query \"attributes.location:austin\
+    \ AND NOT manager.name:amanda.ross\" returns all results associated with the Austin\
+    \ location, but it excludes those associated with the manager Amanda Ross.\nRefer\
+    \ to [Building a Search Query](https://documentation.sailpoint.com/saas/help/search/building-query.html)\
+    \ for more information about how to construct specific search queries. \n\nRefer\
+    \ to [Using Search](https://documentation.sailpoint.com/saas/help/search/index.html)\
+    \ for more information about IdentityNow's search and its different possibilities.\
+    \ \n\nThe search feature uses Elasticsearch as a datastore and query engine. \n\
+    The power of Elasticsearch makes this feature suitable for ad-hoc reporting.\n\
+    However, data from the operational databases (ex. identities, roles, events, etc)\
+    \ has to be ingested into Elasticsearch. \nThis ingestion process introduces a\
+    \ latency from when the operational data is created to when it is available in\
+    \ search. \nDepending on the system load, this can take a few seconds to a few\
+    \ minutes. \nPlease keep this latency in mind when you use search. \n"
+  name: Search
 - description: "Use this API to build an integration between IdentityNow and a service\
     \ desk ITSM (IT service management) solution. \nOnce an administrator builds this\
     \ integration between IdentityNow and a service desk, users can use IdentityNow\
@@ -401,7 +467,85 @@ tags:
     \n- [Zendesk Service Desk](https://documentation.sailpoint.com/connectors/zendesk/help/integrating_zendesk_sd/introduction.html)\
     \  \n"
   name: Service Desk Integration
-- name: Sources
+- description: "Use this API to implement and customize source functionality. \nWith\
+    \ source functionality in place, organizations can use IdentityNow to connect\
+    \ their various sources and user data sets and manage access across all those\
+    \ different sources in a secure, scalable way. \n\n[Sources](https://documentation.sailpoint.com/saas/help/sources/managing_sources.html)\
+    \ refer to the IdentityNow representations for external applications, databases,\
+    \ and directory management systems that maintain their own sets of users, like\
+    \ Dropbox, GitHub, and Workday, for example.\nOrganizations may use hundreds,\
+    \ if not thousands, of different source systems, and any one employee within an\
+    \ organization likely has a different user record on each source, often with different\
+    \ permissions on many of those records. \nConnecting these sources to IdentityNow\
+    \ makes it possible to manage user access across them all.\nThen, if a new hire\
+    \ starts at an organization, IdentityNow can grant the new hire access to all\
+    \ the sources they need.\nIf an employee moves to a new department and needs access\
+    \ to new sources but no longer needs access to others, IdentityNow can grant the\
+    \ necessary access and revoke the unnecessary access for all the employee's various\
+    \ sources. \nIf an employee leaves the company, IdentityNow can revoke access\
+    \ to all the employee's various source accounts immediately. \nThese are just\
+    \ a few examples of the many ways that source functionality makes identity governance\
+    \ easier, more efficient, and more secure. \n\nIn IdentityNow, administrators\
+    \ can create configure, manage, and edit sources, and they can designate other\
+    \ users as source admins to be able to do so.\nThey can also designate users as\
+    \ source sub-admins, who can perform the same source actions but only on sources\
+    \ associated with their governance groups.\nAdmins go to Connections > Sources\
+    \ to see a list of the existing source representations in their organizations.\
+    \ \nThey can create new sources or select existing ones. \n\nTo create a new source,\
+    \ the following must be specified: Source Name, Description, Source Owner, and\
+    \ Connection Type.\nRefer to [Configuring a Source](https://documentation.sailpoint.com/saas/help/accounts/loading_data.html#configuring-a-source)\
+    \ for more information about the source configuration process. \n\nIdentityNow\
+    \ connects with its sources either by a direct communication with the source server\
+    \ (connection information specific to the source must be provided) or a flat file\
+    \ feed, a CSV file containing all the relevant information about the accounts\
+    \ to be loaded in.\nDifferent sources use different connectors to share data with\
+    \ IdentityNow, and each connector's setup process is specific to that connector.\
+    \ \nSailPoint has built a number of connectors to come out of the box and connect\
+    \ to the most common sources, and SailPoint actively maintains these connectors.\n\
+    Refer to [IdentityNow Connectors](https://documentation.sailpoint.com/connectors/identitynow/landingpages/help/landingpages/identitynow_connectivity_landing.html)\
+    \ for more information about these SailPoint supported connectors. \nRefer to\
+    \ the following links for more information about two useful connectors: \n\n-\
+    \ [JDBC Connector](https://documentation.sailpoint.com/connectors/jdbc/help/integrating_jdbc/introduction.html):\
+    \ This customizable connector an directly connect to databases that support JDBC\
+    \ (Java Database Connectivity).\n\n- [Web Services Connector](https://documentation.sailpoint.com/connectors/webservices/help/integrating_webservices/introduction.html):\
+    \ This connector can directly connect to databases that support Web Services.\
+    \ \n\nRefer to [SaaS Connectivity](https://developer.sailpoint.com/idn/docs/saas-connectivity)\
+    \ for more information about SailPoint's new connectivity framework that makes\
+    \ it easy to build and manage custom connectors to SaaS sources. \n\nWhen admins\
+    \ select existing sources, they can view the following information about the source:\n\
+    \n- Associated connections (any associated identity profiles, apps, or references\
+    \ to the source in a transform).\n\n- Associated user accounts. These accounts\
+    \ are linked to their identities - this provides a more complete picture of each\
+    \ user's access across sources.\n\n- Associated entitlements (sets of access rights\
+    \ on sources).\n\n- Associated access profiles (groupings of entitlements). \n\
+    \nThe user account data and the entitlements update with each data aggregation\
+    \ from the source. \nOrganizations generally run scheduled, automated data aggregations\
+    \ to ensure that their data is always in sync between their sources and their\
+    \ IdentityNow tenants so an access change on a source is detected quickly in IdentityNow.\n\
+    Admins can view a history of these aggregations, and they can also run manual\
+    \ imports. \nRefer to [Loading Account Data](https://documentation.sailpoint.com/saas/help/accounts/loading_data.html)\
+    \ for more information about manual and scheduled aggregations. \n\nAdmins can\
+    \ also make changes to determine which user account data IdentityNow collects\
+    \ from the source and how it correlates that account data with identity data.\
+    \ \nTo define which account attributes the source shares with IdentityNow, admins\
+    \ can edit the account schema on the source.\nRefer to [Managing Source Account\
+    \ Schemas](https://documentation.sailpoint.com/saas/help/accounts/schema.html)\
+    \ for more information about source account schemas and how to edit them. \nTo\
+    \ define the mapping between the source account attributes and their correlating\
+    \ identity attributes, admins can edit the correlation configuration on the source.\
+    \ \nRefer to [Assigning Source Accounts to Identities](https://documentation.sailpoint.com/saas/help/accounts/correlation.html)\
+    \ for more information about this correlation process between source accounts\
+    \ and identities.\n\nAdmins can also delete sources, but they must first ensure\
+    \ that the sources no longer have any active connections: the source must not\
+    \ be associated with any identity profile or any app, and it must not be referenced\
+    \ by any transform.\nRefer to [Deleting Sources](https://documentation.sailpoint.com/saas/help/sources/managing_sources.html#deleting-sources)\
+    \ for more information about deleting sources. \n\nWell organized, mappped out\
+    \ connections between sources and IdentityNow are essential to achieving comprehensive\
+    \ identity access governance across all the source systems organizations need.\
+    \ \nRefer to [Managing Sources](https://documentation.sailpoint.com/saas/help/sources/managing_sources.html)\
+    \ for more information about all the different things admins can do with sources\
+    \ once they are connected. \n"
+  name: Sources
 - description: |
     The purpose of this API is to expose functionality for the manipulation of Transform objects.
     Transforms are a form of configurable objects which define an easy way to manipulate attribute data without having
@@ -14720,17 +14864,18 @@ paths:
       - Sources
     patch:
       description: "Use this API to selectively update an existing Schema using a\
-        \ JSONPatch payload. \nThe following schema fields are immutable and cannot\
-        \ be updated:\n* id\n* name\n* created\n* modified\n\nTo switch an account\
-        \ attribute to a group, you need to have the following in place:\n* `isEntitlement:\
-        \ true` * Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/v3/create-schema)\
+        \ JSONPatch payload. \n\nThe following schema fields are immutable and cannot\
+        \ be updated:\n\n- id\n- name\n- created\n- modified\n\n\nTo switch an account\
+        \ attribute to a group entitlement, you need to have the following in place:\n\
+        \n- `isEntitlement: true`\n- Must define a schema for the group and [add it\
+        \ to the source](https://developer.sailpoint.com/idn/api/v3/create-schema)\
         \ before updating the `isGroup` flag.  For example, here is the `group` account\
-        \ attribute referencing a schema that defines the group: ```json {\n    \"\
-        name\": \"groups\",\n    \"type\": \"STRING\",\n    \"schema\": {\n      \
-        \  \"type\": \"CONNECTOR_SCHEMA\",\n        \"id\": \"2c9180887671ff8c01767b4671fc7d60\"\
+        \ attribute referencing a schema that defines the group:\n```json\n{\n   \
+        \ \"name\": \"groups\",\n    \"type\": \"STRING\",\n    \"schema\": {\n  \
+        \      \"type\": \"CONNECTOR_SCHEMA\",\n        \"id\": \"2c9180887671ff8c01767b4671fc7d60\"\
         ,\n        \"name\": \"group\"\n    },\n    \"description\": \"The groups,\
         \ roles etc. that reference account group objects\",\n    \"isMulti\": true,\n\
-        \    \"isEntitlement\": true,\n    \"isGroup\": true\n} ```"
+        \    \"isEntitlement\": true,\n    \"isGroup\": true\n}\n```\n"
       operationId: updateSchema
       parameters:
       - description: The Source id.
@@ -22919,6 +23064,7 @@ components:
           description: |
             The description of the saved search.
           example: Disabled accounts
+          nullable: true
           type: string
       type: object
     Search:
@@ -22977,6 +23123,7 @@ components:
           - disabled
           items:
             type: string
+          nullable: true
           type: array
         sort:
           description: |
@@ -23027,6 +23174,7 @@ components:
           description: |
             The description of the scheduled search.
           example: Daily disabled accounts
+          nullable: true
           type: string
       type: object
     TypedReference:
@@ -23108,17 +23256,25 @@ components:
           description: The fields to be used to sort the search results. Use + or
             - to specify the sort direction.
           items:
-            example: +id
+            example: "[displayName, +id]"
             type: string
           type: array
         searchAfter:
-          description: |-
-            Used to begin the search window at the values specified.
-            This parameter consists of the last values of the sorted fields in the current record set.
-            This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value.
-            For example, when searching for identities, if the last idenitity ID in the search result is 2c91808375d8e80a0175e1f88a575221, then using that ID in this property will start a new search after this identity.
+          description: "Used to begin the search window at the values specified.\n\
+            This parameter consists of the last values of the sorted fields in the\
+            \ current record set.\nThis is used to expand the Elasticsearch limit\
+            \ of 10K records by shifting the 10K window to begin at this value.\n\
+            It is recommended that you always include the ID of the object in addition\
+            \ to any other fields on this parameter in order to ensure you don't get\
+            \ duplicate results while paging.\nFor example, when searching for identities,\
+            \ if you are sorting by displayName you will also want to include ID,\
+            \ for example [\"displayName\", \"id\"]. \nIf the last identity ID in\
+            \ the search result is 2c91808375d8e80a0175e1f88a575221 and the last displayName\
+            \ is \"John Doe\", then using that displayName and ID will start a new\
+            \ search after this identity.\nThe searchAfter value will look like [\"\
+            John Doe\",\"2c91808375d8e80a0175e1f88a575221\"]"
           items:
-            example: 2c91808375d8e80a0175e1f88a575221
+            example: "[John Doe, 2c91808375d8e80a0175e1f88a575221]"
             type: string
           type: array
         filters:

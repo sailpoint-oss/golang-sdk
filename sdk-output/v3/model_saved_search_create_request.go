@@ -20,7 +20,7 @@ type SavedSearchCreateRequest struct {
 	// The name of the saved search. 
 	Name *string `json:"name,omitempty"`
 	// The description of the saved search. 
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	// Indicates if the saved search is public. 
 	Public *bool `json:"public,omitempty"`
 	// A date-time in ISO-8601 format
@@ -98,36 +98,46 @@ func (o *SavedSearchCreateRequest) SetName(v string) {
 	o.Name = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedSearchCreateRequest) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SavedSearchCreateRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *SavedSearchCreateRequest) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *SavedSearchCreateRequest) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *SavedSearchCreateRequest) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *SavedSearchCreateRequest) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetPublic returns the Public field value if set, zero value otherwise.
@@ -326,9 +336,9 @@ func (o *SavedSearchCreateRequest) SetQuery(v string) {
 	o.Query = v
 }
 
-// GetFields returns the Fields field value if set, zero value otherwise.
+// GetFields returns the Fields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedSearchCreateRequest) GetFields() []string {
-	if o == nil || isNil(o.Fields) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -337,6 +347,7 @@ func (o *SavedSearchCreateRequest) GetFields() []string {
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SavedSearchCreateRequest) GetFieldsOk() ([]string, bool) {
 	if o == nil || isNil(o.Fields) {
 		return nil, false
@@ -346,7 +357,7 @@ func (o *SavedSearchCreateRequest) GetFieldsOk() ([]string, bool) {
 
 // HasFields returns a boolean if a field has been set.
 func (o *SavedSearchCreateRequest) HasFields() bool {
-	if o != nil && !isNil(o.Fields) {
+	if o != nil && isNil(o.Fields) {
 		return true
 	}
 
@@ -437,8 +448,8 @@ func (o SavedSearchCreateRequest) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if !isNil(o.Public) {
 		toSerialize["public"] = o.Public
@@ -458,7 +469,7 @@ func (o SavedSearchCreateRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["query"] = o.Query
 	}
-	if !isNil(o.Fields) {
+	if o.Fields != nil {
 		toSerialize["fields"] = o.Fields
 	}
 	if !isNil(o.Sort) {
