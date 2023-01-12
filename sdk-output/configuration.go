@@ -14,27 +14,13 @@ import (
 	"net/http"
 )
 
-// contextKeys are used to identify the type of value in the context.
-// Since these are string, it is possible to get a short description of the
-// context key for logging and debugging using key.String().
 
-type contextKey string
-
-func (c contextKey) String() string {
-	return "auth " + string(c)
-}
-
-type ClientCredentials struct {
+type ClientConfiguration struct {
 	ClientId string
 	ClientSecret string
+	BaseURL string
+	TokenURL string
 }
-
-var (
-	// ContextAccessToken takes a string oauth2 access token as authentication for the request.
-	ContextAccessToken = "accesstoken"
-
-	ContextClientCredentials = "clientCredentials"
-)
 
 // ServerVariable stores the information about a server variable
 type ServerVariable struct {
@@ -63,19 +49,19 @@ type Configuration struct {
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *http.Client
-	Tenant			 string
+	ClientConfiguration ClientConfiguration
 }
 
 // NewConfiguration returns a new Configuration object
-func NewConfiguration(tenant string) *Configuration {
+func NewConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "OpenAPI-Generator/0.1.0/go",
 		Debug:            false,
-		Tenant: 		  tenant,		
+		ClientConfiguration: 		  clientConfiguration,		
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://" + tenant + ".api.identitynow.com/v3",
+				URL: clientConfiguration.BaseURL + "/v3",
 				Description: "This is the production API server.",
 			},
 		},

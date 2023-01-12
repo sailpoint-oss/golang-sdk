@@ -11,20 +11,20 @@ import (
 
 func main() {
 
-	auth := context.WithValue(context.Background(), sailpoint.ContextClientCredentials, sailpoint.ClientCredentials{ClientId: "", ClientSecret: ""})
+	ctx := context.TODO()
 
-	configuration := sailpoint.NewConfiguration("devrel")
+	configuration := sailpoint.NewConfiguration(sailpoint.ClientConfiguration{ClientId: "", ClientSecret: "", BaseURL: "", TokenURL: ""})
 
 	apiClient := sailpoint.NewAPIClient(configuration)
 
-	getResults(auth, apiClient)
+	getResults(ctx, apiClient)
 
-	getAllPaginatedResults(auth, apiClient)
+	getAllPaginatedResults(ctx, apiClient)
 
 }
 
-func getResults(auth context.Context, apiClient *sailpoint.APIClient) {
-	resp, r, err := apiClient.V3.AccountsApi.ListAccounts(auth).Execute()
+func getResults(ctx context.Context, apiClient *sailpoint.APIClient) {
+	resp, r, err := apiClient.V3.AccountsApi.ListAccounts(ctx).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -33,8 +33,8 @@ func getResults(auth context.Context, apiClient *sailpoint.APIClient) {
 	fmt.Fprintf(os.Stdout, "First response from `AccountsApi.ListAccount`: %v\n", resp[0].Name)
 }
 
-func getAllPaginatedResults(auth context.Context, apiClient *sailpoint.APIClient) {
-	resp, r, err := sailpoint.Paginate[sailpointsdk.Account](apiClient.V3.AccountsApi.ListAccounts(auth), 0, 1000)
+func getAllPaginatedResults(ctx context.Context, apiClient *sailpoint.APIClient) {
+	resp, r, err := sailpoint.Paginate[sailpointsdk.Account](apiClient.V3.AccountsApi.ListAccounts(ctx), 0, 1000)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
