@@ -6,6 +6,7 @@ import (
 	"os"
 
 	sailpoint "github.com/sailpoint-oss/golang-sdk/sdk-output"
+	sailpointsdk "github.com/sailpoint-oss/golang-sdk/sdk-output/v3"
 )
 
 func main() {
@@ -16,16 +17,28 @@ func main() {
 
 	apiClient := sailpoint.NewAPIClient(configuration)
 
-	//apiClient2 := sailpointsdk.NewAPIClient(sailpointsdk.NewConfiguration("test"))
+	getResults(auth, apiClient)
 
-	resp, r, err := apiClient.V3.TransformsApi.GetTransformsList(auth).Execute()
+	getAllPaginatedResults(auth, apiClient)
+
+}
+
+func getResults(auth context.Context, apiClient *sailpoint.APIClient) {
+	resp, r, err := apiClient.V3.AccountsApi.ListAccounts(auth).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.GetTransformsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetTransformsList`: []Transform
-	fmt.Fprintf(os.Stdout, "Response from `TransformsApi.GetTransformsList`: %v\n", resp[0].Name)
+	// response from `ListAccounts`: []Account
+	fmt.Fprintf(os.Stdout, "First response from `AccountsApi.ListAccount`: %v\n", resp[0].Name)
+}
 
-	fmt.Println(r.Body)
-
+func getAllPaginatedResults(auth context.Context, apiClient *sailpoint.APIClient) {
+	resp, r, err := sailpoint.Paginate[sailpointsdk.Account](apiClient.V3.AccountsApi.ListAccounts(auth), 0, 1000)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAccounts`: []Account
+	fmt.Fprintf(os.Stdout, "First response from `AccountsApi.ListAccount`: %v\n", resp[0].Name)
 }

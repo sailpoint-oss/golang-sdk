@@ -30,17 +30,13 @@ func main() {
 
 	apiClient := sailpoint.NewAPIClient(configuration)
 
-	//apiClient2 := sailpointsdk.NewAPIClient(sailpointsdk.NewConfiguration("test"))
-
-	resp, r, err := apiClient.V3.TransformsApi.GetTransformsList(auth).Execute()
+	resp, r, err := apiClient.V3.AccountsApi.ListAccounts(auth).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.GetTransformsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetTransformsList`: []Transform
-	fmt.Fprintf(os.Stdout, "Response from `TransformsApi.GetTransformsList`: %v\n", resp[0].Name)
-
-	fmt.Println(r.Body)
+	// response from `ListAccounts`: []Account
+	fmt.Fprintf(os.Stdout, "First response from `AccountsApi.ListAccount`: %v\n", resp[0].Name)
 
 }
 ```
@@ -56,3 +52,38 @@ go mod tidy
 ```bash
 go run sdk.go
 ```
+
+
+### Handling Pagination
+
+there is a built in pagination function that can be used to automatically call and collect responses from APIs that support pagination. Use the following syntax to call it:
+
+```go
+import (
+	"context"
+	"fmt"
+	"os"
+
+	sailpoint "github.com/sailpoint-oss/golang-sdk/sdk-output"
+	// need to import the v3 library so we are aware of the sailpointsdk.Account struct
+	sailpointsdk "github.com/sailpoint-oss/golang-sdk/sdk-output/v3"
+)
+
+func main() {
+
+	auth := context.WithValue(context.Background(), sailpoint.ContextClientCredentials, sailpoint.ClientCredentials{ClientId: "", ClientSecret: ""})
+
+	configuration := sailpoint.NewConfiguration("devrel")
+
+	apiClient := sailpoint.NewAPIClient(configuration)
+
+	// use the paginate function to get 1000 results instead of hitting the normal 250 limit
+	resp, r, err := sailpoint.Paginate[sailpointsdk.Account](apiClient.V3.AccountsApi.ListAccounts(auth), 0, 1000)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAccounts`: []Account
+	fmt.Fprintf(os.Stdout, "First response from `AccountsApi.ListAccount`: %v\n", resp[0].Name)
+
+}
