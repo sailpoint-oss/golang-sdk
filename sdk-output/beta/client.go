@@ -34,6 +34,7 @@ import (
 	"unicode/utf8"
 
 	"golang.org/x/oauth2"
+	retryablehttp "github.com/hashicorp/go-retryablehttp"
 )
 
 var (
@@ -158,7 +159,7 @@ type service struct {
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *Configuration) *APIClient {
 	if cfg.HTTPClient == nil {
-		cfg.HTTPClient = http.DefaultClient
+		cfg.HTTPClient = retryablehttp.NewClient()
 	}
 
 	c := &APIClient{}
@@ -315,7 +316,7 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 		log.Printf("\n%s\n", string(dump))
 	}
 
-	resp, err := c.cfg.HTTPClient.Do(request)
+	resp, err := c.cfg.HTTPClient.StandardClient().Do(request)
 	if err != nil {
 		return resp, err
 	}
