@@ -13,7 +13,7 @@ func main() {
 
 	ctx := context.TODO()
 
-	configuration := sailpoint.NewConfiguration(sailpoint.ClientConfiguration{ClientId: "", ClientSecret: "", BaseURL: "", TokenURL: ""})
+	configuration := sailpoint.NewDefaultConfiguration()
 
 	apiClient := sailpoint.NewAPIClient(configuration)
 

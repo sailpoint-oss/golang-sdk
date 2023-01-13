@@ -13,8 +13,9 @@ package sailpointsdk
 import (
 	"context"
 	"fmt"
-	"net/http"
 	"strings"
+
+	retryablehttp "github.com/hashicorp/go-retryablehttp"
 )
 
 // contextKeys are used to identify the type of value in the context.
@@ -96,7 +97,7 @@ type Configuration struct {
 	Debug            bool              `json:"debug,omitempty"`
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
-	HTTPClient       *http.Client
+	HTTPClient       *retryablehttp.Client
 	ClientId 		 string
 	ClientSecret     string
 	BaseURL          string
@@ -115,7 +116,7 @@ func NewConfiguration(clientId string, clientSecret string, baseURL string, toke
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: baseURL + "/v3",
+				URL: baseURL,
 				Description: "This is the production API server.",
 			},
 		},

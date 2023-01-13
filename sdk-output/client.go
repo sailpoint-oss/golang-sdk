@@ -54,9 +54,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	c := &APIClient{}
 
-	c.V3 = sailpointsdk.NewAPIClient(sailpointsdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL))
-	c.V2 = sailpointv2sdk.NewAPIClient(sailpointv2sdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL))
-	c.Beta = sailpointbetasdk.NewAPIClient(sailpointbetasdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL))
+	c.V3 = sailpointsdk.NewAPIClient(sailpointsdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v3", cfg.ClientConfiguration.TokenURL))
+	c.V2 = sailpointv2sdk.NewAPIClient(sailpointv2sdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2", cfg.ClientConfiguration.TokenURL))
+	c.Beta = sailpointbetasdk.NewAPIClient(sailpointbetasdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/beta", cfg.ClientConfiguration.TokenURL))
 	c.CC = sailpointccsdk.NewAPIClient(sailpointccsdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL))
 
 	// API Services

@@ -4,8 +4,9 @@ package {{packageName}}
 import (
 	"context"
 	"fmt"
-	"net/http"
 	"strings"
+
+	retryablehttp "github.com/hashicorp/go-retryablehttp"
 )
 
 // contextKeys are used to identify the type of value in the context.
@@ -109,7 +110,7 @@ type Configuration struct {
 	Debug            bool              `json:"debug,omitempty"`
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
-	HTTPClient       *http.Client
+	HTTPClient       *retryablehttp.Client
 	ClientId 		 string
 	ClientSecret     string
 	BaseURL          string
@@ -134,7 +135,7 @@ func NewConfiguration(clientId string, clientSecret string, baseURL string, toke
 		Servers:          ServerConfigurations{
 		{{/-first}}
 			{
-				URL: baseURL + "/v3",
+				URL: baseURL,
 				Description: "{{{description}}}{{^description}}No description provided{{/description}}",
 			},
 		{{#-last}}
