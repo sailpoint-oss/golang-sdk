@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Operation** | Pointer to [**RoleCriteriaOperation**](RoleCriteriaOperation.md) |  | [optional] 
-**Key** | Pointer to [**RoleCriteriaKey**](RoleCriteriaKey.md) |  | [optional] 
+**Key** | Pointer to [**NullableRoleCriteriaKey**](RoleCriteriaKey.md) |  | [optional] 
 **StringValue** | Pointer to **string** | String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error. | [optional] 
 
 ## Methods
@@ -77,6 +77,16 @@ SetKey sets Key field to given value.
 
 HasKey returns a boolean if a field has been set.
 
+### SetKeyNil
+
+`func (o *RoleCriteriaLevel3) SetKeyNil(b bool)`
+
+ SetKeyNil sets the value for Key to be an explicit nil
+
+### UnsetKey
+`func (o *RoleCriteriaLevel3) UnsetKey()`
+
+UnsetKey ensures that no value is present for Key, not even an explicit nil
 ### GetStringValue
 
 `func (o *RoleCriteriaLevel3) GetStringValue() string`

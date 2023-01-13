@@ -388,15 +388,13 @@ func (c *APIClient) prepareRequest(
 			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
 		}
 
-		if c.token == "" {
-			if  auth, ok := ctx.Value(ContextClientCredentials).(interface{}); ok {
-				auth, err := getAccessToken(reflect.ValueOf(reflect.ValueOf(&auth).Elem().Elem().Field(0).Interface()).String(), reflect.ValueOf(reflect.ValueOf(&auth).Elem().Elem().Field(1).Interface()).String(), c.cfg.Tenant)
-				if err != nil {
-					return nil, err
-				}
-				c.token = auth
-				localVarRequest.Header.Add("Authorization", "Bearer "+auth)
+		if c.token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
+			auth, err := getAccessToken(c.cfg.ClientId, c.cfg.ClientSecret, c.cfg.TokenURL)
+			if err != nil {
+				return nil, err
 			}
+			c.token = auth
+			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
 		} else {
 			localVarRequest.Header.Add("Authorization", "Bearer "+c.token)
 		}
@@ -425,8 +423,8 @@ type AccessToken struct {
 	Jti                 string `json:"jti"`
 }
 
-func getAccessToken(clientId string, clientSecret string, tenant string) (string, error) {
-	url := "https://" + tenant + ".api.identitynow.com/oauth/token?grant_type=client_credentials&client_id=" + clientId + "&client_secret=" + clientSecret
+func getAccessToken(clientId string, clientSecret string, tokenURL string) (string, error) {
+	url := tokenURL + "?grant_type=client_credentials&client_id=" + clientId + "&client_secret=" + clientSecret
 	method := "POST"
 	client := &http.Client{}
 	req, err := http.NewRequest(method, url, nil)

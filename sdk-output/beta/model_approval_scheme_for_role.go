@@ -19,7 +19,7 @@ type ApprovalSchemeForRole struct {
 	// Describes the individual or group that is responsible for an approval step. Values are as follows.  **OWNER**: Owner of the associated Role  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field
 	ApproverType *string `json:"approverType,omitempty"`
 	// Id of the specific approver, used only when approverType is GOVERNANCE_GROUP
-	ApproverId *string `json:"approverId,omitempty"`
+	ApproverId NullableString `json:"approverId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -74,36 +74,46 @@ func (o *ApprovalSchemeForRole) SetApproverType(v string) {
 	o.ApproverType = &v
 }
 
-// GetApproverId returns the ApproverId field value if set, zero value otherwise.
+// GetApproverId returns the ApproverId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalSchemeForRole) GetApproverId() string {
-	if o == nil || isNil(o.ApproverId) {
+	if o == nil || isNil(o.ApproverId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ApproverId
+	return *o.ApproverId.Get()
 }
 
 // GetApproverIdOk returns a tuple with the ApproverId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalSchemeForRole) GetApproverIdOk() (*string, bool) {
-	if o == nil || isNil(o.ApproverId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ApproverId, true
+	return o.ApproverId.Get(), o.ApproverId.IsSet()
 }
 
 // HasApproverId returns a boolean if a field has been set.
 func (o *ApprovalSchemeForRole) HasApproverId() bool {
-	if o != nil && !isNil(o.ApproverId) {
+	if o != nil && o.ApproverId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetApproverId gets a reference to the given string and assigns it to the ApproverId field.
+// SetApproverId gets a reference to the given NullableString and assigns it to the ApproverId field.
 func (o *ApprovalSchemeForRole) SetApproverId(v string) {
-	o.ApproverId = &v
+	o.ApproverId.Set(&v)
+}
+// SetApproverIdNil sets the value for ApproverId to be an explicit nil
+func (o *ApprovalSchemeForRole) SetApproverIdNil() {
+	o.ApproverId.Set(nil)
+}
+
+// UnsetApproverId ensures that no value is present for ApproverId, not even an explicit nil
+func (o *ApprovalSchemeForRole) UnsetApproverId() {
+	o.ApproverId.Unset()
 }
 
 func (o ApprovalSchemeForRole) MarshalJSON() ([]byte, error) {
@@ -111,8 +121,8 @@ func (o ApprovalSchemeForRole) MarshalJSON() ([]byte, error) {
 	if !isNil(o.ApproverType) {
 		toSerialize["approverType"] = o.ApproverType
 	}
-	if !isNil(o.ApproverId) {
-		toSerialize["approverId"] = o.ApproverId
+	if o.ApproverId.IsSet() {
+		toSerialize["approverId"] = o.ApproverId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

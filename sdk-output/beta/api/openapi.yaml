@@ -635,7 +635,85 @@ tags:
   name: SOD Policy
 - description: Operations for Predicting SOD (Seperation of Duties) violations
   name: SOD Violations
-- name: Sources
+- description: "Use this API to implement and customize source functionality. \nWith\
+    \ source functionality in place, organizations can use IdentityNow to connect\
+    \ their various sources and user data sets and manage access across all those\
+    \ different sources in a secure, scalable way. \n\n[Sources](https://documentation.sailpoint.com/saas/help/sources/managing_sources.html)\
+    \ refer to the IdentityNow representations for external applications, databases,\
+    \ and directory management systems that maintain their own sets of users, like\
+    \ Dropbox, GitHub, and Workday, for example.\nOrganizations may use hundreds,\
+    \ if not thousands, of different source systems, and any one employee within an\
+    \ organization likely has a different user record on each source, often with different\
+    \ permissions on many of those records. \nConnecting these sources to IdentityNow\
+    \ makes it possible to manage user access across them all.\nThen, if a new hire\
+    \ starts at an organization, IdentityNow can grant the new hire access to all\
+    \ the sources they need.\nIf an employee moves to a new department and needs access\
+    \ to new sources but no longer needs access to others, IdentityNow can grant the\
+    \ necessary access and revoke the unnecessary access for all the employee's various\
+    \ sources. \nIf an employee leaves the company, IdentityNow can revoke access\
+    \ to all the employee's various source accounts immediately. \nThese are just\
+    \ a few examples of the many ways that source functionality makes identity governance\
+    \ easier, more efficient, and more secure. \n\nIn IdentityNow, administrators\
+    \ can create configure, manage, and edit sources, and they can designate other\
+    \ users as source admins to be able to do so.\nThey can also designate users as\
+    \ source sub-admins, who can perform the same source actions but only on sources\
+    \ associated with their governance groups.\nAdmins go to Connections > Sources\
+    \ to see a list of the existing source representations in their organizations.\
+    \ \nThey can create new sources or select existing ones. \n\nTo create a new source,\
+    \ the following must be specified: Source Name, Description, Source Owner, and\
+    \ Connection Type.\nRefer to [Configuring a Source](https://documentation.sailpoint.com/saas/help/accounts/loading_data.html#configuring-a-source)\
+    \ for more information about the source configuration process. \n\nIdentityNow\
+    \ connects with its sources either by a direct communication with the source server\
+    \ (connection information specific to the source must be provided) or a flat file\
+    \ feed, a CSV file containing all the relevant information about the accounts\
+    \ to be loaded in.\nDifferent sources use different connectors to share data with\
+    \ IdentityNow, and each connector's setup process is specific to that connector.\
+    \ \nSailPoint has built a number of connectors to come out of the box and connect\
+    \ to the most common sources, and SailPoint actively maintains these connectors.\n\
+    Refer to [IdentityNow Connectors](https://documentation.sailpoint.com/connectors/identitynow/landingpages/help/landingpages/identitynow_connectivity_landing.html)\
+    \ for more information about these SailPoint supported connectors. \nRefer to\
+    \ the following links for more information about two useful connectors: \n\n-\
+    \ [JDBC Connector](https://documentation.sailpoint.com/connectors/jdbc/help/integrating_jdbc/introduction.html):\
+    \ This customizable connector an directly connect to databases that support JDBC\
+    \ (Java Database Connectivity).\n\n- [Web Services Connector](https://documentation.sailpoint.com/connectors/webservices/help/integrating_webservices/introduction.html):\
+    \ This connector can directly connect to databases that support Web Services.\
+    \ \n\nRefer to [SaaS Connectivity](https://developer.sailpoint.com/idn/docs/saas-connectivity)\
+    \ for more information about SailPoint's new connectivity framework that makes\
+    \ it easy to build and manage custom connectors to SaaS sources. \n\nWhen admins\
+    \ select existing sources, they can view the following information about the source:\n\
+    \n- Associated connections (any associated identity profiles, apps, or references\
+    \ to the source in a transform).\n\n- Associated user accounts. These accounts\
+    \ are linked to their identities - this provides a more complete picture of each\
+    \ user's access across sources.\n\n- Associated entitlements (sets of access rights\
+    \ on sources).\n\n- Associated access profiles (groupings of entitlements). \n\
+    \nThe user account data and the entitlements update with each data aggregation\
+    \ from the source. \nOrganizations generally run scheduled, automated data aggregations\
+    \ to ensure that their data is always in sync between their sources and their\
+    \ IdentityNow tenants so an access change on a source is detected quickly in IdentityNow.\n\
+    Admins can view a history of these aggregations, and they can also run manual\
+    \ imports. \nRefer to [Loading Account Data](https://documentation.sailpoint.com/saas/help/accounts/loading_data.html)\
+    \ for more information about manual and scheduled aggregations. \n\nAdmins can\
+    \ also make changes to determine which user account data IdentityNow collects\
+    \ from the source and how it correlates that account data with identity data.\
+    \ \nTo define which account attributes the source shares with IdentityNow, admins\
+    \ can edit the account schema on the source.\nRefer to [Managing Source Account\
+    \ Schemas](https://documentation.sailpoint.com/saas/help/accounts/schema.html)\
+    \ for more information about source account schemas and how to edit them. \nTo\
+    \ define the mapping between the source account attributes and their correlating\
+    \ identity attributes, admins can edit the correlation configuration on the source.\
+    \ \nRefer to [Assigning Source Accounts to Identities](https://documentation.sailpoint.com/saas/help/accounts/correlation.html)\
+    \ for more information about this correlation process between source accounts\
+    \ and identities.\n\nAdmins can also delete sources, but they must first ensure\
+    \ that the sources no longer have any active connections: the source must not\
+    \ be associated with any identity profile or any app, and it must not be referenced\
+    \ by any transform.\nRefer to [Deleting Sources](https://documentation.sailpoint.com/saas/help/sources/managing_sources.html#deleting-sources)\
+    \ for more information about deleting sources. \n\nWell organized, mappped out\
+    \ connections between sources and IdentityNow are essential to achieving comprehensive\
+    \ identity access governance across all the source systems organizations need.\
+    \ \nRefer to [Managing Sources](https://documentation.sailpoint.com/saas/help/sources/managing_sources.html)\
+    \ for more information about all the different things admins can do with sources\
+    \ once they are connected. \n"
+  name: Sources
 - description: Import and export configuration for some objects between tenants.
   name: SP-Config
 - name: Tagged Objects
@@ -975,8 +1053,8 @@ paths:
     post:
       description: |-
         This API creates an Access Profile.
-
         A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a token with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the Access Profile's Source.
+        The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
       operationId: createAccessProfile
       requestBody:
         content:
@@ -1243,14 +1321,13 @@ paths:
     patch:
       description: |-
         This API updates an existing Access Profile. The following fields are patchable:
-
         **name**, **description**, **enabled**, **owner**, **requestable**, **accessRequestConfig**, **revokeRequestConfig**, **segments**, **entitlements**, **provisioningCriteria**
-
-        > You can only add or replace **entitlements** that exist on the source that the access profile is attached to.   You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
-
-        >  Patching the value of the **requestable** field is only supported for customers enabled with the new Request  Center. Otherwise, attempting to modify this field results in a 400 error.
-
         A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer.
+        >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
+
+        > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
+
+        >  Patching the value of the **requestable** field is only supported for customers enabled with the new Request Center. Otherwise, attempting to modify this field results in a 400 error.
       operationId: patchAccessProfile
       parameters:
       - description: ID of the Access Profile to patch
@@ -6565,8 +6642,18 @@ paths:
       - Certification Campaigns
   /campaigns/{id}/complete:
     post:
-      description: |-
-        Completes a certification campaign only if it is past the due date. This is provided to admins so that they can complete a certification even if all items have not been completed.
+      description: |
+        :::caution
+
+        This endpoint will run successfully for any campaigns that are **past due**.
+
+        This endpoint will return a content error if the campaign is **not past due**.
+
+        :::
+
+        Completes a certification campaign. This is provided to admins so that they
+        can complete a certification even if all items have not been completed.
+
         Requires roles of CERT_ADMIN and ORG_ADMIN
       operationId: completeCampaign
       parameters:
@@ -9881,23 +9968,6 @@ paths:
         schema:
           type: string
         style: form
-      - deprecated: true
-        description: |-
-          **WARNING: This parameter is deprecated and support will be removed in an upcoming release.**
-
-          This endpoint supports cursor-based pagination as an alternative to pagination using **limit** and **offset**. Use of cursors is optional but may deliver significantly better performance when paginating over large result sets, particularly when sorting is involved.
-
-          To obtain an initial cursor value, the initial request must be made with **offset=0** and **count=false**, or by omitting those parameters. Other query parameters may be specified on the initial request, to specify filtering and sorting for example. The response to this initial request will provide a cursor value in the **Slpt-Cursor** response header. Thereafter, passing in the last returned value of **Slpt-Cursor** as the value of the **cursor** parameter on the following request will return the next page of results, and so on. The end of the result set is signalled when a request returns without providing a value for **Slpt-Cursor**.
-
-          The **cursor** param is generally incompatible with other parameters; the second and subsequent requests should only pass that parameter and no others. A 400 Bad Request will be returned if any incompatible parameter values are passed along with the **cursor**.
-
-          Cursors expire after 15 minutes; a 400 Bad Request is returned if an expired value is provided for **cursor**.
-        example: 9602877a-1c11-4c02-a399-7273ea2158da
-        in: query
-        name: cursor
-        required: false
-        schema:
-          type: string
       responses:
         "200":
           content:
@@ -9966,138 +10036,9 @@ paths:
       summary: Gets a list of entitlements.
       tags:
       - Entitlements
-    patch:
-      description: |-
-        This API updates an existing Entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
-
-        The following fields are patchable: **requestable**, **privileged**, **segments**
-
-        A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
-      operationId: patchEntitlement
-      parameters:
-      - description: ID of the Entitlement to patch
-        in: path
-        name: id
-        required: true
-        schema:
-          example: 2c91808a7813090a017814121e121518
-          type: string
-      requestBody:
-        content:
-          application/json-patch+json:
-            examples:
-              Make an Entitlement Requestable and Privileged in One Call:
-                description: This example shows how multiple fields may be updated
-                  with a single patch call.
-                value:
-                - op: replace
-                  path: /requestable
-                  value: true
-                - op: replace
-                  path: /privileged
-                  value: true
-              Assign an Entitlement to a Segment:
-                description: This example illustrates the use of patch to assign an
-                  Entitlement to a Segment by adding the Segment's ID to the Entitlement's
-                  segments array.
-                value:
-                - op: add
-                  path: /segments/-
-                  value: f7b1b8a3-5fed-4fd4-ad29-82014e137e19
-            schema:
-              items:
-                $ref: '#/components/schemas/JsonPatchOperation'
-              type: array
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Entitlement'
-          description: Responds with the Entitlement as updated.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      summary: Patch a specified Entitlement
-      tags:
-      - Entitlements
   /entitlements/{id}:
     get:
-      description: |-
-        This API returns an Entitlement by its ID.
-
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: This API returns an Entitlement by its ID.
       operationId: getEntitlement
       parameters:
       - description: Entitlement Id
@@ -10214,12 +10155,139 @@ paths:
       summary: Get an Entitlement
       tags:
       - Entitlements
+    patch:
+      description: |-
+        This API updates an existing Entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+
+        The following fields are patchable: **requestable**, **privileged**, **segments**
+
+        A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
+      operationId: patchEntitlement
+      parameters:
+      - description: ID of the Entitlement to patch
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121e121518
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Make an Entitlement Requestable and Privileged in One Call:
+                description: This example shows how multiple fields may be updated
+                  with a single patch call.
+                value:
+                - op: replace
+                  path: /requestable
+                  value: true
+                - op: replace
+                  path: /privileged
+                  value: true
+              Assign an Entitlement to a Segment:
+                description: This example illustrates the use of patch to assign an
+                  Entitlement to a Segment by adding the Segment's ID to the Entitlement's
+                  segments array.
+                value:
+                - op: add
+                  path: /segments/-
+                  value: f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+            schema:
+              example:
+              - op: replace
+                path: /requestable
+                value: true
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Entitlement'
+          description: Responds with the Entitlement as updated.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Patch a specified Entitlement
+      tags:
+      - Entitlements
   /entitlements/{id}/parents:
     get:
-      description: |-
-        This API returns a list of all parent entitlements of a given entitlement.
-
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: This API returns a list of all parent entitlements of a given entitlement.
       operationId: listEntitlementParents
       parameters:
       - description: |-
@@ -10378,10 +10446,7 @@ paths:
       - Entitlements
   /entitlements/{id}/children:
     get:
-      description: |-
-        This API returns a list of all child entitlements of a given entitlement.
-
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: This API returns a list of all child entitlements of a given entitlement.
       operationId: listEntitlementchildren
       parameters:
       - description: |-
@@ -19674,6 +19739,13 @@ paths:
         schema:
           example: include-translation-messages=
           type: string
+      - description: The outlier id
+        example: 2c918085842e69ae018432d22ccb212f
+        in: path
+        name: outlierId
+        required: true
+        schema:
+          type: string
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard_collection_parameters.html)
           Sorting is supported for the following fields: **importance**
@@ -25168,6 +25240,7 @@ paths:
         This API creates a Role.
         There is a soft limit of 800 roles per org in IdentityNow.  You will receive an error if you attempt to add more than 800 roles via the API or the UI.  If you need to add roles above this limit, please create a support ticket.
         A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a ROLE_SUBADMIN may not create a Role including an Access Profile if that Access Profile is associated with a Source with which the ROLE_SUBADMIN is not themselves associated.
+        The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles, however, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
       operationId: createRole
       requestBody:
         content:
@@ -25423,8 +25496,8 @@ paths:
         This API updates an existing Role using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 
         The following fields are patchable: **name**, **description**, **enabled**, **owner**, **accessProfiles**, **membership**, **requestable**, **accessRequestConfig**, **revokeRequestConfig**, **segments**
-
         A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a token with ROLE_SUBADMIN authority may only call this API if all Access Profiles included in the Role are associated to Sources with management workgroups of which the ROLE_SUBADMIN is a member.
+        The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles, however, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
       operationId: patchRole
       parameters:
       - description: ID of the Role to patch
@@ -25633,7 +25706,7 @@ paths:
 
           **email**: *eq, sw*
 
-          **name**: *eq, sw*
+          **name**: *eq, sw, co*
         example: name sw Joe
         in: query
         name: filters
@@ -30972,17 +31045,18 @@ paths:
       - Sources
     patch:
       description: "Use this API to selectively update an existing Schema using a\
-        \ JSONPatch payload. \nThe following schema fields are immutable and cannot\
-        \ be updated:\n* id\n* name\n* created\n* modified\n\nTo switch an account\
-        \ attribute to a group, you need to have the following in place:\n* `isEntitlement:\
-        \ true` * Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/v3/create-schema)\
+        \ JSONPatch payload. \n\nThe following schema fields are immutable and cannot\
+        \ be updated:\n\n- id\n- name\n- created\n- modified\n\n\nTo switch an account\
+        \ attribute to a group entitlement, you need to have the following in place:\n\
+        \n- `isEntitlement: true`\n- Must define a schema for the group and [add it\
+        \ to the source](https://developer.sailpoint.com/idn/api/v3/create-schema)\
         \ before updating the `isGroup` flag.  For example, here is the `group` account\
-        \ attribute referencing a schema that defines the group: ```json {\n    \"\
-        name\": \"groups\",\n    \"type\": \"STRING\",\n    \"schema\": {\n      \
-        \  \"type\": \"CONNECTOR_SCHEMA\",\n        \"id\": \"2c9180887671ff8c01767b4671fc7d60\"\
+        \ attribute referencing a schema that defines the group:\n```json\n{\n   \
+        \ \"name\": \"groups\",\n    \"type\": \"STRING\",\n    \"schema\": {\n  \
+        \      \"type\": \"CONNECTOR_SCHEMA\",\n        \"id\": \"2c9180887671ff8c01767b4671fc7d60\"\
         ,\n        \"name\": \"group\"\n    },\n    \"description\": \"The groups,\
         \ roles etc. that reference account group objects\",\n    \"isMulti\": true,\n\
-        \    \"isEntitlement\": true,\n    \"isGroup\": true\n} ```"
+        \    \"isEntitlement\": true,\n    \"isGroup\": true\n}\n```\n"
       operationId: updateSchema
       parameters:
       - description: The Source id.
@@ -38496,7 +38570,8 @@ paths:
       - Workflows
   /workflows/{id}/executions:
     get:
-      description: This lists the executions for a given workflow
+      description: This lists the executions for a given workflow. Workflow executions
+        are available for up to 90 days before being archived.
       operationId: listWorkflowExecutions
       parameters:
       - description: Id of the workflow
@@ -38582,7 +38657,7 @@ paths:
   /workflow-executions/{id}:
     get:
       description: "Get a single workflow execution.  Workflow executions are available\
-        \ for up to 2 days before being archived.  If you attempt to access a workflow\
+        \ for up to 90 days before being archived.  If you attempt to access a workflow\
         \ execution that has been archived, you will receive a 404 Not Found."
       operationId: getWorkflowExecution
       parameters:
@@ -38687,7 +38762,7 @@ paths:
   /workflow-executions/{id}/history:
     get:
       description: "Get a detailed history of a single workflow execution.  Workflow\
-        \ executions are available for up to 2 days before being archived.  If you\
+        \ executions are available for up to 90 days before being archived.  If you\
         \ attempt to access a workflow execution that has been archived, you will\
         \ receive a 404 Not Found."
       operationId: getWorkflowExecutionHistory
@@ -41950,6 +42025,7 @@ components:
         description:
           description: Information about the Access Profile
           example: Collection of entitlements to read/write the employee database
+          nullable: true
           type: string
         created:
           description: Date the Access Profile was created
@@ -41999,6 +42075,7 @@ components:
           - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
           items:
             type: string
+          nullable: true
           type: array
         provisioningCriteria:
           $ref: '#/components/schemas/ProvisioningCriteriaLevel1'
@@ -51970,6 +52047,7 @@ components:
         attribute: email
         operation: EQUALS
         value: carlee.cert1c9f9b6fd@mailinator.com
+      nullable: true
       properties:
         operation:
           $ref: '#/components/schemas/ProvisioningCriteriaOperation'
@@ -51987,6 +52065,7 @@ components:
             \ Attribute is not String-typed, it will be converted to the appropriate\
             \ type."
           example: carlee.cert1c9f9b6fd@mailinator.com
+          nullable: true
           type: string
         children:
           description: "Array of child criteria. Required if the operation is AND\
@@ -53883,6 +53962,7 @@ components:
             property: attribute.email
             type: ACCOUNT
         type: IDENTITY_LIST
+      nullable: true
       properties:
         type:
           $ref: '#/components/schemas/RoleMembershipSelectorType'
@@ -54872,6 +54952,7 @@ components:
         approverType:
           description: |-
             Describes the individual or group that is responsible for an approval step. Values are as follows.
+            **APP_OWNER**: The owner of the Application
 
             **OWNER**: Owner of the associated Access Profile or Role
 
@@ -54881,6 +54962,7 @@ components:
 
             **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field
           enum:
+          - APP_OWNER
           - OWNER
           - SOURCE_OWNER
           - MANAGER
@@ -54891,6 +54973,7 @@ components:
           description: "Id of the specific approver, used only when approverType is\
             \ GOVERNANCE_GROUP"
           example: 46c79819-a69f-49a2-becb-12c971ae66c6
+          nullable: true
           type: string
       type: object
     ProvisioningCriteriaOperation:
@@ -54935,6 +55018,7 @@ components:
             \ Attribute is not String-typed, it will be converted to the appropriate\
             \ type."
           example: carlee.cert1c9f9b6fd@mailinator.com
+          nullable: true
           type: string
         children:
           description: "Array of child criteria. Required if the operation is AND\
@@ -55416,6 +55500,7 @@ components:
           sourceId: 2c9180867427f3a301745aec18211519
           property: attribute.email
           type: ACCOUNT
+      nullable: true
       properties:
         operation:
           $ref: '#/components/schemas/RoleCriteriaOperation'
@@ -55428,6 +55513,7 @@ components:
             \ NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required.\
             \ Otherwise, specifying it is an error."
           example: carlee.cert1c9f9b6fd@mailinator.com
+          nullable: true
           type: string
         children:
           description: "Array of child criteria. Required if the operation is AND\
@@ -55489,6 +55575,7 @@ components:
           description: "Id of the specific approver, used only when approverType is\
             \ GOVERNANCE_GROUP"
           example: 46c79819-a69f-49a2-becb-12c971ae66c6
+          nullable: true
           type: string
       type: object
     Expression:
@@ -55933,6 +56020,7 @@ components:
         sourceId: 2c9180867427f3a301745aec18211519
         property: attribute.email
         type: ACCOUNT
+      nullable: true
       properties:
         type:
           $ref: '#/components/schemas/RoleCriteriaKeyType'
@@ -55973,6 +56061,7 @@ components:
           sourceId: 2c9180867427f3a301745aec18211519
           property: attribute.email
           type: ACCOUNT
+      nullable: true
       properties:
         operation:
           $ref: '#/components/schemas/RoleCriteriaOperation'
@@ -55985,6 +56074,7 @@ components:
             \ NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required.\
             \ Otherwise, specifying it is an error."
           example: carlee.cert1c9f9b6fd@mailinator.com
+          nullable: true
           type: string
         children:
           description: "Array of child criteria. Required if the operation is AND\

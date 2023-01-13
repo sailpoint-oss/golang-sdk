@@ -22,7 +22,7 @@ type AccessProfile struct {
 	// Name of the Access Profile
 	Name string `json:"name"`
 	// Information about the Access Profile
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	// Date the Access Profile was created
 	Created *time.Time `json:"created,omitempty"`
 	// Date the Access Profile was last modified.
@@ -39,7 +39,7 @@ type AccessProfile struct {
 	RevocationRequestConfig *Revocability `json:"revocationRequestConfig,omitempty"`
 	// List of IDs of segments, if any, to which this Access Profile is assigned.
 	Segments []string `json:"segments,omitempty"`
-	ProvisioningCriteria *ProvisioningCriteriaLevel1 `json:"provisioningCriteria,omitempty"`
+	ProvisioningCriteria NullableProvisioningCriteriaLevel1 `json:"provisioningCriteria,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -121,36 +121,46 @@ func (o *AccessProfile) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfile) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfile) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AccessProfile) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *AccessProfile) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *AccessProfile) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *AccessProfile) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
@@ -425,9 +435,9 @@ func (o *AccessProfile) SetRevocationRequestConfig(v Revocability) {
 	o.RevocationRequestConfig = &v
 }
 
-// GetSegments returns the Segments field value if set, zero value otherwise.
+// GetSegments returns the Segments field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfile) GetSegments() []string {
-	if o == nil || isNil(o.Segments) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -436,6 +446,7 @@ func (o *AccessProfile) GetSegments() []string {
 
 // GetSegmentsOk returns a tuple with the Segments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfile) GetSegmentsOk() ([]string, bool) {
 	if o == nil || isNil(o.Segments) {
 		return nil, false
@@ -445,7 +456,7 @@ func (o *AccessProfile) GetSegmentsOk() ([]string, bool) {
 
 // HasSegments returns a boolean if a field has been set.
 func (o *AccessProfile) HasSegments() bool {
-	if o != nil && !isNil(o.Segments) {
+	if o != nil && isNil(o.Segments) {
 		return true
 	}
 
@@ -457,36 +468,46 @@ func (o *AccessProfile) SetSegments(v []string) {
 	o.Segments = v
 }
 
-// GetProvisioningCriteria returns the ProvisioningCriteria field value if set, zero value otherwise.
+// GetProvisioningCriteria returns the ProvisioningCriteria field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfile) GetProvisioningCriteria() ProvisioningCriteriaLevel1 {
-	if o == nil || isNil(o.ProvisioningCriteria) {
+	if o == nil || isNil(o.ProvisioningCriteria.Get()) {
 		var ret ProvisioningCriteriaLevel1
 		return ret
 	}
-	return *o.ProvisioningCriteria
+	return *o.ProvisioningCriteria.Get()
 }
 
 // GetProvisioningCriteriaOk returns a tuple with the ProvisioningCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfile) GetProvisioningCriteriaOk() (*ProvisioningCriteriaLevel1, bool) {
-	if o == nil || isNil(o.ProvisioningCriteria) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProvisioningCriteria, true
+	return o.ProvisioningCriteria.Get(), o.ProvisioningCriteria.IsSet()
 }
 
 // HasProvisioningCriteria returns a boolean if a field has been set.
 func (o *AccessProfile) HasProvisioningCriteria() bool {
-	if o != nil && !isNil(o.ProvisioningCriteria) {
+	if o != nil && o.ProvisioningCriteria.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProvisioningCriteria gets a reference to the given ProvisioningCriteriaLevel1 and assigns it to the ProvisioningCriteria field.
+// SetProvisioningCriteria gets a reference to the given NullableProvisioningCriteriaLevel1 and assigns it to the ProvisioningCriteria field.
 func (o *AccessProfile) SetProvisioningCriteria(v ProvisioningCriteriaLevel1) {
-	o.ProvisioningCriteria = &v
+	o.ProvisioningCriteria.Set(&v)
+}
+// SetProvisioningCriteriaNil sets the value for ProvisioningCriteria to be an explicit nil
+func (o *AccessProfile) SetProvisioningCriteriaNil() {
+	o.ProvisioningCriteria.Set(nil)
+}
+
+// UnsetProvisioningCriteria ensures that no value is present for ProvisioningCriteria, not even an explicit nil
+func (o *AccessProfile) UnsetProvisioningCriteria() {
+	o.ProvisioningCriteria.Unset()
 }
 
 func (o AccessProfile) MarshalJSON() ([]byte, error) {
@@ -497,8 +518,8 @@ func (o AccessProfile) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if !isNil(o.Created) {
 		toSerialize["created"] = o.Created
@@ -527,11 +548,11 @@ func (o AccessProfile) MarshalJSON() ([]byte, error) {
 	if !isNil(o.RevocationRequestConfig) {
 		toSerialize["revocationRequestConfig"] = o.RevocationRequestConfig
 	}
-	if !isNil(o.Segments) {
+	if o.Segments != nil {
 		toSerialize["segments"] = o.Segments
 	}
-	if !isNil(o.ProvisioningCriteria) {
-		toSerialize["provisioningCriteria"] = o.ProvisioningCriteria
+	if o.ProvisioningCriteria.IsSet() {
+		toSerialize["provisioningCriteria"] = o.ProvisioningCriteria.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

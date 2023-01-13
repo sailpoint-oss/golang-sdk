@@ -29,7 +29,7 @@ type Role struct {
 	Description NullableString `json:"description,omitempty"`
 	Owner *OwnerReference `json:"owner,omitempty"`
 	AccessProfiles []AccessProfileRef `json:"accessProfiles,omitempty"`
-	Membership *RoleMembershipSelector `json:"membership,omitempty"`
+	Membership NullableRoleMembershipSelector `json:"membership,omitempty"`
 	// This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration.
 	LegacyMembershipInfo map[string]interface{} `json:"legacyMembershipInfo,omitempty"`
 	// Whether the Role is enabled or not. This field is false by default.
@@ -290,36 +290,46 @@ func (o *Role) SetAccessProfiles(v []AccessProfileRef) {
 	o.AccessProfiles = v
 }
 
-// GetMembership returns the Membership field value if set, zero value otherwise.
+// GetMembership returns the Membership field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Role) GetMembership() RoleMembershipSelector {
-	if o == nil || isNil(o.Membership) {
+	if o == nil || isNil(o.Membership.Get()) {
 		var ret RoleMembershipSelector
 		return ret
 	}
-	return *o.Membership
+	return *o.Membership.Get()
 }
 
 // GetMembershipOk returns a tuple with the Membership field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Role) GetMembershipOk() (*RoleMembershipSelector, bool) {
-	if o == nil || isNil(o.Membership) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Membership, true
+	return o.Membership.Get(), o.Membership.IsSet()
 }
 
 // HasMembership returns a boolean if a field has been set.
 func (o *Role) HasMembership() bool {
-	if o != nil && !isNil(o.Membership) {
+	if o != nil && o.Membership.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMembership gets a reference to the given RoleMembershipSelector and assigns it to the Membership field.
+// SetMembership gets a reference to the given NullableRoleMembershipSelector and assigns it to the Membership field.
 func (o *Role) SetMembership(v RoleMembershipSelector) {
-	o.Membership = &v
+	o.Membership.Set(&v)
+}
+// SetMembershipNil sets the value for Membership to be an explicit nil
+func (o *Role) SetMembershipNil() {
+	o.Membership.Set(nil)
+}
+
+// UnsetMembership ensures that no value is present for Membership, not even an explicit nil
+func (o *Role) UnsetMembership() {
+	o.Membership.Unset()
 }
 
 // GetLegacyMembershipInfo returns the LegacyMembershipInfo field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -539,8 +549,8 @@ func (o Role) MarshalJSON() ([]byte, error) {
 	if o.AccessProfiles != nil {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
-	if !isNil(o.Membership) {
-		toSerialize["membership"] = o.Membership
+	if o.Membership.IsSet() {
+		toSerialize["membership"] = o.Membership.Get()
 	}
 	if o.LegacyMembershipInfo != nil {
 		toSerialize["legacyMembershipInfo"] = o.LegacyMembershipInfo

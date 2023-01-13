@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The ID of the Access Profile | [optional] [readonly] 
 **Name** | **string** | Name of the Access Profile | 
-**Description** | Pointer to **string** | Information about the Access Profile | [optional] 
+**Description** | Pointer to **NullableString** | Information about the Access Profile | [optional] 
 **Created** | Pointer to **time.Time** | Date the Access Profile was created | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Date the Access Profile was last modified. | [optional] [readonly] 
 **Enabled** | Pointer to **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **AccessRequestConfig** | Pointer to [**Requestability**](Requestability.md) |  | [optional] 
 **RevocationRequestConfig** | Pointer to [**Revocability**](Revocability.md) |  | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Access Profile is assigned. | [optional] 
-**ProvisioningCriteria** | Pointer to [**ProvisioningCriteriaLevel1**](ProvisioningCriteriaLevel1.md) |  | [optional] 
+**ProvisioningCriteria** | Pointer to [**NullableProvisioningCriteriaLevel1**](ProvisioningCriteriaLevel1.md) |  | [optional] 
 
 ## Methods
 
@@ -108,6 +108,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *AccessProfile) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *AccessProfile) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetCreated
 
 `func (o *AccessProfile) GetCreated() time.Time`
@@ -348,6 +358,16 @@ SetSegments sets Segments field to given value.
 
 HasSegments returns a boolean if a field has been set.
 
+### SetSegmentsNil
+
+`func (o *AccessProfile) SetSegmentsNil(b bool)`
+
+ SetSegmentsNil sets the value for Segments to be an explicit nil
+
+### UnsetSegments
+`func (o *AccessProfile) UnsetSegments()`
+
+UnsetSegments ensures that no value is present for Segments, not even an explicit nil
 ### GetProvisioningCriteria
 
 `func (o *AccessProfile) GetProvisioningCriteria() ProvisioningCriteriaLevel1`
@@ -373,6 +393,16 @@ SetProvisioningCriteria sets ProvisioningCriteria field to given value.
 
 HasProvisioningCriteria returns a boolean if a field has been set.
 
+### SetProvisioningCriteriaNil
+
+`func (o *AccessProfile) SetProvisioningCriteriaNil(b bool)`
+
+ SetProvisioningCriteriaNil sets the value for ProvisioningCriteria to be an explicit nil
+
+### UnsetProvisioningCriteria
+`func (o *AccessProfile) UnsetProvisioningCriteria()`
+
+UnsetProvisioningCriteria ensures that no value is present for ProvisioningCriteria, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

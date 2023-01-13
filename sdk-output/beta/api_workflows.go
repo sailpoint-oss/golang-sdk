@@ -660,7 +660,7 @@ func (r ApiGetWorkflowExecutionRequest) Execute() (map[string]interface{}, *http
 /*
 GetWorkflowExecution Get a Workflow Execution
 
-Get a single workflow execution.  Workflow executions are available for up to 2 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
+Get a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Id of the workflow execution
@@ -828,7 +828,7 @@ func (r ApiGetWorkflowExecutionHistoryRequest) Execute() ([]WorkflowExecutionEve
 /*
 GetWorkflowExecutionHistory Get Workflow Execution History
 
-Get a detailed history of a single workflow execution.  Workflow executions are available for up to 2 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
+Get a detailed history of a single workflow execution.  Workflow executions are available for up to 90 days before being archived.  If you attempt to access a workflow execution that has been archived, you will receive a 404 Not Found.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Id of the workflow execution
@@ -1169,7 +1169,7 @@ func (r ApiListWorkflowExecutionsRequest) Execute() ([]WorkflowExecution, *http.
 /*
 ListWorkflowExecutions List Workflow Executions
 
-This lists the executions for a given workflow
+This lists the executions for a given workflow. Workflow executions are available for up to 90 days before being archived.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Id of the workflow

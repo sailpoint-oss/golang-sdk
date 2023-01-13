@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to [**RoleMembershipSelectorType**](RoleMembershipSelectorType.md) |  | [optional] 
-**Criteria** | Pointer to [**RoleCriteriaLevel1**](RoleCriteriaLevel1.md) |  | [optional] 
+**Criteria** | Pointer to [**NullableRoleCriteriaLevel1**](RoleCriteriaLevel1.md) |  | [optional] 
 **Identities** | Pointer to [**[]RoleMembershipIdentity**](RoleMembershipIdentity.md) | Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST. | [optional] 
 
 ## Methods
@@ -77,6 +77,16 @@ SetCriteria sets Criteria field to given value.
 
 HasCriteria returns a boolean if a field has been set.
 
+### SetCriteriaNil
+
+`func (o *RoleMembershipSelector) SetCriteriaNil(b bool)`
+
+ SetCriteriaNil sets the value for Criteria to be an explicit nil
+
+### UnsetCriteria
+`func (o *RoleMembershipSelector) UnsetCriteria()`
+
+UnsetCriteria ensures that no value is present for Criteria, not even an explicit nil
 ### GetIdentities
 
 `func (o *RoleMembershipSelector) GetIdentities() []RoleMembershipIdentity`

@@ -154,7 +154,7 @@ Class | Method | HTTP request | Description
 *EntitlementsApi* | [**ListEntitlementParents**](docs/EntitlementsApi.md#listentitlementparents) | **Get** /entitlements/{id}/parents | List of entitlements parents
 *EntitlementsApi* | [**ListEntitlementchildren**](docs/EntitlementsApi.md#listentitlementchildren) | **Get** /entitlements/{id}/children | List of entitlements children
 *EntitlementsApi* | [**ListEntitlements**](docs/EntitlementsApi.md#listentitlements) | **Get** /entitlements | Gets a list of entitlements.
-*EntitlementsApi* | [**PatchEntitlement**](docs/EntitlementsApi.md#patchentitlement) | **Patch** /entitlements | Patch a specified Entitlement
+*EntitlementsApi* | [**PatchEntitlement**](docs/EntitlementsApi.md#patchentitlement) | **Patch** /entitlements/{id} | Patch a specified Entitlement
 *IAIAccessRequestRecommendationsApi* | [**AccessRequestRecommendations**](docs/IAIAccessRequestRecommendationsApi.md#accessrequestrecommendations) | **Get** /ai-access-request-recommendations | Identity Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsIgnoredItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsignoreditem) | **Post** /ai-access-request-recommendations/ignored-items | Notification of Ignored Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsRequestedItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsrequesteditem) | **Post** /ai-access-request-recommendations/requested-items | Notification of Requested Access Request Recommendations

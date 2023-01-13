@@ -400,8 +400,19 @@ func (r ApiCompleteCampaignRequest) Execute() (map[string]interface{}, *http.Res
 /*
 CompleteCampaign Complete a Campaign
 
-Completes a certification campaign only if it is past the due date. This is provided to admins so that they can complete a certification even if all items have not been completed.
+:::caution
+
+This endpoint will run successfully for any campaigns that are **past due**.
+
+This endpoint will return a content error if the campaign is **not past due**.
+
+:::
+
+Completes a certification campaign. This is provided to admins so that they
+can complete a certification even if all items have not been completed.
+
 Requires roles of CERT_ADMIN and ORG_ADMIN
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The campaign id

@@ -17,9 +17,9 @@ import (
 // RoleCriteriaLevel2 Defines STANDARD type Role membership
 type RoleCriteriaLevel2 struct {
 	Operation *RoleCriteriaOperation `json:"operation,omitempty"`
-	Key *RoleCriteriaKey `json:"key,omitempty"`
+	Key NullableRoleCriteriaKey `json:"key,omitempty"`
 	// String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.
-	StringValue *string `json:"stringValue,omitempty"`
+	StringValue NullableString `json:"stringValue,omitempty"`
 	// Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes. Additionally, AND nodes can only be children or OR nodes and vice-versa.
 	Children []RoleCriteriaLevel3 `json:"children,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -76,68 +76,88 @@ func (o *RoleCriteriaLevel2) SetOperation(v RoleCriteriaOperation) {
 	o.Operation = &v
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
+// GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleCriteriaLevel2) GetKey() RoleCriteriaKey {
-	if o == nil || isNil(o.Key) {
+	if o == nil || isNil(o.Key.Get()) {
 		var ret RoleCriteriaKey
 		return ret
 	}
-	return *o.Key
+	return *o.Key.Get()
 }
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleCriteriaLevel2) GetKeyOk() (*RoleCriteriaKey, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Key, true
+	return o.Key.Get(), o.Key.IsSet()
 }
 
 // HasKey returns a boolean if a field has been set.
 func (o *RoleCriteriaLevel2) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && o.Key.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKey gets a reference to the given RoleCriteriaKey and assigns it to the Key field.
+// SetKey gets a reference to the given NullableRoleCriteriaKey and assigns it to the Key field.
 func (o *RoleCriteriaLevel2) SetKey(v RoleCriteriaKey) {
-	o.Key = &v
+	o.Key.Set(&v)
+}
+// SetKeyNil sets the value for Key to be an explicit nil
+func (o *RoleCriteriaLevel2) SetKeyNil() {
+	o.Key.Set(nil)
 }
 
-// GetStringValue returns the StringValue field value if set, zero value otherwise.
+// UnsetKey ensures that no value is present for Key, not even an explicit nil
+func (o *RoleCriteriaLevel2) UnsetKey() {
+	o.Key.Unset()
+}
+
+// GetStringValue returns the StringValue field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleCriteriaLevel2) GetStringValue() string {
-	if o == nil || isNil(o.StringValue) {
+	if o == nil || isNil(o.StringValue.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.StringValue
+	return *o.StringValue.Get()
 }
 
 // GetStringValueOk returns a tuple with the StringValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleCriteriaLevel2) GetStringValueOk() (*string, bool) {
-	if o == nil || isNil(o.StringValue) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StringValue, true
+	return o.StringValue.Get(), o.StringValue.IsSet()
 }
 
 // HasStringValue returns a boolean if a field has been set.
 func (o *RoleCriteriaLevel2) HasStringValue() bool {
-	if o != nil && !isNil(o.StringValue) {
+	if o != nil && o.StringValue.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStringValue gets a reference to the given string and assigns it to the StringValue field.
+// SetStringValue gets a reference to the given NullableString and assigns it to the StringValue field.
 func (o *RoleCriteriaLevel2) SetStringValue(v string) {
-	o.StringValue = &v
+	o.StringValue.Set(&v)
+}
+// SetStringValueNil sets the value for StringValue to be an explicit nil
+func (o *RoleCriteriaLevel2) SetStringValueNil() {
+	o.StringValue.Set(nil)
+}
+
+// UnsetStringValue ensures that no value is present for StringValue, not even an explicit nil
+func (o *RoleCriteriaLevel2) UnsetStringValue() {
+	o.StringValue.Unset()
 }
 
 // GetChildren returns the Children field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -178,11 +198,11 @@ func (o RoleCriteriaLevel2) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
-	if !isNil(o.Key) {
-		toSerialize["key"] = o.Key
+	if o.Key.IsSet() {
+		toSerialize["key"] = o.Key.Get()
 	}
-	if !isNil(o.StringValue) {
-		toSerialize["stringValue"] = o.StringValue
+	if o.StringValue.IsSet() {
+		toSerialize["stringValue"] = o.StringValue.Get()
 	}
 	if o.Children != nil {
 		toSerialize["children"] = o.Children

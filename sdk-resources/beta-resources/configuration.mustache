@@ -28,7 +28,7 @@ var (
 	// ContextAccessToken takes a string oauth2 access token as authentication for the request.
 	ContextAccessToken = contextKey("accesstoken")
 
-	ContextClientCredentials = "clientCredentials"
+	ContextClientCredentials = contextKey("clientCredentials")
 
 	// ContextAPIKeys takes a string apikey as authentication for the request
 	ContextAPIKeys = contextKey("apiKeys")
@@ -110,16 +110,22 @@ type Configuration struct {
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *http.Client
-	Tenant			 string
+	ClientId 		 string
+	ClientSecret     string
+	BaseURL          string
+	TokenURL         string
     {{#withCustomMiddlewareFunction}}
 	Middleware       MiddlewareFunction
     {{/withCustomMiddlewareFunction}}
 }
 
 // NewConfiguration returns a new Configuration object
-func NewConfiguration(tenant string) *Configuration {
+func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string) *Configuration {
 	cfg := &Configuration{
-		Tenant: tenant,
+		ClientId: 		  clientId,
+		ClientSecret:	  clientSecret,
+		BaseURL:	      baseURL,
+		TokenURL:		  tokenURL,
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "{{{httpUserAgent}}}{{^httpUserAgent}}OpenAPI-Generator/{{{packageVersion}}}/go{{/httpUserAgent}}",
 		Debug:            false,
@@ -128,7 +134,7 @@ func NewConfiguration(tenant string) *Configuration {
 		Servers:          ServerConfigurations{
 		{{/-first}}
 			{
-				URL: "https://" + tenant + ".api.identitynow.com/beta",
+				URL: baseURL + "/beta",
 				Description: "{{{description}}}{{^description}}No description provided{{/description}}",
 			},
 		{{#-last}}

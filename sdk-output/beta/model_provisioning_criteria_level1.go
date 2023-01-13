@@ -20,7 +20,7 @@ type ProvisioningCriteriaLevel1 struct {
 	// Name of the Account attribute to be tested. If **operation** is one of EQUALS, NOT_EQUALS, CONTAINS, or HAS, this field is required. Otherwise, specifying it is an error.
 	Attribute NullableString `json:"attribute,omitempty"`
 	// String value to test the Account attribute w/r/t the specified operation. If the operation is one of EQUALS, NOT_EQUALS, or CONTAINS, this field is required. Otherwise, specifying it is an error. If the Attribute is not String-typed, it will be converted to the appropriate type.
-	Value *string `json:"value,omitempty"`
+	Value NullableString `json:"value,omitempty"`
 	// Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes.
 	Children []ProvisioningCriteriaLevel2 `json:"children,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -119,36 +119,46 @@ func (o *ProvisioningCriteriaLevel1) UnsetAttribute() {
 	o.Attribute.Unset()
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProvisioningCriteriaLevel1) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || isNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProvisioningCriteriaLevel1) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *ProvisioningCriteriaLevel1) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
 func (o *ProvisioningCriteriaLevel1) SetValue(v string) {
-	o.Value = &v
+	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *ProvisioningCriteriaLevel1) SetValueNil() {
+	o.Value.Set(nil)
+}
+
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *ProvisioningCriteriaLevel1) UnsetValue() {
+	o.Value.Unset()
 }
 
 // GetChildren returns the Children field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -192,8 +202,8 @@ func (o ProvisioningCriteriaLevel1) MarshalJSON() ([]byte, error) {
 	if o.Attribute.IsSet() {
 		toSerialize["attribute"] = o.Attribute.Get()
 	}
-	if !isNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
 	if o.Children != nil {
 		toSerialize["children"] = o.Children

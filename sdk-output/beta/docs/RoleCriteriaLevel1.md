@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Operation** | Pointer to [**RoleCriteriaOperation**](RoleCriteriaOperation.md) |  | [optional] 
-**Key** | Pointer to [**RoleCriteriaKey**](RoleCriteriaKey.md) |  | [optional] 
-**StringValue** | Pointer to **string** | String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error. | [optional] 
+**Key** | Pointer to [**NullableRoleCriteriaKey**](RoleCriteriaKey.md) |  | [optional] 
+**StringValue** | Pointer to **NullableString** | String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error. | [optional] 
 **Children** | Pointer to [**[]RoleCriteriaLevel2**](RoleCriteriaLevel2.md) | Array of child criteria. Required if the operation is AND or OR, otherwise it must be left null. A maximum of three levels of criteria are supported, including leaf nodes. Additionally, AND nodes can only be children or OR nodes and vice-versa. | [optional] 
 
 ## Methods
@@ -78,6 +78,16 @@ SetKey sets Key field to given value.
 
 HasKey returns a boolean if a field has been set.
 
+### SetKeyNil
+
+`func (o *RoleCriteriaLevel1) SetKeyNil(b bool)`
+
+ SetKeyNil sets the value for Key to be an explicit nil
+
+### UnsetKey
+`func (o *RoleCriteriaLevel1) UnsetKey()`
+
+UnsetKey ensures that no value is present for Key, not even an explicit nil
 ### GetStringValue
 
 `func (o *RoleCriteriaLevel1) GetStringValue() string`
@@ -103,6 +113,16 @@ SetStringValue sets StringValue field to given value.
 
 HasStringValue returns a boolean if a field has been set.
 
+### SetStringValueNil
+
+`func (o *RoleCriteriaLevel1) SetStringValueNil(b bool)`
+
+ SetStringValueNil sets the value for StringValue to be an explicit nil
+
+### UnsetStringValue
+`func (o *RoleCriteriaLevel1) UnsetStringValue()`
+
+UnsetStringValue ensures that no value is present for StringValue, not even an explicit nil
 ### GetChildren
 
 `func (o *RoleCriteriaLevel1) GetChildren() []RoleCriteriaLevel2`

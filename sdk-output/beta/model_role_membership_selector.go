@@ -17,7 +17,7 @@ import (
 // RoleMembershipSelector When present, specifies that the Role is to be granted to Identities which either satisfy specific criteria or which are members of a given list of Identities.
 type RoleMembershipSelector struct {
 	Type *RoleMembershipSelectorType `json:"type,omitempty"`
-	Criteria *RoleCriteriaLevel1 `json:"criteria,omitempty"`
+	Criteria NullableRoleCriteriaLevel1 `json:"criteria,omitempty"`
 	// Defines role membership as being exclusive to the specified Identities, when type is IDENTITY_LIST.
 	Identities []RoleMembershipIdentity `json:"identities,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -74,36 +74,46 @@ func (o *RoleMembershipSelector) SetType(v RoleMembershipSelectorType) {
 	o.Type = &v
 }
 
-// GetCriteria returns the Criteria field value if set, zero value otherwise.
+// GetCriteria returns the Criteria field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMembershipSelector) GetCriteria() RoleCriteriaLevel1 {
-	if o == nil || isNil(o.Criteria) {
+	if o == nil || isNil(o.Criteria.Get()) {
 		var ret RoleCriteriaLevel1
 		return ret
 	}
-	return *o.Criteria
+	return *o.Criteria.Get()
 }
 
 // GetCriteriaOk returns a tuple with the Criteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleMembershipSelector) GetCriteriaOk() (*RoleCriteriaLevel1, bool) {
-	if o == nil || isNil(o.Criteria) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Criteria, true
+	return o.Criteria.Get(), o.Criteria.IsSet()
 }
 
 // HasCriteria returns a boolean if a field has been set.
 func (o *RoleMembershipSelector) HasCriteria() bool {
-	if o != nil && !isNil(o.Criteria) {
+	if o != nil && o.Criteria.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCriteria gets a reference to the given RoleCriteriaLevel1 and assigns it to the Criteria field.
+// SetCriteria gets a reference to the given NullableRoleCriteriaLevel1 and assigns it to the Criteria field.
 func (o *RoleMembershipSelector) SetCriteria(v RoleCriteriaLevel1) {
-	o.Criteria = &v
+	o.Criteria.Set(&v)
+}
+// SetCriteriaNil sets the value for Criteria to be an explicit nil
+func (o *RoleMembershipSelector) SetCriteriaNil() {
+	o.Criteria.Set(nil)
+}
+
+// UnsetCriteria ensures that no value is present for Criteria, not even an explicit nil
+func (o *RoleMembershipSelector) UnsetCriteria() {
+	o.Criteria.Unset()
 }
 
 // GetIdentities returns the Identities field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -144,8 +154,8 @@ func (o RoleMembershipSelector) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Criteria) {
-		toSerialize["criteria"] = o.Criteria
+	if o.Criteria.IsSet() {
+		toSerialize["criteria"] = o.Criteria.Get()
 	}
 	if o.Identities != nil {
 		toSerialize["identities"] = o.Identities

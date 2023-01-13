@@ -115,7 +115,7 @@ func NewConfiguration(clientId string, clientSecret string, baseURL string, toke
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: BaseURL + "/v3",
+				URL: baseURL + "/v3",
 				Description: "This is the production API server.",
 			},
 		},

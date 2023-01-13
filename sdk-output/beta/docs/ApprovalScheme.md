@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApproverType** | Pointer to **string** | Describes the individual or group that is responsible for an approval step. Values are as follows.  **OWNER**: Owner of the associated Access Profile or Role  **SOURCE_OWNER**: Owner of the Source associated with an Access Profile  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field | [optional] 
-**ApproverId** | Pointer to **string** | Id of the specific approver, used only when approverType is GOVERNANCE_GROUP | [optional] 
+**ApproverType** | Pointer to **string** | Describes the individual or group that is responsible for an approval step. Values are as follows. **APP_OWNER**: The owner of the Application  **OWNER**: Owner of the associated Access Profile or Role  **SOURCE_OWNER**: Owner of the Source associated with an Access Profile  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field | [optional] 
+**ApproverId** | Pointer to **NullableString** | Id of the specific approver, used only when approverType is GOVERNANCE_GROUP | [optional] 
 
 ## Methods
 
@@ -76,6 +76,16 @@ SetApproverId sets ApproverId field to given value.
 
 HasApproverId returns a boolean if a field has been set.
 
+### SetApproverIdNil
+
+`func (o *ApprovalScheme) SetApproverIdNil(b bool)`
+
+ SetApproverIdNil sets the value for ApproverId to be an explicit nil
+
+### UnsetApproverId
+`func (o *ApprovalScheme) UnsetApproverId()`
+
+UnsetApproverId ensures that no value is present for ApproverId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -134,7 +134,7 @@ func NewConfiguration(clientId string, clientSecret string, baseURL string, toke
 		Servers:          ServerConfigurations{
 		{{/-first}}
 			{
-				URL: BaseURL + "/v3",
+				URL: baseURL + "/v3",
 				Description: "{{{description}}}{{^description}}No description provided{{/description}}",
 			},
 		{{#-last}}

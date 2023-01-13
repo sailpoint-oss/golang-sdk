@@ -17,7 +17,7 @@ import (
 // RoleCriteriaLevel3 Defines STANDARD type Role membership
 type RoleCriteriaLevel3 struct {
 	Operation *RoleCriteriaOperation `json:"operation,omitempty"`
-	Key *RoleCriteriaKey `json:"key,omitempty"`
+	Key NullableRoleCriteriaKey `json:"key,omitempty"`
 	// String value to test the Identity attribute, Account attribute, or Entitlement specified in the key w/r/t the specified operation. If this criteria is a leaf node, that is, if the operation is one of EQUALS, NOT_EQUALS, CONTAINS, STARTS_WITH, or ENDS_WITH, this field is required. Otherwise, specifying it is an error.
 	StringValue *string `json:"stringValue,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -74,36 +74,46 @@ func (o *RoleCriteriaLevel3) SetOperation(v RoleCriteriaOperation) {
 	o.Operation = &v
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
+// GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleCriteriaLevel3) GetKey() RoleCriteriaKey {
-	if o == nil || isNil(o.Key) {
+	if o == nil || isNil(o.Key.Get()) {
 		var ret RoleCriteriaKey
 		return ret
 	}
-	return *o.Key
+	return *o.Key.Get()
 }
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleCriteriaLevel3) GetKeyOk() (*RoleCriteriaKey, bool) {
-	if o == nil || isNil(o.Key) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Key, true
+	return o.Key.Get(), o.Key.IsSet()
 }
 
 // HasKey returns a boolean if a field has been set.
 func (o *RoleCriteriaLevel3) HasKey() bool {
-	if o != nil && !isNil(o.Key) {
+	if o != nil && o.Key.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKey gets a reference to the given RoleCriteriaKey and assigns it to the Key field.
+// SetKey gets a reference to the given NullableRoleCriteriaKey and assigns it to the Key field.
 func (o *RoleCriteriaLevel3) SetKey(v RoleCriteriaKey) {
-	o.Key = &v
+	o.Key.Set(&v)
+}
+// SetKeyNil sets the value for Key to be an explicit nil
+func (o *RoleCriteriaLevel3) SetKeyNil() {
+	o.Key.Set(nil)
+}
+
+// UnsetKey ensures that no value is present for Key, not even an explicit nil
+func (o *RoleCriteriaLevel3) UnsetKey() {
+	o.Key.Unset()
 }
 
 // GetStringValue returns the StringValue field value if set, zero value otherwise.
@@ -143,8 +153,8 @@ func (o RoleCriteriaLevel3) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
 	}
-	if !isNil(o.Key) {
-		toSerialize["key"] = o.Key
+	if o.Key.IsSet() {
+		toSerialize["key"] = o.Key.Get()
 	}
 	if !isNil(o.StringValue) {
 		toSerialize["stringValue"] = o.StringValue

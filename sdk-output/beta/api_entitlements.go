@@ -197,8 +197,6 @@ GetEntitlement Get an Entitlement
 
 This API returns an Entitlement by its ID.
 
-A token with ORG_ADMIN or API authority is required to call this API.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Entitlement Id
  @return ApiGetEntitlementRequest
@@ -387,8 +385,6 @@ func (r ApiListEntitlementParentsRequest) Execute() ([]Entitlement, *http.Respon
 ListEntitlementParents List of entitlements parents
 
 This API returns a list of all parent entitlements of a given entitlement.
-
-A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Entitlement Id
@@ -588,8 +584,6 @@ ListEntitlementchildren List of entitlements children
 
 This API returns a list of all child entitlements of a given entitlement.
 
-A token with ORG_ADMIN or API authority is required to call this API.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Entitlement Id
  @return ApiListEntitlementchildrenRequest
@@ -764,7 +758,6 @@ type ApiListEntitlementsRequest struct {
 	count *bool
 	sorters *string
 	filters *string
-	cursor *string
 }
 
 // The account ID. If specified, returns only entitlements associated with the given Account. Can not be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
@@ -818,13 +811,6 @@ func (r ApiListEntitlementsRequest) Sorters(sorters string) ApiListEntitlementsR
 // Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*
 func (r ApiListEntitlementsRequest) Filters(filters string) ApiListEntitlementsRequest {
 	r.filters = &filters
-	return r
-}
-
-// **WARNING: This parameter is deprecated and support will be removed in an upcoming release.**  This endpoint supports cursor-based pagination as an alternative to pagination using **limit** and **offset**. Use of cursors is optional but may deliver significantly better performance when paginating over large result sets, particularly when sorting is involved.  To obtain an initial cursor value, the initial request must be made with **offset&#x3D;0** and **count&#x3D;false**, or by omitting those parameters. Other query parameters may be specified on the initial request, to specify filtering and sorting for example. The response to this initial request will provide a cursor value in the **Slpt-Cursor** response header. Thereafter, passing in the last returned value of **Slpt-Cursor** as the value of the **cursor** parameter on the following request will return the next page of results, and so on. The end of the result set is signalled when a request returns without providing a value for **Slpt-Cursor**.  The **cursor** param is generally incompatible with other parameters; the second and subsequent requests should only pass that parameter and no others. A 400 Bad Request will be returned if any incompatible parameter values are passed along with the **cursor**.  Cursors expire after 15 minutes; a 400 Bad Request is returned if an expired value is provided for **cursor**.
-// Deprecated
-func (r ApiListEntitlementsRequest) Cursor(cursor string) ApiListEntitlementsRequest {
-	r.cursor = &cursor
 	return r
 }
 
@@ -898,9 +884,6 @@ func (a *EntitlementsApiService) ListEntitlementsExecute(r ApiListEntitlementsRe
 	}
 	if r.filters != nil {
 		localVarQueryParams.Add("filters", parameterToString(*r.filters, ""))
-	}
-	if r.cursor != nil {
-		localVarQueryParams.Add("cursor", parameterToString(*r.cursor, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1062,7 +1045,7 @@ func (a *EntitlementsApiService) PatchEntitlementExecute(r ApiPatchEntitlementRe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/entitlements"
+	localVarPath := localBasePath + "/entitlements/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)

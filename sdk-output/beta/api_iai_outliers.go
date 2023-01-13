@@ -16,6 +16,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
 	"os"
 )
 
@@ -772,6 +773,7 @@ func (a *IAIOutliersApiService) GetOutliersExecute(r ApiGetOutliersRequest) ([]O
 type ApiGetOutliersContributingFeaturesRequest struct {
 	ctx context.Context
 	ApiService *IAIOutliersApiService
+	outlierId string
 	limit *int32
 	offset *int32
 	count *bool
@@ -820,12 +822,14 @@ This API returns a list of contributing feature objects for a single outlier. Th
 Requires authorization scope of 'iai:outliers-management:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param outlierId The outlier id
  @return ApiGetOutliersContributingFeaturesRequest
 */
-func (a *IAIOutliersApiService) GetOutliersContributingFeatures(ctx context.Context) ApiGetOutliersContributingFeaturesRequest {
+func (a *IAIOutliersApiService) GetOutliersContributingFeatures(ctx context.Context, outlierId string) ApiGetOutliersContributingFeaturesRequest {
 	return ApiGetOutliersContributingFeaturesRequest{
 		ApiService: a,
 		ctx: ctx,
+		outlierId: outlierId,
 	}
 }
 
@@ -845,6 +849,7 @@ func (a *IAIOutliersApiService) GetOutliersContributingFeaturesExecute(r ApiGetO
 	}
 
 	localVarPath := localBasePath + "/outliers/{outlierId}/contributing-features"
+	localVarPath = strings.Replace(localVarPath, "{"+"outlierId"+"}", url.PathEscape(parameterToString(r.outlierId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

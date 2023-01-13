@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** | A human-readable description of the Role | [optional] 
 **Owner** | Pointer to [**OwnerReference**](OwnerReference.md) |  | [optional] 
 **AccessProfiles** | Pointer to [**[]AccessProfileRef**](AccessProfileRef.md) |  | [optional] 
-**Membership** | Pointer to [**RoleMembershipSelector**](RoleMembershipSelector.md) |  | [optional] 
+**Membership** | Pointer to [**NullableRoleMembershipSelector**](RoleMembershipSelector.md) |  | [optional] 
 **LegacyMembershipInfo** | Pointer to **map[string]interface{}** | This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration. | [optional] 
 **Enabled** | Pointer to **bool** | Whether the Role is enabled or not. This field is false by default. | [optional] 
 **Requestable** | Pointer to **bool** | Whether the Role can be the target of Access Requests. This field is false by default. | [optional] 
@@ -253,6 +253,16 @@ SetMembership sets Membership field to given value.
 
 HasMembership returns a boolean if a field has been set.
 
+### SetMembershipNil
+
+`func (o *Role) SetMembershipNil(b bool)`
+
+ SetMembershipNil sets the value for Membership to be an explicit nil
+
+### UnsetMembership
+`func (o *Role) UnsetMembership()`
+
+UnsetMembership ensures that no value is present for Membership, not even an explicit nil
 ### GetLegacyMembershipInfo
 
 `func (o *Role) GetLegacyMembershipInfo() map[string]interface{}`

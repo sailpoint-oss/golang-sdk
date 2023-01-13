@@ -210,8 +210,8 @@ func (r ApiCreateAccessProfileRequest) Execute() (*AccessProfile, *http.Response
 CreateAccessProfile Create an Access Profile
 
 This API creates an Access Profile.
-
 A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a token with only ROLE_SUBADMIN or SOURCE_SUBADMIN authority must be associated with the Access Profile's Source.
+The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateAccessProfileRequest
@@ -1141,14 +1141,13 @@ func (r ApiPatchAccessProfileRequest) Execute() (*AccessProfile, *http.Response,
 PatchAccessProfile Patch a specified Access Profile
 
 This API updates an existing Access Profile. The following fields are patchable:
-
 **name**, **description**, **enabled**, **owner**, **requestable**, **accessRequestConfig**, **revokeRequestConfig**, **segments**, **entitlements**, **provisioningCriteria**
-
-> You can only add or replace **entitlements** that exist on the source that the access profile is attached to.   You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
-
->  Patching the value of the **requestable** field is only supported for customers enabled with the new Request  Center. Otherwise, attempting to modify this field results in a 400 error.
-
 A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer.
+>  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
+
+> You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
+
+>  Patching the value of the **requestable** field is only supported for customers enabled with the new Request Center. Otherwise, attempting to modify this field results in a 400 error.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Access Profile to patch
