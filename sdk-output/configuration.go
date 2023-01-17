@@ -10,10 +10,10 @@ package sailpoint
 
 import (
 	"fmt"
-	"net/http"
 	"os"
 	"path/filepath"
 
+	"github.com/hashicorp/go-retryablehttp"
 	"github.com/spf13/viper"
 )
 
@@ -38,7 +38,7 @@ type Configuration struct {
 	DefaultHeader       map[string]string `json:"defaultHeader,omitempty"`
 	UserAgent           string            `json:"userAgent,omitempty"`
 	Debug               bool              `json:"debug,omitempty"`
-	HTTPClient          *http.Client
+	HTTPClient          *retryablehttp.Client
 	ClientConfiguration ClientConfiguration
 }
 

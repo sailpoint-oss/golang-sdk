@@ -9,9 +9,9 @@ API version: 3.0.0
 package sailpoint
 
 import (
-	"net/http"
 	"regexp"
 
+	"github.com/hashicorp/go-retryablehttp"
 	sailpointbetasdk "github.com/sailpoint-oss/golang-sdk/sdk-output/beta"
 	sailpointccsdk "github.com/sailpoint-oss/golang-sdk/sdk-output/cc"
 	sailpointv2sdk "github.com/sailpoint-oss/golang-sdk/sdk-output/v2"
@@ -49,14 +49,24 @@ type service struct {
 // optionally a custom http.Client to allow for advanced features such as caching.
 func NewAPIClient(cfg *Configuration) *APIClient {
 	if cfg.HTTPClient == nil {
-		cfg.HTTPClient = http.DefaultClient
+		cfg.HTTPClient = retryablehttp.NewClient()
 	}
 
 	c := &APIClient{}
 
-	c.V3 = sailpointsdk.NewAPIClient(sailpointsdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v3", cfg.ClientConfiguration.TokenURL))
+	CV3 := sailpointsdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v3", cfg.ClientConfiguration.TokenURL)
+	//CV2 := sailpointv2sdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2", cfg.ClientConfiguration.TokenURL)
+	CBeta := sailpointbetasdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/beta", cfg.ClientConfiguration.TokenURL)
+	//CCC := sailpointccsdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL)
+
+	CV3.HTTPClient = cfg.HTTPClient
+	//CV2.HTTPClient = cfg.HTTPClient
+	CBeta.HTTPClient = cfg.HTTPClient
+	//CCC.HTTPClient = cfg.HTTPClient
+
+	c.V3 = sailpointsdk.NewAPIClient(CV3)
 	c.V2 = sailpointv2sdk.NewAPIClient(sailpointv2sdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2", cfg.ClientConfiguration.TokenURL))
-	c.Beta = sailpointbetasdk.NewAPIClient(sailpointbetasdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/beta", cfg.ClientConfiguration.TokenURL))
+	c.Beta = sailpointbetasdk.NewAPIClient(CBeta)
 	c.CC = sailpointccsdk.NewAPIClient(sailpointccsdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL))
 
 	// API Services

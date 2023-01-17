@@ -3,16 +3,17 @@ module github.com/sailpoint-oss/golang-sdk/sdk-output
 go 1.19
 
 require (
-	github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20230113142230-f7d9228c3ba6
-	github.com/sailpoint-oss/golang-sdk/sdk-output/cc v0.0.0-20230113142230-f7d9228c3ba6
-	github.com/sailpoint-oss/golang-sdk/sdk-output/v2 v2.0.0-20230113142230-f7d9228c3ba6
-	github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20230113142230-f7d9228c3ba6
+	github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20230113221736-829dd23a6e8c
+	github.com/sailpoint-oss/golang-sdk/sdk-output/cc v0.0.0-20230113221736-829dd23a6e8c
+	github.com/sailpoint-oss/golang-sdk/sdk-output/v2 v2.0.0-20230113221736-829dd23a6e8c
+	github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20230113221736-829dd23a6e8c
 	golang.org/x/oauth2 v0.4.0 // indirect
 )
 
 require (
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
+	github.com/hashicorp/go-retryablehttp v0.7.2
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/magiconair/properties v1.8.6 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
@@ -33,3 +34,5 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+require github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
