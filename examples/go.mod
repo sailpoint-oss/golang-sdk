@@ -2,7 +2,7 @@ module sdk
 
 go 1.18
 
-require github.com/sailpoint-oss/golang-sdk/sdk-output v0.0.0-20230113213350-ef4446fd7670
+require github.com/sailpoint-oss/golang-sdk/sdk-output v0.0.0-20230117191335-b0af464fda3c
 
 require (
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
@@ -14,10 +14,10 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/pelletier/go-toml v1.9.5 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
-	github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20230113213350-ef4446fd7670 // indirect
-	github.com/sailpoint-oss/golang-sdk/sdk-output/cc v0.0.0-20230113213350-ef4446fd7670 // indirect
-	github.com/sailpoint-oss/golang-sdk/sdk-output/v2 v2.0.0-20230113213350-ef4446fd7670 // indirect
-	github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20230113213350-ef4446fd7670 // indirect
+	github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20230117191335-b0af464fda3c // indirect
+	github.com/sailpoint-oss/golang-sdk/sdk-output/cc v0.0.0-20230117191335-b0af464fda3c // indirect
+	github.com/sailpoint-oss/golang-sdk/sdk-output/v2 v2.0.0-20230117191335-b0af464fda3c // indirect
+	github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20230117191335-b0af464fda3c // indirect
 	github.com/spf13/afero v1.9.3 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect

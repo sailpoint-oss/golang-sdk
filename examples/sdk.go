@@ -16,6 +16,7 @@ func main() {
 	configuration := sailpoint.NewDefaultConfiguration()
 
 	apiClient := sailpoint.NewAPIClient(configuration)
+	configuration.HTTPClient.RetryMax = 10
 
 	getResults(ctx, apiClient)
 
@@ -34,7 +35,7 @@ func getResults(ctx context.Context, apiClient *sailpoint.APIClient) {
 }
 
 func getAllPaginatedResults(ctx context.Context, apiClient *sailpoint.APIClient) {
-	resp, r, err := sailpoint.Paginate[sailpointsdk.Account](apiClient.V3.AccountsApi.ListAccounts(ctx), 0, 1000)
+	resp, r, err := sailpoint.PaginateWithDefaults[sailpointsdk.Account](apiClient.V3.AccountsApi.ListAccounts(ctx))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

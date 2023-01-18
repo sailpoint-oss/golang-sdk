@@ -5,7 +5,11 @@ import (
 	"reflect"
 )
 
-func Paginate[T any](f interface{}, initialOffset int32, limit int32) ([]T, *http.Response, error) {
+func PaginateWithDefaults[T any](f interface{}) ([]T, *http.Response, error) {
+	return Paginate[T](f, 0, 250, 10000)
+}
+
+func Paginate[T any](f interface{}, initialOffset int32, increment int32, limit int32) ([]T, *http.Response, error) {
 	var offset int32 = initialOffset
 	var returnObject []T
 	var latestResponse *http.Response
@@ -31,7 +35,7 @@ func Paginate[T any](f interface{}, initialOffset int32, limit int32) ([]T, *htt
 
 		// append the results to the main return object
 		returnObject = append(returnObject, actualValue...)
-		offset += 250
+		offset += increment
 	}
 	return returnObject, latestResponse, nil
 }
