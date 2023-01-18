@@ -21,7 +21,7 @@ type AccessProfile1 struct {
 	DisplayName *string `json:"displayName,omitempty"`
 	Type *DtoType `json:"type,omitempty"`
 	Description NullableString `json:"description,omitempty"`
-	Source *Reference1 `json:"source,omitempty"`
+	Source *Reference `json:"source,omitempty"`
 	Owner *DisplayReference `json:"owner,omitempty"`
 	Revocable *bool `json:"revocable,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -217,9 +217,9 @@ func (o *AccessProfile1) UnsetDescription() {
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *AccessProfile1) GetSource() Reference1 {
+func (o *AccessProfile1) GetSource() Reference {
 	if o == nil || isNil(o.Source) {
-		var ret Reference1
+		var ret Reference
 		return ret
 	}
 	return *o.Source
@@ -227,7 +227,7 @@ func (o *AccessProfile1) GetSource() Reference1 {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessProfile1) GetSourceOk() (*Reference1, bool) {
+func (o *AccessProfile1) GetSourceOk() (*Reference, bool) {
 	if o == nil || isNil(o.Source) {
 		return nil, false
 	}
@@ -243,8 +243,8 @@ func (o *AccessProfile1) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given Reference1 and assigns it to the Source field.
-func (o *AccessProfile1) SetSource(v Reference1) {
+// SetSource gets a reference to the given Reference and assigns it to the Source field.
+func (o *AccessProfile1) SetSource(v Reference) {
 	o.Source = &v
 }
 

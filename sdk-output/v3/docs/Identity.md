@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **EmployeeNumber** | Pointer to **string** |  | [optional] 
 **Manager** | Pointer to [**DisplayReference**](DisplayReference.md) |  | [optional] 
 **IsManager** | Pointer to **bool** | Indicates if this identity is a manager of other identities | [optional] 
-**IdentityProfile** | Pointer to [**Reference1**](Reference1.md) |  | [optional] 
-**Source** | Pointer to [**Reference1**](Reference1.md) |  | [optional] 
+**IdentityProfile** | Pointer to [**Reference**](Reference.md) |  | [optional] 
+**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | a map or dictionary of key/value pairs | [optional] 
 **ProcessingState** | Pointer to **NullableString** |  | [optional] 
 **ProcessingDetails** | Pointer to [**ProcessingDetails**](ProcessingDetails.md) |  | [optional] 
@@ -499,20 +499,20 @@ HasIsManager returns a boolean if a field has been set.
 
 ### GetIdentityProfile
 
-`func (o *Identity) GetIdentityProfile() Reference1`
+`func (o *Identity) GetIdentityProfile() Reference`
 
 GetIdentityProfile returns the IdentityProfile field if non-nil, zero value otherwise.
 
 ### GetIdentityProfileOk
 
-`func (o *Identity) GetIdentityProfileOk() (*Reference1, bool)`
+`func (o *Identity) GetIdentityProfileOk() (*Reference, bool)`
 
 GetIdentityProfileOk returns a tuple with the IdentityProfile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentityProfile
 
-`func (o *Identity) SetIdentityProfile(v Reference1)`
+`func (o *Identity) SetIdentityProfile(v Reference)`
 
 SetIdentityProfile sets IdentityProfile field to given value.
 
@@ -524,20 +524,20 @@ HasIdentityProfile returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *Identity) GetSource() Reference1`
+`func (o *Identity) GetSource() Reference`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *Identity) GetSourceOk() (*Reference1, bool)`
+`func (o *Identity) GetSourceOk() (*Reference, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *Identity) SetSource(v Reference1)`
+`func (o *Identity) SetSource(v Reference)`
 
 SetSource sets Source field to given value.
 
