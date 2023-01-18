@@ -16,10 +16,11 @@ import (
 
 // ScheduledSearchAllOf struct for ScheduledSearchAllOf
 type ScheduledSearchAllOf struct {
-	// The scheduled search ID. 
+	// The scheduled search ID.
 	Id *string `json:"id,omitempty"`
-	Owner *TypedReference `json:"owner,omitempty"`
-	// The ID of the scheduled search owner
+	Owner *ScheduledSearchAllOfOwner `json:"owner,omitempty"`
+	// The ID of the scheduled search owner.  Please use the `id` in the `owner` object instead. 
+	// Deprecated
 	OwnerId *string `json:"ownerId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -76,9 +77,9 @@ func (o *ScheduledSearchAllOf) SetId(v string) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *ScheduledSearchAllOf) GetOwner() TypedReference {
+func (o *ScheduledSearchAllOf) GetOwner() ScheduledSearchAllOfOwner {
 	if o == nil || isNil(o.Owner) {
-		var ret TypedReference
+		var ret ScheduledSearchAllOfOwner
 		return ret
 	}
 	return *o.Owner
@@ -86,7 +87,7 @@ func (o *ScheduledSearchAllOf) GetOwner() TypedReference {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScheduledSearchAllOf) GetOwnerOk() (*TypedReference, bool) {
+func (o *ScheduledSearchAllOf) GetOwnerOk() (*ScheduledSearchAllOfOwner, bool) {
 	if o == nil || isNil(o.Owner) {
 		return nil, false
 	}
@@ -102,12 +103,13 @@ func (o *ScheduledSearchAllOf) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given TypedReference and assigns it to the Owner field.
-func (o *ScheduledSearchAllOf) SetOwner(v TypedReference) {
+// SetOwner gets a reference to the given ScheduledSearchAllOfOwner and assigns it to the Owner field.
+func (o *ScheduledSearchAllOf) SetOwner(v ScheduledSearchAllOfOwner) {
 	o.Owner = &v
 }
 
 // GetOwnerId returns the OwnerId field value if set, zero value otherwise.
+// Deprecated
 func (o *ScheduledSearchAllOf) GetOwnerId() string {
 	if o == nil || isNil(o.OwnerId) {
 		var ret string
@@ -118,6 +120,7 @@ func (o *ScheduledSearchAllOf) GetOwnerId() string {
 
 // GetOwnerIdOk returns a tuple with the OwnerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ScheduledSearchAllOf) GetOwnerIdOk() (*string, bool) {
 	if o == nil || isNil(o.OwnerId) {
 		return nil, false
@@ -135,6 +138,7 @@ func (o *ScheduledSearchAllOf) HasOwnerId() bool {
 }
 
 // SetOwnerId gets a reference to the given string and assigns it to the OwnerId field.
+// Deprecated
 func (o *ScheduledSearchAllOf) SetOwnerId(v string) {
 	o.OwnerId = &v
 }

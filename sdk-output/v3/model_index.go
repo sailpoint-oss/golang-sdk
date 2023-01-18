@@ -26,6 +26,7 @@ const (
 	INDEX_EVENTS Index = "events"
 	INDEX_IDENTITIES Index = "identities"
 	INDEX_ROLES Index = "roles"
+	INDEX_STAR Index = "*"
 )
 
 // All allowed values of Index enum
@@ -36,6 +37,7 @@ var AllowedIndexEnumValues = []Index{
 	"events",
 	"identities",
 	"roles",
+	"*",
 }
 
 func (v *Index) UnmarshalJSON(src []byte) error {

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SavedSearchId** | **string** | The ID of the saved search that will be executed.  | 
-**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
+**SavedSearchId** | **string** | The ID of the saved search that will be executed. | 
+**Created** | Pointer to [**time.Time**](time.Time.md) | The date the scheduled search was initially created. | [optional] [readonly] 
+**Modified** | Pointer to [**time.Time**](time.Time.md) | The last date the scheduled search was modified. | [optional] [readonly] 
 **Schedule** | [**Schedule1**](Schedule1.md) |  | 
-**Recipients** | [**[]TypedReference**](TypedReference.md) | The email recipients.  | 
+**Recipients** | [**[]ScheduleRecipientsInner**](ScheduleRecipientsInner.md) | A list of identities that should receive the scheduled search report via email. | 
 **Enabled** | Pointer to **bool** | Indicates if the scheduled search is enabled.  | [optional] [default to false]
 **EmailEmptyResults** | Pointer to **bool** | Indicates if email generation should not be suppressed if search returns no results.  | [optional] [default to false]
 **DisplayQueryDetails** | Pointer to **bool** | Indicates if the generated email should include the query and search results preview (which could include PII).  | [optional] [default to false]
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewSchedule
 
-`func NewSchedule(savedSearchId string, schedule Schedule1, recipients []TypedReference, ) *Schedule`
+`func NewSchedule(savedSearchId string, schedule Schedule1, recipients []ScheduleRecipientsInner, ) *Schedule`
 
 NewSchedule instantiates a new Schedule object
 This constructor will assign default values to properties that have it defined,
@@ -77,16 +77,6 @@ SetCreated sets Created field to given value.
 
 HasCreated returns a boolean if a field has been set.
 
-### SetCreatedNil
-
-`func (o *Schedule) SetCreatedNil(b bool)`
-
- SetCreatedNil sets the value for Created to be an explicit nil
-
-### UnsetCreated
-`func (o *Schedule) UnsetCreated()`
-
-UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetModified
 
 `func (o *Schedule) GetModified() time.Time`
@@ -112,16 +102,6 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
-### SetModifiedNil
-
-`func (o *Schedule) SetModifiedNil(b bool)`
-
- SetModifiedNil sets the value for Modified to be an explicit nil
-
-### UnsetModified
-`func (o *Schedule) UnsetModified()`
-
-UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetSchedule
 
 `func (o *Schedule) GetSchedule() Schedule1`
@@ -144,20 +124,20 @@ SetSchedule sets Schedule field to given value.
 
 ### GetRecipients
 
-`func (o *Schedule) GetRecipients() []TypedReference`
+`func (o *Schedule) GetRecipients() []ScheduleRecipientsInner`
 
 GetRecipients returns the Recipients field if non-nil, zero value otherwise.
 
 ### GetRecipientsOk
 
-`func (o *Schedule) GetRecipientsOk() (*[]TypedReference, bool)`
+`func (o *Schedule) GetRecipientsOk() (*[]ScheduleRecipientsInner, bool)`
 
 GetRecipientsOk returns a tuple with the Recipients field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecipients
 
-`func (o *Schedule) SetRecipients(v []TypedReference)`
+`func (o *Schedule) SetRecipients(v []ScheduleRecipientsInner)`
 
 SetRecipients sets Recipients field to given value.
 

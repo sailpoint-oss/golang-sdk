@@ -5,17 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | [**ScheduleType**](ScheduleType.md) |  | 
-**Months** | Pointer to [**NullableSelector**](Selector.md) |  | [optional] 
-**Days** | Pointer to [**NullableSelector**](Selector.md) |  | [optional] 
-**Hours** | [**NullableSelector**](Selector.md) |  | 
+**Days** | Pointer to [**Schedule1Days**](Schedule1Days.md) |  | [optional] 
+**Hours** | [**Schedule1Hours**](Schedule1Hours.md) |  | 
 **Expiration** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**TimeZoneId** | Pointer to **string** | The ID of the time zone for the schedule.  | [optional] 
+**TimeZoneId** | Pointer to **NullableString** | The GMT formatted timezone the schedule will run in (ex. GMT-06:00).  If no timezone is specified, the org&#39;s default timezone is used. | [optional] 
 
 ## Methods
 
 ### NewSchedule1
 
-`func NewSchedule1(type_ ScheduleType, hours NullableSelector, ) *Schedule1`
+`func NewSchedule1(type_ ScheduleType, hours Schedule1Hours, ) *Schedule1`
 
 NewSchedule1 instantiates a new Schedule1 object
 This constructor will assign default values to properties that have it defined,
@@ -50,57 +49,22 @@ and a boolean to check if the value has been set.
 SetType sets Type field to given value.
 
 
-### GetMonths
-
-`func (o *Schedule1) GetMonths() Selector`
-
-GetMonths returns the Months field if non-nil, zero value otherwise.
-
-### GetMonthsOk
-
-`func (o *Schedule1) GetMonthsOk() (*Selector, bool)`
-
-GetMonthsOk returns a tuple with the Months field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMonths
-
-`func (o *Schedule1) SetMonths(v Selector)`
-
-SetMonths sets Months field to given value.
-
-### HasMonths
-
-`func (o *Schedule1) HasMonths() bool`
-
-HasMonths returns a boolean if a field has been set.
-
-### SetMonthsNil
-
-`func (o *Schedule1) SetMonthsNil(b bool)`
-
- SetMonthsNil sets the value for Months to be an explicit nil
-
-### UnsetMonths
-`func (o *Schedule1) UnsetMonths()`
-
-UnsetMonths ensures that no value is present for Months, not even an explicit nil
 ### GetDays
 
-`func (o *Schedule1) GetDays() Selector`
+`func (o *Schedule1) GetDays() Schedule1Days`
 
 GetDays returns the Days field if non-nil, zero value otherwise.
 
 ### GetDaysOk
 
-`func (o *Schedule1) GetDaysOk() (*Selector, bool)`
+`func (o *Schedule1) GetDaysOk() (*Schedule1Days, bool)`
 
 GetDaysOk returns a tuple with the Days field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDays
 
-`func (o *Schedule1) SetDays(v Selector)`
+`func (o *Schedule1) SetDays(v Schedule1Days)`
 
 SetDays sets Days field to given value.
 
@@ -110,46 +74,26 @@ SetDays sets Days field to given value.
 
 HasDays returns a boolean if a field has been set.
 
-### SetDaysNil
-
-`func (o *Schedule1) SetDaysNil(b bool)`
-
- SetDaysNil sets the value for Days to be an explicit nil
-
-### UnsetDays
-`func (o *Schedule1) UnsetDays()`
-
-UnsetDays ensures that no value is present for Days, not even an explicit nil
 ### GetHours
 
-`func (o *Schedule1) GetHours() Selector`
+`func (o *Schedule1) GetHours() Schedule1Hours`
 
 GetHours returns the Hours field if non-nil, zero value otherwise.
 
 ### GetHoursOk
 
-`func (o *Schedule1) GetHoursOk() (*Selector, bool)`
+`func (o *Schedule1) GetHoursOk() (*Schedule1Hours, bool)`
 
 GetHoursOk returns a tuple with the Hours field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHours
 
-`func (o *Schedule1) SetHours(v Selector)`
+`func (o *Schedule1) SetHours(v Schedule1Hours)`
 
 SetHours sets Hours field to given value.
 
 
-### SetHoursNil
-
-`func (o *Schedule1) SetHoursNil(b bool)`
-
- SetHoursNil sets the value for Hours to be an explicit nil
-
-### UnsetHours
-`func (o *Schedule1) UnsetHours()`
-
-UnsetHours ensures that no value is present for Hours, not even an explicit nil
 ### GetExpiration
 
 `func (o *Schedule1) GetExpiration() time.Time`
@@ -210,6 +154,16 @@ SetTimeZoneId sets TimeZoneId field to given value.
 
 HasTimeZoneId returns a boolean if a field has been set.
 
+### SetTimeZoneIdNil
+
+`func (o *Schedule1) SetTimeZoneIdNil(b bool)`
+
+ SetTimeZoneIdNil sets the value for TimeZoneId to be an explicit nil
+
+### UnsetTimeZoneId
+`func (o *Schedule1) UnsetTimeZoneId()`
+
+UnsetTimeZoneId ensures that no value is present for TimeZoneId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

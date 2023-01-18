@@ -343,9 +343,13 @@ docs/SavedSearchApi.md
 docs/SavedSearchCreateRequest.md
 docs/Schedule.md
 docs/Schedule1.md
+docs/Schedule1Days.md
+docs/Schedule1Hours.md
+docs/ScheduleRecipientsInner.md
 docs/ScheduleType.md
 docs/ScheduledSearch.md
 docs/ScheduledSearchAllOf.md
+docs/ScheduledSearchAllOfOwner.md
 docs/ScheduledSearchApi.md
 docs/ScheduledSearchCreateRequest.md
 docs/Schema.md
@@ -718,9 +722,13 @@ model_saved_search_all_of.go
 model_saved_search_create_request.go
 model_schedule.go
 model_schedule_1.go
+model_schedule_1_days.go
+model_schedule_1_hours.go
+model_schedule_recipients_inner.go
 model_schedule_type.go
 model_scheduled_search.go
 model_scheduled_search_all_of.go
+model_scheduled_search_all_of_owner.go
 model_scheduled_search_create_request.go
 model_schema.go
 model_search.go

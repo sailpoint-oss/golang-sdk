@@ -9030,10 +9030,7 @@ paths:
       - Non-Employee Lifecycle Management
   /oauth-clients:
     get:
-      description: |-
-        This gets a list of OAuth clients.
-        Request will require the following security scope:
-        - sp:oauth-client:manage
+      description: This gets a list of OAuth clients.
       operationId: listOauthClients
       responses:
         "200":
@@ -9100,14 +9097,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - sp:oauth-client:manage
       summary: List OAuth Clients
       tags:
       - OAuth Clients
     post:
-      description: |-
-        This creates an OAuth client.
-        Request will require the following security scope:
-        - sp:oauth-client:manage
+      description: This creates an OAuth client.
       operationId: createOauthClient
       requestBody:
         content:
@@ -9178,15 +9175,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - sp:oauth-client:manage
       summary: Create OAuth Client
       tags:
       - OAuth Clients
   /oauth-clients/{id}:
     delete:
-      description: |-
-        This deletes an OAuth client.
-        Request will require the following security scopes:
-        - sp:oauth-client:manage
+      description: This deletes an OAuth client.
       operationId: deleteOauthClient
       parameters:
       - description: The OAuth client id
@@ -9273,14 +9270,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - sp:oauth-client:manage
       summary: Delete OAuth Client
       tags:
       - OAuth Clients
     get:
-      description: |-
-        This gets details of an OAuth client.
-        Request will require the following security scope:
-        - sp:oauth-client:manage - sp:oauth-client:read
+      description: This gets details of an OAuth client.
       operationId: getOauthClient
       parameters:
       - description: The OAuth client id
@@ -9371,14 +9368,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - sp:oauth-client:manage
+        - sp:oauth-client:read
       summary: Get OAuth Client
       tags:
       - OAuth Clients
     patch:
-      description: |-
-        This performs a targeted update to the field(s) of an OAuth client.
-        Request will require a security scope of
-        - sp:oauth-client:manage
+      description: This performs a targeted update to the field(s) of an OAuth client.
       operationId: patchOauthClient
       parameters:
       - description: The OAuth client id
@@ -9502,6 +9500,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - sp:oauth-client:manage
       summary: Patch OAuth Client
       tags:
       - OAuth Clients
@@ -9510,10 +9511,7 @@ paths:
       description: "This gets a collection of personal access tokens associated with\
         \ the optional `owner-id`.  query parameter. If the `owner-id` query parameter\
         \ is omitted, all personal access tokens  for a tenant will be retrieved,\
-        \ but the caller must have the 'idn:all-personal-access-tokens:read' right.\
-        \ \nRequest will require one of the following security scopes:\n\n  - sp:my-personal-access-tokens:read\n\
-        \  - sp:my-personal-access-tokens:manage\n  - sp:all-personal-access-tokens:read\n\
-        \  - sp:all-personal-access-tokens:manage"
+        \ but the caller must have the 'idn:all-personal-access-tokens:read' right."
       operationId: listPersonalAccessTokens
       parameters:
       - description: "The identity ID of the owner whose personal access tokens should\
@@ -9593,13 +9591,17 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - sp:my-personal-access-tokens:read
+        - sp:my-personal-access-tokens:manage
+        - sp:all-personal-access-tokens:read
+        - sp:all-personal-access-tokens:manage
       summary: List Personal Access Tokens
       tags:
       - Personal Access Tokens
     post:
-      description: "This creates a personal access token. \nRequest will require one\
-        \ of the following security scopes:\n\n  - sp:my-personal-access-tokens:manage\n\
-        \  - sp:all-personal-access-tokens:manage"
+      description: This creates a personal access token.
       operationId: createPersonalAccessToken
       requestBody:
         content:
@@ -9672,14 +9674,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - sp:my-personal-access-tokens:manage
+        - sp:all-personal-access-tokens:manage
       summary: Create Personal Access Token
       tags:
       - Personal Access Tokens
   /personal-access-tokens/{id}:
     delete:
-      description: "This deletes a personal access token \nRequest will require one\
-        \ of the following security scopes:\n\n  - sp:my-personal-access-tokens:manage\n\
-        \  - sp:all-personal-access-tokens:manage"
+      description: This deletes a personal access token.
       operationId: deletePersonalAccessToken
       parameters:
       - description: The personal access token id
@@ -9766,7 +9770,133 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - sp:my-personal-access-tokens:manage
+        - sp:all-personal-access-tokens:manage
       summary: Delete Personal Access Token
+      tags:
+      - Personal Access Tokens
+    patch:
+      description: This performs a targeted update to the field(s) of a Personal Access
+        Token.
+      operationId: patchPersonalAccessToken
+      parameters:
+      - description: The Personal Access Token id
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: replace
+              path: /name
+              value: New name
+            - op: replace
+              path: /scope
+              value:
+              - sp:scopes:all
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: |
+          A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          The following fields are patchable:
+          * name
+          * scope
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPersonalAccessTokenResponse'
+          description: "Indicates the PATCH operation succeeded, and returns the PAT's\
+            \ new representation."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - sp:my-personal-access-tokens:manage
+      summary: Patch Personal Access Token
       tags:
       - Personal Access Tokens
   /public-identities:
@@ -10792,6 +10922,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -10810,7 +10947,50 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
-      summary: Return a list of scheduled searches
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: List scheduled searches
       tags:
       - Scheduled Search
     post:
@@ -10820,6 +11000,82 @@ paths:
       requestBody:
         content:
           application/json:
+            examples:
+              Daily Search:
+                description: A search that executes each day at a 9 AM
+                value:
+                  savedSearchId: 9c620e13-cd33-4804-a13d-403bd7bcdbad
+                  schedule:
+                    type: DAILY
+                    hours:
+                      type: LIST
+                      values:
+                      - "9"
+                  recipients:
+                  - type: IDENTITY
+                    id: 2c9180867624cbd7017642d8c8c81f67
+              Weekly Search:
+                description: A search that executes each week on select days and times
+                value:
+                  savedSearchId: 9c620e13-cd33-4804-a13d-403bd7bcdbad
+                  schedule:
+                    type: WEEKLY
+                    days:
+                      type: LIST
+                      values:
+                      - MON
+                      - TUE
+                      - WED
+                      - THU
+                      - FRI
+                      - SAT
+                      - SUN
+                    hours:
+                      type: LIST
+                      values:
+                      - "9"
+                  recipients:
+                  - type: IDENTITY
+                    id: 2c9180867624cbd7017642d8c8c81f67
+              Monthly Search:
+                description: A search that executes each month on select days and
+                  times
+                value:
+                  savedSearchId: 9c620e13-cd33-4804-a13d-403bd7bcdbad
+                  schedule:
+                    type: MONTHLY
+                    days:
+                      type: LIST
+                      values:
+                      - "1"
+                      - "7"
+                      - "14"
+                      - L
+                    hours:
+                      type: LIST
+                      values:
+                      - "9"
+                  recipients:
+                  - type: IDENTITY
+                    id: 2c9180867624cbd7017642d8c8c81f67
+              Calendar Search:
+                description: A search that executes on specific calendar days
+                value:
+                  savedSearchId: 9c620e13-cd33-4804-a13d-403bd7bcdbad
+                  schedule:
+                    type: CALENDAR
+                    days:
+                      type: LIST
+                      values:
+                      - 2023-01-22
+                      - 2023-02-22
+                    hours:
+                      type: LIST
+                      values:
+                      - "9"
+                  recipients:
+                  - type: IDENTITY
+                    id: 2c9180867624cbd7017642d8c8c81f67
             schema:
               $ref: '#/components/schemas/scheduledSearchCreate_request'
         description: The scheduled search to persist.
@@ -10837,6 +11093,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -10855,6 +11118,49 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
       summary: Create a new scheduled search
       tags:
       - Scheduled Search
@@ -10875,6 +11181,19 @@ paths:
         "204":
           description: No Content - Indicates the request was successful but there
             is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -10911,12 +11230,36 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
-      summary: Delete a Scheduled Search by ID
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Delete a Scheduled Search
       tags:
       - Scheduled Search
     get:
-      description: |
-        Returns the specified scheduled search.
+      description: Returns the specified scheduled search.
       operationId: scheduledSearchGet
       parameters:
       - description: ID of the requested document.
@@ -10933,6 +11276,37 @@ paths:
               schema:
                 $ref: '#/components/schemas/ScheduledSearch'
           description: The requested scheduled search.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
         "404":
           content:
             application/json:
@@ -10951,7 +11325,32 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
-      summary: Return a Scheduled Search by ID
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Get a Scheduled Search
       tags:
       - Scheduled Search
     put:
@@ -10986,6 +11385,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -11022,6 +11428,31 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
       summary: Update an existing Scheduled Search
       tags:
       - Scheduled Search
@@ -11097,8 +11528,11 @@ paths:
       - Scheduled Search
   /search:
     post:
-      description: Performs a search with the provided query and returns a matching
-        result collection.
+      description: "Performs a search with the provided query and returns a matching\
+        \ result collection. By default, you can page a maximum of 10,000 search result\
+        \ records.  To page past 10,000 records, you can use searchAfter paging. \
+        \ Refer to [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries)\
+        \ for more information about how to implement searchAfter paging. "
       externalDocs:
         description: Learn more about search.
         url: https://documentation.sailpoint.com/saas/help/search/index.html
@@ -11253,8 +11687,8 @@ paths:
       - Search
   /search/count:
     post:
-      description: Performs a search with provided query and returns count of results
-        in the X-Total-Count header.
+      description: Performs a search with a provided query and returns the count of
+        results in the X-Total-Count header.
       operationId: searchCount
       requestBody:
         content:
@@ -11281,6 +11715,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -11299,12 +11740,41 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
-      summary: Count the number of Documents satisfying a Query
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Count Documents Satisfying a Query
       tags:
       - Search
   /search/aggregate:
     post:
-      description: Performs a search query aggregation and returns aggregation result.
+      description: "Performs a search query aggregation and returns the aggregation\
+        \ result. By default, you can page a maximum of 10,000 search result records.\
+        \  To page past 10,000 records, you can use searchAfter paging.  Refer to\
+        \ [Paginating Search Queries](https://developer.sailpoint.com/idn/api/standard-collection-parameters#paginating-search-queries)\
+        \ for more information about how to implement searchAfter paging. "
       operationId: searchAggregate
       parameters:
       - description: |-
@@ -11395,6 +11865,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -11413,13 +11890,38 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
       summary: Perform a Search Query Aggregation
       tags:
       - Search
   /search/{index}/{id}:
     get:
-      description: Fetches a single document from the specified index using the specified
-        document ID.
+      description: "Fetches a single document from the specified index, using the\
+        \ specified document ID."
       operationId: searchGet
       parameters:
       - description: |
@@ -11457,6 +11959,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/SearchDocument'
           description: The requested document.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -11493,6 +12008,31 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/createAccessRequest_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
       summary: Get a Document by ID
       tags:
       - Search
@@ -19450,29 +19990,28 @@ components:
     Schedule:
       properties:
         savedSearchId:
-          description: |
-            The ID of the saved search that will be executed.
+          description: The ID of the saved search that will be executed.
           example: 554f1511-f0a1-4744-ab14-599514d3e57c
           type: string
         created:
-          description: A date-time in ISO-8601 format
-          example: 2018-06-25T20:22:28.104Z
-          format: date-time
-          nullable: true
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/DateTime'
+          description: The date the scheduled search was initially created.
+          nullable: false
+          readOnly: true
         modified:
-          description: A date-time in ISO-8601 format
-          example: 2018-06-25T20:22:28.104Z
-          format: date-time
-          nullable: true
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/DateTime'
+          description: The last date the scheduled search was modified.
+          nullable: false
+          readOnly: true
         schedule:
           $ref: '#/components/schemas/Schedule_1'
         recipients:
-          description: |
-            The email recipients.
+          description: A list of identities that should receive the scheduled search
+            report via email.
           items:
-            $ref: '#/components/schemas/TypedReference'
+            $ref: '#/components/schemas/Schedule_recipients_inner'
           type: array
         enabled:
           default: false
@@ -19499,9 +20038,13 @@ components:
       type: object
     ScheduledSearch:
       allOf:
+      - $ref: '#/components/schemas/ScheduledSearch_allOf'
       - $ref: '#/components/schemas/Name_1'
       - $ref: '#/components/schemas/Schedule'
-      - $ref: '#/components/schemas/ScheduledSearch_allOf'
+      required:
+      - id
+      - owner
+      - ownerId
       type: object
     ServiceDeskIntegrationDto:
       allOf:
@@ -23169,6 +23712,7 @@ components:
           description: |
             The name of the scheduled search.
           example: Daily disabled accounts
+          nullable: true
           type: string
         description:
           description: |
@@ -24111,17 +24655,14 @@ components:
       nullable: true
       type: string
     Schedule_1:
-      description: |
-        The schedule information.
+      description: The schedule information.
       properties:
         type:
           $ref: '#/components/schemas/ScheduleType'
-        months:
-          $ref: '#/components/schemas/Selector'
         days:
-          $ref: '#/components/schemas/Selector'
+          $ref: '#/components/schemas/Schedule_1_days'
         hours:
-          $ref: '#/components/schemas/Selector'
+          $ref: '#/components/schemas/Schedule_1_hours'
         expiration:
           description: A date-time in ISO-8601 format
           example: 2018-06-25T20:22:28.104Z
@@ -24129,9 +24670,10 @@ components:
           nullable: true
           type: string
         timeZoneId:
-          description: |
-            The ID of the time zone for the schedule.
+          description: "The GMT formatted timezone the schedule will run in (ex. GMT-06:00).\
+            \  If no timezone is specified, the org's default timezone is used."
           example: GMT-06:00
+          nullable: true
           type: string
       required:
       - hours
@@ -26533,6 +27075,7 @@ components:
       - events
       - identities
       - roles
+      - '*'
       example: identities
       type: string
     Column:
@@ -28465,18 +29008,58 @@ components:
           $ref: '#/components/schemas/TypedReference'
       type: object
       example: null
+    Schedule_recipients_inner:
+      properties:
+        type:
+          description: The type of object being referenced
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: The ID of the referenced object
+          example: 2c9180867624cbd7017642d8c8c81f67
+          type: string
+      required:
+      - id
+      - type
+      type: object
+    ScheduledSearch_allOf_owner:
+      description: The owner of the scheduled search
+      properties:
+        type:
+          description: The type of object being referenced
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: The ID of the referenced object
+          example: 2c9180867624cbd7017642d8c8c81f67
+          type: string
+      readOnly: true
+      required:
+      - id
+      - type
+      type: object
+      example: null
     ScheduledSearch_allOf:
       properties:
         id:
-          description: |
-            The scheduled search ID.
+          description: The scheduled search ID.
           example: 0de46054-fe90-434a-b84e-c6b3359d0c64
+          readOnly: true
           type: string
         owner:
-          $ref: '#/components/schemas/TypedReference'
+          $ref: '#/components/schemas/ScheduledSearch_allOf_owner'
         ownerId:
-          description: The ID of the scheduled search owner
+          deprecated: true
+          description: |
+            The ID of the scheduled search owner.
+
+            Please use the `id` in the `owner` object instead.
           example: 2c9180867624cbd7017642d8c8c81f67
+          readOnly: true
           type: string
       type: object
       example: null
@@ -29160,6 +29743,34 @@ components:
       - $ref: '#/components/schemas/TypedReference'
       description: |
         The owner of the scheduled search being tested.
+    Schedule_1_days:
+      allOf:
+      - $ref: '#/components/schemas/Selector'
+      - description: |
+          The days to execute the search.
+
+          If `type` is `WEEKLY`, the values will be `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, and `SUN`.
+
+          If `type` is `MONTHLY`, the values will be a number in double quotes, like `"1"`, `"10"`, or `"28"`.  Optionally, the value `"L"` can be used to refer to the last day of the month.
+        example:
+          type: LIST
+          values:
+          - MON
+          - WED
+          - FRI
+        type: object
+    Schedule_1_hours:
+      allOf:
+      - $ref: '#/components/schemas/Selector'
+      - description: The hours selected.
+        example:
+          type: RANGE
+          values:
+          - "9"
+          - "18"
+          interval: 3
+        type: object
+      nullable: false
     DateCompare_firstDate:
       description: This is the first date to consider (The date that would be on the
         left hand side of the comparison operation).

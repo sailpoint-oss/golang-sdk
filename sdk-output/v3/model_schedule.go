@@ -17,15 +17,15 @@ import (
 
 // Schedule struct for Schedule
 type Schedule struct {
-	// The ID of the saved search that will be executed. 
+	// The ID of the saved search that will be executed.
 	SavedSearchId string `json:"savedSearchId"`
-	// A date-time in ISO-8601 format
-	Created NullableTime `json:"created,omitempty"`
-	// A date-time in ISO-8601 format
-	Modified NullableTime `json:"modified,omitempty"`
+	// The date the scheduled search was initially created.
+	Created *time.Time `json:"created,omitempty"`
+	// The last date the scheduled search was modified.
+	Modified *time.Time `json:"modified,omitempty"`
 	Schedule Schedule1 `json:"schedule"`
-	// The email recipients. 
-	Recipients []TypedReference `json:"recipients"`
+	// A list of identities that should receive the scheduled search report via email.
+	Recipients []ScheduleRecipientsInner `json:"recipients"`
 	// Indicates if the scheduled search is enabled. 
 	Enabled *bool `json:"enabled,omitempty"`
 	// Indicates if email generation should not be suppressed if search returns no results. 
@@ -41,7 +41,7 @@ type _Schedule Schedule
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSchedule(savedSearchId string, schedule Schedule1, recipients []TypedReference) *Schedule {
+func NewSchedule(savedSearchId string, schedule Schedule1, recipients []ScheduleRecipientsInner) *Schedule {
 	this := Schedule{}
 	this.SavedSearchId = savedSearchId
 	this.Schedule = schedule
@@ -93,88 +93,68 @@ func (o *Schedule) SetSavedSearchId(v string) {
 	o.SavedSearchId = v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreated returns the Created field value if set, zero value otherwise.
 func (o *Schedule) GetCreated() time.Time {
-	if o == nil || isNil(o.Created.Get()) {
+	if o == nil || isNil(o.Created) {
 		var ret time.Time
 		return ret
 	}
-	return *o.Created.Get()
+	return *o.Created
 }
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Schedule) GetCreatedOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Created) {
 		return nil, false
 	}
-	return o.Created.Get(), o.Created.IsSet()
+	return o.Created, true
 }
 
 // HasCreated returns a boolean if a field has been set.
 func (o *Schedule) HasCreated() bool {
-	if o != nil && o.Created.IsSet() {
+	if o != nil && !isNil(o.Created) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *Schedule) SetCreated(v time.Time) {
-	o.Created.Set(&v)
-}
-// SetCreatedNil sets the value for Created to be an explicit nil
-func (o *Schedule) SetCreatedNil() {
-	o.Created.Set(nil)
+	o.Created = &v
 }
 
-// UnsetCreated ensures that no value is present for Created, not even an explicit nil
-func (o *Schedule) UnsetCreated() {
-	o.Created.Unset()
-}
-
-// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetModified returns the Modified field value if set, zero value otherwise.
 func (o *Schedule) GetModified() time.Time {
-	if o == nil || isNil(o.Modified.Get()) {
+	if o == nil || isNil(o.Modified) {
 		var ret time.Time
 		return ret
 	}
-	return *o.Modified.Get()
+	return *o.Modified
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Schedule) GetModifiedOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Modified) {
 		return nil, false
 	}
-	return o.Modified.Get(), o.Modified.IsSet()
+	return o.Modified, true
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *Schedule) HasModified() bool {
-	if o != nil && o.Modified.IsSet() {
+	if o != nil && !isNil(o.Modified) {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
 func (o *Schedule) SetModified(v time.Time) {
-	o.Modified.Set(&v)
-}
-// SetModifiedNil sets the value for Modified to be an explicit nil
-func (o *Schedule) SetModifiedNil() {
-	o.Modified.Set(nil)
-}
-
-// UnsetModified ensures that no value is present for Modified, not even an explicit nil
-func (o *Schedule) UnsetModified() {
-	o.Modified.Unset()
+	o.Modified = &v
 }
 
 // GetSchedule returns the Schedule field value
@@ -202,9 +182,9 @@ func (o *Schedule) SetSchedule(v Schedule1) {
 }
 
 // GetRecipients returns the Recipients field value
-func (o *Schedule) GetRecipients() []TypedReference {
+func (o *Schedule) GetRecipients() []ScheduleRecipientsInner {
 	if o == nil {
-		var ret []TypedReference
+		var ret []ScheduleRecipientsInner
 		return ret
 	}
 
@@ -213,7 +193,7 @@ func (o *Schedule) GetRecipients() []TypedReference {
 
 // GetRecipientsOk returns a tuple with the Recipients field value
 // and a boolean to check if the value has been set.
-func (o *Schedule) GetRecipientsOk() ([]TypedReference, bool) {
+func (o *Schedule) GetRecipientsOk() ([]ScheduleRecipientsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -221,7 +201,7 @@ func (o *Schedule) GetRecipientsOk() ([]TypedReference, bool) {
 }
 
 // SetRecipients sets field value
-func (o *Schedule) SetRecipients(v []TypedReference) {
+func (o *Schedule) SetRecipients(v []ScheduleRecipientsInner) {
 	o.Recipients = v
 }
 
@@ -326,11 +306,11 @@ func (o Schedule) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["savedSearchId"] = o.SavedSearchId
 	}
-	if o.Created.IsSet() {
-		toSerialize["created"] = o.Created.Get()
+	if !isNil(o.Created) {
+		toSerialize["created"] = o.Created
 	}
-	if o.Modified.IsSet() {
-		toSerialize["modified"] = o.Modified.Get()
+	if !isNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
 	}
 	if true {
 		toSerialize["schedule"] = o.Schedule

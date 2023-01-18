@@ -5,9 +5,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ScheduledSearchCreate**](ScheduledSearchApi.md#ScheduledSearchCreate) | **Post** /scheduled-searches | Create a new scheduled search
-[**ScheduledSearchDelete**](ScheduledSearchApi.md#ScheduledSearchDelete) | **Delete** /scheduled-searches/{id} | Delete a Scheduled Search by ID
-[**ScheduledSearchGet**](ScheduledSearchApi.md#ScheduledSearchGet) | **Get** /scheduled-searches/{id} | Return a Scheduled Search by ID
-[**ScheduledSearchList**](ScheduledSearchApi.md#ScheduledSearchList) | **Get** /scheduled-searches | Return a list of scheduled searches
+[**ScheduledSearchDelete**](ScheduledSearchApi.md#ScheduledSearchDelete) | **Delete** /scheduled-searches/{id} | Delete a Scheduled Search
+[**ScheduledSearchGet**](ScheduledSearchApi.md#ScheduledSearchGet) | **Get** /scheduled-searches/{id} | Get a Scheduled Search
+[**ScheduledSearchList**](ScheduledSearchApi.md#ScheduledSearchList) | **Get** /scheduled-searches | List scheduled searches
 [**ScheduledSearchUnsubscribe**](ScheduledSearchApi.md#ScheduledSearchUnsubscribe) | **Post** /scheduled-searches/{id}/unsubscribe | Unsubscribe a recipient from Scheduled Search
 [**ScheduledSearchUpdate**](ScheduledSearchApi.md#ScheduledSearchUpdate) | **Put** /scheduled-searches/{id} | Update an existing Scheduled Search
 
@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    scheduledSearchCreateRequest := *openapiclient.NewScheduledSearchCreateRequest("554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule1(openapiclient.ScheduleType("DAILY"), "TODO"), []openapiclient.TypedReference{*openapiclient.NewTypedReference(openapiclient.DtoType("ACCOUNT_CORRELATION_CONFIG"), "2c91808568c529c60168cca6f90c1313")}) // ScheduledSearchCreateRequest | The scheduled search to persist.
+    scheduledSearchCreateRequest := *openapiclient.NewScheduledSearchCreateRequest("554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule1(openapiclient.ScheduleType("DAILY"), *openapiclient.NewSchedule1Hours(openapiclient.SelectorType("LIST"), []string{"Values_example"})), []openapiclient.ScheduleRecipientsInner{*openapiclient.NewScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}) // ScheduledSearchCreateRequest | The scheduled search to persist.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 > ScheduledSearchDelete(ctx, id).Execute()
 
-Delete a Scheduled Search by ID
+Delete a Scheduled Search
 
 
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 > ScheduledSearch ScheduledSearchGet(ctx, id).Execute()
 
-Return a Scheduled Search by ID
+Get a Scheduled Search
 
 
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 > []ScheduledSearch ScheduledSearchList(ctx).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
 
-Return a list of scheduled searches
+List scheduled searches
 
 
 
@@ -381,7 +381,7 @@ import (
 
 func main() {
     id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
-    scheduledSearch := *openapiclient.NewScheduledSearch("554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule1(openapiclient.ScheduleType("DAILY"), "TODO"), []openapiclient.TypedReference{*openapiclient.NewTypedReference(openapiclient.DtoType("ACCOUNT_CORRELATION_CONFIG"), "2c91808568c529c60168cca6f90c1313")}) // ScheduledSearch | The scheduled search to persist.
+    scheduledSearch := *openapiclient.NewScheduledSearch("0de46054-fe90-434a-b84e-c6b3359d0c64", *openapiclient.NewScheduledSearchAllOfOwner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67"), "2c9180867624cbd7017642d8c8c81f67", "554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule1(openapiclient.ScheduleType("DAILY"), *openapiclient.NewSchedule1Hours(openapiclient.SelectorType("LIST"), []string{"Values_example"})), []openapiclient.ScheduleRecipientsInner{*openapiclient.NewScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}) // ScheduledSearch | The scheduled search to persist.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -167,6 +167,7 @@ Class | Method | HTTP request | Description
 *PersonalAccessTokensApi* | [**CreatePersonalAccessToken**](docs/PersonalAccessTokensApi.md#createpersonalaccesstoken) | **Post** /personal-access-tokens | Create Personal Access Token
 *PersonalAccessTokensApi* | [**DeletePersonalAccessToken**](docs/PersonalAccessTokensApi.md#deletepersonalaccesstoken) | **Delete** /personal-access-tokens/{id} | Delete Personal Access Token
 *PersonalAccessTokensApi* | [**ListPersonalAccessTokens**](docs/PersonalAccessTokensApi.md#listpersonalaccesstokens) | **Get** /personal-access-tokens | List Personal Access Tokens
+*PersonalAccessTokensApi* | [**PatchPersonalAccessToken**](docs/PersonalAccessTokensApi.md#patchpersonalaccesstoken) | **Patch** /personal-access-tokens/{id} | Patch Personal Access Token
 *PublicIdentitiesApi* | [**GetPublicIdentities**](docs/PublicIdentitiesApi.md#getpublicidentities) | **Get** /public-identities | Get a list of public identities
 *PublicIdentitiesConfigApi* | [**GetPublicIdentityConfig**](docs/PublicIdentitiesConfigApi.md#getpublicidentityconfig) | **Get** /public-identities-config | Get the Public Identities Configuration
 *PublicIdentitiesConfigApi* | [**UpdatePublicIdentityConfig**](docs/PublicIdentitiesConfigApi.md#updatepublicidentityconfig) | **Put** /public-identities-config | Update the Public Identities Configuration
@@ -178,13 +179,13 @@ Class | Method | HTTP request | Description
 *SavedSearchApi* | [**SavedSearchList**](docs/SavedSearchApi.md#savedsearchlist) | **Get** /saved-searches | Return a list of Saved Searches
 *SavedSearchApi* | [**SavedSearchUpdate**](docs/SavedSearchApi.md#savedsearchupdate) | **Put** /saved-searches/{id} | Updates an existing saved search 
 *ScheduledSearchApi* | [**ScheduledSearchCreate**](docs/ScheduledSearchApi.md#scheduledsearchcreate) | **Post** /scheduled-searches | Create a new scheduled search
-*ScheduledSearchApi* | [**ScheduledSearchDelete**](docs/ScheduledSearchApi.md#scheduledsearchdelete) | **Delete** /scheduled-searches/{id} | Delete a Scheduled Search by ID
-*ScheduledSearchApi* | [**ScheduledSearchGet**](docs/ScheduledSearchApi.md#scheduledsearchget) | **Get** /scheduled-searches/{id} | Return a Scheduled Search by ID
-*ScheduledSearchApi* | [**ScheduledSearchList**](docs/ScheduledSearchApi.md#scheduledsearchlist) | **Get** /scheduled-searches | Return a list of scheduled searches
+*ScheduledSearchApi* | [**ScheduledSearchDelete**](docs/ScheduledSearchApi.md#scheduledsearchdelete) | **Delete** /scheduled-searches/{id} | Delete a Scheduled Search
+*ScheduledSearchApi* | [**ScheduledSearchGet**](docs/ScheduledSearchApi.md#scheduledsearchget) | **Get** /scheduled-searches/{id} | Get a Scheduled Search
+*ScheduledSearchApi* | [**ScheduledSearchList**](docs/ScheduledSearchApi.md#scheduledsearchlist) | **Get** /scheduled-searches | List scheduled searches
 *ScheduledSearchApi* | [**ScheduledSearchUnsubscribe**](docs/ScheduledSearchApi.md#scheduledsearchunsubscribe) | **Post** /scheduled-searches/{id}/unsubscribe | Unsubscribe a recipient from Scheduled Search
 *ScheduledSearchApi* | [**ScheduledSearchUpdate**](docs/ScheduledSearchApi.md#scheduledsearchupdate) | **Put** /scheduled-searches/{id} | Update an existing Scheduled Search
 *SearchApi* | [**SearchAggregate**](docs/SearchApi.md#searchaggregate) | **Post** /search/aggregate | Perform a Search Query Aggregation
-*SearchApi* | [**SearchCount**](docs/SearchApi.md#searchcount) | **Post** /search/count | Count the number of Documents satisfying a Query
+*SearchApi* | [**SearchCount**](docs/SearchApi.md#searchcount) | **Post** /search/count | Count Documents Satisfying a Query
 *SearchApi* | [**SearchGet**](docs/SearchApi.md#searchget) | **Get** /search/{index}/{id} | Get a Document by ID
 *SearchApi* | [**SearchPost**](docs/SearchApi.md#searchpost) | **Post** /search | Perform Search
 *ServiceDeskIntegrationApi* | [**CreateServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#createservicedeskintegration) | **Post** /service-desk-integrations | Create a new Service Desk integration
@@ -544,9 +545,13 @@ Class | Method | HTTP request | Description
  - [SavedSearchCreateRequest](docs/SavedSearchCreateRequest.md)
  - [Schedule](docs/Schedule.md)
  - [Schedule1](docs/Schedule1.md)
+ - [Schedule1Days](docs/Schedule1Days.md)
+ - [Schedule1Hours](docs/Schedule1Hours.md)
+ - [ScheduleRecipientsInner](docs/ScheduleRecipientsInner.md)
  - [ScheduleType](docs/ScheduleType.md)
  - [ScheduledSearch](docs/ScheduledSearch.md)
  - [ScheduledSearchAllOf](docs/ScheduledSearchAllOf.md)
+ - [ScheduledSearchAllOfOwner](docs/ScheduledSearchAllOfOwner.md)
  - [ScheduledSearchCreateRequest](docs/ScheduledSearchCreateRequest.md)
  - [Schema](docs/Schema.md)
  - [Search](docs/Search.md)

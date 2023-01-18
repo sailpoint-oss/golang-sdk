@@ -5,7 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**SearchAggregate**](SearchApi.md#SearchAggregate) | **Post** /search/aggregate | Perform a Search Query Aggregation
-[**SearchCount**](SearchApi.md#SearchCount) | **Post** /search/count | Count the number of Documents satisfying a Query
+[**SearchCount**](SearchApi.md#SearchCount) | **Post** /search/count | Count Documents Satisfying a Query
 [**SearchGet**](SearchApi.md#SearchGet) | **Get** /search/{index}/{id} | Get a Document by ID
 [**SearchPost**](SearchApi.md#SearchPost) | **Post** /search | Perform Search
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 > SearchCount(ctx).Search1(search1).Execute()
 
-Count the number of Documents satisfying a Query
+Count Documents Satisfying a Query
 
 
 

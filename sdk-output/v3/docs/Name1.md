@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The name of the scheduled search.  | [optional] 
+**Name** | Pointer to **NullableString** | The name of the scheduled search.  | [optional] 
 **Description** | Pointer to **NullableString** | The description of the scheduled search.  | [optional] 
 
 ## Methods
@@ -51,6 +51,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *Name1) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *Name1) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetDescription
 
 `func (o *Name1) GetDescription() string`

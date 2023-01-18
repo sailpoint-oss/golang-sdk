@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The scheduled search ID.  | [optional] 
-**Owner** | Pointer to [**TypedReference**](TypedReference.md) |  | [optional] 
-**OwnerId** | Pointer to **string** | The ID of the scheduled search owner | [optional] 
+**Id** | Pointer to **string** | The scheduled search ID. | [optional] [readonly] 
+**Owner** | Pointer to [**ScheduledSearchAllOfOwner**](ScheduledSearchAllOfOwner.md) |  | [optional] 
+**OwnerId** | Pointer to **string** | The ID of the scheduled search owner.  Please use the &#x60;id&#x60; in the &#x60;owner&#x60; object instead.  | [optional] [readonly] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *ScheduledSearchAllOf) GetOwner() TypedReference`
+`func (o *ScheduledSearchAllOf) GetOwner() ScheduledSearchAllOfOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *ScheduledSearchAllOf) GetOwnerOk() (*TypedReference, bool)`
+`func (o *ScheduledSearchAllOf) GetOwnerOk() (*ScheduledSearchAllOfOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *ScheduledSearchAllOf) SetOwner(v TypedReference)`
+`func (o *ScheduledSearchAllOf) SetOwner(v ScheduledSearchAllOfOwner)`
 
 SetOwner sets Owner field to given value.
 
