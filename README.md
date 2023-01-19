@@ -24,13 +24,11 @@ import (
 
 func main() {
 
-	auth := context.WithValue(context.Background(), sailpoint.ContextClientCredentials, sailpoint.ClientCredentials{ClientId: "", ClientSecret: ""})
-
-	configuration := sailpoint.NewConfiguration("devrel")
-
+	ctx := context.TODO()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
 
-	resp, r, err := apiClient.V3.AccountsApi.ListAccounts(auth).Execute()
+	resp, r, err := apiClient.V3.AccountsApi.ListAccounts(ctx).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -71,14 +69,12 @@ import (
 
 func main() {
 
-	auth := context.WithValue(context.Background(), sailpoint.ContextClientCredentials, sailpoint.ClientCredentials{ClientId: "", ClientSecret: ""})
-
-	configuration := sailpoint.NewConfiguration("devrel")
-
+	ctx := context.TODO()
+	configuration := sailpoint.NewDefaultConfiguration()
 	apiClient := sailpoint.NewAPIClient(configuration)
 
 	// use the paginate function to get 1000 results instead of hitting the normal 250 limit
-	resp, r, err := sailpoint.Paginate[sailpointsdk.Account](apiClient.V3.AccountsApi.ListAccounts(auth), 0, 1000)
+	resp, r, err := sailpoint.PaginateWithDefaults[sailpointsdk.Account](apiClient.V3.AccountsApi.ListAccounts(ctx))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
