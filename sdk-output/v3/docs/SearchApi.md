@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ## SearchGet
 
-> SearchDocument SearchGet(ctx, index, id).Execute()
+> map[string]interface{} SearchGet(ctx, index, id).Execute()
 
 Get a Document by ID
 
@@ -178,7 +178,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchGet`: SearchDocument
+    // response from `SearchGet`: map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `SearchApi.SearchGet`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SearchDocument**](SearchDocument.md)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## SearchPost
 
-> []SearchDocument SearchPost(ctx).Search1(search1).Offset(offset).Limit(limit).Count(count).Execute()
+> []map[string]interface{} SearchPost(ctx).Search1(search1).Offset(offset).Limit(limit).Count(count).Execute()
 
 Perform Search
 
@@ -253,7 +253,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SearchPost`: []SearchDocument
+    // response from `SearchPost`: []map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `SearchApi.SearchPost`: %v\n", resp)
 }
 ```
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]SearchDocument**](SearchDocument.md)
+**[]map[string]interface{}**
 
 ### Authorization
 

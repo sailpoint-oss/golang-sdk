@@ -525,7 +525,6 @@ Class | Method | HTTP request | Description
  - [Search1](docs/Search1.md)
  - [SearchArguments](docs/SearchArguments.md)
  - [SearchArgumentsOwner](docs/SearchArgumentsOwner.md)
- - [SearchDocument](docs/SearchDocument.md)
  - [SearchFilters](docs/SearchFilters.md)
  - [SectionDetails](docs/SectionDetails.md)
  - [SectionDetailsAllOf](docs/SectionDetailsAllOf.md)

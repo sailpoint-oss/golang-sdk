@@ -19961,26 +19961,7 @@ components:
       - $ref: '#/components/schemas/RoleSummary_allOf'
       description: Role
     SearchDocument:
-      discriminator:
-        mapping:
-          accessprofile: '#/components/schemas/AccessProfile'
-          accountactivity: '#/components/schemas/AccountActivity_1'
-          account: '#/components/schemas/Account_1'
-          aggregation: '#/components/schemas/Aggregation'
-          entitlement: '#/components/schemas/Entitlement'
-          event: '#/components/schemas/Event'
-          identity: '#/components/schemas/Identity'
-          role: '#/components/schemas/Role'
-        propertyName: _type
-      oneOf:
-      - $ref: '#/components/schemas/AccessProfile'
-      - $ref: '#/components/schemas/AccountActivity_1'
-      - $ref: '#/components/schemas/Account_1'
-      - $ref: '#/components/schemas/Aggregation'
-      - $ref: '#/components/schemas/Entitlement'
-      - $ref: '#/components/schemas/Event'
-      - $ref: '#/components/schemas/Identity'
-      - $ref: '#/components/schemas/Role'
+      type: object
     SavedSearch:
       allOf:
       - $ref: '#/components/schemas/SavedSearch_allOf'

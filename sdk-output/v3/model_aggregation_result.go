@@ -19,7 +19,7 @@ type AggregationResult struct {
 	// The document containing the results of the aggregation. This document is controlled by Elasticsearch and depends on the type of aggregation query that is run.  See Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) documentation for information. 
 	Aggregations map[string]interface{} `json:"aggregations,omitempty"`
 	// The results of the aggregation search query. 
-	Hits []SearchDocument `json:"hits,omitempty"`
+	Hits []map[string]interface{} `json:"hits,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -75,9 +75,9 @@ func (o *AggregationResult) SetAggregations(v map[string]interface{}) {
 }
 
 // GetHits returns the Hits field value if set, zero value otherwise.
-func (o *AggregationResult) GetHits() []SearchDocument {
+func (o *AggregationResult) GetHits() []map[string]interface{} {
 	if o == nil || isNil(o.Hits) {
-		var ret []SearchDocument
+		var ret []map[string]interface{}
 		return ret
 	}
 	return o.Hits
@@ -85,7 +85,7 @@ func (o *AggregationResult) GetHits() []SearchDocument {
 
 // GetHitsOk returns a tuple with the Hits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AggregationResult) GetHitsOk() ([]SearchDocument, bool) {
+func (o *AggregationResult) GetHitsOk() ([]map[string]interface{}, bool) {
 	if o == nil || isNil(o.Hits) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *AggregationResult) HasHits() bool {
 	return false
 }
 
-// SetHits gets a reference to the given []SearchDocument and assigns it to the Hits field.
-func (o *AggregationResult) SetHits(v []SearchDocument) {
+// SetHits gets a reference to the given []map[string]interface{} and assigns it to the Hits field.
+func (o *AggregationResult) SetHits(v []map[string]interface{}) {
 	o.Hits = v
 }
 

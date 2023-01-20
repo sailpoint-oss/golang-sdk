@@ -21,11 +21,11 @@ const fixFiles = function (myArray) {
     let rawdata = fs.readFileSync(file).toString();
     let rawDataArra = rawdata.split("\n");
   
-    if (file.includes("schemas/Transform.yaml")) {
+    if (file.includes("documents/SearchDocument.yaml")) {
       console.log("Found it");
     }
   
-    // add the time import when it is missing in files
+    // remove the complex transform schema
     if (file.includes("schemas/Transform.yaml")) {
       for (let line of rawDataArra) {
         if (line.includes('oneOf')) {
@@ -41,6 +41,14 @@ const fixFiles = function (myArray) {
       }
       rawDataArra = fileOut.slice();
       fileOut = [];
+    }
+
+    // remove the complex search scema
+    if (file.includes("documents/SearchDocument.yaml")) {
+          fileOut.push("type: object");
+          rawDataArra = fileOut.slice();
+          fileOut = [];
+          madeChange = true;
     }
   
   

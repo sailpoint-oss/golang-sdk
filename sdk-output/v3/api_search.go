@@ -377,7 +377,7 @@ type ApiSearchGetRequest struct {
 	id string
 }
 
-func (r ApiSearchGetRequest) Execute() (*SearchDocument, *http.Response, error) {
+func (r ApiSearchGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.SearchGetExecute(r)
 }
 
@@ -401,13 +401,13 @@ func (a *SearchApiService) SearchGet(ctx context.Context, index string, id strin
 }
 
 // Execute executes the request
-//  @return SearchDocument
-func (a *SearchApiService) SearchGetExecute(r ApiSearchGetRequest) (*SearchDocument, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *SearchApiService) SearchGetExecute(r ApiSearchGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SearchDocument
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchApiService.SearchGet")
@@ -574,7 +574,7 @@ func (r ApiSearchPostRequest) Count(count bool) ApiSearchPostRequest {
 	return r
 }
 
-func (r ApiSearchPostRequest) Execute() ([]SearchDocument, *http.Response, error) {
+func (r ApiSearchPostRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
 	return r.ApiService.SearchPostExecute(r)
 }
 
@@ -594,13 +594,13 @@ func (a *SearchApiService) SearchPost(ctx context.Context) ApiSearchPostRequest 
 }
 
 // Execute executes the request
-//  @return []SearchDocument
-func (a *SearchApiService) SearchPostExecute(r ApiSearchPostRequest) ([]SearchDocument, *http.Response, error) {
+//  @return []map[string]interface{}
+func (a *SearchApiService) SearchPostExecute(r ApiSearchPostRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []SearchDocument
+		localVarReturnValue  []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchApiService.SearchPost")
