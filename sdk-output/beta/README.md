@@ -303,6 +303,7 @@ Class | Method | HTTP request | Description
 *PersonalAccessTokensApi* | [**CreatePersonalAccessToken**](docs/PersonalAccessTokensApi.md#createpersonalaccesstoken) | **Post** /personal-access-tokens | Create Personal Access Token
 *PersonalAccessTokensApi* | [**DeletePersonalAccessToken**](docs/PersonalAccessTokensApi.md#deletepersonalaccesstoken) | **Delete** /personal-access-tokens/{id} | Delete Personal Access Token
 *PersonalAccessTokensApi* | [**ListPersonalAccessTokens**](docs/PersonalAccessTokensApi.md#listpersonalaccesstokens) | **Get** /personal-access-tokens | List Personal Access Tokens
+*PersonalAccessTokensApi* | [**PatchPersonalAccessToken**](docs/PersonalAccessTokensApi.md#patchpersonalaccesstoken) | **Patch** /personal-access-tokens/{id} | Patch Personal Access Token
 *PublicIdentitiesConfigApi* | [**GetPublicIdentityConfig**](docs/PublicIdentitiesConfigApi.md#getpublicidentityconfig) | **Get** /public-identities-config | Get Public Identity Config
 *PublicIdentitiesConfigApi* | [**UpdatePublicIdentityConfig**](docs/PublicIdentitiesConfigApi.md#updatepublicidentityconfig) | **Put** /public-identities-config | Update Public Identity Config
 *RequestableObjectsApi* | [**ListRequestableObjects**](docs/RequestableObjectsApi.md#listrequestableobjects) | **Get** /requestable-objects | Requestable Objects List
@@ -877,6 +878,8 @@ Class | Method | HTTP request | Description
  - [SavedSearchComplete](docs/SavedSearchComplete.md)
  - [Schedule](docs/Schedule.md)
  - [Schedule1](docs/Schedule1.md)
+ - [Schedule1Days](docs/Schedule1Days.md)
+ - [Schedule1Hours](docs/Schedule1Hours.md)
  - [ScheduleDays](docs/ScheduleDays.md)
  - [ScheduleHours](docs/ScheduleHours.md)
  - [ScheduleMonths](docs/ScheduleMonths.md)

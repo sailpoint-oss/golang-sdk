@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Requestable** | Pointer to **bool** | Indicates if the access can be requested | [optional] 
 **RequestCommentsRequired** | Pointer to **bool** | Indicates if comments are required when requesting access | [optional] 
 **Owner** | Pointer to [**Owner**](Owner.md) |  | [optional] 
-**AccessProfiles** | Pointer to [**[]Reference1**](Reference1.md) |  | [optional] 
+**AccessProfiles** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
 **AccessProfileCount** | Pointer to **int32** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 
@@ -330,20 +330,20 @@ HasOwner returns a boolean if a field has been set.
 
 ### GetAccessProfiles
 
-`func (o *Role) GetAccessProfiles() []Reference1`
+`func (o *Role) GetAccessProfiles() []Reference`
 
 GetAccessProfiles returns the AccessProfiles field if non-nil, zero value otherwise.
 
 ### GetAccessProfilesOk
 
-`func (o *Role) GetAccessProfilesOk() (*[]Reference1, bool)`
+`func (o *Role) GetAccessProfilesOk() (*[]Reference, bool)`
 
 GetAccessProfilesOk returns a tuple with the AccessProfiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessProfiles
 
-`func (o *Role) SetAccessProfiles(v []Reference1)`
+`func (o *Role) SetAccessProfiles(v []Reference)`
 
 SetAccessProfiles sets AccessProfiles field to given value.
 

@@ -12,16 +12,55 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/hashicorp/go-retryablehttp"
 	"github.com/spf13/viper"
 )
+
+type Redirect struct {
+	Port int    `mapstructure:"port"`
+	Path string `mapstructure:"path"`
+}
+
+type Token struct {
+	AccessToken string    `mapstructure:"accesstoken"`
+	Expiry      time.Time `mapstructure:"expiry"`
+}
+
+type OAuthConfig struct {
+	Tenant       string   `mapstructure:"tenant"`
+	AuthUrl      string   `mapstructure:"authurl"`
+	BaseUrl      string   `mapstructure:"baseurl"`
+	TokenUrl     string   `mapstructure:"tokenurl"`
+	Redirect     Redirect `mapstructure:"redirect"`
+	ClientSecret string   `mapstructure:"clientSecret"`
+	ClientID     string   `mapstructure:"clientid"`
+	Token        Token    `mapstructure:"token"`
+}
+
+type PatConfig struct {
+	Tenant       string `mapstructure:"tenant"`
+	BaseUrl      string `mapstructure:"baseurl"`
+	TokenUrl     string `mapstructure:"tokenurl"`
+	ClientSecret string `mapstructure:"clientSecret"`
+	ClientID     string `mapstructure:"clientid"`
+	Token        Token  `mapstructure:"token"`
+}
+
+type OrgConfig struct {
+	Pat      PatConfig   `mapstructure:"pat"`
+	OAuth    OAuthConfig `mapstructure:"oauth"`
+	AuthType string      `mapstructure:"authtype"`
+	Debug    bool        `mapstructure:"debug"`
+}
 
 type ClientConfiguration struct {
 	ClientId     string
 	ClientSecret string
 	BaseURL      string
 	TokenURL     string
+	Token        string
 }
 
 // ServerVariable stores the information about a server variable
@@ -75,11 +114,19 @@ func NewDefaultConfiguration() *Configuration {
 		}
 	}
 
-	var config ClientConfiguration
+	var config OrgConfig
+	var simpleConfig ClientConfiguration
+
 	err3 := viper.Unmarshal(&config)
+
 	if err3 != nil {
 		panic(fmt.Errorf("Unable to decode Config: %s \n", err3))
 	}
 
-	return NewConfiguration(config)
+	simpleConfig.BaseURL = config.Pat.BaseUrl
+	simpleConfig.ClientId = config.Pat.ClientID
+	simpleConfig.ClientSecret = config.Pat.ClientSecret
+	simpleConfig.TokenURL = config.Pat.TokenUrl
+
+	return NewConfiguration(simpleConfig)
 }

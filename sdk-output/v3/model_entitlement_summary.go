@@ -21,7 +21,7 @@ type EntitlementSummary struct {
 	DisplayName *string `json:"displayName,omitempty"`
 	Type *DtoType `json:"type,omitempty"`
 	Description NullableString `json:"description,omitempty"`
-	Source *Reference1 `json:"source,omitempty"`
+	Source *Reference `json:"source,omitempty"`
 	Privileged *bool `json:"privileged,omitempty"`
 	Attribute *string `json:"attribute,omitempty"`
 	Value *string `json:"value,omitempty"`
@@ -219,9 +219,9 @@ func (o *EntitlementSummary) UnsetDescription() {
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *EntitlementSummary) GetSource() Reference1 {
+func (o *EntitlementSummary) GetSource() Reference {
 	if o == nil || isNil(o.Source) {
-		var ret Reference1
+		var ret Reference
 		return ret
 	}
 	return *o.Source
@@ -229,7 +229,7 @@ func (o *EntitlementSummary) GetSource() Reference1 {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementSummary) GetSourceOk() (*Reference1, bool) {
+func (o *EntitlementSummary) GetSourceOk() (*Reference, bool) {
 	if o == nil || isNil(o.Source) {
 		return nil, false
 	}
@@ -245,8 +245,8 @@ func (o *EntitlementSummary) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given Reference1 and assigns it to the Source field.
-func (o *EntitlementSummary) SetSource(v Reference1) {
+// SetSource gets a reference to the given Reference and assigns it to the Source field.
+func (o *EntitlementSummary) SetSource(v Reference) {
 	o.Source = &v
 }
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**Source** | Pointer to [**Reference1**](Reference1.md) |  | [optional] 
+**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Privileged** | Pointer to **bool** |  | [optional] 
 **Attribute** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
@@ -171,20 +171,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetSource
 
-`func (o *Entitlement1) GetSource() Reference1`
+`func (o *Entitlement1) GetSource() Reference`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *Entitlement1) GetSourceOk() (*Reference1, bool)`
+`func (o *Entitlement1) GetSourceOk() (*Reference, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *Entitlement1) SetSource(v Reference1)`
+`func (o *Entitlement1) SetSource(v Reference)`
 
 SetSource sets Source field to given value.
 

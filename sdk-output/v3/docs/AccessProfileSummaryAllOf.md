@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | Pointer to [**Reference1**](Reference1.md) |  | [optional] 
+**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Owner** | Pointer to [**DisplayReference**](DisplayReference.md) |  | [optional] 
 **Revocable** | Pointer to **bool** |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *AccessProfileSummaryAllOf) GetSource() Reference1`
+`func (o *AccessProfileSummaryAllOf) GetSource() Reference`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *AccessProfileSummaryAllOf) GetSourceOk() (*Reference1, bool)`
+`func (o *AccessProfileSummaryAllOf) GetSourceOk() (*Reference, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *AccessProfileSummaryAllOf) SetSource(v Reference1)`
+`func (o *AccessProfileSummaryAllOf) SetSource(v Reference)`
 
 SetSource sets Source field to given value.
 

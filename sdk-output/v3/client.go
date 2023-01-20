@@ -47,7 +47,6 @@ var (
 type APIClient struct {
 	cfg    *Configuration
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
-	token string
 	// API Services
 
 	AccessRequestApprovalsApi *AccessRequestApprovalsApiService
@@ -422,15 +421,15 @@ func (c *APIClient) prepareRequest(
 			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
 		}
 
-		if c.token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
+		if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
 			auth, err := getAccessToken(c.cfg.ClientId, c.cfg.ClientSecret, c.cfg.TokenURL)
 			if err != nil {
 				return nil, err
 			}
-			c.token = auth
+			c.cfg.Token = auth
 			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
 		} else {
-			localVarRequest.Header.Add("Authorization", "Bearer "+c.token)
+			localVarRequest.Header.Add("Authorization", "Bearer "+c.cfg.Token)
 		}
 
 

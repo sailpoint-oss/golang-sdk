@@ -22,7 +22,8 @@ type Transform struct {
 	Name string `json:"name"`
 	// The type of transform operation
 	Type string `json:"type"`
-	Attributes TransformAttributes `json:"attributes"`
+	// Meta-data about the transform. Values in this list are specific to the type of transform to be executed.
+	Attributes map[string]interface{} `json:"attributes"`
 	// Indicates whether this is an internal SailPoint-created transform or a customer-created transform
 	Internal *bool `json:"internal,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -34,7 +35,7 @@ type _Transform Transform
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransform(name string, type_ string, attributes TransformAttributes) *Transform {
+func NewTransform(name string, type_ string, attributes map[string]interface{}) *Transform {
 	this := Transform{}
 	this.Name = name
 	this.Type = type_
@@ -131,9 +132,9 @@ func (o *Transform) SetType(v string) {
 }
 
 // GetAttributes returns the Attributes field value
-func (o *Transform) GetAttributes() TransformAttributes {
+func (o *Transform) GetAttributes() map[string]interface{} {
 	if o == nil {
-		var ret TransformAttributes
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -142,15 +143,15 @@ func (o *Transform) GetAttributes() TransformAttributes {
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-func (o *Transform) GetAttributesOk() (*TransformAttributes, bool) {
+func (o *Transform) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
-	return &o.Attributes, true
+	return o.Attributes, true
 }
 
 // SetAttributes sets field value
-func (o *Transform) SetAttributes(v TransformAttributes) {
+func (o *Transform) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 

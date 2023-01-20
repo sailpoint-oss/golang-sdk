@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Source** | Pointer to [**Reference1**](Reference1.md) |  | [optional] 
+**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Account** | Pointer to [**AppAllOfAccount**](AppAllOfAccount.md) |  | [optional] 
 
 ## Methods
@@ -80,20 +80,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *App) GetSource() Reference1`
+`func (o *App) GetSource() Reference`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *App) GetSourceOk() (*Reference1, bool)`
+`func (o *App) GetSourceOk() (*Reference, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *App) SetSource(v Reference1)`
+`func (o *App) SetSource(v Reference)`
 
 SetSource sets Source field to given value.
 

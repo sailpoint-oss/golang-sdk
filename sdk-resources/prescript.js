@@ -21,21 +21,23 @@ const fixFiles = function (myArray) {
     let rawdata = fs.readFileSync(file).toString();
     let rawDataArra = rawdata.split("\n");
   
-    if (file.includes("model_transform_definition_attributes_value.go")) {
+    if (file.includes("schemas/Transform.yaml")) {
       console.log("Found it");
     }
   
     // add the time import when it is missing in files
-    if (
-      (rawdata.includes("NullableTime") || rawdata.includes("*time.Time")) &&
-      !rawdata.includes('"time"')
-    ) {
-      for (const line of rawDataArra) {
-        if (line.includes('"encoding/json"')) {
-          fileOut.push('	"time"');
+    if (file.includes("schemas/Transform.yaml")) {
+      for (let line of rawDataArra) {
+        if (line.includes('oneOf')) {
+          line = line.replaceAll("oneOf:", "type: object")
           madeChange = true;
         }
-        fileOut.push(line);
+        if (line.includes('- $ref:')) {
+          
+        } else {
+          fileOut.push(line);
+        }
+        
       }
       rawDataArra = fileOut.slice();
       fileOut = [];

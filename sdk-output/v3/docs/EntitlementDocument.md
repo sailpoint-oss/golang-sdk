@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Synced** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **DisplayName** | Pointer to **string** | The display name of the entitlement | [optional] 
-**Source** | Pointer to [**Reference1**](Reference1.md) |  | [optional] 
+**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Privileged** | Pointer to **bool** |  | [optional] 
 **IdentityCount** | Pointer to **int32** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -269,20 +269,20 @@ HasDisplayName returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *EntitlementDocument) GetSource() Reference1`
+`func (o *EntitlementDocument) GetSource() Reference`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *EntitlementDocument) GetSourceOk() (*Reference1, bool)`
+`func (o *EntitlementDocument) GetSourceOk() (*Reference, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *EntitlementDocument) SetSource(v Reference1)`
+`func (o *EntitlementDocument) SetSource(v Reference)`
 
 SetSource sets Source field to given value.
 

@@ -42,8 +42,6 @@ func (r ApiCreateOauthClientRequest) Execute() (*CreateOAuthClientResponse, *htt
 CreateOauthClient Create OAuth Client
 
 This creates an OAuth client.
-Request will require the following security scope:
-- sp:oauth-client:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateOauthClientRequest
@@ -203,8 +201,6 @@ func (r ApiDeleteOauthClientRequest) Execute() (*http.Response, error) {
 DeleteOauthClient Delete OAuth Client
 
 This deletes an OAuth client.
-Request will require the following security scopes:
-- sp:oauth-client:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The OAuth client id
@@ -362,8 +358,6 @@ func (r ApiGetOauthClientRequest) Execute() (*GetOAuthClientResponse, *http.Resp
 GetOauthClient Get OAuth Client
 
 This gets details of an OAuth client.
-Request will require the following security scope:
-- sp:oauth-client:manage - sp:oauth-client:read
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The OAuth client id
@@ -531,8 +525,6 @@ func (r ApiListOauthClientsRequest) Execute() ([]GetOAuthClientResponse, *http.R
 ListOauthClients List OAuth Clients
 
 This gets a list of OAuth clients.
-Request will require the following security scope:
-- sp:oauth-client:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListOauthClientsRequest

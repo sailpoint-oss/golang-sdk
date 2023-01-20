@@ -18,6 +18,8 @@ import (
 type SpConfigImportResults struct {
 	// The results of an object configuration import job.
 	Results map[string]ObjectImportResult `json:"results"`
+	// If a backup was performed before the import, this will contain the jobId of the backup job. This id can be used to retrieve the json file of the backup export.
+	ExportJobId *string `json:"exportJobId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -65,10 +67,45 @@ func (o *SpConfigImportResults) SetResults(v map[string]ObjectImportResult) {
 	o.Results = v
 }
 
+// GetExportJobId returns the ExportJobId field value if set, zero value otherwise.
+func (o *SpConfigImportResults) GetExportJobId() string {
+	if o == nil || isNil(o.ExportJobId) {
+		var ret string
+		return ret
+	}
+	return *o.ExportJobId
+}
+
+// GetExportJobIdOk returns a tuple with the ExportJobId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SpConfigImportResults) GetExportJobIdOk() (*string, bool) {
+	if o == nil || isNil(o.ExportJobId) {
+		return nil, false
+	}
+	return o.ExportJobId, true
+}
+
+// HasExportJobId returns a boolean if a field has been set.
+func (o *SpConfigImportResults) HasExportJobId() bool {
+	if o != nil && !isNil(o.ExportJobId) {
+		return true
+	}
+
+	return false
+}
+
+// SetExportJobId gets a reference to the given string and assigns it to the ExportJobId field.
+func (o *SpConfigImportResults) SetExportJobId(v string) {
+	o.ExportJobId = &v
+}
+
 func (o SpConfigImportResults) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["results"] = o.Results
+	}
+	if !isNil(o.ExportJobId) {
+		toSerialize["exportJobId"] = o.ExportJobId
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -89,6 +126,7 @@ func (o *SpConfigImportResults) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "results")
+		delete(additionalProperties, "exportJobId")
 		o.AdditionalProperties = additionalProperties
 	}
 

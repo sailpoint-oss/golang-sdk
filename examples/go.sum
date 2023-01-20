@@ -165,6 +165,8 @@ github.com/sailpoint-oss/golang-sdk/sdk-output v0.0.0-20230113221736-829dd23a6e8
 github.com/sailpoint-oss/golang-sdk/sdk-output v0.0.0-20230113221736-829dd23a6e8c/go.mod h1:n/su3J2oo+OwYE3RXdQWqgu8vw7E0RL9hxfGT+/QSGs=
 github.com/sailpoint-oss/golang-sdk/sdk-output v0.0.0-20230117191335-b0af464fda3c h1:4OJ3jsLVHftG6xiJ+pXetBlizSJe/zdQgNppgyu/Z1U=
 github.com/sailpoint-oss/golang-sdk/sdk-output v0.0.0-20230117191335-b0af464fda3c/go.mod h1:/iJHc4Y3Dup+MXPOzb1loRglOAHY4G3Ok1JK3ThajTE=
+github.com/sailpoint-oss/golang-sdk/sdk-output v0.0.0-20230120191920-293bbb320aa9 h1:aXl90LVSXsFW7edByv/cFKswW4H8aWRRRw6xoofaLsA=
+github.com/sailpoint-oss/golang-sdk/sdk-output v0.0.0-20230120191920-293bbb320aa9/go.mod h1:/iJHc4Y3Dup+MXPOzb1loRglOAHY4G3Ok1JK3ThajTE=
 github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20221116155925-2f7caec30448/go.mod h1:bGEVY9c7Fj63TYhQ/tQCsRdvupAmzDOVFren9PzyWSU=
 github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20221130155240-c29a36104ce0 h1:jcBzm5AdgKNmsmW6DlaDpA2LWmon0WH+tdxu3ZoYCwc=
 github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20221130155240-c29a36104ce0/go.mod h1:bGEVY9c7Fj63TYhQ/tQCsRdvupAmzDOVFren9PzyWSU=
@@ -178,6 +180,8 @@ github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20230113213350-ef4446
 github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20230113213350-ef4446fd7670/go.mod h1:bGEVY9c7Fj63TYhQ/tQCsRdvupAmzDOVFren9PzyWSU=
 github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20230117191335-b0af464fda3c h1:t6ZQx5FRwjYfAatB2ZvgAP/MQ2vdRBakPkp4I4K4FyE=
 github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20230117191335-b0af464fda3c/go.mod h1:4hj+MRwMDBJLLG/mui7pNbTB1ZePGsOyWxn/WdrfjoE=
+github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20230120191920-293bbb320aa9 h1:ahBbK/bOly3OBtRTifjM8j2F1aMWWvjB5zZ4rLIpXVs=
+github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20230120191920-293bbb320aa9/go.mod h1:3wGDveZ8dcWM9GkW2E3WcYxBZsFOkLk+Cy8ezuJd/Io=
 github.com/sailpoint-oss/golang-sdk/sdk-output/cc v0.0.0-20221116152442-a3c7e3632f42/go.mod h1:N+Xv6R7BL6xMiqALI6DbmviDMimjzeB7sMUbVyQA7j0=
 github.com/sailpoint-oss/golang-sdk/sdk-output/cc v0.0.0-20221130155240-c29a36104ce0 h1:xLRL/4oU34Wg+YS/l9eTPGNMkIeRMs7Y8rTu53Iy8b0=
 github.com/sailpoint-oss/golang-sdk/sdk-output/cc v0.0.0-20221130155240-c29a36104ce0/go.mod h1:N+Xv6R7BL6xMiqALI6DbmviDMimjzeB7sMUbVyQA7j0=
@@ -214,6 +218,8 @@ github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20230113213350-ef4446fd
 github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20230113213350-ef4446fd7670/go.mod h1:n2fhYfd8NzJx/2UUjjAjdvAzP6C0gHlLEDRi4SSP/0k=
 github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20230117191335-b0af464fda3c h1:L9jqO022dX+UUKSYboh2gWmIrGF/T1+78Q8GWZ7pa+M=
 github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20230117191335-b0af464fda3c/go.mod h1:n2fhYfd8NzJx/2UUjjAjdvAzP6C0gHlLEDRi4SSP/0k=
+github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20230120191920-293bbb320aa9 h1:sYliNJlGTpwj+YIRplMXF0QQtmz+p5Bv/gfNMKiqhMk=
+github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20230120191920-293bbb320aa9/go.mod h1:n2fhYfd8NzJx/2UUjjAjdvAzP6C0gHlLEDRi4SSP/0k=
 github.com/spf13/afero v1.9.3 h1:41FoI0fD7OR7mGcKE/aOiLkGreyf8ifIOQmJANWogMk=
 github.com/spf13/afero v1.9.3/go.mod h1:iUV7ddyEEZPO5gA3zD4fJt6iStLlL+Lg4m2cihcDf8Y=
 github.com/spf13/cast v1.5.0 h1:rj3WzYc11XZaIZMPKmwP96zkFEnnAmV8s6XbB2aY32w=
