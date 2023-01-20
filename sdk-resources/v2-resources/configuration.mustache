@@ -115,18 +115,20 @@ type Configuration struct {
 	ClientSecret     string
 	BaseURL          string
 	TokenURL         string
+	Token			 string
     {{#withCustomMiddlewareFunction}}
 	Middleware       MiddlewareFunction
     {{/withCustomMiddlewareFunction}}
 }
 
 // NewConfiguration returns a new Configuration object
-func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string) *Configuration {
+func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string, token string) *Configuration {
 	cfg := &Configuration{
 		ClientId: 		  clientId,
 		ClientSecret:	  clientSecret,
 		BaseURL:	      baseURL,
 		TokenURL:		  tokenURL,
+		Token:			  token,
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "{{{httpUserAgent}}}{{^httpUserAgent}}OpenAPI-Generator/{{{packageVersion}}}/go{{/httpUserAgent}}",
 		Debug:            false,

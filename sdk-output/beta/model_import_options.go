@@ -24,6 +24,8 @@ type ImportOptions struct {
 	ObjectOptions *map[string]ObjectExportImportOptions `json:"objectOptions,omitempty"`
 	// List of BaseRefenceDtos that can be used to resolve references on import.
 	DefaultReferences []BaseReferenceDto `json:"defaultReferences,omitempty"`
+	// By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. If excludeBackup is true, the backup will not be performed.
+	ExcludeBackup *bool `json:"excludeBackup,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,6 +37,8 @@ type _ImportOptions ImportOptions
 // will change when the set of required properties is changed
 func NewImportOptions() *ImportOptions {
 	this := ImportOptions{}
+	var excludeBackup bool = false
+	this.ExcludeBackup = &excludeBackup
 	return &this
 }
 
@@ -43,6 +47,8 @@ func NewImportOptions() *ImportOptions {
 // but it doesn't guarantee that properties required by API are set
 func NewImportOptionsWithDefaults() *ImportOptions {
 	this := ImportOptions{}
+	var excludeBackup bool = false
+	this.ExcludeBackup = &excludeBackup
 	return &this
 }
 
@@ -174,6 +180,38 @@ func (o *ImportOptions) SetDefaultReferences(v []BaseReferenceDto) {
 	o.DefaultReferences = v
 }
 
+// GetExcludeBackup returns the ExcludeBackup field value if set, zero value otherwise.
+func (o *ImportOptions) GetExcludeBackup() bool {
+	if o == nil || isNil(o.ExcludeBackup) {
+		var ret bool
+		return ret
+	}
+	return *o.ExcludeBackup
+}
+
+// GetExcludeBackupOk returns a tuple with the ExcludeBackup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ImportOptions) GetExcludeBackupOk() (*bool, bool) {
+	if o == nil || isNil(o.ExcludeBackup) {
+		return nil, false
+	}
+	return o.ExcludeBackup, true
+}
+
+// HasExcludeBackup returns a boolean if a field has been set.
+func (o *ImportOptions) HasExcludeBackup() bool {
+	if o != nil && !isNil(o.ExcludeBackup) {
+		return true
+	}
+
+	return false
+}
+
+// SetExcludeBackup gets a reference to the given bool and assigns it to the ExcludeBackup field.
+func (o *ImportOptions) SetExcludeBackup(v bool) {
+	o.ExcludeBackup = &v
+}
+
 func (o ImportOptions) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ExcludeTypes) {
@@ -187,6 +225,9 @@ func (o ImportOptions) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.DefaultReferences) {
 		toSerialize["defaultReferences"] = o.DefaultReferences
+	}
+	if !isNil(o.ExcludeBackup) {
+		toSerialize["excludeBackup"] = o.ExcludeBackup
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -210,6 +251,7 @@ func (o *ImportOptions) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "includeTypes")
 		delete(additionalProperties, "objectOptions")
 		delete(additionalProperties, "defaultReferences")
+		delete(additionalProperties, "excludeBackup")
 		o.AdditionalProperties = additionalProperties
 	}
 

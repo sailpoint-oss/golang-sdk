@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Results** | [**map[string]ObjectImportResult**](ObjectImportResult.md) | The results of an object configuration import job. | 
+**ExportJobId** | Pointer to **string** | If a backup was performed before the import, this will contain the jobId of the backup job. This id can be used to retrieve the json file of the backup export. | [optional] 
 
 ## Methods
 
@@ -44,6 +45,31 @@ and a boolean to check if the value has been set.
 
 SetResults sets Results field to given value.
 
+
+### GetExportJobId
+
+`func (o *SpConfigImportResults) GetExportJobId() string`
+
+GetExportJobId returns the ExportJobId field if non-nil, zero value otherwise.
+
+### GetExportJobIdOk
+
+`func (o *SpConfigImportResults) GetExportJobIdOk() (*string, bool)`
+
+GetExportJobIdOk returns a tuple with the ExportJobId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExportJobId
+
+`func (o *SpConfigImportResults) SetExportJobId(v string)`
+
+SetExportJobId sets ExportJobId field to given value.
+
+### HasExportJobId
+
+`func (o *SpConfigImportResults) HasExportJobId() bool`
+
+HasExportJobId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

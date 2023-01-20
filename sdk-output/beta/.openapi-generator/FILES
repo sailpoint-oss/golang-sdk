@@ -518,6 +518,8 @@ docs/SPConfigApi.md
 docs/SavedSearchComplete.md
 docs/Schedule.md
 docs/Schedule1.md
+docs/Schedule1Days.md
+docs/Schedule1Hours.md
 docs/ScheduleDays.md
 docs/ScheduleHours.md
 docs/ScheduleMonths.md
@@ -1155,6 +1157,8 @@ model_role_mining_session_status.go
 model_saved_search_complete.go
 model_schedule.go
 model_schedule_1.go
+model_schedule_1_days.go
+model_schedule_1_hours.go
 model_schedule_days.go
 model_schedule_hours.go
 model_schedule_months.go

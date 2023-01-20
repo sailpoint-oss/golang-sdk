@@ -573,7 +573,7 @@ func (r ApiSpConfigImportRequest) Execute() (*SpConfigJob, *http.Response, error
 /*
 SpConfigImport Initiates Configuration Objects Import Job.
 
-This post will import objects from a JSON configuration file into a tenant.
+This post will import objects from a JSON configuration file into a tenant. By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. The backup is provided so that the state of the configuration prior to the import is available for inspection or restore if needed. The backup can be skipped by setting "excludeBackup" to true in the import options. If a backup is performed, the id of the backup will be provided in the ImportResult as the "exportJobId". This can be downloaded  using the /sp-config/export/{exportJobId}/download endpoint.
 Request will need the following security scope:
 - sp:config:manage
 

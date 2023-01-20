@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CreatePersonalAccessToken**](PersonalAccessTokensApi.md#CreatePersonalAccessToken) | **Post** /personal-access-tokens | Create Personal Access Token
 [**DeletePersonalAccessToken**](PersonalAccessTokensApi.md#DeletePersonalAccessToken) | **Delete** /personal-access-tokens/{id} | Delete Personal Access Token
 [**ListPersonalAccessTokens**](PersonalAccessTokensApi.md#ListPersonalAccessTokens) | **Get** /personal-access-tokens | List Personal Access Tokens
+[**PatchPersonalAccessToken**](PersonalAccessTokensApi.md#PatchPersonalAccessToken) | **Patch** /personal-access-tokens/{id} | Patch Personal Access Token
 
 
 
@@ -203,6 +204,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PatchPersonalAccessToken
+
+> GetPersonalAccessTokenResponse PatchPersonalAccessToken(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
+
+Patch Personal Access Token
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The Personal Access Token id
+    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PersonalAccessTokensApi.PatchPersonalAccessToken(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensApi.PatchPersonalAccessToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PatchPersonalAccessToken`: GetPersonalAccessTokenResponse
+    fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensApi.PatchPersonalAccessToken`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The Personal Access Token id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchPersonalAccessTokenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope  | 
+
+### Return type
+
+[**GetPersonalAccessTokenResponse**](GetPersonalAccessTokenResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **IncludeTypes** | Pointer to **[]string** | Object type names to be included in an sp-config export command. IncludeTypes takes precedence over excludeTypes. | [optional] 
 **ObjectOptions** | Pointer to [**map[string]ObjectExportImportOptions**](ObjectExportImportOptions.md) | Additional options targeting specific objects related to each item in the includeTypes field | [optional] 
 **DefaultReferences** | Pointer to [**[]BaseReferenceDto**](BaseReferenceDto.md) | List of BaseRefenceDtos that can be used to resolve references on import. | [optional] 
+**ExcludeBackup** | Pointer to **bool** | By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. If excludeBackup is true, the backup will not be performed. | [optional] [default to false]
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetDefaultReferences sets DefaultReferences field to given value.
 `func (o *ImportOptions) HasDefaultReferences() bool`
 
 HasDefaultReferences returns a boolean if a field has been set.
+
+### GetExcludeBackup
+
+`func (o *ImportOptions) GetExcludeBackup() bool`
+
+GetExcludeBackup returns the ExcludeBackup field if non-nil, zero value otherwise.
+
+### GetExcludeBackupOk
+
+`func (o *ImportOptions) GetExcludeBackupOk() (*bool, bool)`
+
+GetExcludeBackupOk returns a tuple with the ExcludeBackup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExcludeBackup
+
+`func (o *ImportOptions) SetExcludeBackup(v bool)`
+
+SetExcludeBackup sets ExcludeBackup field to given value.
+
+### HasExcludeBackup
+
+`func (o *ImportOptions) HasExcludeBackup() bool`
+
+HasExcludeBackup returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

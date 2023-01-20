@@ -65,9 +65,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	//CCC.HTTPClient = cfg.HTTPClient
 
 	c.V3 = sailpointsdk.NewAPIClient(CV3)
-	c.V2 = sailpointv2sdk.NewAPIClient(sailpointv2sdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2", cfg.ClientConfiguration.TokenURL))
+	c.V2 = sailpointv2sdk.NewAPIClient(sailpointv2sdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token))
 	c.Beta = sailpointbetasdk.NewAPIClient(CBeta)
-	c.CC = sailpointccsdk.NewAPIClient(sailpointccsdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL))
+	c.CC = sailpointccsdk.NewAPIClient(sailpointccsdk.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL, cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token))
 
 	// API Services
 

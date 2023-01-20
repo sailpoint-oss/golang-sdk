@@ -102,15 +102,17 @@ type Configuration struct {
 	ClientSecret     string
 	BaseURL          string
 	TokenURL         string
+	Token			 string
 }
 
 // NewConfiguration returns a new Configuration object
-func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string) *Configuration {
+func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string, token string) *Configuration {
 	cfg := &Configuration{
 		ClientId: 		  clientId,
 		ClientSecret:	  clientSecret,
 		BaseURL:	      baseURL,
 		TokenURL:		  tokenURL,
+		Token:			  token,
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "OpenAPI-Generator/0.1.0/go",
 		Debug:            false,
