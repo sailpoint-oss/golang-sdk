@@ -16,6 +16,13 @@ const getAllFiles = function (dirPath, arrayOfFiles) {
 
 const fixFiles = function (myArray) {
   for (const file of myArray) {
+  
+    if (file.includes("go.mod") || file.includes("go.sum")) {
+      fs.unlinkSync(file)
+      continue
+    }
+    
+
     let fileOut = [];
     let madeChange = false;
     let rawdata = fs.readFileSync(file).toString();
