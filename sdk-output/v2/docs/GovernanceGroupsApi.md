@@ -6,13 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**BulkDeleteWorkGroups**](GovernanceGroupsApi.md#BulkDeleteWorkGroups) | **Post** /workgroups/bulk-delete | Bulk delete work groups
 [**CreateWorkgroup**](GovernanceGroupsApi.md#CreateWorkgroup) | **Post** /workgroups | Create Work Group
-[**DeleteWorkgroup**](GovernanceGroupsApi.md#DeleteWorkgroup) | **Delete** /v2/workgroups/{workgroupId} | Delete Work Group By Id
-[**GetWorkgroup**](GovernanceGroupsApi.md#GetWorkgroup) | **Get** /v2/workgroups/{workgroupId} | Get Work Group By Id
+[**DeleteWorkgroup**](GovernanceGroupsApi.md#DeleteWorkgroup) | **Delete** /workgroups/{workgroupId} | Delete Work Group By Id
+[**GetWorkgroup**](GovernanceGroupsApi.md#GetWorkgroup) | **Get** /workgroups/{workgroupId} | Get Work Group By Id
 [**ListWorkgroupConnections**](GovernanceGroupsApi.md#ListWorkgroupConnections) | **Get** /workgroups/{workgroupId}/connections | List Work Group Connections
 [**ListWorkgroupMembers**](GovernanceGroupsApi.md#ListWorkgroupMembers) | **Get** /workgroups/{workgroupId}/members | List Work Group Members
 [**ListWorkgroups**](GovernanceGroupsApi.md#ListWorkgroups) | **Get** /workgroups | List Work Groups
 [**ModifyWorkgroupMembers**](GovernanceGroupsApi.md#ModifyWorkgroupMembers) | **Post** /workgroups/{workgroupId}/members | Modify Work Group Members
-[**UpdateWorkgroup**](GovernanceGroupsApi.md#UpdateWorkgroup) | **Patch** /v2/workgroups/{workgroupId} | Update Work Group By Id
+[**UpdateWorkgroup**](GovernanceGroupsApi.md#UpdateWorkgroup) | **Patch** /workgroups/{workgroupId} | Update Work Group By Id
 
 
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -84,7 +84,7 @@ No authorization required
 
 ## CreateWorkgroup
 
-> []Workgroup CreateWorkgroup(ctx).CreateWorkgroupRequest(createWorkgroupRequest).Execute()
+> []ListWorkgroups200ResponseInner CreateWorkgroup(ctx).CreateWorkgroupRequest(createWorkgroupRequest).Execute()
 
 Create Work Group
 
@@ -112,7 +112,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.CreateWorkgroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateWorkgroup`: []Workgroup
+    // response from `CreateWorkgroup`: []ListWorkgroups200ResponseInner
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.CreateWorkgroup`: %v\n", resp)
 }
 ```
@@ -132,11 +132,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Workgroup**](Workgroup.md)
+[**[]ListWorkgroups200ResponseInner**](ListWorkgroups200ResponseInner.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -150,7 +150,7 @@ No authorization required
 
 ## DeleteWorkgroup
 
-> DeleteWorkgroup(ctx).Execute()
+> DeleteWorkgroup(ctx, workgroupId).Execute()
 
 Delete Work Group By Id
 
@@ -169,10 +169,11 @@ import (
 )
 
 func main() {
+    workgroupId := "ef38f94347e94562b5bb8424a56397d8" // string | The workgroup ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.DeleteWorkgroup(context.Background()).Execute()
+    resp, r, err := apiClient.GovernanceGroupsApi.DeleteWorkgroup(context.Background(), workgroupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.DeleteWorkgroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -182,11 +183,19 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**workgroupId** | **string** | The workgroup ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteWorkgroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type
@@ -195,7 +204,7 @@ Other parameters are passed through a pointer to a apiDeleteWorkgroupRequest str
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -209,7 +218,7 @@ No authorization required
 
 ## GetWorkgroup
 
-> Workgroup GetWorkgroup(ctx).Execute()
+> ListWorkgroups200ResponseInner GetWorkgroup(ctx, workgroupId).Execute()
 
 Get Work Group By Id
 
@@ -228,35 +237,44 @@ import (
 )
 
 func main() {
+    workgroupId := "ef38f94347e94562b5bb8424a56397d8" // string | The workgroup ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.GetWorkgroup(context.Background()).Execute()
+    resp, r, err := apiClient.GovernanceGroupsApi.GetWorkgroup(context.Background(), workgroupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.GetWorkgroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWorkgroup`: Workgroup
+    // response from `GetWorkgroup`: ListWorkgroups200ResponseInner
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.GetWorkgroup`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**workgroupId** | **string** | The workgroup ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetWorkgroupRequest struct via the builder pattern
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
 ### Return type
 
-[**Workgroup**](Workgroup.md)
+[**ListWorkgroups200ResponseInner**](ListWorkgroups200ResponseInner.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -270,7 +288,7 @@ No authorization required
 
 ## ListWorkgroupConnections
 
-> []WorkgroupConnection ListWorkgroupConnections(ctx).Execute()
+> []ListWorkgroupConnections200ResponseInner ListWorkgroupConnections(ctx, workgroupId).Execute()
 
 List Work Group Connections
 
@@ -289,35 +307,44 @@ import (
 )
 
 func main() {
+    workgroupId := "ef38f94347e94562b5bb8424a56397d8" // string | The workgroup ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.ListWorkgroupConnections(context.Background()).Execute()
+    resp, r, err := apiClient.GovernanceGroupsApi.ListWorkgroupConnections(context.Background(), workgroupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.ListWorkgroupConnections``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListWorkgroupConnections`: []WorkgroupConnection
+    // response from `ListWorkgroupConnections`: []ListWorkgroupConnections200ResponseInner
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.ListWorkgroupConnections`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**workgroupId** | **string** | The workgroup ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListWorkgroupConnectionsRequest struct via the builder pattern
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
 ### Return type
 
-[**[]WorkgroupConnection**](WorkgroupConnection.md)
+[**[]ListWorkgroupConnections200ResponseInner**](ListWorkgroupConnections200ResponseInner.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -331,7 +358,7 @@ No authorization required
 
 ## ListWorkgroupMembers
 
-> []WorkgroupMember ListWorkgroupMembers(ctx).Execute()
+> []ListWorkgroupMembers200ResponseInner ListWorkgroupMembers(ctx, workgroupId).Execute()
 
 List Work Group Members
 
@@ -350,35 +377,44 @@ import (
 )
 
 func main() {
+    workgroupId := "ef38f94347e94562b5bb8424a56397d8" // string | The workgroup ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.ListWorkgroupMembers(context.Background()).Execute()
+    resp, r, err := apiClient.GovernanceGroupsApi.ListWorkgroupMembers(context.Background(), workgroupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.ListWorkgroupMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListWorkgroupMembers`: []WorkgroupMember
+    // response from `ListWorkgroupMembers`: []ListWorkgroupMembers200ResponseInner
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.ListWorkgroupMembers`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**workgroupId** | **string** | The workgroup ID | 
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListWorkgroupMembersRequest struct via the builder pattern
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
 ### Return type
 
-[**[]WorkgroupMember**](WorkgroupMember.md)
+[**[]ListWorkgroupMembers200ResponseInner**](ListWorkgroupMembers200ResponseInner.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -392,7 +428,7 @@ No authorization required
 
 ## ListWorkgroups
 
-> []Workgroup ListWorkgroups(ctx).Execute()
+> []ListWorkgroups200ResponseInner ListWorkgroups(ctx).Execute()
 
 List Work Groups
 
@@ -419,7 +455,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.ListWorkgroups``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListWorkgroups`: []Workgroup
+    // response from `ListWorkgroups`: []ListWorkgroups200ResponseInner
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.ListWorkgroups`: %v\n", resp)
 }
 ```
@@ -435,11 +471,11 @@ Other parameters are passed through a pointer to a apiListWorkgroupsRequest stru
 
 ### Return type
 
-[**[]Workgroup**](Workgroup.md)
+[**[]ListWorkgroups200ResponseInner**](ListWorkgroups200ResponseInner.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -453,7 +489,7 @@ No authorization required
 
 ## ModifyWorkgroupMembers
 
-> ModifyWorkgroupMembers(ctx).ModifyWorkgroupMembersRequest(modifyWorkgroupMembersRequest).Execute()
+> ModifyWorkgroupMembers(ctx, workgroupId).ModifyWorkgroupMembersRequest(modifyWorkgroupMembersRequest).Execute()
 
 Modify Work Group Members
 
@@ -472,11 +508,12 @@ import (
 )
 
 func main() {
+    workgroupId := "ef38f94347e94562b5bb8424a56397d8" // string | The workgroup ID
     modifyWorkgroupMembersRequest := *openapiclient.NewModifyWorkgroupMembersRequest() // ModifyWorkgroupMembersRequest | Add/Remove workgroup member ids.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.ModifyWorkgroupMembers(context.Background()).ModifyWorkgroupMembersRequest(modifyWorkgroupMembersRequest).Execute()
+    resp, r, err := apiClient.GovernanceGroupsApi.ModifyWorkgroupMembers(context.Background(), workgroupId).ModifyWorkgroupMembersRequest(modifyWorkgroupMembersRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.ModifyWorkgroupMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -487,6 +524,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**workgroupId** | **string** | The workgroup ID | 
 
 ### Other Parameters
 
@@ -495,6 +536,7 @@ Other parameters are passed through a pointer to a apiModifyWorkgroupMembersRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **modifyWorkgroupMembersRequest** | [**ModifyWorkgroupMembersRequest**](ModifyWorkgroupMembersRequest.md) | Add/Remove workgroup member ids. | 
 
 ### Return type
@@ -503,7 +545,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -517,7 +559,7 @@ No authorization required
 
 ## UpdateWorkgroup
 
-> Workgroup UpdateWorkgroup(ctx).CreateWorkgroupRequest(createWorkgroupRequest).Execute()
+> ListWorkgroups200ResponseInner UpdateWorkgroup(ctx, workgroupId).CreateWorkgroupRequest(createWorkgroupRequest).Execute()
 
 Update Work Group By Id
 
@@ -536,16 +578,17 @@ import (
 )
 
 func main() {
+    workgroupId := "ef38f94347e94562b5bb8424a56397d8" // string | The workgroup ID
     createWorkgroupRequest := *openapiclient.NewCreateWorkgroupRequest() // CreateWorkgroupRequest | Work group to modify.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.UpdateWorkgroup(context.Background()).CreateWorkgroupRequest(createWorkgroupRequest).Execute()
+    resp, r, err := apiClient.GovernanceGroupsApi.UpdateWorkgroup(context.Background(), workgroupId).CreateWorkgroupRequest(createWorkgroupRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.UpdateWorkgroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateWorkgroup`: Workgroup
+    // response from `UpdateWorkgroup`: ListWorkgroups200ResponseInner
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.UpdateWorkgroup`: %v\n", resp)
 }
 ```
@@ -553,6 +596,10 @@ func main() {
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**workgroupId** | **string** | The workgroup ID | 
 
 ### Other Parameters
 
@@ -561,15 +608,16 @@ Other parameters are passed through a pointer to a apiUpdateWorkgroupRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **createWorkgroupRequest** | [**CreateWorkgroupRequest**](CreateWorkgroupRequest.md) | Work group to modify. | 
 
 ### Return type
 
-[**Workgroup**](Workgroup.md)
+[**ListWorkgroups200ResponseInner**](ListWorkgroups200ResponseInner.md)
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

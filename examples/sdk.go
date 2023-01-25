@@ -7,7 +7,7 @@ import (
 	"os"
 
 	sailpoint "github.com/sailpoint-oss/golang-sdk/sdk-output"
-	sailpointsdk "github.com/sailpoint-oss/golang-sdk/sdk-output/v3"
+	v3 "github.com/sailpoint-oss/golang-sdk/sdk-output/v3"
 )
 
 func main() {
@@ -36,7 +36,7 @@ func getResults(ctx context.Context, apiClient *sailpoint.APIClient) {
 }
 
 func getSearchResults(ctx context.Context, apiClient *sailpoint.APIClient) {
-	search := sailpointsdk.NewSearch1WithDefaults()
+	search := v3.NewSearch1WithDefaults()
 	searchString := []byte(`
 	{
 	"indices": [
@@ -71,7 +71,7 @@ func getTransformResults(ctx context.Context, apiClient *sailpoint.APIClient) {
 }
 
 func getAllPaginatedResults(ctx context.Context, apiClient *sailpoint.APIClient) {
-	resp, r, err := sailpoint.PaginateWithDefaults[sailpointsdk.Account](apiClient.V3.AccountsApi.ListAccounts(ctx))
+	resp, r, err := sailpoint.PaginateWithDefaults[v3.Account](apiClient.V3.AccountsApi.ListAccounts(ctx))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

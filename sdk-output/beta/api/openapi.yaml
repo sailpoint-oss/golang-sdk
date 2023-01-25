@@ -55844,7 +55844,6 @@ components:
       example: WEEKLY
       type: string
     Selector:
-      nullable: true
       properties:
         type:
           $ref: '#/components/schemas/SelectorType'
@@ -59438,6 +59437,7 @@ components:
           - MON
           - WED
           - FRI
+        nullable: true
         type: object
     Schedule_1_hours:
       allOf:
@@ -59450,7 +59450,6 @@ components:
           - "18"
           interval: 3
         type: object
-      nullable: false
     ViolationContext_policy_allOf:
       properties:
         type:
