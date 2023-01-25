@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetOrgSettings
 
-> Org GetOrgSettings(ctx).Execute()
+> GetOrgSettings200Response GetOrgSettings(ctx).Execute()
 
 Retrieves your org settings.
 
@@ -38,7 +38,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgApi.GetOrgSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOrgSettings`: Org
+    // response from `GetOrgSettings`: GetOrgSettings200Response
     fmt.Fprintf(os.Stdout, "Response from `OrgApi.GetOrgSettings`: %v\n", resp)
 }
 ```
@@ -54,7 +54,7 @@ Other parameters are passed through a pointer to a apiGetOrgSettingsRequest stru
 
 ### Return type
 
-[**Org**](Org.md)
+[**GetOrgSettings200Response**](GetOrgSettings200Response.md)
 
 ### Authorization
 
@@ -72,7 +72,7 @@ No authorization required
 
 ## UpdateOrgSettings
 
-> Org UpdateOrgSettings(ctx).OrgEto(orgEto).Execute()
+> GetOrgSettings200Response UpdateOrgSettings(ctx).UpdateOrgSettingsRequest(updateOrgSettingsRequest).Execute()
 
 Updates one or more org attributes.
 
@@ -91,16 +91,16 @@ import (
 )
 
 func main() {
-    orgEto := *openapiclient.NewOrgEto() // OrgEto | Org settings to update.
+    updateOrgSettingsRequest := *openapiclient.NewUpdateOrgSettingsRequest() // UpdateOrgSettingsRequest | Org settings to update.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrgApi.UpdateOrgSettings(context.Background()).OrgEto(orgEto).Execute()
+    resp, r, err := apiClient.OrgApi.UpdateOrgSettings(context.Background()).UpdateOrgSettingsRequest(updateOrgSettingsRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrgApi.UpdateOrgSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateOrgSettings`: Org
+    // response from `UpdateOrgSettings`: GetOrgSettings200Response
     fmt.Fprintf(os.Stdout, "Response from `OrgApi.UpdateOrgSettings`: %v\n", resp)
 }
 ```
@@ -116,11 +116,11 @@ Other parameters are passed through a pointer to a apiUpdateOrgSettingsRequest s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **orgEto** | [**OrgEto**](OrgEto.md) | Org settings to update. | 
+ **updateOrgSettingsRequest** | [**UpdateOrgSettingsRequest**](UpdateOrgSettingsRequest.md) | Org settings to update. | 
 
 ### Return type
 
-[**Org**](Org.md)
+[**GetOrgSettings200Response**](GetOrgSettings200Response.md)
 
 ### Authorization
 

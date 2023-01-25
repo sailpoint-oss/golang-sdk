@@ -19978,13 +19978,11 @@ components:
           allOf:
           - $ref: '#/components/schemas/DateTime'
           description: The date the scheduled search was initially created.
-          nullable: false
           readOnly: true
         modified:
           allOf:
           - $ref: '#/components/schemas/DateTime'
           description: The last date the scheduled search was modified.
-          nullable: false
           readOnly: true
         schedule:
           $ref: '#/components/schemas/Schedule_1'
@@ -26597,7 +26595,6 @@ components:
       example: WEEKLY
       type: string
     Selector:
-      nullable: true
       properties:
         type:
           $ref: '#/components/schemas/SelectorType'
@@ -28553,6 +28550,7 @@ components:
           - MON
           - WED
           - FRI
+        nullable: true
         type: object
     Schedule_1_hours:
       allOf:
@@ -28565,7 +28563,6 @@ components:
           - "18"
           interval: 3
         type: object
-      nullable: false
     ReviewableEntitlement_account:
       description: Information about the status of the entitlement
       example:

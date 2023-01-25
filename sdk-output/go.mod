@@ -3,10 +3,6 @@ module github.com/sailpoint-oss/golang-sdk/sdk-output
 go 1.19
 
 require (
-	github.com/sailpoint-oss/golang-sdk/sdk-output/beta v0.0.0-20230113221736-829dd23a6e8c
-	github.com/sailpoint-oss/golang-sdk/sdk-output/cc v0.0.0-20230113221736-829dd23a6e8c
-	github.com/sailpoint-oss/golang-sdk/sdk-output/v2 v2.0.0-20230113221736-829dd23a6e8c
-	github.com/sailpoint-oss/golang-sdk/sdk-output/v3 v3.0.0-20230113221736-829dd23a6e8c
 	golang.org/x/oauth2 v0.4.0 // indirect
 )
 

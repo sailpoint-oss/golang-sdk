@@ -1,5 +1,5 @@
 templateDir: ./sdk-resources/beta-resources
-packageName: sailpointbetasdk
+packageName: beta
 packageVersion: 0.1.0
 generateInterfaces: false
 enumClassPrefix: false

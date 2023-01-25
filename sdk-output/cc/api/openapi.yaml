@@ -10,502 +10,171 @@ servers:
       default: sailpoint
       description: "This is the name of your tenant, typically your company's name."
 tags:
-- description: "These are endpoints to interact with IdentityNow account profile objects,\
-    \ in order to define provisioning policy for account creation, modify, enable,\
-    \ disable, delete, etc."
-  name: Account Profiles
-- name: Clusters
+- name: Accounts
+- name: Applications
 - name: Connectors
-- name: Identity Profiles
-- name: Integrations
-- name: Roles
-- name: Sources
-- name: Sources > Attribute Sync
-- name: Sources > Account Schema
+- name: User
 - name: Sources > Aggregation
 - name: Sources > Accounts
 - name: System
 paths:
-  /cc/api/accountProfile/list:
+  /cc/api/account/list:
     get:
-      operationId: listAccountProfiles
+      operationId: listAccounts
       responses:
         "200":
           content:
             application/json: {}
           description: Successful response
-      summary: List All Account Profiles
+      security:
+      - oauth2: []
+      summary: List Accounts
       tags:
-      - Account Profiles
-  /cc/api/accountProfile/bulkUpdate/{id}:
+      - Accounts
+  /cc/api/account/remove/:id:
     post:
-      operationId: bulkUpdateAccountProfiles
+      operationId: removeAccount
       parameters:
-      - example: application/json
+      - example: 12345
         explode: false
-        in: header
-        name: Content-Type
+        in: path
+        name: id
         required: false
         schema:
           type: string
         style: simple
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              example: "\"[\\n    {\\n        \\\"description\\\": null,\\n      \
-                \  \\\"fields\\\": [\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"multi\\\": false,\\n                \\\"name\\\": \\\"\
-                userName\\\",\\n                \\\"transform\\\": {\\n          \
-                \          \\\"attributes\\\": {\\n                        \\\"name\\\
-                \": \\\"uid\\\"\\n                    },\\n                    \\\"\
-                type\\\": \\\"identityAttribute\\\"\\n                },\\n      \
-                \          \\\"type\\\": \\\"string\\\"\\n            },\\n      \
-                \      {\\n                \\\"attributes\\\": {},\\n            \
-                \    \\\"isRequired\\\": false,\\n                \\\"multi\\\": false,\\\
-                n                \\\"name\\\": \\\"name.formatted\\\",\\n        \
-                \        \\\"transform\\\": {\\n                    \\\"attributes\\\
-                \": {\\n                        \\\"name\\\": \\\"displayName\\\"\\\
-                n                    },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"multi\\\": false,\\n                \\\"name\\\": \\\"\
-                name.familyName\\\",\\n                \\\"transform\\\": {\\n   \
-                \                 \\\"attributes\\\": {\\n                       \
-                \ \\\"name\\\": \\\"lastname\\\"\\n                    },\\n     \
-                \               \\\"type\\\": \\\"identityAttribute\\\"\\n       \
-                \         },\\n                \\\"type\\\": \\\"string\\\"\\n   \
-                \         },\\n            {\\n                \\\"attributes\\\"\
-                : {},\\n                \\\"isRequired\\\": false,\\n            \
-                \    \\\"multi\\\": false,\\n                \\\"name\\\": \\\"name.givenName\\\
-                \",\\n                \\\"transform\\\": {\\n                    \\\
-                \"attributes\\\": {\\n                        \\\"name\\\": \\\"firstname\\\
-                \"\\n                    },\\n                    \\\"type\\\": \\\
-                \"identityAttribute\\\"\\n                },\\n                \\\"\
-                type\\\": \\\"string\\\"\\n            },\\n            {\\n     \
-                \           \\\"attributes\\\": {},\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"multi\\\": false,\\n            \
-                \    \\\"name\\\": \\\"name.middleName\\\",\\n                \\\"\
-                transform\\\": null,\\n                \\\"type\\\": \\\"string\\\"\
-                \\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"multi\\\": false,\\n                \\\"name\\\": \\\"\
-                name.honorificPrefix\\\",\\n                \\\"transform\\\": null,\\\
-                n                \\\"type\\\": \\\"string\\\"\\n            },\\n\
-                \            {\\n                \\\"attributes\\\": {},\\n      \
-                \          \\\"isRequired\\\": false,\\n                \\\"multi\\\
-                \": false,\\n                \\\"name\\\": \\\"name.honorificSuffix\\\
-                \",\\n                \\\"transform\\\": null,\\n                \\\
-                \"type\\\": \\\"string\\\"\\n            },\\n            {\\n   \
-                \             \\\"attributes\\\": {},\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"multi\\\": false,\\n            \
-                \    \\\"name\\\": \\\"displayName\\\",\\n                \\\"transform\\\
-                \": {\\n                    \\\"attributes\\\": {\\n             \
-                \           \\\"name\\\": \\\"displayName\\\"\\n                 \
-                \   },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"multi\\\": false,\\n                \\\"name\\\": \\\"\
-                nickName\\\",\\n                \\\"transform\\\": null,\\n      \
-                \          \\\"type\\\": \\\"string\\\"\\n            },\\n      \
-                \      {\\n                \\\"attributes\\\": {},\\n            \
-                \    \\\"isRequired\\\": false,\\n                \\\"multi\\\": false,\\\
-                n                \\\"name\\\": \\\"profileUrl\\\",\\n            \
-                \    \\\"transform\\\": null,\\n                \\\"type\\\": \\\"\
-                string\\\"\\n            },\\n            {\\n                \\\"\
-                attributes\\\": {},\\n                \\\"isRequired\\\": false,\\\
-                n                \\\"multi\\\": false,\\n                \\\"name\\\
-                \": \\\"title\\\",\\n                \\\"transform\\\": null,\\n \
-                \               \\\"type\\\": \\\"string\\\"\\n            },\\n \
-                \           {\\n                \\\"attributes\\\": {},\\n       \
-                \         \\\"isRequired\\\": false,\\n                \\\"multi\\\
-                \": false,\\n                \\\"name\\\": \\\"userType\\\",\\n  \
-                \              \\\"transform\\\": null,\\n                \\\"type\\\
-                \": \\\"string\\\"\\n            },\\n            {\\n           \
-                \     \\\"attributes\\\": {},\\n                \\\"isRequired\\\"\
-                : false,\\n                \\\"multi\\\": false,\\n              \
-                \  \\\"name\\\": \\\"preferredLanguage\\\",\\n                \\\"\
-                transform\\\": null,\\n                \\\"type\\\": \\\"string\\\"\
-                \\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"multi\\\": false,\\n                \\\"name\\\": \\\"\
-                locale\\\",\\n                \\\"transform\\\": null,\\n        \
-                \        \\\"type\\\": \\\"string\\\"\\n            },\\n        \
-                \    {\\n                \\\"attributes\\\": {},\\n              \
-                \  \\\"isRequired\\\": false,\\n                \\\"multi\\\": false,\\\
-                n                \\\"name\\\": \\\"timezone\\\",\\n              \
-                \  \\\"transform\\\": null,\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"multi\\\": false,\\n                \\\"name\\\": \\\"\
-                active\\\",\\n                \\\"transform\\\": null,\\n        \
-                \        \\\"type\\\": \\\"boolean\\\"\\n            },\\n       \
-                \     {\\n                \\\"attributes\\\": {},\\n             \
-                \   \\\"isRequired\\\": false,\\n                \\\"multi\\\": false,\\\
-                n                \\\"name\\\": \\\"password\\\",\\n              \
-                \  \\\"transform\\\": null,\\n                \\\"type\\\": \\\"secret\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"multi\\\": false,\\n                \\\"name\\\": \\\"\
-                emails.work.primary.value\\\",\\n                \\\"transform\\\"\
-                : {\\n                    \\\"attributes\\\": {\\n               \
-                \         \\\"name\\\": \\\"email\\\"\\n                    },\\n\
-                \                    \\\"type\\\": \\\"identityAttribute\\\"\\n  \
-                \              },\\n                \\\"type\\\": \\\"string\\\"\\\
-                n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"multi\\\": false,\\n                \\\"name\\\": \\\"\
-                emails.work.secondary.value\\\",\\n                \\\"transform\\\
-                \": null,\\n                \\\"type\\\": \\\"string\\\"\\n      \
-                \      },\\n            {\\n                \\\"attributes\\\": {},\\\
-                n                \\\"isRequired\\\": false,\\n                \\\"\
-                multi\\\": false,\\n                \\\"name\\\": \\\"emails.home.primary.value\\\
-                \",\\n                \\\"transform\\\": {\\n                    \\\
-                \"attributes\\\": {\\n                        \\\"name\\\": \\\"personalEmail\\\
-                \"\\n                    },\\n                    \\\"type\\\": \\\
-                \"identityAttribute\\\"\\n                },\\n                \\\"\
-                type\\\": \\\"string\\\"\\n            },\\n            {\\n     \
-                \           \\\"attributes\\\": {},\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"multi\\\": false,\\n            \
-                \    \\\"name\\\": \\\"emails.home.secondary.value\\\",\\n       \
-                \         \\\"transform\\\": null,\\n                \\\"type\\\"\
-                : \\\"string\\\"\\n            },\\n            {\\n             \
-                \   \\\"attributes\\\": {},\\n                \\\"isRequired\\\":\
-                \ false,\\n                \\\"multi\\\": false,\\n              \
-                \  \\\"name\\\": \\\"emails.other.primary.value\\\",\\n          \
-                \      \\\"transform\\\": null,\\n                \\\"type\\\": \\\
-                \"string\\\"\\n            },\\n            {\\n                \\\
-                \"attributes\\\": {},\\n                \\\"isRequired\\\": false,\\\
-                n                \\\"multi\\\": false,\\n                \\\"name\\\
-                \": \\\"emails.other.secondary.value\\\",\\n                \\\"transform\\\
-                \": null,\\n                \\\"type\\\": \\\"string\\\"\\n      \
-                \      },\\n            {\\n                \\\"attributes\\\": {},\\\
-                n                \\\"isRequired\\\": false,\\n                \\\"\
-                multi\\\": false,\\n                \\\"name\\\": \\\"phoneNumbers.work.primary.value\\\
-                \",\\n                \\\"transform\\\": {\\n                    \\\
-                \"attributes\\\": {\\n                        \\\"name\\\": \\\"workPhone\\\
-                \"\\n                    },\\n                    \\\"type\\\": \\\
-                \"identityAttribute\\\"\\n                },\\n                \\\"\
-                type\\\": \\\"string\\\"\\n            },\\n            {\\n     \
-                \           \\\"attributes\\\": {},\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"multi\\\": false,\\n            \
-                \    \\\"name\\\": \\\"phoneNumbers.work.secondary.value\\\",\\n \
-                \               \\\"transform\\\": null,\\n                \\\"type\\\
-                \": \\\"string\\\"\\n            },\\n            {\\n           \
-                \     \\\"attributes\\\": {},\\n                \\\"isRequired\\\"\
-                : false,\\n                \\\"multi\\\": false,\\n              \
-                \  \\\"name\\\": \\\"phoneNumbers.home.primary.value\\\",\\n     \
-                \           \\\"transform\\\": {\\n                    \\\"attributes\\\
-                \": {\\n                        \\\"name\\\": \\\"phone\\\"\\n   \
-                \                 },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"multi\\\": false,\\n                \\\"name\\\": \\\"\
-                phoneNumbers.home.secondary.value\\\",\\n                \\\"transform\\\
-                \": null,\\n                \\\"type\\\": \\\"string\\\"\\n      \
-                \      },\\n            {\\n                \\\"attributes\\\": {},\\\
-                n                \\\"isRequired\\\": false,\\n                \\\"\
-                multi\\\": false,\\n                \\\"name\\\": \\\"phoneNumbers.cellular.primary.value\\\
-                \",\\n                \\\"transform\\\": null,\\n                \\\
-                \"type\\\": \\\"string\\\"\\n            },\\n            {\\n   \
-                \             \\\"attributes\\\": {},\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"multi\\\": false,\\n            \
-                \    \\\"name\\\": \\\"phoneNumbers.cellular.secondary.value\\\",\\\
-                n                \\\"transform\\\": null,\\n                \\\"type\\\
-                \": \\\"string\\\"\\n            },\\n            {\\n           \
-                \     \\\"attributes\\\": {},\\n                \\\"isRequired\\\"\
-                : false,\\n                \\\"multi\\\": false,\\n              \
-                \  \\\"name\\\": \\\"employeeNumber\\\",\\n                \\\"transform\\\
-                \": {\\n                    \\\"attributes\\\": {\\n             \
-                \           \\\"name\\\": \\\"identificationNumber\\\"\\n        \
-                \            },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"multi\\\": false,\\n                \\\"name\\\": \\\"\
-                costCenter\\\",\\n                \\\"transform\\\": null,\\n    \
-                \            \\\"type\\\": \\\"string\\\"\\n            },\\n    \
-                \        {\\n                \\\"attributes\\\": {},\\n          \
-                \      \\\"isRequired\\\": false,\\n                \\\"multi\\\"\
-                : false,\\n                \\\"name\\\": \\\"organization\\\",\\n\
-                \                \\\"transform\\\": null,\\n                \\\"type\\\
-                \": \\\"string\\\"\\n            },\\n            {\\n           \
-                \     \\\"attributes\\\": {},\\n                \\\"isRequired\\\"\
-                : false,\\n                \\\"multi\\\": false,\\n              \
-                \  \\\"name\\\": \\\"division\\\",\\n                \\\"transform\\\
-                \": null,\\n                \\\"type\\\": \\\"string\\\"\\n      \
-                \      },\\n            {\\n                \\\"attributes\\\": {},\\\
-                n                \\\"isRequired\\\": false,\\n                \\\"\
-                multi\\\": false,\\n                \\\"name\\\": \\\"department\\\
-                \",\\n                \\\"transform\\\": null,\\n                \\\
-                \"type\\\": \\\"string\\\"\\n            },\\n            {\\n   \
-                \             \\\"attributes\\\": {},\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"multi\\\": false,\\n            \
-                \    \\\"name\\\": \\\"manager\\\",\\n                \\\"transform\\\
-                \": null,\\n                \\\"type\\\": \\\"string\\\"\\n      \
-                \      }\\n        ],\\n        \\\"name\\\": \\\"Account\\\",\\n\
-                \        \\\"usage\\\": \\\"Create\\\",\\n        \\\"validPolicy\\\
-                \": true\\n    }\\n]\""
-              type: string
       responses:
         "200":
           content:
             application/json: {}
           description: Successful response
-      summary: Bulk Update Account Profiles
+      security:
+      - oauth2: []
+      summary: Remove Account
       tags:
-      - Account Profiles
-  /cc/api/accountProfile/get/{id}:
+      - Accounts
+  /cc/api/app:
     get:
-      description: "Gets the account profile with the specified usage for a source.\n\
-        \t * @param source The source owning the account profile.\n\t * @param usage\
-        \ The usage of the account profile.\n\t * @return The properties of the account\
-        \ profile."
-      operationId: getAccountProfile
-      parameters:
-      - description: This is the type of account profile to get.
-        example: Create
-        explode: true
-        in: query
-        name: usage
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
+      operationId: listApplications
       responses:
         "200":
           content:
             application/json: {}
           description: Successful response
-      summary: Get Account Profile
+      security:
+      - oauth2: []
+      summary: List Applications
       tags:
-      - Account Profiles
-  /cc/api/accountProfile/update/{id}:
-    post:
-      description: "Updates an account profile for the specified usage, an account\
-        \ profile is created if one does not exist for the specified usage.\n\t *\
-        \ @param org The current organization.\n\t * @param source The source owning\
-        \ the account profile.\n\t * @param usage The usage of the account profile.\n\
-        \t * @param properties The properties to send to CIS to create the profile.\n\
-        \t * @return The properties for the saved account profile."
-      operationId: updateAccountProfile
+      - Applications
+  /cc/api/app/get/:id:
+    get:
+      operationId: GetApplication
       parameters:
-      - example: application/json
+      - example: 12345
         explode: false
-        in: header
-        name: Content-Type
+        in: path
+        name: id
         required: false
         schema:
           type: string
         style: simple
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              example: "\"[\\n    {\\n        \\\"description\\\": null,\\n      \
-                \  \\\"fields\\\": [\\n            {\\n                \\\"attributes\\\
-                \": {\\n                    \\\"cloudMaxUniqueChecks\\\": \\\"50\\\
-                \",\\n                    \\\"cloudRequired\\\": \\\"true\\\",\\n\
-                \                    \\\"template\\\": \\\"$(firstname).$(lastname)$(uniqueCounter)\\\
-                \"\\n                },\\n                \\\"isRequired\\\": false,\\\
-                n                \\\"name\\\": \\\"user_name\\\",\\n             \
-                \   \\\"transform\\\": {\\n                    \\\"attributes\\\"\
-                : {\\n                        \\\"name\\\": \\\"displayName\\\"\\\
-                n                    },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"name\\\": \\\"first_name\\\",\\n                \\\"transform\\\
-                \": {\\n                    \\\"attributes\\\": {\\n             \
-                \           \\\"name\\\": \\\"knownAsFirstName\\\"\\n            \
-                \        },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"name\\\": \\\"last_name\\\",\\n                \\\"transform\\\
-                \": {\\n                    \\\"attributes\\\": {\\n             \
-                \           \\\"name\\\": \\\"knownAsLastName\\\"\\n             \
-                \       },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"name\\\": \\\"department\\\",\\n                \\\"transform\\\
-                \": null,\\n                \\\"type\\\": \\\"string\\\"\\n      \
-                \      },\\n            {\\n                \\\"attributes\\\": {},\\\
-                n                \\\"isRequired\\\": false,\\n                \\\"\
-                name\\\": \\\"title\\\",\\n                \\\"transform\\\": null,\\\
-                n                \\\"type\\\": \\\"string\\\"\\n            },\\n\
-                \            {\\n                \\\"attributes\\\": {\\n        \
-                \            \\\"cloudRequired\\\": \\\"true\\\"\\n              \
-                \  },\\n                \\\"isRequired\\\": false,\\n            \
-                \    \\\"name\\\": \\\"password\\\",\\n                \\\"transform\\\
-                \": null,\\n                \\\"type\\\": \\\"secret\\\"\\n      \
-                \      },\\n            {\\n                \\\"attributes\\\": {\\\
-                n                    \\\"cloudRequired\\\": \\\"true\\\"\\n      \
-                \          },\\n                \\\"isRequired\\\": false,\\n    \
-                \            \\\"name\\\": \\\"password_needs_reset\\\",\\n      \
-                \          \\\"transform\\\": null,\\n                \\\"type\\\"\
-                : \\\"boolean\\\"\\n            },\\n            {\\n            \
-                \    \\\"attributes\\\": {\\n                    \\\"cloudRequired\\\
-                \": \\\"true\\\"\\n                },\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"name\\\": \\\"locked_out\\\",\\n\
-                \                \\\"transform\\\": null,\\n                \\\"type\\\
-                \": \\\"boolean\\\"\\n            },\\n            {\\n          \
-                \      \\\"attributes\\\": {\\n                    \\\"cloudRequired\\\
-                \": \\\"true\\\"\\n                },\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"name\\\": \\\"active\\\",\\n    \
-                \            \\\"transform\\\": null,\\n                \\\"type\\\
-                \": \\\"boolean\\\"\\n            },\\n            {\\n          \
-                \      \\\"attributes\\\": {\\n                    \\\"cloudRequired\\\
-                \": \\\"true\\\"\\n                },\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"name\\\": \\\"notification\\\",\\\
-                n                \\\"transform\\\": null,\\n                \\\"type\\\
-                \": \\\"string\\\"\\n            },\\n            {\\n           \
-                \     \\\"attributes\\\": {\\n                    \\\"cloudRequired\\\
-                \": \\\"true\\\"\\n                },\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"name\\\": \\\"calendar_integration\\\
-                \",\\n                \\\"transform\\\": null,\\n                \\\
-                \"type\\\": \\\"string\\\"\\n            },\\n            {\\n   \
-                \             \\\"attributes\\\": {\\n                    \\\"cloudRequired\\\
-                \": \\\"true\\\"\\n                },\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"name\\\": \\\"time_zone\\\",\\n \
-                \               \\\"transform\\\": null,\\n                \\\"type\\\
-                \": \\\"string\\\"\\n            },\\n            {\\n           \
-                \     \\\"attributes\\\": {\\n                    \\\"cloudRequired\\\
-                \": \\\"true\\\"\\n                },\\n                \\\"isRequired\\\
-                \": false,\\n                \\\"name\\\": \\\"email\\\",\\n     \
-                \           \\\"transform\\\": null,\\n                \\\"type\\\"\
-                : \\\"string\\\"\\n            },\\n            {\\n             \
-                \   \\\"attributes\\\": {},\\n                \\\"isRequired\\\":\
-                \ false,\\n                \\\"name\\\": \\\"mobile_phone\\\",\\n\
-                \                \\\"transform\\\": null,\\n                \\\"type\\\
-                \": \\\"string\\\"\\n            },\\n            {\\n           \
-                \     \\\"attributes\\\": {},\\n                \\\"isRequired\\\"\
-                : false,\\n                \\\"name\\\": \\\"phone\\\",\\n       \
-                \         \\\"transform\\\": null,\\n                \\\"type\\\"\
-                : \\\"string\\\"\\n            },\\n            {\\n             \
-                \   \\\"attributes\\\": {},\\n                \\\"isRequired\\\":\
-                \ false,\\n                \\\"name\\\": \\\"name\\\",\\n        \
-                \        \\\"transform\\\": {\\n                    \\\"attributes\\\
-                \": {\\n                        \\\"name\\\": \\\"displayName\\\"\\\
-                n                    },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"name\\\": \\\"u_erp_first_name\\\",\\n                \\\
-                \"transform\\\": {\\n                    \\\"attributes\\\": {\\n\
-                \                        \\\"name\\\": \\\"firstname\\\"\\n      \
-                \              },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"name\\\": \\\"u_erp_last_name\\\",\\n                \\\
-                \"transform\\\": {\\n                    \\\"attributes\\\": {\\n\
-                \                        \\\"name\\\": \\\"lastname\\\"\\n       \
-                \             },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"name\\\": \\\"u_erp_plantcode\\\",\\n                \\\
-                \"transform\\\": {\\n                    \\\"attributes\\\": {\\n\
-                \                        \\\"name\\\": \\\"plantCode\\\"\\n      \
-                \              },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            },\\n            {\\n                \\\"attributes\\\
-                \": {},\\n                \\\"isRequired\\\": false,\\n          \
-                \      \\\"name\\\": \\\"u_erp_emp_status\\\",\\n                \\\
-                \"transform\\\": {\\n                    \\\"attributes\\\": {\\n\
-                \                        \\\"name\\\": \\\"employeeType\\\"\\n   \
-                \                 },\\n                    \\\"type\\\": \\\"identityAttribute\\\
-                \"\\n                },\\n                \\\"type\\\": \\\"string\\\
-                \"\\n            }\\n        ],\\n        \\\"name\\\": \\\"Account\\\
-                \",\\n        \\\"usage\\\": \\\"Create\\\",\\n        \\\"validPolicy\\\
-                \": true\\n    }\\n]\""
-              type: string
       responses:
         "200":
           content:
             application/json: {}
           description: Successful response
-      summary: Edit Account Profile
+      security:
+      - oauth2: []
+      summary: Get Single Application
       tags:
-      - Account Profiles
-  /cc/api/cluster/list:
+      - Applications
+  /cc/api/app/getAccessProfiles/:id:
     get:
-      operationId: listClusters
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: List Clusters
-      tags:
-      - Clusters
-  /cc/api/cluster/create:
-    post:
-      operationId: createCluster
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/createCluster_request'
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Create Cluster
-      tags:
-      - Clusters
-  /cc/api/cluster/remove/{id}:
-    post:
-      operationId: deleteCluster
+      operationId: GetApplicationAccessProfiles
       parameters:
-      - explode: false
+      - example: 12345
+        explode: false
         in: path
         name: id
-        required: true
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Get Access Profiles for Application
+      tags:
+      - Applications
+  /cc/api/app/create:
+    post:
+      operationId: CreateApplication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateApplication_request'
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      security:
+      - oauth2: []
+      summary: Create Application
+      tags:
+      - Applications
+  /cc/api/app/update/:id:
+    post:
+      operationId: UpdateApplication
+      parameters:
+      - example: 12345
+        explode: false
+        in: path
+        name: id
+        required: false
         schema:
           type: string
         style: simple
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
-              $ref: '#/components/schemas/deleteCluster_request'
+              $ref: '#/components/schemas/UpdateApplication_request'
       responses:
         "200":
           content:
             application/json: {}
           description: Successful response
-      summary: Delete Cluster
+      security:
+      - oauth2: []
+      summary: Update Application
       tags:
-      - Clusters
+      - Applications
+  /cc/api/app/delete/:id:
+    post:
+      operationId: DeleteApplication
+      parameters:
+      - example: 12345
+        explode: false
+        in: path
+        name: id
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      security:
+      - oauth2: []
+      summary: Delete Application
+      tags:
+      - Applications
   /cc/api/connector/list:
     get:
       operationId: listConnectors
@@ -514,6 +183,8 @@ paths:
           content:
             application/json: {}
           description: Successful response
+      security:
+      - oauth2: []
       summary: List Connectors
       tags:
       - Connectors
@@ -539,6 +210,8 @@ paths:
           content:
             application/json: {}
           description: Successful response
+      security:
+      - oauth2: []
       summary: Create Connector
       tags:
       - Connectors
@@ -558,6 +231,8 @@ paths:
           content:
             application/json: {}
           description: Successful response
+      security:
+      - oauth2: []
       summary: Delete Connector
       tags:
       - Connectors
@@ -577,6 +252,8 @@ paths:
           content:
             application/json: {}
           description: Successful response
+      security:
+      - oauth2: []
       summary: Export Connector Config
       tags:
       - Connectors
@@ -601,591 +278,29 @@ paths:
           content:
             application/json: {}
           description: Successful response
+      security:
+      - oauth2: []
       summary: Import Connector Config
       tags:
       - Connectors
-  /cc/api/profile/list:
-    get:
-      operationId: listIdentityProfiles
-      parameters:
-      - explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
+  /cc/api/user/updatePermissions:
+    post:
+      operationId: updateUserPermissions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateUserPermissions_request'
       responses:
         "200":
           content:
             application/json: {}
           description: Successful response
       security:
-      - oauth2Auth: []
-      summary: List Identity Profiles
+      - oauth2: []
+      summary: Update User Permissions
       tags:
-      - Identity Profiles
-  /cc/api/profile/get/{id}:
-    get:
-      operationId: getIdentityProfile
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      security:
-      - oauth2Auth: []
-      summary: Get Identity Profile
-      tags:
-      - Identity Profiles
-  /cc/api/profile/update/{profileId}:
-    post:
-      operationId: updateIdentityProfile
-      parameters:
-      - example: nocheck
-        explode: false
-        in: header
-        name: X-CSRF-Token
-        required: false
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: profileId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/updateIdentityProfile_request'
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Update Identity Profile
-      tags:
-      - Identity Profiles
-  /cc/api/lifecycleState/get/{id}:
-    get:
-      operationId: getLifecycleState
-      parameters:
-      - explode: false
-        in: header
-        name: Authorization
-        required: false
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: LCS - Get
-      tags:
-      - Identity Profiles
-  /api/lifecycleState/update/{id}:
-    post:
-      operationId: updateLifecycleState
-      parameters:
-      - example: nocheck
-        explode: false
-        in: header
-        name: X-CSRF-Token
-        required: false
-        schema:
-          type: string
-        style: simple
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              example: "\"{\\n  \\\"accessProfiles\\\": [],\\n  \\\"cloudStateCleanupOption\\\
-                \": null,\\n  \\\"description\\\": null,\\n  \\\"displayName\\\":\
-                \ \\\"Inactive\\\",\\n  \\\"emailNotificationOption\\\": {\\n    \\\
-                \"emailAddressList\\\": [],\\n    \\\"notifyAllAdmins\\\": false,\\\
-                n    \\\"notifyManagers\\\": false,\\n    \\\"notifySpecificUsers\\\
-                \": false\\n  },\\n  \\\"enabled\\\": false,\\n  \\\"externalId\\\"\
-                : \\\"2c91808455a8d2cc0155d0176e830695\\\",\\n  \\\"externalName\\\
-                \": \\\"Employees and Contractors [cloudIdentityProfile-1468075044346]-inactive\\\
-                \",\\n  \\\"identityCount\\\": 0,\\n  \\\"name\\\": \\\"inactive\\\
-                \",\\n  \\\"type\\\": \\\"cloudLifecycle\\\"\\n}\""
-              type: string
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: LCS - Update
-      tags:
-      - Identity Profiles
-  /api/lifecycleState/delete/{id}:
-    post:
-      operationId: deleteLifecycleState
-      parameters:
-      - example: nocheck
-        explode: false
-        in: header
-        name: X-CSRF-Token
-        required: false
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: LCS - Delete
-      tags:
-      - Identity Profiles
-  /cc/api/integration/listSimIntegrations:
-    get:
-      operationId: listIntegrations
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: List Integrations
-      tags:
-      - Integrations
-  /cc/api/integration/getSimIntegration/{id}:
-    get:
-      operationId: getIntegration
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Get Integration
-      tags:
-      - Integrations
-  /cc/api/integration/createSimIntegration:
-    post:
-      operationId: createIntegration
-      parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              type: string
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Create Integration
-      tags:
-      - Integrations
-  /cc/api/integration/updateSimIntegration/{id}:
-    post:
-      parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              type: string
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Update Integration
-      tags:
-      - Integrations
-  /cc/api/integration/deleteSimIntegration/{id}:
-    delete:
-      operationId: deleteIntegration
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Delete Integration
-      tags:
-      - Integrations
-  /cc/api/integration/setStatusCheckDetails:
-    post:
-      operationId: setIntegrationStatusCheckDetails
-      parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              example: "\"{\\n  \\\"provisioningStatusCheckIntervalMinutes\\\" : \\\
-                \"15\\\",\\n  \\\"provisioningMaxStatusCheckDays\\\" : \\\"30\\\"\\\
-                n}\""
-              type: string
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Set Integration Status Check Details
-      tags:
-      - Integrations
-  /cc/api/role/list:
-    get:
-      operationId: listRoles
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      security:
-      - bearerAuth: []
-      summary: List Roles
-      tags:
-      - Roles
-  /cc/api/role/get/{id}:
-    get:
-      operationId: getRole
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Get Role
-      tags:
-      - Roles
-  /cc/api/source/setAttributeSyncConfig/{id}:
-    post:
-      operationId: setSourceAttributeSyncConfig
-      parameters:
-      - example: application/json
-        explode: false
-        in: header
-        name: Content-Type
-        required: false
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          '*/*':
-            schema:
-              example: "\"{\\n    \\\"syncAttributes\\\": [{\\n            \\\"enabled\\\
-                \": true,\\n            \\\"identityAttributeDisplayName\\\": \\\"\
-                att_last_name\\\",\\n            \\\"identityAttributeName\\\": \\\
-                \"lastname\\\",\\n            \\\"targetAttribute\\\": \\\"last_name\\\
-                \"\\n        },\\n        {\\n            \\\"enabled\\\": true,\\\
-                n            \\\"identityAttributeDisplayName\\\": \\\"att_first_name\\\
-                \",\\n            \\\"identityAttributeName\\\": \\\"firstname\\\"\
-                ,\\n            \\\"targetAttribute\\\": \\\"first_name\\\"\\n   \
-                \     },\\n        {\\n            \\\"enabled\\\": true,\\n     \
-                \       \\\"identityAttributeDisplayName\\\": \\\"att_display_name\\\
-                \",\\n            \\\"identityAttributeName\\\": \\\"displayName\\\
-                \",\\n            \\\"targetAttribute\\\": \\\"user_name\\\"\\n  \
-                \      },\\n        {\\n            \\\"enabled\\\": false,\\n   \
-                \         \\\"identityAttributeDisplayName\\\": \\\"Employee Number\\\
-                \",\\n            \\\"identityAttributeName\\\": \\\"identificationNumber\\\
-                \",\\n            \\\"targetAttribute\\\": \\\"u_employee_id\\\"\\\
-                n        },\\n        {\\n            \\\"enabled\\\": false,\\n \
-                \           \\\"identityAttributeDisplayName\\\": \\\"Employee Group\\\
-                \",\\n            \\\"identityAttributeName\\\": \\\"employeeGroup\\\
-                \",\\n            \\\"targetAttribute\\\": \\\"u_erp_empgroup\\\"\\\
-                n        },\\n        {\\n            \\\"enabled\\\": false,\\n \
-                \           \\\"identityAttributeDisplayName\\\": \\\"Employee Sub\
-                \ Group\\\",\\n            \\\"identityAttributeName\\\": \\\"employeeSubGroup\\\
-                \",\\n            \\\"targetAttribute\\\": \\\"u_erp_empsubgroup\\\
-                \"\\n        },\\n        {\\n            \\\"enabled\\\": false,\\\
-                n            \\\"identityAttributeDisplayName\\\": \\\"Plant Code\\\
-                \",\\n            \\\"identityAttributeName\\\": \\\"plantCode\\\"\
-                ,\\n            \\\"targetAttribute\\\": \\\"u_erp_plant_code\\\"\\\
-                n        }\\n    ]\\n}\""
-              type: string
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Set Source Attribute Sync Config
-      tags:
-      - Sources > Attribute Sync
-  /cc/api/source/getAttributeSyncConfig/{id}:
-    get:
-      operationId: getSourceAttributeSyncConfig
-      parameters:
-      - example: "1"
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          type: integer
-        style: form
-      - example: "0"
-        explode: true
-        in: query
-        name: start
-        required: false
-        schema:
-          type: integer
-        style: form
-      - example: "25"
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          type: integer
-        style: form
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Get Source Attribute Sync Config
-      tags:
-      - Sources > Attribute Sync
-  /cc/api/source/getAccountSchema/{id}:
-    get:
-      operationId: getSourceAccountSchema
-      parameters:
-      - example: "1"
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          type: integer
-        style: form
-      - example: "0"
-        explode: true
-        in: query
-        name: start
-        required: false
-        schema:
-          type: integer
-        style: form
-      - example: "25"
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          type: integer
-        style: form
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Get Account Schema
-      tags:
-      - Sources > Account Schema
-  /cc/api/source/createSchemaAttribute/{id}:
-    post:
-      description: |-
-        Add an attribute to a source schema.
-        @param id of the source.
-        @return JSON string of the created attribute.
-      operationId: createAccountSchemaAttribute
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/createAccountSchemaAttribute_request'
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Create Account Schema Attribute
-      tags:
-      - Sources > Account Schema
-  /cc/api/source/updateSchemaAttributes/{id}:
-    post:
-      description: |-
-        Update an attribute in the source's schema.
-        @param ID of the source.
-        @return JSON string of the created attribute.
-      operationId: updateAccountSchemaAttribute
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/updateAccountSchemaAttribute_request'
-      responses:
-        "200":
-          content:
-            text/plain:
-              examples:
-                example-0:
-                  summary: Set Multi-Value
-                  value: ""
-                example-1:
-                  summary: Set Entitlement
-                  value: ""
-              schema:
-                type: string
-          description: OK
-      summary: Update Account Schema Attribute
-      tags:
-      - Sources > Account Schema
-  /cc/api/source/deleteSchemaAttribute/{id}:
-    post:
-      description: |-
-        Delete an attribute from a source schema.
-        @param ID of the source.
-        @return JSON status of OK.
-      operationId: deleteAccountSchemaAttribute
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/deleteAccountSchemaAttribute_request'
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Delete Account Schema Attribute
-      tags:
-      - Sources > Account Schema
+      - User
   /cc/api/source/loadAccounts/{id}:
     post:
       description: Aggregates a delimited file for the given source.  This only works
@@ -1217,81 +332,11 @@ paths:
           content:
             application/json: {}
           description: Successful response
+      security:
+      - oauth2: []
       summary: Account Aggregation (File)
       tags:
       - Sources > Aggregation
-  /cc/api/source/reset/{id}:
-    post:
-      description: "Clears out all aggregates objects for a source - both user accounts\
-        \ and entitlements / groups.  This is a long running process, and this is\
-        \ only advised to be used by SailPoint's guidance."
-      operationId: resetAggregatedObjects
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              type: object
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Reset Aggregated Objects
-      tags:
-      - Sources > Aggregation
-  /cc/api/source/getAccounts/:
-    get:
-      description: This get all accounts for a given source.
-      operationId: getSourceAccounts
-      parameters:
-      - example: "{id}"
-        explode: true
-        in: query
-        name: id
-        required: false
-        schema:
-          type: string
-        style: form
-      - example: 0
-        explode: true
-        in: query
-        name: start
-        required: false
-        schema:
-          type: integer
-        style: form
-      - example: 250
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          type: integer
-        style: form
-      - example: '%5B%7B%22property%22%3A%22identityName%22%2C%22direction%22%3A%22ASC%22%7D%5D'
-        explode: true
-        in: query
-        name: sort
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Get Source Accounts
-      tags:
-      - Sources > Accounts
   /cc/api/source/exportAccountFeed/{id}:
     get:
       description: Exports a CSV of the accounts for a particular source.
@@ -1309,47 +354,11 @@ paths:
           content:
             application/json: {}
           description: Successful response
+      security:
+      - oauth2: []
       summary: Export Account Feed
       tags:
       - Sources > Accounts
-  /cc/api/source/list:
-    get:
-      description: |-
-        _Note: This API should be considered deprecated in favor of newer version 3 source APIs._
-
-        Lists all sources within IdentityNow.
-      operationId: listSources
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: List Sources
-      tags:
-      - Sources
-  /cc/api/source/get/{id}:
-    get:
-      description: |-
-        _Note: This API should be considered deprecated in favor of newer version 3 source APIs._
-
-        Gets a particular source within IdentityNow.
-      operationId: getSource
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      summary: Get Source
-      tags:
-      - Sources
   /cc/api/system/refreshIdentities:
     post:
       description: |-
@@ -1394,53 +403,19 @@ paths:
           content:
             application/json: {}
           description: Successful response
+      security:
+      - oauth2: []
       summary: Refresh Identities
       tags:
       - System
 components:
   schemas:
-    createCluster_request:
-      properties:
-        name:
-          example: VA Cluster
-          type: string
-        gmtOffset:
-          example: -6
-          type: number
-      type: object
-    deleteCluster_request:
-      properties:
-        removeClients:
-          example: false
-          type: boolean
-      type: object
-    updateAccountSchemaAttribute_request:
-      properties:
-        objectType:
-          example: account
-          type: string
-        fieldName:
-          example: entitlement
-          type: string
-        fieldValue:
-          example: true
-          type: boolean
-        names:
-          example: groups
-          type: string
-      type: object
     importConnectorConfig_request:
       properties:
         file:
           description: This is the connector config zip bundle which gets uploaded.
           format: binary
           type: string
-      type: object
-    updateIdentityProfile_request:
-      properties:
-        priority:
-          example: 10
-          type: integer
       type: object
     loadAccounts_request:
       properties:
@@ -1469,34 +444,41 @@ components:
           example: released
           type: string
       type: object
-    deleteAccountSchemaAttribute_request:
+    UpdateApplication_request:
       properties:
-        objectType:
-          example: account
-          type: string
-        names:
-          example: groups
+        description:
+          format: This is my application
           type: string
       type: object
-    createAccountSchemaAttribute_request:
+    updateUserPermissions_request:
       properties:
-        objectType:
-          example: account
+        ids:
+          example: "71624,71625"
           type: string
-        entitlement:
-          example: true
-          type: boolean
-        multi:
-          example: true
-          type: boolean
-        names:
-          example: groups
+        isAdmin:
+          description: "Indicates if user should be an IDN Admin.  \"0\" for false,\
+            \ \"1\" for true."
+          example: "1"
           type: string
-        type:
-          example: string
+        adminType:
+          enum:
+          - ADMIN
+          - CERT_ADMIN
+          - HELPDESK
+          - REPORT_ADMIN
+          - ROLE_ADMIN
+          - ROLE_SUBADMIN
+          - SOURCE_ADMIN
+          - SOURCE_SUBADMIN
+          type: string
+      type: object
+    CreateApplication_request:
+      properties:
+        name:
+          example: My App
           type: string
         description:
-          example: description
+          format: This is my application
           type: string
       type: object
   securitySchemes:

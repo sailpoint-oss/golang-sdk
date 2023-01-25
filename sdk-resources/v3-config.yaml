@@ -1,5 +1,5 @@
 templateDir: ./sdk-resources/v3-resources
-packageName: sailpointsdk
+packageName: v3
 packageVersion: 0.1.0
 generateInterfaces: false
 enumClassPrefix: false
