@@ -20343,6 +20343,8 @@ components:
         name:
           description: Unique name of this transform
           example: Timestamp To Date
+          maxLength: 50
+          minLength: 1
           type: string
         type:
           description: The type of transform operation

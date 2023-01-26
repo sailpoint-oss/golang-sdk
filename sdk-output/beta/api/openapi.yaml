@@ -7549,6 +7549,12 @@ paths:
         "204":
           description: No content - indicates the request was successful but there
             is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "404":
           content:
             application/json:
@@ -7625,6 +7631,7 @@ paths:
       operationId: getCampaignTemplate
       parameters:
       - description: The desired campaign template's ID.
+        example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
         required: true
@@ -7646,6 +7653,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CampaignTemplate'
           description: The data for the campaign matching the given ID.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -7749,7 +7762,6 @@ paths:
           The following fields are patchable:
           * name
           * description
-          * ownerRef
           * deadlineDuration
           * campaign (all fields that are allowed during create)
         required: true
@@ -44243,12 +44255,14 @@ components:
             type: String
         name: WebServiceBeforeOperationRule
         description: This rule does that
-        attributes: "{}"
+        attributes: {}
         type: BuildMap
       properties:
         name:
           description: the name of the rule
           example: WebServiceBeforeOperationRule
+          maxLength: 128
+          minLength: 1
           type: string
         description:
           description: a description of the rule's purpose
@@ -44286,6 +44300,7 @@ components:
           $ref: '#/components/schemas/SourceCode'
         attributes:
           description: a map of string to objects
+          example: {}
           type: object
       required:
       - name

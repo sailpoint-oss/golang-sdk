@@ -946,7 +946,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | The desired campaign template's ID.
+    id := "2c9180835d191a86015d28455b4a2329" // string | The desired campaign template's ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1159,7 +1159,7 @@ import (
 
 func main() {
     id := "2c9180835d191a86015d28455b4a2329" // string | The ID of the campaign template being modified.
-    requestBody := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * deadlineDuration * campaign (all fields that are allowed during create) 
+    requestBody := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1189,7 +1189,7 @@ Other parameters are passed through a pointer to a apiPatchCampaignTemplateReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **requestBody** | **[]map[string]interface{}** | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * deadlineDuration * campaign (all fields that are allowed during create)  | 
+ **requestBody** | **[]map[string]interface{}** | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create)  | 
 
 ### Return type
 
