@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Scope** | **[]string** | Scopes of the personal  access token. | 
 **Owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | 
 **Created** | **time.Time** | The date and time, down to the millisecond, when this personal access token was created. | 
+**LastUsed** | Pointer to **NullableTime** | The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed. | [optional] 
 
 ## Methods
 
@@ -139,6 +140,41 @@ and a boolean to check if the value has been set.
 SetCreated sets Created field to given value.
 
 
+### GetLastUsed
+
+`func (o *GetPersonalAccessTokenResponse) GetLastUsed() time.Time`
+
+GetLastUsed returns the LastUsed field if non-nil, zero value otherwise.
+
+### GetLastUsedOk
+
+`func (o *GetPersonalAccessTokenResponse) GetLastUsedOk() (*time.Time, bool)`
+
+GetLastUsedOk returns a tuple with the LastUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUsed
+
+`func (o *GetPersonalAccessTokenResponse) SetLastUsed(v time.Time)`
+
+SetLastUsed sets LastUsed field to given value.
+
+### HasLastUsed
+
+`func (o *GetPersonalAccessTokenResponse) HasLastUsed() bool`
+
+HasLastUsed returns a boolean if a field has been set.
+
+### SetLastUsedNil
+
+`func (o *GetPersonalAccessTokenResponse) SetLastUsedNil(b bool)`
+
+ SetLastUsedNil sets the value for LastUsed to be an explicit nil
+
+### UnsetLastUsed
+`func (o *GetPersonalAccessTokenResponse) UnsetLastUsed()`
+
+UnsetLastUsed ensures that no value is present for LastUsed, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
