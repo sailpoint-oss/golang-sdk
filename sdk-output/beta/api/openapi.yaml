@@ -46453,6 +46453,7 @@ components:
         - http://localhost:12345
         enabled: true
         accessType: OFFLINE
+        lastUsed: 2017-07-11T18:45:37.098Z
         grantTypes:
         - AUTHORIZATION_CODE
         - CLIENT_CREDENTIALS
@@ -46556,6 +46557,16 @@ components:
             \ was last updated"
           example: 2018-06-25T20:22:28.104Z
           format: date-time
+          type: string
+        lastUsed:
+          description: "The date and time, down to the millisecond, when this API\
+            \ Client was last used to generate an access token. This timestamp does\
+            \ not get updated on every API Client usage, but only once a day. This\
+            \ property can be useful for identifying which API Clients are no longer\
+            \ actively used and can be removed."
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
+          nullable: true
           type: string
         scope:
           description: Scopes of the API Client.
