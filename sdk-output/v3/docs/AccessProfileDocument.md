@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
+**Id** | **string** | The unique ID of the referenced object. | 
+**Name** | **string** | The human readable name of the referenced object. | 
 **Type** | [**DocumentType**](DocumentType.md) |  | 
 **Description** | Pointer to **string** | The description of the access item | [optional] 
 **Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 

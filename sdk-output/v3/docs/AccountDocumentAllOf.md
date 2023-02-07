@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | a map or dictionary of key/value pairs | [optional] 
 **Identity** | Pointer to [**DisplayReference**](DisplayReference.md) |  | [optional] 
-**Access** | Pointer to [**[]Entitlement1**](Entitlement1.md) |  | [optional] 
+**Access** | Pointer to [**[]AccessProfileEntitlement**](AccessProfileEntitlement.md) |  | [optional] 
 **EntitlementCount** | Pointer to **int32** | The number of entitlements assigned to the account | [optional] 
 **Uncorrelated** | Pointer to **bool** | Indicates if the account is not correlated to an identity | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -118,20 +118,20 @@ HasIdentity returns a boolean if a field has been set.
 
 ### GetAccess
 
-`func (o *AccountDocumentAllOf) GetAccess() []Entitlement1`
+`func (o *AccountDocumentAllOf) GetAccess() []AccessProfileEntitlement`
 
 GetAccess returns the Access field if non-nil, zero value otherwise.
 
 ### GetAccessOk
 
-`func (o *AccountDocumentAllOf) GetAccessOk() (*[]Entitlement1, bool)`
+`func (o *AccountDocumentAllOf) GetAccessOk() (*[]AccessProfileEntitlement, bool)`
 
 GetAccessOk returns a tuple with the Access field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccess
 
-`func (o *AccountDocumentAllOf) SetAccess(v []Entitlement1)`
+`func (o *AccountDocumentAllOf) SetAccess(v []AccessProfileEntitlement)`
 
 SetAccess sets Access field to given value.
 

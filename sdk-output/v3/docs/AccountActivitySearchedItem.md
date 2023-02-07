@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **Stage** | Pointer to **string** | The current stage of the activity | [optional] 
 **Origin** | Pointer to **NullableString** |  | [optional] 
 **Status** | Pointer to **string** | the current status of the activity | [optional] 
-**Requester** | Pointer to [**Source1**](Source1.md) |  | [optional] 
-**Recipient** | Pointer to [**Source1**](Source1.md) |  | [optional] 
+**Requester** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
+**Recipient** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
 **TrackingNumber** | Pointer to **string** |  | [optional] 
 **Errors** | Pointer to **[]string** |  | [optional] 
 **Warnings** | Pointer to **[]string** |  | [optional] 
@@ -285,20 +285,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetRequester
 
-`func (o *AccountActivitySearchedItem) GetRequester() Source1`
+`func (o *AccountActivitySearchedItem) GetRequester() AccountSource`
 
 GetRequester returns the Requester field if non-nil, zero value otherwise.
 
 ### GetRequesterOk
 
-`func (o *AccountActivitySearchedItem) GetRequesterOk() (*Source1, bool)`
+`func (o *AccountActivitySearchedItem) GetRequesterOk() (*AccountSource, bool)`
 
 GetRequesterOk returns a tuple with the Requester field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequester
 
-`func (o *AccountActivitySearchedItem) SetRequester(v Source1)`
+`func (o *AccountActivitySearchedItem) SetRequester(v AccountSource)`
 
 SetRequester sets Requester field to given value.
 
@@ -310,20 +310,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRecipient
 
-`func (o *AccountActivitySearchedItem) GetRecipient() Source1`
+`func (o *AccountActivitySearchedItem) GetRecipient() AccountSource`
 
 GetRecipient returns the Recipient field if non-nil, zero value otherwise.
 
 ### GetRecipientOk
 
-`func (o *AccountActivitySearchedItem) GetRecipientOk() (*Source1, bool)`
+`func (o *AccountActivitySearchedItem) GetRecipientOk() (*AccountSource, bool)`
 
 GetRecipientOk returns a tuple with the Recipient field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecipient
 
-`func (o *AccountActivitySearchedItem) SetRecipient(v Source1)`
+`func (o *AccountActivitySearchedItem) SetRecipient(v AccountSource)`
 
 SetRecipient sets Recipient field to given value.
 

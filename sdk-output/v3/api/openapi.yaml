@@ -11597,7 +11597,7 @@ paths:
               filter-terms:
                 $ref: '#/components/examples/filter-terms'
             schema:
-              $ref: '#/components/schemas/Search_1'
+              $ref: '#/components/schemas/Search'
         required: true
       responses:
         "200":
@@ -11697,7 +11697,7 @@ paths:
               query-timeZone:
                 $ref: '#/components/examples/query-timeZone'
             schema:
-              $ref: '#/components/schemas/Search_1'
+              $ref: '#/components/schemas/Search'
         required: true
       responses:
         "204":
@@ -11840,7 +11840,7 @@ paths:
               bucketAggregation-subAggregation-dsl:
                 $ref: '#/components/examples/bucketAggregation-subAggregation-dsl'
             schema:
-              $ref: '#/components/schemas/Search_1'
+              $ref: '#/components/schemas/Search'
         required: true
       responses:
         "200":
@@ -19965,61 +19965,39 @@ components:
     SavedSearch:
       allOf:
       - $ref: '#/components/schemas/SavedSearch_allOf'
-      - $ref: '#/components/schemas/Name'
-      - $ref: '#/components/schemas/Search'
+      - $ref: '#/components/schemas/SavedSearchName'
+      - $ref: '#/components/schemas/SavedSearchDetail'
       type: object
     Schedule:
+      description: The schedule information.
       properties:
-        savedSearchId:
-          description: The ID of the saved search that will be executed.
-          example: 554f1511-f0a1-4744-ab14-599514d3e57c
+        type:
+          $ref: '#/components/schemas/ScheduleType'
+        days:
+          $ref: '#/components/schemas/Schedule_days'
+        hours:
+          $ref: '#/components/schemas/Schedule_hours'
+        expiration:
+          description: A date-time in ISO-8601 format
+          example: 2018-06-25T20:22:28.104Z
+          format: date-time
+          nullable: true
           type: string
-        created:
-          allOf:
-          - $ref: '#/components/schemas/DateTime'
-          description: The date the scheduled search was initially created.
-          readOnly: true
-        modified:
-          allOf:
-          - $ref: '#/components/schemas/DateTime'
-          description: The last date the scheduled search was modified.
-          readOnly: true
-        schedule:
-          $ref: '#/components/schemas/Schedule_1'
-        recipients:
-          description: A list of identities that should receive the scheduled search
-            report via email.
-          items:
-            $ref: '#/components/schemas/Schedule_recipients_inner'
-          type: array
-        enabled:
-          default: false
-          description: |
-            Indicates if the scheduled search is enabled.
-          example: false
-          type: boolean
-        emailEmptyResults:
-          default: false
-          description: |
-            Indicates if email generation should not be suppressed if search returns no results.
-          example: false
-          type: boolean
-        displayQueryDetails:
-          default: false
-          description: |
-            Indicates if the generated email should include the query and search results preview (which could include PII).
-          example: false
-          type: boolean
+        timeZoneId:
+          description: "The GMT formatted timezone the schedule will run in (ex. GMT-06:00).\
+            \  If no timezone is specified, the org's default timezone is used."
+          example: GMT-06:00
+          nullable: true
+          type: string
       required:
-      - recipients
-      - savedSearchId
-      - schedule
+      - hours
+      - type
       type: object
     ScheduledSearch:
       allOf:
       - $ref: '#/components/schemas/ScheduledSearch_allOf'
-      - $ref: '#/components/schemas/Name_1'
-      - $ref: '#/components/schemas/Schedule'
+      - $ref: '#/components/schemas/ScheduledSearchName'
+      - $ref: '#/components/schemas/SearchSchedule'
       required:
       - id
       - owner
@@ -23601,7 +23579,7 @@ components:
         modifiedBy:
           $ref: '#/components/schemas/IdentityReference'
       type: object
-    Name:
+    SavedSearchName:
       properties:
         name:
           description: |
@@ -23615,7 +23593,7 @@ components:
           nullable: true
           type: string
       type: object
-    Search:
+    SavedSearchDetail:
       properties:
         public:
           default: false
@@ -23682,7 +23660,7 @@ components:
             type: string
           type: array
         filters:
-          $ref: '#/components/schemas/Search_filters'
+          $ref: '#/components/schemas/SavedSearchDetail_filters'
       required:
       - indices
       - query
@@ -23711,7 +23689,7 @@ components:
             $ref: '#/components/schemas/TypedReference'
           type: array
       type: object
-    Name_1:
+    ScheduledSearchName:
       properties:
         name:
           description: |
@@ -23725,6 +23703,53 @@ components:
           example: Daily disabled accounts
           nullable: true
           type: string
+      type: object
+    SearchSchedule:
+      properties:
+        savedSearchId:
+          description: The ID of the saved search that will be executed.
+          example: 554f1511-f0a1-4744-ab14-599514d3e57c
+          type: string
+        created:
+          allOf:
+          - $ref: '#/components/schemas/DateTime'
+          description: The date the scheduled search was initially created.
+          readOnly: true
+        modified:
+          allOf:
+          - $ref: '#/components/schemas/DateTime'
+          description: The last date the scheduled search was modified.
+          readOnly: true
+        schedule:
+          $ref: '#/components/schemas/Schedule'
+        recipients:
+          description: A list of identities that should receive the scheduled search
+            report via email.
+          items:
+            $ref: '#/components/schemas/SearchSchedule_recipients_inner'
+          type: array
+        enabled:
+          default: false
+          description: |
+            Indicates if the scheduled search is enabled.
+          example: false
+          type: boolean
+        emailEmptyResults:
+          default: false
+          description: |
+            Indicates if email generation should not be suppressed if search returns no results.
+          example: false
+          type: boolean
+        displayQueryDetails:
+          default: false
+          description: |
+            Indicates if the generated email should include the query and search results preview (which could include PII).
+          example: false
+          type: boolean
+      required:
+      - recipients
+      - savedSearchId
+      - schedule
       type: object
     TypedReference:
       description: |
@@ -23744,7 +23769,46 @@ components:
       - id
       - type
       type: object
-    Search_1:
+    Search:
+      example:
+        queryDsl:
+          match:
+            name: john.doe
+        aggregationType: DSL
+        aggregationsVersion: ""
+        query:
+          query: name:a*
+          timeZone: America/Chicago
+          fields:
+          - name
+          innerHit:
+            query: source.name:\"Active Directory\"
+            type: access
+        aggregationsDsl: {}
+        sort:
+        - "[displayName, +id]"
+        - "[displayName, +id]"
+        filters: {}
+        queryVersion: ""
+        queryType: SAILPOINT
+        includeNested: true
+        queryResultFilter:
+          excludes:
+          - stacktrace
+          includes:
+          - name
+          - displayName
+        indices:
+        - identities
+        typeAheadQuery:
+          field: source.name
+          query: Work
+          nestedType: access
+          maxExpansions: 10
+        searchAfter:
+        - "[John Doe, 2c91808375d8e80a0175e1f88a575221]"
+        - "[John Doe, 2c91808375d8e80a0175e1f88a575221]"
+        aggregations: null
       properties:
         indices:
           description: "The names of the Elasticsearch indices in which to search.\
@@ -23800,7 +23864,7 @@ components:
           example: {}
           type: object
         aggregations:
-          $ref: '#/components/schemas/Aggregation_1'
+          $ref: '#/components/schemas/SearchAggregationSpecification'
         sort:
           description: The fields to be used to sort the search results. Use + or
             - to specify the sort direction.
@@ -24266,17 +24330,6 @@ components:
       - REVOKE_ACCESS
       example: GRANT_ACCESS
       type: string
-    AccessProfile:
-      allOf:
-      - $ref: '#/components/schemas/BaseDocument'
-      - $ref: '#/components/schemas/BaseAccess'
-      - $ref: '#/components/schemas/AccessProfileDocument_allOf'
-      description: 'This is more of a complete representation of an access profile.  '
-    AccessProfile_1:
-      allOf:
-      - $ref: '#/components/schemas/Access'
-      - $ref: '#/components/schemas/AccessProfileSummary_allOf'
-      description: This is a summary representation of an access profile.
     BaseCommonDto:
       properties:
         id:
@@ -24451,17 +24504,16 @@ components:
       - COMPLETED
       example: COMPLETED
       type: string
-    AccountActivity_1:
+    AccountActivityDocument:
       allOf:
       - $ref: '#/components/schemas/BaseDocument'
       - $ref: '#/components/schemas/AccountActivitySearchedItem_allOf'
       description: AccountActivity
-    Account_1:
+    AggregationDocument:
       allOf:
       - $ref: '#/components/schemas/BaseDocument'
-      - $ref: '#/components/schemas/BaseAccount'
-      - $ref: '#/components/schemas/AccountDocument_allOf'
-      description: Account
+      - $ref: '#/components/schemas/Aggregation_allOf'
+      description: Aggregation
     ApprovalItemDetails:
       example:
         application: Active Directory
@@ -24542,23 +24594,16 @@ components:
       - name
       - type
       type: object
-    Entitlement:
-      allOf:
-      - $ref: '#/components/schemas/BaseDocument'
-      - $ref: '#/components/schemas/BaseEntitlement'
-      - $ref: '#/components/schemas/EntitlementDocument_allOf'
-      description: Entitlement
-    Entitlement_1:
+    AccessProfileEntitlement:
       allOf:
       - $ref: '#/components/schemas/Access'
       - $ref: '#/components/schemas/EntitlementSummary_allOf'
       description: EntitlementReference
-    Identity:
+    EventDocument:
       allOf:
       - $ref: '#/components/schemas/BaseDocument'
-      - $ref: '#/components/schemas/DisplayReference'
-      - $ref: '#/components/schemas/IdentityDocument_allOf'
-      description: Identity
+      - $ref: '#/components/schemas/Event_allOf'
+      description: Event
     IdentityExceptionReportReference:
       nullable: true
       properties:
@@ -24642,48 +24687,11 @@ components:
           example: jason.smith2
           type: string
       type: object
-    Role:
-      allOf:
-      - $ref: '#/components/schemas/BaseDocument'
-      - $ref: '#/components/schemas/BaseAccess'
-      - $ref: '#/components/schemas/RoleDocument_allOf'
-      description: Role
-    Role_1:
+    AccessProfileRole:
       allOf:
       - $ref: '#/components/schemas/Access'
       - $ref: '#/components/schemas/RoleSummary_allOf'
       description: Role
-    DateTime:
-      description: A date-time in ISO-8601 format
-      example: 2018-06-25T20:22:28.104Z
-      format: date-time
-      nullable: true
-      type: string
-    Schedule_1:
-      description: The schedule information.
-      properties:
-        type:
-          $ref: '#/components/schemas/ScheduleType'
-        days:
-          $ref: '#/components/schemas/Schedule_1_days'
-        hours:
-          $ref: '#/components/schemas/Schedule_1_hours'
-        expiration:
-          description: A date-time in ISO-8601 format
-          example: 2018-06-25T20:22:28.104Z
-          format: date-time
-          nullable: true
-          type: string
-        timeZoneId:
-          description: "The GMT formatted timezone the schedule will run in (ex. GMT-06:00).\
-            \  If no timezone is specified, the org's default timezone is used."
-          example: GMT-06:00
-          nullable: true
-          type: string
-      required:
-      - hours
-      - type
-      type: object
     ManagerCorrelationMapping:
       example:
         accountAttribute: manager
@@ -26059,6 +26067,12 @@ components:
           example: Country
           type: string
       type: object
+    DateTime:
+      description: A date-time in ISO-8601 format
+      example: 2018-06-25T20:22:28.104Z
+      format: date-time
+      nullable: true
+      type: string
     Index:
       description: |-
         Enum representing the currently supported indices.
@@ -26125,6 +26139,14 @@ components:
       type: string
     Query:
       description: Query parameters used to construct an Elasticsearch query object.
+      example:
+        query: name:a*
+        timeZone: America/Chicago
+        fields:
+        - name
+        innerHit:
+          query: source.name:\"Active Directory\"
+          type: access
       properties:
         query:
           description: "The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string)\
@@ -26152,6 +26174,11 @@ components:
         \ query object.  The typeAheadQuery performs a search for top values beginning\
         \ with the typed values. For example, typing \"Jo\" results in top hits matching\
         \ \"Jo.\" Typing \"Job\" results in top hits matching \"Job.\" "
+      example:
+        field: source.name
+        query: Work
+        nestedType: access
+        maxExpansions: 10
       properties:
         query:
           description: The type ahead query string used to construct a phrase prefix
@@ -26184,6 +26211,12 @@ components:
     QueryResultFilter:
       description: Allows the query results to be filtered by specifying a list of
         fields to include and/or exclude from the result documents.
+      example:
+        excludes:
+        - stacktrace
+        includes:
+        - name
+        - displayName
       properties:
         includes:
           description: The list of field names to include in the result documents.
@@ -26212,10 +26245,10 @@ components:
       - SAILPOINT
       example: DSL
       type: string
-    Aggregation_1:
+    SearchAggregationSpecification:
       allOf:
       - $ref: '#/components/schemas/Aggregations'
-      - $ref: '#/components/schemas/Aggregation_1_allOf'
+      - $ref: '#/components/schemas/SearchAggregationSpecification_allOf'
     PasswordInfoAccount:
       example:
         accountId: "CN=Abby Smith,OU=Austin,OU=Americas,OU=Demo,DC=seri,DC=acme,DC=com"
@@ -26315,6 +26348,42 @@ components:
           example: false
           type: boolean
       type: object
+    ScheduleType:
+      description: |
+        Enum representing the currently supported schedule types.
+
+        Additional values may be added in the future without notice.
+      enum:
+      - DAILY
+      - WEEKLY
+      - MONTHLY
+      - CALENDAR
+      example: WEEKLY
+      type: string
+    Selector:
+      properties:
+        type:
+          $ref: '#/components/schemas/SelectorType'
+        values:
+          description: |
+            The selected values.
+          example:
+          - MON
+          - WED
+          items:
+            type: string
+          type: array
+        interval:
+          description: |
+            The selected interval for RANGE selectors.
+          example: 3
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - type
+      - values
+      type: object
     BaseDocument:
       properties:
         id:
@@ -26337,9 +26406,11 @@ components:
     Reference:
       properties:
         id:
+          description: The unique ID of the referenced object.
           example: 2c91808568c529c60168cca6f90c1313
           type: string
         name:
+          description: The human readable name of the referenced object.
           example: John Doe
           type: string
       type: object
@@ -26362,15 +26433,15 @@ components:
       allOf:
       - $ref: '#/components/schemas/Reference'
       - $ref: '#/components/schemas/DisplayReference_allOf'
-    Source_1:
+    AccountSource:
       allOf:
       - $ref: '#/components/schemas/Reference'
-      - $ref: '#/components/schemas/Source_1_allOf'
+      - $ref: '#/components/schemas/AccountSource_allOf'
     Approval:
       properties:
         comments:
           items:
-            $ref: '#/components/schemas/Comment_1'
+            $ref: '#/components/schemas/ApprovalComment'
           type: array
         created:
           description: A date-time in ISO-8601 format
@@ -26385,7 +26456,7 @@ components:
           nullable: true
           type: string
         owner:
-          $ref: '#/components/schemas/Source_1'
+          $ref: '#/components/schemas/AccountSource'
         result:
           description: The result of the approval
           example: Finished
@@ -26410,7 +26481,7 @@ components:
           example: add
           type: string
         source:
-          $ref: '#/components/schemas/Source_1'
+          $ref: '#/components/schemas/AccountSource'
       type: object
     ExpansionItem:
       properties:
@@ -26430,7 +26501,7 @@ components:
             $ref: '#/components/schemas/AttributeRequest'
           type: array
         source:
-          $ref: '#/components/schemas/Source_1'
+          $ref: '#/components/schemas/AccountSource'
       type: object
     AccountRequest:
       properties:
@@ -26447,11 +26518,11 @@ components:
           example: Modify
           type: string
         provisioningTarget:
-          $ref: '#/components/schemas/Source_1'
+          $ref: '#/components/schemas/AccountSource'
         result:
           $ref: '#/components/schemas/AccountRequest_result'
         source:
-          $ref: '#/components/schemas/Source_1'
+          $ref: '#/components/schemas/AccountSource'
       type: object
     BaseAccount:
       allOf:
@@ -26492,17 +26563,17 @@ components:
       allOf:
       - $ref: '#/components/schemas/Reference'
       - $ref: '#/components/schemas/App_allOf'
-    Access_1:
+    IdentityAccess:
       discriminator:
         mapping:
-          ACCESS_PROFILE: '#/components/schemas/AccessProfile_1'
-          ENTITLEMENT: '#/components/schemas/Entitlement_1'
-          ROLE: '#/components/schemas/Role_1'
+          ACCESS_PROFILE: '#/components/schemas/AccessProfileSummary'
+          ENTITLEMENT: '#/components/schemas/AccessProfileEntitlement'
+          ROLE: '#/components/schemas/AccessProfileRole'
         propertyName: type
       oneOf:
-      - $ref: '#/components/schemas/AccessProfile_1'
-      - $ref: '#/components/schemas/Entitlement_1'
-      - $ref: '#/components/schemas/Role_1'
+      - $ref: '#/components/schemas/AccessProfileSummary'
+      - $ref: '#/components/schemas/AccessProfileEntitlement'
+      - $ref: '#/components/schemas/AccessProfileRole'
     Owns:
       properties:
         sources:
@@ -26605,42 +26676,6 @@ components:
           type: string
         requestedObjectType:
           $ref: '#/components/schemas/RequestableObjectType'
-      type: object
-    ScheduleType:
-      description: |
-        Enum representing the currently supported schedule types.
-
-        Additional values may be added in the future without notice.
-      enum:
-      - DAILY
-      - WEEKLY
-      - MONTHLY
-      - CALENDAR
-      example: WEEKLY
-      type: string
-    Selector:
-      properties:
-        type:
-          $ref: '#/components/schemas/SelectorType'
-        values:
-          description: |
-            The selected values.
-          example:
-          - MON
-          - WED
-          items:
-            type: string
-          type: array
-        interval:
-          description: |
-            The selected interval for RANGE selectors.
-          example: 3
-          format: int32
-          nullable: true
-          type: integer
-      required:
-      - type
-      - values
       type: object
     SectionDetails:
       allOf:
@@ -26834,6 +26869,9 @@ components:
     InnerHit:
       description: Inner Hit query object that will cause the specified nested type
         to be returned as the result matching the supplied query.
+      example:
+        query: source.name:\"Active Directory\"
+        type: access
       properties:
         query:
           description: "The search query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string)\
@@ -26862,10 +26900,10 @@ components:
         bucket:
           $ref: '#/components/schemas/BucketAggregation'
       type: object
-    Aggregation-2:
+    SubSearchAggregationSpecification:
       allOf:
       - $ref: '#/components/schemas/Aggregations'
-      - $ref: '#/components/schemas/Aggregation_2_allOf'
+      - $ref: '#/components/schemas/SubSearchAggregationSpecification_allOf'
     AttributeDefinitionType:
       description: The underlying type of the value which an AttributeDefinition represents.
       enum:
@@ -26874,6 +26912,20 @@ components:
       - INT
       - BOOLEAN
       example: STRING
+      type: string
+    SelectorType:
+      description: |
+        Enum representing the currently supported selector types.
+
+        LIST - the *values* array contains one or more distinct values.
+
+        RANGE - the *values* array contains two values: the start and end of the range, inclusive.
+
+        Additional values may be added in the future without notice.
+      enum:
+      - LIST
+      - RANGE
+      example: LIST
       type: string
     DocumentType:
       description: |-
@@ -26893,9 +26945,9 @@ components:
       type: string
     Owner:
       allOf:
-      - $ref: '#/components/schemas/IdentityReference_1'
+      - $ref: '#/components/schemas/SearchIdentityReference'
       - $ref: '#/components/schemas/Owner_allOf'
-    Comment_1:
+    ApprovalComment:
       properties:
         comment:
           description: The comment text
@@ -26927,20 +26979,6 @@ components:
           example: "3203537556531076"
           type: string
       type: object
-    SelectorType:
-      description: |
-        Enum representing the currently supported selector types.
-
-        LIST - the *values* array contains one or more distinct values.
-
-        RANGE - the *values* array contains two values: the start and end of the range, inclusive.
-
-        Additional values may be added in the future without notice.
-      enum:
-      - LIST
-      - RANGE
-      example: LIST
-      type: string
     FormItemDetails:
       properties:
         name:
@@ -27041,7 +27079,7 @@ components:
           example: Entitlements
           type: string
         type:
-          $ref: '#/components/schemas/FilterType_1'
+          $ref: '#/components/schemas/SearchFilterType'
         field:
           description: |
             The search field to apply the filter to.
@@ -27087,10 +27125,10 @@ components:
       - field
       - name
       type: object
-    IdentityReference_1:
+    SearchIdentityReference:
       allOf:
       - $ref: '#/components/schemas/Reference'
-      - $ref: '#/components/schemas/IdentityReference_1_allOf'
+      - $ref: '#/components/schemas/SearchIdentityReference_allOf'
     SodExemptCriteria:
       description: Details of the Entitlement criteria
       example:
@@ -27129,7 +27167,7 @@ components:
       - MAX
       example: COUNT
       type: string
-    FilterType_1:
+    SearchFilterType:
       default: TERM
       description: |-
         Enum representing the currently supported filter aggregation types.
@@ -27202,12 +27240,12 @@ components:
       type: object
     savedSearchCreate_request:
       allOf:
-      - $ref: '#/components/schemas/Name'
-      - $ref: '#/components/schemas/Search'
+      - $ref: '#/components/schemas/SavedSearchName'
+      - $ref: '#/components/schemas/SavedSearchDetail'
     scheduledSearchCreate_request:
       allOf:
-      - $ref: '#/components/schemas/Name_1'
-      - $ref: '#/components/schemas/Schedule'
+      - $ref: '#/components/schemas/ScheduledSearchName'
+      - $ref: '#/components/schemas/SearchSchedule'
     deleteSource_202_response:
       example:
         name: name
@@ -27357,9 +27395,9 @@ components:
           example: Complete
           type: string
         requester:
-          $ref: '#/components/schemas/Source_1'
+          $ref: '#/components/schemas/AccountSource'
         recipient:
-          $ref: '#/components/schemas/Source_1'
+          $ref: '#/components/schemas/AccountSource'
         trackingNumber:
           example: 61aad0c9e8134eca89e76a35e0cabe3f
           type: string
@@ -27416,7 +27454,7 @@ components:
           $ref: '#/components/schemas/DisplayReference'
         access:
           items:
-            $ref: '#/components/schemas/Entitlement_1'
+            $ref: '#/components/schemas/AccessProfileEntitlement'
           type: array
         entitlementCount:
           description: The number of entitlements assigned to the account
@@ -27686,7 +27724,7 @@ components:
         access:
           description: The list of access items assigned to the identity
           items:
-            $ref: '#/components/schemas/Access_1'
+            $ref: '#/components/schemas/IdentityAccess'
           type: array
         accessCount:
           description: The number of access items assigned to the identity
@@ -27859,22 +27897,34 @@ components:
           $ref: '#/components/schemas/TypedReference'
       type: object
       example: null
-    Schedule_recipients_inner:
-      properties:
-        type:
-          description: The type of object being referenced
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: The ID of the referenced object
-          example: 2c9180867624cbd7017642d8c8c81f67
-          type: string
-      required:
-      - id
-      - type
-      type: object
+    Schedule_days:
+      allOf:
+      - $ref: '#/components/schemas/Selector'
+      - description: |
+          The days to execute the search.
+
+          If `type` is `WEEKLY`, the values will be `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, and `SUN`.
+
+          If `type` is `MONTHLY`, the values will be a number in double quotes, like `"1"`, `"10"`, or `"28"`.  Optionally, the value `"L"` can be used to refer to the last day of the month.
+        example:
+          type: LIST
+          values:
+          - MON
+          - WED
+          - FRI
+        nullable: true
+        type: object
+    Schedule_hours:
+      allOf:
+      - $ref: '#/components/schemas/Selector'
+      - description: The hours selected.
+        example:
+          type: RANGE
+          values:
+          - "9"
+          - "18"
+          interval: 3
+        type: object
     ScheduledSearch_allOf_owner:
       description: The owner of the scheduled search
       properties:
@@ -28521,7 +28571,7 @@ components:
           $ref: '#/components/schemas/NonEmployeeRequestWithoutApprovalItem'
       type: object
       example: null
-    Search_filters:
+    SavedSearchDetail_filters:
       allOf:
       - description: The filters to be applied for each filtered field name.
         example:
@@ -28559,34 +28609,22 @@ components:
       - $ref: '#/components/schemas/TypedReference'
       description: |
         The owner of the scheduled search being tested.
-    Schedule_1_days:
-      allOf:
-      - $ref: '#/components/schemas/Selector'
-      - description: |
-          The days to execute the search.
-
-          If `type` is `WEEKLY`, the values will be `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, and `SUN`.
-
-          If `type` is `MONTHLY`, the values will be a number in double quotes, like `"1"`, `"10"`, or `"28"`.  Optionally, the value `"L"` can be used to refer to the last day of the month.
-        example:
-          type: LIST
-          values:
-          - MON
-          - WED
-          - FRI
-        nullable: true
-        type: object
-    Schedule_1_hours:
-      allOf:
-      - $ref: '#/components/schemas/Selector'
-      - description: The hours selected.
-        example:
-          type: RANGE
-          values:
-          - "9"
-          - "18"
-          interval: 3
-        type: object
+    SearchSchedule_recipients_inner:
+      properties:
+        type:
+          description: The type of object being referenced
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: The ID of the referenced object
+          example: 2c9180867624cbd7017642d8c8c81f67
+          type: string
+      required:
+      - id
+      - type
+      type: object
     ReviewableEntitlement_account:
       description: Information about the status of the entitlement
       example:
@@ -28706,10 +28744,10 @@ components:
           type: string
       type: object
       example: null
-    Aggregation_1_allOf:
+    SearchAggregationSpecification_allOf:
       properties:
         subAggregation:
-          $ref: '#/components/schemas/Aggregation-2'
+          $ref: '#/components/schemas/SubSearchAggregationSpecification'
       type: object
       example: null
     AttributeDefinition_schema:
@@ -28803,7 +28841,7 @@ components:
           type: string
       type: object
       example: null
-    Source_1_allOf:
+    AccountSource_allOf:
       properties:
         type:
           description: the type of source returned
@@ -28844,7 +28882,7 @@ components:
           example: john.doe
           type: string
         source:
-          $ref: '#/components/schemas/Source_1'
+          $ref: '#/components/schemas/AccountSource'
         disabled:
           description: Indicates if the account is disabled
           example: false
@@ -28932,7 +28970,7 @@ components:
           type: array
       type: object
       example: null
-    Aggregation_2_allOf:
+    SubSearchAggregationSpecification_allOf:
       properties:
         subAggregation:
           $ref: '#/components/schemas/Aggregations'
@@ -28993,7 +29031,7 @@ components:
         rightCriteria:
           $ref: '#/components/schemas/SodViolationContext_conflictingAccessCriteria_leftCriteria'
       type: object
-    IdentityReference_1_allOf:
+    SearchIdentityReference_allOf:
       properties:
         type:
           $ref: '#/components/schemas/DtoType'

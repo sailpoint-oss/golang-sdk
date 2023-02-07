@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## SearchAggregate
 
-> AggregationResult SearchAggregate(ctx).Search1(search1).Offset(offset).Limit(limit).Count(count).Execute()
+> AggregationResult SearchAggregate(ctx).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
 
 Perform a Search Query Aggregation
 
@@ -32,14 +32,14 @@ import (
 )
 
 func main() {
-    search1 := *openapiclient.NewSearch1() // Search1 | 
+    search := *openapiclient.NewSearch() // Search | 
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchApi.SearchAggregate(context.Background()).Search1(search1).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.SearchApi.SearchAggregate(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchAggregate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -60,7 +60,7 @@ Other parameters are passed through a pointer to a apiSearchAggregateRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search1** | [**Search1**](Search1.md) |  | 
+ **search** | [**Search**](Search.md) |  | 
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## SearchCount
 
-> SearchCount(ctx).Search1(search1).Execute()
+> SearchCount(ctx).Search(search).Execute()
 
 Count Documents Satisfying a Query
 
@@ -104,11 +104,11 @@ import (
 )
 
 func main() {
-    search1 := *openapiclient.NewSearch1() // Search1 | 
+    search := *openapiclient.NewSearch() // Search | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchApi.SearchCount(context.Background()).Search1(search1).Execute()
+    resp, r, err := apiClient.SearchApi.SearchCount(context.Background()).Search(search).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchCount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -127,7 +127,7 @@ Other parameters are passed through a pointer to a apiSearchCountRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search1** | [**Search1**](Search1.md) |  | 
+ **search** | [**Search**](Search.md) |  | 
 
 ### Return type
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## SearchPost
 
-> []map[string]interface{} SearchPost(ctx).Search1(search1).Offset(offset).Limit(limit).Count(count).Execute()
+> []map[string]interface{} SearchPost(ctx).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
 
 Perform Search
 
@@ -241,14 +241,14 @@ import (
 )
 
 func main() {
-    search1 := *openapiclient.NewSearch1() // Search1 | 
+    search := *openapiclient.NewSearch() // Search | 
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchApi.SearchPost(context.Background()).Search1(search1).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.SearchApi.SearchPost(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -269,7 +269,7 @@ Other parameters are passed through a pointer to a apiSearchPostRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **search1** | [**Search1**](Search1.md) |  | 
+ **search** | [**Search**](Search.md) |  | 
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]

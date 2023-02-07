@@ -16,7 +16,9 @@ import (
 
 // AccessProfileSummary This is a summary representation of an access profile.
 type AccessProfileSummary struct {
+	// The unique ID of the referenced object.
 	Id *string `json:"id,omitempty"`
+	// The human readable name of the referenced object.
 	Name *string `json:"name,omitempty"`
 	DisplayName *string `json:"displayName,omitempty"`
 	Type *DtoType `json:"type,omitempty"`

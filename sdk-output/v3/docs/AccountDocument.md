@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
+**Id** | **string** | The unique ID of the referenced object. | 
+**Name** | **string** | The human readable name of the referenced object. | 
 **Type** | [**DocumentType**](DocumentType.md) |  | 
 **AccountId** | Pointer to **string** | The ID of the account | [optional] 
-**Source** | Pointer to [**Source1**](Source1.md) |  | [optional] 
+**Source** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
 **Disabled** | Pointer to **bool** | Indicates if the account is disabled | [optional] 
 **Locked** | Pointer to **bool** | Indicates if the account is locked | [optional] 
 **Privileged** | Pointer to **bool** |  | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | a map or dictionary of key/value pairs | [optional] 
 **Identity** | Pointer to [**DisplayReference**](DisplayReference.md) |  | [optional] 
-**Access** | Pointer to [**[]Entitlement1**](Entitlement1.md) |  | [optional] 
+**Access** | Pointer to [**[]AccessProfileEntitlement**](AccessProfileEntitlement.md) |  | [optional] 
 **EntitlementCount** | Pointer to **int32** | The number of entitlements assigned to the account | [optional] 
 **Uncorrelated** | Pointer to **bool** | Indicates if the account is not correlated to an identity | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -130,20 +130,20 @@ HasAccountId returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *AccountDocument) GetSource() Source1`
+`func (o *AccountDocument) GetSource() AccountSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *AccountDocument) GetSourceOk() (*Source1, bool)`
+`func (o *AccountDocument) GetSourceOk() (*AccountSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *AccountDocument) SetSource(v Source1)`
+`func (o *AccountDocument) SetSource(v AccountSource)`
 
 SetSource sets Source field to given value.
 
@@ -445,20 +445,20 @@ HasIdentity returns a boolean if a field has been set.
 
 ### GetAccess
 
-`func (o *AccountDocument) GetAccess() []Entitlement1`
+`func (o *AccountDocument) GetAccess() []AccessProfileEntitlement`
 
 GetAccess returns the Access field if non-nil, zero value otherwise.
 
 ### GetAccessOk
 
-`func (o *AccountDocument) GetAccessOk() (*[]Entitlement1, bool)`
+`func (o *AccountDocument) GetAccessOk() (*[]AccessProfileEntitlement, bool)`
 
 GetAccessOk returns a tuple with the Access field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccess
 
-`func (o *AccountDocument) SetAccess(v []Entitlement1)`
+`func (o *AccountDocument) SetAccess(v []AccessProfileEntitlement)`
 
 SetAccess sets Access field to given value.
 

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Query** | **string** | The search query using Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL.  | 
 **Fields** | Pointer to **[]string** | The fields to be searched against in a multi-field query.  | [optional] 
 **Sort** | Pointer to **[]string** | The fields to be used to sort the search results.  | [optional] 
-**Filters** | Pointer to [**NullableSearchFilters**](SearchFilters.md) |  | [optional] 
+**Filters** | Pointer to [**NullableSavedSearchDetailFilters**](SavedSearchDetailFilters.md) |  | [optional] 
 
 ## Methods
 
@@ -317,20 +317,20 @@ HasSort returns a boolean if a field has been set.
 
 ### GetFilters
 
-`func (o *SavedSearchCreateRequest) GetFilters() SearchFilters`
+`func (o *SavedSearchCreateRequest) GetFilters() SavedSearchDetailFilters`
 
 GetFilters returns the Filters field if non-nil, zero value otherwise.
 
 ### GetFiltersOk
 
-`func (o *SavedSearchCreateRequest) GetFiltersOk() (*SearchFilters, bool)`
+`func (o *SavedSearchCreateRequest) GetFiltersOk() (*SavedSearchDetailFilters, bool)`
 
 GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilters
 
-`func (o *SavedSearchCreateRequest) SetFilters(v SearchFilters)`
+`func (o *SavedSearchCreateRequest) SetFilters(v SavedSearchDetailFilters)`
 
 SetFilters sets Filters field to given value.
 

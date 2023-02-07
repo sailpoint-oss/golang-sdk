@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
+**Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
 **Description** | Pointer to **string** | A description of the entitlement | [optional] 
 **Attribute** | Pointer to **string** | The name of the entitlement attribute | [optional] 
 **Value** | Pointer to **string** | The value of the entitlement | [optional] 

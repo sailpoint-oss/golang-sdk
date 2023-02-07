@@ -23844,10 +23844,35 @@ paths:
         required: true
         schema:
           type: string
-      - description: "sort by identityCount, density, freshness or quality"
+      - description: "Sort results using the standard syntax described in [V3 API\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/)\
+          \ Sorting is supported for the following fields: **createdDate**"
+        example: createdDate
         explode: true
         in: query
         name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators:
+          **createdById**: *eq, sw, co*
+          **createdByName**: *eq, sw, co*
+          **description**: *sw, co*
+          **endDate**: *le, lt*
+          **freshness**: *eq, ge, gt, le, lt*
+          **name**: *eq, sw, co*
+          **quality**: *eq, ge, gt, le, lt*
+          **startDate**: *ge, gt*
+          **saved**: *eq*
+          **type**: *eq*
+        example: (createdByName co "int")and (createdById sw "2c9180907")and (type
+          eq "COMMON")and ((name co "entt")or (saved eq true))
+        explode: true
+        in: query
+        name: filters
         required: false
         schema:
           type: string
@@ -23931,6 +23956,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -23948,14 +23981,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Retrieves the potential role summaries for a role mining session
+      summary: Retrieves all potential role summaries
       tags:
       - IAI Role Mining
   /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}:
     get:
       description: This method returns a specific potential role for a role mining
         session.
-      operationId: getPotentialRoleSummary
+      operationId: getPotentialRole
       parameters:
       - description: The role mining session id
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
@@ -23976,7 +24009,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RoleMiningPotentialRoleSummaryDistribution'
+                $ref: '#/components/schemas/RoleMiningPotentialRole'
           description: Succeeded. Returns a list of potential roles for a role mining
             session.
         "400":
@@ -24010,6 +24043,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -24027,7 +24068,148 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Retrieves a specific potential role for a role mining session
+      summary: Retrieves a specific potential role
+      tags:
+      - IAI Role Mining
+    patch:
+      description: |
+        The method updates an existing potential role using.
+
+        The following fields can be modified:
+
+        * `description`
+
+        * `name`
+
+        * `saved`
+
+
+        >**NOTE: All other fields can not be modified.**
+      operationId: patchPotentialRole
+      parameters:
+      - description: The role mining session id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        in: path
+        name: sessionId
+        required: true
+        schema:
+          type: string
+      - description: The potential role summary id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        in: path
+        name: potentialRoleId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: remove
+              path: /description
+            - op: replace
+              path: /description
+              value: Acct I - Potential Role
+            - op: remove
+              path: /saved
+            - op: replace
+              path: /saved
+              value: "false"
+            - op: remove
+              path: /name
+            - op: replace
+              path: /name
+              value: Potential Role Accounting
+            schema:
+              items:
+                $ref: '#/components/schemas/patchPotentialRole_request_inner'
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: ../schemas/RoleMiningPotentialRole.yaml
+                type: object
+          description: Succeeded. Returns the potential role summary based on the
+            potentialRoleId provided.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Update a potential role
       tags:
       - IAI Role Mining
   /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications:
@@ -48094,28 +48276,131 @@ components:
           example: 80
           type: integer
       type: object
-    RoleMiningPotentialRoleSummaryDistribution:
-      allOf:
-      - $ref: '#/components/schemas/RoleMiningPotentialRoleSummary'
-      - type: object
+    RoleMiningPotentialRole:
       example:
-        potentialRoleRef:
-          id: dd4c13c6-8237-4753-bfb7-f627e489f9ec
-          name: Potential Role - dd4c13
-        identityCount: "25"
-        entitlementCount: "15"
-        identityGroupStatus: OBTAINED
-        roleId: null
-        density: 100
-        freshness: 90
-        quality: 95
-        identityDistribution: []
-      properties:
+        entitlementCount: 25
+        identityIds:
+        - 07a0b4e2
+        - 13b4e2a0
+        density: 75
+        saved: true
+        roleId: 07a0b4e2-7a76-44fa-bd0b-c64654b66519
+        session:
+          pruneThreshold: 5
+          saved: true
+          scope:
+            identityIds:
+            - 2c918090761a5aac0176215c46a62d58
+            - 2c918090761a5aac01722015c46a62d42
+            attributeFilterCriteria:
+              displayName:
+                untranslated: "Location: Miami"
+              ariaLabel:
+                untranslated: "Location: Miami"
+              data:
+                displayName:
+                  translateKey: IDN.IDENTITY_ATTRIBUTES.LOCATION
+                name: location
+                operator: EQUALS
+                values:
+                - Miami
+            criteria: source.name:DataScienceDataset
+          name: Saved RM Session - 07/10
+          minNumIdentitiesInPotentialRole: 20
+          type: SPECIALIZED
+        provisionState: POTENTIAL
+        description: Potential Role for Accounting dept
+        identityCount: 25
+        freshness: 75
+        type: SPECIALIZED
+        quality: 100
         identityDistribution:
-          description: Identity attribute distribution
+        - attributeName: department
+          distribution:
+          - attributeValue: NM Tier 3
+            count: 6
+        - attributeName: department
+          distribution:
+          - attributeValue: NM Tier 3
+            count: 6
+        createdBy:
+          displayName: Ashley.Pierce
+          id: 2c918090761a5aac0176215c46a62d58
+        name: Saved Potential Role - 07/10
+        excludedEntitlements:
+        - 07a0b4e2
+        - 13b4e2a0
+      properties:
+        createdBy:
+          $ref: '#/components/schemas/EntityCreatedByDTO'
+        density:
+          description: The density of a potential role.
+          example: 75
+          format: int32
+          type: integer
+        description:
+          description: The description of a potential role.
+          example: Potential Role for Accounting dept
+          type: string
+        entitlementCount:
+          description: The number of entitlements in a potential role.
+          example: 25
+          format: int32
+          type: integer
+        excludedEntitlements:
+          description: The list of entitlement ids to be excluded.
+          example:
+          - 07a0b4e2
+          - 13b4e2a0
+          items:
+            type: string
+          type: array
+        freshness:
+          description: The freshness of a potential role.
+          example: 75
+          format: int32
+          type: integer
+        identityCount:
+          description: The number of identities in a potential role.
+          example: 25
+          format: int32
+          type: integer
+        identityDistribution:
+          description: Identity attribute distribution.
           items:
             $ref: '#/components/schemas/RoleMiningIdentityDistribution'
           type: array
+        identityIds:
+          description: The list of ids in a potential role.
+          example:
+          - 07a0b4e2
+          - 13b4e2a0
+          items:
+            type: string
+          type: array
+        name:
+          description: Name of the potential role.
+          example: Saved Potential Role - 07/10
+          type: string
+        provisionState:
+          $ref: '#/components/schemas/RoleMiningPotentialRoleProvisionState'
+        quality:
+          description: The quality of a potential role.
+          example: 100
+          format: int32
+          type: integer
+        roleId:
+          description: The roleId of a potential role.
+          example: 07a0b4e2-7a76-44fa-bd0b-c64654b66519
+          type: string
+        saved:
+          description: The potential role's saved status.
+          example: true
+          type: boolean
+        session:
+          $ref: '#/components/schemas/RoleMiningSessionParametersDto'
+        type:
+          $ref: '#/components/schemas/RoleMiningRoleType'
       type: object
     RoleMiningPotentialRoleApplication:
       example:
@@ -48178,77 +48463,6 @@ components:
           description: "If true, add ids to be exclusion list. If false, remove ids\
             \ from the exclusion list."
           type: boolean
-      type: object
-    RoleMiningPotentialRole:
-      example:
-        identityDistribution:
-        - attributeName: attributeName
-          distribution:
-          - key: distribution
-          - key: distribution
-        - attributeName: attributeName
-          distribution:
-          - key: distribution
-          - key: distribution
-        entitlementCount: 25
-        identityIds:
-        - identityIds
-        - identityIds
-        modifiedDate:
-        - modifiedDate
-        - modifiedDate
-        name: name
-        id: id
-        identityCount: 25
-        excludedEntitlements:
-        - excludedEntitlements
-        - excludedEntitlements
-        type: SPECIALIZED
-        createDate:
-        - createDate
-        - createDate
-      properties:
-        createDate:
-          description: The creation date for a potential role
-          items:
-            type: string
-          type: array
-        entitlementCount:
-          description: The number of entitlements in a potential role.
-          example: 25
-          type: integer
-        excludedEntitlements:
-          description: The list of entitlement ids to be excluded.
-          items:
-            type: string
-          type: array
-        id:
-          description: Id of the potential role
-          type: string
-        identityCount:
-          description: The number of identities in a potential role.
-          example: 25
-          type: integer
-        identityDistribution:
-          description: Identity attribute distribution
-          items:
-            $ref: '#/components/schemas/RoleMiningIdentityDistribution'
-          type: array
-        identityIds:
-          description: The list of ids in a potential role.
-          items:
-            type: string
-          type: array
-        modifiedDate:
-          description: The modified date for a potential role
-          items:
-            type: string
-          type: array
-        name:
-          description: Name of the potential role
-          type: string
-        type:
-          $ref: '#/components/schemas/RoleMiningRoleType'
       type: object
     RoleMiningIdentity:
       example:
@@ -52171,7 +52385,7 @@ components:
         approvalSchemes:
           description: List describing the steps in approving the request
           items:
-            $ref: '#/components/schemas/ApprovalScheme'
+            $ref: '#/components/schemas/AccessProfileApprovalScheme'
           type: array
       type: object
     Revocability:
@@ -52185,7 +52399,7 @@ components:
         approvalSchemes:
           description: List describing the steps in approving the revocation request
           items:
-            $ref: '#/components/schemas/ApprovalScheme'
+            $ref: '#/components/schemas/AccessProfileApprovalScheme'
           type: array
       type: object
     ProvisioningCriteriaLevel1:
@@ -52558,7 +52772,7 @@ components:
         status:
           $ref: '#/components/schemas/ManualWorkItemState'
         scheme:
-          $ref: '#/components/schemas/ApprovalScheme_1'
+          $ref: '#/components/schemas/ApprovalScheme'
         errorMessages:
           description: "If the request failed, includes any error messages that were\
             \ generated."
@@ -54004,28 +54218,82 @@ components:
           type: string
       type: object
     RoleMiningPotentialRoleProvisionState:
+      description: Provision state
       enum:
       - POTENTIAL
       - PENDING
       - COMPLETE
       - FAILED
+      example: POTENTIAL
       type: string
     RoleMiningIdentityDistribution:
       example:
-        attributeName: attributeName
+        attributeName: department
         distribution:
-        - key: distribution
-        - key: distribution
+        - attributeValue: NM Tier 3
+          count: 6
       properties:
         attributeName:
           description: Id of the potential role
+          example: department
           type: string
         distribution:
+          example:
+          - attributeValue: NM Tier 3
+            count: 6
           items:
             additionalProperties:
               type: string
             type: object
           type: array
+      type: object
+    RoleMiningSessionParametersDto:
+      example:
+        pruneThreshold: 5
+        saved: true
+        scope:
+          identityIds:
+          - 2c918090761a5aac0176215c46a62d58
+          - 2c918090761a5aac01722015c46a62d42
+          attributeFilterCriteria:
+            displayName:
+              untranslated: "Location: Miami"
+            ariaLabel:
+              untranslated: "Location: Miami"
+            data:
+              displayName:
+                translateKey: IDN.IDENTITY_ATTRIBUTES.LOCATION
+              name: location
+              operator: EQUALS
+              values:
+              - Miami
+          criteria: source.name:DataScienceDataset
+        name: Saved RM Session - 07/10
+        minNumIdentitiesInPotentialRole: 20
+        type: SPECIALIZED
+      properties:
+        minNumIdentitiesInPotentialRole:
+          description: Minimum number of identities in a potential role
+          example: 20
+          format: int32
+          type: integer
+        name:
+          description: The session's saved name
+          example: Saved RM Session - 07/10
+          type: string
+        pruneThreshold:
+          description: The prune threshold to be used or null to calculate prescribedPruneThreshold
+          example: 5
+          format: int32
+          type: integer
+        saved:
+          description: The session's saved status
+          example: true
+          type: boolean
+        scope:
+          $ref: '#/components/schemas/RoleMiningSessionScope'
+        type:
+          $ref: '#/components/schemas/RoleMiningRoleType'
       type: object
     RoleMiningEntitlementRef:
       properties:
@@ -55095,7 +55363,7 @@ components:
         featureValues:
           $ref: '#/components/schemas/FeatureValueDto'
       type: object
-    ApprovalScheme:
+    AccessProfileApprovalScheme:
       example:
         approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
         approverType: GOVERNANCE_GROUP
@@ -55209,7 +55477,7 @@ components:
       - ARCHIVED
       example: PENDING
       type: string
-    ApprovalScheme_1:
+    ApprovalScheme:
       description: Describes the individual or group that is responsible for an approval
         step.
       enum:
@@ -56481,6 +56749,17 @@ components:
           format: binary
           type: string
       type: object
+    patchPotentialRole_request_inner:
+      allOf:
+      - $ref: '#/components/schemas/JsonPatchOperation'
+      properties:
+        op:
+          description: The operation to be performed
+          enum:
+          - remove
+          - replace
+          example: replace
+          type: string
     spConfigImport_request:
       properties:
         data:

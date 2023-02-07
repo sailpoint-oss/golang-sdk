@@ -17,7 +17,9 @@ import (
 
 // BaseAccess struct for BaseAccess
 type BaseAccess struct {
+	// The unique ID of the referenced object.
 	Id *string `json:"id,omitempty"`
+	// The human readable name of the referenced object.
 	Name *string `json:"name,omitempty"`
 	// The description of the access item
 	Description *string `json:"description,omitempty"`

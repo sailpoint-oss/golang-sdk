@@ -17,7 +17,9 @@ import (
 
 // RoleDocument Role
 type RoleDocument struct {
+	// The unique ID of the referenced object.
 	Id string `json:"id"`
+	// The human readable name of the referenced object.
 	Name string `json:"name"`
 	Type DocumentType `json:"_type"`
 	// The description of the access item

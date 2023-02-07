@@ -16,7 +16,9 @@ import (
 
 // App struct for App
 type App struct {
+	// The unique ID of the referenced object.
 	Id *string `json:"id,omitempty"`
+	// The human readable name of the referenced object.
 	Name *string `json:"name,omitempty"`
 	Source *Reference `json:"source,omitempty"`
 	Account *AppAllOfAccount `json:"account,omitempty"`

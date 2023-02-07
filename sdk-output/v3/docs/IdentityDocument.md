@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
+**Id** | **string** | The unique ID of the referenced object. | 
+**Name** | **string** | The human readable name of the referenced object. | 
 **Type** | [**DocumentType**](DocumentType.md) |  | 
 **DisplayName** | Pointer to **string** | The display name of the identity | [optional] 
 **FirstName** | Pointer to **string** | The first name of the identity | [optional] 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **AccountCount** | Pointer to **int32** | Number of accounts associated with the identity | [optional] 
 **Apps** | Pointer to [**[]App**](App.md) | The list of applications the identity has access to | [optional] 
 **AppCount** | Pointer to **int32** | The number of applications the identity has access to | [optional] 
-**Access** | Pointer to [**[]Access1**](Access1.md) | The list of access items assigned to the identity | [optional] 
+**Access** | Pointer to [**[]IdentityAccess**](IdentityAccess.md) | The list of access items assigned to the identity | [optional] 
 **AccessCount** | Pointer to **int32** | The number of access items assigned to the identity | [optional] 
 **AccessProfileCount** | Pointer to **int32** | The number of access profiles assigned to the identity | [optional] 
 **EntitlementCount** | Pointer to **int32** | The number of entitlements assigned to the identity | [optional] 
@@ -734,20 +734,20 @@ HasAppCount returns a boolean if a field has been set.
 
 ### GetAccess
 
-`func (o *IdentityDocument) GetAccess() []Access1`
+`func (o *IdentityDocument) GetAccess() []IdentityAccess`
 
 GetAccess returns the Access field if non-nil, zero value otherwise.
 
 ### GetAccessOk
 
-`func (o *IdentityDocument) GetAccessOk() (*[]Access1, bool)`
+`func (o *IdentityDocument) GetAccessOk() (*[]IdentityAccess, bool)`
 
 GetAccessOk returns a tuple with the Access field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccess
 
-`func (o *IdentityDocument) SetAccess(v []Access1)`
+`func (o *IdentityDocument) SetAccess(v []IdentityAccess)`
 
 SetAccess sets Access field to given value.
 

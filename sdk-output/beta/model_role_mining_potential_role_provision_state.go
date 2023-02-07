@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// RoleMiningPotentialRoleProvisionState the model 'RoleMiningPotentialRoleProvisionState'
+// RoleMiningPotentialRoleProvisionState Provision state
 type RoleMiningPotentialRoleProvisionState string
 
 // List of RoleMiningPotentialRoleProvisionState

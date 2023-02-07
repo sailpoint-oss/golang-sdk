@@ -16,7 +16,9 @@ import (
 
 // Reference struct for Reference
 type Reference struct {
+	// The unique ID of the referenced object.
 	Id *string `json:"id,omitempty"`
+	// The human readable name of the referenced object.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
