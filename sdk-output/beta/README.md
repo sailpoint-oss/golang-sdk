@@ -189,12 +189,13 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningApi* | [**GetEntitlementsPotentialRole**](docs/IAIRoleMiningApi.md#getentitlementspotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
 *IAIRoleMiningApi* | [**GetExcludedEntitlementsPotentialRole**](docs/IAIRoleMiningApi.md#getexcludedentitlementspotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
 *IAIRoleMiningApi* | [**GetIdentitiesPotentialRole**](docs/IAIRoleMiningApi.md#getidentitiespotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
+*IAIRoleMiningApi* | [**GetPotentialRole**](docs/IAIRoleMiningApi.md#getpotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
 *IAIRoleMiningApi* | [**GetPotentialRoleApplications**](docs/IAIRoleMiningApi.md#getpotentialroleapplications) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
-*IAIRoleMiningApi* | [**GetPotentialRoleSummaries**](docs/IAIRoleMiningApi.md#getpotentialrolesummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves the potential role summaries for a role mining session
-*IAIRoleMiningApi* | [**GetPotentialRoleSummary**](docs/IAIRoleMiningApi.md#getpotentialrolesummary) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role for a role mining session
+*IAIRoleMiningApi* | [**GetPotentialRoleSummaries**](docs/IAIRoleMiningApi.md#getpotentialrolesummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
 *IAIRoleMiningApi* | [**GetRoleMiningSession**](docs/IAIRoleMiningApi.md#getroleminingsession) | **Get** /role-mining-sessions/{sessionId} | Get a role mining session
 *IAIRoleMiningApi* | [**GetRoleMiningSessionStatus**](docs/IAIRoleMiningApi.md#getroleminingsessionstatus) | **Get** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 *IAIRoleMiningApi* | [**GetRoleMiningSessions**](docs/IAIRoleMiningApi.md#getroleminingsessions) | **Get** /role-mining-sessions | Retrieves all role mining sessions
+*IAIRoleMiningApi* | [**PatchPotentialRole**](docs/IAIRoleMiningApi.md#patchpotentialrole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
 *IAIRoleMiningApi* | [**PatchRoleMiningSession**](docs/IAIRoleMiningApi.md#patchroleminingsession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
 *IAIRoleMiningApi* | [**RoleMiningSessions**](docs/IAIRoleMiningApi.md#roleminingsessions) | **Post** /role-mining-sessions | Create a role mining session
 *IdentitiesApi* | [**SynchronizeAttributesForIdentity**](docs/IdentitiesApi.md#synchronizeattributesforidentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
@@ -469,6 +470,7 @@ Class | Method | HTTP request | Description
  - [AccessItemRemoved](docs/AccessItemRemoved.md)
  - [AccessItemRoleResponse](docs/AccessItemRoleResponse.md)
  - [AccessProfile](docs/AccessProfile.md)
+ - [AccessProfileApprovalScheme](docs/AccessProfileApprovalScheme.md)
  - [AccessProfileBulkDeleteRequest](docs/AccessProfileBulkDeleteRequest.md)
  - [AccessProfileBulkDeleteResponse](docs/AccessProfileBulkDeleteResponse.md)
  - [AccessProfileRef](docs/AccessProfileRef.md)
@@ -524,7 +526,6 @@ Class | Method | HTTP request | Description
  - [ApprovalItems](docs/ApprovalItems.md)
  - [ApprovalReminderAndEscalationConfig](docs/ApprovalReminderAndEscalationConfig.md)
  - [ApprovalScheme](docs/ApprovalScheme.md)
- - [ApprovalScheme1](docs/ApprovalScheme1.md)
  - [ApprovalSchemeForRole](docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](docs/ApprovalStatus.md)
  - [ApprovalStatusDto](docs/ApprovalStatusDto.md)
@@ -781,6 +782,7 @@ Class | Method | HTTP request | Description
  - [PasswordOrgConfig](docs/PasswordOrgConfig.md)
  - [PasswordStatus](docs/PasswordStatus.md)
  - [PasswordSyncGroup](docs/PasswordSyncGroup.md)
+ - [PatchPotentialRoleRequestInner](docs/PatchPotentialRoleRequestInner.md)
  - [PeerGroupMember](docs/PeerGroupMember.md)
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)
@@ -869,9 +871,9 @@ Class | Method | HTTP request | Description
  - [RoleMiningPotentialRoleProvisionState](docs/RoleMiningPotentialRoleProvisionState.md)
  - [RoleMiningPotentialRoleRef](docs/RoleMiningPotentialRoleRef.md)
  - [RoleMiningPotentialRoleSummary](docs/RoleMiningPotentialRoleSummary.md)
- - [RoleMiningPotentialRoleSummaryDistribution](docs/RoleMiningPotentialRoleSummaryDistribution.md)
  - [RoleMiningRoleType](docs/RoleMiningRoleType.md)
  - [RoleMiningSessionDto](docs/RoleMiningSessionDto.md)
+ - [RoleMiningSessionParametersDto](docs/RoleMiningSessionParametersDto.md)
  - [RoleMiningSessionResponse](docs/RoleMiningSessionResponse.md)
  - [RoleMiningSessionScope](docs/RoleMiningSessionScope.md)
  - [RoleMiningSessionStatus](docs/RoleMiningSessionStatus.md)

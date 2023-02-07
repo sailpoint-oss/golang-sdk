@@ -981,6 +981,17 @@ func (a *CertificationCampaignsApiService) DeleteCampaignTemplateExecute(r ApiDe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -2294,6 +2305,17 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplateExecute(r ApiGetCa
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -2728,7 +2750,7 @@ type ApiPatchCampaignTemplateRequest struct {
 	requestBody *[]map[string]interface{}
 }
 
-// A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * deadlineDuration * campaign (all fields that are allowed during create) 
+// A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
 func (r ApiPatchCampaignTemplateRequest) RequestBody(requestBody []map[string]interface{}) ApiPatchCampaignTemplateRequest {
 	r.requestBody = &requestBody
 	return r

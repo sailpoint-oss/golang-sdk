@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comments** | Pointer to [**[]Comment1**](Comment1.md) |  | [optional] 
+**Comments** | Pointer to [**[]ApprovalComment**](ApprovalComment.md) |  | [optional] 
 **Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Owner** | Pointer to [**Source1**](Source1.md) |  | [optional] 
+**Owner** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
 **Result** | Pointer to **string** | The result of the approval | [optional] 
 **Type** | Pointer to **NullableString** |  | [optional] 
 
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetComments
 
-`func (o *Approval) GetComments() []Comment1`
+`func (o *Approval) GetComments() []ApprovalComment`
 
 GetComments returns the Comments field if non-nil, zero value otherwise.
 
 ### GetCommentsOk
 
-`func (o *Approval) GetCommentsOk() (*[]Comment1, bool)`
+`func (o *Approval) GetCommentsOk() (*[]ApprovalComment, bool)`
 
 GetCommentsOk returns a tuple with the Comments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetComments
 
-`func (o *Approval) SetComments(v []Comment1)`
+`func (o *Approval) SetComments(v []ApprovalComment)`
 
 SetComments sets Comments field to given value.
 
@@ -127,20 +127,20 @@ HasModified returns a boolean if a field has been set.
 UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetOwner
 
-`func (o *Approval) GetOwner() Source1`
+`func (o *Approval) GetOwner() AccountSource`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *Approval) GetOwnerOk() (*Source1, bool)`
+`func (o *Approval) GetOwnerOk() (*AccountSource, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *Approval) SetOwner(v Source1)`
+`func (o *Approval) SetOwner(v AccountSource)`
 
 SetOwner sets Owner field to given value.
 

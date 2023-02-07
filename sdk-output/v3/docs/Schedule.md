@@ -4,20 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SavedSearchId** | **string** | The ID of the saved search that will be executed. | 
-**Created** | Pointer to [**time.Time**](time.Time.md) | The date the scheduled search was initially created. | [optional] [readonly] 
-**Modified** | Pointer to [**time.Time**](time.Time.md) | The last date the scheduled search was modified. | [optional] [readonly] 
-**Schedule** | [**Schedule1**](Schedule1.md) |  | 
-**Recipients** | [**[]ScheduleRecipientsInner**](ScheduleRecipientsInner.md) | A list of identities that should receive the scheduled search report via email. | 
-**Enabled** | Pointer to **bool** | Indicates if the scheduled search is enabled.  | [optional] [default to false]
-**EmailEmptyResults** | Pointer to **bool** | Indicates if email generation should not be suppressed if search returns no results.  | [optional] [default to false]
-**DisplayQueryDetails** | Pointer to **bool** | Indicates if the generated email should include the query and search results preview (which could include PII).  | [optional] [default to false]
+**Type** | [**ScheduleType**](ScheduleType.md) |  | 
+**Days** | Pointer to [**ScheduleDays**](ScheduleDays.md) |  | [optional] 
+**Hours** | [**ScheduleHours**](ScheduleHours.md) |  | 
+**Expiration** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
+**TimeZoneId** | Pointer to **NullableString** | The GMT formatted timezone the schedule will run in (ex. GMT-06:00).  If no timezone is specified, the org&#39;s default timezone is used. | [optional] 
 
 ## Methods
 
 ### NewSchedule
 
-`func NewSchedule(savedSearchId string, schedule Schedule1, recipients []ScheduleRecipientsInner, ) *Schedule`
+`func NewSchedule(type_ ScheduleType, hours ScheduleHours, ) *Schedule`
 
 NewSchedule instantiates a new Schedule object
 This constructor will assign default values to properties that have it defined,
@@ -32,191 +29,141 @@ NewScheduleWithDefaults instantiates a new Schedule object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetSavedSearchId
+### GetType
 
-`func (o *Schedule) GetSavedSearchId() string`
+`func (o *Schedule) GetType() ScheduleType`
 
-GetSavedSearchId returns the SavedSearchId field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetSavedSearchIdOk
+### GetTypeOk
 
-`func (o *Schedule) GetSavedSearchIdOk() (*string, bool)`
+`func (o *Schedule) GetTypeOk() (*ScheduleType, bool)`
 
-GetSavedSearchIdOk returns a tuple with the SavedSearchId field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSavedSearchId
+### SetType
 
-`func (o *Schedule) SetSavedSearchId(v string)`
+`func (o *Schedule) SetType(v ScheduleType)`
 
-SetSavedSearchId sets SavedSearchId field to given value.
+SetType sets Type field to given value.
 
 
-### GetCreated
+### GetDays
 
-`func (o *Schedule) GetCreated() time.Time`
+`func (o *Schedule) GetDays() ScheduleDays`
 
-GetCreated returns the Created field if non-nil, zero value otherwise.
+GetDays returns the Days field if non-nil, zero value otherwise.
 
-### GetCreatedOk
+### GetDaysOk
 
-`func (o *Schedule) GetCreatedOk() (*time.Time, bool)`
+`func (o *Schedule) GetDaysOk() (*ScheduleDays, bool)`
 
-GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+GetDaysOk returns a tuple with the Days field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreated
+### SetDays
 
-`func (o *Schedule) SetCreated(v time.Time)`
+`func (o *Schedule) SetDays(v ScheduleDays)`
 
-SetCreated sets Created field to given value.
+SetDays sets Days field to given value.
 
-### HasCreated
+### HasDays
 
-`func (o *Schedule) HasCreated() bool`
+`func (o *Schedule) HasDays() bool`
 
-HasCreated returns a boolean if a field has been set.
+HasDays returns a boolean if a field has been set.
 
-### GetModified
+### GetHours
 
-`func (o *Schedule) GetModified() time.Time`
+`func (o *Schedule) GetHours() ScheduleHours`
 
-GetModified returns the Modified field if non-nil, zero value otherwise.
+GetHours returns the Hours field if non-nil, zero value otherwise.
 
-### GetModifiedOk
+### GetHoursOk
 
-`func (o *Schedule) GetModifiedOk() (*time.Time, bool)`
+`func (o *Schedule) GetHoursOk() (*ScheduleHours, bool)`
 
-GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
+GetHoursOk returns a tuple with the Hours field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetModified
+### SetHours
 
-`func (o *Schedule) SetModified(v time.Time)`
+`func (o *Schedule) SetHours(v ScheduleHours)`
 
-SetModified sets Modified field to given value.
+SetHours sets Hours field to given value.
 
-### HasModified
 
-`func (o *Schedule) HasModified() bool`
+### GetExpiration
 
-HasModified returns a boolean if a field has been set.
+`func (o *Schedule) GetExpiration() time.Time`
 
-### GetSchedule
+GetExpiration returns the Expiration field if non-nil, zero value otherwise.
 
-`func (o *Schedule) GetSchedule() Schedule1`
+### GetExpirationOk
 
-GetSchedule returns the Schedule field if non-nil, zero value otherwise.
+`func (o *Schedule) GetExpirationOk() (*time.Time, bool)`
 
-### GetScheduleOk
-
-`func (o *Schedule) GetScheduleOk() (*Schedule1, bool)`
-
-GetScheduleOk returns a tuple with the Schedule field if it's non-nil, zero value otherwise
+GetExpirationOk returns a tuple with the Expiration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSchedule
+### SetExpiration
 
-`func (o *Schedule) SetSchedule(v Schedule1)`
+`func (o *Schedule) SetExpiration(v time.Time)`
 
-SetSchedule sets Schedule field to given value.
+SetExpiration sets Expiration field to given value.
 
+### HasExpiration
 
-### GetRecipients
+`func (o *Schedule) HasExpiration() bool`
 
-`func (o *Schedule) GetRecipients() []ScheduleRecipientsInner`
+HasExpiration returns a boolean if a field has been set.
 
-GetRecipients returns the Recipients field if non-nil, zero value otherwise.
+### SetExpirationNil
 
-### GetRecipientsOk
+`func (o *Schedule) SetExpirationNil(b bool)`
 
-`func (o *Schedule) GetRecipientsOk() (*[]ScheduleRecipientsInner, bool)`
+ SetExpirationNil sets the value for Expiration to be an explicit nil
 
-GetRecipientsOk returns a tuple with the Recipients field if it's non-nil, zero value otherwise
+### UnsetExpiration
+`func (o *Schedule) UnsetExpiration()`
+
+UnsetExpiration ensures that no value is present for Expiration, not even an explicit nil
+### GetTimeZoneId
+
+`func (o *Schedule) GetTimeZoneId() string`
+
+GetTimeZoneId returns the TimeZoneId field if non-nil, zero value otherwise.
+
+### GetTimeZoneIdOk
+
+`func (o *Schedule) GetTimeZoneIdOk() (*string, bool)`
+
+GetTimeZoneIdOk returns a tuple with the TimeZoneId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRecipients
+### SetTimeZoneId
 
-`func (o *Schedule) SetRecipients(v []ScheduleRecipientsInner)`
+`func (o *Schedule) SetTimeZoneId(v string)`
 
-SetRecipients sets Recipients field to given value.
+SetTimeZoneId sets TimeZoneId field to given value.
 
+### HasTimeZoneId
 
-### GetEnabled
+`func (o *Schedule) HasTimeZoneId() bool`
 
-`func (o *Schedule) GetEnabled() bool`
+HasTimeZoneId returns a boolean if a field has been set.
 
-GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+### SetTimeZoneIdNil
 
-### GetEnabledOk
+`func (o *Schedule) SetTimeZoneIdNil(b bool)`
 
-`func (o *Schedule) GetEnabledOk() (*bool, bool)`
+ SetTimeZoneIdNil sets the value for TimeZoneId to be an explicit nil
 
-GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
+### UnsetTimeZoneId
+`func (o *Schedule) UnsetTimeZoneId()`
 
-### SetEnabled
-
-`func (o *Schedule) SetEnabled(v bool)`
-
-SetEnabled sets Enabled field to given value.
-
-### HasEnabled
-
-`func (o *Schedule) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
-
-### GetEmailEmptyResults
-
-`func (o *Schedule) GetEmailEmptyResults() bool`
-
-GetEmailEmptyResults returns the EmailEmptyResults field if non-nil, zero value otherwise.
-
-### GetEmailEmptyResultsOk
-
-`func (o *Schedule) GetEmailEmptyResultsOk() (*bool, bool)`
-
-GetEmailEmptyResultsOk returns a tuple with the EmailEmptyResults field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmailEmptyResults
-
-`func (o *Schedule) SetEmailEmptyResults(v bool)`
-
-SetEmailEmptyResults sets EmailEmptyResults field to given value.
-
-### HasEmailEmptyResults
-
-`func (o *Schedule) HasEmailEmptyResults() bool`
-
-HasEmailEmptyResults returns a boolean if a field has been set.
-
-### GetDisplayQueryDetails
-
-`func (o *Schedule) GetDisplayQueryDetails() bool`
-
-GetDisplayQueryDetails returns the DisplayQueryDetails field if non-nil, zero value otherwise.
-
-### GetDisplayQueryDetailsOk
-
-`func (o *Schedule) GetDisplayQueryDetailsOk() (*bool, bool)`
-
-GetDisplayQueryDetailsOk returns a tuple with the DisplayQueryDetails field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDisplayQueryDetails
-
-`func (o *Schedule) SetDisplayQueryDetails(v bool)`
-
-SetDisplayQueryDetails sets DisplayQueryDetails field to given value.
-
-### HasDisplayQueryDetails
-
-`func (o *Schedule) HasDisplayQueryDetails() bool`
-
-HasDisplayQueryDetails returns a boolean if a field has been set.
-
+UnsetTimeZoneId ensures that no value is present for TimeZoneId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

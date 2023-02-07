@@ -4,21 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Public** | Pointer to **bool** | Indicates if the saved search is public.  | [optional] [default to false]
-**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Indices** | [**[]Index**](Index.md) | The names of the Elasticsearch indices in which to search.  | 
-**Columns** | Pointer to [**map[string][]Column**](array.md) | The columns to be returned (specifies the order in which they will be presented) for each document type.  The currently supported document types are: _accessprofile_, _accountactivity_, _account_, _aggregation_, _entitlement_, _event_, _identity_, and _role_.  | [optional] 
-**Query** | **string** | The search query using Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL.  | 
-**Fields** | Pointer to **[]string** | The fields to be searched against in a multi-field query.  | [optional] 
-**Sort** | Pointer to **[]string** | The fields to be used to sort the search results.  | [optional] 
-**Filters** | Pointer to [**NullableSearchFilters**](SearchFilters.md) |  | [optional] 
+**Indices** | Pointer to [**[]Index**](Index.md) | The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched. | [optional] 
+**QueryType** | Pointer to [**QueryType**](QueryType.md) |  | [optional] [default to QUERYTYPE_SAILPOINT]
+**QueryVersion** | Pointer to **string** |  | [optional] 
+**Query** | Pointer to [**Query**](Query.md) |  | [optional] 
+**QueryDsl** | Pointer to **map[string]interface{}** | The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax. | [optional] 
+**TypeAheadQuery** | Pointer to [**TypeAheadQuery**](TypeAheadQuery.md) |  | [optional] 
+**IncludeNested** | Pointer to **bool** | Indicates whether nested objects from returned search results should be included. | [optional] [default to true]
+**QueryResultFilter** | Pointer to [**QueryResultFilter**](QueryResultFilter.md) |  | [optional] 
+**AggregationType** | Pointer to [**AggregationType**](AggregationType.md) |  | [optional] [default to AGGREGATIONTYPE_DSL]
+**AggregationsVersion** | Pointer to **string** |  | [optional] 
+**AggregationsDsl** | Pointer to **map[string]interface{}** | The aggregation search query using Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) syntax. | [optional] 
+**Aggregations** | Pointer to [**SearchAggregationSpecification**](SearchAggregationSpecification.md) |  | [optional] 
+**Sort** | Pointer to **[]string** | The fields to be used to sort the search results. Use + or - to specify the sort direction. | [optional] 
+**SearchAfter** | Pointer to **[]string** | Used to begin the search window at the values specified. This parameter consists of the last values of the sorted fields in the current record set. This is used to expand the Elasticsearch limit of 10K records by shifting the 10K window to begin at this value. It is recommended that you always include the ID of the object in addition to any other fields on this parameter in order to ensure you don&#39;t get duplicate results while paging. For example, when searching for identities, if you are sorting by displayName you will also want to include ID, for example [\&quot;displayName\&quot;, \&quot;id\&quot;].  If the last identity ID in the search result is 2c91808375d8e80a0175e1f88a575221 and the last displayName is \&quot;John Doe\&quot;, then using that displayName and ID will start a new search after this identity. The searchAfter value will look like [\&quot;John Doe\&quot;,\&quot;2c91808375d8e80a0175e1f88a575221\&quot;] | [optional] 
+**Filters** | Pointer to [**map[string]Filter**](Filter.md) | The filters to be applied for each filtered field name. | [optional] 
 
 ## Methods
 
 ### NewSearch
 
-`func NewSearch(indices []Index, query string, ) *Search`
+`func NewSearch() *Search`
 
 NewSearch instantiates a new Search object
 This constructor will assign default values to properties that have it defined,
@@ -33,101 +39,6 @@ NewSearchWithDefaults instantiates a new Search object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetPublic
-
-`func (o *Search) GetPublic() bool`
-
-GetPublic returns the Public field if non-nil, zero value otherwise.
-
-### GetPublicOk
-
-`func (o *Search) GetPublicOk() (*bool, bool)`
-
-GetPublicOk returns a tuple with the Public field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPublic
-
-`func (o *Search) SetPublic(v bool)`
-
-SetPublic sets Public field to given value.
-
-### HasPublic
-
-`func (o *Search) HasPublic() bool`
-
-HasPublic returns a boolean if a field has been set.
-
-### GetCreated
-
-`func (o *Search) GetCreated() time.Time`
-
-GetCreated returns the Created field if non-nil, zero value otherwise.
-
-### GetCreatedOk
-
-`func (o *Search) GetCreatedOk() (*time.Time, bool)`
-
-GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreated
-
-`func (o *Search) SetCreated(v time.Time)`
-
-SetCreated sets Created field to given value.
-
-### HasCreated
-
-`func (o *Search) HasCreated() bool`
-
-HasCreated returns a boolean if a field has been set.
-
-### SetCreatedNil
-
-`func (o *Search) SetCreatedNil(b bool)`
-
- SetCreatedNil sets the value for Created to be an explicit nil
-
-### UnsetCreated
-`func (o *Search) UnsetCreated()`
-
-UnsetCreated ensures that no value is present for Created, not even an explicit nil
-### GetModified
-
-`func (o *Search) GetModified() time.Time`
-
-GetModified returns the Modified field if non-nil, zero value otherwise.
-
-### GetModifiedOk
-
-`func (o *Search) GetModifiedOk() (*time.Time, bool)`
-
-GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModified
-
-`func (o *Search) SetModified(v time.Time)`
-
-SetModified sets Modified field to given value.
-
-### HasModified
-
-`func (o *Search) HasModified() bool`
-
-HasModified returns a boolean if a field has been set.
-
-### SetModifiedNil
-
-`func (o *Search) SetModifiedNil(b bool)`
-
- SetModifiedNil sets the value for Modified to be an explicit nil
-
-### UnsetModified
-`func (o *Search) UnsetModified()`
-
-UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetIndices
 
 `func (o *Search) GetIndices() []Index`
@@ -147,87 +58,287 @@ and a boolean to check if the value has been set.
 
 SetIndices sets Indices field to given value.
 
+### HasIndices
 
-### GetColumns
+`func (o *Search) HasIndices() bool`
 
-`func (o *Search) GetColumns() map[string][]Column`
+HasIndices returns a boolean if a field has been set.
 
-GetColumns returns the Columns field if non-nil, zero value otherwise.
+### GetQueryType
 
-### GetColumnsOk
+`func (o *Search) GetQueryType() QueryType`
 
-`func (o *Search) GetColumnsOk() (*map[string][]Column, bool)`
+GetQueryType returns the QueryType field if non-nil, zero value otherwise.
 
-GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
+### GetQueryTypeOk
+
+`func (o *Search) GetQueryTypeOk() (*QueryType, bool)`
+
+GetQueryTypeOk returns a tuple with the QueryType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetColumns
+### SetQueryType
 
-`func (o *Search) SetColumns(v map[string][]Column)`
+`func (o *Search) SetQueryType(v QueryType)`
 
-SetColumns sets Columns field to given value.
+SetQueryType sets QueryType field to given value.
 
-### HasColumns
+### HasQueryType
 
-`func (o *Search) HasColumns() bool`
+`func (o *Search) HasQueryType() bool`
 
-HasColumns returns a boolean if a field has been set.
+HasQueryType returns a boolean if a field has been set.
+
+### GetQueryVersion
+
+`func (o *Search) GetQueryVersion() string`
+
+GetQueryVersion returns the QueryVersion field if non-nil, zero value otherwise.
+
+### GetQueryVersionOk
+
+`func (o *Search) GetQueryVersionOk() (*string, bool)`
+
+GetQueryVersionOk returns a tuple with the QueryVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQueryVersion
+
+`func (o *Search) SetQueryVersion(v string)`
+
+SetQueryVersion sets QueryVersion field to given value.
+
+### HasQueryVersion
+
+`func (o *Search) HasQueryVersion() bool`
+
+HasQueryVersion returns a boolean if a field has been set.
 
 ### GetQuery
 
-`func (o *Search) GetQuery() string`
+`func (o *Search) GetQuery() Query`
 
 GetQuery returns the Query field if non-nil, zero value otherwise.
 
 ### GetQueryOk
 
-`func (o *Search) GetQueryOk() (*string, bool)`
+`func (o *Search) GetQueryOk() (*Query, bool)`
 
 GetQueryOk returns a tuple with the Query field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuery
 
-`func (o *Search) SetQuery(v string)`
+`func (o *Search) SetQuery(v Query)`
 
 SetQuery sets Query field to given value.
 
+### HasQuery
 
-### GetFields
+`func (o *Search) HasQuery() bool`
 
-`func (o *Search) GetFields() []string`
+HasQuery returns a boolean if a field has been set.
 
-GetFields returns the Fields field if non-nil, zero value otherwise.
+### GetQueryDsl
 
-### GetFieldsOk
+`func (o *Search) GetQueryDsl() map[string]interface{}`
 
-`func (o *Search) GetFieldsOk() (*[]string, bool)`
+GetQueryDsl returns the QueryDsl field if non-nil, zero value otherwise.
 
-GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
+### GetQueryDslOk
+
+`func (o *Search) GetQueryDslOk() (*map[string]interface{}, bool)`
+
+GetQueryDslOk returns a tuple with the QueryDsl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFields
+### SetQueryDsl
 
-`func (o *Search) SetFields(v []string)`
+`func (o *Search) SetQueryDsl(v map[string]interface{})`
 
-SetFields sets Fields field to given value.
+SetQueryDsl sets QueryDsl field to given value.
 
-### HasFields
+### HasQueryDsl
 
-`func (o *Search) HasFields() bool`
+`func (o *Search) HasQueryDsl() bool`
 
-HasFields returns a boolean if a field has been set.
+HasQueryDsl returns a boolean if a field has been set.
 
-### SetFieldsNil
+### GetTypeAheadQuery
 
-`func (o *Search) SetFieldsNil(b bool)`
+`func (o *Search) GetTypeAheadQuery() TypeAheadQuery`
 
- SetFieldsNil sets the value for Fields to be an explicit nil
+GetTypeAheadQuery returns the TypeAheadQuery field if non-nil, zero value otherwise.
 
-### UnsetFields
-`func (o *Search) UnsetFields()`
+### GetTypeAheadQueryOk
 
-UnsetFields ensures that no value is present for Fields, not even an explicit nil
+`func (o *Search) GetTypeAheadQueryOk() (*TypeAheadQuery, bool)`
+
+GetTypeAheadQueryOk returns a tuple with the TypeAheadQuery field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTypeAheadQuery
+
+`func (o *Search) SetTypeAheadQuery(v TypeAheadQuery)`
+
+SetTypeAheadQuery sets TypeAheadQuery field to given value.
+
+### HasTypeAheadQuery
+
+`func (o *Search) HasTypeAheadQuery() bool`
+
+HasTypeAheadQuery returns a boolean if a field has been set.
+
+### GetIncludeNested
+
+`func (o *Search) GetIncludeNested() bool`
+
+GetIncludeNested returns the IncludeNested field if non-nil, zero value otherwise.
+
+### GetIncludeNestedOk
+
+`func (o *Search) GetIncludeNestedOk() (*bool, bool)`
+
+GetIncludeNestedOk returns a tuple with the IncludeNested field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeNested
+
+`func (o *Search) SetIncludeNested(v bool)`
+
+SetIncludeNested sets IncludeNested field to given value.
+
+### HasIncludeNested
+
+`func (o *Search) HasIncludeNested() bool`
+
+HasIncludeNested returns a boolean if a field has been set.
+
+### GetQueryResultFilter
+
+`func (o *Search) GetQueryResultFilter() QueryResultFilter`
+
+GetQueryResultFilter returns the QueryResultFilter field if non-nil, zero value otherwise.
+
+### GetQueryResultFilterOk
+
+`func (o *Search) GetQueryResultFilterOk() (*QueryResultFilter, bool)`
+
+GetQueryResultFilterOk returns a tuple with the QueryResultFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQueryResultFilter
+
+`func (o *Search) SetQueryResultFilter(v QueryResultFilter)`
+
+SetQueryResultFilter sets QueryResultFilter field to given value.
+
+### HasQueryResultFilter
+
+`func (o *Search) HasQueryResultFilter() bool`
+
+HasQueryResultFilter returns a boolean if a field has been set.
+
+### GetAggregationType
+
+`func (o *Search) GetAggregationType() AggregationType`
+
+GetAggregationType returns the AggregationType field if non-nil, zero value otherwise.
+
+### GetAggregationTypeOk
+
+`func (o *Search) GetAggregationTypeOk() (*AggregationType, bool)`
+
+GetAggregationTypeOk returns a tuple with the AggregationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregationType
+
+`func (o *Search) SetAggregationType(v AggregationType)`
+
+SetAggregationType sets AggregationType field to given value.
+
+### HasAggregationType
+
+`func (o *Search) HasAggregationType() bool`
+
+HasAggregationType returns a boolean if a field has been set.
+
+### GetAggregationsVersion
+
+`func (o *Search) GetAggregationsVersion() string`
+
+GetAggregationsVersion returns the AggregationsVersion field if non-nil, zero value otherwise.
+
+### GetAggregationsVersionOk
+
+`func (o *Search) GetAggregationsVersionOk() (*string, bool)`
+
+GetAggregationsVersionOk returns a tuple with the AggregationsVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregationsVersion
+
+`func (o *Search) SetAggregationsVersion(v string)`
+
+SetAggregationsVersion sets AggregationsVersion field to given value.
+
+### HasAggregationsVersion
+
+`func (o *Search) HasAggregationsVersion() bool`
+
+HasAggregationsVersion returns a boolean if a field has been set.
+
+### GetAggregationsDsl
+
+`func (o *Search) GetAggregationsDsl() map[string]interface{}`
+
+GetAggregationsDsl returns the AggregationsDsl field if non-nil, zero value otherwise.
+
+### GetAggregationsDslOk
+
+`func (o *Search) GetAggregationsDslOk() (*map[string]interface{}, bool)`
+
+GetAggregationsDslOk returns a tuple with the AggregationsDsl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregationsDsl
+
+`func (o *Search) SetAggregationsDsl(v map[string]interface{})`
+
+SetAggregationsDsl sets AggregationsDsl field to given value.
+
+### HasAggregationsDsl
+
+`func (o *Search) HasAggregationsDsl() bool`
+
+HasAggregationsDsl returns a boolean if a field has been set.
+
+### GetAggregations
+
+`func (o *Search) GetAggregations() SearchAggregationSpecification`
+
+GetAggregations returns the Aggregations field if non-nil, zero value otherwise.
+
+### GetAggregationsOk
+
+`func (o *Search) GetAggregationsOk() (*SearchAggregationSpecification, bool)`
+
+GetAggregationsOk returns a tuple with the Aggregations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAggregations
+
+`func (o *Search) SetAggregations(v SearchAggregationSpecification)`
+
+SetAggregations sets Aggregations field to given value.
+
+### HasAggregations
+
+`func (o *Search) HasAggregations() bool`
+
+HasAggregations returns a boolean if a field has been set.
+
 ### GetSort
 
 `func (o *Search) GetSort() []string`
@@ -253,22 +364,47 @@ SetSort sets Sort field to given value.
 
 HasSort returns a boolean if a field has been set.
 
+### GetSearchAfter
+
+`func (o *Search) GetSearchAfter() []string`
+
+GetSearchAfter returns the SearchAfter field if non-nil, zero value otherwise.
+
+### GetSearchAfterOk
+
+`func (o *Search) GetSearchAfterOk() (*[]string, bool)`
+
+GetSearchAfterOk returns a tuple with the SearchAfter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSearchAfter
+
+`func (o *Search) SetSearchAfter(v []string)`
+
+SetSearchAfter sets SearchAfter field to given value.
+
+### HasSearchAfter
+
+`func (o *Search) HasSearchAfter() bool`
+
+HasSearchAfter returns a boolean if a field has been set.
+
 ### GetFilters
 
-`func (o *Search) GetFilters() SearchFilters`
+`func (o *Search) GetFilters() map[string]Filter`
 
 GetFilters returns the Filters field if non-nil, zero value otherwise.
 
 ### GetFiltersOk
 
-`func (o *Search) GetFiltersOk() (*SearchFilters, bool)`
+`func (o *Search) GetFiltersOk() (*map[string]Filter, bool)`
 
 GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilters
 
-`func (o *Search) SetFilters(v SearchFilters)`
+`func (o *Search) SetFilters(v map[string]Filter)`
 
 SetFilters sets Filters field to given value.
 
@@ -278,16 +414,6 @@ SetFilters sets Filters field to given value.
 
 HasFilters returns a boolean if a field has been set.
 
-### SetFiltersNil
-
-`func (o *Search) SetFiltersNil(b bool)`
-
- SetFiltersNil sets the value for Filters to be an explicit nil
-
-### UnsetFilters
-`func (o *Search) UnsetFilters()`
-
-UnsetFilters ensures that no value is present for Filters, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

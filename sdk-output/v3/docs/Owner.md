@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
+**Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
 **Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
 **Email** | Pointer to **string** | The email of the identity | [optional] 
 

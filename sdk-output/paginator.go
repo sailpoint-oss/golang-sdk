@@ -13,7 +13,7 @@ func Paginate[T any](f interface{}, initialOffset int32, increment int32, limit 
 	var offset int32 = initialOffset
 	var returnObject []T
 	var latestResponse *http.Response
-	for offset < limit {
+	for offset < limit || limit == 0 {
 		// first invoke the Offset command to set the new offset
 		offsetResp := Invoke(f, "Offset", offset)
 		// invoke the Execute function to get the response

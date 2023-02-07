@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Cause** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** | The name of the item | [optional] 
 **AttributeRequests** | Pointer to [**[]AttributeRequest**](AttributeRequest.md) |  | [optional] 
-**Source** | Pointer to [**Source1**](Source1.md) |  | [optional] 
+**Source** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasAttributeRequests returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *ExpansionItem) GetSource() Source1`
+`func (o *ExpansionItem) GetSource() AccountSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *ExpansionItem) GetSourceOk() (*Source1, bool)`
+`func (o *ExpansionItem) GetSourceOk() (*AccountSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *ExpansionItem) SetSource(v Source1)`
+`func (o *ExpansionItem) SetSource(v AccountSource)`
 
 SetSource sets Source field to given value.
 

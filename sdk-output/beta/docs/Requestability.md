@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CommentsRequired** | Pointer to **bool** | Whether the requester of the containing object must provide comments justifying the request | [optional] 
 **DenialCommentsRequired** | Pointer to **bool** | Whether an approver must provide comments when denying the request | [optional] 
-**ApprovalSchemes** | Pointer to [**[]ApprovalScheme**](ApprovalScheme.md) | List describing the steps in approving the request | [optional] 
+**ApprovalSchemes** | Pointer to [**[]AccessProfileApprovalScheme**](AccessProfileApprovalScheme.md) | List describing the steps in approving the request | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasDenialCommentsRequired returns a boolean if a field has been set.
 
 ### GetApprovalSchemes
 
-`func (o *Requestability) GetApprovalSchemes() []ApprovalScheme`
+`func (o *Requestability) GetApprovalSchemes() []AccessProfileApprovalScheme`
 
 GetApprovalSchemes returns the ApprovalSchemes field if non-nil, zero value otherwise.
 
 ### GetApprovalSchemesOk
 
-`func (o *Requestability) GetApprovalSchemesOk() (*[]ApprovalScheme, bool)`
+`func (o *Requestability) GetApprovalSchemesOk() (*[]AccessProfileApprovalScheme, bool)`
 
 GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovalSchemes
 
-`func (o *Requestability) SetApprovalSchemes(v []ApprovalScheme)`
+`func (o *Requestability) SetApprovalSchemes(v []AccessProfileApprovalScheme)`
 
 SetApprovalSchemes sets ApprovalSchemes field to given value.
 

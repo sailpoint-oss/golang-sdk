@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
+**Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
 **AccountId** | Pointer to **string** | The ID of the account | [optional] 
-**Source** | Pointer to [**Source1**](Source1.md) |  | [optional] 
+**Source** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
 **Disabled** | Pointer to **bool** | Indicates if the account is disabled | [optional] 
 **Locked** | Pointer to **bool** | Indicates if the account is locked | [optional] 
 **Privileged** | Pointer to **bool** |  | [optional] 
@@ -112,20 +112,20 @@ HasAccountId returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *BaseAccount) GetSource() Source1`
+`func (o *BaseAccount) GetSource() AccountSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *BaseAccount) GetSourceOk() (*Source1, bool)`
+`func (o *BaseAccount) GetSourceOk() (*AccountSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *BaseAccount) SetSource(v Source1)`
+`func (o *BaseAccount) SetSource(v AccountSource)`
 
 SetSource sets Source field to given value.
 

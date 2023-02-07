@@ -4,15 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CreateDate** | Pointer to **[]string** | The creation date for a potential role | [optional] 
+**CreatedBy** | Pointer to [**EntityCreatedByDTO**](EntityCreatedByDTO.md) |  | [optional] 
+**Density** | Pointer to **int32** | The density of a potential role. | [optional] 
+**Description** | Pointer to **string** | The description of a potential role. | [optional] 
 **EntitlementCount** | Pointer to **int32** | The number of entitlements in a potential role. | [optional] 
 **ExcludedEntitlements** | Pointer to **[]string** | The list of entitlement ids to be excluded. | [optional] 
-**Id** | Pointer to **string** | Id of the potential role | [optional] 
+**Freshness** | Pointer to **int32** | The freshness of a potential role. | [optional] 
 **IdentityCount** | Pointer to **int32** | The number of identities in a potential role. | [optional] 
-**IdentityDistribution** | Pointer to [**[]RoleMiningIdentityDistribution**](RoleMiningIdentityDistribution.md) | Identity attribute distribution | [optional] 
+**IdentityDistribution** | Pointer to [**[]RoleMiningIdentityDistribution**](RoleMiningIdentityDistribution.md) | Identity attribute distribution. | [optional] 
 **IdentityIds** | Pointer to **[]string** | The list of ids in a potential role. | [optional] 
-**ModifiedDate** | Pointer to **[]string** | The modified date for a potential role | [optional] 
-**Name** | Pointer to **string** | Name of the potential role | [optional] 
+**Name** | Pointer to **string** | Name of the potential role. | [optional] 
+**ProvisionState** | Pointer to [**RoleMiningPotentialRoleProvisionState**](RoleMiningPotentialRoleProvisionState.md) |  | [optional] 
+**Quality** | Pointer to **int32** | The quality of a potential role. | [optional] 
+**RoleId** | Pointer to **string** | The roleId of a potential role. | [optional] 
+**Saved** | Pointer to **bool** | The potential role&#39;s saved status. | [optional] 
+**Session** | Pointer to [**RoleMiningSessionParametersDto**](RoleMiningSessionParametersDto.md) |  | [optional] 
 **Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
 
 ## Methods
@@ -34,30 +40,80 @@ NewRoleMiningPotentialRoleWithDefaults instantiates a new RoleMiningPotentialRol
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCreateDate
+### GetCreatedBy
 
-`func (o *RoleMiningPotentialRole) GetCreateDate() []string`
+`func (o *RoleMiningPotentialRole) GetCreatedBy() EntityCreatedByDTO`
 
-GetCreateDate returns the CreateDate field if non-nil, zero value otherwise.
+GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
 
-### GetCreateDateOk
+### GetCreatedByOk
 
-`func (o *RoleMiningPotentialRole) GetCreateDateOk() (*[]string, bool)`
+`func (o *RoleMiningPotentialRole) GetCreatedByOk() (*EntityCreatedByDTO, bool)`
 
-GetCreateDateOk returns a tuple with the CreateDate field if it's non-nil, zero value otherwise
+GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreateDate
+### SetCreatedBy
 
-`func (o *RoleMiningPotentialRole) SetCreateDate(v []string)`
+`func (o *RoleMiningPotentialRole) SetCreatedBy(v EntityCreatedByDTO)`
 
-SetCreateDate sets CreateDate field to given value.
+SetCreatedBy sets CreatedBy field to given value.
 
-### HasCreateDate
+### HasCreatedBy
 
-`func (o *RoleMiningPotentialRole) HasCreateDate() bool`
+`func (o *RoleMiningPotentialRole) HasCreatedBy() bool`
 
-HasCreateDate returns a boolean if a field has been set.
+HasCreatedBy returns a boolean if a field has been set.
+
+### GetDensity
+
+`func (o *RoleMiningPotentialRole) GetDensity() int32`
+
+GetDensity returns the Density field if non-nil, zero value otherwise.
+
+### GetDensityOk
+
+`func (o *RoleMiningPotentialRole) GetDensityOk() (*int32, bool)`
+
+GetDensityOk returns a tuple with the Density field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDensity
+
+`func (o *RoleMiningPotentialRole) SetDensity(v int32)`
+
+SetDensity sets Density field to given value.
+
+### HasDensity
+
+`func (o *RoleMiningPotentialRole) HasDensity() bool`
+
+HasDensity returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *RoleMiningPotentialRole) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *RoleMiningPotentialRole) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *RoleMiningPotentialRole) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *RoleMiningPotentialRole) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetEntitlementCount
 
@@ -109,30 +165,30 @@ SetExcludedEntitlements sets ExcludedEntitlements field to given value.
 
 HasExcludedEntitlements returns a boolean if a field has been set.
 
-### GetId
+### GetFreshness
 
-`func (o *RoleMiningPotentialRole) GetId() string`
+`func (o *RoleMiningPotentialRole) GetFreshness() int32`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetFreshness returns the Freshness field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetFreshnessOk
 
-`func (o *RoleMiningPotentialRole) GetIdOk() (*string, bool)`
+`func (o *RoleMiningPotentialRole) GetFreshnessOk() (*int32, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetFreshnessOk returns a tuple with the Freshness field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetFreshness
 
-`func (o *RoleMiningPotentialRole) SetId(v string)`
+`func (o *RoleMiningPotentialRole) SetFreshness(v int32)`
 
-SetId sets Id field to given value.
+SetFreshness sets Freshness field to given value.
 
-### HasId
+### HasFreshness
 
-`func (o *RoleMiningPotentialRole) HasId() bool`
+`func (o *RoleMiningPotentialRole) HasFreshness() bool`
 
-HasId returns a boolean if a field has been set.
+HasFreshness returns a boolean if a field has been set.
 
 ### GetIdentityCount
 
@@ -209,31 +265,6 @@ SetIdentityIds sets IdentityIds field to given value.
 
 HasIdentityIds returns a boolean if a field has been set.
 
-### GetModifiedDate
-
-`func (o *RoleMiningPotentialRole) GetModifiedDate() []string`
-
-GetModifiedDate returns the ModifiedDate field if non-nil, zero value otherwise.
-
-### GetModifiedDateOk
-
-`func (o *RoleMiningPotentialRole) GetModifiedDateOk() (*[]string, bool)`
-
-GetModifiedDateOk returns a tuple with the ModifiedDate field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModifiedDate
-
-`func (o *RoleMiningPotentialRole) SetModifiedDate(v []string)`
-
-SetModifiedDate sets ModifiedDate field to given value.
-
-### HasModifiedDate
-
-`func (o *RoleMiningPotentialRole) HasModifiedDate() bool`
-
-HasModifiedDate returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *RoleMiningPotentialRole) GetName() string`
@@ -258,6 +289,131 @@ SetName sets Name field to given value.
 `func (o *RoleMiningPotentialRole) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetProvisionState
+
+`func (o *RoleMiningPotentialRole) GetProvisionState() RoleMiningPotentialRoleProvisionState`
+
+GetProvisionState returns the ProvisionState field if non-nil, zero value otherwise.
+
+### GetProvisionStateOk
+
+`func (o *RoleMiningPotentialRole) GetProvisionStateOk() (*RoleMiningPotentialRoleProvisionState, bool)`
+
+GetProvisionStateOk returns a tuple with the ProvisionState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisionState
+
+`func (o *RoleMiningPotentialRole) SetProvisionState(v RoleMiningPotentialRoleProvisionState)`
+
+SetProvisionState sets ProvisionState field to given value.
+
+### HasProvisionState
+
+`func (o *RoleMiningPotentialRole) HasProvisionState() bool`
+
+HasProvisionState returns a boolean if a field has been set.
+
+### GetQuality
+
+`func (o *RoleMiningPotentialRole) GetQuality() int32`
+
+GetQuality returns the Quality field if non-nil, zero value otherwise.
+
+### GetQualityOk
+
+`func (o *RoleMiningPotentialRole) GetQualityOk() (*int32, bool)`
+
+GetQualityOk returns a tuple with the Quality field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuality
+
+`func (o *RoleMiningPotentialRole) SetQuality(v int32)`
+
+SetQuality sets Quality field to given value.
+
+### HasQuality
+
+`func (o *RoleMiningPotentialRole) HasQuality() bool`
+
+HasQuality returns a boolean if a field has been set.
+
+### GetRoleId
+
+`func (o *RoleMiningPotentialRole) GetRoleId() string`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *RoleMiningPotentialRole) GetRoleIdOk() (*string, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *RoleMiningPotentialRole) SetRoleId(v string)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *RoleMiningPotentialRole) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
+
+### GetSaved
+
+`func (o *RoleMiningPotentialRole) GetSaved() bool`
+
+GetSaved returns the Saved field if non-nil, zero value otherwise.
+
+### GetSavedOk
+
+`func (o *RoleMiningPotentialRole) GetSavedOk() (*bool, bool)`
+
+GetSavedOk returns a tuple with the Saved field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSaved
+
+`func (o *RoleMiningPotentialRole) SetSaved(v bool)`
+
+SetSaved sets Saved field to given value.
+
+### HasSaved
+
+`func (o *RoleMiningPotentialRole) HasSaved() bool`
+
+HasSaved returns a boolean if a field has been set.
+
+### GetSession
+
+`func (o *RoleMiningPotentialRole) GetSession() RoleMiningSessionParametersDto`
+
+GetSession returns the Session field if non-nil, zero value otherwise.
+
+### GetSessionOk
+
+`func (o *RoleMiningPotentialRole) GetSessionOk() (*RoleMiningSessionParametersDto, bool)`
+
+GetSessionOk returns a tuple with the Session field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSession
+
+`func (o *RoleMiningPotentialRole) SetSession(v RoleMiningSessionParametersDto)`
+
+SetSession sets Session field to given value.
+
+### HasSession
+
+`func (o *RoleMiningPotentialRole) HasSession() bool`
+
+HasSession returns a boolean if a field has been set.
 
 ### GetType
 

@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **SavedSearchId** | **string** | The ID of the saved search that will be executed. | 
 **Created** | Pointer to [**time.Time**](time.Time.md) | The date the scheduled search was initially created. | [optional] [readonly] 
 **Modified** | Pointer to [**time.Time**](time.Time.md) | The last date the scheduled search was modified. | [optional] [readonly] 
-**Schedule** | [**Schedule1**](Schedule1.md) |  | 
-**Recipients** | [**[]ScheduleRecipientsInner**](ScheduleRecipientsInner.md) | A list of identities that should receive the scheduled search report via email. | 
+**Schedule** | [**Schedule**](Schedule.md) |  | 
+**Recipients** | [**[]SearchScheduleRecipientsInner**](SearchScheduleRecipientsInner.md) | A list of identities that should receive the scheduled search report via email. | 
 **Enabled** | Pointer to **bool** | Indicates if the scheduled search is enabled.  | [optional] [default to false]
 **EmailEmptyResults** | Pointer to **bool** | Indicates if email generation should not be suppressed if search returns no results.  | [optional] [default to false]
 **DisplayQueryDetails** | Pointer to **bool** | Indicates if the generated email should include the query and search results preview (which could include PII).  | [optional] [default to false]
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewScheduledSearchCreateRequest
 
-`func NewScheduledSearchCreateRequest(savedSearchId string, schedule Schedule1, recipients []ScheduleRecipientsInner, ) *ScheduledSearchCreateRequest`
+`func NewScheduledSearchCreateRequest(savedSearchId string, schedule Schedule, recipients []SearchScheduleRecipientsInner, ) *ScheduledSearchCreateRequest`
 
 NewScheduledSearchCreateRequest instantiates a new ScheduledSearchCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -176,40 +176,40 @@ HasModified returns a boolean if a field has been set.
 
 ### GetSchedule
 
-`func (o *ScheduledSearchCreateRequest) GetSchedule() Schedule1`
+`func (o *ScheduledSearchCreateRequest) GetSchedule() Schedule`
 
 GetSchedule returns the Schedule field if non-nil, zero value otherwise.
 
 ### GetScheduleOk
 
-`func (o *ScheduledSearchCreateRequest) GetScheduleOk() (*Schedule1, bool)`
+`func (o *ScheduledSearchCreateRequest) GetScheduleOk() (*Schedule, bool)`
 
 GetScheduleOk returns a tuple with the Schedule field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSchedule
 
-`func (o *ScheduledSearchCreateRequest) SetSchedule(v Schedule1)`
+`func (o *ScheduledSearchCreateRequest) SetSchedule(v Schedule)`
 
 SetSchedule sets Schedule field to given value.
 
 
 ### GetRecipients
 
-`func (o *ScheduledSearchCreateRequest) GetRecipients() []ScheduleRecipientsInner`
+`func (o *ScheduledSearchCreateRequest) GetRecipients() []SearchScheduleRecipientsInner`
 
 GetRecipients returns the Recipients field if non-nil, zero value otherwise.
 
 ### GetRecipientsOk
 
-`func (o *ScheduledSearchCreateRequest) GetRecipientsOk() (*[]ScheduleRecipientsInner, bool)`
+`func (o *ScheduledSearchCreateRequest) GetRecipientsOk() (*[]SearchScheduleRecipientsInner, bool)`
 
 GetRecipientsOk returns a tuple with the Recipients field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecipients
 
-`func (o *ScheduledSearchCreateRequest) SetRecipients(v []ScheduleRecipientsInner)`
+`func (o *ScheduledSearchCreateRequest) SetRecipients(v []SearchScheduleRecipientsInner)`
 
 SetRecipients sets Recipients field to given value.
 

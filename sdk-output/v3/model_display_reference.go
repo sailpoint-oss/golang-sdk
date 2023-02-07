@@ -16,7 +16,9 @@ import (
 
 // DisplayReference struct for DisplayReference
 type DisplayReference struct {
+	// The unique ID of the referenced object.
 	Id *string `json:"id,omitempty"`
+	// The human readable name of the referenced object.
 	Name *string `json:"name,omitempty"`
 	DisplayName *string `json:"displayName,omitempty"`
 	AdditionalProperties map[string]interface{}

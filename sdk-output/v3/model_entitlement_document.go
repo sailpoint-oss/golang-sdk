@@ -17,7 +17,9 @@ import (
 
 // EntitlementDocument Entitlement
 type EntitlementDocument struct {
+	// The unique ID of the referenced object.
 	Id string `json:"id"`
+	// The human readable name of the referenced object.
 	Name string `json:"name"`
 	Type DocumentType `json:"_type"`
 	// A description of the entitlement

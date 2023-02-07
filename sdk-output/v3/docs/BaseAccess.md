@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
+**Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
 **Description** | Pointer to **string** | The description of the access item | [optional] 
 **Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 

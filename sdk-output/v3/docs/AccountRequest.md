@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **AccountId** | Pointer to **string** | Unique ID of the account | [optional] 
 **AttributeRequests** | Pointer to [**[]AttributeRequest**](AttributeRequest.md) |  | [optional] 
 **Op** | Pointer to **string** | The operation that was performed | [optional] 
-**ProvisioningTarget** | Pointer to [**Source1**](Source1.md) |  | [optional] 
+**ProvisioningTarget** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
 **Result** | Pointer to [**AccountRequestResult**](AccountRequestResult.md) |  | [optional] 
-**Source** | Pointer to [**Source1**](Source1.md) |  | [optional] 
+**Source** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
 
 ## Methods
 
@@ -107,20 +107,20 @@ HasOp returns a boolean if a field has been set.
 
 ### GetProvisioningTarget
 
-`func (o *AccountRequest) GetProvisioningTarget() Source1`
+`func (o *AccountRequest) GetProvisioningTarget() AccountSource`
 
 GetProvisioningTarget returns the ProvisioningTarget field if non-nil, zero value otherwise.
 
 ### GetProvisioningTargetOk
 
-`func (o *AccountRequest) GetProvisioningTargetOk() (*Source1, bool)`
+`func (o *AccountRequest) GetProvisioningTargetOk() (*AccountSource, bool)`
 
 GetProvisioningTargetOk returns a tuple with the ProvisioningTarget field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProvisioningTarget
 
-`func (o *AccountRequest) SetProvisioningTarget(v Source1)`
+`func (o *AccountRequest) SetProvisioningTarget(v AccountSource)`
 
 SetProvisioningTarget sets ProvisioningTarget field to given value.
 
@@ -157,20 +157,20 @@ HasResult returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *AccountRequest) GetSource() Source1`
+`func (o *AccountRequest) GetSource() AccountSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *AccountRequest) GetSourceOk() (*Source1, bool)`
+`func (o *AccountRequest) GetSourceOk() (*AccountSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *AccountRequest) SetSource(v Source1)`
+`func (o *AccountRequest) SetSource(v AccountSource)`
 
 SetSource sets Source field to given value.
 

@@ -14,12 +14,13 @@ Method | HTTP request | Description
 [**GetEntitlementsPotentialRole**](IAIRoleMiningApi.md#GetEntitlementsPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
 [**GetExcludedEntitlementsPotentialRole**](IAIRoleMiningApi.md#GetExcludedEntitlementsPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
 [**GetIdentitiesPotentialRole**](IAIRoleMiningApi.md#GetIdentitiesPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
+[**GetPotentialRole**](IAIRoleMiningApi.md#GetPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
 [**GetPotentialRoleApplications**](IAIRoleMiningApi.md#GetPotentialRoleApplications) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
-[**GetPotentialRoleSummaries**](IAIRoleMiningApi.md#GetPotentialRoleSummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves the potential role summaries for a role mining session
-[**GetPotentialRoleSummary**](IAIRoleMiningApi.md#GetPotentialRoleSummary) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role for a role mining session
+[**GetPotentialRoleSummaries**](IAIRoleMiningApi.md#GetPotentialRoleSummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
 [**GetRoleMiningSession**](IAIRoleMiningApi.md#GetRoleMiningSession) | **Get** /role-mining-sessions/{sessionId} | Get a role mining session
 [**GetRoleMiningSessionStatus**](IAIRoleMiningApi.md#GetRoleMiningSessionStatus) | **Get** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 [**GetRoleMiningSessions**](IAIRoleMiningApi.md#GetRoleMiningSessions) | **Get** /role-mining-sessions | Retrieves all role mining sessions
+[**PatchPotentialRole**](IAIRoleMiningApi.md#PatchPotentialRole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
 [**PatchRoleMiningSession**](IAIRoleMiningApi.md#PatchRoleMiningSession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
 [**RoleMiningSessions**](IAIRoleMiningApi.md#RoleMiningSessions) | **Post** /role-mining-sessions | Create a role mining session
 
@@ -805,6 +806,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetPotentialRole
+
+> RoleMiningPotentialRole GetPotentialRole(ctx, sessionId, potentialRoleId).Execute()
+
+Retrieves a specific potential role
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
+    potentialRoleId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | A potential role id in a role mining session
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IAIRoleMiningApi.GetPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetPotentialRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPotentialRole`: RoleMiningPotentialRole
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetPotentialRole`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sessionId** | **string** | The role mining session id | 
+**potentialRoleId** | **string** | A potential role id in a role mining session | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPotentialRoleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**RoleMiningPotentialRole**](RoleMiningPotentialRole.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetPotentialRoleApplications
 
 > []RoleMiningPotentialRoleApplication GetPotentialRoleApplications(ctx, sessionId, potentialRoleId).Offset(offset).Limit(limit).Count(count).Execute()
@@ -886,9 +960,9 @@ Name | Type | Description  | Notes
 
 ## GetPotentialRoleSummaries
 
-> []RoleMiningPotentialRoleSummary GetPotentialRoleSummaries(ctx, sessionId).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
+> []RoleMiningPotentialRoleSummary GetPotentialRoleSummaries(ctx, sessionId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
 
-Retrieves the potential role summaries for a role mining session
+Retrieves all potential role summaries
 
 
 
@@ -906,14 +980,15 @@ import (
 
 func main() {
     sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
-    sorters := "sorters_example" // string | sort by identityCount, density, freshness or quality (optional)
+    sorters := "createdDate" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate** (optional)
+    filters := "(createdByName co "int")and (createdById sw "2c9180907")and (type eq "COMMON")and ((name co "entt")or (saved eq true))" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq* (optional)
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetPotentialRoleSummaries(context.Background(), sessionId).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningApi.GetPotentialRoleSummaries(context.Background(), sessionId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetPotentialRoleSummaries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -939,7 +1014,8 @@ Other parameters are passed through a pointer to a apiGetPotentialRoleSummariesR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sorters** | **string** | sort by identityCount, density, freshness or quality | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate** | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq* | 
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
@@ -947,79 +1023,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]RoleMiningPotentialRoleSummary**](RoleMiningPotentialRoleSummary.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetPotentialRoleSummary
-
-> RoleMiningPotentialRoleSummaryDistribution GetPotentialRoleSummary(ctx, sessionId, potentialRoleId).Execute()
-
-Retrieves a specific potential role for a role mining session
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
-    potentialRoleId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | A potential role id in a role mining session
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetPotentialRoleSummary(context.Background(), sessionId, potentialRoleId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetPotentialRoleSummary``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetPotentialRoleSummary`: RoleMiningPotentialRoleSummaryDistribution
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetPotentialRoleSummary`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sessionId** | **string** | The role mining session id | 
-**potentialRoleId** | **string** | A potential role id in a role mining session | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPotentialRoleSummaryRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**RoleMiningPotentialRoleSummaryDistribution**](RoleMiningPotentialRoleSummaryDistribution.md)
 
 ### Authorization
 
@@ -1242,6 +1245,81 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PatchPotentialRole
+
+> map[string]interface{} PatchPotentialRole(ctx, sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
+
+Update a potential role
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
+    potentialRoleId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The potential role summary id
+    patchPotentialRoleRequestInner := []openapiclient.PatchPotentialRoleRequestInner{*openapiclient.NewPatchPotentialRoleRequestInner("replace", "/description")} // []PatchPotentialRoleRequestInner | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IAIRoleMiningApi.PatchPotentialRole(context.Background(), sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.PatchPotentialRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PatchPotentialRole`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.PatchPotentialRole`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sessionId** | **string** | The role mining session id | 
+**potentialRoleId** | **string** | The potential role summary id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchPotentialRoleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **patchPotentialRoleRequestInner** | [**[]PatchPotentialRoleRequestInner**](PatchPotentialRoleRequestInner.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

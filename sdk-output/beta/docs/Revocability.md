@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApprovalSchemes** | Pointer to [**[]ApprovalScheme**](ApprovalScheme.md) | List describing the steps in approving the revocation request | [optional] 
+**ApprovalSchemes** | Pointer to [**[]AccessProfileApprovalScheme**](AccessProfileApprovalScheme.md) | List describing the steps in approving the revocation request | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetApprovalSchemes
 
-`func (o *Revocability) GetApprovalSchemes() []ApprovalScheme`
+`func (o *Revocability) GetApprovalSchemes() []AccessProfileApprovalScheme`
 
 GetApprovalSchemes returns the ApprovalSchemes field if non-nil, zero value otherwise.
 
 ### GetApprovalSchemesOk
 
-`func (o *Revocability) GetApprovalSchemesOk() (*[]ApprovalScheme, bool)`
+`func (o *Revocability) GetApprovalSchemesOk() (*[]AccessProfileApprovalScheme, bool)`
 
 GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovalSchemes
 
-`func (o *Revocability) SetApprovalSchemes(v []ApprovalScheme)`
+`func (o *Revocability) SetApprovalSchemes(v []AccessProfileApprovalScheme)`
 
 SetApprovalSchemes sets ApprovalSchemes field to given value.
 

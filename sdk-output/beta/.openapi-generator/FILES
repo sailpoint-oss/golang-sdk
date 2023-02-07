@@ -69,6 +69,7 @@ docs/AccessItemRef.md
 docs/AccessItemRemoved.md
 docs/AccessItemRoleResponse.md
 docs/AccessProfile.md
+docs/AccessProfileApprovalScheme.md
 docs/AccessProfileBulkDeleteRequest.md
 docs/AccessProfileBulkDeleteResponse.md
 docs/AccessProfileRef.md
@@ -130,7 +131,6 @@ docs/ApprovalItemDetails.md
 docs/ApprovalItems.md
 docs/ApprovalReminderAndEscalationConfig.md
 docs/ApprovalScheme.md
-docs/ApprovalScheme1.md
 docs/ApprovalSchemeForRole.md
 docs/ApprovalStatus.md
 docs/ApprovalStatusDto.md
@@ -414,6 +414,7 @@ docs/PasswordOrgConfig.md
 docs/PasswordStatus.md
 docs/PasswordSyncGroup.md
 docs/PasswordSyncGroupsApi.md
+docs/PatchPotentialRoleRequestInner.md
 docs/PeerGroupMember.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
@@ -506,9 +507,9 @@ docs/RoleMiningPotentialRoleProvisionRequest.md
 docs/RoleMiningPotentialRoleProvisionState.md
 docs/RoleMiningPotentialRoleRef.md
 docs/RoleMiningPotentialRoleSummary.md
-docs/RoleMiningPotentialRoleSummaryDistribution.md
 docs/RoleMiningRoleType.md
 docs/RoleMiningSessionDto.md
+docs/RoleMiningSessionParametersDto.md
 docs/RoleMiningSessionResponse.md
 docs/RoleMiningSessionScope.md
 docs/RoleMiningSessionStatus.md
@@ -749,6 +750,7 @@ model_access_item_ref.go
 model_access_item_removed.go
 model_access_item_role_response.go
 model_access_profile.go
+model_access_profile_approval_scheme.go
 model_access_profile_bulk_delete_request.go
 model_access_profile_bulk_delete_response.go
 model_access_profile_ref.go
@@ -804,7 +806,6 @@ model_approval_item_details.go
 model_approval_items.go
 model_approval_reminder_and_escalation_config.go
 model_approval_scheme.go
-model_approval_scheme_1.go
 model_approval_scheme_for_role.go
 model_approval_status.go
 model_approval_status_dto.go
@@ -1061,6 +1062,7 @@ model_password_info_query_dto.go
 model_password_org_config.go
 model_password_status.go
 model_password_sync_group.go
+model_patch_potential_role_request_inner.go
 model_peer_group_member.go
 model_pending_approval.go
 model_pending_approval_action.go
@@ -1149,9 +1151,9 @@ model_role_mining_potential_role_provision_request.go
 model_role_mining_potential_role_provision_state.go
 model_role_mining_potential_role_ref.go
 model_role_mining_potential_role_summary.go
-model_role_mining_potential_role_summary_distribution.go
 model_role_mining_role_type.go
 model_role_mining_session_dto.go
+model_role_mining_session_parameters_dto.go
 model_role_mining_session_response.go
 model_role_mining_session_scope.go
 model_role_mining_session_status.go

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AccountId** | Pointer to **string** | the account id | [optional] 
 **AttributeRequests** | Pointer to [**[]AttributeRequest**](AttributeRequest.md) |  | [optional] 
 **Op** | Pointer to **string** | the operation that was used | [optional] 
-**Source** | Pointer to [**Source1**](Source1.md) |  | [optional] 
+**Source** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasOp returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *OriginalRequest) GetSource() Source1`
+`func (o *OriginalRequest) GetSource() AccountSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *OriginalRequest) GetSourceOk() (*Source1, bool)`
+`func (o *OriginalRequest) GetSourceOk() (*AccountSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *OriginalRequest) SetSource(v Source1)`
+`func (o *OriginalRequest) SetSource(v AccountSource)`
 
 SetSource sets Source field to given value.
 

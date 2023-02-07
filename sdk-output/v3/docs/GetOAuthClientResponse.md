@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **ClaimsSupported** | **bool** | An indicator of whether the API Client supports the serialization of SAML claims when used with the authorization_code flow | 
 **Created** | **time.Time** | The date and time, down to the millisecond, when the API Client was created | 
 **Modified** | **time.Time** | The date and time, down to the millisecond, when the API Client was last updated | 
+**LastUsed** | Pointer to **NullableTime** | The date and time, down to the millisecond, when this API Client was last used to generate an access token. This timestamp does not get updated on every API Client usage, but only once a day. This property can be useful for identifying which API Clients are no longer actively used and can be removed. | [optional] 
 **Scope** | **[]string** | Scopes of the API Client. | 
 
 ## Methods
@@ -422,6 +423,41 @@ and a boolean to check if the value has been set.
 SetModified sets Modified field to given value.
 
 
+### GetLastUsed
+
+`func (o *GetOAuthClientResponse) GetLastUsed() time.Time`
+
+GetLastUsed returns the LastUsed field if non-nil, zero value otherwise.
+
+### GetLastUsedOk
+
+`func (o *GetOAuthClientResponse) GetLastUsedOk() (*time.Time, bool)`
+
+GetLastUsedOk returns a tuple with the LastUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUsed
+
+`func (o *GetOAuthClientResponse) SetLastUsed(v time.Time)`
+
+SetLastUsed sets LastUsed field to given value.
+
+### HasLastUsed
+
+`func (o *GetOAuthClientResponse) HasLastUsed() bool`
+
+HasLastUsed returns a boolean if a field has been set.
+
+### SetLastUsedNil
+
+`func (o *GetOAuthClientResponse) SetLastUsedNil(b bool)`
+
+ SetLastUsedNil sets the value for LastUsed to be an explicit nil
+
+### UnsetLastUsed
+`func (o *GetOAuthClientResponse) UnsetLastUsed()`
+
+UnsetLastUsed ensures that no value is present for LastUsed, not even an explicit nil
 ### GetScope
 
 `func (o *GetOAuthClientResponse) GetScope() []string`

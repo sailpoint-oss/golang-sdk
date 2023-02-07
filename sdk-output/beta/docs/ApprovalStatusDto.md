@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ReviewedBy** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **Modified** | Pointer to **time.Time** | Time at which item was modified. | [optional] 
 **Status** | Pointer to [**ManualWorkItemState**](ManualWorkItemState.md) |  | [optional] 
-**Scheme** | Pointer to [**ApprovalScheme1**](ApprovalScheme1.md) |  | [optional] 
+**Scheme** | Pointer to [**ApprovalScheme**](ApprovalScheme.md) |  | [optional] 
 **ErrorMessages** | Pointer to [**[]ErrorMessageDto**](ErrorMessageDto.md) | If the request failed, includes any error messages that were generated. | [optional] 
 **Comment** | Pointer to **string** | Comment, if any, provided by the approver. | [optional] 
 **RemoveDate** | Pointer to **time.Time** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
@@ -186,20 +186,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetScheme
 
-`func (o *ApprovalStatusDto) GetScheme() ApprovalScheme1`
+`func (o *ApprovalStatusDto) GetScheme() ApprovalScheme`
 
 GetScheme returns the Scheme field if non-nil, zero value otherwise.
 
 ### GetSchemeOk
 
-`func (o *ApprovalStatusDto) GetSchemeOk() (*ApprovalScheme1, bool)`
+`func (o *ApprovalStatusDto) GetSchemeOk() (*ApprovalScheme, bool)`
 
 GetSchemeOk returns a tuple with the Scheme field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScheme
 
-`func (o *ApprovalStatusDto) SetScheme(v ApprovalScheme1)`
+`func (o *ApprovalStatusDto) SetScheme(v ApprovalScheme)`
 
 SetScheme sets Scheme field to given value.
 

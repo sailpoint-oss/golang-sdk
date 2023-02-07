@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
-**Name** | **string** |  | 
+**Id** | **string** | The unique ID of the referenced object. | 
+**Name** | **string** | The human readable name of the referenced object. | 
 **Type** | [**DocumentType**](DocumentType.md) |  | 
 **Description** | Pointer to **string** | A description of the entitlement | [optional] 
 **Attribute** | Pointer to **string** | The name of the entitlement attribute | [optional] 
