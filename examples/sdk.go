@@ -36,7 +36,8 @@ func getResults(ctx context.Context, apiClient *sailpoint.APIClient) {
 }
 
 func getSearchResults(ctx context.Context, apiClient *sailpoint.APIClient) {
-	search := v3.NewSearch1WithDefaults()
+	search := v3.NewSearchWithDefaults()
+	search.Indices = append(search.Indices, "identities")
 	searchString := []byte(`
 	{
 	"indices": [
@@ -51,7 +52,7 @@ func getSearchResults(ctx context.Context, apiClient *sailpoint.APIClient) {
 	}
 	  `)
 	search.UnmarshalJSON(searchString)
-	resp, r, err := apiClient.V3.SearchApi.SearchPost(ctx).Search1(*search).Execute()
+	resp, r, err := apiClient.V3.SearchApi.SearchPost(ctx).Search(*search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
