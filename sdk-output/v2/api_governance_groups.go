@@ -547,6 +547,27 @@ type ApiListWorkgroupMembersRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsApiService
 	workgroupId string
+	limit *int32
+	offset *int32
+	filters *string
+}
+
+// Max number of results to return
+func (r ApiListWorkgroupMembersRequest) Limit(limit int32) ApiListWorkgroupMembersRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results.
+func (r ApiListWorkgroupMembersRequest) Offset(offset int32) ApiListWorkgroupMembersRequest {
+	r.offset = &offset
+	return r
+}
+
+// Filter results using the following syntax. [{property:name, value: \&quot;Tyler\&quot;, operation: EQ}]
+func (r ApiListWorkgroupMembersRequest) Filters(filters string) ApiListWorkgroupMembersRequest {
+	r.filters = &filters
+	return r
 }
 
 func (r ApiListWorkgroupMembersRequest) Execute() ([]ListWorkgroupMembers200ResponseInner, *http.Response, error) {
@@ -592,6 +613,15 @@ func (a *GovernanceGroupsApiService) ListWorkgroupMembersExecute(r ApiListWorkgr
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.offset != nil {
+		localVarQueryParams.Add("offset", parameterToString(*r.offset, ""))
+	}
+	if r.filters != nil {
+		localVarQueryParams.Add("filters", parameterToString(*r.filters, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -649,6 +679,27 @@ func (a *GovernanceGroupsApiService) ListWorkgroupMembersExecute(r ApiListWorkgr
 type ApiListWorkgroupsRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsApiService
+	limit *int32
+	offset *int32
+	filters *string
+}
+
+// Max number of results to return
+func (r ApiListWorkgroupsRequest) Limit(limit int32) ApiListWorkgroupsRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results.
+func (r ApiListWorkgroupsRequest) Offset(offset int32) ApiListWorkgroupsRequest {
+	r.offset = &offset
+	return r
+}
+
+// Filter results using the following syntax. [{property:name, value: \&quot;Tyler\&quot;, operation: EQ}]
+func (r ApiListWorkgroupsRequest) Filters(filters string) ApiListWorkgroupsRequest {
+	r.filters = &filters
+	return r
 }
 
 func (r ApiListWorkgroupsRequest) Execute() ([]ListWorkgroups200ResponseInner, *http.Response, error) {
@@ -691,6 +742,15 @@ func (a *GovernanceGroupsApiService) ListWorkgroupsExecute(r ApiListWorkgroupsRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.limit != nil {
+		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+	}
+	if r.offset != nil {
+		localVarQueryParams.Add("offset", parameterToString(*r.offset, ""))
+	}
+	if r.filters != nil {
+		localVarQueryParams.Add("filters", parameterToString(*r.filters, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

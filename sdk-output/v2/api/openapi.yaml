@@ -91,6 +91,43 @@ paths:
     get:
       description: This API returns a list of work groups
       operationId: listWorkgroups
+      parameters:
+      - description: Max number of results to return
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: Offset into the full result set. Usually specified with *limit*
+          to paginate through the results.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Filter results using the following syntax.
+          [{property:name, value: "Tyler", operation: EQ}]
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -226,6 +263,42 @@ paths:
         schema:
           type: string
         style: simple
+      - description: Max number of results to return
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: Offset into the full result set. Usually specified with *limit*
+          to paginate through the results.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Filter results using the following syntax.
+          [{property:name, value: "Tyler", operation: EQ}]
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
