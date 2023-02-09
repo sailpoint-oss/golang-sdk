@@ -44,21 +44,23 @@ func getSearchResults(ctx context.Context, apiClient *sailpoint.APIClient) {
 		"identities"
 	],
 	"query": {
-		"query": "\"philip.ellis\"",
-		"fields": [
-		"name"
-		]
-	}
+		"query": "*"
+	},
+    "sort": [
+        "-name"
+    ]
 	}
 	  `)
 	search.UnmarshalJSON(searchString)
-	resp, r, err := apiClient.V3.SearchApi.SearchPost(ctx).Search(*search).Execute()
+	resp, r, err := sailpoint.PaginateSearch(ctx, apiClient, *search, 0, 10, 10000)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListAccounts`: []Account
-	fmt.Fprintf(os.Stdout, "First response from `AccountsApi.ListAccount`: %v\n", resp[0])
+	// response from `search`
+	for i := 0; i < len(resp); i++ {
+		fmt.Println(resp[i]["name"])
+	}
 }
 
 func getTransformResults(ctx context.Context, apiClient *sailpoint.APIClient) {
