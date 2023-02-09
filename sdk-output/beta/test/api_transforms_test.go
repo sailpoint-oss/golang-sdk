@@ -62,11 +62,11 @@ func Test_beta_TransformsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TransformsApiService GetTransformsList", func(t *testing.T) {
+	t.Run("Test TransformsApiService ListTransforms", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TransformsApi.GetTransformsList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TransformsApi.ListTransforms(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

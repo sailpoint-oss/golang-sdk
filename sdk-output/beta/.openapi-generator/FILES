@@ -215,6 +215,7 @@ docs/CreateWorkflowRequest.md
 docs/CustomPasswordInstruction.md
 docs/CustomPasswordInstructionsApi.md
 docs/DeleteCampaignsRequest.md
+docs/DeleteNonEmployeeRecordInBulkRequest.md
 docs/DeleteSource202Response.md
 docs/DkimAttributesDto.md
 docs/DomainAddressDto.md
@@ -261,7 +262,7 @@ docs/FullcampaignAllOfSearchCampaignInfo.md
 docs/FullcampaignAllOfSourceOwnerCampaignInfo.md
 docs/FullcampaignAllOfSourcesWithOrphanEntitlements.md
 docs/GetActiveCampaigns200ResponseInner.md
-docs/GetEvents200ResponseInner.md
+docs/GetHistoricalIdentityEvents200ResponseInner.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
 docs/GrantType.md
@@ -312,6 +313,7 @@ docs/IdentitySyncPayload.md
 docs/IdentityWithNewAccess.md
 docs/IdentityWithNewAccessAccessRefsInner.md
 docs/ImportOptions.md
+docs/ImportSpConfigRequest.md
 docs/Invocation.md
 docs/InvocationStatus.md
 docs/InvocationStatusType.md
@@ -364,8 +366,6 @@ docs/NonEmployeeBulkUploadStatus.md
 docs/NonEmployeeIdnUserRequest.md
 docs/NonEmployeeLifecycleManagementApi.md
 docs/NonEmployeeRecord.md
-docs/NonEmployeeRecordBulkDeleteRequest.md
-docs/NonEmployeeRecordsBulkUploadRequest.md
 docs/NonEmployeeRejectApprovalDecision.md
 docs/NonEmployeeRequest.md
 docs/NonEmployeeRequestAllOf.md
@@ -584,7 +584,6 @@ docs/SourceSyncPayload.md
 docs/SourceUpdated.md
 docs/SourcesApi.md
 docs/SpConfigExportResults.md
-docs/SpConfigImportRequest.md
 docs/SpConfigImportResults.md
 docs/SpConfigJob.md
 docs/SpConfigMessage.md
@@ -699,6 +698,7 @@ docs/TriggerOutputAccessRequestPreApproval.md
 docs/TriggerType.md
 docs/TriggersApi.md
 docs/UpdatePasswordDictionaryRequest.md
+docs/UploadNonEmployeeRecordsInBulkRequest.md
 docs/UsageType.md
 docs/V3ConnectorDto.md
 docs/VAClusterStatusChangeEvent.md
@@ -885,6 +885,7 @@ model_create_personal_access_token_response.go
 model_create_workflow_request.go
 model_custom_password_instruction.go
 model_delete_campaigns_request.go
+model_delete_non_employee_record_in_bulk_request.go
 model_delete_source_202_response.go
 model_dkim_attributes_dto.go
 model_domain_address_dto.go
@@ -930,7 +931,7 @@ model_fullcampaign_all_of_search_campaign_info.go
 model_fullcampaign_all_of_source_owner_campaign_info.go
 model_fullcampaign_all_of_sources_with_orphan_entitlements.go
 model_get_active_campaigns_200_response_inner.go
-model_get_events_200_response_inner.go
+model_get_historical_identity_events_200_response_inner.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
 model_grant_type.go
@@ -972,6 +973,7 @@ model_identity_sync_payload.go
 model_identity_with_new_access.go
 model_identity_with_new_access_access_refs_inner.go
 model_import_options.go
+model_import_sp_config_request.go
 model_invocation.go
 model_invocation_status.go
 model_invocation_status_type.go
@@ -1019,8 +1021,6 @@ model_non_employee_bulk_upload_job.go
 model_non_employee_bulk_upload_status.go
 model_non_employee_idn_user_request.go
 model_non_employee_record.go
-model_non_employee_record_bulk_delete_request.go
-model_non_employee_records_bulk_upload_request.go
 model_non_employee_reject_approval_decision.go
 model_non_employee_request.go
 model_non_employee_request_all_of.go
@@ -1220,7 +1220,6 @@ model_source_sync_job.go
 model_source_sync_payload.go
 model_source_updated.go
 model_sp_config_export_results.go
-model_sp_config_import_request.go
 model_sp_config_import_results.go
 model_sp_config_job.go
 model_sp_config_message.go
@@ -1332,6 +1331,7 @@ model_trigger_output_access_request_dynamic_approver.go
 model_trigger_output_access_request_pre_approval.go
 model_trigger_type.go
 model_update_password_dictionary_request.go
+model_upload_non_employee_records_in_bulk_request.go
 model_usage_type.go
 model_v3_connector_dto.go
 model_va_cluster_status_change_event.go

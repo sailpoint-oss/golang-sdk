@@ -34,13 +34,13 @@ func Test_beta_SODPolicyApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODPolicyApiService DeleteSodPolicyById", func(t *testing.T) {
+	t.Run("Test SODPolicyApiService DeleteSodPolicy", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SODPolicyApi.DeleteSodPolicyById(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SODPolicyApi.DeleteSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,13 +48,13 @@ func Test_beta_SODPolicyApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODPolicyApiService DeleteSodPolicyScheduleById", func(t *testing.T) {
+	t.Run("Test SODPolicyApiService DeleteSodPolicySchedule", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SODPolicyApi.DeleteSodPolicyScheduleById(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SODPolicyApi.DeleteSodPolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -103,13 +103,13 @@ func Test_beta_SODPolicyApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODPolicyApiService GetSodPolicyById", func(t *testing.T) {
+	t.Run("Test SODPolicyApiService GetSodPolicy", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SODPolicyApi.GetSodPolicyById(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SODPolicyApi.GetSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -117,13 +117,13 @@ func Test_beta_SODPolicyApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODPolicyApiService GetSodPolicyScheduleById", func(t *testing.T) {
+	t.Run("Test SODPolicyApiService GetSodPolicySchedule", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SODPolicyApi.GetSodPolicyScheduleById(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SODPolicyApi.GetSodPolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -185,11 +185,11 @@ func Test_beta_SODPolicyApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODPolicyApiService RunAllPoliciesForOrg", func(t *testing.T) {
+	t.Run("Test SODPolicyApiService RunSodAllPoliciesForOrg", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SODPolicyApi.RunAllPoliciesForOrg(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SODPolicyApi.RunSodAllPoliciesForOrg(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -211,13 +211,13 @@ func Test_beta_SODPolicyApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODPolicyApiService UpdatePolicyById", func(t *testing.T) {
+	t.Run("Test SODPolicyApiService UpdatePolicySchedule", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SODPolicyApi.UpdatePolicyById(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SODPolicyApi.UpdatePolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -225,13 +225,13 @@ func Test_beta_SODPolicyApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODPolicyApiService UpdatePolicyScheduleById", func(t *testing.T) {
+	t.Run("Test SODPolicyApiService UpdateSodPolicy", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SODPolicyApi.UpdatePolicyScheduleById(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SODPolicyApi.UpdateSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

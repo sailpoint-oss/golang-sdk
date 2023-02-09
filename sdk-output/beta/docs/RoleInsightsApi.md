@@ -4,6 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateRoleInsightRequests**](RoleInsightsApi.md#CreateRoleInsightRequests) | **Post** /role-insights/requests | A request to generate insights for roles
 [**DownloadRoleInsightsEntitlementsChanges**](RoleInsightsApi.md#DownloadRoleInsightsEntitlementsChanges) | **Get** /role-insights/{insightId}/entitlement-changes/download | Download entitlement insights for a role
 [**GetEntitlementChangesIdentities**](RoleInsightsApi.md#GetEntitlementChangesIdentities) | **Get** /role-insights/{insightId}/entitlement-changes/{entitlementId}/identities | Get identities for a suggested entitlement (for a role)
 [**GetRoleInsight**](RoleInsightsApi.md#GetRoleInsight) | **Get** /role-insights/{insightId} | Get a single role insight
@@ -12,8 +13,68 @@ Method | HTTP request | Description
 [**GetRoleInsightsEntitlementsChanges**](RoleInsightsApi.md#GetRoleInsightsEntitlementsChanges) | **Get** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
 [**GetRoleInsightsRequests**](RoleInsightsApi.md#GetRoleInsightsRequests) | **Get** /role-insights/requests/{id} | Returns the metadata for a request in order to generate insights for roles.
 [**GetRoleInsightsSummary**](RoleInsightsApi.md#GetRoleInsightsSummary) | **Get** /role-insights/summary | Get role insights summary information
-[**RoleInsightsRequests**](RoleInsightsApi.md#RoleInsightsRequests) | **Post** /role-insights/requests | A request to generate insights for roles
 
+
+
+## CreateRoleInsightRequests
+
+> RoleInsightsResponse CreateRoleInsightRequests(ctx).Execute()
+
+A request to generate insights for roles
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RoleInsightsApi.CreateRoleInsightRequests(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsApi.CreateRoleInsightRequests``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateRoleInsightRequests`: RoleInsightsResponse
+    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsApi.CreateRoleInsightRequests`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateRoleInsightRequestsRequest struct via the builder pattern
+
+
+### Return type
+
+[**RoleInsightsResponse**](RoleInsightsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## DownloadRoleInsightsEntitlementsChanges
@@ -581,67 +642,6 @@ Other parameters are passed through a pointer to a apiGetRoleInsightsSummaryRequ
 ### Return type
 
 [**RoleInsightsSummary**](RoleInsightsSummary.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RoleInsightsRequests
-
-> RoleInsightsResponse RoleInsightsRequests(ctx).Execute()
-
-A request to generate insights for roles
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsightsApi.RoleInsightsRequests(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsApi.RoleInsightsRequests``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RoleInsightsRequests`: RoleInsightsResponse
-    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsApi.RoleInsightsRequests`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRoleInsightsRequestsRequest struct via the builder pattern
-
-
-### Return type
-
-[**RoleInsightsResponse**](RoleInsightsResponse.md)
 
 ### Authorization
 

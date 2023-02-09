@@ -46,14 +46,14 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TaggedObjectsApiService DeleteTaggedObjectByTypeAndId", func(t *testing.T) {
+	t.Run("Test TaggedObjectsApiService DeleteTaggedObject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var type_ string
 		var id string
 
-		resp, httpRes, err := apiClient.TaggedObjectsApi.DeleteTaggedObjectByTypeAndId(context.Background(), type_, id).Execute()
+		resp, httpRes, err := apiClient.TaggedObjectsApi.DeleteTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -61,14 +61,14 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TaggedObjectsApiService GetTaggedObjectByTypeAndId", func(t *testing.T) {
+	t.Run("Test TaggedObjectsApiService GetTaggedObject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var type_ string
 		var id string
 
-		resp, httpRes, err := apiClient.TaggedObjectsApi.GetTaggedObjectByTypeAndId(context.Background(), type_, id).Execute()
+		resp, httpRes, err := apiClient.TaggedObjectsApi.GetTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -114,14 +114,14 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TaggedObjectsApiService UpdateTaggedObjectByTypeAndId", func(t *testing.T) {
+	t.Run("Test TaggedObjectsApiService UpdateTaggedObject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var type_ string
 		var id string
 
-		resp, httpRes, err := apiClient.TaggedObjectsApi.UpdateTaggedObjectByTypeAndId(context.Background(), type_, id).Execute()
+		resp, httpRes, err := apiClient.TaggedObjectsApi.UpdateTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

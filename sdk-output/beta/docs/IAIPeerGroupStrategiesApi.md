@@ -4,13 +4,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetOutliers**](IAIPeerGroupStrategiesApi.md#GetOutliers) | **Get** /peer-group-strategies/{strategy}/identity-outliers | Identity Outliers List
+[**GetPeerGroupOutliers**](IAIPeerGroupStrategiesApi.md#GetPeerGroupOutliers) | **Get** /peer-group-strategies/{strategy}/identity-outliers | Identity Outliers List
 
 
 
-## GetOutliers
+## GetPeerGroupOutliers
 
-> []PeerGroupMember GetOutliers(ctx, strategy).Limit(limit).Offset(offset).Count(count).Execute()
+> []PeerGroupMember GetPeerGroupOutliers(ctx, strategy).Limit(limit).Offset(offset).Count(count).Execute()
 
 Identity Outliers List
 
@@ -36,13 +36,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIPeerGroupStrategiesApi.GetOutliers(context.Background(), strategy).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IAIPeerGroupStrategiesApi.GetPeerGroupOutliers(context.Background(), strategy).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIPeerGroupStrategiesApi.GetOutliers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIPeerGroupStrategiesApi.GetPeerGroupOutliers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOutliers`: []PeerGroupMember
-    fmt.Fprintf(os.Stdout, "Response from `IAIPeerGroupStrategiesApi.GetOutliers`: %v\n", resp)
+    // response from `GetPeerGroupOutliers`: []PeerGroupMember
+    fmt.Fprintf(os.Stdout, "Response from `IAIPeerGroupStrategiesApi.GetPeerGroupOutliers`: %v\n", resp)
 }
 ```
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetOutliersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetPeerGroupOutliersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

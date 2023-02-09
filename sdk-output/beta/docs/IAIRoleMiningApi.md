@@ -5,8 +5,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreatePotentialRoleProvisionRequest**](IAIRoleMiningApi.md#CreatePotentialRoleProvisionRequest) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/provision | Create request to provision a potential role into an actual role.
+[**CreateRoleMiningSessions**](IAIRoleMiningApi.md#CreateRoleMiningSessions) | **Post** /role-mining-sessions | Create a role mining session
 [**DownloadRoleMiningPotentialRoleZip**](IAIRoleMiningApi.md#DownloadRoleMiningPotentialRoleZip) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId}/download | Export (download) details for a potential role in a role mining session
-[**EditEntitlementsPotentialRole**](IAIRoleMiningApi.md#EditEntitlementsPotentialRole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 [**ExportRoleMiningPotentialRole**](IAIRoleMiningApi.md#ExportRoleMiningPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export | Export (download) details for a potential role in a role mining session
 [**ExportRoleMiningPotentialRoleAsync**](IAIRoleMiningApi.md#ExportRoleMiningPotentialRoleAsync) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async | Asynchronously export details for a potential role in a role mining session and upload to S3
 [**ExportRoleMiningPotentialRoleStatus**](IAIRoleMiningApi.md#ExportRoleMiningPotentialRoleStatus) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId} | Retrieve status of a potential role export job
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**GetRoleMiningSessions**](IAIRoleMiningApi.md#GetRoleMiningSessions) | **Get** /role-mining-sessions | Retrieves all role mining sessions
 [**PatchPotentialRole**](IAIRoleMiningApi.md#PatchPotentialRole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
 [**PatchRoleMiningSession**](IAIRoleMiningApi.md#PatchRoleMiningSession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
-[**RoleMiningSessions**](IAIRoleMiningApi.md#RoleMiningSessions) | **Post** /role-mining-sessions | Create a role mining session
+[**UpdateEntitlementsPotentialRole**](IAIRoleMiningApi.md#UpdateEntitlementsPotentialRole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 
 
 
@@ -90,6 +90,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RoleMiningPotentialRoleSummary**](RoleMiningPotentialRoleSummary.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateRoleMiningSessions
+
+> RoleMiningSessionResponse CreateRoleMiningSessions(ctx).RoleMiningSessionDto(roleMiningSessionDto).Execute()
+
+Create a role mining session
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    roleMiningSessionDto := *openapiclient.NewRoleMiningSessionDto() // RoleMiningSessionDto | Role mining session parameters
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IAIRoleMiningApi.CreateRoleMiningSessions(context.Background()).RoleMiningSessionDto(roleMiningSessionDto).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.CreateRoleMiningSessions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateRoleMiningSessions`: RoleMiningSessionResponse
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.CreateRoleMiningSessions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateRoleMiningSessionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **roleMiningSessionDto** | [**RoleMiningSessionDto**](RoleMiningSessionDto.md) | Role mining session parameters | 
+
+### Return type
+
+[**RoleMiningSessionResponse**](RoleMiningSessionResponse.md)
 
 ### Authorization
 
@@ -175,81 +241,6 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/zip, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EditEntitlementsPotentialRole
-
-> RoleMiningPotentialRole EditEntitlementsPotentialRole(ctx, sessionId, potentialRoleId).RoleMiningPotentialRoleEditEntitlements(roleMiningPotentialRoleEditEntitlements).Execute()
-
-Edit entitlements for a potential role to exclude some entitlements
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
-    potentialRoleId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | A potential role id in a role mining session
-    roleMiningPotentialRoleEditEntitlements := *openapiclient.NewRoleMiningPotentialRoleEditEntitlements() // RoleMiningPotentialRoleEditEntitlements | Role mining session parameters
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.EditEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).RoleMiningPotentialRoleEditEntitlements(roleMiningPotentialRoleEditEntitlements).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.EditEntitlementsPotentialRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditEntitlementsPotentialRole`: RoleMiningPotentialRole
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.EditEntitlementsPotentialRole`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sessionId** | **string** | The role mining session id | 
-**potentialRoleId** | **string** | A potential role id in a role mining session | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEditEntitlementsPotentialRoleRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **roleMiningPotentialRoleEditEntitlements** | [**RoleMiningPotentialRoleEditEntitlements**](RoleMiningPotentialRoleEditEntitlements.md) | Role mining session parameters | 
-
-### Return type
-
-[**RoleMiningPotentialRole**](RoleMiningPotentialRole.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1399,11 +1390,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RoleMiningSessions
+## UpdateEntitlementsPotentialRole
 
-> RoleMiningSessionResponse RoleMiningSessions(ctx).RoleMiningSessionDto(roleMiningSessionDto).Execute()
+> RoleMiningPotentialRole UpdateEntitlementsPotentialRole(ctx, sessionId, potentialRoleId).RoleMiningPotentialRoleEditEntitlements(roleMiningPotentialRoleEditEntitlements).Execute()
 
-Create a role mining session
+Edit entitlements for a potential role to exclude some entitlements
 
 
 
@@ -1420,36 +1411,45 @@ import (
 )
 
 func main() {
-    roleMiningSessionDto := *openapiclient.NewRoleMiningSessionDto() // RoleMiningSessionDto | Role mining session parameters
+    sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
+    potentialRoleId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | A potential role id in a role mining session
+    roleMiningPotentialRoleEditEntitlements := *openapiclient.NewRoleMiningPotentialRoleEditEntitlements() // RoleMiningPotentialRoleEditEntitlements | Role mining session parameters
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.RoleMiningSessions(context.Background()).RoleMiningSessionDto(roleMiningSessionDto).Execute()
+    resp, r, err := apiClient.IAIRoleMiningApi.UpdateEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).RoleMiningPotentialRoleEditEntitlements(roleMiningPotentialRoleEditEntitlements).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.RoleMiningSessions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.UpdateEntitlementsPotentialRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RoleMiningSessions`: RoleMiningSessionResponse
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.RoleMiningSessions`: %v\n", resp)
+    // response from `UpdateEntitlementsPotentialRole`: RoleMiningPotentialRole
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.UpdateEntitlementsPotentialRole`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sessionId** | **string** | The role mining session id | 
+**potentialRoleId** | **string** | A potential role id in a role mining session | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRoleMiningSessionsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateEntitlementsPotentialRoleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **roleMiningSessionDto** | [**RoleMiningSessionDto**](RoleMiningSessionDto.md) | Role mining session parameters | 
+
+
+ **roleMiningPotentialRoleEditEntitlements** | [**RoleMiningPotentialRoleEditEntitlements**](RoleMiningPotentialRoleEditEntitlements.md) | Role mining session parameters | 
 
 ### Return type
 
-[**RoleMiningSessionResponse**](RoleMiningSessionResponse.md)
+[**RoleMiningPotentialRole**](RoleMiningPotentialRole.md)
 
 ### Authorization
 

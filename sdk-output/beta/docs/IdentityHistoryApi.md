@@ -6,11 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CompareIdentitySnapshots**](IdentityHistoryApi.md#CompareIdentitySnapshots) | **Get** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
 [**CompareIdentitySnapshotsAccessType**](IdentityHistoryApi.md#CompareIdentitySnapshotsAccessType) | **Get** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
-[**GetEvents**](IdentityHistoryApi.md#GetEvents) | **Get** /historical-identities/{id}/events | Lists all events for the given identity
+[**GetHistoricalIdentityEvents**](IdentityHistoryApi.md#GetHistoricalIdentityEvents) | **Get** /historical-identities/{id}/events | Lists all events for the given identity
 [**GetIdentity**](IdentityHistoryApi.md#GetIdentity) | **Get** /historical-identities/{id} | Gets the most recent snapshot of a specific identity
 [**GetIdentitySnapshot**](IdentityHistoryApi.md#GetIdentitySnapshot) | **Get** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
 [**GetIdentitySnapshotSummary**](IdentityHistoryApi.md#GetIdentitySnapshotSummary) | **Get** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
-[**GetStartDate**](IdentityHistoryApi.md#GetStartDate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
+[**GetIdentityStartDate**](IdentityHistoryApi.md#GetIdentityStartDate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
 [**ListIdentities**](IdentityHistoryApi.md#ListIdentities) | **Get** /historical-identities | Lists all the identities
 [**ListIdentityAccessItems**](IdentityHistoryApi.md#ListIdentityAccessItems) | **Get** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
 [**ListIdentitySnapshotAccessItems**](IdentityHistoryApi.md#ListIdentitySnapshotAccessItems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
@@ -185,9 +185,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetEvents
+## GetHistoricalIdentityEvents
 
-> []GetEvents200ResponseInner GetEvents(ctx, id).From(from).EventTypes(eventTypes).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
+> []GetHistoricalIdentityEvents200ResponseInner GetHistoricalIdentityEvents(ctx, id).From(from).EventTypes(eventTypes).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
 
 Lists all events for the given identity
 
@@ -216,13 +216,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.GetEvents(context.Background(), id).From(from).EventTypes(eventTypes).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentityHistoryApi.GetHistoricalIdentityEvents(context.Background(), id).From(from).EventTypes(eventTypes).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.GetEvents``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.GetHistoricalIdentityEvents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetEvents`: []GetEvents200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.GetEvents`: %v\n", resp)
+    // response from `GetHistoricalIdentityEvents`: []GetHistoricalIdentityEvents200ResponseInner
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.GetHistoricalIdentityEvents`: %v\n", resp)
 }
 ```
 
@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetEventsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetHistoricalIdentityEventsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]GetEvents200ResponseInner**](GetEvents200ResponseInner.md)
+[**[]GetHistoricalIdentityEvents200ResponseInner**](GetHistoricalIdentityEvents200ResponseInner.md)
 
 ### Authorization
 
@@ -492,9 +492,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetStartDate
+## GetIdentityStartDate
 
-> string GetStartDate(ctx, id).Execute()
+> string GetIdentityStartDate(ctx, id).Execute()
 
 Gets the start date of the identity
 
@@ -517,13 +517,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.GetStartDate(context.Background(), id).Execute()
+    resp, r, err := apiClient.IdentityHistoryApi.GetIdentityStartDate(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.GetStartDate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.GetIdentityStartDate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetStartDate`: string
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.GetStartDate`: %v\n", resp)
+    // response from `GetIdentityStartDate`: string
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.GetIdentityStartDate`: %v\n", resp)
 }
 ```
 
@@ -537,7 +537,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetStartDateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetIdentityStartDateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

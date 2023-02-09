@@ -4,86 +4,18 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApprovalSummary**](AccessRequestApprovalsApi.md#ApprovalSummary) | **Get** /access-request-approvals/approval-summary | Get the number of pending, approved and rejected access requests approvals
-[**ApproveRequest**](AccessRequestApprovalsApi.md#ApproveRequest) | **Post** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
-[**ForwardRequest**](AccessRequestApprovalsApi.md#ForwardRequest) | **Post** /access-request-approvals/{approvalId}/forward | Forwards an access request approval to a new owner.
+[**ApproveAccessRequest**](AccessRequestApprovalsApi.md#ApproveAccessRequest) | **Post** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
+[**ForwardAccessRequest**](AccessRequestApprovalsApi.md#ForwardAccessRequest) | **Post** /access-request-approvals/{approvalId}/forward | Forwards an access request approval to a new owner.
+[**GetAccessRequestApprovalSummary**](AccessRequestApprovalsApi.md#GetAccessRequestApprovalSummary) | **Get** /access-request-approvals/approval-summary | Get the number of pending, approved and rejected access requests approvals
 [**ListCompletedApprovals**](AccessRequestApprovalsApi.md#ListCompletedApprovals) | **Get** /access-request-approvals/completed | Completed Access Request Approvals List
 [**ListPendingApprovals**](AccessRequestApprovalsApi.md#ListPendingApprovals) | **Get** /access-request-approvals/pending | Pending Access Request Approvals List
-[**RejectRequest**](AccessRequestApprovalsApi.md#RejectRequest) | **Post** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
+[**RejectAccessRequest**](AccessRequestApprovalsApi.md#RejectAccessRequest) | **Post** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
 
 
 
-## ApprovalSummary
+## ApproveAccessRequest
 
-> ApprovalSummary ApprovalSummary(ctx).OwnerId(ownerId).FromDate(fromDate).Execute()
-
-Get the number of pending, approved and rejected access requests approvals
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    ownerId := "ownerId_example" // string | The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
-    fromDate := "fromDate_example" // string | From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date=2020-03-19T19:59:11Z (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsApi.ApprovalSummary(context.Background()).OwnerId(ownerId).FromDate(fromDate).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.ApprovalSummary``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ApprovalSummary`: ApprovalSummary
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.ApprovalSummary`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiApprovalSummaryRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ownerId** | **string** | The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. | 
- **fromDate** | **string** | From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date&#x3D;2020-03-19T19:59:11Z | 
-
-### Return type
-
-[**ApprovalSummary**](ApprovalSummary.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ApproveRequest
-
-> map[string]interface{} ApproveRequest(ctx, approvalId).CommentDto(commentDto).Execute()
+> map[string]interface{} ApproveAccessRequest(ctx, approvalId).CommentDto(commentDto).Execute()
 
 Approves an access request approval.
 
@@ -107,13 +39,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsApi.ApproveRequest(context.Background(), approvalId).CommentDto(commentDto).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsApi.ApproveAccessRequest(context.Background(), approvalId).CommentDto(commentDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.ApproveRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.ApproveAccessRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApproveRequest`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.ApproveRequest`: %v\n", resp)
+    // response from `ApproveAccessRequest`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.ApproveAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -127,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApproveRequestRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApproveAccessRequestRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,9 +85,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ForwardRequest
+## ForwardAccessRequest
 
-> map[string]interface{} ForwardRequest(ctx, approvalId).ForwardApprovalDto(forwardApprovalDto).Execute()
+> map[string]interface{} ForwardAccessRequest(ctx, approvalId).ForwardApprovalDto(forwardApprovalDto).Execute()
 
 Forwards an access request approval to a new owner.
 
@@ -179,13 +111,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsApi.ForwardRequest(context.Background(), approvalId).ForwardApprovalDto(forwardApprovalDto).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsApi.ForwardAccessRequest(context.Background(), approvalId).ForwardApprovalDto(forwardApprovalDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.ForwardRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.ForwardAccessRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ForwardRequest`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.ForwardRequest`: %v\n", resp)
+    // response from `ForwardAccessRequest`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.ForwardAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -199,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiForwardRequestRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiForwardAccessRequestRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -218,6 +150,74 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAccessRequestApprovalSummary
+
+> ApprovalSummary GetAccessRequestApprovalSummary(ctx).OwnerId(ownerId).FromDate(fromDate).Execute()
+
+Get the number of pending, approved and rejected access requests approvals
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    ownerId := "ownerId_example" // string | The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. (optional)
+    fromDate := "fromDate_example" // string | From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date=2020-03-19T19:59:11Z (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccessRequestApprovalsApi.GetAccessRequestApprovalSummary(context.Background()).OwnerId(ownerId).FromDate(fromDate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.GetAccessRequestApprovalSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAccessRequestApprovalSummary`: ApprovalSummary
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.GetAccessRequestApprovalSummary`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAccessRequestApprovalSummaryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ownerId** | **string** | The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.    * ORG_ADMIN users can call this with any identity ID value.    * ORG_ADMIN user can also fetch all the approvals in the org, when owner-id is not used.    * Non ORG_ADMIN users can only specify *me* or pass their own identity ID value. | 
+ **fromDate** | **string** | From date is the date and time from which the results will be shown. It should be in a valid ISO-8601 format  example: from-date&#x3D;2020-03-19T19:59:11Z | 
+
+### Return type
+
+[**ApprovalSummary**](ApprovalSummary.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -377,9 +377,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RejectRequest
+## RejectAccessRequest
 
-> map[string]interface{} RejectRequest(ctx, approvalId).CommentDto(commentDto).Execute()
+> map[string]interface{} RejectAccessRequest(ctx, approvalId).CommentDto(commentDto).Execute()
 
 Rejects an access request approval.
 
@@ -403,13 +403,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsApi.RejectRequest(context.Background(), approvalId).CommentDto(commentDto).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsApi.RejectAccessRequest(context.Background(), approvalId).CommentDto(commentDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.RejectRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.RejectAccessRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RejectRequest`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.RejectRequest`: %v\n", resp)
+    // response from `RejectAccessRequest`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.RejectAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRejectRequestRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRejectAccessRequestRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

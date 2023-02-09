@@ -12,8 +12,8 @@ Method | HTTP request | Description
 [**GetServiceDeskIntegrationTypes**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegrationTypes) | **Get** /service-desk-integrations/types | Service Desk Integration Types List.
 [**GetStatusCheckDetails**](ServiceDeskIntegrationApi.md#GetStatusCheckDetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration of queued SDIM tickets
 [**PatchServiceDeskIntegration**](ServiceDeskIntegrationApi.md#PatchServiceDeskIntegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update - PATCH
+[**UpdateManagedClientStatusCheckDetails**](ServiceDeskIntegrationApi.md#UpdateManagedClientStatusCheckDetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration of queued SDIM tickets
 [**UpdateServiceDeskIntegration**](ServiceDeskIntegrationApi.md#UpdateServiceDeskIntegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration by ID
-[**UpdateStatusCheckDetails**](ServiceDeskIntegrationApi.md#UpdateStatusCheckDetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration of queued SDIM tickets
 
 
 
@@ -559,6 +559,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## UpdateManagedClientStatusCheckDetails
+
+> QueuedCheckConfigDetails UpdateManagedClientStatusCheckDetails(ctx).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
+
+Update the time check configuration of queued SDIM tickets
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    queuedCheckConfigDetails := *openapiclient.NewQueuedCheckConfigDetails("30", "2") // QueuedCheckConfigDetails | the modified time check configuration
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ServiceDeskIntegrationApi.UpdateManagedClientStatusCheckDetails(context.Background()).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationApi.UpdateManagedClientStatusCheckDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateManagedClientStatusCheckDetails`: QueuedCheckConfigDetails
+    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationApi.UpdateManagedClientStatusCheckDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateManagedClientStatusCheckDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **queuedCheckConfigDetails** | [**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md) | the modified time check configuration | 
+
+### Return type
+
+[**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateServiceDeskIntegration
 
 > ServiceDeskIntegrationDto UpdateServiceDeskIntegration(ctx, id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
@@ -616,72 +682,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdateStatusCheckDetails
-
-> QueuedCheckConfigDetails UpdateStatusCheckDetails(ctx).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
-
-Update the time check configuration of queued SDIM tickets
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    queuedCheckConfigDetails := *openapiclient.NewQueuedCheckConfigDetails("30", "2") // QueuedCheckConfigDetails | the modified time check configuration
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationApi.UpdateStatusCheckDetails(context.Background()).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationApi.UpdateStatusCheckDetails``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateStatusCheckDetails`: QueuedCheckConfigDetails
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationApi.UpdateStatusCheckDetails`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateStatusCheckDetailsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **queuedCheckConfigDetails** | [**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md) | the modified time check configuration | 
-
-### Return type
-
-[**QueuedCheckConfigDetails**](QueuedCheckConfigDetails.md)
 
 ### Authorization
 

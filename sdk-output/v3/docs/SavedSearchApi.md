@@ -4,18 +4,18 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SavedSearchCreate**](SavedSearchApi.md#SavedSearchCreate) | **Post** /saved-searches | Create a saved search
-[**SavedSearchDelete**](SavedSearchApi.md#SavedSearchDelete) | **Delete** /saved-searches/{id} | Delete a document by ID
-[**SavedSearchExecute**](SavedSearchApi.md#SavedSearchExecute) | **Post** /saved-searches/{id}/execute | Execute a saved search by ID
-[**SavedSearchGet**](SavedSearchApi.md#SavedSearchGet) | **Get** /saved-searches/{id} | Return a saved search by ID
-[**SavedSearchList**](SavedSearchApi.md#SavedSearchList) | **Get** /saved-searches | Return a list of Saved Searches
-[**SavedSearchUpdate**](SavedSearchApi.md#SavedSearchUpdate) | **Put** /saved-searches/{id} | Updates an existing saved search 
+[**CreateSavedSearch**](SavedSearchApi.md#CreateSavedSearch) | **Post** /saved-searches | Create a saved search
+[**DeleteSavedSearch**](SavedSearchApi.md#DeleteSavedSearch) | **Delete** /saved-searches/{id} | Delete a document by ID
+[**ExecuteSavedSearch**](SavedSearchApi.md#ExecuteSavedSearch) | **Post** /saved-searches/{id}/execute | Execute a saved search by ID
+[**GetSavedSearch**](SavedSearchApi.md#GetSavedSearch) | **Get** /saved-searches/{id} | Return a saved search by ID
+[**ListSavedSearches**](SavedSearchApi.md#ListSavedSearches) | **Get** /saved-searches | Return a list of Saved Searches
+[**UpdateSavedSearch**](SavedSearchApi.md#UpdateSavedSearch) | **Put** /saved-searches/{id} | Updates an existing saved search 
 
 
 
-## SavedSearchCreate
+## CreateSavedSearch
 
-> SavedSearch SavedSearchCreate(ctx).SavedSearchCreateRequest(savedSearchCreateRequest).Execute()
+> SavedSearch CreateSavedSearch(ctx).CreateSavedSearchRequest(createSavedSearchRequest).Execute()
 
 Create a saved search
 
@@ -34,17 +34,17 @@ import (
 )
 
 func main() {
-    savedSearchCreateRequest := *openapiclient.NewSavedSearchCreateRequest([]openapiclient.Index{openapiclient.Index("accessprofiles")}, "@accounts(disabled:true)") // SavedSearchCreateRequest | The saved search to persist.
+    createSavedSearchRequest := *openapiclient.NewCreateSavedSearchRequest([]openapiclient.Index{openapiclient.Index("accessprofiles")}, "@accounts(disabled:true)") // CreateSavedSearchRequest | The saved search to persist.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchApi.SavedSearchCreate(context.Background()).SavedSearchCreateRequest(savedSearchCreateRequest).Execute()
+    resp, r, err := apiClient.SavedSearchApi.CreateSavedSearch(context.Background()).CreateSavedSearchRequest(createSavedSearchRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.SavedSearchCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.CreateSavedSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SavedSearchCreate`: SavedSearch
-    fmt.Fprintf(os.Stdout, "Response from `SavedSearchApi.SavedSearchCreate`: %v\n", resp)
+    // response from `CreateSavedSearch`: SavedSearch
+    fmt.Fprintf(os.Stdout, "Response from `SavedSearchApi.CreateSavedSearch`: %v\n", resp)
 }
 ```
 
@@ -54,12 +54,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSavedSearchCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateSavedSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **savedSearchCreateRequest** | [**SavedSearchCreateRequest**](SavedSearchCreateRequest.md) | The saved search to persist. | 
+ **createSavedSearchRequest** | [**CreateSavedSearchRequest**](CreateSavedSearchRequest.md) | The saved search to persist. | 
 
 ### Return type
 
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SavedSearchDelete
+## DeleteSavedSearch
 
-> SavedSearchDelete(ctx, id).Execute()
+> DeleteSavedSearch(ctx, id).Execute()
 
 Delete a document by ID
 
@@ -104,9 +104,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchApi.SavedSearchDelete(context.Background(), id).Execute()
+    resp, r, err := apiClient.SavedSearchApi.DeleteSavedSearch(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.SavedSearchDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.DeleteSavedSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSavedSearchDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteSavedSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -147,9 +147,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SavedSearchExecute
+## ExecuteSavedSearch
 
-> SavedSearchExecute(ctx, id).SearchArguments(searchArguments).Execute()
+> ExecuteSavedSearch(ctx, id).SearchArguments(searchArguments).Execute()
 
 Execute a saved search by ID
 
@@ -173,9 +173,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchApi.SavedSearchExecute(context.Background(), id).SearchArguments(searchArguments).Execute()
+    resp, r, err := apiClient.SavedSearchApi.ExecuteSavedSearch(context.Background(), id).SearchArguments(searchArguments).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.SavedSearchExecute``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.ExecuteSavedSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSavedSearchExecuteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiExecuteSavedSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -217,9 +217,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SavedSearchGet
+## GetSavedSearch
 
-> SavedSearch SavedSearchGet(ctx, id).Execute()
+> SavedSearch GetSavedSearch(ctx, id).Execute()
 
 Return a saved search by ID
 
@@ -242,13 +242,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchApi.SavedSearchGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.SavedSearchApi.GetSavedSearch(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.SavedSearchGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.GetSavedSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SavedSearchGet`: SavedSearch
-    fmt.Fprintf(os.Stdout, "Response from `SavedSearchApi.SavedSearchGet`: %v\n", resp)
+    // response from `GetSavedSearch`: SavedSearch
+    fmt.Fprintf(os.Stdout, "Response from `SavedSearchApi.GetSavedSearch`: %v\n", resp)
 }
 ```
 
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSavedSearchGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSavedSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -287,9 +287,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SavedSearchList
+## ListSavedSearches
 
-> []SavedSearch SavedSearchList(ctx).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+> []SavedSearch ListSavedSearches(ctx).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
 
 Return a list of Saved Searches
 
@@ -315,13 +315,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchApi.SavedSearchList(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.SavedSearchApi.ListSavedSearches(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.SavedSearchList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.ListSavedSearches``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SavedSearchList`: []SavedSearch
-    fmt.Fprintf(os.Stdout, "Response from `SavedSearchApi.SavedSearchList`: %v\n", resp)
+    // response from `ListSavedSearches`: []SavedSearch
+    fmt.Fprintf(os.Stdout, "Response from `SavedSearchApi.ListSavedSearches`: %v\n", resp)
 }
 ```
 
@@ -331,7 +331,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSavedSearchListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListSavedSearchesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -359,9 +359,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SavedSearchUpdate
+## UpdateSavedSearch
 
-> SavedSearch SavedSearchUpdate(ctx, id).SavedSearch(savedSearch).Execute()
+> SavedSearch UpdateSavedSearch(ctx, id).SavedSearch(savedSearch).Execute()
 
 Updates an existing saved search 
 
@@ -385,13 +385,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchApi.SavedSearchUpdate(context.Background(), id).SavedSearch(savedSearch).Execute()
+    resp, r, err := apiClient.SavedSearchApi.UpdateSavedSearch(context.Background(), id).SavedSearch(savedSearch).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.SavedSearchUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.UpdateSavedSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SavedSearchUpdate`: SavedSearch
-    fmt.Fprintf(os.Stdout, "Response from `SavedSearchApi.SavedSearchUpdate`: %v\n", resp)
+    // response from `UpdateSavedSearch`: SavedSearch
+    fmt.Fprintf(os.Stdout, "Response from `SavedSearchApi.UpdateSavedSearch`: %v\n", resp)
 }
 ```
 
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSavedSearchUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateSavedSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**CreateTransform**](TransformsApi.md#CreateTransform) | **Post** /transforms | Create transform
 [**DeleteTransform**](TransformsApi.md#DeleteTransform) | **Delete** /transforms/{id} | Delete a transform
 [**GetTransform**](TransformsApi.md#GetTransform) | **Get** /transforms/{id} | Transform by ID
-[**GetTransformsList**](TransformsApi.md#GetTransformsList) | **Get** /transforms | List transforms
+[**ListTransforms**](TransformsApi.md#ListTransforms) | **Get** /transforms | List transforms
 [**UpdateTransform**](TransformsApi.md#UpdateTransform) | **Put** /transforms/{id} | Update a transform
 
 
@@ -216,9 +216,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetTransformsList
+## ListTransforms
 
-> []Transform GetTransformsList(ctx).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
+> []Transform ListTransforms(ctx).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
 
 List transforms
 
@@ -245,13 +245,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransformsApi.GetTransformsList(context.Background()).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
+    resp, r, err := apiClient.TransformsApi.ListTransforms(context.Background()).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.GetTransformsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.ListTransforms``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTransformsList`: []Transform
-    fmt.Fprintf(os.Stdout, "Response from `TransformsApi.GetTransformsList`: %v\n", resp)
+    // response from `ListTransforms`: []Transform
+    fmt.Fprintf(os.Stdout, "Response from `TransformsApi.ListTransforms`: %v\n", resp)
 }
 ```
 
@@ -261,7 +261,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetTransformsListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListTransformsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

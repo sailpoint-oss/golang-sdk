@@ -22,6 +22,18 @@ func Test_beta_RoleInsightsApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test RoleInsightsApiService CreateRoleInsightRequests", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.RoleInsightsApi.CreateRoleInsightRequests(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RoleInsightsApiService DownloadRoleInsightsEntitlementsChanges", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -124,18 +136,6 @@ func Test_beta_RoleInsightsApiService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.RoleInsightsApi.GetRoleInsightsSummary(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RoleInsightsApiService RoleInsightsRequests", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.RoleInsightsApi.RoleInsightsRequests(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -4,22 +4,22 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CompleteInvocation**](TriggersApi.md#CompleteInvocation) | **Post** /trigger-invocations/{id}/complete | Complete Trigger Invocation
+[**CompleteTriggerInvocation**](TriggersApi.md#CompleteTriggerInvocation) | **Post** /trigger-invocations/{id}/complete | Complete Trigger Invocation
 [**CreateSubscription**](TriggersApi.md#CreateSubscription) | **Post** /trigger-subscriptions | Create a Subscription
 [**DeleteSubscription**](TriggersApi.md#DeleteSubscription) | **Delete** /trigger-subscriptions/{id} | Delete a Subscription
-[**ListInvocationStatus**](TriggersApi.md#ListInvocationStatus) | **Get** /trigger-invocations/status | List Latest Invocation Statuses
 [**ListSubscriptions**](TriggersApi.md#ListSubscriptions) | **Get** /trigger-subscriptions | List Subscriptions
+[**ListTriggerInvocationStatus**](TriggersApi.md#ListTriggerInvocationStatus) | **Get** /trigger-invocations/status | List Latest Invocation Statuses
 [**ListTriggers**](TriggersApi.md#ListTriggers) | **Get** /triggers | List Triggers
 [**PatchSubscription**](TriggersApi.md#PatchSubscription) | **Patch** /trigger-subscriptions/{id} | Patch a Subscription
-[**StartTestInvocation**](TriggersApi.md#StartTestInvocation) | **Post** /trigger-invocations/test | Start a Test Invocation
+[**StartTestTriggerInvocation**](TriggersApi.md#StartTestTriggerInvocation) | **Post** /trigger-invocations/test | Start a Test Invocation
 [**UpdateSubscription**](TriggersApi.md#UpdateSubscription) | **Put** /trigger-subscriptions/{id} | Update a Subscription
-[**ValidateFilter**](TriggersApi.md#ValidateFilter) | **Post** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
+[**ValidateSubscriptionFilter**](TriggersApi.md#ValidateSubscriptionFilter) | **Post** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
 
 
 
-## CompleteInvocation
+## CompleteTriggerInvocation
 
-> CompleteInvocation(ctx, id).CompleteInvocation(completeInvocation).Execute()
+> CompleteTriggerInvocation(ctx, id).CompleteInvocation(completeInvocation).Execute()
 
 Complete Trigger Invocation
 
@@ -43,9 +43,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.CompleteInvocation(context.Background(), id).CompleteInvocation(completeInvocation).Execute()
+    resp, r, err := apiClient.TriggersApi.CompleteTriggerInvocation(context.Background(), id).CompleteInvocation(completeInvocation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.CompleteInvocation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.CompleteTriggerInvocation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCompleteInvocationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCompleteTriggerInvocationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -221,80 +221,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListInvocationStatus
-
-> []InvocationStatus ListInvocationStatus(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
-
-List Latest Invocation Statuses
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "triggerId eq "idn:access-request-dynamic-approver"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq* **subscriptionId**: *eq* (optional)
-    sorters := "created" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **subscriptionName** **created** **completed** (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.ListInvocationStatus(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.ListInvocationStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListInvocationStatus`: []InvocationStatus
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.ListInvocationStatus`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListInvocationStatusRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq* **subscriptionId**: *eq* | 
- **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **subscriptionName** **created** **completed** | 
-
-### Return type
-
-[**[]InvocationStatus**](InvocationStatus.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListSubscriptions
 
 > []Subscription ListSubscriptions(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
@@ -354,6 +280,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]Subscription**](Subscription.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListTriggerInvocationStatus
+
+> []InvocationStatus ListTriggerInvocationStatus(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+
+List Latest Invocation Statuses
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+    filters := "triggerId eq "idn:access-request-dynamic-approver"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq* **subscriptionId**: *eq* (optional)
+    sorters := "created" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **subscriptionName** **created** **completed** (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TriggersApi.ListTriggerInvocationStatus(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.ListTriggerInvocationStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListTriggerInvocationStatus`: []InvocationStatus
+    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.ListTriggerInvocationStatus`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListTriggerInvocationStatusRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **triggerId**: *eq* **subscriptionId**: *eq* | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **triggerId** **subscriptionName** **created** **completed** | 
+
+### Return type
+
+[**[]InvocationStatus**](InvocationStatus.md)
 
 ### Authorization
 
@@ -515,9 +515,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## StartTestInvocation
+## StartTestTriggerInvocation
 
-> []Invocation StartTestInvocation(ctx).TestInvocation(testInvocation).Execute()
+> []Invocation StartTestTriggerInvocation(ctx).TestInvocation(testInvocation).Execute()
 
 Start a Test Invocation
 
@@ -540,13 +540,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.StartTestInvocation(context.Background()).TestInvocation(testInvocation).Execute()
+    resp, r, err := apiClient.TriggersApi.StartTestTriggerInvocation(context.Background()).TestInvocation(testInvocation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.StartTestInvocation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.StartTestTriggerInvocation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `StartTestInvocation`: []Invocation
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.StartTestInvocation`: %v\n", resp)
+    // response from `StartTestTriggerInvocation`: []Invocation
+    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.StartTestTriggerInvocation`: %v\n", resp)
 }
 ```
 
@@ -556,7 +556,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiStartTestInvocationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiStartTestTriggerInvocationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -653,9 +653,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ValidateFilter
+## ValidateSubscriptionFilter
 
-> ValidateFilterOutputDto ValidateFilter(ctx).ValidateFilterInputDto(validateFilterInputDto).Execute()
+> ValidateFilterOutputDto ValidateSubscriptionFilter(ctx).ValidateFilterInputDto(validateFilterInputDto).Execute()
 
 Validate a Subscription Filter
 
@@ -678,13 +678,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.ValidateFilter(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
+    resp, r, err := apiClient.TriggersApi.ValidateSubscriptionFilter(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.ValidateFilter``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.ValidateSubscriptionFilter``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ValidateFilter`: ValidateFilterOutputDto
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.ValidateFilter`: %v\n", resp)
+    // response from `ValidateSubscriptionFilter`: ValidateFilterOutputDto
+    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.ValidateSubscriptionFilter`: %v\n", resp)
 }
 ```
 
@@ -694,7 +694,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiValidateFilterRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiValidateSubscriptionFilterRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

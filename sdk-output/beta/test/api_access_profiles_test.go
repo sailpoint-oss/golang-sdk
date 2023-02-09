@@ -22,18 +22,6 @@ func Test_beta_AccessProfilesApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AccessProfilesApiService BulkDeleteAccessProfiles", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.AccessProfilesApi.BulkDeleteAccessProfiles(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test AccessProfilesApiService CreateAccessProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -60,6 +48,18 @@ func Test_beta_AccessProfilesApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccessProfilesApiService DeleteAccessProfilesInBulk", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccessProfilesApi.DeleteAccessProfilesInBulk(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccessProfilesApiService GetAccessProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -74,13 +74,13 @@ func Test_beta_AccessProfilesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessProfilesApiService ListAccessProfileEntitlements", func(t *testing.T) {
+	t.Run("Test AccessProfilesApiService GetAccessProfileEntitlements", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccessProfilesApi.ListAccessProfileEntitlements(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.AccessProfilesApi.GetAccessProfileEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

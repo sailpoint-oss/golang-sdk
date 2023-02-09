@@ -4,13 +4,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PredictViolations**](SODViolationsApi.md#PredictViolations) | **Post** /sod-violations/predict | Predict SOD violations for the given identity if they were granted the given access.
+[**PredictSodViolations**](SODViolationsApi.md#PredictSodViolations) | **Post** /sod-violations/predict | Predict SOD violations for the given identity if they were granted the given access.
 
 
 
-## PredictViolations
+## PredictSodViolations
 
-> ViolationPrediction PredictViolations(ctx).IdentityWithNewAccess(identityWithNewAccess).Execute()
+> ViolationPrediction PredictSodViolations(ctx).IdentityWithNewAccess(identityWithNewAccess).Execute()
 
 Predict SOD violations for the given identity if they were granted the given access.
 
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODViolationsApi.PredictViolations(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
+    resp, r, err := apiClient.SODViolationsApi.PredictSodViolations(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsApi.PredictViolations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsApi.PredictSodViolations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PredictViolations`: ViolationPrediction
-    fmt.Fprintf(os.Stdout, "Response from `SODViolationsApi.PredictViolations`: %v\n", resp)
+    // response from `PredictSodViolations`: ViolationPrediction
+    fmt.Fprintf(os.Stdout, "Response from `SODViolationsApi.PredictSodViolations`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPredictViolationsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPredictSodViolationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

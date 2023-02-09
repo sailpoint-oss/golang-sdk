@@ -22,11 +22,11 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SavedSearchApiService SavedSearchCreate", func(t *testing.T) {
+	t.Run("Test SavedSearchApiService CreateSavedSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SavedSearchApi.SavedSearchCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SavedSearchApi.CreateSavedSearch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SavedSearchApiService SavedSearchDelete", func(t *testing.T) {
+	t.Run("Test SavedSearchApiService DeleteSavedSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SavedSearchApi.SavedSearchDelete(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SavedSearchApi.DeleteSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,13 +48,13 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SavedSearchApiService SavedSearchExecute", func(t *testing.T) {
+	t.Run("Test SavedSearchApiService ExecuteSavedSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SavedSearchApi.SavedSearchExecute(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SavedSearchApi.ExecuteSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,13 +62,13 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SavedSearchApiService SavedSearchGet", func(t *testing.T) {
+	t.Run("Test SavedSearchApiService GetSavedSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SavedSearchApi.SavedSearchGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SavedSearchApi.GetSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,11 +76,11 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SavedSearchApiService SavedSearchList", func(t *testing.T) {
+	t.Run("Test SavedSearchApiService ListSavedSearches", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SavedSearchApi.SavedSearchList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SavedSearchApi.ListSavedSearches(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -88,13 +88,13 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SavedSearchApiService SavedSearchUpdate", func(t *testing.T) {
+	t.Run("Test SavedSearchApiService UpdateSavedSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.SavedSearchApi.SavedSearchUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SavedSearchApi.UpdateSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

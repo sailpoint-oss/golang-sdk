@@ -6,12 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddTagToObject**](TaggedObjectsApi.md#AddTagToObject) | **Post** /tagged-objects | Add Tag to Object
 [**AddTagsToManyObjects**](TaggedObjectsApi.md#AddTagsToManyObjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
-[**DeleteTaggedObjectByTypeAndId**](TaggedObjectsApi.md#DeleteTaggedObjectByTypeAndId) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
-[**GetTaggedObjectByTypeAndId**](TaggedObjectsApi.md#GetTaggedObjectByTypeAndId) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
+[**DeleteTaggedObject**](TaggedObjectsApi.md#DeleteTaggedObject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
+[**GetTaggedObject**](TaggedObjectsApi.md#GetTaggedObject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
 [**ListTaggedObjects**](TaggedObjectsApi.md#ListTaggedObjects) | **Get** /tagged-objects | List Tagged Objects
 [**ListTaggedObjectsByType**](TaggedObjectsApi.md#ListTaggedObjectsByType) | **Get** /tagged-objects/{type} | List Tagged Objects
 [**RemoveTagsToManyObject**](TaggedObjectsApi.md#RemoveTagsToManyObject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
-[**UpdateTaggedObjectByTypeAndId**](TaggedObjectsApi.md#UpdateTaggedObjectByTypeAndId) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
+[**UpdateTaggedObject**](TaggedObjectsApi.md#UpdateTaggedObject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
 
 
 
@@ -147,9 +147,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteTaggedObjectByTypeAndId
+## DeleteTaggedObject
 
-> DeleteTaggedObjectByTypeAndId(ctx, type_, id).Execute()
+> DeleteTaggedObject(ctx, type_, id).Execute()
 
 Delete Tagged Object
 
@@ -173,9 +173,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.DeleteTaggedObjectByTypeAndId(context.Background(), type_, id).Execute()
+    resp, r, err := apiClient.TaggedObjectsApi.DeleteTaggedObject(context.Background(), type_, id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.DeleteTaggedObjectByTypeAndId``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.DeleteTaggedObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteTaggedObjectByTypeAndIdRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteTaggedObjectRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -218,9 +218,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetTaggedObjectByTypeAndId
+## GetTaggedObject
 
-> TaggedObject GetTaggedObjectByTypeAndId(ctx, type_, id).Execute()
+> TaggedObject GetTaggedObject(ctx, type_, id).Execute()
 
 Get Tagged Object
 
@@ -244,13 +244,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.GetTaggedObjectByTypeAndId(context.Background(), type_, id).Execute()
+    resp, r, err := apiClient.TaggedObjectsApi.GetTaggedObject(context.Background(), type_, id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.GetTaggedObjectByTypeAndId``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.GetTaggedObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTaggedObjectByTypeAndId`: TaggedObject
-    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.GetTaggedObjectByTypeAndId`: %v\n", resp)
+    // response from `GetTaggedObject`: TaggedObject
+    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.GetTaggedObject`: %v\n", resp)
 }
 ```
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetTaggedObjectByTypeAndIdRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetTaggedObjectRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -505,9 +505,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateTaggedObjectByTypeAndId
+## UpdateTaggedObject
 
-> TaggedObject UpdateTaggedObjectByTypeAndId(ctx, type_, id).TaggedObject(taggedObject).Execute()
+> TaggedObject UpdateTaggedObject(ctx, type_, id).TaggedObject(taggedObject).Execute()
 
 Update Tagged Object
 
@@ -532,13 +532,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.UpdateTaggedObjectByTypeAndId(context.Background(), type_, id).TaggedObject(taggedObject).Execute()
+    resp, r, err := apiClient.TaggedObjectsApi.UpdateTaggedObject(context.Background(), type_, id).TaggedObject(taggedObject).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.UpdateTaggedObjectByTypeAndId``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.UpdateTaggedObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateTaggedObjectByTypeAndId`: TaggedObject
-    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.UpdateTaggedObjectByTypeAndId`: %v\n", resp)
+    // response from `UpdateTaggedObject`: TaggedObject
+    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.UpdateTaggedObject`: %v\n", resp)
 }
 ```
 
@@ -553,7 +553,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateTaggedObjectByTypeAndIdRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateTaggedObjectRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -22,13 +22,13 @@ func Test_beta_TriggersApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test TriggersApiService CompleteInvocation", func(t *testing.T) {
+	t.Run("Test TriggersApiService CompleteTriggerInvocation", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.TriggersApi.CompleteInvocation(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.TriggersApi.CompleteTriggerInvocation(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,11 +62,11 @@ func Test_beta_TriggersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TriggersApiService ListInvocationStatus", func(t *testing.T) {
+	t.Run("Test TriggersApiService ListSubscriptions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TriggersApi.ListInvocationStatus(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TriggersApi.ListSubscriptions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,11 +74,11 @@ func Test_beta_TriggersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TriggersApiService ListSubscriptions", func(t *testing.T) {
+	t.Run("Test TriggersApiService ListTriggerInvocationStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TriggersApi.ListSubscriptions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TriggersApi.ListTriggerInvocationStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -112,11 +112,11 @@ func Test_beta_TriggersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TriggersApiService StartTestInvocation", func(t *testing.T) {
+	t.Run("Test TriggersApiService StartTestTriggerInvocation", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TriggersApi.StartTestInvocation(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TriggersApi.StartTestTriggerInvocation(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -138,11 +138,11 @@ func Test_beta_TriggersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TriggersApiService ValidateFilter", func(t *testing.T) {
+	t.Run("Test TriggersApiService ValidateSubscriptionFilter", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TriggersApi.ValidateFilter(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TriggersApi.ValidateSubscriptionFilter(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

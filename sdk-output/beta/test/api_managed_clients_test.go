@@ -22,13 +22,13 @@ func Test_beta_ManagedClientsApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ManagedClientsApiService GetClientStatus", func(t *testing.T) {
+	t.Run("Test ManagedClientsApiService GetManagedClientStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.ManagedClientsApi.GetClientStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ManagedClientsApi.GetManagedClientStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,13 +36,13 @@ func Test_beta_ManagedClientsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ManagedClientsApiService UpdateStatus", func(t *testing.T) {
+	t.Run("Test ManagedClientsApiService UpdateManagedClientStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.ManagedClientsApi.UpdateStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ManagedClientsApi.UpdateManagedClientStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

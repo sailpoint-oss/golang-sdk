@@ -51,13 +51,13 @@ func Test_beta_IdentityHistoryApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityHistoryApiService GetEvents", func(t *testing.T) {
+	t.Run("Test IdentityHistoryApiService GetHistoricalIdentityEvents", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.IdentityHistoryApi.GetEvents(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryApi.GetHistoricalIdentityEvents(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -108,13 +108,13 @@ func Test_beta_IdentityHistoryApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityHistoryApiService GetStartDate", func(t *testing.T) {
+	t.Run("Test IdentityHistoryApiService GetIdentityStartDate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.IdentityHistoryApi.GetStartDate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.IdentityHistoryApi.GetIdentityStartDate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

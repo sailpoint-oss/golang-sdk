@@ -14,36 +14,36 @@ import (
 	"encoding/json"
 )
 
-// SpConfigImportRequest struct for SpConfigImportRequest
-type SpConfigImportRequest struct {
+// ImportSpConfigRequest struct for ImportSpConfigRequest
+type ImportSpConfigRequest struct {
 	// Name of JSON file containing the objects to be imported.
 	Data string `json:"data"`
 	Options *ImportOptions `json:"options,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SpConfigImportRequest SpConfigImportRequest
+type _ImportSpConfigRequest ImportSpConfigRequest
 
-// NewSpConfigImportRequest instantiates a new SpConfigImportRequest object
+// NewImportSpConfigRequest instantiates a new ImportSpConfigRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpConfigImportRequest(data string) *SpConfigImportRequest {
-	this := SpConfigImportRequest{}
+func NewImportSpConfigRequest(data string) *ImportSpConfigRequest {
+	this := ImportSpConfigRequest{}
 	this.Data = data
 	return &this
 }
 
-// NewSpConfigImportRequestWithDefaults instantiates a new SpConfigImportRequest object
+// NewImportSpConfigRequestWithDefaults instantiates a new ImportSpConfigRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSpConfigImportRequestWithDefaults() *SpConfigImportRequest {
-	this := SpConfigImportRequest{}
+func NewImportSpConfigRequestWithDefaults() *ImportSpConfigRequest {
+	this := ImportSpConfigRequest{}
 	return &this
 }
 
 // GetData returns the Data field value
-func (o *SpConfigImportRequest) GetData() string {
+func (o *ImportSpConfigRequest) GetData() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -54,7 +54,7 @@ func (o *SpConfigImportRequest) GetData() string {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigImportRequest) GetDataOk() (*string, bool) {
+func (o *ImportSpConfigRequest) GetDataOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,12 +62,12 @@ func (o *SpConfigImportRequest) GetDataOk() (*string, bool) {
 }
 
 // SetData sets field value
-func (o *SpConfigImportRequest) SetData(v string) {
+func (o *ImportSpConfigRequest) SetData(v string) {
 	o.Data = v
 }
 
 // GetOptions returns the Options field value if set, zero value otherwise.
-func (o *SpConfigImportRequest) GetOptions() ImportOptions {
+func (o *ImportSpConfigRequest) GetOptions() ImportOptions {
 	if o == nil || isNil(o.Options) {
 		var ret ImportOptions
 		return ret
@@ -77,7 +77,7 @@ func (o *SpConfigImportRequest) GetOptions() ImportOptions {
 
 // GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpConfigImportRequest) GetOptionsOk() (*ImportOptions, bool) {
+func (o *ImportSpConfigRequest) GetOptionsOk() (*ImportOptions, bool) {
 	if o == nil || isNil(o.Options) {
 		return nil, false
 	}
@@ -85,7 +85,7 @@ func (o *SpConfigImportRequest) GetOptionsOk() (*ImportOptions, bool) {
 }
 
 // HasOptions returns a boolean if a field has been set.
-func (o *SpConfigImportRequest) HasOptions() bool {
+func (o *ImportSpConfigRequest) HasOptions() bool {
 	if o != nil && !isNil(o.Options) {
 		return true
 	}
@@ -94,11 +94,11 @@ func (o *SpConfigImportRequest) HasOptions() bool {
 }
 
 // SetOptions gets a reference to the given ImportOptions and assigns it to the Options field.
-func (o *SpConfigImportRequest) SetOptions(v ImportOptions) {
+func (o *ImportSpConfigRequest) SetOptions(v ImportOptions) {
 	o.Options = &v
 }
 
-func (o SpConfigImportRequest) MarshalJSON() ([]byte, error) {
+func (o ImportSpConfigRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["data"] = o.Data
@@ -114,11 +114,11 @@ func (o SpConfigImportRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o *SpConfigImportRequest) UnmarshalJSON(bytes []byte) (err error) {
-	varSpConfigImportRequest := _SpConfigImportRequest{}
+func (o *ImportSpConfigRequest) UnmarshalJSON(bytes []byte) (err error) {
+	varImportSpConfigRequest := _ImportSpConfigRequest{}
 
-	if err = json.Unmarshal(bytes, &varSpConfigImportRequest); err == nil {
-		*o = SpConfigImportRequest(varSpConfigImportRequest)
+	if err = json.Unmarshal(bytes, &varImportSpConfigRequest); err == nil {
+		*o = ImportSpConfigRequest(varImportSpConfigRequest)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -132,38 +132,38 @@ func (o *SpConfigImportRequest) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableSpConfigImportRequest struct {
-	value *SpConfigImportRequest
+type NullableImportSpConfigRequest struct {
+	value *ImportSpConfigRequest
 	isSet bool
 }
 
-func (v NullableSpConfigImportRequest) Get() *SpConfigImportRequest {
+func (v NullableImportSpConfigRequest) Get() *ImportSpConfigRequest {
 	return v.value
 }
 
-func (v *NullableSpConfigImportRequest) Set(val *SpConfigImportRequest) {
+func (v *NullableImportSpConfigRequest) Set(val *ImportSpConfigRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSpConfigImportRequest) IsSet() bool {
+func (v NullableImportSpConfigRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSpConfigImportRequest) Unset() {
+func (v *NullableImportSpConfigRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSpConfigImportRequest(val *SpConfigImportRequest) *NullableSpConfigImportRequest {
-	return &NullableSpConfigImportRequest{value: val, isSet: true}
+func NewNullableImportSpConfigRequest(val *ImportSpConfigRequest) *NullableImportSpConfigRequest {
+	return &NullableImportSpConfigRequest{value: val, isSet: true}
 }
 
-func (v NullableSpConfigImportRequest) MarshalJSON() ([]byte, error) {
+func (v NullableImportSpConfigRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSpConfigImportRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableImportSpConfigRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

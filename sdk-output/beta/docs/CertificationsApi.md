@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**GetIdentityCertificationItemPermissions**](CertificationsApi.md#GetIdentityCertificationItemPermissions) | **Get** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for Entitlement Certification Item
 [**GetIdentityCertificationPendingTasks**](CertificationsApi.md#GetIdentityCertificationPendingTasks) | **Get** /certifications/{id}/tasks-pending | Pending Certification Tasks
 [**GetIdentityCertificationTaskStatus**](CertificationsApi.md#GetIdentityCertificationTaskStatus) | **Get** /certifications/{id}/tasks/{taskId} | Certification Task Status
-[**ListReviewers**](CertificationsApi.md#ListReviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for the certification
+[**ListCertificationReviewers**](CertificationsApi.md#ListCertificationReviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for the certification
 [**ReassignIdentityCertsAsync**](CertificationsApi.md#ReassignIdentityCertsAsync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 
 
@@ -236,9 +236,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListReviewers
+## ListCertificationReviewers
 
-> []IdentityReferenceWithNameAndEmail ListReviewers(ctx, id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+> []IdentityReferenceWithNameAndEmail ListCertificationReviewers(ctx, id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
 List of Reviewers for the certification
 
@@ -266,13 +266,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.ListReviewers(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CertificationsApi.ListCertificationReviewers(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.ListReviewers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.ListCertificationReviewers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListReviewers`: []IdentityReferenceWithNameAndEmail
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.ListReviewers`: %v\n", resp)
+    // response from `ListCertificationReviewers`: []IdentityReferenceWithNameAndEmail
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.ListCertificationReviewers`: %v\n", resp)
 }
 ```
 
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListReviewersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListCertificationReviewersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

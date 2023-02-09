@@ -131,6 +131,9 @@ docs/CreateOAuthClientRequest.md
 docs/CreateOAuthClientResponse.md
 docs/CreatePersonalAccessTokenRequest.md
 docs/CreatePersonalAccessTokenResponse.md
+docs/CreateSavedSearchRequest.md
+docs/CreateScheduledSearchRequest.md
+docs/DeleteNonEmployeeRecordsInBulkRequest.md
 docs/DeleteSource202Response.md
 docs/DisplayReference.md
 docs/DisplayReferenceAllOf.md
@@ -210,8 +213,6 @@ docs/NonEmployeeIdentityReferenceWithId.md
 docs/NonEmployeeIdnUserRequest.md
 docs/NonEmployeeLifecycleManagementApi.md
 docs/NonEmployeeRecord.md
-docs/NonEmployeeRecordBulkDeleteRequest.md
-docs/NonEmployeeRecordsBulkUploadRequest.md
 docs/NonEmployeeRejectApprovalDecision.md
 docs/NonEmployeeRequest.md
 docs/NonEmployeeRequestAllOf.md
@@ -297,7 +298,6 @@ docs/RoleSummaryAllOf.md
 docs/SavedSearch.md
 docs/SavedSearchAllOf.md
 docs/SavedSearchApi.md
-docs/SavedSearchCreateRequest.md
 docs/SavedSearchDetail.md
 docs/SavedSearchDetailFilters.md
 docs/SavedSearchName.md
@@ -309,7 +309,6 @@ docs/ScheduledSearch.md
 docs/ScheduledSearchAllOf.md
 docs/ScheduledSearchAllOfOwner.md
 docs/ScheduledSearchApi.md
-docs/ScheduledSearchCreateRequest.md
 docs/ScheduledSearchName.md
 docs/Schema.md
 docs/Search.md
@@ -366,6 +365,7 @@ docs/TransformDefinitionAttributesValue.md
 docs/TransformsApi.md
 docs/TypeAheadQuery.md
 docs/TypedReference.md
+docs/UploadNonEmployeeRecordsInBulkRequest.md
 docs/UploadSourceAccountsSchemaRequest.md
 docs/UsageType.md
 docs/WorkItemState.md
@@ -475,6 +475,9 @@ model_create_o_auth_client_request.go
 model_create_o_auth_client_response.go
 model_create_personal_access_token_request.go
 model_create_personal_access_token_response.go
+model_create_saved_search_request.go
+model_create_scheduled_search_request.go
+model_delete_non_employee_records_in_bulk_request.go
 model_delete_source_202_response.go
 model_display_reference.go
 model_display_reference_all_of.go
@@ -551,8 +554,6 @@ model_non_employee_identity_dto_type.go
 model_non_employee_identity_reference_with_id.go
 model_non_employee_idn_user_request.go
 model_non_employee_record.go
-model_non_employee_record_bulk_delete_request.go
-model_non_employee_records_bulk_upload_request.go
 model_non_employee_reject_approval_decision.go
 model_non_employee_request.go
 model_non_employee_request_all_of.go
@@ -631,7 +632,6 @@ model_role_summary.go
 model_role_summary_all_of.go
 model_saved_search.go
 model_saved_search_all_of.go
-model_saved_search_create_request.go
 model_saved_search_detail.go
 model_saved_search_detail_filters.go
 model_saved_search_name.go
@@ -642,7 +642,6 @@ model_schedule_type.go
 model_scheduled_search.go
 model_scheduled_search_all_of.go
 model_scheduled_search_all_of_owner.go
-model_scheduled_search_create_request.go
 model_scheduled_search_name.go
 model_schema.go
 model_search.go
@@ -695,6 +694,7 @@ model_transform_definition.go
 model_transform_definition_attributes_value.go
 model_type_ahead_query.go
 model_typed_reference.go
+model_upload_non_employee_records_in_bulk_request.go
 model_upload_source_accounts_schema_request.go
 model_usage_type.go
 model_work_item_state.go
