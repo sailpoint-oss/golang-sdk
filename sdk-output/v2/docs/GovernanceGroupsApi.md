@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 ## ListWorkgroupMembers
 
-> []ListWorkgroupMembers200ResponseInner ListWorkgroupMembers(ctx, workgroupId).Execute()
+> []ListWorkgroupMembers200ResponseInner ListWorkgroupMembers(ctx, workgroupId).Limit(limit).Offset(offset).Filters(filters).Execute()
 
 List Work Group Members
 
@@ -378,10 +378,13 @@ import (
 
 func main() {
     workgroupId := "ef38f94347e94562b5bb8424a56397d8" // string | The workgroup ID
+    limit := int32(250) // int32 | Max number of results to return (optional) (default to 250)
+    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. (optional) (default to 0)
+    filters := "filters_example" // string | Filter results using the following syntax. [{property:name, value: \"Tyler\", operation: EQ}] (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.ListWorkgroupMembers(context.Background(), workgroupId).Execute()
+    resp, r, err := apiClient.GovernanceGroupsApi.ListWorkgroupMembers(context.Background(), workgroupId).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.ListWorkgroupMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -407,6 +410,9 @@ Other parameters are passed through a pointer to a apiListWorkgroupMembersReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **limit** | **int32** | Max number of results to return | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. | [default to 0]
+ **filters** | **string** | Filter results using the following syntax. [{property:name, value: \&quot;Tyler\&quot;, operation: EQ}] | 
 
 ### Return type
 
@@ -428,7 +434,7 @@ Name | Type | Description  | Notes
 
 ## ListWorkgroups
 
-> []ListWorkgroups200ResponseInner ListWorkgroups(ctx).Execute()
+> []ListWorkgroups200ResponseInner ListWorkgroups(ctx).Limit(limit).Offset(offset).Filters(filters).Execute()
 
 List Work Groups
 
@@ -447,10 +453,13 @@ import (
 )
 
 func main() {
+    limit := int32(250) // int32 | Max number of results to return (optional) (default to 250)
+    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. (optional) (default to 0)
+    filters := "filters_example" // string | Filter results using the following syntax. [{property:name, value: \"Tyler\", operation: EQ}] (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.ListWorkgroups(context.Background()).Execute()
+    resp, r, err := apiClient.GovernanceGroupsApi.ListWorkgroups(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.ListWorkgroups``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -462,12 +471,18 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListWorkgroupsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int32** | Max number of results to return | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. | [default to 0]
+ **filters** | **string** | Filter results using the following syntax. [{property:name, value: \&quot;Tyler\&quot;, operation: EQ}] | 
 
 ### Return type
 
