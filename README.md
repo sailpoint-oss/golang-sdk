@@ -6,10 +6,7 @@
 go mod init github.com/github-repo-name/projectname
 ```
 
-### Create sdk.go file and copy [example](./examples/sdk.go) from this repository
-
-* Add your ClientID and ClientSecret
-* Update your tenant name in the configuration
+### Create sdk.go file and copy the below code into the file
 
 ```go
 package main
@@ -38,6 +35,14 @@ func main() {
 
 }
 ```
+
+### Create a configuration file or save your configuration as environment variables
+
+You can create a local configuration file using the [CLI tool](https://github.com/sailpoint-oss/sailpoint-cli#configuration) or you can store your configuration in environment variables
+ - BASE_URL
+ - TOKEN_URL
+ - CLIENT_ID
+ - CLIENT_SECRET
 
 ### Install sdk
 
@@ -83,3 +88,6 @@ func main() {
 	fmt.Fprintf(os.Stdout, "First response from `AccountsApi.ListAccount`: %v\n", resp[0].Name)
 
 }
+
+```
+### See more uses of the SDK [here](./examples/sdk.go).

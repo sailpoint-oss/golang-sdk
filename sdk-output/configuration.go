@@ -127,6 +127,18 @@ func NewDefaultConfiguration() *Configuration {
 	simpleConfig.ClientId = config.Pat.ClientID
 	simpleConfig.ClientSecret = config.Pat.ClientSecret
 	simpleConfig.TokenURL = config.Pat.TokenUrl
+	if os.Getenv("BASE_URL") != "" {
+		simpleConfig.BaseURL = os.Getenv("BASE_URL")
+	}
+	if os.Getenv("CLIENT_ID") != "" {
+		simpleConfig.BaseURL = os.Getenv("CLIENT_ID")
+	}
+	if os.Getenv("CLIENT_SECRET") != "" {
+		simpleConfig.BaseURL = os.Getenv("CLIENT_SECRET")
+	}
+	if os.Getenv("TOKEN_URL") != "" {
+		simpleConfig.BaseURL = os.Getenv("TOKEN_URL")
+	}
 
 	return NewConfiguration(simpleConfig)
 }
