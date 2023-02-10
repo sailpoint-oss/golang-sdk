@@ -4,76 +4,10 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CommonAccessBulkUpdateStatus**](IAICommonAccessApi.md#CommonAccessBulkUpdateStatus) | **Post** /common-access/update-status | Bulk update common access status
 [**CreateCommonAccess**](IAICommonAccessApi.md#CreateCommonAccess) | **Post** /common-access | Create common access items
 [**GetCommonAccess**](IAICommonAccessApi.md#GetCommonAccess) | **Get** /common-access | Get a paginated list of common access
+[**UpdateCommonAccessStatusInBulk**](IAICommonAccessApi.md#UpdateCommonAccessStatusInBulk) | **Post** /common-access/update-status | Bulk update common access status
 
-
-
-## CommonAccessBulkUpdateStatus
-
-> map[string]interface{} CommonAccessBulkUpdateStatus(ctx).CommonAccessIDStatus(commonAccessIDStatus).Execute()
-
-Bulk update common access status
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    commonAccessIDStatus := []openapiclient.CommonAccessIDStatus{*openapiclient.NewCommonAccessIDStatus()} // []CommonAccessIDStatus | Confirm or deny in bulk the common access ids that are (or aren't) common access
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAICommonAccessApi.CommonAccessBulkUpdateStatus(context.Background()).CommonAccessIDStatus(commonAccessIDStatus).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessApi.CommonAccessBulkUpdateStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CommonAccessBulkUpdateStatus`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessApi.CommonAccessBulkUpdateStatus`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCommonAccessBulkUpdateStatusRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **commonAccessIDStatus** | [**[]CommonAccessIDStatus**](CommonAccessIDStatus.md) | Confirm or deny in bulk the common access ids that are (or aren&#39;t) common access | 
-
-### Return type
-
-**map[string]interface{}**
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## CreateCommonAccess
@@ -209,6 +143,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateCommonAccessStatusInBulk
+
+> map[string]interface{} UpdateCommonAccessStatusInBulk(ctx).CommonAccessIDStatus(commonAccessIDStatus).Execute()
+
+Bulk update common access status
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    commonAccessIDStatus := []openapiclient.CommonAccessIDStatus{*openapiclient.NewCommonAccessIDStatus()} // []CommonAccessIDStatus | Confirm or deny in bulk the common access ids that are (or aren't) common access
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IAICommonAccessApi.UpdateCommonAccessStatusInBulk(context.Background()).CommonAccessIDStatus(commonAccessIDStatus).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessApi.UpdateCommonAccessStatusInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateCommonAccessStatusInBulk`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessApi.UpdateCommonAccessStatusInBulk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateCommonAccessStatusInBulkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **commonAccessIDStatus** | [**[]CommonAccessIDStatus**](CommonAccessIDStatus.md) | Confirm or deny in bulk the common access ids that are (or aren&#39;t) common access | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

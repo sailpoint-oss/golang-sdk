@@ -22,11 +22,11 @@ func Test_v3_ScheduledSearchApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ScheduledSearchApiService ScheduledSearchCreate", func(t *testing.T) {
+	t.Run("Test ScheduledSearchApiService CreateScheduledSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ScheduledSearchApi.ScheduledSearchCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ScheduledSearchApi.CreateScheduledSearch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_v3_ScheduledSearchApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ScheduledSearchApiService ScheduledSearchDelete", func(t *testing.T) {
+	t.Run("Test ScheduledSearchApiService DeleteScheduledSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.ScheduledSearchApi.ScheduledSearchDelete(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ScheduledSearchApi.DeleteScheduledSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,13 +48,13 @@ func Test_v3_ScheduledSearchApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ScheduledSearchApiService ScheduledSearchGet", func(t *testing.T) {
+	t.Run("Test ScheduledSearchApiService GetScheduledSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.ScheduledSearchApi.ScheduledSearchGet(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ScheduledSearchApi.GetScheduledSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,11 +62,11 @@ func Test_v3_ScheduledSearchApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ScheduledSearchApiService ScheduledSearchList", func(t *testing.T) {
+	t.Run("Test ScheduledSearchApiService ListScheduledSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ScheduledSearchApi.ScheduledSearchList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ScheduledSearchApi.ListScheduledSearch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,27 +74,27 @@ func Test_v3_ScheduledSearchApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ScheduledSearchApiService ScheduledSearchUnsubscribe", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.ScheduledSearchApi.ScheduledSearchUnsubscribe(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ScheduledSearchApiService ScheduledSearchUpdate", func(t *testing.T) {
+	t.Run("Test ScheduledSearchApiService UnsubscribeScheduledSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.ScheduledSearchApi.ScheduledSearchUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ScheduledSearchApi.UnsubscribeScheduledSearch(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ScheduledSearchApiService UpdateScheduledSearch", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.ScheduledSearchApi.UpdateScheduledSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

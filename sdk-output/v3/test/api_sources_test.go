@@ -22,20 +22,6 @@ func Test_v3_SourcesApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SourcesApiService BulkUpdateProvisioningPolicies", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var sourceId string
-
-		resp, httpRes, err := apiClient.SourcesApi.BulkUpdateProvisioningPolicies(context.Background(), sourceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SourcesApiService CreateProvisioningPolicy", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -50,13 +36,11 @@ func Test_v3_SourcesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesApiService CreateSchema", func(t *testing.T) {
+	t.Run("Test SourcesApiService CreateSource", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var sourceId string
-
-		resp, httpRes, err := apiClient.SourcesApi.CreateSchema(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesApi.CreateSource(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -64,11 +48,13 @@ func Test_v3_SourcesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesApiService CreateSource", func(t *testing.T) {
+	t.Run("Test SourcesApiService CreateSourceSchema", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SourcesApi.CreateSource(context.Background()).Execute()
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesApi.CreateSourceSchema(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -91,21 +77,6 @@ func Test_v3_SourcesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesApiService DeleteSchema", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var sourceId string
-		var schemaId string
-
-		resp, httpRes, err := apiClient.SourcesApi.DeleteSchema(context.Background(), sourceId, schemaId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SourcesApiService DeleteSource", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -113,6 +84,21 @@ func Test_v3_SourcesApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.SourcesApi.DeleteSource(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesApiService DeleteSourceSchema", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var schemaId string
+
+		resp, httpRes, err := apiClient.SourcesApi.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -163,21 +149,6 @@ func Test_v3_SourcesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesApiService GetSchema", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var sourceId string
-		var schemaId string
-
-		resp, httpRes, err := apiClient.SourcesApi.GetSchema(context.Background(), sourceId, schemaId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SourcesApiService GetSource", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -206,6 +177,21 @@ func Test_v3_SourcesApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesApiService GetSourceSchema", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+		var schemaId string
+
+		resp, httpRes, err := apiClient.SourcesApi.GetSourceSchema(context.Background(), sourceId, schemaId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesApiService ListProvisioningPolicies", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -220,13 +206,13 @@ func Test_v3_SourcesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesApiService ListSchemas", func(t *testing.T) {
+	t.Run("Test SourcesApiService ListSourceSchemas", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.ListSchemas(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesApi.ListSourceSchemas(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -246,14 +232,14 @@ func Test_v3_SourcesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesApiService ReplaceProvisioningPolicy", func(t *testing.T) {
+	t.Run("Test SourcesApiService PutProvisioningPolicy", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 		var usageType UsageType
 
-		resp, httpRes, err := apiClient.SourcesApi.ReplaceProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+		resp, httpRes, err := apiClient.SourcesApi.PutProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -261,14 +247,28 @@ func Test_v3_SourcesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesApiService ReplaceSchema", func(t *testing.T) {
+	t.Run("Test SourcesApiService PutSource", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.SourcesApi.PutSource(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesApiService PutSourceSchema", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 		var schemaId string
 
-		resp, httpRes, err := apiClient.SourcesApi.ReplaceSchema(context.Background(), sourceId, schemaId).Execute()
+		resp, httpRes, err := apiClient.SourcesApi.PutSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -276,13 +276,13 @@ func Test_v3_SourcesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesApiService ReplaceSource", func(t *testing.T) {
+	t.Run("Test SourcesApiService UpdateProvisioningPoliciesInBulk", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
+		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.ReplaceSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SourcesApi.UpdateProvisioningPoliciesInBulk(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -305,21 +305,6 @@ func Test_v3_SourcesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesApiService UpdateSchema", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var sourceId string
-		var schemaId string
-
-		resp, httpRes, err := apiClient.SourcesApi.UpdateSchema(context.Background(), sourceId, schemaId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SourcesApiService UpdateSource", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -334,13 +319,14 @@ func Test_v3_SourcesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesApiService UploadConnectorFile", func(t *testing.T) {
+	t.Run("Test SourcesApiService UpdateSourceSchema", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
+		var schemaId string
 
-		resp, httpRes, err := apiClient.SourcesApi.UploadConnectorFile(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.SourcesApi.UpdateSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -355,6 +341,20 @@ func Test_v3_SourcesApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.SourcesApi.UploadSourceAccountsSchema(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesApiService UploadSourceConnectorFile", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.SourcesApi.UploadSourceConnectorFile(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

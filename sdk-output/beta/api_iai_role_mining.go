@@ -214,6 +214,171 @@ func (a *IAIRoleMiningApiService) CreatePotentialRoleProvisionRequestExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateRoleMiningSessionsRequest struct {
+	ctx context.Context
+	ApiService *IAIRoleMiningApiService
+	roleMiningSessionDto *RoleMiningSessionDto
+}
+
+// Role mining session parameters
+func (r ApiCreateRoleMiningSessionsRequest) RoleMiningSessionDto(roleMiningSessionDto RoleMiningSessionDto) ApiCreateRoleMiningSessionsRequest {
+	r.roleMiningSessionDto = &roleMiningSessionDto
+	return r
+}
+
+func (r ApiCreateRoleMiningSessionsRequest) Execute() (*RoleMiningSessionResponse, *http.Response, error) {
+	return r.ApiService.CreateRoleMiningSessionsExecute(r)
+}
+
+/*
+CreateRoleMiningSessions Create a role mining session
+
+This submits a create role mining session request to the role mining application.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCreateRoleMiningSessionsRequest
+*/
+func (a *IAIRoleMiningApiService) CreateRoleMiningSessions(ctx context.Context) ApiCreateRoleMiningSessionsRequest {
+	return ApiCreateRoleMiningSessionsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return RoleMiningSessionResponse
+func (a *IAIRoleMiningApiService) CreateRoleMiningSessionsExecute(r ApiCreateRoleMiningSessionsRequest) (*RoleMiningSessionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RoleMiningSessionResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.CreateRoleMiningSessions")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/role-mining-sessions"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.roleMiningSessionDto == nil {
+		return localVarReturnValue, nil, reportError("roleMiningSessionDto is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.roleMiningSessionDto
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDownloadRoleMiningPotentialRoleZipRequest struct {
 	ctx context.Context
 	ApiService *IAIRoleMiningApiService
@@ -288,168 +453,6 @@ func (a *IAIRoleMiningApiService) DownloadRoleMiningPotentialRoleZipExecute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiEditEntitlementsPotentialRoleRequest struct {
-	ctx context.Context
-	ApiService *IAIRoleMiningApiService
-	sessionId string
-	potentialRoleId string
-	roleMiningPotentialRoleEditEntitlements *RoleMiningPotentialRoleEditEntitlements
-}
-
-// Role mining session parameters
-func (r ApiEditEntitlementsPotentialRoleRequest) RoleMiningPotentialRoleEditEntitlements(roleMiningPotentialRoleEditEntitlements RoleMiningPotentialRoleEditEntitlements) ApiEditEntitlementsPotentialRoleRequest {
-	r.roleMiningPotentialRoleEditEntitlements = &roleMiningPotentialRoleEditEntitlements
-	return r
-}
-
-func (r ApiEditEntitlementsPotentialRoleRequest) Execute() (*RoleMiningPotentialRole, *http.Response, error) {
-	return r.ApiService.EditEntitlementsPotentialRoleExecute(r)
-}
-
-/*
-EditEntitlementsPotentialRole Edit entitlements for a potential role to exclude some entitlements
-
-This endpoint adds or removes entitlements from an exclusion list for a potential role.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param sessionId The role mining session id
- @param potentialRoleId A potential role id in a role mining session
- @return ApiEditEntitlementsPotentialRoleRequest
-*/
-func (a *IAIRoleMiningApiService) EditEntitlementsPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiEditEntitlementsPotentialRoleRequest {
-	return ApiEditEntitlementsPotentialRoleRequest{
-		ApiService: a,
-		ctx: ctx,
-		sessionId: sessionId,
-		potentialRoleId: potentialRoleId,
-	}
-}
-
-// Execute executes the request
-//  @return RoleMiningPotentialRole
-func (a *IAIRoleMiningApiService) EditEntitlementsPotentialRoleExecute(r ApiEditEntitlementsPotentialRoleRequest) (*RoleMiningPotentialRole, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *RoleMiningPotentialRole
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.EditEntitlementsPotentialRole")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements"
-	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterToString(r.sessionId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"potentialRoleId"+"}", url.PathEscape(parameterToString(r.potentialRoleId, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.roleMiningPotentialRoleEditEntitlements == nil {
-		return localVarReturnValue, nil, reportError("roleMiningPotentialRoleEditEntitlements is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.roleMiningPotentialRoleEditEntitlements
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3202,59 +3205,67 @@ func (a *IAIRoleMiningApiService) PatchRoleMiningSessionExecute(r ApiPatchRoleMi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRoleMiningSessionsRequest struct {
+type ApiUpdateEntitlementsPotentialRoleRequest struct {
 	ctx context.Context
 	ApiService *IAIRoleMiningApiService
-	roleMiningSessionDto *RoleMiningSessionDto
+	sessionId string
+	potentialRoleId string
+	roleMiningPotentialRoleEditEntitlements *RoleMiningPotentialRoleEditEntitlements
 }
 
 // Role mining session parameters
-func (r ApiRoleMiningSessionsRequest) RoleMiningSessionDto(roleMiningSessionDto RoleMiningSessionDto) ApiRoleMiningSessionsRequest {
-	r.roleMiningSessionDto = &roleMiningSessionDto
+func (r ApiUpdateEntitlementsPotentialRoleRequest) RoleMiningPotentialRoleEditEntitlements(roleMiningPotentialRoleEditEntitlements RoleMiningPotentialRoleEditEntitlements) ApiUpdateEntitlementsPotentialRoleRequest {
+	r.roleMiningPotentialRoleEditEntitlements = &roleMiningPotentialRoleEditEntitlements
 	return r
 }
 
-func (r ApiRoleMiningSessionsRequest) Execute() (*RoleMiningSessionResponse, *http.Response, error) {
-	return r.ApiService.RoleMiningSessionsExecute(r)
+func (r ApiUpdateEntitlementsPotentialRoleRequest) Execute() (*RoleMiningPotentialRole, *http.Response, error) {
+	return r.ApiService.UpdateEntitlementsPotentialRoleExecute(r)
 }
 
 /*
-RoleMiningSessions Create a role mining session
+UpdateEntitlementsPotentialRole Edit entitlements for a potential role to exclude some entitlements
 
-This submits a create role mining session request to the role mining application.
+This endpoint adds or removes entitlements from an exclusion list for a potential role.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRoleMiningSessionsRequest
+ @param sessionId The role mining session id
+ @param potentialRoleId A potential role id in a role mining session
+ @return ApiUpdateEntitlementsPotentialRoleRequest
 */
-func (a *IAIRoleMiningApiService) RoleMiningSessions(ctx context.Context) ApiRoleMiningSessionsRequest {
-	return ApiRoleMiningSessionsRequest{
+func (a *IAIRoleMiningApiService) UpdateEntitlementsPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiUpdateEntitlementsPotentialRoleRequest {
+	return ApiUpdateEntitlementsPotentialRoleRequest{
 		ApiService: a,
 		ctx: ctx,
+		sessionId: sessionId,
+		potentialRoleId: potentialRoleId,
 	}
 }
 
 // Execute executes the request
-//  @return RoleMiningSessionResponse
-func (a *IAIRoleMiningApiService) RoleMiningSessionsExecute(r ApiRoleMiningSessionsRequest) (*RoleMiningSessionResponse, *http.Response, error) {
+//  @return RoleMiningPotentialRole
+func (a *IAIRoleMiningApiService) UpdateEntitlementsPotentialRoleExecute(r ApiUpdateEntitlementsPotentialRoleRequest) (*RoleMiningPotentialRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *RoleMiningSessionResponse
+		localVarReturnValue  *RoleMiningPotentialRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.RoleMiningSessions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.UpdateEntitlementsPotentialRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/role-mining-sessions"
+	localVarPath := localBasePath + "/role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements"
+	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterToString(r.sessionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"potentialRoleId"+"}", url.PathEscape(parameterToString(r.potentialRoleId, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.roleMiningSessionDto == nil {
-		return localVarReturnValue, nil, reportError("roleMiningSessionDto is required and must be specified")
+	if r.roleMiningPotentialRoleEditEntitlements == nil {
+		return localVarReturnValue, nil, reportError("roleMiningPotentialRoleEditEntitlements is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -3275,7 +3286,7 @@ func (a *IAIRoleMiningApiService) RoleMiningSessionsExecute(r ApiRoleMiningSessi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.roleMiningSessionDto
+	localVarPostBody = r.roleMiningPotentialRoleEditEntitlements
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3322,17 +3333,6 @@ func (a *IAIRoleMiningApiService) RoleMiningSessionsExecute(r ApiRoleMiningSessi
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

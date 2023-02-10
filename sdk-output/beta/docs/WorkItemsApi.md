@@ -5,17 +5,17 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApproveApprovalItem**](WorkItemsApi.md#ApproveApprovalItem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
-[**BulkApproveApprovalItem**](WorkItemsApi.md#BulkApproveApprovalItem) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
-[**BulkRejectApprovalItem**](WorkItemsApi.md#BulkRejectApprovalItem) | **Post** /work-items/bulk-reject/{id} | Bulk reject Approval Items
+[**ApproveApprovalItemsInBulk**](WorkItemsApi.md#ApproveApprovalItemsInBulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 [**CompleteWorkItem**](WorkItemsApi.md#CompleteWorkItem) | **Post** /work-items/{id} | Complete a Work Item
-[**CompletedWorkItems**](WorkItemsApi.md#CompletedWorkItems) | **Get** /work-items/completed | Completed Work Items
-[**CountCompletedWorkItems**](WorkItemsApi.md#CountCompletedWorkItems) | **Get** /work-items/count/completed | Count Completed Work Items
-[**CountWorkItems**](WorkItemsApi.md#CountWorkItems) | **Get** /work-items/count | Count Work Items
-[**GetWorkItems**](WorkItemsApi.md#GetWorkItems) | **Get** /work-items/{id} | Get a Work Item
+[**GetCompletedWorkItems**](WorkItemsApi.md#GetCompletedWorkItems) | **Get** /work-items/completed | Completed Work Items
+[**GetCountCompletedWorkItems**](WorkItemsApi.md#GetCountCompletedWorkItems) | **Get** /work-items/count/completed | Count Completed Work Items
+[**GetCountWorkItems**](WorkItemsApi.md#GetCountWorkItems) | **Get** /work-items/count | Count Work Items
+[**GetWorkItem**](WorkItemsApi.md#GetWorkItem) | **Get** /work-items/{id} | Get a Work Item
+[**GetWorkItemsSummary**](WorkItemsApi.md#GetWorkItemsSummary) | **Get** /work-items/summary | Work Items Summary
 [**ListWorkItems**](WorkItemsApi.md#ListWorkItems) | **Get** /work-items | List Work Items
 [**RejectApprovalItem**](WorkItemsApi.md#RejectApprovalItem) | **Post** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
+[**RejectApprovalItemsInBulk**](WorkItemsApi.md#RejectApprovalItemsInBulk) | **Post** /work-items/bulk-reject/{id} | Bulk reject Approval Items
 [**SubmitAccountSelection**](WorkItemsApi.md#SubmitAccountSelection) | **Post** /work-items/{id}/submit-account-selection | Submit Account Selections
-[**SummaryWorkItems**](WorkItemsApi.md#SummaryWorkItems) | **Get** /work-items/summary | Work Items Summary
 
 
 
@@ -92,9 +92,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## BulkApproveApprovalItem
+## ApproveApprovalItemsInBulk
 
-> WorkItems BulkApproveApprovalItem(ctx, id).Execute()
+> WorkItems ApproveApprovalItemsInBulk(ctx, id).Execute()
 
 Bulk approve Approval Items
 
@@ -117,13 +117,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.BulkApproveApprovalItem(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkItemsApi.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.BulkApproveApprovalItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.ApproveApprovalItemsInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `BulkApproveApprovalItem`: WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.BulkApproveApprovalItem`: %v\n", resp)
+    // response from `ApproveApprovalItemsInBulk`: WorkItems
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.ApproveApprovalItemsInBulk`: %v\n", resp)
 }
 ```
 
@@ -137,77 +137,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiBulkApproveApprovalItemRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**WorkItems**](WorkItems.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## BulkRejectApprovalItem
-
-> WorkItems BulkRejectApprovalItem(ctx, id).Execute()
-
-Bulk reject Approval Items
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.BulkRejectApprovalItem(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.BulkRejectApprovalItem``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `BulkRejectApprovalItem`: WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.BulkRejectApprovalItem`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the work item | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiBulkRejectApprovalItemRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApproveApprovalItemsInBulkRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -302,9 +232,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CompletedWorkItems
+## GetCompletedWorkItems
 
-> []WorkItems CompletedWorkItems(ctx).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
+> []WorkItems GetCompletedWorkItems(ctx).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
 
 Completed Work Items
 
@@ -330,13 +260,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.CompletedWorkItems(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.WorkItemsApi.GetCompletedWorkItems(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.CompletedWorkItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.GetCompletedWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CompletedWorkItems`: []WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.CompletedWorkItems`: %v\n", resp)
+    // response from `GetCompletedWorkItems`: []WorkItems
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.GetCompletedWorkItems`: %v\n", resp)
 }
 ```
 
@@ -346,7 +276,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCompletedWorkItemsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCompletedWorkItemsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -374,9 +304,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CountCompletedWorkItems
+## GetCountCompletedWorkItems
 
-> []WorkItemsCount CountCompletedWorkItems(ctx).OwnerId(ownerId).Execute()
+> []WorkItemsCount GetCountCompletedWorkItems(ctx).OwnerId(ownerId).Execute()
 
 Count Completed Work Items
 
@@ -399,13 +329,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.CountCompletedWorkItems(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsApi.GetCountCompletedWorkItems(context.Background()).OwnerId(ownerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.CountCompletedWorkItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.GetCountCompletedWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CountCompletedWorkItems`: []WorkItemsCount
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.CountCompletedWorkItems`: %v\n", resp)
+    // response from `GetCountCompletedWorkItems`: []WorkItemsCount
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.GetCountCompletedWorkItems`: %v\n", resp)
 }
 ```
 
@@ -415,7 +345,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCountCompletedWorkItemsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCountCompletedWorkItemsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -440,9 +370,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CountWorkItems
+## GetCountWorkItems
 
-> []WorkItemsCount CountWorkItems(ctx).OwnerId(ownerId).Execute()
+> []WorkItemsCount GetCountWorkItems(ctx).OwnerId(ownerId).Execute()
 
 Count Work Items
 
@@ -465,13 +395,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.CountWorkItems(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsApi.GetCountWorkItems(context.Background()).OwnerId(ownerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.CountWorkItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.GetCountWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CountWorkItems`: []WorkItemsCount
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.CountWorkItems`: %v\n", resp)
+    // response from `GetCountWorkItems`: []WorkItemsCount
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.GetCountWorkItems`: %v\n", resp)
 }
 ```
 
@@ -481,7 +411,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCountWorkItemsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCountWorkItemsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -506,9 +436,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetWorkItems
+## GetWorkItem
 
-> []WorkItems GetWorkItems(ctx, id).OwnerId(ownerId).Execute()
+> []WorkItems GetWorkItem(ctx, id).OwnerId(ownerId).Execute()
 
 Get a Work Item
 
@@ -532,13 +462,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.GetWorkItems(context.Background(), id).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsApi.GetWorkItem(context.Background(), id).OwnerId(ownerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.GetWorkItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.GetWorkItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetWorkItems`: []WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.GetWorkItems`: %v\n", resp)
+    // response from `GetWorkItem`: []WorkItems
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.GetWorkItem`: %v\n", resp)
 }
 ```
 
@@ -552,7 +482,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetWorkItemsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetWorkItemRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -563,6 +493,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]WorkItems**](WorkItems.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetWorkItemsSummary
+
+> []WorkItemsSummary GetWorkItemsSummary(ctx).OwnerId(ownerId).Execute()
+
+Work Items Summary
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    ownerId := "ownerId_example" // string | ID of the work item owner. (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WorkItemsApi.GetWorkItemsSummary(context.Background()).OwnerId(ownerId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.GetWorkItemsSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetWorkItemsSummary`: []WorkItemsSummary
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.GetWorkItemsSummary`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetWorkItemsSummaryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ownerId** | **string** | ID of the work item owner. | 
+
+### Return type
+
+[**[]WorkItemsSummary**](WorkItemsSummary.md)
 
 ### Authorization
 
@@ -723,6 +719,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RejectApprovalItemsInBulk
+
+> WorkItems RejectApprovalItemsInBulk(ctx, id).Execute()
+
+Bulk reject Approval Items
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WorkItemsApi.RejectApprovalItemsInBulk(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.RejectApprovalItemsInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `RejectApprovalItemsInBulk`: WorkItems
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.RejectApprovalItemsInBulk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The ID of the work item | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRejectApprovalItemsInBulkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**WorkItems**](WorkItems.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SubmitAccountSelection
 
 > WorkItems SubmitAccountSelection(ctx, id).RequestBody(requestBody).Execute()
@@ -788,72 +854,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SummaryWorkItems
-
-> []WorkItemsSummary SummaryWorkItems(ctx).OwnerId(ownerId).Execute()
-
-Work Items Summary
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    ownerId := "ownerId_example" // string | ID of the work item owner. (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.SummaryWorkItems(context.Background()).OwnerId(ownerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.SummaryWorkItems``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `SummaryWorkItems`: []WorkItemsSummary
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.SummaryWorkItems`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSummaryWorkItemsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ownerId** | **string** | ID of the work item owner. | 
-
-### Return type
-
-[**[]WorkItemsSummary**](WorkItemsSummary.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

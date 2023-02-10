@@ -4,14 +4,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetClientStatus**](ManagedClientsApi.md#GetClientStatus) | **Get** /managed-clients/{id}/status | Get a specified Managed Client Status.
-[**UpdateStatus**](ManagedClientsApi.md#UpdateStatus) | **Post** /managed-clients/{id}/status | Handle a status request from a client
+[**GetManagedClientStatus**](ManagedClientsApi.md#GetManagedClientStatus) | **Get** /managed-clients/{id}/status | Get a specified Managed Client Status.
+[**UpdateManagedClientStatus**](ManagedClientsApi.md#UpdateManagedClientStatus) | **Post** /managed-clients/{id}/status | Handle a status request from a client
 
 
 
-## GetClientStatus
+## GetManagedClientStatus
 
-> ManagedClientStatus GetClientStatus(ctx, id).Type_(type_).Execute()
+> ManagedClientStatus GetManagedClientStatus(ctx, id).Type_(type_).Execute()
 
 Get a specified Managed Client Status.
 
@@ -35,13 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClientsApi.GetClientStatus(context.Background(), id).Type_(type_).Execute()
+    resp, r, err := apiClient.ManagedClientsApi.GetManagedClientStatus(context.Background(), id).Type_(type_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsApi.GetClientStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsApi.GetManagedClientStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetClientStatus`: ManagedClientStatus
-    fmt.Fprintf(os.Stdout, "Response from `ManagedClientsApi.GetClientStatus`: %v\n", resp)
+    // response from `GetManagedClientStatus`: ManagedClientStatus
+    fmt.Fprintf(os.Stdout, "Response from `ManagedClientsApi.GetManagedClientStatus`: %v\n", resp)
 }
 ```
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetClientStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetManagedClientStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateStatus
+## UpdateManagedClientStatus
 
-> ManagedClientStatusAggResponse UpdateStatus(ctx, id).ManagedClientStatus(managedClientStatus).Execute()
+> ManagedClientStatusAggResponse UpdateManagedClientStatus(ctx, id).ManagedClientStatus(managedClientStatus).Execute()
 
 Handle a status request from a client
 
@@ -108,13 +108,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClientsApi.UpdateStatus(context.Background(), id).ManagedClientStatus(managedClientStatus).Execute()
+    resp, r, err := apiClient.ManagedClientsApi.UpdateManagedClientStatus(context.Background(), id).ManagedClientStatus(managedClientStatus).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsApi.UpdateStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsApi.UpdateManagedClientStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateStatus`: ManagedClientStatusAggResponse
-    fmt.Fprintf(os.Stdout, "Response from `ManagedClientsApi.UpdateStatus`: %v\n", resp)
+    // response from `UpdateManagedClientStatus`: ManagedClientStatusAggResponse
+    fmt.Fprintf(os.Stdout, "Response from `ManagedClientsApi.UpdateManagedClientStatus`: %v\n", resp)
 }
 ```
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateManagedClientStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

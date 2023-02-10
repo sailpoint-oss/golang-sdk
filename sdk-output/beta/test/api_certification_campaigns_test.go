@@ -36,20 +36,6 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationCampaignsApiService AdminReassign", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.AdminReassign(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CertificationCampaignsApiService CompleteCampaign", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -241,6 +227,20 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.CertificationCampaignsApi.PatchCampaignTemplate(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CertificationCampaignsApiService ReassignCampaign", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.CertificationCampaignsApi.ReassignCampaign(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

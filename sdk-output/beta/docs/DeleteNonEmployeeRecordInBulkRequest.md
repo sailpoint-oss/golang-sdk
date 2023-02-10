@@ -1,4 +1,4 @@
-# NonEmployeeRecordBulkDeleteRequest
+# DeleteNonEmployeeRecordInBulkRequest
 
 ## Properties
 
@@ -8,39 +8,39 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewNonEmployeeRecordBulkDeleteRequest
+### NewDeleteNonEmployeeRecordInBulkRequest
 
-`func NewNonEmployeeRecordBulkDeleteRequest(ids []string, ) *NonEmployeeRecordBulkDeleteRequest`
+`func NewDeleteNonEmployeeRecordInBulkRequest(ids []string, ) *DeleteNonEmployeeRecordInBulkRequest`
 
-NewNonEmployeeRecordBulkDeleteRequest instantiates a new NonEmployeeRecordBulkDeleteRequest object
+NewDeleteNonEmployeeRecordInBulkRequest instantiates a new DeleteNonEmployeeRecordInBulkRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewNonEmployeeRecordBulkDeleteRequestWithDefaults
+### NewDeleteNonEmployeeRecordInBulkRequestWithDefaults
 
-`func NewNonEmployeeRecordBulkDeleteRequestWithDefaults() *NonEmployeeRecordBulkDeleteRequest`
+`func NewDeleteNonEmployeeRecordInBulkRequestWithDefaults() *DeleteNonEmployeeRecordInBulkRequest`
 
-NewNonEmployeeRecordBulkDeleteRequestWithDefaults instantiates a new NonEmployeeRecordBulkDeleteRequest object
+NewDeleteNonEmployeeRecordInBulkRequestWithDefaults instantiates a new DeleteNonEmployeeRecordInBulkRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetIds
 
-`func (o *NonEmployeeRecordBulkDeleteRequest) GetIds() []string`
+`func (o *DeleteNonEmployeeRecordInBulkRequest) GetIds() []string`
 
 GetIds returns the Ids field if non-nil, zero value otherwise.
 
 ### GetIdsOk
 
-`func (o *NonEmployeeRecordBulkDeleteRequest) GetIdsOk() (*[]string, bool)`
+`func (o *DeleteNonEmployeeRecordInBulkRequest) GetIdsOk() (*[]string, bool)`
 
 GetIdsOk returns a tuple with the Ids field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIds
 
-`func (o *NonEmployeeRecordBulkDeleteRequest) SetIds(v []string)`
+`func (o *DeleteNonEmployeeRecordInBulkRequest) SetIds(v []string)`
 
 SetIds sets Ids field to given value.
 

@@ -126,13 +126,11 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ServiceDeskIntegrationApiService UpdateServiceDeskIntegration", func(t *testing.T) {
+	t.Run("Test ServiceDeskIntegrationApiService UpdateManagedClientStatusCheckDetails", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
-
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.UpdateServiceDeskIntegration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.UpdateManagedClientStatusCheckDetails(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -140,11 +138,13 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ServiceDeskIntegrationApiService UpdateStatusCheckDetails", func(t *testing.T) {
+	t.Run("Test ServiceDeskIntegrationApiService UpdateServiceDeskIntegration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.UpdateStatusCheckDetails(context.Background()).Execute()
+		var id string
+
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.UpdateServiceDeskIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

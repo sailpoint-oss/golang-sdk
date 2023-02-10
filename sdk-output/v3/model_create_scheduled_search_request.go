@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 )
 
-// ScheduledSearchCreateRequest struct for ScheduledSearchCreateRequest
-type ScheduledSearchCreateRequest struct {
+// CreateScheduledSearchRequest struct for CreateScheduledSearchRequest
+type CreateScheduledSearchRequest struct {
 	// The name of the scheduled search. 
 	Name NullableString `json:"name,omitempty"`
 	// The description of the scheduled search. 
@@ -39,14 +39,14 @@ type ScheduledSearchCreateRequest struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _ScheduledSearchCreateRequest ScheduledSearchCreateRequest
+type _CreateScheduledSearchRequest CreateScheduledSearchRequest
 
-// NewScheduledSearchCreateRequest instantiates a new ScheduledSearchCreateRequest object
+// NewCreateScheduledSearchRequest instantiates a new CreateScheduledSearchRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScheduledSearchCreateRequest(savedSearchId string, schedule Schedule, recipients []SearchScheduleRecipientsInner) *ScheduledSearchCreateRequest {
-	this := ScheduledSearchCreateRequest{}
+func NewCreateScheduledSearchRequest(savedSearchId string, schedule Schedule, recipients []SearchScheduleRecipientsInner) *CreateScheduledSearchRequest {
+	this := CreateScheduledSearchRequest{}
 	this.SavedSearchId = savedSearchId
 	this.Schedule = schedule
 	this.Recipients = recipients
@@ -59,11 +59,11 @@ func NewScheduledSearchCreateRequest(savedSearchId string, schedule Schedule, re
 	return &this
 }
 
-// NewScheduledSearchCreateRequestWithDefaults instantiates a new ScheduledSearchCreateRequest object
+// NewCreateScheduledSearchRequestWithDefaults instantiates a new CreateScheduledSearchRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewScheduledSearchCreateRequestWithDefaults() *ScheduledSearchCreateRequest {
-	this := ScheduledSearchCreateRequest{}
+func NewCreateScheduledSearchRequestWithDefaults() *CreateScheduledSearchRequest {
+	this := CreateScheduledSearchRequest{}
 	var enabled bool = false
 	this.Enabled = &enabled
 	var emailEmptyResults bool = false
@@ -74,7 +74,7 @@ func NewScheduledSearchCreateRequestWithDefaults() *ScheduledSearchCreateRequest
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ScheduledSearchCreateRequest) GetName() string {
+func (o *CreateScheduledSearchRequest) GetName() string {
 	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *ScheduledSearchCreateRequest) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ScheduledSearchCreateRequest) GetNameOk() (*string, bool) {
+func (o *CreateScheduledSearchRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *ScheduledSearchCreateRequest) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ScheduledSearchCreateRequest) HasName() bool {
+func (o *CreateScheduledSearchRequest) HasName() bool {
 	if o != nil && o.Name.IsSet() {
 		return true
 	}
@@ -102,21 +102,21 @@ func (o *ScheduledSearchCreateRequest) HasName() bool {
 }
 
 // SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *ScheduledSearchCreateRequest) SetName(v string) {
+func (o *CreateScheduledSearchRequest) SetName(v string) {
 	o.Name.Set(&v)
 }
 // SetNameNil sets the value for Name to be an explicit nil
-func (o *ScheduledSearchCreateRequest) SetNameNil() {
+func (o *CreateScheduledSearchRequest) SetNameNil() {
 	o.Name.Set(nil)
 }
 
 // UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ScheduledSearchCreateRequest) UnsetName() {
+func (o *CreateScheduledSearchRequest) UnsetName() {
 	o.Name.Unset()
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ScheduledSearchCreateRequest) GetDescription() string {
+func (o *CreateScheduledSearchRequest) GetDescription() string {
 	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
@@ -127,7 +127,7 @@ func (o *ScheduledSearchCreateRequest) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ScheduledSearchCreateRequest) GetDescriptionOk() (*string, bool) {
+func (o *CreateScheduledSearchRequest) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -135,7 +135,7 @@ func (o *ScheduledSearchCreateRequest) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *ScheduledSearchCreateRequest) HasDescription() bool {
+func (o *CreateScheduledSearchRequest) HasDescription() bool {
 	if o != nil && o.Description.IsSet() {
 		return true
 	}
@@ -144,21 +144,21 @@ func (o *ScheduledSearchCreateRequest) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *ScheduledSearchCreateRequest) SetDescription(v string) {
+func (o *CreateScheduledSearchRequest) SetDescription(v string) {
 	o.Description.Set(&v)
 }
 // SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *ScheduledSearchCreateRequest) SetDescriptionNil() {
+func (o *CreateScheduledSearchRequest) SetDescriptionNil() {
 	o.Description.Set(nil)
 }
 
 // UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *ScheduledSearchCreateRequest) UnsetDescription() {
+func (o *CreateScheduledSearchRequest) UnsetDescription() {
 	o.Description.Unset()
 }
 
 // GetSavedSearchId returns the SavedSearchId field value
-func (o *ScheduledSearchCreateRequest) GetSavedSearchId() string {
+func (o *CreateScheduledSearchRequest) GetSavedSearchId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -169,7 +169,7 @@ func (o *ScheduledSearchCreateRequest) GetSavedSearchId() string {
 
 // GetSavedSearchIdOk returns a tuple with the SavedSearchId field value
 // and a boolean to check if the value has been set.
-func (o *ScheduledSearchCreateRequest) GetSavedSearchIdOk() (*string, bool) {
+func (o *CreateScheduledSearchRequest) GetSavedSearchIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -177,12 +177,12 @@ func (o *ScheduledSearchCreateRequest) GetSavedSearchIdOk() (*string, bool) {
 }
 
 // SetSavedSearchId sets field value
-func (o *ScheduledSearchCreateRequest) SetSavedSearchId(v string) {
+func (o *CreateScheduledSearchRequest) SetSavedSearchId(v string) {
 	o.SavedSearchId = v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *ScheduledSearchCreateRequest) GetCreated() time.Time {
+func (o *CreateScheduledSearchRequest) GetCreated() time.Time {
 	if o == nil || isNil(o.Created) {
 		var ret time.Time
 		return ret
@@ -192,7 +192,7 @@ func (o *ScheduledSearchCreateRequest) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScheduledSearchCreateRequest) GetCreatedOk() (*time.Time, bool) {
+func (o *CreateScheduledSearchRequest) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || isNil(o.Created) {
 		return nil, false
 	}
@@ -200,7 +200,7 @@ func (o *ScheduledSearchCreateRequest) GetCreatedOk() (*time.Time, bool) {
 }
 
 // HasCreated returns a boolean if a field has been set.
-func (o *ScheduledSearchCreateRequest) HasCreated() bool {
+func (o *CreateScheduledSearchRequest) HasCreated() bool {
 	if o != nil && !isNil(o.Created) {
 		return true
 	}
@@ -209,12 +209,12 @@ func (o *ScheduledSearchCreateRequest) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *ScheduledSearchCreateRequest) SetCreated(v time.Time) {
+func (o *CreateScheduledSearchRequest) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
-func (o *ScheduledSearchCreateRequest) GetModified() time.Time {
+func (o *CreateScheduledSearchRequest) GetModified() time.Time {
 	if o == nil || isNil(o.Modified) {
 		var ret time.Time
 		return ret
@@ -224,7 +224,7 @@ func (o *ScheduledSearchCreateRequest) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScheduledSearchCreateRequest) GetModifiedOk() (*time.Time, bool) {
+func (o *CreateScheduledSearchRequest) GetModifiedOk() (*time.Time, bool) {
 	if o == nil || isNil(o.Modified) {
 		return nil, false
 	}
@@ -232,7 +232,7 @@ func (o *ScheduledSearchCreateRequest) GetModifiedOk() (*time.Time, bool) {
 }
 
 // HasModified returns a boolean if a field has been set.
-func (o *ScheduledSearchCreateRequest) HasModified() bool {
+func (o *CreateScheduledSearchRequest) HasModified() bool {
 	if o != nil && !isNil(o.Modified) {
 		return true
 	}
@@ -241,12 +241,12 @@ func (o *ScheduledSearchCreateRequest) HasModified() bool {
 }
 
 // SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *ScheduledSearchCreateRequest) SetModified(v time.Time) {
+func (o *CreateScheduledSearchRequest) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
 // GetSchedule returns the Schedule field value
-func (o *ScheduledSearchCreateRequest) GetSchedule() Schedule {
+func (o *CreateScheduledSearchRequest) GetSchedule() Schedule {
 	if o == nil {
 		var ret Schedule
 		return ret
@@ -257,7 +257,7 @@ func (o *ScheduledSearchCreateRequest) GetSchedule() Schedule {
 
 // GetScheduleOk returns a tuple with the Schedule field value
 // and a boolean to check if the value has been set.
-func (o *ScheduledSearchCreateRequest) GetScheduleOk() (*Schedule, bool) {
+func (o *CreateScheduledSearchRequest) GetScheduleOk() (*Schedule, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -265,12 +265,12 @@ func (o *ScheduledSearchCreateRequest) GetScheduleOk() (*Schedule, bool) {
 }
 
 // SetSchedule sets field value
-func (o *ScheduledSearchCreateRequest) SetSchedule(v Schedule) {
+func (o *CreateScheduledSearchRequest) SetSchedule(v Schedule) {
 	o.Schedule = v
 }
 
 // GetRecipients returns the Recipients field value
-func (o *ScheduledSearchCreateRequest) GetRecipients() []SearchScheduleRecipientsInner {
+func (o *CreateScheduledSearchRequest) GetRecipients() []SearchScheduleRecipientsInner {
 	if o == nil {
 		var ret []SearchScheduleRecipientsInner
 		return ret
@@ -281,7 +281,7 @@ func (o *ScheduledSearchCreateRequest) GetRecipients() []SearchScheduleRecipient
 
 // GetRecipientsOk returns a tuple with the Recipients field value
 // and a boolean to check if the value has been set.
-func (o *ScheduledSearchCreateRequest) GetRecipientsOk() ([]SearchScheduleRecipientsInner, bool) {
+func (o *CreateScheduledSearchRequest) GetRecipientsOk() ([]SearchScheduleRecipientsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -289,12 +289,12 @@ func (o *ScheduledSearchCreateRequest) GetRecipientsOk() ([]SearchScheduleRecipi
 }
 
 // SetRecipients sets field value
-func (o *ScheduledSearchCreateRequest) SetRecipients(v []SearchScheduleRecipientsInner) {
+func (o *CreateScheduledSearchRequest) SetRecipients(v []SearchScheduleRecipientsInner) {
 	o.Recipients = v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
-func (o *ScheduledSearchCreateRequest) GetEnabled() bool {
+func (o *CreateScheduledSearchRequest) GetEnabled() bool {
 	if o == nil || isNil(o.Enabled) {
 		var ret bool
 		return ret
@@ -304,7 +304,7 @@ func (o *ScheduledSearchCreateRequest) GetEnabled() bool {
 
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScheduledSearchCreateRequest) GetEnabledOk() (*bool, bool) {
+func (o *CreateScheduledSearchRequest) GetEnabledOk() (*bool, bool) {
 	if o == nil || isNil(o.Enabled) {
 		return nil, false
 	}
@@ -312,7 +312,7 @@ func (o *ScheduledSearchCreateRequest) GetEnabledOk() (*bool, bool) {
 }
 
 // HasEnabled returns a boolean if a field has been set.
-func (o *ScheduledSearchCreateRequest) HasEnabled() bool {
+func (o *CreateScheduledSearchRequest) HasEnabled() bool {
 	if o != nil && !isNil(o.Enabled) {
 		return true
 	}
@@ -321,12 +321,12 @@ func (o *ScheduledSearchCreateRequest) HasEnabled() bool {
 }
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
-func (o *ScheduledSearchCreateRequest) SetEnabled(v bool) {
+func (o *CreateScheduledSearchRequest) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
 // GetEmailEmptyResults returns the EmailEmptyResults field value if set, zero value otherwise.
-func (o *ScheduledSearchCreateRequest) GetEmailEmptyResults() bool {
+func (o *CreateScheduledSearchRequest) GetEmailEmptyResults() bool {
 	if o == nil || isNil(o.EmailEmptyResults) {
 		var ret bool
 		return ret
@@ -336,7 +336,7 @@ func (o *ScheduledSearchCreateRequest) GetEmailEmptyResults() bool {
 
 // GetEmailEmptyResultsOk returns a tuple with the EmailEmptyResults field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScheduledSearchCreateRequest) GetEmailEmptyResultsOk() (*bool, bool) {
+func (o *CreateScheduledSearchRequest) GetEmailEmptyResultsOk() (*bool, bool) {
 	if o == nil || isNil(o.EmailEmptyResults) {
 		return nil, false
 	}
@@ -344,7 +344,7 @@ func (o *ScheduledSearchCreateRequest) GetEmailEmptyResultsOk() (*bool, bool) {
 }
 
 // HasEmailEmptyResults returns a boolean if a field has been set.
-func (o *ScheduledSearchCreateRequest) HasEmailEmptyResults() bool {
+func (o *CreateScheduledSearchRequest) HasEmailEmptyResults() bool {
 	if o != nil && !isNil(o.EmailEmptyResults) {
 		return true
 	}
@@ -353,12 +353,12 @@ func (o *ScheduledSearchCreateRequest) HasEmailEmptyResults() bool {
 }
 
 // SetEmailEmptyResults gets a reference to the given bool and assigns it to the EmailEmptyResults field.
-func (o *ScheduledSearchCreateRequest) SetEmailEmptyResults(v bool) {
+func (o *CreateScheduledSearchRequest) SetEmailEmptyResults(v bool) {
 	o.EmailEmptyResults = &v
 }
 
 // GetDisplayQueryDetails returns the DisplayQueryDetails field value if set, zero value otherwise.
-func (o *ScheduledSearchCreateRequest) GetDisplayQueryDetails() bool {
+func (o *CreateScheduledSearchRequest) GetDisplayQueryDetails() bool {
 	if o == nil || isNil(o.DisplayQueryDetails) {
 		var ret bool
 		return ret
@@ -368,7 +368,7 @@ func (o *ScheduledSearchCreateRequest) GetDisplayQueryDetails() bool {
 
 // GetDisplayQueryDetailsOk returns a tuple with the DisplayQueryDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScheduledSearchCreateRequest) GetDisplayQueryDetailsOk() (*bool, bool) {
+func (o *CreateScheduledSearchRequest) GetDisplayQueryDetailsOk() (*bool, bool) {
 	if o == nil || isNil(o.DisplayQueryDetails) {
 		return nil, false
 	}
@@ -376,7 +376,7 @@ func (o *ScheduledSearchCreateRequest) GetDisplayQueryDetailsOk() (*bool, bool) 
 }
 
 // HasDisplayQueryDetails returns a boolean if a field has been set.
-func (o *ScheduledSearchCreateRequest) HasDisplayQueryDetails() bool {
+func (o *CreateScheduledSearchRequest) HasDisplayQueryDetails() bool {
 	if o != nil && !isNil(o.DisplayQueryDetails) {
 		return true
 	}
@@ -385,11 +385,11 @@ func (o *ScheduledSearchCreateRequest) HasDisplayQueryDetails() bool {
 }
 
 // SetDisplayQueryDetails gets a reference to the given bool and assigns it to the DisplayQueryDetails field.
-func (o *ScheduledSearchCreateRequest) SetDisplayQueryDetails(v bool) {
+func (o *CreateScheduledSearchRequest) SetDisplayQueryDetails(v bool) {
 	o.DisplayQueryDetails = &v
 }
 
-func (o ScheduledSearchCreateRequest) MarshalJSON() ([]byte, error) {
+func (o CreateScheduledSearchRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
@@ -429,11 +429,11 @@ func (o ScheduledSearchCreateRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o *ScheduledSearchCreateRequest) UnmarshalJSON(bytes []byte) (err error) {
-	varScheduledSearchCreateRequest := _ScheduledSearchCreateRequest{}
+func (o *CreateScheduledSearchRequest) UnmarshalJSON(bytes []byte) (err error) {
+	varCreateScheduledSearchRequest := _CreateScheduledSearchRequest{}
 
-	if err = json.Unmarshal(bytes, &varScheduledSearchCreateRequest); err == nil {
-		*o = ScheduledSearchCreateRequest(varScheduledSearchCreateRequest)
+	if err = json.Unmarshal(bytes, &varCreateScheduledSearchRequest); err == nil {
+		*o = CreateScheduledSearchRequest(varCreateScheduledSearchRequest)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -455,38 +455,38 @@ func (o *ScheduledSearchCreateRequest) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableScheduledSearchCreateRequest struct {
-	value *ScheduledSearchCreateRequest
+type NullableCreateScheduledSearchRequest struct {
+	value *CreateScheduledSearchRequest
 	isSet bool
 }
 
-func (v NullableScheduledSearchCreateRequest) Get() *ScheduledSearchCreateRequest {
+func (v NullableCreateScheduledSearchRequest) Get() *CreateScheduledSearchRequest {
 	return v.value
 }
 
-func (v *NullableScheduledSearchCreateRequest) Set(val *ScheduledSearchCreateRequest) {
+func (v *NullableCreateScheduledSearchRequest) Set(val *CreateScheduledSearchRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableScheduledSearchCreateRequest) IsSet() bool {
+func (v NullableCreateScheduledSearchRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableScheduledSearchCreateRequest) Unset() {
+func (v *NullableCreateScheduledSearchRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableScheduledSearchCreateRequest(val *ScheduledSearchCreateRequest) *NullableScheduledSearchCreateRequest {
-	return &NullableScheduledSearchCreateRequest{value: val, isSet: true}
+func NewNullableCreateScheduledSearchRequest(val *CreateScheduledSearchRequest) *NullableCreateScheduledSearchRequest {
+	return &NullableCreateScheduledSearchRequest{value: val, isSet: true}
 }
 
-func (v NullableScheduledSearchCreateRequest) MarshalJSON() ([]byte, error) {
+func (v NullableCreateScheduledSearchRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableScheduledSearchCreateRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateScheduledSearchRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

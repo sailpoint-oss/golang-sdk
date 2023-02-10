@@ -5,7 +5,6 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ActivateCampaign**](CertificationCampaignsApi.md#ActivateCampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
-[**AdminReassign**](CertificationCampaignsApi.md#AdminReassign) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 [**CompleteCampaign**](CertificationCampaignsApi.md#CompleteCampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
 [**CreateCampaign**](CertificationCampaignsApi.md#CreateCampaign) | **Post** /campaigns | Create a campaign
 [**CreateCampaignTemplate**](CertificationCampaignsApi.md#CreateCampaignTemplate) | **Post** /campaign-templates | Create a Campaign Template
@@ -21,6 +20,7 @@ Method | HTTP request | Description
 [**GetCampaignTemplateSchedule**](CertificationCampaignsApi.md#GetCampaignTemplateSchedule) | **Get** /campaign-templates/{id}/schedule | Gets a Campaign Template&#39;s Schedule
 [**ListCampaignTemplates**](CertificationCampaignsApi.md#ListCampaignTemplates) | **Get** /campaign-templates | List Campaign Templates
 [**PatchCampaignTemplate**](CertificationCampaignsApi.md#PatchCampaignTemplate) | **Patch** /campaign-templates/{id} | Update a Campaign Template
+[**ReassignCampaign**](CertificationCampaignsApi.md#ReassignCampaign) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 [**RunCampaignRemediationScan**](CertificationCampaignsApi.md#RunCampaignRemediationScan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 [**RunCampaignReport**](CertificationCampaignsApi.md#RunCampaignReport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
 [**SetCampaignReportsConfig**](CertificationCampaignsApi.md#SetCampaignReportsConfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
@@ -86,78 +86,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **map[string]interface{}**
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## AdminReassign
-
-> CertificationTask AdminReassign(ctx, id).AdminReviewReassign(adminReviewReassign).Execute()
-
-Reassign Certifications
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The certification campaign ID
-    adminReviewReassign := *openapiclient.NewAdminReviewReassign() // AdminReviewReassign | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.AdminReassign(context.Background(), id).AdminReviewReassign(adminReviewReassign).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.AdminReassign``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AdminReassign`: CertificationTask
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.AdminReassign`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The certification campaign ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAdminReassignRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **adminReviewReassign** | [**AdminReviewReassign**](AdminReviewReassign.md) |  | 
-
-### Return type
-
-[**CertificationTask**](CertificationTask.md)
 
 ### Authorization
 
@@ -1202,6 +1130,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ReassignCampaign
+
+> CertificationTask ReassignCampaign(ctx, id).AdminReviewReassign(adminReviewReassign).Execute()
+
+Reassign Certifications
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The certification campaign ID
+    adminReviewReassign := *openapiclient.NewAdminReviewReassign() // AdminReviewReassign | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationCampaignsApi.ReassignCampaign(context.Background(), id).AdminReviewReassign(adminReviewReassign).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.ReassignCampaign``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ReassignCampaign`: CertificationTask
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.ReassignCampaign`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The certification campaign ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReassignCampaignRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **adminReviewReassign** | [**AdminReviewReassign**](AdminReviewReassign.md) |  | 
+
+### Return type
+
+[**CertificationTask**](CertificationTask.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

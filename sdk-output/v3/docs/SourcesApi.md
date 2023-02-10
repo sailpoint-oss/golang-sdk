@@ -4,104 +4,32 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BulkUpdateProvisioningPolicies**](SourcesApi.md#BulkUpdateProvisioningPolicies) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 [**CreateProvisioningPolicy**](SourcesApi.md#CreateProvisioningPolicy) | **Post** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
-[**CreateSchema**](SourcesApi.md#CreateSchema) | **Post** /sources/{sourceId}/schemas | Create Schema on a Source
 [**CreateSource**](SourcesApi.md#CreateSource) | **Post** /sources | Creates a source in IdentityNow.
+[**CreateSourceSchema**](SourcesApi.md#CreateSourceSchema) | **Post** /sources/{sourceId}/schemas | Create Schema on a Source
 [**DeleteProvisioningPolicy**](SourcesApi.md#DeleteProvisioningPolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
-[**DeleteSchema**](SourcesApi.md#DeleteSchema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
 [**DeleteSource**](SourcesApi.md#DeleteSource) | **Delete** /sources/{id} | Delete Source by ID
+[**DeleteSourceSchema**](SourcesApi.md#DeleteSourceSchema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
 [**DownloadSourceAccountsSchema**](SourcesApi.md#DownloadSourceAccountsSchema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
 [**DownloadSourceEntitlementsSchema**](SourcesApi.md#DownloadSourceEntitlementsSchema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
 [**GetProvisioningPolicy**](SourcesApi.md#GetProvisioningPolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
-[**GetSchema**](SourcesApi.md#GetSchema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 [**GetSource**](SourcesApi.md#GetSource) | **Get** /sources/{id} | Get Source by ID
 [**GetSourceHealth**](SourcesApi.md#GetSourceHealth) | **Get** /sources/{sourceId}/source-health | This API fetches source health by source&#39;s id
+[**GetSourceSchema**](SourcesApi.md#GetSourceSchema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 [**ListProvisioningPolicies**](SourcesApi.md#ListProvisioningPolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
-[**ListSchemas**](SourcesApi.md#ListSchemas) | **Get** /sources/{sourceId}/schemas | List Schemas on a Source
+[**ListSourceSchemas**](SourcesApi.md#ListSourceSchemas) | **Get** /sources/{sourceId}/schemas | List Schemas on a Source
 [**ListSources**](SourcesApi.md#ListSources) | **Get** /sources | Lists all sources in IdentityNow.
-[**ReplaceProvisioningPolicy**](SourcesApi.md#ReplaceProvisioningPolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
-[**ReplaceSchema**](SourcesApi.md#ReplaceSchema) | **Put** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
-[**ReplaceSource**](SourcesApi.md#ReplaceSource) | **Put** /sources/{id} | Update Source (Full)
+[**PutProvisioningPolicy**](SourcesApi.md#PutProvisioningPolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
+[**PutSource**](SourcesApi.md#PutSource) | **Put** /sources/{id} | Update Source (Full)
+[**PutSourceSchema**](SourcesApi.md#PutSourceSchema) | **Put** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
+[**UpdateProvisioningPoliciesInBulk**](SourcesApi.md#UpdateProvisioningPoliciesInBulk) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 [**UpdateProvisioningPolicy**](SourcesApi.md#UpdateProvisioningPolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
-[**UpdateSchema**](SourcesApi.md#UpdateSchema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 [**UpdateSource**](SourcesApi.md#UpdateSource) | **Patch** /sources/{id} | Update Source (Partial)
-[**UploadConnectorFile**](SourcesApi.md#UploadConnectorFile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
+[**UpdateSourceSchema**](SourcesApi.md#UpdateSourceSchema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 [**UploadSourceAccountsSchema**](SourcesApi.md#UploadSourceAccountsSchema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
+[**UploadSourceConnectorFile**](SourcesApi.md#UploadSourceConnectorFile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
 [**UploadSourceEntitlementsSchema**](SourcesApi.md#UploadSourceEntitlementsSchema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 
-
-
-## BulkUpdateProvisioningPolicies
-
-> []ProvisioningPolicyDto BulkUpdateProvisioningPolicies(ctx, sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
-
-Bulk Update Provisioning Policies
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
-    provisioningPolicyDto := []openapiclient.ProvisioningPolicyDto{*openapiclient.NewProvisioningPolicyDto("example provisioning policy for inactive identities")} // []ProvisioningPolicyDto | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.BulkUpdateProvisioningPolicies(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.BulkUpdateProvisioningPolicies``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `BulkUpdateProvisioningPolicies`: []ProvisioningPolicyDto
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.BulkUpdateProvisioningPolicies`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sourceId** | **string** | The Source id. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiBulkUpdateProvisioningPoliciesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **provisioningPolicyDto** | [**[]ProvisioningPolicyDto**](ProvisioningPolicyDto.md) |  | 
-
-### Return type
-
-[**[]ProvisioningPolicyDto**](ProvisioningPolicyDto.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## CreateProvisioningPolicy
@@ -176,78 +104,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateSchema
-
-> Schema CreateSchema(ctx, sourceId).Schema(schema).Execute()
-
-Create Schema on a Source
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
-    schema := *openapiclient.NewSchema() // Schema | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.CreateSchema(context.Background(), sourceId).Schema(schema).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.CreateSchema``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.CreateSchema`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sourceId** | **string** | The Source id. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateSchemaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **schema** | [**Schema**](Schema.md) |  | 
-
-### Return type
-
-[**Schema**](Schema.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CreateSource
 
 > Source CreateSource(ctx).Source(source).ProvisionAsCsv(provisionAsCsv).Execute()
@@ -301,6 +157,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Source**](Source.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateSourceSchema
+
+> Schema CreateSourceSchema(ctx, sourceId).Schema(schema).Execute()
+
+Create Schema on a Source
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
+    schema := *openapiclient.NewSchema() // Schema | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.CreateSourceSchema(context.Background(), sourceId).Schema(schema).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.CreateSourceSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateSourceSchema`: Schema
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.CreateSourceSchema`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateSourceSchemaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **schema** | [**Schema**](Schema.md) |  | 
+
+### Return type
+
+[**Schema**](Schema.md)
 
 ### Authorization
 
@@ -387,75 +315,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteSchema
-
-> DeleteSchema(ctx, sourceId, schemaId).Execute()
-
-Delete Source Schema by ID
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
-    schemaId := "2c9180835d191a86015d28455b4a2329" // string | The Schema id.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.DeleteSchema(context.Background(), sourceId, schemaId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.DeleteSchema``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sourceId** | **string** | The Source id. | 
-**schemaId** | **string** | The Schema id. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteSchemaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## DeleteSource
 
 > DeleteSource202Response DeleteSource(ctx, id).Execute()
@@ -511,6 +370,75 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DeleteSource202Response**](DeleteSource202Response.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteSourceSchema
+
+> DeleteSourceSchema(ctx, sourceId, schemaId).Execute()
+
+Delete Source Schema by ID
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
+    schemaId := "2c9180835d191a86015d28455b4a2329" // string | The Schema id.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.DeleteSourceSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id. | 
+**schemaId** | **string** | The Schema id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSourceSchemaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 
@@ -737,79 +665,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSchema
-
-> Schema GetSchema(ctx, sourceId, schemaId).Execute()
-
-Get Source Schema by ID
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
-    schemaId := "2c9180835d191a86015d28455b4a2329" // string | The Schema id.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.GetSchema(context.Background(), sourceId, schemaId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetSchema``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.GetSchema`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sourceId** | **string** | The Source id. | 
-**schemaId** | **string** | The Schema id. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetSchemaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**Schema**](Schema.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetSource
 
 > Source GetSource(ctx, id).Execute()
@@ -950,6 +805,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetSourceSchema
+
+> Schema GetSourceSchema(ctx, sourceId, schemaId).Execute()
+
+Get Source Schema by ID
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
+    schemaId := "2c9180835d191a86015d28455b4a2329" // string | The Schema id.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.GetSourceSchema(context.Background(), sourceId, schemaId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetSourceSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSourceSchema`: Schema
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.GetSourceSchema`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id. | 
+**schemaId** | **string** | The Schema id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceSchemaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**Schema**](Schema.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListProvisioningPolicies
 
 > []ProvisioningPolicyDto ListProvisioningPolicies(ctx, sourceId).Execute()
@@ -1020,9 +948,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListSchemas
+## ListSourceSchemas
 
-> []Schema ListSchemas(ctx, sourceId).IncludeTypes(includeTypes).Execute()
+> []Schema ListSourceSchemas(ctx, sourceId).IncludeTypes(includeTypes).Execute()
 
 List Schemas on a Source
 
@@ -1046,13 +974,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.ListSchemas(context.Background(), sourceId).IncludeTypes(includeTypes).Execute()
+    resp, r, err := apiClient.SourcesApi.ListSourceSchemas(context.Background(), sourceId).IncludeTypes(includeTypes).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ListSchemas``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ListSourceSchemas``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListSchemas`: []Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ListSchemas`: %v\n", resp)
+    // response from `ListSourceSchemas`: []Schema
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ListSourceSchemas`: %v\n", resp)
 }
 ```
 
@@ -1066,7 +994,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListSchemasRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListSourceSchemasRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1168,9 +1096,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReplaceProvisioningPolicy
+## PutProvisioningPolicy
 
-> ProvisioningPolicyDto ReplaceProvisioningPolicy(ctx, sourceId, usageType).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+> ProvisioningPolicyDto PutProvisioningPolicy(ctx, sourceId, usageType).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
 
 Update Provisioning Policy by UsageType
 
@@ -1195,13 +1123,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.ReplaceProvisioningPolicy(context.Background(), sourceId, usageType).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+    resp, r, err := apiClient.SourcesApi.PutProvisioningPolicy(context.Background(), sourceId, usageType).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ReplaceProvisioningPolicy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.PutProvisioningPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReplaceProvisioningPolicy`: ProvisioningPolicyDto
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ReplaceProvisioningPolicy`: %v\n", resp)
+    // response from `PutProvisioningPolicy`: ProvisioningPolicyDto
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.PutProvisioningPolicy`: %v\n", resp)
 }
 ```
 
@@ -1216,7 +1144,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReplaceProvisioningPolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutProvisioningPolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1243,9 +1171,81 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReplaceSchema
+## PutSource
 
-> Schema ReplaceSchema(ctx, sourceId, schemaId).Schema(schema).Execute()
+> Source PutSource(ctx, id).Source(source).Execute()
+
+Update Source (Full)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "2c9180835d191a86015d28455b4a2329" // string | The Source id
+    source := *openapiclient.NewSource() // Source | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.PutSource(context.Background(), id).Source(source).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.PutSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutSource`: Source
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.PutSource`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The Source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutSourceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **source** | [**Source**](Source.md) |  | 
+
+### Return type
+
+[**Source**](Source.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PutSourceSchema
+
+> Schema PutSourceSchema(ctx, sourceId, schemaId).Schema(schema).Execute()
 
 Update Source Schema (Full)
 
@@ -1270,13 +1270,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.ReplaceSchema(context.Background(), sourceId, schemaId).Schema(schema).Execute()
+    resp, r, err := apiClient.SourcesApi.PutSourceSchema(context.Background(), sourceId, schemaId).Schema(schema).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ReplaceSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.PutSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReplaceSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ReplaceSchema`: %v\n", resp)
+    // response from `PutSourceSchema`: Schema
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.PutSourceSchema`: %v\n", resp)
 }
 ```
 
@@ -1291,7 +1291,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReplaceSchemaRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutSourceSchemaRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1318,11 +1318,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReplaceSource
+## UpdateProvisioningPoliciesInBulk
 
-> Source ReplaceSource(ctx, id).Source(source).Execute()
+> []ProvisioningPolicyDto UpdateProvisioningPoliciesInBulk(ctx, sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
 
-Update Source (Full)
+Bulk Update Provisioning Policies
 
 
 
@@ -1339,18 +1339,18 @@ import (
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The Source id
-    source := *openapiclient.NewSource() // Source | 
+    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
+    provisioningPolicyDto := []openapiclient.ProvisioningPolicyDto{*openapiclient.NewProvisioningPolicyDto("example provisioning policy for inactive identities")} // []ProvisioningPolicyDto | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.ReplaceSource(context.Background(), id).Source(source).Execute()
+    resp, r, err := apiClient.SourcesApi.UpdateProvisioningPoliciesInBulk(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ReplaceSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UpdateProvisioningPoliciesInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReplaceSource`: Source
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ReplaceSource`: %v\n", resp)
+    // response from `UpdateProvisioningPoliciesInBulk`: []ProvisioningPolicyDto
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UpdateProvisioningPoliciesInBulk`: %v\n", resp)
 }
 ```
 
@@ -1360,21 +1360,21 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
+**sourceId** | **string** | The Source id. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReplaceSourceRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateProvisioningPoliciesInBulkRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **source** | [**Source**](Source.md) |  | 
+ **provisioningPolicyDto** | [**[]ProvisioningPolicyDto**](ProvisioningPolicyDto.md) |  | 
 
 ### Return type
 
-[**Source**](Source.md)
+[**[]ProvisioningPolicyDto**](ProvisioningPolicyDto.md)
 
 ### Authorization
 
@@ -1465,81 +1465,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateSchema
-
-> Schema UpdateSchema(ctx, sourceId, schemaId).JsonPatchOperation(jsonPatchOperation).Execute()
-
-Update Source Schema (Partial)
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
-    schemaId := "2c9180835d191a86015d28455b4a2329" // string | The Schema id.
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the schema.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.UpdateSchema(context.Background(), sourceId, schemaId).JsonPatchOperation(jsonPatchOperation).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UpdateSchema``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdateSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UpdateSchema`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sourceId** | **string** | The Source id. | 
-**schemaId** | **string** | The Schema id. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateSchemaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | The JSONPatch payload used to update the schema. | 
-
-### Return type
-
-[**Schema**](Schema.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json-patch+json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## UpdateSource
 
 > Source UpdateSource(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
@@ -1612,11 +1537,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UploadConnectorFile
+## UpdateSourceSchema
 
-> Source UploadConnectorFile(ctx, sourceId).File(file).Execute()
+> Schema UpdateSourceSchema(ctx, sourceId, schemaId).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Upload connector file to source
+Update Source Schema (Partial)
 
 
 
@@ -1634,17 +1559,18 @@ import (
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
-    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+    schemaId := "2c9180835d191a86015d28455b4a2329" // string | The Schema id.
+    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.UploadConnectorFile(context.Background(), sourceId).File(file).Execute()
+    resp, r, err := apiClient.SourcesApi.UpdateSourceSchema(context.Background(), sourceId, schemaId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UploadConnectorFile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UpdateSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UploadConnectorFile`: Source
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UploadConnectorFile`: %v\n", resp)
+    // response from `UpdateSourceSchema`: Schema
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UpdateSourceSchema`: %v\n", resp)
 }
 ```
 
@@ -1655,20 +1581,22 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **sourceId** | **string** | The Source id. | 
+**schemaId** | **string** | The Schema id. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUploadConnectorFileRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateSourceSchemaRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **file** | ***os.File** |  | 
+
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | The JSONPatch payload used to update the schema. | 
 
 ### Return type
 
-[**Source**](Source.md)
+[**Schema**](Schema.md)
 
 ### Authorization
 
@@ -1676,7 +1604,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: multipart/form-data
+- **Content-Type**: application/json-patch+json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1741,6 +1669,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Schema**](Schema.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UploadSourceConnectorFile
+
+> Source UploadSourceConnectorFile(ctx, sourceId).File(file).Execute()
+
+Upload connector file to source
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
+    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.UploadSourceConnectorFile(context.Background(), sourceId).File(file).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UploadSourceConnectorFile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UploadSourceConnectorFile`: Source
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UploadSourceConnectorFile`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUploadSourceConnectorFileRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** |  | 
+
+### Return type
+
+[**Source**](Source.md)
 
 ### Authorization
 

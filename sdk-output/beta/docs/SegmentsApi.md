@@ -5,8 +5,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateSegment**](SegmentsApi.md#CreateSegment) | **Post** /segments | Create Segment
-[**DeleteSegmentById**](SegmentsApi.md#DeleteSegmentById) | **Delete** /segments/{id} | Delete Segment by ID
-[**GetSegmentById**](SegmentsApi.md#GetSegmentById) | **Get** /segments/{id} | Get a Segment by its ID
+[**DeleteSegment**](SegmentsApi.md#DeleteSegment) | **Delete** /segments/{id} | Delete Segment by ID
+[**GetSegment**](SegmentsApi.md#GetSegment) | **Get** /segments/{id} | Get a Segment by its ID
 [**ListSegments**](SegmentsApi.md#ListSegments) | **Get** /segments | List Segments
 [**PatchSegment**](SegmentsApi.md#PatchSegment) | **Patch** /segments/{id} | Update a Segment
 
@@ -78,9 +78,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteSegmentById
+## DeleteSegment
 
-> DeleteSegmentById(ctx, id).Execute()
+> DeleteSegment(ctx, id).Execute()
 
 Delete Segment by ID
 
@@ -103,9 +103,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SegmentsApi.DeleteSegmentById(context.Background(), id).Execute()
+    resp, r, err := apiClient.SegmentsApi.DeleteSegment(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsApi.DeleteSegmentById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsApi.DeleteSegment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteSegmentByIdRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteSegmentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,9 +146,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSegmentById
+## GetSegment
 
-> Segment GetSegmentById(ctx, id).Execute()
+> Segment GetSegment(ctx, id).Execute()
 
 Get a Segment by its ID
 
@@ -171,13 +171,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SegmentsApi.GetSegmentById(context.Background(), id).Execute()
+    resp, r, err := apiClient.SegmentsApi.GetSegment(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsApi.GetSegmentById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsApi.GetSegment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSegmentById`: Segment
-    fmt.Fprintf(os.Stdout, "Response from `SegmentsApi.GetSegmentById`: %v\n", resp)
+    // response from `GetSegment`: Segment
+    fmt.Fprintf(os.Stdout, "Response from `SegmentsApi.GetSegment`: %v\n", resp)
 }
 ```
 
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetSegmentByIdRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSegmentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

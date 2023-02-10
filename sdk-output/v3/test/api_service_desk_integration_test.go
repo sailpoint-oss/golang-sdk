@@ -62,18 +62,6 @@ func Test_v3_ServiceDeskIntegrationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ServiceDeskIntegrationApiService GetServiceDeskIntegrationList", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.GetServiceDeskIntegrationList(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ServiceDeskIntegrationApiService GetServiceDeskIntegrationTemplate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -93,6 +81,18 @@ func Test_v3_ServiceDeskIntegrationApiService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.GetServiceDeskIntegrationTypes(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ServiceDeskIntegrationApiService GetServiceDeskIntegrations", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.GetServiceDeskIntegrations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1456,7 +1456,7 @@ paths:
         By default, if any of the indicated Access Profiles are in use, no deletions will be performed and the **inUse** field of the response indicates the usages that must be removed first. If the request field **bestEffortOnly** is **true**, however, usages are reported in the **inUse** response field but all other indicated Access Profiles will be deleted.
 
         A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to delete Access Profiles which are associated with Sources they are able to administer.
-      operationId: bulkDeleteAccessProfiles
+      operationId: deleteAccessProfilesInBulk
       requestBody:
         content:
           application/json:
@@ -1566,7 +1566,7 @@ paths:
         This API lists the Entitlements associated with a given Access Profile
 
         A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to invoke this API. In addition, a token with SOURCE_SUBADMIN authority must have access to the Source associated with the given Access Profile
-      operationId: listAccessProfileEntitlements
+      operationId: getAccessProfileEntitlements
       parameters:
       - description: ID of the containing Access Profile
         in: path
@@ -2603,7 +2603,7 @@ paths:
     post:
       description: This endpoint approves an access request approval. Only the owner
         of the approval and ORG_ADMIN users are allowed to perform this action.
-      operationId: approveRequest
+      operationId: approveAccessRequest
       parameters:
       - description: The id of the approval.
         example: 2c91808b7294bea301729568c68c002e
@@ -2702,7 +2702,7 @@ paths:
     post:
       description: This endpoint rejects an access request approval. Only the owner
         of the approval and admin users are allowed to perform this action.
-      operationId: rejectRequest
+      operationId: rejectAccessRequest
       parameters:
       - description: The id of the approval.
         example: 2c91808b7294bea301729568c68c002e
@@ -2807,7 +2807,7 @@ paths:
     post:
       description: This endpoint forwards an access request approval. Only the owner
         of the approval and ORG_ADMIN users are allowed to perform this action.
-      operationId: forwardRequest
+      operationId: forwardAccessRequest
       parameters:
       - description: The id of the approval.
         example: 2c91808b7294bea301729568c68c002e
@@ -2913,7 +2913,7 @@ paths:
       description: "This endpoint returns the number of pending, approved and rejected\
         \ access requests approvals. See \"owner-id\" query parameter below for authorization\
         \ info."
-      operationId: approvalSummary
+      operationId: getAccessRequestApprovalSummary
       parameters:
       - description: |-
           The id of the owner or approver identity of the approvals. If present, the value returns approval summary for the specified identity.
@@ -3002,7 +3002,7 @@ paths:
     get:
       description: This API returns the access request recommendations for the specified
         identity. The default identity is *me* which indicates the current user.
-      operationId: accessRequestRecommendations
+      operationId: getAccessRequestRecommendations
       parameters:
       - description: Get access request recommendations for an identityId. *me* indicates
           the current user.
@@ -6861,7 +6861,7 @@ paths:
       description: This API reassigns the specified certifications from one identity
         to another. A token with ORG_ADMIN or CERT_ADMIN authority is required to
         call this API.
-      operationId: adminReassign
+      operationId: reassignCampaign
       parameters:
       - description: The certification campaign ID
         example: ef38f94347e94562b5bb8424a56397d8
@@ -8773,7 +8773,7 @@ paths:
       description: This API returns a list of reviewers for the certification. A token
         with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers
         for this certification can also call this API.
-      operationId: listReviewers
+      operationId: listCertificationReviewers
       parameters:
       - description: The certification ID
         example: ef38f94347e94562b5bb8424a56397d8
@@ -10459,7 +10459,7 @@ paths:
   /entitlements/{id}/children:
     get:
       description: This API returns a list of all child entitlements of a given entitlement.
-      operationId: listEntitlementchildren
+      operationId: listEntitlementChildren
       parameters:
       - description: |-
           Max number of results to return.
@@ -10624,7 +10624,7 @@ paths:
         , \"value\": boolean }**  **{ \"op\": \"replace\", \"path\": \"/requestable\"\
         ,\"value\": boolean }** \n\nA token with ORG_ADMIN or API authority is required\
         \ to call this API."
-      operationId: entitlementsBulkUpdate
+      operationId: updateEntitlementsInBulk
       requestBody:
         content:
           application/json:
@@ -11841,7 +11841,7 @@ paths:
     post:
       description: This submits an update request to the common access application.
         At this time there are no parameters. Requires authorization scope of iai:access-modeling:update
-      operationId: commonAccessBulkUpdateStatus
+      operationId: updateCommonAccessStatusInBulk
       requestBody:
         content:
           application/json:
@@ -11923,7 +11923,7 @@ paths:
     get:
       description: 'This method retrieves all access events for the identity Requires
         authorization scope of ''idn:identity-history:read'' '
-      operationId: getEvents
+      operationId: getHistoricalIdentityEvents
       parameters:
       - description: The identity id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -12126,7 +12126,7 @@ paths:
                     dt: 2019-03-08T22:37:33.901Z
               schema:
                 items:
-                  $ref: '#/components/schemas/getEvents_200_response_inner'
+                  $ref: '#/components/schemas/getHistoricalIdentityEvents_200_response_inner'
                 type: array
           description: The list of events for the identity
         "400":
@@ -12210,7 +12210,7 @@ paths:
     get:
       description: 'This method retrieves start date of the identity Requires authorization
         scope of ''idn:identity-history:read'' '
-      operationId: getStartDate
+      operationId: getIdentityStartDate
       parameters:
       - description: The identity id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -14087,7 +14087,7 @@ paths:
   /non-employee-records:
     get:
       description: This gets a list of non-employee records.
-      operationId: nonEmployeeRecordList
+      operationId: listNonEmployeeRecords
       parameters:
       - description: |-
           Max number of results to return.
@@ -14225,7 +14225,7 @@ paths:
         This request will create a non-employee record.
         Request will require the following security scope:
         'idn:nesr:create'
-      operationId: nonEmployeeRecordCreation
+      operationId: createNonEmployeeRecord
       requestBody:
         content:
           application/json:
@@ -14308,7 +14308,7 @@ paths:
         This request will delete a non-employee record.
         Request will require the following security scope:
         'idn:nesr:delete'
-      operationId: nonEmployeeRecordDelete
+      operationId: deleteNonEmployeeRecord
       parameters:
       - description: Non-Employee record id (UUID)
         in: path
@@ -14387,7 +14387,7 @@ paths:
         This gets a non-employee record.
         Request will require the following scope:
         'idn:nesr:read'
-      operationId: nonEmployeeRecordGet
+      operationId: getNonEmployeeRecord
       parameters:
       - description: Non-Employee record id (UUID)
         example: 2c91808b6ef1d43e016efba0ce470904
@@ -14467,7 +14467,7 @@ paths:
       - Non-Employee Lifecycle Management
     patch:
       description: This request will patch a non-employee record.
-      operationId: nonEmployeeRecordPatch
+      operationId: patchNonEmployeeRecord
       parameters:
       - description: Non-employee record id (UUID)
         in: path
@@ -14581,7 +14581,7 @@ paths:
       - Non-Employee Lifecycle Management
     put:
       description: This request will update a non-employee record.
-      operationId: nonEmployeeRecordUpdate
+      operationId: updateNonEmployeeRecord
       parameters:
       - description: Non-employee record id (UUID)
         in: path
@@ -14691,12 +14691,12 @@ paths:
         This request will delete multiple non-employee records based on the non-employee ids provided.
         Request will require the following scope:
         'idn:nesr:delete'
-      operationId: nonEmployeeRecordBulkDelete
+      operationId: deleteNonEmployeeRecordInBulk
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/nonEmployeeRecordBulkDelete_request'
+              $ref: '#/components/schemas/deleteNonEmployeeRecordInBulk_request'
         description: Non-Employee bulk delete request body.
         required: true
       responses:
@@ -14768,7 +14768,7 @@ paths:
   /non-employee-requests:
     get:
       description: This gets a list of non-employee requests.
-      operationId: nonEmployeeRequestList
+      operationId: listNonEmployeeRequests
       parameters:
       - description: |-
           Max number of results to return.
@@ -14911,7 +14911,7 @@ paths:
     post:
       description: This request will create a non-employee request and notify the
         approver
-      operationId: nonEmployeeRequestCreation
+      operationId: createNonEmployeeRequest
       requestBody:
         content:
           application/json:
@@ -15012,7 +15012,7 @@ paths:
     delete:
       description: "This request will delete a non-employee request.  \nRequest will\
         \ require the following scope:\n'idn:nesr:delete'"
-      operationId: nonEmployeeRequestDeletion
+      operationId: deleteNonEmployeeRequest
       parameters:
       - description: Non-Employee request id in the UUID format
         in: path
@@ -15107,7 +15107,7 @@ paths:
       - Non-Employee Lifecycle Management
     get:
       description: This gets a non-employee request.
-      operationId: nonEmployeeRequestGet
+      operationId: getNonEmployeeRequest
       parameters:
       - description: Non-Employee request id (UUID)
         example: 2c91808b6ef1d43e016efba0ce470904
@@ -15213,7 +15213,7 @@ paths:
         \ manager, in which case \"me\" should be provided as the `requested-for`\
         \ value. This will provide the user with a summary of the non-employee requests\
         \ in the source(s) he or she manages."
-      operationId: nonEmployeeRequestSummaryGet
+      operationId: getNonEmployeeRequestSummary
       parameters:
       - description: The identity (UUID) of the non-employee account manager for whom
           the summary is being retrieved. Use "me" instead to indicate the current
@@ -15297,7 +15297,7 @@ paths:
   /non-employee-sources:
     get:
       description: This gets a list of non-employee sources.
-      operationId: nonEmployeeSourcesList
+      operationId: listNonEmployeeSources
       parameters:
       - description: |-
           Max number of results to return.
@@ -15439,7 +15439,7 @@ paths:
         This request will create a non-employee source.
         Request will require the following security scope:
         'idn:nesr:create'
-      operationId: nonEmployeeSourcesCreation
+      operationId: createNonEmployeeSource
       requestBody:
         content:
           application/json:
@@ -15522,7 +15522,7 @@ paths:
         This request will delete a non-employee source.
         Request will require the following security scope:
         'idn:nesr:delete'
-      operationId: nonEmployeeSourceDelete
+      operationId: deleteNonEmployeeSource
       parameters:
       - description: Source Id
         in: path
@@ -15598,7 +15598,7 @@ paths:
       - Non-Employee Lifecycle Management
     get:
       description: This gets a non-employee source.
-      operationId: nonEmployeeSourceGet
+      operationId: getNonEmployeeSource
       parameters:
       - description: Source Id
         example: 2c91808b7c28b350017c2a2ec5790aa1
@@ -15681,7 +15681,7 @@ paths:
         patch a non-employee source. (Partial Update)  Patchable field: **name, description, approvers, accountManagers**
         Request will require the following security scope:
         'idn:nesr:update'
-      operationId: nonEmployeeSourcePatch
+      operationId: patchNonEmployeeSource
       parameters:
       - description: Source Id
         in: path
@@ -15784,7 +15784,7 @@ paths:
         This requests a CSV download for all non-employees from a provided source.
         Request will need the following security scope:
         'idn:nesr:read'
-      operationId: nonEmployeeRecordsExport
+      operationId: exportNonEmployeeRecords
       parameters:
       - description: Source Id (UUID)
         example: 2c918085842e69ae018432d22ccb212f
@@ -15888,7 +15888,7 @@ paths:
         This post will import, or update, Non-Employee records found in the CSV.
         Request will need the following security scope:
         'idn:nesr:create'
-      operationId: nonEmployeeRecordsBulkUpload
+      operationId: uploadNonEmployeeRecordsInBulk
       parameters:
       - description: Source Id (UUID)
         in: path
@@ -15906,7 +15906,7 @@ paths:
                 \ William, Chaffin, 555-555-5555, william@chaffins.nope.com, Bertram\
                 \ Chaffin, 2020-04-05T08:00:00-10:00, 2020-08-07T19:00:00-10:00"
             schema:
-              $ref: '#/components/schemas/nonEmployeeRecordsBulkUpload_request'
+              $ref: '#/components/schemas/uploadNonEmployeeRecordsInBulk_request'
         description: The form-data "name" attribute for the file content must be "data".
           See the schema specification.
       responses:
@@ -16007,7 +16007,7 @@ paths:
         Request will need the following scope:
 
         'idn:nesr:read'
-      operationId: nonEmployeeBulkUploadStatus
+      operationId: getNonEmployeeBulkUploadStatus
       parameters:
       - description: Source ID (UUID)
         example: 2c918085842e69ae018432d22ccb212f
@@ -16091,7 +16091,7 @@ paths:
         This requests a download for the Source Schema Template for a provided source.
         Request will require the following security scope:
         idn:nesr:read'
-      operationId: nonEmployeeExportSourceSchemaTemplate
+      operationId: exportNonEmployeeSourceSchemaTemplate
       parameters:
       - description: Source Id (UUID)
         example: 2c918085842e69ae018432d22ccb212f
@@ -16190,7 +16190,7 @@ paths:
   /non-employee-approvals:
     get:
       description: This gets a list of non-employee approval requests.
-      operationId: nonEmployeeApprovalList
+      operationId: listNonEmployeeApproval
       parameters:
       - description: The identity for whom the request was made. *me* indicates the
           current user.
@@ -16331,7 +16331,7 @@ paths:
     get:
       description: Approves a non-employee approval request and notifies the next
         approver.
-      operationId: nonEmployeeApprovalGet
+      operationId: getNonEmployeeApproval
       parameters:
       - description: Non-Employee approval item id (UUID)
         example: ac10d20a-841e-1e7d-8184-32d2e22c0179
@@ -16421,7 +16421,7 @@ paths:
     post:
       description: Approves a non-employee approval request and notifies the next
         approver.
-      operationId: nonEmployeeApproveRequest
+      operationId: approveNonEmployeeRequest
       parameters:
       - description: Non-Employee approval item id (UUID)
         in: path
@@ -16507,7 +16507,7 @@ paths:
   /non-employee-approvals/{id}/reject:
     post:
       description: This endpoint will reject an approval item request and notify user.
-      operationId: nonEmployeeRejectRequest
+      operationId: rejectNonEmployeeRequest
       parameters:
       - description: Non-Employee approval item id (UUID)
         in: path
@@ -16600,7 +16600,7 @@ paths:
         \ in which case \"me\" should be provided as the `requested-for` value. This\
         \ will provide the approver with a summary of the approval items assigned\
         \ to him or her."
-      operationId: nonEmployeeApprovalSummary
+      operationId: getNonEmployeeApprovalSummary
       parameters:
       - description: The identity (UUID) of the approver for whom for whom the summary
           is being retrieved. Use "me" instead to indicate the current user.
@@ -16685,7 +16685,7 @@ paths:
         This end-point deletes all custom schema attributes for a non-employee source.
         Request requires a security scope of:
         'idn:nesr:delete'
-      operationId: deleteSchemaAttributes
+      operationId: deleteNonEmployeeSourceSchemaAttributes
       parameters:
       - description: The Source id
         in: path
@@ -16765,7 +16765,7 @@ paths:
         \ Non-Employee Source automatically. Additionaly, user can add up to 10 custom\
         \ attributes. This interface returns all the mandatory attributes followed\
         \ by any custom attributes. At most, a total of 18 attributes will be returned."
-      operationId: getSchemaAttributes
+      operationId: getNonEmployeeSourceSchemaAttributes
       parameters:
       - description: The Source id
         example: 2c918085842e69ae018432d22ccb212f
@@ -16875,7 +16875,7 @@ paths:
         This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a "400.1.409 Reference conflict" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a "400.1.4 Limit violation" response.
         Request requires a security scope of:
         'idn:nesr:create'
-      operationId: createSchemaAttribute
+      operationId: createNonEmployeeSourceSchemaAttributes
       parameters:
       - description: The Source id
         in: path
@@ -16966,7 +16966,7 @@ paths:
         Request will require a security scope of:
 
         'idn:nesr:delete'
-      operationId: deleteSchemaAttribute
+      operationId: deleteNonEmployeeSchemaAttribute
       parameters:
       - description: The Schema Attribute Id (UUID)
         in: path
@@ -17049,7 +17049,7 @@ paths:
     get:
       description: This API gets a schema attribute by Id for the specified Non-Employee
         SourceId.
-      operationId: getSchemaAttribute
+      operationId: getNonEmployeeSchemaAttribute
       parameters:
       - description: The Schema Attribute Id (UUID)
         example: 2c918085842e69ae018432d22ccb212f
@@ -17143,7 +17143,7 @@ paths:
         Request will require a security scope of:
 
         'idn:nesr:update'
-      operationId: patchSchemaAttribute
+      operationId: patchNonEmployeeSchemaAttribute
       parameters:
       - description: The Schema Attribute Id (UUID)
         in: path
@@ -17264,7 +17264,7 @@ paths:
   /managed-clients/{id}/status:
     get:
       description: Retrieve Managed Client Status by ID.
-      operationId: getClientStatus
+      operationId: getManagedClientStatus
       parameters:
       - description: ID of the Managed Client Status to get
         in: path
@@ -17369,7 +17369,7 @@ paths:
       - Managed Clients
     post:
       description: Update a status detail passed in from the client
-      operationId: updateStatus
+      operationId: updateManagedClientStatus
       parameters:
       - description: ID of the Managed Client Status to update
         in: path
@@ -18479,7 +18479,7 @@ paths:
       description: "This lets you bulk delete templates that you previously created\
         \ for your site. Since this is a beta feature, you can only delete a subset\
         \ of your notifications, i.e. ones that show up in the list call."
-      operationId: bulkDeleteNotificationTemplates
+      operationId: deleteNotificationTemplatesInBulk
       requestBody:
         content:
           application/json:
@@ -19317,7 +19317,7 @@ paths:
       description: |-
         This API receives a summary containing: the number of identities that customer has, the number of outliers, and the type of outlier
         Requires authorization scope of 'iai:outliers-management:read'
-      operationId: getOutlierSnapshots
+      operationId: getIdentityOutlierSnapshots
       parameters:
       - description: |-
           Max number of results to return.
@@ -19457,7 +19457,7 @@ paths:
       description: |-
         This API returns a most recent snapshot of each outlier type, each containing: the number of identities that customer has, the number of outliers, and the type of outlier
         Requires authorization scope of 'iai:outliers-management:read'
-      operationId: getLatestOutlierSnapshots
+      operationId: getLatestIdentityOutlierSnapshots
       parameters:
       - description: Type of the identity outliers snapshot to filter on
         in: query
@@ -19549,7 +19549,7 @@ paths:
       description: |-
         This API receives a list of outliers, containing data such as: identityId, outlier type, detection dates, identity attributes, if identity is ignore, and certification information
         Requires authorization scope of 'iai:outliers-management:read'
-      operationId: getOutliers
+      operationId: getIdentityOutliers
       parameters:
       - description: |-
           Max number of results to return.
@@ -19707,7 +19707,7 @@ paths:
       description: |-
         This API returns a list of contributing feature objects for a single outlier. The object contains: feature name, feature value type, value, importance, display name (translated text or message key), description (translated text or message key), translation messages object
         Requires authorization scope of 'iai:outliers-management:read'
-      operationId: getOutliersContributingFeatures
+      operationId: getPeerGroupOutliersContributingFeatures
       parameters:
       - description: |-
           Max number of results to return.
@@ -19874,7 +19874,7 @@ paths:
       description: |-
         This API receives a list of IdentityIDs in the request, changes the outliers to be ignored--returning a 204 if successful.
         Requires authorization scope of 'iai:outliers-management:update'
-      operationId: ignoreOutliers
+      operationId: ignoreIdentityOutliers
       requestBody:
         content:
           application/json:
@@ -19955,7 +19955,7 @@ paths:
       description: |-
         This API receives a list of IdentityIDs in the request, changes the outliers to be un-ignored--returning a 204 if successful.
         Requires authorization scope of 'iai:outliers-management:update'
-      operationId: unIgnoreOutliers
+      operationId: unIgnoreIdentityOutliers
       requestBody:
         content:
           application/json:
@@ -20465,7 +20465,7 @@ paths:
         \nA token with [API authority](https://developer.sailpoint.com/idn/api/authentication#client-credentials-grant-flow)\
         \ can be used to change **any** identity's password.  \"API authority\" refers\
         \ to a token that only has the \"client_credentials\" grant type.\n"
-      operationId: setPassword
+      operationId: setIdentityPassword
       requestBody:
         content:
           application/json:
@@ -20554,7 +20554,7 @@ paths:
       description: This API returns the status of a password change request. A token
         with identity owner or trusted API client application authority is required
         to call this API.
-      operationId: getPasswordChangeStatus
+      operationId: getIdentityPasswordChangeStatus
       parameters:
       - in: path
         name: id
@@ -21253,7 +21253,7 @@ paths:
         \ identities that are not included in an organization's peer groups. By default,\
         \ 250 identities are returned. You can specify between 1 and 1000 number of\
         \ identities that can be returned."
-      operationId: getOutliers
+      operationId: getPeerGroupOutliers
       parameters:
       - description: "The strategy used to create peer groups. Currently, 'entitlement'\
           \ is supported."
@@ -22544,7 +22544,7 @@ paths:
       description: This submits a create role insights request to the role insights
         application. At this time there are no parameters. All business roles will
         be processed for the customer.
-      operationId: roleInsightsRequests
+      operationId: createRoleInsightRequests
       responses:
         "201":
           content:
@@ -23467,7 +23467,7 @@ paths:
     post:
       description: This submits a create role mining session request to the role mining
         application.
-      operationId: roleMiningSessions
+      operationId: createRoleMiningSessions
       requestBody:
         content:
           application/json:
@@ -24570,7 +24570,7 @@ paths:
     post:
       description: This endpoint adds or removes entitlements from an exclusion list
         for a potential role.
-      operationId: editEntitlementsPotentialRole
+      operationId: updateEntitlementsPotentialRole
       parameters:
       - description: The role mining session id
         example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
@@ -26322,7 +26322,7 @@ paths:
         Note that segment deletion may take some time to become effective.
 
         A token with ORG_ADMIN or API authority is required to call this API.
-      operationId: deleteSegmentById
+      operationId: deleteSegment
       parameters:
       - description: The ID of the Segment to delete.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -26410,7 +26410,7 @@ paths:
         This API returns the segment specified by the given ID.
 
         A token with ORG_ADMIN or API authority is required to call this API.
-      operationId: getSegmentById
+      operationId: getSegment
       parameters:
       - description: The ID of the Segment to retrieve.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -27724,7 +27724,7 @@ paths:
       description: Update the time check configuration of queued SDIM tickets.  A
         token with Org Admin or Service Desk Admin authority is required to access
         this endpoint.
-      operationId: updateStatusCheckDetails
+      operationId: updateManagedClientStatusCheckDetails
       requestBody:
         content:
           application/json:
@@ -27826,7 +27826,7 @@ paths:
         This post will export objects from the tenant to a JSON configuration file.
         Request will need one of the following security scopes:
         - sp:config:read - sp:config:manage
-      operationId: spConfigExport
+      operationId: exportSpConfig
       requestBody:
         content:
           application/json:
@@ -27992,7 +27992,7 @@ paths:
         This gets the status of the export job identified by the id parameter.
         Request will need one of the following security scopes:
         - sp:config:read - sp:config:manage
-      operationId: spConfigExportJobStatus
+      operationId: exportSpConfigJobStatus
       parameters:
       - description: The ID of the export job for which status will be returned.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -28101,7 +28101,7 @@ paths:
         This gets export file resulting from the export job with the requested id and downloads it to a file.
         Request will need one of the following security scopes:
         - sp:config:read - sp:config:manage
-      operationId: spConfigExportDownload
+      operationId: exportSpConfigDownload
       parameters:
       - description: The ID of the export job for which the results will be downloaded.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -28200,7 +28200,7 @@ paths:
         This post will import objects from a JSON configuration file into a tenant. By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. The backup is provided so that the state of the configuration prior to the import is available for inspection or restore if needed. The backup can be skipped by setting "excludeBackup" to true in the import options. If a backup is performed, the id of the backup will be provided in the ImportResult as the "exportJobId". This can be downloaded  using the /sp-config/export/{exportJobId}/download endpoint.
         Request will need the following security scope:
         - sp:config:manage
-      operationId: spConfigImport
+      operationId: importSpConfig
       parameters:
       - description: "This option is intended to give the user information about how\
           \ an import operation would proceed, without having any affect on the target\
@@ -28237,7 +28237,7 @@ paths:
                   name: Test Trigger
                 excludeBackup: false
             schema:
-              $ref: '#/components/schemas/spConfigImport_request'
+              $ref: '#/components/schemas/importSpConfig_request'
         description: "The form-data \"name\" attribute for the file content must be\
           \ \"data\".\n\n__Example__\n\n    data: \"config_export_0340b957-5caa-44f6-ada2-d3c4c5bd0b19.json\"\
           ,\n    options: {\n      \"excludeTypes\": [],\n      \"includeTypes\":\
@@ -28355,7 +28355,7 @@ paths:
         This gets the status of the import job identified by the id parameter.
         Request will need the following security scope:
         - sp:config:manage
-      operationId: spConfigImportJobStatus
+      operationId: importSpConfigJobStatus
       parameters:
       - description: The ID of the import job for which status will be returned.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -28464,7 +28464,7 @@ paths:
         This gets import file resulting from the import job with the requested id and downloads it to a file. The downloaded file will contain the results of the import operation, including any error, warning or informational messages associated with the import.
         Request will need the following security scope:
         - sp:config:manage
-      operationId: spConfigImportDownload
+      operationId: importSpConfigDownload
       parameters:
       - description: The ID of the import job for which the results will be downloaded.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -28564,7 +28564,7 @@ paths:
         This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain "importUrl" and "exportUrl" are available for export/import.
         Request will need one of the following security scopes:
         - sp:config:read - sp:config:manage
-      operationId: spConfigObjects
+      operationId: listSpConfigObjects
       responses:
         "200":
           content:
@@ -29331,7 +29331,7 @@ paths:
         Attempts to modify these fields will result in a 400 error.
 
         A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
-      operationId: replaceSource
+      operationId: putSource
       parameters:
       - description: The Source id
         in: path
@@ -29640,7 +29640,7 @@ paths:
       description: |-
         This endpoint validates that the configured credentials are valid and will properly authenticate with the source identified by the sourceId path parameter.
         A token with ORG_ADMIN authority is required to call this API.
-      operationId: checkConnection
+      operationId: testSourceConnection
       parameters:
       - description: The ID of the Source.
         example: cef3ee201db947c5912551015ba0c679
@@ -29938,7 +29938,7 @@ paths:
       description: |-
         This endpoint performs a more detailed validation of the source's configuration that can take longer than the lighter weight credential validation performed by the checkConnection API.
         A token with ORG_ADMIN authority is required to call this API.
-      operationId: testConfiguration
+      operationId: testSourceConfiguration
       parameters:
       - description: The ID of the Source
         example: cef3ee201db947c5912551015ba0c679
@@ -30769,7 +30769,7 @@ paths:
       description: |-
         This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow.
         A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
-      operationId: replaceProvisioningPolicy
+      operationId: putProvisioningPolicy
       parameters:
       - description: The Source ID.
         example: 2c9180835d191a86015d28455b4a2329
@@ -30882,7 +30882,7 @@ paths:
       description: |-
         This end-point updates a list of provisioning policies on the specified source in IdentityNow.
         A token with API, or ORG_ADMIN authority is required to call this API.
-      operationId: bulkUpdateProvisioningPolicies
+      operationId: updateProvisioningPoliciesInBulk
       parameters:
       - description: The Source id.
         example: 2c9180835d191a86015d28455b4a2329
@@ -30990,7 +30990,7 @@ paths:
       - Sources
   /sources/{sourceId}/schemas:
     get:
-      operationId: listSchemas
+      operationId: listSourceSchemas
       parameters:
       - description: The Source id.
         example: 2c9180835d191a86015d28455b4a2329
@@ -31088,7 +31088,7 @@ paths:
       tags:
       - Sources
     post:
-      operationId: createSchema
+      operationId: createSourceSchema
       parameters:
       - description: The Source id.
         example: 2c9180835d191a86015d28455b4a2329
@@ -31171,7 +31171,7 @@ paths:
       - Sources
   /sources/{sourceId}/schemas/{schemaId}:
     delete:
-      operationId: deleteSchema
+      operationId: deleteSourceSchema
       parameters:
       - description: The Source ID.
         example: 2c9180835d191a86015d28455b4a2329
@@ -31271,7 +31271,7 @@ paths:
     get:
       description: |
         Get the Source Schema by ID in IdentityNow.
-      operationId: getSchema
+      operationId: getSourceSchema
       parameters:
       - description: The Source ID.
         example: 2c9180835d191a86015d28455b4a2329
@@ -31385,7 +31385,7 @@ paths:
         ,\n        \"name\": \"group\"\n    },\n    \"description\": \"The groups,\
         \ roles etc. that reference account group objects\",\n    \"isMulti\": true,\n\
         \    \"isEntitlement\": true,\n    \"isGroup\": true\n}\n```\n"
-      operationId: updateSchema
+      operationId: updateSourceSchema
       parameters:
       - description: The Source id.
         example: 2c9180835d191a86015d28455b4a2329
@@ -31507,7 +31507,7 @@ paths:
         * created
         * modified
         Any attempt to modify these fields will result in an error response with a status code of 400.
-      operationId: replaceSchema
+      operationId: putSourceSchema
       parameters:
       - description: The Source ID.
         example: 2c9180835d191a86015d28455b4a2329
@@ -31998,7 +31998,7 @@ paths:
       description: |-
         This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events.
         A token with ORG_ADMIN authority is required to call this API.
-      operationId: uploadConnectorFile
+      operationId: uploadSourceConnectorFile
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -32084,7 +32084,7 @@ paths:
       description: |-
         This end-point performs attribute synchronization for a selected source.
         A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
-      operationId: synchronizeAttributesForSource
+      operationId: syncAttributesForSource
       parameters:
       - description: The Source id
         in: path
@@ -32532,7 +32532,7 @@ paths:
   /tagged-objects/{type}/{id}:
     delete:
       description: This deletes a tagged object for the specified type.
-      operationId: deleteTaggedObjectByTypeAndId
+      operationId: deleteTaggedObject
       parameters:
       - description: The type of tagged object to delete.
         in: path
@@ -32615,7 +32615,7 @@ paths:
       - Tagged Objects
     get:
       description: This gets a tagged object for the specified type.
-      operationId: getTaggedObjectByTypeAndId
+      operationId: getTaggedObject
       parameters:
       - description: The type of tagged object to retrieve.
         example: ROLE
@@ -32703,7 +32703,7 @@ paths:
       - Tagged Objects
     put:
       description: This updates a tagged object for the specified type.
-      operationId: updateTaggedObjectByTypeAndId
+      operationId: updateTaggedObject
       parameters:
       - description: The type of tagged object to update.
         in: path
@@ -32956,7 +32956,7 @@ paths:
       description: |-
         Gets a list of all saved transform objects.
         A token with transforms-list read authority is required to call this API.
-      operationId: getTransformsList
+      operationId: listTransforms
       parameters:
       - description: |-
           Offset into the full result set. Usually specified with *limit* to paginate through the results.
@@ -34246,7 +34246,7 @@ paths:
     post:
       description: "Validates a JSONPath filter expression against a provided mock\
         \ input.\nRequest requires a security scope of: "
-      operationId: validateFilter
+      operationId: validateSubscriptionFilter
       requestBody:
         content:
           application/json:
@@ -34335,7 +34335,7 @@ paths:
         Gets a list of latest invocation statuses.
         Statuses of successful invocations are available for up to 24 hours. Statuses of failed invocations are available for up to 48 hours.
         This endpoint may only fetch up to 2000 invocations, and should not be treated as a representation of the full history of invocations.
-      operationId: listInvocationStatus
+      operationId: listTriggerInvocationStatus
       parameters:
       - description: |-
           Max number of results to return.
@@ -34474,7 +34474,7 @@ paths:
   /trigger-invocations/{id}/complete:
     post:
       description: Completes an invocation to a REQUEST_RESPONSE type trigger.
-      operationId: completeInvocation
+      operationId: completeTriggerInvocation
       parameters:
       - description: The ID of the invocation to complete.
         example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
@@ -34561,7 +34561,7 @@ paths:
       description: "Initiate a test event for all subscribers of the specified event\
         \ trigger.  If there are no subscribers to the specified trigger in the tenant,\
         \ then no test event will be sent."
-      operationId: startTestInvocation
+      operationId: startTestTriggerInvocation
       requestBody:
         content:
           application/json:
@@ -35528,7 +35528,7 @@ paths:
       description: |-
         This deletes a specified SOD policy.
         Requires role of ORG_ADMIN.
-      operationId: deleteSodPolicyById
+      operationId: deleteSodPolicy
       parameters:
       - description: The ID of the SOD Policy to delete.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -35628,7 +35628,7 @@ paths:
       description: |-
         This gets specified SOD policy.
         Requires role of ORG_ADMIN.
-      operationId: getSodPolicyById
+      operationId: getSodPolicy
       parameters:
       - description: The ID of the object reference to retrieve.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -36005,7 +36005,7 @@ paths:
       description: |-
         This updates a specified SOD policy.
         Requires role of ORG_ADMIN.
-      operationId: updatePolicyById
+      operationId: updateSodPolicy
       parameters:
       - description: The ID of the SOD policy to update.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -36247,7 +36247,7 @@ paths:
       description: |-
         This deletes schedule for a specified SOD policy.
         Requires role of ORG_ADMIN.
-      operationId: deleteSodPolicyScheduleById
+      operationId: deleteSodPolicySchedule
       parameters:
       - description: The ID of the SOD Policy for which the schedule needs to be deleted.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -36340,7 +36340,7 @@ paths:
       description: |-
         This gets schedule for a specified SOD policy.
         Requires a role of ORG_ADMIN
-      operationId: getSodPolicyScheduleById
+      operationId: getSodPolicySchedule
       parameters:
       - description: The ID of the object reference to retrieve.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -36419,7 +36419,7 @@ paths:
       description: |-
         This updates schedule for a specified SOD policy.
         Requires role of ORG_ADMIN
-      operationId: updatePolicyScheduleById
+      operationId: updatePolicySchedule
       parameters:
       - description: The ID of the SOD policy to update its schedule.
         example: ef38f94347e94562b5bb8424a56397d8
@@ -36712,7 +36712,7 @@ paths:
         This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
         A token with ORG_ADMIN or API authority is required to call this API.
-      operationId: predictViolations
+      operationId: predictSodViolations
       requestBody:
         content:
           application/json:
@@ -36921,7 +36921,7 @@ paths:
       description: |-
         Runs multi policy report for the Org. If a policy reports more than 5000 violation, the report mentions Violation limit exceeded for that policy. If the request is empty, report will run for all policies. Otherwise, report will run only for the filtered policy list provided.
         Requires role of ORG_ADMIN.
-      operationId: runAllPoliciesForOrg
+      operationId: runSodAllPoliciesForOrg
       requestBody:
         content:
           application/json:
@@ -37395,7 +37395,7 @@ paths:
     get:
       description: "This gets a collection of completed work items belonging to either\
         \ the specified user(admin required), or the current user."
-      operationId: completedWorkItems
+      operationId: getCompletedWorkItems
       parameters:
       - description: "The id of the owner of the work item list being requested. \
           \ Either an admin, or the owning/current user must make this request."
@@ -37500,7 +37500,7 @@ paths:
     get:
       description: "This gets a count of work items belonging to either the specified\
         \ user(admin required), or the current user."
-      operationId: countWorkItems
+      operationId: getCountWorkItems
       parameters:
       - description: ID of the work item owner.
         in: query
@@ -37566,7 +37566,7 @@ paths:
     get:
       description: "This gets a count of completed work items belonging to either\
         \ the specified user(admin required), or the current user."
-      operationId: countCompletedWorkItems
+      operationId: getCountCompletedWorkItems
       parameters:
       - description: ID of the work item owner.
         in: query
@@ -37632,7 +37632,7 @@ paths:
     get:
       description: "This gets a summary of work items belonging to either the specified\
         \ user(admin required), or the current user."
-      operationId: summaryWorkItems
+      operationId: getWorkItemsSummary
       parameters:
       - description: ID of the work item owner.
         in: query
@@ -37698,7 +37698,7 @@ paths:
     get:
       description: "This gets the details of a Work Item belonging to either the specified\
         \ user(admin required), or the current user."
-      operationId: getWorkItems
+      operationId: getWorkItem
       parameters:
       - description: ID of the work item owner.
         in: query
@@ -37978,7 +37978,7 @@ paths:
     post:
       description: "This API bulk approves Approval Items. Either an admin, or the\
         \ owning/current user must make this request."
-      operationId: bulkApproveApprovalItem
+      operationId: approveApprovalItemsInBulk
       parameters:
       - description: The ID of the work item
         example: ef38f94347e94562b5bb8424a56397d8
@@ -38043,7 +38043,7 @@ paths:
     post:
       description: "This API bulk rejects Approval Items. Either an admin, or the\
         \ owning/current user must make this request."
-      operationId: bulkRejectApprovalItem
+      operationId: rejectApprovalItemsInBulk
       parameters:
       - description: The ID of the work item
         example: ef38f94347e94562b5bb8424a56397d8
@@ -56716,7 +56716,7 @@ components:
       - $ref: '#/components/schemas/AccessItemAppResponse'
       - $ref: '#/components/schemas/AccessItemEntitlementResponse'
       - $ref: '#/components/schemas/AccessItemRoleResponse'
-    getEvents_200_response_inner:
+    getHistoricalIdentityEvents_200_response_inner:
       anyOf:
       - $ref: '#/components/schemas/AccessItemAssociated'
       - $ref: '#/components/schemas/AccessItemRemoved'
@@ -56724,7 +56724,7 @@ components:
       - $ref: '#/components/schemas/AccessRequested'
       - $ref: '#/components/schemas/IdentityCertified'
       - $ref: '#/components/schemas/AccountStatusChanged'
-    nonEmployeeRecordBulkDelete_request:
+    deleteNonEmployeeRecordInBulk_request:
       properties:
         ids:
           description: List of non-employee ids.
@@ -56735,7 +56735,7 @@ components:
       required:
       - ids
       type: object
-    nonEmployeeRecordsBulkUpload_request:
+    uploadNonEmployeeRecordsInBulk_request:
       properties:
         data:
           format: base64
@@ -56760,7 +56760,7 @@ components:
           - replace
           example: replace
           type: string
-    spConfigImport_request:
+    importSpConfig_request:
       properties:
         data:
           description: Name of JSON file containing the objects to be imported.

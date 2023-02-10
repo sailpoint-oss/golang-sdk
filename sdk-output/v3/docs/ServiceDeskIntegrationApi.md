@@ -7,9 +7,9 @@ Method | HTTP request | Description
 [**CreateServiceDeskIntegration**](ServiceDeskIntegrationApi.md#CreateServiceDeskIntegration) | **Post** /service-desk-integrations | Create a new Service Desk integration
 [**DeleteServiceDeskIntegration**](ServiceDeskIntegrationApi.md#DeleteServiceDeskIntegration) | **Delete** /service-desk-integrations/{id} | Delete a Service Desk integration by ID
 [**GetServiceDeskIntegration**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegration) | **Get** /service-desk-integrations/{id} | Get a Service Desk integration by ID
-[**GetServiceDeskIntegrationList**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegrationList) | **Get** /service-desk-integrations | List existing Service Desk Integrations
 [**GetServiceDeskIntegrationTemplate**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegrationTemplate) | **Get** /service-desk-integrations/templates/{scriptName} | Service Desk integration template by scriptName.
 [**GetServiceDeskIntegrationTypes**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegrationTypes) | **Get** /service-desk-integrations/types | Service Desk Integration Types List.
+[**GetServiceDeskIntegrations**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegrations) | **Get** /service-desk-integrations | List existing Service Desk Integrations
 [**GetStatusCheckDetails**](ServiceDeskIntegrationApi.md#GetStatusCheckDetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration of queued SDIM tickets
 [**PatchServiceDeskIntegration**](ServiceDeskIntegrationApi.md#PatchServiceDeskIntegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update - PATCH
 [**UpdateServiceDeskIntegration**](ServiceDeskIntegrationApi.md#UpdateServiceDeskIntegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration by ID
@@ -221,80 +221,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetServiceDeskIntegrationList
-
-> []ServiceDeskIntegrationDto GetServiceDeskIntegrationList(ctx).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
-
-List existing Service Desk Integrations
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
-    filters := "name eq "John Doe"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in* (optional)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationApi.GetServiceDeskIntegrationList(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationApi.GetServiceDeskIntegrationList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetServiceDeskIntegrationList`: []ServiceDeskIntegrationDto
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationApi.GetServiceDeskIntegrationList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** | 
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in* | 
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
-
-### Return type
-
-[**[]ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetServiceDeskIntegrationTemplate
 
 > ServiceDeskIntegrationTemplateDto GetServiceDeskIntegrationTemplate(ctx, scriptName).Execute()
@@ -411,6 +337,80 @@ Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationT
 ### Return type
 
 [**[]ServiceDeskIntegrationTemplateType**](ServiceDeskIntegrationTemplateType.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetServiceDeskIntegrations
+
+> []ServiceDeskIntegrationDto GetServiceDeskIntegrations(ctx).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
+
+List existing Service Desk Integrations
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
+    filters := "name eq "John Doe"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in* (optional)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ServiceDeskIntegrationApi.GetServiceDeskIntegrations(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationApi.GetServiceDeskIntegrations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetServiceDeskIntegrations`: []ServiceDeskIntegrationDto
+    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationApi.GetServiceDeskIntegrations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in* | 
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+
+### Return type
+
+[**[]ServiceDeskIntegrationDto**](ServiceDeskIntegrationDto.md)
 
 ### Authorization
 

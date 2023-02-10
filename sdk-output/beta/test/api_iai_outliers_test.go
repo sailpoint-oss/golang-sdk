@@ -34,11 +34,11 @@ func Test_beta_IAIOutliersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIOutliersApiService GetLatestOutlierSnapshots", func(t *testing.T) {
+	t.Run("Test IAIOutliersApiService GetIdentityOutlierSnapshots", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.IAIOutliersApi.GetLatestOutlierSnapshots(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IAIOutliersApi.GetIdentityOutlierSnapshots(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,11 +46,11 @@ func Test_beta_IAIOutliersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIOutliersApiService GetOutlierSnapshots", func(t *testing.T) {
+	t.Run("Test IAIOutliersApiService GetIdentityOutliers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.IAIOutliersApi.GetOutlierSnapshots(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IAIOutliersApi.GetIdentityOutliers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -58,11 +58,11 @@ func Test_beta_IAIOutliersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIOutliersApiService GetOutliers", func(t *testing.T) {
+	t.Run("Test IAIOutliersApiService GetLatestIdentityOutlierSnapshots", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.IAIOutliersApi.GetOutliers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IAIOutliersApi.GetLatestIdentityOutlierSnapshots(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -70,13 +70,13 @@ func Test_beta_IAIOutliersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIOutliersApiService GetOutliersContributingFeatures", func(t *testing.T) {
+	t.Run("Test IAIOutliersApiService GetPeerGroupOutliersContributingFeatures", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var outlierId string
 
-		resp, httpRes, err := apiClient.IAIOutliersApi.GetOutliersContributingFeatures(context.Background(), outlierId).Execute()
+		resp, httpRes, err := apiClient.IAIOutliersApi.GetPeerGroupOutliersContributingFeatures(context.Background(), outlierId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -84,11 +84,11 @@ func Test_beta_IAIOutliersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIOutliersApiService IgnoreOutliers", func(t *testing.T) {
+	t.Run("Test IAIOutliersApiService IgnoreIdentityOutliers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.IAIOutliersApi.IgnoreOutliers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IAIOutliersApi.IgnoreIdentityOutliers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -96,11 +96,11 @@ func Test_beta_IAIOutliersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIOutliersApiService UnIgnoreOutliers", func(t *testing.T) {
+	t.Run("Test IAIOutliersApiService UnIgnoreIdentityOutliers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.IAIOutliersApi.UnIgnoreOutliers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.IAIOutliersApi.UnIgnoreIdentityOutliers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

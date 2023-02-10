@@ -4,18 +4,18 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ScheduledSearchCreate**](ScheduledSearchApi.md#ScheduledSearchCreate) | **Post** /scheduled-searches | Create a new scheduled search
-[**ScheduledSearchDelete**](ScheduledSearchApi.md#ScheduledSearchDelete) | **Delete** /scheduled-searches/{id} | Delete a Scheduled Search
-[**ScheduledSearchGet**](ScheduledSearchApi.md#ScheduledSearchGet) | **Get** /scheduled-searches/{id} | Get a Scheduled Search
-[**ScheduledSearchList**](ScheduledSearchApi.md#ScheduledSearchList) | **Get** /scheduled-searches | List scheduled searches
-[**ScheduledSearchUnsubscribe**](ScheduledSearchApi.md#ScheduledSearchUnsubscribe) | **Post** /scheduled-searches/{id}/unsubscribe | Unsubscribe a recipient from Scheduled Search
-[**ScheduledSearchUpdate**](ScheduledSearchApi.md#ScheduledSearchUpdate) | **Put** /scheduled-searches/{id} | Update an existing Scheduled Search
+[**CreateScheduledSearch**](ScheduledSearchApi.md#CreateScheduledSearch) | **Post** /scheduled-searches | Create a new scheduled search
+[**DeleteScheduledSearch**](ScheduledSearchApi.md#DeleteScheduledSearch) | **Delete** /scheduled-searches/{id} | Delete a Scheduled Search
+[**GetScheduledSearch**](ScheduledSearchApi.md#GetScheduledSearch) | **Get** /scheduled-searches/{id} | Get a Scheduled Search
+[**ListScheduledSearch**](ScheduledSearchApi.md#ListScheduledSearch) | **Get** /scheduled-searches | List scheduled searches
+[**UnsubscribeScheduledSearch**](ScheduledSearchApi.md#UnsubscribeScheduledSearch) | **Post** /scheduled-searches/{id}/unsubscribe | Unsubscribe a recipient from Scheduled Search
+[**UpdateScheduledSearch**](ScheduledSearchApi.md#UpdateScheduledSearch) | **Put** /scheduled-searches/{id} | Update an existing Scheduled Search
 
 
 
-## ScheduledSearchCreate
+## CreateScheduledSearch
 
-> ScheduledSearch ScheduledSearchCreate(ctx).ScheduledSearchCreateRequest(scheduledSearchCreateRequest).Execute()
+> ScheduledSearch CreateScheduledSearch(ctx).CreateScheduledSearchRequest(createScheduledSearchRequest).Execute()
 
 Create a new scheduled search
 
@@ -34,17 +34,17 @@ import (
 )
 
 func main() {
-    scheduledSearchCreateRequest := *openapiclient.NewScheduledSearchCreateRequest("554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule(openapiclient.ScheduleType("DAILY"), *openapiclient.NewScheduleHours(openapiclient.SelectorType("LIST"), []string{"Values_example"})), []openapiclient.SearchScheduleRecipientsInner{*openapiclient.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}) // ScheduledSearchCreateRequest | The scheduled search to persist.
+    createScheduledSearchRequest := *openapiclient.NewCreateScheduledSearchRequest("554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule(openapiclient.ScheduleType("DAILY"), *openapiclient.NewScheduleHours(openapiclient.SelectorType("LIST"), []string{"Values_example"})), []openapiclient.SearchScheduleRecipientsInner{*openapiclient.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}) // CreateScheduledSearchRequest | The scheduled search to persist.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearchApi.ScheduledSearchCreate(context.Background()).ScheduledSearchCreateRequest(scheduledSearchCreateRequest).Execute()
+    resp, r, err := apiClient.ScheduledSearchApi.CreateScheduledSearch(context.Background()).CreateScheduledSearchRequest(createScheduledSearchRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.ScheduledSearchCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.CreateScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ScheduledSearchCreate`: ScheduledSearch
-    fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchApi.ScheduledSearchCreate`: %v\n", resp)
+    // response from `CreateScheduledSearch`: ScheduledSearch
+    fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchApi.CreateScheduledSearch`: %v\n", resp)
 }
 ```
 
@@ -54,12 +54,12 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiScheduledSearchCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateScheduledSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scheduledSearchCreateRequest** | [**ScheduledSearchCreateRequest**](ScheduledSearchCreateRequest.md) | The scheduled search to persist. | 
+ **createScheduledSearchRequest** | [**CreateScheduledSearchRequest**](CreateScheduledSearchRequest.md) | The scheduled search to persist. | 
 
 ### Return type
 
@@ -79,9 +79,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ScheduledSearchDelete
+## DeleteScheduledSearch
 
-> ScheduledSearchDelete(ctx, id).Execute()
+> DeleteScheduledSearch(ctx, id).Execute()
 
 Delete a Scheduled Search
 
@@ -104,9 +104,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearchApi.ScheduledSearchDelete(context.Background(), id).Execute()
+    resp, r, err := apiClient.ScheduledSearchApi.DeleteScheduledSearch(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.ScheduledSearchDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.DeleteScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiScheduledSearchDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteScheduledSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -147,9 +147,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ScheduledSearchGet
+## GetScheduledSearch
 
-> ScheduledSearch ScheduledSearchGet(ctx, id).Execute()
+> ScheduledSearch GetScheduledSearch(ctx, id).Execute()
 
 Get a Scheduled Search
 
@@ -172,13 +172,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearchApi.ScheduledSearchGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.ScheduledSearchApi.GetScheduledSearch(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.ScheduledSearchGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.GetScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ScheduledSearchGet`: ScheduledSearch
-    fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchApi.ScheduledSearchGet`: %v\n", resp)
+    // response from `GetScheduledSearch`: ScheduledSearch
+    fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchApi.GetScheduledSearch`: %v\n", resp)
 }
 ```
 
@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiScheduledSearchGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetScheduledSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -217,9 +217,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ScheduledSearchList
+## ListScheduledSearch
 
-> []ScheduledSearch ScheduledSearchList(ctx).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+> []ScheduledSearch ListScheduledSearch(ctx).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
 
 List scheduled searches
 
@@ -245,13 +245,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearchApi.ScheduledSearchList(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.ScheduledSearchApi.ListScheduledSearch(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.ScheduledSearchList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.ListScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ScheduledSearchList`: []ScheduledSearch
-    fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchApi.ScheduledSearchList`: %v\n", resp)
+    // response from `ListScheduledSearch`: []ScheduledSearch
+    fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchApi.ListScheduledSearch`: %v\n", resp)
 }
 ```
 
@@ -261,7 +261,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiScheduledSearchListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListScheduledSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -289,9 +289,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ScheduledSearchUnsubscribe
+## UnsubscribeScheduledSearch
 
-> ScheduledSearchUnsubscribe(ctx, id).TypedReference(typedReference).Execute()
+> UnsubscribeScheduledSearch(ctx, id).TypedReference(typedReference).Execute()
 
 Unsubscribe a recipient from Scheduled Search
 
@@ -315,9 +315,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearchApi.ScheduledSearchUnsubscribe(context.Background(), id).TypedReference(typedReference).Execute()
+    resp, r, err := apiClient.ScheduledSearchApi.UnsubscribeScheduledSearch(context.Background(), id).TypedReference(typedReference).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.ScheduledSearchUnsubscribe``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.UnsubscribeScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiScheduledSearchUnsubscribeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUnsubscribeScheduledSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -359,9 +359,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ScheduledSearchUpdate
+## UpdateScheduledSearch
 
-> ScheduledSearch ScheduledSearchUpdate(ctx, id).ScheduledSearch(scheduledSearch).Execute()
+> ScheduledSearch UpdateScheduledSearch(ctx, id).ScheduledSearch(scheduledSearch).Execute()
 
 Update an existing Scheduled Search
 
@@ -385,13 +385,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearchApi.ScheduledSearchUpdate(context.Background(), id).ScheduledSearch(scheduledSearch).Execute()
+    resp, r, err := apiClient.ScheduledSearchApi.UpdateScheduledSearch(context.Background(), id).ScheduledSearch(scheduledSearch).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.ScheduledSearchUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchApi.UpdateScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ScheduledSearchUpdate`: ScheduledSearch
-    fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchApi.ScheduledSearchUpdate`: %v\n", resp)
+    // response from `UpdateScheduledSearch`: ScheduledSearch
+    fmt.Fprintf(os.Stdout, "Response from `ScheduledSearchApi.UpdateScheduledSearch`: %v\n", resp)
 }
 ```
 
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiScheduledSearchUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateScheduledSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

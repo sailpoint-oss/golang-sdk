@@ -4,80 +4,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BulkDeleteAccessProfiles**](AccessProfilesApi.md#BulkDeleteAccessProfiles) | **Post** /access-profiles/bulk-delete | Delete Access Profile(s)
 [**CreateAccessProfile**](AccessProfilesApi.md#CreateAccessProfile) | **Post** /access-profiles | Create an Access Profile
 [**DeleteAccessProfile**](AccessProfilesApi.md#DeleteAccessProfile) | **Delete** /access-profiles/{id} | Delete the specified Access Profile
+[**DeleteAccessProfilesInBulk**](AccessProfilesApi.md#DeleteAccessProfilesInBulk) | **Post** /access-profiles/bulk-delete | Delete Access Profile(s)
 [**GetAccessProfile**](AccessProfilesApi.md#GetAccessProfile) | **Get** /access-profiles/{id} | Get an Access Profile
-[**ListAccessProfileEntitlements**](AccessProfilesApi.md#ListAccessProfileEntitlements) | **Get** /access-profiles/{id}/entitlements | List Access Profile&#39;s Entitlements
+[**GetAccessProfileEntitlements**](AccessProfilesApi.md#GetAccessProfileEntitlements) | **Get** /access-profiles/{id}/entitlements | List Access Profile&#39;s Entitlements
 [**ListAccessProfiles**](AccessProfilesApi.md#ListAccessProfiles) | **Get** /access-profiles | List Access Profiles
 [**PatchAccessProfile**](AccessProfilesApi.md#PatchAccessProfile) | **Patch** /access-profiles/{id} | Patch a specified Access Profile
 
-
-
-## BulkDeleteAccessProfiles
-
-> AccessProfileBulkDeleteResponse BulkDeleteAccessProfiles(ctx).AccessProfileBulkDeleteRequest(accessProfileBulkDeleteRequest).Execute()
-
-Delete Access Profile(s)
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    accessProfileBulkDeleteRequest := *openapiclient.NewAccessProfileBulkDeleteRequest() // AccessProfileBulkDeleteRequest | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfilesApi.BulkDeleteAccessProfiles(context.Background()).AccessProfileBulkDeleteRequest(accessProfileBulkDeleteRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesApi.BulkDeleteAccessProfiles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `BulkDeleteAccessProfiles`: AccessProfileBulkDeleteResponse
-    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesApi.BulkDeleteAccessProfiles`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiBulkDeleteAccessProfilesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **accessProfileBulkDeleteRequest** | [**AccessProfileBulkDeleteRequest**](AccessProfileBulkDeleteRequest.md) |  | 
-
-### Return type
-
-[**AccessProfileBulkDeleteResponse**](AccessProfileBulkDeleteResponse.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## CreateAccessProfile
@@ -216,6 +150,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteAccessProfilesInBulk
+
+> AccessProfileBulkDeleteResponse DeleteAccessProfilesInBulk(ctx).AccessProfileBulkDeleteRequest(accessProfileBulkDeleteRequest).Execute()
+
+Delete Access Profile(s)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    accessProfileBulkDeleteRequest := *openapiclient.NewAccessProfileBulkDeleteRequest() // AccessProfileBulkDeleteRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccessProfilesApi.DeleteAccessProfilesInBulk(context.Background()).AccessProfileBulkDeleteRequest(accessProfileBulkDeleteRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesApi.DeleteAccessProfilesInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteAccessProfilesInBulk`: AccessProfileBulkDeleteResponse
+    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesApi.DeleteAccessProfilesInBulk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteAccessProfilesInBulkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accessProfileBulkDeleteRequest** | [**AccessProfileBulkDeleteRequest**](AccessProfileBulkDeleteRequest.md) |  | 
+
+### Return type
+
+[**AccessProfileBulkDeleteResponse**](AccessProfileBulkDeleteResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetAccessProfile
 
 > AccessProfile GetAccessProfile(ctx, id).Execute()
@@ -286,9 +286,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListAccessProfileEntitlements
+## GetAccessProfileEntitlements
 
-> []Entitlement ListAccessProfileEntitlements(ctx, id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+> []Entitlement GetAccessProfileEntitlements(ctx, id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
 List Access Profile's Entitlements
 
@@ -316,13 +316,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessProfilesApi.ListAccessProfileEntitlements(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccessProfilesApi.GetAccessProfileEntitlements(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesApi.ListAccessProfileEntitlements``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesApi.GetAccessProfileEntitlements``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAccessProfileEntitlements`: []Entitlement
-    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesApi.ListAccessProfileEntitlements`: %v\n", resp)
+    // response from `GetAccessProfileEntitlements`: []Entitlement
+    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesApi.GetAccessProfileEntitlements`: %v\n", resp)
 }
 ```
 
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListAccessProfileEntitlementsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAccessProfileEntitlementsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

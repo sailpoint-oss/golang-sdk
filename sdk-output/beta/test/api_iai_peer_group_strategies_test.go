@@ -22,13 +22,13 @@ func Test_beta_IAIPeerGroupStrategiesApiService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test IAIPeerGroupStrategiesApiService GetOutliers", func(t *testing.T) {
+	t.Run("Test IAIPeerGroupStrategiesApiService GetPeerGroupOutliers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var strategy string
 
-		resp, httpRes, err := apiClient.IAIPeerGroupStrategiesApi.GetOutliers(context.Background(), strategy).Execute()
+		resp, httpRes, err := apiClient.IAIPeerGroupStrategiesApi.GetPeerGroupOutliers(context.Background(), strategy).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

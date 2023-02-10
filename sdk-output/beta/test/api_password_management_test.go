@@ -34,13 +34,13 @@ func Test_beta_PasswordManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordManagementApiService GetPasswordChangeStatus", func(t *testing.T) {
+	t.Run("Test PasswordManagementApiService GetIdentityPasswordChangeStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.PasswordManagementApi.GetPasswordChangeStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PasswordManagementApi.GetIdentityPasswordChangeStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -60,11 +60,11 @@ func Test_beta_PasswordManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordManagementApiService SetPassword", func(t *testing.T) {
+	t.Run("Test PasswordManagementApiService SetIdentityPassword", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PasswordManagementApi.SetPassword(context.Background()).Execute()
+		resp, httpRes, err := apiClient.PasswordManagementApi.SetIdentityPassword(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

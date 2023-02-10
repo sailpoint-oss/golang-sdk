@@ -1,4 +1,4 @@
-# SavedSearchCreateRequest
+# CreateSavedSearchRequest
 
 ## Properties
 
@@ -18,336 +18,336 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewSavedSearchCreateRequest
+### NewCreateSavedSearchRequest
 
-`func NewSavedSearchCreateRequest(indices []Index, query string, ) *SavedSearchCreateRequest`
+`func NewCreateSavedSearchRequest(indices []Index, query string, ) *CreateSavedSearchRequest`
 
-NewSavedSearchCreateRequest instantiates a new SavedSearchCreateRequest object
+NewCreateSavedSearchRequest instantiates a new CreateSavedSearchRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSavedSearchCreateRequestWithDefaults
+### NewCreateSavedSearchRequestWithDefaults
 
-`func NewSavedSearchCreateRequestWithDefaults() *SavedSearchCreateRequest`
+`func NewCreateSavedSearchRequestWithDefaults() *CreateSavedSearchRequest`
 
-NewSavedSearchCreateRequestWithDefaults instantiates a new SavedSearchCreateRequest object
+NewCreateSavedSearchRequestWithDefaults instantiates a new CreateSavedSearchRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *SavedSearchCreateRequest) GetName() string`
+`func (o *CreateSavedSearchRequest) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *SavedSearchCreateRequest) GetNameOk() (*string, bool)`
+`func (o *CreateSavedSearchRequest) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *SavedSearchCreateRequest) SetName(v string)`
+`func (o *CreateSavedSearchRequest) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *SavedSearchCreateRequest) HasName() bool`
+`func (o *CreateSavedSearchRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
-`func (o *SavedSearchCreateRequest) GetDescription() string`
+`func (o *CreateSavedSearchRequest) GetDescription() string`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *SavedSearchCreateRequest) GetDescriptionOk() (*string, bool)`
+`func (o *CreateSavedSearchRequest) GetDescriptionOk() (*string, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *SavedSearchCreateRequest) SetDescription(v string)`
+`func (o *CreateSavedSearchRequest) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
 
 ### HasDescription
 
-`func (o *SavedSearchCreateRequest) HasDescription() bool`
+`func (o *CreateSavedSearchRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
 
 ### SetDescriptionNil
 
-`func (o *SavedSearchCreateRequest) SetDescriptionNil(b bool)`
+`func (o *CreateSavedSearchRequest) SetDescriptionNil(b bool)`
 
  SetDescriptionNil sets the value for Description to be an explicit nil
 
 ### UnsetDescription
-`func (o *SavedSearchCreateRequest) UnsetDescription()`
+`func (o *CreateSavedSearchRequest) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetPublic
 
-`func (o *SavedSearchCreateRequest) GetPublic() bool`
+`func (o *CreateSavedSearchRequest) GetPublic() bool`
 
 GetPublic returns the Public field if non-nil, zero value otherwise.
 
 ### GetPublicOk
 
-`func (o *SavedSearchCreateRequest) GetPublicOk() (*bool, bool)`
+`func (o *CreateSavedSearchRequest) GetPublicOk() (*bool, bool)`
 
 GetPublicOk returns a tuple with the Public field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPublic
 
-`func (o *SavedSearchCreateRequest) SetPublic(v bool)`
+`func (o *CreateSavedSearchRequest) SetPublic(v bool)`
 
 SetPublic sets Public field to given value.
 
 ### HasPublic
 
-`func (o *SavedSearchCreateRequest) HasPublic() bool`
+`func (o *CreateSavedSearchRequest) HasPublic() bool`
 
 HasPublic returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *SavedSearchCreateRequest) GetCreated() time.Time`
+`func (o *CreateSavedSearchRequest) GetCreated() time.Time`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *SavedSearchCreateRequest) GetCreatedOk() (*time.Time, bool)`
+`func (o *CreateSavedSearchRequest) GetCreatedOk() (*time.Time, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *SavedSearchCreateRequest) SetCreated(v time.Time)`
+`func (o *CreateSavedSearchRequest) SetCreated(v time.Time)`
 
 SetCreated sets Created field to given value.
 
 ### HasCreated
 
-`func (o *SavedSearchCreateRequest) HasCreated() bool`
+`func (o *CreateSavedSearchRequest) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
 
 ### SetCreatedNil
 
-`func (o *SavedSearchCreateRequest) SetCreatedNil(b bool)`
+`func (o *CreateSavedSearchRequest) SetCreatedNil(b bool)`
 
  SetCreatedNil sets the value for Created to be an explicit nil
 
 ### UnsetCreated
-`func (o *SavedSearchCreateRequest) UnsetCreated()`
+`func (o *CreateSavedSearchRequest) UnsetCreated()`
 
 UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetModified
 
-`func (o *SavedSearchCreateRequest) GetModified() time.Time`
+`func (o *CreateSavedSearchRequest) GetModified() time.Time`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *SavedSearchCreateRequest) GetModifiedOk() (*time.Time, bool)`
+`func (o *CreateSavedSearchRequest) GetModifiedOk() (*time.Time, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *SavedSearchCreateRequest) SetModified(v time.Time)`
+`func (o *CreateSavedSearchRequest) SetModified(v time.Time)`
 
 SetModified sets Modified field to given value.
 
 ### HasModified
 
-`func (o *SavedSearchCreateRequest) HasModified() bool`
+`func (o *CreateSavedSearchRequest) HasModified() bool`
 
 HasModified returns a boolean if a field has been set.
 
 ### SetModifiedNil
 
-`func (o *SavedSearchCreateRequest) SetModifiedNil(b bool)`
+`func (o *CreateSavedSearchRequest) SetModifiedNil(b bool)`
 
  SetModifiedNil sets the value for Modified to be an explicit nil
 
 ### UnsetModified
-`func (o *SavedSearchCreateRequest) UnsetModified()`
+`func (o *CreateSavedSearchRequest) UnsetModified()`
 
 UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetIndices
 
-`func (o *SavedSearchCreateRequest) GetIndices() []Index`
+`func (o *CreateSavedSearchRequest) GetIndices() []Index`
 
 GetIndices returns the Indices field if non-nil, zero value otherwise.
 
 ### GetIndicesOk
 
-`func (o *SavedSearchCreateRequest) GetIndicesOk() (*[]Index, bool)`
+`func (o *CreateSavedSearchRequest) GetIndicesOk() (*[]Index, bool)`
 
 GetIndicesOk returns a tuple with the Indices field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIndices
 
-`func (o *SavedSearchCreateRequest) SetIndices(v []Index)`
+`func (o *CreateSavedSearchRequest) SetIndices(v []Index)`
 
 SetIndices sets Indices field to given value.
 
 
 ### GetColumns
 
-`func (o *SavedSearchCreateRequest) GetColumns() map[string][]Column`
+`func (o *CreateSavedSearchRequest) GetColumns() map[string][]Column`
 
 GetColumns returns the Columns field if non-nil, zero value otherwise.
 
 ### GetColumnsOk
 
-`func (o *SavedSearchCreateRequest) GetColumnsOk() (*map[string][]Column, bool)`
+`func (o *CreateSavedSearchRequest) GetColumnsOk() (*map[string][]Column, bool)`
 
 GetColumnsOk returns a tuple with the Columns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetColumns
 
-`func (o *SavedSearchCreateRequest) SetColumns(v map[string][]Column)`
+`func (o *CreateSavedSearchRequest) SetColumns(v map[string][]Column)`
 
 SetColumns sets Columns field to given value.
 
 ### HasColumns
 
-`func (o *SavedSearchCreateRequest) HasColumns() bool`
+`func (o *CreateSavedSearchRequest) HasColumns() bool`
 
 HasColumns returns a boolean if a field has been set.
 
 ### GetQuery
 
-`func (o *SavedSearchCreateRequest) GetQuery() string`
+`func (o *CreateSavedSearchRequest) GetQuery() string`
 
 GetQuery returns the Query field if non-nil, zero value otherwise.
 
 ### GetQueryOk
 
-`func (o *SavedSearchCreateRequest) GetQueryOk() (*string, bool)`
+`func (o *CreateSavedSearchRequest) GetQueryOk() (*string, bool)`
 
 GetQueryOk returns a tuple with the Query field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuery
 
-`func (o *SavedSearchCreateRequest) SetQuery(v string)`
+`func (o *CreateSavedSearchRequest) SetQuery(v string)`
 
 SetQuery sets Query field to given value.
 
 
 ### GetFields
 
-`func (o *SavedSearchCreateRequest) GetFields() []string`
+`func (o *CreateSavedSearchRequest) GetFields() []string`
 
 GetFields returns the Fields field if non-nil, zero value otherwise.
 
 ### GetFieldsOk
 
-`func (o *SavedSearchCreateRequest) GetFieldsOk() (*[]string, bool)`
+`func (o *CreateSavedSearchRequest) GetFieldsOk() (*[]string, bool)`
 
 GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFields
 
-`func (o *SavedSearchCreateRequest) SetFields(v []string)`
+`func (o *CreateSavedSearchRequest) SetFields(v []string)`
 
 SetFields sets Fields field to given value.
 
 ### HasFields
 
-`func (o *SavedSearchCreateRequest) HasFields() bool`
+`func (o *CreateSavedSearchRequest) HasFields() bool`
 
 HasFields returns a boolean if a field has been set.
 
 ### SetFieldsNil
 
-`func (o *SavedSearchCreateRequest) SetFieldsNil(b bool)`
+`func (o *CreateSavedSearchRequest) SetFieldsNil(b bool)`
 
  SetFieldsNil sets the value for Fields to be an explicit nil
 
 ### UnsetFields
-`func (o *SavedSearchCreateRequest) UnsetFields()`
+`func (o *CreateSavedSearchRequest) UnsetFields()`
 
 UnsetFields ensures that no value is present for Fields, not even an explicit nil
 ### GetSort
 
-`func (o *SavedSearchCreateRequest) GetSort() []string`
+`func (o *CreateSavedSearchRequest) GetSort() []string`
 
 GetSort returns the Sort field if non-nil, zero value otherwise.
 
 ### GetSortOk
 
-`func (o *SavedSearchCreateRequest) GetSortOk() (*[]string, bool)`
+`func (o *CreateSavedSearchRequest) GetSortOk() (*[]string, bool)`
 
 GetSortOk returns a tuple with the Sort field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSort
 
-`func (o *SavedSearchCreateRequest) SetSort(v []string)`
+`func (o *CreateSavedSearchRequest) SetSort(v []string)`
 
 SetSort sets Sort field to given value.
 
 ### HasSort
 
-`func (o *SavedSearchCreateRequest) HasSort() bool`
+`func (o *CreateSavedSearchRequest) HasSort() bool`
 
 HasSort returns a boolean if a field has been set.
 
 ### GetFilters
 
-`func (o *SavedSearchCreateRequest) GetFilters() SavedSearchDetailFilters`
+`func (o *CreateSavedSearchRequest) GetFilters() SavedSearchDetailFilters`
 
 GetFilters returns the Filters field if non-nil, zero value otherwise.
 
 ### GetFiltersOk
 
-`func (o *SavedSearchCreateRequest) GetFiltersOk() (*SavedSearchDetailFilters, bool)`
+`func (o *CreateSavedSearchRequest) GetFiltersOk() (*SavedSearchDetailFilters, bool)`
 
 GetFiltersOk returns a tuple with the Filters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFilters
 
-`func (o *SavedSearchCreateRequest) SetFilters(v SavedSearchDetailFilters)`
+`func (o *CreateSavedSearchRequest) SetFilters(v SavedSearchDetailFilters)`
 
 SetFilters sets Filters field to given value.
 
 ### HasFilters
 
-`func (o *SavedSearchCreateRequest) HasFilters() bool`
+`func (o *CreateSavedSearchRequest) HasFilters() bool`
 
 HasFilters returns a boolean if a field has been set.
 
 ### SetFiltersNil
 
-`func (o *SavedSearchCreateRequest) SetFiltersNil(b bool)`
+`func (o *CreateSavedSearchRequest) SetFiltersNil(b bool)`
 
  SetFiltersNil sets the value for Filters to be an explicit nil
 
 ### UnsetFilters
-`func (o *SavedSearchCreateRequest) UnsetFilters()`
+`func (o *CreateSavedSearchRequest) UnsetFilters()`
 
 UnsetFilters ensures that no value is present for Filters, not even an explicit nil
 

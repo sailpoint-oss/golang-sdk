@@ -5,9 +5,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GenerateDigitToken**](PasswordManagementApi.md#GenerateDigitToken) | **Post** /generate-password-reset-token/digit | Generate a digit token
-[**GetPasswordChangeStatus**](PasswordManagementApi.md#GetPasswordChangeStatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
+[**GetIdentityPasswordChangeStatus**](PasswordManagementApi.md#GetIdentityPasswordChangeStatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
 [**QueryPasswordInfo**](PasswordManagementApi.md#QueryPasswordInfo) | **Post** /query-password-info | Query Password Info
-[**SetPassword**](PasswordManagementApi.md#SetPassword) | **Post** /set-password | Set Identity&#39;s Password
+[**SetIdentityPassword**](PasswordManagementApi.md#SetIdentityPassword) | **Post** /set-password | Set Identity&#39;s Password
 
 
 
@@ -77,9 +77,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetPasswordChangeStatus
+## GetIdentityPasswordChangeStatus
 
-> PasswordStatus GetPasswordChangeStatus(ctx, id).Execute()
+> PasswordStatus GetIdentityPasswordChangeStatus(ctx, id).Execute()
 
 Get Password Change Request Status
 
@@ -102,13 +102,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementApi.GetPasswordChangeStatus(context.Background(), id).Execute()
+    resp, r, err := apiClient.PasswordManagementApi.GetIdentityPasswordChangeStatus(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementApi.GetPasswordChangeStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementApi.GetIdentityPasswordChangeStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPasswordChangeStatus`: PasswordStatus
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementApi.GetPasswordChangeStatus`: %v\n", resp)
+    // response from `GetIdentityPasswordChangeStatus`: PasswordStatus
+    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementApi.GetIdentityPasswordChangeStatus`: %v\n", resp)
 }
 ```
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetPasswordChangeStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetIdentityPasswordChangeStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -213,9 +213,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SetPassword
+## SetIdentityPassword
 
-> PasswordChangeResponse SetPassword(ctx).PasswordChangeRequest(passwordChangeRequest).Execute()
+> PasswordChangeResponse SetIdentityPassword(ctx).PasswordChangeRequest(passwordChangeRequest).Execute()
 
 Set Identity's Password
 
@@ -238,13 +238,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementApi.SetPassword(context.Background()).PasswordChangeRequest(passwordChangeRequest).Execute()
+    resp, r, err := apiClient.PasswordManagementApi.SetIdentityPassword(context.Background()).PasswordChangeRequest(passwordChangeRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementApi.SetPassword``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementApi.SetIdentityPassword``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetPassword`: PasswordChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementApi.SetPassword`: %v\n", resp)
+    // response from `SetIdentityPassword`: PasswordChangeResponse
+    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementApi.SetIdentityPassword`: %v\n", resp)
 }
 ```
 
@@ -254,7 +254,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSetPasswordRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSetIdentityPasswordRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

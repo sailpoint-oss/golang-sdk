@@ -5,12 +5,12 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ExportOutliersZip**](IAIOutliersApi.md#ExportOutliersZip) | **Get** /outliers/export | IAI Identity Outliers Export
-[**GetLatestOutlierSnapshots**](IAIOutliersApi.md#GetLatestOutlierSnapshots) | **Get** /outlier-summaries/latest | IAI Identity Outliers Latest Summary
-[**GetOutlierSnapshots**](IAIOutliersApi.md#GetOutlierSnapshots) | **Get** /outlier-summaries | IAI Identity Outliers Summary
-[**GetOutliers**](IAIOutliersApi.md#GetOutliers) | **Get** /outliers | IAI Get Identity Outliers
-[**GetOutliersContributingFeatures**](IAIOutliersApi.md#GetOutliersContributingFeatures) | **Get** /outliers/{outlierId}/contributing-features | IAI Get an Identity Outlier&#39;s Contibuting Features
-[**IgnoreOutliers**](IAIOutliersApi.md#IgnoreOutliers) | **Post** /outliers/ignore | IAI Identity Outliers Ignore
-[**UnIgnoreOutliers**](IAIOutliersApi.md#UnIgnoreOutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
+[**GetIdentityOutlierSnapshots**](IAIOutliersApi.md#GetIdentityOutlierSnapshots) | **Get** /outlier-summaries | IAI Identity Outliers Summary
+[**GetIdentityOutliers**](IAIOutliersApi.md#GetIdentityOutliers) | **Get** /outliers | IAI Get Identity Outliers
+[**GetLatestIdentityOutlierSnapshots**](IAIOutliersApi.md#GetLatestIdentityOutlierSnapshots) | **Get** /outlier-summaries/latest | IAI Identity Outliers Latest Summary
+[**GetPeerGroupOutliersContributingFeatures**](IAIOutliersApi.md#GetPeerGroupOutliersContributingFeatures) | **Get** /outliers/{outlierId}/contributing-features | IAI Get an Identity Outlier&#39;s Contibuting Features
+[**IgnoreIdentityOutliers**](IAIOutliersApi.md#IgnoreIdentityOutliers) | **Post** /outliers/ignore | IAI Identity Outliers Ignore
+[**UnIgnoreIdentityOutliers**](IAIOutliersApi.md#UnIgnoreIdentityOutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
 
 
 
@@ -80,75 +80,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetLatestOutlierSnapshots
+## GetIdentityOutlierSnapshots
 
-> []LatestOutlierSummary GetLatestOutlierSnapshots(ctx).Type_(type_).Execute()
-
-IAI Identity Outliers Latest Summary
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    type_ := "type__example" // string | Type of the identity outliers snapshot to filter on (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.GetLatestOutlierSnapshots(context.Background()).Type_(type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetLatestOutlierSnapshots``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetLatestOutlierSnapshots`: []LatestOutlierSummary
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetLatestOutlierSnapshots`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetLatestOutlierSnapshotsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **type_** | **string** | Type of the identity outliers snapshot to filter on | 
-
-### Return type
-
-[**[]LatestOutlierSummary**](LatestOutlierSummary.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetOutlierSnapshots
-
-> []OutlierSummary GetOutlierSnapshots(ctx).Limit(limit).Offset(offset).Type_(type_).Filters(filters).Sorters(sorters).Execute()
+> []OutlierSummary GetIdentityOutlierSnapshots(ctx).Limit(limit).Offset(offset).Type_(type_).Filters(filters).Sorters(sorters).Execute()
 
 IAI Identity Outliers Summary
 
@@ -175,13 +109,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.GetOutlierSnapshots(context.Background()).Limit(limit).Offset(offset).Type_(type_).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIOutliersApi.GetIdentityOutlierSnapshots(context.Background()).Limit(limit).Offset(offset).Type_(type_).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetOutlierSnapshots``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetIdentityOutlierSnapshots``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOutlierSnapshots`: []OutlierSummary
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetOutlierSnapshots`: %v\n", resp)
+    // response from `GetIdentityOutlierSnapshots`: []OutlierSummary
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetIdentityOutlierSnapshots`: %v\n", resp)
 }
 ```
 
@@ -191,7 +125,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetOutlierSnapshotsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetIdentityOutlierSnapshotsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +154,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetOutliers
+## GetIdentityOutliers
 
-> []Outlier GetOutliers(ctx).Limit(limit).Offset(offset).Count(count).Type_(type_).Filters(filters).Sorters(sorters).Execute()
+> []Outlier GetIdentityOutliers(ctx).Limit(limit).Offset(offset).Count(count).Type_(type_).Filters(filters).Sorters(sorters).Execute()
 
 IAI Get Identity Outliers
 
@@ -250,13 +184,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.GetOutliers(context.Background()).Limit(limit).Offset(offset).Count(count).Type_(type_).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIOutliersApi.GetIdentityOutliers(context.Background()).Limit(limit).Offset(offset).Count(count).Type_(type_).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetOutliers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetIdentityOutliers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOutliers`: []Outlier
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetOutliers`: %v\n", resp)
+    // response from `GetIdentityOutliers`: []Outlier
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetIdentityOutliers`: %v\n", resp)
 }
 ```
 
@@ -266,7 +200,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetOutliersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetIdentityOutliersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -296,9 +230,75 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetOutliersContributingFeatures
+## GetLatestIdentityOutlierSnapshots
 
-> []OutlierContributingFeature GetOutliersContributingFeatures(ctx, outlierId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
+> []LatestOutlierSummary GetLatestIdentityOutlierSnapshots(ctx).Type_(type_).Execute()
+
+IAI Identity Outliers Latest Summary
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    type_ := "type__example" // string | Type of the identity outliers snapshot to filter on (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IAIOutliersApi.GetLatestIdentityOutlierSnapshots(context.Background()).Type_(type_).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetLatestIdentityOutlierSnapshots``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetLatestIdentityOutlierSnapshots`: []LatestOutlierSummary
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetLatestIdentityOutlierSnapshots`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetLatestIdentityOutlierSnapshotsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type_** | **string** | Type of the identity outliers snapshot to filter on | 
+
+### Return type
+
+[**[]LatestOutlierSummary**](LatestOutlierSummary.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPeerGroupOutliersContributingFeatures
+
+> []OutlierContributingFeature GetPeerGroupOutliersContributingFeatures(ctx, outlierId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
 
 IAI Get an Identity Outlier's Contibuting Features
 
@@ -326,13 +326,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.GetOutliersContributingFeatures(context.Background(), outlierId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIOutliersApi.GetPeerGroupOutliersContributingFeatures(context.Background(), outlierId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetOutliersContributingFeatures``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetPeerGroupOutliersContributingFeatures``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetOutliersContributingFeatures`: []OutlierContributingFeature
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetOutliersContributingFeatures`: %v\n", resp)
+    // response from `GetPeerGroupOutliersContributingFeatures`: []OutlierContributingFeature
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetPeerGroupOutliersContributingFeatures`: %v\n", resp)
 }
 ```
 
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetOutliersContributingFeaturesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetPeerGroupOutliersContributingFeaturesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -376,9 +376,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## IgnoreOutliers
+## IgnoreIdentityOutliers
 
-> IgnoreOutliers(ctx).RequestBody(requestBody).Execute()
+> IgnoreIdentityOutliers(ctx).RequestBody(requestBody).Execute()
 
 IAI Identity Outliers Ignore
 
@@ -401,9 +401,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.IgnoreOutliers(context.Background()).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.IAIOutliersApi.IgnoreIdentityOutliers(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.IgnoreOutliers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.IgnoreIdentityOutliers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -415,7 +415,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiIgnoreOutliersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiIgnoreIdentityOutliersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -440,9 +440,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UnIgnoreOutliers
+## UnIgnoreIdentityOutliers
 
-> UnIgnoreOutliers(ctx).RequestBody(requestBody).Execute()
+> UnIgnoreIdentityOutliers(ctx).RequestBody(requestBody).Execute()
 
 IAI Identity Outliers Unignore
 
@@ -465,9 +465,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.UnIgnoreOutliers(context.Background()).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.IAIOutliersApi.UnIgnoreIdentityOutliers(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.UnIgnoreOutliers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.UnIgnoreIdentityOutliers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -479,7 +479,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUnIgnoreOutliersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUnIgnoreIdentityOutliersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

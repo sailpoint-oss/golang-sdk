@@ -4,19 +4,19 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SpConfigExport**](SPConfigApi.md#SpConfigExport) | **Post** /sp-config/export | Initiates Configuration Objects Export Job.
-[**SpConfigExportDownload**](SPConfigApi.md#SpConfigExportDownload) | **Get** /sp-config/export/{id}/download | Download Result of Export Job
-[**SpConfigExportJobStatus**](SPConfigApi.md#SpConfigExportJobStatus) | **Get** /sp-config/export/{id} | Get Status of Export Job
-[**SpConfigImport**](SPConfigApi.md#SpConfigImport) | **Post** /sp-config/import | Initiates Configuration Objects Import Job.
-[**SpConfigImportDownload**](SPConfigApi.md#SpConfigImportDownload) | **Get** /sp-config/import/{id}/download | Download Result of Import Job
-[**SpConfigImportJobStatus**](SPConfigApi.md#SpConfigImportJobStatus) | **Get** /sp-config/import/{id} | Get Status of Import Job
-[**SpConfigObjects**](SPConfigApi.md#SpConfigObjects) | **Get** /sp-config/config-objects | Get Config Object details
+[**ExportSpConfig**](SPConfigApi.md#ExportSpConfig) | **Post** /sp-config/export | Initiates Configuration Objects Export Job.
+[**ExportSpConfigDownload**](SPConfigApi.md#ExportSpConfigDownload) | **Get** /sp-config/export/{id}/download | Download Result of Export Job
+[**ExportSpConfigJobStatus**](SPConfigApi.md#ExportSpConfigJobStatus) | **Get** /sp-config/export/{id} | Get Status of Export Job
+[**ImportSpConfig**](SPConfigApi.md#ImportSpConfig) | **Post** /sp-config/import | Initiates Configuration Objects Import Job.
+[**ImportSpConfigDownload**](SPConfigApi.md#ImportSpConfigDownload) | **Get** /sp-config/import/{id}/download | Download Result of Import Job
+[**ImportSpConfigJobStatus**](SPConfigApi.md#ImportSpConfigJobStatus) | **Get** /sp-config/import/{id} | Get Status of Import Job
+[**ListSpConfigObjects**](SPConfigApi.md#ListSpConfigObjects) | **Get** /sp-config/config-objects | Get Config Object details
 
 
 
-## SpConfigExport
+## ExportSpConfig
 
-> SpConfigJob SpConfigExport(ctx).ExportPayload(exportPayload).Execute()
+> SpConfigJob ExportSpConfig(ctx).ExportPayload(exportPayload).Execute()
 
 Initiates Configuration Objects Export Job.
 
@@ -39,13 +39,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigApi.SpConfigExport(context.Background()).ExportPayload(exportPayload).Execute()
+    resp, r, err := apiClient.SPConfigApi.ExportSpConfig(context.Background()).ExportPayload(exportPayload).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.SpConfigExport``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.ExportSpConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpConfigExport`: SpConfigJob
-    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.SpConfigExport`: %v\n", resp)
+    // response from `ExportSpConfig`: SpConfigJob
+    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.ExportSpConfig`: %v\n", resp)
 }
 ```
 
@@ -55,7 +55,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpConfigExportRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiExportSpConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -80,9 +80,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpConfigExportDownload
+## ExportSpConfigDownload
 
-> SpConfigExportResults SpConfigExportDownload(ctx, id).Execute()
+> SpConfigExportResults ExportSpConfigDownload(ctx, id).Execute()
 
 Download Result of Export Job
 
@@ -105,13 +105,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigApi.SpConfigExportDownload(context.Background(), id).Execute()
+    resp, r, err := apiClient.SPConfigApi.ExportSpConfigDownload(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.SpConfigExportDownload``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.ExportSpConfigDownload``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpConfigExportDownload`: SpConfigExportResults
-    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.SpConfigExportDownload`: %v\n", resp)
+    // response from `ExportSpConfigDownload`: SpConfigExportResults
+    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.ExportSpConfigDownload`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpConfigExportDownloadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiExportSpConfigDownloadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -150,9 +150,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpConfigExportJobStatus
+## ExportSpConfigJobStatus
 
-> SpConfigJob SpConfigExportJobStatus(ctx, id).Execute()
+> SpConfigJob ExportSpConfigJobStatus(ctx, id).Execute()
 
 Get Status of Export Job
 
@@ -175,13 +175,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigApi.SpConfigExportJobStatus(context.Background(), id).Execute()
+    resp, r, err := apiClient.SPConfigApi.ExportSpConfigJobStatus(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.SpConfigExportJobStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.ExportSpConfigJobStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpConfigExportJobStatus`: SpConfigJob
-    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.SpConfigExportJobStatus`: %v\n", resp)
+    // response from `ExportSpConfigJobStatus`: SpConfigJob
+    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.ExportSpConfigJobStatus`: %v\n", resp)
 }
 ```
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpConfigExportJobStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiExportSpConfigJobStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -220,9 +220,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpConfigImport
+## ImportSpConfig
 
-> SpConfigJob SpConfigImport(ctx).Data(data).Preview(preview).Options(options).Execute()
+> SpConfigJob ImportSpConfig(ctx).Data(data).Preview(preview).Options(options).Execute()
 
 Initiates Configuration Objects Import Job.
 
@@ -247,13 +247,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigApi.SpConfigImport(context.Background()).Data(data).Preview(preview).Options(options).Execute()
+    resp, r, err := apiClient.SPConfigApi.ImportSpConfig(context.Background()).Data(data).Preview(preview).Options(options).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.SpConfigImport``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.ImportSpConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpConfigImport`: SpConfigJob
-    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.SpConfigImport`: %v\n", resp)
+    // response from `ImportSpConfig`: SpConfigJob
+    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.ImportSpConfig`: %v\n", resp)
 }
 ```
 
@@ -263,7 +263,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpConfigImportRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiImportSpConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -290,9 +290,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpConfigImportDownload
+## ImportSpConfigDownload
 
-> SpConfigImportResults SpConfigImportDownload(ctx, id).Execute()
+> SpConfigImportResults ImportSpConfigDownload(ctx, id).Execute()
 
 Download Result of Import Job
 
@@ -315,13 +315,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigApi.SpConfigImportDownload(context.Background(), id).Execute()
+    resp, r, err := apiClient.SPConfigApi.ImportSpConfigDownload(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.SpConfigImportDownload``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.ImportSpConfigDownload``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpConfigImportDownload`: SpConfigImportResults
-    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.SpConfigImportDownload`: %v\n", resp)
+    // response from `ImportSpConfigDownload`: SpConfigImportResults
+    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.ImportSpConfigDownload`: %v\n", resp)
 }
 ```
 
@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpConfigImportDownloadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiImportSpConfigDownloadRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -360,9 +360,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpConfigImportJobStatus
+## ImportSpConfigJobStatus
 
-> SpConfigJob SpConfigImportJobStatus(ctx, id).Execute()
+> SpConfigJob ImportSpConfigJobStatus(ctx, id).Execute()
 
 Get Status of Import Job
 
@@ -385,13 +385,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigApi.SpConfigImportJobStatus(context.Background(), id).Execute()
+    resp, r, err := apiClient.SPConfigApi.ImportSpConfigJobStatus(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.SpConfigImportJobStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.ImportSpConfigJobStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpConfigImportJobStatus`: SpConfigJob
-    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.SpConfigImportJobStatus`: %v\n", resp)
+    // response from `ImportSpConfigJobStatus`: SpConfigJob
+    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.ImportSpConfigJobStatus`: %v\n", resp)
 }
 ```
 
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpConfigImportJobStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiImportSpConfigJobStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -430,9 +430,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SpConfigObjects
+## ListSpConfigObjects
 
-> []SpConfigObject SpConfigObjects(ctx).Execute()
+> []SpConfigObject ListSpConfigObjects(ctx).Execute()
 
 Get Config Object details
 
@@ -454,13 +454,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigApi.SpConfigObjects(context.Background()).Execute()
+    resp, r, err := apiClient.SPConfigApi.ListSpConfigObjects(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.SpConfigObjects``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.ListSpConfigObjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SpConfigObjects`: []SpConfigObject
-    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.SpConfigObjects`: %v\n", resp)
+    // response from `ListSpConfigObjects`: []SpConfigObject
+    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.ListSpConfigObjects`: %v\n", resp)
 }
 ```
 
@@ -470,7 +470,7 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSpConfigObjectsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListSpConfigObjectsRequest struct via the builder pattern
 
 
 ### Return type

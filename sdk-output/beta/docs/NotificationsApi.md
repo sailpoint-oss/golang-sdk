@@ -4,9 +4,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BulkDeleteNotificationTemplates**](NotificationsApi.md#BulkDeleteNotificationTemplates) | **Post** /notification-templates/bulk-delete | Bulk Delete Notification Templates
 [**CreateNotificationTemplate**](NotificationsApi.md#CreateNotificationTemplate) | **Post** /notification-templates | Create Notification Template
 [**CreateVerifiedFromAddress**](NotificationsApi.md#CreateVerifiedFromAddress) | **Post** /verified-from-addresses | Create Verified From Address
+[**DeleteNotificationTemplatesInBulk**](NotificationsApi.md#DeleteNotificationTemplatesInBulk) | **Post** /notification-templates/bulk-delete | Bulk Delete Notification Templates
 [**DeleteVerifiedFromAddress**](NotificationsApi.md#DeleteVerifiedFromAddress) | **Delete** /verified-from-addresses/{id} | Delete Verified From Address
 [**GetDkimAttributes**](NotificationsApi.md#GetDkimAttributes) | **Get** /dkim-attributes/{identities} | Get DKIM Attributes
 [**GetNotificationPreference**](NotificationsApi.md#GetNotificationPreference) | **Get** /notification-preferences/{key} | Get Notification Preferences for tenant.
@@ -19,70 +19,6 @@ Method | HTTP request | Description
 [**SendTestNotification**](NotificationsApi.md#SendTestNotification) | **Post** /send-test-notification | Send Test Notification
 [**VerifyDomainDkim**](NotificationsApi.md#VerifyDomainDkim) | **Post** /verify-domain-dkim | Verify domain address via DKIM
 
-
-
-## BulkDeleteNotificationTemplates
-
-> BulkDeleteNotificationTemplates(ctx).TemplateBulkDeleteDto(templateBulkDeleteDto).Execute()
-
-Bulk Delete Notification Templates
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    templateBulkDeleteDto := []openapiclient.TemplateBulkDeleteDto{*openapiclient.NewTemplateBulkDeleteDto("cloud_manual_work_item_summary")} // []TemplateBulkDeleteDto | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.BulkDeleteNotificationTemplates(context.Background()).TemplateBulkDeleteDto(templateBulkDeleteDto).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.BulkDeleteNotificationTemplates``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiBulkDeleteNotificationTemplatesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **templateBulkDeleteDto** | [**[]TemplateBulkDeleteDto**](TemplateBulkDeleteDto.md) |  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## CreateNotificationTemplate
@@ -202,6 +138,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailStatusDto**](EmailStatusDto.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteNotificationTemplatesInBulk
+
+> DeleteNotificationTemplatesInBulk(ctx).TemplateBulkDeleteDto(templateBulkDeleteDto).Execute()
+
+Bulk Delete Notification Templates
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    templateBulkDeleteDto := []openapiclient.TemplateBulkDeleteDto{*openapiclient.NewTemplateBulkDeleteDto("cloud_manual_work_item_summary")} // []TemplateBulkDeleteDto | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NotificationsApi.DeleteNotificationTemplatesInBulk(context.Background()).TemplateBulkDeleteDto(templateBulkDeleteDto).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.DeleteNotificationTemplatesInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteNotificationTemplatesInBulkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **templateBulkDeleteDto** | [**[]TemplateBulkDeleteDto**](TemplateBulkDeleteDto.md) |  | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 
