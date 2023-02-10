@@ -45,7 +45,7 @@ func Paginate[T any](f interface{}, initialOffset int32, increment int32, limit 
 	return returnObject, latestResponse, nil
 }
 
-func PaginateSearch(ctx context.Context, apiClient *APIClient, search v3.Search, initialOffset int32, increment int32, limit int32) ([]map[string]interface{}, *http.Response, error) {
+func PaginateSearchApi(ctx context.Context, apiClient *APIClient, search v3.Search, initialOffset int32, increment int32, limit int32) ([]map[string]interface{}, *http.Response, error) {
 	var offset int32 = initialOffset
 	var returnObject []map[string]interface{}
 	var latestResponse *http.Response

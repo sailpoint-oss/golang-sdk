@@ -52,7 +52,7 @@ func getSearchResults(ctx context.Context, apiClient *sailpoint.APIClient) {
 	}
 	  `)
 	search.UnmarshalJSON(searchString)
-	resp, r, err := sailpoint.PaginateSearch(ctx, apiClient, *search, 0, 10, 10000)
+	resp, r, err := sailpoint.PaginateSearchApi(ctx, apiClient, *search, 0, 10, 10000)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +64,7 @@ func getSearchResults(ctx context.Context, apiClient *sailpoint.APIClient) {
 }
 
 func getTransformResults(ctx context.Context, apiClient *sailpoint.APIClient) {
-	resp, r, err := apiClient.V3.TransformsApi.GetTransformsList(ctx).Execute()
+	resp, r, err := apiClient.V3.TransformsApi.ListTransforms(ctx).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.GetTransformsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
