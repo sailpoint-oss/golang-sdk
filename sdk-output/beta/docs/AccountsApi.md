@@ -7,7 +7,11 @@ Method | HTTP request | Description
 [**CreateAccount**](AccountsApi.md#CreateAccount) | **Post** /accounts | Create Account
 [**DeleteAccount**](AccountsApi.md#DeleteAccount) | **Delete** /accounts/{id} | Delete Account
 [**DisableAccount**](AccountsApi.md#DisableAccount) | **Post** /accounts/{id}/disable | Disable Account
+[**DisableAccountForIdentity**](AccountsApi.md#DisableAccountForIdentity) | **Post** /identities-accounts/{id}/disable | Disable IDN Account for Identity
+[**DisableAccountsForIdentities**](AccountsApi.md#DisableAccountsForIdentities) | **Post** /identities-accounts/disable | Disable IDN Accounts for Identities
 [**EnableAccount**](AccountsApi.md#EnableAccount) | **Post** /accounts/{id}/enable | Enable Account
+[**EnableAccountForIdentity**](AccountsApi.md#EnableAccountForIdentity) | **Post** /identities-accounts/{id}/enable | Enable IDN Account for Identity
+[**EnableAccountsForIdentities**](AccountsApi.md#EnableAccountsForIdentities) | **Post** /identities-accounts/enable | Enable IDN Accounts for Identities
 [**GetAccount**](AccountsApi.md#GetAccount) | **Get** /accounts/{id} | Account Details
 [**GetAccountEntitlements**](AccountsApi.md#GetAccountEntitlements) | **Get** /accounts/{id}/entitlements | Account Entitlements
 [**ListAccounts**](AccountsApi.md#ListAccounts) | **Get** /accounts | Accounts List
@@ -226,6 +230,142 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DisableAccountForIdentity
+
+> map[string]interface{} DisableAccountForIdentity(ctx, id).Execute()
+
+Disable IDN Account for Identity
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "2c91808384203c2d018437e631158309" // string | The identity id.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsApi.DisableAccountForIdentity(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.DisableAccountForIdentity``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DisableAccountForIdentity`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.DisableAccountForIdentity`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The identity id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDisableAccountForIdentityRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DisableAccountsForIdentities
+
+> []BulkIdentitiesAccountsResponse DisableAccountsForIdentities(ctx).IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest).Execute()
+
+Disable IDN Accounts for Identities
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    identitiesAccountsBulkRequest := *openapiclient.NewIdentitiesAccountsBulkRequest() // IdentitiesAccountsBulkRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsApi.DisableAccountsForIdentities(context.Background()).IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.DisableAccountsForIdentities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DisableAccountsForIdentities`: []BulkIdentitiesAccountsResponse
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.DisableAccountsForIdentities`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDisableAccountsForIdentitiesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identitiesAccountsBulkRequest** | [**IdentitiesAccountsBulkRequest**](IdentitiesAccountsBulkRequest.md) |  | 
+
+### Return type
+
+[**[]BulkIdentitiesAccountsResponse**](BulkIdentitiesAccountsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EnableAccount
 
 > AccountsAsyncResult EnableAccount(ctx, id).AccountToggleRequest(accountToggleRequest).Execute()
@@ -283,6 +423,142 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AccountsAsyncResult**](AccountsAsyncResult.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EnableAccountForIdentity
+
+> map[string]interface{} EnableAccountForIdentity(ctx, id).Execute()
+
+Enable IDN Account for Identity
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "2c91808384203c2d018437e631158309" // string | The identity id.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsApi.EnableAccountForIdentity(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.EnableAccountForIdentity``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EnableAccountForIdentity`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.EnableAccountForIdentity`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The identity id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnableAccountForIdentityRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EnableAccountsForIdentities
+
+> []BulkIdentitiesAccountsResponse EnableAccountsForIdentities(ctx).IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest).Execute()
+
+Enable IDN Accounts for Identities
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    identitiesAccountsBulkRequest := *openapiclient.NewIdentitiesAccountsBulkRequest() // IdentitiesAccountsBulkRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccountsApi.EnableAccountsForIdentities(context.Background()).IdentitiesAccountsBulkRequest(identitiesAccountsBulkRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.EnableAccountsForIdentities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EnableAccountsForIdentities`: []BulkIdentitiesAccountsResponse
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.EnableAccountsForIdentities`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEnableAccountsForIdentitiesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identitiesAccountsBulkRequest** | [**IdentitiesAccountsBulkRequest**](IdentitiesAccountsBulkRequest.md) |  | 
+
+### Return type
+
+[**[]BulkIdentitiesAccountsResponse**](BulkIdentitiesAccountsResponse.md)
 
 ### Authorization
 

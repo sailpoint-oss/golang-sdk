@@ -62,6 +62,32 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test AccountsApiService DisableAccountForIdentity", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.AccountsApi.DisableAccountForIdentity(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccountsApiService DisableAccountsForIdentities", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccountsApi.DisableAccountsForIdentities(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AccountsApiService EnableAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -69,6 +95,32 @@ func Test_beta_AccountsApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.AccountsApi.EnableAccount(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccountsApiService EnableAccountForIdentity", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.AccountsApi.EnableAccountForIdentity(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccountsApiService EnableAccountsForIdentities", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AccountsApi.EnableAccountsForIdentities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

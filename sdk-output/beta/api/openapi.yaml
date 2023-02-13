@@ -5110,6 +5110,398 @@ paths:
       summary: Unlock Account
       tags:
       - Accounts
+  /identities-accounts/{id}/enable:
+    post:
+      description: This API submits a task to enable IDN account for a single identity.
+      externalDocs:
+        description: Learn more about enabling identities here
+        url: https://documentation.sailpoint.com/saas/help/common/users/user_access.html#enabling-user-identities
+      operationId: enableAccountForIdentity
+      parameters:
+      - description: The identity id.
+        example: 2c91808384203c2d018437e631158309
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:account:enable
+      summary: Enable IDN Account for Identity
+      tags:
+      - Accounts
+  /identities-accounts/{id}/disable:
+    post:
+      description: This API submits a task to disable IDN account for a single identity.
+      externalDocs:
+        description: Learn more about disabling identities here
+        url: https://documentation.sailpoint.com/saas/help/common/users/user_access.html#disabling-user-identities
+      operationId: disableAccountForIdentity
+      parameters:
+      - description: The identity id.
+        example: 2c91808384203c2d018437e631158309
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:account:disable
+      summary: Disable IDN Account for Identity
+      tags:
+      - Accounts
+  /identities-accounts/enable:
+    post:
+      description: This API submits tasks to enable IDN account for each identity
+        provided in the request body.
+      externalDocs:
+        description: Learn more about enabling identities here
+        url: https://documentation.sailpoint.com/saas/help/common/users/user_access.html#enabling-user-identities
+      operationId: enableAccountsForIdentities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentitiesAccountsBulkRequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                example:
+                - id: 2c9180858082150f0180893dbaf553fe
+                  statusCode: 404
+                  message: Referenced identity "2c9180858082150f0180893dbaf553fe"
+                    was not found.
+                - id: 2c91808384203c2d018437e631158308
+                  statusCode: 202
+                  message: null
+                items:
+                  $ref: '#/components/schemas/BulkIdentitiesAccountsResponse'
+                type: array
+          description: Bulk response details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:account:enable
+      summary: Enable IDN Accounts for Identities
+      tags:
+      - Accounts
+  /identities-accounts/disable:
+    post:
+      description: This API submits tasks to disable IDN account for each identity
+        provided in the request body.
+      externalDocs:
+        description: Learn more about disabling identities here
+        url: https://documentation.sailpoint.com/saas/help/common/users/user_access.html#disabling-user-identities
+      operationId: disableAccountsForIdentities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentitiesAccountsBulkRequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              schema:
+                example:
+                - id: 2c9180858082150f0180893dbaf553fe
+                  statusCode: 404
+                  message: Referenced identity "2c9180858082150f0180893dbaf553fe"
+                    was not found.
+                - id: 2c91808384203c2d018437e631158308
+                  statusCode: 202
+                  message: null
+                items:
+                  $ref: '#/components/schemas/BulkIdentitiesAccountsResponse'
+                type: array
+          description: Bulk response details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:account:disable
+      summary: Disable IDN Accounts for Identities
+      tags:
+      - Accounts
   /accounts/search-attribute-config:
     get:
       description: |-
@@ -43749,6 +44141,39 @@ components:
             \ the attribute is updated."
           example: false
           type: boolean
+      type: object
+    IdentitiesAccountsBulkRequest:
+      example:
+        identityIds:
+        - 2c91808384203c2d018437e631158308
+        - 2c9180858082150f0180893dbaf553fe
+      properties:
+        identityIds:
+          description: The ids of the identities for which enable/disable accounts.
+          example:
+          - 2c91808384203c2d018437e631158308
+          - 2c9180858082150f0180893dbaf553fe
+          items:
+            type: string
+          type: array
+      type: object
+    BulkIdentitiesAccountsResponse:
+      description: Bulk response object.
+      properties:
+        id:
+          description: Identifier of bulk request item.
+          example: 2c9180858082150f0180893dbaf553fe
+          type: string
+        statusCode:
+          description: Response status value.
+          example: 404
+          format: int32
+          type: integer
+        message:
+          description: Status containing additional context information about failures.
+          example: Referenced identity "2c9180858082150f0180893dbaf553fe" was not
+            found.
+          type: string
       type: object
     CancelableAccountActivity:
       example:
