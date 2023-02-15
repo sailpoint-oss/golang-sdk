@@ -104,7 +104,11 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **Post** /accounts | Create Account
 *AccountsApi* | [**DeleteAccount**](docs/AccountsApi.md#deleteaccount) | **Delete** /accounts/{id} | Delete Account
 *AccountsApi* | [**DisableAccount**](docs/AccountsApi.md#disableaccount) | **Post** /accounts/{id}/disable | Disable Account
+*AccountsApi* | [**DisableAccountForIdentity**](docs/AccountsApi.md#disableaccountforidentity) | **Post** /identities-accounts/{id}/disable | Disable IDN Account for Identity
+*AccountsApi* | [**DisableAccountsForIdentities**](docs/AccountsApi.md#disableaccountsforidentities) | **Post** /identities-accounts/disable | Disable IDN Accounts for Identities
 *AccountsApi* | [**EnableAccount**](docs/AccountsApi.md#enableaccount) | **Post** /accounts/{id}/enable | Enable Account
+*AccountsApi* | [**EnableAccountForIdentity**](docs/AccountsApi.md#enableaccountforidentity) | **Post** /identities-accounts/{id}/enable | Enable IDN Account for Identity
+*AccountsApi* | [**EnableAccountsForIdentities**](docs/AccountsApi.md#enableaccountsforidentities) | **Post** /identities-accounts/enable | Enable IDN Accounts for Identities
 *AccountsApi* | [**GetAccount**](docs/AccountsApi.md#getaccount) | **Get** /accounts/{id} | Account Details
 *AccountsApi* | [**GetAccountEntitlements**](docs/AccountsApi.md#getaccountentitlements) | **Get** /accounts/{id}/entitlements | Account Entitlements
 *AccountsApi* | [**ListAccounts**](docs/AccountsApi.md#listaccounts) | **Get** /accounts | Accounts List
@@ -544,6 +548,7 @@ Class | Method | HTTP request | Description
  - [BaseReferenceDto1](docs/BaseReferenceDto1.md)
  - [BasicAuthConfig](docs/BasicAuthConfig.md)
  - [BearerTokenAuthConfig](docs/BearerTokenAuthConfig.md)
+ - [BulkIdentitiesAccountsResponse](docs/BulkIdentitiesAccountsResponse.md)
  - [BulkTaggedObject](docs/BulkTaggedObject.md)
  - [Campaign](docs/Campaign.md)
  - [CampaignActivated](docs/CampaignActivated.md)
@@ -658,6 +663,7 @@ Class | Method | HTTP request | Description
  - [HttpAuthenticationType](docs/HttpAuthenticationType.md)
  - [HttpConfig](docs/HttpConfig.md)
  - [HttpDispatchMode](docs/HttpDispatchMode.md)
+ - [IdentitiesAccountsBulkRequest](docs/IdentitiesAccountsBulkRequest.md)
  - [IdentityAttributeConfig](docs/IdentityAttributeConfig.md)
  - [IdentityAttributeConfig1](docs/IdentityAttributeConfig1.md)
  - [IdentityAttributePreview](docs/IdentityAttributePreview.md)

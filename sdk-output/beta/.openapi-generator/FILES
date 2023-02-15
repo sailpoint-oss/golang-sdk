@@ -149,6 +149,7 @@ docs/BaseReferenceDto.md
 docs/BaseReferenceDto1.md
 docs/BasicAuthConfig.md
 docs/BearerTokenAuthConfig.md
+docs/BulkIdentitiesAccountsResponse.md
 docs/BulkTaggedObject.md
 docs/Campaign.md
 docs/CampaignActivated.md
@@ -275,6 +276,7 @@ docs/IAIOutliersApi.md
 docs/IAIPeerGroupStrategiesApi.md
 docs/IAIRecommendationsApi.md
 docs/IAIRoleMiningApi.md
+docs/IdentitiesAccountsBulkRequest.md
 docs/IdentitiesApi.md
 docs/IdentityAttributeConfig.md
 docs/IdentityAttributeConfig1.md
@@ -824,6 +826,7 @@ model_base_reference_dto.go
 model_base_reference_dto_1.go
 model_basic_auth_config.go
 model_bearer_token_auth_config.go
+model_bulk_identities_accounts_response.go
 model_bulk_tagged_object.go
 model_campaign.go
 model_campaign_activated.go
@@ -938,6 +941,7 @@ model_grant_type.go
 model_http_authentication_type.go
 model_http_config.go
 model_http_dispatch_mode.go
+model_identities_accounts_bulk_request.go
 model_identity_attribute_config.go
 model_identity_attribute_config_1.go
 model_identity_attribute_preview.go

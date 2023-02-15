@@ -515,6 +515,13 @@ func (a *OAuthClientsApiService) GetOauthClientExecute(r ApiGetOauthClientReques
 type ApiListOauthClientsRequest struct {
 	ctx context.Context
 	ApiService *OAuthClientsApiService
+	filters *string
+}
+
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull*
+func (r ApiListOauthClientsRequest) Filters(filters string) ApiListOauthClientsRequest {
+	r.filters = &filters
+	return r
 }
 
 func (r ApiListOauthClientsRequest) Execute() ([]GetOAuthClientResponse, *http.Response, error) {
@@ -557,6 +564,9 @@ func (a *OAuthClientsApiService) ListOauthClientsExecute(r ApiListOauthClientsRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.filters != nil {
+		localVarQueryParams.Add("filters", parameterToString(*r.filters, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

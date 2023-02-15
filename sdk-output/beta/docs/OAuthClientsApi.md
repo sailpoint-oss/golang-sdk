@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ## ListOauthClients
 
-> []GetOAuthClientResponse ListOauthClients(ctx).Execute()
+> []GetOAuthClientResponse ListOauthClients(ctx).Filters(filters).Execute()
 
 List OAuth Clients
 
@@ -237,10 +237,11 @@ import (
 )
 
 func main() {
+    filters := "lastUsed le 2023-02-05T10:59:27.214Z" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsApi.ListOauthClients(context.Background()).Execute()
+    resp, r, err := apiClient.OAuthClientsApi.ListOauthClients(context.Background()).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsApi.ListOauthClients``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -252,12 +253,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListOauthClientsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull* | 
 
 ### Return type
 
