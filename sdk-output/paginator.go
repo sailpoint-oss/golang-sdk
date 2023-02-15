@@ -34,7 +34,7 @@ func Paginate[T any](f interface{}, initialOffset int32, increment int32, limit 
 		}
 
 		// check if this is the last set in the response. This could be enhanced by inspecting the header for the max results
-		if (len(actualValue)) == 0 {
+		if int32(len(actualValue)) < increment {
 			break
 		}
 
@@ -66,7 +66,7 @@ func PaginateSearchApi(ctx context.Context, apiClient *APIClient, search v3.Sear
 		}
 
 		// check if this is the last set in the response. This could be enhanced by inspecting the header for the max results
-		if (len(actualValue)) == 0 {
+		if int32(len(actualValue)) < increment {
 			break
 		}
 
