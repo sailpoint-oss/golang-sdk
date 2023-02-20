@@ -49144,6 +49144,7 @@ components:
           type: array
       required:
       - name
+      - owner
       type: object
     RoleIdentity:
       description: A subset of the fields of an Identity which is a member of a Role.
