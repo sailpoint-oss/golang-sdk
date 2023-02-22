@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | Date the Role was created | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Date the Role was last modified. | [optional] [readonly] 
 **Description** | Pointer to **NullableString** | A human-readable description of the Role | [optional] 
-**Owner** | Pointer to [**OwnerReference**](OwnerReference.md) |  | [optional] 
+**Owner** | [**OwnerReference**](OwnerReference.md) |  | 
 **AccessProfiles** | Pointer to [**[]AccessProfileRef**](AccessProfileRef.md) |  | [optional] 
 **Membership** | Pointer to [**NullableRoleMembershipSelector**](RoleMembershipSelector.md) |  | [optional] 
 **LegacyMembershipInfo** | Pointer to **map[string]interface{}** | This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration. | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewRole
 
-`func NewRole(name string, ) *Role`
+`func NewRole(name string, owner OwnerReference, ) *Role`
 
 NewRole instantiates a new Role object
 This constructor will assign default values to properties that have it defined,
@@ -187,11 +187,6 @@ and a boolean to check if the value has been set.
 
 SetOwner sets Owner field to given value.
 
-### HasOwner
-
-`func (o *Role) HasOwner() bool`
-
-HasOwner returns a boolean if a field has been set.
 
 ### GetAccessProfiles
 
