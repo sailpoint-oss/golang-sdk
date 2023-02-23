@@ -1157,7 +1157,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/BaseReferenceDto'
           description: Accepted - Returned if the request was successfully accepted
-            into the system.
+            into the system. **This response is deprecated and will be replaced by
+            a 204 no content response. Please see the developer community announcement
+            for more information. https://developer.sailpoint.com/discuss/t/breaking-changes-to-beta-delete-access-profile-and-delete-role/8452**
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
         "400":
           content:
             application/json:
@@ -26073,7 +26078,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/BaseReferenceDto'
           description: Accepted - Returned if the request was successfully accepted
-            into the system.
+            into the system. **This response is deprecated and will be replaced by
+            a 204 no content response. Please see the developer community announcement
+            for more information. https://developer.sailpoint.com/discuss/t/breaking-changes-to-beta-delete-access-profile-and-delete-role/8452**
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
         "400":
           content:
             application/json:
@@ -41137,6 +41147,9 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponseDto'
       description: Internal Server Error - Returned if there is an unexpected error.
+    "204":
+      description: No content - indicates the request was successful but there is
+        no content to be returned in the response.
     "202":
       content:
         application/json:
@@ -41162,9 +41175,6 @@ components:
             $ref: '#/components/schemas/ErrorResponseDto'
       description: Not Found - returned if the request URL refers to a resource or
         object that does not exist
-    "204":
-      description: No content - indicates the request was successful but there is
-        no content to be returned in the response.
     "405":
       content:
         application/json:
