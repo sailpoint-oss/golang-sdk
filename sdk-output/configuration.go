@@ -18,9 +18,11 @@ import (
 	"github.com/spf13/viper"
 )
 
-type Redirect struct {
-	Port int    `mapstructure:"port"`
-	Path string `mapstructure:"path"`
+type PatConfig struct {
+	ClientID     string    `mapstructure:"clientid"`
+	ClientSecret string    `mapstructure:"clientsecret"`
+	AccessToken  string    `mapstructure:"accesstoken"`
+	Expiry       time.Time `mapstructure:"expiry"`
 }
 
 type Token struct {
@@ -28,31 +30,20 @@ type Token struct {
 	Expiry      time.Time `mapstructure:"expiry"`
 }
 
-type OAuthConfig struct {
-	Tenant       string   `mapstructure:"tenant"`
-	AuthUrl      string   `mapstructure:"authurl"`
-	BaseUrl      string   `mapstructure:"baseurl"`
-	TokenUrl     string   `mapstructure:"tokenurl"`
-	Redirect     Redirect `mapstructure:"redirect"`
-	ClientSecret string   `mapstructure:"clientSecret"`
-	ClientID     string   `mapstructure:"clientid"`
-	Token        Token    `mapstructure:"token"`
-}
-
-type PatConfig struct {
-	Tenant       string `mapstructure:"tenant"`
-	BaseUrl      string `mapstructure:"baseurl"`
-	TokenUrl     string `mapstructure:"tokenurl"`
-	ClientSecret string `mapstructure:"clientSecret"`
-	ClientID     string `mapstructure:"clientid"`
-	Token        Token  `mapstructure:"token"`
+type Environment struct {
+	TenantURL string    `mapstructure:"tenanturl"`
+	BaseURL   string    `mapstructure:"baseurl"`
+	Pat       PatConfig `mapstructure:"pat"`
+	OAuth     Token     `mapstructure:"oauth"`
 }
 
 type OrgConfig struct {
-	Pat      PatConfig   `mapstructure:"pat"`
-	OAuth    OAuthConfig `mapstructure:"oauth"`
-	AuthType string      `mapstructure:"authtype"`
-	Debug    bool        `mapstructure:"debug"`
+
+	//Standard Variables
+	Debug             bool                   `mapstructure:"debug"`
+	AuthType          string                 `mapstructure:"authtype"`
+	ActiveEnvironment string                 `mapstructure:"activeenvironment"`
+	Environments      map[string]Environment `mapstructure:"environments"`
 }
 
 type ClientConfiguration struct {
@@ -95,7 +86,7 @@ func NewConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 func NewDefaultConfiguration() *Configuration {
 	home, err := os.UserHomeDir()
 	if err != nil {
-		panic(fmt.Errorf("Unable to find home directory: %s \n", err))
+		panic(fmt.Errorf("unable to find home directory: %s \n", err))
 	}
 	viper.AddConfigPath(filepath.Join(home, ".sailpoint"))
 	viper.SetConfigName("config")
@@ -110,7 +101,7 @@ func NewDefaultConfiguration() *Configuration {
 			// IGNORE they may be using env vars
 		} else {
 			// Config file was found but another error was produced
-			panic(fmt.Errorf("Unable to read config: %s \n", err2))
+			panic(fmt.Errorf("unable to read config: %s \n", err2))
 		}
 	}
 
@@ -120,25 +111,23 @@ func NewDefaultConfiguration() *Configuration {
 	err3 := viper.Unmarshal(&config)
 
 	if err3 != nil {
-		panic(fmt.Errorf("Unable to decode Config: %s \n", err3))
+		panic(fmt.Errorf("unable to decode Config: %s \n", err3))
 	}
 
-	simpleConfig.BaseURL = config.Pat.BaseUrl
-	simpleConfig.ClientId = config.Pat.ClientID
-	simpleConfig.ClientSecret = config.Pat.ClientSecret
-	simpleConfig.TokenURL = config.Pat.TokenUrl
-	if os.Getenv("BASE_URL") != "" {
-		simpleConfig.BaseURL = os.Getenv("BASE_URL")
+	simpleConfig.BaseURL = config.Environments[config.ActiveEnvironment].BaseURL
+	simpleConfig.ClientId = config.Environments[config.ActiveEnvironment].Pat.ClientID
+	simpleConfig.ClientSecret = config.Environments[config.ActiveEnvironment].Pat.ClientSecret
+
+	if os.Getenv("SAIL_BASE_URL") != "" {
+		simpleConfig.BaseURL = os.Getenv("SAIL_BASE_URL")
 	}
-	if os.Getenv("CLIENT_ID") != "" {
-		simpleConfig.ClientId = os.Getenv("CLIENT_ID")
+	if os.Getenv("SAIL_CLIENT_ID") != "" {
+		simpleConfig.ClientId = os.Getenv("SAIL_CLIENT_ID")
 	}
-	if os.Getenv("CLIENT_SECRET") != "" {
-		simpleConfig.ClientSecret = os.Getenv("CLIENT_SECRET")
+	if os.Getenv("SAIL_CLIENT_SECRET") != "" {
+		simpleConfig.ClientSecret = os.Getenv("SAIL_CLIENT_SECRET")
 	}
-	if os.Getenv("TOKEN_URL") != "" {
-		simpleConfig.TokenURL = os.Getenv("TOKEN_URL")
-	}
+	simpleConfig.TokenURL = simpleConfig.BaseURL + "/oauth/token"
 
 	return NewConfiguration(simpleConfig)
 }

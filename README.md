@@ -39,10 +39,9 @@ func main() {
 ### Create a configuration file or save your configuration as environment variables
 
 You can create a local configuration file using the [CLI tool](https://github.com/sailpoint-oss/sailpoint-cli#configuration) or you can store your configuration in environment variables
- - BASE_URL
- - TOKEN_URL
- - CLIENT_ID
- - CLIENT_SECRET
+ - SAIL_BASE_URL
+ - SAIL_CLIENT_ID
+ - SAIL_CLIENT_SECRET
 
 ### Install sdk
 
