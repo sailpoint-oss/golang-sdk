@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ## ListPersonalAccessTokens
 
-> []GetPersonalAccessTokenResponse ListPersonalAccessTokens(ctx).OwnerId(ownerId).Execute()
+> []GetPersonalAccessTokenResponse ListPersonalAccessTokens(ctx).OwnerId(ownerId).Filters(filters).Execute()
 
 List Personal Access Tokens
 
@@ -167,10 +167,11 @@ import (
 
 func main() {
     ownerId := "2c9180867b50d088017b554662fb281e" // string | The identity ID of the owner whose personal access tokens should be listed.  If \"me\", the caller should have the following right: 'idn:my-personal-access-tokens:read' If an actual owner ID or if the `owner-id` parameter is omitted in the request,  the caller should have the following right: 'idn:all-personal-access-tokens:read'.  If the caller has the following right, then managed personal access tokens associated with `owner-id`  will be retrieved: 'idn:managed-personal-access-tokens:read' (optional)
+    filters := "lastUsed le 2023-02-05T10:59:27.214Z" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokensApi.ListPersonalAccessTokens(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.PersonalAccessTokensApi.ListPersonalAccessTokens(context.Background()).OwnerId(ownerId).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensApi.ListPersonalAccessTokens``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -192,6 +193,7 @@ Other parameters are passed through a pointer to a apiListPersonalAccessTokensRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ownerId** | **string** | The identity ID of the owner whose personal access tokens should be listed.  If \&quot;me\&quot;, the caller should have the following right: &#39;idn:my-personal-access-tokens:read&#39; If an actual owner ID or if the &#x60;owner-id&#x60; parameter is omitted in the request,  the caller should have the following right: &#39;idn:all-personal-access-tokens:read&#39;.  If the caller has the following right, then managed personal access tokens associated with &#x60;owner-id&#x60;  will be retrieved: &#39;idn:managed-personal-access-tokens:read&#39; | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull* | 
 
 ### Return type
 
