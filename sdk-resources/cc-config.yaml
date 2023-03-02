@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/cc-resources
 packageName: cc
-packageVersion: 0.1.0
+packageVersion: 1.0.0
 generateInterfaces: false
 enumClassPrefix: false
 disallowAdditionalPropertiesIfNotPresent: false

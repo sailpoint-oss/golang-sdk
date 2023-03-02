@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/v3-resources
 packageName: v3
-packageVersion: 0.1.0
+packageVersion: 1.0.0
 generateInterfaces: false
 enumClassPrefix: false
 disallowAdditionalPropertiesIfNotPresent: false
