@@ -136,7 +136,7 @@ func (a *LifecycleStatesApiService) CreateLifecycleStateExecute(r ApiCreateLifec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -158,7 +158,7 @@ func (a *LifecycleStatesApiService) CreateLifecycleStateExecute(r ApiCreateLifec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -298,7 +298,7 @@ func (a *LifecycleStatesApiService) DeleteLifecycleStateExecute(r ApiDeleteLifec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -331,7 +331,7 @@ func (a *LifecycleStatesApiService) DeleteLifecycleStateExecute(r ApiDeleteLifec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -471,7 +471,7 @@ func (a *LifecycleStatesApiService) GetLifecycleStateExecute(r ApiGetLifecycleSt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -504,7 +504,7 @@ func (a *LifecycleStatesApiService) GetLifecycleStateExecute(r ApiGetLifecycleSt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -680,7 +680,7 @@ func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycl
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -702,7 +702,7 @@ func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycl
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -849,7 +849,7 @@ func (a *LifecycleStatesApiService) SetLifecycleStateExecute(r ApiSetLifecycleSt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -882,7 +882,7 @@ func (a *LifecycleStatesApiService) SetLifecycleStateExecute(r ApiSetLifecycleSt
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1034,7 +1034,7 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1067,7 +1067,7 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

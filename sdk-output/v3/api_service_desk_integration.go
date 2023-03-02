@@ -131,7 +131,7 @@ func (a *ServiceDeskIntegrationApiService) CreateServiceDeskIntegrationExecute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -164,7 +164,7 @@ func (a *ServiceDeskIntegrationApiService) CreateServiceDeskIntegrationExecute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -297,7 +297,7 @@ func (a *ServiceDeskIntegrationApiService) DeleteServiceDeskIntegrationExecute(r
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -330,7 +330,7 @@ func (a *ServiceDeskIntegrationApiService) DeleteServiceDeskIntegrationExecute(r
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -456,7 +456,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationExecute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -489,7 +489,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationExecute(r Ap
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -624,7 +624,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTemplateExec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -657,7 +657,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTemplateExec
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -788,7 +788,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTypesExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -821,7 +821,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTypesExecute
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1002,7 +1002,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationsExecute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1035,7 +1035,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationsExecute(r A
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1166,7 +1166,7 @@ func (a *ServiceDeskIntegrationApiService) GetStatusCheckDetailsExecute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1199,7 +1199,7 @@ func (a *ServiceDeskIntegrationApiService) GetStatusCheckDetailsExecute(r ApiGet
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1346,7 +1346,7 @@ func (a *ServiceDeskIntegrationApiService) PatchServiceDeskIntegrationExecute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1379,7 +1379,7 @@ func (a *ServiceDeskIntegrationApiService) PatchServiceDeskIntegrationExecute(r 
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1526,7 +1526,7 @@ func (a *ServiceDeskIntegrationApiService) UpdateServiceDeskIntegrationExecute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1559,7 +1559,7 @@ func (a *ServiceDeskIntegrationApiService) UpdateServiceDeskIntegrationExecute(r
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1702,7 +1702,7 @@ func (a *ServiceDeskIntegrationApiService) UpdateStatusCheckDetailsExecute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1735,7 +1735,7 @@ func (a *ServiceDeskIntegrationApiService) UpdateStatusCheckDetailsExecute(r Api
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

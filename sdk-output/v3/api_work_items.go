@@ -127,7 +127,7 @@ func (a *WorkItemsApiService) ApproveApprovalItemExecute(r ApiApproveApprovalIte
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -160,7 +160,7 @@ func (a *WorkItemsApiService) ApproveApprovalItemExecute(r ApiApproveApprovalIte
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -295,7 +295,7 @@ func (a *WorkItemsApiService) ApproveApprovalItemsInBulkExecute(r ApiApproveAppr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -328,7 +328,7 @@ func (a *WorkItemsApiService) ApproveApprovalItemsInBulkExecute(r ApiApproveAppr
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -463,7 +463,7 @@ func (a *WorkItemsApiService) CompleteWorkItemExecute(r ApiCompleteWorkItemReque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -496,7 +496,7 @@ func (a *WorkItemsApiService) CompleteWorkItemExecute(r ApiCompleteWorkItemReque
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -656,7 +656,7 @@ func (a *WorkItemsApiService) GetCompletedWorkItemsExecute(r ApiGetCompletedWork
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -689,7 +689,7 @@ func (a *WorkItemsApiService) GetCompletedWorkItemsExecute(r ApiGetCompletedWork
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -819,7 +819,7 @@ func (a *WorkItemsApiService) GetCountCompletedWorkItemsExecute(r ApiGetCountCom
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -852,7 +852,7 @@ func (a *WorkItemsApiService) GetCountCompletedWorkItemsExecute(r ApiGetCountCom
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -982,7 +982,7 @@ func (a *WorkItemsApiService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsReq
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1015,7 +1015,7 @@ func (a *WorkItemsApiService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsReq
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1139,7 +1139,7 @@ func (a *WorkItemsApiService) GetWorkItemExecute(r ApiGetWorkItemRequest) (*Work
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1172,7 +1172,7 @@ func (a *WorkItemsApiService) GetWorkItemExecute(r ApiGetWorkItemRequest) (*Work
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1302,7 +1302,7 @@ func (a *WorkItemsApiService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummar
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1335,7 +1335,7 @@ func (a *WorkItemsApiService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummar
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1495,7 +1495,7 @@ func (a *WorkItemsApiService) ListWorkItemsExecute(r ApiListWorkItemsRequest) ([
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1528,7 +1528,7 @@ func (a *WorkItemsApiService) ListWorkItemsExecute(r ApiListWorkItemsRequest) ([
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1667,7 +1667,7 @@ func (a *WorkItemsApiService) RejectApprovalItemExecute(r ApiRejectApprovalItemR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1700,7 +1700,7 @@ func (a *WorkItemsApiService) RejectApprovalItemExecute(r ApiRejectApprovalItemR
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1835,7 +1835,7 @@ func (a *WorkItemsApiService) RejectApprovalItemsInBulkExecute(r ApiRejectApprov
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1868,7 +1868,7 @@ func (a *WorkItemsApiService) RejectApprovalItemsInBulkExecute(r ApiRejectApprov
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2015,7 +2015,7 @@ func (a *WorkItemsApiService) SubmitAccountSelectionExecute(r ApiSubmitAccountSe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v CreateAccessRequest401Response
+			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -2048,7 +2048,7 @@ func (a *WorkItemsApiService) SubmitAccountSelectionExecute(r ApiSubmitAccountSe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v CreateAccessRequest429Response
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -79,6 +79,12 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccessProfilesApi* | [**CreateAccessProfile**](docs/AccessProfilesApi.md#createaccessprofile) | **Post** /access-profiles | Create an Access Profile
+*AccessProfilesApi* | [**DeleteAccessProfilesInBulk**](docs/AccessProfilesApi.md#deleteaccessprofilesinbulk) | **Post** /access-profiles/bulk-delete | Delete Access Profile(s)
+*AccessProfilesApi* | [**GetAccessProfile**](docs/AccessProfilesApi.md#getaccessprofile) | **Get** /access-profiles/{id} | Get an Access Profile
+*AccessProfilesApi* | [**GetAccessProfileEntitlements**](docs/AccessProfilesApi.md#getaccessprofileentitlements) | **Get** /access-profiles/{id}/entitlements | List Access Profile&#39;s Entitlements
+*AccessProfilesApi* | [**ListAccessProfiles**](docs/AccessProfilesApi.md#listaccessprofiles) | **Get** /access-profiles | List Access Profiles
+*AccessProfilesApi* | [**PatchAccessProfile**](docs/AccessProfilesApi.md#patchaccessprofile) | **Patch** /access-profiles/{id} | Patch a specified Access Profile
 *AccessRequestApprovalsApi* | [**ApproveAccessRequest**](docs/AccessRequestApprovalsApi.md#approveaccessrequest) | **Post** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
 *AccessRequestApprovalsApi* | [**ForwardAccessRequest**](docs/AccessRequestApprovalsApi.md#forwardaccessrequest) | **Post** /access-request-approvals/{approvalId}/forward | Forwards an access request approval.
 *AccessRequestApprovalsApi* | [**GetAccessRequestApprovalSummary**](docs/AccessRequestApprovalsApi.md#getaccessrequestapprovalsummary) | **Get** /access-request-approvals/approval-summary | Get the number of access-requests-approvals
@@ -172,6 +178,11 @@ Class | Method | HTTP request | Description
 *PublicIdentitiesConfigApi* | [**GetPublicIdentityConfig**](docs/PublicIdentitiesConfigApi.md#getpublicidentityconfig) | **Get** /public-identities-config | Get the Public Identities Configuration
 *PublicIdentitiesConfigApi* | [**UpdatePublicIdentityConfig**](docs/PublicIdentitiesConfigApi.md#updatepublicidentityconfig) | **Put** /public-identities-config | Update the Public Identities Configuration
 *RequestableObjectsApi* | [**ListRequestableObjects**](docs/RequestableObjectsApi.md#listrequestableobjects) | **Get** /requestable-objects | Requestable Objects List
+*RolesApi* | [**CreateRole**](docs/RolesApi.md#createrole) | **Post** /roles | Create a Role
+*RolesApi* | [**GetRole**](docs/RolesApi.md#getrole) | **Get** /roles/{id} | Get a Role
+*RolesApi* | [**GetRoleAssignedIdentities**](docs/RolesApi.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
+*RolesApi* | [**ListRoles**](docs/RolesApi.md#listroles) | **Get** /roles | List Roles
+*RolesApi* | [**PatchRole**](docs/RolesApi.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
 *SavedSearchApi* | [**CreateSavedSearch**](docs/SavedSearchApi.md#createsavedsearch) | **Post** /saved-searches | Create a saved search
 *SavedSearchApi* | [**DeleteSavedSearch**](docs/SavedSearchApi.md#deletesavedsearch) | **Delete** /saved-searches/{id} | Delete a document by ID
 *SavedSearchApi* | [**ExecuteSavedSearch**](docs/SavedSearchApi.md#executesavedsearch) | **Post** /saved-searches/{id}/execute | Execute a saved search by ID
@@ -246,12 +257,19 @@ Class | Method | HTTP request | Description
 
  - [Access](docs/Access.md)
  - [AccessAllOf](docs/AccessAllOf.md)
+ - [AccessProfile](docs/AccessProfile.md)
+ - [AccessProfileApprovalScheme](docs/AccessProfileApprovalScheme.md)
+ - [AccessProfileBulkDeleteRequest](docs/AccessProfileBulkDeleteRequest.md)
+ - [AccessProfileBulkDeleteResponse](docs/AccessProfileBulkDeleteResponse.md)
  - [AccessProfileDocument](docs/AccessProfileDocument.md)
  - [AccessProfileDocumentAllOf](docs/AccessProfileDocumentAllOf.md)
  - [AccessProfileEntitlement](docs/AccessProfileEntitlement.md)
+ - [AccessProfileRef](docs/AccessProfileRef.md)
  - [AccessProfileRole](docs/AccessProfileRole.md)
+ - [AccessProfileSourceRef](docs/AccessProfileSourceRef.md)
  - [AccessProfileSummary](docs/AccessProfileSummary.md)
  - [AccessProfileSummaryAllOf](docs/AccessProfileSummaryAllOf.md)
+ - [AccessProfileUsage](docs/AccessProfileUsage.md)
  - [AccessRequest](docs/AccessRequest.md)
  - [AccessRequestConfig](docs/AccessRequestConfig.md)
  - [AccessRequestItem](docs/AccessRequestItem.md)
@@ -300,6 +318,7 @@ Class | Method | HTTP request | Description
  - [ApprovalItems](docs/ApprovalItems.md)
  - [ApprovalReminderAndEscalationConfig](docs/ApprovalReminderAndEscalationConfig.md)
  - [ApprovalScheme](docs/ApprovalScheme.md)
+ - [ApprovalSchemeForRole](docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](docs/ApprovalStatus.md)
  - [ApprovalStatusDto](docs/ApprovalStatusDto.md)
  - [ApprovalSummary](docs/ApprovalSummary.md)
@@ -336,8 +355,6 @@ Class | Method | HTTP request | Description
  - [CompletedApproval](docs/CompletedApproval.md)
  - [CompletedApprovalState](docs/CompletedApprovalState.md)
  - [CompletionStatus](docs/CompletionStatus.md)
- - [CreateAccessRequest401Response](docs/CreateAccessRequest401Response.md)
- - [CreateAccessRequest429Response](docs/CreateAccessRequest429Response.md)
  - [CreateOAuthClientRequest](docs/CreateOAuthClientRequest.md)
  - [CreateOAuthClientResponse](docs/CreateOAuthClientResponse.md)
  - [CreatePersonalAccessTokenRequest](docs/CreatePersonalAccessTokenRequest.md)
@@ -351,11 +368,14 @@ Class | Method | HTTP request | Description
  - [DocumentType](docs/DocumentType.md)
  - [DtoType](docs/DtoType.md)
  - [EmailNotificationOption](docs/EmailNotificationOption.md)
+ - [Entitlement](docs/Entitlement.md)
  - [EntitlementDocument](docs/EntitlementDocument.md)
  - [EntitlementDocumentAllOf](docs/EntitlementDocumentAllOf.md)
  - [EntitlementDto](docs/EntitlementDto.md)
  - [EntitlementDtoAllOf](docs/EntitlementDtoAllOf.md)
+ - [EntitlementRef](docs/EntitlementRef.md)
  - [EntitlementRequestConfig](docs/EntitlementRequestConfig.md)
+ - [EntitlementSource](docs/EntitlementSource.md)
  - [EntitlementSummary](docs/EntitlementSummary.md)
  - [EntitlementSummaryAllOf](docs/EntitlementSummaryAllOf.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
@@ -400,6 +420,8 @@ Class | Method | HTTP request | Description
  - [JsonPatchOperationValueAnyOfInner](docs/JsonPatchOperationValueAnyOfInner.md)
  - [LifecycleState](docs/LifecycleState.md)
  - [LifecycleStateAllOf](docs/LifecycleStateAllOf.md)
+ - [ListAccessProfiles401Response](docs/ListAccessProfiles401Response.md)
+ - [ListAccessProfiles429Response](docs/ListAccessProfiles429Response.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
  - [ManualWorkItemDetails](docs/ManualWorkItemDetails.md)
@@ -446,6 +468,7 @@ Class | Method | HTTP request | Description
  - [OriginalRequest](docs/OriginalRequest.md)
  - [Owner](docs/Owner.md)
  - [OwnerAllOf](docs/OwnerAllOf.md)
+ - [OwnerReference](docs/OwnerReference.md)
  - [Owns](docs/Owns.md)
  - [PasswordChangeRequest](docs/PasswordChangeRequest.md)
  - [PasswordChangeResponse](docs/PasswordChangeResponse.md)
@@ -455,11 +478,16 @@ Class | Method | HTTP request | Description
  - [PasswordStatus](docs/PasswordStatus.md)
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)
+ - [PermissionDto](docs/PermissionDto.md)
  - [PreApprovalTriggerDetails](docs/PreApprovalTriggerDetails.md)
  - [ProcessingDetails](docs/ProcessingDetails.md)
  - [ProvisioningConfig](docs/ProvisioningConfig.md)
  - [ProvisioningConfigManagedResourceRefsInner](docs/ProvisioningConfigManagedResourceRefsInner.md)
  - [ProvisioningConfigPlanInitializerScript](docs/ProvisioningConfigPlanInitializerScript.md)
+ - [ProvisioningCriteriaLevel1](docs/ProvisioningCriteriaLevel1.md)
+ - [ProvisioningCriteriaLevel2](docs/ProvisioningCriteriaLevel2.md)
+ - [ProvisioningCriteriaLevel3](docs/ProvisioningCriteriaLevel3.md)
+ - [ProvisioningCriteriaOperation](docs/ProvisioningCriteriaOperation.md)
  - [ProvisioningDetails](docs/ProvisioningDetails.md)
  - [ProvisioningPolicy](docs/ProvisioningPolicy.md)
  - [ProvisioningPolicyDto](docs/ProvisioningPolicyDto.md)
@@ -479,6 +507,8 @@ Class | Method | HTTP request | Description
  - [RemediationItemDetails](docs/RemediationItemDetails.md)
  - [RemediationItems](docs/RemediationItems.md)
  - [RequestOnBehalfOfConfig](docs/RequestOnBehalfOfConfig.md)
+ - [Requestability](docs/Requestability.md)
+ - [RequestabilityForRole](docs/RequestabilityForRole.md)
  - [RequestableObject](docs/RequestableObject.md)
  - [RequestableObjectReference](docs/RequestableObjectReference.md)
  - [RequestableObjectRequestStatus](docs/RequestableObjectRequestStatus.md)
@@ -493,8 +523,21 @@ Class | Method | HTTP request | Description
  - [ReviewableEntitlementAccount](docs/ReviewableEntitlementAccount.md)
  - [ReviewableRole](docs/ReviewableRole.md)
  - [Reviewer](docs/Reviewer.md)
+ - [Revocability](docs/Revocability.md)
+ - [Role](docs/Role.md)
+ - [RoleAssignmentSourceType](docs/RoleAssignmentSourceType.md)
+ - [RoleCriteriaKey](docs/RoleCriteriaKey.md)
+ - [RoleCriteriaKeyType](docs/RoleCriteriaKeyType.md)
+ - [RoleCriteriaLevel1](docs/RoleCriteriaLevel1.md)
+ - [RoleCriteriaLevel2](docs/RoleCriteriaLevel2.md)
+ - [RoleCriteriaLevel3](docs/RoleCriteriaLevel3.md)
+ - [RoleCriteriaOperation](docs/RoleCriteriaOperation.md)
  - [RoleDocument](docs/RoleDocument.md)
  - [RoleDocumentAllOf](docs/RoleDocumentAllOf.md)
+ - [RoleIdentity](docs/RoleIdentity.md)
+ - [RoleMembershipIdentity](docs/RoleMembershipIdentity.md)
+ - [RoleMembershipSelector](docs/RoleMembershipSelector.md)
+ - [RoleMembershipSelectorType](docs/RoleMembershipSelectorType.md)
  - [RoleSummary](docs/RoleSummary.md)
  - [RoleSummaryAllOf](docs/RoleSummaryAllOf.md)
  - [SavedSearch](docs/SavedSearch.md)

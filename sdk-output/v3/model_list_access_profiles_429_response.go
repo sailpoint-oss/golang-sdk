@@ -14,34 +14,34 @@ import (
 	"encoding/json"
 )
 
-// CreateAccessRequest429Response struct for CreateAccessRequest429Response
-type CreateAccessRequest429Response struct {
+// ListAccessProfiles429Response struct for ListAccessProfiles429Response
+type ListAccessProfiles429Response struct {
 	// A message describing the error
 	Message map[string]interface{} `json:"message,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _CreateAccessRequest429Response CreateAccessRequest429Response
+type _ListAccessProfiles429Response ListAccessProfiles429Response
 
-// NewCreateAccessRequest429Response instantiates a new CreateAccessRequest429Response object
+// NewListAccessProfiles429Response instantiates a new ListAccessProfiles429Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAccessRequest429Response() *CreateAccessRequest429Response {
-	this := CreateAccessRequest429Response{}
+func NewListAccessProfiles429Response() *ListAccessProfiles429Response {
+	this := ListAccessProfiles429Response{}
 	return &this
 }
 
-// NewCreateAccessRequest429ResponseWithDefaults instantiates a new CreateAccessRequest429Response object
+// NewListAccessProfiles429ResponseWithDefaults instantiates a new ListAccessProfiles429Response object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateAccessRequest429ResponseWithDefaults() *CreateAccessRequest429Response {
-	this := CreateAccessRequest429Response{}
+func NewListAccessProfiles429ResponseWithDefaults() *ListAccessProfiles429Response {
+	this := ListAccessProfiles429Response{}
 	return &this
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise.
-func (o *CreateAccessRequest429Response) GetMessage() map[string]interface{} {
+func (o *ListAccessProfiles429Response) GetMessage() map[string]interface{} {
 	if o == nil || isNil(o.Message) {
 		var ret map[string]interface{}
 		return ret
@@ -51,7 +51,7 @@ func (o *CreateAccessRequest429Response) GetMessage() map[string]interface{} {
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateAccessRequest429Response) GetMessageOk() (map[string]interface{}, bool) {
+func (o *ListAccessProfiles429Response) GetMessageOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Message) {
 		return map[string]interface{}{}, false
 	}
@@ -59,7 +59,7 @@ func (o *CreateAccessRequest429Response) GetMessageOk() (map[string]interface{},
 }
 
 // HasMessage returns a boolean if a field has been set.
-func (o *CreateAccessRequest429Response) HasMessage() bool {
+func (o *ListAccessProfiles429Response) HasMessage() bool {
 	if o != nil && !isNil(o.Message) {
 		return true
 	}
@@ -68,11 +68,11 @@ func (o *CreateAccessRequest429Response) HasMessage() bool {
 }
 
 // SetMessage gets a reference to the given map[string]interface{} and assigns it to the Message field.
-func (o *CreateAccessRequest429Response) SetMessage(v map[string]interface{}) {
+func (o *ListAccessProfiles429Response) SetMessage(v map[string]interface{}) {
 	o.Message = v
 }
 
-func (o CreateAccessRequest429Response) MarshalJSON() ([]byte, error) {
+func (o ListAccessProfiles429Response) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Message) {
 		toSerialize["message"] = o.Message
@@ -85,11 +85,11 @@ func (o CreateAccessRequest429Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o *CreateAccessRequest429Response) UnmarshalJSON(bytes []byte) (err error) {
-	varCreateAccessRequest429Response := _CreateAccessRequest429Response{}
+func (o *ListAccessProfiles429Response) UnmarshalJSON(bytes []byte) (err error) {
+	varListAccessProfiles429Response := _ListAccessProfiles429Response{}
 
-	if err = json.Unmarshal(bytes, &varCreateAccessRequest429Response); err == nil {
-		*o = CreateAccessRequest429Response(varCreateAccessRequest429Response)
+	if err = json.Unmarshal(bytes, &varListAccessProfiles429Response); err == nil {
+		*o = ListAccessProfiles429Response(varListAccessProfiles429Response)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -102,38 +102,38 @@ func (o *CreateAccessRequest429Response) UnmarshalJSON(bytes []byte) (err error)
 	return err
 }
 
-type NullableCreateAccessRequest429Response struct {
-	value *CreateAccessRequest429Response
+type NullableListAccessProfiles429Response struct {
+	value *ListAccessProfiles429Response
 	isSet bool
 }
 
-func (v NullableCreateAccessRequest429Response) Get() *CreateAccessRequest429Response {
+func (v NullableListAccessProfiles429Response) Get() *ListAccessProfiles429Response {
 	return v.value
 }
 
-func (v *NullableCreateAccessRequest429Response) Set(val *CreateAccessRequest429Response) {
+func (v *NullableListAccessProfiles429Response) Set(val *ListAccessProfiles429Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateAccessRequest429Response) IsSet() bool {
+func (v NullableListAccessProfiles429Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateAccessRequest429Response) Unset() {
+func (v *NullableListAccessProfiles429Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateAccessRequest429Response(val *CreateAccessRequest429Response) *NullableCreateAccessRequest429Response {
-	return &NullableCreateAccessRequest429Response{value: val, isSet: true}
+func NewNullableListAccessProfiles429Response(val *ListAccessProfiles429Response) *NullableListAccessProfiles429Response {
+	return &NullableListAccessProfiles429Response{value: val, isSet: true}
 }
 
-func (v NullableCreateAccessRequest429Response) MarshalJSON() ([]byte, error) {
+func (v NullableListAccessProfiles429Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateAccessRequest429Response) UnmarshalJSON(src []byte) error {
+func (v *NullableListAccessProfiles429Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

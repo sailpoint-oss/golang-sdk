@@ -49,6 +49,8 @@ type APIClient struct {
 	common service // Reuse a single struct instead of allocating one for each service on the heap.
 	// API Services
 
+	AccessProfilesApi *AccessProfilesApiService
+
 	AccessRequestApprovalsApi *AccessRequestApprovalsApiService
 
 	AccessRequestsApi *AccessRequestsApiService
@@ -78,6 +80,8 @@ type APIClient struct {
 	PublicIdentitiesConfigApi *PublicIdentitiesConfigApiService
 
 	RequestableObjectsApi *RequestableObjectsApiService
+
+	RolesApi *RolesApiService
 
 	SavedSearchApi *SavedSearchApiService
 
@@ -110,6 +114,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.AccessProfilesApi = (*AccessProfilesApiService)(&c.common)
 	c.AccessRequestApprovalsApi = (*AccessRequestApprovalsApiService)(&c.common)
 	c.AccessRequestsApi = (*AccessRequestsApiService)(&c.common)
 	c.AccountActivitiesApi = (*AccountActivitiesApiService)(&c.common)
@@ -125,6 +130,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PublicIdentitiesApi = (*PublicIdentitiesApiService)(&c.common)
 	c.PublicIdentitiesConfigApi = (*PublicIdentitiesConfigApiService)(&c.common)
 	c.RequestableObjectsApi = (*RequestableObjectsApiService)(&c.common)
+	c.RolesApi = (*RolesApiService)(&c.common)
 	c.SavedSearchApi = (*SavedSearchApiService)(&c.common)
 	c.ScheduledSearchApi = (*ScheduledSearchApiService)(&c.common)
 	c.SearchApi = (*SearchApiService)(&c.common)
