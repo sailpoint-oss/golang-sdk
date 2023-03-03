@@ -1,0 +1,893 @@
+openapi: 3.0.1
+info:
+  title: SailPoint SaaS API
+  version: 2.0.0
+servers:
+- description: This is the production API server.
+  url: "https://{tenant}.api.identitynow.com/v2"
+  variables:
+    tenant:
+      default: sailpoint
+      description: "This is the name of your tenant, typically your company's name."
+tags:
+- name: org
+paths:
+  /org:
+    get:
+      description: Retrieves information and operational settings for your org (as
+        determined by the URL domain).
+      operationId: getOrgSettings
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getOrgSettings_200_response'
+          description: OK.
+          headers:
+            ETag:
+              description: Entity tag.
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Last-Modified:
+              description: Last modified date.
+              explode: false
+              schema:
+                format: date-time
+                type: string
+              style: simple
+            Link:
+              description: Links to alternate or related resources.
+              explode: false
+              schema:
+                type: string
+              style: simple
+      summary: Retrieves your org settings.
+      tags:
+      - org
+    patch:
+      description: Updates one or more attributes for your org.
+      operationId: updateOrgSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateOrgSettings_request'
+        description: Org settings to update.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getOrgSettings_200_response'
+          description: OK.
+          headers:
+            ETag:
+              description: Entity tag.
+              explode: false
+              schema:
+                type: string
+              style: simple
+            Last-Modified:
+              description: Last modified date.
+              explode: false
+              schema:
+                format: date-time
+                type: string
+              style: simple
+            Link:
+              description: Links to alternate or related resources.
+              explode: false
+              schema:
+                type: string
+              style: simple
+      summary: Updates one or more org attributes.
+      tags:
+      - org
+  /workgroups:
+    get:
+      description: This API returns a list of work groups
+      operationId: listWorkgroups
+      parameters:
+      - description: Max number of results to return
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: Offset into the full result set. Usually specified with *limit*
+          to paginate through the results.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Filter results using the following syntax.
+          [{property:name, value: "Tyler", operation: EQ}]
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/listWorkgroups_200_response_inner'
+                type: array
+          description: List of work group objects
+      security:
+      - oauth2: []
+      summary: List Work Groups
+      tags:
+      - Governance Groups
+    post:
+      description: This API allows you to create a work group
+      operationId: createWorkgroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createWorkgroup_request'
+        description: Work group to create.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/listWorkgroups_200_response_inner'
+                type: array
+          description: List of work group objects
+      security:
+      - oauth2: []
+      summary: Create Work Group
+      tags:
+      - Governance Groups
+  /workgroups/{workgroupId}:
+    delete:
+      description: This API deletes a single workgroup based on the ID
+      operationId: deleteWorkgroup
+      parameters:
+      - description: The workgroup ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: workgroupId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: Empty response on successful deletion
+      security:
+      - oauth2: []
+      summary: Delete Work Group By Id
+      tags:
+      - Governance Groups
+    get:
+      description: This API returns the details for a single workgroup based on the
+        ID
+      operationId: getWorkgroup
+      parameters:
+      - description: The workgroup ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: workgroupId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroups_200_response_inner'
+          description: Workgroup object
+      security:
+      - oauth2: []
+      summary: Get Work Group By Id
+      tags:
+      - Governance Groups
+    patch:
+      description: This API updates and returns the details for a single workgroup
+        based on the ID
+      operationId: updateWorkgroup
+      parameters:
+      - description: The workgroup ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: workgroupId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createWorkgroup_request'
+        description: Work group to modify.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listWorkgroups_200_response_inner'
+          description: Workgroup object
+      security:
+      - oauth2: []
+      summary: Update Work Group By Id
+      tags:
+      - Governance Groups
+  /workgroups/{workgroupId}/members:
+    get:
+      description: This API returns the members of a work group
+      operationId: listWorkgroupMembers
+      parameters:
+      - description: The workgroup ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: workgroupId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Max number of results to return
+        example: 250
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+        style: form
+      - description: Offset into the full result set. Usually specified with *limit*
+          to paginate through the results.
+        example: 0
+        explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+        style: form
+      - description: |-
+          Filter results using the following syntax.
+          [{property:name, value: "Tyler", operation: EQ}]
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/listWorkgroupMembers_200_response_inner'
+                type: array
+          description: List of work group member objects
+      security:
+      - oauth2: []
+      summary: List Work Group Members
+      tags:
+      - Governance Groups
+    post:
+      description: This API allows you to modify the members of a work group
+      operationId: modifyWorkgroupMembers
+      parameters:
+      - description: The workgroup ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: workgroupId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modifyWorkgroupMembers_request'
+        description: Add/Remove workgroup member ids.
+        required: true
+      responses:
+        "204":
+          content:
+            application/json: {}
+          description: Empty response on successful deletion
+      security:
+      - oauth2: []
+      summary: Modify Work Group Members
+      tags:
+      - Governance Groups
+  /workgroups/{workgroupId}/connections:
+    get:
+      description: This API returns the connections of a work group
+      operationId: listWorkgroupConnections
+      parameters:
+      - description: The workgroup ID
+        example: ef38f94347e94562b5bb8424a56397d8
+        explode: false
+        in: path
+        name: workgroupId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/listWorkgroupConnections_200_response_inner'
+                type: array
+          description: List of work group connection objects
+      security:
+      - oauth2: []
+      summary: List Work Group Connections
+      tags:
+      - Governance Groups
+  /workgroups/bulk-delete:
+    post:
+      description: This API allows you to bulk-delete work groups
+      operationId: bulkDeleteWorkGroups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bulkDeleteWorkGroups_request'
+        description: Work group ids to delete
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bulkDeleteWorkGroups_200_response'
+          description: List of work group objects
+      security:
+      - oauth2: []
+      summary: Bulk delete work groups
+      tags:
+      - Governance Groups
+components:
+  schemas:
+    createWorkgroup_request:
+      properties:
+        name:
+          example: Test group 3
+          type: string
+        description:
+          example: This is a test
+          type: string
+        owner:
+          $ref: '#/components/schemas/createWorkgroup_request_owner'
+      type: object
+    getOrgSettings_200_response_systemNotificationConfig_notifications_inner:
+      example:
+        thresholds:
+          healthy: healthy
+          unhealthy: unhealthy
+        byEmail: true
+        type: type
+      properties:
+        type:
+          type: string
+        byEmail:
+          type: boolean
+        thresholds:
+          $ref: '#/components/schemas/getOrgSettings_200_response_systemNotificationConfig_notifications_inner_thresholds'
+      type: object
+    listWorkgroupMembers_200_response_inner:
+      example:
+        name: Jerry.Bennett
+        alias: Jerry.Bennett
+        externalId: 2c9180837dfe6949017e208e26027b23
+        id: 3497959
+        email: Jerry.Bennett@sailpointdemo.com
+      properties:
+        alias:
+          example: Jerry.Bennett
+          type: string
+        email:
+          example: Jerry.Bennett@sailpointdemo.com
+          type: string
+        externalId:
+          example: 2c9180837dfe6949017e208e26027b23
+          type: string
+        id:
+          example: 3497959
+          format: int32
+          type: integer
+        name:
+          example: Jerry.Bennett
+          type: string
+      type: object
+    getOrgSettings_200_response:
+      example:
+        maxRegisteredIdentities: 0
+        approvalConfig:
+          fallbackApprover: fallbackApprover
+          maxReminders: 3
+          daysTillEscalation: 7
+          daysBetweenReminders: 9
+        enableExternalPasswordChange: true
+        description: description
+        emailTestAddress: emailTestAddress
+        styleHash: styleHash
+        identityCount: 6
+        kbaReqAnswers: 5
+        adminStrongAuthRequired: true
+        lastUpdated: 2000-01-23T04:56:07.000+00:00
+        dateCreated: 2000-01-23T04:56:07.000+00:00
+        loginUrl: loginUrl
+        systemNotificationEmails:
+        - systemNotificationEmails
+        - systemNotificationEmails
+        id: id
+        redirectPatterns:
+        - redirectPatterns
+        - redirectPatterns
+        ssoDomain: ssoDomain
+        kbaReqForAuthn: 1
+        emailTestMode: true
+        usernameEmptyText: usernameEmptyText
+        ssoPartnerSource: ssoPartnerSource
+        usernameLabel: usernameLabel
+        lockoutAttemptThreshold: 5
+        enableAutomationGeneration: true
+        enablePasswordReplay: true
+        usageCertRequired: true
+        enableAutomaticPasswordReplay: true
+        countryCodes:
+        - countryCodes
+        - countryCodes
+        name: name
+        scriptName: scriptName
+        passwordReplayState: enabled
+        whiteList: true
+        netmasks:
+        - netmasks
+        - netmasks
+        systemNotificationConfig:
+          recipientType: allAdmins
+          notifications:
+          - thresholds:
+              healthy: healthy
+              unhealthy: unhealthy
+            byEmail: true
+            type: type
+          - thresholds:
+              healthy: healthy
+              unhealthy: unhealthy
+            byEmail: true
+            type: type
+        lockoutTimeMinutes: 2
+        status: inactive
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        dateCreated:
+          format: date-time
+          type: string
+        lastUpdated:
+          format: date-time
+          type: string
+        scriptName:
+          type: string
+        ssoDomain:
+          type: string
+        status:
+          enum:
+          - inactive
+          - active
+          - demo
+          - test
+          type: string
+        maxRegisteredIdentities:
+          type: integer
+        identityCount:
+          type: integer
+        kbaReqForAuthn:
+          type: integer
+        kbaReqAnswers:
+          type: integer
+        lockoutAttemptThreshold:
+          type: integer
+        lockoutTimeMinutes:
+          type: integer
+        usageCertRequired:
+          type: boolean
+        adminStrongAuthRequired:
+          type: boolean
+        enableExternalPasswordChange:
+          type: boolean
+        enablePasswordReplay:
+          type: boolean
+        enableAutomaticPasswordReplay:
+          type: boolean
+        netmasks:
+          items:
+            type: string
+          type: array
+        countryCodes:
+          items:
+            type: string
+          type: array
+        whiteList:
+          type: boolean
+        emailTestMode:
+          type: boolean
+        emailTestAddress:
+          format: email
+          type: string
+        usernameEmptyText:
+          type: string
+        usernameLabel:
+          type: string
+        enableAutomationGeneration:
+          type: boolean
+        passwordReplayState:
+          enum:
+          - enabled
+          - passive
+          - disabled
+          type: string
+        systemNotificationConfig:
+          $ref: '#/components/schemas/getOrgSettings_200_response_systemNotificationConfig'
+        systemNotificationEmails:
+          items:
+            format: email
+            type: string
+          type: array
+        loginUrl:
+          type: string
+        redirectPatterns:
+          items:
+            type: string
+          type: array
+        styleHash:
+          type: string
+        approvalConfig:
+          $ref: '#/components/schemas/getOrgSettings_200_response_approvalConfig'
+        ssoPartnerSource:
+          type: string
+      type: object
+    listWorkgroupConnections_200_response_inner:
+      example:
+        workgroupId: b0c131fa-5133-4efb-9bb2-e22529f44cad
+        name: Test Approval Scheme
+        description: description
+        connectionType: AccessRequestReviewer
+        objectId: 8c24b31fe23947b28e42691a4a6faaee
+        objectType: AccessProfile
+      properties:
+        connectionType:
+          example: AccessRequestReviewer
+          type: string
+        description:
+          format: nullable
+          type: string
+        name:
+          example: Test Approval Scheme
+          type: string
+        objectId:
+          example: 8c24b31fe23947b28e42691a4a6faaee
+          type: string
+        objectType:
+          example: AccessProfile
+          type: string
+        workgroupId:
+          example: b0c131fa-5133-4efb-9bb2-e22529f44cad
+          type: string
+      type: object
+    updateOrgSettings_request:
+      properties:
+        countryCodes:
+          items:
+            type: string
+          type: array
+        enableExternalPasswordChange:
+          type: boolean
+        enableAutomaticPasswordReplay:
+          type: boolean
+        enableAutomationGeneration:
+          type: boolean
+        kbaReqAnswers:
+          format: int32
+          type: integer
+        kbaReqForAuthn:
+          format: int32
+          type: integer
+        lockoutAttemptThreshold:
+          format: int32
+          type: integer
+        lockoutTimeMinutes:
+          format: int32
+          type: integer
+        loginUrl:
+          type: string
+        netmasks:
+          items:
+            type: string
+          type: array
+        notifyAuthenticationSettingChange:
+          type: boolean
+        passwordReplayState:
+          enum:
+          - enabled
+          - passive
+          - disabled
+          type: string
+        preferredIdentityInviteTemplate:
+          type: string
+        redirectPatterns:
+          items:
+            type: string
+          type: array
+        ssoPartnerSource:
+          type: string
+        systemNotificationEmails:
+          items:
+            format: email
+            type: string
+          type: array
+        trackAnalytics:
+          type: boolean
+        usageCertRequired:
+          type: boolean
+        usageCertText:
+          type: string
+        usernameEmptyText:
+          type: string
+        usernameLabel:
+          type: string
+        whiteList:
+          type: boolean
+        approvalConfig:
+          $ref: '#/components/schemas/getOrgSettings_200_response_approvalConfig'
+      type: object
+    listWorkgroups_200_response_inner:
+      example:
+        owner:
+          emailAddress: philip.ellis@sailpoint.com
+          displayName: Philip Ellis
+          name: philip.ellis
+          id: 2c9180897d2cb80b017d39ccb26c1804
+        connectionCount: 2
+        created: 1641498673000
+        memberCount: 2
+        name: Phil Governance Group
+        description: Phil Governance Group
+        modified: 1641498673000
+        id: b0c131fa-5133-4efb-9bb2-e22529f44cad
+      properties:
+        connectionCount:
+          example: 2
+          format: int32
+          type: integer
+        created:
+          example: 1641498673000
+          format: int64
+          type: integer
+        description:
+          example: Phil Governance Group
+          type: string
+        id:
+          example: b0c131fa-5133-4efb-9bb2-e22529f44cad
+          type: string
+        memberCount:
+          example: 2
+          format: int32
+          type: integer
+        modified:
+          example: 1641498673000
+          format: int64
+          type: integer
+        name:
+          example: Phil Governance Group
+          type: string
+        owner:
+          $ref: '#/components/schemas/listWorkgroups_200_response_inner_owner'
+      type: object
+    createWorkgroup_request_owner:
+      properties:
+        id:
+          example: 2c9180867624cbd7017642d8c8c81f67
+          type: string
+      type: object
+    getOrgSettings_200_response_systemNotificationConfig_notifications_inner_thresholds:
+      example:
+        healthy: healthy
+        unhealthy: unhealthy
+      properties:
+        healthy:
+          type: string
+        unhealthy:
+          type: string
+      type: object
+    modifyWorkgroupMembers_request:
+      properties:
+        add:
+          items:
+            example: 2c9180867624cbd7017642d8c8c81f67
+            type: string
+          type: array
+        remove:
+          items:
+            example: 2c9180867624cbd7017642d8c8c81f67
+            type: string
+          type: array
+      type: object
+    bulkDeleteWorkGroups_200_response:
+      example:
+        deleted:
+        - 4518f275-e7de-40b8-9951-b67d6273421c
+        - 4518f275-e7de-40b8-9951-b67d6273421c
+        inUse:
+        - 12538dlg-60d0-44b4-9273-d1ba578ef384
+        - 12538dlg-60d0-44b4-9273-d1ba578ef384
+        notFound:
+        - 12538ecf-60d0-44b4-9273-d1ba578ef384
+        - 12538ecf-60d0-44b4-9273-d1ba578ef384
+      properties:
+        deleted:
+          items:
+            example: 4518f275-e7de-40b8-9951-b67d6273421c
+            type: string
+          type: array
+        inUse:
+          items:
+            example: 12538dlg-60d0-44b4-9273-d1ba578ef384
+            type: string
+          type: array
+        notFound:
+          items:
+            example: 12538ecf-60d0-44b4-9273-d1ba578ef384
+            type: string
+          type: array
+      type: object
+    getOrgSettings_200_response_approvalConfig:
+      example:
+        fallbackApprover: fallbackApprover
+        maxReminders: 3
+        daysTillEscalation: 7
+        daysBetweenReminders: 9
+      properties:
+        daysTillEscalation:
+          type: integer
+        daysBetweenReminders:
+          type: integer
+        maxReminders:
+          type: integer
+        fallbackApprover:
+          type: string
+      required:
+      - daysBetweenReminders
+      - daysTillEscalation
+      - fallbackApprover
+      - maxReminders
+      type: object
+    bulkDeleteWorkGroups_request:
+      properties:
+        ids:
+          items:
+            example: 868edef1-222b-40e4-8787-b56cfd78b100
+            type: string
+          type: array
+      type: object
+    listWorkgroups_200_response_inner_owner:
+      example:
+        emailAddress: philip.ellis@sailpoint.com
+        displayName: Philip Ellis
+        name: philip.ellis
+        id: 2c9180897d2cb80b017d39ccb26c1804
+      properties:
+        displayName:
+          example: Philip Ellis
+          type: string
+        emailAddress:
+          example: philip.ellis@sailpoint.com
+          type: string
+        id:
+          example: 2c9180897d2cb80b017d39ccb26c1804
+          type: string
+        name:
+          example: philip.ellis
+          type: string
+      type: object
+    getOrgSettings_200_response_systemNotificationConfig:
+      example:
+        recipientType: allAdmins
+        notifications:
+        - thresholds:
+            healthy: healthy
+            unhealthy: unhealthy
+          byEmail: true
+          type: type
+        - thresholds:
+            healthy: healthy
+            unhealthy: unhealthy
+          byEmail: true
+          type: type
+      properties:
+        notifications:
+          items:
+            $ref: '#/components/schemas/getOrgSettings_200_response_systemNotificationConfig_notifications_inner'
+          type: array
+        recipientType:
+          enum:
+          - allAdmins
+          - specificIdentities
+          type: string
+      type: object
+  securitySchemes:
+    oauth2:
+      description: |
+        OAuth2 Bearer token (JWT). See [IdentityNow REST API Authentication](https://developer.sailpoint.com/idn/api/authentication) for more information.
+        - Directions for generating a [personal access token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens)
+        - Directions using [client credentials flow](https://developer.sailpoint.com/idn/api/authentication#client-credentials-grant-flow)
+        - Directions for using [authorization code flow](https://developer.sailpoint.com/idn/api/authentication#authorization-code-grant-flow)
+        Which authentication method should I choose?  See our [guide](https://developer.sailpoint.com/idn/api/authentication#which-oauth-20-grant-flow-should-i-use)
+        Learn more about how to find your `tokenUrl` and `authorizationUrl` [in our docs](https://developer.sailpoint.com/idn/api/authentication#find-your-tenants-oauth-details)
+      flows:
+        authorizationCode:
+          authorizationUrl: https://tenant.identitynow.com/oauth/authorize
+          scopes:
+            sp:scopes:default: default scope
+            sp:scopes:all: access to all scopes
+          tokenUrl: https://tenant.api.identitynow.com/oauth/token
+        clientCredentials:
+          scopes:
+            sp:scopes:default: default scope
+            sp:scopes:all: access to all scopes
+          tokenUrl: https://tenant.api.identitynow.com/oauth/token
+      type: oauth2
