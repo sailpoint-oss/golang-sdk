@@ -1,0 +1,114 @@
+# TriggerInputAccessRequestDynamicApprover
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AccessRequestId** | **string** | The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request.  | 
+**RequestedFor** | [**TriggerInputAccessRequestDynamicApproverRequestedFor**](TriggerInputAccessRequestDynamicApproverRequestedFor.md) |  | 
+**RequestedItems** | [**[]TriggerInputAccessRequestDynamicApproverRequestedItemsInner**](TriggerInputAccessRequestDynamicApproverRequestedItemsInner.md) | The access items that are being requested. | 
+**RequestedBy** | [**TriggerInputAccessRequestDynamicApproverRequestedBy**](TriggerInputAccessRequestDynamicApproverRequestedBy.md) |  | 
+
+## Methods
+
+### NewTriggerInputAccessRequestDynamicApprover
+
+`func NewTriggerInputAccessRequestDynamicApprover(accessRequestId string, requestedFor TriggerInputAccessRequestDynamicApproverRequestedFor, requestedItems []TriggerInputAccessRequestDynamicApproverRequestedItemsInner, requestedBy TriggerInputAccessRequestDynamicApproverRequestedBy, ) *TriggerInputAccessRequestDynamicApprover`
+
+NewTriggerInputAccessRequestDynamicApprover instantiates a new TriggerInputAccessRequestDynamicApprover object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewTriggerInputAccessRequestDynamicApproverWithDefaults
+
+`func NewTriggerInputAccessRequestDynamicApproverWithDefaults() *TriggerInputAccessRequestDynamicApprover`
+
+NewTriggerInputAccessRequestDynamicApproverWithDefaults instantiates a new TriggerInputAccessRequestDynamicApprover object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetAccessRequestId
+
+`func (o *TriggerInputAccessRequestDynamicApprover) GetAccessRequestId() string`
+
+GetAccessRequestId returns the AccessRequestId field if non-nil, zero value otherwise.
+
+### GetAccessRequestIdOk
+
+`func (o *TriggerInputAccessRequestDynamicApprover) GetAccessRequestIdOk() (*string, bool)`
+
+GetAccessRequestIdOk returns a tuple with the AccessRequestId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessRequestId
+
+`func (o *TriggerInputAccessRequestDynamicApprover) SetAccessRequestId(v string)`
+
+SetAccessRequestId sets AccessRequestId field to given value.
+
+
+### GetRequestedFor
+
+`func (o *TriggerInputAccessRequestDynamicApprover) GetRequestedFor() TriggerInputAccessRequestDynamicApproverRequestedFor`
+
+GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
+
+### GetRequestedForOk
+
+`func (o *TriggerInputAccessRequestDynamicApprover) GetRequestedForOk() (*TriggerInputAccessRequestDynamicApproverRequestedFor, bool)`
+
+GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedFor
+
+`func (o *TriggerInputAccessRequestDynamicApprover) SetRequestedFor(v TriggerInputAccessRequestDynamicApproverRequestedFor)`
+
+SetRequestedFor sets RequestedFor field to given value.
+
+
+### GetRequestedItems
+
+`func (o *TriggerInputAccessRequestDynamicApprover) GetRequestedItems() []TriggerInputAccessRequestDynamicApproverRequestedItemsInner`
+
+GetRequestedItems returns the RequestedItems field if non-nil, zero value otherwise.
+
+### GetRequestedItemsOk
+
+`func (o *TriggerInputAccessRequestDynamicApprover) GetRequestedItemsOk() (*[]TriggerInputAccessRequestDynamicApproverRequestedItemsInner, bool)`
+
+GetRequestedItemsOk returns a tuple with the RequestedItems field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedItems
+
+`func (o *TriggerInputAccessRequestDynamicApprover) SetRequestedItems(v []TriggerInputAccessRequestDynamicApproverRequestedItemsInner)`
+
+SetRequestedItems sets RequestedItems field to given value.
+
+
+### GetRequestedBy
+
+`func (o *TriggerInputAccessRequestDynamicApprover) GetRequestedBy() TriggerInputAccessRequestDynamicApproverRequestedBy`
+
+GetRequestedBy returns the RequestedBy field if non-nil, zero value otherwise.
+
+### GetRequestedByOk
+
+`func (o *TriggerInputAccessRequestDynamicApprover) GetRequestedByOk() (*TriggerInputAccessRequestDynamicApproverRequestedBy, bool)`
+
+GetRequestedByOk returns a tuple with the RequestedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedBy
+
+`func (o *TriggerInputAccessRequestDynamicApprover) SetRequestedBy(v TriggerInputAccessRequestDynamicApproverRequestedBy)`
+
+SetRequestedBy sets RequestedBy field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
