@@ -32732,6 +32732,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:tag:read
+        - idn:tag:manage
       summary: List Tagged Objects
       tags:
       - Tagged Objects
@@ -32812,6 +32816,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:tag:manage
       summary: Add Tag to Object
       tags:
       - Tagged Objects
@@ -32951,6 +32958,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:tag:read
+        - idn:tag:manage
       summary: List Tagged Objects
       tags:
       - Tagged Objects
@@ -32960,6 +32971,7 @@ paths:
       operationId: deleteTaggedObject
       parameters:
       - description: The type of tagged object to delete.
+        example: ROLE
         in: path
         name: type
         required: true
@@ -33035,6 +33047,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:tag:manage
       summary: Delete Tagged Object
       tags:
       - Tagged Objects
@@ -33123,6 +33138,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:tag:read
+        - idn:tag:manage
       summary: Get Tagged Object
       tags:
       - Tagged Objects
@@ -33131,6 +33150,7 @@ paths:
       operationId: updateTaggedObject
       parameters:
       - description: The type of tagged object to update.
+        example: ROLE
         in: path
         name: type
         required: true
@@ -33216,6 +33236,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:tag:manage
       summary: Update Tagged Object
       tags:
       - Tagged Objects

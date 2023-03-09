@@ -168,7 +168,7 @@ import (
 )
 
 func main() {
-    type_ := "type__example" // string | The type of tagged object to delete.
+    type_ := "ROLE" // string | The type of tagged object to delete.
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to delete.
 
     configuration := openapiclient.NewConfiguration()
@@ -526,7 +526,7 @@ import (
 )
 
 func main() {
-    type_ := "type__example" // string | The type of tagged object to update.
+    type_ := "ROLE" // string | The type of tagged object to update.
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to update.
     taggedObject := *openapiclient.NewTaggedObject() // TaggedObject | 
 
