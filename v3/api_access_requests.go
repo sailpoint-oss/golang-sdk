@@ -239,6 +239,7 @@ __REVOKE_ACCESS__
 * Can only be requested for a single identity at a time.
 * Does not support self request. Only manager can request to revoke access for their directly managed employees.
 * If removeDate is specified, then the access will be removed on that date and time.
+* [Roles, Access Profiles] RemoveData can be specified only if access don't have a sunset date.
 * Allows a manager to request to revoke access for direct employees. A token with ORG_ADMIN authority can also request to revoke access from anyone.
 * Roles and Access Profiles can be requested for revocation. Revoke request for entitlements are not supported currently.
 
