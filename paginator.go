@@ -66,13 +66,14 @@ func PaginateSearchApi(ctx context.Context, apiClient *APIClient, search v3.Sear
 			return returnObject, latestResponse, err.(error)
 		}
 
+		// append the results to the main return object
+		returnObject = append(returnObject, actualValue...)
+
 		// check if this is the last set in the response. This could be enhanced by inspecting the header for the max results
 		if int32(len(actualValue)) < increment {
 			break
 		}
 
-		// append the results to the main return object
-		returnObject = append(returnObject, actualValue...)
 		offset += increment
 	}
 	return returnObject, latestResponse, nil
