@@ -537,8 +537,8 @@ tags:
     \ for more information about the process of setting up a Generic Service Desk\
     \ in IdentityNow.\n\nAdministrators can create various service desk integrations,\
     \ all with their own nuances. \nThe following service desk integrations are available:\
-    \ \n\n- [Atlassian Cloud Jira Service Management](https://documentation.sailpoint.com/connectors/atlassian/jira_cloud/help/integrating_jira_cloud/introduction.html)\n\
-    \n- [Atlassian Server Jira Service Management](https://documentation.sailpoint.com/connectors/atlassian/jira_server/help/integrating_jira_server/introduction.html)\n\
+    \ \n\n- [Atlassian Cloud Jira Service Management](https://documentation.sailpoint.com/connectors/atlassian/jira_cloud/help/integrating_jira_cloud_sd/introduction.html)\n\
+    \n- [Atlassian Server Jira Service Management](https://documentation.sailpoint.com/connectors/atlassian/jira_server/help/integrating_jira_server_sd/introduction.html)\n\
     \n- [BMC Helix ITSM Service Desk](https://documentation.sailpoint.com/connectors/bmc/helix_ITSM_sd/help/integrating_bmc_helix_itsm_sd/intro.html)\n\
     \n- [BMC Helix Remedyforce Service Desk](https://documentation.sailpoint.com/connectors/bmc/helix_remedyforce_sd/help/integrating_bmc_helix_remedyforce_sd/intro.html)\n\
     \n- [Generic Service Desk](https://documentation.sailpoint.com/connectors/generic_sd/help/integrating_generic_service_desk/intro.html)\n\
@@ -4884,7 +4884,7 @@ paths:
         schema:
           type: string
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki-API-Standard-Collection-Parameters/ta-p/156407)
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -5219,7 +5219,7 @@ paths:
           default: false
           type: boolean
       - description: |-
-          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki-API-Standard-Collection-Parameters/ta-p/156407)
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields and operators:
 
@@ -16903,7 +16903,7 @@ paths:
         \ be updated:\n\n- id\n- name\n- created\n- modified\n\n\nTo switch an account\
         \ attribute to a group entitlement, you need to have the following in place:\n\
         \n- `isEntitlement: true`\n- Must define a schema for the group and [add it\
-        \ to the source](https://developer.sailpoint.com/idn/api/v3/create-schema)\
+        \ to the source](https://developer.sailpoint.com/idn/api/v3/create-source-schema)\
         \ before updating the `isGroup` flag.  For example, here is the `group` account\
         \ attribute referencing a schema that defines the group:\n```json\n{\n   \
         \ \"name\": \"groups\",\n    \"type\": \"STRING\",\n    \"schema\": {\n  \

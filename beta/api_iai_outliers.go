@@ -805,7 +805,7 @@ func (r ApiGetPeerGroupOutliersContributingFeaturesRequest) IncludeTranslationMe
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard_collection_parameters.html) Sorting is supported for the following fields: **importance**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **importance**
 func (r ApiGetPeerGroupOutliersContributingFeaturesRequest) Sorters(sorters string) ApiGetPeerGroupOutliersContributingFeaturesRequest {
 	r.sorters = &sorters
 	return r
@@ -816,7 +816,7 @@ func (r ApiGetPeerGroupOutliersContributingFeaturesRequest) Execute() ([]Outlier
 }
 
 /*
-GetPeerGroupOutliersContributingFeatures IAI Get an Identity Outlier's Contibuting Features
+GetPeerGroupOutliersContributingFeatures Get identity outlier's contibuting features
 
 This API returns a list of contributing feature objects for a single outlier. The object contains: feature name, feature value type, value, importance, display name (translated text or message key), description (translated text or message key), translation messages object
 Requires authorization scope of 'iai:outliers-management:read'

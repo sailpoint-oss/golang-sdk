@@ -53,7 +53,7 @@ func (r ApiGetIdentityAccessSummariesRequest) Count(count bool) ApiGetIdentityAc
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki-API-Standard-Collection-Parameters/ta-p/156407)  Filtering is supported for the following fields and operators:  **completed**: *eq, ne*  **access.id**: *eq, in*  **access.name**: *eq, sw*  **entitlement.sourceName**: *eq, sw*  **accessProfile.sourceName**: *eq, sw*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **completed**: *eq, ne*  **access.id**: *eq, in*  **access.name**: *eq, sw*  **entitlement.sourceName**: *eq, sw*  **accessProfile.sourceName**: *eq, sw*
 func (r ApiGetIdentityAccessSummariesRequest) Filters(filters string) ApiGetIdentityAccessSummariesRequest {
 	r.filters = &filters
 	return r
@@ -252,7 +252,7 @@ type ApiGetIdentityDecisionSummaryRequest struct {
 	filters *string
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki-API-Standard-Collection-Parameters/ta-p/156407)  Filtering is supported for the following fields and operators:  **identitySummary.id**: *eq, in*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **identitySummary.id**: *eq, in*
 func (r ApiGetIdentityDecisionSummaryRequest) Filters(filters string) ApiGetIdentityDecisionSummaryRequest {
 	r.filters = &filters
 	return r

@@ -204,7 +204,8 @@ tags:
     \ such as the permissions affected by changes to entitlements within those certifications.\
     \ \nIt also provides the useful ability to reassign identities and items within\
     \ certifications to other reviewers, rather than [reassigning the entire certifications\
-    \ themselves](https://developer.sailpoint.com/idn/api/beta/admin-reassign). \n"
+    \ themselves](https://developer.sailpoint.com/idn/api/beta/reassign-identity-certs-async).\
+    \ \n"
   name: Certifications
 - name: Connector Rule Management
 - description: "Use this API to implement connector functionality. \nWith this functionality\
@@ -623,8 +624,8 @@ tags:
     \ for more information about the process of setting up a Generic Service Desk\
     \ in IdentityNow.\n\nAdministrators can create various service desk integrations,\
     \ all with their own nuances. \nThe following service desk integrations are available:\
-    \ \n\n- [Atlassian Cloud Jira Service Management](https://documentation.sailpoint.com/connectors/atlassian/jira_cloud/help/integrating_jira_cloud/introduction.html)\n\
-    \n- [Atlassian Server Jira Service Management](https://documentation.sailpoint.com/connectors/atlassian/jira_server/help/integrating_jira_server/introduction.html)\n\
+    \ \n\n- [Atlassian Cloud Jira Service Management](https://documentation.sailpoint.com/connectors/atlassian/jira_cloud/help/integrating_jira_cloud_sd/introduction.html)\n\
+    \n- [Atlassian Server Jira Service Management](https://documentation.sailpoint.com/connectors/atlassian/jira_server/help/integrating_jira_server_sd/introduction.htmll)\n\
     \n- [BMC Helix ITSM Service Desk](https://documentation.sailpoint.com/connectors/bmc/helix_ITSM_sd/help/integrating_bmc_helix_itsm_sd/intro.html)\n\
     \n- [BMC Helix Remedyforce Service Desk](https://documentation.sailpoint.com/connectors/bmc/helix_remedyforce_sd/help/integrating_bmc_helix_remedyforce_sd/intro.html)\n\
     \n- [Generic Service Desk](https://documentation.sailpoint.com/connectors/generic_sd/help/integrating_generic_service_desk/intro.html)\n\
@@ -20176,7 +20177,7 @@ paths:
         schema:
           type: string
       - description: |-
-          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/docs/standard_collection_parameters.html)
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
           Sorting is supported for the following fields: **importance**
         in: query
         name: sorters
@@ -20279,7 +20280,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: IAI Get an Identity Outlier's Contibuting Features
+      summary: Get identity outlier's contibuting features
       tags:
       - IAI Outliers
   /outliers/ignore:
@@ -31807,7 +31808,7 @@ paths:
         \ be updated:\n\n- id\n- name\n- created\n- modified\n\n\nTo switch an account\
         \ attribute to a group entitlement, you need to have the following in place:\n\
         \n- `isEntitlement: true`\n- Must define a schema for the group and [add it\
-        \ to the source](https://developer.sailpoint.com/idn/api/v3/create-schema)\
+        \ to the source](https://developer.sailpoint.com/idn/api/beta/create-source-schema)\
         \ before updating the `isGroup` flag.  For example, here is the `group` account\
         \ attribute referencing a schema that defines the group:\n```json\n{\n   \
         \ \"name\": \"groups\",\n    \"type\": \"STRING\",\n    \"schema\": {\n  \

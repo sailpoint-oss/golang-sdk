@@ -175,7 +175,7 @@ Class | Method | HTTP request | Description
 *IAIOutliersApi* | [**GetIdentityOutlierSnapshots**](docs/IAIOutliersApi.md#getidentityoutliersnapshots) | **Get** /outlier-summaries | IAI Identity Outliers Summary
 *IAIOutliersApi* | [**GetIdentityOutliers**](docs/IAIOutliersApi.md#getidentityoutliers) | **Get** /outliers | IAI Get Identity Outliers
 *IAIOutliersApi* | [**GetLatestIdentityOutlierSnapshots**](docs/IAIOutliersApi.md#getlatestidentityoutliersnapshots) | **Get** /outlier-summaries/latest | IAI Identity Outliers Latest Summary
-*IAIOutliersApi* | [**GetPeerGroupOutliersContributingFeatures**](docs/IAIOutliersApi.md#getpeergroupoutlierscontributingfeatures) | **Get** /outliers/{outlierId}/contributing-features | IAI Get an Identity Outlier&#39;s Contibuting Features
+*IAIOutliersApi* | [**GetPeerGroupOutliersContributingFeatures**](docs/IAIOutliersApi.md#getpeergroupoutlierscontributingfeatures) | **Get** /outliers/{outlierId}/contributing-features | Get identity outlier&#39;s contibuting features
 *IAIOutliersApi* | [**IgnoreIdentityOutliers**](docs/IAIOutliersApi.md#ignoreidentityoutliers) | **Post** /outliers/ignore | IAI Identity Outliers Ignore
 *IAIOutliersApi* | [**UnIgnoreIdentityOutliers**](docs/IAIOutliersApi.md#unignoreidentityoutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
 *IAIPeerGroupStrategiesApi* | [**GetPeerGroupOutliers**](docs/IAIPeerGroupStrategiesApi.md#getpeergroupoutliers) | **Get** /peer-group-strategies/{strategy}/identity-outliers | Identity Outliers List

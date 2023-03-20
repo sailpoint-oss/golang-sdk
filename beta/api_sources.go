@@ -4933,7 +4933,7 @@ The following schema fields are immutable and cannot be updated:
 To switch an account attribute to a group entitlement, you need to have the following in place:
 
 - `isEntitlement: true`
-- Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/v3/create-schema) before updating the `isGroup` flag.  For example, here is the `group` account attribute referencing a schema that defines the group:
+- Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/beta/create-source-schema) before updating the `isGroup` flag.  For example, here is the `group` account attribute referencing a schema that defines the group:
 ```json
 {
     "name": "groups",
