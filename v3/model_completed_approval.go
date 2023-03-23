@@ -34,7 +34,7 @@ type CompletedApproval struct {
 	Owner *BaseReferenceDto `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
 	RequesterComment *CommentDto `json:"requesterComment,omitempty"`
-	ReviewerComment *CommentDto `json:"reviewerComment,omitempty"`
+	ReviewerComment NullableCompletedApprovalReviewerComment `json:"reviewerComment,omitempty"`
 	// The history of the previous reviewers comments.
 	PreviousReviewersComments []CommentDto `json:"previousReviewersComments,omitempty"`
 	// The history of approval forward action.
@@ -43,11 +43,11 @@ type CompletedApproval struct {
 	CommentRequiredWhenRejected *bool `json:"commentRequiredWhenRejected,omitempty"`
 	State *CompletedApprovalState `json:"state,omitempty"`
 	// The date the role or access profile is no longer assigned to the specified identity.
-	RemoveDate *time.Time `json:"removeDate,omitempty"`
+	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	// If true, then the request was to change the remove date or sunset date.
 	RemoveDateUpdateRequested *bool `json:"removeDateUpdateRequested,omitempty"`
 	// The remove date or sunset date that was assigned at the time of the request.
-	CurrentRemoveDate *time.Time `json:"currentRemoveDate,omitempty"`
+	CurrentRemoveDate NullableTime `json:"currentRemoveDate,omitempty"`
 	SodViolationContext *SodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -455,36 +455,46 @@ func (o *CompletedApproval) SetRequesterComment(v CommentDto) {
 	o.RequesterComment = &v
 }
 
-// GetReviewerComment returns the ReviewerComment field value if set, zero value otherwise.
-func (o *CompletedApproval) GetReviewerComment() CommentDto {
-	if o == nil || isNil(o.ReviewerComment) {
-		var ret CommentDto
+// GetReviewerComment returns the ReviewerComment field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CompletedApproval) GetReviewerComment() CompletedApprovalReviewerComment {
+	if o == nil || isNil(o.ReviewerComment.Get()) {
+		var ret CompletedApprovalReviewerComment
 		return ret
 	}
-	return *o.ReviewerComment
+	return *o.ReviewerComment.Get()
 }
 
 // GetReviewerCommentOk returns a tuple with the ReviewerComment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetReviewerCommentOk() (*CommentDto, bool) {
-	if o == nil || isNil(o.ReviewerComment) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CompletedApproval) GetReviewerCommentOk() (*CompletedApprovalReviewerComment, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ReviewerComment, true
+	return o.ReviewerComment.Get(), o.ReviewerComment.IsSet()
 }
 
 // HasReviewerComment returns a boolean if a field has been set.
 func (o *CompletedApproval) HasReviewerComment() bool {
-	if o != nil && !isNil(o.ReviewerComment) {
+	if o != nil && o.ReviewerComment.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReviewerComment gets a reference to the given CommentDto and assigns it to the ReviewerComment field.
-func (o *CompletedApproval) SetReviewerComment(v CommentDto) {
-	o.ReviewerComment = &v
+// SetReviewerComment gets a reference to the given NullableCompletedApprovalReviewerComment and assigns it to the ReviewerComment field.
+func (o *CompletedApproval) SetReviewerComment(v CompletedApprovalReviewerComment) {
+	o.ReviewerComment.Set(&v)
+}
+// SetReviewerCommentNil sets the value for ReviewerComment to be an explicit nil
+func (o *CompletedApproval) SetReviewerCommentNil() {
+	o.ReviewerComment.Set(nil)
+}
+
+// UnsetReviewerComment ensures that no value is present for ReviewerComment, not even an explicit nil
+func (o *CompletedApproval) UnsetReviewerComment() {
+	o.ReviewerComment.Unset()
 }
 
 // GetPreviousReviewersComments returns the PreviousReviewersComments field value if set, zero value otherwise.
@@ -615,36 +625,46 @@ func (o *CompletedApproval) SetState(v CompletedApprovalState) {
 	o.State = &v
 }
 
-// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise.
+// GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CompletedApproval) GetRemoveDate() time.Time {
-	if o == nil || isNil(o.RemoveDate) {
+	if o == nil || isNil(o.RemoveDate.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.RemoveDate
+	return *o.RemoveDate.Get()
 }
 
 // GetRemoveDateOk returns a tuple with the RemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CompletedApproval) GetRemoveDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.RemoveDate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RemoveDate, true
+	return o.RemoveDate.Get(), o.RemoveDate.IsSet()
 }
 
 // HasRemoveDate returns a boolean if a field has been set.
 func (o *CompletedApproval) HasRemoveDate() bool {
-	if o != nil && !isNil(o.RemoveDate) {
+	if o != nil && o.RemoveDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRemoveDate gets a reference to the given time.Time and assigns it to the RemoveDate field.
+// SetRemoveDate gets a reference to the given NullableTime and assigns it to the RemoveDate field.
 func (o *CompletedApproval) SetRemoveDate(v time.Time) {
-	o.RemoveDate = &v
+	o.RemoveDate.Set(&v)
+}
+// SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
+func (o *CompletedApproval) SetRemoveDateNil() {
+	o.RemoveDate.Set(nil)
+}
+
+// UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
+func (o *CompletedApproval) UnsetRemoveDate() {
+	o.RemoveDate.Unset()
 }
 
 // GetRemoveDateUpdateRequested returns the RemoveDateUpdateRequested field value if set, zero value otherwise.
@@ -679,36 +699,46 @@ func (o *CompletedApproval) SetRemoveDateUpdateRequested(v bool) {
 	o.RemoveDateUpdateRequested = &v
 }
 
-// GetCurrentRemoveDate returns the CurrentRemoveDate field value if set, zero value otherwise.
+// GetCurrentRemoveDate returns the CurrentRemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CompletedApproval) GetCurrentRemoveDate() time.Time {
-	if o == nil || isNil(o.CurrentRemoveDate) {
+	if o == nil || isNil(o.CurrentRemoveDate.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.CurrentRemoveDate
+	return *o.CurrentRemoveDate.Get()
 }
 
 // GetCurrentRemoveDateOk returns a tuple with the CurrentRemoveDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CompletedApproval) GetCurrentRemoveDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CurrentRemoveDate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CurrentRemoveDate, true
+	return o.CurrentRemoveDate.Get(), o.CurrentRemoveDate.IsSet()
 }
 
 // HasCurrentRemoveDate returns a boolean if a field has been set.
 func (o *CompletedApproval) HasCurrentRemoveDate() bool {
-	if o != nil && !isNil(o.CurrentRemoveDate) {
+	if o != nil && o.CurrentRemoveDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrentRemoveDate gets a reference to the given time.Time and assigns it to the CurrentRemoveDate field.
+// SetCurrentRemoveDate gets a reference to the given NullableTime and assigns it to the CurrentRemoveDate field.
 func (o *CompletedApproval) SetCurrentRemoveDate(v time.Time) {
-	o.CurrentRemoveDate = &v
+	o.CurrentRemoveDate.Set(&v)
+}
+// SetCurrentRemoveDateNil sets the value for CurrentRemoveDate to be an explicit nil
+func (o *CompletedApproval) SetCurrentRemoveDateNil() {
+	o.CurrentRemoveDate.Set(nil)
+}
+
+// UnsetCurrentRemoveDate ensures that no value is present for CurrentRemoveDate, not even an explicit nil
+func (o *CompletedApproval) UnsetCurrentRemoveDate() {
+	o.CurrentRemoveDate.Unset()
 }
 
 // GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise.
@@ -781,8 +811,8 @@ func (o CompletedApproval) MarshalJSON() ([]byte, error) {
 	if !isNil(o.RequesterComment) {
 		toSerialize["requesterComment"] = o.RequesterComment
 	}
-	if !isNil(o.ReviewerComment) {
-		toSerialize["reviewerComment"] = o.ReviewerComment
+	if o.ReviewerComment.IsSet() {
+		toSerialize["reviewerComment"] = o.ReviewerComment.Get()
 	}
 	if !isNil(o.PreviousReviewersComments) {
 		toSerialize["previousReviewersComments"] = o.PreviousReviewersComments
@@ -796,14 +826,14 @@ func (o CompletedApproval) MarshalJSON() ([]byte, error) {
 	if !isNil(o.State) {
 		toSerialize["state"] = o.State
 	}
-	if !isNil(o.RemoveDate) {
-		toSerialize["removeDate"] = o.RemoveDate
+	if o.RemoveDate.IsSet() {
+		toSerialize["removeDate"] = o.RemoveDate.Get()
 	}
 	if !isNil(o.RemoveDateUpdateRequested) {
 		toSerialize["removeDateUpdateRequested"] = o.RemoveDateUpdateRequested
 	}
-	if !isNil(o.CurrentRemoveDate) {
-		toSerialize["currentRemoveDate"] = o.CurrentRemoveDate
+	if o.CurrentRemoveDate.IsSet() {
+		toSerialize["currentRemoveDate"] = o.CurrentRemoveDate.Get()
 	}
 	if !isNil(o.SodViolationContext) {
 		toSerialize["sodViolationContext"] = o.SodViolationContext

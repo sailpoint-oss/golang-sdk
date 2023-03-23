@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// AccessRequestType Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type can only have a single Identity ID in the requestedFor field. Currently REVOKE_ACCESS is not supported for entitlements.
+// AccessRequestType Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type can only have a single Identity ID in the requestedFor field.
 type AccessRequestType string
 
 // List of AccessRequestType

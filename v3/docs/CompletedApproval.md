@@ -16,14 +16,14 @@ Name | Type | Description | Notes
 **Owner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **RequestedObject** | Pointer to [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
 **RequesterComment** | Pointer to [**CommentDto**](CommentDto.md) |  | [optional] 
-**ReviewerComment** | Pointer to [**CommentDto**](CommentDto.md) |  | [optional] 
+**ReviewerComment** | Pointer to [**NullableCompletedApprovalReviewerComment**](CompletedApprovalReviewerComment.md) |  | [optional] 
 **PreviousReviewersComments** | Pointer to [**[]CommentDto**](CommentDto.md) | The history of the previous reviewers comments. | [optional] 
 **ForwardHistory** | Pointer to [**[]ApprovalForwardHistory**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
 **CommentRequiredWhenRejected** | Pointer to **bool** | When true the rejector has to provide comments when rejecting | [optional] 
 **State** | Pointer to [**CompletedApprovalState**](CompletedApprovalState.md) |  | [optional] 
-**RemoveDate** | Pointer to **time.Time** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
+**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
 **RemoveDateUpdateRequested** | Pointer to **bool** | If true, then the request was to change the remove date or sunset date. | [optional] 
-**CurrentRemoveDate** | Pointer to **time.Time** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
+**CurrentRemoveDate** | Pointer to **NullableTime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
 **SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 
 ## Methods
@@ -347,20 +347,20 @@ HasRequesterComment returns a boolean if a field has been set.
 
 ### GetReviewerComment
 
-`func (o *CompletedApproval) GetReviewerComment() CommentDto`
+`func (o *CompletedApproval) GetReviewerComment() CompletedApprovalReviewerComment`
 
 GetReviewerComment returns the ReviewerComment field if non-nil, zero value otherwise.
 
 ### GetReviewerCommentOk
 
-`func (o *CompletedApproval) GetReviewerCommentOk() (*CommentDto, bool)`
+`func (o *CompletedApproval) GetReviewerCommentOk() (*CompletedApprovalReviewerComment, bool)`
 
 GetReviewerCommentOk returns a tuple with the ReviewerComment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReviewerComment
 
-`func (o *CompletedApproval) SetReviewerComment(v CommentDto)`
+`func (o *CompletedApproval) SetReviewerComment(v CompletedApprovalReviewerComment)`
 
 SetReviewerComment sets ReviewerComment field to given value.
 
@@ -370,6 +370,16 @@ SetReviewerComment sets ReviewerComment field to given value.
 
 HasReviewerComment returns a boolean if a field has been set.
 
+### SetReviewerCommentNil
+
+`func (o *CompletedApproval) SetReviewerCommentNil(b bool)`
+
+ SetReviewerCommentNil sets the value for ReviewerComment to be an explicit nil
+
+### UnsetReviewerComment
+`func (o *CompletedApproval) UnsetReviewerComment()`
+
+UnsetReviewerComment ensures that no value is present for ReviewerComment, not even an explicit nil
 ### GetPreviousReviewersComments
 
 `func (o *CompletedApproval) GetPreviousReviewersComments() []CommentDto`
@@ -495,6 +505,16 @@ SetRemoveDate sets RemoveDate field to given value.
 
 HasRemoveDate returns a boolean if a field has been set.
 
+### SetRemoveDateNil
+
+`func (o *CompletedApproval) SetRemoveDateNil(b bool)`
+
+ SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
+
+### UnsetRemoveDate
+`func (o *CompletedApproval) UnsetRemoveDate()`
+
+UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
 ### GetRemoveDateUpdateRequested
 
 `func (o *CompletedApproval) GetRemoveDateUpdateRequested() bool`
@@ -545,6 +565,16 @@ SetCurrentRemoveDate sets CurrentRemoveDate field to given value.
 
 HasCurrentRemoveDate returns a boolean if a field has been set.
 
+### SetCurrentRemoveDateNil
+
+`func (o *CompletedApproval) SetCurrentRemoveDateNil(b bool)`
+
+ SetCurrentRemoveDateNil sets the value for CurrentRemoveDate to be an explicit nil
+
+### UnsetCurrentRemoveDate
+`func (o *CompletedApproval) UnsetCurrentRemoveDate()`
+
+UnsetCurrentRemoveDate ensures that no value is present for CurrentRemoveDate, not even an explicit nil
 ### GetSodViolationContext
 
 `func (o *CompletedApproval) GetSodViolationContext() SodViolationContextCheckCompleted`

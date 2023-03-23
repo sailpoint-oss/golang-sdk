@@ -353,6 +353,7 @@ Class | Method | HTTP request | Description
  - [CommentDto](docs/CommentDto.md)
  - [CommentDtoAuthor](docs/CommentDtoAuthor.md)
  - [CompletedApproval](docs/CompletedApproval.md)
+ - [CompletedApprovalReviewerComment](docs/CompletedApprovalReviewerComment.md)
  - [CompletedApprovalState](docs/CompletedApprovalState.md)
  - [CompletionStatus](docs/CompletionStatus.md)
  - [CreateOAuthClientRequest](docs/CreateOAuthClientRequest.md)

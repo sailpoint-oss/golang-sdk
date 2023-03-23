@@ -1424,16 +1424,17 @@ paths:
         \ a request.\n \n__REVOKE_ACCESS__\n* Can only be requested for a single identity\
         \ at a time.\n* Does not support self request. Only manager can request to\
         \ revoke access for their directly managed employees.\n* If removeDate is\
-        \ specified, then the access will be removed on that date and time.\n* [Roles,\
-        \ Access Profiles] RemoveData can be specified only if access don't have a\
-        \ sunset date.\n* Allows a manager to request to revoke access for direct\
-        \ employees. A token with ORG_ADMIN authority can also request to revoke access\
-        \ from anyone.\n* Roles and Access Profiles can be requested for revocation.\
-        \ Revoke request for entitlements are not supported currently.\n\nNOTE: There\
-        \ is no indication to the approver in the IdentityNow UI that the approval\
-        \ request is for a revoke action. Take this into consideration when calling\
-        \ this API.\n\nA token with API authority cannot be used to call this endpoint.\
-        \ \n"
+        \ specified, then the access will be removed on that date and time only for\
+        \ Roles and Access Profiles. Entitlements are currently unsupported for removeDate.\n\
+        * Roles, Access Profiles, and Entitlements can be requested for revocation.\n\
+        * Revoke requests for entitlements are limited to 1 entitlement per access\
+        \ request currently.\n* [Roles, Access Profiles] RemoveData can be specified\
+        \ only if access don't have a sunset date.\n* Allows a manager to request\
+        \ to revoke access for direct employees. A token with ORG_ADMIN authority\
+        \ can also request to revoke access from anyone.\n\nNOTE: There is no indication\
+        \ to the approver in the IdentityNow UI that the approval request is for a\
+        \ revoke action. Take this into consideration when calling this API.\n\nA\
+        \ token with API authority cannot be used to call this endpoint. \n"
       operationId: createAccessRequest
       requestBody:
         content:
@@ -22961,14 +22962,7 @@ components:
           name: William Wilson
           id: 2c91808568c529c60168cca6f90c1313
           type: IDENTITY
-        reviewerComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
-          comment: Et quam massa maximus vivamus nisi ut urna tincidunt metus elementum
-            erat
+        reviewerComment: null
         removeDate: 2020-07-11T00:00:00Z
         requestType: GRANT_ACCESS
         commentRequiredWhenRejected: true
@@ -23130,7 +23124,7 @@ components:
         requesterComment:
           $ref: '#/components/schemas/CommentDto'
         reviewerComment:
-          $ref: '#/components/schemas/CommentDto'
+          $ref: '#/components/schemas/CompletedApproval_reviewerComment'
         previousReviewersComments:
           description: The history of the previous reviewers comments.
           items:
@@ -23152,6 +23146,7 @@ components:
             the specified identity.
           example: 2020-07-11T00:00:00Z
           format: date-time
+          nullable: true
           type: string
         removeDateUpdateRequested:
           description: "If true, then the request was to change the remove date or\
@@ -23163,6 +23158,7 @@ components:
             of the request.
           example: 2020-07-11T00:00:00Z
           format: date-time
+          nullable: true
           type: string
         sodViolationContext:
           $ref: '#/components/schemas/SodViolationContextCheckCompleted'
@@ -26340,8 +26336,7 @@ components:
       type: object
     AccessRequestType:
       description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type
-        can only have a single Identity ID in the requestedFor field. Currently REVOKE_ACCESS
-        is not supported for entitlements.
+        can only have a single Identity ID in the requestedFor field.
       enum:
       - GRANT_ACCESS
       - REVOKE_ACCESS
@@ -31053,6 +31048,11 @@ components:
           example: ODS-AD-Source
           type: string
       type: object
+    CompletedApproval_reviewerComment:
+      allOf:
+      - $ref: '#/components/schemas/CommentDto'
+      description: The approval's reviewer's comment.
+      nullable: true
     CommentDto_author:
       example:
         name: Adam Kennedy

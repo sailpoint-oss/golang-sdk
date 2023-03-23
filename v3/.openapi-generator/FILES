@@ -134,6 +134,7 @@ docs/Comment.md
 docs/CommentDto.md
 docs/CommentDtoAuthor.md
 docs/CompletedApproval.md
+docs/CompletedApprovalReviewerComment.md
 docs/CompletedApprovalState.md
 docs/CompletionStatus.md
 docs/CreateOAuthClientRequest.md
@@ -511,6 +512,7 @@ model_comment.go
 model_comment_dto.go
 model_comment_dto_author.go
 model_completed_approval.go
+model_completed_approval_reviewer_comment.go
 model_completed_approval_state.go
 model_completion_status.go
 model_create_o_auth_client_request.go

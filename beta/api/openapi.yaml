@@ -1749,16 +1749,17 @@ paths:
         \ a request.\n \n__REVOKE_ACCESS__\n* Can only be requested for a single identity\
         \ at a time.\n* Does not support self request. Only manager can request to\
         \ revoke access for their directly managed employees.\n* If removeDate is\
-        \ specified, then the access will be removed on that date and time.\n* [Roles,\
-        \ Access Profiles] RemoveData can be specified only if access don't have a\
-        \ sunset date.\n* Allows a manager to request to revoke access for direct\
-        \ employees. A token with ORG_ADMIN authority can also request to revoke access\
-        \ from anyone.\n* Roles and Access Profiles can be requested for revocation.\
-        \ Revoke request for entitlements are not supported currently.\n\nNOTE: There\
-        \ is no indication to the approver in the IdentityNow UI that the approval\
-        \ request is for a revoke action. Take this into consideration when calling\
-        \ this API.\n\nA token with API authority cannot be used to call this endpoint.\
-        \ \n"
+        \ specified, then the access will be removed on that date and time only for\
+        \ Roles and Access Profiles. Entitlements are currently unsupported for removeDate.\n\
+        * Roles, Access Profiles, and Entitlements can be requested for revocation.\n\
+        * Revoke requests for entitlements are limited to 1 entitlement per access\
+        \ request currently.\n* [Roles, Access Profiles] RemoveData can be specified\
+        \ only if access don't have a sunset date.\n* Allows a manager to request\
+        \ to revoke access for direct employees. A token with ORG_ADMIN authority\
+        \ can also request to revoke access from anyone.\n\nNOTE: There is no indication\
+        \ to the approver in the IdentityNow UI that the approval request is for a\
+        \ revoke action. Take this into consideration when calling this API.\n\nA\
+        \ token with API authority cannot be used to call this endpoint. \n"
       operationId: createAccessRequest
       requestBody:
         content:
@@ -53104,8 +53105,7 @@ components:
       type: object
     AccessRequestType:
       description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type
-        can only have a single Identity ID in the requestedFor field. Currently REVOKE_ACCESS
-        is not supported for entitlements.
+        can only have a single Identity ID in the requestedFor field.
       enum:
       - GRANT_ACCESS
       - REVOKE_ACCESS
