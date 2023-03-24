@@ -3951,6 +3951,7 @@ paths:
           **sourceId**: *eq, in*
 
           **uncorrelated**: *eq*
+        example: identityId eq "2c9180858082150f0180893dbaf44201"
         in: query
         name: filters
         schema:
@@ -4005,8 +4006,10 @@ paths:
                     uuid: "{e4218fa4-da52-4bb0-aa41-d2dcc08a7ad8}"
               schema:
                 items:
-                  $ref: '#/components/schemas/listAccounts_200_response_inner'
-                type: array
+                  oneOf:
+                  - $ref: ../schemas/SlimAccount.yaml
+                  - $ref: ../schemas/FullAccount.yaml
+                type: object
           description: List of account objects
         "400":
           content:
@@ -4066,7 +4069,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account-list:read
+        - idn:accounts:read
       summary: Accounts List
       tags:
       - Accounts
@@ -4145,7 +4148,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:create
+        - idn:accounts:manage
       summary: Create Account
       tags:
       - Accounts
@@ -4245,7 +4248,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:delete
+        - idn:accounts:manage
       summary: Delete Account
       tags:
       - Accounts
@@ -4268,6 +4271,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Account'
           description: An account object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -4338,7 +4347,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:read
+        - idn:accounts:read
       summary: Account Details
       tags:
       - Accounts
@@ -4452,7 +4461,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:update
+        - idn:accounts:manage
       summary: Update Account
       tags:
       - Accounts
@@ -4557,7 +4566,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:update
+        - idn:accounts:manage
       summary: Update Account
       tags:
       - Accounts
@@ -4697,7 +4706,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account-entitlement:read
+        - idn:accounts:read
       summary: Account Entitlements
       tags:
       - Accounts
@@ -4798,7 +4807,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:reload
+        - idn:accounts-state:manage
       summary: Reload Account
       tags:
       - Accounts
@@ -4904,7 +4913,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:enable
+        - idn:accounts-state:manage
       summary: Enable Account
       tags:
       - Accounts
@@ -5010,7 +5019,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:disable
+        - idn:accounts-state:manage
       summary: Disable Account
       tags:
       - Accounts
@@ -5116,7 +5125,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:unlock
+        - idn:accounts-state:manage
       summary: Unlock Account
       tags:
       - Accounts
@@ -5219,7 +5228,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:enable
+        - idn:accounts-state:manage
       summary: Enable IDN Account for Identity
       tags:
       - Accounts
@@ -5322,7 +5331,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:disable
+        - idn:accounts-state:manage
       summary: Disable IDN Account for Identity
       tags:
       - Accounts
@@ -5415,7 +5424,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:enable
+        - idn:accounts-state:manage
       summary: Enable IDN Accounts for Identities
       tags:
       - Accounts
@@ -5508,7 +5517,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:disable
+        - idn:accounts-state:manage
       summary: Disable IDN Accounts for Identities
       tags:
       - Accounts
@@ -44196,18 +44205,6 @@ components:
       - access
       - identityId
       type: object
-    SlimAccount:
-      allOf:
-      - $ref: '#/components/schemas/BaseCommonDto'
-      - $ref: '#/components/schemas/SlimAccount_allOf'
-      title: Slim Account
-      type: object
-    FullAccount:
-      allOf:
-      - $ref: '#/components/schemas/SlimAccount'
-      - $ref: '#/components/schemas/FullAccount_allOf'
-      title: Full Account
-      type: object
     AccountAttributes:
       example:
         attributes:
@@ -57271,10 +57268,6 @@ components:
           example: ' Rate Limit Exceeded '
           type: object
       type: object
-    listAccounts_200_response_inner:
-      oneOf:
-      - $ref: '#/components/schemas/SlimAccount'
-      - $ref: '#/components/schemas/FullAccount'
     getActiveCampaigns_200_response_inner:
       oneOf:
       - $ref: '#/components/schemas/slimcampaign'
@@ -59104,70 +59097,6 @@ components:
           example: This item grants an employee read and write access to the database
           type: string
       type: object
-    SlimAccount_allOf:
-      properties:
-        uuid:
-          description: Unique ID from the owning source
-          format: uuid
-          type: string
-        nativeIdentity:
-          description: The native identifier of the account
-          example: brandin.gray
-          type: string
-        description:
-          description: The description for the account
-          example: Brandin Gray the CEO of Silly Inc.
-          type: string
-        disabled:
-          description: Whether the account is disabled
-          example: false
-          type: boolean
-        locked:
-          description: Whether the account is locked
-          example: false
-          type: boolean
-        manuallyCorrelated:
-          description: Whether the account was manually correlated
-          example: false
-          type: boolean
-        hasEntitlements:
-          description: Whether the account has any entitlements associated with it
-          example: true
-          type: boolean
-        sourceId:
-          description: The ID of the source for which this account belongs
-          example: 2c9180835d2e5168015d32f890ca1581
-          type: string
-        identityId:
-          description: The ID of the identity for which this account is correlated
-            to if not uncorrelated
-          example: 4b9163835d2e5168015d32f890ca5936
-          type: string
-        attributes:
-          description: A map containing attributes associated with the account
-          type: object
-      type: object
-      example: null
-    FullAccount_allOf:
-      properties:
-        authoritative:
-          description: Whether this account belongs to an authoritative source
-          example: false
-          type: boolean
-        systemAccount:
-          description: Whether this account is for the IdentityNow source
-          example: false
-          type: boolean
-        uncorrelated:
-          description: True if this account is not correlated to an identity
-          example: false
-          type: boolean
-        features:
-          description: A string list containing the owning source's features
-          example: ENABLE
-          type: string
-      type: object
-      example: null
     Account_allOf:
       properties:
         sourceId:

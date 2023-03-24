@@ -2758,7 +2758,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account-list:read
+        - idn:accounts:read
       summary: Accounts List
       tags:
       - Accounts
@@ -2837,7 +2837,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:create
+        - idn:accounts:manage
       summary: Create Account
       tags:
       - Accounts
@@ -2938,7 +2938,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:delete
+        - idn:accounts:manage
       summary: Delete Account
       tags:
       - Accounts
@@ -3037,7 +3037,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:read
+        - idn:accounts:read
       summary: Account Details
       tags:
       - Accounts
@@ -3160,7 +3160,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:update
+        - idn:accounts:manage
       summary: Update Account
       tags:
       - Accounts
@@ -3266,7 +3266,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:update
+        - idn:accounts:manage
       summary: Update Account
       tags:
       - Accounts
@@ -3406,7 +3406,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account-entitlement:read
+        - idn:accounts:read
       summary: Account Entitlements
       tags:
       - Accounts
@@ -3507,7 +3507,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:reload
+        - idn:accounts-state:manage
       summary: Reload Account
       tags:
       - Accounts
@@ -3613,7 +3613,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:enable
+        - idn:accounts-state:manage
       summary: Enable Account
       tags:
       - Accounts
@@ -3719,7 +3719,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:disable
+        - idn:accounts-state:manage
       summary: Disable Account
       tags:
       - Accounts
@@ -3825,7 +3825,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:account:unlock
+        - idn:accounts-state:manage
       summary: Unlock Account
       tags:
       - Accounts

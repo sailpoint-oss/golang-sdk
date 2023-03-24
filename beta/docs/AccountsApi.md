@@ -722,7 +722,7 @@ Name | Type | Description  | Notes
 
 ## ListAccounts
 
-> []ListAccounts200ResponseInner ListAccounts(ctx).DetailLevel(detailLevel).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+> map[string]interface{} ListAccounts(ctx).DetailLevel(detailLevel).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
 
 Accounts List
 
@@ -745,7 +745,7 @@ func main() {
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "filters_example" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **identityId**: *eq*  **name**: *eq, in*  **nativeIdentity**: *eq, in*  **sourceId**: *eq, in*  **uncorrelated**: *eq* (optional)
+    filters := "identityId eq "2c9180858082150f0180893dbaf44201"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **identityId**: *eq*  **name**: *eq, in*  **nativeIdentity**: *eq, in*  **sourceId**: *eq, in*  **uncorrelated**: *eq* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -754,7 +754,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAccounts`: []ListAccounts200ResponseInner
+    // response from `ListAccounts`: map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ListAccounts`: %v\n", resp)
 }
 ```
@@ -778,7 +778,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ListAccounts200ResponseInner**](ListAccounts200ResponseInner.md)
+**map[string]interface{}**
 
 ### Authorization
 

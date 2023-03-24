@@ -1470,6 +1470,17 @@ func (a *AccountsApiService) GetAccountExecute(r ApiGetAccountRequest) (*Account
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1778,7 +1789,7 @@ func (r ApiListAccountsRequest) Filters(filters string) ApiListAccountsRequest {
 	return r
 }
 
-func (r ApiListAccountsRequest) Execute() ([]ListAccounts200ResponseInner, *http.Response, error) {
+func (r ApiListAccountsRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.ListAccountsExecute(r)
 }
 
@@ -1799,13 +1810,13 @@ func (a *AccountsApiService) ListAccounts(ctx context.Context) ApiListAccountsRe
 }
 
 // Execute executes the request
-//  @return []ListAccounts200ResponseInner
-func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]ListAccounts200ResponseInner, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ListAccounts200ResponseInner
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ListAccounts")
