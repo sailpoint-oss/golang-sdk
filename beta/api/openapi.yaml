@@ -43522,6 +43522,19 @@ components:
             id: 2c91808568c529c60168cca6f90c1313
             type: IDENTITY
           modified: 2019-08-23T18:52:57.398Z
+          forwardHistory:
+          - forwarderName: William Wilson
+            reassignmentType: MANUAL_REASSIGNMENT
+            modified: 2019-08-23T18:52:57.398Z
+            oldApproverName: Frank Mir
+            newApproverName: Al Volta
+            comment: Forwarding from Frank to Al
+          - forwarderName: William Wilson
+            reassignmentType: MANUAL_REASSIGNMENT
+            modified: 2019-08-23T18:52:57.398Z
+            oldApproverName: Frank Mir
+            newApproverName: Al Volta
+            comment: Forwarding from Frank to Al
           forwarded: true
           status: PENDING
         - originalOwner:
@@ -43533,6 +43546,19 @@ components:
             id: 2c91808568c529c60168cca6f90c1313
             type: IDENTITY
           modified: 2019-08-23T18:52:57.398Z
+          forwardHistory:
+          - forwarderName: William Wilson
+            reassignmentType: MANUAL_REASSIGNMENT
+            modified: 2019-08-23T18:52:57.398Z
+            oldApproverName: Frank Mir
+            newApproverName: Al Volta
+            comment: Forwarding from Frank to Al
+          - forwarderName: William Wilson
+            reassignmentType: MANUAL_REASSIGNMENT
+            modified: 2019-08-23T18:52:57.398Z
+            oldApproverName: Frank Mir
+            newApproverName: Al Volta
+            comment: Forwarding from Frank to Al
           forwarded: true
           status: PENDING
         modified: 2019-08-23T18:52:59.162Z
@@ -43770,14 +43796,18 @@ components:
         modified: 2018-07-25T20:22:28.104Z
         id: 2c9180835d2e5168015d32f890ca1581
         forwardHistory:
-        - modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: frank.mir
-          newApproverName: al.volta
-          comment: Fusce id orci vel consectetur amet ipsum quam.
-        - modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: frank.mir
-          newApproverName: al.volta
-          comment: Fusce id orci vel consectetur amet ipsum quam.
+        - forwarderName: William Wilson
+          reassignmentType: MANUAL_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: MANUAL_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
         removeDateUpdateRequested: true
       properties:
         id:
@@ -43983,14 +44013,18 @@ components:
         modified: 2018-07-25T20:22:28.104Z
         id: 2c938083633d259901633d25c68c00fa
         forwardHistory:
-        - modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: frank.mir
-          newApproverName: al.volta
-          comment: Fusce id orci vel consectetur amet ipsum quam.
-        - modified: 2019-08-23T18:52:57.398Z
-          oldApproverName: frank.mir
-          newApproverName: al.volta
-          comment: Fusce id orci vel consectetur amet ipsum quam.
+        - forwarderName: William Wilson
+          reassignmentType: MANUAL_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: MANUAL_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
         state: APPROVED
         removeDateUpdateRequested: true
       properties:
@@ -53368,6 +53402,19 @@ components:
           id: 2c91808568c529c60168cca6f90c1313
           type: IDENTITY
         modified: 2019-08-23T18:52:57.398Z
+        forwardHistory:
+        - forwarderName: William Wilson
+          reassignmentType: MANUAL_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
+        - forwarderName: William Wilson
+          reassignmentType: MANUAL_REASSIGNMENT
+          modified: 2019-08-23T18:52:57.398Z
+          oldApproverName: Frank Mir
+          newApproverName: Al Volta
+          comment: Forwarding from Frank to Al
         forwarded: true
         status: PENDING
       properties:
@@ -53387,6 +53434,11 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/ManualWorkItemState'
+        forwardHistory:
+          description: The history of approval forward action.
+          items:
+            $ref: '#/components/schemas/ApprovalForwardHistory'
+          type: array
       type: object
     CommentDto_1:
       example:
@@ -53612,28 +53664,38 @@ components:
       type: object
     ApprovalForwardHistory:
       example:
+        forwarderName: William Wilson
+        reassignmentType: MANUAL_REASSIGNMENT
         modified: 2019-08-23T18:52:57.398Z
-        oldApproverName: frank.mir
-        newApproverName: al.volta
-        comment: Fusce id orci vel consectetur amet ipsum quam.
+        oldApproverName: Frank Mir
+        newApproverName: Al Volta
+        comment: Forwarding from Frank to Al
       properties:
         oldApproverName:
-          description: Display name of approver that forwarded the approval.
-          example: frank.mir
+          description: Display name of approver from whom the approval was forwarded.
+          example: Frank Mir
           type: string
         newApproverName:
           description: Display name of approver to whom the approval was forwarded.
-          example: al.volta
+          example: Al Volta
           type: string
         comment:
-          description: Comment made by old approver when forwarding.
-          example: Fusce id orci vel consectetur amet ipsum quam.
+          description: Comment made while forwarding.
+          example: Forwarding from Frank to Al
+          nullable: true
           type: string
         modified:
           description: Time at which approval was forwarded.
           example: 2019-08-23T18:52:57.398Z
           format: date-time
           type: string
+        forwarderName:
+          description: Display name of forwarder who forwarded the approval.
+          example: William Wilson
+          nullable: true
+          type: string
+        reassignmentType:
+          $ref: '#/components/schemas/ReassignmentType'
       type: object
     PendingApprovalAction:
       description: Enum represents action that is being processed on an approval.
@@ -56148,6 +56210,15 @@ components:
             $ref: '#/components/schemas/BaseReferenceDto'
           type: array
       type: object
+    ReassignmentType:
+      description: Type of approval reassignment.
+      enum:
+      - MANUAL_REASSIGNMENT
+      - AUTOMATIC_REASSIGNMENT
+      - AUTO_ESCALATION
+      - SELF_REVIEW_DELEGATION
+      example: MANUAL_REASSIGNMENT
+      type: string
     SodViolationCheckResult_1:
       description: The inner object representing the completed SOD Violation check
       example:

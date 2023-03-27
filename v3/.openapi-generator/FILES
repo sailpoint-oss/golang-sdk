@@ -293,6 +293,7 @@ docs/Range.md
 docs/ReassignReference.md
 docs/Reassignment.md
 docs/ReassignmentReference.md
+docs/ReassignmentType.md
 docs/Reference.md
 docs/RemediationItemDetails.md
 docs/RemediationItems.md
@@ -663,6 +664,7 @@ model_range.go
 model_reassign_reference.go
 model_reassignment.go
 model_reassignment_reference.go
+model_reassignment_type.go
 model_reference.go
 model_remediation_item_details.go
 model_remediation_items.go

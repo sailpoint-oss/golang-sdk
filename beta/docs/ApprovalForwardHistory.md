@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OldApproverName** | Pointer to **string** | Display name of approver that forwarded the approval. | [optional] 
+**OldApproverName** | Pointer to **string** | Display name of approver from whom the approval was forwarded. | [optional] 
 **NewApproverName** | Pointer to **string** | Display name of approver to whom the approval was forwarded. | [optional] 
-**Comment** | Pointer to **string** | Comment made by old approver when forwarding. | [optional] 
+**Comment** | Pointer to **NullableString** | Comment made while forwarding. | [optional] 
 **Modified** | Pointer to **time.Time** | Time at which approval was forwarded. | [optional] 
+**ForwarderName** | Pointer to **NullableString** | Display name of forwarder who forwarded the approval. | [optional] 
+**ReassignmentType** | Pointer to [**ReassignmentType**](ReassignmentType.md) |  | [optional] 
 
 ## Methods
 
@@ -103,6 +105,16 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
+### SetCommentNil
+
+`func (o *ApprovalForwardHistory) SetCommentNil(b bool)`
+
+ SetCommentNil sets the value for Comment to be an explicit nil
+
+### UnsetComment
+`func (o *ApprovalForwardHistory) UnsetComment()`
+
+UnsetComment ensures that no value is present for Comment, not even an explicit nil
 ### GetModified
 
 `func (o *ApprovalForwardHistory) GetModified() time.Time`
@@ -127,6 +139,66 @@ SetModified sets Modified field to given value.
 `func (o *ApprovalForwardHistory) HasModified() bool`
 
 HasModified returns a boolean if a field has been set.
+
+### GetForwarderName
+
+`func (o *ApprovalForwardHistory) GetForwarderName() string`
+
+GetForwarderName returns the ForwarderName field if non-nil, zero value otherwise.
+
+### GetForwarderNameOk
+
+`func (o *ApprovalForwardHistory) GetForwarderNameOk() (*string, bool)`
+
+GetForwarderNameOk returns a tuple with the ForwarderName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForwarderName
+
+`func (o *ApprovalForwardHistory) SetForwarderName(v string)`
+
+SetForwarderName sets ForwarderName field to given value.
+
+### HasForwarderName
+
+`func (o *ApprovalForwardHistory) HasForwarderName() bool`
+
+HasForwarderName returns a boolean if a field has been set.
+
+### SetForwarderNameNil
+
+`func (o *ApprovalForwardHistory) SetForwarderNameNil(b bool)`
+
+ SetForwarderNameNil sets the value for ForwarderName to be an explicit nil
+
+### UnsetForwarderName
+`func (o *ApprovalForwardHistory) UnsetForwarderName()`
+
+UnsetForwarderName ensures that no value is present for ForwarderName, not even an explicit nil
+### GetReassignmentType
+
+`func (o *ApprovalForwardHistory) GetReassignmentType() ReassignmentType`
+
+GetReassignmentType returns the ReassignmentType field if non-nil, zero value otherwise.
+
+### GetReassignmentTypeOk
+
+`func (o *ApprovalForwardHistory) GetReassignmentTypeOk() (*ReassignmentType, bool)`
+
+GetReassignmentTypeOk returns a tuple with the ReassignmentType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReassignmentType
+
+`func (o *ApprovalForwardHistory) SetReassignmentType(v ReassignmentType)`
+
+SetReassignmentType sets ReassignmentType field to given value.
+
+### HasReassignmentType
+
+`func (o *ApprovalForwardHistory) HasReassignmentType() bool`
+
+HasReassignmentType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

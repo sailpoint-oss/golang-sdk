@@ -504,6 +504,7 @@ Class | Method | HTTP request | Description
  - [ReassignReference](docs/ReassignReference.md)
  - [Reassignment](docs/Reassignment.md)
  - [ReassignmentReference](docs/ReassignmentReference.md)
+ - [ReassignmentType](docs/ReassignmentType.md)
  - [Reference](docs/Reference.md)
  - [RemediationItemDetails](docs/RemediationItemDetails.md)
  - [RemediationItems](docs/RemediationItems.md)

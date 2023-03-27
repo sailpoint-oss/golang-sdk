@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CurrentOwner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **Modified** | Pointer to **time.Time** | Time at which item was modified. | [optional] 
 **Status** | Pointer to [**ManualWorkItemState**](ManualWorkItemState.md) |  | [optional] 
+**ForwardHistory** | Pointer to [**[]ApprovalForwardHistory**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetStatus sets Status field to given value.
 `func (o *ManualWorkItemDetails) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetForwardHistory
+
+`func (o *ManualWorkItemDetails) GetForwardHistory() []ApprovalForwardHistory`
+
+GetForwardHistory returns the ForwardHistory field if non-nil, zero value otherwise.
+
+### GetForwardHistoryOk
+
+`func (o *ManualWorkItemDetails) GetForwardHistoryOk() (*[]ApprovalForwardHistory, bool)`
+
+GetForwardHistoryOk returns a tuple with the ForwardHistory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForwardHistory
+
+`func (o *ManualWorkItemDetails) SetForwardHistory(v []ApprovalForwardHistory)`
+
+SetForwardHistory sets ForwardHistory field to given value.
+
+### HasForwardHistory
+
+`func (o *ManualWorkItemDetails) HasForwardHistory() bool`
+
+HasForwardHistory returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

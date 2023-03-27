@@ -17,14 +17,17 @@ import (
 
 // ApprovalForwardHistory struct for ApprovalForwardHistory
 type ApprovalForwardHistory struct {
-	// Display name of approver that forwarded the approval.
+	// Display name of approver from whom the approval was forwarded.
 	OldApproverName *string `json:"oldApproverName,omitempty"`
 	// Display name of approver to whom the approval was forwarded.
 	NewApproverName *string `json:"newApproverName,omitempty"`
-	// Comment made by old approver when forwarding.
-	Comment *string `json:"comment,omitempty"`
+	// Comment made while forwarding.
+	Comment NullableString `json:"comment,omitempty"`
 	// Time at which approval was forwarded.
 	Modified *time.Time `json:"modified,omitempty"`
+	// Display name of forwarder who forwarded the approval.
+	ForwarderName NullableString `json:"forwarderName,omitempty"`
+	ReassignmentType *ReassignmentType `json:"reassignmentType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -111,36 +114,46 @@ func (o *ApprovalForwardHistory) SetNewApproverName(v string) {
 	o.NewApproverName = &v
 }
 
-// GetComment returns the Comment field value if set, zero value otherwise.
+// GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalForwardHistory) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || isNil(o.Comment.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Comment
+	return *o.Comment.Get()
 }
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalForwardHistory) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Comment, true
+	return o.Comment.Get(), o.Comment.IsSet()
 }
 
 // HasComment returns a boolean if a field has been set.
 func (o *ApprovalForwardHistory) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && o.Comment.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetComment gets a reference to the given string and assigns it to the Comment field.
+// SetComment gets a reference to the given NullableString and assigns it to the Comment field.
 func (o *ApprovalForwardHistory) SetComment(v string) {
-	o.Comment = &v
+	o.Comment.Set(&v)
+}
+// SetCommentNil sets the value for Comment to be an explicit nil
+func (o *ApprovalForwardHistory) SetCommentNil() {
+	o.Comment.Set(nil)
+}
+
+// UnsetComment ensures that no value is present for Comment, not even an explicit nil
+func (o *ApprovalForwardHistory) UnsetComment() {
+	o.Comment.Unset()
 }
 
 // GetModified returns the Modified field value if set, zero value otherwise.
@@ -175,6 +188,80 @@ func (o *ApprovalForwardHistory) SetModified(v time.Time) {
 	o.Modified = &v
 }
 
+// GetForwarderName returns the ForwarderName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApprovalForwardHistory) GetForwarderName() string {
+	if o == nil || isNil(o.ForwarderName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ForwarderName.Get()
+}
+
+// GetForwarderNameOk returns a tuple with the ForwarderName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApprovalForwardHistory) GetForwarderNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ForwarderName.Get(), o.ForwarderName.IsSet()
+}
+
+// HasForwarderName returns a boolean if a field has been set.
+func (o *ApprovalForwardHistory) HasForwarderName() bool {
+	if o != nil && o.ForwarderName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetForwarderName gets a reference to the given NullableString and assigns it to the ForwarderName field.
+func (o *ApprovalForwardHistory) SetForwarderName(v string) {
+	o.ForwarderName.Set(&v)
+}
+// SetForwarderNameNil sets the value for ForwarderName to be an explicit nil
+func (o *ApprovalForwardHistory) SetForwarderNameNil() {
+	o.ForwarderName.Set(nil)
+}
+
+// UnsetForwarderName ensures that no value is present for ForwarderName, not even an explicit nil
+func (o *ApprovalForwardHistory) UnsetForwarderName() {
+	o.ForwarderName.Unset()
+}
+
+// GetReassignmentType returns the ReassignmentType field value if set, zero value otherwise.
+func (o *ApprovalForwardHistory) GetReassignmentType() ReassignmentType {
+	if o == nil || isNil(o.ReassignmentType) {
+		var ret ReassignmentType
+		return ret
+	}
+	return *o.ReassignmentType
+}
+
+// GetReassignmentTypeOk returns a tuple with the ReassignmentType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApprovalForwardHistory) GetReassignmentTypeOk() (*ReassignmentType, bool) {
+	if o == nil || isNil(o.ReassignmentType) {
+		return nil, false
+	}
+	return o.ReassignmentType, true
+}
+
+// HasReassignmentType returns a boolean if a field has been set.
+func (o *ApprovalForwardHistory) HasReassignmentType() bool {
+	if o != nil && !isNil(o.ReassignmentType) {
+		return true
+	}
+
+	return false
+}
+
+// SetReassignmentType gets a reference to the given ReassignmentType and assigns it to the ReassignmentType field.
+func (o *ApprovalForwardHistory) SetReassignmentType(v ReassignmentType) {
+	o.ReassignmentType = &v
+}
+
 func (o ApprovalForwardHistory) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.OldApproverName) {
@@ -183,11 +270,17 @@ func (o ApprovalForwardHistory) MarshalJSON() ([]byte, error) {
 	if !isNil(o.NewApproverName) {
 		toSerialize["newApproverName"] = o.NewApproverName
 	}
-	if !isNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
+	if o.Comment.IsSet() {
+		toSerialize["comment"] = o.Comment.Get()
 	}
 	if !isNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
+	}
+	if o.ForwarderName.IsSet() {
+		toSerialize["forwarderName"] = o.ForwarderName.Get()
+	}
+	if !isNil(o.ReassignmentType) {
+		toSerialize["reassignmentType"] = o.ReassignmentType
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -211,6 +304,8 @@ func (o *ApprovalForwardHistory) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "newApproverName")
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "modified")
+		delete(additionalProperties, "forwarderName")
+		delete(additionalProperties, "reassignmentType")
 		o.AdditionalProperties = additionalProperties
 	}
 

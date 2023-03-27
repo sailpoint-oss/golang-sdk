@@ -810,6 +810,7 @@ Class | Method | HTTP request | Description
  - [QueuedCheckConfigDetails](docs/QueuedCheckConfigDetails.md)
  - [ReassignReference](docs/ReassignReference.md)
  - [Reassignment](docs/Reassignment.md)
+ - [ReassignmentType](docs/ReassignmentType.md)
  - [RecommendationConfigDto](docs/RecommendationConfigDto.md)
  - [RecommendationRequest](docs/RecommendationRequest.md)
  - [RecommendationRequestDto](docs/RecommendationRequestDto.md)

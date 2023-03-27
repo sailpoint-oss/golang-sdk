@@ -24,6 +24,8 @@ type ManualWorkItemDetails struct {
 	// Time at which item was modified.
 	Modified *time.Time `json:"modified,omitempty"`
 	Status *ManualWorkItemState `json:"status,omitempty"`
+	// The history of approval forward action.
+	ForwardHistory []ApprovalForwardHistory `json:"forwardHistory,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -206,6 +208,38 @@ func (o *ManualWorkItemDetails) SetStatus(v ManualWorkItemState) {
 	o.Status = &v
 }
 
+// GetForwardHistory returns the ForwardHistory field value if set, zero value otherwise.
+func (o *ManualWorkItemDetails) GetForwardHistory() []ApprovalForwardHistory {
+	if o == nil || isNil(o.ForwardHistory) {
+		var ret []ApprovalForwardHistory
+		return ret
+	}
+	return o.ForwardHistory
+}
+
+// GetForwardHistoryOk returns a tuple with the ForwardHistory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManualWorkItemDetails) GetForwardHistoryOk() ([]ApprovalForwardHistory, bool) {
+	if o == nil || isNil(o.ForwardHistory) {
+		return nil, false
+	}
+	return o.ForwardHistory, true
+}
+
+// HasForwardHistory returns a boolean if a field has been set.
+func (o *ManualWorkItemDetails) HasForwardHistory() bool {
+	if o != nil && !isNil(o.ForwardHistory) {
+		return true
+	}
+
+	return false
+}
+
+// SetForwardHistory gets a reference to the given []ApprovalForwardHistory and assigns it to the ForwardHistory field.
+func (o *ManualWorkItemDetails) SetForwardHistory(v []ApprovalForwardHistory) {
+	o.ForwardHistory = v
+}
+
 func (o ManualWorkItemDetails) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Forwarded) {
@@ -222,6 +256,9 @@ func (o ManualWorkItemDetails) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
+	}
+	if !isNil(o.ForwardHistory) {
+		toSerialize["forwardHistory"] = o.ForwardHistory
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -246,6 +283,7 @@ func (o *ManualWorkItemDetails) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "currentOwner")
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "status")
+		delete(additionalProperties, "forwardHistory")
 		o.AdditionalProperties = additionalProperties
 	}
 

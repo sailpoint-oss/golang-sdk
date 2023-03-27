@@ -440,6 +440,7 @@ docs/PublicIdentityConfig.md
 docs/QueuedCheckConfigDetails.md
 docs/ReassignReference.md
 docs/Reassignment.md
+docs/ReassignmentType.md
 docs/RecommendationConfigDto.md
 docs/RecommendationRequest.md
 docs/RecommendationRequestDto.md
@@ -1083,6 +1084,7 @@ model_public_identity_config.go
 model_queued_check_config_details.go
 model_reassign_reference.go
 model_reassignment.go
+model_reassignment_type.go
 model_recommendation_config_dto.go
 model_recommendation_request.go
 model_recommendation_request_dto.go
