@@ -449,7 +449,16 @@ func (c *APIClient) prepareRequest(
 
 			latestToken.SetAuthHeader(localVarRequest)
 		}
-
+		if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
+			auth, err := getAccessToken(c.cfg.ClientId, c.cfg.ClientSecret, c.cfg.TokenURL)
+			if err != nil {
+				return nil, err
+			}
+			c.cfg.Token = auth
+			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
+		} else {
+			localVarRequest.Header.Add("Authorization", "Bearer "+c.cfg.Token)
+		}
 	}
 
 	for header, value := range c.cfg.DefaultHeader {
