@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ScheduledSearchAllOfOwner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ScheduledSearchAllOfOwner{}
+
 // ScheduledSearchAllOfOwner The owner of the scheduled search
 type ScheduledSearchAllOfOwner struct {
 	// The type of object being referenced
@@ -93,19 +96,23 @@ func (o *ScheduledSearchAllOfOwner) SetId(v string) {
 }
 
 func (o ScheduledSearchAllOfOwner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ScheduledSearchAllOfOwner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["id"] = o.Id
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ScheduledSearchAllOfOwner) UnmarshalJSON(bytes []byte) (err error) {

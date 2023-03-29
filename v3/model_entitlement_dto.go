@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the EntitlementDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementDto{}
 
 // EntitlementDto struct for EntitlementDto
 type EntitlementDto struct {
@@ -440,19 +443,19 @@ func (o *EntitlementDto) SetSource(v BaseReferenceDto) {
 }
 
 func (o EntitlementDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EntitlementDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	// skip: created is readOnly
+	// skip: modified is readOnly
 	if !isNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
@@ -482,7 +485,7 @@ func (o EntitlementDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EntitlementDto) UnmarshalJSON(bytes []byte) (err error) {

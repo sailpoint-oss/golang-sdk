@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AdminReviewReassignReassignTo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AdminReviewReassignReassignTo{}
+
 // AdminReviewReassignReassignTo struct for AdminReviewReassignReassignTo
 type AdminReviewReassignReassignTo struct {
 	// The identity ID to which the review is being assigned.
@@ -107,6 +110,14 @@ func (o *AdminReviewReassignReassignTo) SetType(v string) {
 }
 
 func (o AdminReviewReassignReassignTo) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AdminReviewReassignReassignTo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -119,7 +130,7 @@ func (o AdminReviewReassignReassignTo) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AdminReviewReassignReassignTo) UnmarshalJSON(bytes []byte) (err error) {

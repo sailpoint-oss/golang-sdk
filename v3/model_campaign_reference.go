@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CampaignReference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CampaignReference{}
+
 // CampaignReference struct for CampaignReference
 type CampaignReference struct {
 	// The unique ID of the campaign.
@@ -176,28 +179,26 @@ func (o *CampaignReference) SetDescription(v string) {
 }
 
 func (o CampaignReference) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CampaignReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["campaignType"] = o.CampaignType
-	}
-	if true {
-		toSerialize["description"] = o.Description.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
+	toSerialize["campaignType"] = o.CampaignType
+	toSerialize["description"] = o.Description.Get()
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CampaignReference) UnmarshalJSON(bytes []byte) (err error) {

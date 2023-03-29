@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SubSearchAggregationSpecificationAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SubSearchAggregationSpecificationAllOf{}
+
 // SubSearchAggregationSpecificationAllOf struct for SubSearchAggregationSpecificationAllOf
 type SubSearchAggregationSpecificationAllOf struct {
 	SubAggregation *Aggregations `json:"subAggregation,omitempty"`
@@ -72,6 +75,14 @@ func (o *SubSearchAggregationSpecificationAllOf) SetSubAggregation(v Aggregation
 }
 
 func (o SubSearchAggregationSpecificationAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SubSearchAggregationSpecificationAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.SubAggregation) {
 		toSerialize["subAggregation"] = o.SubAggregation
@@ -81,7 +92,7 @@ func (o SubSearchAggregationSpecificationAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SubSearchAggregationSpecificationAllOf) UnmarshalJSON(bytes []byte) (err error) {

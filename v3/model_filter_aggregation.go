@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FilterAggregation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FilterAggregation{}
+
 // FilterAggregation An additional filter to constrain the results of the search query.
 type FilterAggregation struct {
 	// The name of the filter aggregate to be included in the result.
@@ -157,25 +160,27 @@ func (o *FilterAggregation) SetValue(v string) {
 }
 
 func (o FilterAggregation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FilterAggregation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if true {
-		toSerialize["field"] = o.Field
-	}
-	if true {
-		toSerialize["value"] = o.Value
-	}
+	toSerialize["field"] = o.Field
+	toSerialize["value"] = o.Value
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *FilterAggregation) UnmarshalJSON(bytes []byte) (err error) {

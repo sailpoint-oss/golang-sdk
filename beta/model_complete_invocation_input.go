@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CompleteInvocationInput type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CompleteInvocationInput{}
+
 // CompleteInvocationInput struct for CompleteInvocationInput
 type CompleteInvocationInput struct {
 	LocalizedError *LocalizedMessage `json:"localizedError,omitempty"`
@@ -106,6 +109,14 @@ func (o *CompleteInvocationInput) SetOutput(v map[string]interface{}) {
 }
 
 func (o CompleteInvocationInput) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CompleteInvocationInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.LocalizedError) {
 		toSerialize["localizedError"] = o.LocalizedError
@@ -118,7 +129,7 @@ func (o CompleteInvocationInput) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CompleteInvocationInput) UnmarshalJSON(bytes []byte) (err error) {

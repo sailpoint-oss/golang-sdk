@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SpConfigMessage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpConfigMessage{}
+
 // SpConfigMessage Message model for Config Import/Export.
 type SpConfigMessage struct {
 	// Message key.
@@ -120,22 +123,24 @@ func (o *SpConfigMessage) SetDetails(v map[string]interface{}) {
 }
 
 func (o SpConfigMessage) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SpConfigMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if true {
-		toSerialize["text"] = o.Text
-	}
-	if true {
-		toSerialize["details"] = o.Details
-	}
+	toSerialize["key"] = o.Key
+	toSerialize["text"] = o.Text
+	toSerialize["details"] = o.Details
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SpConfigMessage) UnmarshalJSON(bytes []byte) (err error) {

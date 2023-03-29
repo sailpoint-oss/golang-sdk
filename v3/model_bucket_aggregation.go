@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BucketAggregation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BucketAggregation{}
+
 // BucketAggregation The bucket to group the results of the aggregation query by.
 type BucketAggregation struct {
 	// The name of the bucket aggregate to be included in the result.
@@ -198,16 +201,20 @@ func (o *BucketAggregation) SetMinDocCount(v int32) {
 }
 
 func (o BucketAggregation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BucketAggregation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if true {
-		toSerialize["field"] = o.Field
-	}
+	toSerialize["field"] = o.Field
 	if !isNil(o.Size) {
 		toSerialize["size"] = o.Size
 	}
@@ -219,7 +226,7 @@ func (o BucketAggregation) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BucketAggregation) UnmarshalJSON(bytes []byte) (err error) {

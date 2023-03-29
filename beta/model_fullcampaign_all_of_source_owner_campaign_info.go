@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FullcampaignAllOfSourceOwnerCampaignInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FullcampaignAllOfSourceOwnerCampaignInfo{}
+
 // FullcampaignAllOfSourceOwnerCampaignInfo Must be set only if the campaign type is SOURCE_OWNER.
 type FullcampaignAllOfSourceOwnerCampaignInfo struct {
 	// The list of sources to be included in the campaign.
@@ -73,6 +76,14 @@ func (o *FullcampaignAllOfSourceOwnerCampaignInfo) SetSourceIds(v []string) {
 }
 
 func (o FullcampaignAllOfSourceOwnerCampaignInfo) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FullcampaignAllOfSourceOwnerCampaignInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.SourceIds) {
 		toSerialize["sourceIds"] = o.SourceIds
@@ -82,7 +93,7 @@ func (o FullcampaignAllOfSourceOwnerCampaignInfo) MarshalJSON() ([]byte, error) 
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *FullcampaignAllOfSourceOwnerCampaignInfo) UnmarshalJSON(bytes []byte) (err error) {

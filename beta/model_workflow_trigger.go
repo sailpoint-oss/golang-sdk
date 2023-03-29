@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WorkflowTrigger type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkflowTrigger{}
+
 // WorkflowTrigger The trigger that starts the workflow
 type WorkflowTrigger struct {
 	// The trigger type
@@ -92,19 +95,23 @@ func (o *WorkflowTrigger) SetAttributes(v WorkflowTriggerAttributes) {
 }
 
 func (o WorkflowTrigger) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkflowTrigger) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["attributes"] = o.Attributes
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["attributes"] = o.Attributes
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkflowTrigger) UnmarshalJSON(bytes []byte) (err error) {

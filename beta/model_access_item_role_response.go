@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessItemRoleResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessItemRoleResponse{}
+
 // AccessItemRoleResponse struct for AccessItemRoleResponse
 type AccessItemRoleResponse struct {
 	// the access item type. role in this case
@@ -209,6 +212,14 @@ func (o *AccessItemRoleResponse) SetSourceName(v string) {
 }
 
 func (o AccessItemRoleResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessItemRoleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccessType) {
 		toSerialize["accessType"] = o.AccessType
@@ -230,7 +241,7 @@ func (o AccessItemRoleResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessItemRoleResponse) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NonEmployeeSourceLiteWithSchemaAttributesAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeSourceLiteWithSchemaAttributesAllOf{}
+
 // NonEmployeeSourceLiteWithSchemaAttributesAllOf struct for NonEmployeeSourceLiteWithSchemaAttributesAllOf
 type NonEmployeeSourceLiteWithSchemaAttributesAllOf struct {
 	// List of schema attributes associated with this non-employee source.
@@ -73,6 +76,14 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributesAllOf) SetSchemaAttributes(v [
 }
 
 func (o NonEmployeeSourceLiteWithSchemaAttributesAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeSourceLiteWithSchemaAttributesAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.SchemaAttributes) {
 		toSerialize["schemaAttributes"] = o.SchemaAttributes
@@ -82,7 +93,7 @@ func (o NonEmployeeSourceLiteWithSchemaAttributesAllOf) MarshalJSON() ([]byte, e
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeSourceLiteWithSchemaAttributesAllOf) UnmarshalJSON(bytes []byte) (err error) {

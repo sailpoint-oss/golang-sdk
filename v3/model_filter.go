@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Filter type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Filter{}
+
 // Filter struct for Filter
 type Filter struct {
 	Type *FilterType `json:"type,omitempty"`
@@ -177,6 +180,14 @@ func (o *Filter) SetExclude(v bool) {
 }
 
 func (o Filter) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Filter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -195,7 +206,7 @@ func (o Filter) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Filter) UnmarshalJSON(bytes []byte) (err error) {

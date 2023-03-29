@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputSourceUpdatedActor type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputSourceUpdatedActor{}
+
 // TriggerInputSourceUpdatedActor The identity or system that performed the update.
 type TriggerInputSourceUpdatedActor struct {
 	// The type of object that is referenced
@@ -127,22 +130,26 @@ func (o *TriggerInputSourceUpdatedActor) SetName(v string) {
 }
 
 func (o TriggerInputSourceUpdatedActor) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputSourceUpdatedActor) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputSourceUpdatedActor) UnmarshalJSON(bytes []byte) (err error) {

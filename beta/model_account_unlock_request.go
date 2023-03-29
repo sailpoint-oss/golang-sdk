@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountUnlockRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountUnlockRequest{}
+
 // AccountUnlockRequest Request used for account unlock
 type AccountUnlockRequest struct {
 	// If set, an external process validates that the user wants to proceed with this request.
@@ -141,6 +144,14 @@ func (o *AccountUnlockRequest) SetForceProvisioning(v bool) {
 }
 
 func (o AccountUnlockRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountUnlockRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ExternalVerificationId) {
 		toSerialize["externalVerificationId"] = o.ExternalVerificationId
@@ -156,7 +167,7 @@ func (o AccountUnlockRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountUnlockRequest) UnmarshalJSON(bytes []byte) (err error) {

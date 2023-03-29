@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CommentDto1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CommentDto1{}
+
 // CommentDto1 struct for CommentDto1
 type CommentDto1 struct {
 	// Content of the comment
@@ -141,6 +144,14 @@ func (o *CommentDto1) SetCreated(v time.Time) {
 }
 
 func (o CommentDto1) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CommentDto1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -156,7 +167,7 @@ func (o CommentDto1) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CommentDto1) UnmarshalJSON(bytes []byte) (err error) {

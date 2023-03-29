@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the TemplateDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateDto{}
+
 // TemplateDto struct for TemplateDto
 type TemplateDto struct {
 	Key string `json:"key"`
@@ -486,19 +489,21 @@ func (o *TemplateDto) SetModified(v time.Time) {
 }
 
 func (o TemplateDto) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TemplateDto) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if true {
-		toSerialize["medium"] = o.Medium
-	}
-	if true {
-		toSerialize["locale"] = o.Locale
-	}
+	toSerialize["medium"] = o.Medium
+	toSerialize["locale"] = o.Locale
 	if !isNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
 	}
@@ -534,7 +539,7 @@ func (o TemplateDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TemplateDto) UnmarshalJSON(bytes []byte) (err error) {

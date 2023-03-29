@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NonEmployeeApprovalSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeApprovalSummary{}
+
 // NonEmployeeApprovalSummary struct for NonEmployeeApprovalSummary
 type NonEmployeeApprovalSummary struct {
 	// The number of approved non-employee approval requests.
@@ -141,6 +144,14 @@ func (o *NonEmployeeApprovalSummary) SetRejected(v float32) {
 }
 
 func (o NonEmployeeApprovalSummary) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeApprovalSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Approved) {
 		toSerialize["approved"] = o.Approved
@@ -156,7 +167,7 @@ func (o NonEmployeeApprovalSummary) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeApprovalSummary) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessProfileApprovalScheme type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileApprovalScheme{}
+
 // AccessProfileApprovalScheme struct for AccessProfileApprovalScheme
 type AccessProfileApprovalScheme struct {
 	// Describes the individual or group that is responsible for an approval step. Values are as follows. **APP_OWNER**: The owner of the Application  **OWNER**: Owner of the associated Access Profile or Role  **SOURCE_OWNER**: Owner of the Source associated with an Access Profile  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field
@@ -117,6 +120,14 @@ func (o *AccessProfileApprovalScheme) UnsetApproverId() {
 }
 
 func (o AccessProfileApprovalScheme) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfileApprovalScheme) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ApproverType) {
 		toSerialize["approverType"] = o.ApproverType
@@ -129,7 +140,7 @@ func (o AccessProfileApprovalScheme) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfileApprovalScheme) UnmarshalJSON(bytes []byte) (err error) {

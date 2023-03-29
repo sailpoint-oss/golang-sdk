@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Range type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Range{}
+
 // Range The range of values to be filtered.
 type Range struct {
 	Lower *Bound `json:"lower,omitempty"`
@@ -105,6 +108,14 @@ func (o *Range) SetUpper(v Bound) {
 }
 
 func (o Range) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Range) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Lower) {
 		toSerialize["lower"] = o.Lower
@@ -117,7 +128,7 @@ func (o Range) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Range) UnmarshalJSON(bytes []byte) (err error) {

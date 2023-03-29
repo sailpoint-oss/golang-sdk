@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountRequest{}
+
 // AccountRequest struct for AccountRequest
 type AccountRequest struct {
 	// Unique ID of the account
@@ -239,6 +242,14 @@ func (o *AccountRequest) SetSource(v AccountSource) {
 }
 
 func (o AccountRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
@@ -263,7 +274,7 @@ func (o AccountRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountRequest) UnmarshalJSON(bytes []byte) (err error) {

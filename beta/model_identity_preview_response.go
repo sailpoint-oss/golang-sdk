@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityPreviewResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityPreviewResponse{}
+
 // IdentityPreviewResponse struct for IdentityPreviewResponse
 type IdentityPreviewResponse struct {
 	Identity *BaseReferenceDto `json:"identity,omitempty"`
@@ -105,6 +108,14 @@ func (o *IdentityPreviewResponse) SetPreviewAttributes(v []IdentityAttributePrev
 }
 
 func (o IdentityPreviewResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityPreviewResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Identity) {
 		toSerialize["identity"] = o.Identity
@@ -117,7 +128,7 @@ func (o IdentityPreviewResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityPreviewResponse) UnmarshalJSON(bytes []byte) (err error) {

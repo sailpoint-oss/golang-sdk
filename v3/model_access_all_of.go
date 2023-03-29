@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessAllOf{}
+
 // AccessAllOf struct for AccessAllOf
 type AccessAllOf struct {
 	Type *DtoType `json:"type,omitempty"`
@@ -115,6 +118,14 @@ func (o *AccessAllOf) UnsetDescription() {
 }
 
 func (o AccessAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -127,7 +138,7 @@ func (o AccessAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessAllOf) UnmarshalJSON(bytes []byte) (err error) {

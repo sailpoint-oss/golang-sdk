@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMembershipIdentity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMembershipIdentity{}
+
 // RoleMembershipIdentity A reference to an Identity in an IDENTITY_LIST role membership criteria.
 type RoleMembershipIdentity struct {
 	Type *DtoType `json:"type,omitempty"`
@@ -194,6 +197,14 @@ func (o *RoleMembershipIdentity) UnsetAliasName() {
 }
 
 func (o RoleMembershipIdentity) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMembershipIdentity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -212,7 +223,7 @@ func (o RoleMembershipIdentity) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMembershipIdentity) UnmarshalJSON(bytes []byte) (err error) {

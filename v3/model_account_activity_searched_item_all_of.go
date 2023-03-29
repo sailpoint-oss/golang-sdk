@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AccountActivitySearchedItemAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountActivitySearchedItemAllOf{}
+
 // AccountActivitySearchedItemAllOf struct for AccountActivitySearchedItemAllOf
 type AccountActivitySearchedItemAllOf struct {
 	// The type of action that this activity performed
@@ -605,6 +608,14 @@ func (o *AccountActivitySearchedItemAllOf) SetSources(v string) {
 }
 
 func (o AccountActivitySearchedItemAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountActivitySearchedItemAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Action) {
 		toSerialize["action"] = o.Action
@@ -659,7 +670,7 @@ func (o AccountActivitySearchedItemAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountActivitySearchedItemAllOf) UnmarshalJSON(bytes []byte) (err error) {

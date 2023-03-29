@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StatusResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StatusResponse{}
+
 // StatusResponse Response model for connection check, configuration test and ping of source connectors.
 type StatusResponse struct {
 	// ID of the source
@@ -209,28 +212,26 @@ func (o *StatusResponse) SetDetails(v map[string]interface{}) {
 }
 
 func (o StatusResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o StatusResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !isNil(o.ElapsedMillis) {
-		toSerialize["elapsedMillis"] = o.ElapsedMillis
-	}
-	if !isNil(o.Details) {
-		toSerialize["details"] = o.Details
-	}
+	// skip: id is readOnly
+	// skip: name is readOnly
+	// skip: status is readOnly
+	// skip: elapsedMillis is readOnly
+	// skip: details is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *StatusResponse) UnmarshalJSON(bytes []byte) (err error) {

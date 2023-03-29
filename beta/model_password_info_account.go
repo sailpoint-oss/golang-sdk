@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordInfoAccount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordInfoAccount{}
+
 // PasswordInfoAccount struct for PasswordInfoAccount
 type PasswordInfoAccount struct {
 	// Account ID of the account. This is specified per account schema in the source configuration. It is used to distinguish accounts. More info can be found here https://community.sailpoint.com/t5/IdentityNow-Connectors/How-do-I-designate-an-account-attribute-as-the-Account-ID-for-a/ta-p/80350
@@ -107,6 +110,14 @@ func (o *PasswordInfoAccount) SetAccountName(v string) {
 }
 
 func (o PasswordInfoAccount) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PasswordInfoAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
@@ -119,7 +130,7 @@ func (o PasswordInfoAccount) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PasswordInfoAccount) UnmarshalJSON(bytes []byte) (err error) {

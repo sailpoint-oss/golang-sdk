@@ -114,8 +114,8 @@ func (a *RoleInsightsApiService) CreateRoleInsightRequestsExecute(r ApiCreateRol
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -125,8 +125,8 @@ func (a *RoleInsightsApiService) CreateRoleInsightRequestsExecute(r ApiCreateRol
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -136,8 +136,8 @@ func (a *RoleInsightsApiService) CreateRoleInsightRequestsExecute(r ApiCreateRol
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -147,8 +147,8 @@ func (a *RoleInsightsApiService) CreateRoleInsightRequestsExecute(r ApiCreateRol
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -222,17 +222,17 @@ func (a *RoleInsightsApiService) DownloadRoleInsightsEntitlementsChangesExecute(
 	}
 
 	localVarPath := localBasePath + "/role-insights/{insightId}/entitlement-changes/download"
-	localVarPath = strings.Replace(localVarPath, "{"+"insightId"+"}", url.PathEscape(parameterToString(r.insightId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"insightId"+"}", url.PathEscape(parameterValueToString(r.insightId, "insightId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sorters != nil {
-		localVarQueryParams.Add("sorters", parameterToString(*r.sorters, ""))
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	if r.filters != nil {
-		localVarQueryParams.Add("filters", parameterToString(*r.filters, ""))
+		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -280,8 +280,8 @@ func (a *RoleInsightsApiService) DownloadRoleInsightsEntitlementsChangesExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -291,8 +291,8 @@ func (a *RoleInsightsApiService) DownloadRoleInsightsEntitlementsChangesExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -302,8 +302,8 @@ func (a *RoleInsightsApiService) DownloadRoleInsightsEntitlementsChangesExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -313,8 +313,8 @@ func (a *RoleInsightsApiService) DownloadRoleInsightsEntitlementsChangesExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -419,30 +419,30 @@ func (a *RoleInsightsApiService) GetEntitlementChangesIdentitiesExecute(r ApiGet
 	}
 
 	localVarPath := localBasePath + "/role-insights/{insightId}/entitlement-changes/{entitlementId}/identities"
-	localVarPath = strings.Replace(localVarPath, "{"+"insightId"+"}", url.PathEscape(parameterToString(r.insightId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"entitlementId"+"}", url.PathEscape(parameterToString(r.entitlementId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"insightId"+"}", url.PathEscape(parameterValueToString(r.insightId, "insightId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"entitlementId"+"}", url.PathEscape(parameterValueToString(r.entitlementId, "entitlementId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.hasEntitlement != nil {
-		localVarQueryParams.Add("hasEntitlement", parameterToString(*r.hasEntitlement, ""))
+		parameterAddToQuery(localVarQueryParams, "hasEntitlement", r.hasEntitlement, "")
 	}
 	if r.offset != nil {
-		localVarQueryParams.Add("offset", parameterToString(*r.offset, ""))
+		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.count != nil {
-		localVarQueryParams.Add("count", parameterToString(*r.count, ""))
+		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
 	}
 	if r.sorters != nil {
-		localVarQueryParams.Add("sorters", parameterToString(*r.sorters, ""))
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	if r.filters != nil {
-		localVarQueryParams.Add("filters", parameterToString(*r.filters, ""))
+		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -490,8 +490,8 @@ func (a *RoleInsightsApiService) GetEntitlementChangesIdentitiesExecute(r ApiGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -501,8 +501,8 @@ func (a *RoleInsightsApiService) GetEntitlementChangesIdentitiesExecute(r ApiGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -512,8 +512,8 @@ func (a *RoleInsightsApiService) GetEntitlementChangesIdentitiesExecute(r ApiGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -523,8 +523,8 @@ func (a *RoleInsightsApiService) GetEntitlementChangesIdentitiesExecute(r ApiGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -584,7 +584,7 @@ func (a *RoleInsightsApiService) GetRoleInsightExecute(r ApiGetRoleInsightReques
 	}
 
 	localVarPath := localBasePath + "/role-insights/{insightId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"insightId"+"}", url.PathEscape(parameterToString(r.insightId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"insightId"+"}", url.PathEscape(parameterValueToString(r.insightId, "insightId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -636,8 +636,8 @@ func (a *RoleInsightsApiService) GetRoleInsightExecute(r ApiGetRoleInsightReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -647,8 +647,8 @@ func (a *RoleInsightsApiService) GetRoleInsightExecute(r ApiGetRoleInsightReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -658,8 +658,8 @@ func (a *RoleInsightsApiService) GetRoleInsightExecute(r ApiGetRoleInsightReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -669,8 +669,8 @@ func (a *RoleInsightsApiService) GetRoleInsightExecute(r ApiGetRoleInsightReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -768,19 +768,19 @@ func (a *RoleInsightsApiService) GetRoleInsightsExecute(r ApiGetRoleInsightsRequ
 	localVarFormParams := url.Values{}
 
 	if r.offset != nil {
-		localVarQueryParams.Add("offset", parameterToString(*r.offset, ""))
+		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
 	}
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.count != nil {
-		localVarQueryParams.Add("count", parameterToString(*r.count, ""))
+		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
 	}
 	if r.sorters != nil {
-		localVarQueryParams.Add("sorters", parameterToString(*r.sorters, ""))
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	if r.filters != nil {
-		localVarQueryParams.Add("filters", parameterToString(*r.filters, ""))
+		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -828,8 +828,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsExecute(r ApiGetRoleInsightsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -839,8 +839,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsExecute(r ApiGetRoleInsightsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -850,8 +850,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsExecute(r ApiGetRoleInsightsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -861,8 +861,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsExecute(r ApiGetRoleInsightsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -929,14 +929,14 @@ func (a *RoleInsightsApiService) GetRoleInsightsCurrentEntitlementsExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/role-insights/{insightId}/current-entitlements"
-	localVarPath = strings.Replace(localVarPath, "{"+"insightId"+"}", url.PathEscape(parameterToString(r.insightId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"insightId"+"}", url.PathEscape(parameterValueToString(r.insightId, "insightId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.filters != nil {
-		localVarQueryParams.Add("filters", parameterToString(*r.filters, ""))
+		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -984,8 +984,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsCurrentEntitlementsExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -995,8 +995,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsCurrentEntitlementsExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1006,8 +1006,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsCurrentEntitlementsExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1017,8 +1017,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsCurrentEntitlementsExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1092,17 +1092,17 @@ func (a *RoleInsightsApiService) GetRoleInsightsEntitlementsChangesExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/role-insights/{insightId}/entitlement-changes"
-	localVarPath = strings.Replace(localVarPath, "{"+"insightId"+"}", url.PathEscape(parameterToString(r.insightId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"insightId"+"}", url.PathEscape(parameterValueToString(r.insightId, "insightId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.sorters != nil {
-		localVarQueryParams.Add("sorters", parameterToString(*r.sorters, ""))
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	if r.filters != nil {
-		localVarQueryParams.Add("filters", parameterToString(*r.filters, ""))
+		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1150,8 +1150,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsEntitlementsChangesExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1161,8 +1161,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsEntitlementsChangesExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1172,8 +1172,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsEntitlementsChangesExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1183,8 +1183,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsEntitlementsChangesExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1244,7 +1244,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsi
 	}
 
 	localVarPath := localBasePath + "/role-insights/requests/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1296,8 +1296,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1307,8 +1307,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1318,8 +1318,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1329,8 +1329,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsi
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1438,8 +1438,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsSummaryExecute(r ApiGetRoleInsig
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1449,8 +1449,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsSummaryExecute(r ApiGetRoleInsig
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1460,8 +1460,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsSummaryExecute(r ApiGetRoleInsig
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1471,8 +1471,8 @@ func (a *RoleInsightsApiService) GetRoleInsightsSummaryExecute(r ApiGetRoleInsig
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputAccountsCollectedForAggregationStats type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputAccountsCollectedForAggregationStats{}
+
 // TriggerInputAccountsCollectedForAggregationStats Overall statistics about the account collection.
 type TriggerInputAccountsCollectedForAggregationStats struct {
 	// The number of accounts which were scanned / iterated over.
@@ -174,28 +177,26 @@ func (o *TriggerInputAccountsCollectedForAggregationStats) SetRemoved(v int32) {
 }
 
 func (o TriggerInputAccountsCollectedForAggregationStats) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputAccountsCollectedForAggregationStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["scanned"] = o.Scanned
-	}
-	if true {
-		toSerialize["unchanged"] = o.Unchanged
-	}
-	if true {
-		toSerialize["changed"] = o.Changed
-	}
-	if true {
-		toSerialize["added"] = o.Added
-	}
-	if true {
-		toSerialize["removed"] = o.Removed
-	}
+	toSerialize["scanned"] = o.Scanned
+	toSerialize["unchanged"] = o.Unchanged
+	toSerialize["changed"] = o.Changed
+	toSerialize["added"] = o.Added
+	toSerialize["removed"] = o.Removed
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputAccountsCollectedForAggregationStats) UnmarshalJSON(bytes []byte) (err error) {

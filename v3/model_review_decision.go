@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ReviewDecision type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReviewDecision{}
+
 // ReviewDecision struct for ReviewDecision
 type ReviewDecision struct {
 	// The id of the review decision
@@ -221,19 +224,21 @@ func (o *ReviewDecision) SetComments(v string) {
 }
 
 func (o ReviewDecision) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ReviewDecision) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["decision"] = o.Decision
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["decision"] = o.Decision
 	if !isNil(o.ProposedEndDate) {
 		toSerialize["proposedEndDate"] = o.ProposedEndDate
 	}
-	if true {
-		toSerialize["bulk"] = o.Bulk
-	}
+	toSerialize["bulk"] = o.Bulk
 	if !isNil(o.Recommendation) {
 		toSerialize["recommendation"] = o.Recommendation
 	}
@@ -245,7 +250,7 @@ func (o ReviewDecision) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ReviewDecision) UnmarshalJSON(bytes []byte) (err error) {

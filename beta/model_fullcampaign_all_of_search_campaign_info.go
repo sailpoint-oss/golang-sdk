@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FullcampaignAllOfSearchCampaignInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FullcampaignAllOfSearchCampaignInfo{}
+
 // FullcampaignAllOfSearchCampaignInfo Must be set only if the campaign type is SEARCH.
 type FullcampaignAllOfSearchCampaignInfo struct {
 	// The type of search campaign represented.
@@ -236,10 +239,16 @@ func (o *FullcampaignAllOfSearchCampaignInfo) SetAccessConstraints(v []AccessCon
 }
 
 func (o FullcampaignAllOfSearchCampaignInfo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FullcampaignAllOfSearchCampaignInfo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -260,7 +269,7 @@ func (o FullcampaignAllOfSearchCampaignInfo) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *FullcampaignAllOfSearchCampaignInfo) UnmarshalJSON(bytes []byte) (err error) {

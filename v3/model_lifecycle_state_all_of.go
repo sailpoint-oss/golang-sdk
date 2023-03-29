@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LifecycleStateAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LifecycleStateAllOf{}
+
 // LifecycleStateAllOf struct for LifecycleStateAllOf
 type LifecycleStateAllOf struct {
 	// Whether the lifecycle state is enabled or disabled.
@@ -268,19 +271,23 @@ func (o *LifecycleStateAllOf) SetAccessProfileIds(v []string) {
 }
 
 func (o LifecycleStateAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LifecycleStateAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if true {
-		toSerialize["technicalName"] = o.TechnicalName
-	}
+	toSerialize["technicalName"] = o.TechnicalName
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.IdentityCount) {
-		toSerialize["identityCount"] = o.IdentityCount
-	}
+	// skip: identityCount is readOnly
 	if !isNil(o.EmailNotificationOption) {
 		toSerialize["emailNotificationOption"] = o.EmailNotificationOption
 	}
@@ -295,7 +302,7 @@ func (o LifecycleStateAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *LifecycleStateAllOf) UnmarshalJSON(bytes []byte) (err error) {

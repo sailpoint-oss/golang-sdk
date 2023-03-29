@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the RoleMiningSessionResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningSessionResponse{}
+
 // RoleMiningSessionResponse struct for RoleMiningSessionResponse
 type RoleMiningSessionResponse struct {
 	Scope *RoleMiningSessionScope `json:"scope,omitempty"`
@@ -411,6 +414,14 @@ func (o *RoleMiningSessionResponse) SetType(v RoleMiningRoleType) {
 }
 
 func (o RoleMiningSessionResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningSessionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Scope) {
 		toSerialize["scope"] = o.Scope
@@ -450,7 +461,7 @@ func (o RoleMiningSessionResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningSessionResponse) UnmarshalJSON(bytes []byte) (err error) {

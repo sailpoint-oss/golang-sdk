@@ -6440,8 +6440,10 @@ paths:
               examples:
                 Slim Campaign:
                   $ref: '#/components/examples/SlimCampaigns'
+                  value: null
                 Full Campaign:
                   $ref: '#/components/examples/FullCampaigns'
+                  value: null
               schema:
                 items:
                   $ref: '#/components/schemas/getActiveCampaigns_200_response_inner'
@@ -6516,12 +6518,16 @@ paths:
             examples:
               Manager:
                 $ref: '#/components/examples/CreateCampaignManager'
+                value: null
               Search:
                 $ref: '#/components/examples/CreateCampaignSearch'
+                value: null
               Source Owner:
                 $ref: '#/components/examples/CreateCampaignSourceOwner'
+                value: null
               Role Composition:
                 $ref: '#/components/examples/CreateCampaignRoleComposition'
+                value: null
             schema:
               $ref: '#/components/schemas/Campaign'
         required: true
@@ -6532,12 +6538,16 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/FullCampaignManager'
+                  value: null
                 Search:
                   $ref: '#/components/examples/FullCampaignSearch'
+                  value: null
                 Source Owner:
                   $ref: '#/components/examples/FullCampaignSourceOwner'
+                  value: null
                 Role Composition:
                   $ref: '#/components/examples/FullCampaignRoleComposition'
+                  value: null
               schema:
                 $ref: '#/components/schemas/Campaign'
           description: Indicates that the campaign requested was successfully created
@@ -6719,12 +6729,16 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/SlimCampaignManager'
+                  value: null
                 Search:
                   $ref: '#/components/examples/SlimCampaignSearch'
+                  value: null
                 Source Owner:
                   $ref: '#/components/examples/SlimCampaignSourceOwner'
+                  value: null
                 RoleComposition:
                   $ref: '#/components/examples/SlimCampaignRoleComposition'
+                  value: null
               schema:
                 $ref: '#/components/schemas/slimcampaign'
           description: A campaign object
@@ -6853,12 +6867,16 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/SlimCampaignManager'
+                  value: null
                 Search:
                   $ref: '#/components/examples/SlimCampaignSearch'
+                  value: null
                 Source Owner:
                   $ref: '#/components/examples/SlimCampaignSourceOwner'
+                  value: null
                 RoleComposition:
                   $ref: '#/components/examples/SlimCampaignRoleComposition'
+                  value: null
               schema:
                 $ref: '#/components/schemas/slimcampaign'
           description: "Indicates the PATCH operation succeeded, and returns the campaign's\
@@ -7860,12 +7878,16 @@ paths:
             examples:
               Manager:
                 $ref: '#/components/examples/CreateCampaignTemplateManager'
+                value: null
               Search:
                 $ref: '#/components/examples/CreateCampaignTemplateSearch'
+                value: null
               Source Owner:
                 $ref: '#/components/examples/CreateCampaignTemplateSourceOwner'
+                value: null
               RoleComposition:
                 $ref: '#/components/examples/CreateCampaignTemplateRoleComposition'
+                value: null
             schema:
               $ref: '#/components/schemas/CampaignTemplate'
         required: true
@@ -7876,12 +7898,16 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/CampaignTemplateManager'
+                  value: null
                 Search:
                   $ref: '#/components/examples/CampaignTemplateSearch'
+                  value: null
                 Source Owner:
                   $ref: '#/components/examples/CampaignTemplateSourceOwner'
+                  value: null
                 RoleComposition:
                   $ref: '#/components/examples/CampaignTemplateRoleComposition'
+                  value: null
               schema:
                 $ref: '#/components/schemas/CampaignTemplate'
           description: Created successfully.
@@ -8055,12 +8081,16 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/CampaignTemplateManager'
+                  value: null
                 Search:
                   $ref: '#/components/examples/CampaignTemplateSearch'
+                  value: null
                 Source Owner:
                   $ref: '#/components/examples/CampaignTemplateSourceOwner'
+                  value: null
                 RoleComposition:
                   $ref: '#/components/examples/CampaignTemplateRoleComposition'
+                  value: null
               schema:
                 $ref: '#/components/schemas/CampaignTemplate'
           description: The data for the campaign matching the given ID.
@@ -8183,12 +8213,16 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/CampaignTemplateManager'
+                  value: null
                 Search:
                   $ref: '#/components/examples/CampaignTemplateSearch'
+                  value: null
                 Source Owner:
                   $ref: '#/components/examples/CampaignTemplateSourceOwner'
+                  value: null
                 RoleComposition:
                   $ref: '#/components/examples/CampaignTemplateRoleComposition'
+                  value: null
               schema:
                 $ref: '#/components/schemas/CampaignTemplate'
           description: "Indicates the PATCH operation succeeded, and returns the template's\

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NonEmployeeSourceWithNECountAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeSourceWithNECountAllOf{}
+
 // NonEmployeeSourceWithNECountAllOf struct for NonEmployeeSourceWithNECountAllOf
 type NonEmployeeSourceWithNECountAllOf struct {
 	// Number of non-employee records associated with this source.
@@ -73,6 +76,14 @@ func (o *NonEmployeeSourceWithNECountAllOf) SetNonEmployeeCount(v int32) {
 }
 
 func (o NonEmployeeSourceWithNECountAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeSourceWithNECountAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.NonEmployeeCount) {
 		toSerialize["nonEmployeeCount"] = o.NonEmployeeCount
@@ -82,7 +93,7 @@ func (o NonEmployeeSourceWithNECountAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeSourceWithNECountAllOf) UnmarshalJSON(bytes []byte) (err error) {

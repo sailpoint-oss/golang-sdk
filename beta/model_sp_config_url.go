@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SpConfigUrl type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpConfigUrl{}
+
 // SpConfigUrl Format of resolver URLs for Object Configurations
 type SpConfigUrl struct {
 	// URL for the target object endpoint.
@@ -108,6 +111,14 @@ func (o *SpConfigUrl) SetQuery(v map[string]interface{}) {
 }
 
 func (o SpConfigUrl) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SpConfigUrl) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Url) {
 		toSerialize["url"] = o.Url
@@ -120,7 +131,7 @@ func (o SpConfigUrl) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SpConfigUrl) UnmarshalJSON(bytes []byte) (err error) {

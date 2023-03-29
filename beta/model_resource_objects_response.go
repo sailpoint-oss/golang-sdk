@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ResourceObjectsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ResourceObjectsResponse{}
+
 // ResourceObjectsResponse Response model for peek resource objects from source connectors.
 type ResourceObjectsResponse struct {
 	// ID of the source
@@ -209,28 +212,26 @@ func (o *ResourceObjectsResponse) SetResourceObjects(v []ResourceObject) {
 }
 
 func (o ResourceObjectsResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ResourceObjectsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.ObjectCount) {
-		toSerialize["objectCount"] = o.ObjectCount
-	}
-	if !isNil(o.ElapsedMillis) {
-		toSerialize["elapsedMillis"] = o.ElapsedMillis
-	}
-	if !isNil(o.ResourceObjects) {
-		toSerialize["resourceObjects"] = o.ResourceObjects
-	}
+	// skip: id is readOnly
+	// skip: name is readOnly
+	// skip: objectCount is readOnly
+	// skip: elapsedMillis is readOnly
+	// skip: resourceObjects is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ResourceObjectsResponse) UnmarshalJSON(bytes []byte) (err error) {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AccountsCollectedForAggregation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountsCollectedForAggregation{}
+
 // AccountsCollectedForAggregation struct for AccountsCollectedForAggregation
 type AccountsCollectedForAggregation struct {
 	Source TriggerInputAccountsCollectedForAggregationSource `json:"source"`
@@ -231,34 +234,32 @@ func (o *AccountsCollectedForAggregation) SetStats(v TriggerInputAccountsCollect
 }
 
 func (o AccountsCollectedForAggregation) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountsCollectedForAggregation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["source"] = o.Source
-	}
-	if true {
-		toSerialize["status"] = o.Status
-	}
-	if true {
-		toSerialize["started"] = o.Started
-	}
-	if true {
-		toSerialize["completed"] = o.Completed
-	}
+	toSerialize["source"] = o.Source
+	toSerialize["status"] = o.Status
+	toSerialize["started"] = o.Started
+	toSerialize["completed"] = o.Completed
 	if o.Errors != nil {
 		toSerialize["errors"] = o.Errors
 	}
 	if o.Warnings != nil {
 		toSerialize["warnings"] = o.Warnings
 	}
-	if true {
-		toSerialize["stats"] = o.Stats
-	}
+	toSerialize["stats"] = o.Stats
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountsCollectedForAggregation) UnmarshalJSON(bytes []byte) (err error) {

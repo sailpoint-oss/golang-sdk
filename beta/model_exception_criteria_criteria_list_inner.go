@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ExceptionCriteriaCriteriaListInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExceptionCriteriaCriteriaListInner{}
+
 // ExceptionCriteriaCriteriaListInner The types of objects supported for SOD violations
 type ExceptionCriteriaCriteriaListInner struct {
 	// The type of object that is referenced
@@ -175,6 +178,14 @@ func (o *ExceptionCriteriaCriteriaListInner) SetExisting(v bool) {
 }
 
 func (o ExceptionCriteriaCriteriaListInner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ExceptionCriteriaCriteriaListInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -193,7 +204,7 @@ func (o ExceptionCriteriaCriteriaListInner) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ExceptionCriteriaCriteriaListInner) UnmarshalJSON(bytes []byte) (err error) {

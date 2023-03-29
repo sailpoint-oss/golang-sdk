@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ScheduleMonths type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ScheduleMonths{}
+
 // ScheduleMonths Specifies which months of a schedule are active. Only valid for ANNUALLY schedule types. Examples:  On February and March: * type LIST * values \"2\", \"3\"  Every 3 months, starting in January (quarterly): * type LIST * values \"1\" * interval 3  Every two months between July and December: * type RANGE * values \"7\", \"12\" * interval 2 
 type ScheduleMonths struct {
 	Type string `json:"type"`
@@ -124,13 +127,17 @@ func (o *ScheduleMonths) SetInterval(v int32) {
 }
 
 func (o ScheduleMonths) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ScheduleMonths) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["values"] = o.Values
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["values"] = o.Values
 	if !isNil(o.Interval) {
 		toSerialize["interval"] = o.Interval
 	}
@@ -139,7 +146,7 @@ func (o ScheduleMonths) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ScheduleMonths) UnmarshalJSON(bytes []byte) (err error) {

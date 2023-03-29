@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputProvisioningCompletedAccountRequestsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputProvisioningCompletedAccountRequestsInner{}
+
 // TriggerInputProvisioningCompletedAccountRequestsInner struct for TriggerInputProvisioningCompletedAccountRequestsInner
 type TriggerInputProvisioningCompletedAccountRequestsInner struct {
 	Source TriggerInputProvisioningCompletedAccountRequestsInnerSource `json:"source"`
@@ -259,22 +262,22 @@ func (o *TriggerInputProvisioningCompletedAccountRequestsInner) SetAttributeRequ
 }
 
 func (o TriggerInputProvisioningCompletedAccountRequestsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["source"] = o.Source
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputProvisioningCompletedAccountRequestsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["source"] = o.Source
 	if !isNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
-	if true {
-		toSerialize["accountOperation"] = o.AccountOperation
-	}
-	if true {
-		toSerialize["provisioningResult"] = o.ProvisioningResult
-	}
-	if true {
-		toSerialize["provisioningTarget"] = o.ProvisioningTarget
-	}
+	toSerialize["accountOperation"] = o.AccountOperation
+	toSerialize["provisioningResult"] = o.ProvisioningResult
+	toSerialize["provisioningTarget"] = o.ProvisioningTarget
 	if o.TicketId.IsSet() {
 		toSerialize["ticketId"] = o.TicketId.Get()
 	}
@@ -286,7 +289,7 @@ func (o TriggerInputProvisioningCompletedAccountRequestsInner) MarshalJSON() ([]
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputProvisioningCompletedAccountRequestsInner) UnmarshalJSON(bytes []byte) (err error) {

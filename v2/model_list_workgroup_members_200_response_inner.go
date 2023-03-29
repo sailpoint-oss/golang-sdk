@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ListWorkgroupMembers200ResponseInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListWorkgroupMembers200ResponseInner{}
+
 // ListWorkgroupMembers200ResponseInner struct for ListWorkgroupMembers200ResponseInner
 type ListWorkgroupMembers200ResponseInner struct {
 	Alias *string `json:"alias,omitempty"`
@@ -204,6 +207,14 @@ func (o *ListWorkgroupMembers200ResponseInner) SetName(v string) {
 }
 
 func (o ListWorkgroupMembers200ResponseInner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ListWorkgroupMembers200ResponseInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Alias) {
 		toSerialize["alias"] = o.Alias
@@ -225,7 +236,7 @@ func (o ListWorkgroupMembers200ResponseInner) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ListWorkgroupMembers200ResponseInner) UnmarshalJSON(bytes []byte) (err error) {

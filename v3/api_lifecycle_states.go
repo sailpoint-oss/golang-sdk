@@ -74,7 +74,7 @@ func (a *LifecycleStatesApiService) CreateLifecycleStateExecute(r ApiCreateLifec
 	}
 
 	localVarPath := localBasePath + "/identity-profiles/{identity-profile-id}/lifecycle-states"
-	localVarPath = strings.Replace(localVarPath, "{"+"identity-profile-id"+"}", url.PathEscape(parameterToString(r.identityProfileId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identity-profile-id"+"}", url.PathEscape(parameterValueToString(r.identityProfileId, "identityProfileId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -131,8 +131,8 @@ func (a *LifecycleStatesApiService) CreateLifecycleStateExecute(r ApiCreateLifec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -142,8 +142,8 @@ func (a *LifecycleStatesApiService) CreateLifecycleStateExecute(r ApiCreateLifec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -153,8 +153,8 @@ func (a *LifecycleStatesApiService) CreateLifecycleStateExecute(r ApiCreateLifec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -164,8 +164,8 @@ func (a *LifecycleStatesApiService) CreateLifecycleStateExecute(r ApiCreateLifec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -175,8 +175,8 @@ func (a *LifecycleStatesApiService) CreateLifecycleStateExecute(r ApiCreateLifec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -240,8 +240,8 @@ func (a *LifecycleStatesApiService) DeleteLifecycleStateExecute(r ApiDeleteLifec
 	}
 
 	localVarPath := localBasePath + "/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"identity-profile-id"+"}", url.PathEscape(parameterToString(r.identityProfileId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"lifecycle-state-id"+"}", url.PathEscape(parameterToString(r.lifecycleStateId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identity-profile-id"+"}", url.PathEscape(parameterValueToString(r.identityProfileId, "identityProfileId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"lifecycle-state-id"+"}", url.PathEscape(parameterValueToString(r.lifecycleStateId, "lifecycleStateId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -293,8 +293,8 @@ func (a *LifecycleStatesApiService) DeleteLifecycleStateExecute(r ApiDeleteLifec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -304,8 +304,8 @@ func (a *LifecycleStatesApiService) DeleteLifecycleStateExecute(r ApiDeleteLifec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -315,8 +315,8 @@ func (a *LifecycleStatesApiService) DeleteLifecycleStateExecute(r ApiDeleteLifec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -326,8 +326,8 @@ func (a *LifecycleStatesApiService) DeleteLifecycleStateExecute(r ApiDeleteLifec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -337,8 +337,8 @@ func (a *LifecycleStatesApiService) DeleteLifecycleStateExecute(r ApiDeleteLifec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -348,8 +348,8 @@ func (a *LifecycleStatesApiService) DeleteLifecycleStateExecute(r ApiDeleteLifec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -413,8 +413,8 @@ func (a *LifecycleStatesApiService) GetLifecycleStateExecute(r ApiGetLifecycleSt
 	}
 
 	localVarPath := localBasePath + "/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"identity-profile-id"+"}", url.PathEscape(parameterToString(r.identityProfileId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"lifecycle-state-id"+"}", url.PathEscape(parameterToString(r.lifecycleStateId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identity-profile-id"+"}", url.PathEscape(parameterValueToString(r.identityProfileId, "identityProfileId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"lifecycle-state-id"+"}", url.PathEscape(parameterValueToString(r.lifecycleStateId, "lifecycleStateId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -466,8 +466,8 @@ func (a *LifecycleStatesApiService) GetLifecycleStateExecute(r ApiGetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -477,8 +477,8 @@ func (a *LifecycleStatesApiService) GetLifecycleStateExecute(r ApiGetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -488,8 +488,8 @@ func (a *LifecycleStatesApiService) GetLifecycleStateExecute(r ApiGetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -499,8 +499,8 @@ func (a *LifecycleStatesApiService) GetLifecycleStateExecute(r ApiGetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -510,8 +510,8 @@ func (a *LifecycleStatesApiService) GetLifecycleStateExecute(r ApiGetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -521,8 +521,8 @@ func (a *LifecycleStatesApiService) GetLifecycleStateExecute(r ApiGetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -611,23 +611,23 @@ func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycl
 	}
 
 	localVarPath := localBasePath + "/identity-profiles/{identity-profile-id}/lifecycle-states"
-	localVarPath = strings.Replace(localVarPath, "{"+"identity-profile-id"+"}", url.PathEscape(parameterToString(r.identityProfileId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identity-profile-id"+"}", url.PathEscape(parameterValueToString(r.identityProfileId, "identityProfileId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.offset != nil {
-		localVarQueryParams.Add("offset", parameterToString(*r.offset, ""))
+		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
 	}
 	if r.count != nil {
-		localVarQueryParams.Add("count", parameterToString(*r.count, ""))
+		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
 	}
 	if r.sorters != nil {
-		localVarQueryParams.Add("sorters", parameterToString(*r.sorters, ""))
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -675,8 +675,8 @@ func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -686,8 +686,8 @@ func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -697,8 +697,8 @@ func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -708,8 +708,8 @@ func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -719,8 +719,8 @@ func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -787,7 +787,7 @@ func (a *LifecycleStatesApiService) SetLifecycleStateExecute(r ApiSetLifecycleSt
 	}
 
 	localVarPath := localBasePath + "/identities/{identity-id}/set-lifecycle-state"
-	localVarPath = strings.Replace(localVarPath, "{"+"identity-id"+"}", url.PathEscape(parameterToString(r.identityId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identity-id"+"}", url.PathEscape(parameterValueToString(r.identityId, "identityId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -844,8 +844,8 @@ func (a *LifecycleStatesApiService) SetLifecycleStateExecute(r ApiSetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -855,8 +855,8 @@ func (a *LifecycleStatesApiService) SetLifecycleStateExecute(r ApiSetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -866,8 +866,8 @@ func (a *LifecycleStatesApiService) SetLifecycleStateExecute(r ApiSetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -877,8 +877,8 @@ func (a *LifecycleStatesApiService) SetLifecycleStateExecute(r ApiSetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -888,8 +888,8 @@ func (a *LifecycleStatesApiService) SetLifecycleStateExecute(r ApiSetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -899,8 +899,8 @@ func (a *LifecycleStatesApiService) SetLifecycleStateExecute(r ApiSetLifecycleSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -971,8 +971,8 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 	}
 
 	localVarPath := localBasePath + "/identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"identity-profile-id"+"}", url.PathEscape(parameterToString(r.identityProfileId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"lifecycle-state-id"+"}", url.PathEscape(parameterToString(r.lifecycleStateId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identity-profile-id"+"}", url.PathEscape(parameterValueToString(r.identityProfileId, "identityProfileId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"lifecycle-state-id"+"}", url.PathEscape(parameterValueToString(r.lifecycleStateId, "lifecycleStateId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1029,8 +1029,8 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1040,8 +1040,8 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1051,8 +1051,8 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1062,8 +1062,8 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -1073,8 +1073,8 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1084,8 +1084,8 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

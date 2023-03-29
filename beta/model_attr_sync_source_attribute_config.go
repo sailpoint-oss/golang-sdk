@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AttrSyncSourceAttributeConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AttrSyncSourceAttributeConfig{}
+
 // AttrSyncSourceAttributeConfig Specification of source attribute sync mapping configuration for an identity attribute
 type AttrSyncSourceAttributeConfig struct {
 	// Name of the identity attribute
@@ -147,25 +150,25 @@ func (o *AttrSyncSourceAttributeConfig) SetTarget(v string) {
 }
 
 func (o AttrSyncSourceAttributeConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AttrSyncSourceAttributeConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if true {
-		toSerialize["target"] = o.Target
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["enabled"] = o.Enabled
+	toSerialize["target"] = o.Target
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AttrSyncSourceAttributeConfig) UnmarshalJSON(bytes []byte) (err error) {

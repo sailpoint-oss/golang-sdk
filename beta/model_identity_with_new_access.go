@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityWithNewAccess type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityWithNewAccess{}
+
 // IdentityWithNewAccess An identity with a set of access to be added
 type IdentityWithNewAccess struct {
 	// Identity id to be checked.
@@ -93,19 +96,23 @@ func (o *IdentityWithNewAccess) SetAccessRefs(v []IdentityWithNewAccessAccessRef
 }
 
 func (o IdentityWithNewAccess) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityWithNewAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["identityId"] = o.IdentityId
-	}
-	if true {
-		toSerialize["accessRefs"] = o.AccessRefs
-	}
+	toSerialize["identityId"] = o.IdentityId
+	toSerialize["accessRefs"] = o.AccessRefs
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityWithNewAccess) UnmarshalJSON(bytes []byte) (err error) {

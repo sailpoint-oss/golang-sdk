@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FieldAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FieldAllOf{}
+
 // FieldAllOf struct for FieldAllOf
 type FieldAllOf struct {
 	// Display name of the field
@@ -209,6 +212,14 @@ func (o *FieldAllOf) SetValue(v map[string]interface{}) {
 }
 
 func (o FieldAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FieldAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
@@ -230,7 +241,7 @@ func (o FieldAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *FieldAllOf) UnmarshalJSON(bytes []byte) (err error) {

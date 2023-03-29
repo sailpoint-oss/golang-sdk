@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FullcampaignAllOfSourcesWithOrphanEntitlements type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FullcampaignAllOfSourcesWithOrphanEntitlements{}
+
 // FullcampaignAllOfSourcesWithOrphanEntitlements struct for FullcampaignAllOfSourcesWithOrphanEntitlements
 type FullcampaignAllOfSourcesWithOrphanEntitlements struct {
 	// Id of the source
@@ -141,6 +144,14 @@ func (o *FullcampaignAllOfSourcesWithOrphanEntitlements) SetName(v string) {
 }
 
 func (o FullcampaignAllOfSourcesWithOrphanEntitlements) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FullcampaignAllOfSourcesWithOrphanEntitlements) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -156,7 +167,7 @@ func (o FullcampaignAllOfSourcesWithOrphanEntitlements) MarshalJSON() ([]byte, e
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *FullcampaignAllOfSourcesWithOrphanEntitlements) UnmarshalJSON(bytes []byte) (err error) {

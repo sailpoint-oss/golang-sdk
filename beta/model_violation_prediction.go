@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ViolationPrediction type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ViolationPrediction{}
+
 // ViolationPrediction An object containing a listing of the SOD violation reasons detected by this check.
 type ViolationPrediction struct {
 	// List of Violation Contexts
@@ -73,6 +76,14 @@ func (o *ViolationPrediction) SetViolationContexts(v []ViolationContext) {
 }
 
 func (o ViolationPrediction) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ViolationPrediction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ViolationContexts) {
 		toSerialize["violationContexts"] = o.ViolationContexts
@@ -82,7 +93,7 @@ func (o ViolationPrediction) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ViolationPrediction) UnmarshalJSON(bytes []byte) (err error) {

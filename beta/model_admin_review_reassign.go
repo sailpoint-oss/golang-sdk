@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AdminReviewReassign type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AdminReviewReassign{}
+
 // AdminReviewReassign struct for AdminReviewReassign
 type AdminReviewReassign struct {
 	// List of certification IDs to reassign
@@ -140,6 +143,14 @@ func (o *AdminReviewReassign) SetReason(v string) {
 }
 
 func (o AdminReviewReassign) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AdminReviewReassign) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CertificationIds) {
 		toSerialize["certificationIds"] = o.CertificationIds
@@ -155,7 +166,7 @@ func (o AdminReviewReassign) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AdminReviewReassign) UnmarshalJSON(bytes []byte) (err error) {

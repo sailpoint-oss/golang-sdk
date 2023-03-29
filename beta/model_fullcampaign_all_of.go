@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the FullcampaignAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FullcampaignAllOf{}
+
 // FullcampaignAllOf struct for FullcampaignAllOf
 type FullcampaignAllOf struct {
 	// Created time of the campaign
@@ -448,13 +451,17 @@ func (o *FullcampaignAllOf) SetSourcesWithOrphanEntitlements(v []FullcampaignAll
 }
 
 func (o FullcampaignAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FullcampaignAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
+	// skip: created is readOnly
+	// skip: modified is readOnly
 	if !isNil(o.CorrelatedStatus) {
 		toSerialize["correlatedStatus"] = o.CorrelatedStatus
 	}
@@ -473,24 +480,16 @@ func (o FullcampaignAllOf) MarshalJSON() ([]byte, error) {
 	if !isNil(o.RoleCompositionCampaignInfo) {
 		toSerialize["roleCompositionCampaignInfo"] = o.RoleCompositionCampaignInfo
 	}
-	if !isNil(o.Alerts) {
-		toSerialize["alerts"] = o.Alerts
-	}
-	if !isNil(o.TotalCertifications) {
-		toSerialize["totalCertifications"] = o.TotalCertifications
-	}
-	if !isNil(o.CompletedCertifications) {
-		toSerialize["completedCertifications"] = o.CompletedCertifications
-	}
-	if !isNil(o.SourcesWithOrphanEntitlements) {
-		toSerialize["sourcesWithOrphanEntitlements"] = o.SourcesWithOrphanEntitlements
-	}
+	// skip: alerts is readOnly
+	// skip: totalCertifications is readOnly
+	// skip: completedCertifications is readOnly
+	// skip: sourcesWithOrphanEntitlements is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *FullcampaignAllOf) UnmarshalJSON(bytes []byte) (err error) {

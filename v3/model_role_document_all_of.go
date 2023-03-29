@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleDocumentAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleDocumentAllOf{}
+
 // RoleDocumentAllOf struct for RoleDocumentAllOf
 type RoleDocumentAllOf struct {
 	AccessProfiles []Reference `json:"accessProfiles,omitempty"`
@@ -138,6 +141,14 @@ func (o *RoleDocumentAllOf) SetTags(v []string) {
 }
 
 func (o RoleDocumentAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleDocumentAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccessProfiles) {
 		toSerialize["accessProfiles"] = o.AccessProfiles
@@ -153,7 +164,7 @@ func (o RoleDocumentAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleDocumentAllOf) UnmarshalJSON(bytes []byte) (err error) {

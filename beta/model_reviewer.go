@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Reviewer type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Reviewer{}
+
 // Reviewer Details of the reviewer for certification.
 type Reviewer struct {
 	// The type of object that the reviewer is.
@@ -164,25 +167,27 @@ func (o *Reviewer) SetName(v string) {
 }
 
 func (o Reviewer) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Reviewer) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Reviewer) UnmarshalJSON(bytes []byte) (err error) {

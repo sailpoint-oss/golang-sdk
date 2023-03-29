@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputCampaignGenerated type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputCampaignGenerated{}
+
 // TriggerInputCampaignGenerated struct for TriggerInputCampaignGenerated
 type TriggerInputCampaignGenerated struct {
 	Campaign TriggerInputCampaignGeneratedCampaign `json:"campaign"`
@@ -65,16 +68,22 @@ func (o *TriggerInputCampaignGenerated) SetCampaign(v TriggerInputCampaignGenera
 }
 
 func (o TriggerInputCampaignGenerated) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["campaign"] = o.Campaign
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputCampaignGenerated) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["campaign"] = o.Campaign
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputCampaignGenerated) UnmarshalJSON(bytes []byte) (err error) {

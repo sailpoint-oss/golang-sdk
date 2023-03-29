@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ForwardApprovalDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ForwardApprovalDto{}
+
 // ForwardApprovalDto struct for ForwardApprovalDto
 type ForwardApprovalDto struct {
 	// The Id of the new owner
@@ -93,19 +96,23 @@ func (o *ForwardApprovalDto) SetComment(v string) {
 }
 
 func (o ForwardApprovalDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ForwardApprovalDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["newOwnerId"] = o.NewOwnerId
-	}
-	if true {
-		toSerialize["comment"] = o.Comment
-	}
+	toSerialize["newOwnerId"] = o.NewOwnerId
+	toSerialize["comment"] = o.Comment
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ForwardApprovalDto) UnmarshalJSON(bytes []byte) (err error) {

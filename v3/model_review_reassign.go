@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ReviewReassign type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReviewReassign{}
+
 // ReviewReassign struct for ReviewReassign
 type ReviewReassign struct {
 	Reassign []ReassignReference `json:"reassign"`
@@ -119,22 +122,24 @@ func (o *ReviewReassign) SetReason(v string) {
 }
 
 func (o ReviewReassign) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ReviewReassign) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["reassign"] = o.Reassign
-	}
-	if true {
-		toSerialize["reassignTo"] = o.ReassignTo
-	}
-	if true {
-		toSerialize["reason"] = o.Reason
-	}
+	toSerialize["reassign"] = o.Reassign
+	toSerialize["reassignTo"] = o.ReassignTo
+	toSerialize["reason"] = o.Reason
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ReviewReassign) UnmarshalJSON(bytes []byte) (err error) {

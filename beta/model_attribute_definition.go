@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AttributeDefinition type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AttributeDefinition{}
+
 // AttributeDefinition struct for AttributeDefinition
 type AttributeDefinition struct {
 	// The name of the attribute.
@@ -275,6 +278,14 @@ func (o *AttributeDefinition) SetIsGroup(v bool) {
 }
 
 func (o AttributeDefinition) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AttributeDefinition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -302,7 +313,7 @@ func (o AttributeDefinition) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AttributeDefinition) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CompleteInvocation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CompleteInvocation{}
+
 // CompleteInvocation struct for CompleteInvocation
 type CompleteInvocation struct {
 	// Unique invocation secret that was generated when the invocation was created. Required to authenticate to the endpoint.
@@ -127,22 +130,26 @@ func (o *CompleteInvocation) SetOutput(v map[string]interface{}) {
 }
 
 func (o CompleteInvocation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["secret"] = o.Secret
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CompleteInvocation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["secret"] = o.Secret
 	if !isNil(o.Error) {
 		toSerialize["error"] = o.Error
 	}
-	if true {
-		toSerialize["output"] = o.Output
-	}
+	toSerialize["output"] = o.Output
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CompleteInvocation) UnmarshalJSON(bytes []byte) (err error) {

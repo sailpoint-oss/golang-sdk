@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessItemRef type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessItemRef{}
+
 // AccessItemRef struct for AccessItemRef
 type AccessItemRef struct {
 	// The ID of the access item for which to retrieve the recommendation
@@ -107,6 +110,14 @@ func (o *AccessItemRef) SetType(v string) {
 }
 
 func (o AccessItemRef) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessItemRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -119,7 +130,7 @@ func (o AccessItemRef) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessItemRef) UnmarshalJSON(bytes []byte) (err error) {

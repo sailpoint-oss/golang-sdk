@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectorRuleResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectorRuleResponse{}
+
 // ConnectorRuleResponse ConnectorRuleResponse
 type ConnectorRuleResponse struct {
 	// the name of the rule
@@ -308,31 +311,29 @@ func (o *ConnectorRuleResponse) SetModified(v string) {
 }
 
 func (o ConnectorRuleResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ConnectorRuleResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["type"] = o.Type
 	if !isNil(o.Signature) {
 		toSerialize["signature"] = o.Signature
 	}
-	if true {
-		toSerialize["sourceCode"] = o.SourceCode
-	}
+	toSerialize["sourceCode"] = o.SourceCode
 	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["created"] = o.Created
 	if !isNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
@@ -341,7 +342,7 @@ func (o ConnectorRuleResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ConnectorRuleResponse) UnmarshalJSON(bytes []byte) (err error) {

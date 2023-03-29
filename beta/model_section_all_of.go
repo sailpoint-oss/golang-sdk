@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SectionAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SectionAllOf{}
+
 // SectionAllOf struct for SectionAllOf
 type SectionAllOf struct {
 	// Label of the section
@@ -107,6 +110,14 @@ func (o *SectionAllOf) SetFormItems(v []map[string]interface{}) {
 }
 
 func (o SectionAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SectionAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Label) {
 		toSerialize["label"] = o.Label
@@ -119,7 +130,7 @@ func (o SectionAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SectionAllOf) UnmarshalJSON(bytes []byte) (err error) {

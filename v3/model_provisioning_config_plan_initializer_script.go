@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProvisioningConfigPlanInitializerScript type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProvisioningConfigPlanInitializerScript{}
+
 // ProvisioningConfigPlanInitializerScript This is a reference to a plan initializer script.
 type ProvisioningConfigPlanInitializerScript struct {
 	// This is a Rule that allows provisioning instruction changes.
@@ -73,6 +76,14 @@ func (o *ProvisioningConfigPlanInitializerScript) SetSource(v string) {
 }
 
 func (o ProvisioningConfigPlanInitializerScript) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProvisioningConfigPlanInitializerScript) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Source) {
 		toSerialize["source"] = o.Source
@@ -82,7 +93,7 @@ func (o ProvisioningConfigPlanInitializerScript) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ProvisioningConfigPlanInitializerScript) UnmarshalJSON(bytes []byte) (err error) {

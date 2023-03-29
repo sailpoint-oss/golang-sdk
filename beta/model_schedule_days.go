@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ScheduleDays type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ScheduleDays{}
+
 // ScheduleDays Specifies which day(s) a schedule is active for. This is required for all schedule types except DAILY. The \"values\" field holds different data depending on the type of schedule: * WEEKLY: days of the week (1-7) * MONTHLY: days of the month (1-31, L, L-1...) * ANNUALLY: if the \"months\" field is also set: days of the month (1-31, L, L-1...); otherwise: ISO-8601 dates without year (\"--12-31\") * CALENDAR: ISO-8601 dates (\"2020-12-31\")  Note that CALENDAR only supports the LIST type, and ANNUALLY does not support the RANGE type when provided with ISO-8601 dates without year.  Examples:  On Sundays: * type LIST * values \"1\"  The second to last day of the month: * type LIST * values \"L-1\"  From the 20th to the last day of the month: * type RANGE * values \"20\", \"L\"  Every March 2nd: * type LIST * values \"--03-02\"  On March 2nd, 2021: * type: LIST * values \"2021-03-02\" 
 type ScheduleDays struct {
 	Type string `json:"type"`
@@ -124,13 +127,17 @@ func (o *ScheduleDays) SetInterval(v int32) {
 }
 
 func (o ScheduleDays) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ScheduleDays) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["values"] = o.Values
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["values"] = o.Values
 	if !isNil(o.Interval) {
 		toSerialize["interval"] = o.Interval
 	}
@@ -139,7 +146,7 @@ func (o ScheduleDays) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ScheduleDays) UnmarshalJSON(bytes []byte) (err error) {

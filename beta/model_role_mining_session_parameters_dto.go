@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMiningSessionParametersDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningSessionParametersDto{}
+
 // RoleMiningSessionParametersDto struct for RoleMiningSessionParametersDto
 type RoleMiningSessionParametersDto struct {
 	// Minimum number of identities in a potential role
@@ -241,6 +244,14 @@ func (o *RoleMiningSessionParametersDto) SetType(v RoleMiningRoleType) {
 }
 
 func (o RoleMiningSessionParametersDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningSessionParametersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.MinNumIdentitiesInPotentialRole) {
 		toSerialize["minNumIdentitiesInPotentialRole"] = o.MinNumIdentitiesInPotentialRole
@@ -265,7 +276,7 @@ func (o RoleMiningSessionParametersDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningSessionParametersDto) UnmarshalJSON(bytes []byte) (err error) {

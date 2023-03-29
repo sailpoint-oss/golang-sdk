@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ExpansionItem type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExpansionItem{}
+
 // ExpansionItem struct for ExpansionItem
 type ExpansionItem struct {
 	// The ID of the account
@@ -206,6 +209,14 @@ func (o *ExpansionItem) SetSource(v AccountSource) {
 }
 
 func (o ExpansionItem) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ExpansionItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
@@ -227,7 +238,7 @@ func (o ExpansionItem) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ExpansionItem) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordDigitToken type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordDigitToken{}
+
 // PasswordDigitToken struct for PasswordDigitToken
 type PasswordDigitToken struct {
 	// The digit token for password management
@@ -107,6 +110,14 @@ func (o *PasswordDigitToken) SetRequestId(v string) {
 }
 
 func (o PasswordDigitToken) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PasswordDigitToken) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.DigitToken) {
 		toSerialize["digitToken"] = o.DigitToken
@@ -119,7 +130,7 @@ func (o PasswordDigitToken) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PasswordDigitToken) UnmarshalJSON(bytes []byte) (err error) {

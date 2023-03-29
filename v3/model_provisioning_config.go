@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProvisioningConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProvisioningConfig{}
+
 // ProvisioningConfig Specification of a Service Desk integration provisioning configuration.
 type ProvisioningConfig struct {
 	// Specifies whether this configuration is used to manage provisioning requests for all sources from the org.  If true, no managedResourceRefs are allowed.
@@ -140,10 +143,16 @@ func (o *ProvisioningConfig) SetPlanInitializerScript(v ProvisioningConfigPlanIn
 }
 
 func (o ProvisioningConfig) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.UniversalManager) {
-		toSerialize["universalManager"] = o.UniversalManager
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProvisioningConfig) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: universalManager is readOnly
 	if !isNil(o.ManagedResourceRefs) {
 		toSerialize["managedResourceRefs"] = o.ManagedResourceRefs
 	}
@@ -155,7 +164,7 @@ func (o ProvisioningConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ProvisioningConfig) UnmarshalJSON(bytes []byte) (err error) {

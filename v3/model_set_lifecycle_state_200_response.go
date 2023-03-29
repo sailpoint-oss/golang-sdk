@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SetLifecycleState200Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SetLifecycleState200Response{}
+
 // SetLifecycleState200Response struct for SetLifecycleState200Response
 type SetLifecycleState200Response struct {
 	// The ID of the IdentityRequest object that was generated when the workflow launches
@@ -73,6 +76,14 @@ func (o *SetLifecycleState200Response) SetAccountActivityId(v string) {
 }
 
 func (o SetLifecycleState200Response) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SetLifecycleState200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccountActivityId) {
 		toSerialize["accountActivityId"] = o.AccountActivityId
@@ -82,7 +93,7 @@ func (o SetLifecycleState200Response) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SetLifecycleState200Response) UnmarshalJSON(bytes []byte) (err error) {

@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the ScheduledSearch type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ScheduledSearch{}
 
 // ScheduledSearch struct for ScheduledSearch
 type ScheduledSearch struct {
@@ -474,37 +477,29 @@ func (o *ScheduledSearch) SetDisplayQueryDetails(v bool) {
 }
 
 func (o ScheduledSearch) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ScheduledSearch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["owner"] = o.Owner
-	}
-	if true {
-		toSerialize["ownerId"] = o.OwnerId
-	}
+	// skip: id is readOnly
+	toSerialize["owner"] = o.Owner
+	// skip: ownerId is readOnly
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if true {
-		toSerialize["savedSearchId"] = o.SavedSearchId
-	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
-	if true {
-		toSerialize["schedule"] = o.Schedule
-	}
-	if true {
-		toSerialize["recipients"] = o.Recipients
-	}
+	toSerialize["savedSearchId"] = o.SavedSearchId
+	// skip: created is readOnly
+	// skip: modified is readOnly
+	toSerialize["schedule"] = o.Schedule
+	toSerialize["recipients"] = o.Recipients
 	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
@@ -519,7 +514,7 @@ func (o ScheduledSearch) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ScheduledSearch) UnmarshalJSON(bytes []byte) (err error) {

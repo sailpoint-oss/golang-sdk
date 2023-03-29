@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMiningPotentialRoleEditEntitlements type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningPotentialRoleEditEntitlements{}
+
 // RoleMiningPotentialRoleEditEntitlements struct for RoleMiningPotentialRoleEditEntitlements
 type RoleMiningPotentialRoleEditEntitlements struct {
 	// The list of entitlement ids to be edited
@@ -107,6 +110,14 @@ func (o *RoleMiningPotentialRoleEditEntitlements) SetExclude(v bool) {
 }
 
 func (o RoleMiningPotentialRoleEditEntitlements) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningPotentialRoleEditEntitlements) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Ids) {
 		toSerialize["ids"] = o.Ids
@@ -119,7 +130,7 @@ func (o RoleMiningPotentialRoleEditEntitlements) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningPotentialRoleEditEntitlements) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ImportSpConfigRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ImportSpConfigRequest{}
+
 // ImportSpConfigRequest struct for ImportSpConfigRequest
 type ImportSpConfigRequest struct {
 	// Name of JSON file containing the objects to be imported.
@@ -99,10 +102,16 @@ func (o *ImportSpConfigRequest) SetOptions(v ImportOptions) {
 }
 
 func (o ImportSpConfigRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["data"] = o.Data
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ImportSpConfigRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["data"] = o.Data
 	if !isNil(o.Options) {
 		toSerialize["options"] = o.Options
 	}
@@ -111,7 +120,7 @@ func (o ImportSpConfigRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ImportSpConfigRequest) UnmarshalJSON(bytes []byte) (err error) {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ApprovalForwardHistory type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApprovalForwardHistory{}
+
 // ApprovalForwardHistory struct for ApprovalForwardHistory
 type ApprovalForwardHistory struct {
 	// Display name of approver from whom the approval was forwarded.
@@ -263,6 +266,14 @@ func (o *ApprovalForwardHistory) SetReassignmentType(v ReassignmentType) {
 }
 
 func (o ApprovalForwardHistory) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ApprovalForwardHistory) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.OldApproverName) {
 		toSerialize["oldApproverName"] = o.OldApproverName
@@ -287,7 +298,7 @@ func (o ApprovalForwardHistory) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ApprovalForwardHistory) UnmarshalJSON(bytes []byte) (err error) {

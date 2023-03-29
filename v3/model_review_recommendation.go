@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ReviewRecommendation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReviewRecommendation{}
+
 // ReviewRecommendation struct for ReviewRecommendation
 type ReviewRecommendation struct {
 	// The recommendation from IAI at the time of the decision. This field will be null if no recommendation was made.
@@ -152,6 +155,14 @@ func (o *ReviewRecommendation) SetTimestamp(v time.Time) {
 }
 
 func (o ReviewRecommendation) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ReviewRecommendation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Recommendation.IsSet() {
 		toSerialize["recommendation"] = o.Recommendation.Get()
@@ -167,7 +178,7 @@ func (o ReviewRecommendation) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ReviewRecommendation) UnmarshalJSON(bytes []byte) (err error) {

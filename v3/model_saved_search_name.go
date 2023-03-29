@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SavedSearchName type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SavedSearchName{}
+
 // SavedSearchName struct for SavedSearchName
 type SavedSearchName struct {
 	// The name of the saved search. 
@@ -117,6 +120,14 @@ func (o *SavedSearchName) UnsetDescription() {
 }
 
 func (o SavedSearchName) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SavedSearchName) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -129,7 +140,7 @@ func (o SavedSearchName) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SavedSearchName) UnmarshalJSON(bytes []byte) (err error) {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the LifecycleState type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LifecycleState{}
+
 // LifecycleState struct for LifecycleState
 type LifecycleState struct {
 	// lifecycle stat id.
@@ -412,31 +415,27 @@ func (o *LifecycleState) SetAccessProfileIds(v []string) {
 }
 
 func (o LifecycleState) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LifecycleState) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.TechnicalName) {
-		toSerialize["technicalName"] = o.TechnicalName
-	}
+	// skip: id is readOnly
+	// skip: name is readOnly
+	// skip: technicalName is readOnly
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
+	// skip: created is readOnly
+	// skip: modified is readOnly
 	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !isNil(o.IdentityCount) {
-		toSerialize["identityCount"] = o.IdentityCount
-	}
+	// skip: identityCount is readOnly
 	if !isNil(o.EmailNotificationOption) {
 		toSerialize["emailNotificationOption"] = o.EmailNotificationOption
 	}
@@ -451,7 +450,7 @@ func (o LifecycleState) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *LifecycleState) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CustomPasswordInstruction type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CustomPasswordInstruction{}
+
 // CustomPasswordInstruction struct for CustomPasswordInstruction
 type CustomPasswordInstruction struct {
 	// The page ID that represents the page for forget user name, reset password and unlock account flow.
@@ -141,6 +144,14 @@ func (o *CustomPasswordInstruction) SetLocale(v string) {
 }
 
 func (o CustomPasswordInstruction) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CustomPasswordInstruction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.PageId) {
 		toSerialize["pageId"] = o.PageId
@@ -156,7 +167,7 @@ func (o CustomPasswordInstruction) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CustomPasswordInstruction) UnmarshalJSON(bytes []byte) (err error) {

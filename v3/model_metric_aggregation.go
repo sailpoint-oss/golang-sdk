@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MetricAggregation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricAggregation{}
+
 // MetricAggregation The calculation done on the results of the query
 type MetricAggregation struct {
 	// The name of the metric aggregate to be included in the result. If the metric aggregation is omitted, the resulting aggregation will be a count of the documents in the search results.
@@ -130,22 +133,26 @@ func (o *MetricAggregation) SetField(v string) {
 }
 
 func (o MetricAggregation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o MetricAggregation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if true {
-		toSerialize["field"] = o.Field
-	}
+	toSerialize["field"] = o.Field
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *MetricAggregation) UnmarshalJSON(bytes []byte) (err error) {

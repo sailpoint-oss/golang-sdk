@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApprovalReminderAndEscalationConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApprovalReminderAndEscalationConfig{}
+
 // ApprovalReminderAndEscalationConfig struct for ApprovalReminderAndEscalationConfig
 type ApprovalReminderAndEscalationConfig struct {
 	// Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation.
@@ -184,6 +187,14 @@ func (o *ApprovalReminderAndEscalationConfig) UnsetFallbackApproverRef() {
 }
 
 func (o ApprovalReminderAndEscalationConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ApprovalReminderAndEscalationConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.DaysUntilEscalation) {
 		toSerialize["daysUntilEscalation"] = o.DaysUntilEscalation
@@ -202,7 +213,7 @@ func (o ApprovalReminderAndEscalationConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ApprovalReminderAndEscalationConfig) UnmarshalJSON(bytes []byte) (err error) {

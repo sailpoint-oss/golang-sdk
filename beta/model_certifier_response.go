@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CertifierResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertifierResponse{}
+
 // CertifierResponse struct for CertifierResponse
 type CertifierResponse struct {
 	// the id of the certifier
@@ -107,6 +110,14 @@ func (o *CertifierResponse) SetDisplayName(v string) {
 }
 
 func (o CertifierResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CertifierResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -119,7 +130,7 @@ func (o CertifierResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CertifierResponse) UnmarshalJSON(bytes []byte) (err error) {

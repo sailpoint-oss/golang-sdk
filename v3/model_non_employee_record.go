@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NonEmployeeRecord type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeRecord{}
+
 // NonEmployeeRecord struct for NonEmployeeRecord
 type NonEmployeeRecord struct {
 	// Non-Employee record id.
@@ -482,6 +485,14 @@ func (o *NonEmployeeRecord) SetCreated(v time.Time) {
 }
 
 func (o NonEmployeeRecord) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeRecord) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -527,7 +538,7 @@ func (o NonEmployeeRecord) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeRecord) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleSummaryAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleSummaryAllOf{}
+
 // RoleSummaryAllOf struct for RoleSummaryAllOf
 type RoleSummaryAllOf struct {
 	Owner *DisplayReference `json:"owner,omitempty"`
@@ -138,6 +141,14 @@ func (o *RoleSummaryAllOf) SetRevocable(v bool) {
 }
 
 func (o RoleSummaryAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleSummaryAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
@@ -153,7 +164,7 @@ func (o RoleSummaryAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleSummaryAllOf) UnmarshalJSON(bytes []byte) (err error) {

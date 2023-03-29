@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BaseEntitlement type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BaseEntitlement{}
+
 // BaseEntitlement struct for BaseEntitlement
 type BaseEntitlement struct {
 	// The unique ID of the referenced object.
@@ -209,6 +212,14 @@ func (o *BaseEntitlement) SetValue(v string) {
 }
 
 func (o BaseEntitlement) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BaseEntitlement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -230,7 +241,7 @@ func (o BaseEntitlement) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BaseEntitlement) UnmarshalJSON(bytes []byte) (err error) {

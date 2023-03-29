@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the WorkflowExecutionEvent type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkflowExecutionEvent{}
+
 // WorkflowExecutionEvent struct for WorkflowExecutionEvent
 type WorkflowExecutionEvent struct {
 	// The type of event
@@ -142,6 +145,14 @@ func (o *WorkflowExecutionEvent) SetAttributes(v map[string]interface{}) {
 }
 
 func (o WorkflowExecutionEvent) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkflowExecutionEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -157,7 +168,7 @@ func (o WorkflowExecutionEvent) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkflowExecutionEvent) UnmarshalJSON(bytes []byte) (err error) {

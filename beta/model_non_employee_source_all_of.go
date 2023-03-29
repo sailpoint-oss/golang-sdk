@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NonEmployeeSourceAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeSourceAllOf{}
+
 // NonEmployeeSourceAllOf struct for NonEmployeeSourceAllOf
 type NonEmployeeSourceAllOf struct {
 	// List of approvers
@@ -220,6 +223,14 @@ func (o *NonEmployeeSourceAllOf) UnsetNonEmployeeCount() {
 }
 
 func (o NonEmployeeSourceAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeSourceAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Approvers) {
 		toSerialize["approvers"] = o.Approvers
@@ -241,7 +252,7 @@ func (o NonEmployeeSourceAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeSourceAllOf) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SourceAccountCorrelationRule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceAccountCorrelationRule{}
+
 // SourceAccountCorrelationRule Reference to a Rule that can do COMPLEX correlation, should only be used when accountCorrelationConfig can't be used.
 type SourceAccountCorrelationRule struct {
 	// The type of object being referenced
@@ -141,6 +144,14 @@ func (o *SourceAccountCorrelationRule) SetName(v string) {
 }
 
 func (o SourceAccountCorrelationRule) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SourceAccountCorrelationRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o SourceAccountCorrelationRule) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SourceAccountCorrelationRule) UnmarshalJSON(bytes []byte) (err error) {

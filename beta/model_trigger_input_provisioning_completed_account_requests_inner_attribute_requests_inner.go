@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputProvisioningCompletedAccountRequestsInnerAttributeRequestsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputProvisioningCompletedAccountRequestsInnerAttributeRequestsInner{}
+
 // TriggerInputProvisioningCompletedAccountRequestsInnerAttributeRequestsInner struct for TriggerInputProvisioningCompletedAccountRequestsInnerAttributeRequestsInner
 type TriggerInputProvisioningCompletedAccountRequestsInnerAttributeRequestsInner struct {
 	// The name of the attribute being provisioned.
@@ -137,22 +140,26 @@ func (o *TriggerInputProvisioningCompletedAccountRequestsInnerAttributeRequestsI
 }
 
 func (o TriggerInputProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["attributeName"] = o.AttributeName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["attributeName"] = o.AttributeName
 	if o.AttributeValue.IsSet() {
 		toSerialize["attributeValue"] = o.AttributeValue.Get()
 	}
-	if true {
-		toSerialize["operation"] = o.Operation
-	}
+	toSerialize["operation"] = o.Operation
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputProvisioningCompletedAccountRequestsInnerAttributeRequestsInner) UnmarshalJSON(bytes []byte) (err error) {

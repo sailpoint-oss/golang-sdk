@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessRequestPostApproval type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestPostApproval{}
+
 // AccessRequestPostApproval struct for AccessRequestPostApproval
 type AccessRequestPostApproval struct {
 	// The unique ID of the access request.
@@ -145,25 +148,25 @@ func (o *AccessRequestPostApproval) SetRequestedBy(v TriggerInputAccessRequestPo
 }
 
 func (o AccessRequestPostApproval) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequestPostApproval) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["accessRequestId"] = o.AccessRequestId
-	}
-	if true {
-		toSerialize["requestedFor"] = o.RequestedFor
-	}
-	if true {
-		toSerialize["requestedItemsStatus"] = o.RequestedItemsStatus
-	}
-	if true {
-		toSerialize["requestedBy"] = o.RequestedBy
-	}
+	toSerialize["accessRequestId"] = o.AccessRequestId
+	toSerialize["requestedFor"] = o.RequestedFor
+	toSerialize["requestedItemsStatus"] = o.RequestedItemsStatus
+	toSerialize["requestedBy"] = o.RequestedBy
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequestPostApproval) UnmarshalJSON(bytes []byte) (err error) {

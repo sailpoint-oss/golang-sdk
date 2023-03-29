@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NonEmployeeIdentityReferenceWithId type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeIdentityReferenceWithId{}
+
 // NonEmployeeIdentityReferenceWithId struct for NonEmployeeIdentityReferenceWithId
 type NonEmployeeIdentityReferenceWithId struct {
 	Type *NonEmployeeIdentityDtoType `json:"type,omitempty"`
@@ -106,6 +109,14 @@ func (o *NonEmployeeIdentityReferenceWithId) SetId(v string) {
 }
 
 func (o NonEmployeeIdentityReferenceWithId) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeIdentityReferenceWithId) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -118,7 +129,7 @@ func (o NonEmployeeIdentityReferenceWithId) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeIdentityReferenceWithId) UnmarshalJSON(bytes []byte) (err error) {

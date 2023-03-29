@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NonEmployeeSchemaAttributeBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeSchemaAttributeBody{}
+
 // NonEmployeeSchemaAttributeBody struct for NonEmployeeSchemaAttributeBody
 type NonEmployeeSchemaAttributeBody struct {
 	// Type of the attribute. Only type 'TEXT' is supported for custom attributes.
@@ -222,16 +225,18 @@ func (o *NonEmployeeSchemaAttributeBody) SetRequired(v bool) {
 }
 
 func (o NonEmployeeSchemaAttributeBody) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeSchemaAttributeBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["label"] = o.Label
-	}
-	if true {
-		toSerialize["technicalName"] = o.TechnicalName
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["label"] = o.Label
+	toSerialize["technicalName"] = o.TechnicalName
 	if !isNil(o.HelpText) {
 		toSerialize["helpText"] = o.HelpText
 	}
@@ -246,7 +251,7 @@ func (o NonEmployeeSchemaAttributeBody) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeSchemaAttributeBody) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputSavedSearchCompleteSearchResultsIdentity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputSavedSearchCompleteSearchResultsIdentity{}
+
 // TriggerInputSavedSearchCompleteSearchResultsIdentity A table of identities that match the search criteria.
 type TriggerInputSavedSearchCompleteSearchResultsIdentity struct {
 	// The number of rows in the table.
@@ -120,22 +123,24 @@ func (o *TriggerInputSavedSearchCompleteSearchResultsIdentity) SetPreview(v [][]
 }
 
 func (o TriggerInputSavedSearchCompleteSearchResultsIdentity) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputSavedSearchCompleteSearchResultsIdentity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["count"] = o.Count
-	}
-	if true {
-		toSerialize["noun"] = o.Noun
-	}
-	if true {
-		toSerialize["preview"] = o.Preview
-	}
+	toSerialize["count"] = o.Count
+	toSerialize["noun"] = o.Noun
+	toSerialize["preview"] = o.Preview
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputSavedSearchCompleteSearchResultsIdentity) UnmarshalJSON(bytes []byte) (err error) {

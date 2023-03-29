@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_beta_NotificationsApiService(t *testing.T) {
@@ -50,10 +50,9 @@ func Test_beta_NotificationsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.NotificationsApi.DeleteNotificationTemplatesInBulk(context.Background()).Execute()
+		httpRes, err := apiClient.NotificationsApi.DeleteNotificationTemplatesInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -64,10 +63,9 @@ func Test_beta_NotificationsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.NotificationsApi.DeleteVerifiedFromAddress(context.Background(), id).Execute()
+		httpRes, err := apiClient.NotificationsApi.DeleteVerifiedFromAddress(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -178,10 +176,9 @@ func Test_beta_NotificationsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.NotificationsApi.SendTestNotification(context.Background()).Execute()
+		httpRes, err := apiClient.NotificationsApi.SendTestNotification(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

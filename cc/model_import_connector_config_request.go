@@ -15,6 +15,9 @@ import (
 	"os"
 )
 
+// checks if the ImportConnectorConfigRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ImportConnectorConfigRequest{}
+
 // ImportConnectorConfigRequest struct for ImportConnectorConfigRequest
 type ImportConnectorConfigRequest struct {
 	// This is the connector config zip bundle which gets uploaded.
@@ -74,6 +77,14 @@ func (o *ImportConnectorConfigRequest) SetFile(v *os.File) {
 }
 
 func (o ImportConnectorConfigRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ImportConnectorConfigRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.File) {
 		toSerialize["file"] = o.File
@@ -83,7 +94,7 @@ func (o ImportConnectorConfigRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ImportConnectorConfigRequest) UnmarshalJSON(bytes []byte) (err error) {

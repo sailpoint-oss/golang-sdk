@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputVAClusterStatusChangeEventHealthCheckResult type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputVAClusterStatusChangeEventHealthCheckResult{}
+
 // TriggerInputVAClusterStatusChangeEventHealthCheckResult The results of the most recent health check.
 type TriggerInputVAClusterStatusChangeEventHealthCheckResult struct {
 	// Detailed message of the result of the health check.
@@ -120,22 +123,24 @@ func (o *TriggerInputVAClusterStatusChangeEventHealthCheckResult) SetStatus(v ma
 }
 
 func (o TriggerInputVAClusterStatusChangeEventHealthCheckResult) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputVAClusterStatusChangeEventHealthCheckResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["message"] = o.Message
-	}
-	if true {
-		toSerialize["resultType"] = o.ResultType
-	}
-	if true {
-		toSerialize["status"] = o.Status
-	}
+	toSerialize["message"] = o.Message
+	toSerialize["resultType"] = o.ResultType
+	toSerialize["status"] = o.Status
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputVAClusterStatusChangeEventHealthCheckResult) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RecommendationResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RecommendationResponse{}
+
 // RecommendationResponse struct for RecommendationResponse
 type RecommendationResponse struct {
 	Request *RecommendationRequest `json:"request,omitempty"`
@@ -207,6 +210,14 @@ func (o *RecommendationResponse) SetRecommenderCalculations(v RecommenderCalcula
 }
 
 func (o RecommendationResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RecommendationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Request) {
 		toSerialize["request"] = o.Request
@@ -228,7 +239,7 @@ func (o RecommendationResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RecommendationResponse) UnmarshalJSON(bytes []byte) (err error) {

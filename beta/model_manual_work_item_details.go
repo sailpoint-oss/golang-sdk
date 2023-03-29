@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ManualWorkItemDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManualWorkItemDetails{}
+
 // ManualWorkItemDetails struct for ManualWorkItemDetails
 type ManualWorkItemDetails struct {
 	// True if the request for this item was forwarded from one owner to another.
@@ -241,6 +244,14 @@ func (o *ManualWorkItemDetails) SetForwardHistory(v []ApprovalForwardHistory) {
 }
 
 func (o ManualWorkItemDetails) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ManualWorkItemDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Forwarded) {
 		toSerialize["forwarded"] = o.Forwarded
@@ -265,7 +276,7 @@ func (o ManualWorkItemDetails) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ManualWorkItemDetails) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Trigger type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Trigger{}
+
 // Trigger struct for Trigger
 type Trigger struct {
 	// Unique identifier of the trigger.
@@ -293,25 +296,23 @@ func (o *Trigger) UnsetExampleOutput() {
 }
 
 func (o Trigger) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Trigger) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if true {
-		toSerialize["inputSchema"] = o.InputSchema
-	}
-	if true {
-		toSerialize["exampleInput"] = o.ExampleInput
-	}
+	toSerialize["inputSchema"] = o.InputSchema
+	toSerialize["exampleInput"] = o.ExampleInput
 	if o.OutputSchema.IsSet() {
 		toSerialize["outputSchema"] = o.OutputSchema.Get()
 	}
@@ -323,7 +324,7 @@ func (o Trigger) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Trigger) UnmarshalJSON(bytes []byte) (err error) {

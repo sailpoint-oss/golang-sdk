@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessItemAppResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessItemAppResponse{}
+
 // AccessItemAppResponse struct for AccessItemAppResponse
 type AccessItemAppResponse struct {
 	// the access item type. entitlement in this case
@@ -175,6 +178,14 @@ func (o *AccessItemAppResponse) SetSourceName(v string) {
 }
 
 func (o AccessItemAppResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessItemAppResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccessType) {
 		toSerialize["accessType"] = o.AccessType
@@ -193,7 +204,7 @@ func (o AccessItemAppResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessItemAppResponse) UnmarshalJSON(bytes []byte) (err error) {

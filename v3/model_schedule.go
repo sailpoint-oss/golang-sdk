@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Schedule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Schedule{}
+
 // Schedule The schedule information.
 type Schedule struct {
 	Type ScheduleType `json:"type"`
@@ -213,16 +216,20 @@ func (o *Schedule) UnsetTimeZoneId() {
 }
 
 func (o Schedule) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Schedule) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
 	if !isNil(o.Days) {
 		toSerialize["days"] = o.Days
 	}
-	if true {
-		toSerialize["hours"] = o.Hours
-	}
+	toSerialize["hours"] = o.Hours
 	if o.Expiration.IsSet() {
 		toSerialize["expiration"] = o.Expiration.Get()
 	}
@@ -234,7 +241,7 @@ func (o Schedule) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Schedule) UnmarshalJSON(bytes []byte) (err error) {

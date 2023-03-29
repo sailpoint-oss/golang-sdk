@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the V3ConnectorDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &V3ConnectorDto{}
+
 // V3ConnectorDto struct for V3ConnectorDto
 type V3ConnectorDto struct {
 	// The connector name
@@ -243,6 +246,14 @@ func (o *V3ConnectorDto) SetStatus(v string) {
 }
 
 func (o V3ConnectorDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o V3ConnectorDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -267,7 +278,7 @@ func (o V3ConnectorDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *V3ConnectorDto) UnmarshalJSON(bytes []byte) (err error) {

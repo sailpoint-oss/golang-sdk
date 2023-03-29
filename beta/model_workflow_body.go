@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WorkflowBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkflowBody{}
+
 // WorkflowBody struct for WorkflowBody
 type WorkflowBody struct {
 	// The name of the workflow
@@ -244,6 +247,14 @@ func (o *WorkflowBody) SetTrigger(v WorkflowTrigger) {
 }
 
 func (o WorkflowBody) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkflowBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -268,7 +279,7 @@ func (o WorkflowBody) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkflowBody) UnmarshalJSON(bytes []byte) (err error) {

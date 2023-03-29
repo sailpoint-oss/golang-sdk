@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Value type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Value{}
+
 // Value struct for Value
 type Value struct {
 	// The type of attribute value
@@ -107,6 +110,14 @@ func (o *Value) SetValue(v string) {
 }
 
 func (o Value) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Value) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -119,7 +130,7 @@ func (o Value) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Value) UnmarshalJSON(bytes []byte) (err error) {

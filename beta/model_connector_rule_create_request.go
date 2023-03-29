@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectorRuleCreateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectorRuleCreateRequest{}
+
 // ConnectorRuleCreateRequest ConnectorRuleCreateRequest
 type ConnectorRuleCreateRequest struct {
 	// the name of the rule
@@ -220,22 +223,24 @@ func (o *ConnectorRuleCreateRequest) SetAttributes(v map[string]interface{}) {
 }
 
 func (o ConnectorRuleCreateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ConnectorRuleCreateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["type"] = o.Type
 	if !isNil(o.Signature) {
 		toSerialize["signature"] = o.Signature
 	}
-	if true {
-		toSerialize["sourceCode"] = o.SourceCode
-	}
+	toSerialize["sourceCode"] = o.SourceCode
 	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
@@ -244,7 +249,7 @@ func (o ConnectorRuleCreateRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ConnectorRuleCreateRequest) UnmarshalJSON(bytes []byte) (err error) {

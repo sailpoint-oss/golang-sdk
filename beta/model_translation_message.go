@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TranslationMessage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TranslationMessage{}
+
 // TranslationMessage struct for TranslationMessage
 type TranslationMessage struct {
 	// The key of the translation message
@@ -107,6 +110,14 @@ func (o *TranslationMessage) SetValues(v []string) {
 }
 
 func (o TranslationMessage) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TranslationMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Key) {
 		toSerialize["key"] = o.Key
@@ -119,7 +130,7 @@ func (o TranslationMessage) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TranslationMessage) UnmarshalJSON(bytes []byte) (err error) {

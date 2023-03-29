@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessReviewReassignment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessReviewReassignment{}
+
 // AccessReviewReassignment struct for AccessReviewReassignment
 type AccessReviewReassignment struct {
 	Reassign []ReassignReference `json:"reassign"`
@@ -119,22 +122,24 @@ func (o *AccessReviewReassignment) SetReason(v string) {
 }
 
 func (o AccessReviewReassignment) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessReviewReassignment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["reassign"] = o.Reassign
-	}
-	if true {
-		toSerialize["reassignTo"] = o.ReassignTo
-	}
-	if true {
-		toSerialize["reason"] = o.Reason
-	}
+	toSerialize["reassign"] = o.Reassign
+	toSerialize["reassignTo"] = o.ReassignTo
+	toSerialize["reason"] = o.Reason
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessReviewReassignment) UnmarshalJSON(bytes []byte) (err error) {

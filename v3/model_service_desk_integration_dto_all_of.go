@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceDeskIntegrationDtoAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceDeskIntegrationDtoAllOf{}
+
 // ServiceDeskIntegrationDtoAllOf Specification of a Service Desk integration
 type ServiceDeskIntegrationDtoAllOf struct {
 	// Description of the Service Desk integration
@@ -330,13 +333,17 @@ func (o *ServiceDeskIntegrationDtoAllOf) SetBeforeProvisioningRule(v ServiceDesk
 }
 
 func (o ServiceDeskIntegrationDtoAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ServiceDeskIntegrationDtoAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["description"] = o.Description
+	toSerialize["type"] = o.Type
 	if !isNil(o.OwnerRef) {
 		toSerialize["ownerRef"] = o.OwnerRef
 	}
@@ -352,9 +359,7 @@ func (o ServiceDeskIntegrationDtoAllOf) MarshalJSON() ([]byte, error) {
 	if !isNil(o.ProvisioningConfig) {
 		toSerialize["provisioningConfig"] = o.ProvisioningConfig
 	}
-	if true {
-		toSerialize["attributes"] = o.Attributes
-	}
+	toSerialize["attributes"] = o.Attributes
 	if !isNil(o.BeforeProvisioningRule) {
 		toSerialize["beforeProvisioningRule"] = o.BeforeProvisioningRule
 	}
@@ -363,7 +368,7 @@ func (o ServiceDeskIntegrationDtoAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ServiceDeskIntegrationDtoAllOf) UnmarshalJSON(bytes []byte) (err error) {

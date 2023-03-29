@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityAttributeConfig1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityAttributeConfig1{}
+
 // IdentityAttributeConfig1 Defines all the identity attribute mapping configurations. This defines how to generate or collect data for each identity attributes in identity refresh process.
 type IdentityAttributeConfig1 struct {
 	// The backend will only promote values if the profile/mapping is enabled.
@@ -106,6 +109,14 @@ func (o *IdentityAttributeConfig1) SetAttributeTransforms(v []IdentityAttributeT
 }
 
 func (o IdentityAttributeConfig1) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityAttributeConfig1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
@@ -118,7 +129,7 @@ func (o IdentityAttributeConfig1) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityAttributeConfig1) UnmarshalJSON(bytes []byte) (err error) {

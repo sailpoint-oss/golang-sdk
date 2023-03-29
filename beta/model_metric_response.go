@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MetricResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MetricResponse{}
+
 // MetricResponse struct for MetricResponse
 type MetricResponse struct {
 	// the name of metric
@@ -107,6 +110,14 @@ func (o *MetricResponse) SetValue(v float32) {
 }
 
 func (o MetricResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o MetricResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -119,7 +130,7 @@ func (o MetricResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *MetricResponse) UnmarshalJSON(bytes []byte) (err error) {

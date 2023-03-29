@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ReassignReference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReassignReference{}
+
 // ReassignReference struct for ReassignReference
 type ReassignReference struct {
 	// The ID of item or identity being reassigned.
@@ -93,19 +96,23 @@ func (o *ReassignReference) SetType(v string) {
 }
 
 func (o ReassignReference) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ReassignReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["type"] = o.Type
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ReassignReference) UnmarshalJSON(bytes []byte) (err error) {

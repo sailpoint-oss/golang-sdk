@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CommentDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CommentDto{}
+
 // CommentDto struct for CommentDto
 type CommentDto struct {
 	Comment *string `json:"comment,omitempty"`
@@ -72,6 +75,14 @@ func (o *CommentDto) SetComment(v string) {
 }
 
 func (o CommentDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CommentDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -81,7 +92,7 @@ func (o CommentDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CommentDto) UnmarshalJSON(bytes []byte) (err error) {

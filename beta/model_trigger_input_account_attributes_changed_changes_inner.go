@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputAccountAttributesChangedChangesInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputAccountAttributesChangedChangesInner{}
+
 // TriggerInputAccountAttributesChangedChangesInner struct for TriggerInputAccountAttributesChangedChangesInner
 type TriggerInputAccountAttributesChangedChangesInner struct {
 	// The name of the attribute.
@@ -122,22 +125,24 @@ func (o *TriggerInputAccountAttributesChangedChangesInner) SetNewValue(v Trigger
 }
 
 func (o TriggerInputAccountAttributesChangedChangesInner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputAccountAttributesChangedChangesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["attribute"] = o.Attribute
-	}
-	if true {
-		toSerialize["oldValue"] = o.OldValue.Get()
-	}
-	if true {
-		toSerialize["newValue"] = o.NewValue.Get()
-	}
+	toSerialize["attribute"] = o.Attribute
+	toSerialize["oldValue"] = o.OldValue.Get()
+	toSerialize["newValue"] = o.NewValue.Get()
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputAccountAttributesChangedChangesInner) UnmarshalJSON(bytes []byte) (err error) {

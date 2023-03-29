@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessSummary{}
+
 // AccessSummary An object holding the access that is being reviewed
 type AccessSummary struct {
 	Access *AccessSummaryAccess `json:"access,omitempty"`
@@ -191,6 +194,14 @@ func (o *AccessSummary) UnsetRole() {
 }
 
 func (o AccessSummary) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Access) {
 		toSerialize["access"] = o.Access
@@ -209,7 +220,7 @@ func (o AccessSummary) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessSummary) UnmarshalJSON(bytes []byte) (err error) {

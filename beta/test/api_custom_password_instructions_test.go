@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_beta_CustomPasswordInstructionsApiService(t *testing.T) {
@@ -40,10 +40,9 @@ func Test_beta_CustomPasswordInstructionsApiService(t *testing.T) {
 
 		var pageId string
 
-		resp, httpRes, err := apiClient.CustomPasswordInstructionsApi.DeleteCustomPasswordInstructions(context.Background(), pageId).Execute()
+		httpRes, err := apiClient.CustomPasswordInstructionsApi.DeleteCustomPasswordInstructions(context.Background(), pageId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

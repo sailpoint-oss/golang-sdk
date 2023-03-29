@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EventAttributes type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EventAttributes{}
+
 // EventAttributes struct for EventAttributes
 type EventAttributes struct {
 	// The unique ID of the trigger
@@ -100,10 +103,16 @@ func (o *EventAttributes) SetFilter(v string) {
 }
 
 func (o EventAttributes) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EventAttributes) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
 	if !isNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
@@ -112,7 +121,7 @@ func (o EventAttributes) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EventAttributes) UnmarshalJSON(bytes []byte) (err error) {

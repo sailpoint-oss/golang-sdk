@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TemplateBulkDeleteDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateBulkDeleteDto{}
+
 // TemplateBulkDeleteDto struct for TemplateBulkDeleteDto
 type TemplateBulkDeleteDto struct {
 	Key string `json:"key"`
@@ -132,10 +135,16 @@ func (o *TemplateBulkDeleteDto) SetLocale(v string) {
 }
 
 func (o TemplateBulkDeleteDto) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["key"] = o.Key
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TemplateBulkDeleteDto) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["key"] = o.Key
 	if !isNil(o.Medium) {
 		toSerialize["medium"] = o.Medium
 	}
@@ -147,7 +156,7 @@ func (o TemplateBulkDeleteDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TemplateBulkDeleteDto) UnmarshalJSON(bytes []byte) (err error) {

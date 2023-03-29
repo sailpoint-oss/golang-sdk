@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CommonAccessItemRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CommonAccessItemRequest{}
+
 // CommonAccessItemRequest struct for CommonAccessItemRequest
 type CommonAccessItemRequest struct {
 	Access *CommonAccessItemAccess `json:"access,omitempty"`
@@ -105,6 +108,14 @@ func (o *CommonAccessItemRequest) SetStatus(v CommonAccessItemState) {
 }
 
 func (o CommonAccessItemRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CommonAccessItemRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Access) {
 		toSerialize["access"] = o.Access
@@ -117,7 +128,7 @@ func (o CommonAccessItemRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CommonAccessItemRequest) UnmarshalJSON(bytes []byte) (err error) {

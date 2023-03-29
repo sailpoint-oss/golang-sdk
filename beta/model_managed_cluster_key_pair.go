@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedClusterKeyPair type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedClusterKeyPair{}
+
 // ManagedClusterKeyPair Managed Cluster key pair for Cluster
 type ManagedClusterKeyPair struct {
 	// ManagedCluster publicKey
@@ -141,6 +144,14 @@ func (o *ManagedClusterKeyPair) SetPublicKeyCertificate(v string) {
 }
 
 func (o ManagedClusterKeyPair) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ManagedClusterKeyPair) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.PublicKey) {
 		toSerialize["publicKey"] = o.PublicKey
@@ -156,7 +167,7 @@ func (o ManagedClusterKeyPair) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ManagedClusterKeyPair) UnmarshalJSON(bytes []byte) (err error) {

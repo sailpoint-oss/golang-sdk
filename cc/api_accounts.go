@@ -148,7 +148,7 @@ func (a *AccountsApiService) RemoveAccountExecute(r ApiRemoveAccountRequest) (*h
 	}
 
 	localVarPath := localBasePath + "/cc/api/account/remove/:id"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

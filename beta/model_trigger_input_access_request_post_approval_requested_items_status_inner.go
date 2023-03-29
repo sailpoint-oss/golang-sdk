@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner{}
+
 // TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner struct for TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner
 type TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner struct {
 	// The unique ID of the access item being requested.
@@ -297,37 +300,35 @@ func (o *TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner) SetAppr
 }
 
 func (o TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["operation"] = o.Operation
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["operation"] = o.Operation
 	if o.Comment.IsSet() {
 		toSerialize["comment"] = o.Comment.Get()
 	}
 	if o.ClientMetadata != nil {
 		toSerialize["clientMetadata"] = o.ClientMetadata
 	}
-	if true {
-		toSerialize["approvalInfo"] = o.ApprovalInfo
-	}
+	toSerialize["approvalInfo"] = o.ApprovalInfo
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner) UnmarshalJSON(bytes []byte) (err error) {

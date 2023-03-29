@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SubscriptionPatchRequestInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SubscriptionPatchRequestInner{}
+
 // SubscriptionPatchRequestInner A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)
 type SubscriptionPatchRequestInner struct {
 	// The operation to be performed
@@ -126,13 +129,17 @@ func (o *SubscriptionPatchRequestInner) SetValue(v JsonPatchOperationValue) {
 }
 
 func (o SubscriptionPatchRequestInner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SubscriptionPatchRequestInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["op"] = o.Op
-	}
-	if true {
-		toSerialize["path"] = o.Path
-	}
+	toSerialize["op"] = o.Op
+	toSerialize["path"] = o.Path
 	if !isNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
@@ -141,7 +148,7 @@ func (o SubscriptionPatchRequestInner) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SubscriptionPatchRequestInner) UnmarshalJSON(bytes []byte) (err error) {

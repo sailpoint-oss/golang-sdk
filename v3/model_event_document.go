@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the EventDocument type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EventDocument{}
 
 // EventDocument Event
 type EventDocument struct {
@@ -637,16 +640,18 @@ func (o *EventDocument) SetTechnicalName(v string) {
 }
 
 func (o EventDocument) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EventDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["_type"] = o.Type
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["_type"] = o.Type
 	if o.Created.IsSet() {
 		toSerialize["created"] = o.Created.Get()
 	}
@@ -697,7 +702,7 @@ func (o EventDocument) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EventDocument) UnmarshalJSON(bytes []byte) (err error) {

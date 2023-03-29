@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the Aggregation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Aggregation{}
 
 // Aggregation Aggregation
 type Aggregation struct {
@@ -372,16 +375,18 @@ func (o *Aggregation) SetSourceOwner(v string) {
 }
 
 func (o Aggregation) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Aggregation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["_type"] = o.Type
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["_type"] = o.Type
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
@@ -408,7 +413,7 @@ func (o Aggregation) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Aggregation) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LocalizedMessage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LocalizedMessage{}
+
 // LocalizedMessage Localized error message to indicate a failed invocation or error if any.
 type LocalizedMessage struct {
 	// Message locale
@@ -93,19 +96,23 @@ func (o *LocalizedMessage) SetMessage(v string) {
 }
 
 func (o LocalizedMessage) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LocalizedMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["locale"] = o.Locale
-	}
-	if true {
-		toSerialize["message"] = o.Message
-	}
+	toSerialize["locale"] = o.Locale
+	toSerialize["message"] = o.Message
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *LocalizedMessage) UnmarshalJSON(bytes []byte) (err error) {

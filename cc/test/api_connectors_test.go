@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_cc_ConnectorsApiService(t *testing.T) {
@@ -26,10 +26,9 @@ func Test_cc_ConnectorsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ConnectorsApi.CreateConnector(context.Background()).Execute()
+		httpRes, err := apiClient.ConnectorsApi.CreateConnector(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -40,10 +39,9 @@ func Test_cc_ConnectorsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.ConnectorsApi.DeleteConnector(context.Background(), id).Execute()
+		httpRes, err := apiClient.ConnectorsApi.DeleteConnector(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -54,10 +52,9 @@ func Test_cc_ConnectorsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.ConnectorsApi.ExportConnectorConfig(context.Background(), id).Execute()
+		httpRes, err := apiClient.ConnectorsApi.ExportConnectorConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -68,10 +65,9 @@ func Test_cc_ConnectorsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.ConnectorsApi.ImportConnectorConfig(context.Background(), id).Execute()
+		httpRes, err := apiClient.ConnectorsApi.ImportConnectorConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -80,10 +76,9 @@ func Test_cc_ConnectorsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ConnectorsApi.ListConnectors(context.Background()).Execute()
+		httpRes, err := apiClient.ConnectorsApi.ListConnectors(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

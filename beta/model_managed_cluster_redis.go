@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedClusterRedis type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedClusterRedis{}
+
 // ManagedClusterRedis Managed Cluster Redis Configuration
 type ManagedClusterRedis struct {
 	// ManagedCluster redisHost
@@ -107,6 +110,14 @@ func (o *ManagedClusterRedis) SetRedisPort(v int32) {
 }
 
 func (o ManagedClusterRedis) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ManagedClusterRedis) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.RedisHost) {
 		toSerialize["redisHost"] = o.RedisHost
@@ -119,7 +130,7 @@ func (o ManagedClusterRedis) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ManagedClusterRedis) UnmarshalJSON(bytes []byte) (err error) {

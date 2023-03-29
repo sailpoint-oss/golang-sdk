@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectorRuleResponseAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectorRuleResponseAllOf{}
+
 // ConnectorRuleResponseAllOf struct for ConnectorRuleResponseAllOf
 type ConnectorRuleResponseAllOf struct {
 	// the ID of the rule
@@ -127,13 +130,17 @@ func (o *ConnectorRuleResponseAllOf) SetModified(v string) {
 }
 
 func (o ConnectorRuleResponseAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ConnectorRuleResponseAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["created"] = o.Created
 	if !isNil(o.Modified) {
 		toSerialize["modified"] = o.Modified
 	}
@@ -142,7 +149,7 @@ func (o ConnectorRuleResponseAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ConnectorRuleResponseAllOf) UnmarshalJSON(bytes []byte) (err error) {

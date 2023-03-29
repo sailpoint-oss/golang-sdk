@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SodViolationContextCheckCompleted1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SodViolationContextCheckCompleted1{}
+
 // SodViolationContextCheckCompleted1 An object referencing a completed SOD violation check
 type SodViolationContextCheckCompleted1 struct {
 	// The status of SOD violation check
@@ -140,6 +143,14 @@ func (o *SodViolationContextCheckCompleted1) SetViolationCheckResult(v SodViolat
 }
 
 func (o SodViolationContextCheckCompleted1) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SodViolationContextCheckCompleted1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.State) {
 		toSerialize["state"] = o.State
@@ -155,7 +166,7 @@ func (o SodViolationContextCheckCompleted1) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SodViolationContextCheckCompleted1) UnmarshalJSON(bytes []byte) (err error) {

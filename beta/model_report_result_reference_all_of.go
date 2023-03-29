@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ReportResultReferenceAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReportResultReferenceAllOf{}
+
 // ReportResultReferenceAllOf struct for ReportResultReferenceAllOf
 type ReportResultReferenceAllOf struct {
 	Status *string `json:"status,omitempty"`
@@ -72,6 +75,14 @@ func (o *ReportResultReferenceAllOf) SetStatus(v string) {
 }
 
 func (o ReportResultReferenceAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ReportResultReferenceAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -81,7 +92,7 @@ func (o ReportResultReferenceAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ReportResultReferenceAllOf) UnmarshalJSON(bytes []byte) (err error) {

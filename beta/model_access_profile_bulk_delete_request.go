@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessProfileBulkDeleteRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileBulkDeleteRequest{}
+
 // AccessProfileBulkDeleteRequest struct for AccessProfileBulkDeleteRequest
 type AccessProfileBulkDeleteRequest struct {
 	// List of IDs of Access Profiles to be deleted.
@@ -107,6 +110,14 @@ func (o *AccessProfileBulkDeleteRequest) SetBestEffortOnly(v bool) {
 }
 
 func (o AccessProfileBulkDeleteRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfileBulkDeleteRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccessProfileIds) {
 		toSerialize["accessProfileIds"] = o.AccessProfileIds
@@ -119,7 +130,7 @@ func (o AccessProfileBulkDeleteRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfileBulkDeleteRequest) UnmarshalJSON(bytes []byte) (err error) {

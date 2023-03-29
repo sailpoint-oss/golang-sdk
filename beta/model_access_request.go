@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequest{}
+
 // AccessRequest struct for AccessRequest
 type AccessRequest struct {
 	// A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID.
@@ -159,16 +162,20 @@ func (o *AccessRequest) SetClientMetadata(v map[string]string) {
 }
 
 func (o AccessRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["requestedFor"] = o.RequestedFor
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["requestedFor"] = o.RequestedFor
 	if !isNil(o.RequestType) {
 		toSerialize["requestType"] = o.RequestType
 	}
-	if true {
-		toSerialize["requestedItems"] = o.RequestedItems
-	}
+	toSerialize["requestedItems"] = o.RequestedItems
 	if !isNil(o.ClientMetadata) {
 		toSerialize["clientMetadata"] = o.ClientMetadata
 	}
@@ -177,7 +184,7 @@ func (o AccessRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequest) UnmarshalJSON(bytes []byte) (err error) {

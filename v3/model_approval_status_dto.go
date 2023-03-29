@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ApprovalStatusDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApprovalStatusDto{}
+
 // ApprovalStatusDto struct for ApprovalStatusDto
 type ApprovalStatusDto struct {
 	// True if the request for this item was forwarded from one owner to another.
@@ -375,6 +378,14 @@ func (o *ApprovalStatusDto) SetRemoveDate(v time.Time) {
 }
 
 func (o ApprovalStatusDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ApprovalStatusDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Forwarded) {
 		toSerialize["forwarded"] = o.Forwarded
@@ -411,7 +422,7 @@ func (o ApprovalStatusDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ApprovalStatusDto) UnmarshalJSON(bytes []byte) (err error) {

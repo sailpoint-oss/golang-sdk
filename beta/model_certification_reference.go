@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CertificationReference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificationReference{}
+
 // CertificationReference The previous certification
 type CertificationReference struct {
 	// The type of object that the reviewer is.
@@ -208,6 +211,14 @@ func (o *CertificationReference) SetReviewer(v Reviewer) {
 }
 
 func (o CertificationReference) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CertificationReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -229,7 +240,7 @@ func (o CertificationReference) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CertificationReference) UnmarshalJSON(bytes []byte) (err error) {

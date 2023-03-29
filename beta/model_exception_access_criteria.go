@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ExceptionAccessCriteria type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExceptionAccessCriteria{}
+
 // ExceptionAccessCriteria struct for ExceptionAccessCriteria
 type ExceptionAccessCriteria struct {
 	LeftCriteria *ExceptionCriteria `json:"leftCriteria,omitempty"`
@@ -105,6 +108,14 @@ func (o *ExceptionAccessCriteria) SetRightCriteria(v ExceptionCriteria) {
 }
 
 func (o ExceptionAccessCriteria) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ExceptionAccessCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.LeftCriteria) {
 		toSerialize["leftCriteria"] = o.LeftCriteria
@@ -117,7 +128,7 @@ func (o ExceptionAccessCriteria) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ExceptionAccessCriteria) UnmarshalJSON(bytes []byte) (err error) {

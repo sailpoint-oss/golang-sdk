@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentitySyncJob type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentitySyncJob{}
+
 // IdentitySyncJob struct for IdentitySyncJob
 type IdentitySyncJob struct {
 	// Job ID.
@@ -119,22 +122,24 @@ func (o *IdentitySyncJob) SetPayload(v IdentitySyncPayload) {
 }
 
 func (o IdentitySyncJob) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentitySyncJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["status"] = o.Status
-	}
-	if true {
-		toSerialize["payload"] = o.Payload
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["status"] = o.Status
+	toSerialize["payload"] = o.Payload
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentitySyncJob) UnmarshalJSON(bytes []byte) (err error) {

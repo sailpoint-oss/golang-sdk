@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the WorkItems type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkItems{}
+
 // WorkItems struct for WorkItems
 type WorkItems struct {
 	// ID of the work item
@@ -576,6 +579,14 @@ func (o *WorkItems) SetErrors(v []string) {
 }
 
 func (o WorkItems) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkItems) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -630,7 +641,7 @@ func (o WorkItems) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkItems) UnmarshalJSON(bytes []byte) (err error) {

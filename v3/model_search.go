@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Search type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Search{}
+
 // Search struct for Search
 type Search struct {
 	// The names of the Elasticsearch indices in which to search. If none are provided, then all indices will be searched.
@@ -553,6 +556,14 @@ func (o *Search) SetFilters(v map[string]Filter) {
 }
 
 func (o Search) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Search) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Indices) {
 		toSerialize["indices"] = o.Indices
@@ -604,7 +615,7 @@ func (o Search) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Search) UnmarshalJSON(bytes []byte) (err error) {

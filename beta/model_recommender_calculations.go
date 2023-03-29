@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RecommenderCalculations type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RecommenderCalculations{}
+
 // RecommenderCalculations struct for RecommenderCalculations
 type RecommenderCalculations struct {
 	// The ID of the identity
@@ -310,6 +313,14 @@ func (o *RecommenderCalculations) SetFeatureValues(v FeatureValueDto) {
 }
 
 func (o RecommenderCalculations) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RecommenderCalculations) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
@@ -340,7 +351,7 @@ func (o RecommenderCalculations) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RecommenderCalculations) UnmarshalJSON(bytes []byte) (err error) {

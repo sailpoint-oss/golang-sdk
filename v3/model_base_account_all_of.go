@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the BaseAccountAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BaseAccountAllOf{}
+
 // BaseAccountAllOf struct for BaseAccountAllOf
 type BaseAccountAllOf struct {
 	// The ID of the account
@@ -365,6 +368,14 @@ func (o *BaseAccountAllOf) UnsetCreated() {
 }
 
 func (o BaseAccountAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BaseAccountAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
@@ -398,7 +409,7 @@ func (o BaseAccountAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BaseAccountAllOf) UnmarshalJSON(bytes []byte) (err error) {

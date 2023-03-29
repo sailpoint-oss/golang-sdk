@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ManagedClientStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedClientStatus{}
+
 // ManagedClientStatus Managed Client Status
 type ManagedClientStatus struct {
 	// ManagedClientStatus body information
@@ -146,25 +149,25 @@ func (o *ManagedClientStatus) SetTimestamp(v time.Time) {
 }
 
 func (o ManagedClientStatus) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ManagedClientStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["body"] = o.Body
-	}
-	if true {
-		toSerialize["status"] = o.Status
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["timestamp"] = o.Timestamp
-	}
+	toSerialize["body"] = o.Body
+	toSerialize["status"] = o.Status
+	toSerialize["type"] = o.Type
+	toSerialize["timestamp"] = o.Timestamp
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ManagedClientStatus) UnmarshalJSON(bytes []byte) (err error) {

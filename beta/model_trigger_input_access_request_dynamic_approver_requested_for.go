@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputAccessRequestDynamicApproverRequestedFor type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputAccessRequestDynamicApproverRequestedFor{}
+
 // TriggerInputAccessRequestDynamicApproverRequestedFor The identity for whom the access is requested for.
 type TriggerInputAccessRequestDynamicApproverRequestedFor struct {
 	// The type of object that is referenced
@@ -141,6 +144,14 @@ func (o *TriggerInputAccessRequestDynamicApproverRequestedFor) SetName(v string)
 }
 
 func (o TriggerInputAccessRequestDynamicApproverRequestedFor) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputAccessRequestDynamicApproverRequestedFor) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o TriggerInputAccessRequestDynamicApproverRequestedFor) MarshalJSON() ([]b
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputAccessRequestDynamicApproverRequestedFor) UnmarshalJSON(bytes []byte) (err error) {

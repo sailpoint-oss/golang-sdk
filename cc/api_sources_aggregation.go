@@ -30,7 +30,7 @@ type ApiLoadAccountsRequest struct {
 	id string
 	contentType *string
 	disableOptimization *bool
-	file **os.File
+	file *os.File
 }
 
 func (r ApiLoadAccountsRequest) ContentType(contentType string) ApiLoadAccountsRequest {
@@ -44,7 +44,7 @@ func (r ApiLoadAccountsRequest) DisableOptimization(disableOptimization bool) Ap
 }
 
 func (r ApiLoadAccountsRequest) File(file *os.File) ApiLoadAccountsRequest {
-	r.file = &file
+	r.file = file
 	return r
 }
 
@@ -83,7 +83,7 @@ func (a *SourcesAggregationApiService) LoadAccountsExecute(r ApiLoadAccountsRequ
 	}
 
 	localVarPath := localBasePath + "/cc/api/source/loadAccounts/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -107,10 +107,10 @@ func (a *SourcesAggregationApiService) LoadAccountsExecute(r ApiLoadAccountsRequ
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	if r.disableOptimization != nil {
-		localVarFormParams.Add("disableOptimization", parameterToString(*r.disableOptimization, ""))
+		parameterAddToQuery(localVarFormParams, "disableOptimization", r.disableOptimization, "")
 	}
 	var fileLocalVarFormFileName string
 	var fileLocalVarFileName     string
@@ -118,17 +118,17 @@ func (a *SourcesAggregationApiService) LoadAccountsExecute(r ApiLoadAccountsRequ
 
 	fileLocalVarFormFileName = "file"
 
-	var fileLocalVarFile *os.File
-	if r.file != nil {
-		fileLocalVarFile = *r.file
-	}
+
+	fileLocalVarFile := r.file
+
 	if fileLocalVarFile != nil {
 		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

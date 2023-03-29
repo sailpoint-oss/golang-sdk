@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProfile1AllOfAuthoritativeSource type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProfile1AllOfAuthoritativeSource{}
+
 // IdentityProfile1AllOfAuthoritativeSource struct for IdentityProfile1AllOfAuthoritativeSource
 type IdentityProfile1AllOfAuthoritativeSource struct {
 	// Type of the object to which this reference applies
@@ -141,6 +144,14 @@ func (o *IdentityProfile1AllOfAuthoritativeSource) SetName(v string) {
 }
 
 func (o IdentityProfile1AllOfAuthoritativeSource) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProfile1AllOfAuthoritativeSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o IdentityProfile1AllOfAuthoritativeSource) MarshalJSON() ([]byte, error) 
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityProfile1AllOfAuthoritativeSource) UnmarshalJSON(bytes []byte) (err error) {

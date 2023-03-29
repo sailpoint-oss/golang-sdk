@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessItemDiff type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessItemDiff{}
+
 // AccessItemDiff struct for AccessItemDiff
 type AccessItemDiff struct {
 	// the id of the access item
@@ -174,6 +177,14 @@ func (o *AccessItemDiff) SetSourceName(v string) {
 }
 
 func (o AccessItemDiff) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessItemDiff) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -192,7 +203,7 @@ func (o AccessItemDiff) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessItemDiff) UnmarshalJSON(bytes []byte) (err error) {

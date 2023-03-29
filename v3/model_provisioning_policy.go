@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProvisioningPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProvisioningPolicy{}
+
 // ProvisioningPolicy struct for ProvisioningPolicy
 type ProvisioningPolicy struct {
 	// the provisioning policy name
@@ -166,10 +169,16 @@ func (o *ProvisioningPolicy) SetFields(v []FieldDetailsDto) {
 }
 
 func (o ProvisioningPolicy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProvisioningPolicy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -184,7 +193,7 @@ func (o ProvisioningPolicy) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ProvisioningPolicy) UnmarshalJSON(bytes []byte) (err error) {

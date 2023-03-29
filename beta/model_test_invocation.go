@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TestInvocation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TestInvocation{}
+
 // TestInvocation struct for TestInvocation
 type TestInvocation struct {
 	// Trigger ID
@@ -161,16 +164,20 @@ func (o *TestInvocation) SetSubscriptionIds(v []string) {
 }
 
 func (o TestInvocation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["triggerId"] = o.TriggerId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TestInvocation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["triggerId"] = o.TriggerId
 	if !isNil(o.Input) {
 		toSerialize["input"] = o.Input
 	}
-	if true {
-		toSerialize["contentJson"] = o.ContentJson
-	}
+	toSerialize["contentJson"] = o.ContentJson
 	if !isNil(o.SubscriptionIds) {
 		toSerialize["subscriptionIds"] = o.SubscriptionIds
 	}
@@ -179,7 +186,7 @@ func (o TestInvocation) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TestInvocation) UnmarshalJSON(bytes []byte) (err error) {

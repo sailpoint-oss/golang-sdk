@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner{}
+
 // TriggerInputAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner struct for TriggerInputAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner
 type TriggerInputAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner struct {
 	// A comment left by the approver.
@@ -163,25 +166,27 @@ func (o *TriggerInputAccessRequestPostApprovalRequestedItemsStatusInnerApprovalI
 }
 
 func (o TriggerInputAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.ApprovalComment.IsSet() {
 		toSerialize["approvalComment"] = o.ApprovalComment.Get()
 	}
-	if true {
-		toSerialize["approvalDecision"] = o.ApprovalDecision
-	}
-	if true {
-		toSerialize["approverName"] = o.ApproverName
-	}
-	if true {
-		toSerialize["approver"] = o.Approver
-	}
+	toSerialize["approvalDecision"] = o.ApprovalDecision
+	toSerialize["approverName"] = o.ApproverName
+	toSerialize["approver"] = o.Approver
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) UnmarshalJSON(bytes []byte) (err error) {

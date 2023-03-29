@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SodViolationCheckResult type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SodViolationCheckResult{}
+
 // SodViolationCheckResult The inner object representing the completed SOD Violation check
 type SodViolationCheckResult struct {
 	Message *ErrorMessageDto `json:"message,omitempty"`
@@ -173,6 +176,14 @@ func (o *SodViolationCheckResult) SetViolatedPolicies(v []BaseReferenceDto) {
 }
 
 func (o SodViolationCheckResult) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SodViolationCheckResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Message) {
 		toSerialize["message"] = o.Message
@@ -191,7 +202,7 @@ func (o SodViolationCheckResult) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SodViolationCheckResult) UnmarshalJSON(bytes []byte) (err error) {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the WorkflowAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkflowAllOf{}
+
 // WorkflowAllOf struct for WorkflowAllOf
 type WorkflowAllOf struct {
 	// Workflow ID. This is a UUID generated upon creation.
@@ -210,6 +213,14 @@ func (o *WorkflowAllOf) SetCreator(v BaseReferenceDto) {
 }
 
 func (o WorkflowAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkflowAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -231,7 +242,7 @@ func (o WorkflowAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkflowAllOf) UnmarshalJSON(bytes []byte) (err error) {

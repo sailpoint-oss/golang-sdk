@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BearerTokenAuthConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BearerTokenAuthConfig{}
+
 // BearerTokenAuthConfig Config required if BEARER_TOKEN authentication is used. On response, this field is set to null as to not return secrets.
 type BearerTokenAuthConfig struct {
 	// Bearer token
@@ -83,6 +86,14 @@ func (o *BearerTokenAuthConfig) UnsetBearerToken() {
 }
 
 func (o BearerTokenAuthConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BearerTokenAuthConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.BearerToken.IsSet() {
 		toSerialize["bearerToken"] = o.BearerToken.Get()
@@ -92,7 +103,7 @@ func (o BearerTokenAuthConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BearerTokenAuthConfig) UnmarshalJSON(bytes []byte) (err error) {

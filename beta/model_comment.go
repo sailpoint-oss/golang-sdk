@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Comment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Comment{}
+
 // Comment struct for Comment
 type Comment struct {
 	// Id of the identity making the comment
@@ -176,6 +179,14 @@ func (o *Comment) SetDate(v time.Time) {
 }
 
 func (o Comment) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Comment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CommenterId) {
 		toSerialize["commenterId"] = o.CommenterId
@@ -194,7 +205,7 @@ func (o Comment) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Comment) UnmarshalJSON(bytes []byte) (err error) {

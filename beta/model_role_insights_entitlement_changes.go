@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleInsightsEntitlementChanges type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleInsightsEntitlementChanges{}
+
 // RoleInsightsEntitlementChanges struct for RoleInsightsEntitlementChanges
 type RoleInsightsEntitlementChanges struct {
 	// Name of the entitlement
@@ -276,6 +279,14 @@ func (o *RoleInsightsEntitlementChanges) SetInsight(v RoleInsightsInsight) {
 }
 
 func (o RoleInsightsEntitlementChanges) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleInsightsEntitlementChanges) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -303,7 +314,7 @@ func (o RoleInsightsEntitlementChanges) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleInsightsEntitlementChanges) UnmarshalJSON(bytes []byte) (err error) {

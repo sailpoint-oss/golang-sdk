@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Argument type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Argument{}
+
 // Argument struct for Argument
 type Argument struct {
 	// the name of the argument
@@ -134,10 +137,16 @@ func (o *Argument) SetType(v string) {
 }
 
 func (o Argument) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Argument) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -149,7 +158,7 @@ func (o Argument) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Argument) UnmarshalJSON(bytes []byte) (err error) {

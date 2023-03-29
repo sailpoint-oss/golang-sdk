@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TaggedObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TaggedObject{}
+
 // TaggedObject struct for TaggedObject
 type TaggedObject struct {
 	ObjectRef *BaseReferenceDto `json:"objectRef,omitempty"`
@@ -106,6 +109,14 @@ func (o *TaggedObject) SetTags(v []string) {
 }
 
 func (o TaggedObject) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TaggedObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ObjectRef) {
 		toSerialize["objectRef"] = o.ObjectRef
@@ -118,7 +129,7 @@ func (o TaggedObject) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TaggedObject) UnmarshalJSON(bytes []byte) (err error) {

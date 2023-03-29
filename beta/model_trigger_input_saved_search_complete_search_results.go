@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputSavedSearchCompleteSearchResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputSavedSearchCompleteSearchResults{}
+
 // TriggerInputSavedSearchCompleteSearchResults A preview of the search results for each object type. This includes a count as well as headers, and the first several rows of data, per object type.
 type TriggerInputSavedSearchCompleteSearchResults struct {
 	Account NullableTriggerInputSavedSearchCompleteSearchResultsAccount `json:"Account,omitempty"`
@@ -168,6 +171,14 @@ func (o *TriggerInputSavedSearchCompleteSearchResults) UnsetIdentity() {
 }
 
 func (o TriggerInputSavedSearchCompleteSearchResults) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputSavedSearchCompleteSearchResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Account.IsSet() {
 		toSerialize["Account"] = o.Account.Get()
@@ -183,7 +194,7 @@ func (o TriggerInputSavedSearchCompleteSearchResults) MarshalJSON() ([]byte, err
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputSavedSearchCompleteSearchResults) UnmarshalJSON(bytes []byte) (err error) {

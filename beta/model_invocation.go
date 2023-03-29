@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Invocation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Invocation{}
+
 // Invocation struct for Invocation
 type Invocation struct {
 	// Invocation ID
@@ -175,6 +178,14 @@ func (o *Invocation) SetContentJson(v map[string]interface{}) {
 }
 
 func (o Invocation) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Invocation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -193,7 +204,7 @@ func (o Invocation) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Invocation) UnmarshalJSON(bytes []byte) (err error) {

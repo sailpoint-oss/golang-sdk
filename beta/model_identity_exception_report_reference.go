@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityExceptionReportReference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityExceptionReportReference{}
+
 // IdentityExceptionReportReference struct for IdentityExceptionReportReference
 type IdentityExceptionReportReference struct {
 	// The id of the task result
@@ -107,6 +110,14 @@ func (o *IdentityExceptionReportReference) SetReportName(v string) {
 }
 
 func (o IdentityExceptionReportReference) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityExceptionReportReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.TaskResultId) {
 		toSerialize["taskResultId"] = o.TaskResultId
@@ -119,7 +130,7 @@ func (o IdentityExceptionReportReference) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityExceptionReportReference) UnmarshalJSON(bytes []byte) (err error) {

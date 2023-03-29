@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AttributeDefinitionSchema type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AttributeDefinitionSchema{}
+
 // AttributeDefinitionSchema A reference to the schema on the source to the attribute values map to.
 type AttributeDefinitionSchema struct {
 	// The type of object being referenced
@@ -141,6 +144,14 @@ func (o *AttributeDefinitionSchema) SetName(v string) {
 }
 
 func (o AttributeDefinitionSchema) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AttributeDefinitionSchema) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o AttributeDefinitionSchema) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AttributeDefinitionSchema) UnmarshalJSON(bytes []byte) (err error) {

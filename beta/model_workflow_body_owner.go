@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WorkflowBodyOwner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkflowBodyOwner{}
+
 // WorkflowBodyOwner The identity that owns the workflow.  The owner's permissions in IDN will determine what actions the workflow is allowed to perform.  Ownership can be changed by updating the owner in a PUT or PATCH request.
 type WorkflowBodyOwner struct {
 	// The type of object that is referenced
@@ -141,6 +144,14 @@ func (o *WorkflowBodyOwner) SetName(v string) {
 }
 
 func (o WorkflowBodyOwner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkflowBodyOwner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o WorkflowBodyOwner) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkflowBodyOwner) UnmarshalJSON(bytes []byte) (err error) {

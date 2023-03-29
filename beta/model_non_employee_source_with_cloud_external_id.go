@@ -11,9 +11,12 @@ API version: 3.1.0-beta
 package beta
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the NonEmployeeSourceWithCloudExternalId type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeSourceWithCloudExternalId{}
 
 // NonEmployeeSourceWithCloudExternalId struct for NonEmployeeSourceWithCloudExternalId
 type NonEmployeeSourceWithCloudExternalId struct {
@@ -390,6 +393,14 @@ func (o *NonEmployeeSourceWithCloudExternalId) SetCloudExternalId(v string) {
 }
 
 func (o NonEmployeeSourceWithCloudExternalId) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeSourceWithCloudExternalId) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -426,7 +437,7 @@ func (o NonEmployeeSourceWithCloudExternalId) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeSourceWithCloudExternalId) UnmarshalJSON(bytes []byte) (err error) {

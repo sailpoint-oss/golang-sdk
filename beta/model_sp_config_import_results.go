@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SpConfigImportResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpConfigImportResults{}
+
 // SpConfigImportResults Response Body for Config Import command.
 type SpConfigImportResults struct {
 	// The results of an object configuration import job.
@@ -100,10 +103,16 @@ func (o *SpConfigImportResults) SetExportJobId(v string) {
 }
 
 func (o SpConfigImportResults) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["results"] = o.Results
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SpConfigImportResults) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["results"] = o.Results
 	if !isNil(o.ExportJobId) {
 		toSerialize["exportJobId"] = o.ExportJobId
 	}
@@ -112,7 +121,7 @@ func (o SpConfigImportResults) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SpConfigImportResults) UnmarshalJSON(bytes []byte) (err error) {

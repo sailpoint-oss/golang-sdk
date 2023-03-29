@@ -66,7 +66,7 @@ func (a *MFAConfigurationApiService) GetMFAConfigExecute(r ApiGetMFAConfigReques
 	}
 
 	localVarPath := localBasePath + "/mfa/{method}/config"
-	localVarPath = strings.Replace(localVarPath, "{"+"method"+"}", url.PathEscape(parameterToString(r.method, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"method"+"}", url.PathEscape(parameterValueToString(r.method, "method")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -118,8 +118,8 @@ func (a *MFAConfigurationApiService) GetMFAConfigExecute(r ApiGetMFAConfigReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -129,8 +129,8 @@ func (a *MFAConfigurationApiService) GetMFAConfigExecute(r ApiGetMFAConfigReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -140,8 +140,8 @@ func (a *MFAConfigurationApiService) GetMFAConfigExecute(r ApiGetMFAConfigReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -151,8 +151,8 @@ func (a *MFAConfigurationApiService) GetMFAConfigExecute(r ApiGetMFAConfigReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -162,8 +162,8 @@ func (a *MFAConfigurationApiService) GetMFAConfigExecute(r ApiGetMFAConfigReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -229,7 +229,7 @@ func (a *MFAConfigurationApiService) SetMFAConfigExecute(r ApiSetMFAConfigReques
 	}
 
 	localVarPath := localBasePath + "/mfa/{method}/config"
-	localVarPath = strings.Replace(localVarPath, "{"+"method"+"}", url.PathEscape(parameterToString(r.method, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"method"+"}", url.PathEscape(parameterValueToString(r.method, "method")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -286,8 +286,8 @@ func (a *MFAConfigurationApiService) SetMFAConfigExecute(r ApiSetMFAConfigReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -297,8 +297,8 @@ func (a *MFAConfigurationApiService) SetMFAConfigExecute(r ApiSetMFAConfigReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -308,8 +308,8 @@ func (a *MFAConfigurationApiService) SetMFAConfigExecute(r ApiSetMFAConfigReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -319,8 +319,8 @@ func (a *MFAConfigurationApiService) SetMFAConfigExecute(r ApiSetMFAConfigReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -330,8 +330,8 @@ func (a *MFAConfigurationApiService) SetMFAConfigExecute(r ApiSetMFAConfigReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -392,7 +392,7 @@ func (a *MFAConfigurationApiService) TestMFAConfigExecute(r ApiTestMFAConfigRequ
 	}
 
 	localVarPath := localBasePath + "/mfa/{method}/test"
-	localVarPath = strings.Replace(localVarPath, "{"+"method"+"}", url.PathEscape(parameterToString(r.method, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"method"+"}", url.PathEscape(parameterValueToString(r.method, "method")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -444,8 +444,8 @@ func (a *MFAConfigurationApiService) TestMFAConfigExecute(r ApiTestMFAConfigRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -455,8 +455,8 @@ func (a *MFAConfigurationApiService) TestMFAConfigExecute(r ApiTestMFAConfigRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -466,8 +466,8 @@ func (a *MFAConfigurationApiService) TestMFAConfigExecute(r ApiTestMFAConfigRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -477,8 +477,8 @@ func (a *MFAConfigurationApiService) TestMFAConfigExecute(r ApiTestMFAConfigRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -488,8 +488,8 @@ func (a *MFAConfigurationApiService) TestMFAConfigExecute(r ApiTestMFAConfigRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

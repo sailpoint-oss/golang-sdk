@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ClientLogConfiguration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientLogConfiguration{}
+
 // ClientLogConfiguration Client Runtime Logging Configuration
 type ClientLogConfiguration struct {
 	// client ID of the Log configuration
@@ -195,19 +198,23 @@ func (o *ClientLogConfiguration) SetLogLevels(v map[string]StandardLevel) {
 }
 
 func (o ClientLogConfiguration) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ClientLogConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ClientId) {
 		toSerialize["clientId"] = o.ClientId
 	}
-	if true {
-		toSerialize["durationMinutes"] = o.DurationMinutes
-	}
+	toSerialize["durationMinutes"] = o.DurationMinutes
 	if !isNil(o.Expiration) {
 		toSerialize["expiration"] = o.Expiration
 	}
-	if true {
-		toSerialize["rootLevel"] = o.RootLevel
-	}
+	toSerialize["rootLevel"] = o.RootLevel
 	if !isNil(o.LogLevels) {
 		toSerialize["logLevels"] = o.LogLevels
 	}
@@ -216,7 +223,7 @@ func (o ClientLogConfiguration) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ClientLogConfiguration) UnmarshalJSON(bytes []byte) (err error) {

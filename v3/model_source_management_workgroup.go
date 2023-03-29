@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SourceManagementWorkgroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceManagementWorkgroup{}
+
 // SourceManagementWorkgroup Reference to Management Workgroup for this Source
 type SourceManagementWorkgroup struct {
 	// The type of object being referenced
@@ -141,6 +144,14 @@ func (o *SourceManagementWorkgroup) SetName(v string) {
 }
 
 func (o SourceManagementWorkgroup) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SourceManagementWorkgroup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o SourceManagementWorkgroup) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SourceManagementWorkgroup) UnmarshalJSON(bytes []byte) (err error) {

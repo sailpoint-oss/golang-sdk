@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FullcampaignAllOfRoleCompositionCampaignInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FullcampaignAllOfRoleCompositionCampaignInfo{}
+
 // FullcampaignAllOfRoleCompositionCampaignInfo Optional configuration options for role composition campaigns.
 type FullcampaignAllOfRoleCompositionCampaignInfo struct {
 	// If specified, this identity or governance group will be the reviewer for all certifications in this campaign. The allowed DTO types are IDENTITY and GOVERNANCE_GROUP
@@ -201,6 +204,14 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) SetDescription(v string) 
 }
 
 func (o FullcampaignAllOfRoleCompositionCampaignInfo) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FullcampaignAllOfRoleCompositionCampaignInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Reviewer) {
 		toSerialize["reviewer"] = o.Reviewer
@@ -208,9 +219,7 @@ func (o FullcampaignAllOfRoleCompositionCampaignInfo) MarshalJSON() ([]byte, err
 	if !isNil(o.RoleIds) {
 		toSerialize["roleIds"] = o.RoleIds
 	}
-	if true {
-		toSerialize["remediatorRef"] = o.RemediatorRef
-	}
+	toSerialize["remediatorRef"] = o.RemediatorRef
 	if !isNil(o.Query) {
 		toSerialize["query"] = o.Query
 	}
@@ -222,7 +231,7 @@ func (o FullcampaignAllOfRoleCompositionCampaignInfo) MarshalJSON() ([]byte, err
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *FullcampaignAllOfRoleCompositionCampaignInfo) UnmarshalJSON(bytes []byte) (err error) {

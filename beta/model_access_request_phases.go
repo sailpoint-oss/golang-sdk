@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AccessRequestPhases type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestPhases{}
+
 // AccessRequestPhases Provides additional details about this access request phase.
 type AccessRequestPhases struct {
 	// The time that this phase started.
@@ -244,6 +247,14 @@ func (o *AccessRequestPhases) SetPhaseReference(v string) {
 }
 
 func (o AccessRequestPhases) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequestPhases) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Started) {
 		toSerialize["started"] = o.Started
@@ -268,7 +279,7 @@ func (o AccessRequestPhases) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequestPhases) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityCompareResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityCompareResponse{}
+
 // IdentityCompareResponse struct for IdentityCompareResponse
 type IdentityCompareResponse struct {
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.
@@ -73,6 +76,14 @@ func (o *IdentityCompareResponse) SetAccessItemDiff(v map[string]map[string]inte
 }
 
 func (o IdentityCompareResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityCompareResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccessItemDiff) {
 		toSerialize["accessItemDiff"] = o.AccessItemDiff
@@ -82,7 +93,7 @@ func (o IdentityCompareResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityCompareResponse) UnmarshalJSON(bytes []byte) (err error) {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the RoleInsight type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleInsight{}
+
 // RoleInsight struct for RoleInsight
 type RoleInsight struct {
 	// Insight id
@@ -208,6 +211,14 @@ func (o *RoleInsight) SetInsight(v RoleInsightsInsight) {
 }
 
 func (o RoleInsight) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleInsight) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -229,7 +240,7 @@ func (o RoleInsight) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleInsight) UnmarshalJSON(bytes []byte) (err error) {

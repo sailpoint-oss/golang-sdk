@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the SearchSchedule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SearchSchedule{}
+
 // SearchSchedule struct for SearchSchedule
 type SearchSchedule struct {
 	// The ID of the saved search that will be executed.
@@ -302,22 +305,20 @@ func (o *SearchSchedule) SetDisplayQueryDetails(v bool) {
 }
 
 func (o SearchSchedule) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SearchSchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["savedSearchId"] = o.SavedSearchId
-	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
-	if true {
-		toSerialize["schedule"] = o.Schedule
-	}
-	if true {
-		toSerialize["recipients"] = o.Recipients
-	}
+	toSerialize["savedSearchId"] = o.SavedSearchId
+	// skip: created is readOnly
+	// skip: modified is readOnly
+	toSerialize["schedule"] = o.Schedule
+	toSerialize["recipients"] = o.Recipients
 	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
@@ -332,7 +333,7 @@ func (o SearchSchedule) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SearchSchedule) UnmarshalJSON(bytes []byte) (err error) {

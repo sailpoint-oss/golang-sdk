@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CommonAccessItemAccess type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CommonAccessItemAccess{}
+
 // CommonAccessItemAccess struct for CommonAccessItemAccess
 type CommonAccessItemAccess struct {
 	// Common access ID
@@ -242,6 +245,14 @@ func (o *CommonAccessItemAccess) SetOwnerId(v string) {
 }
 
 func (o CommonAccessItemAccess) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CommonAccessItemAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -266,7 +277,7 @@ func (o CommonAccessItemAccess) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CommonAccessItemAccess) UnmarshalJSON(bytes []byte) (err error) {

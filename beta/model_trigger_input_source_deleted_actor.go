@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputSourceDeletedActor type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputSourceDeletedActor{}
+
 // TriggerInputSourceDeletedActor The identity that deleted the source.
 type TriggerInputSourceDeletedActor struct {
 	// The type of object that is referenced
@@ -120,22 +123,24 @@ func (o *TriggerInputSourceDeletedActor) SetName(v string) {
 }
 
 func (o TriggerInputSourceDeletedActor) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputSourceDeletedActor) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputSourceDeletedActor) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BulkIdentitiesAccountsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BulkIdentitiesAccountsResponse{}
+
 // BulkIdentitiesAccountsResponse Bulk response object.
 type BulkIdentitiesAccountsResponse struct {
 	// Identifier of bulk request item.
@@ -141,6 +144,14 @@ func (o *BulkIdentitiesAccountsResponse) SetMessage(v string) {
 }
 
 func (o BulkIdentitiesAccountsResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BulkIdentitiesAccountsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -156,7 +167,7 @@ func (o BulkIdentitiesAccountsResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BulkIdentitiesAccountsResponse) UnmarshalJSON(bytes []byte) (err error) {

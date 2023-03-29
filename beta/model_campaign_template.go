@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CampaignTemplate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CampaignTemplate{}
+
 // CampaignTemplate Campaign Template
 type CampaignTemplate struct {
 	// Id of the campaign template
@@ -309,40 +312,36 @@ func (o *CampaignTemplate) SetCampaign(v Campaign) {
 }
 
 func (o CampaignTemplate) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CampaignTemplate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
-	if true {
-		toSerialize["modified"] = o.Modified
-	}
-	if !isNil(o.Scheduled) {
-		toSerialize["scheduled"] = o.Scheduled
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["description"] = o.Description
+	// skip: created is readOnly
+	// skip: modified is readOnly
+	// skip: scheduled is readOnly
 	if !isNil(o.OwnerRef) {
 		toSerialize["ownerRef"] = o.OwnerRef
 	}
 	if !isNil(o.DeadlineDuration) {
 		toSerialize["deadlineDuration"] = o.DeadlineDuration
 	}
-	if true {
-		toSerialize["campaign"] = o.Campaign
-	}
+	toSerialize["campaign"] = o.Campaign
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CampaignTemplate) UnmarshalJSON(bytes []byte) (err error) {

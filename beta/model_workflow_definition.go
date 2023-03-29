@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WorkflowDefinition type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkflowDefinition{}
+
 // WorkflowDefinition The map of steps that the workflow will execute.
 type WorkflowDefinition struct {
 	// The name of the starting step.
@@ -107,6 +110,14 @@ func (o *WorkflowDefinition) SetSteps(v map[string]interface{}) {
 }
 
 func (o WorkflowDefinition) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkflowDefinition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Start) {
 		toSerialize["start"] = o.Start
@@ -119,7 +130,7 @@ func (o WorkflowDefinition) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkflowDefinition) UnmarshalJSON(bytes []byte) (err error) {

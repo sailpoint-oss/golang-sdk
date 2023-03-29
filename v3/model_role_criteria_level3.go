@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleCriteriaLevel3 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleCriteriaLevel3{}
+
 // RoleCriteriaLevel3 Defines STANDARD type Role membership
 type RoleCriteriaLevel3 struct {
 	Operation *RoleCriteriaOperation `json:"operation,omitempty"`
@@ -149,6 +152,14 @@ func (o *RoleCriteriaLevel3) SetStringValue(v string) {
 }
 
 func (o RoleCriteriaLevel3) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleCriteriaLevel3) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
@@ -164,7 +175,7 @@ func (o RoleCriteriaLevel3) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleCriteriaLevel3) UnmarshalJSON(bytes []byte) (err error) {

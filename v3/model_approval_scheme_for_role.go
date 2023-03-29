@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApprovalSchemeForRole type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApprovalSchemeForRole{}
+
 // ApprovalSchemeForRole struct for ApprovalSchemeForRole
 type ApprovalSchemeForRole struct {
 	// Describes the individual or group that is responsible for an approval step. Values are as follows.  **OWNER**: Owner of the associated Role  **MANAGER**: Manager of the Identity making the request  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field
@@ -117,6 +120,14 @@ func (o *ApprovalSchemeForRole) UnsetApproverId() {
 }
 
 func (o ApprovalSchemeForRole) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ApprovalSchemeForRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ApproverType) {
 		toSerialize["approverType"] = o.ApproverType
@@ -129,7 +140,7 @@ func (o ApprovalSchemeForRole) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ApprovalSchemeForRole) UnmarshalJSON(bytes []byte) (err error) {

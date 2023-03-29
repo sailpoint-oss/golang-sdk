@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DomainAddressDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainAddressDto{}
+
 // DomainAddressDto struct for DomainAddressDto
 type DomainAddressDto struct {
 	// A domain address
@@ -73,6 +76,14 @@ func (o *DomainAddressDto) SetDomain(v string) {
 }
 
 func (o DomainAddressDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DomainAddressDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Domain) {
 		toSerialize["domain"] = o.Domain
@@ -82,7 +93,7 @@ func (o DomainAddressDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *DomainAddressDto) UnmarshalJSON(bytes []byte) (err error) {

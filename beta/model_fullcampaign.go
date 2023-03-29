@@ -11,9 +11,12 @@ API version: 3.1.0-beta
 package beta
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the Fullcampaign type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Fullcampaign{}
 
 // Fullcampaign struct for Fullcampaign
 type Fullcampaign struct {
@@ -733,22 +736,22 @@ func (o *Fullcampaign) SetSourcesWithOrphanEntitlements(v []FullcampaignAllOfSou
 }
 
 func (o Fullcampaign) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Fullcampaign) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	toSerialize["description"] = o.Description
 	if !isNil(o.Deadline) {
 		toSerialize["deadline"] = o.Deadline
 	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["type"] = o.Type
 	if !isNil(o.EmailNotificationEnabled) {
 		toSerialize["emailNotificationEnabled"] = o.EmailNotificationEnabled
 	}
@@ -758,18 +761,12 @@ func (o Fullcampaign) MarshalJSON() ([]byte, error) {
 	if !isNil(o.RecommendationsEnabled) {
 		toSerialize["recommendationsEnabled"] = o.RecommendationsEnabled
 	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
+	// skip: status is readOnly
 	if !isNil(o.CorrelatedStatus) {
 		toSerialize["correlatedStatus"] = o.CorrelatedStatus
 	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
+	// skip: created is readOnly
+	// skip: modified is readOnly
 	if !isNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
@@ -785,24 +782,16 @@ func (o Fullcampaign) MarshalJSON() ([]byte, error) {
 	if !isNil(o.RoleCompositionCampaignInfo) {
 		toSerialize["roleCompositionCampaignInfo"] = o.RoleCompositionCampaignInfo
 	}
-	if !isNil(o.Alerts) {
-		toSerialize["alerts"] = o.Alerts
-	}
-	if !isNil(o.TotalCertifications) {
-		toSerialize["totalCertifications"] = o.TotalCertifications
-	}
-	if !isNil(o.CompletedCertifications) {
-		toSerialize["completedCertifications"] = o.CompletedCertifications
-	}
-	if !isNil(o.SourcesWithOrphanEntitlements) {
-		toSerialize["sourcesWithOrphanEntitlements"] = o.SourcesWithOrphanEntitlements
-	}
+	// skip: alerts is readOnly
+	// skip: totalCertifications is readOnly
+	// skip: completedCertifications is readOnly
+	// skip: sourcesWithOrphanEntitlements is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Fullcampaign) UnmarshalJSON(bytes []byte) (err error) {

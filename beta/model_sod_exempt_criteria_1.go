@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SodExemptCriteria1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SodExemptCriteria1{}
+
 // SodExemptCriteria1 Details of the Entitlement criteria
 type SodExemptCriteria1 struct {
 	// If the entitlement already belonged to the user or not.
@@ -174,6 +177,14 @@ func (o *SodExemptCriteria1) SetName(v string) {
 }
 
 func (o SodExemptCriteria1) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SodExemptCriteria1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Existing) {
 		toSerialize["existing"] = o.Existing
@@ -192,7 +203,7 @@ func (o SodExemptCriteria1) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SodExemptCriteria1) UnmarshalJSON(bytes []byte) (err error) {

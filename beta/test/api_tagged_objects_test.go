@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_beta_TaggedObjectsApiService(t *testing.T) {
@@ -53,10 +53,9 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 		var type_ string
 		var id string
 
-		resp, httpRes, err := apiClient.TaggedObjectsApi.DeleteTaggedObject(context.Background(), type_, id).Execute()
+		httpRes, err := apiClient.TaggedObjectsApi.DeleteTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -106,10 +105,9 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TaggedObjectsApi.RemoveTagsToManyObject(context.Background()).Execute()
+		httpRes, err := apiClient.TaggedObjectsApi.RemoveTagsToManyObject(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

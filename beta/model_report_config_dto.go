@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ReportConfigDTO type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReportConfigDTO{}
+
 // ReportConfigDTO struct for ReportConfigDTO
 type ReportConfigDTO struct {
 	// Name of column in report
@@ -183,6 +186,14 @@ func (o *ReportConfigDTO) SetOrder(v int32) {
 }
 
 func (o ReportConfigDTO) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ReportConfigDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ColumnName) {
 		toSerialize["columnName"] = o.ColumnName
@@ -201,7 +212,7 @@ func (o ReportConfigDTO) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ReportConfigDTO) UnmarshalJSON(bytes []byte) (err error) {

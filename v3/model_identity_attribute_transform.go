@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityAttributeTransform type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityAttributeTransform{}
+
 // IdentityAttributeTransform Defines a transformation definition for an identity attribute.
 type IdentityAttributeTransform struct {
 	// Name of the identity attribute.
@@ -106,6 +109,14 @@ func (o *IdentityAttributeTransform) SetTransformDefinition(v TransformDefinitio
 }
 
 func (o IdentityAttributeTransform) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityAttributeTransform) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.IdentityAttributeName) {
 		toSerialize["identityAttributeName"] = o.IdentityAttributeName
@@ -118,7 +129,7 @@ func (o IdentityAttributeTransform) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityAttributeTransform) UnmarshalJSON(bytes []byte) (err error) {

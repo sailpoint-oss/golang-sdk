@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SavedSearchComplete type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SavedSearchComplete{}
+
 // SavedSearchComplete struct for SavedSearchComplete
 type SavedSearchComplete struct {
 	// A name for the report file.
@@ -227,34 +230,28 @@ func (o *SavedSearchComplete) SetSignedS3Url(v string) {
 }
 
 func (o SavedSearchComplete) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SavedSearchComplete) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["fileName"] = o.FileName
-	}
-	if true {
-		toSerialize["ownerEmail"] = o.OwnerEmail
-	}
-	if true {
-		toSerialize["ownerName"] = o.OwnerName
-	}
-	if true {
-		toSerialize["query"] = o.Query
-	}
-	if true {
-		toSerialize["searchName"] = o.SearchName
-	}
-	if true {
-		toSerialize["searchResults"] = o.SearchResults
-	}
-	if true {
-		toSerialize["signedS3Url"] = o.SignedS3Url
-	}
+	toSerialize["fileName"] = o.FileName
+	toSerialize["ownerEmail"] = o.OwnerEmail
+	toSerialize["ownerName"] = o.OwnerName
+	toSerialize["query"] = o.Query
+	toSerialize["searchName"] = o.SearchName
+	toSerialize["searchResults"] = o.SearchResults
+	toSerialize["signedS3Url"] = o.SignedS3Url
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SavedSearchComplete) UnmarshalJSON(bytes []byte) (err error) {

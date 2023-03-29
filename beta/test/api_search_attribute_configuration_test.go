@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_beta_SearchAttributeConfigurationApiService(t *testing.T) {
@@ -40,10 +40,9 @@ func Test_beta_SearchAttributeConfigurationApiService(t *testing.T) {
 
 		var name string
 
-		resp, httpRes, err := apiClient.SearchAttributeConfigurationApi.DeleteSearchAttributeConfig(context.Background(), name).Execute()
+		httpRes, err := apiClient.SearchAttributeConfigurationApi.DeleteSearchAttributeConfig(context.Background(), name).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

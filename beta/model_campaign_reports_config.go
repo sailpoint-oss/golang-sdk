@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CampaignReportsConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CampaignReportsConfig{}
+
 // CampaignReportsConfig struct for CampaignReportsConfig
 type CampaignReportsConfig struct {
 	IdentityAttributeColumns []string `json:"identityAttributeColumns,omitempty"`
@@ -72,6 +75,14 @@ func (o *CampaignReportsConfig) SetIdentityAttributeColumns(v []string) {
 }
 
 func (o CampaignReportsConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CampaignReportsConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.IdentityAttributeColumns) {
 		toSerialize["identityAttributeColumns"] = o.IdentityAttributeColumns
@@ -81,7 +92,7 @@ func (o CampaignReportsConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CampaignReportsConfig) UnmarshalJSON(bytes []byte) (err error) {

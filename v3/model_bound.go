@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Bound type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Bound{}
+
 // Bound struct for Bound
 type Bound struct {
 	// The value of the range's endpoint.
@@ -104,10 +107,16 @@ func (o *Bound) SetInclusive(v bool) {
 }
 
 func (o Bound) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Bound) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["value"] = o.Value
 	if !isNil(o.Inclusive) {
 		toSerialize["inclusive"] = o.Inclusive
 	}
@@ -116,7 +125,7 @@ func (o Bound) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Bound) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Column type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Column{}
+
 // Column struct for Column
 type Column struct {
 	// The name of the field. 
@@ -100,10 +103,16 @@ func (o *Column) SetHeader(v string) {
 }
 
 func (o Column) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["field"] = o.Field
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Column) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["field"] = o.Field
 	if !isNil(o.Header) {
 		toSerialize["header"] = o.Header
 	}
@@ -112,7 +121,7 @@ func (o Column) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Column) UnmarshalJSON(bytes []byte) (err error) {

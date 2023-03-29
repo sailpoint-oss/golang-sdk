@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EntitlementSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementSummary{}
+
 // EntitlementSummary EntitlementReference
 type EntitlementSummary struct {
 	// The unique ID of the referenced object.
@@ -381,6 +384,14 @@ func (o *EntitlementSummary) SetStandalone(v bool) {
 }
 
 func (o EntitlementSummary) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EntitlementSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -417,7 +428,7 @@ func (o EntitlementSummary) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EntitlementSummary) UnmarshalJSON(bytes []byte) (err error) {

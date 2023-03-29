@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ProcessingDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProcessingDetails{}
+
 // ProcessingDetails struct for ProcessingDetails
 type ProcessingDetails struct {
 	// A date-time in ISO-8601 format
@@ -216,6 +219,14 @@ func (o *ProcessingDetails) SetMessage(v string) {
 }
 
 func (o ProcessingDetails) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProcessingDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Date.IsSet() {
 		toSerialize["date"] = o.Date.Get()
@@ -237,7 +248,7 @@ func (o ProcessingDetails) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ProcessingDetails) UnmarshalJSON(bytes []byte) (err error) {

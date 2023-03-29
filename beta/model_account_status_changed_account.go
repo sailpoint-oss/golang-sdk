@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountStatusChangedAccount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountStatusChangedAccount{}
+
 // AccountStatusChangedAccount struct for AccountStatusChangedAccount
 type AccountStatusChangedAccount struct {
 	// the ID of the account in the database
@@ -277,6 +280,14 @@ func (o *AccountStatusChangedAccount) SetAccessType(v string) {
 }
 
 func (o AccountStatusChangedAccount) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountStatusChangedAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -304,7 +315,7 @@ func (o AccountStatusChangedAccount) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountStatusChangedAccount) UnmarshalJSON(bytes []byte) (err error) {

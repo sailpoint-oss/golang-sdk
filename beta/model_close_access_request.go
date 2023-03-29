@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloseAccessRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloseAccessRequest{}
+
 // CloseAccessRequest Request body payload for close access requests endpoint.
 type CloseAccessRequest struct {
 	// Access Request IDs for the requests to be closed. Accepts 1-500 Identity Request IDs per request.
@@ -180,10 +183,16 @@ func (o *CloseAccessRequest) SetCompletionStatus(v string) {
 }
 
 func (o CloseAccessRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["accessRequestIds"] = o.AccessRequestIds
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CloseAccessRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["accessRequestIds"] = o.AccessRequestIds
 	if !isNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
@@ -198,7 +207,7 @@ func (o CloseAccessRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CloseAccessRequest) UnmarshalJSON(bytes []byte) (err error) {

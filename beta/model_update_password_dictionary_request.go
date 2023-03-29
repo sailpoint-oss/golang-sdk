@@ -15,6 +15,9 @@ import (
 	"os"
 )
 
+// checks if the UpdatePasswordDictionaryRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdatePasswordDictionaryRequest{}
+
 // UpdatePasswordDictionaryRequest struct for UpdatePasswordDictionaryRequest
 type UpdatePasswordDictionaryRequest struct {
 	File **os.File `json:"file,omitempty"`
@@ -73,6 +76,14 @@ func (o *UpdatePasswordDictionaryRequest) SetFile(v *os.File) {
 }
 
 func (o UpdatePasswordDictionaryRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o UpdatePasswordDictionaryRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.File) {
 		toSerialize["file"] = o.File
@@ -82,7 +93,7 @@ func (o UpdatePasswordDictionaryRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *UpdatePasswordDictionaryRequest) UnmarshalJSON(bytes []byte) (err error) {

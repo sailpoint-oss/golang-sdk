@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Segment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Segment{}
+
 // Segment struct for Segment
 type Segment struct {
 	Id *string `json:"id,omitempty"`
@@ -309,6 +312,14 @@ func (o *Segment) SetActive(v bool) {
 }
 
 func (o Segment) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Segment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -339,7 +350,7 @@ func (o Segment) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Segment) UnmarshalJSON(bytes []byte) (err error) {

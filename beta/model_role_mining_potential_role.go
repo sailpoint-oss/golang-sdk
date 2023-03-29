@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMiningPotentialRole type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningPotentialRole{}
+
 // RoleMiningPotentialRole struct for RoleMiningPotentialRole
 type RoleMiningPotentialRole struct {
 	CreatedBy *EntityCreatedByDTO `json:"createdBy,omitempty"`
@@ -579,6 +582,14 @@ func (o *RoleMiningPotentialRole) SetType(v RoleMiningRoleType) {
 }
 
 func (o RoleMiningPotentialRole) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningPotentialRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CreatedBy) {
 		toSerialize["createdBy"] = o.CreatedBy
@@ -633,7 +644,7 @@ func (o RoleMiningPotentialRole) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningPotentialRole) UnmarshalJSON(bytes []byte) (err error) {

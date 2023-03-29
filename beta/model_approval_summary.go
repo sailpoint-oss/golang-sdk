@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApprovalSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApprovalSummary{}
+
 // ApprovalSummary struct for ApprovalSummary
 type ApprovalSummary struct {
 	// The number of pending access requests approvals.
@@ -141,6 +144,14 @@ func (o *ApprovalSummary) SetRejected(v int32) {
 }
 
 func (o ApprovalSummary) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ApprovalSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Pending) {
 		toSerialize["pending"] = o.Pending
@@ -156,7 +167,7 @@ func (o ApprovalSummary) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ApprovalSummary) UnmarshalJSON(bytes []byte) (err error) {

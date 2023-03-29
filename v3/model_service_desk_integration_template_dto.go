@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the ServiceDeskIntegrationTemplateDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceDeskIntegrationTemplateDto{}
 
 // ServiceDeskIntegrationTemplateDto struct for ServiceDeskIntegrationTemplateDto
 type ServiceDeskIntegrationTemplateDto struct {
@@ -251,34 +254,28 @@ func (o *ServiceDeskIntegrationTemplateDto) SetProvisioningConfig(v Provisioning
 }
 
 func (o ServiceDeskIntegrationTemplateDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ServiceDeskIntegrationTemplateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["attributes"] = o.Attributes
-	}
-	if true {
-		toSerialize["provisioningConfig"] = o.ProvisioningConfig
-	}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	// skip: created is readOnly
+	// skip: modified is readOnly
+	toSerialize["type"] = o.Type
+	toSerialize["attributes"] = o.Attributes
+	toSerialize["provisioningConfig"] = o.ProvisioningConfig
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ServiceDeskIntegrationTemplateDto) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMiningSessionStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningSessionStatus{}
+
 // RoleMiningSessionStatus struct for RoleMiningSessionStatus
 type RoleMiningSessionStatus struct {
 	// The role mining session status. Can be one of these states - CREATED|UPDATED|IDENTITIES_OBTAINED|PRUNE_THRESHOLD_OBTAINED|POTENTIAL_ROLES_PROCESSING|POTENTIAL_ROLES_CREATED
@@ -73,6 +76,14 @@ func (o *RoleMiningSessionStatus) SetState(v string) {
 }
 
 func (o RoleMiningSessionStatus) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningSessionStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.State) {
 		toSerialize["state"] = o.State
@@ -82,7 +93,7 @@ func (o RoleMiningSessionStatus) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningSessionStatus) UnmarshalJSON(bytes []byte) (err error) {

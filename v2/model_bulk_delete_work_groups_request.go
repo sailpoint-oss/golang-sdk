@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BulkDeleteWorkGroupsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BulkDeleteWorkGroupsRequest{}
+
 // BulkDeleteWorkGroupsRequest struct for BulkDeleteWorkGroupsRequest
 type BulkDeleteWorkGroupsRequest struct {
 	Ids []string `json:"ids,omitempty"`
@@ -72,6 +75,14 @@ func (o *BulkDeleteWorkGroupsRequest) SetIds(v []string) {
 }
 
 func (o BulkDeleteWorkGroupsRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BulkDeleteWorkGroupsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Ids) {
 		toSerialize["ids"] = o.Ids
@@ -81,7 +92,7 @@ func (o BulkDeleteWorkGroupsRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BulkDeleteWorkGroupsRequest) UnmarshalJSON(bytes []byte) (err error) {

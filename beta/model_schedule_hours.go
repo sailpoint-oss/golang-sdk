@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ScheduleHours type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ScheduleHours{}
+
 // ScheduleHours Specifies which hour(s) a schedule is active for. Examples:  Every three hours starting from 8AM, inclusive: * type LIST * values \"8\" * interval 3  During business hours: * type RANGE * values \"9\", \"5\"  At 5AM, noon, and 5PM: * type LIST * values \"5\", \"12\", \"17\" 
 type ScheduleHours struct {
 	Type string `json:"type"`
@@ -124,13 +127,17 @@ func (o *ScheduleHours) SetInterval(v int32) {
 }
 
 func (o ScheduleHours) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ScheduleHours) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["values"] = o.Values
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["values"] = o.Values
 	if !isNil(o.Interval) {
 		toSerialize["interval"] = o.Interval
 	}
@@ -139,7 +146,7 @@ func (o ScheduleHours) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ScheduleHours) UnmarshalJSON(bytes []byte) (err error) {

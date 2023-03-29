@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AppAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AppAllOf{}
+
 // AppAllOf struct for AppAllOf
 type AppAllOf struct {
 	Source *Reference `json:"source,omitempty"`
@@ -105,6 +108,14 @@ func (o *AppAllOf) SetAccount(v AppAllOfAccount) {
 }
 
 func (o AppAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AppAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Source) {
 		toSerialize["source"] = o.Source
@@ -117,7 +128,7 @@ func (o AppAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AppAllOf) UnmarshalJSON(bytes []byte) (err error) {

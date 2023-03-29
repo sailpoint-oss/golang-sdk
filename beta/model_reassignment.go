@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Reassignment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Reassignment{}
+
 // Reassignment struct for Reassignment
 type Reassignment struct {
 	From *CertificationReference `json:"from,omitempty"`
@@ -106,6 +109,14 @@ func (o *Reassignment) SetComment(v string) {
 }
 
 func (o Reassignment) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Reassignment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.From) {
 		toSerialize["from"] = o.From
@@ -118,7 +129,7 @@ func (o Reassignment) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Reassignment) UnmarshalJSON(bytes []byte) (err error) {

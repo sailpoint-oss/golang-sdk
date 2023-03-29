@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NonEmployeeRequestAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeRequestAllOf{}
+
 // NonEmployeeRequestAllOf struct for NonEmployeeRequestAllOf
 type NonEmployeeRequestAllOf struct {
 	// Requested identity account name.
@@ -582,6 +585,14 @@ func (o *NonEmployeeRequestAllOf) SetCreated(v time.Time) {
 }
 
 func (o NonEmployeeRequestAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeRequestAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccountName) {
 		toSerialize["accountName"] = o.AccountName
@@ -636,7 +647,7 @@ func (o NonEmployeeRequestAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeRequestAllOf) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WorkflowLibraryOperator type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkflowLibraryOperator{}
+
 // WorkflowLibraryOperator struct for WorkflowLibraryOperator
 type WorkflowLibraryOperator struct {
 	// Operator ID.
@@ -175,6 +178,14 @@ func (o *WorkflowLibraryOperator) SetFormFields(v []WorkflowLibraryFormFields) {
 }
 
 func (o WorkflowLibraryOperator) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkflowLibraryOperator) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -193,7 +204,7 @@ func (o WorkflowLibraryOperator) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkflowLibraryOperator) UnmarshalJSON(bytes []byte) (err error) {

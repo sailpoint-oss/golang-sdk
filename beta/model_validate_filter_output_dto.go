@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ValidateFilterOutputDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ValidateFilterOutputDto{}
+
 // ValidateFilterOutputDto struct for ValidateFilterOutputDto
 type ValidateFilterOutputDto struct {
 	// True if specified filter expression is valid against the input, false otherwise.
@@ -73,6 +76,14 @@ func (o *ValidateFilterOutputDto) SetIsValid(v bool) {
 }
 
 func (o ValidateFilterOutputDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ValidateFilterOutputDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.IsValid) {
 		toSerialize["isValid"] = o.IsValid
@@ -82,7 +93,7 @@ func (o ValidateFilterOutputDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ValidateFilterOutputDto) UnmarshalJSON(bytes []byte) (err error) {

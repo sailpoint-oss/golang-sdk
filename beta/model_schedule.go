@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Schedule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Schedule{}
+
 // Schedule struct for Schedule
 type Schedule struct {
 	// Determines the overall schedule cadence. In general, all time period fields smaller than the chosen type can be configured. For example, a DAILY schedule can have 'hours' set, but not 'days'; a WEEKLY schedule can have both 'hours' and 'days' set.
@@ -227,19 +230,23 @@ func (o *Schedule) SetTimeZoneId(v string) {
 }
 
 func (o Schedule) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Schedule) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
 	if !isNil(o.Months) {
 		toSerialize["months"] = o.Months
 	}
 	if !isNil(o.Days) {
 		toSerialize["days"] = o.Days
 	}
-	if true {
-		toSerialize["hours"] = o.Hours
-	}
+	toSerialize["hours"] = o.Hours
 	if !isNil(o.Expiration) {
 		toSerialize["expiration"] = o.Expiration
 	}
@@ -251,7 +258,7 @@ func (o Schedule) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Schedule) UnmarshalJSON(bytes []byte) (err error) {

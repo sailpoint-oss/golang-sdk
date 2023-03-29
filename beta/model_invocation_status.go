@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the InvocationStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InvocationStatus{}
+
 // InvocationStatus struct for InvocationStatus
 type InvocationStatus struct {
 	// Invocation ID
@@ -267,28 +270,24 @@ func (o *InvocationStatus) SetCompleteInvocationInput(v CompleteInvocationInput)
 }
 
 func (o InvocationStatus) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o InvocationStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["triggerId"] = o.TriggerId
-	}
-	if true {
-		toSerialize["subscriptionId"] = o.SubscriptionId
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["triggerId"] = o.TriggerId
+	toSerialize["subscriptionId"] = o.SubscriptionId
+	toSerialize["type"] = o.Type
+	toSerialize["created"] = o.Created
 	if !isNil(o.Completed) {
 		toSerialize["completed"] = o.Completed
 	}
-	if true {
-		toSerialize["startInvocationInput"] = o.StartInvocationInput
-	}
+	toSerialize["startInvocationInput"] = o.StartInvocationInput
 	if !isNil(o.CompleteInvocationInput) {
 		toSerialize["completeInvocationInput"] = o.CompleteInvocationInput
 	}
@@ -297,7 +296,7 @@ func (o InvocationStatus) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *InvocationStatus) UnmarshalJSON(bytes []byte) (err error) {

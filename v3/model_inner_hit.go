@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InnerHit type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InnerHit{}
+
 // InnerHit Inner Hit query object that will cause the specified nested type to be returned as the result matching the supplied query.
 type InnerHit struct {
 	// The search query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries.
@@ -93,19 +96,23 @@ func (o *InnerHit) SetType(v string) {
 }
 
 func (o InnerHit) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o InnerHit) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["query"] = o.Query
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["query"] = o.Query
+	toSerialize["type"] = o.Type
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *InnerHit) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SourceOwner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceOwner{}
+
 // SourceOwner Reference to an owning Identity Object
 type SourceOwner struct {
 	// The type of object being referenced
@@ -141,6 +144,14 @@ func (o *SourceOwner) SetName(v string) {
 }
 
 func (o SourceOwner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SourceOwner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o SourceOwner) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SourceOwner) UnmarshalJSON(bytes []byte) (err error) {

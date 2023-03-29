@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_beta_SourcesApiService(t *testing.T) {
@@ -69,10 +69,9 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var sourceId string
 		var usageType UsageType
 
-		resp, httpRes, err := apiClient.SourcesApi.DeleteProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+		httpRes, err := apiClient.SourcesApi.DeleteProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -98,10 +97,9 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var sourceId string
 		var schemaId string
 
-		resp, httpRes, err := apiClient.SourcesApi.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
+		httpRes, err := apiClient.SourcesApi.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -112,10 +110,9 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.DownloadSourceAccountsSchema(context.Background(), id).Execute()
+		httpRes, err := apiClient.SourcesApi.DownloadSourceAccountsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -126,10 +123,9 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.DownloadSourceEntitlementsSchema(context.Background(), id).Execute()
+		httpRes, err := apiClient.SourcesApi.DownloadSourceEntitlementsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

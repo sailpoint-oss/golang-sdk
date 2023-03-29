@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ManagedClient type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedClient{}
+
 // ManagedClient Managed Client
 type ManagedClient struct {
 	// ManagedClient ID
@@ -590,55 +593,35 @@ func (o *ManagedClient) SetSecret(v string) {
 }
 
 func (o ManagedClient) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ManagedClient) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.AlertKey) {
-		toSerialize["alertKey"] = o.AlertKey
-	}
-	if !isNil(o.ApiGatewayBaseUrl) {
-		toSerialize["apiGatewayBaseUrl"] = o.ApiGatewayBaseUrl
-	}
+	// skip: id is readOnly
+	// skip: alertKey is readOnly
+	// skip: apiGatewayBaseUrl is readOnly
 	if !isNil(o.CcId) {
 		toSerialize["ccId"] = o.CcId
 	}
-	if true {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if true {
-		toSerialize["clusterId"] = o.ClusterId
-	}
-	if !isNil(o.Cookbook) {
-		toSerialize["cookbook"] = o.Cookbook
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.IpAddress) {
-		toSerialize["ipAddress"] = o.IpAddress
-	}
-	if !isNil(o.LastSeen) {
-		toSerialize["lastSeen"] = o.LastSeen
-	}
+	toSerialize["clientId"] = o.ClientId
+	toSerialize["clusterId"] = o.ClusterId
+	// skip: cookbook is readOnly
+	toSerialize["description"] = o.Description
+	// skip: ipAddress is readOnly
+	// skip: lastSeen is readOnly
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.SinceLastSeen) {
-		toSerialize["sinceLastSeen"] = o.SinceLastSeen
-	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.VaDownloadUrl) {
-		toSerialize["vaDownloadUrl"] = o.VaDownloadUrl
-	}
-	if !isNil(o.VaVersion) {
-		toSerialize["vaVersion"] = o.VaVersion
-	}
+	// skip: sinceLastSeen is readOnly
+	// skip: status is readOnly
+	toSerialize["type"] = o.Type
+	// skip: vaDownloadUrl is readOnly
+	// skip: vaVersion is readOnly
 	if !isNil(o.Secret) {
 		toSerialize["secret"] = o.Secret
 	}
@@ -647,7 +630,7 @@ func (o ManagedClient) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ManagedClient) UnmarshalJSON(bytes []byte) (err error) {

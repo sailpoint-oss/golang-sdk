@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the QueryResultFilter type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &QueryResultFilter{}
+
 // QueryResultFilter Allows the query results to be filtered by specifying a list of fields to include and/or exclude from the result documents.
 type QueryResultFilter struct {
 	// The list of field names to include in the result documents.
@@ -107,6 +110,14 @@ func (o *QueryResultFilter) SetExcludes(v []string) {
 }
 
 func (o QueryResultFilter) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o QueryResultFilter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Includes) {
 		toSerialize["includes"] = o.Includes
@@ -119,7 +130,7 @@ func (o QueryResultFilter) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *QueryResultFilter) UnmarshalJSON(bytes []byte) (err error) {

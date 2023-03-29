@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UpdateUserPermissionsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateUserPermissionsRequest{}
+
 // UpdateUserPermissionsRequest struct for UpdateUserPermissionsRequest
 type UpdateUserPermissionsRequest struct {
 	Ids *string `json:"ids,omitempty"`
@@ -139,6 +142,14 @@ func (o *UpdateUserPermissionsRequest) SetAdminType(v string) {
 }
 
 func (o UpdateUserPermissionsRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o UpdateUserPermissionsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Ids) {
 		toSerialize["ids"] = o.Ids
@@ -154,7 +165,7 @@ func (o UpdateUserPermissionsRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *UpdateUserPermissionsRequest) UnmarshalJSON(bytes []byte) (err error) {

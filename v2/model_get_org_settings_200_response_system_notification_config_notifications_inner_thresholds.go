@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds{}
+
 // GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds struct for GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds
 type GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds struct {
 	Healthy *string `json:"healthy,omitempty"`
@@ -105,6 +108,14 @@ func (o *GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThre
 }
 
 func (o GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Healthy) {
 		toSerialize["healthy"] = o.Healthy
@@ -117,7 +128,7 @@ func (o GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThres
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds) UnmarshalJSON(bytes []byte) (err error) {

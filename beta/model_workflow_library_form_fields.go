@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WorkflowLibraryFormFields type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkflowLibraryFormFields{}
+
 // WorkflowLibraryFormFields struct for WorkflowLibraryFormFields
 type WorkflowLibraryFormFields struct {
 	// Describes the form field in the UI
@@ -209,6 +212,14 @@ func (o *WorkflowLibraryFormFields) SetType(v map[string]interface{}) {
 }
 
 func (o WorkflowLibraryFormFields) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkflowLibraryFormFields) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.HelpText) {
 		toSerialize["helpText"] = o.HelpText
@@ -230,7 +241,7 @@ func (o WorkflowLibraryFormFields) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkflowLibraryFormFields) UnmarshalJSON(bytes []byte) (err error) {

@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the AccountDocument type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountDocument{}
 
 // AccountDocument Account
 type AccountDocument struct {
@@ -690,16 +693,18 @@ func (o *AccountDocument) SetTags(v []string) {
 }
 
 func (o AccountDocument) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["_type"] = o.Type
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["_type"] = o.Type
 	if !isNil(o.AccountId) {
 		toSerialize["accountId"] = o.AccountId
 	}
@@ -753,7 +758,7 @@ func (o AccountDocument) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountDocument) UnmarshalJSON(bytes []byte) (err error) {

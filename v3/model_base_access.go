@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the BaseAccess type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BaseAccess{}
 
 // BaseAccess struct for BaseAccess
 type BaseAccess struct {
@@ -408,6 +411,14 @@ func (o *BaseAccess) SetOwner(v Owner) {
 }
 
 func (o BaseAccess) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BaseAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -444,7 +455,7 @@ func (o BaseAccess) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BaseAccess) UnmarshalJSON(bytes []byte) (err error) {

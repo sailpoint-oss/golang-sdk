@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestOnBehalfOfConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestOnBehalfOfConfig{}
+
 // RequestOnBehalfOfConfig struct for RequestOnBehalfOfConfig
 type RequestOnBehalfOfConfig struct {
 	// If anyone can request access for anyone.
@@ -107,6 +110,14 @@ func (o *RequestOnBehalfOfConfig) SetAllowRequestOnBehalfOfEmployeeByManager(v b
 }
 
 func (o RequestOnBehalfOfConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RequestOnBehalfOfConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AllowRequestOnBehalfOfAnyoneByAnyone) {
 		toSerialize["allowRequestOnBehalfOfAnyoneByAnyone"] = o.AllowRequestOnBehalfOfAnyoneByAnyone
@@ -119,7 +130,7 @@ func (o RequestOnBehalfOfConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RequestOnBehalfOfConfig) UnmarshalJSON(bytes []byte) (err error) {

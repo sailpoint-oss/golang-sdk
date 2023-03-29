@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordOrgConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordOrgConfig{}
+
 // PasswordOrgConfig struct for PasswordOrgConfig
 type PasswordOrgConfig struct {
 	// Indicator whether custom password instructions feature is enabled. The default value is false.
@@ -175,6 +178,14 @@ func (o *PasswordOrgConfig) SetDigitTokenLength(v int32) {
 }
 
 func (o PasswordOrgConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PasswordOrgConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CustomInstructionsEnabled) {
 		toSerialize["customInstructionsEnabled"] = o.CustomInstructionsEnabled
@@ -193,7 +204,7 @@ func (o PasswordOrgConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PasswordOrgConfig) UnmarshalJSON(bytes []byte) (err error) {

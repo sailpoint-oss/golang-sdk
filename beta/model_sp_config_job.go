@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the SpConfigJob type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpConfigJob{}
+
 // SpConfigJob struct for SpConfigJob
 type SpConfigJob struct {
 	// Unique id assigned to this job.
@@ -283,40 +286,30 @@ func (o *SpConfigJob) SetCompleted(v time.Time) {
 }
 
 func (o SpConfigJob) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SpConfigJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["jobId"] = o.JobId
-	}
-	if true {
-		toSerialize["status"] = o.Status
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["message"] = o.Message
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["expiration"] = o.Expiration
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
-	if true {
-		toSerialize["modified"] = o.Modified
-	}
-	if true {
-		toSerialize["completed"] = o.Completed
-	}
+	toSerialize["jobId"] = o.JobId
+	toSerialize["status"] = o.Status
+	toSerialize["type"] = o.Type
+	toSerialize["message"] = o.Message
+	toSerialize["description"] = o.Description
+	toSerialize["expiration"] = o.Expiration
+	toSerialize["created"] = o.Created
+	toSerialize["modified"] = o.Modified
+	toSerialize["completed"] = o.Completed
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SpConfigJob) UnmarshalJSON(bytes []byte) (err error) {

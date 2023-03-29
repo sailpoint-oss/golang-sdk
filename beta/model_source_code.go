@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SourceCode type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceCode{}
+
 // SourceCode SourceCode
 type SourceCode struct {
 	// the version of the code
@@ -93,19 +96,23 @@ func (o *SourceCode) SetScript(v string) {
 }
 
 func (o SourceCode) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SourceCode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["version"] = o.Version
-	}
-	if true {
-		toSerialize["script"] = o.Script
-	}
+	toSerialize["version"] = o.Version
+	toSerialize["script"] = o.Script
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SourceCode) UnmarshalJSON(bytes []byte) (err error) {

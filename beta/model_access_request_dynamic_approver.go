@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessRequestDynamicApprover type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestDynamicApprover{}
+
 // AccessRequestDynamicApprover struct for AccessRequestDynamicApprover
 type AccessRequestDynamicApprover struct {
 	// The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request. 
@@ -145,25 +148,25 @@ func (o *AccessRequestDynamicApprover) SetRequestedBy(v TriggerInputAccessReques
 }
 
 func (o AccessRequestDynamicApprover) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequestDynamicApprover) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["accessRequestId"] = o.AccessRequestId
-	}
-	if true {
-		toSerialize["requestedFor"] = o.RequestedFor
-	}
-	if true {
-		toSerialize["requestedItems"] = o.RequestedItems
-	}
-	if true {
-		toSerialize["requestedBy"] = o.RequestedBy
-	}
+	toSerialize["accessRequestId"] = o.AccessRequestId
+	toSerialize["requestedFor"] = o.RequestedFor
+	toSerialize["requestedItems"] = o.RequestedItems
+	toSerialize["requestedBy"] = o.RequestedBy
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequestDynamicApprover) UnmarshalJSON(bytes []byte) (err error) {

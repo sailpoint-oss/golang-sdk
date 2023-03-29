@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountAction type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountAction{}
+
 // AccountAction Object for specifying Actions to be performed on a specified list of sources' account.
 type AccountAction struct {
 	// Describes if action will be enabled or disabled
@@ -107,6 +110,14 @@ func (o *AccountAction) SetSourceIds(v []string) {
 }
 
 func (o AccountAction) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountAction) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Action) {
 		toSerialize["action"] = o.Action
@@ -119,7 +130,7 @@ func (o AccountAction) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountAction) UnmarshalJSON(bytes []byte) (err error) {

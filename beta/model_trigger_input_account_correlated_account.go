@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputAccountCorrelatedAccount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputAccountCorrelatedAccount{}
+
 // TriggerInputAccountCorrelatedAccount The account that was correlated.
 type TriggerInputAccountCorrelatedAccount struct {
 	// The type of object that is referenced
@@ -190,28 +193,28 @@ func (o *TriggerInputAccountCorrelatedAccount) SetName(v string) {
 }
 
 func (o TriggerInputAccountCorrelatedAccount) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputAccountCorrelatedAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["nativeIdentity"] = o.NativeIdentity
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["nativeIdentity"] = o.NativeIdentity
 	if o.Uuid.IsSet() {
 		toSerialize["uuid"] = o.Uuid.Get()
 	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputAccountCorrelatedAccount) UnmarshalJSON(bytes []byte) (err error) {

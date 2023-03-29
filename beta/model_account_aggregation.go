@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AccountAggregation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountAggregation{}
+
 // AccountAggregation struct for AccountAggregation
 type AccountAggregation struct {
 	// When the aggregation started.
@@ -176,6 +179,14 @@ func (o *AccountAggregation) SetProcessedAccounts(v int32) {
 }
 
 func (o AccountAggregation) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountAggregation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Start) {
 		toSerialize["start"] = o.Start
@@ -194,7 +205,7 @@ func (o AccountAggregation) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountAggregation) UnmarshalJSON(bytes []byte) (err error) {

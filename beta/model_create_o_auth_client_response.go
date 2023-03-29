@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CreateOAuthClientResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateOAuthClientResponse{}
+
 // CreateOAuthClientResponse struct for CreateOAuthClientResponse
 type CreateOAuthClientResponse struct {
 	// ID of the OAuth client
@@ -553,61 +556,33 @@ func (o *CreateOAuthClientResponse) SetScope(v []string) {
 }
 
 func (o CreateOAuthClientResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CreateOAuthClientResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["secret"] = o.Secret
-	}
-	if true {
-		toSerialize["businessName"] = o.BusinessName
-	}
-	if true {
-		toSerialize["homepageUrl"] = o.HomepageUrl
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
-	}
-	if true {
-		toSerialize["refreshTokenValiditySeconds"] = o.RefreshTokenValiditySeconds
-	}
-	if true {
-		toSerialize["redirectUris"] = o.RedirectUris
-	}
-	if true {
-		toSerialize["grantTypes"] = o.GrantTypes
-	}
-	if true {
-		toSerialize["accessType"] = o.AccessType
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["internal"] = o.Internal
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if true {
-		toSerialize["strongAuthSupported"] = o.StrongAuthSupported
-	}
-	if true {
-		toSerialize["claimsSupported"] = o.ClaimsSupported
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
-	if true {
-		toSerialize["modified"] = o.Modified
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["secret"] = o.Secret
+	toSerialize["businessName"] = o.BusinessName
+	toSerialize["homepageUrl"] = o.HomepageUrl
+	toSerialize["name"] = o.Name
+	toSerialize["description"] = o.Description
+	toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
+	toSerialize["refreshTokenValiditySeconds"] = o.RefreshTokenValiditySeconds
+	toSerialize["redirectUris"] = o.RedirectUris
+	toSerialize["grantTypes"] = o.GrantTypes
+	toSerialize["accessType"] = o.AccessType
+	toSerialize["type"] = o.Type
+	toSerialize["internal"] = o.Internal
+	toSerialize["enabled"] = o.Enabled
+	toSerialize["strongAuthSupported"] = o.StrongAuthSupported
+	toSerialize["claimsSupported"] = o.ClaimsSupported
+	toSerialize["created"] = o.Created
+	toSerialize["modified"] = o.Modified
 	if o.Scope != nil {
 		toSerialize["scope"] = o.Scope
 	}
@@ -616,7 +591,7 @@ func (o CreateOAuthClientResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CreateOAuthClientResponse) UnmarshalJSON(bytes []byte) (err error) {

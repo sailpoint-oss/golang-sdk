@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SourceManagerCorrelationRule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceManagerCorrelationRule{}
+
 // SourceManagerCorrelationRule Reference to the ManagerCorrelationRule, only used when a simple filter isn't sufficient.
 type SourceManagerCorrelationRule struct {
 	// The type of object being referenced
@@ -141,6 +144,14 @@ func (o *SourceManagerCorrelationRule) SetName(v string) {
 }
 
 func (o SourceManagerCorrelationRule) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SourceManagerCorrelationRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o SourceManagerCorrelationRule) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SourceManagerCorrelationRule) UnmarshalJSON(bytes []byte) (err error) {

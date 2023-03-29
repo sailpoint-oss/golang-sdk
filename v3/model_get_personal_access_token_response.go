@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the GetPersonalAccessTokenResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetPersonalAccessTokenResponse{}
+
 // GetPersonalAccessTokenResponse struct for GetPersonalAccessTokenResponse
 type GetPersonalAccessTokenResponse struct {
 	// The ID of the personal access token (to be used as the username for Basic Auth).
@@ -220,22 +223,22 @@ func (o *GetPersonalAccessTokenResponse) UnsetLastUsed() {
 }
 
 func (o GetPersonalAccessTokenResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o GetPersonalAccessTokenResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 	if o.Scope != nil {
 		toSerialize["scope"] = o.Scope
 	}
-	if true {
-		toSerialize["owner"] = o.Owner
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
+	toSerialize["owner"] = o.Owner
+	toSerialize["created"] = o.Created
 	if o.LastUsed.IsSet() {
 		toSerialize["lastUsed"] = o.LastUsed.Get()
 	}
@@ -244,7 +247,7 @@ func (o GetPersonalAccessTokenResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *GetPersonalAccessTokenResponse) UnmarshalJSON(bytes []byte) (err error) {

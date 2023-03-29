@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Form type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Form{}
+
 // Form struct for Form
 type Form struct {
 	// ID of the form
@@ -242,6 +245,14 @@ func (o *Form) SetSections(v SectionDetails) {
 }
 
 func (o Form) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Form) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -266,7 +277,7 @@ func (o Form) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Form) UnmarshalJSON(bytes []byte) (err error) {

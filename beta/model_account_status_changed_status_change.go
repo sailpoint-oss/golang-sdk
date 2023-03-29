@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountStatusChangedStatusChange type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountStatusChangedStatusChange{}
+
 // AccountStatusChangedStatusChange struct for AccountStatusChangedStatusChange
 type AccountStatusChangedStatusChange struct {
 	// the previous status of the account
@@ -107,6 +110,14 @@ func (o *AccountStatusChangedStatusChange) SetNewStatus(v string) {
 }
 
 func (o AccountStatusChangedStatusChange) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountStatusChangedStatusChange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.PreviousStatus) {
 		toSerialize["previousStatus"] = o.PreviousStatus
@@ -119,7 +130,7 @@ func (o AccountStatusChangedStatusChange) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountStatusChangedStatusChange) UnmarshalJSON(bytes []byte) (err error) {

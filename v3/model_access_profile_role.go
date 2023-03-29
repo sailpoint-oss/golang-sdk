@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessProfileRole type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileRole{}
+
 // AccessProfileRole Role
 type AccessProfileRole struct {
 	// The unique ID of the referenced object.
@@ -315,6 +318,14 @@ func (o *AccessProfileRole) SetRevocable(v bool) {
 }
 
 func (o AccessProfileRole) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfileRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -345,7 +356,7 @@ func (o AccessProfileRole) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfileRole) UnmarshalJSON(bytes []byte) (err error) {

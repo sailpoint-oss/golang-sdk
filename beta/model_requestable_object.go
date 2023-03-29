@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the RequestableObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestableObject{}
+
 // RequestableObject struct for RequestableObject
 type RequestableObject struct {
 	// Id of the requestable object itself
@@ -407,6 +410,14 @@ func (o *RequestableObject) SetRequestCommentsRequired(v bool) {
 }
 
 func (o RequestableObject) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RequestableObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -443,7 +454,7 @@ func (o RequestableObject) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RequestableObject) UnmarshalJSON(bytes []byte) (err error) {

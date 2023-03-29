@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OwnerReference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OwnerReference{}
+
 // OwnerReference The owner of this object.
 type OwnerReference struct {
 	Type *DtoType `json:"type,omitempty"`
@@ -140,6 +143,14 @@ func (o *OwnerReference) SetName(v string) {
 }
 
 func (o OwnerReference) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OwnerReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -155,7 +166,7 @@ func (o OwnerReference) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *OwnerReference) UnmarshalJSON(bytes []byte) (err error) {

@@ -12244,8 +12244,10 @@ paths:
             examples:
               scheduled:
                 $ref: '#/components/examples/execute-scheduled'
+                value: null
               test:
                 $ref: '#/components/examples/execute-test'
+                value: null
             schema:
               $ref: '#/components/schemas/SearchArguments'
         description: |
@@ -13079,20 +13081,28 @@ paths:
             examples:
               query-fields:
                 $ref: '#/components/examples/query-fields'
+                value: null
               query-timeZone:
                 $ref: '#/components/examples/query-timeZone'
+                value: null
               query-innerHit:
                 $ref: '#/components/examples/query-innerHit'
+                value: null
               typeAheadQuery:
                 $ref: '#/components/examples/typeAheadQuery'
+                value: null
               typeAheadQuery-nestedType:
                 $ref: '#/components/examples/typeAheadQuery-nestedType'
+                value: null
               filter-exists:
                 $ref: '#/components/examples/filter-exists'
+                value: null
               filter-range:
                 $ref: '#/components/examples/filter-range'
+                value: null
               filter-terms:
                 $ref: '#/components/examples/filter-terms'
+                value: null
             schema:
               $ref: '#/components/schemas/Search'
         required: true
@@ -13103,14 +13113,19 @@ paths:
               examples:
                 accessProfiles:
                   $ref: '#/components/examples/accessProfiles'
+                  value: null
                 entitlements:
                   $ref: '#/components/examples/entitlements'
+                  value: null
                 events:
                   $ref: '#/components/examples/events'
+                  value: null
                 identities:
                   $ref: '#/components/examples/identities'
+                  value: null
                 roles:
                   $ref: '#/components/examples/roles'
+                  value: null
               schema:
                 items:
                   $ref: '#/components/schemas/SearchDocument'
@@ -13193,6 +13208,7 @@ paths:
             examples:
               query-timeZone:
                 $ref: '#/components/examples/query-timeZone'
+                value: null
             schema:
               $ref: '#/components/schemas/Search'
         required: true
@@ -13318,24 +13334,34 @@ paths:
             examples:
               metricAggregation:
                 $ref: '#/components/examples/metricAggregation'
+                value: null
               metricAggregation-dsl:
                 $ref: '#/components/examples/metricAggregation-dsl'
+                value: null
               bucketAggregation:
                 $ref: '#/components/examples/bucketAggregation'
+                value: null
               bucketAggregation-dsl:
                 $ref: '#/components/examples/bucketAggregation-dsl'
+                value: null
               nestedAggregation-bucketAggregation:
                 $ref: '#/components/examples/nestedAggregation-bucketAggregation'
+                value: null
               nestedAggregation-bucketAggregation-dsl:
                 $ref: '#/components/examples/nestedAggregation-bucketAggregation-dsl'
+                value: null
               nestedAggregation-filterAggregation-bucketAggregation:
                 $ref: '#/components/examples/nestedAggregation-filterAggregation-bucketAggregation'
+                value: null
               nestedAggregation-filterAggregation-bucketAggregation-dsl:
                 $ref: '#/components/examples/nestedAggregation-filterAggregation-bucketAggregation-dsl'
+                value: null
               bucketAggregation-subAggregation:
                 $ref: '#/components/examples/bucketAggregation-subAggregation'
+                value: null
               bucketAggregation-subAggregation-dsl:
                 $ref: '#/components/examples/bucketAggregation-subAggregation-dsl'
+                value: null
             schema:
               $ref: '#/components/schemas/Search'
         required: true
@@ -13445,14 +13471,19 @@ paths:
               examples:
                 accessProfile:
                   $ref: '#/components/examples/accessProfile'
+                  value: null
                 entitlement:
                   $ref: '#/components/examples/entitlement'
+                  value: null
                 event:
                   $ref: '#/components/examples/event'
+                  value: null
                 identity:
                   $ref: '#/components/examples/identity'
+                  value: null
                 role:
                   $ref: '#/components/examples/role'
+                  value: null
               schema:
                 $ref: '#/components/schemas/SearchDocument'
           description: The requested document.

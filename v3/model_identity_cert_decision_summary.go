@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityCertDecisionSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityCertDecisionSummary{}
+
 // IdentityCertDecisionSummary struct for IdentityCertDecisionSummary
 type IdentityCertDecisionSummary struct {
 	// Number of entitlement decisions that have been made
@@ -583,6 +586,14 @@ func (o *IdentityCertDecisionSummary) SetAccountsRevoked(v int32) {
 }
 
 func (o IdentityCertDecisionSummary) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityCertDecisionSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.EntitlementDecisionsMade) {
 		toSerialize["entitlementDecisionsMade"] = o.EntitlementDecisionsMade
@@ -637,7 +648,7 @@ func (o IdentityCertDecisionSummary) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityCertDecisionSummary) UnmarshalJSON(bytes []byte) (err error) {

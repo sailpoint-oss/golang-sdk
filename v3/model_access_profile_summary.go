@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessProfileSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileSummary{}
+
 // AccessProfileSummary This is a summary representation of an access profile.
 type AccessProfileSummary struct {
 	// The unique ID of the referenced object.
@@ -315,6 +318,14 @@ func (o *AccessProfileSummary) SetRevocable(v bool) {
 }
 
 func (o AccessProfileSummary) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfileSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -345,7 +356,7 @@ func (o AccessProfileSummary) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfileSummary) UnmarshalJSON(bytes []byte) (err error) {

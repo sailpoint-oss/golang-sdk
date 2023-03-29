@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountAttributesCreateAttributes type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountAttributesCreateAttributes{}
+
 // AccountAttributesCreateAttributes The schema attribute values for the account
 type AccountAttributesCreateAttributes struct {
 	// Target source to create an account
@@ -63,11 +66,17 @@ func (o *AccountAttributesCreateAttributes) SetSourceId(v string) {
 }
 
 func (o AccountAttributesCreateAttributes) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["sourceId"] = o.SourceId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AccountAttributesCreateAttributes) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["sourceId"] = o.SourceId
+	return toSerialize, nil
 }
 
 type NullableAccountAttributesCreateAttributes struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NonEmployeeBulkUploadStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeBulkUploadStatus{}
+
 // NonEmployeeBulkUploadStatus struct for NonEmployeeBulkUploadStatus
 type NonEmployeeBulkUploadStatus struct {
 	// Returns the following values indicating the progress or result of the bulk upload job. \"PENDING\" means the job is queued and waiting to be processed. \"IN_PROGRESS\" means the job is currently being processed. \"COMPLETED\" means the job has been completed without any errors. \"ERROR\" means the job failed to process with errors. null means job has been submitted to the source. 
@@ -73,6 +76,14 @@ func (o *NonEmployeeBulkUploadStatus) SetStatus(v string) {
 }
 
 func (o NonEmployeeBulkUploadStatus) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeBulkUploadStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -82,7 +93,7 @@ func (o NonEmployeeBulkUploadStatus) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeBulkUploadStatus) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputCampaignActivatedCampaignCampaignOwner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputCampaignActivatedCampaignCampaignOwner{}
+
 // TriggerInputCampaignActivatedCampaignCampaignOwner Details of the identity that owns the campaign.
 type TriggerInputCampaignActivatedCampaignCampaignOwner struct {
 	// The unique ID of the identity.
@@ -120,22 +123,24 @@ func (o *TriggerInputCampaignActivatedCampaignCampaignOwner) SetEmail(v string) 
 }
 
 func (o TriggerInputCampaignActivatedCampaignCampaignOwner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputCampaignActivatedCampaignCampaignOwner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["email"] = o.Email
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["email"] = o.Email
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputCampaignActivatedCampaignCampaignOwner) UnmarshalJSON(bytes []byte) (err error) {

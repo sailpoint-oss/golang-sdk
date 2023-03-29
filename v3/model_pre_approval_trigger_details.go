@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PreApprovalTriggerDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PreApprovalTriggerDetails{}
+
 // PreApprovalTriggerDetails Provides additional details about the pre-approval trigger for this request.
 type PreApprovalTriggerDetails struct {
 	// Comment left for the pre-approval decision
@@ -141,6 +144,14 @@ func (o *PreApprovalTriggerDetails) SetDecision(v string) {
 }
 
 func (o PreApprovalTriggerDetails) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PreApprovalTriggerDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -156,7 +167,7 @@ func (o PreApprovalTriggerDetails) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PreApprovalTriggerDetails) UnmarshalJSON(bytes []byte) (err error) {

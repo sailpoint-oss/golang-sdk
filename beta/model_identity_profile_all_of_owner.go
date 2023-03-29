@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProfileAllOfOwner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProfileAllOfOwner{}
+
 // IdentityProfileAllOfOwner The owner of the Identity Profile.
 type IdentityProfileAllOfOwner struct {
 	// Type of the object to which this reference applies
@@ -141,6 +144,14 @@ func (o *IdentityProfileAllOfOwner) SetName(v string) {
 }
 
 func (o IdentityProfileAllOfOwner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProfileAllOfOwner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o IdentityProfileAllOfOwner) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityProfileAllOfOwner) UnmarshalJSON(bytes []byte) (err error) {

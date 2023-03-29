@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the EventAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EventAllOf{}
+
 // EventAllOf struct for EventAllOf
 type EventAllOf struct {
 	// A date-time in ISO-8601 format
@@ -559,6 +562,14 @@ func (o *EventAllOf) SetTechnicalName(v string) {
 }
 
 func (o EventAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EventAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Created.IsSet() {
 		toSerialize["created"] = o.Created.Get()
@@ -610,7 +621,7 @@ func (o EventAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EventAllOf) UnmarshalJSON(bytes []byte) (err error) {

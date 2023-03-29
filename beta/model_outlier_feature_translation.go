@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OutlierFeatureTranslation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OutlierFeatureTranslation{}
+
 // OutlierFeatureTranslation struct for OutlierFeatureTranslation
 type OutlierFeatureTranslation struct {
 	DisplayName *TranslationMessage `json:"displayName,omitempty"`
@@ -105,6 +108,14 @@ func (o *OutlierFeatureTranslation) SetDescription(v TranslationMessage) {
 }
 
 func (o OutlierFeatureTranslation) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OutlierFeatureTranslation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
@@ -117,7 +128,7 @@ func (o OutlierFeatureTranslation) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *OutlierFeatureTranslation) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessRequestItemResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestItemResponse{}
+
 // AccessRequestItemResponse struct for AccessRequestItemResponse
 type AccessRequestItemResponse struct {
 	// the access request item operation
@@ -310,6 +313,14 @@ func (o *AccessRequestItemResponse) SetApprovalInfos(v []ApprovalInfoResponse) {
 }
 
 func (o AccessRequestItemResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequestItemResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
@@ -340,7 +351,7 @@ func (o AccessRequestItemResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequestItemResponse) UnmarshalJSON(bytes []byte) (err error) {

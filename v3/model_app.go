@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the App type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &App{}
+
 // App struct for App
 type App struct {
 	// The unique ID of the referenced object.
@@ -173,6 +176,14 @@ func (o *App) SetAccount(v AppAllOfAccount) {
 }
 
 func (o App) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o App) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -191,7 +202,7 @@ func (o App) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *App) UnmarshalJSON(bytes []byte) (err error) {

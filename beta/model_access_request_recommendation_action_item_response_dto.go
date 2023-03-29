@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AccessRequestRecommendationActionItemResponseDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestRecommendationActionItemResponseDto{}
+
 // AccessRequestRecommendationActionItemResponseDto struct for AccessRequestRecommendationActionItemResponseDto
 type AccessRequestRecommendationActionItemResponseDto struct {
 	// The identity ID taking the action.
@@ -140,6 +143,14 @@ func (o *AccessRequestRecommendationActionItemResponseDto) SetTimestamp(v time.T
 }
 
 func (o AccessRequestRecommendationActionItemResponseDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequestRecommendationActionItemResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
@@ -155,7 +166,7 @@ func (o AccessRequestRecommendationActionItemResponseDto) MarshalJSON() ([]byte,
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequestRecommendationActionItemResponseDto) UnmarshalJSON(bytes []byte) (err error) {

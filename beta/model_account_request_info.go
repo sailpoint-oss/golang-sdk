@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountRequestInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountRequestInfo{}
+
 // AccountRequestInfo If an account activity item is associated with an access request, captures details of that request.
 type AccountRequestInfo struct {
 	// Id of requested object
@@ -140,6 +143,14 @@ func (o *AccountRequestInfo) SetRequestedObjectType(v RequestableObjectType) {
 }
 
 func (o AccountRequestInfo) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountRequestInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.RequestedObjectId) {
 		toSerialize["requestedObjectId"] = o.RequestedObjectId
@@ -155,7 +166,7 @@ func (o AccountRequestInfo) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountRequestInfo) UnmarshalJSON(bytes []byte) (err error) {

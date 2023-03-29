@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CancelableAccountActivity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CancelableAccountActivity{}
+
 // CancelableAccountActivity struct for CancelableAccountActivity
 type CancelableAccountActivity struct {
 	// ID of the account activity itself
@@ -611,6 +614,14 @@ func (o *CancelableAccountActivity) UnsetCancelComment() {
 }
 
 func (o CancelableAccountActivity) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CancelableAccountActivity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -665,7 +676,7 @@ func (o CancelableAccountActivity) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CancelableAccountActivity) UnmarshalJSON(bytes []byte) (err error) {

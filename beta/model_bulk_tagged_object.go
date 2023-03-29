@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BulkTaggedObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BulkTaggedObject{}
+
 // BulkTaggedObject struct for BulkTaggedObject
 type BulkTaggedObject struct {
 	ObjectRefs []BaseReferenceDto `json:"objectRefs,omitempty"`
@@ -144,6 +147,14 @@ func (o *BulkTaggedObject) SetOperation(v string) {
 }
 
 func (o BulkTaggedObject) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BulkTaggedObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ObjectRefs) {
 		toSerialize["objectRefs"] = o.ObjectRefs
@@ -159,7 +170,7 @@ func (o BulkTaggedObject) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BulkTaggedObject) UnmarshalJSON(bytes []byte) (err error) {

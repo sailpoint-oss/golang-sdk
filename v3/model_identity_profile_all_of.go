@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProfileAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProfileAllOf{}
+
 // IdentityProfileAllOf struct for IdentityProfileAllOf
 type IdentityProfileAllOf struct {
 	// The description of the Identity Profile.
@@ -364,6 +367,14 @@ func (o *IdentityProfileAllOf) SetHasTimeBasedAttr(v bool) {
 }
 
 func (o IdentityProfileAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProfileAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
@@ -374,9 +385,7 @@ func (o IdentityProfileAllOf) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Priority) {
 		toSerialize["priority"] = o.Priority
 	}
-	if true {
-		toSerialize["authoritativeSource"] = o.AuthoritativeSource
-	}
+	toSerialize["authoritativeSource"] = o.AuthoritativeSource
 	if !isNil(o.IdentityRefreshRequired) {
 		toSerialize["identityRefreshRequired"] = o.IdentityRefreshRequired
 	}
@@ -397,7 +406,7 @@ func (o IdentityProfileAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityProfileAllOf) UnmarshalJSON(bytes []byte) (err error) {

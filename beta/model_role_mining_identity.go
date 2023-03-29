@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMiningIdentity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningIdentity{}
+
 // RoleMiningIdentity struct for RoleMiningIdentity
 type RoleMiningIdentity struct {
 	// Id of the identity
@@ -140,6 +143,14 @@ func (o *RoleMiningIdentity) SetAttributes(v map[string]string) {
 }
 
 func (o RoleMiningIdentity) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningIdentity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -155,7 +166,7 @@ func (o RoleMiningIdentity) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningIdentity) UnmarshalJSON(bytes []byte) (err error) {

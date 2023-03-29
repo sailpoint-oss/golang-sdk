@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMiningPotentialRoleSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningPotentialRoleSummary{}
+
 // RoleMiningPotentialRoleSummary struct for RoleMiningPotentialRoleSummary
 type RoleMiningPotentialRoleSummary struct {
 	PotentialRoleRef *RoleMiningPotentialRoleRef `json:"potentialRoleRef,omitempty"`
@@ -343,6 +346,14 @@ func (o *RoleMiningPotentialRoleSummary) SetQuality(v int32) {
 }
 
 func (o RoleMiningPotentialRoleSummary) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningPotentialRoleSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.PotentialRoleRef) {
 		toSerialize["potentialRoleRef"] = o.PotentialRoleRef
@@ -376,7 +387,7 @@ func (o RoleMiningPotentialRoleSummary) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningPotentialRoleSummary) UnmarshalJSON(bytes []byte) (err error) {
