@@ -43366,7 +43366,7 @@ components:
           requestCommentsRequired: false
           deniedCommentsRequired: false
           allowEntitlementRequest: true
-          grantRequestApprovalSchemes: "sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
+          grantRequestApprovalSchemes: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
         approvalsMustBeExternal: true
       properties:
         approvalsMustBeExternal:
@@ -53322,7 +53322,7 @@ components:
         requestCommentsRequired: false
         deniedCommentsRequired: false
         allowEntitlementRequest: true
-        grantRequestApprovalSchemes: "sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
+        grantRequestApprovalSchemes: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
       properties:
         allowEntitlementRequest:
           description: Flag for allowing entitlement request.
@@ -53344,9 +53344,9 @@ components:
           default: sourceOwner
           description: |
             Approval schemes for granting entitlement request. This can be empty if no approval is needed.
-            Multiple schemes must be comma-separated. The valid schemes are "sourceOwner", "manager" and "workgroup:{id}".
+            Multiple schemes must be comma-separated. The valid schemes are "entitlementOwner", "sourceOwner", "manager" and "workgroup:{id}".
             Multiple workgroups (governance groups) can be used.
-          example: "sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
+          example: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
           type: string
       type: object
     CancelledRequestDetails:
@@ -56191,6 +56191,7 @@ components:
       - MANAGER
       - ROLE_OWNER
       - ACCESS_PROFILE_OWNER
+      - ENTITLEMENT_OWNER
       - GOVERNANCE_GROUP
       example: MANAGER
       type: string
