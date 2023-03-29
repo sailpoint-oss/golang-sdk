@@ -27,26 +27,7 @@ const fixFiles = function (myArray) {
     let madeChange = false;
     let rawdata = fs.readFileSync(file).toString();
     let rawDataArra = rawdata.split("\n");
-  
-    if (file.includes("model_transform_definition_attributes_value.go")) {
-      console.log("Found it");
-    }
-  
-    // add the time import when it is missing in files
-    // if (
-    //   (rawdata.includes("NullableTime") || rawdata.includes("*time.Time")) &&
-    //   !rawdata.includes('"time"')
-    // ) {
-    //   for (const line of rawDataArra) {
-    //     if (line.includes('"encoding/json"')) {
-    //       fileOut.push('	"time"');
-    //       madeChange = true;
-    //     }
-    //     fileOut.push(line);
-    //   }
-    //   rawDataArra = fileOut.slice();
-    //   fileOut = [];
-    // }
+
   
     // change the poor naming for variables
     if (rawdata.includes("map[string]interface{}var") || rawdata.includes("[]JsonPatchOperationValueAnyOfInnervar") || rawdata.includes("ArrayOf*string")) {
