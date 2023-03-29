@@ -399,6 +399,7 @@ docs/OutlierContributingFeatureValue.md
 docs/OutlierFeatureTranslation.md
 docs/OutlierSummary.md
 docs/OwnerReference.md
+docs/OwnerReferenceDto.md
 docs/PasswordChangeRequest.md
 docs/PasswordChangeResponse.md
 docs/PasswordConfigurationApi.md
@@ -1049,6 +1050,7 @@ model_outlier_contributing_feature_value.go
 model_outlier_feature_translation.go
 model_outlier_summary.go
 model_owner_reference.go
+model_owner_reference_dto.go
 model_password_change_request.go
 model_password_change_response.go
 model_password_digit_token.go

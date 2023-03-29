@@ -132,7 +132,7 @@ import (
 )
 
 func main() {
-    source := *openapiclient.NewSource() // Source | 
+    source := *openapiclient.NewSource("My Source", *openapiclient.NewSourceOwner(), "active-directory") // Source | 
     provisionAsCsv := true // bool | Configures the source as a DelimitedFile type of source. (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -1406,7 +1406,7 @@ import (
 
 func main() {
     id := "id_example" // string | The Source id
-    source := *openapiclient.NewSource() // Source | 
+    source := *openapiclient.NewSource("My Source", *openapiclient.NewSourceOwner(), "active-directory") // Source | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

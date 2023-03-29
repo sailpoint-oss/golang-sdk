@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Attributes** | Pointer to **map[string]interface{}** | A map of free-form key-value pairs from the source system | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
 **DirectPermissions** | Pointer to [**[]PermissionDto**](PermissionDto.md) |  | [optional] 
+**Owner** | Pointer to [**OwnerReferenceDto**](OwnerReferenceDto.md) |  | [optional] 
 
 ## Methods
 
@@ -397,6 +398,31 @@ SetDirectPermissions sets DirectPermissions field to given value.
 `func (o *Entitlement) HasDirectPermissions() bool`
 
 HasDirectPermissions returns a boolean if a field has been set.
+
+### GetOwner
+
+`func (o *Entitlement) GetOwner() OwnerReferenceDto`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *Entitlement) GetOwnerOk() (*OwnerReferenceDto, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *Entitlement) SetOwner(v OwnerReferenceDto)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *Entitlement) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

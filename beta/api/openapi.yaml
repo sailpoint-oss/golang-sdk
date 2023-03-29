@@ -10456,6 +10456,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:entitlement:read
       summary: Gets a list of entitlements.
       tags:
       - Entitlements
@@ -10494,6 +10497,10 @@ paths:
                   type: SOURCE
                   id: 2c9180877504c40e0175097d5ce707c8
                   name: EndToEnd-ADSource
+                owner:
+                  id: 2a2fdacc-a5e3-45f1-8bf7-970cfbb8fec2
+                  name: governance group1
+                  type: GOVERNANCE_GROUP
                 id: 2c91808c74ff913f0175097daa9d59cd
                 name: LauncherTestGroup1
                 created: 2020-10-08T18:33:52.029Z
@@ -10575,6 +10582,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:entitlement:read
       summary: Get an Entitlement
       tags:
       - Entitlements
@@ -10582,7 +10592,9 @@ paths:
       description: |-
         This API updates an existing Entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 
-        The following fields are patchable: **requestable**, **privileged**, **segments**
+        The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**.
+
+        When patching owner only owner type and owner id need to be provided. Owner name is optional and it won't be modified. If it is provided, it should correspond to the real name.
 
         A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
       operationId: patchEntitlement
@@ -10616,6 +10628,15 @@ paths:
                 - op: add
                   path: /segments/-
                   value: f7b1b8a3-5fed-4fd4-ad29-82014e137e19
+              Assign a owner to an entitlement:
+                description: This example illustrates the use of patch to assign a
+                  owner to an entitlement by adding the owner's info to the entitlement.
+                value:
+                - op: add
+                  path: /owner
+                  value:
+                    type: GOVERNANCE_GROUP
+                    id: 2a2fdacc-a5e3-45f1-8bf7-970cfbb8fec2
             schema:
               example:
               - op: replace
@@ -10705,6 +10726,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:entitlement:update
       summary: Patch a specified Entitlement
       tags:
       - Entitlements
@@ -10781,6 +10805,10 @@ paths:
                   type: SOURCE
                   id: 2c9180877504c40e0175097d5ce707c8
                   name: EndToEnd-ADSource
+                owner:
+                  id: 2a2fdacc-a5e3-45f1-8bf7-970cfbb8fec2
+                  name: governance group1
+                  type: GOVERNANCE_GROUP
                 id: 2c91808c74ff913f0175097daa9d59cd
                 name: LauncherTestGroup1
                 created: 2020-10-08T18:33:52.029Z
@@ -10864,6 +10892,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:entitlement:read
       summary: List of entitlements parents
       tags:
       - Entitlements
@@ -10940,6 +10971,10 @@ paths:
                   type: SOURCE
                   id: 2c9180877504c40e0175097d5ce707c8
                   name: EndToEnd-ADSource
+                owner:
+                  id: 2a2fdacc-a5e3-45f1-8bf7-970cfbb8fec2
+                  name: governance group1
+                  type: GOVERNANCE_GROUP
                 id: 2c91808c74ff913f0175097daa9d59cd
                 name: LauncherTestGroup1
                 created: 2020-10-08T18:33:52.029Z
@@ -11023,6 +11058,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:entitlement:read
       summary: List of entitlements children
       tags:
       - Entitlements
@@ -43094,12 +43132,16 @@ components:
       type: object
     Entitlement:
       example:
+        owner:
+          name: governance group 1
+          id: 2a2fdacc-a5e3-45f1-8bf7-970cfbb8fec2
+          type: GOVERNANCE_GROUP
         created: 2020-10-08T18:33:52.029Z
         description: "CN=LauncherTestGroup2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
         source:
-        - type: SOURCE
-          id: 2c9180835d191a86015d28455b4b232a
-          name: HR Active Directory
+          name: ODS-AD-Source
+          id: 2c9180827ca885d7017ca8ce28a000eb
+          type: SOURCE
         segments:
         - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
         - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
@@ -43187,6 +43229,8 @@ components:
           items:
             $ref: '#/components/schemas/PermissionDto'
           type: array
+        owner:
+          $ref: '#/components/schemas/OwnerReferenceDto'
       type: object
     AccessRequest:
       example:
@@ -49848,6 +49892,7 @@ components:
         - type: CONNECTOR_SCHEMA
           id: 2c9180835d191a86015d28455b4b232b
           name: group
+        name: My Source
         connectorName: Active Directory
         beforeProvisioningRule:
           name: Example Rule
@@ -49860,6 +49905,10 @@ components:
           description: the id of the Source
           example: 2c91808568c529c60168cca6f90c1324
           readOnly: true
+          type: string
+        name:
+          description: Human-readable name of the source
+          example: My Source
           type: string
         description:
           description: Human-readable description of the source
@@ -49981,6 +50030,10 @@ components:
           description: The connector implementstion id
           example: delimited-file
           type: string
+      required:
+      - connector
+      - name
+      - owner
       type: object
     AttrSyncSourceConfig:
       description: Specification of attribute sync configuration for a source
@@ -53133,6 +53186,29 @@ components:
           items:
             $ref: '#/components/schemas/BaseReferenceDto'
           type: array
+      type: object
+    OwnerReferenceDto:
+      description: Simplified DTO for the owner object of the entitlement
+      example:
+        name: governance group 1
+        id: 2a2fdacc-a5e3-45f1-8bf7-970cfbb8fec2
+        type: GOVERNANCE_GROUP
+      properties:
+        id:
+          description: The owner id for the entitlement
+          example: 2a2fdacc-a5e3-45f1-8bf7-970cfbb8fec2
+          type: string
+        name:
+          description: The owner name for the entitlement
+          example: governance group 1
+          type: string
+        type:
+          description: The type of the owner
+          enum:
+          - IDENTITY
+          - GOVERNANCE_GROUP
+          example: GOVERNANCE_GROUP
+          type: string
       type: object
     AccessRequestType:
       description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type
@@ -59128,9 +59204,9 @@ components:
       example: New description
     Entitlement_source:
       example:
-      - type: SOURCE
-        id: 2c9180835d191a86015d28455b4b232a
-        name: HR Active Directory
+        name: ODS-AD-Source
+        id: 2c9180827ca885d7017ca8ce28a000eb
+        type: SOURCE
       properties:
         id:
           description: The source ID

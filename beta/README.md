@@ -775,6 +775,7 @@ Class | Method | HTTP request | Description
  - [OutlierFeatureTranslation](docs/OutlierFeatureTranslation.md)
  - [OutlierSummary](docs/OutlierSummary.md)
  - [OwnerReference](docs/OwnerReference.md)
+ - [OwnerReferenceDto](docs/OwnerReferenceDto.md)
  - [PasswordChangeRequest](docs/PasswordChangeRequest.md)
  - [PasswordChangeResponse](docs/PasswordChangeResponse.md)
  - [PasswordDigitToken](docs/PasswordDigitToken.md)

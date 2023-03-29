@@ -18,9 +18,11 @@ import (
 type Source struct {
 	// the id of the Source
 	Id *string `json:"id,omitempty"`
+	// Human-readable name of the source
+	Name string `json:"name"`
 	// Human-readable description of the source
 	Description *string `json:"description,omitempty"`
-	Owner *SourceOwner `json:"owner,omitempty"`
+	Owner SourceOwner `json:"owner"`
 	Cluster *SourceCluster `json:"cluster,omitempty"`
 	AccountCorrelationConfig *SourceAccountCorrelationConfig `json:"accountCorrelationConfig,omitempty"`
 	AccountCorrelationRule *SourceAccountCorrelationRule `json:"accountCorrelationRule,omitempty"`
@@ -36,7 +38,7 @@ type Source struct {
 	// Specifies the type of system being managed e.g. Active Directory, Workday, etc..
 	Type *string `json:"type,omitempty"`
 	// Connector script name.
-	Connector *string `json:"connector,omitempty"`
+	Connector string `json:"connector"`
 	// The fully qualified name of the Java class that implements the connector interface.
 	ConnectorClass *string `json:"connectorClass,omitempty"`
 	// Connector specific configuration; will differ from type to type.
@@ -69,8 +71,11 @@ type _Source Source
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSource() *Source {
+func NewSource(name string, owner SourceOwner, connector string) *Source {
 	this := Source{}
+	this.Name = name
+	this.Owner = owner
+	this.Connector = connector
 	return &this
 }
 
@@ -114,6 +119,30 @@ func (o *Source) SetId(v string) {
 	o.Id = &v
 }
 
+// GetName returns the Name field value
+func (o *Source) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *Source) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *Source) SetName(v string) {
+	o.Name = v
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Source) GetDescription() string {
 	if o == nil || isNil(o.Description) {
@@ -146,36 +175,28 @@ func (o *Source) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetOwner returns the Owner field value if set, zero value otherwise.
+// GetOwner returns the Owner field value
 func (o *Source) GetOwner() SourceOwner {
-	if o == nil || isNil(o.Owner) {
+	if o == nil {
 		var ret SourceOwner
 		return ret
 	}
-	return *o.Owner
+
+	return o.Owner
 }
 
-// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
 func (o *Source) GetOwnerOk() (*SourceOwner, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Owner, true
+	return &o.Owner, true
 }
 
-// HasOwner returns a boolean if a field has been set.
-func (o *Source) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
-		return true
-	}
-
-	return false
-}
-
-// SetOwner gets a reference to the given SourceOwner and assigns it to the Owner field.
+// SetOwner sets field value
 func (o *Source) SetOwner(v SourceOwner) {
-	o.Owner = &v
+	o.Owner = v
 }
 
 // GetCluster returns the Cluster field value if set, zero value otherwise.
@@ -498,36 +519,28 @@ func (o *Source) SetType(v string) {
 	o.Type = &v
 }
 
-// GetConnector returns the Connector field value if set, zero value otherwise.
+// GetConnector returns the Connector field value
 func (o *Source) GetConnector() string {
-	if o == nil || isNil(o.Connector) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Connector
+
+	return o.Connector
 }
 
-// GetConnectorOk returns a tuple with the Connector field value if set, nil otherwise
+// GetConnectorOk returns a tuple with the Connector field value
 // and a boolean to check if the value has been set.
 func (o *Source) GetConnectorOk() (*string, bool) {
-	if o == nil || isNil(o.Connector) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Connector, true
+	return &o.Connector, true
 }
 
-// HasConnector returns a boolean if a field has been set.
-func (o *Source) HasConnector() bool {
-	if o != nil && !isNil(o.Connector) {
-		return true
-	}
-
-	return false
-}
-
-// SetConnector gets a reference to the given string and assigns it to the Connector field.
+// SetConnector sets field value
 func (o *Source) SetConnector(v string) {
-	o.Connector = &v
+	o.Connector = v
 }
 
 // GetConnectorClass returns the ConnectorClass field value if set, zero value otherwise.
@@ -919,10 +932,13 @@ func (o Source) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
+	if true {
+		toSerialize["name"] = o.Name
+	}
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Owner) {
+	if true {
 		toSerialize["owner"] = o.Owner
 	}
 	if !isNil(o.Cluster) {
@@ -955,7 +971,7 @@ func (o Source) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Connector) {
+	if true {
 		toSerialize["connector"] = o.Connector
 	}
 	if !isNil(o.ConnectorClass) {
@@ -1013,6 +1029,7 @@ func (o *Source) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "cluster")

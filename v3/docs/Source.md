@@ -5,8 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | the id of the Source | [optional] [readonly] 
+**Name** | **string** | Human-readable name of the source | 
 **Description** | Pointer to **string** | Human-readable description of the source | [optional] 
-**Owner** | Pointer to [**SourceOwner**](SourceOwner.md) |  | [optional] 
+**Owner** | [**SourceOwner**](SourceOwner.md) |  | 
 **Cluster** | Pointer to [**SourceCluster**](SourceCluster.md) |  | [optional] 
 **AccountCorrelationConfig** | Pointer to [**SourceAccountCorrelationConfig**](SourceAccountCorrelationConfig.md) |  | [optional] 
 **AccountCorrelationRule** | Pointer to [**SourceAccountCorrelationRule**](SourceAccountCorrelationRule.md) |  | [optional] 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 **PasswordPolicies** | Pointer to [**[]SourcePasswordPoliciesInner**](SourcePasswordPoliciesInner.md) | List of references to the associated PasswordPolicy objects. | [optional] 
 **Features** | Pointer to [**[]SourceFeature**](SourceFeature.md) | Optional features that can be supported by a source. | [optional] 
 **Type** | Pointer to **string** | Specifies the type of system being managed e.g. Active Directory, Workday, etc.. | [optional] 
-**Connector** | Pointer to **string** | Connector script name. | [optional] 
+**Connector** | **string** | Connector script name. | 
 **ConnectorClass** | Pointer to **string** | The fully qualified name of the Java class that implements the connector interface. | [optional] 
 **ConnectorAttributes** | Pointer to **map[string]interface{}** | Connector specific configuration; will differ from type to type. | [optional] 
 **DeleteThreshold** | Pointer to **int32** | Number from 0 to 100 that specifies when to skip the delete phase. | [optional] 
@@ -35,7 +36,7 @@ Name | Type | Description | Notes
 
 ### NewSource
 
-`func NewSource() *Source`
+`func NewSource(name string, owner SourceOwner, connector string, ) *Source`
 
 NewSource instantiates a new Source object
 This constructor will assign default values to properties that have it defined,
@@ -74,6 +75,26 @@ SetId sets Id field to given value.
 `func (o *Source) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *Source) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *Source) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *Source) SetName(v string)`
+
+SetName sets Name field to given value.
+
 
 ### GetDescription
 
@@ -119,11 +140,6 @@ and a boolean to check if the value has been set.
 
 SetOwner sets Owner field to given value.
 
-### HasOwner
-
-`func (o *Source) HasOwner() bool`
-
-HasOwner returns a boolean if a field has been set.
 
 ### GetCluster
 
@@ -394,11 +410,6 @@ and a boolean to check if the value has been set.
 
 SetConnector sets Connector field to given value.
 
-### HasConnector
-
-`func (o *Source) HasConnector() bool`
-
-HasConnector returns a boolean if a field has been set.
 
 ### GetConnectorClass
 
