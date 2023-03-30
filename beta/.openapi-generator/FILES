@@ -224,9 +224,12 @@ docs/DtoType.md
 docs/EmailNotificationOption.md
 docs/EmailStatusDto.md
 docs/Entitlement.md
+docs/EntitlementAccessRequestConfig.md
+docs/EntitlementApprovalScheme.md
 docs/EntitlementBulkUpdateRequest.md
 docs/EntitlementRef.md
 docs/EntitlementRequestConfig.md
+docs/EntitlementRequestConfig1.md
 docs/EntitlementSource.md
 docs/EntitlementsApi.md
 docs/EntityCreatedByDTO.md
@@ -572,6 +575,7 @@ docs/SourceCluster.md
 docs/SourceCode.md
 docs/SourceCreated.md
 docs/SourceDeleted.md
+docs/SourceEntitlementRequestConfig.md
 docs/SourceFeature.md
 docs/SourceManagementWorkgroup.md
 docs/SourceManagerCorrelationRule.md
@@ -893,9 +897,12 @@ model_dto_type.go
 model_email_notification_option.go
 model_email_status_dto.go
 model_entitlement.go
+model_entitlement_access_request_config.go
+model_entitlement_approval_scheme.go
 model_entitlement_bulk_update_request.go
 model_entitlement_ref.go
 model_entitlement_request_config.go
+model_entitlement_request_config_1.go
 model_entitlement_source.go
 model_entity_created_by_dto.go
 model_error_message_dto.go
@@ -1208,6 +1215,7 @@ model_source_cluster.go
 model_source_code.go
 model_source_created.go
 model_source_deleted.go
+model_source_entitlement_request_config.go
 model_source_feature.go
 model_source_management_workgroup.go
 model_source_manager_correlation_rule.go
