@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**GetSource**](SourcesApi.md#GetSource) | **Get** /sources/{id} | Get Source by ID
 [**GetSourceAttrSyncConfig**](SourcesApi.md#GetSourceAttrSyncConfig) | **Get** /sources/{id}/attribute-sync-config | Attribute Sync Config
 [**GetSourceConfig**](SourcesApi.md#GetSourceConfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language translations
+[**GetSourceEntitlementRequestConfig**](SourcesApi.md#GetSourceEntitlementRequestConfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 [**GetSourceSchema**](SourcesApi.md#GetSourceSchema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 [**ListProvisioningPolicies**](SourcesApi.md#ListProvisioningPolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 [**ListSourceSchemas**](SourcesApi.md#ListSourceSchemas) | **Get** /sources/{sourceId}/schemas | Lists the Schemas that exist on the specified Source in IdentityNow.
@@ -32,6 +33,7 @@ Method | HTTP request | Description
 [**UpdateProvisioningPoliciesInBulk**](SourcesApi.md#UpdateProvisioningPoliciesInBulk) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 [**UpdateProvisioningPolicy**](SourcesApi.md#UpdateProvisioningPolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 [**UpdateSource**](SourcesApi.md#UpdateSource) | **Patch** /sources/{id} | Update Source (Partial)
+[**UpdateSourceEntitlementRequestConfig**](SourcesApi.md#UpdateSourceEntitlementRequestConfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 [**UpdateSourceSchema**](SourcesApi.md#UpdateSourceSchema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 [**UploadSourceAccountsSchema**](SourcesApi.md#UploadSourceAccountsSchema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
 [**UploadSourceConnectorFile**](SourcesApi.md#UploadSourceConnectorFile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
@@ -132,7 +134,7 @@ import (
 )
 
 func main() {
-    source := *openapiclient.NewSource() // Source | 
+    source := *openapiclient.NewSource("My Source", *openapiclient.NewSourceOwner(), "active-directory") // Source | 
     provisionAsCsv := true // bool | Configures the source as a DelimitedFile type of source. (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -878,6 +880,67 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetSourceEntitlementRequestConfig
+
+> SourceEntitlementRequestConfig GetSourceEntitlementRequestConfig(ctx).Execute()
+
+Get Source Entitlement Request Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.GetSourceEntitlementRequestConfig(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetSourceEntitlementRequestConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSourceEntitlementRequestConfig`: SourceEntitlementRequestConfig
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.GetSourceEntitlementRequestConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSourceEntitlementRequestConfigRequest struct via the builder pattern
+
+
+### Return type
+
+[**SourceEntitlementRequestConfig**](SourceEntitlementRequestConfig.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetSourceSchema
 
 > Schema GetSourceSchema(ctx, sourceId, schemaId).Execute()
@@ -1406,7 +1469,7 @@ import (
 
 func main() {
     id := "id_example" // string | The Source id
-    source := *openapiclient.NewSource() // Source | 
+    source := *openapiclient.NewSource("My Source", *openapiclient.NewSourceOwner(), "active-directory") // Source | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -2025,6 +2088,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateSourceEntitlementRequestConfig
+
+> SourceEntitlementRequestConfig UpdateSourceEntitlementRequestConfig(ctx).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
+
+Update Source Entitlement Request Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sourceEntitlementRequestConfig := *openapiclient.NewSourceEntitlementRequestConfig() // SourceEntitlementRequestConfig | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.UpdateSourceEntitlementRequestConfig(context.Background()).SourceEntitlementRequestConfig(sourceEntitlementRequestConfig).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UpdateSourceEntitlementRequestConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateSourceEntitlementRequestConfig`: SourceEntitlementRequestConfig
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UpdateSourceEntitlementRequestConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateSourceEntitlementRequestConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sourceEntitlementRequestConfig** | [**SourceEntitlementRequestConfig**](SourceEntitlementRequestConfig.md) |  | 
+
+### Return type
+
+[**SourceEntitlementRequestConfig**](SourceEntitlementRequestConfig.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

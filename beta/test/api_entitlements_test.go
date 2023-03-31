@@ -36,6 +36,20 @@ func Test_beta_EntitlementsApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test EntitlementsApiService GetEntitlementRequestConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.EntitlementsApi.GetEntitlementRequestConfig(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test EntitlementsApiService ListEntitlementChildren", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -83,6 +97,20 @@ func Test_beta_EntitlementsApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.EntitlementsApi.PatchEntitlement(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsApiService PutEntitlementRequestConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.EntitlementsApi.PutEntitlementRequestConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

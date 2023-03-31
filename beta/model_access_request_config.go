@@ -25,7 +25,7 @@ type AccessRequestConfig struct {
 	AutoApprovalEnabled *bool `json:"autoApprovalEnabled,omitempty"`
 	RequestOnBehalfOfConfig *RequestOnBehalfOfConfig `json:"requestOnBehalfOfConfig,omitempty"`
 	ApprovalReminderAndEscalationConfig *ApprovalReminderAndEscalationConfig `json:"approvalReminderAndEscalationConfig,omitempty"`
-	EntitlementRequestConfig *EntitlementRequestConfig `json:"entitlementRequestConfig,omitempty"`
+	EntitlementRequestConfig *EntitlementRequestConfig1 `json:"entitlementRequestConfig,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -177,9 +177,9 @@ func (o *AccessRequestConfig) SetApprovalReminderAndEscalationConfig(v ApprovalR
 }
 
 // GetEntitlementRequestConfig returns the EntitlementRequestConfig field value if set, zero value otherwise.
-func (o *AccessRequestConfig) GetEntitlementRequestConfig() EntitlementRequestConfig {
+func (o *AccessRequestConfig) GetEntitlementRequestConfig() EntitlementRequestConfig1 {
 	if o == nil || isNil(o.EntitlementRequestConfig) {
-		var ret EntitlementRequestConfig
+		var ret EntitlementRequestConfig1
 		return ret
 	}
 	return *o.EntitlementRequestConfig
@@ -187,7 +187,7 @@ func (o *AccessRequestConfig) GetEntitlementRequestConfig() EntitlementRequestCo
 
 // GetEntitlementRequestConfigOk returns a tuple with the EntitlementRequestConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestConfig) GetEntitlementRequestConfigOk() (*EntitlementRequestConfig, bool) {
+func (o *AccessRequestConfig) GetEntitlementRequestConfigOk() (*EntitlementRequestConfig1, bool) {
 	if o == nil || isNil(o.EntitlementRequestConfig) {
 		return nil, false
 	}
@@ -203,8 +203,8 @@ func (o *AccessRequestConfig) HasEntitlementRequestConfig() bool {
 	return false
 }
 
-// SetEntitlementRequestConfig gets a reference to the given EntitlementRequestConfig and assigns it to the EntitlementRequestConfig field.
-func (o *AccessRequestConfig) SetEntitlementRequestConfig(v EntitlementRequestConfig) {
+// SetEntitlementRequestConfig gets a reference to the given EntitlementRequestConfig1 and assigns it to the EntitlementRequestConfig field.
+func (o *AccessRequestConfig) SetEntitlementRequestConfig(v EntitlementRequestConfig1) {
 	o.EntitlementRequestConfig = &v
 }
 

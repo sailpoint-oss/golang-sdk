@@ -21644,6 +21644,7 @@ components:
         - type: CONNECTOR_SCHEMA
           id: 2c9180835d191a86015d28455b4b232b
           name: group
+        name: My Source
         connectorName: Active Directory
         beforeProvisioningRule:
           name: Example Rule
@@ -21656,6 +21657,10 @@ components:
           description: the id of the Source
           example: 2c91808568c529c60168cca6f90c1324
           readOnly: true
+          type: string
+        name:
+          description: Human-readable name of the source
+          example: My Source
           type: string
         description:
           description: Human-readable description of the source
@@ -21777,6 +21782,10 @@ components:
           description: The connector implementstion id
           example: delimited-file
           type: string
+      required:
+      - connector
+      - name
+      - owner
       type: object
     SourceHealthDto:
       description: Dto for source health data
@@ -22448,7 +22457,7 @@ components:
           requestCommentsRequired: false
           deniedCommentsRequired: false
           allowEntitlementRequest: true
-          grantRequestApprovalSchemes: "sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
+          grantRequestApprovalSchemes: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
         approvalsMustBeExternal: true
       properties:
         approvalsMustBeExternal:
@@ -27183,7 +27192,7 @@ components:
         requestCommentsRequired: false
         deniedCommentsRequired: false
         allowEntitlementRequest: true
-        grantRequestApprovalSchemes: "sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
+        grantRequestApprovalSchemes: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
       properties:
         allowEntitlementRequest:
           description: Flag for allowing entitlement request.
@@ -27205,9 +27214,9 @@ components:
           default: sourceOwner
           description: |
             Approval schemes for granting entitlement request. This can be empty if no approval is needed.
-            Multiple schemes must be comma-separated. The valid schemes are "sourceOwner", "manager" and "workgroup:{id}".
+            Multiple schemes must be comma-separated. The valid schemes are "entitlementOwner", "sourceOwner", "manager" and "workgroup:{id}".
             Multiple workgroups (governance groups) can be used.
-          example: "sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
+          example: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
           type: string
       type: object
     CancelledRequestDetails:
@@ -29251,6 +29260,7 @@ components:
       - MANAGER
       - ROLE_OWNER
       - ACCESS_PROFILE_OWNER
+      - ENTITLEMENT_OWNER
       - GOVERNANCE_GROUP
       example: MANAGER
       type: string

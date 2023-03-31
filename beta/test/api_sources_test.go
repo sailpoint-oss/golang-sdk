@@ -187,6 +187,18 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesApiService GetSourceEntitlementRequestConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SourcesApi.GetSourceEntitlementRequestConfig(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesApiService GetSourceSchema", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -406,6 +418,18 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.SourcesApi.UpdateSource(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesApiService UpdateSourceEntitlementRequestConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SourcesApi.UpdateSourceEntitlementRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

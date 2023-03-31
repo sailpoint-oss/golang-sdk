@@ -5,10 +5,12 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetEntitlement**](EntitlementsApi.md#GetEntitlement) | **Get** /entitlements/{id} | Get an Entitlement
+[**GetEntitlementRequestConfig**](EntitlementsApi.md#GetEntitlementRequestConfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
 [**ListEntitlementChildren**](EntitlementsApi.md#ListEntitlementChildren) | **Get** /entitlements/{id}/children | List of entitlements children
 [**ListEntitlementParents**](EntitlementsApi.md#ListEntitlementParents) | **Get** /entitlements/{id}/parents | List of entitlements parents
 [**ListEntitlements**](EntitlementsApi.md#ListEntitlements) | **Get** /entitlements | Gets a list of entitlements.
 [**PatchEntitlement**](EntitlementsApi.md#PatchEntitlement) | **Patch** /entitlements/{id} | Patch a specified Entitlement
+[**PutEntitlementRequestConfig**](EntitlementsApi.md#PutEntitlementRequestConfig) | **Put** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
 [**UpdateEntitlementsInBulk**](EntitlementsApi.md#UpdateEntitlementsInBulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 
 
@@ -68,6 +70,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Entitlement**](Entitlement.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetEntitlementRequestConfig
+
+> EntitlementRequestConfig GetEntitlementRequestConfig(ctx, id).Execute()
+
+Get Entitlement Request Config
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "2c91808874ff91550175097daaec161c" // string | Entitlement Id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EntitlementsApi.GetEntitlementRequestConfig(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsApi.GetEntitlementRequestConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetEntitlementRequestConfig`: EntitlementRequestConfig
+    fmt.Fprintf(os.Stdout, "Response from `EntitlementsApi.GetEntitlementRequestConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Entitlement Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetEntitlementRequestConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EntitlementRequestConfig**](EntitlementRequestConfig.md)
 
 ### Authorization
 
@@ -382,6 +454,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PutEntitlementRequestConfig
+
+> EntitlementRequestConfig PutEntitlementRequestConfig(ctx, id).EntitlementRequestConfig(entitlementRequestConfig).Execute()
+
+Replace Entitlement Request Config
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "2c91808a7813090a017814121e121518" // string | Entitlement ID
+    entitlementRequestConfig := *openapiclient.NewEntitlementRequestConfig() // EntitlementRequestConfig | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EntitlementsApi.PutEntitlementRequestConfig(context.Background(), id).EntitlementRequestConfig(entitlementRequestConfig).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsApi.PutEntitlementRequestConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutEntitlementRequestConfig`: EntitlementRequestConfig
+    fmt.Fprintf(os.Stdout, "Response from `EntitlementsApi.PutEntitlementRequestConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Entitlement ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutEntitlementRequestConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **entitlementRequestConfig** | [**EntitlementRequestConfig**](EntitlementRequestConfig.md) |  | 
+
+### Return type
+
+[**EntitlementRequestConfig**](EntitlementRequestConfig.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

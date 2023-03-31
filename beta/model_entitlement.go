@@ -46,6 +46,7 @@ type Entitlement struct {
 	// List of IDs of segments, if any, to which this Entitlement is assigned.
 	Segments []string `json:"segments,omitempty"`
 	DirectPermissions []PermissionDto `json:"directPermissions,omitempty"`
+	Owner *OwnerReferenceDto `json:"owner,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -517,6 +518,38 @@ func (o *Entitlement) SetDirectPermissions(v []PermissionDto) {
 	o.DirectPermissions = v
 }
 
+// GetOwner returns the Owner field value if set, zero value otherwise.
+func (o *Entitlement) GetOwner() OwnerReferenceDto {
+	if o == nil || isNil(o.Owner) {
+		var ret OwnerReferenceDto
+		return ret
+	}
+	return *o.Owner
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Entitlement) GetOwnerOk() (*OwnerReferenceDto, bool) {
+	if o == nil || isNil(o.Owner) {
+		return nil, false
+	}
+	return o.Owner, true
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *Entitlement) HasOwner() bool {
+	if o != nil && !isNil(o.Owner) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given OwnerReferenceDto and assigns it to the Owner field.
+func (o *Entitlement) SetOwner(v OwnerReferenceDto) {
+	o.Owner = &v
+}
+
 func (o Entitlement) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -569,6 +602,9 @@ func (o Entitlement) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.DirectPermissions) {
 		toSerialize["directPermissions"] = o.DirectPermissions
 	}
+	if !isNil(o.Owner) {
+		toSerialize["owner"] = o.Owner
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -601,6 +637,7 @@ func (o *Entitlement) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "segments")
 		delete(additionalProperties, "directPermissions")
+		delete(additionalProperties, "owner")
 		o.AdditionalProperties = additionalProperties
 	}
 

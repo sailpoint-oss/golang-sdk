@@ -154,10 +154,12 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsApi* | [**DeleteCustomPasswordInstructions**](docs/CustomPasswordInstructionsApi.md#deletecustompasswordinstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsApi* | [**GetCustomPasswordInstructions**](docs/CustomPasswordInstructionsApi.md#getcustompasswordinstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
 *EntitlementsApi* | [**GetEntitlement**](docs/EntitlementsApi.md#getentitlement) | **Get** /entitlements/{id} | Get an Entitlement
+*EntitlementsApi* | [**GetEntitlementRequestConfig**](docs/EntitlementsApi.md#getentitlementrequestconfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
 *EntitlementsApi* | [**ListEntitlementChildren**](docs/EntitlementsApi.md#listentitlementchildren) | **Get** /entitlements/{id}/children | List of entitlements children
 *EntitlementsApi* | [**ListEntitlementParents**](docs/EntitlementsApi.md#listentitlementparents) | **Get** /entitlements/{id}/parents | List of entitlements parents
 *EntitlementsApi* | [**ListEntitlements**](docs/EntitlementsApi.md#listentitlements) | **Get** /entitlements | Gets a list of entitlements.
 *EntitlementsApi* | [**PatchEntitlement**](docs/EntitlementsApi.md#patchentitlement) | **Patch** /entitlements/{id} | Patch a specified Entitlement
+*EntitlementsApi* | [**PutEntitlementRequestConfig**](docs/EntitlementsApi.md#putentitlementrequestconfig) | **Put** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
 *EntitlementsApi* | [**UpdateEntitlementsInBulk**](docs/EntitlementsApi.md#updateentitlementsinbulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsIgnoredItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsignoreditem) | **Post** /ai-access-request-recommendations/ignored-items | Notification of Ignored Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsRequestedItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsrequesteditem) | **Post** /ai-access-request-recommendations/requested-items | Notification of Requested Access Request Recommendations
@@ -383,6 +385,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**GetSource**](docs/SourcesApi.md#getsource) | **Get** /sources/{id} | Get Source by ID
 *SourcesApi* | [**GetSourceAttrSyncConfig**](docs/SourcesApi.md#getsourceattrsyncconfig) | **Get** /sources/{id}/attribute-sync-config | Attribute Sync Config
 *SourcesApi* | [**GetSourceConfig**](docs/SourcesApi.md#getsourceconfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language translations
+*SourcesApi* | [**GetSourceEntitlementRequestConfig**](docs/SourcesApi.md#getsourceentitlementrequestconfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
 *SourcesApi* | [**GetSourceSchema**](docs/SourcesApi.md#getsourceschema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
 *SourcesApi* | [**ListProvisioningPolicies**](docs/SourcesApi.md#listprovisioningpolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 *SourcesApi* | [**ListSourceSchemas**](docs/SourcesApi.md#listsourceschemas) | **Get** /sources/{sourceId}/schemas | Lists the Schemas that exist on the specified Source in IdentityNow.
@@ -399,6 +402,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**UpdateProvisioningPoliciesInBulk**](docs/SourcesApi.md#updateprovisioningpoliciesinbulk) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 *SourcesApi* | [**UpdateProvisioningPolicy**](docs/SourcesApi.md#updateprovisioningpolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 *SourcesApi* | [**UpdateSource**](docs/SourcesApi.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
+*SourcesApi* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesApi.md#updatesourceentitlementrequestconfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesApi* | [**UpdateSourceSchema**](docs/SourcesApi.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 *SourcesApi* | [**UploadSourceAccountsSchema**](docs/SourcesApi.md#uploadsourceaccountsschema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
 *SourcesApi* | [**UploadSourceConnectorFile**](docs/SourcesApi.md#uploadsourceconnectorfile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
@@ -618,9 +622,12 @@ Class | Method | HTTP request | Description
  - [EmailNotificationOption](docs/EmailNotificationOption.md)
  - [EmailStatusDto](docs/EmailStatusDto.md)
  - [Entitlement](docs/Entitlement.md)
+ - [EntitlementAccessRequestConfig](docs/EntitlementAccessRequestConfig.md)
+ - [EntitlementApprovalScheme](docs/EntitlementApprovalScheme.md)
  - [EntitlementBulkUpdateRequest](docs/EntitlementBulkUpdateRequest.md)
  - [EntitlementRef](docs/EntitlementRef.md)
  - [EntitlementRequestConfig](docs/EntitlementRequestConfig.md)
+ - [EntitlementRequestConfig1](docs/EntitlementRequestConfig1.md)
  - [EntitlementSource](docs/EntitlementSource.md)
  - [EntityCreatedByDTO](docs/EntityCreatedByDTO.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
@@ -775,6 +782,7 @@ Class | Method | HTTP request | Description
  - [OutlierFeatureTranslation](docs/OutlierFeatureTranslation.md)
  - [OutlierSummary](docs/OutlierSummary.md)
  - [OwnerReference](docs/OwnerReference.md)
+ - [OwnerReferenceDto](docs/OwnerReferenceDto.md)
  - [PasswordChangeRequest](docs/PasswordChangeRequest.md)
  - [PasswordChangeResponse](docs/PasswordChangeResponse.md)
  - [PasswordDigitToken](docs/PasswordDigitToken.md)
@@ -932,6 +940,7 @@ Class | Method | HTTP request | Description
  - [SourceCode](docs/SourceCode.md)
  - [SourceCreated](docs/SourceCreated.md)
  - [SourceDeleted](docs/SourceDeleted.md)
+ - [SourceEntitlementRequestConfig](docs/SourceEntitlementRequestConfig.md)
  - [SourceFeature](docs/SourceFeature.md)
  - [SourceManagementWorkgroup](docs/SourceManagementWorkgroup.md)
  - [SourceManagerCorrelationRule](docs/SourceManagerCorrelationRule.md)

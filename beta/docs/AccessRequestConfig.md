@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AutoApprovalEnabled** | Pointer to **bool** | If true and requester and reviewer are the same, then automatically approve the approval. | [optional] 
 **RequestOnBehalfOfConfig** | Pointer to [**RequestOnBehalfOfConfig**](RequestOnBehalfOfConfig.md) |  | [optional] 
 **ApprovalReminderAndEscalationConfig** | Pointer to [**ApprovalReminderAndEscalationConfig**](ApprovalReminderAndEscalationConfig.md) |  | [optional] 
-**EntitlementRequestConfig** | Pointer to [**EntitlementRequestConfig**](EntitlementRequestConfig.md) |  | [optional] 
+**EntitlementRequestConfig** | Pointer to [**EntitlementRequestConfig1**](EntitlementRequestConfig1.md) |  | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasApprovalReminderAndEscalationConfig returns a boolean if a field has been set
 
 ### GetEntitlementRequestConfig
 
-`func (o *AccessRequestConfig) GetEntitlementRequestConfig() EntitlementRequestConfig`
+`func (o *AccessRequestConfig) GetEntitlementRequestConfig() EntitlementRequestConfig1`
 
 GetEntitlementRequestConfig returns the EntitlementRequestConfig field if non-nil, zero value otherwise.
 
 ### GetEntitlementRequestConfigOk
 
-`func (o *AccessRequestConfig) GetEntitlementRequestConfigOk() (*EntitlementRequestConfig, bool)`
+`func (o *AccessRequestConfig) GetEntitlementRequestConfigOk() (*EntitlementRequestConfig1, bool)`
 
 GetEntitlementRequestConfigOk returns a tuple with the EntitlementRequestConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEntitlementRequestConfig
 
-`func (o *AccessRequestConfig) SetEntitlementRequestConfig(v EntitlementRequestConfig)`
+`func (o *AccessRequestConfig) SetEntitlementRequestConfig(v EntitlementRequestConfig1)`
 
 SetEntitlementRequestConfig sets EntitlementRequestConfig field to given value.
 

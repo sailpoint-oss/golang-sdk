@@ -14,36 +14,33 @@ import (
 	"encoding/json"
 )
 
-// checks if the EntitlementRequestConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EntitlementRequestConfig{}
-
-// EntitlementRequestConfig struct for EntitlementRequestConfig
-type EntitlementRequestConfig struct {
+// SourceEntitlementRequestConfig Entitlement Request Configuration
+type SourceEntitlementRequestConfig struct {
 	AccessRequestConfig *EntitlementAccessRequestConfig `json:"accessRequestConfig,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _EntitlementRequestConfig EntitlementRequestConfig
+type _SourceEntitlementRequestConfig SourceEntitlementRequestConfig
 
-// NewEntitlementRequestConfig instantiates a new EntitlementRequestConfig object
+// NewSourceEntitlementRequestConfig instantiates a new SourceEntitlementRequestConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEntitlementRequestConfig() *EntitlementRequestConfig {
-	this := EntitlementRequestConfig{}
+func NewSourceEntitlementRequestConfig() *SourceEntitlementRequestConfig {
+	this := SourceEntitlementRequestConfig{}
 	return &this
 }
 
-// NewEntitlementRequestConfigWithDefaults instantiates a new EntitlementRequestConfig object
+// NewSourceEntitlementRequestConfigWithDefaults instantiates a new SourceEntitlementRequestConfig object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewEntitlementRequestConfigWithDefaults() *EntitlementRequestConfig {
-	this := EntitlementRequestConfig{}
+func NewSourceEntitlementRequestConfigWithDefaults() *SourceEntitlementRequestConfig {
+	this := SourceEntitlementRequestConfig{}
 	return &this
 }
 
 // GetAccessRequestConfig returns the AccessRequestConfig field value if set, zero value otherwise.
-func (o *EntitlementRequestConfig) GetAccessRequestConfig() EntitlementAccessRequestConfig {
+func (o *SourceEntitlementRequestConfig) GetAccessRequestConfig() EntitlementAccessRequestConfig {
 	if o == nil || isNil(o.AccessRequestConfig) {
 		var ret EntitlementAccessRequestConfig
 		return ret
@@ -53,7 +50,7 @@ func (o *EntitlementRequestConfig) GetAccessRequestConfig() EntitlementAccessReq
 
 // GetAccessRequestConfigOk returns a tuple with the AccessRequestConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementRequestConfig) GetAccessRequestConfigOk() (*EntitlementAccessRequestConfig, bool) {
+func (o *SourceEntitlementRequestConfig) GetAccessRequestConfigOk() (*EntitlementAccessRequestConfig, bool) {
 	if o == nil || isNil(o.AccessRequestConfig) {
 		return nil, false
 	}
@@ -61,7 +58,7 @@ func (o *EntitlementRequestConfig) GetAccessRequestConfigOk() (*EntitlementAcces
 }
 
 // HasAccessRequestConfig returns a boolean if a field has been set.
-func (o *EntitlementRequestConfig) HasAccessRequestConfig() bool {
+func (o *SourceEntitlementRequestConfig) HasAccessRequestConfig() bool {
 	if o != nil && !isNil(o.AccessRequestConfig) {
 		return true
 	}
@@ -70,19 +67,11 @@ func (o *EntitlementRequestConfig) HasAccessRequestConfig() bool {
 }
 
 // SetAccessRequestConfig gets a reference to the given EntitlementAccessRequestConfig and assigns it to the AccessRequestConfig field.
-func (o *EntitlementRequestConfig) SetAccessRequestConfig(v EntitlementAccessRequestConfig) {
+func (o *SourceEntitlementRequestConfig) SetAccessRequestConfig(v EntitlementAccessRequestConfig) {
 	o.AccessRequestConfig = &v
 }
 
-func (o EntitlementRequestConfig) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o EntitlementRequestConfig) ToMap() (map[string]interface{}, error) {
+func (o SourceEntitlementRequestConfig) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccessRequestConfig) {
 		toSerialize["accessRequestConfig"] = o.AccessRequestConfig
@@ -92,14 +81,14 @@ func (o EntitlementRequestConfig) ToMap() (map[string]interface{}, error) {
 		toSerialize[key] = value
 	}
 
-	return toSerialize, nil
+	return json.Marshal(toSerialize)
 }
 
-func (o *EntitlementRequestConfig) UnmarshalJSON(bytes []byte) (err error) {
-	varEntitlementRequestConfig := _EntitlementRequestConfig{}
+func (o *SourceEntitlementRequestConfig) UnmarshalJSON(bytes []byte) (err error) {
+	varSourceEntitlementRequestConfig := _SourceEntitlementRequestConfig{}
 
-	if err = json.Unmarshal(bytes, &varEntitlementRequestConfig); err == nil {
-		*o = EntitlementRequestConfig(varEntitlementRequestConfig)
+	if err = json.Unmarshal(bytes, &varSourceEntitlementRequestConfig); err == nil {
+		*o = SourceEntitlementRequestConfig(varSourceEntitlementRequestConfig)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -112,38 +101,38 @@ func (o *EntitlementRequestConfig) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableEntitlementRequestConfig struct {
-	value *EntitlementRequestConfig
+type NullableSourceEntitlementRequestConfig struct {
+	value *SourceEntitlementRequestConfig
 	isSet bool
 }
 
-func (v NullableEntitlementRequestConfig) Get() *EntitlementRequestConfig {
+func (v NullableSourceEntitlementRequestConfig) Get() *SourceEntitlementRequestConfig {
 	return v.value
 }
 
-func (v *NullableEntitlementRequestConfig) Set(val *EntitlementRequestConfig) {
+func (v *NullableSourceEntitlementRequestConfig) Set(val *SourceEntitlementRequestConfig) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableEntitlementRequestConfig) IsSet() bool {
+func (v NullableSourceEntitlementRequestConfig) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableEntitlementRequestConfig) Unset() {
+func (v *NullableSourceEntitlementRequestConfig) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableEntitlementRequestConfig(val *EntitlementRequestConfig) *NullableEntitlementRequestConfig {
-	return &NullableEntitlementRequestConfig{value: val, isSet: true}
+func NewNullableSourceEntitlementRequestConfig(val *SourceEntitlementRequestConfig) *NullableSourceEntitlementRequestConfig {
+	return &NullableSourceEntitlementRequestConfig{value: val, isSet: true}
 }
 
-func (v NullableEntitlementRequestConfig) MarshalJSON() ([]byte, error) {
+func (v NullableSourceEntitlementRequestConfig) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableEntitlementRequestConfig) UnmarshalJSON(src []byte) error {
+func (v *NullableSourceEntitlementRequestConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
