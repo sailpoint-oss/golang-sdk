@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreateConnectorRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateConnectorRequest{}
+
 // CreateConnectorRequest struct for CreateConnectorRequest
 type CreateConnectorRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -204,6 +207,14 @@ func (o *CreateConnectorRequest) SetStatus(v string) {
 }
 
 func (o CreateConnectorRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CreateConnectorRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -225,7 +236,7 @@ func (o CreateConnectorRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CreateConnectorRequest) UnmarshalJSON(bytes []byte) (err error) {

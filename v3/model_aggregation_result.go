@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AggregationResult type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AggregationResult{}
+
 // AggregationResult struct for AggregationResult
 type AggregationResult struct {
 	// The document containing the results of the aggregation. This document is controlled by Elasticsearch and depends on the type of aggregation query that is run.  See Elasticsearch [Aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/search-aggregations.html) documentation for information. 
@@ -107,6 +110,14 @@ func (o *AggregationResult) SetHits(v []map[string]interface{}) {
 }
 
 func (o AggregationResult) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AggregationResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Aggregations) {
 		toSerialize["aggregations"] = o.Aggregations
@@ -119,7 +130,7 @@ func (o AggregationResult) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AggregationResult) UnmarshalJSON(bytes []byte) (err error) {

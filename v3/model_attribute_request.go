@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AttributeRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AttributeRequest{}
+
 // AttributeRequest struct for AttributeRequest
 type AttributeRequest struct {
 	// The attribute name
@@ -141,6 +144,14 @@ func (o *AttributeRequest) SetValue(v string) {
 }
 
 func (o AttributeRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AttributeRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -156,7 +167,7 @@ func (o AttributeRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AttributeRequest) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessRequestRecommendationItemDetailAccess type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestRecommendationItemDetailAccess{}
+
 // AccessRequestRecommendationItemDetailAccess struct for AccessRequestRecommendationItemDetailAccess
 type AccessRequestRecommendationItemDetailAccess struct {
 	// ID of access item being recommended.
@@ -174,6 +177,14 @@ func (o *AccessRequestRecommendationItemDetailAccess) SetDescription(v string) {
 }
 
 func (o AccessRequestRecommendationItemDetailAccess) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequestRecommendationItemDetailAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -192,7 +203,7 @@ func (o AccessRequestRecommendationItemDetailAccess) MarshalJSON() ([]byte, erro
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequestRecommendationItemDetailAccess) UnmarshalJSON(bytes []byte) (err error) {

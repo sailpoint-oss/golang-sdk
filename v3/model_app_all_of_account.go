@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AppAllOfAccount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AppAllOfAccount{}
+
 // AppAllOfAccount struct for AppAllOfAccount
 type AppAllOfAccount struct {
 	// The SailPoint generated unique ID
@@ -107,6 +110,14 @@ func (o *AppAllOfAccount) SetAccountId(v string) {
 }
 
 func (o AppAllOfAccount) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AppAllOfAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -119,7 +130,7 @@ func (o AppAllOfAccount) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AppAllOfAccount) UnmarshalJSON(bytes []byte) (err error) {

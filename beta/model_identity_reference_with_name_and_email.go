@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityReferenceWithNameAndEmail type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityReferenceWithNameAndEmail{}
+
 // IdentityReferenceWithNameAndEmail struct for IdentityReferenceWithNameAndEmail
 type IdentityReferenceWithNameAndEmail struct {
 	// The type can only be IDENTITY. This is read-only
@@ -175,6 +178,14 @@ func (o *IdentityReferenceWithNameAndEmail) SetEmail(v string) {
 }
 
 func (o IdentityReferenceWithNameAndEmail) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityReferenceWithNameAndEmail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -193,7 +204,7 @@ func (o IdentityReferenceWithNameAndEmail) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityReferenceWithNameAndEmail) UnmarshalJSON(bytes []byte) (err error) {

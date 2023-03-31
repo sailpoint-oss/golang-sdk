@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ScheduledSearchName type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ScheduledSearchName{}
+
 // ScheduledSearchName struct for ScheduledSearchName
 type ScheduledSearchName struct {
 	// The name of the scheduled search. 
@@ -127,6 +130,14 @@ func (o *ScheduledSearchName) UnsetDescription() {
 }
 
 func (o ScheduledSearchName) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ScheduledSearchName) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
@@ -139,7 +150,7 @@ func (o ScheduledSearchName) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ScheduledSearchName) UnmarshalJSON(bytes []byte) (err error) {

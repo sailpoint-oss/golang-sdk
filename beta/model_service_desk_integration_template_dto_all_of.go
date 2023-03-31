@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceDeskIntegrationTemplateDtoAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceDeskIntegrationTemplateDtoAllOf{}
+
 // ServiceDeskIntegrationTemplateDtoAllOf This is the model for a Service Desk integration template, used to create and edit Service Desk Integrations.
 type ServiceDeskIntegrationTemplateDtoAllOf struct {
 	// The 'type' property specifies the type of the Service Desk integration template.
@@ -121,22 +124,24 @@ func (o *ServiceDeskIntegrationTemplateDtoAllOf) SetProvisioningConfig(v Provisi
 }
 
 func (o ServiceDeskIntegrationTemplateDtoAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ServiceDeskIntegrationTemplateDtoAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["attributes"] = o.Attributes
-	}
-	if true {
-		toSerialize["provisioningConfig"] = o.ProvisioningConfig
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["attributes"] = o.Attributes
+	toSerialize["provisioningConfig"] = o.ProvisioningConfig
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ServiceDeskIntegrationTemplateDtoAllOf) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentitiesAccountsBulkRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentitiesAccountsBulkRequest{}
+
 // IdentitiesAccountsBulkRequest struct for IdentitiesAccountsBulkRequest
 type IdentitiesAccountsBulkRequest struct {
 	// The ids of the identities for which enable/disable accounts.
@@ -73,6 +76,14 @@ func (o *IdentitiesAccountsBulkRequest) SetIdentityIds(v []string) {
 }
 
 func (o IdentitiesAccountsBulkRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentitiesAccountsBulkRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.IdentityIds) {
 		toSerialize["identityIds"] = o.IdentityIds
@@ -82,7 +93,7 @@ func (o IdentitiesAccountsBulkRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentitiesAccountsBulkRequest) UnmarshalJSON(bytes []byte) (err error) {

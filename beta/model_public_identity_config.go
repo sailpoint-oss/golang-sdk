@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the PublicIdentityConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PublicIdentityConfig{}
+
 // PublicIdentityConfig Details of up to 5 Identity attributes that will be publicly accessible for all Identities to anyone in the org
 type PublicIdentityConfig struct {
 	Attributes []PublicIdentityAttributeConfig `json:"attributes,omitempty"`
@@ -150,6 +153,14 @@ func (o *PublicIdentityConfig) SetModified(v time.Time) {
 }
 
 func (o PublicIdentityConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PublicIdentityConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
@@ -165,7 +176,7 @@ func (o PublicIdentityConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PublicIdentityConfig) UnmarshalJSON(bytes []byte) (err error) {

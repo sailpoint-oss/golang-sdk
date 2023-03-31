@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessCriteria type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessCriteria{}
+
 // AccessCriteria struct for AccessCriteria
 type AccessCriteria struct {
 	// Business name for the access construct list
@@ -107,6 +110,14 @@ func (o *AccessCriteria) SetCriteriaList(v []AccessCriteriaCriteriaListInner) {
 }
 
 func (o AccessCriteria) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -119,7 +130,7 @@ func (o AccessCriteria) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessCriteria) UnmarshalJSON(bytes []byte) (err error) {

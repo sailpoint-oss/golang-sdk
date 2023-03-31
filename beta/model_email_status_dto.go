@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EmailStatusDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EmailStatusDto{}
+
 // EmailStatusDto struct for EmailStatusDto
 type EmailStatusDto struct {
 	Id *string `json:"id,omitempty"`
@@ -138,6 +141,14 @@ func (o *EmailStatusDto) SetVerificationStatus(v string) {
 }
 
 func (o EmailStatusDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EmailStatusDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -153,7 +164,7 @@ func (o EmailStatusDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EmailStatusDto) UnmarshalJSON(bytes []byte) (err error) {

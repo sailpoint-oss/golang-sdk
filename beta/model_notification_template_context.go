@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NotificationTemplateContext type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationTemplateContext{}
+
 // NotificationTemplateContext struct for NotificationTemplateContext
 type NotificationTemplateContext struct {
 	// A JSON object that stores the context.
@@ -142,6 +145,14 @@ func (o *NotificationTemplateContext) SetModified(v time.Time) {
 }
 
 func (o NotificationTemplateContext) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NotificationTemplateContext) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
@@ -157,7 +168,7 @@ func (o NotificationTemplateContext) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NotificationTemplateContext) UnmarshalJSON(bytes []byte) (err error) {

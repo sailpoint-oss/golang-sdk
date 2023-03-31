@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordInfoQueryDTO type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordInfoQueryDTO{}
+
 // PasswordInfoQueryDTO struct for PasswordInfoQueryDTO
 type PasswordInfoQueryDTO struct {
 	// The login name of the user
@@ -107,6 +110,14 @@ func (o *PasswordInfoQueryDTO) SetSourceName(v string) {
 }
 
 func (o PasswordInfoQueryDTO) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PasswordInfoQueryDTO) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.UserName) {
 		toSerialize["userName"] = o.UserName
@@ -119,7 +130,7 @@ func (o PasswordInfoQueryDTO) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PasswordInfoQueryDTO) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Source type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Source{}
+
 // Source struct for Source
 type Source struct {
 	// the id of the Source
@@ -928,13 +931,16 @@ func (o *Source) SetConnectorImplementstionId(v string) {
 }
 
 func (o Source) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Source) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	// skip: id is readOnly
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -1015,7 +1021,7 @@ func (o Source) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Source) UnmarshalJSON(bytes []byte) (err error) {

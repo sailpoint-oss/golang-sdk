@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ReportResultReference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReportResultReference{}
+
 // ReportResultReference struct for ReportResultReference
 type ReportResultReference struct {
 	Type *DtoType `json:"type,omitempty"`
@@ -173,6 +176,14 @@ func (o *ReportResultReference) SetStatus(v string) {
 }
 
 func (o ReportResultReference) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ReportResultReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -191,7 +202,7 @@ func (o ReportResultReference) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ReportResultReference) UnmarshalJSON(bytes []byte) (err error) {

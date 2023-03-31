@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ExportPayload type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExportPayload{}
+
 // ExportPayload struct for ExportPayload
 type ExportPayload struct {
 	// Optional user defined description/name for export job.
@@ -175,6 +178,14 @@ func (o *ExportPayload) SetObjectOptions(v map[string]ObjectExportImportOptions)
 }
 
 func (o ExportPayload) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ExportPayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -193,7 +204,7 @@ func (o ExportPayload) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ExportPayload) UnmarshalJSON(bytes []byte) (err error) {

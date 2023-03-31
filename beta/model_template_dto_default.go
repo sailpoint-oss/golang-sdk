@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TemplateDtoDefault type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TemplateDtoDefault{}
+
 // TemplateDtoDefault struct for TemplateDtoDefault
 type TemplateDtoDefault struct {
 	Key *string `json:"key,omitempty"`
@@ -404,6 +407,14 @@ func (o *TemplateDtoDefault) SetDescription(v string) {
 }
 
 func (o TemplateDtoDefault) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TemplateDtoDefault) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Key) {
 		toSerialize["key"] = o.Key
@@ -443,7 +454,7 @@ func (o TemplateDtoDefault) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TemplateDtoDefault) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SubscriptionPutRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SubscriptionPutRequest{}
+
 // SubscriptionPutRequest struct for SubscriptionPutRequest
 type SubscriptionPutRequest struct {
 	// Subscription name.
@@ -316,6 +319,14 @@ func (o *SubscriptionPutRequest) SetFilter(v string) {
 }
 
 func (o SubscriptionPutRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SubscriptionPutRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -346,7 +357,7 @@ func (o SubscriptionPutRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SubscriptionPutRequest) UnmarshalJSON(bytes []byte) (err error) {

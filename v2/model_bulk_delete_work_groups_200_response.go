@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BulkDeleteWorkGroups200Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BulkDeleteWorkGroups200Response{}
+
 // BulkDeleteWorkGroups200Response struct for BulkDeleteWorkGroups200Response
 type BulkDeleteWorkGroups200Response struct {
 	Deleted []string `json:"deleted,omitempty"`
@@ -138,6 +141,14 @@ func (o *BulkDeleteWorkGroups200Response) SetNotFound(v []string) {
 }
 
 func (o BulkDeleteWorkGroups200Response) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BulkDeleteWorkGroups200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Deleted) {
 		toSerialize["deleted"] = o.Deleted
@@ -153,7 +164,7 @@ func (o BulkDeleteWorkGroups200Response) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BulkDeleteWorkGroups200Response) UnmarshalJSON(bytes []byte) (err error) {

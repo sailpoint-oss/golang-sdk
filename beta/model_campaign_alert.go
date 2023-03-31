@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CampaignAlert type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CampaignAlert{}
+
 // CampaignAlert struct for CampaignAlert
 type CampaignAlert struct {
 	// Denotes the level of the message
@@ -106,6 +109,14 @@ func (o *CampaignAlert) SetLocalizations(v []ErrorMessageDto) {
 }
 
 func (o CampaignAlert) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CampaignAlert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Level) {
 		toSerialize["level"] = o.Level
@@ -118,7 +129,7 @@ func (o CampaignAlert) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CampaignAlert) UnmarshalJSON(bytes []byte) (err error) {

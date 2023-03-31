@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessConstraint type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessConstraint{}
+
 // AccessConstraint struct for AccessConstraint
 type AccessConstraint struct {
 	// Type of Access
@@ -127,22 +130,26 @@ func (o *AccessConstraint) SetOperator(v string) {
 }
 
 func (o AccessConstraint) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessConstraint) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
 	if !isNil(o.Ids) {
 		toSerialize["ids"] = o.Ids
 	}
-	if true {
-		toSerialize["operator"] = o.Operator
-	}
+	toSerialize["operator"] = o.Operator
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessConstraint) UnmarshalJSON(bytes []byte) (err error) {

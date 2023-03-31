@@ -11,9 +11,12 @@ API version: 3.1.0-beta
 package beta
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the IdentityProfile1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProfile1{}
 
 // IdentityProfile1 struct for IdentityProfile1
 type IdentityProfile1 struct {
@@ -494,19 +497,19 @@ func (o *IdentityProfile1) SetHasTimeBasedAttr(v bool) {
 }
 
 func (o IdentityProfile1) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProfile1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	// skip: created is readOnly
+	// skip: modified is readOnly
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
@@ -516,9 +519,7 @@ func (o IdentityProfile1) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Priority) {
 		toSerialize["priority"] = o.Priority
 	}
-	if true {
-		toSerialize["authoritativeSource"] = o.AuthoritativeSource
-	}
+	toSerialize["authoritativeSource"] = o.AuthoritativeSource
 	if !isNil(o.IdentityRefreshRequired) {
 		toSerialize["identityRefreshRequired"] = o.IdentityRefreshRequired
 	}
@@ -539,7 +540,7 @@ func (o IdentityProfile1) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityProfile1) UnmarshalJSON(bytes []byte) (err error) {

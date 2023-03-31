@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMembershipSelector type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMembershipSelector{}
+
 // RoleMembershipSelector When present, specifies that the Role is to be granted to Identities which either satisfy specific criteria or which are members of a given list of Identities.
 type RoleMembershipSelector struct {
 	Type *RoleMembershipSelectorType `json:"type,omitempty"`
@@ -150,6 +153,14 @@ func (o *RoleMembershipSelector) SetIdentities(v []RoleMembershipIdentity) {
 }
 
 func (o RoleMembershipSelector) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMembershipSelector) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -165,7 +176,7 @@ func (o RoleMembershipSelector) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMembershipSelector) UnmarshalJSON(bytes []byte) (err error) {

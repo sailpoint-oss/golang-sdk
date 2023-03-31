@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VerifyDomainDkim405Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VerifyDomainDkim405Response{}
+
 // VerifyDomainDkim405Response struct for VerifyDomainDkim405Response
 type VerifyDomainDkim405Response struct {
 	// A message describing the error
@@ -141,6 +144,14 @@ func (o *VerifyDomainDkim405Response) SetTrackingId(v string) {
 }
 
 func (o VerifyDomainDkim405Response) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o VerifyDomainDkim405Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ErrorName) {
 		toSerialize["errorName"] = o.ErrorName
@@ -156,7 +167,7 @@ func (o VerifyDomainDkim405Response) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *VerifyDomainDkim405Response) UnmarshalJSON(bytes []byte) (err error) {

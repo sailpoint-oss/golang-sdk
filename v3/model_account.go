@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the Account type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Account{}
 
 // Account struct for Account
 type Account struct {
@@ -616,19 +619,19 @@ func (o *Account) SetHasEntitlements(v bool) {
 }
 
 func (o Account) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Account) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	// skip: created is readOnly
+	// skip: modified is readOnly
 	if !isNil(o.SourceId) {
 		toSerialize["sourceId"] = o.SourceId
 	}
@@ -673,7 +676,7 @@ func (o Account) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Account) UnmarshalJSON(bytes []byte) (err error) {

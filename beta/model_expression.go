@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Expression type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Expression{}
+
 // Expression struct for Expression
 type Expression struct {
 	// Operator for the expression
@@ -174,6 +177,14 @@ func (o *Expression) SetChildren(v []Value) {
 }
 
 func (o Expression) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Expression) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Operator) {
 		toSerialize["operator"] = o.Operator
@@ -192,7 +203,7 @@ func (o Expression) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Expression) UnmarshalJSON(bytes []byte) (err error) {

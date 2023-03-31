@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessProfileDocumentAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileDocumentAllOf{}
+
 // AccessProfileDocumentAllOf struct for AccessProfileDocumentAllOf
 type AccessProfileDocumentAllOf struct {
 	Source *Reference `json:"source,omitempty"`
@@ -171,6 +174,14 @@ func (o *AccessProfileDocumentAllOf) SetTags(v []string) {
 }
 
 func (o AccessProfileDocumentAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfileDocumentAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Source) {
 		toSerialize["source"] = o.Source
@@ -189,7 +200,7 @@ func (o AccessProfileDocumentAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfileDocumentAllOf) UnmarshalJSON(bytes []byte) (err error) {

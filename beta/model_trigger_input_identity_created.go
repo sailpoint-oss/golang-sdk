@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputIdentityCreated type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputIdentityCreated{}
+
 // TriggerInputIdentityCreated struct for TriggerInputIdentityCreated
 type TriggerInputIdentityCreated struct {
 	Identity TriggerInputIdentityCreatedIdentity `json:"identity"`
@@ -92,19 +95,23 @@ func (o *TriggerInputIdentityCreated) SetAttributes(v map[string]interface{}) {
 }
 
 func (o TriggerInputIdentityCreated) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputIdentityCreated) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["identity"] = o.Identity
-	}
-	if true {
-		toSerialize["attributes"] = o.Attributes
-	}
+	toSerialize["identity"] = o.Identity
+	toSerialize["attributes"] = o.Attributes
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputIdentityCreated) UnmarshalJSON(bytes []byte) (err error) {

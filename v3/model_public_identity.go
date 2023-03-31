@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PublicIdentity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PublicIdentity{}
+
 // PublicIdentity Details about a public identity
 type PublicIdentity struct {
 	// Identity id
@@ -306,6 +309,14 @@ func (o *PublicIdentity) SetAttributes(v []IdentityAttribute) {
 }
 
 func (o PublicIdentity) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PublicIdentity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -333,7 +344,7 @@ func (o PublicIdentity) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PublicIdentity) UnmarshalJSON(bytes []byte) (err error) {

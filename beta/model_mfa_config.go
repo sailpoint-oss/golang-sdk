@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MfaConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MfaConfig{}
+
 // MfaConfig struct for MfaConfig
 type MfaConfig struct {
 	// If MFA method is enabled.
@@ -175,6 +178,14 @@ func (o *MfaConfig) SetIdentityAttribute(v string) {
 }
 
 func (o MfaConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o MfaConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
@@ -193,7 +204,7 @@ func (o MfaConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *MfaConfig) UnmarshalJSON(bytes []byte) (err error) {

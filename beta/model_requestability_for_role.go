@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RequestabilityForRole type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestabilityForRole{}
+
 // RequestabilityForRole struct for RequestabilityForRole
 type RequestabilityForRole struct {
 	// Whether the requester of the containing object must provide comments justifying the request
@@ -141,6 +144,14 @@ func (o *RequestabilityForRole) SetApprovalSchemes(v []ApprovalSchemeForRole) {
 }
 
 func (o RequestabilityForRole) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RequestabilityForRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CommentsRequired) {
 		toSerialize["commentsRequired"] = o.CommentsRequired
@@ -156,7 +167,7 @@ func (o RequestabilityForRole) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RequestabilityForRole) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DisplayReference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DisplayReference{}
+
 // DisplayReference struct for DisplayReference
 type DisplayReference struct {
 	// The unique ID of the referenced object.
@@ -140,6 +143,14 @@ func (o *DisplayReference) SetDisplayName(v string) {
 }
 
 func (o DisplayReference) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DisplayReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -155,7 +166,7 @@ func (o DisplayReference) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *DisplayReference) UnmarshalJSON(bytes []byte) (err error) {

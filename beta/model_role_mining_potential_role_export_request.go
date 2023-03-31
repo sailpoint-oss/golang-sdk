@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMiningPotentialRoleExportRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningPotentialRoleExportRequest{}
+
 // RoleMiningPotentialRoleExportRequest struct for RoleMiningPotentialRoleExportRequest
 type RoleMiningPotentialRoleExportRequest struct {
 	// The minimum popularity among identities in the role which an entitlement must have to be included in the report
@@ -107,6 +110,14 @@ func (o *RoleMiningPotentialRoleExportRequest) SetIncludeCommonAccess(v bool) {
 }
 
 func (o RoleMiningPotentialRoleExportRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningPotentialRoleExportRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.MinEntitlementPopularity) {
 		toSerialize["minEntitlementPopularity"] = o.MinEntitlementPopularity
@@ -119,7 +130,7 @@ func (o RoleMiningPotentialRoleExportRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningPotentialRoleExportRequest) UnmarshalJSON(bytes []byte) (err error) {

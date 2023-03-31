@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SearchArguments type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SearchArguments{}
+
 // SearchArguments struct for SearchArguments
 type SearchArguments struct {
 	// The ID of the scheduled search that triggered the saved search execution. 
@@ -140,6 +143,14 @@ func (o *SearchArguments) SetRecipients(v []TypedReference) {
 }
 
 func (o SearchArguments) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SearchArguments) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ScheduleId) {
 		toSerialize["scheduleId"] = o.ScheduleId
@@ -155,7 +166,7 @@ func (o SearchArguments) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SearchArguments) UnmarshalJSON(bytes []byte) (err error) {

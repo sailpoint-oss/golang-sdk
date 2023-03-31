@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BaseEntitlementAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BaseEntitlementAllOf{}
+
 // BaseEntitlementAllOf struct for BaseEntitlementAllOf
 type BaseEntitlementAllOf struct {
 	// A description of the entitlement
@@ -141,6 +144,14 @@ func (o *BaseEntitlementAllOf) SetValue(v string) {
 }
 
 func (o BaseEntitlementAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BaseEntitlementAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -156,7 +167,7 @@ func (o BaseEntitlementAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BaseEntitlementAllOf) UnmarshalJSON(bytes []byte) (err error) {

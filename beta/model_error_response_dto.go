@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ErrorResponseDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ErrorResponseDto{}
+
 // ErrorResponseDto struct for ErrorResponseDto
 type ErrorResponseDto struct {
 	// Fine-grained error code providing more detail of the error.
@@ -175,6 +178,14 @@ func (o *ErrorResponseDto) SetCauses(v []ErrorMessageDto) {
 }
 
 func (o ErrorResponseDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ErrorResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.DetailCode) {
 		toSerialize["detailCode"] = o.DetailCode
@@ -193,7 +204,7 @@ func (o ErrorResponseDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ErrorResponseDto) UnmarshalJSON(bytes []byte) (err error) {

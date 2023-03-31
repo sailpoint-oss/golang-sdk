@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ApprovalComment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApprovalComment{}
+
 // ApprovalComment struct for ApprovalComment
 type ApprovalComment struct {
 	// The comment text
@@ -152,6 +155,14 @@ func (o *ApprovalComment) UnsetDate() {
 }
 
 func (o ApprovalComment) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ApprovalComment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -167,7 +178,7 @@ func (o ApprovalComment) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ApprovalComment) UnmarshalJSON(bytes []byte) (err error) {

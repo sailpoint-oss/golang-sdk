@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EmailNotificationOption type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EmailNotificationOption{}
+
 // EmailNotificationOption This is used for representing email configuration for a lifecycle state
 type EmailNotificationOption struct {
 	// If true, then the manager is notified of the lifecycle state change.
@@ -175,6 +178,14 @@ func (o *EmailNotificationOption) SetEmailAddressList(v []string) {
 }
 
 func (o EmailNotificationOption) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EmailNotificationOption) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.NotifyManagers) {
 		toSerialize["notifyManagers"] = o.NotifyManagers
@@ -193,7 +204,7 @@ func (o EmailNotificationOption) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EmailNotificationOption) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ViolationContextPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ViolationContextPolicy{}
+
 // ViolationContextPolicy The types of objects supported for SOD violations
 type ViolationContextPolicy struct {
 	// The type of object that is referenced
@@ -140,6 +143,14 @@ func (o *ViolationContextPolicy) SetName(v string) {
 }
 
 func (o ViolationContextPolicy) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ViolationContextPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -155,7 +166,7 @@ func (o ViolationContextPolicy) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ViolationContextPolicy) UnmarshalJSON(bytes []byte) (err error) {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the VAClusterStatusChangeEvent type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VAClusterStatusChangeEvent{}
+
 // VAClusterStatusChangeEvent struct for VAClusterStatusChangeEvent
 type VAClusterStatusChangeEvent struct {
 	// The date and time the status change occurred.
@@ -172,28 +175,26 @@ func (o *VAClusterStatusChangeEvent) SetPreviousHealthCheckResult(v TriggerInput
 }
 
 func (o VAClusterStatusChangeEvent) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o VAClusterStatusChangeEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["created"] = o.Created
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["application"] = o.Application
-	}
-	if true {
-		toSerialize["healthCheckResult"] = o.HealthCheckResult
-	}
-	if true {
-		toSerialize["previousHealthCheckResult"] = o.PreviousHealthCheckResult
-	}
+	toSerialize["created"] = o.Created
+	toSerialize["type"] = o.Type
+	toSerialize["application"] = o.Application
+	toSerialize["healthCheckResult"] = o.HealthCheckResult
+	toSerialize["previousHealthCheckResult"] = o.PreviousHealthCheckResult
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *VAClusterStatusChangeEvent) UnmarshalJSON(bytes []byte) (err error) {

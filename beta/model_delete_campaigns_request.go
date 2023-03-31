@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeleteCampaignsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeleteCampaignsRequest{}
+
 // DeleteCampaignsRequest struct for DeleteCampaignsRequest
 type DeleteCampaignsRequest struct {
 	// The ids of the campaigns to delete
@@ -73,6 +76,14 @@ func (o *DeleteCampaignsRequest) SetIds(v []string) {
 }
 
 func (o DeleteCampaignsRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DeleteCampaignsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Ids) {
 		toSerialize["ids"] = o.Ids
@@ -82,7 +93,7 @@ func (o DeleteCampaignsRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *DeleteCampaignsRequest) UnmarshalJSON(bytes []byte) (err error) {

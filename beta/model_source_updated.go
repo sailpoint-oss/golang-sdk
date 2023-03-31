@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the SourceUpdated type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceUpdated{}
+
 // SourceUpdated struct for SourceUpdated
 type SourceUpdated struct {
 	// The unique ID of the source.
@@ -201,31 +204,27 @@ func (o *SourceUpdated) SetActor(v TriggerInputSourceUpdatedActor) {
 }
 
 func (o SourceUpdated) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SourceUpdated) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["modified"] = o.Modified
-	}
-	if true {
-		toSerialize["connector"] = o.Connector
-	}
-	if true {
-		toSerialize["actor"] = o.Actor
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
+	toSerialize["modified"] = o.Modified
+	toSerialize["connector"] = o.Connector
+	toSerialize["actor"] = o.Actor
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SourceUpdated) UnmarshalJSON(bytes []byte) (err error) {

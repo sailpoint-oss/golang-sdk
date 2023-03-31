@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SearchIdentityReferenceAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SearchIdentityReferenceAllOf{}
+
 // SearchIdentityReferenceAllOf struct for SearchIdentityReferenceAllOf
 type SearchIdentityReferenceAllOf struct {
 	Type *DtoType `json:"type,omitempty"`
@@ -72,6 +75,14 @@ func (o *SearchIdentityReferenceAllOf) SetType(v DtoType) {
 }
 
 func (o SearchIdentityReferenceAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SearchIdentityReferenceAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -81,7 +92,7 @@ func (o SearchIdentityReferenceAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SearchIdentityReferenceAllOf) UnmarshalJSON(bytes []byte) (err error) {

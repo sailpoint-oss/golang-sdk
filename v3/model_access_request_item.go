@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AccessRequestItem type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestItem{}
+
 // AccessRequestItem struct for AccessRequestItem
 type AccessRequestItem struct {
 	// The type of the item being requested.
@@ -196,13 +199,17 @@ func (o *AccessRequestItem) SetRemoveDate(v time.Time) {
 }
 
 func (o AccessRequestItem) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequestItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["id"] = o.Id
 	if !isNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
@@ -217,7 +224,7 @@ func (o AccessRequestItem) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequestItem) UnmarshalJSON(bytes []byte) (err error) {

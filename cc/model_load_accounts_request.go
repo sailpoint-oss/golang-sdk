@@ -15,6 +15,9 @@ import (
 	"os"
 )
 
+// checks if the LoadAccountsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LoadAccountsRequest{}
+
 // LoadAccountsRequest struct for LoadAccountsRequest
 type LoadAccountsRequest struct {
 	DisableOptimization *bool `json:"disableOptimization,omitempty"`
@@ -106,6 +109,14 @@ func (o *LoadAccountsRequest) SetFile(v *os.File) {
 }
 
 func (o LoadAccountsRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o LoadAccountsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.DisableOptimization) {
 		toSerialize["disableOptimization"] = o.DisableOptimization
@@ -118,7 +129,7 @@ func (o LoadAccountsRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *LoadAccountsRequest) UnmarshalJSON(bytes []byte) (err error) {

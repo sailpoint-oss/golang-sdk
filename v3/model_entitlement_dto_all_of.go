@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EntitlementDtoAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementDtoAllOf{}
+
 // EntitlementDtoAllOf Entitlement object that represents entitlement
 type EntitlementDtoAllOf struct {
 	// Name of the entitlement attribute
@@ -310,6 +313,14 @@ func (o *EntitlementDtoAllOf) SetSource(v BaseReferenceDto) {
 }
 
 func (o EntitlementDtoAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EntitlementDtoAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
@@ -340,7 +351,7 @@ func (o EntitlementDtoAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EntitlementDtoAllOf) UnmarshalJSON(bytes []byte) (err error) {

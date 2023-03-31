@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PublicIdentityAttributeConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PublicIdentityAttributeConfig{}
+
 // PublicIdentityAttributeConfig Used to map an attribute key for an Identity to its display name.
 type PublicIdentityAttributeConfig struct {
 	// the key of the attribute
@@ -107,6 +110,14 @@ func (o *PublicIdentityAttributeConfig) SetName(v string) {
 }
 
 func (o PublicIdentityAttributeConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PublicIdentityAttributeConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Key) {
 		toSerialize["key"] = o.Key
@@ -119,7 +130,7 @@ func (o PublicIdentityAttributeConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PublicIdentityAttributeConfig) UnmarshalJSON(bytes []byte) (err error) {

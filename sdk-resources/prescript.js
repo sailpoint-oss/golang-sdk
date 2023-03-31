@@ -20,10 +20,7 @@ const fixFiles = function (myArray) {
     let madeChange = false;
     let rawdata = fs.readFileSync(file).toString();
     let rawDataArra = rawdata.split("\n");
-  
-    if (file.includes("documents/SearchDocument.yaml")) {
-      console.log("Found it");
-    }
+
   
     // remove the complex transform schema
     if (file.includes("schemas/Transform.yaml")) {

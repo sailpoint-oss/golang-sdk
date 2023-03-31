@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessProfileSourceRef type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileSourceRef{}
+
 // AccessProfileSourceRef struct for AccessProfileSourceRef
 type AccessProfileSourceRef struct {
 	// The ID of the Source with with which the Access Profile is associated
@@ -141,6 +144,14 @@ func (o *AccessProfileSourceRef) SetName(v string) {
 }
 
 func (o AccessProfileSourceRef) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfileSourceRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -156,7 +167,7 @@ func (o AccessProfileSourceRef) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfileSourceRef) UnmarshalJSON(bytes []byte) (err error) {

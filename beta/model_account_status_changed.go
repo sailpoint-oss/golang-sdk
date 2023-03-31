@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountStatusChanged type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountStatusChanged{}
+
 // AccountStatusChanged struct for AccountStatusChanged
 type AccountStatusChanged struct {
 	// the event type
@@ -207,6 +210,14 @@ func (o *AccountStatusChanged) SetStatusChange(v AccountStatusChangedStatusChang
 }
 
 func (o AccountStatusChanged) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountStatusChanged) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.EventType) {
 		toSerialize["eventType"] = o.EventType
@@ -228,7 +239,7 @@ func (o AccountStatusChanged) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountStatusChanged) UnmarshalJSON(bytes []byte) (err error) {

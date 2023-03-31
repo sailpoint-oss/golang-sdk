@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrgConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrgConfig{}
+
 // OrgConfig DTO class for OrgConfig data accessible by customer external org admin (\"ORG_ADMIN\") users
 type OrgConfig struct {
 	// The name of the org.
@@ -378,6 +381,14 @@ func (o *OrgConfig) SetSodReportConfigs(v []ReportConfigDTO) {
 }
 
 func (o OrgConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OrgConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.OrgName) {
 		toSerialize["orgName"] = o.OrgName
@@ -414,7 +425,7 @@ func (o OrgConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *OrgConfig) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ExceptionCriteria type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExceptionCriteria{}
+
 // ExceptionCriteria struct for ExceptionCriteria
 type ExceptionCriteria struct {
 	// List of exception criteria. There is a min of 1 and max of 50 items in the list.
@@ -73,6 +76,14 @@ func (o *ExceptionCriteria) SetCriteriaList(v []ExceptionCriteriaCriteriaListInn
 }
 
 func (o ExceptionCriteria) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ExceptionCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CriteriaList) {
 		toSerialize["criteriaList"] = o.CriteriaList
@@ -82,7 +93,7 @@ func (o ExceptionCriteria) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ExceptionCriteria) UnmarshalJSON(bytes []byte) (err error) {

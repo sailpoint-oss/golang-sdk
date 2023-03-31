@@ -32,20 +32,6 @@ var (
 	// ContextOAuth2 takes an oauth2.TokenSource as authentication for the request.
 	ContextOAuth2 = contextKey("token")
 
-	// ContextBasicAuth takes BasicAuth as authentication for the request.
-	ContextBasicAuth = contextKey("basic")
-
-	// ContextAccessToken takes a string oauth2 access token as authentication for the request.
-	ContextAccessToken = contextKey("accesstoken")
-
-	ContextClientCredentials = contextKey("clientCredentials")
-
-	// ContextAPIKeys takes a string apikey as authentication for the request
-	ContextAPIKeys = contextKey("apiKeys")
-
-	// ContextHttpSignatureAuth takes HttpSignatureAuth as authentication for the request.
-	ContextHttpSignatureAuth = contextKey("httpsignature")
-
 	// ContextServerIndex uses a server configuration from the index.
 	ContextServerIndex = contextKey("serverIndex")
 
@@ -120,6 +106,12 @@ func NewConfiguration(clientId string, clientSecret string, baseURL string, toke
 			{
 				URL: baseURL,
 				Description: "This is the beta API server.",
+				Variables: map[string]ServerVariable{
+					"tenant": ServerVariable{
+						Description: "This is the name of your tenant, typically your company's name.",
+						DefaultValue: "sailpoint",
+					},
+				},
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{

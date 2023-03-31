@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputAccessRequestDynamicApproverRequestedItemsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputAccessRequestDynamicApproverRequestedItemsInner{}
+
 // TriggerInputAccessRequestDynamicApproverRequestedItemsInner struct for TriggerInputAccessRequestDynamicApproverRequestedItemsInner
 type TriggerInputAccessRequestDynamicApproverRequestedItemsInner struct {
 	// The unique ID of the access item.
@@ -235,22 +238,22 @@ func (o *TriggerInputAccessRequestDynamicApproverRequestedItemsInner) UnsetComme
 }
 
 func (o TriggerInputAccessRequestDynamicApproverRequestedItemsInner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputAccessRequestDynamicApproverRequestedItemsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["operation"] = o.Operation
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["operation"] = o.Operation
 	if o.Comment.IsSet() {
 		toSerialize["comment"] = o.Comment.Get()
 	}
@@ -259,7 +262,7 @@ func (o TriggerInputAccessRequestDynamicApproverRequestedItemsInner) MarshalJSON
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputAccessRequestDynamicApproverRequestedItemsInner) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GetOrgSettings200ResponseApprovalConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetOrgSettings200ResponseApprovalConfig{}
+
 // GetOrgSettings200ResponseApprovalConfig struct for GetOrgSettings200ResponseApprovalConfig
 type GetOrgSettings200ResponseApprovalConfig struct {
 	DaysTillEscalation int32 `json:"daysTillEscalation"`
@@ -143,25 +146,25 @@ func (o *GetOrgSettings200ResponseApprovalConfig) SetFallbackApprover(v string) 
 }
 
 func (o GetOrgSettings200ResponseApprovalConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o GetOrgSettings200ResponseApprovalConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["daysTillEscalation"] = o.DaysTillEscalation
-	}
-	if true {
-		toSerialize["daysBetweenReminders"] = o.DaysBetweenReminders
-	}
-	if true {
-		toSerialize["maxReminders"] = o.MaxReminders
-	}
-	if true {
-		toSerialize["fallbackApprover"] = o.FallbackApprover
-	}
+	toSerialize["daysTillEscalation"] = o.DaysTillEscalation
+	toSerialize["daysBetweenReminders"] = o.DaysBetweenReminders
+	toSerialize["maxReminders"] = o.MaxReminders
+	toSerialize["fallbackApprover"] = o.FallbackApprover
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *GetOrgSettings200ResponseApprovalConfig) UnmarshalJSON(bytes []byte) (err error) {

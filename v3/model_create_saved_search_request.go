@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the CreateSavedSearchRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateSavedSearchRequest{}
 
 // CreateSavedSearchRequest struct for CreateSavedSearchRequest
 type CreateSavedSearchRequest struct {
@@ -444,6 +447,14 @@ func (o *CreateSavedSearchRequest) UnsetFilters() {
 }
 
 func (o CreateSavedSearchRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CreateSavedSearchRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -460,15 +471,11 @@ func (o CreateSavedSearchRequest) MarshalJSON() ([]byte, error) {
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if true {
-		toSerialize["indices"] = o.Indices
-	}
+	toSerialize["indices"] = o.Indices
 	if !isNil(o.Columns) {
 		toSerialize["columns"] = o.Columns
 	}
-	if true {
-		toSerialize["query"] = o.Query
-	}
+	toSerialize["query"] = o.Query
 	if o.Fields != nil {
 		toSerialize["fields"] = o.Fields
 	}
@@ -483,7 +490,7 @@ func (o CreateSavedSearchRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CreateSavedSearchRequest) UnmarshalJSON(bytes []byte) (err error) {

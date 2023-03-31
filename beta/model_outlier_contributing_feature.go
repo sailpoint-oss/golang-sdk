@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OutlierContributingFeature type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OutlierContributingFeature{}
+
 // OutlierContributingFeature struct for OutlierContributingFeature
 type OutlierContributingFeature struct {
 	// The name of the feature
@@ -275,6 +278,14 @@ func (o *OutlierContributingFeature) SetTranslationMessages(v OutlierFeatureTran
 }
 
 func (o OutlierContributingFeature) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OutlierContributingFeature) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -302,7 +313,7 @@ func (o OutlierContributingFeature) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *OutlierContributingFeature) UnmarshalJSON(bytes []byte) (err error) {

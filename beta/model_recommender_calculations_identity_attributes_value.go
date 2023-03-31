@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RecommenderCalculationsIdentityAttributesValue type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RecommenderCalculationsIdentityAttributesValue{}
+
 // RecommenderCalculationsIdentityAttributesValue struct for RecommenderCalculationsIdentityAttributesValue
 type RecommenderCalculationsIdentityAttributesValue struct {
 	Value *string `json:"value,omitempty"`
@@ -72,6 +75,14 @@ func (o *RecommenderCalculationsIdentityAttributesValue) SetValue(v string) {
 }
 
 func (o RecommenderCalculationsIdentityAttributesValue) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RecommenderCalculationsIdentityAttributesValue) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Value) {
 		toSerialize["value"] = o.Value
@@ -81,7 +92,7 @@ func (o RecommenderCalculationsIdentityAttributesValue) MarshalJSON() ([]byte, e
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RecommenderCalculationsIdentityAttributesValue) UnmarshalJSON(bytes []byte) (err error) {

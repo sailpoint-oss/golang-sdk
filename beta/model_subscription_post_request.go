@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SubscriptionPostRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SubscriptionPostRequest{}
+
 // SubscriptionPostRequest struct for SubscriptionPostRequest
 type SubscriptionPostRequest struct {
 	// Subscription name.
@@ -329,19 +332,21 @@ func (o *SubscriptionPostRequest) SetFilter(v string) {
 }
 
 func (o SubscriptionPostRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SubscriptionPostRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if true {
-		toSerialize["triggerId"] = o.TriggerId
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["triggerId"] = o.TriggerId
+	toSerialize["type"] = o.Type
 	if !isNil(o.ResponseDeadline) {
 		toSerialize["responseDeadline"] = o.ResponseDeadline
 	}
@@ -362,7 +367,7 @@ func (o SubscriptionPostRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SubscriptionPostRequest) UnmarshalJSON(bytes []byte) (err error) {

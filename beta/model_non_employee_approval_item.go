@@ -11,9 +11,12 @@ API version: 3.1.0-beta
 package beta
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the NonEmployeeApprovalItem type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeApprovalItem{}
 
 // NonEmployeeApprovalItem struct for NonEmployeeApprovalItem
 type NonEmployeeApprovalItem struct {
@@ -343,6 +346,14 @@ func (o *NonEmployeeApprovalItem) SetNonEmployeeRequest(v NonEmployeeRequestLite
 }
 
 func (o NonEmployeeApprovalItem) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeApprovalItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -376,7 +387,7 @@ func (o NonEmployeeApprovalItem) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeApprovalItem) UnmarshalJSON(bytes []byte) (err error) {

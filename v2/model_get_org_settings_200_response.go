@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the GetOrgSettings200Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetOrgSettings200Response{}
+
 // GetOrgSettings200Response struct for GetOrgSettings200Response
 type GetOrgSettings200Response struct {
 	Id *string `json:"id,omitempty"`
@@ -1195,6 +1198,14 @@ func (o *GetOrgSettings200Response) SetSsoPartnerSource(v string) {
 }
 
 func (o GetOrgSettings200Response) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o GetOrgSettings200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -1306,7 +1317,7 @@ func (o GetOrgSettings200Response) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *GetOrgSettings200Response) UnmarshalJSON(bytes []byte) (err error) {

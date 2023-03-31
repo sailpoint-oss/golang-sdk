@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the IdentityDocumentAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityDocumentAllOf{}
+
 // IdentityDocumentAllOf struct for IdentityDocumentAllOf
 type IdentityDocumentAllOf struct {
 	// The first name of the identity
@@ -1091,6 +1094,14 @@ func (o *IdentityDocumentAllOf) SetTags(v []string) {
 }
 
 func (o IdentityDocumentAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityDocumentAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.FirstName) {
 		toSerialize["firstName"] = o.FirstName
@@ -1187,7 +1198,7 @@ func (o IdentityDocumentAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityDocumentAllOf) UnmarshalJSON(bytes []byte) (err error) {

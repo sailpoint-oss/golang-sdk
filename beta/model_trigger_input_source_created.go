@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the TriggerInputSourceCreated type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputSourceCreated{}
+
 // TriggerInputSourceCreated struct for TriggerInputSourceCreated
 type TriggerInputSourceCreated struct {
 	// The unique ID of the source.
@@ -201,31 +204,27 @@ func (o *TriggerInputSourceCreated) SetActor(v TriggerInputSourceCreatedActor) {
 }
 
 func (o TriggerInputSourceCreated) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputSourceCreated) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
-	if true {
-		toSerialize["connector"] = o.Connector
-	}
-	if true {
-		toSerialize["actor"] = o.Actor
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
+	toSerialize["created"] = o.Created
+	toSerialize["connector"] = o.Connector
+	toSerialize["actor"] = o.Actor
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputSourceCreated) UnmarshalJSON(bytes []byte) (err error) {

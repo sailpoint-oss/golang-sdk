@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ViolationContext type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ViolationContext{}
+
 // ViolationContext struct for ViolationContext
 type ViolationContext struct {
 	Policy *ViolationContextPolicy `json:"policy,omitempty"`
@@ -105,6 +108,14 @@ func (o *ViolationContext) SetConflictingAccessCriteria(v ExceptionAccessCriteri
 }
 
 func (o ViolationContext) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ViolationContext) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Policy) {
 		toSerialize["policy"] = o.Policy
@@ -117,7 +128,7 @@ func (o ViolationContext) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ViolationContext) UnmarshalJSON(bytes []byte) (err error) {

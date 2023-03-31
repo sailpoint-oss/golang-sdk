@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CampaignTemplateOwnerRef type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CampaignTemplateOwnerRef{}
+
 // CampaignTemplateOwnerRef The owner of this template, and the owner of campaigns generated from this template via a schedule. This field is automatically populated at creation time with the current user.
 type CampaignTemplateOwnerRef struct {
 	// Id of the owner
@@ -175,6 +178,14 @@ func (o *CampaignTemplateOwnerRef) SetEmail(v string) {
 }
 
 func (o CampaignTemplateOwnerRef) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CampaignTemplateOwnerRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -193,7 +204,7 @@ func (o CampaignTemplateOwnerRef) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CampaignTemplateOwnerRef) UnmarshalJSON(bytes []byte) (err error) {

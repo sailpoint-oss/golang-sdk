@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedClusterAttributes type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedClusterAttributes{}
+
 // ManagedClusterAttributes Managed Cluster Attributes for Cluster Configuration. Supported Cluster Types [sqsCluster, spConnectCluster]
 type ManagedClusterAttributes struct {
 	Queue *ManagedClusterQueue `json:"queue,omitempty"`
@@ -106,6 +109,14 @@ func (o *ManagedClusterAttributes) SetKeystore(v string) {
 }
 
 func (o ManagedClusterAttributes) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ManagedClusterAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Queue) {
 		toSerialize["queue"] = o.Queue
@@ -118,7 +129,7 @@ func (o ManagedClusterAttributes) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ManagedClusterAttributes) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentitySnapshotSummaryResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentitySnapshotSummaryResponse{}
+
 // IdentitySnapshotSummaryResponse struct for IdentitySnapshotSummaryResponse
 type IdentitySnapshotSummaryResponse struct {
 	// the date when the identity record was created
@@ -73,6 +76,14 @@ func (o *IdentitySnapshotSummaryResponse) SetSnapshot(v string) {
 }
 
 func (o IdentitySnapshotSummaryResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentitySnapshotSummaryResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Snapshot) {
 		toSerialize["snapshot"] = o.Snapshot
@@ -82,7 +93,7 @@ func (o IdentitySnapshotSummaryResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentitySnapshotSummaryResponse) UnmarshalJSON(bytes []byte) (err error) {

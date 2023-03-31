@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountRequestResult type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountRequestResult{}
+
 // AccountRequestResult struct for AccountRequestResult
 type AccountRequestResult struct {
 	Errors []string `json:"errors,omitempty"`
@@ -149,6 +152,14 @@ func (o *AccountRequestResult) UnsetTicketId() {
 }
 
 func (o AccountRequestResult) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountRequestResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
@@ -164,7 +175,7 @@ func (o AccountRequestResult) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountRequestResult) UnmarshalJSON(bytes []byte) (err error) {

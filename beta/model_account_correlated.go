@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountCorrelated type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountCorrelated{}
+
 // AccountCorrelated struct for AccountCorrelated
 type AccountCorrelated struct {
 	Identity TriggerInputAccountCorrelatedIdentity `json:"identity"`
@@ -178,19 +181,19 @@ func (o *AccountCorrelated) SetEntitlementCount(v int32) {
 }
 
 func (o AccountCorrelated) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountCorrelated) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["identity"] = o.Identity
-	}
-	if true {
-		toSerialize["source"] = o.Source
-	}
-	if true {
-		toSerialize["account"] = o.Account
-	}
-	if true {
-		toSerialize["attributes"] = o.Attributes
-	}
+	toSerialize["identity"] = o.Identity
+	toSerialize["source"] = o.Source
+	toSerialize["account"] = o.Account
+	toSerialize["attributes"] = o.Attributes
 	if !isNil(o.EntitlementCount) {
 		toSerialize["entitlementCount"] = o.EntitlementCount
 	}
@@ -199,7 +202,7 @@ func (o AccountCorrelated) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountCorrelated) UnmarshalJSON(bytes []byte) (err error) {

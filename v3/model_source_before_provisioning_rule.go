@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SourceBeforeProvisioningRule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceBeforeProvisioningRule{}
+
 // SourceBeforeProvisioningRule Rule that runs on the CCG and allows for customization of provisioning plans before the connector is called.
 type SourceBeforeProvisioningRule struct {
 	// The type of object being referenced
@@ -141,6 +144,14 @@ func (o *SourceBeforeProvisioningRule) SetName(v string) {
 }
 
 func (o SourceBeforeProvisioningRule) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SourceBeforeProvisioningRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o SourceBeforeProvisioningRule) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SourceBeforeProvisioningRule) UnmarshalJSON(bytes []byte) (err error) {

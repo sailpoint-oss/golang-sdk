@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MultiPolicyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MultiPolicyRequest{}
+
 // MultiPolicyRequest struct for MultiPolicyRequest
 type MultiPolicyRequest struct {
 	// Multi-policy report will be run for this list of ids
@@ -73,6 +76,14 @@ func (o *MultiPolicyRequest) SetFilteredPolicyList(v []string) {
 }
 
 func (o MultiPolicyRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o MultiPolicyRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.FilteredPolicyList) {
 		toSerialize["filteredPolicyList"] = o.FilteredPolicyList
@@ -82,7 +93,7 @@ func (o MultiPolicyRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *MultiPolicyRequest) UnmarshalJSON(bytes []byte) (err error) {

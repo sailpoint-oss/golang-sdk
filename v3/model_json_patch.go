@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JsonPatch type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JsonPatch{}
+
 // JsonPatch A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)
 type JsonPatch struct {
 	// Operations to be applied
@@ -73,6 +76,14 @@ func (o *JsonPatch) SetOperations(v []JsonPatchOperation) {
 }
 
 func (o JsonPatch) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o JsonPatch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Operations) {
 		toSerialize["operations"] = o.Operations
@@ -82,7 +93,7 @@ func (o JsonPatch) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *JsonPatch) UnmarshalJSON(bytes []byte) (err error) {

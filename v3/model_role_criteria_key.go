@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleCriteriaKey type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleCriteriaKey{}
+
 // RoleCriteriaKey Refers to a specific Identity attribute, Account attibute, or Entitlement used in Role membership criteria
 type RoleCriteriaKey struct {
 	Type RoleCriteriaKeyType `json:"type"`
@@ -136,13 +139,17 @@ func (o *RoleCriteriaKey) UnsetSourceId() {
 }
 
 func (o RoleCriteriaKey) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleCriteriaKey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["property"] = o.Property
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["property"] = o.Property
 	if o.SourceId.IsSet() {
 		toSerialize["sourceId"] = o.SourceId.Get()
 	}
@@ -151,7 +158,7 @@ func (o RoleCriteriaKey) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleCriteriaKey) UnmarshalJSON(bytes []byte) (err error) {

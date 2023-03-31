@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Subscription type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Subscription{}
+
 // Subscription struct for Subscription
 type Subscription struct {
 	// Subscription ID.
@@ -365,37 +368,31 @@ func (o *Subscription) SetFilter(v string) {
 }
 
 func (o Subscription) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Subscription) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if true {
-		toSerialize["triggerId"] = o.TriggerId
-	}
-	if true {
-		toSerialize["triggerName"] = o.TriggerName
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["responseDeadline"] = o.ResponseDeadline
-	}
+	toSerialize["triggerId"] = o.TriggerId
+	toSerialize["triggerName"] = o.TriggerName
+	toSerialize["type"] = o.Type
+	toSerialize["responseDeadline"] = o.ResponseDeadline
 	if !isNil(o.HttpConfig) {
 		toSerialize["httpConfig"] = o.HttpConfig
 	}
 	if !isNil(o.EventBridgeConfig) {
 		toSerialize["eventBridgeConfig"] = o.EventBridgeConfig
 	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
+	toSerialize["enabled"] = o.Enabled
 	if !isNil(o.Filter) {
 		toSerialize["filter"] = o.Filter
 	}
@@ -404,7 +401,7 @@ func (o Subscription) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Subscription) UnmarshalJSON(bytes []byte) (err error) {

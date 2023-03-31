@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SodViolationContextConflictingAccessCriteriaLeftCriteria type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SodViolationContextConflictingAccessCriteriaLeftCriteria{}
+
 // SodViolationContextConflictingAccessCriteriaLeftCriteria struct for SodViolationContextConflictingAccessCriteriaLeftCriteria
 type SodViolationContextConflictingAccessCriteriaLeftCriteria struct {
 	CriteriaList []SodExemptCriteria `json:"criteriaList,omitempty"`
@@ -72,6 +75,14 @@ func (o *SodViolationContextConflictingAccessCriteriaLeftCriteria) SetCriteriaLi
 }
 
 func (o SodViolationContextConflictingAccessCriteriaLeftCriteria) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SodViolationContextConflictingAccessCriteriaLeftCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CriteriaList) {
 		toSerialize["criteriaList"] = o.CriteriaList
@@ -81,7 +92,7 @@ func (o SodViolationContextConflictingAccessCriteriaLeftCriteria) MarshalJSON() 
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SodViolationContextConflictingAccessCriteriaLeftCriteria) UnmarshalJSON(bytes []byte) (err error) {

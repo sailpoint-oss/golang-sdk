@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConflictingAccessCriteria type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConflictingAccessCriteria{}
+
 // ConflictingAccessCriteria struct for ConflictingAccessCriteria
 type ConflictingAccessCriteria struct {
 	LeftCriteria *AccessCriteria `json:"leftCriteria,omitempty"`
@@ -105,6 +108,14 @@ func (o *ConflictingAccessCriteria) SetRightCriteria(v AccessCriteria) {
 }
 
 func (o ConflictingAccessCriteria) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ConflictingAccessCriteria) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.LeftCriteria) {
 		toSerialize["leftCriteria"] = o.LeftCriteria
@@ -117,7 +128,7 @@ func (o ConflictingAccessCriteria) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ConflictingAccessCriteria) UnmarshalJSON(bytes []byte) (err error) {

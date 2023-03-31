@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ExportOptions type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExportOptions{}
+
 // ExportOptions struct for ExportOptions
 type ExportOptions struct {
 	// Object type names to be excluded from an sp-config export command.
@@ -141,6 +144,14 @@ func (o *ExportOptions) SetObjectOptions(v map[string]ObjectExportImportOptions)
 }
 
 func (o ExportOptions) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ExportOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ExcludeTypes) {
 		toSerialize["excludeTypes"] = o.ExcludeTypes
@@ -156,7 +167,7 @@ func (o ExportOptions) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ExportOptions) UnmarshalJSON(bytes []byte) (err error) {

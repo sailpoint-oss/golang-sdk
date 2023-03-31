@@ -11,9 +11,12 @@ API version: 3.1.0-beta
 package beta
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the Workflow type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Workflow{}
 
 // Workflow struct for Workflow
 type Workflow struct {
@@ -415,6 +418,14 @@ func (o *Workflow) SetTrigger(v WorkflowTrigger) {
 }
 
 func (o Workflow) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Workflow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -454,7 +465,7 @@ func (o Workflow) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Workflow) UnmarshalJSON(bytes []byte) (err error) {

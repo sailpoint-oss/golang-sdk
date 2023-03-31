@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Entitlement type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Entitlement{}
+
 // Entitlement struct for Entitlement
 type Entitlement struct {
 	// The entitlement id
@@ -548,6 +551,14 @@ func (o *Entitlement) SetOwner(v OwnerReferenceDto) {
 }
 
 func (o Entitlement) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Entitlement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -599,7 +610,7 @@ func (o Entitlement) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Entitlement) UnmarshalJSON(bytes []byte) (err error) {

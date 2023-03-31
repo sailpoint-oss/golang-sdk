@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMiningPotentialRoleProvisionRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningPotentialRoleProvisionRequest{}
+
 // RoleMiningPotentialRoleProvisionRequest struct for RoleMiningPotentialRoleProvisionRequest
 type RoleMiningPotentialRoleProvisionRequest struct {
 	// Name of the new role being created
@@ -141,6 +144,14 @@ func (o *RoleMiningPotentialRoleProvisionRequest) SetOwnerId(v string) {
 }
 
 func (o RoleMiningPotentialRoleProvisionRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningPotentialRoleProvisionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.RoleName) {
 		toSerialize["roleName"] = o.RoleName
@@ -156,7 +167,7 @@ func (o RoleMiningPotentialRoleProvisionRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningPotentialRoleProvisionRequest) UnmarshalJSON(bytes []byte) (err error) {

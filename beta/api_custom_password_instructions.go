@@ -125,8 +125,8 @@ func (a *CustomPasswordInstructionsApiService) CreateCustomPasswordInstructionsE
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -136,8 +136,8 @@ func (a *CustomPasswordInstructionsApiService) CreateCustomPasswordInstructionsE
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -147,8 +147,8 @@ func (a *CustomPasswordInstructionsApiService) CreateCustomPasswordInstructionsE
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -213,14 +213,14 @@ func (a *CustomPasswordInstructionsApiService) DeleteCustomPasswordInstructionsE
 	}
 
 	localVarPath := localBasePath + "/custom-password-instructions/{pageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"pageId"+"}", url.PathEscape(parameterToString(r.pageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pageId"+"}", url.PathEscape(parameterValueToString(r.pageId, "pageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.locale != nil {
-		localVarQueryParams.Add("locale", parameterToString(*r.locale, ""))
+		parameterAddToQuery(localVarQueryParams, "locale", r.locale, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -268,8 +268,8 @@ func (a *CustomPasswordInstructionsApiService) DeleteCustomPasswordInstructionsE
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -279,8 +279,8 @@ func (a *CustomPasswordInstructionsApiService) DeleteCustomPasswordInstructionsE
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -290,8 +290,8 @@ func (a *CustomPasswordInstructionsApiService) DeleteCustomPasswordInstructionsE
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -301,8 +301,8 @@ func (a *CustomPasswordInstructionsApiService) DeleteCustomPasswordInstructionsE
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -360,14 +360,14 @@ func (a *CustomPasswordInstructionsApiService) GetCustomPasswordInstructionsExec
 	}
 
 	localVarPath := localBasePath + "/custom-password-instructions/{pageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"pageId"+"}", url.PathEscape(parameterToString(r.pageId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pageId"+"}", url.PathEscape(parameterValueToString(r.pageId, "pageId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.locale != nil {
-		localVarQueryParams.Add("locale", parameterToString(*r.locale, ""))
+		parameterAddToQuery(localVarQueryParams, "locale", r.locale, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -415,8 +415,8 @@ func (a *CustomPasswordInstructionsApiService) GetCustomPasswordInstructionsExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -426,8 +426,8 @@ func (a *CustomPasswordInstructionsApiService) GetCustomPasswordInstructionsExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -437,8 +437,8 @@ func (a *CustomPasswordInstructionsApiService) GetCustomPasswordInstructionsExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -448,8 +448,8 @@ func (a *CustomPasswordInstructionsApiService) GetCustomPasswordInstructionsExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

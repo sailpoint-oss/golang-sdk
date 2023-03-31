@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CertificationDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificationDto{}
+
 // CertificationDto struct for CertificationDto
 type CertificationDto struct {
 	CampaignRef CampaignReference `json:"campaignRef"`
@@ -411,52 +414,38 @@ func (o *CertificationDto) SetEntitiesTotal(v int32) {
 }
 
 func (o CertificationDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CertificationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["campaignRef"] = o.CampaignRef
-	}
-	if true {
-		toSerialize["phase"] = o.Phase
-	}
-	if true {
-		toSerialize["due"] = o.Due
-	}
-	if true {
-		toSerialize["signed"] = o.Signed
-	}
-	if true {
-		toSerialize["reviewer"] = o.Reviewer
-	}
+	toSerialize["campaignRef"] = o.CampaignRef
+	toSerialize["phase"] = o.Phase
+	toSerialize["due"] = o.Due
+	toSerialize["signed"] = o.Signed
+	toSerialize["reviewer"] = o.Reviewer
 	if !isNil(o.Reassignment) {
 		toSerialize["reassignment"] = o.Reassignment
 	}
-	if true {
-		toSerialize["hasErrors"] = o.HasErrors
-	}
+	toSerialize["hasErrors"] = o.HasErrors
 	if o.ErrorMessage.IsSet() {
 		toSerialize["errorMessage"] = o.ErrorMessage.Get()
 	}
-	if true {
-		toSerialize["completed"] = o.Completed
-	}
-	if true {
-		toSerialize["decisionsMade"] = o.DecisionsMade
-	}
-	if true {
-		toSerialize["decisionsTotal"] = o.DecisionsTotal
-	}
-	if true {
-		toSerialize["entitiesCompleted"] = o.EntitiesCompleted
-	}
-	if true {
-		toSerialize["entitiesTotal"] = o.EntitiesTotal
-	}
+	toSerialize["completed"] = o.Completed
+	toSerialize["decisionsMade"] = o.DecisionsMade
+	toSerialize["decisionsTotal"] = o.DecisionsTotal
+	toSerialize["entitiesCompleted"] = o.EntitiesCompleted
+	toSerialize["entitiesTotal"] = o.EntitiesTotal
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CertificationDto) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TypeAheadQuery type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TypeAheadQuery{}
+
 // TypeAheadQuery Query parameters used to construct an Elasticsearch type ahead query object.  The typeAheadQuery performs a search for top values beginning with the typed values. For example, typing \"Jo\" results in top hits matching \"Jo.\" Typing \"Job\" results in top hits matching \"Job.\" 
 type TypeAheadQuery struct {
 	// The type ahead query string used to construct a phrase prefix match query.
@@ -165,13 +168,17 @@ func (o *TypeAheadQuery) SetMaxExpansions(v int32) {
 }
 
 func (o TypeAheadQuery) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TypeAheadQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["query"] = o.Query
-	}
-	if true {
-		toSerialize["field"] = o.Field
-	}
+	toSerialize["query"] = o.Query
+	toSerialize["field"] = o.Field
 	if !isNil(o.NestedType) {
 		toSerialize["nestedType"] = o.NestedType
 	}
@@ -183,7 +190,7 @@ func (o TypeAheadQuery) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TypeAheadQuery) UnmarshalJSON(bytes []byte) (err error) {

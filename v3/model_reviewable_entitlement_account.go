@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ReviewableEntitlementAccount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReviewableEntitlementAccount{}
+
 // ReviewableEntitlementAccount Information about the status of the entitlement
 type ReviewableEntitlementAccount struct {
 	// The native identity for this account
@@ -351,6 +354,14 @@ func (o *ReviewableEntitlementAccount) UnsetModified() {
 }
 
 func (o ReviewableEntitlementAccount) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ReviewableEntitlementAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.NativeIdentity) {
 		toSerialize["nativeIdentity"] = o.NativeIdentity
@@ -381,7 +392,7 @@ func (o ReviewableEntitlementAccount) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ReviewableEntitlementAccount) UnmarshalJSON(bytes []byte) (err error) {

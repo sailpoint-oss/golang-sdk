@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AccountDocumentAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountDocumentAllOf{}
+
 // AccountDocumentAllOf struct for AccountDocumentAllOf
 type AccountDocumentAllOf struct {
 	// A date-time in ISO-8601 format
@@ -285,6 +288,14 @@ func (o *AccountDocumentAllOf) SetTags(v []string) {
 }
 
 func (o AccountDocumentAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountDocumentAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
@@ -312,7 +323,7 @@ func (o AccountDocumentAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountDocumentAllOf) UnmarshalJSON(bytes []byte) (err error) {

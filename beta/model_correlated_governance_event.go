@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CorrelatedGovernanceEvent type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CorrelatedGovernanceEvent{}
+
 // CorrelatedGovernanceEvent struct for CorrelatedGovernanceEvent
 type CorrelatedGovernanceEvent struct {
 	// The name of the governance event, such as the certification name or access request ID.
@@ -276,6 +279,14 @@ func (o *CorrelatedGovernanceEvent) SetDecisionMaker(v CertifierResponse) {
 }
 
 func (o CorrelatedGovernanceEvent) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CorrelatedGovernanceEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -303,7 +314,7 @@ func (o CorrelatedGovernanceEvent) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CorrelatedGovernanceEvent) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PostExternalExecuteWorkflow200Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PostExternalExecuteWorkflow200Response{}
+
 // PostExternalExecuteWorkflow200Response struct for PostExternalExecuteWorkflow200Response
 type PostExternalExecuteWorkflow200Response struct {
 	// The workflow execution id
@@ -107,6 +110,14 @@ func (o *PostExternalExecuteWorkflow200Response) SetMessage(v string) {
 }
 
 func (o PostExternalExecuteWorkflow200Response) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PostExternalExecuteWorkflow200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.WorkflowExecutionId) {
 		toSerialize["workflowExecutionId"] = o.WorkflowExecutionId
@@ -119,7 +130,7 @@ func (o PostExternalExecuteWorkflow200Response) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PostExternalExecuteWorkflow200Response) UnmarshalJSON(bytes []byte) (err error) {

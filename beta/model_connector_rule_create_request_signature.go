@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectorRuleCreateRequestSignature type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectorRuleCreateRequestSignature{}
+
 // ConnectorRuleCreateRequestSignature The rule's function signature. Describes the rule's input arguments and output (if any)
 type ConnectorRuleCreateRequestSignature struct {
 	Input []Argument `json:"input"`
@@ -98,10 +101,16 @@ func (o *ConnectorRuleCreateRequestSignature) SetOutput(v Argument) {
 }
 
 func (o ConnectorRuleCreateRequestSignature) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["input"] = o.Input
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ConnectorRuleCreateRequestSignature) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["input"] = o.Input
 	if !isNil(o.Output) {
 		toSerialize["output"] = o.Output
 	}
@@ -110,7 +119,7 @@ func (o ConnectorRuleCreateRequestSignature) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ConnectorRuleCreateRequestSignature) UnmarshalJSON(bytes []byte) (err error) {

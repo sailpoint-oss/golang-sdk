@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectorRuleValidationResponseDetailsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectorRuleValidationResponseDetailsInner{}
+
 // ConnectorRuleValidationResponseDetailsInner CodeErrorDetail
 type ConnectorRuleValidationResponseDetailsInner struct {
 	// The line number where the issue occurred
@@ -127,13 +130,17 @@ func (o *ConnectorRuleValidationResponseDetailsInner) SetMesssage(v string) {
 }
 
 func (o ConnectorRuleValidationResponseDetailsInner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ConnectorRuleValidationResponseDetailsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["line"] = o.Line
-	}
-	if true {
-		toSerialize["column"] = o.Column
-	}
+	toSerialize["line"] = o.Line
+	toSerialize["column"] = o.Column
 	if !isNil(o.Messsage) {
 		toSerialize["messsage"] = o.Messsage
 	}
@@ -142,7 +149,7 @@ func (o ConnectorRuleValidationResponseDetailsInner) MarshalJSON() ([]byte, erro
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ConnectorRuleValidationResponseDetailsInner) UnmarshalJSON(bytes []byte) (err error) {

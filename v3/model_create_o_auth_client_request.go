@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreateOAuthClientRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateOAuthClientRequest{}
+
 // CreateOAuthClientRequest struct for CreateOAuthClientRequest
 type CreateOAuthClientRequest struct {
 	// The name of the business the API Client should belong to
@@ -533,6 +536,14 @@ func (o *CreateOAuthClientRequest) SetScope(v []string) {
 }
 
 func (o CreateOAuthClientRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CreateOAuthClientRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.BusinessName.IsSet() {
 		toSerialize["businessName"] = o.BusinessName.Get()
@@ -540,15 +551,9 @@ func (o CreateOAuthClientRequest) MarshalJSON() ([]byte, error) {
 	if o.HomepageUrl.IsSet() {
 		toSerialize["homepageUrl"] = o.HomepageUrl.Get()
 	}
-	if true {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if true {
-		toSerialize["description"] = o.Description.Get()
-	}
-	if true {
-		toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
-	}
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["description"] = o.Description.Get()
+	toSerialize["accessTokenValiditySeconds"] = o.AccessTokenValiditySeconds
 	if !isNil(o.RefreshTokenValiditySeconds) {
 		toSerialize["refreshTokenValiditySeconds"] = o.RefreshTokenValiditySeconds
 	}
@@ -558,18 +563,14 @@ func (o CreateOAuthClientRequest) MarshalJSON() ([]byte, error) {
 	if o.GrantTypes != nil {
 		toSerialize["grantTypes"] = o.GrantTypes
 	}
-	if true {
-		toSerialize["accessType"] = o.AccessType
-	}
+	toSerialize["accessType"] = o.AccessType
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
 	if !isNil(o.Internal) {
 		toSerialize["internal"] = o.Internal
 	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
+	toSerialize["enabled"] = o.Enabled
 	if !isNil(o.StrongAuthSupported) {
 		toSerialize["strongAuthSupported"] = o.StrongAuthSupported
 	}
@@ -584,7 +585,7 @@ func (o CreateOAuthClientRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CreateOAuthClientRequest) UnmarshalJSON(bytes []byte) (err error) {

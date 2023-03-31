@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CommonAccessResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CommonAccessResponse{}
+
 // CommonAccessResponse struct for CommonAccessResponse
 type CommonAccessResponse struct {
 	Access *CommonAccessItemAccess `json:"access,omitempty"`
@@ -207,6 +210,14 @@ func (o *CommonAccessResponse) SetLastReviewed(v time.Time) {
 }
 
 func (o CommonAccessResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CommonAccessResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Access) {
 		toSerialize["access"] = o.Access
@@ -214,21 +225,17 @@ func (o CommonAccessResponse) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.LastUpdated) {
-		toSerialize["lastUpdated"] = o.LastUpdated
-	}
+	// skip: lastUpdated is readOnly
 	if !isNil(o.ReviewedByUser) {
 		toSerialize["reviewedByUser"] = o.ReviewedByUser
 	}
-	if !isNil(o.LastReviewed) {
-		toSerialize["lastReviewed"] = o.LastReviewed
-	}
+	// skip: lastReviewed is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CommonAccessResponse) UnmarshalJSON(bytes []byte) (err error) {

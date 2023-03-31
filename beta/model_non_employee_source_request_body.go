@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NonEmployeeSourceRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeSourceRequestBody{}
+
 // NonEmployeeSourceRequestBody struct for NonEmployeeSourceRequestBody
 type NonEmployeeSourceRequestBody struct {
 	// Name of non-employee source.
@@ -221,16 +224,18 @@ func (o *NonEmployeeSourceRequestBody) SetAccountManagers(v []NonEmployeeIdnUser
 }
 
 func (o NonEmployeeSourceRequestBody) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeSourceRequestBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["owner"] = o.Owner
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["description"] = o.Description
+	toSerialize["owner"] = o.Owner
 	if !isNil(o.ManagementWorkgroup) {
 		toSerialize["managementWorkgroup"] = o.ManagementWorkgroup
 	}
@@ -245,7 +250,7 @@ func (o NonEmployeeSourceRequestBody) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeSourceRequestBody) UnmarshalJSON(bytes []byte) (err error) {

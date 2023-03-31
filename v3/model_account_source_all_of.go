@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountSourceAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountSourceAllOf{}
+
 // AccountSourceAllOf struct for AccountSourceAllOf
 type AccountSourceAllOf struct {
 	// the type of source returned
@@ -73,6 +76,14 @@ func (o *AccountSourceAllOf) SetType(v string) {
 }
 
 func (o AccountSourceAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountSourceAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -82,7 +93,7 @@ func (o AccountSourceAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountSourceAllOf) UnmarshalJSON(bytes []byte) (err error) {

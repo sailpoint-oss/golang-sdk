@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConfigObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConfigObject{}
+
 // ConfigObject Config export and import format for individual object configurations.
 type ConfigObject struct {
 	// Current version of configuration object.
@@ -140,6 +143,14 @@ func (o *ConfigObject) SetObject(v map[string]interface{}) {
 }
 
 func (o ConfigObject) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ConfigObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Version) {
 		toSerialize["version"] = o.Version
@@ -155,7 +166,7 @@ func (o ConfigObject) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ConfigObject) UnmarshalJSON(bytes []byte) (err error) {

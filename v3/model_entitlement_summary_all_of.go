@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EntitlementSummaryAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementSummaryAllOf{}
+
 // EntitlementSummaryAllOf struct for EntitlementSummaryAllOf
 type EntitlementSummaryAllOf struct {
 	Source *Reference `json:"source,omitempty"`
@@ -204,6 +207,14 @@ func (o *EntitlementSummaryAllOf) SetStandalone(v bool) {
 }
 
 func (o EntitlementSummaryAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EntitlementSummaryAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Source) {
 		toSerialize["source"] = o.Source
@@ -225,7 +236,7 @@ func (o EntitlementSummaryAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EntitlementSummaryAllOf) UnmarshalJSON(bytes []byte) (err error) {

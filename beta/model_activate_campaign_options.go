@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ActivateCampaignOptions type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ActivateCampaignOptions{}
+
 // ActivateCampaignOptions struct for ActivateCampaignOptions
 type ActivateCampaignOptions struct {
 	// The timezone must be in a valid ISO 8601 format. Timezones in ISO 8601 are represented as UTC (represented as 'Z') or as an offset from UTC. The offset format can be +/-hh:mm, +/-hhmm, or +/-hh.
@@ -77,6 +80,14 @@ func (o *ActivateCampaignOptions) SetTimeZone(v string) {
 }
 
 func (o ActivateCampaignOptions) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ActivateCampaignOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.TimeZone) {
 		toSerialize["timeZone"] = o.TimeZone
@@ -86,7 +97,7 @@ func (o ActivateCampaignOptions) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ActivateCampaignOptions) UnmarshalJSON(bytes []byte) (err error) {

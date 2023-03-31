@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EntitlementBulkUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementBulkUpdateRequest{}
+
 // EntitlementBulkUpdateRequest struct for EntitlementBulkUpdateRequest
 type EntitlementBulkUpdateRequest struct {
 	// List of entitlement ids to update
@@ -92,19 +95,23 @@ func (o *EntitlementBulkUpdateRequest) SetJsonPatch(v []JsonPatchOperation) {
 }
 
 func (o EntitlementBulkUpdateRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EntitlementBulkUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["entitlementIds"] = o.EntitlementIds
-	}
-	if true {
-		toSerialize["jsonPatch"] = o.JsonPatch
-	}
+	toSerialize["entitlementIds"] = o.EntitlementIds
+	toSerialize["jsonPatch"] = o.JsonPatch
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EntitlementBulkUpdateRequest) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SetLifecycleStateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SetLifecycleStateRequest{}
+
 // SetLifecycleStateRequest struct for SetLifecycleStateRequest
 type SetLifecycleStateRequest struct {
 	// The ID of the lifecycle state to set
@@ -73,6 +76,14 @@ func (o *SetLifecycleStateRequest) SetLifecycleStateId(v string) {
 }
 
 func (o SetLifecycleStateRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SetLifecycleStateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.LifecycleStateId) {
 		toSerialize["lifecycleStateId"] = o.LifecycleStateId
@@ -82,7 +93,7 @@ func (o SetLifecycleStateRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SetLifecycleStateRequest) UnmarshalJSON(bytes []byte) (err error) {

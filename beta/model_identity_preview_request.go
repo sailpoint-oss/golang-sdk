@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityPreviewRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityPreviewRequest{}
+
 // IdentityPreviewRequest struct for IdentityPreviewRequest
 type IdentityPreviewRequest struct {
 	IdentityId *string `json:"identityId,omitempty"`
@@ -105,6 +108,14 @@ func (o *IdentityPreviewRequest) SetIdentityAttributeConfig(v IdentityAttributeC
 }
 
 func (o IdentityPreviewRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityPreviewRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
@@ -117,7 +128,7 @@ func (o IdentityPreviewRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityPreviewRequest) UnmarshalJSON(bytes []byte) (err error) {

@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the IdentityDocument type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityDocument{}
 
 // IdentityDocument Identity
 type IdentityDocument struct {
@@ -1171,16 +1174,18 @@ func (o *IdentityDocument) SetTags(v []string) {
 }
 
 func (o IdentityDocument) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["_type"] = o.Type
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["_type"] = o.Type
 	if !isNil(o.DisplayName) {
 		toSerialize["displayName"] = o.DisplayName
 	}
@@ -1276,7 +1281,7 @@ func (o IdentityDocument) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityDocument) UnmarshalJSON(bytes []byte) (err error) {

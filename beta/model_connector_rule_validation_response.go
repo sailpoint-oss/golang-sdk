@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectorRuleValidationResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectorRuleValidationResponse{}
+
 // ConnectorRuleValidationResponse ConnectorRuleValidationResponse
 type ConnectorRuleValidationResponse struct {
 	State string `json:"state"`
@@ -91,19 +94,23 @@ func (o *ConnectorRuleValidationResponse) SetDetails(v []ConnectorRuleValidation
 }
 
 func (o ConnectorRuleValidationResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ConnectorRuleValidationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["state"] = o.State
-	}
-	if true {
-		toSerialize["details"] = o.Details
-	}
+	toSerialize["state"] = o.State
+	toSerialize["details"] = o.Details
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ConnectorRuleValidationResponse) UnmarshalJSON(bytes []byte) (err error) {

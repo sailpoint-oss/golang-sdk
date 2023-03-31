@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Certification type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Certification{}
+
 // Certification struct for Certification
 type Certification struct {
 	// id of the certification
@@ -644,6 +647,14 @@ func (o *Certification) SetPhase(v CertificationPhase) {
 }
 
 func (o Certification) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Certification) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -701,7 +712,7 @@ func (o Certification) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Certification) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMiningSessionScope type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningSessionScope{}
+
 // RoleMiningSessionScope struct for RoleMiningSessionScope
 type RoleMiningSessionScope struct {
 	// The list of identities for this role mining session.
@@ -141,6 +144,14 @@ func (o *RoleMiningSessionScope) SetAttributeFilterCriteria(v []map[string]inter
 }
 
 func (o RoleMiningSessionScope) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningSessionScope) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.IdentityIds) {
 		toSerialize["identityIds"] = o.IdentityIds
@@ -156,7 +167,7 @@ func (o RoleMiningSessionScope) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningSessionScope) UnmarshalJSON(bytes []byte) (err error) {

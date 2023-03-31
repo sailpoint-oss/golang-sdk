@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NonEmployeeRequestWithoutApprovalItemAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeRequestWithoutApprovalItemAllOf{}
+
 // NonEmployeeRequestWithoutApprovalItemAllOf struct for NonEmployeeRequestWithoutApprovalItemAllOf
 type NonEmployeeRequestWithoutApprovalItemAllOf struct {
 	// Requested identity account name.
@@ -548,6 +551,14 @@ func (o *NonEmployeeRequestWithoutApprovalItemAllOf) SetCreated(v time.Time) {
 }
 
 func (o NonEmployeeRequestWithoutApprovalItemAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeRequestWithoutApprovalItemAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccountName) {
 		toSerialize["accountName"] = o.AccountName
@@ -599,7 +610,7 @@ func (o NonEmployeeRequestWithoutApprovalItemAllOf) MarshalJSON() ([]byte, error
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeRequestWithoutApprovalItemAllOf) UnmarshalJSON(bytes []byte) (err error) {

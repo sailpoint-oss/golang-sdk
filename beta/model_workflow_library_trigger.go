@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WorkflowLibraryTrigger type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkflowLibraryTrigger{}
+
 // WorkflowLibraryTrigger struct for WorkflowLibraryTrigger
 type WorkflowLibraryTrigger struct {
 	// Trigger ID. This is a static namespaced ID for the trigger.
@@ -243,6 +246,14 @@ func (o *WorkflowLibraryTrigger) SetFormFields(v []WorkflowLibraryFormFields) {
 }
 
 func (o WorkflowLibraryTrigger) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkflowLibraryTrigger) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -267,7 +278,7 @@ func (o WorkflowLibraryTrigger) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkflowLibraryTrigger) UnmarshalJSON(bytes []byte) (err error) {

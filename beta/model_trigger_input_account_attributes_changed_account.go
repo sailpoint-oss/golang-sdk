@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputAccountAttributesChangedAccount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputAccountAttributesChangedAccount{}
+
 // TriggerInputAccountAttributesChangedAccount Details of the account where the attributes changed.
 type TriggerInputAccountAttributesChangedAccount struct {
 	// SailPoint generated unique identifier.
@@ -176,28 +179,26 @@ func (o *TriggerInputAccountAttributesChangedAccount) SetType(v map[string]inter
 }
 
 func (o TriggerInputAccountAttributesChangedAccount) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputAccountAttributesChangedAccount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["uuid"] = o.Uuid.Get()
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["nativeIdentity"] = o.NativeIdentity
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["uuid"] = o.Uuid.Get()
+	toSerialize["name"] = o.Name
+	toSerialize["nativeIdentity"] = o.NativeIdentity
+	toSerialize["type"] = o.Type
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputAccountAttributesChangedAccount) UnmarshalJSON(bytes []byte) (err error) {

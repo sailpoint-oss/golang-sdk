@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessRequestRecommendationActionItemDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestRecommendationActionItemDto{}
+
 // AccessRequestRecommendationActionItemDto struct for AccessRequestRecommendationActionItemDto
 type AccessRequestRecommendationActionItemDto struct {
 	// The identity ID taking the action.
@@ -92,19 +95,23 @@ func (o *AccessRequestRecommendationActionItemDto) SetAccess(v AccessRequestReco
 }
 
 func (o AccessRequestRecommendationActionItemDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequestRecommendationActionItemDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["identityId"] = o.IdentityId
-	}
-	if true {
-		toSerialize["access"] = o.Access
-	}
+	toSerialize["identityId"] = o.IdentityId
+	toSerialize["access"] = o.Access
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequestRecommendationActionItemDto) UnmarshalJSON(bytes []byte) (err error) {

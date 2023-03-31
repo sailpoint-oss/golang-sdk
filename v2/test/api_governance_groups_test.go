@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_v2_GovernanceGroupsApiService(t *testing.T) {
@@ -52,10 +52,9 @@ func Test_v2_GovernanceGroupsApiService(t *testing.T) {
 
 		var workgroupId string
 
-		resp, httpRes, err := apiClient.GovernanceGroupsApi.DeleteWorkgroup(context.Background(), workgroupId).Execute()
+		httpRes, err := apiClient.GovernanceGroupsApi.DeleteWorkgroup(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -120,10 +119,9 @@ func Test_v2_GovernanceGroupsApiService(t *testing.T) {
 
 		var workgroupId string
 
-		resp, httpRes, err := apiClient.GovernanceGroupsApi.ModifyWorkgroupMembers(context.Background(), workgroupId).Execute()
+		httpRes, err := apiClient.GovernanceGroupsApi.ModifyWorkgroupMembers(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

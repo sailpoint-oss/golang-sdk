@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Requestability type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Requestability{}
+
 // Requestability struct for Requestability
 type Requestability struct {
 	// Whether the requester of the containing object must provide comments justifying the request
@@ -141,6 +144,14 @@ func (o *Requestability) SetApprovalSchemes(v []AccessProfileApprovalScheme) {
 }
 
 func (o Requestability) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Requestability) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CommentsRequired) {
 		toSerialize["commentsRequired"] = o.CommentsRequired
@@ -156,7 +167,7 @@ func (o Requestability) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Requestability) UnmarshalJSON(bytes []byte) (err error) {

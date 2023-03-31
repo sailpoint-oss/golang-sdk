@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedClusterQueue type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedClusterQueue{}
+
 // ManagedClusterQueue Managed Cluster key pair for Cluster
 type ManagedClusterQueue struct {
 	// ManagedCluster queue name
@@ -107,6 +110,14 @@ func (o *ManagedClusterQueue) SetRegion(v string) {
 }
 
 func (o ManagedClusterQueue) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ManagedClusterQueue) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -119,7 +130,7 @@ func (o ManagedClusterQueue) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ManagedClusterQueue) UnmarshalJSON(bytes []byte) (err error) {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the BaseAccessAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BaseAccessAllOf{}
+
 // BaseAccessAllOf struct for BaseAccessAllOf
 type BaseAccessAllOf struct {
 	// The description of the access item
@@ -340,6 +343,14 @@ func (o *BaseAccessAllOf) SetOwner(v Owner) {
 }
 
 func (o BaseAccessAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BaseAccessAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -370,7 +381,7 @@ func (o BaseAccessAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BaseAccessAllOf) UnmarshalJSON(bytes []byte) (err error) {

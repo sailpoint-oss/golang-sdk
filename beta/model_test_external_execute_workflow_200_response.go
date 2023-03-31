@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TestExternalExecuteWorkflow200Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TestExternalExecuteWorkflow200Response{}
+
 // TestExternalExecuteWorkflow200Response struct for TestExternalExecuteWorkflow200Response
 type TestExternalExecuteWorkflow200Response struct {
 	// The input that was received
@@ -73,6 +76,14 @@ func (o *TestExternalExecuteWorkflow200Response) SetPayload(v map[string]interfa
 }
 
 func (o TestExternalExecuteWorkflow200Response) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TestExternalExecuteWorkflow200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Payload) {
 		toSerialize["payload"] = o.Payload
@@ -82,7 +93,7 @@ func (o TestExternalExecuteWorkflow200Response) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TestExternalExecuteWorkflow200Response) UnmarshalJSON(bytes []byte) (err error) {

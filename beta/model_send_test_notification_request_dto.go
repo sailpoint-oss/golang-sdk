@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SendTestNotificationRequestDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SendTestNotificationRequestDto{}
+
 // SendTestNotificationRequestDto struct for SendTestNotificationRequestDto
 type SendTestNotificationRequestDto struct {
 	// The template notification key.
@@ -141,6 +144,14 @@ func (o *SendTestNotificationRequestDto) SetContext(v map[string]interface{}) {
 }
 
 func (o SendTestNotificationRequestDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SendTestNotificationRequestDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Key) {
 		toSerialize["key"] = o.Key
@@ -156,7 +167,7 @@ func (o SendTestNotificationRequestDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SendTestNotificationRequestDto) UnmarshalJSON(bytes []byte) (err error) {

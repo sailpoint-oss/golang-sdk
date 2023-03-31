@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleIdentity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleIdentity{}
+
 // RoleIdentity A subset of the fields of an Identity which is a member of a Role.
 type RoleIdentity struct {
 	// The ID of the Identity
@@ -208,6 +211,14 @@ func (o *RoleIdentity) SetRoleAssignmentSource(v RoleAssignmentSourceType) {
 }
 
 func (o RoleIdentity) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleIdentity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -229,7 +240,7 @@ func (o RoleIdentity) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleIdentity) UnmarshalJSON(bytes []byte) (err error) {

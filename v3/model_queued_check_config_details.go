@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the QueuedCheckConfigDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &QueuedCheckConfigDetails{}
+
 // QueuedCheckConfigDetails Configuration of maximum number days and interval for checking Service Desk integration queue status
 type QueuedCheckConfigDetails struct {
 	// interval in minutes between status checks
@@ -93,19 +96,23 @@ func (o *QueuedCheckConfigDetails) SetProvisioningMaxStatusCheckDays(v string) {
 }
 
 func (o QueuedCheckConfigDetails) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o QueuedCheckConfigDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["provisioningStatusCheckIntervalMinutes"] = o.ProvisioningStatusCheckIntervalMinutes
-	}
-	if true {
-		toSerialize["provisioningMaxStatusCheckDays"] = o.ProvisioningMaxStatusCheckDays
-	}
+	toSerialize["provisioningStatusCheckIntervalMinutes"] = o.ProvisioningStatusCheckIntervalMinutes
+	toSerialize["provisioningMaxStatusCheckDays"] = o.ProvisioningMaxStatusCheckDays
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *QueuedCheckConfigDetails) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TypedReference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TypedReference{}
+
 // TypedReference A typed reference to the object. 
 type TypedReference struct {
 	Type DtoType `json:"type"`
@@ -92,19 +95,23 @@ func (o *TypedReference) SetId(v string) {
 }
 
 func (o TypedReference) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TypedReference) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["id"] = o.Id
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TypedReference) UnmarshalJSON(bytes []byte) (err error) {

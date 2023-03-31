@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountAttributesCreate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountAttributesCreate{}
+
 // AccountAttributesCreate struct for AccountAttributesCreate
 type AccountAttributesCreate struct {
 	Attributes AccountAttributesCreateAttributes `json:"attributes"`
@@ -65,16 +68,22 @@ func (o *AccountAttributesCreate) SetAttributes(v AccountAttributesCreateAttribu
 }
 
 func (o AccountAttributesCreate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountAttributesCreate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["attributes"] = o.Attributes
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountAttributesCreate) UnmarshalJSON(bytes []byte) (err error) {

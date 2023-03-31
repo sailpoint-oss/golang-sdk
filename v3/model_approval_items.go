@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApprovalItems type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApprovalItems{}
+
 // ApprovalItems struct for ApprovalItems
 type ApprovalItems struct {
 	// ID of the approval item
@@ -276,6 +279,14 @@ func (o *ApprovalItems) SetState(v WorkItemState) {
 }
 
 func (o ApprovalItems) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ApprovalItems) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -303,7 +314,7 @@ func (o ApprovalItems) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ApprovalItems) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessRequestPreApproval1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestPreApproval1{}
+
 // AccessRequestPreApproval1 struct for AccessRequestPreApproval1
 type AccessRequestPreApproval1 struct {
 	// Whether or not to approve the access request.
@@ -120,22 +123,24 @@ func (o *AccessRequestPreApproval1) SetApprover(v string) {
 }
 
 func (o AccessRequestPreApproval1) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequestPreApproval1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["approved"] = o.Approved
-	}
-	if true {
-		toSerialize["comment"] = o.Comment
-	}
-	if true {
-		toSerialize["approver"] = o.Approver
-	}
+	toSerialize["approved"] = o.Approved
+	toSerialize["comment"] = o.Comment
+	toSerialize["approver"] = o.Approver
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequestPreApproval1) UnmarshalJSON(bytes []byte) (err error) {

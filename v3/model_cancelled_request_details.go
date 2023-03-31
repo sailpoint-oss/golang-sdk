@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CancelledRequestDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CancelledRequestDetails{}
+
 // CancelledRequestDetails Provides additional details for a request that has been cancelled.
 type CancelledRequestDetails struct {
 	// Comment made by the owner when cancelling the associated request.
@@ -141,6 +144,14 @@ func (o *CancelledRequestDetails) SetModified(v time.Time) {
 }
 
 func (o CancelledRequestDetails) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CancelledRequestDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -156,7 +167,7 @@ func (o CancelledRequestDetails) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CancelledRequestDetails) UnmarshalJSON(bytes []byte) (err error) {

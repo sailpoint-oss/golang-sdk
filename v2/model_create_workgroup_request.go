@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreateWorkgroupRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateWorkgroupRequest{}
+
 // CreateWorkgroupRequest struct for CreateWorkgroupRequest
 type CreateWorkgroupRequest struct {
 	Name *string `json:"name,omitempty"`
@@ -138,6 +141,14 @@ func (o *CreateWorkgroupRequest) SetOwner(v CreateWorkgroupRequestOwner) {
 }
 
 func (o CreateWorkgroupRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CreateWorkgroupRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -153,7 +164,7 @@ func (o CreateWorkgroupRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CreateWorkgroupRequest) UnmarshalJSON(bytes []byte) (err error) {

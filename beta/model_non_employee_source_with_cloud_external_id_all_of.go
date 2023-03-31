@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NonEmployeeSourceWithCloudExternalIdAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeSourceWithCloudExternalIdAllOf{}
+
 // NonEmployeeSourceWithCloudExternalIdAllOf struct for NonEmployeeSourceWithCloudExternalIdAllOf
 type NonEmployeeSourceWithCloudExternalIdAllOf struct {
 	// Legacy ID used for sources from the V1 API. This attribute will be removed from a future version of the API and will not be considered a breaking change. No clients should rely on this ID always being present.
@@ -73,6 +76,14 @@ func (o *NonEmployeeSourceWithCloudExternalIdAllOf) SetCloudExternalId(v string)
 }
 
 func (o NonEmployeeSourceWithCloudExternalIdAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeSourceWithCloudExternalIdAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CloudExternalId) {
 		toSerialize["cloudExternalId"] = o.CloudExternalId
@@ -82,7 +93,7 @@ func (o NonEmployeeSourceWithCloudExternalIdAllOf) MarshalJSON() ([]byte, error)
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeSourceWithCloudExternalIdAllOf) UnmarshalJSON(bytes []byte) (err error) {

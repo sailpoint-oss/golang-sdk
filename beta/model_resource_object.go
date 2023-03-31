@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ResourceObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ResourceObject{}
+
 // ResourceObject Representation of the object which is returned from source connectors.
 type ResourceObject struct {
 	// Identifier of the specific instance where this object resides.
@@ -481,52 +484,34 @@ func (o *ResourceObject) SetFinalUpdate(v bool) {
 }
 
 func (o ResourceObject) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ResourceObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Instance) {
-		toSerialize["instance"] = o.Instance
-	}
-	if !isNil(o.Identity) {
-		toSerialize["identity"] = o.Identity
-	}
-	if !isNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
-	}
-	if !isNil(o.PreviousIdentity) {
-		toSerialize["previousIdentity"] = o.PreviousIdentity
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.ObjectType) {
-		toSerialize["objectType"] = o.ObjectType
-	}
-	if !isNil(o.Incomplete) {
-		toSerialize["incomplete"] = o.Incomplete
-	}
-	if !isNil(o.Incremental) {
-		toSerialize["incremental"] = o.Incremental
-	}
-	if !isNil(o.Delete) {
-		toSerialize["delete"] = o.Delete
-	}
-	if !isNil(o.Remove) {
-		toSerialize["remove"] = o.Remove
-	}
-	if !isNil(o.Missing) {
-		toSerialize["missing"] = o.Missing
-	}
-	if !isNil(o.Attributes) {
-		toSerialize["attributes"] = o.Attributes
-	}
-	if !isNil(o.FinalUpdate) {
-		toSerialize["finalUpdate"] = o.FinalUpdate
-	}
+	// skip: instance is readOnly
+	// skip: identity is readOnly
+	// skip: uuid is readOnly
+	// skip: previousIdentity is readOnly
+	// skip: name is readOnly
+	// skip: objectType is readOnly
+	// skip: incomplete is readOnly
+	// skip: incremental is readOnly
+	// skip: delete is readOnly
+	// skip: remove is readOnly
+	// skip: missing is readOnly
+	// skip: attributes is readOnly
+	// skip: finalUpdate is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ResourceObject) UnmarshalJSON(bytes []byte) (err error) {

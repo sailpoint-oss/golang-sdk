@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceDeskIntegrationTemplateType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceDeskIntegrationTemplateType{}
+
 // ServiceDeskIntegrationTemplateType This represents a Service Desk Integration template type.
 type ServiceDeskIntegrationTemplateType struct {
 	// This is the name of the type.
@@ -127,22 +130,26 @@ func (o *ServiceDeskIntegrationTemplateType) SetScriptName(v string) {
 }
 
 func (o ServiceDeskIntegrationTemplateType) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ServiceDeskIntegrationTemplateType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["scriptName"] = o.ScriptName
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["scriptName"] = o.ScriptName
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ServiceDeskIntegrationTemplateType) UnmarshalJSON(bytes []byte) (err error) {

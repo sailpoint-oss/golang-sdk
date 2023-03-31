@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessItemAssociated type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessItemAssociated{}
+
 // AccessItemAssociated struct for AccessItemAssociated
 type AccessItemAssociated struct {
 	AccessItem *AccessItemAssociatedAccessItem `json:"accessItem,omitempty"`
@@ -207,6 +210,14 @@ func (o *AccessItemAssociated) SetGovernanceEvent(v CorrelatedGovernanceEvent) {
 }
 
 func (o AccessItemAssociated) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessItemAssociated) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccessItem) {
 		toSerialize["accessItem"] = o.AccessItem
@@ -228,7 +239,7 @@ func (o AccessItemAssociated) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessItemAssociated) UnmarshalJSON(bytes []byte) (err error) {

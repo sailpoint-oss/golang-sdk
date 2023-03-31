@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordChangeRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordChangeRequest{}
+
 // PasswordChangeRequest struct for PasswordChangeRequest
 type PasswordChangeRequest struct {
 	// The identity ID that requested the password change
@@ -209,6 +212,14 @@ func (o *PasswordChangeRequest) SetSourceId(v string) {
 }
 
 func (o PasswordChangeRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PasswordChangeRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
@@ -230,7 +241,7 @@ func (o PasswordChangeRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PasswordChangeRequest) UnmarshalJSON(bytes []byte) (err error) {

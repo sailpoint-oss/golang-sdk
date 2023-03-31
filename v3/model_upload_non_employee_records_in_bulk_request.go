@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UploadNonEmployeeRecordsInBulkRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UploadNonEmployeeRecordsInBulkRequest{}
+
 // UploadNonEmployeeRecordsInBulkRequest struct for UploadNonEmployeeRecordsInBulkRequest
 type UploadNonEmployeeRecordsInBulkRequest struct {
 	Data string `json:"data"`
@@ -65,16 +68,22 @@ func (o *UploadNonEmployeeRecordsInBulkRequest) SetData(v string) {
 }
 
 func (o UploadNonEmployeeRecordsInBulkRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["data"] = o.Data
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o UploadNonEmployeeRecordsInBulkRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["data"] = o.Data
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *UploadNonEmployeeRecordsInBulkRequest) UnmarshalJSON(bytes []byte) (err error) {

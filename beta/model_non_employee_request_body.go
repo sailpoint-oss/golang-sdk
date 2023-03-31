@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NonEmployeeRequestBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeRequestBody{}
+
 // NonEmployeeRequestBody struct for NonEmployeeRequestBody
 type NonEmployeeRequestBody struct {
 	// Requested identity account name.
@@ -317,43 +320,33 @@ func (o *NonEmployeeRequestBody) SetEndDate(v time.Time) {
 }
 
 func (o NonEmployeeRequestBody) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeRequestBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["accountName"] = o.AccountName
-	}
-	if true {
-		toSerialize["firstName"] = o.FirstName
-	}
-	if true {
-		toSerialize["lastName"] = o.LastName
-	}
-	if true {
-		toSerialize["email"] = o.Email
-	}
-	if true {
-		toSerialize["phone"] = o.Phone
-	}
-	if true {
-		toSerialize["manager"] = o.Manager
-	}
-	if true {
-		toSerialize["sourceId"] = o.SourceId
-	}
+	toSerialize["accountName"] = o.AccountName
+	toSerialize["firstName"] = o.FirstName
+	toSerialize["lastName"] = o.LastName
+	toSerialize["email"] = o.Email
+	toSerialize["phone"] = o.Phone
+	toSerialize["manager"] = o.Manager
+	toSerialize["sourceId"] = o.SourceId
 	if !isNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
-	if true {
-		toSerialize["startDate"] = o.StartDate
-	}
-	if true {
-		toSerialize["endDate"] = o.EndDate
-	}
+	toSerialize["startDate"] = o.StartDate
+	toSerialize["endDate"] = o.EndDate
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeRequestBody) UnmarshalJSON(bytes []byte) (err error) {

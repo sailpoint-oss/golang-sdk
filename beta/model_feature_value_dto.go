@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FeatureValueDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FeatureValueDto{}
+
 // FeatureValueDto struct for FeatureValueDto
 type FeatureValueDto struct {
 	// The type of feature
@@ -141,6 +144,14 @@ func (o *FeatureValueDto) SetDenominator(v int32) {
 }
 
 func (o FeatureValueDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FeatureValueDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Feature) {
 		toSerialize["feature"] = o.Feature
@@ -156,7 +167,7 @@ func (o FeatureValueDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *FeatureValueDto) UnmarshalJSON(bytes []byte) (err error) {

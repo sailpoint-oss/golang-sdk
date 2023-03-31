@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CommonAccessIDStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CommonAccessIDStatus{}
+
 // CommonAccessIDStatus struct for CommonAccessIDStatus
 type CommonAccessIDStatus struct {
 	// List of confirmed common access ids.
@@ -107,6 +110,14 @@ func (o *CommonAccessIDStatus) SetDeniedIds(v []string) {
 }
 
 func (o CommonAccessIDStatus) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CommonAccessIDStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ConfirmedIds) {
 		toSerialize["confirmedIds"] = o.ConfirmedIds
@@ -119,7 +130,7 @@ func (o CommonAccessIDStatus) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CommonAccessIDStatus) UnmarshalJSON(bytes []byte) (err error) {

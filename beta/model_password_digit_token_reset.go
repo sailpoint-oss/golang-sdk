@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordDigitTokenReset type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordDigitTokenReset{}
+
 // PasswordDigitTokenReset struct for PasswordDigitTokenReset
 type PasswordDigitTokenReset struct {
 	// The uid of the user requested for digit token
@@ -134,10 +137,16 @@ func (o *PasswordDigitTokenReset) SetDurationMinutes(v int32) {
 }
 
 func (o PasswordDigitTokenReset) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["userId"] = o.UserId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PasswordDigitTokenReset) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["userId"] = o.UserId
 	if !isNil(o.Length) {
 		toSerialize["length"] = o.Length
 	}
@@ -149,7 +158,7 @@ func (o PasswordDigitTokenReset) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PasswordDigitTokenReset) UnmarshalJSON(bytes []byte) (err error) {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CompletedApproval type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CompletedApproval{}
+
 // CompletedApproval struct for CompletedApproval
 type CompletedApproval struct {
 	// The approval id.
@@ -774,6 +777,14 @@ func (o *CompletedApproval) SetSodViolationContext(v SodViolationContextCheckCom
 }
 
 func (o CompletedApproval) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -843,7 +854,7 @@ func (o CompletedApproval) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CompletedApproval) UnmarshalJSON(bytes []byte) (err error) {

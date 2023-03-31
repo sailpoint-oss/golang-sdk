@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UpdateOrgSettingsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateOrgSettingsRequest{}
+
 // UpdateOrgSettingsRequest struct for UpdateOrgSettingsRequest
 type UpdateOrgSettingsRequest struct {
 	CountryCodes []string `json:"countryCodes,omitempty"`
@@ -798,6 +801,14 @@ func (o *UpdateOrgSettingsRequest) SetApprovalConfig(v GetOrgSettings200Response
 }
 
 func (o UpdateOrgSettingsRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o UpdateOrgSettingsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CountryCodes) {
 		toSerialize["countryCodes"] = o.CountryCodes
@@ -873,7 +884,7 @@ func (o UpdateOrgSettingsRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *UpdateOrgSettingsRequest) UnmarshalJSON(bytes []byte) (err error) {

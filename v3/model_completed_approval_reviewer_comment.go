@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the CompletedApprovalReviewerComment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CompletedApprovalReviewerComment{}
 
 // CompletedApprovalReviewerComment The approval's reviewer's comment.
 type CompletedApprovalReviewerComment struct {
@@ -141,6 +144,14 @@ func (o *CompletedApprovalReviewerComment) SetCreated(v time.Time) {
 }
 
 func (o CompletedApprovalReviewerComment) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CompletedApprovalReviewerComment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -156,7 +167,7 @@ func (o CompletedApprovalReviewerComment) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CompletedApprovalReviewerComment) UnmarshalJSON(bytes []byte) (err error) {

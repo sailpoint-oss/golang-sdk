@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreatePersonalAccessTokenRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreatePersonalAccessTokenRequest{}
+
 // CreatePersonalAccessTokenRequest Object for specifying the name of a personal access token to create
 type CreatePersonalAccessTokenRequest struct {
 	// The name of the personal access token (PAT) to be created. Cannot be the same as another PAT owned by the user for whom this PAT is being created.
@@ -101,10 +104,16 @@ func (o *CreatePersonalAccessTokenRequest) SetScope(v []string) {
 }
 
 func (o CreatePersonalAccessTokenRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CreatePersonalAccessTokenRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
 	if o.Scope != nil {
 		toSerialize["scope"] = o.Scope
 	}
@@ -113,7 +122,7 @@ func (o CreatePersonalAccessTokenRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CreatePersonalAccessTokenRequest) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagedCluster type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagedCluster{}
+
 // ManagedCluster Managed Cluster
 type ManagedCluster struct {
 	// ManagedCluster ID
@@ -810,10 +813,16 @@ func (o *ManagedCluster) SetCcId(v string) {
 }
 
 func (o ManagedCluster) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ManagedCluster) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
@@ -841,12 +850,8 @@ func (o ManagedCluster) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Redis) {
 		toSerialize["redis"] = o.Redis
 	}
-	if true {
-		toSerialize["clientType"] = o.ClientType
-	}
-	if true {
-		toSerialize["ccgVersion"] = o.CcgVersion
-	}
+	toSerialize["clientType"] = o.ClientType
+	toSerialize["ccgVersion"] = o.CcgVersion
 	if !isNil(o.PinnedConfig) {
 		toSerialize["pinnedConfig"] = o.PinnedConfig
 	}
@@ -885,7 +890,7 @@ func (o ManagedCluster) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ManagedCluster) UnmarshalJSON(bytes []byte) (err error) {

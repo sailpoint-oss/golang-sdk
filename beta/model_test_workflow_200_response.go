@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TestWorkflow200Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TestWorkflow200Response{}
+
 // TestWorkflow200Response struct for TestWorkflow200Response
 type TestWorkflow200Response struct {
 	// The workflow execution id
@@ -73,6 +76,14 @@ func (o *TestWorkflow200Response) SetWorkflowExecutionId(v string) {
 }
 
 func (o TestWorkflow200Response) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TestWorkflow200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.WorkflowExecutionId) {
 		toSerialize["workflowExecutionId"] = o.WorkflowExecutionId
@@ -82,7 +93,7 @@ func (o TestWorkflow200Response) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TestWorkflow200Response) UnmarshalJSON(bytes []byte) (err error) {

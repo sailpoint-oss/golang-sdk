@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ObjectImportResult type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ObjectImportResult{}
+
 // ObjectImportResult Response model for import of a single object.
 type ObjectImportResult struct {
 	// Informational messages returned from the target service on import.
@@ -147,25 +150,25 @@ func (o *ObjectImportResult) SetImportedObjects(v []BaseReferenceDto) {
 }
 
 func (o ObjectImportResult) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ObjectImportResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["infos"] = o.Infos
-	}
-	if true {
-		toSerialize["warnings"] = o.Warnings
-	}
-	if true {
-		toSerialize["errors"] = o.Errors
-	}
-	if true {
-		toSerialize["importedObjects"] = o.ImportedObjects
-	}
+	toSerialize["infos"] = o.Infos
+	toSerialize["warnings"] = o.Warnings
+	toSerialize["errors"] = o.Errors
+	toSerialize["importedObjects"] = o.ImportedObjects
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ObjectImportResult) UnmarshalJSON(bytes []byte) (err error) {

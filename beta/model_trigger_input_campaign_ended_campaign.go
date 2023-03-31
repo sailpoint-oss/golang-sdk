@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the TriggerInputCampaignEndedCampaign type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputCampaignEndedCampaign{}
+
 // TriggerInputCampaignEndedCampaign Details about the certification campaign that ended.
 type TriggerInputCampaignEndedCampaign struct {
 	// Unique ID for the campaign.
@@ -299,40 +302,32 @@ func (o *TriggerInputCampaignEndedCampaign) SetStatus(v map[string]interface{}) 
 }
 
 func (o TriggerInputCampaignEndedCampaign) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputCampaignEndedCampaign) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["description"] = o.Description
+	toSerialize["created"] = o.Created
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if true {
-		toSerialize["deadline"] = o.Deadline
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["campaignOwner"] = o.CampaignOwner
-	}
-	if true {
-		toSerialize["status"] = o.Status
-	}
+	toSerialize["deadline"] = o.Deadline
+	toSerialize["type"] = o.Type
+	toSerialize["campaignOwner"] = o.CampaignOwner
+	toSerialize["status"] = o.Status
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputCampaignEndedCampaign) UnmarshalJSON(bytes []byte) (err error) {

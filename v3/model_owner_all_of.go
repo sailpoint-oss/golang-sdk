@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OwnerAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OwnerAllOf{}
+
 // OwnerAllOf struct for OwnerAllOf
 type OwnerAllOf struct {
 	// The email of the identity
@@ -73,6 +76,14 @@ func (o *OwnerAllOf) SetEmail(v string) {
 }
 
 func (o OwnerAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OwnerAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Email) {
 		toSerialize["email"] = o.Email
@@ -82,7 +93,7 @@ func (o OwnerAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *OwnerAllOf) UnmarshalJSON(bytes []byte) (err error) {

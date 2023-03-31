@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AccessProfile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfile{}
+
 // AccessProfile struct for AccessProfile
 type AccessProfile struct {
 	// The ID of the Access Profile
@@ -511,31 +514,27 @@ func (o *AccessProfile) UnsetProvisioningCriteria() {
 }
 
 func (o AccessProfile) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
+	// skip: created is readOnly
+	// skip: modified is readOnly
 	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if true {
-		toSerialize["owner"] = o.Owner
-	}
-	if true {
-		toSerialize["source"] = o.Source
-	}
+	toSerialize["owner"] = o.Owner
+	toSerialize["source"] = o.Source
 	if !isNil(o.Entitlements) {
 		toSerialize["entitlements"] = o.Entitlements
 	}
@@ -559,7 +558,7 @@ func (o AccessProfile) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfile) UnmarshalJSON(bytes []byte) (err error) {

@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the NonEmployeeRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeRequest{}
 
 // NonEmployeeRequest struct for NonEmployeeRequest
 type NonEmployeeRequest struct {
@@ -718,6 +721,14 @@ func (o *NonEmployeeRequest) SetCreated(v time.Time) {
 }
 
 func (o NonEmployeeRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -784,7 +795,7 @@ func (o NonEmployeeRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeRequest) UnmarshalJSON(bytes []byte) (err error) {

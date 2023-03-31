@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BaseReferenceDto1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BaseReferenceDto1{}
+
 // BaseReferenceDto1 struct for BaseReferenceDto1
 type BaseReferenceDto1 struct {
 	// the application ID
@@ -107,6 +110,14 @@ func (o *BaseReferenceDto1) SetName(v string) {
 }
 
 func (o BaseReferenceDto1) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BaseReferenceDto1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -119,7 +130,7 @@ func (o BaseReferenceDto1) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BaseReferenceDto1) UnmarshalJSON(bytes []byte) (err error) {

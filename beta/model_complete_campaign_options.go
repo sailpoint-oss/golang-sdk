@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CompleteCampaignOptions type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CompleteCampaignOptions{}
+
 // CompleteCampaignOptions struct for CompleteCampaignOptions
 type CompleteCampaignOptions struct {
 	// Determines whether to auto-approve(APPROVE) or auto-revoke(REVOKE) upon campaign completion.
@@ -77,6 +80,14 @@ func (o *CompleteCampaignOptions) SetAutoCompleteAction(v string) {
 }
 
 func (o CompleteCampaignOptions) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CompleteCampaignOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AutoCompleteAction) {
 		toSerialize["autoCompleteAction"] = o.AutoCompleteAction
@@ -86,7 +97,7 @@ func (o CompleteCampaignOptions) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CompleteCampaignOptions) UnmarshalJSON(bytes []byte) (err error) {

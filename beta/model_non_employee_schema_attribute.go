@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NonEmployeeSchemaAttribute type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeSchemaAttribute{}
+
 // NonEmployeeSchemaAttribute struct for NonEmployeeSchemaAttribute
 type NonEmployeeSchemaAttribute struct {
 	// Schema Attribute Id
@@ -358,6 +361,14 @@ func (o *NonEmployeeSchemaAttribute) SetRequired(v bool) {
 }
 
 func (o NonEmployeeSchemaAttribute) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeSchemaAttribute) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -371,15 +382,9 @@ func (o NonEmployeeSchemaAttribute) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["label"] = o.Label
-	}
-	if true {
-		toSerialize["technicalName"] = o.TechnicalName
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["label"] = o.Label
+	toSerialize["technicalName"] = o.TechnicalName
 	if !isNil(o.HelpText) {
 		toSerialize["helpText"] = o.HelpText
 	}
@@ -394,7 +399,7 @@ func (o NonEmployeeSchemaAttribute) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeSchemaAttribute) UnmarshalJSON(bytes []byte) (err error) {

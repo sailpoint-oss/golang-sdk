@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the SodPolicySchedule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SodPolicySchedule{}
+
 // SodPolicySchedule struct for SodPolicySchedule
 type SodPolicySchedule struct {
 	// SOD Policy schedule name
@@ -344,6 +347,14 @@ func (o *SodPolicySchedule) SetModifierId(v string) {
 }
 
 func (o SodPolicySchedule) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SodPolicySchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -377,7 +388,7 @@ func (o SodPolicySchedule) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SodPolicySchedule) UnmarshalJSON(bytes []byte) (err error) {

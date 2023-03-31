@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ExceptionCriteriaAccess type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExceptionCriteriaAccess{}
+
 // ExceptionCriteriaAccess Access reference with addition of boolean existing flag to indicate whether the access was extant
 type ExceptionCriteriaAccess struct {
 	Type *DtoType `json:"type,omitempty"`
@@ -174,6 +177,14 @@ func (o *ExceptionCriteriaAccess) SetExisting(v bool) {
 }
 
 func (o ExceptionCriteriaAccess) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ExceptionCriteriaAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -192,7 +203,7 @@ func (o ExceptionCriteriaAccess) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ExceptionCriteriaAccess) UnmarshalJSON(bytes []byte) (err error) {

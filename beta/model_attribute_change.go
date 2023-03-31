@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AttributeChange type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AttributeChange{}
+
 // AttributeChange struct for AttributeChange
 type AttributeChange struct {
 	// the attribute name
@@ -141,6 +144,14 @@ func (o *AttributeChange) SetNewValue(v string) {
 }
 
 func (o AttributeChange) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AttributeChange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -156,7 +167,7 @@ func (o AttributeChange) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AttributeChange) UnmarshalJSON(bytes []byte) (err error) {

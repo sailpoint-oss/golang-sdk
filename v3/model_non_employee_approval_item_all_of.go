@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NonEmployeeApprovalItemAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeApprovalItemAllOf{}
+
 // NonEmployeeApprovalItemAllOf struct for NonEmployeeApprovalItemAllOf
 type NonEmployeeApprovalItemAllOf struct {
 	NonEmployeeRequest *NonEmployeeRequestLite `json:"nonEmployeeRequest,omitempty"`
@@ -72,6 +75,14 @@ func (o *NonEmployeeApprovalItemAllOf) SetNonEmployeeRequest(v NonEmployeeReques
 }
 
 func (o NonEmployeeApprovalItemAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeApprovalItemAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.NonEmployeeRequest) {
 		toSerialize["nonEmployeeRequest"] = o.NonEmployeeRequest
@@ -81,7 +92,7 @@ func (o NonEmployeeApprovalItemAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeApprovalItemAllOf) UnmarshalJSON(bytes []byte) (err error) {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the OutlierSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OutlierSummary{}
+
 // OutlierSummary struct for OutlierSummary
 type OutlierSummary struct {
 	// The type of outlier summary
@@ -176,6 +179,14 @@ func (o *OutlierSummary) SetTotalIdentities(v int32) {
 }
 
 func (o OutlierSummary) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OutlierSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -194,7 +205,7 @@ func (o OutlierSummary) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *OutlierSummary) UnmarshalJSON(bytes []byte) (err error) {

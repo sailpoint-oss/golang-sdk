@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Owns type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Owns{}
+
 // Owns struct for Owns
 type Owns struct {
 	Sources []Reference `json:"sources,omitempty"`
@@ -270,6 +273,14 @@ func (o *Owns) SetFallbackApprover(v bool) {
 }
 
 func (o Owns) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Owns) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Sources) {
 		toSerialize["sources"] = o.Sources
@@ -297,7 +308,7 @@ func (o Owns) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Owns) UnmarshalJSON(bytes []byte) (err error) {

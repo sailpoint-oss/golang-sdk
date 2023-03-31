@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NonEmployeeRequestLite type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeRequestLite{}
+
 // NonEmployeeRequestLite struct for NonEmployeeRequestLite
 type NonEmployeeRequestLite struct {
 	// Non-Employee request id.
@@ -106,6 +109,14 @@ func (o *NonEmployeeRequestLite) SetRequester(v NonEmployeeIdentityReferenceWith
 }
 
 func (o NonEmployeeRequestLite) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeRequestLite) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -118,7 +129,7 @@ func (o NonEmployeeRequestLite) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeRequestLite) UnmarshalJSON(bytes []byte) (err error) {

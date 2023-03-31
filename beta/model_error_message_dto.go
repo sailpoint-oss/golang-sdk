@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ErrorMessageDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ErrorMessageDto{}
+
 // ErrorMessageDto struct for ErrorMessageDto
 type ErrorMessageDto struct {
 	// The locale for the message text, a BCP 47 language tag.
@@ -140,6 +143,14 @@ func (o *ErrorMessageDto) SetText(v string) {
 }
 
 func (o ErrorMessageDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ErrorMessageDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
@@ -155,7 +166,7 @@ func (o ErrorMessageDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ErrorMessageDto) UnmarshalJSON(bytes []byte) (err error) {

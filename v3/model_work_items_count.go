@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WorkItemsCount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkItemsCount{}
+
 // WorkItemsCount struct for WorkItemsCount
 type WorkItemsCount struct {
 	// The count of work items
@@ -73,6 +76,14 @@ func (o *WorkItemsCount) SetCount(v int32) {
 }
 
 func (o WorkItemsCount) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkItemsCount) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Count) {
 		toSerialize["count"] = o.Count
@@ -82,7 +93,7 @@ func (o WorkItemsCount) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkItemsCount) UnmarshalJSON(bytes []byte) (err error) {

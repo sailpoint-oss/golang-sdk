@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityListItem type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityListItem{}
+
 // IdentityListItem struct for IdentityListItem
 type IdentityListItem struct {
 	// the identity ID
@@ -243,6 +246,14 @@ func (o *IdentityListItem) SetDeletedDate(v string) {
 }
 
 func (o IdentityListItem) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityListItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -267,7 +278,7 @@ func (o IdentityListItem) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityListItem) UnmarshalJSON(bytes []byte) (err error) {

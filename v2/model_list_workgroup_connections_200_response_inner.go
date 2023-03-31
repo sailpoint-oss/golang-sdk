@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ListWorkgroupConnections200ResponseInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListWorkgroupConnections200ResponseInner{}
+
 // ListWorkgroupConnections200ResponseInner struct for ListWorkgroupConnections200ResponseInner
 type ListWorkgroupConnections200ResponseInner struct {
 	ConnectionType *string `json:"connectionType,omitempty"`
@@ -237,6 +240,14 @@ func (o *ListWorkgroupConnections200ResponseInner) SetWorkgroupId(v string) {
 }
 
 func (o ListWorkgroupConnections200ResponseInner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ListWorkgroupConnections200ResponseInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ConnectionType) {
 		toSerialize["connectionType"] = o.ConnectionType
@@ -261,7 +272,7 @@ func (o ListWorkgroupConnections200ResponseInner) MarshalJSON() ([]byte, error) 
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ListWorkgroupConnections200ResponseInner) UnmarshalJSON(bytes []byte) (err error) {

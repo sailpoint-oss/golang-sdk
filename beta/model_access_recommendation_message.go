@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessRecommendationMessage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRecommendationMessage{}
+
 // AccessRecommendationMessage struct for AccessRecommendationMessage
 type AccessRecommendationMessage struct {
 	// Information about why the access item was recommended.
@@ -73,6 +76,14 @@ func (o *AccessRecommendationMessage) SetInterpretation(v string) {
 }
 
 func (o AccessRecommendationMessage) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRecommendationMessage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Interpretation) {
 		toSerialize["interpretation"] = o.Interpretation
@@ -82,7 +93,7 @@ func (o AccessRecommendationMessage) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRecommendationMessage) UnmarshalJSON(bytes []byte) (err error) {

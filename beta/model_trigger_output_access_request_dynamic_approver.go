@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerOutputAccessRequestDynamicApprover type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerOutputAccessRequestDynamicApprover{}
+
 // TriggerOutputAccessRequestDynamicApprover struct for TriggerOutputAccessRequestDynamicApprover
 type TriggerOutputAccessRequestDynamicApprover struct {
 	// The unique ID of the identity to add to the approver list for the access request.
@@ -120,22 +123,24 @@ func (o *TriggerOutputAccessRequestDynamicApprover) SetType(v map[string]interfa
 }
 
 func (o TriggerOutputAccessRequestDynamicApprover) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerOutputAccessRequestDynamicApprover) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerOutputAccessRequestDynamicApprover) UnmarshalJSON(bytes []byte) (err error) {

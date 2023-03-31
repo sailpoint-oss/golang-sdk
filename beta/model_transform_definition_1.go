@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TransformDefinition1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransformDefinition1{}
+
 // TransformDefinition1 struct for TransformDefinition1
 type TransformDefinition1 struct {
 	// The type of the transform definition.
@@ -107,6 +110,14 @@ func (o *TransformDefinition1) SetAttributes(v map[string]TransformDefinition1At
 }
 
 func (o TransformDefinition1) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TransformDefinition1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -119,7 +130,7 @@ func (o TransformDefinition1) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TransformDefinition1) UnmarshalJSON(bytes []byte) (err error) {

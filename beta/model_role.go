@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Role type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Role{}
+
 // Role A Role
 type Role struct {
 	// The id of the Role. This field must be left null when creating an Role, otherwise a 400 Bad Request error will result.
@@ -520,25 +523,25 @@ func (o *Role) SetSegments(v []string) {
 }
 
 func (o Role) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Role) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
+	toSerialize["name"] = o.Name
+	// skip: created is readOnly
+	// skip: modified is readOnly
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if true {
-		toSerialize["owner"] = o.Owner
-	}
+	toSerialize["owner"] = o.Owner
 	if o.AccessProfiles != nil {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
@@ -568,7 +571,7 @@ func (o Role) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Role) UnmarshalJSON(bytes []byte) (err error) {

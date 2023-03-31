@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the SpConfigExportResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpConfigExportResults{}
+
 // SpConfigExportResults Response model for config export download response.
 type SpConfigExportResults struct {
 	// Current version of the export results object.
@@ -242,6 +245,14 @@ func (o *SpConfigExportResults) SetObjects(v []ConfigObject) {
 }
 
 func (o SpConfigExportResults) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SpConfigExportResults) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Version) {
 		toSerialize["version"] = o.Version
@@ -266,7 +277,7 @@ func (o SpConfigExportResults) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SpConfigExportResults) UnmarshalJSON(bytes []byte) (err error) {

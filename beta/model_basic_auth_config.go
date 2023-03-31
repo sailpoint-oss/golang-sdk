@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BasicAuthConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BasicAuthConfig{}
+
 // BasicAuthConfig Config required if BASIC_AUTH is used.
 type BasicAuthConfig struct {
 	// The username to authenticate.
@@ -117,6 +120,14 @@ func (o *BasicAuthConfig) UnsetPassword() {
 }
 
 func (o BasicAuthConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BasicAuthConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.UserName) {
 		toSerialize["userName"] = o.UserName
@@ -129,7 +140,7 @@ func (o BasicAuthConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BasicAuthConfig) UnmarshalJSON(bytes []byte) (err error) {

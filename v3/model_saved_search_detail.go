@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the SavedSearchDetail type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SavedSearchDetail{}
+
 // SavedSearchDetail struct for SavedSearchDetail
 type SavedSearchDetail struct {
 	// Indicates if the saved search is public. 
@@ -366,6 +369,14 @@ func (o *SavedSearchDetail) UnsetFilters() {
 }
 
 func (o SavedSearchDetail) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SavedSearchDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Public) {
 		toSerialize["public"] = o.Public
@@ -376,15 +387,11 @@ func (o SavedSearchDetail) MarshalJSON() ([]byte, error) {
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if true {
-		toSerialize["indices"] = o.Indices
-	}
+	toSerialize["indices"] = o.Indices
 	if !isNil(o.Columns) {
 		toSerialize["columns"] = o.Columns
 	}
-	if true {
-		toSerialize["query"] = o.Query
-	}
+	toSerialize["query"] = o.Query
 	if o.Fields != nil {
 		toSerialize["fields"] = o.Fields
 	}
@@ -399,7 +406,7 @@ func (o SavedSearchDetail) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SavedSearchDetail) UnmarshalJSON(bytes []byte) (err error) {

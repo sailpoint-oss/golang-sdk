@@ -286,7 +286,7 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupExecute(r ApiDeleteWorkgroup
 	}
 
 	localVarPath := localBasePath + "/workgroups/{workgroupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterToString(r.workgroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterValueToString(r.workgroupId, "workgroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -380,7 +380,7 @@ func (a *GovernanceGroupsApiService) GetWorkgroupExecute(r ApiGetWorkgroupReques
 	}
 
 	localVarPath := localBasePath + "/workgroups/{workgroupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterToString(r.workgroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterValueToString(r.workgroupId, "workgroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -483,7 +483,7 @@ func (a *GovernanceGroupsApiService) ListWorkgroupConnectionsExecute(r ApiListWo
 	}
 
 	localVarPath := localBasePath + "/workgroups/{workgroupId}/connections"
-	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterToString(r.workgroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterValueToString(r.workgroupId, "workgroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -607,20 +607,20 @@ func (a *GovernanceGroupsApiService) ListWorkgroupMembersExecute(r ApiListWorkgr
 	}
 
 	localVarPath := localBasePath + "/workgroups/{workgroupId}/members"
-	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterToString(r.workgroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterValueToString(r.workgroupId, "workgroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.offset != nil {
-		localVarQueryParams.Add("offset", parameterToString(*r.offset, ""))
+		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
 	}
 	if r.filters != nil {
-		localVarQueryParams.Add("filters", parameterToString(*r.filters, ""))
+		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -743,13 +743,13 @@ func (a *GovernanceGroupsApiService) ListWorkgroupsExecute(r ApiListWorkgroupsRe
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		localVarQueryParams.Add("limit", parameterToString(*r.limit, ""))
+		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
 	}
 	if r.offset != nil {
-		localVarQueryParams.Add("offset", parameterToString(*r.offset, ""))
+		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
 	}
 	if r.filters != nil {
-		localVarQueryParams.Add("filters", parameterToString(*r.filters, ""))
+		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -853,7 +853,7 @@ func (a *GovernanceGroupsApiService) ModifyWorkgroupMembersExecute(r ApiModifyWo
 	}
 
 	localVarPath := localBasePath + "/workgroups/{workgroupId}/members"
-	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterToString(r.workgroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterValueToString(r.workgroupId, "workgroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -959,7 +959,7 @@ func (a *GovernanceGroupsApiService) UpdateWorkgroupExecute(r ApiUpdateWorkgroup
 	}
 
 	localVarPath := localBasePath + "/workgroups/{workgroupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterToString(r.workgroupId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterValueToString(r.workgroupId, "workgroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

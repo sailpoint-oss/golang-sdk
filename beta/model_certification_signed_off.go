@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CertificationSignedOff type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificationSignedOff{}
+
 // CertificationSignedOff struct for CertificationSignedOff
 type CertificationSignedOff struct {
 	Certification TriggerInputCertificationSignedOffCertification `json:"certification"`
@@ -65,16 +68,22 @@ func (o *CertificationSignedOff) SetCertification(v TriggerInputCertificationSig
 }
 
 func (o CertificationSignedOff) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["certification"] = o.Certification
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CertificationSignedOff) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["certification"] = o.Certification
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CertificationSignedOff) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ResourceObjectsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ResourceObjectsRequest{}
+
 // ResourceObjectsRequest Request model for peek resource objects from source connectors.
 type ResourceObjectsRequest struct {
 	// The type of resource objects to iterate over.
@@ -115,6 +118,14 @@ func (o *ResourceObjectsRequest) SetMaxCount(v int32) {
 }
 
 func (o ResourceObjectsRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ResourceObjectsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ObjectType) {
 		toSerialize["objectType"] = o.ObjectType
@@ -127,7 +138,7 @@ func (o ResourceObjectsRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ResourceObjectsRequest) UnmarshalJSON(bytes []byte) (err error) {

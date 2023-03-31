@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceDeskIntegrationDtoAllOfOwnerRef type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceDeskIntegrationDtoAllOfOwnerRef{}
+
 // ServiceDeskIntegrationDtoAllOfOwnerRef Reference to the identity that is the owner of this Service Desk integration
 type ServiceDeskIntegrationDtoAllOfOwnerRef struct {
 	// The type of object being referenced
@@ -141,6 +144,14 @@ func (o *ServiceDeskIntegrationDtoAllOfOwnerRef) SetName(v string) {
 }
 
 func (o ServiceDeskIntegrationDtoAllOfOwnerRef) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ServiceDeskIntegrationDtoAllOfOwnerRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o ServiceDeskIntegrationDtoAllOfOwnerRef) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ServiceDeskIntegrationDtoAllOfOwnerRef) UnmarshalJSON(bytes []byte) (err error) {

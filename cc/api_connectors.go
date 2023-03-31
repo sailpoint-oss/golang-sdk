@@ -119,22 +119,22 @@ func (a *ConnectorsApiService) CreateConnectorExecute(r ApiCreateConnectorReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	if r.name != nil {
-		localVarFormParams.Add("name", parameterToString(*r.name, ""))
+		parameterAddToQuery(localVarFormParams, "name", r.name, "")
 	}
 	if r.description != nil {
-		localVarFormParams.Add("description", parameterToString(*r.description, ""))
+		parameterAddToQuery(localVarFormParams, "description", r.description, "")
 	}
 	if r.className != nil {
-		localVarFormParams.Add("className", parameterToString(*r.className, ""))
+		parameterAddToQuery(localVarFormParams, "className", r.className, "")
 	}
 	if r.directConnect != nil {
-		localVarFormParams.Add("directConnect", parameterToString(*r.directConnect, ""))
+		parameterAddToQuery(localVarFormParams, "directConnect", r.directConnect, "")
 	}
 	if r.status != nil {
-		localVarFormParams.Add("status", parameterToString(*r.status, ""))
+		parameterAddToQuery(localVarFormParams, "status", r.status, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -203,7 +203,7 @@ func (a *ConnectorsApiService) DeleteConnectorExecute(r ApiDeleteConnectorReques
 	}
 
 	localVarPath := localBasePath + "/cc/api/connector/delete/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -293,7 +293,7 @@ func (a *ConnectorsApiService) ExportConnectorConfigExecute(r ApiExportConnector
 	}
 
 	localVarPath := localBasePath + "/cc/api/connector/export/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -348,12 +348,12 @@ type ApiImportConnectorConfigRequest struct {
 	ctx context.Context
 	ApiService *ConnectorsApiService
 	id string
-	file **os.File
+	file *os.File
 }
 
 // This is the connector config zip bundle which gets uploaded.
 func (r ApiImportConnectorConfigRequest) File(file *os.File) ApiImportConnectorConfigRequest {
-	r.file = &file
+	r.file = file
 	return r
 }
 
@@ -390,7 +390,7 @@ func (a *ConnectorsApiService) ImportConnectorConfigExecute(r ApiImportConnector
 	}
 
 	localVarPath := localBasePath + "/cc/api/connector/import/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -419,17 +419,17 @@ func (a *ConnectorsApiService) ImportConnectorConfigExecute(r ApiImportConnector
 
 	fileLocalVarFormFileName = "file"
 
-	var fileLocalVarFile *os.File
-	if r.file != nil {
-		fileLocalVarFile = *r.file
-	}
+
+	fileLocalVarFile := r.file
+
 	if fileLocalVarFile != nil {
 		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputVAClusterStatusChangeEventApplication type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputVAClusterStatusChangeEventApplication{}
+
 // TriggerInputVAClusterStatusChangeEventApplication Details about the `CLUSTER` or `SOURCE` that initiated this event.
 type TriggerInputVAClusterStatusChangeEventApplication struct {
 	// The GUID of the application
@@ -122,13 +125,17 @@ func (o *TriggerInputVAClusterStatusChangeEventApplication) SetAttributes(v map[
 }
 
 func (o TriggerInputVAClusterStatusChangeEventApplication) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputVAClusterStatusChangeEventApplication) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
@@ -137,7 +144,7 @@ func (o TriggerInputVAClusterStatusChangeEventApplication) MarshalJSON() ([]byte
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputVAClusterStatusChangeEventApplication) UnmarshalJSON(bytes []byte) (err error) {

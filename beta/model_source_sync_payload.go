@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SourceSyncPayload type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceSyncPayload{}
+
 // SourceSyncPayload struct for SourceSyncPayload
 type SourceSyncPayload struct {
 	// Payload type.
@@ -93,19 +96,23 @@ func (o *SourceSyncPayload) SetDataJson(v string) {
 }
 
 func (o SourceSyncPayload) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SourceSyncPayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["dataJson"] = o.DataJson
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["dataJson"] = o.DataJson
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SourceSyncPayload) UnmarshalJSON(bytes []byte) (err error) {

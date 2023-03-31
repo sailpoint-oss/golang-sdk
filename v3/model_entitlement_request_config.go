@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EntitlementRequestConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementRequestConfig{}
+
 // EntitlementRequestConfig struct for EntitlementRequestConfig
 type EntitlementRequestConfig struct {
 	// Flag for allowing entitlement request.
@@ -187,6 +190,14 @@ func (o *EntitlementRequestConfig) SetGrantRequestApprovalSchemes(v string) {
 }
 
 func (o EntitlementRequestConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EntitlementRequestConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AllowEntitlementRequest) {
 		toSerialize["allowEntitlementRequest"] = o.AllowEntitlementRequest
@@ -205,7 +216,7 @@ func (o EntitlementRequestConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EntitlementRequestConfig) UnmarshalJSON(bytes []byte) (err error) {

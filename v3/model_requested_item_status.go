@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the RequestedItemStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RequestedItemStatus{}
+
 // RequestedItemStatus struct for RequestedItemStatus
 type RequestedItemStatus struct {
 	// Human-readable display name of the item being requested.
@@ -826,6 +829,14 @@ func (o *RequestedItemStatus) SetClientMetadata(v map[string]string) {
 }
 
 func (o RequestedItemStatus) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RequestedItemStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -901,7 +912,7 @@ func (o RequestedItemStatus) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RequestedItemStatus) UnmarshalJSON(bytes []byte) (err error) {

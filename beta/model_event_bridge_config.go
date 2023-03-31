@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EventBridgeConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EventBridgeConfig{}
+
 // EventBridgeConfig struct for EventBridgeConfig
 type EventBridgeConfig struct {
 	// AWS Account Number (12-digit number) that has the EventBridge Partner Event Source Resource.
@@ -93,19 +96,23 @@ func (o *EventBridgeConfig) SetAwsRegion(v string) {
 }
 
 func (o EventBridgeConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EventBridgeConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["awsAccount"] = o.AwsAccount
-	}
-	if true {
-		toSerialize["awsRegion"] = o.AwsRegion
-	}
+	toSerialize["awsAccount"] = o.AwsAccount
+	toSerialize["awsRegion"] = o.AwsRegion
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EventBridgeConfig) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AttributesChanged type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AttributesChanged{}
+
 // AttributesChanged struct for AttributesChanged
 type AttributesChanged struct {
 	Changes []AttributeChange `json:"changes,omitempty"`
@@ -174,6 +177,14 @@ func (o *AttributesChanged) SetDt(v string) {
 }
 
 func (o AttributesChanged) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AttributesChanged) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Changes) {
 		toSerialize["changes"] = o.Changes
@@ -192,7 +203,7 @@ func (o AttributesChanged) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AttributesChanged) UnmarshalJSON(bytes []byte) (err error) {

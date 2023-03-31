@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AggregationAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AggregationAllOf{}
+
 // AggregationAllOf struct for AggregationAllOf
 type AggregationAllOf struct {
 	Status *string `json:"status,omitempty"`
@@ -294,6 +297,14 @@ func (o *AggregationAllOf) SetSourceOwner(v string) {
 }
 
 func (o AggregationAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AggregationAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -321,7 +332,7 @@ func (o AggregationAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AggregationAllOf) UnmarshalJSON(bytes []byte) (err error) {

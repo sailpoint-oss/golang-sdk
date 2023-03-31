@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessProfileSummaryAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileSummaryAllOf{}
+
 // AccessProfileSummaryAllOf struct for AccessProfileSummaryAllOf
 type AccessProfileSummaryAllOf struct {
 	Source *Reference `json:"source,omitempty"`
@@ -138,6 +141,14 @@ func (o *AccessProfileSummaryAllOf) SetRevocable(v bool) {
 }
 
 func (o AccessProfileSummaryAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfileSummaryAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Source) {
 		toSerialize["source"] = o.Source
@@ -153,7 +164,7 @@ func (o AccessProfileSummaryAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfileSummaryAllOf) UnmarshalJSON(bytes []byte) (err error) {

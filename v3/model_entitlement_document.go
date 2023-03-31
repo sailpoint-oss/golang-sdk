@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the EntitlementDocument type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementDocument{}
 
 // EntitlementDocument Entitlement
 type EntitlementDocument struct {
@@ -476,16 +479,18 @@ func (o *EntitlementDocument) SetTags(v []string) {
 }
 
 func (o EntitlementDocument) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EntitlementDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["_type"] = o.Type
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["_type"] = o.Type
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -521,7 +526,7 @@ func (o EntitlementDocument) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EntitlementDocument) UnmarshalJSON(bytes []byte) (err error) {

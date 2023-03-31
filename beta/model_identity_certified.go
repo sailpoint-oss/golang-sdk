@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityCertified type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityCertified{}
+
 // IdentityCertified struct for IdentityCertified
 type IdentityCertified struct {
 	// the id of the certification item
@@ -310,6 +313,14 @@ func (o *IdentityCertified) SetDt(v string) {
 }
 
 func (o IdentityCertified) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityCertified) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CertificationId) {
 		toSerialize["certificationId"] = o.CertificationId
@@ -340,7 +351,7 @@ func (o IdentityCertified) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityCertified) UnmarshalJSON(bytes []byte) (err error) {

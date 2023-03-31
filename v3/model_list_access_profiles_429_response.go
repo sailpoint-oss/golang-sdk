@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ListAccessProfiles429Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ListAccessProfiles429Response{}
+
 // ListAccessProfiles429Response struct for ListAccessProfiles429Response
 type ListAccessProfiles429Response struct {
 	// A message describing the error
@@ -73,6 +76,14 @@ func (o *ListAccessProfiles429Response) SetMessage(v map[string]interface{}) {
 }
 
 func (o ListAccessProfiles429Response) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ListAccessProfiles429Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Message) {
 		toSerialize["message"] = o.Message
@@ -82,7 +93,7 @@ func (o ListAccessProfiles429Response) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ListAccessProfiles429Response) UnmarshalJSON(bytes []byte) (err error) {

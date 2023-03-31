@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessProfileUsage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileUsage{}
+
 // AccessProfileUsage struct for AccessProfileUsage
 type AccessProfileUsage struct {
 	// ID of the Access Profile that is in use
@@ -107,6 +110,14 @@ func (o *AccessProfileUsage) SetUsedBy(v []BaseReferenceDto) {
 }
 
 func (o AccessProfileUsage) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfileUsage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccessProfileId) {
 		toSerialize["accessProfileId"] = o.AccessProfileId
@@ -119,7 +130,7 @@ func (o AccessProfileUsage) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfileUsage) UnmarshalJSON(bytes []byte) (err error) {

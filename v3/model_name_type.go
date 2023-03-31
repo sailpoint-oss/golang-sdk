@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NameType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NameType{}
+
 // NameType struct for NameType
 type NameType struct {
 	// the actor or target name
@@ -106,6 +109,14 @@ func (o *NameType) SetType(v DtoType) {
 }
 
 func (o NameType) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NameType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -118,7 +129,7 @@ func (o NameType) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NameType) UnmarshalJSON(bytes []byte) (err error) {

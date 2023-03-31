@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessProfileEntitlement type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileEntitlement{}
+
 // AccessProfileEntitlement EntitlementReference
 type AccessProfileEntitlement struct {
 	// The unique ID of the referenced object.
@@ -381,6 +384,14 @@ func (o *AccessProfileEntitlement) SetStandalone(v bool) {
 }
 
 func (o AccessProfileEntitlement) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfileEntitlement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -417,7 +428,7 @@ func (o AccessProfileEntitlement) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfileEntitlement) UnmarshalJSON(bytes []byte) (err error) {

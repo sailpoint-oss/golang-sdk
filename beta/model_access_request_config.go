@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessRequestConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequestConfig{}
+
 // AccessRequestConfig struct for AccessRequestConfig
 type AccessRequestConfig struct {
 	// If true, then approvals must be processed by external system.
@@ -206,6 +209,14 @@ func (o *AccessRequestConfig) SetEntitlementRequestConfig(v EntitlementRequestCo
 }
 
 func (o AccessRequestConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequestConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ApprovalsMustBeExternal) {
 		toSerialize["approvalsMustBeExternal"] = o.ApprovalsMustBeExternal
@@ -227,7 +238,7 @@ func (o AccessRequestConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequestConfig) UnmarshalJSON(bytes []byte) (err error) {

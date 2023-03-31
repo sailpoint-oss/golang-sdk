@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Transform type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Transform{}
+
 // Transform DTO for representing an internally- or customer-defined transform.
 type Transform struct {
 	// Unique ID of this transform
@@ -188,28 +191,26 @@ func (o *Transform) SetInternal(v bool) {
 }
 
 func (o Transform) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Transform) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["attributes"] = o.Attributes
-	}
-	if !isNil(o.Internal) {
-		toSerialize["internal"] = o.Internal
-	}
+	// skip: id is readOnly
+	// skip: name is readOnly
+	// skip: type is readOnly
+	toSerialize["attributes"] = o.Attributes
+	// skip: internal is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Transform) UnmarshalJSON(bytes []byte) (err error) {

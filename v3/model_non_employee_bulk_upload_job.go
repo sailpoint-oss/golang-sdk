@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the NonEmployeeBulkUploadJob type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeBulkUploadJob{}
+
 // NonEmployeeBulkUploadJob struct for NonEmployeeBulkUploadJob
 type NonEmployeeBulkUploadJob struct {
 	// The bulk upload job's ID. (UUID)
@@ -210,6 +213,14 @@ func (o *NonEmployeeBulkUploadJob) SetStatus(v string) {
 }
 
 func (o NonEmployeeBulkUploadJob) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeBulkUploadJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -231,7 +242,7 @@ func (o NonEmployeeBulkUploadJob) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeBulkUploadJob) UnmarshalJSON(bytes []byte) (err error) {

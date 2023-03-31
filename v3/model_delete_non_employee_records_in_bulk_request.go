@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeleteNonEmployeeRecordsInBulkRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeleteNonEmployeeRecordsInBulkRequest{}
+
 // DeleteNonEmployeeRecordsInBulkRequest struct for DeleteNonEmployeeRecordsInBulkRequest
 type DeleteNonEmployeeRecordsInBulkRequest struct {
 	// List of non-employee ids.
@@ -66,16 +69,22 @@ func (o *DeleteNonEmployeeRecordsInBulkRequest) SetIds(v []string) {
 }
 
 func (o DeleteNonEmployeeRecordsInBulkRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ids"] = o.Ids
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DeleteNonEmployeeRecordsInBulkRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ids"] = o.Ids
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *DeleteNonEmployeeRecordsInBulkRequest) UnmarshalJSON(bytes []byte) (err error) {

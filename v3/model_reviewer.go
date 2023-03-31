@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Reviewer type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Reviewer{}
+
 // Reviewer struct for Reviewer
 type Reviewer struct {
 	// The id of the reviewer.
@@ -264,6 +267,14 @@ func (o *Reviewer) UnsetModified() {
 }
 
 func (o Reviewer) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Reviewer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -288,7 +299,7 @@ func (o Reviewer) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Reviewer) UnmarshalJSON(bytes []byte) (err error) {

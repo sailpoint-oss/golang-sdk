@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessRequested type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessRequested{}
+
 // AccessRequested struct for AccessRequested
 type AccessRequested struct {
 	AccessRequest *AccessRequestResponse `json:"accessRequest,omitempty"`
@@ -174,6 +177,14 @@ func (o *AccessRequested) SetDt(v string) {
 }
 
 func (o AccessRequested) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessRequested) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccessRequest) {
 		toSerialize["accessRequest"] = o.AccessRequest
@@ -192,7 +203,7 @@ func (o AccessRequested) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessRequested) UnmarshalJSON(bytes []byte) (err error) {

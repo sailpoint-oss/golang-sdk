@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityAttributesChanged type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityAttributesChanged{}
+
 // IdentityAttributesChanged struct for IdentityAttributesChanged
 type IdentityAttributesChanged struct {
 	Identity TriggerInputIdentityAttributesChangedIdentity `json:"identity"`
@@ -92,19 +95,23 @@ func (o *IdentityAttributesChanged) SetChanges(v []TriggerInputIdentityAttribute
 }
 
 func (o IdentityAttributesChanged) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityAttributesChanged) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["identity"] = o.Identity
-	}
-	if true {
-		toSerialize["changes"] = o.Changes
-	}
+	toSerialize["identity"] = o.Identity
+	toSerialize["changes"] = o.Changes
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityAttributesChanged) UnmarshalJSON(bytes []byte) (err error) {

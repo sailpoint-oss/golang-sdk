@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityWithNewAccessAccessRefsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityWithNewAccessAccessRefsInner{}
+
 // IdentityWithNewAccessAccessRefsInner The types of objects supported for SOD violations
 type IdentityWithNewAccessAccessRefsInner struct {
 	// The type of object that is referenced
@@ -141,6 +144,14 @@ func (o *IdentityWithNewAccessAccessRefsInner) SetName(v string) {
 }
 
 func (o IdentityWithNewAccessAccessRefsInner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityWithNewAccessAccessRefsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o IdentityWithNewAccessAccessRefsInner) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityWithNewAccessAccessRefsInner) UnmarshalJSON(bytes []byte) (err error) {

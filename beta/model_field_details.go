@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FieldDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FieldDetails{}
+
 // FieldDetails struct for FieldDetails
 type FieldDetails struct {
 	// Name of the FormItem
@@ -243,6 +246,14 @@ func (o *FieldDetails) SetValue(v map[string]interface{}) {
 }
 
 func (o FieldDetails) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FieldDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -267,7 +278,7 @@ func (o FieldDetails) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *FieldDetails) UnmarshalJSON(bytes []byte) (err error) {

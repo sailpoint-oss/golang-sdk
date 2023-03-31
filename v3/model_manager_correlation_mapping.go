@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ManagerCorrelationMapping type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ManagerCorrelationMapping{}
+
 // ManagerCorrelationMapping struct for ManagerCorrelationMapping
 type ManagerCorrelationMapping struct {
 	// Name of the attribute to use for manager correlation. The value found on the account attribute will be used to lookup the manager's identity.
@@ -107,6 +110,14 @@ func (o *ManagerCorrelationMapping) SetIdentityAttribute(v string) {
 }
 
 func (o ManagerCorrelationMapping) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ManagerCorrelationMapping) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccountAttribute) {
 		toSerialize["accountAttribute"] = o.AccountAttribute
@@ -119,7 +130,7 @@ func (o ManagerCorrelationMapping) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ManagerCorrelationMapping) UnmarshalJSON(bytes []byte) (err error) {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the TriggerInputCertificationSignedOffCertification type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputCertificationSignedOffCertification{}
+
 // TriggerInputCertificationSignedOffCertification The certification campaign that was signed off on.
 type TriggerInputCertificationSignedOffCertification struct {
 	// Unique ID of the certification.
@@ -533,64 +536,44 @@ func (o *TriggerInputCertificationSignedOffCertification) SetEntitiesTotal(v int
 }
 
 func (o TriggerInputCertificationSignedOffCertification) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputCertificationSignedOffCertification) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["created"] = o.Created
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["created"] = o.Created
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if true {
-		toSerialize["campaignRef"] = o.CampaignRef
-	}
-	if true {
-		toSerialize["phase"] = o.Phase
-	}
-	if true {
-		toSerialize["due"] = o.Due
-	}
-	if true {
-		toSerialize["signed"] = o.Signed
-	}
-	if true {
-		toSerialize["reviewer"] = o.Reviewer
-	}
+	toSerialize["campaignRef"] = o.CampaignRef
+	toSerialize["phase"] = o.Phase
+	toSerialize["due"] = o.Due
+	toSerialize["signed"] = o.Signed
+	toSerialize["reviewer"] = o.Reviewer
 	if !isNil(o.Reassignment) {
 		toSerialize["reassignment"] = o.Reassignment
 	}
-	if true {
-		toSerialize["hasErrors"] = o.HasErrors
-	}
+	toSerialize["hasErrors"] = o.HasErrors
 	if o.ErrorMessage.IsSet() {
 		toSerialize["errorMessage"] = o.ErrorMessage.Get()
 	}
-	if true {
-		toSerialize["completed"] = o.Completed
-	}
-	if true {
-		toSerialize["decisionsMade"] = o.DecisionsMade
-	}
-	if true {
-		toSerialize["decisionsTotal"] = o.DecisionsTotal
-	}
-	if true {
-		toSerialize["entitiesCompleted"] = o.EntitiesCompleted
-	}
-	if true {
-		toSerialize["entitiesTotal"] = o.EntitiesTotal
-	}
+	toSerialize["completed"] = o.Completed
+	toSerialize["decisionsMade"] = o.DecisionsMade
+	toSerialize["decisionsTotal"] = o.DecisionsTotal
+	toSerialize["entitiesCompleted"] = o.EntitiesCompleted
+	toSerialize["entitiesTotal"] = o.EntitiesTotal
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputCertificationSignedOffCertification) UnmarshalJSON(bytes []byte) (err error) {

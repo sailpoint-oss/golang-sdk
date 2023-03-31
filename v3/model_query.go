@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Query type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Query{}
+
 // Query Query parameters used to construct an Elasticsearch query object.
 type Query struct {
 	// The query using the Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL extended by SailPoint to support Nested queries.
@@ -174,6 +177,14 @@ func (o *Query) SetInnerHit(v InnerHit) {
 }
 
 func (o Query) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Query) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Query) {
 		toSerialize["query"] = o.Query
@@ -192,7 +203,7 @@ func (o Query) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Query) UnmarshalJSON(bytes []byte) (err error) {

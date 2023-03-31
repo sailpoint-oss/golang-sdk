@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountsAsyncResult type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountsAsyncResult{}
+
 // AccountsAsyncResult Accounts async response containing details on started async process
 type AccountsAsyncResult struct {
 	// id of the task
@@ -66,16 +69,22 @@ func (o *AccountsAsyncResult) SetId(v string) {
 }
 
 func (o AccountsAsyncResult) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccountsAsyncResult) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccountsAsyncResult) UnmarshalJSON(bytes []byte) (err error) {

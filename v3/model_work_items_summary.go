@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WorkItemsSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WorkItemsSummary{}
+
 // WorkItemsSummary struct for WorkItemsSummary
 type WorkItemsSummary struct {
 	// The count of open work items
@@ -141,6 +144,14 @@ func (o *WorkItemsSummary) SetTotal(v int32) {
 }
 
 func (o WorkItemsSummary) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o WorkItemsSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Open) {
 		toSerialize["open"] = o.Open
@@ -156,7 +167,7 @@ func (o WorkItemsSummary) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *WorkItemsSummary) UnmarshalJSON(bytes []byte) (err error) {

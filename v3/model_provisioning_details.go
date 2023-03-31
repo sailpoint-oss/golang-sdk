@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProvisioningDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProvisioningDetails{}
+
 // ProvisioningDetails Provides additional details about provisioning for this request.
 type ProvisioningDetails struct {
 	// Ordered CSV of sub phase references to objects that contain more information about provisioning. For example, this can contain \"manualWorkItemDetails\" which indicate that there is further information in that object for this phase.
@@ -73,6 +76,14 @@ func (o *ProvisioningDetails) SetOrderedSubPhaseReferences(v string) {
 }
 
 func (o ProvisioningDetails) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProvisioningDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.OrderedSubPhaseReferences) {
 		toSerialize["orderedSubPhaseReferences"] = o.OrderedSubPhaseReferences
@@ -82,7 +93,7 @@ func (o ProvisioningDetails) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ProvisioningDetails) UnmarshalJSON(bytes []byte) (err error) {

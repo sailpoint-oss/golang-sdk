@@ -156,7 +156,7 @@ func (a *ApplicationsApiService) DeleteApplicationExecute(r ApiDeleteApplication
 	}
 
 	localVarPath := localBasePath + "/cc/api/app/delete/:id"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -246,7 +246,7 @@ func (a *ApplicationsApiService) GetApplicationExecute(r ApiGetApplicationReques
 	}
 
 	localVarPath := localBasePath + "/cc/api/app/get/:id"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -336,7 +336,7 @@ func (a *ApplicationsApiService) GetApplicationAccessProfilesExecute(r ApiGetApp
 	}
 
 	localVarPath := localBasePath + "/cc/api/app/getAccessProfiles/:id"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -518,7 +518,7 @@ func (a *ApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplication
 	}
 
 	localVarPath := localBasePath + "/cc/api/app/update/:id"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

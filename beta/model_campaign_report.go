@@ -11,9 +11,12 @@ API version: 3.1.0-beta
 package beta
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the CampaignReport type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CampaignReport{}
 
 // CampaignReport struct for CampaignReport
 type CampaignReport struct {
@@ -234,6 +237,14 @@ func (o *CampaignReport) SetLastRunAt(v time.Time) {
 }
 
 func (o CampaignReport) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CampaignReport) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -247,18 +258,14 @@ func (o CampaignReport) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if true {
-		toSerialize["reportType"] = o.ReportType
-	}
-	if !isNil(o.LastRunAt) {
-		toSerialize["lastRunAt"] = o.LastRunAt
-	}
+	toSerialize["reportType"] = o.ReportType
+	// skip: lastRunAt is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CampaignReport) UnmarshalJSON(bytes []byte) (err error) {

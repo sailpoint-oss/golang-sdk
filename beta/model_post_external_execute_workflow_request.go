@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PostExternalExecuteWorkflowRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PostExternalExecuteWorkflowRequest{}
+
 // PostExternalExecuteWorkflowRequest struct for PostExternalExecuteWorkflowRequest
 type PostExternalExecuteWorkflowRequest struct {
 	// The input for the workflow
@@ -73,6 +76,14 @@ func (o *PostExternalExecuteWorkflowRequest) SetInput(v map[string]interface{}) 
 }
 
 func (o PostExternalExecuteWorkflowRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PostExternalExecuteWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Input) {
 		toSerialize["input"] = o.Input
@@ -82,7 +93,7 @@ func (o PostExternalExecuteWorkflowRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PostExternalExecuteWorkflowRequest) UnmarshalJSON(bytes []byte) (err error) {

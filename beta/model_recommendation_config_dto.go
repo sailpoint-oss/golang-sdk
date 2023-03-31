@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RecommendationConfigDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RecommendationConfigDto{}
+
 // RecommendationConfigDto struct for RecommendationConfigDto
 type RecommendationConfigDto struct {
 	// List of identity attributes to use for calculating certification recommendations
@@ -141,6 +144,14 @@ func (o *RecommendationConfigDto) SetForceRefresh(v bool) {
 }
 
 func (o RecommendationConfigDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RecommendationConfigDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.RecommenderFeatures) {
 		toSerialize["recommenderFeatures"] = o.RecommenderFeatures
@@ -156,7 +167,7 @@ func (o RecommendationConfigDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RecommendationConfigDto) UnmarshalJSON(bytes []byte) (err error) {

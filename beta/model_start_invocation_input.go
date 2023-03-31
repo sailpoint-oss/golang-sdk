@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StartInvocationInput type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StartInvocationInput{}
+
 // StartInvocationInput struct for StartInvocationInput
 type StartInvocationInput struct {
 	// Trigger ID
@@ -141,6 +144,14 @@ func (o *StartInvocationInput) SetContentJson(v map[string]interface{}) {
 }
 
 func (o StartInvocationInput) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o StartInvocationInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.TriggerId) {
 		toSerialize["triggerId"] = o.TriggerId
@@ -156,7 +167,7 @@ func (o StartInvocationInput) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *StartInvocationInput) UnmarshalJSON(bytes []byte) (err error) {

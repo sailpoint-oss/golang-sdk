@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NonEmployeeApprovalDecision type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NonEmployeeApprovalDecision{}
+
 // NonEmployeeApprovalDecision struct for NonEmployeeApprovalDecision
 type NonEmployeeApprovalDecision struct {
 	// Comment on the approval item.
@@ -73,6 +76,14 @@ func (o *NonEmployeeApprovalDecision) SetComment(v string) {
 }
 
 func (o NonEmployeeApprovalDecision) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NonEmployeeApprovalDecision) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
@@ -82,7 +93,7 @@ func (o NonEmployeeApprovalDecision) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NonEmployeeApprovalDecision) UnmarshalJSON(bytes []byte) (err error) {

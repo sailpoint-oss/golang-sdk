@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RemediationItems type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RemediationItems{}
+
 // RemediationItems struct for RemediationItems
 type RemediationItems struct {
 	// The ID of the certification
@@ -345,6 +348,14 @@ func (o *RemediationItems) SetNativeIdentity(v string) {
 }
 
 func (o RemediationItems) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RemediationItems) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -378,7 +389,7 @@ func (o RemediationItems) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RemediationItems) UnmarshalJSON(bytes []byte) (err error) {

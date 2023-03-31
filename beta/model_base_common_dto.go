@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the BaseCommonDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BaseCommonDto{}
+
 // BaseCommonDto struct for BaseCommonDto
 type BaseCommonDto struct {
 	// System-generated unique ID of the Object
@@ -169,25 +172,25 @@ func (o *BaseCommonDto) SetModified(v time.Time) {
 }
 
 func (o BaseCommonDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BaseCommonDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	// skip: created is readOnly
+	// skip: modified is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BaseCommonDto) UnmarshalJSON(bytes []byte) (err error) {

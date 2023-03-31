@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DkimAttributesDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DkimAttributesDto{}
+
 // DkimAttributesDto DKIM attributes for a domain / identity
 type DkimAttributesDto struct {
 	// The identity or domain address
@@ -175,6 +178,14 @@ func (o *DkimAttributesDto) SetDkimVerificationStatus(v string) {
 }
 
 func (o DkimAttributesDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DkimAttributesDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Address) {
 		toSerialize["address"] = o.Address
@@ -193,7 +204,7 @@ func (o DkimAttributesDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *DkimAttributesDto) UnmarshalJSON(bytes []byte) (err error) {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the PreferencesDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PreferencesDto{}
+
 // PreferencesDto Maps an Identity's attribute key to a list of preferred notification mediums.
 type PreferencesDto struct {
 	// The template notification key.
@@ -142,6 +145,14 @@ func (o *PreferencesDto) SetModified(v time.Time) {
 }
 
 func (o PreferencesDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PreferencesDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Key) {
 		toSerialize["key"] = o.Key
@@ -157,7 +168,7 @@ func (o PreferencesDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PreferencesDto) UnmarshalJSON(bytes []byte) (err error) {

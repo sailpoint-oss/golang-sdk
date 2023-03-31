@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Owner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Owner{}
+
 // Owner struct for Owner
 type Owner struct {
 	// The unique ID of the referenced object.
@@ -174,6 +177,14 @@ func (o *Owner) SetEmail(v string) {
 }
 
 func (o Owner) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Owner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -192,7 +203,7 @@ func (o Owner) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Owner) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CancelAccessRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CancelAccessRequest{}
+
 // CancelAccessRequest Request body payload for cancel access request endpoint.
 type CancelAccessRequest struct {
 	// ID of the account activity object corresponding to the access request.
@@ -93,19 +96,23 @@ func (o *CancelAccessRequest) SetComment(v string) {
 }
 
 func (o CancelAccessRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o CancelAccessRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["accountActivityId"] = o.AccountActivityId
-	}
-	if true {
-		toSerialize["comment"] = o.Comment
-	}
+	toSerialize["accountActivityId"] = o.AccountActivityId
+	toSerialize["comment"] = o.Comment
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *CancelAccessRequest) UnmarshalJSON(bytes []byte) (err error) {

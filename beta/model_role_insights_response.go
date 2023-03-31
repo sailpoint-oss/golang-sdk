@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the RoleInsightsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleInsightsResponse{}
+
 // RoleInsightsResponse struct for RoleInsightsResponse
 type RoleInsightsResponse struct {
 	// Request Id for a role insight generation request
@@ -244,6 +247,14 @@ func (o *RoleInsightsResponse) SetStatus(v string) {
 }
 
 func (o RoleInsightsResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleInsightsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -268,7 +279,7 @@ func (o RoleInsightsResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleInsightsResponse) UnmarshalJSON(bytes []byte) (err error) {

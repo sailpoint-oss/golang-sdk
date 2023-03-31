@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SubSearchAggregationSpecification type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SubSearchAggregationSpecification{}
+
 // SubSearchAggregationSpecification struct for SubSearchAggregationSpecification
 type SubSearchAggregationSpecification struct {
 	Nested *NestedAggregation `json:"nested,omitempty"`
@@ -204,6 +207,14 @@ func (o *SubSearchAggregationSpecification) SetSubAggregation(v Aggregations) {
 }
 
 func (o SubSearchAggregationSpecification) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SubSearchAggregationSpecification) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Nested) {
 		toSerialize["nested"] = o.Nested
@@ -225,7 +236,7 @@ func (o SubSearchAggregationSpecification) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SubSearchAggregationSpecification) UnmarshalJSON(bytes []byte) (err error) {

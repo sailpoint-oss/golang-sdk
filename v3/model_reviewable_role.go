@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ReviewableRole type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ReviewableRole{}
+
 // ReviewableRole struct for ReviewableRole
 type ReviewableRole struct {
 	// The id for the Role
@@ -321,6 +324,14 @@ func (o *ReviewableRole) SetAccessProfiles(v []ReviewableAccessProfile) {
 }
 
 func (o ReviewableRole) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ReviewableRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -351,7 +362,7 @@ func (o ReviewableRole) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ReviewableRole) UnmarshalJSON(bytes []byte) (err error) {

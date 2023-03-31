@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordInfo{}
+
 // PasswordInfo struct for PasswordInfo
 type PasswordInfo struct {
 	IdentityId *string `json:"identityId,omitempty"`
@@ -240,6 +243,14 @@ func (o *PasswordInfo) SetPolicies(v []string) {
 }
 
 func (o PasswordInfo) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PasswordInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.IdentityId) {
 		toSerialize["identityId"] = o.IdentityId
@@ -264,7 +275,7 @@ func (o PasswordInfo) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PasswordInfo) UnmarshalJSON(bytes []byte) (err error) {

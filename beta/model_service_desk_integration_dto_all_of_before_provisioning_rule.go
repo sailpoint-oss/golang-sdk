@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule{}
+
 // ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule Reference to beforeProvisioningRule for this Service Desk integration
 type ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule struct {
 	// The type of object being referenced
@@ -141,6 +144,14 @@ func (o *ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule) SetName(v string)
 }
 
 func (o ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule) MarshalJSON() ([]b
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProvisioningCriteriaLevel3 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProvisioningCriteriaLevel3{}
+
 // ProvisioningCriteriaLevel3 Defines matching criteria for an Account to be provisioned with a specific Access Profile
 type ProvisioningCriteriaLevel3 struct {
 	Operation *ProvisioningCriteriaOperation `json:"operation,omitempty"`
@@ -150,6 +153,14 @@ func (o *ProvisioningCriteriaLevel3) SetValue(v string) {
 }
 
 func (o ProvisioningCriteriaLevel3) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ProvisioningCriteriaLevel3) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Operation) {
 		toSerialize["operation"] = o.Operation
@@ -165,7 +176,7 @@ func (o ProvisioningCriteriaLevel3) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ProvisioningCriteriaLevel3) UnmarshalJSON(bytes []byte) (err error) {

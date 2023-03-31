@@ -108,7 +108,7 @@ func (a *SystemApiService) RefreshIdentitiesExecute(r ApiRefreshIdentitiesReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.contentType != nil {
-		localVarHeaderParams["Content-Type"] = parameterToString(*r.contentType, "")
+		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
 	localVarPostBody = r.body

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMiningPotentialRoleExportResponseAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningPotentialRoleExportResponseAllOf{}
+
 // RoleMiningPotentialRoleExportResponseAllOf struct for RoleMiningPotentialRoleExportResponseAllOf
 type RoleMiningPotentialRoleExportResponseAllOf struct {
 	// ID used to reference this export
@@ -106,6 +109,14 @@ func (o *RoleMiningPotentialRoleExportResponseAllOf) SetStatus(v RoleMiningPoten
 }
 
 func (o RoleMiningPotentialRoleExportResponseAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningPotentialRoleExportResponseAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ExportId) {
 		toSerialize["exportId"] = o.ExportId
@@ -118,7 +129,7 @@ func (o RoleMiningPotentialRoleExportResponseAllOf) MarshalJSON() ([]byte, error
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningPotentialRoleExportResponseAllOf) UnmarshalJSON(bytes []byte) (err error) {

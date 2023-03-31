@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the HttpConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HttpConfig{}
+
 // HttpConfig struct for HttpConfig
 type HttpConfig struct {
 	// URL of the external/custom integration.
@@ -195,13 +198,17 @@ func (o *HttpConfig) SetBearerTokenAuthConfig(v BearerTokenAuthConfig) {
 }
 
 func (o HttpConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o HttpConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["url"] = o.Url
-	}
-	if true {
-		toSerialize["httpDispatchMode"] = o.HttpDispatchMode
-	}
+	toSerialize["url"] = o.Url
+	toSerialize["httpDispatchMode"] = o.HttpDispatchMode
 	if !isNil(o.HttpAuthenticationType) {
 		toSerialize["httpAuthenticationType"] = o.HttpAuthenticationType
 	}
@@ -216,7 +223,7 @@ func (o HttpConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *HttpConfig) UnmarshalJSON(bytes []byte) (err error) {

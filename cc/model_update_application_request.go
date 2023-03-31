@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UpdateApplicationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateApplicationRequest{}
+
 // UpdateApplicationRequest struct for UpdateApplicationRequest
 type UpdateApplicationRequest struct {
 	Description *string `json:"description,omitempty"`
@@ -72,6 +75,14 @@ func (o *UpdateApplicationRequest) SetDescription(v string) {
 }
 
 func (o UpdateApplicationRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o UpdateApplicationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -81,7 +92,7 @@ func (o UpdateApplicationRequest) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *UpdateApplicationRequest) UnmarshalJSON(bytes []byte) (err error) {

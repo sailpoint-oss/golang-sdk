@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the RoleInsightsSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleInsightsSummary{}
+
 // RoleInsightsSummary struct for RoleInsightsSummary
 type RoleInsightsSummary struct {
 	// Total number of roles with updates
@@ -244,6 +247,14 @@ func (o *RoleInsightsSummary) SetTotalNumberOfIdentities(v int32) {
 }
 
 func (o RoleInsightsSummary) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleInsightsSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.NumberOfUpdates) {
 		toSerialize["numberOfUpdates"] = o.NumberOfUpdates
@@ -268,7 +279,7 @@ func (o RoleInsightsSummary) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleInsightsSummary) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EntitlementSource type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementSource{}
+
 // EntitlementSource struct for EntitlementSource
 type EntitlementSource struct {
 	// The source ID
@@ -141,6 +144,14 @@ func (o *EntitlementSource) SetName(v string) {
 }
 
 func (o EntitlementSource) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EntitlementSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -156,7 +167,7 @@ func (o EntitlementSource) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EntitlementSource) UnmarshalJSON(bytes []byte) (err error) {

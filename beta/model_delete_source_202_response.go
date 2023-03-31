@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeleteSource202Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeleteSource202Response{}
+
 // DeleteSource202Response struct for DeleteSource202Response
 type DeleteSource202Response struct {
 	// The type of object being referenced
@@ -141,6 +144,14 @@ func (o *DeleteSource202Response) SetName(v string) {
 }
 
 func (o DeleteSource202Response) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o DeleteSource202Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -156,7 +167,7 @@ func (o DeleteSource202Response) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *DeleteSource202Response) UnmarshalJSON(bytes []byte) (err error) {

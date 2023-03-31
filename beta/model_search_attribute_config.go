@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SearchAttributeConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SearchAttributeConfig{}
+
 // SearchAttributeConfig struct for SearchAttributeConfig
 type SearchAttributeConfig struct {
 	// Name of the new attribute
@@ -141,6 +144,14 @@ func (o *SearchAttributeConfig) SetApplicationAttributes(v map[string]interface{
 }
 
 func (o SearchAttributeConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SearchAttributeConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -156,7 +167,7 @@ func (o SearchAttributeConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SearchAttributeConfig) UnmarshalJSON(bytes []byte) (err error) {

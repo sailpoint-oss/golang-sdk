@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityAttributeConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityAttributeConfig{}
+
 // IdentityAttributeConfig struct for IdentityAttributeConfig
 type IdentityAttributeConfig struct {
 	// If the profile or mapping is enabled
@@ -106,6 +109,14 @@ func (o *IdentityAttributeConfig) SetAttributeTransforms(v []IdentityAttributeTr
 }
 
 func (o IdentityAttributeConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityAttributeConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
@@ -118,7 +129,7 @@ func (o IdentityAttributeConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityAttributeConfig) UnmarshalJSON(bytes []byte) (err error) {

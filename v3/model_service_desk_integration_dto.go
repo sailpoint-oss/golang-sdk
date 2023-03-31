@@ -11,9 +11,12 @@ API version: 3.0.0
 package v3
 
 import (
-	"time"
 	"encoding/json"
+	"time"
 )
+
+// checks if the ServiceDeskIntegrationDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServiceDeskIntegrationDto{}
 
 // ServiceDeskIntegrationDto struct for ServiceDeskIntegrationDto
 type ServiceDeskIntegrationDto struct {
@@ -460,25 +463,21 @@ func (o *ServiceDeskIntegrationDto) SetBeforeProvisioningRule(v ServiceDeskInteg
 }
 
 func (o ServiceDeskIntegrationDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ServiceDeskIntegrationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	// skip: created is readOnly
+	// skip: modified is readOnly
+	toSerialize["description"] = o.Description
+	toSerialize["type"] = o.Type
 	if !isNil(o.OwnerRef) {
 		toSerialize["ownerRef"] = o.OwnerRef
 	}
@@ -494,9 +493,7 @@ func (o ServiceDeskIntegrationDto) MarshalJSON() ([]byte, error) {
 	if !isNil(o.ProvisioningConfig) {
 		toSerialize["provisioningConfig"] = o.ProvisioningConfig
 	}
-	if true {
-		toSerialize["attributes"] = o.Attributes
-	}
+	toSerialize["attributes"] = o.Attributes
 	if !isNil(o.BeforeProvisioningRule) {
 		toSerialize["beforeProvisioningRule"] = o.BeforeProvisioningRule
 	}
@@ -505,7 +502,7 @@ func (o ServiceDeskIntegrationDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ServiceDeskIntegrationDto) UnmarshalJSON(bytes []byte) (err error) {

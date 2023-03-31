@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SpConfigObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpConfigObject{}
+
 // SpConfigObject Response model for get object configuration.
 type SpConfigObject struct {
 	// The object type this configuration is for.
@@ -412,6 +415,14 @@ func (o *SpConfigObject) SetSignatureRequired(v bool) {
 }
 
 func (o SpConfigObject) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SpConfigObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ObjectType) {
 		toSerialize["objectType"] = o.ObjectType
@@ -451,7 +462,7 @@ func (o SpConfigObject) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SpConfigObject) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PasswordStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordStatus{}
+
 // PasswordStatus struct for PasswordStatus
 type PasswordStatus struct {
 	// The password change request ID
@@ -185,6 +188,14 @@ func (o *PasswordStatus) SetSourceIds(v []string) {
 }
 
 func (o PasswordStatus) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PasswordStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.RequestId.IsSet() {
 		toSerialize["requestId"] = o.RequestId.Get()
@@ -203,7 +214,7 @@ func (o PasswordStatus) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PasswordStatus) UnmarshalJSON(bytes []byte) (err error) {

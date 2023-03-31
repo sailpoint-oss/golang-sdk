@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the PendingApproval type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PendingApproval{}
+
 // PendingApproval struct for PendingApproval
 type PendingApproval struct {
 	// The approval id.
@@ -678,6 +681,14 @@ func (o *PendingApproval) SetSodViolationContext(v SodViolationContextCheckCompl
 }
 
 func (o PendingApproval) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PendingApproval) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -741,7 +752,7 @@ func (o PendingApproval) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PendingApproval) UnmarshalJSON(bytes []byte) (err error) {

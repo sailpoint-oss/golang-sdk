@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TestWorkflowRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TestWorkflowRequest{}
+
 // TestWorkflowRequest struct for TestWorkflowRequest
 type TestWorkflowRequest struct {
 	// The test input for the workflow.
@@ -66,16 +69,22 @@ func (o *TestWorkflowRequest) SetInput(v map[string]interface{}) {
 }
 
 func (o TestWorkflowRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["input"] = o.Input
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TestWorkflowRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["input"] = o.Input
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TestWorkflowRequest) UnmarshalJSON(bytes []byte) (err error) {

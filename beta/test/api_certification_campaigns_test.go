@@ -14,7 +14,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_beta_CertificationCampaignsApiService(t *testing.T) {
@@ -80,10 +80,9 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.DeleteCampaignTemplate(context.Background(), id).Execute()
+		httpRes, err := apiClient.CertificationCampaignsApi.DeleteCampaignTemplate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -94,10 +93,9 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.DeleteCampaignTemplateSchedule(context.Background(), id).Execute()
+		httpRes, err := apiClient.CertificationCampaignsApi.DeleteCampaignTemplateSchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -295,10 +293,9 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.SetCampaignTemplateSchedule(context.Background(), id).Execute()
+		httpRes, err := apiClient.CertificationCampaignsApi.SetCampaignTemplateSchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the EntitlementDocumentAllOf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementDocumentAllOf{}
+
 // EntitlementDocumentAllOf struct for EntitlementDocumentAllOf
 type EntitlementDocumentAllOf struct {
 	// A date-time in ISO-8601 format
@@ -294,6 +297,14 @@ func (o *EntitlementDocumentAllOf) SetTags(v []string) {
 }
 
 func (o EntitlementDocumentAllOf) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EntitlementDocumentAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
@@ -321,7 +332,7 @@ func (o EntitlementDocumentAllOf) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EntitlementDocumentAllOf) UnmarshalJSON(bytes []byte) (err error) {

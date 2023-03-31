@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RoleMiningEntitlementRef type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RoleMiningEntitlementRef{}
+
 // RoleMiningEntitlementRef struct for RoleMiningEntitlementRef
 type RoleMiningEntitlementRef struct {
 	// Id of the entitlement
@@ -141,6 +144,14 @@ func (o *RoleMiningEntitlementRef) SetDescription(v string) {
 }
 
 func (o RoleMiningEntitlementRef) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o RoleMiningEntitlementRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -156,7 +167,7 @@ func (o RoleMiningEntitlementRef) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *RoleMiningEntitlementRef) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef{}
+
 // FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef This determines who remediation tasks will be assigned to. Remediation tasks are created for each revoke decision on items in the campaign. The only legal remediator type is 'IDENTITY', and the chosen identity must be a Role Admin or Org Admin.
 type FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef struct {
 	// Legal Remediator Type
@@ -127,22 +130,24 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) SetName(v st
 }
 
 func (o FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["id"] = o.Id
+	// skip: name is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef) UnmarshalJSON(bytes []byte) (err error) {

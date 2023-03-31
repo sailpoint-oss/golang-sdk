@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FieldDetailsDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FieldDetailsDto{}
+
 // FieldDetailsDto struct for FieldDetailsDto
 type FieldDetailsDto struct {
 	// The name of the attribute.
@@ -247,6 +250,14 @@ func (o *FieldDetailsDto) SetIsMultiValued(v bool) {
 }
 
 func (o FieldDetailsDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o FieldDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -257,9 +268,7 @@ func (o FieldDetailsDto) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if !isNil(o.IsRequired) {
-		toSerialize["isRequired"] = o.IsRequired
-	}
+	// skip: isRequired is readOnly
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
@@ -271,7 +280,7 @@ func (o FieldDetailsDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *FieldDetailsDto) UnmarshalJSON(bytes []byte) (err error) {

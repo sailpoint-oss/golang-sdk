@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SourceHealthDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceHealthDto{}
+
 // SourceHealthDto Dto for source health data
 type SourceHealthDto struct {
 	// the id of the Source
@@ -379,10 +382,16 @@ func (o *SourceHealthDto) SetStatus(v string) {
 }
 
 func (o SourceHealthDto) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SourceHealthDto) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	// skip: id is readOnly
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
@@ -415,7 +424,7 @@ func (o SourceHealthDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SourceHealthDto) UnmarshalJSON(bytes []byte) (err error) {

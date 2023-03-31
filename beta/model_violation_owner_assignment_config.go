@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ViolationOwnerAssignmentConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ViolationOwnerAssignmentConfig{}
+
 // ViolationOwnerAssignmentConfig struct for ViolationOwnerAssignmentConfig
 type ViolationOwnerAssignmentConfig struct {
 	// Details about the violations owner. MANAGER - identity's manager STATIC - Governance Group or Identity
@@ -106,6 +109,14 @@ func (o *ViolationOwnerAssignmentConfig) SetOwnerRef(v BaseReferenceDto) {
 }
 
 func (o ViolationOwnerAssignmentConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ViolationOwnerAssignmentConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AssignmentRule) {
 		toSerialize["assignmentRule"] = o.AssignmentRule
@@ -118,7 +129,7 @@ func (o ViolationOwnerAssignmentConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *ViolationOwnerAssignmentConfig) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BaseDocument type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BaseDocument{}
+
 // BaseDocument struct for BaseDocument
 type BaseDocument struct {
 	Id string `json:"id"`
@@ -117,22 +120,24 @@ func (o *BaseDocument) SetType(v DocumentType) {
 }
 
 func (o BaseDocument) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BaseDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["_type"] = o.Type
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["_type"] = o.Type
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *BaseDocument) UnmarshalJSON(bytes []byte) (err error) {

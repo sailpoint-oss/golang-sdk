@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Slimcampaign type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Slimcampaign{}
+
 // Slimcampaign struct for Slimcampaign
 type Slimcampaign struct {
 	// Id of the campaign
@@ -359,22 +362,22 @@ func (o *Slimcampaign) SetCorrelatedStatus(v string) {
 }
 
 func (o Slimcampaign) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Slimcampaign) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
+	// skip: id is readOnly
+	toSerialize["name"] = o.Name
+	toSerialize["description"] = o.Description
 	if !isNil(o.Deadline) {
 		toSerialize["deadline"] = o.Deadline
 	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["type"] = o.Type
 	if !isNil(o.EmailNotificationEnabled) {
 		toSerialize["emailNotificationEnabled"] = o.EmailNotificationEnabled
 	}
@@ -384,9 +387,7 @@ func (o Slimcampaign) MarshalJSON() ([]byte, error) {
 	if !isNil(o.RecommendationsEnabled) {
 		toSerialize["recommendationsEnabled"] = o.RecommendationsEnabled
 	}
-	if !isNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
+	// skip: status is readOnly
 	if !isNil(o.CorrelatedStatus) {
 		toSerialize["correlatedStatus"] = o.CorrelatedStatus
 	}
@@ -395,7 +396,7 @@ func (o Slimcampaign) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Slimcampaign) UnmarshalJSON(bytes []byte) (err error) {

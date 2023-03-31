@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessProfileBulkDeleteResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileBulkDeleteResponse{}
+
 // AccessProfileBulkDeleteResponse struct for AccessProfileBulkDeleteResponse
 type AccessProfileBulkDeleteResponse struct {
 	// ID of the task which is executing the bulk deletion. This can be passed to the **_/task-status** API to track status.
@@ -141,6 +144,14 @@ func (o *AccessProfileBulkDeleteResponse) SetInUse(v []AccessProfileUsage) {
 }
 
 func (o AccessProfileBulkDeleteResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfileBulkDeleteResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.TaskId) {
 		toSerialize["taskId"] = o.TaskId
@@ -156,7 +167,7 @@ func (o AccessProfileBulkDeleteResponse) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfileBulkDeleteResponse) UnmarshalJSON(bytes []byte) (err error) {

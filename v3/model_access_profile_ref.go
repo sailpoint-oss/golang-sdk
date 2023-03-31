@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccessProfileRef type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccessProfileRef{}
+
 // AccessProfileRef struct for AccessProfileRef
 type AccessProfileRef struct {
 	// ID of the Access Profile
@@ -141,6 +144,14 @@ func (o *AccessProfileRef) SetName(v string) {
 }
 
 func (o AccessProfileRef) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AccessProfileRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -156,7 +167,7 @@ func (o AccessProfileRef) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *AccessProfileRef) UnmarshalJSON(bytes []byte) (err error) {

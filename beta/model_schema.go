@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Schema type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Schema{}
+
 // Schema struct for Schema
 type Schema struct {
 	// The id of the Schema.
@@ -448,6 +451,14 @@ func (o *Schema) SetModified(v time.Time) {
 }
 
 func (o Schema) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Schema) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -490,7 +501,7 @@ func (o Schema) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *Schema) UnmarshalJSON(bytes []byte) (err error) {

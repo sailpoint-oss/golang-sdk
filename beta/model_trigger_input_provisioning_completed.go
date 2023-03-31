@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TriggerInputProvisioningCompleted type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TriggerInputProvisioningCompleted{}
+
 // TriggerInputProvisioningCompleted struct for TriggerInputProvisioningCompleted
 type TriggerInputProvisioningCompleted struct {
 	// The reference number of the provisioning request. Useful for tracking status in the Account Activity search interface.
@@ -303,13 +306,17 @@ func (o *TriggerInputProvisioningCompleted) SetAccountRequests(v []TriggerInputP
 }
 
 func (o TriggerInputProvisioningCompleted) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TriggerInputProvisioningCompleted) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["trackingNumber"] = o.TrackingNumber
-	}
-	if true {
-		toSerialize["sources"] = o.Sources
-	}
+	toSerialize["trackingNumber"] = o.TrackingNumber
+	toSerialize["sources"] = o.Sources
 	if o.Action.IsSet() {
 		toSerialize["action"] = o.Action.Get()
 	}
@@ -319,21 +326,17 @@ func (o TriggerInputProvisioningCompleted) MarshalJSON() ([]byte, error) {
 	if o.Warnings != nil {
 		toSerialize["warnings"] = o.Warnings
 	}
-	if true {
-		toSerialize["recipient"] = o.Recipient
-	}
+	toSerialize["recipient"] = o.Recipient
 	if o.Requester.IsSet() {
 		toSerialize["requester"] = o.Requester.Get()
 	}
-	if true {
-		toSerialize["accountRequests"] = o.AccountRequests
-	}
+	toSerialize["accountRequests"] = o.AccountRequests
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *TriggerInputProvisioningCompleted) UnmarshalJSON(bytes []byte) (err error) {

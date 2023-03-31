@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SodViolationContext1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SodViolationContext1{}
+
 // SodViolationContext1 The contextual information of the violated criteria
 type SodViolationContext1 struct {
 	Policy *BaseReferenceDto `json:"policy,omitempty"`
@@ -105,6 +108,14 @@ func (o *SodViolationContext1) SetConflictingAccessCriteria(v SodViolationContex
 }
 
 func (o SodViolationContext1) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SodViolationContext1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Policy) {
 		toSerialize["policy"] = o.Policy
@@ -117,7 +128,7 @@ func (o SodViolationContext1) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SodViolationContext1) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NestedAggregation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NestedAggregation{}
+
 // NestedAggregation The nested aggregation object.
 type NestedAggregation struct {
 	// The name of the nested aggregate to be included in the result.
@@ -93,19 +96,23 @@ func (o *NestedAggregation) SetType(v string) {
 }
 
 func (o NestedAggregation) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o NestedAggregation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *NestedAggregation) UnmarshalJSON(bytes []byte) (err error) {

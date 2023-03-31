@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PermissionDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PermissionDto{}
+
 // PermissionDto Simplified DTO for the Permission objects stored in SailPoint's database. The data is aggregated from customer systems and is free-form, so its appearance can vary largely between different clients/customers.
 type PermissionDto struct {
 	// All the rights (e.g. actions) that this permission allows on the target
@@ -107,19 +110,23 @@ func (o *PermissionDto) SetTarget(v string) {
 }
 
 func (o PermissionDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PermissionDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Rights) {
-		toSerialize["rights"] = o.Rights
-	}
-	if !isNil(o.Target) {
-		toSerialize["target"] = o.Target
-	}
+	// skip: rights is readOnly
+	// skip: target is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *PermissionDto) UnmarshalJSON(bytes []byte) (err error) {

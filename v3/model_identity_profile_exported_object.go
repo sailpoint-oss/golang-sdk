@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdentityProfileExportedObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdentityProfileExportedObject{}
+
 // IdentityProfileExportedObject Identity Profile exported object
 type IdentityProfileExportedObject struct {
 	// Version or object from the target service.
@@ -139,6 +142,14 @@ func (o *IdentityProfileExportedObject) SetObject(v IdentityProfile) {
 }
 
 func (o IdentityProfileExportedObject) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o IdentityProfileExportedObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Version) {
 		toSerialize["version"] = o.Version
@@ -154,7 +165,7 @@ func (o IdentityProfileExportedObject) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *IdentityProfileExportedObject) UnmarshalJSON(bytes []byte) (err error) {
