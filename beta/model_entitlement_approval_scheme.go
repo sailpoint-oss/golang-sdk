@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EntitlementApprovalScheme type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementApprovalScheme{}
+
 // EntitlementApprovalScheme struct for EntitlementApprovalScheme
 type EntitlementApprovalScheme struct {
 	// Describes the individual or group that is responsible for an approval step. Values are as follows.  **ENTITLEMENT_OWNER**: Owner of the associated Entitlement  **SOURCE_OWNER**: Owner of the associated Source  **MANAGER**: Manager of the Identity for whom the request is being made  **GOVERNANCE_GROUP**: A Governance Group, the ID of which is specified by the **approverId** field
@@ -117,6 +120,14 @@ func (o *EntitlementApprovalScheme) UnsetApproverId() {
 }
 
 func (o EntitlementApprovalScheme) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EntitlementApprovalScheme) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ApproverType) {
 		toSerialize["approverType"] = o.ApproverType
@@ -129,7 +140,7 @@ func (o EntitlementApprovalScheme) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EntitlementApprovalScheme) UnmarshalJSON(bytes []byte) (err error) {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OwnerReferenceDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OwnerReferenceDto{}
+
 // OwnerReferenceDto Simplified DTO for the owner object of the entitlement
 type OwnerReferenceDto struct {
 	// The owner id for the entitlement
@@ -141,6 +144,14 @@ func (o *OwnerReferenceDto) SetType(v string) {
 }
 
 func (o OwnerReferenceDto) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o OwnerReferenceDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -156,7 +167,7 @@ func (o OwnerReferenceDto) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *OwnerReferenceDto) UnmarshalJSON(bytes []byte) (err error) {

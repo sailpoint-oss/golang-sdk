@@ -941,12 +941,11 @@ func (o Source) MarshalJSON() ([]byte, error) {
 func (o Source) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	// skip: id is readOnly
+	toSerialize["name"] = o.Name
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if true {
-		toSerialize["owner"] = o.Owner
-	}
+	toSerialize["owner"] = o.Owner
 	if !isNil(o.Cluster) {
 		toSerialize["cluster"] = o.Cluster
 	}
@@ -977,9 +976,7 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if true {
-		toSerialize["connector"] = o.Connector
-	}
+	toSerialize["connector"] = o.Connector
 	if !isNil(o.ConnectorClass) {
 		toSerialize["connectorClass"] = o.ConnectorClass
 	}

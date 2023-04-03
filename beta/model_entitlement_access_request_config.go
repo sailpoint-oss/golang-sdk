@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EntitlementAccessRequestConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EntitlementAccessRequestConfig{}
+
 // EntitlementAccessRequestConfig struct for EntitlementAccessRequestConfig
 type EntitlementAccessRequestConfig struct {
 	// Ordered list of approval steps for the access request. Empty when no approval is required.
@@ -149,6 +152,14 @@ func (o *EntitlementAccessRequestConfig) SetDenialCommentRequired(v bool) {
 }
 
 func (o EntitlementAccessRequestConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o EntitlementAccessRequestConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ApprovalSchemes) {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
@@ -164,7 +175,7 @@ func (o EntitlementAccessRequestConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *EntitlementAccessRequestConfig) UnmarshalJSON(bytes []byte) (err error) {

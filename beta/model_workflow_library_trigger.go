@@ -27,6 +27,8 @@ type WorkflowLibraryTrigger struct {
 	Name *string `json:"name,omitempty"`
 	// Trigger Description
 	Description *string `json:"description,omitempty"`
+	// Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.
+	IsDynamicSchema *bool `json:"isDynamicSchema,omitempty"`
 	// Example trigger payload if applicable
 	InputExample map[string]interface{} `json:"inputExample,omitempty"`
 	// One or more inputs that the trigger accepts
@@ -181,6 +183,38 @@ func (o *WorkflowLibraryTrigger) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetIsDynamicSchema returns the IsDynamicSchema field value if set, zero value otherwise.
+func (o *WorkflowLibraryTrigger) GetIsDynamicSchema() bool {
+	if o == nil || isNil(o.IsDynamicSchema) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDynamicSchema
+}
+
+// GetIsDynamicSchemaOk returns a tuple with the IsDynamicSchema field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowLibraryTrigger) GetIsDynamicSchemaOk() (*bool, bool) {
+	if o == nil || isNil(o.IsDynamicSchema) {
+		return nil, false
+	}
+	return o.IsDynamicSchema, true
+}
+
+// HasIsDynamicSchema returns a boolean if a field has been set.
+func (o *WorkflowLibraryTrigger) HasIsDynamicSchema() bool {
+	if o != nil && !isNil(o.IsDynamicSchema) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDynamicSchema gets a reference to the given bool and assigns it to the IsDynamicSchema field.
+func (o *WorkflowLibraryTrigger) SetIsDynamicSchema(v bool) {
+	o.IsDynamicSchema = &v
+}
+
 // GetInputExample returns the InputExample field value if set, zero value otherwise.
 func (o *WorkflowLibraryTrigger) GetInputExample() map[string]interface{} {
 	if o == nil || isNil(o.InputExample) {
@@ -267,6 +301,9 @@ func (o WorkflowLibraryTrigger) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !isNil(o.IsDynamicSchema) {
+		toSerialize["isDynamicSchema"] = o.IsDynamicSchema
+	}
 	if !isNil(o.InputExample) {
 		toSerialize["inputExample"] = o.InputExample
 	}
@@ -295,6 +332,7 @@ func (o *WorkflowLibraryTrigger) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "isDynamicSchema")
 		delete(additionalProperties, "inputExample")
 		delete(additionalProperties, "formFields")
 		o.AdditionalProperties = additionalProperties

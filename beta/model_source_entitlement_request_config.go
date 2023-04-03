@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SourceEntitlementRequestConfig type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SourceEntitlementRequestConfig{}
+
 // SourceEntitlementRequestConfig Entitlement Request Configuration
 type SourceEntitlementRequestConfig struct {
 	AccessRequestConfig *EntitlementAccessRequestConfig `json:"accessRequestConfig,omitempty"`
@@ -72,6 +75,14 @@ func (o *SourceEntitlementRequestConfig) SetAccessRequestConfig(v EntitlementAcc
 }
 
 func (o SourceEntitlementRequestConfig) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SourceEntitlementRequestConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.AccessRequestConfig) {
 		toSerialize["accessRequestConfig"] = o.AccessRequestConfig
@@ -81,7 +92,7 @@ func (o SourceEntitlementRequestConfig) MarshalJSON() ([]byte, error) {
 		toSerialize[key] = value
 	}
 
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 func (o *SourceEntitlementRequestConfig) UnmarshalJSON(bytes []byte) (err error) {

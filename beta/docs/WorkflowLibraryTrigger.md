@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to **map[string]interface{}** | Trigger type | [optional] 
 **Name** | Pointer to **string** | Trigger Name | [optional] 
 **Description** | Pointer to **string** | Trigger Description | [optional] 
+**IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
 **InputExample** | Pointer to **map[string]interface{}** | Example trigger payload if applicable | [optional] 
 **FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](WorkflowLibraryFormFields.md) | One or more inputs that the trigger accepts | [optional] 
 
@@ -129,6 +130,31 @@ SetDescription sets Description field to given value.
 `func (o *WorkflowLibraryTrigger) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetIsDynamicSchema
+
+`func (o *WorkflowLibraryTrigger) GetIsDynamicSchema() bool`
+
+GetIsDynamicSchema returns the IsDynamicSchema field if non-nil, zero value otherwise.
+
+### GetIsDynamicSchemaOk
+
+`func (o *WorkflowLibraryTrigger) GetIsDynamicSchemaOk() (*bool, bool)`
+
+GetIsDynamicSchemaOk returns a tuple with the IsDynamicSchema field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDynamicSchema
+
+`func (o *WorkflowLibraryTrigger) SetIsDynamicSchema(v bool)`
+
+SetIsDynamicSchema sets IsDynamicSchema field to given value.
+
+### HasIsDynamicSchema
+
+`func (o *WorkflowLibraryTrigger) HasIsDynamicSchema() bool`
+
+HasIsDynamicSchema returns a boolean if a field has been set.
 
 ### GetInputExample
 

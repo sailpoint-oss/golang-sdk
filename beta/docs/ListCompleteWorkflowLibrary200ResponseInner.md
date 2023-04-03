@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Operator friendly name | [optional] 
 **Description** | Pointer to **string** | Description of the operator | [optional] 
 **FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](WorkflowLibraryFormFields.md) | One or more inputs that the operator accepts | [optional] 
+**IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
 **OutputSchema** | Pointer to **map[string]interface{}** | Defines the output schema, if any, that this action produces. | [optional] 
 **Type** | Pointer to **map[string]interface{}** | Trigger type | [optional] 
 **InputExample** | Pointer to **map[string]interface{}** | Example trigger payload if applicable | [optional] 
@@ -130,6 +131,31 @@ SetFormFields sets FormFields field to given value.
 `func (o *ListCompleteWorkflowLibrary200ResponseInner) HasFormFields() bool`
 
 HasFormFields returns a boolean if a field has been set.
+
+### GetIsDynamicSchema
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetIsDynamicSchema() bool`
+
+GetIsDynamicSchema returns the IsDynamicSchema field if non-nil, zero value otherwise.
+
+### GetIsDynamicSchemaOk
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetIsDynamicSchemaOk() (*bool, bool)`
+
+GetIsDynamicSchemaOk returns a tuple with the IsDynamicSchema field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDynamicSchema
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) SetIsDynamicSchema(v bool)`
+
+SetIsDynamicSchema sets IsDynamicSchema field to given value.
+
+### HasIsDynamicSchema
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) HasIsDynamicSchema() bool`
+
+HasIsDynamicSchema returns a boolean if a field has been set.
 
 ### GetOutputSchema
 

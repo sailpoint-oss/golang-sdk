@@ -27,6 +27,8 @@ type WorkflowLibraryAction struct {
 	Description *string `json:"description,omitempty"`
 	// One or more inputs that the action accepts
 	FormFields []WorkflowLibraryFormFields `json:"formFields,omitempty"`
+	// Determines whether the dynamic output schema is returned in place of the action's output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields.
+	IsDynamicSchema *bool `json:"isDynamicSchema,omitempty"`
 	// Defines the output schema, if any, that this action produces.
 	OutputSchema map[string]interface{} `json:"outputSchema,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -179,6 +181,38 @@ func (o *WorkflowLibraryAction) SetFormFields(v []WorkflowLibraryFormFields) {
 	o.FormFields = v
 }
 
+// GetIsDynamicSchema returns the IsDynamicSchema field value if set, zero value otherwise.
+func (o *WorkflowLibraryAction) GetIsDynamicSchema() bool {
+	if o == nil || isNil(o.IsDynamicSchema) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDynamicSchema
+}
+
+// GetIsDynamicSchemaOk returns a tuple with the IsDynamicSchema field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowLibraryAction) GetIsDynamicSchemaOk() (*bool, bool) {
+	if o == nil || isNil(o.IsDynamicSchema) {
+		return nil, false
+	}
+	return o.IsDynamicSchema, true
+}
+
+// HasIsDynamicSchema returns a boolean if a field has been set.
+func (o *WorkflowLibraryAction) HasIsDynamicSchema() bool {
+	if o != nil && !isNil(o.IsDynamicSchema) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDynamicSchema gets a reference to the given bool and assigns it to the IsDynamicSchema field.
+func (o *WorkflowLibraryAction) SetIsDynamicSchema(v bool) {
+	o.IsDynamicSchema = &v
+}
+
 // GetOutputSchema returns the OutputSchema field value if set, zero value otherwise.
 func (o *WorkflowLibraryAction) GetOutputSchema() map[string]interface{} {
 	if o == nil || isNil(o.OutputSchema) {
@@ -233,6 +267,9 @@ func (o WorkflowLibraryAction) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.FormFields) {
 		toSerialize["formFields"] = o.FormFields
 	}
+	if !isNil(o.IsDynamicSchema) {
+		toSerialize["isDynamicSchema"] = o.IsDynamicSchema
+	}
 	if !isNil(o.OutputSchema) {
 		toSerialize["outputSchema"] = o.OutputSchema
 	}
@@ -258,6 +295,7 @@ func (o *WorkflowLibraryAction) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "formFields")
+		delete(additionalProperties, "isDynamicSchema")
 		delete(additionalProperties, "outputSchema")
 		o.AdditionalProperties = additionalProperties
 	}

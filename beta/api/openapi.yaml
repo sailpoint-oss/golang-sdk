@@ -52232,6 +52232,7 @@ components:
           label: Campaign Name
           type: text
           required: false
+        isDynamicSchema: false
       properties:
         id:
           description: Action ID. This is a static namespaced ID for the action
@@ -52250,6 +52251,13 @@ components:
           items:
             $ref: '#/components/schemas/WorkflowLibraryFormFields'
           type: array
+        isDynamicSchema:
+          description: "Determines whether the dynamic output schema is returned in\
+            \ place of the action's output schema. The dynamic schema lists non-static\
+            \ properties, like properties of a workflow form where each form has different\
+            \ fields. These will be provided dynamically based on available form fields."
+          example: false
+          type: boolean
         outputSchema:
           description: "Defines the output schema, if any, that this action produces."
           example:
@@ -52350,6 +52358,7 @@ components:
         id: idn:identity-attributes-changed
         formFields: []
         type: EVENT
+        isDynamicSchema: false
         inputExample:
           changes:
           - attribute: department
@@ -52392,6 +52401,13 @@ components:
           description: Trigger Description
           example: One or more identity attributes changed.
           type: string
+        isDynamicSchema:
+          description: "Determines whether the dynamic output schema is returned in\
+            \ place of the action's output schema. The dynamic schema lists non-static\
+            \ properties, like properties of a workflow form where each form has different\
+            \ fields. These will be provided dynamically based on available form fields."
+          example: false
+          type: boolean
         inputExample:
           description: Example trigger payload if applicable
           example:
@@ -56488,6 +56504,20 @@ components:
           - number
           - json
           - checkbox
+          - jsonpath
+          - select
+          - multiType
+          - duration
+          - toggle
+          - identityPicker
+          - governanceGroupPicker
+          - string
+          - number
+          - object
+          - array
+          - secret
+          - url
+          - keyValuePairs
           example: text
           type: object
       type: object
