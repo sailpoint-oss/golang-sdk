@@ -1025,7 +1025,7 @@ This API updates an existing Entitlement using [JSON Patch](https://tools.ietf.o
 
 The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**.
 
-When patching owner only owner type and owner id need to be provided. Owner name is optional and it won't be modified. If it is provided, it should correspond to the real name.
+When patching owner, only owner type and owner id need to be provided. Owner name is optional and it won't be modified. If it is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
 
 A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
 

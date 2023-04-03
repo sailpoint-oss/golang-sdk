@@ -23,7 +23,7 @@ type OwnerReferenceDto struct {
 	Id *string `json:"id,omitempty"`
 	// The owner name for the entitlement
 	Name *string `json:"name,omitempty"`
-	// The type of the owner
+	// The type of the owner. Initially only type IDENTITY is supported
 	Type *string `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

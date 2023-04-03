@@ -22326,7 +22326,7 @@ components:
     Entitlement:
       example:
         created: 2020-10-08T18:33:52.029Z
-        description: "CN=LauncherTestGroup2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
+        description: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
         source:
           name: ODS-AD-Source
           id: 2c9180827ca885d7017ca8ce28a000eb
@@ -22344,14 +22344,14 @@ components:
           - SELECT
           - SELECT
           target: SYS.GV_$TRANSACTION
-        name: LauncherTestGroup2
+        name: LauncherTest2
         modified: 2020-10-08T18:33:52.029Z
         sourceSchemaObjectType: group
         attributes:
           fieldName: fieldValue
         id: 2c91808874ff91550175097daaec161c
         attribute: memberOf
-        value: "CN=LauncherTestGroup2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
+        value: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
         cloudGoverned: true
       properties:
         id:
@@ -22360,7 +22360,7 @@ components:
           type: string
         name:
           description: The entitlement name
-          example: LauncherTestGroup2
+          example: LauncherTest2
           type: string
         attribute:
           description: The entitlement attribute name
@@ -22368,7 +22368,7 @@ components:
           type: string
         value:
           description: The value of the entitlement
-          example: "CN=LauncherTestGroup2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
+          example: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
           type: string
         sourceSchemaObjectType:
           description: The object type of the entitlement from the source schema
@@ -22376,7 +22376,7 @@ components:
           type: string
         description:
           description: The description of the entitlement
-          example: "CN=LauncherTestGroup2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
+          example: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
           type: string
         privileged:
           description: True if the entitlement is privileged

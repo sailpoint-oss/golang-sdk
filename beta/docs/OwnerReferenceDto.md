@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The owner id for the entitlement | [optional] 
 **Name** | Pointer to **string** | The owner name for the entitlement | [optional] 
-**Type** | Pointer to **string** | The type of the owner | [optional] 
+**Type** | Pointer to **string** | The type of the owner. Initially only type IDENTITY is supported | [optional] 
 
 ## Methods
 
