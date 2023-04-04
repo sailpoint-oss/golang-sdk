@@ -1148,19 +1148,6 @@ paths:
           example: 2c91808a7813090a017814121919ecca
           type: string
       responses:
-        "202":
-          content:
-            application/json:
-              example:
-                type: TASK_RESULT
-                id: ff8080817e8cc815017e8ce4b6910003
-                name: null
-              schema:
-                $ref: '#/components/schemas/BaseReferenceDto'
-          description: Accepted - Returned if the request was successfully accepted
-            into the system. **This response is deprecated and will be replaced by
-            a 204 no content response. Please see the developer community announcement
-            for more information. https://developer.sailpoint.com/discuss/t/breaking-changes-to-beta-delete-access-profile-and-delete-role/8452**
         "204":
           description: No content - indicates the request was successful but there
             is no content to be returned in the response.
@@ -26409,19 +26396,6 @@ paths:
         schema:
           type: string
       responses:
-        "202":
-          content:
-            application/json:
-              example:
-                type: TASK_RESULT
-                id: 402881fc7e73d5df017e73d93f1b0002
-                name: null
-              schema:
-                $ref: '#/components/schemas/BaseReferenceDto'
-          description: Accepted - Returned if the request was successfully accepted
-            into the system. **This response is deprecated and will be replaced by
-            a 204 no content response. Please see the developer community announcement
-            for more information. https://developer.sailpoint.com/discuss/t/breaking-changes-to-beta-delete-access-profile-and-delete-role/8452**
         "204":
           description: No content - indicates the request was successful but there
             is no content to be returned in the response.
@@ -43521,24 +43495,6 @@ components:
             $ref: '#/components/schemas/ErrorMessageDto'
           type: array
       type: object
-    BaseReferenceDto:
-      example:
-        name: William Wilson
-        id: 2c91808568c529c60168cca6f90c1313
-        type: IDENTITY
-      properties:
-        type:
-          $ref: '#/components/schemas/DtoType'
-        id:
-          description: ID of the object to which this reference applies
-          example: 2c91808568c529c60168cca6f90c1313
-          type: string
-        name:
-          description: Human-readable display name of the object to which this reference
-            applies
-          example: William Wilson
-          type: string
-      type: object
     JsonPatchOperation:
       description: "A JSONPatch Operation as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
       example:
@@ -46438,6 +46394,24 @@ components:
       items:
         type: string
       type: array
+    BaseReferenceDto:
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+      properties:
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
+      type: object
     IdentityProfileExportedObject:
       description: Identity Profile exported object
       example:
@@ -53682,38 +53656,6 @@ components:
             invalid.
           type: string
       type: object
-    DtoType:
-      description: An enumeration of the types of DTOs supported within the IdentityNow
-        infrastructure.
-      enum:
-      - ACCOUNT_CORRELATION_CONFIG
-      - ACCESS_PROFILE
-      - ACCESS_REQUEST_APPROVAL
-      - ACCOUNT
-      - APPLICATION
-      - CAMPAIGN
-      - CAMPAIGN_FILTER
-      - CERTIFICATION
-      - CLUSTER
-      - CONNECTOR_SCHEMA
-      - ENTITLEMENT
-      - GOVERNANCE_GROUP
-      - IDENTITY
-      - IDENTITY_PROFILE
-      - IDENTITY_REQUEST
-      - LIFECYCLE_STATE
-      - PASSWORD_POLICY
-      - ROLE
-      - RULE
-      - SOD_POLICY
-      - SOURCE
-      - TAG_CATEGORY
-      - TASK_RESULT
-      - REPORT_RESULT
-      - SOD_VIOLATION
-      - ACCOUNT_ACTIVITY
-      example: IDENTITY
-      type: string
     AccessProfileUsage:
       example:
         accessProfileId: 2c91808876438bbb017668c21919ecca
@@ -54907,6 +54849,38 @@ components:
       - dataJson
       - type
       type: object
+    DtoType:
+      description: An enumeration of the types of DTOs supported within the IdentityNow
+        infrastructure.
+      enum:
+      - ACCOUNT_CORRELATION_CONFIG
+      - ACCESS_PROFILE
+      - ACCESS_REQUEST_APPROVAL
+      - ACCOUNT
+      - APPLICATION
+      - CAMPAIGN
+      - CAMPAIGN_FILTER
+      - CERTIFICATION
+      - CLUSTER
+      - CONNECTOR_SCHEMA
+      - ENTITLEMENT
+      - GOVERNANCE_GROUP
+      - IDENTITY
+      - IDENTITY_PROFILE
+      - IDENTITY_REQUEST
+      - LIFECYCLE_STATE
+      - PASSWORD_POLICY
+      - ROLE
+      - RULE
+      - SOD_POLICY
+      - SOURCE
+      - TAG_CATEGORY
+      - TASK_RESULT
+      - REPORT_RESULT
+      - SOD_VIOLATION
+      - ACCOUNT_ACTIVITY
+      example: IDENTITY
+      type: string
     IdentityProfile_1:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto_1'

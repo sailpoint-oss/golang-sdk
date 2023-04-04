@@ -40,10 +40,9 @@ func Test_beta_AccessProfilesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccessProfilesApi.DeleteAccessProfile(context.Background(), id).Execute()
+		httpRes, err := apiClient.AccessProfilesApi.DeleteAccessProfile(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
