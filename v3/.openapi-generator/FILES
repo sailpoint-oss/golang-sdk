@@ -14,6 +14,7 @@ api_identity_profiles.go
 api_lifecycle_states.go
 api_non_employee_lifecycle_management.go
 api_o_auth_clients.go
+api_password_dictionary.go
 api_password_management.go
 api_personal_access_tokens.go
 api_public_identities.go
@@ -258,6 +259,7 @@ docs/OwnerReference.md
 docs/Owns.md
 docs/PasswordChangeRequest.md
 docs/PasswordChangeResponse.md
+docs/PasswordDictionaryApi.md
 docs/PasswordInfo.md
 docs/PasswordInfoAccount.md
 docs/PasswordInfoQueryDTO.md
@@ -786,6 +788,7 @@ test/api_identity_profiles_test.go
 test/api_lifecycle_states_test.go
 test/api_non_employee_lifecycle_management_test.go
 test/api_o_auth_clients_test.go
+test/api_password_dictionary_test.go
 test/api_password_management_test.go
 test/api_personal_access_tokens_test.go
 test/api_public_identities_config_test.go
