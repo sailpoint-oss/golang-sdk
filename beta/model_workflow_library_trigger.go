@@ -215,9 +215,9 @@ func (o *WorkflowLibraryTrigger) SetIsDynamicSchema(v bool) {
 	o.IsDynamicSchema = &v
 }
 
-// GetInputExample returns the InputExample field value if set, zero value otherwise.
+// GetInputExample returns the InputExample field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkflowLibraryTrigger) GetInputExample() map[string]interface{} {
-	if o == nil || isNil(o.InputExample) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -226,6 +226,7 @@ func (o *WorkflowLibraryTrigger) GetInputExample() map[string]interface{} {
 
 // GetInputExampleOk returns a tuple with the InputExample field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkflowLibraryTrigger) GetInputExampleOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.InputExample) {
 		return map[string]interface{}{}, false
@@ -235,7 +236,7 @@ func (o *WorkflowLibraryTrigger) GetInputExampleOk() (map[string]interface{}, bo
 
 // HasInputExample returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasInputExample() bool {
-	if o != nil && !isNil(o.InputExample) {
+	if o != nil && isNil(o.InputExample) {
 		return true
 	}
 
@@ -247,9 +248,9 @@ func (o *WorkflowLibraryTrigger) SetInputExample(v map[string]interface{}) {
 	o.InputExample = v
 }
 
-// GetFormFields returns the FormFields field value if set, zero value otherwise.
+// GetFormFields returns the FormFields field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkflowLibraryTrigger) GetFormFields() []WorkflowLibraryFormFields {
-	if o == nil || isNil(o.FormFields) {
+	if o == nil {
 		var ret []WorkflowLibraryFormFields
 		return ret
 	}
@@ -258,6 +259,7 @@ func (o *WorkflowLibraryTrigger) GetFormFields() []WorkflowLibraryFormFields {
 
 // GetFormFieldsOk returns a tuple with the FormFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkflowLibraryTrigger) GetFormFieldsOk() ([]WorkflowLibraryFormFields, bool) {
 	if o == nil || isNil(o.FormFields) {
 		return nil, false
@@ -267,7 +269,7 @@ func (o *WorkflowLibraryTrigger) GetFormFieldsOk() ([]WorkflowLibraryFormFields,
 
 // HasFormFields returns a boolean if a field has been set.
 func (o *WorkflowLibraryTrigger) HasFormFields() bool {
-	if o != nil && !isNil(o.FormFields) {
+	if o != nil && isNil(o.FormFields) {
 		return true
 	}
 
@@ -304,10 +306,10 @@ func (o WorkflowLibraryTrigger) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.IsDynamicSchema) {
 		toSerialize["isDynamicSchema"] = o.IsDynamicSchema
 	}
-	if !isNil(o.InputExample) {
+	if o.InputExample != nil {
 		toSerialize["inputExample"] = o.InputExample
 	}
-	if !isNil(o.FormFields) {
+	if o.FormFields != nil {
 		toSerialize["formFields"] = o.FormFields
 	}
 

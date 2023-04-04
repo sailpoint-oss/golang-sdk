@@ -179,9 +179,9 @@ func (o *WorkflowLibraryFormFields) SetRequired(v bool) {
 	o.Required = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WorkflowLibraryFormFields) GetType() map[string]interface{} {
-	if o == nil || isNil(o.Type) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -190,6 +190,7 @@ func (o *WorkflowLibraryFormFields) GetType() map[string]interface{} {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WorkflowLibraryFormFields) GetTypeOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Type) {
 		return map[string]interface{}{}, false
@@ -199,7 +200,7 @@ func (o *WorkflowLibraryFormFields) GetTypeOk() (map[string]interface{}, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *WorkflowLibraryFormFields) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && isNil(o.Type) {
 		return true
 	}
 
@@ -233,7 +234,7 @@ func (o WorkflowLibraryFormFields) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Required) {
 		toSerialize["required"] = o.Required
 	}
-	if !isNil(o.Type) {
+	if o.Type != nil {
 		toSerialize["type"] = o.Type
 	}
 

@@ -23,6 +23,8 @@ type WorkflowLibraryOperator struct {
 	Id *string `json:"id,omitempty"`
 	// Operator friendly name
 	Name *string `json:"name,omitempty"`
+	// Operator type
+	Type *string `json:"type,omitempty"`
 	// Description of the operator
 	Description *string `json:"description,omitempty"`
 	// One or more inputs that the operator accepts
@@ -113,6 +115,38 @@ func (o *WorkflowLibraryOperator) SetName(v string) {
 	o.Name = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *WorkflowLibraryOperator) GetType() string {
+	if o == nil || isNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowLibraryOperator) GetTypeOk() (*string, bool) {
+	if o == nil || isNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *WorkflowLibraryOperator) HasType() bool {
+	if o != nil && !isNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *WorkflowLibraryOperator) SetType(v string) {
+	o.Type = &v
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *WorkflowLibraryOperator) GetDescription() string {
 	if o == nil || isNil(o.Description) {
@@ -193,6 +227,9 @@ func (o WorkflowLibraryOperator) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+	if !isNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -219,6 +256,7 @@ func (o *WorkflowLibraryOperator) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "formFields")
 		o.AdditionalProperties = additionalProperties

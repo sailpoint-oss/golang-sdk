@@ -51998,7 +51998,7 @@ components:
                 subject: test
               nextStep: success
               selectResult: null
-              type: action
+              type: ACTION
             success:
               type: success
         trigger:
@@ -52206,6 +52206,7 @@ components:
           label: Campaign Name
           type: text
           required: false
+        type: ACTION
         isDynamicSchema: false
       properties:
         id:
@@ -52215,6 +52216,10 @@ components:
         name:
           description: Action Name
           example: Create Certification Campaign
+          type: string
+        type:
+          description: Action type
+          example: ACTION
           type: string
         description:
           description: Action Description
@@ -52408,12 +52413,14 @@ components:
           externalDocs:
             description: List of triggers and their input schemas
             url: https://developer.sailpoint.com/idn/docs/event-triggers/available
+          nullable: true
           type: object
         formFields:
           description: One or more inputs that the trigger accepts
           example: []
           items:
             $ref: '#/components/schemas/WorkflowLibraryFormFields'
+          nullable: true
           type: array
       title: Workflow Trigger
       type: object
@@ -52452,6 +52459,7 @@ components:
           name: variableB
           required: false
           type: text
+        type: OPERATOR
       properties:
         id:
           description: Operator ID.
@@ -52460,6 +52468,10 @@ components:
         name:
           description: Operator friendly name
           example: Compare Boolean Values
+          type: string
+        type:
+          description: Operator type
+          example: OPERATOR
           type: string
         description:
           description: Description of the operator
@@ -56395,7 +56407,7 @@ components:
               subject: test
             nextStep: success
             selectResult: null
-            type: action
+            type: ACTION
           success:
             type: success
       properties:
@@ -56417,7 +56429,7 @@ components:
                 subject: test
               nextStep: success
               selectResult: null
-              type: action
+              type: ACTION
             success:
               type: success
           type: object
@@ -56485,13 +56497,14 @@ components:
           - identityPicker
           - governanceGroupPicker
           - string
-          - number
           - object
           - array
           - secret
-          - url
           - keyValuePairs
+          - emailPicker
+          - advancedToggle
           example: text
+          nullable: true
           type: object
       type: object
     CertificationDto:

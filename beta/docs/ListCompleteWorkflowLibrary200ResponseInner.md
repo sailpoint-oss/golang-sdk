@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Operator ID. | [optional] 
 **Name** | Pointer to **string** | Operator friendly name | [optional] 
+**Type** | Pointer to **string** | Operator type | [optional] 
 **Description** | Pointer to **string** | Description of the operator | [optional] 
 **FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](WorkflowLibraryFormFields.md) | One or more inputs that the operator accepts | [optional] 
 **IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
 **OutputSchema** | Pointer to **map[string]interface{}** | Defines the output schema, if any, that this action produces. | [optional] 
-**Type** | Pointer to **map[string]interface{}** | Trigger type | [optional] 
 **InputExample** | Pointer to **map[string]interface{}** | Example trigger payload if applicable | [optional] 
 
 ## Methods
@@ -81,6 +81,31 @@ SetName sets Name field to given value.
 `func (o *ListCompleteWorkflowLibrary200ResponseInner) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -182,31 +207,6 @@ SetOutputSchema sets OutputSchema field to given value.
 
 HasOutputSchema returns a boolean if a field has been set.
 
-### GetType
-
-`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetType() map[string]interface{}`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *ListCompleteWorkflowLibrary200ResponseInner) GetTypeOk() (*map[string]interface{}, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *ListCompleteWorkflowLibrary200ResponseInner) SetType(v map[string]interface{})`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *ListCompleteWorkflowLibrary200ResponseInner) HasType() bool`
-
-HasType returns a boolean if a field has been set.
-
 ### GetInputExample
 
 `func (o *ListCompleteWorkflowLibrary200ResponseInner) GetInputExample() map[string]interface{}`
@@ -232,6 +232,16 @@ SetInputExample sets InputExample field to given value.
 
 HasInputExample returns a boolean if a field has been set.
 
+### SetInputExampleNil
+
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) SetInputExampleNil(b bool)`
+
+ SetInputExampleNil sets the value for InputExample to be an explicit nil
+
+### UnsetInputExample
+`func (o *ListCompleteWorkflowLibrary200ResponseInner) UnsetInputExample()`
+
+UnsetInputExample ensures that no value is present for InputExample, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

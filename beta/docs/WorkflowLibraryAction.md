@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Action ID. This is a static namespaced ID for the action | [optional] 
 **Name** | Pointer to **string** | Action Name | [optional] 
+**Type** | Pointer to **string** | Action type | [optional] 
 **Description** | Pointer to **string** | Action Description | [optional] 
 **FormFields** | Pointer to [**[]WorkflowLibraryFormFields**](WorkflowLibraryFormFields.md) | One or more inputs that the action accepts | [optional] 
 **IsDynamicSchema** | Pointer to **bool** | Determines whether the dynamic output schema is returned in place of the action&#39;s output schema. The dynamic schema lists non-static properties, like properties of a workflow form where each form has different fields. These will be provided dynamically based on available form fields. | [optional] 
@@ -79,6 +80,31 @@ SetName sets Name field to given value.
 `func (o *WorkflowLibraryAction) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *WorkflowLibraryAction) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *WorkflowLibraryAction) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *WorkflowLibraryAction) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *WorkflowLibraryAction) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetDescription
 

@@ -23,6 +23,8 @@ type WorkflowLibraryAction struct {
 	Id *string `json:"id,omitempty"`
 	// Action Name
 	Name *string `json:"name,omitempty"`
+	// Action type
+	Type *string `json:"type,omitempty"`
 	// Action Description
 	Description *string `json:"description,omitempty"`
 	// One or more inputs that the action accepts
@@ -115,6 +117,38 @@ func (o *WorkflowLibraryAction) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *WorkflowLibraryAction) SetName(v string) {
 	o.Name = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *WorkflowLibraryAction) GetType() string {
+	if o == nil || isNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkflowLibraryAction) GetTypeOk() (*string, bool) {
+	if o == nil || isNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *WorkflowLibraryAction) HasType() bool {
+	if o != nil && !isNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *WorkflowLibraryAction) SetType(v string) {
+	o.Type = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -261,6 +295,9 @@ func (o WorkflowLibraryAction) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+	if !isNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -293,6 +330,7 @@ func (o *WorkflowLibraryAction) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "formFields")
 		delete(additionalProperties, "isDynamicSchema")
