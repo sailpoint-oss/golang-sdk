@@ -62,7 +62,7 @@ func (r ApiGetConnectorListRequest) Locale(locale string) ApiGetConnectorListReq
 	return r
 }
 
-func (r ApiGetConnectorListRequest) Execute() (*V3ConnectorDto, *http.Response, error) {
+func (r ApiGetConnectorListRequest) Execute() ([]V3ConnectorDto, *http.Response, error) {
 	return r.ApiService.GetConnectorListExecute(r)
 }
 
@@ -83,13 +83,13 @@ func (a *ConnectorsApiService) GetConnectorList(ctx context.Context) ApiGetConne
 }
 
 // Execute executes the request
-//  @return V3ConnectorDto
-func (a *ConnectorsApiService) GetConnectorListExecute(r ApiGetConnectorListRequest) (*V3ConnectorDto, *http.Response, error) {
+//  @return []V3ConnectorDto
+func (a *ConnectorsApiService) GetConnectorListExecute(r ApiGetConnectorListRequest) ([]V3ConnectorDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *V3ConnectorDto
+		localVarReturnValue  []V3ConnectorDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsApiService.GetConnectorList")

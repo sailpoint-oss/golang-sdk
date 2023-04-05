@@ -1789,7 +1789,7 @@ func (r ApiListAccountsRequest) Filters(filters string) ApiListAccountsRequest {
 	return r
 }
 
-func (r ApiListAccountsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiListAccountsRequest) Execute() ([]ListAccounts200ResponseInner, *http.Response, error) {
 	return r.ApiService.ListAccountsExecute(r)
 }
 
@@ -1810,13 +1810,13 @@ func (a *AccountsApiService) ListAccounts(ctx context.Context) ApiListAccountsRe
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) (map[string]interface{}, *http.Response, error) {
+//  @return []ListAccounts200ResponseInner
+func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]ListAccounts200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  []ListAccounts200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ListAccounts")

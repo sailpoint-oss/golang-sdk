@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ListTaggedObjects
 
-> TaggedObject ListTaggedObjects(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+> []TaggedObject ListTaggedObjects(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
 
 List Tagged Objects
 
@@ -324,7 +324,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.ListTaggedObjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListTaggedObjects`: TaggedObject
+    // response from `ListTaggedObjects`: []TaggedObject
     fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.ListTaggedObjects`: %v\n", resp)
 }
 ```
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaggedObject**](TaggedObject.md)
+[**[]TaggedObject**](TaggedObject.md)
 
 ### Authorization
 

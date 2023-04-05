@@ -722,7 +722,7 @@ Name | Type | Description  | Notes
 
 ## ListAccounts
 
-> map[string]interface{} ListAccounts(ctx).DetailLevel(detailLevel).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+> []ListAccounts200ResponseInner ListAccounts(ctx).DetailLevel(detailLevel).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
 
 Accounts List
 
@@ -754,7 +754,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListAccounts`: map[string]interface{}
+    // response from `ListAccounts`: []ListAccounts200ResponseInner
     fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ListAccounts`: %v\n", resp)
 }
 ```
@@ -778,7 +778,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]ListAccounts200ResponseInner**](ListAccounts200ResponseInner.md)
 
 ### Authorization
 

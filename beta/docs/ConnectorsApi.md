@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## GetConnectorList
 
-> V3ConnectorDto GetConnectorList(ctx).Filters(filters).Limit(limit).Offset(offset).Count(count).Locale(locale).Execute()
+> []V3ConnectorDto GetConnectorList(ctx).Filters(filters).Limit(limit).Offset(offset).Count(count).Locale(locale).Execute()
 
 Gets connector list
 
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsApi.GetConnectorList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetConnectorList`: V3ConnectorDto
+    // response from `GetConnectorList`: []V3ConnectorDto
     fmt.Fprintf(os.Stdout, "Response from `ConnectorsApi.GetConnectorList`: %v\n", resp)
 }
 ```
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V3ConnectorDto**](V3ConnectorDto.md)
+[**[]V3ConnectorDto**](V3ConnectorDto.md)
 
 ### Authorization
 

@@ -3993,10 +3993,8 @@ paths:
                     uuid: "{e4218fa4-da52-4bb0-aa41-d2dcc08a7ad8}"
               schema:
                 items:
-                  oneOf:
-                  - $ref: ../schemas/SlimAccount.yaml
-                  - $ref: ../schemas/FullAccount.yaml
-                type: object
+                  $ref: '#/components/schemas/listAccounts_200_response_inner'
+                type: array
           description: List of account objects
         "400":
           content:
@@ -9935,7 +9933,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/V3ConnectorDto'
+                items:
+                  $ref: '#/components/schemas/V3ConnectorDto'
+                type: array
           description: A Connector Dto object
         "400":
           content:
@@ -33206,7 +33206,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TaggedObject'
+                items:
+                  $ref: '#/components/schemas/TaggedObject'
+                type: array
           description: List of all tagged objects.
         "400":
           content:
@@ -44742,6 +44744,18 @@ components:
       required:
       - access
       - identityId
+      type: object
+    SlimAccount:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - $ref: '#/components/schemas/SlimAccount_allOf'
+      title: Slim Account
+      type: object
+    FullAccount:
+      allOf:
+      - $ref: '#/components/schemas/SlimAccount'
+      - $ref: '#/components/schemas/FullAccount_allOf'
+      title: Full Account
       type: object
     AccountAttributes:
       example:
@@ -58028,6 +58042,10 @@ components:
           example: ' Rate Limit Exceeded '
           type: object
       type: object
+    listAccounts_200_response_inner:
+      oneOf:
+      - $ref: '#/components/schemas/SlimAccount'
+      - $ref: '#/components/schemas/FullAccount'
     getActiveCampaigns_200_response_inner:
       oneOf:
       - $ref: '#/components/schemas/slimcampaign'
@@ -59857,6 +59875,76 @@ components:
           example: This item grants an employee read and write access to the database
           type: string
       type: object
+    SlimAccount_allOf:
+      properties:
+        uuid:
+          description: Unique ID from the owning source
+          format: uuid
+          nullable: true
+          type: string
+        nativeIdentity:
+          description: The native identifier of the account
+          example: brandin.gray
+          type: string
+        description:
+          description: The description for the account
+          example: Brandin Gray the CEO of Silly Inc.
+          nullable: true
+          type: string
+        disabled:
+          description: Whether the account is disabled
+          example: false
+          type: boolean
+        locked:
+          description: Whether the account is locked
+          example: false
+          type: boolean
+        manuallyCorrelated:
+          description: Whether the account was manually correlated
+          example: false
+          type: boolean
+        hasEntitlements:
+          description: Whether the account has any entitlements associated with it
+          example: true
+          type: boolean
+        sourceId:
+          description: The ID of the source for which this account belongs
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        sourceName:
+          description: The name of the source
+          example: Large Source
+          type: string
+        identityId:
+          description: The ID of the identity for which this account is correlated
+            to if not uncorrelated
+          example: 4b9163835d2e5168015d32f890ca5936
+          type: string
+        attributes:
+          description: A map containing attributes associated with the account
+          type: object
+      type: object
+      example: null
+    FullAccount_allOf:
+      properties:
+        authoritative:
+          description: Whether this account belongs to an authoritative source
+          example: false
+          type: boolean
+        systemAccount:
+          description: Whether this account is for the IdentityNow source
+          example: false
+          type: boolean
+        uncorrelated:
+          description: True if this account is not correlated to an identity
+          example: false
+          type: boolean
+        features:
+          description: A string list containing the owning source's features
+          example: ENABLE
+          type: string
+      type: object
+      example: null
     Account_allOf:
       properties:
         sourceId:
