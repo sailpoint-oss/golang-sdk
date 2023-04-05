@@ -58036,6 +58036,10 @@ components:
           example: ' Rate Limit Exceeded '
           type: object
       type: object
+    listAccounts_200_response_inner:
+      oneOf:
+      - $ref: '#/components/schemas/SlimAccount'
+      - $ref: '#/components/schemas/FullAccount'
     getActiveCampaigns_200_response_inner:
       oneOf:
       - $ref: '#/components/schemas/slimcampaign'

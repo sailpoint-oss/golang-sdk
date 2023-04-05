@@ -11,10 +11,11 @@ package v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_v3_PasswordDictionaryApiService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_v3_PasswordDictionaryApiService(t *testing.T) {
 
 	t.Run("Test PasswordDictionaryApiService GetPasswordDictionary", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.V3.PasswordDictionaryApi.GetPasswordDictionary(context.Background()).Execute()
 
