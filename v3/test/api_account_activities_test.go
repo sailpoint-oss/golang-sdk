@@ -19,7 +19,7 @@ import (
 
 func Test_v3_AccountActivitiesApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test AccountActivitiesApiService GetAccountActivity", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_v3_AccountActivitiesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccountActivitiesApi.GetAccountActivity(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccountActivitiesApi.GetAccountActivity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_v3_AccountActivitiesApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.AccountActivitiesApi.ListAccountActivities(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccountActivitiesApi.ListAccountActivities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

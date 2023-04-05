@@ -19,7 +19,7 @@ import (
 
 func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test CertificationCampaignsApiService ActivateCampaign", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.ActivateCampaign(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.ActivateCampaign(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.CompleteCampaign(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.CompleteCampaign(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,7 +54,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.CreateCampaign(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.CreateCampaign(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,7 +66,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.CreateCampaignTemplate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.CreateCampaignTemplate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,7 +80,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.CertificationCampaignsApi.DeleteCampaignTemplate(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.CertificationCampaignsApi.DeleteCampaignTemplate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -93,7 +93,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.CertificationCampaignsApi.DeleteCampaignTemplateSchedule(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.CertificationCampaignsApi.DeleteCampaignTemplateSchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -104,7 +104,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.DeleteCampaigns(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.DeleteCampaigns(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -118,7 +118,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.GenerateCampaignTemplate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.GenerateCampaignTemplate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -130,7 +130,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.GetActiveCampaigns(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.GetActiveCampaigns(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -144,7 +144,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.GetCampaign(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.GetCampaign(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -158,7 +158,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.GetCampaignReports(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.GetCampaignReports(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -170,7 +170,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.GetCampaignReportsConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.GetCampaignReportsConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -184,7 +184,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.GetCampaignTemplate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.GetCampaignTemplate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -198,7 +198,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.GetCampaignTemplateSchedule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.GetCampaignTemplateSchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -210,7 +210,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.ListCampaignTemplates(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.ListCampaignTemplates(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -224,7 +224,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.PatchCampaignTemplate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.PatchCampaignTemplate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -238,7 +238,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.ReassignCampaign(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.ReassignCampaign(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -252,7 +252,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.RunCampaignRemediationScan(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.RunCampaignRemediationScan(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -267,7 +267,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 		var id string
 		var type_ ReportType
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.RunCampaignReport(context.Background(), id, type_).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.RunCampaignReport(context.Background(), id, type_).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -279,7 +279,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.SetCampaignReportsConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.SetCampaignReportsConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -293,7 +293,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.CertificationCampaignsApi.SetCampaignTemplateSchedule(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.CertificationCampaignsApi.SetCampaignTemplateSchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -306,7 +306,7 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationCampaignsApi.UpdateCampaign(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.UpdateCampaign(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

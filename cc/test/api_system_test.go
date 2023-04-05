@@ -19,14 +19,14 @@ import (
 
 func Test_cc_SystemApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SystemApiService RefreshIdentities", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.SystemApi.RefreshIdentities(context.Background()).Execute()
+		httpRes, err := apiClient.CC.SystemApi.RefreshIdentities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

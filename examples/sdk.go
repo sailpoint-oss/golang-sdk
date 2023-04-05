@@ -19,7 +19,7 @@ func main() {
 	apiClient := sailpoint.NewAPIClient(configuration)
 	configuration.HTTPClient.RetryMax = 10
 
-	getSearchResults(ctx, apiClient)
+	getBeta(ctx, apiClient)
 
 	//getAllPaginatedResults(ctx, apiClient)
 
@@ -81,4 +81,14 @@ func getAllPaginatedResults(ctx context.Context, apiClient *sailpoint.APIClient)
 	}
 	// response from `ListAccounts`: []Account
 	fmt.Fprintf(os.Stdout, "First response from `AccountsApi.ListAccount`: %v\n", resp[0].Name)
+}
+
+func getBeta(ctx context.Context, apiClient *sailpoint.APIClient) {
+	resp, _, err := apiClient.Beta.AccountsApi.ListAccounts(context.TODO()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
+		//fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAccounts`: []Account
+	fmt.Fprintf(os.Stdout, "First response from `AccountsApi.ListAccount`: %v\n", resp)
 }

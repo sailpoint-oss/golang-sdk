@@ -19,14 +19,14 @@ import (
 
 func Test_beta_SPConfigApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SPConfigApiService ExportSpConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SPConfigApi.ExportSpConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigApi.ExportSpConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SPConfigApi.ExportSpConfigDownload(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigApi.ExportSpConfigDownload(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,7 +54,7 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SPConfigApi.ExportSpConfigJobStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigApi.ExportSpConfigJobStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,7 +66,7 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SPConfigApi.ImportSpConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigApi.ImportSpConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,7 +80,7 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SPConfigApi.ImportSpConfigDownload(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigApi.ImportSpConfigDownload(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -94,7 +94,7 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SPConfigApi.ImportSpConfigJobStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigApi.ImportSpConfigJobStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -106,7 +106,7 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SPConfigApi.ListSpConfigObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigApi.ListSpConfigObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

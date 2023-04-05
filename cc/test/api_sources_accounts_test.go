@@ -19,7 +19,7 @@ import (
 
 func Test_cc_SourcesAccountsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SourcesAccountsApiService ExportAccountFeed", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_cc_SourcesAccountsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.SourcesAccountsApi.ExportAccountFeed(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.SourcesAccountsApi.ExportAccountFeed(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

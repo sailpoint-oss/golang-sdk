@@ -19,14 +19,14 @@ import (
 
 func Test_beta_SearchAttributeConfigurationApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SearchAttributeConfigurationApiService CreateSearchAttributeConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SearchAttributeConfigurationApi.CreateSearchAttributeConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationApi.CreateSearchAttributeConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_beta_SearchAttributeConfigurationApiService(t *testing.T) {
 
 		var name string
 
-		httpRes, err := apiClient.SearchAttributeConfigurationApi.DeleteSearchAttributeConfig(context.Background(), name).Execute()
+		httpRes, err := apiClient.BETA.SearchAttributeConfigurationApi.DeleteSearchAttributeConfig(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -51,7 +51,7 @@ func Test_beta_SearchAttributeConfigurationApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SearchAttributeConfigurationApi.GetSearchAttributeConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationApi.GetSearchAttributeConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_beta_SearchAttributeConfigurationApiService(t *testing.T) {
 
 		var name string
 
-		resp, httpRes, err := apiClient.SearchAttributeConfigurationApi.GetSingleSearchAttributeConfig(context.Background(), name).Execute()
+		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationApi.GetSingleSearchAttributeConfig(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_beta_SearchAttributeConfigurationApiService(t *testing.T) {
 
 		var name string
 
-		resp, httpRes, err := apiClient.SearchAttributeConfigurationApi.PatchSearchAttributeConfig(context.Background(), name).Execute()
+		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationApi.PatchSearchAttributeConfig(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -3993,7 +3993,7 @@ paths:
                     uuid: "{e4218fa4-da52-4bb0-aa41-d2dcc08a7ad8}"
               schema:
                 items:
-                  $ref: '#/components/schemas/listAccounts_200_response_inner'
+                  $ref: '#/components/schemas/SlimAccount'
                 type: array
           description: List of account objects
         "400":
@@ -44751,12 +44751,6 @@ components:
       - $ref: '#/components/schemas/SlimAccount_allOf'
       title: Slim Account
       type: object
-    FullAccount:
-      allOf:
-      - $ref: '#/components/schemas/SlimAccount'
-      - $ref: '#/components/schemas/FullAccount_allOf'
-      title: Full Account
-      type: object
     AccountAttributes:
       example:
         attributes:
@@ -59923,26 +59917,6 @@ components:
         attributes:
           description: A map containing attributes associated with the account
           type: object
-      type: object
-      example: null
-    FullAccount_allOf:
-      properties:
-        authoritative:
-          description: Whether this account belongs to an authoritative source
-          example: false
-          type: boolean
-        systemAccount:
-          description: Whether this account is for the IdentityNow source
-          example: false
-          type: boolean
-        uncorrelated:
-          description: True if this account is not correlated to an identity
-          example: false
-          type: boolean
-        features:
-          description: A string list containing the owning source's features
-          example: ENABLE
-          type: string
       type: object
       example: null
     Account_allOf:

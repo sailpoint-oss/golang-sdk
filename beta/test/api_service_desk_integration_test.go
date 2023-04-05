@@ -19,14 +19,14 @@ import (
 
 func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ServiceDeskIntegrationApiService CreateServiceDeskIntegration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.CreateServiceDeskIntegration(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.CreateServiceDeskIntegration(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.ServiceDeskIntegrationApi.DeleteServiceDeskIntegration(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.DeleteServiceDeskIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.GetServiceDeskIntegration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.GetServiceDeskIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.GetServiceDeskIntegrationList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.GetServiceDeskIntegrationList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 		var scriptName string
 
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.GetServiceDeskIntegrationTemplate(context.Background(), scriptName).Execute()
+		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.GetServiceDeskIntegrationTemplate(context.Background(), scriptName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -91,7 +91,7 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.GetServiceDeskIntegrationTypes(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.GetServiceDeskIntegrationTypes(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -103,7 +103,7 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.GetStatusCheckDetails(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.GetStatusCheckDetails(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -117,7 +117,7 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.PatchServiceDeskIntegration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.PatchServiceDeskIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -129,7 +129,7 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.UpdateManagedClientStatusCheckDetails(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.UpdateManagedClientStatusCheckDetails(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -143,7 +143,7 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.ServiceDeskIntegrationApi.UpdateServiceDeskIntegration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.UpdateServiceDeskIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

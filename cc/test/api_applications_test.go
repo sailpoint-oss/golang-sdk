@@ -19,14 +19,14 @@ import (
 
 func Test_cc_ApplicationsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ApplicationsApiService CreateApplication", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.ApplicationsApi.CreateApplication(context.Background()).Execute()
+		httpRes, err := apiClient.CC.ApplicationsApi.CreateApplication(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -39,7 +39,7 @@ func Test_cc_ApplicationsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.ApplicationsApi.DeleteApplication(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.ApplicationsApi.DeleteApplication(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -52,7 +52,7 @@ func Test_cc_ApplicationsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.ApplicationsApi.GetApplication(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.ApplicationsApi.GetApplication(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -65,7 +65,7 @@ func Test_cc_ApplicationsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.ApplicationsApi.GetApplicationAccessProfiles(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.ApplicationsApi.GetApplicationAccessProfiles(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -76,7 +76,7 @@ func Test_cc_ApplicationsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.ApplicationsApi.ListApplications(context.Background()).Execute()
+		httpRes, err := apiClient.CC.ApplicationsApi.ListApplications(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -89,7 +89,7 @@ func Test_cc_ApplicationsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.ApplicationsApi.UpdateApplication(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.ApplicationsApi.UpdateApplication(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

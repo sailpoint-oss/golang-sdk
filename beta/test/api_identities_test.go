@@ -19,7 +19,7 @@ import (
 
 func Test_beta_IdentitiesApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test IdentitiesApiService SynchronizeAttributesForIdentity", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_beta_IdentitiesApiService(t *testing.T) {
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.IdentitiesApi.SynchronizeAttributesForIdentity(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentitiesApi.SynchronizeAttributesForIdentity(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

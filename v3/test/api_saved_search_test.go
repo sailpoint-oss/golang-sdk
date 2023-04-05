@@ -19,14 +19,14 @@ import (
 
 func Test_v3_SavedSearchApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SavedSearchApiService CreateSavedSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SavedSearchApi.CreateSavedSearch(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SavedSearchApi.CreateSavedSearch(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.SavedSearchApi.DeleteSavedSearch(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.SavedSearchApi.DeleteSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.SavedSearchApi.ExecuteSavedSearch(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.SavedSearchApi.ExecuteSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -66,7 +66,7 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SavedSearchApi.GetSavedSearch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SavedSearchApi.GetSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -78,7 +78,7 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SavedSearchApi.ListSavedSearches(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SavedSearchApi.ListSavedSearches(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -92,7 +92,7 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SavedSearchApi.UpdateSavedSearch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SavedSearchApi.UpdateSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

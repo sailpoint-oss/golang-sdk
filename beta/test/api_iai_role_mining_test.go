@@ -19,7 +19,7 @@ import (
 
 func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test IAIRoleMiningApiService CreatePotentialRoleProvisionRequest", func(t *testing.T) {
@@ -29,7 +29,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.CreatePotentialRoleProvisionRequest(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.CreatePotentialRoleProvisionRequest(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -41,7 +41,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.CreateRoleMiningSessions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.CreateRoleMiningSessions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -57,7 +57,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var potentialRoleId string
 		var exportId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.DownloadRoleMiningPotentialRoleZip(context.Background(), sessionId, potentialRoleId, exportId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.DownloadRoleMiningPotentialRoleZip(context.Background(), sessionId, potentialRoleId, exportId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,7 +72,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.ExportRoleMiningPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.ExportRoleMiningPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -87,7 +87,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.ExportRoleMiningPotentialRoleAsync(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.ExportRoleMiningPotentialRoleAsync(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -103,7 +103,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var potentialRoleId string
 		var exportId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.ExportRoleMiningPotentialRoleStatus(context.Background(), sessionId, potentialRoleId, exportId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.ExportRoleMiningPotentialRoleStatus(context.Background(), sessionId, potentialRoleId, exportId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -118,7 +118,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.GetEntitlementDistributionPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.GetEntitlementDistributionPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -133,7 +133,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.GetEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.GetEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -148,7 +148,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.GetExcludedEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.GetExcludedEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -163,7 +163,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.GetIdentitiesPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.GetIdentitiesPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -178,7 +178,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.GetPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.GetPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -193,7 +193,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.GetPotentialRoleApplications(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.GetPotentialRoleApplications(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -207,7 +207,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 
 		var sessionId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.GetPotentialRoleSummaries(context.Background(), sessionId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.GetPotentialRoleSummaries(context.Background(), sessionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -221,7 +221,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 
 		var sessionId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.GetRoleMiningSession(context.Background(), sessionId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.GetRoleMiningSession(context.Background(), sessionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -235,7 +235,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 
 		var sessionId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.GetRoleMiningSessionStatus(context.Background(), sessionId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.GetRoleMiningSessionStatus(context.Background(), sessionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -247,7 +247,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.GetRoleMiningSessions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.GetRoleMiningSessions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -262,7 +262,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.PatchPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.PatchPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -276,7 +276,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 
 		var sessionId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.PatchRoleMiningSession(context.Background(), sessionId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.PatchRoleMiningSession(context.Background(), sessionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -291,7 +291,7 @@ func Test_beta_IAIRoleMiningApiService(t *testing.T) {
 		var sessionId string
 		var potentialRoleId string
 
-		resp, httpRes, err := apiClient.IAIRoleMiningApi.UpdateEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRoleMiningApi.UpdateEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

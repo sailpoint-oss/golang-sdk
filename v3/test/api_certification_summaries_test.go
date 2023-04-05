@@ -19,7 +19,7 @@ import (
 
 func Test_v3_CertificationSummariesApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test CertificationSummariesApiService GetIdentityAccessSummaries", func(t *testing.T) {
@@ -29,7 +29,7 @@ func Test_v3_CertificationSummariesApiService(t *testing.T) {
 		var id string
 		var type_ string
 
-		resp, httpRes, err := apiClient.CertificationSummariesApi.GetIdentityAccessSummaries(context.Background(), id, type_).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesApi.GetIdentityAccessSummaries(context.Background(), id, type_).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -43,7 +43,7 @@ func Test_v3_CertificationSummariesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationSummariesApi.GetIdentityDecisionSummary(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesApi.GetIdentityDecisionSummary(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -57,7 +57,7 @@ func Test_v3_CertificationSummariesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.CertificationSummariesApi.GetIdentitySummaries(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesApi.GetIdentitySummaries(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,7 +72,7 @@ func Test_v3_CertificationSummariesApiService(t *testing.T) {
 		var id string
 		var identitySummaryId string
 
-		resp, httpRes, err := apiClient.CertificationSummariesApi.GetIdentitySummary(context.Background(), id, identitySummaryId).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesApi.GetIdentitySummary(context.Background(), id, identitySummaryId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

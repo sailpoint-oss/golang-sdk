@@ -19,14 +19,14 @@ import (
 
 func Test_beta_PasswordSyncGroupsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test PasswordSyncGroupsApiService CreatePasswordSyncGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PasswordSyncGroupsApi.CreatePasswordSyncGroup(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordSyncGroupsApi.CreatePasswordSyncGroup(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_beta_PasswordSyncGroupsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.PasswordSyncGroupsApi.DeletePasswordSyncGroup(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.PasswordSyncGroupsApi.DeletePasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_beta_PasswordSyncGroupsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.PasswordSyncGroupsApi.GetPasswordSyncGroup(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordSyncGroupsApi.GetPasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_beta_PasswordSyncGroupsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PasswordSyncGroupsApi.GetPasswordSyncGroups(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordSyncGroupsApi.GetPasswordSyncGroups(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_beta_PasswordSyncGroupsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.PasswordSyncGroupsApi.UpdatePasswordSyncGroup(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordSyncGroupsApi.UpdatePasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

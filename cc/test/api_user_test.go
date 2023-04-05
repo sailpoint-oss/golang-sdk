@@ -19,14 +19,14 @@ import (
 
 func Test_cc_UserApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test UserApiService UpdateUserPermissions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.UserApi.UpdateUserPermissions(context.Background()).Execute()
+		httpRes, err := apiClient.CC.UserApi.UpdateUserPermissions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

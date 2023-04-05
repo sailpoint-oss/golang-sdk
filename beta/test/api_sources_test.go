@@ -19,7 +19,7 @@ import (
 
 func Test_beta_SourcesApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SourcesApiService CreateProvisioningPolicy", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.CreateProvisioningPolicy(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.CreateProvisioningPolicy(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SourcesApi.CreateSource(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.CreateSource(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,7 +54,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.CreateSourceSchema(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.CreateSourceSchema(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -69,7 +69,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var sourceId string
 		var usageType UsageType
 
-		httpRes, err := apiClient.SourcesApi.DeleteProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+		httpRes, err := apiClient.BETA.SourcesApi.DeleteProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -82,7 +82,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.DeleteSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.DeleteSource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -97,7 +97,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var sourceId string
 		var schemaId string
 
-		httpRes, err := apiClient.SourcesApi.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
+		httpRes, err := apiClient.BETA.SourcesApi.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -110,7 +110,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.SourcesApi.DownloadSourceAccountsSchema(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.SourcesApi.DownloadSourceAccountsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -123,7 +123,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.SourcesApi.DownloadSourceEntitlementsSchema(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.SourcesApi.DownloadSourceEntitlementsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -137,7 +137,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var sourceId string
 		var usageType UsageType
 
-		resp, httpRes, err := apiClient.SourcesApi.GetProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.GetProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -151,7 +151,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.GetSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.GetSource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -165,7 +165,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.GetSourceAttrSyncConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.GetSourceAttrSyncConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -179,7 +179,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.GetSourceConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.GetSourceConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -191,7 +191,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SourcesApi.GetSourceEntitlementRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.GetSourceEntitlementRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -206,7 +206,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var sourceId string
 		var schemaId string
 
-		resp, httpRes, err := apiClient.SourcesApi.GetSourceSchema(context.Background(), sourceId, schemaId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.GetSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -220,7 +220,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.ListProvisioningPolicies(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.ListProvisioningPolicies(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -234,7 +234,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.ListSourceSchemas(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.ListSourceSchemas(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -246,7 +246,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SourcesApi.ListSources(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.ListSources(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -260,7 +260,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.PeekResourceObjects(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.PeekResourceObjects(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -274,7 +274,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.PingCluster(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.PingCluster(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -289,7 +289,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var sourceId string
 		var usageType UsageType
 
-		resp, httpRes, err := apiClient.SourcesApi.PutProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.PutProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -303,7 +303,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.PutSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.PutSource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -317,7 +317,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.PutSourceAttrSyncConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.PutSourceAttrSyncConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -332,7 +332,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var sourceId string
 		var schemaId string
 
-		resp, httpRes, err := apiClient.SourcesApi.PutSourceSchema(context.Background(), sourceId, schemaId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.PutSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -346,7 +346,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.SyncAttributesForSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.SyncAttributesForSource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -360,7 +360,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.TestSourceConfiguration(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.TestSourceConfiguration(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -374,7 +374,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.TestSourceConnection(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.TestSourceConnection(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -388,7 +388,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.UpdateProvisioningPoliciesInBulk(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.UpdateProvisioningPoliciesInBulk(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -403,7 +403,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var sourceId string
 		var usageType UsageType
 
-		resp, httpRes, err := apiClient.SourcesApi.UpdateProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.UpdateProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -417,7 +417,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.UpdateSource(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.UpdateSource(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -429,7 +429,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SourcesApi.UpdateSourceEntitlementRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.UpdateSourceEntitlementRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -444,7 +444,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var sourceId string
 		var schemaId string
 
-		resp, httpRes, err := apiClient.SourcesApi.UpdateSourceSchema(context.Background(), sourceId, schemaId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.UpdateSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -458,7 +458,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.UploadSourceAccountsSchema(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.UploadSourceAccountsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -472,7 +472,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.SourcesApi.UploadSourceConnectorFile(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.UploadSourceConnectorFile(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -486,7 +486,7 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.SourcesApi.UploadSourceEntitlementsSchema(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SourcesApi.UploadSourceEntitlementsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -19,14 +19,14 @@ import (
 
 func Test_cc_ConnectorsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ConnectorsApiService CreateConnector", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.ConnectorsApi.CreateConnector(context.Background()).Execute()
+		httpRes, err := apiClient.CC.ConnectorsApi.CreateConnector(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -39,7 +39,7 @@ func Test_cc_ConnectorsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.ConnectorsApi.DeleteConnector(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.ConnectorsApi.DeleteConnector(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -52,7 +52,7 @@ func Test_cc_ConnectorsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.ConnectorsApi.ExportConnectorConfig(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.ConnectorsApi.ExportConnectorConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -65,7 +65,7 @@ func Test_cc_ConnectorsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.ConnectorsApi.ImportConnectorConfig(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.ConnectorsApi.ImportConnectorConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -76,7 +76,7 @@ func Test_cc_ConnectorsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.ConnectorsApi.ListConnectors(context.Background()).Execute()
+		httpRes, err := apiClient.CC.ConnectorsApi.ListConnectors(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

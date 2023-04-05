@@ -19,14 +19,14 @@ import (
 
 func Test_cc_AccountsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test AccountsApiService ListAccounts", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AccountsApi.ListAccounts(context.Background()).Execute()
+		httpRes, err := apiClient.CC.AccountsApi.ListAccounts(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -39,7 +39,7 @@ func Test_cc_AccountsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.AccountsApi.RemoveAccount(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.AccountsApi.RemoveAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

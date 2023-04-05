@@ -19,14 +19,14 @@ import (
 
 func Test_v3_TransformsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test TransformsApiService CreateTransform", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TransformsApi.CreateTransform(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.TransformsApi.CreateTransform(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_v3_TransformsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.TransformsApi.DeleteTransform(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.TransformsApi.DeleteTransform(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_v3_TransformsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.TransformsApi.GetTransform(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.TransformsApi.GetTransform(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_v3_TransformsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TransformsApi.ListTransforms(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.TransformsApi.ListTransforms(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_v3_TransformsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.TransformsApi.UpdateTransform(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.TransformsApi.UpdateTransform(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

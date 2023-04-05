@@ -19,14 +19,14 @@ import (
 
 func Test_beta_PasswordConfigurationApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test PasswordConfigurationApiService CreatePasswordOrgConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PasswordConfigurationApi.CreatePasswordOrgConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordConfigurationApi.CreatePasswordOrgConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_beta_PasswordConfigurationApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PasswordConfigurationApi.GetPasswordOrgConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordConfigurationApi.GetPasswordOrgConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,7 +50,7 @@ func Test_beta_PasswordConfigurationApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PasswordConfigurationApi.UpdatePasswordOrgConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordConfigurationApi.UpdatePasswordOrgConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
