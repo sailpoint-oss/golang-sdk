@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 **OrgName** | Pointer to **string** | The name of the org. | [optional] 
 **TimeZone** | Pointer to **string** | The selected time zone which is to be used for the org.  This directly affects when scheduled tasks are executed.  Valid options can be found at /beta/org-config/valid-time-zones | [optional] 
 **LcsChangeHonorsSourceEnableFeature** | Pointer to **bool** | Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org. | [optional] 
-**ArmCustomerId** | Pointer to **string** | ARM Customer ID | [optional] 
-**ArmSapSystemIdMappings** | Pointer to **string** | A list of IDN::sourceId to ARM::systemId mappings. | [optional] 
-**ArmAuth** | Pointer to **string** | ARM authentication string | [optional] 
-**ArmDb** | Pointer to **string** | ARM database name | [optional] 
-**ArmSsoUrl** | Pointer to **string** | ARM SSO URL | [optional] 
+**ArmCustomerId** | Pointer to **NullableString** | ARM Customer ID | [optional] 
+**ArmSapSystemIdMappings** | Pointer to **NullableString** | A list of IDN::sourceId to ARM::systemId mappings. | [optional] 
+**ArmAuth** | Pointer to **NullableString** | ARM authentication string | [optional] 
+**ArmDb** | Pointer to **NullableString** | ARM database name | [optional] 
+**ArmSsoUrl** | Pointer to **NullableString** | ARM SSO URL | [optional] 
 **IaiEnableCertificationRecommendations** | Pointer to **bool** | Flag to determine whether IAI Certification Recommendations are enabled for the current org | [optional] 
 **SodReportConfigs** | Pointer to [**[]ReportConfigDTO**](ReportConfigDTO.md) |  | [optional] 
 
@@ -134,6 +134,16 @@ SetArmCustomerId sets ArmCustomerId field to given value.
 
 HasArmCustomerId returns a boolean if a field has been set.
 
+### SetArmCustomerIdNil
+
+`func (o *OrgConfig) SetArmCustomerIdNil(b bool)`
+
+ SetArmCustomerIdNil sets the value for ArmCustomerId to be an explicit nil
+
+### UnsetArmCustomerId
+`func (o *OrgConfig) UnsetArmCustomerId()`
+
+UnsetArmCustomerId ensures that no value is present for ArmCustomerId, not even an explicit nil
 ### GetArmSapSystemIdMappings
 
 `func (o *OrgConfig) GetArmSapSystemIdMappings() string`
@@ -159,6 +169,16 @@ SetArmSapSystemIdMappings sets ArmSapSystemIdMappings field to given value.
 
 HasArmSapSystemIdMappings returns a boolean if a field has been set.
 
+### SetArmSapSystemIdMappingsNil
+
+`func (o *OrgConfig) SetArmSapSystemIdMappingsNil(b bool)`
+
+ SetArmSapSystemIdMappingsNil sets the value for ArmSapSystemIdMappings to be an explicit nil
+
+### UnsetArmSapSystemIdMappings
+`func (o *OrgConfig) UnsetArmSapSystemIdMappings()`
+
+UnsetArmSapSystemIdMappings ensures that no value is present for ArmSapSystemIdMappings, not even an explicit nil
 ### GetArmAuth
 
 `func (o *OrgConfig) GetArmAuth() string`
@@ -184,6 +204,16 @@ SetArmAuth sets ArmAuth field to given value.
 
 HasArmAuth returns a boolean if a field has been set.
 
+### SetArmAuthNil
+
+`func (o *OrgConfig) SetArmAuthNil(b bool)`
+
+ SetArmAuthNil sets the value for ArmAuth to be an explicit nil
+
+### UnsetArmAuth
+`func (o *OrgConfig) UnsetArmAuth()`
+
+UnsetArmAuth ensures that no value is present for ArmAuth, not even an explicit nil
 ### GetArmDb
 
 `func (o *OrgConfig) GetArmDb() string`
@@ -209,6 +239,16 @@ SetArmDb sets ArmDb field to given value.
 
 HasArmDb returns a boolean if a field has been set.
 
+### SetArmDbNil
+
+`func (o *OrgConfig) SetArmDbNil(b bool)`
+
+ SetArmDbNil sets the value for ArmDb to be an explicit nil
+
+### UnsetArmDb
+`func (o *OrgConfig) UnsetArmDb()`
+
+UnsetArmDb ensures that no value is present for ArmDb, not even an explicit nil
 ### GetArmSsoUrl
 
 `func (o *OrgConfig) GetArmSsoUrl() string`
@@ -234,6 +274,16 @@ SetArmSsoUrl sets ArmSsoUrl field to given value.
 
 HasArmSsoUrl returns a boolean if a field has been set.
 
+### SetArmSsoUrlNil
+
+`func (o *OrgConfig) SetArmSsoUrlNil(b bool)`
+
+ SetArmSsoUrlNil sets the value for ArmSsoUrl to be an explicit nil
+
+### UnsetArmSsoUrl
+`func (o *OrgConfig) UnsetArmSsoUrl()`
+
+UnsetArmSsoUrl ensures that no value is present for ArmSsoUrl, not even an explicit nil
 ### GetIaiEnableCertificationRecommendations
 
 `func (o *OrgConfig) GetIaiEnableCertificationRecommendations() bool`

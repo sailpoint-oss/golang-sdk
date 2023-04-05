@@ -19,14 +19,14 @@ import (
 
 func Test_v3_RolesApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test RolesApiService CreateRole", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.RolesApi.CreateRole(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.RolesApi.CreateRole(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_v3_RolesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.RolesApi.GetRole(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.RolesApi.GetRole(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,7 +54,7 @@ func Test_v3_RolesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.RolesApi.GetRoleAssignedIdentities(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.RolesApi.GetRoleAssignedIdentities(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,7 +66,7 @@ func Test_v3_RolesApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.RolesApi.ListRoles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.RolesApi.ListRoles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,7 +80,7 @@ func Test_v3_RolesApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.RolesApi.PatchRole(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.RolesApi.PatchRole(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

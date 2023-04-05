@@ -19,14 +19,14 @@ import (
 
 func Test_v2_OrgApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test OrgApiService GetOrgSettings", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OrgApi.GetOrgSettings(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V2.OrgApi.GetOrgSettings(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_v2_OrgApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OrgApi.UpdateOrgSettings(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V2.OrgApi.UpdateOrgSettings(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

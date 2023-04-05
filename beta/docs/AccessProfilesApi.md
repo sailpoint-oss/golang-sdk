@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAccessProfile
 
-> BaseReferenceDto DeleteAccessProfile(ctx, id).Execute()
+> DeleteAccessProfile(ctx, id).Execute()
 
 Delete the specified Access Profile
 
@@ -110,8 +110,6 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesApi.DeleteAccessProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteAccessProfile`: BaseReferenceDto
-    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesApi.DeleteAccessProfile`: %v\n", resp)
 }
 ```
 
@@ -134,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseReferenceDto**](BaseReferenceDto.md)
+ (empty response body)
 
 ### Authorization
 

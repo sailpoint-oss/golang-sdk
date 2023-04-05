@@ -19,14 +19,14 @@ import (
 
 func Test_beta_TaggedObjectsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test TaggedObjectsApiService AddTagToObject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TaggedObjectsApi.AddTagToObject(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.TaggedObjectsApi.AddTagToObject(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TaggedObjectsApi.AddTagsToManyObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.TaggedObjectsApi.AddTagsToManyObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -53,7 +53,7 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 		var type_ string
 		var id string
 
-		httpRes, err := apiClient.TaggedObjectsApi.DeleteTaggedObject(context.Background(), type_, id).Execute()
+		httpRes, err := apiClient.BETA.TaggedObjectsApi.DeleteTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -67,7 +67,7 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 		var type_ string
 		var id string
 
-		resp, httpRes, err := apiClient.TaggedObjectsApi.GetTaggedObject(context.Background(), type_, id).Execute()
+		resp, httpRes, err := apiClient.BETA.TaggedObjectsApi.GetTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TaggedObjectsApi.ListTaggedObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.TaggedObjectsApi.ListTaggedObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -93,7 +93,7 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 
 		var type_ string
 
-		resp, httpRes, err := apiClient.TaggedObjectsApi.ListTaggedObjectsByType(context.Background(), type_).Execute()
+		resp, httpRes, err := apiClient.BETA.TaggedObjectsApi.ListTaggedObjectsByType(context.Background(), type_).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -105,7 +105,7 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.TaggedObjectsApi.RemoveTagsToManyObject(context.Background()).Execute()
+		httpRes, err := apiClient.BETA.TaggedObjectsApi.RemoveTagsToManyObject(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -119,7 +119,7 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 		var type_ string
 		var id string
 
-		resp, httpRes, err := apiClient.TaggedObjectsApi.UpdateTaggedObject(context.Background(), type_, id).Execute()
+		resp, httpRes, err := apiClient.BETA.TaggedObjectsApi.UpdateTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

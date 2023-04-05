@@ -21,7 +21,7 @@ import (
 
 func Test_{{packageName}}_{{classname}}Service(t *testing.T) {
 
-	configuration := {{goImportAlias}}.NewConfiguration()
+	configuration := {{goImportAlias}}.NewDefaultConfiguration()
 	apiClient := {{goImportAlias}}.NewAPIClient(configuration)
 
 {{#operations}}
@@ -39,7 +39,7 @@ func Test_{{packageName}}_{{classname}}Service(t *testing.T) {
 		var {{paramName}} {{{dataType}}}
 		{{/pathParams}}
 
-		{{#returnType}}resp, {{/returnType}}httpRes, err := apiClient.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}).Execute()
+		{{#returnType}}resp, {{/returnType}}httpRes, err := apiClient.{{#lambda.uppercase}}{{packageName}}{{/lambda.uppercase}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}).Execute()
 
 		require.Nil(t, err)
 		{{#returnType}}

@@ -700,7 +700,7 @@ func (r ApiListTaggedObjectsRequest) Filters(filters string) ApiListTaggedObject
 	return r
 }
 
-func (r ApiListTaggedObjectsRequest) Execute() (*TaggedObject, *http.Response, error) {
+func (r ApiListTaggedObjectsRequest) Execute() ([]TaggedObject, *http.Response, error) {
 	return r.ApiService.ListTaggedObjectsExecute(r)
 }
 
@@ -722,13 +722,13 @@ func (a *TaggedObjectsApiService) ListTaggedObjects(ctx context.Context) ApiList
 }
 
 // Execute executes the request
-//  @return TaggedObject
-func (a *TaggedObjectsApiService) ListTaggedObjectsExecute(r ApiListTaggedObjectsRequest) (*TaggedObject, *http.Response, error) {
+//  @return []TaggedObject
+func (a *TaggedObjectsApiService) ListTaggedObjectsExecute(r ApiListTaggedObjectsRequest) ([]TaggedObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TaggedObject
+		localVarReturnValue  []TaggedObject
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.ListTaggedObjects")

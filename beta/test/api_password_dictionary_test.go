@@ -19,14 +19,14 @@ import (
 
 func Test_beta_PasswordDictionaryApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test PasswordDictionaryApiService GetPasswordDictionary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.PasswordDictionaryApi.GetPasswordDictionary(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordDictionaryApi.GetPasswordDictionary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_beta_PasswordDictionaryApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.PasswordDictionaryApi.GetPasswordDictionaryFileStatus(context.Background()).Execute()
+		httpRes, err := apiClient.BETA.PasswordDictionaryApi.GetPasswordDictionaryFileStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -49,7 +49,7 @@ func Test_beta_PasswordDictionaryApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.PasswordDictionaryApi.UpdatePasswordDictionary(context.Background()).Execute()
+		httpRes, err := apiClient.BETA.PasswordDictionaryApi.UpdatePasswordDictionary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

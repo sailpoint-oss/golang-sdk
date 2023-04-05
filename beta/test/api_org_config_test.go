@@ -19,14 +19,14 @@ import (
 
 func Test_beta_OrgConfigApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test OrgConfigApiService GetOrgConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OrgConfigApi.GetOrgConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.OrgConfigApi.GetOrgConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_beta_OrgConfigApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OrgConfigApi.GetValidTimeZones(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.OrgConfigApi.GetValidTimeZones(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,7 +50,7 @@ func Test_beta_OrgConfigApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OrgConfigApi.PatchOrgConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.OrgConfigApi.PatchOrgConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

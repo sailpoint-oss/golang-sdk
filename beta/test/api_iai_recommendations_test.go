@@ -19,7 +19,7 @@ import (
 
 func Test_beta_IAIRecommendationsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test IAIRecommendationsApiService GetMessageCatalogs", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_beta_IAIRecommendationsApiService(t *testing.T) {
 
 		var catalogId string
 
-		resp, httpRes, err := apiClient.IAIRecommendationsApi.GetMessageCatalogs(context.Background(), catalogId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRecommendationsApi.GetMessageCatalogs(context.Background(), catalogId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_beta_IAIRecommendationsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.IAIRecommendationsApi.GetRecommendations(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRecommendationsApi.GetRecommendations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -52,7 +52,7 @@ func Test_beta_IAIRecommendationsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.IAIRecommendationsApi.GetRecommendationsConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRecommendationsApi.GetRecommendationsConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -64,7 +64,7 @@ func Test_beta_IAIRecommendationsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.IAIRecommendationsApi.UpdateRecommendationsConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIRecommendationsApi.UpdateRecommendationsConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -40,6 +40,24 @@ const fixFiles = function (myArray) {
       fileOut = [];
     }
 
+    // remove the complex account schema
+    if (file.includes("paths/accounts.yaml")) {
+      for (let line of rawDataArra) {
+        if (line.includes('oneOf')) {
+          line = line.replaceAll("oneOf:", "$ref: '../schemas/SlimAccount.yaml'")
+          madeChange = true;
+        }
+        if (line.includes("- $ref: '../schemas/SlimAccount.yaml'") || line.includes("- $ref: '../schemas/FullAccount.yaml'")) {
+          
+        } else {
+          fileOut.push(line);
+        }
+        
+      }
+      rawDataArra = fileOut.slice();
+      fileOut = [];
+    }
+
     // remove the complex search scema
     if (file.includes("documents/SearchDocument.yaml")) {
           fileOut.push("type: object");

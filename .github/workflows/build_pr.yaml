@@ -70,3 +70,4 @@ jobs:
         run: |
           go get -d ./...
           go install
+          go test

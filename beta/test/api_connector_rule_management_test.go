@@ -19,14 +19,14 @@ import (
 
 func Test_beta_ConnectorRuleManagementApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ConnectorRuleManagementApiService CreateConnectorRule", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ConnectorRuleManagementApi.CreateConnectorRule(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.ConnectorRuleManagementApi.CreateConnectorRule(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_beta_ConnectorRuleManagementApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.ConnectorRuleManagementApi.DeleteConnectorRule(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.ConnectorRuleManagementApi.DeleteConnectorRule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_beta_ConnectorRuleManagementApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.ConnectorRuleManagementApi.GetConnectorRule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.ConnectorRuleManagementApi.GetConnectorRule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_beta_ConnectorRuleManagementApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ConnectorRuleManagementApi.GetConnectorRuleList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.ConnectorRuleManagementApi.GetConnectorRuleList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_beta_ConnectorRuleManagementApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.ConnectorRuleManagementApi.UpdateConnectorRule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.ConnectorRuleManagementApi.UpdateConnectorRule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -91,7 +91,7 @@ func Test_beta_ConnectorRuleManagementApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ConnectorRuleManagementApi.ValidateConnectorRule(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.ConnectorRuleManagementApi.ValidateConnectorRule(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

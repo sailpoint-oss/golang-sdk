@@ -18,9 +18,10 @@ func Paginate[T any](f interface{}, initialOffset int32, increment int32, limit 
 	var offset int32 = initialOffset
 	var returnObject []T
 	var latestResponse *http.Response
+	incrementResp := Invoke(f, "Limit", increment)
 	for offset < limit {
 		// first invoke the Offset command to set the new offset
-		offsetResp := Invoke(f, "Offset", offset)
+		offsetResp := Invoke(incrementResp[0].Interface(), "Offset", offset)
 		// invoke the Execute function to get the response
 		resp := Invoke(offsetResp[0].Interface(), "Execute")
 
@@ -49,7 +50,7 @@ func Paginate[T any](f interface{}, initialOffset int32, increment int32, limit 
 func PaginateSearchApi(ctx context.Context, apiClient *APIClient, search v3.Search, initialOffset int32, increment int32, limit int32) ([]map[string]interface{}, *http.Response, error) {
 	var offset int32 = initialOffset
 	var returnObject []map[string]interface{}
-	var latestResponse *http.Response
+	var r *http.Response
 
 	if len(search.Sort) != 1 {
 		return nil, nil, errors.New("search must include exactly one sort parameter to paginate properly")
@@ -68,6 +69,7 @@ func PaginateSearchApi(ctx context.Context, apiClient *APIClient, search v3.Sear
 
 		// append the results to the main return object
 		returnObject = append(returnObject, actualValue...)
+		r = latestResponse
 
 		// check if this is the last set in the response. This could be enhanced by inspecting the header for the max results
 		if int32(len(actualValue)) < increment {
@@ -76,7 +78,7 @@ func PaginateSearchApi(ctx context.Context, apiClient *APIClient, search v3.Sear
 
 		offset += increment
 	}
-	return returnObject, latestResponse, nil
+	return returnObject, r, nil
 }
 
 func Invoke(any interface{}, name string, args ...interface{}) []reflect.Value {

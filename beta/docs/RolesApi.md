@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## DeleteRole
 
-> BaseReferenceDto DeleteRole(ctx, id).Execute()
+> DeleteRole(ctx, id).Execute()
 
 Delete a Role
 
@@ -109,8 +109,6 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.DeleteRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteRole`: BaseReferenceDto
-    fmt.Fprintf(os.Stdout, "Response from `RolesApi.DeleteRole`: %v\n", resp)
 }
 ```
 
@@ -133,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseReferenceDto**](BaseReferenceDto.md)
+ (empty response body)
 
 ### Authorization
 

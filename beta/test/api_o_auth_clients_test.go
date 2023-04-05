@@ -19,14 +19,14 @@ import (
 
 func Test_beta_OAuthClientsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test OAuthClientsApiService CreateOauthClient", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OAuthClientsApi.CreateOauthClient(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.OAuthClientsApi.CreateOauthClient(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_beta_OAuthClientsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.OAuthClientsApi.DeleteOauthClient(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.OAuthClientsApi.DeleteOauthClient(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -53,7 +53,7 @@ func Test_beta_OAuthClientsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.OAuthClientsApi.GetOauthClient(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.OAuthClientsApi.GetOauthClient(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,7 +65,7 @@ func Test_beta_OAuthClientsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OAuthClientsApi.ListOauthClients(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.OAuthClientsApi.ListOauthClients(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,7 +79,7 @@ func Test_beta_OAuthClientsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.OAuthClientsApi.PatchOauthClient(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.OAuthClientsApi.PatchOauthClient(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

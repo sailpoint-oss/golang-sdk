@@ -551,6 +551,8 @@ docs/ServiceDeskIntegrationDtoAllOfOwnerRef.md
 docs/ServiceDeskIntegrationTemplateDto.md
 docs/ServiceDeskIntegrationTemplateDtoAllOf.md
 docs/ServiceDeskIntegrationTemplateType.md
+docs/SlimAccount.md
+docs/SlimAccountAllOf.md
 docs/Slimcampaign.md
 docs/SodExemptCriteria.md
 docs/SodExemptCriteria1.md
@@ -1191,6 +1193,8 @@ model_service_desk_integration_dto_all_of_owner_ref.go
 model_service_desk_integration_template_dto.go
 model_service_desk_integration_template_dto_all_of.go
 model_service_desk_integration_template_type.go
+model_slim_account.go
+model_slim_account_all_of.go
 model_slimcampaign.go
 model_sod_exempt_criteria.go
 model_sod_exempt_criteria_1.go

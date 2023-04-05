@@ -19,14 +19,14 @@ import (
 
 func Test_v3_AccountsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test AccountsApiService CreateAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.AccountsApi.CreateAccount(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccountsApi.CreateAccount(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -40,7 +40,7 @@ func Test_v3_AccountsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccountsApi.DeleteAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccountsApi.DeleteAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -54,7 +54,7 @@ func Test_v3_AccountsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccountsApi.DisableAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccountsApi.DisableAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -68,7 +68,7 @@ func Test_v3_AccountsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccountsApi.EnableAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccountsApi.EnableAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -82,7 +82,7 @@ func Test_v3_AccountsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccountsApi.GetAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccountsApi.GetAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -96,7 +96,7 @@ func Test_v3_AccountsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccountsApi.GetAccountEntitlements(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccountsApi.GetAccountEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -108,7 +108,7 @@ func Test_v3_AccountsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.AccountsApi.ListAccounts(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccountsApi.ListAccounts(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -122,7 +122,7 @@ func Test_v3_AccountsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccountsApi.PutAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccountsApi.PutAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -136,7 +136,7 @@ func Test_v3_AccountsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccountsApi.ReloadAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccountsApi.ReloadAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -150,7 +150,7 @@ func Test_v3_AccountsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccountsApi.UnlockAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccountsApi.UnlockAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -164,7 +164,7 @@ func Test_v3_AccountsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccountsApi.UpdateAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccountsApi.UpdateAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

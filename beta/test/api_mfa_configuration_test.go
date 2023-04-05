@@ -19,7 +19,7 @@ import (
 
 func Test_beta_MFAConfigurationApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test MFAConfigurationApiService GetMFAConfig", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_beta_MFAConfigurationApiService(t *testing.T) {
 
 		var method string
 
-		resp, httpRes, err := apiClient.MFAConfigurationApi.GetMFAConfig(context.Background(), method).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAConfigurationApi.GetMFAConfig(context.Background(), method).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_beta_MFAConfigurationApiService(t *testing.T) {
 
 		var method string
 
-		resp, httpRes, err := apiClient.MFAConfigurationApi.SetMFAConfig(context.Background(), method).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAConfigurationApi.SetMFAConfig(context.Background(), method).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -56,7 +56,7 @@ func Test_beta_MFAConfigurationApiService(t *testing.T) {
 
 		var method string
 
-		resp, httpRes, err := apiClient.MFAConfigurationApi.TestMFAConfig(context.Background(), method).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAConfigurationApi.TestMFAConfig(context.Background(), method).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

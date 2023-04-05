@@ -34,9 +34,7 @@ func (r ApiGetOrgConfigRequest) Execute() (*OrgConfig, *http.Response, error) {
 /*
 GetOrgConfig Get Org configuration settings
 
-Get org configuration with only external (org admin) accessible properties for the current org.  Request will require the following security scope:
-- 'idn:org-config:read'
-- 'idn:org-config-internal:read'
+Get org configuration with only external (org admin) accessible properties for the current org.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetOrgConfigRequest
@@ -201,10 +199,6 @@ func (r ApiGetValidTimeZonesRequest) Execute() ([]string, *http.Response, error)
 GetValidTimeZones Get list of time zones
 
 Get a list of valid time zones that can be set in org configurations.
-Request will require the following security scope:
-- 'idn:org-config-user:read'
-- 'idn:org-config:read'
-- 'idn:org-config-internal:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetValidTimeZonesRequest
@@ -365,9 +359,6 @@ func (r ApiPatchOrgConfigRequest) Execute() (*OrgConfig, *http.Response, error) 
 PatchOrgConfig Patch an Org configuration property
 
 Patch configuration of the current org using http://jsonpatch.com/ syntax.  Commonly used for changing the time zone of an org.
-Request will require a security scope of:
-- 'idn:org-config:write'
-- 'idn:org-config-internal:write'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPatchOrgConfigRequest

@@ -916,6 +916,8 @@ Class | Method | HTTP request | Description
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateDtoAllOf](docs/ServiceDeskIntegrationTemplateDtoAllOf.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
+ - [SlimAccount](docs/SlimAccount.md)
+ - [SlimAccountAllOf](docs/SlimAccountAllOf.md)
  - [Slimcampaign](docs/Slimcampaign.md)
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
  - [SodExemptCriteria1](docs/SodExemptCriteria1.md)

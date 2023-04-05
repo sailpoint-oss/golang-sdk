@@ -19,14 +19,14 @@ import (
 
 func Test_v3_SearchApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test SearchApiService SearchAggregate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SearchApi.SearchAggregate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SearchApi.SearchAggregate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -38,7 +38,7 @@ func Test_v3_SearchApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.SearchApi.SearchCount(context.Background()).Execute()
+		httpRes, err := apiClient.V3.SearchApi.SearchCount(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -52,7 +52,7 @@ func Test_v3_SearchApiService(t *testing.T) {
 		var index string
 		var id string
 
-		resp, httpRes, err := apiClient.SearchApi.SearchGet(context.Background(), index, id).Execute()
+		resp, httpRes, err := apiClient.V3.SearchApi.SearchGet(context.Background(), index, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -64,7 +64,7 @@ func Test_v3_SearchApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.SearchApi.SearchPost(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SearchApi.SearchPost(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -19,7 +19,7 @@ import (
 
 func Test_beta_ManagedClientsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test ManagedClientsApiService GetManagedClientStatus", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_beta_ManagedClientsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.ManagedClientsApi.GetManagedClientStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.ManagedClientsApi.GetManagedClientStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -42,7 +42,7 @@ func Test_beta_ManagedClientsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.ManagedClientsApi.UpdateManagedClientStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.ManagedClientsApi.UpdateManagedClientStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

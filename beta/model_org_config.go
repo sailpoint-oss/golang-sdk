@@ -26,15 +26,15 @@ type OrgConfig struct {
 	// Flag to determine whether the LCS_CHANGE_HONORS_SOURCE_ENABLE_FEATURE flag is enabled for the current org.
 	LcsChangeHonorsSourceEnableFeature *bool `json:"lcsChangeHonorsSourceEnableFeature,omitempty"`
 	// ARM Customer ID
-	ArmCustomerId *string `json:"armCustomerId,omitempty"`
+	ArmCustomerId NullableString `json:"armCustomerId,omitempty"`
 	// A list of IDN::sourceId to ARM::systemId mappings.
-	ArmSapSystemIdMappings *string `json:"armSapSystemIdMappings,omitempty"`
+	ArmSapSystemIdMappings NullableString `json:"armSapSystemIdMappings,omitempty"`
 	// ARM authentication string
-	ArmAuth *string `json:"armAuth,omitempty"`
+	ArmAuth NullableString `json:"armAuth,omitempty"`
 	// ARM database name
-	ArmDb *string `json:"armDb,omitempty"`
+	ArmDb NullableString `json:"armDb,omitempty"`
 	// ARM SSO URL
-	ArmSsoUrl *string `json:"armSsoUrl,omitempty"`
+	ArmSsoUrl NullableString `json:"armSsoUrl,omitempty"`
 	// Flag to determine whether IAI Certification Recommendations are enabled for the current org
 	IaiEnableCertificationRecommendations *bool `json:"iaiEnableCertificationRecommendations,omitempty"`
 	SodReportConfigs []ReportConfigDTO `json:"sodReportConfigs,omitempty"`
@@ -156,164 +156,214 @@ func (o *OrgConfig) SetLcsChangeHonorsSourceEnableFeature(v bool) {
 	o.LcsChangeHonorsSourceEnableFeature = &v
 }
 
-// GetArmCustomerId returns the ArmCustomerId field value if set, zero value otherwise.
+// GetArmCustomerId returns the ArmCustomerId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrgConfig) GetArmCustomerId() string {
-	if o == nil || isNil(o.ArmCustomerId) {
+	if o == nil || isNil(o.ArmCustomerId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ArmCustomerId
+	return *o.ArmCustomerId.Get()
 }
 
 // GetArmCustomerIdOk returns a tuple with the ArmCustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrgConfig) GetArmCustomerIdOk() (*string, bool) {
-	if o == nil || isNil(o.ArmCustomerId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ArmCustomerId, true
+	return o.ArmCustomerId.Get(), o.ArmCustomerId.IsSet()
 }
 
 // HasArmCustomerId returns a boolean if a field has been set.
 func (o *OrgConfig) HasArmCustomerId() bool {
-	if o != nil && !isNil(o.ArmCustomerId) {
+	if o != nil && o.ArmCustomerId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetArmCustomerId gets a reference to the given string and assigns it to the ArmCustomerId field.
+// SetArmCustomerId gets a reference to the given NullableString and assigns it to the ArmCustomerId field.
 func (o *OrgConfig) SetArmCustomerId(v string) {
-	o.ArmCustomerId = &v
+	o.ArmCustomerId.Set(&v)
+}
+// SetArmCustomerIdNil sets the value for ArmCustomerId to be an explicit nil
+func (o *OrgConfig) SetArmCustomerIdNil() {
+	o.ArmCustomerId.Set(nil)
 }
 
-// GetArmSapSystemIdMappings returns the ArmSapSystemIdMappings field value if set, zero value otherwise.
+// UnsetArmCustomerId ensures that no value is present for ArmCustomerId, not even an explicit nil
+func (o *OrgConfig) UnsetArmCustomerId() {
+	o.ArmCustomerId.Unset()
+}
+
+// GetArmSapSystemIdMappings returns the ArmSapSystemIdMappings field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrgConfig) GetArmSapSystemIdMappings() string {
-	if o == nil || isNil(o.ArmSapSystemIdMappings) {
+	if o == nil || isNil(o.ArmSapSystemIdMappings.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ArmSapSystemIdMappings
+	return *o.ArmSapSystemIdMappings.Get()
 }
 
 // GetArmSapSystemIdMappingsOk returns a tuple with the ArmSapSystemIdMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrgConfig) GetArmSapSystemIdMappingsOk() (*string, bool) {
-	if o == nil || isNil(o.ArmSapSystemIdMappings) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ArmSapSystemIdMappings, true
+	return o.ArmSapSystemIdMappings.Get(), o.ArmSapSystemIdMappings.IsSet()
 }
 
 // HasArmSapSystemIdMappings returns a boolean if a field has been set.
 func (o *OrgConfig) HasArmSapSystemIdMappings() bool {
-	if o != nil && !isNil(o.ArmSapSystemIdMappings) {
+	if o != nil && o.ArmSapSystemIdMappings.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetArmSapSystemIdMappings gets a reference to the given string and assigns it to the ArmSapSystemIdMappings field.
+// SetArmSapSystemIdMappings gets a reference to the given NullableString and assigns it to the ArmSapSystemIdMappings field.
 func (o *OrgConfig) SetArmSapSystemIdMappings(v string) {
-	o.ArmSapSystemIdMappings = &v
+	o.ArmSapSystemIdMappings.Set(&v)
+}
+// SetArmSapSystemIdMappingsNil sets the value for ArmSapSystemIdMappings to be an explicit nil
+func (o *OrgConfig) SetArmSapSystemIdMappingsNil() {
+	o.ArmSapSystemIdMappings.Set(nil)
 }
 
-// GetArmAuth returns the ArmAuth field value if set, zero value otherwise.
+// UnsetArmSapSystemIdMappings ensures that no value is present for ArmSapSystemIdMappings, not even an explicit nil
+func (o *OrgConfig) UnsetArmSapSystemIdMappings() {
+	o.ArmSapSystemIdMappings.Unset()
+}
+
+// GetArmAuth returns the ArmAuth field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrgConfig) GetArmAuth() string {
-	if o == nil || isNil(o.ArmAuth) {
+	if o == nil || isNil(o.ArmAuth.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ArmAuth
+	return *o.ArmAuth.Get()
 }
 
 // GetArmAuthOk returns a tuple with the ArmAuth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrgConfig) GetArmAuthOk() (*string, bool) {
-	if o == nil || isNil(o.ArmAuth) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ArmAuth, true
+	return o.ArmAuth.Get(), o.ArmAuth.IsSet()
 }
 
 // HasArmAuth returns a boolean if a field has been set.
 func (o *OrgConfig) HasArmAuth() bool {
-	if o != nil && !isNil(o.ArmAuth) {
+	if o != nil && o.ArmAuth.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetArmAuth gets a reference to the given string and assigns it to the ArmAuth field.
+// SetArmAuth gets a reference to the given NullableString and assigns it to the ArmAuth field.
 func (o *OrgConfig) SetArmAuth(v string) {
-	o.ArmAuth = &v
+	o.ArmAuth.Set(&v)
+}
+// SetArmAuthNil sets the value for ArmAuth to be an explicit nil
+func (o *OrgConfig) SetArmAuthNil() {
+	o.ArmAuth.Set(nil)
 }
 
-// GetArmDb returns the ArmDb field value if set, zero value otherwise.
+// UnsetArmAuth ensures that no value is present for ArmAuth, not even an explicit nil
+func (o *OrgConfig) UnsetArmAuth() {
+	o.ArmAuth.Unset()
+}
+
+// GetArmDb returns the ArmDb field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrgConfig) GetArmDb() string {
-	if o == nil || isNil(o.ArmDb) {
+	if o == nil || isNil(o.ArmDb.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ArmDb
+	return *o.ArmDb.Get()
 }
 
 // GetArmDbOk returns a tuple with the ArmDb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrgConfig) GetArmDbOk() (*string, bool) {
-	if o == nil || isNil(o.ArmDb) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ArmDb, true
+	return o.ArmDb.Get(), o.ArmDb.IsSet()
 }
 
 // HasArmDb returns a boolean if a field has been set.
 func (o *OrgConfig) HasArmDb() bool {
-	if o != nil && !isNil(o.ArmDb) {
+	if o != nil && o.ArmDb.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetArmDb gets a reference to the given string and assigns it to the ArmDb field.
+// SetArmDb gets a reference to the given NullableString and assigns it to the ArmDb field.
 func (o *OrgConfig) SetArmDb(v string) {
-	o.ArmDb = &v
+	o.ArmDb.Set(&v)
+}
+// SetArmDbNil sets the value for ArmDb to be an explicit nil
+func (o *OrgConfig) SetArmDbNil() {
+	o.ArmDb.Set(nil)
 }
 
-// GetArmSsoUrl returns the ArmSsoUrl field value if set, zero value otherwise.
+// UnsetArmDb ensures that no value is present for ArmDb, not even an explicit nil
+func (o *OrgConfig) UnsetArmDb() {
+	o.ArmDb.Unset()
+}
+
+// GetArmSsoUrl returns the ArmSsoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrgConfig) GetArmSsoUrl() string {
-	if o == nil || isNil(o.ArmSsoUrl) {
+	if o == nil || isNil(o.ArmSsoUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ArmSsoUrl
+	return *o.ArmSsoUrl.Get()
 }
 
 // GetArmSsoUrlOk returns a tuple with the ArmSsoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrgConfig) GetArmSsoUrlOk() (*string, bool) {
-	if o == nil || isNil(o.ArmSsoUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ArmSsoUrl, true
+	return o.ArmSsoUrl.Get(), o.ArmSsoUrl.IsSet()
 }
 
 // HasArmSsoUrl returns a boolean if a field has been set.
 func (o *OrgConfig) HasArmSsoUrl() bool {
-	if o != nil && !isNil(o.ArmSsoUrl) {
+	if o != nil && o.ArmSsoUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetArmSsoUrl gets a reference to the given string and assigns it to the ArmSsoUrl field.
+// SetArmSsoUrl gets a reference to the given NullableString and assigns it to the ArmSsoUrl field.
 func (o *OrgConfig) SetArmSsoUrl(v string) {
-	o.ArmSsoUrl = &v
+	o.ArmSsoUrl.Set(&v)
+}
+// SetArmSsoUrlNil sets the value for ArmSsoUrl to be an explicit nil
+func (o *OrgConfig) SetArmSsoUrlNil() {
+	o.ArmSsoUrl.Set(nil)
+}
+
+// UnsetArmSsoUrl ensures that no value is present for ArmSsoUrl, not even an explicit nil
+func (o *OrgConfig) UnsetArmSsoUrl() {
+	o.ArmSsoUrl.Unset()
 }
 
 // GetIaiEnableCertificationRecommendations returns the IaiEnableCertificationRecommendations field value if set, zero value otherwise.
@@ -399,20 +449,20 @@ func (o OrgConfig) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.LcsChangeHonorsSourceEnableFeature) {
 		toSerialize["lcsChangeHonorsSourceEnableFeature"] = o.LcsChangeHonorsSourceEnableFeature
 	}
-	if !isNil(o.ArmCustomerId) {
-		toSerialize["armCustomerId"] = o.ArmCustomerId
+	if o.ArmCustomerId.IsSet() {
+		toSerialize["armCustomerId"] = o.ArmCustomerId.Get()
 	}
-	if !isNil(o.ArmSapSystemIdMappings) {
-		toSerialize["armSapSystemIdMappings"] = o.ArmSapSystemIdMappings
+	if o.ArmSapSystemIdMappings.IsSet() {
+		toSerialize["armSapSystemIdMappings"] = o.ArmSapSystemIdMappings.Get()
 	}
-	if !isNil(o.ArmAuth) {
-		toSerialize["armAuth"] = o.ArmAuth
+	if o.ArmAuth.IsSet() {
+		toSerialize["armAuth"] = o.ArmAuth.Get()
 	}
-	if !isNil(o.ArmDb) {
-		toSerialize["armDb"] = o.ArmDb
+	if o.ArmDb.IsSet() {
+		toSerialize["armDb"] = o.ArmDb.Get()
 	}
-	if !isNil(o.ArmSsoUrl) {
-		toSerialize["armSsoUrl"] = o.ArmSsoUrl
+	if o.ArmSsoUrl.IsSet() {
+		toSerialize["armSsoUrl"] = o.ArmSsoUrl.Get()
 	}
 	if !isNil(o.IaiEnableCertificationRecommendations) {
 		toSerialize["iaiEnableCertificationRecommendations"] = o.IaiEnableCertificationRecommendations

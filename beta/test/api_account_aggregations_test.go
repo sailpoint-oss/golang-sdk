@@ -19,7 +19,7 @@ import (
 
 func Test_beta_AccountAggregationsApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
+	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
 	t.Run("Test AccountAggregationsApiService GetAccountAggregationStatus", func(t *testing.T) {
@@ -28,7 +28,7 @@ func Test_beta_AccountAggregationsApiService(t *testing.T) {
 
 		var id string
 
-		resp, httpRes, err := apiClient.AccountAggregationsApi.GetAccountAggregationStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountAggregationsApi.GetAccountAggregationStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

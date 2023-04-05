@@ -167,6 +167,7 @@ Class | Method | HTTP request | Description
 *OAuthClientsApi* | [**GetOauthClient**](docs/OAuthClientsApi.md#getoauthclient) | **Get** /oauth-clients/{id} | Get OAuth Client
 *OAuthClientsApi* | [**ListOauthClients**](docs/OAuthClientsApi.md#listoauthclients) | **Get** /oauth-clients | List OAuth Clients
 *OAuthClientsApi* | [**PatchOauthClient**](docs/OAuthClientsApi.md#patchoauthclient) | **Patch** /oauth-clients/{id} | Patch OAuth Client
+*PasswordDictionaryApi* | [**GetPasswordDictionary**](docs/PasswordDictionaryApi.md#getpassworddictionary) | **Get** /password-dictionary | Get Password Dictionary
 *PasswordManagementApi* | [**GetPasswordChangeStatus**](docs/PasswordManagementApi.md#getpasswordchangestatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
 *PasswordManagementApi* | [**QueryPasswordInfo**](docs/PasswordManagementApi.md#querypasswordinfo) | **Post** /query-password-info | Query Password Info
 *PasswordManagementApi* | [**SetPassword**](docs/PasswordManagementApi.md#setpassword) | **Post** /set-password | Set Identity&#39;s Password

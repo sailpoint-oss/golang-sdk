@@ -181,6 +181,16 @@ SetInputExample sets InputExample field to given value.
 
 HasInputExample returns a boolean if a field has been set.
 
+### SetInputExampleNil
+
+`func (o *WorkflowLibraryTrigger) SetInputExampleNil(b bool)`
+
+ SetInputExampleNil sets the value for InputExample to be an explicit nil
+
+### UnsetInputExample
+`func (o *WorkflowLibraryTrigger) UnsetInputExample()`
+
+UnsetInputExample ensures that no value is present for InputExample, not even an explicit nil
 ### GetFormFields
 
 `func (o *WorkflowLibraryTrigger) GetFormFields() []WorkflowLibraryFormFields`
@@ -206,6 +216,16 @@ SetFormFields sets FormFields field to given value.
 
 HasFormFields returns a boolean if a field has been set.
 
+### SetFormFieldsNil
+
+`func (o *WorkflowLibraryTrigger) SetFormFieldsNil(b bool)`
+
+ SetFormFieldsNil sets the value for FormFields to be an explicit nil
+
+### UnsetFormFields
+`func (o *WorkflowLibraryTrigger) UnsetFormFields()`
+
+UnsetFormFields ensures that no value is present for FormFields, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
