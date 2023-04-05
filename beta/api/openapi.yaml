@@ -19756,10 +19756,8 @@ paths:
       - OAuth Clients
   /org-config:
     get:
-      description: |-
-        Get org configuration with only external (org admin) accessible properties for the current org.  Request will require the following security scope:
-        - 'idn:org-config:read'
-        - 'idn:org-config-internal:read'
+      description: Get org configuration with only external (org admin) accessible
+        properties for the current org.
       operationId: getOrgConfig
       responses:
         "200":
@@ -19842,15 +19840,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:org-configs:read
       summary: Get Org configuration settings
       tags:
       - Org Config
     patch:
-      description: |-
-        Patch configuration of the current org using http://jsonpatch.com/ syntax.  Commonly used for changing the time zone of an org.
-        Request will require a security scope of:
-        - 'idn:org-config:write'
-        - 'idn:org-config-internal:write'
+      description: Patch configuration of the current org using http://jsonpatch.com/
+        syntax.  Commonly used for changing the time zone of an org.
       operationId: patchOrgConfig
       requestBody:
         content:
@@ -19947,17 +19945,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:org-configs:manage
       summary: Patch an Org configuration property
       tags:
       - Org Config
   /org-config/valid-time-zones:
     get:
-      description: |-
-        Get a list of valid time zones that can be set in org configurations.
-        Request will require the following security scope:
-        - 'idn:org-config-user:read'
-        - 'idn:org-config:read'
-        - 'idn:org-config-internal:read'
+      description: Get a list of valid time zones that can be set in org configurations.
       operationId: getValidTimeZones
       responses:
         "200":
@@ -20033,6 +20029,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:org-configs:read
+        - idn:org-configs-user:read
       summary: Get list of time zones
       tags:
       - Org Config
@@ -48231,23 +48231,28 @@ components:
         armCustomerId:
           description: ARM Customer ID
           example: DE38E75A-5FF6-4A65-5DC7-08D64426B09E
+          nullable: true
           type: string
         armSapSystemIdMappings:
           description: A list of IDN::sourceId to ARM::systemId mappings.
           example: "[{sourceId=2c91808c791a94e501792388b0d62659, systemId=1556}, {sourceId=2_2c91808c791a94e501792388b0d62659,\
             \ systemId=2_1556}, {sourceId=3_2c91808c791a94e501792388b0d62659, systemId=3_1556}]"
+          nullable: true
           type: string
         armAuth:
           description: ARM authentication string
           example: epiYNTRYA2S7swisDWk1Zv4VMNgvqEjiBh5_ufuCWsma2m-5XADijqBg0ijXLby5nS6lxZNXabhGnAPGeDGc4V3jQKrhwV-UHypRLs8ZLgOjiQNus9NimS0uPdKomRW6TFWqXyfnYd-znNgbbVuwUy9GyD9ebDVJSntPastxSx7UcyGuWBqfNZYpuxKRWe_7TVY60qL55jUqyz8N4XUbbdcxdbZ0uik6ut-Bv90MKTbZexBW_PR4qcgIkaEs4kIenLyBxnGziYo7AO0tJ8bGHO8FJRkibCpAQIt7PISLo7Gg_Xf9j10dKq2YDgy4pPTvz3fE2ZHYnXCXvXFSA-vVag==
+          nullable: true
           type: string
         armDb:
           description: ARM database name
           example: EU
+          nullable: true
           type: string
         armSsoUrl:
           description: ARM SSO URL
           example: https://your-arm-sso-url
+          nullable: true
           type: string
         iaiEnableCertificationRecommendations:
           description: Flag to determine whether IAI Certification Recommendations
