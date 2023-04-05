@@ -129,5 +129,7 @@ func NewDefaultConfiguration() *Configuration {
 	}
 	simpleConfig.TokenURL = simpleConfig.BaseURL + "/oauth/token"
 
+	fmt.Fprintf(os.Stdout, "token url`: %v\n", simpleConfig.TokenURL)
+
 	return NewConfiguration(simpleConfig)
 }
