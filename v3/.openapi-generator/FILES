@@ -405,8 +405,8 @@ docs/TransformDefinitionAttributesValue.md
 docs/TransformsApi.md
 docs/TypeAheadQuery.md
 docs/TypedReference.md
+docs/UpdatePasswordDictionaryRequest.md
 docs/UploadNonEmployeeRecordsInBulkRequest.md
-docs/UploadSourceAccountsSchemaRequest.md
 docs/UsageType.md
 docs/WorkItemState.md
 docs/WorkItemType.md
@@ -768,8 +768,8 @@ model_transform_definition.go
 model_transform_definition_attributes_value.go
 model_type_ahead_query.go
 model_typed_reference.go
+model_update_password_dictionary_request.go
 model_upload_non_employee_records_in_bulk_request.go
-model_upload_source_accounts_schema_request.go
 model_usage_type.go
 model_work_item_state.go
 model_work_item_type.go

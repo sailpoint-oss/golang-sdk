@@ -34,17 +34,6 @@ func Test_beta_PasswordDictionaryApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordDictionaryApiService GetPasswordDictionaryFileStatus", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.BETA.PasswordDictionaryApi.GetPasswordDictionaryFileStatus(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test PasswordDictionaryApiService UpdatePasswordDictionary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

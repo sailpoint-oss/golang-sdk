@@ -255,8 +255,6 @@ docs/FormDetails.md
 docs/FormItem.md
 docs/FormItemDetails.md
 docs/ForwardApprovalDto.md
-docs/FullAccount.md
-docs/FullAccountAllOf.md
 docs/Fullcampaign.md
 docs/FullcampaignAllOf.md
 docs/FullcampaignAllOfFilter.md
@@ -331,7 +329,6 @@ docs/LifecycleState.md
 docs/LifecycleStatesApi.md
 docs/ListAccessProfiles401Response.md
 docs/ListAccessProfiles429Response.md
-docs/ListAccounts200ResponseInner.md
 docs/ListCompleteWorkflowLibrary200ResponseInner.md
 docs/ListIdentityAccessItems200ResponseInner.md
 docs/LocaleOrigin.md
@@ -932,8 +929,6 @@ model_form_details.go
 model_form_item.go
 model_form_item_details.go
 model_forward_approval_dto.go
-model_full_account.go
-model_full_account_all_of.go
 model_fullcampaign.go
 model_fullcampaign_all_of.go
 model_fullcampaign_all_of_filter.go
@@ -998,7 +993,6 @@ model_latest_outlier_summary.go
 model_lifecycle_state.go
 model_list_access_profiles_401_response.go
 model_list_access_profiles_429_response.go
-model_list_accounts_200_response_inner.go
 model_list_complete_workflow_library_200_response_inner.go
 model_list_identity_access_items_200_response_inner.go
 model_locale_origin.go

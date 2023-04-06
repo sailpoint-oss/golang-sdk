@@ -5,7 +5,6 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetPasswordDictionary**](PasswordDictionaryApi.md#GetPasswordDictionary) | **Get** /password-dictionary | Get Password Dictionary
-[**GetPasswordDictionaryFileStatus**](PasswordDictionaryApi.md#GetPasswordDictionaryFileStatus) | **Head** /password-dictionary | Get Password Dictionary Status
 [**UpdatePasswordDictionary**](PasswordDictionaryApi.md#UpdatePasswordDictionary) | **Put** /password-dictionary | Update Password Dictionary
 
 
@@ -65,65 +64,6 @@ Other parameters are passed through a pointer to a apiGetPasswordDictionaryReque
 
 - **Content-Type**: Not defined
 - **Accept**: text/plain, application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetPasswordDictionaryFileStatus
-
-> GetPasswordDictionaryFileStatus(ctx).Execute()
-
-Get Password Dictionary Status
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordDictionaryApi.GetPasswordDictionaryFileStatus(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryApi.GetPasswordDictionaryFileStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetPasswordDictionaryFileStatusRequest struct via the builder pattern
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

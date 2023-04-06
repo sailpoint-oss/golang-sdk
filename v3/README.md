@@ -168,6 +168,7 @@ Class | Method | HTTP request | Description
 *OAuthClientsApi* | [**ListOauthClients**](docs/OAuthClientsApi.md#listoauthclients) | **Get** /oauth-clients | List OAuth Clients
 *OAuthClientsApi* | [**PatchOauthClient**](docs/OAuthClientsApi.md#patchoauthclient) | **Patch** /oauth-clients/{id} | Patch OAuth Client
 *PasswordDictionaryApi* | [**GetPasswordDictionary**](docs/PasswordDictionaryApi.md#getpassworddictionary) | **Get** /password-dictionary | Get Password Dictionary
+*PasswordDictionaryApi* | [**UpdatePasswordDictionary**](docs/PasswordDictionaryApi.md#updatepassworddictionary) | **Put** /password-dictionary | Update Password Dictionary
 *PasswordManagementApi* | [**GetPasswordChangeStatus**](docs/PasswordManagementApi.md#getpasswordchangestatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
 *PasswordManagementApi* | [**QueryPasswordInfo**](docs/PasswordManagementApi.md#querypasswordinfo) | **Post** /query-password-info | Query Password Info
 *PasswordManagementApi* | [**SetPassword**](docs/PasswordManagementApi.md#setpassword) | **Post** /set-password | Set Identity&#39;s Password
@@ -607,8 +608,8 @@ Class | Method | HTTP request | Description
  - [TransformDefinitionAttributesValue](docs/TransformDefinitionAttributesValue.md)
  - [TypeAheadQuery](docs/TypeAheadQuery.md)
  - [TypedReference](docs/TypedReference.md)
+ - [UpdatePasswordDictionaryRequest](docs/UpdatePasswordDictionaryRequest.md)
  - [UploadNonEmployeeRecordsInBulkRequest](docs/UploadNonEmployeeRecordsInBulkRequest.md)
- - [UploadSourceAccountsSchemaRequest](docs/UploadSourceAccountsSchemaRequest.md)
  - [UsageType](docs/UsageType.md)
  - [WorkItemState](docs/WorkItemState.md)
  - [WorkItemType](docs/WorkItemType.md)

@@ -1,4 +1,4 @@
-# UploadSourceAccountsSchemaRequest
+# UpdatePasswordDictionaryRequest
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewUploadSourceAccountsSchemaRequest
+### NewUpdatePasswordDictionaryRequest
 
-`func NewUploadSourceAccountsSchemaRequest() *UploadSourceAccountsSchemaRequest`
+`func NewUpdatePasswordDictionaryRequest() *UpdatePasswordDictionaryRequest`
 
-NewUploadSourceAccountsSchemaRequest instantiates a new UploadSourceAccountsSchemaRequest object
+NewUpdatePasswordDictionaryRequest instantiates a new UpdatePasswordDictionaryRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewUploadSourceAccountsSchemaRequestWithDefaults
+### NewUpdatePasswordDictionaryRequestWithDefaults
 
-`func NewUploadSourceAccountsSchemaRequestWithDefaults() *UploadSourceAccountsSchemaRequest`
+`func NewUpdatePasswordDictionaryRequestWithDefaults() *UpdatePasswordDictionaryRequest`
 
-NewUploadSourceAccountsSchemaRequestWithDefaults instantiates a new UploadSourceAccountsSchemaRequest object
+NewUpdatePasswordDictionaryRequestWithDefaults instantiates a new UpdatePasswordDictionaryRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetFile
 
-`func (o *UploadSourceAccountsSchemaRequest) GetFile() *os.File`
+`func (o *UpdatePasswordDictionaryRequest) GetFile() *os.File`
 
 GetFile returns the File field if non-nil, zero value otherwise.
 
 ### GetFileOk
 
-`func (o *UploadSourceAccountsSchemaRequest) GetFileOk() (**os.File, bool)`
+`func (o *UpdatePasswordDictionaryRequest) GetFileOk() (**os.File, bool)`
 
 GetFileOk returns a tuple with the File field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFile
 
-`func (o *UploadSourceAccountsSchemaRequest) SetFile(v *os.File)`
+`func (o *UpdatePasswordDictionaryRequest) SetFile(v *os.File)`
 
 SetFile sets File field to given value.
 
 ### HasFile
 
-`func (o *UploadSourceAccountsSchemaRequest) HasFile() bool`
+`func (o *UpdatePasswordDictionaryRequest) HasFile() bool`
 
 HasFile returns a boolean if a field has been set.
 

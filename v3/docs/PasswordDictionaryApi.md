@@ -5,6 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetPasswordDictionary**](PasswordDictionaryApi.md#GetPasswordDictionary) | **Get** /password-dictionary | Get Password Dictionary
+[**UpdatePasswordDictionary**](PasswordDictionaryApi.md#UpdatePasswordDictionary) | **Put** /password-dictionary | Update Password Dictionary
 
 
 
@@ -63,6 +64,70 @@ Other parameters are passed through a pointer to a apiGetPasswordDictionaryReque
 
 - **Content-Type**: Not defined
 - **Accept**: text/plain, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePasswordDictionary
+
+> UpdatePasswordDictionary(ctx).File(file).Execute()
+
+Update Password Dictionary
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PasswordDictionaryApi.UpdatePasswordDictionary(context.Background()).File(file).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryApi.UpdatePasswordDictionary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePasswordDictionaryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | ***os.File** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

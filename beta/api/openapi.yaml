@@ -20881,6 +20881,12 @@ paths:
             qazxsws
 
             ```
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -20949,37 +20955,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:password-dictionary-management:read
       summary: Get Password Dictionary
-      tags:
-      - Password Dictionary
-    head:
-      description: |-
-        Used to check the status of password dictionary.
-        A token with ORG_ADMIN authority is required to call this API.
-      operationId: getPasswordDictionaryFileStatus
-      responses:
-        "200":
-          description: Password dictionary exists
-        "404":
-          description: Password dictionary does not exist
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      summary: Get Password Dictionary Status
       tags:
       - Password Dictionary
     put:
@@ -21028,6 +21007,12 @@ paths:
           description: Successfully updated.
         "201":
           description: Created.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -21053,6 +21038,24 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
         "429":
           content:
             application/json:
@@ -21078,6 +21081,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:password-dictionary-management:write
       summary: Update Password Dictionary
       tags:
       - Password Dictionary
@@ -58036,10 +58042,6 @@ components:
           example: ' Rate Limit Exceeded '
           type: object
       type: object
-    listAccounts_200_response_inner:
-      oneOf:
-      - $ref: '#/components/schemas/SlimAccount'
-      - $ref: '#/components/schemas/FullAccount'
     getActiveCampaigns_200_response_inner:
       oneOf:
       - $ref: '#/components/schemas/slimcampaign'
