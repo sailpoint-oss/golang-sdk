@@ -4,22 +4,22 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSodPolicy**](SODPolicyApi.md#CreateSodPolicy) | **Post** /sod-policies | Create SOD Policy
-[**DeleteSodPolicy**](SODPolicyApi.md#DeleteSodPolicy) | **Delete** /sod-policies/{id} | Delete SOD Policy by ID
-[**DeleteSodPolicySchedule**](SODPolicyApi.md#DeleteSodPolicySchedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD Policy Schedule
+[**CreateSodPolicy**](SODPolicyApi.md#CreateSodPolicy) | **Post** /sod-policies | Create SOD policy
+[**DeleteSodPolicy**](SODPolicyApi.md#DeleteSodPolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
+[**DeleteSodPolicySchedule**](SODPolicyApi.md#DeleteSodPolicySchedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
 [**DownloadCustomViolationReport**](SODPolicyApi.md#DownloadCustomViolationReport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
 [**DownloadDefaultViolationReport**](SODPolicyApi.md#DownloadDefaultViolationReport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
 [**GetSodAllReportRunStatus**](SODPolicyApi.md#GetSodAllReportRunStatus) | **Get** /sod-violation-report | Get multi-report run task status
-[**GetSodPolicy**](SODPolicyApi.md#GetSodPolicy) | **Get** /sod-policies/{id} | Get SOD Policy By ID
-[**GetSodPolicySchedule**](SODPolicyApi.md#GetSodPolicySchedule) | **Get** /sod-policies/{id}/schedule | Get SOD Policy Schedule
+[**GetSodPolicy**](SODPolicyApi.md#GetSodPolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
+[**GetSodPolicySchedule**](SODPolicyApi.md#GetSodPolicySchedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
 [**GetSodViolationReportRunStatus**](SODPolicyApi.md#GetSodViolationReportRunStatus) | **Get** /sod-violation-report-status/{reportResultId} | Get violation report run status
 [**GetSodViolationReportStatus**](SODPolicyApi.md#GetSodViolationReportStatus) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
-[**ListSodPolicies**](SODPolicyApi.md#ListSodPolicies) | **Get** /sod-policies | List SOD Policies
-[**PatchSodPolicy**](SODPolicyApi.md#PatchSodPolicy) | **Patch** /sod-policies/{id} | Update a SOD Policy
-[**RunSodAllPoliciesForOrg**](SODPolicyApi.md#RunSodAllPoliciesForOrg) | **Post** /sod-violation-report/run | Runs all policies for Org.
-[**RunSodPolicy**](SODPolicyApi.md#RunSodPolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD Policy Violation Report
+[**ListSodPolicies**](SODPolicyApi.md#ListSodPolicies) | **Get** /sod-policies | List SOD policies
+[**PatchSodPolicy**](SODPolicyApi.md#PatchSodPolicy) | **Patch** /sod-policies/{id} | Patch a SOD policy
+[**RunSodAllPoliciesForOrg**](SODPolicyApi.md#RunSodAllPoliciesForOrg) | **Post** /sod-violation-report/run | Runs all policies for org
+[**RunSodPolicy**](SODPolicyApi.md#RunSodPolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 [**UpdatePolicySchedule**](SODPolicyApi.md#UpdatePolicySchedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
-[**UpdateSodPolicy**](SODPolicyApi.md#UpdateSodPolicy) | **Put** /sod-policies/{id} | Update SOD Policy By ID
+[**UpdateSodPolicy**](SODPolicyApi.md#UpdateSodPolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
 
 
 
@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 > SodPolicy CreateSodPolicy(ctx).SodPolicy(sodPolicy).Execute()
 
-Create SOD Policy
+Create SOD policy
 
 
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 > DeleteSodPolicy(ctx, id).Logical(logical).Execute()
 
-Delete SOD Policy by ID
+Delete SOD policy by ID
 
 
 
@@ -111,7 +111,7 @@ import (
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD Policy to delete.
-    logical := true // bool | whether this is soft delete i.e. logical true or hard delete (optional) (default to true)
+    logical := true // bool | Indicates whether this is a soft delete (logical true) or a hard delete. (optional) (default to true)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -139,7 +139,7 @@ Other parameters are passed through a pointer to a apiDeleteSodPolicyRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **logical** | **bool** | whether this is soft delete i.e. logical true or hard delete | [default to true]
+ **logical** | **bool** | Indicates whether this is a soft delete (logical true) or a hard delete. | [default to true]
 
 ### Return type
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 > DeleteSodPolicySchedule(ctx, id).Execute()
 
-Delete SOD Policy Schedule
+Delete SOD policy schedule
 
 
 
@@ -180,7 +180,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD Policy for which the schedule needs to be deleted.
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD policy the schedule must be deleted for.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -198,7 +198,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the SOD Policy for which the schedule needs to be deleted. | 
+**id** | **string** | The ID of the SOD policy the schedule must be deleted for. | 
 
 ### Other Parameters
 
@@ -435,7 +435,7 @@ Other parameters are passed through a pointer to a apiGetSodAllReportRunStatusRe
 
 > SodPolicy GetSodPolicy(ctx, id).Execute()
 
-Get SOD Policy By ID
+Get SOD policy by ID
 
 
 
@@ -505,7 +505,7 @@ Name | Type | Description  | Notes
 
 > SodPolicySchedule GetSodPolicySchedule(ctx, id).Execute()
 
-Get SOD Policy Schedule
+Get SOD policy schedule
 
 
 
@@ -715,7 +715,7 @@ Name | Type | Description  | Notes
 
 > []SodPolicy ListSodPolicies(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
 
-List SOD Policies
+List SOD policies
 
 
 
@@ -787,7 +787,7 @@ Name | Type | Description  | Notes
 
 > SodPolicy PatchSodPolicy(ctx, id).RequestBody(requestBody).Execute()
 
-Update a SOD Policy
+Patch a SOD policy
 
 
 
@@ -804,7 +804,7 @@ import (
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | The ID of the SOD Policy being modified.
+    id := "2c9180835d191a86015d28455b4a2329" // string | The ID of the SOD policy being modified.
     requestBody := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} | A list of SOD Policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * ownerRef * externalPolicyReference * compensatingControls * correctionAdvice * state * tags * violationOwnerAssignmentConfig * scheduled * conflictingAccessCriteria 
 
     configuration := openapiclient.NewConfiguration()
@@ -825,7 +825,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the SOD Policy being modified. | 
+**id** | **string** | The ID of the SOD policy being modified. | 
 
 ### Other Parameters
 
@@ -859,7 +859,7 @@ Name | Type | Description  | Notes
 
 > ReportResultReference RunSodAllPoliciesForOrg(ctx).MultiPolicyRequest(multiPolicyRequest).Execute()
 
-Runs all policies for Org.
+Runs all policies for org
 
 
 
@@ -925,7 +925,7 @@ Name | Type | Description  | Notes
 
 > ReportResultReference RunSodPolicy(ctx, id).Execute()
 
-Runs SOD Policy Violation Report
+Runs SOD policy violation report
 
 
 
@@ -942,7 +942,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the SOD Policy to run.
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The SOD policy ID to run.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -962,7 +962,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the SOD Policy to run. | 
+**id** | **string** | The SOD policy ID to run. | 
 
 ### Other Parameters
 
@@ -1067,7 +1067,7 @@ Name | Type | Description  | Notes
 
 > SodPolicy UpdateSodPolicy(ctx, id).SodPolicy(sodPolicy).Execute()
 
-Update SOD Policy By ID
+Update SOD policy by ID
 
 
 

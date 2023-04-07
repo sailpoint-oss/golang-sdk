@@ -40,10 +40,10 @@ func (r ApiCreateSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error)
 }
 
 /*
-CreateSodPolicy Create SOD Policy
+CreateSodPolicy Create SOD policy
 
-This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy
-Requires role of ORG_ADMIN
+This creates both General and Conflicting Access Based policy, with a limit of 50 entitlements for each (left & right) criteria for Conflicting Access Based SOD policy.
+Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSodPolicyRequest
@@ -196,7 +196,7 @@ type ApiDeleteSodPolicyRequest struct {
 	logical *bool
 }
 
-// whether this is soft delete i.e. logical true or hard delete
+// Indicates whether this is a soft delete (logical true) or a hard delete.
 func (r ApiDeleteSodPolicyRequest) Logical(logical bool) ApiDeleteSodPolicyRequest {
 	r.logical = &logical
 	return r
@@ -207,7 +207,7 @@ func (r ApiDeleteSodPolicyRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteSodPolicy Delete SOD Policy by ID
+DeleteSodPolicy Delete SOD policy by ID
 
 This deletes a specified SOD policy.
 Requires role of ORG_ADMIN.
@@ -368,13 +368,13 @@ func (r ApiDeleteSodPolicyScheduleRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DeleteSodPolicySchedule Delete SOD Policy Schedule
+DeleteSodPolicySchedule Delete SOD policy schedule
 
 This deletes schedule for a specified SOD policy.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the SOD Policy for which the schedule needs to be deleted.
+ @param id The ID of the SOD policy the schedule must be deleted for.
  @return ApiDeleteSodPolicyScheduleRequest
 */
 func (a *SODPolicyApiService) DeleteSodPolicySchedule(ctx context.Context, id string) ApiDeleteSodPolicyScheduleRequest {
@@ -529,7 +529,7 @@ func (r ApiDownloadCustomViolationReportRequest) Execute() (*os.File, *http.Resp
 /*
 DownloadCustomViolationReport Download custom violation report
 
-This allows to download a specified named violation report  for given report reference.
+This allows to download a specified named violation report for a given report reference.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -701,7 +701,7 @@ func (r ApiDownloadDefaultViolationReportRequest) Execute() (*os.File, *http.Res
 /*
 DownloadDefaultViolationReport Download violation report
 
-This allows to download a violation report for given report reference.
+This allows to download a violation report for a given report reference.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -869,7 +869,7 @@ func (r ApiGetSodAllReportRunStatusRequest) Execute() (*ReportResultReference, *
 /*
 GetSodAllReportRunStatus Get multi-report run task status
 
-This gets status for a violation report for all policy run.
+This endpoint gets the status for a violation report for all policy run.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1022,7 +1022,7 @@ func (r ApiGetSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) {
 }
 
 /*
-GetSodPolicy Get SOD Policy By ID
+GetSodPolicy Get SOD policy by ID
 
 This gets specified SOD policy.
 Requires role of ORG_ADMIN.
@@ -1191,10 +1191,10 @@ func (r ApiGetSodPolicyScheduleRequest) Execute() (*SodPolicySchedule, *http.Res
 }
 
 /*
-GetSodPolicySchedule Get SOD Policy Schedule
+GetSodPolicySchedule Get SOD policy schedule
 
-This gets schedule for a specified SOD policy.
-Requires a role of ORG_ADMIN
+This endpoint gets a specified SOD policy's schedule.
+Requires the role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the object reference to retrieve.
@@ -1351,7 +1351,7 @@ func (r ApiGetSodViolationReportRunStatusRequest) Execute() (*ReportResultRefere
 /*
 GetSodViolationReportRunStatus Get violation report run status
 
-This gets status for a violation report run task invoked already.
+This gets the status for a violation report run task that has already been invoked.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1520,7 +1520,7 @@ func (r ApiGetSodViolationReportStatusRequest) Execute() (*ReportResultReference
 /*
 GetSodViolationReportStatus Get SOD violation report status
 
-This gets status for a violation report run task invoked already.
+This gets the status for a violation report run task that has already been invoked.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1714,9 +1714,9 @@ func (r ApiListSodPoliciesRequest) Execute() ([]SodPolicy, *http.Response, error
 }
 
 /*
-ListSodPolicies List SOD Policies
+ListSodPolicies List SOD policies
 
-This gets list of all SOD Policies.
+This gets list of all SOD policies.
 Requires role of ORG_ADMIN
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1888,13 +1888,14 @@ func (r ApiPatchSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) 
 }
 
 /*
-PatchSodPolicy Update a SOD Policy
+PatchSodPolicy Patch a SOD policy
 
 Allows updating SOD Policy fields other than ["id","created","creatorId","policyQuery","type"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 Requires role of ORG_ADMIN.
+This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the SOD Policy being modified.
+ @param id The ID of the SOD policy being modified.
  @return ApiPatchSodPolicyRequest
 */
 func (a *SODPolicyApiService) PatchSodPolicy(ctx context.Context, id string) ApiPatchSodPolicyRequest {
@@ -2067,9 +2068,9 @@ func (r ApiRunSodAllPoliciesForOrgRequest) Execute() (*ReportResultReference, *h
 }
 
 /*
-RunSodAllPoliciesForOrg Runs all policies for Org.
+RunSodAllPoliciesForOrg Runs all policies for org
 
-Runs multi policy report for the Org. If a policy reports more than 5000 violation, the report mentions Violation limit exceeded for that policy. If the request is empty, report will run for all policies. Otherwise, report will run only for the filtered policy list provided.
+Runs multi-policy report for the org. If a policy reports more than 5000 violations, the report mentions that the violation limit was exceeded for that policy. If the request is empty, the report runs for all policies. Otherwise, the report runs for only the filtered policy list provided.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2224,13 +2225,13 @@ func (r ApiRunSodPolicyRequest) Execute() (*ReportResultReference, *http.Respons
 }
 
 /*
-RunSodPolicy Runs SOD Policy Violation Report
+RunSodPolicy Runs SOD policy violation report
 
-This invokes processing of violation report for given SOD Policy. If policy reports more than 5000 violations, the report returns with violation limit exceeded message.
+This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the SOD Policy to run.
+ @param id The SOD policy ID to run.
  @return ApiRunSodPolicyRequest
 */
 func (a *SODPolicyApiService) RunSodPolicy(ctx context.Context, id string) ApiRunSodPolicyRequest {
@@ -2402,7 +2403,7 @@ func (r ApiUpdatePolicyScheduleRequest) Execute() (*SodPolicySchedule, *http.Res
 UpdatePolicySchedule Update SOD Policy schedule
 
 This updates schedule for a specified SOD policy.
-Requires role of ORG_ADMIN
+Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the SOD policy to update its schedule.
@@ -2568,7 +2569,7 @@ func (r ApiUpdateSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error)
 }
 
 /*
-UpdateSodPolicy Update SOD Policy By ID
+UpdateSodPolicy Update SOD policy by ID
 
 This updates a specified SOD policy.
 Requires role of ORG_ADMIN.

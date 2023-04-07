@@ -153,12 +153,12 @@ Class | Method | HTTP request | Description
 *CustomPasswordInstructionsApi* | [**CreateCustomPasswordInstructions**](docs/CustomPasswordInstructionsApi.md#createcustompasswordinstructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsApi* | [**DeleteCustomPasswordInstructions**](docs/CustomPasswordInstructionsApi.md#deletecustompasswordinstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsApi* | [**GetCustomPasswordInstructions**](docs/CustomPasswordInstructionsApi.md#getcustompasswordinstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
-*EntitlementsApi* | [**GetEntitlement**](docs/EntitlementsApi.md#getentitlement) | **Get** /entitlements/{id} | Get an Entitlement
+*EntitlementsApi* | [**GetEntitlement**](docs/EntitlementsApi.md#getentitlement) | **Get** /entitlements/{id} | Get an entitlement
 *EntitlementsApi* | [**GetEntitlementRequestConfig**](docs/EntitlementsApi.md#getentitlementrequestconfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
 *EntitlementsApi* | [**ListEntitlementChildren**](docs/EntitlementsApi.md#listentitlementchildren) | **Get** /entitlements/{id}/children | List of entitlements children
 *EntitlementsApi* | [**ListEntitlementParents**](docs/EntitlementsApi.md#listentitlementparents) | **Get** /entitlements/{id}/parents | List of entitlements parents
 *EntitlementsApi* | [**ListEntitlements**](docs/EntitlementsApi.md#listentitlements) | **Get** /entitlements | Gets a list of entitlements.
-*EntitlementsApi* | [**PatchEntitlement**](docs/EntitlementsApi.md#patchentitlement) | **Patch** /entitlements/{id} | Patch a specified Entitlement
+*EntitlementsApi* | [**PatchEntitlement**](docs/EntitlementsApi.md#patchentitlement) | **Patch** /entitlements/{id} | Patch an entitlement
 *EntitlementsApi* | [**PutEntitlementRequestConfig**](docs/EntitlementsApi.md#putentitlementrequestconfig) | **Put** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
 *EntitlementsApi* | [**UpdateEntitlementsInBulk**](docs/EntitlementsApi.md#updateentitlementsinbulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsIgnoredItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsignoreditem) | **Post** /ai-access-request-recommendations/ignored-items | Notification of Ignored Access Request Recommendations
@@ -328,22 +328,22 @@ Class | Method | HTTP request | Description
 *RolesApi* | [**GetRoleAssignedIdentities**](docs/RolesApi.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | Get a list of Identities assigned a Role
 *RolesApi* | [**ListRoles**](docs/RolesApi.md#listroles) | **Get** /roles | List Roles
 *RolesApi* | [**PatchRole**](docs/RolesApi.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
-*SODPolicyApi* | [**CreateSodPolicy**](docs/SODPolicyApi.md#createsodpolicy) | **Post** /sod-policies | Create SOD Policy
-*SODPolicyApi* | [**DeleteSodPolicy**](docs/SODPolicyApi.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD Policy by ID
-*SODPolicyApi* | [**DeleteSodPolicySchedule**](docs/SODPolicyApi.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD Policy Schedule
+*SODPolicyApi* | [**CreateSodPolicy**](docs/SODPolicyApi.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
+*SODPolicyApi* | [**DeleteSodPolicy**](docs/SODPolicyApi.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
+*SODPolicyApi* | [**DeleteSodPolicySchedule**](docs/SODPolicyApi.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
 *SODPolicyApi* | [**DownloadCustomViolationReport**](docs/SODPolicyApi.md#downloadcustomviolationreport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
 *SODPolicyApi* | [**DownloadDefaultViolationReport**](docs/SODPolicyApi.md#downloaddefaultviolationreport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
 *SODPolicyApi* | [**GetSodAllReportRunStatus**](docs/SODPolicyApi.md#getsodallreportrunstatus) | **Get** /sod-violation-report | Get multi-report run task status
-*SODPolicyApi* | [**GetSodPolicy**](docs/SODPolicyApi.md#getsodpolicy) | **Get** /sod-policies/{id} | Get SOD Policy By ID
-*SODPolicyApi* | [**GetSodPolicySchedule**](docs/SODPolicyApi.md#getsodpolicyschedule) | **Get** /sod-policies/{id}/schedule | Get SOD Policy Schedule
+*SODPolicyApi* | [**GetSodPolicy**](docs/SODPolicyApi.md#getsodpolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
+*SODPolicyApi* | [**GetSodPolicySchedule**](docs/SODPolicyApi.md#getsodpolicyschedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
 *SODPolicyApi* | [**GetSodViolationReportRunStatus**](docs/SODPolicyApi.md#getsodviolationreportrunstatus) | **Get** /sod-violation-report-status/{reportResultId} | Get violation report run status
 *SODPolicyApi* | [**GetSodViolationReportStatus**](docs/SODPolicyApi.md#getsodviolationreportstatus) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
-*SODPolicyApi* | [**ListSodPolicies**](docs/SODPolicyApi.md#listsodpolicies) | **Get** /sod-policies | List SOD Policies
-*SODPolicyApi* | [**PatchSodPolicy**](docs/SODPolicyApi.md#patchsodpolicy) | **Patch** /sod-policies/{id} | Update a SOD Policy
-*SODPolicyApi* | [**RunSodAllPoliciesForOrg**](docs/SODPolicyApi.md#runsodallpoliciesfororg) | **Post** /sod-violation-report/run | Runs all policies for Org.
-*SODPolicyApi* | [**RunSodPolicy**](docs/SODPolicyApi.md#runsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD Policy Violation Report
+*SODPolicyApi* | [**ListSodPolicies**](docs/SODPolicyApi.md#listsodpolicies) | **Get** /sod-policies | List SOD policies
+*SODPolicyApi* | [**PatchSodPolicy**](docs/SODPolicyApi.md#patchsodpolicy) | **Patch** /sod-policies/{id} | Patch a SOD policy
+*SODPolicyApi* | [**RunSodAllPoliciesForOrg**](docs/SODPolicyApi.md#runsodallpoliciesfororg) | **Post** /sod-violation-report/run | Runs all policies for org
+*SODPolicyApi* | [**RunSodPolicy**](docs/SODPolicyApi.md#runsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 *SODPolicyApi* | [**UpdatePolicySchedule**](docs/SODPolicyApi.md#updatepolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
-*SODPolicyApi* | [**UpdateSodPolicy**](docs/SODPolicyApi.md#updatesodpolicy) | **Put** /sod-policies/{id} | Update SOD Policy By ID
+*SODPolicyApi* | [**UpdateSodPolicy**](docs/SODPolicyApi.md#updatesodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
 *SODViolationsApi* | [**PredictSodViolations**](docs/SODViolationsApi.md#predictsodviolations) | **Post** /sod-violations/predict | Predict SOD violations for the given identity if they were granted the given access.
 *SPConfigApi* | [**ExportSpConfig**](docs/SPConfigApi.md#exportspconfig) | **Post** /sp-config/export | Initiates Configuration Objects Export Job.
 *SPConfigApi* | [**ExportSpConfigDownload**](docs/SPConfigApi.md#exportspconfigdownload) | **Get** /sp-config/export/{id}/download | Download Result of Export Job

@@ -4,12 +4,12 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetEntitlement**](EntitlementsApi.md#GetEntitlement) | **Get** /entitlements/{id} | Get an Entitlement
+[**GetEntitlement**](EntitlementsApi.md#GetEntitlement) | **Get** /entitlements/{id} | Get an entitlement
 [**GetEntitlementRequestConfig**](EntitlementsApi.md#GetEntitlementRequestConfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
 [**ListEntitlementChildren**](EntitlementsApi.md#ListEntitlementChildren) | **Get** /entitlements/{id}/children | List of entitlements children
 [**ListEntitlementParents**](EntitlementsApi.md#ListEntitlementParents) | **Get** /entitlements/{id}/parents | List of entitlements parents
 [**ListEntitlements**](EntitlementsApi.md#ListEntitlements) | **Get** /entitlements | Gets a list of entitlements.
-[**PatchEntitlement**](EntitlementsApi.md#PatchEntitlement) | **Patch** /entitlements/{id} | Patch a specified Entitlement
+[**PatchEntitlement**](EntitlementsApi.md#PatchEntitlement) | **Patch** /entitlements/{id} | Patch an entitlement
 [**PutEntitlementRequestConfig**](EntitlementsApi.md#PutEntitlementRequestConfig) | **Put** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
 [**UpdateEntitlementsInBulk**](EntitlementsApi.md#UpdateEntitlementsInBulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 > Entitlement GetEntitlement(ctx, id).Execute()
 
-Get an Entitlement
+Get an entitlement
 
 
 
@@ -36,7 +36,7 @@ import (
 )
 
 func main() {
-    id := "2c91808874ff91550175097daaec161c" // string | Entitlement Id
+    id := "2c91808874ff91550175097daaec161c" // string | The entitlement ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -56,7 +56,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Entitlement Id | 
+**id** | **string** | The entitlement ID | 
 
 ### Other Parameters
 
@@ -393,7 +393,7 @@ Name | Type | Description  | Notes
 
 > Entitlement PatchEntitlement(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Patch a specified Entitlement
+Patch an entitlement
 
 
 
@@ -410,7 +410,7 @@ import (
 )
 
 func main() {
-    id := "2c91808a7813090a017814121e121518" // string | ID of the Entitlement to patch
+    id := "2c91808a7813090a017814121e121518" // string | ID of the entitlement to patch
     jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -431,7 +431,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the Entitlement to patch | 
+**id** | **string** | ID of the entitlement to patch | 
 
 ### Other Parameters
 

@@ -34,12 +34,12 @@ func (r ApiGetEntitlementRequest) Execute() (*Entitlement, *http.Response, error
 }
 
 /*
-GetEntitlement Get an Entitlement
+GetEntitlement Get an entitlement
 
-This API returns an Entitlement by its ID.
+This API returns an entitlement by its ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Entitlement Id
+ @param id The entitlement ID
  @return ApiGetEntitlementRequest
 */
 func (a *EntitlementsApiService) GetEntitlement(ctx context.Context, id string) ApiGetEntitlementRequest {
@@ -1019,18 +1019,18 @@ func (r ApiPatchEntitlementRequest) Execute() (*Entitlement, *http.Response, err
 }
 
 /*
-PatchEntitlement Patch a specified Entitlement
+PatchEntitlement Patch an entitlement
 
-This API updates an existing Entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
+This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 
 The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**.
 
-When patching owner, only owner type and owner id need to be provided. Owner name is optional and it won't be modified. If it is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
+When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
 
 A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the Entitlement to patch
+ @param id ID of the entitlement to patch
  @return ApiPatchEntitlementRequest
 */
 func (a *EntitlementsApiService) PatchEntitlement(ctx context.Context, id string) ApiPatchEntitlementRequest {
