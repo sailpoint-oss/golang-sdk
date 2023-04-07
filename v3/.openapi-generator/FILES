@@ -16,6 +16,7 @@ api_non_employee_lifecycle_management.go
 api_o_auth_clients.go
 api_password_dictionary.go
 api_password_management.go
+api_password_sync_groups.go
 api_personal_access_tokens.go
 api_public_identities.go
 api_public_identities_config.go
@@ -265,6 +266,8 @@ docs/PasswordInfoAccount.md
 docs/PasswordInfoQueryDTO.md
 docs/PasswordManagementApi.md
 docs/PasswordStatus.md
+docs/PasswordSyncGroup.md
+docs/PasswordSyncGroupsApi.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
 docs/PermissionDto.md
@@ -639,6 +642,7 @@ model_password_info.go
 model_password_info_account.go
 model_password_info_query_dto.go
 model_password_status.go
+model_password_sync_group.go
 model_pending_approval.go
 model_pending_approval_action.go
 model_permission_dto.go
@@ -790,6 +794,7 @@ test/api_non_employee_lifecycle_management_test.go
 test/api_o_auth_clients_test.go
 test/api_password_dictionary_test.go
 test/api_password_management_test.go
+test/api_password_sync_groups_test.go
 test/api_personal_access_tokens_test.go
 test/api_public_identities_config_test.go
 test/api_public_identities_test.go

@@ -172,6 +172,7 @@ Class | Method | HTTP request | Description
 *PasswordManagementApi* | [**GetPasswordChangeStatus**](docs/PasswordManagementApi.md#getpasswordchangestatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
 *PasswordManagementApi* | [**QueryPasswordInfo**](docs/PasswordManagementApi.md#querypasswordinfo) | **Post** /query-password-info | Query Password Info
 *PasswordManagementApi* | [**SetPassword**](docs/PasswordManagementApi.md#setpassword) | **Post** /set-password | Set Identity&#39;s Password
+*PasswordSyncGroupsApi* | [**CreatePasswordSyncGroup**](docs/PasswordSyncGroupsApi.md#createpasswordsyncgroup) | **Post** /password-sync-groups | Create Password Sync Group
 *PersonalAccessTokensApi* | [**CreatePersonalAccessToken**](docs/PersonalAccessTokensApi.md#createpersonalaccesstoken) | **Post** /personal-access-tokens | Create Personal Access Token
 *PersonalAccessTokensApi* | [**DeletePersonalAccessToken**](docs/PersonalAccessTokensApi.md#deletepersonalaccesstoken) | **Delete** /personal-access-tokens/{id} | Delete Personal Access Token
 *PersonalAccessTokensApi* | [**ListPersonalAccessTokens**](docs/PersonalAccessTokensApi.md#listpersonalaccesstokens) | **Get** /personal-access-tokens | List Personal Access Tokens
@@ -479,6 +480,7 @@ Class | Method | HTTP request | Description
  - [PasswordInfoAccount](docs/PasswordInfoAccount.md)
  - [PasswordInfoQueryDTO](docs/PasswordInfoQueryDTO.md)
  - [PasswordStatus](docs/PasswordStatus.md)
+ - [PasswordSyncGroup](docs/PasswordSyncGroup.md)
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)
  - [PermissionDto](docs/PermissionDto.md)
