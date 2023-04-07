@@ -432,6 +432,7 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**ApproveApprovalItem**](docs/WorkItemsApi.md#approveapprovalitem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsApi* | [**ApproveApprovalItemsInBulk**](docs/WorkItemsApi.md#approveapprovalitemsinbulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsApi* | [**CompleteWorkItem**](docs/WorkItemsApi.md#completeworkitem) | **Post** /work-items/{id} | Complete a Work Item
+*WorkItemsApi* | [**ForwardWorkItem**](docs/WorkItemsApi.md#forwardworkitem) | **Post** /work-items/{id}/forward | Forward a Work Item
 *WorkItemsApi* | [**GetCompletedWorkItems**](docs/WorkItemsApi.md#getcompletedworkitems) | **Get** /work-items/completed | Completed Work Items
 *WorkItemsApi* | [**GetCountCompletedWorkItems**](docs/WorkItemsApi.md#getcountcompletedworkitems) | **Get** /work-items/count/completed | Count Completed Work Items
 *WorkItemsApi* | [**GetCountWorkItems**](docs/WorkItemsApi.md#getcountworkitems) | **Get** /work-items/count | Count Work Items
@@ -1077,6 +1078,7 @@ Class | Method | HTTP request | Description
  - [ViolationOwnerAssignmentConfig](docs/ViolationOwnerAssignmentConfig.md)
  - [ViolationPrediction](docs/ViolationPrediction.md)
  - [VisibilityCriteria](docs/VisibilityCriteria.md)
+ - [WorkItemForward](docs/WorkItemForward.md)
  - [WorkItemState](docs/WorkItemState.md)
  - [WorkItemType](docs/WorkItemType.md)
  - [WorkItems](docs/WorkItems.md)

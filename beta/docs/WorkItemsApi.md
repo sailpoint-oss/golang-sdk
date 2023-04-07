@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**ApproveApprovalItem**](WorkItemsApi.md#ApproveApprovalItem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 [**ApproveApprovalItemsInBulk**](WorkItemsApi.md#ApproveApprovalItemsInBulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 [**CompleteWorkItem**](WorkItemsApi.md#CompleteWorkItem) | **Post** /work-items/{id} | Complete a Work Item
+[**ForwardWorkItem**](WorkItemsApi.md#ForwardWorkItem) | **Post** /work-items/{id}/forward | Forward a Work Item
 [**GetCompletedWorkItems**](WorkItemsApi.md#GetCompletedWorkItems) | **Get** /work-items/completed | Completed Work Items
 [**GetCountCompletedWorkItems**](WorkItemsApi.md#GetCountCompletedWorkItems) | **Get** /work-items/count/completed | Count Completed Work Items
 [**GetCountWorkItems**](WorkItemsApi.md#GetCountWorkItems) | **Get** /work-items/count | Count Work Items
@@ -225,6 +226,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ForwardWorkItem
+
+> ForwardWorkItem(ctx, id).WorkItemForward(workItemForward).Execute()
+
+Forward a Work Item
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
+    workItemForward := *openapiclient.NewWorkItemForward("2c9180835d2e5168015d32f890ca1581", "I'm going on vacation.") // WorkItemForward | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.WorkItemsApi.ForwardWorkItem(context.Background(), id).WorkItemForward(workItemForward).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.ForwardWorkItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The ID of the work item | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiForwardWorkItemRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **workItemForward** | [**WorkItemForward**](WorkItemForward.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

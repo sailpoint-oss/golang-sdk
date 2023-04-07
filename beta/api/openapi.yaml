@@ -38818,6 +38818,87 @@ paths:
       summary: Complete a Work Item
       tags:
       - Work Items
+  /work-items/{id}/forward:
+    post:
+      description: "This API forwards a work item to a new owner. Either an admin,\
+        \ or the owning/current user must make this request."
+      operationId: forwardWorkItem
+      parameters:
+      - description: The ID of the work item
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkItemForward'
+        required: true
+      responses:
+        "200":
+          description: "Success, but no data is returned."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: Forward a Work Item
+      tags:
+      - Work Items
   /work-items/{id}/approve/{approvalItemId}:
     post:
       description: "This API approves an Approval Item. Either an admin, or the owning/current\
@@ -51992,6 +52073,29 @@ components:
           items:
             type: string
           type: array
+      type: object
+    WorkItemForward:
+      example:
+        targetOwnerId: 2c9180835d2e5168015d32f890ca1581
+        comment: I'm going on vacation.
+        sendNotifications: true
+      properties:
+        targetOwnerId:
+          description: The ID of the identity to forward this work item to.
+          example: 2c9180835d2e5168015d32f890ca1581
+          type: string
+        comment:
+          description: Comments to send to the target owner
+          example: I'm going on vacation.
+          type: string
+        sendNotifications:
+          default: true
+          description: "If true, send a notification to the target owner."
+          example: true
+          type: boolean
+      required:
+      - comment
+      - targetOwnerId
       type: object
     Workflow:
       allOf:

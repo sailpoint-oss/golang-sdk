@@ -717,6 +717,7 @@ docs/ViolationContextPolicyAllOf.md
 docs/ViolationOwnerAssignmentConfig.md
 docs/ViolationPrediction.md
 docs/VisibilityCriteria.md
+docs/WorkItemForward.md
 docs/WorkItemState.md
 docs/WorkItemType.md
 docs/WorkItems.md
@@ -1355,6 +1356,7 @@ model_violation_context_policy_all_of.go
 model_violation_owner_assignment_config.go
 model_violation_prediction.go
 model_visibility_criteria.go
+model_work_item_forward.go
 model_work_item_state.go
 model_work_item_type.go
 model_work_items.go
