@@ -24,6 +24,10 @@ type ProvisioningConfig struct {
 	// References to sources for the Service Desk integration template.  May only be specified if universalManager is false.
 	ManagedResourceRefs []ProvisioningConfigManagedResourceRefsInner `json:"managedResourceRefs,omitempty"`
 	PlanInitializerScript *ProvisioningConfigPlanInitializerScript `json:"planInitializerScript,omitempty"`
+	// Name of an attribute that when true disables the saving of ProvisioningRequest objects whenever plans are sent through this integration.
+	NoProvisioningRequests *bool `json:"noProvisioningRequests,omitempty"`
+	// When saving pending requests is enabled, this defines the number of hours the request is allowed to live before it is considered expired and no longer affects plan compilation.
+	ProvisioningRequestExpiration *int32 `json:"provisioningRequestExpiration,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -142,6 +146,70 @@ func (o *ProvisioningConfig) SetPlanInitializerScript(v ProvisioningConfigPlanIn
 	o.PlanInitializerScript = &v
 }
 
+// GetNoProvisioningRequests returns the NoProvisioningRequests field value if set, zero value otherwise.
+func (o *ProvisioningConfig) GetNoProvisioningRequests() bool {
+	if o == nil || isNil(o.NoProvisioningRequests) {
+		var ret bool
+		return ret
+	}
+	return *o.NoProvisioningRequests
+}
+
+// GetNoProvisioningRequestsOk returns a tuple with the NoProvisioningRequests field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProvisioningConfig) GetNoProvisioningRequestsOk() (*bool, bool) {
+	if o == nil || isNil(o.NoProvisioningRequests) {
+		return nil, false
+	}
+	return o.NoProvisioningRequests, true
+}
+
+// HasNoProvisioningRequests returns a boolean if a field has been set.
+func (o *ProvisioningConfig) HasNoProvisioningRequests() bool {
+	if o != nil && !isNil(o.NoProvisioningRequests) {
+		return true
+	}
+
+	return false
+}
+
+// SetNoProvisioningRequests gets a reference to the given bool and assigns it to the NoProvisioningRequests field.
+func (o *ProvisioningConfig) SetNoProvisioningRequests(v bool) {
+	o.NoProvisioningRequests = &v
+}
+
+// GetProvisioningRequestExpiration returns the ProvisioningRequestExpiration field value if set, zero value otherwise.
+func (o *ProvisioningConfig) GetProvisioningRequestExpiration() int32 {
+	if o == nil || isNil(o.ProvisioningRequestExpiration) {
+		var ret int32
+		return ret
+	}
+	return *o.ProvisioningRequestExpiration
+}
+
+// GetProvisioningRequestExpirationOk returns a tuple with the ProvisioningRequestExpiration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProvisioningConfig) GetProvisioningRequestExpirationOk() (*int32, bool) {
+	if o == nil || isNil(o.ProvisioningRequestExpiration) {
+		return nil, false
+	}
+	return o.ProvisioningRequestExpiration, true
+}
+
+// HasProvisioningRequestExpiration returns a boolean if a field has been set.
+func (o *ProvisioningConfig) HasProvisioningRequestExpiration() bool {
+	if o != nil && !isNil(o.ProvisioningRequestExpiration) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvisioningRequestExpiration gets a reference to the given int32 and assigns it to the ProvisioningRequestExpiration field.
+func (o *ProvisioningConfig) SetProvisioningRequestExpiration(v int32) {
+	o.ProvisioningRequestExpiration = &v
+}
+
 func (o ProvisioningConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -158,6 +226,12 @@ func (o ProvisioningConfig) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.PlanInitializerScript) {
 		toSerialize["planInitializerScript"] = o.PlanInitializerScript
+	}
+	if !isNil(o.NoProvisioningRequests) {
+		toSerialize["noProvisioningRequests"] = o.NoProvisioningRequests
+	}
+	if !isNil(o.ProvisioningRequestExpiration) {
+		toSerialize["provisioningRequestExpiration"] = o.ProvisioningRequestExpiration
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -180,6 +254,8 @@ func (o *ProvisioningConfig) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "universalManager")
 		delete(additionalProperties, "managedResourceRefs")
 		delete(additionalProperties, "planInitializerScript")
+		delete(additionalProperties, "noProvisioningRequests")
+		delete(additionalProperties, "provisioningRequestExpiration")
 		o.AdditionalProperties = additionalProperties
 	}
 

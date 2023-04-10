@@ -32,8 +32,10 @@ type ServiceDeskIntegrationDto struct {
 	Description string `json:"description"`
 	// Service Desk integration types  - ServiceNowSDIM - ServiceNow 
 	Type string `json:"type"`
-	OwnerRef *ServiceDeskIntegrationDtoAllOfOwnerRef `json:"ownerRef,omitempty"`
-	ClusterRef *ServiceDeskIntegrationDtoAllOfClusterRef `json:"clusterRef,omitempty"`
+	// Reference to the identity that is the owner of this Service Desk integration
+	OwnerRef *BaseReferenceDto `json:"ownerRef,omitempty"`
+	// Reference to the source cluster for this Service Desk integration
+	ClusterRef *BaseReferenceDto `json:"clusterRef,omitempty"`
 	// ID of the cluster for the Service Desk integration (replaced by clusterRef, retained for backward compatibility)
 	// Deprecated
 	Cluster *string `json:"cluster,omitempty"`
@@ -43,7 +45,8 @@ type ServiceDeskIntegrationDto struct {
 	ProvisioningConfig *ProvisioningConfig `json:"provisioningConfig,omitempty"`
 	// Attributes of the Service Desk integration.  Validation constraints enforced by the implementation.
 	Attributes map[string]interface{} `json:"attributes"`
-	BeforeProvisioningRule *ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule `json:"beforeProvisioningRule,omitempty"`
+	// Reference to beforeProvisioningRule for this Service Desk integration
+	BeforeProvisioningRule *BaseReferenceDto `json:"beforeProvisioningRule,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -241,9 +244,9 @@ func (o *ServiceDeskIntegrationDto) SetType(v string) {
 }
 
 // GetOwnerRef returns the OwnerRef field value if set, zero value otherwise.
-func (o *ServiceDeskIntegrationDto) GetOwnerRef() ServiceDeskIntegrationDtoAllOfOwnerRef {
+func (o *ServiceDeskIntegrationDto) GetOwnerRef() BaseReferenceDto {
 	if o == nil || isNil(o.OwnerRef) {
-		var ret ServiceDeskIntegrationDtoAllOfOwnerRef
+		var ret BaseReferenceDto
 		return ret
 	}
 	return *o.OwnerRef
@@ -251,7 +254,7 @@ func (o *ServiceDeskIntegrationDto) GetOwnerRef() ServiceDeskIntegrationDtoAllOf
 
 // GetOwnerRefOk returns a tuple with the OwnerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceDeskIntegrationDto) GetOwnerRefOk() (*ServiceDeskIntegrationDtoAllOfOwnerRef, bool) {
+func (o *ServiceDeskIntegrationDto) GetOwnerRefOk() (*BaseReferenceDto, bool) {
 	if o == nil || isNil(o.OwnerRef) {
 		return nil, false
 	}
@@ -267,15 +270,15 @@ func (o *ServiceDeskIntegrationDto) HasOwnerRef() bool {
 	return false
 }
 
-// SetOwnerRef gets a reference to the given ServiceDeskIntegrationDtoAllOfOwnerRef and assigns it to the OwnerRef field.
-func (o *ServiceDeskIntegrationDto) SetOwnerRef(v ServiceDeskIntegrationDtoAllOfOwnerRef) {
+// SetOwnerRef gets a reference to the given BaseReferenceDto and assigns it to the OwnerRef field.
+func (o *ServiceDeskIntegrationDto) SetOwnerRef(v BaseReferenceDto) {
 	o.OwnerRef = &v
 }
 
 // GetClusterRef returns the ClusterRef field value if set, zero value otherwise.
-func (o *ServiceDeskIntegrationDto) GetClusterRef() ServiceDeskIntegrationDtoAllOfClusterRef {
+func (o *ServiceDeskIntegrationDto) GetClusterRef() BaseReferenceDto {
 	if o == nil || isNil(o.ClusterRef) {
-		var ret ServiceDeskIntegrationDtoAllOfClusterRef
+		var ret BaseReferenceDto
 		return ret
 	}
 	return *o.ClusterRef
@@ -283,7 +286,7 @@ func (o *ServiceDeskIntegrationDto) GetClusterRef() ServiceDeskIntegrationDtoAll
 
 // GetClusterRefOk returns a tuple with the ClusterRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceDeskIntegrationDto) GetClusterRefOk() (*ServiceDeskIntegrationDtoAllOfClusterRef, bool) {
+func (o *ServiceDeskIntegrationDto) GetClusterRefOk() (*BaseReferenceDto, bool) {
 	if o == nil || isNil(o.ClusterRef) {
 		return nil, false
 	}
@@ -299,8 +302,8 @@ func (o *ServiceDeskIntegrationDto) HasClusterRef() bool {
 	return false
 }
 
-// SetClusterRef gets a reference to the given ServiceDeskIntegrationDtoAllOfClusterRef and assigns it to the ClusterRef field.
-func (o *ServiceDeskIntegrationDto) SetClusterRef(v ServiceDeskIntegrationDtoAllOfClusterRef) {
+// SetClusterRef gets a reference to the given BaseReferenceDto and assigns it to the ClusterRef field.
+func (o *ServiceDeskIntegrationDto) SetClusterRef(v BaseReferenceDto) {
 	o.ClusterRef = &v
 }
 
@@ -431,9 +434,9 @@ func (o *ServiceDeskIntegrationDto) SetAttributes(v map[string]interface{}) {
 }
 
 // GetBeforeProvisioningRule returns the BeforeProvisioningRule field value if set, zero value otherwise.
-func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRule() ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule {
+func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRule() BaseReferenceDto {
 	if o == nil || isNil(o.BeforeProvisioningRule) {
-		var ret ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule
+		var ret BaseReferenceDto
 		return ret
 	}
 	return *o.BeforeProvisioningRule
@@ -441,7 +444,7 @@ func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRule() ServiceDeskInteg
 
 // GetBeforeProvisioningRuleOk returns a tuple with the BeforeProvisioningRule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRuleOk() (*ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule, bool) {
+func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRuleOk() (*BaseReferenceDto, bool) {
 	if o == nil || isNil(o.BeforeProvisioningRule) {
 		return nil, false
 	}
@@ -457,8 +460,8 @@ func (o *ServiceDeskIntegrationDto) HasBeforeProvisioningRule() bool {
 	return false
 }
 
-// SetBeforeProvisioningRule gets a reference to the given ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule and assigns it to the BeforeProvisioningRule field.
-func (o *ServiceDeskIntegrationDto) SetBeforeProvisioningRule(v ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule) {
+// SetBeforeProvisioningRule gets a reference to the given BaseReferenceDto and assigns it to the BeforeProvisioningRule field.
+func (o *ServiceDeskIntegrationDto) SetBeforeProvisioningRule(v BaseReferenceDto) {
 	o.BeforeProvisioningRule = &v
 }
 

@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **UniversalManager** | Pointer to **bool** | Specifies whether this configuration is used to manage provisioning requests for all sources from the org.  If true, no managedResourceRefs are allowed. | [optional] [readonly] 
 **ManagedResourceRefs** | Pointer to [**[]ProvisioningConfigManagedResourceRefsInner**](ProvisioningConfigManagedResourceRefsInner.md) | References to sources for the Service Desk integration template.  May only be specified if universalManager is false. | [optional] 
 **PlanInitializerScript** | Pointer to [**ProvisioningConfigPlanInitializerScript**](ProvisioningConfigPlanInitializerScript.md) |  | [optional] 
+**NoProvisioningRequests** | Pointer to **bool** | Name of an attribute that when true disables the saving of ProvisioningRequest objects whenever plans are sent through this integration. | [optional] 
+**ProvisioningRequestExpiration** | Pointer to **int32** | When saving pending requests is enabled, this defines the number of hours the request is allowed to live before it is considered expired and no longer affects plan compilation. | [optional] 
 
 ## Methods
 
@@ -101,6 +103,56 @@ SetPlanInitializerScript sets PlanInitializerScript field to given value.
 `func (o *ProvisioningConfig) HasPlanInitializerScript() bool`
 
 HasPlanInitializerScript returns a boolean if a field has been set.
+
+### GetNoProvisioningRequests
+
+`func (o *ProvisioningConfig) GetNoProvisioningRequests() bool`
+
+GetNoProvisioningRequests returns the NoProvisioningRequests field if non-nil, zero value otherwise.
+
+### GetNoProvisioningRequestsOk
+
+`func (o *ProvisioningConfig) GetNoProvisioningRequestsOk() (*bool, bool)`
+
+GetNoProvisioningRequestsOk returns a tuple with the NoProvisioningRequests field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNoProvisioningRequests
+
+`func (o *ProvisioningConfig) SetNoProvisioningRequests(v bool)`
+
+SetNoProvisioningRequests sets NoProvisioningRequests field to given value.
+
+### HasNoProvisioningRequests
+
+`func (o *ProvisioningConfig) HasNoProvisioningRequests() bool`
+
+HasNoProvisioningRequests returns a boolean if a field has been set.
+
+### GetProvisioningRequestExpiration
+
+`func (o *ProvisioningConfig) GetProvisioningRequestExpiration() int32`
+
+GetProvisioningRequestExpiration returns the ProvisioningRequestExpiration field if non-nil, zero value otherwise.
+
+### GetProvisioningRequestExpirationOk
+
+`func (o *ProvisioningConfig) GetProvisioningRequestExpirationOk() (*int32, bool)`
+
+GetProvisioningRequestExpirationOk returns a tuple with the ProvisioningRequestExpiration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioningRequestExpiration
+
+`func (o *ProvisioningConfig) SetProvisioningRequestExpiration(v int32)`
+
+SetProvisioningRequestExpiration sets ProvisioningRequestExpiration field to given value.
+
+### HasProvisioningRequestExpiration
+
+`func (o *ProvisioningConfig) HasProvisioningRequestExpiration() bool`
+
+HasProvisioningRequestExpiration returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

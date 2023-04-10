@@ -28493,7 +28493,7 @@ paths:
       description: Update the time check configuration of queued SDIM tickets.  A
         token with Org Admin or Service Desk Admin authority is required to access
         this endpoint.
-      operationId: updateManagedClientStatusCheckDetails
+      operationId: updateStatusCheckDetails
       requestBody:
         content:
           application/json:
@@ -55943,6 +55943,18 @@ components:
           type: array
         planInitializerScript:
           $ref: '#/components/schemas/ProvisioningConfig_planInitializerScript'
+        noProvisioningRequests:
+          description: Name of an attribute that when true disables the saving of
+            ProvisioningRequest objects whenever plans are sent through this integration.
+          example: true
+          type: boolean
+        provisioningRequestExpiration:
+          description: "When saving pending requests is enabled, this defines the\
+            \ number of hours the request is allowed to live before it is considered\
+            \ expired and no longer affects plan compilation."
+          example: 7
+          format: int32
+          type: integer
       type: object
     ExportOptions:
       example:
@@ -60583,64 +60595,6 @@ components:
           $ref: '#/components/schemas/RoleMiningPotentialRoleExportState'
       type: object
       example: null
-    ServiceDeskIntegrationDto_allOf_ownerRef:
-      description: Reference to the identity that is the owner of this Service Desk
-        integration
-      properties:
-        type:
-          description: The type of object being referenced
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: ID of the identity
-          example: 2c91808568c529c60168cca6f90c1313
-          type: string
-        name:
-          description: Human-readable display name of the identity
-          example: MyName
-          type: string
-      type: object
-      example: null
-    ServiceDeskIntegrationDto_allOf_clusterRef:
-      description: Reference to the source cluster for this Service Desk integration
-      properties:
-        type:
-          description: The type of object being referenced
-          enum:
-          - CLUSTER
-          example: CLUSTER
-          type: string
-        id:
-          description: ID of the cluster
-          example: 2c9180866166b5b0016167c32ef31a66
-          type: string
-        name:
-          description: Human-readable display name of the cluster
-          example: Corporate Cluster
-          type: string
-      type: object
-      example: null
-    ServiceDeskIntegrationDto_allOf_beforeProvisioningRule:
-      description: Reference to beforeProvisioningRule for this Service Desk integration
-      properties:
-        type:
-          description: The type of object being referenced
-          enum:
-          - RULE
-          example: RULE
-          type: string
-        id:
-          description: ID of the rule
-          example: 2c91808568c529c60168cca6f90c1333
-          type: string
-        name:
-          description: Human-readable display name of the rule
-          example: Example Rule
-          type: string
-      type: object
-      example: null
     ServiceDeskIntegrationDto_allOf:
       description: Specification of a Service Desk integration
       properties:
@@ -60658,9 +60612,44 @@ components:
           example: ServiceNowSDIM
           type: string
         ownerRef:
-          $ref: '#/components/schemas/ServiceDeskIntegrationDto_allOf_ownerRef'
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto'
+          description: Reference to the identity that is the owner of this Service
+            Desk integration
+          properties:
+            type:
+              description: The type of object being referenced
+              enum:
+              - IDENTITY
+              example: IDENTITY
+              type: object
+            id:
+              description: ID of the identity
+              example: 2c91808568c529c60168cca6f90c1313
+              type: object
+            name:
+              description: Human-readable display name of the identity
+              example: MyName
+              type: object
         clusterRef:
-          $ref: '#/components/schemas/ServiceDeskIntegrationDto_allOf_clusterRef'
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto'
+          description: Reference to the source cluster for this Service Desk integration
+          properties:
+            type:
+              description: The type of object being referenced
+              enum:
+              - CLUSTER
+              example: CLUSTER
+              type: object
+            id:
+              description: ID of the cluster
+              example: 2c9180866166b5b0016167c32ef31a66
+              type: object
+            name:
+              description: Human-readable display name of the cluster
+              example: Corporate Cluster
+              type: object
         cluster:
           deprecated: true
           description: "ID of the cluster for the Service Desk integration (replaced\
@@ -60688,7 +60677,24 @@ components:
             key: value
           type: object
         beforeProvisioningRule:
-          $ref: '#/components/schemas/ServiceDeskIntegrationDto_allOf_beforeProvisioningRule'
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto'
+          description: Reference to beforeProvisioningRule for this Service Desk integration
+          properties:
+            type:
+              description: The type of object being referenced
+              enum:
+              - RULE
+              example: RULE
+              type: object
+            id:
+              description: ID of the rule
+              example: 2c91808568c529c60168cca6f90c1333
+              type: object
+            name:
+              description: Human-readable display name of the rule
+              example: Example Rule
+              type: object
       required:
       - attributes
       - description
@@ -61189,22 +61195,23 @@ components:
       type: object
       example: null
     ProvisioningConfig_managedResourceRefs_inner:
+      allOf:
+      - $ref: '#/components/schemas/BaseReferenceDto'
       properties:
         type:
           description: The type of object being referenced
           enum:
           - SOURCE
           example: SOURCE
-          type: string
+          type: object
         id:
           description: ID of the source
           example: 2c91808568c529c60168cca6f90c1313
-          type: string
+          type: object
         name:
           description: Human-readable display name of the source
           example: My Source
-          type: string
-      type: object
+          type: object
     ProvisioningConfig_planInitializerScript:
       description: This is a reference to a plan initializer script.
       properties:

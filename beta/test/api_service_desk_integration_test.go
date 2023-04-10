@@ -125,18 +125,6 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ServiceDeskIntegrationApiService UpdateManagedClientStatusCheckDetails", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.UpdateManagedClientStatusCheckDetails(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ServiceDeskIntegrationApiService UpdateServiceDeskIntegration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -144,6 +132,18 @@ func Test_beta_ServiceDeskIntegrationApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.UpdateServiceDeskIntegration(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ServiceDeskIntegrationApiService UpdateStatusCheckDetails", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.ServiceDeskIntegrationApi.UpdateStatusCheckDetails(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

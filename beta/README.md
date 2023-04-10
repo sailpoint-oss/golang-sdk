@@ -370,8 +370,8 @@ Class | Method | HTTP request | Description
 *ServiceDeskIntegrationApi* | [**GetServiceDeskIntegrationTypes**](docs/ServiceDeskIntegrationApi.md#getservicedeskintegrationtypes) | **Get** /service-desk-integrations/types | Service Desk Integration Types List.
 *ServiceDeskIntegrationApi* | [**GetStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#getstatuscheckdetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration of queued SDIM tickets
 *ServiceDeskIntegrationApi* | [**PatchServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#patchservicedeskintegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update - PATCH
-*ServiceDeskIntegrationApi* | [**UpdateManagedClientStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#updatemanagedclientstatuscheckdetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration of queued SDIM tickets
 *ServiceDeskIntegrationApi* | [**UpdateServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#updateservicedeskintegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration by ID
+*ServiceDeskIntegrationApi* | [**UpdateStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#updatestatuscheckdetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration of queued SDIM tickets
 *SourcesApi* | [**CreateProvisioningPolicy**](docs/SourcesApi.md#createprovisioningpolicy) | **Post** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
 *SourcesApi* | [**CreateSource**](docs/SourcesApi.md#createsource) | **Post** /sources | Creates a source in IdentityNow.
 *SourcesApi* | [**CreateSourceSchema**](docs/SourcesApi.md#createsourceschema) | **Post** /sources/{sourceId}/schemas | Creates a new Schema on the specified Source in IdentityNow.
@@ -911,9 +911,6 @@ Class | Method | HTTP request | Description
  - [SendTestNotificationRequestDto](docs/SendTestNotificationRequestDto.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationDtoAllOf](docs/ServiceDeskIntegrationDtoAllOf.md)
- - [ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule](docs/ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.md)
- - [ServiceDeskIntegrationDtoAllOfClusterRef](docs/ServiceDeskIntegrationDtoAllOfClusterRef.md)
- - [ServiceDeskIntegrationDtoAllOfOwnerRef](docs/ServiceDeskIntegrationDtoAllOfOwnerRef.md)
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateDtoAllOf](docs/ServiceDeskIntegrationTemplateDtoAllOf.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)

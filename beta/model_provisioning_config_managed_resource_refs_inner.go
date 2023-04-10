@@ -20,11 +20,11 @@ var _ MappedNullable = &ProvisioningConfigManagedResourceRefsInner{}
 // ProvisioningConfigManagedResourceRefsInner struct for ProvisioningConfigManagedResourceRefsInner
 type ProvisioningConfigManagedResourceRefsInner struct {
 	// The type of object being referenced
-	Type *string `json:"type,omitempty"`
+	Type map[string]interface{} `json:"type,omitempty"`
 	// ID of the source
-	Id *string `json:"id,omitempty"`
+	Id map[string]interface{} `json:"id,omitempty"`
 	// Human-readable display name of the source
-	Name *string `json:"name,omitempty"`
+	Name map[string]interface{} `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -48,19 +48,19 @@ func NewProvisioningConfigManagedResourceRefsInnerWithDefaults() *ProvisioningCo
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *ProvisioningConfigManagedResourceRefsInner) GetType() string {
+func (o *ProvisioningConfigManagedResourceRefsInner) GetType() map[string]interface{} {
 	if o == nil || isNil(o.Type) {
-		var ret string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Type
+	return o.Type
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProvisioningConfigManagedResourceRefsInner) GetTypeOk() (*string, bool) {
+func (o *ProvisioningConfigManagedResourceRefsInner) GetTypeOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Type) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Type, true
 }
@@ -74,25 +74,25 @@ func (o *ProvisioningConfigManagedResourceRefsInner) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ProvisioningConfigManagedResourceRefsInner) SetType(v string) {
-	o.Type = &v
+// SetType gets a reference to the given map[string]interface{} and assigns it to the Type field.
+func (o *ProvisioningConfigManagedResourceRefsInner) SetType(v map[string]interface{}) {
+	o.Type = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ProvisioningConfigManagedResourceRefsInner) GetId() string {
+func (o *ProvisioningConfigManagedResourceRefsInner) GetId() map[string]interface{} {
 	if o == nil || isNil(o.Id) {
-		var ret string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Id
+	return o.Id
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProvisioningConfigManagedResourceRefsInner) GetIdOk() (*string, bool) {
+func (o *ProvisioningConfigManagedResourceRefsInner) GetIdOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Id) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Id, true
 }
@@ -106,25 +106,25 @@ func (o *ProvisioningConfigManagedResourceRefsInner) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ProvisioningConfigManagedResourceRefsInner) SetId(v string) {
-	o.Id = &v
+// SetId gets a reference to the given map[string]interface{} and assigns it to the Id field.
+func (o *ProvisioningConfigManagedResourceRefsInner) SetId(v map[string]interface{}) {
+	o.Id = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ProvisioningConfigManagedResourceRefsInner) GetName() string {
+func (o *ProvisioningConfigManagedResourceRefsInner) GetName() map[string]interface{} {
 	if o == nil || isNil(o.Name) {
-		var ret string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Name
+	return o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProvisioningConfigManagedResourceRefsInner) GetNameOk() (*string, bool) {
+func (o *ProvisioningConfigManagedResourceRefsInner) GetNameOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Name) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Name, true
 }
@@ -138,9 +138,9 @@ func (o *ProvisioningConfigManagedResourceRefsInner) HasName() bool {
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ProvisioningConfigManagedResourceRefsInner) SetName(v string) {
-	o.Name = &v
+// SetName gets a reference to the given map[string]interface{} and assigns it to the Name field.
+func (o *ProvisioningConfigManagedResourceRefsInner) SetName(v map[string]interface{}) {
+	o.Name = v
 }
 
 func (o ProvisioningConfigManagedResourceRefsInner) MarshalJSON() ([]byte, error) {

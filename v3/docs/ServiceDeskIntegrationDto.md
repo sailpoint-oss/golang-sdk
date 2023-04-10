@@ -10,13 +10,13 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
 **Description** | **string** | Description of the Service Desk integration | 
 **Type** | **string** | Service Desk integration types  - ServiceNowSDIM - ServiceNow  | [default to "ServiceNowSDIM"]
-**OwnerRef** | Pointer to [**ServiceDeskIntegrationDtoAllOfOwnerRef**](ServiceDeskIntegrationDtoAllOfOwnerRef.md) |  | [optional] 
-**ClusterRef** | Pointer to [**ServiceDeskIntegrationDtoAllOfClusterRef**](ServiceDeskIntegrationDtoAllOfClusterRef.md) |  | [optional] 
+**OwnerRef** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) | Reference to the identity that is the owner of this Service Desk integration | [optional] 
+**ClusterRef** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) | Reference to the source cluster for this Service Desk integration | [optional] 
 **Cluster** | Pointer to **string** | ID of the cluster for the Service Desk integration (replaced by clusterRef, retained for backward compatibility) | [optional] 
 **ManagedSources** | Pointer to **[]string** | Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility) | [optional] 
 **ProvisioningConfig** | Pointer to [**ProvisioningConfig**](ProvisioningConfig.md) |  | [optional] 
 **Attributes** | **map[string]interface{}** | Attributes of the Service Desk integration.  Validation constraints enforced by the implementation. | 
-**BeforeProvisioningRule** | Pointer to [**ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule**](ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule.md) |  | [optional] 
+**BeforeProvisioningRule** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) | Reference to beforeProvisioningRule for this Service Desk integration | [optional] 
 
 ## Methods
 
@@ -174,20 +174,20 @@ SetType sets Type field to given value.
 
 ### GetOwnerRef
 
-`func (o *ServiceDeskIntegrationDto) GetOwnerRef() ServiceDeskIntegrationDtoAllOfOwnerRef`
+`func (o *ServiceDeskIntegrationDto) GetOwnerRef() BaseReferenceDto`
 
 GetOwnerRef returns the OwnerRef field if non-nil, zero value otherwise.
 
 ### GetOwnerRefOk
 
-`func (o *ServiceDeskIntegrationDto) GetOwnerRefOk() (*ServiceDeskIntegrationDtoAllOfOwnerRef, bool)`
+`func (o *ServiceDeskIntegrationDto) GetOwnerRefOk() (*BaseReferenceDto, bool)`
 
 GetOwnerRefOk returns a tuple with the OwnerRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerRef
 
-`func (o *ServiceDeskIntegrationDto) SetOwnerRef(v ServiceDeskIntegrationDtoAllOfOwnerRef)`
+`func (o *ServiceDeskIntegrationDto) SetOwnerRef(v BaseReferenceDto)`
 
 SetOwnerRef sets OwnerRef field to given value.
 
@@ -199,20 +199,20 @@ HasOwnerRef returns a boolean if a field has been set.
 
 ### GetClusterRef
 
-`func (o *ServiceDeskIntegrationDto) GetClusterRef() ServiceDeskIntegrationDtoAllOfClusterRef`
+`func (o *ServiceDeskIntegrationDto) GetClusterRef() BaseReferenceDto`
 
 GetClusterRef returns the ClusterRef field if non-nil, zero value otherwise.
 
 ### GetClusterRefOk
 
-`func (o *ServiceDeskIntegrationDto) GetClusterRefOk() (*ServiceDeskIntegrationDtoAllOfClusterRef, bool)`
+`func (o *ServiceDeskIntegrationDto) GetClusterRefOk() (*BaseReferenceDto, bool)`
 
 GetClusterRefOk returns a tuple with the ClusterRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClusterRef
 
-`func (o *ServiceDeskIntegrationDto) SetClusterRef(v ServiceDeskIntegrationDtoAllOfClusterRef)`
+`func (o *ServiceDeskIntegrationDto) SetClusterRef(v BaseReferenceDto)`
 
 SetClusterRef sets ClusterRef field to given value.
 
@@ -319,20 +319,20 @@ SetAttributes sets Attributes field to given value.
 
 ### GetBeforeProvisioningRule
 
-`func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRule() ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule`
+`func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRule() BaseReferenceDto`
 
 GetBeforeProvisioningRule returns the BeforeProvisioningRule field if non-nil, zero value otherwise.
 
 ### GetBeforeProvisioningRuleOk
 
-`func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRuleOk() (*ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule, bool)`
+`func (o *ServiceDeskIntegrationDto) GetBeforeProvisioningRuleOk() (*BaseReferenceDto, bool)`
 
 GetBeforeProvisioningRuleOk returns a tuple with the BeforeProvisioningRule field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBeforeProvisioningRule
 
-`func (o *ServiceDeskIntegrationDto) SetBeforeProvisioningRule(v ServiceDeskIntegrationDtoAllOfBeforeProvisioningRule)`
+`func (o *ServiceDeskIntegrationDto) SetBeforeProvisioningRule(v BaseReferenceDto)`
 
 SetBeforeProvisioningRule sets BeforeProvisioningRule field to given value.
 
