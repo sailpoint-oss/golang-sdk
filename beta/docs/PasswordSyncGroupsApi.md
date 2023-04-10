@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## GetPasswordSyncGroup
 
-> PasswordSyncGroup GetPasswordSyncGroup(ctx, id).Execute()
+> PasswordSyncGroup1 GetPasswordSyncGroup(ctx, id).Execute()
 
 Get Password Sync Group by ID
 
@@ -176,7 +176,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsApi.GetPasswordSyncGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPasswordSyncGroup`: PasswordSyncGroup
+    // response from `GetPasswordSyncGroup`: PasswordSyncGroup1
     fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsApi.GetPasswordSyncGroup`: %v\n", resp)
 }
 ```
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PasswordSyncGroup**](PasswordSyncGroup.md)
+[**PasswordSyncGroup1**](PasswordSyncGroup1.md)
 
 ### Authorization
 
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePasswordSyncGroup
 
-> PasswordSyncGroup UpdatePasswordSyncGroup(ctx, id).PasswordSyncGroup(passwordSyncGroup).Execute()
+> PasswordSyncGroup1 UpdatePasswordSyncGroup(ctx, id).PasswordSyncGroup1(passwordSyncGroup1).Execute()
 
 Update Password Sync Group by ID
 
@@ -308,16 +308,16 @@ import (
 
 func main() {
     id := "6881f631-3bd5-4213-9c75-8e05cc3e35dd" // string | The ID of password sync group to update.
-    passwordSyncGroup := *openapiclient.NewPasswordSyncGroup() // PasswordSyncGroup | 
+    passwordSyncGroup1 := *openapiclient.NewPasswordSyncGroup1() // PasswordSyncGroup1 | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsApi.UpdatePasswordSyncGroup(context.Background(), id).PasswordSyncGroup(passwordSyncGroup).Execute()
+    resp, r, err := apiClient.PasswordSyncGroupsApi.UpdatePasswordSyncGroup(context.Background(), id).PasswordSyncGroup1(passwordSyncGroup1).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsApi.UpdatePasswordSyncGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatePasswordSyncGroup`: PasswordSyncGroup
+    // response from `UpdatePasswordSyncGroup`: PasswordSyncGroup1
     fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsApi.UpdatePasswordSyncGroup`: %v\n", resp)
 }
 ```
@@ -338,11 +338,11 @@ Other parameters are passed through a pointer to a apiUpdatePasswordSyncGroupReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **passwordSyncGroup** | [**PasswordSyncGroup**](PasswordSyncGroup.md) |  | 
+ **passwordSyncGroup1** | [**PasswordSyncGroup1**](PasswordSyncGroup1.md) |  | 
 
 ### Return type
 
-[**PasswordSyncGroup**](PasswordSyncGroup.md)
+[**PasswordSyncGroup1**](PasswordSyncGroup1.md)
 
 ### Authorization
 

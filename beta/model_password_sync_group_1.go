@@ -14,43 +14,42 @@ import (
 	"encoding/json"
 )
 
-// checks if the PasswordSyncGroup type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PasswordSyncGroup{}
+// checks if the PasswordSyncGroup1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PasswordSyncGroup1{}
 
-// PasswordSyncGroup struct for PasswordSyncGroup
-type PasswordSyncGroup struct {
+// PasswordSyncGroup1 struct for PasswordSyncGroup1
+type PasswordSyncGroup1 struct {
 	// ID of the sync group
 	Id *string `json:"id,omitempty"`
 	// Name of the sync group
 	Name *string `json:"name,omitempty"`
-	// ID of the password policy
 	PasswordPolicyId *string `json:"passwordPolicyId,omitempty"`
 	// List of password managed sources IDs
 	SourceIds []string `json:"sourceIds,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _PasswordSyncGroup PasswordSyncGroup
+type _PasswordSyncGroup1 PasswordSyncGroup1
 
-// NewPasswordSyncGroup instantiates a new PasswordSyncGroup object
+// NewPasswordSyncGroup1 instantiates a new PasswordSyncGroup1 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPasswordSyncGroup() *PasswordSyncGroup {
-	this := PasswordSyncGroup{}
+func NewPasswordSyncGroup1() *PasswordSyncGroup1 {
+	this := PasswordSyncGroup1{}
 	return &this
 }
 
-// NewPasswordSyncGroupWithDefaults instantiates a new PasswordSyncGroup object
+// NewPasswordSyncGroup1WithDefaults instantiates a new PasswordSyncGroup1 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPasswordSyncGroupWithDefaults() *PasswordSyncGroup {
-	this := PasswordSyncGroup{}
+func NewPasswordSyncGroup1WithDefaults() *PasswordSyncGroup1 {
+	this := PasswordSyncGroup1{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *PasswordSyncGroup) GetId() string {
+func (o *PasswordSyncGroup1) GetId() string {
 	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
@@ -60,7 +59,7 @@ func (o *PasswordSyncGroup) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PasswordSyncGroup) GetIdOk() (*string, bool) {
+func (o *PasswordSyncGroup1) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
@@ -68,7 +67,7 @@ func (o *PasswordSyncGroup) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *PasswordSyncGroup) HasId() bool {
+func (o *PasswordSyncGroup1) HasId() bool {
 	if o != nil && !isNil(o.Id) {
 		return true
 	}
@@ -77,12 +76,12 @@ func (o *PasswordSyncGroup) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *PasswordSyncGroup) SetId(v string) {
+func (o *PasswordSyncGroup1) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *PasswordSyncGroup) GetName() string {
+func (o *PasswordSyncGroup1) GetName() string {
 	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
@@ -92,7 +91,7 @@ func (o *PasswordSyncGroup) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PasswordSyncGroup) GetNameOk() (*string, bool) {
+func (o *PasswordSyncGroup1) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
@@ -100,7 +99,7 @@ func (o *PasswordSyncGroup) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *PasswordSyncGroup) HasName() bool {
+func (o *PasswordSyncGroup1) HasName() bool {
 	if o != nil && !isNil(o.Name) {
 		return true
 	}
@@ -109,12 +108,12 @@ func (o *PasswordSyncGroup) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *PasswordSyncGroup) SetName(v string) {
+func (o *PasswordSyncGroup1) SetName(v string) {
 	o.Name = &v
 }
 
 // GetPasswordPolicyId returns the PasswordPolicyId field value if set, zero value otherwise.
-func (o *PasswordSyncGroup) GetPasswordPolicyId() string {
+func (o *PasswordSyncGroup1) GetPasswordPolicyId() string {
 	if o == nil || isNil(o.PasswordPolicyId) {
 		var ret string
 		return ret
@@ -124,7 +123,7 @@ func (o *PasswordSyncGroup) GetPasswordPolicyId() string {
 
 // GetPasswordPolicyIdOk returns a tuple with the PasswordPolicyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PasswordSyncGroup) GetPasswordPolicyIdOk() (*string, bool) {
+func (o *PasswordSyncGroup1) GetPasswordPolicyIdOk() (*string, bool) {
 	if o == nil || isNil(o.PasswordPolicyId) {
 		return nil, false
 	}
@@ -132,7 +131,7 @@ func (o *PasswordSyncGroup) GetPasswordPolicyIdOk() (*string, bool) {
 }
 
 // HasPasswordPolicyId returns a boolean if a field has been set.
-func (o *PasswordSyncGroup) HasPasswordPolicyId() bool {
+func (o *PasswordSyncGroup1) HasPasswordPolicyId() bool {
 	if o != nil && !isNil(o.PasswordPolicyId) {
 		return true
 	}
@@ -141,12 +140,12 @@ func (o *PasswordSyncGroup) HasPasswordPolicyId() bool {
 }
 
 // SetPasswordPolicyId gets a reference to the given string and assigns it to the PasswordPolicyId field.
-func (o *PasswordSyncGroup) SetPasswordPolicyId(v string) {
+func (o *PasswordSyncGroup1) SetPasswordPolicyId(v string) {
 	o.PasswordPolicyId = &v
 }
 
 // GetSourceIds returns the SourceIds field value if set, zero value otherwise.
-func (o *PasswordSyncGroup) GetSourceIds() []string {
+func (o *PasswordSyncGroup1) GetSourceIds() []string {
 	if o == nil || isNil(o.SourceIds) {
 		var ret []string
 		return ret
@@ -156,7 +155,7 @@ func (o *PasswordSyncGroup) GetSourceIds() []string {
 
 // GetSourceIdsOk returns a tuple with the SourceIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PasswordSyncGroup) GetSourceIdsOk() ([]string, bool) {
+func (o *PasswordSyncGroup1) GetSourceIdsOk() ([]string, bool) {
 	if o == nil || isNil(o.SourceIds) {
 		return nil, false
 	}
@@ -164,7 +163,7 @@ func (o *PasswordSyncGroup) GetSourceIdsOk() ([]string, bool) {
 }
 
 // HasSourceIds returns a boolean if a field has been set.
-func (o *PasswordSyncGroup) HasSourceIds() bool {
+func (o *PasswordSyncGroup1) HasSourceIds() bool {
 	if o != nil && !isNil(o.SourceIds) {
 		return true
 	}
@@ -173,11 +172,11 @@ func (o *PasswordSyncGroup) HasSourceIds() bool {
 }
 
 // SetSourceIds gets a reference to the given []string and assigns it to the SourceIds field.
-func (o *PasswordSyncGroup) SetSourceIds(v []string) {
+func (o *PasswordSyncGroup1) SetSourceIds(v []string) {
 	o.SourceIds = v
 }
 
-func (o PasswordSyncGroup) MarshalJSON() ([]byte, error) {
+func (o PasswordSyncGroup1) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -185,7 +184,7 @@ func (o PasswordSyncGroup) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o PasswordSyncGroup) ToMap() (map[string]interface{}, error) {
+func (o PasswordSyncGroup1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -207,11 +206,11 @@ func (o PasswordSyncGroup) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *PasswordSyncGroup) UnmarshalJSON(bytes []byte) (err error) {
-	varPasswordSyncGroup := _PasswordSyncGroup{}
+func (o *PasswordSyncGroup1) UnmarshalJSON(bytes []byte) (err error) {
+	varPasswordSyncGroup1 := _PasswordSyncGroup1{}
 
-	if err = json.Unmarshal(bytes, &varPasswordSyncGroup); err == nil {
-		*o = PasswordSyncGroup(varPasswordSyncGroup)
+	if err = json.Unmarshal(bytes, &varPasswordSyncGroup1); err == nil {
+		*o = PasswordSyncGroup1(varPasswordSyncGroup1)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -227,38 +226,38 @@ func (o *PasswordSyncGroup) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullablePasswordSyncGroup struct {
-	value *PasswordSyncGroup
+type NullablePasswordSyncGroup1 struct {
+	value *PasswordSyncGroup1
 	isSet bool
 }
 
-func (v NullablePasswordSyncGroup) Get() *PasswordSyncGroup {
+func (v NullablePasswordSyncGroup1) Get() *PasswordSyncGroup1 {
 	return v.value
 }
 
-func (v *NullablePasswordSyncGroup) Set(val *PasswordSyncGroup) {
+func (v *NullablePasswordSyncGroup1) Set(val *PasswordSyncGroup1) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePasswordSyncGroup) IsSet() bool {
+func (v NullablePasswordSyncGroup1) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePasswordSyncGroup) Unset() {
+func (v *NullablePasswordSyncGroup1) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePasswordSyncGroup(val *PasswordSyncGroup) *NullablePasswordSyncGroup {
-	return &NullablePasswordSyncGroup{value: val, isSet: true}
+func NewNullablePasswordSyncGroup1(val *PasswordSyncGroup1) *NullablePasswordSyncGroup1 {
+	return &NullablePasswordSyncGroup1{value: val, isSet: true}
 }
 
-func (v NullablePasswordSyncGroup) MarshalJSON() ([]byte, error) {
+func (v NullablePasswordSyncGroup1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePasswordSyncGroup) UnmarshalJSON(src []byte) error {
+func (v *NullablePasswordSyncGroup1) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
