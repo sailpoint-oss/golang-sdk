@@ -5,6 +5,7 @@ README.md
 api/openapi.yaml
 api_accounts.go
 api_applications.go
+api_cluster.go
 api_connectors.go
 api_sources_accounts.go
 api_sources_aggregation.go
@@ -14,6 +15,7 @@ client.go
 configuration.go
 docs/AccountsApi.md
 docs/ApplicationsApi.md
+docs/ClusterApi.md
 docs/ConnectorsApi.md
 docs/CreateApplicationRequest.md
 docs/CreateConnectorRequest.md
@@ -23,6 +25,7 @@ docs/SourcesAccountsApi.md
 docs/SourcesAggregationApi.md
 docs/SystemApi.md
 docs/UpdateApplicationRequest.md
+docs/UpdateClusterRequest.md
 docs/UpdateUserPermissionsRequest.md
 docs/UserApi.md
 git_push.sh
@@ -33,10 +36,12 @@ model_create_connector_request.go
 model_import_connector_config_request.go
 model_load_accounts_request.go
 model_update_application_request.go
+model_update_cluster_request.go
 model_update_user_permissions_request.go
 response.go
 test/api_accounts_test.go
 test/api_applications_test.go
+test/api_cluster_test.go
 test/api_connectors_test.go
 test/api_sources_accounts_test.go
 test/api_sources_aggregation_test.go
