@@ -416,7 +416,6 @@ docs/PasswordManagementApi.md
 docs/PasswordOrgConfig.md
 docs/PasswordStatus.md
 docs/PasswordSyncGroup.md
-docs/PasswordSyncGroup1.md
 docs/PasswordSyncGroupsApi.md
 docs/PatchPotentialRoleRequestInner.md
 docs/PeerGroupMember.md
@@ -1069,7 +1068,6 @@ model_password_info_query_dto.go
 model_password_org_config.go
 model_password_status.go
 model_password_sync_group.go
-model_password_sync_group_1.go
 model_patch_potential_role_request_inner.go
 model_peer_group_member.go
 model_pending_approval.go

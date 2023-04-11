@@ -793,7 +793,6 @@ Class | Method | HTTP request | Description
  - [PasswordOrgConfig](docs/PasswordOrgConfig.md)
  - [PasswordStatus](docs/PasswordStatus.md)
  - [PasswordSyncGroup](docs/PasswordSyncGroup.md)
- - [PasswordSyncGroup1](docs/PasswordSyncGroup1.md)
  - [PatchPotentialRoleRequestInner](docs/PatchPotentialRoleRequestInner.md)
  - [PeerGroupMember](docs/PeerGroupMember.md)
  - [PendingApproval](docs/PendingApproval.md)

@@ -173,7 +173,10 @@ Class | Method | HTTP request | Description
 *PasswordManagementApi* | [**QueryPasswordInfo**](docs/PasswordManagementApi.md#querypasswordinfo) | **Post** /query-password-info | Query Password Info
 *PasswordManagementApi* | [**SetPassword**](docs/PasswordManagementApi.md#setpassword) | **Post** /set-password | Set Identity&#39;s Password
 *PasswordSyncGroupsApi* | [**CreatePasswordSyncGroup**](docs/PasswordSyncGroupsApi.md#createpasswordsyncgroup) | **Post** /password-sync-groups | Create Password Sync Group
+*PasswordSyncGroupsApi* | [**DeletePasswordSyncGroup**](docs/PasswordSyncGroupsApi.md#deletepasswordsyncgroup) | **Delete** /password-sync-groups/{id} | Delete Password Sync Group by ID
+*PasswordSyncGroupsApi* | [**GetPasswordSyncGroup**](docs/PasswordSyncGroupsApi.md#getpasswordsyncgroup) | **Get** /password-sync-groups/{id} | Get Password Sync Group by ID
 *PasswordSyncGroupsApi* | [**GetPasswordSyncGroups**](docs/PasswordSyncGroupsApi.md#getpasswordsyncgroups) | **Get** /password-sync-groups | Get Password Sync Group List
+*PasswordSyncGroupsApi* | [**UpdatePasswordSyncGroup**](docs/PasswordSyncGroupsApi.md#updatepasswordsyncgroup) | **Put** /password-sync-groups/{id} | Update Password Sync Group by ID
 *PersonalAccessTokensApi* | [**CreatePersonalAccessToken**](docs/PersonalAccessTokensApi.md#createpersonalaccesstoken) | **Post** /personal-access-tokens | Create Personal Access Token
 *PersonalAccessTokensApi* | [**DeletePersonalAccessToken**](docs/PersonalAccessTokensApi.md#deletepersonalaccesstoken) | **Delete** /personal-access-tokens/{id} | Delete Personal Access Token
 *PersonalAccessTokensApi* | [**ListPersonalAccessTokens**](docs/PersonalAccessTokensApi.md#listpersonalaccesstokens) | **Get** /personal-access-tokens | List Personal Access Tokens
