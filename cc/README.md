@@ -86,7 +86,6 @@ Class | Method | HTTP request | Description
 *ApplicationsApi* | [**GetApplicationAccessProfiles**](docs/ApplicationsApi.md#getapplicationaccessprofiles) | **Get** /cc/api/app/getAccessProfiles/:id | Get Access Profiles for Application
 *ApplicationsApi* | [**ListApplications**](docs/ApplicationsApi.md#listapplications) | **Get** /cc/api/app | List Applications
 *ApplicationsApi* | [**UpdateApplication**](docs/ApplicationsApi.md#updateapplication) | **Post** /cc/api/app/update/:id | Update Application
-*ClusterApi* | [**UpdateCluster**](docs/ClusterApi.md#updatecluster) | **Post** /cc/api/cluster/update/ | Update Cluster
 *ConnectorsApi* | [**CreateConnector**](docs/ConnectorsApi.md#createconnector) | **Post** /cc/api/connector/create | Create Connector
 *ConnectorsApi* | [**DeleteConnector**](docs/ConnectorsApi.md#deleteconnector) | **Post** /cc/api/connector/delete/{id} | Delete Connector
 *ConnectorsApi* | [**ExportConnectorConfig**](docs/ConnectorsApi.md#exportconnectorconfig) | **Get** /cc/api/connector/export/{id} | Export Connector Config
@@ -105,7 +104,6 @@ Class | Method | HTTP request | Description
  - [ImportConnectorConfigRequest](docs/ImportConnectorConfigRequest.md)
  - [LoadAccountsRequest](docs/LoadAccountsRequest.md)
  - [UpdateApplicationRequest](docs/UpdateApplicationRequest.md)
- - [UpdateClusterRequest](docs/UpdateClusterRequest.md)
  - [UpdateUserPermissionsRequest](docs/UpdateUserPermissionsRequest.md)
 
 

@@ -359,27 +359,6 @@ paths:
       summary: Export Account Feed
       tags:
       - Sources > Accounts
-  /cc/api/cluster/update/:
-    post:
-      description: Updates a Managed Cluster.
-      operationId: updateCluster
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/updateCluster_request'
-        description: body to update the managed cluster with
-        required: true
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: Successful response
-      security:
-      - oauth2: []
-      summary: Update Cluster
-      tags:
-      - Cluster
   /cc/api/system/refreshIdentities:
     post:
       description: |-
@@ -500,17 +479,6 @@ components:
           type: string
         description:
           format: This is my application
-          type: string
-      type: object
-    updateCluster_request:
-      properties:
-        id:
-          description: The ID of the cluster to update
-          example: "1092"
-          type: string
-        gmtOffset:
-          description: The GMT offset for the timezone the cluster operates with
-          example: "-6"
           type: string
       type: object
   securitySchemes:
