@@ -53,7 +53,7 @@ paths:
       summary: Remove Account
       tags:
       - Accounts
-  /cc/api/app:
+  /cc/api/app/list:
     get:
       operationId: listApplications
       responses:
