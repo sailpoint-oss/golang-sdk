@@ -241,7 +241,7 @@ import (
 )
 
 func main() {
-    data := "data_example" // string | Name of JSON file containing the objects to be imported.
+    data := os.NewFile(1234, "some_file") // *os.File | JSON file containing the objects to be imported.
     preview := true // bool | This option is intended to give the user information about how an import operation would proceed, without having any affect on the target tenant. If true, no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. (optional) (default to false)
     options := *openapiclient.NewImportOptions() // ImportOptions |  (optional)
 
@@ -268,7 +268,7 @@ Other parameters are passed through a pointer to a apiImportSpConfigRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | **string** | Name of JSON file containing the objects to be imported. | 
+ **data** | ***os.File** | JSON file containing the objects to be imported. | 
  **preview** | **bool** | This option is intended to give the user information about how an import operation would proceed, without having any affect on the target tenant. If true, no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. | [default to false]
  **options** | [**ImportOptions**](ImportOptions.md) |  | 
 

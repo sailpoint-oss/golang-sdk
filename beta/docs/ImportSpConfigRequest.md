@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | **string** | Name of JSON file containing the objects to be imported. | 
+**Data** | ***os.File** | JSON file containing the objects to be imported. | 
 **Options** | Pointer to [**ImportOptions**](ImportOptions.md) |  | [optional] 
 
 ## Methods
 
 ### NewImportSpConfigRequest
 
-`func NewImportSpConfigRequest(data string, ) *ImportSpConfigRequest`
+`func NewImportSpConfigRequest(data *os.File, ) *ImportSpConfigRequest`
 
 NewImportSpConfigRequest instantiates a new ImportSpConfigRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ImportSpConfigRequest) GetData() string`
+`func (o *ImportSpConfigRequest) GetData() *os.File`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ImportSpConfigRequest) GetDataOk() (*string, bool)`
+`func (o *ImportSpConfigRequest) GetDataOk() (**os.File, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ImportSpConfigRequest) SetData(v string)`
+`func (o *ImportSpConfigRequest) SetData(v *os.File)`
 
 SetData sets Data field to given value.
 

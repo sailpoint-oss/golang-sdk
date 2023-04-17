@@ -58373,7 +58373,8 @@ components:
     importSpConfig_request:
       properties:
         data:
-          description: Name of JSON file containing the objects to be imported.
+          description: JSON file containing the objects to be imported.
+          format: binary
           type: string
         options:
           $ref: '#/components/schemas/ImportOptions'

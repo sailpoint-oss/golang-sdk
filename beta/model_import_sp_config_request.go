@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"os"
 )
 
 // checks if the ImportSpConfigRequest type satisfies the MappedNullable interface at compile time
@@ -19,8 +20,8 @@ var _ MappedNullable = &ImportSpConfigRequest{}
 
 // ImportSpConfigRequest struct for ImportSpConfigRequest
 type ImportSpConfigRequest struct {
-	// Name of JSON file containing the objects to be imported.
-	Data string `json:"data"`
+	// JSON file containing the objects to be imported.
+	Data *os.File `json:"data"`
 	Options *ImportOptions `json:"options,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -31,7 +32,7 @@ type _ImportSpConfigRequest ImportSpConfigRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportSpConfigRequest(data string) *ImportSpConfigRequest {
+func NewImportSpConfigRequest(data *os.File) *ImportSpConfigRequest {
 	this := ImportSpConfigRequest{}
 	this.Data = data
 	return &this
@@ -46,9 +47,9 @@ func NewImportSpConfigRequestWithDefaults() *ImportSpConfigRequest {
 }
 
 // GetData returns the Data field value
-func (o *ImportSpConfigRequest) GetData() string {
+func (o *ImportSpConfigRequest) GetData() *os.File {
 	if o == nil {
-		var ret string
+		var ret *os.File
 		return ret
 	}
 
@@ -57,7 +58,7 @@ func (o *ImportSpConfigRequest) GetData() string {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *ImportSpConfigRequest) GetDataOk() (*string, bool) {
+func (o *ImportSpConfigRequest) GetDataOk() (**os.File, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +66,7 @@ func (o *ImportSpConfigRequest) GetDataOk() (*string, bool) {
 }
 
 // SetData sets field value
-func (o *ImportSpConfigRequest) SetData(v string) {
+func (o *ImportSpConfigRequest) SetData(v *os.File) {
 	o.Data = v
 }
 
