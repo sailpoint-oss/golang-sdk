@@ -34,12 +34,12 @@ func (r ApiGetClientLogConfigurationRequest) Execute() ([]ClientLogConfiguration
 }
 
 /*
-GetClientLogConfiguration get ManagedCluster Log Configuration for a specified cluster
+GetClientLogConfiguration Get managed cluster's log configuration
 
-Get log configuration for a managed cluster.
+Get managed cluster's log configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the ManagedCluster to get log configuration for
+ @param id ID of ManagedCluster to get log configuration for
  @return ApiGetClientLogConfigurationRequest
 */
 func (a *ManagedClustersApiService) GetClientLogConfiguration(ctx context.Context, id string) ApiGetClientLogConfigurationRequest {
@@ -122,6 +122,17 @@ func (a *ManagedClustersApiService) GetClientLogConfigurationExecute(r ApiGetCli
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -134,6 +145,28 @@ func (a *ManagedClustersApiService) GetClientLogConfigurationExecute(r ApiGetCli
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
@@ -493,7 +526,7 @@ type ApiUpdateClientLogConfigurationRequest struct {
 	clientLogConfiguration *ClientLogConfiguration
 }
 
-// ClientLogConfiguration for the given ManagedCluster
+// ClientLogConfiguration for given ManagedCluster
 func (r ApiUpdateClientLogConfigurationRequest) ClientLogConfiguration(clientLogConfiguration ClientLogConfiguration) ApiUpdateClientLogConfigurationRequest {
 	r.clientLogConfiguration = &clientLogConfiguration
 	return r
@@ -504,12 +537,12 @@ func (r ApiUpdateClientLogConfigurationRequest) Execute() (*ClientLogConfigurati
 }
 
 /*
-UpdateClientLogConfiguration Update log configuration for a specified cluster.
+UpdateClientLogConfiguration Update managed cluster's log configuration
 
-Update log configuration for a managed cluster.
+Update managed cluster's log configuration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id ID of the ManagedCluster to update log configuration for
+ @param id ID of ManagedCluster to update log configuration for
  @return ApiUpdateClientLogConfigurationRequest
 */
 func (a *ManagedClustersApiService) UpdateClientLogConfiguration(ctx context.Context, id string) ApiUpdateClientLogConfigurationRequest {
@@ -597,6 +630,17 @@ func (a *ManagedClustersApiService) UpdateClientLogConfigurationExecute(r ApiUpd
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -609,6 +653,28 @@ func (a *ManagedClustersApiService) UpdateClientLogConfigurationExecute(r ApiUpd
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

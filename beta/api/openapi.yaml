@@ -18252,10 +18252,10 @@ paths:
       - Managed Clusters
   /managed-clusters/{id}/log-config:
     get:
-      description: Get log configuration for a managed cluster.
+      description: Get managed cluster's log configuration.
       operationId: getClientLogConfiguration
       parameters:
-      - description: ID of the ManagedCluster to get log configuration for
+      - description: ID of ManagedCluster to get log configuration for
         explode: false
         in: path
         name: id
@@ -18272,7 +18272,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ClientLogConfiguration'
                 type: array
-          description: ManagedCluster log configuration matching the given cluster
+          description: Log configuration of ManagedCluster matching given cluster
             ID
         "400":
           content:
@@ -18280,6 +18280,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -18316,17 +18323,42 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
       security:
       - oauth2:
         - idn:managed-cluster-log-config:read
-      summary: get ManagedCluster Log Configuration for a specified cluster
+      summary: Get managed cluster's log configuration
       tags:
       - Managed Clusters
     put:
-      description: Update log configuration for a managed cluster.
+      description: Update managed cluster's log configuration
       operationId: updateClientLogConfiguration
       parameters:
-      - description: ID of the ManagedCluster to update log configuration for
+      - description: ID of ManagedCluster to update log configuration for
         explode: false
         in: path
         name: id
@@ -18340,7 +18372,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ClientLogConfiguration'
-        description: ClientLogConfiguration for the given ManagedCluster
+        description: ClientLogConfiguration for given ManagedCluster
         required: true
       responses:
         "200":
@@ -18348,14 +18380,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClientLogConfiguration'
-          description: Responds with updated ClientLogConfiguration for the given
-            ManagedCluster.
+          description: Responds with updated ClientLogConfiguration for given ManagedCluster
         "400":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -18392,10 +18430,35 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Not Found - returned if the request URL refers to a resource
             or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
       security:
       - oauth2:
         - idn:managed-cluster-log-config:write
-      summary: Update log configuration for a specified cluster.
+      summary: Update managed cluster's log configuration
       tags:
       - Managed Clusters
   /managed-clusters:
@@ -47569,7 +47632,7 @@ components:
           durationMinutes: 120
           rootLevel: INFO
           clientId: aClientId
-          expiration: 2000-01-23T04:56:07.000+00:00
+          expiration: 2020-12-15T19:13:36.079Z
           logLevels: INFO
         operational: false
         publicKeyCertificate: '-----BEGIN CERTIFICATE-----TCCAb2gAwIBAgIBADANBgkqhkiG9w0BAQsFADAuMQ0wCwYDVQQD-----END
@@ -47710,16 +47773,16 @@ components:
         durationMinutes: 120
         rootLevel: INFO
         clientId: aClientId
-        expiration: 2000-01-23T04:56:07.000+00:00
+        expiration: 2020-12-15T19:13:36.079Z
         logLevels: INFO
       properties:
         clientId:
-          description: client ID of the Log configuration
+          description: Log configuration's client ID
           example: aClientId
           type: string
         durationMinutes:
-          description: duration in minutes for the log configuration to remain in
-            effect before resetting to defaults
+          description: Duration in minutes for log configuration to remain in effect
+            before resetting to defaults
           example: 120
           format: int32
           maximum: 1440
@@ -47727,6 +47790,7 @@ components:
           type: integer
         expiration:
           description: Expiration date-time of the log configuration request
+          example: 2020-12-15T19:13:36.079Z
           format: date-time
           type: string
         rootLevel:

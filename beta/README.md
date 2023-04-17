@@ -234,10 +234,10 @@ Class | Method | HTTP request | Description
 *MFAConfigurationApi* | [**TestMFAConfig**](docs/MFAConfigurationApi.md#testmfaconfig) | **Get** /mfa/{method}/test | Test configuration of a MFA method
 *ManagedClientsApi* | [**GetManagedClientStatus**](docs/ManagedClientsApi.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Get a specified Managed Client Status.
 *ManagedClientsApi* | [**UpdateManagedClientStatus**](docs/ManagedClientsApi.md#updatemanagedclientstatus) | **Post** /managed-clients/{id}/status | Handle a status request from a client
-*ManagedClustersApi* | [**GetClientLogConfiguration**](docs/ManagedClustersApi.md#getclientlogconfiguration) | **Get** /managed-clusters/{id}/log-config | get ManagedCluster Log Configuration for a specified cluster
+*ManagedClustersApi* | [**GetClientLogConfiguration**](docs/ManagedClustersApi.md#getclientlogconfiguration) | **Get** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
 *ManagedClustersApi* | [**GetManagedCluster**](docs/ManagedClustersApi.md#getmanagedcluster) | **Get** /managed-clusters/{id} | Get a specified ManagedCluster.
 *ManagedClustersApi* | [**GetManagedClusters**](docs/ManagedClustersApi.md#getmanagedclusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
-*ManagedClustersApi* | [**UpdateClientLogConfiguration**](docs/ManagedClustersApi.md#updateclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update log configuration for a specified cluster.
+*ManagedClustersApi* | [**UpdateClientLogConfiguration**](docs/ManagedClustersApi.md#updateclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
 *NonEmployeeLifecycleManagementApi* | [**ApproveNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementApi.md#approvenonemployeerequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementApi.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**CreateNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementApi.md#createnonemployeerequest) | **Post** /non-employee-requests | Create Non-Employee Request

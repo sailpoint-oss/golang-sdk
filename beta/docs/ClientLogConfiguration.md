@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClientId** | Pointer to **string** | client ID of the Log configuration | [optional] 
-**DurationMinutes** | **int32** | duration in minutes for the log configuration to remain in effect before resetting to defaults | 
+**ClientId** | Pointer to **string** | Log configuration&#39;s client ID | [optional] 
+**DurationMinutes** | **int32** | Duration in minutes for log configuration to remain in effect before resetting to defaults | 
 **Expiration** | Pointer to **time.Time** | Expiration date-time of the log configuration request | [optional] 
 **RootLevel** | [**StandardLevel**](StandardLevel.md) |  | 
 **LogLevels** | Pointer to [**map[string]StandardLevel**](StandardLevel.md) | Mapping of identifiers to Standard Log Level values | [optional] 

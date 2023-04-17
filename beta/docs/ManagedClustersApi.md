@@ -4,10 +4,10 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetClientLogConfiguration**](ManagedClustersApi.md#GetClientLogConfiguration) | **Get** /managed-clusters/{id}/log-config | get ManagedCluster Log Configuration for a specified cluster
+[**GetClientLogConfiguration**](ManagedClustersApi.md#GetClientLogConfiguration) | **Get** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
 [**GetManagedCluster**](ManagedClustersApi.md#GetManagedCluster) | **Get** /managed-clusters/{id} | Get a specified ManagedCluster.
 [**GetManagedClusters**](ManagedClustersApi.md#GetManagedClusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
-[**UpdateClientLogConfiguration**](ManagedClustersApi.md#UpdateClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update log configuration for a specified cluster.
+[**UpdateClientLogConfiguration**](ManagedClustersApi.md#UpdateClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
 
 
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 > []ClientLogConfiguration GetClientLogConfiguration(ctx, id).Execute()
 
-get ManagedCluster Log Configuration for a specified cluster
+Get managed cluster's log configuration
 
 
 
@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-    id := "aClusterId" // string | ID of the ManagedCluster to get log configuration for
+    id := "aClusterId" // string | ID of ManagedCluster to get log configuration for
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -52,7 +52,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the ManagedCluster to get log configuration for | 
+**id** | **string** | ID of ManagedCluster to get log configuration for | 
 
 ### Other Parameters
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 > ClientLogConfiguration UpdateClientLogConfiguration(ctx, id).ClientLogConfiguration(clientLogConfiguration).Execute()
 
-Update log configuration for a specified cluster.
+Update managed cluster's log configuration
 
 
 
@@ -244,8 +244,8 @@ import (
 )
 
 func main() {
-    id := "aClusterId" // string | ID of the ManagedCluster to update log configuration for
-    clientLogConfiguration := *openapiclient.NewClientLogConfiguration(int32(120), openapiclient.StandardLevel("false")) // ClientLogConfiguration | ClientLogConfiguration for the given ManagedCluster
+    id := "aClusterId" // string | ID of ManagedCluster to update log configuration for
+    clientLogConfiguration := *openapiclient.NewClientLogConfiguration(int32(120), openapiclient.StandardLevel("false")) // ClientLogConfiguration | ClientLogConfiguration for given ManagedCluster
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -265,7 +265,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the ManagedCluster to update log configuration for | 
+**id** | **string** | ID of ManagedCluster to update log configuration for | 
 
 ### Other Parameters
 
@@ -275,7 +275,7 @@ Other parameters are passed through a pointer to a apiUpdateClientLogConfigurati
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **clientLogConfiguration** | [**ClientLogConfiguration**](ClientLogConfiguration.md) | ClientLogConfiguration for the given ManagedCluster | 
+ **clientLogConfiguration** | [**ClientLogConfiguration**](ClientLogConfiguration.md) | ClientLogConfiguration for given ManagedCluster | 
 
 ### Return type
 

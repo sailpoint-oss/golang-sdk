@@ -20,9 +20,9 @@ var _ MappedNullable = &ClientLogConfiguration{}
 
 // ClientLogConfiguration Client Runtime Logging Configuration
 type ClientLogConfiguration struct {
-	// client ID of the Log configuration
+	// Log configuration's client ID
 	ClientId *string `json:"clientId,omitempty"`
-	// duration in minutes for the log configuration to remain in effect before resetting to defaults
+	// Duration in minutes for log configuration to remain in effect before resetting to defaults
 	DurationMinutes int32 `json:"durationMinutes"`
 	// Expiration date-time of the log configuration request
 	Expiration *time.Time `json:"expiration,omitempty"`
