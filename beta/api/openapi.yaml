@@ -11475,11 +11475,11 @@ paths:
       - Password Management
   /historical-identities:
     get:
-      description: 'This gets the list of identities for the customer. This list end
+      description: This gets the list of identities for the customer. This list end
         point does not support count=true request param. The total  count of identities
         would never be returned even if the count param is specified in the request
-        Requires authorization scope of ''idn:identity-history:read'' '
-      operationId: listIdentities
+        Requires authorization scope of 'idn:identity-history:read'
+      operationId: listHistoricalIdentities
       parameters:
       - description: "This param is used for starts-with search for first, last and\
           \ display name of the identity"
@@ -11535,6 +11535,12 @@ paths:
                   $ref: '#/components/schemas/IdentityListItem'
                 type: array
           description: List of identities for the customer.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -11560,6 +11566,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -11578,15 +11592,16 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - bearerAuth: []
+      - oauth2:
+        - idn:identity-history:read
       summary: Lists all the identities
       tags:
       - Identity History
   /historical-identities/{id}:
     get:
-      description: 'This method retrieves a specified identity Requires authorization
-        scope of ''idn:identity-history:read'' '
-      operationId: getIdentity
+      description: This method retrieves a specified identity Requires authorization
+        scope of 'idn:identity-history:read'
+      operationId: getHistoricalIdentity
       parameters:
       - description: The identity id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -11633,6 +11648,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -11650,7 +11673,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: Gets the most recent snapshot of a specific identity
+      security:
+      - oauth2:
+        - idn:identity-history:read
+      summary: Get latest snapshot of identity
       tags:
       - Identity History
   /historical-identities/{id}/access-items:
@@ -13416,6 +13442,370 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       summary: Attribute synchronization for single identity.
+      tags:
+      - Identities
+  /identities:
+    get:
+      description: This API returns a list of identities.
+      operationId: listIdentities
+      parameters:
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, sw*
+
+          **alias**: *eq, sw*
+
+          **firstname**: *eq, sw*
+
+          **lastname**: *eq, sw*
+
+          **email**: *eq, sw*
+
+          **cloudStatus**: *eq*
+
+          **processingState**: *eq*
+
+          **correlated**: *eq*
+
+          **protected**: *eq*
+        example: id eq "6c9079b270a266a60170a2779fcb0006" or correlated eq false
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/#sorting-results)
+
+          Sorting is supported for the following fields: **name, alias, cloudStatus**
+        example: "name,-cloudStatus"
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+      - description: |-
+          Adds additional filter to filters query parameter.
+
+          CORRELATED_ONLY adds correlated=true and returns only identities that are correlated.
+
+          NONE does not add any and returns all identities that satisfy filters query parameter.
+        example: NONE
+        in: query
+        name: defaultFilter
+        required: false
+        schema:
+          default: CORRELATED_ONLY
+          enum:
+          - CORRELATED_ONLY
+          - NONE
+          type: string
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Identity'
+                type: array
+          description: List of identities.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      summary: List Identities
+      tags:
+      - Identities
+  /identities/{id}:
+    delete:
+      description: The API returns successful response if the requested identity was
+        deleted.
+      operationId: deleteIdentity
+      parameters:
+      - description: Identity Id
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: identityId
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request is invalid. It may indicate
+            that the specified identity is marked as protected and cannot be deleted.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:identity:delete
+      summary: Deletes an identity.
+      tags:
+      - Identities
+    get:
+      description: This API returns a single identity using the Identity ID.
+      operationId: getIdentity
+      parameters:
+      - description: Identity Id
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: identityId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Identity'
+          description: An identity object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:identity:read
+      summary: Identity Details
       tags:
       - Identities
   /identity-profiles:
@@ -21961,6 +22351,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/PasswordOrgConfig'
           description: Reference to the password org config.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -21979,6 +22382,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -21996,6 +22407,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:password-org-config:read
       summary: Get Password Org Config
       tags:
       - Password Configuration
@@ -22027,6 +22441,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/PasswordOrgConfig'
           description: Reference to the password org config.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -22045,6 +22472,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -22062,6 +22497,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:password-org-config:write
       summary: Create Password Org Config
       tags:
       - Password Configuration
@@ -22091,6 +22529,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/PasswordOrgConfig'
           description: Reference to the password org config.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -22109,6 +22560,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
         "500":
           content:
             application/json:
@@ -22126,6 +22585,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:password-org-config:write
       summary: Update Password Org Config
       tags:
       - Password Configuration
@@ -46088,12 +46550,14 @@ components:
           example: Zampa
           type: string
         active:
+          default: true
           description: indicates if an identity is active or not
           example: true
           type: boolean
         deletedDate:
           description: the date when the identity was deleted
           example: 2007-03-01T13:00:00.000Z
+          nullable: true
           type: string
       type: object
     IdentityHistoryResponse:
@@ -46636,6 +47100,10 @@ components:
       - payload
       - status
       type: object
+    Identity:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - $ref: '#/components/schemas/IdentityDto'
     IdentityProfileBulkDelete:
       description: List of Identity Profile IDs to delete.
       example:
@@ -48888,22 +49356,33 @@ components:
         customInstructionsEnabled: true
       properties:
         customInstructionsEnabled:
+          default: false
           description: Indicator whether custom password instructions feature is enabled.
             The default value is false.
+          example: true
           type: boolean
         digitTokenEnabled:
+          default: false
           description: Indicator whether "digit token" feature is enabled. The default
             value is false.
           example: true
           type: boolean
         digitTokenDurationMinutes:
+          default: 5
           description: The duration of "digit token" in minutes. The default value
             is 5.
           example: 10
+          format: int32
+          maximum: 60
+          minimum: 1
           type: integer
         digitTokenLength:
+          default: 6
           description: The length of "digit token". The default value is 6.
           example: 9
+          format: int32
+          maximum: 18
+          minimum: 6
           type: integer
       type: object
     GetPersonalAccessTokenResponse:
@@ -60531,6 +61010,60 @@ components:
           - locked
           type: string
       type: object
+    IdentityDto:
+      properties:
+        alias:
+          description: Alternate unique identifier for the identity
+          example: walter.white
+          type: string
+        emailAddress:
+          description: The email address of the identity
+          example: sender@example.com
+          type: string
+        processingState:
+          description: The processing state of the identity
+          enum:
+          - ERROR
+          - OK
+          example: ERROR
+          nullable: true
+          type: string
+        identityStatus:
+          description: The identity's status in the system
+          enum:
+          - UNREGISTERED
+          - REGISTERED
+          - PENDING
+          - WARNING
+          - DISABLED
+          - ACTIVE
+          - DEACTIVATED
+          - TERMINATED
+          - ERROR
+          - LOCKED
+          example: LOCKED
+          type: string
+        managerRef:
+          $ref: '#/components/schemas/BaseReferenceDto'
+        isManager:
+          description: Whether this identity is a manager of another identity
+          example: true
+          type: boolean
+        lastRefresh:
+          description: The last time the identity was refreshed by the system
+          example: 2020-11-22T15:42:31.123Z
+          format: date-time
+          type: string
+        attributes:
+          description: A map with the identity attributes for the identity
+          example: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
+            :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
+            :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\"\
+            ,\"lastname\":\"white\"}"
+          type: object
+      title: IdentityDto
+      type: object
+      example: null
     NonEmployeeRequest_allOf:
       properties:
         accountName:

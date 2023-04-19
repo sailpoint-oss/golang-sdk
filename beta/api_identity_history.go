@@ -461,6 +461,163 @@ func (a *IdentityHistoryApiService) CompareIdentitySnapshotsAccessTypeExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetHistoricalIdentityRequest struct {
+	ctx context.Context
+	ApiService *IdentityHistoryApiService
+	id string
+}
+
+func (r ApiGetHistoricalIdentityRequest) Execute() (*IdentityHistoryResponse, *http.Response, error) {
+	return r.ApiService.GetHistoricalIdentityExecute(r)
+}
+
+/*
+GetHistoricalIdentity Get latest snapshot of identity
+
+This method retrieves a specified identity Requires authorization scope of 'idn:identity-history:read'
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The identity id
+ @return ApiGetHistoricalIdentityRequest
+*/
+func (a *IdentityHistoryApiService) GetHistoricalIdentity(ctx context.Context, id string) ApiGetHistoricalIdentityRequest {
+	return ApiGetHistoricalIdentityRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return IdentityHistoryResponse
+func (a *IdentityHistoryApiService) GetHistoricalIdentityExecute(r ApiGetHistoricalIdentityRequest) (*IdentityHistoryResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *IdentityHistoryResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.GetHistoricalIdentity")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/historical-identities/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetHistoricalIdentityEventsRequest struct {
 	ctx context.Context
 	ApiService *IdentityHistoryApiService
@@ -655,152 +812,6 @@ func (a *IdentityHistoryApiService) GetHistoricalIdentityEventsExecute(r ApiGetH
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v ListAccessProfiles429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetIdentityRequest struct {
-	ctx context.Context
-	ApiService *IdentityHistoryApiService
-	id string
-}
-
-func (r ApiGetIdentityRequest) Execute() (*IdentityHistoryResponse, *http.Response, error) {
-	return r.ApiService.GetIdentityExecute(r)
-}
-
-/*
-GetIdentity Gets the most recent snapshot of a specific identity
-
-This method retrieves a specified identity Requires authorization scope of 'idn:identity-history:read' 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The identity id
- @return ApiGetIdentityRequest
-*/
-func (a *IdentityHistoryApiService) GetIdentity(ctx context.Context, id string) ApiGetIdentityRequest {
-	return ApiGetIdentityRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return IdentityHistoryResponse
-func (a *IdentityHistoryApiService) GetIdentityExecute(r ApiGetIdentityRequest) (*IdentityHistoryResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *IdentityHistoryResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.GetIdentity")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/historical-identities/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1370,7 +1381,7 @@ func (a *IdentityHistoryApiService) GetIdentityStartDateExecute(r ApiGetIdentity
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListIdentitiesRequest struct {
+type ApiListHistoricalIdentitiesRequest struct {
 	ctx context.Context
 	ApiService *IdentityHistoryApiService
 	startsWithQuery *string
@@ -1381,49 +1392,49 @@ type ApiListIdentitiesRequest struct {
 }
 
 // This param is used for starts-with search for first, last and display name of the identity
-func (r ApiListIdentitiesRequest) StartsWithQuery(startsWithQuery string) ApiListIdentitiesRequest {
+func (r ApiListHistoricalIdentitiesRequest) StartsWithQuery(startsWithQuery string) ApiListHistoricalIdentitiesRequest {
 	r.startsWithQuery = &startsWithQuery
 	return r
 }
 
 // Indicates if we want to only list down deleted identities or not.
-func (r ApiListIdentitiesRequest) IsDeleted(isDeleted bool) ApiListIdentitiesRequest {
+func (r ApiListHistoricalIdentitiesRequest) IsDeleted(isDeleted bool) ApiListHistoricalIdentitiesRequest {
 	r.isDeleted = &isDeleted
 	return r
 }
 
 // Indicates if we want to only list active or inactive identities.
-func (r ApiListIdentitiesRequest) IsActive(isActive bool) ApiListIdentitiesRequest {
+func (r ApiListHistoricalIdentitiesRequest) IsActive(isActive bool) ApiListHistoricalIdentitiesRequest {
 	r.isActive = &isActive
 	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiListIdentitiesRequest) Limit(limit int32) ApiListIdentitiesRequest {
+func (r ApiListHistoricalIdentitiesRequest) Limit(limit int32) ApiListHistoricalIdentitiesRequest {
 	r.limit = &limit
 	return r
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiListIdentitiesRequest) Offset(offset int32) ApiListIdentitiesRequest {
+func (r ApiListHistoricalIdentitiesRequest) Offset(offset int32) ApiListHistoricalIdentitiesRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiListIdentitiesRequest) Execute() ([]IdentityListItem, *http.Response, error) {
-	return r.ApiService.ListIdentitiesExecute(r)
+func (r ApiListHistoricalIdentitiesRequest) Execute() ([]IdentityListItem, *http.Response, error) {
+	return r.ApiService.ListHistoricalIdentitiesExecute(r)
 }
 
 /*
-ListIdentities Lists all the identities
+ListHistoricalIdentities Lists all the identities
 
-This gets the list of identities for the customer. This list end point does not support count=true request param. The total  count of identities would never be returned even if the count param is specified in the request Requires authorization scope of 'idn:identity-history:read' 
+This gets the list of identities for the customer. This list end point does not support count=true request param. The total  count of identities would never be returned even if the count param is specified in the request Requires authorization scope of 'idn:identity-history:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListIdentitiesRequest
+ @return ApiListHistoricalIdentitiesRequest
 */
-func (a *IdentityHistoryApiService) ListIdentities(ctx context.Context) ApiListIdentitiesRequest {
-	return ApiListIdentitiesRequest{
+func (a *IdentityHistoryApiService) ListHistoricalIdentities(ctx context.Context) ApiListHistoricalIdentitiesRequest {
+	return ApiListHistoricalIdentitiesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1431,7 +1442,7 @@ func (a *IdentityHistoryApiService) ListIdentities(ctx context.Context) ApiListI
 
 // Execute executes the request
 //  @return []IdentityListItem
-func (a *IdentityHistoryApiService) ListIdentitiesExecute(r ApiListIdentitiesRequest) ([]IdentityListItem, *http.Response, error) {
+func (a *IdentityHistoryApiService) ListHistoricalIdentitiesExecute(r ApiListHistoricalIdentitiesRequest) ([]IdentityListItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1439,7 +1450,7 @@ func (a *IdentityHistoryApiService) ListIdentitiesExecute(r ApiListIdentitiesReq
 		localVarReturnValue  []IdentityListItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.ListIdentities")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.ListHistoricalIdentities")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1504,6 +1515,17 @@ func (a *IdentityHistoryApiService) ListIdentitiesExecute(r ApiListIdentitiesReq
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -1517,6 +1539,17 @@ func (a *IdentityHistoryApiService) ListIdentitiesExecute(r ApiListIdentitiesReq
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

@@ -30,7 +30,7 @@ type IdentityListItem struct {
 	// indicates if an identity is active or not
 	Active *bool `json:"active,omitempty"`
 	// the date when the identity was deleted
-	DeletedDate *string `json:"deletedDate,omitempty"`
+	DeletedDate NullableString `json:"deletedDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,6 +42,8 @@ type _IdentityListItem IdentityListItem
 // will change when the set of required properties is changed
 func NewIdentityListItem() *IdentityListItem {
 	this := IdentityListItem{}
+	var active bool = true
+	this.Active = &active
 	return &this
 }
 
@@ -50,6 +52,8 @@ func NewIdentityListItem() *IdentityListItem {
 // but it doesn't guarantee that properties required by API are set
 func NewIdentityListItemWithDefaults() *IdentityListItem {
 	this := IdentityListItem{}
+	var active bool = true
+	this.Active = &active
 	return &this
 }
 
@@ -213,36 +217,46 @@ func (o *IdentityListItem) SetActive(v bool) {
 	o.Active = &v
 }
 
-// GetDeletedDate returns the DeletedDate field value if set, zero value otherwise.
+// GetDeletedDate returns the DeletedDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityListItem) GetDeletedDate() string {
-	if o == nil || isNil(o.DeletedDate) {
+	if o == nil || isNil(o.DeletedDate.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DeletedDate
+	return *o.DeletedDate.Get()
 }
 
 // GetDeletedDateOk returns a tuple with the DeletedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentityListItem) GetDeletedDateOk() (*string, bool) {
-	if o == nil || isNil(o.DeletedDate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DeletedDate, true
+	return o.DeletedDate.Get(), o.DeletedDate.IsSet()
 }
 
 // HasDeletedDate returns a boolean if a field has been set.
 func (o *IdentityListItem) HasDeletedDate() bool {
-	if o != nil && !isNil(o.DeletedDate) {
+	if o != nil && o.DeletedDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDeletedDate gets a reference to the given string and assigns it to the DeletedDate field.
+// SetDeletedDate gets a reference to the given NullableString and assigns it to the DeletedDate field.
 func (o *IdentityListItem) SetDeletedDate(v string) {
-	o.DeletedDate = &v
+	o.DeletedDate.Set(&v)
+}
+// SetDeletedDateNil sets the value for DeletedDate to be an explicit nil
+func (o *IdentityListItem) SetDeletedDateNil() {
+	o.DeletedDate.Set(nil)
+}
+
+// UnsetDeletedDate ensures that no value is present for DeletedDate, not even an explicit nil
+func (o *IdentityListItem) UnsetDeletedDate() {
+	o.DeletedDate.Unset()
 }
 
 func (o IdentityListItem) MarshalJSON() ([]byte, error) {
@@ -270,8 +284,8 @@ func (o IdentityListItem) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Active) {
 		toSerialize["active"] = o.Active
 	}
-	if !isNil(o.DeletedDate) {
-		toSerialize["deletedDate"] = o.DeletedDate
+	if o.DeletedDate.IsSet() {
+		toSerialize["deletedDate"] = o.DeletedDate.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** | the display name of the identity | [optional] 
 **FirstName** | Pointer to **string** | the first name of the identity | [optional] 
 **LastName** | Pointer to **string** | the last name of the identity | [optional] 
-**Active** | Pointer to **bool** | indicates if an identity is active or not | [optional] 
-**DeletedDate** | Pointer to **string** | the date when the identity was deleted | [optional] 
+**Active** | Pointer to **bool** | indicates if an identity is active or not | [optional] [default to true]
+**DeletedDate** | Pointer to **NullableString** | the date when the identity was deleted | [optional] 
 
 ## Methods
 
@@ -180,6 +180,16 @@ SetDeletedDate sets DeletedDate field to given value.
 
 HasDeletedDate returns a boolean if a field has been set.
 
+### SetDeletedDateNil
+
+`func (o *IdentityListItem) SetDeletedDateNil(b bool)`
+
+ SetDeletedDateNil sets the value for DeletedDate to be an explicit nil
+
+### UnsetDeletedDate
+`func (o *IdentityListItem) UnsetDeletedDate()`
+
+UnsetDeletedDate ensures that no value is present for DeletedDate, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

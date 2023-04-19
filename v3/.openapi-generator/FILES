@@ -14,6 +14,7 @@ api_identity_profiles.go
 api_lifecycle_states.go
 api_non_employee_lifecycle_management.go
 api_o_auth_clients.go
+api_password_configuration.go
 api_password_dictionary.go
 api_password_management.go
 api_password_sync_groups.go
@@ -260,11 +261,13 @@ docs/OwnerReference.md
 docs/Owns.md
 docs/PasswordChangeRequest.md
 docs/PasswordChangeResponse.md
+docs/PasswordConfigurationApi.md
 docs/PasswordDictionaryApi.md
 docs/PasswordInfo.md
 docs/PasswordInfoAccount.md
 docs/PasswordInfoQueryDTO.md
 docs/PasswordManagementApi.md
+docs/PasswordOrgConfig.md
 docs/PasswordStatus.md
 docs/PasswordSyncGroup.md
 docs/PasswordSyncGroupsApi.md
@@ -638,6 +641,7 @@ model_password_change_response.go
 model_password_info.go
 model_password_info_account.go
 model_password_info_query_dto.go
+model_password_org_config.go
 model_password_status.go
 model_password_sync_group.go
 model_pending_approval.go
@@ -786,6 +790,7 @@ test/api_identity_profiles_test.go
 test/api_lifecycle_states_test.go
 test/api_non_employee_lifecycle_management_test.go
 test/api_o_auth_clients_test.go
+test/api_password_configuration_test.go
 test/api_password_dictionary_test.go
 test/api_password_management_test.go
 test/api_password_sync_groups_test.go

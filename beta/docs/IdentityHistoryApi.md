@@ -6,12 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CompareIdentitySnapshots**](IdentityHistoryApi.md#CompareIdentitySnapshots) | **Get** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
 [**CompareIdentitySnapshotsAccessType**](IdentityHistoryApi.md#CompareIdentitySnapshotsAccessType) | **Get** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
+[**GetHistoricalIdentity**](IdentityHistoryApi.md#GetHistoricalIdentity) | **Get** /historical-identities/{id} | Get latest snapshot of identity
 [**GetHistoricalIdentityEvents**](IdentityHistoryApi.md#GetHistoricalIdentityEvents) | **Get** /historical-identities/{id}/events | Lists all events for the given identity
-[**GetIdentity**](IdentityHistoryApi.md#GetIdentity) | **Get** /historical-identities/{id} | Gets the most recent snapshot of a specific identity
 [**GetIdentitySnapshot**](IdentityHistoryApi.md#GetIdentitySnapshot) | **Get** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
 [**GetIdentitySnapshotSummary**](IdentityHistoryApi.md#GetIdentitySnapshotSummary) | **Get** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
 [**GetIdentityStartDate**](IdentityHistoryApi.md#GetIdentityStartDate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
-[**ListIdentities**](IdentityHistoryApi.md#ListIdentities) | **Get** /historical-identities | Lists all the identities
+[**ListHistoricalIdentities**](IdentityHistoryApi.md#ListHistoricalIdentities) | **Get** /historical-identities | Lists all the identities
 [**ListIdentityAccessItems**](IdentityHistoryApi.md#ListIdentityAccessItems) | **Get** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
 [**ListIdentitySnapshotAccessItems**](IdentityHistoryApi.md#ListIdentitySnapshotAccessItems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
 [**ListIdentitySnapshots**](IdentityHistoryApi.md#ListIdentitySnapshots) | **Get** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
@@ -185,6 +185,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetHistoricalIdentity
+
+> IdentityHistoryResponse GetHistoricalIdentity(ctx, id).Execute()
+
+Get latest snapshot of identity
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The identity id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentityHistoryApi.GetHistoricalIdentity(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.GetHistoricalIdentity``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetHistoricalIdentity`: IdentityHistoryResponse
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.GetHistoricalIdentity`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The identity id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetHistoricalIdentityRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**IdentityHistoryResponse**](IdentityHistoryResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetHistoricalIdentityEvents
 
 > []GetHistoricalIdentityEvents200ResponseInner GetHistoricalIdentityEvents(ctx, id).From(from).EventTypes(eventTypes).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
@@ -252,76 +322,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]GetHistoricalIdentityEvents200ResponseInner**](GetHistoricalIdentityEvents200ResponseInner.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetIdentity
-
-> IdentityHistoryResponse GetIdentity(ctx, id).Execute()
-
-Gets the most recent snapshot of a specific identity
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The identity id
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.GetIdentity(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.GetIdentity``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetIdentity`: IdentityHistoryResponse
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.GetIdentity`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The identity id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetIdentityRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**IdentityHistoryResponse**](IdentityHistoryResponse.md)
 
 ### Authorization
 
@@ -562,9 +562,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListIdentities
+## ListHistoricalIdentities
 
-> []IdentityListItem ListIdentities(ctx).StartsWithQuery(startsWithQuery).IsDeleted(isDeleted).IsActive(isActive).Limit(limit).Offset(offset).Execute()
+> []IdentityListItem ListHistoricalIdentities(ctx).StartsWithQuery(startsWithQuery).IsDeleted(isDeleted).IsActive(isActive).Limit(limit).Offset(offset).Execute()
 
 Lists all the identities
 
@@ -591,13 +591,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.ListIdentities(context.Background()).StartsWithQuery(startsWithQuery).IsDeleted(isDeleted).IsActive(isActive).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.IdentityHistoryApi.ListHistoricalIdentities(context.Background()).StartsWithQuery(startsWithQuery).IsDeleted(isDeleted).IsActive(isActive).Limit(limit).Offset(offset).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.ListIdentities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.ListHistoricalIdentities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListIdentities`: []IdentityListItem
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.ListIdentities`: %v\n", resp)
+    // response from `ListHistoricalIdentities`: []IdentityListItem
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.ListHistoricalIdentities`: %v\n", resp)
 }
 ```
 
@@ -607,7 +607,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListIdentitiesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListHistoricalIdentitiesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

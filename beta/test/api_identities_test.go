@@ -22,6 +22,45 @@ func Test_beta_IdentitiesApiService(t *testing.T) {
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test IdentitiesApiService DeleteIdentity", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityId string
+
+		httpRes, err := apiClient.BETA.IdentitiesApi.DeleteIdentity(context.Background(), identityId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentitiesApiService GetIdentity", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityId string
+
+		resp, httpRes, err := apiClient.BETA.IdentitiesApi.GetIdentity(context.Background(), identityId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentitiesApiService ListIdentities", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.IdentitiesApi.ListIdentities(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IdentitiesApiService SynchronizeAttributesForIdentity", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

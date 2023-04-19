@@ -342,6 +342,13 @@ tags:
     \ for more information about OAuth and how it works with the IdentityNow REST\
     \ API. \n"
   name: OAuth Clients
+- description: "Use this API to implement organization password configuration functionality.\
+    \ \nWith this functionality in place, organization administrators can create organization-specific\
+    \ password configurations. \n\nThese configurations include details like custom\
+    \ password instructions, as well as digit token length and duration. \n\nRefer\
+    \ to [Configuring User Authentication for Password Resets](https://documentation.sailpoint.com/saas/help/pwd/pwd_reset.html)\
+    \ for more information about organization password configuration functionality.\n"
+  name: Password Configuration
 - description: "Use this API to implement password management functionality.  \nWith\
     \ this functionality in place, users can manage their identity passwords for all\
     \ their applications.\n\nIn IdentityNow, users can select their names in the upper\
@@ -15743,6 +15750,263 @@ paths:
       summary: Update Password Dictionary
       tags:
       - Password Dictionary
+  /password-org-config:
+    get:
+      description: "This API returns the password org config . Requires ORG_ADMIN,\
+        \ API role or authorization scope of 'idn:password-org-config:read'"
+      operationId: getPasswordOrgConfig
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                customInstructionsEnabled: true
+                digitTokenDurationMinutes: 9
+                digitTokenEnabled: false
+                digitTokenLength: 6
+              schema:
+                $ref: '#/components/schemas/PasswordOrgConfig'
+          description: Reference to the password org config.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:password-org-config:read
+      summary: Get Password Org Config
+      tags:
+      - Password Configuration
+    post:
+      description: "This API creates the password org config. Unspecified fields will\
+        \ use default value. Requires ORG_ADMIN, API role or authorization scope of\
+        \ 'idn:password-org-config:write'"
+      operationId: createPasswordOrgConfig
+      requestBody:
+        content:
+          application/json:
+            example:
+              customInstructionsEnabled: true
+              digitTokenEnabled: true
+              digitTokenDurationMinutes: 12
+              digitTokenLength: 9
+            schema:
+              $ref: '#/components/schemas/PasswordOrgConfig'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                customInstructionsEnabled: true
+                digitTokenDurationMinutes: 9
+                digitTokenEnabled: true
+                digitTokenLength: 12
+              schema:
+                $ref: '#/components/schemas/PasswordOrgConfig'
+          description: Reference to the password org config.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:password-org-config:write
+      summary: Create Password Org Config
+      tags:
+      - Password Configuration
+    put:
+      description: "This API updates the password org config for specified fields.\
+        \ Other fields will keep original value. Requires ORG_ADMIN, API role or authorization\
+        \ scope of 'idn:password-org-config:write'"
+      operationId: updatePasswordOrgConfig
+      requestBody:
+        content:
+          application/json:
+            example:
+              digitTokenEnabled: true
+              digitTokenDurationMinutes: 12
+            schema:
+              $ref: '#/components/schemas/PasswordOrgConfig'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                customInstructionsEnabled: true
+                digitTokenDurationMinutes: 12
+                digitTokenEnabled: true
+                digitTokenLength: 6
+              schema:
+                $ref: '#/components/schemas/PasswordOrgConfig'
+          description: Reference to the password org config.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:password-org-config:write
+      summary: Update Password Org Config
+      tags:
+      - Password Configuration
   /sources:
     get:
       description: |-
@@ -27089,6 +27353,43 @@ components:
           items:
             type: string
           type: array
+      type: object
+    PasswordOrgConfig:
+      example:
+        digitTokenLength: 9
+        digitTokenEnabled: true
+        digitTokenDurationMinutes: 10
+        customInstructionsEnabled: true
+      properties:
+        customInstructionsEnabled:
+          default: false
+          description: Indicator whether custom password instructions feature is enabled.
+            The default value is false.
+          example: true
+          type: boolean
+        digitTokenEnabled:
+          default: false
+          description: Indicator whether "digit token" feature is enabled. The default
+            value is false.
+          example: true
+          type: boolean
+        digitTokenDurationMinutes:
+          default: 5
+          description: The duration of "digit token" in minutes. The default value
+            is 5.
+          example: 10
+          format: int32
+          maximum: 60
+          minimum: 1
+          type: integer
+        digitTokenLength:
+          default: 6
+          description: The length of "digit token". The default value is 6.
+          example: 9
+          format: int32
+          maximum: 18
+          minimum: 6
+          type: integer
       type: object
     ProvisioningPolicyDto:
       example:

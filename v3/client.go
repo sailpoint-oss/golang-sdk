@@ -74,6 +74,8 @@ type APIClient struct {
 
 	OAuthClientsApi *OAuthClientsApiService
 
+	PasswordConfigurationApi *PasswordConfigurationApiService
+
 	PasswordDictionaryApi *PasswordDictionaryApiService
 
 	PasswordManagementApi *PasswordManagementApiService
@@ -132,6 +134,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.LifecycleStatesApi = (*LifecycleStatesApiService)(&c.common)
 	c.NonEmployeeLifecycleManagementApi = (*NonEmployeeLifecycleManagementApiService)(&c.common)
 	c.OAuthClientsApi = (*OAuthClientsApiService)(&c.common)
+	c.PasswordConfigurationApi = (*PasswordConfigurationApiService)(&c.common)
 	c.PasswordDictionaryApi = (*PasswordDictionaryApiService)(&c.common)
 	c.PasswordManagementApi = (*PasswordManagementApiService)(&c.common)
 	c.PasswordSyncGroupsApi = (*PasswordSyncGroupsApiService)(&c.common)

@@ -204,15 +204,18 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningApi* | [**PatchPotentialRole**](docs/IAIRoleMiningApi.md#patchpotentialrole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
 *IAIRoleMiningApi* | [**PatchRoleMiningSession**](docs/IAIRoleMiningApi.md#patchroleminingsession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
 *IAIRoleMiningApi* | [**UpdateEntitlementsPotentialRole**](docs/IAIRoleMiningApi.md#updateentitlementspotentialrole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
+*IdentitiesApi* | [**DeleteIdentity**](docs/IdentitiesApi.md#deleteidentity) | **Delete** /identities/{id} | Deletes an identity.
+*IdentitiesApi* | [**GetIdentity**](docs/IdentitiesApi.md#getidentity) | **Get** /identities/{id} | Identity Details
+*IdentitiesApi* | [**ListIdentities**](docs/IdentitiesApi.md#listidentities) | **Get** /identities | List Identities
 *IdentitiesApi* | [**SynchronizeAttributesForIdentity**](docs/IdentitiesApi.md#synchronizeattributesforidentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 *IdentityHistoryApi* | [**CompareIdentitySnapshots**](docs/IdentityHistoryApi.md#compareidentitysnapshots) | **Get** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
 *IdentityHistoryApi* | [**CompareIdentitySnapshotsAccessType**](docs/IdentityHistoryApi.md#compareidentitysnapshotsaccesstype) | **Get** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
+*IdentityHistoryApi* | [**GetHistoricalIdentity**](docs/IdentityHistoryApi.md#gethistoricalidentity) | **Get** /historical-identities/{id} | Get latest snapshot of identity
 *IdentityHistoryApi* | [**GetHistoricalIdentityEvents**](docs/IdentityHistoryApi.md#gethistoricalidentityevents) | **Get** /historical-identities/{id}/events | Lists all events for the given identity
-*IdentityHistoryApi* | [**GetIdentity**](docs/IdentityHistoryApi.md#getidentity) | **Get** /historical-identities/{id} | Gets the most recent snapshot of a specific identity
 *IdentityHistoryApi* | [**GetIdentitySnapshot**](docs/IdentityHistoryApi.md#getidentitysnapshot) | **Get** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
 *IdentityHistoryApi* | [**GetIdentitySnapshotSummary**](docs/IdentityHistoryApi.md#getidentitysnapshotsummary) | **Get** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
 *IdentityHistoryApi* | [**GetIdentityStartDate**](docs/IdentityHistoryApi.md#getidentitystartdate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
-*IdentityHistoryApi* | [**ListIdentities**](docs/IdentityHistoryApi.md#listidentities) | **Get** /historical-identities | Lists all the identities
+*IdentityHistoryApi* | [**ListHistoricalIdentities**](docs/IdentityHistoryApi.md#listhistoricalidentities) | **Get** /historical-identities | Lists all the identities
 *IdentityHistoryApi* | [**ListIdentityAccessItems**](docs/IdentityHistoryApi.md#listidentityaccessitems) | **Get** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
 *IdentityHistoryApi* | [**ListIdentitySnapshotAccessItems**](docs/IdentityHistoryApi.md#listidentitysnapshotaccessitems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
 *IdentityHistoryApi* | [**ListIdentitySnapshots**](docs/IdentityHistoryApi.md#listidentitysnapshots) | **Get** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
@@ -669,6 +672,7 @@ Class | Method | HTTP request | Description
  - [HttpConfig](docs/HttpConfig.md)
  - [HttpDispatchMode](docs/HttpDispatchMode.md)
  - [IdentitiesAccountsBulkRequest](docs/IdentitiesAccountsBulkRequest.md)
+ - [Identity](docs/Identity.md)
  - [IdentityAttributeConfig](docs/IdentityAttributeConfig.md)
  - [IdentityAttributeConfig1](docs/IdentityAttributeConfig1.md)
  - [IdentityAttributePreview](docs/IdentityAttributePreview.md)
@@ -680,6 +684,7 @@ Class | Method | HTTP request | Description
  - [IdentityCompareResponse](docs/IdentityCompareResponse.md)
  - [IdentityCreated](docs/IdentityCreated.md)
  - [IdentityDeleted](docs/IdentityDeleted.md)
+ - [IdentityDto](docs/IdentityDto.md)
  - [IdentityExceptionReportReference](docs/IdentityExceptionReportReference.md)
  - [IdentityExceptionReportReference1](docs/IdentityExceptionReportReference1.md)
  - [IdentityHistoryResponse](docs/IdentityHistoryResponse.md)
