@@ -5,7 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ListAccounts**](AccountsApi.md#ListAccounts) | **Get** /cc/api/account/list | List Accounts
-[**RemoveAccount**](AccountsApi.md#RemoveAccount) | **Post** /cc/api/account/remove/:id | Remove Account
+[**RemoveAccount**](AccountsApi.md#RemoveAccount) | **Post** /cc/api/account/remove/{id} | Remove Account
 
 
 
@@ -85,7 +85,7 @@ import (
 )
 
 func main() {
-    id := "12345" // string |  (optional)
+    id := "12345" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -5,11 +5,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateApplication**](ApplicationsApi.md#CreateApplication) | **Post** /cc/api/app/create | Create Application
-[**DeleteApplication**](ApplicationsApi.md#DeleteApplication) | **Post** /cc/api/app/delete/:id | Delete Application
-[**GetApplication**](ApplicationsApi.md#GetApplication) | **Get** /cc/api/app/get/:id | Get Single Application
-[**GetApplicationAccessProfiles**](ApplicationsApi.md#GetApplicationAccessProfiles) | **Get** /cc/api/app/getAccessProfiles/:id | Get Access Profiles for Application
-[**ListApplications**](ApplicationsApi.md#ListApplications) | **Get** /cc/api/app | List Applications
-[**UpdateApplication**](ApplicationsApi.md#UpdateApplication) | **Post** /cc/api/app/update/:id | Update Application
+[**DeleteApplication**](ApplicationsApi.md#DeleteApplication) | **Post** /cc/api/app/delete/{id} | Delete Application
+[**GetApplication**](ApplicationsApi.md#GetApplication) | **Get** /cc/api/app/get/{id} | Get Single Application
+[**GetApplicationAccessProfiles**](ApplicationsApi.md#GetApplicationAccessProfiles) | **Get** /cc/api/app/getAccessProfiles/{id} | Get Access Profiles for Application
+[**ListApplications**](ApplicationsApi.md#ListApplications) | **Get** /cc/api/app/list | List Applications
+[**UpdateApplication**](ApplicationsApi.md#UpdateApplication) | **Post** /cc/api/app/update/{id} | Update Application
 
 
 
@@ -94,7 +94,7 @@ import (
 )
 
 func main() {
-    id := "12345" // string |  (optional)
+    id := "12345" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -160,7 +160,7 @@ import (
 )
 
 func main() {
-    id := "12345" // string |  (optional)
+    id := "12345" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -226,7 +226,7 @@ import (
 )
 
 func main() {
-    id := "12345" // string |  (optional)
+    id := "12345" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -349,7 +349,7 @@ import (
 )
 
 func main() {
-    id := "12345" // string |  (optional)
+    id := "12345" // string | 
     updateApplicationRequest := *openapiclient.NewUpdateApplicationRequest() // UpdateApplicationRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()

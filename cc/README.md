@@ -79,13 +79,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountsApi* | [**ListAccounts**](docs/AccountsApi.md#listaccounts) | **Get** /cc/api/account/list | List Accounts
-*AccountsApi* | [**RemoveAccount**](docs/AccountsApi.md#removeaccount) | **Post** /cc/api/account/remove/:id | Remove Account
+*AccountsApi* | [**RemoveAccount**](docs/AccountsApi.md#removeaccount) | **Post** /cc/api/account/remove/{id} | Remove Account
 *ApplicationsApi* | [**CreateApplication**](docs/ApplicationsApi.md#createapplication) | **Post** /cc/api/app/create | Create Application
-*ApplicationsApi* | [**DeleteApplication**](docs/ApplicationsApi.md#deleteapplication) | **Post** /cc/api/app/delete/:id | Delete Application
-*ApplicationsApi* | [**GetApplication**](docs/ApplicationsApi.md#getapplication) | **Get** /cc/api/app/get/:id | Get Single Application
-*ApplicationsApi* | [**GetApplicationAccessProfiles**](docs/ApplicationsApi.md#getapplicationaccessprofiles) | **Get** /cc/api/app/getAccessProfiles/:id | Get Access Profiles for Application
-*ApplicationsApi* | [**ListApplications**](docs/ApplicationsApi.md#listapplications) | **Get** /cc/api/app | List Applications
-*ApplicationsApi* | [**UpdateApplication**](docs/ApplicationsApi.md#updateapplication) | **Post** /cc/api/app/update/:id | Update Application
+*ApplicationsApi* | [**DeleteApplication**](docs/ApplicationsApi.md#deleteapplication) | **Post** /cc/api/app/delete/{id} | Delete Application
+*ApplicationsApi* | [**GetApplication**](docs/ApplicationsApi.md#getapplication) | **Get** /cc/api/app/get/{id} | Get Single Application
+*ApplicationsApi* | [**GetApplicationAccessProfiles**](docs/ApplicationsApi.md#getapplicationaccessprofiles) | **Get** /cc/api/app/getAccessProfiles/{id} | Get Access Profiles for Application
+*ApplicationsApi* | [**ListApplications**](docs/ApplicationsApi.md#listapplications) | **Get** /cc/api/app/list | List Applications
+*ApplicationsApi* | [**UpdateApplication**](docs/ApplicationsApi.md#updateapplication) | **Post** /cc/api/app/update/{id} | Update Application
 *ConnectorsApi* | [**CreateConnector**](docs/ConnectorsApi.md#createconnector) | **Post** /cc/api/connector/create | Create Connector
 *ConnectorsApi* | [**DeleteConnector**](docs/ConnectorsApi.md#deleteconnector) | **Post** /cc/api/connector/delete/{id} | Delete Connector
 *ConnectorsApi* | [**ExportConnectorConfig**](docs/ConnectorsApi.md#exportconnectorconfig) | **Get** /cc/api/connector/export/{id} | Export Connector Config

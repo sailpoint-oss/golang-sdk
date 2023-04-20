@@ -155,7 +155,7 @@ func (a *ApplicationsApiService) DeleteApplicationExecute(r ApiDeleteApplication
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/cc/api/app/delete/:id"
+	localVarPath := localBasePath + "/cc/api/app/delete/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -245,7 +245,7 @@ func (a *ApplicationsApiService) GetApplicationExecute(r ApiGetApplicationReques
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/cc/api/app/get/:id"
+	localVarPath := localBasePath + "/cc/api/app/get/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -335,7 +335,7 @@ func (a *ApplicationsApiService) GetApplicationAccessProfilesExecute(r ApiGetApp
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/cc/api/app/getAccessProfiles/:id"
+	localVarPath := localBasePath + "/cc/api/app/getAccessProfiles/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -422,7 +422,7 @@ func (a *ApplicationsApiService) ListApplicationsExecute(r ApiListApplicationsRe
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/cc/api/app"
+	localVarPath := localBasePath + "/cc/api/app/list"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -517,7 +517,7 @@ func (a *ApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplication
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/cc/api/app/update/:id"
+	localVarPath := localBasePath + "/cc/api/app/update/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)

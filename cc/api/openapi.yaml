@@ -31,7 +31,7 @@ paths:
       summary: List Accounts
       tags:
       - Accounts
-  /cc/api/account/remove/:id:
+  /cc/api/account/remove/{id}:
     post:
       operationId: removeAccount
       parameters:
@@ -39,7 +39,7 @@ paths:
         explode: false
         in: path
         name: id
-        required: false
+        required: true
         schema:
           type: string
         style: simple
@@ -53,7 +53,7 @@ paths:
       summary: Remove Account
       tags:
       - Accounts
-  /cc/api/app:
+  /cc/api/app/list:
     get:
       operationId: listApplications
       responses:
@@ -66,7 +66,7 @@ paths:
       summary: List Applications
       tags:
       - Applications
-  /cc/api/app/get/:id:
+  /cc/api/app/get/{id}:
     get:
       operationId: GetApplication
       parameters:
@@ -74,7 +74,7 @@ paths:
         explode: false
         in: path
         name: id
-        required: false
+        required: true
         schema:
           type: string
         style: simple
@@ -88,7 +88,7 @@ paths:
       summary: Get Single Application
       tags:
       - Applications
-  /cc/api/app/getAccessProfiles/:id:
+  /cc/api/app/getAccessProfiles/{id}:
     get:
       operationId: GetApplicationAccessProfiles
       parameters:
@@ -96,7 +96,7 @@ paths:
         explode: false
         in: path
         name: id
-        required: false
+        required: true
         schema:
           type: string
         style: simple
@@ -126,7 +126,7 @@ paths:
       summary: Create Application
       tags:
       - Applications
-  /cc/api/app/update/:id:
+  /cc/api/app/update/{id}:
     post:
       operationId: UpdateApplication
       parameters:
@@ -134,7 +134,7 @@ paths:
         explode: false
         in: path
         name: id
-        required: false
+        required: true
         schema:
           type: string
         style: simple
@@ -153,7 +153,7 @@ paths:
       summary: Update Application
       tags:
       - Applications
-  /cc/api/app/delete/:id:
+  /cc/api/app/delete/{id}:
     post:
       operationId: DeleteApplication
       parameters:
@@ -161,7 +161,7 @@ paths:
         explode: false
         in: path
         name: id
-        required: false
+        required: true
         schema:
           type: string
         style: simple
