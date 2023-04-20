@@ -22593,10 +22593,11 @@ paths:
       - Password Configuration
   /peer-group-strategies/{strategy}/identity-outliers:
     get:
-      description: "This API will be used by Identity Governance systems to identify\
-        \ identities that are not included in an organization's peer groups. By default,\
-        \ 250 identities are returned. You can specify between 1 and 1000 number of\
-        \ identities that can be returned."
+      deprecated: true
+      description: "-- Deprecated : See 'IAI Outliers' This API will be used by Identity\
+        \ Governance systems to identify identities that are not included in an organization's\
+        \ peer groups. By default, 250 identities are returned. You can specify between\
+        \ 1 and 1000 number of identities that can be returned."
       operationId: getPeerGroupOutliers
       parameters:
       - description: "The strategy used to create peer groups. Currently, 'entitlement'\
@@ -22667,6 +22668,24 @@ paths:
                 $ref: '#/components/schemas/listAccessProfiles_401_response'
           description: "Unauthorized - Returned if there is no authorization header,\
             \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
         "429":
           content:
             application/json:

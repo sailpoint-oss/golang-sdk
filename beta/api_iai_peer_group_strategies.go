@@ -57,11 +57,13 @@ func (r ApiGetPeerGroupOutliersRequest) Execute() ([]PeerGroupMember, *http.Resp
 /*
 GetPeerGroupOutliers Identity Outliers List
 
-This API will be used by Identity Governance systems to identify identities that are not included in an organization's peer groups. By default, 250 identities are returned. You can specify between 1 and 1000 number of identities that can be returned.
+-- Deprecated : See 'IAI Outliers' This API will be used by Identity Governance systems to identify identities that are not included in an organization's peer groups. By default, 250 identities are returned. You can specify between 1 and 1000 number of identities that can be returned.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param strategy The strategy used to create peer groups. Currently, 'entitlement' is supported.
  @return ApiGetPeerGroupOutliersRequest
+
+Deprecated
 */
 func (a *IAIPeerGroupStrategiesApiService) GetPeerGroupOutliers(ctx context.Context, strategy string) ApiGetPeerGroupOutliersRequest {
 	return ApiGetPeerGroupOutliersRequest{
@@ -73,6 +75,7 @@ func (a *IAIPeerGroupStrategiesApiService) GetPeerGroupOutliers(ctx context.Cont
 
 // Execute executes the request
 //  @return []PeerGroupMember
+// Deprecated
 func (a *IAIPeerGroupStrategiesApiService) GetPeerGroupOutliersExecute(r ApiGetPeerGroupOutliersRequest) ([]PeerGroupMember, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -154,6 +157,17 @@ func (a *IAIPeerGroupStrategiesApiService) GetPeerGroupOutliersExecute(r ApiGetP
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
