@@ -20,11 +20,11 @@ var _ MappedNullable = &ManagedClusterKeyPair{}
 // ManagedClusterKeyPair Managed Cluster key pair for Cluster
 type ManagedClusterKeyPair struct {
 	// ManagedCluster publicKey
-	PublicKey *string `json:"publicKey,omitempty"`
+	PublicKey NullableString `json:"publicKey,omitempty"`
 	// ManagedCluster publicKeyThumbprint
-	PublicKeyThumbprint *string `json:"publicKeyThumbprint,omitempty"`
+	PublicKeyThumbprint NullableString `json:"publicKeyThumbprint,omitempty"`
 	// ManagedCluster publicKeyCertificate
-	PublicKeyCertificate *string `json:"publicKeyCertificate,omitempty"`
+	PublicKeyCertificate NullableString `json:"publicKeyCertificate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -47,100 +47,130 @@ func NewManagedClusterKeyPairWithDefaults() *ManagedClusterKeyPair {
 	return &this
 }
 
-// GetPublicKey returns the PublicKey field value if set, zero value otherwise.
+// GetPublicKey returns the PublicKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClusterKeyPair) GetPublicKey() string {
-	if o == nil || isNil(o.PublicKey) {
+	if o == nil || isNil(o.PublicKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PublicKey
+	return *o.PublicKey.Get()
 }
 
 // GetPublicKeyOk returns a tuple with the PublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManagedClusterKeyPair) GetPublicKeyOk() (*string, bool) {
-	if o == nil || isNil(o.PublicKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PublicKey, true
+	return o.PublicKey.Get(), o.PublicKey.IsSet()
 }
 
 // HasPublicKey returns a boolean if a field has been set.
 func (o *ManagedClusterKeyPair) HasPublicKey() bool {
-	if o != nil && !isNil(o.PublicKey) {
+	if o != nil && o.PublicKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
+// SetPublicKey gets a reference to the given NullableString and assigns it to the PublicKey field.
 func (o *ManagedClusterKeyPair) SetPublicKey(v string) {
-	o.PublicKey = &v
+	o.PublicKey.Set(&v)
+}
+// SetPublicKeyNil sets the value for PublicKey to be an explicit nil
+func (o *ManagedClusterKeyPair) SetPublicKeyNil() {
+	o.PublicKey.Set(nil)
 }
 
-// GetPublicKeyThumbprint returns the PublicKeyThumbprint field value if set, zero value otherwise.
+// UnsetPublicKey ensures that no value is present for PublicKey, not even an explicit nil
+func (o *ManagedClusterKeyPair) UnsetPublicKey() {
+	o.PublicKey.Unset()
+}
+
+// GetPublicKeyThumbprint returns the PublicKeyThumbprint field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClusterKeyPair) GetPublicKeyThumbprint() string {
-	if o == nil || isNil(o.PublicKeyThumbprint) {
+	if o == nil || isNil(o.PublicKeyThumbprint.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PublicKeyThumbprint
+	return *o.PublicKeyThumbprint.Get()
 }
 
 // GetPublicKeyThumbprintOk returns a tuple with the PublicKeyThumbprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManagedClusterKeyPair) GetPublicKeyThumbprintOk() (*string, bool) {
-	if o == nil || isNil(o.PublicKeyThumbprint) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PublicKeyThumbprint, true
+	return o.PublicKeyThumbprint.Get(), o.PublicKeyThumbprint.IsSet()
 }
 
 // HasPublicKeyThumbprint returns a boolean if a field has been set.
 func (o *ManagedClusterKeyPair) HasPublicKeyThumbprint() bool {
-	if o != nil && !isNil(o.PublicKeyThumbprint) {
+	if o != nil && o.PublicKeyThumbprint.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPublicKeyThumbprint gets a reference to the given string and assigns it to the PublicKeyThumbprint field.
+// SetPublicKeyThumbprint gets a reference to the given NullableString and assigns it to the PublicKeyThumbprint field.
 func (o *ManagedClusterKeyPair) SetPublicKeyThumbprint(v string) {
-	o.PublicKeyThumbprint = &v
+	o.PublicKeyThumbprint.Set(&v)
+}
+// SetPublicKeyThumbprintNil sets the value for PublicKeyThumbprint to be an explicit nil
+func (o *ManagedClusterKeyPair) SetPublicKeyThumbprintNil() {
+	o.PublicKeyThumbprint.Set(nil)
 }
 
-// GetPublicKeyCertificate returns the PublicKeyCertificate field value if set, zero value otherwise.
+// UnsetPublicKeyThumbprint ensures that no value is present for PublicKeyThumbprint, not even an explicit nil
+func (o *ManagedClusterKeyPair) UnsetPublicKeyThumbprint() {
+	o.PublicKeyThumbprint.Unset()
+}
+
+// GetPublicKeyCertificate returns the PublicKeyCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClusterKeyPair) GetPublicKeyCertificate() string {
-	if o == nil || isNil(o.PublicKeyCertificate) {
+	if o == nil || isNil(o.PublicKeyCertificate.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PublicKeyCertificate
+	return *o.PublicKeyCertificate.Get()
 }
 
 // GetPublicKeyCertificateOk returns a tuple with the PublicKeyCertificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManagedClusterKeyPair) GetPublicKeyCertificateOk() (*string, bool) {
-	if o == nil || isNil(o.PublicKeyCertificate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PublicKeyCertificate, true
+	return o.PublicKeyCertificate.Get(), o.PublicKeyCertificate.IsSet()
 }
 
 // HasPublicKeyCertificate returns a boolean if a field has been set.
 func (o *ManagedClusterKeyPair) HasPublicKeyCertificate() bool {
-	if o != nil && !isNil(o.PublicKeyCertificate) {
+	if o != nil && o.PublicKeyCertificate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPublicKeyCertificate gets a reference to the given string and assigns it to the PublicKeyCertificate field.
+// SetPublicKeyCertificate gets a reference to the given NullableString and assigns it to the PublicKeyCertificate field.
 func (o *ManagedClusterKeyPair) SetPublicKeyCertificate(v string) {
-	o.PublicKeyCertificate = &v
+	o.PublicKeyCertificate.Set(&v)
+}
+// SetPublicKeyCertificateNil sets the value for PublicKeyCertificate to be an explicit nil
+func (o *ManagedClusterKeyPair) SetPublicKeyCertificateNil() {
+	o.PublicKeyCertificate.Set(nil)
+}
+
+// UnsetPublicKeyCertificate ensures that no value is present for PublicKeyCertificate, not even an explicit nil
+func (o *ManagedClusterKeyPair) UnsetPublicKeyCertificate() {
+	o.PublicKeyCertificate.Unset()
 }
 
 func (o ManagedClusterKeyPair) MarshalJSON() ([]byte, error) {
@@ -153,14 +183,14 @@ func (o ManagedClusterKeyPair) MarshalJSON() ([]byte, error) {
 
 func (o ManagedClusterKeyPair) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.PublicKey) {
-		toSerialize["publicKey"] = o.PublicKey
+	if o.PublicKey.IsSet() {
+		toSerialize["publicKey"] = o.PublicKey.Get()
 	}
-	if !isNil(o.PublicKeyThumbprint) {
-		toSerialize["publicKeyThumbprint"] = o.PublicKeyThumbprint
+	if o.PublicKeyThumbprint.IsSet() {
+		toSerialize["publicKeyThumbprint"] = o.PublicKeyThumbprint.Get()
 	}
-	if !isNil(o.PublicKeyCertificate) {
-		toSerialize["publicKeyCertificate"] = o.PublicKeyCertificate
+	if o.PublicKeyCertificate.IsSet() {
+		toSerialize["publicKeyCertificate"] = o.PublicKeyCertificate.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

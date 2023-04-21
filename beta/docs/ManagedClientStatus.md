@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Body** | **map[string]interface{}** | ManagedClientStatus body information | 
 **Status** | [**ManagedClientStatusEnum**](ManagedClientStatusEnum.md) |  | 
-**Type** | [**ManagedClientType**](ManagedClientType.md) |  | 
+**Type** | [**NullableManagedClientType**](ManagedClientType.md) |  | 
 **Timestamp** | **time.Time** | timestamp on the Client Status update | 
 
 ## Methods
 
 ### NewManagedClientStatus
 
-`func NewManagedClientStatus(body map[string]interface{}, status ManagedClientStatusEnum, type_ ManagedClientType, timestamp time.Time, ) *ManagedClientStatus`
+`func NewManagedClientStatus(body map[string]interface{}, status ManagedClientStatusEnum, type_ NullableManagedClientType, timestamp time.Time, ) *ManagedClientStatus`
 
 NewManagedClientStatus instantiates a new ManagedClientStatus object
 This constructor will assign default values to properties that have it defined,
@@ -88,6 +88,16 @@ and a boolean to check if the value has been set.
 SetType sets Type field to given value.
 
 
+### SetTypeNil
+
+`func (o *ManagedClientStatus) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *ManagedClientStatus) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetTimestamp
 
 `func (o *ManagedClientStatus) GetTimestamp() time.Time`

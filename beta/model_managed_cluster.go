@@ -35,22 +35,22 @@ type ManagedCluster struct {
 	// ManagedCluster description
 	Description *string `json:"description,omitempty"`
 	Redis *ManagedClusterRedis `json:"redis,omitempty"`
-	ClientType ManagedClientType `json:"clientType"`
+	ClientType NullableManagedClientType `json:"clientType"`
 	// CCG version used by the ManagedCluster
 	CcgVersion string `json:"ccgVersion"`
 	// boolean flag indiacting whether or not the cluster configuration is pinned
 	PinnedConfig *bool `json:"pinnedConfig,omitempty"`
-	LogConfiguration *ClientLogConfiguration `json:"logConfiguration,omitempty"`
+	LogConfiguration NullableClientLogConfiguration `json:"logConfiguration,omitempty"`
 	// Whether or not the cluster is operational or not
 	Operational *bool `json:"operational,omitempty"`
 	// Cluster status
 	Status *string `json:"status,omitempty"`
 	// Public key certificate
-	PublicKeyCertificate *string `json:"publicKeyCertificate,omitempty"`
+	PublicKeyCertificate NullableString `json:"publicKeyCertificate,omitempty"`
 	// Public key thumbprint
-	PublicKeyThumbprint *string `json:"publicKeyThumbprint,omitempty"`
+	PublicKeyThumbprint NullableString `json:"publicKeyThumbprint,omitempty"`
 	// Public key
-	PublicKey *string `json:"publicKey,omitempty"`
+	PublicKey NullableString `json:"publicKey,omitempty"`
 	// Key describing any immediate cluster alerts
 	AlertKey *string `json:"alertKey,omitempty"`
 	// List of clients in a cluster
@@ -68,7 +68,7 @@ type _ManagedCluster ManagedCluster
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManagedCluster(id string, clientType ManagedClientType, ccgVersion string) *ManagedCluster {
+func NewManagedCluster(id string, clientType NullableManagedClientType, ccgVersion string) *ManagedCluster {
 	this := ManagedCluster{}
 	this.Id = id
 	this.ClientType = clientType
@@ -413,27 +413,29 @@ func (o *ManagedCluster) SetRedis(v ManagedClusterRedis) {
 }
 
 // GetClientType returns the ClientType field value
+// If the value is explicit nil, the zero value for ManagedClientType will be returned
 func (o *ManagedCluster) GetClientType() ManagedClientType {
-	if o == nil {
+	if o == nil || o.ClientType.Get() == nil {
 		var ret ManagedClientType
 		return ret
 	}
 
-	return o.ClientType
+	return *o.ClientType.Get()
 }
 
 // GetClientTypeOk returns a tuple with the ClientType field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManagedCluster) GetClientTypeOk() (*ManagedClientType, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ClientType, true
+	return o.ClientType.Get(), o.ClientType.IsSet()
 }
 
 // SetClientType sets field value
 func (o *ManagedCluster) SetClientType(v ManagedClientType) {
-	o.ClientType = v
+	o.ClientType.Set(&v)
 }
 
 // GetCcgVersion returns the CcgVersion field value
@@ -492,36 +494,46 @@ func (o *ManagedCluster) SetPinnedConfig(v bool) {
 	o.PinnedConfig = &v
 }
 
-// GetLogConfiguration returns the LogConfiguration field value if set, zero value otherwise.
+// GetLogConfiguration returns the LogConfiguration field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedCluster) GetLogConfiguration() ClientLogConfiguration {
-	if o == nil || isNil(o.LogConfiguration) {
+	if o == nil || isNil(o.LogConfiguration.Get()) {
 		var ret ClientLogConfiguration
 		return ret
 	}
-	return *o.LogConfiguration
+	return *o.LogConfiguration.Get()
 }
 
 // GetLogConfigurationOk returns a tuple with the LogConfiguration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManagedCluster) GetLogConfigurationOk() (*ClientLogConfiguration, bool) {
-	if o == nil || isNil(o.LogConfiguration) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LogConfiguration, true
+	return o.LogConfiguration.Get(), o.LogConfiguration.IsSet()
 }
 
 // HasLogConfiguration returns a boolean if a field has been set.
 func (o *ManagedCluster) HasLogConfiguration() bool {
-	if o != nil && !isNil(o.LogConfiguration) {
+	if o != nil && o.LogConfiguration.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLogConfiguration gets a reference to the given ClientLogConfiguration and assigns it to the LogConfiguration field.
+// SetLogConfiguration gets a reference to the given NullableClientLogConfiguration and assigns it to the LogConfiguration field.
 func (o *ManagedCluster) SetLogConfiguration(v ClientLogConfiguration) {
-	o.LogConfiguration = &v
+	o.LogConfiguration.Set(&v)
+}
+// SetLogConfigurationNil sets the value for LogConfiguration to be an explicit nil
+func (o *ManagedCluster) SetLogConfigurationNil() {
+	o.LogConfiguration.Set(nil)
+}
+
+// UnsetLogConfiguration ensures that no value is present for LogConfiguration, not even an explicit nil
+func (o *ManagedCluster) UnsetLogConfiguration() {
+	o.LogConfiguration.Unset()
 }
 
 // GetOperational returns the Operational field value if set, zero value otherwise.
@@ -588,100 +600,130 @@ func (o *ManagedCluster) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetPublicKeyCertificate returns the PublicKeyCertificate field value if set, zero value otherwise.
+// GetPublicKeyCertificate returns the PublicKeyCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedCluster) GetPublicKeyCertificate() string {
-	if o == nil || isNil(o.PublicKeyCertificate) {
+	if o == nil || isNil(o.PublicKeyCertificate.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PublicKeyCertificate
+	return *o.PublicKeyCertificate.Get()
 }
 
 // GetPublicKeyCertificateOk returns a tuple with the PublicKeyCertificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManagedCluster) GetPublicKeyCertificateOk() (*string, bool) {
-	if o == nil || isNil(o.PublicKeyCertificate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PublicKeyCertificate, true
+	return o.PublicKeyCertificate.Get(), o.PublicKeyCertificate.IsSet()
 }
 
 // HasPublicKeyCertificate returns a boolean if a field has been set.
 func (o *ManagedCluster) HasPublicKeyCertificate() bool {
-	if o != nil && !isNil(o.PublicKeyCertificate) {
+	if o != nil && o.PublicKeyCertificate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPublicKeyCertificate gets a reference to the given string and assigns it to the PublicKeyCertificate field.
+// SetPublicKeyCertificate gets a reference to the given NullableString and assigns it to the PublicKeyCertificate field.
 func (o *ManagedCluster) SetPublicKeyCertificate(v string) {
-	o.PublicKeyCertificate = &v
+	o.PublicKeyCertificate.Set(&v)
+}
+// SetPublicKeyCertificateNil sets the value for PublicKeyCertificate to be an explicit nil
+func (o *ManagedCluster) SetPublicKeyCertificateNil() {
+	o.PublicKeyCertificate.Set(nil)
 }
 
-// GetPublicKeyThumbprint returns the PublicKeyThumbprint field value if set, zero value otherwise.
+// UnsetPublicKeyCertificate ensures that no value is present for PublicKeyCertificate, not even an explicit nil
+func (o *ManagedCluster) UnsetPublicKeyCertificate() {
+	o.PublicKeyCertificate.Unset()
+}
+
+// GetPublicKeyThumbprint returns the PublicKeyThumbprint field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedCluster) GetPublicKeyThumbprint() string {
-	if o == nil || isNil(o.PublicKeyThumbprint) {
+	if o == nil || isNil(o.PublicKeyThumbprint.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PublicKeyThumbprint
+	return *o.PublicKeyThumbprint.Get()
 }
 
 // GetPublicKeyThumbprintOk returns a tuple with the PublicKeyThumbprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManagedCluster) GetPublicKeyThumbprintOk() (*string, bool) {
-	if o == nil || isNil(o.PublicKeyThumbprint) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PublicKeyThumbprint, true
+	return o.PublicKeyThumbprint.Get(), o.PublicKeyThumbprint.IsSet()
 }
 
 // HasPublicKeyThumbprint returns a boolean if a field has been set.
 func (o *ManagedCluster) HasPublicKeyThumbprint() bool {
-	if o != nil && !isNil(o.PublicKeyThumbprint) {
+	if o != nil && o.PublicKeyThumbprint.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPublicKeyThumbprint gets a reference to the given string and assigns it to the PublicKeyThumbprint field.
+// SetPublicKeyThumbprint gets a reference to the given NullableString and assigns it to the PublicKeyThumbprint field.
 func (o *ManagedCluster) SetPublicKeyThumbprint(v string) {
-	o.PublicKeyThumbprint = &v
+	o.PublicKeyThumbprint.Set(&v)
+}
+// SetPublicKeyThumbprintNil sets the value for PublicKeyThumbprint to be an explicit nil
+func (o *ManagedCluster) SetPublicKeyThumbprintNil() {
+	o.PublicKeyThumbprint.Set(nil)
 }
 
-// GetPublicKey returns the PublicKey field value if set, zero value otherwise.
+// UnsetPublicKeyThumbprint ensures that no value is present for PublicKeyThumbprint, not even an explicit nil
+func (o *ManagedCluster) UnsetPublicKeyThumbprint() {
+	o.PublicKeyThumbprint.Unset()
+}
+
+// GetPublicKey returns the PublicKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedCluster) GetPublicKey() string {
-	if o == nil || isNil(o.PublicKey) {
+	if o == nil || isNil(o.PublicKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PublicKey
+	return *o.PublicKey.Get()
 }
 
 // GetPublicKeyOk returns a tuple with the PublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManagedCluster) GetPublicKeyOk() (*string, bool) {
-	if o == nil || isNil(o.PublicKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PublicKey, true
+	return o.PublicKey.Get(), o.PublicKey.IsSet()
 }
 
 // HasPublicKey returns a boolean if a field has been set.
 func (o *ManagedCluster) HasPublicKey() bool {
-	if o != nil && !isNil(o.PublicKey) {
+	if o != nil && o.PublicKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
+// SetPublicKey gets a reference to the given NullableString and assigns it to the PublicKey field.
 func (o *ManagedCluster) SetPublicKey(v string) {
-	o.PublicKey = &v
+	o.PublicKey.Set(&v)
+}
+// SetPublicKeyNil sets the value for PublicKey to be an explicit nil
+func (o *ManagedCluster) SetPublicKeyNil() {
+	o.PublicKey.Set(nil)
+}
+
+// UnsetPublicKey ensures that no value is present for PublicKey, not even an explicit nil
+func (o *ManagedCluster) UnsetPublicKey() {
+	o.PublicKey.Unset()
 }
 
 // GetAlertKey returns the AlertKey field value if set, zero value otherwise.
@@ -850,13 +892,13 @@ func (o ManagedCluster) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Redis) {
 		toSerialize["redis"] = o.Redis
 	}
-	toSerialize["clientType"] = o.ClientType
+	toSerialize["clientType"] = o.ClientType.Get()
 	toSerialize["ccgVersion"] = o.CcgVersion
 	if !isNil(o.PinnedConfig) {
 		toSerialize["pinnedConfig"] = o.PinnedConfig
 	}
-	if !isNil(o.LogConfiguration) {
-		toSerialize["logConfiguration"] = o.LogConfiguration
+	if o.LogConfiguration.IsSet() {
+		toSerialize["logConfiguration"] = o.LogConfiguration.Get()
 	}
 	if !isNil(o.Operational) {
 		toSerialize["operational"] = o.Operational
@@ -864,14 +906,14 @@ func (o ManagedCluster) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if !isNil(o.PublicKeyCertificate) {
-		toSerialize["publicKeyCertificate"] = o.PublicKeyCertificate
+	if o.PublicKeyCertificate.IsSet() {
+		toSerialize["publicKeyCertificate"] = o.PublicKeyCertificate.Get()
 	}
-	if !isNil(o.PublicKeyThumbprint) {
-		toSerialize["publicKeyThumbprint"] = o.PublicKeyThumbprint
+	if o.PublicKeyThumbprint.IsSet() {
+		toSerialize["publicKeyThumbprint"] = o.PublicKeyThumbprint.Get()
 	}
-	if !isNil(o.PublicKey) {
-		toSerialize["publicKey"] = o.PublicKey
+	if o.PublicKey.IsSet() {
+		toSerialize["publicKey"] = o.PublicKey.Get()
 	}
 	if !isNil(o.AlertKey) {
 		toSerialize["alertKey"] = o.AlertKey

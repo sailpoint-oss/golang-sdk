@@ -47882,7 +47882,9 @@ components:
       - CCG
       - VA
       - INTERNAL
+      - null
       example: CCG
+      nullable: true
       type: string
     ManagedClientStatusAggResponse:
       description: Managed Client Status
@@ -48215,15 +48217,18 @@ components:
           description: Public key certificate
           example: '-----BEGIN CERTIFICATE-----TCCAb2gAwIBAgIBADANBgkqhkiG9w0BAQsFADAuMQ0wCwYDVQQD-----END
             CERTIFICATE-----'
+          nullable: true
           type: string
         publicKeyThumbprint:
           description: Public key thumbprint
           example: obc6pLiulGbtZ
+          nullable: true
           type: string
         publicKey:
           description: Public key
           example: '-----BEGIN PUBLIC KEY-----jANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3WgnsxP52MDgBTfHR+5n4-----END
             PUBLIC KEY-----'
+          nullable: true
           type: string
         alertKey:
           description: Key describing any immediate cluster alerts
@@ -48262,6 +48267,7 @@ components:
         clientId: aClientId
         expiration: 2020-12-15T19:13:36.079Z
         logLevels: INFO
+      nullable: true
       properties:
         clientId:
           description: Log configuration's client ID
@@ -55935,14 +55941,17 @@ components:
         publicKey:
           description: ManagedCluster publicKey
           example: '-----BEGIN PUBLIC KEY-----******-----END PUBLIC KEY-----'
+          nullable: true
           type: string
         publicKeyThumbprint:
           description: ManagedCluster publicKeyThumbprint
           example: 6CMlaJIV44-xJxcB3CJBjDUUn54
+          nullable: true
           type: string
         publicKeyCertificate:
           description: ManagedCluster publicKeyCertificate
           example: '-----BEGIN CERTIFICATE-----****-----END CERTIFICATE-----'
+          nullable: true
           type: string
       type: object
     ManagedClusterAttributes:
@@ -55959,6 +55968,7 @@ components:
         keystore:
           description: ManagedCluster keystore for spConnectCluster type
           example: /u3+7QAAAAIAAAABAAAAAQAvL3Byb3h5LWNsdXN0ZXIvMmM5MTgwODc3Yjg3MW
+          nullable: true
           type: string
       type: object
     ManagedClusterRedis:

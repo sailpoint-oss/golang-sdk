@@ -14,15 +14,15 @@ Name | Type | Description | Notes
 **Attributes** | Pointer to [**ManagedClusterAttributes**](ManagedClusterAttributes.md) |  | [optional] 
 **Description** | Pointer to **string** | ManagedCluster description | [optional] 
 **Redis** | Pointer to [**ManagedClusterRedis**](ManagedClusterRedis.md) |  | [optional] 
-**ClientType** | [**ManagedClientType**](ManagedClientType.md) |  | 
+**ClientType** | [**NullableManagedClientType**](ManagedClientType.md) |  | 
 **CcgVersion** | **string** | CCG version used by the ManagedCluster | 
 **PinnedConfig** | Pointer to **bool** | boolean flag indiacting whether or not the cluster configuration is pinned | [optional] [default to false]
-**LogConfiguration** | Pointer to [**ClientLogConfiguration**](ClientLogConfiguration.md) |  | [optional] 
+**LogConfiguration** | Pointer to [**NullableClientLogConfiguration**](ClientLogConfiguration.md) |  | [optional] 
 **Operational** | Pointer to **bool** | Whether or not the cluster is operational or not | [optional] [default to false]
 **Status** | Pointer to **string** | Cluster status | [optional] 
-**PublicKeyCertificate** | Pointer to **string** | Public key certificate | [optional] 
-**PublicKeyThumbprint** | Pointer to **string** | Public key thumbprint | [optional] 
-**PublicKey** | Pointer to **string** | Public key | [optional] 
+**PublicKeyCertificate** | Pointer to **NullableString** | Public key certificate | [optional] 
+**PublicKeyThumbprint** | Pointer to **NullableString** | Public key thumbprint | [optional] 
+**PublicKey** | Pointer to **NullableString** | Public key | [optional] 
 **AlertKey** | Pointer to **string** | Key describing any immediate cluster alerts | [optional] 
 **ClientIds** | Pointer to **[]string** | List of clients in a cluster | [optional] 
 **ServiceCount** | Pointer to **int32** | Number of services bound to a cluster | [optional] [default to 0]
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewManagedCluster
 
-`func NewManagedCluster(id string, clientType ManagedClientType, ccgVersion string, ) *ManagedCluster`
+`func NewManagedCluster(id string, clientType NullableManagedClientType, ccgVersion string, ) *ManagedCluster`
 
 NewManagedCluster instantiates a new ManagedCluster object
 This constructor will assign default values to properties that have it defined,
@@ -312,6 +312,16 @@ and a boolean to check if the value has been set.
 SetClientType sets ClientType field to given value.
 
 
+### SetClientTypeNil
+
+`func (o *ManagedCluster) SetClientTypeNil(b bool)`
+
+ SetClientTypeNil sets the value for ClientType to be an explicit nil
+
+### UnsetClientType
+`func (o *ManagedCluster) UnsetClientType()`
+
+UnsetClientType ensures that no value is present for ClientType, not even an explicit nil
 ### GetCcgVersion
 
 `func (o *ManagedCluster) GetCcgVersion() string`
@@ -382,6 +392,16 @@ SetLogConfiguration sets LogConfiguration field to given value.
 
 HasLogConfiguration returns a boolean if a field has been set.
 
+### SetLogConfigurationNil
+
+`func (o *ManagedCluster) SetLogConfigurationNil(b bool)`
+
+ SetLogConfigurationNil sets the value for LogConfiguration to be an explicit nil
+
+### UnsetLogConfiguration
+`func (o *ManagedCluster) UnsetLogConfiguration()`
+
+UnsetLogConfiguration ensures that no value is present for LogConfiguration, not even an explicit nil
 ### GetOperational
 
 `func (o *ManagedCluster) GetOperational() bool`
@@ -457,6 +477,16 @@ SetPublicKeyCertificate sets PublicKeyCertificate field to given value.
 
 HasPublicKeyCertificate returns a boolean if a field has been set.
 
+### SetPublicKeyCertificateNil
+
+`func (o *ManagedCluster) SetPublicKeyCertificateNil(b bool)`
+
+ SetPublicKeyCertificateNil sets the value for PublicKeyCertificate to be an explicit nil
+
+### UnsetPublicKeyCertificate
+`func (o *ManagedCluster) UnsetPublicKeyCertificate()`
+
+UnsetPublicKeyCertificate ensures that no value is present for PublicKeyCertificate, not even an explicit nil
 ### GetPublicKeyThumbprint
 
 `func (o *ManagedCluster) GetPublicKeyThumbprint() string`
@@ -482,6 +512,16 @@ SetPublicKeyThumbprint sets PublicKeyThumbprint field to given value.
 
 HasPublicKeyThumbprint returns a boolean if a field has been set.
 
+### SetPublicKeyThumbprintNil
+
+`func (o *ManagedCluster) SetPublicKeyThumbprintNil(b bool)`
+
+ SetPublicKeyThumbprintNil sets the value for PublicKeyThumbprint to be an explicit nil
+
+### UnsetPublicKeyThumbprint
+`func (o *ManagedCluster) UnsetPublicKeyThumbprint()`
+
+UnsetPublicKeyThumbprint ensures that no value is present for PublicKeyThumbprint, not even an explicit nil
 ### GetPublicKey
 
 `func (o *ManagedCluster) GetPublicKey() string`
@@ -507,6 +547,16 @@ SetPublicKey sets PublicKey field to given value.
 
 HasPublicKey returns a boolean if a field has been set.
 
+### SetPublicKeyNil
+
+`func (o *ManagedCluster) SetPublicKeyNil(b bool)`
+
+ SetPublicKeyNil sets the value for PublicKey to be an explicit nil
+
+### UnsetPublicKey
+`func (o *ManagedCluster) UnsetPublicKey()`
+
+UnsetPublicKey ensures that no value is present for PublicKey, not even an explicit nil
 ### GetAlertKey
 
 `func (o *ManagedCluster) GetAlertKey() string`

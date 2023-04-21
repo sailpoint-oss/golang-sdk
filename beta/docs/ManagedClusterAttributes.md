@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Queue** | Pointer to [**ManagedClusterQueue**](ManagedClusterQueue.md) |  | [optional] 
-**Keystore** | Pointer to **string** | ManagedCluster keystore for spConnectCluster type | [optional] 
+**Keystore** | Pointer to **NullableString** | ManagedCluster keystore for spConnectCluster type | [optional] 
 
 ## Methods
 
@@ -76,6 +76,16 @@ SetKeystore sets Keystore field to given value.
 
 HasKeystore returns a boolean if a field has been set.
 
+### SetKeystoreNil
+
+`func (o *ManagedClusterAttributes) SetKeystoreNil(b bool)`
+
+ SetKeystoreNil sets the value for Keystore to be an explicit nil
+
+### UnsetKeystore
+`func (o *ManagedClusterAttributes) UnsetKeystore()`
+
+UnsetKeystore ensures that no value is present for Keystore, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

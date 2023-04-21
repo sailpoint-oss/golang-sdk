@@ -21,7 +21,7 @@ var _ MappedNullable = &ManagedClusterAttributes{}
 type ManagedClusterAttributes struct {
 	Queue *ManagedClusterQueue `json:"queue,omitempty"`
 	// ManagedCluster keystore for spConnectCluster type
-	Keystore *string `json:"keystore,omitempty"`
+	Keystore NullableString `json:"keystore,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,36 +76,46 @@ func (o *ManagedClusterAttributes) SetQueue(v ManagedClusterQueue) {
 	o.Queue = &v
 }
 
-// GetKeystore returns the Keystore field value if set, zero value otherwise.
+// GetKeystore returns the Keystore field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ManagedClusterAttributes) GetKeystore() string {
-	if o == nil || isNil(o.Keystore) {
+	if o == nil || isNil(o.Keystore.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Keystore
+	return *o.Keystore.Get()
 }
 
 // GetKeystoreOk returns a tuple with the Keystore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManagedClusterAttributes) GetKeystoreOk() (*string, bool) {
-	if o == nil || isNil(o.Keystore) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Keystore, true
+	return o.Keystore.Get(), o.Keystore.IsSet()
 }
 
 // HasKeystore returns a boolean if a field has been set.
 func (o *ManagedClusterAttributes) HasKeystore() bool {
-	if o != nil && !isNil(o.Keystore) {
+	if o != nil && o.Keystore.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKeystore gets a reference to the given string and assigns it to the Keystore field.
+// SetKeystore gets a reference to the given NullableString and assigns it to the Keystore field.
 func (o *ManagedClusterAttributes) SetKeystore(v string) {
-	o.Keystore = &v
+	o.Keystore.Set(&v)
+}
+// SetKeystoreNil sets the value for Keystore to be an explicit nil
+func (o *ManagedClusterAttributes) SetKeystoreNil() {
+	o.Keystore.Set(nil)
+}
+
+// UnsetKeystore ensures that no value is present for Keystore, not even an explicit nil
+func (o *ManagedClusterAttributes) UnsetKeystore() {
+	o.Keystore.Unset()
 }
 
 func (o ManagedClusterAttributes) MarshalJSON() ([]byte, error) {
@@ -121,8 +131,8 @@ func (o ManagedClusterAttributes) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Queue) {
 		toSerialize["queue"] = o.Queue
 	}
-	if !isNil(o.Keystore) {
-		toSerialize["keystore"] = o.Keystore
+	if o.Keystore.IsSet() {
+		toSerialize["keystore"] = o.Keystore.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

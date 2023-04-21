@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PublicKey** | Pointer to **string** | ManagedCluster publicKey | [optional] 
-**PublicKeyThumbprint** | Pointer to **string** | ManagedCluster publicKeyThumbprint | [optional] 
-**PublicKeyCertificate** | Pointer to **string** | ManagedCluster publicKeyCertificate | [optional] 
+**PublicKey** | Pointer to **NullableString** | ManagedCluster publicKey | [optional] 
+**PublicKeyThumbprint** | Pointer to **NullableString** | ManagedCluster publicKeyThumbprint | [optional] 
+**PublicKeyCertificate** | Pointer to **NullableString** | ManagedCluster publicKeyCertificate | [optional] 
 
 ## Methods
 
@@ -52,6 +52,16 @@ SetPublicKey sets PublicKey field to given value.
 
 HasPublicKey returns a boolean if a field has been set.
 
+### SetPublicKeyNil
+
+`func (o *ManagedClusterKeyPair) SetPublicKeyNil(b bool)`
+
+ SetPublicKeyNil sets the value for PublicKey to be an explicit nil
+
+### UnsetPublicKey
+`func (o *ManagedClusterKeyPair) UnsetPublicKey()`
+
+UnsetPublicKey ensures that no value is present for PublicKey, not even an explicit nil
 ### GetPublicKeyThumbprint
 
 `func (o *ManagedClusterKeyPair) GetPublicKeyThumbprint() string`
@@ -77,6 +87,16 @@ SetPublicKeyThumbprint sets PublicKeyThumbprint field to given value.
 
 HasPublicKeyThumbprint returns a boolean if a field has been set.
 
+### SetPublicKeyThumbprintNil
+
+`func (o *ManagedClusterKeyPair) SetPublicKeyThumbprintNil(b bool)`
+
+ SetPublicKeyThumbprintNil sets the value for PublicKeyThumbprint to be an explicit nil
+
+### UnsetPublicKeyThumbprint
+`func (o *ManagedClusterKeyPair) UnsetPublicKeyThumbprint()`
+
+UnsetPublicKeyThumbprint ensures that no value is present for PublicKeyThumbprint, not even an explicit nil
 ### GetPublicKeyCertificate
 
 `func (o *ManagedClusterKeyPair) GetPublicKeyCertificate() string`
@@ -102,6 +122,16 @@ SetPublicKeyCertificate sets PublicKeyCertificate field to given value.
 
 HasPublicKeyCertificate returns a boolean if a field has been set.
 
+### SetPublicKeyCertificateNil
+
+`func (o *ManagedClusterKeyPair) SetPublicKeyCertificateNil(b bool)`
+
+ SetPublicKeyCertificateNil sets the value for PublicKeyCertificate to be an explicit nil
+
+### UnsetPublicKeyCertificate
+`func (o *ManagedClusterKeyPair) UnsetPublicKeyCertificate()`
+
+UnsetPublicKeyCertificate ensures that no value is present for PublicKeyCertificate, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

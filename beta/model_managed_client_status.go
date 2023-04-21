@@ -23,7 +23,7 @@ type ManagedClientStatus struct {
 	// ManagedClientStatus body information
 	Body map[string]interface{} `json:"body"`
 	Status ManagedClientStatusEnum `json:"status"`
-	Type ManagedClientType `json:"type"`
+	Type NullableManagedClientType `json:"type"`
 	// timestamp on the Client Status update
 	Timestamp time.Time `json:"timestamp"`
 	AdditionalProperties map[string]interface{}
@@ -35,7 +35,7 @@ type _ManagedClientStatus ManagedClientStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewManagedClientStatus(body map[string]interface{}, status ManagedClientStatusEnum, type_ ManagedClientType, timestamp time.Time) *ManagedClientStatus {
+func NewManagedClientStatus(body map[string]interface{}, status ManagedClientStatusEnum, type_ NullableManagedClientType, timestamp time.Time) *ManagedClientStatus {
 	this := ManagedClientStatus{}
 	this.Body = body
 	this.Status = status
@@ -101,27 +101,29 @@ func (o *ManagedClientStatus) SetStatus(v ManagedClientStatusEnum) {
 }
 
 // GetType returns the Type field value
+// If the value is explicit nil, the zero value for ManagedClientType will be returned
 func (o *ManagedClientStatus) GetType() ManagedClientType {
-	if o == nil {
+	if o == nil || o.Type.Get() == nil {
 		var ret ManagedClientType
 		return ret
 	}
 
-	return o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ManagedClientStatus) GetTypeOk() (*ManagedClientType, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // SetType sets field value
 func (o *ManagedClientStatus) SetType(v ManagedClientType) {
-	o.Type = v
+	o.Type.Set(&v)
 }
 
 // GetTimestamp returns the Timestamp field value
@@ -160,7 +162,7 @@ func (o ManagedClientStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["body"] = o.Body
 	toSerialize["status"] = o.Status
-	toSerialize["type"] = o.Type
+	toSerialize["type"] = o.Type.Get()
 	toSerialize["timestamp"] = o.Timestamp
 
 	for key, value := range o.AdditionalProperties {
