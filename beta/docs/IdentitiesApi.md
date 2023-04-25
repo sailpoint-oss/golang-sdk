@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## DeleteIdentity
 
-> DeleteIdentity(ctx, identityId).Execute()
+> DeleteIdentity(ctx, id).Execute()
 
 Deletes an identity.
 
@@ -32,11 +32,11 @@ import (
 )
 
 func main() {
-    identityId := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Id
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Id
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesApi.DeleteIdentity(context.Background(), identityId).Execute()
+    resp, r, err := apiClient.IdentitiesApi.DeleteIdentity(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesApi.DeleteIdentity``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | Identity Id | 
+**id** | **string** | Identity Id | 
 
 ### Other Parameters
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## GetIdentity
 
-> Identity GetIdentity(ctx, identityId).Execute()
+> Identity GetIdentity(ctx, id).Execute()
 
 Identity Details
 
@@ -100,11 +100,11 @@ import (
 )
 
 func main() {
-    identityId := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Id
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Id
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesApi.GetIdentity(context.Background(), identityId).Execute()
+    resp, r, err := apiClient.IdentitiesApi.GetIdentity(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesApi.GetIdentity``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -120,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityId** | **string** | Identity Id | 
+**id** | **string** | Identity Id | 
 
 ### Other Parameters
 

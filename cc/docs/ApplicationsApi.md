@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ## GetApplication
 
-> GetApplication(ctx, id).Execute()
+> ListApplications200ResponseInner GetApplication(ctx, id).Execute()
 
 Get Single Application
 
@@ -169,6 +169,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.GetApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `GetApplication`: ListApplications200ResponseInner
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.GetApplication`: %v\n", resp)
 }
 ```
 
@@ -191,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**ListApplications200ResponseInner**](ListApplications200ResponseInner.md)
 
 ### Authorization
 
@@ -275,7 +277,7 @@ No authorization required
 
 ## ListApplications
 
-> ListApplications(ctx).Execute()
+> []ListApplications200ResponseInner ListApplications(ctx).Execute()
 
 List Applications
 
@@ -300,6 +302,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.ListApplications``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ListApplications`: []ListApplications200ResponseInner
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.ListApplications`: %v\n", resp)
 }
 ```
 
@@ -314,7 +318,7 @@ Other parameters are passed through a pointer to a apiListApplicationsRequest st
 
 ### Return type
 
- (empty response body)
+[**[]ListApplications200ResponseInner**](ListApplications200ResponseInner.md)
 
 ### Authorization
 
