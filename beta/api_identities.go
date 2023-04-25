@@ -26,7 +26,7 @@ type IdentitiesApiService service
 type ApiDeleteIdentityRequest struct {
 	ctx context.Context
 	ApiService *IdentitiesApiService
-	identityId string
+	id string
 }
 
 func (r ApiDeleteIdentityRequest) Execute() (*http.Response, error) {
@@ -39,14 +39,14 @@ DeleteIdentity Deletes an identity.
 The API returns successful response if the requested identity was deleted.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityId Identity Id
+ @param id Identity Id
  @return ApiDeleteIdentityRequest
 */
-func (a *IdentitiesApiService) DeleteIdentity(ctx context.Context, identityId string) ApiDeleteIdentityRequest {
+func (a *IdentitiesApiService) DeleteIdentity(ctx context.Context, id string) ApiDeleteIdentityRequest {
 	return ApiDeleteIdentityRequest{
 		ApiService: a,
 		ctx: ctx,
-		identityId: identityId,
+		id: id,
 	}
 }
 
@@ -64,7 +64,7 @@ func (a *IdentitiesApiService) DeleteIdentityExecute(r ApiDeleteIdentityRequest)
 	}
 
 	localVarPath := localBasePath + "/identities/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"identityId"+"}", url.PathEscape(parameterValueToString(r.identityId, "identityId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -183,7 +183,7 @@ func (a *IdentitiesApiService) DeleteIdentityExecute(r ApiDeleteIdentityRequest)
 type ApiGetIdentityRequest struct {
 	ctx context.Context
 	ApiService *IdentitiesApiService
-	identityId string
+	id string
 }
 
 func (r ApiGetIdentityRequest) Execute() (*Identity, *http.Response, error) {
@@ -196,14 +196,14 @@ GetIdentity Identity Details
 This API returns a single identity using the Identity ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityId Identity Id
+ @param id Identity Id
  @return ApiGetIdentityRequest
 */
-func (a *IdentitiesApiService) GetIdentity(ctx context.Context, identityId string) ApiGetIdentityRequest {
+func (a *IdentitiesApiService) GetIdentity(ctx context.Context, id string) ApiGetIdentityRequest {
 	return ApiGetIdentityRequest{
 		ApiService: a,
 		ctx: ctx,
-		identityId: identityId,
+		id: id,
 	}
 }
 
@@ -223,7 +223,7 @@ func (a *IdentitiesApiService) GetIdentityExecute(r ApiGetIdentityRequest) (*Ide
 	}
 
 	localVarPath := localBasePath + "/identities/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"identityId"+"}", url.PathEscape(parameterValueToString(r.identityId, "identityId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

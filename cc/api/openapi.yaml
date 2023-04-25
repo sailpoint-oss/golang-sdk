@@ -59,7 +59,11 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/listApplications_200_response_inner'
+                type: array
           description: Successful response
       security:
       - oauth2: []
@@ -81,7 +85,9 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listApplications_200_response_inner'
           description: Successful response
       security:
       - oauth2: []
@@ -301,6 +307,30 @@ paths:
       summary: Update User Permissions
       tags:
       - User
+  /cc/api/user/get/{id}:
+    get:
+      operationId: GetIdentity
+      parameters:
+      - example: 5433236
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetIdentity_200_response'
+          description: Successful response
+      security:
+      - oauth2: []
+      summary: Get Single Identity
+      tags:
+      - User
   /cc/api/source/loadAccounts/{id}:
     post:
       description: Aggregates a delimited file for the given source.  This only works
@@ -410,11 +440,162 @@ paths:
       - System
 components:
   schemas:
-    importConnectorConfig_request:
+    GetIdentity_200_response_org:
+      example:
+        standardLogoUrl: "{}"
+        enableExternalPasswordChange: true
+        emailTestAddress: emailTestAddress
+        kbaReqAnswers: 2.3021358869347655
+        adminStrongAuthRequired: true
+        productName: productName
+        mode: mode
+        orgType: orgType
+        pwdResetPersonalEmail: true
+        logo: "{}"
+        pwdResetEmail: true
+        navigationColor: navigationColor
+        redirectPatterns: redirectPatterns
+        pwdResetKba: true
+        strongAuthPersonalPhone: true
+        brandName: brandName
+        kbaReqForAuthn: 5.637376656633329
+        usernameEmptyText: "{}"
+        strongAuthPersonalEmail: true
+        usernameLabel: "{}"
+        lockoutAttemptThreshold: 7.061401241503109
+        numQuestions: 1.4658129805029452
+        strongAuthKba: true
+        usageCertRequired: true
+        name: name
+        scriptName: scriptName
+        whiteList: true
+        notifyAuthenticationSettingChange: true
+        netmasks: "{}"
+        systemNotificationConfig: systemNotificationConfig
+        integrations:
+        - "{}"
+        - "{}"
+        lockoutTimeMinutes: 9.301444243932576
+        status: status
+        activeLinkColor: activeLinkColor
+        pod: pod
+        narrowLogoUrl: "{}"
+        emailFromAddress: "{}"
+        emailTestMode: true
+        pwdResetPersonalPhone: true
+        pwdResetDuo: true
+        enableAutomationGeneration: true
+        authErrorText: "{}"
+        enablePasswordReplay: true
+        pwdResetPhoneMask: true
+        enableAutomaticPasswordReplay: true
+        countryCodes: "{}"
+        actionButtonColor: actionButtonColor
+        maxClusterDebugHours: maxClusterDebugHours
+        passwordReplayState: passwordReplayState
+        maxRegisteredUsers: 5.962133916683182
       properties:
-        file:
-          description: This is the connector config zip bundle which gets uploaded.
-          format: binary
+        name:
+          type: string
+        scriptName:
+          type: string
+        mode:
+          type: string
+        numQuestions:
+          type: number
+        status:
+          type: string
+        maxRegisteredUsers:
+          type: number
+        pod:
+          type: string
+        pwdResetPersonalPhone:
+          type: boolean
+        pwdResetPersonalEmail:
+          type: boolean
+        pwdResetKba:
+          type: boolean
+        pwdResetEmail:
+          type: boolean
+        pwdResetDuo:
+          type: boolean
+        pwdResetPhoneMask:
+          type: boolean
+        authErrorText:
+          type: object
+        strongAuthKba:
+          type: boolean
+        strongAuthPersonalPhone:
+          type: boolean
+        strongAuthPersonalEmail:
+          type: boolean
+        integrations:
+          items:
+            type: object
+          type: array
+        productName:
+          type: string
+        kbaReqForAuthn:
+          type: number
+        kbaReqAnswers:
+          type: number
+        lockoutAttemptThreshold:
+          type: number
+        lockoutTimeMinutes:
+          type: number
+        usageCertRequired:
+          type: boolean
+        adminStrongAuthRequired:
+          type: boolean
+        enableExternalPasswordChange:
+          type: boolean
+        enablePasswordReplay:
+          type: boolean
+        enableAutomaticPasswordReplay:
+          type: boolean
+        notifyAuthenticationSettingChange:
+          type: boolean
+        netmasks:
+          type: object
+        countryCodes:
+          type: object
+        whiteList:
+          type: boolean
+        usernameEmptyText:
+          type: object
+        usernameLabel:
+          type: object
+        enableAutomationGeneration:
+          type: boolean
+        emailTestMode:
+          type: boolean
+        emailTestAddress:
+          type: string
+        orgType:
+          type: string
+        passwordReplayState:
+          type: string
+        systemNotificationConfig:
+          type: string
+        redirectPatterns:
+          type: string
+        maxClusterDebugHours:
+          type: string
+        brandName:
+          type: string
+        logo:
+          type: object
+        emailFromAddress:
+          type: object
+        standardLogoUrl:
+          type: object
+        narrowLogoUrl:
+          type: object
+        actionButtonColor:
+          type: string
+        activeLinkColor:
+          type: string
+        navigationColor:
           type: string
       type: object
     loadAccounts_request:
@@ -450,6 +631,19 @@ components:
           format: This is my application
           type: string
       type: object
+    listApplications_200_response_inner_accountServicePolicies_inner:
+      example:
+        policyId: policyId
+        policyName: policyName
+        selectors: "{}"
+      properties:
+        policyId:
+          type: string
+        policyName:
+          type: string
+        selectors:
+          type: object
+      type: object
     updateUserPermissions_request:
       properties:
         ids:
@@ -472,6 +666,418 @@ components:
           - SOURCE_SUBADMIN
           type: string
       type: object
+    listApplications_200_response_inner_health:
+      example:
+        healthy: true
+        lastChanged: lastChanged
+        status: status
+        since: 0.8008281904610115
+      properties:
+        status:
+          type: string
+        lastChanged:
+          type: string
+        since:
+          type: number
+        healthy:
+          type: boolean
+      type: object
+    GetIdentity_200_response:
+      example:
+        role:
+        - "{}"
+        - "{}"
+        auth:
+          encryption: encryption
+          service: service
+        displayName: displayName
+        kbaAnswers: 0.8008281904610115
+        pending: true
+        onNetwork: true
+        usageCertAttested: "{}"
+        encryptionKey: "{}"
+        uuid: uuid
+        enabled: true
+        personalEmail: "{}"
+        employeeNumber: "{}"
+        uid: uid
+        altAuthViaIntegrationData: "{}"
+        feature:
+        - feature
+        - feature
+        loginUrl: loginUrl
+        alias: alias
+        id: id
+        riskScore: 6.027456183070403
+        email: email
+        disablePasswordReset: true
+        featureFlags: "{}"
+        encryptionCheck: "{}"
+        userFlags: "{}"
+        passwordResetSinceLastLogin: true
+        supportsPasswordPush: true
+        org:
+          standardLogoUrl: "{}"
+          enableExternalPasswordChange: true
+          emailTestAddress: emailTestAddress
+          kbaReqAnswers: 2.3021358869347655
+          adminStrongAuthRequired: true
+          productName: productName
+          mode: mode
+          orgType: orgType
+          pwdResetPersonalEmail: true
+          logo: "{}"
+          pwdResetEmail: true
+          navigationColor: navigationColor
+          redirectPatterns: redirectPatterns
+          pwdResetKba: true
+          strongAuthPersonalPhone: true
+          brandName: brandName
+          kbaReqForAuthn: 5.637376656633329
+          usernameEmptyText: "{}"
+          strongAuthPersonalEmail: true
+          usernameLabel: "{}"
+          lockoutAttemptThreshold: 7.061401241503109
+          numQuestions: 1.4658129805029452
+          strongAuthKba: true
+          usageCertRequired: true
+          name: name
+          scriptName: scriptName
+          whiteList: true
+          notifyAuthenticationSettingChange: true
+          netmasks: "{}"
+          systemNotificationConfig: systemNotificationConfig
+          integrations:
+          - "{}"
+          - "{}"
+          lockoutTimeMinutes: 9.301444243932576
+          status: status
+          activeLinkColor: activeLinkColor
+          pod: pod
+          narrowLogoUrl: "{}"
+          emailFromAddress: "{}"
+          emailTestMode: true
+          pwdResetPersonalPhone: true
+          pwdResetDuo: true
+          enableAutomationGeneration: true
+          authErrorText: "{}"
+          enablePasswordReplay: true
+          pwdResetPhoneMask: true
+          enableAutomaticPasswordReplay: true
+          countryCodes: "{}"
+          actionButtonColor: actionButtonColor
+          maxClusterDebugHours: maxClusterDebugHours
+          passwordReplayState: passwordReplayState
+          maxRegisteredUsers: 5.962133916683182
+        ptaSourceId: "{}"
+        externalId: externalId
+        stepUpAuth: true
+        orgEncryptionKeyId: orgEncryptionKeyId
+        bxInstallPrompted: true
+        federatedLogin: true
+        phone: "{}"
+        meta: "{}"
+        altAuthVia: altAuthVia
+        name: name
+        attributes: "{}"
+        onTrustedGeo: true
+        status: status
+        orgEncryptionKey: orgEncryptionKey
+      properties:
+        id:
+          type: string
+        alias:
+          type: string
+        uid:
+          type: string
+        name:
+          type: string
+        displayName:
+          type: string
+        uuid:
+          type: string
+        encryptionKey:
+          type: object
+        encryptionCheck:
+          type: object
+        status:
+          type: string
+        pending:
+          type: boolean
+        passwordResetSinceLastLogin:
+          type: boolean
+        usageCertAttested:
+          type: object
+        userFlags:
+          type: object
+        enabled:
+          type: boolean
+        altAuthVia:
+          type: string
+        altAuthViaIntegrationData:
+          type: object
+        kbaAnswers:
+          type: number
+        disablePasswordReset:
+          type: boolean
+        ptaSourceId:
+          type: object
+        supportsPasswordPush:
+          type: boolean
+        attributes:
+          type: object
+        externalId:
+          type: string
+        role:
+          items:
+            type: object
+          type: array
+        phone:
+          type: object
+        email:
+          type: string
+        personalEmail:
+          type: object
+        employeeNumber:
+          type: object
+        riskScore:
+          type: number
+        featureFlags:
+          type: object
+        feature:
+          items:
+            type: string
+          type: array
+        orgEncryptionKey:
+          type: string
+        orgEncryptionKeyId:
+          type: string
+        meta:
+          type: object
+        org:
+          $ref: '#/components/schemas/GetIdentity_200_response_org'
+        stepUpAuth:
+          type: boolean
+        bxInstallPrompted:
+          type: boolean
+        federatedLogin:
+          type: boolean
+        auth:
+          $ref: '#/components/schemas/GetIdentity_200_response_auth'
+        onNetwork:
+          type: boolean
+        onTrustedGeo:
+          type: boolean
+        loginUrl:
+          type: string
+      type: object
+    listApplications_200_response_inner:
+      example:
+        xsdVersion: xsdVersion
+        usageCertText: "{}"
+        lastUpdated: 1.4658129805029452
+        launcherCount: 2.3021358869347655
+        supportedSsoMethods: 5.962133916683182
+        appId: appId
+        stepUpAuthType: stepUpAuthType
+        id: id
+        provisionRequestEnabled: true
+        launchpadEnabled: true
+        selectedSsoMethod: selectedSsoMethod
+        offNetworkBlockedRoles: "{}"
+        accountServicePolicies:
+        - policyId: policyId
+          policyName: policyName
+          selectors: "{}"
+        - policyId: policyId
+          policyName: policyName
+          selectors: "{}"
+        serviceAppId: serviceAppId
+        stepUpAuthData: "{}"
+        usageCertRequired: true
+        privateApp: true
+        ssoMethod: ssoMethod
+        hasAutomations: true
+        name: name
+        scriptName: scriptName
+        accountServiceMatchAllAccounts: true
+        status: status
+        accountServicePolicyId: accountServicePolicyId
+        supportedOffNetwork: supportedOffNetwork
+        icon: icon
+        description: description
+        passwordServiceId: 9.301444243932576
+        passwordManaged: true
+        accountServiceId: 5.637376656633329
+        appCenterEnabled: true
+        accountServiceName: accountServiceName
+        defaultAccessProfile: "{}"
+        dateCreated: 6.027456183070403
+        enableSso: true
+        requireStrongAuthn: true
+        serviceId: serviceId
+        accountServicePolicyName: accountServicePolicyName
+        owner:
+          name: name
+          id: id
+        accessProfileIds: "{}"
+        mobile: true
+        health:
+          healthy: true
+          lastChanged: lastChanged
+          status: status
+          since: 0.8008281904610115
+        externalId: externalId
+        usageAnalytics: true
+        hasLinks: true
+        controlType: controlType
+        service: service
+        accountServiceUseForPasswordManagement: true
+        accountServiceExternalId: accountServiceExternalId
+        appProfiles:
+        - xsdVersion: xsdVersion
+          filename: filename
+          dateCreated: dateCreated
+          createdBy: createdBy
+          id: 7.061401241503109
+        - xsdVersion: xsdVersion
+          filename: filename
+          dateCreated: dateCreated
+          createdBy: createdBy
+          id: 7.061401241503109
+      properties:
+        id:
+          type: string
+        appId:
+          type: string
+        serviceId:
+          type: string
+        serviceAppId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        appCenterEnabled:
+          type: boolean
+        provisionRequestEnabled:
+          type: boolean
+        controlType:
+          type: string
+        mobile:
+          type: boolean
+        privateApp:
+          type: boolean
+        scriptName:
+          type: string
+        status:
+          type: string
+        icon:
+          type: string
+        health:
+          $ref: '#/components/schemas/listApplications_200_response_inner_health'
+        enableSso:
+          type: boolean
+        ssoMethod:
+          type: string
+        hasLinks:
+          type: boolean
+        hasAutomations:
+          type: boolean
+        stepUpAuthData:
+          type: object
+        stepUpAuthType:
+          type: string
+        usageAnalytics:
+          type: boolean
+        usageCertRequired:
+          type: boolean
+        usageCertText:
+          type: object
+        launchpadEnabled:
+          type: boolean
+        passwordManaged:
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/listApplications_200_response_inner_owner'
+        dateCreated:
+          type: number
+        lastUpdated:
+          type: number
+        defaultAccessProfile:
+          type: object
+        service:
+          type: string
+        selectedSsoMethod:
+          type: string
+        supportedSsoMethods:
+          type: number
+        offNetworkBlockedRoles:
+          type: object
+        supportedOffNetwork:
+          type: string
+        accountServiceId:
+          type: number
+        launcherCount:
+          type: number
+        accountServiceName:
+          type: string
+        accountServiceExternalId:
+          type: string
+        accountServiceMatchAllAccounts:
+          type: boolean
+        externalId:
+          type: string
+        accountServiceUseForPasswordManagement:
+          type: boolean
+        accountServicePolicyId:
+          type: string
+        accountServicePolicyName:
+          type: string
+        requireStrongAuthn:
+          type: boolean
+        accountServicePolicies:
+          items:
+            $ref: '#/components/schemas/listApplications_200_response_inner_accountServicePolicies_inner'
+          type: array
+        xsdVersion:
+          type: string
+        appProfiles:
+          items:
+            $ref: '#/components/schemas/listApplications_200_response_inner_appProfiles_inner'
+          type: array
+        passwordServiceId:
+          type: number
+        accessProfileIds:
+          type: object
+      type: object
+    listApplications_200_response_inner_owner:
+      example:
+        name: name
+        id: id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    importConnectorConfig_request:
+      properties:
+        file:
+          description: This is the connector config zip bundle which gets uploaded.
+          format: binary
+          type: string
+      type: object
+    GetIdentity_200_response_auth:
+      example:
+        encryption: encryption
+        service: service
+      properties:
+        service:
+          type: string
+        encryption:
+          type: string
+      type: object
     CreateApplication_request:
       properties:
         name:
@@ -479,6 +1085,25 @@ components:
           type: string
         description:
           format: This is my application
+          type: string
+      type: object
+    listApplications_200_response_inner_appProfiles_inner:
+      example:
+        xsdVersion: xsdVersion
+        filename: filename
+        dateCreated: dateCreated
+        createdBy: createdBy
+        id: 7.061401241503109
+      properties:
+        id:
+          type: number
+        filename:
+          type: string
+        createdBy:
+          type: string
+        dateCreated:
+          type: string
+        xsdVersion:
           type: string
       type: object
   securitySchemes:

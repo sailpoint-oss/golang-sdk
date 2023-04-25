@@ -13621,7 +13621,7 @@ paths:
       - description: Identity Id
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
-        name: identityId
+        name: id
         required: true
         schema:
           type: string
@@ -13717,7 +13717,7 @@ paths:
       - description: Identity Id
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
-        name: identityId
+        name: id
         required: true
         schema:
           type: string

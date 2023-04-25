@@ -26,9 +26,9 @@ func Test_beta_IdentitiesApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var identityId string
+		var id string
 
-		httpRes, err := apiClient.BETA.IdentitiesApi.DeleteIdentity(context.Background(), identityId).Execute()
+		httpRes, err := apiClient.BETA.IdentitiesApi.DeleteIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -39,9 +39,9 @@ func Test_beta_IdentitiesApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var identityId string
+		var id string
 
-		resp, httpRes, err := apiClient.BETA.IdentitiesApi.GetIdentity(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentitiesApi.GetIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
