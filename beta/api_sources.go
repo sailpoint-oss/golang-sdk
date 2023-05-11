@@ -44,6 +44,8 @@ func (r ApiCreateProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *
 CreateProvisioningPolicy Create Provisioning Policy
 
 This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -216,7 +218,7 @@ func (r ApiCreateSourceRequest) Source(source Source) ApiCreateSourceRequest {
 	return r
 }
 
-// Configures the source as a DelimitedFile type of source.
+// If this parameter is &#x60;true&#x60;, it configures the source as a Delimited File (CSV) source. Setting this to &#x60;true&#x60; will automatically set the &#x60;type&#x60; of the source to &#x60;DelimitedFile&#x60;.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don&#39;t set this query parameter and you attempt to set the &#x60;type&#x60; attribute directly, the request won&#39;t correctly generate the source.  
 func (r ApiCreateSourceRequest) ProvisionAsCsv(provisionAsCsv bool) ApiCreateSourceRequest {
 	r.provisionAsCsv = &provisionAsCsv
 	return r
@@ -2943,7 +2945,7 @@ func (r ApiPeekResourceObjectsRequest) Execute() (*ResourceObjectsResponse, *htt
 }
 
 /*
-PeekResourceObjects Peek resource objects from the source connector
+PeekResourceObjects Peek source connector's resource objects
 
 Retrieves a sample of data returned from account and group aggregation requests.
 A token with ORG_ADMIN authority is required to call this API.
@@ -3117,7 +3119,7 @@ func (r ApiPingClusterRequest) Execute() (*StatusResponse, *http.Response, error
 }
 
 /*
-PingCluster Ping cluster for the source connector
+PingCluster Ping cluster for source connector
 
 This endpoint validates that the cluster being used by the source is reachable from IdentityNow.
 A token with ORG_ADMIN authority is required to call this API.
@@ -3194,6 +3196,17 @@ func (a *SourcesApiService) PingClusterExecute(r ApiPingClusterRequest) (*Status
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
@@ -3285,6 +3298,8 @@ func (r ApiPutProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *htt
 PutProvisioningPolicy Update Provisioning Policy by UsageType
 
 This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -4191,7 +4206,7 @@ func (r ApiTestSourceConfigurationRequest) Execute() (*StatusResponse, *http.Res
 }
 
 /*
-TestSourceConfiguration Test configuration for the source connector
+TestSourceConfiguration Test configuration for source connector
 
 This endpoint performs a more detailed validation of the source's configuration that can take longer than the lighter weight credential validation performed by the checkConnection API.
 A token with ORG_ADMIN authority is required to call this API.
@@ -4268,6 +4283,17 @@ func (a *SourcesApiService) TestSourceConfigurationExecute(r ApiTestSourceConfig
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
@@ -4349,7 +4375,7 @@ func (r ApiTestSourceConnectionRequest) Execute() (*StatusResponse, *http.Respon
 }
 
 /*
-TestSourceConnection Check connection for the source connector.
+TestSourceConnection Check connection for source connector.
 
 This endpoint validates that the configured credentials are valid and will properly authenticate with the source identified by the sourceId path parameter.
 A token with ORG_ADMIN authority is required to call this API.
@@ -4426,6 +4452,17 @@ func (a *SourcesApiService) TestSourceConnectionExecute(r ApiTestSourceConnectio
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
@@ -4698,6 +4735,8 @@ func (r ApiUpdateProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *
 UpdateProvisioningPolicy Partial update of Provisioning Policy
 
 This API selectively updates an existing Provisioning Policy using a JSONPatch payload.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

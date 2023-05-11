@@ -9,11 +9,11 @@ Method | HTTP request | Description
 [**DeleteIdentityProfiles**](IdentityProfilesApi.md#DeleteIdentityProfiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
 [**ExportIdentityProfiles**](IdentityProfilesApi.md#ExportIdentityProfiles) | **Get** /identity-profiles/export | Export Identity Profiles
 [**GenerateIdentityPreview**](IdentityProfilesApi.md#GenerateIdentityPreview) | **Post** /identity-profiles/identity-preview | Generate Identity Profile Preview
-[**GetDefaultIdentityAttributeConfig**](IdentityProfilesApi.md#GetDefaultIdentityAttributeConfig) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Gets the default identity attribute config
+[**GetDefaultIdentityAttributeConfig**](IdentityProfilesApi.md#GetDefaultIdentityAttributeConfig) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Default identity attribute config
 [**GetIdentityProfile**](IdentityProfilesApi.md#GetIdentityProfile) | **Get** /identity-profiles/{identity-profile-id} | Gets a single Identity Profile
 [**ImportIdentityProfiles**](IdentityProfilesApi.md#ImportIdentityProfiles) | **Post** /identity-profiles/import | Import Identity Profiles
 [**ListIdentityProfiles**](IdentityProfilesApi.md#ListIdentityProfiles) | **Get** /identity-profiles | Identity Profiles list
-[**RefreshIdentityProfile**](IdentityProfilesApi.md#RefreshIdentityProfile) | **Post** /identity-profiles/{identity-profile-id}/refresh-identities | Refreshes all the identities under this profile
+[**RefreshIdentityProfile**](IdentityProfilesApi.md#RefreshIdentityProfile) | **Post** /identity-profiles/{identity-profile-id}/refresh-identities | Refreshes all identities under profile
 [**UpdateIdentityProfile**](IdentityProfilesApi.md#UpdateIdentityProfile) | **Patch** /identity-profiles/{identity-profile-id} | Update the Identity Profile
 
 
@@ -244,8 +244,8 @@ func main() {
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "filters_example" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne* (optional)
-    sorters := "sorters_example" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority** (optional)
+    filters := "id eq 8c190e6787aa4ed9a90bd9d5344523fb" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne* (optional)
+    sorters := "name,-priority" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority** (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 > IdentityAttributeConfig GetDefaultIdentityAttributeConfig(ctx, identityProfileId).Execute()
 
-Gets the default identity attribute config
+Default identity attribute config
 
 
 
@@ -590,8 +590,8 @@ func main() {
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "filters_example" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne* (optional)
-    sorters := "sorters_example" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority** (optional)
+    filters := "id eq 8c190e6787aa4ed9a90bd9d5344523fb" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne* (optional)
+    sorters := "name,-priority" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **priority** (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -644,7 +644,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} RefreshIdentityProfile(ctx, identityProfileId).Execute()
 
-Refreshes all the identities under this profile
+Refreshes all identities under profile
 
 
 

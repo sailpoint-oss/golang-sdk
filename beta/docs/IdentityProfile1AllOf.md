@@ -8,11 +8,11 @@ Name | Type | Description | Notes
 **Owner** | Pointer to [**NullableIdentityProfileAllOfOwner**](IdentityProfileAllOfOwner.md) |  | [optional] 
 **Priority** | Pointer to **int64** | The priority for an Identity Profile. | [optional] 
 **AuthoritativeSource** | [**IdentityProfile1AllOfAuthoritativeSource**](IdentityProfile1AllOfAuthoritativeSource.md) |  | 
-**IdentityRefreshRequired** | Pointer to **bool** | True if a identity refresh is needed. Typically triggered when a change on the source has been made. | [optional] 
+**IdentityRefreshRequired** | Pointer to **bool** | True if a identity refresh is needed. Typically triggered when a change on the source has been made. | [optional] [default to false]
 **IdentityCount** | Pointer to **int32** | The number of identities that belong to the Identity Profile. | [optional] 
 **IdentityAttributeConfig** | Pointer to [**IdentityAttributeConfig1**](IdentityAttributeConfig1.md) |  | [optional] 
 **IdentityExceptionReportReference** | Pointer to [**NullableIdentityExceptionReportReference1**](IdentityExceptionReportReference1.md) |  | [optional] 
-**HasTimeBasedAttr** | Pointer to **bool** | Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile. | [optional] 
+**HasTimeBasedAttr** | Pointer to **bool** | Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile. | [optional] [default to false]
 
 ## Methods
 

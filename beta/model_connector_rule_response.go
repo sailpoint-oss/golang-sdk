@@ -34,7 +34,7 @@ type ConnectorRuleResponse struct {
 	// an ISO 8601 UTC timestamp when this rule was created
 	Created string `json:"created"`
 	// an ISO 8601 UTC timestamp when this rule was last modified
-	Modified *string `json:"modified,omitempty"`
+	Modified NullableString `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -198,9 +198,9 @@ func (o *ConnectorRuleResponse) SetSourceCode(v SourceCode) {
 	o.SourceCode = v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
+// GetAttributes returns the Attributes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectorRuleResponse) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -209,6 +209,7 @@ func (o *ConnectorRuleResponse) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectorRuleResponse) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Attributes) {
 		return map[string]interface{}{}, false
@@ -218,7 +219,7 @@ func (o *ConnectorRuleResponse) GetAttributesOk() (map[string]interface{}, bool)
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *ConnectorRuleResponse) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && isNil(o.Attributes) {
 		return true
 	}
 
@@ -278,36 +279,46 @@ func (o *ConnectorRuleResponse) SetCreated(v string) {
 	o.Created = v
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise.
+// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectorRuleResponse) GetModified() string {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || isNil(o.Modified.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Modified
+	return *o.Modified.Get()
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectorRuleResponse) GetModifiedOk() (*string, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Modified, true
+	return o.Modified.Get(), o.Modified.IsSet()
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *ConnectorRuleResponse) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && o.Modified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given string and assigns it to the Modified field.
+// SetModified gets a reference to the given NullableString and assigns it to the Modified field.
 func (o *ConnectorRuleResponse) SetModified(v string) {
-	o.Modified = &v
+	o.Modified.Set(&v)
+}
+// SetModifiedNil sets the value for Modified to be an explicit nil
+func (o *ConnectorRuleResponse) SetModifiedNil() {
+	o.Modified.Set(nil)
+}
+
+// UnsetModified ensures that no value is present for Modified, not even an explicit nil
+func (o *ConnectorRuleResponse) UnsetModified() {
+	o.Modified.Unset()
 }
 
 func (o ConnectorRuleResponse) MarshalJSON() ([]byte, error) {
@@ -329,13 +340,13 @@ func (o ConnectorRuleResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["signature"] = o.Signature
 	}
 	toSerialize["sourceCode"] = o.SourceCode
-	if !isNil(o.Attributes) {
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
 	toSerialize["id"] = o.Id
 	toSerialize["created"] = o.Created
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
+	if o.Modified.IsSet() {
+		toSerialize["modified"] = o.Modified.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

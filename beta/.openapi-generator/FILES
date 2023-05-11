@@ -479,6 +479,7 @@ docs/Reviewer.md
 docs/Revocability.md
 docs/Role.md
 docs/RoleAssignmentSourceType.md
+docs/RoleBulkDeleteRequest.md
 docs/RoleCriteriaKey.md
 docs/RoleCriteriaKeyType.md
 docs/RoleCriteriaLevel1.md
@@ -1129,6 +1130,7 @@ model_reviewer.go
 model_revocability.go
 model_role.go
 model_role_assignment_source_type.go
+model_role_bulk_delete_request.go
 model_role_criteria_key.go
 model_role_criteria_key_type.go
 model_role_criteria_level1.go

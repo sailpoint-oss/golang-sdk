@@ -193,6 +193,8 @@ Class | Method | HTTP request | Description
 *RolesApi* | [**GetRoleAssignedIdentities**](docs/RolesApi.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
 *RolesApi* | [**ListRoles**](docs/RolesApi.md#listroles) | **Get** /roles | List Roles
 *RolesApi* | [**PatchRole**](docs/RolesApi.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
+*SODPolicyApi* | [**CreateSodPolicy**](docs/SODPolicyApi.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
+*SODPolicyApi* | [**ListSodPolicies**](docs/SODPolicyApi.md#listsodpolicies) | **Get** /sod-policies | List SOD policies
 *SavedSearchApi* | [**CreateSavedSearch**](docs/SavedSearchApi.md#createsavedsearch) | **Post** /saved-searches | Create a saved search
 *SavedSearchApi* | [**DeleteSavedSearch**](docs/SavedSearchApi.md#deletesavedsearch) | **Delete** /saved-searches/{id} | Delete a document by ID
 *SavedSearchApi* | [**ExecuteSavedSearch**](docs/SavedSearchApi.md#executesavedsearch) | **Post** /saved-searches/{id}/execute | Execute a saved search by ID
@@ -209,16 +211,21 @@ Class | Method | HTTP request | Description
 *SearchApi* | [**SearchCount**](docs/SearchApi.md#searchcount) | **Post** /search/count | Count Documents Satisfying a Query
 *SearchApi* | [**SearchGet**](docs/SearchApi.md#searchget) | **Get** /search/{index}/{id} | Get a Document by ID
 *SearchApi* | [**SearchPost**](docs/SearchApi.md#searchpost) | **Post** /search | Perform Search
-*ServiceDeskIntegrationApi* | [**CreateServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#createservicedeskintegration) | **Post** /service-desk-integrations | Create a new Service Desk integration
-*ServiceDeskIntegrationApi* | [**DeleteServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#deleteservicedeskintegration) | **Delete** /service-desk-integrations/{id} | Delete a Service Desk integration by ID
-*ServiceDeskIntegrationApi* | [**GetServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#getservicedeskintegration) | **Get** /service-desk-integrations/{id} | Get a Service Desk integration by ID
+*SegmentsApi* | [**CreateSegment**](docs/SegmentsApi.md#createsegment) | **Post** /segments | Create Segment
+*SegmentsApi* | [**DeleteSegment**](docs/SegmentsApi.md#deletesegment) | **Delete** /segments/{id} | Delete Segment by ID
+*SegmentsApi* | [**GetSegment**](docs/SegmentsApi.md#getsegment) | **Get** /segments/{id} | Get a Segment by ID
+*SegmentsApi* | [**ListSegments**](docs/SegmentsApi.md#listsegments) | **Get** /segments | List Segments
+*SegmentsApi* | [**PatchSegment**](docs/SegmentsApi.md#patchsegment) | **Patch** /segments/{id} | Update a Segment
+*ServiceDeskIntegrationApi* | [**CreateServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#createservicedeskintegration) | **Post** /service-desk-integrations | Create new Service Desk integration
+*ServiceDeskIntegrationApi* | [**DeleteServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#deleteservicedeskintegration) | **Delete** /service-desk-integrations/{id} | Delete a Service Desk integration
+*ServiceDeskIntegrationApi* | [**GetServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#getservicedeskintegration) | **Get** /service-desk-integrations/{id} | Get a Service Desk integration
 *ServiceDeskIntegrationApi* | [**GetServiceDeskIntegrationTemplate**](docs/ServiceDeskIntegrationApi.md#getservicedeskintegrationtemplate) | **Get** /service-desk-integrations/templates/{scriptName} | Service Desk integration template by scriptName.
 *ServiceDeskIntegrationApi* | [**GetServiceDeskIntegrationTypes**](docs/ServiceDeskIntegrationApi.md#getservicedeskintegrationtypes) | **Get** /service-desk-integrations/types | Service Desk Integration Types List.
 *ServiceDeskIntegrationApi* | [**GetServiceDeskIntegrations**](docs/ServiceDeskIntegrationApi.md#getservicedeskintegrations) | **Get** /service-desk-integrations | List existing Service Desk Integrations
-*ServiceDeskIntegrationApi* | [**GetStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#getstatuscheckdetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration of queued SDIM tickets
-*ServiceDeskIntegrationApi* | [**PatchServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#patchservicedeskintegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update - PATCH
-*ServiceDeskIntegrationApi* | [**UpdateServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#updateservicedeskintegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration by ID
-*ServiceDeskIntegrationApi* | [**UpdateStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#updatestatuscheckdetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration of queued SDIM tickets
+*ServiceDeskIntegrationApi* | [**GetStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#getstatuscheckdetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration
+*ServiceDeskIntegrationApi* | [**PatchServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#patchservicedeskintegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update PATCH
+*ServiceDeskIntegrationApi* | [**UpdateServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#updateservicedeskintegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration
+*ServiceDeskIntegrationApi* | [**UpdateStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#updatestatuscheckdetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration
 *SourcesApi* | [**CreateProvisioningPolicy**](docs/SourcesApi.md#createprovisioningpolicy) | **Post** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
 *SourcesApi* | [**CreateSource**](docs/SourcesApi.md#createsource) | **Post** /sources | Creates a source in IdentityNow.
 *SourcesApi* | [**CreateSourceSchema**](docs/SourcesApi.md#createsourceschema) | **Post** /sources/{sourceId}/schemas | Create Schema on a Source
@@ -244,6 +251,14 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**UploadSourceAccountsSchema**](docs/SourcesApi.md#uploadsourceaccountsschema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
 *SourcesApi* | [**UploadSourceConnectorFile**](docs/SourcesApi.md#uploadsourceconnectorfile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
 *SourcesApi* | [**UploadSourceEntitlementsSchema**](docs/SourcesApi.md#uploadsourceentitlementsschema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
+*TaggedObjectsApi* | [**DeleteTaggedObject**](docs/TaggedObjectsApi.md#deletetaggedobject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
+*TaggedObjectsApi* | [**DeleteTagsToManyObject**](docs/TaggedObjectsApi.md#deletetagstomanyobject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
+*TaggedObjectsApi* | [**GetTaggedObject**](docs/TaggedObjectsApi.md#gettaggedobject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
+*TaggedObjectsApi* | [**ListTaggedObjects**](docs/TaggedObjectsApi.md#listtaggedobjects) | **Get** /tagged-objects | List Tagged Objects
+*TaggedObjectsApi* | [**ListTaggedObjectsByType**](docs/TaggedObjectsApi.md#listtaggedobjectsbytype) | **Get** /tagged-objects/{type} | List Tagged Objects
+*TaggedObjectsApi* | [**PutTaggedObject**](docs/TaggedObjectsApi.md#puttaggedobject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
+*TaggedObjectsApi* | [**SetTagToObject**](docs/TaggedObjectsApi.md#settagtoobject) | **Post** /tagged-objects | Add Tag to Object
+*TaggedObjectsApi* | [**SetTagsToManyObjects**](docs/TaggedObjectsApi.md#settagstomanyobjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
 *TransformsApi* | [**CreateTransform**](docs/TransformsApi.md#createtransform) | **Post** /transforms | Create transform
 *TransformsApi* | [**DeleteTransform**](docs/TransformsApi.md#deletetransform) | **Delete** /transforms/{id} | Delete a transform
 *TransformsApi* | [**GetTransform**](docs/TransformsApi.md#gettransform) | **Get** /transforms/{id} | Transform by ID
@@ -267,6 +282,8 @@ Class | Method | HTTP request | Description
 
  - [Access](docs/Access.md)
  - [AccessAllOf](docs/AccessAllOf.md)
+ - [AccessCriteria](docs/AccessCriteria.md)
+ - [AccessCriteriaCriteriaListInner](docs/AccessCriteriaCriteriaListInner.md)
  - [AccessProfile](docs/AccessProfile.md)
  - [AccessProfileApprovalScheme](docs/AccessProfileApprovalScheme.md)
  - [AccessProfileBulkDeleteRequest](docs/AccessProfileBulkDeleteRequest.md)
@@ -348,6 +365,7 @@ Class | Method | HTTP request | Description
  - [Bound](docs/Bound.md)
  - [BucketAggregation](docs/BucketAggregation.md)
  - [BucketType](docs/BucketType.md)
+ - [BulkTaggedObject](docs/BulkTaggedObject.md)
  - [Campaign](docs/Campaign.md)
  - [CampaignReference](docs/CampaignReference.md)
  - [CancelAccessRequest](docs/CancelAccessRequest.md)
@@ -366,6 +384,7 @@ Class | Method | HTTP request | Description
  - [CompletedApprovalReviewerComment](docs/CompletedApprovalReviewerComment.md)
  - [CompletedApprovalState](docs/CompletedApprovalState.md)
  - [CompletionStatus](docs/CompletionStatus.md)
+ - [ConflictingAccessCriteria](docs/ConflictingAccessCriteria.md)
  - [CreateOAuthClientRequest](docs/CreateOAuthClientRequest.md)
  - [CreateOAuthClientResponse](docs/CreateOAuthClientResponse.md)
  - [CreatePersonalAccessTokenRequest](docs/CreatePersonalAccessTokenRequest.md)
@@ -396,6 +415,7 @@ Class | Method | HTTP request | Description
  - [EventDocument](docs/EventDocument.md)
  - [ExecutionStatus](docs/ExecutionStatus.md)
  - [ExpansionItem](docs/ExpansionItem.md)
+ - [Expression](docs/Expression.md)
  - [FieldDetailsDto](docs/FieldDetailsDto.md)
  - [Filter](docs/Filter.md)
  - [FilterAggregation](docs/FilterAggregation.md)
@@ -580,6 +600,7 @@ Class | Method | HTTP request | Description
  - [SearchScheduleRecipientsInner](docs/SearchScheduleRecipientsInner.md)
  - [SectionDetails](docs/SectionDetails.md)
  - [SectionDetailsAllOf](docs/SectionDetailsAllOf.md)
+ - [Segment](docs/Segment.md)
  - [Selector](docs/Selector.md)
  - [SelectorType](docs/SelectorType.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
@@ -590,6 +611,7 @@ Class | Method | HTTP request | Description
  - [SetLifecycleState200Response](docs/SetLifecycleState200Response.md)
  - [SetLifecycleStateRequest](docs/SetLifecycleStateRequest.md)
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
+ - [SodPolicy](docs/SodPolicy.md)
  - [SodViolationCheckResult](docs/SodViolationCheckResult.md)
  - [SodViolationContext](docs/SodViolationContext.md)
  - [SodViolationContextCheckCompleted](docs/SodViolationContextCheckCompleted.md)
@@ -610,6 +632,8 @@ Class | Method | HTTP request | Description
  - [SpConfigMessage](docs/SpConfigMessage.md)
  - [SubSearchAggregationSpecification](docs/SubSearchAggregationSpecification.md)
  - [SubSearchAggregationSpecificationAllOf](docs/SubSearchAggregationSpecificationAllOf.md)
+ - [TaggedObject](docs/TaggedObject.md)
+ - [TaggedObjectDto](docs/TaggedObjectDto.md)
  - [Transform](docs/Transform.md)
  - [TransformDefinition](docs/TransformDefinition.md)
  - [TransformDefinitionAttributesValue](docs/TransformDefinitionAttributesValue.md)
@@ -618,6 +642,9 @@ Class | Method | HTTP request | Description
  - [UpdatePasswordDictionaryRequest](docs/UpdatePasswordDictionaryRequest.md)
  - [UploadNonEmployeeRecordsInBulkRequest](docs/UploadNonEmployeeRecordsInBulkRequest.md)
  - [UsageType](docs/UsageType.md)
+ - [Value](docs/Value.md)
+ - [ViolationOwnerAssignmentConfig](docs/ViolationOwnerAssignmentConfig.md)
+ - [VisibilityCriteria](docs/VisibilityCriteria.md)
  - [WorkItemState](docs/WorkItemState.md)
  - [WorkItemType](docs/WorkItemType.md)
  - [WorkItems](docs/WorkItems.md)

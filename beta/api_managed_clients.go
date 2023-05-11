@@ -41,7 +41,7 @@ func (r ApiGetManagedClientStatusRequest) Execute() (*ManagedClientStatus, *http
 }
 
 /*
-GetManagedClientStatus Get a specified Managed Client Status.
+GetManagedClientStatus Specified Managed Client Status.
 
 Retrieve Managed Client Status by ID.
 
@@ -219,7 +219,7 @@ func (r ApiUpdateManagedClientStatusRequest) Execute() (*ManagedClientStatusAggR
 }
 
 /*
-UpdateManagedClientStatus Handle a status request from a client
+UpdateManagedClientStatus Handle status request from client
 
 Update a status detail passed in from the client
 

@@ -4,13 +4,80 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**BulkDeleteRoles**](RolesApi.md#BulkDeleteRoles) | **Post** /roles/bulk-delete | Delete Role(s)
 [**CreateRole**](RolesApi.md#CreateRole) | **Post** /roles | Create a Role
 [**DeleteRole**](RolesApi.md#DeleteRole) | **Delete** /roles/{id} | Delete a Role
 [**GetRole**](RolesApi.md#GetRole) | **Get** /roles/{id} | Get a Role
-[**GetRoleAssignedIdentities**](RolesApi.md#GetRoleAssignedIdentities) | **Get** /roles/{id}/assigned-identities | Get a list of Identities assigned a Role
+[**GetRoleAssignedIdentities**](RolesApi.md#GetRoleAssignedIdentities) | **Get** /roles/{id}/assigned-identities | Identities assigned a Role
 [**ListRoles**](RolesApi.md#ListRoles) | **Get** /roles | List Roles
 [**PatchRole**](RolesApi.md#PatchRole) | **Patch** /roles/{id} | Patch a specified Role
 
+
+
+## BulkDeleteRoles
+
+> BaseReferenceDto BulkDeleteRoles(ctx).RoleBulkDeleteRequest(roleBulkDeleteRequest).Execute()
+
+Delete Role(s)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    roleBulkDeleteRequest := *openapiclient.NewRoleBulkDeleteRequest([]string{"RoleIds_example"}) // RoleBulkDeleteRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.RolesApi.BulkDeleteRoles(context.Background()).RoleBulkDeleteRequest(roleBulkDeleteRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.BulkDeleteRoles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `BulkDeleteRoles`: BaseReferenceDto
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.BulkDeleteRoles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiBulkDeleteRolesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **roleBulkDeleteRequest** | [**RoleBulkDeleteRequest**](RoleBulkDeleteRequest.md) |  | 
+
+### Return type
+
+[**BaseReferenceDto**](BaseReferenceDto.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateRole
@@ -221,7 +288,7 @@ Name | Type | Description  | Notes
 
 > []RoleIdentity GetRoleAssignedIdentities(ctx, id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
-Get a list of Identities assigned a Role
+Identities assigned a Role
 
 ### Example
 

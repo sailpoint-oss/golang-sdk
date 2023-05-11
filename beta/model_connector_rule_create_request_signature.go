@@ -20,7 +20,7 @@ var _ MappedNullable = &ConnectorRuleCreateRequestSignature{}
 // ConnectorRuleCreateRequestSignature The rule's function signature. Describes the rule's input arguments and output (if any)
 type ConnectorRuleCreateRequestSignature struct {
 	Input []Argument `json:"input"`
-	Output *Argument `json:"output,omitempty"`
+	Output NullableArgument `json:"output,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -68,36 +68,46 @@ func (o *ConnectorRuleCreateRequestSignature) SetInput(v []Argument) {
 	o.Input = v
 }
 
-// GetOutput returns the Output field value if set, zero value otherwise.
+// GetOutput returns the Output field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectorRuleCreateRequestSignature) GetOutput() Argument {
-	if o == nil || isNil(o.Output) {
+	if o == nil || isNil(o.Output.Get()) {
 		var ret Argument
 		return ret
 	}
-	return *o.Output
+	return *o.Output.Get()
 }
 
 // GetOutputOk returns a tuple with the Output field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectorRuleCreateRequestSignature) GetOutputOk() (*Argument, bool) {
-	if o == nil || isNil(o.Output) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Output, true
+	return o.Output.Get(), o.Output.IsSet()
 }
 
 // HasOutput returns a boolean if a field has been set.
 func (o *ConnectorRuleCreateRequestSignature) HasOutput() bool {
-	if o != nil && !isNil(o.Output) {
+	if o != nil && o.Output.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOutput gets a reference to the given Argument and assigns it to the Output field.
+// SetOutput gets a reference to the given NullableArgument and assigns it to the Output field.
 func (o *ConnectorRuleCreateRequestSignature) SetOutput(v Argument) {
-	o.Output = &v
+	o.Output.Set(&v)
+}
+// SetOutputNil sets the value for Output to be an explicit nil
+func (o *ConnectorRuleCreateRequestSignature) SetOutputNil() {
+	o.Output.Set(nil)
+}
+
+// UnsetOutput ensures that no value is present for Output, not even an explicit nil
+func (o *ConnectorRuleCreateRequestSignature) UnsetOutput() {
+	o.Output.Unset()
 }
 
 func (o ConnectorRuleCreateRequestSignature) MarshalJSON() ([]byte, error) {
@@ -111,8 +121,8 @@ func (o ConnectorRuleCreateRequestSignature) MarshalJSON() ([]byte, error) {
 func (o ConnectorRuleCreateRequestSignature) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["input"] = o.Input
-	if !isNil(o.Output) {
-		toSerialize["output"] = o.Output
+	if o.Output.IsSet() {
+		toSerialize["output"] = o.Output.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

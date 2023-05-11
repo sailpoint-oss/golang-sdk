@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | If the profile or mapping is enabled | [optional] 
+**Enabled** | Pointer to **bool** | If the profile or mapping is enabled | [optional] [default to true]
 **AttributeTransforms** | Pointer to [**[]IdentityAttributeTransform**](IdentityAttributeTransform.md) |  | [optional] 
 
 ## Methods

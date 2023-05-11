@@ -4,9 +4,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetMFAConfig**](MFAConfigurationApi.md#GetMFAConfig) | **Get** /mfa/{method}/config | Get configuration of a MFA method
-[**SetMFAConfig**](MFAConfigurationApi.md#SetMFAConfig) | **Put** /mfa/{method}/config | Set configuration of a MFA method
-[**TestMFAConfig**](MFAConfigurationApi.md#TestMFAConfig) | **Get** /mfa/{method}/test | Test configuration of a MFA method
+[**GetMFAConfig**](MFAConfigurationApi.md#GetMFAConfig) | **Get** /mfa/{method}/config | Configuration of a MFA method
+[**SetMFAConfig**](MFAConfigurationApi.md#SetMFAConfig) | **Put** /mfa/{method}/config | Set MFA method configuration
+[**TestMFAConfig**](MFAConfigurationApi.md#TestMFAConfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
 
 
 
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 > MfaConfig GetMFAConfig(ctx, method).Execute()
 
-Get configuration of a MFA method
+Configuration of a MFA method
 
 
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 > MfaConfig SetMFAConfig(ctx, method).MfaConfig(mfaConfig).Execute()
 
-Set configuration of a MFA method
+Set MFA method configuration
 
 
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 > MfaConfigTestResponse TestMFAConfig(ctx, method).Execute()
 
-Test configuration of a MFA method
+MFA method's test configuration
 
 
 

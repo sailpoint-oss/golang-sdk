@@ -40,7 +40,7 @@ func (r ApiCreateServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegrati
 }
 
 /*
-CreateServiceDeskIntegration Create a new Service Desk integration
+CreateServiceDeskIntegration Create new Service Desk integration
 
 Create a new Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -210,7 +210,7 @@ func (r ApiDeleteServiceDeskIntegrationRequest) Execute() (*http.Response, error
 }
 
 /*
-DeleteServiceDeskIntegration Delete a Service Desk integration by ID
+DeleteServiceDeskIntegration Delete a Service Desk integration
 
 Delete an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -367,7 +367,7 @@ func (r ApiGetServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegrationD
 }
 
 /*
-GetServiceDeskIntegration Get a Service Desk integration by ID
+GetServiceDeskIntegration Get a Service Desk integration
 
 Get an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1080,7 +1080,7 @@ func (r ApiGetStatusCheckDetailsRequest) Execute() (*QueuedCheckConfigDetails, *
 }
 
 /*
-GetStatusCheckDetails Get the time check configuration of queued SDIM tickets
+GetStatusCheckDetails Get the time check configuration
 
 Get the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1252,7 +1252,7 @@ func (r ApiPatchServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegratio
 }
 
 /*
-PatchServiceDeskIntegration Service Desk Integration Update - PATCH
+PatchServiceDeskIntegration Service Desk Integration Update PATCH
 
 Update an existing ServiceDeskIntegration by ID with a PATCH request.
 
@@ -1432,7 +1432,7 @@ func (r ApiUpdateServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegrati
 }
 
 /*
-UpdateServiceDeskIntegration Update a Service Desk integration by ID
+UpdateServiceDeskIntegration Update a Service Desk integration
 
 Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
@@ -1611,7 +1611,7 @@ func (r ApiUpdateStatusCheckDetailsRequest) Execute() (*QueuedCheckConfigDetails
 }
 
 /*
-UpdateStatusCheckDetails Update the time check configuration of queued SDIM tickets
+UpdateStatusCheckDetails Update the time check configuration
 
 Update the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 

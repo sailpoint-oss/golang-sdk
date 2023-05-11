@@ -4,8 +4,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetManagedClientStatus**](ManagedClientsApi.md#GetManagedClientStatus) | **Get** /managed-clients/{id}/status | Get a specified Managed Client Status.
-[**UpdateManagedClientStatus**](ManagedClientsApi.md#UpdateManagedClientStatus) | **Post** /managed-clients/{id}/status | Handle a status request from a client
+[**GetManagedClientStatus**](ManagedClientsApi.md#GetManagedClientStatus) | **Get** /managed-clients/{id}/status | Specified Managed Client Status.
+[**UpdateManagedClientStatus**](ManagedClientsApi.md#UpdateManagedClientStatus) | **Post** /managed-clients/{id}/status | Handle status request from client
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > ManagedClientStatus GetManagedClientStatus(ctx, id).Type_(type_).Execute()
 
-Get a specified Managed Client Status.
+Specified Managed Client Status.
 
 
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 > ManagedClientStatusAggResponse UpdateManagedClientStatus(ctx, id).ManagedClientStatus(managedClientStatus).Execute()
 
-Handle a status request from a client
+Handle status request from client
 
 
 

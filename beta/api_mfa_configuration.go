@@ -34,7 +34,7 @@ func (r ApiGetMFAConfigRequest) Execute() (*MfaConfig, *http.Response, error) {
 }
 
 /*
-GetMFAConfig Get configuration of a MFA method
+GetMFAConfig Configuration of a MFA method
 
 This API returns the configuration of a given MFA method. A token with ORG_ADMIN authority is required to call this API.
 
@@ -197,7 +197,7 @@ func (r ApiSetMFAConfigRequest) Execute() (*MfaConfig, *http.Response, error) {
 }
 
 /*
-SetMFAConfig Set configuration of a MFA method
+SetMFAConfig Set MFA method configuration
 
 This API sets the configuration of a given MFA method. A token with ORG_ADMIN authority is required to call this API.
 
@@ -359,7 +359,7 @@ func (r ApiTestMFAConfigRequest) Execute() (*MfaConfigTestResponse, *http.Respon
 }
 
 /*
-TestMFAConfig Test configuration of a MFA method
+TestMFAConfig MFA method's test configuration
 
 This API validates that the configuration is valid and will properly authenticate with the MFA provider identified by the method path parameter.
 A token with ORG_ADMIN authority is required to call this API.

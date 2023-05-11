@@ -23,8 +23,8 @@ type HttpConfig struct {
 	Url string `json:"url"`
 	HttpDispatchMode HttpDispatchMode `json:"httpDispatchMode"`
 	HttpAuthenticationType *HttpAuthenticationType `json:"httpAuthenticationType,omitempty"`
-	BasicAuthConfig *BasicAuthConfig `json:"basicAuthConfig,omitempty"`
-	BearerTokenAuthConfig *BearerTokenAuthConfig `json:"bearerTokenAuthConfig,omitempty"`
+	BasicAuthConfig NullableBasicAuthConfig `json:"basicAuthConfig,omitempty"`
+	BearerTokenAuthConfig NullableBearerTokenAuthConfig `json:"bearerTokenAuthConfig,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -133,68 +133,88 @@ func (o *HttpConfig) SetHttpAuthenticationType(v HttpAuthenticationType) {
 	o.HttpAuthenticationType = &v
 }
 
-// GetBasicAuthConfig returns the BasicAuthConfig field value if set, zero value otherwise.
+// GetBasicAuthConfig returns the BasicAuthConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HttpConfig) GetBasicAuthConfig() BasicAuthConfig {
-	if o == nil || isNil(o.BasicAuthConfig) {
+	if o == nil || isNil(o.BasicAuthConfig.Get()) {
 		var ret BasicAuthConfig
 		return ret
 	}
-	return *o.BasicAuthConfig
+	return *o.BasicAuthConfig.Get()
 }
 
 // GetBasicAuthConfigOk returns a tuple with the BasicAuthConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HttpConfig) GetBasicAuthConfigOk() (*BasicAuthConfig, bool) {
-	if o == nil || isNil(o.BasicAuthConfig) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BasicAuthConfig, true
+	return o.BasicAuthConfig.Get(), o.BasicAuthConfig.IsSet()
 }
 
 // HasBasicAuthConfig returns a boolean if a field has been set.
 func (o *HttpConfig) HasBasicAuthConfig() bool {
-	if o != nil && !isNil(o.BasicAuthConfig) {
+	if o != nil && o.BasicAuthConfig.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBasicAuthConfig gets a reference to the given BasicAuthConfig and assigns it to the BasicAuthConfig field.
+// SetBasicAuthConfig gets a reference to the given NullableBasicAuthConfig and assigns it to the BasicAuthConfig field.
 func (o *HttpConfig) SetBasicAuthConfig(v BasicAuthConfig) {
-	o.BasicAuthConfig = &v
+	o.BasicAuthConfig.Set(&v)
+}
+// SetBasicAuthConfigNil sets the value for BasicAuthConfig to be an explicit nil
+func (o *HttpConfig) SetBasicAuthConfigNil() {
+	o.BasicAuthConfig.Set(nil)
 }
 
-// GetBearerTokenAuthConfig returns the BearerTokenAuthConfig field value if set, zero value otherwise.
+// UnsetBasicAuthConfig ensures that no value is present for BasicAuthConfig, not even an explicit nil
+func (o *HttpConfig) UnsetBasicAuthConfig() {
+	o.BasicAuthConfig.Unset()
+}
+
+// GetBearerTokenAuthConfig returns the BearerTokenAuthConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HttpConfig) GetBearerTokenAuthConfig() BearerTokenAuthConfig {
-	if o == nil || isNil(o.BearerTokenAuthConfig) {
+	if o == nil || isNil(o.BearerTokenAuthConfig.Get()) {
 		var ret BearerTokenAuthConfig
 		return ret
 	}
-	return *o.BearerTokenAuthConfig
+	return *o.BearerTokenAuthConfig.Get()
 }
 
 // GetBearerTokenAuthConfigOk returns a tuple with the BearerTokenAuthConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HttpConfig) GetBearerTokenAuthConfigOk() (*BearerTokenAuthConfig, bool) {
-	if o == nil || isNil(o.BearerTokenAuthConfig) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BearerTokenAuthConfig, true
+	return o.BearerTokenAuthConfig.Get(), o.BearerTokenAuthConfig.IsSet()
 }
 
 // HasBearerTokenAuthConfig returns a boolean if a field has been set.
 func (o *HttpConfig) HasBearerTokenAuthConfig() bool {
-	if o != nil && !isNil(o.BearerTokenAuthConfig) {
+	if o != nil && o.BearerTokenAuthConfig.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBearerTokenAuthConfig gets a reference to the given BearerTokenAuthConfig and assigns it to the BearerTokenAuthConfig field.
+// SetBearerTokenAuthConfig gets a reference to the given NullableBearerTokenAuthConfig and assigns it to the BearerTokenAuthConfig field.
 func (o *HttpConfig) SetBearerTokenAuthConfig(v BearerTokenAuthConfig) {
-	o.BearerTokenAuthConfig = &v
+	o.BearerTokenAuthConfig.Set(&v)
+}
+// SetBearerTokenAuthConfigNil sets the value for BearerTokenAuthConfig to be an explicit nil
+func (o *HttpConfig) SetBearerTokenAuthConfigNil() {
+	o.BearerTokenAuthConfig.Set(nil)
+}
+
+// UnsetBearerTokenAuthConfig ensures that no value is present for BearerTokenAuthConfig, not even an explicit nil
+func (o *HttpConfig) UnsetBearerTokenAuthConfig() {
+	o.BearerTokenAuthConfig.Unset()
 }
 
 func (o HttpConfig) MarshalJSON() ([]byte, error) {
@@ -212,11 +232,11 @@ func (o HttpConfig) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.HttpAuthenticationType) {
 		toSerialize["httpAuthenticationType"] = o.HttpAuthenticationType
 	}
-	if !isNil(o.BasicAuthConfig) {
-		toSerialize["basicAuthConfig"] = o.BasicAuthConfig
+	if o.BasicAuthConfig.IsSet() {
+		toSerialize["basicAuthConfig"] = o.BasicAuthConfig.Get()
 	}
-	if !isNil(o.BearerTokenAuthConfig) {
-		toSerialize["bearerTokenAuthConfig"] = o.BearerTokenAuthConfig
+	if o.BearerTokenAuthConfig.IsSet() {
+		toSerialize["bearerTokenAuthConfig"] = o.BearerTokenAuthConfig.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

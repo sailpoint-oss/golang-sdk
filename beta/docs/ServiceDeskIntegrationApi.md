@@ -4,16 +4,16 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateServiceDeskIntegration**](ServiceDeskIntegrationApi.md#CreateServiceDeskIntegration) | **Post** /service-desk-integrations | Create a new Service Desk integration
-[**DeleteServiceDeskIntegration**](ServiceDeskIntegrationApi.md#DeleteServiceDeskIntegration) | **Delete** /service-desk-integrations/{id} | Delete a Service Desk integration by ID
-[**GetServiceDeskIntegration**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegration) | **Get** /service-desk-integrations/{id} | Get a Service Desk integration by ID
+[**CreateServiceDeskIntegration**](ServiceDeskIntegrationApi.md#CreateServiceDeskIntegration) | **Post** /service-desk-integrations | Create new Service Desk integration
+[**DeleteServiceDeskIntegration**](ServiceDeskIntegrationApi.md#DeleteServiceDeskIntegration) | **Delete** /service-desk-integrations/{id} | Delete a Service Desk integration
+[**GetServiceDeskIntegration**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegration) | **Get** /service-desk-integrations/{id} | Get a Service Desk integration
 [**GetServiceDeskIntegrationList**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegrationList) | **Get** /service-desk-integrations | List existing Service Desk Integrations
 [**GetServiceDeskIntegrationTemplate**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegrationTemplate) | **Get** /service-desk-integrations/templates/{scriptName} | Service Desk integration template by scriptName.
 [**GetServiceDeskIntegrationTypes**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegrationTypes) | **Get** /service-desk-integrations/types | Service Desk Integration Types List.
-[**GetStatusCheckDetails**](ServiceDeskIntegrationApi.md#GetStatusCheckDetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration of queued SDIM tickets
-[**PatchServiceDeskIntegration**](ServiceDeskIntegrationApi.md#PatchServiceDeskIntegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update - PATCH
-[**UpdateServiceDeskIntegration**](ServiceDeskIntegrationApi.md#UpdateServiceDeskIntegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration by ID
-[**UpdateStatusCheckDetails**](ServiceDeskIntegrationApi.md#UpdateStatusCheckDetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration of queued SDIM tickets
+[**GetStatusCheckDetails**](ServiceDeskIntegrationApi.md#GetStatusCheckDetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration
+[**PatchServiceDeskIntegration**](ServiceDeskIntegrationApi.md#PatchServiceDeskIntegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update PATCH
+[**UpdateServiceDeskIntegration**](ServiceDeskIntegrationApi.md#UpdateServiceDeskIntegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration
+[**UpdateStatusCheckDetails**](ServiceDeskIntegrationApi.md#UpdateStatusCheckDetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration
 
 
 
@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 > ServiceDeskIntegrationDto CreateServiceDeskIntegration(ctx).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
 
-Create a new Service Desk integration
+Create new Service Desk integration
 
 
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 > DeleteServiceDeskIntegration(ctx, id).Execute()
 
-Delete a Service Desk integration by ID
+Delete a Service Desk integration
 
 
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 > ServiceDeskIntegrationDto GetServiceDeskIntegration(ctx, id).Execute()
 
-Get a Service Desk integration by ID
+Get a Service Desk integration
 
 
 
@@ -244,8 +244,8 @@ import (
 func main() {
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    sorters := "sorters_example" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
-    filters := "filters_example" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in* (optional)
+    sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
+    filters := "id eq 2c91808b6ef1d43e016efba0ce470904" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in* (optional)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
@@ -430,7 +430,7 @@ Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationT
 
 > QueuedCheckConfigDetails GetStatusCheckDetails(ctx).Execute()
 
-Get the time check configuration of queued SDIM tickets
+Get the time check configuration
 
 
 
@@ -491,7 +491,7 @@ Other parameters are passed through a pointer to a apiGetStatusCheckDetailsReque
 
 > ServiceDeskIntegrationDto PatchServiceDeskIntegration(ctx, id).JsonPatch(jsonPatch).Execute()
 
-Service Desk Integration Update - PATCH
+Service Desk Integration Update PATCH
 
 
 
@@ -563,7 +563,7 @@ Name | Type | Description  | Notes
 
 > ServiceDeskIntegrationDto UpdateServiceDeskIntegration(ctx, id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
 
-Update a Service Desk integration by ID
+Update a Service Desk integration
 
 
 
@@ -635,7 +635,7 @@ Name | Type | Description  | Notes
 
 > QueuedCheckConfigDetails UpdateStatusCheckDetails(ctx).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
 
-Update the time check configuration of queued SDIM tickets
+Update the time check configuration
 
 
 

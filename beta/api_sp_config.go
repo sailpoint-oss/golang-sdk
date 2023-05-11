@@ -44,8 +44,6 @@ func (r ApiExportSpConfigRequest) Execute() (*SpConfigJob, *http.Response, error
 ExportSpConfig Initiates Configuration Objects Export Job.
 
 This post will export objects from the tenant to a JSON configuration file.
-Request will need one of the following security scopes:
-- sp:config:read - sp:config:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiExportSpConfigRequest
@@ -1111,8 +1109,6 @@ func (r ApiListSpConfigObjectsRequest) Execute() ([]SpConfigObject, *http.Respon
 ListSpConfigObjects Get Config Object details
 
 This gets the list of object configurations which are known to the tenant export/import service. Object configurations that contain "importUrl" and "exportUrl" are available for export/import.
-Request will need one of the following security scopes:
-- sp:config:read - sp:config:manage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSpConfigObjectsRequest

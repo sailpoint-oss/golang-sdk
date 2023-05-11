@@ -22,12 +22,18 @@ type SubscriptionType string
 const (
 	SUBSCRIPTIONTYPE_HTTP SubscriptionType = "HTTP"
 	SUBSCRIPTIONTYPE_EVENTBRIDGE SubscriptionType = "EVENTBRIDGE"
+	SUBSCRIPTIONTYPE_INLINE SubscriptionType = "INLINE"
+	SUBSCRIPTIONTYPE_SCRIPT SubscriptionType = "SCRIPT"
+	SUBSCRIPTIONTYPE_WORKFLOW SubscriptionType = "WORKFLOW"
 )
 
 // All allowed values of SubscriptionType enum
 var AllowedSubscriptionTypeEnumValues = []SubscriptionType{
 	"HTTP",
 	"EVENTBRIDGE",
+	"INLINE",
+	"SCRIPT",
+	"WORKFLOW",
 }
 
 func (v *SubscriptionType) UnmarshalJSON(src []byte) error {

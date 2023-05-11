@@ -20,7 +20,7 @@ var _ MappedNullable = &IdentityProfileAllOf{}
 // IdentityProfileAllOf struct for IdentityProfileAllOf
 type IdentityProfileAllOf struct {
 	// The description of the Identity Profile.
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	Owner NullableIdentityProfileAllOfOwner `json:"owner,omitempty"`
 	// The priority for an Identity Profile.
 	Priority *int64 `json:"priority,omitempty"`
@@ -30,7 +30,7 @@ type IdentityProfileAllOf struct {
 	// The number of identities that belong to the Identity Profile.
 	IdentityCount *int32 `json:"identityCount,omitempty"`
 	IdentityAttributeConfig *IdentityAttributeConfig `json:"identityAttributeConfig,omitempty"`
-	IdentityExceptionReportReference *IdentityExceptionReportReference `json:"identityExceptionReportReference,omitempty"`
+	IdentityExceptionReportReference NullableIdentityExceptionReportReference `json:"identityExceptionReportReference,omitempty"`
 	// Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile.
 	HasTimeBasedAttr *bool `json:"hasTimeBasedAttr,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,6 +45,10 @@ type _IdentityProfileAllOf IdentityProfileAllOf
 func NewIdentityProfileAllOf(authoritativeSource IdentityProfileAllOfAuthoritativeSource) *IdentityProfileAllOf {
 	this := IdentityProfileAllOf{}
 	this.AuthoritativeSource = authoritativeSource
+	var identityRefreshRequired bool = false
+	this.IdentityRefreshRequired = &identityRefreshRequired
+	var hasTimeBasedAttr bool = true
+	this.HasTimeBasedAttr = &hasTimeBasedAttr
 	return &this
 }
 
@@ -53,39 +57,53 @@ func NewIdentityProfileAllOf(authoritativeSource IdentityProfileAllOfAuthoritati
 // but it doesn't guarantee that properties required by API are set
 func NewIdentityProfileAllOfWithDefaults() *IdentityProfileAllOf {
 	this := IdentityProfileAllOf{}
+	var identityRefreshRequired bool = false
+	this.IdentityRefreshRequired = &identityRefreshRequired
+	var hasTimeBasedAttr bool = true
+	this.HasTimeBasedAttr = &hasTimeBasedAttr
 	return &this
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityProfileAllOf) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentityProfileAllOf) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *IdentityProfileAllOf) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *IdentityProfileAllOf) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *IdentityProfileAllOf) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *IdentityProfileAllOf) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -282,36 +300,46 @@ func (o *IdentityProfileAllOf) SetIdentityAttributeConfig(v IdentityAttributeCon
 	o.IdentityAttributeConfig = &v
 }
 
-// GetIdentityExceptionReportReference returns the IdentityExceptionReportReference field value if set, zero value otherwise.
+// GetIdentityExceptionReportReference returns the IdentityExceptionReportReference field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IdentityProfileAllOf) GetIdentityExceptionReportReference() IdentityExceptionReportReference {
-	if o == nil || isNil(o.IdentityExceptionReportReference) {
+	if o == nil || isNil(o.IdentityExceptionReportReference.Get()) {
 		var ret IdentityExceptionReportReference
 		return ret
 	}
-	return *o.IdentityExceptionReportReference
+	return *o.IdentityExceptionReportReference.Get()
 }
 
 // GetIdentityExceptionReportReferenceOk returns a tuple with the IdentityExceptionReportReference field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IdentityProfileAllOf) GetIdentityExceptionReportReferenceOk() (*IdentityExceptionReportReference, bool) {
-	if o == nil || isNil(o.IdentityExceptionReportReference) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IdentityExceptionReportReference, true
+	return o.IdentityExceptionReportReference.Get(), o.IdentityExceptionReportReference.IsSet()
 }
 
 // HasIdentityExceptionReportReference returns a boolean if a field has been set.
 func (o *IdentityProfileAllOf) HasIdentityExceptionReportReference() bool {
-	if o != nil && !isNil(o.IdentityExceptionReportReference) {
+	if o != nil && o.IdentityExceptionReportReference.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIdentityExceptionReportReference gets a reference to the given IdentityExceptionReportReference and assigns it to the IdentityExceptionReportReference field.
+// SetIdentityExceptionReportReference gets a reference to the given NullableIdentityExceptionReportReference and assigns it to the IdentityExceptionReportReference field.
 func (o *IdentityProfileAllOf) SetIdentityExceptionReportReference(v IdentityExceptionReportReference) {
-	o.IdentityExceptionReportReference = &v
+	o.IdentityExceptionReportReference.Set(&v)
+}
+// SetIdentityExceptionReportReferenceNil sets the value for IdentityExceptionReportReference to be an explicit nil
+func (o *IdentityProfileAllOf) SetIdentityExceptionReportReferenceNil() {
+	o.IdentityExceptionReportReference.Set(nil)
+}
+
+// UnsetIdentityExceptionReportReference ensures that no value is present for IdentityExceptionReportReference, not even an explicit nil
+func (o *IdentityProfileAllOf) UnsetIdentityExceptionReportReference() {
+	o.IdentityExceptionReportReference.Unset()
 }
 
 // GetHasTimeBasedAttr returns the HasTimeBasedAttr field value if set, zero value otherwise.
@@ -356,8 +384,8 @@ func (o IdentityProfileAllOf) MarshalJSON() ([]byte, error) {
 
 func (o IdentityProfileAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if o.Owner.IsSet() {
 		toSerialize["owner"] = o.Owner.Get()
@@ -375,8 +403,8 @@ func (o IdentityProfileAllOf) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.IdentityAttributeConfig) {
 		toSerialize["identityAttributeConfig"] = o.IdentityAttributeConfig
 	}
-	if !isNil(o.IdentityExceptionReportReference) {
-		toSerialize["identityExceptionReportReference"] = o.IdentityExceptionReportReference
+	if o.IdentityExceptionReportReference.IsSet() {
+		toSerialize["identityExceptionReportReference"] = o.IdentityExceptionReportReference.Get()
 	}
 	if !isNil(o.HasTimeBasedAttr) {
 		toSerialize["hasTimeBasedAttr"] = o.HasTimeBasedAttr

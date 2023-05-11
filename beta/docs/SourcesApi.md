@@ -21,15 +21,15 @@ Method | HTTP request | Description
 [**ListProvisioningPolicies**](SourcesApi.md#ListProvisioningPolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 [**ListSourceSchemas**](SourcesApi.md#ListSourceSchemas) | **Get** /sources/{sourceId}/schemas | Lists the Schemas that exist on the specified Source in IdentityNow.
 [**ListSources**](SourcesApi.md#ListSources) | **Get** /sources | Lists all sources in IdentityNow.
-[**PeekResourceObjects**](SourcesApi.md#PeekResourceObjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek resource objects from the source connector
-[**PingCluster**](SourcesApi.md#PingCluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for the source connector
+[**PeekResourceObjects**](SourcesApi.md#PeekResourceObjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
+[**PingCluster**](SourcesApi.md#PingCluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
 [**PutProvisioningPolicy**](SourcesApi.md#PutProvisioningPolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 [**PutSource**](SourcesApi.md#PutSource) | **Put** /sources/{id} | Update Source (Full)
 [**PutSourceAttrSyncConfig**](SourcesApi.md#PutSourceAttrSyncConfig) | **Put** /sources/{id}/attribute-sync-config | Update Attribute Sync Config
 [**PutSourceSchema**](SourcesApi.md#PutSourceSchema) | **Put** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
 [**SyncAttributesForSource**](SourcesApi.md#SyncAttributesForSource) | **Post** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
-[**TestSourceConfiguration**](SourcesApi.md#TestSourceConfiguration) | **Post** /sources/{sourceId}/connector/test-configuration | Test configuration for the source connector
-[**TestSourceConnection**](SourcesApi.md#TestSourceConnection) | **Post** /sources/{sourceId}/connector/check-connection | Check connection for the source connector.
+[**TestSourceConfiguration**](SourcesApi.md#TestSourceConfiguration) | **Post** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
+[**TestSourceConnection**](SourcesApi.md#TestSourceConnection) | **Post** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
 [**UpdateProvisioningPoliciesInBulk**](SourcesApi.md#UpdateProvisioningPoliciesInBulk) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 [**UpdateProvisioningPolicy**](SourcesApi.md#UpdateProvisioningPolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 [**UpdateSource**](SourcesApi.md#UpdateSource) | **Patch** /sources/{id} | Update Source (Partial)
@@ -135,7 +135,7 @@ import (
 
 func main() {
     source := *openapiclient.NewSource("My Source", *openapiclient.NewSourceOwner(), "active-directory") // Source | 
-    provisionAsCsv := true // bool | Configures the source as a DelimitedFile type of source. (optional)
+    provisionAsCsv := false // bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -161,7 +161,7 @@ Other parameters are passed through a pointer to a apiCreateSourceRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source** | [**Source**](Source.md) |  | 
- **provisionAsCsv** | **bool** | Configures the source as a DelimitedFile type of source. | 
+ **provisionAsCsv** | **bool** | If this parameter is &#x60;true&#x60;, it configures the source as a Delimited File (CSV) source. Setting this to &#x60;true&#x60; will automatically set the &#x60;type&#x60; of the source to &#x60;DelimitedFile&#x60;.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don&#39;t set this query parameter and you attempt to set the &#x60;type&#x60; attribute directly, the request won&#39;t correctly generate the source.   | 
 
 ### Return type
 
@@ -1234,7 +1234,7 @@ Name | Type | Description  | Notes
 
 > ResourceObjectsResponse PeekResourceObjects(ctx, sourceId).ResourceObjectsRequest(resourceObjectsRequest).Execute()
 
-Peek resource objects from the source connector
+Peek source connector's resource objects
 
 
 
@@ -1306,7 +1306,7 @@ Name | Type | Description  | Notes
 
 > StatusResponse PingCluster(ctx, sourceId).Execute()
 
-Ping cluster for the source connector
+Ping cluster for source connector
 
 
 
@@ -1740,7 +1740,7 @@ Name | Type | Description  | Notes
 
 > StatusResponse TestSourceConfiguration(ctx, sourceId).Execute()
 
-Test configuration for the source connector
+Test configuration for source connector
 
 
 
@@ -1810,7 +1810,7 @@ Name | Type | Description  | Notes
 
 > StatusResponse TestSourceConnection(ctx, sourceId).Execute()
 
-Check connection for the source connector.
+Check connection for source connector.
 
 
 

@@ -26,14 +26,19 @@ api_roles.go
 api_saved_search.go
 api_scheduled_search.go
 api_search.go
+api_segments.go
 api_service_desk_integration.go
+api_sod_policy.go
 api_sources.go
+api_tagged_objects.go
 api_transforms.go
 api_work_items.go
 client.go
 configuration.go
 docs/Access.md
 docs/AccessAllOf.md
+docs/AccessCriteria.md
+docs/AccessCriteriaCriteriaListInner.md
 docs/AccessProfile.md
 docs/AccessProfileApprovalScheme.md
 docs/AccessProfileBulkDeleteRequest.md
@@ -120,6 +125,7 @@ docs/BaseReferenceDto.md
 docs/Bound.md
 docs/BucketAggregation.md
 docs/BucketType.md
+docs/BulkTaggedObject.md
 docs/Campaign.md
 docs/CampaignReference.md
 docs/CancelAccessRequest.md
@@ -140,6 +146,7 @@ docs/CompletedApproval.md
 docs/CompletedApprovalReviewerComment.md
 docs/CompletedApprovalState.md
 docs/CompletionStatus.md
+docs/ConflictingAccessCriteria.md
 docs/CreateOAuthClientRequest.md
 docs/CreateOAuthClientResponse.md
 docs/CreatePersonalAccessTokenRequest.md
@@ -170,6 +177,7 @@ docs/EventAllOf.md
 docs/EventDocument.md
 docs/ExecutionStatus.md
 docs/ExpansionItem.md
+docs/Expression.md
 docs/FieldDetailsDto.md
 docs/Filter.md
 docs/FilterAggregation.md
@@ -341,6 +349,7 @@ docs/RoleMembershipSelectorType.md
 docs/RoleSummary.md
 docs/RoleSummaryAllOf.md
 docs/RolesApi.md
+docs/SODPolicyApi.md
 docs/SavedSearch.md
 docs/SavedSearchAllOf.md
 docs/SavedSearchApi.md
@@ -370,6 +379,8 @@ docs/SearchSchedule.md
 docs/SearchScheduleRecipientsInner.md
 docs/SectionDetails.md
 docs/SectionDetailsAllOf.md
+docs/Segment.md
+docs/SegmentsApi.md
 docs/Selector.md
 docs/SelectorType.md
 docs/ServiceDeskIntegrationApi.md
@@ -381,6 +392,7 @@ docs/ServiceDeskIntegrationTemplateType.md
 docs/SetLifecycleState200Response.md
 docs/SetLifecycleStateRequest.md
 docs/SodExemptCriteria.md
+docs/SodPolicy.md
 docs/SodViolationCheckResult.md
 docs/SodViolationContext.md
 docs/SodViolationContextCheckCompleted.md
@@ -402,6 +414,9 @@ docs/SourcesApi.md
 docs/SpConfigMessage.md
 docs/SubSearchAggregationSpecification.md
 docs/SubSearchAggregationSpecificationAllOf.md
+docs/TaggedObject.md
+docs/TaggedObjectDto.md
+docs/TaggedObjectsApi.md
 docs/Transform.md
 docs/TransformDefinition.md
 docs/TransformDefinitionAttributesValue.md
@@ -411,6 +426,9 @@ docs/TypedReference.md
 docs/UpdatePasswordDictionaryRequest.md
 docs/UploadNonEmployeeRecordsInBulkRequest.md
 docs/UsageType.md
+docs/Value.md
+docs/ViolationOwnerAssignmentConfig.md
+docs/VisibilityCriteria.md
 docs/WorkItemState.md
 docs/WorkItemType.md
 docs/WorkItems.md
@@ -422,6 +440,8 @@ go.mod
 go.sum
 model_access.go
 model_access_all_of.go
+model_access_criteria.go
+model_access_criteria_criteria_list_inner.go
 model_access_profile.go
 model_access_profile_approval_scheme.go
 model_access_profile_bulk_delete_request.go
@@ -503,6 +523,7 @@ model_base_reference_dto.go
 model_bound.go
 model_bucket_aggregation.go
 model_bucket_type.go
+model_bulk_tagged_object.go
 model_campaign.go
 model_campaign_reference.go
 model_cancel_access_request.go
@@ -521,6 +542,7 @@ model_completed_approval.go
 model_completed_approval_reviewer_comment.go
 model_completed_approval_state.go
 model_completion_status.go
+model_conflicting_access_criteria.go
 model_create_o_auth_client_request.go
 model_create_o_auth_client_response.go
 model_create_personal_access_token_request.go
@@ -551,6 +573,7 @@ model_event_all_of.go
 model_event_document.go
 model_execution_status.go
 model_expansion_item.go
+model_expression.go
 model_field_details_dto.go
 model_filter.go
 model_filter_aggregation.go
@@ -735,6 +758,7 @@ model_search_schedule.go
 model_search_schedule_recipients_inner.go
 model_section_details.go
 model_section_details_all_of.go
+model_segment.go
 model_selector.go
 model_selector_type.go
 model_service_desk_integration_dto.go
@@ -745,6 +769,7 @@ model_service_desk_integration_template_type.go
 model_set_lifecycle_state_200_response.go
 model_set_lifecycle_state_request.go
 model_sod_exempt_criteria.go
+model_sod_policy.go
 model_sod_violation_check_result.go
 model_sod_violation_context.go
 model_sod_violation_context_check_completed.go
@@ -765,6 +790,8 @@ model_source_schemas_inner.go
 model_sp_config_message.go
 model_sub_search_aggregation_specification.go
 model_sub_search_aggregation_specification_all_of.go
+model_tagged_object.go
+model_tagged_object_dto.go
 model_transform.go
 model_transform_definition.go
 model_transform_definition_attributes_value.go
@@ -773,6 +800,9 @@ model_typed_reference.go
 model_update_password_dictionary_request.go
 model_upload_non_employee_records_in_bulk_request.go
 model_usage_type.go
+model_value.go
+model_violation_owner_assignment_config.go
+model_visibility_criteria.go
 model_work_item_state.go
 model_work_item_type.go
 model_work_items.go
@@ -802,8 +832,11 @@ test/api_roles_test.go
 test/api_saved_search_test.go
 test/api_scheduled_search_test.go
 test/api_search_test.go
+test/api_segments_test.go
 test/api_service_desk_integration_test.go
+test/api_sod_policy_test.go
 test/api_sources_test.go
+test/api_tagged_objects_test.go
 test/api_transforms_test.go
 test/api_work_items_test.go
 utils.go

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | the name of the argument | 
 **Description** | Pointer to **string** | the description of the argument | [optional] 
-**Type** | Pointer to **string** | the programmatic type of the argument | [optional] 
+**Type** | Pointer to **NullableString** | the programmatic type of the argument | [optional] 
 
 ## Methods
 
@@ -97,6 +97,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *Argument) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *Argument) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -45,6 +45,10 @@ type _IdentityProfile1AllOf IdentityProfile1AllOf
 func NewIdentityProfile1AllOf(authoritativeSource IdentityProfile1AllOfAuthoritativeSource) *IdentityProfile1AllOf {
 	this := IdentityProfile1AllOf{}
 	this.AuthoritativeSource = authoritativeSource
+	var identityRefreshRequired bool = false
+	this.IdentityRefreshRequired = &identityRefreshRequired
+	var hasTimeBasedAttr bool = false
+	this.HasTimeBasedAttr = &hasTimeBasedAttr
 	return &this
 }
 
@@ -53,6 +57,10 @@ func NewIdentityProfile1AllOf(authoritativeSource IdentityProfile1AllOfAuthorita
 // but it doesn't guarantee that properties required by API are set
 func NewIdentityProfile1AllOfWithDefaults() *IdentityProfile1AllOf {
 	this := IdentityProfile1AllOf{}
+	var identityRefreshRequired bool = false
+	this.IdentityRefreshRequired = &identityRefreshRequired
+	var hasTimeBasedAttr bool = false
+	this.HasTimeBasedAttr = &hasTimeBasedAttr
 	return &this
 }
 

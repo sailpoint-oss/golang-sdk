@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | the id of the Source | [optional] [readonly] 
-**Type** | Pointer to **string** | Specifies the type of system being managed e.g. Active Directory, Workday, etc.. | [optional] 
+**Type** | Pointer to **string** | Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a Delimited File source, you must set the &#x60;provisionasCsv&#x60; query parameter to &#x60;true&#x60;.  | [optional] 
 **Name** | Pointer to **string** | the name of the source | [optional] 
 **Org** | Pointer to **string** | source&#39;s org | [optional] 
 **IsAuthoritative** | Pointer to **bool** | Is the source authoritative | [optional] 

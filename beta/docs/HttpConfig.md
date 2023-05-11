@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Url** | **string** | URL of the external/custom integration. | 
 **HttpDispatchMode** | [**HttpDispatchMode**](HttpDispatchMode.md) |  | 
 **HttpAuthenticationType** | Pointer to [**HttpAuthenticationType**](HttpAuthenticationType.md) |  | [optional] [default to HTTPAUTHENTICATIONTYPE_NO_AUTH]
-**BasicAuthConfig** | Pointer to [**BasicAuthConfig**](BasicAuthConfig.md) |  | [optional] 
-**BearerTokenAuthConfig** | Pointer to [**BearerTokenAuthConfig**](BearerTokenAuthConfig.md) |  | [optional] 
+**BasicAuthConfig** | Pointer to [**NullableBasicAuthConfig**](BasicAuthConfig.md) |  | [optional] 
+**BearerTokenAuthConfig** | Pointer to [**NullableBearerTokenAuthConfig**](BearerTokenAuthConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -119,6 +119,16 @@ SetBasicAuthConfig sets BasicAuthConfig field to given value.
 
 HasBasicAuthConfig returns a boolean if a field has been set.
 
+### SetBasicAuthConfigNil
+
+`func (o *HttpConfig) SetBasicAuthConfigNil(b bool)`
+
+ SetBasicAuthConfigNil sets the value for BasicAuthConfig to be an explicit nil
+
+### UnsetBasicAuthConfig
+`func (o *HttpConfig) UnsetBasicAuthConfig()`
+
+UnsetBasicAuthConfig ensures that no value is present for BasicAuthConfig, not even an explicit nil
 ### GetBearerTokenAuthConfig
 
 `func (o *HttpConfig) GetBearerTokenAuthConfig() BearerTokenAuthConfig`
@@ -144,6 +154,16 @@ SetBearerTokenAuthConfig sets BearerTokenAuthConfig field to given value.
 
 HasBearerTokenAuthConfig returns a boolean if a field has been set.
 
+### SetBearerTokenAuthConfigNil
+
+`func (o *HttpConfig) SetBearerTokenAuthConfigNil(b bool)`
+
+ SetBearerTokenAuthConfigNil sets the value for BearerTokenAuthConfig to be an explicit nil
+
+### UnsetBearerTokenAuthConfig
+`func (o *HttpConfig) UnsetBearerTokenAuthConfig()`
+
+UnsetBearerTokenAuthConfig ensures that no value is present for BearerTokenAuthConfig, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -24,7 +24,7 @@ type ConnectorRuleResponseAllOf struct {
 	// an ISO 8601 UTC timestamp when this rule was created
 	Created string `json:"created"`
 	// an ISO 8601 UTC timestamp when this rule was last modified
-	Modified *string `json:"modified,omitempty"`
+	Modified NullableString `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -97,36 +97,46 @@ func (o *ConnectorRuleResponseAllOf) SetCreated(v string) {
 	o.Created = v
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise.
+// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectorRuleResponseAllOf) GetModified() string {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || isNil(o.Modified.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Modified
+	return *o.Modified.Get()
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectorRuleResponseAllOf) GetModifiedOk() (*string, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Modified, true
+	return o.Modified.Get(), o.Modified.IsSet()
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *ConnectorRuleResponseAllOf) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && o.Modified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given string and assigns it to the Modified field.
+// SetModified gets a reference to the given NullableString and assigns it to the Modified field.
 func (o *ConnectorRuleResponseAllOf) SetModified(v string) {
-	o.Modified = &v
+	o.Modified.Set(&v)
+}
+// SetModifiedNil sets the value for Modified to be an explicit nil
+func (o *ConnectorRuleResponseAllOf) SetModifiedNil() {
+	o.Modified.Set(nil)
+}
+
+// UnsetModified ensures that no value is present for Modified, not even an explicit nil
+func (o *ConnectorRuleResponseAllOf) UnsetModified() {
+	o.Modified.Unset()
 }
 
 func (o ConnectorRuleResponseAllOf) MarshalJSON() ([]byte, error) {
@@ -141,8 +151,8 @@ func (o ConnectorRuleResponseAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["created"] = o.Created
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
+	if o.Modified.IsSet() {
+		toSerialize["modified"] = o.Modified.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Attributes** | Pointer to **map[string]interface{}** | a map of string to objects | [optional] 
 **Id** | **string** | the ID of the rule | 
 **Created** | **string** | an ISO 8601 UTC timestamp when this rule was created | 
-**Modified** | Pointer to **string** | an ISO 8601 UTC timestamp when this rule was last modified | [optional] 
+**Modified** | Pointer to **NullableString** | an ISO 8601 UTC timestamp when this rule was last modified | [optional] 
 
 ## Methods
 
@@ -168,6 +168,16 @@ SetAttributes sets Attributes field to given value.
 
 HasAttributes returns a boolean if a field has been set.
 
+### SetAttributesNil
+
+`func (o *ConnectorRuleResponse) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *ConnectorRuleResponse) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 ### GetId
 
 `func (o *ConnectorRuleResponse) GetId() string`
@@ -233,6 +243,16 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
+### SetModifiedNil
+
+`func (o *ConnectorRuleResponse) SetModifiedNil(b bool)`
+
+ SetModifiedNil sets the value for Modified to be an explicit nil
+
+### UnsetModified
+`func (o *ConnectorRuleResponse) UnsetModified()`
+
+UnsetModified ensures that no value is present for Modified, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

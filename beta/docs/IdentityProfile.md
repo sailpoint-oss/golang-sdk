@@ -8,15 +8,15 @@ Name | Type | Description | Notes
 **Name** | **string** | Name of the Object | 
 **Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
-**Description** | Pointer to **string** | The description of the Identity Profile. | [optional] 
+**Description** | Pointer to **NullableString** | The description of the Identity Profile. | [optional] 
 **Owner** | Pointer to [**NullableIdentityProfileAllOfOwner**](IdentityProfileAllOfOwner.md) |  | [optional] 
 **Priority** | Pointer to **int64** | The priority for an Identity Profile. | [optional] 
 **AuthoritativeSource** | [**IdentityProfileAllOfAuthoritativeSource**](IdentityProfileAllOfAuthoritativeSource.md) |  | 
-**IdentityRefreshRequired** | Pointer to **bool** | True if a identity refresh is needed. Typically triggered when a change on the source has been made | [optional] 
+**IdentityRefreshRequired** | Pointer to **bool** | True if a identity refresh is needed. Typically triggered when a change on the source has been made | [optional] [default to false]
 **IdentityCount** | Pointer to **int32** | The number of identities that belong to the Identity Profile. | [optional] 
 **IdentityAttributeConfig** | Pointer to [**IdentityAttributeConfig**](IdentityAttributeConfig.md) |  | [optional] 
-**IdentityExceptionReportReference** | Pointer to [**IdentityExceptionReportReference**](IdentityExceptionReportReference.md) |  | [optional] 
-**HasTimeBasedAttr** | Pointer to **bool** | Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile. | [optional] 
+**IdentityExceptionReportReference** | Pointer to [**NullableIdentityExceptionReportReference**](IdentityExceptionReportReference.md) |  | [optional] 
+**HasTimeBasedAttr** | Pointer to **bool** | Indicates the value of requiresPeriodicRefresh attribute for the Identity Profile. | [optional] [default to true]
 
 ## Methods
 
@@ -157,6 +157,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *IdentityProfile) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *IdentityProfile) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetOwner
 
 `func (o *IdentityProfile) GetOwner() IdentityProfileAllOfOwner`
@@ -337,6 +347,16 @@ SetIdentityExceptionReportReference sets IdentityExceptionReportReference field 
 
 HasIdentityExceptionReportReference returns a boolean if a field has been set.
 
+### SetIdentityExceptionReportReferenceNil
+
+`func (o *IdentityProfile) SetIdentityExceptionReportReferenceNil(b bool)`
+
+ SetIdentityExceptionReportReferenceNil sets the value for IdentityExceptionReportReference to be an explicit nil
+
+### UnsetIdentityExceptionReportReference
+`func (o *IdentityProfile) UnsetIdentityExceptionReportReference()`
+
+UnsetIdentityExceptionReportReference ensures that no value is present for IdentityExceptionReportReference, not even an explicit nil
 ### GetHasTimeBasedAttr
 
 `func (o *IdentityProfile) GetHasTimeBasedAttr() bool`

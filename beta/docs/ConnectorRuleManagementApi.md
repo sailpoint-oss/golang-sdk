@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | ID of the connector rule to delete
+    id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | ID of the connector rule to delete
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -168,7 +168,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | ID of the connector rule to retrieve
+    id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | ID of the connector rule to retrieve
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -299,7 +299,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | ID of the connector rule to update
+    id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | ID of the connector rule to update
     connectorRuleUpdateRequest := *openapiclient.NewConnectorRuleUpdateRequest("8113d48c0b914f17b4c6072d4dcb9dfe", "WebServiceBeforeOperationRule", "BuildMap", *openapiclient.NewSourceCode("1.0", "return "Mr. " + firstName;")) // ConnectorRuleUpdateRequest | The connector rule with updated data (optional)
 
     configuration := openapiclient.NewConfiguration()

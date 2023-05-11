@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ObjectType** | Pointer to **string** | The object type this configuration is for. | [optional] 
 **ResolveByIdUrl** | Pointer to [**SpConfigUrl**](SpConfigUrl.md) |  | [optional] 
-**ResolveByNameUrl** | Pointer to [**SpConfigUrl**](SpConfigUrl.md) |  | [optional] 
-**ExportUrl** | Pointer to **string** | Url to export this type of object. | [optional] 
+**ResolveByNameUrl** | Pointer to [**[]SpConfigUrl**](SpConfigUrl.md) | Url and query parameters to be used to resolve this type of object by name. | [optional] 
+**ExportUrl** | Pointer to [**SpConfigUrl**](SpConfigUrl.md) |  | [optional] 
 **ExportRight** | Pointer to **string** | Rights needed by the invoker of sp-config/export in order to export this type of object. | [optional] 
 **ExportLimit** | Pointer to **int32** | Pagination limit imposed by the target service for this object type. | [optional] 
-**ImportUrl** | Pointer to **string** | Url to import this type of object. | [optional] 
+**ImportUrl** | Pointer to [**SpConfigUrl**](SpConfigUrl.md) |  | [optional] 
 **ImportRight** | Pointer to **string** | Rights needed by the invoker of sp-config/import in order to import this type of object. | [optional] 
 **ImportLimit** | Pointer to **int32** | Pagination limit imposed by the target service for this object type. | [optional] 
 **ReferenceExtractors** | Pointer to **[]string** | List of json paths within an exported object of this type that represent references that need to be resolved. | [optional] 
-**SignatureRequired** | Pointer to **bool** | If true, this type of object will be JWS signed and cannot be modified before import. | [optional] 
+**SignatureRequired** | Pointer to **bool** | If true, this type of object will be JWS signed and cannot be modified before import. | [optional] [default to false]
 
 ## Methods
 
@@ -87,20 +87,20 @@ HasResolveByIdUrl returns a boolean if a field has been set.
 
 ### GetResolveByNameUrl
 
-`func (o *SpConfigObject) GetResolveByNameUrl() SpConfigUrl`
+`func (o *SpConfigObject) GetResolveByNameUrl() []SpConfigUrl`
 
 GetResolveByNameUrl returns the ResolveByNameUrl field if non-nil, zero value otherwise.
 
 ### GetResolveByNameUrlOk
 
-`func (o *SpConfigObject) GetResolveByNameUrlOk() (*SpConfigUrl, bool)`
+`func (o *SpConfigObject) GetResolveByNameUrlOk() (*[]SpConfigUrl, bool)`
 
 GetResolveByNameUrlOk returns a tuple with the ResolveByNameUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResolveByNameUrl
 
-`func (o *SpConfigObject) SetResolveByNameUrl(v SpConfigUrl)`
+`func (o *SpConfigObject) SetResolveByNameUrl(v []SpConfigUrl)`
 
 SetResolveByNameUrl sets ResolveByNameUrl field to given value.
 
@@ -112,20 +112,20 @@ HasResolveByNameUrl returns a boolean if a field has been set.
 
 ### GetExportUrl
 
-`func (o *SpConfigObject) GetExportUrl() string`
+`func (o *SpConfigObject) GetExportUrl() SpConfigUrl`
 
 GetExportUrl returns the ExportUrl field if non-nil, zero value otherwise.
 
 ### GetExportUrlOk
 
-`func (o *SpConfigObject) GetExportUrlOk() (*string, bool)`
+`func (o *SpConfigObject) GetExportUrlOk() (*SpConfigUrl, bool)`
 
 GetExportUrlOk returns a tuple with the ExportUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExportUrl
 
-`func (o *SpConfigObject) SetExportUrl(v string)`
+`func (o *SpConfigObject) SetExportUrl(v SpConfigUrl)`
 
 SetExportUrl sets ExportUrl field to given value.
 
@@ -187,20 +187,20 @@ HasExportLimit returns a boolean if a field has been set.
 
 ### GetImportUrl
 
-`func (o *SpConfigObject) GetImportUrl() string`
+`func (o *SpConfigObject) GetImportUrl() SpConfigUrl`
 
 GetImportUrl returns the ImportUrl field if non-nil, zero value otherwise.
 
 ### GetImportUrlOk
 
-`func (o *SpConfigObject) GetImportUrlOk() (*string, bool)`
+`func (o *SpConfigObject) GetImportUrlOk() (*SpConfigUrl, bool)`
 
 GetImportUrlOk returns a tuple with the ImportUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImportUrl
 
-`func (o *SpConfigObject) SetImportUrl(v string)`
+`func (o *SpConfigObject) SetImportUrl(v SpConfigUrl)`
 
 SetImportUrl sets ImportUrl field to given value.
 

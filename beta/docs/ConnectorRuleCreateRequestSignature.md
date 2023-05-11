@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Input** | [**[]Argument**](Argument.md) |  | 
-**Output** | Pointer to [**Argument**](Argument.md) |  | [optional] 
+**Output** | Pointer to [**NullableArgument**](Argument.md) |  | [optional] 
 
 ## Methods
 
@@ -71,6 +71,16 @@ SetOutput sets Output field to given value.
 
 HasOutput returns a boolean if a field has been set.
 
+### SetOutputNil
+
+`func (o *ConnectorRuleCreateRequestSignature) SetOutputNil(b bool)`
+
+ SetOutputNil sets the value for Output to be an explicit nil
+
+### UnsetOutput
+`func (o *ConnectorRuleCreateRequestSignature) UnsetOutput()`
+
+UnsetOutput ensures that no value is present for Output, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,18 +8,18 @@ Method | HTTP request | Description
 [**CreateNonEmployeeRecord**](NonEmployeeLifecycleManagementApi.md#CreateNonEmployeeRecord) | **Post** /non-employee-records | Create Non-Employee Record
 [**CreateNonEmployeeRequest**](NonEmployeeLifecycleManagementApi.md#CreateNonEmployeeRequest) | **Post** /non-employee-requests | Create Non-Employee Request
 [**CreateNonEmployeeSource**](NonEmployeeLifecycleManagementApi.md#CreateNonEmployeeSource) | **Post** /non-employee-sources | Create Non-Employee Source
-[**CreateNonEmployeeSourceSchemaAttributes**](NonEmployeeLifecycleManagementApi.md#CreateNonEmployeeSourceSchemaAttributes) | **Post** /non-employee-sources/{sourceId}/schema-attributes | Create a new Schema Attribute for Non-Employee Source
+[**CreateNonEmployeeSourceSchemaAttributes**](NonEmployeeLifecycleManagementApi.md#CreateNonEmployeeSourceSchemaAttributes) | **Post** /non-employee-sources/{sourceId}/schema-attributes | Create Non-Employee Source Schema Attribute
 [**DeleteNonEmployeeRecord**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeRecord) | **Delete** /non-employee-records/{id} | Delete Non-Employee Record
 [**DeleteNonEmployeeRecordInBulk**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeRecordInBulk) | **Post** /non-employee-records/bulk-delete | Delete Multiple Non-Employee Records
 [**DeleteNonEmployeeRequest**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeRequest) | **Delete** /non-employee-requests/{id} | Delete Non-Employee Request
-[**DeleteNonEmployeeSchemaAttribute**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeSchemaAttribute) | **Delete** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Delete a Schema Attribute for Non-Employee Source
+[**DeleteNonEmployeeSchemaAttribute**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeSchemaAttribute) | **Delete** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Delete Non-Employee Source&#39;s Schema Attribute
 [**DeleteNonEmployeeSource**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeSource) | **Delete** /non-employee-sources/{sourceId} | Delete Non-Employee Source
-[**DeleteNonEmployeeSourceSchemaAttributes**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeSourceSchemaAttributes) | **Delete** /non-employee-sources/{sourceId}/schema-attributes | Delete all custom schema attributes for Non-Employee Source
+[**DeleteNonEmployeeSourceSchemaAttributes**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeSourceSchemaAttributes) | **Delete** /non-employee-sources/{sourceId}/schema-attributes | Delete all custom schema attributes
 [**ExportNonEmployeeRecords**](NonEmployeeLifecycleManagementApi.md#ExportNonEmployeeRecords) | **Get** /non-employee-sources/{id}/non-employees/download | Exports Non-Employee Records to CSV
 [**ExportNonEmployeeSourceSchemaTemplate**](NonEmployeeLifecycleManagementApi.md#ExportNonEmployeeSourceSchemaTemplate) | **Get** /non-employee-sources/{id}/schema-attributes-template/download | Exports Source Schema Template
 [**GetNonEmployeeApproval**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeApproval) | **Get** /non-employee-approvals/{id} | Get a non-employee approval item detail
 [**GetNonEmployeeApprovalSummary**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeApprovalSummary) | **Get** /non-employee-approvals/summary/{requested-for} | Get Summary of Non-Employee Approval Requests
-[**GetNonEmployeeBulkUploadStatus**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeBulkUploadStatus) | **Get** /non-employee-sources/{id}/non-employee-bulk-upload/status | Obtain the status of bulk upload on the source
+[**GetNonEmployeeBulkUploadStatus**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeBulkUploadStatus) | **Get** /non-employee-sources/{id}/non-employee-bulk-upload/status | Bulk upload status on source
 [**GetNonEmployeeRecord**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeRecord) | **Get** /non-employee-records/{id} | Get a Non-Employee Record
 [**GetNonEmployeeRequest**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeRequest) | **Get** /non-employee-requests/{id} | Get a Non-Employee Request
 [**GetNonEmployeeRequestSummary**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeRequestSummary) | **Get** /non-employee-requests/summary/{requested-for} | Get Summary of Non-Employee Requests
@@ -31,7 +31,7 @@ Method | HTTP request | Description
 [**ListNonEmployeeRequests**](NonEmployeeLifecycleManagementApi.md#ListNonEmployeeRequests) | **Get** /non-employee-requests | List Non-Employee Requests
 [**ListNonEmployeeSources**](NonEmployeeLifecycleManagementApi.md#ListNonEmployeeSources) | **Get** /non-employee-sources | List Non-Employee Sources
 [**PatchNonEmployeeRecord**](NonEmployeeLifecycleManagementApi.md#PatchNonEmployeeRecord) | **Patch** /non-employee-records/{id} | Patch Non-Employee Record
-[**PatchNonEmployeeSchemaAttribute**](NonEmployeeLifecycleManagementApi.md#PatchNonEmployeeSchemaAttribute) | **Patch** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Patch a Schema Attribute for Non-Employee Source
+[**PatchNonEmployeeSchemaAttribute**](NonEmployeeLifecycleManagementApi.md#PatchNonEmployeeSchemaAttribute) | **Patch** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Patch Non-Employee Source&#39;s Schema Attribute
 [**PatchNonEmployeeSource**](NonEmployeeLifecycleManagementApi.md#PatchNonEmployeeSource) | **Patch** /non-employee-sources/{sourceId} | Patch a Non-Employee Source
 [**RejectNonEmployeeRequest**](NonEmployeeLifecycleManagementApi.md#RejectNonEmployeeRequest) | **Post** /non-employee-approvals/{id}/reject | Reject a Non-Employee Request
 [**UpdateNonEmployeeRecord**](NonEmployeeLifecycleManagementApi.md#UpdateNonEmployeeRecord) | **Put** /non-employee-records/{id} | Update Non-Employee Record
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 > NonEmployeeSchemaAttribute CreateNonEmployeeSourceSchemaAttributes(ctx, sourceId).NonEmployeeSchemaAttributeBody(nonEmployeeSchemaAttributeBody).Execute()
 
-Create a new Schema Attribute for Non-Employee Source
+Create Non-Employee Source Schema Attribute
 
 
 
@@ -332,7 +332,7 @@ import (
 )
 
 func main() {
-    sourceId := "sourceId_example" // string | The Source id
+    sourceId := "2c91808b6ef1d43e016efba0ce470904" // string | The Source id
     nonEmployeeSchemaAttributeBody := *openapiclient.NewNonEmployeeSchemaAttributeBody("TEXT", "Account Name", "account.name") // NonEmployeeSchemaAttributeBody | 
 
     configuration := openapiclient.NewConfiguration()
@@ -404,7 +404,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | Non-Employee record id (UUID)
+    id := "2c91808b6ef1d43e016efba0ce470904" // string | Non-Employee record id (UUID)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -536,7 +536,7 @@ import (
 )
 
 func main() {
-    id := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Non-Employee request id in the UUID format
+    id := "2c91808b6ef1d43e016efba0ce470904" // string | Non-Employee request id in the UUID format
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -587,7 +587,7 @@ Name | Type | Description  | Notes
 
 > DeleteNonEmployeeSchemaAttribute(ctx, attributeId, sourceId).Execute()
 
-Delete a Schema Attribute for Non-Employee Source
+Delete Non-Employee Source's Schema Attribute
 
 
 
@@ -604,8 +604,8 @@ import (
 )
 
 func main() {
-    attributeId := "attributeId_example" // string | The Schema Attribute Id (UUID)
-    sourceId := "sourceId_example" // string | The Source id
+    attributeId := "2c91808b6ef1d43e016efba0ce470904" // string | The Schema Attribute Id (UUID)
+    sourceId := "2c91808b6ef1d43e016efba0ce470904" // string | The Source id
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -675,7 +675,7 @@ import (
 )
 
 func main() {
-    sourceId := "sourceId_example" // string | Source Id
+    sourceId := "2c91808b6ef1d43e016efba0ce470904" // string | Source Id
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -726,7 +726,7 @@ Name | Type | Description  | Notes
 
 > DeleteNonEmployeeSourceSchemaAttributes(ctx, sourceId).Execute()
 
-Delete all custom schema attributes for Non-Employee Source
+Delete all custom schema attributes
 
 
 
@@ -743,7 +743,7 @@ import (
 )
 
 func main() {
-    sourceId := "sourceId_example" // string | The Source id
+    sourceId := "2c91808b6ef1d43e016efba0ce470904" // string | The Source id
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1072,7 +1072,7 @@ Name | Type | Description  | Notes
 
 > NonEmployeeBulkUploadStatus GetNonEmployeeBulkUploadStatus(ctx, id).Execute()
 
-Obtain the status of bulk upload on the source
+Bulk upload status on source
 
 
 
@@ -1884,7 +1884,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | Non-employee record id (UUID)
+    id := "2c91808b6ef1d43e016efba0ce470904" // string | Non-employee record id (UUID)
     jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
     configuration := openapiclient.NewConfiguration()
@@ -1939,7 +1939,7 @@ Name | Type | Description  | Notes
 
 > NonEmployeeSchemaAttribute PatchNonEmployeeSchemaAttribute(ctx, attributeId, sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Patch a Schema Attribute for Non-Employee Source
+Patch Non-Employee Source's Schema Attribute
 
 
 
@@ -1956,8 +1956,8 @@ import (
 )
 
 func main() {
-    attributeId := "attributeId_example" // string | The Schema Attribute Id (UUID)
-    sourceId := "sourceId_example" // string | The Source id
+    attributeId := "2c91808b6ef1d43e016efba0ce470904" // string | The Schema Attribute Id (UUID)
+    sourceId := "2c91808b6ef1d43e016efba0ce470904" // string | The Source id
     jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
 
     configuration := openapiclient.NewConfiguration()
@@ -2031,7 +2031,7 @@ import (
 )
 
 func main() {
-    sourceId := "sourceId_example" // string | Source Id
+    sourceId := "2c91808b6ef1d43e016efba0ce470904" // string | Source Id
     jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     configuration := openapiclient.NewConfiguration()
@@ -2176,7 +2176,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | Non-employee record id (UUID)
+    id := "2c91808b6ef1d43e016efba0ce470904" // string | Non-employee record id (UUID)
     nonEmployeeRequestBody := *openapiclient.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5555555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
     configuration := openapiclient.NewConfiguration()

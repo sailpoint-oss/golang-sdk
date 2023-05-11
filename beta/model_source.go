@@ -38,7 +38,7 @@ type Source struct {
 	PasswordPolicies []SourcePasswordPoliciesInner `json:"passwordPolicies,omitempty"`
 	// Optional features that can be supported by a source.
 	Features []SourceFeature `json:"features,omitempty"`
-	// Specifies the type of system being managed e.g. Active Directory, Workday, etc..
+	// Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a Delimited File source, you must set the `provisionasCsv` query parameter to `true`. 
 	Type *string `json:"type,omitempty"`
 	// Connector script name.
 	Connector string `json:"connector"`

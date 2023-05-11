@@ -55,6 +55,10 @@ func NewIdentityProfile1(name string, authoritativeSource IdentityProfile1AllOfA
 	this := IdentityProfile1{}
 	this.Name = name
 	this.AuthoritativeSource = authoritativeSource
+	var identityRefreshRequired bool = false
+	this.IdentityRefreshRequired = &identityRefreshRequired
+	var hasTimeBasedAttr bool = false
+	this.HasTimeBasedAttr = &hasTimeBasedAttr
 	return &this
 }
 
@@ -63,6 +67,10 @@ func NewIdentityProfile1(name string, authoritativeSource IdentityProfile1AllOfA
 // but it doesn't guarantee that properties required by API are set
 func NewIdentityProfile1WithDefaults() *IdentityProfile1 {
 	this := IdentityProfile1{}
+	var identityRefreshRequired bool = false
+	this.IdentityRefreshRequired = &identityRefreshRequired
+	var hasTimeBasedAttr bool = false
+	this.HasTimeBasedAttr = &hasTimeBasedAttr
 	return &this
 }
 

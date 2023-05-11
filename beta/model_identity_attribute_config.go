@@ -33,6 +33,8 @@ type _IdentityAttributeConfig IdentityAttributeConfig
 // will change when the set of required properties is changed
 func NewIdentityAttributeConfig() *IdentityAttributeConfig {
 	this := IdentityAttributeConfig{}
+	var enabled bool = true
+	this.Enabled = &enabled
 	return &this
 }
 
@@ -41,6 +43,8 @@ func NewIdentityAttributeConfig() *IdentityAttributeConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewIdentityAttributeConfigWithDefaults() *IdentityAttributeConfig {
 	this := IdentityAttributeConfig{}
+	var enabled bool = true
+	this.Enabled = &enabled
 	return &this
 }
 

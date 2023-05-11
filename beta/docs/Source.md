@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Schemas** | Pointer to [**[]SourceSchemasInner**](SourceSchemasInner.md) | List of references to Schema objects | [optional] 
 **PasswordPolicies** | Pointer to [**[]SourcePasswordPoliciesInner**](SourcePasswordPoliciesInner.md) | List of references to the associated PasswordPolicy objects. | [optional] 
 **Features** | Pointer to [**[]SourceFeature**](SourceFeature.md) | Optional features that can be supported by a source. | [optional] 
-**Type** | Pointer to **string** | Specifies the type of system being managed e.g. Active Directory, Workday, etc.. | [optional] 
+**Type** | Pointer to **string** | Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a Delimited File source, you must set the &#x60;provisionasCsv&#x60; query parameter to &#x60;true&#x60;.  | [optional] 
 **Connector** | **string** | Connector script name. | 
 **ConnectorClass** | Pointer to **string** | The fully qualified name of the Java class that implements the connector interface. | [optional] 
 **ConnectorAttributes** | Pointer to **map[string]interface{}** | Connector specific configuration; will differ from type to type. | [optional] 

@@ -44,6 +44,8 @@ func (r ApiCreateProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *
 CreateProvisioningPolicy Create Provisioning Policy
 
 This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -216,7 +218,7 @@ func (r ApiCreateSourceRequest) Source(source Source) ApiCreateSourceRequest {
 	return r
 }
 
-// Configures the source as a DelimitedFile type of source.
+// If this parameter is &#x60;true&#x60;, it configures the source as a Delimited File (CSV) source. Setting this to &#x60;true&#x60; will automatically set the &#x60;type&#x60; of the source to &#x60;DelimitedFile&#x60;.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don&#39;t set this query parameter and you attempt to set the &#x60;type&#x60; attribute directly, the request won&#39;t correctly generate the source.  
 func (r ApiCreateSourceRequest) ProvisionAsCsv(provisionAsCsv bool) ApiCreateSourceRequest {
 	r.provisionAsCsv = &provisionAsCsv
 	return r
@@ -2643,6 +2645,8 @@ func (r ApiPutProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *htt
 PutProvisioningPolicy Update Provisioning Policy by UsageType
 
 This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -3395,6 +3399,8 @@ func (r ApiUpdateProvisioningPolicyRequest) Execute() (*ProvisioningPolicyDto, *
 UpdateProvisioningPolicy Partial update of Provisioning Policy
 
 This API selectively updates an existing Provisioning Policy using a JSONPatch payload.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
 A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -3991,7 +3997,7 @@ This API uploads a source schema template file to configure a source's account a
 
 To retrieve the file to modify and upload, log into Identity Now. 
 
-Click **Admin** -> **Connections** -> **Sources** -> **`<SourceName>`** -> **Import Data** -> **Account Schema** -> **Options** -> **Download Schema**
+Click **Admin** -> **Connections** -> **Sources** -> **`{SourceName}`** -> **Import Data** -> **Account Schema** -> **Options** -> **Download Schema**
 
 >**NOTE: This API is designated only for Delimited File sources.**
 
@@ -4365,7 +4371,7 @@ This API uploads a source schema template file to configure a source's entitleme
 
 To retrieve the file to modify and upload, log into Identity Now. 
 
-Click **Admin** -> **Connections** -> **Sources** -> **`<SourceName>`** -> **Import Data** -> **Import Entitlements** -> **Download**
+Click **Admin** -> **Connections** -> **Sources** -> **`{SourceName}`** -> **Import Data** -> **Import Entitlements** -> **Download**
 
 >**NOTE: This API is designated only for Delimited File sources.**
 

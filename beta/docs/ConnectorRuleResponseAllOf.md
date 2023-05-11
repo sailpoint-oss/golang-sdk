@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | the ID of the rule | 
 **Created** | **string** | an ISO 8601 UTC timestamp when this rule was created | 
-**Modified** | Pointer to **string** | an ISO 8601 UTC timestamp when this rule was last modified | [optional] 
+**Modified** | Pointer to **NullableString** | an ISO 8601 UTC timestamp when this rule was last modified | [optional] 
 
 ## Methods
 
@@ -92,6 +92,16 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
+### SetModifiedNil
+
+`func (o *ConnectorRuleResponseAllOf) SetModifiedNil(b bool)`
+
+ SetModifiedNil sets the value for Modified to be an explicit nil
+
+### UnsetModified
+`func (o *ConnectorRuleResponseAllOf) UnsetModified()`
+
+UnsetModified ensures that no value is present for Modified, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,15 +22,14 @@ type SpConfigObject struct {
 	// The object type this configuration is for.
 	ObjectType *string `json:"objectType,omitempty"`
 	ResolveByIdUrl *SpConfigUrl `json:"resolveByIdUrl,omitempty"`
-	ResolveByNameUrl *SpConfigUrl `json:"resolveByNameUrl,omitempty"`
-	// Url to export this type of object.
-	ExportUrl *string `json:"exportUrl,omitempty"`
+	// Url and query parameters to be used to resolve this type of object by name.
+	ResolveByNameUrl []SpConfigUrl `json:"resolveByNameUrl,omitempty"`
+	ExportUrl *SpConfigUrl `json:"exportUrl,omitempty"`
 	// Rights needed by the invoker of sp-config/export in order to export this type of object.
 	ExportRight *string `json:"exportRight,omitempty"`
 	// Pagination limit imposed by the target service for this object type.
 	ExportLimit *int32 `json:"exportLimit,omitempty"`
-	// Url to import this type of object.
-	ImportUrl *string `json:"importUrl,omitempty"`
+	ImportUrl *SpConfigUrl `json:"importUrl,omitempty"`
 	// Rights needed by the invoker of sp-config/import in order to import this type of object.
 	ImportRight *string `json:"importRight,omitempty"`
 	// Pagination limit imposed by the target service for this object type.
@@ -50,6 +49,8 @@ type _SpConfigObject SpConfigObject
 // will change when the set of required properties is changed
 func NewSpConfigObject() *SpConfigObject {
 	this := SpConfigObject{}
+	var signatureRequired bool = false
+	this.SignatureRequired = &signatureRequired
 	return &this
 }
 
@@ -58,6 +59,8 @@ func NewSpConfigObject() *SpConfigObject {
 // but it doesn't guarantee that properties required by API are set
 func NewSpConfigObjectWithDefaults() *SpConfigObject {
 	this := SpConfigObject{}
+	var signatureRequired bool = false
+	this.SignatureRequired = &signatureRequired
 	return &this
 }
 
@@ -126,17 +129,17 @@ func (o *SpConfigObject) SetResolveByIdUrl(v SpConfigUrl) {
 }
 
 // GetResolveByNameUrl returns the ResolveByNameUrl field value if set, zero value otherwise.
-func (o *SpConfigObject) GetResolveByNameUrl() SpConfigUrl {
+func (o *SpConfigObject) GetResolveByNameUrl() []SpConfigUrl {
 	if o == nil || isNil(o.ResolveByNameUrl) {
-		var ret SpConfigUrl
+		var ret []SpConfigUrl
 		return ret
 	}
-	return *o.ResolveByNameUrl
+	return o.ResolveByNameUrl
 }
 
 // GetResolveByNameUrlOk returns a tuple with the ResolveByNameUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpConfigObject) GetResolveByNameUrlOk() (*SpConfigUrl, bool) {
+func (o *SpConfigObject) GetResolveByNameUrlOk() ([]SpConfigUrl, bool) {
 	if o == nil || isNil(o.ResolveByNameUrl) {
 		return nil, false
 	}
@@ -152,15 +155,15 @@ func (o *SpConfigObject) HasResolveByNameUrl() bool {
 	return false
 }
 
-// SetResolveByNameUrl gets a reference to the given SpConfigUrl and assigns it to the ResolveByNameUrl field.
-func (o *SpConfigObject) SetResolveByNameUrl(v SpConfigUrl) {
-	o.ResolveByNameUrl = &v
+// SetResolveByNameUrl gets a reference to the given []SpConfigUrl and assigns it to the ResolveByNameUrl field.
+func (o *SpConfigObject) SetResolveByNameUrl(v []SpConfigUrl) {
+	o.ResolveByNameUrl = v
 }
 
 // GetExportUrl returns the ExportUrl field value if set, zero value otherwise.
-func (o *SpConfigObject) GetExportUrl() string {
+func (o *SpConfigObject) GetExportUrl() SpConfigUrl {
 	if o == nil || isNil(o.ExportUrl) {
-		var ret string
+		var ret SpConfigUrl
 		return ret
 	}
 	return *o.ExportUrl
@@ -168,7 +171,7 @@ func (o *SpConfigObject) GetExportUrl() string {
 
 // GetExportUrlOk returns a tuple with the ExportUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpConfigObject) GetExportUrlOk() (*string, bool) {
+func (o *SpConfigObject) GetExportUrlOk() (*SpConfigUrl, bool) {
 	if o == nil || isNil(o.ExportUrl) {
 		return nil, false
 	}
@@ -184,8 +187,8 @@ func (o *SpConfigObject) HasExportUrl() bool {
 	return false
 }
 
-// SetExportUrl gets a reference to the given string and assigns it to the ExportUrl field.
-func (o *SpConfigObject) SetExportUrl(v string) {
+// SetExportUrl gets a reference to the given SpConfigUrl and assigns it to the ExportUrl field.
+func (o *SpConfigObject) SetExportUrl(v SpConfigUrl) {
 	o.ExportUrl = &v
 }
 
@@ -254,9 +257,9 @@ func (o *SpConfigObject) SetExportLimit(v int32) {
 }
 
 // GetImportUrl returns the ImportUrl field value if set, zero value otherwise.
-func (o *SpConfigObject) GetImportUrl() string {
+func (o *SpConfigObject) GetImportUrl() SpConfigUrl {
 	if o == nil || isNil(o.ImportUrl) {
-		var ret string
+		var ret SpConfigUrl
 		return ret
 	}
 	return *o.ImportUrl
@@ -264,7 +267,7 @@ func (o *SpConfigObject) GetImportUrl() string {
 
 // GetImportUrlOk returns a tuple with the ImportUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SpConfigObject) GetImportUrlOk() (*string, bool) {
+func (o *SpConfigObject) GetImportUrlOk() (*SpConfigUrl, bool) {
 	if o == nil || isNil(o.ImportUrl) {
 		return nil, false
 	}
@@ -280,8 +283,8 @@ func (o *SpConfigObject) HasImportUrl() bool {
 	return false
 }
 
-// SetImportUrl gets a reference to the given string and assigns it to the ImportUrl field.
-func (o *SpConfigObject) SetImportUrl(v string) {
+// SetImportUrl gets a reference to the given SpConfigUrl and assigns it to the ImportUrl field.
+func (o *SpConfigObject) SetImportUrl(v SpConfigUrl) {
 	o.ImportUrl = &v
 }
 

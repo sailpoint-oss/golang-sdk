@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Unique name of this transform | [readonly] 
 **Type** | **string** | The transform type (see [Transformations in IdentityNow Using Seaspray](https://community.sailpoint.com/docs/DOC-4629)). | [readonly] 
 **Attributes** | **map[string]interface{}** | Meta-data about the transform. Values in this list are specific to the type of transform to be executed. | 
-**Internal** | Pointer to **bool** | Indicates whether this is an internal SailPoint-created transform or a customer-created transform | [optional] [readonly] 
+**Internal** | Pointer to **bool** | Indicates whether this is an internal SailPoint-created transform or a customer-created transform | [optional] [readonly] [default to false]
 
 ## Methods
 
@@ -114,6 +114,16 @@ and a boolean to check if the value has been set.
 SetAttributes sets Attributes field to given value.
 
 
+### SetAttributesNil
+
+`func (o *Transform) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *Transform) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 ### GetInternal
 
 `func (o *Transform) GetInternal() bool`

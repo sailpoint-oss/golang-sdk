@@ -224,19 +224,19 @@ Class | Method | HTTP request | Description
 *IdentityProfilesApi* | [**DeleteIdentityProfiles**](docs/IdentityProfilesApi.md#deleteidentityprofiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesApi* | [**ExportIdentityProfiles**](docs/IdentityProfilesApi.md#exportidentityprofiles) | **Get** /identity-profiles/export | Export Identity Profiles
 *IdentityProfilesApi* | [**GenerateIdentityPreview**](docs/IdentityProfilesApi.md#generateidentitypreview) | **Post** /identity-profiles/identity-preview | Generate Identity Profile Preview
-*IdentityProfilesApi* | [**GetDefaultIdentityAttributeConfig**](docs/IdentityProfilesApi.md#getdefaultidentityattributeconfig) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Gets the default identity attribute config
+*IdentityProfilesApi* | [**GetDefaultIdentityAttributeConfig**](docs/IdentityProfilesApi.md#getdefaultidentityattributeconfig) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Default identity attribute config
 *IdentityProfilesApi* | [**GetIdentityProfile**](docs/IdentityProfilesApi.md#getidentityprofile) | **Get** /identity-profiles/{identity-profile-id} | Gets a single Identity Profile
 *IdentityProfilesApi* | [**ImportIdentityProfiles**](docs/IdentityProfilesApi.md#importidentityprofiles) | **Post** /identity-profiles/import | Import Identity Profiles
 *IdentityProfilesApi* | [**ListIdentityProfiles**](docs/IdentityProfilesApi.md#listidentityprofiles) | **Get** /identity-profiles | Identity Profiles list
-*IdentityProfilesApi* | [**RefreshIdentityProfile**](docs/IdentityProfilesApi.md#refreshidentityprofile) | **Post** /identity-profiles/{identity-profile-id}/refresh-identities | Refreshes all the identities under this profile
+*IdentityProfilesApi* | [**RefreshIdentityProfile**](docs/IdentityProfilesApi.md#refreshidentityprofile) | **Post** /identity-profiles/{identity-profile-id}/refresh-identities | Refreshes all identities under profile
 *IdentityProfilesApi* | [**UpdateIdentityProfile**](docs/IdentityProfilesApi.md#updateidentityprofile) | **Patch** /identity-profiles/{identity-profile-id} | Update the Identity Profile
 *LifecycleStatesApi* | [**ListLifecycleStates**](docs/LifecycleStatesApi.md#listlifecyclestates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Lifecycle State
 *LifecycleStatesApi* | [**UpdateLifecycleStates**](docs/LifecycleStatesApi.md#updatelifecyclestates) | **Patch** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
-*MFAConfigurationApi* | [**GetMFAConfig**](docs/MFAConfigurationApi.md#getmfaconfig) | **Get** /mfa/{method}/config | Get configuration of a MFA method
-*MFAConfigurationApi* | [**SetMFAConfig**](docs/MFAConfigurationApi.md#setmfaconfig) | **Put** /mfa/{method}/config | Set configuration of a MFA method
-*MFAConfigurationApi* | [**TestMFAConfig**](docs/MFAConfigurationApi.md#testmfaconfig) | **Get** /mfa/{method}/test | Test configuration of a MFA method
-*ManagedClientsApi* | [**GetManagedClientStatus**](docs/ManagedClientsApi.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Get a specified Managed Client Status.
-*ManagedClientsApi* | [**UpdateManagedClientStatus**](docs/ManagedClientsApi.md#updatemanagedclientstatus) | **Post** /managed-clients/{id}/status | Handle a status request from a client
+*MFAConfigurationApi* | [**GetMFAConfig**](docs/MFAConfigurationApi.md#getmfaconfig) | **Get** /mfa/{method}/config | Configuration of a MFA method
+*MFAConfigurationApi* | [**SetMFAConfig**](docs/MFAConfigurationApi.md#setmfaconfig) | **Put** /mfa/{method}/config | Set MFA method configuration
+*MFAConfigurationApi* | [**TestMFAConfig**](docs/MFAConfigurationApi.md#testmfaconfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
+*ManagedClientsApi* | [**GetManagedClientStatus**](docs/ManagedClientsApi.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Specified Managed Client Status.
+*ManagedClientsApi* | [**UpdateManagedClientStatus**](docs/ManagedClientsApi.md#updatemanagedclientstatus) | **Post** /managed-clients/{id}/status | Handle status request from client
 *ManagedClustersApi* | [**GetClientLogConfiguration**](docs/ManagedClustersApi.md#getclientlogconfiguration) | **Get** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
 *ManagedClustersApi* | [**GetManagedCluster**](docs/ManagedClustersApi.md#getmanagedcluster) | **Get** /managed-clusters/{id} | Get a specified ManagedCluster.
 *ManagedClustersApi* | [**GetManagedClusters**](docs/ManagedClustersApi.md#getmanagedclusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
@@ -245,18 +245,18 @@ Class | Method | HTTP request | Description
 *NonEmployeeLifecycleManagementApi* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementApi.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**CreateNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementApi.md#createnonemployeerequest) | **Post** /non-employee-requests | Create Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**CreateNonEmployeeSource**](docs/NonEmployeeLifecycleManagementApi.md#createnonemployeesource) | **Post** /non-employee-sources | Create Non-Employee Source
-*NonEmployeeLifecycleManagementApi* | [**CreateNonEmployeeSourceSchemaAttributes**](docs/NonEmployeeLifecycleManagementApi.md#createnonemployeesourceschemaattributes) | **Post** /non-employee-sources/{sourceId}/schema-attributes | Create a new Schema Attribute for Non-Employee Source
+*NonEmployeeLifecycleManagementApi* | [**CreateNonEmployeeSourceSchemaAttributes**](docs/NonEmployeeLifecycleManagementApi.md#createnonemployeesourceschemaattributes) | **Post** /non-employee-sources/{sourceId}/schema-attributes | Create Non-Employee Source Schema Attribute
 *NonEmployeeLifecycleManagementApi* | [**DeleteNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementApi.md#deletenonemployeerecord) | **Delete** /non-employee-records/{id} | Delete Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**DeleteNonEmployeeRecordInBulk**](docs/NonEmployeeLifecycleManagementApi.md#deletenonemployeerecordinbulk) | **Post** /non-employee-records/bulk-delete | Delete Multiple Non-Employee Records
 *NonEmployeeLifecycleManagementApi* | [**DeleteNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementApi.md#deletenonemployeerequest) | **Delete** /non-employee-requests/{id} | Delete Non-Employee Request
-*NonEmployeeLifecycleManagementApi* | [**DeleteNonEmployeeSchemaAttribute**](docs/NonEmployeeLifecycleManagementApi.md#deletenonemployeeschemaattribute) | **Delete** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Delete a Schema Attribute for Non-Employee Source
+*NonEmployeeLifecycleManagementApi* | [**DeleteNonEmployeeSchemaAttribute**](docs/NonEmployeeLifecycleManagementApi.md#deletenonemployeeschemaattribute) | **Delete** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Delete Non-Employee Source&#39;s Schema Attribute
 *NonEmployeeLifecycleManagementApi* | [**DeleteNonEmployeeSource**](docs/NonEmployeeLifecycleManagementApi.md#deletenonemployeesource) | **Delete** /non-employee-sources/{sourceId} | Delete Non-Employee Source
-*NonEmployeeLifecycleManagementApi* | [**DeleteNonEmployeeSourceSchemaAttributes**](docs/NonEmployeeLifecycleManagementApi.md#deletenonemployeesourceschemaattributes) | **Delete** /non-employee-sources/{sourceId}/schema-attributes | Delete all custom schema attributes for Non-Employee Source
+*NonEmployeeLifecycleManagementApi* | [**DeleteNonEmployeeSourceSchemaAttributes**](docs/NonEmployeeLifecycleManagementApi.md#deletenonemployeesourceschemaattributes) | **Delete** /non-employee-sources/{sourceId}/schema-attributes | Delete all custom schema attributes
 *NonEmployeeLifecycleManagementApi* | [**ExportNonEmployeeRecords**](docs/NonEmployeeLifecycleManagementApi.md#exportnonemployeerecords) | **Get** /non-employee-sources/{id}/non-employees/download | Exports Non-Employee Records to CSV
 *NonEmployeeLifecycleManagementApi* | [**ExportNonEmployeeSourceSchemaTemplate**](docs/NonEmployeeLifecycleManagementApi.md#exportnonemployeesourceschematemplate) | **Get** /non-employee-sources/{id}/schema-attributes-template/download | Exports Source Schema Template
 *NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeApproval**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeeapproval) | **Get** /non-employee-approvals/{id} | Get a non-employee approval item detail
 *NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeApprovalSummary**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeeapprovalsummary) | **Get** /non-employee-approvals/summary/{requested-for} | Get Summary of Non-Employee Approval Requests
-*NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeBulkUploadStatus**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeebulkuploadstatus) | **Get** /non-employee-sources/{id}/non-employee-bulk-upload/status | Obtain the status of bulk upload on the source
+*NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeBulkUploadStatus**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeebulkuploadstatus) | **Get** /non-employee-sources/{id}/non-employee-bulk-upload/status | Bulk upload status on source
 *NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeerecord) | **Get** /non-employee-records/{id} | Get a Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeerequest) | **Get** /non-employee-requests/{id} | Get a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeRequestSummary**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeerequestsummary) | **Get** /non-employee-requests/summary/{requested-for} | Get Summary of Non-Employee Requests
@@ -268,7 +268,7 @@ Class | Method | HTTP request | Description
 *NonEmployeeLifecycleManagementApi* | [**ListNonEmployeeRequests**](docs/NonEmployeeLifecycleManagementApi.md#listnonemployeerequests) | **Get** /non-employee-requests | List Non-Employee Requests
 *NonEmployeeLifecycleManagementApi* | [**ListNonEmployeeSources**](docs/NonEmployeeLifecycleManagementApi.md#listnonemployeesources) | **Get** /non-employee-sources | List Non-Employee Sources
 *NonEmployeeLifecycleManagementApi* | [**PatchNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementApi.md#patchnonemployeerecord) | **Patch** /non-employee-records/{id} | Patch Non-Employee Record
-*NonEmployeeLifecycleManagementApi* | [**PatchNonEmployeeSchemaAttribute**](docs/NonEmployeeLifecycleManagementApi.md#patchnonemployeeschemaattribute) | **Patch** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Patch a Schema Attribute for Non-Employee Source
+*NonEmployeeLifecycleManagementApi* | [**PatchNonEmployeeSchemaAttribute**](docs/NonEmployeeLifecycleManagementApi.md#patchnonemployeeschemaattribute) | **Patch** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Patch Non-Employee Source&#39;s Schema Attribute
 *NonEmployeeLifecycleManagementApi* | [**PatchNonEmployeeSource**](docs/NonEmployeeLifecycleManagementApi.md#patchnonemployeesource) | **Patch** /non-employee-sources/{sourceId} | Patch a Non-Employee Source
 *NonEmployeeLifecycleManagementApi* | [**RejectNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementApi.md#rejectnonemployeerequest) | **Post** /non-employee-approvals/{id}/reject | Reject a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**UpdateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementApi.md#updatenonemployeerecord) | **Put** /non-employee-records/{id} | Update Non-Employee Record
@@ -325,10 +325,11 @@ Class | Method | HTTP request | Description
 *RoleInsightsApi* | [**GetRoleInsightsEntitlementsChanges**](docs/RoleInsightsApi.md#getroleinsightsentitlementschanges) | **Get** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
 *RoleInsightsApi* | [**GetRoleInsightsRequests**](docs/RoleInsightsApi.md#getroleinsightsrequests) | **Get** /role-insights/requests/{id} | Returns the metadata for a request in order to generate insights for roles.
 *RoleInsightsApi* | [**GetRoleInsightsSummary**](docs/RoleInsightsApi.md#getroleinsightssummary) | **Get** /role-insights/summary | Get role insights summary information
+*RolesApi* | [**BulkDeleteRoles**](docs/RolesApi.md#bulkdeleteroles) | **Post** /roles/bulk-delete | Delete Role(s)
 *RolesApi* | [**CreateRole**](docs/RolesApi.md#createrole) | **Post** /roles | Create a Role
 *RolesApi* | [**DeleteRole**](docs/RolesApi.md#deleterole) | **Delete** /roles/{id} | Delete a Role
 *RolesApi* | [**GetRole**](docs/RolesApi.md#getrole) | **Get** /roles/{id} | Get a Role
-*RolesApi* | [**GetRoleAssignedIdentities**](docs/RolesApi.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | Get a list of Identities assigned a Role
+*RolesApi* | [**GetRoleAssignedIdentities**](docs/RolesApi.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | Identities assigned a Role
 *RolesApi* | [**ListRoles**](docs/RolesApi.md#listroles) | **Get** /roles | List Roles
 *RolesApi* | [**PatchRole**](docs/RolesApi.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
 *SODPolicyApi* | [**CreateSodPolicy**](docs/SODPolicyApi.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
@@ -365,16 +366,16 @@ Class | Method | HTTP request | Description
 *SegmentsApi* | [**GetSegment**](docs/SegmentsApi.md#getsegment) | **Get** /segments/{id} | Get a Segment by its ID
 *SegmentsApi* | [**ListSegments**](docs/SegmentsApi.md#listsegments) | **Get** /segments | List Segments
 *SegmentsApi* | [**PatchSegment**](docs/SegmentsApi.md#patchsegment) | **Patch** /segments/{id} | Update a Segment
-*ServiceDeskIntegrationApi* | [**CreateServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#createservicedeskintegration) | **Post** /service-desk-integrations | Create a new Service Desk integration
-*ServiceDeskIntegrationApi* | [**DeleteServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#deleteservicedeskintegration) | **Delete** /service-desk-integrations/{id} | Delete a Service Desk integration by ID
-*ServiceDeskIntegrationApi* | [**GetServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#getservicedeskintegration) | **Get** /service-desk-integrations/{id} | Get a Service Desk integration by ID
+*ServiceDeskIntegrationApi* | [**CreateServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#createservicedeskintegration) | **Post** /service-desk-integrations | Create new Service Desk integration
+*ServiceDeskIntegrationApi* | [**DeleteServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#deleteservicedeskintegration) | **Delete** /service-desk-integrations/{id} | Delete a Service Desk integration
+*ServiceDeskIntegrationApi* | [**GetServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#getservicedeskintegration) | **Get** /service-desk-integrations/{id} | Get a Service Desk integration
 *ServiceDeskIntegrationApi* | [**GetServiceDeskIntegrationList**](docs/ServiceDeskIntegrationApi.md#getservicedeskintegrationlist) | **Get** /service-desk-integrations | List existing Service Desk Integrations
 *ServiceDeskIntegrationApi* | [**GetServiceDeskIntegrationTemplate**](docs/ServiceDeskIntegrationApi.md#getservicedeskintegrationtemplate) | **Get** /service-desk-integrations/templates/{scriptName} | Service Desk integration template by scriptName.
 *ServiceDeskIntegrationApi* | [**GetServiceDeskIntegrationTypes**](docs/ServiceDeskIntegrationApi.md#getservicedeskintegrationtypes) | **Get** /service-desk-integrations/types | Service Desk Integration Types List.
-*ServiceDeskIntegrationApi* | [**GetStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#getstatuscheckdetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration of queued SDIM tickets
-*ServiceDeskIntegrationApi* | [**PatchServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#patchservicedeskintegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update - PATCH
-*ServiceDeskIntegrationApi* | [**UpdateServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#updateservicedeskintegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration by ID
-*ServiceDeskIntegrationApi* | [**UpdateStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#updatestatuscheckdetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration of queued SDIM tickets
+*ServiceDeskIntegrationApi* | [**GetStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#getstatuscheckdetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration
+*ServiceDeskIntegrationApi* | [**PatchServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#patchservicedeskintegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update PATCH
+*ServiceDeskIntegrationApi* | [**UpdateServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#updateservicedeskintegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration
+*ServiceDeskIntegrationApi* | [**UpdateStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#updatestatuscheckdetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration
 *SourcesApi* | [**CreateProvisioningPolicy**](docs/SourcesApi.md#createprovisioningpolicy) | **Post** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
 *SourcesApi* | [**CreateSource**](docs/SourcesApi.md#createsource) | **Post** /sources | Creates a source in IdentityNow.
 *SourcesApi* | [**CreateSourceSchema**](docs/SourcesApi.md#createsourceschema) | **Post** /sources/{sourceId}/schemas | Creates a new Schema on the specified Source in IdentityNow.
@@ -392,15 +393,15 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**ListProvisioningPolicies**](docs/SourcesApi.md#listprovisioningpolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 *SourcesApi* | [**ListSourceSchemas**](docs/SourcesApi.md#listsourceschemas) | **Get** /sources/{sourceId}/schemas | Lists the Schemas that exist on the specified Source in IdentityNow.
 *SourcesApi* | [**ListSources**](docs/SourcesApi.md#listsources) | **Get** /sources | Lists all sources in IdentityNow.
-*SourcesApi* | [**PeekResourceObjects**](docs/SourcesApi.md#peekresourceobjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek resource objects from the source connector
-*SourcesApi* | [**PingCluster**](docs/SourcesApi.md#pingcluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for the source connector
+*SourcesApi* | [**PeekResourceObjects**](docs/SourcesApi.md#peekresourceobjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
+*SourcesApi* | [**PingCluster**](docs/SourcesApi.md#pingcluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
 *SourcesApi* | [**PutProvisioningPolicy**](docs/SourcesApi.md#putprovisioningpolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 *SourcesApi* | [**PutSource**](docs/SourcesApi.md#putsource) | **Put** /sources/{id} | Update Source (Full)
 *SourcesApi* | [**PutSourceAttrSyncConfig**](docs/SourcesApi.md#putsourceattrsyncconfig) | **Put** /sources/{id}/attribute-sync-config | Update Attribute Sync Config
 *SourcesApi* | [**PutSourceSchema**](docs/SourcesApi.md#putsourceschema) | **Put** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
 *SourcesApi* | [**SyncAttributesForSource**](docs/SourcesApi.md#syncattributesforsource) | **Post** /sources/{id}/synchronize-attributes | Synchronize single source attributes.
-*SourcesApi* | [**TestSourceConfiguration**](docs/SourcesApi.md#testsourceconfiguration) | **Post** /sources/{sourceId}/connector/test-configuration | Test configuration for the source connector
-*SourcesApi* | [**TestSourceConnection**](docs/SourcesApi.md#testsourceconnection) | **Post** /sources/{sourceId}/connector/check-connection | Check connection for the source connector.
+*SourcesApi* | [**TestSourceConfiguration**](docs/SourcesApi.md#testsourceconfiguration) | **Post** /sources/{sourceId}/connector/test-configuration | Test configuration for source connector
+*SourcesApi* | [**TestSourceConnection**](docs/SourcesApi.md#testsourceconnection) | **Post** /sources/{sourceId}/connector/check-connection | Check connection for source connector.
 *SourcesApi* | [**UpdateProvisioningPoliciesInBulk**](docs/SourcesApi.md#updateprovisioningpoliciesinbulk) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
 *SourcesApi* | [**UpdateProvisioningPolicy**](docs/SourcesApi.md#updateprovisioningpolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 *SourcesApi* | [**UpdateSource**](docs/SourcesApi.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
@@ -855,6 +856,7 @@ Class | Method | HTTP request | Description
  - [Revocability](docs/Revocability.md)
  - [Role](docs/Role.md)
  - [RoleAssignmentSourceType](docs/RoleAssignmentSourceType.md)
+ - [RoleBulkDeleteRequest](docs/RoleBulkDeleteRequest.md)
  - [RoleCriteriaKey](docs/RoleCriteriaKey.md)
  - [RoleCriteriaKeyType](docs/RoleCriteriaKeyType.md)
  - [RoleCriteriaLevel1](docs/RoleCriteriaLevel1.md)

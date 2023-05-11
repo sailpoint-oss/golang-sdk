@@ -92,15 +92,21 @@ type APIClient struct {
 
 	RolesApi *RolesApiService
 
+	SODPolicyApi *SODPolicyApiService
+
 	SavedSearchApi *SavedSearchApiService
 
 	ScheduledSearchApi *ScheduledSearchApiService
 
 	SearchApi *SearchApiService
 
+	SegmentsApi *SegmentsApiService
+
 	ServiceDeskIntegrationApi *ServiceDeskIntegrationApiService
 
 	SourcesApi *SourcesApiService
+
+	TaggedObjectsApi *TaggedObjectsApiService
 
 	TransformsApi *TransformsApiService
 
@@ -143,11 +149,14 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PublicIdentitiesConfigApi = (*PublicIdentitiesConfigApiService)(&c.common)
 	c.RequestableObjectsApi = (*RequestableObjectsApiService)(&c.common)
 	c.RolesApi = (*RolesApiService)(&c.common)
+	c.SODPolicyApi = (*SODPolicyApiService)(&c.common)
 	c.SavedSearchApi = (*SavedSearchApiService)(&c.common)
 	c.ScheduledSearchApi = (*ScheduledSearchApiService)(&c.common)
 	c.SearchApi = (*SearchApiService)(&c.common)
+	c.SegmentsApi = (*SegmentsApiService)(&c.common)
 	c.ServiceDeskIntegrationApi = (*ServiceDeskIntegrationApiService)(&c.common)
 	c.SourcesApi = (*SourcesApiService)(&c.common)
+	c.TaggedObjectsApi = (*TaggedObjectsApiService)(&c.common)
 	c.TransformsApi = (*TransformsApiService)(&c.common)
 	c.WorkItemsApi = (*WorkItemsApiService)(&c.common)
 

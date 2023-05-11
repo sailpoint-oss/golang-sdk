@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | Pointer to **bool** | The backend will only promote values if the profile/mapping is enabled. | [optional] 
+**Enabled** | Pointer to **bool** | The backend will only promote values if the profile/mapping is enabled. | [optional] [default to false]
 **AttributeTransforms** | Pointer to [**[]IdentityAttributeTransform**](IdentityAttributeTransform.md) |  | [optional] 
 
 ## Methods

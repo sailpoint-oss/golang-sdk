@@ -22,7 +22,7 @@ type TransformDefinition struct {
 	// The type of the transform definition.
 	Type *string `json:"type,omitempty"`
 	// Arbitrary key-value pairs to store any metadata for the object
-	Attributes map[string]map[string]interface{} `json:"attributes,omitempty"`
+	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,10 +77,10 @@ func (o *TransformDefinition) SetType(v string) {
 	o.Type = &v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *TransformDefinition) GetAttributes() map[string]map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
-		var ret map[string]map[string]interface{}
+// GetAttributes returns the Attributes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TransformDefinition) GetAttributes() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Attributes
@@ -88,24 +88,25 @@ func (o *TransformDefinition) GetAttributes() map[string]map[string]interface{} 
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TransformDefinition) GetAttributesOk() (map[string]map[string]interface{}, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TransformDefinition) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Attributes) {
-		return map[string]map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
 }
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *TransformDefinition) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && isNil(o.Attributes) {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]map[string]interface{} and assigns it to the Attributes field.
-func (o *TransformDefinition) SetAttributes(v map[string]map[string]interface{}) {
+// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
+func (o *TransformDefinition) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
@@ -122,7 +123,7 @@ func (o TransformDefinition) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.Attributes) {
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
 

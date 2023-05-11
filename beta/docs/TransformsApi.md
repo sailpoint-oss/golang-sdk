@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    transform := *openapiclient.NewTransform("Timestamp To Date", "concat", map[string]interface{}{"key": interface{}(123)}) // Transform | The transform to be created.
+    transform := *openapiclient.NewTransform("Timestamp To Date", "concat", map[string]interface{}({inputFormat=MMM dd yyyy, HH:mm:ss.SSS, outputFormat=yyyy/dd/MM})) // Transform | The transform to be created.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | ID of the transform to delete
+    id := "2c9180835d2e5168015d32f890ca1581" // string | ID of the transform to delete
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -167,7 +167,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | ID of the transform to retrieve
+    id := "2c9180835d2e5168015d32f890ca1581" // string | ID of the transform to retrieve
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -241,7 +241,7 @@ func main() {
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     name := "ExampleTransformName123" // string | Name of the transform to retrieve from the list. (optional)
-    filters := "filters_example" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **internal**: *eq* **name**: *eq*, *sw* (optional)
+    filters := "name eq ExampleTransformName123" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **internal**: *eq* **name**: *eq*, *sw* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -311,8 +311,8 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | ID of the transform to update
-    transform := *openapiclient.NewTransform("Timestamp To Date", "concat", map[string]interface{}{"key": interface{}(123)}) // Transform | The updated transform object (must include \"name\", \"type\", and \"attributes\" fields). (optional)
+    id := "2c9180835d2e5168015d32f890ca1581" // string | ID of the transform to update
+    transform := *openapiclient.NewTransform("Timestamp To Date", "concat", map[string]interface{}({inputFormat=MMM dd yyyy, HH:mm:ss.SSS, outputFormat=yyyy/dd/MM})) // Transform | The updated transform object (must include \"name\", \"type\", and \"attributes\" fields). (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -21,7 +21,7 @@ var _ MappedNullable = &SourceHealthDto{}
 type SourceHealthDto struct {
 	// the id of the Source
 	Id *string `json:"id,omitempty"`
-	// Specifies the type of system being managed e.g. Active Directory, Workday, etc..
+	// Specifies the type of system being managed e.g. Active Directory, Workday, etc.. If you are creating a Delimited File source, you must set the `provisionasCsv` query parameter to `true`. 
 	Type *string `json:"type,omitempty"`
 	// the name of the source
 	Name *string `json:"name,omitempty"`

@@ -190,9 +190,9 @@ func (o *ConnectorRuleCreateRequest) SetSourceCode(v SourceCode) {
 	o.SourceCode = v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
+// GetAttributes returns the Attributes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConnectorRuleCreateRequest) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -201,6 +201,7 @@ func (o *ConnectorRuleCreateRequest) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectorRuleCreateRequest) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Attributes) {
 		return map[string]interface{}{}, false
@@ -210,7 +211,7 @@ func (o *ConnectorRuleCreateRequest) GetAttributesOk() (map[string]interface{}, 
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *ConnectorRuleCreateRequest) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+	if o != nil && isNil(o.Attributes) {
 		return true
 	}
 
@@ -241,7 +242,7 @@ func (o ConnectorRuleCreateRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["signature"] = o.Signature
 	}
 	toSerialize["sourceCode"] = o.SourceCode
-	if !isNil(o.Attributes) {
+	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}
 

@@ -915,7 +915,7 @@ func (r ApiGetDefaultIdentityAttributeConfigRequest) Execute() (*IdentityAttribu
 }
 
 /*
-GetDefaultIdentityAttributeConfig Gets the default identity attribute config
+GetDefaultIdentityAttributeConfig Default identity attribute config
 
 This returns the default identity attribute config
 A token with ORG_ADMIN authority is required to call this API to get the default identity attribute config.
@@ -1622,7 +1622,7 @@ func (r ApiRefreshIdentityProfileRequest) Execute() (map[string]interface{}, *ht
 }
 
 /*
-RefreshIdentityProfile Refreshes all the identities under this profile
+RefreshIdentityProfile Refreshes all identities under profile
 
 This refreshes all identities under the profile
 A token with ORG_ADMIN authority is required to call this API to refresh identities under this Identity Profile.

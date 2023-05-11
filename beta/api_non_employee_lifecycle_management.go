@@ -707,11 +707,9 @@ func (r ApiCreateNonEmployeeSourceSchemaAttributesRequest) Execute() (*NonEmploy
 }
 
 /*
-CreateNonEmployeeSourceSchemaAttributes Create a new Schema Attribute for Non-Employee Source
+CreateNonEmployeeSourceSchemaAttributes Create Non-Employee Source Schema Attribute
 
 This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a "400.1.409 Reference conflict" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a "400.1.4 Limit violation" response.
-Request requires a security scope of:
-'idn:nesr:create'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id
@@ -874,8 +872,6 @@ func (r ApiDeleteNonEmployeeRecordRequest) Execute() (*http.Response, error) {
 DeleteNonEmployeeRecord Delete Non-Employee Record
 
 This request will delete a non-employee record.
-Request will require the following security scope:
-'idn:nesr:delete'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-Employee record id (UUID)
@@ -1177,9 +1173,7 @@ func (r ApiDeleteNonEmployeeRequestRequest) Execute() (*http.Response, error) {
 /*
 DeleteNonEmployeeRequest Delete Non-Employee Request
 
-This request will delete a non-employee request.  
-Request will require the following scope:
-'idn:nesr:delete'
+This request will delete a non-employee request.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-Employee request id in the UUID format
@@ -1335,13 +1329,9 @@ func (r ApiDeleteNonEmployeeSchemaAttributeRequest) Execute() (*http.Response, e
 }
 
 /*
-DeleteNonEmployeeSchemaAttribute Delete a Schema Attribute for Non-Employee Source
+DeleteNonEmployeeSchemaAttribute Delete Non-Employee Source's Schema Attribute
 
 This end-point deletes a specific schema attribute for a non-employee source.
-
-Request will require a security scope of:
-
-'idn:nesr:delete'
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1492,8 +1482,6 @@ func (r ApiDeleteNonEmployeeSourceRequest) Execute() (*http.Response, error) {
 DeleteNonEmployeeSource Delete Non-Employee Source
 
 This request will delete a non-employee source.
-Request will require the following security scope:
-'idn:nesr:delete'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source Id
@@ -1637,11 +1625,9 @@ func (r ApiDeleteNonEmployeeSourceSchemaAttributesRequest) Execute() (*http.Resp
 }
 
 /*
-DeleteNonEmployeeSourceSchemaAttributes Delete all custom schema attributes for Non-Employee Source
+DeleteNonEmployeeSourceSchemaAttributes Delete all custom schema attributes
 
 This end-point deletes all custom schema attributes for a non-employee source.
-Request requires a security scope of:
-'idn:nesr:delete'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId The Source id
@@ -1788,8 +1774,6 @@ func (r ApiExportNonEmployeeRecordsRequest) Execute() (*http.Response, error) {
 ExportNonEmployeeRecords Exports Non-Employee Records to CSV
 
 This requests a CSV download for all non-employees from a provided source.
-Request will need the following security scope:
-'idn:nesr:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Source Id (UUID)
@@ -2427,13 +2411,9 @@ func (r ApiGetNonEmployeeBulkUploadStatusRequest) Execute() (*NonEmployeeBulkUpl
 }
 
 /*
-GetNonEmployeeBulkUploadStatus Obtain the status of bulk upload on the source
+GetNonEmployeeBulkUploadStatus Bulk upload status on source
 
 The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source.
-
-Request will need the following scope:
-
-'idn:nesr:read'
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2592,8 +2572,6 @@ func (r ApiGetNonEmployeeRecordRequest) Execute() (*NonEmployeeRecord, *http.Res
 GetNonEmployeeRecord Get a Non-Employee Record
 
 This gets a non-employee record.
-Request will require the following scope:
-'idn:nesr:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Non-Employee record id (UUID)
@@ -4592,13 +4570,9 @@ func (r ApiPatchNonEmployeeSchemaAttributeRequest) Execute() (*NonEmployeeSchema
 }
 
 /*
-PatchNonEmployeeSchemaAttribute Patch a Schema Attribute for Non-Employee Source
+PatchNonEmployeeSchemaAttribute Patch Non-Employee Source's Schema Attribute
 
 This end-point patches a specific schema attribute for a non-employee SourceId.
-
-Request will require a security scope of:
-
-'idn:nesr:update'
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -4783,8 +4757,6 @@ func (r ApiPatchNonEmployeeSourceRequest) Execute() (*NonEmployeeSource, *http.R
 PatchNonEmployeeSource Patch a Non-Employee Source
 
 patch a non-employee source. (Partial Update)  Patchable field: **name, description, approvers, accountManagers**
-Request will require the following security scope:
-'idn:nesr:update'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param sourceId Source Id
