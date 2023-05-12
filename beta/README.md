@@ -263,6 +263,7 @@ Class | Method | HTTP request | Description
 *NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeSchemaAttribute**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeeschemaattribute) | **Get** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Get Schema Attribute Non-Employee Source
 *NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeSource**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeesource) | **Get** /non-employee-sources/{sourceId} | Get a Non-Employee Source
 *NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeSourceSchemaAttributes**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeesourceschemaattributes) | **Get** /non-employee-sources/{sourceId}/schema-attributes | List Schema Attributes Non-Employee Source
+*NonEmployeeLifecycleManagementApi* | [**ImportNonEmployeeRecordsInBulk**](docs/NonEmployeeLifecycleManagementApi.md#importnonemployeerecordsinbulk) | **Post** /non-employee-sources/{id}/non-employee-bulk-upload | Imports, or Updates, Non-Employee Records
 *NonEmployeeLifecycleManagementApi* | [**ListNonEmployeeApproval**](docs/NonEmployeeLifecycleManagementApi.md#listnonemployeeapproval) | **Get** /non-employee-approvals | Get List of Non-Employee Approval Requests
 *NonEmployeeLifecycleManagementApi* | [**ListNonEmployeeRecords**](docs/NonEmployeeLifecycleManagementApi.md#listnonemployeerecords) | **Get** /non-employee-records | List Non-Employee Records
 *NonEmployeeLifecycleManagementApi* | [**ListNonEmployeeRequests**](docs/NonEmployeeLifecycleManagementApi.md#listnonemployeerequests) | **Get** /non-employee-requests | List Non-Employee Requests
@@ -272,7 +273,6 @@ Class | Method | HTTP request | Description
 *NonEmployeeLifecycleManagementApi* | [**PatchNonEmployeeSource**](docs/NonEmployeeLifecycleManagementApi.md#patchnonemployeesource) | **Patch** /non-employee-sources/{sourceId} | Patch a Non-Employee Source
 *NonEmployeeLifecycleManagementApi* | [**RejectNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementApi.md#rejectnonemployeerequest) | **Post** /non-employee-approvals/{id}/reject | Reject a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**UpdateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementApi.md#updatenonemployeerecord) | **Put** /non-employee-records/{id} | Update Non-Employee Record
-*NonEmployeeLifecycleManagementApi* | [**UploadNonEmployeeRecordsInBulk**](docs/NonEmployeeLifecycleManagementApi.md#uploadnonemployeerecordsinbulk) | **Post** /non-employee-sources/{id}/non-employee-bulk-upload | Imports, or Updates, Non-Employee Records
 *NotificationsApi* | [**CreateNotificationTemplate**](docs/NotificationsApi.md#createnotificationtemplate) | **Post** /notification-templates | Create Notification Template
 *NotificationsApi* | [**CreateVerifiedFromAddress**](docs/NotificationsApi.md#createverifiedfromaddress) | **Post** /verified-from-addresses | Create Verified From Address
 *NotificationsApi* | [**DeleteNotificationTemplatesInBulk**](docs/NotificationsApi.md#deletenotificationtemplatesinbulk) | **Post** /notification-templates/bulk-delete | Bulk Delete Notification Templates
@@ -709,6 +709,7 @@ Class | Method | HTTP request | Description
  - [IdentitySyncPayload](docs/IdentitySyncPayload.md)
  - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [ImportNonEmployeeRecordsInBulkRequest](docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [ImportOptions](docs/ImportOptions.md)
  - [ImportSpConfigRequest](docs/ImportSpConfigRequest.md)
  - [Invocation](docs/Invocation.md)
@@ -1068,7 +1069,6 @@ Class | Method | HTTP request | Description
  - [TriggerOutputAccessRequestPreApproval](docs/TriggerOutputAccessRequestPreApproval.md)
  - [TriggerType](docs/TriggerType.md)
  - [UpdatePasswordDictionaryRequest](docs/UpdatePasswordDictionaryRequest.md)
- - [UploadNonEmployeeRecordsInBulkRequest](docs/UploadNonEmployeeRecordsInBulkRequest.md)
  - [UsageType](docs/UsageType.md)
  - [V3ConnectorDto](docs/V3ConnectorDto.md)
  - [VAClusterStatusChangeEvent](docs/VAClusterStatusChangeEvent.md)

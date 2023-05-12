@@ -317,6 +317,7 @@ docs/IdentitySyncJob.md
 docs/IdentitySyncPayload.md
 docs/IdentityWithNewAccess.md
 docs/IdentityWithNewAccessAccessRefsInner.md
+docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportOptions.md
 docs/ImportSpConfigRequest.md
 docs/Invocation.md
@@ -703,7 +704,6 @@ docs/TriggerOutputAccessRequestPreApproval.md
 docs/TriggerType.md
 docs/TriggersApi.md
 docs/UpdatePasswordDictionaryRequest.md
-docs/UploadNonEmployeeRecordsInBulkRequest.md
 docs/UsageType.md
 docs/V3ConnectorDto.md
 docs/VAClusterStatusChangeEvent.md
@@ -983,6 +983,7 @@ model_identity_sync_job.go
 model_identity_sync_payload.go
 model_identity_with_new_access.go
 model_identity_with_new_access_access_refs_inner.go
+model_import_non_employee_records_in_bulk_request.go
 model_import_options.go
 model_import_sp_config_request.go
 model_invocation.go
@@ -1342,7 +1343,6 @@ model_trigger_output_access_request_dynamic_approver.go
 model_trigger_output_access_request_pre_approval.go
 model_trigger_type.go
 model_update_password_dictionary_request.go
-model_upload_non_employee_records_in_bulk_request.go
 model_usage_type.go
 model_v3_connector_dto.go
 model_va_cluster_status_change_event.go

@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
 *NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeSchemaAttribute**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeeschemaattribute) | **Get** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Get Schema Attribute Non-Employee Source
 *NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeSource**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeesource) | **Get** /non-employee-sources/{sourceId} | Get a Non-Employee Source
 *NonEmployeeLifecycleManagementApi* | [**GetNonEmployeeSourceSchemaAttributes**](docs/NonEmployeeLifecycleManagementApi.md#getnonemployeesourceschemaattributes) | **Get** /non-employee-sources/{sourceId}/schema-attributes | List Schema Attributes Non-Employee Source
+*NonEmployeeLifecycleManagementApi* | [**ImportNonEmployeeRecordsInBulk**](docs/NonEmployeeLifecycleManagementApi.md#importnonemployeerecordsinbulk) | **Post** /non-employee-sources/{id}/non-employee-bulk-upload | Imports, or Updates, Non-Employee Records
 *NonEmployeeLifecycleManagementApi* | [**ListNonEmployeeApprovals**](docs/NonEmployeeLifecycleManagementApi.md#listnonemployeeapprovals) | **Get** /non-employee-approvals | Get List of Non-Employee Approval Requests
 *NonEmployeeLifecycleManagementApi* | [**ListNonEmployeeRecords**](docs/NonEmployeeLifecycleManagementApi.md#listnonemployeerecords) | **Get** /non-employee-records | List Non-Employee Records
 *NonEmployeeLifecycleManagementApi* | [**ListNonEmployeeRequests**](docs/NonEmployeeLifecycleManagementApi.md#listnonemployeerequests) | **Get** /non-employee-requests | List Non-Employee Requests
@@ -161,7 +162,6 @@ Class | Method | HTTP request | Description
 *NonEmployeeLifecycleManagementApi* | [**PatchNonEmployeeSource**](docs/NonEmployeeLifecycleManagementApi.md#patchnonemployeesource) | **Patch** /non-employee-sources/{sourceId} | Patch a Non-Employee Source
 *NonEmployeeLifecycleManagementApi* | [**RejectNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementApi.md#rejectnonemployeerequest) | **Post** /non-employee-approvals/{id}/reject | Reject a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**UpdateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementApi.md#updatenonemployeerecord) | **Put** /non-employee-records/{id} | Update Non-Employee Record
-*NonEmployeeLifecycleManagementApi* | [**UploadNonEmployeeRecordsInBulk**](docs/NonEmployeeLifecycleManagementApi.md#uploadnonemployeerecordsinbulk) | **Post** /non-employee-sources/{id}/non-employee-bulk-upload | Imports, or Updates, Non-Employee Records
 *OAuthClientsApi* | [**CreateOauthClient**](docs/OAuthClientsApi.md#createoauthclient) | **Post** /oauth-clients | Create OAuth Client
 *OAuthClientsApi* | [**DeleteOauthClient**](docs/OAuthClientsApi.md#deleteoauthclient) | **Delete** /oauth-clients/{id} | Delete OAuth Client
 *OAuthClientsApi* | [**GetOauthClient**](docs/OAuthClientsApi.md#getoauthclient) | **Get** /oauth-clients/{id} | Get OAuth Client
@@ -450,6 +450,7 @@ Class | Method | HTTP request | Description
  - [IdentityReference](docs/IdentityReference.md)
  - [IdentityReferenceWithNameAndEmail](docs/IdentityReferenceWithNameAndEmail.md)
  - [IdentitySummary](docs/IdentitySummary.md)
+ - [ImportNonEmployeeRecordsInBulkRequest](docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [Index](docs/Index.md)
  - [InnerHit](docs/InnerHit.md)
  - [JsonPatch](docs/JsonPatch.md)
@@ -648,7 +649,6 @@ Class | Method | HTTP request | Description
  - [TypeAheadQuery](docs/TypeAheadQuery.md)
  - [TypedReference](docs/TypedReference.md)
  - [UpdatePasswordDictionaryRequest](docs/UpdatePasswordDictionaryRequest.md)
- - [UploadNonEmployeeRecordsInBulkRequest](docs/UploadNonEmployeeRecordsInBulkRequest.md)
  - [UsageType](docs/UsageType.md)
  - [Value](docs/Value.md)
  - [ViolationOwnerAssignmentConfig](docs/ViolationOwnerAssignmentConfig.md)

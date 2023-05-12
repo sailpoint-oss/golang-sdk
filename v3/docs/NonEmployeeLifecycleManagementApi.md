@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**GetNonEmployeeSchemaAttribute**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeSchemaAttribute) | **Get** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Get Schema Attribute Non-Employee Source
 [**GetNonEmployeeSource**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeSource) | **Get** /non-employee-sources/{sourceId} | Get a Non-Employee Source
 [**GetNonEmployeeSourceSchemaAttributes**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeSourceSchemaAttributes) | **Get** /non-employee-sources/{sourceId}/schema-attributes | List Schema Attributes Non-Employee Source
+[**ImportNonEmployeeRecordsInBulk**](NonEmployeeLifecycleManagementApi.md#ImportNonEmployeeRecordsInBulk) | **Post** /non-employee-sources/{id}/non-employee-bulk-upload | Imports, or Updates, Non-Employee Records
 [**ListNonEmployeeApprovals**](NonEmployeeLifecycleManagementApi.md#ListNonEmployeeApprovals) | **Get** /non-employee-approvals | Get List of Non-Employee Approval Requests
 [**ListNonEmployeeRecords**](NonEmployeeLifecycleManagementApi.md#ListNonEmployeeRecords) | **Get** /non-employee-records | List Non-Employee Records
 [**ListNonEmployeeRequests**](NonEmployeeLifecycleManagementApi.md#ListNonEmployeeRequests) | **Get** /non-employee-requests | List Non-Employee Requests
@@ -35,7 +36,6 @@ Method | HTTP request | Description
 [**PatchNonEmployeeSource**](NonEmployeeLifecycleManagementApi.md#PatchNonEmployeeSource) | **Patch** /non-employee-sources/{sourceId} | Patch a Non-Employee Source
 [**RejectNonEmployeeRequest**](NonEmployeeLifecycleManagementApi.md#RejectNonEmployeeRequest) | **Post** /non-employee-approvals/{id}/reject | Reject a Non-Employee Request
 [**UpdateNonEmployeeRecord**](NonEmployeeLifecycleManagementApi.md#UpdateNonEmployeeRecord) | **Put** /non-employee-records/{id} | Update Non-Employee Record
-[**UploadNonEmployeeRecordsInBulk**](NonEmployeeLifecycleManagementApi.md#UploadNonEmployeeRecordsInBulk) | **Post** /non-employee-sources/{id}/non-employee-bulk-upload | Imports, or Updates, Non-Employee Records
 
 
 
@@ -1561,6 +1561,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ImportNonEmployeeRecordsInBulk
+
+> NonEmployeeBulkUploadJob ImportNonEmployeeRecordsInBulk(ctx, id).Data(data).Execute()
+
+Imports, or Updates, Non-Employee Records
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "e136567de87e4d029e60b3c3c55db56d" // string | Source Id (UUID)
+    data := os.NewFile(1234, "some_file") // *os.File | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.ImportNonEmployeeRecordsInBulk(context.Background(), id).Data(data).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.ImportNonEmployeeRecordsInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportNonEmployeeRecordsInBulk`: NonEmployeeBulkUploadJob
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.ImportNonEmployeeRecordsInBulk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Source Id (UUID) | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportNonEmployeeRecordsInBulkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **data** | ***os.File** |  | 
+
+### Return type
+
+[**NonEmployeeBulkUploadJob**](NonEmployeeBulkUploadJob.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListNonEmployeeApprovals
 
 > []NonEmployeeApprovalItem ListNonEmployeeApprovals(ctx).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
@@ -2220,78 +2292,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UploadNonEmployeeRecordsInBulk
-
-> NonEmployeeBulkUploadJob UploadNonEmployeeRecordsInBulk(ctx, id).Data(data).Execute()
-
-Imports, or Updates, Non-Employee Records
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "e136567de87e4d029e60b3c3c55db56d" // string | Source Id (UUID)
-    data := "data_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.UploadNonEmployeeRecordsInBulk(context.Background(), id).Data(data).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.UploadNonEmployeeRecordsInBulk``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UploadNonEmployeeRecordsInBulk`: NonEmployeeBulkUploadJob
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.UploadNonEmployeeRecordsInBulk`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | Source Id (UUID) | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUploadNonEmployeeRecordsInBulkRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **data** | **string** |  | 
-
-### Return type
-
-[**NonEmployeeBulkUploadJob**](NonEmployeeBulkUploadJob.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

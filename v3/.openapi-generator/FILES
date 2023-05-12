@@ -206,6 +206,7 @@ docs/IdentityProfilesApi.md
 docs/IdentityReference.md
 docs/IdentityReferenceWithNameAndEmail.md
 docs/IdentitySummary.md
+docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/Index.md
 docs/InnerHit.md
 docs/JsonPatch.md
@@ -425,7 +426,6 @@ docs/TransformsApi.md
 docs/TypeAheadQuery.md
 docs/TypedReference.md
 docs/UpdatePasswordDictionaryRequest.md
-docs/UploadNonEmployeeRecordsInBulkRequest.md
 docs/UsageType.md
 docs/Value.md
 docs/ViolationOwnerAssignmentConfig.md
@@ -602,6 +602,7 @@ model_identity_profile_exported_object.go
 model_identity_reference.go
 model_identity_reference_with_name_and_email.go
 model_identity_summary.go
+model_import_non_employee_records_in_bulk_request.go
 model_index.go
 model_inner_hit.go
 model_json_patch.go
@@ -800,7 +801,6 @@ model_transform_definition_attributes_value.go
 model_type_ahead_query.go
 model_typed_reference.go
 model_update_password_dictionary_request.go
-model_upload_non_employee_records_in_bulk_request.go
 model_usage_type.go
 model_value.go
 model_violation_owner_assignment_config.go
