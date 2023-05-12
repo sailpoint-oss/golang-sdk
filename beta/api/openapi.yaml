@@ -18833,9 +18833,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/ClientLogConfiguration'
-                type: array
+                $ref: '#/components/schemas/ClientLogConfiguration'
           description: Log configuration of ManagedCluster matching given cluster
             ID
         "400":
@@ -18921,7 +18919,7 @@ paths:
       - Managed Clusters
     put:
       description: Update managed cluster's log configuration
-      operationId: updateClientLogConfiguration
+      operationId: putClientLogConfiguration
       parameters:
       - description: ID of ManagedCluster to update log configuration for
         explode: false

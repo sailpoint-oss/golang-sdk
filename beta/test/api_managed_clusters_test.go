@@ -62,13 +62,13 @@ func Test_beta_ManagedClustersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ManagedClustersApiService UpdateClientLogConfiguration", func(t *testing.T) {
+	t.Run("Test ManagedClustersApiService PutClientLogConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.ManagedClustersApi.UpdateClientLogConfiguration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.ManagedClustersApi.PutClientLogConfiguration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

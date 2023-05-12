@@ -29,7 +29,7 @@ type ApiGetClientLogConfigurationRequest struct {
 	id string
 }
 
-func (r ApiGetClientLogConfigurationRequest) Execute() ([]ClientLogConfiguration, *http.Response, error) {
+func (r ApiGetClientLogConfigurationRequest) Execute() (*ClientLogConfiguration, *http.Response, error) {
 	return r.ApiService.GetClientLogConfigurationExecute(r)
 }
 
@@ -51,13 +51,13 @@ func (a *ManagedClustersApiService) GetClientLogConfiguration(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []ClientLogConfiguration
-func (a *ManagedClustersApiService) GetClientLogConfigurationExecute(r ApiGetClientLogConfigurationRequest) ([]ClientLogConfiguration, *http.Response, error) {
+//  @return ClientLogConfiguration
+func (a *ManagedClustersApiService) GetClientLogConfigurationExecute(r ApiGetClientLogConfigurationRequest) (*ClientLogConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ClientLogConfiguration
+		localVarReturnValue  *ClientLogConfiguration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClustersApiService.GetClientLogConfiguration")
@@ -552,7 +552,7 @@ func (a *ManagedClustersApiService) GetManagedClustersExecute(r ApiGetManagedClu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateClientLogConfigurationRequest struct {
+type ApiPutClientLogConfigurationRequest struct {
 	ctx context.Context
 	ApiService *ManagedClustersApiService
 	id string
@@ -560,26 +560,26 @@ type ApiUpdateClientLogConfigurationRequest struct {
 }
 
 // ClientLogConfiguration for given ManagedCluster
-func (r ApiUpdateClientLogConfigurationRequest) ClientLogConfiguration(clientLogConfiguration ClientLogConfiguration) ApiUpdateClientLogConfigurationRequest {
+func (r ApiPutClientLogConfigurationRequest) ClientLogConfiguration(clientLogConfiguration ClientLogConfiguration) ApiPutClientLogConfigurationRequest {
 	r.clientLogConfiguration = &clientLogConfiguration
 	return r
 }
 
-func (r ApiUpdateClientLogConfigurationRequest) Execute() (*ClientLogConfiguration, *http.Response, error) {
-	return r.ApiService.UpdateClientLogConfigurationExecute(r)
+func (r ApiPutClientLogConfigurationRequest) Execute() (*ClientLogConfiguration, *http.Response, error) {
+	return r.ApiService.PutClientLogConfigurationExecute(r)
 }
 
 /*
-UpdateClientLogConfiguration Update managed cluster's log configuration
+PutClientLogConfiguration Update managed cluster's log configuration
 
 Update managed cluster's log configuration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of ManagedCluster to update log configuration for
- @return ApiUpdateClientLogConfigurationRequest
+ @return ApiPutClientLogConfigurationRequest
 */
-func (a *ManagedClustersApiService) UpdateClientLogConfiguration(ctx context.Context, id string) ApiUpdateClientLogConfigurationRequest {
-	return ApiUpdateClientLogConfigurationRequest{
+func (a *ManagedClustersApiService) PutClientLogConfiguration(ctx context.Context, id string) ApiPutClientLogConfigurationRequest {
+	return ApiPutClientLogConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -588,7 +588,7 @@ func (a *ManagedClustersApiService) UpdateClientLogConfiguration(ctx context.Con
 
 // Execute executes the request
 //  @return ClientLogConfiguration
-func (a *ManagedClustersApiService) UpdateClientLogConfigurationExecute(r ApiUpdateClientLogConfigurationRequest) (*ClientLogConfiguration, *http.Response, error) {
+func (a *ManagedClustersApiService) PutClientLogConfigurationExecute(r ApiPutClientLogConfigurationRequest) (*ClientLogConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -596,7 +596,7 @@ func (a *ManagedClustersApiService) UpdateClientLogConfigurationExecute(r ApiUpd
 		localVarReturnValue  *ClientLogConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClustersApiService.UpdateClientLogConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClustersApiService.PutClientLogConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

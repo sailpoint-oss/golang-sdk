@@ -7,13 +7,13 @@ Method | HTTP request | Description
 [**GetClientLogConfiguration**](ManagedClustersApi.md#GetClientLogConfiguration) | **Get** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
 [**GetManagedCluster**](ManagedClustersApi.md#GetManagedCluster) | **Get** /managed-clusters/{id} | Get a specified ManagedCluster.
 [**GetManagedClusters**](ManagedClustersApi.md#GetManagedClusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
-[**UpdateClientLogConfiguration**](ManagedClustersApi.md#UpdateClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
+[**PutClientLogConfiguration**](ManagedClustersApi.md#PutClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
 
 
 
 ## GetClientLogConfiguration
 
-> []ClientLogConfiguration GetClientLogConfiguration(ctx, id).Execute()
+> ClientLogConfiguration GetClientLogConfiguration(ctx, id).Execute()
 
 Get managed cluster's log configuration
 
@@ -41,7 +41,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersApi.GetClientLogConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetClientLogConfiguration`: []ClientLogConfiguration
+    // response from `GetClientLogConfiguration`: ClientLogConfiguration
     fmt.Fprintf(os.Stdout, "Response from `ManagedClustersApi.GetClientLogConfiguration`: %v\n", resp)
 }
 ```
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ClientLogConfiguration**](ClientLogConfiguration.md)
+[**ClientLogConfiguration**](ClientLogConfiguration.md)
 
 ### Authorization
 
@@ -223,9 +223,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateClientLogConfiguration
+## PutClientLogConfiguration
 
-> ClientLogConfiguration UpdateClientLogConfiguration(ctx, id).ClientLogConfiguration(clientLogConfiguration).Execute()
+> ClientLogConfiguration PutClientLogConfiguration(ctx, id).ClientLogConfiguration(clientLogConfiguration).Execute()
 
 Update managed cluster's log configuration
 
@@ -249,13 +249,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClustersApi.UpdateClientLogConfiguration(context.Background(), id).ClientLogConfiguration(clientLogConfiguration).Execute()
+    resp, r, err := apiClient.ManagedClustersApi.PutClientLogConfiguration(context.Background(), id).ClientLogConfiguration(clientLogConfiguration).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersApi.UpdateClientLogConfiguration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersApi.PutClientLogConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateClientLogConfiguration`: ClientLogConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `ManagedClustersApi.UpdateClientLogConfiguration`: %v\n", resp)
+    // response from `PutClientLogConfiguration`: ClientLogConfiguration
+    fmt.Fprintf(os.Stdout, "Response from `ManagedClustersApi.PutClientLogConfiguration`: %v\n", resp)
 }
 ```
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateClientLogConfigurationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutClientLogConfigurationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

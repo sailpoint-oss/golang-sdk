@@ -240,7 +240,7 @@ Class | Method | HTTP request | Description
 *ManagedClustersApi* | [**GetClientLogConfiguration**](docs/ManagedClustersApi.md#getclientlogconfiguration) | **Get** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
 *ManagedClustersApi* | [**GetManagedCluster**](docs/ManagedClustersApi.md#getmanagedcluster) | **Get** /managed-clusters/{id} | Get a specified ManagedCluster.
 *ManagedClustersApi* | [**GetManagedClusters**](docs/ManagedClustersApi.md#getmanagedclusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
-*ManagedClustersApi* | [**UpdateClientLogConfiguration**](docs/ManagedClustersApi.md#updateclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
+*ManagedClustersApi* | [**PutClientLogConfiguration**](docs/ManagedClustersApi.md#putclientlogconfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
 *NonEmployeeLifecycleManagementApi* | [**ApproveNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementApi.md#approvenonemployeerequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**CreateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementApi.md#createnonemployeerecord) | **Post** /non-employee-records | Create Non-Employee Record
 *NonEmployeeLifecycleManagementApi* | [**CreateNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementApi.md#createnonemployeerequest) | **Post** /non-employee-requests | Create Non-Employee Request
