@@ -208,6 +208,7 @@ docs/ConnectorRuleValidationResponse.md
 docs/ConnectorRuleValidationResponseDetailsInner.md
 docs/ConnectorsApi.md
 docs/CorrelatedGovernanceEvent.md
+docs/CreateDomainDkim405Response.md
 docs/CreateOAuthClientRequest.md
 docs/CreateOAuthClientResponse.md
 docs/CreatePersonalAccessTokenRequest.md
@@ -218,8 +219,9 @@ docs/CustomPasswordInstructionsApi.md
 docs/DeleteCampaignsRequest.md
 docs/DeleteNonEmployeeRecordInBulkRequest.md
 docs/DeleteSource202Response.md
-docs/DkimAttributesDto.md
-docs/DomainAddressDto.md
+docs/DkimAttributes.md
+docs/DomainAddress.md
+docs/DomainStatusDto.md
 docs/DtoType.md
 docs/EmailNotificationOption.md
 docs/EmailStatusDto.md
@@ -337,6 +339,8 @@ docs/ListIdentityAccessItems200ResponseInner.md
 docs/LocaleOrigin.md
 docs/LocalizedMessage.md
 docs/MFAConfigurationApi.md
+docs/MailFromAttributes.md
+docs/MailFromAttributesDto.md
 docs/ManagedClient.md
 docs/ManagedClientStatus.md
 docs/ManagedClientStatusAggResponse.md
@@ -710,7 +714,6 @@ docs/VAClusterStatusChangeEvent.md
 docs/ValidateFilterInputDto.md
 docs/ValidateFilterOutputDto.md
 docs/Value.md
-docs/VerifyDomainDkim405Response.md
 docs/ViolationContext.md
 docs/ViolationContextPolicy.md
 docs/ViolationContextPolicyAllOf.md
@@ -885,6 +888,7 @@ model_connector_rule_update_request_all_of.go
 model_connector_rule_validation_response.go
 model_connector_rule_validation_response_details_inner.go
 model_correlated_governance_event.go
+model_create_domain_dkim_405_response.go
 model_create_o_auth_client_request.go
 model_create_o_auth_client_response.go
 model_create_personal_access_token_request.go
@@ -894,8 +898,9 @@ model_custom_password_instruction.go
 model_delete_campaigns_request.go
 model_delete_non_employee_record_in_bulk_request.go
 model_delete_source_202_response.go
-model_dkim_attributes_dto.go
-model_domain_address_dto.go
+model_dkim_attributes.go
+model_domain_address.go
+model_domain_status_dto.go
 model_dto_type.go
 model_email_notification_option.go
 model_email_status_dto.go
@@ -1001,6 +1006,8 @@ model_list_complete_workflow_library_200_response_inner.go
 model_list_identity_access_items_200_response_inner.go
 model_locale_origin.go
 model_localized_message.go
+model_mail_from_attributes.go
+model_mail_from_attributes_dto.go
 model_managed_client.go
 model_managed_client_status.go
 model_managed_client_status_agg_response.go
@@ -1349,7 +1356,6 @@ model_va_cluster_status_change_event.go
 model_validate_filter_input_dto.go
 model_validate_filter_output_dto.go
 model_value.go
-model_verify_domain_dkim_405_response.go
 model_violation_context.go
 model_violation_context_policy.go
 model_violation_context_policy_all_of.go

@@ -198,10 +198,13 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**DeleteSodPolicySchedule**](docs/SODPolicyApi.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
 *SODPolicyApi* | [**GetSodPolicy**](docs/SODPolicyApi.md#getsodpolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
 *SODPolicyApi* | [**GetSodPolicySchedule**](docs/SODPolicyApi.md#getsodpolicyschedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
+*SODPolicyApi* | [**GetSodViolationReportRunStatus**](docs/SODPolicyApi.md#getsodviolationreportrunstatus) | **Get** /sod-violation-report-status/{reportResultId} | Get violation report run status
+*SODPolicyApi* | [**GetSodViolationReportStatus**](docs/SODPolicyApi.md#getsodviolationreportstatus) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
 *SODPolicyApi* | [**ListSodPolicies**](docs/SODPolicyApi.md#listsodpolicies) | **Get** /sod-policies | List SOD policies
 *SODPolicyApi* | [**PatchSodPolicy**](docs/SODPolicyApi.md#patchsodpolicy) | **Patch** /sod-policies/{id} | Patch SOD policy by ID
 *SODPolicyApi* | [**SetPolicySchedule**](docs/SODPolicyApi.md#setpolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
 *SODPolicyApi* | [**SetSodPolicy**](docs/SODPolicyApi.md#setsodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
+*SODPolicyApi* | [**StartSodPolicy**](docs/SODPolicyApi.md#startsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 *SavedSearchApi* | [**CreateSavedSearch**](docs/SavedSearchApi.md#createsavedsearch) | **Post** /saved-searches | Create a saved search
 *SavedSearchApi* | [**DeleteSavedSearch**](docs/SavedSearchApi.md#deletesavedsearch) | **Delete** /saved-searches/{id} | Delete a document by ID
 *SavedSearchApi* | [**ExecuteSavedSearch**](docs/SavedSearchApi.md#executesavedsearch) | **Post** /saved-searches/{id}/execute | Execute a saved search by ID
@@ -548,6 +551,8 @@ Class | Method | HTTP request | Description
  - [Reference](docs/Reference.md)
  - [RemediationItemDetails](docs/RemediationItemDetails.md)
  - [RemediationItems](docs/RemediationItems.md)
+ - [ReportResultReference](docs/ReportResultReference.md)
+ - [ReportResultReferenceAllOf](docs/ReportResultReferenceAllOf.md)
  - [RequestOnBehalfOfConfig](docs/RequestOnBehalfOfConfig.md)
  - [Requestability](docs/Requestability.md)
  - [RequestabilityForRole](docs/RequestabilityForRole.md)

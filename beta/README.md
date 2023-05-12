@@ -273,20 +273,22 @@ Class | Method | HTTP request | Description
 *NonEmployeeLifecycleManagementApi* | [**PatchNonEmployeeSource**](docs/NonEmployeeLifecycleManagementApi.md#patchnonemployeesource) | **Patch** /non-employee-sources/{sourceId} | Patch a Non-Employee Source
 *NonEmployeeLifecycleManagementApi* | [**RejectNonEmployeeRequest**](docs/NonEmployeeLifecycleManagementApi.md#rejectnonemployeerequest) | **Post** /non-employee-approvals/{id}/reject | Reject a Non-Employee Request
 *NonEmployeeLifecycleManagementApi* | [**UpdateNonEmployeeRecord**](docs/NonEmployeeLifecycleManagementApi.md#updatenonemployeerecord) | **Put** /non-employee-records/{id} | Update Non-Employee Record
+*NotificationsApi* | [**CreateDomainDkim**](docs/NotificationsApi.md#createdomaindkim) | **Post** /verified-domains | Verify domain address via DKIM
 *NotificationsApi* | [**CreateNotificationTemplate**](docs/NotificationsApi.md#createnotificationtemplate) | **Post** /notification-templates | Create Notification Template
 *NotificationsApi* | [**CreateVerifiedFromAddress**](docs/NotificationsApi.md#createverifiedfromaddress) | **Post** /verified-from-addresses | Create Verified From Address
 *NotificationsApi* | [**DeleteNotificationTemplatesInBulk**](docs/NotificationsApi.md#deletenotificationtemplatesinbulk) | **Post** /notification-templates/bulk-delete | Bulk Delete Notification Templates
 *NotificationsApi* | [**DeleteVerifiedFromAddress**](docs/NotificationsApi.md#deleteverifiedfromaddress) | **Delete** /verified-from-addresses/{id} | Delete Verified From Address
-*NotificationsApi* | [**GetDkimAttributes**](docs/NotificationsApi.md#getdkimattributes) | **Get** /dkim-attributes/{identities} | Get DKIM Attributes
+*NotificationsApi* | [**GetDkimAttributes**](docs/NotificationsApi.md#getdkimattributes) | **Get** /verified-domains | Get DKIM Attributes
+*NotificationsApi* | [**GetMailFromAttributes**](docs/NotificationsApi.md#getmailfromattributes) | **Get** /mail-from-attribute/{id} | Get MAIL FROM Attributes
 *NotificationsApi* | [**GetNotificationPreference**](docs/NotificationsApi.md#getnotificationpreference) | **Get** /notification-preferences/{key} | Get Notification Preferences for tenant.
 *NotificationsApi* | [**GetNotificationTemplate**](docs/NotificationsApi.md#getnotificationtemplate) | **Get** /notification-templates/{id} | Get Notification Template By Id
 *NotificationsApi* | [**GetNotificationsTemplateContext**](docs/NotificationsApi.md#getnotificationstemplatecontext) | **Get** /notification-template-context | Get Notification Template Context
 *NotificationsApi* | [**ListFromAddresses**](docs/NotificationsApi.md#listfromaddresses) | **Get** /verified-from-addresses | List From Addresses
 *NotificationsApi* | [**ListNotificationTemplateDefaults**](docs/NotificationsApi.md#listnotificationtemplatedefaults) | **Get** /notification-template-defaults | List Notification Template Defaults
 *NotificationsApi* | [**ListNotificationTemplates**](docs/NotificationsApi.md#listnotificationtemplates) | **Get** /notification-templates | List Notification Templates
+*NotificationsApi* | [**PutMailFromAttributes**](docs/NotificationsApi.md#putmailfromattributes) | **Put** /mail-from-attributes | Change MAIL FROM domain
 *NotificationsApi* | [**PutNotificationPreference**](docs/NotificationsApi.md#putnotificationpreference) | **Put** /notification-preferences/{key} | Overwrite the preferences for the given notification key.
 *NotificationsApi* | [**SendTestNotification**](docs/NotificationsApi.md#sendtestnotification) | **Post** /send-test-notification | Send Test Notification
-*NotificationsApi* | [**VerifyDomainDkim**](docs/NotificationsApi.md#verifydomaindkim) | **Post** /verify-domain-dkim | Verify domain address via DKIM
 *OAuthClientsApi* | [**CreateOauthClient**](docs/OAuthClientsApi.md#createoauthclient) | **Post** /oauth-clients | Create OAuth Client
 *OAuthClientsApi* | [**DeleteOauthClient**](docs/OAuthClientsApi.md#deleteoauthclient) | **Delete** /oauth-clients/{id} | Delete OAuth Client
 *OAuthClientsApi* | [**GetOauthClient**](docs/OAuthClientsApi.md#getoauthclient) | **Get** /oauth-clients/{id} | Get OAuth Client
@@ -611,6 +613,7 @@ Class | Method | HTTP request | Description
  - [ConnectorRuleValidationResponse](docs/ConnectorRuleValidationResponse.md)
  - [ConnectorRuleValidationResponseDetailsInner](docs/ConnectorRuleValidationResponseDetailsInner.md)
  - [CorrelatedGovernanceEvent](docs/CorrelatedGovernanceEvent.md)
+ - [CreateDomainDkim405Response](docs/CreateDomainDkim405Response.md)
  - [CreateOAuthClientRequest](docs/CreateOAuthClientRequest.md)
  - [CreateOAuthClientResponse](docs/CreateOAuthClientResponse.md)
  - [CreatePersonalAccessTokenRequest](docs/CreatePersonalAccessTokenRequest.md)
@@ -620,8 +623,9 @@ Class | Method | HTTP request | Description
  - [DeleteCampaignsRequest](docs/DeleteCampaignsRequest.md)
  - [DeleteNonEmployeeRecordInBulkRequest](docs/DeleteNonEmployeeRecordInBulkRequest.md)
  - [DeleteSource202Response](docs/DeleteSource202Response.md)
- - [DkimAttributesDto](docs/DkimAttributesDto.md)
- - [DomainAddressDto](docs/DomainAddressDto.md)
+ - [DkimAttributes](docs/DkimAttributes.md)
+ - [DomainAddress](docs/DomainAddress.md)
+ - [DomainStatusDto](docs/DomainStatusDto.md)
  - [DtoType](docs/DtoType.md)
  - [EmailNotificationOption](docs/EmailNotificationOption.md)
  - [EmailStatusDto](docs/EmailStatusDto.md)
@@ -727,6 +731,8 @@ Class | Method | HTTP request | Description
  - [ListIdentityAccessItems200ResponseInner](docs/ListIdentityAccessItems200ResponseInner.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [LocalizedMessage](docs/LocalizedMessage.md)
+ - [MailFromAttributes](docs/MailFromAttributes.md)
+ - [MailFromAttributesDto](docs/MailFromAttributesDto.md)
  - [ManagedClient](docs/ManagedClient.md)
  - [ManagedClientStatus](docs/ManagedClientStatus.md)
  - [ManagedClientStatusAggResponse](docs/ManagedClientStatusAggResponse.md)
@@ -1075,7 +1081,6 @@ Class | Method | HTTP request | Description
  - [ValidateFilterInputDto](docs/ValidateFilterInputDto.md)
  - [ValidateFilterOutputDto](docs/ValidateFilterOutputDto.md)
  - [Value](docs/Value.md)
- - [VerifyDomainDkim405Response](docs/VerifyDomainDkim405Response.md)
  - [ViolationContext](docs/ViolationContext.md)
  - [ViolationContextPolicy](docs/ViolationContextPolicy.md)
  - [ViolationContextPolicyAllOf](docs/ViolationContextPolicyAllOf.md)

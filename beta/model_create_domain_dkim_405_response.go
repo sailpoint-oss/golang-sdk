@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the VerifyDomainDkim405Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &VerifyDomainDkim405Response{}
+// checks if the CreateDomainDkim405Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateDomainDkim405Response{}
 
-// VerifyDomainDkim405Response struct for VerifyDomainDkim405Response
-type VerifyDomainDkim405Response struct {
+// CreateDomainDkim405Response struct for CreateDomainDkim405Response
+type CreateDomainDkim405Response struct {
 	// A message describing the error
 	ErrorName map[string]interface{} `json:"errorName,omitempty"`
 	// Description of the error
@@ -28,27 +28,27 @@ type VerifyDomainDkim405Response struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _VerifyDomainDkim405Response VerifyDomainDkim405Response
+type _CreateDomainDkim405Response CreateDomainDkim405Response
 
-// NewVerifyDomainDkim405Response instantiates a new VerifyDomainDkim405Response object
+// NewCreateDomainDkim405Response instantiates a new CreateDomainDkim405Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVerifyDomainDkim405Response() *VerifyDomainDkim405Response {
-	this := VerifyDomainDkim405Response{}
+func NewCreateDomainDkim405Response() *CreateDomainDkim405Response {
+	this := CreateDomainDkim405Response{}
 	return &this
 }
 
-// NewVerifyDomainDkim405ResponseWithDefaults instantiates a new VerifyDomainDkim405Response object
+// NewCreateDomainDkim405ResponseWithDefaults instantiates a new CreateDomainDkim405Response object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewVerifyDomainDkim405ResponseWithDefaults() *VerifyDomainDkim405Response {
-	this := VerifyDomainDkim405Response{}
+func NewCreateDomainDkim405ResponseWithDefaults() *CreateDomainDkim405Response {
+	this := CreateDomainDkim405Response{}
 	return &this
 }
 
 // GetErrorName returns the ErrorName field value if set, zero value otherwise.
-func (o *VerifyDomainDkim405Response) GetErrorName() map[string]interface{} {
+func (o *CreateDomainDkim405Response) GetErrorName() map[string]interface{} {
 	if o == nil || isNil(o.ErrorName) {
 		var ret map[string]interface{}
 		return ret
@@ -58,7 +58,7 @@ func (o *VerifyDomainDkim405Response) GetErrorName() map[string]interface{} {
 
 // GetErrorNameOk returns a tuple with the ErrorName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerifyDomainDkim405Response) GetErrorNameOk() (map[string]interface{}, bool) {
+func (o *CreateDomainDkim405Response) GetErrorNameOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.ErrorName) {
 		return map[string]interface{}{}, false
 	}
@@ -66,7 +66,7 @@ func (o *VerifyDomainDkim405Response) GetErrorNameOk() (map[string]interface{}, 
 }
 
 // HasErrorName returns a boolean if a field has been set.
-func (o *VerifyDomainDkim405Response) HasErrorName() bool {
+func (o *CreateDomainDkim405Response) HasErrorName() bool {
 	if o != nil && !isNil(o.ErrorName) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *VerifyDomainDkim405Response) HasErrorName() bool {
 }
 
 // SetErrorName gets a reference to the given map[string]interface{} and assigns it to the ErrorName field.
-func (o *VerifyDomainDkim405Response) SetErrorName(v map[string]interface{}) {
+func (o *CreateDomainDkim405Response) SetErrorName(v map[string]interface{}) {
 	o.ErrorName = v
 }
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
-func (o *VerifyDomainDkim405Response) GetErrorMessage() map[string]interface{} {
+func (o *CreateDomainDkim405Response) GetErrorMessage() map[string]interface{} {
 	if o == nil || isNil(o.ErrorMessage) {
 		var ret map[string]interface{}
 		return ret
@@ -90,7 +90,7 @@ func (o *VerifyDomainDkim405Response) GetErrorMessage() map[string]interface{} {
 
 // GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerifyDomainDkim405Response) GetErrorMessageOk() (map[string]interface{}, bool) {
+func (o *CreateDomainDkim405Response) GetErrorMessageOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.ErrorMessage) {
 		return map[string]interface{}{}, false
 	}
@@ -98,7 +98,7 @@ func (o *VerifyDomainDkim405Response) GetErrorMessageOk() (map[string]interface{
 }
 
 // HasErrorMessage returns a boolean if a field has been set.
-func (o *VerifyDomainDkim405Response) HasErrorMessage() bool {
+func (o *CreateDomainDkim405Response) HasErrorMessage() bool {
 	if o != nil && !isNil(o.ErrorMessage) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *VerifyDomainDkim405Response) HasErrorMessage() bool {
 }
 
 // SetErrorMessage gets a reference to the given map[string]interface{} and assigns it to the ErrorMessage field.
-func (o *VerifyDomainDkim405Response) SetErrorMessage(v map[string]interface{}) {
+func (o *CreateDomainDkim405Response) SetErrorMessage(v map[string]interface{}) {
 	o.ErrorMessage = v
 }
 
 // GetTrackingId returns the TrackingId field value if set, zero value otherwise.
-func (o *VerifyDomainDkim405Response) GetTrackingId() string {
+func (o *CreateDomainDkim405Response) GetTrackingId() string {
 	if o == nil || isNil(o.TrackingId) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *VerifyDomainDkim405Response) GetTrackingId() string {
 
 // GetTrackingIdOk returns a tuple with the TrackingId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerifyDomainDkim405Response) GetTrackingIdOk() (*string, bool) {
+func (o *CreateDomainDkim405Response) GetTrackingIdOk() (*string, bool) {
 	if o == nil || isNil(o.TrackingId) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *VerifyDomainDkim405Response) GetTrackingIdOk() (*string, bool) {
 }
 
 // HasTrackingId returns a boolean if a field has been set.
-func (o *VerifyDomainDkim405Response) HasTrackingId() bool {
+func (o *CreateDomainDkim405Response) HasTrackingId() bool {
 	if o != nil && !isNil(o.TrackingId) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *VerifyDomainDkim405Response) HasTrackingId() bool {
 }
 
 // SetTrackingId gets a reference to the given string and assigns it to the TrackingId field.
-func (o *VerifyDomainDkim405Response) SetTrackingId(v string) {
+func (o *CreateDomainDkim405Response) SetTrackingId(v string) {
 	o.TrackingId = &v
 }
 
-func (o VerifyDomainDkim405Response) MarshalJSON() ([]byte, error) {
+func (o CreateDomainDkim405Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o VerifyDomainDkim405Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o VerifyDomainDkim405Response) ToMap() (map[string]interface{}, error) {
+func (o CreateDomainDkim405Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.ErrorName) {
 		toSerialize["errorName"] = o.ErrorName
@@ -170,11 +170,11 @@ func (o VerifyDomainDkim405Response) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *VerifyDomainDkim405Response) UnmarshalJSON(bytes []byte) (err error) {
-	varVerifyDomainDkim405Response := _VerifyDomainDkim405Response{}
+func (o *CreateDomainDkim405Response) UnmarshalJSON(bytes []byte) (err error) {
+	varCreateDomainDkim405Response := _CreateDomainDkim405Response{}
 
-	if err = json.Unmarshal(bytes, &varVerifyDomainDkim405Response); err == nil {
-		*o = VerifyDomainDkim405Response(varVerifyDomainDkim405Response)
+	if err = json.Unmarshal(bytes, &varCreateDomainDkim405Response); err == nil {
+		*o = CreateDomainDkim405Response(varCreateDomainDkim405Response)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -189,38 +189,38 @@ func (o *VerifyDomainDkim405Response) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableVerifyDomainDkim405Response struct {
-	value *VerifyDomainDkim405Response
+type NullableCreateDomainDkim405Response struct {
+	value *CreateDomainDkim405Response
 	isSet bool
 }
 
-func (v NullableVerifyDomainDkim405Response) Get() *VerifyDomainDkim405Response {
+func (v NullableCreateDomainDkim405Response) Get() *CreateDomainDkim405Response {
 	return v.value
 }
 
-func (v *NullableVerifyDomainDkim405Response) Set(val *VerifyDomainDkim405Response) {
+func (v *NullableCreateDomainDkim405Response) Set(val *CreateDomainDkim405Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableVerifyDomainDkim405Response) IsSet() bool {
+func (v NullableCreateDomainDkim405Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableVerifyDomainDkim405Response) Unset() {
+func (v *NullableCreateDomainDkim405Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableVerifyDomainDkim405Response(val *VerifyDomainDkim405Response) *NullableVerifyDomainDkim405Response {
-	return &NullableVerifyDomainDkim405Response{value: val, isSet: true}
+func NewNullableCreateDomainDkim405Response(val *CreateDomainDkim405Response) *NullableCreateDomainDkim405Response {
+	return &NullableCreateDomainDkim405Response{value: val, isSet: true}
 }
 
-func (v NullableVerifyDomainDkim405Response) MarshalJSON() ([]byte, error) {
+func (v NullableCreateDomainDkim405Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableVerifyDomainDkim405Response) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateDomainDkim405Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -1,4 +1,4 @@
-# VerifyDomainDkim405Response
+# CreateDomainDkim405Response
 
 ## Properties
 
@@ -10,95 +10,95 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewVerifyDomainDkim405Response
+### NewCreateDomainDkim405Response
 
-`func NewVerifyDomainDkim405Response() *VerifyDomainDkim405Response`
+`func NewCreateDomainDkim405Response() *CreateDomainDkim405Response`
 
-NewVerifyDomainDkim405Response instantiates a new VerifyDomainDkim405Response object
+NewCreateDomainDkim405Response instantiates a new CreateDomainDkim405Response object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewVerifyDomainDkim405ResponseWithDefaults
+### NewCreateDomainDkim405ResponseWithDefaults
 
-`func NewVerifyDomainDkim405ResponseWithDefaults() *VerifyDomainDkim405Response`
+`func NewCreateDomainDkim405ResponseWithDefaults() *CreateDomainDkim405Response`
 
-NewVerifyDomainDkim405ResponseWithDefaults instantiates a new VerifyDomainDkim405Response object
+NewCreateDomainDkim405ResponseWithDefaults instantiates a new CreateDomainDkim405Response object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetErrorName
 
-`func (o *VerifyDomainDkim405Response) GetErrorName() map[string]interface{}`
+`func (o *CreateDomainDkim405Response) GetErrorName() map[string]interface{}`
 
 GetErrorName returns the ErrorName field if non-nil, zero value otherwise.
 
 ### GetErrorNameOk
 
-`func (o *VerifyDomainDkim405Response) GetErrorNameOk() (*map[string]interface{}, bool)`
+`func (o *CreateDomainDkim405Response) GetErrorNameOk() (*map[string]interface{}, bool)`
 
 GetErrorNameOk returns a tuple with the ErrorName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetErrorName
 
-`func (o *VerifyDomainDkim405Response) SetErrorName(v map[string]interface{})`
+`func (o *CreateDomainDkim405Response) SetErrorName(v map[string]interface{})`
 
 SetErrorName sets ErrorName field to given value.
 
 ### HasErrorName
 
-`func (o *VerifyDomainDkim405Response) HasErrorName() bool`
+`func (o *CreateDomainDkim405Response) HasErrorName() bool`
 
 HasErrorName returns a boolean if a field has been set.
 
 ### GetErrorMessage
 
-`func (o *VerifyDomainDkim405Response) GetErrorMessage() map[string]interface{}`
+`func (o *CreateDomainDkim405Response) GetErrorMessage() map[string]interface{}`
 
 GetErrorMessage returns the ErrorMessage field if non-nil, zero value otherwise.
 
 ### GetErrorMessageOk
 
-`func (o *VerifyDomainDkim405Response) GetErrorMessageOk() (*map[string]interface{}, bool)`
+`func (o *CreateDomainDkim405Response) GetErrorMessageOk() (*map[string]interface{}, bool)`
 
 GetErrorMessageOk returns a tuple with the ErrorMessage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetErrorMessage
 
-`func (o *VerifyDomainDkim405Response) SetErrorMessage(v map[string]interface{})`
+`func (o *CreateDomainDkim405Response) SetErrorMessage(v map[string]interface{})`
 
 SetErrorMessage sets ErrorMessage field to given value.
 
 ### HasErrorMessage
 
-`func (o *VerifyDomainDkim405Response) HasErrorMessage() bool`
+`func (o *CreateDomainDkim405Response) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
 
 ### GetTrackingId
 
-`func (o *VerifyDomainDkim405Response) GetTrackingId() string`
+`func (o *CreateDomainDkim405Response) GetTrackingId() string`
 
 GetTrackingId returns the TrackingId field if non-nil, zero value otherwise.
 
 ### GetTrackingIdOk
 
-`func (o *VerifyDomainDkim405Response) GetTrackingIdOk() (*string, bool)`
+`func (o *CreateDomainDkim405Response) GetTrackingIdOk() (*string, bool)`
 
 GetTrackingIdOk returns a tuple with the TrackingId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrackingId
 
-`func (o *VerifyDomainDkim405Response) SetTrackingId(v string)`
+`func (o *CreateDomainDkim405Response) SetTrackingId(v string)`
 
 SetTrackingId sets TrackingId field to given value.
 
 ### HasTrackingId
 
-`func (o *VerifyDomainDkim405Response) HasTrackingId() bool`
+`func (o *CreateDomainDkim405Response) HasTrackingId() bool`
 
 HasTrackingId returns a boolean if a field has been set.
 

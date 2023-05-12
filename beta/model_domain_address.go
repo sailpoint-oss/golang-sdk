@@ -14,37 +14,37 @@ import (
 	"encoding/json"
 )
 
-// checks if the DomainAddressDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DomainAddressDto{}
+// checks if the DomainAddress type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DomainAddress{}
 
-// DomainAddressDto struct for DomainAddressDto
-type DomainAddressDto struct {
+// DomainAddress struct for DomainAddress
+type DomainAddress struct {
 	// A domain address
 	Domain *string `json:"domain,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _DomainAddressDto DomainAddressDto
+type _DomainAddress DomainAddress
 
-// NewDomainAddressDto instantiates a new DomainAddressDto object
+// NewDomainAddress instantiates a new DomainAddress object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDomainAddressDto() *DomainAddressDto {
-	this := DomainAddressDto{}
+func NewDomainAddress() *DomainAddress {
+	this := DomainAddress{}
 	return &this
 }
 
-// NewDomainAddressDtoWithDefaults instantiates a new DomainAddressDto object
+// NewDomainAddressWithDefaults instantiates a new DomainAddress object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDomainAddressDtoWithDefaults() *DomainAddressDto {
-	this := DomainAddressDto{}
+func NewDomainAddressWithDefaults() *DomainAddress {
+	this := DomainAddress{}
 	return &this
 }
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
-func (o *DomainAddressDto) GetDomain() string {
+func (o *DomainAddress) GetDomain() string {
 	if o == nil || isNil(o.Domain) {
 		var ret string
 		return ret
@@ -54,7 +54,7 @@ func (o *DomainAddressDto) GetDomain() string {
 
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DomainAddressDto) GetDomainOk() (*string, bool) {
+func (o *DomainAddress) GetDomainOk() (*string, bool) {
 	if o == nil || isNil(o.Domain) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *DomainAddressDto) GetDomainOk() (*string, bool) {
 }
 
 // HasDomain returns a boolean if a field has been set.
-func (o *DomainAddressDto) HasDomain() bool {
+func (o *DomainAddress) HasDomain() bool {
 	if o != nil && !isNil(o.Domain) {
 		return true
 	}
@@ -71,11 +71,11 @@ func (o *DomainAddressDto) HasDomain() bool {
 }
 
 // SetDomain gets a reference to the given string and assigns it to the Domain field.
-func (o *DomainAddressDto) SetDomain(v string) {
+func (o *DomainAddress) SetDomain(v string) {
 	o.Domain = &v
 }
 
-func (o DomainAddressDto) MarshalJSON() ([]byte, error) {
+func (o DomainAddress) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -83,7 +83,7 @@ func (o DomainAddressDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o DomainAddressDto) ToMap() (map[string]interface{}, error) {
+func (o DomainAddress) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Domain) {
 		toSerialize["domain"] = o.Domain
@@ -96,11 +96,11 @@ func (o DomainAddressDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DomainAddressDto) UnmarshalJSON(bytes []byte) (err error) {
-	varDomainAddressDto := _DomainAddressDto{}
+func (o *DomainAddress) UnmarshalJSON(bytes []byte) (err error) {
+	varDomainAddress := _DomainAddress{}
 
-	if err = json.Unmarshal(bytes, &varDomainAddressDto); err == nil {
-		*o = DomainAddressDto(varDomainAddressDto)
+	if err = json.Unmarshal(bytes, &varDomainAddress); err == nil {
+		*o = DomainAddress(varDomainAddress)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -113,38 +113,38 @@ func (o *DomainAddressDto) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableDomainAddressDto struct {
-	value *DomainAddressDto
+type NullableDomainAddress struct {
+	value *DomainAddress
 	isSet bool
 }
 
-func (v NullableDomainAddressDto) Get() *DomainAddressDto {
+func (v NullableDomainAddress) Get() *DomainAddress {
 	return v.value
 }
 
-func (v *NullableDomainAddressDto) Set(val *DomainAddressDto) {
+func (v *NullableDomainAddress) Set(val *DomainAddress) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDomainAddressDto) IsSet() bool {
+func (v NullableDomainAddress) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDomainAddressDto) Unset() {
+func (v *NullableDomainAddress) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDomainAddressDto(val *DomainAddressDto) *NullableDomainAddressDto {
-	return &NullableDomainAddressDto{value: val, isSet: true}
+func NewNullableDomainAddress(val *DomainAddress) *NullableDomainAddress {
+	return &NullableDomainAddress{value: val, isSet: true}
 }
 
-func (v NullableDomainAddressDto) MarshalJSON() ([]byte, error) {
+func (v NullableDomainAddress) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDomainAddressDto) UnmarshalJSON(src []byte) error {
+func (v *NullableDomainAddress) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

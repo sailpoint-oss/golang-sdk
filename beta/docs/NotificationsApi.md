@@ -4,21 +4,89 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateDomainDkim**](NotificationsApi.md#CreateDomainDkim) | **Post** /verified-domains | Verify domain address via DKIM
 [**CreateNotificationTemplate**](NotificationsApi.md#CreateNotificationTemplate) | **Post** /notification-templates | Create Notification Template
 [**CreateVerifiedFromAddress**](NotificationsApi.md#CreateVerifiedFromAddress) | **Post** /verified-from-addresses | Create Verified From Address
 [**DeleteNotificationTemplatesInBulk**](NotificationsApi.md#DeleteNotificationTemplatesInBulk) | **Post** /notification-templates/bulk-delete | Bulk Delete Notification Templates
 [**DeleteVerifiedFromAddress**](NotificationsApi.md#DeleteVerifiedFromAddress) | **Delete** /verified-from-addresses/{id} | Delete Verified From Address
-[**GetDkimAttributes**](NotificationsApi.md#GetDkimAttributes) | **Get** /dkim-attributes/{identities} | Get DKIM Attributes
+[**GetDkimAttributes**](NotificationsApi.md#GetDkimAttributes) | **Get** /verified-domains | Get DKIM Attributes
+[**GetMailFromAttributes**](NotificationsApi.md#GetMailFromAttributes) | **Get** /mail-from-attribute/{id} | Get MAIL FROM Attributes
 [**GetNotificationPreference**](NotificationsApi.md#GetNotificationPreference) | **Get** /notification-preferences/{key} | Get Notification Preferences for tenant.
 [**GetNotificationTemplate**](NotificationsApi.md#GetNotificationTemplate) | **Get** /notification-templates/{id} | Get Notification Template By Id
 [**GetNotificationsTemplateContext**](NotificationsApi.md#GetNotificationsTemplateContext) | **Get** /notification-template-context | Get Notification Template Context
 [**ListFromAddresses**](NotificationsApi.md#ListFromAddresses) | **Get** /verified-from-addresses | List From Addresses
 [**ListNotificationTemplateDefaults**](NotificationsApi.md#ListNotificationTemplateDefaults) | **Get** /notification-template-defaults | List Notification Template Defaults
 [**ListNotificationTemplates**](NotificationsApi.md#ListNotificationTemplates) | **Get** /notification-templates | List Notification Templates
+[**PutMailFromAttributes**](NotificationsApi.md#PutMailFromAttributes) | **Put** /mail-from-attributes | Change MAIL FROM domain
 [**PutNotificationPreference**](NotificationsApi.md#PutNotificationPreference) | **Put** /notification-preferences/{key} | Overwrite the preferences for the given notification key.
 [**SendTestNotification**](NotificationsApi.md#SendTestNotification) | **Post** /send-test-notification | Send Test Notification
-[**VerifyDomainDkim**](NotificationsApi.md#VerifyDomainDkim) | **Post** /verify-domain-dkim | Verify domain address via DKIM
 
+
+
+## CreateDomainDkim
+
+> DomainStatusDto CreateDomainDkim(ctx).DomainAddress(domainAddress).Execute()
+
+Verify domain address via DKIM
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    domainAddress := *openapiclient.NewDomainAddress() // DomainAddress | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NotificationsApi.CreateDomainDkim(context.Background()).DomainAddress(domainAddress).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.CreateDomainDkim``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateDomainDkim`: DomainStatusDto
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.CreateDomainDkim`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateDomainDkimRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domainAddress** | [**DomainAddress**](DomainAddress.md) |  | 
+
+### Return type
+
+[**DomainStatusDto**](DomainStatusDto.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateNotificationTemplate
@@ -287,7 +355,7 @@ Name | Type | Description  | Notes
 
 ## GetDkimAttributes
 
-> []DkimAttributesDto GetDkimAttributes(ctx).Identities(identities).Execute()
+> []DkimAttributes GetDkimAttributes(ctx).Execute()
 
 Get DKIM Attributes
 
@@ -306,17 +374,78 @@ import (
 )
 
 func main() {
-    identities := "bobsmith@sailpoint.com,alex.jordan@sailpoint.com" // string | Returns the DKIM attributes for each of the given identities
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.GetDkimAttributes(context.Background()).Identities(identities).Execute()
+    resp, r, err := apiClient.NotificationsApi.GetDkimAttributes(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.GetDkimAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDkimAttributes`: []DkimAttributesDto
+    // response from `GetDkimAttributes`: []DkimAttributes
     fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.GetDkimAttributes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDkimAttributesRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]DkimAttributes**](DkimAttributes.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetMailFromAttributes
+
+> MailFromAttributes GetMailFromAttributes(ctx).Id(id).Execute()
+
+Get MAIL FROM Attributes
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "bobsmith@sailpoint.com" // string | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NotificationsApi.GetMailFromAttributes(context.Background()).Id(id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.GetMailFromAttributes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetMailFromAttributes`: MailFromAttributes
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.GetMailFromAttributes`: %v\n", resp)
 }
 ```
 
@@ -326,16 +455,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetDkimAttributesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetMailFromAttributesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identities** | **string** | Returns the DKIM attributes for each of the given identities | 
+ **id** | **string** | Returns the MX and TXT record to be put in your DNS, as well as the MAIL FROM domain status | 
 
 ### Return type
 
-[**[]DkimAttributesDto**](DkimAttributesDto.md)
+[**MailFromAttributes**](MailFromAttributes.md)
 
 ### Authorization
 
@@ -766,6 +895,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PutMailFromAttributes
+
+> MailFromAttributes PutMailFromAttributes(ctx).MailFromAttributesDto(mailFromAttributesDto).Execute()
+
+Change MAIL FROM domain
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    mailFromAttributesDto := *openapiclient.NewMailFromAttributesDto() // MailFromAttributesDto | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.NotificationsApi.PutMailFromAttributes(context.Background()).MailFromAttributesDto(mailFromAttributesDto).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.PutMailFromAttributes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutMailFromAttributes`: MailFromAttributes
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.PutMailFromAttributes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutMailFromAttributesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mailFromAttributesDto** | [**MailFromAttributesDto**](MailFromAttributesDto.md) |  | 
+
+### Return type
+
+[**MailFromAttributes**](MailFromAttributes.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PutNotificationPreference
 
 > PreferencesDto PutNotificationPreference(ctx, key).PreferencesDto(preferencesDto).Execute()
@@ -887,72 +1082,6 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## VerifyDomainDkim
-
-> []string VerifyDomainDkim(ctx).DomainAddressDto(domainAddressDto).Execute()
-
-Verify domain address via DKIM
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    domainAddressDto := *openapiclient.NewDomainAddressDto() // DomainAddressDto | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.VerifyDomainDkim(context.Background()).DomainAddressDto(domainAddressDto).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.VerifyDomainDkim``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `VerifyDomainDkim`: []string
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.VerifyDomainDkim`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiVerifyDomainDkimRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **domainAddressDto** | [**DomainAddressDto**](DomainAddressDto.md) |  | 
-
-### Return type
-
-**[]string**
 
 ### Authorization
 

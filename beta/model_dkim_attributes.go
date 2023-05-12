@@ -14,11 +14,13 @@ import (
 	"encoding/json"
 )
 
-// checks if the DkimAttributesDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DkimAttributesDto{}
+// checks if the DkimAttributes type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DkimAttributes{}
 
-// DkimAttributesDto DKIM attributes for a domain / identity
-type DkimAttributesDto struct {
+// DkimAttributes DKIM attributes for a domain or identity
+type DkimAttributes struct {
+	// UUID associated with domain to be verified
+	Id *string `json:"id,omitempty"`
 	// The identity or domain address
 	Address *string `json:"address,omitempty"`
 	// Whether or not DKIM has been enabled for this domain / identity
@@ -30,27 +32,63 @@ type DkimAttributesDto struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _DkimAttributesDto DkimAttributesDto
+type _DkimAttributes DkimAttributes
 
-// NewDkimAttributesDto instantiates a new DkimAttributesDto object
+// NewDkimAttributes instantiates a new DkimAttributes object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDkimAttributesDto() *DkimAttributesDto {
-	this := DkimAttributesDto{}
+func NewDkimAttributes() *DkimAttributes {
+	this := DkimAttributes{}
+	var dkimEnabled bool = false
+	this.DkimEnabled = &dkimEnabled
 	return &this
 }
 
-// NewDkimAttributesDtoWithDefaults instantiates a new DkimAttributesDto object
+// NewDkimAttributesWithDefaults instantiates a new DkimAttributes object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDkimAttributesDtoWithDefaults() *DkimAttributesDto {
-	this := DkimAttributesDto{}
+func NewDkimAttributesWithDefaults() *DkimAttributes {
+	this := DkimAttributes{}
+	var dkimEnabled bool = false
+	this.DkimEnabled = &dkimEnabled
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *DkimAttributes) GetId() string {
+	if o == nil || isNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DkimAttributes) GetIdOk() (*string, bool) {
+	if o == nil || isNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *DkimAttributes) HasId() bool {
+	if o != nil && !isNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *DkimAttributes) SetId(v string) {
+	o.Id = &v
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise.
-func (o *DkimAttributesDto) GetAddress() string {
+func (o *DkimAttributes) GetAddress() string {
 	if o == nil || isNil(o.Address) {
 		var ret string
 		return ret
@@ -60,7 +98,7 @@ func (o *DkimAttributesDto) GetAddress() string {
 
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DkimAttributesDto) GetAddressOk() (*string, bool) {
+func (o *DkimAttributes) GetAddressOk() (*string, bool) {
 	if o == nil || isNil(o.Address) {
 		return nil, false
 	}
@@ -68,7 +106,7 @@ func (o *DkimAttributesDto) GetAddressOk() (*string, bool) {
 }
 
 // HasAddress returns a boolean if a field has been set.
-func (o *DkimAttributesDto) HasAddress() bool {
+func (o *DkimAttributes) HasAddress() bool {
 	if o != nil && !isNil(o.Address) {
 		return true
 	}
@@ -77,12 +115,12 @@ func (o *DkimAttributesDto) HasAddress() bool {
 }
 
 // SetAddress gets a reference to the given string and assigns it to the Address field.
-func (o *DkimAttributesDto) SetAddress(v string) {
+func (o *DkimAttributes) SetAddress(v string) {
 	o.Address = &v
 }
 
 // GetDkimEnabled returns the DkimEnabled field value if set, zero value otherwise.
-func (o *DkimAttributesDto) GetDkimEnabled() bool {
+func (o *DkimAttributes) GetDkimEnabled() bool {
 	if o == nil || isNil(o.DkimEnabled) {
 		var ret bool
 		return ret
@@ -92,7 +130,7 @@ func (o *DkimAttributesDto) GetDkimEnabled() bool {
 
 // GetDkimEnabledOk returns a tuple with the DkimEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DkimAttributesDto) GetDkimEnabledOk() (*bool, bool) {
+func (o *DkimAttributes) GetDkimEnabledOk() (*bool, bool) {
 	if o == nil || isNil(o.DkimEnabled) {
 		return nil, false
 	}
@@ -100,7 +138,7 @@ func (o *DkimAttributesDto) GetDkimEnabledOk() (*bool, bool) {
 }
 
 // HasDkimEnabled returns a boolean if a field has been set.
-func (o *DkimAttributesDto) HasDkimEnabled() bool {
+func (o *DkimAttributes) HasDkimEnabled() bool {
 	if o != nil && !isNil(o.DkimEnabled) {
 		return true
 	}
@@ -109,12 +147,12 @@ func (o *DkimAttributesDto) HasDkimEnabled() bool {
 }
 
 // SetDkimEnabled gets a reference to the given bool and assigns it to the DkimEnabled field.
-func (o *DkimAttributesDto) SetDkimEnabled(v bool) {
+func (o *DkimAttributes) SetDkimEnabled(v bool) {
 	o.DkimEnabled = &v
 }
 
 // GetDkimTokens returns the DkimTokens field value if set, zero value otherwise.
-func (o *DkimAttributesDto) GetDkimTokens() []string {
+func (o *DkimAttributes) GetDkimTokens() []string {
 	if o == nil || isNil(o.DkimTokens) {
 		var ret []string
 		return ret
@@ -124,7 +162,7 @@ func (o *DkimAttributesDto) GetDkimTokens() []string {
 
 // GetDkimTokensOk returns a tuple with the DkimTokens field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DkimAttributesDto) GetDkimTokensOk() ([]string, bool) {
+func (o *DkimAttributes) GetDkimTokensOk() ([]string, bool) {
 	if o == nil || isNil(o.DkimTokens) {
 		return nil, false
 	}
@@ -132,7 +170,7 @@ func (o *DkimAttributesDto) GetDkimTokensOk() ([]string, bool) {
 }
 
 // HasDkimTokens returns a boolean if a field has been set.
-func (o *DkimAttributesDto) HasDkimTokens() bool {
+func (o *DkimAttributes) HasDkimTokens() bool {
 	if o != nil && !isNil(o.DkimTokens) {
 		return true
 	}
@@ -141,12 +179,12 @@ func (o *DkimAttributesDto) HasDkimTokens() bool {
 }
 
 // SetDkimTokens gets a reference to the given []string and assigns it to the DkimTokens field.
-func (o *DkimAttributesDto) SetDkimTokens(v []string) {
+func (o *DkimAttributes) SetDkimTokens(v []string) {
 	o.DkimTokens = v
 }
 
 // GetDkimVerificationStatus returns the DkimVerificationStatus field value if set, zero value otherwise.
-func (o *DkimAttributesDto) GetDkimVerificationStatus() string {
+func (o *DkimAttributes) GetDkimVerificationStatus() string {
 	if o == nil || isNil(o.DkimVerificationStatus) {
 		var ret string
 		return ret
@@ -156,7 +194,7 @@ func (o *DkimAttributesDto) GetDkimVerificationStatus() string {
 
 // GetDkimVerificationStatusOk returns a tuple with the DkimVerificationStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DkimAttributesDto) GetDkimVerificationStatusOk() (*string, bool) {
+func (o *DkimAttributes) GetDkimVerificationStatusOk() (*string, bool) {
 	if o == nil || isNil(o.DkimVerificationStatus) {
 		return nil, false
 	}
@@ -164,7 +202,7 @@ func (o *DkimAttributesDto) GetDkimVerificationStatusOk() (*string, bool) {
 }
 
 // HasDkimVerificationStatus returns a boolean if a field has been set.
-func (o *DkimAttributesDto) HasDkimVerificationStatus() bool {
+func (o *DkimAttributes) HasDkimVerificationStatus() bool {
 	if o != nil && !isNil(o.DkimVerificationStatus) {
 		return true
 	}
@@ -173,11 +211,11 @@ func (o *DkimAttributesDto) HasDkimVerificationStatus() bool {
 }
 
 // SetDkimVerificationStatus gets a reference to the given string and assigns it to the DkimVerificationStatus field.
-func (o *DkimAttributesDto) SetDkimVerificationStatus(v string) {
+func (o *DkimAttributes) SetDkimVerificationStatus(v string) {
 	o.DkimVerificationStatus = &v
 }
 
-func (o DkimAttributesDto) MarshalJSON() ([]byte, error) {
+func (o DkimAttributes) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -185,8 +223,11 @@ func (o DkimAttributesDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o DkimAttributesDto) ToMap() (map[string]interface{}, error) {
+func (o DkimAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !isNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
@@ -207,16 +248,17 @@ func (o DkimAttributesDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DkimAttributesDto) UnmarshalJSON(bytes []byte) (err error) {
-	varDkimAttributesDto := _DkimAttributesDto{}
+func (o *DkimAttributes) UnmarshalJSON(bytes []byte) (err error) {
+	varDkimAttributes := _DkimAttributes{}
 
-	if err = json.Unmarshal(bytes, &varDkimAttributesDto); err == nil {
-		*o = DkimAttributesDto(varDkimAttributesDto)
+	if err = json.Unmarshal(bytes, &varDkimAttributes); err == nil {
+		*o = DkimAttributes(varDkimAttributes)
 	}
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "address")
 		delete(additionalProperties, "dkimEnabled")
 		delete(additionalProperties, "dkimTokens")
@@ -227,38 +269,38 @@ func (o *DkimAttributesDto) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableDkimAttributesDto struct {
-	value *DkimAttributesDto
+type NullableDkimAttributes struct {
+	value *DkimAttributes
 	isSet bool
 }
 
-func (v NullableDkimAttributesDto) Get() *DkimAttributesDto {
+func (v NullableDkimAttributes) Get() *DkimAttributes {
 	return v.value
 }
 
-func (v *NullableDkimAttributesDto) Set(val *DkimAttributesDto) {
+func (v *NullableDkimAttributes) Set(val *DkimAttributes) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDkimAttributesDto) IsSet() bool {
+func (v NullableDkimAttributes) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDkimAttributesDto) Unset() {
+func (v *NullableDkimAttributes) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDkimAttributesDto(val *DkimAttributesDto) *NullableDkimAttributesDto {
-	return &NullableDkimAttributesDto{value: val, isSet: true}
+func NewNullableDkimAttributes(val *DkimAttributes) *NullableDkimAttributes {
+	return &NullableDkimAttributes{value: val, isSet: true}
 }
 
-func (v NullableDkimAttributesDto) MarshalJSON() ([]byte, error) {
+func (v NullableDkimAttributes) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDkimAttributesDto) UnmarshalJSON(src []byte) error {
+func (v *NullableDkimAttributes) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

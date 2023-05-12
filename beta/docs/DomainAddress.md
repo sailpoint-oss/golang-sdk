@@ -1,4 +1,4 @@
-# DomainAddressDto
+# DomainAddress
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewDomainAddressDto
+### NewDomainAddress
 
-`func NewDomainAddressDto() *DomainAddressDto`
+`func NewDomainAddress() *DomainAddress`
 
-NewDomainAddressDto instantiates a new DomainAddressDto object
+NewDomainAddress instantiates a new DomainAddress object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewDomainAddressDtoWithDefaults
+### NewDomainAddressWithDefaults
 
-`func NewDomainAddressDtoWithDefaults() *DomainAddressDto`
+`func NewDomainAddressWithDefaults() *DomainAddress`
 
-NewDomainAddressDtoWithDefaults instantiates a new DomainAddressDto object
+NewDomainAddressWithDefaults instantiates a new DomainAddress object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDomain
 
-`func (o *DomainAddressDto) GetDomain() string`
+`func (o *DomainAddress) GetDomain() string`
 
 GetDomain returns the Domain field if non-nil, zero value otherwise.
 
 ### GetDomainOk
 
-`func (o *DomainAddressDto) GetDomainOk() (*string, bool)`
+`func (o *DomainAddress) GetDomainOk() (*string, bool)`
 
 GetDomainOk returns a tuple with the Domain field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDomain
 
-`func (o *DomainAddressDto) SetDomain(v string)`
+`func (o *DomainAddress) SetDomain(v string)`
 
 SetDomain sets Domain field to given value.
 
 ### HasDomain
 
-`func (o *DomainAddressDto) HasDomain() bool`
+`func (o *DomainAddress) HasDomain() bool`
 
 HasDomain returns a boolean if a field has been set.
 
