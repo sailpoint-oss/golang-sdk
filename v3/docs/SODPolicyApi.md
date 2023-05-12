@@ -6,9 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateSodPolicy**](SODPolicyApi.md#CreateSodPolicy) | **Post** /sod-policies | Create SOD policy
 [**DeleteSodPolicy**](SODPolicyApi.md#DeleteSodPolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
+[**DeleteSodPolicySchedule**](SODPolicyApi.md#DeleteSodPolicySchedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
 [**GetSodPolicy**](SODPolicyApi.md#GetSodPolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
+[**GetSodPolicySchedule**](SODPolicyApi.md#GetSodPolicySchedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
 [**ListSodPolicies**](SODPolicyApi.md#ListSodPolicies) | **Get** /sod-policies | List SOD policies
 [**PatchSodPolicy**](SODPolicyApi.md#PatchSodPolicy) | **Patch** /sod-policies/{id} | Patch SOD policy by ID
+[**SetPolicySchedule**](SODPolicyApi.md#SetPolicySchedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
 [**SetSodPolicy**](SODPolicyApi.md#SetSodPolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
 
 
@@ -149,6 +152,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteSodPolicySchedule
+
+> DeleteSodPolicySchedule(ctx, id).Execute()
+
+Delete SOD policy schedule
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f943-47e9-4562-b5bb-8424a56397d8" // string | The ID of the SOD policy the schedule must be deleted for.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SODPolicyApi.DeleteSodPolicySchedule(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.DeleteSodPolicySchedule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The ID of the SOD policy the schedule must be deleted for. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSodPolicyScheduleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetSodPolicy
 
 > SodPolicy GetSodPolicy(ctx, id).Execute()
@@ -204,6 +275,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**SodPolicy**](SodPolicy.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSodPolicySchedule
+
+> SodPolicySchedule GetSodPolicySchedule(ctx, id).Execute()
+
+Get SOD policy schedule
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f943-47e9-4562-b5bb-8424a56397d8" // string | The ID of the SOD policy schedule to retrieve.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SODPolicyApi.GetSodPolicySchedule(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.GetSodPolicySchedule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSodPolicySchedule`: SodPolicySchedule
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.GetSodPolicySchedule`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The ID of the SOD policy schedule to retrieve. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSodPolicyScheduleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SodPolicySchedule**](SodPolicySchedule.md)
 
 ### Authorization
 
@@ -356,6 +497,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetPolicySchedule
+
+> SodPolicySchedule SetPolicySchedule(ctx, id).SodPolicySchedule(sodPolicySchedule).Execute()
+
+Update SOD Policy schedule
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f943-47e9-4562-b5bb-8424a56397d8" // string | The ID of the SOD policy to update its schedule.
+    sodPolicySchedule := *openapiclient.NewSodPolicySchedule() // SodPolicySchedule | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SODPolicyApi.SetPolicySchedule(context.Background(), id).SodPolicySchedule(sodPolicySchedule).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.SetPolicySchedule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SetPolicySchedule`: SodPolicySchedule
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.SetPolicySchedule`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The ID of the SOD policy to update its schedule. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetPolicyScheduleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sodPolicySchedule** | [**SodPolicySchedule**](SodPolicySchedule.md) |  | 
+
+### Return type
+
+[**SodPolicySchedule**](SodPolicySchedule.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

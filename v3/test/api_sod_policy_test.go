@@ -47,6 +47,19 @@ func Test_v3_SODPolicyApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test SODPolicyApiService DeleteSodPolicySchedule", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		httpRes, err := apiClient.V3.SODPolicyApi.DeleteSodPolicySchedule(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SODPolicyApiService GetSodPolicy", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -54,6 +67,20 @@ func Test_v3_SODPolicyApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.V3.SODPolicyApi.GetSodPolicy(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SODPolicyApiService GetSodPolicySchedule", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.V3.SODPolicyApi.GetSodPolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,6 +107,20 @@ func Test_v3_SODPolicyApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.V3.SODPolicyApi.PatchSodPolicy(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SODPolicyApiService SetPolicySchedule", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.V3.SODPolicyApi.SetPolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

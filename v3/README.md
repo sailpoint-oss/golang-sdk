@@ -195,9 +195,12 @@ Class | Method | HTTP request | Description
 *RolesApi* | [**PatchRole**](docs/RolesApi.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
 *SODPolicyApi* | [**CreateSodPolicy**](docs/SODPolicyApi.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
 *SODPolicyApi* | [**DeleteSodPolicy**](docs/SODPolicyApi.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
+*SODPolicyApi* | [**DeleteSodPolicySchedule**](docs/SODPolicyApi.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
 *SODPolicyApi* | [**GetSodPolicy**](docs/SODPolicyApi.md#getsodpolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
+*SODPolicyApi* | [**GetSodPolicySchedule**](docs/SODPolicyApi.md#getsodpolicyschedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
 *SODPolicyApi* | [**ListSodPolicies**](docs/SODPolicyApi.md#listsodpolicies) | **Get** /sod-policies | List SOD policies
 *SODPolicyApi* | [**PatchSodPolicy**](docs/SODPolicyApi.md#patchsodpolicy) | **Patch** /sod-policies/{id} | Patch SOD policy by ID
+*SODPolicyApi* | [**SetPolicySchedule**](docs/SODPolicyApi.md#setpolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
 *SODPolicyApi* | [**SetSodPolicy**](docs/SODPolicyApi.md#setsodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
 *SavedSearchApi* | [**CreateSavedSearch**](docs/SavedSearchApi.md#createsavedsearch) | **Post** /saved-searches | Create a saved search
 *SavedSearchApi* | [**DeleteSavedSearch**](docs/SavedSearchApi.md#deletesavedsearch) | **Delete** /saved-searches/{id} | Delete a document by ID
@@ -616,6 +619,7 @@ Class | Method | HTTP request | Description
  - [SetLifecycleStateRequest](docs/SetLifecycleStateRequest.md)
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
  - [SodPolicy](docs/SodPolicy.md)
+ - [SodPolicySchedule](docs/SodPolicySchedule.md)
  - [SodViolationCheckResult](docs/SodViolationCheckResult.md)
  - [SodViolationContext](docs/SodViolationContext.md)
  - [SodViolationContextCheckCompleted](docs/SodViolationContextCheckCompleted.md)

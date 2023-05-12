@@ -393,6 +393,7 @@ docs/SetLifecycleState200Response.md
 docs/SetLifecycleStateRequest.md
 docs/SodExemptCriteria.md
 docs/SodPolicy.md
+docs/SodPolicySchedule.md
 docs/SodViolationCheckResult.md
 docs/SodViolationContext.md
 docs/SodViolationContextCheckCompleted.md
@@ -770,6 +771,7 @@ model_set_lifecycle_state_200_response.go
 model_set_lifecycle_state_request.go
 model_sod_exempt_criteria.go
 model_sod_policy.go
+model_sod_policy_schedule.go
 model_sod_violation_check_result.go
 model_sod_violation_context.go
 model_sod_violation_context_check_completed.go

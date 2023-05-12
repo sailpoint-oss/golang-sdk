@@ -17721,6 +17721,267 @@ paths:
       summary: Update SOD policy by ID
       tags:
       - SOD Policy
+  /sod-policies/{id}/schedule:
+    delete:
+      description: This deletes schedule for a specified SOD policy by ID.
+      operationId: deleteSodPolicySchedule
+      parameters:
+      - description: The ID of the SOD policy the schedule must be deleted for.
+        example: ef38f943-47e9-4562-b5bb-8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:sod-policy:write
+      summary: Delete SOD policy schedule
+      tags:
+      - SOD Policy
+    get:
+      description: This endpoint gets a specified SOD policy's schedule.
+      operationId: getSodPolicySchedule
+      parameters:
+      - description: The ID of the SOD policy schedule to retrieve.
+        example: ef38f943-47e9-4562-b5bb-8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SodPolicySchedule'
+          description: SOD policy schedule.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:sod-policy:read
+      summary: Get SOD policy schedule
+      tags:
+      - SOD Policy
+    put:
+      description: This updates schedule for a specified SOD policy.
+      operationId: setPolicySchedule
+      parameters:
+      - description: The ID of the SOD policy to update its schedule.
+        example: ef38f943-47e9-4562-b5bb-8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SodPolicySchedule'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SodPolicySchedule'
+          description: Created or updated SOD policy schedule.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:sod-policy:write
+      summary: Update SOD Policy schedule
+      tags:
+      - SOD Policy
   /sources:
     get:
       description: |-
@@ -25145,6 +25406,12 @@ components:
       type: object
     Schedule:
       description: The schedule information.
+      example:
+        hours: null
+        timeZoneId: GMT-06:00
+        days: null
+        expiration: 2018-06-25T20:22:28.104Z
+        type: WEEKLY
       properties:
         type:
           $ref: '#/components/schemas/ScheduleType'
@@ -30121,6 +30388,71 @@ components:
           type: string
         conflictingAccessCriteria:
           $ref: '#/components/schemas/ConflictingAccessCriteria'
+      type: object
+    SodPolicySchedule:
+      example:
+        schedule:
+          hours: null
+          timeZoneId: GMT-06:00
+          days: null
+          expiration: 2018-06-25T20:22:28.104Z
+          type: WEEKLY
+        created: 2020-01-01T00:00:00Z
+        recipients:
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        - name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        name: SCH-1584312283015
+        creatorId: 0f11f2a47c944bf3a2bd742580fe3bde
+        modifierId: 0f11f2a47c944bf3a2bd742580fe3bde
+        modified: 2020-01-01T00:00:00Z
+        description: Schedule for policy xyz
+        emailEmptyResults: false
+      properties:
+        name:
+          description: SOD Policy schedule name
+          example: SCH-1584312283015
+          type: string
+        created:
+          description: The time when this SOD policy schedule is created.
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: The time when this SOD policy schedule is modified.
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          readOnly: true
+          type: string
+        description:
+          description: SOD Policy schedule description
+          example: Schedule for policy xyz
+          type: string
+        schedule:
+          $ref: '#/components/schemas/Schedule'
+        recipients:
+          items:
+            $ref: '#/components/schemas/BaseReferenceDto'
+          type: array
+        emailEmptyResults:
+          default: false
+          description: Indicates if empty results need to be emailed
+          example: false
+          type: boolean
+        creatorId:
+          description: Policy's creator ID
+          example: 0f11f2a47c944bf3a2bd742580fe3bde
+          readOnly: true
+          type: string
+        modifierId:
+          description: Policy's modifier ID
+          example: 0f11f2a47c944bf3a2bd742580fe3bde
+          readOnly: true
+          type: string
       type: object
     ProvisioningPolicyDto:
       example:
