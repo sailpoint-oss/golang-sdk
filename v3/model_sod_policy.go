@@ -719,18 +719,12 @@ func (o SodPolicy) MarshalJSON() ([]byte, error) {
 
 func (o SodPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	// skip: id is readOnly
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
+	// skip: created is readOnly
+	// skip: modified is readOnly
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
@@ -755,9 +749,7 @@ func (o SodPolicy) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
-	if !isNil(o.CreatorId) {
-		toSerialize["creatorId"] = o.CreatorId
-	}
+	// skip: creatorId is readOnly
 	if o.ModifierId.IsSet() {
 		toSerialize["modifierId"] = o.ModifierId.Get()
 	}

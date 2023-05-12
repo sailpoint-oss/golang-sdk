@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Policy id | [optional] 
+**Id** | Pointer to **string** | Policy id | [optional] [readonly] 
 **Name** | Pointer to **string** | Policy Business Name | [optional] 
-**Created** | Pointer to **time.Time** | The time when this SOD policy is created. | [optional] 
-**Modified** | Pointer to **time.Time** | The time when this SOD policy is modified. | [optional] 
+**Created** | Pointer to **time.Time** | The time when this SOD policy is created. | [optional] [readonly] 
+**Modified** | Pointer to **time.Time** | The time when this SOD policy is modified. | [optional] [readonly] 
 **Description** | Pointer to **NullableString** | Optional description of the SOD policy | [optional] 
 **OwnerRef** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **ExternalPolicyReference** | Pointer to **NullableString** | Optional External Policy Reference | [optional] 
@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **CorrectionAdvice** | Pointer to **NullableString** | Optional correction advice | [optional] 
 **State** | Pointer to **string** | whether the policy is enforced or not | [optional] 
 **Tags** | Pointer to **[]string** | tags for this policy object | [optional] 
-**CreatorId** | Pointer to **string** | Policy&#39;s creator ID | [optional] 
-**ModifierId** | Pointer to **NullableString** | Policy&#39;s modifier ID | [optional] 
+**CreatorId** | Pointer to **string** | Policy&#39;s creator ID | [optional] [readonly] 
+**ModifierId** | Pointer to **NullableString** | Policy&#39;s modifier ID | [optional] [readonly] 
 **ViolationOwnerAssignmentConfig** | Pointer to [**ViolationOwnerAssignmentConfig**](ViolationOwnerAssignmentConfig.md) |  | [optional] 
 **Scheduled** | Pointer to **bool** | defines whether a policy has been scheduled or not | [optional] [default to false]
 **Type** | Pointer to **string** | whether a policy is query based or conflicting access based | [optional] [default to "GENERAL"]
