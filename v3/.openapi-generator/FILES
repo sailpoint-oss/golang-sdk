@@ -29,6 +29,7 @@ api_search.go
 api_segments.go
 api_service_desk_integration.go
 api_sod_policy.go
+api_sod_violations.go
 api_sources.go
 api_tagged_objects.go
 api_transforms.go
@@ -109,6 +110,7 @@ docs/ApprovalSchemeForRole.md
 docs/ApprovalStatus.md
 docs/ApprovalStatusDto.md
 docs/ApprovalSummary.md
+docs/ArmRisk.md
 docs/AttributeDefinition.md
 docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
@@ -175,6 +177,10 @@ docs/ErrorResponseDto.md
 docs/Event.md
 docs/EventAllOf.md
 docs/EventDocument.md
+docs/ExceptionAccessCriteria.md
+docs/ExceptionCriteria.md
+docs/ExceptionCriteriaAccess.md
+docs/ExceptionCriteriaCriteriaListInner.md
 docs/ExecutionStatus.md
 docs/ExpansionItem.md
 docs/Expression.md
@@ -206,6 +212,9 @@ docs/IdentityProfilesApi.md
 docs/IdentityReference.md
 docs/IdentityReferenceWithNameAndEmail.md
 docs/IdentitySummary.md
+docs/IdentityWithNewAccess.md
+docs/IdentityWithNewAccess1.md
+docs/IdentityWithNewAccessAccessRefsInner.md
 docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/Index.md
 docs/InnerHit.md
@@ -302,6 +311,7 @@ docs/PublicIdentitiesConfigApi.md
 docs/PublicIdentity.md
 docs/PublicIdentityAttributeConfig.md
 docs/PublicIdentityConfig.md
+docs/PublicOrgConfigArmData.md
 docs/Query.md
 docs/QueryResultFilter.md
 docs/QueryType.md
@@ -353,6 +363,7 @@ docs/RoleSummary.md
 docs/RoleSummaryAllOf.md
 docs/RolesApi.md
 docs/SODPolicyApi.md
+docs/SODViolationsApi.md
 docs/SavedSearch.md
 docs/SavedSearchAllOf.md
 docs/SavedSearchApi.md
@@ -397,6 +408,7 @@ docs/SetLifecycleStateRequest.md
 docs/SodExemptCriteria.md
 docs/SodPolicy.md
 docs/SodPolicySchedule.md
+docs/SodViolationCheck.md
 docs/SodViolationCheckResult.md
 docs/SodViolationContext.md
 docs/SodViolationContextCheckCompleted.md
@@ -430,7 +442,11 @@ docs/TypedReference.md
 docs/UpdatePasswordDictionaryRequest.md
 docs/UsageType.md
 docs/Value.md
+docs/ViolationContext.md
+docs/ViolationContextPolicy.md
+docs/ViolationContextPolicyAllOf.md
 docs/ViolationOwnerAssignmentConfig.md
+docs/ViolationPrediction.md
 docs/VisibilityCriteria.md
 docs/WorkItemState.md
 docs/WorkItemType.md
@@ -510,6 +526,7 @@ model_approval_scheme_for_role.go
 model_approval_status.go
 model_approval_status_dto.go
 model_approval_summary.go
+model_arm_risk.go
 model_attribute_definition.go
 model_attribute_definition_schema.go
 model_attribute_definition_type.go
@@ -574,6 +591,10 @@ model_error_response_dto.go
 model_event.go
 model_event_all_of.go
 model_event_document.go
+model_exception_access_criteria.go
+model_exception_criteria.go
+model_exception_criteria_access.go
+model_exception_criteria_criteria_list_inner.go
 model_execution_status.go
 model_expansion_item.go
 model_expression.go
@@ -604,6 +625,9 @@ model_identity_profile_exported_object.go
 model_identity_reference.go
 model_identity_reference_with_name_and_email.go
 model_identity_summary.go
+model_identity_with_new_access.go
+model_identity_with_new_access_1.go
+model_identity_with_new_access_access_refs_inner.go
 model_import_non_employee_records_in_bulk_request.go
 model_index.go
 model_inner_hit.go
@@ -690,6 +714,7 @@ model_provisioning_state.go
 model_public_identity.go
 model_public_identity_attribute_config.go
 model_public_identity_config.go
+model_public_org_config_arm_data.go
 model_query.go
 model_query_result_filter.go
 model_query_type.go
@@ -777,6 +802,7 @@ model_set_lifecycle_state_request.go
 model_sod_exempt_criteria.go
 model_sod_policy.go
 model_sod_policy_schedule.go
+model_sod_violation_check.go
 model_sod_violation_check_result.go
 model_sod_violation_context.go
 model_sod_violation_context_check_completed.go
@@ -807,7 +833,11 @@ model_typed_reference.go
 model_update_password_dictionary_request.go
 model_usage_type.go
 model_value.go
+model_violation_context.go
+model_violation_context_policy.go
+model_violation_context_policy_all_of.go
 model_violation_owner_assignment_config.go
+model_violation_prediction.go
 model_visibility_criteria.go
 model_work_item_state.go
 model_work_item_type.go
@@ -841,6 +871,7 @@ test/api_search_test.go
 test/api_segments_test.go
 test/api_service_desk_integration_test.go
 test/api_sod_policy_test.go
+test/api_sod_violations_test.go
 test/api_sources_test.go
 test/api_tagged_objects_test.go
 test/api_transforms_test.go

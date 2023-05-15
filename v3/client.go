@@ -94,6 +94,8 @@ type APIClient struct {
 
 	SODPolicyApi *SODPolicyApiService
 
+	SODViolationsApi *SODViolationsApiService
+
 	SavedSearchApi *SavedSearchApiService
 
 	ScheduledSearchApi *ScheduledSearchApiService
@@ -150,6 +152,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.RequestableObjectsApi = (*RequestableObjectsApiService)(&c.common)
 	c.RolesApi = (*RolesApiService)(&c.common)
 	c.SODPolicyApi = (*SODPolicyApiService)(&c.common)
+	c.SODViolationsApi = (*SODViolationsApiService)(&c.common)
 	c.SavedSearchApi = (*SavedSearchApiService)(&c.common)
 	c.ScheduledSearchApi = (*ScheduledSearchApiService)(&c.common)
 	c.SearchApi = (*SearchApiService)(&c.common)

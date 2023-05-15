@@ -196,6 +196,7 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**CreateSodPolicy**](docs/SODPolicyApi.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
 *SODPolicyApi* | [**DeleteSodPolicy**](docs/SODPolicyApi.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
 *SODPolicyApi* | [**DeleteSodPolicySchedule**](docs/SODPolicyApi.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
+*SODPolicyApi* | [**GetArmRiskById**](docs/SODPolicyApi.md#getarmriskbyid) | **Get** /sod-risks/risks/{id} | Gets the specified ARM risk.
 *SODPolicyApi* | [**GetSodPolicy**](docs/SODPolicyApi.md#getsodpolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
 *SODPolicyApi* | [**GetSodPolicySchedule**](docs/SODPolicyApi.md#getsodpolicyschedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
 *SODPolicyApi* | [**GetSodViolationReportRunStatus**](docs/SODPolicyApi.md#getsodviolationreportrunstatus) | **Get** /sod-violation-report-status/{reportResultId} | Get violation report run status
@@ -205,6 +206,9 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**SetPolicySchedule**](docs/SODPolicyApi.md#setpolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
 *SODPolicyApi* | [**SetSodPolicy**](docs/SODPolicyApi.md#setsodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
 *SODPolicyApi* | [**StartSodPolicy**](docs/SODPolicyApi.md#startsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
+*SODViolationsApi* | [**GetArmConfig**](docs/SODViolationsApi.md#getarmconfig) | **Get** /sod-violations/config | Expose just the ARM config
+*SODViolationsApi* | [**StartPredictSodViolations**](docs/SODViolationsApi.md#startpredictsodviolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
+*SODViolationsApi* | [**StartViolationCheck**](docs/SODViolationsApi.md#startviolationcheck) | **Post** /sod-violations/check | Check SOD violations
 *SavedSearchApi* | [**CreateSavedSearch**](docs/SavedSearchApi.md#createsavedsearch) | **Post** /saved-searches | Create a saved search
 *SavedSearchApi* | [**DeleteSavedSearch**](docs/SavedSearchApi.md#deletesavedsearch) | **Delete** /saved-searches/{id} | Delete a document by ID
 *SavedSearchApi* | [**ExecuteSavedSearch**](docs/SavedSearchApi.md#executesavedsearch) | **Post** /saved-searches/{id}/execute | Execute a saved search by ID
@@ -359,6 +363,7 @@ Class | Method | HTTP request | Description
  - [ApprovalStatus](docs/ApprovalStatus.md)
  - [ApprovalStatusDto](docs/ApprovalStatusDto.md)
  - [ApprovalSummary](docs/ApprovalSummary.md)
+ - [ArmRisk](docs/ArmRisk.md)
  - [AttributeDefinition](docs/AttributeDefinition.md)
  - [AttributeDefinitionSchema](docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](docs/AttributeDefinitionType.md)
@@ -423,6 +428,10 @@ Class | Method | HTTP request | Description
  - [Event](docs/Event.md)
  - [EventAllOf](docs/EventAllOf.md)
  - [EventDocument](docs/EventDocument.md)
+ - [ExceptionAccessCriteria](docs/ExceptionAccessCriteria.md)
+ - [ExceptionCriteria](docs/ExceptionCriteria.md)
+ - [ExceptionCriteriaAccess](docs/ExceptionCriteriaAccess.md)
+ - [ExceptionCriteriaCriteriaListInner](docs/ExceptionCriteriaCriteriaListInner.md)
  - [ExecutionStatus](docs/ExecutionStatus.md)
  - [ExpansionItem](docs/ExpansionItem.md)
  - [Expression](docs/Expression.md)
@@ -453,6 +462,9 @@ Class | Method | HTTP request | Description
  - [IdentityReference](docs/IdentityReference.md)
  - [IdentityReferenceWithNameAndEmail](docs/IdentityReferenceWithNameAndEmail.md)
  - [IdentitySummary](docs/IdentitySummary.md)
+ - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
+ - [IdentityWithNewAccess1](docs/IdentityWithNewAccess1.md)
+ - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
  - [ImportNonEmployeeRecordsInBulkRequest](docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [Index](docs/Index.md)
  - [InnerHit](docs/InnerHit.md)
@@ -539,6 +551,7 @@ Class | Method | HTTP request | Description
  - [PublicIdentity](docs/PublicIdentity.md)
  - [PublicIdentityAttributeConfig](docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityConfig](docs/PublicIdentityConfig.md)
+ - [PublicOrgConfigArmData](docs/PublicOrgConfigArmData.md)
  - [Query](docs/Query.md)
  - [QueryResultFilter](docs/QueryResultFilter.md)
  - [QueryType](docs/QueryType.md)
@@ -626,6 +639,7 @@ Class | Method | HTTP request | Description
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
  - [SodPolicy](docs/SodPolicy.md)
  - [SodPolicySchedule](docs/SodPolicySchedule.md)
+ - [SodViolationCheck](docs/SodViolationCheck.md)
  - [SodViolationCheckResult](docs/SodViolationCheckResult.md)
  - [SodViolationContext](docs/SodViolationContext.md)
  - [SodViolationContextCheckCompleted](docs/SodViolationContextCheckCompleted.md)
@@ -656,7 +670,11 @@ Class | Method | HTTP request | Description
  - [UpdatePasswordDictionaryRequest](docs/UpdatePasswordDictionaryRequest.md)
  - [UsageType](docs/UsageType.md)
  - [Value](docs/Value.md)
+ - [ViolationContext](docs/ViolationContext.md)
+ - [ViolationContextPolicy](docs/ViolationContextPolicy.md)
+ - [ViolationContextPolicyAllOf](docs/ViolationContextPolicyAllOf.md)
  - [ViolationOwnerAssignmentConfig](docs/ViolationOwnerAssignmentConfig.md)
+ - [ViolationPrediction](docs/ViolationPrediction.md)
  - [VisibilityCriteria](docs/VisibilityCriteria.md)
  - [WorkItemState](docs/WorkItemState.md)
  - [WorkItemType](docs/WorkItemType.md)
