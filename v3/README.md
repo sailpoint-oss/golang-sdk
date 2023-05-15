@@ -197,6 +197,9 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**DeleteSodPolicy**](docs/SODPolicyApi.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
 *SODPolicyApi* | [**DeleteSodPolicySchedule**](docs/SODPolicyApi.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
 *SODPolicyApi* | [**GetArmRiskById**](docs/SODPolicyApi.md#getarmriskbyid) | **Get** /sod-risks/risks/{id} | Gets the specified ARM risk.
+*SODPolicyApi* | [**GetCustomViolationReport**](docs/SODPolicyApi.md#getcustomviolationreport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
+*SODPolicyApi* | [**GetDefaultViolationReport**](docs/SODPolicyApi.md#getdefaultviolationreport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
+*SODPolicyApi* | [**GetSodAllReportRunStatus**](docs/SODPolicyApi.md#getsodallreportrunstatus) | **Get** /sod-violation-report | Get multi-report run task status
 *SODPolicyApi* | [**GetSodPolicy**](docs/SODPolicyApi.md#getsodpolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
 *SODPolicyApi* | [**GetSodPolicySchedule**](docs/SODPolicyApi.md#getsodpolicyschedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
 *SODPolicyApi* | [**GetSodViolationReportRunStatus**](docs/SODPolicyApi.md#getsodviolationreportrunstatus) | **Get** /sod-violation-report-status/{reportResultId} | Get violation report run status
@@ -205,6 +208,7 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**PatchSodPolicy**](docs/SODPolicyApi.md#patchsodpolicy) | **Patch** /sod-policies/{id} | Patch SOD policy by ID
 *SODPolicyApi* | [**SetPolicySchedule**](docs/SODPolicyApi.md#setpolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
 *SODPolicyApi* | [**SetSodPolicy**](docs/SODPolicyApi.md#setsodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
+*SODPolicyApi* | [**StartSodAllPoliciesForOrg**](docs/SODPolicyApi.md#startsodallpoliciesfororg) | **Post** /sod-violation-report/run | Runs all policies for org
 *SODPolicyApi* | [**StartSodPolicy**](docs/SODPolicyApi.md#startsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 *SODViolationsApi* | [**GetArmConfig**](docs/SODViolationsApi.md#getarmconfig) | **Get** /sod-violations/config | Expose just the ARM config
 *SODViolationsApi* | [**StartPredictSodViolations**](docs/SODViolationsApi.md#startpredictsodviolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
@@ -482,6 +486,7 @@ Class | Method | HTTP request | Description
  - [ManualWorkItemState](docs/ManualWorkItemState.md)
  - [MetricAggregation](docs/MetricAggregation.md)
  - [MetricType](docs/MetricType.md)
+ - [MultiPolicyRequest](docs/MultiPolicyRequest.md)
  - [NameType](docs/NameType.md)
  - [NestedAggregation](docs/NestedAggregation.md)
  - [NonEmployeeApprovalDecision](docs/NonEmployeeApprovalDecision.md)

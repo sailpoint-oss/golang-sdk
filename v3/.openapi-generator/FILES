@@ -233,6 +233,7 @@ docs/ManualWorkItemDetails.md
 docs/ManualWorkItemState.md
 docs/MetricAggregation.md
 docs/MetricType.md
+docs/MultiPolicyRequest.md
 docs/NameType.md
 docs/NestedAggregation.md
 docs/NonEmployeeApprovalDecision.md
@@ -645,6 +646,7 @@ model_manual_work_item_details.go
 model_manual_work_item_state.go
 model_metric_aggregation.go
 model_metric_type.go
+model_multi_policy_request.go
 model_name_type.go
 model_nested_aggregation.go
 model_non_employee_approval_decision.go
