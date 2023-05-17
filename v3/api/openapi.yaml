@@ -16582,6 +16582,589 @@ paths:
       summary: Update Password Org Config
       tags:
       - Password Configuration
+  /sod-exceptions:
+    get:
+      description: |-
+        This API returns a list of all SOD exceptions.
+
+        A token with API authority is required to call this API.
+      operationId: listSodExceptions
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: "Filter results using the standard syntax described in [V3 API\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)\n\
+          \nFiltering is supported for the following fields and operators:\n\n**id**:\
+          \ *eq, \n\nin*  **sodPolicy.id**: *eq, \n\nin*  **identity.id**: *eq, \n\
+          \nin*"
+        example: identity.id eq "bc693f07e7b645539626c25954c58554"
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+      - description: "Sort results using the standard syntax described in [V3 API\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)\n\
+          \nSorting is supported for the following fields:\n\n**sodPolicy.id, \n\n\
+          identity.id, \n\nstart, \n\nend**"
+        example: "identity.id,-start"
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+                created: 2020-01-01T00:00:00.000000Z
+                modified: 2020-01-01T00:00:00.000000Z
+                sodPolicy:
+                  type: SOD_POLICY
+                  id: 00fc6afc-af1d-43af-b350-8d632f4c56ca
+                identity:
+                  type: IDENTITY
+                  id: 2c9180867473c1bd01747e8a7d65179b
+                start: 2020-01-01T00:00:00.000Z
+                end: 2020-01-02T00:00:00.000Z
+                businessJustification: "Bob (the accountant) is on vacation, Bill\
+                  \ needs access to accounting data this week."
+                mitigatingControl: The manager will audit Bill's changes this week.
+                accessCriteria:
+                  leftCriteria:
+                    criteriaList:
+                    - type: ENTITLEMENT
+                      id: 2c9180866166b5b0016167c32ef31a66
+                    - type: ENTITLEMENT
+                      id: 2c9180866166b5b0016167c32ef31a67
+                  rightCriteria:
+                    criteriaList:
+                    - type: ENTITLEMENT
+                      id: 2c9180866166b5b0016167c32ef31a68
+                    - type: ENTITLEMENT
+                      id: 2c9180866166b5b0016167c32ef31a69
+                origin:
+                  type: ACCOUNT_ACTIVITY
+                  id: 2c9180867372a2590173774358eb016d
+              schema:
+                items:
+                  $ref: '#/components/schemas/Exception'
+                type: array
+          description: List of all SOD Exceptions.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:sod-exception:read
+      summary: List SOD exceptions
+      tags:
+      - SOD Exception
+    post:
+      description: |-
+        This API creates a SOD exception.
+
+        A token with API authority is required to call this API.
+      operationId: createSodException
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Exception created:
+                $ref: '#/components/examples/exception-body'
+                value: null
+            schema:
+              $ref: '#/components/schemas/Exception'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                SOD Exception:
+                  $ref: '#/components/examples/exception-response'
+                  value: null
+              schema:
+                $ref: '#/components/schemas/Exception'
+          description: SOD exception created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:sod-exception:write
+      summary: Create SOD exception
+      tags:
+      - SOD Exception
+  /sod-exceptions/{id}:
+    delete:
+      description: This API deletes the specified SOD exception.
+      operationId: deleteSodExceptionById
+      parameters:
+      - description: The ID of the SOD exception to delete.
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:sod-exception:write
+      summary: Delete SOD exception by ID
+      tags:
+      - SOD Exception
+    get:
+      description: This API returns the specified SOD exception.
+      operationId: getSodExceptionById
+      parameters:
+      - description: The ID of the object reference to retrieve.
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                SOD Exception:
+                  $ref: '#/components/examples/exception-response'
+                  value: null
+              schema:
+                $ref: '#/components/schemas/Exception'
+          description: SOD exception by ID.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:sod-exception:read
+      summary: Get SOD exception by ID
+      tags:
+      - SOD Exception
+    patch:
+      description: "This API allows updating SOD exception fields other than [\"id\"\
+        , \"created\", \"origin\"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902)\
+        \ standard."
+      operationId: patchExceptionById
+      parameters:
+      - description: The ID of the SOD exception to update.
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            examples:
+              Update exception:
+                $ref: '#/components/examples/exception-body-patch'
+                value: null
+            schema:
+              items:
+                type: object
+              type: array
+        description: |
+          A list of SOD policy update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          The following fields are patchable:
+          * policyId
+          * identityId
+          * start
+          * end
+          * businessJustification
+          * mitigatingControl
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                SOD Exception:
+                  $ref: '#/components/examples/exception-response'
+                  value: null
+              schema:
+                $ref: '#/components/schemas/Exception'
+          description: "Indicates the PATCH operation succeeded, and returns the SOD\
+            \ exception's new representation."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:sod-exception:write
+      summary: Update SOD exception
+      tags:
+      - SOD Exception
   /sod-policies:
     get:
       description: |-
@@ -25305,6 +25888,83 @@ components:
         tags:
         - TAG_1
         - TAG_2
+    exception-body:
+      summary: Exception
+      value:
+        id: null
+        created: null
+        modified: null
+        sodPolicy:
+          type: SOD_POLICY
+          id: 00fc6afc-af1d-43af-b350-8d632f4c56ca
+        identity:
+          type: IDENTITY
+          id: 2c9180867473c1bd01747e8a7d65179b
+        start: 2020-01-01T00:00:00.000Z
+        end: 2020-01-02T00:00:00.000Z
+        businessJustification: "Bob (the accountant) is on vacation, Bill needs access\
+          \ to accounting data this week."
+        mitigatingControl: The manager will audit Bill's changes this week.
+        accessCriteria:
+          leftCriteria:
+            criteriaList:
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a66
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a67
+          rightCriteria:
+            criteriaList:
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a68
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a69
+        origin:
+          type: ACCOUNT_ACTIVITY
+          id: 2c9180867372a2590173774358eb016d
+    exception-response:
+      summary: Exception
+      value:
+        id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+        created: 2020-01-01T00:00:00.000000Z
+        modified: 2020-01-01T00:00:00.000000Z
+        sodPolicy:
+          type: SOD_POLICY
+          id: 00fc6afc-af1d-43af-b350-8d632f4c56ca
+        identity:
+          type: IDENTITY
+          id: 2c9180867473c1bd01747e8a7d65179b
+        start: 2020-01-01T00:00:00.000Z
+        end: 2020-01-02T00:00:00.000Z
+        businessJustification: "Bob (the accountant) is on vacation, Bill needs access\
+          \ to accounting data this week."
+        mitigatingControl: The manager will audit Bill's changes this week.
+        accessCriteria:
+          leftCriteria:
+            criteriaList:
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a66
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a67
+          rightCriteria:
+            criteriaList:
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a68
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a69
+        origin:
+          type: ACCOUNT_ACTIVITY
+          id: 2c9180867372a2590173774358eb016d
+    exception-body-patch:
+      value:
+      - op: replace
+        path: /sodPolicy/id
+        value: c61499ae-6912-4fb5-b216-a97eb6781105
+      - op: replace
+        path: /mitigatingControl
+        value: Modified mitigating control
+      - op: replace
+        path: /end
+        value: 2020-01-03T00:00:00.000Z
   parameters:
     limit50:
       description: |-
@@ -25464,6 +26124,76 @@ components:
     "204":
       description: No content - indicates the request was successful but there is
         no content to be returned in the response.
+    "200-list":
+      content:
+        application/json:
+          example:
+          - id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+            created: 2020-01-01T00:00:00.000000Z
+            modified: 2020-01-01T00:00:00.000000Z
+            sodPolicy:
+              type: SOD_POLICY
+              id: 00fc6afc-af1d-43af-b350-8d632f4c56ca
+            identity:
+              type: IDENTITY
+              id: 2c9180867473c1bd01747e8a7d65179b
+            start: 2020-01-01T00:00:00.000Z
+            end: 2020-01-02T00:00:00.000Z
+            businessJustification: "Bob (the accountant) is on vacation, Bill needs\
+              \ access to accounting data this week."
+            mitigatingControl: The manager will audit Bill's changes this week.
+            accessCriteria:
+              leftCriteria:
+                criteriaList:
+                - type: ENTITLEMENT
+                  id: 2c9180866166b5b0016167c32ef31a66
+                - type: ENTITLEMENT
+                  id: 2c9180866166b5b0016167c32ef31a67
+              rightCriteria:
+                criteriaList:
+                - type: ENTITLEMENT
+                  id: 2c9180866166b5b0016167c32ef31a68
+                - type: ENTITLEMENT
+                  id: 2c9180866166b5b0016167c32ef31a69
+            origin:
+              type: ACCOUNT_ACTIVITY
+              id: 2c9180867372a2590173774358eb016d
+          schema:
+            items:
+              $ref: '#/components/schemas/Exception'
+            type: array
+      description: List of all SOD Exceptions.
+    "201":
+      content:
+        application/json:
+          examples:
+            SOD Exception:
+              $ref: '#/components/examples/exception-response'
+              value: null
+          schema:
+            $ref: '#/components/schemas/Exception'
+      description: SOD exception created
+    "200":
+      content:
+        application/json:
+          examples:
+            SOD Exception:
+              $ref: '#/components/examples/exception-response'
+              value: null
+          schema:
+            $ref: '#/components/schemas/Exception'
+      description: SOD exception by ID.
+    "200-patch":
+      content:
+        application/json:
+          examples:
+            SOD Exception:
+              $ref: '#/components/examples/exception-response'
+              value: null
+          schema:
+            $ref: '#/components/schemas/Exception'
+      description: "Indicates the PATCH operation succeeded, and returns the SOD exception's\
+        \ new representation."
   schemas:
     AccessRequest:
       example:
@@ -31355,6 +32085,91 @@ components:
           minimum: 6
           type: integer
       type: object
+    Exception:
+      example:
+        accessCriteria:
+          leftCriteria:
+            criteriaList:
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a66
+              existing: true
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a67
+              existing: false
+          rightCriteria:
+            criteriaList:
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a66
+              existing: true
+            - type: ENTITLEMENT
+              id: 2c9180866166b5b0016167c32ef31a67
+              existing: false
+        created: 2020-01-01T00:00:00Z
+        identity:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        mitigatingControl: The manager will audit Bill's changes this week.
+        origin:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        sodPolicy:
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        start: 2020-01-01T00:00:00Z
+        modified: 2020-01-01T00:00:00Z
+        end: 2020-01-02T00:00:00Z
+        id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+        businessJustification: "Bob (the accountant) is on vacation, Bill needs access\
+          \ to accounting data this week."
+      properties:
+        id:
+          description: Id of a SOD exception.
+          example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          nullable: true
+          type: string
+        created:
+          description: The time when this SOD exception is created.
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+        modified:
+          description: The time when this SOD exception is modified.
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+        sodPolicy:
+          $ref: '#/components/schemas/BaseReferenceDto'
+        identity:
+          $ref: '#/components/schemas/BaseReferenceDto'
+        start:
+          description: The earliest date-time when this SOD exception is applicable.
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          type: string
+        end:
+          description: The last date-time when this SOD exception is applicable.
+          example: 2020-01-02T00:00:00Z
+          format: date-time
+          type: string
+        businessJustification:
+          description: The business justification for the exception.
+          example: "Bob (the accountant) is on vacation, Bill needs access to accounting\
+            \ data this week."
+          type: string
+        mitigatingControl:
+          description: The mitigating control for the exception.
+          example: The manager will audit Bill's changes this week.
+          type: string
+        accessCriteria:
+          $ref: '#/components/schemas/ExceptionAccessCriteria'
+        origin:
+          $ref: '#/components/schemas/BaseReferenceDto'
+      type: object
     SodPolicy:
       example:
         conflictingAccessCriteria:
@@ -34377,6 +35192,30 @@ components:
           example: Abby.Smith
           type: string
       type: object
+    ExceptionAccessCriteria:
+      example:
+        leftCriteria:
+          criteriaList:
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a66
+            existing: true
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a67
+            existing: false
+        rightCriteria:
+          criteriaList:
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a66
+            existing: true
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a67
+            existing: false
+      properties:
+        leftCriteria:
+          $ref: '#/components/schemas/ExceptionCriteria'
+        rightCriteria:
+          $ref: '#/components/schemas/ExceptionCriteria'
+      type: object
     ViolationOwnerAssignmentConfig:
       example:
         assignmentRule: MANAGER
@@ -35370,6 +36209,30 @@ components:
             $ref: '#/components/schemas/Value'
           type: array
       type: object
+    ExceptionCriteria:
+      example:
+        criteriaList:
+        - type: ENTITLEMENT
+          id: 2c9180866166b5b0016167c32ef31a66
+          existing: true
+        - type: ENTITLEMENT
+          id: 2c9180866166b5b0016167c32ef31a67
+          existing: false
+      properties:
+        criteriaList:
+          description: List of exception criteria. There is a min of 1 and max of
+            50 items in the list.
+          example:
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a66
+            existing: true
+          - type: ENTITLEMENT
+            id: 2c9180866166b5b0016167c32ef31a67
+            existing: false
+          items:
+            $ref: '#/components/schemas/ExceptionCriteria_criteriaList_inner'
+          type: array
+      type: object
     AccessCriteria:
       example:
         name: money-in
@@ -35400,30 +36263,6 @@ components:
           maxItems: 50
           minItems: 1
           type: array
-      type: object
-    ExceptionAccessCriteria:
-      example:
-        leftCriteria:
-          criteriaList:
-          - type: ENTITLEMENT
-            id: 2c9180866166b5b0016167c32ef31a66
-            existing: true
-          - type: ENTITLEMENT
-            id: 2c9180866166b5b0016167c32ef31a67
-            existing: false
-        rightCriteria:
-          criteriaList:
-          - type: ENTITLEMENT
-            id: 2c9180866166b5b0016167c32ef31a66
-            existing: true
-          - type: ENTITLEMENT
-            id: 2c9180866166b5b0016167c32ef31a67
-            existing: false
-      properties:
-        leftCriteria:
-          $ref: '#/components/schemas/ExceptionCriteria'
-        rightCriteria:
-          $ref: '#/components/schemas/ExceptionCriteria'
       type: object
     AttributeDefinitionType:
       description: The underlying type of the value which an AttributeDefinition represents.
@@ -35771,29 +36610,26 @@ components:
           example: Austin
           type: string
       type: object
-    ExceptionCriteria:
-      example:
-        criteriaList:
-        - type: ENTITLEMENT
-          id: 2c9180866166b5b0016167c32ef31a66
-          existing: true
-        - type: ENTITLEMENT
-          id: 2c9180866166b5b0016167c32ef31a67
-          existing: false
+    ExceptionCriteriaAccess:
+      description: Access reference with addition of boolean existing flag to indicate
+        whether the access was extant
       properties:
-        criteriaList:
-          description: List of exception criteria. There is a min of 1 and max of
-            50 items in the list.
-          example:
-          - type: ENTITLEMENT
-            id: 2c9180866166b5b0016167c32ef31a66
-            existing: true
-          - type: ENTITLEMENT
-            id: 2c9180866166b5b0016167c32ef31a67
-            existing: false
-          items:
-            $ref: '#/components/schemas/ExceptionCriteria_criteriaList_inner'
-          type: array
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: "CN=HelpDesk,OU=test,OU=test-service,DC=TestAD,DC=local"
+          type: string
+        existing:
+          default: false
+          description: Whether the subject identity already had that access or not
+          example: true
+          type: boolean
       type: object
     SearchIdentityReference:
       allOf:
@@ -35887,27 +36723,6 @@ components:
       - TERMS
       example: TERMS
       type: string
-    ExceptionCriteriaAccess:
-      description: Access reference with addition of boolean existing flag to indicate
-        whether the access was extant
-      properties:
-        type:
-          $ref: '#/components/schemas/DtoType'
-        id:
-          description: ID of the object to which this reference applies
-          example: 2c91808568c529c60168cca6f90c1313
-          type: string
-        name:
-          description: Human-readable display name of the object to which this reference
-            applies
-          example: "CN=HelpDesk,OU=test,OU=test-service,DC=TestAD,DC=local"
-          type: string
-        existing:
-          default: false
-          description: Whether the subject identity already had that access or not
-          example: true
-          type: boolean
-      type: object
     listAccessProfiles_401_response:
       properties:
         error:
@@ -37792,6 +38607,17 @@ components:
           $ref: '#/components/schemas/Aggregations'
       type: object
       example: null
+    ExceptionCriteria_criteriaList_inner:
+      allOf:
+      - $ref: '#/components/schemas/ExceptionCriteriaAccess'
+      description: The types of objects supported for SOD violations
+      properties:
+        type:
+          description: The type of object that is referenced
+          enum:
+          - ENTITLEMENT
+          example: ENTITLEMENT
+          type: object
     AccessCriteria_criteriaList_inner:
       properties:
         type:
@@ -37865,17 +38691,6 @@ components:
         rightCriteria:
           $ref: '#/components/schemas/SodViolationContext_conflictingAccessCriteria_leftCriteria'
       type: object
-    ExceptionCriteria_criteriaList_inner:
-      allOf:
-      - $ref: '#/components/schemas/ExceptionCriteriaAccess'
-      description: The types of objects supported for SOD violations
-      properties:
-        type:
-          description: The type of object that is referenced
-          enum:
-          - ENTITLEMENT
-          example: ENTITLEMENT
-          type: object
     SearchIdentityReference_allOf:
       properties:
         type:

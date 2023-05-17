@@ -193,6 +193,11 @@ Class | Method | HTTP request | Description
 *RolesApi* | [**GetRoleAssignedIdentities**](docs/RolesApi.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
 *RolesApi* | [**ListRoles**](docs/RolesApi.md#listroles) | **Get** /roles | List Roles
 *RolesApi* | [**PatchRole**](docs/RolesApi.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
+*SODExceptionApi* | [**CreateSodException**](docs/SODExceptionApi.md#createsodexception) | **Post** /sod-exceptions | Create SOD exception
+*SODExceptionApi* | [**DeleteSodExceptionById**](docs/SODExceptionApi.md#deletesodexceptionbyid) | **Delete** /sod-exceptions/{id} | Delete SOD exception by ID
+*SODExceptionApi* | [**GetSodExceptionById**](docs/SODExceptionApi.md#getsodexceptionbyid) | **Get** /sod-exceptions/{id} | Get SOD exception by ID
+*SODExceptionApi* | [**ListSodExceptions**](docs/SODExceptionApi.md#listsodexceptions) | **Get** /sod-exceptions | List SOD exceptions
+*SODExceptionApi* | [**PatchExceptionById**](docs/SODExceptionApi.md#patchexceptionbyid) | **Patch** /sod-exceptions/{id} | Update SOD exception
 *SODPolicyApi* | [**CreateSodPolicy**](docs/SODPolicyApi.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
 *SODPolicyApi* | [**DeleteSodPolicy**](docs/SODPolicyApi.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
 *SODPolicyApi* | [**DeleteSodPolicySchedule**](docs/SODPolicyApi.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
@@ -432,6 +437,7 @@ Class | Method | HTTP request | Description
  - [Event](docs/Event.md)
  - [EventAllOf](docs/EventAllOf.md)
  - [EventDocument](docs/EventDocument.md)
+ - [Exception](docs/Exception.md)
  - [ExceptionAccessCriteria](docs/ExceptionAccessCriteria.md)
  - [ExceptionCriteria](docs/ExceptionCriteria.md)
  - [ExceptionCriteriaAccess](docs/ExceptionCriteriaAccess.md)

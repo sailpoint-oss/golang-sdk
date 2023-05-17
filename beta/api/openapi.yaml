@@ -52641,18 +52641,15 @@ components:
         id:
           description: Unique ID of this transform
           example: 2cd78adghjkja34jh2b1hkjhasuecd
-          readOnly: true
           type: string
         name:
           description: Unique name of this transform
           example: Timestamp To Date
-          readOnly: true
           type: string
         type:
           description: "The transform type (see [Transformations in IdentityNow Using\
             \ Seaspray](https://community.sailpoint.com/docs/DOC-4629))."
           example: concat
-          readOnly: true
           type: string
         attributes:
           description: Meta-data about the transform. Values in this list are specific

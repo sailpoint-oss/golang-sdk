@@ -202,9 +202,11 @@ func (o Transform) MarshalJSON() ([]byte, error) {
 
 func (o Transform) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	// skip: name is readOnly
-	// skip: type is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["name"] = o.Name
+	toSerialize["type"] = o.Type
 	if o.Attributes != nil {
 		toSerialize["attributes"] = o.Attributes
 	}

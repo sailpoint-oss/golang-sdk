@@ -28,6 +28,7 @@ api_scheduled_search.go
 api_search.go
 api_segments.go
 api_service_desk_integration.go
+api_sod_exception.go
 api_sod_policy.go
 api_sod_violations.go
 api_sources.go
@@ -177,6 +178,7 @@ docs/ErrorResponseDto.md
 docs/Event.md
 docs/EventAllOf.md
 docs/EventDocument.md
+docs/Exception.md
 docs/ExceptionAccessCriteria.md
 docs/ExceptionCriteria.md
 docs/ExceptionCriteriaAccess.md
@@ -363,6 +365,7 @@ docs/RoleMembershipSelectorType.md
 docs/RoleSummary.md
 docs/RoleSummaryAllOf.md
 docs/RolesApi.md
+docs/SODExceptionApi.md
 docs/SODPolicyApi.md
 docs/SODViolationsApi.md
 docs/SavedSearch.md
@@ -592,6 +595,7 @@ model_error_response_dto.go
 model_event.go
 model_event_all_of.go
 model_event_document.go
+model_exception.go
 model_exception_access_criteria.go
 model_exception_criteria.go
 model_exception_criteria_access.go
@@ -872,6 +876,7 @@ test/api_scheduled_search_test.go
 test/api_search_test.go
 test/api_segments_test.go
 test/api_service_desk_integration_test.go
+test/api_sod_exception_test.go
 test/api_sod_policy_test.go
 test/api_sod_violations_test.go
 test/api_sources_test.go
