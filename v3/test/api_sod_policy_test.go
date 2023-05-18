@@ -60,6 +60,20 @@ func Test_v3_SODPolicyApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test SODPolicyApiService GetArmPublicKey", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id KeyExchangeServiceTarget
+
+		resp, httpRes, err := apiClient.V3.SODPolicyApi.GetArmPublicKey(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SODPolicyApiService GetArmRiskById", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -218,6 +232,20 @@ func Test_v3_SODPolicyApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.V3.SODPolicyApi.SetSodPolicy(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SODPolicyApiService StartEvaluateSodPolicy", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.V3.SODPolicyApi.StartEvaluateSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

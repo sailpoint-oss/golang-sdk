@@ -202,6 +202,7 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**CreateSodPolicy**](docs/SODPolicyApi.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
 *SODPolicyApi* | [**DeleteSodPolicy**](docs/SODPolicyApi.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
 *SODPolicyApi* | [**DeleteSodPolicySchedule**](docs/SODPolicyApi.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
+*SODPolicyApi* | [**GetArmPublicKey**](docs/SODPolicyApi.md#getarmpublickey) | **Get** /sod-config/public-keys/target | Get ARM public key
 *SODPolicyApi* | [**GetArmRiskById**](docs/SODPolicyApi.md#getarmriskbyid) | **Get** /sod-risks/risks/{id} | Gets the specified ARM risk.
 *SODPolicyApi* | [**GetCustomViolationReport**](docs/SODPolicyApi.md#getcustomviolationreport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
 *SODPolicyApi* | [**GetDefaultViolationReport**](docs/SODPolicyApi.md#getdefaultviolationreport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
@@ -214,6 +215,7 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**PatchSodPolicy**](docs/SODPolicyApi.md#patchsodpolicy) | **Patch** /sod-policies/{id} | Patch SOD policy by ID
 *SODPolicyApi* | [**SetPolicySchedule**](docs/SODPolicyApi.md#setpolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
 *SODPolicyApi* | [**SetSodPolicy**](docs/SODPolicyApi.md#setsodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
+*SODPolicyApi* | [**StartEvaluateSodPolicy**](docs/SODPolicyApi.md#startevaluatesodpolicy) | **Post** /sod-policies/{id}/evaluate | Evaluate one policy by ID
 *SODPolicyApi* | [**StartSodAllPoliciesForOrg**](docs/SODPolicyApi.md#startsodallpoliciesfororg) | **Post** /sod-violation-report/run | Runs all policies for org
 *SODPolicyApi* | [**StartSodPolicy**](docs/SODPolicyApi.md#startsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 *SODViolationsApi* | [**GetArmConfig**](docs/SODViolationsApi.md#getarmconfig) | **Get** /sod-violations/config | Expose just the ARM config
@@ -484,6 +486,7 @@ Class | Method | HTTP request | Description
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [JsonPatchOperationValueAnyOfInner](docs/JsonPatchOperationValueAnyOfInner.md)
+ - [KeyExchangeServiceTarget](docs/KeyExchangeServiceTarget.md)
  - [LifecycleState](docs/LifecycleState.md)
  - [LifecycleStateAllOf](docs/LifecycleStateAllOf.md)
  - [ListAccessProfiles401Response](docs/ListAccessProfiles401Response.md)
@@ -564,6 +567,7 @@ Class | Method | HTTP request | Description
  - [PublicIdentity](docs/PublicIdentity.md)
  - [PublicIdentityAttributeConfig](docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityConfig](docs/PublicIdentityConfig.md)
+ - [PublicKey](docs/PublicKey.md)
  - [PublicOrgConfigArmData](docs/PublicOrgConfigArmData.md)
  - [Query](docs/Query.md)
  - [QueryResultFilter](docs/QueryResultFilter.md)

@@ -225,6 +225,7 @@ docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
 docs/JsonPatchOperationValueAnyOfInner.md
+docs/KeyExchangeServiceTarget.md
 docs/LifecycleState.md
 docs/LifecycleStateAllOf.md
 docs/LifecycleStatesApi.md
@@ -315,6 +316,7 @@ docs/PublicIdentitiesConfigApi.md
 docs/PublicIdentity.md
 docs/PublicIdentityAttributeConfig.md
 docs/PublicIdentityConfig.md
+docs/PublicKey.md
 docs/PublicOrgConfigArmData.md
 docs/Query.md
 docs/QueryResultFilter.md
@@ -642,6 +644,7 @@ model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
 model_json_patch_operation_value_any_of_inner.go
+model_key_exchange_service_target.go
 model_lifecycle_state.go
 model_lifecycle_state_all_of.go
 model_list_access_profiles_401_response.go
@@ -722,6 +725,7 @@ model_provisioning_state.go
 model_public_identity.go
 model_public_identity_attribute_config.go
 model_public_identity_config.go
+model_public_key.go
 model_public_org_config_arm_data.go
 model_query.go
 model_query_result_filter.go

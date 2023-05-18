@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CreateSodPolicy**](SODPolicyApi.md#CreateSodPolicy) | **Post** /sod-policies | Create SOD policy
 [**DeleteSodPolicy**](SODPolicyApi.md#DeleteSodPolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
 [**DeleteSodPolicySchedule**](SODPolicyApi.md#DeleteSodPolicySchedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
+[**GetArmPublicKey**](SODPolicyApi.md#GetArmPublicKey) | **Get** /sod-config/public-keys/target | Get ARM public key
 [**GetArmRiskById**](SODPolicyApi.md#GetArmRiskById) | **Get** /sod-risks/risks/{id} | Gets the specified ARM risk.
 [**GetCustomViolationReport**](SODPolicyApi.md#GetCustomViolationReport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
 [**GetDefaultViolationReport**](SODPolicyApi.md#GetDefaultViolationReport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
@@ -19,6 +20,7 @@ Method | HTTP request | Description
 [**PatchSodPolicy**](SODPolicyApi.md#PatchSodPolicy) | **Patch** /sod-policies/{id} | Patch SOD policy by ID
 [**SetPolicySchedule**](SODPolicyApi.md#SetPolicySchedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
 [**SetSodPolicy**](SODPolicyApi.md#SetSodPolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
+[**StartEvaluateSodPolicy**](SODPolicyApi.md#StartEvaluateSodPolicy) | **Post** /sod-policies/{id}/evaluate | Evaluate one policy by ID
 [**StartSodAllPoliciesForOrg**](SODPolicyApi.md#StartSodAllPoliciesForOrg) | **Post** /sod-violation-report/run | Runs all policies for org
 [**StartSodPolicy**](SODPolicyApi.md#StartSodPolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 
@@ -213,6 +215,76 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetArmPublicKey
+
+> PublicKey GetArmPublicKey(ctx, id).Execute()
+
+Get ARM public key
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := map[string][]openapiclient.KeyExchangeServiceTarget{ ... } // KeyExchangeServiceTarget | The target for public key
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SODPolicyApi.GetArmPublicKey(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.GetArmPublicKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetArmPublicKey`: PublicKey
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.GetArmPublicKey`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | [**KeyExchangeServiceTarget**](.md) | The target for public key | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetArmPublicKeyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**PublicKey**](PublicKey.md)
 
 ### Authorization
 
@@ -1063,6 +1135,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StartEvaluateSodPolicy
+
+> ReportResultReference StartEvaluateSodPolicy(ctx, id).Execute()
+
+Evaluate one policy by ID
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f943-47e9-4562-b5bb-8424a56397d8" // string | The SOD policy ID to run.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SODPolicyApi.StartEvaluateSodPolicy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.StartEvaluateSodPolicy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StartEvaluateSodPolicy`: ReportResultReference
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.StartEvaluateSodPolicy`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The SOD policy ID to run. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStartEvaluateSodPolicyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ReportResultReference**](ReportResultReference.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
