@@ -22,6 +22,18 @@ func Test_v3_SODExceptionApiService(t *testing.T) {
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test SODExceptionApiService CreateBulkSodExceptions", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.V3.SODExceptionApi.CreateBulkSodExceptions(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SODExceptionApiService CreateSodException", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

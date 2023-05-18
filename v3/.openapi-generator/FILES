@@ -183,6 +183,7 @@ docs/ExceptionAccessCriteria.md
 docs/ExceptionCriteria.md
 docs/ExceptionCriteriaAccess.md
 docs/ExceptionCriteriaCriteriaListInner.md
+docs/ExceptionList.md
 docs/ExecutionStatus.md
 docs/ExpansionItem.md
 docs/Expression.md
@@ -600,6 +601,7 @@ model_exception_access_criteria.go
 model_exception_criteria.go
 model_exception_criteria_access.go
 model_exception_criteria_criteria_list_inner.go
+model_exception_list.go
 model_execution_status.go
 model_expansion_item.go
 model_expression.go

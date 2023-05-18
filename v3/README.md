@@ -193,6 +193,7 @@ Class | Method | HTTP request | Description
 *RolesApi* | [**GetRoleAssignedIdentities**](docs/RolesApi.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
 *RolesApi* | [**ListRoles**](docs/RolesApi.md#listroles) | **Get** /roles | List Roles
 *RolesApi* | [**PatchRole**](docs/RolesApi.md#patchrole) | **Patch** /roles/{id} | Patch a specified Role
+*SODExceptionApi* | [**CreateBulkSodExceptions**](docs/SODExceptionApi.md#createbulksodexceptions) | **Post** /sod-exceptions/bulk-create | Create SOD exceptions in bulk
 *SODExceptionApi* | [**CreateSodException**](docs/SODExceptionApi.md#createsodexception) | **Post** /sod-exceptions | Create SOD exception
 *SODExceptionApi* | [**DeleteSodExceptionById**](docs/SODExceptionApi.md#deletesodexceptionbyid) | **Delete** /sod-exceptions/{id} | Delete SOD exception by ID
 *SODExceptionApi* | [**GetSodExceptionById**](docs/SODExceptionApi.md#getsodexceptionbyid) | **Get** /sod-exceptions/{id} | Get SOD exception by ID
@@ -442,6 +443,7 @@ Class | Method | HTTP request | Description
  - [ExceptionCriteria](docs/ExceptionCriteria.md)
  - [ExceptionCriteriaAccess](docs/ExceptionCriteriaAccess.md)
  - [ExceptionCriteriaCriteriaListInner](docs/ExceptionCriteriaCriteriaListInner.md)
+ - [ExceptionList](docs/ExceptionList.md)
  - [ExecutionStatus](docs/ExecutionStatus.md)
  - [ExpansionItem](docs/ExpansionItem.md)
  - [Expression](docs/Expression.md)

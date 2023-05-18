@@ -4,12 +4,79 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateBulkSodExceptions**](SODExceptionApi.md#CreateBulkSodExceptions) | **Post** /sod-exceptions/bulk-create | Create SOD exceptions in bulk
 [**CreateSodException**](SODExceptionApi.md#CreateSodException) | **Post** /sod-exceptions | Create SOD exception
 [**DeleteSodExceptionById**](SODExceptionApi.md#DeleteSodExceptionById) | **Delete** /sod-exceptions/{id} | Delete SOD exception by ID
 [**GetSodExceptionById**](SODExceptionApi.md#GetSodExceptionById) | **Get** /sod-exceptions/{id} | Get SOD exception by ID
 [**ListSodExceptions**](SODExceptionApi.md#ListSodExceptions) | **Get** /sod-exceptions | List SOD exceptions
 [**PatchExceptionById**](SODExceptionApi.md#PatchExceptionById) | **Patch** /sod-exceptions/{id} | Update SOD exception
 
+
+
+## CreateBulkSodExceptions
+
+> map[string]interface{} CreateBulkSodExceptions(ctx).ExceptionList(exceptionList).Execute()
+
+Create SOD exceptions in bulk
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    exceptionList := *openapiclient.NewExceptionList() // ExceptionList | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SODExceptionApi.CreateBulkSodExceptions(context.Background()).ExceptionList(exceptionList).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SODExceptionApi.CreateBulkSodExceptions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateBulkSodExceptions`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `SODExceptionApi.CreateBulkSodExceptions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateBulkSodExceptionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **exceptionList** | [**ExceptionList**](ExceptionList.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateSodException
