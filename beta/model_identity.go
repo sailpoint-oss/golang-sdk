@@ -43,6 +43,7 @@ type Identity struct {
 	LastRefresh *time.Time `json:"lastRefresh,omitempty"`
 	// A map with the identity attributes for the identity
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	LifecycleState *LifecycleStateDto `json:"lifecycleState,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -55,6 +56,8 @@ type _Identity Identity
 func NewIdentity(name string) *Identity {
 	this := Identity{}
 	this.Name = name
+	var isManager bool = false
+	this.IsManager = &isManager
 	return &this
 }
 
@@ -63,6 +66,8 @@ func NewIdentity(name string) *Identity {
 // but it doesn't guarantee that properties required by API are set
 func NewIdentityWithDefaults() *Identity {
 	this := Identity{}
+	var isManager bool = false
+	this.IsManager = &isManager
 	return &this
 }
 
@@ -452,6 +457,38 @@ func (o *Identity) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
+// GetLifecycleState returns the LifecycleState field value if set, zero value otherwise.
+func (o *Identity) GetLifecycleState() LifecycleStateDto {
+	if o == nil || isNil(o.LifecycleState) {
+		var ret LifecycleStateDto
+		return ret
+	}
+	return *o.LifecycleState
+}
+
+// GetLifecycleStateOk returns a tuple with the LifecycleState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Identity) GetLifecycleStateOk() (*LifecycleStateDto, bool) {
+	if o == nil || isNil(o.LifecycleState) {
+		return nil, false
+	}
+	return o.LifecycleState, true
+}
+
+// HasLifecycleState returns a boolean if a field has been set.
+func (o *Identity) HasLifecycleState() bool {
+	if o != nil && !isNil(o.LifecycleState) {
+		return true
+	}
+
+	return false
+}
+
+// SetLifecycleState gets a reference to the given LifecycleStateDto and assigns it to the LifecycleState field.
+func (o *Identity) SetLifecycleState(v LifecycleStateDto) {
+	o.LifecycleState = &v
+}
+
 func (o Identity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -490,6 +527,9 @@ func (o Identity) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
+	if !isNil(o.LifecycleState) {
+		toSerialize["lifecycleState"] = o.LifecycleState
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -520,6 +560,7 @@ func (o *Identity) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "isManager")
 		delete(additionalProperties, "lastRefresh")
 		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "lifecycleState")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -725,6 +725,7 @@ Class | Method | HTTP request | Description
  - [JsonPatchOperationValueAnyOfInner](docs/JsonPatchOperationValueAnyOfInner.md)
  - [LatestOutlierSummary](docs/LatestOutlierSummary.md)
  - [LifecycleState](docs/LifecycleState.md)
+ - [LifecycleStateDto](docs/LifecycleStateDto.md)
  - [ListAccessProfiles401Response](docs/ListAccessProfiles401Response.md)
  - [ListAccessProfiles429Response](docs/ListAccessProfiles429Response.md)
  - [ListCompleteWorkflowLibrary200ResponseInner](docs/ListCompleteWorkflowLibrary200ResponseInner.md)

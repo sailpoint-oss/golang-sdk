@@ -56483,6 +56483,21 @@ components:
       - dataJson
       - type
       type: object
+    LifecycleStateDto:
+      properties:
+        stateName:
+          description: The name of the lifecycle state
+          example: active
+          type: string
+        manuallyUpdated:
+          description: Whether the lifecycle state has been manually or automatically
+            set
+          example: true
+          type: boolean
+      required:
+      - manuallyUpdated
+      - stateName
+      type: object
     DtoType:
       description: An enumeration of the types of DTOs supported within the IdentityNow
         infrastructure.
@@ -61993,6 +62008,7 @@ components:
         managerRef:
           $ref: '#/components/schemas/BaseReferenceDto'
         isManager:
+          default: false
           description: Whether this identity is a manager of another identity
           example: true
           type: boolean
@@ -62008,6 +62024,8 @@ components:
             :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\"\
             ,\"lastname\":\"white\"}"
           type: object
+        lifecycleState:
+          $ref: '#/components/schemas/LifecycleStateDto'
       title: IdentityDto
       type: object
       example: null
