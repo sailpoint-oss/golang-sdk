@@ -45467,13 +45467,13 @@ components:
           modified: 2019-08-23T18:52:57.398Z
           forwardHistory:
           - forwarderName: William Wilson
-            reassignmentType: MANUAL_REASSIGNMENT
+            reassignmentType: AUTOMATIC_REASSIGNMENT
             modified: 2019-08-23T18:52:57.398Z
             oldApproverName: Frank Mir
             newApproverName: Al Volta
             comment: Forwarding from Frank to Al
           - forwarderName: William Wilson
-            reassignmentType: MANUAL_REASSIGNMENT
+            reassignmentType: AUTOMATIC_REASSIGNMENT
             modified: 2019-08-23T18:52:57.398Z
             oldApproverName: Frank Mir
             newApproverName: Al Volta
@@ -45491,13 +45491,13 @@ components:
           modified: 2019-08-23T18:52:57.398Z
           forwardHistory:
           - forwarderName: William Wilson
-            reassignmentType: MANUAL_REASSIGNMENT
+            reassignmentType: AUTOMATIC_REASSIGNMENT
             modified: 2019-08-23T18:52:57.398Z
             oldApproverName: Frank Mir
             newApproverName: Al Volta
             comment: Forwarding from Frank to Al
           - forwarderName: William Wilson
-            reassignmentType: MANUAL_REASSIGNMENT
+            reassignmentType: AUTOMATIC_REASSIGNMENT
             modified: 2019-08-23T18:52:57.398Z
             oldApproverName: Frank Mir
             newApproverName: Al Volta
@@ -45740,13 +45740,13 @@ components:
         id: 2c9180835d2e5168015d32f890ca1581
         forwardHistory:
         - forwarderName: William Wilson
-          reassignmentType: MANUAL_REASSIGNMENT
+          reassignmentType: AUTOMATIC_REASSIGNMENT
           modified: 2019-08-23T18:52:57.398Z
           oldApproverName: Frank Mir
           newApproverName: Al Volta
           comment: Forwarding from Frank to Al
         - forwarderName: William Wilson
-          reassignmentType: MANUAL_REASSIGNMENT
+          reassignmentType: AUTOMATIC_REASSIGNMENT
           modified: 2019-08-23T18:52:57.398Z
           oldApproverName: Frank Mir
           newApproverName: Al Volta
@@ -45957,13 +45957,13 @@ components:
         id: 2c938083633d259901633d25c68c00fa
         forwardHistory:
         - forwarderName: William Wilson
-          reassignmentType: MANUAL_REASSIGNMENT
+          reassignmentType: AUTOMATIC_REASSIGNMENT
           modified: 2019-08-23T18:52:57.398Z
           oldApproverName: Frank Mir
           newApproverName: Al Volta
           comment: Forwarding from Frank to Al
         - forwarderName: William Wilson
-          reassignmentType: MANUAL_REASSIGNMENT
+          reassignmentType: AUTOMATIC_REASSIGNMENT
           modified: 2019-08-23T18:52:57.398Z
           oldApproverName: Frank Mir
           newApproverName: Al Volta
@@ -55602,13 +55602,13 @@ components:
         modified: 2019-08-23T18:52:57.398Z
         forwardHistory:
         - forwarderName: William Wilson
-          reassignmentType: MANUAL_REASSIGNMENT
+          reassignmentType: AUTOMATIC_REASSIGNMENT
           modified: 2019-08-23T18:52:57.398Z
           oldApproverName: Frank Mir
           newApproverName: Al Volta
           comment: Forwarding from Frank to Al
         - forwarderName: William Wilson
-          reassignmentType: MANUAL_REASSIGNMENT
+          reassignmentType: AUTOMATIC_REASSIGNMENT
           modified: 2019-08-23T18:52:57.398Z
           oldApproverName: Frank Mir
           newApproverName: Al Volta
@@ -55863,7 +55863,7 @@ components:
     ApprovalForwardHistory:
       example:
         forwarderName: William Wilson
-        reassignmentType: MANUAL_REASSIGNMENT
+        reassignmentType: AUTOMATIC_REASSIGNMENT
         modified: 2019-08-23T18:52:57.398Z
         oldApproverName: Frank Mir
         newApproverName: Al Volta
@@ -58528,7 +58528,7 @@ components:
       - AUTOMATIC_REASSIGNMENT
       - AUTO_ESCALATION
       - SELF_REVIEW_DELEGATION
-      example: MANUAL_REASSIGNMENT
+      example: AUTOMATIC_REASSIGNMENT
       type: string
     SodViolationCheckResult_1:
       description: The inner object representing the completed SOD Violation check
