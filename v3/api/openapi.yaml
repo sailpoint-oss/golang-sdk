@@ -5436,7 +5436,7 @@ paths:
       summary: Access Summaries
       tags:
       - Certification Summaries
-  /certifications/{id}/identity-summary/{identitySummaryId}:
+  /certifications/{id}/identity-summaries/{identitySummaryId}:
     get:
       description: This API returns the summary for an identity on a specified identity
         campaign certification. A token with ORG_ADMIN or CERT_ADMIN authority is

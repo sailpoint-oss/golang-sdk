@@ -112,7 +112,7 @@ Class | Method | HTTP request | Description
 *CertificationSummariesApi* | [**GetIdentityAccessSummaries**](docs/CertificationSummariesApi.md#getidentityaccesssummaries) | **Get** /certifications/{id}/access-summaries/{type} | Access Summaries
 *CertificationSummariesApi* | [**GetIdentityDecisionSummary**](docs/CertificationSummariesApi.md#getidentitydecisionsummary) | **Get** /certifications/{id}/decision-summary | Summary of Certification Decisions
 *CertificationSummariesApi* | [**GetIdentitySummaries**](docs/CertificationSummariesApi.md#getidentitysummaries) | **Get** /certifications/{id}/identity-summaries | Identity Summaries for Campaign Certification
-*CertificationSummariesApi* | [**GetIdentitySummary**](docs/CertificationSummariesApi.md#getidentitysummary) | **Get** /certifications/{id}/identity-summary/{identitySummaryId} | Summary for Identity
+*CertificationSummariesApi* | [**GetIdentitySummary**](docs/CertificationSummariesApi.md#getidentitysummary) | **Get** /certifications/{id}/identity-summaries/{identitySummaryId} | Summary for Identity
 *CertificationsApi* | [**GetIdentityCertification**](docs/CertificationsApi.md#getidentitycertification) | **Get** /certifications/{id} | Identity Certification by ID
 *CertificationsApi* | [**ListIdentityAccessReviewItems**](docs/CertificationsApi.md#listidentityaccessreviewitems) | **Get** /certifications/{id}/access-review-items | List of Access Review Items
 *CertificationsApi* | [**ListIdentityCertifications**](docs/CertificationsApi.md#listidentitycertifications) | **Get** /certifications | Identity Campaign Certifications by IDs

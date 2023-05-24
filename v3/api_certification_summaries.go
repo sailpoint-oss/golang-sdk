@@ -686,7 +686,7 @@ func (a *CertificationSummariesApiService) GetIdentitySummaryExecute(r ApiGetIde
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/certifications/{id}/identity-summary/{identitySummaryId}"
+	localVarPath := localBasePath + "/certifications/{id}/identity-summaries/{identitySummaryId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"identitySummaryId"+"}", url.PathEscape(parameterValueToString(r.identitySummaryId, "identitySummaryId")), -1)
 

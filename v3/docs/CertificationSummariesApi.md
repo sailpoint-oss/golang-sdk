@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**GetIdentityAccessSummaries**](CertificationSummariesApi.md#GetIdentityAccessSummaries) | **Get** /certifications/{id}/access-summaries/{type} | Access Summaries
 [**GetIdentityDecisionSummary**](CertificationSummariesApi.md#GetIdentityDecisionSummary) | **Get** /certifications/{id}/decision-summary | Summary of Certification Decisions
 [**GetIdentitySummaries**](CertificationSummariesApi.md#GetIdentitySummaries) | **Get** /certifications/{id}/identity-summaries | Identity Summaries for Campaign Certification
-[**GetIdentitySummary**](CertificationSummariesApi.md#GetIdentitySummary) | **Get** /certifications/{id}/identity-summary/{identitySummaryId} | Summary for Identity
+[**GetIdentitySummary**](CertificationSummariesApi.md#GetIdentitySummary) | **Get** /certifications/{id}/identity-summaries/{identitySummaryId} | Summary for Identity
 
 
 
