@@ -8,6 +8,7 @@ api_access_request_approvals.go
 api_access_requests.go
 api_account_activities.go
 api_accounts.go
+api_certification_campaigns.go
 api_certification_summaries.go
 api_certifications.go
 api_identity_profiles.go
@@ -39,6 +40,7 @@ client.go
 configuration.go
 docs/Access.md
 docs/AccessAllOf.md
+docs/AccessConstraint.md
 docs/AccessCriteria.md
 docs/AccessCriteriaCriteriaListInner.md
 docs/AccessProfile.md
@@ -130,10 +132,19 @@ docs/BucketAggregation.md
 docs/BucketType.md
 docs/BulkTaggedObject.md
 docs/Campaign.md
+docs/CampaignAlert.md
+docs/CampaignAllOf.md
+docs/CampaignAllOfFilter.md
+docs/CampaignAllOfRoleCompositionCampaignInfo.md
+docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md
+docs/CampaignAllOfSearchCampaignInfo.md
+docs/CampaignAllOfSourceOwnerCampaignInfo.md
+docs/CampaignAllOfSourcesWithOrphanEntitlements.md
 docs/CampaignReference.md
 docs/CancelAccessRequest.md
 docs/CancelledRequestDetails.md
 docs/Certification.md
+docs/CertificationCampaignsApi.md
 docs/CertificationDecision.md
 docs/CertificationIdentitySummary.md
 docs/CertificationPhase.md
@@ -412,6 +423,7 @@ docs/ServiceDeskIntegrationTemplateDtoAllOf.md
 docs/ServiceDeskIntegrationTemplateType.md
 docs/SetLifecycleState200Response.md
 docs/SetLifecycleStateRequest.md
+docs/SlimCampaign.md
 docs/SodExemptCriteria.md
 docs/SodPolicy.md
 docs/SodPolicySchedule.md
@@ -466,6 +478,7 @@ go.mod
 go.sum
 model_access.go
 model_access_all_of.go
+model_access_constraint.go
 model_access_criteria.go
 model_access_criteria_criteria_list_inner.go
 model_access_profile.go
@@ -552,6 +565,14 @@ model_bucket_aggregation.go
 model_bucket_type.go
 model_bulk_tagged_object.go
 model_campaign.go
+model_campaign_alert.go
+model_campaign_all_of.go
+model_campaign_all_of_filter.go
+model_campaign_all_of_role_composition_campaign_info.go
+model_campaign_all_of_role_composition_campaign_info_remediator_ref.go
+model_campaign_all_of_search_campaign_info.go
+model_campaign_all_of_source_owner_campaign_info.go
+model_campaign_all_of_sources_with_orphan_entitlements.go
 model_campaign_reference.go
 model_cancel_access_request.go
 model_cancelled_request_details.go
@@ -811,6 +832,7 @@ model_service_desk_integration_template_dto_all_of.go
 model_service_desk_integration_template_type.go
 model_set_lifecycle_state_200_response.go
 model_set_lifecycle_state_request.go
+model_slim_campaign.go
 model_sod_exempt_criteria.go
 model_sod_policy.go
 model_sod_policy_schedule.go
@@ -862,6 +884,7 @@ test/api_access_request_approvals_test.go
 test/api_access_requests_test.go
 test/api_account_activities_test.go
 test/api_accounts_test.go
+test/api_certification_campaigns_test.go
 test/api_certification_summaries_test.go
 test/api_certifications_test.go
 test/api_identity_profiles_test.go

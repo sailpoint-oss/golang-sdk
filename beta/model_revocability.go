@@ -19,6 +19,10 @@ var _ MappedNullable = &Revocability{}
 
 // Revocability struct for Revocability
 type Revocability struct {
+	// Whether the requester of the containing object must provide comments justifying the request
+	CommentsRequired NullableBool `json:"commentsRequired,omitempty"`
+	// Whether an approver must provide comments when denying the request
+	DenialCommentsRequired NullableBool `json:"denialCommentsRequired,omitempty"`
 	// List describing the steps in approving the revocation request
 	ApprovalSchemes []AccessProfileApprovalScheme `json:"approvalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -32,6 +36,10 @@ type _Revocability Revocability
 // will change when the set of required properties is changed
 func NewRevocability() *Revocability {
 	this := Revocability{}
+	var commentsRequired bool = false
+	this.CommentsRequired = *NewNullableBool(&commentsRequired)
+	var denialCommentsRequired bool = false
+	this.DenialCommentsRequired = *NewNullableBool(&denialCommentsRequired)
 	return &this
 }
 
@@ -40,7 +48,95 @@ func NewRevocability() *Revocability {
 // but it doesn't guarantee that properties required by API are set
 func NewRevocabilityWithDefaults() *Revocability {
 	this := Revocability{}
+	var commentsRequired bool = false
+	this.CommentsRequired = *NewNullableBool(&commentsRequired)
+	var denialCommentsRequired bool = false
+	this.DenialCommentsRequired = *NewNullableBool(&denialCommentsRequired)
 	return &this
+}
+
+// GetCommentsRequired returns the CommentsRequired field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Revocability) GetCommentsRequired() bool {
+	if o == nil || isNil(o.CommentsRequired.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.CommentsRequired.Get()
+}
+
+// GetCommentsRequiredOk returns a tuple with the CommentsRequired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Revocability) GetCommentsRequiredOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CommentsRequired.Get(), o.CommentsRequired.IsSet()
+}
+
+// HasCommentsRequired returns a boolean if a field has been set.
+func (o *Revocability) HasCommentsRequired() bool {
+	if o != nil && o.CommentsRequired.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCommentsRequired gets a reference to the given NullableBool and assigns it to the CommentsRequired field.
+func (o *Revocability) SetCommentsRequired(v bool) {
+	o.CommentsRequired.Set(&v)
+}
+// SetCommentsRequiredNil sets the value for CommentsRequired to be an explicit nil
+func (o *Revocability) SetCommentsRequiredNil() {
+	o.CommentsRequired.Set(nil)
+}
+
+// UnsetCommentsRequired ensures that no value is present for CommentsRequired, not even an explicit nil
+func (o *Revocability) UnsetCommentsRequired() {
+	o.CommentsRequired.Unset()
+}
+
+// GetDenialCommentsRequired returns the DenialCommentsRequired field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Revocability) GetDenialCommentsRequired() bool {
+	if o == nil || isNil(o.DenialCommentsRequired.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.DenialCommentsRequired.Get()
+}
+
+// GetDenialCommentsRequiredOk returns a tuple with the DenialCommentsRequired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Revocability) GetDenialCommentsRequiredOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DenialCommentsRequired.Get(), o.DenialCommentsRequired.IsSet()
+}
+
+// HasDenialCommentsRequired returns a boolean if a field has been set.
+func (o *Revocability) HasDenialCommentsRequired() bool {
+	if o != nil && o.DenialCommentsRequired.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDenialCommentsRequired gets a reference to the given NullableBool and assigns it to the DenialCommentsRequired field.
+func (o *Revocability) SetDenialCommentsRequired(v bool) {
+	o.DenialCommentsRequired.Set(&v)
+}
+// SetDenialCommentsRequiredNil sets the value for DenialCommentsRequired to be an explicit nil
+func (o *Revocability) SetDenialCommentsRequiredNil() {
+	o.DenialCommentsRequired.Set(nil)
+}
+
+// UnsetDenialCommentsRequired ensures that no value is present for DenialCommentsRequired, not even an explicit nil
+func (o *Revocability) UnsetDenialCommentsRequired() {
+	o.DenialCommentsRequired.Unset()
 }
 
 // GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise.
@@ -85,6 +181,12 @@ func (o Revocability) MarshalJSON() ([]byte, error) {
 
 func (o Revocability) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CommentsRequired.IsSet() {
+		toSerialize["commentsRequired"] = o.CommentsRequired.Get()
+	}
+	if o.DenialCommentsRequired.IsSet() {
+		toSerialize["denialCommentsRequired"] = o.DenialCommentsRequired.Get()
+	}
 	if !isNil(o.ApprovalSchemes) {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
 	}
@@ -106,6 +208,8 @@ func (o *Revocability) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "commentsRequired")
+		delete(additionalProperties, "denialCommentsRequired")
 		delete(additionalProperties, "approvalSchemes")
 		o.AdditionalProperties = additionalProperties
 	}

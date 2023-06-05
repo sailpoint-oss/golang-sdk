@@ -448,6 +448,15 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**RejectApprovalItem**](docs/WorkItemsApi.md#rejectapprovalitem) | **Post** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 *WorkItemsApi* | [**RejectApprovalItemsInBulk**](docs/WorkItemsApi.md#rejectapprovalitemsinbulk) | **Post** /work-items/bulk-reject/{id} | Bulk reject Approval Items
 *WorkItemsApi* | [**SubmitAccountSelection**](docs/WorkItemsApi.md#submitaccountselection) | **Post** /work-items/{id}/submit-account-selection | Submit Account Selections
+*WorkReassignmentApi* | [**CreateReassignmentConfiguration**](docs/WorkReassignmentApi.md#createreassignmentconfiguration) | **Post** /reassignment-configurations | Create a Reassignment Configuration
+*WorkReassignmentApi* | [**DeleteReassignmentConfiguration**](docs/WorkReassignmentApi.md#deletereassignmentconfiguration) | **Delete** /reassignment-configurations/{identityId} | Delete Reassignment Configuration
+*WorkReassignmentApi* | [**GetEvaluateReassignmentConfiguration**](docs/WorkReassignmentApi.md#getevaluatereassignmentconfiguration) | **Get** /reassignment-configurations/{identityId}/evaluate/{configType} | Evaluate Reassignment Configuration
+*WorkReassignmentApi* | [**GetReassignmentConfigTypes**](docs/WorkReassignmentApi.md#getreassignmentconfigtypes) | **Get** /reassignment-configurations/types | List Reassignment Config Types
+*WorkReassignmentApi* | [**GetReassignmentConfiguration**](docs/WorkReassignmentApi.md#getreassignmentconfiguration) | **Get** /reassignment-configurations/{identityId} | Get Reassignment Configuration
+*WorkReassignmentApi* | [**GetTenantConfigConfiguration**](docs/WorkReassignmentApi.md#gettenantconfigconfiguration) | **Get** /reassignment-configurations/tenant-config | Get Tenant-wide Reassignment Configuration settings
+*WorkReassignmentApi* | [**ListReassignmentConfigurations**](docs/WorkReassignmentApi.md#listreassignmentconfigurations) | **Get** /reassignment-configurations | List Reassignment Configurations
+*WorkReassignmentApi* | [**PutReassignmentConfig**](docs/WorkReassignmentApi.md#putreassignmentconfig) | **Put** /reassignment-configurations/{identityId} | Update Reassignment Configuration
+*WorkReassignmentApi* | [**PutTenantConfiguration**](docs/WorkReassignmentApi.md#puttenantconfiguration) | **Put** /reassignment-configurations/tenant-config | Update Tenant-wide Reassignment Configuration settings
 *WorkflowsApi* | [**CancelWorkflowExecution**](docs/WorkflowsApi.md#cancelworkflowexecution) | **Post** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
 *WorkflowsApi* | [**CreateWorkflow**](docs/WorkflowsApi.md#createworkflow) | **Post** /workflows | Create Workflow
 *WorkflowsApi* | [**DeleteWorkflow**](docs/WorkflowsApi.md#deleteworkflow) | **Delete** /workflows/{id} | Delete Workflow By Id
@@ -552,6 +561,7 @@ Class | Method | HTTP request | Description
  - [AttributeDefinitionSchema](docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](docs/AttributeDefinitionType.md)
  - [AttributesChanged](docs/AttributesChanged.md)
+ - [AuditDetails](docs/AuditDetails.md)
  - [BaseCommonDto](docs/BaseCommonDto.md)
  - [BaseCommonDto1](docs/BaseCommonDto1.md)
  - [BaseReferenceDto](docs/BaseReferenceDto.md)
@@ -602,6 +612,12 @@ Class | Method | HTTP request | Description
  - [CompletedApprovalState](docs/CompletedApprovalState.md)
  - [CompletionStatus](docs/CompletionStatus.md)
  - [ConfigObject](docs/ConfigObject.md)
+ - [ConfigType](docs/ConfigType.md)
+ - [ConfigTypeEnum](docs/ConfigTypeEnum.md)
+ - [ConfigurationDetailsResponse](docs/ConfigurationDetailsResponse.md)
+ - [ConfigurationItemRequest](docs/ConfigurationItemRequest.md)
+ - [ConfigurationItemResponse](docs/ConfigurationItemResponse.md)
+ - [ConfigurationResponse](docs/ConfigurationResponse.md)
  - [ConflictingAccessCriteria](docs/ConflictingAccessCriteria.md)
  - [ConnectorDetail](docs/ConnectorDetail.md)
  - [ConnectorRuleCreateRequest](docs/ConnectorRuleCreateRequest.md)
@@ -640,6 +656,7 @@ Class | Method | HTTP request | Description
  - [EntityCreatedByDTO](docs/EntityCreatedByDTO.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
+ - [EvaluateResponse](docs/EvaluateResponse.md)
  - [EventAttributes](docs/EventAttributes.md)
  - [EventBridgeConfig](docs/EventBridgeConfig.md)
  - [ExceptionAccessCriteria](docs/ExceptionAccessCriteria.md)
@@ -678,6 +695,7 @@ Class | Method | HTTP request | Description
  - [HttpDispatchMode](docs/HttpDispatchMode.md)
  - [IdentitiesAccountsBulkRequest](docs/IdentitiesAccountsBulkRequest.md)
  - [Identity](docs/Identity.md)
+ - [Identity1](docs/Identity1.md)
  - [IdentityAttributeConfig](docs/IdentityAttributeConfig.md)
  - [IdentityAttributeConfig1](docs/IdentityAttributeConfig1.md)
  - [IdentityAttributePreview](docs/IdentityAttributePreview.md)
@@ -732,6 +750,7 @@ Class | Method | HTTP request | Description
  - [ListIdentityAccessItems200ResponseInner](docs/ListIdentityAccessItems200ResponseInner.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [LocalizedMessage](docs/LocalizedMessage.md)
+ - [LookupStep](docs/LookupStep.md)
  - [MailFromAttributes](docs/MailFromAttributes.md)
  - [MailFromAttributesDto](docs/MailFromAttributesDto.md)
  - [ManagedClient](docs/ManagedClient.md)
@@ -833,6 +852,7 @@ Class | Method | HTTP request | Description
  - [ReassignReference](docs/ReassignReference.md)
  - [Reassignment](docs/Reassignment.md)
  - [ReassignmentType](docs/ReassignmentType.md)
+ - [ReassignmentTypeEnum](docs/ReassignmentTypeEnum.md)
  - [RecommendationConfigDto](docs/RecommendationConfigDto.md)
  - [RecommendationRequest](docs/RecommendationRequest.md)
  - [RecommendationRequestDto](docs/RecommendationRequestDto.md)
@@ -982,6 +1002,9 @@ Class | Method | HTTP request | Description
  - [TemplateBulkDeleteDto](docs/TemplateBulkDeleteDto.md)
  - [TemplateDto](docs/TemplateDto.md)
  - [TemplateDtoDefault](docs/TemplateDtoDefault.md)
+ - [TenantConfigurationDetails](docs/TenantConfigurationDetails.md)
+ - [TenantConfigurationRequest](docs/TenantConfigurationRequest.md)
+ - [TenantConfigurationResponse](docs/TenantConfigurationResponse.md)
  - [TestExternalExecuteWorkflow200Response](docs/TestExternalExecuteWorkflow200Response.md)
  - [TestExternalExecuteWorkflowRequest](docs/TestExternalExecuteWorkflowRequest.md)
  - [TestInvocation](docs/TestInvocation.md)
@@ -1094,6 +1117,7 @@ Class | Method | HTTP request | Description
  - [WorkItems](docs/WorkItems.md)
  - [WorkItemsCount](docs/WorkItemsCount.md)
  - [WorkItemsSummary](docs/WorkItemsSummary.md)
+ - [WorkTypeEnum](docs/WorkTypeEnum.md)
  - [Workflow](docs/Workflow.md)
  - [WorkflowAllOf](docs/WorkflowAllOf.md)
  - [WorkflowBody](docs/WorkflowBody.md)

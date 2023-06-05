@@ -171,6 +171,80 @@ tags:
     \ sources.\n\nRefer to [Account Activity](https://documentation.sailpoint.com/saas/help/search/index.html#account-activity)\
     \ for more information about account activities.\n"
   name: Account Activities
+- description: "Use this API to implement certification campaign functionality.\n\
+    With this functionality in place, administrators can create, customize, and manage\
+    \ certification campaigns for their organizations' use. \nCertification campaigns\
+    \ provide IdentityNow (IDN) users with an interactive review process they can\
+    \ use to identify and verify access to systems. \nCampaigns help organizations\
+    \ reduce risk of inappropriate access and satisfy audit requirements. \n\nA certification\
+    \ refers to IDN's mechanism for reviewing a user's access to entitlements (sets\
+    \ of permissions) and approving or removing that access. \nThese certifications\
+    \ serve as a way of showing that a user's access has been reviewed and approved.\
+    \ \nMultiple certifications by different reviewers are often required to approve\
+    \ a user's access. \nA set of multiple certifications is called a certification\
+    \ campaign. \n\nFor example, an organization may use a Manager Certification campaign\
+    \ as a way of showing that a user's access has been reviewed and approved by multiple\
+    \ managers. \nOnce this campaign has been completed, IDN would provision all the\
+    \ access the user needs, nothing more. \n\nIDN provides two simple campaign types\
+    \ users can create without using search queries, Manager and Source Owner campaigns:\n\
+    \nYou can create these types of campaigns without using any search queries in\
+    \ IDN: \n\n- ManagerCampaign: IDN provides this campaign type as a way to ensure\
+    \ that an identity's access is certified by their managers. \nYou only need to\
+    \ provide a name and description to create one. \n\n- Source Owner Campaign: IDN\
+    \ provides this campaign type as a way to ensure that an identity's access to\
+    \ a source is certified by its source owners. \nYou only need to provide a name\
+    \ and description to create one. \nYou can specify the sources whose owners you\
+    \ want involved or just run it across all sources. \n\nFor more information about\
+    \ these campaign types, refer to [Starting a Manager or Source Owner Campaign](https://documentation.sailpoint.com/saas/help/certs/starting_campaign.html).\n\
+    \nOne useful way to create certification campaigns in IDN is to use a specific\
+    \ search and then run a campaign on the results returned by that search. \nThis\
+    \ allows you to be much more specific about whom you are certifying in your campaigns\
+    \ and what access you are certifying in your campaigns. \nFor example, you can\
+    \ search for all identities who are managed by \"Amanda.Ross\" and also have the\
+    \ access to the \"Accounting\" role and then run a certification campaign based\
+    \ on that search to ensure that the returned identities are appropriately certified.\
+    \ \n\nYou can use IDN search queries to create these types of campaigns: \n\n\
+    - Identities: Use this campaign type to review and revoke access items for specific\
+    \ identities. \nYou can either build a search query and create a campaign certifying\
+    \ all identities returned by that query, or you can search for individual identities\
+    \ and add those identities to the certification campaign. \n\n- Access Items:\
+    \ Use this campaign type to review and revoke a set of roles, access profiles,\
+    \ or entitlements from the identities that have them. \nYou can either build a\
+    \ search query and create a campaign certifying all access items returned by that\
+    \ query, or you can search for individual access items and add those items to\
+    \ the certification campaign. \n\n- Role Composition: Use this campaign type to\
+    \ review a role's composition, including its title, description, and membership\
+    \ criteria. \nYou can either build a search query and create a campaign certifying\
+    \ all roles returned by that query, or you can search for individual roles and\
+    \ add those roles to the certification campaign. \n\n- Uncorrelated Accounts:\
+    \ Use this campaign type to certify source accounts that aren't linked to an authoritative\
+    \ identity in IDN. \nYou can use this campaign type to view all the uncorrelated\
+    \ accounts for a source and certify them. \n\nFor more information about search-based\
+    \ campaigns, refer to [Starting a Campaign from Search](https://documentation.sailpoint.com/saas/help/certs/starting_search_campaign.html).\n\
+    \nOnce you have generated your campaign, it becomes available for preview. \n\
+    An administrator can review the campaign and make changes, or if it's ready and\
+    \ accurate, activate it. \n\nOnce the campaign is active, organization administrators\
+    \ or certification administrators can designate other IDN users as certification\
+    \ reviewers. \nThose reviewers can view any of the certifications they either\
+    \ need to review (active) or have already reviewed (completed).\n\nWhen a certification\
+    \ campaign is in progress, certification reviewers see the listed active certifications\
+    \ whose involved identities they can review. \nReviewers can then make decisions\
+    \ to grant or revoke access, as well as reassign the ceritifcation to another\
+    \ reviewer. If the reviewer chooses this option, they must provide a reason for\
+    \ reassignment in the form of a comment.\n\nOnce a reviewer has made decisions\
+    \ on all the certification's involved access items, he or she must \"Sign Off\"\
+    \ to complete the review process.\nDoing so converts the certification into read-only\
+    \ status, preventing any further changes to the review decisions and deleting\
+    \ the work item (task) from the reviewer's list of work items. \n\nOnce all the\
+    \ reviewers have signed off, the certification campaign either completes or, if\
+    \ any reviewers decided to revoke access for any of the involved identities, it\
+    \ moves into a remediation phase. \nIn the remediation phase, identities' entitlements\
+    \ are altered to remove any entitlements marked for revocation.\nIn this situation,\
+    \ the certification campaign completes once all the remediation requests are completed.\
+    \ \n\nThe end of a certification campaign is determined by its deadline, its completion\
+    \ status, or by an administrator's decision. \n\nFor more information about certifications\
+    \ and certification campaigns, refer to [Certifications](https://documentation.sailpoint.com/saas/user-help/certifications.html).\n"
+  name: Certification Campaigns
 - description: "Use this API to implement certification functionality. \nWith this\
     \ functionality in place, administrators and designated certification reviewers\
     \ can review users' access certifications and decide whether to approve access,\
@@ -4168,6 +4242,226 @@ paths:
       summary: Get an Account Activity
       tags:
       - Account Activities
+  /campaigns:
+    post:
+      description: Creates a new Certification Campaign with the information provided
+        in the request body.
+      operationId: createCampaign
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Manager:
+                $ref: '#/components/examples/CreateCampaignManager'
+                value: null
+              Search:
+                $ref: '#/components/examples/CreateCampaignSearch'
+                value: null
+              Source Owner:
+                $ref: '#/components/examples/CreateCampaignSourceOwner'
+                value: null
+              Role Composition:
+                $ref: '#/components/examples/CreateCampaignRoleComposition'
+                value: null
+            schema:
+              $ref: '#/components/schemas/Campaign'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Manager:
+                  $ref: '#/components/examples/FullCampaignManager'
+                  value: null
+                Search:
+                  $ref: '#/components/examples/FullCampaignSearch'
+                  value: null
+                Source Owner:
+                  $ref: '#/components/examples/FullCampaignSourceOwner'
+                  value: null
+                Role Composition:
+                  $ref: '#/components/examples/FullCampaignRoleComposition'
+                  value: null
+              schema:
+                $ref: '#/components/schemas/Campaign'
+          description: Indicates that the campaign requested was successfully created
+            and returns its representation.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:campaign:create
+      summary: Create a campaign
+      tags:
+      - Certification Campaigns
+  /campaigns/{id}:
+    get:
+      description: "Retrieves information for an existing campaign using the campaign's\
+        \ ID. Authorized callers must be a reviewer for this campaign, an ORG_ADMIN,\
+        \ or a CERT_ADMIN."
+      operationId: getCampaign
+      parameters:
+      - description: The ID of the campaign to be retrieved
+        example: 2c91808571bcfcf80171c23e4b4221fc
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Manager:
+                  $ref: '#/components/examples/SlimCampaignManager'
+                  value: null
+                Search:
+                  $ref: '#/components/examples/SlimCampaignSearch'
+                  value: null
+                Source Owner:
+                  $ref: '#/components/examples/SlimCampaignSourceOwner'
+                  value: null
+                RoleComposition:
+                  $ref: '#/components/examples/SlimCampaignRoleComposition'
+                  value: null
+              schema:
+                $ref: '#/components/schemas/SlimCampaign'
+          description: A campaign object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2: []
+      summary: Get a campaign
+      tags:
+      - Certification Campaigns
   /certifications:
     get:
       description: "This API returns a list of identity campaign certifications that\
@@ -25447,6 +25741,235 @@ paths:
       - Work Items
 components:
   examples:
+    CreateCampaignManager:
+      value:
+        name: Manager Review
+        description: A review of everyone's access by their manager.
+        deadline: 2020-12-25T06:00:00.468Z
+        type: MANAGER
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0c46fb26c6b20967a55517ee90d15b93
+    CreateCampaignSearch:
+      value:
+        name: Search Campaign
+        description: Search Campaign
+        deadline: 2020-12-25T06:00:00.468Z
+        type: SEARCH
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0c46fb26c6b20967a55517ee90d15b93
+        searchCampaignInfo:
+          type: ACCESS
+          query: user
+    CreateCampaignSourceOwner:
+      value:
+        name: Source Owner
+        description: Source Owner Info
+        deadline: 2020-12-25T06:00:00.468Z
+        type: SOURCE_OWNER
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0c46fb26c6b20967a55517ee90d15b93
+        sourceOwnerCampaignInfo:
+          sourceIds:
+          - 612b31b1a0f04aaf83123bdb80e70db6
+        correlatedStatus: CORRELATED
+    CreateCampaignRoleComposition:
+      value:
+        name: Role Composition Campaign
+        description: A review done by a role owner.
+        deadline: 2020-12-25T06:00:00.468Z
+        type: ROLE_COMPOSITION
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0c46fb26c6b20967a55517ee90d15b93
+        roleCompositionCampaignInfo:
+          remediatorRef:
+            type: IDENTITY
+            id: 7ec252acbd4245548bc25df22348cb75
+            name: SailPoint Support
+          roleIds:
+          - b15d609fc5c8434b865fe552315fda8f
+    FullCampaignManager:
+      value:
+        id: 5594f43b76804a6980ece5fdccf74be7
+        name: Manager Review
+        description: A review of everyone's access by their manager.
+        deadline: 2020-12-25T06:00:00.468Z
+        type: MANAGER
+        status: PENDING
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        created: 2022-08-02T20:21:18.421Z
+        modified: null
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0fbe863c063c4c88a35fd7f17e8a3df5
+          name: Test Manager Filter
+        sunsetCommentsRequired: true
+        sourceOwnerCampaignInfo: null
+        searchCampaignInfo: null
+        roleCompositionCampaignInfo: null
+        alerts: null
+        totalCertifications: 0
+        completedCertifications: 0
+        sourcesWithOrphanEntitlements: null
+    FullCampaignSearch:
+      value:
+        id: ec041831cb2147778b594feb9d8db44a
+        name: Search Campaign
+        description: Search Campaign
+        deadline: 2020-12-25T06:00:00.468Z
+        type: SEARCH
+        status: PENDING
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        created: 2022-08-03T13:54:34.344Z
+        modified: null
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0fbe863c063c4c88a35fd7f17e8a3df5
+          name: Test Search Filter
+        sunsetCommentsRequired: true
+        sourceOwnerCampaignInfo: null
+        searchCampaignInfo:
+          type: ACCESS
+          description: user
+          reviewer:
+            type: IDENTITY
+            id: 7ec252acbd4245548bc25df22348cb75
+            name: null
+          query: user
+          identityIds: null
+          accessConstraints: []
+        roleCompositionCampaignInfo: null
+        alerts: null
+        totalCertifications: 0
+        completedCertifications: 0
+        sourcesWithOrphanEntitlements: null
+    FullCampaignSourceOwner:
+      value:
+        id: fd7b76ba4ea042de8a9414aa12fc977a
+        name: Source Owner
+        description: Source Owner Info
+        deadline: 2020-12-25T06:00:00.468Z
+        type: SOURCE_OWNER
+        status: PENDING
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        created: 2022-08-03T13:34:19.541Z
+        modified: null
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0fbe863c063c4c88a35fd7f17e8a3df5
+          name: Test Source Owner Filter
+        sunsetCommentsRequired: true
+        sourceOwnerCampaignInfo: null
+        sourceIds:
+        - 612b31b1a0f04aaf83123bdb80e70db6
+        searchCampaignInfo: null
+        roleCompositionCampaignInfo: null
+        alerts: null
+        totalCertifications: 0
+        completedCertifications: 0
+        sourcesWithOrphanEntitlements: null
+        correlatedStatus: CORRELATED
+    FullCampaignRoleComposition:
+      value:
+        id: 3b2e2e5821e84127b6d693d41c40623b
+        name: Role Composition Campaign
+        description: A review done by a role owner.
+        deadline: 2020-12-25T06:00:00.468Z
+        type: ROLE_COMPOSITION
+        status: PENDING
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        created: 2022-08-02T20:30:46.083Z
+        modified: null
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0fbe863c063c4c88a35fd7f17e8a3df5
+          name: Test Role Composition Filter
+        sunsetCommentsRequired: true
+        sourceOwnerCampaignInfo: null
+        searchCampaignInfo: null
+        roleCompositionCampaignInfo:
+          remediatorRef:
+            type: IDENTITY
+            id: 7ec252acbd4245548bc25df22348cb75
+            name: SailPoint Support
+          reviewerId: null
+          reviewer: null
+          roleIds:
+          - b15d609fc5c8434b865fe552315fda8f
+          query: null
+          description: null
+        alerts: null
+        totalCertifications: 0
+        completedCertifications: 0
+        sourcesWithOrphanEntitlements: null
+    SlimCampaignManager:
+      value:
+        id: 2c918086719eec070171a7e3355a360a
+        name: Manager Review
+        description: A review of everyone's access by their manager.
+        deadline: 2020-12-25T06:00:00.123Z
+        type: MANAGER
+        status: ACTIVE
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+    SlimCampaignSearch:
+      value:
+        id: 7e1a731e3fb845cfbe58112ba4673ee4
+        name: Search Campaign
+        description: Search Campaign Info
+        deadline: 2022-07-26T15:42:44Z
+        type: SEARCH
+        status: ACTIVE
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+    SlimCampaignSourceOwner:
+      value:
+        id: 2c918086719eec070171a7e3355a412b
+        name: AD Source Review
+        description: A review of our AD source.
+        deadline: 2020-12-25T06:00:00.123Z
+        type: SOURCE_OWNER
+        status: STAGED
+        emailNotificationEnabled: true
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        correlatedStatus: CORRELATED
+    SlimCampaignRoleComposition:
+      value:
+        id: 3b2e2e5821e84127b6d693d41c40623b
+        name: Role Composition Campaign
+        description: A review done by a role owner.
+        deadline: 2020-12-25T06:00:00.468Z
+        type: ROLE_COMPOSITION
+        status: ACTIVE
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
     execute-scheduled:
       summary: Triggered by Scheduled Search
       value:
@@ -26970,47 +27493,10 @@ components:
           $ref: '#/components/schemas/WorkItemState'
       type: object
     Campaign:
-      example:
-        campaignType: MANAGER
-        name: Campaign Name
-        description: A description of the campaign
-        id: ef38f94347e94562b5bb8424a56397d8
-        type: CAMPAIGN
-      properties:
-        id:
-          description: The unique ID of the campaign.
-          example: ef38f94347e94562b5bb8424a56397d8
-          type: string
-        name:
-          description: The name of the campaign.
-          example: Campaign Name
-          type: string
-        type:
-          description: The type of object that is being referenced.
-          enum:
-          - CAMPAIGN
-          example: CAMPAIGN
-          type: string
-        campaignType:
-          description: The type of the campaign.
-          enum:
-          - MANAGER
-          - SOURCE_OWNER
-          - SEARCH
-          example: MANAGER
-          type: string
-        description:
-          description: The description of the campaign set by the admin who created
-            it.
-          example: A description of the campaign
-          nullable: true
-          type: string
-      required:
-      - campaignType
-      - description
-      - id
-      - name
-      - type
+      allOf:
+      - $ref: '#/components/schemas/SlimCampaign'
+      - $ref: '#/components/schemas/Campaign_allOf'
+      title: Campaign
       type: object
     Certification:
       example:
@@ -28138,11 +28624,13 @@ components:
           type: SOURCE
         enabled: true
         revocationRequestConfig:
+          commentsRequired: false
           approvalSchemes:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
+          denialCommentsRequired: false
         segments:
         - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
         - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
@@ -29371,6 +29859,99 @@ components:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
       - $ref: '#/components/schemas/EntitlementDto_allOf'
+    SlimCampaign:
+      example:
+        recommendationsEnabled: true
+        autoRevokeAllowed: false
+        name: Manager Campaign
+        description: Everyone needs to be reviewed by their manager
+        id: 2c9079b270a266a60170a2779fcb0007
+        deadline: 2020-03-15T10:00:01.456Z
+        type: MANAGER
+        emailNotificationEnabled: false
+        status: ACTIVE
+        correlatedStatus: CORRELATED
+      properties:
+        id:
+          description: Id of the campaign
+          example: 2c9079b270a266a60170a2779fcb0007
+          readOnly: true
+          type: string
+        name:
+          description: "The campaign name. If this object is part of a template, special\
+            \ formatting applies; see the `/campaign-templates/{id}/generate` endpoint\
+            \ documentation for details."
+          example: Manager Campaign
+          type: string
+        description:
+          description: "The campaign description. If this object is part of a template,\
+            \ special formatting applies; see the `/campaign-templates/{id}/generate`\
+            \ endpoint documentation for details."
+          example: Everyone needs to be reviewed by their manager
+          type: string
+        deadline:
+          description: The campaign's completion deadline.
+          example: 2020-03-15T10:00:01.456Z
+          format: date-time
+          type: string
+        type:
+          description: The type of campaign. Could be extended in the future.
+          enum:
+          - MANAGER
+          - SOURCE_OWNER
+          - SEARCH
+          - ROLE_COMPOSITION
+          example: MANAGER
+          type: string
+        emailNotificationEnabled:
+          default: false
+          description: Enables email notification for this campaign
+          example: false
+          type: boolean
+        autoRevokeAllowed:
+          default: false
+          description: Allows auto revoke for this campaign
+          example: false
+          type: boolean
+        recommendationsEnabled:
+          default: false
+          description: Enables IAI for this campaign. Accepts true even if the IAI
+            product feature is off. If IAI is turned off then campaigns generated
+            from this template will indicate false. The real value will then be returned
+            if IAI is ever enabled for the org in the future.
+          example: true
+          type: boolean
+        status:
+          description: The campaign's current status.
+          enum:
+          - PENDING
+          - STAGED
+          - CANCELING
+          - ACTIVATING
+          - ACTIVE
+          - COMPLETING
+          - COMPLETED
+          - ERROR
+          - ARCHIVED
+          example: ACTIVE
+          readOnly: true
+          type: string
+        correlatedStatus:
+          description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
+            can be Uncorrelated. An Uncorrelated certification campaign only includes
+            Uncorrelated identities (An identity is uncorrelated if it has no accounts
+            on an authoritative source).
+          enum:
+          - CORRELATED
+          - UNCORRELATED
+          example: CORRELATED
+          type: string
+      required:
+      - description
+      - name
+      - type
+      title: Slim Campaign
+      type: object
     IdentityCertificationDto:
       example:
         phase: ACTIVE
@@ -31610,11 +32191,13 @@ components:
           type: IDENTITY_LIST
         enabled: true
         revocationRequestConfig:
+          commentsRequired: false
           approvalSchemes:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
+          denialCommentsRequired: false
         segments:
         - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
         - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
@@ -31692,13 +32275,13 @@ components:
           nullable: true
           type: object
         enabled:
-          description: Whether the Role is enabled or not. This field is false by
-            default.
+          default: false
+          description: Whether the Role is enabled or not.
           example: true
           type: boolean
         requestable:
-          description: Whether the Role can be the target of Access Requests. This
-            field is false by default.
+          default: false
+          description: Whether the Role can be the target of access requests.
           example: true
           type: boolean
         accessRequestConfig:
@@ -33501,48 +34084,49 @@ components:
         state:
           $ref: '#/components/schemas/WorkItemState'
       type: object
-    CampaignReference:
-      example:
-        campaignType: MANAGER
-        name: Campaign Name
-        description: A description of the campaign
-        id: ef38f94347e94562b5bb8424a56397d8
-        type: CAMPAIGN
+    AccessConstraint:
       properties:
-        id:
-          description: The unique ID of the campaign.
-          example: ef38f94347e94562b5bb8424a56397d8
-          type: string
-        name:
-          description: The name of the campaign.
-          example: Campaign Name
-          type: string
         type:
-          description: The type of object that is being referenced.
+          description: Type of Access
           enum:
-          - CAMPAIGN
-          example: CAMPAIGN
+          - ENTITLEMENT
+          - ACCESS_PROFILE
+          - ROLE
+          example: ENTITLEMENT
           type: string
-        campaignType:
-          description: The type of the campaign.
+        ids:
+          description: Must be set only if operator is SELECTED.
+          example:
+          - 2c90ad2a70ace7d50170acf22ca90010
+          items:
+            type: string
+          type: array
+        operator:
+          description: Used to determine whether the scope of the campaign should
+            be reduced for selected ids or all.
           enum:
-          - MANAGER
-          - SOURCE_OWNER
-          - SEARCH
-          example: MANAGER
-          type: string
-        description:
-          description: The description of the campaign set by the admin who created
-            it.
-          example: A description of the campaign
-          nullable: true
+          - ALL
+          - SELECTED
+          example: SELECTED
           type: string
       required:
-      - campaignType
-      - description
-      - id
-      - name
+      - operator
       - type
+      type: object
+    CampaignAlert:
+      properties:
+        level:
+          description: Denotes the level of the message
+          enum:
+          - ERROR
+          - WARN
+          - INFO
+          example: ERROR
+          type: string
+        localizations:
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
       type: object
     AccessProfileEntitlement:
       allOf:
@@ -33871,12 +34455,28 @@ components:
       type: object
     Revocability:
       example:
+        commentsRequired: false
         approvalSchemes:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
+        denialCommentsRequired: false
       properties:
+        commentsRequired:
+          default: false
+          description: Whether the requester of the containing object must provide
+            comments justifying the request
+          example: false
+          nullable: true
+          type: boolean
+        denialCommentsRequired:
+          default: false
+          description: Whether an approver must provide comments when denying the
+            request
+          example: false
+          nullable: true
+          type: boolean
         approvalSchemes:
           description: List describing the steps in approving the revocation request
           items:
@@ -34531,6 +35131,49 @@ components:
       - ACCOUNT_ACTIVITY
       example: IDENTITY
       type: string
+    CampaignReference:
+      example:
+        campaignType: MANAGER
+        name: Campaign Name
+        description: A description of the campaign
+        id: ef38f94347e94562b5bb8424a56397d8
+        type: CAMPAIGN
+      properties:
+        id:
+          description: The unique ID of the campaign.
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        name:
+          description: The name of the campaign.
+          example: Campaign Name
+          type: string
+        type:
+          description: The type of object that is being referenced.
+          enum:
+          - CAMPAIGN
+          example: CAMPAIGN
+          type: string
+        campaignType:
+          description: The type of the campaign.
+          enum:
+          - MANAGER
+          - SOURCE_OWNER
+          - SEARCH
+          example: MANAGER
+          type: string
+        description:
+          description: The description of the campaign set by the admin who created
+            it.
+          example: A description of the campaign
+          nullable: true
+          type: string
+      required:
+      - campaignType
+      - description
+      - id
+      - name
+      - type
+      type: object
     CertificationPhase:
       description: |
         The current phase of the campaign.
@@ -35363,14 +36006,18 @@ components:
         denialCommentsRequired: true
       properties:
         commentsRequired:
+          default: false
           description: Whether the requester of the containing object must provide
             comments justifying the request
           example: true
+          nullable: true
           type: boolean
         denialCommentsRequired:
+          default: false
           description: Whether an approver must provide comments when denying the
             request
           example: true
+          nullable: true
           type: boolean
         approvalSchemes:
           description: List describing the steps in approving the request
@@ -37490,6 +38137,232 @@ components:
         sourceOwner:
           description: John Doe
           type: string
+      type: object
+      example: null
+    Campaign_allOf_filter:
+      description: Determines which items will be included in this campaign. The default
+        campaign filter is used if this field is left blank.
+      properties:
+        id:
+          description: The ID of whatever type of filter is being used.
+          example: 0fbe863c063c4c88a35fd7f17e8a3df5
+          type: string
+        type:
+          description: Type of the filter
+          enum:
+          - CAMPAIGN_FILTER
+          - RULE
+          example: CAMPAIGN_FILTER
+          type: string
+        name:
+          description: Name of the filter
+          example: Test Filter
+          type: string
+      type: object
+      example: null
+    Campaign_allOf_sourceOwnerCampaignInfo:
+      description: Must be set only if the campaign type is SOURCE_OWNER.
+      properties:
+        sourceIds:
+          description: The list of sources to be included in the campaign.
+          example:
+          - 0fbe863c063c4c88a35fd7f17e8a3df5
+          items:
+            type: string
+          type: array
+      type: object
+      example: null
+    Campaign_allOf_searchCampaignInfo:
+      description: Must be set only if the campaign type is SEARCH.
+      properties:
+        type:
+          description: The type of search campaign represented.
+          enum:
+          - IDENTITY
+          - ACCESS
+          example: ACCESS
+          type: string
+        description:
+          description: "Describes this search campaign. Intended for storing the query\
+            \ used, and possibly the number of identities selected/available."
+          example: Search Campaign description
+          type: string
+        reviewer:
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto'
+          - type: object
+          description: "If specified, this identity or governance group will be the\
+            \ reviewer for all certifications in this campaign. The allowed DTO types\
+            \ are IDENTITY and GOVERNANCE_GROUP"
+        query:
+          description: The scope for the campaign. The campaign will cover identities
+            returned by the query and identities that have access items returned by
+            the query. One of `query` or `identityIds` must be set.
+          example: Search Campaign query description
+          type: string
+        identityIds:
+          description: A direct list of identities to include in this campaign. One
+            of `identityIds` or `query` must be set.
+          example:
+          - 0fbe863c063c4c88a35fd7f17e8a3df5
+          items:
+            type: string
+          maxItems: 1000
+          type: array
+        accessConstraints:
+          description: Further reduces the scope of the campaign by excluding identities
+            (from `query` or `identityIds`) that do not have this access.
+          items:
+            $ref: '#/components/schemas/AccessConstraint'
+          maxItems: 1000
+          type: array
+      required:
+      - type
+      type: object
+      example: null
+    Campaign_allOf_roleCompositionCampaignInfo_remediatorRef:
+      description: "This determines who remediation tasks will be assigned to. Remediation\
+        \ tasks are created for each revoke decision on items in the campaign. The\
+        \ only legal remediator type is 'IDENTITY', and the chosen identity must be\
+        \ a Role Admin or Org Admin."
+      properties:
+        type:
+          description: Legal Remediator Type
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: The ID of the remediator.
+          example: 2c90ad2a70ace7d50170acf22ca90010
+          type: string
+        name:
+          description: The name of the remediator.
+          example: Role Admin
+          readOnly: true
+          type: string
+      required:
+      - id
+      - type
+      type: object
+      example: null
+    Campaign_allOf_roleCompositionCampaignInfo:
+      description: Optional configuration options for role composition campaigns.
+      properties:
+        reviewer:
+          allOf:
+          - $ref: '#/components/schemas/BaseReferenceDto'
+          - type: object
+          description: "If specified, this identity or governance group will be the\
+            \ reviewer for all certifications in this campaign. The allowed DTO types\
+            \ are IDENTITY and GOVERNANCE_GROUP"
+        roleIds:
+          description: "Optional list of roles to include in this campaign. Only one\
+            \ of `roleIds` and `query` may be set; if neither are set, all roles are\
+            \ included."
+          example:
+          - 2c90ad2a70ace7d50170acf22ca90010
+          items:
+            type: string
+          type: array
+        remediatorRef:
+          $ref: '#/components/schemas/Campaign_allOf_roleCompositionCampaignInfo_remediatorRef'
+        query:
+          description: "Optional search query to scope this campaign to a set of roles.\
+            \ Only one of `roleIds` and `query` may be set; if neither are set, all\
+            \ roles are included."
+          example: Search Query
+          type: string
+        description:
+          description: "Describes this role composition campaign. Intended for storing\
+            \ the query used, and possibly the number of roles selected/available."
+          example: Role Composition Description
+          type: string
+      required:
+      - remediatorRef
+      type: object
+      example: null
+    Campaign_allOf_sourcesWithOrphanEntitlements:
+      properties:
+        id:
+          description: Id of the source
+          example: 2c90ad2a70ace7d50170acf22ca90010
+          type: string
+        type:
+          description: Type
+          enum:
+          - SOURCE
+          example: SOURCE
+          type: string
+        name:
+          description: Name of the source
+          example: Source with orphan entitlements
+          type: string
+      type: object
+      example: null
+    Campaign_allOf:
+      properties:
+        created:
+          description: Created time of the campaign
+          example: 2020-03-03T22:15:13.611Z
+          format: date-time
+          readOnly: true
+          type: string
+        modified:
+          description: Modified time of the campaign
+          example: 2020-03-03T22:20:12.674Z
+          format: date-time
+          readOnly: true
+          type: string
+        correlatedStatus:
+          description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
+            can be Uncorrelated. An Uncorrelated certification campaign only includes
+            Uncorrelated identities (An identity is uncorrelated if it has no accounts
+            on an authoritative source).
+          enum:
+          - CORRELATED
+          - UNCORRELATED
+          example: CORRELATED
+          type: object
+        filter:
+          $ref: '#/components/schemas/Campaign_allOf_filter'
+        sunsetCommentsRequired:
+          default: true
+          description: Determines if comments on sunset date changes are required.
+          example: true
+          type: boolean
+        sourceOwnerCampaignInfo:
+          $ref: '#/components/schemas/Campaign_allOf_sourceOwnerCampaignInfo'
+        searchCampaignInfo:
+          $ref: '#/components/schemas/Campaign_allOf_searchCampaignInfo'
+        roleCompositionCampaignInfo:
+          $ref: '#/components/schemas/Campaign_allOf_roleCompositionCampaignInfo'
+        alerts:
+          description: A list of errors and warnings that have accumulated.
+          items:
+            $ref: '#/components/schemas/CampaignAlert'
+          readOnly: true
+          type: array
+        totalCertifications:
+          description: The total number of certifications in this campaign.
+          example: 100
+          readOnly: true
+          type: integer
+        completedCertifications:
+          description: The number of completed certifications in this campaign.
+          example: 10
+          readOnly: true
+          type: integer
+        sourcesWithOrphanEntitlements:
+          description: A list of sources in the campaign that contain \"orphan entitlements\"
+            (entitlements without a corresponding Managed Attribute). An empty list
+            indicates the campaign has no orphan entitlements. Null indicates there
+            may be unknown orphan entitlements in the campaign (the campaign was created
+            before this feature was implemented).
+          items:
+            $ref: '#/components/schemas/Campaign_allOf_sourcesWithOrphanEntitlements'
+          readOnly: true
+          type: array
       type: object
       example: null
     EntitlementDocument_allOf:

@@ -52,6 +52,7 @@ api_tagged_objects.go
 api_transforms.go
 api_triggers.go
 api_work_items.go
+api_work_reassignment.go
 api_workflows.go
 client.go
 configuration.go
@@ -143,6 +144,7 @@ docs/AttributeDefinition.md
 docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
 docs/AttributesChanged.md
+docs/AuditDetails.md
 docs/BaseCommonDto.md
 docs/BaseCommonDto1.md
 docs/BaseReferenceDto.md
@@ -195,6 +197,12 @@ docs/CompletedApproval.md
 docs/CompletedApprovalState.md
 docs/CompletionStatus.md
 docs/ConfigObject.md
+docs/ConfigType.md
+docs/ConfigTypeEnum.md
+docs/ConfigurationDetailsResponse.md
+docs/ConfigurationItemRequest.md
+docs/ConfigurationItemResponse.md
+docs/ConfigurationResponse.md
 docs/ConflictingAccessCriteria.md
 docs/ConnectorDetail.md
 docs/ConnectorRuleCreateRequest.md
@@ -237,6 +245,7 @@ docs/EntitlementsApi.md
 docs/EntityCreatedByDTO.md
 docs/ErrorMessageDto.md
 docs/ErrorResponseDto.md
+docs/EvaluateResponse.md
 docs/EventAttributes.md
 docs/EventBridgeConfig.md
 docs/ExceptionAccessCriteria.md
@@ -282,6 +291,7 @@ docs/IAIRoleMiningApi.md
 docs/IdentitiesAccountsBulkRequest.md
 docs/IdentitiesApi.md
 docs/Identity.md
+docs/Identity1.md
 docs/IdentityAttributeConfig.md
 docs/IdentityAttributeConfig1.md
 docs/IdentityAttributePreview.md
@@ -339,6 +349,7 @@ docs/ListCompleteWorkflowLibrary200ResponseInner.md
 docs/ListIdentityAccessItems200ResponseInner.md
 docs/LocaleOrigin.md
 docs/LocalizedMessage.md
+docs/LookupStep.md
 docs/MFAConfigurationApi.md
 docs/MailFromAttributes.md
 docs/MailFromAttributesDto.md
@@ -453,6 +464,7 @@ docs/QueuedCheckConfigDetails.md
 docs/ReassignReference.md
 docs/Reassignment.md
 docs/ReassignmentType.md
+docs/ReassignmentTypeEnum.md
 docs/RecommendationConfigDto.md
 docs/RecommendationRequest.md
 docs/RecommendationRequestDto.md
@@ -613,6 +625,9 @@ docs/TaggedObjectsApi.md
 docs/TemplateBulkDeleteDto.md
 docs/TemplateDto.md
 docs/TemplateDtoDefault.md
+docs/TenantConfigurationDetails.md
+docs/TenantConfigurationRequest.md
+docs/TenantConfigurationResponse.md
 docs/TestExternalExecuteWorkflow200Response.md
 docs/TestExternalExecuteWorkflowRequest.md
 docs/TestInvocation.md
@@ -728,6 +743,8 @@ docs/WorkItems.md
 docs/WorkItemsApi.md
 docs/WorkItemsCount.md
 docs/WorkItemsSummary.md
+docs/WorkReassignmentApi.md
+docs/WorkTypeEnum.md
 docs/Workflow.md
 docs/WorkflowAllOf.md
 docs/WorkflowBody.md
@@ -828,6 +845,7 @@ model_attribute_definition.go
 model_attribute_definition_schema.go
 model_attribute_definition_type.go
 model_attributes_changed.go
+model_audit_details.go
 model_base_common_dto.go
 model_base_common_dto_1.go
 model_base_reference_dto.go
@@ -878,6 +896,12 @@ model_completed_approval.go
 model_completed_approval_state.go
 model_completion_status.go
 model_config_object.go
+model_config_type.go
+model_config_type_enum.go
+model_configuration_details_response.go
+model_configuration_item_request.go
+model_configuration_item_response.go
+model_configuration_response.go
 model_conflicting_access_criteria.go
 model_connector_detail.go
 model_connector_rule_create_request.go
@@ -916,6 +940,7 @@ model_entitlement_source.go
 model_entity_created_by_dto.go
 model_error_message_dto.go
 model_error_response_dto.go
+model_evaluate_response.go
 model_event_attributes.go
 model_event_bridge_config.go
 model_exception_access_criteria.go
@@ -954,6 +979,7 @@ model_http_config.go
 model_http_dispatch_mode.go
 model_identities_accounts_bulk_request.go
 model_identity.go
+model_identity_1.go
 model_identity_attribute_config.go
 model_identity_attribute_config_1.go
 model_identity_attribute_preview.go
@@ -1008,6 +1034,7 @@ model_list_complete_workflow_library_200_response_inner.go
 model_list_identity_access_items_200_response_inner.go
 model_locale_origin.go
 model_localized_message.go
+model_lookup_step.go
 model_mail_from_attributes.go
 model_mail_from_attributes_dto.go
 model_managed_client.go
@@ -1109,6 +1136,7 @@ model_queued_check_config_details.go
 model_reassign_reference.go
 model_reassignment.go
 model_reassignment_type.go
+model_reassignment_type_enum.go
 model_recommendation_config_dto.go
 model_recommendation_request.go
 model_recommendation_request_dto.go
@@ -1258,6 +1286,9 @@ model_tagged_object.go
 model_template_bulk_delete_dto.go
 model_template_dto.go
 model_template_dto_default.go
+model_tenant_configuration_details.go
+model_tenant_configuration_request.go
+model_tenant_configuration_response.go
 model_test_external_execute_workflow_200_response.go
 model_test_external_execute_workflow_request.go
 model_test_invocation.go
@@ -1370,6 +1401,7 @@ model_work_item_type.go
 model_work_items.go
 model_work_items_count.go
 model_work_items_summary.go
+model_work_type_enum.go
 model_workflow.go
 model_workflow_all_of.go
 model_workflow_body.go
@@ -1434,5 +1466,6 @@ test/api_tagged_objects_test.go
 test/api_transforms_test.go
 test/api_triggers_test.go
 test/api_work_items_test.go
+test/api_work_reassignment_test.go
 test/api_workflows_test.go
 utils.go

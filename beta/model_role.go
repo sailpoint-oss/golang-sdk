@@ -35,9 +35,9 @@ type Role struct {
 	Membership NullableRoleMembershipSelector `json:"membership,omitempty"`
 	// This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration.
 	LegacyMembershipInfo map[string]interface{} `json:"legacyMembershipInfo,omitempty"`
-	// Whether the Role is enabled or not. This field is false by default.
+	// Whether the Role is enabled or not.
 	Enabled *bool `json:"enabled,omitempty"`
-	// Whether the Role can be the target of Access Requests. This field is false by default.
+	// Whether the Role can be the target of access requests.
 	Requestable *bool `json:"requestable,omitempty"`
 	AccessRequestConfig *RequestabilityForRole `json:"accessRequestConfig,omitempty"`
 	RevocationRequestConfig *Revocability `json:"revocationRequestConfig,omitempty"`
@@ -56,6 +56,10 @@ func NewRole(name string, owner OwnerReference) *Role {
 	this := Role{}
 	this.Name = name
 	this.Owner = owner
+	var enabled bool = false
+	this.Enabled = &enabled
+	var requestable bool = false
+	this.Requestable = &requestable
 	return &this
 }
 
@@ -64,6 +68,10 @@ func NewRole(name string, owner OwnerReference) *Role {
 // but it doesn't guarantee that properties required by API are set
 func NewRoleWithDefaults() *Role {
 	this := Role{}
+	var enabled bool = false
+	this.Enabled = &enabled
+	var requestable bool = false
+	this.Requestable = &requestable
 	return &this
 }
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CommentsRequired** | Pointer to **bool** | Whether the requester of the containing object must provide comments justifying the request | [optional] 
-**DenialCommentsRequired** | Pointer to **bool** | Whether an approver must provide comments when denying the request | [optional] 
+**CommentsRequired** | Pointer to **NullableBool** | Whether the requester of the containing object must provide comments justifying the request | [optional] [default to false]
+**DenialCommentsRequired** | Pointer to **NullableBool** | Whether an approver must provide comments when denying the request | [optional] [default to false]
 **ApprovalSchemes** | Pointer to [**[]ApprovalSchemeForRole**](ApprovalSchemeForRole.md) | List describing the steps in approving the request | [optional] 
 
 ## Methods
@@ -52,6 +52,16 @@ SetCommentsRequired sets CommentsRequired field to given value.
 
 HasCommentsRequired returns a boolean if a field has been set.
 
+### SetCommentsRequiredNil
+
+`func (o *RequestabilityForRole) SetCommentsRequiredNil(b bool)`
+
+ SetCommentsRequiredNil sets the value for CommentsRequired to be an explicit nil
+
+### UnsetCommentsRequired
+`func (o *RequestabilityForRole) UnsetCommentsRequired()`
+
+UnsetCommentsRequired ensures that no value is present for CommentsRequired, not even an explicit nil
 ### GetDenialCommentsRequired
 
 `func (o *RequestabilityForRole) GetDenialCommentsRequired() bool`
@@ -77,6 +87,16 @@ SetDenialCommentsRequired sets DenialCommentsRequired field to given value.
 
 HasDenialCommentsRequired returns a boolean if a field has been set.
 
+### SetDenialCommentsRequiredNil
+
+`func (o *RequestabilityForRole) SetDenialCommentsRequiredNil(b bool)`
+
+ SetDenialCommentsRequiredNil sets the value for DenialCommentsRequired to be an explicit nil
+
+### UnsetDenialCommentsRequired
+`func (o *RequestabilityForRole) UnsetDenialCommentsRequired()`
+
+UnsetDenialCommentsRequired ensures that no value is present for DenialCommentsRequired, not even an explicit nil
 ### GetApprovalSchemes
 
 `func (o *RequestabilityForRole) GetApprovalSchemes() []ApprovalSchemeForRole`

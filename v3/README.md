@@ -109,6 +109,8 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**ReloadAccount**](docs/AccountsApi.md#reloadaccount) | **Post** /accounts/{id}/reload | Reload Account
 *AccountsApi* | [**UnlockAccount**](docs/AccountsApi.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**UpdateAccount**](docs/AccountsApi.md#updateaccount) | **Patch** /accounts/{id} | Update Account
+*CertificationCampaignsApi* | [**CreateCampaign**](docs/CertificationCampaignsApi.md#createcampaign) | **Post** /campaigns | Create a campaign
+*CertificationCampaignsApi* | [**GetCampaign**](docs/CertificationCampaignsApi.md#getcampaign) | **Get** /campaigns/{id} | Get a campaign
 *CertificationSummariesApi* | [**GetIdentityAccessSummaries**](docs/CertificationSummariesApi.md#getidentityaccesssummaries) | **Get** /certifications/{id}/access-summaries/{type} | Access Summaries
 *CertificationSummariesApi* | [**GetIdentityDecisionSummary**](docs/CertificationSummariesApi.md#getidentitydecisionsummary) | **Get** /certifications/{id}/decision-summary | Summary of Certification Decisions
 *CertificationSummariesApi* | [**GetIdentitySummaries**](docs/CertificationSummariesApi.md#getidentitysummaries) | **Get** /certifications/{id}/identity-summaries | Identity Summaries for Campaign Certification
@@ -308,6 +310,7 @@ Class | Method | HTTP request | Description
 
  - [Access](docs/Access.md)
  - [AccessAllOf](docs/AccessAllOf.md)
+ - [AccessConstraint](docs/AccessConstraint.md)
  - [AccessCriteria](docs/AccessCriteria.md)
  - [AccessCriteriaCriteriaListInner](docs/AccessCriteriaCriteriaListInner.md)
  - [AccessProfile](docs/AccessProfile.md)
@@ -394,6 +397,14 @@ Class | Method | HTTP request | Description
  - [BucketType](docs/BucketType.md)
  - [BulkTaggedObject](docs/BulkTaggedObject.md)
  - [Campaign](docs/Campaign.md)
+ - [CampaignAlert](docs/CampaignAlert.md)
+ - [CampaignAllOf](docs/CampaignAllOf.md)
+ - [CampaignAllOfFilter](docs/CampaignAllOfFilter.md)
+ - [CampaignAllOfRoleCompositionCampaignInfo](docs/CampaignAllOfRoleCompositionCampaignInfo.md)
+ - [CampaignAllOfRoleCompositionCampaignInfoRemediatorRef](docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)
+ - [CampaignAllOfSearchCampaignInfo](docs/CampaignAllOfSearchCampaignInfo.md)
+ - [CampaignAllOfSourceOwnerCampaignInfo](docs/CampaignAllOfSourceOwnerCampaignInfo.md)
+ - [CampaignAllOfSourcesWithOrphanEntitlements](docs/CampaignAllOfSourcesWithOrphanEntitlements.md)
  - [CampaignReference](docs/CampaignReference.md)
  - [CancelAccessRequest](docs/CancelAccessRequest.md)
  - [CancelledRequestDetails](docs/CancelledRequestDetails.md)
@@ -653,6 +664,7 @@ Class | Method | HTTP request | Description
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
  - [SetLifecycleState200Response](docs/SetLifecycleState200Response.md)
  - [SetLifecycleStateRequest](docs/SetLifecycleStateRequest.md)
+ - [SlimCampaign](docs/SlimCampaign.md)
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
  - [SodPolicy](docs/SodPolicy.md)
  - [SodPolicySchedule](docs/SodPolicySchedule.md)

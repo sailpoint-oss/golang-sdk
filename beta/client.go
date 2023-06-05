@@ -150,6 +150,8 @@ type APIClient struct {
 
 	WorkItemsApi *WorkItemsApiService
 
+	WorkReassignmentApi *WorkReassignmentApiService
+
 	WorkflowsApi *WorkflowsApiService
 }
 
@@ -218,6 +220,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TransformsApi = (*TransformsApiService)(&c.common)
 	c.TriggersApi = (*TriggersApiService)(&c.common)
 	c.WorkItemsApi = (*WorkItemsApiService)(&c.common)
+	c.WorkReassignmentApi = (*WorkReassignmentApiService)(&c.common)
 	c.WorkflowsApi = (*WorkflowsApiService)(&c.common)
 
 	return c

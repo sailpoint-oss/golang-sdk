@@ -412,6 +412,8 @@ Creates a new Certification Campaign with the information provided in the reques
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) CreateCampaign(ctx context.Context) ApiCreateCampaignRequest {
 	return ApiCreateCampaignRequest{
@@ -422,6 +424,7 @@ func (a *CertificationCampaignsApiService) CreateCampaign(ctx context.Context) A
 
 // Execute executes the request
 //  @return Campaign
+// Deprecated
 func (a *CertificationCampaignsApiService) CreateCampaignExecute(r ApiCreateCampaignRequest) (*Campaign, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1587,6 +1590,8 @@ Retrieves information for an existing campaign using the campaign's ID. Authoriz
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the campaign to be retrieved
  @return ApiGetCampaignRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) GetCampaign(ctx context.Context, id string) ApiGetCampaignRequest {
 	return ApiGetCampaignRequest{
@@ -1598,6 +1603,7 @@ func (a *CertificationCampaignsApiService) GetCampaign(ctx context.Context, id s
 
 // Execute executes the request
 //  @return Slimcampaign
+// Deprecated
 func (a *CertificationCampaignsApiService) GetCampaignExecute(r ApiGetCampaignRequest) (*Slimcampaign, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

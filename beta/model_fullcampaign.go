@@ -72,6 +72,12 @@ func NewFullcampaign(name string, description string, type_ string) *Fullcampaig
 	this.Name = name
 	this.Description = description
 	this.Type = type_
+	var emailNotificationEnabled bool = false
+	this.EmailNotificationEnabled = &emailNotificationEnabled
+	var autoRevokeAllowed bool = false
+	this.AutoRevokeAllowed = &autoRevokeAllowed
+	var recommendationsEnabled bool = false
+	this.RecommendationsEnabled = &recommendationsEnabled
 	var sunsetCommentsRequired bool = true
 	this.SunsetCommentsRequired = &sunsetCommentsRequired
 	return &this
@@ -82,6 +88,12 @@ func NewFullcampaign(name string, description string, type_ string) *Fullcampaig
 // but it doesn't guarantee that properties required by API are set
 func NewFullcampaignWithDefaults() *Fullcampaign {
 	this := Fullcampaign{}
+	var emailNotificationEnabled bool = false
+	this.EmailNotificationEnabled = &emailNotificationEnabled
+	var autoRevokeAllowed bool = false
+	this.AutoRevokeAllowed = &autoRevokeAllowed
+	var recommendationsEnabled bool = false
+	this.RecommendationsEnabled = &recommendationsEnabled
 	var sunsetCommentsRequired bool = true
 	this.SunsetCommentsRequired = &sunsetCommentsRequired
 	return &this
