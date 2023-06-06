@@ -29893,13 +29893,22 @@ paths:
       requestBody:
         content:
           application/json-patch+json:
+            example:
+            - op: replace
+              path: /ownerRef
+              value:
+                id: 2c9180867d05b227017d09921a205b4d
+                type: IDENTITY
+                name: Angelo2 tester
             schema:
               $ref: '#/components/schemas/JsonPatch'
         description: |
           A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
           PATCH can only be applied to the following fields:
-            *   "beforeProvisioningRule"
+            * `beforeProvisioningRule`
+            * `description`
+            * `ownerRef`
 
           A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.
         required: true
@@ -29995,7 +30004,7 @@ paths:
       description: Update an existing Service Desk integration by ID with updated
         value in JSON form as the request body.  A token with Org Admin or Service
         Desk Admin authority is required to access this endpoint.
-      operationId: updateServiceDeskIntegration
+      operationId: putServiceDeskIntegration
       parameters:
       - description: ID of the Service Desk integration to update
         explode: false
@@ -30517,11 +30526,18 @@ paths:
                   description: Export all available objects
                   excludeTypes: []
                   includeTypes:
-                  - SOURCE
-                  - RULE
-                  - TRIGGER_SUBSCRIPTION
-                  - TRANSFORM
+                  - ACCESS_PROFILE
+                  - AUTH_ORG
+                  - FORM_DEFINITION
+                  - GOVERNANCE_GROUP
                   - IDENTITY_PROFILE
+                  - NOTIFICATION_TEMPLATE
+                  - PUBLIC_IDENTITIES_CONFIG
+                  - ROLE
+                  - RULE
+                  - SOURCE
+                  - TRANSFORM
+                  - TRIGGER_SUBSCRIPTION
                   objectOptions: {}
               Export sources by ID:
                 description: Export only sources that match the IDs specified in the
@@ -58636,11 +58652,18 @@ components:
           description: Object type names to be excluded from an sp-config export command.
           items:
             enum:
-            - SOURCE
-            - RULE
-            - TRIGGER_SUBSCRIPTION
-            - TRANSFORM
+            - ACCESS_PROFILE
+            - AUTH_ORG
+            - FORM_DEFINITION
+            - GOVERNANCE_GROUP
             - IDENTITY_PROFILE
+            - NOTIFICATION_TEMPLATE
+            - PUBLIC_IDENTITIES_CONFIG
+            - ROLE
+            - RULE
+            - SOURCE
+            - TRANSFORM
+            - TRIGGER_SUBSCRIPTION
             example: SOURCE
             type: string
           type: array
@@ -58649,11 +58672,18 @@ components:
             IncludeTypes takes precedence over excludeTypes.
           items:
             enum:
-            - SOURCE
-            - RULE
-            - TRIGGER_SUBSCRIPTION
-            - TRANSFORM
+            - ACCESS_PROFILE
+            - AUTH_ORG
+            - FORM_DEFINITION
+            - GOVERNANCE_GROUP
             - IDENTITY_PROFILE
+            - NOTIFICATION_TEMPLATE
+            - PUBLIC_IDENTITIES_CONFIG
+            - ROLE
+            - RULE
+            - SOURCE
+            - TRANSFORM
+            - TRIGGER_SUBSCRIPTION
             example: TRIGGER_SUBSCRIPTION
             type: string
           type: array

@@ -1241,7 +1241,7 @@ type ApiPatchServiceDeskIntegrationRequest struct {
 	jsonPatch *JsonPatch
 }
 
-// A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   *   \&quot;beforeProvisioningRule\&quot;  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. 
+// A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * &#x60;beforeProvisioningRule&#x60;   * &#x60;description&#x60;   * &#x60;ownerRef&#x60;  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. 
 func (r ApiPatchServiceDeskIntegrationRequest) JsonPatch(jsonPatch JsonPatch) ApiPatchServiceDeskIntegrationRequest {
 	r.jsonPatch = &jsonPatch
 	return r
@@ -1414,7 +1414,7 @@ func (a *ServiceDeskIntegrationApiService) PatchServiceDeskIntegrationExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateServiceDeskIntegrationRequest struct {
+type ApiPutServiceDeskIntegrationRequest struct {
 	ctx context.Context
 	ApiService *ServiceDeskIntegrationApiService
 	id string
@@ -1422,26 +1422,26 @@ type ApiUpdateServiceDeskIntegrationRequest struct {
 }
 
 // The specifics of the integration to update
-func (r ApiUpdateServiceDeskIntegrationRequest) ServiceDeskIntegrationDto(serviceDeskIntegrationDto ServiceDeskIntegrationDto) ApiUpdateServiceDeskIntegrationRequest {
+func (r ApiPutServiceDeskIntegrationRequest) ServiceDeskIntegrationDto(serviceDeskIntegrationDto ServiceDeskIntegrationDto) ApiPutServiceDeskIntegrationRequest {
 	r.serviceDeskIntegrationDto = &serviceDeskIntegrationDto
 	return r
 }
 
-func (r ApiUpdateServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
-	return r.ApiService.UpdateServiceDeskIntegrationExecute(r)
+func (r ApiPutServiceDeskIntegrationRequest) Execute() (*ServiceDeskIntegrationDto, *http.Response, error) {
+	return r.ApiService.PutServiceDeskIntegrationExecute(r)
 }
 
 /*
-UpdateServiceDeskIntegration Update a Service Desk integration
+PutServiceDeskIntegration Update a Service Desk integration
 
 Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Service Desk integration to update
- @return ApiUpdateServiceDeskIntegrationRequest
+ @return ApiPutServiceDeskIntegrationRequest
 */
-func (a *ServiceDeskIntegrationApiService) UpdateServiceDeskIntegration(ctx context.Context, id string) ApiUpdateServiceDeskIntegrationRequest {
-	return ApiUpdateServiceDeskIntegrationRequest{
+func (a *ServiceDeskIntegrationApiService) PutServiceDeskIntegration(ctx context.Context, id string) ApiPutServiceDeskIntegrationRequest {
+	return ApiPutServiceDeskIntegrationRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1450,7 +1450,7 @@ func (a *ServiceDeskIntegrationApiService) UpdateServiceDeskIntegration(ctx cont
 
 // Execute executes the request
 //  @return ServiceDeskIntegrationDto
-func (a *ServiceDeskIntegrationApiService) UpdateServiceDeskIntegrationExecute(r ApiUpdateServiceDeskIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
+func (a *ServiceDeskIntegrationApiService) PutServiceDeskIntegrationExecute(r ApiPutServiceDeskIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1458,7 +1458,7 @@ func (a *ServiceDeskIntegrationApiService) UpdateServiceDeskIntegrationExecute(r
 		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.UpdateServiceDeskIntegration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.PutServiceDeskIntegration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

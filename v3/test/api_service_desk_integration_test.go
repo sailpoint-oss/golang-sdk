@@ -125,13 +125,13 @@ func Test_v3_ServiceDeskIntegrationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ServiceDeskIntegrationApiService UpdateServiceDeskIntegration", func(t *testing.T) {
+	t.Run("Test ServiceDeskIntegrationApiService PutServiceDeskIntegration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.ServiceDeskIntegrationApi.UpdateServiceDeskIntegration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.ServiceDeskIntegrationApi.PutServiceDeskIntegration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**GetServiceDeskIntegrationTypes**](ServiceDeskIntegrationApi.md#GetServiceDeskIntegrationTypes) | **Get** /service-desk-integrations/types | Service Desk Integration Types List.
 [**GetStatusCheckDetails**](ServiceDeskIntegrationApi.md#GetStatusCheckDetails) | **Get** /service-desk-integrations/status-check-configuration | Get the time check configuration
 [**PatchServiceDeskIntegration**](ServiceDeskIntegrationApi.md#PatchServiceDeskIntegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update PATCH
-[**UpdateServiceDeskIntegration**](ServiceDeskIntegrationApi.md#UpdateServiceDeskIntegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration
+[**PutServiceDeskIntegration**](ServiceDeskIntegrationApi.md#PutServiceDeskIntegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration
 [**UpdateStatusCheckDetails**](ServiceDeskIntegrationApi.md#UpdateStatusCheckDetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration
 
 
@@ -509,7 +509,7 @@ import (
 
 func main() {
     id := "anId" // string | ID of the Service Desk integration to update
-    jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   *   \"beforeProvisioningRule\"  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. 
+    jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -539,7 +539,7 @@ Other parameters are passed through a pointer to a apiPatchServiceDeskIntegratio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatch** | [**JsonPatch**](JsonPatch.md) | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   *   \&quot;beforeProvisioningRule\&quot;  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.  | 
+ **jsonPatch** | [**JsonPatch**](JsonPatch.md) | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * &#x60;beforeProvisioningRule&#x60;   * &#x60;description&#x60;   * &#x60;ownerRef&#x60;  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.  | 
 
 ### Return type
 
@@ -559,9 +559,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateServiceDeskIntegration
+## PutServiceDeskIntegration
 
-> ServiceDeskIntegrationDto UpdateServiceDeskIntegration(ctx, id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
+> ServiceDeskIntegrationDto PutServiceDeskIntegration(ctx, id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
 
 Update a Service Desk integration
 
@@ -585,13 +585,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationApi.UpdateServiceDeskIntegration(context.Background(), id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationApi.PutServiceDeskIntegration(context.Background(), id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationApi.UpdateServiceDeskIntegration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationApi.PutServiceDeskIntegration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateServiceDeskIntegration`: ServiceDeskIntegrationDto
-    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationApi.UpdateServiceDeskIntegration`: %v\n", resp)
+    // response from `PutServiceDeskIntegration`: ServiceDeskIntegrationDto
+    fmt.Fprintf(os.Stdout, "Response from `ServiceDeskIntegrationApi.PutServiceDeskIntegration`: %v\n", resp)
 }
 ```
 
@@ -605,7 +605,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateServiceDeskIntegrationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutServiceDeskIntegrationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
