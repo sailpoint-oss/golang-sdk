@@ -31,10 +31,10 @@ type CompletedApproval struct {
 	// When the access-request was created.
 	RequestCreated *time.Time `json:"requestCreated,omitempty"`
 	RequestType *AccessRequestType `json:"requestType,omitempty"`
-	Requester *BaseReferenceDto `json:"requester,omitempty"`
-	RequestedFor *BaseReferenceDto `json:"requestedFor,omitempty"`
-	ReviewedBy *BaseReferenceDto `json:"reviewedBy,omitempty"`
-	Owner *BaseReferenceDto `json:"owner,omitempty"`
+	Requester *BaseReferenceDto1 `json:"requester,omitempty"`
+	RequestedFor *BaseReferenceDto1 `json:"requestedFor,omitempty"`
+	ReviewedBy *BaseReferenceDto1 `json:"reviewedBy,omitempty"`
+	Owner *BaseReferenceDto1 `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
 	RequesterComment *CommentDto1 `json:"requesterComment,omitempty"`
 	ReviewerComment *CommentDto1 `json:"reviewerComment,omitempty"`
@@ -267,9 +267,9 @@ func (o *CompletedApproval) SetRequestType(v AccessRequestType) {
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
-func (o *CompletedApproval) GetRequester() BaseReferenceDto {
+func (o *CompletedApproval) GetRequester() BaseReferenceDto1 {
 	if o == nil || isNil(o.Requester) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.Requester
@@ -277,7 +277,7 @@ func (o *CompletedApproval) GetRequester() BaseReferenceDto {
 
 // GetRequesterOk returns a tuple with the Requester field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetRequesterOk() (*BaseReferenceDto, bool) {
+func (o *CompletedApproval) GetRequesterOk() (*BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.Requester) {
 		return nil, false
 	}
@@ -293,15 +293,15 @@ func (o *CompletedApproval) HasRequester() bool {
 	return false
 }
 
-// SetRequester gets a reference to the given BaseReferenceDto and assigns it to the Requester field.
-func (o *CompletedApproval) SetRequester(v BaseReferenceDto) {
+// SetRequester gets a reference to the given BaseReferenceDto1 and assigns it to the Requester field.
+func (o *CompletedApproval) SetRequester(v BaseReferenceDto1) {
 	o.Requester = &v
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *CompletedApproval) GetRequestedFor() BaseReferenceDto {
+func (o *CompletedApproval) GetRequestedFor() BaseReferenceDto1 {
 	if o == nil || isNil(o.RequestedFor) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.RequestedFor
@@ -309,7 +309,7 @@ func (o *CompletedApproval) GetRequestedFor() BaseReferenceDto {
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetRequestedForOk() (*BaseReferenceDto, bool) {
+func (o *CompletedApproval) GetRequestedForOk() (*BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -325,15 +325,15 @@ func (o *CompletedApproval) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given BaseReferenceDto and assigns it to the RequestedFor field.
-func (o *CompletedApproval) SetRequestedFor(v BaseReferenceDto) {
+// SetRequestedFor gets a reference to the given BaseReferenceDto1 and assigns it to the RequestedFor field.
+func (o *CompletedApproval) SetRequestedFor(v BaseReferenceDto1) {
 	o.RequestedFor = &v
 }
 
 // GetReviewedBy returns the ReviewedBy field value if set, zero value otherwise.
-func (o *CompletedApproval) GetReviewedBy() BaseReferenceDto {
+func (o *CompletedApproval) GetReviewedBy() BaseReferenceDto1 {
 	if o == nil || isNil(o.ReviewedBy) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.ReviewedBy
@@ -341,7 +341,7 @@ func (o *CompletedApproval) GetReviewedBy() BaseReferenceDto {
 
 // GetReviewedByOk returns a tuple with the ReviewedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetReviewedByOk() (*BaseReferenceDto, bool) {
+func (o *CompletedApproval) GetReviewedByOk() (*BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.ReviewedBy) {
 		return nil, false
 	}
@@ -357,15 +357,15 @@ func (o *CompletedApproval) HasReviewedBy() bool {
 	return false
 }
 
-// SetReviewedBy gets a reference to the given BaseReferenceDto and assigns it to the ReviewedBy field.
-func (o *CompletedApproval) SetReviewedBy(v BaseReferenceDto) {
+// SetReviewedBy gets a reference to the given BaseReferenceDto1 and assigns it to the ReviewedBy field.
+func (o *CompletedApproval) SetReviewedBy(v BaseReferenceDto1) {
 	o.ReviewedBy = &v
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *CompletedApproval) GetOwner() BaseReferenceDto {
+func (o *CompletedApproval) GetOwner() BaseReferenceDto1 {
 	if o == nil || isNil(o.Owner) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.Owner
@@ -373,7 +373,7 @@ func (o *CompletedApproval) GetOwner() BaseReferenceDto {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetOwnerOk() (*BaseReferenceDto, bool) {
+func (o *CompletedApproval) GetOwnerOk() (*BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.Owner) {
 		return nil, false
 	}
@@ -389,8 +389,8 @@ func (o *CompletedApproval) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given BaseReferenceDto and assigns it to the Owner field.
-func (o *CompletedApproval) SetOwner(v BaseReferenceDto) {
+// SetOwner gets a reference to the given BaseReferenceDto1 and assigns it to the Owner field.
+func (o *CompletedApproval) SetOwner(v BaseReferenceDto1) {
 	o.Owner = &v
 }
 

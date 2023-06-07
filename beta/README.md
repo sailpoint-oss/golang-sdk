@@ -207,6 +207,7 @@ Class | Method | HTTP request | Description
 *IdentitiesApi* | [**DeleteIdentity**](docs/IdentitiesApi.md#deleteidentity) | **Delete** /identities/{id} | Deletes an identity.
 *IdentitiesApi* | [**GetIdentity**](docs/IdentitiesApi.md#getidentity) | **Get** /identities/{id} | Identity Details
 *IdentitiesApi* | [**ListIdentities**](docs/IdentitiesApi.md#listidentities) | **Get** /identities | List Identities
+*IdentitiesApi* | [**StartIdentityProcessing**](docs/IdentitiesApi.md#startidentityprocessing) | **Post** /identities/process | Process a list of identityIds
 *IdentitiesApi* | [**SynchronizeAttributesForIdentity**](docs/IdentitiesApi.md#synchronizeattributesforidentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 *IdentityHistoryApi* | [**CompareIdentitySnapshots**](docs/IdentityHistoryApi.md#compareidentitysnapshots) | **Get** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
 *IdentityHistoryApi* | [**CompareIdentitySnapshotsAccessType**](docs/IdentityHistoryApi.md#compareidentitysnapshotsaccesstype) | **Get** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
@@ -835,6 +836,7 @@ Class | Method | HTTP request | Description
  - [PostExternalExecuteWorkflowRequest](docs/PostExternalExecuteWorkflowRequest.md)
  - [PreApprovalTriggerDetails](docs/PreApprovalTriggerDetails.md)
  - [PreferencesDto](docs/PreferencesDto.md)
+ - [ProcessIdentitiesRequest](docs/ProcessIdentitiesRequest.md)
  - [ProvisioningCompleted](docs/ProvisioningCompleted.md)
  - [ProvisioningConfig](docs/ProvisioningConfig.md)
  - [ProvisioningConfigManagedResourceRefsInner](docs/ProvisioningConfigManagedResourceRefsInner.md)

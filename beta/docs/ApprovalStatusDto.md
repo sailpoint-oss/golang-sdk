@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] 
-**OriginalOwner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**CurrentOwner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**ReviewedBy** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**OriginalOwner** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**CurrentOwner** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**ReviewedBy** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **Modified** | Pointer to **time.Time** | Time at which item was modified. | [optional] 
 **Status** | Pointer to [**ManualWorkItemState**](ManualWorkItemState.md) |  | [optional] 
 **Scheme** | Pointer to [**ApprovalScheme**](ApprovalScheme.md) |  | [optional] 
@@ -61,20 +61,20 @@ HasForwarded returns a boolean if a field has been set.
 
 ### GetOriginalOwner
 
-`func (o *ApprovalStatusDto) GetOriginalOwner() BaseReferenceDto`
+`func (o *ApprovalStatusDto) GetOriginalOwner() BaseReferenceDto1`
 
 GetOriginalOwner returns the OriginalOwner field if non-nil, zero value otherwise.
 
 ### GetOriginalOwnerOk
 
-`func (o *ApprovalStatusDto) GetOriginalOwnerOk() (*BaseReferenceDto, bool)`
+`func (o *ApprovalStatusDto) GetOriginalOwnerOk() (*BaseReferenceDto1, bool)`
 
 GetOriginalOwnerOk returns a tuple with the OriginalOwner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOriginalOwner
 
-`func (o *ApprovalStatusDto) SetOriginalOwner(v BaseReferenceDto)`
+`func (o *ApprovalStatusDto) SetOriginalOwner(v BaseReferenceDto1)`
 
 SetOriginalOwner sets OriginalOwner field to given value.
 
@@ -86,20 +86,20 @@ HasOriginalOwner returns a boolean if a field has been set.
 
 ### GetCurrentOwner
 
-`func (o *ApprovalStatusDto) GetCurrentOwner() BaseReferenceDto`
+`func (o *ApprovalStatusDto) GetCurrentOwner() BaseReferenceDto1`
 
 GetCurrentOwner returns the CurrentOwner field if non-nil, zero value otherwise.
 
 ### GetCurrentOwnerOk
 
-`func (o *ApprovalStatusDto) GetCurrentOwnerOk() (*BaseReferenceDto, bool)`
+`func (o *ApprovalStatusDto) GetCurrentOwnerOk() (*BaseReferenceDto1, bool)`
 
 GetCurrentOwnerOk returns a tuple with the CurrentOwner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrentOwner
 
-`func (o *ApprovalStatusDto) SetCurrentOwner(v BaseReferenceDto)`
+`func (o *ApprovalStatusDto) SetCurrentOwner(v BaseReferenceDto1)`
 
 SetCurrentOwner sets CurrentOwner field to given value.
 
@@ -111,20 +111,20 @@ HasCurrentOwner returns a boolean if a field has been set.
 
 ### GetReviewedBy
 
-`func (o *ApprovalStatusDto) GetReviewedBy() BaseReferenceDto`
+`func (o *ApprovalStatusDto) GetReviewedBy() BaseReferenceDto1`
 
 GetReviewedBy returns the ReviewedBy field if non-nil, zero value otherwise.
 
 ### GetReviewedByOk
 
-`func (o *ApprovalStatusDto) GetReviewedByOk() (*BaseReferenceDto, bool)`
+`func (o *ApprovalStatusDto) GetReviewedByOk() (*BaseReferenceDto1, bool)`
 
 GetReviewedByOk returns a tuple with the ReviewedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReviewedBy
 
-`func (o *ApprovalStatusDto) SetReviewedBy(v BaseReferenceDto)`
+`func (o *ApprovalStatusDto) SetReviewedBy(v BaseReferenceDto1)`
 
 SetReviewedBy sets ReviewedBy field to given value.
 

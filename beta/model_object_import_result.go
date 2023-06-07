@@ -26,7 +26,7 @@ type ObjectImportResult struct {
 	// Error messages returned from the target service on import.
 	Errors []SpConfigMessage `json:"errors"`
 	// References to objects that were created or updated by the import.
-	ImportedObjects []BaseReferenceDto `json:"importedObjects"`
+	ImportedObjects []BaseReferenceDto1 `json:"importedObjects"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +36,7 @@ type _ObjectImportResult ObjectImportResult
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewObjectImportResult(infos []SpConfigMessage, warnings []SpConfigMessage, errors []SpConfigMessage, importedObjects []BaseReferenceDto) *ObjectImportResult {
+func NewObjectImportResult(infos []SpConfigMessage, warnings []SpConfigMessage, errors []SpConfigMessage, importedObjects []BaseReferenceDto1) *ObjectImportResult {
 	this := ObjectImportResult{}
 	this.Infos = infos
 	this.Warnings = warnings
@@ -126,9 +126,9 @@ func (o *ObjectImportResult) SetErrors(v []SpConfigMessage) {
 }
 
 // GetImportedObjects returns the ImportedObjects field value
-func (o *ObjectImportResult) GetImportedObjects() []BaseReferenceDto {
+func (o *ObjectImportResult) GetImportedObjects() []BaseReferenceDto1 {
 	if o == nil {
-		var ret []BaseReferenceDto
+		var ret []BaseReferenceDto1
 		return ret
 	}
 
@@ -137,7 +137,7 @@ func (o *ObjectImportResult) GetImportedObjects() []BaseReferenceDto {
 
 // GetImportedObjectsOk returns a tuple with the ImportedObjects field value
 // and a boolean to check if the value has been set.
-func (o *ObjectImportResult) GetImportedObjectsOk() ([]BaseReferenceDto, bool) {
+func (o *ObjectImportResult) GetImportedObjectsOk() ([]BaseReferenceDto1, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -145,7 +145,7 @@ func (o *ObjectImportResult) GetImportedObjectsOk() ([]BaseReferenceDto, bool) {
 }
 
 // SetImportedObjects sets field value
-func (o *ObjectImportResult) SetImportedObjects(v []BaseReferenceDto) {
+func (o *ObjectImportResult) SetImportedObjects(v []BaseReferenceDto1) {
 	o.ImportedObjects = v
 }
 

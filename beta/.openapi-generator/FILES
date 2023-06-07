@@ -446,6 +446,7 @@ docs/PostExternalExecuteWorkflow200Response.md
 docs/PostExternalExecuteWorkflowRequest.md
 docs/PreApprovalTriggerDetails.md
 docs/PreferencesDto.md
+docs/ProcessIdentitiesRequest.md
 docs/ProvisioningCompleted.md
 docs/ProvisioningConfig.md
 docs/ProvisioningConfigManagedResourceRefsInner.md
@@ -1119,6 +1120,7 @@ model_post_external_execute_workflow_200_response.go
 model_post_external_execute_workflow_request.go
 model_pre_approval_trigger_details.go
 model_preferences_dto.go
+model_process_identities_request.go
 model_provisioning_completed.go
 model_provisioning_config.go
 model_provisioning_config_managed_resource_refs_inner.go

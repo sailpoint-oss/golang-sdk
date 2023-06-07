@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | 
+**Source** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | 
 **Attributes** | [**[]AttrSyncSourceAttributeConfig**](AttrSyncSourceAttributeConfig.md) | Attribute synchronization configuration for specific identity attributes in the context of a source | 
 
 ## Methods
 
 ### NewAttrSyncSourceConfig
 
-`func NewAttrSyncSourceConfig(source BaseReferenceDto, attributes []AttrSyncSourceAttributeConfig, ) *AttrSyncSourceConfig`
+`func NewAttrSyncSourceConfig(source BaseReferenceDto1, attributes []AttrSyncSourceAttributeConfig, ) *AttrSyncSourceConfig`
 
 NewAttrSyncSourceConfig instantiates a new AttrSyncSourceConfig object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *AttrSyncSourceConfig) GetSource() BaseReferenceDto`
+`func (o *AttrSyncSourceConfig) GetSource() BaseReferenceDto1`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *AttrSyncSourceConfig) GetSourceOk() (*BaseReferenceDto, bool)`
+`func (o *AttrSyncSourceConfig) GetSourceOk() (*BaseReferenceDto1, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *AttrSyncSourceConfig) SetSource(v BaseReferenceDto)`
+`func (o *AttrSyncSourceConfig) SetSource(v BaseReferenceDto1)`
 
 SetSource sets Source field to given value.
 

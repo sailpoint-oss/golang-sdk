@@ -24,7 +24,7 @@ type SodViolationCheckResult struct {
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	ViolationContexts []SodViolationContext `json:"violationContexts,omitempty"`
 	// A list of the Policies that were violated
-	ViolatedPolicies []BaseReferenceDto `json:"violatedPolicies,omitempty"`
+	ViolatedPolicies []BaseReferenceDto1 `json:"violatedPolicies,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -144,9 +144,9 @@ func (o *SodViolationCheckResult) SetViolationContexts(v []SodViolationContext) 
 }
 
 // GetViolatedPolicies returns the ViolatedPolicies field value if set, zero value otherwise.
-func (o *SodViolationCheckResult) GetViolatedPolicies() []BaseReferenceDto {
+func (o *SodViolationCheckResult) GetViolatedPolicies() []BaseReferenceDto1 {
 	if o == nil || isNil(o.ViolatedPolicies) {
-		var ret []BaseReferenceDto
+		var ret []BaseReferenceDto1
 		return ret
 	}
 	return o.ViolatedPolicies
@@ -154,7 +154,7 @@ func (o *SodViolationCheckResult) GetViolatedPolicies() []BaseReferenceDto {
 
 // GetViolatedPoliciesOk returns a tuple with the ViolatedPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodViolationCheckResult) GetViolatedPoliciesOk() ([]BaseReferenceDto, bool) {
+func (o *SodViolationCheckResult) GetViolatedPoliciesOk() ([]BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.ViolatedPolicies) {
 		return nil, false
 	}
@@ -170,8 +170,8 @@ func (o *SodViolationCheckResult) HasViolatedPolicies() bool {
 	return false
 }
 
-// SetViolatedPolicies gets a reference to the given []BaseReferenceDto and assigns it to the ViolatedPolicies field.
-func (o *SodViolationCheckResult) SetViolatedPolicies(v []BaseReferenceDto) {
+// SetViolatedPolicies gets a reference to the given []BaseReferenceDto1 and assigns it to the ViolatedPolicies field.
+func (o *SodViolationCheckResult) SetViolatedPolicies(v []BaseReferenceDto1) {
 	o.ViolatedPolicies = v
 }
 

@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## BulkDeleteRoles
 
-> BaseReferenceDto BulkDeleteRoles(ctx).RoleBulkDeleteRequest(roleBulkDeleteRequest).Execute()
+> BaseReferenceDto1 BulkDeleteRoles(ctx).RoleBulkDeleteRequest(roleBulkDeleteRequest).Execute()
 
 Delete Role(s)
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.BulkDeleteRoles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `BulkDeleteRoles`: BaseReferenceDto
+    // response from `BulkDeleteRoles`: BaseReferenceDto1
     fmt.Fprintf(os.Stdout, "Response from `RolesApi.BulkDeleteRoles`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseReferenceDto**](BaseReferenceDto.md)
+[**BaseReferenceDto1**](BaseReferenceDto1.md)
 
 ### Authorization
 

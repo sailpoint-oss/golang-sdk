@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **RequestType** | Pointer to [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
 **Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
 **Created** | Pointer to **time.Time** | When the request was created. | [optional] 
-**Requester** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**RequestedFor** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**Requester** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**RequestedFor** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **RequesterComment** | Pointer to [**CommentDto1**](CommentDto1.md) |  | [optional] 
 **SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 **ProvisioningDetails** | Pointer to [**ProvisioningDetails**](ProvisioningDetails.md) |  | [optional] 
@@ -344,20 +344,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetRequester
 
-`func (o *RequestedItemStatus) GetRequester() BaseReferenceDto`
+`func (o *RequestedItemStatus) GetRequester() BaseReferenceDto1`
 
 GetRequester returns the Requester field if non-nil, zero value otherwise.
 
 ### GetRequesterOk
 
-`func (o *RequestedItemStatus) GetRequesterOk() (*BaseReferenceDto, bool)`
+`func (o *RequestedItemStatus) GetRequesterOk() (*BaseReferenceDto1, bool)`
 
 GetRequesterOk returns a tuple with the Requester field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequester
 
-`func (o *RequestedItemStatus) SetRequester(v BaseReferenceDto)`
+`func (o *RequestedItemStatus) SetRequester(v BaseReferenceDto1)`
 
 SetRequester sets Requester field to given value.
 
@@ -369,20 +369,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *RequestedItemStatus) GetRequestedFor() BaseReferenceDto`
+`func (o *RequestedItemStatus) GetRequestedFor() BaseReferenceDto1`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *RequestedItemStatus) GetRequestedForOk() (*BaseReferenceDto, bool)`
+`func (o *RequestedItemStatus) GetRequestedForOk() (*BaseReferenceDto1, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *RequestedItemStatus) SetRequestedFor(v BaseReferenceDto)`
+`func (o *RequestedItemStatus) SetRequestedFor(v BaseReferenceDto1)`
 
 SetRequestedFor sets RequestedFor field to given value.
 

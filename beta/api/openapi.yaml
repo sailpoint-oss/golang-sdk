@@ -13975,6 +13975,112 @@ paths:
       summary: Identity Details
       tags:
       - Identities
+  /identities/process:
+    post:
+      description: |
+        You could use this endpoint to:
+        1. Calculate identity attributes, including applying or running any rules or transforms (e.g. calculate Lifecycle State at a point-in-time it's expected to change).
+        2. Evaluate role assignments, leading to assignment of new roles and removal of existing roles.
+        3. Enforce provisioning for any assigned accesses that haven't been fulfilled (e.g. failure due to source health).
+        4. Recalculate manager relationships.
+        5. Potentially clean-up identity processing errors, assuming the error has been resolved.
+
+        To learn more, refer to the [identity processing documentation](https://documentation.sailpoint.com/saas/help/setup/identity_processing.html).
+      operationId: startIdentityProcessing
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessIdentitiesRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseReferenceDto'
+          description: Object containing the DTO type TASK_RESULT and the job id for
+            the task
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:identity:manage
+      summary: Process a list of identityIds
+      tags:
+      - Identities
   /identity-profiles:
     get:
       description: |-
@@ -14216,7 +14322,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BaseReferenceDto'
+                $ref: '#/components/schemas/BaseReferenceDto_1'
           description: Accepted - Returned if the request was successfully accepted
             into the system.
         "400":
@@ -14625,7 +14731,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BaseReferenceDto_1'
+                $ref: '#/components/schemas/BaseReferenceDto'
           description: Accepted - Returned if the request was successfully accepted
             into the system.
         "400":
@@ -28551,7 +28657,7 @@ paths:
                 id: 464ae7bf791e49fdb74606a2e4a89635
                 name: null
               schema:
-                $ref: '#/components/schemas/BaseReferenceDto'
+                $ref: '#/components/schemas/BaseReferenceDto_1'
           description: Returns an object with the id of the task performing the delete
             operation.
         "400":
@@ -46445,9 +46551,9 @@ components:
           format: date-time
           type: string
         requester:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         requestedFor:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         requesterComment:
           $ref: '#/components/schemas/CommentDto_1'
         sodViolationContext:
@@ -46653,11 +46759,11 @@ components:
         requestType:
           $ref: '#/components/schemas/AccessRequestType'
         requester:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         requestedFor:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         owner:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         requestedObject:
           $ref: '#/components/schemas/RequestableObjectReference'
         requesterComment:
@@ -46871,13 +46977,13 @@ components:
         requestType:
           $ref: '#/components/schemas/AccessRequestType'
         requester:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         requestedFor:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         reviewedBy:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         owner:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         requestedObject:
           $ref: '#/components/schemas/RequestableObjectReference'
         requesterComment:
@@ -48712,6 +48818,38 @@ components:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
       - $ref: '#/components/schemas/IdentityDto'
+    ProcessIdentitiesRequest:
+      example:
+        identityIds:
+        - ef38f94347e94562b5bb8424a56397d8
+        - ef38f94347e94562b5bb8424a56397d8
+        - ef38f94347e94562b5bb8424a56397d8
+        - ef38f94347e94562b5bb8424a56397d8
+        - ef38f94347e94562b5bb8424a56397d8
+      properties:
+        identityIds:
+          description: List of up to 250 identity IDs to process.
+          items:
+            example: ef38f94347e94562b5bb8424a56397d8
+            type: string
+          maxItems: 250
+          minItems: 1
+          type: array
+      type: object
+    BaseReferenceDto:
+      example:
+        name: Github
+        id: ff8081814d977c21014da056804a0af3
+      properties:
+        id:
+          description: the application ID
+          example: ff8081814d977c21014da056804a0af3
+          type: string
+        name:
+          description: the application name
+          example: Github
+          type: string
+      type: object
     IdentityProfileBulkDelete:
       description: List of Identity Profile IDs to delete.
       example:
@@ -48720,7 +48858,7 @@ components:
       items:
         type: string
       type: array
-    BaseReferenceDto:
+    BaseReferenceDto_1:
       example:
         name: William Wilson
         id: 2c91808568c529c60168cca6f90c1313
@@ -48753,7 +48891,7 @@ components:
           example: 1
           type: integer
         self:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         object:
           $ref: '#/components/schemas/IdentityProfile_1'
       type: object
@@ -48820,7 +48958,7 @@ components:
         importedObjects:
           description: References to objects that were created or updated by the import.
           items:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/BaseReferenceDto_1'
           type: array
       required:
       - errors
@@ -48889,25 +49027,11 @@ components:
           previousValue: oldEmail@mail.com
       properties:
         identity:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         previewAttributes:
           items:
             $ref: '#/components/schemas/IdentityAttributePreview'
           type: array
-      type: object
-    BaseReferenceDto_1:
-      example:
-        name: Github
-        id: ff8081814d977c21014da056804a0af3
-      properties:
-        id:
-          description: the application ID
-          example: ff8081814d977c21014da056804a0af3
-          type: string
-        name:
-          description: the application name
-          example: Github
-          type: string
       type: object
     IdentityAttributeConfig:
       example:
@@ -51083,7 +51207,7 @@ components:
           nullable: true
           type: array
         owner:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         created:
           description: "The date and time, down to the millisecond, when this personal\
             \ access token was created."
@@ -51177,7 +51301,7 @@ components:
           example: NodeJS Integration
           type: string
         owner:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         created:
           description: "The date and time, down to the millisecond, when this personal\
             \ access token was created."
@@ -52808,7 +52932,7 @@ components:
           description: List of BaseRefenceDtos that can be used to resolve references
             on import.
           items:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/BaseReferenceDto_1'
           type: array
         excludeBackup:
           default: false
@@ -53179,7 +53303,7 @@ components:
           type: IDENTITY
       properties:
         source:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         attributes:
           description: Attribute synchronization configuration for specific identity
             attributes in the context of a source
@@ -53663,7 +53787,7 @@ components:
         - PCI
       properties:
         objectRef:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         tags:
           description: Labels to be applied to an Object
           example:
@@ -53689,7 +53813,7 @@ components:
       properties:
         objectRefs:
           items:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/BaseReferenceDto_1'
           type: array
         tags:
           description: Label to be applied to an Object
@@ -54431,7 +54555,7 @@ components:
           example: This policy ensures compliance of xyz
           type: string
         ownerRef:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         externalPolicyReference:
           description: Optional External Policy Reference
           example: XYZ policy
@@ -54536,7 +54660,7 @@ components:
           $ref: '#/components/schemas/Schedule_1'
         recipients:
           items:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/BaseReferenceDto_1'
           type: array
         emailEmptyResults:
           description: Indicates if empty results need to be emailed
@@ -54553,7 +54677,7 @@ components:
       type: object
     ReportResultReference:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       - $ref: '#/components/schemas/ReportResultReference_allOf'
     IdentityWithNewAccess:
       description: An identity with a set of access to be added
@@ -56407,7 +56531,7 @@ components:
           description: List of references to objects which are using the indicated
             Access Profile
           items:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/BaseReferenceDto_1'
           type: array
       type: object
     OwnerReferenceDto:
@@ -56586,7 +56710,7 @@ components:
           example: Nisl quis ipsum quam quisque condimentum nunc ut dolor nunc.
           type: string
         owner:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         modified:
           description: Date comment was added by the owner when cancelling the associated
             request
@@ -56658,11 +56782,11 @@ components:
           example: false
           type: boolean
         originalOwner:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         currentOwner:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         reviewedBy:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         modified:
           description: Time at which item was modified.
           example: 2019-08-23T18:52:57.398Z
@@ -56722,9 +56846,9 @@ components:
           example: true
           type: boolean
         originalOwner:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         currentOwner:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         modified:
           description: Time at which item was modified.
           example: 2019-08-23T18:52:57.398Z
@@ -58716,7 +58840,7 @@ components:
           example: 1
           type: integer
         self:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         object:
           additionalProperties: true
           description: Object details. Format dependant on the object type.
@@ -59204,7 +59328,7 @@ components:
           example: MANAGER
           type: string
         ownerRef:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
       type: object
     ConflictingAccessCriteria:
       example:
@@ -59758,7 +59882,7 @@ components:
         violatedPolicies:
           description: A list of the Policies that were violated
           items:
-            $ref: '#/components/schemas/BaseReferenceDto'
+            $ref: '#/components/schemas/BaseReferenceDto_1'
           type: array
       type: object
     ReassignmentType:
@@ -59873,7 +59997,7 @@ components:
         violatedPolicies:
           description: A list of the Policies that were violated
           items:
-            $ref: '#/components/schemas/BaseReferenceDto_1'
+            $ref: '#/components/schemas/BaseReferenceDto'
           type: array
       type: object
     ProvisioningState:
@@ -60492,7 +60616,7 @@ components:
       type: string
     Reviewer:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: Details of the reviewer for certification.
       properties:
         type:
@@ -60598,7 +60722,7 @@ components:
           type: IDENTITY
       properties:
         policy:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         conflictingAccessCriteria:
           $ref: '#/components/schemas/SodViolationContext_conflictingAccessCriteria'
       type: object
@@ -60632,7 +60756,7 @@ components:
           type: IDENTITY
       properties:
         policy:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         conflictingAccessCriteria:
           $ref: '#/components/schemas/SodViolationContext_1_conflictingAccessCriteria'
       type: object
@@ -60800,7 +60924,7 @@ components:
       type: object
     CertificationReference:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       - $ref: '#/components/schemas/CertificationReference_allOf'
       description: The previous certification
       properties:
@@ -61174,7 +61298,7 @@ components:
           type: string
         reviewer:
           allOf:
-          - $ref: '#/components/schemas/BaseReferenceDto'
+          - $ref: '#/components/schemas/BaseReferenceDto_1'
           - type: object
           description: "If specified, this identity or governance group will be the\
             \ reviewer for all certifications in this campaign. The allowed DTO types\
@@ -61236,7 +61360,7 @@ components:
       properties:
         reviewer:
           allOf:
-          - $ref: '#/components/schemas/BaseReferenceDto'
+          - $ref: '#/components/schemas/BaseReferenceDto_1'
           - type: object
           description: "If specified, this identity or governance group will be the\
             \ reviewer for all certifications in this campaign. The allowed DTO types\
@@ -61476,7 +61600,7 @@ components:
       example: null
     Trigger_Input_AccessRequestDynamicApprover_requestedFor:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity for whom the access is requested for.
       properties:
         type:
@@ -61528,7 +61652,7 @@ components:
       type: object
     Trigger_Input_AccessRequestDynamicApprover_requestedBy:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity that initiated the access request.
       properties:
         type:
@@ -61539,7 +61663,7 @@ components:
           type: object
     Trigger_Input_AccessRequestPostApproval_requestedFor:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity who the access request is for.
       properties:
         type:
@@ -61554,7 +61678,7 @@ components:
       - type
     Trigger_Input_AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity of the approver.
       properties:
         type:
@@ -61648,7 +61772,7 @@ components:
       type: object
     Trigger_Input_AccessRequestPostApproval_requestedBy:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity that initiated the access request.
       properties:
         type:
@@ -61704,7 +61828,7 @@ components:
       type: object
     Trigger_Input_AccountAggregationCompleted_source:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The source from which the accounts were aggregated.
       properties:
         type:
@@ -61765,7 +61889,7 @@ components:
       type: object
     Trigger_Input_AccountAttributesChanged_identity:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity whose account attributes changed.
       properties:
         type:
@@ -61874,7 +61998,7 @@ components:
       type: object
     Trigger_Input_AccountCorrelated_identity:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity that the account correlated with.
       properties:
         type:
@@ -61912,7 +62036,7 @@ components:
       type: object
     Trigger_Input_AccountCorrelated_account:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The account that was correlated.
       properties:
         type:
@@ -62007,7 +62131,7 @@ components:
       type: object
     Trigger_Input_AccountUncorrelated_identity:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity that the account uncorrelated with.
       properties:
         type:
@@ -62022,7 +62146,7 @@ components:
       - type
     Trigger_Input_AccountUncorrelated_source:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The source from which the account came from.
       properties:
         type:
@@ -62037,7 +62161,7 @@ components:
       - type
     Trigger_Input_AccountUncorrelated_account:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The account that was uncorrelated.
       properties:
         type:
@@ -62305,7 +62429,7 @@ components:
       - name
     Trigger_Input_IdentityAttributesChanged_identity:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity who's attributes changed.
       properties:
         type:
@@ -62366,7 +62490,7 @@ components:
       type: object
     Trigger_Input_IdentityCreated_identity:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity that was created.
       properties:
         type:
@@ -62381,7 +62505,7 @@ components:
       - type
     Trigger_Input_IdentityDeleted_identity:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity that was deleted.
       properties:
         type:
@@ -62396,7 +62520,7 @@ components:
       - type
     Trigger_Input_ProvisioningCompleted_recipient:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: Reference to the identity who is the target of the provisioning
         request.
       properties:
@@ -62412,7 +62536,7 @@ components:
       - type
     Trigger_Input_ProvisioningCompleted_requester:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: Reference to the identity (if any) who submitted the provisioning
         request.
       nullable: true
@@ -62611,7 +62735,7 @@ components:
       type: object
     Trigger_Input_SourceCreated_actor:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity that created the source.
       properties:
         type:
@@ -62626,7 +62750,7 @@ components:
       - type
     Trigger_Input_SourceDeleted_actor:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity that deleted the source.
       properties:
         type:
@@ -62641,7 +62765,7 @@ components:
       - type
     Trigger_Input_SourceUpdated_actor:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity or system that performed the update.
       properties:
         type:
@@ -63257,7 +63381,7 @@ components:
           example: LOCKED
           type: string
         managerRef:
-          $ref: '#/components/schemas/BaseReferenceDto'
+          $ref: '#/components/schemas/BaseReferenceDto_1'
         isManager:
           default: false
           description: Whether this identity is a manager of another identity
@@ -63452,7 +63576,7 @@ components:
           type: string
         ownerRef:
           allOf:
-          - $ref: '#/components/schemas/BaseReferenceDto'
+          - $ref: '#/components/schemas/BaseReferenceDto_1'
           description: Reference to the identity that is the owner of this Service
             Desk integration
           properties:
@@ -63472,7 +63596,7 @@ components:
               type: object
         clusterRef:
           allOf:
-          - $ref: '#/components/schemas/BaseReferenceDto'
+          - $ref: '#/components/schemas/BaseReferenceDto_1'
           description: Reference to the source cluster for this Service Desk integration
           properties:
             type:
@@ -63517,7 +63641,7 @@ components:
           type: object
         beforeProvisioningRule:
           allOf:
-          - $ref: '#/components/schemas/BaseReferenceDto'
+          - $ref: '#/components/schemas/BaseReferenceDto_1'
           description: Reference to beforeProvisioningRule for this Service Desk integration
           properties:
             type:
@@ -63828,7 +63952,7 @@ components:
       example: null
     IdentityWithNewAccess_accessRefs_inner:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The types of objects supported for SOD violations
       properties:
         type:
@@ -63860,7 +63984,7 @@ components:
           type: string
         creator:
           allOf:
-          - $ref: '#/components/schemas/BaseReferenceDto'
+          - $ref: '#/components/schemas/BaseReferenceDto_1'
           description: The identity that created the workflow.
           example:
             type: IDENTITY
@@ -63877,7 +64001,7 @@ components:
       example: null
     WorkflowBody_owner:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity that owns the workflow.  The owner's permissions in
         IDN will determine what actions the workflow is allowed to perform.  Ownership
         can be changed by updating the owner in a PUT or PATCH request.
@@ -64037,7 +64161,7 @@ components:
       example: null
     ProvisioningConfig_managedResourceRefs_inner:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       properties:
         type:
           description: The type of object being referenced
@@ -64120,7 +64244,7 @@ components:
       type: object
     ViolationContext_policy:
       allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto'
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
       - $ref: '#/components/schemas/ViolationContext_policy_allOf'
       description: The types of objects supported for SOD violations
       example:

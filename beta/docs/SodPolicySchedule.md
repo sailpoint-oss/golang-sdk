@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | The time when this SOD policy schedule is modified. | [optional] 
 **Description** | Pointer to **string** | SOD Policy schedule description | [optional] 
 **Schedule** | Pointer to [**Schedule1**](Schedule1.md) |  | [optional] 
-**Recipients** | Pointer to [**[]BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**Recipients** | Pointer to [**[]BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **EmailEmptyResults** | Pointer to **bool** | Indicates if empty results need to be emailed | [optional] 
 **CreatorId** | Pointer to **string** | Policy&#39;s creator ID | [optional] 
 **ModifierId** | Pointer to **string** | Policy&#39;s modifier ID | [optional] 
@@ -160,20 +160,20 @@ HasSchedule returns a boolean if a field has been set.
 
 ### GetRecipients
 
-`func (o *SodPolicySchedule) GetRecipients() []BaseReferenceDto`
+`func (o *SodPolicySchedule) GetRecipients() []BaseReferenceDto1`
 
 GetRecipients returns the Recipients field if non-nil, zero value otherwise.
 
 ### GetRecipientsOk
 
-`func (o *SodPolicySchedule) GetRecipientsOk() (*[]BaseReferenceDto, bool)`
+`func (o *SodPolicySchedule) GetRecipientsOk() (*[]BaseReferenceDto1, bool)`
 
 GetRecipientsOk returns a tuple with the Recipients field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecipients
 
-`func (o *SodPolicySchedule) SetRecipients(v []BaseReferenceDto)`
+`func (o *SodPolicySchedule) SetRecipients(v []BaseReferenceDto1)`
 
 SetRecipients sets Recipients field to given value.
 

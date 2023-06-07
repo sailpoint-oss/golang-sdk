@@ -29,7 +29,7 @@ type WorkflowAllOf struct {
 	// The date and time the workflow was created
 	Created *time.Time `json:"created,omitempty"`
 	// The identity that created the workflow.
-	Creator *BaseReferenceDto `json:"creator,omitempty"`
+	Creator *BaseReferenceDto1 `json:"creator,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -181,9 +181,9 @@ func (o *WorkflowAllOf) SetCreated(v time.Time) {
 }
 
 // GetCreator returns the Creator field value if set, zero value otherwise.
-func (o *WorkflowAllOf) GetCreator() BaseReferenceDto {
+func (o *WorkflowAllOf) GetCreator() BaseReferenceDto1 {
 	if o == nil || isNil(o.Creator) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.Creator
@@ -191,7 +191,7 @@ func (o *WorkflowAllOf) GetCreator() BaseReferenceDto {
 
 // GetCreatorOk returns a tuple with the Creator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkflowAllOf) GetCreatorOk() (*BaseReferenceDto, bool) {
+func (o *WorkflowAllOf) GetCreatorOk() (*BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.Creator) {
 		return nil, false
 	}
@@ -207,8 +207,8 @@ func (o *WorkflowAllOf) HasCreator() bool {
 	return false
 }
 
-// SetCreator gets a reference to the given BaseReferenceDto and assigns it to the Creator field.
-func (o *WorkflowAllOf) SetCreator(v BaseReferenceDto) {
+// SetCreator gets a reference to the given BaseReferenceDto1 and assigns it to the Creator field.
+func (o *WorkflowAllOf) SetCreator(v BaseReferenceDto1) {
 	o.Creator = &v
 }
 

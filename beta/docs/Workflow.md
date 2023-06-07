@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ExecutionCount** | Pointer to **int32** | The number of times this workflow has been executed | [optional] 
 **FailureCount** | Pointer to **int32** | The number of times this workflow has failed during execution | [optional] 
 **Created** | Pointer to **time.Time** | The date and time the workflow was created | [optional] 
-**Creator** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) | The identity that created the workflow. | [optional] 
+**Creator** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto_1.md) | The identity that created the workflow. | [optional] 
 **Name** | Pointer to **string** | The name of the workflow | [optional] 
 **Owner** | Pointer to [**WorkflowBodyOwner**](WorkflowBodyOwner.md) |  | [optional] 
 **Description** | Pointer to **string** | Description of what the workflow accomplishes | [optional] 
@@ -137,20 +137,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetCreator
 
-`func (o *Workflow) GetCreator() BaseReferenceDto`
+`func (o *Workflow) GetCreator() BaseReferenceDto1`
 
 GetCreator returns the Creator field if non-nil, zero value otherwise.
 
 ### GetCreatorOk
 
-`func (o *Workflow) GetCreatorOk() (*BaseReferenceDto, bool)`
+`func (o *Workflow) GetCreatorOk() (*BaseReferenceDto1, bool)`
 
 GetCreatorOk returns a tuple with the Creator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreator
 
-`func (o *Workflow) SetCreator(v BaseReferenceDto)`
+`func (o *Workflow) SetCreator(v BaseReferenceDto1)`
 
 SetCreator sets Creator field to given value.
 

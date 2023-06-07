@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Version** | Pointer to **int32** | Version or object from the target service. | [optional] 
-**Self** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**Self** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **Object** | Pointer to [**IdentityProfile1**](IdentityProfile1.md) |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasVersion returns a boolean if a field has been set.
 
 ### GetSelf
 
-`func (o *IdentityProfileExportedObject) GetSelf() BaseReferenceDto`
+`func (o *IdentityProfileExportedObject) GetSelf() BaseReferenceDto1`
 
 GetSelf returns the Self field if non-nil, zero value otherwise.
 
 ### GetSelfOk
 
-`func (o *IdentityProfileExportedObject) GetSelfOk() (*BaseReferenceDto, bool)`
+`func (o *IdentityProfileExportedObject) GetSelfOk() (*BaseReferenceDto1, bool)`
 
 GetSelfOk returns a tuple with the Self field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSelf
 
-`func (o *IdentityProfileExportedObject) SetSelf(v BaseReferenceDto)`
+`func (o *IdentityProfileExportedObject) SetSelf(v BaseReferenceDto1)`
 
 SetSelf sets Self field to given value.
 

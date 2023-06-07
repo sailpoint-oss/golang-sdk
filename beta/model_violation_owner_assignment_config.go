@@ -21,7 +21,7 @@ var _ MappedNullable = &ViolationOwnerAssignmentConfig{}
 type ViolationOwnerAssignmentConfig struct {
 	// Details about the violations owner. MANAGER - identity's manager STATIC - Governance Group or Identity
 	AssignmentRule *string `json:"assignmentRule,omitempty"`
-	OwnerRef *BaseReferenceDto `json:"ownerRef,omitempty"`
+	OwnerRef *BaseReferenceDto1 `json:"ownerRef,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,9 +77,9 @@ func (o *ViolationOwnerAssignmentConfig) SetAssignmentRule(v string) {
 }
 
 // GetOwnerRef returns the OwnerRef field value if set, zero value otherwise.
-func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() BaseReferenceDto {
+func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() BaseReferenceDto1 {
 	if o == nil || isNil(o.OwnerRef) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.OwnerRef
@@ -87,7 +87,7 @@ func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() BaseReferenceDto {
 
 // GetOwnerRefOk returns a tuple with the OwnerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ViolationOwnerAssignmentConfig) GetOwnerRefOk() (*BaseReferenceDto, bool) {
+func (o *ViolationOwnerAssignmentConfig) GetOwnerRefOk() (*BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.OwnerRef) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *ViolationOwnerAssignmentConfig) HasOwnerRef() bool {
 	return false
 }
 
-// SetOwnerRef gets a reference to the given BaseReferenceDto and assigns it to the OwnerRef field.
-func (o *ViolationOwnerAssignmentConfig) SetOwnerRef(v BaseReferenceDto) {
+// SetOwnerRef gets a reference to the given BaseReferenceDto1 and assigns it to the OwnerRef field.
+func (o *ViolationOwnerAssignmentConfig) SetOwnerRef(v BaseReferenceDto1) {
 	o.OwnerRef = &v
 }
 

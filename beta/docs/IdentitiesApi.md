@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**DeleteIdentity**](IdentitiesApi.md#DeleteIdentity) | **Delete** /identities/{id} | Deletes an identity.
 [**GetIdentity**](IdentitiesApi.md#GetIdentity) | **Get** /identities/{id} | Identity Details
 [**ListIdentities**](IdentitiesApi.md#ListIdentities) | **Get** /identities | List Identities
+[**StartIdentityProcessing**](IdentitiesApi.md#StartIdentityProcessing) | **Post** /identities/process | Process a list of identityIds
 [**SynchronizeAttributesForIdentity**](IdentitiesApi.md#SynchronizeAttributesForIdentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 
 
@@ -218,6 +219,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StartIdentityProcessing
+
+> BaseReferenceDto StartIdentityProcessing(ctx).ProcessIdentitiesRequest(processIdentitiesRequest).Execute()
+
+Process a list of identityIds
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    processIdentitiesRequest := *openapiclient.NewProcessIdentitiesRequest() // ProcessIdentitiesRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentitiesApi.StartIdentityProcessing(context.Background()).ProcessIdentitiesRequest(processIdentitiesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesApi.StartIdentityProcessing``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StartIdentityProcessing`: BaseReferenceDto
+    fmt.Fprintf(os.Stdout, "Response from `IdentitiesApi.StartIdentityProcessing`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStartIdentityProcessingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **processIdentitiesRequest** | [**ProcessIdentitiesRequest**](ProcessIdentitiesRequest.md) |  | 
+
+### Return type
+
+[**BaseReferenceDto**](BaseReferenceDto.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

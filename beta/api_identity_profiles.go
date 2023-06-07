@@ -194,7 +194,7 @@ type ApiDeleteIdentityProfileRequest struct {
 	identityProfileId string
 }
 
-func (r ApiDeleteIdentityProfileRequest) Execute() (*BaseReferenceDto1, *http.Response, error) {
+func (r ApiDeleteIdentityProfileRequest) Execute() (*BaseReferenceDto, *http.Response, error) {
 	return r.ApiService.DeleteIdentityProfileExecute(r)
 }
 
@@ -217,13 +217,13 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfile(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return BaseReferenceDto1
-func (a *IdentityProfilesApiService) DeleteIdentityProfileExecute(r ApiDeleteIdentityProfileRequest) (*BaseReferenceDto1, *http.Response, error) {
+//  @return BaseReferenceDto
+func (a *IdentityProfilesApiService) DeleteIdentityProfileExecute(r ApiDeleteIdentityProfileRequest) (*BaseReferenceDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BaseReferenceDto1
+		localVarReturnValue  *BaseReferenceDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.DeleteIdentityProfile")
@@ -369,7 +369,7 @@ func (r ApiDeleteIdentityProfilesRequest) RequestBody(requestBody []string) ApiD
 	return r
 }
 
-func (r ApiDeleteIdentityProfilesRequest) Execute() (*BaseReferenceDto, *http.Response, error) {
+func (r ApiDeleteIdentityProfilesRequest) Execute() (*BaseReferenceDto1, *http.Response, error) {
 	return r.ApiService.DeleteIdentityProfilesExecute(r)
 }
 
@@ -391,13 +391,13 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfiles(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return BaseReferenceDto
-func (a *IdentityProfilesApiService) DeleteIdentityProfilesExecute(r ApiDeleteIdentityProfilesRequest) (*BaseReferenceDto, *http.Response, error) {
+//  @return BaseReferenceDto1
+func (a *IdentityProfilesApiService) DeleteIdentityProfilesExecute(r ApiDeleteIdentityProfilesRequest) (*BaseReferenceDto1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BaseReferenceDto
+		localVarReturnValue  *BaseReferenceDto1
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.DeleteIdentityProfiles")

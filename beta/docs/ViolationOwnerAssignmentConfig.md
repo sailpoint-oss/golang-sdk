@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssignmentRule** | Pointer to **string** | Details about the violations owner. MANAGER - identity&#39;s manager STATIC - Governance Group or Identity | [optional] 
-**OwnerRef** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**OwnerRef** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasAssignmentRule returns a boolean if a field has been set.
 
 ### GetOwnerRef
 
-`func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() BaseReferenceDto`
+`func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() BaseReferenceDto1`
 
 GetOwnerRef returns the OwnerRef field if non-nil, zero value otherwise.
 
 ### GetOwnerRefOk
 
-`func (o *ViolationOwnerAssignmentConfig) GetOwnerRefOk() (*BaseReferenceDto, bool)`
+`func (o *ViolationOwnerAssignmentConfig) GetOwnerRefOk() (*BaseReferenceDto1, bool)`
 
 GetOwnerRefOk returns a tuple with the OwnerRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerRef
 
-`func (o *ViolationOwnerAssignmentConfig) SetOwnerRef(v BaseReferenceDto)`
+`func (o *ViolationOwnerAssignmentConfig) SetOwnerRef(v BaseReferenceDto1)`
 
 SetOwnerRef sets OwnerRef field to given value.
 

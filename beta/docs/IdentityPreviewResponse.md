@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**Identity** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **PreviewAttributes** | Pointer to [**[]IdentityAttributePreview**](IdentityAttributePreview.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetIdentity
 
-`func (o *IdentityPreviewResponse) GetIdentity() BaseReferenceDto`
+`func (o *IdentityPreviewResponse) GetIdentity() BaseReferenceDto1`
 
 GetIdentity returns the Identity field if non-nil, zero value otherwise.
 
 ### GetIdentityOk
 
-`func (o *IdentityPreviewResponse) GetIdentityOk() (*BaseReferenceDto, bool)`
+`func (o *IdentityPreviewResponse) GetIdentityOk() (*BaseReferenceDto1, bool)`
 
 GetIdentityOk returns a tuple with the Identity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentity
 
-`func (o *IdentityPreviewResponse) SetIdentity(v BaseReferenceDto)`
+`func (o *IdentityPreviewResponse) SetIdentity(v BaseReferenceDto1)`
 
 SetIdentity sets Identity field to given value.
 

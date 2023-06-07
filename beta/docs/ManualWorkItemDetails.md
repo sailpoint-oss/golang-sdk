@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] 
-**OriginalOwner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**CurrentOwner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**OriginalOwner** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**CurrentOwner** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **Modified** | Pointer to **time.Time** | Time at which item was modified. | [optional] 
 **Status** | Pointer to [**ManualWorkItemState**](ManualWorkItemState.md) |  | [optional] 
 **ForwardHistory** | Pointer to [**[]ApprovalForwardHistory**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
@@ -57,20 +57,20 @@ HasForwarded returns a boolean if a field has been set.
 
 ### GetOriginalOwner
 
-`func (o *ManualWorkItemDetails) GetOriginalOwner() BaseReferenceDto`
+`func (o *ManualWorkItemDetails) GetOriginalOwner() BaseReferenceDto1`
 
 GetOriginalOwner returns the OriginalOwner field if non-nil, zero value otherwise.
 
 ### GetOriginalOwnerOk
 
-`func (o *ManualWorkItemDetails) GetOriginalOwnerOk() (*BaseReferenceDto, bool)`
+`func (o *ManualWorkItemDetails) GetOriginalOwnerOk() (*BaseReferenceDto1, bool)`
 
 GetOriginalOwnerOk returns a tuple with the OriginalOwner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOriginalOwner
 
-`func (o *ManualWorkItemDetails) SetOriginalOwner(v BaseReferenceDto)`
+`func (o *ManualWorkItemDetails) SetOriginalOwner(v BaseReferenceDto1)`
 
 SetOriginalOwner sets OriginalOwner field to given value.
 
@@ -82,20 +82,20 @@ HasOriginalOwner returns a boolean if a field has been set.
 
 ### GetCurrentOwner
 
-`func (o *ManualWorkItemDetails) GetCurrentOwner() BaseReferenceDto`
+`func (o *ManualWorkItemDetails) GetCurrentOwner() BaseReferenceDto1`
 
 GetCurrentOwner returns the CurrentOwner field if non-nil, zero value otherwise.
 
 ### GetCurrentOwnerOk
 
-`func (o *ManualWorkItemDetails) GetCurrentOwnerOk() (*BaseReferenceDto, bool)`
+`func (o *ManualWorkItemDetails) GetCurrentOwnerOk() (*BaseReferenceDto1, bool)`
 
 GetCurrentOwnerOk returns a tuple with the CurrentOwner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrentOwner
 
-`func (o *ManualWorkItemDetails) SetCurrentOwner(v BaseReferenceDto)`
+`func (o *ManualWorkItemDetails) SetCurrentOwner(v BaseReferenceDto1)`
 
 SetCurrentOwner sets CurrentOwner field to given value.
 

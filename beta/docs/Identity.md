@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **EmailAddress** | Pointer to **string** | The email address of the identity | [optional] 
 **ProcessingState** | Pointer to **NullableString** | The processing state of the identity | [optional] 
 **IdentityStatus** | Pointer to **string** | The identity&#39;s status in the system | [optional] 
-**ManagerRef** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**ManagerRef** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **IsManager** | Pointer to **bool** | Whether this identity is a manager of another identity | [optional] [default to false]
 **LastRefresh** | Pointer to **time.Time** | The last time the identity was refreshed by the system | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | A map with the identity attributes for the identity | [optional] 
@@ -244,20 +244,20 @@ HasIdentityStatus returns a boolean if a field has been set.
 
 ### GetManagerRef
 
-`func (o *Identity) GetManagerRef() BaseReferenceDto`
+`func (o *Identity) GetManagerRef() BaseReferenceDto1`
 
 GetManagerRef returns the ManagerRef field if non-nil, zero value otherwise.
 
 ### GetManagerRefOk
 
-`func (o *Identity) GetManagerRefOk() (*BaseReferenceDto, bool)`
+`func (o *Identity) GetManagerRefOk() (*BaseReferenceDto1, bool)`
 
 GetManagerRefOk returns a tuple with the ManagerRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetManagerRef
 
-`func (o *Identity) SetManagerRef(v BaseReferenceDto)`
+`func (o *Identity) SetManagerRef(v BaseReferenceDto1)`
 
 SetManagerRef sets ManagerRef field to given value.
 

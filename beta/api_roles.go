@@ -34,7 +34,7 @@ func (r ApiBulkDeleteRolesRequest) RoleBulkDeleteRequest(roleBulkDeleteRequest R
 	return r
 }
 
-func (r ApiBulkDeleteRolesRequest) Execute() (*BaseReferenceDto, *http.Response, error) {
+func (r ApiBulkDeleteRolesRequest) Execute() (*BaseReferenceDto1, *http.Response, error) {
 	return r.ApiService.BulkDeleteRolesExecute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *RolesApiService) BulkDeleteRoles(ctx context.Context) ApiBulkDeleteRole
 }
 
 // Execute executes the request
-//  @return BaseReferenceDto
-func (a *RolesApiService) BulkDeleteRolesExecute(r ApiBulkDeleteRolesRequest) (*BaseReferenceDto, *http.Response, error) {
+//  @return BaseReferenceDto1
+func (a *RolesApiService) BulkDeleteRolesExecute(r ApiBulkDeleteRolesRequest) (*BaseReferenceDto1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BaseReferenceDto
+		localVarReturnValue  *BaseReferenceDto1
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.BulkDeleteRoles")

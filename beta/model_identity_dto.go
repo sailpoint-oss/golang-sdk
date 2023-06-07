@@ -28,7 +28,7 @@ type IdentityDto struct {
 	ProcessingState NullableString `json:"processingState,omitempty"`
 	// The identity's status in the system
 	IdentityStatus *string `json:"identityStatus,omitempty"`
-	ManagerRef *BaseReferenceDto `json:"managerRef,omitempty"`
+	ManagerRef *BaseReferenceDto1 `json:"managerRef,omitempty"`
 	// Whether this identity is a manager of another identity
 	IsManager *bool `json:"isManager,omitempty"`
 	// The last time the identity was refreshed by the system
@@ -201,9 +201,9 @@ func (o *IdentityDto) SetIdentityStatus(v string) {
 }
 
 // GetManagerRef returns the ManagerRef field value if set, zero value otherwise.
-func (o *IdentityDto) GetManagerRef() BaseReferenceDto {
+func (o *IdentityDto) GetManagerRef() BaseReferenceDto1 {
 	if o == nil || isNil(o.ManagerRef) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.ManagerRef
@@ -211,7 +211,7 @@ func (o *IdentityDto) GetManagerRef() BaseReferenceDto {
 
 // GetManagerRefOk returns a tuple with the ManagerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityDto) GetManagerRefOk() (*BaseReferenceDto, bool) {
+func (o *IdentityDto) GetManagerRefOk() (*BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.ManagerRef) {
 		return nil, false
 	}
@@ -227,8 +227,8 @@ func (o *IdentityDto) HasManagerRef() bool {
 	return false
 }
 
-// SetManagerRef gets a reference to the given BaseReferenceDto and assigns it to the ManagerRef field.
-func (o *IdentityDto) SetManagerRef(v BaseReferenceDto) {
+// SetManagerRef gets a reference to the given BaseReferenceDto1 and assigns it to the ManagerRef field.
+func (o *IdentityDto) SetManagerRef(v BaseReferenceDto1) {
 	o.ManagerRef = &v
 }
 

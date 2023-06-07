@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | When the approval was modified last time. | [optional] 
 **RequestCreated** | Pointer to **time.Time** | When the access-request was created. | [optional] 
 **RequestType** | Pointer to [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
-**Requester** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**RequestedFor** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**ReviewedBy** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**Owner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**Requester** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**RequestedFor** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**ReviewedBy** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**Owner** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **RequestedObject** | Pointer to [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
 **RequesterComment** | Pointer to [**CommentDto1**](CommentDto1.md) |  | [optional] 
 **ReviewerComment** | Pointer to [**CommentDto1**](CommentDto1.md) |  | [optional] 
@@ -197,20 +197,20 @@ HasRequestType returns a boolean if a field has been set.
 
 ### GetRequester
 
-`func (o *CompletedApproval) GetRequester() BaseReferenceDto`
+`func (o *CompletedApproval) GetRequester() BaseReferenceDto1`
 
 GetRequester returns the Requester field if non-nil, zero value otherwise.
 
 ### GetRequesterOk
 
-`func (o *CompletedApproval) GetRequesterOk() (*BaseReferenceDto, bool)`
+`func (o *CompletedApproval) GetRequesterOk() (*BaseReferenceDto1, bool)`
 
 GetRequesterOk returns a tuple with the Requester field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequester
 
-`func (o *CompletedApproval) SetRequester(v BaseReferenceDto)`
+`func (o *CompletedApproval) SetRequester(v BaseReferenceDto1)`
 
 SetRequester sets Requester field to given value.
 
@@ -222,20 +222,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *CompletedApproval) GetRequestedFor() BaseReferenceDto`
+`func (o *CompletedApproval) GetRequestedFor() BaseReferenceDto1`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *CompletedApproval) GetRequestedForOk() (*BaseReferenceDto, bool)`
+`func (o *CompletedApproval) GetRequestedForOk() (*BaseReferenceDto1, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *CompletedApproval) SetRequestedFor(v BaseReferenceDto)`
+`func (o *CompletedApproval) SetRequestedFor(v BaseReferenceDto1)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
@@ -247,20 +247,20 @@ HasRequestedFor returns a boolean if a field has been set.
 
 ### GetReviewedBy
 
-`func (o *CompletedApproval) GetReviewedBy() BaseReferenceDto`
+`func (o *CompletedApproval) GetReviewedBy() BaseReferenceDto1`
 
 GetReviewedBy returns the ReviewedBy field if non-nil, zero value otherwise.
 
 ### GetReviewedByOk
 
-`func (o *CompletedApproval) GetReviewedByOk() (*BaseReferenceDto, bool)`
+`func (o *CompletedApproval) GetReviewedByOk() (*BaseReferenceDto1, bool)`
 
 GetReviewedByOk returns a tuple with the ReviewedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReviewedBy
 
-`func (o *CompletedApproval) SetReviewedBy(v BaseReferenceDto)`
+`func (o *CompletedApproval) SetReviewedBy(v BaseReferenceDto1)`
 
 SetReviewedBy sets ReviewedBy field to given value.
 
@@ -272,20 +272,20 @@ HasReviewedBy returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *CompletedApproval) GetOwner() BaseReferenceDto`
+`func (o *CompletedApproval) GetOwner() BaseReferenceDto1`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *CompletedApproval) GetOwnerOk() (*BaseReferenceDto, bool)`
+`func (o *CompletedApproval) GetOwnerOk() (*BaseReferenceDto1, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *CompletedApproval) SetOwner(v BaseReferenceDto)`
+`func (o *CompletedApproval) SetOwner(v BaseReferenceDto1)`
 
 SetOwner sets Owner field to given value.
 

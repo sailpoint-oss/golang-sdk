@@ -1541,7 +1541,7 @@ import (
 
 func main() {
     id := "2c9180835d191a86015d28455b4a2329" // string | The source id
-    attrSyncSourceConfig := *openapiclient.NewAttrSyncSourceConfig(*openapiclient.NewBaseReferenceDto(), []openapiclient.AttrSyncSourceAttributeConfig{*openapiclient.NewAttrSyncSourceAttributeConfig("email", "Email", true, "mail")}) // AttrSyncSourceConfig | 
+    attrSyncSourceConfig := *openapiclient.NewAttrSyncSourceConfig(*openapiclient.NewBaseReferenceDto1(), []openapiclient.AttrSyncSourceAttributeConfig{*openapiclient.NewAttrSyncSourceAttributeConfig("email", "Email", true, "mail")}) // AttrSyncSourceConfig | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

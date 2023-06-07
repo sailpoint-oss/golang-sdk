@@ -22,9 +22,9 @@ var _ MappedNullable = &ApprovalStatusDto{}
 type ApprovalStatusDto struct {
 	// True if the request for this item was forwarded from one owner to another.
 	Forwarded *bool `json:"forwarded,omitempty"`
-	OriginalOwner *BaseReferenceDto `json:"originalOwner,omitempty"`
-	CurrentOwner *BaseReferenceDto `json:"currentOwner,omitempty"`
-	ReviewedBy *BaseReferenceDto `json:"reviewedBy,omitempty"`
+	OriginalOwner *BaseReferenceDto1 `json:"originalOwner,omitempty"`
+	CurrentOwner *BaseReferenceDto1 `json:"currentOwner,omitempty"`
+	ReviewedBy *BaseReferenceDto1 `json:"reviewedBy,omitempty"`
 	// Time at which item was modified.
 	Modified *time.Time `json:"modified,omitempty"`
 	Status *ManualWorkItemState `json:"status,omitempty"`
@@ -90,9 +90,9 @@ func (o *ApprovalStatusDto) SetForwarded(v bool) {
 }
 
 // GetOriginalOwner returns the OriginalOwner field value if set, zero value otherwise.
-func (o *ApprovalStatusDto) GetOriginalOwner() BaseReferenceDto {
+func (o *ApprovalStatusDto) GetOriginalOwner() BaseReferenceDto1 {
 	if o == nil || isNil(o.OriginalOwner) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.OriginalOwner
@@ -100,7 +100,7 @@ func (o *ApprovalStatusDto) GetOriginalOwner() BaseReferenceDto {
 
 // GetOriginalOwnerOk returns a tuple with the OriginalOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalStatusDto) GetOriginalOwnerOk() (*BaseReferenceDto, bool) {
+func (o *ApprovalStatusDto) GetOriginalOwnerOk() (*BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.OriginalOwner) {
 		return nil, false
 	}
@@ -116,15 +116,15 @@ func (o *ApprovalStatusDto) HasOriginalOwner() bool {
 	return false
 }
 
-// SetOriginalOwner gets a reference to the given BaseReferenceDto and assigns it to the OriginalOwner field.
-func (o *ApprovalStatusDto) SetOriginalOwner(v BaseReferenceDto) {
+// SetOriginalOwner gets a reference to the given BaseReferenceDto1 and assigns it to the OriginalOwner field.
+func (o *ApprovalStatusDto) SetOriginalOwner(v BaseReferenceDto1) {
 	o.OriginalOwner = &v
 }
 
 // GetCurrentOwner returns the CurrentOwner field value if set, zero value otherwise.
-func (o *ApprovalStatusDto) GetCurrentOwner() BaseReferenceDto {
+func (o *ApprovalStatusDto) GetCurrentOwner() BaseReferenceDto1 {
 	if o == nil || isNil(o.CurrentOwner) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.CurrentOwner
@@ -132,7 +132,7 @@ func (o *ApprovalStatusDto) GetCurrentOwner() BaseReferenceDto {
 
 // GetCurrentOwnerOk returns a tuple with the CurrentOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalStatusDto) GetCurrentOwnerOk() (*BaseReferenceDto, bool) {
+func (o *ApprovalStatusDto) GetCurrentOwnerOk() (*BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.CurrentOwner) {
 		return nil, false
 	}
@@ -148,15 +148,15 @@ func (o *ApprovalStatusDto) HasCurrentOwner() bool {
 	return false
 }
 
-// SetCurrentOwner gets a reference to the given BaseReferenceDto and assigns it to the CurrentOwner field.
-func (o *ApprovalStatusDto) SetCurrentOwner(v BaseReferenceDto) {
+// SetCurrentOwner gets a reference to the given BaseReferenceDto1 and assigns it to the CurrentOwner field.
+func (o *ApprovalStatusDto) SetCurrentOwner(v BaseReferenceDto1) {
 	o.CurrentOwner = &v
 }
 
 // GetReviewedBy returns the ReviewedBy field value if set, zero value otherwise.
-func (o *ApprovalStatusDto) GetReviewedBy() BaseReferenceDto {
+func (o *ApprovalStatusDto) GetReviewedBy() BaseReferenceDto1 {
 	if o == nil || isNil(o.ReviewedBy) {
-		var ret BaseReferenceDto
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.ReviewedBy
@@ -164,7 +164,7 @@ func (o *ApprovalStatusDto) GetReviewedBy() BaseReferenceDto {
 
 // GetReviewedByOk returns a tuple with the ReviewedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalStatusDto) GetReviewedByOk() (*BaseReferenceDto, bool) {
+func (o *ApprovalStatusDto) GetReviewedByOk() (*BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.ReviewedBy) {
 		return nil, false
 	}
@@ -180,8 +180,8 @@ func (o *ApprovalStatusDto) HasReviewedBy() bool {
 	return false
 }
 
-// SetReviewedBy gets a reference to the given BaseReferenceDto and assigns it to the ReviewedBy field.
-func (o *ApprovalStatusDto) SetReviewedBy(v BaseReferenceDto) {
+// SetReviewedBy gets a reference to the given BaseReferenceDto1 and assigns it to the ReviewedBy field.
+func (o *ApprovalStatusDto) SetReviewedBy(v BaseReferenceDto1) {
 	o.ReviewedBy = &v
 }
 

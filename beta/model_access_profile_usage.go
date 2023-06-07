@@ -22,7 +22,7 @@ type AccessProfileUsage struct {
 	// ID of the Access Profile that is in use
 	AccessProfileId *string `json:"accessProfileId,omitempty"`
 	// List of references to objects which are using the indicated Access Profile
-	UsedBy []BaseReferenceDto `json:"usedBy,omitempty"`
+	UsedBy []BaseReferenceDto1 `json:"usedBy,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -78,9 +78,9 @@ func (o *AccessProfileUsage) SetAccessProfileId(v string) {
 }
 
 // GetUsedBy returns the UsedBy field value if set, zero value otherwise.
-func (o *AccessProfileUsage) GetUsedBy() []BaseReferenceDto {
+func (o *AccessProfileUsage) GetUsedBy() []BaseReferenceDto1 {
 	if o == nil || isNil(o.UsedBy) {
-		var ret []BaseReferenceDto
+		var ret []BaseReferenceDto1
 		return ret
 	}
 	return o.UsedBy
@@ -88,7 +88,7 @@ func (o *AccessProfileUsage) GetUsedBy() []BaseReferenceDto {
 
 // GetUsedByOk returns a tuple with the UsedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessProfileUsage) GetUsedByOk() ([]BaseReferenceDto, bool) {
+func (o *AccessProfileUsage) GetUsedByOk() ([]BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.UsedBy) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *AccessProfileUsage) HasUsedBy() bool {
 	return false
 }
 
-// SetUsedBy gets a reference to the given []BaseReferenceDto and assigns it to the UsedBy field.
-func (o *AccessProfileUsage) SetUsedBy(v []BaseReferenceDto) {
+// SetUsedBy gets a reference to the given []BaseReferenceDto1 and assigns it to the UsedBy field.
+func (o *AccessProfileUsage) SetUsedBy(v []BaseReferenceDto1) {
 	o.UsedBy = v
 }
 

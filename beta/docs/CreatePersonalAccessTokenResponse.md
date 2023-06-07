@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 **Secret** | **string** | The secret of the personal access token (to be used as the password for Basic Auth). | 
 **Scope** | **[]string** | Scopes of the personal  access token. | 
 **Name** | **string** | The name of the personal access token. Cannot be the same as other personal access tokens owned by a user. | 
-**Owner** | [**BaseReferenceDto**](BaseReferenceDto.md) |  | 
+**Owner** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | 
 **Created** | **time.Time** | The date and time, down to the millisecond, when this personal access token was created. | 
 
 ## Methods
 
 ### NewCreatePersonalAccessTokenResponse
 
-`func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner BaseReferenceDto, created time.Time, ) *CreatePersonalAccessTokenResponse`
+`func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner BaseReferenceDto1, created time.Time, ) *CreatePersonalAccessTokenResponse`
 
 NewCreatePersonalAccessTokenResponse instantiates a new CreatePersonalAccessTokenResponse object
 This constructor will assign default values to properties that have it defined,
@@ -122,20 +122,20 @@ SetName sets Name field to given value.
 
 ### GetOwner
 
-`func (o *CreatePersonalAccessTokenResponse) GetOwner() BaseReferenceDto`
+`func (o *CreatePersonalAccessTokenResponse) GetOwner() BaseReferenceDto1`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *CreatePersonalAccessTokenResponse) GetOwnerOk() (*BaseReferenceDto, bool)`
+`func (o *CreatePersonalAccessTokenResponse) GetOwnerOk() (*BaseReferenceDto1, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *CreatePersonalAccessTokenResponse) SetOwner(v BaseReferenceDto)`
+`func (o *CreatePersonalAccessTokenResponse) SetOwner(v BaseReferenceDto1)`
 
 SetOwner sets Owner field to given value.
 

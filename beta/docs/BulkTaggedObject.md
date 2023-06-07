@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ObjectRefs** | Pointer to [**[]BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**ObjectRefs** | Pointer to [**[]BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
 **Tags** | Pointer to **[]string** | Label to be applied to an Object | [optional] 
 **Operation** | Pointer to **string** | If APPEND, tags are appended to the list of tags for the object. A 400 error is returned if this would add duplicate tags to the object.  If MERGE, tags are merged with the existing tags. Duplicate tags are silently ignored. | [optional] [default to "APPEND"]
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetObjectRefs
 
-`func (o *BulkTaggedObject) GetObjectRefs() []BaseReferenceDto`
+`func (o *BulkTaggedObject) GetObjectRefs() []BaseReferenceDto1`
 
 GetObjectRefs returns the ObjectRefs field if non-nil, zero value otherwise.
 
 ### GetObjectRefsOk
 
-`func (o *BulkTaggedObject) GetObjectRefsOk() (*[]BaseReferenceDto, bool)`
+`func (o *BulkTaggedObject) GetObjectRefsOk() (*[]BaseReferenceDto1, bool)`
 
 GetObjectRefsOk returns a tuple with the ObjectRefs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObjectRefs
 
-`func (o *BulkTaggedObject) SetObjectRefs(v []BaseReferenceDto)`
+`func (o *BulkTaggedObject) SetObjectRefs(v []BaseReferenceDto1)`
 
 SetObjectRefs sets ObjectRefs field to given value.
 
