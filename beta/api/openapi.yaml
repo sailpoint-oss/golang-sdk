@@ -10019,6 +10019,8 @@ paths:
           **type**: *eq*
 
           **directConnect**: *eq*
+
+          **category**: *eq*
         example: directConnect eq "true"
         in: query
         name: filters
@@ -10172,6 +10174,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:connector-source-config:read
       summary: Gets connector list
       tags:
       - Connectors
