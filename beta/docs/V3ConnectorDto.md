@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The connector name | [optional] 
 **Type** | Pointer to **string** | The connector type | [optional] 
 **ScriptName** | Pointer to **string** | The connector script name | [optional] 
-**DirectConnect** | Pointer to **bool** | true if the source is a direct connect source | [optional] 
+**Features** | Pointer to **[]string** | The list of features supported by the connector | [optional] 
+**DirectConnect** | Pointer to **bool** | true if the source is a direct connect source | [optional] [default to false]
 **ConnectorMetadata** | Pointer to **map[string]interface{}** | Object containing metadata pertinent to the UI to be used | [optional] 
 **Status** | Pointer to **string** | The connector status | [optional] 
 
@@ -105,6 +106,41 @@ SetScriptName sets ScriptName field to given value.
 
 HasScriptName returns a boolean if a field has been set.
 
+### GetFeatures
+
+`func (o *V3ConnectorDto) GetFeatures() []string`
+
+GetFeatures returns the Features field if non-nil, zero value otherwise.
+
+### GetFeaturesOk
+
+`func (o *V3ConnectorDto) GetFeaturesOk() (*[]string, bool)`
+
+GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatures
+
+`func (o *V3ConnectorDto) SetFeatures(v []string)`
+
+SetFeatures sets Features field to given value.
+
+### HasFeatures
+
+`func (o *V3ConnectorDto) HasFeatures() bool`
+
+HasFeatures returns a boolean if a field has been set.
+
+### SetFeaturesNil
+
+`func (o *V3ConnectorDto) SetFeaturesNil(b bool)`
+
+ SetFeaturesNil sets the value for Features to be an explicit nil
+
+### UnsetFeatures
+`func (o *V3ConnectorDto) UnsetFeatures()`
+
+UnsetFeatures ensures that no value is present for Features, not even an explicit nil
 ### GetDirectConnect
 
 `func (o *V3ConnectorDto) GetDirectConnect() bool`

@@ -10021,6 +10021,8 @@ paths:
           **directConnect**: *eq*
 
           **category**: *eq*
+
+          **features**: *ca*
         example: directConnect eq "true"
         in: query
         name: filters
@@ -48075,6 +48077,11 @@ components:
       type: object
     V3ConnectorDto:
       example:
+        features:
+        - PROVISIONING
+        - SYNC_PROVISIONING
+        - SEARCH
+        - UNSTRUCTURED_TARGETS
         name: name
         scriptName: servicenow
         directConnect: true
@@ -48097,7 +48104,19 @@ components:
           description: The connector script name
           example: servicenow
           type: string
+        features:
+          description: The list of features supported by the connector
+          example:
+          - PROVISIONING
+          - SYNC_PROVISIONING
+          - SEARCH
+          - UNSTRUCTURED_TARGETS
+          items:
+            type: string
+          nullable: true
+          type: array
         directConnect:
+          default: false
           description: true if the source is a direct connect source
           example: true
           type: boolean

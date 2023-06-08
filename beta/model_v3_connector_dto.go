@@ -25,6 +25,8 @@ type V3ConnectorDto struct {
 	Type *string `json:"type,omitempty"`
 	// The connector script name
 	ScriptName *string `json:"scriptName,omitempty"`
+	// The list of features supported by the connector
+	Features []string `json:"features,omitempty"`
 	// true if the source is a direct connect source
 	DirectConnect *bool `json:"directConnect,omitempty"`
 	// Object containing metadata pertinent to the UI to be used
@@ -42,6 +44,8 @@ type _V3ConnectorDto V3ConnectorDto
 // will change when the set of required properties is changed
 func NewV3ConnectorDto() *V3ConnectorDto {
 	this := V3ConnectorDto{}
+	var directConnect bool = false
+	this.DirectConnect = &directConnect
 	return &this
 }
 
@@ -50,6 +54,8 @@ func NewV3ConnectorDto() *V3ConnectorDto {
 // but it doesn't guarantee that properties required by API are set
 func NewV3ConnectorDtoWithDefaults() *V3ConnectorDto {
 	this := V3ConnectorDto{}
+	var directConnect bool = false
+	this.DirectConnect = &directConnect
 	return &this
 }
 
@@ -147,6 +153,39 @@ func (o *V3ConnectorDto) HasScriptName() bool {
 // SetScriptName gets a reference to the given string and assigns it to the ScriptName field.
 func (o *V3ConnectorDto) SetScriptName(v string) {
 	o.ScriptName = &v
+}
+
+// GetFeatures returns the Features field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *V3ConnectorDto) GetFeatures() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.Features
+}
+
+// GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *V3ConnectorDto) GetFeaturesOk() ([]string, bool) {
+	if o == nil || isNil(o.Features) {
+		return nil, false
+	}
+	return o.Features, true
+}
+
+// HasFeatures returns a boolean if a field has been set.
+func (o *V3ConnectorDto) HasFeatures() bool {
+	if o != nil && isNil(o.Features) {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatures gets a reference to the given []string and assigns it to the Features field.
+func (o *V3ConnectorDto) SetFeatures(v []string) {
+	o.Features = v
 }
 
 // GetDirectConnect returns the DirectConnect field value if set, zero value otherwise.
@@ -264,6 +303,9 @@ func (o V3ConnectorDto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ScriptName) {
 		toSerialize["scriptName"] = o.ScriptName
 	}
+	if o.Features != nil {
+		toSerialize["features"] = o.Features
+	}
 	if !isNil(o.DirectConnect) {
 		toSerialize["directConnect"] = o.DirectConnect
 	}
@@ -294,6 +336,7 @@ func (o *V3ConnectorDto) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "scriptName")
+		delete(additionalProperties, "features")
 		delete(additionalProperties, "directConnect")
 		delete(additionalProperties, "connectorMetadata")
 		delete(additionalProperties, "status")
