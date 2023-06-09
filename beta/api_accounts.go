@@ -26,11 +26,11 @@ type AccountsApiService service
 type ApiCreateAccountRequest struct {
 	ctx context.Context
 	ApiService *AccountsApiService
-	accountAttributes *AccountAttributes
+	accountAttributesCreate *AccountAttributesCreate
 }
 
-func (r ApiCreateAccountRequest) AccountAttributes(accountAttributes AccountAttributes) ApiCreateAccountRequest {
-	r.accountAttributes = &accountAttributes
+func (r ApiCreateAccountRequest) AccountAttributesCreate(accountAttributesCreate AccountAttributesCreate) ApiCreateAccountRequest {
+	r.accountAttributesCreate = &accountAttributesCreate
 	return r
 }
 
@@ -42,6 +42,7 @@ func (r ApiCreateAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 CreateAccount Create Account
 
 This API submits an account creation task and returns the task ID.  
+The `sourceId` where this account will be created must be included in the `attributes` object.
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -74,8 +75,8 @@ func (a *AccountsApiService) CreateAccountExecute(r ApiCreateAccountRequest) (*A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.accountAttributes == nil {
-		return localVarReturnValue, nil, reportError("accountAttributes is required and must be specified")
+	if r.accountAttributesCreate == nil {
+		return localVarReturnValue, nil, reportError("accountAttributesCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -96,7 +97,7 @@ func (a *AccountsApiService) CreateAccountExecute(r ApiCreateAccountRequest) (*A
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.accountAttributes
+	localVarPostBody = r.accountAttributesCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1757,6 +1758,7 @@ type ApiListAccountsRequest struct {
 	offset *int32
 	count *bool
 	filters *string
+	sorters *string
 }
 
 // Determines whether Slim, or increased level of detail is provided for each account in the returned list. FULL is the default behavior.
@@ -1789,7 +1791,13 @@ func (r ApiListAccountsRequest) Filters(filters string) ApiListAccountsRequest {
 	return r
 }
 
-func (r ApiListAccountsRequest) Execute() ([]SlimAccount, *http.Response, error) {
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **created**, **modified**
+func (r ApiListAccountsRequest) Sorters(sorters string) ApiListAccountsRequest {
+	r.sorters = &sorters
+	return r
+}
+
+func (r ApiListAccountsRequest) Execute() ([]ListAccounts200ResponseInner, *http.Response, error) {
 	return r.ApiService.ListAccountsExecute(r)
 }
 
@@ -1810,13 +1818,13 @@ func (a *AccountsApiService) ListAccounts(ctx context.Context) ApiListAccountsRe
 }
 
 // Execute executes the request
-//  @return []SlimAccount
-func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]SlimAccount, *http.Response, error) {
+//  @return []ListAccounts200ResponseInner
+func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]ListAccounts200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []SlimAccount
+		localVarReturnValue  []ListAccounts200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ListAccounts")
@@ -1844,6 +1852,9 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]Sl
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+	}
+	if r.sorters != nil {
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

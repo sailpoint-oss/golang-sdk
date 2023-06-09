@@ -112,6 +112,8 @@ docs/AccountAggregationsApi.md
 docs/AccountAllOf.md
 docs/AccountAttributes.md
 docs/AccountAttributesChanged.md
+docs/AccountAttributesCreate.md
+docs/AccountAttributesCreateAttributes.md
 docs/AccountCorrelated.md
 docs/AccountRequestInfo.md
 docs/AccountStatusChanged.md
@@ -266,6 +268,8 @@ docs/FormDetails.md
 docs/FormItem.md
 docs/FormItemDetails.md
 docs/ForwardApprovalDto.md
+docs/FullAccount.md
+docs/FullAccountAllOf.md
 docs/Fullcampaign.md
 docs/FullcampaignAllOf.md
 docs/FullcampaignAllOfFilter.md
@@ -345,6 +349,7 @@ docs/LifecycleStateDto.md
 docs/LifecycleStatesApi.md
 docs/ListAccessProfiles401Response.md
 docs/ListAccessProfiles429Response.md
+docs/ListAccounts200ResponseInner.md
 docs/ListCompleteWorkflowLibrary200ResponseInner.md
 docs/ListIdentityAccessItems200ResponseInner.md
 docs/LocaleOrigin.md
@@ -815,6 +820,8 @@ model_account_aggregation_status.go
 model_account_all_of.go
 model_account_attributes.go
 model_account_attributes_changed.go
+model_account_attributes_create.go
+model_account_attributes_create_attributes.go
 model_account_correlated.go
 model_account_request_info.go
 model_account_status_changed.go
@@ -962,6 +969,8 @@ model_form_details.go
 model_form_item.go
 model_form_item_details.go
 model_forward_approval_dto.go
+model_full_account.go
+model_full_account_all_of.go
 model_fullcampaign.go
 model_fullcampaign_all_of.go
 model_fullcampaign_all_of_filter.go
@@ -1031,6 +1040,7 @@ model_lifecycle_state.go
 model_lifecycle_state_dto.go
 model_list_access_profiles_401_response.go
 model_list_access_profiles_429_response.go
+model_list_accounts_200_response_inner.go
 model_list_complete_workflow_library_200_response_inner.go
 model_list_identity_access_items_200_response_inner.go
 model_locale_origin.go

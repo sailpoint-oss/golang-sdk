@@ -42,6 +42,7 @@ func (r ApiCreateAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 CreateAccount Create Account
 
 This API submits an account creation task and returns the task ID.  
+The `sourceId` where this account will be created must be included in the `attributes` object.
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1092,6 +1093,7 @@ type ApiListAccountsRequest struct {
 	offset *int32
 	count *bool
 	filters *string
+	sorters *string
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -1115,6 +1117,12 @@ func (r ApiListAccountsRequest) Count(count bool) ApiListAccountsRequest {
 // Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **identityId**: *eq*  **name**: *eq, in*  **nativeIdentity**: *eq, in*  **sourceId**: *eq, in*  **uncorrelated**: *eq*
 func (r ApiListAccountsRequest) Filters(filters string) ApiListAccountsRequest {
 	r.filters = &filters
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **created**, **modified**
+func (r ApiListAccountsRequest) Sorters(sorters string) ApiListAccountsRequest {
+	r.sorters = &sorters
 	return r
 }
 
@@ -1170,6 +1178,9 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]Ac
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+	}
+	if r.sorters != nil {
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

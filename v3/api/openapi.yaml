@@ -2845,6 +2845,17 @@ paths:
         required: false
         schema:
           type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id**, **name**, **created**, **modified**
+        example: "id,name"
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
       responses:
         "200":
           content:
@@ -2918,7 +2929,9 @@ paths:
       - Accounts
     post:
       description: "This API submits an account creation task and returns the task\
-        \ ID.  \nA token with ORG_ADMIN authority is required to call this API."
+        \ ID.  \nThe `sourceId` where this account will be created must be included\
+        \ in the `attributes` object.\nA token with ORG_ADMIN authority is required\
+        \ to call this API."
       operationId: createAccount
       requestBody:
         content:

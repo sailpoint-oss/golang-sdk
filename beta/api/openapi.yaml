@@ -4019,6 +4019,17 @@ paths:
         name: filters
         schema:
           type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **id**, **name**, **created**, **modified**
+        example: "id,name"
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
       responses:
         "200":
           content:
@@ -4069,7 +4080,7 @@ paths:
                     uuid: "{e4218fa4-da52-4bb0-aa41-d2dcc08a7ad8}"
               schema:
                 items:
-                  $ref: '#/components/schemas/SlimAccount'
+                  $ref: '#/components/schemas/listAccounts_200_response_inner'
                 type: array
           description: List of account objects
         "400":
@@ -4137,13 +4148,15 @@ paths:
       - Accounts
     post:
       description: "This API submits an account creation task and returns the task\
-        \ ID.  \nA token with ORG_ADMIN authority is required to call this API."
+        \ ID.  \nThe `sourceId` where this account will be created must be included\
+        \ in the `attributes` object.\nA token with ORG_ADMIN authority is required\
+        \ to call this API."
       operationId: createAccount
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AccountAttributes'
+              $ref: '#/components/schemas/AccountAttributesCreate'
         required: true
       responses:
         "202":
@@ -47175,6 +47188,43 @@ components:
       - $ref: '#/components/schemas/SlimAccount_allOf'
       title: Slim Account
       type: object
+    FullAccount:
+      allOf:
+      - $ref: '#/components/schemas/SlimAccount'
+      - $ref: '#/components/schemas/FullAccount_allOf'
+      title: Full Account
+      type: object
+    AccountAttributesCreate:
+      example:
+        attributes:
+          sourceId: 34bfcbe116c9407464af37acbaf7a4dc
+          city: Austin
+          displayName: John Doe
+          userName: jdoe
+          sAMAccountName: jDoe
+          mail: john.doe@sailpoint.com
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AccountAttributesCreate_attributes'
+      required:
+      - attributes
+      type: object
+    AccountsAsyncResult:
+      description: Accounts async response containing details on started async process
+      example:
+        id: 2c91808474683da6017468693c260195
+      properties:
+        id:
+          description: id of the task
+          example: 2c91808474683da6017468693c260195
+          type: string
+      required:
+      - id
+      type: object
+    Account:
+      allOf:
+      - $ref: '#/components/schemas/BaseCommonDto'
+      - $ref: '#/components/schemas/Account_allOf'
     AccountAttributes:
       example:
         attributes:
@@ -47196,22 +47246,6 @@ components:
       required:
       - attributes
       type: object
-    AccountsAsyncResult:
-      description: Accounts async response containing details on started async process
-      example:
-        id: 2c91808474683da6017468693c260195
-      properties:
-        id:
-          description: id of the task
-          example: 2c91808474683da6017468693c260195
-          type: string
-      required:
-      - id
-      type: object
-    Account:
-      allOf:
-      - $ref: '#/components/schemas/BaseCommonDto'
-      - $ref: '#/components/schemas/Account_allOf'
     AccountToggleRequest:
       description: Request used for account enable/disable
       example:
@@ -61097,6 +61131,10 @@ components:
           example: ' Rate Limit Exceeded '
           type: object
       type: object
+    listAccounts_200_response_inner:
+      anyOf:
+      - $ref: '#/components/schemas/SlimAccount'
+      - $ref: '#/components/schemas/FullAccount'
     getActiveCampaigns_200_response_inner:
       oneOf:
       - $ref: '#/components/schemas/slimcampaign'
@@ -62985,6 +63023,45 @@ components:
           type: object
       type: object
       example: null
+    FullAccount_allOf:
+      properties:
+        authoritative:
+          description: Whether this account belongs to an authoritative source
+          example: false
+          type: boolean
+        systemAccount:
+          description: Whether this account is for the IdentityNow source
+          example: false
+          type: boolean
+        uncorrelated:
+          description: True if this account is not correlated to an identity
+          example: false
+          type: boolean
+        features:
+          description: A string list containing the owning source's features
+          example: ENABLE
+          type: string
+      type: object
+      example: null
+    AccountAttributesCreate_attributes:
+      additionalProperties:
+        type: string
+      description: The schema attribute values for the account
+      example:
+        sourceId: 34bfcbe116c9407464af37acbaf7a4dc
+        city: Austin
+        displayName: John Doe
+        userName: jdoe
+        sAMAccountName: jDoe
+        mail: john.doe@sailpoint.com
+      properties:
+        sourceId:
+          description: Target source to create an account
+          example: 34bfcbe116c9407464af37acbaf7a4dc
+          type: string
+      required:
+      - sourceId
+      type: object
     Account_allOf:
       properties:
         sourceId:
