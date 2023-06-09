@@ -54541,25 +54541,7 @@ components:
       type: object
     SodPolicy:
       example:
-        conflictingAccessCriteria:
-          leftCriteria:
-            name: money-in
-            criteriaList:
-            - type: ENTITLEMENT
-              id: 2c9180866166b5b0016167c32ef31a66
-              name: Administrator
-            - type: ENTITLEMENT
-              id: 2c9180866166b5b0016167c32ef31a67
-              name: Administrator
-          rightCriteria:
-            name: money-in
-            criteriaList:
-            - type: ENTITLEMENT
-              id: 2c9180866166b5b0016167c32ef31a66
-              name: Administrator
-            - type: ENTITLEMENT
-              id: 2c9180866166b5b0016167c32ef31a67
-              name: Administrator
+        conflictingAccessCriteria: null
         ownerRef:
           name: William Wilson
           id: 2c91808568c529c60168cca6f90c1313
@@ -54571,10 +54553,7 @@ components:
         description: This policy ensures compliance of xyz
         violationOwnerAssignmentConfig:
           assignmentRule: MANAGER
-          ownerRef:
-            name: William Wilson
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
+          ownerRef: null
         correctionAdvice: "Based on the role of the employee, managers should remove\
           \ access that is not required for their job function."
         type: GENERAL
@@ -54593,6 +54572,7 @@ components:
         id:
           description: Policy id
           example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          readOnly: true
           type: string
         name:
           description: Policy Business Name
@@ -54602,21 +54582,25 @@ components:
           description: The time when this SOD policy is created.
           example: 2020-01-01T00:00:00Z
           format: date-time
+          readOnly: true
           type: string
         modified:
           description: The time when this SOD policy is modified.
           example: 2020-01-01T00:00:00Z
           format: date-time
+          readOnly: true
           type: string
         description:
           description: Optional description of the SOD policy
           example: This policy ensures compliance of xyz
+          nullable: true
           type: string
         ownerRef:
           $ref: '#/components/schemas/BaseReferenceDto_1'
         externalPolicyReference:
           description: Optional External Policy Reference
           example: XYZ policy
+          nullable: true
           type: string
         policyQuery:
           description: Search query of the SOD policy
@@ -54626,11 +54610,13 @@ components:
           description: Optional compensating controls(Mitigating Controls)
           example: Have a manager review the transaction decisions for their "out
             of compliance" employee
+          nullable: true
           type: string
         correctionAdvice:
           description: Optional correction advice
           example: "Based on the role of the employee, managers should remove access\
             \ that is not required for their job function."
+          nullable: true
           type: string
         state:
           description: whether the policy is enforced or not
@@ -54650,15 +54636,18 @@ components:
         creatorId:
           description: Policy's creator ID
           example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          readOnly: true
           type: string
         modifierId:
           description: Policy's modifier ID
           example: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
           nullable: true
+          readOnly: true
           type: string
         violationOwnerAssignmentConfig:
           $ref: '#/components/schemas/ViolationOwnerAssignmentConfig'
         scheduled:
+          default: false
           description: defines whether a policy has been scheduled or not
           example: true
           type: boolean
@@ -54671,7 +54660,7 @@ components:
           example: GENERAL
           type: string
         conflictingAccessCriteria:
-          $ref: '#/components/schemas/ConflictingAccessCriteria'
+          $ref: '#/components/schemas/SodPolicy_conflictingAccessCriteria'
       type: object
     SodPolicySchedule:
       example:
@@ -59370,10 +59359,7 @@ components:
     ViolationOwnerAssignmentConfig:
       example:
         assignmentRule: MANAGER
-        ownerRef:
-          name: William Wilson
-          id: 2c91808568c529c60168cca6f90c1313
-          type: IDENTITY
+        ownerRef: null
       properties:
         assignmentRule:
           description: |-
@@ -59383,31 +59369,14 @@ components:
           enum:
           - MANAGER
           - STATIC
+          - null
           example: MANAGER
+          nullable: true
           type: string
         ownerRef:
-          $ref: '#/components/schemas/BaseReferenceDto_1'
+          $ref: '#/components/schemas/ViolationOwnerAssignmentConfig_ownerRef'
       type: object
     ConflictingAccessCriteria:
-      example:
-        leftCriteria:
-          name: money-in
-          criteriaList:
-          - type: ENTITLEMENT
-            id: 2c9180866166b5b0016167c32ef31a66
-            name: Administrator
-          - type: ENTITLEMENT
-            id: 2c9180866166b5b0016167c32ef31a67
-            name: Administrator
-        rightCriteria:
-          name: money-in
-          criteriaList:
-          - type: ENTITLEMENT
-            id: 2c9180866166b5b0016167c32ef31a66
-            name: Administrator
-          - type: ENTITLEMENT
-            id: 2c9180866166b5b0016167c32ef31a67
-            name: Administrator
       properties:
         leftCriteria:
           $ref: '#/components/schemas/AccessCriteria'
@@ -60538,15 +60507,6 @@ components:
       - message
       type: object
     AccessCriteria:
-      example:
-        name: money-in
-        criteriaList:
-        - type: ENTITLEMENT
-          id: 2c9180866166b5b0016167c32ef31a66
-          name: Administrator
-        - type: ENTITLEMENT
-          id: 2c9180866166b5b0016167c32ef31a67
-          name: Administrator
       properties:
         name:
           description: Business name for the access construct list
@@ -64038,6 +63998,11 @@ components:
       - op
       - path
       type: object
+    SodPolicy_conflictingAccessCriteria:
+      allOf:
+      - $ref: '#/components/schemas/ConflictingAccessCriteria'
+      - nullable: true
+        type: object
     ReportResultReference_allOf:
       properties:
         status:
@@ -64306,6 +64271,11 @@ components:
           example: group
           type: string
       type: object
+    ViolationOwnerAssignmentConfig_ownerRef:
+      allOf:
+      - $ref: '#/components/schemas/BaseReferenceDto_1'
+      - nullable: true
+        type: object
     Schedule_1_days:
       allOf:
       - $ref: '#/components/schemas/Selector'

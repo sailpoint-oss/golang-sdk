@@ -20,8 +20,8 @@ var _ MappedNullable = &ViolationOwnerAssignmentConfig{}
 // ViolationOwnerAssignmentConfig struct for ViolationOwnerAssignmentConfig
 type ViolationOwnerAssignmentConfig struct {
 	// Details about the violations owner. MANAGER - identity's manager STATIC - Governance Group or Identity
-	AssignmentRule *string `json:"assignmentRule,omitempty"`
-	OwnerRef *BaseReferenceDto1 `json:"ownerRef,omitempty"`
+	AssignmentRule NullableString `json:"assignmentRule,omitempty"`
+	OwnerRef *ViolationOwnerAssignmentConfigOwnerRef `json:"ownerRef,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,42 +44,52 @@ func NewViolationOwnerAssignmentConfigWithDefaults() *ViolationOwnerAssignmentCo
 	return &this
 }
 
-// GetAssignmentRule returns the AssignmentRule field value if set, zero value otherwise.
+// GetAssignmentRule returns the AssignmentRule field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ViolationOwnerAssignmentConfig) GetAssignmentRule() string {
-	if o == nil || isNil(o.AssignmentRule) {
+	if o == nil || isNil(o.AssignmentRule.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AssignmentRule
+	return *o.AssignmentRule.Get()
 }
 
 // GetAssignmentRuleOk returns a tuple with the AssignmentRule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ViolationOwnerAssignmentConfig) GetAssignmentRuleOk() (*string, bool) {
-	if o == nil || isNil(o.AssignmentRule) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AssignmentRule, true
+	return o.AssignmentRule.Get(), o.AssignmentRule.IsSet()
 }
 
 // HasAssignmentRule returns a boolean if a field has been set.
 func (o *ViolationOwnerAssignmentConfig) HasAssignmentRule() bool {
-	if o != nil && !isNil(o.AssignmentRule) {
+	if o != nil && o.AssignmentRule.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAssignmentRule gets a reference to the given string and assigns it to the AssignmentRule field.
+// SetAssignmentRule gets a reference to the given NullableString and assigns it to the AssignmentRule field.
 func (o *ViolationOwnerAssignmentConfig) SetAssignmentRule(v string) {
-	o.AssignmentRule = &v
+	o.AssignmentRule.Set(&v)
+}
+// SetAssignmentRuleNil sets the value for AssignmentRule to be an explicit nil
+func (o *ViolationOwnerAssignmentConfig) SetAssignmentRuleNil() {
+	o.AssignmentRule.Set(nil)
+}
+
+// UnsetAssignmentRule ensures that no value is present for AssignmentRule, not even an explicit nil
+func (o *ViolationOwnerAssignmentConfig) UnsetAssignmentRule() {
+	o.AssignmentRule.Unset()
 }
 
 // GetOwnerRef returns the OwnerRef field value if set, zero value otherwise.
-func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() BaseReferenceDto1 {
+func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() ViolationOwnerAssignmentConfigOwnerRef {
 	if o == nil || isNil(o.OwnerRef) {
-		var ret BaseReferenceDto1
+		var ret ViolationOwnerAssignmentConfigOwnerRef
 		return ret
 	}
 	return *o.OwnerRef
@@ -87,7 +97,7 @@ func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() BaseReferenceDto1 {
 
 // GetOwnerRefOk returns a tuple with the OwnerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ViolationOwnerAssignmentConfig) GetOwnerRefOk() (*BaseReferenceDto1, bool) {
+func (o *ViolationOwnerAssignmentConfig) GetOwnerRefOk() (*ViolationOwnerAssignmentConfigOwnerRef, bool) {
 	if o == nil || isNil(o.OwnerRef) {
 		return nil, false
 	}
@@ -103,8 +113,8 @@ func (o *ViolationOwnerAssignmentConfig) HasOwnerRef() bool {
 	return false
 }
 
-// SetOwnerRef gets a reference to the given BaseReferenceDto1 and assigns it to the OwnerRef field.
-func (o *ViolationOwnerAssignmentConfig) SetOwnerRef(v BaseReferenceDto1) {
+// SetOwnerRef gets a reference to the given ViolationOwnerAssignmentConfigOwnerRef and assigns it to the OwnerRef field.
+func (o *ViolationOwnerAssignmentConfig) SetOwnerRef(v ViolationOwnerAssignmentConfigOwnerRef) {
 	o.OwnerRef = &v
 }
 
@@ -118,8 +128,8 @@ func (o ViolationOwnerAssignmentConfig) MarshalJSON() ([]byte, error) {
 
 func (o ViolationOwnerAssignmentConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AssignmentRule) {
-		toSerialize["assignmentRule"] = o.AssignmentRule
+	if o.AssignmentRule.IsSet() {
+		toSerialize["assignmentRule"] = o.AssignmentRule.Get()
 	}
 	if !isNil(o.OwnerRef) {
 		toSerialize["ownerRef"] = o.OwnerRef

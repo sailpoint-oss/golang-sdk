@@ -581,6 +581,7 @@ docs/Slimcampaign.md
 docs/SodExemptCriteria.md
 docs/SodExemptCriteria1.md
 docs/SodPolicy.md
+docs/SodPolicyConflictingAccessCriteria.md
 docs/SodPolicySchedule.md
 docs/SodViolationCheckResult.md
 docs/SodViolationCheckResult1.md
@@ -740,6 +741,7 @@ docs/ViolationContext.md
 docs/ViolationContextPolicy.md
 docs/ViolationContextPolicyAllOf.md
 docs/ViolationOwnerAssignmentConfig.md
+docs/ViolationOwnerAssignmentConfigOwnerRef.md
 docs/ViolationPrediction.md
 docs/VisibilityCriteria.md
 docs/WorkItemForward.md
@@ -1250,6 +1252,7 @@ model_slimcampaign.go
 model_sod_exempt_criteria.go
 model_sod_exempt_criteria_1.go
 model_sod_policy.go
+model_sod_policy_conflicting_access_criteria.go
 model_sod_policy_schedule.go
 model_sod_violation_check_result.go
 model_sod_violation_check_result_1.go
@@ -1405,6 +1408,7 @@ model_violation_context.go
 model_violation_context_policy.go
 model_violation_context_policy_all_of.go
 model_violation_owner_assignment_config.go
+model_violation_owner_assignment_config_owner_ref.go
 model_violation_prediction.go
 model_visibility_criteria.go
 model_work_item_forward.go

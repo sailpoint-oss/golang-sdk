@@ -4,24 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Policy id | [optional] 
+**Id** | Pointer to **string** | Policy id | [optional] [readonly] 
 **Name** | Pointer to **string** | Policy Business Name | [optional] 
-**Created** | Pointer to **time.Time** | The time when this SOD policy is created. | [optional] 
-**Modified** | Pointer to **time.Time** | The time when this SOD policy is modified. | [optional] 
-**Description** | Pointer to **string** | Optional description of the SOD policy | [optional] 
+**Created** | Pointer to **time.Time** | The time when this SOD policy is created. | [optional] [readonly] 
+**Modified** | Pointer to **time.Time** | The time when this SOD policy is modified. | [optional] [readonly] 
+**Description** | Pointer to **NullableString** | Optional description of the SOD policy | [optional] 
 **OwnerRef** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
-**ExternalPolicyReference** | Pointer to **string** | Optional External Policy Reference | [optional] 
+**ExternalPolicyReference** | Pointer to **NullableString** | Optional External Policy Reference | [optional] 
 **PolicyQuery** | Pointer to **string** | Search query of the SOD policy | [optional] 
-**CompensatingControls** | Pointer to **string** | Optional compensating controls(Mitigating Controls) | [optional] 
-**CorrectionAdvice** | Pointer to **string** | Optional correction advice | [optional] 
+**CompensatingControls** | Pointer to **NullableString** | Optional compensating controls(Mitigating Controls) | [optional] 
+**CorrectionAdvice** | Pointer to **NullableString** | Optional correction advice | [optional] 
 **State** | Pointer to **string** | whether the policy is enforced or not | [optional] 
 **Tags** | Pointer to **[]string** | tags for this policy object | [optional] 
-**CreatorId** | Pointer to **string** | Policy&#39;s creator ID | [optional] 
-**ModifierId** | Pointer to **NullableString** | Policy&#39;s modifier ID | [optional] 
+**CreatorId** | Pointer to **string** | Policy&#39;s creator ID | [optional] [readonly] 
+**ModifierId** | Pointer to **NullableString** | Policy&#39;s modifier ID | [optional] [readonly] 
 **ViolationOwnerAssignmentConfig** | Pointer to [**ViolationOwnerAssignmentConfig**](ViolationOwnerAssignmentConfig.md) |  | [optional] 
-**Scheduled** | Pointer to **bool** | defines whether a policy has been scheduled or not | [optional] 
+**Scheduled** | Pointer to **bool** | defines whether a policy has been scheduled or not | [optional] [default to false]
 **Type** | Pointer to **string** | whether a policy is query based or conflicting access based | [optional] [default to "GENERAL"]
-**ConflictingAccessCriteria** | Pointer to [**ConflictingAccessCriteria**](ConflictingAccessCriteria.md) |  | [optional] 
+**ConflictingAccessCriteria** | Pointer to [**SodPolicyConflictingAccessCriteria**](SodPolicyConflictingAccessCriteria.md) |  | [optional] 
 
 ## Methods
 
@@ -167,6 +167,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *SodPolicy) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *SodPolicy) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetOwnerRef
 
 `func (o *SodPolicy) GetOwnerRef() BaseReferenceDto1`
@@ -217,6 +227,16 @@ SetExternalPolicyReference sets ExternalPolicyReference field to given value.
 
 HasExternalPolicyReference returns a boolean if a field has been set.
 
+### SetExternalPolicyReferenceNil
+
+`func (o *SodPolicy) SetExternalPolicyReferenceNil(b bool)`
+
+ SetExternalPolicyReferenceNil sets the value for ExternalPolicyReference to be an explicit nil
+
+### UnsetExternalPolicyReference
+`func (o *SodPolicy) UnsetExternalPolicyReference()`
+
+UnsetExternalPolicyReference ensures that no value is present for ExternalPolicyReference, not even an explicit nil
 ### GetPolicyQuery
 
 `func (o *SodPolicy) GetPolicyQuery() string`
@@ -267,6 +287,16 @@ SetCompensatingControls sets CompensatingControls field to given value.
 
 HasCompensatingControls returns a boolean if a field has been set.
 
+### SetCompensatingControlsNil
+
+`func (o *SodPolicy) SetCompensatingControlsNil(b bool)`
+
+ SetCompensatingControlsNil sets the value for CompensatingControls to be an explicit nil
+
+### UnsetCompensatingControls
+`func (o *SodPolicy) UnsetCompensatingControls()`
+
+UnsetCompensatingControls ensures that no value is present for CompensatingControls, not even an explicit nil
 ### GetCorrectionAdvice
 
 `func (o *SodPolicy) GetCorrectionAdvice() string`
@@ -292,6 +322,16 @@ SetCorrectionAdvice sets CorrectionAdvice field to given value.
 
 HasCorrectionAdvice returns a boolean if a field has been set.
 
+### SetCorrectionAdviceNil
+
+`func (o *SodPolicy) SetCorrectionAdviceNil(b bool)`
+
+ SetCorrectionAdviceNil sets the value for CorrectionAdvice to be an explicit nil
+
+### UnsetCorrectionAdvice
+`func (o *SodPolicy) UnsetCorrectionAdvice()`
+
+UnsetCorrectionAdvice ensures that no value is present for CorrectionAdvice, not even an explicit nil
 ### GetState
 
 `func (o *SodPolicy) GetState() string`
@@ -479,20 +519,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetConflictingAccessCriteria
 
-`func (o *SodPolicy) GetConflictingAccessCriteria() ConflictingAccessCriteria`
+`func (o *SodPolicy) GetConflictingAccessCriteria() SodPolicyConflictingAccessCriteria`
 
 GetConflictingAccessCriteria returns the ConflictingAccessCriteria field if non-nil, zero value otherwise.
 
 ### GetConflictingAccessCriteriaOk
 
-`func (o *SodPolicy) GetConflictingAccessCriteriaOk() (*ConflictingAccessCriteria, bool)`
+`func (o *SodPolicy) GetConflictingAccessCriteriaOk() (*SodPolicyConflictingAccessCriteria, bool)`
 
 GetConflictingAccessCriteriaOk returns a tuple with the ConflictingAccessCriteria field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConflictingAccessCriteria
 
-`func (o *SodPolicy) SetConflictingAccessCriteria(v ConflictingAccessCriteria)`
+`func (o *SodPolicy) SetConflictingAccessCriteria(v SodPolicyConflictingAccessCriteria)`
 
 SetConflictingAccessCriteria sets ConflictingAccessCriteria field to given value.
 
