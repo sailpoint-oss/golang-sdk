@@ -58,6 +58,8 @@ type Campaign struct {
 	CompletedCertifications *int32 `json:"completedCertifications,omitempty"`
 	// A list of sources in the campaign that contain \\\"orphan entitlements\\\" (entitlements without a corresponding Managed Attribute). An empty list indicates the campaign has no orphan entitlements. Null indicates there may be unknown orphan entitlements in the campaign (the campaign was created before this feature was implemented).
 	SourcesWithOrphanEntitlements []FullcampaignAllOfSourcesWithOrphanEntitlements `json:"sourcesWithOrphanEntitlements,omitempty"`
+	// Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions.
+	MandatoryCommentRequirement *string `json:"mandatoryCommentRequirement,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -747,6 +749,38 @@ func (o *Campaign) SetSourcesWithOrphanEntitlements(v []FullcampaignAllOfSources
 	o.SourcesWithOrphanEntitlements = v
 }
 
+// GetMandatoryCommentRequirement returns the MandatoryCommentRequirement field value if set, zero value otherwise.
+func (o *Campaign) GetMandatoryCommentRequirement() string {
+	if o == nil || isNil(o.MandatoryCommentRequirement) {
+		var ret string
+		return ret
+	}
+	return *o.MandatoryCommentRequirement
+}
+
+// GetMandatoryCommentRequirementOk returns a tuple with the MandatoryCommentRequirement field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Campaign) GetMandatoryCommentRequirementOk() (*string, bool) {
+	if o == nil || isNil(o.MandatoryCommentRequirement) {
+		return nil, false
+	}
+	return o.MandatoryCommentRequirement, true
+}
+
+// HasMandatoryCommentRequirement returns a boolean if a field has been set.
+func (o *Campaign) HasMandatoryCommentRequirement() bool {
+	if o != nil && !isNil(o.MandatoryCommentRequirement) {
+		return true
+	}
+
+	return false
+}
+
+// SetMandatoryCommentRequirement gets a reference to the given string and assigns it to the MandatoryCommentRequirement field.
+func (o *Campaign) SetMandatoryCommentRequirement(v string) {
+	o.MandatoryCommentRequirement = &v
+}
+
 func (o Campaign) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -798,6 +832,9 @@ func (o Campaign) ToMap() (map[string]interface{}, error) {
 	// skip: totalCertifications is readOnly
 	// skip: completedCertifications is readOnly
 	// skip: sourcesWithOrphanEntitlements is readOnly
+	if !isNil(o.MandatoryCommentRequirement) {
+		toSerialize["mandatoryCommentRequirement"] = o.MandatoryCommentRequirement
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -837,6 +874,7 @@ func (o *Campaign) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "totalCertifications")
 		delete(additionalProperties, "completedCertifications")
 		delete(additionalProperties, "sourcesWithOrphanEntitlements")
+		delete(additionalProperties, "mandatoryCommentRequirement")
 		o.AdditionalProperties = additionalProperties
 	}
 

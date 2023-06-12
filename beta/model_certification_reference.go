@@ -21,8 +21,6 @@ var _ MappedNullable = &CertificationReference{}
 type CertificationReference struct {
 	// The type of object that the reviewer is.
 	Type map[string]interface{} `json:"type,omitempty"`
-	// The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
-	CorrelatedStatus map[string]interface{} `json:"correlatedStatus,omitempty"`
 	// ID of the object to which this reference applies
 	Id *string `json:"id,omitempty"`
 	// Human-readable display name of the object to which this reference applies
@@ -80,38 +78,6 @@ func (o *CertificationReference) HasType() bool {
 // SetType gets a reference to the given map[string]interface{} and assigns it to the Type field.
 func (o *CertificationReference) SetType(v map[string]interface{}) {
 	o.Type = v
-}
-
-// GetCorrelatedStatus returns the CorrelatedStatus field value if set, zero value otherwise.
-func (o *CertificationReference) GetCorrelatedStatus() map[string]interface{} {
-	if o == nil || isNil(o.CorrelatedStatus) {
-		var ret map[string]interface{}
-		return ret
-	}
-	return o.CorrelatedStatus
-}
-
-// GetCorrelatedStatusOk returns a tuple with the CorrelatedStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CertificationReference) GetCorrelatedStatusOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.CorrelatedStatus) {
-		return map[string]interface{}{}, false
-	}
-	return o.CorrelatedStatus, true
-}
-
-// HasCorrelatedStatus returns a boolean if a field has been set.
-func (o *CertificationReference) HasCorrelatedStatus() bool {
-	if o != nil && !isNil(o.CorrelatedStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetCorrelatedStatus gets a reference to the given map[string]interface{} and assigns it to the CorrelatedStatus field.
-func (o *CertificationReference) SetCorrelatedStatus(v map[string]interface{}) {
-	o.CorrelatedStatus = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -223,9 +189,6 @@ func (o CertificationReference) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.CorrelatedStatus) {
-		toSerialize["correlatedStatus"] = o.CorrelatedStatus
-	}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -254,7 +217,6 @@ func (o *CertificationReference) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "correlatedStatus")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "reviewer")

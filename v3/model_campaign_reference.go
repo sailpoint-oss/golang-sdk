@@ -29,6 +29,10 @@ type CampaignReference struct {
 	CampaignType string `json:"campaignType"`
 	// The description of the campaign set by the admin who created it.
 	Description NullableString `json:"description"`
+	// The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
+	CorrelatedStatus map[string]interface{} `json:"correlatedStatus"`
+	// Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions.
+	MandatoryCommentRequirement string `json:"mandatoryCommentRequirement"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -38,13 +42,15 @@ type _CampaignReference CampaignReference
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignReference(id string, name string, type_ string, campaignType string, description NullableString) *CampaignReference {
+func NewCampaignReference(id string, name string, type_ string, campaignType string, description NullableString, correlatedStatus map[string]interface{}, mandatoryCommentRequirement string) *CampaignReference {
 	this := CampaignReference{}
 	this.Id = id
 	this.Name = name
 	this.Type = type_
 	this.CampaignType = campaignType
 	this.Description = description
+	this.CorrelatedStatus = correlatedStatus
+	this.MandatoryCommentRequirement = mandatoryCommentRequirement
 	return &this
 }
 
@@ -178,6 +184,54 @@ func (o *CampaignReference) SetDescription(v string) {
 	o.Description.Set(&v)
 }
 
+// GetCorrelatedStatus returns the CorrelatedStatus field value
+func (o *CampaignReference) GetCorrelatedStatus() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.CorrelatedStatus
+}
+
+// GetCorrelatedStatusOk returns a tuple with the CorrelatedStatus field value
+// and a boolean to check if the value has been set.
+func (o *CampaignReference) GetCorrelatedStatusOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return map[string]interface{}{}, false
+	}
+	return o.CorrelatedStatus, true
+}
+
+// SetCorrelatedStatus sets field value
+func (o *CampaignReference) SetCorrelatedStatus(v map[string]interface{}) {
+	o.CorrelatedStatus = v
+}
+
+// GetMandatoryCommentRequirement returns the MandatoryCommentRequirement field value
+func (o *CampaignReference) GetMandatoryCommentRequirement() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.MandatoryCommentRequirement
+}
+
+// GetMandatoryCommentRequirementOk returns a tuple with the MandatoryCommentRequirement field value
+// and a boolean to check if the value has been set.
+func (o *CampaignReference) GetMandatoryCommentRequirementOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MandatoryCommentRequirement, true
+}
+
+// SetMandatoryCommentRequirement sets field value
+func (o *CampaignReference) SetMandatoryCommentRequirement(v string) {
+	o.MandatoryCommentRequirement = v
+}
+
 func (o CampaignReference) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -193,6 +247,8 @@ func (o CampaignReference) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	toSerialize["campaignType"] = o.CampaignType
 	toSerialize["description"] = o.Description.Get()
+	toSerialize["correlatedStatus"] = o.CorrelatedStatus
+	toSerialize["mandatoryCommentRequirement"] = o.MandatoryCommentRequirement
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -216,6 +272,8 @@ func (o *CampaignReference) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "campaignType")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "correlatedStatus")
+		delete(additionalProperties, "mandatoryCommentRequirement")
 		o.AdditionalProperties = additionalProperties
 	}
 

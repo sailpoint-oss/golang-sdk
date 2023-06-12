@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **TotalCertifications** | Pointer to **int32** | The total number of certifications in this campaign. | [optional] [readonly] 
 **CompletedCertifications** | Pointer to **int32** | The number of completed certifications in this campaign. | [optional] [readonly] 
 **SourcesWithOrphanEntitlements** | Pointer to [**[]FullcampaignAllOfSourcesWithOrphanEntitlements**](FullcampaignAllOfSourcesWithOrphanEntitlements.md) | A list of sources in the campaign that contain \\\&quot;orphan entitlements\\\&quot; (entitlements without a corresponding Managed Attribute). An empty list indicates the campaign has no orphan entitlements. Null indicates there may be unknown orphan entitlements in the campaign (the campaign was created before this feature was implemented). | [optional] [readonly] 
+**MandatoryCommentRequirement** | Pointer to **string** | Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions. | [optional] 
 
 ## Methods
 
@@ -554,6 +555,31 @@ SetSourcesWithOrphanEntitlements sets SourcesWithOrphanEntitlements field to giv
 `func (o *GetActiveCampaigns200ResponseInner) HasSourcesWithOrphanEntitlements() bool`
 
 HasSourcesWithOrphanEntitlements returns a boolean if a field has been set.
+
+### GetMandatoryCommentRequirement
+
+`func (o *GetActiveCampaigns200ResponseInner) GetMandatoryCommentRequirement() string`
+
+GetMandatoryCommentRequirement returns the MandatoryCommentRequirement field if non-nil, zero value otherwise.
+
+### GetMandatoryCommentRequirementOk
+
+`func (o *GetActiveCampaigns200ResponseInner) GetMandatoryCommentRequirementOk() (*string, bool)`
+
+GetMandatoryCommentRequirementOk returns a tuple with the MandatoryCommentRequirement field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMandatoryCommentRequirement
+
+`func (o *GetActiveCampaigns200ResponseInner) SetMandatoryCommentRequirement(v string)`
+
+SetMandatoryCommentRequirement sets MandatoryCommentRequirement field to given value.
+
+### HasMandatoryCommentRequirement
+
+`func (o *GetActiveCampaigns200ResponseInner) HasMandatoryCommentRequirement() bool`
+
+HasMandatoryCommentRequirement returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

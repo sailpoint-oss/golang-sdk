@@ -43512,6 +43512,7 @@ components:
         totalCertifications: 0
         completedCertifications: 0
         sourcesWithOrphanEntitlements: null
+        mandatoryCommentRequirement: NO_DECISIONS
       - id: 1be8fc1103914bf0a4e14e316b6a7b7c
         name: Manager Review
         description: A review of everyone's access by their manager.
@@ -43535,6 +43536,7 @@ components:
         totalCertifications: 5
         completedCertifications: 0
         sourcesWithOrphanEntitlements: []
+        mandatoryCommentRequirement: NO_DECISIONS
       - id: 7e1a731e3fb845cfbe58112ba4673ee4
         name: Search Campaign
         description: Search Campaign for Identities
@@ -43567,6 +43569,7 @@ components:
         totalCertifications: 6
         completedCertifications: 0
         sourcesWithOrphanEntitlements: []
+        mandatoryCommentRequirement: NO_DECISIONS
       - id: ad3cf3dd50394b1bad646de4bc51b999
         name: Source Owner Campaign
         description: Example for Source Owner Campaign
@@ -43593,6 +43596,7 @@ components:
         completedCertifications: 0
         sourcesWithOrphanEntitlements: []
         correlatedStatus: CORRELATED
+        mandatoryCommentRequirement: NO_DECISIONS
     CreateCampaignManager:
       value:
         name: Manager Review
@@ -43605,6 +43609,7 @@ components:
         filter:
           type: CAMPAIGN_FILTER
           id: 0c46fb26c6b20967a55517ee90d15b93
+        mandatoryCommentRequirement: NO_DECISIONS
     CreateCampaignSearch:
       value:
         name: Search Campaign
@@ -43620,6 +43625,7 @@ components:
         searchCampaignInfo:
           type: ACCESS
           query: user
+        mandatoryCommentRequirement: NO_DECISIONS
     CreateCampaignSourceOwner:
       value:
         name: Source Owner
@@ -43636,6 +43642,7 @@ components:
           sourceIds:
           - 612b31b1a0f04aaf83123bdb80e70db6
         correlatedStatus: CORRELATED
+        mandatoryCommentRequirement: NO_DECISIONS
     CreateCampaignRoleComposition:
       value:
         name: Role Composition Campaign
@@ -43655,6 +43662,7 @@ components:
             name: SailPoint Support
           roleIds:
           - b15d609fc5c8434b865fe552315fda8f
+          mandatoryCommentRequirement: NO_DECISIONS
     FullCampaignManager:
       value:
         id: 5594f43b76804a6980ece5fdccf74be7
@@ -43680,6 +43688,7 @@ components:
         totalCertifications: 0
         completedCertifications: 0
         sourcesWithOrphanEntitlements: null
+        mandatoryCommentRequirement: NO_DECISIONS
     FullCampaignSearch:
       value:
         id: ec041831cb2147778b594feb9d8db44a
@@ -43714,6 +43723,7 @@ components:
         totalCertifications: 0
         completedCertifications: 0
         sourcesWithOrphanEntitlements: null
+        mandatoryCommentRequirement: NO_DECISIONS
     FullCampaignSourceOwner:
       value:
         id: fd7b76ba4ea042de8a9414aa12fc977a
@@ -43742,6 +43752,7 @@ components:
         completedCertifications: 0
         sourcesWithOrphanEntitlements: null
         correlatedStatus: CORRELATED
+        mandatoryCommentRequirement: NO_DECISIONS
     FullCampaignRoleComposition:
       value:
         id: 3b2e2e5821e84127b6d693d41c40623b
@@ -43777,6 +43788,7 @@ components:
         totalCertifications: 0
         completedCertifications: 0
         sourcesWithOrphanEntitlements: null
+        mandatoryCommentRequirement: NO_DECISIONS
     SlimCampaignManager:
       value:
         id: 2c918086719eec070171a7e3355a360a
@@ -43841,6 +43853,7 @@ components:
           emailNotificationEnabled: true
           autoRevokeAllowed: false
           recommendationsEnabled: false
+          mandatoryCommentRequirement: NO_DECISIONS
     CreateCampaignTemplateSearch:
       description: This creates a template that can be used to generate search access
         campaigns. The campaigns will cover the "reporter" access item for across
@@ -43863,6 +43876,7 @@ components:
           emailNotificationEnabled: true
           autoRevokeAllowed: false
           recommendationsEnabled: false
+          mandatoryCommentRequirement: NO_DECISIONS
     CreateCampaignTemplateSourceOwner:
       description: "This creates a template that can be used to generate source owner\
         \ campaigns. The campaigns will have a due date that is one month after their\
@@ -43885,6 +43899,7 @@ components:
           autoRevokeAllowed: false
           recommendationsEnabled: false
           correlatedStatus: CORRELATED
+          mandatoryCommentRequirement: NO_DECISIONS
     CreateCampaignTemplateRoleComposition:
       description: "This creates a template that can be used to generate role composition\
         \ campaigns. The campaigns will have a due date that is two weeks after their\
@@ -43905,6 +43920,7 @@ components:
           emailNotificationEnabled: true
           autoRevokeAllowed: false
           recommendationsEnabled: false
+          mandatoryCommentRequirement: NO_DECISIONS
     CampaignTemplateManager:
       value:
         id: e7dbec99d49349c8951bd84f58a05120
@@ -43944,6 +43960,7 @@ components:
           autoRevokeAllowed: false
           recommendationsEnabled: false
           correlatedStatus: CORRELATED
+          mandatoryCommentRequirement: NO_DECISIONS
     CampaignTemplateSearch:
       value:
         id: b7e6459eed5247ac8b98a5fed81fe27f
@@ -43990,6 +44007,7 @@ components:
           autoRevokeAllowed: false
           recommendationsEnabled: false
           correlatedStatus: CORRELATED
+          mandatoryCommentRequirement: NO_DECISIONS
     CampaignTemplateSourceOwner:
       value:
         id: b9f41bc69e7a4291b9de0630396d030d
@@ -44031,6 +44049,7 @@ components:
           autoRevokeAllowed: false
           recommendationsEnabled: false
           correlatedStatus: CORRELATED
+          mandatoryCommentRequirement: NO_DECISIONS
     CampaignTemplateRoleComposition:
       value:
         id: b9f41bc69e7a4291b9de0630396d030d
@@ -44077,6 +44096,7 @@ components:
           autoRevokeAllowed: false
           recommendationsEnabled: false
           correlatedStatus: CORRELATED
+          mandatoryCommentRequirement: NO_DECISIONS
     evaluateEmpty:
       summary: Evaluate response when no Reassignment Configuration is found
       value:
@@ -47789,9 +47809,11 @@ components:
       example:
         campaignType: MANAGER
         name: Campaign Name
+        mandatoryCommentRequirement: NO_DECISIONS
         description: A description of the campaign
         id: ef38f94347e94562b5bb8424a56397d8
         type: CAMPAIGN
+        correlatedStatus: CORRELATED
       properties:
         id:
           description: The unique ID of the campaign.
@@ -47821,10 +47843,33 @@ components:
           example: A description of the campaign
           nullable: true
           type: string
+        correlatedStatus:
+          description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
+            can be Uncorrelated. An Uncorrelated certification campaign only includes
+            Uncorrelated identities (An identity is uncorrelated if it has no accounts
+            on an authoritative source).
+          enum:
+          - CORRELATED
+          - UNCORRELATED
+          example: CORRELATED
+          type: object
+        mandatoryCommentRequirement:
+          description: "Determines whether comments are required for decisions during\
+            \ certification reviews. You can require comments for all decisions, revoke-only\
+            \ decisions, or no decisions. By default, comments are not required for\
+            \ decisions."
+          enum:
+          - ALL_DECISIONS
+          - REVOKE_ONLY_DECISIONS
+          - NO_DECISIONS
+          example: NO_DECISIONS
+          type: string
       required:
       - campaignType
+      - correlatedStatus
       - description
       - id
+      - mandatoryCommentRequirement
       - name
       - type
       type: object
@@ -60952,16 +60997,6 @@ components:
           - CERTIFICATION
           example: CERTIFICATION
           type: object
-        correlatedStatus:
-          description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
-            can be Uncorrelated. An Uncorrelated certification campaign only includes
-            Uncorrelated identities (An identity is uncorrelated if it has no accounts
-            on an authoritative source).
-          enum:
-          - CORRELATED
-          - UNCORRELATED
-          example: CORRELATED
-          type: object
       type: object
     SodExemptCriteria:
       description: Details of the Entitlement criteria
@@ -61494,6 +61529,17 @@ components:
             $ref: '#/components/schemas/fullcampaign_allOf_sourcesWithOrphanEntitlements'
           readOnly: true
           type: array
+        mandatoryCommentRequirement:
+          description: "Determines whether comments are required for decisions during\
+            \ certification reviews. You can require comments for all decisions, revoke-only\
+            \ decisions, or no decisions. By default, comments are not required for\
+            \ decisions."
+          enum:
+          - ALL_DECISIONS
+          - REVOKE_ONLY_DECISIONS
+          - NO_DECISIONS
+          example: NO_DECISIONS
+          type: string
       type: object
       example: null
     IdentityProfile_allOf_owner:

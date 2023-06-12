@@ -25775,6 +25775,7 @@ components:
         filter:
           type: CAMPAIGN_FILTER
           id: 0c46fb26c6b20967a55517ee90d15b93
+        mandatoryCommentRequirement: NO_DECISIONS
     CreateCampaignSearch:
       value:
         name: Search Campaign
@@ -25790,6 +25791,7 @@ components:
         searchCampaignInfo:
           type: ACCESS
           query: user
+        mandatoryCommentRequirement: NO_DECISIONS
     CreateCampaignSourceOwner:
       value:
         name: Source Owner
@@ -25806,6 +25808,7 @@ components:
           sourceIds:
           - 612b31b1a0f04aaf83123bdb80e70db6
         correlatedStatus: CORRELATED
+        mandatoryCommentRequirement: NO_DECISIONS
     CreateCampaignRoleComposition:
       value:
         name: Role Composition Campaign
@@ -25825,6 +25828,7 @@ components:
             name: SailPoint Support
           roleIds:
           - b15d609fc5c8434b865fe552315fda8f
+        mandatoryCommentRequirement: NO_DECISIONS
     FullCampaignManager:
       value:
         id: 5594f43b76804a6980ece5fdccf74be7
@@ -25850,6 +25854,7 @@ components:
         totalCertifications: 0
         completedCertifications: 0
         sourcesWithOrphanEntitlements: null
+        mandatoryCommentRequirement: NO_DECISIONS
     FullCampaignSearch:
       value:
         id: ec041831cb2147778b594feb9d8db44a
@@ -25884,6 +25889,7 @@ components:
         totalCertifications: 0
         completedCertifications: 0
         sourcesWithOrphanEntitlements: null
+        mandatoryCommentRequirement: NO_DECISIONS
     FullCampaignSourceOwner:
       value:
         id: fd7b76ba4ea042de8a9414aa12fc977a
@@ -25912,6 +25918,7 @@ components:
         completedCertifications: 0
         sourcesWithOrphanEntitlements: null
         correlatedStatus: CORRELATED
+        mandatoryCommentRequirement: NO_DECISIONS
     FullCampaignRoleComposition:
       value:
         id: 3b2e2e5821e84127b6d693d41c40623b
@@ -25947,6 +25954,7 @@ components:
         totalCertifications: 0
         completedCertifications: 0
         sourcesWithOrphanEntitlements: null
+        mandatoryCommentRequirement: NO_DECISIONS
     SlimCampaignManager:
       value:
         id: 2c918086719eec070171a7e3355a360a
@@ -27556,9 +27564,11 @@ components:
         campaign:
           campaignType: MANAGER
           name: Campaign Name
+          mandatoryCommentRequirement: NO_DECISIONS
           description: A description of the campaign
           id: ef38f94347e94562b5bb8424a56397d8
           type: CAMPAIGN
+          correlatedStatus: CORRELATED
         modified: 2018-06-25T20:22:28.104Z
         id: 2c9180835d2e5168015d32f890ca1581
         decisionsMade: 20
@@ -30010,9 +30020,11 @@ components:
         campaign:
           campaignType: MANAGER
           name: Campaign Name
+          mandatoryCommentRequirement: NO_DECISIONS
           description: A description of the campaign
           id: ef38f94347e94562b5bb8424a56397d8
           type: CAMPAIGN
+          correlatedStatus: CORRELATED
         modified: 2018-06-25T20:22:28.104Z
         id: 2c9180835d2e5168015d32f890ca1581
         decisionsMade: 20
@@ -35157,9 +35169,11 @@ components:
       example:
         campaignType: MANAGER
         name: Campaign Name
+        mandatoryCommentRequirement: NO_DECISIONS
         description: A description of the campaign
         id: ef38f94347e94562b5bb8424a56397d8
         type: CAMPAIGN
+        correlatedStatus: CORRELATED
       properties:
         id:
           description: The unique ID of the campaign.
@@ -35189,10 +35203,33 @@ components:
           example: A description of the campaign
           nullable: true
           type: string
+        correlatedStatus:
+          description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
+            can be Uncorrelated. An Uncorrelated certification campaign only includes
+            Uncorrelated identities (An identity is uncorrelated if it has no accounts
+            on an authoritative source).
+          enum:
+          - CORRELATED
+          - UNCORRELATED
+          example: CORRELATED
+          type: object
+        mandatoryCommentRequirement:
+          description: "Determines whether comments are required for decisions during\
+            \ certification reviews. You can require comments for all decisions, revoke-only\
+            \ decisions, or no decisions. By default, comments are not required for\
+            \ decisions."
+          enum:
+          - ALL_DECISIONS
+          - REVOKE_ONLY_DECISIONS
+          - NO_DECISIONS
+          example: NO_DECISIONS
+          type: string
       required:
       - campaignType
+      - correlatedStatus
       - description
       - id
+      - mandatoryCommentRequirement
       - name
       - type
       type: object
@@ -38385,6 +38422,17 @@ components:
             $ref: '#/components/schemas/Campaign_allOf_sourcesWithOrphanEntitlements'
           readOnly: true
           type: array
+        mandatoryCommentRequirement:
+          description: "Determines whether comments are required for decisions during\
+            \ certification reviews. You can require comments for all decisions, revoke-only\
+            \ decisions, or no decisions. By default, comments are not required for\
+            \ decisions."
+          enum:
+          - ALL_DECISIONS
+          - REVOKE_ONLY_DECISIONS
+          - NO_DECISIONS
+          example: NO_DECISIONS
+          type: string
       type: object
       example: null
     EntitlementDocument_allOf:

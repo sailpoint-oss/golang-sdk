@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **map[string]interface{}** | The type of object that the reviewer is. | [optional] 
-**CorrelatedStatus** | Pointer to **map[string]interface{}** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | [optional] 
 **Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
 **Name** | Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
 **Reviewer** | Pointer to [**Reviewer**](Reviewer.md) |  | [optional] 
@@ -53,31 +52,6 @@ SetType sets Type field to given value.
 `func (o *CertificationReference) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
-### GetCorrelatedStatus
-
-`func (o *CertificationReference) GetCorrelatedStatus() map[string]interface{}`
-
-GetCorrelatedStatus returns the CorrelatedStatus field if non-nil, zero value otherwise.
-
-### GetCorrelatedStatusOk
-
-`func (o *CertificationReference) GetCorrelatedStatusOk() (*map[string]interface{}, bool)`
-
-GetCorrelatedStatusOk returns a tuple with the CorrelatedStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCorrelatedStatus
-
-`func (o *CertificationReference) SetCorrelatedStatus(v map[string]interface{})`
-
-SetCorrelatedStatus sets CorrelatedStatus field to given value.
-
-### HasCorrelatedStatus
-
-`func (o *CertificationReference) HasCorrelatedStatus() bool`
-
-HasCorrelatedStatus returns a boolean if a field has been set.
 
 ### GetId
 
