@@ -23,6 +23,7 @@ const (
 	MANAGEDCLIENTTYPE_CCG ManagedClientType = "CCG"
 	MANAGEDCLIENTTYPE_VA ManagedClientType = "VA"
 	MANAGEDCLIENTTYPE_INTERNAL ManagedClientType = "INTERNAL"
+	MANAGEDCLIENTTYPE_IIQ_HARVESTER ManagedClientType = "IIQ_HARVESTER"
 	MANAGEDCLIENTTYPE_NULL ManagedClientType = "null"
 )
 
@@ -31,6 +32,7 @@ var AllowedManagedClientTypeEnumValues = []ManagedClientType{
 	"CCG",
 	"VA",
 	"INTERNAL",
+	"IIQ_HARVESTER",
 	"null",
 }
 

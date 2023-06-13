@@ -9,6 +9,8 @@
 
 * `INTERNAL` (value: `"INTERNAL"`)
 
+* `IIQ_HARVESTER` (value: `"IIQ_HARVESTER"`)
+
 * `NULL` (value: `"null"`)
 
 

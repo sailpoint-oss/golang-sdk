@@ -49699,6 +49699,7 @@ components:
       - CCG
       - VA
       - INTERNAL
+      - IIQ_HARVESTER
       - null
       example: CCG
       nullable: true
