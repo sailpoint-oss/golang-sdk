@@ -1126,7 +1126,6 @@ Class | Method | HTTP request | Description
  - [WorkItems](docs/WorkItems.md)
  - [WorkItemsCount](docs/WorkItemsCount.md)
  - [WorkItemsSummary](docs/WorkItemsSummary.md)
- - [WorkTypeEnum](docs/WorkTypeEnum.md)
  - [Workflow](docs/Workflow.md)
  - [WorkflowAllOf](docs/WorkflowAllOf.md)
  - [WorkflowBody](docs/WorkflowBody.md)

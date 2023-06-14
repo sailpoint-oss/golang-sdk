@@ -52,7 +52,7 @@ func Test_beta_WorkReassignmentApiService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var identityId string
-		var configType WorkTypeEnum
+		var configType ConfigTypeEnum
 
 		resp, httpRes, err := apiClient.BETA.WorkReassignmentApi.GetEvaluateReassignmentConfiguration(context.Background(), identityId, configType).Execute()
 

@@ -20,16 +20,16 @@ type ConfigTypeEnum string
 
 // List of ConfigTypeEnum
 const (
-	CONFIGTYPEENUM_ACCESS_REQUESTS ConfigTypeEnum = "accessRequests"
-	CONFIGTYPEENUM_CERTIFICATIONS ConfigTypeEnum = "certifications"
-	CONFIGTYPEENUM_MANUAL_TASKS ConfigTypeEnum = "manualTasks"
+	CONFIGTYPEENUM_ACCESS_REQUESTS ConfigTypeEnum = "ACCESS_REQUESTS"
+	CONFIGTYPEENUM_CERTIFICATIONS ConfigTypeEnum = "CERTIFICATIONS"
+	CONFIGTYPEENUM_MANUAL_TASKS ConfigTypeEnum = "MANUAL_TASKS"
 )
 
 // All allowed values of ConfigTypeEnum enum
 var AllowedConfigTypeEnumEnumValues = []ConfigTypeEnum{
-	"accessRequests",
-	"certifications",
-	"manualTasks",
+	"ACCESS_REQUESTS",
+	"CERTIFICATIONS",
+	"MANUAL_TASKS",
 }
 
 func (v *ConfigTypeEnum) UnmarshalJSON(src []byte) error {

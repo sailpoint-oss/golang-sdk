@@ -752,7 +752,6 @@ docs/WorkItemsApi.md
 docs/WorkItemsCount.md
 docs/WorkItemsSummary.md
 docs/WorkReassignmentApi.md
-docs/WorkTypeEnum.md
 docs/Workflow.md
 docs/WorkflowAllOf.md
 docs/WorkflowBody.md
@@ -1417,7 +1416,6 @@ model_work_item_type.go
 model_work_items.go
 model_work_items_count.go
 model_work_items_summary.go
-model_work_type_enum.go
 model_workflow.go
 model_workflow_all_of.go
 model_workflow_body.go

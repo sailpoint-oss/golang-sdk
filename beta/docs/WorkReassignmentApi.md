@@ -172,7 +172,7 @@ import (
 
 func main() {
     identityId := "2c91808781a71ddb0181b9090b5c504e" // string | unique identity id
-    configType := openapiclient.WorkTypeEnum("accessRequests") // WorkTypeEnum | Reassignment work type
+    configType := openapiclient.ConfigTypeEnum("ACCESS_REQUESTS") // ConfigTypeEnum | Reassignment work type
     exclusionFilters := []string{"Inner_example"} // []string | Exclusion filters that disable parts of the reassignment evaluation. Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will exclude delegations of self-review reassignments (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **identityId** | **string** | unique identity id | 
-**configType** | [**WorkTypeEnum**](.md) | Reassignment work type | 
+**configType** | [**ConfigTypeEnum**](.md) | Reassignment work type | 
 
 ### Other Parameters
 

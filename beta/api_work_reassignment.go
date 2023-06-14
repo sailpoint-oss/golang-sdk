@@ -337,7 +337,7 @@ type ApiGetEvaluateReassignmentConfigurationRequest struct {
 	ctx context.Context
 	ApiService *WorkReassignmentApiService
 	identityId string
-	configType WorkTypeEnum
+	configType ConfigTypeEnum
 	exclusionFilters *[]string
 }
 
@@ -361,7 +361,7 @@ Evaluates the Reassignment Configuration for an `Identity` to determine if work 
  @param configType Reassignment work type
  @return ApiGetEvaluateReassignmentConfigurationRequest
 */
-func (a *WorkReassignmentApiService) GetEvaluateReassignmentConfiguration(ctx context.Context, identityId string, configType WorkTypeEnum) ApiGetEvaluateReassignmentConfigurationRequest {
+func (a *WorkReassignmentApiService) GetEvaluateReassignmentConfiguration(ctx context.Context, identityId string, configType ConfigTypeEnum) ApiGetEvaluateReassignmentConfigurationRequest {
 	return ApiGetEvaluateReassignmentConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,

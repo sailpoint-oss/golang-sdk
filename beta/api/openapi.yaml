@@ -24559,7 +24559,7 @@ paths:
         name: configType
         required: true
         schema:
-          $ref: '#/components/schemas/WorkTypeEnum'
+          $ref: '#/components/schemas/ConfigTypeEnum'
       - description: "Exclusion filters that disable parts of the reassignment evaluation.\
           \ Possible values are listed below: - `SELF_REVIEW_DELEGATION`: This will\
           \ exclude delegations of self-review reassignments"
@@ -51521,7 +51521,7 @@ components:
     ConfigType:
       description: Type of Reassignment Configuration.
       example:
-        internalName: accessRequests
+        internalName: ACCESS_REQUESTS
         displayName: Access Requests
         description: Reassign Access Request Work Items for an identity
       properties:
@@ -51542,37 +51542,37 @@ components:
         identity
       example:
         identity:
-          name: William.Wilson
+          name: William Wilson
           id: 2c91808380aa05580180aaaaf1940410
         configDetails:
         - endDate: 0001-01-01T00:00:00Z
           auditDetails:
             createdBy:
-              name: William.Wilson
+              name: William Wilson
               id: 2c91808380aa05580180aaaaf1940410
             created: 2022-07-21T11:13:12.345Z
             modified: 2022-07-21T11:13:12.345Z
             modifiedBy:
-              name: William.Wilson
+              name: William Wilson
               id: 2c91808380aa05580180aaaaf1940410
-          configType: accessRequests
+          configType: ACCESS_REQUESTS
           targetIdentity:
-            name: William.Wilson
+            name: William Wilson
             id: 2c91808380aa05580180aaaaf1940410
           startDate: 2022-07-21T11:13:12.345Z
         - endDate: 0001-01-01T00:00:00Z
           auditDetails:
             createdBy:
-              name: William.Wilson
+              name: William Wilson
               id: 2c91808380aa05580180aaaaf1940410
             created: 2022-07-21T11:13:12.345Z
             modified: 2022-07-21T11:13:12.345Z
             modifiedBy:
-              name: William.Wilson
+              name: William Wilson
               id: 2c91808380aa05580180aaaaf1940410
-          configType: accessRequests
+          configType: ACCESS_REQUESTS
           targetIdentity:
-            name: William.Wilson
+            name: William Wilson
             id: 2c91808380aa05580180aaaaf1940410
           startDate: 2022-07-21T11:13:12.345Z
       properties:
@@ -51590,7 +51590,7 @@ components:
       example:
         endDate: 2022-07-30T17:00:00Z
         reassignedFromId: 2c91808781a71ddb0181b9090b5c504e
-        configType: accessRequests
+        configType: ACCESS_REQUESTS
         reassignedToId: 2c91808781a71ddb0181b9090b53504a
         startDate: 2022-07-21T11:13:12.345Z
       properties:
@@ -51622,37 +51622,37 @@ components:
         identity
       example:
         identity:
-          name: William.Wilson
+          name: William Wilson
           id: 2c91808380aa05580180aaaaf1940410
         configDetails:
         - endDate: 0001-01-01T00:00:00Z
           auditDetails:
             createdBy:
-              name: William.Wilson
+              name: William Wilson
               id: 2c91808380aa05580180aaaaf1940410
             created: 2022-07-21T11:13:12.345Z
             modified: 2022-07-21T11:13:12.345Z
             modifiedBy:
-              name: William.Wilson
+              name: William Wilson
               id: 2c91808380aa05580180aaaaf1940410
-          configType: accessRequests
+          configType: ACCESS_REQUESTS
           targetIdentity:
-            name: William.Wilson
+            name: William Wilson
             id: 2c91808380aa05580180aaaaf1940410
           startDate: 2022-07-21T11:13:12.345Z
         - endDate: 0001-01-01T00:00:00Z
           auditDetails:
             createdBy:
-              name: William.Wilson
+              name: William Wilson
               id: 2c91808380aa05580180aaaaf1940410
             created: 2022-07-21T11:13:12.345Z
             modified: 2022-07-21T11:13:12.345Z
             modifiedBy:
-              name: William.Wilson
+              name: William Wilson
               id: 2c91808380aa05580180aaaaf1940410
-          configType: accessRequests
+          configType: ACCESS_REQUESTS
           targetIdentity:
-            name: William.Wilson
+            name: William Wilson
             id: 2c91808380aa05580180aaaaf1940410
           startDate: 2022-07-21T11:13:12.345Z
       properties:
@@ -51664,14 +51664,14 @@ components:
             $ref: '#/components/schemas/ConfigurationDetailsResponse'
           type: array
       type: object
-    WorkTypeEnum:
+    ConfigTypeEnum:
       description: Enum list of valid work types that can be selected for a Reassignment
         Configuration
       enum:
-      - accessRequests
-      - certifications
-      - manualTasks
-      example: accessRequests
+      - ACCESS_REQUESTS
+      - CERTIFICATIONS
+      - MANUAL_TASKS
+      example: ACCESS_REQUESTS
       type: string
     EvaluateResponse:
       description: The response body for Evaluate Reassignment Configuration
@@ -51704,12 +51704,12 @@ components:
           disabled: true
         auditDetails:
           createdBy:
-            name: William.Wilson
+            name: William Wilson
             id: 2c91808380aa05580180aaaaf1940410
           created: 2022-07-21T11:13:12.345Z
           modified: 2022-07-21T11:13:12.345Z
           modifiedBy:
-            name: William.Wilson
+            name: William Wilson
             id: 2c91808380aa05580180aaaaf1940410
       properties:
         auditDetails:
@@ -58308,20 +58308,11 @@ components:
       - SLACK
       - TEAMS
       type: string
-    ConfigTypeEnum:
-      description: Enum list of valid work types that can be selected for a Reassignment
-        Configuration
-      enum:
-      - accessRequests
-      - certifications
-      - manualTasks
-      example: accessRequests
-      type: string
     Identity_1:
       description: The definition of an Identity according to the Reassignment Configuration
         service
       example:
-        name: William.Wilson
+        name: William Wilson
         id: 2c91808380aa05580180aaaaf1940410
       properties:
         id:
@@ -58330,7 +58321,7 @@ components:
           type: string
         name:
           description: Human-readable display name of the object
-          example: William.Wilson
+          example: William Wilson
           type: string
       type: object
     ConfigurationDetailsResponse:
@@ -58340,16 +58331,16 @@ components:
         endDate: 0001-01-01T00:00:00Z
         auditDetails:
           createdBy:
-            name: William.Wilson
+            name: William Wilson
             id: 2c91808380aa05580180aaaaf1940410
           created: 2022-07-21T11:13:12.345Z
           modified: 2022-07-21T11:13:12.345Z
           modifiedBy:
-            name: William.Wilson
+            name: William Wilson
             id: 2c91808380aa05580180aaaaf1940410
-        configType: accessRequests
+        configType: ACCESS_REQUESTS
         targetIdentity:
-          name: William.Wilson
+          name: William Wilson
           id: 2c91808380aa05580180aaaaf1940410
         startDate: 2022-07-21T11:13:12.345Z
       properties:
@@ -58394,12 +58385,12 @@ components:
       description: Audit details for the reassignment configuration of an identity
       example:
         createdBy:
-          name: William.Wilson
+          name: William Wilson
           id: 2c91808380aa05580180aaaaf1940410
         created: 2022-07-21T11:13:12.345Z
         modified: 2022-07-21T11:13:12.345Z
         modifiedBy:
-          name: William.Wilson
+          name: William Wilson
           id: 2c91808380aa05580180aaaaf1940410
       properties:
         created:
