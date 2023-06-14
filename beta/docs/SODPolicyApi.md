@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**GetSodAllReportRunStatus**](SODPolicyApi.md#GetSodAllReportRunStatus) | **Get** /sod-violation-report | Get multi-report run task status
 [**GetSodPolicy**](SODPolicyApi.md#GetSodPolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
 [**GetSodPolicySchedule**](SODPolicyApi.md#GetSodPolicySchedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
-[**GetSodViolationReportRunStatus**](SODPolicyApi.md#GetSodViolationReportRunStatus) | **Get** /sod-violation-report-status/{reportResultId} | Get violation report run status
+[**GetSodViolationReportRunStatus**](SODPolicyApi.md#GetSodViolationReportRunStatus) | **Get** /sod-policies/sod-violation-report-status/{reportResultId} | Get violation report run status
 [**GetSodViolationReportStatus**](SODPolicyApi.md#GetSodViolationReportStatus) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
 [**ListSodPolicies**](SODPolicyApi.md#ListSodPolicies) | **Get** /sod-policies | List SOD policies
 [**PatchSodPolicy**](SODPolicyApi.md#PatchSodPolicy) | **Patch** /sod-policies/{id} | Patch a SOD policy

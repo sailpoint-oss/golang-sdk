@@ -1713,7 +1713,7 @@ func (a *SODPolicyApiService) GetSodViolationReportRunStatusExecute(r ApiGetSodV
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/sod-violation-report-status/{reportResultId}"
+	localVarPath := localBasePath + "/sod-policies/sod-violation-report-status/{reportResultId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"reportResultId"+"}", url.PathEscape(parameterValueToString(r.reportResultId, "reportResultId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

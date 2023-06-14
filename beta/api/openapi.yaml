@@ -40106,7 +40106,7 @@ paths:
         the given access.
       tags:
       - SOD Violations
-  /sod-violation-report-status/{reportResultId}:
+  /sod-policies/sod-violation-report-status/{reportResultId}:
     get:
       description: |-
         This gets the status for a violation report run task that has already been invoked.

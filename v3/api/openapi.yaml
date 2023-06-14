@@ -19465,7 +19465,7 @@ paths:
       summary: Gets the specified ARM risk.
       tags:
       - SOD Policy
-  /sod-violation-report-status/{reportResultId}:
+  /sod-policies/sod-violation-report-status/{reportResultId}:
     get:
       description: This gets the status for a violation report run task that has already
         been invoked.
