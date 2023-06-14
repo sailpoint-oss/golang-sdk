@@ -226,9 +226,9 @@ docs/CreatePersonalAccessTokenResponse.md
 docs/CreateWorkflowRequest.md
 docs/CustomPasswordInstruction.md
 docs/CustomPasswordInstructionsApi.md
+docs/Delete202Response.md
 docs/DeleteCampaignsRequest.md
 docs/DeleteNonEmployeeRecordInBulkRequest.md
-docs/DeleteSource202Response.md
 docs/DkimAttributes.md
 docs/DomainAddress.md
 docs/DomainStatusDto.md
@@ -929,9 +929,9 @@ model_create_personal_access_token_request.go
 model_create_personal_access_token_response.go
 model_create_workflow_request.go
 model_custom_password_instruction.go
+model_delete_202_response.go
 model_delete_campaigns_request.go
 model_delete_non_employee_record_in_bulk_request.go
-model_delete_source_202_response.go
 model_dkim_attributes.go
 model_domain_address.go
 model_domain_status_dto.go

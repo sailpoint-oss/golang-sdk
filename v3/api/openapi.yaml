@@ -20311,36 +20311,21 @@ paths:
           type: boolean
       - description: |-
           Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
-
           Filtering is supported for the following fields and operators:
-
-          **id**: *eq, in*
-
-          **name**: *co, eq, in, sw*
-
-          **type**: *eq, in*
-
-          **owner.id**: *eq, in*
-
-          **features**: *ca, co*
-
-          **created**: *eq*
-
-          **modified**: *eq*
-
-          **managementWorkgroup.id**: *eq*
-
-          **description**: *eq*
-
-          **authoritative**: *eq*
-
-          **healthy**: *eq*
-
-          **status**: *eq, in*
-
-          **connectionType**: *eq*
-
-          **connectorName**: *eq*
+            **id**: *eq, in*
+            **name**: *co, eq, in, sw*
+            **type**: *eq, in*
+            **owner.id**: *eq, in*
+            **features**: *ca, co*
+            **created**: *eq*
+            **modified**: *eq*
+            **managementWorkgroup.id**: *eq*
+            **description**: *eq*
+            **authoritative**: *eq*
+            **healthy**: *eq*
+            **status**: *eq, in*
+            **connectionType**: *eq*
+            **connectorName**: *eq*
         example: name eq "#Employees"
         in: query
         name: filters
@@ -20447,6 +20432,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:read
       summary: Lists all sources in IdentityNow.
       tags:
       - Sources
@@ -20539,6 +20527,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:manage
       summary: Creates a source in IdentityNow.
       tags:
       - Sources
@@ -20572,12 +20563,6 @@ paths:
                 $ref: '#/components/schemas/deleteSource_202_response'
           description: Accepted - Returned if the request was successfully accepted
             into the system.
-          links:
-            GetTaskStatusById:
-              description: |
-                The `id` value returned in the response can be used as the `id` parameter in `GET /task-status/{id}`.
-              parameters:
-                id: $response.body#/id
         "400":
           content:
             application/json:
@@ -20652,6 +20637,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:manage
       summary: Delete Source by ID
       tags:
       - Sources
@@ -20749,6 +20737,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:read
       summary: Get Source by ID
       tags:
       - Sources
@@ -20926,6 +20917,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:manage
       summary: Update Source (Partial)
       tags:
       - Sources
@@ -21044,6 +21038,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:manage
       summary: Update Source (Full)
       tags:
       - Sources
@@ -22641,7 +22638,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: This API fetches source health by source's id
+      security:
+      - oauth2:
+        - idn:sources:read
+      summary: Fetches source health by id
       tags:
       - Sources
   /sources/{id}/schemas/accounts:
@@ -22649,7 +22649,7 @@ paths:
       description: |-
         This API downloads the CSV schema that defines the account attributes on a source.
         >**NOTE: This API is designated only for Delimited File sources.**
-      operationId: downloadSourceAccountsSchema
+      operationId: getAccountsSchema
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -22751,7 +22751,7 @@ paths:
         \ -> **`{SourceName}`** -> **Import Data** -> **Account Schema** -> **Options**\
         \ -> **Download Schema**\n\n>**NOTE: This API is designated only for Delimited\
         \ File sources.**"
-      operationId: uploadSourceAccountsSchema
+      operationId: importAccountsSchema
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -22841,7 +22841,7 @@ paths:
         This API downloads the CSV schema that defines the entitlement attributes on a source.
 
         >**NOTE: This API is designated only for Delimited File sources.**
-      operationId: downloadSourceEntitlementsSchema
+      operationId: getEntitlementsSchema
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -22948,7 +22948,7 @@ paths:
         \ log into Identity Now. \n\nClick **Admin** -> **Connections** -> **Sources**\
         \ -> **`{SourceName}`** -> **Import Data** -> **Import Entitlements** -> **Download**\n\
         \n>**NOTE: This API is designated only for Delimited File sources.**"
-      operationId: uploadSourceEntitlementsSchema
+      operationId: importEntitlementsSchema
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -23043,7 +23043,7 @@ paths:
       description: |-
         This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events.
         A token with ORG_ADMIN authority is required to call this API.
-      operationId: uploadSourceConnectorFile
+      operationId: importConnectorFile
       parameters:
       - description: The Source id.
         example: 2c9180835d191a86015d28455b4a2329
@@ -23121,6 +23121,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources-admin:manage
       summary: Upload connector file to source
       tags:
       - Sources

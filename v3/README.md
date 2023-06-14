@@ -260,12 +260,15 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**DeleteProvisioningPolicy**](docs/SourcesApi.md#deleteprovisioningpolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 *SourcesApi* | [**DeleteSource**](docs/SourcesApi.md#deletesource) | **Delete** /sources/{id} | Delete Source by ID
 *SourcesApi* | [**DeleteSourceSchema**](docs/SourcesApi.md#deletesourceschema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
-*SourcesApi* | [**DownloadSourceAccountsSchema**](docs/SourcesApi.md#downloadsourceaccountsschema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
-*SourcesApi* | [**DownloadSourceEntitlementsSchema**](docs/SourcesApi.md#downloadsourceentitlementsschema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
+*SourcesApi* | [**GetAccountsSchema**](docs/SourcesApi.md#getaccountsschema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
+*SourcesApi* | [**GetEntitlementsSchema**](docs/SourcesApi.md#getentitlementsschema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
 *SourcesApi* | [**GetProvisioningPolicy**](docs/SourcesApi.md#getprovisioningpolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 *SourcesApi* | [**GetSource**](docs/SourcesApi.md#getsource) | **Get** /sources/{id} | Get Source by ID
-*SourcesApi* | [**GetSourceHealth**](docs/SourcesApi.md#getsourcehealth) | **Get** /sources/{sourceId}/source-health | This API fetches source health by source&#39;s id
+*SourcesApi* | [**GetSourceHealth**](docs/SourcesApi.md#getsourcehealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
 *SourcesApi* | [**GetSourceSchema**](docs/SourcesApi.md#getsourceschema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
+*SourcesApi* | [**ImportAccountsSchema**](docs/SourcesApi.md#importaccountsschema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
+*SourcesApi* | [**ImportConnectorFile**](docs/SourcesApi.md#importconnectorfile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
+*SourcesApi* | [**ImportEntitlementsSchema**](docs/SourcesApi.md#importentitlementsschema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 *SourcesApi* | [**ListProvisioningPolicies**](docs/SourcesApi.md#listprovisioningpolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 *SourcesApi* | [**ListSourceSchemas**](docs/SourcesApi.md#listsourceschemas) | **Get** /sources/{sourceId}/schemas | List Schemas on a Source
 *SourcesApi* | [**ListSources**](docs/SourcesApi.md#listsources) | **Get** /sources | Lists all sources in IdentityNow.
@@ -276,9 +279,6 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**UpdateProvisioningPolicy**](docs/SourcesApi.md#updateprovisioningpolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 *SourcesApi* | [**UpdateSource**](docs/SourcesApi.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
 *SourcesApi* | [**UpdateSourceSchema**](docs/SourcesApi.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
-*SourcesApi* | [**UploadSourceAccountsSchema**](docs/SourcesApi.md#uploadsourceaccountsschema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
-*SourcesApi* | [**UploadSourceConnectorFile**](docs/SourcesApi.md#uploadsourceconnectorfile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
-*SourcesApi* | [**UploadSourceEntitlementsSchema**](docs/SourcesApi.md#uploadsourceentitlementsschema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 *TaggedObjectsApi* | [**DeleteTaggedObject**](docs/TaggedObjectsApi.md#deletetaggedobject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
 *TaggedObjectsApi* | [**DeleteTagsToManyObject**](docs/TaggedObjectsApi.md#deletetagstomanyobject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsApi* | [**GetTaggedObject**](docs/TaggedObjectsApi.md#gettaggedobject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object

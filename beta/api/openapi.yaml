@@ -31524,36 +31524,21 @@ paths:
           type: boolean
       - description: |-
           Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
-
           Filtering is supported for the following fields and operators:
-
-          **id**: *eq, in*
-
-          **name**: *co, eq, in, sw*
-
-          **type**: *eq, in*
-
-          **owner.id**: *eq, in*
-
-          **features**: *ca, co*
-
-          **created**: *eq*
-
-          **modified**: *eq*
-
-          **managementWorkgroup.id**: *eq*
-
-          **description**: *eq*
-
-          **authoritative**: *eq*
-
-          **healthy**: *eq*
-
-          **status**: *eq, in*
-
-          **connectionType**: *eq*
-
-          **connectorName**: *eq*
+            **id**: *eq, in*
+            **name**: *co, eq, in, sw*
+            **type**: *eq, in*
+            **owner.id**: *eq, in*
+            **features**: *ca, co*
+            **created**: *eq*
+            **modified**: *eq*
+            **managementWorkgroup.id**: *eq*
+            **description**: *eq*
+            **authoritative**: *eq*
+            **healthy**: *eq*
+            **status**: *eq, in*
+            **connectionType**: *eq*
+            **connectorName**: *eq*
         example: name eq "#Employees"
         in: query
         name: filters
@@ -31561,7 +31546,6 @@ paths:
           type: string
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
-
           Sorting is supported for the following fields: **type, created, modified, name, owner.name, healthy, status**
         example: name
         in: query
@@ -31660,6 +31644,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:read
       summary: Lists all sources in IdentityNow.
       tags:
       - Sources
@@ -31752,6 +31739,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:manage
       summary: Creates a source in IdentityNow.
       tags:
       - Sources
@@ -31761,7 +31751,7 @@ paths:
         This end-point deletes a specific source in IdentityNow.
         A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
         All of accounts on the source will be removed first, then the source will be deleted. Actual status of task execution can be retrieved via method GET `/task-status/{id}`
-      operationId: deleteSource
+      operationId: delete
       parameters:
       - description: The Source ID
         example: 2c9180835d191a86015d28455b4a2329
@@ -31782,16 +31772,9 @@ paths:
                     id: 2c91808779ecf55b0179f720942f181a
                     name: null
               schema:
-                $ref: '#/components/schemas/deleteSource_202_response'
+                $ref: '#/components/schemas/delete_202_response'
           description: Accepted - Returned if the request was successfully accepted
             into the system.
-          links:
-            GetTaskStatusById:
-              description: |
-                The `id` value returned in the response can be used as the `id` parameter in `GET /task-status/{id}`.
-              operationId: getTaskStatus
-              parameters:
-                id: $response.body#/id
         "400":
           content:
             application/json:
@@ -31866,6 +31849,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:manage
       summary: Delete Source by ID
       tags:
       - Sources
@@ -31963,6 +31949,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:read
       summary: Get Source by ID
       tags:
       - Sources
@@ -31972,7 +31961,6 @@ paths:
         [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
         Some fields are immutable and cannot be changed, such as:
-
         * id
         * type
         * authoritative
@@ -32140,6 +32128,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:manage
       summary: Update Source (Partial)
       tags:
       - Sources
@@ -32163,6 +32154,7 @@ paths:
       operationId: putSource
       parameters:
       - description: The Source id
+        example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
         required: true
@@ -32257,6 +32249,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources:manage
       summary: Update Source (Full)
       tags:
       - Sources
@@ -34473,7 +34468,7 @@ paths:
       - Sources
   /sources/{id}/schemas/accounts:
     get:
-      operationId: downloadSourceAccountsSchema
+      operationId: getSourceAccountsSchema
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -34572,7 +34567,7 @@ paths:
     post:
       description: This API uploads a source schema template file to configure a source's
         account attributes.
-      operationId: uploadSourceAccountsSchema
+      operationId: importSourceAccountsSchema
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -34658,7 +34653,7 @@ paths:
       - Sources
   /sources/{id}/schemas/entitlements:
     get:
-      operationId: downloadSourceEntitlementsSchema
+      operationId: getSourceEntitlementsSchema
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -34763,7 +34758,7 @@ paths:
     post:
       description: This API uploads a source schema template file to configure a source's
         entitlement attributes.
-      operationId: uploadSourceEntitlementsSchema
+      operationId: importSourceEntitlementsSchema
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -34858,7 +34853,7 @@ paths:
       description: |-
         This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events.
         A token with ORG_ADMIN authority is required to call this API.
-      operationId: uploadSourceConnectorFile
+      operationId: importSourceConnectorFile
       parameters:
       - description: The Source id
         example: 8c190e6787aa4ed9a90bd9d5344523fb
@@ -34936,6 +34931,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:sources-admin:manage
       summary: Upload connector file to source
       tags:
       - Sources
@@ -61188,7 +61186,7 @@ components:
       required:
       - data
       type: object
-    deleteSource_202_response:
+    delete_202_response:
       example:
         name: name
         id: 2c91808779ecf55b0179f720942f181a

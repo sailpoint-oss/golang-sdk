@@ -62,6 +62,20 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesApiService Delete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.SourcesApi.Delete(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesApiService DeleteProvisioningPolicy", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -76,20 +90,6 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourcesApiService DeleteSource", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.SourcesApi.DeleteSource(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SourcesApiService DeleteSourceSchema", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -98,32 +98,6 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var schemaId string
 
 		httpRes, err := apiClient.BETA.SourcesApi.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SourcesApiService DownloadSourceAccountsSchema", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		httpRes, err := apiClient.BETA.SourcesApi.DownloadSourceAccountsSchema(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SourcesApiService DownloadSourceEntitlementsSchema", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		httpRes, err := apiClient.BETA.SourcesApi.DownloadSourceEntitlementsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -155,6 +129,19 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesApiService GetSourceAccountsSchema", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		httpRes, err := apiClient.BETA.SourcesApi.GetSourceAccountsSchema(context.Background(), id).Execute()
+
+		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -199,6 +186,19 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesApiService GetSourceEntitlementsSchema", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		httpRes, err := apiClient.BETA.SourcesApi.GetSourceEntitlementsSchema(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesApiService GetSourceSchema", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -207,6 +207,48 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var schemaId string
 
 		resp, httpRes, err := apiClient.BETA.SourcesApi.GetSourceSchema(context.Background(), sourceId, schemaId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesApiService ImportSourceAccountsSchema", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.SourcesApi.ImportSourceAccountsSchema(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesApiService ImportSourceConnectorFile", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var sourceId string
+
+		resp, httpRes, err := apiClient.BETA.SourcesApi.ImportSourceConnectorFile(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesApiService ImportSourceEntitlementsSchema", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.SourcesApi.ImportSourceEntitlementsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -445,48 +487,6 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var schemaId string
 
 		resp, httpRes, err := apiClient.BETA.SourcesApi.UpdateSourceSchema(context.Background(), sourceId, schemaId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SourcesApiService UploadSourceAccountsSchema", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.SourcesApi.UploadSourceAccountsSchema(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SourcesApiService UploadSourceConnectorFile", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var sourceId string
-
-		resp, httpRes, err := apiClient.BETA.SourcesApi.UploadSourceConnectorFile(context.Background(), sourceId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SourcesApiService UploadSourceEntitlementsSchema", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.SourcesApi.UploadSourceEntitlementsSchema(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

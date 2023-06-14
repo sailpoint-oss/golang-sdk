@@ -10,12 +10,15 @@ Method | HTTP request | Description
 [**DeleteProvisioningPolicy**](SourcesApi.md#DeleteProvisioningPolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 [**DeleteSource**](SourcesApi.md#DeleteSource) | **Delete** /sources/{id} | Delete Source by ID
 [**DeleteSourceSchema**](SourcesApi.md#DeleteSourceSchema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
-[**DownloadSourceAccountsSchema**](SourcesApi.md#DownloadSourceAccountsSchema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
-[**DownloadSourceEntitlementsSchema**](SourcesApi.md#DownloadSourceEntitlementsSchema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
+[**GetAccountsSchema**](SourcesApi.md#GetAccountsSchema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
+[**GetEntitlementsSchema**](SourcesApi.md#GetEntitlementsSchema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
 [**GetProvisioningPolicy**](SourcesApi.md#GetProvisioningPolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 [**GetSource**](SourcesApi.md#GetSource) | **Get** /sources/{id} | Get Source by ID
-[**GetSourceHealth**](SourcesApi.md#GetSourceHealth) | **Get** /sources/{sourceId}/source-health | This API fetches source health by source&#39;s id
+[**GetSourceHealth**](SourcesApi.md#GetSourceHealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
 [**GetSourceSchema**](SourcesApi.md#GetSourceSchema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
+[**ImportAccountsSchema**](SourcesApi.md#ImportAccountsSchema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
+[**ImportConnectorFile**](SourcesApi.md#ImportConnectorFile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
+[**ImportEntitlementsSchema**](SourcesApi.md#ImportEntitlementsSchema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 [**ListProvisioningPolicies**](SourcesApi.md#ListProvisioningPolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 [**ListSourceSchemas**](SourcesApi.md#ListSourceSchemas) | **Get** /sources/{sourceId}/schemas | List Schemas on a Source
 [**ListSources**](SourcesApi.md#ListSources) | **Get** /sources | Lists all sources in IdentityNow.
@@ -26,9 +29,6 @@ Method | HTTP request | Description
 [**UpdateProvisioningPolicy**](SourcesApi.md#UpdateProvisioningPolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
 [**UpdateSource**](SourcesApi.md#UpdateSource) | **Patch** /sources/{id} | Update Source (Partial)
 [**UpdateSourceSchema**](SourcesApi.md#UpdateSourceSchema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
-[**UploadSourceAccountsSchema**](SourcesApi.md#UploadSourceAccountsSchema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
-[**UploadSourceConnectorFile**](SourcesApi.md#UploadSourceConnectorFile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
-[**UploadSourceEntitlementsSchema**](SourcesApi.md#UploadSourceEntitlementsSchema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 
 
 
@@ -454,9 +454,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DownloadSourceAccountsSchema
+## GetAccountsSchema
 
-> DownloadSourceAccountsSchema(ctx, id).Execute()
+> GetAccountsSchema(ctx, id).Execute()
 
 Downloads source accounts schema template
 
@@ -479,9 +479,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.DownloadSourceAccountsSchema(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesApi.GetAccountsSchema(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.DownloadSourceAccountsSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetAccountsSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -497,7 +497,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDownloadSourceAccountsSchemaRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAccountsSchemaRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -522,9 +522,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DownloadSourceEntitlementsSchema
+## GetEntitlementsSchema
 
-> DownloadSourceEntitlementsSchema(ctx, id).SchemaName(schemaName).Execute()
+> GetEntitlementsSchema(ctx, id).SchemaName(schemaName).Execute()
 
 Downloads source entitlements schema template
 
@@ -548,9 +548,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.DownloadSourceEntitlementsSchema(context.Background(), id).SchemaName(schemaName).Execute()
+    resp, r, err := apiClient.SourcesApi.GetEntitlementsSchema(context.Background(), id).SchemaName(schemaName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.DownloadSourceEntitlementsSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetEntitlementsSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -566,7 +566,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDownloadSourceEntitlementsSchemaRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetEntitlementsSchemaRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -739,7 +739,7 @@ Name | Type | Description  | Notes
 
 > SourceHealthDto GetSourceHealth(ctx, sourceId).Execute()
 
-This API fetches source health by source's id
+Fetches source health by id
 
 
 
@@ -871,6 +871,224 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ImportAccountsSchema
+
+> Schema ImportAccountsSchema(ctx, id).File(file).Execute()
+
+Uploads source accounts schema template
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
+    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.ImportAccountsSchema(context.Background(), id).File(file).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ImportAccountsSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportAccountsSchema`: Schema
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ImportAccountsSchema`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The Source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportAccountsSchemaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** |  | 
+
+### Return type
+
+[**Schema**](Schema.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ImportConnectorFile
+
+> Source ImportConnectorFile(ctx, sourceId).File(file).Execute()
+
+Upload connector file to source
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
+    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.ImportConnectorFile(context.Background(), sourceId).File(file).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ImportConnectorFile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportConnectorFile`: Source
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ImportConnectorFile`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sourceId** | **string** | The Source id. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportConnectorFileRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** |  | 
+
+### Return type
+
+[**Source**](Source.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ImportEntitlementsSchema
+
+> Schema ImportEntitlementsSchema(ctx, id).SchemaName(schemaName).File(file).Execute()
+
+Uploads source entitlements schema template
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
+    schemaName := "?schemaName=group" // string | Name of entitlement schema (optional)
+    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.ImportEntitlementsSchema(context.Background(), id).SchemaName(schemaName).File(file).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ImportEntitlementsSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportEntitlementsSchema`: Schema
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ImportEntitlementsSchema`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The Source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportEntitlementsSchemaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **schemaName** | **string** | Name of entitlement schema | 
+ **file** | ***os.File** |  | 
+
+### Return type
+
+[**Schema**](Schema.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1044,7 +1262,7 @@ func main() {
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "name eq "#Employees"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *co, eq, in, sw*  **type**: *eq, in*  **owner.id**: *eq, in*  **features**: *ca, co*  **created**: *eq*  **modified**: *eq*  **managementWorkgroup.id**: *eq*  **description**: *eq*  **authoritative**: *eq*  **healthy**: *eq*  **status**: *eq, in*  **connectionType**: *eq*  **connectorName**: *eq* (optional)
+    filters := "name eq "#Employees"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **name**: *co, eq, in, sw*   **type**: *eq, in*   **owner.id**: *eq, in*   **features**: *ca, co*   **created**: *eq*   **modified**: *eq*   **managementWorkgroup.id**: *eq*   **description**: *eq*   **authoritative**: *eq*   **healthy**: *eq*   **status**: *eq, in*   **connectionType**: *eq*   **connectorName**: *eq* (optional)
     sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified, name, owner.name, healthy, status** (optional)
     forSubadmin := "name" // string | Filter the returned list of sources for the identity specified by the parameter, which is the id of an identity with the role SOURCE_SUBADMIN. By convention, the value **me** indicates the identity id of the current user. Subadmins may only view Sources which they are able to administer; all other Sources will be filtered out when this parameter is set. If the current user is a SOURCE_SUBADMIN but fails to pass a valid value for this parameter, a 403 Forbidden is returned. (optional)
 
@@ -1074,7 +1292,7 @@ Name | Type | Description  | Notes
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *co, eq, in, sw*  **type**: *eq, in*  **owner.id**: *eq, in*  **features**: *ca, co*  **created**: *eq*  **modified**: *eq*  **managementWorkgroup.id**: *eq*  **description**: *eq*  **authoritative**: *eq*  **healthy**: *eq*  **status**: *eq, in*  **connectionType**: *eq*  **connectorName**: *eq* | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **name**: *co, eq, in, sw*   **type**: *eq, in*   **owner.id**: *eq, in*   **features**: *ca, co*   **created**: *eq*   **modified**: *eq*   **managementWorkgroup.id**: *eq*   **description**: *eq*   **authoritative**: *eq*   **healthy**: *eq*   **status**: *eq, in*   **connectionType**: *eq*   **connectorName**: *eq* | 
  **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified, name, owner.name, healthy, status** | 
  **forSubadmin** | **string** | Filter the returned list of sources for the identity specified by the parameter, which is the id of an identity with the role SOURCE_SUBADMIN. By convention, the value **me** indicates the identity id of the current user. Subadmins may only view Sources which they are able to administer; all other Sources will be filtered out when this parameter is set. If the current user is a SOURCE_SUBADMIN but fails to pass a valid value for this parameter, a 403 Forbidden is returned. | 
 
@@ -1605,224 +1823,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UploadSourceAccountsSchema
-
-> Schema UploadSourceAccountsSchema(ctx, id).File(file).Execute()
-
-Uploads source accounts schema template
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
-    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.UploadSourceAccountsSchema(context.Background(), id).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UploadSourceAccountsSchema``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UploadSourceAccountsSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UploadSourceAccountsSchema`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUploadSourceAccountsSchemaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **file** | ***os.File** |  | 
-
-### Return type
-
-[**Schema**](Schema.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UploadSourceConnectorFile
-
-> Source UploadSourceConnectorFile(ctx, sourceId).File(file).Execute()
-
-Upload connector file to source
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
-    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.UploadSourceConnectorFile(context.Background(), sourceId).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UploadSourceConnectorFile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UploadSourceConnectorFile`: Source
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UploadSourceConnectorFile`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**sourceId** | **string** | The Source id. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUploadSourceConnectorFileRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **file** | ***os.File** |  | 
-
-### Return type
-
-[**Source**](Source.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UploadSourceEntitlementsSchema
-
-> Schema UploadSourceEntitlementsSchema(ctx, id).SchemaName(schemaName).File(file).Execute()
-
-Uploads source entitlements schema template
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
-    schemaName := "?schemaName=group" // string | Name of entitlement schema (optional)
-    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.UploadSourceEntitlementsSchema(context.Background(), id).SchemaName(schemaName).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UploadSourceEntitlementsSchema``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UploadSourceEntitlementsSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UploadSourceEntitlementsSchema`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The Source id | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUploadSourceEntitlementsSchemaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **schemaName** | **string** | Name of entitlement schema | 
- **file** | ***os.File** |  | 
-
-### Return type
-
-[**Schema**](Schema.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

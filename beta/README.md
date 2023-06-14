@@ -382,17 +382,20 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**CreateProvisioningPolicy**](docs/SourcesApi.md#createprovisioningpolicy) | **Post** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
 *SourcesApi* | [**CreateSource**](docs/SourcesApi.md#createsource) | **Post** /sources | Creates a source in IdentityNow.
 *SourcesApi* | [**CreateSourceSchema**](docs/SourcesApi.md#createsourceschema) | **Post** /sources/{sourceId}/schemas | Creates a new Schema on the specified Source in IdentityNow.
+*SourcesApi* | [**Delete**](docs/SourcesApi.md#delete) | **Delete** /sources/{id} | Delete Source by ID
 *SourcesApi* | [**DeleteProvisioningPolicy**](docs/SourcesApi.md#deleteprovisioningpolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
-*SourcesApi* | [**DeleteSource**](docs/SourcesApi.md#deletesource) | **Delete** /sources/{id} | Delete Source by ID
 *SourcesApi* | [**DeleteSourceSchema**](docs/SourcesApi.md#deletesourceschema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
-*SourcesApi* | [**DownloadSourceAccountsSchema**](docs/SourcesApi.md#downloadsourceaccountsschema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
-*SourcesApi* | [**DownloadSourceEntitlementsSchema**](docs/SourcesApi.md#downloadsourceentitlementsschema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
 *SourcesApi* | [**GetProvisioningPolicy**](docs/SourcesApi.md#getprovisioningpolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 *SourcesApi* | [**GetSource**](docs/SourcesApi.md#getsource) | **Get** /sources/{id} | Get Source by ID
+*SourcesApi* | [**GetSourceAccountsSchema**](docs/SourcesApi.md#getsourceaccountsschema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
 *SourcesApi* | [**GetSourceAttrSyncConfig**](docs/SourcesApi.md#getsourceattrsyncconfig) | **Get** /sources/{id}/attribute-sync-config | Attribute Sync Config
 *SourcesApi* | [**GetSourceConfig**](docs/SourcesApi.md#getsourceconfig) | **Get** /sources/{id}/connectors/source-config | Gets source config with language translations
 *SourcesApi* | [**GetSourceEntitlementRequestConfig**](docs/SourcesApi.md#getsourceentitlementrequestconfig) | **Get** /sources/{id}/entitlement-request-config | Get Source Entitlement Request Configuration
+*SourcesApi* | [**GetSourceEntitlementsSchema**](docs/SourcesApi.md#getsourceentitlementsschema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
 *SourcesApi* | [**GetSourceSchema**](docs/SourcesApi.md#getsourceschema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
+*SourcesApi* | [**ImportSourceAccountsSchema**](docs/SourcesApi.md#importsourceaccountsschema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
+*SourcesApi* | [**ImportSourceConnectorFile**](docs/SourcesApi.md#importsourceconnectorfile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
+*SourcesApi* | [**ImportSourceEntitlementsSchema**](docs/SourcesApi.md#importsourceentitlementsschema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 *SourcesApi* | [**ListProvisioningPolicies**](docs/SourcesApi.md#listprovisioningpolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
 *SourcesApi* | [**ListSourceSchemas**](docs/SourcesApi.md#listsourceschemas) | **Get** /sources/{sourceId}/schemas | Lists the Schemas that exist on the specified Source in IdentityNow.
 *SourcesApi* | [**ListSources**](docs/SourcesApi.md#listsources) | **Get** /sources | Lists all sources in IdentityNow.
@@ -410,9 +413,6 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**UpdateSource**](docs/SourcesApi.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
 *SourcesApi* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesApi.md#updatesourceentitlementrequestconfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesApi* | [**UpdateSourceSchema**](docs/SourcesApi.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
-*SourcesApi* | [**UploadSourceAccountsSchema**](docs/SourcesApi.md#uploadsourceaccountsschema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
-*SourcesApi* | [**UploadSourceConnectorFile**](docs/SourcesApi.md#uploadsourceconnectorfile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
-*SourcesApi* | [**UploadSourceEntitlementsSchema**](docs/SourcesApi.md#uploadsourceentitlementsschema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
 *TaggedObjectsApi* | [**AddTagToObject**](docs/TaggedObjectsApi.md#addtagtoobject) | **Post** /tagged-objects | Add Tag to Object
 *TaggedObjectsApi* | [**AddTagsToManyObjects**](docs/TaggedObjectsApi.md#addtagstomanyobjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
 *TaggedObjectsApi* | [**DeleteTaggedObject**](docs/TaggedObjectsApi.md#deletetaggedobject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
@@ -639,9 +639,9 @@ Class | Method | HTTP request | Description
  - [CreatePersonalAccessTokenResponse](docs/CreatePersonalAccessTokenResponse.md)
  - [CreateWorkflowRequest](docs/CreateWorkflowRequest.md)
  - [CustomPasswordInstruction](docs/CustomPasswordInstruction.md)
+ - [Delete202Response](docs/Delete202Response.md)
  - [DeleteCampaignsRequest](docs/DeleteCampaignsRequest.md)
  - [DeleteNonEmployeeRecordInBulkRequest](docs/DeleteNonEmployeeRecordInBulkRequest.md)
- - [DeleteSource202Response](docs/DeleteSource202Response.md)
  - [DkimAttributes](docs/DkimAttributes.md)
  - [DomainAddress](docs/DomainAddress.md)
  - [DomainStatusDto](docs/DomainStatusDto.md)

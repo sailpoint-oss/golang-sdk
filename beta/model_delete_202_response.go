@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the DeleteSource202Response type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DeleteSource202Response{}
+// checks if the Delete202Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Delete202Response{}
 
-// DeleteSource202Response struct for DeleteSource202Response
-type DeleteSource202Response struct {
+// Delete202Response struct for Delete202Response
+type Delete202Response struct {
 	// The type of object being referenced
 	Type *string `json:"type,omitempty"`
 	// ID of the task result
@@ -28,27 +28,27 @@ type DeleteSource202Response struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _DeleteSource202Response DeleteSource202Response
+type _Delete202Response Delete202Response
 
-// NewDeleteSource202Response instantiates a new DeleteSource202Response object
+// NewDelete202Response instantiates a new Delete202Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeleteSource202Response() *DeleteSource202Response {
-	this := DeleteSource202Response{}
+func NewDelete202Response() *Delete202Response {
+	this := Delete202Response{}
 	return &this
 }
 
-// NewDeleteSource202ResponseWithDefaults instantiates a new DeleteSource202Response object
+// NewDelete202ResponseWithDefaults instantiates a new Delete202Response object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDeleteSource202ResponseWithDefaults() *DeleteSource202Response {
-	this := DeleteSource202Response{}
+func NewDelete202ResponseWithDefaults() *Delete202Response {
+	this := Delete202Response{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *DeleteSource202Response) GetType() string {
+func (o *Delete202Response) GetType() string {
 	if o == nil || isNil(o.Type) {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *DeleteSource202Response) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeleteSource202Response) GetTypeOk() (*string, bool) {
+func (o *Delete202Response) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *DeleteSource202Response) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *DeleteSource202Response) HasType() bool {
+func (o *Delete202Response) HasType() bool {
 	if o != nil && !isNil(o.Type) {
 		return true
 	}
@@ -75,12 +75,12 @@ func (o *DeleteSource202Response) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *DeleteSource202Response) SetType(v string) {
+func (o *Delete202Response) SetType(v string) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *DeleteSource202Response) GetId() string {
+func (o *Delete202Response) GetId() string {
 	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
@@ -90,7 +90,7 @@ func (o *DeleteSource202Response) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeleteSource202Response) GetIdOk() (*string, bool) {
+func (o *Delete202Response) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
@@ -98,7 +98,7 @@ func (o *DeleteSource202Response) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *DeleteSource202Response) HasId() bool {
+func (o *Delete202Response) HasId() bool {
 	if o != nil && !isNil(o.Id) {
 		return true
 	}
@@ -107,12 +107,12 @@ func (o *DeleteSource202Response) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *DeleteSource202Response) SetId(v string) {
+func (o *Delete202Response) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *DeleteSource202Response) GetName() string {
+func (o *Delete202Response) GetName() string {
 	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
@@ -122,7 +122,7 @@ func (o *DeleteSource202Response) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeleteSource202Response) GetNameOk() (*string, bool) {
+func (o *Delete202Response) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
@@ -130,7 +130,7 @@ func (o *DeleteSource202Response) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *DeleteSource202Response) HasName() bool {
+func (o *Delete202Response) HasName() bool {
 	if o != nil && !isNil(o.Name) {
 		return true
 	}
@@ -139,11 +139,11 @@ func (o *DeleteSource202Response) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *DeleteSource202Response) SetName(v string) {
+func (o *Delete202Response) SetName(v string) {
 	o.Name = &v
 }
 
-func (o DeleteSource202Response) MarshalJSON() ([]byte, error) {
+func (o Delete202Response) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,7 +151,7 @@ func (o DeleteSource202Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o DeleteSource202Response) ToMap() (map[string]interface{}, error) {
+func (o Delete202Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -170,11 +170,11 @@ func (o DeleteSource202Response) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DeleteSource202Response) UnmarshalJSON(bytes []byte) (err error) {
-	varDeleteSource202Response := _DeleteSource202Response{}
+func (o *Delete202Response) UnmarshalJSON(bytes []byte) (err error) {
+	varDelete202Response := _Delete202Response{}
 
-	if err = json.Unmarshal(bytes, &varDeleteSource202Response); err == nil {
-		*o = DeleteSource202Response(varDeleteSource202Response)
+	if err = json.Unmarshal(bytes, &varDelete202Response); err == nil {
+		*o = Delete202Response(varDelete202Response)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -189,38 +189,38 @@ func (o *DeleteSource202Response) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableDeleteSource202Response struct {
-	value *DeleteSource202Response
+type NullableDelete202Response struct {
+	value *Delete202Response
 	isSet bool
 }
 
-func (v NullableDeleteSource202Response) Get() *DeleteSource202Response {
+func (v NullableDelete202Response) Get() *Delete202Response {
 	return v.value
 }
 
-func (v *NullableDeleteSource202Response) Set(val *DeleteSource202Response) {
+func (v *NullableDelete202Response) Set(val *Delete202Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableDeleteSource202Response) IsSet() bool {
+func (v NullableDelete202Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableDeleteSource202Response) Unset() {
+func (v *NullableDelete202Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableDeleteSource202Response(val *DeleteSource202Response) *NullableDeleteSource202Response {
-	return &NullableDeleteSource202Response{value: val, isSet: true}
+func NewNullableDelete202Response(val *Delete202Response) *NullableDelete202Response {
+	return &NullableDelete202Response{value: val, isSet: true}
 }
 
-func (v NullableDeleteSource202Response) MarshalJSON() ([]byte, error) {
+func (v NullableDelete202Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableDeleteSource202Response) UnmarshalJSON(src []byte) error {
+func (v *NullableDelete202Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
