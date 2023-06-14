@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **ViolationOwnerAssignmentConfig** | Pointer to [**ViolationOwnerAssignmentConfig**](ViolationOwnerAssignmentConfig.md) |  | [optional] 
 **Scheduled** | Pointer to **bool** | defines whether a policy has been scheduled or not | [optional] [default to false]
 **Type** | Pointer to **string** | whether a policy is query based or conflicting access based | [optional] [default to "GENERAL"]
-**ConflictingAccessCriteria** | Pointer to [**ConflictingAccessCriteria**](ConflictingAccessCriteria.md) |  | [optional] 
+**ConflictingAccessCriteria** | Pointer to [**SodPolicyConflictingAccessCriteria**](SodPolicyConflictingAccessCriteria.md) |  | [optional] 
 
 ## Methods
 
@@ -519,20 +519,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetConflictingAccessCriteria
 
-`func (o *SodPolicy) GetConflictingAccessCriteria() ConflictingAccessCriteria`
+`func (o *SodPolicy) GetConflictingAccessCriteria() SodPolicyConflictingAccessCriteria`
 
 GetConflictingAccessCriteria returns the ConflictingAccessCriteria field if non-nil, zero value otherwise.
 
 ### GetConflictingAccessCriteriaOk
 
-`func (o *SodPolicy) GetConflictingAccessCriteriaOk() (*ConflictingAccessCriteria, bool)`
+`func (o *SodPolicy) GetConflictingAccessCriteriaOk() (*SodPolicyConflictingAccessCriteria, bool)`
 
 GetConflictingAccessCriteriaOk returns a tuple with the ConflictingAccessCriteria field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConflictingAccessCriteria
 
-`func (o *SodPolicy) SetConflictingAccessCriteria(v ConflictingAccessCriteria)`
+`func (o *SodPolicy) SetConflictingAccessCriteria(v SodPolicyConflictingAccessCriteria)`
 
 SetConflictingAccessCriteria sets ConflictingAccessCriteria field to given value.
 

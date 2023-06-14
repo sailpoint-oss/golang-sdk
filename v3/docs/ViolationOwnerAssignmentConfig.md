@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssignmentRule** | Pointer to **string** | Details about the violations owner. MANAGER - identity&#39;s manager STATIC - Governance Group or Identity | [optional] 
-**OwnerRef** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**AssignmentRule** | Pointer to **NullableString** | Details about the violations owner. MANAGER - identity&#39;s manager STATIC - Governance Group or Identity | [optional] 
+**OwnerRef** | Pointer to [**ViolationOwnerAssignmentConfigOwnerRef**](ViolationOwnerAssignmentConfigOwnerRef.md) |  | [optional] 
 
 ## Methods
 
@@ -51,22 +51,32 @@ SetAssignmentRule sets AssignmentRule field to given value.
 
 HasAssignmentRule returns a boolean if a field has been set.
 
+### SetAssignmentRuleNil
+
+`func (o *ViolationOwnerAssignmentConfig) SetAssignmentRuleNil(b bool)`
+
+ SetAssignmentRuleNil sets the value for AssignmentRule to be an explicit nil
+
+### UnsetAssignmentRule
+`func (o *ViolationOwnerAssignmentConfig) UnsetAssignmentRule()`
+
+UnsetAssignmentRule ensures that no value is present for AssignmentRule, not even an explicit nil
 ### GetOwnerRef
 
-`func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() BaseReferenceDto`
+`func (o *ViolationOwnerAssignmentConfig) GetOwnerRef() ViolationOwnerAssignmentConfigOwnerRef`
 
 GetOwnerRef returns the OwnerRef field if non-nil, zero value otherwise.
 
 ### GetOwnerRefOk
 
-`func (o *ViolationOwnerAssignmentConfig) GetOwnerRefOk() (*BaseReferenceDto, bool)`
+`func (o *ViolationOwnerAssignmentConfig) GetOwnerRefOk() (*ViolationOwnerAssignmentConfigOwnerRef, bool)`
 
 GetOwnerRefOk returns a tuple with the OwnerRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerRef
 
-`func (o *ViolationOwnerAssignmentConfig) SetOwnerRef(v BaseReferenceDto)`
+`func (o *ViolationOwnerAssignmentConfig) SetOwnerRef(v ViolationOwnerAssignmentConfigOwnerRef)`
 
 SetOwnerRef sets OwnerRef field to given value.
 

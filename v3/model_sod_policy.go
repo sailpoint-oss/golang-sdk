@@ -52,7 +52,7 @@ type SodPolicy struct {
 	Scheduled *bool `json:"scheduled,omitempty"`
 	// whether a policy is query based or conflicting access based
 	Type *string `json:"type,omitempty"`
-	ConflictingAccessCriteria *ConflictingAccessCriteria `json:"conflictingAccessCriteria,omitempty"`
+	ConflictingAccessCriteria *SodPolicyConflictingAccessCriteria `json:"conflictingAccessCriteria,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -678,9 +678,9 @@ func (o *SodPolicy) SetType(v string) {
 }
 
 // GetConflictingAccessCriteria returns the ConflictingAccessCriteria field value if set, zero value otherwise.
-func (o *SodPolicy) GetConflictingAccessCriteria() ConflictingAccessCriteria {
+func (o *SodPolicy) GetConflictingAccessCriteria() SodPolicyConflictingAccessCriteria {
 	if o == nil || isNil(o.ConflictingAccessCriteria) {
-		var ret ConflictingAccessCriteria
+		var ret SodPolicyConflictingAccessCriteria
 		return ret
 	}
 	return *o.ConflictingAccessCriteria
@@ -688,7 +688,7 @@ func (o *SodPolicy) GetConflictingAccessCriteria() ConflictingAccessCriteria {
 
 // GetConflictingAccessCriteriaOk returns a tuple with the ConflictingAccessCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetConflictingAccessCriteriaOk() (*ConflictingAccessCriteria, bool) {
+func (o *SodPolicy) GetConflictingAccessCriteriaOk() (*SodPolicyConflictingAccessCriteria, bool) {
 	if o == nil || isNil(o.ConflictingAccessCriteria) {
 		return nil, false
 	}
@@ -704,8 +704,8 @@ func (o *SodPolicy) HasConflictingAccessCriteria() bool {
 	return false
 }
 
-// SetConflictingAccessCriteria gets a reference to the given ConflictingAccessCriteria and assigns it to the ConflictingAccessCriteria field.
-func (o *SodPolicy) SetConflictingAccessCriteria(v ConflictingAccessCriteria) {
+// SetConflictingAccessCriteria gets a reference to the given SodPolicyConflictingAccessCriteria and assigns it to the ConflictingAccessCriteria field.
+func (o *SodPolicy) SetConflictingAccessCriteria(v SodPolicyConflictingAccessCriteria) {
 	o.ConflictingAccessCriteria = &v
 }
 
