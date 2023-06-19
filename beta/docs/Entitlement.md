@@ -6,19 +6,21 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The entitlement id | [optional] 
 **Name** | Pointer to **string** | The entitlement name | [optional] 
+**Created** | Pointer to **time.Time** | Time when the entitlement was created | [optional] 
+**Modified** | Pointer to **time.Time** | Time when the entitlement was last modified | [optional] 
 **Attribute** | Pointer to **string** | The entitlement attribute name | [optional] 
 **Value** | Pointer to **string** | The value of the entitlement | [optional] 
 **SourceSchemaObjectType** | Pointer to **string** | The object type of the entitlement from the source schema | [optional] 
+**Privileged** | Pointer to **bool** | True if the entitlement is privileged | [optional] [default to false]
+**CloudGoverned** | Pointer to **bool** | True if the entitlement is cloud governed | [optional] [default to false]
 **Description** | Pointer to **string** | The description of the entitlement | [optional] 
-**Privileged** | Pointer to **bool** | True if the entitlement is privileged | [optional] 
-**CloudGoverned** | Pointer to **bool** | True if the entitlement is cloud governed | [optional] 
-**Created** | Pointer to **time.Time** | Time when the entitlement was created | [optional] 
-**Modified** | Pointer to **time.Time** | Time when the entitlement was last modified | [optional] 
-**Source** | Pointer to [**EntitlementSource**](EntitlementSource.md) |  | [optional] 
+**Requestable** | Pointer to **bool** | True if the entitlement is requestable | [optional] [default to false]
 **Attributes** | Pointer to **map[string]interface{}** | A map of free-form key-value pairs from the source system | [optional] 
-**Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
-**DirectPermissions** | Pointer to [**[]PermissionDto**](PermissionDto.md) |  | [optional] 
+**Source** | Pointer to [**EntitlementSource**](EntitlementSource.md) |  | [optional] 
 **Owner** | Pointer to [**OwnerReferenceDto**](OwnerReferenceDto.md) |  | [optional] 
+**DirectPermissions** | Pointer to [**[]PermissionDto**](PermissionDto.md) |  | [optional] 
+**Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
+**ManuallyUpdatedFields** | Pointer to [**ManuallyUpdatedFieldsDTO**](ManuallyUpdatedFieldsDTO.md) |  | [optional] 
 
 ## Methods
 
@@ -88,6 +90,56 @@ SetName sets Name field to given value.
 `func (o *Entitlement) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetCreated
+
+`func (o *Entitlement) GetCreated() time.Time`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *Entitlement) GetCreatedOk() (*time.Time, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *Entitlement) SetCreated(v time.Time)`
+
+SetCreated sets Created field to given value.
+
+### HasCreated
+
+`func (o *Entitlement) HasCreated() bool`
+
+HasCreated returns a boolean if a field has been set.
+
+### GetModified
+
+`func (o *Entitlement) GetModified() time.Time`
+
+GetModified returns the Modified field if non-nil, zero value otherwise.
+
+### GetModifiedOk
+
+`func (o *Entitlement) GetModifiedOk() (*time.Time, bool)`
+
+GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModified
+
+`func (o *Entitlement) SetModified(v time.Time)`
+
+SetModified sets Modified field to given value.
+
+### HasModified
+
+`func (o *Entitlement) HasModified() bool`
+
+HasModified returns a boolean if a field has been set.
 
 ### GetAttribute
 
@@ -164,31 +216,6 @@ SetSourceSchemaObjectType sets SourceSchemaObjectType field to given value.
 
 HasSourceSchemaObjectType returns a boolean if a field has been set.
 
-### GetDescription
-
-`func (o *Entitlement) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *Entitlement) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *Entitlement) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *Entitlement) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
 ### GetPrivileged
 
 `func (o *Entitlement) GetPrivileged() bool`
@@ -239,55 +266,80 @@ SetCloudGoverned sets CloudGoverned field to given value.
 
 HasCloudGoverned returns a boolean if a field has been set.
 
-### GetCreated
+### GetDescription
 
-`func (o *Entitlement) GetCreated() time.Time`
+`func (o *Entitlement) GetDescription() string`
 
-GetCreated returns the Created field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetCreatedOk
+### GetDescriptionOk
 
-`func (o *Entitlement) GetCreatedOk() (*time.Time, bool)`
+`func (o *Entitlement) GetDescriptionOk() (*string, bool)`
 
-GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCreated
+### SetDescription
 
-`func (o *Entitlement) SetCreated(v time.Time)`
+`func (o *Entitlement) SetDescription(v string)`
 
-SetCreated sets Created field to given value.
+SetDescription sets Description field to given value.
 
-### HasCreated
+### HasDescription
 
-`func (o *Entitlement) HasCreated() bool`
+`func (o *Entitlement) HasDescription() bool`
 
-HasCreated returns a boolean if a field has been set.
+HasDescription returns a boolean if a field has been set.
 
-### GetModified
+### GetRequestable
 
-`func (o *Entitlement) GetModified() time.Time`
+`func (o *Entitlement) GetRequestable() bool`
 
-GetModified returns the Modified field if non-nil, zero value otherwise.
+GetRequestable returns the Requestable field if non-nil, zero value otherwise.
 
-### GetModifiedOk
+### GetRequestableOk
 
-`func (o *Entitlement) GetModifiedOk() (*time.Time, bool)`
+`func (o *Entitlement) GetRequestableOk() (*bool, bool)`
 
-GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
+GetRequestableOk returns a tuple with the Requestable field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetModified
+### SetRequestable
 
-`func (o *Entitlement) SetModified(v time.Time)`
+`func (o *Entitlement) SetRequestable(v bool)`
 
-SetModified sets Modified field to given value.
+SetRequestable sets Requestable field to given value.
 
-### HasModified
+### HasRequestable
 
-`func (o *Entitlement) HasModified() bool`
+`func (o *Entitlement) HasRequestable() bool`
 
-HasModified returns a boolean if a field has been set.
+HasRequestable returns a boolean if a field has been set.
+
+### GetAttributes
+
+`func (o *Entitlement) GetAttributes() map[string]interface{}`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *Entitlement) GetAttributesOk() (*map[string]interface{}, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *Entitlement) SetAttributes(v map[string]interface{})`
+
+SetAttributes sets Attributes field to given value.
+
+### HasAttributes
+
+`func (o *Entitlement) HasAttributes() bool`
+
+HasAttributes returns a boolean if a field has been set.
 
 ### GetSource
 
@@ -314,30 +366,55 @@ SetSource sets Source field to given value.
 
 HasSource returns a boolean if a field has been set.
 
-### GetAttributes
+### GetOwner
 
-`func (o *Entitlement) GetAttributes() map[string]interface{}`
+`func (o *Entitlement) GetOwner() OwnerReferenceDto`
 
-GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+GetOwner returns the Owner field if non-nil, zero value otherwise.
 
-### GetAttributesOk
+### GetOwnerOk
 
-`func (o *Entitlement) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *Entitlement) GetOwnerOk() (*OwnerReferenceDto, bool)`
 
-GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAttributes
+### SetOwner
 
-`func (o *Entitlement) SetAttributes(v map[string]interface{})`
+`func (o *Entitlement) SetOwner(v OwnerReferenceDto)`
 
-SetAttributes sets Attributes field to given value.
+SetOwner sets Owner field to given value.
 
-### HasAttributes
+### HasOwner
 
-`func (o *Entitlement) HasAttributes() bool`
+`func (o *Entitlement) HasOwner() bool`
 
-HasAttributes returns a boolean if a field has been set.
+HasOwner returns a boolean if a field has been set.
+
+### GetDirectPermissions
+
+`func (o *Entitlement) GetDirectPermissions() []PermissionDto`
+
+GetDirectPermissions returns the DirectPermissions field if non-nil, zero value otherwise.
+
+### GetDirectPermissionsOk
+
+`func (o *Entitlement) GetDirectPermissionsOk() (*[]PermissionDto, bool)`
+
+GetDirectPermissionsOk returns a tuple with the DirectPermissions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDirectPermissions
+
+`func (o *Entitlement) SetDirectPermissions(v []PermissionDto)`
+
+SetDirectPermissions sets DirectPermissions field to given value.
+
+### HasDirectPermissions
+
+`func (o *Entitlement) HasDirectPermissions() bool`
+
+HasDirectPermissions returns a boolean if a field has been set.
 
 ### GetSegments
 
@@ -374,55 +451,30 @@ HasSegments returns a boolean if a field has been set.
 `func (o *Entitlement) UnsetSegments()`
 
 UnsetSegments ensures that no value is present for Segments, not even an explicit nil
-### GetDirectPermissions
+### GetManuallyUpdatedFields
 
-`func (o *Entitlement) GetDirectPermissions() []PermissionDto`
+`func (o *Entitlement) GetManuallyUpdatedFields() ManuallyUpdatedFieldsDTO`
 
-GetDirectPermissions returns the DirectPermissions field if non-nil, zero value otherwise.
+GetManuallyUpdatedFields returns the ManuallyUpdatedFields field if non-nil, zero value otherwise.
 
-### GetDirectPermissionsOk
+### GetManuallyUpdatedFieldsOk
 
-`func (o *Entitlement) GetDirectPermissionsOk() (*[]PermissionDto, bool)`
+`func (o *Entitlement) GetManuallyUpdatedFieldsOk() (*ManuallyUpdatedFieldsDTO, bool)`
 
-GetDirectPermissionsOk returns a tuple with the DirectPermissions field if it's non-nil, zero value otherwise
+GetManuallyUpdatedFieldsOk returns a tuple with the ManuallyUpdatedFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDirectPermissions
+### SetManuallyUpdatedFields
 
-`func (o *Entitlement) SetDirectPermissions(v []PermissionDto)`
+`func (o *Entitlement) SetManuallyUpdatedFields(v ManuallyUpdatedFieldsDTO)`
 
-SetDirectPermissions sets DirectPermissions field to given value.
+SetManuallyUpdatedFields sets ManuallyUpdatedFields field to given value.
 
-### HasDirectPermissions
+### HasManuallyUpdatedFields
 
-`func (o *Entitlement) HasDirectPermissions() bool`
+`func (o *Entitlement) HasManuallyUpdatedFields() bool`
 
-HasDirectPermissions returns a boolean if a field has been set.
-
-### GetOwner
-
-`func (o *Entitlement) GetOwner() OwnerReferenceDto`
-
-GetOwner returns the Owner field if non-nil, zero value otherwise.
-
-### GetOwnerOk
-
-`func (o *Entitlement) GetOwnerOk() (*OwnerReferenceDto, bool)`
-
-GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOwner
-
-`func (o *Entitlement) SetOwner(v OwnerReferenceDto)`
-
-SetOwner sets Owner field to given value.
-
-### HasOwner
-
-`func (o *Entitlement) HasOwner() bool`
-
-HasOwner returns a boolean if a field has been set.
+HasManuallyUpdatedFields returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

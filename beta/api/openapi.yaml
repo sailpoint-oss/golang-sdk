@@ -10706,6 +10706,11 @@ paths:
                   id: 2c9180858315595501831958427e5424
                   name: Addie Smith
                   type: IDENTITY
+                segments:
+                - 1d126fe0-45e2-4aea-bc64-a07e9344ef26
+                manuallyUpdatedFields:
+                  DISPLAY_NAME: true
+                  DESCRIPTION: true
                 id: 2c91808c74ff913f0175097daa9d59cd
                 name: LauncherTest1
                 created: 2020-10-08T18:33:52.029Z
@@ -10852,6 +10857,17 @@ paths:
                   value:
                     type: IDENTITY
                     id: 2c9180858315595501831958427e5424
+              Set entitlement manually updated fields:
+                description: "This example shows how to set an entitlement's manually\
+                  \ updated fields values with patch request. Values for all manually\
+                  \ updateable fields must be specified in the request. For now only\
+                  \ two entitlement fields support this: DISPLAY_NAME and DESCRIPTION."
+                value:
+                - op: replace
+                  path: /manuallyUpdatedFields
+                  value:
+                    DISPLAY_NAME: true
+                    DESCRIPTION: true
             schema:
               example:
               - op: replace
@@ -11024,6 +11040,11 @@ paths:
                   id: 2a2fdacca5e345f18bf7970cfbb8fec2
                   name: identity 1
                   type: IDENTITY
+                segments:
+                - 1d126fe0-45e2-4aea-bc64-a07e9344ef26
+                manuallyUpdatedFields:
+                  DISPLAY_NAME: true
+                  DESCRIPTION: true
                 id: 2c91808c74ff913f0175097daa9d59cd
                 name: LauncherTest1
                 created: 2020-10-08T18:33:52.029Z
@@ -11191,6 +11212,11 @@ paths:
                   id: 2a2fdacca5e345f18bf7970cfbb8fec2
                   name: identity 1
                   type: IDENTITY
+                segments:
+                - 1d126fe0-45e2-4aea-bc64-a07e9344ef26
+                manuallyUpdatedFields:
+                  DISPLAY_NAME: true
+                  DESCRIPTION: true
                 id: 2c91808c74ff913f0175097daa9d59cd
                 name: LauncherTest1
                 created: 2020-10-08T18:33:52.029Z
@@ -46072,6 +46098,9 @@ components:
           - SELECT
           - SELECT
           target: SYS.GV_$TRANSACTION
+        manuallyUpdatedFields:
+          DESCRIPTION: true
+          DISPLAY_NAME: true
         name: LauncherTest2
         modified: 2020-10-08T18:33:52.029Z
         sourceSchemaObjectType: group
@@ -46079,6 +46108,7 @@ components:
           fieldName: fieldValue
         id: 2c91808874ff91550175097daaec161c
         attribute: memberOf
+        requestable: true
         value: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
         cloudGoverned: true
       properties:
@@ -46089,6 +46119,16 @@ components:
         name:
           description: The entitlement name
           example: LauncherTest2
+          type: string
+        created:
+          description: Time when the entitlement was created
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
+          type: string
+        modified:
+          description: Time when the entitlement was last modified
+          example: 2020-10-08T18:33:52.029Z
+          format: date-time
           type: string
         attribute:
           description: The entitlement attribute name
@@ -46102,36 +46142,39 @@ components:
           description: The object type of the entitlement from the source schema
           example: group
           type: string
-        description:
-          description: The description of the entitlement
-          example: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
-          type: string
         privileged:
+          default: false
           description: True if the entitlement is privileged
           example: true
           type: boolean
         cloudGoverned:
+          default: false
           description: True if the entitlement is cloud governed
           example: true
           type: boolean
-        created:
-          description: Time when the entitlement was created
-          example: 2020-10-08T18:33:52.029Z
-          format: date-time
+        description:
+          description: The description of the entitlement
+          example: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
           type: string
-        modified:
-          description: Time when the entitlement was last modified
-          example: 2020-10-08T18:33:52.029Z
-          format: date-time
-          type: string
-        source:
-          $ref: '#/components/schemas/Entitlement_source'
+        requestable:
+          default: false
+          description: True if the entitlement is requestable
+          example: true
+          type: boolean
         attributes:
           additionalProperties: true
           description: A map of free-form key-value pairs from the source system
           example:
             fieldName: fieldValue
           type: object
+        source:
+          $ref: '#/components/schemas/Entitlement_source'
+        owner:
+          $ref: '#/components/schemas/OwnerReferenceDto'
+        directPermissions:
+          items:
+            $ref: '#/components/schemas/PermissionDto'
+          type: array
         segments:
           description: "List of IDs of segments, if any, to which this Entitlement\
             \ is assigned."
@@ -46142,12 +46185,8 @@ components:
             type: string
           nullable: true
           type: array
-        directPermissions:
-          items:
-            $ref: '#/components/schemas/PermissionDto'
-          type: array
-        owner:
-          $ref: '#/components/schemas/OwnerReferenceDto'
+        manuallyUpdatedFields:
+          $ref: '#/components/schemas/ManuallyUpdatedFieldsDTO'
       type: object
     AccessRequest:
       example:
@@ -56646,6 +56685,26 @@ components:
           - IDENTITY
           example: IDENTITY
           type: string
+      type: object
+    ManuallyUpdatedFieldsDTO:
+      example:
+        DESCRIPTION: true
+        DISPLAY_NAME: true
+      properties:
+        DISPLAY_NAME:
+          default: false
+          description: |-
+            True if the entitlements name was updated manually via entitlement import csv or patch endpoint.  False means that property value has not been change after first entitlement aggregation.
+            Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `name` property.
+          example: true
+          type: boolean
+        DESCRIPTION:
+          default: false
+          description: |-
+            True if the entitlement description was updated manually via entitlement import csv or patch endpoint.  False means that property value has not been change after first entitlement aggregation.
+            Field refers to [Entitlement response schema](https://developer.sailpoint.com/idn/api/beta/get-entitlement) > `description` property.
+          example: true
+          type: boolean
       type: object
     AccessRequestType:
       description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type

@@ -24,29 +24,32 @@ type Entitlement struct {
 	Id *string `json:"id,omitempty"`
 	// The entitlement name
 	Name *string `json:"name,omitempty"`
+	// Time when the entitlement was created
+	Created *time.Time `json:"created,omitempty"`
+	// Time when the entitlement was last modified
+	Modified *time.Time `json:"modified,omitempty"`
 	// The entitlement attribute name
 	Attribute *string `json:"attribute,omitempty"`
 	// The value of the entitlement
 	Value *string `json:"value,omitempty"`
 	// The object type of the entitlement from the source schema
 	SourceSchemaObjectType *string `json:"sourceSchemaObjectType,omitempty"`
-	// The description of the entitlement
-	Description *string `json:"description,omitempty"`
 	// True if the entitlement is privileged
 	Privileged *bool `json:"privileged,omitempty"`
 	// True if the entitlement is cloud governed
 	CloudGoverned *bool `json:"cloudGoverned,omitempty"`
-	// Time when the entitlement was created
-	Created *time.Time `json:"created,omitempty"`
-	// Time when the entitlement was last modified
-	Modified *time.Time `json:"modified,omitempty"`
-	Source *EntitlementSource `json:"source,omitempty"`
+	// The description of the entitlement
+	Description *string `json:"description,omitempty"`
+	// True if the entitlement is requestable
+	Requestable *bool `json:"requestable,omitempty"`
 	// A map of free-form key-value pairs from the source system
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	Source *EntitlementSource `json:"source,omitempty"`
+	Owner *OwnerReferenceDto `json:"owner,omitempty"`
+	DirectPermissions []PermissionDto `json:"directPermissions,omitempty"`
 	// List of IDs of segments, if any, to which this Entitlement is assigned.
 	Segments []string `json:"segments,omitempty"`
-	DirectPermissions []PermissionDto `json:"directPermissions,omitempty"`
-	Owner *OwnerReferenceDto `json:"owner,omitempty"`
+	ManuallyUpdatedFields *ManuallyUpdatedFieldsDTO `json:"manuallyUpdatedFields,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -58,6 +61,12 @@ type _Entitlement Entitlement
 // will change when the set of required properties is changed
 func NewEntitlement() *Entitlement {
 	this := Entitlement{}
+	var privileged bool = false
+	this.Privileged = &privileged
+	var cloudGoverned bool = false
+	this.CloudGoverned = &cloudGoverned
+	var requestable bool = false
+	this.Requestable = &requestable
 	return &this
 }
 
@@ -66,6 +75,12 @@ func NewEntitlement() *Entitlement {
 // but it doesn't guarantee that properties required by API are set
 func NewEntitlementWithDefaults() *Entitlement {
 	this := Entitlement{}
+	var privileged bool = false
+	this.Privileged = &privileged
+	var cloudGoverned bool = false
+	this.CloudGoverned = &cloudGoverned
+	var requestable bool = false
+	this.Requestable = &requestable
 	return &this
 }
 
@@ -131,6 +146,70 @@ func (o *Entitlement) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Entitlement) SetName(v string) {
 	o.Name = &v
+}
+
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *Entitlement) GetCreated() time.Time {
+	if o == nil || isNil(o.Created) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Entitlement) GetCreatedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Created) {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *Entitlement) HasCreated() bool {
+	if o != nil && !isNil(o.Created) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Entitlement) SetCreated(v time.Time) {
+	o.Created = &v
+}
+
+// GetModified returns the Modified field value if set, zero value otherwise.
+func (o *Entitlement) GetModified() time.Time {
+	if o == nil || isNil(o.Modified) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Modified
+}
+
+// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Entitlement) GetModifiedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Modified) {
+		return nil, false
+	}
+	return o.Modified, true
+}
+
+// HasModified returns a boolean if a field has been set.
+func (o *Entitlement) HasModified() bool {
+	if o != nil && !isNil(o.Modified) {
+		return true
+	}
+
+	return false
+}
+
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Entitlement) SetModified(v time.Time) {
+	o.Modified = &v
 }
 
 // GetAttribute returns the Attribute field value if set, zero value otherwise.
@@ -229,38 +308,6 @@ func (o *Entitlement) SetSourceSchemaObjectType(v string) {
 	o.SourceSchemaObjectType = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *Entitlement) GetDescription() string {
-	if o == nil || isNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Entitlement) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *Entitlement) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *Entitlement) SetDescription(v string) {
-	o.Description = &v
-}
-
 // GetPrivileged returns the Privileged field value if set, zero value otherwise.
 func (o *Entitlement) GetPrivileged() bool {
 	if o == nil || isNil(o.Privileged) {
@@ -325,68 +372,100 @@ func (o *Entitlement) SetCloudGoverned(v bool) {
 	o.CloudGoverned = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Entitlement) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
-		var ret time.Time
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *Entitlement) GetDescription() string {
+	if o == nil || isNil(o.Description) {
+		var ret string
 		return ret
 	}
-	return *o.Created
+	return *o.Description
 }
 
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlement) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+func (o *Entitlement) GetDescriptionOk() (*string, bool) {
+	if o == nil || isNil(o.Description) {
 		return nil, false
 	}
-	return o.Created, true
+	return o.Description, true
 }
 
-// HasCreated returns a boolean if a field has been set.
-func (o *Entitlement) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+// HasDescription returns a boolean if a field has been set.
+func (o *Entitlement) HasDescription() bool {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Entitlement) SetCreated(v time.Time) {
-	o.Created = &v
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *Entitlement) SetDescription(v string) {
+	o.Description = &v
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise.
-func (o *Entitlement) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
-		var ret time.Time
+// GetRequestable returns the Requestable field value if set, zero value otherwise.
+func (o *Entitlement) GetRequestable() bool {
+	if o == nil || isNil(o.Requestable) {
+		var ret bool
 		return ret
 	}
-	return *o.Modified
+	return *o.Requestable
 }
 
-// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
+// GetRequestableOk returns a tuple with the Requestable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlement) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+func (o *Entitlement) GetRequestableOk() (*bool, bool) {
+	if o == nil || isNil(o.Requestable) {
 		return nil, false
 	}
-	return o.Modified, true
+	return o.Requestable, true
 }
 
-// HasModified returns a boolean if a field has been set.
-func (o *Entitlement) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+// HasRequestable returns a boolean if a field has been set.
+func (o *Entitlement) HasRequestable() bool {
+	if o != nil && !isNil(o.Requestable) {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *Entitlement) SetModified(v time.Time) {
-	o.Modified = &v
+// SetRequestable gets a reference to the given bool and assigns it to the Requestable field.
+func (o *Entitlement) SetRequestable(v bool) {
+	o.Requestable = &v
+}
+
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *Entitlement) GetAttributes() map[string]interface{} {
+	if o == nil || isNil(o.Attributes) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Entitlement) GetAttributesOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.Attributes) {
+		return map[string]interface{}{}, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *Entitlement) HasAttributes() bool {
+	if o != nil && !isNil(o.Attributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
+func (o *Entitlement) SetAttributes(v map[string]interface{}) {
+	o.Attributes = v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -421,36 +500,68 @@ func (o *Entitlement) SetSource(v EntitlementSource) {
 	o.Source = &v
 }
 
-// GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *Entitlement) GetAttributes() map[string]interface{} {
-	if o == nil || isNil(o.Attributes) {
-		var ret map[string]interface{}
+// GetOwner returns the Owner field value if set, zero value otherwise.
+func (o *Entitlement) GetOwner() OwnerReferenceDto {
+	if o == nil || isNil(o.Owner) {
+		var ret OwnerReferenceDto
 		return ret
 	}
-	return o.Attributes
+	return *o.Owner
 }
 
-// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlement) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
-		return map[string]interface{}{}, false
+func (o *Entitlement) GetOwnerOk() (*OwnerReferenceDto, bool) {
+	if o == nil || isNil(o.Owner) {
+		return nil, false
 	}
-	return o.Attributes, true
+	return o.Owner, true
 }
 
-// HasAttributes returns a boolean if a field has been set.
-func (o *Entitlement) HasAttributes() bool {
-	if o != nil && !isNil(o.Attributes) {
+// HasOwner returns a boolean if a field has been set.
+func (o *Entitlement) HasOwner() bool {
+	if o != nil && !isNil(o.Owner) {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributes gets a reference to the given map[string]interface{} and assigns it to the Attributes field.
-func (o *Entitlement) SetAttributes(v map[string]interface{}) {
-	o.Attributes = v
+// SetOwner gets a reference to the given OwnerReferenceDto and assigns it to the Owner field.
+func (o *Entitlement) SetOwner(v OwnerReferenceDto) {
+	o.Owner = &v
+}
+
+// GetDirectPermissions returns the DirectPermissions field value if set, zero value otherwise.
+func (o *Entitlement) GetDirectPermissions() []PermissionDto {
+	if o == nil || isNil(o.DirectPermissions) {
+		var ret []PermissionDto
+		return ret
+	}
+	return o.DirectPermissions
+}
+
+// GetDirectPermissionsOk returns a tuple with the DirectPermissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Entitlement) GetDirectPermissionsOk() ([]PermissionDto, bool) {
+	if o == nil || isNil(o.DirectPermissions) {
+		return nil, false
+	}
+	return o.DirectPermissions, true
+}
+
+// HasDirectPermissions returns a boolean if a field has been set.
+func (o *Entitlement) HasDirectPermissions() bool {
+	if o != nil && !isNil(o.DirectPermissions) {
+		return true
+	}
+
+	return false
+}
+
+// SetDirectPermissions gets a reference to the given []PermissionDto and assigns it to the DirectPermissions field.
+func (o *Entitlement) SetDirectPermissions(v []PermissionDto) {
+	o.DirectPermissions = v
 }
 
 // GetSegments returns the Segments field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -486,68 +597,36 @@ func (o *Entitlement) SetSegments(v []string) {
 	o.Segments = v
 }
 
-// GetDirectPermissions returns the DirectPermissions field value if set, zero value otherwise.
-func (o *Entitlement) GetDirectPermissions() []PermissionDto {
-	if o == nil || isNil(o.DirectPermissions) {
-		var ret []PermissionDto
+// GetManuallyUpdatedFields returns the ManuallyUpdatedFields field value if set, zero value otherwise.
+func (o *Entitlement) GetManuallyUpdatedFields() ManuallyUpdatedFieldsDTO {
+	if o == nil || isNil(o.ManuallyUpdatedFields) {
+		var ret ManuallyUpdatedFieldsDTO
 		return ret
 	}
-	return o.DirectPermissions
+	return *o.ManuallyUpdatedFields
 }
 
-// GetDirectPermissionsOk returns a tuple with the DirectPermissions field value if set, nil otherwise
+// GetManuallyUpdatedFieldsOk returns a tuple with the ManuallyUpdatedFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Entitlement) GetDirectPermissionsOk() ([]PermissionDto, bool) {
-	if o == nil || isNil(o.DirectPermissions) {
+func (o *Entitlement) GetManuallyUpdatedFieldsOk() (*ManuallyUpdatedFieldsDTO, bool) {
+	if o == nil || isNil(o.ManuallyUpdatedFields) {
 		return nil, false
 	}
-	return o.DirectPermissions, true
+	return o.ManuallyUpdatedFields, true
 }
 
-// HasDirectPermissions returns a boolean if a field has been set.
-func (o *Entitlement) HasDirectPermissions() bool {
-	if o != nil && !isNil(o.DirectPermissions) {
+// HasManuallyUpdatedFields returns a boolean if a field has been set.
+func (o *Entitlement) HasManuallyUpdatedFields() bool {
+	if o != nil && !isNil(o.ManuallyUpdatedFields) {
 		return true
 	}
 
 	return false
 }
 
-// SetDirectPermissions gets a reference to the given []PermissionDto and assigns it to the DirectPermissions field.
-func (o *Entitlement) SetDirectPermissions(v []PermissionDto) {
-	o.DirectPermissions = v
-}
-
-// GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *Entitlement) GetOwner() OwnerReferenceDto {
-	if o == nil || isNil(o.Owner) {
-		var ret OwnerReferenceDto
-		return ret
-	}
-	return *o.Owner
-}
-
-// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Entitlement) GetOwnerOk() (*OwnerReferenceDto, bool) {
-	if o == nil || isNil(o.Owner) {
-		return nil, false
-	}
-	return o.Owner, true
-}
-
-// HasOwner returns a boolean if a field has been set.
-func (o *Entitlement) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
-		return true
-	}
-
-	return false
-}
-
-// SetOwner gets a reference to the given OwnerReferenceDto and assigns it to the Owner field.
-func (o *Entitlement) SetOwner(v OwnerReferenceDto) {
-	o.Owner = &v
+// SetManuallyUpdatedFields gets a reference to the given ManuallyUpdatedFieldsDTO and assigns it to the ManuallyUpdatedFields field.
+func (o *Entitlement) SetManuallyUpdatedFields(v ManuallyUpdatedFieldsDTO) {
+	o.ManuallyUpdatedFields = &v
 }
 
 func (o Entitlement) MarshalJSON() ([]byte, error) {
@@ -566,6 +645,12 @@ func (o Entitlement) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+	if !isNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !isNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
 	if !isNil(o.Attribute) {
 		toSerialize["attribute"] = o.Attribute
 	}
@@ -575,35 +660,35 @@ func (o Entitlement) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.SourceSchemaObjectType) {
 		toSerialize["sourceSchemaObjectType"] = o.SourceSchemaObjectType
 	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
 	if !isNil(o.Privileged) {
 		toSerialize["privileged"] = o.Privileged
 	}
 	if !isNil(o.CloudGoverned) {
 		toSerialize["cloudGoverned"] = o.CloudGoverned
 	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
+	if !isNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
-	}
-	if !isNil(o.Source) {
-		toSerialize["source"] = o.Source
+	if !isNil(o.Requestable) {
+		toSerialize["requestable"] = o.Requestable
 	}
 	if !isNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
 	}
-	if o.Segments != nil {
-		toSerialize["segments"] = o.Segments
+	if !isNil(o.Source) {
+		toSerialize["source"] = o.Source
+	}
+	if !isNil(o.Owner) {
+		toSerialize["owner"] = o.Owner
 	}
 	if !isNil(o.DirectPermissions) {
 		toSerialize["directPermissions"] = o.DirectPermissions
 	}
-	if !isNil(o.Owner) {
-		toSerialize["owner"] = o.Owner
+	if o.Segments != nil {
+		toSerialize["segments"] = o.Segments
+	}
+	if !isNil(o.ManuallyUpdatedFields) {
+		toSerialize["manuallyUpdatedFields"] = o.ManuallyUpdatedFields
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -625,19 +710,21 @@ func (o *Entitlement) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "modified")
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "sourceSchemaObjectType")
-		delete(additionalProperties, "description")
 		delete(additionalProperties, "privileged")
 		delete(additionalProperties, "cloudGoverned")
-		delete(additionalProperties, "created")
-		delete(additionalProperties, "modified")
-		delete(additionalProperties, "source")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "requestable")
 		delete(additionalProperties, "attributes")
-		delete(additionalProperties, "segments")
-		delete(additionalProperties, "directPermissions")
+		delete(additionalProperties, "source")
 		delete(additionalProperties, "owner")
+		delete(additionalProperties, "directPermissions")
+		delete(additionalProperties, "segments")
+		delete(additionalProperties, "manuallyUpdatedFields")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -773,6 +773,7 @@ Class | Method | HTTP request | Description
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
  - [ManualWorkItemDetails](docs/ManualWorkItemDetails.md)
  - [ManualWorkItemState](docs/ManualWorkItemState.md)
+ - [ManuallyUpdatedFieldsDTO](docs/ManuallyUpdatedFieldsDTO.md)
  - [Medium](docs/Medium.md)
  - [MessageCatalogDto](docs/MessageCatalogDto.md)
  - [MetricResponse](docs/MetricResponse.md)

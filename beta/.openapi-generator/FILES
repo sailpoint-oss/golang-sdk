@@ -374,6 +374,7 @@ docs/ManagedClustersApi.md
 docs/ManagerCorrelationMapping.md
 docs/ManualWorkItemDetails.md
 docs/ManualWorkItemState.md
+docs/ManuallyUpdatedFieldsDTO.md
 docs/Medium.md
 docs/MessageCatalogDto.md
 docs/MetricResponse.md
@@ -1063,6 +1064,7 @@ model_managed_cluster_types.go
 model_manager_correlation_mapping.go
 model_manual_work_item_details.go
 model_manual_work_item_state.go
+model_manually_updated_fields_dto.go
 model_medium.go
 model_message_catalog_dto.go
 model_metric_response.go
