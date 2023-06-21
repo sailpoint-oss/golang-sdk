@@ -128,6 +128,16 @@ SetChildren sets Children field to given value.
 
 HasChildren returns a boolean if a field has been set.
 
+### SetChildrenNil
+
+`func (o *Expression) SetChildrenNil(b bool)`
+
+ SetChildrenNil sets the value for Children to be an explicit nil
+
+### UnsetChildren
+`func (o *Expression) UnsetChildren()`
+
+UnsetChildren ensures that no value is present for Children, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

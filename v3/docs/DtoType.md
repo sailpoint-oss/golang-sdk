@@ -45,6 +45,8 @@
 
 * `SOURCE` (value: `"SOURCE"`)
 
+* `TAG` (value: `"TAG"`)
+
 * `TAG_CATEGORY` (value: `"TAG_CATEGORY"`)
 
 * `TASK_RESULT` (value: `"TASK_RESULT"`)

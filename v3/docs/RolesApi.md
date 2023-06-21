@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    role := *openapiclient.NewRole("Role 2567", *openapiclient.NewOwnerReference()) // Role | 
+    role := *openapiclient.NewRole("Role 2567", "TODO") // Role | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    accessProfile := *openapiclient.NewAccessProfile("Employee-database-read-write", *openapiclient.NewOwnerReference(), *openapiclient.NewAccessProfileSourceRef()) // AccessProfile | 
+    accessProfile := *openapiclient.NewAccessProfile("Employee-database-read-write", "TODO", *openapiclient.NewAccessProfileSourceRef()) // AccessProfile | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -33368,6 +33368,7 @@ components:
         name: support
         id: 2c9180a46faadee4016fb4e018c20639
         type: IDENTITY
+      nullable: true
       properties:
         type:
           $ref: '#/components/schemas/DtoType'
@@ -34123,6 +34124,7 @@ components:
       - RULE
       - SOD_POLICY
       - SOURCE
+      - TAG
       - TAG_CATEGORY
       - TASK_RESULT
       - REPORT_RESULT
@@ -36257,6 +36259,7 @@ components:
           example: []
           items:
             $ref: '#/components/schemas/Value'
+          nullable: true
           type: array
       type: object
     AccessCriteria:

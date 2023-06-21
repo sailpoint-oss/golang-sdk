@@ -30,7 +30,7 @@ type Segment struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// Optional description of the Segment
 	Description *string `json:"description,omitempty"`
-	Owner *OwnerReference `json:"owner,omitempty"`
+	Owner NullableOwnerReference `json:"owner,omitempty"`
 	VisibilityCriteria *VisibilityCriteria `json:"visibilityCriteria,omitempty"`
 	// Whether the Segment is currently active. Inactive segments have no effect.
 	Active *bool `json:"active,omitempty"`
@@ -220,36 +220,46 @@ func (o *Segment) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetOwner returns the Owner field value if set, zero value otherwise.
+// GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Segment) GetOwner() OwnerReference {
-	if o == nil || isNil(o.Owner) {
+	if o == nil || isNil(o.Owner.Get()) {
 		var ret OwnerReference
 		return ret
 	}
-	return *o.Owner
+	return *o.Owner.Get()
 }
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Segment) GetOwnerOk() (*OwnerReference, bool) {
-	if o == nil || isNil(o.Owner) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Owner, true
+	return o.Owner.Get(), o.Owner.IsSet()
 }
 
 // HasOwner returns a boolean if a field has been set.
 func (o *Segment) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
+	if o != nil && o.Owner.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOwner gets a reference to the given OwnerReference and assigns it to the Owner field.
+// SetOwner gets a reference to the given NullableOwnerReference and assigns it to the Owner field.
 func (o *Segment) SetOwner(v OwnerReference) {
-	o.Owner = &v
+	o.Owner.Set(&v)
+}
+// SetOwnerNil sets the value for Owner to be an explicit nil
+func (o *Segment) SetOwnerNil() {
+	o.Owner.Set(nil)
+}
+
+// UnsetOwner ensures that no value is present for Owner, not even an explicit nil
+func (o *Segment) UnsetOwner() {
+	o.Owner.Unset()
 }
 
 // GetVisibilityCriteria returns the VisibilityCriteria field value if set, zero value otherwise.
@@ -341,8 +351,8 @@ func (o Segment) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.Owner) {
-		toSerialize["owner"] = o.Owner
+	if o.Owner.IsSet() {
+		toSerialize["owner"] = o.Owner.Get()
 	}
 	if !isNil(o.VisibilityCriteria) {
 		toSerialize["visibilityCriteria"] = o.VisibilityCriteria

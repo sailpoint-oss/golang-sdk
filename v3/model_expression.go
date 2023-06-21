@@ -144,9 +144,9 @@ func (o *Expression) SetValue(v Value) {
 	o.Value = &v
 }
 
-// GetChildren returns the Children field value if set, zero value otherwise.
+// GetChildren returns the Children field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Expression) GetChildren() []Value {
-	if o == nil || isNil(o.Children) {
+	if o == nil {
 		var ret []Value
 		return ret
 	}
@@ -155,6 +155,7 @@ func (o *Expression) GetChildren() []Value {
 
 // GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Expression) GetChildrenOk() ([]Value, bool) {
 	if o == nil || isNil(o.Children) {
 		return nil, false
@@ -164,7 +165,7 @@ func (o *Expression) GetChildrenOk() ([]Value, bool) {
 
 // HasChildren returns a boolean if a field has been set.
 func (o *Expression) HasChildren() bool {
-	if o != nil && !isNil(o.Children) {
+	if o != nil && isNil(o.Children) {
 		return true
 	}
 
@@ -195,7 +196,7 @@ func (o Expression) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !isNil(o.Children) {
+	if o.Children != nil {
 		toSerialize["children"] = o.Children
 	}
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | The time when this Segment is created | [optional] 
 **Modified** | Pointer to **time.Time** | The time when this Segment is modified | [optional] 
 **Description** | Pointer to **string** | Optional description of the Segment | [optional] 
-**Owner** | Pointer to [**OwnerReference**](OwnerReference.md) |  | [optional] 
+**Owner** | Pointer to [**NullableOwnerReference**](OwnerReference.md) |  | [optional] 
 **VisibilityCriteria** | Pointer to [**VisibilityCriteria**](VisibilityCriteria.md) |  | [optional] 
 **Active** | Pointer to **bool** | Whether the Segment is currently active. Inactive segments have no effect. | [optional] 
 
@@ -182,6 +182,16 @@ SetOwner sets Owner field to given value.
 
 HasOwner returns a boolean if a field has been set.
 
+### SetOwnerNil
+
+`func (o *Segment) SetOwnerNil(b bool)`
+
+ SetOwnerNil sets the value for Owner to be an explicit nil
+
+### UnsetOwner
+`func (o *Segment) UnsetOwner()`
+
+UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 ### GetVisibilityCriteria
 
 `func (o *Segment) GetVisibilityCriteria() VisibilityCriteria`
