@@ -110,6 +110,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**UnlockAccount**](docs/AccountsApi.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**UpdateAccount**](docs/AccountsApi.md#updateaccount) | **Patch** /accounts/{id} | Update Account
 *CertificationCampaignsApi* | [**CreateCampaign**](docs/CertificationCampaignsApi.md#createcampaign) | **Post** /campaigns | Create a campaign
+*CertificationCampaignsApi* | [**GetActiveCampaigns**](docs/CertificationCampaignsApi.md#getactivecampaigns) | **Get** /campaigns | List Campaigns
 *CertificationCampaignsApi* | [**GetCampaign**](docs/CertificationCampaignsApi.md#getcampaign) | **Get** /campaigns/{id} | Get a campaign
 *CertificationCampaignsApi* | [**Move**](docs/CertificationCampaignsApi.md#move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 *CertificationSummariesApi* | [**GetIdentityAccessSummaries**](docs/CertificationSummariesApi.md#getidentityaccesssummaries) | **Get** /certifications/{id}/access-summaries/{type} | Access Summaries
@@ -463,6 +464,7 @@ Class | Method | HTTP request | Description
  - [FormDetails](docs/FormDetails.md)
  - [FormItemDetails](docs/FormItemDetails.md)
  - [ForwardApprovalDto](docs/ForwardApprovalDto.md)
+ - [GetActiveCampaigns200ResponseInner](docs/GetActiveCampaigns200ResponseInner.md)
  - [GetOAuthClientResponse](docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](docs/GetPersonalAccessTokenResponse.md)
  - [GrantType](docs/GrantType.md)

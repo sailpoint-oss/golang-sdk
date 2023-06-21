@@ -4256,6 +4256,164 @@ paths:
       tags:
       - Account Activities
   /campaigns:
+    get:
+      description: Gets campaigns and returns them in a list. Can provide increased
+        level of detail for each campaign if provided the correct query.
+      operationId: getActiveCampaigns
+      parameters:
+      - description: "Determines whether slim, or increased level of detail is provided\
+          \ for each campaign in the returned list. Slim is the default behavior."
+        example: FULL
+        in: query
+        name: detail
+        required: false
+        schema:
+          enum:
+          - SLIM
+          - FULL
+          type: string
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+
+          Filtering is supported for the following fields and operators:
+
+          **id**: *eq, in*
+
+          **name**: *eq, sw*
+
+          **status**: *eq, in*
+        example: name eq "Manager Campaign"
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+
+          Sorting is supported for the following fields: **name**, **created**
+        example: name
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Slim Campaign:
+                  $ref: '#/components/examples/SlimCampaigns'
+                  value: null
+                Full Campaign:
+                  $ref: '#/components/examples/FullCampaigns'
+                  value: null
+              schema:
+                items:
+                  $ref: '#/components/schemas/getActiveCampaigns_200_response_inner'
+                type: array
+          description: A list of campaign objects.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2: []
+      summary: List Campaigns
+      tags:
+      - Certification Campaigns
     post:
       description: Creates a new Certification Campaign with the information provided
         in the request body.
@@ -25214,6 +25372,175 @@ paths:
       - Work Items
 components:
   examples:
+    SlimCampaigns:
+      description: List of Slim Campaigns that would result from not specifying *detail*
+        or specifying SLIM
+      value:
+      - id: 2c918086719eec070171a7e3355a360a
+        name: Manager Review
+        description: A review of everyone's access by their manager.
+        deadline: 2020-12-25T06:00:00.123Z
+        type: MANAGER
+        status: ACTIVE
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+      - id: 7e1a731e3fb845cfbe58112ba4673ee4
+        name: Search Campaign
+        description: Search Campaign Info
+        deadline: 2022-07-26T15:42:44Z
+        type: SEARCH
+        status: ACTIVE
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+      - id: 2c918086719eec070171a7e3355a412b
+        name: AD Source Review
+        description: A review of our AD source.
+        deadline: 2020-12-25T06:00:00.123Z
+        type: SOURCE_OWNER
+        status: STAGED
+        emailNotificationEnabled: true
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        correlatedStatus: CORRELATED
+      - id: 3b2e2e5821e84127b6d693d41c40623b
+        name: Role Composition Campaign
+        description: A review done by a role owner.
+        deadline: 2020-12-25T06:00:00.468Z
+        type: ROLE_COMPOSITION
+        status: ACTIVE
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+    FullCampaigns:
+      description: List of Campaigns that would result from specifying *detail* as
+        FULL
+      value:
+      - id: 078696a575e045c68d6722ccdb9f101d
+        name: Role Composition Campaign
+        description: A review done by a role owner.
+        deadline: 2020-12-25T06:00:00.468Z
+        type: ROLE_COMPOSITION
+        status: ERROR
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        created: 2022-08-02T20:29:51.065Z
+        modified: 2022-08-02T20:29:51.331Z
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0fbe863c063c4c88a35fd7f17e8a3df5
+          name: Test Role Composition Filter
+        sunsetCommentsRequired: true
+        sourceOwnerCampaignInfo: null
+        searchCampaignInfo: null
+        roleCompositionCampaignInfo:
+          remediatorRef:
+            type: IDENTITY
+            id: 7ec252acbd4245548bc25df22348cb75
+            name: SailPoint Support
+          reviewerId: null
+          reviewer: null
+          roleIds:
+          - b15d609fc5c8434b865fe552315fda8f
+          query: null
+          description: null
+        alerts:
+        - level: ERROR
+          localizations:
+          - locale: en
+            localeOrigin: DEFAULT
+            text: Composite criterion must have children non-composite criterion must
+              not.
+        totalCertifications: 0
+        completedCertifications: 0
+        sourcesWithOrphanEntitlements: null
+        mandatoryCommentRequirement: NO_DECISIONS
+      - id: 1be8fc1103914bf0a4e14e316b6a7b7c
+        name: Manager Review
+        description: A review of everyone's access by their manager.
+        deadline: 2020-12-25T06:00:00.468Z
+        type: MANAGER
+        status: STAGED
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        created: 2022-08-02T19:00:27.731Z
+        modified: 2022-08-02T19:00:34.391Z
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0fbe863c063c4c88a35fd7f17e8a3df5
+          name: Test Manager Filter
+        sunsetCommentsRequired: true
+        sourceOwnerCampaignInfo: null
+        searchCampaignInfo: null
+        roleCompositionCampaignInfo: null
+        alerts: null
+        totalCertifications: 5
+        completedCertifications: 0
+        sourcesWithOrphanEntitlements: []
+        mandatoryCommentRequirement: NO_DECISIONS
+      - id: 7e1a731e3fb845cfbe58112ba4673ee4
+        name: Search Campaign
+        description: Search Campaign for Identities
+        deadline: 2022-07-26T15:42:44Z
+        type: SEARCH
+        status: ACTIVE
+        emailNotificationEnabled: false
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        created: 2022-07-25T15:42:18.276Z
+        modified: 2022-07-25T15:42:53.718Z
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0fbe863c063c4c88a35fd7f17e8a3df5
+          name: Test Search Filter
+        sunsetCommentsRequired: true
+        sourceOwnerCampaignInfo: null
+        searchCampaignInfo:
+          type: IDENTITY
+          description: Example of Search Campaign
+          reviewer:
+            type: IDENTITY
+            id: 7ec252acbd4245548bc25df22348cb75
+            name: null
+          query: user
+          identityIds: null
+          accessConstraints: []
+        roleCompositionCampaignInfo: null
+        alerts: null
+        totalCertifications: 6
+        completedCertifications: 0
+        sourcesWithOrphanEntitlements: []
+        mandatoryCommentRequirement: NO_DECISIONS
+      - id: ad3cf3dd50394b1bad646de4bc51b999
+        name: Source Owner Campaign
+        description: Example for Source Owner Campaign
+        deadline: 2022-08-10T17:09:02Z
+        type: SOURCE_OWNER
+        status: ACTIVE
+        emailNotificationEnabled: true
+        autoRevokeAllowed: false
+        recommendationsEnabled: false
+        created: 2022-07-27T17:04:19.027Z
+        modified: 2022-07-27T17:09:13.925Z
+        filter:
+          type: CAMPAIGN_FILTER
+          id: 0fbe863c063c4c88a35fd7f17e8a3df5
+          name: Test Source Owner Filter
+        sunsetCommentsRequired: true
+        sourceOwnerCampaignInfo:
+          sourceIds:
+          - 2c91808781fd5aea01821200dc88318e
+        searchCampaignInfo: null
+        roleCompositionCampaignInfo: null
+        alerts: null
+        totalCertifications: 2
+        completedCertifications: 0
+        sourcesWithOrphanEntitlements: []
+        correlatedStatus: CORRELATED
+        mandatoryCommentRequirement: NO_DECISIONS
     CreateCampaignManager:
       value:
         name: Manager Review
@@ -37053,6 +37380,10 @@ components:
           example: ' Rate Limit Exceeded '
           type: object
       type: object
+    getActiveCampaigns_200_response_inner:
+      oneOf:
+      - $ref: '#/components/schemas/SlimCampaign'
+      - $ref: '#/components/schemas/Campaign'
     setLifecycleState_request:
       properties:
         lifecycleStateId:

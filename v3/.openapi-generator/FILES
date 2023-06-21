@@ -205,6 +205,7 @@ docs/FilterType.md
 docs/FormDetails.md
 docs/FormItemDetails.md
 docs/ForwardApprovalDto.md
+docs/GetActiveCampaigns200ResponseInner.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
 docs/GrantType.md
@@ -638,6 +639,7 @@ model_filter_type.go
 model_form_details.go
 model_form_item_details.go
 model_forward_approval_dto.go
+model_get_active_campaigns_200_response_inner.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
 model_grant_type.go

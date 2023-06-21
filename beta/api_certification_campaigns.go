@@ -1400,7 +1400,7 @@ func (r ApiGetActiveCampaignsRequest) Filters(filters string) ApiGetActiveCampai
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**, **created**
 func (r ApiGetActiveCampaignsRequest) Sorters(sorters string) ApiGetActiveCampaignsRequest {
 	r.sorters = &sorters
 	return r
