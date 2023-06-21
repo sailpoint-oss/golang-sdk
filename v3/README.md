@@ -200,8 +200,6 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**CreateSodPolicy**](docs/SODPolicyApi.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
 *SODPolicyApi* | [**DeleteSodPolicy**](docs/SODPolicyApi.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
 *SODPolicyApi* | [**DeleteSodPolicySchedule**](docs/SODPolicyApi.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
-*SODPolicyApi* | [**GetArmPublicKey**](docs/SODPolicyApi.md#getarmpublickey) | **Get** /sod-config/public-keys/target | Get ARM public key
-*SODPolicyApi* | [**GetArmRiskById**](docs/SODPolicyApi.md#getarmriskbyid) | **Get** /sod-risks/risks/{id} | Gets the specified ARM risk.
 *SODPolicyApi* | [**GetCustomViolationReport**](docs/SODPolicyApi.md#getcustomviolationreport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
 *SODPolicyApi* | [**GetDefaultViolationReport**](docs/SODPolicyApi.md#getdefaultviolationreport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
 *SODPolicyApi* | [**GetSodAllReportRunStatus**](docs/SODPolicyApi.md#getsodallreportrunstatus) | **Get** /sod-violation-report | Get multi-report run task status
@@ -216,7 +214,6 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**StartEvaluateSodPolicy**](docs/SODPolicyApi.md#startevaluatesodpolicy) | **Post** /sod-policies/{id}/evaluate | Evaluate one policy by ID
 *SODPolicyApi* | [**StartSodAllPoliciesForOrg**](docs/SODPolicyApi.md#startsodallpoliciesfororg) | **Post** /sod-violation-report/run | Runs all policies for org
 *SODPolicyApi* | [**StartSodPolicy**](docs/SODPolicyApi.md#startsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
-*SODViolationsApi* | [**GetArmConfig**](docs/SODViolationsApi.md#getarmconfig) | **Get** /sod-violations/config | Expose just the ARM config
 *SODViolationsApi* | [**StartPredictSodViolations**](docs/SODViolationsApi.md#startpredictsodviolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
 *SODViolationsApi* | [**StartViolationCheck**](docs/SODViolationsApi.md#startviolationcheck) | **Post** /sod-violations/check | Check SOD violations
 *SavedSearchApi* | [**CreateSavedSearch**](docs/SavedSearchApi.md#createsavedsearch) | **Post** /saved-searches | Create a saved search
@@ -376,7 +373,6 @@ Class | Method | HTTP request | Description
  - [ApprovalStatus](docs/ApprovalStatus.md)
  - [ApprovalStatusDto](docs/ApprovalStatusDto.md)
  - [ApprovalSummary](docs/ApprovalSummary.md)
- - [ArmRisk](docs/ArmRisk.md)
  - [AttributeDefinition](docs/AttributeDefinition.md)
  - [AttributeDefinitionSchema](docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](docs/AttributeDefinitionType.md)
@@ -495,7 +491,6 @@ Class | Method | HTTP request | Description
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [JsonPatchOperationValueAnyOfInner](docs/JsonPatchOperationValueAnyOfInner.md)
- - [KeyExchangeServiceTarget](docs/KeyExchangeServiceTarget.md)
  - [LifecycleState](docs/LifecycleState.md)
  - [LifecycleStateAllOf](docs/LifecycleStateAllOf.md)
  - [ListAccessProfiles401Response](docs/ListAccessProfiles401Response.md)
@@ -576,8 +571,6 @@ Class | Method | HTTP request | Description
  - [PublicIdentity](docs/PublicIdentity.md)
  - [PublicIdentityAttributeConfig](docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityConfig](docs/PublicIdentityConfig.md)
- - [PublicKey](docs/PublicKey.md)
- - [PublicOrgConfigArmData](docs/PublicOrgConfigArmData.md)
  - [Query](docs/Query.md)
  - [QueryResultFilter](docs/QueryResultFilter.md)
  - [QueryType](docs/QueryType.md)

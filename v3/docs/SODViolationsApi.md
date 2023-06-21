@@ -4,71 +4,9 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetArmConfig**](SODViolationsApi.md#GetArmConfig) | **Get** /sod-violations/config | Expose just the ARM config
 [**StartPredictSodViolations**](SODViolationsApi.md#StartPredictSodViolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
 [**StartViolationCheck**](SODViolationsApi.md#StartViolationCheck) | **Post** /sod-violations/check | Check SOD violations
 
-
-
-## GetArmConfig
-
-> PublicOrgConfigArmData GetArmConfig(ctx).Execute()
-
-Expose just the ARM config
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODViolationsApi.GetArmConfig(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsApi.GetArmConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetArmConfig`: PublicOrgConfigArmData
-    fmt.Fprintf(os.Stdout, "Response from `SODViolationsApi.GetArmConfig`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetArmConfigRequest struct via the builder pattern
-
-
-### Return type
-
-[**PublicOrgConfigArmData**](PublicOrgConfigArmData.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## StartPredictSodViolations
