@@ -111,6 +111,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**UpdateAccount**](docs/AccountsApi.md#updateaccount) | **Patch** /accounts/{id} | Update Account
 *CertificationCampaignsApi* | [**CreateCampaign**](docs/CertificationCampaignsApi.md#createcampaign) | **Post** /campaigns | Create a campaign
 *CertificationCampaignsApi* | [**GetCampaign**](docs/CertificationCampaignsApi.md#getcampaign) | **Get** /campaigns/{id} | Get a campaign
+*CertificationCampaignsApi* | [**Move**](docs/CertificationCampaignsApi.md#move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 *CertificationSummariesApi* | [**GetIdentityAccessSummaries**](docs/CertificationSummariesApi.md#getidentityaccesssummaries) | **Get** /certifications/{id}/access-summaries/{type} | Access Summaries
 *CertificationSummariesApi* | [**GetIdentityDecisionSummary**](docs/CertificationSummariesApi.md#getidentitydecisionsummary) | **Get** /certifications/{id}/decision-summary | Summary of Certification Decisions
 *CertificationSummariesApi* | [**GetIdentitySummaries**](docs/CertificationSummariesApi.md#getidentitysummaries) | **Get** /certifications/{id}/identity-summaries | Identity Summaries for Campaign Certification
@@ -352,6 +353,8 @@ Class | Method | HTTP request | Description
  - [AccountToggleRequest](docs/AccountToggleRequest.md)
  - [AccountUnlockRequest](docs/AccountUnlockRequest.md)
  - [AccountsAsyncResult](docs/AccountsAsyncResult.md)
+ - [AdminReviewReassign](docs/AdminReviewReassign.md)
+ - [AdminReviewReassignReassignTo](docs/AdminReviewReassignReassignTo.md)
  - [Aggregation](docs/Aggregation.md)
  - [AggregationAllOf](docs/AggregationAllOf.md)
  - [AggregationDocument](docs/AggregationDocument.md)
@@ -407,6 +410,7 @@ Class | Method | HTTP request | Description
  - [CertificationIdentitySummary](docs/CertificationIdentitySummary.md)
  - [CertificationPhase](docs/CertificationPhase.md)
  - [CertificationReference](docs/CertificationReference.md)
+ - [CertificationTask](docs/CertificationTask.md)
  - [ClientType](docs/ClientType.md)
  - [Column](docs/Column.md)
  - [Comment](docs/Comment.md)
@@ -580,6 +584,7 @@ Class | Method | HTTP request | Description
  - [ReassignReference](docs/ReassignReference.md)
  - [Reassignment](docs/Reassignment.md)
  - [ReassignmentReference](docs/ReassignmentReference.md)
+ - [ReassignmentTrailDTO](docs/ReassignmentTrailDTO.md)
  - [ReassignmentType](docs/ReassignmentType.md)
  - [Reference](docs/Reference.md)
  - [RemediationItemDetails](docs/RemediationItemDetails.md)

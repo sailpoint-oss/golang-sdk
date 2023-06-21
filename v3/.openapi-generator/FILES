@@ -92,6 +92,8 @@ docs/AccountToggleRequest.md
 docs/AccountUnlockRequest.md
 docs/AccountsApi.md
 docs/AccountsAsyncResult.md
+docs/AdminReviewReassign.md
+docs/AdminReviewReassignReassignTo.md
 docs/Aggregation.md
 docs/AggregationAllOf.md
 docs/AggregationDocument.md
@@ -149,6 +151,7 @@ docs/CertificationIdentitySummary.md
 docs/CertificationPhase.md
 docs/CertificationReference.md
 docs/CertificationSummariesApi.md
+docs/CertificationTask.md
 docs/CertificationsApi.md
 docs/ClientType.md
 docs/Column.md
@@ -334,6 +337,7 @@ docs/Range.md
 docs/ReassignReference.md
 docs/Reassignment.md
 docs/ReassignmentReference.md
+docs/ReassignmentTrailDTO.md
 docs/ReassignmentType.md
 docs/Reference.md
 docs/RemediationItemDetails.md
@@ -524,6 +528,8 @@ model_account_source_all_of.go
 model_account_toggle_request.go
 model_account_unlock_request.go
 model_accounts_async_result.go
+model_admin_review_reassign.go
+model_admin_review_reassign_reassign_to.go
 model_aggregation.go
 model_aggregation_all_of.go
 model_aggregation_document.go
@@ -579,6 +585,7 @@ model_certification_decision.go
 model_certification_identity_summary.go
 model_certification_phase.go
 model_certification_reference.go
+model_certification_task.go
 model_client_type.go
 model_column.go
 model_comment.go
@@ -752,6 +759,7 @@ model_range.go
 model_reassign_reference.go
 model_reassignment.go
 model_reassignment_reference.go
+model_reassignment_trail_dto.go
 model_reassignment_type.go
 model_reference.go
 model_remediation_item_details.go
