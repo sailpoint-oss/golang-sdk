@@ -92,8 +92,6 @@ func localConfig() ClientConfiguration {
 	viper.AddConfigPath(filepath.Dir(executableDir))
 	viper.SetConfigName("config")
 	viper.SetConfigType("json")
-	viper.SetEnvPrefix("sail")
-	viper.AutomaticEnv()
 
 	if err2 := viper.ReadInConfig(); err != nil {
 		if _, ok := err2.(viper.ConfigFileNotFoundError); ok {
@@ -123,9 +121,6 @@ func homeConfig() ClientConfiguration {
 	viper.AddConfigPath(filepath.Join(home, ".sailpoint"))
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
-	viper.SetEnvPrefix("sail")
-
-	viper.AutomaticEnv()
 
 	if err2 := viper.ReadInConfig(); err != nil {
 		if _, ok := err2.(viper.ConfigFileNotFoundError); ok {
