@@ -857,9 +857,14 @@ tags:
   name: Work Items
 - description: |
     Workflows allow administrators to create custom automation scripts directly within IdentityNow.  These automation scripts respond to [event triggers](https://developer.sailpoint.com/idn/docs/event-triggers#how-to-get-started-with-event-triggers) and perform a series of actions to perform tasks that are either too cumbersome or not available in the IdentityNow UI.  Workflows can be configured via a graphical user interface within IdentityNow, or by creating and uploading a JSON formatted script to the Workflow service.  The Workflows API collection provides the necessary functionality to create, manage, and test your workflows via REST.
-
-    Refer to [Creating and Managing Workflows](https://documentation.sailpoint.com/saas/help/workflows/workflow-basics.html) for more information about how to build workflows in the visual builder in the IdentityNow UI.
   name: Workflows
+- description: |
+    Use this API to implement and customize Governance Group functionality. With this functionality in place, administrators can create Governance Groups and configure them for use throughout IdentityNow.
+
+    A governance group is a group of users that can make governance decisions about access. If your organization has the Access Request or Certifications service, you can configure governance groups to review access requests or certifications. A governance group can determine whether specific access is appropriate for a user.
+
+    Refer to [Creating and Managing Governance Groups](https://documentation.sailpoint.com/saas/help/common/users/governance_groups.html) for more information about how to build Governance Groups in the visual builder in the IdentityNow UI.
+  name: Governance Groups
 - description: |
     ## Access Request Dynamic Approver Event Trigger Input
     <SchemaDefinition schemaRef="#/components/schemas/Trigger-Input-AccessRequestDynamicApprover" />
@@ -43457,6 +43462,210 @@ paths:
       summary: Test Workflow via External Trigger
       tags:
       - Workflows
+  /workgroups:
+    get:
+      description: This API returns list of Governance Groups
+      operationId: listWorkgroups
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Note that for this API the maximum value for limit is 50.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 50
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          maximum: 50
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: "Sort results using the standard syntax described in [V3 API\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)\
+          \ Sorting is supported for the following fields: **name, created, modified**"
+        example: "name,-modified"
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/WorkgroupDto'
+                type: array
+          description: List of Governance Groups
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:workgroup:read
+        - idn:workgroup:write
+      summary: List Governance Groups
+      tags:
+      - Governance Groups
+    post:
+      description: This API creates a new Governance Group.
+      operationId: createWorkgroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkgroupDto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkgroupDto'
+          description: Governance Group object created.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:workgroup:read
+        - idn:workgroup:write
+      summary: Create a new Governance Group.
+      tags:
+      - Governance Groups
 components:
   examples:
     SlimCampaigns:
@@ -55496,6 +55705,40 @@ components:
           example: https://tenant.api.identitynow.com/beta/workflows/execute/external/c17bea3a-574d-453c-9e04-4365fbf5af0b
           type: string
       type: object
+    WorkgroupDto:
+      example:
+        owner:
+          emailAddress: william@sailpoint.com
+          displayName: William
+          name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
+        connectionCount: 1641498673000
+        memberCount: 1641498673000
+        description: Description of the Governance Group
+        id: 2c91808568c529c60168cca6f90c1313
+      properties:
+        owner:
+          $ref: '#/components/schemas/Owner'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        description:
+          description: Description of the Governance Group
+          example: Description of the Governance Group
+          type: string
+        memberCount:
+          description: Number of members in the Governance Group.
+          example: 1641498673000
+          format: int64
+          type: integer
+        connectionCount:
+          description: Number of connections in the Governance Group.
+          example: 1641498673000
+          format: int64
+          type: integer
+      type: object
     ApprovalItemDetails:
       example:
         application: Active Directory
@@ -59657,6 +59900,33 @@ components:
           example: text
           nullable: true
           type: object
+      type: object
+    Owner:
+      example:
+        emailAddress: william@sailpoint.com
+        displayName: William
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+      properties:
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable name of the owner
+          example: William Wilson
+          type: string
+        displayName:
+          description: Human-readable display name of the owner
+          example: William
+          type: string
+        emailAddress:
+          description: Email ID of the owner
+          example: william@sailpoint.com
+          type: string
       type: object
     CertificationDto:
       properties:

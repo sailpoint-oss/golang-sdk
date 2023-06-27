@@ -15,6 +15,7 @@ api_connector_rule_management.go
 api_connectors.go
 api_custom_password_instructions.go
 api_entitlements.go
+api_governance_groups.go
 api_iai_access_request_recommendations.go
 api_iai_common_access.go
 api_iai_outliers.go
@@ -282,6 +283,7 @@ docs/GetActiveCampaigns200ResponseInner.md
 docs/GetHistoricalIdentityEvents200ResponseInner.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
+docs/GovernanceGroupsApi.md
 docs/GrantType.md
 docs/HttpAuthenticationType.md
 docs/HttpConfig.md
@@ -426,6 +428,7 @@ docs/OutlierContributingFeature.md
 docs/OutlierContributingFeatureValue.md
 docs/OutlierFeatureTranslation.md
 docs/OutlierSummary.md
+docs/Owner.md
 docs/OwnerReference.md
 docs/OwnerReferenceDto.md
 docs/PasswordChangeRequest.md
@@ -768,6 +771,7 @@ docs/WorkflowOAuthClient.md
 docs/WorkflowTrigger.md
 docs/WorkflowTriggerAttributes.md
 docs/WorkflowsApi.md
+docs/WorkgroupDto.md
 git_push.sh
 go.mod
 go.sum
@@ -1112,6 +1116,7 @@ model_outlier_contributing_feature.go
 model_outlier_contributing_feature_value.go
 model_outlier_feature_translation.go
 model_outlier_summary.go
+model_owner.go
 model_owner_reference.go
 model_owner_reference_dto.go
 model_password_change_request.go
@@ -1432,6 +1437,7 @@ model_workflow_library_trigger.go
 model_workflow_o_auth_client.go
 model_workflow_trigger.go
 model_workflow_trigger_attributes.go
+model_workgroup_dto.go
 response.go
 test/api_access_profiles_test.go
 test/api_access_request_approvals_test.go
@@ -1445,6 +1451,7 @@ test/api_connector_rule_management_test.go
 test/api_connectors_test.go
 test/api_custom_password_instructions_test.go
 test/api_entitlements_test.go
+test/api_governance_groups_test.go
 test/api_iai_access_request_recommendations_test.go
 test/api_iai_common_access_test.go
 test/api_iai_outliers_test.go
