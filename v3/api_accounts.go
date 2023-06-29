@@ -1845,7 +1845,7 @@ Use this API to modify the following fields:
 
 * `manuallyCorrelated`
 
->**NOTE: All other fields can not be modified.**
+>**NOTE: All other fields cannot be modified.**
 
 The request must provide a JSONPatch payload.
 

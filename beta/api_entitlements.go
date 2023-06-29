@@ -769,19 +769,19 @@ type ApiListEntitlementsRequest struct {
 	filters *string
 }
 
-// The account ID. If specified, returns only entitlements associated with the given Account. Can not be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
+// The account ID. If specified, returns only entitlements associated with the given Account. Cannot be specified with the **filters**, **segmented-for-identity**, **for-segment-ids**, or **include-unsegmented** param(s).
 func (r ApiListEntitlementsRequest) AccountId(accountId string) ApiListEntitlementsRequest {
 	r.accountId = &accountId
 	return r
 }
 
-// If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. By convention, the value **me** can stand in for the current user&#39;s Identity ID. Can not be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user&#39;s Identity.
+// If present and not empty, additionally filters Entitlements to those which are assigned to the Segment(s) which are visible to the Identity with the specified ID. By convention, the value **me** can stand in for the current user&#39;s Identity ID. Cannot be specified with the **account-id** or **for-segment-ids** param(s). It is also illegal to specify a value that refers to a different user&#39;s Identity.
 func (r ApiListEntitlementsRequest) SegmentedForIdentity(segmentedForIdentity string) ApiListEntitlementsRequest {
 	r.segmentedForIdentity = &segmentedForIdentity
 	return r
 }
 
-// If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Can not be specified with the **account-id** or **segmented-for-identity** param(s).
+// If present and not empty, additionally filters Access Profiles to those which are assigned to the Segment(s) with the specified IDs. Cannot be specified with the **account-id** or **segmented-for-identity** param(s).
 func (r ApiListEntitlementsRequest) ForSegmentIds(forSegmentIds string) ApiListEntitlementsRequest {
 	r.forSegmentIds = &forSegmentIds
 	return r

@@ -86,13 +86,13 @@ func Test_v3_SavedSearchApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SavedSearchApiService UpdateSavedSearch", func(t *testing.T) {
+	t.Run("Test SavedSearchApiService PutSavedSearch", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.SavedSearchApi.UpdateSavedSearch(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SavedSearchApi.PutSavedSearch(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

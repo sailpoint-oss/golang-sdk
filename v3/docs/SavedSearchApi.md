@@ -5,11 +5,11 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateSavedSearch**](SavedSearchApi.md#CreateSavedSearch) | **Post** /saved-searches | Create a saved search
-[**DeleteSavedSearch**](SavedSearchApi.md#DeleteSavedSearch) | **Delete** /saved-searches/{id} | Delete a document by ID
+[**DeleteSavedSearch**](SavedSearchApi.md#DeleteSavedSearch) | **Delete** /saved-searches/{id} | Delete document by ID
 [**ExecuteSavedSearch**](SavedSearchApi.md#ExecuteSavedSearch) | **Post** /saved-searches/{id}/execute | Execute a saved search by ID
-[**GetSavedSearch**](SavedSearchApi.md#GetSavedSearch) | **Get** /saved-searches/{id} | Return a saved search by ID
+[**GetSavedSearch**](SavedSearchApi.md#GetSavedSearch) | **Get** /saved-searches/{id} | Return saved search by ID
 [**ListSavedSearches**](SavedSearchApi.md#ListSavedSearches) | **Get** /saved-searches | Return a list of Saved Searches
-[**UpdateSavedSearch**](SavedSearchApi.md#UpdateSavedSearch) | **Put** /saved-searches/{id} | Updates an existing saved search 
+[**PutSavedSearch**](SavedSearchApi.md#PutSavedSearch) | **Put** /saved-searches/{id} | Updates an existing saved search 
 
 
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 > DeleteSavedSearch(ctx, id).Execute()
 
-Delete a document by ID
+Delete document by ID
 
 
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 > SavedSearch GetSavedSearch(ctx, id).Execute()
 
-Return a saved search by ID
+Return saved search by ID
 
 
 
@@ -359,9 +359,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateSavedSearch
+## PutSavedSearch
 
-> SavedSearch UpdateSavedSearch(ctx, id).SavedSearch(savedSearch).Execute()
+> SavedSearch PutSavedSearch(ctx, id).SavedSearch(savedSearch).Execute()
 
 Updates an existing saved search 
 
@@ -385,13 +385,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchApi.UpdateSavedSearch(context.Background(), id).SavedSearch(savedSearch).Execute()
+    resp, r, err := apiClient.SavedSearchApi.PutSavedSearch(context.Background(), id).SavedSearch(savedSearch).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.UpdateSavedSearch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchApi.PutSavedSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateSavedSearch`: SavedSearch
-    fmt.Fprintf(os.Stdout, "Response from `SavedSearchApi.UpdateSavedSearch`: %v\n", resp)
+    // response from `PutSavedSearch`: SavedSearch
+    fmt.Fprintf(os.Stdout, "Response from `SavedSearchApi.PutSavedSearch`: %v\n", resp)
 }
 ```
 
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateSavedSearchRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutSavedSearchRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

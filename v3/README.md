@@ -217,11 +217,11 @@ Class | Method | HTTP request | Description
 *SODViolationsApi* | [**StartPredictSodViolations**](docs/SODViolationsApi.md#startpredictsodviolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
 *SODViolationsApi* | [**StartViolationCheck**](docs/SODViolationsApi.md#startviolationcheck) | **Post** /sod-violations/check | Check SOD violations
 *SavedSearchApi* | [**CreateSavedSearch**](docs/SavedSearchApi.md#createsavedsearch) | **Post** /saved-searches | Create a saved search
-*SavedSearchApi* | [**DeleteSavedSearch**](docs/SavedSearchApi.md#deletesavedsearch) | **Delete** /saved-searches/{id} | Delete a document by ID
+*SavedSearchApi* | [**DeleteSavedSearch**](docs/SavedSearchApi.md#deletesavedsearch) | **Delete** /saved-searches/{id} | Delete document by ID
 *SavedSearchApi* | [**ExecuteSavedSearch**](docs/SavedSearchApi.md#executesavedsearch) | **Post** /saved-searches/{id}/execute | Execute a saved search by ID
-*SavedSearchApi* | [**GetSavedSearch**](docs/SavedSearchApi.md#getsavedsearch) | **Get** /saved-searches/{id} | Return a saved search by ID
+*SavedSearchApi* | [**GetSavedSearch**](docs/SavedSearchApi.md#getsavedsearch) | **Get** /saved-searches/{id} | Return saved search by ID
 *SavedSearchApi* | [**ListSavedSearches**](docs/SavedSearchApi.md#listsavedsearches) | **Get** /saved-searches | Return a list of Saved Searches
-*SavedSearchApi* | [**UpdateSavedSearch**](docs/SavedSearchApi.md#updatesavedsearch) | **Put** /saved-searches/{id} | Updates an existing saved search 
+*SavedSearchApi* | [**PutSavedSearch**](docs/SavedSearchApi.md#putsavedsearch) | **Put** /saved-searches/{id} | Updates an existing saved search 
 *ScheduledSearchApi* | [**CreateScheduledSearch**](docs/ScheduledSearchApi.md#createscheduledsearch) | **Post** /scheduled-searches | Create a new scheduled search
 *ScheduledSearchApi* | [**DeleteScheduledSearch**](docs/ScheduledSearchApi.md#deletescheduledsearch) | **Delete** /scheduled-searches/{id} | Delete a Scheduled Search
 *ScheduledSearchApi* | [**GetScheduledSearch**](docs/ScheduledSearchApi.md#getscheduledsearch) | **Get** /scheduled-searches/{id} | Get a Scheduled Search
