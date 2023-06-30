@@ -418,16 +418,9 @@ paths:
         style: simple
       requestBody:
         content:
-          '*/*':
+          application/json:
             schema:
-              example: "\"{\\n   \\\"filter\\\" : \\\"uid == \\\\\\\"1219028\\\\\\\
-                \"\\\",\\n   \\\"refreshArgs\\\" : {\\n     \\\"correlateEntitlements\\\
-                \" : \\\"true\\\",\\n     \\\"promoteAttributes\\\" : \\\"true\\\"\
-                ,\\n     \\\"refreshManagerStatus\\\" : \\\"false\\\",\\n     \\\"\
-                synchronizeAttributes\\\" : \\\"false\\\",\\n     \\\"pruneIdentities\\\
-                \" : \\\"false\\\",\\n     \\\"provision\\\" : \\\"true\\\"\\n   }\\\
-                n}\""
-              type: string
+              $ref: '#/components/schemas/refreshIdentities_request'
       responses:
         "200":
           content:
@@ -1087,6 +1080,23 @@ components:
           format: This is my application
           type: string
       type: object
+    refreshIdentities_request:
+      example: "\"{\\n   \\\"filter\\\" : \\\"uid == \\\\\\\"1219028\\\\\\\"\\\",\\\
+        n   \\\"refreshArgs\\\" : {\\n     \\\"correlateEntitlements\\\" : \\\"true\\\
+        \",\\n     \\\"promoteAttributes\\\" : \\\"true\\\",\\n     \\\"refreshManagerStatus\\\
+        \" : \\\"false\\\",\\n     \\\"synchronizeAttributes\\\" : \\\"false\\\",\\\
+        n     \\\"pruneIdentities\\\" : \\\"false\\\",\\n     \\\"provision\\\" :\
+        \ \\\"true\\\"\\n   }\\n}\""
+      properties:
+        filter:
+          description: |
+            Defines the identity or identities which this refresh applies to.
+            The filter must use searchable identity attributes.
+            If the filter cannot be understood or parsed, all identities will be refreshed.
+          type: string
+        refreshArgs:
+          $ref: '#/components/schemas/refreshIdentities_request_refreshArgs'
+      type: object
     listApplications_200_response_inner_appProfiles_inner:
       example:
         xsdVersion: xsdVersion
@@ -1105,6 +1115,36 @@ components:
           type: string
         xsdVersion:
           type: string
+      type: object
+    refreshIdentities_request_refreshArgs:
+      properties:
+        correlateEntitlements:
+          description: "This will refresh entitlement, role, and access profile calculations."
+          example: true
+          type: boolean
+        promoteAttributes:
+          description: This will calculate identity attributes.
+          example: true
+          type: boolean
+        refreshManagerStatus:
+          description: |
+            This recalculates manager correlation and manager status. Note: This is computationally expensive to run.
+          example: false
+          type: boolean
+        synchronizeAttributes:
+          description: Enables attribute synchronization.
+          example: false
+          type: boolean
+        pruneIdentities:
+          description: |
+            Option that will enable deletion of an identity objects if there are no account objects. Note: This is not typically used in IdentityNow, except by guidance from SailPoint.
+          example: false
+          type: boolean
+        provision:
+          description: Enables provisioning of role assignments with entitlements
+            that are not currently fulfilled.
+          example: false
+          type: boolean
       type: object
   securitySchemes:
     oauth2:

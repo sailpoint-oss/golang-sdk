@@ -26,7 +26,7 @@ type ApiRefreshIdentitiesRequest struct {
 	ctx context.Context
 	ApiService *SystemApiService
 	contentType *string
-	body *string
+	refreshIdentitiesRequest *RefreshIdentitiesRequest
 }
 
 func (r ApiRefreshIdentitiesRequest) ContentType(contentType string) ApiRefreshIdentitiesRequest {
@@ -34,8 +34,8 @@ func (r ApiRefreshIdentitiesRequest) ContentType(contentType string) ApiRefreshI
 	return r
 }
 
-func (r ApiRefreshIdentitiesRequest) Body(body string) ApiRefreshIdentitiesRequest {
-	r.body = &body
+func (r ApiRefreshIdentitiesRequest) RefreshIdentitiesRequest(refreshIdentitiesRequest RefreshIdentitiesRequest) ApiRefreshIdentitiesRequest {
+	r.refreshIdentitiesRequest = &refreshIdentitiesRequest
 	return r
 }
 
@@ -91,7 +91,7 @@ func (a *SystemApiService) RefreshIdentitiesExecute(r ApiRefreshIdentitiesReques
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -111,7 +111,7 @@ func (a *SystemApiService) RefreshIdentitiesExecute(r ApiRefreshIdentitiesReques
 		parameterAddToQuery(localVarQueryParams, "Content-Type", r.contentType, "")
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.refreshIdentitiesRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

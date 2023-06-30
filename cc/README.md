@@ -112,6 +112,8 @@ Class | Method | HTTP request | Description
  - [ListApplications200ResponseInnerHealth](docs/ListApplications200ResponseInnerHealth.md)
  - [ListApplications200ResponseInnerOwner](docs/ListApplications200ResponseInnerOwner.md)
  - [LoadAccountsRequest](docs/LoadAccountsRequest.md)
+ - [RefreshIdentitiesRequest](docs/RefreshIdentitiesRequest.md)
+ - [RefreshIdentitiesRequestRefreshArgs](docs/RefreshIdentitiesRequestRefreshArgs.md)
  - [UpdateApplicationRequest](docs/UpdateApplicationRequest.md)
  - [UpdateUserPermissionsRequest](docs/UpdateUserPermissionsRequest.md)
 

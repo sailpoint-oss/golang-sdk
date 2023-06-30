@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## RefreshIdentities
 
-> RefreshIdentities(ctx).ContentType(contentType).Body(body).Execute()
+> RefreshIdentities(ctx).ContentType(contentType).RefreshIdentitiesRequest(refreshIdentitiesRequest).Execute()
 
 Refresh Identities
 
@@ -30,11 +30,11 @@ import (
 
 func main() {
     contentType := "application/json" // string |  (optional)
-    body := "body_example" // string |  (optional)
+    refreshIdentitiesRequest := *openapiclient.NewRefreshIdentitiesRequest() // RefreshIdentitiesRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SystemApi.RefreshIdentities(context.Background()).ContentType(contentType).Body(body).Execute()
+    resp, r, err := apiClient.SystemApi.RefreshIdentities(context.Background()).ContentType(contentType).RefreshIdentitiesRequest(refreshIdentitiesRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SystemApi.RefreshIdentities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -54,7 +54,7 @@ Other parameters are passed through a pointer to a apiRefreshIdentitiesRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string** |  | 
- **body** | **string** |  | 
+ **refreshIdentitiesRequest** | [**RefreshIdentitiesRequest**](RefreshIdentitiesRequest.md) |  | 
 
 ### Return type
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

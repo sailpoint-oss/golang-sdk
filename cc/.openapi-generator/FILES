@@ -27,6 +27,8 @@ docs/ListApplications200ResponseInnerAppProfilesInner.md
 docs/ListApplications200ResponseInnerHealth.md
 docs/ListApplications200ResponseInnerOwner.md
 docs/LoadAccountsRequest.md
+docs/RefreshIdentitiesRequest.md
+docs/RefreshIdentitiesRequestRefreshArgs.md
 docs/SourcesAccountsApi.md
 docs/SourcesAggregationApi.md
 docs/SystemApi.md
@@ -48,6 +50,8 @@ model_list_applications_200_response_inner_app_profiles_inner.go
 model_list_applications_200_response_inner_health.go
 model_list_applications_200_response_inner_owner.go
 model_load_accounts_request.go
+model_refresh_identities_request.go
+model_refresh_identities_request_refresh_args.go
 model_update_application_request.go
 model_update_user_permissions_request.go
 response.go
