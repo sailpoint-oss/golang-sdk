@@ -366,6 +366,8 @@ type ApiListEntitlementChildrenRequest struct {
 	limit *int32
 	offset *int32
 	count *bool
+	sorters *string
+	filters *string
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -383,6 +385,18 @@ func (r ApiListEntitlementChildrenRequest) Offset(offset int32) ApiListEntitleme
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListEntitlementChildrenRequest) Count(count bool) ApiListEntitlementChildrenRequest {
 	r.count = &count
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**
+func (r ApiListEntitlementChildrenRequest) Sorters(sorters string) ApiListEntitlementChildrenRequest {
+	r.sorters = &sorters
+	return r
+}
+
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*
+func (r ApiListEntitlementChildrenRequest) Filters(filters string) ApiListEntitlementChildrenRequest {
+	r.filters = &filters
 	return r
 }
 
@@ -437,6 +451,12 @@ func (a *EntitlementsApiService) ListEntitlementChildrenExecute(r ApiListEntitle
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	}
+	if r.sorters != nil {
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+	}
+	if r.filters != nil {
+		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -564,6 +584,8 @@ type ApiListEntitlementParentsRequest struct {
 	limit *int32
 	offset *int32
 	count *bool
+	sorters *string
+	filters *string
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -581,6 +603,18 @@ func (r ApiListEntitlementParentsRequest) Offset(offset int32) ApiListEntitlemen
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiListEntitlementParentsRequest) Count(count bool) ApiListEntitlementParentsRequest {
 	r.count = &count
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **id, name, created, modified, type, attribute, value, source.id**
+func (r ApiListEntitlementParentsRequest) Sorters(sorters string) ApiListEntitlementParentsRequest {
+	r.sorters = &sorters
+	return r
+}
+
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq* **created**: *gt, lt, ge, le* **modified**: *gt, lt, ge, le*
+func (r ApiListEntitlementParentsRequest) Filters(filters string) ApiListEntitlementParentsRequest {
+	r.filters = &filters
 	return r
 }
 
@@ -635,6 +669,12 @@ func (a *EntitlementsApiService) ListEntitlementParentsExecute(r ApiListEntitlem
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	}
+	if r.sorters != nil {
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+	}
+	if r.filters != nil {
+		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1023,7 +1063,7 @@ PatchEntitlement Patch an entitlement
 
 This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 
-The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**.
+The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**, **name**, **description**.
 
 When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
 
