@@ -162,6 +162,7 @@ Class | Method | HTTP request | Description
 *EntitlementsApi* | [**PutEntitlementRequestConfig**](docs/EntitlementsApi.md#putentitlementrequestconfig) | **Put** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
 *EntitlementsApi* | [**UpdateEntitlementsInBulk**](docs/EntitlementsApi.md#updateentitlementsinbulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 *GovernanceGroupsApi* | [**CreateWorkgroup**](docs/GovernanceGroupsApi.md#createworkgroup) | **Post** /workgroups | Create a new Governance Group.
+*GovernanceGroupsApi* | [**GetWorkgroup**](docs/GovernanceGroupsApi.md#getworkgroup) | **Get** /workgroups/{id} | Get an Governance Groups
 *GovernanceGroupsApi* | [**ListWorkgroups**](docs/GovernanceGroupsApi.md#listworkgroups) | **Get** /workgroups | List Governance Groups
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsIgnoredItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsignoreditem) | **Post** /ai-access-request-recommendations/ignored-items | Notification of Ignored Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsRequestedItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsrequesteditem) | **Post** /ai-access-request-recommendations/requested-items | Notification of Requested Access Request Recommendations

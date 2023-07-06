@@ -34,6 +34,20 @@ func Test_beta_GovernanceGroupsApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test GovernanceGroupsApiService GetWorkgroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.GovernanceGroupsApi.GetWorkgroup(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GovernanceGroupsApiService ListWorkgroups", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
