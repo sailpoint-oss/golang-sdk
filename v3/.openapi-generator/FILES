@@ -92,6 +92,7 @@ docs/AccountToggleRequest.md
 docs/AccountUnlockRequest.md
 docs/AccountsApi.md
 docs/AccountsAsyncResult.md
+docs/ActivateCampaignOptions.md
 docs/AdminReviewReassign.md
 docs/AdminReviewReassignReassignTo.md
 docs/Aggregation.md
@@ -525,6 +526,7 @@ model_account_source_all_of.go
 model_account_toggle_request.go
 model_account_unlock_request.go
 model_accounts_async_result.go
+model_activate_campaign_options.go
 model_admin_review_reassign.go
 model_admin_review_reassign_reassign_to.go
 model_aggregation.go

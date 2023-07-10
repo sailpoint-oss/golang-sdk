@@ -116,7 +116,6 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**ReloadAccount**](docs/AccountsApi.md#reloadaccount) | **Post** /accounts/{id}/reload | Reload Account
 *AccountsApi* | [**UnlockAccount**](docs/AccountsApi.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**UpdateAccount**](docs/AccountsApi.md#updateaccount) | **Patch** /accounts/{id} | Update Account
-*CertificationCampaignsApi* | [**ActivateCampaign**](docs/CertificationCampaignsApi.md#activatecampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
 *CertificationCampaignsApi* | [**CompleteCampaign**](docs/CertificationCampaignsApi.md#completecampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
 *CertificationCampaignsApi* | [**CreateCampaign**](docs/CertificationCampaignsApi.md#createcampaign) | **Post** /campaigns | Create a campaign
 *CertificationCampaignsApi* | [**CreateCampaignTemplate**](docs/CertificationCampaignsApi.md#createcampaigntemplate) | **Post** /campaign-templates | Create a Campaign Template
@@ -137,6 +136,7 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**RunCampaignReport**](docs/CertificationCampaignsApi.md#runcampaignreport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
 *CertificationCampaignsApi* | [**SetCampaignReportsConfig**](docs/CertificationCampaignsApi.md#setcampaignreportsconfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
 *CertificationCampaignsApi* | [**SetCampaignTemplateSchedule**](docs/CertificationCampaignsApi.md#setcampaigntemplateschedule) | **Put** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
+*CertificationCampaignsApi* | [**StartCampaign**](docs/CertificationCampaignsApi.md#startcampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
 *CertificationCampaignsApi* | [**UpdateCampaign**](docs/CertificationCampaignsApi.md#updatecampaign) | **Patch** /campaigns/{id} | Update a Campaign
 *CertificationsApi* | [**GetIdentityCertificationItemPermissions**](docs/CertificationsApi.md#getidentitycertificationitempermissions) | **Get** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for Entitlement Certification Item
 *CertificationsApi* | [**GetIdentityCertificationPendingTasks**](docs/CertificationsApi.md#getidentitycertificationpendingtasks) | **Get** /certifications/{id}/tasks-pending | Pending Certification Tasks

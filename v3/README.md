@@ -113,6 +113,7 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**GetActiveCampaigns**](docs/CertificationCampaignsApi.md#getactivecampaigns) | **Get** /campaigns | List Campaigns
 *CertificationCampaignsApi* | [**GetCampaign**](docs/CertificationCampaignsApi.md#getcampaign) | **Get** /campaigns/{id} | Get a campaign
 *CertificationCampaignsApi* | [**Move**](docs/CertificationCampaignsApi.md#move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
+*CertificationCampaignsApi* | [**StartCampaign**](docs/CertificationCampaignsApi.md#startcampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
 *CertificationSummariesApi* | [**GetIdentityAccessSummaries**](docs/CertificationSummariesApi.md#getidentityaccesssummaries) | **Get** /certifications/{id}/access-summaries/{type} | Access Summaries
 *CertificationSummariesApi* | [**GetIdentityDecisionSummary**](docs/CertificationSummariesApi.md#getidentitydecisionsummary) | **Get** /certifications/{id}/decision-summary | Summary of Certification Decisions
 *CertificationSummariesApi* | [**GetIdentitySummaries**](docs/CertificationSummariesApi.md#getidentitysummaries) | **Get** /certifications/{id}/identity-summaries | Identity Summaries for Campaign Certification
@@ -351,6 +352,7 @@ Class | Method | HTTP request | Description
  - [AccountToggleRequest](docs/AccountToggleRequest.md)
  - [AccountUnlockRequest](docs/AccountUnlockRequest.md)
  - [AccountsAsyncResult](docs/AccountsAsyncResult.md)
+ - [ActivateCampaignOptions](docs/ActivateCampaignOptions.md)
  - [AdminReviewReassign](docs/AdminReviewReassign.md)
  - [AdminReviewReassignReassignTo](docs/AdminReviewReassignReassignTo.md)
  - [Aggregation](docs/Aggregation.md)

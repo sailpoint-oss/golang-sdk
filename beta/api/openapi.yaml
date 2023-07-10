@@ -6434,6 +6434,7 @@ paths:
       - Account Aggregations
   /campaigns:
     get:
+      deprecated: true
       description: Gets campaigns and returns them in a list. Can provide increased
         level of detail for each campaign if provided the correct query.
       operationId: getActiveCampaigns
@@ -7054,10 +7055,11 @@ paths:
       - Certification Campaigns
   /campaigns/{id}/activate:
     post:
+      deprecated: true
       description: |-
         Submits a job to activate the campaign with the given Id. The campaign must be staged.
         Requires roles of CERT_ADMIN and ORG_ADMIN
-      operationId: activateCampaign
+      operationId: startCampaign
       parameters:
       - description: The campaign id
         example: ef38f94347e94562b5bb8424a56397d8
@@ -7160,6 +7162,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:campaign:update
       summary: Activate a Campaign
       tags:
       - Certification Campaigns

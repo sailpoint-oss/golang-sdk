@@ -4410,7 +4410,8 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2: []
+      - oauth2:
+        - idn:campaign-list:read
       summary: List Campaigns
       tags:
       - Certification Campaigns
@@ -4746,6 +4747,120 @@ paths:
       - oauth2:
         - idn:certification:write
       summary: Reassign Certifications
+      tags:
+      - Certification Campaigns
+  /campaigns/{id}/activate:
+    post:
+      description: |-
+        Submits a job to activate the campaign with the given Id. The campaign must be staged.
+        Requires roles of CERT_ADMIN and ORG_ADMIN
+      operationId: startCampaign
+      parameters:
+      - description: The campaign id
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivateCampaignOptions'
+        description: "Optional. If no timezone is specified, the standard UTC timezone\
+          \ is used (i.e. UTC+00:00). Although this can take any timezone, the intended\
+          \ value is the caller's timezone. The activation time calculated from the\
+          \ given timezone may cause the campaign deadline time to be modified, but\
+          \ it will remain within the original date. The timezone must be in a valid\
+          \ ISO 8601 format."
+        required: false
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:campaign:update
+      summary: Activate a Campaign
       tags:
       - Certification Campaigns
   /certifications:
@@ -29516,6 +29631,18 @@ components:
           description: The date and time on which this task was created.
           example: 2020-09-24T18:10:47.693Z
           format: date-time
+          type: string
+      type: object
+    ActivateCampaignOptions:
+      example:
+        timeZone: -05:00
+      properties:
+        timeZone:
+          default: Z
+          description: "The timezone must be in a valid ISO 8601 format. Timezones\
+            \ in ISO 8601 are represented as UTC (represented as 'Z') or as an offset\
+            \ from UTC. The offset format can be +/-hh:mm, +/-hhmm, or +/-hh."
+          example: -05:00
           type: string
       type: object
     IdentityCertificationDto:
