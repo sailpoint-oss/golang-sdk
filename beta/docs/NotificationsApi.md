@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**DeleteNotificationTemplatesInBulk**](NotificationsApi.md#DeleteNotificationTemplatesInBulk) | **Post** /notification-templates/bulk-delete | Bulk Delete Notification Templates
 [**DeleteVerifiedFromAddress**](NotificationsApi.md#DeleteVerifiedFromAddress) | **Delete** /verified-from-addresses/{id} | Delete Verified From Address
 [**GetDkimAttributes**](NotificationsApi.md#GetDkimAttributes) | **Get** /verified-domains | Get DKIM Attributes
-[**GetMailFromAttributes**](NotificationsApi.md#GetMailFromAttributes) | **Get** /mail-from-attribute/{id} | Get MAIL FROM Attributes
+[**GetMailFromAttributes**](NotificationsApi.md#GetMailFromAttributes) | **Get** /mail-from-attributes/{identity} | Get MAIL FROM Attributes
 [**GetNotificationPreference**](NotificationsApi.md#GetNotificationPreference) | **Get** /notification-preferences/{key} | Get Notification Preferences for tenant.
 [**GetNotificationTemplate**](NotificationsApi.md#GetNotificationTemplate) | **Get** /notification-templates/{id} | Get Notification Template By Id
 [**GetNotificationsTemplateContext**](NotificationsApi.md#GetNotificationsTemplateContext) | **Get** /notification-template-context | Get Notification Template Context

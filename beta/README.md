@@ -283,7 +283,7 @@ Class | Method | HTTP request | Description
 *NotificationsApi* | [**DeleteNotificationTemplatesInBulk**](docs/NotificationsApi.md#deletenotificationtemplatesinbulk) | **Post** /notification-templates/bulk-delete | Bulk Delete Notification Templates
 *NotificationsApi* | [**DeleteVerifiedFromAddress**](docs/NotificationsApi.md#deleteverifiedfromaddress) | **Delete** /verified-from-addresses/{id} | Delete Verified From Address
 *NotificationsApi* | [**GetDkimAttributes**](docs/NotificationsApi.md#getdkimattributes) | **Get** /verified-domains | Get DKIM Attributes
-*NotificationsApi* | [**GetMailFromAttributes**](docs/NotificationsApi.md#getmailfromattributes) | **Get** /mail-from-attribute/{id} | Get MAIL FROM Attributes
+*NotificationsApi* | [**GetMailFromAttributes**](docs/NotificationsApi.md#getmailfromattributes) | **Get** /mail-from-attributes/{identity} | Get MAIL FROM Attributes
 *NotificationsApi* | [**GetNotificationPreference**](docs/NotificationsApi.md#getnotificationpreference) | **Get** /notification-preferences/{key} | Get Notification Preferences for tenant.
 *NotificationsApi* | [**GetNotificationTemplate**](docs/NotificationsApi.md#getnotificationtemplate) | **Get** /notification-templates/{id} | Get Notification Template By Id
 *NotificationsApi* | [**GetNotificationsTemplateContext**](docs/NotificationsApi.md#getnotificationstemplatecontext) | **Get** /notification-template-context | Get Notification Template Context

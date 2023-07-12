@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The identity or domain address | [optional] 
+**Identity** | Pointer to **string** | The email identity | [optional] 
+**MailFromDomain** | Pointer to **string** | The name of a domain that an email identity uses as a custom MAIL FROM domain | [optional] 
 **MxRecord** | Pointer to **string** | MX record that is required in customer&#39;s DNS to allow the domain to receive bounce and complaint notifications that email providers send you | [optional] 
 **TxtRecord** | Pointer to **string** | TXT record that is required in customer&#39;s DNS in order to prove that Amazon SES is authorized to send email from your domain | [optional] 
 **MailFromDomainStatus** | Pointer to **string** | The current status of the MAIL FROM verification | [optional] 
@@ -28,30 +29,55 @@ NewMailFromAttributesWithDefaults instantiates a new MailFromAttributes object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetIdentity
 
-`func (o *MailFromAttributes) GetId() string`
+`func (o *MailFromAttributes) GetIdentity() string`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetIdentity returns the Identity field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetIdentityOk
 
-`func (o *MailFromAttributes) GetIdOk() (*string, bool)`
+`func (o *MailFromAttributes) GetIdentityOk() (*string, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetIdentityOk returns a tuple with the Identity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetIdentity
 
-`func (o *MailFromAttributes) SetId(v string)`
+`func (o *MailFromAttributes) SetIdentity(v string)`
 
-SetId sets Id field to given value.
+SetIdentity sets Identity field to given value.
 
-### HasId
+### HasIdentity
 
-`func (o *MailFromAttributes) HasId() bool`
+`func (o *MailFromAttributes) HasIdentity() bool`
 
-HasId returns a boolean if a field has been set.
+HasIdentity returns a boolean if a field has been set.
+
+### GetMailFromDomain
+
+`func (o *MailFromAttributes) GetMailFromDomain() string`
+
+GetMailFromDomain returns the MailFromDomain field if non-nil, zero value otherwise.
+
+### GetMailFromDomainOk
+
+`func (o *MailFromAttributes) GetMailFromDomainOk() (*string, bool)`
+
+GetMailFromDomainOk returns a tuple with the MailFromDomain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMailFromDomain
+
+`func (o *MailFromAttributes) SetMailFromDomain(v string)`
+
+SetMailFromDomain sets MailFromDomain field to given value.
+
+### HasMailFromDomain
+
+`func (o *MailFromAttributes) HasMailFromDomain() bool`
+
+HasMailFromDomain returns a boolean if a field has been set.
 
 ### GetMxRecord
 

@@ -19,8 +19,10 @@ var _ MappedNullable = &MailFromAttributes{}
 
 // MailFromAttributes MAIL FROM attributes for a domain / identity
 type MailFromAttributes struct {
-	// The identity or domain address
-	Id *string `json:"id,omitempty"`
+	// The email identity
+	Identity *string `json:"identity,omitempty"`
+	// The name of a domain that an email identity uses as a custom MAIL FROM domain
+	MailFromDomain *string `json:"mailFromDomain,omitempty"`
 	// MX record that is required in customer's DNS to allow the domain to receive bounce and complaint notifications that email providers send you
 	MxRecord *string `json:"mxRecord,omitempty"`
 	// TXT record that is required in customer's DNS in order to prove that Amazon SES is authorized to send email from your domain
@@ -49,36 +51,68 @@ func NewMailFromAttributesWithDefaults() *MailFromAttributes {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *MailFromAttributes) GetId() string {
-	if o == nil || isNil(o.Id) {
+// GetIdentity returns the Identity field value if set, zero value otherwise.
+func (o *MailFromAttributes) GetIdentity() string {
+	if o == nil || isNil(o.Identity) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Identity
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MailFromAttributes) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+func (o *MailFromAttributes) GetIdentityOk() (*string, bool) {
+	if o == nil || isNil(o.Identity) {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Identity, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *MailFromAttributes) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+// HasIdentity returns a boolean if a field has been set.
+func (o *MailFromAttributes) HasIdentity() bool {
+	if o != nil && !isNil(o.Identity) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *MailFromAttributes) SetId(v string) {
-	o.Id = &v
+// SetIdentity gets a reference to the given string and assigns it to the Identity field.
+func (o *MailFromAttributes) SetIdentity(v string) {
+	o.Identity = &v
+}
+
+// GetMailFromDomain returns the MailFromDomain field value if set, zero value otherwise.
+func (o *MailFromAttributes) GetMailFromDomain() string {
+	if o == nil || isNil(o.MailFromDomain) {
+		var ret string
+		return ret
+	}
+	return *o.MailFromDomain
+}
+
+// GetMailFromDomainOk returns a tuple with the MailFromDomain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MailFromAttributes) GetMailFromDomainOk() (*string, bool) {
+	if o == nil || isNil(o.MailFromDomain) {
+		return nil, false
+	}
+	return o.MailFromDomain, true
+}
+
+// HasMailFromDomain returns a boolean if a field has been set.
+func (o *MailFromAttributes) HasMailFromDomain() bool {
+	if o != nil && !isNil(o.MailFromDomain) {
+		return true
+	}
+
+	return false
+}
+
+// SetMailFromDomain gets a reference to the given string and assigns it to the MailFromDomain field.
+func (o *MailFromAttributes) SetMailFromDomain(v string) {
+	o.MailFromDomain = &v
 }
 
 // GetMxRecord returns the MxRecord field value if set, zero value otherwise.
@@ -187,8 +221,11 @@ func (o MailFromAttributes) MarshalJSON() ([]byte, error) {
 
 func (o MailFromAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if !isNil(o.Identity) {
+		toSerialize["identity"] = o.Identity
+	}
+	if !isNil(o.MailFromDomain) {
+		toSerialize["mailFromDomain"] = o.MailFromDomain
 	}
 	if !isNil(o.MxRecord) {
 		toSerialize["mxRecord"] = o.MxRecord
@@ -217,7 +254,8 @@ func (o *MailFromAttributes) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
+		delete(additionalProperties, "identity")
+		delete(additionalProperties, "mailFromDomain")
 		delete(additionalProperties, "mxRecord")
 		delete(additionalProperties, "txtRecord")
 		delete(additionalProperties, "mailFromDomainStatus")

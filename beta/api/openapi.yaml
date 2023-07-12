@@ -19499,7 +19499,7 @@ paths:
       summary: Change MAIL FROM domain
       tags:
       - Notifications
-  /mail-from-attribute/{id}:
+  /mail-from-attributes/{identity}:
     get:
       description: Retrieve MAIL FROM attributes for a given AWS SES identity.
       operationId: getMailFromAttributes
@@ -50576,14 +50576,20 @@ components:
     MailFromAttributes:
       description: MAIL FROM attributes for a domain / identity
       example:
-        id: BobSmith@sailpoint.com
+        identity: bob.smith@sailpoint.com
+        mailFromDomain: foo.sailpoint.com
         mxRecord: 10 feedback-smtp.us-east-1.amazonses.com
         txtRecord: v=spf1 include:amazonses.com ~all
         mailFromDomainStatus: PENDING
       properties:
-        id:
-          description: The identity or domain address
-          example: BobSmith@sailpoint.com
+        identity:
+          description: The email identity
+          example: bob.smith@sailpoint.com
+          type: string
+        mailFromDomain:
+          description: The name of a domain that an email identity uses as a custom
+            MAIL FROM domain
+          example: foo.sailpoint.com
           type: string
         mxRecord:
           description: MX record that is required in customer's DNS to allow the domain

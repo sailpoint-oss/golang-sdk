@@ -1037,7 +1037,7 @@ func (a *NotificationsApiService) GetMailFromAttributesExecute(r ApiGetMailFromA
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/mail-from-attribute/{id}"
+	localVarPath := localBasePath + "/mail-from-attributes/{identity}"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
