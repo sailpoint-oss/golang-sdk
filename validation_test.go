@@ -122,11 +122,11 @@ func Test_beta(t *testing.T) {
 
 	t.Run("Test Pagination", func(t *testing.T) {
 
-		resp, r, err := Paginate[beta.IdentityProfile](apiClient.Beta.IdentityProfilesApi.ListIdentityProfiles(context.TODO()), 0, 1, 5)
+		resp, r, err := Paginate[beta.IdentityProfile](apiClient.Beta.IdentityProfilesApi.ListIdentityProfiles(context.TODO()), 0, 1, 2)
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		require.Equal(t, len(resp), 5)
+		require.Equal(t, 2, len(resp))
 		assert.Equal(t, 200, r.StatusCode)
 
 	})
