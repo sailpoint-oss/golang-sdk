@@ -90,6 +90,7 @@ func localConfig() ClientConfiguration {
 	}
 
 	viper.AddConfigPath(filepath.Dir(executableDir))
+	viper.AddConfigPath(".")
 	viper.SetConfigName("config")
 	viper.SetConfigType("json")
 
