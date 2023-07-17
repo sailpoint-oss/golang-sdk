@@ -83,8 +83,8 @@ func PaginateSearchApi(ctx context.Context, apiClient *APIClient, search v3.Sear
 
 func Invoke(any interface{}, name string, args ...interface{}) []reflect.Value {
 	inputs := make([]reflect.Value, len(args))
-	for i, _ := range args {
-		inputs[i] = reflect.ValueOf(args[i])
+	for i, v := range args {
+		inputs[i] = reflect.ValueOf(v)
 	}
 	return reflect.ValueOf(any).MethodByName(name).Call(inputs)
 }
