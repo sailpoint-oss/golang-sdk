@@ -60065,7 +60065,7 @@ components:
           - EXTERNAL
           - SCHEDULED
           example: EVENT
-          type: object
+          type: string
         attributes:
           $ref: '#/components/schemas/WorkflowTrigger_attributes'
       required:
@@ -61195,7 +61195,7 @@ components:
           description: The unique ID of the trigger
           example: idn:identity-attributes-changed
           type: string
-        filter:
+        filter.$:
           description: JSON path expression that will limit which events the trigger
             will fire on
           example: "$.changes[?(@.attribute == 'manager')]"
@@ -61203,6 +61203,20 @@ components:
       required:
       - id
       title: Event Trigger Attributes
+      type: object
+    ExternalAttributes:
+      properties:
+        name:
+          description: A unique name for the external trigger
+          example: search-and-notify
+          type: string
+        description:
+          description: Additonal context about the external trigger
+          example: Run a search and notify the results
+          type: string
+      required:
+      - name
+      title: External Trigger Attributes
       type: object
     ScheduledAttributes:
       properties:
@@ -64926,10 +64940,12 @@ components:
           example: ENTITLEMENT
           type: object
     WorkflowTrigger_attributes:
-      description: Workflow Trigger Attributes.
-      oneOf:
+      anyOf:
       - $ref: '#/components/schemas/EventAttributes'
+      - $ref: '#/components/schemas/ExternalAttributes'
       - $ref: '#/components/schemas/ScheduledAttributes'
+      description: Workflow Trigger Attributes.
+      type: object
     RecommenderCalculations_identityAttributes_value:
       example:
         value: value

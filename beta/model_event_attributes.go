@@ -22,7 +22,7 @@ type EventAttributes struct {
 	// The unique ID of the trigger
 	Id string `json:"id"`
 	// JSON path expression that will limit which events the trigger will fire on
-	Filter *string `json:"filter,omitempty"`
+	Filter *string `json:"filter.$,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -114,7 +114,7 @@ func (o EventAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	if !isNil(o.Filter) {
-		toSerialize["filter"] = o.Filter
+		toSerialize["filter.$"] = o.Filter
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -135,7 +135,7 @@ func (o *EventAttributes) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "filter")
+		delete(additionalProperties, "filter.$")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -20,7 +20,7 @@ var _ MappedNullable = &WorkflowTrigger{}
 // WorkflowTrigger The trigger that starts the workflow
 type WorkflowTrigger struct {
 	// The trigger type
-	Type map[string]interface{} `json:"type"`
+	Type string `json:"type"`
 	Attributes WorkflowTriggerAttributes `json:"attributes"`
 	AdditionalProperties map[string]interface{}
 }
@@ -31,7 +31,7 @@ type _WorkflowTrigger WorkflowTrigger
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWorkflowTrigger(type_ map[string]interface{}, attributes WorkflowTriggerAttributes) *WorkflowTrigger {
+func NewWorkflowTrigger(type_ string, attributes WorkflowTriggerAttributes) *WorkflowTrigger {
 	this := WorkflowTrigger{}
 	this.Type = type_
 	this.Attributes = attributes
@@ -47,9 +47,9 @@ func NewWorkflowTriggerWithDefaults() *WorkflowTrigger {
 }
 
 // GetType returns the Type field value
-func (o *WorkflowTrigger) GetType() map[string]interface{} {
+func (o *WorkflowTrigger) GetType() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -58,15 +58,15 @@ func (o *WorkflowTrigger) GetType() map[string]interface{} {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *WorkflowTrigger) GetTypeOk() (map[string]interface{}, bool) {
+func (o *WorkflowTrigger) GetTypeOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
 // SetType sets field value
-func (o *WorkflowTrigger) SetType(v map[string]interface{}) {
+func (o *WorkflowTrigger) SetType(v string) {
 	o.Type = v
 }
 

@@ -15,98 +15,73 @@ import (
 	"fmt"
 )
 
-// WorkflowTriggerAttributes - Workflow Trigger Attributes.
+// WorkflowTriggerAttributes Workflow Trigger Attributes.
 type WorkflowTriggerAttributes struct {
-	EventAttributes *EventAttributes
-	ScheduledAttributes *ScheduledAttributes
+	EventAttributesvar *EventAttributes
+	ExternalAttributesvar *ExternalAttributes
+	ScheduledAttributesvar *ScheduledAttributes
 }
 
-// EventAttributesAsWorkflowTriggerAttributes is a convenience function that returns EventAttributes wrapped in WorkflowTriggerAttributes
-func EventAttributesAsWorkflowTriggerAttributes(v *EventAttributes) WorkflowTriggerAttributes {
-	return WorkflowTriggerAttributes{
-		EventAttributes: v,
-	}
-}
-
-// ScheduledAttributesAsWorkflowTriggerAttributes is a convenience function that returns ScheduledAttributes wrapped in WorkflowTriggerAttributes
-func ScheduledAttributesAsWorkflowTriggerAttributes(v *ScheduledAttributes) WorkflowTriggerAttributes {
-	return WorkflowTriggerAttributes{
-		ScheduledAttributes: v,
-	}
-}
-
-
-// Unmarshal JSON data into one of the pointers in the struct
+// Unmarshal JSON data into any of the pointers in the struct
 func (dst *WorkflowTriggerAttributes) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into EventAttributes
-	err = newStrictDecoder(data).Decode(&dst.EventAttributes)
+	// try to unmarshal JSON data into EventAttributesvar
+	err = json.Unmarshal(data, &dst.EventAttributesvar);
 	if err == nil {
-		jsonEventAttributes, _ := json.Marshal(dst.EventAttributes)
-		if string(jsonEventAttributes) == "{}" { // empty struct
-			dst.EventAttributes = nil
+		jsonEventAttributesvar, _ := json.Marshal(dst.EventAttributesvar)
+		if string(jsonEventAttributesvar) == "{}" { // empty struct
+			dst.EventAttributesvar = nil
 		} else {
-			match++
+			return nil // data stored in dst.EventAttributesvar, return on the first match
 		}
 	} else {
-		dst.EventAttributes = nil
+		dst.EventAttributesvar = nil
 	}
 
-	// try to unmarshal data into ScheduledAttributes
-	err = newStrictDecoder(data).Decode(&dst.ScheduledAttributes)
+	// try to unmarshal JSON data into ExternalAttributesvar
+	err = json.Unmarshal(data, &dst.ExternalAttributesvar);
 	if err == nil {
-		jsonScheduledAttributes, _ := json.Marshal(dst.ScheduledAttributes)
-		if string(jsonScheduledAttributes) == "{}" { // empty struct
-			dst.ScheduledAttributes = nil
+		jsonExternalAttributesvar, _ := json.Marshal(dst.ExternalAttributesvar)
+		if string(jsonExternalAttributesvar) == "{}" { // empty struct
+			dst.ExternalAttributesvar = nil
 		} else {
-			match++
+			return nil // data stored in dst.ExternalAttributesvar, return on the first match
 		}
 	} else {
-		dst.ScheduledAttributes = nil
+		dst.ExternalAttributesvar = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.EventAttributes = nil
-		dst.ScheduledAttributes = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(WorkflowTriggerAttributes)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(WorkflowTriggerAttributes)")
+	// try to unmarshal JSON data into ScheduledAttributesvar
+	err = json.Unmarshal(data, &dst.ScheduledAttributesvar);
+	if err == nil {
+		jsonScheduledAttributesvar, _ := json.Marshal(dst.ScheduledAttributesvar)
+		if string(jsonScheduledAttributesvar) == "{}" { // empty struct
+			dst.ScheduledAttributesvar = nil
+		} else {
+			return nil // data stored in dst.ScheduledAttributesvar, return on the first match
+		}
+	} else {
+		dst.ScheduledAttributesvar = nil
 	}
+
+	return fmt.Errorf("data failed to match schemas in anyOf(WorkflowTriggerAttributes)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src WorkflowTriggerAttributes) MarshalJSON() ([]byte, error) {
-	if src.EventAttributes != nil {
-		return json.Marshal(&src.EventAttributes)
+func (src *WorkflowTriggerAttributes) MarshalJSON() ([]byte, error) {
+	if src.EventAttributesvar != nil {
+		return json.Marshal(&src.EventAttributesvar)
 	}
 
-	if src.ScheduledAttributes != nil {
-		return json.Marshal(&src.ScheduledAttributes)
+	if src.ExternalAttributesvar != nil {
+		return json.Marshal(&src.ExternalAttributesvar)
 	}
 
-	return nil, nil // no data in oneOf schemas
-}
-
-// Get the actual instance
-func (obj *WorkflowTriggerAttributes) GetActualInstance() (interface{}) {
-	if obj == nil {
-		return nil
-	}
-	if obj.EventAttributes != nil {
-		return obj.EventAttributes
+	if src.ScheduledAttributesvar != nil {
+		return json.Marshal(&src.ScheduledAttributesvar)
 	}
 
-	if obj.ScheduledAttributes != nil {
-		return obj.ScheduledAttributes
-	}
-
-	// all schemas are nil
-	return nil
+	return nil, nil // no data in anyOf schemas
 }
 
 type NullableWorkflowTriggerAttributes struct {

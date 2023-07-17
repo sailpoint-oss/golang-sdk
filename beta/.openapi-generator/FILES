@@ -259,6 +259,7 @@ docs/ExecutionStatus.md
 docs/ExportOptions.md
 docs/ExportPayload.md
 docs/Expression.md
+docs/ExternalAttributes.md
 docs/FeatureValueDto.md
 docs/Field.md
 docs/FieldAllOf.md
@@ -965,6 +966,7 @@ model_execution_status.go
 model_export_options.go
 model_export_payload.go
 model_expression.go
+model_external_attributes.go
 model_feature_value_dto.go
 model_field.go
 model_field_all_of.go

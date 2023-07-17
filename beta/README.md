@@ -673,6 +673,7 @@ Class | Method | HTTP request | Description
  - [ExportOptions](docs/ExportOptions.md)
  - [ExportPayload](docs/ExportPayload.md)
  - [Expression](docs/Expression.md)
+ - [ExternalAttributes](docs/ExternalAttributes.md)
  - [FeatureValueDto](docs/FeatureValueDto.md)
  - [Field](docs/Field.md)
  - [FieldAllOf](docs/FieldAllOf.md)

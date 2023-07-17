@@ -6,13 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The unique ID of the trigger | 
 **Filter** | Pointer to **string** | JSON path expression that will limit which events the trigger will fire on | [optional] 
+**Name** | **string** | A unique name for the external trigger | 
+**Description** | Pointer to **string** | Additonal context about the external trigger | [optional] 
 **CronString** | **string** | A valid CRON expression | 
 
 ## Methods
 
 ### NewWorkflowTriggerAttributes
 
-`func NewWorkflowTriggerAttributes(id string, cronString string, ) *WorkflowTriggerAttributes`
+`func NewWorkflowTriggerAttributes(id string, name string, cronString string, ) *WorkflowTriggerAttributes`
 
 NewWorkflowTriggerAttributes instantiates a new WorkflowTriggerAttributes object
 This constructor will assign default values to properties that have it defined,
@@ -71,6 +73,51 @@ SetFilter sets Filter field to given value.
 `func (o *WorkflowTriggerAttributes) HasFilter() bool`
 
 HasFilter returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *WorkflowTriggerAttributes) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *WorkflowTriggerAttributes) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *WorkflowTriggerAttributes) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetDescription
+
+`func (o *WorkflowTriggerAttributes) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *WorkflowTriggerAttributes) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *WorkflowTriggerAttributes) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *WorkflowTriggerAttributes) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetCronString
 
