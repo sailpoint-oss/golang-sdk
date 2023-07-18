@@ -72,6 +72,8 @@ type APIClient struct {
 
 	ConnectorsApi *ConnectorsApiService
 
+	CustomFormsApi *CustomFormsApiService
+
 	CustomPasswordInstructionsApi *CustomPasswordInstructionsApiService
 
 	EntitlementsApi *EntitlementsApiService
@@ -183,6 +185,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CertificationsApi = (*CertificationsApiService)(&c.common)
 	c.ConnectorRuleManagementApi = (*ConnectorRuleManagementApiService)(&c.common)
 	c.ConnectorsApi = (*ConnectorsApiService)(&c.common)
+	c.CustomFormsApi = (*CustomFormsApiService)(&c.common)
 	c.CustomPasswordInstructionsApi = (*CustomPasswordInstructionsApiService)(&c.common)
 	c.EntitlementsApi = (*EntitlementsApiService)(&c.common)
 	c.GovernanceGroupsApi = (*GovernanceGroupsApiService)(&c.common)

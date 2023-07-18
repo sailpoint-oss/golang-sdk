@@ -150,6 +150,21 @@ Class | Method | HTTP request | Description
 *ConnectorRuleManagementApi* | [**UpdateConnectorRule**](docs/ConnectorRuleManagementApi.md#updateconnectorrule) | **Put** /connector-rules/{id} | Update a Connector Rule
 *ConnectorRuleManagementApi* | [**ValidateConnectorRule**](docs/ConnectorRuleManagementApi.md#validateconnectorrule) | **Post** /connector-rules/validate | Validate Connector Rule
 *ConnectorsApi* | [**GetConnectorList**](docs/ConnectorsApi.md#getconnectorlist) | **Get** /connectors | Gets connector list
+*CustomFormsApi* | [**CreateFormDefinition**](docs/CustomFormsApi.md#createformdefinition) | **Post** /form-definitions | Creates a form definition.
+*CustomFormsApi* | [**CreateFormDefinitionDynamicSchema**](docs/CustomFormsApi.md#createformdefinitiondynamicschema) | **Post** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.
+*CustomFormsApi* | [**CreateFormInstance**](docs/CustomFormsApi.md#createforminstance) | **Post** /form-instances | Creates a form instance.
+*CustomFormsApi* | [**DeleteFormDefinition**](docs/CustomFormsApi.md#deleteformdefinition) | **Delete** /form-definitions/{formDefinitionID} | Deletes a form definition.
+*CustomFormsApi* | [**ExportFormDefinitionsByTenant**](docs/CustomFormsApi.md#exportformdefinitionsbytenant) | **Get** /form-definitions/export | List form definitions by tenant.
+*CustomFormsApi* | [**GetFormDefinitionByKey**](docs/CustomFormsApi.md#getformdefinitionbykey) | **Get** /form-definitions/{formDefinitionID} | Return a form definition.
+*CustomFormsApi* | [**GetFormInstanceByKey**](docs/CustomFormsApi.md#getforminstancebykey) | **Get** /form-instances/{formInstanceID} | Returns a form instance.
+*CustomFormsApi* | [**ImportFormDefinitions**](docs/CustomFormsApi.md#importformdefinitions) | **Post** /form-definitions/import | Import form definitions from export.
+*CustomFormsApi* | [**PatchFormDefinition**](docs/CustomFormsApi.md#patchformdefinition) | **Patch** /form-definitions/{formDefinitionID} | Patch a form definition.
+*CustomFormsApi* | [**PatchFormInstance**](docs/CustomFormsApi.md#patchforminstance) | **Patch** /form-instances/{formInstanceID} | Patch a form instance.
+*CustomFormsApi* | [**SearchFormDefinitionsByTenant**](docs/CustomFormsApi.md#searchformdefinitionsbytenant) | **Get** /form-definitions | Export form definitions by tenant.
+*CustomFormsApi* | [**SearchFormElementDataByElementID**](docs/CustomFormsApi.md#searchformelementdatabyelementid) | **Get** /form-instances/{formInstanceID}/data-source/{formElementID} | Retrieves dynamic data by element.
+*CustomFormsApi* | [**SearchFormInstancesByTenant**](docs/CustomFormsApi.md#searchforminstancesbytenant) | **Get** /form-instances | List form instances by tenant.
+*CustomFormsApi* | [**SearchPreDefinedSelectOptions**](docs/CustomFormsApi.md#searchpredefinedselectoptions) | **Get** /predefined-select-options | List predefined select options.
+*CustomFormsApi* | [**ShowPreviewDataSource**](docs/CustomFormsApi.md#showpreviewdatasource) | **Post** /form-definitions/{formDefinitionID}/data-source | Preview form definition data source.
 *CustomPasswordInstructionsApi* | [**CreateCustomPasswordInstructions**](docs/CustomPasswordInstructionsApi.md#createcustompasswordinstructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsApi* | [**DeleteCustomPasswordInstructions**](docs/CustomPasswordInstructionsApi.md#deletecustompasswordinstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
 *CustomPasswordInstructionsApi* | [**GetCustomPasswordInstructions**](docs/CustomPasswordInstructionsApi.md#getcustompasswordinstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
@@ -617,6 +632,8 @@ Class | Method | HTTP request | Description
  - [CompletedApproval](docs/CompletedApproval.md)
  - [CompletedApprovalState](docs/CompletedApprovalState.md)
  - [CompletionStatus](docs/CompletionStatus.md)
+ - [ConditionEffect](docs/ConditionEffect.md)
+ - [ConditionRule](docs/ConditionRule.md)
  - [ConfigObject](docs/ConfigObject.md)
  - [ConfigType](docs/ConfigType.md)
  - [ConfigTypeEnum](docs/ConfigTypeEnum.md)
@@ -636,6 +653,8 @@ Class | Method | HTTP request | Description
  - [ConnectorRuleValidationResponseDetailsInner](docs/ConnectorRuleValidationResponseDetailsInner.md)
  - [CorrelatedGovernanceEvent](docs/CorrelatedGovernanceEvent.md)
  - [CreateDomainDkim405Response](docs/CreateDomainDkim405Response.md)
+ - [CreateFormDefinitionRequest](docs/CreateFormDefinitionRequest.md)
+ - [CreateFormInstanceRequest](docs/CreateFormInstanceRequest.md)
  - [CreateOAuthClientRequest](docs/CreateOAuthClientRequest.md)
  - [CreateOAuthClientResponse](docs/CreateOAuthClientResponse.md)
  - [CreatePersonalAccessTokenRequest](docs/CreatePersonalAccessTokenRequest.md)
@@ -660,6 +679,8 @@ Class | Method | HTTP request | Description
  - [EntitlementRequestConfig1](docs/EntitlementRequestConfig1.md)
  - [EntitlementSource](docs/EntitlementSource.md)
  - [EntityCreatedByDTO](docs/EntityCreatedByDTO.md)
+ - [Error](docs/Error.md)
+ - [ErrorMessage](docs/ErrorMessage.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [EvaluateResponse](docs/EvaluateResponse.md)
@@ -669,6 +690,7 @@ Class | Method | HTTP request | Description
  - [ExceptionCriteriaAccess](docs/ExceptionCriteriaAccess.md)
  - [ExceptionCriteriaCriteriaListInner](docs/ExceptionCriteriaCriteriaListInner.md)
  - [ExecutionStatus](docs/ExecutionStatus.md)
+ - [ExportFormDefinitionsByTenant200ResponseInner](docs/ExportFormDefinitionsByTenant200ResponseInner.md)
  - [ExportOptions](docs/ExportOptions.md)
  - [ExportPayload](docs/ExportPayload.md)
  - [Expression](docs/Expression.md)
@@ -678,9 +700,26 @@ Class | Method | HTTP request | Description
  - [FieldDetails](docs/FieldDetails.md)
  - [FieldDetailsDto](docs/FieldDetailsDto.md)
  - [Form](docs/Form.md)
+ - [FormCondition](docs/FormCondition.md)
+ - [FormDefinitionDynamicSchemaRequest](docs/FormDefinitionDynamicSchemaRequest.md)
+ - [FormDefinitionDynamicSchemaRequestAttributes](docs/FormDefinitionDynamicSchemaRequestAttributes.md)
+ - [FormDefinitionDynamicSchemaResponse](docs/FormDefinitionDynamicSchemaResponse.md)
+ - [FormDefinitionInput](docs/FormDefinitionInput.md)
+ - [FormDefinitionResponse](docs/FormDefinitionResponse.md)
  - [FormDetails](docs/FormDetails.md)
+ - [FormElement](docs/FormElement.md)
+ - [FormElementDataSourceConfigOptions](docs/FormElementDataSourceConfigOptions.md)
+ - [FormElementDynamicDataSource](docs/FormElementDynamicDataSource.md)
+ - [FormElementDynamicDataSourceConfig](docs/FormElementDynamicDataSourceConfig.md)
+ - [FormElementPreviewRequest](docs/FormElementPreviewRequest.md)
+ - [FormError](docs/FormError.md)
+ - [FormInstanceCreatedBy](docs/FormInstanceCreatedBy.md)
+ - [FormInstanceRecipient](docs/FormInstanceRecipient.md)
+ - [FormInstanceResponse](docs/FormInstanceResponse.md)
  - [FormItem](docs/FormItem.md)
  - [FormItemDetails](docs/FormItemDetails.md)
+ - [FormOwner](docs/FormOwner.md)
+ - [FormUsedBy](docs/FormUsedBy.md)
  - [ForwardApprovalDto](docs/ForwardApprovalDto.md)
  - [FullAccount](docs/FullAccount.md)
  - [FullAccountAllOf](docs/FullAccountAllOf.md)
@@ -738,6 +777,8 @@ Class | Method | HTTP request | Description
  - [IdentitySyncPayload](docs/IdentitySyncPayload.md)
  - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
+ - [ImportFormDefinitions202Response](docs/ImportFormDefinitions202Response.md)
+ - [ImportFormDefinitions202ResponseErrorsInner](docs/ImportFormDefinitions202ResponseErrorsInner.md)
  - [ImportNonEmployeeRecordsInBulkRequest](docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [ImportOptions](docs/ImportOptions.md)
  - [ImportSpConfigRequest](docs/ImportSpConfigRequest.md)
@@ -755,7 +796,11 @@ Class | Method | HTTP request | Description
  - [ListAccessProfiles429Response](docs/ListAccessProfiles429Response.md)
  - [ListAccounts200ResponseInner](docs/ListAccounts200ResponseInner.md)
  - [ListCompleteWorkflowLibrary200ResponseInner](docs/ListCompleteWorkflowLibrary200ResponseInner.md)
+ - [ListFormDefinitionsByTenantResponse](docs/ListFormDefinitionsByTenantResponse.md)
+ - [ListFormElementDataByElementIDResponse](docs/ListFormElementDataByElementIDResponse.md)
+ - [ListFormInstancesByTenantResponse](docs/ListFormInstancesByTenantResponse.md)
  - [ListIdentityAccessItems200ResponseInner](docs/ListIdentityAccessItems200ResponseInner.md)
+ - [ListPredefinedSelectOptionsResponse](docs/ListPredefinedSelectOptionsResponse.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [LocalizedMessage](docs/LocalizedMessage.md)
  - [LookupStep](docs/LookupStep.md)
@@ -845,6 +890,7 @@ Class | Method | HTTP request | Description
  - [PostExternalExecuteWorkflowRequest](docs/PostExternalExecuteWorkflowRequest.md)
  - [PreApprovalTriggerDetails](docs/PreApprovalTriggerDetails.md)
  - [PreferencesDto](docs/PreferencesDto.md)
+ - [PreviewDataSourceResponse](docs/PreviewDataSourceResponse.md)
  - [ProcessIdentitiesRequest](docs/ProcessIdentitiesRequest.md)
  - [ProvisioningCompleted](docs/ProvisioningCompleted.md)
  - [ProvisioningConfig](docs/ProvisioningConfig.md)
@@ -946,6 +992,7 @@ Class | Method | HTTP request | Description
  - [ScheduleType](docs/ScheduleType.md)
  - [Schema](docs/Schema.md)
  - [SearchAttributeConfig](docs/SearchAttributeConfig.md)
+ - [SearchFormDefinitionsByTenant400Response](docs/SearchFormDefinitionsByTenant400Response.md)
  - [Section](docs/Section.md)
  - [SectionAllOf](docs/SectionAllOf.md)
  - [SectionDetails](docs/SectionDetails.md)
