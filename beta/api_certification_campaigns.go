@@ -2395,34 +2395,35 @@ func (a *CertificationCampaignsApiService) ListCampaignTemplatesExecute(r ApiLis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPatchCampaignTemplateRequest struct {
+type ApiMoveRequest struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsApiService
 	id string
-	requestBody *[]map[string]interface{}
+	adminReviewReassign *AdminReviewReassign
 }
 
-// A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
-func (r ApiPatchCampaignTemplateRequest) RequestBody(requestBody []map[string]interface{}) ApiPatchCampaignTemplateRequest {
-	r.requestBody = &requestBody
+func (r ApiMoveRequest) AdminReviewReassign(adminReviewReassign AdminReviewReassign) ApiMoveRequest {
+	r.adminReviewReassign = &adminReviewReassign
 	return r
 }
 
-func (r ApiPatchCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Response, error) {
-	return r.ApiService.PatchCampaignTemplateExecute(r)
+func (r ApiMoveRequest) Execute() (*CertificationTask, *http.Response, error) {
+	return r.ApiService.MoveExecute(r)
 }
 
 /*
-PatchCampaignTemplate Update a Campaign Template
+Move Reassign Certifications
 
-Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+This API reassigns the specified certifications from one identity to another. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the campaign template being modified.
- @return ApiPatchCampaignTemplateRequest
+ @param id The certification campaign ID
+ @return ApiMoveRequest
+
+Deprecated
 */
-func (a *CertificationCampaignsApiService) PatchCampaignTemplate(ctx context.Context, id string) ApiPatchCampaignTemplateRequest {
-	return ApiPatchCampaignTemplateRequest{
+func (a *CertificationCampaignsApiService) Move(ctx context.Context, id string) ApiMoveRequest {
+	return ApiMoveRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2430,32 +2431,33 @@ func (a *CertificationCampaignsApiService) PatchCampaignTemplate(ctx context.Con
 }
 
 // Execute executes the request
-//  @return CampaignTemplate
-func (a *CertificationCampaignsApiService) PatchCampaignTemplateExecute(r ApiPatchCampaignTemplateRequest) (*CampaignTemplate, *http.Response, error) {
+//  @return CertificationTask
+// Deprecated
+func (a *CertificationCampaignsApiService) MoveExecute(r ApiMoveRequest) (*CertificationTask, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CampaignTemplate
+		localVarReturnValue  *CertificationTask
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.PatchCampaignTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.Move")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/campaign-templates/{id}"
+	localVarPath := localBasePath + "/campaigns/{id}/reassign"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.requestBody == nil {
-		return localVarReturnValue, nil, reportError("requestBody is required and must be specified")
+	if r.adminReviewReassign == nil {
+		return localVarReturnValue, nil, reportError("adminReviewReassign is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json-patch+json"}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2472,7 +2474,7 @@ func (a *CertificationCampaignsApiService) PatchCampaignTemplateExecute(r ApiPat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.requestBody
+	localVarPostBody = r.adminReviewReassign
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2575,33 +2577,34 @@ func (a *CertificationCampaignsApiService) PatchCampaignTemplateExecute(r ApiPat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiReassignCampaignRequest struct {
+type ApiPatchCampaignTemplateRequest struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsApiService
 	id string
-	adminReviewReassign *AdminReviewReassign
+	requestBody *[]map[string]interface{}
 }
 
-func (r ApiReassignCampaignRequest) AdminReviewReassign(adminReviewReassign AdminReviewReassign) ApiReassignCampaignRequest {
-	r.adminReviewReassign = &adminReviewReassign
+// A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
+func (r ApiPatchCampaignTemplateRequest) RequestBody(requestBody []map[string]interface{}) ApiPatchCampaignTemplateRequest {
+	r.requestBody = &requestBody
 	return r
 }
 
-func (r ApiReassignCampaignRequest) Execute() (*CertificationTask, *http.Response, error) {
-	return r.ApiService.ReassignCampaignExecute(r)
+func (r ApiPatchCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Response, error) {
+	return r.ApiService.PatchCampaignTemplateExecute(r)
 }
 
 /*
-ReassignCampaign Reassign Certifications
+PatchCampaignTemplate Update a Campaign Template
 
-This API reassigns the specified certifications from one identity to another. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API.
+Allows updating individual fields on a campaign template using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The certification campaign ID
- @return ApiReassignCampaignRequest
+ @param id The ID of the campaign template being modified.
+ @return ApiPatchCampaignTemplateRequest
 */
-func (a *CertificationCampaignsApiService) ReassignCampaign(ctx context.Context, id string) ApiReassignCampaignRequest {
-	return ApiReassignCampaignRequest{
+func (a *CertificationCampaignsApiService) PatchCampaignTemplate(ctx context.Context, id string) ApiPatchCampaignTemplateRequest {
+	return ApiPatchCampaignTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2609,32 +2612,32 @@ func (a *CertificationCampaignsApiService) ReassignCampaign(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return CertificationTask
-func (a *CertificationCampaignsApiService) ReassignCampaignExecute(r ApiReassignCampaignRequest) (*CertificationTask, *http.Response, error) {
+//  @return CampaignTemplate
+func (a *CertificationCampaignsApiService) PatchCampaignTemplateExecute(r ApiPatchCampaignTemplateRequest) (*CampaignTemplate, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CertificationTask
+		localVarReturnValue  *CampaignTemplate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.ReassignCampaign")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.PatchCampaignTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/campaigns/{id}/reassign"
+	localVarPath := localBasePath + "/campaign-templates/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adminReviewReassign == nil {
-		return localVarReturnValue, nil, reportError("adminReviewReassign is required and must be specified")
+	if r.requestBody == nil {
+		return localVarReturnValue, nil, reportError("requestBody is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{"application/json-patch+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2651,7 +2654,7 @@ func (a *CertificationCampaignsApiService) ReassignCampaignExecute(r ApiReassign
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.adminReviewReassign
+	localVarPostBody = r.requestBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

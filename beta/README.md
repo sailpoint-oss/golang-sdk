@@ -130,8 +130,8 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**GetCampaignTemplate**](docs/CertificationCampaignsApi.md#getcampaigntemplate) | **Get** /campaign-templates/{id} | Get a Campaign Template
 *CertificationCampaignsApi* | [**GetCampaignTemplateSchedule**](docs/CertificationCampaignsApi.md#getcampaigntemplateschedule) | **Get** /campaign-templates/{id}/schedule | Gets a Campaign Template&#39;s Schedule
 *CertificationCampaignsApi* | [**ListCampaignTemplates**](docs/CertificationCampaignsApi.md#listcampaigntemplates) | **Get** /campaign-templates | List Campaign Templates
+*CertificationCampaignsApi* | [**Move**](docs/CertificationCampaignsApi.md#move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 *CertificationCampaignsApi* | [**PatchCampaignTemplate**](docs/CertificationCampaignsApi.md#patchcampaigntemplate) | **Patch** /campaign-templates/{id} | Update a Campaign Template
-*CertificationCampaignsApi* | [**ReassignCampaign**](docs/CertificationCampaignsApi.md#reassigncampaign) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 *CertificationCampaignsApi* | [**RunCampaignRemediationScan**](docs/CertificationCampaignsApi.md#runcampaignremediationscan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 *CertificationCampaignsApi* | [**RunCampaignReport**](docs/CertificationCampaignsApi.md#runcampaignreport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
 *CertificationCampaignsApi* | [**SetCampaignReportsConfig**](docs/CertificationCampaignsApi.md#setcampaignreportsconfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
