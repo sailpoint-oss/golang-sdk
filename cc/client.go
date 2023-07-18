@@ -431,7 +431,7 @@ func (c *APIClient) prepareRequest(
 
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-	localVarRequest.Header.Add("X-SailPoint-SDK", "1.1.1")
+	localVarRequest.Header.Add("X-SailPoint-SDK", "1.1.3")
 
 	if ctx != nil {
 		// add context to the request
