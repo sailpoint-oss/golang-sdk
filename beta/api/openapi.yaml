@@ -55383,7 +55383,7 @@ components:
             success:
               type: success
         trigger:
-          attributes: null
+          attributes: "{}"
           type: EVENT
         enabled: false
       properties:
@@ -60059,7 +60059,7 @@ components:
     WorkflowTrigger:
       description: The trigger that starts the workflow
       example:
-        attributes: null
+        attributes: "{}"
         type: EVENT
       properties:
         type:
@@ -60071,7 +60071,8 @@ components:
           example: EVENT
           type: string
         attributes:
-          $ref: '#/components/schemas/WorkflowTrigger_attributes'
+          description: Workflow Trigger Attributes.
+          type: object
       required:
       - attributes
       - type
@@ -61192,48 +61193,6 @@ components:
           $ref: '#/components/schemas/ExceptionCriteria'
         rightCriteria:
           $ref: '#/components/schemas/ExceptionCriteria'
-      type: object
-    EventAttributes:
-      properties:
-        id:
-          description: The unique ID of the trigger
-          example: idn:identity-attributes-changed
-          type: string
-        filter.$:
-          description: JSON path expression that will limit which events the trigger
-            will fire on
-          example: "$.changes[?(@.attribute == 'manager')]"
-          type: string
-      required:
-      - id
-      title: Event Trigger Attributes
-      type: object
-    ExternalAttributes:
-      properties:
-        name:
-          description: A unique name for the external trigger
-          example: search-and-notify
-          type: string
-        description:
-          description: Additonal context about the external trigger
-          example: Run a search and notify the results
-          type: string
-      required:
-      - name
-      title: External Trigger Attributes
-      type: object
-    ScheduledAttributes:
-      properties:
-        cronString:
-          description: A valid CRON expression
-          example: 0 * */3 */5 *
-          externalDocs:
-            description: CRON expression editor
-            url: https://crontab.guru/
-          type: string
-      required:
-      - cronString
-      title: Scheduled Trigger Attributes
       type: object
     CertificationPhase:
       description: |
@@ -64943,13 +64902,6 @@ components:
           - ENTITLEMENT
           example: ENTITLEMENT
           type: object
-    WorkflowTrigger_attributes:
-      anyOf:
-      - $ref: '#/components/schemas/EventAttributes'
-      - $ref: '#/components/schemas/ExternalAttributes'
-      - $ref: '#/components/schemas/ScheduledAttributes'
-      description: Workflow Trigger Attributes.
-      type: object
     RecommenderCalculations_identityAttributes_value:
       example:
         value: value

@@ -249,7 +249,6 @@ docs/EntityCreatedByDTO.md
 docs/ErrorMessageDto.md
 docs/ErrorResponseDto.md
 docs/EvaluateResponse.md
-docs/EventAttributes.md
 docs/EventBridgeConfig.md
 docs/ExceptionAccessCriteria.md
 docs/ExceptionCriteria.md
@@ -259,7 +258,6 @@ docs/ExecutionStatus.md
 docs/ExportOptions.md
 docs/ExportPayload.md
 docs/Expression.md
-docs/ExternalAttributes.md
 docs/FeatureValueDto.md
 docs/Field.md
 docs/FieldAllOf.md
@@ -562,7 +560,6 @@ docs/ScheduleDays.md
 docs/ScheduleHours.md
 docs/ScheduleMonths.md
 docs/ScheduleType.md
-docs/ScheduledAttributes.md
 docs/Schema.md
 docs/SearchAttributeConfig.md
 docs/SearchAttributeConfigurationApi.md
@@ -770,7 +767,6 @@ docs/WorkflowLibraryOperator.md
 docs/WorkflowLibraryTrigger.md
 docs/WorkflowOAuthClient.md
 docs/WorkflowTrigger.md
-docs/WorkflowTriggerAttributes.md
 docs/WorkflowsApi.md
 docs/WorkgroupDto.md
 git_push.sh
@@ -956,7 +952,6 @@ model_entity_created_by_dto.go
 model_error_message_dto.go
 model_error_response_dto.go
 model_evaluate_response.go
-model_event_attributes.go
 model_event_bridge_config.go
 model_exception_access_criteria.go
 model_exception_criteria.go
@@ -966,7 +961,6 @@ model_execution_status.go
 model_export_options.go
 model_export_payload.go
 model_expression.go
-model_external_attributes.go
 model_feature_value_dto.go
 model_field.go
 model_field_all_of.go
@@ -1239,7 +1233,6 @@ model_schedule_days.go
 model_schedule_hours.go
 model_schedule_months.go
 model_schedule_type.go
-model_scheduled_attributes.go
 model_schema.go
 model_search_attribute_config.go
 model_section.go
@@ -1438,7 +1431,6 @@ model_workflow_library_operator.go
 model_workflow_library_trigger.go
 model_workflow_o_auth_client.go
 model_workflow_trigger.go
-model_workflow_trigger_attributes.go
 model_workgroup_dto.go
 response.go
 test/api_access_profiles_test.go
