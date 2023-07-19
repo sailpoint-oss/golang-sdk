@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **Type** | **string** | The connection type. | 
 **Created** | **time.Time** | The date and time the source was created. | 
 **Connector** | **string** | The connector type used to connect to the source. | 
-**Actor** | [**TriggerInputSourceCreatedActor**](TriggerInputSourceCreatedActor.md) |  | 
+**Actor** | [**SourceCreatedActor**](SourceCreatedActor.md) |  | 
 
 ## Methods
 
 ### NewSourceCreated
 
-`func NewSourceCreated(id string, name string, type_ string, created time.Time, connector string, actor TriggerInputSourceCreatedActor, ) *SourceCreated`
+`func NewSourceCreated(id string, name string, type_ string, created time.Time, connector string, actor SourceCreatedActor, ) *SourceCreated`
 
 NewSourceCreated instantiates a new SourceCreated object
 This constructor will assign default values to properties that have it defined,
@@ -132,20 +132,20 @@ SetConnector sets Connector field to given value.
 
 ### GetActor
 
-`func (o *SourceCreated) GetActor() TriggerInputSourceCreatedActor`
+`func (o *SourceCreated) GetActor() SourceCreatedActor`
 
 GetActor returns the Actor field if non-nil, zero value otherwise.
 
 ### GetActorOk
 
-`func (o *SourceCreated) GetActorOk() (*TriggerInputSourceCreatedActor, bool)`
+`func (o *SourceCreated) GetActorOk() (*SourceCreatedActor, bool)`
 
 GetActorOk returns a tuple with the Actor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetActor
 
-`func (o *SourceCreated) SetActor(v TriggerInputSourceCreatedActor)`
+`func (o *SourceCreated) SetActor(v SourceCreatedActor)`
 
 SetActor sets Actor field to given value.
 

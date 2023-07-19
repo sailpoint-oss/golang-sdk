@@ -19,7 +19,7 @@ var _ MappedNullable = &CampaignEnded{}
 
 // CampaignEnded struct for CampaignEnded
 type CampaignEnded struct {
-	Campaign TriggerInputCampaignEndedCampaign `json:"campaign"`
+	Campaign CampaignEndedCampaign `json:"campaign"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -29,7 +29,7 @@ type _CampaignEnded CampaignEnded
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignEnded(campaign TriggerInputCampaignEndedCampaign) *CampaignEnded {
+func NewCampaignEnded(campaign CampaignEndedCampaign) *CampaignEnded {
 	this := CampaignEnded{}
 	this.Campaign = campaign
 	return &this
@@ -44,9 +44,9 @@ func NewCampaignEndedWithDefaults() *CampaignEnded {
 }
 
 // GetCampaign returns the Campaign field value
-func (o *CampaignEnded) GetCampaign() TriggerInputCampaignEndedCampaign {
+func (o *CampaignEnded) GetCampaign() CampaignEndedCampaign {
 	if o == nil {
-		var ret TriggerInputCampaignEndedCampaign
+		var ret CampaignEndedCampaign
 		return ret
 	}
 
@@ -55,7 +55,7 @@ func (o *CampaignEnded) GetCampaign() TriggerInputCampaignEndedCampaign {
 
 // GetCampaignOk returns a tuple with the Campaign field value
 // and a boolean to check if the value has been set.
-func (o *CampaignEnded) GetCampaignOk() (*TriggerInputCampaignEndedCampaign, bool) {
+func (o *CampaignEnded) GetCampaignOk() (*CampaignEndedCampaign, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *CampaignEnded) GetCampaignOk() (*TriggerInputCampaignEndedCampaign, boo
 }
 
 // SetCampaign sets field value
-func (o *CampaignEnded) SetCampaign(v TriggerInputCampaignEndedCampaign) {
+func (o *CampaignEnded) SetCampaign(v CampaignEndedCampaign) {
 	o.Campaign = v
 }
 

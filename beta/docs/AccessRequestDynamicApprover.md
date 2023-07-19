@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessRequestId** | **string** | The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request.  | 
-**RequestedFor** | [**TriggerInputAccessRequestDynamicApproverRequestedFor**](TriggerInputAccessRequestDynamicApproverRequestedFor.md) |  | 
-**RequestedItems** | [**[]TriggerInputAccessRequestDynamicApproverRequestedItemsInner**](TriggerInputAccessRequestDynamicApproverRequestedItemsInner.md) | The access items that are being requested. | 
-**RequestedBy** | [**TriggerInputAccessRequestDynamicApproverRequestedBy**](TriggerInputAccessRequestDynamicApproverRequestedBy.md) |  | 
+**RequestedFor** | [**AccessRequestDynamicApproverRequestedFor**](AccessRequestDynamicApproverRequestedFor.md) |  | 
+**RequestedItems** | [**[]AccessRequestDynamicApproverRequestedItemsInner**](AccessRequestDynamicApproverRequestedItemsInner.md) | The access items that are being requested. | 
+**RequestedBy** | [**AccessRequestDynamicApproverRequestedBy**](AccessRequestDynamicApproverRequestedBy.md) |  | 
 
 ## Methods
 
 ### NewAccessRequestDynamicApprover
 
-`func NewAccessRequestDynamicApprover(accessRequestId string, requestedFor TriggerInputAccessRequestDynamicApproverRequestedFor, requestedItems []TriggerInputAccessRequestDynamicApproverRequestedItemsInner, requestedBy TriggerInputAccessRequestDynamicApproverRequestedBy, ) *AccessRequestDynamicApprover`
+`func NewAccessRequestDynamicApprover(accessRequestId string, requestedFor AccessRequestDynamicApproverRequestedFor, requestedItems []AccessRequestDynamicApproverRequestedItemsInner, requestedBy AccessRequestDynamicApproverRequestedBy, ) *AccessRequestDynamicApprover`
 
 NewAccessRequestDynamicApprover instantiates a new AccessRequestDynamicApprover object
 This constructor will assign default values to properties that have it defined,
@@ -50,60 +50,60 @@ SetAccessRequestId sets AccessRequestId field to given value.
 
 ### GetRequestedFor
 
-`func (o *AccessRequestDynamicApprover) GetRequestedFor() TriggerInputAccessRequestDynamicApproverRequestedFor`
+`func (o *AccessRequestDynamicApprover) GetRequestedFor() AccessRequestDynamicApproverRequestedFor`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *AccessRequestDynamicApprover) GetRequestedForOk() (*TriggerInputAccessRequestDynamicApproverRequestedFor, bool)`
+`func (o *AccessRequestDynamicApprover) GetRequestedForOk() (*AccessRequestDynamicApproverRequestedFor, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *AccessRequestDynamicApprover) SetRequestedFor(v TriggerInputAccessRequestDynamicApproverRequestedFor)`
+`func (o *AccessRequestDynamicApprover) SetRequestedFor(v AccessRequestDynamicApproverRequestedFor)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
 
 ### GetRequestedItems
 
-`func (o *AccessRequestDynamicApprover) GetRequestedItems() []TriggerInputAccessRequestDynamicApproverRequestedItemsInner`
+`func (o *AccessRequestDynamicApprover) GetRequestedItems() []AccessRequestDynamicApproverRequestedItemsInner`
 
 GetRequestedItems returns the RequestedItems field if non-nil, zero value otherwise.
 
 ### GetRequestedItemsOk
 
-`func (o *AccessRequestDynamicApprover) GetRequestedItemsOk() (*[]TriggerInputAccessRequestDynamicApproverRequestedItemsInner, bool)`
+`func (o *AccessRequestDynamicApprover) GetRequestedItemsOk() (*[]AccessRequestDynamicApproverRequestedItemsInner, bool)`
 
 GetRequestedItemsOk returns a tuple with the RequestedItems field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedItems
 
-`func (o *AccessRequestDynamicApprover) SetRequestedItems(v []TriggerInputAccessRequestDynamicApproverRequestedItemsInner)`
+`func (o *AccessRequestDynamicApprover) SetRequestedItems(v []AccessRequestDynamicApproverRequestedItemsInner)`
 
 SetRequestedItems sets RequestedItems field to given value.
 
 
 ### GetRequestedBy
 
-`func (o *AccessRequestDynamicApprover) GetRequestedBy() TriggerInputAccessRequestDynamicApproverRequestedBy`
+`func (o *AccessRequestDynamicApprover) GetRequestedBy() AccessRequestDynamicApproverRequestedBy`
 
 GetRequestedBy returns the RequestedBy field if non-nil, zero value otherwise.
 
 ### GetRequestedByOk
 
-`func (o *AccessRequestDynamicApprover) GetRequestedByOk() (*TriggerInputAccessRequestDynamicApproverRequestedBy, bool)`
+`func (o *AccessRequestDynamicApprover) GetRequestedByOk() (*AccessRequestDynamicApproverRequestedBy, bool)`
 
 GetRequestedByOk returns a tuple with the RequestedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedBy
 
-`func (o *AccessRequestDynamicApprover) SetRequestedBy(v TriggerInputAccessRequestDynamicApproverRequestedBy)`
+`func (o *AccessRequestDynamicApprover) SetRequestedBy(v AccessRequestDynamicApproverRequestedBy)`
 
 SetRequestedBy sets RequestedBy field to given value.
 

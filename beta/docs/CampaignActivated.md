@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Campaign** | [**TriggerInputCampaignActivatedCampaign**](TriggerInputCampaignActivatedCampaign.md) |  | 
+**Campaign** | [**CampaignActivatedCampaign**](CampaignActivatedCampaign.md) |  | 
 
 ## Methods
 
 ### NewCampaignActivated
 
-`func NewCampaignActivated(campaign TriggerInputCampaignActivatedCampaign, ) *CampaignActivated`
+`func NewCampaignActivated(campaign CampaignActivatedCampaign, ) *CampaignActivated`
 
 NewCampaignActivated instantiates a new CampaignActivated object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCampaign
 
-`func (o *CampaignActivated) GetCampaign() TriggerInputCampaignActivatedCampaign`
+`func (o *CampaignActivated) GetCampaign() CampaignActivatedCampaign`
 
 GetCampaign returns the Campaign field if non-nil, zero value otherwise.
 
 ### GetCampaignOk
 
-`func (o *CampaignActivated) GetCampaignOk() (*TriggerInputCampaignActivatedCampaign, bool)`
+`func (o *CampaignActivated) GetCampaignOk() (*CampaignActivatedCampaign, bool)`
 
 GetCampaignOk returns a tuple with the Campaign field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCampaign
 
-`func (o *CampaignActivated) SetCampaign(v TriggerInputCampaignActivatedCampaign)`
+`func (o *CampaignActivated) SetCampaign(v CampaignActivatedCampaign)`
 
 SetCampaign sets Campaign field to given value.
 

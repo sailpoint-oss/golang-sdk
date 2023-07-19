@@ -29,7 +29,7 @@ type SavedSearchComplete struct {
 	Query string `json:"query"`
 	// The name of the saved search.
 	SearchName string `json:"searchName"`
-	SearchResults TriggerInputSavedSearchCompleteSearchResults `json:"searchResults"`
+	SearchResults SavedSearchCompleteSearchResults `json:"searchResults"`
 	// The Amazon S3 URL to download the report from.
 	SignedS3Url string `json:"signedS3Url"`
 	AdditionalProperties map[string]interface{}
@@ -41,7 +41,7 @@ type _SavedSearchComplete SavedSearchComplete
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSavedSearchComplete(fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults TriggerInputSavedSearchCompleteSearchResults, signedS3Url string) *SavedSearchComplete {
+func NewSavedSearchComplete(fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults SavedSearchCompleteSearchResults, signedS3Url string) *SavedSearchComplete {
 	this := SavedSearchComplete{}
 	this.FileName = fileName
 	this.OwnerEmail = ownerEmail
@@ -182,9 +182,9 @@ func (o *SavedSearchComplete) SetSearchName(v string) {
 }
 
 // GetSearchResults returns the SearchResults field value
-func (o *SavedSearchComplete) GetSearchResults() TriggerInputSavedSearchCompleteSearchResults {
+func (o *SavedSearchComplete) GetSearchResults() SavedSearchCompleteSearchResults {
 	if o == nil {
-		var ret TriggerInputSavedSearchCompleteSearchResults
+		var ret SavedSearchCompleteSearchResults
 		return ret
 	}
 
@@ -193,7 +193,7 @@ func (o *SavedSearchComplete) GetSearchResults() TriggerInputSavedSearchComplete
 
 // GetSearchResultsOk returns a tuple with the SearchResults field value
 // and a boolean to check if the value has been set.
-func (o *SavedSearchComplete) GetSearchResultsOk() (*TriggerInputSavedSearchCompleteSearchResults, bool) {
+func (o *SavedSearchComplete) GetSearchResultsOk() (*SavedSearchCompleteSearchResults, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -201,7 +201,7 @@ func (o *SavedSearchComplete) GetSearchResultsOk() (*TriggerInputSavedSearchComp
 }
 
 // SetSearchResults sets field value
-func (o *SavedSearchComplete) SetSearchResults(v TriggerInputSavedSearchCompleteSearchResults) {
+func (o *SavedSearchComplete) SetSearchResults(v SavedSearchCompleteSearchResults) {
 	o.SearchResults = v
 }
 

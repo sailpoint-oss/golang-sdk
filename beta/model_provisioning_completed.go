@@ -29,10 +29,10 @@ type ProvisioningCompleted struct {
 	Errors []string `json:"errors,omitempty"`
 	// A list of any accumulated warning messages that occurred during provisioning.
 	Warnings []string `json:"warnings,omitempty"`
-	Recipient TriggerInputProvisioningCompletedRecipient `json:"recipient"`
-	Requester NullableTriggerInputProvisioningCompletedRequester `json:"requester,omitempty"`
+	Recipient ProvisioningCompletedRecipient `json:"recipient"`
+	Requester NullableProvisioningCompletedRequester `json:"requester,omitempty"`
 	// A list of provisioning instructions to perform on an account-by-account basis.
-	AccountRequests []TriggerInputProvisioningCompletedAccountRequestsInner `json:"accountRequests"`
+	AccountRequests []ProvisioningCompletedAccountRequestsInner `json:"accountRequests"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,7 +42,7 @@ type _ProvisioningCompleted ProvisioningCompleted
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProvisioningCompleted(trackingNumber string, sources string, recipient TriggerInputProvisioningCompletedRecipient, accountRequests []TriggerInputProvisioningCompletedAccountRequestsInner) *ProvisioningCompleted {
+func NewProvisioningCompleted(trackingNumber string, sources string, recipient ProvisioningCompletedRecipient, accountRequests []ProvisioningCompletedAccountRequestsInner) *ProvisioningCompleted {
 	this := ProvisioningCompleted{}
 	this.TrackingNumber = trackingNumber
 	this.Sources = sources
@@ -216,9 +216,9 @@ func (o *ProvisioningCompleted) SetWarnings(v []string) {
 }
 
 // GetRecipient returns the Recipient field value
-func (o *ProvisioningCompleted) GetRecipient() TriggerInputProvisioningCompletedRecipient {
+func (o *ProvisioningCompleted) GetRecipient() ProvisioningCompletedRecipient {
 	if o == nil {
-		var ret TriggerInputProvisioningCompletedRecipient
+		var ret ProvisioningCompletedRecipient
 		return ret
 	}
 
@@ -227,7 +227,7 @@ func (o *ProvisioningCompleted) GetRecipient() TriggerInputProvisioningCompleted
 
 // GetRecipientOk returns a tuple with the Recipient field value
 // and a boolean to check if the value has been set.
-func (o *ProvisioningCompleted) GetRecipientOk() (*TriggerInputProvisioningCompletedRecipient, bool) {
+func (o *ProvisioningCompleted) GetRecipientOk() (*ProvisioningCompletedRecipient, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -235,14 +235,14 @@ func (o *ProvisioningCompleted) GetRecipientOk() (*TriggerInputProvisioningCompl
 }
 
 // SetRecipient sets field value
-func (o *ProvisioningCompleted) SetRecipient(v TriggerInputProvisioningCompletedRecipient) {
+func (o *ProvisioningCompleted) SetRecipient(v ProvisioningCompletedRecipient) {
 	o.Recipient = v
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProvisioningCompleted) GetRequester() TriggerInputProvisioningCompletedRequester {
+func (o *ProvisioningCompleted) GetRequester() ProvisioningCompletedRequester {
 	if o == nil || isNil(o.Requester.Get()) {
-		var ret TriggerInputProvisioningCompletedRequester
+		var ret ProvisioningCompletedRequester
 		return ret
 	}
 	return *o.Requester.Get()
@@ -251,7 +251,7 @@ func (o *ProvisioningCompleted) GetRequester() TriggerInputProvisioningCompleted
 // GetRequesterOk returns a tuple with the Requester field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProvisioningCompleted) GetRequesterOk() (*TriggerInputProvisioningCompletedRequester, bool) {
+func (o *ProvisioningCompleted) GetRequesterOk() (*ProvisioningCompletedRequester, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -267,8 +267,8 @@ func (o *ProvisioningCompleted) HasRequester() bool {
 	return false
 }
 
-// SetRequester gets a reference to the given NullableTriggerInputProvisioningCompletedRequester and assigns it to the Requester field.
-func (o *ProvisioningCompleted) SetRequester(v TriggerInputProvisioningCompletedRequester) {
+// SetRequester gets a reference to the given NullableProvisioningCompletedRequester and assigns it to the Requester field.
+func (o *ProvisioningCompleted) SetRequester(v ProvisioningCompletedRequester) {
 	o.Requester.Set(&v)
 }
 // SetRequesterNil sets the value for Requester to be an explicit nil
@@ -282,9 +282,9 @@ func (o *ProvisioningCompleted) UnsetRequester() {
 }
 
 // GetAccountRequests returns the AccountRequests field value
-func (o *ProvisioningCompleted) GetAccountRequests() []TriggerInputProvisioningCompletedAccountRequestsInner {
+func (o *ProvisioningCompleted) GetAccountRequests() []ProvisioningCompletedAccountRequestsInner {
 	if o == nil {
-		var ret []TriggerInputProvisioningCompletedAccountRequestsInner
+		var ret []ProvisioningCompletedAccountRequestsInner
 		return ret
 	}
 
@@ -293,7 +293,7 @@ func (o *ProvisioningCompleted) GetAccountRequests() []TriggerInputProvisioningC
 
 // GetAccountRequestsOk returns a tuple with the AccountRequests field value
 // and a boolean to check if the value has been set.
-func (o *ProvisioningCompleted) GetAccountRequestsOk() ([]TriggerInputProvisioningCompletedAccountRequestsInner, bool) {
+func (o *ProvisioningCompleted) GetAccountRequestsOk() ([]ProvisioningCompletedAccountRequestsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -301,7 +301,7 @@ func (o *ProvisioningCompleted) GetAccountRequestsOk() ([]TriggerInputProvisioni
 }
 
 // SetAccountRequests sets field value
-func (o *ProvisioningCompleted) SetAccountRequests(v []TriggerInputProvisioningCompletedAccountRequestsInner) {
+func (o *ProvisioningCompleted) SetAccountRequests(v []ProvisioningCompletedAccountRequestsInner) {
 	o.AccountRequests = v
 }
 

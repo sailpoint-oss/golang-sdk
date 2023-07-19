@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityDeleted{}
 
 // IdentityDeleted struct for IdentityDeleted
 type IdentityDeleted struct {
-	Identity TriggerInputIdentityDeletedIdentity `json:"identity"`
+	Identity IdentityDeletedIdentity `json:"identity"`
 	// The attributes assigned to the identity.  Attributes are determined by the identity profile.
 	Attributes map[string]interface{} `json:"attributes"`
 	AdditionalProperties map[string]interface{}
@@ -31,7 +31,7 @@ type _IdentityDeleted IdentityDeleted
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityDeleted(identity TriggerInputIdentityDeletedIdentity, attributes map[string]interface{}) *IdentityDeleted {
+func NewIdentityDeleted(identity IdentityDeletedIdentity, attributes map[string]interface{}) *IdentityDeleted {
 	this := IdentityDeleted{}
 	this.Identity = identity
 	this.Attributes = attributes
@@ -47,9 +47,9 @@ func NewIdentityDeletedWithDefaults() *IdentityDeleted {
 }
 
 // GetIdentity returns the Identity field value
-func (o *IdentityDeleted) GetIdentity() TriggerInputIdentityDeletedIdentity {
+func (o *IdentityDeleted) GetIdentity() IdentityDeletedIdentity {
 	if o == nil {
-		var ret TriggerInputIdentityDeletedIdentity
+		var ret IdentityDeletedIdentity
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *IdentityDeleted) GetIdentity() TriggerInputIdentityDeletedIdentity {
 
 // GetIdentityOk returns a tuple with the Identity field value
 // and a boolean to check if the value has been set.
-func (o *IdentityDeleted) GetIdentityOk() (*TriggerInputIdentityDeletedIdentity, bool) {
+func (o *IdentityDeleted) GetIdentityOk() (*IdentityDeletedIdentity, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *IdentityDeleted) GetIdentityOk() (*TriggerInputIdentityDeletedIdentity,
 }
 
 // SetIdentity sets field value
-func (o *IdentityDeleted) SetIdentity(v TriggerInputIdentityDeletedIdentity) {
+func (o *IdentityDeleted) SetIdentity(v IdentityDeletedIdentity) {
 	o.Identity = v
 }
 

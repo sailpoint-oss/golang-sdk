@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessRequestId** | **string** | The unique ID of the access request. | 
-**RequestedFor** | [**TriggerInputAccessRequestPostApprovalRequestedFor**](TriggerInputAccessRequestPostApprovalRequestedFor.md) |  | 
-**RequestedItemsStatus** | [**[]TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner**](TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner.md) | Details on the outcome of each access item. | 
-**RequestedBy** | [**TriggerInputAccessRequestPostApprovalRequestedBy**](TriggerInputAccessRequestPostApprovalRequestedBy.md) |  | 
+**RequestedFor** | [**AccessRequestPostApprovalRequestedFor**](AccessRequestPostApprovalRequestedFor.md) |  | 
+**RequestedItemsStatus** | [**[]AccessRequestPostApprovalRequestedItemsStatusInner**](AccessRequestPostApprovalRequestedItemsStatusInner.md) | Details on the outcome of each access item. | 
+**RequestedBy** | [**AccessRequestPostApprovalRequestedBy**](AccessRequestPostApprovalRequestedBy.md) |  | 
 
 ## Methods
 
 ### NewAccessRequestPostApproval
 
-`func NewAccessRequestPostApproval(accessRequestId string, requestedFor TriggerInputAccessRequestPostApprovalRequestedFor, requestedItemsStatus []TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner, requestedBy TriggerInputAccessRequestPostApprovalRequestedBy, ) *AccessRequestPostApproval`
+`func NewAccessRequestPostApproval(accessRequestId string, requestedFor AccessRequestPostApprovalRequestedFor, requestedItemsStatus []AccessRequestPostApprovalRequestedItemsStatusInner, requestedBy AccessRequestPostApprovalRequestedBy, ) *AccessRequestPostApproval`
 
 NewAccessRequestPostApproval instantiates a new AccessRequestPostApproval object
 This constructor will assign default values to properties that have it defined,
@@ -50,60 +50,60 @@ SetAccessRequestId sets AccessRequestId field to given value.
 
 ### GetRequestedFor
 
-`func (o *AccessRequestPostApproval) GetRequestedFor() TriggerInputAccessRequestPostApprovalRequestedFor`
+`func (o *AccessRequestPostApproval) GetRequestedFor() AccessRequestPostApprovalRequestedFor`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *AccessRequestPostApproval) GetRequestedForOk() (*TriggerInputAccessRequestPostApprovalRequestedFor, bool)`
+`func (o *AccessRequestPostApproval) GetRequestedForOk() (*AccessRequestPostApprovalRequestedFor, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *AccessRequestPostApproval) SetRequestedFor(v TriggerInputAccessRequestPostApprovalRequestedFor)`
+`func (o *AccessRequestPostApproval) SetRequestedFor(v AccessRequestPostApprovalRequestedFor)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
 
 ### GetRequestedItemsStatus
 
-`func (o *AccessRequestPostApproval) GetRequestedItemsStatus() []TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner`
+`func (o *AccessRequestPostApproval) GetRequestedItemsStatus() []AccessRequestPostApprovalRequestedItemsStatusInner`
 
 GetRequestedItemsStatus returns the RequestedItemsStatus field if non-nil, zero value otherwise.
 
 ### GetRequestedItemsStatusOk
 
-`func (o *AccessRequestPostApproval) GetRequestedItemsStatusOk() (*[]TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner, bool)`
+`func (o *AccessRequestPostApproval) GetRequestedItemsStatusOk() (*[]AccessRequestPostApprovalRequestedItemsStatusInner, bool)`
 
 GetRequestedItemsStatusOk returns a tuple with the RequestedItemsStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedItemsStatus
 
-`func (o *AccessRequestPostApproval) SetRequestedItemsStatus(v []TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner)`
+`func (o *AccessRequestPostApproval) SetRequestedItemsStatus(v []AccessRequestPostApprovalRequestedItemsStatusInner)`
 
 SetRequestedItemsStatus sets RequestedItemsStatus field to given value.
 
 
 ### GetRequestedBy
 
-`func (o *AccessRequestPostApproval) GetRequestedBy() TriggerInputAccessRequestPostApprovalRequestedBy`
+`func (o *AccessRequestPostApproval) GetRequestedBy() AccessRequestPostApprovalRequestedBy`
 
 GetRequestedBy returns the RequestedBy field if non-nil, zero value otherwise.
 
 ### GetRequestedByOk
 
-`func (o *AccessRequestPostApproval) GetRequestedByOk() (*TriggerInputAccessRequestPostApprovalRequestedBy, bool)`
+`func (o *AccessRequestPostApproval) GetRequestedByOk() (*AccessRequestPostApprovalRequestedBy, bool)`
 
 GetRequestedByOk returns a tuple with the RequestedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedBy
 
-`func (o *AccessRequestPostApproval) SetRequestedBy(v TriggerInputAccessRequestPostApprovalRequestedBy)`
+`func (o *AccessRequestPostApproval) SetRequestedBy(v AccessRequestPostApprovalRequestedBy)`
 
 SetRequestedBy sets RequestedBy field to given value.
 

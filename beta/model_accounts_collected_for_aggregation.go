@@ -20,7 +20,7 @@ var _ MappedNullable = &AccountsCollectedForAggregation{}
 
 // AccountsCollectedForAggregation struct for AccountsCollectedForAggregation
 type AccountsCollectedForAggregation struct {
-	Source TriggerInputAccountsCollectedForAggregationSource `json:"source"`
+	Source AccountsCollectedForAggregationSource `json:"source"`
 	// The overall status of the collection.
 	Status map[string]interface{} `json:"status"`
 	// The date and time when the account collection started.
@@ -31,7 +31,7 @@ type AccountsCollectedForAggregation struct {
 	Errors []string `json:"errors"`
 	// A list of warnings that occurred during the collection.
 	Warnings []string `json:"warnings"`
-	Stats TriggerInputAccountsCollectedForAggregationStats `json:"stats"`
+	Stats AccountsCollectedForAggregationStats `json:"stats"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -41,7 +41,7 @@ type _AccountsCollectedForAggregation AccountsCollectedForAggregation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountsCollectedForAggregation(source TriggerInputAccountsCollectedForAggregationSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats TriggerInputAccountsCollectedForAggregationStats) *AccountsCollectedForAggregation {
+func NewAccountsCollectedForAggregation(source AccountsCollectedForAggregationSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats AccountsCollectedForAggregationStats) *AccountsCollectedForAggregation {
 	this := AccountsCollectedForAggregation{}
 	this.Source = source
 	this.Status = status
@@ -62,9 +62,9 @@ func NewAccountsCollectedForAggregationWithDefaults() *AccountsCollectedForAggre
 }
 
 // GetSource returns the Source field value
-func (o *AccountsCollectedForAggregation) GetSource() TriggerInputAccountsCollectedForAggregationSource {
+func (o *AccountsCollectedForAggregation) GetSource() AccountsCollectedForAggregationSource {
 	if o == nil {
-		var ret TriggerInputAccountsCollectedForAggregationSource
+		var ret AccountsCollectedForAggregationSource
 		return ret
 	}
 
@@ -73,7 +73,7 @@ func (o *AccountsCollectedForAggregation) GetSource() TriggerInputAccountsCollec
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *AccountsCollectedForAggregation) GetSourceOk() (*TriggerInputAccountsCollectedForAggregationSource, bool) {
+func (o *AccountsCollectedForAggregation) GetSourceOk() (*AccountsCollectedForAggregationSource, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -81,7 +81,7 @@ func (o *AccountsCollectedForAggregation) GetSourceOk() (*TriggerInputAccountsCo
 }
 
 // SetSource sets field value
-func (o *AccountsCollectedForAggregation) SetSource(v TriggerInputAccountsCollectedForAggregationSource) {
+func (o *AccountsCollectedForAggregation) SetSource(v AccountsCollectedForAggregationSource) {
 	o.Source = v
 }
 
@@ -210,9 +210,9 @@ func (o *AccountsCollectedForAggregation) SetWarnings(v []string) {
 }
 
 // GetStats returns the Stats field value
-func (o *AccountsCollectedForAggregation) GetStats() TriggerInputAccountsCollectedForAggregationStats {
+func (o *AccountsCollectedForAggregation) GetStats() AccountsCollectedForAggregationStats {
 	if o == nil {
-		var ret TriggerInputAccountsCollectedForAggregationStats
+		var ret AccountsCollectedForAggregationStats
 		return ret
 	}
 
@@ -221,7 +221,7 @@ func (o *AccountsCollectedForAggregation) GetStats() TriggerInputAccountsCollect
 
 // GetStatsOk returns a tuple with the Stats field value
 // and a boolean to check if the value has been set.
-func (o *AccountsCollectedForAggregation) GetStatsOk() (*TriggerInputAccountsCollectedForAggregationStats, bool) {
+func (o *AccountsCollectedForAggregation) GetStatsOk() (*AccountsCollectedForAggregationStats, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -229,7 +229,7 @@ func (o *AccountsCollectedForAggregation) GetStatsOk() (*TriggerInputAccountsCol
 }
 
 // SetStats sets field value
-func (o *AccountsCollectedForAggregation) SetStats(v TriggerInputAccountsCollectedForAggregationStats) {
+func (o *AccountsCollectedForAggregation) SetStats(v AccountsCollectedForAggregationStats) {
 	o.Stats = v
 }
 

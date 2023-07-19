@@ -20,7 +20,7 @@ var _ MappedNullable = &AccountAggregationCompleted{}
 
 // AccountAggregationCompleted struct for AccountAggregationCompleted
 type AccountAggregationCompleted struct {
-	Source TriggerInputAccountAggregationCompletedSource `json:"source"`
+	Source AccountAggregationCompletedSource `json:"source"`
 	// The overall status of the aggregation.
 	Status map[string]interface{} `json:"status"`
 	// The date and time when the account aggregation started.
@@ -31,7 +31,7 @@ type AccountAggregationCompleted struct {
 	Errors []string `json:"errors"`
 	// A list of warnings that occurred during the aggregation.
 	Warnings []string `json:"warnings"`
-	Stats TriggerInputAccountAggregationCompletedStats `json:"stats"`
+	Stats AccountAggregationCompletedStats `json:"stats"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -41,7 +41,7 @@ type _AccountAggregationCompleted AccountAggregationCompleted
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountAggregationCompleted(source TriggerInputAccountAggregationCompletedSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats TriggerInputAccountAggregationCompletedStats) *AccountAggregationCompleted {
+func NewAccountAggregationCompleted(source AccountAggregationCompletedSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats AccountAggregationCompletedStats) *AccountAggregationCompleted {
 	this := AccountAggregationCompleted{}
 	this.Source = source
 	this.Status = status
@@ -62,9 +62,9 @@ func NewAccountAggregationCompletedWithDefaults() *AccountAggregationCompleted {
 }
 
 // GetSource returns the Source field value
-func (o *AccountAggregationCompleted) GetSource() TriggerInputAccountAggregationCompletedSource {
+func (o *AccountAggregationCompleted) GetSource() AccountAggregationCompletedSource {
 	if o == nil {
-		var ret TriggerInputAccountAggregationCompletedSource
+		var ret AccountAggregationCompletedSource
 		return ret
 	}
 
@@ -73,7 +73,7 @@ func (o *AccountAggregationCompleted) GetSource() TriggerInputAccountAggregation
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *AccountAggregationCompleted) GetSourceOk() (*TriggerInputAccountAggregationCompletedSource, bool) {
+func (o *AccountAggregationCompleted) GetSourceOk() (*AccountAggregationCompletedSource, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -81,7 +81,7 @@ func (o *AccountAggregationCompleted) GetSourceOk() (*TriggerInputAccountAggrega
 }
 
 // SetSource sets field value
-func (o *AccountAggregationCompleted) SetSource(v TriggerInputAccountAggregationCompletedSource) {
+func (o *AccountAggregationCompleted) SetSource(v AccountAggregationCompletedSource) {
 	o.Source = v
 }
 
@@ -210,9 +210,9 @@ func (o *AccountAggregationCompleted) SetWarnings(v []string) {
 }
 
 // GetStats returns the Stats field value
-func (o *AccountAggregationCompleted) GetStats() TriggerInputAccountAggregationCompletedStats {
+func (o *AccountAggregationCompleted) GetStats() AccountAggregationCompletedStats {
 	if o == nil {
-		var ret TriggerInputAccountAggregationCompletedStats
+		var ret AccountAggregationCompletedStats
 		return ret
 	}
 
@@ -221,7 +221,7 @@ func (o *AccountAggregationCompleted) GetStats() TriggerInputAccountAggregationC
 
 // GetStatsOk returns a tuple with the Stats field value
 // and a boolean to check if the value has been set.
-func (o *AccountAggregationCompleted) GetStatsOk() (*TriggerInputAccountAggregationCompletedStats, bool) {
+func (o *AccountAggregationCompleted) GetStatsOk() (*AccountAggregationCompletedStats, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -229,7 +229,7 @@ func (o *AccountAggregationCompleted) GetStatsOk() (*TriggerInputAccountAggregat
 }
 
 // SetStats sets field value
-func (o *AccountAggregationCompleted) SetStats(v TriggerInputAccountAggregationCompletedStats) {
+func (o *AccountAggregationCompleted) SetStats(v AccountAggregationCompletedStats) {
 	o.Stats = v
 }
 

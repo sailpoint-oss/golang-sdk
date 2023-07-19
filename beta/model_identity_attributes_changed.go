@@ -19,9 +19,9 @@ var _ MappedNullable = &IdentityAttributesChanged{}
 
 // IdentityAttributesChanged struct for IdentityAttributesChanged
 type IdentityAttributesChanged struct {
-	Identity TriggerInputIdentityAttributesChangedIdentity `json:"identity"`
+	Identity IdentityAttributesChangedIdentity `json:"identity"`
 	// A list of one or more identity attributes that changed on the identity.
-	Changes []TriggerInputIdentityAttributesChangedChangesInner `json:"changes"`
+	Changes []IdentityAttributesChangedChangesInner `json:"changes"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ type _IdentityAttributesChanged IdentityAttributesChanged
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityAttributesChanged(identity TriggerInputIdentityAttributesChangedIdentity, changes []TriggerInputIdentityAttributesChangedChangesInner) *IdentityAttributesChanged {
+func NewIdentityAttributesChanged(identity IdentityAttributesChangedIdentity, changes []IdentityAttributesChangedChangesInner) *IdentityAttributesChanged {
 	this := IdentityAttributesChanged{}
 	this.Identity = identity
 	this.Changes = changes
@@ -47,9 +47,9 @@ func NewIdentityAttributesChangedWithDefaults() *IdentityAttributesChanged {
 }
 
 // GetIdentity returns the Identity field value
-func (o *IdentityAttributesChanged) GetIdentity() TriggerInputIdentityAttributesChangedIdentity {
+func (o *IdentityAttributesChanged) GetIdentity() IdentityAttributesChangedIdentity {
 	if o == nil {
-		var ret TriggerInputIdentityAttributesChangedIdentity
+		var ret IdentityAttributesChangedIdentity
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *IdentityAttributesChanged) GetIdentity() TriggerInputIdentityAttributes
 
 // GetIdentityOk returns a tuple with the Identity field value
 // and a boolean to check if the value has been set.
-func (o *IdentityAttributesChanged) GetIdentityOk() (*TriggerInputIdentityAttributesChangedIdentity, bool) {
+func (o *IdentityAttributesChanged) GetIdentityOk() (*IdentityAttributesChangedIdentity, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,14 +66,14 @@ func (o *IdentityAttributesChanged) GetIdentityOk() (*TriggerInputIdentityAttrib
 }
 
 // SetIdentity sets field value
-func (o *IdentityAttributesChanged) SetIdentity(v TriggerInputIdentityAttributesChangedIdentity) {
+func (o *IdentityAttributesChanged) SetIdentity(v IdentityAttributesChangedIdentity) {
 	o.Identity = v
 }
 
 // GetChanges returns the Changes field value
-func (o *IdentityAttributesChanged) GetChanges() []TriggerInputIdentityAttributesChangedChangesInner {
+func (o *IdentityAttributesChanged) GetChanges() []IdentityAttributesChangedChangesInner {
 	if o == nil {
-		var ret []TriggerInputIdentityAttributesChangedChangesInner
+		var ret []IdentityAttributesChangedChangesInner
 		return ret
 	}
 
@@ -82,7 +82,7 @@ func (o *IdentityAttributesChanged) GetChanges() []TriggerInputIdentityAttribute
 
 // GetChangesOk returns a tuple with the Changes field value
 // and a boolean to check if the value has been set.
-func (o *IdentityAttributesChanged) GetChangesOk() ([]TriggerInputIdentityAttributesChangedChangesInner, bool) {
+func (o *IdentityAttributesChanged) GetChangesOk() ([]IdentityAttributesChangedChangesInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *IdentityAttributesChanged) GetChangesOk() ([]TriggerInputIdentityAttrib
 }
 
 // SetChanges sets field value
-func (o *IdentityAttributesChanged) SetChanges(v []TriggerInputIdentityAttributesChangedChangesInner) {
+func (o *IdentityAttributesChanged) SetChanges(v []IdentityAttributesChangedChangesInner) {
 	o.Changes = v
 }
 

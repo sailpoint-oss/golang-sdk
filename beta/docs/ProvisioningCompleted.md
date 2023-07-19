@@ -9,15 +9,15 @@ Name | Type | Description | Notes
 **Action** | Pointer to **NullableString** | Origin of where the provisioning request came from. | [optional] 
 **Errors** | Pointer to **[]string** | A list of any accumulated error messages that occurred during provisioning. | [optional] 
 **Warnings** | Pointer to **[]string** | A list of any accumulated warning messages that occurred during provisioning. | [optional] 
-**Recipient** | [**TriggerInputProvisioningCompletedRecipient**](TriggerInputProvisioningCompletedRecipient.md) |  | 
-**Requester** | Pointer to [**NullableTriggerInputProvisioningCompletedRequester**](TriggerInputProvisioningCompletedRequester.md) |  | [optional] 
-**AccountRequests** | [**[]TriggerInputProvisioningCompletedAccountRequestsInner**](TriggerInputProvisioningCompletedAccountRequestsInner.md) | A list of provisioning instructions to perform on an account-by-account basis. | 
+**Recipient** | [**ProvisioningCompletedRecipient**](ProvisioningCompletedRecipient.md) |  | 
+**Requester** | Pointer to [**NullableProvisioningCompletedRequester**](ProvisioningCompletedRequester.md) |  | [optional] 
+**AccountRequests** | [**[]ProvisioningCompletedAccountRequestsInner**](ProvisioningCompletedAccountRequestsInner.md) | A list of provisioning instructions to perform on an account-by-account basis. | 
 
 ## Methods
 
 ### NewProvisioningCompleted
 
-`func NewProvisioningCompleted(trackingNumber string, sources string, recipient TriggerInputProvisioningCompletedRecipient, accountRequests []TriggerInputProvisioningCompletedAccountRequestsInner, ) *ProvisioningCompleted`
+`func NewProvisioningCompleted(trackingNumber string, sources string, recipient ProvisioningCompletedRecipient, accountRequests []ProvisioningCompletedAccountRequestsInner, ) *ProvisioningCompleted`
 
 NewProvisioningCompleted instantiates a new ProvisioningCompleted object
 This constructor will assign default values to properties that have it defined,
@@ -179,40 +179,40 @@ HasWarnings returns a boolean if a field has been set.
 UnsetWarnings ensures that no value is present for Warnings, not even an explicit nil
 ### GetRecipient
 
-`func (o *ProvisioningCompleted) GetRecipient() TriggerInputProvisioningCompletedRecipient`
+`func (o *ProvisioningCompleted) GetRecipient() ProvisioningCompletedRecipient`
 
 GetRecipient returns the Recipient field if non-nil, zero value otherwise.
 
 ### GetRecipientOk
 
-`func (o *ProvisioningCompleted) GetRecipientOk() (*TriggerInputProvisioningCompletedRecipient, bool)`
+`func (o *ProvisioningCompleted) GetRecipientOk() (*ProvisioningCompletedRecipient, bool)`
 
 GetRecipientOk returns a tuple with the Recipient field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecipient
 
-`func (o *ProvisioningCompleted) SetRecipient(v TriggerInputProvisioningCompletedRecipient)`
+`func (o *ProvisioningCompleted) SetRecipient(v ProvisioningCompletedRecipient)`
 
 SetRecipient sets Recipient field to given value.
 
 
 ### GetRequester
 
-`func (o *ProvisioningCompleted) GetRequester() TriggerInputProvisioningCompletedRequester`
+`func (o *ProvisioningCompleted) GetRequester() ProvisioningCompletedRequester`
 
 GetRequester returns the Requester field if non-nil, zero value otherwise.
 
 ### GetRequesterOk
 
-`func (o *ProvisioningCompleted) GetRequesterOk() (*TriggerInputProvisioningCompletedRequester, bool)`
+`func (o *ProvisioningCompleted) GetRequesterOk() (*ProvisioningCompletedRequester, bool)`
 
 GetRequesterOk returns a tuple with the Requester field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequester
 
-`func (o *ProvisioningCompleted) SetRequester(v TriggerInputProvisioningCompletedRequester)`
+`func (o *ProvisioningCompleted) SetRequester(v ProvisioningCompletedRequester)`
 
 SetRequester sets Requester field to given value.
 
@@ -234,20 +234,20 @@ HasRequester returns a boolean if a field has been set.
 UnsetRequester ensures that no value is present for Requester, not even an explicit nil
 ### GetAccountRequests
 
-`func (o *ProvisioningCompleted) GetAccountRequests() []TriggerInputProvisioningCompletedAccountRequestsInner`
+`func (o *ProvisioningCompleted) GetAccountRequests() []ProvisioningCompletedAccountRequestsInner`
 
 GetAccountRequests returns the AccountRequests field if non-nil, zero value otherwise.
 
 ### GetAccountRequestsOk
 
-`func (o *ProvisioningCompleted) GetAccountRequestsOk() (*[]TriggerInputProvisioningCompletedAccountRequestsInner, bool)`
+`func (o *ProvisioningCompleted) GetAccountRequestsOk() (*[]ProvisioningCompletedAccountRequestsInner, bool)`
 
 GetAccountRequestsOk returns a tuple with the AccountRequests field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountRequests
 
-`func (o *ProvisioningCompleted) SetAccountRequests(v []TriggerInputProvisioningCompletedAccountRequestsInner)`
+`func (o *ProvisioningCompleted) SetAccountRequests(v []ProvisioningCompletedAccountRequestsInner)`
 
 SetAccountRequests sets AccountRequests field to given value.
 

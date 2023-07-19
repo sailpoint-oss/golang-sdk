@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Created** | **time.Time** | The date and time the status change occurred. | 
 **Type** | **map[string]interface{}** | The type of the object that initiated this event. | 
-**Application** | [**TriggerInputVAClusterStatusChangeEventApplication**](TriggerInputVAClusterStatusChangeEventApplication.md) |  | 
-**HealthCheckResult** | [**TriggerInputVAClusterStatusChangeEventHealthCheckResult**](TriggerInputVAClusterStatusChangeEventHealthCheckResult.md) |  | 
-**PreviousHealthCheckResult** | [**TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult**](TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult.md) |  | 
+**Application** | [**VAClusterStatusChangeEventApplication**](VAClusterStatusChangeEventApplication.md) |  | 
+**HealthCheckResult** | [**VAClusterStatusChangeEventHealthCheckResult**](VAClusterStatusChangeEventHealthCheckResult.md) |  | 
+**PreviousHealthCheckResult** | [**VAClusterStatusChangeEventPreviousHealthCheckResult**](VAClusterStatusChangeEventPreviousHealthCheckResult.md) |  | 
 
 ## Methods
 
 ### NewVAClusterStatusChangeEvent
 
-`func NewVAClusterStatusChangeEvent(created time.Time, type_ map[string]interface{}, application TriggerInputVAClusterStatusChangeEventApplication, healthCheckResult TriggerInputVAClusterStatusChangeEventHealthCheckResult, previousHealthCheckResult TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult, ) *VAClusterStatusChangeEvent`
+`func NewVAClusterStatusChangeEvent(created time.Time, type_ map[string]interface{}, application VAClusterStatusChangeEventApplication, healthCheckResult VAClusterStatusChangeEventHealthCheckResult, previousHealthCheckResult VAClusterStatusChangeEventPreviousHealthCheckResult, ) *VAClusterStatusChangeEvent`
 
 NewVAClusterStatusChangeEvent instantiates a new VAClusterStatusChangeEvent object
 This constructor will assign default values to properties that have it defined,
@@ -71,60 +71,60 @@ SetType sets Type field to given value.
 
 ### GetApplication
 
-`func (o *VAClusterStatusChangeEvent) GetApplication() TriggerInputVAClusterStatusChangeEventApplication`
+`func (o *VAClusterStatusChangeEvent) GetApplication() VAClusterStatusChangeEventApplication`
 
 GetApplication returns the Application field if non-nil, zero value otherwise.
 
 ### GetApplicationOk
 
-`func (o *VAClusterStatusChangeEvent) GetApplicationOk() (*TriggerInputVAClusterStatusChangeEventApplication, bool)`
+`func (o *VAClusterStatusChangeEvent) GetApplicationOk() (*VAClusterStatusChangeEventApplication, bool)`
 
 GetApplicationOk returns a tuple with the Application field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplication
 
-`func (o *VAClusterStatusChangeEvent) SetApplication(v TriggerInputVAClusterStatusChangeEventApplication)`
+`func (o *VAClusterStatusChangeEvent) SetApplication(v VAClusterStatusChangeEventApplication)`
 
 SetApplication sets Application field to given value.
 
 
 ### GetHealthCheckResult
 
-`func (o *VAClusterStatusChangeEvent) GetHealthCheckResult() TriggerInputVAClusterStatusChangeEventHealthCheckResult`
+`func (o *VAClusterStatusChangeEvent) GetHealthCheckResult() VAClusterStatusChangeEventHealthCheckResult`
 
 GetHealthCheckResult returns the HealthCheckResult field if non-nil, zero value otherwise.
 
 ### GetHealthCheckResultOk
 
-`func (o *VAClusterStatusChangeEvent) GetHealthCheckResultOk() (*TriggerInputVAClusterStatusChangeEventHealthCheckResult, bool)`
+`func (o *VAClusterStatusChangeEvent) GetHealthCheckResultOk() (*VAClusterStatusChangeEventHealthCheckResult, bool)`
 
 GetHealthCheckResultOk returns a tuple with the HealthCheckResult field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHealthCheckResult
 
-`func (o *VAClusterStatusChangeEvent) SetHealthCheckResult(v TriggerInputVAClusterStatusChangeEventHealthCheckResult)`
+`func (o *VAClusterStatusChangeEvent) SetHealthCheckResult(v VAClusterStatusChangeEventHealthCheckResult)`
 
 SetHealthCheckResult sets HealthCheckResult field to given value.
 
 
 ### GetPreviousHealthCheckResult
 
-`func (o *VAClusterStatusChangeEvent) GetPreviousHealthCheckResult() TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult`
+`func (o *VAClusterStatusChangeEvent) GetPreviousHealthCheckResult() VAClusterStatusChangeEventPreviousHealthCheckResult`
 
 GetPreviousHealthCheckResult returns the PreviousHealthCheckResult field if non-nil, zero value otherwise.
 
 ### GetPreviousHealthCheckResultOk
 
-`func (o *VAClusterStatusChangeEvent) GetPreviousHealthCheckResultOk() (*TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult, bool)`
+`func (o *VAClusterStatusChangeEvent) GetPreviousHealthCheckResultOk() (*VAClusterStatusChangeEventPreviousHealthCheckResult, bool)`
 
 GetPreviousHealthCheckResultOk returns a tuple with the PreviousHealthCheckResult field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPreviousHealthCheckResult
 
-`func (o *VAClusterStatusChangeEvent) SetPreviousHealthCheckResult(v TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult)`
+`func (o *VAClusterStatusChangeEvent) SetPreviousHealthCheckResult(v VAClusterStatusChangeEventPreviousHealthCheckResult)`
 
 SetPreviousHealthCheckResult sets PreviousHealthCheckResult field to given value.
 

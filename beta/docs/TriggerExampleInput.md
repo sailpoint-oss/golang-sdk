@@ -5,36 +5,36 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessRequestId** | **string** | The unique ID of the access request. | 
-**RequestedFor** | [**TriggerInputAccessRequestPostApprovalRequestedFor**](TriggerInputAccessRequestPostApprovalRequestedFor.md) |  | 
-**RequestedItems** | [**[]TriggerInputAccessRequestPreApprovalRequestedItemsInner**](TriggerInputAccessRequestPreApprovalRequestedItemsInner.md) | Details of the access items being requested. | 
-**RequestedBy** | [**TriggerInputAccessRequestPostApprovalRequestedBy**](TriggerInputAccessRequestPostApprovalRequestedBy.md) |  | 
-**RequestedItemsStatus** | [**[]TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner**](TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner.md) | Details on the outcome of each access item. | 
-**Source** | [**TriggerInputAccountUncorrelatedSource**](TriggerInputAccountUncorrelatedSource.md) |  | 
+**RequestedFor** | [**AccessRequestPostApprovalRequestedFor**](AccessRequestPostApprovalRequestedFor.md) |  | 
+**RequestedItems** | [**[]AccessRequestPreApprovalRequestedItemsInner**](AccessRequestPreApprovalRequestedItemsInner.md) | Details of the access items being requested. | 
+**RequestedBy** | [**AccessRequestPostApprovalRequestedBy**](AccessRequestPostApprovalRequestedBy.md) |  | 
+**RequestedItemsStatus** | [**[]AccessRequestPostApprovalRequestedItemsStatusInner**](AccessRequestPostApprovalRequestedItemsStatusInner.md) | Details on the outcome of each access item. | 
+**Source** | [**AccountUncorrelatedSource**](AccountUncorrelatedSource.md) |  | 
 **Status** | **map[string]interface{}** | The overall status of the collection. | 
 **Started** | **time.Time** | The date and time when the account collection started. | 
 **Completed** | **time.Time** | The date and time when the account collection finished. | 
 **Errors** | **[]string** | A list of any accumulated error messages that occurred during provisioning. | 
 **Warnings** | **[]string** | A list of any accumulated warning messages that occurred during provisioning. | 
-**Stats** | [**TriggerInputAccountsCollectedForAggregationStats**](TriggerInputAccountsCollectedForAggregationStats.md) |  | 
-**Identity** | [**TriggerInputIdentityDeletedIdentity**](TriggerInputIdentityDeletedIdentity.md) |  | 
-**Account** | [**TriggerInputAccountUncorrelatedAccount**](TriggerInputAccountUncorrelatedAccount.md) |  | 
-**Changes** | [**[]TriggerInputIdentityAttributesChangedChangesInner**](TriggerInputIdentityAttributesChangedChangesInner.md) | A list of one or more identity attributes that changed on the identity. | 
+**Stats** | [**AccountsCollectedForAggregationStats**](AccountsCollectedForAggregationStats.md) |  | 
+**Identity** | [**IdentityDeletedIdentity**](IdentityDeletedIdentity.md) |  | 
+**Account** | [**AccountUncorrelatedAccount**](AccountUncorrelatedAccount.md) |  | 
+**Changes** | [**[]IdentityAttributesChangedChangesInner**](IdentityAttributesChangedChangesInner.md) | A list of one or more identity attributes that changed on the identity. | 
 **Attributes** | **map[string]interface{}** | The attributes of the account. The contents of attributes depends on the account schema for the source. | 
 **EntitlementCount** | Pointer to **int32** | The number of entitlements associated with this account. | [optional] 
-**Campaign** | [**TriggerInputCampaignGeneratedCampaign**](TriggerInputCampaignGeneratedCampaign.md) |  | 
-**Certification** | [**TriggerInputCertificationSignedOffCertification**](TriggerInputCertificationSignedOffCertification.md) |  | 
+**Campaign** | [**CampaignGeneratedCampaign**](CampaignGeneratedCampaign.md) |  | 
+**Certification** | [**CertificationSignedOffCertification**](CertificationSignedOffCertification.md) |  | 
 **TrackingNumber** | **string** | The reference number of the provisioning request. Useful for tracking status in the Account Activity search interface. | 
 **Sources** | **string** | One or more sources that the provisioning transaction(s) were done against.  Sources are comma separated. | 
 **Action** | Pointer to **NullableString** | Origin of where the provisioning request came from. | [optional] 
-**Recipient** | [**TriggerInputProvisioningCompletedRecipient**](TriggerInputProvisioningCompletedRecipient.md) |  | 
-**Requester** | Pointer to [**NullableTriggerInputProvisioningCompletedRequester**](TriggerInputProvisioningCompletedRequester.md) |  | [optional] 
-**AccountRequests** | [**[]TriggerInputProvisioningCompletedAccountRequestsInner**](TriggerInputProvisioningCompletedAccountRequestsInner.md) | A list of provisioning instructions to perform on an account-by-account basis. | 
+**Recipient** | [**ProvisioningCompletedRecipient**](ProvisioningCompletedRecipient.md) |  | 
+**Requester** | Pointer to [**NullableProvisioningCompletedRequester**](ProvisioningCompletedRequester.md) |  | [optional] 
+**AccountRequests** | [**[]ProvisioningCompletedAccountRequestsInner**](ProvisioningCompletedAccountRequestsInner.md) | A list of provisioning instructions to perform on an account-by-account basis. | 
 **FileName** | **string** | A name for the report file. | 
 **OwnerEmail** | **string** | The email address of the identity that owns the saved search. | 
 **OwnerName** | **string** | The name of the identity that owns the saved search. | 
 **Query** | **string** | The search query that was used to generate the report. | 
 **SearchName** | **string** | The name of the saved search. | 
-**SearchResults** | [**TriggerInputSavedSearchCompleteSearchResults**](TriggerInputSavedSearchCompleteSearchResults.md) |  | 
+**SearchResults** | [**SavedSearchCompleteSearchResults**](SavedSearchCompleteSearchResults.md) |  | 
 **SignedS3Url** | **string** | The Amazon S3 URL to download the report from. | 
 **Uuid** | Pointer to **string** | Source unique identifier for the identity. UUID is generated by the source system. | [optional] 
 **Id** | **string** | The unique ID of the source. | 
@@ -47,18 +47,18 @@ Name | Type | Description | Notes
 **Type** | **map[string]interface{}** | The type of the object that initiated this event. | 
 **Created** | **time.Time** | The date and time the status change occurred. | 
 **Connector** | **string** | The connector type used to connect to the source. | 
-**Actor** | [**TriggerInputSourceUpdatedActor**](TriggerInputSourceUpdatedActor.md) |  | 
+**Actor** | [**SourceUpdatedActor**](SourceUpdatedActor.md) |  | 
 **Deleted** | **time.Time** | The date and time the source was deleted. | 
 **Modified** | **time.Time** | The date and time the source was modified. | 
-**Application** | [**TriggerInputVAClusterStatusChangeEventApplication**](TriggerInputVAClusterStatusChangeEventApplication.md) |  | 
-**HealthCheckResult** | [**TriggerInputVAClusterStatusChangeEventHealthCheckResult**](TriggerInputVAClusterStatusChangeEventHealthCheckResult.md) |  | 
-**PreviousHealthCheckResult** | [**TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult**](TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult.md) |  | 
+**Application** | [**VAClusterStatusChangeEventApplication**](VAClusterStatusChangeEventApplication.md) |  | 
+**HealthCheckResult** | [**VAClusterStatusChangeEventHealthCheckResult**](VAClusterStatusChangeEventHealthCheckResult.md) |  | 
+**PreviousHealthCheckResult** | [**VAClusterStatusChangeEventPreviousHealthCheckResult**](VAClusterStatusChangeEventPreviousHealthCheckResult.md) |  | 
 
 ## Methods
 
 ### NewTriggerExampleInput
 
-`func NewTriggerExampleInput(accessRequestId string, requestedFor TriggerInputAccessRequestPostApprovalRequestedFor, requestedItems []TriggerInputAccessRequestPreApprovalRequestedItemsInner, requestedBy TriggerInputAccessRequestPostApprovalRequestedBy, requestedItemsStatus []TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner, source TriggerInputAccountUncorrelatedSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats TriggerInputAccountsCollectedForAggregationStats, identity TriggerInputIdentityDeletedIdentity, account TriggerInputAccountUncorrelatedAccount, changes []TriggerInputIdentityAttributesChangedChangesInner, attributes map[string]interface{}, campaign TriggerInputCampaignGeneratedCampaign, certification TriggerInputCertificationSignedOffCertification, trackingNumber string, sources string, recipient TriggerInputProvisioningCompletedRecipient, accountRequests []TriggerInputProvisioningCompletedAccountRequestsInner, fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults TriggerInputSavedSearchCompleteSearchResults, signedS3Url string, id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, name string, type_ map[string]interface{}, created time.Time, connector string, actor TriggerInputSourceUpdatedActor, deleted time.Time, modified time.Time, application TriggerInputVAClusterStatusChangeEventApplication, healthCheckResult TriggerInputVAClusterStatusChangeEventHealthCheckResult, previousHealthCheckResult TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult, ) *TriggerExampleInput`
+`func NewTriggerExampleInput(accessRequestId string, requestedFor AccessRequestPostApprovalRequestedFor, requestedItems []AccessRequestPreApprovalRequestedItemsInner, requestedBy AccessRequestPostApprovalRequestedBy, requestedItemsStatus []AccessRequestPostApprovalRequestedItemsStatusInner, source AccountUncorrelatedSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats AccountsCollectedForAggregationStats, identity IdentityDeletedIdentity, account AccountUncorrelatedAccount, changes []IdentityAttributesChangedChangesInner, attributes map[string]interface{}, campaign CampaignGeneratedCampaign, certification CertificationSignedOffCertification, trackingNumber string, sources string, recipient ProvisioningCompletedRecipient, accountRequests []ProvisioningCompletedAccountRequestsInner, fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults SavedSearchCompleteSearchResults, signedS3Url string, id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, name string, type_ map[string]interface{}, created time.Time, connector string, actor SourceUpdatedActor, deleted time.Time, modified time.Time, application VAClusterStatusChangeEventApplication, healthCheckResult VAClusterStatusChangeEventHealthCheckResult, previousHealthCheckResult VAClusterStatusChangeEventPreviousHealthCheckResult, ) *TriggerExampleInput`
 
 NewTriggerExampleInput instantiates a new TriggerExampleInput object
 This constructor will assign default values to properties that have it defined,
@@ -95,100 +95,100 @@ SetAccessRequestId sets AccessRequestId field to given value.
 
 ### GetRequestedFor
 
-`func (o *TriggerExampleInput) GetRequestedFor() TriggerInputAccessRequestPostApprovalRequestedFor`
+`func (o *TriggerExampleInput) GetRequestedFor() AccessRequestPostApprovalRequestedFor`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *TriggerExampleInput) GetRequestedForOk() (*TriggerInputAccessRequestPostApprovalRequestedFor, bool)`
+`func (o *TriggerExampleInput) GetRequestedForOk() (*AccessRequestPostApprovalRequestedFor, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *TriggerExampleInput) SetRequestedFor(v TriggerInputAccessRequestPostApprovalRequestedFor)`
+`func (o *TriggerExampleInput) SetRequestedFor(v AccessRequestPostApprovalRequestedFor)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
 
 ### GetRequestedItems
 
-`func (o *TriggerExampleInput) GetRequestedItems() []TriggerInputAccessRequestPreApprovalRequestedItemsInner`
+`func (o *TriggerExampleInput) GetRequestedItems() []AccessRequestPreApprovalRequestedItemsInner`
 
 GetRequestedItems returns the RequestedItems field if non-nil, zero value otherwise.
 
 ### GetRequestedItemsOk
 
-`func (o *TriggerExampleInput) GetRequestedItemsOk() (*[]TriggerInputAccessRequestPreApprovalRequestedItemsInner, bool)`
+`func (o *TriggerExampleInput) GetRequestedItemsOk() (*[]AccessRequestPreApprovalRequestedItemsInner, bool)`
 
 GetRequestedItemsOk returns a tuple with the RequestedItems field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedItems
 
-`func (o *TriggerExampleInput) SetRequestedItems(v []TriggerInputAccessRequestPreApprovalRequestedItemsInner)`
+`func (o *TriggerExampleInput) SetRequestedItems(v []AccessRequestPreApprovalRequestedItemsInner)`
 
 SetRequestedItems sets RequestedItems field to given value.
 
 
 ### GetRequestedBy
 
-`func (o *TriggerExampleInput) GetRequestedBy() TriggerInputAccessRequestPostApprovalRequestedBy`
+`func (o *TriggerExampleInput) GetRequestedBy() AccessRequestPostApprovalRequestedBy`
 
 GetRequestedBy returns the RequestedBy field if non-nil, zero value otherwise.
 
 ### GetRequestedByOk
 
-`func (o *TriggerExampleInput) GetRequestedByOk() (*TriggerInputAccessRequestPostApprovalRequestedBy, bool)`
+`func (o *TriggerExampleInput) GetRequestedByOk() (*AccessRequestPostApprovalRequestedBy, bool)`
 
 GetRequestedByOk returns a tuple with the RequestedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedBy
 
-`func (o *TriggerExampleInput) SetRequestedBy(v TriggerInputAccessRequestPostApprovalRequestedBy)`
+`func (o *TriggerExampleInput) SetRequestedBy(v AccessRequestPostApprovalRequestedBy)`
 
 SetRequestedBy sets RequestedBy field to given value.
 
 
 ### GetRequestedItemsStatus
 
-`func (o *TriggerExampleInput) GetRequestedItemsStatus() []TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner`
+`func (o *TriggerExampleInput) GetRequestedItemsStatus() []AccessRequestPostApprovalRequestedItemsStatusInner`
 
 GetRequestedItemsStatus returns the RequestedItemsStatus field if non-nil, zero value otherwise.
 
 ### GetRequestedItemsStatusOk
 
-`func (o *TriggerExampleInput) GetRequestedItemsStatusOk() (*[]TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner, bool)`
+`func (o *TriggerExampleInput) GetRequestedItemsStatusOk() (*[]AccessRequestPostApprovalRequestedItemsStatusInner, bool)`
 
 GetRequestedItemsStatusOk returns a tuple with the RequestedItemsStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedItemsStatus
 
-`func (o *TriggerExampleInput) SetRequestedItemsStatus(v []TriggerInputAccessRequestPostApprovalRequestedItemsStatusInner)`
+`func (o *TriggerExampleInput) SetRequestedItemsStatus(v []AccessRequestPostApprovalRequestedItemsStatusInner)`
 
 SetRequestedItemsStatus sets RequestedItemsStatus field to given value.
 
 
 ### GetSource
 
-`func (o *TriggerExampleInput) GetSource() TriggerInputAccountUncorrelatedSource`
+`func (o *TriggerExampleInput) GetSource() AccountUncorrelatedSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *TriggerExampleInput) GetSourceOk() (*TriggerInputAccountUncorrelatedSource, bool)`
+`func (o *TriggerExampleInput) GetSourceOk() (*AccountUncorrelatedSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *TriggerExampleInput) SetSource(v TriggerInputAccountUncorrelatedSource)`
+`func (o *TriggerExampleInput) SetSource(v AccountUncorrelatedSource)`
 
 SetSource sets Source field to given value.
 
@@ -315,80 +315,80 @@ SetWarnings sets Warnings field to given value.
 UnsetWarnings ensures that no value is present for Warnings, not even an explicit nil
 ### GetStats
 
-`func (o *TriggerExampleInput) GetStats() TriggerInputAccountsCollectedForAggregationStats`
+`func (o *TriggerExampleInput) GetStats() AccountsCollectedForAggregationStats`
 
 GetStats returns the Stats field if non-nil, zero value otherwise.
 
 ### GetStatsOk
 
-`func (o *TriggerExampleInput) GetStatsOk() (*TriggerInputAccountsCollectedForAggregationStats, bool)`
+`func (o *TriggerExampleInput) GetStatsOk() (*AccountsCollectedForAggregationStats, bool)`
 
 GetStatsOk returns a tuple with the Stats field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStats
 
-`func (o *TriggerExampleInput) SetStats(v TriggerInputAccountsCollectedForAggregationStats)`
+`func (o *TriggerExampleInput) SetStats(v AccountsCollectedForAggregationStats)`
 
 SetStats sets Stats field to given value.
 
 
 ### GetIdentity
 
-`func (o *TriggerExampleInput) GetIdentity() TriggerInputIdentityDeletedIdentity`
+`func (o *TriggerExampleInput) GetIdentity() IdentityDeletedIdentity`
 
 GetIdentity returns the Identity field if non-nil, zero value otherwise.
 
 ### GetIdentityOk
 
-`func (o *TriggerExampleInput) GetIdentityOk() (*TriggerInputIdentityDeletedIdentity, bool)`
+`func (o *TriggerExampleInput) GetIdentityOk() (*IdentityDeletedIdentity, bool)`
 
 GetIdentityOk returns a tuple with the Identity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentity
 
-`func (o *TriggerExampleInput) SetIdentity(v TriggerInputIdentityDeletedIdentity)`
+`func (o *TriggerExampleInput) SetIdentity(v IdentityDeletedIdentity)`
 
 SetIdentity sets Identity field to given value.
 
 
 ### GetAccount
 
-`func (o *TriggerExampleInput) GetAccount() TriggerInputAccountUncorrelatedAccount`
+`func (o *TriggerExampleInput) GetAccount() AccountUncorrelatedAccount`
 
 GetAccount returns the Account field if non-nil, zero value otherwise.
 
 ### GetAccountOk
 
-`func (o *TriggerExampleInput) GetAccountOk() (*TriggerInputAccountUncorrelatedAccount, bool)`
+`func (o *TriggerExampleInput) GetAccountOk() (*AccountUncorrelatedAccount, bool)`
 
 GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccount
 
-`func (o *TriggerExampleInput) SetAccount(v TriggerInputAccountUncorrelatedAccount)`
+`func (o *TriggerExampleInput) SetAccount(v AccountUncorrelatedAccount)`
 
 SetAccount sets Account field to given value.
 
 
 ### GetChanges
 
-`func (o *TriggerExampleInput) GetChanges() []TriggerInputIdentityAttributesChangedChangesInner`
+`func (o *TriggerExampleInput) GetChanges() []IdentityAttributesChangedChangesInner`
 
 GetChanges returns the Changes field if non-nil, zero value otherwise.
 
 ### GetChangesOk
 
-`func (o *TriggerExampleInput) GetChangesOk() (*[]TriggerInputIdentityAttributesChangedChangesInner, bool)`
+`func (o *TriggerExampleInput) GetChangesOk() (*[]IdentityAttributesChangedChangesInner, bool)`
 
 GetChangesOk returns a tuple with the Changes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChanges
 
-`func (o *TriggerExampleInput) SetChanges(v []TriggerInputIdentityAttributesChangedChangesInner)`
+`func (o *TriggerExampleInput) SetChanges(v []IdentityAttributesChangedChangesInner)`
 
 SetChanges sets Changes field to given value.
 
@@ -440,40 +440,40 @@ HasEntitlementCount returns a boolean if a field has been set.
 
 ### GetCampaign
 
-`func (o *TriggerExampleInput) GetCampaign() TriggerInputCampaignGeneratedCampaign`
+`func (o *TriggerExampleInput) GetCampaign() CampaignGeneratedCampaign`
 
 GetCampaign returns the Campaign field if non-nil, zero value otherwise.
 
 ### GetCampaignOk
 
-`func (o *TriggerExampleInput) GetCampaignOk() (*TriggerInputCampaignGeneratedCampaign, bool)`
+`func (o *TriggerExampleInput) GetCampaignOk() (*CampaignGeneratedCampaign, bool)`
 
 GetCampaignOk returns a tuple with the Campaign field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCampaign
 
-`func (o *TriggerExampleInput) SetCampaign(v TriggerInputCampaignGeneratedCampaign)`
+`func (o *TriggerExampleInput) SetCampaign(v CampaignGeneratedCampaign)`
 
 SetCampaign sets Campaign field to given value.
 
 
 ### GetCertification
 
-`func (o *TriggerExampleInput) GetCertification() TriggerInputCertificationSignedOffCertification`
+`func (o *TriggerExampleInput) GetCertification() CertificationSignedOffCertification`
 
 GetCertification returns the Certification field if non-nil, zero value otherwise.
 
 ### GetCertificationOk
 
-`func (o *TriggerExampleInput) GetCertificationOk() (*TriggerInputCertificationSignedOffCertification, bool)`
+`func (o *TriggerExampleInput) GetCertificationOk() (*CertificationSignedOffCertification, bool)`
 
 GetCertificationOk returns a tuple with the Certification field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCertification
 
-`func (o *TriggerExampleInput) SetCertification(v TriggerInputCertificationSignedOffCertification)`
+`func (o *TriggerExampleInput) SetCertification(v CertificationSignedOffCertification)`
 
 SetCertification sets Certification field to given value.
 
@@ -555,40 +555,40 @@ HasAction returns a boolean if a field has been set.
 UnsetAction ensures that no value is present for Action, not even an explicit nil
 ### GetRecipient
 
-`func (o *TriggerExampleInput) GetRecipient() TriggerInputProvisioningCompletedRecipient`
+`func (o *TriggerExampleInput) GetRecipient() ProvisioningCompletedRecipient`
 
 GetRecipient returns the Recipient field if non-nil, zero value otherwise.
 
 ### GetRecipientOk
 
-`func (o *TriggerExampleInput) GetRecipientOk() (*TriggerInputProvisioningCompletedRecipient, bool)`
+`func (o *TriggerExampleInput) GetRecipientOk() (*ProvisioningCompletedRecipient, bool)`
 
 GetRecipientOk returns a tuple with the Recipient field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecipient
 
-`func (o *TriggerExampleInput) SetRecipient(v TriggerInputProvisioningCompletedRecipient)`
+`func (o *TriggerExampleInput) SetRecipient(v ProvisioningCompletedRecipient)`
 
 SetRecipient sets Recipient field to given value.
 
 
 ### GetRequester
 
-`func (o *TriggerExampleInput) GetRequester() TriggerInputProvisioningCompletedRequester`
+`func (o *TriggerExampleInput) GetRequester() ProvisioningCompletedRequester`
 
 GetRequester returns the Requester field if non-nil, zero value otherwise.
 
 ### GetRequesterOk
 
-`func (o *TriggerExampleInput) GetRequesterOk() (*TriggerInputProvisioningCompletedRequester, bool)`
+`func (o *TriggerExampleInput) GetRequesterOk() (*ProvisioningCompletedRequester, bool)`
 
 GetRequesterOk returns a tuple with the Requester field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequester
 
-`func (o *TriggerExampleInput) SetRequester(v TriggerInputProvisioningCompletedRequester)`
+`func (o *TriggerExampleInput) SetRequester(v ProvisioningCompletedRequester)`
 
 SetRequester sets Requester field to given value.
 
@@ -610,20 +610,20 @@ HasRequester returns a boolean if a field has been set.
 UnsetRequester ensures that no value is present for Requester, not even an explicit nil
 ### GetAccountRequests
 
-`func (o *TriggerExampleInput) GetAccountRequests() []TriggerInputProvisioningCompletedAccountRequestsInner`
+`func (o *TriggerExampleInput) GetAccountRequests() []ProvisioningCompletedAccountRequestsInner`
 
 GetAccountRequests returns the AccountRequests field if non-nil, zero value otherwise.
 
 ### GetAccountRequestsOk
 
-`func (o *TriggerExampleInput) GetAccountRequestsOk() (*[]TriggerInputProvisioningCompletedAccountRequestsInner, bool)`
+`func (o *TriggerExampleInput) GetAccountRequestsOk() (*[]ProvisioningCompletedAccountRequestsInner, bool)`
 
 GetAccountRequestsOk returns a tuple with the AccountRequests field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountRequests
 
-`func (o *TriggerExampleInput) SetAccountRequests(v []TriggerInputProvisioningCompletedAccountRequestsInner)`
+`func (o *TriggerExampleInput) SetAccountRequests(v []ProvisioningCompletedAccountRequestsInner)`
 
 SetAccountRequests sets AccountRequests field to given value.
 
@@ -730,20 +730,20 @@ SetSearchName sets SearchName field to given value.
 
 ### GetSearchResults
 
-`func (o *TriggerExampleInput) GetSearchResults() TriggerInputSavedSearchCompleteSearchResults`
+`func (o *TriggerExampleInput) GetSearchResults() SavedSearchCompleteSearchResults`
 
 GetSearchResults returns the SearchResults field if non-nil, zero value otherwise.
 
 ### GetSearchResultsOk
 
-`func (o *TriggerExampleInput) GetSearchResultsOk() (*TriggerInputSavedSearchCompleteSearchResults, bool)`
+`func (o *TriggerExampleInput) GetSearchResultsOk() (*SavedSearchCompleteSearchResults, bool)`
 
 GetSearchResultsOk returns a tuple with the SearchResults field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSearchResults
 
-`func (o *TriggerExampleInput) SetSearchResults(v TriggerInputSavedSearchCompleteSearchResults)`
+`func (o *TriggerExampleInput) SetSearchResults(v SavedSearchCompleteSearchResults)`
 
 SetSearchResults sets SearchResults field to given value.
 
@@ -995,20 +995,20 @@ SetConnector sets Connector field to given value.
 
 ### GetActor
 
-`func (o *TriggerExampleInput) GetActor() TriggerInputSourceUpdatedActor`
+`func (o *TriggerExampleInput) GetActor() SourceUpdatedActor`
 
 GetActor returns the Actor field if non-nil, zero value otherwise.
 
 ### GetActorOk
 
-`func (o *TriggerExampleInput) GetActorOk() (*TriggerInputSourceUpdatedActor, bool)`
+`func (o *TriggerExampleInput) GetActorOk() (*SourceUpdatedActor, bool)`
 
 GetActorOk returns a tuple with the Actor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetActor
 
-`func (o *TriggerExampleInput) SetActor(v TriggerInputSourceUpdatedActor)`
+`func (o *TriggerExampleInput) SetActor(v SourceUpdatedActor)`
 
 SetActor sets Actor field to given value.
 
@@ -1055,60 +1055,60 @@ SetModified sets Modified field to given value.
 
 ### GetApplication
 
-`func (o *TriggerExampleInput) GetApplication() TriggerInputVAClusterStatusChangeEventApplication`
+`func (o *TriggerExampleInput) GetApplication() VAClusterStatusChangeEventApplication`
 
 GetApplication returns the Application field if non-nil, zero value otherwise.
 
 ### GetApplicationOk
 
-`func (o *TriggerExampleInput) GetApplicationOk() (*TriggerInputVAClusterStatusChangeEventApplication, bool)`
+`func (o *TriggerExampleInput) GetApplicationOk() (*VAClusterStatusChangeEventApplication, bool)`
 
 GetApplicationOk returns a tuple with the Application field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApplication
 
-`func (o *TriggerExampleInput) SetApplication(v TriggerInputVAClusterStatusChangeEventApplication)`
+`func (o *TriggerExampleInput) SetApplication(v VAClusterStatusChangeEventApplication)`
 
 SetApplication sets Application field to given value.
 
 
 ### GetHealthCheckResult
 
-`func (o *TriggerExampleInput) GetHealthCheckResult() TriggerInputVAClusterStatusChangeEventHealthCheckResult`
+`func (o *TriggerExampleInput) GetHealthCheckResult() VAClusterStatusChangeEventHealthCheckResult`
 
 GetHealthCheckResult returns the HealthCheckResult field if non-nil, zero value otherwise.
 
 ### GetHealthCheckResultOk
 
-`func (o *TriggerExampleInput) GetHealthCheckResultOk() (*TriggerInputVAClusterStatusChangeEventHealthCheckResult, bool)`
+`func (o *TriggerExampleInput) GetHealthCheckResultOk() (*VAClusterStatusChangeEventHealthCheckResult, bool)`
 
 GetHealthCheckResultOk returns a tuple with the HealthCheckResult field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHealthCheckResult
 
-`func (o *TriggerExampleInput) SetHealthCheckResult(v TriggerInputVAClusterStatusChangeEventHealthCheckResult)`
+`func (o *TriggerExampleInput) SetHealthCheckResult(v VAClusterStatusChangeEventHealthCheckResult)`
 
 SetHealthCheckResult sets HealthCheckResult field to given value.
 
 
 ### GetPreviousHealthCheckResult
 
-`func (o *TriggerExampleInput) GetPreviousHealthCheckResult() TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult`
+`func (o *TriggerExampleInput) GetPreviousHealthCheckResult() VAClusterStatusChangeEventPreviousHealthCheckResult`
 
 GetPreviousHealthCheckResult returns the PreviousHealthCheckResult field if non-nil, zero value otherwise.
 
 ### GetPreviousHealthCheckResultOk
 
-`func (o *TriggerExampleInput) GetPreviousHealthCheckResultOk() (*TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult, bool)`
+`func (o *TriggerExampleInput) GetPreviousHealthCheckResultOk() (*VAClusterStatusChangeEventPreviousHealthCheckResult, bool)`
 
 GetPreviousHealthCheckResultOk returns a tuple with the PreviousHealthCheckResult field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPreviousHealthCheckResult
 
-`func (o *TriggerExampleInput) SetPreviousHealthCheckResult(v TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult)`
+`func (o *TriggerExampleInput) SetPreviousHealthCheckResult(v VAClusterStatusChangeEventPreviousHealthCheckResult)`
 
 SetPreviousHealthCheckResult sets PreviousHealthCheckResult field to given value.
 

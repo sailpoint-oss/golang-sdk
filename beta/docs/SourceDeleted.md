@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **Type** | **string** | The connection type. | 
 **Deleted** | **time.Time** | The date and time the source was deleted. | 
 **Connector** | **string** | The connector type used to connect to the source. | 
-**Actor** | [**TriggerInputSourceDeletedActor**](TriggerInputSourceDeletedActor.md) |  | 
+**Actor** | [**SourceDeletedActor**](SourceDeletedActor.md) |  | 
 
 ## Methods
 
 ### NewSourceDeleted
 
-`func NewSourceDeleted(id string, name string, type_ string, deleted time.Time, connector string, actor TriggerInputSourceDeletedActor, ) *SourceDeleted`
+`func NewSourceDeleted(id string, name string, type_ string, deleted time.Time, connector string, actor SourceDeletedActor, ) *SourceDeleted`
 
 NewSourceDeleted instantiates a new SourceDeleted object
 This constructor will assign default values to properties that have it defined,
@@ -132,20 +132,20 @@ SetConnector sets Connector field to given value.
 
 ### GetActor
 
-`func (o *SourceDeleted) GetActor() TriggerInputSourceDeletedActor`
+`func (o *SourceDeleted) GetActor() SourceDeletedActor`
 
 GetActor returns the Actor field if non-nil, zero value otherwise.
 
 ### GetActorOk
 
-`func (o *SourceDeleted) GetActorOk() (*TriggerInputSourceDeletedActor, bool)`
+`func (o *SourceDeleted) GetActorOk() (*SourceDeletedActor, bool)`
 
 GetActorOk returns a tuple with the Actor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetActor
 
-`func (o *SourceDeleted) SetActor(v TriggerInputSourceDeletedActor)`
+`func (o *SourceDeleted) SetActor(v SourceDeletedActor)`
 
 SetActor sets Actor field to given value.
 

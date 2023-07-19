@@ -19,7 +19,7 @@ var _ MappedNullable = &CampaignGenerated{}
 
 // CampaignGenerated struct for CampaignGenerated
 type CampaignGenerated struct {
-	Campaign TriggerInputCampaignGeneratedCampaign `json:"campaign"`
+	Campaign CampaignGeneratedCampaign `json:"campaign"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -29,7 +29,7 @@ type _CampaignGenerated CampaignGenerated
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCampaignGenerated(campaign TriggerInputCampaignGeneratedCampaign) *CampaignGenerated {
+func NewCampaignGenerated(campaign CampaignGeneratedCampaign) *CampaignGenerated {
 	this := CampaignGenerated{}
 	this.Campaign = campaign
 	return &this
@@ -44,9 +44,9 @@ func NewCampaignGeneratedWithDefaults() *CampaignGenerated {
 }
 
 // GetCampaign returns the Campaign field value
-func (o *CampaignGenerated) GetCampaign() TriggerInputCampaignGeneratedCampaign {
+func (o *CampaignGenerated) GetCampaign() CampaignGeneratedCampaign {
 	if o == nil {
-		var ret TriggerInputCampaignGeneratedCampaign
+		var ret CampaignGeneratedCampaign
 		return ret
 	}
 
@@ -55,7 +55,7 @@ func (o *CampaignGenerated) GetCampaign() TriggerInputCampaignGeneratedCampaign 
 
 // GetCampaignOk returns a tuple with the Campaign field value
 // and a boolean to check if the value has been set.
-func (o *CampaignGenerated) GetCampaignOk() (*TriggerInputCampaignGeneratedCampaign, bool) {
+func (o *CampaignGenerated) GetCampaignOk() (*CampaignGeneratedCampaign, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *CampaignGenerated) GetCampaignOk() (*TriggerInputCampaignGeneratedCampa
 }
 
 // SetCampaign sets field value
-func (o *CampaignGenerated) SetCampaign(v TriggerInputCampaignGeneratedCampaign) {
+func (o *CampaignGenerated) SetCampaign(v CampaignGeneratedCampaign) {
 	o.Campaign = v
 }
 

@@ -19,11 +19,11 @@ var _ MappedNullable = &AccountAttributesChanged{}
 
 // AccountAttributesChanged struct for AccountAttributesChanged
 type AccountAttributesChanged struct {
-	Identity TriggerInputAccountAttributesChangedIdentity `json:"identity"`
-	Source TriggerInputAccountAttributesChangedSource `json:"source"`
-	Account TriggerInputAccountAttributesChangedAccount `json:"account"`
+	Identity AccountAttributesChangedIdentity `json:"identity"`
+	Source AccountAttributesChangedSource `json:"source"`
+	Account AccountAttributesChangedAccount `json:"account"`
 	// A list of attributes that changed.
-	Changes []TriggerInputAccountAttributesChangedChangesInner `json:"changes"`
+	Changes []AccountAttributesChangedChangesInner `json:"changes"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,7 +33,7 @@ type _AccountAttributesChanged AccountAttributesChanged
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountAttributesChanged(identity TriggerInputAccountAttributesChangedIdentity, source TriggerInputAccountAttributesChangedSource, account TriggerInputAccountAttributesChangedAccount, changes []TriggerInputAccountAttributesChangedChangesInner) *AccountAttributesChanged {
+func NewAccountAttributesChanged(identity AccountAttributesChangedIdentity, source AccountAttributesChangedSource, account AccountAttributesChangedAccount, changes []AccountAttributesChangedChangesInner) *AccountAttributesChanged {
 	this := AccountAttributesChanged{}
 	this.Identity = identity
 	this.Source = source
@@ -51,9 +51,9 @@ func NewAccountAttributesChangedWithDefaults() *AccountAttributesChanged {
 }
 
 // GetIdentity returns the Identity field value
-func (o *AccountAttributesChanged) GetIdentity() TriggerInputAccountAttributesChangedIdentity {
+func (o *AccountAttributesChanged) GetIdentity() AccountAttributesChangedIdentity {
 	if o == nil {
-		var ret TriggerInputAccountAttributesChangedIdentity
+		var ret AccountAttributesChangedIdentity
 		return ret
 	}
 
@@ -62,7 +62,7 @@ func (o *AccountAttributesChanged) GetIdentity() TriggerInputAccountAttributesCh
 
 // GetIdentityOk returns a tuple with the Identity field value
 // and a boolean to check if the value has been set.
-func (o *AccountAttributesChanged) GetIdentityOk() (*TriggerInputAccountAttributesChangedIdentity, bool) {
+func (o *AccountAttributesChanged) GetIdentityOk() (*AccountAttributesChangedIdentity, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -70,14 +70,14 @@ func (o *AccountAttributesChanged) GetIdentityOk() (*TriggerInputAccountAttribut
 }
 
 // SetIdentity sets field value
-func (o *AccountAttributesChanged) SetIdentity(v TriggerInputAccountAttributesChangedIdentity) {
+func (o *AccountAttributesChanged) SetIdentity(v AccountAttributesChangedIdentity) {
 	o.Identity = v
 }
 
 // GetSource returns the Source field value
-func (o *AccountAttributesChanged) GetSource() TriggerInputAccountAttributesChangedSource {
+func (o *AccountAttributesChanged) GetSource() AccountAttributesChangedSource {
 	if o == nil {
-		var ret TriggerInputAccountAttributesChangedSource
+		var ret AccountAttributesChangedSource
 		return ret
 	}
 
@@ -86,7 +86,7 @@ func (o *AccountAttributesChanged) GetSource() TriggerInputAccountAttributesChan
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *AccountAttributesChanged) GetSourceOk() (*TriggerInputAccountAttributesChangedSource, bool) {
+func (o *AccountAttributesChanged) GetSourceOk() (*AccountAttributesChangedSource, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -94,14 +94,14 @@ func (o *AccountAttributesChanged) GetSourceOk() (*TriggerInputAccountAttributes
 }
 
 // SetSource sets field value
-func (o *AccountAttributesChanged) SetSource(v TriggerInputAccountAttributesChangedSource) {
+func (o *AccountAttributesChanged) SetSource(v AccountAttributesChangedSource) {
 	o.Source = v
 }
 
 // GetAccount returns the Account field value
-func (o *AccountAttributesChanged) GetAccount() TriggerInputAccountAttributesChangedAccount {
+func (o *AccountAttributesChanged) GetAccount() AccountAttributesChangedAccount {
 	if o == nil {
-		var ret TriggerInputAccountAttributesChangedAccount
+		var ret AccountAttributesChangedAccount
 		return ret
 	}
 
@@ -110,7 +110,7 @@ func (o *AccountAttributesChanged) GetAccount() TriggerInputAccountAttributesCha
 
 // GetAccountOk returns a tuple with the Account field value
 // and a boolean to check if the value has been set.
-func (o *AccountAttributesChanged) GetAccountOk() (*TriggerInputAccountAttributesChangedAccount, bool) {
+func (o *AccountAttributesChanged) GetAccountOk() (*AccountAttributesChangedAccount, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -118,14 +118,14 @@ func (o *AccountAttributesChanged) GetAccountOk() (*TriggerInputAccountAttribute
 }
 
 // SetAccount sets field value
-func (o *AccountAttributesChanged) SetAccount(v TriggerInputAccountAttributesChangedAccount) {
+func (o *AccountAttributesChanged) SetAccount(v AccountAttributesChangedAccount) {
 	o.Account = v
 }
 
 // GetChanges returns the Changes field value
-func (o *AccountAttributesChanged) GetChanges() []TriggerInputAccountAttributesChangedChangesInner {
+func (o *AccountAttributesChanged) GetChanges() []AccountAttributesChangedChangesInner {
 	if o == nil {
-		var ret []TriggerInputAccountAttributesChangedChangesInner
+		var ret []AccountAttributesChangedChangesInner
 		return ret
 	}
 
@@ -134,7 +134,7 @@ func (o *AccountAttributesChanged) GetChanges() []TriggerInputAccountAttributesC
 
 // GetChangesOk returns a tuple with the Changes field value
 // and a boolean to check if the value has been set.
-func (o *AccountAttributesChanged) GetChangesOk() ([]TriggerInputAccountAttributesChangedChangesInner, bool) {
+func (o *AccountAttributesChanged) GetChangesOk() ([]AccountAttributesChangedChangesInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -142,7 +142,7 @@ func (o *AccountAttributesChanged) GetChangesOk() ([]TriggerInputAccountAttribut
 }
 
 // SetChanges sets field value
-func (o *AccountAttributesChanged) SetChanges(v []TriggerInputAccountAttributesChangedChangesInner) {
+func (o *AccountAttributesChanged) SetChanges(v []AccountAttributesChangedChangesInner) {
 	o.Changes = v
 }
 

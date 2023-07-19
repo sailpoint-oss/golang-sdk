@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | [**TriggerInputIdentityDeletedIdentity**](TriggerInputIdentityDeletedIdentity.md) |  | 
+**Identity** | [**IdentityDeletedIdentity**](IdentityDeletedIdentity.md) |  | 
 **Attributes** | **map[string]interface{}** | The attributes assigned to the identity.  Attributes are determined by the identity profile. | 
 
 ## Methods
 
 ### NewIdentityDeleted
 
-`func NewIdentityDeleted(identity TriggerInputIdentityDeletedIdentity, attributes map[string]interface{}, ) *IdentityDeleted`
+`func NewIdentityDeleted(identity IdentityDeletedIdentity, attributes map[string]interface{}, ) *IdentityDeleted`
 
 NewIdentityDeleted instantiates a new IdentityDeleted object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetIdentity
 
-`func (o *IdentityDeleted) GetIdentity() TriggerInputIdentityDeletedIdentity`
+`func (o *IdentityDeleted) GetIdentity() IdentityDeletedIdentity`
 
 GetIdentity returns the Identity field if non-nil, zero value otherwise.
 
 ### GetIdentityOk
 
-`func (o *IdentityDeleted) GetIdentityOk() (*TriggerInputIdentityDeletedIdentity, bool)`
+`func (o *IdentityDeleted) GetIdentityOk() (*IdentityDeletedIdentity, bool)`
 
 GetIdentityOk returns a tuple with the Identity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentity
 
-`func (o *IdentityDeleted) SetIdentity(v TriggerInputIdentityDeletedIdentity)`
+`func (o *IdentityDeleted) SetIdentity(v IdentityDeletedIdentity)`
 
 SetIdentity sets Identity field to given value.
 

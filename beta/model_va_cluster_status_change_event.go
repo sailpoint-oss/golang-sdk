@@ -24,9 +24,9 @@ type VAClusterStatusChangeEvent struct {
 	Created time.Time `json:"created"`
 	// The type of the object that initiated this event.
 	Type map[string]interface{} `json:"type"`
-	Application TriggerInputVAClusterStatusChangeEventApplication `json:"application"`
-	HealthCheckResult TriggerInputVAClusterStatusChangeEventHealthCheckResult `json:"healthCheckResult"`
-	PreviousHealthCheckResult TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult `json:"previousHealthCheckResult"`
+	Application VAClusterStatusChangeEventApplication `json:"application"`
+	HealthCheckResult VAClusterStatusChangeEventHealthCheckResult `json:"healthCheckResult"`
+	PreviousHealthCheckResult VAClusterStatusChangeEventPreviousHealthCheckResult `json:"previousHealthCheckResult"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +36,7 @@ type _VAClusterStatusChangeEvent VAClusterStatusChangeEvent
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVAClusterStatusChangeEvent(created time.Time, type_ map[string]interface{}, application TriggerInputVAClusterStatusChangeEventApplication, healthCheckResult TriggerInputVAClusterStatusChangeEventHealthCheckResult, previousHealthCheckResult TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult) *VAClusterStatusChangeEvent {
+func NewVAClusterStatusChangeEvent(created time.Time, type_ map[string]interface{}, application VAClusterStatusChangeEventApplication, healthCheckResult VAClusterStatusChangeEventHealthCheckResult, previousHealthCheckResult VAClusterStatusChangeEventPreviousHealthCheckResult) *VAClusterStatusChangeEvent {
 	this := VAClusterStatusChangeEvent{}
 	this.Created = created
 	this.Type = type_
@@ -103,9 +103,9 @@ func (o *VAClusterStatusChangeEvent) SetType(v map[string]interface{}) {
 }
 
 // GetApplication returns the Application field value
-func (o *VAClusterStatusChangeEvent) GetApplication() TriggerInputVAClusterStatusChangeEventApplication {
+func (o *VAClusterStatusChangeEvent) GetApplication() VAClusterStatusChangeEventApplication {
 	if o == nil {
-		var ret TriggerInputVAClusterStatusChangeEventApplication
+		var ret VAClusterStatusChangeEventApplication
 		return ret
 	}
 
@@ -114,7 +114,7 @@ func (o *VAClusterStatusChangeEvent) GetApplication() TriggerInputVAClusterStatu
 
 // GetApplicationOk returns a tuple with the Application field value
 // and a boolean to check if the value has been set.
-func (o *VAClusterStatusChangeEvent) GetApplicationOk() (*TriggerInputVAClusterStatusChangeEventApplication, bool) {
+func (o *VAClusterStatusChangeEvent) GetApplicationOk() (*VAClusterStatusChangeEventApplication, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,14 +122,14 @@ func (o *VAClusterStatusChangeEvent) GetApplicationOk() (*TriggerInputVAClusterS
 }
 
 // SetApplication sets field value
-func (o *VAClusterStatusChangeEvent) SetApplication(v TriggerInputVAClusterStatusChangeEventApplication) {
+func (o *VAClusterStatusChangeEvent) SetApplication(v VAClusterStatusChangeEventApplication) {
 	o.Application = v
 }
 
 // GetHealthCheckResult returns the HealthCheckResult field value
-func (o *VAClusterStatusChangeEvent) GetHealthCheckResult() TriggerInputVAClusterStatusChangeEventHealthCheckResult {
+func (o *VAClusterStatusChangeEvent) GetHealthCheckResult() VAClusterStatusChangeEventHealthCheckResult {
 	if o == nil {
-		var ret TriggerInputVAClusterStatusChangeEventHealthCheckResult
+		var ret VAClusterStatusChangeEventHealthCheckResult
 		return ret
 	}
 
@@ -138,7 +138,7 @@ func (o *VAClusterStatusChangeEvent) GetHealthCheckResult() TriggerInputVACluste
 
 // GetHealthCheckResultOk returns a tuple with the HealthCheckResult field value
 // and a boolean to check if the value has been set.
-func (o *VAClusterStatusChangeEvent) GetHealthCheckResultOk() (*TriggerInputVAClusterStatusChangeEventHealthCheckResult, bool) {
+func (o *VAClusterStatusChangeEvent) GetHealthCheckResultOk() (*VAClusterStatusChangeEventHealthCheckResult, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,14 +146,14 @@ func (o *VAClusterStatusChangeEvent) GetHealthCheckResultOk() (*TriggerInputVACl
 }
 
 // SetHealthCheckResult sets field value
-func (o *VAClusterStatusChangeEvent) SetHealthCheckResult(v TriggerInputVAClusterStatusChangeEventHealthCheckResult) {
+func (o *VAClusterStatusChangeEvent) SetHealthCheckResult(v VAClusterStatusChangeEventHealthCheckResult) {
 	o.HealthCheckResult = v
 }
 
 // GetPreviousHealthCheckResult returns the PreviousHealthCheckResult field value
-func (o *VAClusterStatusChangeEvent) GetPreviousHealthCheckResult() TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult {
+func (o *VAClusterStatusChangeEvent) GetPreviousHealthCheckResult() VAClusterStatusChangeEventPreviousHealthCheckResult {
 	if o == nil {
-		var ret TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult
+		var ret VAClusterStatusChangeEventPreviousHealthCheckResult
 		return ret
 	}
 
@@ -162,7 +162,7 @@ func (o *VAClusterStatusChangeEvent) GetPreviousHealthCheckResult() TriggerInput
 
 // GetPreviousHealthCheckResultOk returns a tuple with the PreviousHealthCheckResult field value
 // and a boolean to check if the value has been set.
-func (o *VAClusterStatusChangeEvent) GetPreviousHealthCheckResultOk() (*TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult, bool) {
+func (o *VAClusterStatusChangeEvent) GetPreviousHealthCheckResultOk() (*VAClusterStatusChangeEventPreviousHealthCheckResult, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -170,7 +170,7 @@ func (o *VAClusterStatusChangeEvent) GetPreviousHealthCheckResultOk() (*TriggerI
 }
 
 // SetPreviousHealthCheckResult sets field value
-func (o *VAClusterStatusChangeEvent) SetPreviousHealthCheckResult(v TriggerInputVAClusterStatusChangeEventPreviousHealthCheckResult) {
+func (o *VAClusterStatusChangeEvent) SetPreviousHealthCheckResult(v VAClusterStatusChangeEventPreviousHealthCheckResult) {
 	o.PreviousHealthCheckResult = v
 }
 

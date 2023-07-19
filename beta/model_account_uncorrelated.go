@@ -19,9 +19,9 @@ var _ MappedNullable = &AccountUncorrelated{}
 
 // AccountUncorrelated struct for AccountUncorrelated
 type AccountUncorrelated struct {
-	Identity TriggerInputAccountUncorrelatedIdentity `json:"identity"`
-	Source TriggerInputAccountUncorrelatedSource `json:"source"`
-	Account TriggerInputAccountUncorrelatedAccount `json:"account"`
+	Identity AccountUncorrelatedIdentity `json:"identity"`
+	Source AccountUncorrelatedSource `json:"source"`
+	Account AccountUncorrelatedAccount `json:"account"`
 	// The number of entitlements associated with this account.
 	EntitlementCount *int32 `json:"entitlementCount,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -33,7 +33,7 @@ type _AccountUncorrelated AccountUncorrelated
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountUncorrelated(identity TriggerInputAccountUncorrelatedIdentity, source TriggerInputAccountUncorrelatedSource, account TriggerInputAccountUncorrelatedAccount) *AccountUncorrelated {
+func NewAccountUncorrelated(identity AccountUncorrelatedIdentity, source AccountUncorrelatedSource, account AccountUncorrelatedAccount) *AccountUncorrelated {
 	this := AccountUncorrelated{}
 	this.Identity = identity
 	this.Source = source
@@ -50,9 +50,9 @@ func NewAccountUncorrelatedWithDefaults() *AccountUncorrelated {
 }
 
 // GetIdentity returns the Identity field value
-func (o *AccountUncorrelated) GetIdentity() TriggerInputAccountUncorrelatedIdentity {
+func (o *AccountUncorrelated) GetIdentity() AccountUncorrelatedIdentity {
 	if o == nil {
-		var ret TriggerInputAccountUncorrelatedIdentity
+		var ret AccountUncorrelatedIdentity
 		return ret
 	}
 
@@ -61,7 +61,7 @@ func (o *AccountUncorrelated) GetIdentity() TriggerInputAccountUncorrelatedIdent
 
 // GetIdentityOk returns a tuple with the Identity field value
 // and a boolean to check if the value has been set.
-func (o *AccountUncorrelated) GetIdentityOk() (*TriggerInputAccountUncorrelatedIdentity, bool) {
+func (o *AccountUncorrelated) GetIdentityOk() (*AccountUncorrelatedIdentity, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,14 +69,14 @@ func (o *AccountUncorrelated) GetIdentityOk() (*TriggerInputAccountUncorrelatedI
 }
 
 // SetIdentity sets field value
-func (o *AccountUncorrelated) SetIdentity(v TriggerInputAccountUncorrelatedIdentity) {
+func (o *AccountUncorrelated) SetIdentity(v AccountUncorrelatedIdentity) {
 	o.Identity = v
 }
 
 // GetSource returns the Source field value
-func (o *AccountUncorrelated) GetSource() TriggerInputAccountUncorrelatedSource {
+func (o *AccountUncorrelated) GetSource() AccountUncorrelatedSource {
 	if o == nil {
-		var ret TriggerInputAccountUncorrelatedSource
+		var ret AccountUncorrelatedSource
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *AccountUncorrelated) GetSource() TriggerInputAccountUncorrelatedSource 
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *AccountUncorrelated) GetSourceOk() (*TriggerInputAccountUncorrelatedSource, bool) {
+func (o *AccountUncorrelated) GetSourceOk() (*AccountUncorrelatedSource, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,14 +93,14 @@ func (o *AccountUncorrelated) GetSourceOk() (*TriggerInputAccountUncorrelatedSou
 }
 
 // SetSource sets field value
-func (o *AccountUncorrelated) SetSource(v TriggerInputAccountUncorrelatedSource) {
+func (o *AccountUncorrelated) SetSource(v AccountUncorrelatedSource) {
 	o.Source = v
 }
 
 // GetAccount returns the Account field value
-func (o *AccountUncorrelated) GetAccount() TriggerInputAccountUncorrelatedAccount {
+func (o *AccountUncorrelated) GetAccount() AccountUncorrelatedAccount {
 	if o == nil {
-		var ret TriggerInputAccountUncorrelatedAccount
+		var ret AccountUncorrelatedAccount
 		return ret
 	}
 
@@ -109,7 +109,7 @@ func (o *AccountUncorrelated) GetAccount() TriggerInputAccountUncorrelatedAccoun
 
 // GetAccountOk returns a tuple with the Account field value
 // and a boolean to check if the value has been set.
-func (o *AccountUncorrelated) GetAccountOk() (*TriggerInputAccountUncorrelatedAccount, bool) {
+func (o *AccountUncorrelated) GetAccountOk() (*AccountUncorrelatedAccount, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -117,7 +117,7 @@ func (o *AccountUncorrelated) GetAccountOk() (*TriggerInputAccountUncorrelatedAc
 }
 
 // SetAccount sets field value
-func (o *AccountUncorrelated) SetAccount(v TriggerInputAccountUncorrelatedAccount) {
+func (o *AccountUncorrelated) SetAccount(v AccountUncorrelatedAccount) {
 	o.Account = v
 }
 

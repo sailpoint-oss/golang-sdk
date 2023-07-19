@@ -9,14 +9,14 @@ Name | Type | Description | Notes
 **OwnerName** | **string** | The name of the identity that owns the saved search. | 
 **Query** | **string** | The search query that was used to generate the report. | 
 **SearchName** | **string** | The name of the saved search. | 
-**SearchResults** | [**TriggerInputSavedSearchCompleteSearchResults**](TriggerInputSavedSearchCompleteSearchResults.md) |  | 
+**SearchResults** | [**SavedSearchCompleteSearchResults**](SavedSearchCompleteSearchResults.md) |  | 
 **SignedS3Url** | **string** | The Amazon S3 URL to download the report from. | 
 
 ## Methods
 
 ### NewSavedSearchComplete
 
-`func NewSavedSearchComplete(fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults TriggerInputSavedSearchCompleteSearchResults, signedS3Url string, ) *SavedSearchComplete`
+`func NewSavedSearchComplete(fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults SavedSearchCompleteSearchResults, signedS3Url string, ) *SavedSearchComplete`
 
 NewSavedSearchComplete instantiates a new SavedSearchComplete object
 This constructor will assign default values to properties that have it defined,
@@ -133,20 +133,20 @@ SetSearchName sets SearchName field to given value.
 
 ### GetSearchResults
 
-`func (o *SavedSearchComplete) GetSearchResults() TriggerInputSavedSearchCompleteSearchResults`
+`func (o *SavedSearchComplete) GetSearchResults() SavedSearchCompleteSearchResults`
 
 GetSearchResults returns the SearchResults field if non-nil, zero value otherwise.
 
 ### GetSearchResultsOk
 
-`func (o *SavedSearchComplete) GetSearchResultsOk() (*TriggerInputSavedSearchCompleteSearchResults, bool)`
+`func (o *SavedSearchComplete) GetSearchResultsOk() (*SavedSearchCompleteSearchResults, bool)`
 
 GetSearchResultsOk returns a tuple with the SearchResults field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSearchResults
 
-`func (o *SavedSearchComplete) SetSearchResults(v TriggerInputSavedSearchCompleteSearchResults)`
+`func (o *SavedSearchComplete) SetSearchResults(v SavedSearchCompleteSearchResults)`
 
 SetSearchResults sets SearchResults field to given value.
 

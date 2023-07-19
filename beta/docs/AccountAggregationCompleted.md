@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | [**TriggerInputAccountAggregationCompletedSource**](TriggerInputAccountAggregationCompletedSource.md) |  | 
+**Source** | [**AccountAggregationCompletedSource**](AccountAggregationCompletedSource.md) |  | 
 **Status** | **map[string]interface{}** | The overall status of the aggregation. | 
 **Started** | **time.Time** | The date and time when the account aggregation started. | 
 **Completed** | **time.Time** | The date and time when the account aggregation finished. | 
 **Errors** | **[]string** | A list of errors that occurred during the aggregation. | 
 **Warnings** | **[]string** | A list of warnings that occurred during the aggregation. | 
-**Stats** | [**TriggerInputAccountAggregationCompletedStats**](TriggerInputAccountAggregationCompletedStats.md) |  | 
+**Stats** | [**AccountAggregationCompletedStats**](AccountAggregationCompletedStats.md) |  | 
 
 ## Methods
 
 ### NewAccountAggregationCompleted
 
-`func NewAccountAggregationCompleted(source TriggerInputAccountAggregationCompletedSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats TriggerInputAccountAggregationCompletedStats, ) *AccountAggregationCompleted`
+`func NewAccountAggregationCompleted(source AccountAggregationCompletedSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats AccountAggregationCompletedStats, ) *AccountAggregationCompleted`
 
 NewAccountAggregationCompleted instantiates a new AccountAggregationCompleted object
 This constructor will assign default values to properties that have it defined,
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *AccountAggregationCompleted) GetSource() TriggerInputAccountAggregationCompletedSource`
+`func (o *AccountAggregationCompleted) GetSource() AccountAggregationCompletedSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *AccountAggregationCompleted) GetSourceOk() (*TriggerInputAccountAggregationCompletedSource, bool)`
+`func (o *AccountAggregationCompleted) GetSourceOk() (*AccountAggregationCompletedSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *AccountAggregationCompleted) SetSource(v TriggerInputAccountAggregationCompletedSource)`
+`func (o *AccountAggregationCompleted) SetSource(v AccountAggregationCompletedSource)`
 
 SetSource sets Source field to given value.
 
@@ -173,20 +173,20 @@ SetWarnings sets Warnings field to given value.
 UnsetWarnings ensures that no value is present for Warnings, not even an explicit nil
 ### GetStats
 
-`func (o *AccountAggregationCompleted) GetStats() TriggerInputAccountAggregationCompletedStats`
+`func (o *AccountAggregationCompleted) GetStats() AccountAggregationCompletedStats`
 
 GetStats returns the Stats field if non-nil, zero value otherwise.
 
 ### GetStatsOk
 
-`func (o *AccountAggregationCompleted) GetStatsOk() (*TriggerInputAccountAggregationCompletedStats, bool)`
+`func (o *AccountAggregationCompleted) GetStatsOk() (*AccountAggregationCompletedStats, bool)`
 
 GetStatsOk returns a tuple with the Stats field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStats
 
-`func (o *AccountAggregationCompleted) SetStats(v TriggerInputAccountAggregationCompletedStats)`
+`func (o *AccountAggregationCompleted) SetStats(v AccountAggregationCompletedStats)`
 
 SetStats sets Stats field to given value.
 

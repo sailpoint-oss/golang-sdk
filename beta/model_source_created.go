@@ -30,7 +30,7 @@ type SourceCreated struct {
 	Created time.Time `json:"created"`
 	// The connector type used to connect to the source.
 	Connector string `json:"connector"`
-	Actor TriggerInputSourceCreatedActor `json:"actor"`
+	Actor SourceCreatedActor `json:"actor"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,7 +40,7 @@ type _SourceCreated SourceCreated
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceCreated(id string, name string, type_ string, created time.Time, connector string, actor TriggerInputSourceCreatedActor) *SourceCreated {
+func NewSourceCreated(id string, name string, type_ string, created time.Time, connector string, actor SourceCreatedActor) *SourceCreated {
 	this := SourceCreated{}
 	this.Id = id
 	this.Name = name
@@ -180,9 +180,9 @@ func (o *SourceCreated) SetConnector(v string) {
 }
 
 // GetActor returns the Actor field value
-func (o *SourceCreated) GetActor() TriggerInputSourceCreatedActor {
+func (o *SourceCreated) GetActor() SourceCreatedActor {
 	if o == nil {
-		var ret TriggerInputSourceCreatedActor
+		var ret SourceCreatedActor
 		return ret
 	}
 
@@ -191,7 +191,7 @@ func (o *SourceCreated) GetActor() TriggerInputSourceCreatedActor {
 
 // GetActorOk returns a tuple with the Actor field value
 // and a boolean to check if the value has been set.
-func (o *SourceCreated) GetActorOk() (*TriggerInputSourceCreatedActor, bool) {
+func (o *SourceCreated) GetActorOk() (*SourceCreatedActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -199,7 +199,7 @@ func (o *SourceCreated) GetActorOk() (*TriggerInputSourceCreatedActor, bool) {
 }
 
 // SetActor sets field value
-func (o *SourceCreated) SetActor(v TriggerInputSourceCreatedActor) {
+func (o *SourceCreated) SetActor(v SourceCreatedActor) {
 	o.Actor = v
 }
 

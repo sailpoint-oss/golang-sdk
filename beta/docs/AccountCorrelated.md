@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | [**TriggerInputAccountCorrelatedIdentity**](TriggerInputAccountCorrelatedIdentity.md) |  | 
-**Source** | [**TriggerInputAccountCorrelatedSource**](TriggerInputAccountCorrelatedSource.md) |  | 
-**Account** | [**TriggerInputAccountCorrelatedAccount**](TriggerInputAccountCorrelatedAccount.md) |  | 
+**Identity** | [**AccountCorrelatedIdentity**](AccountCorrelatedIdentity.md) |  | 
+**Source** | [**AccountCorrelatedSource**](AccountCorrelatedSource.md) |  | 
+**Account** | [**AccountCorrelatedAccount**](AccountCorrelatedAccount.md) |  | 
 **Attributes** | **map[string]interface{}** | The attributes associated with the account.  Attributes are unique per source. | 
 **EntitlementCount** | Pointer to **int32** | The number of entitlements associated with this account. | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewAccountCorrelated
 
-`func NewAccountCorrelated(identity TriggerInputAccountCorrelatedIdentity, source TriggerInputAccountCorrelatedSource, account TriggerInputAccountCorrelatedAccount, attributes map[string]interface{}, ) *AccountCorrelated`
+`func NewAccountCorrelated(identity AccountCorrelatedIdentity, source AccountCorrelatedSource, account AccountCorrelatedAccount, attributes map[string]interface{}, ) *AccountCorrelated`
 
 NewAccountCorrelated instantiates a new AccountCorrelated object
 This constructor will assign default values to properties that have it defined,
@@ -31,60 +31,60 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetIdentity
 
-`func (o *AccountCorrelated) GetIdentity() TriggerInputAccountCorrelatedIdentity`
+`func (o *AccountCorrelated) GetIdentity() AccountCorrelatedIdentity`
 
 GetIdentity returns the Identity field if non-nil, zero value otherwise.
 
 ### GetIdentityOk
 
-`func (o *AccountCorrelated) GetIdentityOk() (*TriggerInputAccountCorrelatedIdentity, bool)`
+`func (o *AccountCorrelated) GetIdentityOk() (*AccountCorrelatedIdentity, bool)`
 
 GetIdentityOk returns a tuple with the Identity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentity
 
-`func (o *AccountCorrelated) SetIdentity(v TriggerInputAccountCorrelatedIdentity)`
+`func (o *AccountCorrelated) SetIdentity(v AccountCorrelatedIdentity)`
 
 SetIdentity sets Identity field to given value.
 
 
 ### GetSource
 
-`func (o *AccountCorrelated) GetSource() TriggerInputAccountCorrelatedSource`
+`func (o *AccountCorrelated) GetSource() AccountCorrelatedSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *AccountCorrelated) GetSourceOk() (*TriggerInputAccountCorrelatedSource, bool)`
+`func (o *AccountCorrelated) GetSourceOk() (*AccountCorrelatedSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *AccountCorrelated) SetSource(v TriggerInputAccountCorrelatedSource)`
+`func (o *AccountCorrelated) SetSource(v AccountCorrelatedSource)`
 
 SetSource sets Source field to given value.
 
 
 ### GetAccount
 
-`func (o *AccountCorrelated) GetAccount() TriggerInputAccountCorrelatedAccount`
+`func (o *AccountCorrelated) GetAccount() AccountCorrelatedAccount`
 
 GetAccount returns the Account field if non-nil, zero value otherwise.
 
 ### GetAccountOk
 
-`func (o *AccountCorrelated) GetAccountOk() (*TriggerInputAccountCorrelatedAccount, bool)`
+`func (o *AccountCorrelated) GetAccountOk() (*AccountCorrelatedAccount, bool)`
 
 GetAccountOk returns a tuple with the Account field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccount
 
-`func (o *AccountCorrelated) SetAccount(v TriggerInputAccountCorrelatedAccount)`
+`func (o *AccountCorrelated) SetAccount(v AccountCorrelatedAccount)`
 
 SetAccount sets Account field to given value.
 

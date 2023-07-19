@@ -19,7 +19,7 @@ var _ MappedNullable = &CertificationSignedOff{}
 
 // CertificationSignedOff struct for CertificationSignedOff
 type CertificationSignedOff struct {
-	Certification TriggerInputCertificationSignedOffCertification `json:"certification"`
+	Certification CertificationSignedOffCertification `json:"certification"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -29,7 +29,7 @@ type _CertificationSignedOff CertificationSignedOff
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCertificationSignedOff(certification TriggerInputCertificationSignedOffCertification) *CertificationSignedOff {
+func NewCertificationSignedOff(certification CertificationSignedOffCertification) *CertificationSignedOff {
 	this := CertificationSignedOff{}
 	this.Certification = certification
 	return &this
@@ -44,9 +44,9 @@ func NewCertificationSignedOffWithDefaults() *CertificationSignedOff {
 }
 
 // GetCertification returns the Certification field value
-func (o *CertificationSignedOff) GetCertification() TriggerInputCertificationSignedOffCertification {
+func (o *CertificationSignedOff) GetCertification() CertificationSignedOffCertification {
 	if o == nil {
-		var ret TriggerInputCertificationSignedOffCertification
+		var ret CertificationSignedOffCertification
 		return ret
 	}
 
@@ -55,7 +55,7 @@ func (o *CertificationSignedOff) GetCertification() TriggerInputCertificationSig
 
 // GetCertificationOk returns a tuple with the Certification field value
 // and a boolean to check if the value has been set.
-func (o *CertificationSignedOff) GetCertificationOk() (*TriggerInputCertificationSignedOffCertification, bool) {
+func (o *CertificationSignedOff) GetCertificationOk() (*CertificationSignedOffCertification, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *CertificationSignedOff) GetCertificationOk() (*TriggerInputCertificatio
 }
 
 // SetCertification sets field value
-func (o *CertificationSignedOff) SetCertification(v TriggerInputCertificationSignedOffCertification) {
+func (o *CertificationSignedOff) SetCertification(v CertificationSignedOffCertification) {
 	o.Certification = v
 }
 

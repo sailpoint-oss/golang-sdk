@@ -30,7 +30,7 @@ type SourceDeleted struct {
 	Deleted time.Time `json:"deleted"`
 	// The connector type used to connect to the source.
 	Connector string `json:"connector"`
-	Actor TriggerInputSourceDeletedActor `json:"actor"`
+	Actor SourceDeletedActor `json:"actor"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,7 +40,7 @@ type _SourceDeleted SourceDeleted
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceDeleted(id string, name string, type_ string, deleted time.Time, connector string, actor TriggerInputSourceDeletedActor) *SourceDeleted {
+func NewSourceDeleted(id string, name string, type_ string, deleted time.Time, connector string, actor SourceDeletedActor) *SourceDeleted {
 	this := SourceDeleted{}
 	this.Id = id
 	this.Name = name
@@ -180,9 +180,9 @@ func (o *SourceDeleted) SetConnector(v string) {
 }
 
 // GetActor returns the Actor field value
-func (o *SourceDeleted) GetActor() TriggerInputSourceDeletedActor {
+func (o *SourceDeleted) GetActor() SourceDeletedActor {
 	if o == nil {
-		var ret TriggerInputSourceDeletedActor
+		var ret SourceDeletedActor
 		return ret
 	}
 
@@ -191,7 +191,7 @@ func (o *SourceDeleted) GetActor() TriggerInputSourceDeletedActor {
 
 // GetActorOk returns a tuple with the Actor field value
 // and a boolean to check if the value has been set.
-func (o *SourceDeleted) GetActorOk() (*TriggerInputSourceDeletedActor, bool) {
+func (o *SourceDeleted) GetActorOk() (*SourceDeletedActor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -199,7 +199,7 @@ func (o *SourceDeleted) GetActorOk() (*TriggerInputSourceDeletedActor, bool) {
 }
 
 // SetActor sets field value
-func (o *SourceDeleted) SetActor(v TriggerInputSourceDeletedActor) {
+func (o *SourceDeleted) SetActor(v SourceDeletedActor) {
 	o.Actor = v
 }
 

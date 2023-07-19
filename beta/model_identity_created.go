@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityCreated{}
 
 // IdentityCreated struct for IdentityCreated
 type IdentityCreated struct {
-	Identity TriggerInputIdentityCreatedIdentity `json:"identity"`
+	Identity IdentityCreatedIdentity `json:"identity"`
 	// The attributes assigned to the identity.  Attributes are determined by the identity profile.
 	Attributes map[string]interface{} `json:"attributes"`
 	AdditionalProperties map[string]interface{}
@@ -31,7 +31,7 @@ type _IdentityCreated IdentityCreated
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityCreated(identity TriggerInputIdentityCreatedIdentity, attributes map[string]interface{}) *IdentityCreated {
+func NewIdentityCreated(identity IdentityCreatedIdentity, attributes map[string]interface{}) *IdentityCreated {
 	this := IdentityCreated{}
 	this.Identity = identity
 	this.Attributes = attributes
@@ -47,9 +47,9 @@ func NewIdentityCreatedWithDefaults() *IdentityCreated {
 }
 
 // GetIdentity returns the Identity field value
-func (o *IdentityCreated) GetIdentity() TriggerInputIdentityCreatedIdentity {
+func (o *IdentityCreated) GetIdentity() IdentityCreatedIdentity {
 	if o == nil {
-		var ret TriggerInputIdentityCreatedIdentity
+		var ret IdentityCreatedIdentity
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *IdentityCreated) GetIdentity() TriggerInputIdentityCreatedIdentity {
 
 // GetIdentityOk returns a tuple with the Identity field value
 // and a boolean to check if the value has been set.
-func (o *IdentityCreated) GetIdentityOk() (*TriggerInputIdentityCreatedIdentity, bool) {
+func (o *IdentityCreated) GetIdentityOk() (*IdentityCreatedIdentity, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *IdentityCreated) GetIdentityOk() (*TriggerInputIdentityCreatedIdentity,
 }
 
 // SetIdentity sets field value
-func (o *IdentityCreated) SetIdentity(v TriggerInputIdentityCreatedIdentity) {
+func (o *IdentityCreated) SetIdentity(v IdentityCreatedIdentity) {
 	o.Identity = v
 }
 

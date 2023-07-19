@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessRequestId** | **string** | The unique ID of the access request. | 
-**RequestedFor** | [**TriggerInputAccessRequestPostApprovalRequestedFor**](TriggerInputAccessRequestPostApprovalRequestedFor.md) |  | 
-**RequestedItems** | [**[]TriggerInputAccessRequestPreApprovalRequestedItemsInner**](TriggerInputAccessRequestPreApprovalRequestedItemsInner.md) | Details of the access items being requested. | 
-**RequestedBy** | [**TriggerInputAccessRequestPostApprovalRequestedBy**](TriggerInputAccessRequestPostApprovalRequestedBy.md) |  | 
+**RequestedFor** | [**AccessRequestPostApprovalRequestedFor**](AccessRequestPostApprovalRequestedFor.md) |  | 
+**RequestedItems** | [**[]AccessRequestPreApprovalRequestedItemsInner**](AccessRequestPreApprovalRequestedItemsInner.md) | Details of the access items being requested. | 
+**RequestedBy** | [**AccessRequestPostApprovalRequestedBy**](AccessRequestPostApprovalRequestedBy.md) |  | 
 
 ## Methods
 
 ### NewAccessRequestPreApproval
 
-`func NewAccessRequestPreApproval(accessRequestId string, requestedFor TriggerInputAccessRequestPostApprovalRequestedFor, requestedItems []TriggerInputAccessRequestPreApprovalRequestedItemsInner, requestedBy TriggerInputAccessRequestPostApprovalRequestedBy, ) *AccessRequestPreApproval`
+`func NewAccessRequestPreApproval(accessRequestId string, requestedFor AccessRequestPostApprovalRequestedFor, requestedItems []AccessRequestPreApprovalRequestedItemsInner, requestedBy AccessRequestPostApprovalRequestedBy, ) *AccessRequestPreApproval`
 
 NewAccessRequestPreApproval instantiates a new AccessRequestPreApproval object
 This constructor will assign default values to properties that have it defined,
@@ -50,60 +50,60 @@ SetAccessRequestId sets AccessRequestId field to given value.
 
 ### GetRequestedFor
 
-`func (o *AccessRequestPreApproval) GetRequestedFor() TriggerInputAccessRequestPostApprovalRequestedFor`
+`func (o *AccessRequestPreApproval) GetRequestedFor() AccessRequestPostApprovalRequestedFor`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *AccessRequestPreApproval) GetRequestedForOk() (*TriggerInputAccessRequestPostApprovalRequestedFor, bool)`
+`func (o *AccessRequestPreApproval) GetRequestedForOk() (*AccessRequestPostApprovalRequestedFor, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *AccessRequestPreApproval) SetRequestedFor(v TriggerInputAccessRequestPostApprovalRequestedFor)`
+`func (o *AccessRequestPreApproval) SetRequestedFor(v AccessRequestPostApprovalRequestedFor)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
 
 ### GetRequestedItems
 
-`func (o *AccessRequestPreApproval) GetRequestedItems() []TriggerInputAccessRequestPreApprovalRequestedItemsInner`
+`func (o *AccessRequestPreApproval) GetRequestedItems() []AccessRequestPreApprovalRequestedItemsInner`
 
 GetRequestedItems returns the RequestedItems field if non-nil, zero value otherwise.
 
 ### GetRequestedItemsOk
 
-`func (o *AccessRequestPreApproval) GetRequestedItemsOk() (*[]TriggerInputAccessRequestPreApprovalRequestedItemsInner, bool)`
+`func (o *AccessRequestPreApproval) GetRequestedItemsOk() (*[]AccessRequestPreApprovalRequestedItemsInner, bool)`
 
 GetRequestedItemsOk returns a tuple with the RequestedItems field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedItems
 
-`func (o *AccessRequestPreApproval) SetRequestedItems(v []TriggerInputAccessRequestPreApprovalRequestedItemsInner)`
+`func (o *AccessRequestPreApproval) SetRequestedItems(v []AccessRequestPreApprovalRequestedItemsInner)`
 
 SetRequestedItems sets RequestedItems field to given value.
 
 
 ### GetRequestedBy
 
-`func (o *AccessRequestPreApproval) GetRequestedBy() TriggerInputAccessRequestPostApprovalRequestedBy`
+`func (o *AccessRequestPreApproval) GetRequestedBy() AccessRequestPostApprovalRequestedBy`
 
 GetRequestedBy returns the RequestedBy field if non-nil, zero value otherwise.
 
 ### GetRequestedByOk
 
-`func (o *AccessRequestPreApproval) GetRequestedByOk() (*TriggerInputAccessRequestPostApprovalRequestedBy, bool)`
+`func (o *AccessRequestPreApproval) GetRequestedByOk() (*AccessRequestPostApprovalRequestedBy, bool)`
 
 GetRequestedByOk returns a tuple with the RequestedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedBy
 
-`func (o *AccessRequestPreApproval) SetRequestedBy(v TriggerInputAccessRequestPostApprovalRequestedBy)`
+`func (o *AccessRequestPreApproval) SetRequestedBy(v AccessRequestPostApprovalRequestedBy)`
 
 SetRequestedBy sets RequestedBy field to given value.
 

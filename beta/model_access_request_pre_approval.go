@@ -21,10 +21,10 @@ var _ MappedNullable = &AccessRequestPreApproval{}
 type AccessRequestPreApproval struct {
 	// The unique ID of the access request.
 	AccessRequestId string `json:"accessRequestId"`
-	RequestedFor TriggerInputAccessRequestPostApprovalRequestedFor `json:"requestedFor"`
+	RequestedFor AccessRequestPostApprovalRequestedFor `json:"requestedFor"`
 	// Details of the access items being requested.
-	RequestedItems []TriggerInputAccessRequestPreApprovalRequestedItemsInner `json:"requestedItems"`
-	RequestedBy TriggerInputAccessRequestPostApprovalRequestedBy `json:"requestedBy"`
+	RequestedItems []AccessRequestPreApprovalRequestedItemsInner `json:"requestedItems"`
+	RequestedBy AccessRequestPostApprovalRequestedBy `json:"requestedBy"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,7 +34,7 @@ type _AccessRequestPreApproval AccessRequestPreApproval
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessRequestPreApproval(accessRequestId string, requestedFor TriggerInputAccessRequestPostApprovalRequestedFor, requestedItems []TriggerInputAccessRequestPreApprovalRequestedItemsInner, requestedBy TriggerInputAccessRequestPostApprovalRequestedBy) *AccessRequestPreApproval {
+func NewAccessRequestPreApproval(accessRequestId string, requestedFor AccessRequestPostApprovalRequestedFor, requestedItems []AccessRequestPreApprovalRequestedItemsInner, requestedBy AccessRequestPostApprovalRequestedBy) *AccessRequestPreApproval {
 	this := AccessRequestPreApproval{}
 	this.AccessRequestId = accessRequestId
 	this.RequestedFor = requestedFor
@@ -76,9 +76,9 @@ func (o *AccessRequestPreApproval) SetAccessRequestId(v string) {
 }
 
 // GetRequestedFor returns the RequestedFor field value
-func (o *AccessRequestPreApproval) GetRequestedFor() TriggerInputAccessRequestPostApprovalRequestedFor {
+func (o *AccessRequestPreApproval) GetRequestedFor() AccessRequestPostApprovalRequestedFor {
 	if o == nil {
-		var ret TriggerInputAccessRequestPostApprovalRequestedFor
+		var ret AccessRequestPostApprovalRequestedFor
 		return ret
 	}
 
@@ -87,7 +87,7 @@ func (o *AccessRequestPreApproval) GetRequestedFor() TriggerInputAccessRequestPo
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value
 // and a boolean to check if the value has been set.
-func (o *AccessRequestPreApproval) GetRequestedForOk() (*TriggerInputAccessRequestPostApprovalRequestedFor, bool) {
+func (o *AccessRequestPreApproval) GetRequestedForOk() (*AccessRequestPostApprovalRequestedFor, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,14 +95,14 @@ func (o *AccessRequestPreApproval) GetRequestedForOk() (*TriggerInputAccessReque
 }
 
 // SetRequestedFor sets field value
-func (o *AccessRequestPreApproval) SetRequestedFor(v TriggerInputAccessRequestPostApprovalRequestedFor) {
+func (o *AccessRequestPreApproval) SetRequestedFor(v AccessRequestPostApprovalRequestedFor) {
 	o.RequestedFor = v
 }
 
 // GetRequestedItems returns the RequestedItems field value
-func (o *AccessRequestPreApproval) GetRequestedItems() []TriggerInputAccessRequestPreApprovalRequestedItemsInner {
+func (o *AccessRequestPreApproval) GetRequestedItems() []AccessRequestPreApprovalRequestedItemsInner {
 	if o == nil {
-		var ret []TriggerInputAccessRequestPreApprovalRequestedItemsInner
+		var ret []AccessRequestPreApprovalRequestedItemsInner
 		return ret
 	}
 
@@ -111,7 +111,7 @@ func (o *AccessRequestPreApproval) GetRequestedItems() []TriggerInputAccessReque
 
 // GetRequestedItemsOk returns a tuple with the RequestedItems field value
 // and a boolean to check if the value has been set.
-func (o *AccessRequestPreApproval) GetRequestedItemsOk() ([]TriggerInputAccessRequestPreApprovalRequestedItemsInner, bool) {
+func (o *AccessRequestPreApproval) GetRequestedItemsOk() ([]AccessRequestPreApprovalRequestedItemsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,14 +119,14 @@ func (o *AccessRequestPreApproval) GetRequestedItemsOk() ([]TriggerInputAccessRe
 }
 
 // SetRequestedItems sets field value
-func (o *AccessRequestPreApproval) SetRequestedItems(v []TriggerInputAccessRequestPreApprovalRequestedItemsInner) {
+func (o *AccessRequestPreApproval) SetRequestedItems(v []AccessRequestPreApprovalRequestedItemsInner) {
 	o.RequestedItems = v
 }
 
 // GetRequestedBy returns the RequestedBy field value
-func (o *AccessRequestPreApproval) GetRequestedBy() TriggerInputAccessRequestPostApprovalRequestedBy {
+func (o *AccessRequestPreApproval) GetRequestedBy() AccessRequestPostApprovalRequestedBy {
 	if o == nil {
-		var ret TriggerInputAccessRequestPostApprovalRequestedBy
+		var ret AccessRequestPostApprovalRequestedBy
 		return ret
 	}
 
@@ -135,7 +135,7 @@ func (o *AccessRequestPreApproval) GetRequestedBy() TriggerInputAccessRequestPos
 
 // GetRequestedByOk returns a tuple with the RequestedBy field value
 // and a boolean to check if the value has been set.
-func (o *AccessRequestPreApproval) GetRequestedByOk() (*TriggerInputAccessRequestPostApprovalRequestedBy, bool) {
+func (o *AccessRequestPreApproval) GetRequestedByOk() (*AccessRequestPostApprovalRequestedBy, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +143,7 @@ func (o *AccessRequestPreApproval) GetRequestedByOk() (*TriggerInputAccessReques
 }
 
 // SetRequestedBy sets field value
-func (o *AccessRequestPreApproval) SetRequestedBy(v TriggerInputAccessRequestPostApprovalRequestedBy) {
+func (o *AccessRequestPreApproval) SetRequestedBy(v AccessRequestPostApprovalRequestedBy) {
 	o.RequestedBy = v
 }
 

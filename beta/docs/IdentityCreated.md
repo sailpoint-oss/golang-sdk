@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identity** | [**TriggerInputIdentityCreatedIdentity**](TriggerInputIdentityCreatedIdentity.md) |  | 
+**Identity** | [**IdentityCreatedIdentity**](IdentityCreatedIdentity.md) |  | 
 **Attributes** | **map[string]interface{}** | The attributes assigned to the identity.  Attributes are determined by the identity profile. | 
 
 ## Methods
 
 ### NewIdentityCreated
 
-`func NewIdentityCreated(identity TriggerInputIdentityCreatedIdentity, attributes map[string]interface{}, ) *IdentityCreated`
+`func NewIdentityCreated(identity IdentityCreatedIdentity, attributes map[string]interface{}, ) *IdentityCreated`
 
 NewIdentityCreated instantiates a new IdentityCreated object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetIdentity
 
-`func (o *IdentityCreated) GetIdentity() TriggerInputIdentityCreatedIdentity`
+`func (o *IdentityCreated) GetIdentity() IdentityCreatedIdentity`
 
 GetIdentity returns the Identity field if non-nil, zero value otherwise.
 
 ### GetIdentityOk
 
-`func (o *IdentityCreated) GetIdentityOk() (*TriggerInputIdentityCreatedIdentity, bool)`
+`func (o *IdentityCreated) GetIdentityOk() (*IdentityCreatedIdentity, bool)`
 
 GetIdentityOk returns a tuple with the Identity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentity
 
-`func (o *IdentityCreated) SetIdentity(v TriggerInputIdentityCreatedIdentity)`
+`func (o *IdentityCreated) SetIdentity(v IdentityCreatedIdentity)`
 
 SetIdentity sets Identity field to given value.
 
