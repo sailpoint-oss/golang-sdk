@@ -4,13 +4,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ExportSpConfig**](SPConfigApi.md#ExportSpConfig) | **Post** /sp-config/export | Initiates Configuration Objects Export Job.
-[**ExportSpConfigDownload**](SPConfigApi.md#ExportSpConfigDownload) | **Get** /sp-config/export/{id}/download | Download Result of Export Job
-[**ExportSpConfigJobStatus**](SPConfigApi.md#ExportSpConfigJobStatus) | **Get** /sp-config/export/{id} | Get Status of Export Job
-[**ImportSpConfig**](SPConfigApi.md#ImportSpConfig) | **Post** /sp-config/import | Initiates Configuration Objects Import Job.
-[**ImportSpConfigDownload**](SPConfigApi.md#ImportSpConfigDownload) | **Get** /sp-config/import/{id}/download | Download Result of Import Job
-[**ImportSpConfigJobStatus**](SPConfigApi.md#ImportSpConfigJobStatus) | **Get** /sp-config/import/{id} | Get Status of Import Job
-[**ListSpConfigObjects**](SPConfigApi.md#ListSpConfigObjects) | **Get** /sp-config/config-objects | Get Config Object details
+[**ExportSpConfig**](SPConfigApi.md#ExportSpConfig) | **Post** /sp-config/export | Initiates configuration objects export job
+[**GetSpConfigExport**](SPConfigApi.md#GetSpConfigExport) | **Get** /sp-config/export/{id}/download | Download export job result.
+[**GetSpConfigExportStatus**](SPConfigApi.md#GetSpConfigExportStatus) | **Get** /sp-config/export/{id} | Get export job status
+[**GetSpConfigImport**](SPConfigApi.md#GetSpConfigImport) | **Get** /sp-config/import/{id}/download | Download import job result
+[**GetSpConfigImportStatus**](SPConfigApi.md#GetSpConfigImportStatus) | **Get** /sp-config/import/{id} | Get import job status
+[**ImportSpConfig**](SPConfigApi.md#ImportSpConfig) | **Post** /sp-config/import | Initiates configuration objects import job
+[**ListSpConfigObjects**](SPConfigApi.md#ListSpConfigObjects) | **Get** /sp-config/config-objects | Get config object details
 
 
 
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 > SpConfigJob ExportSpConfig(ctx).ExportPayload(exportPayload).Execute()
 
-Initiates Configuration Objects Export Job.
+Initiates configuration objects export job
 
 
 
@@ -80,11 +80,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ExportSpConfigDownload
+## GetSpConfigExport
 
-> SpConfigExportResults ExportSpConfigDownload(ctx, id).Execute()
+> SpConfigExportResults GetSpConfigExport(ctx, id).Execute()
 
-Download Result of Export Job
+Download export job result.
 
 
 
@@ -101,17 +101,17 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the export job for which the results will be downloaded.
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the export job whose results will be downloaded.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigApi.ExportSpConfigDownload(context.Background(), id).Execute()
+    resp, r, err := apiClient.SPConfigApi.GetSpConfigExport(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.ExportSpConfigDownload``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.GetSpConfigExport``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ExportSpConfigDownload`: SpConfigExportResults
-    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.ExportSpConfigDownload`: %v\n", resp)
+    // response from `GetSpConfigExport`: SpConfigExportResults
+    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.GetSpConfigExport`: %v\n", resp)
 }
 ```
 
@@ -121,11 +121,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the export job for which the results will be downloaded. | 
+**id** | **string** | The ID of the export job whose results will be downloaded. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiExportSpConfigDownloadRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSpConfigExportRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -150,11 +150,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ExportSpConfigJobStatus
+## GetSpConfigExportStatus
 
-> SpConfigJob ExportSpConfigJobStatus(ctx, id).Execute()
+> SpConfigJob GetSpConfigExportStatus(ctx, id).Execute()
 
-Get Status of Export Job
+Get export job status
 
 
 
@@ -171,17 +171,17 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the export job for which status will be returned.
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the export job whose status will be returned.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigApi.ExportSpConfigJobStatus(context.Background(), id).Execute()
+    resp, r, err := apiClient.SPConfigApi.GetSpConfigExportStatus(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.ExportSpConfigJobStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.GetSpConfigExportStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ExportSpConfigJobStatus`: SpConfigJob
-    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.ExportSpConfigJobStatus`: %v\n", resp)
+    // response from `GetSpConfigExportStatus`: SpConfigJob
+    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.GetSpConfigExportStatus`: %v\n", resp)
 }
 ```
 
@@ -191,11 +191,151 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the export job for which status will be returned. | 
+**id** | **string** | The ID of the export job whose status will be returned. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiExportSpConfigJobStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSpConfigExportStatusRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SpConfigJob**](SpConfigJob.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSpConfigImport
+
+> SpConfigImportResults GetSpConfigImport(ctx, id).Execute()
+
+Download import job result
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the import job whose results will be downloaded.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SPConfigApi.GetSpConfigImport(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.GetSpConfigImport``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSpConfigImport`: SpConfigImportResults
+    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.GetSpConfigImport`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The ID of the import job whose results will be downloaded. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSpConfigImportRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**SpConfigImportResults**](SpConfigImportResults.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSpConfigImportStatus
+
+> SpConfigJob GetSpConfigImportStatus(ctx, id).Execute()
+
+Get import job status
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the import job whose status will be returned.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SPConfigApi.GetSpConfigImportStatus(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.GetSpConfigImportStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSpConfigImportStatus`: SpConfigJob
+    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.GetSpConfigImportStatus`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The ID of the import job whose status will be returned. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSpConfigImportStatusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -224,7 +364,7 @@ Name | Type | Description  | Notes
 
 > SpConfigJob ImportSpConfig(ctx).Data(data).Preview(preview).Options(options).Execute()
 
-Initiates Configuration Objects Import Job.
+Initiates configuration objects import job
 
 
 
@@ -242,7 +382,7 @@ import (
 
 func main() {
     data := os.NewFile(1234, "some_file") // *os.File | JSON file containing the objects to be imported.
-    preview := true // bool | This option is intended to give the user information about how an import operation would proceed, without having any affect on the target tenant. If true, no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. (optional) (default to false)
+    preview := true // bool | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \"true\", no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. (optional) (default to false)
     options := *openapiclient.NewImportOptions() // ImportOptions |  (optional)
 
     configuration := openapiclient.NewConfiguration()
@@ -269,7 +409,7 @@ Other parameters are passed through a pointer to a apiImportSpConfigRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **data** | ***os.File** | JSON file containing the objects to be imported. | 
- **preview** | **bool** | This option is intended to give the user information about how an import operation would proceed, without having any affect on the target tenant. If true, no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. | [default to false]
+ **preview** | **bool** | This option is intended to give the user information about how an import operation would proceed, without having any effect on the target tenant. If this parameter is \&quot;true\&quot;, no objects will be imported. Instead, the import process will pre-process the import file and attempt to resolve references within imported objects. The import result file will contain messages pertaining to how specific references were resolved, any errors associated with the preprocessing, and messages indicating which objects would be imported. | [default to false]
  **options** | [**ImportOptions**](ImportOptions.md) |  | 
 
 ### Return type
@@ -290,151 +430,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ImportSpConfigDownload
-
-> SpConfigImportResults ImportSpConfigDownload(ctx, id).Execute()
-
-Download Result of Import Job
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the import job for which the results will be downloaded.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigApi.ImportSpConfigDownload(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.ImportSpConfigDownload``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ImportSpConfigDownload`: SpConfigImportResults
-    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.ImportSpConfigDownload`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the import job for which the results will be downloaded. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiImportSpConfigDownloadRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**SpConfigImportResults**](SpConfigImportResults.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ImportSpConfigJobStatus
-
-> SpConfigJob ImportSpConfigJobStatus(ctx, id).Execute()
-
-Get Status of Import Job
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the import job for which status will be returned.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SPConfigApi.ImportSpConfigJobStatus(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SPConfigApi.ImportSpConfigJobStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ImportSpConfigJobStatus`: SpConfigJob
-    fmt.Fprintf(os.Stdout, "Response from `SPConfigApi.ImportSpConfigJobStatus`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the import job for which status will be returned. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiImportSpConfigJobStatusRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**SpConfigJob**](SpConfigJob.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListSpConfigObjects
 
 > []SpConfigObject ListSpConfigObjects(ctx).Execute()
 
-Get Config Object details
+Get config object details
 
 
 

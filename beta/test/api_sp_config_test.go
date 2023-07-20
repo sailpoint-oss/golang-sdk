@@ -34,13 +34,13 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SPConfigApiService ExportSpConfigDownload", func(t *testing.T) {
+	t.Run("Test SPConfigApiService GetSpConfigExport", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.SPConfigApi.ExportSpConfigDownload(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigApi.GetSpConfigExport(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,13 +48,41 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SPConfigApiService ExportSpConfigJobStatus", func(t *testing.T) {
+	t.Run("Test SPConfigApiService GetSpConfigExportStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.SPConfigApi.ExportSpConfigJobStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigApi.GetSpConfigExportStatus(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SPConfigApiService GetSpConfigImport", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.SPConfigApi.GetSpConfigImport(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SPConfigApiService GetSpConfigImportStatus", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.SPConfigApi.GetSpConfigImportStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -67,34 +95,6 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.BETA.SPConfigApi.ImportSpConfig(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SPConfigApiService ImportSpConfigDownload", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.SPConfigApi.ImportSpConfigDownload(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SPConfigApiService ImportSpConfigJobStatus", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.SPConfigApi.ImportSpConfigJobStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

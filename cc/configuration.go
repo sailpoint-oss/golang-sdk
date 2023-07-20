@@ -100,7 +100,7 @@ func NewConfiguration(clientId string, clientSecret string, baseURL string, toke
 		TokenURL:		  tokenURL,
 		Token:			  token,
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "OpenAPI-Generator/1.1.3/go",
+		UserAgent:        "OpenAPI-Generator/1.1.4/go",
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
