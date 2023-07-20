@@ -55686,9 +55686,9 @@ components:
     WorkflowBody:
       example:
         owner:
-          type: IDENTITY
-          id: 2c91808568c529c60168cca6f90c1313
           name: William Wilson
+          id: 2c91808568c529c60168cca6f90c1313
+          type: IDENTITY
         name: Send Email
         description: Send an email to the identity who's attributes changed.
         definition:
@@ -65877,22 +65877,29 @@ components:
       type: object
       example: null
     WorkflowBody_owner:
-      allOf:
-      - $ref: '#/components/schemas/BaseReferenceDto_1'
       description: The identity that owns the workflow.  The owner's permissions in
         IDN will determine what actions the workflow is allowed to perform.  Ownership
         can be changed by updating the owner in a PUT or PATCH request.
       example:
-        type: IDENTITY
-        id: 2c91808568c529c60168cca6f90c1313
         name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
       properties:
         type:
           description: The type of object that is referenced
           enum:
           - IDENTITY
           example: IDENTITY
-          type: object
+          type: string
+        id:
+          description: The unique ID of the object
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: The name of the object
+          example: William Wilson
+          type: string
+      type: object
     FormDefinitionDynamicSchemaRequest_attributes:
       example:
         formDefinitionId: 00000000-0000-0000-0000-000000000000

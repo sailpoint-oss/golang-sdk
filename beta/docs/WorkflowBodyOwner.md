@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **map[string]interface{}** | The type of object that is referenced | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
+**Type** | Pointer to **string** | The type of object that is referenced | [optional] 
+**Id** | Pointer to **string** | The unique ID of the object | [optional] 
+**Name** | Pointer to **string** | The name of the object | [optional] 
 
 ## Methods
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *WorkflowBodyOwner) GetType() map[string]interface{}`
+`func (o *WorkflowBodyOwner) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *WorkflowBodyOwner) GetTypeOk() (*map[string]interface{}, bool)`
+`func (o *WorkflowBodyOwner) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *WorkflowBodyOwner) SetType(v map[string]interface{})`
+`func (o *WorkflowBodyOwner) SetType(v string)`
 
 SetType sets Type field to given value.
 
