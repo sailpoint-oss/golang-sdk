@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**SearchFormDefinitionsByTenant**](CustomFormsApi.md#SearchFormDefinitionsByTenant) | **Get** /form-definitions | Export form definitions by tenant.
 [**SearchFormElementDataByElementID**](CustomFormsApi.md#SearchFormElementDataByElementID) | **Get** /form-instances/{formInstanceID}/data-source/{formElementID} | Retrieves dynamic data by element.
 [**SearchFormInstancesByTenant**](CustomFormsApi.md#SearchFormInstancesByTenant) | **Get** /form-instances | List form instances by tenant.
-[**SearchPreDefinedSelectOptions**](CustomFormsApi.md#SearchPreDefinedSelectOptions) | **Get** /predefined-select-options | List predefined select options.
+[**SearchPreDefinedSelectOptions**](CustomFormsApi.md#SearchPreDefinedSelectOptions) | **Get** /form-definitions/predefined-select-options | List predefined select options.
 [**ShowPreviewDataSource**](CustomFormsApi.md#ShowPreviewDataSource) | **Post** /form-definitions/{formDefinitionID}/data-source | Preview form definition data source.
 
 

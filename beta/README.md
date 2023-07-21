@@ -163,7 +163,7 @@ Class | Method | HTTP request | Description
 *CustomFormsApi* | [**SearchFormDefinitionsByTenant**](docs/CustomFormsApi.md#searchformdefinitionsbytenant) | **Get** /form-definitions | Export form definitions by tenant.
 *CustomFormsApi* | [**SearchFormElementDataByElementID**](docs/CustomFormsApi.md#searchformelementdatabyelementid) | **Get** /form-instances/{formInstanceID}/data-source/{formElementID} | Retrieves dynamic data by element.
 *CustomFormsApi* | [**SearchFormInstancesByTenant**](docs/CustomFormsApi.md#searchforminstancesbytenant) | **Get** /form-instances | List form instances by tenant.
-*CustomFormsApi* | [**SearchPreDefinedSelectOptions**](docs/CustomFormsApi.md#searchpredefinedselectoptions) | **Get** /predefined-select-options | List predefined select options.
+*CustomFormsApi* | [**SearchPreDefinedSelectOptions**](docs/CustomFormsApi.md#searchpredefinedselectoptions) | **Get** /form-definitions/predefined-select-options | List predefined select options.
 *CustomFormsApi* | [**ShowPreviewDataSource**](docs/CustomFormsApi.md#showpreviewdatasource) | **Post** /form-definitions/{formDefinitionID}/data-source | Preview form definition data source.
 *CustomPasswordInstructionsApi* | [**CreateCustomPasswordInstructions**](docs/CustomPasswordInstructionsApi.md#createcustompasswordinstructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
 *CustomPasswordInstructionsApi* | [**DeleteCustomPasswordInstructions**](docs/CustomPasswordInstructionsApi.md#deletecustompasswordinstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID

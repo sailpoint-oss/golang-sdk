@@ -44892,7 +44892,7 @@ paths:
       summary: Retrieves dynamic data by element.
       tags:
       - Custom Forms
-  /predefined-select-options:
+  /form-definitions/predefined-select-options:
     get:
       description: No parameters required.
       operationId: searchPreDefinedSelectOptions

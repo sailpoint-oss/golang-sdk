@@ -2314,7 +2314,7 @@ func (a *CustomFormsApiService) SearchPreDefinedSelectOptionsExecute(r ApiSearch
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/predefined-select-options"
+	localVarPath := localBasePath + "/form-definitions/predefined-select-options"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
