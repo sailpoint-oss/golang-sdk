@@ -1778,7 +1778,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:access-request:create
+        - idn:access-request:manage
       summary: Submit an Access Request
       tags:
       - Access Requests
