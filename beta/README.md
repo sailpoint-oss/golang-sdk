@@ -452,8 +452,8 @@ Class | Method | HTTP request | Description
 *TriggersApi* | [**ListTriggers**](docs/TriggersApi.md#listtriggers) | **Get** /triggers | List Triggers
 *TriggersApi* | [**PatchSubscription**](docs/TriggersApi.md#patchsubscription) | **Patch** /trigger-subscriptions/{id} | Patch a Subscription
 *TriggersApi* | [**StartTestTriggerInvocation**](docs/TriggersApi.md#starttesttriggerinvocation) | **Post** /trigger-invocations/test | Start a Test Invocation
+*TriggersApi* | [**TestSubscriptionFilter**](docs/TriggersApi.md#testsubscriptionfilter) | **Post** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
 *TriggersApi* | [**UpdateSubscription**](docs/TriggersApi.md#updatesubscription) | **Put** /trigger-subscriptions/{id} | Update a Subscription
-*TriggersApi* | [**ValidateSubscriptionFilter**](docs/TriggersApi.md#validatesubscriptionfilter) | **Post** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
 *WorkItemsApi* | [**ApproveApprovalItem**](docs/WorkItemsApi.md#approveapprovalitem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
 *WorkItemsApi* | [**ApproveApprovalItemsInBulk**](docs/WorkItemsApi.md#approveapprovalitemsinbulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
 *WorkItemsApi* | [**CompleteWorkItem**](docs/WorkItemsApi.md#completeworkitem) | **Post** /work-items/{id} | Complete a Work Item

@@ -12,8 +12,8 @@ Method | HTTP request | Description
 [**ListTriggers**](TriggersApi.md#ListTriggers) | **Get** /triggers | List Triggers
 [**PatchSubscription**](TriggersApi.md#PatchSubscription) | **Patch** /trigger-subscriptions/{id} | Patch a Subscription
 [**StartTestTriggerInvocation**](TriggersApi.md#StartTestTriggerInvocation) | **Post** /trigger-invocations/test | Start a Test Invocation
+[**TestSubscriptionFilter**](TriggersApi.md#TestSubscriptionFilter) | **Post** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
 [**UpdateSubscription**](TriggersApi.md#UpdateSubscription) | **Put** /trigger-subscriptions/{id} | Update a Subscription
-[**ValidateSubscriptionFilter**](TriggersApi.md#ValidateSubscriptionFilter) | **Post** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
 
 
 
@@ -581,6 +581,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## TestSubscriptionFilter
+
+> ValidateFilterOutputDto TestSubscriptionFilter(ctx).ValidateFilterInputDto(validateFilterInputDto).Execute()
+
+Validate a Subscription Filter
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    validateFilterInputDto := *openapiclient.NewValidateFilterInputDto(map[string]interface{}({identityId=201327fda1c44704ac01181e963d463c}), "$[?($.identityId == "201327fda1c44704ac01181e963d463c")]") // ValidateFilterInputDto | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TriggersApi.TestSubscriptionFilter(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.TestSubscriptionFilter``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `TestSubscriptionFilter`: ValidateFilterOutputDto
+    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.TestSubscriptionFilter`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTestSubscriptionFilterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **validateFilterInputDto** | [**ValidateFilterInputDto**](ValidateFilterInputDto.md) |  | 
+
+### Return type
+
+[**ValidateFilterOutputDto**](ValidateFilterOutputDto.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateSubscription
 
 > Subscription UpdateSubscription(ctx, id).SubscriptionPutRequest(subscriptionPutRequest).Execute()
@@ -638,72 +704,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Subscription**](Subscription.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ValidateSubscriptionFilter
-
-> ValidateFilterOutputDto ValidateSubscriptionFilter(ctx).ValidateFilterInputDto(validateFilterInputDto).Execute()
-
-Validate a Subscription Filter
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    validateFilterInputDto := *openapiclient.NewValidateFilterInputDto(map[string]interface{}({identityId=201327fda1c44704ac01181e963d463c}), "$[?($.identityId == "201327fda1c44704ac01181e963d463c")]") // ValidateFilterInputDto | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.ValidateSubscriptionFilter(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.ValidateSubscriptionFilter``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ValidateSubscriptionFilter`: ValidateFilterOutputDto
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.ValidateSubscriptionFilter`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiValidateSubscriptionFilterRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **validateFilterInputDto** | [**ValidateFilterInputDto**](ValidateFilterInputDto.md) |  | 
-
-### Return type
-
-[**ValidateFilterOutputDto**](ValidateFilterOutputDto.md)
 
 ### Authorization
 

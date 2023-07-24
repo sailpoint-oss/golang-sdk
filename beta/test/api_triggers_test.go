@@ -122,13 +122,11 @@ func Test_beta_TriggersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TriggersApiService UpdateSubscription", func(t *testing.T) {
+	t.Run("Test TriggersApiService TestSubscriptionFilter", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.TriggersApi.UpdateSubscription(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.TriggersApi.TestSubscriptionFilter(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -136,11 +134,13 @@ func Test_beta_TriggersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TriggersApiService ValidateSubscriptionFilter", func(t *testing.T) {
+	t.Run("Test TriggersApiService UpdateSubscription", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.TriggersApi.ValidateSubscriptionFilter(context.Background()).Execute()
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.TriggersApi.UpdateSubscription(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

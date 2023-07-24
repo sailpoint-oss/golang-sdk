@@ -37574,7 +37574,7 @@ paths:
     post:
       description: "Validates a JSONPath filter expression against a provided mock\
         \ input.\nRequest requires a security scope of: "
-      operationId: validateSubscriptionFilter
+      operationId: testSubscriptionFilter
       requestBody:
         content:
           application/json:
@@ -37591,6 +37591,8 @@ paths:
             application/json:
               example:
                 isValid: true
+                isValidJSONPath: true
+                isPathExist: true
               schema:
                 $ref: '#/components/schemas/ValidateFilterOutputDto'
           description: Boolean whether specified filter expression is valid against
@@ -55114,10 +55116,26 @@ components:
     ValidateFilterOutputDto:
       example:
         isValid: true
+        isPathExist: true
+        isValidJSONPath: true
       properties:
         isValid:
-          description: "True if specified filter expression is valid against the input,\
-            \ false otherwise."
+          default: false
+          description: "When this field is true, the filter expression is valid against\
+            \ the input."
+          example: true
+          type: boolean
+        isValidJSONPath:
+          default: false
+          description: "When this field is true, the filter expression is using a\
+            \ valid JSON path."
+          example: true
+          type: boolean
+        isPathExist:
+          default: false
+          description: "When this field is true, the filter expression is using an\
+            \ existing path."
+          example: true
           type: boolean
       type: object
     InvocationStatus:
