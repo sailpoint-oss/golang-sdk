@@ -980,7 +980,31 @@ func (r ApiPatchAccessProfileRequest) Execute() (*AccessProfile, *http.Response,
 PatchAccessProfile Patch a specified Access Profile
 
 This API updates an existing Access Profile. The following fields are patchable:
-**name**, **description**, **enabled**, **owner**, **requestable**, **accessRequestConfig**, **revokeRequestConfig**, **segments**, **entitlements**, **provisioningCriteria**
+
+**name**
+
+**description**
+
+**enabled**
+
+**owner**
+
+**requestable**
+
+**accessRequestConfig**
+
+**revokeRequestConfig**
+
+**segments**
+
+**entitlements**
+
+**provisioningCriteria**
+
+**source** (must be updated with entitlements belonging to new source in the same API call)
+
+If you need to change the `source` of the access profile, you can do so only if you update the `entitlements` in the same API call.  The new entitlements can only come from the target source that you want to change to.  Look for the example "Replace Source" in the examples dropdown.
+
 A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to patch Access Profiles which are associated with Sources they are able to administer.
 >  The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing access profiles, however, any new access profiles as well as any updates to existing descriptions will be limited to 2000 characters.
 
