@@ -28,7 +28,7 @@ type AccessRequestItem struct {
 	Comment *string `json:"comment,omitempty"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
-	// The date the role or access profile is no longer assigned to the specified identity. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. * Currently it is not supported for entitlements. * If sunset date for role or access profile specified, removeDate cannot be established. This rule doesn't apply for entitlements. 
+	// The date the role or access profile is no longer assigned to the specified identity. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. * Currently it is not supported for entitlements. 
 	RemoveDate *time.Time `json:"removeDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

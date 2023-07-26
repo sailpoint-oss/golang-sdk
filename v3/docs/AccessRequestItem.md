@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Id** | **string** | ID of Role, Access Profile or Entitlement being requested. | 
 **Comment** | Pointer to **string** | Comment provided by requester. * Comment is required when the request is of type Revoke Access.  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities and /access-request-status. | [optional] 
-**RemoveDate** | Pointer to **time.Time** | The date the role or access profile is no longer assigned to the specified identity. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. * Currently it is not supported for entitlements. * If sunset date for role or access profile specified, removeDate cannot be established. This rule doesn&#39;t apply for entitlements.  | [optional] 
+**RemoveDate** | Pointer to **time.Time** | The date the role or access profile is no longer assigned to the specified identity. * Specify a date in the future. * The current SLA for the deprovisioning is 24 hours. * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. * Currently it is not supported for entitlements.  | [optional] 
 
 ## Methods
 
