@@ -450,7 +450,7 @@ Name | Type | Description  | Notes
 
 ## SetTagToObject
 
-> TaggedObject SetTagToObject(ctx).TaggedObject(taggedObject).Execute()
+> SetTagToObject(ctx).TaggedObject(taggedObject).Execute()
 
 Add Tag to Object
 
@@ -478,8 +478,6 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.SetTagToObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetTagToObject`: TaggedObject
-    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.SetTagToObject`: %v\n", resp)
 }
 ```
 
@@ -498,7 +496,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaggedObject**](TaggedObject.md)
+ (empty response body)
 
 ### Authorization
 

@@ -35440,7 +35440,7 @@ paths:
         This adds a tag to an object.
 
         Any authenticated token may be used to call this API.
-      operationId: addTagToObject
+      operationId: setTagToObject
       requestBody:
         content:
           application/json:
@@ -35448,12 +35448,6 @@ paths:
               $ref: '#/components/schemas/TaggedObject'
         required: true
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TaggedObject'
-          description: Request succeeded.
         "201":
           description: Created.
         "400":

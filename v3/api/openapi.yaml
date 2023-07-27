@@ -22858,12 +22858,6 @@ paths:
               $ref: '#/components/schemas/TaggedObject'
         required: true
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TaggedObject'
-          description: Request succeeded.
         "201":
           description: Created.
         "400":

@@ -431,13 +431,13 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**UpdateSource**](docs/SourcesApi.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
 *SourcesApi* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesApi.md#updatesourceentitlementrequestconfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesApi* | [**UpdateSourceSchema**](docs/SourcesApi.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
-*TaggedObjectsApi* | [**AddTagToObject**](docs/TaggedObjectsApi.md#addtagtoobject) | **Post** /tagged-objects | Add Tag to Object
 *TaggedObjectsApi* | [**AddTagsToManyObjects**](docs/TaggedObjectsApi.md#addtagstomanyobjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
 *TaggedObjectsApi* | [**DeleteTaggedObject**](docs/TaggedObjectsApi.md#deletetaggedobject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
 *TaggedObjectsApi* | [**GetTaggedObject**](docs/TaggedObjectsApi.md#gettaggedobject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
 *TaggedObjectsApi* | [**ListTaggedObjects**](docs/TaggedObjectsApi.md#listtaggedobjects) | **Get** /tagged-objects | List Tagged Objects
 *TaggedObjectsApi* | [**ListTaggedObjectsByType**](docs/TaggedObjectsApi.md#listtaggedobjectsbytype) | **Get** /tagged-objects/{type} | List Tagged Objects
 *TaggedObjectsApi* | [**RemoveTagsToManyObject**](docs/TaggedObjectsApi.md#removetagstomanyobject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
+*TaggedObjectsApi* | [**SetTagToObject**](docs/TaggedObjectsApi.md#settagtoobject) | **Post** /tagged-objects | Add Tag to Object
 *TaggedObjectsApi* | [**UpdateTaggedObject**](docs/TaggedObjectsApi.md#updatetaggedobject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
 *TransformsApi* | [**CreateTransform**](docs/TransformsApi.md#createtransform) | **Post** /transforms | Create transform
 *TransformsApi* | [**DeleteTransform**](docs/TransformsApi.md#deletetransform) | **Delete** /transforms/{id} | Delete a transform

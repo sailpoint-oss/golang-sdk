@@ -4,81 +4,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddTagToObject**](TaggedObjectsApi.md#AddTagToObject) | **Post** /tagged-objects | Add Tag to Object
 [**AddTagsToManyObjects**](TaggedObjectsApi.md#AddTagsToManyObjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
 [**DeleteTaggedObject**](TaggedObjectsApi.md#DeleteTaggedObject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
 [**GetTaggedObject**](TaggedObjectsApi.md#GetTaggedObject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
 [**ListTaggedObjects**](TaggedObjectsApi.md#ListTaggedObjects) | **Get** /tagged-objects | List Tagged Objects
 [**ListTaggedObjectsByType**](TaggedObjectsApi.md#ListTaggedObjectsByType) | **Get** /tagged-objects/{type} | List Tagged Objects
 [**RemoveTagsToManyObject**](TaggedObjectsApi.md#RemoveTagsToManyObject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
+[**SetTagToObject**](TaggedObjectsApi.md#SetTagToObject) | **Post** /tagged-objects | Add Tag to Object
 [**UpdateTaggedObject**](TaggedObjectsApi.md#UpdateTaggedObject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
 
-
-
-## AddTagToObject
-
-> TaggedObject AddTagToObject(ctx).TaggedObject(taggedObject).Execute()
-
-Add Tag to Object
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    taggedObject := *openapiclient.NewTaggedObject() // TaggedObject | 
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.AddTagToObject(context.Background()).TaggedObject(taggedObject).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.AddTagToObject``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AddTagToObject`: TaggedObject
-    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.AddTagToObject`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAddTagToObjectRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **taggedObject** | [**TaggedObject**](TaggedObject.md) |  | 
-
-### Return type
-
-[**TaggedObject**](TaggedObject.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## AddTagsToManyObjects
@@ -486,6 +420,70 @@ Other parameters are passed through a pointer to a apiRemoveTagsToManyObjectRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bulkTaggedObject** | [**BulkTaggedObject**](BulkTaggedObject.md) | Supported object types are ROLE, IDENTITY and SOD_POLICY. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetTagToObject
+
+> SetTagToObject(ctx).TaggedObject(taggedObject).Execute()
+
+Add Tag to Object
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    taggedObject := *openapiclient.NewTaggedObject() // TaggedObject | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TaggedObjectsApi.SetTagToObject(context.Background()).TaggedObject(taggedObject).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.SetTagToObject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetTagToObjectRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **taggedObject** | [**TaggedObject**](TaggedObject.md) |  | 
 
 ### Return type
 
