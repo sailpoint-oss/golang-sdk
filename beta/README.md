@@ -715,7 +715,6 @@ Class | Method | HTTP request | Description
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [EvaluateResponse](docs/EvaluateResponse.md)
- - [EventAttributes](docs/EventAttributes.md)
  - [EventBridgeConfig](docs/EventBridgeConfig.md)
  - [ExceptionAccessCriteria](docs/ExceptionAccessCriteria.md)
  - [ExceptionCriteria](docs/ExceptionCriteria.md)
@@ -726,7 +725,6 @@ Class | Method | HTTP request | Description
  - [ExportOptions](docs/ExportOptions.md)
  - [ExportPayload](docs/ExportPayload.md)
  - [Expression](docs/Expression.md)
- - [ExternalAttributes](docs/ExternalAttributes.md)
  - [FeatureValueDto](docs/FeatureValueDto.md)
  - [Field](docs/Field.md)
  - [FieldAllOf](docs/FieldAllOf.md)
@@ -1039,7 +1037,6 @@ Class | Method | HTTP request | Description
  - [ScheduleHours](docs/ScheduleHours.md)
  - [ScheduleMonths](docs/ScheduleMonths.md)
  - [ScheduleType](docs/ScheduleType.md)
- - [ScheduledAttributes](docs/ScheduledAttributes.md)
  - [Schema](docs/Schema.md)
  - [SearchAttributeConfig](docs/SearchAttributeConfig.md)
  - [SearchFormDefinitionsByTenant400Response](docs/SearchFormDefinitionsByTenant400Response.md)
@@ -1166,7 +1163,6 @@ Class | Method | HTTP request | Description
  - [WorkflowLibraryTrigger](docs/WorkflowLibraryTrigger.md)
  - [WorkflowOAuthClient](docs/WorkflowOAuthClient.md)
  - [WorkflowTrigger](docs/WorkflowTrigger.md)
- - [WorkflowTriggerAttributes](docs/WorkflowTriggerAttributes.md)
  - [WorkgroupDto](docs/WorkgroupDto.md)
 
 
