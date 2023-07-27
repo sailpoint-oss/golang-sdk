@@ -21,7 +21,6 @@ build:
 	rm -rf ./cc
 	java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.cc.yaml -g go -o cc --global-property skipFormModel=false --config sdk-resources/cc-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk --git-user-id sailpoint-oss
 	node sdk-resources/postscript.js ./cc
-	test
 
 test:	
 	go get -d ./...
