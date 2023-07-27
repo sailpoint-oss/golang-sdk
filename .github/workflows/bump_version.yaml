@@ -1,5 +1,7 @@
 name: "Update Go SDK Version"
 
+run-name: Update Go SDK Version to ${{ github.event.inputs.version }}
+
 on:
   workflow_dispatch:
     inputs:
@@ -20,14 +22,13 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.DEVREL_SERVICE_TOKEN }}
 
-    
       - name: Checkout API Specs Repo
         uses: actions/checkout@v3
         with:
           repository: sailpoint-oss/api-specs
           path: api-specs
           ref: main
-      
+
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
@@ -61,12 +62,12 @@ jobs:
           yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/v2-config.yaml
           yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/beta-config.yaml
           yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/v3-config.yaml
-          
+
       - name: Run Prescript
         id: prescript
         run: |
           node sdk-resources/prescript.js api-specs/
-          
+
       - name: Build V3 SDK
         id: buildV3
         if: steps.updateVersion.outcome == 'success'
@@ -105,7 +106,7 @@ jobs:
         run: |
           go get -d ./...
           go install
-        
+
       - name: Commit changes and create new version tag
         if: steps.buildSDK.outcome == 'success'
         uses: stefanzweifel/git-auto-commit-action@v4
