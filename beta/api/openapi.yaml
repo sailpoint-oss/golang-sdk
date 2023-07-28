@@ -30683,7 +30683,7 @@ paths:
                   - SOURCE
                   - TRANSFORM
                   - TRIGGER_SUBSCRIPTION
-                  - WORKFLOWS
+                  - WORKFLOW
                   objectOptions: {}
               Export sources by ID:
                 description: Export only sources that match the IDs specified in the
@@ -60305,7 +60305,7 @@ components:
             - SOURCE
             - TRANSFORM
             - TRIGGER_SUBSCRIPTION
-            - WORKFLOWS
+            - WORKFLOW
             example: SOURCE
             type: string
           type: array
@@ -60334,7 +60334,7 @@ components:
             - SOURCE
             - TRANSFORM
             - TRIGGER_SUBSCRIPTION
-            - WORKFLOWS
+            - WORKFLOW
             example: TRIGGER_SUBSCRIPTION
             type: string
           type: array
