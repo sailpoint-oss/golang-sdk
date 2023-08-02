@@ -30683,7 +30683,7 @@ paths:
                   - SOURCE
                   - TRANSFORM
                   - TRIGGER_SUBSCRIPTION
-                  - WORKFLOW
+                  - WORKFLOWS
                   objectOptions: {}
               Export sources by ID:
                 description: Export only sources that match the IDs specified in the
@@ -53787,6 +53787,7 @@ components:
           description: Object type names to be excluded from an sp-config export command.
           items:
             enum:
+            - IDENTITY_OBJECT_CONFIG
             - IDENTITY_PROFILE
             - RULE
             - SOURCE
@@ -53800,6 +53801,7 @@ components:
             IncludeTypes takes precedence over excludeTypes.
           items:
             enum:
+            - IDENTITY_OBJECT_CONFIG
             - IDENTITY_PROFILE
             - RULE
             - SOURCE
@@ -60292,6 +60294,7 @@ components:
             - CAMPAIGN_FILTER
             - FORM_DEFINITION
             - GOVERNANCE_GROUP
+            - IDENTITY_OBJECT_CONFIG
             - IDENTITY_PROFILE
             - LIFECYCLE_STATE
             - NOTIFICATION_TEMPLATE
@@ -60305,7 +60308,7 @@ components:
             - SOURCE
             - TRANSFORM
             - TRIGGER_SUBSCRIPTION
-            - WORKFLOW
+            - WORKFLOWS
             example: SOURCE
             type: string
           type: array
@@ -60321,6 +60324,7 @@ components:
             - CAMPAIGN_FILTER
             - FORM_DEFINITION
             - GOVERNANCE_GROUP
+            - IDENTITY_OBJECT_CONFIG
             - IDENTITY_PROFILE
             - LIFECYCLE_STATE
             - NOTIFICATION_TEMPLATE
@@ -60334,7 +60338,7 @@ components:
             - SOURCE
             - TRANSFORM
             - TRIGGER_SUBSCRIPTION
-            - WORKFLOW
+            - WORKFLOWS
             example: TRIGGER_SUBSCRIPTION
             type: string
           type: array
