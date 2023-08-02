@@ -34561,6 +34561,7 @@ components:
       - REPORT_RESULT
       - SOD_VIOLATION
       - ACCOUNT_ACTIVITY
+      - WORKGROUP
       example: IDENTITY
       type: string
     ReassignmentTrailDTOList:

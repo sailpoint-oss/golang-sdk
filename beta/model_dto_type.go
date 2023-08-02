@@ -47,6 +47,7 @@ const (
 	DTOTYPE_REPORT_RESULT DtoType = "REPORT_RESULT"
 	DTOTYPE_SOD_VIOLATION DtoType = "SOD_VIOLATION"
 	DTOTYPE_ACCOUNT_ACTIVITY DtoType = "ACCOUNT_ACTIVITY"
+	DTOTYPE_WORKGROUP DtoType = "WORKGROUP"
 )
 
 // All allowed values of DtoType enum
@@ -78,6 +79,7 @@ var AllowedDtoTypeEnumValues = []DtoType{
 	"REPORT_RESULT",
 	"SOD_VIOLATION",
 	"ACCOUNT_ACTIVITY",
+	"WORKGROUP",
 }
 
 func (v *DtoType) UnmarshalJSON(src []byte) error {
