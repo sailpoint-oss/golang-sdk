@@ -497,6 +497,7 @@ docs/OutlierContributingFeature.md
 docs/OutlierContributingFeatureValue.md
 docs/OutlierFeatureTranslation.md
 docs/OutlierSummary.md
+docs/OutliersContributingFeatureAccessItems.md
 docs/Owner.md
 docs/OwnerReference.md
 docs/OwnerReferenceDto.md
@@ -1188,6 +1189,7 @@ model_outlier_contributing_feature.go
 model_outlier_contributing_feature_value.go
 model_outlier_feature_translation.go
 model_outlier_summary.go
+model_outliers_contributing_feature_access_items.go
 model_owner.go
 model_owner_reference.go
 model_owner_reference_dto.go

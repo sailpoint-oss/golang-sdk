@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetLatestIdentityOutlierSnapshots**](IAIOutliersApi.md#GetLatestIdentityOutlierSnapshots) | **Get** /outlier-summaries/latest | IAI Identity Outliers Latest Summary
 [**GetPeerGroupOutliersContributingFeatures**](IAIOutliersApi.md#GetPeerGroupOutliersContributingFeatures) | **Get** /outliers/{outlierId}/contributing-features | Get identity outlier&#39;s contibuting features
 [**IgnoreIdentityOutliers**](IAIOutliersApi.md#IgnoreIdentityOutliers) | **Post** /outliers/ignore | IAI Identity Outliers Ignore
+[**ListOutliersContributingFeatureAccessItems**](IAIOutliersApi.md#ListOutliersContributingFeatureAccessItems) | **Get** /outliers/{outlierId}/feature-details/{contributingFeatureId}/access-items | Gets a list of access items associated with each identity outlier contributing feature
 [**UnIgnoreIdentityOutliers**](IAIOutliersApi.md#UnIgnoreIdentityOutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
 
 
@@ -433,6 +434,89 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListOutliersContributingFeatureAccessItems
+
+> []OutliersContributingFeatureAccessItems ListOutliersContributingFeatureAccessItems(ctx, outlierId, contributingFeatureId).Limit(limit).Offset(offset).Count(count).AccessType(accessType).Sorters(sorters).Execute()
+
+Gets a list of access items associated with each identity outlier contributing feature
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    outlierId := "2c918085842e69ae018432d22ccb212f" // string | The outlier id
+    contributingFeatureId := "9f9d5d53ad0e48fba7352f6da9f1b80c" // string | The contributing feature id
+    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+    accessType := "ENTITLEMENT" // string | The type of access item for the identity outlier contributing feature. If not provided, it returns all (optional)
+    sorters := "displayName" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **displayName** (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IAIOutliersApi.ListOutliersContributingFeatureAccessItems(context.Background(), outlierId, contributingFeatureId).Limit(limit).Offset(offset).Count(count).AccessType(accessType).Sorters(sorters).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.ListOutliersContributingFeatureAccessItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListOutliersContributingFeatureAccessItems`: []OutliersContributingFeatureAccessItems
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.ListOutliersContributingFeatureAccessItems`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**outlierId** | **string** | The outlier id | 
+**contributingFeatureId** | **string** | The contributing feature id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListOutliersContributingFeatureAccessItemsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+ **accessType** | **string** | The type of access item for the identity outlier contributing feature. If not provided, it returns all | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **displayName** | 
+
+### Return type
+
+[**[]OutliersContributingFeatureAccessItems**](OutliersContributingFeatureAccessItems.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

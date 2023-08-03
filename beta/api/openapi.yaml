@@ -21536,6 +21536,173 @@ paths:
       summary: Get identity outlier's contibuting features
       tags:
       - IAI Outliers
+  /outliers/{outlierId}/feature-details/{contributingFeatureId}/access-items:
+    get:
+      description: |-
+        This API returns a list of the enriched access items associated with each feature filtered by the access item type  The object contains: accessItemId, display name (translated text or message key), description (translated text or message key), accessType, sourceName, extremelyRare
+        Requires authorization scope of 'iai:outliers-management:read'
+      operationId: listOutliersContributingFeatureAccessItems
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: The outlier id
+        example: 2c918085842e69ae018432d22ccb212f
+        in: path
+        name: outlierId
+        required: true
+        schema:
+          type: string
+      - description: The contributing feature id
+        example: 9f9d5d53ad0e48fba7352f6da9f1b80c
+        in: path
+        name: contributingFeatureId
+        required: true
+        schema:
+          type: string
+      - description: "The type of access item for the identity outlier contributing\
+          \ feature. If not provided, it returns all"
+        example: ENTITLEMENT
+        in: query
+        name: accessType
+        required: false
+        schema:
+          type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sorting is supported for the following fields: **displayName**
+        example: displayName
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/OutliersContributingFeatureAccessItems'
+                type: array
+          description: The list of access items.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - iai:outliers-management:read
+      summary: Gets a list of access items associated with each identity outlier contributing
+        feature
+      tags:
+      - IAI Outliers
   /outliers/ignore:
     post:
       description: |-
@@ -51840,6 +52007,45 @@ components:
           type: string
         translationMessages:
           $ref: '#/components/schemas/OutlierFeatureTranslation'
+      type: object
+    OutliersContributingFeatureAccessItems:
+      example:
+        accessType: ENTITLEMENT
+        displayName: Applied Research Access
+        extremelyRare: true
+        description: "Access to research information, lab results, and schematics"
+        id: 2c938083633d259901633d2623ec0375
+        sourceName: appName
+      properties:
+        id:
+          description: The ID of the access item
+          example: 2c938083633d259901633d2623ec0375
+          type: string
+        displayName:
+          description: the display name of the access item
+          example: Applied Research Access
+          type: string
+        description:
+          description: Description of the access item.
+          example: "Access to research information, lab results, and schematics"
+          type: string
+        accessType:
+          description: The type of the access item.
+          enum:
+          - ENTITLEMENT
+          - ACCESS_PROFILE
+          - ROLE
+          example: ENTITLEMENT
+          type: string
+        sourceName:
+          description: the associated source name if it exists
+          example: appName
+          type: string
+        extremelyRare:
+          default: false
+          description: rarest access
+          example: true
+          type: boolean
       type: object
     PasswordInfoQueryDTO:
       example:

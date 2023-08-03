@@ -197,6 +197,7 @@ Class | Method | HTTP request | Description
 *IAIOutliersApi* | [**GetLatestIdentityOutlierSnapshots**](docs/IAIOutliersApi.md#getlatestidentityoutliersnapshots) | **Get** /outlier-summaries/latest | IAI Identity Outliers Latest Summary
 *IAIOutliersApi* | [**GetPeerGroupOutliersContributingFeatures**](docs/IAIOutliersApi.md#getpeergroupoutlierscontributingfeatures) | **Get** /outliers/{outlierId}/contributing-features | Get identity outlier&#39;s contibuting features
 *IAIOutliersApi* | [**IgnoreIdentityOutliers**](docs/IAIOutliersApi.md#ignoreidentityoutliers) | **Post** /outliers/ignore | IAI Identity Outliers Ignore
+*IAIOutliersApi* | [**ListOutliersContributingFeatureAccessItems**](docs/IAIOutliersApi.md#listoutlierscontributingfeatureaccessitems) | **Get** /outliers/{outlierId}/feature-details/{contributingFeatureId}/access-items | Gets a list of access items associated with each identity outlier contributing feature
 *IAIOutliersApi* | [**UnIgnoreIdentityOutliers**](docs/IAIOutliersApi.md#unignoreidentityoutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
 *IAIPeerGroupStrategiesApi* | [**GetPeerGroupOutliers**](docs/IAIPeerGroupStrategiesApi.md#getpeergroupoutliers) | **Get** /peer-group-strategies/{strategy}/identity-outliers | Identity Outliers List
 *IAIRecommendationsApi* | [**GetMessageCatalogs**](docs/IAIRecommendationsApi.md#getmessagecatalogs) | **Get** /translation-catalogs/{catalog-id} | Get Message catalogs
@@ -906,6 +907,7 @@ Class | Method | HTTP request | Description
  - [OutlierContributingFeatureValue](docs/OutlierContributingFeatureValue.md)
  - [OutlierFeatureTranslation](docs/OutlierFeatureTranslation.md)
  - [OutlierSummary](docs/OutlierSummary.md)
+ - [OutliersContributingFeatureAccessItems](docs/OutliersContributingFeatureAccessItems.md)
  - [Owner](docs/Owner.md)
  - [OwnerReference](docs/OwnerReference.md)
  - [OwnerReferenceDto](docs/OwnerReferenceDto.md)

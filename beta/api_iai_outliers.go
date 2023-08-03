@@ -1143,6 +1143,229 @@ func (a *IAIOutliersApiService) IgnoreIdentityOutliersExecute(r ApiIgnoreIdentit
 	return localVarHTTPResponse, nil
 }
 
+type ApiListOutliersContributingFeatureAccessItemsRequest struct {
+	ctx context.Context
+	ApiService *IAIOutliersApiService
+	outlierId string
+	contributingFeatureId string
+	limit *int32
+	offset *int32
+	count *bool
+	accessType *string
+	sorters *string
+}
+
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListOutliersContributingFeatureAccessItemsRequest) Limit(limit int32) ApiListOutliersContributingFeatureAccessItemsRequest {
+	r.limit = &limit
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListOutliersContributingFeatureAccessItemsRequest) Offset(offset int32) ApiListOutliersContributingFeatureAccessItemsRequest {
+	r.offset = &offset
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiListOutliersContributingFeatureAccessItemsRequest) Count(count bool) ApiListOutliersContributingFeatureAccessItemsRequest {
+	r.count = &count
+	return r
+}
+
+// The type of access item for the identity outlier contributing feature. If not provided, it returns all
+func (r ApiListOutliersContributingFeatureAccessItemsRequest) AccessType(accessType string) ApiListOutliersContributingFeatureAccessItemsRequest {
+	r.accessType = &accessType
+	return r
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **displayName**
+func (r ApiListOutliersContributingFeatureAccessItemsRequest) Sorters(sorters string) ApiListOutliersContributingFeatureAccessItemsRequest {
+	r.sorters = &sorters
+	return r
+}
+
+func (r ApiListOutliersContributingFeatureAccessItemsRequest) Execute() ([]OutliersContributingFeatureAccessItems, *http.Response, error) {
+	return r.ApiService.ListOutliersContributingFeatureAccessItemsExecute(r)
+}
+
+/*
+ListOutliersContributingFeatureAccessItems Gets a list of access items associated with each identity outlier contributing feature
+
+This API returns a list of the enriched access items associated with each feature filtered by the access item type  The object contains: accessItemId, display name (translated text or message key), description (translated text or message key), accessType, sourceName, extremelyRare
+Requires authorization scope of 'iai:outliers-management:read'
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param outlierId The outlier id
+ @param contributingFeatureId The contributing feature id
+ @return ApiListOutliersContributingFeatureAccessItemsRequest
+*/
+func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItems(ctx context.Context, outlierId string, contributingFeatureId string) ApiListOutliersContributingFeatureAccessItemsRequest {
+	return ApiListOutliersContributingFeatureAccessItemsRequest{
+		ApiService: a,
+		ctx: ctx,
+		outlierId: outlierId,
+		contributingFeatureId: contributingFeatureId,
+	}
+}
+
+// Execute executes the request
+//  @return []OutliersContributingFeatureAccessItems
+func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItemsExecute(r ApiListOutliersContributingFeatureAccessItemsRequest) ([]OutliersContributingFeatureAccessItems, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []OutliersContributingFeatureAccessItems
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersApiService.ListOutliersContributingFeatureAccessItems")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/outliers/{outlierId}/feature-details/{contributingFeatureId}/access-items"
+	localVarPath = strings.Replace(localVarPath, "{"+"outlierId"+"}", url.PathEscape(parameterValueToString(r.outlierId, "outlierId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"contributingFeatureId"+"}", url.PathEscape(parameterValueToString(r.contributingFeatureId, "contributingFeatureId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	}
+	if r.offset != nil {
+		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	}
+	if r.count != nil {
+		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	}
+	if r.accessType != nil {
+		parameterAddToQuery(localVarQueryParams, "accessType", r.accessType, "")
+	}
+	if r.sorters != nil {
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiUnIgnoreIdentityOutliersRequest struct {
 	ctx context.Context
 	ApiService *IAIOutliersApiService
