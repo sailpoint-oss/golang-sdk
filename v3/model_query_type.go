@@ -22,6 +22,7 @@ type QueryType string
 const (
 	QUERYTYPE_DSL QueryType = "DSL"
 	QUERYTYPE_SAILPOINT QueryType = "SAILPOINT"
+	QUERYTYPE_TEXT QueryType = "TEXT"
 	QUERYTYPE_TYPEAHEAD QueryType = "TYPEAHEAD"
 )
 
@@ -29,6 +30,7 @@ const (
 var AllowedQueryTypeEnumValues = []QueryType{
 	"DSL",
 	"SAILPOINT",
+	"TEXT",
 	"TYPEAHEAD",
 }
 

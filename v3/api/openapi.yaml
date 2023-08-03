@@ -32283,6 +32283,15 @@ components:
           query: Work
           nestedType: access
           maxExpansions: 10
+        textQuery:
+          contains: true
+          terms:
+          - "[The quick brown fox, 3141592, 7]"
+          - "[The quick brown fox, 3141592, 7]"
+          matchAny: false
+          fields:
+          - "[displayName, employeeNumber, roleCount]"
+          - "[displayName, employeeNumber, roleCount]"
         searchAfter:
         - "[John Doe, 2c91808375d8e80a0175e1f88a575221]"
         - "[John Doe, 2c91808375d8e80a0175e1f88a575221]"
@@ -32317,6 +32326,8 @@ components:
             match:
               name: john.doe
           type: object
+        textQuery:
+          $ref: '#/components/schemas/TextQuery'
         typeAheadQuery:
           $ref: '#/components/schemas/TypeAheadQuery'
         includeNested:
@@ -35562,6 +35573,7 @@ components:
       enum:
       - DSL
       - SAILPOINT
+      - TEXT
       - TYPEAHEAD
       example: SAILPOINT
       type: string
@@ -35601,6 +35613,46 @@ components:
           type: string
         innerHit:
           $ref: '#/components/schemas/InnerHit'
+      type: object
+    TextQuery:
+      description: Query parameters used to construct an Elasticsearch text query
+        object.
+      example:
+        contains: true
+        terms:
+        - "[The quick brown fox, 3141592, 7]"
+        - "[The quick brown fox, 3141592, 7]"
+        matchAny: false
+        fields:
+        - "[displayName, employeeNumber, roleCount]"
+        - "[displayName, employeeNumber, roleCount]"
+      properties:
+        terms:
+          description: Words or characters that specify a particular thing to be searched
+            for.
+          items:
+            example: "[The quick brown fox, 3141592, 7]"
+            type: string
+          type: array
+        fields:
+          description: The fields to be searched.
+          items:
+            example: "[displayName, employeeNumber, roleCount]"
+            type: string
+          type: array
+        matchAny:
+          default: false
+          description: Indicates if a match was found.
+          example: false
+          type: boolean
+        contains:
+          default: false
+          description: Indicates if the search contained a field.
+          example: true
+          type: boolean
+      required:
+      - fields
+      - terms
       type: object
     TypeAheadQuery:
       description: "Query parameters used to construct an Elasticsearch type ahead\

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **QueryVersion** | Pointer to **string** |  | [optional] 
 **Query** | Pointer to [**Query**](Query.md) |  | [optional] 
 **QueryDsl** | Pointer to **map[string]interface{}** | The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax. | [optional] 
+**TextQuery** | Pointer to [**TextQuery**](TextQuery.md) |  | [optional] 
 **TypeAheadQuery** | Pointer to [**TypeAheadQuery**](TypeAheadQuery.md) |  | [optional] 
 **IncludeNested** | Pointer to **bool** | Indicates whether nested objects from returned search results should be included. | [optional] [default to true]
 **QueryResultFilter** | Pointer to [**QueryResultFilter**](QueryResultFilter.md) |  | [optional] 
@@ -163,6 +164,31 @@ SetQueryDsl sets QueryDsl field to given value.
 `func (o *Search) HasQueryDsl() bool`
 
 HasQueryDsl returns a boolean if a field has been set.
+
+### GetTextQuery
+
+`func (o *Search) GetTextQuery() TextQuery`
+
+GetTextQuery returns the TextQuery field if non-nil, zero value otherwise.
+
+### GetTextQueryOk
+
+`func (o *Search) GetTextQueryOk() (*TextQuery, bool)`
+
+GetTextQueryOk returns a tuple with the TextQuery field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTextQuery
+
+`func (o *Search) SetTextQuery(v TextQuery)`
+
+SetTextQuery sets TextQuery field to given value.
+
+### HasTextQuery
+
+`func (o *Search) HasTextQuery() bool`
+
+HasTextQuery returns a boolean if a field has been set.
 
 ### GetTypeAheadQuery
 

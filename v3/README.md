@@ -686,6 +686,7 @@ Class | Method | HTTP request | Description
  - [SubSearchAggregationSpecificationAllOf](docs/SubSearchAggregationSpecificationAllOf.md)
  - [TaggedObject](docs/TaggedObject.md)
  - [TaggedObjectDto](docs/TaggedObjectDto.md)
+ - [TextQuery](docs/TextQuery.md)
  - [Transform](docs/Transform.md)
  - [TransformDefinition](docs/TransformDefinition.md)
  - [TransformDefinitionAttributesValue](docs/TransformDefinitionAttributesValue.md)

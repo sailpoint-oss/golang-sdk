@@ -7,6 +7,8 @@
 
 * `SAILPOINT` (value: `"SAILPOINT"`)
 
+* `TEXT` (value: `"TEXT"`)
+
 * `TYPEAHEAD` (value: `"TYPEAHEAD"`)
 
 

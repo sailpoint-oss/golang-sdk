@@ -26,6 +26,7 @@ type Search struct {
 	Query *Query `json:"query,omitempty"`
 	// The search query using the Elasticsearch [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/7.10/query-dsl.html) syntax.
 	QueryDsl map[string]interface{} `json:"queryDsl,omitempty"`
+	TextQuery *TextQuery `json:"textQuery,omitempty"`
 	TypeAheadQuery *TypeAheadQuery `json:"typeAheadQuery,omitempty"`
 	// Indicates whether nested objects from returned search results should be included.
 	IncludeNested *bool `json:"includeNested,omitempty"`
@@ -233,6 +234,38 @@ func (o *Search) HasQueryDsl() bool {
 // SetQueryDsl gets a reference to the given map[string]interface{} and assigns it to the QueryDsl field.
 func (o *Search) SetQueryDsl(v map[string]interface{}) {
 	o.QueryDsl = v
+}
+
+// GetTextQuery returns the TextQuery field value if set, zero value otherwise.
+func (o *Search) GetTextQuery() TextQuery {
+	if o == nil || isNil(o.TextQuery) {
+		var ret TextQuery
+		return ret
+	}
+	return *o.TextQuery
+}
+
+// GetTextQueryOk returns a tuple with the TextQuery field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Search) GetTextQueryOk() (*TextQuery, bool) {
+	if o == nil || isNil(o.TextQuery) {
+		return nil, false
+	}
+	return o.TextQuery, true
+}
+
+// HasTextQuery returns a boolean if a field has been set.
+func (o *Search) HasTextQuery() bool {
+	if o != nil && !isNil(o.TextQuery) {
+		return true
+	}
+
+	return false
+}
+
+// SetTextQuery gets a reference to the given TextQuery and assigns it to the TextQuery field.
+func (o *Search) SetTextQuery(v TextQuery) {
+	o.TextQuery = &v
 }
 
 // GetTypeAheadQuery returns the TypeAheadQuery field value if set, zero value otherwise.
@@ -580,6 +613,9 @@ func (o Search) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.QueryDsl) {
 		toSerialize["queryDsl"] = o.QueryDsl
 	}
+	if !isNil(o.TextQuery) {
+		toSerialize["textQuery"] = o.TextQuery
+	}
 	if !isNil(o.TypeAheadQuery) {
 		toSerialize["typeAheadQuery"] = o.TypeAheadQuery
 	}
@@ -633,6 +669,7 @@ func (o *Search) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "queryVersion")
 		delete(additionalProperties, "query")
 		delete(additionalProperties, "queryDsl")
+		delete(additionalProperties, "textQuery")
 		delete(additionalProperties, "typeAheadQuery")
 		delete(additionalProperties, "includeNested")
 		delete(additionalProperties, "queryResultFilter")

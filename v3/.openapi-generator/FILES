@@ -451,6 +451,7 @@ docs/SubSearchAggregationSpecificationAllOf.md
 docs/TaggedObject.md
 docs/TaggedObjectDto.md
 docs/TaggedObjectsApi.md
+docs/TextQuery.md
 docs/Transform.md
 docs/TransformDefinition.md
 docs/TransformDefinitionAttributesValue.md
@@ -860,6 +861,7 @@ model_sub_search_aggregation_specification.go
 model_sub_search_aggregation_specification_all_of.go
 model_tagged_object.go
 model_tagged_object_dto.go
+model_text_query.go
 model_transform.go
 model_transform_definition.go
 model_transform_definition_attributes_value.go
