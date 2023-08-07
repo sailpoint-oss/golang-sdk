@@ -23,9 +23,9 @@ type TextQuery struct {
 	Terms []string `json:"terms"`
 	// The fields to be searched.
 	Fields []string `json:"fields"`
-	// Indicates if a match was found.
+	// Indicates that at least one of the terms must be found in the specified fields;  otherwise, all terms must be found.
 	MatchAny *bool `json:"matchAny,omitempty"`
-	// Indicates if the search contained a field.
+	// Indicates that the terms can be located anywhere in the specified fields;  otherwise, the fields must begin with the terms.
 	Contains *bool `json:"contains,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
