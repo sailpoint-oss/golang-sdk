@@ -354,6 +354,8 @@ docs/IdentitiesAccountsBulkRequest.md
 docs/IdentitiesApi.md
 docs/Identity.md
 docs/Identity1.md
+docs/IdentityAssociationDetails.md
+docs/IdentityAssociationDetailsAssociationDetailsInner.md
 docs/IdentityAttributeConfig.md
 docs/IdentityAttributeConfig1.md
 docs/IdentityAttributePreview.md
@@ -373,6 +375,8 @@ docs/IdentityCreatedIdentity.md
 docs/IdentityDeleted.md
 docs/IdentityDeletedIdentity.md
 docs/IdentityDto.md
+docs/IdentityEntities.md
+docs/IdentityEntitiesIdentityEntity.md
 docs/IdentityExceptionReportReference.md
 docs/IdentityExceptionReportReference1.md
 docs/IdentityHistoryApi.md
@@ -1056,6 +1060,8 @@ model_http_dispatch_mode.go
 model_identities_accounts_bulk_request.go
 model_identity.go
 model_identity_1.go
+model_identity_association_details.go
+model_identity_association_details_association_details_inner.go
 model_identity_attribute_config.go
 model_identity_attribute_config_1.go
 model_identity_attribute_preview.go
@@ -1075,6 +1081,8 @@ model_identity_created_identity.go
 model_identity_deleted.go
 model_identity_deleted_identity.go
 model_identity_dto.go
+model_identity_entities.go
+model_identity_entities_identity_entity.go
 model_identity_exception_report_reference.go
 model_identity_exception_report_reference_1.go
 model_identity_history_response.go

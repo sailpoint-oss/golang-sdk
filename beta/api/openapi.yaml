@@ -13828,8 +13828,16 @@ paths:
         "400":
           content:
             application/json:
+              example:
+                message: Identity is the owner of following resources
+                associationDetails:
+                  associationType: CAMPAIGN_OWNER
+                  entities:
+                  - id: b660a232f05b4e04812ca974b3011e0f
+                    name: Gaston.800ddf9640a
+                    type: CAMPAIGN_CAMPAIGNER
               schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
+                $ref: '#/components/schemas/IdentityAssociationDetails'
           description: Client Error - Returned if the request is invalid. It may indicate
             that the specified identity is marked as protected and cannot be deleted.
         "401":
@@ -49858,6 +49866,18 @@ components:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
       - $ref: '#/components/schemas/IdentityDto'
+    IdentityAssociationDetails:
+      properties:
+        message:
+          description: any additional context information of the http call result
+          example: Identity cannot be deleted as it is owner of following resources
+          type: string
+        associationDetails:
+          description: list of all the resource associations for the identity
+          items:
+            $ref: '#/components/schemas/IdentityAssociationDetails_associationDetails_inner'
+          type: array
+      type: object
     ProcessIdentitiesRequest:
       example:
         identityIds:
@@ -59447,6 +59467,11 @@ components:
       - manuallyUpdated
       - stateName
       type: object
+    IdentityEntities:
+      properties:
+        identityEntity:
+          $ref: '#/components/schemas/IdentityEntities_identityEntity'
+      type: object
     DtoType:
       description: An enumeration of the types of DTOs supported within the IdentityNow
         infrastructure.
@@ -65459,6 +65484,22 @@ components:
       title: IdentityDto
       type: object
       example: null
+    IdentityAssociationDetails_associationDetails_inner:
+      properties:
+        associationType:
+          description: association type with the identity
+          example: CAMPAIGN_OWNER
+          type: string
+        entities:
+          description: the specific resource this identity has ownership on
+          example:
+            id: b660a232f05b4e04812ca974b3011e0f
+            name: Gaston.800ddf9640a
+            type: CAMPAIGN_CAMPAIGNER
+          items:
+            $ref: '#/components/schemas/IdentityEntities'
+          type: array
+      type: object
     NonEmployeeRequest_allOf:
       properties:
         accountName:
@@ -66109,6 +66150,21 @@ components:
         name:
           description: Human-readable display name of the identity making the comment
           example: Adam Kennedy
+          type: string
+      type: object
+    IdentityEntities_identityEntity:
+      properties:
+        id:
+          description: id of the resource to which the identity is associated
+          example: 031034e97f094a4096c1be53f75f6b91
+          type: string
+        name:
+          description: name of the resource to which the identity is associated
+          example: Gaston.800ddf9640a
+          type: string
+        type:
+          description: type of the resource to which the identity is associated
+          example: CAMPAIGN_CAMPAIGNER
           type: string
       type: object
     IdentityProfile_1_allOf_authoritativeSource:

@@ -110,7 +110,7 @@ func (a *IdentitiesApiService) DeleteIdentityExecute(r ApiDeleteIdentityRequest)
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
+			var v IdentityAssociationDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
