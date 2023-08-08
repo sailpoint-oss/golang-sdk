@@ -9,6 +9,12 @@ servers:
     tenant:
       default: sailpoint
       description: "This is the name of your tenant, typically your company's name."
+- description: This is the CC API server.
+  url: "https://{apiUrl}"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
 tags:
 - name: Accounts
 - name: Applications

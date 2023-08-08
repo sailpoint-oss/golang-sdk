@@ -20,6 +20,12 @@ servers:
     tenant:
       default: sailpoint
       description: "This is the name of your tenant, typically your company's name."
+- description: This is the V3 API server.
+  url: "https://{apiUrl}/v3"
+  variables:
+    apiUrl:
+      default: sailpoint.api.identitynow.com
+      description: This is the api url of your tenant
 security:
 - oauth2: []
 tags:

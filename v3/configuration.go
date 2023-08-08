@@ -113,6 +113,16 @@ func NewConfiguration(clientId string, clientSecret string, baseURL string, toke
 					},
 				},
 			},
+			{
+				URL: baseURL,
+				Description: "This is the V3 API server.",
+				Variables: map[string]ServerVariable{
+					"apiUrl": ServerVariable{
+						Description: "This is the api url of your tenant",
+						DefaultValue: "sailpoint.api.identitynow.com",
+					},
+				},
+			},
 		},
 		OperationServers: map[string]ServerConfigurations{
 		},
