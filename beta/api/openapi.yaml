@@ -21550,7 +21550,7 @@ paths:
       summary: Get identity outlier's contibuting features
       tags:
       - IAI Outliers
-  /outliers/{outlierId}/feature-details/{contributingFeatureId}/access-items:
+  /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items:
     get:
       description: |-
         This API returns a list of the enriched access items associated with each feature filtered by the access item type  The object contains: accessItemId, display name (translated text or message key), description (translated text or message key), accessType, sourceName, extremelyRare
@@ -21602,12 +21602,19 @@ paths:
         required: true
         schema:
           type: string
-      - description: The contributing feature id
-        example: 9f9d5d53ad0e48fba7352f6da9f1b80c
+      - description: The name of contributing feature
+        example: entitlement_count
         in: path
-        name: contributingFeatureId
+        name: contributingFeatureName
         required: true
         schema:
+          enum:
+          - radical_entitlement_count
+          - entitlement_count
+          - max_jaccard_similarity
+          - mean_max_bundle_concurrency
+          - single_entitlement_bundle_count
+          - peerless_score
           type: string
       - description: "The type of access item for the identity outlier contributing\
           \ feature. If not provided, it returns all"

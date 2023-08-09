@@ -1147,7 +1147,7 @@ type ApiListOutliersContributingFeatureAccessItemsRequest struct {
 	ctx context.Context
 	ApiService *IAIOutliersApiService
 	outlierId string
-	contributingFeatureId string
+	contributingFeatureName string
 	limit *int32
 	offset *int32
 	count *bool
@@ -1197,15 +1197,15 @@ Requires authorization scope of 'iai:outliers-management:read'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param outlierId The outlier id
- @param contributingFeatureId The contributing feature id
+ @param contributingFeatureName The name of contributing feature
  @return ApiListOutliersContributingFeatureAccessItemsRequest
 */
-func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItems(ctx context.Context, outlierId string, contributingFeatureId string) ApiListOutliersContributingFeatureAccessItemsRequest {
+func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItems(ctx context.Context, outlierId string, contributingFeatureName string) ApiListOutliersContributingFeatureAccessItemsRequest {
 	return ApiListOutliersContributingFeatureAccessItemsRequest{
 		ApiService: a,
 		ctx: ctx,
 		outlierId: outlierId,
-		contributingFeatureId: contributingFeatureId,
+		contributingFeatureName: contributingFeatureName,
 	}
 }
 
@@ -1224,9 +1224,9 @@ func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItemsExecut
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/outliers/{outlierId}/feature-details/{contributingFeatureId}/access-items"
+	localVarPath := localBasePath + "/outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items"
 	localVarPath = strings.Replace(localVarPath, "{"+"outlierId"+"}", url.PathEscape(parameterValueToString(r.outlierId, "outlierId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"contributingFeatureId"+"}", url.PathEscape(parameterValueToString(r.contributingFeatureId, "contributingFeatureId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"contributingFeatureName"+"}", url.PathEscape(parameterValueToString(r.contributingFeatureName, "contributingFeatureName")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

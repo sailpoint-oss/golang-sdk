@@ -100,9 +100,9 @@ func Test_beta_IAIOutliersApiService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		var outlierId string
-		var contributingFeatureId string
+		var contributingFeatureName string
 
-		resp, httpRes, err := apiClient.BETA.IAIOutliersApi.ListOutliersContributingFeatureAccessItems(context.Background(), outlierId, contributingFeatureId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIOutliersApi.ListOutliersContributingFeatureAccessItems(context.Background(), outlierId, contributingFeatureName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
