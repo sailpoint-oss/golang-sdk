@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | ID of the approval item | [optional] 
+**Id** | Pointer to **string** | The approval item&#39;s ID | [optional] 
 **Account** | Pointer to **string** | The account referenced by the approval item | [optional] 
-**Application** | Pointer to **string** | The name the application/source | [optional] 
-**AttributeName** | Pointer to **string** | The name of the attribute | [optional] 
-**AttributeOperation** | Pointer to **string** | The operation of the attribute | [optional] 
-**AttributeValue** | Pointer to **string** | The value of the attribute | [optional] 
+**Application** | Pointer to **string** | The name of the application/source | [optional] 
+**Name** | Pointer to **string** | The attribute&#39;s name | [optional] 
+**Operation** | Pointer to **string** | The attribute&#39;s operation | [optional] 
+**Value** | Pointer to **string** | The attribute&#39;s value | [optional] 
 **State** | Pointer to [**WorkItemState**](WorkItemState.md) |  | [optional] 
 
 ## Methods
@@ -106,80 +106,80 @@ SetApplication sets Application field to given value.
 
 HasApplication returns a boolean if a field has been set.
 
-### GetAttributeName
+### GetName
 
-`func (o *ApprovalItemDetails) GetAttributeName() string`
+`func (o *ApprovalItemDetails) GetName() string`
 
-GetAttributeName returns the AttributeName field if non-nil, zero value otherwise.
+GetName returns the Name field if non-nil, zero value otherwise.
 
-### GetAttributeNameOk
+### GetNameOk
 
-`func (o *ApprovalItemDetails) GetAttributeNameOk() (*string, bool)`
+`func (o *ApprovalItemDetails) GetNameOk() (*string, bool)`
 
-GetAttributeNameOk returns a tuple with the AttributeName field if it's non-nil, zero value otherwise
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAttributeName
+### SetName
 
-`func (o *ApprovalItemDetails) SetAttributeName(v string)`
+`func (o *ApprovalItemDetails) SetName(v string)`
 
-SetAttributeName sets AttributeName field to given value.
+SetName sets Name field to given value.
 
-### HasAttributeName
+### HasName
 
-`func (o *ApprovalItemDetails) HasAttributeName() bool`
+`func (o *ApprovalItemDetails) HasName() bool`
 
-HasAttributeName returns a boolean if a field has been set.
+HasName returns a boolean if a field has been set.
 
-### GetAttributeOperation
+### GetOperation
 
-`func (o *ApprovalItemDetails) GetAttributeOperation() string`
+`func (o *ApprovalItemDetails) GetOperation() string`
 
-GetAttributeOperation returns the AttributeOperation field if non-nil, zero value otherwise.
+GetOperation returns the Operation field if non-nil, zero value otherwise.
 
-### GetAttributeOperationOk
+### GetOperationOk
 
-`func (o *ApprovalItemDetails) GetAttributeOperationOk() (*string, bool)`
+`func (o *ApprovalItemDetails) GetOperationOk() (*string, bool)`
 
-GetAttributeOperationOk returns a tuple with the AttributeOperation field if it's non-nil, zero value otherwise
+GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAttributeOperation
+### SetOperation
 
-`func (o *ApprovalItemDetails) SetAttributeOperation(v string)`
+`func (o *ApprovalItemDetails) SetOperation(v string)`
 
-SetAttributeOperation sets AttributeOperation field to given value.
+SetOperation sets Operation field to given value.
 
-### HasAttributeOperation
+### HasOperation
 
-`func (o *ApprovalItemDetails) HasAttributeOperation() bool`
+`func (o *ApprovalItemDetails) HasOperation() bool`
 
-HasAttributeOperation returns a boolean if a field has been set.
+HasOperation returns a boolean if a field has been set.
 
-### GetAttributeValue
+### GetValue
 
-`func (o *ApprovalItemDetails) GetAttributeValue() string`
+`func (o *ApprovalItemDetails) GetValue() string`
 
-GetAttributeValue returns the AttributeValue field if non-nil, zero value otherwise.
+GetValue returns the Value field if non-nil, zero value otherwise.
 
-### GetAttributeValueOk
+### GetValueOk
 
-`func (o *ApprovalItemDetails) GetAttributeValueOk() (*string, bool)`
+`func (o *ApprovalItemDetails) GetValueOk() (*string, bool)`
 
-GetAttributeValueOk returns a tuple with the AttributeValue field if it's non-nil, zero value otherwise
+GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAttributeValue
+### SetValue
 
-`func (o *ApprovalItemDetails) SetAttributeValue(v string)`
+`func (o *ApprovalItemDetails) SetValue(v string)`
 
-SetAttributeValue sets AttributeValue field to given value.
+SetValue sets Value field to given value.
 
-### HasAttributeValue
+### HasValue
 
-`func (o *ApprovalItemDetails) HasAttributeValue() bool`
+`func (o *ApprovalItemDetails) HasValue() bool`
 
-HasAttributeValue returns a boolean if a field has been set.
+HasValue returns a boolean if a field has been set.
 
 ### GetState
 

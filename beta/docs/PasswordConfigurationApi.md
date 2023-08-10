@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreatePasswordOrgConfig**](PasswordConfigurationApi.md#CreatePasswordOrgConfig) | **Post** /password-org-config | Create Password Org Config
 [**GetPasswordOrgConfig**](PasswordConfigurationApi.md#GetPasswordOrgConfig) | **Get** /password-org-config | Get Password Org Config
-[**UpdatePasswordOrgConfig**](PasswordConfigurationApi.md#UpdatePasswordOrgConfig) | **Put** /password-org-config | Update Password Org Config
+[**PutPasswordOrgConfig**](PasswordConfigurationApi.md#PutPasswordOrgConfig) | **Put** /password-org-config | Update Password Org Config
 
 
 
@@ -137,9 +137,9 @@ Other parameters are passed through a pointer to a apiGetPasswordOrgConfigReques
 [[Back to README]](../README.md)
 
 
-## UpdatePasswordOrgConfig
+## PutPasswordOrgConfig
 
-> PasswordOrgConfig UpdatePasswordOrgConfig(ctx).PasswordOrgConfig(passwordOrgConfig).Execute()
+> PasswordOrgConfig PutPasswordOrgConfig(ctx).PasswordOrgConfig(passwordOrgConfig).Execute()
 
 Update Password Org Config
 
@@ -162,13 +162,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationApi.UpdatePasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
+    resp, r, err := apiClient.PasswordConfigurationApi.PutPasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationApi.UpdatePasswordOrgConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationApi.PutPasswordOrgConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatePasswordOrgConfig`: PasswordOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationApi.UpdatePasswordOrgConfig`: %v\n", resp)
+    // response from `PutPasswordOrgConfig`: PasswordOrgConfig
+    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationApi.PutPasswordOrgConfig`: %v\n", resp)
 }
 ```
 
@@ -178,7 +178,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdatePasswordOrgConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutPasswordOrgConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

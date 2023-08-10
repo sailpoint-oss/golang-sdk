@@ -174,7 +174,7 @@ Class | Method | HTTP request | Description
 *OAuthClientsApi* | [**PatchOauthClient**](docs/OAuthClientsApi.md#patchoauthclient) | **Patch** /oauth-clients/{id} | Patch OAuth Client
 *PasswordConfigurationApi* | [**CreatePasswordOrgConfig**](docs/PasswordConfigurationApi.md#createpasswordorgconfig) | **Post** /password-org-config | Create Password Org Config
 *PasswordConfigurationApi* | [**GetPasswordOrgConfig**](docs/PasswordConfigurationApi.md#getpasswordorgconfig) | **Get** /password-org-config | Get Password Org Config
-*PasswordConfigurationApi* | [**UpdatePasswordOrgConfig**](docs/PasswordConfigurationApi.md#updatepasswordorgconfig) | **Put** /password-org-config | Update Password Org Config
+*PasswordConfigurationApi* | [**PutPasswordOrgConfig**](docs/PasswordConfigurationApi.md#putpasswordorgconfig) | **Put** /password-org-config | Update Password Org Config
 *PasswordDictionaryApi* | [**GetPasswordDictionary**](docs/PasswordDictionaryApi.md#getpassworddictionary) | **Get** /password-dictionary | Get Password Dictionary
 *PasswordDictionaryApi* | [**UpdatePasswordDictionary**](docs/PasswordDictionaryApi.md#updatepassworddictionary) | **Put** /password-dictionary | Update Password Dictionary
 *PasswordManagementApi* | [**GetPasswordChangeStatus**](docs/PasswordManagementApi.md#getpasswordchangestatus) | **Get** /password-change-status/{id} | Get Password Change Request Status

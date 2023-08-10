@@ -1691,7 +1691,8 @@ paths:
         an access request to ensure you are not requesting access that is already\
         \ granted.\n\nThere are two types of access request:\n\n__GRANT_ACCESS__\n\
         * Can be requested for multiple identities in a single request.\n* Supports\
-        \ self request and request on behalf of other users, see '/beta/access-request-config'\
+        \ self request and request on behalf of other users. Refer to the [Get Access\
+        \ Request Configuration](https://developer.sailpoint.com/idn/api/v3/get-access-request-config)\
         \ endpoint for request configuration options.  \n* Allows any authenticated\
         \ token (except API) to call this endpoint to request to grant access to themselves.\
         \ Depending on the configuration, a user can request access for others.\n\
@@ -23118,9 +23119,10 @@ paths:
       tags:
       - Password Configuration
     post:
-      description: "This API creates the password org config. Unspecified fields will\
-        \ use default value. Requires ORG_ADMIN, API role or authorization scope of\
-        \ 'idn:password-org-config:write'"
+      description: |-
+        This API creates the password org config. Unspecified fields will use default value.
+        To be able to use the custom password instructions, you must set the `customInstructionsEnabled` field to "true".
+        Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
       operationId: createPasswordOrgConfig
       requestBody:
         content:
@@ -23209,9 +23211,10 @@ paths:
       - Password Configuration
     put:
       description: "This API updates the password org config for specified fields.\
-        \ Other fields will keep original value. Requires ORG_ADMIN, API role or authorization\
-        \ scope of 'idn:password-org-config:write'"
-      operationId: updatePasswordOrgConfig
+        \ Other fields will keep original value.\nYou must set the `customInstructionsEnabled`\
+        \ field to \"true\" to be able to use custom password instructions. \nRequires\
+        \ ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'"
+      operationId: putPasswordOrgConfig
       requestBody:
         content:
           application/json:
@@ -28444,11 +28447,14 @@ paths:
       tags:
       - Roles
     post:
-      description: |-
-        This API creates a Role.
-        There is a soft limit of 800 roles per org in IdentityNow.  You will receive an error if you attempt to add more than 800 roles via the API or the UI.  If you need to add roles above this limit, please create a support ticket.
-        A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required to call this API. In addition, a ROLE_SUBADMIN may not create a Role including an Access Profile if that Access Profile is associated with a Source with which the ROLE_SUBADMIN is not themselves associated.
-        The maximum supported length for the description field is 2000 characters. Longer descriptions will be preserved for existing roles, however, any new roles as well as any updates to existing descriptions will be limited to 2000 characters.
+      description: "This API creates a role.\nYou must have a token with API, ORG_ADMIN,\
+        \ ROLE_ADMIN, or ROLE_SUBADMIN authority to call this API. \nIn addition,\
+        \ a ROLE_SUBADMIN may not create a role including an access profile if that\
+        \ access profile is associated with a source the ROLE_SUBADMIN is not associated\
+        \ with themselves. \nThe maximum supported length for the description field\
+        \ is 2000 characters. Longer descriptions will be preserved for existing roles.\
+        \ However, any new roles as well as any updates to existing descriptions will\
+        \ be limited to 2000 characters."
       operationId: createRole
       requestBody:
         content:
@@ -46036,15 +46042,15 @@ components:
     ApprovalItems:
       example:
         application: Active Directory
-        attributeValue: a@b.com
-        attributeName: emailAddress
+        name: emailAddress
         id: 2c9180835d2e5168015d32f890ca1581
         state: FINISHED
+        operation: update
+        value: a@b.com
         account: john.smith
-        attributeOperation: update
       properties:
         id:
-          description: ID of the approval item
+          description: The approval item's ID
           example: 2c9180835d2e5168015d32f890ca1581
           type: string
         account:
@@ -46052,19 +46058,19 @@ components:
           example: john.smith
           type: string
         application:
-          description: The name the application/source
+          description: The name of the application/source
           example: Active Directory
           type: string
-        attributeName:
-          description: The name of the attribute
+        name:
+          description: The attribute's name
           example: emailAddress
           type: string
-        attributeOperation:
-          description: The operation of the attribute
+        operation:
+          description: The attribute's operation
           example: update
           type: string
-        attributeValue:
-          description: The value of the attribute
+        value:
+          description: The attribute's value
           example: a@b.com
           type: string
         state:
@@ -46579,12 +46585,12 @@ components:
         created: 2017-07-11T18:45:37.098Z
         approvalItems:
           application: Active Directory
-          attributeValue: a@b.com
-          attributeName: emailAddress
+          name: emailAddress
           id: 2c9180835d2e5168015d32f890ca1581
           state: FINISHED
+          operation: update
+          value: a@b.com
           account: john.smith
-          attributeOperation: update
         description: Create account on source 'AD'
         completed: 2018-10-19T13:49:37.385Z
         ownerId: 2c9180835d2e5168015d32f890ca1581
@@ -52779,12 +52785,10 @@ components:
           type: boolean
       type: object
     RequestableObjectType:
-      description: Enum represented the currently supported requestable object types.
-        Additional values may be added in the future without notice.
+      description: 'The currently supported requestable object types. '
       enum:
       - ACCESS_PROFILE
       - ROLE
-      - ENTITLEMENT
       example: ACCESS_PROFILE
       type: string
     RequestableObjectRequestStatus:
@@ -57738,15 +57742,15 @@ components:
     ApprovalItemDetails:
       example:
         application: Active Directory
-        attributeValue: a@b.com
-        attributeName: emailAddress
+        name: emailAddress
         id: 2c9180835d2e5168015d32f890ca1581
         state: FINISHED
+        operation: update
+        value: a@b.com
         account: john.smith
-        attributeOperation: update
       properties:
         id:
-          description: ID of the approval item
+          description: The approval item's ID
           example: 2c9180835d2e5168015d32f890ca1581
           type: string
         account:
@@ -57754,19 +57758,19 @@ components:
           example: john.smith
           type: string
         application:
-          description: The name the application/source
+          description: The name of the application/source
           example: Active Directory
           type: string
-        attributeName:
-          description: The name of the attribute
+        name:
+          description: The attribute's name
           example: emailAddress
           type: string
-        attributeOperation:
-          description: The operation of the attribute
+        operation:
+          description: The attribute's operation
           example: update
           type: string
-        attributeValue:
-          description: The value of the attribute
+        value:
+          description: The attribute's value
           example: a@b.com
           type: string
         state:

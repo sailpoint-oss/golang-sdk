@@ -19,18 +19,18 @@ var _ MappedNullable = &ApprovalItemDetails{}
 
 // ApprovalItemDetails struct for ApprovalItemDetails
 type ApprovalItemDetails struct {
-	// ID of the approval item
+	// The approval item's ID
 	Id *string `json:"id,omitempty"`
 	// The account referenced by the approval item
 	Account *string `json:"account,omitempty"`
-	// The name the application/source
+	// The name of the application/source
 	Application *string `json:"application,omitempty"`
-	// The name of the attribute
-	AttributeName *string `json:"attributeName,omitempty"`
-	// The operation of the attribute
-	AttributeOperation *string `json:"attributeOperation,omitempty"`
-	// The value of the attribute
-	AttributeValue *string `json:"attributeValue,omitempty"`
+	// The attribute's name
+	Name *string `json:"name,omitempty"`
+	// The attribute's operation
+	Operation *string `json:"operation,omitempty"`
+	// The attribute's value
+	Value *string `json:"value,omitempty"`
 	State *WorkItemState `json:"state,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -150,100 +150,100 @@ func (o *ApprovalItemDetails) SetApplication(v string) {
 	o.Application = &v
 }
 
-// GetAttributeName returns the AttributeName field value if set, zero value otherwise.
-func (o *ApprovalItemDetails) GetAttributeName() string {
-	if o == nil || isNil(o.AttributeName) {
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *ApprovalItemDetails) GetName() string {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.AttributeName
+	return *o.Name
 }
 
-// GetAttributeNameOk returns a tuple with the AttributeName field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalItemDetails) GetAttributeNameOk() (*string, bool) {
-	if o == nil || isNil(o.AttributeName) {
+func (o *ApprovalItemDetails) GetNameOk() (*string, bool) {
+	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
-	return o.AttributeName, true
+	return o.Name, true
 }
 
-// HasAttributeName returns a boolean if a field has been set.
-func (o *ApprovalItemDetails) HasAttributeName() bool {
-	if o != nil && !isNil(o.AttributeName) {
+// HasName returns a boolean if a field has been set.
+func (o *ApprovalItemDetails) HasName() bool {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributeName gets a reference to the given string and assigns it to the AttributeName field.
-func (o *ApprovalItemDetails) SetAttributeName(v string) {
-	o.AttributeName = &v
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *ApprovalItemDetails) SetName(v string) {
+	o.Name = &v
 }
 
-// GetAttributeOperation returns the AttributeOperation field value if set, zero value otherwise.
-func (o *ApprovalItemDetails) GetAttributeOperation() string {
-	if o == nil || isNil(o.AttributeOperation) {
+// GetOperation returns the Operation field value if set, zero value otherwise.
+func (o *ApprovalItemDetails) GetOperation() string {
+	if o == nil || isNil(o.Operation) {
 		var ret string
 		return ret
 	}
-	return *o.AttributeOperation
+	return *o.Operation
 }
 
-// GetAttributeOperationOk returns a tuple with the AttributeOperation field value if set, nil otherwise
+// GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalItemDetails) GetAttributeOperationOk() (*string, bool) {
-	if o == nil || isNil(o.AttributeOperation) {
+func (o *ApprovalItemDetails) GetOperationOk() (*string, bool) {
+	if o == nil || isNil(o.Operation) {
 		return nil, false
 	}
-	return o.AttributeOperation, true
+	return o.Operation, true
 }
 
-// HasAttributeOperation returns a boolean if a field has been set.
-func (o *ApprovalItemDetails) HasAttributeOperation() bool {
-	if o != nil && !isNil(o.AttributeOperation) {
+// HasOperation returns a boolean if a field has been set.
+func (o *ApprovalItemDetails) HasOperation() bool {
+	if o != nil && !isNil(o.Operation) {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributeOperation gets a reference to the given string and assigns it to the AttributeOperation field.
-func (o *ApprovalItemDetails) SetAttributeOperation(v string) {
-	o.AttributeOperation = &v
+// SetOperation gets a reference to the given string and assigns it to the Operation field.
+func (o *ApprovalItemDetails) SetOperation(v string) {
+	o.Operation = &v
 }
 
-// GetAttributeValue returns the AttributeValue field value if set, zero value otherwise.
-func (o *ApprovalItemDetails) GetAttributeValue() string {
-	if o == nil || isNil(o.AttributeValue) {
+// GetValue returns the Value field value if set, zero value otherwise.
+func (o *ApprovalItemDetails) GetValue() string {
+	if o == nil || isNil(o.Value) {
 		var ret string
 		return ret
 	}
-	return *o.AttributeValue
+	return *o.Value
 }
 
-// GetAttributeValueOk returns a tuple with the AttributeValue field value if set, nil otherwise
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApprovalItemDetails) GetAttributeValueOk() (*string, bool) {
-	if o == nil || isNil(o.AttributeValue) {
+func (o *ApprovalItemDetails) GetValueOk() (*string, bool) {
+	if o == nil || isNil(o.Value) {
 		return nil, false
 	}
-	return o.AttributeValue, true
+	return o.Value, true
 }
 
-// HasAttributeValue returns a boolean if a field has been set.
-func (o *ApprovalItemDetails) HasAttributeValue() bool {
-	if o != nil && !isNil(o.AttributeValue) {
+// HasValue returns a boolean if a field has been set.
+func (o *ApprovalItemDetails) HasValue() bool {
+	if o != nil && !isNil(o.Value) {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributeValue gets a reference to the given string and assigns it to the AttributeValue field.
-func (o *ApprovalItemDetails) SetAttributeValue(v string) {
-	o.AttributeValue = &v
+// SetValue gets a reference to the given string and assigns it to the Value field.
+func (o *ApprovalItemDetails) SetValue(v string) {
+	o.Value = &v
 }
 
 // GetState returns the State field value if set, zero value otherwise.
@@ -297,14 +297,14 @@ func (o ApprovalItemDetails) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}
-	if !isNil(o.AttributeName) {
-		toSerialize["attributeName"] = o.AttributeName
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.AttributeOperation) {
-		toSerialize["attributeOperation"] = o.AttributeOperation
+	if !isNil(o.Operation) {
+		toSerialize["operation"] = o.Operation
 	}
-	if !isNil(o.AttributeValue) {
-		toSerialize["attributeValue"] = o.AttributeValue
+	if !isNil(o.Value) {
+		toSerialize["value"] = o.Value
 	}
 	if !isNil(o.State) {
 		toSerialize["state"] = o.State
@@ -330,9 +330,9 @@ func (o *ApprovalItemDetails) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "account")
 		delete(additionalProperties, "application")
-		delete(additionalProperties, "attributeName")
-		delete(additionalProperties, "attributeOperation")
-		delete(additionalProperties, "attributeValue")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "operation")
+		delete(additionalProperties, "value")
 		delete(additionalProperties, "state")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -40,7 +40,9 @@ func (r ApiCreatePasswordOrgConfigRequest) Execute() (*PasswordOrgConfig, *http.
 /*
 CreatePasswordOrgConfig Create Password Org Config
 
-This API creates the password org config. Unspecified fields will use default value. Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
+This API creates the password org config. Unspecified fields will use default value.
+To be able to use the custom password instructions, you must set the `customInstructionsEnabled` field to "true".
+Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreatePasswordOrgConfigRequest
@@ -339,31 +341,33 @@ func (a *PasswordConfigurationApiService) GetPasswordOrgConfigExecute(r ApiGetPa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdatePasswordOrgConfigRequest struct {
+type ApiPutPasswordOrgConfigRequest struct {
 	ctx context.Context
 	ApiService *PasswordConfigurationApiService
 	passwordOrgConfig *PasswordOrgConfig
 }
 
-func (r ApiUpdatePasswordOrgConfigRequest) PasswordOrgConfig(passwordOrgConfig PasswordOrgConfig) ApiUpdatePasswordOrgConfigRequest {
+func (r ApiPutPasswordOrgConfigRequest) PasswordOrgConfig(passwordOrgConfig PasswordOrgConfig) ApiPutPasswordOrgConfigRequest {
 	r.passwordOrgConfig = &passwordOrgConfig
 	return r
 }
 
-func (r ApiUpdatePasswordOrgConfigRequest) Execute() (*PasswordOrgConfig, *http.Response, error) {
-	return r.ApiService.UpdatePasswordOrgConfigExecute(r)
+func (r ApiPutPasswordOrgConfigRequest) Execute() (*PasswordOrgConfig, *http.Response, error) {
+	return r.ApiService.PutPasswordOrgConfigExecute(r)
 }
 
 /*
-UpdatePasswordOrgConfig Update Password Org Config
+PutPasswordOrgConfig Update Password Org Config
 
-This API updates the password org config for specified fields. Other fields will keep original value. Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
+This API updates the password org config for specified fields. Other fields will keep original value.
+You must set the `customInstructionsEnabled` field to "true" to be able to use custom password instructions. 
+Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUpdatePasswordOrgConfigRequest
+ @return ApiPutPasswordOrgConfigRequest
 */
-func (a *PasswordConfigurationApiService) UpdatePasswordOrgConfig(ctx context.Context) ApiUpdatePasswordOrgConfigRequest {
-	return ApiUpdatePasswordOrgConfigRequest{
+func (a *PasswordConfigurationApiService) PutPasswordOrgConfig(ctx context.Context) ApiPutPasswordOrgConfigRequest {
+	return ApiPutPasswordOrgConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -371,7 +375,7 @@ func (a *PasswordConfigurationApiService) UpdatePasswordOrgConfig(ctx context.Co
 
 // Execute executes the request
 //  @return PasswordOrgConfig
-func (a *PasswordConfigurationApiService) UpdatePasswordOrgConfigExecute(r ApiUpdatePasswordOrgConfigRequest) (*PasswordOrgConfig, *http.Response, error) {
+func (a *PasswordConfigurationApiService) PutPasswordOrgConfigExecute(r ApiPutPasswordOrgConfigRequest) (*PasswordOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -379,7 +383,7 @@ func (a *PasswordConfigurationApiService) UpdatePasswordOrgConfigExecute(r ApiUp
 		localVarReturnValue  *PasswordOrgConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordConfigurationApiService.UpdatePasswordOrgConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordConfigurationApiService.PutPasswordOrgConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

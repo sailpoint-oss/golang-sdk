@@ -46,11 +46,11 @@ func Test_beta_PasswordConfigurationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordConfigurationApiService UpdatePasswordOrgConfig", func(t *testing.T) {
+	t.Run("Test PasswordConfigurationApiService PutPasswordOrgConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.PasswordConfigurationApi.UpdatePasswordOrgConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordConfigurationApi.PutPasswordOrgConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
