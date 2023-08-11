@@ -1705,13 +1705,14 @@ paths:
         \ Roles and Access Profiles. Entitlements are currently unsupported for removeDate.\n\
         * Roles, Access Profiles, and Entitlements can be requested for revocation.\n\
         * Revoke requests for entitlements are limited to 1 entitlement per access\
-        \ request currently.\n* [Roles, Access Profiles] RemoveData can be specified\
-        \ only if access don't have a sunset date.\n* Allows a manager to request\
-        \ to revoke access for direct employees. A token with ORG_ADMIN authority\
-        \ can also request to revoke access from anyone.\n\nNOTE: There is no indication\
-        \ to the approver in the IdentityNow UI that the approval request is for a\
-        \ revoke action. Take this into consideration when calling this API.\n\nA\
-        \ token with API authority cannot be used to call this endpoint. \n"
+        \ request currently.\n* [Roles, Access Profiles] removeDate can be specified\
+        \ if access don't have a sunset date or if a revoke access with a removeDate\
+        \ earlier than the current endDate.\n* Allows a manager to request to revoke\
+        \ access for direct employees. A token with ORG_ADMIN authority can also request\
+        \ to revoke access from anyone.\n\nNOTE: There is no indication to the approver\
+        \ in the IdentityNow UI that the approval request is for a revoke action.\
+        \ Take this into consideration when calling this API.\n\nA token with API\
+        \ authority cannot be used to call this endpoint. \n"
       operationId: createAccessRequest
       requestBody:
         content:
