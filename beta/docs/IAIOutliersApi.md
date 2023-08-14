@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetIdentityOutlierSnapshots**](IAIOutliersApi.md#GetIdentityOutlierSnapshots) | **Get** /outlier-summaries | IAI Identity Outliers Summary
 [**GetIdentityOutliers**](IAIOutliersApi.md#GetIdentityOutliers) | **Get** /outliers | IAI Get Identity Outliers
 [**GetLatestIdentityOutlierSnapshots**](IAIOutliersApi.md#GetLatestIdentityOutlierSnapshots) | **Get** /outlier-summaries/latest | IAI Identity Outliers Latest Summary
+[**GetOutlierContributingFeatureSummary**](IAIOutliersApi.md#GetOutlierContributingFeatureSummary) | **Get** /outlier-feature-summaries/{outlierFeatureId} | Get identity outlier contibuting feature summary
 [**GetPeerGroupOutliersContributingFeatures**](IAIOutliersApi.md#GetPeerGroupOutliersContributingFeatures) | **Get** /outliers/{outlierId}/contributing-features | Get identity outlier&#39;s contibuting features
 [**IgnoreIdentityOutliers**](IAIOutliersApi.md#IgnoreIdentityOutliers) | **Post** /outliers/ignore | IAI Identity Outliers Ignore
 [**ListOutliersContributingFeatureAccessItems**](IAIOutliersApi.md#ListOutliersContributingFeatureAccessItems) | **Get** /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items | Gets a list of access items associated with each identity outlier contributing feature
@@ -282,6 +283,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]LatestOutlierSummary**](LatestOutlierSummary.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOutlierContributingFeatureSummary
+
+> OutlierFeatureSummary GetOutlierContributingFeatureSummary(ctx, outlierFeatureId).Execute()
+
+Get identity outlier contibuting feature summary
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    outlierFeatureId := "04654b66-7561-4090-94f9-abee0722a1af" // string | Contributing feature id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IAIOutliersApi.GetOutlierContributingFeatureSummary(context.Background(), outlierFeatureId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetOutlierContributingFeatureSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOutlierContributingFeatureSummary`: OutlierFeatureSummary
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetOutlierContributingFeatureSummary`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**outlierFeatureId** | **string** | Contributing feature id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOutlierContributingFeatureSummaryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**OutlierFeatureSummary**](OutlierFeatureSummary.md)
 
 ### Authorization
 

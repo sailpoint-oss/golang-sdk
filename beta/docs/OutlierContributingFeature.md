@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** | Contributing feature id | [optional] 
 **Name** | Pointer to **string** | The name of the feature | [optional] 
 **ValueType** | Pointer to **string** | The data type of the value field | [optional] 
 **Value** | Pointer to [**OutlierContributingFeatureValue**](OutlierContributingFeatureValue.md) |  | [optional] 
@@ -30,6 +31,31 @@ will change when the set of required properties is changed
 NewOutlierContributingFeatureWithDefaults instantiates a new OutlierContributingFeature object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *OutlierContributingFeature) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *OutlierContributingFeature) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *OutlierContributingFeature) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *OutlierContributingFeature) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetName
 

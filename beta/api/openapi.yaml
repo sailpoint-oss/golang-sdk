@@ -21972,6 +21972,113 @@ paths:
       summary: IAI Identity Outliers Export
       tags:
       - IAI Outliers
+  /outlier-feature-summaries/{outlierFeatureId}:
+    get:
+      description: |-
+        This API returns a summary of a contributing feature for an identity outlier. The object contains: contributing feature name (translated text or message key), identity outlier display name, feature values, feature definition and explanation (translated text or message key), peer display name and identityId, access item reference, translation messages object
+        Requires authorization scope of 'iai:outliers-management:read'
+      operationId: getOutlierContributingFeatureSummary
+      parameters:
+      - description: Contributing feature id
+        example: 04654b66-7561-4090-94f9-abee0722a1af
+        in: path
+        name: outlierFeatureId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutlierFeatureSummary'
+          description: Succeeded. Returns selected contributing feature summary for
+            an outlier
+          headers:
+            accept-language:
+              description: The locale to use for translations
+              schema:
+                type: string
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - iai:outliers-management:read
+      summary: Get identity outlier contibuting feature summary
+      tags:
+      - IAI Outliers
   /password-dictionary:
     get:
       description: |-
@@ -52014,8 +52121,13 @@ components:
         valueType: INTEGER
         name: entitlement_count
         description: The total number of entitlements belonging to an identity
+        id: 66e38828-5017-47af-92ff-9844871352c5
         value: 0.92
       properties:
+        id:
+          description: Contributing feature id
+          example: 66e38828-5017-47af-92ff-9844871352c5
+          type: string
         name:
           description: The name of the feature
           example: entitlement_count
@@ -52086,6 +52198,60 @@ components:
           description: rarest access
           example: true
           type: boolean
+      type: object
+    OutlierFeatureSummary:
+      example:
+        featureExplanation: An identity that has too much rare access has a higher
+          change of becoming a security threat due to the unique access they possess
+        peerIdentityId: 9f9d5d53ad0e48fba7352f6da9f1b8gbg
+        accessItemReference:
+          displayName: All Rare Entitlements
+          searchPlaceholder: Search by name or description
+        identityOutlierDisplayName: John Smith
+        featureDefinition: Identity total number of entitlements
+        peerDisplayName: Mary Jane
+        outlierFeatureDisplayValues:
+        - displayName: Aliza Chris
+          value: "55"
+        - displayName: Aliza Chris
+          value: "55"
+        contributingFeatureName: Rare Access
+      properties:
+        contributingFeatureName:
+          description: Contributing feature name
+          example: Rare Access
+          type: string
+        identityOutlierDisplayName:
+          description: Identity display name
+          example: John Smith
+          type: string
+        outlierFeatureDisplayValues:
+          items:
+            $ref: '#/components/schemas/OutlierFeatureSummary_outlierFeatureDisplayValues_inner'
+          type: array
+        featureDefinition:
+          description: Definition of the feature
+          example: Identity total number of entitlements
+          type: string
+        featureExplanation:
+          description: Detailed explanation of the feature
+          example: An identity that has too much rare access has a higher change of
+            becoming a security threat due to the unique access they possess
+          type: string
+        peerDisplayName:
+          description: outlier's peer identity display name
+          example: Mary Jane
+          type: string
+        peerIdentityId:
+          description: outlier's peer identity id
+          example: 9f9d5d53ad0e48fba7352f6da9f1b8gbg
+          type: string
+        accessItemReference:
+          description: Access Item reference
+          example:
+            displayName: All Rare Entitlements
+            searchPlaceholder: Search by name or description
+          type: object
       type: object
     PasswordInfoQueryDTO:
       example:
@@ -65661,6 +65827,20 @@ components:
         type: number
       - format: int64
         type: integer
+    OutlierFeatureSummary_outlierFeatureDisplayValues_inner:
+      example:
+        displayName: Aliza Chris
+        value: "55"
+      properties:
+        displayName:
+          description: display name
+          example: Aliza Chris
+          type: string
+        value:
+          description: value
+          example: "55"
+          type: string
+      type: object
     RoleMiningPotentialRoleExportResponse_allOf:
       properties:
         exportId:

@@ -499,6 +499,8 @@ docs/OrgConfigApi.md
 docs/Outlier.md
 docs/OutlierContributingFeature.md
 docs/OutlierContributingFeatureValue.md
+docs/OutlierFeatureSummary.md
+docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md
 docs/OutlierFeatureTranslation.md
 docs/OutlierSummary.md
 docs/OutliersContributingFeatureAccessItems.md
@@ -1195,6 +1197,8 @@ model_org_config.go
 model_outlier.go
 model_outlier_contributing_feature.go
 model_outlier_contributing_feature_value.go
+model_outlier_feature_summary.go
+model_outlier_feature_summary_outlier_feature_display_values_inner.go
 model_outlier_feature_translation.go
 model_outlier_summary.go
 model_outliers_contributing_feature_access_items.go

@@ -195,6 +195,7 @@ Class | Method | HTTP request | Description
 *IAIOutliersApi* | [**GetIdentityOutlierSnapshots**](docs/IAIOutliersApi.md#getidentityoutliersnapshots) | **Get** /outlier-summaries | IAI Identity Outliers Summary
 *IAIOutliersApi* | [**GetIdentityOutliers**](docs/IAIOutliersApi.md#getidentityoutliers) | **Get** /outliers | IAI Get Identity Outliers
 *IAIOutliersApi* | [**GetLatestIdentityOutlierSnapshots**](docs/IAIOutliersApi.md#getlatestidentityoutliersnapshots) | **Get** /outlier-summaries/latest | IAI Identity Outliers Latest Summary
+*IAIOutliersApi* | [**GetOutlierContributingFeatureSummary**](docs/IAIOutliersApi.md#getoutliercontributingfeaturesummary) | **Get** /outlier-feature-summaries/{outlierFeatureId} | Get identity outlier contibuting feature summary
 *IAIOutliersApi* | [**GetPeerGroupOutliersContributingFeatures**](docs/IAIOutliersApi.md#getpeergroupoutlierscontributingfeatures) | **Get** /outliers/{outlierId}/contributing-features | Get identity outlier&#39;s contibuting features
 *IAIOutliersApi* | [**IgnoreIdentityOutliers**](docs/IAIOutliersApi.md#ignoreidentityoutliers) | **Post** /outliers/ignore | IAI Identity Outliers Ignore
 *IAIOutliersApi* | [**ListOutliersContributingFeatureAccessItems**](docs/IAIOutliersApi.md#listoutlierscontributingfeatureaccessitems) | **Get** /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items | Gets a list of access items associated with each identity outlier contributing feature
@@ -909,6 +910,8 @@ Class | Method | HTTP request | Description
  - [Outlier](docs/Outlier.md)
  - [OutlierContributingFeature](docs/OutlierContributingFeature.md)
  - [OutlierContributingFeatureValue](docs/OutlierContributingFeatureValue.md)
+ - [OutlierFeatureSummary](docs/OutlierFeatureSummary.md)
+ - [OutlierFeatureSummaryOutlierFeatureDisplayValuesInner](docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md)
  - [OutlierFeatureTranslation](docs/OutlierFeatureTranslation.md)
  - [OutlierSummary](docs/OutlierSummary.md)
  - [OutliersContributingFeatureAccessItems](docs/OutliersContributingFeatureAccessItems.md)
