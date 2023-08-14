@@ -28602,7 +28602,7 @@ components:
             id: 5168015d32f890ca15812c9180835d2e
             type: IDENTITY
             email: alison.ferguso@identitysoon.com
-          maxReminders: 0
+          maxReminders: 1
           daysUntilEscalation: 0
           daysBetweenReminders: 0
         autoApprovalEnabled: true
@@ -34080,7 +34080,7 @@ components:
           id: 5168015d32f890ca15812c9180835d2e
           type: IDENTITY
           email: alison.ferguso@identitysoon.com
-        maxReminders: 0
+        maxReminders: 1
         daysUntilEscalation: 0
         daysBetweenReminders: 0
       properties:
@@ -34097,8 +34097,8 @@ components:
           type: integer
         maxReminders:
           description: Maximum number of reminder notification to send to the reviewer
-            before approval escalation.
-          example: 0
+            before approval escalation. This will only be a positive number.
+          example: 1
           format: int32
           type: integer
         fallbackApproverRef:

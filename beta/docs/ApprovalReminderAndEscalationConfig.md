@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DaysUntilEscalation** | Pointer to **int32** | Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation. | [optional] 
 **DaysBetweenReminders** | Pointer to **int32** | Number of days to wait between reminder notifications. | [optional] 
-**MaxReminders** | Pointer to **int32** | Maximum number of reminder notification to send to the reviewer before approval escalation. | [optional] 
+**MaxReminders** | Pointer to **int32** | Maximum number of reminder notification to send to the reviewer before approval escalation. This will only be a positive number. | [optional] 
 **FallbackApproverRef** | Pointer to [**NullableIdentityReferenceWithNameAndEmail**](IdentityReferenceWithNameAndEmail.md) |  | [optional] 
 
 ## Methods
