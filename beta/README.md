@@ -249,7 +249,7 @@ Class | Method | HTTP request | Description
 *IdentityProfilesApi* | [**GetIdentityProfile**](docs/IdentityProfilesApi.md#getidentityprofile) | **Get** /identity-profiles/{identity-profile-id} | Gets a single Identity Profile
 *IdentityProfilesApi* | [**ImportIdentityProfiles**](docs/IdentityProfilesApi.md#importidentityprofiles) | **Post** /identity-profiles/import | Import Identity Profiles
 *IdentityProfilesApi* | [**ListIdentityProfiles**](docs/IdentityProfilesApi.md#listidentityprofiles) | **Get** /identity-profiles | Identity Profiles list
-*IdentityProfilesApi* | [**RefreshIdentityProfile**](docs/IdentityProfilesApi.md#refreshidentityprofile) | **Post** /identity-profiles/{identity-profile-id}/refresh-identities | Refreshes all identities under profile
+*IdentityProfilesApi* | [**SyncIdentityProfile**](docs/IdentityProfilesApi.md#syncidentityprofile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 *IdentityProfilesApi* | [**UpdateIdentityProfile**](docs/IdentityProfilesApi.md#updateidentityprofile) | **Patch** /identity-profiles/{identity-profile-id} | Update the Identity Profile
 *LifecycleStatesApi* | [**ListLifecycleStates**](docs/LifecycleStatesApi.md#listlifecyclestates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Lifecycle State
 *LifecycleStatesApi* | [**UpdateLifecycleStates**](docs/LifecycleStatesApi.md#updatelifecyclestates) | **Patch** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State

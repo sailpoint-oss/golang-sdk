@@ -136,13 +136,13 @@ func Test_beta_IdentityProfilesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityProfilesApiService RefreshIdentityProfile", func(t *testing.T) {
+	t.Run("Test IdentityProfilesApiService SyncIdentityProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.BETA.IdentityProfilesApi.RefreshIdentityProfile(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentityProfilesApi.SyncIdentityProfile(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

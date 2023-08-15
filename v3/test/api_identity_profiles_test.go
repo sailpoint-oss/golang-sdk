@@ -86,4 +86,18 @@ func Test_v3_IdentityProfilesApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test IdentityProfilesApiService SyncIdentityProfile", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityProfileId string
+
+		resp, httpRes, err := apiClient.V3.IdentityProfilesApi.SyncIdentityProfile(context.Background(), identityProfileId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

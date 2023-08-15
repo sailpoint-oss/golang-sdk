@@ -1611,28 +1611,29 @@ func (a *IdentityProfilesApiService) ListIdentityProfilesExecute(r ApiListIdenti
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRefreshIdentityProfileRequest struct {
+type ApiSyncIdentityProfileRequest struct {
 	ctx context.Context
 	ApiService *IdentityProfilesApiService
 	identityProfileId string
 }
 
-func (r ApiRefreshIdentityProfileRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.RefreshIdentityProfileExecute(r)
+func (r ApiSyncIdentityProfileRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.SyncIdentityProfileExecute(r)
 }
 
 /*
-RefreshIdentityProfile Refreshes all identities under profile
+SyncIdentityProfile Process identities under profile
 
-This refreshes all identities under the profile
-A token with ORG_ADMIN authority is required to call this API to refresh identities under this Identity Profile.
+Process identities under the profile
+
+A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityProfileId The Identity Profile ID to be refreshed
- @return ApiRefreshIdentityProfileRequest
+ @param identityProfileId The Identity Profile ID to be processed
+ @return ApiSyncIdentityProfileRequest
 */
-func (a *IdentityProfilesApiService) RefreshIdentityProfile(ctx context.Context, identityProfileId string) ApiRefreshIdentityProfileRequest {
-	return ApiRefreshIdentityProfileRequest{
+func (a *IdentityProfilesApiService) SyncIdentityProfile(ctx context.Context, identityProfileId string) ApiSyncIdentityProfileRequest {
+	return ApiSyncIdentityProfileRequest{
 		ApiService: a,
 		ctx: ctx,
 		identityProfileId: identityProfileId,
@@ -1641,7 +1642,7 @@ func (a *IdentityProfilesApiService) RefreshIdentityProfile(ctx context.Context,
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *IdentityProfilesApiService) RefreshIdentityProfileExecute(r ApiRefreshIdentityProfileRequest) (map[string]interface{}, *http.Response, error) {
+func (a *IdentityProfilesApiService) SyncIdentityProfileExecute(r ApiSyncIdentityProfileRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1649,12 +1650,12 @@ func (a *IdentityProfilesApiService) RefreshIdentityProfileExecute(r ApiRefreshI
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.RefreshIdentityProfile")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.SyncIdentityProfile")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/identity-profiles/{identity-profile-id}/refresh-identities"
+	localVarPath := localBasePath + "/identity-profiles/{identity-profile-id}/process-identities"
 	localVarPath = strings.Replace(localVarPath, "{"+"identity-profile-id"+"}", url.PathEscape(parameterValueToString(r.identityProfileId, "identityProfileId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

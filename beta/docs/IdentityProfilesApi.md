@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**GetIdentityProfile**](IdentityProfilesApi.md#GetIdentityProfile) | **Get** /identity-profiles/{identity-profile-id} | Gets a single Identity Profile
 [**ImportIdentityProfiles**](IdentityProfilesApi.md#ImportIdentityProfiles) | **Post** /identity-profiles/import | Import Identity Profiles
 [**ListIdentityProfiles**](IdentityProfilesApi.md#ListIdentityProfiles) | **Get** /identity-profiles | Identity Profiles list
-[**RefreshIdentityProfile**](IdentityProfilesApi.md#RefreshIdentityProfile) | **Post** /identity-profiles/{identity-profile-id}/refresh-identities | Refreshes all identities under profile
+[**SyncIdentityProfile**](IdentityProfilesApi.md#SyncIdentityProfile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 [**UpdateIdentityProfile**](IdentityProfilesApi.md#UpdateIdentityProfile) | **Patch** /identity-profiles/{identity-profile-id} | Update the Identity Profile
 
 
@@ -640,11 +640,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RefreshIdentityProfile
+## SyncIdentityProfile
 
-> map[string]interface{} RefreshIdentityProfile(ctx, identityProfileId).Execute()
+> map[string]interface{} SyncIdentityProfile(ctx, identityProfileId).Execute()
 
-Refreshes all identities under profile
+Process identities under profile
 
 
 
@@ -661,17 +661,17 @@ import (
 )
 
 func main() {
-    identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | The Identity Profile ID to be refreshed
+    identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | The Identity Profile ID to be processed
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesApi.RefreshIdentityProfile(context.Background(), identityProfileId).Execute()
+    resp, r, err := apiClient.IdentityProfilesApi.SyncIdentityProfile(context.Background(), identityProfileId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesApi.RefreshIdentityProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesApi.SyncIdentityProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RefreshIdentityProfile`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesApi.RefreshIdentityProfile`: %v\n", resp)
+    // response from `SyncIdentityProfile`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesApi.SyncIdentityProfile`: %v\n", resp)
 }
 ```
 
@@ -681,11 +681,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**identityProfileId** | **string** | The Identity Profile ID to be refreshed | 
+**identityProfileId** | **string** | The Identity Profile ID to be processed | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRefreshIdentityProfileRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSyncIdentityProfileRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
