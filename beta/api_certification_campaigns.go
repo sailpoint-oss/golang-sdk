@@ -1587,6 +1587,8 @@ Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the campaign for which reports are being fetched.
  @return ApiGetCampaignReportsRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) GetCampaignReports(ctx context.Context, id string) ApiGetCampaignReportsRequest {
 	return ApiGetCampaignReportsRequest{
@@ -1598,6 +1600,7 @@ func (a *CertificationCampaignsApiService) GetCampaignReports(ctx context.Contex
 
 // Execute executes the request
 //  @return []CampaignReport
+// Deprecated
 func (a *CertificationCampaignsApiService) GetCampaignReportsExecute(r ApiGetCampaignReportsRequest) ([]CampaignReport, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1656,6 +1659,17 @@ func (a *CertificationCampaignsApiService) GetCampaignReportsExecute(r ApiGetCam
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response

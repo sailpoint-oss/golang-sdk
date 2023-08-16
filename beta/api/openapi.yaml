@@ -7387,6 +7387,7 @@ paths:
       - Certification Campaigns
   /campaigns/{id}/reports:
     get:
+      deprecated: true
       description: |-
         Fetches all reports for a certification campaign by campaign ID.
         Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
@@ -7408,6 +7409,12 @@ paths:
                   $ref: '#/components/schemas/CampaignReport'
                 type: array
           description: Array of campaign report objects.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -7476,6 +7483,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:campaign-report:read
       summary: Get Campaign Reports
       tags:
       - Certification Campaigns
@@ -48789,11 +48799,13 @@ components:
       title: Campaign Report
       type: object
     ReportType:
+      description: type of a Report
       enum:
       - CAMPAIGN_COMPOSITION_REPORT
       - CAMPAIGN_REMEDIATION_STATUS_REPORT
       - CAMPAIGN_STATUS_REPORT
       - CERTIFICATION_SIGNOFF_REPORT
+      example: CAMPAIGN_COMPOSITION_REPORT
       type: string
     CampaignReportsConfig:
       example:

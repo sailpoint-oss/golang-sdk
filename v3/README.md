@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**CreateCampaign**](docs/CertificationCampaignsApi.md#createcampaign) | **Post** /campaigns | Create a campaign
 *CertificationCampaignsApi* | [**GetActiveCampaigns**](docs/CertificationCampaignsApi.md#getactivecampaigns) | **Get** /campaigns | List Campaigns
 *CertificationCampaignsApi* | [**GetCampaign**](docs/CertificationCampaignsApi.md#getcampaign) | **Get** /campaigns/{id} | Get a campaign
+*CertificationCampaignsApi* | [**GetCampaignReports**](docs/CertificationCampaignsApi.md#getcampaignreports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
 *CertificationCampaignsApi* | [**Move**](docs/CertificationCampaignsApi.md#move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 *CertificationCampaignsApi* | [**StartCampaign**](docs/CertificationCampaignsApi.md#startcampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
 *CertificationSummariesApi* | [**GetIdentityAccessSummaries**](docs/CertificationSummariesApi.md#getidentityaccesssummaries) | **Get** /certifications/{id}/access-summaries/{type} | Access Summaries
@@ -403,6 +404,8 @@ Class | Method | HTTP request | Description
  - [CampaignAllOfSourceOwnerCampaignInfo](docs/CampaignAllOfSourceOwnerCampaignInfo.md)
  - [CampaignAllOfSourcesWithOrphanEntitlements](docs/CampaignAllOfSourcesWithOrphanEntitlements.md)
  - [CampaignReference](docs/CampaignReference.md)
+ - [CampaignReport](docs/CampaignReport.md)
+ - [CampaignReportAllOf](docs/CampaignReportAllOf.md)
  - [CancelAccessRequest](docs/CancelAccessRequest.md)
  - [CancelledRequestDetails](docs/CancelledRequestDetails.md)
  - [Certification](docs/Certification.md)
@@ -589,6 +592,7 @@ Class | Method | HTTP request | Description
  - [RemediationItems](docs/RemediationItems.md)
  - [ReportResultReference](docs/ReportResultReference.md)
  - [ReportResultReferenceAllOf](docs/ReportResultReferenceAllOf.md)
+ - [ReportType](docs/ReportType.md)
  - [RequestOnBehalfOfConfig](docs/RequestOnBehalfOfConfig.md)
  - [Requestability](docs/Requestability.md)
  - [RequestabilityForRole](docs/RequestabilityForRole.md)

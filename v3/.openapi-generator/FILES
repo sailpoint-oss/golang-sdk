@@ -142,6 +142,8 @@ docs/CampaignAllOfSearchCampaignInfo.md
 docs/CampaignAllOfSourceOwnerCampaignInfo.md
 docs/CampaignAllOfSourcesWithOrphanEntitlements.md
 docs/CampaignReference.md
+docs/CampaignReport.md
+docs/CampaignReportAllOf.md
 docs/CancelAccessRequest.md
 docs/CancelledRequestDetails.md
 docs/Certification.md
@@ -342,6 +344,7 @@ docs/RemediationItemDetails.md
 docs/RemediationItems.md
 docs/ReportResultReference.md
 docs/ReportResultReferenceAllOf.md
+docs/ReportType.md
 docs/RequestOnBehalfOfConfig.md
 docs/Requestability.md
 docs/RequestabilityForRole.md
@@ -577,6 +580,8 @@ model_campaign_all_of_search_campaign_info.go
 model_campaign_all_of_source_owner_campaign_info.go
 model_campaign_all_of_sources_with_orphan_entitlements.go
 model_campaign_reference.go
+model_campaign_report.go
+model_campaign_report_all_of.go
 model_cancel_access_request.go
 model_cancelled_request_details.go
 model_certification.go
@@ -763,6 +768,7 @@ model_remediation_item_details.go
 model_remediation_items.go
 model_report_result_reference.go
 model_report_result_reference_all_of.go
+model_report_type.go
 model_request_on_behalf_of_config.go
 model_requestability.go
 model_requestability_for_role.go
