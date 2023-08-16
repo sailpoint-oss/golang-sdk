@@ -19,7 +19,7 @@ var _ MappedNullable = &CancelAccessRequest{}
 
 // CancelAccessRequest Request body payload for cancel access request endpoint.
 type CancelAccessRequest struct {
-	// ID of the account activity object corresponding to the access request.
+	// This refers to the identityRequestId. To successfully cancel an access request, you must provide the identityRequestId.
 	AccountActivityId string `json:"accountActivityId"`
 	// Reason for cancelling the pending access request.
 	Comment string `json:"comment"`

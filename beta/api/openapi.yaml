@@ -47294,8 +47294,8 @@ components:
         comment: I requested this role by mistake.
       properties:
         accountActivityId:
-          description: ID of the account activity object corresponding to the access
-            request.
+          description: "This refers to the identityRequestId. To successfully cancel\
+            \ an access request, you must provide the identityRequestId."
           example: 2c9180835d2e5168015d32f890ca1581
           type: string
         comment:
@@ -61114,17 +61114,20 @@ components:
           example: The sAMAccountName attribute
           type: string
         isMulti:
+          default: false
           description: Flag indicating whether or not the attribute is multi-valued.
           example: false
           type: boolean
         isEntitlement:
+          default: false
           description: Flag indicating whether or not the attribute is an entitlement.
           example: false
           type: boolean
         isGroup:
+          default: false
           description: |
             Flag indicating whether or not the attribute represents a group.
-            This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute..
+            This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute.
           example: false
           type: boolean
       type: object

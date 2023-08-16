@@ -29,7 +29,7 @@ type AttributeDefinition struct {
 	IsMulti *bool `json:"isMulti,omitempty"`
 	// Flag indicating whether or not the attribute is an entitlement.
 	IsEntitlement *bool `json:"isEntitlement,omitempty"`
-	// Flag indicating whether or not the attribute represents a group. This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute.. 
+	// Flag indicating whether or not the attribute represents a group. This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute. 
 	IsGroup *bool `json:"isGroup,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -42,6 +42,12 @@ type _AttributeDefinition AttributeDefinition
 // will change when the set of required properties is changed
 func NewAttributeDefinition() *AttributeDefinition {
 	this := AttributeDefinition{}
+	var isMulti bool = false
+	this.IsMulti = &isMulti
+	var isEntitlement bool = false
+	this.IsEntitlement = &isEntitlement
+	var isGroup bool = false
+	this.IsGroup = &isGroup
 	return &this
 }
 
@@ -50,6 +56,12 @@ func NewAttributeDefinition() *AttributeDefinition {
 // but it doesn't guarantee that properties required by API are set
 func NewAttributeDefinitionWithDefaults() *AttributeDefinition {
 	this := AttributeDefinition{}
+	var isMulti bool = false
+	this.IsMulti = &isMulti
+	var isEntitlement bool = false
+	this.IsEntitlement = &isEntitlement
+	var isGroup bool = false
+	this.IsGroup = &isGroup
 	return &this
 }
 

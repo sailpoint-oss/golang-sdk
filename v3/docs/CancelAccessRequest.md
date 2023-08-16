@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountActivityId** | **string** | ID of the account activity object corresponding to the access request. | 
+**AccountActivityId** | **string** | This refers to the identityRequestId. To successfully cancel an access request, you must provide the identityRequestId. | 
 **Comment** | **string** | Reason for cancelling the pending access request. | 
 
 ## Methods
