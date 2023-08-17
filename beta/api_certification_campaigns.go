@@ -3650,6 +3650,8 @@ Allows updating individual fields on a campaign using the [JSON Patch](https://t
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the campaign template being modified.
  @return ApiUpdateCampaignRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) UpdateCampaign(ctx context.Context, id string) ApiUpdateCampaignRequest {
 	return ApiUpdateCampaignRequest{
@@ -3661,6 +3663,7 @@ func (a *CertificationCampaignsApiService) UpdateCampaign(ctx context.Context, i
 
 // Execute executes the request
 //  @return Slimcampaign
+// Deprecated
 func (a *CertificationCampaignsApiService) UpdateCampaignExecute(r ApiUpdateCampaignRequest) (*Slimcampaign, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch

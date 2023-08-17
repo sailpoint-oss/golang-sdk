@@ -4682,6 +4682,149 @@ paths:
       summary: Get a campaign
       tags:
       - Certification Campaigns
+    patch:
+      description: "Allows updating individual fields on a campaign using the [JSON\
+        \ Patch](https://tools.ietf.org/html/rfc6902) standard."
+      operationId: updateCampaign
+      parameters:
+      - description: The ID of the campaign template being modified.
+        example: 2c91808571bcfcf80171c23e4b4221fc
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: replace
+              path: /name
+              value: This field has been updated!
+            - op: copy
+              from: /name
+              path: /description
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: |
+          A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          The fields that can be patched differ based on the status of the campaign.
+
+          In the *STAGED* status, the following fields can be patched:
+          * name
+          * description
+          * recommendationsEnabled
+          * deadline
+          * emailNotificationEnabled
+          * autoRevokeAllowed
+
+          In the *ACTIVE* status, the following fields can be patched:
+          * deadline
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Manager:
+                  $ref: '#/components/examples/SlimCampaignManager'
+                  value: null
+                Search:
+                  $ref: '#/components/examples/SlimCampaignSearch'
+                  value: null
+                Source Owner:
+                  $ref: '#/components/examples/SlimCampaignSourceOwner'
+                  value: null
+                RoleComposition:
+                  $ref: '#/components/examples/SlimCampaignRoleComposition'
+                  value: null
+              schema:
+                $ref: '#/components/schemas/SlimCampaign'
+          description: "Indicates the PATCH operation succeeded, and returns the campaign's\
+            \ new representation."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:campaign:update
+        - idn:campaign:read
+      summary: Update a Campaign
+      tags:
+      - Certification Campaigns
   /campaigns/{id}/reassign:
     post:
       description: This API reassigns the specified certifications from one identity

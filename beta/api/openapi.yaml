@@ -6796,6 +6796,7 @@ paths:
       tags:
       - Certification Campaigns
     patch:
+      deprecated: true
       description: "Allows updating individual fields on a campaign using the [JSON\
         \ Patch](https://tools.ietf.org/html/rfc6902) standard."
       operationId: updateCampaign

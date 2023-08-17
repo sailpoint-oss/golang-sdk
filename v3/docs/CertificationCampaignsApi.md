@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetCampaignReports**](CertificationCampaignsApi.md#GetCampaignReports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
 [**Move**](CertificationCampaignsApi.md#Move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 [**StartCampaign**](CertificationCampaignsApi.md#StartCampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
+[**UpdateCampaign**](CertificationCampaignsApi.md#UpdateCampaign) | **Patch** /campaigns/{id} | Update a Campaign
 
 
 
@@ -432,6 +433,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateCampaign
+
+> SlimCampaign UpdateCampaign(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
+
+Update a Campaign
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "2c91808571bcfcf80171c23e4b4221fc" // string | The ID of the campaign template being modified.
+    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationCampaignsApi.UpdateCampaign(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.UpdateCampaign``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateCampaign`: SlimCampaign
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.UpdateCampaign`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The ID of the campaign template being modified. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateCampaignRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The fields that can be patched differ based on the status of the campaign.  In the *STAGED* status, the following fields can be patched: * name * description * recommendationsEnabled * deadline * emailNotificationEnabled * autoRevokeAllowed  In the *ACTIVE* status, the following fields can be patched: * deadline  | 
+
+### Return type
+
+[**SlimCampaign**](SlimCampaign.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
