@@ -22,6 +22,32 @@ func Test_v3_IdentityProfilesApiService(t *testing.T) {
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test IdentityProfilesApiService DeleteIdentityProfile", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityProfileId string
+
+		resp, httpRes, err := apiClient.V3.IdentityProfilesApi.DeleteIdentityProfile(context.Background(), identityProfileId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentityProfilesApiService DeleteIdentityProfiles", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.V3.IdentityProfilesApi.DeleteIdentityProfiles(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IdentityProfilesApiService ExportIdentityProfiles", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

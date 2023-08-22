@@ -722,6 +722,7 @@ docs/SubscriptionPutRequest.md
 docs/SubscriptionType.md
 docs/TaggedObject.md
 docs/TaggedObjectsApi.md
+docs/TaskResultSimplified.md
 docs/TemplateBulkDeleteDto.md
 docs/TemplateDto.md
 docs/TemplateDtoDefault.md
@@ -1403,6 +1404,7 @@ model_subscription_post_request.go
 model_subscription_put_request.go
 model_subscription_type.go
 model_tagged_object.go
+model_task_result_simplified.go
 model_template_bulk_delete_dto.go
 model_template_dto.go
 model_template_dto_default.go

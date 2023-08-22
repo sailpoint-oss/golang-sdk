@@ -1116,6 +1116,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionPutRequest](docs/SubscriptionPutRequest.md)
  - [SubscriptionType](docs/SubscriptionType.md)
  - [TaggedObject](docs/TaggedObject.md)
+ - [TaskResultSimplified](docs/TaskResultSimplified.md)
  - [TemplateBulkDeleteDto](docs/TemplateBulkDeleteDto.md)
  - [TemplateDto](docs/TemplateDto.md)
  - [TemplateDtoDefault](docs/TemplateDtoDefault.md)

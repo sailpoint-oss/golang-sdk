@@ -126,6 +126,8 @@ Class | Method | HTTP request | Description
 *CertificationsApi* | [**MakeIdentityDecision**](docs/CertificationsApi.md#makeidentitydecision) | **Post** /certifications/{id}/decide | Decide on a Certification Item
 *CertificationsApi* | [**ReassignIdentityCertifications**](docs/CertificationsApi.md#reassignidentitycertifications) | **Post** /certifications/{id}/reassign | Reassign Identities or Items
 *CertificationsApi* | [**SignOffIdentityCertification**](docs/CertificationsApi.md#signoffidentitycertification) | **Post** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
+*IdentityProfilesApi* | [**DeleteIdentityProfile**](docs/IdentityProfilesApi.md#deleteidentityprofile) | **Delete** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
+*IdentityProfilesApi* | [**DeleteIdentityProfiles**](docs/IdentityProfilesApi.md#deleteidentityprofiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
 *IdentityProfilesApi* | [**ExportIdentityProfiles**](docs/IdentityProfilesApi.md#exportidentityprofiles) | **Get** /identity-profiles/export | Export Identity Profiles
 *IdentityProfilesApi* | [**GetDefaultIdentityAttributeConfig**](docs/IdentityProfilesApi.md#getdefaultidentityattributeconfig) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Get default Identity Attribute Config
 *IdentityProfilesApi* | [**GetIdentityProfile**](docs/IdentityProfilesApi.md#getidentityprofile) | **Get** /identity-profiles/{identity-profile-id} | Get single Identity Profile
@@ -692,6 +694,7 @@ Class | Method | HTTP request | Description
  - [SubSearchAggregationSpecificationAllOf](docs/SubSearchAggregationSpecificationAllOf.md)
  - [TaggedObject](docs/TaggedObject.md)
  - [TaggedObjectDto](docs/TaggedObjectDto.md)
+ - [TaskResultSimplified](docs/TaskResultSimplified.md)
  - [TextQuery](docs/TextQuery.md)
  - [Transform](docs/Transform.md)
  - [TransformDefinition](docs/TransformDefinition.md)

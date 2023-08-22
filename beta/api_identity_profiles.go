@@ -194,7 +194,7 @@ type ApiDeleteIdentityProfileRequest struct {
 	identityProfileId string
 }
 
-func (r ApiDeleteIdentityProfileRequest) Execute() (*BaseReferenceDto, *http.Response, error) {
+func (r ApiDeleteIdentityProfileRequest) Execute() (*TaskResultSimplified, *http.Response, error) {
 	return r.ApiService.DeleteIdentityProfileExecute(r)
 }
 
@@ -202,7 +202,12 @@ func (r ApiDeleteIdentityProfileRequest) Execute() (*BaseReferenceDto, *http.Res
 DeleteIdentityProfile Delete an Identity Profile
 
 This deletes an Identity Profile based on ID.
-A token with ORG_ADMIN authority is required to call this API to delete an Identity Profile.
+
+On success, this endpoint will return a reference to the bulk delete task result.
+
+A token with ORG_ADMIN authority is required to call this API.
+
+The following rights are required to access this endpoint: idn:identity-profile:delete
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param identityProfileId The Identity Profile ID.
@@ -217,13 +222,13 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfile(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return BaseReferenceDto
-func (a *IdentityProfilesApiService) DeleteIdentityProfileExecute(r ApiDeleteIdentityProfileRequest) (*BaseReferenceDto, *http.Response, error) {
+//  @return TaskResultSimplified
+func (a *IdentityProfilesApiService) DeleteIdentityProfileExecute(r ApiDeleteIdentityProfileRequest) (*TaskResultSimplified, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BaseReferenceDto
+		localVarReturnValue  *TaskResultSimplified
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.DeleteIdentityProfile")
@@ -369,7 +374,7 @@ func (r ApiDeleteIdentityProfilesRequest) RequestBody(requestBody []string) ApiD
 	return r
 }
 
-func (r ApiDeleteIdentityProfilesRequest) Execute() (*BaseReferenceDto1, *http.Response, error) {
+func (r ApiDeleteIdentityProfilesRequest) Execute() (*TaskResultSimplified, *http.Response, error) {
 	return r.ApiService.DeleteIdentityProfilesExecute(r)
 }
 
@@ -377,8 +382,12 @@ func (r ApiDeleteIdentityProfilesRequest) Execute() (*BaseReferenceDto1, *http.R
 DeleteIdentityProfiles Delete Identity Profiles
 
 This deletes multiple Identity Profiles via a list of supplied IDs.
+
 On success, this endpoint will return a reference to the bulk delete task result.
-A token with ORG_ADMIN authority is required to call this API to delete a list of Identity Profiles.
+
+A token with ORG_ADMIN authority is required to call this API.
+
+The following rights are required to access this endpoint: idn:identity-profile:delete
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteIdentityProfilesRequest
@@ -391,13 +400,13 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfiles(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return BaseReferenceDto1
-func (a *IdentityProfilesApiService) DeleteIdentityProfilesExecute(r ApiDeleteIdentityProfilesRequest) (*BaseReferenceDto1, *http.Response, error) {
+//  @return TaskResultSimplified
+func (a *IdentityProfilesApiService) DeleteIdentityProfilesExecute(r ApiDeleteIdentityProfilesRequest) (*TaskResultSimplified, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BaseReferenceDto1
+		localVarReturnValue  *TaskResultSimplified
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.DeleteIdentityProfiles")

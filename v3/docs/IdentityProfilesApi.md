@@ -4,6 +4,8 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**DeleteIdentityProfile**](IdentityProfilesApi.md#DeleteIdentityProfile) | **Delete** /identity-profiles/{identity-profile-id} | Delete an Identity Profile
+[**DeleteIdentityProfiles**](IdentityProfilesApi.md#DeleteIdentityProfiles) | **Post** /identity-profiles/bulk-delete | Delete Identity Profiles
 [**ExportIdentityProfiles**](IdentityProfilesApi.md#ExportIdentityProfiles) | **Get** /identity-profiles/export | Export Identity Profiles
 [**GetDefaultIdentityAttributeConfig**](IdentityProfilesApi.md#GetDefaultIdentityAttributeConfig) | **Get** /identity-profiles/{identity-profile-id}/default-identity-attribute-config | Get default Identity Attribute Config
 [**GetIdentityProfile**](IdentityProfilesApi.md#GetIdentityProfile) | **Get** /identity-profiles/{identity-profile-id} | Get single Identity Profile
@@ -11,6 +13,142 @@ Method | HTTP request | Description
 [**ListIdentityProfiles**](IdentityProfilesApi.md#ListIdentityProfiles) | **Get** /identity-profiles | Identity Profiles List
 [**SyncIdentityProfile**](IdentityProfilesApi.md#SyncIdentityProfile) | **Post** /identity-profiles/{identity-profile-id}/process-identities | Process identities under profile
 
+
+
+## DeleteIdentityProfile
+
+> TaskResultSimplified DeleteIdentityProfile(ctx, identityProfileId).Execute()
+
+Delete an Identity Profile
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | The Identity Profile ID.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentityProfilesApi.DeleteIdentityProfile(context.Background(), identityProfileId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesApi.DeleteIdentityProfile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteIdentityProfile`: TaskResultSimplified
+    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesApi.DeleteIdentityProfile`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**identityProfileId** | **string** | The Identity Profile ID. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteIdentityProfileRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**TaskResultSimplified**](TaskResultSimplified.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteIdentityProfiles
+
+> TaskResultSimplified DeleteIdentityProfiles(ctx).RequestBody(requestBody).Execute()
+
+Delete Identity Profiles
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    requestBody := []string{"Property_example"} // []string | Identity Profile bulk delete request body.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentityProfilesApi.DeleteIdentityProfiles(context.Background()).RequestBody(requestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesApi.DeleteIdentityProfiles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteIdentityProfiles`: TaskResultSimplified
+    fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesApi.DeleteIdentityProfiles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteIdentityProfilesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requestBody** | **[]string** | Identity Profile bulk delete request body. | 
+
+### Return type
+
+[**TaskResultSimplified**](TaskResultSimplified.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ExportIdentityProfiles

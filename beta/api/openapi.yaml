@@ -14363,8 +14363,12 @@ paths:
     post:
       description: |-
         This deletes multiple Identity Profiles via a list of supplied IDs.
+
         On success, this endpoint will return a reference to the bulk delete task result.
-        A token with ORG_ADMIN authority is required to call this API to delete a list of Identity Profiles.
+
+        A token with ORG_ADMIN authority is required to call this API.
+
+        The following rights are required to access this endpoint: idn:identity-profile:delete
       operationId: deleteIdentityProfiles
       requestBody:
         content:
@@ -14378,9 +14382,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BaseReferenceDto_1'
-          description: Accepted - Returned if the request was successfully accepted
-            into the system.
+                $ref: '#/components/schemas/TaskResultSimplified'
+          description: Accepted - Returns a TaskResult object referencing the bulk
+            delete job created.
         "400":
           content:
             application/json:
@@ -14439,7 +14443,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:identity-profile:manage
+        - idn:identity-profile:delete
       summary: Delete Identity Profiles
       tags:
       - Identity Profiles
@@ -14771,7 +14775,12 @@ paths:
     delete:
       description: |-
         This deletes an Identity Profile based on ID.
-        A token with ORG_ADMIN authority is required to call this API to delete an Identity Profile.
+
+        On success, this endpoint will return a reference to the bulk delete task result.
+
+        A token with ORG_ADMIN authority is required to call this API.
+
+        The following rights are required to access this endpoint: idn:identity-profile:delete
       operationId: deleteIdentityProfile
       parameters:
       - description: The Identity Profile ID.
@@ -14787,9 +14796,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BaseReferenceDto'
-          description: Accepted - Returned if the request was successfully accepted
-            into the system.
+                $ref: '#/components/schemas/TaskResultSimplified'
+          description: Accepted - Returns a TaskResult object referencing the bulk
+            delete job created.
         "400":
           content:
             application/json:
@@ -14866,7 +14875,7 @@ paths:
             error.
       security:
       - oauth2:
-        - idn:identity-profile:manage
+        - idn:identity-profile:delete
       summary: Delete an Identity Profile
       tags:
       - Identity Profiles
@@ -50059,22 +50068,51 @@ components:
       items:
         type: string
       type: array
-    BaseReferenceDto_1:
+    TaskResultSimplified:
       example:
-        name: William Wilson
-        id: 2c91808568c529c60168cca6f90c1313
-        type: IDENTITY
+        name: Background Object Terminator c8f030f2-b1a6-4e33-99e8-6935bc18735d
+        description: "Generic task for terminating data in the overlay, used by the\
+          \ TerminationService."
+        id: ff8081814d977c21014da056804a0af3
+        completed: 2000-01-23T04:56:07.000+00:00
+        completionStatus: Success
+        launched: 2000-01-23T04:56:07.000+00:00
+        launcher: support
       properties:
-        type:
-          $ref: '#/components/schemas/DtoType'
         id:
-          description: ID of the object to which this reference applies
-          example: 2c91808568c529c60168cca6f90c1313
+          description: Task identifier
+          example: ff8081814d977c21014da056804a0af3
           type: string
         name:
-          description: Human-readable display name of the object to which this reference
-            applies
-          example: William Wilson
+          description: Task name
+          example: Background Object Terminator c8f030f2-b1a6-4e33-99e8-6935bc18735d
+          type: string
+        description:
+          description: Task description
+          example: "Generic task for terminating data in the overlay, used by the\
+            \ TerminationService."
+          type: string
+        launcher:
+          description: User or process who launched the task
+          example: support
+          type: string
+        completed:
+          description: Date time of completion
+          format: date-time
+          type: string
+        launched:
+          description: Date time when the task was launched
+          format: date-time
+          type: string
+        completionStatus:
+          description: Task result status
+          enum:
+          - Success
+          - Warning
+          - Error
+          - Terminated
+          - TempError
+          example: Success
           type: string
       type: object
     IdentityProfileExportedObject:
@@ -53897,6 +53935,24 @@ components:
           type: array
       required:
       - roleIds
+      type: object
+    BaseReferenceDto_1:
+      example:
+        name: William Wilson
+        id: 2c91808568c529c60168cca6f90c1313
+        type: IDENTITY
+      properties:
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
       type: object
     RoleIdentity:
       description: A subset of the fields of an Identity which is a member of a Role.
@@ -59670,40 +59726,6 @@ components:
         identityEntity:
           $ref: '#/components/schemas/IdentityEntities_identityEntity'
       type: object
-    DtoType:
-      description: An enumeration of the types of DTOs supported within the IdentityNow
-        infrastructure.
-      enum:
-      - ACCOUNT_CORRELATION_CONFIG
-      - ACCESS_PROFILE
-      - ACCESS_REQUEST_APPROVAL
-      - ACCOUNT
-      - APPLICATION
-      - CAMPAIGN
-      - CAMPAIGN_FILTER
-      - CERTIFICATION
-      - CLUSTER
-      - CONNECTOR_SCHEMA
-      - ENTITLEMENT
-      - GOVERNANCE_GROUP
-      - IDENTITY
-      - IDENTITY_PROFILE
-      - IDENTITY_REQUEST
-      - LIFECYCLE_STATE
-      - PASSWORD_POLICY
-      - ROLE
-      - RULE
-      - SOD_POLICY
-      - SOURCE
-      - TAG
-      - TAG_CATEGORY
-      - TASK_RESULT
-      - REPORT_RESULT
-      - SOD_VIOLATION
-      - ACCOUNT_ACTIVITY
-      - WORKGROUP
-      example: IDENTITY
-      type: string
     IdentityProfile_1:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto_1'
@@ -60639,6 +60661,40 @@ components:
             $ref: '#/components/schemas/ApprovalSchemeForRole'
           type: array
       type: object
+    DtoType:
+      description: An enumeration of the types of DTOs supported within the IdentityNow
+        infrastructure.
+      enum:
+      - ACCOUNT_CORRELATION_CONFIG
+      - ACCESS_PROFILE
+      - ACCESS_REQUEST_APPROVAL
+      - ACCOUNT
+      - APPLICATION
+      - CAMPAIGN
+      - CAMPAIGN_FILTER
+      - CERTIFICATION
+      - CLUSTER
+      - CONNECTOR_SCHEMA
+      - ENTITLEMENT
+      - GOVERNANCE_GROUP
+      - IDENTITY
+      - IDENTITY_PROFILE
+      - IDENTITY_REQUEST
+      - LIFECYCLE_STATE
+      - PASSWORD_POLICY
+      - ROLE
+      - RULE
+      - SOD_POLICY
+      - SOURCE
+      - TAG
+      - TAG_CATEGORY
+      - TASK_RESULT
+      - REPORT_RESULT
+      - SOD_VIOLATION
+      - ACCOUNT_ACTIVITY
+      - WORKGROUP
+      example: IDENTITY
+      type: string
     RoleAssignmentSourceType:
       description: Type which indicates how a particular Identity obtained a particular
         Role

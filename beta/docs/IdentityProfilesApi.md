@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## DeleteIdentityProfile
 
-> BaseReferenceDto DeleteIdentityProfile(ctx, identityProfileId).Execute()
+> TaskResultSimplified DeleteIdentityProfile(ctx, identityProfileId).Execute()
 
 Delete an Identity Profile
 
@@ -114,7 +114,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesApi.DeleteIdentityProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteIdentityProfile`: BaseReferenceDto
+    // response from `DeleteIdentityProfile`: TaskResultSimplified
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesApi.DeleteIdentityProfile`: %v\n", resp)
 }
 ```
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseReferenceDto**](BaseReferenceDto.md)
+[**TaskResultSimplified**](TaskResultSimplified.md)
 
 ### Authorization
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## DeleteIdentityProfiles
 
-> BaseReferenceDto1 DeleteIdentityProfiles(ctx).RequestBody(requestBody).Execute()
+> TaskResultSimplified DeleteIdentityProfiles(ctx).RequestBody(requestBody).Execute()
 
 Delete Identity Profiles
 
@@ -184,7 +184,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesApi.DeleteIdentityProfiles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteIdentityProfiles`: BaseReferenceDto1
+    // response from `DeleteIdentityProfiles`: TaskResultSimplified
     fmt.Fprintf(os.Stdout, "Response from `IdentityProfilesApi.DeleteIdentityProfiles`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseReferenceDto1**](BaseReferenceDto1.md)
+[**TaskResultSimplified**](TaskResultSimplified.md)
 
 ### Authorization
 
