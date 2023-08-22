@@ -221,6 +221,7 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningApi* | [**GetRoleMiningSession**](docs/IAIRoleMiningApi.md#getroleminingsession) | **Get** /role-mining-sessions/{sessionId} | Get a role mining session
 *IAIRoleMiningApi* | [**GetRoleMiningSessionStatus**](docs/IAIRoleMiningApi.md#getroleminingsessionstatus) | **Get** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 *IAIRoleMiningApi* | [**GetRoleMiningSessions**](docs/IAIRoleMiningApi.md#getroleminingsessions) | **Get** /role-mining-sessions | Retrieves all role mining sessions
+*IAIRoleMiningApi* | [**GetSavedRoles**](docs/IAIRoleMiningApi.md#getsavedroles) | **Get** /role-mining-sessions/{sessionId}/potential-roles/draft-roles | Retrieves all draft roles
 *IAIRoleMiningApi* | [**PatchPotentialRole**](docs/IAIRoleMiningApi.md#patchpotentialrole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
 *IAIRoleMiningApi* | [**PatchRoleMiningSession**](docs/IAIRoleMiningApi.md#patchroleminingsession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
 *IAIRoleMiningApi* | [**UpdateEntitlementsPotentialRole**](docs/IAIRoleMiningApi.md#updateentitlementspotentialrole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
@@ -1028,10 +1029,12 @@ Class | Method | HTTP request | Description
  - [RoleMiningPotentialRoleRef](docs/RoleMiningPotentialRoleRef.md)
  - [RoleMiningPotentialRoleSummary](docs/RoleMiningPotentialRoleSummary.md)
  - [RoleMiningRoleType](docs/RoleMiningRoleType.md)
+ - [RoleMiningSessionDraftRoleDto](docs/RoleMiningSessionDraftRoleDto.md)
  - [RoleMiningSessionDto](docs/RoleMiningSessionDto.md)
  - [RoleMiningSessionParametersDto](docs/RoleMiningSessionParametersDto.md)
  - [RoleMiningSessionResponse](docs/RoleMiningSessionResponse.md)
  - [RoleMiningSessionScope](docs/RoleMiningSessionScope.md)
+ - [RoleMiningSessionScopingMethod](docs/RoleMiningSessionScopingMethod.md)
  - [RoleMiningSessionStatus](docs/RoleMiningSessionStatus.md)
  - [SavedSearchComplete](docs/SavedSearchComplete.md)
  - [SavedSearchCompleteSearchResults](docs/SavedSearchCompleteSearchResults.md)

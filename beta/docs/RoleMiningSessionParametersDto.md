@@ -7,9 +7,11 @@ Name | Type | Description | Notes
 **MinNumIdentitiesInPotentialRole** | Pointer to **int32** | Minimum number of identities in a potential role | [optional] 
 **Name** | Pointer to **string** | The session&#39;s saved name | [optional] 
 **PruneThreshold** | Pointer to **int32** | The prune threshold to be used or null to calculate prescribedPruneThreshold | [optional] 
-**Saved** | Pointer to **bool** | The session&#39;s saved status | [optional] 
+**Saved** | Pointer to **bool** | The session&#39;s saved status | [optional] [default to true]
 **Scope** | Pointer to [**RoleMiningSessionScope**](RoleMiningSessionScope.md) |  | [optional] 
 **Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
+**State** | Pointer to [**RoleMiningSessionStatus**](RoleMiningSessionStatus.md) |  | [optional] 
+**ScopingMethod** | Pointer to [**RoleMiningSessionScopingMethod**](RoleMiningSessionScopingMethod.md) |  | [optional] 
 
 ## Methods
 
@@ -179,6 +181,56 @@ SetType sets Type field to given value.
 `func (o *RoleMiningSessionParametersDto) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetState
+
+`func (o *RoleMiningSessionParametersDto) GetState() RoleMiningSessionStatus`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *RoleMiningSessionParametersDto) GetStateOk() (*RoleMiningSessionStatus, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *RoleMiningSessionParametersDto) SetState(v RoleMiningSessionStatus)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *RoleMiningSessionParametersDto) HasState() bool`
+
+HasState returns a boolean if a field has been set.
+
+### GetScopingMethod
+
+`func (o *RoleMiningSessionParametersDto) GetScopingMethod() RoleMiningSessionScopingMethod`
+
+GetScopingMethod returns the ScopingMethod field if non-nil, zero value otherwise.
+
+### GetScopingMethodOk
+
+`func (o *RoleMiningSessionParametersDto) GetScopingMethodOk() (*RoleMiningSessionScopingMethod, bool)`
+
+GetScopingMethodOk returns a tuple with the ScopingMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScopingMethod
+
+`func (o *RoleMiningSessionParametersDto) SetScopingMethod(v RoleMiningSessionScopingMethod)`
+
+SetScopingMethod sets ScopingMethod field to given value.
+
+### HasScopingMethod
+
+`func (o *RoleMiningSessionParametersDto) HasScopingMethod() bool`
+
+HasScopingMethod returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

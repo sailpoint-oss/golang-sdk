@@ -625,10 +625,12 @@ docs/RoleMiningPotentialRoleProvisionState.md
 docs/RoleMiningPotentialRoleRef.md
 docs/RoleMiningPotentialRoleSummary.md
 docs/RoleMiningRoleType.md
+docs/RoleMiningSessionDraftRoleDto.md
 docs/RoleMiningSessionDto.md
 docs/RoleMiningSessionParametersDto.md
 docs/RoleMiningSessionResponse.md
 docs/RoleMiningSessionScope.md
+docs/RoleMiningSessionScopingMethod.md
 docs/RoleMiningSessionStatus.md
 docs/RolesApi.md
 docs/SODPolicyApi.md
@@ -1316,10 +1318,12 @@ model_role_mining_potential_role_provision_state.go
 model_role_mining_potential_role_ref.go
 model_role_mining_potential_role_summary.go
 model_role_mining_role_type.go
+model_role_mining_session_draft_role_dto.go
 model_role_mining_session_dto.go
 model_role_mining_session_parameters_dto.go
 model_role_mining_session_response.go
 model_role_mining_session_scope.go
+model_role_mining_session_scoping_method.go
 model_role_mining_session_status.go
 model_saved_search_complete.go
 model_saved_search_complete_search_results.go

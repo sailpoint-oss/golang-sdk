@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**GetRoleMiningSession**](IAIRoleMiningApi.md#GetRoleMiningSession) | **Get** /role-mining-sessions/{sessionId} | Get a role mining session
 [**GetRoleMiningSessionStatus**](IAIRoleMiningApi.md#GetRoleMiningSessionStatus) | **Get** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 [**GetRoleMiningSessions**](IAIRoleMiningApi.md#GetRoleMiningSessions) | **Get** /role-mining-sessions | Retrieves all role mining sessions
+[**GetSavedRoles**](IAIRoleMiningApi.md#GetSavedRoles) | **Get** /role-mining-sessions/{sessionId}/potential-roles/draft-roles | Retrieves all draft roles
 [**PatchPotentialRole**](IAIRoleMiningApi.md#PatchPotentialRole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
 [**PatchRoleMiningSession**](IAIRoleMiningApi.md#PatchRoleMiningSession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
 [**UpdateEntitlementsPotentialRole**](IAIRoleMiningApi.md#UpdateEntitlementsPotentialRole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
@@ -1228,6 +1229,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]RoleMiningSessionDto**](RoleMiningSessionDto.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSavedRoles
+
+> []RoleMiningSessionDraftRoleDto GetSavedRoles(ctx, sessionId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+
+Retrieves all draft roles
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    sessionId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role mining session id
+    sorters := "modified" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified** (optional)
+    filters := "(type eq "COMMON")and ((name co "ent")or (description co "desc"))" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **description**: *sw, co* **name**: *eq, sw, co* **type**: *eq* (optional)
+    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IAIRoleMiningApi.GetSavedRoles(context.Background(), sessionId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetSavedRoles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSavedRoles`: []RoleMiningSessionDraftRoleDto
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetSavedRoles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**sessionId** | **string** | The role mining session id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSavedRolesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified** | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **description**: *sw, co* **name**: *eq, sw, co* **type**: *eq* | 
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+
+### Return type
+
+[**[]RoleMiningSessionDraftRoleDto**](RoleMiningSessionDraftRoleDto.md)
 
 ### Authorization
 

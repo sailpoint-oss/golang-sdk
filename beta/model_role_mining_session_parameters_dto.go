@@ -29,6 +29,8 @@ type RoleMiningSessionParametersDto struct {
 	Saved *bool `json:"saved,omitempty"`
 	Scope *RoleMiningSessionScope `json:"scope,omitempty"`
 	Type *RoleMiningRoleType `json:"type,omitempty"`
+	State *RoleMiningSessionStatus `json:"state,omitempty"`
+	ScopingMethod *RoleMiningSessionScopingMethod `json:"scopingMethod,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,6 +42,8 @@ type _RoleMiningSessionParametersDto RoleMiningSessionParametersDto
 // will change when the set of required properties is changed
 func NewRoleMiningSessionParametersDto() *RoleMiningSessionParametersDto {
 	this := RoleMiningSessionParametersDto{}
+	var saved bool = true
+	this.Saved = &saved
 	return &this
 }
 
@@ -48,6 +52,8 @@ func NewRoleMiningSessionParametersDto() *RoleMiningSessionParametersDto {
 // but it doesn't guarantee that properties required by API are set
 func NewRoleMiningSessionParametersDtoWithDefaults() *RoleMiningSessionParametersDto {
 	this := RoleMiningSessionParametersDto{}
+	var saved bool = true
+	this.Saved = &saved
 	return &this
 }
 
@@ -243,6 +249,70 @@ func (o *RoleMiningSessionParametersDto) SetType(v RoleMiningRoleType) {
 	o.Type = &v
 }
 
+// GetState returns the State field value if set, zero value otherwise.
+func (o *RoleMiningSessionParametersDto) GetState() RoleMiningSessionStatus {
+	if o == nil || isNil(o.State) {
+		var ret RoleMiningSessionStatus
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningSessionParametersDto) GetStateOk() (*RoleMiningSessionStatus, bool) {
+	if o == nil || isNil(o.State) {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *RoleMiningSessionParametersDto) HasState() bool {
+	if o != nil && !isNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given RoleMiningSessionStatus and assigns it to the State field.
+func (o *RoleMiningSessionParametersDto) SetState(v RoleMiningSessionStatus) {
+	o.State = &v
+}
+
+// GetScopingMethod returns the ScopingMethod field value if set, zero value otherwise.
+func (o *RoleMiningSessionParametersDto) GetScopingMethod() RoleMiningSessionScopingMethod {
+	if o == nil || isNil(o.ScopingMethod) {
+		var ret RoleMiningSessionScopingMethod
+		return ret
+	}
+	return *o.ScopingMethod
+}
+
+// GetScopingMethodOk returns a tuple with the ScopingMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningSessionParametersDto) GetScopingMethodOk() (*RoleMiningSessionScopingMethod, bool) {
+	if o == nil || isNil(o.ScopingMethod) {
+		return nil, false
+	}
+	return o.ScopingMethod, true
+}
+
+// HasScopingMethod returns a boolean if a field has been set.
+func (o *RoleMiningSessionParametersDto) HasScopingMethod() bool {
+	if o != nil && !isNil(o.ScopingMethod) {
+		return true
+	}
+
+	return false
+}
+
+// SetScopingMethod gets a reference to the given RoleMiningSessionScopingMethod and assigns it to the ScopingMethod field.
+func (o *RoleMiningSessionParametersDto) SetScopingMethod(v RoleMiningSessionScopingMethod) {
+	o.ScopingMethod = &v
+}
+
 func (o RoleMiningSessionParametersDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -271,6 +341,12 @@ func (o RoleMiningSessionParametersDto) ToMap() (map[string]interface{}, error) 
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+	if !isNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !isNil(o.ScopingMethod) {
+		toSerialize["scopingMethod"] = o.ScopingMethod
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -295,6 +371,8 @@ func (o *RoleMiningSessionParametersDto) UnmarshalJSON(bytes []byte) (err error)
 		delete(additionalProperties, "saved")
 		delete(additionalProperties, "scope")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "scopingMethod")
 		o.AdditionalProperties = additionalProperties
 	}
 

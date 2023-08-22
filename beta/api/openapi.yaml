@@ -28403,6 +28403,153 @@ paths:
         session
       tags:
       - IAI Role Mining
+  /role-mining-sessions/{sessionId}/potential-roles/draft-roles:
+    get:
+      description: This method returns all saved potential roles (draft roles) for
+        a role mining session.
+      operationId: getSavedRoles
+      parameters:
+      - description: The role mining session id
+        example: 8c190e67-87aa-4ed9-a90b-d9d5344523fb
+        in: path
+        name: sessionId
+        required: true
+        schema:
+          type: string
+      - description: "Sort results using the standard syntax described in [V3 API\
+          \ Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/)\
+          \ Sorting is supported for the following fields: **modified**"
+        example: modified
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+        style: form
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators:
+          **description**: *sw, co*
+          **name**: *eq, sw, co*
+          **type**: *eq*
+        example: (type eq "COMMON")and ((name co "ent")or (description co "desc"))
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RoleMiningSessionDraftRoleDto'
+                type: array
+          description: Succeeded. Returns a list of draft roles for a role mining
+            session.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2: []
+      summary: Retrieves all draft roles
+      tags:
+      - IAI Role Mining
   /roles:
     get:
       description: |-
@@ -53516,6 +53663,10 @@ components:
             criteria: source.name:DataScienceDataset
           name: Saved RM Session - 07/10
           minNumIdentitiesInPotentialRole: 20
+          state:
+            state: CREATED
+          scopingMethod:
+            state: MANUAL
           type: SPECIALIZED
         provisionState: POTENTIAL
         description: Potential Role for Accounting dept
@@ -53737,6 +53888,62 @@ components:
           description: ID of the identity that will own this role
           example: 2b568c65bc3c4c57a43bd97e3a8e41
           type: string
+      type: object
+    RoleMiningSessionDraftRoleDto:
+      example:
+        entitlementIds:
+        - 2c91808a7624751a01762f19d665220d
+        - 2c91808a7624751a01762f19d67c220e
+        identityIds:
+        - 2c918090761a5aac0176215c46a62d58
+        - 2c918090761a5aac01722015c46a62d42
+        name: Saved RM Session - 07/10
+        description: Person who develops software
+        modified: 2020-09-16T18:49:32.15Z
+        excludedEntitlements:
+        - 07a0b4e2
+        - 13b4e2a0
+        type: SPECIALIZED
+      properties:
+        description:
+          description: Draft role description
+          example: Person who develops software
+          type: string
+        identityIds:
+          description: The list of identities for this role mining session.
+          example:
+          - 2c918090761a5aac0176215c46a62d58
+          - 2c918090761a5aac01722015c46a62d42
+          items:
+            type: string
+          type: array
+        entitlementIds:
+          description: The list of entitlement ids for this role mining session.
+          example:
+          - 2c91808a7624751a01762f19d665220d
+          - 2c91808a7624751a01762f19d67c220e
+          items:
+            type: string
+          type: array
+        excludedEntitlements:
+          description: The list of excluded entitlement ids.
+          example:
+          - 07a0b4e2
+          - 13b4e2a0
+          items:
+            type: string
+          type: array
+        modified:
+          description: Last modified date
+          example: 2020-09-16T18:49:32.15Z
+          format: date-time
+          type: string
+        name:
+          description: Name of the draft role
+          example: Saved RM Session - 07/10
+          type: string
+        type:
+          $ref: '#/components/schemas/RoleMiningRoleType'
       type: object
     Role:
       description: A Role
@@ -60488,6 +60695,10 @@ components:
           criteria: source.name:DataScienceDataset
         name: Saved RM Session - 07/10
         minNumIdentitiesInPotentialRole: 20
+        state:
+          state: CREATED
+        scopingMethod:
+          state: MANUAL
         type: SPECIALIZED
       properties:
         minNumIdentitiesInPotentialRole:
@@ -60505,6 +60716,7 @@ components:
           format: int32
           type: integer
         saved:
+          default: true
           description: The session's saved status
           example: true
           type: boolean
@@ -60512,6 +60724,10 @@ components:
           $ref: '#/components/schemas/RoleMiningSessionScope'
         type:
           $ref: '#/components/schemas/RoleMiningRoleType'
+        state:
+          $ref: '#/components/schemas/RoleMiningSessionStatus'
+        scopingMethod:
+          $ref: '#/components/schemas/RoleMiningSessionScopingMethod'
       type: object
     RoleMiningEntitlementRef:
       properties:
@@ -63175,6 +63391,16 @@ components:
       - SELF_REVIEW_DELEGATION
       example: AUTOMATIC_REASSIGNMENT
       type: string
+    RoleMiningSessionScopingMethod:
+      example:
+        state: MANUAL
+      properties:
+        state:
+          description: The scoping method used in the current role mining session.
+            Can be one of these states - MANUAL|AUTO_RM
+          example: MANUAL
+          type: string
+      type: object
     RoleMembershipSelectorType:
       description: |-
         This enum characterizes the type of a Role's membership selector. Only the following two are fully supported:
