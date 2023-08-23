@@ -23,6 +23,8 @@ type OutlierFeatureSummaryOutlierFeatureDisplayValuesInner struct {
 	DisplayName *string `json:"displayName,omitempty"`
 	// value
 	Value *string `json:"value,omitempty"`
+	// The data type of the value field
+	ValueType *string `json:"valueType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,6 +111,38 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) SetValue(v strin
 	o.Value = &v
 }
 
+// GetValueType returns the ValueType field value if set, zero value otherwise.
+func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueType() string {
+	if o == nil || isNil(o.ValueType) {
+		var ret string
+		return ret
+	}
+	return *o.ValueType
+}
+
+// GetValueTypeOk returns a tuple with the ValueType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) GetValueTypeOk() (*string, bool) {
+	if o == nil || isNil(o.ValueType) {
+		return nil, false
+	}
+	return o.ValueType, true
+}
+
+// HasValueType returns a boolean if a field has been set.
+func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) HasValueType() bool {
+	if o != nil && !isNil(o.ValueType) {
+		return true
+	}
+
+	return false
+}
+
+// SetValueType gets a reference to the given string and assigns it to the ValueType field.
+func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) SetValueType(v string) {
+	o.ValueType = &v
+}
+
 func (o OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -124,6 +158,9 @@ func (o OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) ToMap() (map[stri
 	}
 	if !isNil(o.Value) {
 		toSerialize["value"] = o.Value
+	}
+	if !isNil(o.ValueType) {
+		toSerialize["valueType"] = o.ValueType
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -145,6 +182,7 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) UnmarshalJSON(by
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "value")
+		delete(additionalProperties, "valueType")
 		o.AdditionalProperties = additionalProperties
 	}
 

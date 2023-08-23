@@ -52411,8 +52411,10 @@ components:
         peerDisplayName: Mary Jane
         outlierFeatureDisplayValues:
         - displayName: Aliza Chris
+          valueType: INTEGER
           value: "55"
         - displayName: Aliza Chris
+          valueType: INTEGER
           value: "55"
         contributingFeatureName: Rare Access
       properties:
@@ -66129,6 +66131,7 @@ components:
     OutlierFeatureSummary_outlierFeatureDisplayValues_inner:
       example:
         displayName: Aliza Chris
+        valueType: INTEGER
         value: "55"
       properties:
         displayName:
@@ -66138,6 +66141,13 @@ components:
         value:
           description: value
           example: "55"
+          type: string
+        valueType:
+          description: The data type of the value field
+          enum:
+          - INTEGER
+          - FLOAT
+          example: INTEGER
           type: string
       type: object
     RoleMiningPotentialRoleExportResponse_allOf:
