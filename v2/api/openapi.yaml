@@ -144,7 +144,7 @@ paths:
                 type: array
           description: List of work group objects
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: List Work Groups
       tags:
       - Governance Groups
@@ -168,7 +168,7 @@ paths:
                 type: array
           description: List of work group objects
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Create Work Group
       tags:
       - Governance Groups
@@ -192,7 +192,7 @@ paths:
             application/json: {}
           description: Empty response on successful deletion
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Delete Work Group By Id
       tags:
       - Governance Groups
@@ -218,7 +218,7 @@ paths:
                 $ref: '#/components/schemas/listWorkgroups_200_response_inner'
           description: Workgroup object
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Get Work Group By Id
       tags:
       - Governance Groups
@@ -251,7 +251,7 @@ paths:
                 $ref: '#/components/schemas/listWorkgroups_200_response_inner'
           description: Workgroup object
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Update Work Group By Id
       tags:
       - Governance Groups
@@ -315,7 +315,7 @@ paths:
                 type: array
           description: List of work group member objects
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: List Work Group Members
       tags:
       - Governance Groups
@@ -345,7 +345,7 @@ paths:
             application/json: {}
           description: Empty response on successful deletion
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Modify Work Group Members
       tags:
       - Governance Groups
@@ -373,7 +373,7 @@ paths:
                 type: array
           description: List of work group connection objects
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: List Work Group Connections
       tags:
       - Governance Groups
@@ -396,7 +396,7 @@ paths:
                 $ref: '#/components/schemas/bulkDeleteWorkGroups_200_response'
           description: List of work group objects
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Bulk delete work groups
       tags:
       - Governance Groups
@@ -876,7 +876,7 @@ components:
           type: string
       type: object
   securitySchemes:
-    oauth2:
+    UserContextAuth:
       description: |
         OAuth2 Bearer token (JWT). See [IdentityNow REST API Authentication](https://developer.sailpoint.com/idn/api/authentication) for more information.
         - Directions for generating a [personal access token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens)

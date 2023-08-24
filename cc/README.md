@@ -122,7 +122,7 @@ Class | Method | HTTP request | Description
 
 
 
-### oauth2
+### UserContextAuth
 
 
 - **Type**: OAuth
@@ -152,7 +152,7 @@ r, err := client.Service.Operation(auth, args)
 ```
 
 
-### oauth2
+### UserContextAuth
 
 
 - **Type**: OAuth

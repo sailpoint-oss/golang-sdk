@@ -33,7 +33,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: List Accounts
       tags:
       - Accounts
@@ -55,7 +55,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Remove Account
       tags:
       - Accounts
@@ -72,7 +72,7 @@ paths:
                 type: array
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: List Applications
       tags:
       - Applications
@@ -96,7 +96,7 @@ paths:
                 $ref: '#/components/schemas/listApplications_200_response_inner'
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Get Single Application
       tags:
       - Applications
@@ -134,7 +134,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Create Application
       tags:
       - Applications
@@ -161,7 +161,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Update Application
       tags:
       - Applications
@@ -183,7 +183,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Delete Application
       tags:
       - Applications
@@ -196,7 +196,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: List Connectors
       tags:
       - Connectors
@@ -223,7 +223,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Create Connector
       tags:
       - Connectors
@@ -244,7 +244,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Delete Connector
       tags:
       - Connectors
@@ -265,7 +265,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Export Connector Config
       tags:
       - Connectors
@@ -291,7 +291,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Import Connector Config
       tags:
       - Connectors
@@ -309,7 +309,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Update User Permissions
       tags:
       - User
@@ -333,7 +333,7 @@ paths:
                 $ref: '#/components/schemas/GetIdentity_200_response'
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Get Single Identity
       tags:
       - User
@@ -369,7 +369,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Account Aggregation (File)
       tags:
       - Sources > Aggregation
@@ -391,7 +391,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Export Account Feed
       tags:
       - Sources > Accounts
@@ -433,7 +433,7 @@ paths:
             application/json: {}
           description: Successful response
       security:
-      - oauth2: []
+      - UserContextAuth: []
       summary: Refresh Identities
       tags:
       - System
@@ -1153,7 +1153,7 @@ components:
           type: boolean
       type: object
   securitySchemes:
-    oauth2:
+    UserContextAuth:
       description: |
         OAuth2 Bearer token (JWT). See [IdentityNow REST API Authentication](https://developer.sailpoint.com/idn/api/authentication) for more information.
         - Directions for generating a [personal access token](https://developer.sailpoint.com/idn/api/authentication#personal-access-tokens)

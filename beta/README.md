@@ -1183,7 +1183,36 @@ Class | Method | HTTP request | Description
 
 
 
-### oauth2
+### ApplicationOnlyAuth
+
+
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: 
+ - **sp:scopes:default**: default scope
+
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextAccessToken, "ACCESSTOKENSTRING")
+r, err := client.Service.Operation(auth, args)
+```
+
+Or via OAuth2 module to automatically refresh tokens and perform user authentication.
+
+```golang
+import "golang.org/x/oauth2"
+
+/* Perform OAuth2 round trip request and obtain a token */
+
+tokenSource := oauth2cfg.TokenSource(createContext(httpClient), &token)
+auth := context.WithValue(oauth2.NoContext, sw.ContextOAuth2, tokenSource)
+r, err := client.Service.Operation(auth, args)
+```
+
+
+### UserContextAuth
 
 
 - **Type**: OAuth
@@ -1213,7 +1242,7 @@ r, err := client.Service.Operation(auth, args)
 ```
 
 
-### oauth2
+### UserContextAuth
 
 
 - **Type**: OAuth
