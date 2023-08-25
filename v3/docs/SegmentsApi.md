@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateSegment**](SegmentsApi.md#CreateSegment) | **Post** /segments | Create Segment
 [**DeleteSegment**](SegmentsApi.md#DeleteSegment) | **Delete** /segments/{id} | Delete Segment by ID
-[**GetSegment**](SegmentsApi.md#GetSegment) | **Get** /segments/{id} | Get a Segment by ID
+[**GetSegment**](SegmentsApi.md#GetSegment) | **Get** /segments/{id} | Get Segment by ID
 [**ListSegments**](SegmentsApi.md#ListSegments) | **Get** /segments | List Segments
-[**PatchSegment**](SegmentsApi.md#PatchSegment) | **Patch** /segments/{id} | Update a Segment
+[**PatchSegment**](SegmentsApi.md#PatchSegment) | **Patch** /segments/{id} | Update Segment
 
 
 
@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the Segment to delete.
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The segment ID to delete.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -117,7 +117,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the Segment to delete. | 
+**id** | **string** | The segment ID to delete. | 
 
 ### Other Parameters
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 > Segment GetSegment(ctx, id).Execute()
 
-Get a Segment by ID
+Get Segment by ID
 
 
 
@@ -167,7 +167,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the Segment to retrieve.
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The segment ID to retrieve.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -187,7 +187,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the Segment to retrieve. | 
+**id** | **string** | The segment ID to retrieve. | 
 
 ### Other Parameters
 
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 > Segment PatchSegment(ctx, id).RequestBody(requestBody).Execute()
 
-Update a Segment
+Update Segment
 
 
 
@@ -307,8 +307,8 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the Segment being modified.
-    requestBody := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} | A list of Segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.   The following fields are patchable: * name * description * owner * visibilityCriteria * active 
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The segment ID to modify.
+    requestBody := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} | A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -328,7 +328,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the Segment being modified. | 
+**id** | **string** | The segment ID to modify. | 
 
 ### Other Parameters
 
@@ -338,7 +338,7 @@ Other parameters are passed through a pointer to a apiPatchSegmentRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **requestBody** | **[]map[string]interface{}** | A list of Segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.   The following fields are patchable: * name * description * owner * visibilityCriteria * active  | 
+ **requestBody** | **[]map[string]interface{}** | A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active  | 
 
 ### Return type
 

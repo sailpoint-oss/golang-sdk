@@ -41,10 +41,8 @@ func (r ApiCreateSegmentRequest) Execute() (*Segment, *http.Response, error) {
 /*
 CreateSegment Create Segment
 
-This API creates a segment.
-
-Note that segment definitions may take time to propagate to all identities.
-
+This API creates a segment. 
+>**Note:** Segment definitions may take time to propagate to all identities.
 A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -205,13 +203,11 @@ func (r ApiDeleteSegmentRequest) Execute() (*http.Response, error) {
 DeleteSegment Delete Segment by ID
 
 This API deletes the segment specified by the given ID.
-
-Note that segment deletion may take some time to become effective.
-
+>**Note:** Segment deletion may take some time to go into effect. 
 A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the Segment to delete.
+ @param id The segment ID to delete.
  @return ApiDeleteSegmentRequest
 */
 func (a *SegmentsApiService) DeleteSegment(ctx context.Context, id string) ApiDeleteSegmentRequest {
@@ -280,6 +276,17 @@ func (a *SegmentsApiService) DeleteSegmentExecute(r ApiDeleteSegmentRequest) (*h
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
@@ -352,14 +359,13 @@ func (r ApiGetSegmentRequest) Execute() (*Segment, *http.Response, error) {
 }
 
 /*
-GetSegment Get a Segment by its ID
+GetSegment Get Segment by ID
 
 This API returns the segment specified by the given ID.
-
 A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the Segment to retrieve.
+ @param id The segment ID to retrieve.
  @return ApiGetSegmentRequest
 */
 func (a *SegmentsApiService) GetSegment(ctx context.Context, id string) ApiGetSegmentRequest {
@@ -430,6 +436,17 @@ func (a *SegmentsApiService) GetSegmentExecute(r ApiGetSegmentRequest) (*Segment
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
@@ -691,7 +708,7 @@ type ApiPatchSegmentRequest struct {
 	requestBody *[]map[string]interface{}
 }
 
-// A list of Segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.   The following fields are patchable: * name * description * owner * visibilityCriteria * active 
+// A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active 
 func (r ApiPatchSegmentRequest) RequestBody(requestBody []map[string]interface{}) ApiPatchSegmentRequest {
 	r.requestBody = &requestBody
 	return r
@@ -702,16 +719,14 @@ func (r ApiPatchSegmentRequest) Execute() (*Segment, *http.Response, error) {
 }
 
 /*
-PatchSegment Update a Segment
+PatchSegment Update Segment
 
-Allows updating Segment fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-
-Note that changes to a segment may take some time to propagate to all identities, and that segments will have no effect if segmentation is not enabled for your org.
-
+Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+>**Note:** Changes to a segment may take some time to propagate to all identities.
 A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The ID of the Segment being modified.
+ @param id The segment ID to modify.
  @return ApiPatchSegmentRequest
 */
 func (a *SegmentsApiService) PatchSegment(ctx context.Context, id string) ApiPatchSegmentRequest {

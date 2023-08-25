@@ -180,57 +180,59 @@ tags:
 - description: "Use this API to implement certification campaign functionality.\n\
     With this functionality in place, administrators can create, customize, and manage\
     \ certification campaigns for their organizations' use. \nCertification campaigns\
-    \ provide IdentityNow (IDN) users with an interactive review process they can\
-    \ use to identify and verify access to systems. \nCampaigns help organizations\
-    \ reduce risk of inappropriate access and satisfy audit requirements. \n\nA certification\
-    \ refers to IDN's mechanism for reviewing a user's access to entitlements (sets\
-    \ of permissions) and approving or removing that access. \nThese certifications\
+    \ provide IdentityNow users with an interactive review process they can use to\
+    \ identify and verify access to systems. \nCampaigns help organizations reduce\
+    \ risk of inappropriate access and satisfy audit requirements. \n\nA certification\
+    \ refers to IdentityNow's mechanism for reviewing a user's access to entitlements\
+    \ (sets of permissions) and approving or removing that access. \nThese certifications\
     \ serve as a way of showing that a user's access has been reviewed and approved.\
     \ \nMultiple certifications by different reviewers are often required to approve\
     \ a user's access. \nA set of multiple certifications is called a certification\
     \ campaign. \n\nFor example, an organization may use a Manager Certification campaign\
     \ as a way of showing that a user's access has been reviewed and approved by multiple\
-    \ managers. \nOnce this campaign has been completed, IDN would provision all the\
-    \ access the user needs, nothing more. \n\nIDN provides two simple campaign types\
-    \ users can create without using search queries, Manager and Source Owner campaigns:\n\
-    \nYou can create these types of campaigns without using any search queries in\
-    \ IDN: \n\n- ManagerCampaign: IDN provides this campaign type as a way to ensure\
-    \ that an identity's access is certified by their managers. \nYou only need to\
-    \ provide a name and description to create one. \n\n- Source Owner Campaign: IDN\
-    \ provides this campaign type as a way to ensure that an identity's access to\
-    \ a source is certified by its source owners. \nYou only need to provide a name\
-    \ and description to create one. \nYou can specify the sources whose owners you\
-    \ want involved or just run it across all sources. \n\nFor more information about\
-    \ these campaign types, refer to [Starting a Manager or Source Owner Campaign](https://documentation.sailpoint.com/saas/help/certs/starting_campaign.html).\n\
-    \nOne useful way to create certification campaigns in IDN is to use a specific\
-    \ search and then run a campaign on the results returned by that search. \nThis\
-    \ allows you to be much more specific about whom you are certifying in your campaigns\
-    \ and what access you are certifying in your campaigns. \nFor example, you can\
-    \ search for all identities who are managed by \"Amanda.Ross\" and also have the\
-    \ access to the \"Accounting\" role and then run a certification campaign based\
-    \ on that search to ensure that the returned identities are appropriately certified.\
-    \ \n\nYou can use IDN search queries to create these types of campaigns: \n\n\
-    - Identities: Use this campaign type to review and revoke access items for specific\
-    \ identities. \nYou can either build a search query and create a campaign certifying\
-    \ all identities returned by that query, or you can search for individual identities\
-    \ and add those identities to the certification campaign. \n\n- Access Items:\
-    \ Use this campaign type to review and revoke a set of roles, access profiles,\
-    \ or entitlements from the identities that have them. \nYou can either build a\
-    \ search query and create a campaign certifying all access items returned by that\
-    \ query, or you can search for individual access items and add those items to\
-    \ the certification campaign. \n\n- Role Composition: Use this campaign type to\
-    \ review a role's composition, including its title, description, and membership\
-    \ criteria. \nYou can either build a search query and create a campaign certifying\
-    \ all roles returned by that query, or you can search for individual roles and\
-    \ add those roles to the certification campaign. \n\n- Uncorrelated Accounts:\
-    \ Use this campaign type to certify source accounts that aren't linked to an authoritative\
-    \ identity in IDN. \nYou can use this campaign type to view all the uncorrelated\
-    \ accounts for a source and certify them. \n\nFor more information about search-based\
-    \ campaigns, refer to [Starting a Campaign from Search](https://documentation.sailpoint.com/saas/help/certs/starting_search_campaign.html).\n\
+    \ managers. \nOnce this campaign has been completed, IdentityNow would provision\
+    \ all the access the user needs, nothing more. \n\nIdentityNow provides two simple\
+    \ campaign types users can create without using search queries, Manager and Source\
+    \ Owner campaigns:\n\nYou can create these types of campaigns without using any\
+    \ search queries in IdentityNow: \n\n- ManagerCampaign: IdentityNow provides this\
+    \ campaign type as a way to ensure that an identity's access is certified by their\
+    \ managers. \nYou only need to provide a name and description to create one. \n\
+    \n- Source Owner Campaign: IdentityNow provides this campaign type as a way to\
+    \ ensure that an identity's access to a source is certified by its source owners.\
+    \ \nYou only need to provide a name and description to create one. \nYou can specify\
+    \ the sources whose owners you want involved or just run it across all sources.\
+    \ \n\nFor more information about these campaign types, refer to [Starting a Manager\
+    \ or Source Owner Campaign](https://documentation.sailpoint.com/saas/help/certs/starting_campaign.html).\n\
+    \nOne useful way to create certification campaigns in IdentityNow is to use a\
+    \ specific search and then run a campaign on the results returned by that search.\
+    \ \nThis allows you to be much more specific about whom you are certifying in\
+    \ your campaigns and what access you are certifying in your campaigns. \nFor example,\
+    \ you can search for all identities who are managed by \"Amanda.Ross\" and also\
+    \ have the access to the \"Accounting\" role and then run a certification campaign\
+    \ based on that search to ensure that the returned identities are appropriately\
+    \ certified. \n\nYou can use IdentityNow search queries to create these types\
+    \ of campaigns: \n\n- Identities: Use this campaign type to review and revoke\
+    \ access items for specific identities. \nYou can either build a search query\
+    \ and create a campaign certifying all identities returned by that query, or you\
+    \ can search for individual identities and add those identities to the certification\
+    \ campaign. \n\n- Access Items: Use this campaign type to review and revoke a\
+    \ set of roles, access profiles, or entitlements from the identities that have\
+    \ them. \nYou can either build a search query and create a campaign certifying\
+    \ all access items returned by that query, or you can search for individual access\
+    \ items and add those items to the certification campaign. \n\n- Role Composition:\
+    \ Use this campaign type to review a role's composition, including its title,\
+    \ description, and membership criteria. \nYou can either build a search query\
+    \ and create a campaign certifying all roles returned by that query, or you can\
+    \ search for individual roles and add those roles to the certification campaign.\
+    \ \n\n- Uncorrelated Accounts: Use this campaign type to certify source accounts\
+    \ that aren't linked to an authoritative identity in IdentityNow. \nYou can use\
+    \ this campaign type to view all the uncorrelated accounts for a source and certify\
+    \ them. \n\nFor more information about search-based campaigns, refer to [Starting\
+    \ a Campaign from Search](https://documentation.sailpoint.com/saas/help/certs/starting_search_campaign.html).\n\
     \nOnce you have generated your campaign, it becomes available for preview. \n\
     An administrator can review the campaign and make changes, or if it's ready and\
     \ accurate, activate it. \n\nOnce the campaign is active, organization administrators\
-    \ or certification administrators can designate other IDN users as certification\
+    \ or certification administrators can designate other IdentityNow users as certification\
     \ reviewers. \nThose reviewers can view any of the certifications they either\
     \ need to review (active) or have already reviewed (completed).\n\nWhen a certification\
     \ campaign is in progress, certification reviewers see the listed active certifications\
@@ -351,7 +353,7 @@ tags:
     \ 'HR Employee' identity profile to maintain their building access in both the\
     \ 'Active' and 'Leave of Absence' lifecycle states, the administrator must grant\
     \ the access profile for that building access to both lifecycle states.\n\nDuring\
-    \ scheduled refreshes, IdentityNow evaluates lifFecycle states to determine whether\
+    \ scheduled refreshes, IdentityNow evaluates lifecycle states to determine whether\
     \ their assigned identities have the access defined in the lifecycle states' access\
     \ profiles. \nIf the identities are missing access, IdentityNow provisions that\
     \ access. \n\nAdministrators can also use the 'Provisioning' tab to configure\
@@ -677,7 +679,30 @@ tags:
     \ search. \nDepending on the system load, this can take a few seconds to a few\
     \ minutes. \nPlease keep this latency in mind when you use search. \n"
   name: Search
-- name: Segments
+- description: "Use this API to implement and customize access request segment functionality.\
+    \ \nWith this functionality in place, administrators can create and manage access\
+    \ request segments. \nSegments provide organizations with a way to make the access\
+    \ their users have even more granular - this can simply the access request process\
+    \ for the organization's users and improves security by reducing the risk of overprovisoning\
+    \ access. \n\nSegments represent sets of identities, all grouped by specified\
+    \ identity attributes, who are only able to see and access the access items associated\
+    \ with their segments.\nFor example, administrators could group all their organization's\
+    \ London office employees into one segment, \"London Office Employees,\" by their\
+    \ shared location. \nThe administrators could then define the access items the\
+    \ London employees would need, and the identities in the \"London Office Employees\"\
+    \ would then only be able to see and access those items.\n\nIn IdentityNow, administrators\
+    \ can use the 'Access' drop-down menu and select 'Segments' to reach the 'Access\
+    \ Requests Segments' page. \nThis page lists all the existing access request segments,\
+    \ along with their statuses, enabled or disabled. \nAdministrators can use this\
+    \ page to create, edit, enable, disable, and delete segments. \nTo create a segment,\
+    \ an administrator must provide a name, define the identities grouped in the segment,\
+    \ and define the items the identities in the segment can access.\nThese items\
+    \ can be access profiles, roles, or entitlements. \n\nWhen administrators use\
+    \ the API to create and manage segments, they use a JSON expression in the `visibilityCriteria`\
+    \ object to define the segment's identities and access items. \n\nRefer to [Managing\
+    \ Access Request Segments](https://documentation.sailpoint.com/saas/help/requests/segments.html)\
+    \ for more information about segments in IdentityNow. \n"
+  name: Segments
 - description: "Use this API to build an integration between IdentityNow and a service\
     \ desk ITSM (IT service management) solution. \nOnce an administrator builds this\
     \ integration between IdentityNow and a service desk, users can use IdentityNow\
@@ -15466,9 +15491,8 @@ paths:
       - Search
   /segments:
     get:
-      description: |-
-        This API returns a list of all segments.
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: "This API returns a list of all segments. \nA token with ORG_ADMIN\
+        \ or API authority is required to call this API."
       operationId: listSegments
       parameters:
       - description: |-
@@ -15517,7 +15541,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Segment'
                 type: array
-          description: List of all Segments
+          description: List of all segments
         "400":
           content:
             application/json:
@@ -15582,12 +15606,9 @@ paths:
       tags:
       - Segments
     post:
-      description: |-
-        This API creates a segment.
-
-        Note that segment definitions may take time to propagate to all identities.
-
-        A token with ORG_ADMIN or API authority is required to call this API.
+      description: "This API creates a segment. \n>**Note:** Segment definitions may\
+        \ take time to propagate to all identities.\nA token with ORG_ADMIN or API\
+        \ authority is required to call this API."
       operationId: createSegment
       requestBody:
         content:
@@ -15668,13 +15689,11 @@ paths:
     delete:
       description: |-
         This API deletes the segment specified by the given ID.
-
-        Note that segment deletion may take some time to become effective.
-
+        >**Note:** that segment deletion may take some time to become effective.
         A token with ORG_ADMIN or API authority is required to call this API.
       operationId: deleteSegment
       parameters:
-      - description: The ID of the Segment to delete.
+      - description: The segment ID to delete.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
@@ -15767,11 +15786,10 @@ paths:
     get:
       description: |-
         This API returns the segment specified by the given ID.
-
         A token with ORG_ADMIN or API authority is required to call this API.
       operationId: getSegment
       parameters:
-      - description: The ID of the Segment to retrieve.
+      - description: The segment ID to retrieve.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
@@ -15863,19 +15881,17 @@ paths:
       - UserContextAuth:
         - idn:segment:read
         - idn:segment:manage
-      summary: Get a Segment by ID
+      summary: Get Segment by ID
       tags:
       - Segments
     patch:
       description: |-
-        Allows updating Segment fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-
-        Note that changes to a segment may take some time to propagate to all identities, and that segments will have no effect if segmentation is not enabled for your org.
-
+        Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+        >**Note:** Changes to a segment may take some time to propagate to all identities.
         A token with ORG_ADMIN or API authority is required to call this API.
       operationId: patchSegment
       parameters:
-      - description: The ID of the Segment being modified.
+      - description: The segment ID to modify.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
@@ -15910,8 +15926,7 @@ paths:
                 type: object
               type: array
         description: |
-          A list of Segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-
+          A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
           The following fields are patchable:
           * name
@@ -15926,7 +15941,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Segment'
-          description: "Indicates the PATCH operation succeeded, and returns the Segment's\
+          description: "Indicates the PATCH operation succeeded, and returns the segment's\
             \ new representation."
         "400":
           content:
@@ -16005,7 +16020,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:segment:manage
-      summary: Update a Segment
+      summary: Update Segment
       tags:
       - Segments
   /service-desk-integrations:
