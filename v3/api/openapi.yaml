@@ -26035,6 +26035,114 @@ paths:
       summary: Get Campaign Reports
       tags:
       - Certification Campaigns
+  /campaigns/{id}/run-report/{type}:
+    post:
+      description: |-
+        Runs a report for a certification campaign.
+        Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
+      operationId: startCampaignReport
+      parameters:
+      - description: The ID of the campaign for which report is being run.
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808571bcfcf80171c23e4b4221fc
+          type: string
+      - description: The type of the report to run.
+        in: path
+        name: type
+        required: true
+        schema:
+          $ref: '#/components/schemas/ReportType'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted - Returned if the request was successfully accepted
+            into the system.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - idn:campaign-report:run
+      summary: Run Campaign Report
+      tags:
+      - Certification Campaigns
 components:
   examples:
     SlimCampaigns:
@@ -34071,6 +34179,15 @@ components:
       - reportType
       title: Campaign Report
       type: object
+    ReportType:
+      description: type of a Report
+      enum:
+      - CAMPAIGN_COMPOSITION_REPORT
+      - CAMPAIGN_REMEDIATION_STATUS_REPORT
+      - CAMPAIGN_STATUS_REPORT
+      - CERTIFICATION_SIGNOFF_REPORT
+      example: CAMPAIGN_COMPOSITION_REPORT
+      type: string
     AccessRequestType:
       description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type
         can only have a single Identity ID in the requestedFor field.
@@ -36696,15 +36813,6 @@ components:
           nullable: true
           type: string
       type: object
-    ReportType:
-      description: type of a Report
-      enum:
-      - CAMPAIGN_COMPOSITION_REPORT
-      - CAMPAIGN_REMEDIATION_STATUS_REPORT
-      - CAMPAIGN_STATUS_REPORT
-      - CERTIFICATION_SIGNOFF_REPORT
-      example: CAMPAIGN_COMPOSITION_REPORT
-      type: string
     ScheduleType:
       description: |
         Enum representing the currently supported schedule types.

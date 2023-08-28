@@ -116,6 +116,7 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**GetCampaignReports**](docs/CertificationCampaignsApi.md#getcampaignreports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
 *CertificationCampaignsApi* | [**Move**](docs/CertificationCampaignsApi.md#move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 *CertificationCampaignsApi* | [**StartCampaign**](docs/CertificationCampaignsApi.md#startcampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
+*CertificationCampaignsApi* | [**StartCampaignReport**](docs/CertificationCampaignsApi.md#startcampaignreport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
 *CertificationCampaignsApi* | [**UpdateCampaign**](docs/CertificationCampaignsApi.md#updatecampaign) | **Patch** /campaigns/{id} | Update a Campaign
 *CertificationSummariesApi* | [**GetIdentityAccessSummaries**](docs/CertificationSummariesApi.md#getidentityaccesssummaries) | **Get** /certifications/{id}/access-summaries/{type} | Access Summaries
 *CertificationSummariesApi* | [**GetIdentityDecisionSummary**](docs/CertificationSummariesApi.md#getidentitydecisionsummary) | **Get** /certifications/{id}/decision-summary | Summary of Certification Decisions

@@ -246,21 +246,6 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationCampaignsApiService RunCampaignReport", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-		var type_ ReportType
-
-		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.RunCampaignReport(context.Background(), id, type_).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CertificationCampaignsApiService SetCampaignReportsConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -293,6 +278,21 @@ func Test_beta_CertificationCampaignsApiService(t *testing.T) {
 		var id string
 
 		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.StartCampaign(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CertificationCampaignsApiService StartCampaignReport", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var type_ ReportType
+
+		resp, httpRes, err := apiClient.BETA.CertificationCampaignsApi.StartCampaignReport(context.Background(), id, type_).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

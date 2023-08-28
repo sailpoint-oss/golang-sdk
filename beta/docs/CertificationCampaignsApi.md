@@ -21,10 +21,10 @@ Method | HTTP request | Description
 [**Move**](CertificationCampaignsApi.md#Move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 [**PatchCampaignTemplate**](CertificationCampaignsApi.md#PatchCampaignTemplate) | **Patch** /campaign-templates/{id} | Update a Campaign Template
 [**RunCampaignRemediationScan**](CertificationCampaignsApi.md#RunCampaignRemediationScan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
-[**RunCampaignReport**](CertificationCampaignsApi.md#RunCampaignReport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
 [**SetCampaignReportsConfig**](CertificationCampaignsApi.md#SetCampaignReportsConfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
 [**SetCampaignTemplateSchedule**](CertificationCampaignsApi.md#SetCampaignTemplateSchedule) | **Put** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
 [**StartCampaign**](CertificationCampaignsApi.md#StartCampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
+[**StartCampaignReport**](CertificationCampaignsApi.md#StartCampaignReport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
 [**UpdateCampaign**](CertificationCampaignsApi.md#UpdateCampaign) | **Patch** /campaigns/{id} | Update a Campaign
 
 
@@ -1207,79 +1207,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RunCampaignReport
-
-> map[string]interface{} RunCampaignReport(ctx, id, type_).Execute()
-
-Run Campaign Report
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "2c91808571bcfcf80171c23e4b4221fc" // string | The ID of the campaign for which report is being run.
-    type_ := openapiclient.ReportType("CAMPAIGN_COMPOSITION_REPORT") // ReportType | The type of the report to run.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.RunCampaignReport(context.Background(), id, type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.RunCampaignReport``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RunCampaignReport`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.RunCampaignReport`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the campaign for which report is being run. | 
-**type_** | [**ReportType**](.md) | The type of the report to run. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRunCampaignReportRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-**map[string]interface{}**
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## SetCampaignReportsConfig
 
 > CampaignReportsConfig SetCampaignReportsConfig(ctx).CampaignReportsConfig(campaignReportsConfig).Execute()
@@ -1481,6 +1408,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StartCampaignReport
+
+> map[string]interface{} StartCampaignReport(ctx, id, type_).Execute()
+
+Run Campaign Report
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "2c91808571bcfcf80171c23e4b4221fc" // string | The ID of the campaign for which report is being run.
+    type_ := openapiclient.ReportType("CAMPAIGN_COMPOSITION_REPORT") // ReportType | The type of the report to run.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationCampaignsApi.StartCampaignReport(context.Background(), id, type_).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.StartCampaignReport``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StartCampaignReport`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.StartCampaignReport`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The ID of the campaign for which report is being run. | 
+**type_** | [**ReportType**](.md) | The type of the report to run. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStartCampaignReportRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
