@@ -7079,6 +7079,7 @@ paths:
       - Certification Campaigns
   /campaigns/{id}/complete:
     post:
+      deprecated: true
       description: |
         :::caution
 
@@ -7191,6 +7192,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:campaign:update
       summary: Complete a Campaign
       tags:
       - Certification Campaigns

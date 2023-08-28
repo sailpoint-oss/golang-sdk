@@ -141,6 +141,7 @@ docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md
 docs/CampaignAllOfSearchCampaignInfo.md
 docs/CampaignAllOfSourceOwnerCampaignInfo.md
 docs/CampaignAllOfSourcesWithOrphanEntitlements.md
+docs/CampaignCompleteOptions.md
 docs/CampaignReference.md
 docs/CampaignReport.md
 docs/CampaignReportAllOf.md
@@ -580,6 +581,7 @@ model_campaign_all_of_role_composition_campaign_info_remediator_ref.go
 model_campaign_all_of_search_campaign_info.go
 model_campaign_all_of_source_owner_campaign_info.go
 model_campaign_all_of_sources_with_orphan_entitlements.go
+model_campaign_complete_options.go
 model_campaign_reference.go
 model_campaign_report.go
 model_campaign_report_all_of.go

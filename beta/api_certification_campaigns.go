@@ -60,6 +60,8 @@ Requires roles of CERT_ADMIN and ORG_ADMIN
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The campaign id
  @return ApiCompleteCampaignRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) CompleteCampaign(ctx context.Context, id string) ApiCompleteCampaignRequest {
 	return ApiCompleteCampaignRequest{
@@ -71,6 +73,7 @@ func (a *CertificationCampaignsApiService) CompleteCampaign(ctx context.Context,
 
 // Execute executes the request
 //  @return map[string]interface{}
+// Deprecated
 func (a *CertificationCampaignsApiService) CompleteCampaignExecute(r ApiCompleteCampaignRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
