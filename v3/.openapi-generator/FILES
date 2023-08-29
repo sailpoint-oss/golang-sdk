@@ -8,6 +8,7 @@ api_access_request_approvals.go
 api_access_requests.go
 api_account_activities.go
 api_accounts.go
+api_auth_user.go
 api_certification_campaigns.go
 api_certification_summaries.go
 api_certifications.go
@@ -120,6 +121,8 @@ docs/AttributeDefinition.md
 docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
 docs/AttributeRequest.md
+docs/AuthUser.md
+docs/AuthUserApi.md
 docs/BaseAccess.md
 docs/BaseAccessAllOf.md
 docs/BaseAccount.md
@@ -562,6 +565,7 @@ model_attribute_definition.go
 model_attribute_definition_schema.go
 model_attribute_definition_type.go
 model_attribute_request.go
+model_auth_user.go
 model_base_access.go
 model_base_access_all_of.go
 model_base_account.go
@@ -902,6 +906,7 @@ test/api_access_request_approvals_test.go
 test/api_access_requests_test.go
 test/api_account_activities_test.go
 test/api_accounts_test.go
+test/api_auth_user_test.go
 test/api_certification_campaigns_test.go
 test/api_certification_summaries_test.go
 test/api_certifications_test.go

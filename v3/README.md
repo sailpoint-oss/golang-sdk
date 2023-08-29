@@ -109,6 +109,8 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**ReloadAccount**](docs/AccountsApi.md#reloadaccount) | **Post** /accounts/{id}/reload | Reload Account
 *AccountsApi* | [**UnlockAccount**](docs/AccountsApi.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock Account
 *AccountsApi* | [**UpdateAccount**](docs/AccountsApi.md#updateaccount) | **Patch** /accounts/{id} | Update Account
+*AuthUserApi* | [**GetAuthUser**](docs/AuthUserApi.md#getauthuser) | **Get** /auth-users/{id} | Auth User Details
+*AuthUserApi* | [**PatchAuthUser**](docs/AuthUserApi.md#patchauthuser) | **Patch** /auth-users/{id} | Auth User Update
 *CertificationCampaignsApi* | [**CompleteCampaign**](docs/CertificationCampaignsApi.md#completecampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
 *CertificationCampaignsApi* | [**CreateCampaign**](docs/CertificationCampaignsApi.md#createcampaign) | **Post** /campaigns | Create a campaign
 *CertificationCampaignsApi* | [**GetActiveCampaigns**](docs/CertificationCampaignsApi.md#getactivecampaigns) | **Get** /campaigns | List Campaigns
@@ -389,6 +391,7 @@ Class | Method | HTTP request | Description
  - [AttributeDefinitionSchema](docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](docs/AttributeDefinitionType.md)
  - [AttributeRequest](docs/AttributeRequest.md)
+ - [AuthUser](docs/AuthUser.md)
  - [BaseAccess](docs/BaseAccess.md)
  - [BaseAccessAllOf](docs/BaseAccessAllOf.md)
  - [BaseAccount](docs/BaseAccount.md)
