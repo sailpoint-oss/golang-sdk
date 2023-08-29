@@ -11,6 +11,7 @@ api_accounts.go
 api_certification_campaigns.go
 api_certification_summaries.go
 api_certifications.go
+api_global_tenant_security_settings.go
 api_identity_profiles.go
 api_lifecycle_states.go
 api_non_employee_lifecycle_management.go
@@ -211,6 +212,7 @@ docs/ForwardApprovalDto.md
 docs/GetActiveCampaigns200ResponseInner.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
+docs/GlobalTenantSecuritySettingsApi.md
 docs/GrantType.md
 docs/IdentityAccess.md
 docs/IdentityAttribute.md
@@ -254,6 +256,7 @@ docs/MetricType.md
 docs/MultiPolicyRequest.md
 docs/NameType.md
 docs/NestedAggregation.md
+docs/NetworkConfiguration.md
 docs/NonEmployeeApprovalDecision.md
 docs/NonEmployeeApprovalItem.md
 docs/NonEmployeeApprovalItemAllOf.md
@@ -689,6 +692,7 @@ model_metric_type.go
 model_multi_policy_request.go
 model_name_type.go
 model_nested_aggregation.go
+model_network_configuration.go
 model_non_employee_approval_decision.go
 model_non_employee_approval_item.go
 model_non_employee_approval_item_all_of.go
@@ -901,6 +905,7 @@ test/api_accounts_test.go
 test/api_certification_campaigns_test.go
 test/api_certification_summaries_test.go
 test/api_certifications_test.go
+test/api_global_tenant_security_settings_test.go
 test/api_identity_profiles_test.go
 test/api_lifecycle_states_test.go
 test/api_non_employee_lifecycle_management_test.go

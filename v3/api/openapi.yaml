@@ -316,8 +316,13 @@ tags:
     \ or designated certification reviewer can examine the Manager Certification campaign\
     \ to get an overview of how many entitlement decisions are made in that campaign\
     \ as opposed to role decisions, which identities would be affected by changes\
-    \ to the campaign, and how those identities' access would be affected.  \n"
+    \ to the campaign, and how those identities' access would be affected.\n"
   name: Certification Summaries
+- description: |
+    Use this API to implement and customize global tenant security settings.
+    With this functionality in place, administrators can manage the global security settings that a tenant/org has.
+    This API can be used to configure the networks and Geographies allowed to access IdentityNow URLs.
+  name: Global Tenant Security Settings
 - description: "Use this API to implement and customize lifecycle state functionality.\n\
     With this functionality in place, administrators can create and configure custom\
     \ lifecycle states for use across their organizations, which is key to controlling\
@@ -4328,6 +4333,318 @@ paths:
       summary: Get an Account Activity
       tags:
       - Account Activities
+  /auth-org/network-config:
+    get:
+      description: "This API returns the details of an org's network auth configuration.\
+        \ Requires security scope of: 'sp:auth-org:read'"
+      operationId: getAuthOrgNetworkConfig
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkConfiguration'
+          description: Network configuration for the tenant's auth org.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - sp:auth-org:read
+      summary: Get security network configuration.
+      tags:
+      - Global Tenant Security Settings
+    patch:
+      description: |-
+        This API updates an existing network configuration for an org using PATCH
+         Requires security scope of:  'sp:auth-org:update'
+      operationId: patchAuthOrgNetworkConfig
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: replace
+              path: /whitelisted
+              value: "false,"
+            - op: add
+              path: /geolocation
+              value:
+              - AF
+              - HN
+              - ES
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: |-
+          A list of auth org network configuration update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+          Ensures that the patched Network Config conforms to certain logical guidelines, which are:
+            1. Each string element in the range array must be a valid ip address or
+          ip subnet mask.
+            2. Each string element in the geolocation array must be 2 characters,
+          and they can only be uppercase letters.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkConfiguration'
+          description: Updated Auth Org network configuration.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - sp:auth-org:update
+      summary: Update security network configuration.
+      tags:
+      - Global Tenant Security Settings
+    post:
+      description: "This API returns the details of an org's network auth configuration.\
+        \ Requires security scope of: 'sp:auth-org:create'"
+      operationId: createAuthOrgNetworkConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkConfiguration'
+        description: |-
+          Network configuration creation request body.   The following constraints ensure the request body conforms to certain logical guidelines, which are:
+            1. Each string element in the range array must be a valid ip address or
+          ip subnet mask.
+            2. Each string element in the geolocation array must be 2 characters,
+          and they can only be uppercase letters.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkConfiguration'
+          description: Network configuration for the tenant.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - oauth2:
+        - sp:auth-org:create
+      summary: Create security network configuration.
+      tags:
+      - Global Tenant Security Settings
   /campaigns:
     get:
       description: Gets campaigns and returns them in a list. Can provide increased
@@ -30263,6 +30580,41 @@ components:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
       - $ref: '#/components/schemas/EntitlementDto_allOf'
+    NetworkConfiguration:
+      example:
+        range:
+        - 1.3.7.2
+        - 255.255.255.252/30
+        whitelisted: true
+        geolocation:
+        - CA
+        - FR
+        - HT
+      properties:
+        range:
+          description: The collection of ip ranges.
+          example:
+          - 1.3.7.2
+          - 255.255.255.252/30
+          items:
+            type: string
+          type: array
+        geolocation:
+          description: The collection of country codes.
+          example:
+          - CA
+          - FR
+          - HT
+          items:
+            type: string
+          type: array
+        whitelisted:
+          default: false
+          description: Denotes whether the provided lists are whitelisted or blacklisted
+            for geo location.
+          example: true
+          type: boolean
+      type: object
     SlimCampaign:
       example:
         recommendationsEnabled: true
