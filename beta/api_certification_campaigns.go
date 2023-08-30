@@ -870,6 +870,8 @@ Deletes campaigns whose Ids are specified in the provided list of campaign Ids. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteCampaignsRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) DeleteCampaigns(ctx context.Context) ApiDeleteCampaignsRequest {
 	return ApiDeleteCampaignsRequest{
@@ -880,6 +882,7 @@ func (a *CertificationCampaignsApiService) DeleteCampaigns(ctx context.Context) 
 
 // Execute executes the request
 //  @return map[string]interface{}
+// Deprecated
 func (a *CertificationCampaignsApiService) DeleteCampaignsExecute(r ApiDeleteCampaignsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

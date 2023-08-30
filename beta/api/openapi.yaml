@@ -6609,6 +6609,7 @@ paths:
       - Certification Campaigns
   /campaigns/delete:
     post:
+      deprecated: true
       description: Deletes campaigns whose Ids are specified in the provided list
         of campaign Ids. Authorized callers must be an ORG_ADMIN or a CERT_ADMIN.
       operationId: deleteCampaigns
@@ -6701,6 +6702,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - oauth2:
+        - idn:campaign:delete
       summary: Deletes Campaigns
       tags:
       - Certification Campaigns

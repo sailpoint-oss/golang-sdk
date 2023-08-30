@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CompleteCampaign**](CertificationCampaignsApi.md#CompleteCampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
 [**CreateCampaign**](CertificationCampaignsApi.md#CreateCampaign) | **Post** /campaigns | Create a campaign
+[**DeleteCampaigns**](CertificationCampaignsApi.md#DeleteCampaigns) | **Post** /campaigns/delete | Deletes Campaigns
 [**GetActiveCampaigns**](CertificationCampaignsApi.md#GetActiveCampaigns) | **Get** /campaigns | List Campaigns
 [**GetCampaign**](CertificationCampaignsApi.md#GetCampaign) | **Get** /campaigns/{id} | Get a campaign
 [**GetCampaignReports**](CertificationCampaignsApi.md#GetCampaignReports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
@@ -139,6 +140,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Campaign**](Campaign.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteCampaigns
+
+> map[string]interface{} DeleteCampaigns(ctx).CampaignsDeleteRequest(campaignsDeleteRequest).Execute()
+
+Deletes Campaigns
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    campaignsDeleteRequest := *openapiclient.NewCampaignsDeleteRequest() // CampaignsDeleteRequest | The ids of the campaigns to delete.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationCampaignsApi.DeleteCampaigns(context.Background()).CampaignsDeleteRequest(campaignsDeleteRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.DeleteCampaigns``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteCampaigns`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.DeleteCampaigns`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteCampaignsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignsDeleteRequest** | [**CampaignsDeleteRequest**](CampaignsDeleteRequest.md) | The ids of the campaigns to delete. | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
