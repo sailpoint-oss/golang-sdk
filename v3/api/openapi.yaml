@@ -29332,12 +29332,14 @@ components:
           format: int32
           type: integer
         authoritative:
+          default: false
           description: When true indicates the source is referenced by an IdentityProfile.
           example: false
           type: boolean
         managementWorkgroup:
           $ref: '#/components/schemas/Source_managementWorkgroup'
         healthy:
+          default: false
           description: When true indicates a healthy source
           example: true
           type: boolean
@@ -33923,8 +33925,8 @@ components:
             type: access
         aggregationsDsl: {}
         sort:
-        - "[displayName, +id]"
-        - "[displayName, +id]"
+        - displayName
+        - +id
         filters: {}
         queryVersion: ""
         queryType: SAILPOINT
@@ -33945,15 +33947,17 @@ components:
         textQuery:
           contains: true
           terms:
-          - "[The quick brown fox, 3141592, 7]"
-          - "[The quick brown fox, 3141592, 7]"
+          - The quick brown fox
+          - "3141592"
+          - "7"
           matchAny: false
           fields:
-          - "[displayName, employeeNumber, roleCount]"
-          - "[displayName, employeeNumber, roleCount]"
+          - displayName
+          - employeeNumber
+          - roleCount
         searchAfter:
-        - "[John Doe, 2c91808375d8e80a0175e1f88a575221]"
-        - "[John Doe, 2c91808375d8e80a0175e1f88a575221]"
+        - John Doe
+        - 2c91808375d8e80a0175e1f88a575221
         aggregations: null
       properties:
         indices:
@@ -34016,8 +34020,10 @@ components:
         sort:
           description: The fields to be used to sort the search results. Use + or
             - to specify the sort direction.
+          example:
+          - displayName
+          - +id
           items:
-            example: "[displayName, +id]"
             type: string
           type: array
         searchAfter:
@@ -34034,8 +34040,10 @@ components:
             \ is \"John Doe\", then using that displayName and ID will start a new\
             \ search after this identity.\nThe searchAfter value will look like [\"\
             John Doe\",\"2c91808375d8e80a0175e1f88a575221\"]"
+          example:
+          - John Doe
+          - 2c91808375d8e80a0175e1f88a575221
           items:
-            example: "[John Doe, 2c91808375d8e80a0175e1f88a575221]"
             type: string
           type: array
         filters:
@@ -35769,9 +35777,10 @@ components:
           type: integer
         maxReminders:
           description: Maximum number of reminder notification to send to the reviewer
-            before approval escalation. This will only be a positive number.
+            before approval escalation.
           example: 1
           format: int32
+          minimum: 1
           type: integer
         fallbackApproverRef:
           $ref: '#/components/schemas/IdentityReferenceWithNameAndEmail'
@@ -37303,24 +37312,32 @@ components:
       example:
         contains: true
         terms:
-        - "[The quick brown fox, 3141592, 7]"
-        - "[The quick brown fox, 3141592, 7]"
+        - The quick brown fox
+        - "3141592"
+        - "7"
         matchAny: false
         fields:
-        - "[displayName, employeeNumber, roleCount]"
-        - "[displayName, employeeNumber, roleCount]"
+        - displayName
+        - employeeNumber
+        - roleCount
       properties:
         terms:
           description: Words or characters that specify a particular thing to be searched
             for.
+          example:
+          - The quick brown fox
+          - "3141592"
+          - "7"
           items:
-            example: "[The quick brown fox, 3141592, 7]"
             type: string
           type: array
         fields:
           description: The fields to be searched.
+          example:
+          - displayName
+          - employeeNumber
+          - roleCount
           items:
-            example: "[displayName, employeeNumber, roleCount]"
             type: string
           type: array
         matchAny:
@@ -40205,6 +40222,10 @@ components:
           description: Human-readable display name of the cluster
           example: Corporate Cluster
           type: string
+      required:
+      - id
+      - name
+      - type
       type: object
     Source_accountCorrelationConfig:
       description: Reference to an Account Correlation Config object

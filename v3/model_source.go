@@ -79,6 +79,10 @@ func NewSource(name string, owner SourceOwner, connector string) *Source {
 	this.Name = name
 	this.Owner = owner
 	this.Connector = connector
+	var authoritative bool = false
+	this.Authoritative = &authoritative
+	var healthy bool = false
+	this.Healthy = &healthy
 	return &this
 }
 
@@ -87,6 +91,10 @@ func NewSource(name string, owner SourceOwner, connector string) *Source {
 // but it doesn't guarantee that properties required by API are set
 func NewSourceWithDefaults() *Source {
 	this := Source{}
+	var authoritative bool = false
+	this.Authoritative = &authoritative
+	var healthy bool = false
+	this.Healthy = &healthy
 	return &this
 }
 

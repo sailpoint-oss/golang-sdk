@@ -23,7 +23,7 @@ type ApprovalReminderAndEscalationConfig struct {
 	DaysUntilEscalation *int32 `json:"daysUntilEscalation,omitempty"`
 	// Number of days to wait between reminder notifications.
 	DaysBetweenReminders *int32 `json:"daysBetweenReminders,omitempty"`
-	// Maximum number of reminder notification to send to the reviewer before approval escalation. This will only be a positive number.
+	// Maximum number of reminder notification to send to the reviewer before approval escalation.
 	MaxReminders *int32 `json:"maxReminders,omitempty"`
 	FallbackApproverRef NullableIdentityReferenceWithNameAndEmail `json:"fallbackApproverRef,omitempty"`
 	AdditionalProperties map[string]interface{}

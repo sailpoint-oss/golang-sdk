@@ -54866,12 +54866,14 @@ components:
           format: int32
           type: integer
         authoritative:
+          default: false
           description: When true indicates the source is referenced by an IdentityProfile.
           example: false
           type: boolean
         managementWorkgroup:
           $ref: '#/components/schemas/Source_managementWorkgroup'
         healthy:
+          default: false
           description: When true indicates a healthy source
           example: true
           type: boolean
@@ -58901,9 +58903,10 @@ components:
           type: integer
         maxReminders:
           description: Maximum number of reminder notification to send to the reviewer
-            before approval escalation. This will only be a positive number.
+            before approval escalation.
           example: 1
           format: int32
+          minimum: 1
           type: integer
         fallbackApproverRef:
           $ref: '#/components/schemas/IdentityReferenceWithNameAndEmail'
@@ -66370,6 +66373,10 @@ components:
           description: Human-readable display name of the cluster
           example: Corporate Cluster
           type: string
+      required:
+      - id
+      - name
+      - type
       type: object
     Source_accountCorrelationConfig:
       description: Reference to an Account Correlation Config object
