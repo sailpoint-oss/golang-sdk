@@ -7625,13 +7625,14 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2:
+      - UserContextAuth:
         - idn:campaign-report:run
       summary: Run Campaign Report
       tags:
       - Certification Campaigns
   /campaigns/reports-configuration:
     get:
+      deprecated: true
       description: |-
         Fetches configuration for campaign reports. Currently it includes only one element - identity attributes defined as custom report columns.
         Requires roles of CERT_ADMIN and ORG_ADMIN.
@@ -7643,6 +7644,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/CampaignReportsConfig'
           description: Campaign Report Configuration
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -7693,6 +7700,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-reports-config:read
       summary: Get Campaign Reports Configuration
       tags:
       - Certification Campaigns
@@ -7771,6 +7781,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-reports-config:write
       summary: Set Campaign Reports Configuration
       tags:
       - Certification Campaigns
@@ -49008,6 +49021,7 @@ components:
         - lastname
       properties:
         identityAttributeColumns:
+          description: list of identity attribute columns
           example:
           - firstname
           - lastname

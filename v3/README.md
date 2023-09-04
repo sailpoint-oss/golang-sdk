@@ -117,6 +117,7 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**GetActiveCampaigns**](docs/CertificationCampaignsApi.md#getactivecampaigns) | **Get** /campaigns | List Campaigns
 *CertificationCampaignsApi* | [**GetCampaign**](docs/CertificationCampaignsApi.md#getcampaign) | **Get** /campaigns/{id} | Get a campaign
 *CertificationCampaignsApi* | [**GetCampaignReports**](docs/CertificationCampaignsApi.md#getcampaignreports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
+*CertificationCampaignsApi* | [**GetCampaignReportsConfig**](docs/CertificationCampaignsApi.md#getcampaignreportsconfig) | **Get** /campaigns/reports-configuration | Get Campaign Reports Configuration
 *CertificationCampaignsApi* | [**Move**](docs/CertificationCampaignsApi.md#move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 *CertificationCampaignsApi* | [**StartCampaign**](docs/CertificationCampaignsApi.md#startcampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
 *CertificationCampaignsApi* | [**StartCampaignReport**](docs/CertificationCampaignsApi.md#startcampaignreport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
@@ -419,6 +420,7 @@ Class | Method | HTTP request | Description
  - [CampaignReference](docs/CampaignReference.md)
  - [CampaignReport](docs/CampaignReport.md)
  - [CampaignReportAllOf](docs/CampaignReportAllOf.md)
+ - [CampaignReportsConfig](docs/CampaignReportsConfig.md)
  - [CampaignsDeleteRequest](docs/CampaignsDeleteRequest.md)
  - [CancelAccessRequest](docs/CancelAccessRequest.md)
  - [CancelledRequestDetails](docs/CancelledRequestDetails.md)

@@ -149,6 +149,7 @@ docs/CampaignCompleteOptions.md
 docs/CampaignReference.md
 docs/CampaignReport.md
 docs/CampaignReportAllOf.md
+docs/CampaignReportsConfig.md
 docs/CampaignsDeleteRequest.md
 docs/CancelAccessRequest.md
 docs/CancelledRequestDetails.md
@@ -593,6 +594,7 @@ model_campaign_complete_options.go
 model_campaign_reference.go
 model_campaign_report.go
 model_campaign_report_all_of.go
+model_campaign_reports_config.go
 model_campaigns_delete_request.go
 model_cancel_access_request.go
 model_cancelled_request_details.go

@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**GetActiveCampaigns**](CertificationCampaignsApi.md#GetActiveCampaigns) | **Get** /campaigns | List Campaigns
 [**GetCampaign**](CertificationCampaignsApi.md#GetCampaign) | **Get** /campaigns/{id} | Get a campaign
 [**GetCampaignReports**](CertificationCampaignsApi.md#GetCampaignReports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
+[**GetCampaignReportsConfig**](CertificationCampaignsApi.md#GetCampaignReportsConfig) | **Get** /campaigns/reports-configuration | Get Campaign Reports Configuration
 [**Move**](CertificationCampaignsApi.md#Move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 [**StartCampaign**](CertificationCampaignsApi.md#StartCampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
 [**StartCampaignReport**](CertificationCampaignsApi.md#StartCampaignReport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
@@ -422,6 +423,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]CampaignReport**](CampaignReport.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetCampaignReportsConfig
+
+> CampaignReportsConfig GetCampaignReportsConfig(ctx).Execute()
+
+Get Campaign Reports Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationCampaignsApi.GetCampaignReportsConfig(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.GetCampaignReportsConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCampaignReportsConfig`: CampaignReportsConfig
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.GetCampaignReportsConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCampaignReportsConfigRequest struct via the builder pattern
+
+
+### Return type
+
+[**CampaignReportsConfig**](CampaignReportsConfig.md)
 
 ### Authorization
 
