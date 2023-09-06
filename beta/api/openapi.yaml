@@ -749,7 +749,30 @@ tags:
     \ for more information about SOD policies. \n\nRefer to [Subscribe to a SOD Policy](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html#subscribe-to-an-sod-policy)\
     \ for more information about SOD policy subscriptions. \n"
   name: SOD Policy
-- description: Operations for Predicting SOD (Seperation of Duties) violations
+- description: "Use this API to check for current \"separation of duties\" (SOD) policy\
+    \ violations as well as potential future SOD policy violations. \nWith SOD violation\
+    \ functionality in place, administrators can get information about current SOD\
+    \ policy violations and predict whether an access change will trigger new violations,\
+    \ which helps to prevent them from occurring at all. \n\n\"Separation of duties\"\
+    \ refers to the concept that people shouldn't have conflicting sets of access\
+    \ - all their access should be configured in a way that protects your organization's\
+    \ assets and data.  \nFor example, people who record monetary transactions shouldn't\
+    \ be able to issue payment for those transactions.\nAny changes to major system\
+    \ configurations should be approved by someone other than the person requesting\
+    \ the change. \n\nOrganizations can use \"separation of duties\" (SOD) policies\
+    \ to enforce and track their internal security rules throughout their tenants.\n\
+    These SOD policies limit each user's involvement in important processes and protects\
+    \ the organization from individuals gaining excessive access. \n\nOnce a SOD policy\
+    \ is in place, if an identity has conflicting access items, a SOD violation will\
+    \ trigger. \nThese violations are included in SOD violation reports that other\
+    \ users will see in emails at regular intervals if they're subscribed to the SOD\
+    \ policy.\nThe other users can then better help to enforce these SOD policies.\n\
+    \nAdministrators can use the SOD violations APIs to check a set of identities\
+    \ for any current SOD violations, and they can use them to check whether adding\
+    \ an access item would potentially trigger a SOD violation. \nThis second option\
+    \ is a good way to prevent SOD violations from triggering at all. \n\nRefer to\
+    \ [Handling Policy Violations](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html)\
+    \ for more information about SOD policy violations. \n"
   name: SOD Violations
 - description: |
     Use this API to implement and customize source functionality.
