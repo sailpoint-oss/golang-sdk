@@ -6754,7 +6754,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2:
+      - UserContextAuth:
         - idn:campaign:delete
       summary: Deletes Campaigns
       tags:
@@ -7248,7 +7248,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2:
+      - UserContextAuth:
         - idn:campaign:update
       summary: Complete a Campaign
       tags:
