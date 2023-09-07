@@ -7758,6 +7758,7 @@ paths:
       tags:
       - Certification Campaigns
     put:
+      deprecated: true
       description: |-
         Overwrites configuration for campaign reports.
         Requires roles CERT_ADMIN and ORG_ADMIN.

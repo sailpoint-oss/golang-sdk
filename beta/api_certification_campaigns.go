@@ -2984,6 +2984,8 @@ Requires roles CERT_ADMIN and ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetCampaignReportsConfigRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) SetCampaignReportsConfig(ctx context.Context) ApiSetCampaignReportsConfigRequest {
 	return ApiSetCampaignReportsConfigRequest{
@@ -2994,6 +2996,7 @@ func (a *CertificationCampaignsApiService) SetCampaignReportsConfig(ctx context.
 
 // Execute executes the request
 //  @return CampaignReportsConfig
+// Deprecated
 func (a *CertificationCampaignsApiService) SetCampaignReportsConfigExecute(r ApiSetCampaignReportsConfigRequest) (*CampaignReportsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
