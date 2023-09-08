@@ -132,10 +132,10 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**ListCampaignTemplates**](docs/CertificationCampaignsApi.md#listcampaigntemplates) | **Get** /campaign-templates | List Campaign Templates
 *CertificationCampaignsApi* | [**Move**](docs/CertificationCampaignsApi.md#move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 *CertificationCampaignsApi* | [**PatchCampaignTemplate**](docs/CertificationCampaignsApi.md#patchcampaigntemplate) | **Patch** /campaign-templates/{id} | Update a Campaign Template
-*CertificationCampaignsApi* | [**RunCampaignRemediationScan**](docs/CertificationCampaignsApi.md#runcampaignremediationscan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 *CertificationCampaignsApi* | [**SetCampaignReportsConfig**](docs/CertificationCampaignsApi.md#setcampaignreportsconfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
 *CertificationCampaignsApi* | [**SetCampaignTemplateSchedule**](docs/CertificationCampaignsApi.md#setcampaigntemplateschedule) | **Put** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
 *CertificationCampaignsApi* | [**StartCampaign**](docs/CertificationCampaignsApi.md#startcampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
+*CertificationCampaignsApi* | [**StartCampaignRemediationScan**](docs/CertificationCampaignsApi.md#startcampaignremediationscan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 *CertificationCampaignsApi* | [**StartCampaignReport**](docs/CertificationCampaignsApi.md#startcampaignreport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
 *CertificationCampaignsApi* | [**UpdateCampaign**](docs/CertificationCampaignsApi.md#updatecampaign) | **Patch** /campaigns/{id} | Update a Campaign
 *CertificationsApi* | [**GetIdentityCertificationItemPermissions**](docs/CertificationsApi.md#getidentitycertificationitempermissions) | **Get** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for Entitlement Certification Item

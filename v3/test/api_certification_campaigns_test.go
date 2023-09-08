@@ -152,6 +152,20 @@ func Test_v3_CertificationCampaignsApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test CertificationCampaignsApiService StartCampaignRemediationScan", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.V3.CertificationCampaignsApi.StartCampaignRemediationScan(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CertificationCampaignsApiService StartCampaignReport", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
