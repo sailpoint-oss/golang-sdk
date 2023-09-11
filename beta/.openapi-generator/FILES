@@ -51,6 +51,7 @@ api_sod_violations.go
 api_sources.go
 api_sp_config.go
 api_tagged_objects.go
+api_task_management.go
 api_transforms.go
 api_triggers.go
 api_work_items.go
@@ -724,7 +725,11 @@ docs/SubscriptionPutRequest.md
 docs/SubscriptionType.md
 docs/TaggedObject.md
 docs/TaggedObjectsApi.md
+docs/TaskManagementApi.md
 docs/TaskResultSimplified.md
+docs/TaskReturnDetails.md
+docs/TaskStatus.md
+docs/TaskStatusMessage.md
 docs/TemplateBulkDeleteDto.md
 docs/TemplateDto.md
 docs/TemplateDtoDefault.md
@@ -1409,6 +1414,9 @@ model_subscription_put_request.go
 model_subscription_type.go
 model_tagged_object.go
 model_task_result_simplified.go
+model_task_return_details.go
+model_task_status.go
+model_task_status_message.go
 model_template_bulk_delete_dto.go
 model_template_dto.go
 model_template_dto_default.go
@@ -1515,6 +1523,7 @@ test/api_sod_violations_test.go
 test/api_sources_test.go
 test/api_sp_config_test.go
 test/api_tagged_objects_test.go
+test/api_task_management_test.go
 test/api_transforms_test.go
 test/api_triggers_test.go
 test/api_work_items_test.go

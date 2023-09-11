@@ -442,6 +442,11 @@ Class | Method | HTTP request | Description
 *TaggedObjectsApi* | [**RemoveTagsToManyObject**](docs/TaggedObjectsApi.md#removetagstomanyobject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsApi* | [**SetTagToObject**](docs/TaggedObjectsApi.md#settagtoobject) | **Post** /tagged-objects | Add Tag to Object
 *TaggedObjectsApi* | [**UpdateTaggedObject**](docs/TaggedObjectsApi.md#updatetaggedobject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
+*TaskManagementApi* | [**GetPendingTaskHeaders**](docs/TaskManagementApi.md#getpendingtaskheaders) | **Head** /task-status/pending-tasks | Retrieve headers only for pending task list.
+*TaskManagementApi* | [**GetPendingTasks**](docs/TaskManagementApi.md#getpendingtasks) | **Get** /task-status/pending-tasks | Retrieve a pending task list.
+*TaskManagementApi* | [**GetTaskStatus**](docs/TaskManagementApi.md#gettaskstatus) | **Get** /task-status/{id} | Get task status by ID.
+*TaskManagementApi* | [**GetTaskStatusList**](docs/TaskManagementApi.md#gettaskstatuslist) | **Get** /task-status | Retrieve a task status list.
+*TaskManagementApi* | [**UpdateTaskStatus**](docs/TaskManagementApi.md#updatetaskstatus) | **Patch** /task-status/{id} | Update task status by ID
 *TransformsApi* | [**CreateTransform**](docs/TransformsApi.md#createtransform) | **Post** /transforms | Create transform
 *TransformsApi* | [**DeleteTransform**](docs/TransformsApi.md#deletetransform) | **Delete** /transforms/{id} | Delete a transform
 *TransformsApi* | [**GetTransform**](docs/TransformsApi.md#gettransform) | **Get** /transforms/{id} | Transform by ID
@@ -1120,6 +1125,9 @@ Class | Method | HTTP request | Description
  - [SubscriptionType](docs/SubscriptionType.md)
  - [TaggedObject](docs/TaggedObject.md)
  - [TaskResultSimplified](docs/TaskResultSimplified.md)
+ - [TaskReturnDetails](docs/TaskReturnDetails.md)
+ - [TaskStatus](docs/TaskStatus.md)
+ - [TaskStatusMessage](docs/TaskStatusMessage.md)
  - [TemplateBulkDeleteDto](docs/TemplateBulkDeleteDto.md)
  - [TemplateDto](docs/TemplateDto.md)
  - [TemplateDtoDefault](docs/TemplateDtoDefault.md)

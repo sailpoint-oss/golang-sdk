@@ -35877,6 +35877,534 @@ paths:
       summary: Update Source Entitlement Request Configuration
       tags:
       - Sources
+  /task-status:
+    get:
+      description: Get a TaskStatus list.
+      operationId: getTaskStatusList
+      parameters:
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: |-
+          Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
+          Filtering is supported for the following fields and operators:
+            **id**: *eq, in*
+            **sourceId**: *eq, in*
+            **completionStatus**: *eq, in*
+            **type**: *eq, in* "CLOUD_ACCOUNT_AGGREGATION", "CLOUD_GROUP_AGGREGATION", "CLOUD_PROCESS_UNCORRELATED_ACCOUNTS" or "CLOUD_REFRESH_ROLE"
+        example: completionStatus eq "Success"
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+      - description: |-
+          Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
+          Sorting is supported for the following fields: **created**
+        example: -created
+        in: query
+        name: sorters
+        required: false
+        schema:
+          format: comma-separated
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TaskStatus'
+                type: array
+          description: Responds with a TaskStatus for the task with the given task
+            ID.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:task-management:read
+      summary: Retrieve a task status list.
+      tags:
+      - Task Management
+  /task-status/{id}:
+    get:
+      description: Get a TaskStatus for a task by task ID.
+      operationId: getTaskStatus
+      parameters:
+      - description: Task ID of the TaskStatus to get
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: anId
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatus'
+          description: Responds with a TaskStatus for the task with the given task
+            ID.
+        "403":
+          description: "Forbidden, generally due to a lack of security rights"
+        "404":
+          description: TaskStatus with the given id was not found.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:task-management:read
+      summary: Get task status by ID.
+      tags:
+      - Task Management
+    patch:
+      description: Update a current TaskStatus for a task by task ID.
+      operationId: updateTaskStatus
+      parameters:
+      - description: Task ID of the task whose TaskStatus to update
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          example: anId
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/JsonPatch'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatus'
+          description: Responds with the updated TaskStatus for the task with the
+            given task ID.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:task-management:write
+      summary: Update task status by ID
+      tags:
+      - Task Management
+  /task-status/pending-tasks:
+    get:
+      description: Retrieve a list of TaskStatus for pending tasks.
+      operationId: getPendingTasks
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: sort criteria
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: filter criteria
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TaskStatus'
+                type: array
+          description: Responds with a list of TaskStatus for pending tasks.
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+      security:
+      - UserContextAuth:
+        - idn:task-management:read
+      summary: Retrieve a pending task list.
+      tags:
+      - Task Management
+    head:
+      description: Retrieve headers for a list of TaskStatus for pending tasks.
+      operationId: getPendingTaskHeaders
+      parameters:
+      - description: |-
+          Offset into the full result set. Usually specified with *limit* to paginate through the results.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 0
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          minimum: 0
+          type: integer
+      - description: |-
+          Max number of results to return.
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: 250
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 250
+          format: int32
+          maximum: 250
+          minimum: 0
+          type: integer
+      - description: |-
+          If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
+
+          Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.
+
+          See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+        example: true
+        in: query
+        name: count
+        required: false
+        schema:
+          default: false
+          type: boolean
+      - description: sort criteria
+        explode: true
+        in: query
+        name: sorters
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: filter criteria
+        explode: true
+        in: query
+        name: filters
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          description: Responds with headers for List of TaskStatus for pending tasks.
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+      security:
+      - UserContextAuth:
+        - idn:task-management:read
+      summary: Retrieve headers only for pending task list.
+      tags:
+      - Task Management
   /tagged-objects:
     get:
       description: |-
@@ -55498,6 +56026,145 @@ components:
         accessRequestConfig:
           $ref: '#/components/schemas/EntitlementAccessRequestConfig'
       type: object
+    TaskStatus:
+      description: Details and current status of a specific task
+      example:
+        created: 2020-07-11T21:23:15Z
+        description: A Really Big Task
+        completed: 2020-07-11T21:23:15Z
+        percentComplete: 100
+        type: QUARTZ
+        launched: 2020-07-11T21:23:15Z
+        parentName: Parent Task
+        uniqueName: Big Task
+        modified: 2020-07-11T21:23:15Z
+        messages:
+        - type: INFO
+          parameters:
+          - name: value
+          key: akey
+          localizedText:
+            locale: An error has occurred!
+            message: Error has occurred!
+        - type: INFO
+          parameters:
+          - name: value
+          key: akey
+          localizedText:
+            locale: An error has occurred!
+            message: Error has occurred!
+        progress: Started
+        returns:
+        - name: label
+          attributeName: identityCount
+        - name: label
+          attributeName: identityCount
+        attributes:
+          identityCount: 0
+        id: id12345
+        completionStatus: Success
+        launcher: sweep
+      properties:
+        id:
+          description: System-generated unique ID of the task this TaskStatus represents
+          example: id12345
+          type: string
+        type:
+          description: Type of task this TaskStatus represents
+          enum:
+          - QUARTZ
+          - QPOC
+          - QUEUED_TASK
+          example: QUARTZ
+          type: string
+        uniqueName:
+          description: Name of the task this TaskStatus represents
+          example: Big Task
+          type: string
+        description:
+          description: Description of the task this TaskStatus represents
+          example: A Really Big Task
+          type: string
+        parentName:
+          description: Name of the parent of the task this TaskStatus represents
+          example: Parent Task
+          type: string
+        launcher:
+          description: Service to execute the task this TaskStatus represents
+          example: sweep
+          type: string
+        created:
+          description: Creation date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          type: string
+        modified:
+          description: Last modification date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          type: string
+        launched:
+          description: Launch date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          type: string
+        completed:
+          description: Completion date of the task this TaskStatus represents
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          type: string
+        completionStatus:
+          description: Completion status of the task this TaskStatus represents
+          enum:
+          - Success
+          - Warning
+          - Error
+          - Terminated
+          - TempError
+          example: Success
+          type: string
+        messages:
+          description: Messages associated with the task this TaskStatus represents
+          items:
+            $ref: '#/components/schemas/TaskStatusMessage'
+          type: array
+        returns:
+          description: Return values from the task this TaskStatus represents
+          items:
+            $ref: '#/components/schemas/TaskReturnDetails'
+          type: array
+        attributes:
+          additionalProperties: true
+          description: Attributes of the task this TaskStatus represents
+          example:
+            identityCount: 0
+          type: object
+        progress:
+          description: Current progress of the task this TaskStatus represents
+          example: Started
+          type: string
+        percentComplete:
+          description: Current percentage completion of the task this TaskStatus represents
+          example: 100
+          type: integer
+      required:
+      - attributes
+      - completed
+      - completionStatus
+      - created
+      - description
+      - id
+      - launched
+      - launcher
+      - messages
+      - modified
+      - parentName
+      - percentComplete
+      - progress
+      - returns
+      - type
+      - uniqueName
+      type: object
     TaggedObject:
       example:
         objectRef:
@@ -61563,6 +62230,62 @@ components:
       - dataJson
       - type
       type: object
+    TaskStatusMessage:
+      description: TaskStatus Message
+      example:
+        type: INFO
+        parameters:
+        - name: value
+        key: akey
+        localizedText:
+          locale: An error has occurred!
+          message: Error has occurred!
+      properties:
+        type:
+          description: Type of the message
+          enum:
+          - INFO
+          - WARN
+          - ERROR
+          example: INFO
+          type: string
+        localizedText:
+          $ref: '#/components/schemas/LocalizedMessage'
+        key:
+          description: Key of the message
+          example: akey
+          type: string
+        parameters:
+          description: Message parameters for internationalization
+          example:
+          - name: value
+          items:
+            type: object
+          type: array
+      required:
+      - key
+      - localizedText
+      - parameters
+      - type
+      type: object
+    TaskReturnDetails:
+      description: Task return details
+      example:
+        name: label
+        attributeName: identityCount
+      properties:
+        name:
+          description: Display name of the TaskReturnDetails
+          example: label
+          type: string
+        attributeName:
+          description: Attribute the TaskReturnDetails is for
+          example: identityCount
+          type: string
+      required:
+      - attributeName
+      - name
+      type: object
     TriggerType:
       description: The type of trigger.
       enum:
@@ -63719,6 +64442,25 @@ components:
       - BOOLEAN
       example: STRING
       type: string
+    LocalizedMessage:
+      description: Localized error message to indicate a failed invocation or error
+        if any.
+      example:
+        locale: An error has occurred!
+        message: Error has occurred!
+      properties:
+        locale:
+          description: Message locale
+          example: An error has occurred!
+          type: string
+        message:
+          description: Message text
+          example: Error has occurred!
+          type: string
+      required:
+      - locale
+      - message
+      type: object
     CertificationDto:
       properties:
         campaignRef:
@@ -63844,25 +64586,6 @@ components:
           nullable: true
           type: string
           example: null
-      type: object
-    LocalizedMessage:
-      description: Localized error message to indicate a failed invocation or error
-        if any.
-      example:
-        locale: An error has occurred!
-        message: Error has occurred!
-      properties:
-        locale:
-          description: Message locale
-          example: An error has occurred!
-          type: string
-        message:
-          description: Message text
-          example: Error has occurred!
-          type: string
-      required:
-      - locale
-      - message
       type: object
     AccessCriteria:
       properties:
