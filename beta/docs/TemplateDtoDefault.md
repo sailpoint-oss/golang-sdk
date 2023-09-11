@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
+**Key** | Pointer to **string** | The key of the default template | [optional] 
+**Name** | Pointer to **string** | The name of the default template | [optional] 
 **Medium** | Pointer to **string** | The message medium. More mediums may be added in the future. | [optional] 
 **Locale** | Pointer to **string** | The locale for the message text, a BCP 47 language tag. | [optional] 
-**Subject** | Pointer to **string** |  | [optional] 
-**Header** | Pointer to **string** |  | [optional] 
-**Body** | Pointer to **string** |  | [optional] 
-**Footer** | Pointer to **string** |  | [optional] 
-**From** | Pointer to **string** |  | [optional] 
-**ReplyTo** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
+**Subject** | Pointer to **string** | The subject of the default template | [optional] 
+**Header** | Pointer to **NullableString** | The header value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
+**Body** | Pointer to **string** | The body of the default template | [optional] 
+**Footer** | Pointer to **NullableString** | The footer value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
+**From** | Pointer to **string** | The \&quot;From:\&quot; address of the default template | [optional] 
+**ReplyTo** | Pointer to **string** | The \&quot;Reply To\&quot; field of the default template | [optional] 
+**Description** | Pointer to **string** | The description of the default template | [optional] 
 
 ## Methods
 
@@ -185,6 +185,16 @@ SetHeader sets Header field to given value.
 
 HasHeader returns a boolean if a field has been set.
 
+### SetHeaderNil
+
+`func (o *TemplateDtoDefault) SetHeaderNil(b bool)`
+
+ SetHeaderNil sets the value for Header to be an explicit nil
+
+### UnsetHeader
+`func (o *TemplateDtoDefault) UnsetHeader()`
+
+UnsetHeader ensures that no value is present for Header, not even an explicit nil
 ### GetBody
 
 `func (o *TemplateDtoDefault) GetBody() string`
@@ -235,6 +245,16 @@ SetFooter sets Footer field to given value.
 
 HasFooter returns a boolean if a field has been set.
 
+### SetFooterNil
+
+`func (o *TemplateDtoDefault) SetFooterNil(b bool)`
+
+ SetFooterNil sets the value for Footer to be an explicit nil
+
+### UnsetFooter
+`func (o *TemplateDtoDefault) UnsetFooter()`
+
+UnsetFooter ensures that no value is present for Footer, not even an explicit nil
 ### GetFrom
 
 `func (o *TemplateDtoDefault) GetFrom() string`

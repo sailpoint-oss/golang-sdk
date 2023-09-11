@@ -19,18 +19,29 @@ var _ MappedNullable = &TemplateDtoDefault{}
 
 // TemplateDtoDefault struct for TemplateDtoDefault
 type TemplateDtoDefault struct {
+	// The key of the default template
 	Key *string `json:"key,omitempty"`
+	// The name of the default template
 	Name *string `json:"name,omitempty"`
 	// The message medium. More mediums may be added in the future.
 	Medium *string `json:"medium,omitempty"`
 	// The locale for the message text, a BCP 47 language tag.
 	Locale *string `json:"locale,omitempty"`
+	// The subject of the default template
 	Subject *string `json:"subject,omitempty"`
-	Header *string `json:"header,omitempty"`
+	// The header value is now located within the body field. If included with non-null values, will result in a 400.
+	// Deprecated
+	Header NullableString `json:"header,omitempty"`
+	// The body of the default template
 	Body *string `json:"body,omitempty"`
-	Footer *string `json:"footer,omitempty"`
+	// The footer value is now located within the body field. If included with non-null values, will result in a 400.
+	// Deprecated
+	Footer NullableString `json:"footer,omitempty"`
+	// The \"From:\" address of the default template
 	From *string `json:"from,omitempty"`
+	// The \"Reply To\" field of the default template
 	ReplyTo *string `json:"replyTo,omitempty"`
+	// The description of the default template
 	Description *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -214,36 +225,49 @@ func (o *TemplateDtoDefault) SetSubject(v string) {
 	o.Subject = &v
 }
 
-// GetHeader returns the Header field value if set, zero value otherwise.
+// GetHeader returns the Header field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
 func (o *TemplateDtoDefault) GetHeader() string {
-	if o == nil || isNil(o.Header) {
+	if o == nil || isNil(o.Header.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Header
+	return *o.Header.Get()
 }
 
 // GetHeaderOk returns a tuple with the Header field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
 func (o *TemplateDtoDefault) GetHeaderOk() (*string, bool) {
-	if o == nil || isNil(o.Header) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Header, true
+	return o.Header.Get(), o.Header.IsSet()
 }
 
 // HasHeader returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasHeader() bool {
-	if o != nil && !isNil(o.Header) {
+	if o != nil && o.Header.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHeader gets a reference to the given string and assigns it to the Header field.
+// SetHeader gets a reference to the given NullableString and assigns it to the Header field.
+// Deprecated
 func (o *TemplateDtoDefault) SetHeader(v string) {
-	o.Header = &v
+	o.Header.Set(&v)
+}
+// SetHeaderNil sets the value for Header to be an explicit nil
+func (o *TemplateDtoDefault) SetHeaderNil() {
+	o.Header.Set(nil)
+}
+
+// UnsetHeader ensures that no value is present for Header, not even an explicit nil
+func (o *TemplateDtoDefault) UnsetHeader() {
+	o.Header.Unset()
 }
 
 // GetBody returns the Body field value if set, zero value otherwise.
@@ -278,36 +302,49 @@ func (o *TemplateDtoDefault) SetBody(v string) {
 	o.Body = &v
 }
 
-// GetFooter returns the Footer field value if set, zero value otherwise.
+// GetFooter returns the Footer field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
 func (o *TemplateDtoDefault) GetFooter() string {
-	if o == nil || isNil(o.Footer) {
+	if o == nil || isNil(o.Footer.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Footer
+	return *o.Footer.Get()
 }
 
 // GetFooterOk returns a tuple with the Footer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
 func (o *TemplateDtoDefault) GetFooterOk() (*string, bool) {
-	if o == nil || isNil(o.Footer) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Footer, true
+	return o.Footer.Get(), o.Footer.IsSet()
 }
 
 // HasFooter returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasFooter() bool {
-	if o != nil && !isNil(o.Footer) {
+	if o != nil && o.Footer.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFooter gets a reference to the given string and assigns it to the Footer field.
+// SetFooter gets a reference to the given NullableString and assigns it to the Footer field.
+// Deprecated
 func (o *TemplateDtoDefault) SetFooter(v string) {
-	o.Footer = &v
+	o.Footer.Set(&v)
+}
+// SetFooterNil sets the value for Footer to be an explicit nil
+func (o *TemplateDtoDefault) SetFooterNil() {
+	o.Footer.Set(nil)
+}
+
+// UnsetFooter ensures that no value is present for Footer, not even an explicit nil
+func (o *TemplateDtoDefault) UnsetFooter() {
+	o.Footer.Unset()
 }
 
 // GetFrom returns the From field value if set, zero value otherwise.
@@ -431,14 +468,14 @@ func (o TemplateDtoDefault) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Subject) {
 		toSerialize["subject"] = o.Subject
 	}
-	if !isNil(o.Header) {
-		toSerialize["header"] = o.Header
+	if o.Header.IsSet() {
+		toSerialize["header"] = o.Header.Get()
 	}
 	if !isNil(o.Body) {
 		toSerialize["body"] = o.Body
 	}
-	if !isNil(o.Footer) {
-		toSerialize["footer"] = o.Footer
+	if o.Footer.IsSet() {
+		toSerialize["footer"] = o.Footer.Get()
 	}
 	if !isNil(o.From) {
 		toSerialize["from"] = o.From

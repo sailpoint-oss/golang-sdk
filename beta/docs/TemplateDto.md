@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | **string** |  | 
-**Name** | Pointer to **string** |  | [optional] 
+**Key** | **string** | The key of the template | 
+**Name** | Pointer to **string** | The name of the Task Manager Subscription | [optional] 
 **Medium** | **string** | The message medium. More mediums may be added in the future. | 
 **Locale** | **string** | The locale for the message text, a BCP 47 language tag. | 
-**Subject** | Pointer to **string** |  | [optional] 
-**Header** | Pointer to **string** |  | [optional] 
-**Body** | Pointer to **string** |  | [optional] 
-**Footer** | Pointer to **string** |  | [optional] 
-**From** | Pointer to **string** |  | [optional] 
-**ReplyTo** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
+**Subject** | Pointer to **string** | The subject line in the template | [optional] 
+**Header** | Pointer to **NullableString** | The header value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
+**Body** | Pointer to **string** | The body in the template | [optional] 
+**Footer** | Pointer to **NullableString** | The footer value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
+**From** | Pointer to **string** | The \&quot;From:\&quot; address in the template | [optional] 
+**ReplyTo** | Pointer to **string** | The \&quot;Reply To\&quot; line in the template | [optional] 
+**Description** | Pointer to **string** | The description in the template | [optional] 
 **Id** | Pointer to **string** | This is auto-generated. | [optional] 
 **Created** | Pointer to **time.Time** | The time when this template is created. This is auto-generated. | [optional] 
 **Modified** | Pointer to **time.Time** | The time when this template was last modified. This is auto-generated. | [optional] 
@@ -173,6 +173,16 @@ SetHeader sets Header field to given value.
 
 HasHeader returns a boolean if a field has been set.
 
+### SetHeaderNil
+
+`func (o *TemplateDto) SetHeaderNil(b bool)`
+
+ SetHeaderNil sets the value for Header to be an explicit nil
+
+### UnsetHeader
+`func (o *TemplateDto) UnsetHeader()`
+
+UnsetHeader ensures that no value is present for Header, not even an explicit nil
 ### GetBody
 
 `func (o *TemplateDto) GetBody() string`
@@ -223,6 +233,16 @@ SetFooter sets Footer field to given value.
 
 HasFooter returns a boolean if a field has been set.
 
+### SetFooterNil
+
+`func (o *TemplateDto) SetFooterNil(b bool)`
+
+ SetFooterNil sets the value for Footer to be an explicit nil
+
+### UnsetFooter
+`func (o *TemplateDto) UnsetFooter()`
+
+UnsetFooter ensures that no value is present for Footer, not even an explicit nil
 ### GetFrom
 
 `func (o *TemplateDto) GetFrom() string`
