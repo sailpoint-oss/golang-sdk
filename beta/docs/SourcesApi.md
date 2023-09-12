@@ -8,8 +8,10 @@ Method | HTTP request | Description
 [**CreateSource**](SourcesApi.md#CreateSource) | **Post** /sources | Creates a source in IdentityNow.
 [**CreateSourceSchema**](SourcesApi.md#CreateSourceSchema) | **Post** /sources/{sourceId}/schemas | Creates a new Schema on the specified Source in IdentityNow.
 [**Delete**](SourcesApi.md#Delete) | **Delete** /sources/{id} | Delete Source by ID
+[**DeleteNativeChangeDetectionConfig**](SourcesApi.md#DeleteNativeChangeDetectionConfig) | **Delete** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 [**DeleteProvisioningPolicy**](SourcesApi.md#DeleteProvisioningPolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 [**DeleteSourceSchema**](SourcesApi.md#DeleteSourceSchema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
+[**GetNativeChangeDetectionConfig**](SourcesApi.md#GetNativeChangeDetectionConfig) | **Get** /sources/{sourceId}/native-change-detection-config | Native Change Detection Configuration
 [**GetProvisioningPolicy**](SourcesApi.md#GetProvisioningPolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 [**GetSource**](SourcesApi.md#GetSource) | **Get** /sources/{id} | Get Source by ID
 [**GetSourceAccountsSchema**](SourcesApi.md#GetSourceAccountsSchema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
@@ -26,6 +28,7 @@ Method | HTTP request | Description
 [**ListSources**](SourcesApi.md#ListSources) | **Get** /sources | Lists all sources in IdentityNow.
 [**PeekResourceObjects**](SourcesApi.md#PeekResourceObjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 [**PingCluster**](SourcesApi.md#PingCluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
+[**PutNativeChangeDetectionConfig**](SourcesApi.md#PutNativeChangeDetectionConfig) | **Put** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
 [**PutProvisioningPolicy**](SourcesApi.md#PutProvisioningPolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 [**PutSource**](SourcesApi.md#PutSource) | **Put** /sources/{id} | Update Source (Full)
 [**PutSourceAttrSyncConfig**](SourcesApi.md#PutSourceAttrSyncConfig) | **Put** /sources/{id}/attribute-sync-config | Update Attribute Sync Config
@@ -321,6 +324,74 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteNativeChangeDetectionConfig
+
+> DeleteNativeChangeDetectionConfig(ctx, id).Execute()
+
+Delete Native Change Detection Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "2c9180835d191a86015d28455b4a2329" // string | The source id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.DeleteNativeChangeDetectionConfig(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.DeleteNativeChangeDetectionConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteNativeChangeDetectionConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteProvisioningPolicy
 
 > DeleteProvisioningPolicy(ctx, sourceId, usageType).Execute()
@@ -446,6 +517,76 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetNativeChangeDetectionConfig
+
+> NativeChangeDetectionConfig GetNativeChangeDetectionConfig(ctx, id).Execute()
+
+Native Change Detection Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "2c9180835d191a86015d28455b4a2329" // string | The source id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.GetNativeChangeDetectionConfig(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetNativeChangeDetectionConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetNativeChangeDetectionConfig`: NativeChangeDetectionConfig
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.GetNativeChangeDetectionConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNativeChangeDetectionConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**NativeChangeDetectionConfig**](NativeChangeDetectionConfig.md)
 
 ### Authorization
 
@@ -1583,6 +1724,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PutNativeChangeDetectionConfig
+
+> NativeChangeDetectionConfig PutNativeChangeDetectionConfig(ctx, id).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
+
+Update Native Change Detection Configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "2c9180835d191a86015d28455b4a2329" // string | The source id
+    nativeChangeDetectionConfig := *openapiclient.NewNativeChangeDetectionConfig() // NativeChangeDetectionConfig | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesApi.PutNativeChangeDetectionConfig(context.Background(), id).NativeChangeDetectionConfig(nativeChangeDetectionConfig).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.PutNativeChangeDetectionConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutNativeChangeDetectionConfig`: NativeChangeDetectionConfig
+    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.PutNativeChangeDetectionConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The source id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutNativeChangeDetectionConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **nativeChangeDetectionConfig** | [**NativeChangeDetectionConfig**](NativeChangeDetectionConfig.md) |  | 
+
+### Return type
+
+[**NativeChangeDetectionConfig**](NativeChangeDetectionConfig.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

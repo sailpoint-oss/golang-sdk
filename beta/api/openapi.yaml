@@ -33601,6 +33601,310 @@ paths:
       summary: Gets source config with language translations
       tags:
       - Sources
+  /sources/{sourceId}/native-change-detection-config:
+    delete:
+      description: |-
+        Deletes the native change detection configuration for the source specified by the given ID.
+        A token with API, or ORG_ADMIN authority is required to call this API.
+      operationId: deleteNativeChangeDetectionConfig
+      parameters:
+      - description: The source id
+        example: 2c9180835d191a86015d28455b4a2329
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sources:update
+      summary: Delete Native Change Detection Configuration
+      tags:
+      - Sources
+    get:
+      description: |-
+        This API returns the existing native change detection configuration for a source specified by the given ID.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: getNativeChangeDetectionConfig
+      parameters:
+      - description: The source id
+        example: 2c9180835d191a86015d28455b4a2329
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NativeChangeDetectionConfig'
+          description: Native change detection configuration for a source
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sources:read
+      summary: Native Change Detection Configuration
+      tags:
+      - Sources
+    put:
+      description: "Replaces the native change detection configuration for the source\
+        \ specified by the given ID with the configuration provided in the request\
+        \ body.\n    \nA token with ORG_ADMIN authority is required to call this API."
+      operationId: putNativeChangeDetectionConfig
+      parameters:
+      - description: The source id
+        example: 2c9180835d191a86015d28455b4a2329
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NativeChangeDetectionConfig'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NativeChangeDetectionConfig'
+          description: Updated native change detection configuration for a source
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:sources:update
+      summary: Update Native Change Detection Configuration
+      tags:
+      - Sources
   /sources/{sourceId}/provisioning-policies:
     get:
       description: |-
@@ -55801,6 +56105,80 @@ components:
           example:
             supportedUI: EXTJS
           type: object
+      type: object
+    NativeChangeDetectionConfig:
+      description: Source configuration information for Native Change Detection that
+        is read and used by account aggregation process.
+      example:
+        selectedEntitlements:
+        - memberOf
+        - memberOfSharedMailbox
+        operations:
+        - ACCOUNT_UPDATED
+        - ACCOUNT_DELETED
+        selectedNonEntitlementAttributes:
+        - lastName
+        - phoneNumber
+        - objectType
+        - servicePrincipalName
+        allNonEntitlementAttributes: false
+        allEntitlements: false
+        enabled: true
+      properties:
+        enabled:
+          default: false
+          description: A flag indicating if Native Change Detection is enabled for
+            a source.
+          example: true
+          type: boolean
+        operations:
+          description: Operation types for which Native Change Detection is enabled
+            for a source.
+          example:
+          - ACCOUNT_UPDATED
+          - ACCOUNT_DELETED
+          items:
+            enum:
+            - ACCOUNT_UPDATED
+            - ACCOUNT_CREATED
+            - ACCOUNT_DELETED
+            type: string
+          type: array
+        allEntitlements:
+          default: false
+          description: A flag indicating that all entitlements participate in Native
+            Change Detection.
+          example: false
+          type: boolean
+        allNonEntitlementAttributes:
+          default: false
+          description: A flag indicating that all non-entitlement account attributes
+            participate in Native Change Detection.
+          example: false
+          type: boolean
+        selectedEntitlements:
+          description: If allEntitlements flag is off this field lists entitlements
+            that participate in Native Change Detection.
+          example:
+          - memberOf
+          - memberOfSharedMailbox
+          items:
+            type: string
+          type: array
+        selectedNonEntitlementAttributes:
+          description: If allNonEntitlementAttributes flag is off this field lists
+            non-entitlement account attributes that participate in Native Change Detection.
+          example:
+          - lastName
+          - phoneNumber
+          - objectType
+          - servicePrincipalName
+          externalDocs:
+            description: Learn more about account attributes here.
+            url: https://documentation.sailpoint.com/saas/help/accounts/schema.html
+          items:
+            type: string
+          type: array
       type: object
     ProvisioningPolicyDto:
       example:

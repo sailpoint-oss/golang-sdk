@@ -404,8 +404,10 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**CreateSource**](docs/SourcesApi.md#createsource) | **Post** /sources | Creates a source in IdentityNow.
 *SourcesApi* | [**CreateSourceSchema**](docs/SourcesApi.md#createsourceschema) | **Post** /sources/{sourceId}/schemas | Creates a new Schema on the specified Source in IdentityNow.
 *SourcesApi* | [**Delete**](docs/SourcesApi.md#delete) | **Delete** /sources/{id} | Delete Source by ID
+*SourcesApi* | [**DeleteNativeChangeDetectionConfig**](docs/SourcesApi.md#deletenativechangedetectionconfig) | **Delete** /sources/{sourceId}/native-change-detection-config | Delete Native Change Detection Configuration
 *SourcesApi* | [**DeleteProvisioningPolicy**](docs/SourcesApi.md#deleteprovisioningpolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
 *SourcesApi* | [**DeleteSourceSchema**](docs/SourcesApi.md#deletesourceschema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
+*SourcesApi* | [**GetNativeChangeDetectionConfig**](docs/SourcesApi.md#getnativechangedetectionconfig) | **Get** /sources/{sourceId}/native-change-detection-config | Native Change Detection Configuration
 *SourcesApi* | [**GetProvisioningPolicy**](docs/SourcesApi.md#getprovisioningpolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
 *SourcesApi* | [**GetSource**](docs/SourcesApi.md#getsource) | **Get** /sources/{id} | Get Source by ID
 *SourcesApi* | [**GetSourceAccountsSchema**](docs/SourcesApi.md#getsourceaccountsschema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
@@ -422,6 +424,7 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**ListSources**](docs/SourcesApi.md#listsources) | **Get** /sources | Lists all sources in IdentityNow.
 *SourcesApi* | [**PeekResourceObjects**](docs/SourcesApi.md#peekresourceobjects) | **Post** /sources/{sourceId}/connector/peek-resource-objects | Peek source connector&#39;s resource objects
 *SourcesApi* | [**PingCluster**](docs/SourcesApi.md#pingcluster) | **Post** /sources/{sourceId}/connector/ping-cluster | Ping cluster for source connector
+*SourcesApi* | [**PutNativeChangeDetectionConfig**](docs/SourcesApi.md#putnativechangedetectionconfig) | **Put** /sources/{sourceId}/native-change-detection-config | Update Native Change Detection Configuration
 *SourcesApi* | [**PutProvisioningPolicy**](docs/SourcesApi.md#putprovisioningpolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
 *SourcesApi* | [**PutSource**](docs/SourcesApi.md#putsource) | **Put** /sources/{id} | Update Source (Full)
 *SourcesApi* | [**PutSourceAttrSyncConfig**](docs/SourcesApi.md#putsourceattrsyncconfig) | **Put** /sources/{id}/attribute-sync-config | Update Attribute Sync Config
@@ -877,6 +880,7 @@ Class | Method | HTTP request | Description
  - [MfaConfig](docs/MfaConfig.md)
  - [MfaConfigTestResponse](docs/MfaConfigTestResponse.md)
  - [MultiPolicyRequest](docs/MultiPolicyRequest.md)
+ - [NativeChangeDetectionConfig](docs/NativeChangeDetectionConfig.md)
  - [NonEmployeeApprovalDecision](docs/NonEmployeeApprovalDecision.md)
  - [NonEmployeeApprovalItem](docs/NonEmployeeApprovalItem.md)
  - [NonEmployeeApprovalItemAllOf](docs/NonEmployeeApprovalItemAllOf.md)

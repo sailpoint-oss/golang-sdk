@@ -457,6 +457,7 @@ docs/MetricResponse.md
 docs/MfaConfig.md
 docs/MfaConfigTestResponse.md
 docs/MultiPolicyRequest.md
+docs/NativeChangeDetectionConfig.md
 docs/NonEmployeeApprovalDecision.md
 docs/NonEmployeeApprovalItem.md
 docs/NonEmployeeApprovalItemAllOf.md
@@ -1166,6 +1167,7 @@ model_metric_response.go
 model_mfa_config.go
 model_mfa_config_test_response.go
 model_multi_policy_request.go
+model_native_change_detection_config.go
 model_non_employee_approval_decision.go
 model_non_employee_approval_item.go
 model_non_employee_approval_item_all_of.go

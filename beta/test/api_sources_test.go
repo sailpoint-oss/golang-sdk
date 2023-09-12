@@ -76,6 +76,19 @@ func Test_beta_SourcesApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test SourcesApiService DeleteNativeChangeDetectionConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		httpRes, err := apiClient.BETA.SourcesApi.DeleteNativeChangeDetectionConfig(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SourcesApiService DeleteProvisioningPolicy", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -100,6 +113,20 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		httpRes, err := apiClient.BETA.SourcesApi.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesApiService GetNativeChangeDetectionConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.SourcesApi.GetNativeChangeDetectionConfig(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -317,6 +344,20 @@ func Test_beta_SourcesApiService(t *testing.T) {
 		var sourceId string
 
 		resp, httpRes, err := apiClient.BETA.SourcesApi.PingCluster(context.Background(), sourceId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesApiService PutNativeChangeDetectionConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.SourcesApi.PutNativeChangeDetectionConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
