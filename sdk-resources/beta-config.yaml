@@ -1,6 +1,6 @@
 templateDir: ./sdk-resources/resources
 packageName: beta
-packageVersion: 1.1.7
+packageVersion: 1.1.8
 generateInterfaces: false
 enumClassPrefix: false
 disallowAdditionalPropertiesIfNotPresent: false
