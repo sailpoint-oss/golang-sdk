@@ -22272,7 +22272,7 @@ paths:
                   value: 2c918087813a902001813f3f85736b45
               Edit source features:
                 description: This example illustrates how you can update source supported
-                  features
+                  features.
                 value:
                 - op: replace
                   path: /features
@@ -22304,7 +22304,7 @@ paths:
                 description: This example shows how you can update the 3rd object
                   in the connection parameters operationType. This will change it
                   from a standard group aggregation to a group aggregation on the
-                  "test" entitlement type
+                  "test" entitlement type.
                 value:
                 - op: replace
                   path: /connectorAttributes/connectionParameters/2/operationType
@@ -22821,7 +22821,25 @@ paths:
         required: true
         schema:
           type: string
-      - description: The type of ProvisioningPolicy usage.
+      - description: "The type of provisioning policy usage. \nIn IdentityNow, a source\
+          \ can support various provisioning operations. For example, when a joiner\
+          \ is added to a source, this may trigger both CREATE and UPDATE provisioning\
+          \ operations.  Each usage type is considered a provisioning policy.  A source\
+          \ can have any number of these provisioning policies defined. \nThese are\
+          \ the common usage types: \nCREATE - This usage type relates to 'Create\
+          \ Account Profile', the provisioning template for the account to be created.\
+          \ For example, this would be used for a joiner on a source.  \nUPDATE -\
+          \ This usage type relates to 'Update Account Profile', the provisioning\
+          \ template for the 'Update' connector operations. For example, this would\
+          \ be used for an attribute sync on a source.\nENABLE - This usage type relates\
+          \ to 'Enable Account Profile', the provisioning template for the account\
+          \ to be enabled. For example, this could be used for a joiner on a source\
+          \ once the joiner's account is created. \nDISABLE - This usage type relates\
+          \ to 'Disable Account Profile', the provisioning template for the account\
+          \ to be disabled. For example, this could be used when a leaver is removed\
+          \ temporarily from a source. \nYou can use these four usage types for all\
+          \ your provisioning policy needs. "
+        example: CREATE
         in: path
         name: usageType
         required: true
@@ -22924,8 +22942,25 @@ paths:
         required: true
         schema:
           type: string
-      - description: The type of ProvisioningPolicy usage.
-        example: REGISTER
+      - description: "The type of provisioning policy usage. \nIn IdentityNow, a source\
+          \ can support various provisioning operations. For example, when a joiner\
+          \ is added to a source, this may trigger both CREATE and UPDATE provisioning\
+          \ operations.  Each usage type is considered a provisioning policy.  A source\
+          \ can have any number of these provisioning policies defined. \nThese are\
+          \ the common usage types: \nCREATE - This usage type relates to 'Create\
+          \ Account Profile', the provisioning template for the account to be created.\
+          \ For example, this would be used for a joiner on a source.  \nUPDATE -\
+          \ This usage type relates to 'Update Account Profile', the provisioning\
+          \ template for the 'Update' connector operations. For example, this would\
+          \ be used for an attribute sync on a source.\nENABLE - This usage type relates\
+          \ to 'Enable Account Profile', the provisioning template for the account\
+          \ to be enabled. For example, this could be used for a joiner on a source\
+          \ once the joiner's account is created. \nDISABLE - This usage type relates\
+          \ to 'Disable Account Profile', the provisioning template for the account\
+          \ to be disabled. For example, this could be used when a leaver is removed\
+          \ temporarily from a source. \nYou can use these four usage types for all\
+          \ your provisioning policy needs. "
+        example: CREATE
         in: path
         name: usageType
         required: true
@@ -23036,7 +23071,25 @@ paths:
         required: true
         schema:
           type: string
-      - description: The type of ProvisioningPolicy usage.
+      - description: "The type of provisioning policy usage. \nIn IdentityNow, a source\
+          \ can support various provisioning operations. For example, when a joiner\
+          \ is added to a source, this may trigger both CREATE and UPDATE provisioning\
+          \ operations.  Each usage type is considered a provisioning policy.  A source\
+          \ can have any number of these provisioning policies defined. \nThese are\
+          \ the common usage types: \nCREATE - This usage type relates to 'Create\
+          \ Account Profile', the provisioning template for the account to be created.\
+          \ For example, this would be used for a joiner on a source.  \nUPDATE -\
+          \ This usage type relates to 'Update Account Profile', the provisioning\
+          \ template for the 'Update' connector operations. For example, this would\
+          \ be used for an attribute sync on a source.\nENABLE - This usage type relates\
+          \ to 'Enable Account Profile', the provisioning template for the account\
+          \ to be enabled. For example, this could be used for a joiner on a source\
+          \ once the joiner's account is created. \nDISABLE - This usage type relates\
+          \ to 'Disable Account Profile', the provisioning template for the account\
+          \ to be disabled. For example, this could be used when a leaver is removed\
+          \ temporarily from a source. \nYou can use these four usage types for all\
+          \ your provisioning policy needs. "
+        example: CREATE
         in: path
         name: usageType
         required: true
@@ -23169,7 +23222,25 @@ paths:
         required: true
         schema:
           type: string
-      - description: The type of ProvisioningPolicy usage.
+      - description: "The type of provisioning policy usage. \nIn IdentityNow, a source\
+          \ can support various provisioning operations. For example, when a joiner\
+          \ is added to a source, this may trigger both CREATE and UPDATE provisioning\
+          \ operations.  Each usage type is considered a provisioning policy.  A source\
+          \ can have any number of these provisioning policies defined. \nThese are\
+          \ the common usage types: \nCREATE - This usage type relates to 'Create\
+          \ Account Profile', the provisioning template for the account to be created.\
+          \ For example, this would be used for a joiner on a source.  \nUPDATE -\
+          \ This usage type relates to 'Update Account Profile', the provisioning\
+          \ template for the 'Update' connector operations. For example, this would\
+          \ be used for an attribute sync on a source.\nENABLE - This usage type relates\
+          \ to 'Enable Account Profile', the provisioning template for the account\
+          \ to be enabled. For example, this could be used for a joiner on a source\
+          \ once the joiner's account is created. \nDISABLE - This usage type relates\
+          \ to 'Disable Account Profile', the provisioning template for the account\
+          \ to be disabled. For example, this could be used when a leaver is removed\
+          \ temporarily from a source. \nYou can use these four usage types for all\
+          \ your provisioning policy needs. "
+        example: CREATE
         in: path
         name: usageType
         required: true
@@ -35265,10 +35336,28 @@ components:
       - name
       type: object
     UsageType:
-      description: The type of ProvisioningPolicy usage.
+      description: "The type of provisioning policy usage. \nIn IdentityNow, a source\
+        \ can support various provisioning operations. For example, when a joiner\
+        \ is added to a source, this may trigger both CREATE and UPDATE provisioning\
+        \ operations.  Each usage type is considered a provisioning policy.  A source\
+        \ can have any number of these provisioning policies defined. \nThese are\
+        \ the common usage types: \nCREATE - This usage type relates to 'Create Account\
+        \ Profile', the provisioning template for the account to be created. For example,\
+        \ this would be used for a joiner on a source.  \nUPDATE - This usage type\
+        \ relates to 'Update Account Profile', the provisioning template for the 'Update'\
+        \ connector operations. For example, this would be used for an attribute sync\
+        \ on a source.\nENABLE - This usage type relates to 'Enable Account Profile',\
+        \ the provisioning template for the account to be enabled. For example, this\
+        \ could be used for a joiner on a source once the joiner's account is created.\
+        \ \nDISABLE - This usage type relates to 'Disable Account Profile', the provisioning\
+        \ template for the account to be disabled. For example, this could be used\
+        \ when a leaver is removed temporarily from a source. \nYou can use these\
+        \ four usage types for all your provisioning policy needs. "
       enum:
       - CREATE
       - UPDATE
+      - ENABLE
+      - DISABLE
       - DELETE
       - ASSIGN
       - UNASSIGN
@@ -35279,8 +35368,6 @@ components:
       - CREATE_IDENTITY
       - UPDATE_IDENTITY
       - EDIT_GROUP
-      - ENABLE
-      - DISABLE
       - UNLOCK
       - CHANGE_PASSWORD
       example: CREATE
@@ -37762,9 +37849,17 @@ components:
           example: name:a*
           type: string
         fields:
-          description: The fields to which the specified query will be applied.  The
-            available fields are dependent on the indice(s) being searched on.  Please
-            refer to the response schema of this API for a list of available fields.
+          description: "The fields the query will be applied to.  Fields provide you\
+            \ with a simple way to add additional fields to search, without making\
+            \ the query too complicated.  For example, you can use the fields to specify\
+            \ that you want your query of \"a*\" to be applied to \"name\", \"firstName\"\
+            , and the \"source.name\".  The response will include all results matching\
+            \ the \"a*\" query found in those three fields. \nA field's availability\
+            \ depends on the indices being searched.  For example, if you are searching\
+            \ \"identities\", you can apply your search to the \"firstName\" field,\
+            \ but you couldn't use \"firstName\" with a search on \"access profiles\"\
+            .  Refer to the response schema for the respective lists of available\
+            \ fields. "
           example:
           - name
           items:

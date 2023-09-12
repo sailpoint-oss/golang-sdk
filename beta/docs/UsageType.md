@@ -7,6 +7,10 @@
 
 * `UPDATE` (value: `"UPDATE"`)
 
+* `ENABLE` (value: `"ENABLE"`)
+
+* `DISABLE` (value: `"DISABLE"`)
+
 * `DELETE` (value: `"DELETE"`)
 
 * `ASSIGN` (value: `"ASSIGN"`)
@@ -26,10 +30,6 @@
 * `UPDATE_IDENTITY` (value: `"UPDATE_IDENTITY"`)
 
 * `EDIT_GROUP` (value: `"EDIT_GROUP"`)
-
-* `ENABLE` (value: `"ENABLE"`)
-
-* `DISABLE` (value: `"DISABLE"`)
 
 * `UNLOCK` (value: `"UNLOCK"`)
 
