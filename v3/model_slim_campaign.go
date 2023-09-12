@@ -26,7 +26,7 @@ type SlimCampaign struct {
 	Name string `json:"name"`
 	// The campaign description. If this object is part of a template, special formatting applies; see the `/campaign-templates/{id}/generate` endpoint documentation for details.
 	Description string `json:"description"`
-	// The campaign's completion deadline.
+	// The campaign's completion deadline.  This date must be in the future in order to activate the campaign.  If you try to activate a campaign with a deadline of today or in the past, you will receive a 400 error response.
 	Deadline *time.Time `json:"deadline,omitempty"`
 	// The type of campaign. Could be extended in the future.
 	Type string `json:"type"`
