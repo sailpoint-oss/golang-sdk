@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteIdentity**](IdentitiesApi.md#DeleteIdentity) | **Delete** /identities/{id} | Deletes an identity.
 [**GetIdentity**](IdentitiesApi.md#GetIdentity) | **Get** /identities/{id} | Identity Details
+[**GetIdentityOwnershipDetails**](IdentitiesApi.md#GetIdentityOwnershipDetails) | **Get** /identities/{identityId}/ownership | Get ownership details
 [**ListIdentities**](IdentitiesApi.md#ListIdentities) | **Get** /identities | List Identities
 [**StartIdentityProcessing**](IdentitiesApi.md#StartIdentityProcessing) | **Post** /identities/process | Process a list of identityIds
 [**SynchronizeAttributesForIdentity**](IdentitiesApi.md#SynchronizeAttributesForIdentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
@@ -135,6 +136,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Identity**](Identity.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetIdentityOwnershipDetails
+
+> IdentityOwnershipAssociationDetails GetIdentityOwnershipDetails(ctx, identityId).Execute()
+
+Get ownership details
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    identityId := "ff8081814d2a8036014d701f3fbf53fa" // string | The identity id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentitiesApi.GetIdentityOwnershipDetails(context.Background(), identityId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesApi.GetIdentityOwnershipDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetIdentityOwnershipDetails`: IdentityOwnershipAssociationDetails
+    fmt.Fprintf(os.Stdout, "Response from `IdentitiesApi.GetIdentityOwnershipDetails`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**identityId** | **string** | The identity id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetIdentityOwnershipDetailsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**IdentityOwnershipAssociationDetails**](IdentityOwnershipAssociationDetails.md)
 
 ### Authorization
 

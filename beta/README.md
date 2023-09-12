@@ -227,6 +227,7 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningApi* | [**UpdateEntitlementsPotentialRole**](docs/IAIRoleMiningApi.md#updateentitlementspotentialrole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 *IdentitiesApi* | [**DeleteIdentity**](docs/IdentitiesApi.md#deleteidentity) | **Delete** /identities/{id} | Deletes an identity.
 *IdentitiesApi* | [**GetIdentity**](docs/IdentitiesApi.md#getidentity) | **Get** /identities/{id} | Identity Details
+*IdentitiesApi* | [**GetIdentityOwnershipDetails**](docs/IdentitiesApi.md#getidentityownershipdetails) | **Get** /identities/{identityId}/ownership | Get ownership details
 *IdentitiesApi* | [**ListIdentities**](docs/IdentitiesApi.md#listidentities) | **Get** /identities | List Identities
 *IdentitiesApi* | [**StartIdentityProcessing**](docs/IdentitiesApi.md#startidentityprocessing) | **Post** /identities/process | Process a list of identityIds
 *IdentitiesApi* | [**SynchronizeAttributesForIdentity**](docs/IdentitiesApi.md#synchronizeattributesforidentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
@@ -811,6 +812,8 @@ Class | Method | HTTP request | Description
  - [IdentityExceptionReportReference1](docs/IdentityExceptionReportReference1.md)
  - [IdentityHistoryResponse](docs/IdentityHistoryResponse.md)
  - [IdentityListItem](docs/IdentityListItem.md)
+ - [IdentityOwnershipAssociationDetails](docs/IdentityOwnershipAssociationDetails.md)
+ - [IdentityOwnershipAssociationDetailsAssociationDetailsInner](docs/IdentityOwnershipAssociationDetailsAssociationDetailsInner.md)
  - [IdentityPreviewRequest](docs/IdentityPreviewRequest.md)
  - [IdentityPreviewResponse](docs/IdentityPreviewResponse.md)
  - [IdentityProfile](docs/IdentityProfile.md)

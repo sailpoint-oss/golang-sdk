@@ -13769,6 +13769,112 @@ paths:
       summary: Attribute synchronization for single identity.
       tags:
       - Identities
+  /identities/{identityId}/ownership:
+    get:
+      description: Get Ownership association details of an Identity
+      operationId: getIdentityOwnershipDetails
+      parameters:
+      - description: The identity id
+        example: ff8081814d2a8036014d701f3fbf53fa
+        in: path
+        name: identityId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                associationDetails:
+                  associationType: ROLE_OWNER
+                  entities:
+                  - id: b660a232f05b4e04812ca974b3011e0f
+                    name: Gaston.800ddf9640a
+                    type: ROLE
+              schema:
+                $ref: '#/components/schemas/IdentityOwnershipAssociationDetails'
+          description: Ownership association details of an Identity.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:identity:read
+      summary: Get ownership details
+      tags:
+      - Identities
   /identities:
     get:
       description: This API returns a list of identities.
@@ -51178,6 +51284,26 @@ components:
       - payload
       - status
       type: object
+    IdentityOwnershipAssociationDetails:
+      example:
+        associationDetails:
+        - entities:
+            id: b660a232f05b4e04812ca974b3011e0f
+            name: Gaston.800ddf9640a
+            type: ROLE
+          associationType: ROLE_OWNER
+        - entities:
+            id: b660a232f05b4e04812ca974b3011e0f
+            name: Gaston.800ddf9640a
+            type: ROLE
+          associationType: ROLE_OWNER
+      properties:
+        associationDetails:
+          description: list of all the resource associations for the identity
+          items:
+            $ref: '#/components/schemas/IdentityOwnershipAssociationDetails_associationDetails_inner'
+          type: array
+      type: object
     Identity:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
@@ -61196,6 +61322,11 @@ components:
       - dataJson
       - type
       type: object
+    IdentityEntities:
+      properties:
+        identityEntity:
+          $ref: '#/components/schemas/IdentityEntities_identityEntity'
+      type: object
     LifecycleStateDto:
       properties:
         stateName:
@@ -61210,11 +61341,6 @@ components:
       required:
       - manuallyUpdated
       - stateName
-      type: object
-    IdentityEntities:
-      properties:
-        identityEntity:
-          $ref: '#/components/schemas/IdentityEntities_identityEntity'
       type: object
     IdentityProfile_1:
       allOf:
@@ -67248,6 +67374,28 @@ components:
           - disabled
           - locked
           type: string
+      type: object
+    IdentityOwnershipAssociationDetails_associationDetails_inner:
+      example:
+        entities:
+          id: b660a232f05b4e04812ca974b3011e0f
+          name: Gaston.800ddf9640a
+          type: ROLE
+        associationType: ROLE_OWNER
+      properties:
+        associationType:
+          description: association type with the identity
+          example: ROLE_OWNER
+          type: string
+        entities:
+          description: the specific resource this identity has ownership on
+          example:
+            id: b660a232f05b4e04812ca974b3011e0f
+            name: Gaston.800ddf9640a
+            type: ROLE
+          items:
+            $ref: '#/components/schemas/IdentityEntities'
+          type: array
       type: object
     IdentityDto:
       properties:

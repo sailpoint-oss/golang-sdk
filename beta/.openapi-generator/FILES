@@ -383,6 +383,8 @@ docs/IdentityExceptionReportReference1.md
 docs/IdentityHistoryApi.md
 docs/IdentityHistoryResponse.md
 docs/IdentityListItem.md
+docs/IdentityOwnershipAssociationDetails.md
+docs/IdentityOwnershipAssociationDetailsAssociationDetailsInner.md
 docs/IdentityPreviewRequest.md
 docs/IdentityPreviewResponse.md
 docs/IdentityProfile.md
@@ -1098,6 +1100,8 @@ model_identity_exception_report_reference.go
 model_identity_exception_report_reference_1.go
 model_identity_history_response.go
 model_identity_list_item.go
+model_identity_ownership_association_details.go
+model_identity_ownership_association_details_association_details_inner.go
 model_identity_preview_request.go
 model_identity_preview_response.go
 model_identity_profile.go

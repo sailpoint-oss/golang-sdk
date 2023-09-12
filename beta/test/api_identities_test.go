@@ -49,6 +49,20 @@ func Test_beta_IdentitiesApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test IdentitiesApiService GetIdentityOwnershipDetails", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityId string
+
+		resp, httpRes, err := apiClient.BETA.IdentitiesApi.GetIdentityOwnershipDetails(context.Background(), identityId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IdentitiesApiService ListIdentities", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
