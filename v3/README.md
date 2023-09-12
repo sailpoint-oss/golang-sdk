@@ -129,6 +129,7 @@ Class | Method | HTTP request | Description
 *CertificationSummariesApi* | [**GetIdentitySummaries**](docs/CertificationSummariesApi.md#getidentitysummaries) | **Get** /certifications/{id}/identity-summaries | Identity Summaries for Campaign Certification
 *CertificationSummariesApi* | [**GetIdentitySummary**](docs/CertificationSummariesApi.md#getidentitysummary) | **Get** /certifications/{id}/identity-summaries/{identitySummaryId} | Summary for Identity
 *CertificationsApi* | [**GetIdentityCertification**](docs/CertificationsApi.md#getidentitycertification) | **Get** /certifications/{id} | Identity Certification by ID
+*CertificationsApi* | [**ListCertificationReviewers**](docs/CertificationsApi.md#listcertificationreviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
 *CertificationsApi* | [**ListIdentityAccessReviewItems**](docs/CertificationsApi.md#listidentityaccessreviewitems) | **Get** /certifications/{id}/access-review-items | List of Access Review Items
 *CertificationsApi* | [**ListIdentityCertifications**](docs/CertificationsApi.md#listidentitycertifications) | **Get** /certifications | Identity Campaign Certifications by IDs
 *CertificationsApi* | [**MakeIdentityDecision**](docs/CertificationsApi.md#makeidentitydecision) | **Post** /certifications/{id}/decide | Decide on a Certification Item

@@ -621,13 +621,15 @@ func (r ApiListCertificationReviewersRequest) Execute() ([]IdentityReferenceWith
 }
 
 /*
-ListCertificationReviewers List of Reviewers for the certification
+ListCertificationReviewers List of Reviewers for certification
 
 This API returns a list of reviewers for the certification. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The certification ID
  @return ApiListCertificationReviewersRequest
+
+Deprecated
 */
 func (a *CertificationsApiService) ListCertificationReviewers(ctx context.Context, id string) ApiListCertificationReviewersRequest {
 	return ApiListCertificationReviewersRequest{
@@ -639,6 +641,7 @@ func (a *CertificationsApiService) ListCertificationReviewers(ctx context.Contex
 
 // Execute executes the request
 //  @return []IdentityReferenceWithNameAndEmail
+// Deprecated
 func (a *CertificationsApiService) ListCertificationReviewersExecute(r ApiListCertificationReviewersRequest) ([]IdentityReferenceWithNameAndEmail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

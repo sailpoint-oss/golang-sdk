@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **ConnectorId** | Pointer to **string** | The id of connector | [optional] 
 **ConnectorName** | Pointer to **string** | The name of the connector that was chosen on source creation | [optional] 
 **ConnectionType** | Pointer to **string** | The type of connection (direct or file) | [optional] 
-**ConnectorImplementstionId** | Pointer to **string** | The connector implementstion id | [optional] 
+**ConnectorImplementationId** | Pointer to **string** | The connector implementation id | [optional] 
 
 ## Methods
 
@@ -686,30 +686,30 @@ SetConnectionType sets ConnectionType field to given value.
 
 HasConnectionType returns a boolean if a field has been set.
 
-### GetConnectorImplementstionId
+### GetConnectorImplementationId
 
-`func (o *Source) GetConnectorImplementstionId() string`
+`func (o *Source) GetConnectorImplementationId() string`
 
-GetConnectorImplementstionId returns the ConnectorImplementstionId field if non-nil, zero value otherwise.
+GetConnectorImplementationId returns the ConnectorImplementationId field if non-nil, zero value otherwise.
 
-### GetConnectorImplementstionIdOk
+### GetConnectorImplementationIdOk
 
-`func (o *Source) GetConnectorImplementstionIdOk() (*string, bool)`
+`func (o *Source) GetConnectorImplementationIdOk() (*string, bool)`
 
-GetConnectorImplementstionIdOk returns a tuple with the ConnectorImplementstionId field if it's non-nil, zero value otherwise
+GetConnectorImplementationIdOk returns a tuple with the ConnectorImplementationId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConnectorImplementstionId
+### SetConnectorImplementationId
 
-`func (o *Source) SetConnectorImplementstionId(v string)`
+`func (o *Source) SetConnectorImplementationId(v string)`
 
-SetConnectorImplementstionId sets ConnectorImplementstionId field to given value.
+SetConnectorImplementationId sets ConnectorImplementationId field to given value.
 
-### HasConnectorImplementstionId
+### HasConnectorImplementationId
 
-`func (o *Source) HasConnectorImplementstionId() bool`
+`func (o *Source) HasConnectorImplementationId() bool`
 
-HasConnectorImplementstionId returns a boolean if a field has been set.
+HasConnectorImplementationId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

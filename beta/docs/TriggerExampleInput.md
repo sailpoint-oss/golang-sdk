@@ -41,8 +41,8 @@ Name | Type | Description | Notes
 **NativeIdentifier** | **string** | Unique ID of the account on the source. | 
 **SourceId** | **string** | The ID of the source. | 
 **SourceName** | **string** | The name of the source. | 
-**IdentityId** | **string** | The ID of the identity that is corellated with this account. | 
-**IdentityName** | **string** | The name of the identity that is corellated with this account. | 
+**IdentityId** | **string** | The ID of the identity that is correlated with this account. | 
+**IdentityName** | **string** | The name of the identity that is correlated with this account. | 
 **Name** | **string** | The user friendly name of the source. | 
 **Type** | **map[string]interface{}** | The type of the object that initiated this event. | 
 **Created** | **time.Time** | The date and time the status change occurred. | 

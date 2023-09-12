@@ -830,7 +830,7 @@ tags:
     Admins can also delete sources, but they must first ensure that the sources no longer have any active connections: the source must not be associated with any identity profile or any app, and it must not be referenced by any transform.
     Refer to [Deleting Sources](https://documentation.sailpoint.com/saas/help/sources/managing_sources.html#deleting-sources) for more information about deleting sources.
 
-    Well organized, mappped out connections between sources and IdentityNow are essential to achieving comprehensive identity access governance across all the source systems organizations need.
+    Well organized, mapped out connections between sources and IdentityNow are essential to achieving comprehensive identity access governance across all the source systems organizations need.
     Refer to [Managing Sources](https://documentation.sailpoint.com/saas/help/sources/managing_sources.html) for more information about all the different things admins can do with sources once they are connected.
   name: Sources
 - description: Import and export configuration for some objects between tenants.
@@ -9318,6 +9318,7 @@ paths:
       - Certifications
   /certifications/{id}/reviewers:
     get:
+      deprecated: true
       description: This API returns a list of reviewers for the certification. A token
         with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers
         for this certification can also call this API.
@@ -9378,6 +9379,7 @@ paths:
           **name**: *eq, sw*
 
           **email**: *eq, sw*
+        example: name eq "Bob"
         in: query
         name: filters
         schema:
@@ -9386,6 +9388,7 @@ paths:
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **name, email**
+        example: name
         in: query
         name: sorters
         schema:
@@ -9474,7 +9477,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
-      summary: List of Reviewers for the certification
+      security:
+      - UserContextAuth:
+        - idn:certification:read
+      summary: List of Reviewers for certification
       tags:
       - Certifications
   /connector-rules:
@@ -55349,7 +55355,7 @@ components:
           id: 2c9180855d191c59015d291ceb057777
           name: Vendor Password Policy
         id: 2c91808568c529c60168cca6f90c1324
-        connectorImplementstionId: delimited-file
+        connectorImplementationId: delimited-file
         managerCorrelationRule:
           name: Example Rule
           id: 2c918085708c274401708c2a8a760001
@@ -55526,8 +55532,8 @@ components:
           description: The type of connection (direct or file)
           example: file
           type: string
-        connectorImplementstionId:
-          description: The connector implementstion id
+        connectorImplementationId:
+          description: The connector implementation id
           example: delimited-file
           type: string
       required:
@@ -62724,11 +62730,11 @@ components:
           example: Active Directory
           type: string
         identityId:
-          description: The ID of the identity that is corellated with this account.
+          description: The ID of the identity that is correlated with this account.
           example: ee769173319b41d19ccec6c235423237b
           type: string
         identityName:
-          description: The name of the identity that is corellated with this account.
+          description: The name of the identity that is correlated with this account.
           example: john.doe
           type: string
         attributes:

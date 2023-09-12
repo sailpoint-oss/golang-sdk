@@ -5,6 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetIdentityCertification**](CertificationsApi.md#GetIdentityCertification) | **Get** /certifications/{id} | Identity Certification by ID
+[**ListCertificationReviewers**](CertificationsApi.md#ListCertificationReviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
 [**ListIdentityAccessReviewItems**](CertificationsApi.md#ListIdentityAccessReviewItems) | **Get** /certifications/{id}/access-review-items | List of Access Review Items
 [**ListIdentityCertifications**](CertificationsApi.md#ListIdentityCertifications) | **Get** /certifications | Identity Campaign Certifications by IDs
 [**MakeIdentityDecision**](CertificationsApi.md#MakeIdentityDecision) | **Post** /certifications/{id}/decide | Decide on a Certification Item
@@ -68,6 +69,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**IdentityCertificationDto**](IdentityCertificationDto.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListCertificationReviewers
+
+> []IdentityReferenceWithNameAndEmail ListCertificationReviewers(ctx, id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+
+List of Reviewers for certification
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The certification ID
+    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
+    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
+    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+    filters := "name eq "Bob"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators (Filtering is done by reviewer's fields):  **id**: *eq, in*  **name**: *eq, sw*  **email**: *eq, sw* (optional)
+    sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email** (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationsApi.ListCertificationReviewers(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.ListCertificationReviewers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListCertificationReviewers`: []IdentityReferenceWithNameAndEmail
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.ListCertificationReviewers`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The certification ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListCertificationReviewersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
+ **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
+ **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators (Filtering is done by reviewer&#39;s fields):  **id**: *eq, in*  **name**: *eq, sw*  **email**: *eq, sw* | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, email** | 
+
+### Return type
+
+[**[]IdentityReferenceWithNameAndEmail**](IdentityReferenceWithNameAndEmail.md)
 
 ### Authorization
 

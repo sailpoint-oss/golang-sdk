@@ -29,9 +29,9 @@ type SourceAccount struct {
 	SourceId string `json:"sourceId"`
 	// The name of the source.
 	SourceName string `json:"sourceName"`
-	// The ID of the identity that is corellated with this account.
+	// The ID of the identity that is correlated with this account.
 	IdentityId string `json:"identityId"`
-	// The name of the identity that is corellated with this account.
+	// The name of the identity that is correlated with this account.
 	IdentityName string `json:"identityName"`
 	// The attributes of the account. The contents of attributes depends on the account schema for the source.
 	Attributes map[string]interface{} `json:"attributes"`

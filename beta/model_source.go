@@ -63,8 +63,8 @@ type Source struct {
 	ConnectorName *string `json:"connectorName,omitempty"`
 	// The type of connection (direct or file)
 	ConnectionType *string `json:"connectionType,omitempty"`
-	// The connector implementstion id
-	ConnectorImplementstionId *string `json:"connectorImplementstionId,omitempty"`
+	// The connector implementation id
+	ConnectorImplementationId *string `json:"connectorImplementationId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -906,36 +906,36 @@ func (o *Source) SetConnectionType(v string) {
 	o.ConnectionType = &v
 }
 
-// GetConnectorImplementstionId returns the ConnectorImplementstionId field value if set, zero value otherwise.
-func (o *Source) GetConnectorImplementstionId() string {
-	if o == nil || isNil(o.ConnectorImplementstionId) {
+// GetConnectorImplementationId returns the ConnectorImplementationId field value if set, zero value otherwise.
+func (o *Source) GetConnectorImplementationId() string {
+	if o == nil || isNil(o.ConnectorImplementationId) {
 		var ret string
 		return ret
 	}
-	return *o.ConnectorImplementstionId
+	return *o.ConnectorImplementationId
 }
 
-// GetConnectorImplementstionIdOk returns a tuple with the ConnectorImplementstionId field value if set, nil otherwise
+// GetConnectorImplementationIdOk returns a tuple with the ConnectorImplementationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Source) GetConnectorImplementstionIdOk() (*string, bool) {
-	if o == nil || isNil(o.ConnectorImplementstionId) {
+func (o *Source) GetConnectorImplementationIdOk() (*string, bool) {
+	if o == nil || isNil(o.ConnectorImplementationId) {
 		return nil, false
 	}
-	return o.ConnectorImplementstionId, true
+	return o.ConnectorImplementationId, true
 }
 
-// HasConnectorImplementstionId returns a boolean if a field has been set.
-func (o *Source) HasConnectorImplementstionId() bool {
-	if o != nil && !isNil(o.ConnectorImplementstionId) {
+// HasConnectorImplementationId returns a boolean if a field has been set.
+func (o *Source) HasConnectorImplementationId() bool {
+	if o != nil && !isNil(o.ConnectorImplementationId) {
 		return true
 	}
 
 	return false
 }
 
-// SetConnectorImplementstionId gets a reference to the given string and assigns it to the ConnectorImplementstionId field.
-func (o *Source) SetConnectorImplementstionId(v string) {
-	o.ConnectorImplementstionId = &v
+// SetConnectorImplementationId gets a reference to the given string and assigns it to the ConnectorImplementationId field.
+func (o *Source) SetConnectorImplementationId(v string) {
+	o.ConnectorImplementationId = &v
 }
 
 func (o Source) MarshalJSON() ([]byte, error) {
@@ -1018,8 +1018,8 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ConnectionType) {
 		toSerialize["connectionType"] = o.ConnectionType
 	}
-	if !isNil(o.ConnectorImplementstionId) {
-		toSerialize["connectorImplementstionId"] = o.ConnectorImplementstionId
+	if !isNil(o.ConnectorImplementationId) {
+		toSerialize["connectorImplementationId"] = o.ConnectorImplementationId
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -1065,7 +1065,7 @@ func (o *Source) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "connectorId")
 		delete(additionalProperties, "connectorName")
 		delete(additionalProperties, "connectionType")
-		delete(additionalProperties, "connectorImplementstionId")
+		delete(additionalProperties, "connectorImplementationId")
 		o.AdditionalProperties = additionalProperties
 	}
 

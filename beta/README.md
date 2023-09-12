@@ -141,7 +141,7 @@ Class | Method | HTTP request | Description
 *CertificationsApi* | [**GetIdentityCertificationItemPermissions**](docs/CertificationsApi.md#getidentitycertificationitempermissions) | **Get** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for Entitlement Certification Item
 *CertificationsApi* | [**GetIdentityCertificationPendingTasks**](docs/CertificationsApi.md#getidentitycertificationpendingtasks) | **Get** /certifications/{id}/tasks-pending | Pending Certification Tasks
 *CertificationsApi* | [**GetIdentityCertificationTaskStatus**](docs/CertificationsApi.md#getidentitycertificationtaskstatus) | **Get** /certifications/{id}/tasks/{taskId} | Certification Task Status
-*CertificationsApi* | [**ListCertificationReviewers**](docs/CertificationsApi.md#listcertificationreviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for the certification
+*CertificationsApi* | [**ListCertificationReviewers**](docs/CertificationsApi.md#listcertificationreviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
 *CertificationsApi* | [**ReassignIdentityCertsAsync**](docs/CertificationsApi.md#reassignidentitycertsasync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 *ConnectorRuleManagementApi* | [**CreateConnectorRule**](docs/ConnectorRuleManagementApi.md#createconnectorrule) | **Post** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementApi* | [**DeleteConnectorRule**](docs/ConnectorRuleManagementApi.md#deleteconnectorrule) | **Delete** /connector-rules/{id} | Delete a Connector-Rule
