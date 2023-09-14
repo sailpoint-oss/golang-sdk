@@ -22,6 +22,20 @@ func Test_v3_CertificationsApiService(t *testing.T) {
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test CertificationsApiService GetCertificationTask", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.V3.CertificationsApi.GetCertificationTask(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CertificationsApiService GetIdentityCertification", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

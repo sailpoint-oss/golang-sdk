@@ -4,6 +4,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetCertificationTask**](CertificationsApi.md#GetCertificationTask) | **Get** /certification-tasks/{id} | Certification Task by ID
 [**GetIdentityCertification**](CertificationsApi.md#GetIdentityCertification) | **Get** /certifications/{id} | Identity Certification by ID
 [**ListCertificationReviewers**](CertificationsApi.md#ListCertificationReviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
 [**ListIdentityAccessReviewItems**](CertificationsApi.md#ListIdentityAccessReviewItems) | **Get** /certifications/{id}/access-review-items | List of Access Review Items
@@ -12,6 +13,76 @@ Method | HTTP request | Description
 [**ReassignIdentityCertifications**](CertificationsApi.md#ReassignIdentityCertifications) | **Post** /certifications/{id}/reassign | Reassign Identities or Items
 [**SignOffIdentityCertification**](CertificationsApi.md#SignOffIdentityCertification) | **Post** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
 
+
+
+## GetCertificationTask
+
+> CertificationTask GetCertificationTask(ctx, id).Execute()
+
+Certification Task by ID
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "63b32151-26c0-42f4-9299-8898dc1c9daa" // string | The task ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationsApi.GetCertificationTask(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.GetCertificationTask``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCertificationTask`: CertificationTask
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.GetCertificationTask`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The task ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCertificationTaskRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**CertificationTask**](CertificationTask.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetIdentityCertification
