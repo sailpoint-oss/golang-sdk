@@ -8,6 +8,7 @@ api_access_request_approvals.go
 api_access_requests.go
 api_account_activities.go
 api_account_aggregations.go
+api_account_usages.go
 api_accounts.go
 api_certification_campaigns.go
 api_certifications.go
@@ -48,6 +49,7 @@ api_segments.go
 api_service_desk_integration.go
 api_sod_policy.go
 api_sod_violations.go
+api_source_usages.go
 api_sources.go
 api_sp_config.go
 api_tagged_objects.go
@@ -148,6 +150,8 @@ docs/AccountUncorrelatedAccount.md
 docs/AccountUncorrelatedIdentity.md
 docs/AccountUncorrelatedSource.md
 docs/AccountUnlockRequest.md
+docs/AccountUsage.md
+docs/AccountUsagesApi.md
 docs/AccountsApi.md
 docs/AccountsAsyncResult.md
 docs/AccountsCollectedForAggregation.md
@@ -711,6 +715,9 @@ docs/SourceSyncJob.md
 docs/SourceSyncPayload.md
 docs/SourceUpdated.md
 docs/SourceUpdatedActor.md
+docs/SourceUsage.md
+docs/SourceUsageStatus.md
+docs/SourceUsagesApi.md
 docs/SourcesApi.md
 docs/SpConfigExportResults.md
 docs/SpConfigImportResults.md
@@ -882,6 +889,7 @@ model_account_uncorrelated_account.go
 model_account_uncorrelated_identity.go
 model_account_uncorrelated_source.go
 model_account_unlock_request.go
+model_account_usage.go
 model_accounts_async_result.go
 model_accounts_collected_for_aggregation.go
 model_accounts_collected_for_aggregation_source.go
@@ -1404,6 +1412,8 @@ model_source_sync_job.go
 model_source_sync_payload.go
 model_source_updated.go
 model_source_updated_actor.go
+model_source_usage.go
+model_source_usage_status.go
 model_sp_config_export_results.go
 model_sp_config_import_results.go
 model_sp_config_job.go
@@ -1486,6 +1496,7 @@ test/api_access_request_approvals_test.go
 test/api_access_requests_test.go
 test/api_account_activities_test.go
 test/api_account_aggregations_test.go
+test/api_account_usages_test.go
 test/api_accounts_test.go
 test/api_certification_campaigns_test.go
 test/api_certifications_test.go
@@ -1526,6 +1537,7 @@ test/api_segments_test.go
 test/api_service_desk_integration_test.go
 test/api_sod_policy_test.go
 test/api_sod_violations_test.go
+test/api_source_usages_test.go
 test/api_sources_test.go
 test/api_sp_config_test.go
 test/api_tagged_objects_test.go

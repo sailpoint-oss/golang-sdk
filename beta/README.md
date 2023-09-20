@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *AccountActivitiesApi* | [**GetAccountActivity**](docs/AccountActivitiesApi.md#getaccountactivity) | **Get** /account-activities/{id} | Get Account Activity
 *AccountActivitiesApi* | [**ListAccountActivities**](docs/AccountActivitiesApi.md#listaccountactivities) | **Get** /account-activities | List Account Activities
 *AccountAggregationsApi* | [**GetAccountAggregationStatus**](docs/AccountAggregationsApi.md#getaccountaggregationstatus) | **Get** /account-aggregations/{id}/status | In-progress Account Aggregation status
+*AccountUsagesApi* | [**GetUsagesByAccountId**](docs/AccountUsagesApi.md#getusagesbyaccountid) | **Get** /account-usages/{accountId}/summaries | Returns account usage insights
 *AccountsApi* | [**CreateAccount**](docs/AccountsApi.md#createaccount) | **Post** /accounts | Create Account
 *AccountsApi* | [**DeleteAccount**](docs/AccountsApi.md#deleteaccount) | **Delete** /accounts/{id} | Delete Account
 *AccountsApi* | [**DisableAccount**](docs/AccountsApi.md#disableaccount) | **Post** /accounts/{id}/disable | Disable Account
@@ -401,6 +402,8 @@ Class | Method | HTTP request | Description
 *ServiceDeskIntegrationApi* | [**PatchServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#patchservicedeskintegration) | **Patch** /service-desk-integrations/{id} | Service Desk Integration Update PATCH
 *ServiceDeskIntegrationApi* | [**PutServiceDeskIntegration**](docs/ServiceDeskIntegrationApi.md#putservicedeskintegration) | **Put** /service-desk-integrations/{id} | Update a Service Desk integration
 *ServiceDeskIntegrationApi* | [**UpdateStatusCheckDetails**](docs/ServiceDeskIntegrationApi.md#updatestatuscheckdetails) | **Put** /service-desk-integrations/status-check-configuration | Update the time check configuration
+*SourceUsagesApi* | [**GetStatusBySourceId**](docs/SourceUsagesApi.md#getstatusbysourceid) | **Get** /source-usages/{sourceId}/status | Finds status of source usage
+*SourceUsagesApi* | [**GetUsagesBySourceId**](docs/SourceUsagesApi.md#getusagesbysourceid) | **Get** /source-usages/{sourceId}/summaries | Returns source usage insights
 *SourcesApi* | [**CreateProvisioningPolicy**](docs/SourcesApi.md#createprovisioningpolicy) | **Post** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
 *SourcesApi* | [**CreateSource**](docs/SourcesApi.md#createsource) | **Post** /sources | Creates a source in IdentityNow.
 *SourcesApi* | [**CreateSourceSchema**](docs/SourcesApi.md#createsourceschema) | **Post** /sources/{sourceId}/schemas | Creates a new Schema on the specified Source in IdentityNow.
@@ -594,6 +597,7 @@ Class | Method | HTTP request | Description
  - [AccountUncorrelatedIdentity](docs/AccountUncorrelatedIdentity.md)
  - [AccountUncorrelatedSource](docs/AccountUncorrelatedSource.md)
  - [AccountUnlockRequest](docs/AccountUnlockRequest.md)
+ - [AccountUsage](docs/AccountUsage.md)
  - [AccountsAsyncResult](docs/AccountsAsyncResult.md)
  - [AccountsCollectedForAggregation](docs/AccountsCollectedForAggregation.md)
  - [AccountsCollectedForAggregationSource](docs/AccountsCollectedForAggregationSource.md)
@@ -1116,6 +1120,8 @@ Class | Method | HTTP request | Description
  - [SourceSyncPayload](docs/SourceSyncPayload.md)
  - [SourceUpdated](docs/SourceUpdated.md)
  - [SourceUpdatedActor](docs/SourceUpdatedActor.md)
+ - [SourceUsage](docs/SourceUsage.md)
+ - [SourceUsageStatus](docs/SourceUsageStatus.md)
  - [SpConfigExportResults](docs/SpConfigExportResults.md)
  - [SpConfigImportResults](docs/SpConfigImportResults.md)
  - [SpConfigJob](docs/SpConfigJob.md)

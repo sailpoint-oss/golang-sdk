@@ -60,6 +60,8 @@ type APIClient struct {
 
 	AccountActivitiesApi *AccountActivitiesApiService
 
+	AccountUsagesApi *AccountUsagesApiService
+
 	AccountsApi *AccountsApiService
 
 	AuthUserApi *AuthUserApiService
@@ -112,6 +114,8 @@ type APIClient struct {
 
 	ServiceDeskIntegrationApi *ServiceDeskIntegrationApiService
 
+	SourceUsagesApi *SourceUsagesApiService
+
 	SourcesApi *SourcesApiService
 
 	TaggedObjectsApi *TaggedObjectsApiService
@@ -141,6 +145,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccessRequestApprovalsApi = (*AccessRequestApprovalsApiService)(&c.common)
 	c.AccessRequestsApi = (*AccessRequestsApiService)(&c.common)
 	c.AccountActivitiesApi = (*AccountActivitiesApiService)(&c.common)
+	c.AccountUsagesApi = (*AccountUsagesApiService)(&c.common)
 	c.AccountsApi = (*AccountsApiService)(&c.common)
 	c.AuthUserApi = (*AuthUserApiService)(&c.common)
 	c.CertificationCampaignsApi = (*CertificationCampaignsApiService)(&c.common)
@@ -167,6 +172,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SearchApi = (*SearchApiService)(&c.common)
 	c.SegmentsApi = (*SegmentsApiService)(&c.common)
 	c.ServiceDeskIntegrationApi = (*ServiceDeskIntegrationApiService)(&c.common)
+	c.SourceUsagesApi = (*SourceUsagesApiService)(&c.common)
 	c.SourcesApi = (*SourcesApiService)(&c.common)
 	c.TaggedObjectsApi = (*TaggedObjectsApiService)(&c.common)
 	c.TransformsApi = (*TransformsApiService)(&c.common)

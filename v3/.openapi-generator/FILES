@@ -7,6 +7,7 @@ api_access_profiles.go
 api_access_request_approvals.go
 api_access_requests.go
 api_account_activities.go
+api_account_usages.go
 api_accounts.go
 api_auth_user.go
 api_certification_campaigns.go
@@ -33,6 +34,7 @@ api_segments.go
 api_service_desk_integration.go
 api_sod_policy.go
 api_sod_violations.go
+api_source_usages.go
 api_sources.go
 api_tagged_objects.go
 api_transforms.go
@@ -92,6 +94,8 @@ docs/AccountSource.md
 docs/AccountSourceAllOf.md
 docs/AccountToggleRequest.md
 docs/AccountUnlockRequest.md
+docs/AccountUsage.md
+docs/AccountUsagesApi.md
 docs/AccountsApi.md
 docs/AccountsAsyncResult.md
 docs/ActivateCampaignOptions.md
@@ -456,6 +460,9 @@ docs/SourceManagerCorrelationRule.md
 docs/SourceOwner.md
 docs/SourcePasswordPoliciesInner.md
 docs/SourceSchemasInner.md
+docs/SourceUsage.md
+docs/SourceUsageStatus.md
+docs/SourceUsagesApi.md
 docs/SourcesApi.md
 docs/SpConfigMessage.md
 docs/SubSearchAggregationSpecification.md
@@ -539,6 +546,7 @@ model_account_source.go
 model_account_source_all_of.go
 model_account_toggle_request.go
 model_account_unlock_request.go
+model_account_usage.go
 model_accounts_async_result.go
 model_activate_campaign_options.go
 model_admin_review_reassign.go
@@ -877,6 +885,8 @@ model_source_manager_correlation_rule.go
 model_source_owner.go
 model_source_password_policies_inner.go
 model_source_schemas_inner.go
+model_source_usage.go
+model_source_usage_status.go
 model_sp_config_message.go
 model_sub_search_aggregation_specification.go
 model_sub_search_aggregation_specification_all_of.go
@@ -909,6 +919,7 @@ test/api_access_profiles_test.go
 test/api_access_request_approvals_test.go
 test/api_access_requests_test.go
 test/api_account_activities_test.go
+test/api_account_usages_test.go
 test/api_accounts_test.go
 test/api_auth_user_test.go
 test/api_certification_campaigns_test.go
@@ -935,6 +946,7 @@ test/api_segments_test.go
 test/api_service_desk_integration_test.go
 test/api_sod_policy_test.go
 test/api_sod_violations_test.go
+test/api_source_usages_test.go
 test/api_sources_test.go
 test/api_tagged_objects_test.go
 test/api_transforms_test.go
