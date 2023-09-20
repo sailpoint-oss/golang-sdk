@@ -71,6 +71,8 @@ This API returns the permissions associated with an entitlement certification it
  @param certificationId The certification ID
  @param itemId The certification item ID
  @return ApiGetIdentityCertificationItemPermissionsRequest
+
+Deprecated
 */
 func (a *CertificationsApiService) GetIdentityCertificationItemPermissions(ctx context.Context, certificationId string, itemId string) ApiGetIdentityCertificationItemPermissionsRequest {
 	return ApiGetIdentityCertificationItemPermissionsRequest{
@@ -83,6 +85,7 @@ func (a *CertificationsApiService) GetIdentityCertificationItemPermissions(ctx c
 
 // Execute executes the request
 //  @return []PermissionDto
+// Deprecated
 func (a *CertificationsApiService) GetIdentityCertificationItemPermissionsExecute(r ApiGetIdentityCertificationItemPermissionsRequest) ([]PermissionDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

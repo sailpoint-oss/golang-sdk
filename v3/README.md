@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 *CertificationSummariesApi* | [**GetIdentitySummary**](docs/CertificationSummariesApi.md#getidentitysummary) | **Get** /certifications/{id}/identity-summaries/{identitySummaryId} | Summary for Identity
 *CertificationsApi* | [**GetCertificationTask**](docs/CertificationsApi.md#getcertificationtask) | **Get** /certification-tasks/{id} | Certification Task by ID
 *CertificationsApi* | [**GetIdentityCertification**](docs/CertificationsApi.md#getidentitycertification) | **Get** /certifications/{id} | Identity Certification by ID
+*CertificationsApi* | [**GetIdentityCertificationItemPermissions**](docs/CertificationsApi.md#getidentitycertificationitempermissions) | **Get** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for Entitlement Certification Item
 *CertificationsApi* | [**ListCertificationReviewers**](docs/CertificationsApi.md#listcertificationreviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
 *CertificationsApi* | [**ListIdentityAccessReviewItems**](docs/CertificationsApi.md#listidentityaccessreviewitems) | **Get** /certifications/{id}/access-review-items | List of Access Review Items
 *CertificationsApi* | [**ListIdentityCertifications**](docs/CertificationsApi.md#listidentitycertifications) | **Get** /certifications | Identity Campaign Certifications by IDs

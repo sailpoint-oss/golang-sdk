@@ -50,6 +50,21 @@ func Test_v3_CertificationsApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test CertificationsApiService GetIdentityCertificationItemPermissions", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var certificationId string
+		var itemId string
+
+		resp, httpRes, err := apiClient.V3.CertificationsApi.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CertificationsApiService ListCertificationReviewers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

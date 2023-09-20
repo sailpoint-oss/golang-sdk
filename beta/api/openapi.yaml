@@ -9156,6 +9156,7 @@ paths:
       - Certifications
   /certifications/{certificationId}/access-review-items/{itemId}/permissions:
     get:
+      deprecated: true
       description: This API returns the permissions associated with an entitlement
         certification item based on the certification item's ID. A token with ORG_ADMIN
         or CERT_ADMIN authority is required to call this API. Reviewers for this certification
@@ -9185,6 +9186,7 @@ paths:
 
           The following is invalid:
           *?filters=rights+ca+(%22CREATE%22)+and+rights+ca+(%SELECT%22)*
+        example: target eq "SYS.OBJAUTH2"
         in: query
         name: filters
         schema:
@@ -9324,6 +9326,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:certification:read
       summary: Permissions for Entitlement Certification Item
       tags:
       - Certifications
