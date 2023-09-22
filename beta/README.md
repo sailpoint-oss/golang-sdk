@@ -232,6 +232,8 @@ Class | Method | HTTP request | Description
 *IdentitiesApi* | [**ListIdentities**](docs/IdentitiesApi.md#listidentities) | **Get** /identities | List Identities
 *IdentitiesApi* | [**StartIdentityProcessing**](docs/IdentitiesApi.md#startidentityprocessing) | **Post** /identities/process | Process a list of identityIds
 *IdentitiesApi* | [**SynchronizeAttributesForIdentity**](docs/IdentitiesApi.md#synchronizeattributesforidentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
+*IdentityAttributesApi* | [**GetIdentityAttribute**](docs/IdentityAttributesApi.md#getidentityattribute) | **Get** /identity-attributes/{name} | Get Identity Attribute
+*IdentityAttributesApi* | [**ListIdentityAttributes**](docs/IdentityAttributesApi.md#listidentityattributes) | **Get** /identity-attributes | List Identity Attributes
 *IdentityHistoryApi* | [**CompareIdentitySnapshots**](docs/IdentityHistoryApi.md#compareidentitysnapshots) | **Get** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
 *IdentityHistoryApi* | [**CompareIdentitySnapshotsAccessType**](docs/IdentityHistoryApi.md#compareidentitysnapshotsaccesstype) | **Get** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
 *IdentityHistoryApi* | [**GetHistoricalIdentity**](docs/IdentityHistoryApi.md#gethistoricalidentity) | **Get** /historical-identities/{id} | Get latest snapshot of identity
@@ -791,6 +793,7 @@ Class | Method | HTTP request | Description
  - [Identity1](docs/Identity1.md)
  - [IdentityAssociationDetails](docs/IdentityAssociationDetails.md)
  - [IdentityAssociationDetailsAssociationDetailsInner](docs/IdentityAssociationDetailsAssociationDetailsInner.md)
+ - [IdentityAttribute](docs/IdentityAttribute.md)
  - [IdentityAttributeConfig](docs/IdentityAttributeConfig.md)
  - [IdentityAttributeConfig1](docs/IdentityAttributeConfig1.md)
  - [IdentityAttributePreview](docs/IdentityAttributePreview.md)
@@ -1099,6 +1102,7 @@ Class | Method | HTTP request | Description
  - [SodViolationContextConflictingAccessCriteria](docs/SodViolationContextConflictingAccessCriteria.md)
  - [SodViolationContextConflictingAccessCriteriaLeftCriteria](docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md)
  - [Source](docs/Source.md)
+ - [Source1](docs/Source1.md)
  - [SourceAccount](docs/SourceAccount.md)
  - [SourceAccountCorrelationConfig](docs/SourceAccountCorrelationConfig.md)
  - [SourceAccountCorrelationRule](docs/SourceAccountCorrelationRule.md)

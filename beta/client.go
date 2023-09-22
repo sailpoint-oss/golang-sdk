@@ -96,6 +96,8 @@ type APIClient struct {
 
 	IdentitiesApi *IdentitiesApiService
 
+	IdentityAttributesApi *IdentityAttributesApiService
+
 	IdentityHistoryApi *IdentityHistoryApiService
 
 	IdentityProfilesApi *IdentityProfilesApiService
@@ -203,6 +205,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.IAIRecommendationsApi = (*IAIRecommendationsApiService)(&c.common)
 	c.IAIRoleMiningApi = (*IAIRoleMiningApiService)(&c.common)
 	c.IdentitiesApi = (*IdentitiesApiService)(&c.common)
+	c.IdentityAttributesApi = (*IdentityAttributesApiService)(&c.common)
 	c.IdentityHistoryApi = (*IdentityHistoryApiService)(&c.common)
 	c.IdentityProfilesApi = (*IdentityProfilesApiService)(&c.common)
 	c.LifecycleStatesApi = (*LifecycleStatesApiService)(&c.common)
