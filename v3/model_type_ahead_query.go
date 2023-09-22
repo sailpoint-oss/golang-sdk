@@ -27,6 +27,8 @@ type TypeAheadQuery struct {
 	NestedType *string `json:"nestedType,omitempty"`
 	// The number of suffixes the last term will be expanded into. Influences the performance of the query and the number results returned. Valid values: 1 to 1000.
 	MaxExpansions *int32 `json:"maxExpansions,omitempty"`
+	// The max amount of records the search will return.
+	Size *int32 `json:"size,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,6 +44,8 @@ func NewTypeAheadQuery(query string, field string) *TypeAheadQuery {
 	this.Field = field
 	var maxExpansions int32 = 10
 	this.MaxExpansions = &maxExpansions
+	var size int32 = 100
+	this.Size = &size
 	return &this
 }
 
@@ -52,6 +56,8 @@ func NewTypeAheadQueryWithDefaults() *TypeAheadQuery {
 	this := TypeAheadQuery{}
 	var maxExpansions int32 = 10
 	this.MaxExpansions = &maxExpansions
+	var size int32 = 100
+	this.Size = &size
 	return &this
 }
 
@@ -167,6 +173,38 @@ func (o *TypeAheadQuery) SetMaxExpansions(v int32) {
 	o.MaxExpansions = &v
 }
 
+// GetSize returns the Size field value if set, zero value otherwise.
+func (o *TypeAheadQuery) GetSize() int32 {
+	if o == nil || isNil(o.Size) {
+		var ret int32
+		return ret
+	}
+	return *o.Size
+}
+
+// GetSizeOk returns a tuple with the Size field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TypeAheadQuery) GetSizeOk() (*int32, bool) {
+	if o == nil || isNil(o.Size) {
+		return nil, false
+	}
+	return o.Size, true
+}
+
+// HasSize returns a boolean if a field has been set.
+func (o *TypeAheadQuery) HasSize() bool {
+	if o != nil && !isNil(o.Size) {
+		return true
+	}
+
+	return false
+}
+
+// SetSize gets a reference to the given int32 and assigns it to the Size field.
+func (o *TypeAheadQuery) SetSize(v int32) {
+	o.Size = &v
+}
+
 func (o TypeAheadQuery) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -184,6 +222,9 @@ func (o TypeAheadQuery) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.MaxExpansions) {
 		toSerialize["maxExpansions"] = o.MaxExpansions
+	}
+	if !isNil(o.Size) {
+		toSerialize["size"] = o.Size
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -207,6 +248,7 @@ func (o *TypeAheadQuery) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "field")
 		delete(additionalProperties, "nestedType")
 		delete(additionalProperties, "maxExpansions")
+		delete(additionalProperties, "size")
 		o.AdditionalProperties = additionalProperties
 	}
 

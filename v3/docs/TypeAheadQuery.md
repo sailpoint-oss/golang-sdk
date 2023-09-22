@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Field** | **string** | The field on which to perform the type ahead search. | 
 **NestedType** | Pointer to **string** | The nested type. | [optional] 
 **MaxExpansions** | Pointer to **int32** | The number of suffixes the last term will be expanded into. Influences the performance of the query and the number results returned. Valid values: 1 to 1000. | [optional] [default to 10]
+**Size** | Pointer to **int32** | The max amount of records the search will return. | [optional] [default to 100]
 
 ## Methods
 
@@ -117,6 +118,31 @@ SetMaxExpansions sets MaxExpansions field to given value.
 `func (o *TypeAheadQuery) HasMaxExpansions() bool`
 
 HasMaxExpansions returns a boolean if a field has been set.
+
+### GetSize
+
+`func (o *TypeAheadQuery) GetSize() int32`
+
+GetSize returns the Size field if non-nil, zero value otherwise.
+
+### GetSizeOk
+
+`func (o *TypeAheadQuery) GetSizeOk() (*int32, bool)`
+
+GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSize
+
+`func (o *TypeAheadQuery) SetSize(v int32)`
+
+SetSize sets Size field to given value.
+
+### HasSize
+
+`func (o *TypeAheadQuery) HasSize() bool`
+
+HasSize returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -28404,6 +28404,7 @@ components:
           field: name
           query: Jo
           maxExpansions: 50
+          size: 100
     typeAheadQuery-nestedType:
       summary: TypeAheadQuery with NestedType
       value:
@@ -28415,6 +28416,7 @@ components:
           nestedType: access
           query: Work
           maxExpansions: 50
+          size: 100
     filter-exists:
       summary: Filter with Exists
       value:
@@ -35216,6 +35218,7 @@ components:
         - identities
         typeAheadQuery:
           field: source.name
+          size: 100
           query: Work
           nestedType: access
           maxExpansions: 10
@@ -38614,6 +38617,7 @@ components:
         \ \"Jo.\" Typing \"Job\" results in top hits matching \"Job.\" "
       example:
         field: source.name
+        size: 100
         query: Work
         nestedType: access
         maxExpansions: 10
@@ -38640,6 +38644,13 @@ components:
           example: 10
           format: int32
           maximum: 1000
+          minimum: 1
+          type: integer
+        size:
+          default: 100
+          description: The max amount of records the search will return.
+          example: 100
+          format: int32
           minimum: 1
           type: integer
       required:
