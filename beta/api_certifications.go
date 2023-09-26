@@ -799,33 +799,35 @@ func (a *CertificationsApiService) ListCertificationReviewersExecute(r ApiListCe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiReassignIdentityCertsAsyncRequest struct {
+type ApiSubmitReassignCertsAsyncRequest struct {
 	ctx context.Context
 	ApiService *CertificationsApiService
 	id string
 	reviewReassign *ReviewReassign
 }
 
-func (r ApiReassignIdentityCertsAsyncRequest) ReviewReassign(reviewReassign ReviewReassign) ApiReassignIdentityCertsAsyncRequest {
+func (r ApiSubmitReassignCertsAsyncRequest) ReviewReassign(reviewReassign ReviewReassign) ApiSubmitReassignCertsAsyncRequest {
 	r.reviewReassign = &reviewReassign
 	return r
 }
 
-func (r ApiReassignIdentityCertsAsyncRequest) Execute() (*IdentityCertificationTask, *http.Response, error) {
-	return r.ApiService.ReassignIdentityCertsAsyncExecute(r)
+func (r ApiSubmitReassignCertsAsyncRequest) Execute() (*IdentityCertificationTask, *http.Response, error) {
+	return r.ApiService.SubmitReassignCertsAsyncExecute(r)
 }
 
 /*
-ReassignIdentityCertsAsync Reassign Certifications Asynchronously
+SubmitReassignCertsAsync Reassign Certifications Asynchronously
 
 This API initiates a task to reassign up to 500 identities or items in an identity campaign certification to another reviewer. The `certification-tasks` API can be used to get an updated status on the task and determine when the reassignment is complete. A token with ORG_ADMIN or CERT_ADMIN authority is required to call this API. Reviewers for this certification can also call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The identity campaign certification ID
- @return ApiReassignIdentityCertsAsyncRequest
+ @return ApiSubmitReassignCertsAsyncRequest
+
+Deprecated
 */
-func (a *CertificationsApiService) ReassignIdentityCertsAsync(ctx context.Context, id string) ApiReassignIdentityCertsAsyncRequest {
-	return ApiReassignIdentityCertsAsyncRequest{
+func (a *CertificationsApiService) SubmitReassignCertsAsync(ctx context.Context, id string) ApiSubmitReassignCertsAsyncRequest {
+	return ApiSubmitReassignCertsAsyncRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -834,7 +836,8 @@ func (a *CertificationsApiService) ReassignIdentityCertsAsync(ctx context.Contex
 
 // Execute executes the request
 //  @return IdentityCertificationTask
-func (a *CertificationsApiService) ReassignIdentityCertsAsyncExecute(r ApiReassignIdentityCertsAsyncRequest) (*IdentityCertificationTask, *http.Response, error) {
+// Deprecated
+func (a *CertificationsApiService) SubmitReassignCertsAsyncExecute(r ApiSubmitReassignCertsAsyncRequest) (*IdentityCertificationTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -842,7 +845,7 @@ func (a *CertificationsApiService) ReassignIdentityCertsAsyncExecute(r ApiReassi
 		localVarReturnValue  *IdentityCertificationTask
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsApiService.ReassignIdentityCertsAsync")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsApiService.SubmitReassignCertsAsync")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

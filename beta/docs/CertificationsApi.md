@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**GetIdentityCertificationPendingTasks**](CertificationsApi.md#GetIdentityCertificationPendingTasks) | **Get** /certifications/{id}/tasks-pending | Pending Certification Tasks
 [**GetIdentityCertificationTaskStatus**](CertificationsApi.md#GetIdentityCertificationTaskStatus) | **Get** /certifications/{id}/tasks/{taskId} | Certification Task Status
 [**ListCertificationReviewers**](CertificationsApi.md#ListCertificationReviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
-[**ReassignIdentityCertsAsync**](CertificationsApi.md#ReassignIdentityCertsAsync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
+[**SubmitReassignCertsAsync**](CertificationsApi.md#SubmitReassignCertsAsync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 
 
 
@@ -316,9 +316,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReassignIdentityCertsAsync
+## SubmitReassignCertsAsync
 
-> IdentityCertificationTask ReassignIdentityCertsAsync(ctx, id).ReviewReassign(reviewReassign).Execute()
+> IdentityCertificationTask SubmitReassignCertsAsync(ctx, id).ReviewReassign(reviewReassign).Execute()
 
 Reassign Certifications Asynchronously
 
@@ -337,18 +337,18 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | The identity campaign certification ID
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The identity campaign certification ID
     reviewReassign := *openapiclient.NewReviewReassign([]openapiclient.ReassignReference{*openapiclient.NewReassignReference("ef38f94347e94562b5bb8424a56397d8", "ITEM")}, "ef38f94347e94562b5bb8424a56397d8", "reassigned for some reason") // ReviewReassign | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.ReassignIdentityCertsAsync(context.Background(), id).ReviewReassign(reviewReassign).Execute()
+    resp, r, err := apiClient.CertificationsApi.SubmitReassignCertsAsync(context.Background(), id).ReviewReassign(reviewReassign).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.ReassignIdentityCertsAsync``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.SubmitReassignCertsAsync``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ReassignIdentityCertsAsync`: IdentityCertificationTask
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.ReassignIdentityCertsAsync`: %v\n", resp)
+    // response from `SubmitReassignCertsAsync`: IdentityCertificationTask
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.SubmitReassignCertsAsync`: %v\n", resp)
 }
 ```
 
@@ -362,7 +362,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiReassignIdentityCertsAsyncRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSubmitReassignCertsAsyncRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

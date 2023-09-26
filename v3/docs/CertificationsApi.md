@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**MakeIdentityDecision**](CertificationsApi.md#MakeIdentityDecision) | **Post** /certifications/{id}/decide | Decide on a Certification Item
 [**ReassignIdentityCertifications**](CertificationsApi.md#ReassignIdentityCertifications) | **Post** /certifications/{id}/reassign | Reassign Identities or Items
 [**SignOffIdentityCertification**](CertificationsApi.md#SignOffIdentityCertification) | **Post** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
+[**SubmitReassignCertsAsync**](CertificationsApi.md#SubmitReassignCertsAsync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 
 
 
@@ -686,6 +687,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SubmitReassignCertsAsync
+
+> CertificationTask SubmitReassignCertsAsync(ctx, id).ReviewReassign(reviewReassign).Execute()
+
+Reassign Certifications Asynchronously
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The identity campaign certification ID
+    reviewReassign := *openapiclient.NewReviewReassign([]openapiclient.ReassignReference{*openapiclient.NewReassignReference("ef38f94347e94562b5bb8424a56397d8", "ITEM")}, "ef38f94347e94562b5bb8424a56397d8", "reassigned for some reason") // ReviewReassign | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationsApi.SubmitReassignCertsAsync(context.Background(), id).ReviewReassign(reviewReassign).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.SubmitReassignCertsAsync``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SubmitReassignCertsAsync`: CertificationTask
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.SubmitReassignCertsAsync`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The identity campaign certification ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSubmitReassignCertsAsyncRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **reviewReassign** | [**ReviewReassign**](ReviewReassign.md) |  | 
+
+### Return type
+
+[**CertificationTask**](CertificationTask.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -143,7 +143,7 @@ Class | Method | HTTP request | Description
 *CertificationsApi* | [**GetIdentityCertificationPendingTasks**](docs/CertificationsApi.md#getidentitycertificationpendingtasks) | **Get** /certifications/{id}/tasks-pending | Pending Certification Tasks
 *CertificationsApi* | [**GetIdentityCertificationTaskStatus**](docs/CertificationsApi.md#getidentitycertificationtaskstatus) | **Get** /certifications/{id}/tasks/{taskId} | Certification Task Status
 *CertificationsApi* | [**ListCertificationReviewers**](docs/CertificationsApi.md#listcertificationreviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
-*CertificationsApi* | [**ReassignIdentityCertsAsync**](docs/CertificationsApi.md#reassignidentitycertsasync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
+*CertificationsApi* | [**SubmitReassignCertsAsync**](docs/CertificationsApi.md#submitreassigncertsasync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 *ConnectorRuleManagementApi* | [**CreateConnectorRule**](docs/ConnectorRuleManagementApi.md#createconnectorrule) | **Post** /connector-rules | Create Connector Rule
 *ConnectorRuleManagementApi* | [**DeleteConnectorRule**](docs/ConnectorRuleManagementApi.md#deleteconnectorrule) | **Delete** /connector-rules/{id} | Delete a Connector-Rule
 *ConnectorRuleManagementApi* | [**GetConnectorRule**](docs/ConnectorRuleManagementApi.md#getconnectorrule) | **Get** /connector-rules/{id} | Connector-Rule by ID

@@ -138,6 +138,7 @@ Class | Method | HTTP request | Description
 *CertificationsApi* | [**MakeIdentityDecision**](docs/CertificationsApi.md#makeidentitydecision) | **Post** /certifications/{id}/decide | Decide on a Certification Item
 *CertificationsApi* | [**ReassignIdentityCertifications**](docs/CertificationsApi.md#reassignidentitycertifications) | **Post** /certifications/{id}/reassign | Reassign Identities or Items
 *CertificationsApi* | [**SignOffIdentityCertification**](docs/CertificationsApi.md#signoffidentitycertification) | **Post** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
+*CertificationsApi* | [**SubmitReassignCertsAsync**](docs/CertificationsApi.md#submitreassigncertsasync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 *GlobalTenantSecuritySettingsApi* | [**CreateAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsApi.md#createauthorgnetworkconfig) | **Post** /auth-org/network-config | Create security network configuration.
 *GlobalTenantSecuritySettingsApi* | [**GetAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsApi.md#getauthorgnetworkconfig) | **Get** /auth-org/network-config | Get security network configuration.
 *GlobalTenantSecuritySettingsApi* | [**PatchAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsApi.md#patchauthorgnetworkconfig) | **Patch** /auth-org/network-config | Update security network configuration.
