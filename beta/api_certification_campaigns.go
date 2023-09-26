@@ -400,8 +400,12 @@ func (r ApiCreateCampaignTemplateRequest) Execute() (*CampaignTemplate, *http.Re
 /*
 CreateCampaignTemplate Create a Campaign Template
 
+Create a campaign Template based on campaign.
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignTemplateRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) CreateCampaignTemplate(ctx context.Context) ApiCreateCampaignTemplateRequest {
 	return ApiCreateCampaignTemplateRequest{
@@ -412,6 +416,7 @@ func (a *CertificationCampaignsApiService) CreateCampaignTemplate(ctx context.Co
 
 // Execute executes the request
 //  @return CampaignTemplate
+// Deprecated
 func (a *CertificationCampaignsApiService) CreateCampaignTemplateExecute(r ApiCreateCampaignTemplateRequest) (*CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

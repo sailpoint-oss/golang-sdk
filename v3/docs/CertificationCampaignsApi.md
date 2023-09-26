@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CompleteCampaign**](CertificationCampaignsApi.md#CompleteCampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
 [**CreateCampaign**](CertificationCampaignsApi.md#CreateCampaign) | **Post** /campaigns | Create a campaign
+[**CreateCampaignTemplate**](CertificationCampaignsApi.md#CreateCampaignTemplate) | **Post** /campaign-templates | Create a Campaign Template
 [**DeleteCampaigns**](CertificationCampaignsApi.md#DeleteCampaigns) | **Post** /campaigns/delete | Deletes Campaigns
 [**GetActiveCampaigns**](CertificationCampaignsApi.md#GetActiveCampaigns) | **Get** /campaigns | List Campaigns
 [**GetCampaign**](CertificationCampaignsApi.md#GetCampaign) | **Get** /campaigns/{id} | Get a campaign
@@ -143,6 +144,73 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Campaign**](Campaign.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateCampaignTemplate
+
+> CampaignTemplate CreateCampaignTemplate(ctx).CampaignTemplate(campaignTemplate).Execute()
+
+Create a Campaign Template
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    campaignTemplate := *openapiclient.NewCampaignTemplate("Manager Campaign Template", "Template for the annual manager campaign.", time.Now(), time.Now(), *openapiclient.NewCampaign("Manager Campaign", "Everyone needs to be reviewed by their manager", "MANAGER")) // CampaignTemplate | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationCampaignsApi.CreateCampaignTemplate(context.Background()).CampaignTemplate(campaignTemplate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.CreateCampaignTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateCampaignTemplate`: CampaignTemplate
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.CreateCampaignTemplate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateCampaignTemplateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignTemplate** | [**CampaignTemplate**](CampaignTemplate.md) |  | 
+
+### Return type
+
+[**CampaignTemplate**](CampaignTemplate.md)
 
 ### Authorization
 

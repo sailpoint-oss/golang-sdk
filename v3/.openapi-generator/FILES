@@ -154,6 +154,8 @@ docs/CampaignReference.md
 docs/CampaignReport.md
 docs/CampaignReportAllOf.md
 docs/CampaignReportsConfig.md
+docs/CampaignTemplate.md
+docs/CampaignTemplateOwnerRef.md
 docs/CampaignsDeleteRequest.md
 docs/CancelAccessRequest.md
 docs/CancelledRequestDetails.md
@@ -603,6 +605,8 @@ model_campaign_reference.go
 model_campaign_report.go
 model_campaign_report_all_of.go
 model_campaign_reports_config.go
+model_campaign_template.go
+model_campaign_template_owner_ref.go
 model_campaigns_delete_request.go
 model_cancel_access_request.go
 model_cancelled_request_details.go

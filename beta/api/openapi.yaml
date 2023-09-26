@@ -7901,6 +7901,7 @@ paths:
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
           Sorting is supported for the following fields: **name, created, modified**
+        example: name
         in: query
         name: sorters
         schema:
@@ -7910,6 +7911,7 @@ paths:
           Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)
 
           Filtering is supported for the following fields: **name, id**
+        example: name eq "manager template"
         in: query
         name: filters
         schema:
@@ -7982,10 +7984,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template-list:read
       summary: List Campaign Templates
       tags:
       - Certification Campaigns
     post:
+      deprecated: true
+      description: Create a campaign Template based on campaign.
       operationId: createCampaignTemplate
       requestBody:
         content:
@@ -8082,6 +8089,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template:create
       summary: Create a Campaign Template
       tags:
       - Certification Campaigns
@@ -50779,6 +50789,7 @@ components:
           readOnly: true
           type: string
         scheduled:
+          default: false
           description: Indicates if this campaign template has been scheduled.
           example: false
           readOnly: true

@@ -114,6 +114,7 @@ Class | Method | HTTP request | Description
 *AuthUserApi* | [**PatchAuthUser**](docs/AuthUserApi.md#patchauthuser) | **Patch** /auth-users/{id} | Auth User Update
 *CertificationCampaignsApi* | [**CompleteCampaign**](docs/CertificationCampaignsApi.md#completecampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
 *CertificationCampaignsApi* | [**CreateCampaign**](docs/CertificationCampaignsApi.md#createcampaign) | **Post** /campaigns | Create a campaign
+*CertificationCampaignsApi* | [**CreateCampaignTemplate**](docs/CertificationCampaignsApi.md#createcampaigntemplate) | **Post** /campaign-templates | Create a Campaign Template
 *CertificationCampaignsApi* | [**DeleteCampaigns**](docs/CertificationCampaignsApi.md#deletecampaigns) | **Post** /campaigns/delete | Deletes Campaigns
 *CertificationCampaignsApi* | [**GetActiveCampaigns**](docs/CertificationCampaignsApi.md#getactivecampaigns) | **Get** /campaigns | List Campaigns
 *CertificationCampaignsApi* | [**GetCampaign**](docs/CertificationCampaignsApi.md#getcampaign) | **Get** /campaigns/{id} | Get a campaign
@@ -431,6 +432,8 @@ Class | Method | HTTP request | Description
  - [CampaignReport](docs/CampaignReport.md)
  - [CampaignReportAllOf](docs/CampaignReportAllOf.md)
  - [CampaignReportsConfig](docs/CampaignReportsConfig.md)
+ - [CampaignTemplate](docs/CampaignTemplate.md)
+ - [CampaignTemplateOwnerRef](docs/CampaignTemplateOwnerRef.md)
  - [CampaignsDeleteRequest](docs/CampaignsDeleteRequest.md)
  - [CancelAccessRequest](docs/CancelAccessRequest.md)
  - [CancelledRequestDetails](docs/CancelledRequestDetails.md)
