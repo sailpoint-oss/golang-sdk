@@ -23882,7 +23882,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2:
+      - UserContextAuth:
         - idn:password-org-config:write
       summary: Update Password Org Config
       tags:

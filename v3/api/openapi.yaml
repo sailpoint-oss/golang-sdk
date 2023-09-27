@@ -4460,7 +4460,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2:
+      - UserContextAuth:
         - sp:auth-org:read
       summary: Get security network configuration.
       tags:
@@ -4577,7 +4577,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2:
+      - UserContextAuth:
         - sp:auth-org:update
       summary: Update security network configuration.
       tags:
@@ -4680,7 +4680,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2:
+      - UserContextAuth:
         - sp:auth-org:create
       summary: Create security network configuration.
       tags:
@@ -4781,7 +4781,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2:
+      - UserContextAuth:
         - sp:auth-user:read
       summary: Auth User Details
       tags:
@@ -4907,7 +4907,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2:
+      - UserContextAuth:
         - sp:auth-user:update
       summary: Auth User Update
       tags:
@@ -20000,7 +20000,7 @@ paths:
           description: Internal Server Error - Returned if there is an unexpected
             error.
       security:
-      - oauth2:
+      - UserContextAuth:
         - idn:password-org-config:write
       summary: Update Password Org Config
       tags:
