@@ -8190,6 +8190,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template:delete
       summary: Delete a Campaign Template
       tags:
       - Certification Campaigns
@@ -8298,10 +8301,14 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template:read
       summary: Get a Campaign Template
       tags:
       - Certification Campaigns
     patch:
+      deprecated: true
       description: "Allows updating individual fields on a campaign template using\
         \ the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
       operationId: patchCampaignTemplate
@@ -8325,7 +8332,7 @@ paths:
               value: ff80818155fe8c080155fe8d925b0316
             schema:
               items:
-                type: object
+                $ref: '#/components/schemas/JsonPatchOperation'
               type: array
         description: |
           A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
@@ -8431,6 +8438,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template:update
       summary: Update a Campaign Template
       tags:
       - Certification Campaigns

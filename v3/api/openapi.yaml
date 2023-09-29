@@ -6595,6 +6595,143 @@ paths:
       summary: Create a Campaign Template
       tags:
       - Certification Campaigns
+  /campaign-templates/{id}:
+    patch:
+      description: "Allows updating individual fields on a campaign template using\
+        \ the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
+      operationId: patchCampaignTemplate
+      parameters:
+      - description: The ID of the campaign template being modified.
+        example: 2c9180835d191a86015d28455b4a2329
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - op: replace
+              path: /description
+              value: Updated description!
+            - op: replace
+              path: /campaign/filter/id
+              value: ff80818155fe8c080155fe8d925b0316
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: |
+          A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+          The following fields are patchable:
+          * name
+          * description
+          * deadlineDuration
+          * campaign (all fields that are allowed during create)
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                Manager:
+                  $ref: '#/components/examples/CampaignTemplateManager'
+                  value: null
+                Search:
+                  $ref: '#/components/examples/CampaignTemplateSearch'
+                  value: null
+                Source Owner:
+                  $ref: '#/components/examples/CampaignTemplateSourceOwner'
+                  value: null
+                RoleComposition:
+                  $ref: '#/components/examples/CampaignTemplateRoleComposition'
+                  value: null
+              schema:
+                $ref: '#/components/schemas/CampaignTemplate'
+          description: "Indicates the PATCH operation succeeded, and returns the template's\
+            \ new representation."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template:update
+      summary: Update a Campaign Template
+      tags:
+      - Certification Campaigns
   /certifications:
     get:
       description: "This API returns a list of identity campaign certifications that\

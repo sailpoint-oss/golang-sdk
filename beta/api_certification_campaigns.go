@@ -2627,12 +2627,12 @@ type ApiPatchCampaignTemplateRequest struct {
 	ctx context.Context
 	ApiService *CertificationCampaignsApiService
 	id string
-	requestBody *[]map[string]interface{}
+	jsonPatchOperation *[]JsonPatchOperation
 }
 
 // A list of campaign update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * deadlineDuration * campaign (all fields that are allowed during create) 
-func (r ApiPatchCampaignTemplateRequest) RequestBody(requestBody []map[string]interface{}) ApiPatchCampaignTemplateRequest {
-	r.requestBody = &requestBody
+func (r ApiPatchCampaignTemplateRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchCampaignTemplateRequest {
+	r.jsonPatchOperation = &jsonPatchOperation
 	return r
 }
 
@@ -2648,6 +2648,8 @@ Allows updating individual fields on a campaign template using the [JSON Patch](
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the campaign template being modified.
  @return ApiPatchCampaignTemplateRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) PatchCampaignTemplate(ctx context.Context, id string) ApiPatchCampaignTemplateRequest {
 	return ApiPatchCampaignTemplateRequest{
@@ -2659,6 +2661,7 @@ func (a *CertificationCampaignsApiService) PatchCampaignTemplate(ctx context.Con
 
 // Execute executes the request
 //  @return CampaignTemplate
+// Deprecated
 func (a *CertificationCampaignsApiService) PatchCampaignTemplateExecute(r ApiPatchCampaignTemplateRequest) (*CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
@@ -2678,8 +2681,8 @@ func (a *CertificationCampaignsApiService) PatchCampaignTemplateExecute(r ApiPat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.requestBody == nil {
-		return localVarReturnValue, nil, reportError("requestBody is required and must be specified")
+	if r.jsonPatchOperation == nil {
+		return localVarReturnValue, nil, reportError("jsonPatchOperation is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2700,7 +2703,7 @@ func (a *CertificationCampaignsApiService) PatchCampaignTemplateExecute(r ApiPat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.requestBody
+	localVarPostBody = r.jsonPatchOperation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
