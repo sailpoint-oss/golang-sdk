@@ -2280,8 +2280,14 @@ func (r ApiListCampaignTemplatesRequest) Execute() ([]CampaignTemplate, *http.Re
 /*
 ListCampaignTemplates List Campaign Templates
 
+Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.
+
+All CampaignTemplates matching the query params
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListCampaignTemplatesRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) ListCampaignTemplates(ctx context.Context) ApiListCampaignTemplatesRequest {
 	return ApiListCampaignTemplatesRequest{
@@ -2292,6 +2298,7 @@ func (a *CertificationCampaignsApiService) ListCampaignTemplates(ctx context.Con
 
 // Execute executes the request
 //  @return []CampaignTemplate
+// Deprecated
 func (a *CertificationCampaignsApiService) ListCampaignTemplatesExecute(r ApiListCampaignTemplatesRequest) ([]CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

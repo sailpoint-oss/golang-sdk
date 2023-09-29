@@ -7857,6 +7857,11 @@ paths:
       - Certification Campaigns
   /campaign-templates:
     get:
+      deprecated: true
+      description: |-
+        Lists all CampaignTemplates. Scope can be reduced via standard V3 query params.
+
+        All CampaignTemplates matching the query params
       operationId: listCampaignTemplates
       parameters:
       - description: |-
