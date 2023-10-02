@@ -6732,6 +6732,176 @@ paths:
       summary: Update a Campaign Template
       tags:
       - Certification Campaigns
+  /campaign-templates/{id}/schedule:
+    put:
+      description: "Sets the schedule for a campaign template. If a schedule already\
+        \ exists, it will be overwritten with the new one."
+      operationId: setCampaignTemplateSchedule
+      parameters:
+      - description: The ID of the campaign template being scheduled.
+        example: 04bedce387bd47b2ae1f86eb0bb36dee
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Monthly:
+                description: "Runs on the 15th and last day of the month, at 5PM."
+                value:
+                  type: MONTHLY
+                  hours:
+                    type: LIST
+                    values:
+                    - "17"
+                  days:
+                    type: LIST
+                    values:
+                    - "15"
+              Once a year:
+                description: Runs every January 1st at midnight.
+                value:
+                  type: ANNUALLY
+                  hours:
+                    type: LIST
+                    values:
+                    - "0"
+                  days:
+                    type: LIST
+                    values:
+                    - --01-01
+              Quarterly:
+                description: Runs once a quarter (every 3 months) on the first of
+                  the month at 1AM.
+                value:
+                  type: ANNUALLY
+                  hours:
+                    type: LIST
+                    values:
+                    - "1"
+                  days:
+                    type: LIST
+                    values:
+                    - "1"
+                  months:
+                    type: LIST
+                    values:
+                    - "1"
+                    interval: 3
+              Yearly on Specific Days:
+                description: "Runs on March 12 and December 5 at 1AM, every year."
+                value:
+                  type: ANNUALLY
+                  hours:
+                    type: LIST
+                    values:
+                    - "1"
+                  days:
+                    type: LIST
+                    values:
+                    - --03-12
+                    - --12-05
+              On a Specific Date:
+                description: "Runs at 1AM on February 18th, 2020"
+                value:
+                  type: CALENDAR
+                  hours:
+                    type: LIST
+                    values:
+                    - "1"
+                  days:
+                    type: LIST
+                    values:
+                    - 2020-02-18
+            schema:
+              $ref: '#/components/schemas/Schedule'
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template:run
+      summary: Sets a Campaign Template's Schedule
+      tags:
+      - Certification Campaigns
   /certifications:
     get:
       description: "This API returns a list of identity campaign certifications that\
@@ -31157,31 +31327,54 @@ components:
       - $ref: '#/components/schemas/SavedSearchDetail'
       type: object
     Schedule:
-      description: The schedule information.
       example:
-        hours: null
-        timeZoneId: GMT-06:00
-        days: null
-        expiration: 2018-06-25T20:22:28.104Z
+        hours:
+          values:
+          - "1"
+          interval: 2
+          type: LIST
+        months:
+          values:
+          - "1"
+          interval: 2
+          type: LIST
+        timeZoneId: CST
+        days:
+          values:
+          - "1"
+          interval: 2
+          type: LIST
+        expiration: 2000-01-23T04:56:07.000+00:00
         type: WEEKLY
       properties:
         type:
-          $ref: '#/components/schemas/ScheduleType'
+          description: "Determines the overall schedule cadence. In general, all time\
+            \ period fields smaller than the chosen type can be configured. For example,\
+            \ a DAILY schedule can have 'hours' set, but not 'days'; a WEEKLY schedule\
+            \ can have both 'hours' and 'days' set."
+          enum:
+          - WEEKLY
+          - MONTHLY
+          - ANNUALLY
+          - CALENDAR
+          example: WEEKLY
+          type: string
+        months:
+          $ref: '#/components/schemas/Schedule_months'
         days:
           $ref: '#/components/schemas/Schedule_days'
         hours:
           $ref: '#/components/schemas/Schedule_hours'
         expiration:
-          description: A date-time in ISO-8601 format
-          example: 2018-06-25T20:22:28.104Z
+          description: Specifies the time after which this schedule will no longer
+            occur.
           format: date-time
-          nullable: true
           type: string
         timeZoneId:
-          description: "The GMT formatted timezone the schedule will run in (ex. GMT-06:00).\
-            \  If no timezone is specified, the org's default timezone is used."
-          example: GMT-06:00
-          nullable: true
+          description: "The time zone to use when running the schedule. For instance,\
+            \ if the schedule is scheduled to run at 1AM, and this field is set to\
+            \ \"CST\", the schedule will run at 1AM CST."
+          example: CST
           type: string
       required:
       - hours
@@ -36116,7 +36309,7 @@ components:
           description: The last date the scheduled search was modified.
           readOnly: true
         schedule:
-          $ref: '#/components/schemas/Schedule'
+          $ref: '#/components/schemas/Schedule_1'
         recipients:
           description: A list of identities that should receive the scheduled search
             report via email.
@@ -36809,7 +37002,7 @@ components:
           example: Schedule for policy xyz
           type: string
         schedule:
-          $ref: '#/components/schemas/Schedule'
+          $ref: '#/components/schemas/Schedule_1'
         recipients:
           items:
             $ref: '#/components/schemas/BaseReferenceDto'
@@ -39481,6 +39674,37 @@ components:
           example: false
           type: boolean
       type: object
+    Schedule_1:
+      description: The schedule information.
+      example:
+        hours: null
+        timeZoneId: GMT-06:00
+        days: null
+        expiration: 2018-06-25T20:22:28.104Z
+        type: WEEKLY
+      properties:
+        type:
+          $ref: '#/components/schemas/ScheduleType'
+        days:
+          $ref: '#/components/schemas/Schedule_1_days'
+        hours:
+          $ref: '#/components/schemas/Schedule_1_hours'
+        expiration:
+          description: A date-time in ISO-8601 format
+          example: 2018-06-25T20:22:28.104Z
+          format: date-time
+          nullable: true
+          type: string
+        timeZoneId:
+          description: "The GMT formatted timezone the schedule will run in (ex. GMT-06:00).\
+            \  If no timezone is specified, the org's default timezone is used."
+          example: GMT-06:00
+          nullable: true
+          type: string
+      required:
+      - hours
+      - type
+      type: object
     QueryType:
       default: SAILPOINT
       description: |-
@@ -39861,42 +40085,6 @@ components:
           example: William Wilson
           nullable: true
           type: string
-      type: object
-    ScheduleType:
-      description: |
-        Enum representing the currently supported schedule types.
-
-        Additional values may be added in the future without notice.
-      enum:
-      - DAILY
-      - WEEKLY
-      - MONTHLY
-      - CALENDAR
-      example: WEEKLY
-      type: string
-    Selector:
-      properties:
-        type:
-          $ref: '#/components/schemas/SelectorType'
-        values:
-          description: |
-            The selected values.
-          example:
-          - MON
-          - WED
-          items:
-            type: string
-          type: array
-        interval:
-          description: |
-            The selected interval for RANGE selectors.
-          example: 3
-          format: int32
-          nullable: true
-          type: integer
-      required:
-      - type
-      - values
       type: object
     BaseDocument:
       properties:
@@ -40645,6 +40833,42 @@ components:
         upper:
           $ref: '#/components/schemas/Bound'
       type: object
+    ScheduleType:
+      description: |
+        Enum representing the currently supported schedule types.
+
+        Additional values may be added in the future without notice.
+      enum:
+      - DAILY
+      - WEEKLY
+      - MONTHLY
+      - CALENDAR
+      example: WEEKLY
+      type: string
+    Selector:
+      properties:
+        type:
+          $ref: '#/components/schemas/SelectorType'
+        values:
+          description: |
+            The selected values.
+          example:
+          - MON
+          - WED
+          items:
+            type: string
+          type: array
+        interval:
+          description: |
+            The selected interval for RANGE selectors.
+          example: 3
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - type
+      - values
+      type: object
     InnerHit:
       description: Inner Hit query object that will cause the specified nested type
         to be returned as the result matching the supplied query.
@@ -40767,20 +40991,6 @@ components:
       - INT
       - BOOLEAN
       example: STRING
-      type: string
-    SelectorType:
-      description: |
-        Enum representing the currently supported selector types.
-
-        LIST - the *values* array contains one or more distinct values.
-
-        RANGE - the *values* array contains two values: the start and end of the range, inclusive.
-
-        Additional values may be added in the future without notice.
-      enum:
-      - LIST
-      - RANGE
-      example: LIST
       type: string
     DocumentType:
       description: |-
@@ -41000,6 +41210,20 @@ components:
       required:
       - value
       type: object
+    SelectorType:
+      description: |
+        Enum representing the currently supported selector types.
+
+        LIST - the *values* array contains one or more distinct values.
+
+        RANGE - the *values* array contains two values: the start and end of the range, inclusive.
+
+        Additional values may be added in the future without notice.
+      enum:
+      - LIST
+      - RANGE
+      example: LIST
+      type: string
     NestedAggregation:
       description: The nested aggregation object.
       properties:
@@ -42221,34 +42445,159 @@ components:
           $ref: '#/components/schemas/TypedReference'
       type: object
       example: null
+    Schedule_months:
+      description: |
+        Specifies which months of a schedule are active. Only valid for ANNUALLY schedule types. Examples:
+
+        On February and March:
+        * type LIST
+        * values "2", "3"
+
+        Every 3 months, starting in January (quarterly):
+        * type LIST
+        * values "1"
+        * interval 3
+
+        Every two months between July and December:
+        * type RANGE
+        * values "7", "12"
+        * interval 2
+      example:
+        values:
+        - "1"
+        interval: 2
+        type: LIST
+      properties:
+        type:
+          description: Enum type to specify months value
+          enum:
+          - LIST
+          - RANGE
+          example: LIST
+          type: string
+        values:
+          description: Values of the months based on the enum type mentioned above
+          example:
+          - "1"
+          items:
+            type: string
+          type: array
+        interval:
+          description: Interval between the cert generations
+          example: 2
+          format: int64
+          type: integer
+      required:
+      - type
+      - values
+      type: object
     Schedule_days:
-      allOf:
-      - $ref: '#/components/schemas/Selector'
-      - description: |
-          The days to execute the search.
+      description: |
+        Specifies which day(s) a schedule is active for. This is required for all schedule types.
+        The "values" field holds different data depending on the type of schedule:
+        * WEEKLY: days of the week (1-7)
+        * MONTHLY: days of the month (1-31, L, L-1...)
+        * ANNUALLY: if the "months" field is also set: days of the month (1-31, L, L-1...); otherwise: ISO-8601 dates without year ("--12-31")
+        * CALENDAR: ISO-8601 dates ("2020-12-31")
 
-          If `type` is `WEEKLY`, the values will be `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, and `SUN`.
+        Note that CALENDAR only supports the LIST type, and ANNUALLY does not support the RANGE type when provided
+        with ISO-8601 dates without year.
 
-          If `type` is `MONTHLY`, the values will be a number in double quotes, like `"1"`, `"10"`, or `"28"`.  Optionally, the value `"L"` can be used to refer to the last day of the month.
-        example:
-          type: LIST
-          values:
-          - MON
-          - WED
-          - FRI
-        nullable: true
-        type: object
+        Examples:
+
+        On Sundays:
+        * type LIST
+        * values "1"
+
+        The second to last day of the month:
+        * type LIST
+        * values "L-1"
+
+        From the 20th to the last day of the month:
+        * type RANGE
+        * values "20", "L"
+
+        Every March 2nd:
+        * type LIST
+        * values "--03-02"
+
+        On March 2nd, 2021:
+        * type: LIST
+        * values "2021-03-02"
+      example:
+        values:
+        - "1"
+        interval: 2
+        type: LIST
+      properties:
+        type:
+          description: Enum type to specify days value
+          enum:
+          - LIST
+          - RANGE
+          example: LIST
+          type: string
+        values:
+          description: Values of the days based on the enum type mentioned above
+          example:
+          - "1"
+          items:
+            type: string
+          type: array
+        interval:
+          description: Interval between the cert generations
+          example: 2
+          format: int64
+          type: integer
+      required:
+      - type
+      - values
+      type: object
     Schedule_hours:
-      allOf:
-      - $ref: '#/components/schemas/Selector'
-      - description: The hours selected.
-        example:
-          type: RANGE
-          values:
-          - "9"
-          - "18"
-          interval: 3
-        type: object
+      description: |
+        Specifies which hour(s) a schedule is active for. Examples:
+
+        Every three hours starting from 8AM, inclusive:
+        * type LIST
+        * values "8"
+        * interval 3
+
+        During business hours:
+        * type RANGE
+        * values "9", "5"
+
+        At 5AM, noon, and 5PM:
+        * type LIST
+        * values "5", "12", "17"
+      example:
+        values:
+        - "1"
+        interval: 2
+        type: LIST
+      properties:
+        type:
+          description: Enum type to specify hours value
+          enum:
+          - LIST
+          - RANGE
+          example: LIST
+          type: string
+        values:
+          description: Values of the days based on the enum type mentioned above
+          example:
+          - "1"
+          items:
+            type: string
+          type: array
+        interval:
+          description: Interval between the cert generations
+          example: 2
+          format: int64
+          type: integer
+      required:
+      - type
+      - values
+      type: object
     ScheduledSearch_allOf_owner:
       description: The owner of the scheduled search
       properties:
@@ -43177,6 +43526,34 @@ components:
           type: string
       type: object
       example: null
+    Schedule_1_days:
+      allOf:
+      - $ref: '#/components/schemas/Selector'
+      - description: |
+          The days to execute the search.
+
+          If `type` is `WEEKLY`, the values will be `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, and `SUN`.
+
+          If `type` is `MONTHLY`, the values will be a number in double quotes, like `"1"`, `"10"`, or `"28"`.  Optionally, the value `"L"` can be used to refer to the last day of the month.
+        example:
+          type: LIST
+          values:
+          - MON
+          - WED
+          - FRI
+        nullable: true
+        type: object
+    Schedule_1_hours:
+      allOf:
+      - $ref: '#/components/schemas/Selector'
+      - description: The hours selected.
+        example:
+          type: RANGE
+          values:
+          - "9"
+          - "18"
+          interval: 3
+        type: object
     SearchAggregationSpecification_allOf:
       properties:
         subAggregation:

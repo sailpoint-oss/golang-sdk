@@ -27,7 +27,7 @@ type Schedule struct {
 	Hours ScheduleHours `json:"hours"`
 	// Specifies the time after which this schedule will no longer occur.
 	Expiration *time.Time `json:"expiration,omitempty"`
-	// The time zone to use when running the schedule. For instance, if the schedule is a DAILY schedule that runs at 1AM, and this field is set to \"CST\", the schedule will run at 1AM CST.
+	// The time zone to use when running the schedule. For instance, if the schedule is scheduled to run at 1AM, and this field is set to \"CST\", the schedule will run at 1AM CST.
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

@@ -8534,6 +8534,7 @@ paths:
       operationId: deleteCampaignTemplateSchedule
       parameters:
       - description: The ID of the campaign template whose schedule is being deleted.
+        example: 04bedce387bd47b2ae1f86eb0bb36dee
         in: path
         name: id
         required: true
@@ -8543,6 +8544,12 @@ paths:
         "204":
           description: No content - indicates the request was successful but there
             is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -8611,6 +8618,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template:run
       summary: Deletes a Campaign Template's Schedule
       tags:
       - Certification Campaigns
@@ -8620,6 +8630,7 @@ paths:
       operationId: getCampaignTemplateSchedule
       parameters:
       - description: The ID of the campaign template whose schedule is being fetched.
+        example: 04bedce387bd47b2ae1f86eb0bb36dee
         in: path
         name: id
         required: true
@@ -8633,6 +8644,12 @@ paths:
                 $ref: '#/components/schemas/Schedule'
           description: The current schedule for the campaign template. See the PUT
             endpoint documentation for more examples.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
         "401":
           content:
             application/json:
@@ -8701,15 +8718,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template:read
       summary: Gets a Campaign Template's Schedule
       tags:
       - Certification Campaigns
     put:
+      deprecated: true
       description: "Sets the schedule for a campaign template. If a schedule already\
         \ exists, it will be overwritten with the new one."
       operationId: setCampaignTemplateSchedule
       parameters:
       - description: The ID of the campaign template being scheduled.
+        example: 04bedce387bd47b2ae1f86eb0bb36dee
         in: path
         name: id
         required: true
@@ -8866,6 +8888,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template:run
       summary: Sets a Campaign Template's Schedule
       tags:
       - Certification Campaigns
@@ -50899,15 +50924,24 @@ components:
       type: object
     Schedule:
       example:
-        type: MONTHLY
         hours:
-          type: LIST
-          values:
-          - "0"
-        days:
-          type: LIST
           values:
           - "1"
+          interval: 2
+          type: LIST
+        months:
+          values:
+          - "1"
+          interval: 2
+          type: LIST
+        timeZoneId: CST
+        days:
+          values:
+          - "1"
+          interval: 2
+          type: LIST
+        expiration: 2000-01-23T04:56:07.000+00:00
+        type: WEEKLY
       properties:
         type:
           description: "Determines the overall schedule cadence. In general, all time\
@@ -50915,11 +50949,11 @@ components:
             \ a DAILY schedule can have 'hours' set, but not 'days'; a WEEKLY schedule\
             \ can have both 'hours' and 'days' set."
           enum:
-          - DAILY
           - WEEKLY
           - MONTHLY
           - ANNUALLY
           - CALENDAR
+          example: WEEKLY
           type: string
         months:
           $ref: '#/components/schemas/Schedule_months'
@@ -50934,8 +50968,9 @@ components:
           type: string
         timeZoneId:
           description: "The time zone to use when running the schedule. For instance,\
-            \ if the schedule is a DAILY schedule that runs at 1AM, and this field\
-            \ is set to \"CST\", the schedule will run at 1AM CST."
+            \ if the schedule is scheduled to run at 1AM, and this field is set to\
+            \ \"CST\", the schedule will run at 1AM CST."
+          example: CST
           type: string
       required:
       - hours
@@ -67876,17 +67911,30 @@ components:
         * type RANGE
         * values "7", "12"
         * interval 2
+      example:
+        values:
+        - "1"
+        interval: 2
+        type: LIST
       properties:
         type:
+          description: Enum type to specify months value
           enum:
           - LIST
           - RANGE
+          example: LIST
           type: string
         values:
+          description: Values of the months based on the enum type mentioned above
+          example:
+          - "1"
           items:
             type: string
           type: array
         interval:
+          description: Interval between the cert generations
+          example: 2
+          format: int64
           type: integer
       required:
       - type
@@ -67894,7 +67942,7 @@ components:
       type: object
     Schedule_days:
       description: |
-        Specifies which day(s) a schedule is active for. This is required for all schedule types except DAILY.
+        Specifies which day(s) a schedule is active for. This is required for all schedule types.
         The "values" field holds different data depending on the type of schedule:
         * WEEKLY: days of the week (1-7)
         * MONTHLY: days of the month (1-31, L, L-1...)
@@ -67925,17 +67973,30 @@ components:
         On March 2nd, 2021:
         * type: LIST
         * values "2021-03-02"
+      example:
+        values:
+        - "1"
+        interval: 2
+        type: LIST
       properties:
         type:
+          description: Enum type to specify days value
           enum:
           - LIST
           - RANGE
+          example: LIST
           type: string
         values:
+          description: Values of the days based on the enum type mentioned above
+          example:
+          - "1"
           items:
             type: string
           type: array
         interval:
+          description: Interval between the cert generations
+          example: 2
+          format: int64
           type: integer
       required:
       - type
@@ -67957,17 +68018,30 @@ components:
         At 5AM, noon, and 5PM:
         * type LIST
         * values "5", "12", "17"
+      example:
+        values:
+        - "1"
+        interval: 2
+        type: LIST
       properties:
         type:
+          description: Enum type to specify hours value
           enum:
           - LIST
           - RANGE
+          example: LIST
           type: string
         values:
+          description: Values of the days based on the enum type mentioned above
+          example:
+          - "1"
           items:
             type: string
           type: array
         interval:
+          description: Interval between the cert generations
+          example: 2
+          format: int64
           type: integer
       required:
       - type

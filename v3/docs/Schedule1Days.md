@@ -1,97 +1,107 @@
-# ScheduleMonths
+# Schedule1Days
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** | Enum type to specify months value | 
-**Values** | **[]string** | Values of the months based on the enum type mentioned above | 
-**Interval** | Pointer to **int64** | Interval between the cert generations | [optional] 
+**Type** | [**SelectorType**](SelectorType.md) |  | 
+**Values** | **[]string** | The selected values.  | 
+**Interval** | Pointer to **NullableInt32** | The selected interval for RANGE selectors.  | [optional] 
 
 ## Methods
 
-### NewScheduleMonths
+### NewSchedule1Days
 
-`func NewScheduleMonths(type_ string, values []string, ) *ScheduleMonths`
+`func NewSchedule1Days(type_ SelectorType, values []string, ) *Schedule1Days`
 
-NewScheduleMonths instantiates a new ScheduleMonths object
+NewSchedule1Days instantiates a new Schedule1Days object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewScheduleMonthsWithDefaults
+### NewSchedule1DaysWithDefaults
 
-`func NewScheduleMonthsWithDefaults() *ScheduleMonths`
+`func NewSchedule1DaysWithDefaults() *Schedule1Days`
 
-NewScheduleMonthsWithDefaults instantiates a new ScheduleMonths object
+NewSchedule1DaysWithDefaults instantiates a new Schedule1Days object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ScheduleMonths) GetType() string`
+`func (o *Schedule1Days) GetType() SelectorType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ScheduleMonths) GetTypeOk() (*string, bool)`
+`func (o *Schedule1Days) GetTypeOk() (*SelectorType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ScheduleMonths) SetType(v string)`
+`func (o *Schedule1Days) SetType(v SelectorType)`
 
 SetType sets Type field to given value.
 
 
 ### GetValues
 
-`func (o *ScheduleMonths) GetValues() []string`
+`func (o *Schedule1Days) GetValues() []string`
 
 GetValues returns the Values field if non-nil, zero value otherwise.
 
 ### GetValuesOk
 
-`func (o *ScheduleMonths) GetValuesOk() (*[]string, bool)`
+`func (o *Schedule1Days) GetValuesOk() (*[]string, bool)`
 
 GetValuesOk returns a tuple with the Values field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValues
 
-`func (o *ScheduleMonths) SetValues(v []string)`
+`func (o *Schedule1Days) SetValues(v []string)`
 
 SetValues sets Values field to given value.
 
 
 ### GetInterval
 
-`func (o *ScheduleMonths) GetInterval() int64`
+`func (o *Schedule1Days) GetInterval() int32`
 
 GetInterval returns the Interval field if non-nil, zero value otherwise.
 
 ### GetIntervalOk
 
-`func (o *ScheduleMonths) GetIntervalOk() (*int64, bool)`
+`func (o *Schedule1Days) GetIntervalOk() (*int32, bool)`
 
 GetIntervalOk returns a tuple with the Interval field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInterval
 
-`func (o *ScheduleMonths) SetInterval(v int64)`
+`func (o *Schedule1Days) SetInterval(v int32)`
 
 SetInterval sets Interval field to given value.
 
 ### HasInterval
 
-`func (o *ScheduleMonths) HasInterval() bool`
+`func (o *Schedule1Days) HasInterval() bool`
 
 HasInterval returns a boolean if a field has been set.
 
+### SetIntervalNil
+
+`func (o *Schedule1Days) SetIntervalNil(b bool)`
+
+ SetIntervalNil sets the value for Interval to be an explicit nil
+
+### UnsetInterval
+`func (o *Schedule1Days) UnsetInterval()`
+
+UnsetInterval ensures that no value is present for Interval, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

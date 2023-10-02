@@ -14,43 +14,43 @@ import (
 	"encoding/json"
 )
 
-// checks if the ScheduleDays type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ScheduleDays{}
+// checks if the ScheduleMonths type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ScheduleMonths{}
 
-// ScheduleDays Specifies which day(s) a schedule is active for. This is required for all schedule types. The \"values\" field holds different data depending on the type of schedule: * WEEKLY: days of the week (1-7) * MONTHLY: days of the month (1-31, L, L-1...) * ANNUALLY: if the \"months\" field is also set: days of the month (1-31, L, L-1...); otherwise: ISO-8601 dates without year (\"--12-31\") * CALENDAR: ISO-8601 dates (\"2020-12-31\")  Note that CALENDAR only supports the LIST type, and ANNUALLY does not support the RANGE type when provided with ISO-8601 dates without year.  Examples:  On Sundays: * type LIST * values \"1\"  The second to last day of the month: * type LIST * values \"L-1\"  From the 20th to the last day of the month: * type RANGE * values \"20\", \"L\"  Every March 2nd: * type LIST * values \"--03-02\"  On March 2nd, 2021: * type: LIST * values \"2021-03-02\" 
-type ScheduleDays struct {
-	// Enum type to specify days value
+// ScheduleMonths Specifies which months of a schedule are active. Only valid for ANNUALLY schedule types. Examples:  On February and March: * type LIST * values \"2\", \"3\"  Every 3 months, starting in January (quarterly): * type LIST * values \"1\" * interval 3  Every two months between July and December: * type RANGE * values \"7\", \"12\" * interval 2 
+type ScheduleMonths struct {
+	// Enum type to specify months value
 	Type string `json:"type"`
-	// Values of the days based on the enum type mentioned above
+	// Values of the months based on the enum type mentioned above
 	Values []string `json:"values"`
 	// Interval between the cert generations
 	Interval *int64 `json:"interval,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _ScheduleDays ScheduleDays
+type _ScheduleMonths ScheduleMonths
 
-// NewScheduleDays instantiates a new ScheduleDays object
+// NewScheduleMonths instantiates a new ScheduleMonths object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScheduleDays(type_ string, values []string) *ScheduleDays {
-	this := ScheduleDays{}
+func NewScheduleMonths(type_ string, values []string) *ScheduleMonths {
+	this := ScheduleMonths{}
 	this.Type = type_
 	this.Values = values
 	return &this
 }
 
-// NewScheduleDaysWithDefaults instantiates a new ScheduleDays object
+// NewScheduleMonthsWithDefaults instantiates a new ScheduleMonths object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewScheduleDaysWithDefaults() *ScheduleDays {
-	this := ScheduleDays{}
+func NewScheduleMonthsWithDefaults() *ScheduleMonths {
+	this := ScheduleMonths{}
 	return &this
 }
 
 // GetType returns the Type field value
-func (o *ScheduleDays) GetType() string {
+func (o *ScheduleMonths) GetType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -61,7 +61,7 @@ func (o *ScheduleDays) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ScheduleDays) GetTypeOk() (*string, bool) {
+func (o *ScheduleMonths) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,12 +69,12 @@ func (o *ScheduleDays) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *ScheduleDays) SetType(v string) {
+func (o *ScheduleMonths) SetType(v string) {
 	o.Type = v
 }
 
 // GetValues returns the Values field value
-func (o *ScheduleDays) GetValues() []string {
+func (o *ScheduleMonths) GetValues() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -85,7 +85,7 @@ func (o *ScheduleDays) GetValues() []string {
 
 // GetValuesOk returns a tuple with the Values field value
 // and a boolean to check if the value has been set.
-func (o *ScheduleDays) GetValuesOk() ([]string, bool) {
+func (o *ScheduleMonths) GetValuesOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,12 +93,12 @@ func (o *ScheduleDays) GetValuesOk() ([]string, bool) {
 }
 
 // SetValues sets field value
-func (o *ScheduleDays) SetValues(v []string) {
+func (o *ScheduleMonths) SetValues(v []string) {
 	o.Values = v
 }
 
 // GetInterval returns the Interval field value if set, zero value otherwise.
-func (o *ScheduleDays) GetInterval() int64 {
+func (o *ScheduleMonths) GetInterval() int64 {
 	if o == nil || isNil(o.Interval) {
 		var ret int64
 		return ret
@@ -108,7 +108,7 @@ func (o *ScheduleDays) GetInterval() int64 {
 
 // GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScheduleDays) GetIntervalOk() (*int64, bool) {
+func (o *ScheduleMonths) GetIntervalOk() (*int64, bool) {
 	if o == nil || isNil(o.Interval) {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *ScheduleDays) GetIntervalOk() (*int64, bool) {
 }
 
 // HasInterval returns a boolean if a field has been set.
-func (o *ScheduleDays) HasInterval() bool {
+func (o *ScheduleMonths) HasInterval() bool {
 	if o != nil && !isNil(o.Interval) {
 		return true
 	}
@@ -125,11 +125,11 @@ func (o *ScheduleDays) HasInterval() bool {
 }
 
 // SetInterval gets a reference to the given int64 and assigns it to the Interval field.
-func (o *ScheduleDays) SetInterval(v int64) {
+func (o *ScheduleMonths) SetInterval(v int64) {
 	o.Interval = &v
 }
 
-func (o ScheduleDays) MarshalJSON() ([]byte, error) {
+func (o ScheduleMonths) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -137,7 +137,7 @@ func (o ScheduleDays) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ScheduleDays) ToMap() (map[string]interface{}, error) {
+func (o ScheduleMonths) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["values"] = o.Values
@@ -152,11 +152,11 @@ func (o ScheduleDays) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ScheduleDays) UnmarshalJSON(bytes []byte) (err error) {
-	varScheduleDays := _ScheduleDays{}
+func (o *ScheduleMonths) UnmarshalJSON(bytes []byte) (err error) {
+	varScheduleMonths := _ScheduleMonths{}
 
-	if err = json.Unmarshal(bytes, &varScheduleDays); err == nil {
-		*o = ScheduleDays(varScheduleDays)
+	if err = json.Unmarshal(bytes, &varScheduleMonths); err == nil {
+		*o = ScheduleMonths(varScheduleMonths)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -171,38 +171,38 @@ func (o *ScheduleDays) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableScheduleDays struct {
-	value *ScheduleDays
+type NullableScheduleMonths struct {
+	value *ScheduleMonths
 	isSet bool
 }
 
-func (v NullableScheduleDays) Get() *ScheduleDays {
+func (v NullableScheduleMonths) Get() *ScheduleMonths {
 	return v.value
 }
 
-func (v *NullableScheduleDays) Set(val *ScheduleDays) {
+func (v *NullableScheduleMonths) Set(val *ScheduleMonths) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableScheduleDays) IsSet() bool {
+func (v NullableScheduleMonths) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableScheduleDays) Unset() {
+func (v *NullableScheduleMonths) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableScheduleDays(val *ScheduleDays) *NullableScheduleDays {
-	return &NullableScheduleDays{value: val, isSet: true}
+func NewNullableScheduleMonths(val *ScheduleMonths) *NullableScheduleMonths {
+	return &NullableScheduleMonths{value: val, isSet: true}
 }
 
-func (v NullableScheduleDays) MarshalJSON() ([]byte, error) {
+func (v NullableScheduleMonths) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableScheduleDays) UnmarshalJSON(src []byte) error {
+func (v *NullableScheduleMonths) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

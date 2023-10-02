@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Days** | Pointer to [**ScheduleDays**](ScheduleDays.md) |  | [optional] 
 **Hours** | [**ScheduleHours**](ScheduleHours.md) |  | 
 **Expiration** | Pointer to **time.Time** | Specifies the time after which this schedule will no longer occur. | [optional] 
-**TimeZoneId** | Pointer to **string** | The time zone to use when running the schedule. For instance, if the schedule is a DAILY schedule that runs at 1AM, and this field is set to \&quot;CST\&quot;, the schedule will run at 1AM CST. | [optional] 
+**TimeZoneId** | Pointer to **string** | The time zone to use when running the schedule. For instance, if the schedule is scheduled to run at 1AM, and this field is set to \&quot;CST\&quot;, the schedule will run at 1AM CST. | [optional] 
 
 ## Methods
 

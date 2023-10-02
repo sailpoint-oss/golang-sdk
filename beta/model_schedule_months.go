@@ -19,9 +19,12 @@ var _ MappedNullable = &ScheduleMonths{}
 
 // ScheduleMonths Specifies which months of a schedule are active. Only valid for ANNUALLY schedule types. Examples:  On February and March: * type LIST * values \"2\", \"3\"  Every 3 months, starting in January (quarterly): * type LIST * values \"1\" * interval 3  Every two months between July and December: * type RANGE * values \"7\", \"12\" * interval 2 
 type ScheduleMonths struct {
+	// Enum type to specify months value
 	Type string `json:"type"`
+	// Values of the months based on the enum type mentioned above
 	Values []string `json:"values"`
-	Interval *int32 `json:"interval,omitempty"`
+	// Interval between the cert generations
+	Interval *int64 `json:"interval,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -95,9 +98,9 @@ func (o *ScheduleMonths) SetValues(v []string) {
 }
 
 // GetInterval returns the Interval field value if set, zero value otherwise.
-func (o *ScheduleMonths) GetInterval() int32 {
+func (o *ScheduleMonths) GetInterval() int64 {
 	if o == nil || isNil(o.Interval) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Interval
@@ -105,7 +108,7 @@ func (o *ScheduleMonths) GetInterval() int32 {
 
 // GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScheduleMonths) GetIntervalOk() (*int32, bool) {
+func (o *ScheduleMonths) GetIntervalOk() (*int64, bool) {
 	if o == nil || isNil(o.Interval) {
 		return nil, false
 	}
@@ -121,8 +124,8 @@ func (o *ScheduleMonths) HasInterval() bool {
 	return false
 }
 
-// SetInterval gets a reference to the given int32 and assigns it to the Interval field.
-func (o *ScheduleMonths) SetInterval(v int32) {
+// SetInterval gets a reference to the given int64 and assigns it to the Interval field.
+func (o *ScheduleMonths) SetInterval(v int64) {
 	o.Interval = &v
 }
 

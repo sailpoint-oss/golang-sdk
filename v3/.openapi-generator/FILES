@@ -405,8 +405,12 @@ docs/SavedSearchDetail.md
 docs/SavedSearchDetailFilters.md
 docs/SavedSearchName.md
 docs/Schedule.md
+docs/Schedule1.md
+docs/Schedule1Days.md
+docs/Schedule1Hours.md
 docs/ScheduleDays.md
 docs/ScheduleHours.md
+docs/ScheduleMonths.md
 docs/ScheduleType.md
 docs/ScheduledSearch.md
 docs/ScheduledSearchAllOf.md
@@ -836,8 +840,12 @@ model_saved_search_detail.go
 model_saved_search_detail_filters.go
 model_saved_search_name.go
 model_schedule.go
+model_schedule_1.go
+model_schedule_1_days.go
+model_schedule_1_hours.go
 model_schedule_days.go
 model_schedule_hours.go
+model_schedule_months.go
 model_schedule_type.go
 model_scheduled_search.go
 model_scheduled_search_all_of.go

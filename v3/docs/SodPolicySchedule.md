@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | The time when this SOD policy schedule is created. | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | The time when this SOD policy schedule is modified. | [optional] [readonly] 
 **Description** | Pointer to **string** | SOD Policy schedule description | [optional] 
-**Schedule** | Pointer to [**Schedule**](Schedule.md) |  | [optional] 
+**Schedule** | Pointer to [**Schedule1**](Schedule1.md) |  | [optional] 
 **Recipients** | Pointer to [**[]BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
 **EmailEmptyResults** | Pointer to **bool** | Indicates if empty results need to be emailed | [optional] [default to false]
 **CreatorId** | Pointer to **string** | Policy&#39;s creator ID | [optional] [readonly] 
@@ -135,20 +135,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetSchedule
 
-`func (o *SodPolicySchedule) GetSchedule() Schedule`
+`func (o *SodPolicySchedule) GetSchedule() Schedule1`
 
 GetSchedule returns the Schedule field if non-nil, zero value otherwise.
 
 ### GetScheduleOk
 
-`func (o *SodPolicySchedule) GetScheduleOk() (*Schedule, bool)`
+`func (o *SodPolicySchedule) GetScheduleOk() (*Schedule1, bool)`
 
 GetScheduleOk returns a tuple with the Schedule field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSchedule
 
-`func (o *SodPolicySchedule) SetSchedule(v Schedule)`
+`func (o *SodPolicySchedule) SetSchedule(v Schedule1)`
 
 SetSchedule sets Schedule field to given value.
 

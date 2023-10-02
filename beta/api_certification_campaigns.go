@@ -792,6 +792,17 @@ func (a *CertificationCampaignsApiService) DeleteCampaignTemplateScheduleExecute
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -2164,6 +2175,17 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplateScheduleExecute(r 
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -2999,6 +3021,8 @@ Sets the schedule for a campaign template. If a schedule already exists, it will
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the campaign template being scheduled.
  @return ApiSetCampaignTemplateScheduleRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) SetCampaignTemplateSchedule(ctx context.Context, id string) ApiSetCampaignTemplateScheduleRequest {
 	return ApiSetCampaignTemplateScheduleRequest{
@@ -3009,6 +3033,7 @@ func (a *CertificationCampaignsApiService) SetCampaignTemplateSchedule(ctx conte
 }
 
 // Execute executes the request
+// Deprecated
 func (a *CertificationCampaignsApiService) SetCampaignTemplateScheduleExecute(r ApiSetCampaignTemplateScheduleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut

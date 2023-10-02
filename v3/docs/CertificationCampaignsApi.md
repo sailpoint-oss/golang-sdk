@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**Move**](CertificationCampaignsApi.md#Move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 [**PatchCampaignTemplate**](CertificationCampaignsApi.md#PatchCampaignTemplate) | **Patch** /campaign-templates/{id} | Update a Campaign Template
 [**SetCampaignReportsConfig**](CertificationCampaignsApi.md#SetCampaignReportsConfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
+[**SetCampaignTemplateSchedule**](CertificationCampaignsApi.md#SetCampaignTemplateSchedule) | **Put** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
 [**StartCampaign**](CertificationCampaignsApi.md#StartCampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
 [**StartCampaignRemediationScan**](CertificationCampaignsApi.md#StartCampaignRemediationScan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 [**StartCampaignReport**](CertificationCampaignsApi.md#StartCampaignReport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
@@ -840,6 +841,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CampaignReportsConfig**](CampaignReportsConfig.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetCampaignTemplateSchedule
+
+> SetCampaignTemplateSchedule(ctx, id).Schedule(schedule).Execute()
+
+Sets a Campaign Template's Schedule
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "04bedce387bd47b2ae1f86eb0bb36dee" // string | The ID of the campaign template being scheduled.
+    schedule := *openapiclient.NewSchedule("WEEKLY", *openapiclient.NewScheduleHours("LIST", []string{"Values_example"})) // Schedule |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CertificationCampaignsApi.SetCampaignTemplateSchedule(context.Background(), id).Schedule(schedule).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.SetCampaignTemplateSchedule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The ID of the campaign template being scheduled. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetCampaignTemplateScheduleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **schedule** | [**Schedule**](Schedule.md) |  | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 

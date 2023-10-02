@@ -17,11 +17,14 @@ import (
 // checks if the ScheduleDays type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ScheduleDays{}
 
-// ScheduleDays Specifies which day(s) a schedule is active for. This is required for all schedule types except DAILY. The \"values\" field holds different data depending on the type of schedule: * WEEKLY: days of the week (1-7) * MONTHLY: days of the month (1-31, L, L-1...) * ANNUALLY: if the \"months\" field is also set: days of the month (1-31, L, L-1...); otherwise: ISO-8601 dates without year (\"--12-31\") * CALENDAR: ISO-8601 dates (\"2020-12-31\")  Note that CALENDAR only supports the LIST type, and ANNUALLY does not support the RANGE type when provided with ISO-8601 dates without year.  Examples:  On Sundays: * type LIST * values \"1\"  The second to last day of the month: * type LIST * values \"L-1\"  From the 20th to the last day of the month: * type RANGE * values \"20\", \"L\"  Every March 2nd: * type LIST * values \"--03-02\"  On March 2nd, 2021: * type: LIST * values \"2021-03-02\" 
+// ScheduleDays Specifies which day(s) a schedule is active for. This is required for all schedule types. The \"values\" field holds different data depending on the type of schedule: * WEEKLY: days of the week (1-7) * MONTHLY: days of the month (1-31, L, L-1...) * ANNUALLY: if the \"months\" field is also set: days of the month (1-31, L, L-1...); otherwise: ISO-8601 dates without year (\"--12-31\") * CALENDAR: ISO-8601 dates (\"2020-12-31\")  Note that CALENDAR only supports the LIST type, and ANNUALLY does not support the RANGE type when provided with ISO-8601 dates without year.  Examples:  On Sundays: * type LIST * values \"1\"  The second to last day of the month: * type LIST * values \"L-1\"  From the 20th to the last day of the month: * type RANGE * values \"20\", \"L\"  Every March 2nd: * type LIST * values \"--03-02\"  On March 2nd, 2021: * type: LIST * values \"2021-03-02\" 
 type ScheduleDays struct {
+	// Enum type to specify days value
 	Type string `json:"type"`
+	// Values of the days based on the enum type mentioned above
 	Values []string `json:"values"`
-	Interval *int32 `json:"interval,omitempty"`
+	// Interval between the cert generations
+	Interval *int64 `json:"interval,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -95,9 +98,9 @@ func (o *ScheduleDays) SetValues(v []string) {
 }
 
 // GetInterval returns the Interval field value if set, zero value otherwise.
-func (o *ScheduleDays) GetInterval() int32 {
+func (o *ScheduleDays) GetInterval() int64 {
 	if o == nil || isNil(o.Interval) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Interval
@@ -105,7 +108,7 @@ func (o *ScheduleDays) GetInterval() int32 {
 
 // GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScheduleDays) GetIntervalOk() (*int32, bool) {
+func (o *ScheduleDays) GetIntervalOk() (*int64, bool) {
 	if o == nil || isNil(o.Interval) {
 		return nil, false
 	}
@@ -121,8 +124,8 @@ func (o *ScheduleDays) HasInterval() bool {
 	return false
 }
 
-// SetInterval gets a reference to the given int32 and assigns it to the Interval field.
-func (o *ScheduleDays) SetInterval(v int32) {
+// SetInterval gets a reference to the given int64 and assigns it to the Interval field.
+func (o *ScheduleDays) SetInterval(v int64) {
 	o.Interval = &v
 }
 

@@ -19,9 +19,12 @@ var _ MappedNullable = &ScheduleHours{}
 
 // ScheduleHours Specifies which hour(s) a schedule is active for. Examples:  Every three hours starting from 8AM, inclusive: * type LIST * values \"8\" * interval 3  During business hours: * type RANGE * values \"9\", \"5\"  At 5AM, noon, and 5PM: * type LIST * values \"5\", \"12\", \"17\" 
 type ScheduleHours struct {
+	// Enum type to specify hours value
 	Type string `json:"type"`
+	// Values of the days based on the enum type mentioned above
 	Values []string `json:"values"`
-	Interval *int32 `json:"interval,omitempty"`
+	// Interval between the cert generations
+	Interval *int64 `json:"interval,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -95,9 +98,9 @@ func (o *ScheduleHours) SetValues(v []string) {
 }
 
 // GetInterval returns the Interval field value if set, zero value otherwise.
-func (o *ScheduleHours) GetInterval() int32 {
+func (o *ScheduleHours) GetInterval() int64 {
 	if o == nil || isNil(o.Interval) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Interval
@@ -105,7 +108,7 @@ func (o *ScheduleHours) GetInterval() int32 {
 
 // GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScheduleHours) GetIntervalOk() (*int32, bool) {
+func (o *ScheduleHours) GetIntervalOk() (*int64, bool) {
 	if o == nil || isNil(o.Interval) {
 		return nil, false
 	}
@@ -121,8 +124,8 @@ func (o *ScheduleHours) HasInterval() bool {
 	return false
 }
 
-// SetInterval gets a reference to the given int32 and assigns it to the Interval field.
-func (o *ScheduleHours) SetInterval(v int32) {
+// SetInterval gets a reference to the given int64 and assigns it to the Interval field.
+func (o *ScheduleHours) SetInterval(v int64) {
 	o.Interval = &v
 }
 

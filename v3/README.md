@@ -124,6 +124,7 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**Move**](docs/CertificationCampaignsApi.md#move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 *CertificationCampaignsApi* | [**PatchCampaignTemplate**](docs/CertificationCampaignsApi.md#patchcampaigntemplate) | **Patch** /campaign-templates/{id} | Update a Campaign Template
 *CertificationCampaignsApi* | [**SetCampaignReportsConfig**](docs/CertificationCampaignsApi.md#setcampaignreportsconfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
+*CertificationCampaignsApi* | [**SetCampaignTemplateSchedule**](docs/CertificationCampaignsApi.md#setcampaigntemplateschedule) | **Put** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
 *CertificationCampaignsApi* | [**StartCampaign**](docs/CertificationCampaignsApi.md#startcampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
 *CertificationCampaignsApi* | [**StartCampaignRemediationScan**](docs/CertificationCampaignsApi.md#startcampaignremediationscan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 *CertificationCampaignsApi* | [**StartCampaignReport**](docs/CertificationCampaignsApi.md#startcampaignreport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
@@ -666,8 +667,12 @@ Class | Method | HTTP request | Description
  - [SavedSearchDetailFilters](docs/SavedSearchDetailFilters.md)
  - [SavedSearchName](docs/SavedSearchName.md)
  - [Schedule](docs/Schedule.md)
+ - [Schedule1](docs/Schedule1.md)
+ - [Schedule1Days](docs/Schedule1Days.md)
+ - [Schedule1Hours](docs/Schedule1Hours.md)
  - [ScheduleDays](docs/ScheduleDays.md)
  - [ScheduleHours](docs/ScheduleHours.md)
+ - [ScheduleMonths](docs/ScheduleMonths.md)
  - [ScheduleType](docs/ScheduleType.md)
  - [ScheduledSearch](docs/ScheduledSearch.md)
  - [ScheduledSearchAllOf](docs/ScheduledSearchAllOf.md)

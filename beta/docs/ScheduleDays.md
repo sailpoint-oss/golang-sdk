@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | 
-**Values** | **[]string** |  | 
-**Interval** | Pointer to **int32** |  | [optional] 
+**Type** | **string** | Enum type to specify days value | 
+**Values** | **[]string** | Values of the days based on the enum type mentioned above | 
+**Interval** | Pointer to **int64** | Interval between the cert generations | [optional] 
 
 ## Methods
 
@@ -69,20 +69,20 @@ SetValues sets Values field to given value.
 
 ### GetInterval
 
-`func (o *ScheduleDays) GetInterval() int32`
+`func (o *ScheduleDays) GetInterval() int64`
 
 GetInterval returns the Interval field if non-nil, zero value otherwise.
 
 ### GetIntervalOk
 
-`func (o *ScheduleDays) GetIntervalOk() (*int32, bool)`
+`func (o *ScheduleDays) GetIntervalOk() (*int64, bool)`
 
 GetIntervalOk returns a tuple with the Interval field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInterval
 
-`func (o *ScheduleDays) SetInterval(v int32)`
+`func (o *ScheduleDays) SetInterval(v int64)`
 
 SetInterval sets Interval field to given value.
 

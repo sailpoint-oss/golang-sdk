@@ -323,7 +323,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | The ID of the campaign template whose schedule is being deleted.
+    id := "04bedce387bd47b2ae1f86eb0bb36dee" // string | The ID of the campaign template whose schedule is being deleted.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -874,7 +874,7 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | The ID of the campaign template whose schedule is being fetched.
+    id := "04bedce387bd47b2ae1f86eb0bb36dee" // string | The ID of the campaign template whose schedule is being fetched.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1228,8 +1228,8 @@ import (
 )
 
 func main() {
-    id := "id_example" // string | The ID of the campaign template being scheduled.
-    schedule := *openapiclient.NewSchedule("Type_example", *openapiclient.NewScheduleHours("Type_example", []string{"Values_example"})) // Schedule |  (optional)
+    id := "04bedce387bd47b2ae1f86eb0bb36dee" // string | The ID of the campaign template being scheduled.
+    schedule := *openapiclient.NewSchedule("WEEKLY", *openapiclient.NewScheduleHours("LIST", []string{"Values_example"})) // Schedule |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

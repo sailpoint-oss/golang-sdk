@@ -36,7 +36,7 @@ type ScheduledSearch struct {
 	Created *time.Time `json:"created,omitempty"`
 	// The last date the scheduled search was modified.
 	Modified *time.Time `json:"modified,omitempty"`
-	Schedule Schedule `json:"schedule"`
+	Schedule Schedule1 `json:"schedule"`
 	// A list of identities that should receive the scheduled search report via email.
 	Recipients []SearchScheduleRecipientsInner `json:"recipients"`
 	// Indicates if the scheduled search is enabled. 
@@ -54,7 +54,7 @@ type _ScheduledSearch ScheduledSearch
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScheduledSearch(id string, owner ScheduledSearchAllOfOwner, ownerId string, savedSearchId string, schedule Schedule, recipients []SearchScheduleRecipientsInner) *ScheduledSearch {
+func NewScheduledSearch(id string, owner ScheduledSearchAllOfOwner, ownerId string, savedSearchId string, schedule Schedule1, recipients []SearchScheduleRecipientsInner) *ScheduledSearch {
 	this := ScheduledSearch{}
 	this.Id = id
 	this.Owner = owner
@@ -333,9 +333,9 @@ func (o *ScheduledSearch) SetModified(v time.Time) {
 }
 
 // GetSchedule returns the Schedule field value
-func (o *ScheduledSearch) GetSchedule() Schedule {
+func (o *ScheduledSearch) GetSchedule() Schedule1 {
 	if o == nil {
-		var ret Schedule
+		var ret Schedule1
 		return ret
 	}
 
@@ -344,7 +344,7 @@ func (o *ScheduledSearch) GetSchedule() Schedule {
 
 // GetScheduleOk returns a tuple with the Schedule field value
 // and a boolean to check if the value has been set.
-func (o *ScheduledSearch) GetScheduleOk() (*Schedule, bool) {
+func (o *ScheduledSearch) GetScheduleOk() (*Schedule1, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -352,7 +352,7 @@ func (o *ScheduledSearch) GetScheduleOk() (*Schedule, bool) {
 }
 
 // SetSchedule sets field value
-func (o *ScheduledSearch) SetSchedule(v Schedule) {
+func (o *ScheduledSearch) SetSchedule(v Schedule1) {
 	o.Schedule = v
 }
 

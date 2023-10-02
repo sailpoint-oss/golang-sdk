@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-    createScheduledSearchRequest := *openapiclient.NewCreateScheduledSearchRequest("554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule(openapiclient.ScheduleType("DAILY"), *openapiclient.NewScheduleHours(openapiclient.SelectorType("LIST"), []string{"Values_example"})), []openapiclient.SearchScheduleRecipientsInner{*openapiclient.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}) // CreateScheduledSearchRequest | The scheduled search to persist.
+    createScheduledSearchRequest := *openapiclient.NewCreateScheduledSearchRequest("554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule1(openapiclient.ScheduleType("DAILY"), *openapiclient.NewSchedule1Hours(openapiclient.SelectorType("LIST"), []string{"Values_example"})), []openapiclient.SearchScheduleRecipientsInner{*openapiclient.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}) // CreateScheduledSearchRequest | The scheduled search to persist.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -381,7 +381,7 @@ import (
 
 func main() {
     id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
-    scheduledSearch := *openapiclient.NewScheduledSearch("0de46054-fe90-434a-b84e-c6b3359d0c64", *openapiclient.NewScheduledSearchAllOfOwner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67"), "2c9180867624cbd7017642d8c8c81f67", "554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule(openapiclient.ScheduleType("DAILY"), *openapiclient.NewScheduleHours(openapiclient.SelectorType("LIST"), []string{"Values_example"})), []openapiclient.SearchScheduleRecipientsInner{*openapiclient.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}) // ScheduledSearch | The scheduled search to persist.
+    scheduledSearch := *openapiclient.NewScheduledSearch("0de46054-fe90-434a-b84e-c6b3359d0c64", *openapiclient.NewScheduledSearchAllOfOwner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67"), "2c9180867624cbd7017642d8c8c81f67", "554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule1(openapiclient.ScheduleType("DAILY"), *openapiclient.NewSchedule1Hours(openapiclient.SelectorType("LIST"), []string{"Values_example"})), []openapiclient.SearchScheduleRecipientsInner{*openapiclient.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}) // ScheduledSearch | The scheduled search to persist.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
