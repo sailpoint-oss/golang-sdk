@@ -36,7 +36,7 @@ jobs:
       - name: Run Prescript
         id: prescript
         run: |
-          node sdk-resources/prescript.js api-specs/
+          node sdk-resources/prescript.js api-specs/idn
 
       - name: Build V3 SDK
         id: buildV3

@@ -15,6 +15,7 @@ const getAllFiles = function (dirPath, arrayOfFiles) {
 
 
 const fixFiles = function (myArray) {
+  let fixCheck = 0;
   for (const file of myArray) {
   
     if (file.includes("go.mod") || file.includes("go.sum")) {
@@ -30,18 +31,14 @@ const fixFiles = function (myArray) {
 
   
     // change the poor naming for variables
-    if (rawdata.includes("map[string]interface{}var") || rawdata.includes("[]JsonPatchOperationValueAnyOfInnervar") || rawdata.includes("ArrayOf*string")) {
+
+    if (rawdata.includes("map[string]interface{}var") || rawdata.includes("ArrayOf*string") || file.includes("model_json_patch_operation_value.go")) {
       for (const line of rawDataArra) {
-        if (line.includes("map[string]interface{}var")) {
+        if (line.includes("ginterface{}")) {
+          fileOut.push(line.replaceAll("ginterface{}", "ginterface"));
+          madeChange = true;
+        } else if (line.includes("map[string]interface{}var")) {
           fileOut.push(line.replaceAll("map[string]interface{}var", "mapvar"));
-          madeChange = true;
-        }
-        else if (line.includes("[]JsonPatchOperationValueAnyOfInnervar")) {
-          fileOut.push(line.replaceAll("[]JsonPatchOperationValueAnyOfInnervar", "jsonPatchOperationValueAnyOfInnervar"));
-          madeChange = true;
-        }
-        else if (line.includes("[]JsonPatchOperationValueAnyOfInnerBetaBetavar")) {
-          fileOut.push(line.replaceAll("[]JsonPatchOperationValueAnyOfInnerBetaBetavar", "jsonPatchOperationValueAnyOfInnerBetaBetavar"));
           madeChange = true;
         }
         else if (line.includes("ArrayOf*string")) {
@@ -109,7 +106,7 @@ const fixFiles = function (myArray) {
           fileOut.push(line.replace("func (o *Event) GetType() DocumentType {", "func (o *Event) GetDocumentType() DocumentType {"));
           madeChange = true;
         }
-        else if (line === "\treturn o.Type") {
+        else if (line.includes('return o.Type') && !line.includes('return o.Type, true')) {
           fileOut.push(line.replace("return o.Type", "return o.DocumentType"));
           madeChange = true;
         }
@@ -147,9 +144,11 @@ const fixFiles = function (myArray) {
     }
   
     if (madeChange) {
+      fixCheck += 1;
       fs.writeFileSync(file, rawDataArra.join("\n"));
     }
   }
+  console.log(`fixed ${fixCheck} files`)
 }
 
 

@@ -15,6 +15,7 @@ const getAllFiles = function (dirPath, arrayOfFiles) {
 
 
 const fixFiles = function (myArray) {
+  let fixCheck = 0;
   for (const file of myArray) {
     let fileOut = [];
     let madeChange = false;
@@ -23,7 +24,7 @@ const fixFiles = function (myArray) {
 
   
     // remove the complex transform schema
-    if (file.includes("schemas/Transform.yaml")) {
+    if (file.includes(path.join("schemas","Transform.yaml"))) {
       for (let line of rawDataArra) {
         if (line.includes('oneOf')) {
           line = line.replaceAll("oneOf:", "type: object")
@@ -40,7 +41,7 @@ const fixFiles = function (myArray) {
       fileOut = [];
     }
 
-    if (file.includes("schemas/WorkflowTrigger.yaml")) {
+    if (file.includes(path.join("schemas","WorkflowTrigger.yaml"))) {
       for (let line of rawDataArra) {
         if (line.includes('oneOf')) {
           line = line.replaceAll("oneOf:", "type: object")
@@ -58,7 +59,8 @@ const fixFiles = function (myArray) {
     }
 
     // remove the complex account schema
-    if (file.includes("paths/accounts.yaml")) {
+    if (file.includes(path.join("paths","accounts.yaml"))) {
+      
       for (let line of rawDataArra) {
         if (line.includes('oneOf')) {
           line = line.replaceAll("oneOf:", "$ref: '../schemas/SlimAccount.yaml'")
@@ -76,7 +78,7 @@ const fixFiles = function (myArray) {
     }
 
     // remove the complex search scema
-    if (file.includes("documents/SearchDocument.yaml")) {
+    if (file.includes(path.join("documents", "SearchDocument.yaml"))) {
           fileOut.push("type: object");
           rawDataArra = fileOut.slice();
           fileOut = [];
@@ -88,9 +90,11 @@ const fixFiles = function (myArray) {
   
   
     if (madeChange) {
+      fixCheck += 1;
       fs.writeFileSync(file, rawDataArra.join("\n"));
     }
   }
+  console.log(`fixed ${fixCheck} files`)
 }
 
 
