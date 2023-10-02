@@ -17,14 +17,13 @@ import (
 // checks if the ScheduleDays type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ScheduleDays{}
 
-// ScheduleDays Specifies which day(s) a schedule is active for. This is required for all schedule types. The \"values\" field holds different data depending on the type of schedule: * WEEKLY: days of the week (1-7) * MONTHLY: days of the month (1-31, L, L-1...) * ANNUALLY: if the \"months\" field is also set: days of the month (1-31, L, L-1...); otherwise: ISO-8601 dates without year (\"--12-31\") * CALENDAR: ISO-8601 dates (\"2020-12-31\")  Note that CALENDAR only supports the LIST type, and ANNUALLY does not support the RANGE type when provided with ISO-8601 dates without year.  Examples:  On Sundays: * type LIST * values \"1\"  The second to last day of the month: * type LIST * values \"L-1\"  From the 20th to the last day of the month: * type RANGE * values \"20\", \"L\"  Every March 2nd: * type LIST * values \"--03-02\"  On March 2nd, 2021: * type: LIST * values \"2021-03-02\" 
+// ScheduleDays struct for ScheduleDays
 type ScheduleDays struct {
-	// Enum type to specify days value
-	Type string `json:"type"`
-	// Values of the days based on the enum type mentioned above
+	Type SelectorType `json:"type"`
+	// The selected values. 
 	Values []string `json:"values"`
-	// Interval between the cert generations
-	Interval *int64 `json:"interval,omitempty"`
+	// The selected interval for RANGE selectors. 
+	Interval NullableInt32 `json:"interval,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,7 +33,7 @@ type _ScheduleDays ScheduleDays
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScheduleDays(type_ string, values []string) *ScheduleDays {
+func NewScheduleDays(type_ SelectorType, values []string) *ScheduleDays {
 	this := ScheduleDays{}
 	this.Type = type_
 	this.Values = values
@@ -50,9 +49,9 @@ func NewScheduleDaysWithDefaults() *ScheduleDays {
 }
 
 // GetType returns the Type field value
-func (o *ScheduleDays) GetType() string {
+func (o *ScheduleDays) GetType() SelectorType {
 	if o == nil {
-		var ret string
+		var ret SelectorType
 		return ret
 	}
 
@@ -61,7 +60,7 @@ func (o *ScheduleDays) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ScheduleDays) GetTypeOk() (*string, bool) {
+func (o *ScheduleDays) GetTypeOk() (*SelectorType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,7 +68,7 @@ func (o *ScheduleDays) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *ScheduleDays) SetType(v string) {
+func (o *ScheduleDays) SetType(v SelectorType) {
 	o.Type = v
 }
 
@@ -97,36 +96,46 @@ func (o *ScheduleDays) SetValues(v []string) {
 	o.Values = v
 }
 
-// GetInterval returns the Interval field value if set, zero value otherwise.
-func (o *ScheduleDays) GetInterval() int64 {
-	if o == nil || isNil(o.Interval) {
-		var ret int64
+// GetInterval returns the Interval field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ScheduleDays) GetInterval() int32 {
+	if o == nil || isNil(o.Interval.Get()) {
+		var ret int32
 		return ret
 	}
-	return *o.Interval
+	return *o.Interval.Get()
 }
 
 // GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScheduleDays) GetIntervalOk() (*int64, bool) {
-	if o == nil || isNil(o.Interval) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ScheduleDays) GetIntervalOk() (*int32, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Interval, true
+	return o.Interval.Get(), o.Interval.IsSet()
 }
 
 // HasInterval returns a boolean if a field has been set.
 func (o *ScheduleDays) HasInterval() bool {
-	if o != nil && !isNil(o.Interval) {
+	if o != nil && o.Interval.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetInterval gets a reference to the given int64 and assigns it to the Interval field.
-func (o *ScheduleDays) SetInterval(v int64) {
-	o.Interval = &v
+// SetInterval gets a reference to the given NullableInt32 and assigns it to the Interval field.
+func (o *ScheduleDays) SetInterval(v int32) {
+	o.Interval.Set(&v)
+}
+// SetIntervalNil sets the value for Interval to be an explicit nil
+func (o *ScheduleDays) SetIntervalNil() {
+	o.Interval.Set(nil)
+}
+
+// UnsetInterval ensures that no value is present for Interval, not even an explicit nil
+func (o *ScheduleDays) UnsetInterval() {
+	o.Interval.Unset()
 }
 
 func (o ScheduleDays) MarshalJSON() ([]byte, error) {
@@ -141,8 +150,8 @@ func (o ScheduleDays) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["values"] = o.Values
-	if !isNil(o.Interval) {
-		toSerialize["interval"] = o.Interval
+	if o.Interval.IsSet() {
+		toSerialize["interval"] = o.Interval.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

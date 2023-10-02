@@ -30,7 +30,7 @@ type CreateScheduledSearchRequest struct {
 	Created *time.Time `json:"created,omitempty"`
 	// The last date the scheduled search was modified.
 	Modified *time.Time `json:"modified,omitempty"`
-	Schedule Schedule1 `json:"schedule"`
+	Schedule Schedule `json:"schedule"`
 	// A list of identities that should receive the scheduled search report via email.
 	Recipients []SearchScheduleRecipientsInner `json:"recipients"`
 	// Indicates if the scheduled search is enabled. 
@@ -48,7 +48,7 @@ type _CreateScheduledSearchRequest CreateScheduledSearchRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateScheduledSearchRequest(savedSearchId string, schedule Schedule1, recipients []SearchScheduleRecipientsInner) *CreateScheduledSearchRequest {
+func NewCreateScheduledSearchRequest(savedSearchId string, schedule Schedule, recipients []SearchScheduleRecipientsInner) *CreateScheduledSearchRequest {
 	this := CreateScheduledSearchRequest{}
 	this.SavedSearchId = savedSearchId
 	this.Schedule = schedule
@@ -249,9 +249,9 @@ func (o *CreateScheduledSearchRequest) SetModified(v time.Time) {
 }
 
 // GetSchedule returns the Schedule field value
-func (o *CreateScheduledSearchRequest) GetSchedule() Schedule1 {
+func (o *CreateScheduledSearchRequest) GetSchedule() Schedule {
 	if o == nil {
-		var ret Schedule1
+		var ret Schedule
 		return ret
 	}
 
@@ -260,7 +260,7 @@ func (o *CreateScheduledSearchRequest) GetSchedule() Schedule1 {
 
 // GetScheduleOk returns a tuple with the Schedule field value
 // and a boolean to check if the value has been set.
-func (o *CreateScheduledSearchRequest) GetScheduleOk() (*Schedule1, bool) {
+func (o *CreateScheduledSearchRequest) GetScheduleOk() (*Schedule, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -268,7 +268,7 @@ func (o *CreateScheduledSearchRequest) GetScheduleOk() (*Schedule1, bool) {
 }
 
 // SetSchedule sets field value
-func (o *CreateScheduledSearchRequest) SetSchedule(v Schedule1) {
+func (o *CreateScheduledSearchRequest) SetSchedule(v Schedule) {
 	o.Schedule = v
 }
 
