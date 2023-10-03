@@ -8446,15 +8446,17 @@ paths:
       - Certification Campaigns
   /campaign-templates/{id}/generate:
     post:
+      deprecated: true
       description: |-
         Generates a new campaign from a campaign template.
         The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.
         Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, "%Y" will insert the current year; a campaign template named "Campaign for %y" would generate a campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
         Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).
         Requires roles ORG_ADMIN.
-      operationId: generateCampaignTemplate
+      operationId: startGenerateCampaignTemplate
       parameters:
       - description: The ID of the campaign template to use for generation.
+        example: 2c9180835d191a86015d28455b4a2329
         in: path
         name: id
         required: true
@@ -8524,6 +8526,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template:run
       summary: Generate a Campaign from Template
       tags:
       - Certification Campaigns

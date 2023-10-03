@@ -123,7 +123,6 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**DeleteCampaignTemplate**](docs/CertificationCampaignsApi.md#deletecampaigntemplate) | **Delete** /campaign-templates/{id} | Delete a Campaign Template
 *CertificationCampaignsApi* | [**DeleteCampaignTemplateSchedule**](docs/CertificationCampaignsApi.md#deletecampaigntemplateschedule) | **Delete** /campaign-templates/{id}/schedule | Deletes a Campaign Template&#39;s Schedule
 *CertificationCampaignsApi* | [**DeleteCampaigns**](docs/CertificationCampaignsApi.md#deletecampaigns) | **Post** /campaigns/delete | Deletes Campaigns
-*CertificationCampaignsApi* | [**GenerateCampaignTemplate**](docs/CertificationCampaignsApi.md#generatecampaigntemplate) | **Post** /campaign-templates/{id}/generate | Generate a Campaign from Template
 *CertificationCampaignsApi* | [**GetActiveCampaigns**](docs/CertificationCampaignsApi.md#getactivecampaigns) | **Get** /campaigns | List Campaigns
 *CertificationCampaignsApi* | [**GetCampaign**](docs/CertificationCampaignsApi.md#getcampaign) | **Get** /campaigns/{id} | Get a campaign
 *CertificationCampaignsApi* | [**GetCampaignReports**](docs/CertificationCampaignsApi.md#getcampaignreports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
@@ -138,6 +137,7 @@ Class | Method | HTTP request | Description
 *CertificationCampaignsApi* | [**StartCampaign**](docs/CertificationCampaignsApi.md#startcampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
 *CertificationCampaignsApi* | [**StartCampaignRemediationScan**](docs/CertificationCampaignsApi.md#startcampaignremediationscan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 *CertificationCampaignsApi* | [**StartCampaignReport**](docs/CertificationCampaignsApi.md#startcampaignreport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
+*CertificationCampaignsApi* | [**StartGenerateCampaignTemplate**](docs/CertificationCampaignsApi.md#startgeneratecampaigntemplate) | **Post** /campaign-templates/{id}/generate | Generate a Campaign from Template
 *CertificationCampaignsApi* | [**UpdateCampaign**](docs/CertificationCampaignsApi.md#updatecampaign) | **Patch** /campaigns/{id} | Update a Campaign
 *CertificationsApi* | [**GetIdentityCertificationItemPermissions**](docs/CertificationsApi.md#getidentitycertificationitempermissions) | **Get** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for Entitlement Certification Item
 *CertificationsApi* | [**GetIdentityCertificationPendingTasks**](docs/CertificationsApi.md#getidentitycertificationpendingtasks) | **Get** /certifications/{id}/tasks-pending | Pending Certification Tasks

@@ -6732,6 +6732,93 @@ paths:
       summary: Update a Campaign Template
       tags:
       - Certification Campaigns
+  /campaign-templates/{id}/generate:
+    post:
+      description: |-
+        Generates a new campaign from a campaign template.
+        The campaign object contained in the template has special formatting applied to its name and description fields in order to determine the generated campaign's name/description. Placeholders in those fields are formatted with the current date and time upon generation.
+        Placeholders consist of a percent sign followed by a letter indicating what should be inserted; for example, "%Y" will insert the current year; a campaign template named "Campaign for %y" would generate a campaign called "Campaign for 2020" (assuming the year at generation time is 2020).
+        Valid placeholders are the date/time conversion suffix characters supported by [java.util.Formatter](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).
+        Requires roles ORG_ADMIN.
+      operationId: startGenerateCampaignTemplate
+      parameters:
+      - description: The ID of the campaign template to use for generation.
+        example: 2c9180835d191a86015d28455b4a2329
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignReference'
+          description: "Indicates a campaign was successfully generated from this\
+            \ template, and returns a reference to the new campaign."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:campaign-template:run
+      summary: Generate a Campaign from Template
+      tags:
+      - Certification Campaigns
   /certifications:
     get:
       description: "This API returns a list of identity campaign certifications that\
@@ -33516,6 +33603,74 @@ components:
       - modified
       - name
       type: object
+    CampaignReference:
+      example:
+        campaignType: MANAGER
+        name: Campaign Name
+        mandatoryCommentRequirement: NO_DECISIONS
+        description: A description of the campaign
+        id: ef38f94347e94562b5bb8424a56397d8
+        type: CAMPAIGN
+        correlatedStatus: CORRELATED
+      properties:
+        id:
+          description: The unique ID of the campaign.
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        name:
+          description: The name of the campaign.
+          example: Campaign Name
+          type: string
+        type:
+          description: The type of object that is being referenced.
+          enum:
+          - CAMPAIGN
+          example: CAMPAIGN
+          type: string
+        campaignType:
+          description: The type of the campaign.
+          enum:
+          - MANAGER
+          - SOURCE_OWNER
+          - SEARCH
+          example: MANAGER
+          type: string
+        description:
+          description: The description of the campaign set by the admin who created
+            it.
+          example: A description of the campaign
+          nullable: true
+          type: string
+        correlatedStatus:
+          description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
+            can be Uncorrelated. An Uncorrelated certification campaign only includes
+            Uncorrelated identities (An identity is uncorrelated if it has no accounts
+            on an authoritative source).
+          enum:
+          - CORRELATED
+          - UNCORRELATED
+          example: CORRELATED
+          type: object
+        mandatoryCommentRequirement:
+          description: "Determines whether comments are required for decisions during\
+            \ certification reviews. You can require comments for all decisions, revoke-only\
+            \ decisions, or no decisions. By default, comments are not required for\
+            \ decisions."
+          enum:
+          - ALL_DECISIONS
+          - REVOKE_ONLY_DECISIONS
+          - NO_DECISIONS
+          example: NO_DECISIONS
+          type: string
+      required:
+      - campaignType
+      - correlatedStatus
+      - description
+      - id
+      - mandatoryCommentRequirement
+      - name
+      - type
+      type: object
     IdentityCertificationDto:
       example:
         phase: ACTIVE
@@ -38501,74 +38656,6 @@ components:
       items:
         $ref: '#/components/schemas/ReassignmentTrailDTO'
       type: array
-    CampaignReference:
-      example:
-        campaignType: MANAGER
-        name: Campaign Name
-        mandatoryCommentRequirement: NO_DECISIONS
-        description: A description of the campaign
-        id: ef38f94347e94562b5bb8424a56397d8
-        type: CAMPAIGN
-        correlatedStatus: CORRELATED
-      properties:
-        id:
-          description: The unique ID of the campaign.
-          example: ef38f94347e94562b5bb8424a56397d8
-          type: string
-        name:
-          description: The name of the campaign.
-          example: Campaign Name
-          type: string
-        type:
-          description: The type of object that is being referenced.
-          enum:
-          - CAMPAIGN
-          example: CAMPAIGN
-          type: string
-        campaignType:
-          description: The type of the campaign.
-          enum:
-          - MANAGER
-          - SOURCE_OWNER
-          - SEARCH
-          example: MANAGER
-          type: string
-        description:
-          description: The description of the campaign set by the admin who created
-            it.
-          example: A description of the campaign
-          nullable: true
-          type: string
-        correlatedStatus:
-          description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
-            can be Uncorrelated. An Uncorrelated certification campaign only includes
-            Uncorrelated identities (An identity is uncorrelated if it has no accounts
-            on an authoritative source).
-          enum:
-          - CORRELATED
-          - UNCORRELATED
-          example: CORRELATED
-          type: object
-        mandatoryCommentRequirement:
-          description: "Determines whether comments are required for decisions during\
-            \ certification reviews. You can require comments for all decisions, revoke-only\
-            \ decisions, or no decisions. By default, comments are not required for\
-            \ decisions."
-          enum:
-          - ALL_DECISIONS
-          - REVOKE_ONLY_DECISIONS
-          - NO_DECISIONS
-          example: NO_DECISIONS
-          type: string
-      required:
-      - campaignType
-      - correlatedStatus
-      - description
-      - id
-      - mandatoryCommentRequirement
-      - name
-      - type
-      type: object
     CertificationPhase:
       description: |
         The current phase of the campaign.
