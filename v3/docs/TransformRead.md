@@ -1,4 +1,4 @@
-# Transform
+# TransformRead
 
 ## Properties
 
@@ -8,110 +8,136 @@ Name | Type | Description | Notes
 **Type** | **string** | The type of transform operation | 
 **Attributes** | **map[string]interface{}** | Meta-data about the transform. Values in this list are specific to the type of transform to be executed. | 
 **Internal** | Pointer to **bool** | Indicates whether this is an internal SailPoint-created transform or a customer-created transform | [optional] [readonly] 
+**Id** | Pointer to **string** | Unique ID of this transform | [optional] 
 
 ## Methods
 
-### NewTransform
+### NewTransformRead
 
-`func NewTransform(name string, type_ string, attributes map[string]interface{}, ) *Transform`
+`func NewTransformRead(name string, type_ string, attributes map[string]interface{}, ) *TransformRead`
 
-NewTransform instantiates a new Transform object
+NewTransformRead instantiates a new TransformRead object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewTransformWithDefaults
+### NewTransformReadWithDefaults
 
-`func NewTransformWithDefaults() *Transform`
+`func NewTransformReadWithDefaults() *TransformRead`
 
-NewTransformWithDefaults instantiates a new Transform object
+NewTransformReadWithDefaults instantiates a new TransformRead object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *Transform) GetName() string`
+`func (o *TransformRead) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Transform) GetNameOk() (*string, bool)`
+`func (o *TransformRead) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *Transform) SetName(v string)`
+`func (o *TransformRead) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetType
 
-`func (o *Transform) GetType() string`
+`func (o *TransformRead) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Transform) GetTypeOk() (*string, bool)`
+`func (o *TransformRead) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Transform) SetType(v string)`
+`func (o *TransformRead) SetType(v string)`
 
 SetType sets Type field to given value.
 
 
 ### GetAttributes
 
-`func (o *Transform) GetAttributes() map[string]interface{}`
+`func (o *TransformRead) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *Transform) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *TransformRead) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *Transform) SetAttributes(v map[string]interface{})`
+`func (o *TransformRead) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
 
 ### GetInternal
 
-`func (o *Transform) GetInternal() bool`
+`func (o *TransformRead) GetInternal() bool`
 
 GetInternal returns the Internal field if non-nil, zero value otherwise.
 
 ### GetInternalOk
 
-`func (o *Transform) GetInternalOk() (*bool, bool)`
+`func (o *TransformRead) GetInternalOk() (*bool, bool)`
 
 GetInternalOk returns a tuple with the Internal field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInternal
 
-`func (o *Transform) SetInternal(v bool)`
+`func (o *TransformRead) SetInternal(v bool)`
 
 SetInternal sets Internal field to given value.
 
 ### HasInternal
 
-`func (o *Transform) HasInternal() bool`
+`func (o *TransformRead) HasInternal() bool`
 
 HasInternal returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *TransformRead) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *TransformRead) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *TransformRead) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *TransformRead) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

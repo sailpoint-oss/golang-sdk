@@ -732,6 +732,8 @@ Class | Method | HTTP request | Description
  - [Transform](docs/Transform.md)
  - [TransformDefinition](docs/TransformDefinition.md)
  - [TransformDefinitionAttributesValue](docs/TransformDefinitionAttributesValue.md)
+ - [TransformRead](docs/TransformRead.md)
+ - [TransformReadAllOf](docs/TransformReadAllOf.md)
  - [TypeAheadQuery](docs/TypeAheadQuery.md)
  - [TypedReference](docs/TypedReference.md)
  - [UpdatePasswordDictionaryRequest](docs/UpdatePasswordDictionaryRequest.md)

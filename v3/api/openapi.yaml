@@ -26584,7 +26584,7 @@ paths:
                 internal: true
               schema:
                 items:
-                  $ref: '#/components/schemas/Transform'
+                  $ref: '#/components/schemas/TransformRead'
                 type: array
           description: A list of transforms matching the given criteria.
         "400":
@@ -26896,7 +26896,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transform'
+                $ref: '#/components/schemas/TransformRead'
           description: Transform with the given ID
         "400":
           content:
@@ -31604,14 +31604,8 @@ components:
         internal: false
         name: Timestamp To Date
         attributes: "{}"
-        id: 2cd78adghjkja34jh2b1hkjhasuecd
         type: dateFormat
       properties:
-        id:
-          description: Unique ID of this transform
-          example: 2cd78adghjkja34jh2b1hkjhasuecd
-          readOnly: true
-          type: string
         name:
           description: Unique name of this transform
           example: Timestamp To Date
@@ -37391,6 +37385,10 @@ components:
           example: MERGE
           type: string
       type: object
+    TransformRead:
+      allOf:
+      - $ref: '#/components/schemas/Transform'
+      - $ref: '#/components/schemas/TransformRead_allOf'
     AccessRequestType:
       description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type
         can only have a single Identity ID in the requestedFor field.
@@ -43145,6 +43143,14 @@ components:
           - ENTITLEMENT
           example: ENTITLEMENT
           type: object
+    TransformRead_allOf:
+      properties:
+        id:
+          description: Unique ID of this transform
+          example: 2cd78adghjkja34jh2b1hkjhasuecd
+          type: string
+      type: object
+      example: null
     ReviewableEntitlement_account:
       description: Information about the status of the entitlement
       example:

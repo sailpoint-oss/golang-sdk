@@ -363,7 +363,7 @@ type ApiGetTransformRequest struct {
 	id string
 }
 
-func (r ApiGetTransformRequest) Execute() (*Transform, *http.Response, error) {
+func (r ApiGetTransformRequest) Execute() (*TransformRead, *http.Response, error) {
 	return r.ApiService.GetTransformExecute(r)
 }
 
@@ -386,13 +386,13 @@ func (a *TransformsApiService) GetTransform(ctx context.Context, id string) ApiG
 }
 
 // Execute executes the request
-//  @return Transform
-func (a *TransformsApiService) GetTransformExecute(r ApiGetTransformRequest) (*Transform, *http.Response, error) {
+//  @return TransformRead
+func (a *TransformsApiService) GetTransformExecute(r ApiGetTransformRequest) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Transform
+		localVarReturnValue  *TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.GetTransform")
@@ -566,7 +566,7 @@ func (r ApiListTransformsRequest) Filters(filters string) ApiListTransformsReque
 	return r
 }
 
-func (r ApiListTransformsRequest) Execute() ([]Transform, *http.Response, error) {
+func (r ApiListTransformsRequest) Execute() ([]TransformRead, *http.Response, error) {
 	return r.ApiService.ListTransformsExecute(r)
 }
 
@@ -587,13 +587,13 @@ func (a *TransformsApiService) ListTransforms(ctx context.Context) ApiListTransf
 }
 
 // Execute executes the request
-//  @return []Transform
-func (a *TransformsApiService) ListTransformsExecute(r ApiListTransformsRequest) ([]Transform, *http.Response, error) {
+//  @return []TransformRead
+func (a *TransformsApiService) ListTransformsExecute(r ApiListTransformsRequest) ([]TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Transform
+		localVarReturnValue  []TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.ListTransforms")

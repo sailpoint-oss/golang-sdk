@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## GetTransform
 
-> Transform GetTransform(ctx, id).Execute()
+> TransformRead GetTransform(ctx, id).Execute()
 
 Transform by ID
 
@@ -176,7 +176,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.GetTransform``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTransform`: Transform
+    // response from `GetTransform`: TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsApi.GetTransform`: %v\n", resp)
 }
 ```
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transform**](Transform.md)
+[**TransformRead**](TransformRead.md)
 
 ### Authorization
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ## ListTransforms
 
-> []Transform ListTransforms(ctx).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
+> []TransformRead ListTransforms(ctx).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
 
 List transforms
 
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.ListTransforms``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListTransforms`: []Transform
+    // response from `ListTransforms`: []TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsApi.ListTransforms`: %v\n", resp)
 }
 ```
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Transform**](Transform.md)
+[**[]TransformRead**](TransformRead.md)
 
 ### Authorization
 

@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the Transform type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Transform{}
+// checks if the TransformRead type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TransformRead{}
 
-// Transform The representation of an internally- or customer-defined transform.
-type Transform struct {
+// TransformRead struct for TransformRead
+type TransformRead struct {
 	// Unique name of this transform
 	Name string `json:"name"`
 	// The type of transform operation
@@ -27,33 +27,35 @@ type Transform struct {
 	Attributes map[string]interface{} `json:"attributes"`
 	// Indicates whether this is an internal SailPoint-created transform or a customer-created transform
 	Internal *bool `json:"internal,omitempty"`
+	// Unique ID of this transform
+	Id *string `json:"id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _Transform Transform
+type _TransformRead TransformRead
 
-// NewTransform instantiates a new Transform object
+// NewTransformRead instantiates a new TransformRead object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransform(name string, type_ string, attributes map[string]interface{}) *Transform {
-	this := Transform{}
+func NewTransformRead(name string, type_ string, attributes map[string]interface{}) *TransformRead {
+	this := TransformRead{}
 	this.Name = name
 	this.Type = type_
 	this.Attributes = attributes
 	return &this
 }
 
-// NewTransformWithDefaults instantiates a new Transform object
+// NewTransformReadWithDefaults instantiates a new TransformRead object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTransformWithDefaults() *Transform {
-	this := Transform{}
+func NewTransformReadWithDefaults() *TransformRead {
+	this := TransformRead{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *Transform) GetName() string {
+func (o *TransformRead) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -64,7 +66,7 @@ func (o *Transform) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *Transform) GetNameOk() (*string, bool) {
+func (o *TransformRead) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -72,12 +74,12 @@ func (o *Transform) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *Transform) SetName(v string) {
+func (o *TransformRead) SetName(v string) {
 	o.Name = v
 }
 
 // GetType returns the Type field value
-func (o *Transform) GetType() string {
+func (o *TransformRead) GetType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -88,7 +90,7 @@ func (o *Transform) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Transform) GetTypeOk() (*string, bool) {
+func (o *TransformRead) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -96,12 +98,12 @@ func (o *Transform) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *Transform) SetType(v string) {
+func (o *TransformRead) SetType(v string) {
 	o.Type = v
 }
 
 // GetAttributes returns the Attributes field value
-func (o *Transform) GetAttributes() map[string]interface{} {
+func (o *TransformRead) GetAttributes() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
@@ -112,7 +114,7 @@ func (o *Transform) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
-func (o *Transform) GetAttributesOk() (map[string]interface{}, bool) {
+func (o *TransformRead) GetAttributesOk() (map[string]interface{}, bool) {
 	if o == nil {
 		return map[string]interface{}{}, false
 	}
@@ -120,12 +122,12 @@ func (o *Transform) GetAttributesOk() (map[string]interface{}, bool) {
 }
 
 // SetAttributes sets field value
-func (o *Transform) SetAttributes(v map[string]interface{}) {
+func (o *TransformRead) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
 // GetInternal returns the Internal field value if set, zero value otherwise.
-func (o *Transform) GetInternal() bool {
+func (o *TransformRead) GetInternal() bool {
 	if o == nil || isNil(o.Internal) {
 		var ret bool
 		return ret
@@ -135,7 +137,7 @@ func (o *Transform) GetInternal() bool {
 
 // GetInternalOk returns a tuple with the Internal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Transform) GetInternalOk() (*bool, bool) {
+func (o *TransformRead) GetInternalOk() (*bool, bool) {
 	if o == nil || isNil(o.Internal) {
 		return nil, false
 	}
@@ -143,7 +145,7 @@ func (o *Transform) GetInternalOk() (*bool, bool) {
 }
 
 // HasInternal returns a boolean if a field has been set.
-func (o *Transform) HasInternal() bool {
+func (o *TransformRead) HasInternal() bool {
 	if o != nil && !isNil(o.Internal) {
 		return true
 	}
@@ -152,11 +154,43 @@ func (o *Transform) HasInternal() bool {
 }
 
 // SetInternal gets a reference to the given bool and assigns it to the Internal field.
-func (o *Transform) SetInternal(v bool) {
+func (o *TransformRead) SetInternal(v bool) {
 	o.Internal = &v
 }
 
-func (o Transform) MarshalJSON() ([]byte, error) {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *TransformRead) GetId() string {
+	if o == nil || isNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransformRead) GetIdOk() (*string, bool) {
+	if o == nil || isNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *TransformRead) HasId() bool {
+	if o != nil && !isNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *TransformRead) SetId(v string) {
+	o.Id = &v
+}
+
+func (o TransformRead) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -164,12 +198,15 @@ func (o Transform) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Transform) ToMap() (map[string]interface{}, error) {
+func (o TransformRead) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["type"] = o.Type
 	toSerialize["attributes"] = o.Attributes
 	// skip: internal is readOnly
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -178,11 +215,11 @@ func (o Transform) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Transform) UnmarshalJSON(bytes []byte) (err error) {
-	varTransform := _Transform{}
+func (o *TransformRead) UnmarshalJSON(bytes []byte) (err error) {
+	varTransformRead := _TransformRead{}
 
-	if err = json.Unmarshal(bytes, &varTransform); err == nil {
-		*o = Transform(varTransform)
+	if err = json.Unmarshal(bytes, &varTransformRead); err == nil {
+		*o = TransformRead(varTransformRead)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -192,44 +229,45 @@ func (o *Transform) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "internal")
+		delete(additionalProperties, "id")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableTransform struct {
-	value *Transform
+type NullableTransformRead struct {
+	value *TransformRead
 	isSet bool
 }
 
-func (v NullableTransform) Get() *Transform {
+func (v NullableTransformRead) Get() *TransformRead {
 	return v.value
 }
 
-func (v *NullableTransform) Set(val *Transform) {
+func (v *NullableTransformRead) Set(val *TransformRead) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTransform) IsSet() bool {
+func (v NullableTransformRead) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTransform) Unset() {
+func (v *NullableTransformRead) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTransform(val *Transform) *NullableTransform {
-	return &NullableTransform{value: val, isSet: true}
+func NewNullableTransformRead(val *TransformRead) *NullableTransformRead {
+	return &NullableTransformRead{value: val, isSet: true}
 }
 
-func (v NullableTransform) MarshalJSON() ([]byte, error) {
+func (v NullableTransformRead) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTransform) UnmarshalJSON(src []byte) error {
+func (v *NullableTransformRead) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
