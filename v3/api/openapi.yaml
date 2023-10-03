@@ -26664,6 +26664,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:transform:read
+        - idn:transform:manage
       summary: List transforms
       tags:
       - Transforms
@@ -26693,7 +26694,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Transform'
+                $ref: '#/components/schemas/TransformRead'
           description: Indicates the transform was successfully created and returns
             its representation.
         "400":
@@ -26772,7 +26773,7 @@ paths:
             error.
       security:
       - UserContextAuth:
-        - idn:transform:update
+        - idn:transform:manage
       summary: Create transform
       tags:
       - Transforms
@@ -26975,6 +26976,7 @@ paths:
       security:
       - UserContextAuth:
         - idn:transform:read
+        - idn:transform:manage
       summary: Transform by ID
       tags:
       - Transforms
@@ -27003,7 +27005,7 @@ paths:
                 inputFormat: "MMM-dd-yyyy, HH:mm:ss.SSS"
                 outputFormat: yyyy/dd/MM
             schema:
-              $ref: '#/components/schemas/Transform'
+              $ref: '#/components/schemas/TransformUpdate'
         description: "The updated transform object (must include \"name\", \"type\"\
           , and \"attributes\" fields)."
       responses:
@@ -27019,7 +27021,7 @@ paths:
                   outputFormat: yyyy/dd/MM
                 internal: false
               schema:
-                $ref: '#/components/schemas/Transform'
+                $ref: '#/components/schemas/TransformRead'
           description: Indicates the transform was successfully updated and returns
             its new representation.
         "400":
@@ -31599,75 +31601,9 @@ components:
           type: string
       type: object
     Transform:
-      description: The representation of an internally- or customer-defined transform.
-      example:
-        internal: false
-        name: Timestamp To Date
-        attributes: "{}"
-        type: dateFormat
-      properties:
-        name:
-          description: Unique name of this transform
-          example: Timestamp To Date
-          maxLength: 50
-          minLength: 1
-          type: string
-        type:
-          description: The type of transform operation
-          enum:
-          - accountAttribute
-          - base64Decode
-          - base64Encode
-          - concat
-          - conditional
-          - dateCompare
-          - dateFormat
-          - dateMath
-          - decomposeDiacriticalMarks
-          - e164phone
-          - firstValid
-          - rule
-          - identityAttribute
-          - indexOf
-          - iso3166
-          - lastIndexOf
-          - leftPad
-          - lookup
-          - lower
-          - normalizeNames
-          - randomAlphaNumeric
-          - randomNumeric
-          - reference
-          - replaceAll
-          - replace
-          - rightPad
-          - split
-          - static
-          - substring
-          - trim
-          - upper
-          - usernameGenerator
-          - uuid
-          example: dateFormat
-          externalDocs:
-            description: Transform Operations
-            url: https://developer.sailpoint.com/idn/docs/transforms/operations
-          type: string
-        attributes:
-          description: Meta-data about the transform. Values in this list are specific
-            to the type of transform to be executed.
-          type: object
-        internal:
-          description: Indicates whether this is an internal SailPoint-created transform
-            or a customer-created transform
-          example: false
-          readOnly: true
-          type: boolean
-      required:
-      - attributes
-      - name
-      - type
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/TransformUpdate'
+      - $ref: '#/components/schemas/Transform_allOf'
     WorkItems:
       example:
         requesterDisplayName: John Smith
@@ -37389,6 +37325,16 @@ components:
       allOf:
       - $ref: '#/components/schemas/Transform'
       - $ref: '#/components/schemas/TransformRead_allOf'
+    TransformUpdate:
+      description: The representation of an internally- or customer-defined transform.
+      example:
+        attributes: null
+      properties:
+        attributes:
+          $ref: '#/components/schemas/TransformUpdate_attributes'
+      required:
+      - attributes
+      type: object
     AccessRequestType:
       description: Access request type. Defaults to GRANT_ACCESS. REVOKE_ACCESS type
         can only have a single Identity ID in the requestedFor field.
@@ -39947,6 +39893,1016 @@ components:
           nullable: true
           type: string
       type: object
+    AccountAttribute:
+      properties:
+        sourceName:
+          description: A reference to the source to search for the account
+          example: Workday
+          type: string
+        attributeName:
+          description: "The name of the attribute on the account to return. This should\
+            \ match the name of the account attribute name visible in the user interface,\
+            \ or on the source schema."
+          example: DEPARTMENT
+          type: string
+        accountSortAttribute:
+          description: The value of this configuration is a string name of the attribute
+            to use when determining the ordering of returned accounts when there are
+            multiple entries
+          example: created
+          type: string
+        accountSortDescending:
+          description: "The value of this configuration is a boolean (true/false).\
+            \ Controls the order of the sort when there are multiple accounts. If\
+            \ not defined, the transform will default to false (ascending order)"
+          example: false
+          type: boolean
+        accountReturnFirstLink:
+          description: "The value of this configuration is a boolean (true/false).\
+            \ Controls which account to source a value from for an attribute.  If\
+            \ this flag is set to true, the transform returns the value from the first\
+            \ account in the list, even if it is null. If it is set to false, the\
+            \ transform returns the first non-null value. If not defined, the transform\
+            \ will default to false"
+          example: false
+          type: boolean
+        accountFilter:
+          description: |-
+            This expression queries the database to narrow search results. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the database.  The default filter will always include the source and identity, and any subsequent expressions will be combined in an AND operation to the existing search criteria.
+            Only certain searchable attributes are available:  - `nativeIdentity` - the Account ID  - `displayName` - the Account Name  - `entitlements` - a boolean value to determine if the account has entitlements
+          example: '!(nativeIdentity.startsWith("*DELETED*"))'
+          type: string
+        accountPropertyFilter:
+          description: |-
+            This expression is used to search and filter accounts in memory. The value of this configuration is a sailpoint.object.Filter expression and used when searching against the returned resultset.
+
+            All account attributes are available for filtering as this operation is performed in memory.
+          example: "(groups.containsAll({'Admin'}) || location == 'Austin')"
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - attributeName
+      - sourceName
+      title: accountAttribute
+      type: object
+    Base64Decode:
+      properties:
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: base64Decode
+      type: object
+    Base64Encode:
+      properties:
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: base64Encode
+      type: object
+    Concatenation:
+      properties:
+        values:
+          description: An array of items to join together
+          example:
+          - John
+          - ' '
+          - Smith
+          items:
+            type: object
+          type: array
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - values
+      title: concat
+      type: object
+    Conditional:
+      properties:
+        expression:
+          description: "A comparison statement that follows the structure of `ValueA\
+            \ eq ValueB` where `ValueA` and `ValueB` are static strings or outputs\
+            \ of other transforms. \n\nThe `eq` operator is the only valid comparison"
+          example: ValueA eq ValueB
+          type: string
+        positiveCondition:
+          description: The output of the transform if the expression evalutes to true
+          example: "true"
+          type: string
+        negativeCondition:
+          description: The output of the transform if the expression evalutes to false
+          example: "false"
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - expression
+      - negativeCondition
+      - positiveCondition
+      title: conditional
+      type: object
+    DateCompare:
+      properties:
+        firstDate:
+          $ref: '#/components/schemas/DateCompare_firstDate'
+        secondDate:
+          $ref: '#/components/schemas/DateCompare_secondDate'
+        operator:
+          description: |
+            This is the comparison to perform.
+            | Operation | Description |
+            | --------- | ------- |
+            | LT        | Strictly less than: firstDate < secondDate |
+            | LTE       | Less than or equal to: firstDate <= secondDate |
+            | GT        | Strictly greater than: firstDate > secondDate |
+            | GTE       | Greater than or equal to: firstDate >= secondDate |
+          enum:
+          - LT
+          - LTE
+          - GT
+          - GTE
+          example: LT
+          type: string
+        positiveCondition:
+          description: The output of the transform if the expression evalutes to true
+          example: "true"
+          type: string
+        negativeCondition:
+          description: The output of the transform if the expression evalutes to false
+          example: "false"
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - firstDate
+      - negativeCondition
+      - operator
+      - positiveCondition
+      - secondDate
+      title: dateCompare
+      type: object
+    DateFormat:
+      properties:
+        inputFormat:
+          $ref: '#/components/schemas/DateFormat_inputFormat'
+        outputFormat:
+          $ref: '#/components/schemas/DateFormat_outputFormat'
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: dateFormat
+      type: object
+    DateMath:
+      properties:
+        expression:
+          description: |
+            A string value of the date and time components to operation on, along with the math operations to execute.
+          example: now+1w
+          externalDocs:
+            description: Date Math Expressions
+            url: https://developer.sailpoint.com/idn/docs/transforms/operations/date-math#transform-structure
+          type: string
+        roundUp:
+          description: "A boolean value to indicate whether the transform should round\
+            \ up or down when a rounding `/` operation is defined in the expression.\
+            \ \n\n\nIf not provided, the transform will default to `false`\n\n\n`true`\
+            \ indicates the transform should round up (i.e., truncate the fractional\
+            \ date/time component indicated and then add one unit of that component)\n\
+            \n\n`false` indicates the transform should round down (i.e., truncate\
+            \ the fractional date/time component indicated)\n"
+          example: false
+          type: boolean
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - expression
+      title: dateMath
+      type: object
+    DecomposeDiacriticalMarks:
+      properties:
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: decomposeDiacriticalMarks
+      type: object
+    E164phone:
+      properties:
+        defaultRegion:
+          description: |
+            This is an optional attribute that can be used to define the region of the phone number to format into.
+
+
+            If defaultRegion is not provided, it will take US as the default country.
+
+
+            The format of the country code should be in [ISO 3166-1 alpha-2 format](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+          example: US
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: e164phone
+      type: object
+    FirstValid:
+      properties:
+        values:
+          description: An array of attributes to evaluate for existence.
+          example:
+          - attributes:
+              sourceName: Active Directory
+              attributeName: sAMAccountName
+            type: accountAttribute
+          - attributes:
+              sourceName: Okta
+              attributeName: login
+            type: accountAttribute
+          - attributes:
+              sourceName: HR Source
+              attributeName: employeeID
+            type: accountAttribute
+          items:
+            type: object
+          type: array
+        ignoreErrors:
+          description: a true or false value representing to move on to the next option
+            if an error (like an Null Pointer Exception) were to occur.
+          example: false
+          type: boolean
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+      required:
+      - values
+      title: firstValid
+      type: object
+    Rule:
+      oneOf:
+      - $ref: '#/components/schemas/GenericRule'
+      - $ref: '#/components/schemas/GenerateRandomString'
+      - $ref: '#/components/schemas/GetReferenceIdentityAttribute'
+      title: rule
+    IdentityAttribute_1:
+      properties:
+        name:
+          description: The system (camel-cased) name of the identity attribute to
+            bring in
+          example: email
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - name
+      title: identityAttribute
+      type: object
+    IndexOf:
+      properties:
+        substring:
+          description: "A substring to search for, searches the entire calling string,\
+            \ and returns the index of the first occurrence of the specified substring."
+          example: admin_
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - substring
+      title: indexOf
+      type: object
+    ISO3166:
+      properties:
+        format:
+          description: |
+            An optional value to denote which ISO 3166 format to return. Valid values are:
+
+
+            `alpha2` - Two-character country code (e.g., "US"); this is the default value if no format is supplied
+
+
+            `alpha3` - Three-character country code (e.g., "USA")
+
+
+            `numeric` - The numeric country code (e.g., "840")
+          example: alpha2
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: iso3166
+      type: object
+    LeftPad:
+      properties:
+        length:
+          description: An integer value for the desired length of the final output
+            string
+          example: "4"
+          type: string
+        padding:
+          description: |
+            A string value representing the character that the incoming data should be padded with to get to the desired length
+
+
+            If not provided, the transform will default to a single space (" ") character for padding
+          example: "0"
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - length
+      title: leftPad
+      type: object
+    Lookup:
+      properties:
+        table:
+          additionalProperties: true
+          description: |
+            This is a JSON object of key-value pairs. The key is the string that will attempt to be matched to the input, and the value is the output string that should be returned if the key is matched
+
+
+            >**Note** the use of the optional default key value here; if none of the three countries in the above example match the input string, the transform will return "Unknown Region" for the attribute that is mapped to this transform.
+          example:
+            USA: Americas
+            FRA: EMEA
+            AUS: APAC
+            default: Unknown Region
+          type: object
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - table
+      title: lookup
+      type: object
+    Lower:
+      properties:
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: lower
+      type: object
+    NameNormalizer:
+      properties:
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: nameNormalizer
+      type: object
+    RandomAlphaNumeric:
+      properties:
+        length:
+          description: |
+            This is an integer value specifying the size/number of characters the random string must contain
+
+
+            * This value must be a positive number and cannot be blank
+
+
+            * If no length is provided, the transform will default to a value of `32`
+
+
+            * Due to identity attribute data constraints, the maximum allowable value is `450` characters
+          example: "10"
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: randomAlphaNumeric
+      type: object
+    RandomNumeric:
+      properties:
+        length:
+          description: |
+            This is an integer value specifying the size/number of characters the random string must contain
+
+
+            * This value must be a positive number and cannot be blank
+
+
+            * If no length is provided, the transform will default to a value of `32`
+
+
+            * Due to identity attribute data constraints, the maximum allowable value is `450` characters
+          example: "10"
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: randomNumeric
+      type: object
+    Reference:
+      properties:
+        id:
+          description: This ID specifies the name of the pre-existing transform which
+            you want to use within your current transform
+          example: Existing Transform
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - id
+      title: reference
+      type: object
+    ReplaceAll:
+      properties:
+        table:
+          additionalProperties: true
+          description: "An attribute of key-value pairs. Each pair identifies the\
+            \ pattern to search for as its key, and the replacement string as its\
+            \ value."
+          example:
+            "-": ' '
+            '"': ''''
+            ñ: "n"
+          type: object
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - table
+      title: replaceAll
+      type: object
+    Replace:
+      properties:
+        regex:
+          description: This can be a string or a regex pattern in which you want to
+            replace.
+          example: "[^a-zA-Z]"
+          externalDocs:
+            description: Regex Builder
+            url: https://regex101.com/
+          type: string
+        replacement:
+          description: This is the replacement string that should be substituded wherever
+            the string or pattern is found.
+          example: ' '
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - regex
+      - replacement
+      title: replace
+      type: object
+    RightPad:
+      properties:
+        length:
+          description: An integer value for the desired length of the final output
+            string
+          example: "4"
+          type: string
+        padding:
+          description: |
+            A string value representing the character that the incoming data should be padded with to get to the desired length
+
+
+            If not provided, the transform will default to a single space (" ") character for padding
+          example: "0"
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - length
+      title: rightPad
+      type: object
+    Split:
+      properties:
+        delimiter:
+          description: "This can be either a single character or a regex expression,\
+            \ and is used by the transform to identify the break point between two\
+            \ substrings in the incoming data"
+          example: ","
+          type: string
+        index:
+          description: "An integer value for the desired array element after the incoming\
+            \ data has been split into a list; the array is a 0-based object, so the\
+            \ first array element would be index 0, the second element would be index\
+            \ 1, etc."
+          example: "5"
+          type: string
+        throws:
+          description: |
+            A boolean (true/false) value which indicates whether an exception should be thrown and returned as an output when an index is out of bounds with the resultant array (i.e., the provided index value is larger than the size of the array)
+
+
+            `true` - The transform should return "IndexOutOfBoundsException"
+
+
+            `false` - The transform should return null
+
+
+            If not provided, the transform will default to false and return a null
+          example: true
+          type: boolean
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - delimiter
+      - index
+      title: split
+      type: object
+    Static:
+      properties:
+        values:
+          description: "This must evaluate to a JSON string, either through a fixed\
+            \ value or through conditional logic using the Apache Velocity Template\
+            \ Language."
+          example: string$variable
+          externalDocs:
+            description: Static Transform Documentation
+            url: https://developer.sailpoint.com/idn/docs/transforms/operations/static
+          type: string
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+      required:
+      - values
+      title: static
+      type: object
+    Substring:
+      properties:
+        begin:
+          description: |
+            The index of the first character to include in the returned substring.
+
+
+            If `begin` is set to -1, the transform will begin at character 0 of the input data
+          example: 1
+          format: int32
+          type: integer
+        beginOffset:
+          description: "This integer value is the number of characters to add to the\
+            \ begin attribute when returning a substring. \n\nThis attribute is only\
+            \ used if begin is not -1.\n"
+          example: 3
+          format: int32
+          type: integer
+        end:
+          description: |
+            The index of the first character to exclude from the returned substring.
+
+            If end is -1 or not provided at all, the substring transform will return everything up to the end of the input string.
+          example: 6
+          format: int32
+          type: integer
+        endOffset:
+          description: "This integer value is the number of characters to add to the\
+            \ end attribute when returning a substring. \n\nThis attribute is only\
+            \ used if end is provided and is not -1.\n"
+          example: 1
+          format: int32
+          type: integer
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      required:
+      - begin
+      title: substring
+      type: object
+    Trim:
+      properties:
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: trim
+      type: object
+    Upper:
+      properties:
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+        input:
+          additionalProperties: true
+          description: "This is an optional attribute that can explicitly define the\
+            \ input data which will be fed into the transform logic. If input is not\
+            \ provided, the transform will take its input from the source and attribute\
+            \ combination configured via the UI."
+          example:
+            type: accountAttribute
+            attributes:
+              attributeName: first_name
+              sourceName: Source
+          type: object
+      title: upper
+      type: object
+    UUIDGenerator:
+      properties:
+        requiresPeriodicRefresh:
+          default: false
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+      title: uuid
+      type: object
     ScheduleType:
       description: |
         Enum representing the currently supported schedule types.
@@ -40000,9 +40956,9 @@ components:
       type: object
     BaseAccess:
       allOf:
-      - $ref: '#/components/schemas/Reference'
+      - $ref: '#/components/schemas/Reference_1'
       - $ref: '#/components/schemas/BaseAccess_allOf'
-    Reference:
+    Reference_1:
       properties:
         id:
           description: The unique ID of the referenced object.
@@ -40015,7 +40971,7 @@ components:
       type: object
     BaseEntitlement:
       allOf:
-      - $ref: '#/components/schemas/Reference'
+      - $ref: '#/components/schemas/Reference_1'
       - $ref: '#/components/schemas/BaseEntitlement_allOf'
     Tags:
       example:
@@ -40030,11 +40986,11 @@ components:
       - $ref: '#/components/schemas/Access_allOf'
     DisplayReference:
       allOf:
-      - $ref: '#/components/schemas/Reference'
+      - $ref: '#/components/schemas/Reference_1'
       - $ref: '#/components/schemas/DisplayReference_allOf'
     AccountSource:
       allOf:
-      - $ref: '#/components/schemas/Reference'
+      - $ref: '#/components/schemas/Reference_1'
       - $ref: '#/components/schemas/AccountSource_allOf'
     Approval:
       properties:
@@ -40125,7 +41081,7 @@ components:
       type: object
     BaseAccount:
       allOf:
-      - $ref: '#/components/schemas/Reference'
+      - $ref: '#/components/schemas/Reference_1'
       - $ref: '#/components/schemas/BaseAccount_allOf'
     NameType:
       properties:
@@ -40160,7 +41116,7 @@ components:
       type: object
     App:
       allOf:
-      - $ref: '#/components/schemas/Reference'
+      - $ref: '#/components/schemas/Reference_1'
       - $ref: '#/components/schemas/App_allOf'
     IdentityAccess:
       discriminator:
@@ -40177,27 +41133,27 @@ components:
       properties:
         sources:
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: '#/components/schemas/Reference_1'
           type: array
         entitlements:
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: '#/components/schemas/Reference_1'
           type: array
         accessProfiles:
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: '#/components/schemas/Reference_1'
           type: array
         roles:
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: '#/components/schemas/Reference_1'
           type: array
         apps:
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: '#/components/schemas/Reference_1'
           type: array
         governanceGroups:
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: '#/components/schemas/Reference_1'
           type: array
         fallbackApprover:
           example: false
@@ -40853,6 +41809,149 @@ components:
       - BOOLEAN
       example: STRING
       type: string
+    RequiresPeriodicRefresh:
+      default: false
+      description: A value that indicates whether the transform logic should be re-evaluated
+        every evening as part of the identity refresh process
+      example: false
+      type: boolean
+    input:
+      additionalProperties: true
+      description: "This is an optional attribute that can explicitly define the input\
+        \ data which will be fed into the transform logic. If input is not provided,\
+        \ the transform will take its input from the source and attribute combination\
+        \ configured via the UI."
+      example:
+        type: accountAttribute
+        attributes:
+          attributeName: first_name
+          sourceName: Source
+      type: object
+    namedConstructs:
+      description: "| Construct       | Date Time Pattern | Description |\n| ---------\
+        \       | ----------------- | ----------- |\n| ISO8601         | `yyyy-MM-dd'T'HH:mm:ss.SSSX`\
+        \ | The ISO8601 standard. |          \n| LDAP            | `yyyyMMddHHmmss.Z`\
+        \           | The LDAP standard.    |\n| PEOPLE_SOFT     | `MM/dd/yyyy`  \
+        \               | The date format People Soft uses. |\n| EPOCH_TIME_JAVA |\
+        \ # ms from midnight, January 1st, 1970 | The incoming date value as elapsed\
+        \ time in milliseconds from midnight, January 1st, 1970. |\n| EPOCH_TIME_WIN32|\
+        \ # intervals of 100ns from midnight, January 1st, 1601 | The incoming date\
+        \ value as elapsed time in 100-nanosecond intervals from midnight, January\
+        \ 1st, 1601. |\n"
+      enum:
+      - ISO8601
+      - LDAP
+      - PEOPLE_SOFT
+      - EPOCH_TIME_JAVA
+      - EPOCH_TIME_WIN32
+      example: PEOPLE_SOFT
+      title: Named Construct
+      type: string
+    simpleDateFormat:
+      description: |
+        There are a variety of date time patterns you can express using SimpleDateFormat. The following table lists examples of different date time patterns expressed in the SimpleDateFormat and how they display. Refer to the SimpleDateFormat syntax page for more information.
+
+        >NOTE: The following examples show how date and time patterns are interpreted in the U.S. locale. The given date and time are 2001-07-04 12:08:56 local time in the U.S. Pacific Time time zone.
+          (This table is from the SimpleDateFormat page.)
+
+        | Date Time Pattern | Result |
+        | ----------------- | ------ |
+        | `yyyy.MM.dd G 'at' HH:mm:ss z` | `2001.07.04 AD at 12:08:56 PDT` |
+        | `EEE, MMM d, ''yy` | Wed, Jul 4, '01 |
+        | `h:mm a`           | 12:08 PM |
+        | `hh 'o''clock' a, zzzz` | 12 o'clock PM, Pacific Daylight Time |
+        | `K:mm a, z`             | 0:08 PM, PDT |
+        | `yyyyy.MMMMM.dd GGG hh:mm aaa` | 02001.July.04 AD 12:08 PM |
+        | `EEE, d MMM yyyy HH:mm:ss Z`  | Wed, 4 Jul 2001 12:08:56 -0700 |
+        | `yyMMddHHmmssZ`               | 010704120856-0700 |
+        | `yyyy-MM-dd'T'HH:mm:ss.SSSZ`  | 2001-07-04T12:08:56.235-0700 |
+        | `yyyy-MM-dd'T'HH:mm:ss.SSSXXX` | 2001-07-04T12:08:56.235-07:00 |
+        | `YYYY-'W'ww-u`                 | 2001-W27-3 |
+      example: mm/dd/yyyy
+      title: Java Simple Date Format
+      type: string
+    GenericRule:
+      properties:
+        name:
+          description: This is the name of the Generic rule that needs to be invoked
+            by the transform
+          example: Generic Calculation Rule
+          type: string
+        requiresPeriodicRefresh:
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+      required:
+      - name
+      type: object
+    GenerateRandomString:
+      properties:
+        name:
+          description: This must always be set to "Cloud Services Deployment Utility"
+          example: Cloud Services Deployment Utility
+          type: string
+        operation:
+          description: The operation to perform `generateRandomString`
+          example: generateRandomString
+          type: string
+        includeNumbers:
+          description: This must be either "true" or "false" to indicate whether the
+            generator logic should include numbers
+          example: true
+          type: boolean
+        includeSpecialChars:
+          description: This must be either "true" or "false" to indicate whether the
+            generator logic should include special characters
+          example: true
+          type: boolean
+        length:
+          description: |
+            This specifies how long the randomly generated string needs to be
+
+
+            >NOTE Due to identity attribute data constraints, the maximum allowable value is 450 characters
+          example: "10"
+          type: string
+        requiresPeriodicRefresh:
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+      required:
+      - includeNumbers
+      - includeSpecialChars
+      - length
+      - name
+      - operation
+      type: object
+    GetReferenceIdentityAttribute:
+      properties:
+        name:
+          description: This must always be set to "Cloud Services Deployment Utility"
+          example: Cloud Services Deployment Utility
+          type: string
+        operation:
+          description: The operation to perform `getReferenceIdentityAttribute`
+          example: getReferenceIdentityAttribute
+          type: string
+        uid:
+          description: |
+            This is the SailPoint User Name (uid) value of the identity whose attribute is desired
+
+            As a convenience feature, you can use the `manager` keyword to dynamically look up the user's manager and then get that manager's identity attribute.
+          example: 2c91808570313110017040b06f344ec9
+          type: string
+        requiresPeriodicRefresh:
+          description: A value that indicates whether the transform logic should be
+            re-evaluated every evening as part of the identity refresh process
+          example: false
+          type: boolean
+      required:
+      - name
+      - operation
+      - uid
+      type: object
     SelectorType:
       description: |
         Enum representing the currently supported selector types.
@@ -41216,7 +42315,7 @@ components:
       type: object
     SearchIdentityReference:
       allOf:
-      - $ref: '#/components/schemas/Reference'
+      - $ref: '#/components/schemas/Reference_1'
       - $ref: '#/components/schemas/SearchIdentityReference_allOf'
     SodExemptCriteria:
       description: Details of the Entitlement criteria
@@ -41422,7 +42521,7 @@ components:
     AccessProfileDocument_allOf:
       properties:
         source:
-          $ref: '#/components/schemas/Reference'
+          $ref: '#/components/schemas/Reference_1'
         entitlements:
           items:
             $ref: '#/components/schemas/BaseEntitlement'
@@ -41442,7 +42541,7 @@ components:
     AccessProfileSummary_allOf:
       properties:
         source:
-          $ref: '#/components/schemas/Reference'
+          $ref: '#/components/schemas/Reference_1'
         owner:
           $ref: '#/components/schemas/DisplayReference'
         revocable:
@@ -41933,7 +43032,7 @@ components:
           example: Admin
           type: string
         source:
-          $ref: '#/components/schemas/Reference'
+          $ref: '#/components/schemas/Reference_1'
         privileged:
           example: false
           type: boolean
@@ -41953,7 +43052,7 @@ components:
     EntitlementSummary_allOf:
       properties:
         source:
-          $ref: '#/components/schemas/Reference'
+          $ref: '#/components/schemas/Reference_1'
         privileged:
           example: false
           type: boolean
@@ -42090,9 +43189,9 @@ components:
           example: false
           type: boolean
         identityProfile:
-          $ref: '#/components/schemas/Reference'
+          $ref: '#/components/schemas/Reference_1'
         source:
-          $ref: '#/components/schemas/Reference'
+          $ref: '#/components/schemas/Reference_1'
         attributes:
           additionalProperties: true
           description: a map or dictionary of key/value pairs
@@ -42272,7 +43371,7 @@ components:
       properties:
         accessProfiles:
           items:
-            $ref: '#/components/schemas/Reference'
+            $ref: '#/components/schemas/Reference_1'
           type: array
         accessProfileCount:
           type: integer
@@ -42700,6 +43799,61 @@ components:
           example: My Management Workgroup
           type: string
       type: object
+    Transform_allOf:
+      description: The representation of an internally- or customer-defined transform.
+      properties:
+        name:
+          description: Unique name of this transform
+          example: Timestamp To Date
+          maxLength: 50
+          minLength: 1
+          type: string
+        type:
+          description: The type of transform operation
+          enum:
+          - accountAttribute
+          - base64Decode
+          - base64Encode
+          - concat
+          - conditional
+          - dateCompare
+          - dateFormat
+          - dateMath
+          - decomposeDiacriticalMarks
+          - e164phone
+          - firstValid
+          - rule
+          - identityAttribute
+          - indexOf
+          - iso3166
+          - lastIndexOf
+          - leftPad
+          - lookup
+          - lower
+          - normalizeNames
+          - randomAlphaNumeric
+          - randomNumeric
+          - reference
+          - replaceAll
+          - replace
+          - rightPad
+          - split
+          - static
+          - substring
+          - trim
+          - upper
+          - usernameGenerator
+          - uuid
+          example: dateFormat
+          externalDocs:
+            description: Transform Operations
+            url: https://developer.sailpoint.com/idn/docs/transforms/operations
+          type: string
+      required:
+      - name
+      - type
+      type: object
+      example: null
     JsonPatchOperation_value_anyOf_inner:
       anyOf:
       - type: string
@@ -43149,8 +44303,51 @@ components:
           description: Unique ID of this transform
           example: 2cd78adghjkja34jh2b1hkjhasuecd
           type: string
+        internal:
+          default: false
+          description: Indicates whether this is an internal SailPoint-created transform
+            or a customer-created transform
+          example: false
+          type: boolean
+      required:
+      - id
       type: object
       example: null
+    TransformUpdate_attributes:
+      description: Meta-data about the transform. Values in this list are specific
+        to the type of transform to be executed.
+      oneOf:
+      - $ref: '#/components/schemas/AccountAttribute'
+      - $ref: '#/components/schemas/Base64Decode'
+      - $ref: '#/components/schemas/Base64Encode'
+      - $ref: '#/components/schemas/Concatenation'
+      - $ref: '#/components/schemas/Conditional'
+      - $ref: '#/components/schemas/DateCompare'
+      - $ref: '#/components/schemas/DateFormat'
+      - $ref: '#/components/schemas/DateMath'
+      - $ref: '#/components/schemas/DecomposeDiacriticalMarks'
+      - $ref: '#/components/schemas/E164phone'
+      - $ref: '#/components/schemas/FirstValid'
+      - $ref: '#/components/schemas/Rule'
+      - $ref: '#/components/schemas/IdentityAttribute_1'
+      - $ref: '#/components/schemas/IndexOf'
+      - $ref: '#/components/schemas/ISO3166'
+      - $ref: '#/components/schemas/LeftPad'
+      - $ref: '#/components/schemas/Lookup'
+      - $ref: '#/components/schemas/Lower'
+      - $ref: '#/components/schemas/NameNormalizer'
+      - $ref: '#/components/schemas/RandomAlphaNumeric'
+      - $ref: '#/components/schemas/RandomNumeric'
+      - $ref: '#/components/schemas/Reference'
+      - $ref: '#/components/schemas/ReplaceAll'
+      - $ref: '#/components/schemas/Replace'
+      - $ref: '#/components/schemas/RightPad'
+      - $ref: '#/components/schemas/Split'
+      - $ref: '#/components/schemas/Static'
+      - $ref: '#/components/schemas/Substring'
+      - $ref: '#/components/schemas/Trim'
+      - $ref: '#/components/schemas/Upper'
+      - $ref: '#/components/schemas/UUIDGenerator'
     ReviewableEntitlement_account:
       description: Information about the status of the entitlement
       example:
@@ -43323,6 +44520,34 @@ components:
           example: group
           type: string
       type: object
+    DateCompare_firstDate:
+      description: This is the first date to consider (The date that would be on the
+        left hand side of the comparison operation).
+      oneOf:
+      - $ref: '#/components/schemas/AccountAttribute'
+      - $ref: '#/components/schemas/DateFormat'
+    DateCompare_secondDate:
+      description: This is the second date to consider (The date that would be on
+        the right hand side of the comparison operation).
+      oneOf:
+      - $ref: '#/components/schemas/AccountAttribute'
+      - $ref: '#/components/schemas/DateFormat'
+    DateFormat_inputFormat:
+      description: |-
+        A string value indicating either the explicit SimpleDateFormat or the built-in named format that the data is coming in as.
+
+        *If no inputFormat is provided, the transform assumes that it is in ISO8601 format*
+      oneOf:
+      - $ref: '#/components/schemas/namedConstructs'
+      - $ref: '#/components/schemas/simpleDateFormat'
+    DateFormat_outputFormat:
+      description: |-
+        A string value indicating either the explicit SimpleDateFormat or the built-in named format that the data should be formatted into.
+
+        *If no inputFormat is provided, the transform assumes that it is in ISO8601 format*
+      oneOf:
+      - $ref: '#/components/schemas/namedConstructs'
+      - $ref: '#/components/schemas/simpleDateFormat'
     BaseAccess_allOf:
       properties:
         description:
@@ -43491,7 +44716,7 @@ components:
     App_allOf:
       properties:
         source:
-          $ref: '#/components/schemas/Reference'
+          $ref: '#/components/schemas/Reference_1'
         account:
           $ref: '#/components/schemas/App_allOf_account'
       type: object

@@ -19,7 +19,7 @@ var _ MappedNullable = &RoleDocumentAllOf{}
 
 // RoleDocumentAllOf struct for RoleDocumentAllOf
 type RoleDocumentAllOf struct {
-	AccessProfiles []Reference `json:"accessProfiles,omitempty"`
+	AccessProfiles []Reference1 `json:"accessProfiles,omitempty"`
 	AccessProfileCount *int32 `json:"accessProfileCount,omitempty"`
 	Tags []string `json:"tags,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,9 +45,9 @@ func NewRoleDocumentAllOfWithDefaults() *RoleDocumentAllOf {
 }
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise.
-func (o *RoleDocumentAllOf) GetAccessProfiles() []Reference {
+func (o *RoleDocumentAllOf) GetAccessProfiles() []Reference1 {
 	if o == nil || isNil(o.AccessProfiles) {
-		var ret []Reference
+		var ret []Reference1
 		return ret
 	}
 	return o.AccessProfiles
@@ -55,7 +55,7 @@ func (o *RoleDocumentAllOf) GetAccessProfiles() []Reference {
 
 // GetAccessProfilesOk returns a tuple with the AccessProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleDocumentAllOf) GetAccessProfilesOk() ([]Reference, bool) {
+func (o *RoleDocumentAllOf) GetAccessProfilesOk() ([]Reference1, bool) {
 	if o == nil || isNil(o.AccessProfiles) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *RoleDocumentAllOf) HasAccessProfiles() bool {
 	return false
 }
 
-// SetAccessProfiles gets a reference to the given []Reference and assigns it to the AccessProfiles field.
-func (o *RoleDocumentAllOf) SetAccessProfiles(v []Reference) {
+// SetAccessProfiles gets a reference to the given []Reference1 and assigns it to the AccessProfiles field.
+func (o *RoleDocumentAllOf) SetAccessProfiles(v []Reference1) {
 	o.AccessProfiles = v
 }
 

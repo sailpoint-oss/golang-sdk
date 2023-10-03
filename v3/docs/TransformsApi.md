@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateTransform
 
-> Transform CreateTransform(ctx).Transform(transform).Execute()
+> TransformRead CreateTransform(ctx).Transform(transform).Execute()
 
 Create transform
 
@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    transform := *openapiclient.NewTransform("Timestamp To Date", "dateFormat", map[string]interface{}(123)) // Transform | The transform to be created.
+    transform := *openapiclient.NewTransform(openapiclient.TransformUpdate_attributes{AccountAttribute: openapiclient.NewAccountAttribute("Workday", "DEPARTMENT")}, "Timestamp To Date", "dateFormat") // Transform | The transform to be created.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.CreateTransform``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateTransform`: Transform
+    // response from `CreateTransform`: TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsApi.CreateTransform`: %v\n", resp)
 }
 ```
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transform**](Transform.md)
+[**TransformRead**](TransformRead.md)
 
 ### Authorization
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## UpdateTransform
 
-> Transform UpdateTransform(ctx, id).Transform(transform).Execute()
+> TransformRead UpdateTransform(ctx, id).TransformUpdate(transformUpdate).Execute()
 
 Update a transform
 
@@ -312,16 +312,16 @@ import (
 
 func main() {
     id := "2cd78adghjkja34jh2b1hkjhasuecd" // string | ID of the transform to update
-    transform := *openapiclient.NewTransform("Timestamp To Date", "dateFormat", map[string]interface{}(123)) // Transform | The updated transform object (must include \"name\", \"type\", and \"attributes\" fields). (optional)
+    transformUpdate := *openapiclient.NewTransformUpdate(openapiclient.TransformUpdate_attributes{AccountAttribute: openapiclient.NewAccountAttribute("Workday", "DEPARTMENT")}) // TransformUpdate | The updated transform object (must include \"name\", \"type\", and \"attributes\" fields). (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransformsApi.UpdateTransform(context.Background(), id).Transform(transform).Execute()
+    resp, r, err := apiClient.TransformsApi.UpdateTransform(context.Background(), id).TransformUpdate(transformUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.UpdateTransform``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateTransform`: Transform
+    // response from `UpdateTransform`: TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsApi.UpdateTransform`: %v\n", resp)
 }
 ```
@@ -342,11 +342,11 @@ Other parameters are passed through a pointer to a apiUpdateTransformRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **transform** | [**Transform**](Transform.md) | The updated transform object (must include \&quot;name\&quot;, \&quot;type\&quot;, and \&quot;attributes\&quot; fields). | 
+ **transformUpdate** | [**TransformUpdate**](TransformUpdate.md) | The updated transform object (must include \&quot;name\&quot;, \&quot;type\&quot;, and \&quot;attributes\&quot; fields). | 
 
 ### Return type
 
-[**Transform**](Transform.md)
+[**TransformRead**](TransformRead.md)
 
 ### Authorization
 

@@ -35,7 +35,7 @@ func (r ApiCreateTransformRequest) Transform(transform Transform) ApiCreateTrans
 	return r
 }
 
-func (r ApiCreateTransformRequest) Execute() (*Transform, *http.Response, error) {
+func (r ApiCreateTransformRequest) Execute() (*TransformRead, *http.Response, error) {
 	return r.ApiService.CreateTransformExecute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *TransformsApiService) CreateTransform(ctx context.Context) ApiCreateTra
 }
 
 // Execute executes the request
-//  @return Transform
-func (a *TransformsApiService) CreateTransformExecute(r ApiCreateTransformRequest) (*Transform, *http.Response, error) {
+//  @return TransformRead
+func (a *TransformsApiService) CreateTransformExecute(r ApiCreateTransformRequest) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Transform
+		localVarReturnValue  *TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.CreateTransform")
@@ -745,16 +745,16 @@ type ApiUpdateTransformRequest struct {
 	ctx context.Context
 	ApiService *TransformsApiService
 	id string
-	transform *Transform
+	transformUpdate *TransformUpdate
 }
 
 // The updated transform object (must include \&quot;name\&quot;, \&quot;type\&quot;, and \&quot;attributes\&quot; fields).
-func (r ApiUpdateTransformRequest) Transform(transform Transform) ApiUpdateTransformRequest {
-	r.transform = &transform
+func (r ApiUpdateTransformRequest) TransformUpdate(transformUpdate TransformUpdate) ApiUpdateTransformRequest {
+	r.transformUpdate = &transformUpdate
 	return r
 }
 
-func (r ApiUpdateTransformRequest) Execute() (*Transform, *http.Response, error) {
+func (r ApiUpdateTransformRequest) Execute() (*TransformRead, *http.Response, error) {
 	return r.ApiService.UpdateTransformExecute(r)
 }
 
@@ -777,13 +777,13 @@ func (a *TransformsApiService) UpdateTransform(ctx context.Context, id string) A
 }
 
 // Execute executes the request
-//  @return Transform
-func (a *TransformsApiService) UpdateTransformExecute(r ApiUpdateTransformRequest) (*Transform, *http.Response, error) {
+//  @return TransformRead
+func (a *TransformsApiService) UpdateTransformExecute(r ApiUpdateTransformRequest) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Transform
+		localVarReturnValue  *TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.UpdateTransform")
@@ -816,7 +816,7 @@ func (a *TransformsApiService) UpdateTransformExecute(r ApiUpdateTransformReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.transform
+	localVarPostBody = r.transformUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

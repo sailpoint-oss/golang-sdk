@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
+**Source** | Pointer to [**Reference1**](Reference1.md) |  | [optional] 
 **Entitlements** | Pointer to [**[]BaseEntitlement**](BaseEntitlement.md) |  | [optional] 
 **EntitlementCount** | Pointer to **int32** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *AccessProfileDocumentAllOf) GetSource() Reference`
+`func (o *AccessProfileDocumentAllOf) GetSource() Reference1`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *AccessProfileDocumentAllOf) GetSourceOk() (*Reference, bool)`
+`func (o *AccessProfileDocumentAllOf) GetSourceOk() (*Reference1, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *AccessProfileDocumentAllOf) SetSource(v Reference)`
+`func (o *AccessProfileDocumentAllOf) SetSource(v Reference1)`
 
 SetSource sets Source field to given value.
 

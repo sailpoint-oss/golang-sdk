@@ -26,7 +26,7 @@ type EntitlementDocumentAllOf struct {
 	Synced NullableTime `json:"synced,omitempty"`
 	// The display name of the entitlement
 	DisplayName *string `json:"displayName,omitempty"`
-	Source *Reference `json:"source,omitempty"`
+	Source *Reference1 `json:"source,omitempty"`
 	Privileged *bool `json:"privileged,omitempty"`
 	IdentityCount *int32 `json:"identityCount,omitempty"`
 	Tags []string `json:"tags,omitempty"`
@@ -169,9 +169,9 @@ func (o *EntitlementDocumentAllOf) SetDisplayName(v string) {
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *EntitlementDocumentAllOf) GetSource() Reference {
+func (o *EntitlementDocumentAllOf) GetSource() Reference1 {
 	if o == nil || isNil(o.Source) {
-		var ret Reference
+		var ret Reference1
 		return ret
 	}
 	return *o.Source
@@ -179,7 +179,7 @@ func (o *EntitlementDocumentAllOf) GetSource() Reference {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementDocumentAllOf) GetSourceOk() (*Reference, bool) {
+func (o *EntitlementDocumentAllOf) GetSourceOk() (*Reference1, bool) {
 	if o == nil || isNil(o.Source) {
 		return nil, false
 	}
@@ -195,8 +195,8 @@ func (o *EntitlementDocumentAllOf) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given Reference and assigns it to the Source field.
-func (o *EntitlementDocumentAllOf) SetSource(v Reference) {
+// SetSource gets a reference to the given Reference1 and assigns it to the Source field.
+func (o *EntitlementDocumentAllOf) SetSource(v Reference1) {
 	o.Source = &v
 }
 

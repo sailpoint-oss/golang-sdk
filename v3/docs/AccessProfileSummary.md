@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
+**Source** | Pointer to [**Reference1**](Reference1.md) |  | [optional] 
 **Owner** | Pointer to [**DisplayReference**](DisplayReference.md) |  | [optional] 
 **Revocable** | Pointer to **bool** |  | [optional] 
 
@@ -169,20 +169,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetSource
 
-`func (o *AccessProfileSummary) GetSource() Reference`
+`func (o *AccessProfileSummary) GetSource() Reference1`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *AccessProfileSummary) GetSourceOk() (*Reference, bool)`
+`func (o *AccessProfileSummary) GetSourceOk() (*Reference1, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *AccessProfileSummary) SetSource(v Reference)`
+`func (o *AccessProfileSummary) SetSource(v Reference1)`
 
 SetSource sets Source field to given value.
 

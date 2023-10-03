@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessProfiles** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
+**AccessProfiles** | Pointer to [**[]Reference1**](Reference1.md) |  | [optional] 
 **AccessProfileCount** | Pointer to **int32** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAccessProfiles
 
-`func (o *RoleDocumentAllOf) GetAccessProfiles() []Reference`
+`func (o *RoleDocumentAllOf) GetAccessProfiles() []Reference1`
 
 GetAccessProfiles returns the AccessProfiles field if non-nil, zero value otherwise.
 
 ### GetAccessProfilesOk
 
-`func (o *RoleDocumentAllOf) GetAccessProfilesOk() (*[]Reference, bool)`
+`func (o *RoleDocumentAllOf) GetAccessProfilesOk() (*[]Reference1, bool)`
 
 GetAccessProfilesOk returns a tuple with the AccessProfiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessProfiles
 
-`func (o *RoleDocumentAllOf) SetAccessProfiles(v []Reference)`
+`func (o *RoleDocumentAllOf) SetAccessProfiles(v []Reference1)`
 
 SetAccessProfiles sets AccessProfiles field to given value.
 

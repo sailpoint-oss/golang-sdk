@@ -19,7 +19,7 @@ var _ MappedNullable = &EntitlementSummaryAllOf{}
 
 // EntitlementSummaryAllOf struct for EntitlementSummaryAllOf
 type EntitlementSummaryAllOf struct {
-	Source *Reference `json:"source,omitempty"`
+	Source *Reference1 `json:"source,omitempty"`
 	Privileged *bool `json:"privileged,omitempty"`
 	Attribute *string `json:"attribute,omitempty"`
 	Value *string `json:"value,omitempty"`
@@ -47,9 +47,9 @@ func NewEntitlementSummaryAllOfWithDefaults() *EntitlementSummaryAllOf {
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *EntitlementSummaryAllOf) GetSource() Reference {
+func (o *EntitlementSummaryAllOf) GetSource() Reference1 {
 	if o == nil || isNil(o.Source) {
-		var ret Reference
+		var ret Reference1
 		return ret
 	}
 	return *o.Source
@@ -57,7 +57,7 @@ func (o *EntitlementSummaryAllOf) GetSource() Reference {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementSummaryAllOf) GetSourceOk() (*Reference, bool) {
+func (o *EntitlementSummaryAllOf) GetSourceOk() (*Reference1, bool) {
 	if o == nil || isNil(o.Source) {
 		return nil, false
 	}
@@ -73,8 +73,8 @@ func (o *EntitlementSummaryAllOf) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given Reference and assigns it to the Source field.
-func (o *EntitlementSummaryAllOf) SetSource(v Reference) {
+// SetSource gets a reference to the given Reference1 and assigns it to the Source field.
+func (o *EntitlementSummaryAllOf) SetSource(v Reference1) {
 	o.Source = &v
 }
 

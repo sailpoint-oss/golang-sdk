@@ -20,7 +20,9 @@ var _ MappedNullable = &TransformReadAllOf{}
 // TransformReadAllOf struct for TransformReadAllOf
 type TransformReadAllOf struct {
 	// Unique ID of this transform
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
+	// Indicates whether this is an internal SailPoint-created transform or a customer-created transform
+	Internal *bool `json:"internal,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -30,8 +32,11 @@ type _TransformReadAllOf TransformReadAllOf
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransformReadAllOf() *TransformReadAllOf {
+func NewTransformReadAllOf(id string) *TransformReadAllOf {
 	this := TransformReadAllOf{}
+	this.Id = id
+	var internal bool = false
+	this.Internal = &internal
 	return &this
 }
 
@@ -40,39 +45,65 @@ func NewTransformReadAllOf() *TransformReadAllOf {
 // but it doesn't guarantee that properties required by API are set
 func NewTransformReadAllOfWithDefaults() *TransformReadAllOf {
 	this := TransformReadAllOf{}
+	var internal bool = false
+	this.Internal = &internal
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *TransformReadAllOf) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *TransformReadAllOf) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *TransformReadAllOf) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+// SetId sets field value
+func (o *TransformReadAllOf) SetId(v string) {
+	o.Id = v
+}
+
+// GetInternal returns the Internal field value if set, zero value otherwise.
+func (o *TransformReadAllOf) GetInternal() bool {
+	if o == nil || isNil(o.Internal) {
+		var ret bool
+		return ret
+	}
+	return *o.Internal
+}
+
+// GetInternalOk returns a tuple with the Internal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TransformReadAllOf) GetInternalOk() (*bool, bool) {
+	if o == nil || isNil(o.Internal) {
+		return nil, false
+	}
+	return o.Internal, true
+}
+
+// HasInternal returns a boolean if a field has been set.
+func (o *TransformReadAllOf) HasInternal() bool {
+	if o != nil && !isNil(o.Internal) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *TransformReadAllOf) SetId(v string) {
-	o.Id = &v
+// SetInternal gets a reference to the given bool and assigns it to the Internal field.
+func (o *TransformReadAllOf) SetInternal(v bool) {
+	o.Internal = &v
 }
 
 func (o TransformReadAllOf) MarshalJSON() ([]byte, error) {
@@ -85,8 +116,9 @@ func (o TransformReadAllOf) MarshalJSON() ([]byte, error) {
 
 func (o TransformReadAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	toSerialize["id"] = o.Id
+	if !isNil(o.Internal) {
+		toSerialize["internal"] = o.Internal
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -107,6 +139,7 @@ func (o *TransformReadAllOf) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "internal")
 		o.AdditionalProperties = additionalProperties
 	}
 

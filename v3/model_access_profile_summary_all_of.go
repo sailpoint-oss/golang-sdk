@@ -19,7 +19,7 @@ var _ MappedNullable = &AccessProfileSummaryAllOf{}
 
 // AccessProfileSummaryAllOf struct for AccessProfileSummaryAllOf
 type AccessProfileSummaryAllOf struct {
-	Source *Reference `json:"source,omitempty"`
+	Source *Reference1 `json:"source,omitempty"`
 	Owner *DisplayReference `json:"owner,omitempty"`
 	Revocable *bool `json:"revocable,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,9 +45,9 @@ func NewAccessProfileSummaryAllOfWithDefaults() *AccessProfileSummaryAllOf {
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *AccessProfileSummaryAllOf) GetSource() Reference {
+func (o *AccessProfileSummaryAllOf) GetSource() Reference1 {
 	if o == nil || isNil(o.Source) {
-		var ret Reference
+		var ret Reference1
 		return ret
 	}
 	return *o.Source
@@ -55,7 +55,7 @@ func (o *AccessProfileSummaryAllOf) GetSource() Reference {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessProfileSummaryAllOf) GetSourceOk() (*Reference, bool) {
+func (o *AccessProfileSummaryAllOf) GetSourceOk() (*Reference1, bool) {
 	if o == nil || isNil(o.Source) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *AccessProfileSummaryAllOf) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given Reference and assigns it to the Source field.
-func (o *AccessProfileSummaryAllOf) SetSource(v Reference) {
+// SetSource gets a reference to the given Reference1 and assigns it to the Source field.
+func (o *AccessProfileSummaryAllOf) SetSource(v Reference1) {
 	o.Source = &v
 }
 

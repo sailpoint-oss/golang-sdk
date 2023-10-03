@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateTransform
 
-> Transform CreateTransform(ctx).Transform(transform).Execute()
+> TransformRead CreateTransform(ctx).Transform(transform).Execute()
 
 Create transform
 
@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    transform := *openapiclient.NewTransform("Timestamp To Date", "concat", map[string]interface{}({inputFormat=MMM dd yyyy, HH:mm:ss.SSS, outputFormat=yyyy/dd/MM})) // Transform | The transform to be created.
+    transform := *openapiclient.NewTransform(openapiclient.TransformUpdate_attributes{AccountAttribute: openapiclient.NewAccountAttribute("Workday", "DEPARTMENT")}, "Timestamp To Date", "dateFormat") // Transform | The transform to be created.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.CreateTransform``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateTransform`: Transform
+    // response from `CreateTransform`: TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsApi.CreateTransform`: %v\n", resp)
 }
 ```
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transform**](Transform.md)
+[**TransformRead**](TransformRead.md)
 
 ### Authorization
 
@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-    id := "2c9180835d2e5168015d32f890ca1581" // string | ID of the transform to delete
+    id := "2cd78adghjkja34jh2b1hkjhasuecd" // string | ID of the transform to delete
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ## GetTransform
 
-> Transform GetTransform(ctx, id).Execute()
+> TransformRead GetTransform(ctx, id).Execute()
 
 Transform by ID
 
@@ -167,7 +167,7 @@ import (
 )
 
 func main() {
-    id := "2c9180835d2e5168015d32f890ca1581" // string | ID of the transform to retrieve
+    id := "2cd78adghjkja34jh2b1hkjhasuecd" // string | ID of the transform to retrieve
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -176,7 +176,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.GetTransform``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTransform`: Transform
+    // response from `GetTransform`: TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsApi.GetTransform`: %v\n", resp)
 }
 ```
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transform**](Transform.md)
+[**TransformRead**](TransformRead.md)
 
 ### Authorization
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ## ListTransforms
 
-> []Transform ListTransforms(ctx).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
+> []TransformRead ListTransforms(ctx).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
 
 List transforms
 
@@ -241,7 +241,7 @@ func main() {
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     name := "ExampleTransformName123" // string | Name of the transform to retrieve from the list. (optional)
-    filters := "name eq ExampleTransformName123" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **internal**: *eq* **name**: *eq*, *sw* (optional)
+    filters := "name eq "Uppercase"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **internal**: *eq* **name**: *eq*, *sw* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -250,7 +250,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.ListTransforms``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListTransforms`: []Transform
+    // response from `ListTransforms`: []TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsApi.ListTransforms`: %v\n", resp)
 }
 ```
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Transform**](Transform.md)
+[**[]TransformRead**](TransformRead.md)
 
 ### Authorization
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## UpdateTransform
 
-> Transform UpdateTransform(ctx, id).Transform(transform).Execute()
+> TransformRead UpdateTransform(ctx, id).TransformUpdate(transformUpdate).Execute()
 
 Update a transform
 
@@ -311,17 +311,17 @@ import (
 )
 
 func main() {
-    id := "2c9180835d2e5168015d32f890ca1581" // string | ID of the transform to update
-    transform := *openapiclient.NewTransform("Timestamp To Date", "concat", map[string]interface{}({inputFormat=MMM dd yyyy, HH:mm:ss.SSS, outputFormat=yyyy/dd/MM})) // Transform | The updated transform object (must include \"name\", \"type\", and \"attributes\" fields). (optional)
+    id := "2cd78adghjkja34jh2b1hkjhasuecd" // string | ID of the transform to update
+    transformUpdate := *openapiclient.NewTransformUpdate(openapiclient.TransformUpdate_attributes{AccountAttribute: openapiclient.NewAccountAttribute("Workday", "DEPARTMENT")}) // TransformUpdate | The updated transform object (must include \"name\", \"type\", and \"attributes\" fields). (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransformsApi.UpdateTransform(context.Background(), id).Transform(transform).Execute()
+    resp, r, err := apiClient.TransformsApi.UpdateTransform(context.Background(), id).TransformUpdate(transformUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.UpdateTransform``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateTransform`: Transform
+    // response from `UpdateTransform`: TransformRead
     fmt.Fprintf(os.Stdout, "Response from `TransformsApi.UpdateTransform`: %v\n", resp)
 }
 ```
@@ -342,11 +342,11 @@ Other parameters are passed through a pointer to a apiUpdateTransformRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **transform** | [**Transform**](Transform.md) | The updated transform object (must include \&quot;name\&quot;, \&quot;type\&quot;, and \&quot;attributes\&quot; fields). | 
+ **transformUpdate** | [**TransformUpdate**](TransformUpdate.md) | The updated transform object (must include \&quot;name\&quot;, \&quot;type\&quot;, and \&quot;attributes\&quot; fields). | 
 
 ### Return type
 
-[**Transform**](Transform.md)
+[**TransformRead**](TransformRead.md)
 
 ### Authorization
 

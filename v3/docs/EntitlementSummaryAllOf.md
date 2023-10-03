@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
+**Source** | Pointer to [**Reference1**](Reference1.md) |  | [optional] 
 **Privileged** | Pointer to **bool** |  | [optional] 
 **Attribute** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSource
 
-`func (o *EntitlementSummaryAllOf) GetSource() Reference`
+`func (o *EntitlementSummaryAllOf) GetSource() Reference1`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *EntitlementSummaryAllOf) GetSourceOk() (*Reference, bool)`
+`func (o *EntitlementSummaryAllOf) GetSourceOk() (*Reference1, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *EntitlementSummaryAllOf) SetSource(v Reference)`
+`func (o *EntitlementSummaryAllOf) SetSource(v Reference1)`
 
 SetSource sets Source field to given value.
 

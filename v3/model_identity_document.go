@@ -50,8 +50,8 @@ type IdentityDocument struct {
 	Manager *DisplayReference `json:"manager,omitempty"`
 	// Indicates if this identity is a manager of other identities
 	IsManager *bool `json:"isManager,omitempty"`
-	IdentityProfile *Reference `json:"identityProfile,omitempty"`
-	Source *Reference `json:"source,omitempty"`
+	IdentityProfile *Reference1 `json:"identityProfile,omitempty"`
+	Source *Reference1 `json:"source,omitempty"`
 	// a map or dictionary of key/value pairs
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	ProcessingState NullableString `json:"processingState,omitempty"`
@@ -652,9 +652,9 @@ func (o *IdentityDocument) SetIsManager(v bool) {
 }
 
 // GetIdentityProfile returns the IdentityProfile field value if set, zero value otherwise.
-func (o *IdentityDocument) GetIdentityProfile() Reference {
+func (o *IdentityDocument) GetIdentityProfile() Reference1 {
 	if o == nil || isNil(o.IdentityProfile) {
-		var ret Reference
+		var ret Reference1
 		return ret
 	}
 	return *o.IdentityProfile
@@ -662,7 +662,7 @@ func (o *IdentityDocument) GetIdentityProfile() Reference {
 
 // GetIdentityProfileOk returns a tuple with the IdentityProfile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityDocument) GetIdentityProfileOk() (*Reference, bool) {
+func (o *IdentityDocument) GetIdentityProfileOk() (*Reference1, bool) {
 	if o == nil || isNil(o.IdentityProfile) {
 		return nil, false
 	}
@@ -678,15 +678,15 @@ func (o *IdentityDocument) HasIdentityProfile() bool {
 	return false
 }
 
-// SetIdentityProfile gets a reference to the given Reference and assigns it to the IdentityProfile field.
-func (o *IdentityDocument) SetIdentityProfile(v Reference) {
+// SetIdentityProfile gets a reference to the given Reference1 and assigns it to the IdentityProfile field.
+func (o *IdentityDocument) SetIdentityProfile(v Reference1) {
 	o.IdentityProfile = &v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *IdentityDocument) GetSource() Reference {
+func (o *IdentityDocument) GetSource() Reference1 {
 	if o == nil || isNil(o.Source) {
-		var ret Reference
+		var ret Reference1
 		return ret
 	}
 	return *o.Source
@@ -694,7 +694,7 @@ func (o *IdentityDocument) GetSource() Reference {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityDocument) GetSourceOk() (*Reference, bool) {
+func (o *IdentityDocument) GetSourceOk() (*Reference1, bool) {
 	if o == nil || isNil(o.Source) {
 		return nil, false
 	}
@@ -710,8 +710,8 @@ func (o *IdentityDocument) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given Reference and assigns it to the Source field.
-func (o *IdentityDocument) SetSource(v Reference) {
+// SetSource gets a reference to the given Reference1 and assigns it to the Source field.
+func (o *IdentityDocument) SetSource(v Reference1) {
 	o.Source = &v
 }
 

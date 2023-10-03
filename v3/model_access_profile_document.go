@@ -39,7 +39,7 @@ type AccessProfileDocument struct {
 	// Indicates if comments are required when requesting access
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
 	Owner *Owner `json:"owner,omitempty"`
-	Source *Reference `json:"source,omitempty"`
+	Source *Reference1 `json:"source,omitempty"`
 	Entitlements []BaseEntitlement `json:"entitlements,omitempty"`
 	EntitlementCount *int32 `json:"entitlementCount,omitempty"`
 	Tags []string `json:"tags,omitempty"`
@@ -427,9 +427,9 @@ func (o *AccessProfileDocument) SetOwner(v Owner) {
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *AccessProfileDocument) GetSource() Reference {
+func (o *AccessProfileDocument) GetSource() Reference1 {
 	if o == nil || isNil(o.Source) {
-		var ret Reference
+		var ret Reference1
 		return ret
 	}
 	return *o.Source
@@ -437,7 +437,7 @@ func (o *AccessProfileDocument) GetSource() Reference {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessProfileDocument) GetSourceOk() (*Reference, bool) {
+func (o *AccessProfileDocument) GetSourceOk() (*Reference1, bool) {
 	if o == nil || isNil(o.Source) {
 		return nil, false
 	}
@@ -453,8 +453,8 @@ func (o *AccessProfileDocument) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given Reference and assigns it to the Source field.
-func (o *AccessProfileDocument) SetSource(v Reference) {
+// SetSource gets a reference to the given Reference1 and assigns it to the Source field.
+func (o *AccessProfileDocument) SetSource(v Reference1) {
 	o.Source = &v
 }
 

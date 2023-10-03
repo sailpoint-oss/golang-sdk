@@ -35,15 +35,14 @@ func (r ApiCreateTransformRequest) Transform(transform Transform) ApiCreateTrans
 	return r
 }
 
-func (r ApiCreateTransformRequest) Execute() (*Transform, *http.Response, error) {
+func (r ApiCreateTransformRequest) Execute() (*TransformRead, *http.Response, error) {
 	return r.ApiService.CreateTransformExecute(r)
 }
 
 /*
 CreateTransform Create transform
 
-Creates a new transform object. Request body must include name, type, and attributes.
-A token with transform write authority is required to call this API.
+Creates a new transform object immediately. By default, the internal flag is set to false to indicate that this is a custom transform. Only SailPoint employees have the ability to create a transform with internal set to true. Newly created Transforms can be used in the Identity Profile mappings within the UI. A token with transform write authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateTransformRequest
@@ -56,13 +55,13 @@ func (a *TransformsApiService) CreateTransform(ctx context.Context) ApiCreateTra
 }
 
 // Execute executes the request
-//  @return Transform
-func (a *TransformsApiService) CreateTransformExecute(r ApiCreateTransformRequest) (*Transform, *http.Response, error) {
+//  @return TransformRead
+func (a *TransformsApiService) CreateTransformExecute(r ApiCreateTransformRequest) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Transform
+		localVarReturnValue  *TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.CreateTransform")
@@ -153,6 +152,17 @@ func (a *TransformsApiService) CreateTransformExecute(r ApiCreateTransformReques
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -202,7 +212,7 @@ func (r ApiDeleteTransformRequest) Execute() (*http.Response, error) {
 /*
 DeleteTransform Delete a transform
 
-Deletes the transform specified by the given ID.
+Deletes the transform specified by the given ID. Attempting to delete a transform that is used in one or more Identity Profile mappings will result in an error. If this occurs, you must first remove the transform from all mappings before deleting the transform.
 A token with transform delete authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -353,7 +363,7 @@ type ApiGetTransformRequest struct {
 	id string
 }
 
-func (r ApiGetTransformRequest) Execute() (*Transform, *http.Response, error) {
+func (r ApiGetTransformRequest) Execute() (*TransformRead, *http.Response, error) {
 	return r.ApiService.GetTransformExecute(r)
 }
 
@@ -376,13 +386,13 @@ func (a *TransformsApiService) GetTransform(ctx context.Context, id string) ApiG
 }
 
 // Execute executes the request
-//  @return Transform
-func (a *TransformsApiService) GetTransformExecute(r ApiGetTransformRequest) (*Transform, *http.Response, error) {
+//  @return TransformRead
+func (a *TransformsApiService) GetTransformExecute(r ApiGetTransformRequest) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Transform
+		localVarReturnValue  *TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.GetTransform")
@@ -556,7 +566,7 @@ func (r ApiListTransformsRequest) Filters(filters string) ApiListTransformsReque
 	return r
 }
 
-func (r ApiListTransformsRequest) Execute() ([]Transform, *http.Response, error) {
+func (r ApiListTransformsRequest) Execute() ([]TransformRead, *http.Response, error) {
 	return r.ApiService.ListTransformsExecute(r)
 }
 
@@ -577,13 +587,13 @@ func (a *TransformsApiService) ListTransforms(ctx context.Context) ApiListTransf
 }
 
 // Execute executes the request
-//  @return []Transform
-func (a *TransformsApiService) ListTransformsExecute(r ApiListTransformsRequest) ([]Transform, *http.Response, error) {
+//  @return []TransformRead
+func (a *TransformsApiService) ListTransformsExecute(r ApiListTransformsRequest) ([]TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Transform
+		localVarReturnValue  []TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.ListTransforms")
@@ -684,6 +694,17 @@ func (a *TransformsApiService) ListTransformsExecute(r ApiListTransformsRequest)
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -724,23 +745,23 @@ type ApiUpdateTransformRequest struct {
 	ctx context.Context
 	ApiService *TransformsApiService
 	id string
-	transform *Transform
+	transformUpdate *TransformUpdate
 }
 
 // The updated transform object (must include \&quot;name\&quot;, \&quot;type\&quot;, and \&quot;attributes\&quot; fields).
-func (r ApiUpdateTransformRequest) Transform(transform Transform) ApiUpdateTransformRequest {
-	r.transform = &transform
+func (r ApiUpdateTransformRequest) TransformUpdate(transformUpdate TransformUpdate) ApiUpdateTransformRequest {
+	r.transformUpdate = &transformUpdate
 	return r
 }
 
-func (r ApiUpdateTransformRequest) Execute() (*Transform, *http.Response, error) {
+func (r ApiUpdateTransformRequest) Execute() (*TransformRead, *http.Response, error) {
 	return r.ApiService.UpdateTransformExecute(r)
 }
 
 /*
 UpdateTransform Update a transform
 
-Replaces the transform specified by the given ID with the transform provided in the request body. Only the "attributes" field is mutable. Attempting to change other attributes will result in an error.
+Replaces the transform specified by the given ID with the transform provided in the request body. Only the "attributes" field is mutable. Attempting to change other properties (ex. "name" and "type") will result in an error.
 A token with transform write authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -756,13 +777,13 @@ func (a *TransformsApiService) UpdateTransform(ctx context.Context, id string) A
 }
 
 // Execute executes the request
-//  @return Transform
-func (a *TransformsApiService) UpdateTransformExecute(r ApiUpdateTransformRequest) (*Transform, *http.Response, error) {
+//  @return TransformRead
+func (a *TransformsApiService) UpdateTransformExecute(r ApiUpdateTransformRequest) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Transform
+		localVarReturnValue  *TransformRead
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.UpdateTransform")
@@ -795,7 +816,7 @@ func (a *TransformsApiService) UpdateTransformExecute(r ApiUpdateTransformReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.transform
+	localVarPostBody = r.transformUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

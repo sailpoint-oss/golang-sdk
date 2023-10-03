@@ -17,16 +17,13 @@ import (
 // checks if the Transform type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Transform{}
 
-// Transform The representation of an internally- or customer-defined transform.
+// Transform struct for Transform
 type Transform struct {
+	Attributes TransformUpdateAttributes `json:"attributes"`
 	// Unique name of this transform
 	Name string `json:"name"`
 	// The type of transform operation
 	Type string `json:"type"`
-	// Meta-data about the transform. Values in this list are specific to the type of transform to be executed.
-	Attributes map[string]interface{} `json:"attributes"`
-	// Indicates whether this is an internal SailPoint-created transform or a customer-created transform
-	Internal *bool `json:"internal,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,11 +33,11 @@ type _Transform Transform
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransform(name string, type_ string, attributes map[string]interface{}) *Transform {
+func NewTransform(attributes TransformUpdateAttributes, name string, type_ string) *Transform {
 	this := Transform{}
+	this.Attributes = attributes
 	this.Name = name
 	this.Type = type_
-	this.Attributes = attributes
 	return &this
 }
 
@@ -50,6 +47,30 @@ func NewTransform(name string, type_ string, attributes map[string]interface{}) 
 func NewTransformWithDefaults() *Transform {
 	this := Transform{}
 	return &this
+}
+
+// GetAttributes returns the Attributes field value
+func (o *Transform) GetAttributes() TransformUpdateAttributes {
+	if o == nil {
+		var ret TransformUpdateAttributes
+		return ret
+	}
+
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value
+// and a boolean to check if the value has been set.
+func (o *Transform) GetAttributesOk() (*TransformUpdateAttributes, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Attributes, true
+}
+
+// SetAttributes sets field value
+func (o *Transform) SetAttributes(v TransformUpdateAttributes) {
+	o.Attributes = v
 }
 
 // GetName returns the Name field value
@@ -100,62 +121,6 @@ func (o *Transform) SetType(v string) {
 	o.Type = v
 }
 
-// GetAttributes returns the Attributes field value
-func (o *Transform) GetAttributes() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
-		return ret
-	}
-
-	return o.Attributes
-}
-
-// GetAttributesOk returns a tuple with the Attributes field value
-// and a boolean to check if the value has been set.
-func (o *Transform) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
-	}
-	return o.Attributes, true
-}
-
-// SetAttributes sets field value
-func (o *Transform) SetAttributes(v map[string]interface{}) {
-	o.Attributes = v
-}
-
-// GetInternal returns the Internal field value if set, zero value otherwise.
-func (o *Transform) GetInternal() bool {
-	if o == nil || isNil(o.Internal) {
-		var ret bool
-		return ret
-	}
-	return *o.Internal
-}
-
-// GetInternalOk returns a tuple with the Internal field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Transform) GetInternalOk() (*bool, bool) {
-	if o == nil || isNil(o.Internal) {
-		return nil, false
-	}
-	return o.Internal, true
-}
-
-// HasInternal returns a boolean if a field has been set.
-func (o *Transform) HasInternal() bool {
-	if o != nil && !isNil(o.Internal) {
-		return true
-	}
-
-	return false
-}
-
-// SetInternal gets a reference to the given bool and assigns it to the Internal field.
-func (o *Transform) SetInternal(v bool) {
-	o.Internal = &v
-}
-
 func (o Transform) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -166,10 +131,9 @@ func (o Transform) MarshalJSON() ([]byte, error) {
 
 func (o Transform) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["attributes"] = o.Attributes
 	toSerialize["name"] = o.Name
 	toSerialize["type"] = o.Type
-	toSerialize["attributes"] = o.Attributes
-	// skip: internal is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -188,10 +152,9 @@ func (o *Transform) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "attributes")
-		delete(additionalProperties, "internal")
 		o.AdditionalProperties = additionalProperties
 	}
 
