@@ -19,15 +19,16 @@ var _ MappedNullable = &TransformRead{}
 
 // TransformRead struct for TransformRead
 type TransformRead struct {
-	Attributes TransformUpdateAttributes `json:"attributes"`
 	// Unique name of this transform
 	Name string `json:"name"`
 	// The type of transform operation
 	Type string `json:"type"`
+	// Meta-data about the transform. Values in this list are specific to the type of transform to be executed.
+	Attributes map[string]interface{} `json:"attributes"`
 	// Unique ID of this transform
 	Id string `json:"id"`
 	// Indicates whether this is an internal SailPoint-created transform or a customer-created transform
-	Internal *bool `json:"internal,omitempty"`
+	Internal bool `json:"internal"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -37,14 +38,13 @@ type _TransformRead TransformRead
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransformRead(attributes TransformUpdateAttributes, name string, type_ string, id string) *TransformRead {
+func NewTransformRead(name string, type_ string, attributes map[string]interface{}, id string, internal bool) *TransformRead {
 	this := TransformRead{}
-	this.Attributes = attributes
 	this.Name = name
 	this.Type = type_
+	this.Attributes = attributes
 	this.Id = id
-	var internal bool = false
-	this.Internal = &internal
+	this.Internal = internal
 	return &this
 }
 
@@ -54,32 +54,8 @@ func NewTransformRead(attributes TransformUpdateAttributes, name string, type_ s
 func NewTransformReadWithDefaults() *TransformRead {
 	this := TransformRead{}
 	var internal bool = false
-	this.Internal = &internal
+	this.Internal = internal
 	return &this
-}
-
-// GetAttributes returns the Attributes field value
-func (o *TransformRead) GetAttributes() TransformUpdateAttributes {
-	if o == nil {
-		var ret TransformUpdateAttributes
-		return ret
-	}
-
-	return o.Attributes
-}
-
-// GetAttributesOk returns a tuple with the Attributes field value
-// and a boolean to check if the value has been set.
-func (o *TransformRead) GetAttributesOk() (*TransformUpdateAttributes, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Attributes, true
-}
-
-// SetAttributes sets field value
-func (o *TransformRead) SetAttributes(v TransformUpdateAttributes) {
-	o.Attributes = v
 }
 
 // GetName returns the Name field value
@@ -130,6 +106,30 @@ func (o *TransformRead) SetType(v string) {
 	o.Type = v
 }
 
+// GetAttributes returns the Attributes field value
+func (o *TransformRead) GetAttributes() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+
+	return o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value
+// and a boolean to check if the value has been set.
+func (o *TransformRead) GetAttributesOk() (map[string]interface{}, bool) {
+	if o == nil {
+		return map[string]interface{}{}, false
+	}
+	return o.Attributes, true
+}
+
+// SetAttributes sets field value
+func (o *TransformRead) SetAttributes(v map[string]interface{}) {
+	o.Attributes = v
+}
+
 // GetId returns the Id field value
 func (o *TransformRead) GetId() string {
 	if o == nil {
@@ -154,36 +154,28 @@ func (o *TransformRead) SetId(v string) {
 	o.Id = v
 }
 
-// GetInternal returns the Internal field value if set, zero value otherwise.
+// GetInternal returns the Internal field value
 func (o *TransformRead) GetInternal() bool {
-	if o == nil || isNil(o.Internal) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Internal
+
+	return o.Internal
 }
 
-// GetInternalOk returns a tuple with the Internal field value if set, nil otherwise
+// GetInternalOk returns a tuple with the Internal field value
 // and a boolean to check if the value has been set.
 func (o *TransformRead) GetInternalOk() (*bool, bool) {
-	if o == nil || isNil(o.Internal) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Internal, true
+	return &o.Internal, true
 }
 
-// HasInternal returns a boolean if a field has been set.
-func (o *TransformRead) HasInternal() bool {
-	if o != nil && !isNil(o.Internal) {
-		return true
-	}
-
-	return false
-}
-
-// SetInternal gets a reference to the given bool and assigns it to the Internal field.
+// SetInternal sets field value
 func (o *TransformRead) SetInternal(v bool) {
-	o.Internal = &v
+	o.Internal = v
 }
 
 func (o TransformRead) MarshalJSON() ([]byte, error) {
@@ -196,13 +188,11 @@ func (o TransformRead) MarshalJSON() ([]byte, error) {
 
 func (o TransformRead) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["attributes"] = o.Attributes
 	toSerialize["name"] = o.Name
 	toSerialize["type"] = o.Type
+	toSerialize["attributes"] = o.Attributes
 	toSerialize["id"] = o.Id
-	if !isNil(o.Internal) {
-		toSerialize["internal"] = o.Internal
-	}
+	toSerialize["internal"] = o.Internal
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -221,9 +211,9 @@ func (o *TransformRead) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "internal")
 		o.AdditionalProperties = additionalProperties

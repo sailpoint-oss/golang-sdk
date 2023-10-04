@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Unique ID of this transform | 
-**Internal** | Pointer to **bool** | Indicates whether this is an internal SailPoint-created transform or a customer-created transform | [optional] [default to false]
+**Internal** | **bool** | Indicates whether this is an internal SailPoint-created transform or a customer-created transform | [default to false]
 
 ## Methods
 
 ### NewTransformReadAllOf
 
-`func NewTransformReadAllOf(id string, ) *TransformReadAllOf`
+`func NewTransformReadAllOf(id string, internal bool, ) *TransformReadAllOf`
 
 NewTransformReadAllOf instantiates a new TransformReadAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -65,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetInternal sets Internal field to given value.
 
-### HasInternal
-
-`func (o *TransformReadAllOf) HasInternal() bool`
-
-HasInternal returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

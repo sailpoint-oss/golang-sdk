@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Requestable** | Pointer to **bool** | Indicates if the access can be requested | [optional] 
 **RequestCommentsRequired** | Pointer to **bool** | Indicates if comments are required when requesting access | [optional] 
 **Owner** | Pointer to [**Owner**](Owner.md) |  | [optional] 
-**Source** | Pointer to [**Reference1**](Reference1.md) |  | [optional] 
+**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
 **Entitlements** | Pointer to [**[]BaseEntitlement**](BaseEntitlement.md) |  | [optional] 
 **EntitlementCount** | Pointer to **int32** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
@@ -331,20 +331,20 @@ HasOwner returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *AccessProfileDocument) GetSource() Reference1`
+`func (o *AccessProfileDocument) GetSource() Reference`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *AccessProfileDocument) GetSourceOk() (*Reference1, bool)`
+`func (o *AccessProfileDocument) GetSourceOk() (*Reference, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *AccessProfileDocument) SetSource(v Reference1)`
+`func (o *AccessProfileDocument) SetSource(v Reference)`
 
 SetSource sets Source field to given value.
 

@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    transform := *openapiclient.NewTransform(openapiclient.TransformUpdate_attributes{AccountAttribute: openapiclient.NewAccountAttribute("Workday", "DEPARTMENT")}, "Timestamp To Date", "dateFormat") // Transform | The transform to be created.
+    transform := *openapiclient.NewTransform("Timestamp To Date", "dateFormat", map[string]interface{}(123)) // Transform | The transform to be created.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## UpdateTransform
 
-> TransformRead UpdateTransform(ctx, id).TransformUpdate(transformUpdate).Execute()
+> TransformRead UpdateTransform(ctx, id).Transform(transform).Execute()
 
 Update a transform
 
@@ -312,11 +312,11 @@ import (
 
 func main() {
     id := "2cd78adghjkja34jh2b1hkjhasuecd" // string | ID of the transform to update
-    transformUpdate := *openapiclient.NewTransformUpdate(openapiclient.TransformUpdate_attributes{AccountAttribute: openapiclient.NewAccountAttribute("Workday", "DEPARTMENT")}) // TransformUpdate | The updated transform object (must include \"name\", \"type\", and \"attributes\" fields). (optional)
+    transform := *openapiclient.NewTransform("Timestamp To Date", "dateFormat", map[string]interface{}(123)) // Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransformsApi.UpdateTransform(context.Background(), id).TransformUpdate(transformUpdate).Execute()
+    resp, r, err := apiClient.TransformsApi.UpdateTransform(context.Background(), id).Transform(transform).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.UpdateTransform``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -342,7 +342,7 @@ Other parameters are passed through a pointer to a apiUpdateTransformRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **transformUpdate** | [**TransformUpdate**](TransformUpdate.md) | The updated transform object (must include \&quot;name\&quot;, \&quot;type\&quot;, and \&quot;attributes\&quot; fields). | 
+ **transform** | [**Transform**](Transform.md) | The updated transform object. Must include \&quot;name\&quot;, \&quot;type\&quot;, and \&quot;attributes\&quot; fields, but \&quot;name\&quot; and \&quot;type\&quot; must not be modified. | 
 
 ### Return type
 

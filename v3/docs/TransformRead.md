@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attributes** | [**TransformUpdateAttributes**](TransformUpdateAttributes.md) |  | 
 **Name** | **string** | Unique name of this transform | 
 **Type** | **string** | The type of transform operation | 
+**Attributes** | **map[string]interface{}** | Meta-data about the transform. Values in this list are specific to the type of transform to be executed. | 
 **Id** | **string** | Unique ID of this transform | 
-**Internal** | Pointer to **bool** | Indicates whether this is an internal SailPoint-created transform or a customer-created transform | [optional] [default to false]
+**Internal** | **bool** | Indicates whether this is an internal SailPoint-created transform or a customer-created transform | [default to false]
 
 ## Methods
 
 ### NewTransformRead
 
-`func NewTransformRead(attributes TransformUpdateAttributes, name string, type_ string, id string, ) *TransformRead`
+`func NewTransformRead(name string, type_ string, attributes map[string]interface{}, id string, internal bool, ) *TransformRead`
 
 NewTransformRead instantiates a new TransformRead object
 This constructor will assign default values to properties that have it defined,
@@ -28,26 +28,6 @@ will change when the set of required properties is changed
 NewTransformReadWithDefaults instantiates a new TransformRead object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAttributes
-
-`func (o *TransformRead) GetAttributes() TransformUpdateAttributes`
-
-GetAttributes returns the Attributes field if non-nil, zero value otherwise.
-
-### GetAttributesOk
-
-`func (o *TransformRead) GetAttributesOk() (*TransformUpdateAttributes, bool)`
-
-GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAttributes
-
-`func (o *TransformRead) SetAttributes(v TransformUpdateAttributes)`
-
-SetAttributes sets Attributes field to given value.
-
 
 ### GetName
 
@@ -89,6 +69,26 @@ and a boolean to check if the value has been set.
 SetType sets Type field to given value.
 
 
+### GetAttributes
+
+`func (o *TransformRead) GetAttributes() map[string]interface{}`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *TransformRead) GetAttributesOk() (*map[string]interface{}, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *TransformRead) SetAttributes(v map[string]interface{})`
+
+SetAttributes sets Attributes field to given value.
+
+
 ### GetId
 
 `func (o *TransformRead) GetId() string`
@@ -128,11 +128,6 @@ and a boolean to check if the value has been set.
 
 SetInternal sets Internal field to given value.
 
-### HasInternal
-
-`func (o *TransformRead) HasInternal() bool`
-
-HasInternal returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

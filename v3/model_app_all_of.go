@@ -19,7 +19,7 @@ var _ MappedNullable = &AppAllOf{}
 
 // AppAllOf struct for AppAllOf
 type AppAllOf struct {
-	Source *Reference1 `json:"source,omitempty"`
+	Source *Reference `json:"source,omitempty"`
 	Account *AppAllOfAccount `json:"account,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,9 +44,9 @@ func NewAppAllOfWithDefaults() *AppAllOf {
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *AppAllOf) GetSource() Reference1 {
+func (o *AppAllOf) GetSource() Reference {
 	if o == nil || isNil(o.Source) {
-		var ret Reference1
+		var ret Reference
 		return ret
 	}
 	return *o.Source
@@ -54,7 +54,7 @@ func (o *AppAllOf) GetSource() Reference1 {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AppAllOf) GetSourceOk() (*Reference1, bool) {
+func (o *AppAllOf) GetSourceOk() (*Reference, bool) {
 	if o == nil || isNil(o.Source) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *AppAllOf) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given Reference1 and assigns it to the Source field.
-func (o *AppAllOf) SetSource(v Reference1) {
+// SetSource gets a reference to the given Reference and assigns it to the Source field.
+func (o *AppAllOf) SetSource(v Reference) {
 	o.Source = &v
 }
 

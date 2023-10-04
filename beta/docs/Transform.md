@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Attributes** | [**TransformUpdateAttributes**](TransformUpdateAttributes.md) |  | 
 **Name** | **string** | Unique name of this transform | 
 **Type** | **string** | The type of transform operation | 
+**Attributes** | **map[string]interface{}** | Meta-data about the transform. Values in this list are specific to the type of transform to be executed. | 
 
 ## Methods
 
 ### NewTransform
 
-`func NewTransform(attributes TransformUpdateAttributes, name string, type_ string, ) *Transform`
+`func NewTransform(name string, type_ string, attributes map[string]interface{}, ) *Transform`
 
 NewTransform instantiates a new Transform object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewTransformWithDefaults instantiates a new Transform object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAttributes
-
-`func (o *Transform) GetAttributes() TransformUpdateAttributes`
-
-GetAttributes returns the Attributes field if non-nil, zero value otherwise.
-
-### GetAttributesOk
-
-`func (o *Transform) GetAttributesOk() (*TransformUpdateAttributes, bool)`
-
-GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAttributes
-
-`func (o *Transform) SetAttributes(v TransformUpdateAttributes)`
-
-SetAttributes sets Attributes field to given value.
-
 
 ### GetName
 
@@ -85,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *Transform) SetType(v string)`
 
 SetType sets Type field to given value.
+
+
+### GetAttributes
+
+`func (o *Transform) GetAttributes() map[string]interface{}`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *Transform) GetAttributesOk() (*map[string]interface{}, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *Transform) SetAttributes(v map[string]interface{})`
+
+SetAttributes sets Attributes field to given value.
 
 
 

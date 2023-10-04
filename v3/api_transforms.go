@@ -745,12 +745,12 @@ type ApiUpdateTransformRequest struct {
 	ctx context.Context
 	ApiService *TransformsApiService
 	id string
-	transformUpdate *TransformUpdate
+	transform *Transform
 }
 
-// The updated transform object (must include \&quot;name\&quot;, \&quot;type\&quot;, and \&quot;attributes\&quot; fields).
-func (r ApiUpdateTransformRequest) TransformUpdate(transformUpdate TransformUpdate) ApiUpdateTransformRequest {
-	r.transformUpdate = &transformUpdate
+// The updated transform object. Must include \&quot;name\&quot;, \&quot;type\&quot;, and \&quot;attributes\&quot; fields, but \&quot;name\&quot; and \&quot;type\&quot; must not be modified.
+func (r ApiUpdateTransformRequest) Transform(transform Transform) ApiUpdateTransformRequest {
+	r.transform = &transform
 	return r
 }
 
@@ -816,7 +816,7 @@ func (a *TransformsApiService) UpdateTransformExecute(r ApiUpdateTransformReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.transformUpdate
+	localVarPostBody = r.transform
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

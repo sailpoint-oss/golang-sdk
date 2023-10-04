@@ -22,7 +22,7 @@ type TransformReadAllOf struct {
 	// Unique ID of this transform
 	Id string `json:"id"`
 	// Indicates whether this is an internal SailPoint-created transform or a customer-created transform
-	Internal *bool `json:"internal,omitempty"`
+	Internal bool `json:"internal"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,11 +32,10 @@ type _TransformReadAllOf TransformReadAllOf
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransformReadAllOf(id string) *TransformReadAllOf {
+func NewTransformReadAllOf(id string, internal bool) *TransformReadAllOf {
 	this := TransformReadAllOf{}
 	this.Id = id
-	var internal bool = false
-	this.Internal = &internal
+	this.Internal = internal
 	return &this
 }
 
@@ -46,7 +45,7 @@ func NewTransformReadAllOf(id string) *TransformReadAllOf {
 func NewTransformReadAllOfWithDefaults() *TransformReadAllOf {
 	this := TransformReadAllOf{}
 	var internal bool = false
-	this.Internal = &internal
+	this.Internal = internal
 	return &this
 }
 
@@ -74,36 +73,28 @@ func (o *TransformReadAllOf) SetId(v string) {
 	o.Id = v
 }
 
-// GetInternal returns the Internal field value if set, zero value otherwise.
+// GetInternal returns the Internal field value
 func (o *TransformReadAllOf) GetInternal() bool {
-	if o == nil || isNil(o.Internal) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Internal
+
+	return o.Internal
 }
 
-// GetInternalOk returns a tuple with the Internal field value if set, nil otherwise
+// GetInternalOk returns a tuple with the Internal field value
 // and a boolean to check if the value has been set.
 func (o *TransformReadAllOf) GetInternalOk() (*bool, bool) {
-	if o == nil || isNil(o.Internal) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Internal, true
+	return &o.Internal, true
 }
 
-// HasInternal returns a boolean if a field has been set.
-func (o *TransformReadAllOf) HasInternal() bool {
-	if o != nil && !isNil(o.Internal) {
-		return true
-	}
-
-	return false
-}
-
-// SetInternal gets a reference to the given bool and assigns it to the Internal field.
+// SetInternal sets field value
 func (o *TransformReadAllOf) SetInternal(v bool) {
-	o.Internal = &v
+	o.Internal = v
 }
 
 func (o TransformReadAllOf) MarshalJSON() ([]byte, error) {
@@ -117,9 +108,7 @@ func (o TransformReadAllOf) MarshalJSON() ([]byte, error) {
 func (o TransformReadAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	if !isNil(o.Internal) {
-		toSerialize["internal"] = o.Internal
-	}
+	toSerialize["internal"] = o.Internal
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value

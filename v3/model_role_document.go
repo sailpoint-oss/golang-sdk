@@ -39,7 +39,7 @@ type RoleDocument struct {
 	// Indicates if comments are required when requesting access
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
 	Owner *Owner `json:"owner,omitempty"`
-	AccessProfiles []Reference1 `json:"accessProfiles,omitempty"`
+	AccessProfiles []Reference `json:"accessProfiles,omitempty"`
 	AccessProfileCount *int32 `json:"accessProfileCount,omitempty"`
 	Tags []string `json:"tags,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -426,9 +426,9 @@ func (o *RoleDocument) SetOwner(v Owner) {
 }
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise.
-func (o *RoleDocument) GetAccessProfiles() []Reference1 {
+func (o *RoleDocument) GetAccessProfiles() []Reference {
 	if o == nil || isNil(o.AccessProfiles) {
-		var ret []Reference1
+		var ret []Reference
 		return ret
 	}
 	return o.AccessProfiles
@@ -436,7 +436,7 @@ func (o *RoleDocument) GetAccessProfiles() []Reference1 {
 
 // GetAccessProfilesOk returns a tuple with the AccessProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleDocument) GetAccessProfilesOk() ([]Reference1, bool) {
+func (o *RoleDocument) GetAccessProfilesOk() ([]Reference, bool) {
 	if o == nil || isNil(o.AccessProfiles) {
 		return nil, false
 	}
@@ -452,8 +452,8 @@ func (o *RoleDocument) HasAccessProfiles() bool {
 	return false
 }
 
-// SetAccessProfiles gets a reference to the given []Reference1 and assigns it to the AccessProfiles field.
-func (o *RoleDocument) SetAccessProfiles(v []Reference1) {
+// SetAccessProfiles gets a reference to the given []Reference and assigns it to the AccessProfiles field.
+func (o *RoleDocument) SetAccessProfiles(v []Reference) {
 	o.AccessProfiles = v
 }
 
