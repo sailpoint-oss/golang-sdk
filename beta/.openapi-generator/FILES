@@ -247,6 +247,8 @@ docs/ConfigurationItemRequest.md
 docs/ConfigurationItemResponse.md
 docs/ConfigurationResponse.md
 docs/ConflictingAccessCriteria.md
+docs/ConnectedObject.md
+docs/ConnectedObjectType.md
 docs/ConnectorDetail.md
 docs/ConnectorRuleCreateRequest.md
 docs/ConnectorRuleCreateRequestSignature.md
@@ -515,7 +517,6 @@ docs/OutlierFeatureSummaryOutlierFeatureDisplayValuesInner.md
 docs/OutlierFeatureTranslation.md
 docs/OutlierSummary.md
 docs/OutliersContributingFeatureAccessItems.md
-docs/Owner.md
 docs/OwnerReference.md
 docs/OwnerReferenceDto.md
 docs/PasswordChangeRequest.md
@@ -807,7 +808,12 @@ docs/WorkflowLibraryTrigger.md
 docs/WorkflowOAuthClient.md
 docs/WorkflowTrigger.md
 docs/WorkflowsApi.md
+docs/WorkgroupBulkDeleteRequest.md
+docs/WorkgroupConnectionDto.md
+docs/WorkgroupDeleteItem.md
 docs/WorkgroupDto.md
+docs/WorkgroupMemberAddItem.md
+docs/WorkgroupMemberDeleteItem.md
 git_push.sh
 go.mod
 go.sum
@@ -987,6 +993,8 @@ model_configuration_item_request.go
 model_configuration_item_response.go
 model_configuration_response.go
 model_conflicting_access_criteria.go
+model_connected_object.go
+model_connected_object_type.go
 model_connector_detail.go
 model_connector_rule_create_request.go
 model_connector_rule_create_request_signature.go
@@ -1231,7 +1239,6 @@ model_outlier_feature_summary_outlier_feature_display_values_inner.go
 model_outlier_feature_translation.go
 model_outlier_summary.go
 model_outliers_contributing_feature_access_items.go
-model_owner.go
 model_owner_reference.go
 model_owner_reference_dto.go
 model_password_change_request.go
@@ -1499,7 +1506,12 @@ model_workflow_library_operator.go
 model_workflow_library_trigger.go
 model_workflow_o_auth_client.go
 model_workflow_trigger.go
+model_workgroup_bulk_delete_request.go
+model_workgroup_connection_dto.go
+model_workgroup_delete_item.go
 model_workgroup_dto.go
+model_workgroup_member_add_item.go
+model_workgroup_member_delete_item.go
 response.go
 test/api_access_profiles_test.go
 test/api_access_request_approvals_test.go

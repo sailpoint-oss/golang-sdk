@@ -19,9 +19,11 @@ var _ MappedNullable = &WorkgroupDto{}
 
 // WorkgroupDto struct for WorkgroupDto
 type WorkgroupDto struct {
-	Owner *Owner `json:"owner,omitempty"`
+	Owner *BaseReferenceDto1 `json:"owner,omitempty"`
 	// ID of the object to which this reference applies
 	Id *string `json:"id,omitempty"`
+	// Name of the Governance Group
+	Name *string `json:"name,omitempty"`
 	// Description of the Governance Group
 	Description *string `json:"description,omitempty"`
 	// Number of members in the Governance Group.
@@ -51,9 +53,9 @@ func NewWorkgroupDtoWithDefaults() *WorkgroupDto {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *WorkgroupDto) GetOwner() Owner {
+func (o *WorkgroupDto) GetOwner() BaseReferenceDto1 {
 	if o == nil || isNil(o.Owner) {
-		var ret Owner
+		var ret BaseReferenceDto1
 		return ret
 	}
 	return *o.Owner
@@ -61,7 +63,7 @@ func (o *WorkgroupDto) GetOwner() Owner {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkgroupDto) GetOwnerOk() (*Owner, bool) {
+func (o *WorkgroupDto) GetOwnerOk() (*BaseReferenceDto1, bool) {
 	if o == nil || isNil(o.Owner) {
 		return nil, false
 	}
@@ -77,8 +79,8 @@ func (o *WorkgroupDto) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given Owner and assigns it to the Owner field.
-func (o *WorkgroupDto) SetOwner(v Owner) {
+// SetOwner gets a reference to the given BaseReferenceDto1 and assigns it to the Owner field.
+func (o *WorkgroupDto) SetOwner(v BaseReferenceDto1) {
 	o.Owner = &v
 }
 
@@ -112,6 +114,38 @@ func (o *WorkgroupDto) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *WorkgroupDto) SetId(v string) {
 	o.Id = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *WorkgroupDto) GetName() string {
+	if o == nil || isNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WorkgroupDto) GetNameOk() (*string, bool) {
+	if o == nil || isNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *WorkgroupDto) HasName() bool {
+	if o != nil && !isNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *WorkgroupDto) SetName(v string) {
+	o.Name = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -223,18 +257,15 @@ func (o WorkgroupDto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	// skip: id is readOnly
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.MemberCount) {
-		toSerialize["memberCount"] = o.MemberCount
-	}
-	if !isNil(o.ConnectionCount) {
-		toSerialize["connectionCount"] = o.ConnectionCount
-	}
+	// skip: memberCount is readOnly
+	// skip: connectionCount is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -255,6 +286,7 @@ func (o *WorkgroupDto) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "memberCount")
 		delete(additionalProperties, "connectionCount")

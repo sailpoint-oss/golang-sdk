@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Owner** | Pointer to [**Owner**](Owner.md) |  | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
+**Owner** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] [readonly] 
+**Name** | Pointer to **string** | Name of the Governance Group | [optional] 
 **Description** | Pointer to **string** | Description of the Governance Group | [optional] 
-**MemberCount** | Pointer to **int64** | Number of members in the Governance Group. | [optional] 
-**ConnectionCount** | Pointer to **int64** | Number of connections in the Governance Group. | [optional] 
+**MemberCount** | Pointer to **int64** | Number of members in the Governance Group. | [optional] [readonly] 
+**ConnectionCount** | Pointer to **int64** | Number of connections in the Governance Group. | [optional] [readonly] 
 
 ## Methods
 
@@ -31,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOwner
 
-`func (o *WorkgroupDto) GetOwner() Owner`
+`func (o *WorkgroupDto) GetOwner() BaseReferenceDto1`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *WorkgroupDto) GetOwnerOk() (*Owner, bool)`
+`func (o *WorkgroupDto) GetOwnerOk() (*BaseReferenceDto1, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *WorkgroupDto) SetOwner(v Owner)`
+`func (o *WorkgroupDto) SetOwner(v BaseReferenceDto1)`
 
 SetOwner sets Owner field to given value.
 
@@ -78,6 +79,31 @@ SetId sets Id field to given value.
 `func (o *WorkgroupDto) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *WorkgroupDto) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *WorkgroupDto) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *WorkgroupDto) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *WorkgroupDto) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetDescription
 

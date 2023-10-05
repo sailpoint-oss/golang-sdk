@@ -14,46 +14,44 @@ import (
 	"encoding/json"
 )
 
-// checks if the Owner type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Owner{}
+// checks if the ConnectedObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectedObject{}
 
-// Owner struct for Owner
-type Owner struct {
-	Type *DtoType `json:"type,omitempty"`
+// ConnectedObject struct for ConnectedObject
+type ConnectedObject struct {
+	Type *ConnectedObjectType `json:"type,omitempty"`
 	// ID of the object to which this reference applies
 	Id *string `json:"id,omitempty"`
-	// Human-readable name of the owner
+	// Human-readable name of Connected object
 	Name *string `json:"name,omitempty"`
-	// Human-readable display name of the owner
-	DisplayName *string `json:"displayName,omitempty"`
-	// Email ID of the owner
-	EmailAddress *string `json:"emailAddress,omitempty"`
+	// Description of the Connected object.
+	Description *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _Owner Owner
+type _ConnectedObject ConnectedObject
 
-// NewOwner instantiates a new Owner object
+// NewConnectedObject instantiates a new ConnectedObject object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOwner() *Owner {
-	this := Owner{}
+func NewConnectedObject() *ConnectedObject {
+	this := ConnectedObject{}
 	return &this
 }
 
-// NewOwnerWithDefaults instantiates a new Owner object
+// NewConnectedObjectWithDefaults instantiates a new ConnectedObject object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewOwnerWithDefaults() *Owner {
-	this := Owner{}
+func NewConnectedObjectWithDefaults() *ConnectedObject {
+	this := ConnectedObject{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *Owner) GetType() DtoType {
+func (o *ConnectedObject) GetType() ConnectedObjectType {
 	if o == nil || isNil(o.Type) {
-		var ret DtoType
+		var ret ConnectedObjectType
 		return ret
 	}
 	return *o.Type
@@ -61,7 +59,7 @@ func (o *Owner) GetType() DtoType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owner) GetTypeOk() (*DtoType, bool) {
+func (o *ConnectedObject) GetTypeOk() (*ConnectedObjectType, bool) {
 	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
@@ -69,7 +67,7 @@ func (o *Owner) GetTypeOk() (*DtoType, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *Owner) HasType() bool {
+func (o *ConnectedObject) HasType() bool {
 	if o != nil && !isNil(o.Type) {
 		return true
 	}
@@ -77,13 +75,13 @@ func (o *Owner) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *Owner) SetType(v DtoType) {
+// SetType gets a reference to the given ConnectedObjectType and assigns it to the Type field.
+func (o *ConnectedObject) SetType(v ConnectedObjectType) {
 	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Owner) GetId() string {
+func (o *ConnectedObject) GetId() string {
 	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
@@ -93,7 +91,7 @@ func (o *Owner) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owner) GetIdOk() (*string, bool) {
+func (o *ConnectedObject) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
@@ -101,7 +99,7 @@ func (o *Owner) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *Owner) HasId() bool {
+func (o *ConnectedObject) HasId() bool {
 	if o != nil && !isNil(o.Id) {
 		return true
 	}
@@ -110,12 +108,12 @@ func (o *Owner) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Owner) SetId(v string) {
+func (o *ConnectedObject) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *Owner) GetName() string {
+func (o *ConnectedObject) GetName() string {
 	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
@@ -125,7 +123,7 @@ func (o *Owner) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owner) GetNameOk() (*string, bool) {
+func (o *ConnectedObject) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
@@ -133,7 +131,7 @@ func (o *Owner) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *Owner) HasName() bool {
+func (o *ConnectedObject) HasName() bool {
 	if o != nil && !isNil(o.Name) {
 		return true
 	}
@@ -142,75 +140,43 @@ func (o *Owner) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Owner) SetName(v string) {
+func (o *ConnectedObject) SetName(v string) {
 	o.Name = &v
 }
 
-// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
-func (o *Owner) GetDisplayName() string {
-	if o == nil || isNil(o.DisplayName) {
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *ConnectedObject) GetDescription() string {
+	if o == nil || isNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.DisplayName
+	return *o.Description
 }
 
-// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owner) GetDisplayNameOk() (*string, bool) {
-	if o == nil || isNil(o.DisplayName) {
+func (o *ConnectedObject) GetDescriptionOk() (*string, bool) {
+	if o == nil || isNil(o.Description) {
 		return nil, false
 	}
-	return o.DisplayName, true
+	return o.Description, true
 }
 
-// HasDisplayName returns a boolean if a field has been set.
-func (o *Owner) HasDisplayName() bool {
-	if o != nil && !isNil(o.DisplayName) {
+// HasDescription returns a boolean if a field has been set.
+func (o *ConnectedObject) HasDescription() bool {
+	if o != nil && !isNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
-func (o *Owner) SetDisplayName(v string) {
-	o.DisplayName = &v
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *ConnectedObject) SetDescription(v string) {
+	o.Description = &v
 }
 
-// GetEmailAddress returns the EmailAddress field value if set, zero value otherwise.
-func (o *Owner) GetEmailAddress() string {
-	if o == nil || isNil(o.EmailAddress) {
-		var ret string
-		return ret
-	}
-	return *o.EmailAddress
-}
-
-// GetEmailAddressOk returns a tuple with the EmailAddress field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Owner) GetEmailAddressOk() (*string, bool) {
-	if o == nil || isNil(o.EmailAddress) {
-		return nil, false
-	}
-	return o.EmailAddress, true
-}
-
-// HasEmailAddress returns a boolean if a field has been set.
-func (o *Owner) HasEmailAddress() bool {
-	if o != nil && !isNil(o.EmailAddress) {
-		return true
-	}
-
-	return false
-}
-
-// SetEmailAddress gets a reference to the given string and assigns it to the EmailAddress field.
-func (o *Owner) SetEmailAddress(v string) {
-	o.EmailAddress = &v
-}
-
-func (o Owner) MarshalJSON() ([]byte, error) {
+func (o ConnectedObject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -218,7 +184,7 @@ func (o Owner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Owner) ToMap() (map[string]interface{}, error) {
+func (o ConnectedObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -229,11 +195,8 @@ func (o Owner) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !isNil(o.DisplayName) {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if !isNil(o.EmailAddress) {
-		toSerialize["emailAddress"] = o.EmailAddress
+	if !isNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -243,11 +206,11 @@ func (o Owner) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Owner) UnmarshalJSON(bytes []byte) (err error) {
-	varOwner := _Owner{}
+func (o *ConnectedObject) UnmarshalJSON(bytes []byte) (err error) {
+	varConnectedObject := _ConnectedObject{}
 
-	if err = json.Unmarshal(bytes, &varOwner); err == nil {
-		*o = Owner(varOwner)
+	if err = json.Unmarshal(bytes, &varConnectedObject); err == nil {
+		*o = ConnectedObject(varConnectedObject)
 	}
 
 	additionalProperties := make(map[string]interface{})
@@ -256,46 +219,45 @@ func (o *Owner) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "displayName")
-		delete(additionalProperties, "emailAddress")
+		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableOwner struct {
-	value *Owner
+type NullableConnectedObject struct {
+	value *ConnectedObject
 	isSet bool
 }
 
-func (v NullableOwner) Get() *Owner {
+func (v NullableConnectedObject) Get() *ConnectedObject {
 	return v.value
 }
 
-func (v *NullableOwner) Set(val *Owner) {
+func (v *NullableConnectedObject) Set(val *ConnectedObject) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableOwner) IsSet() bool {
+func (v NullableConnectedObject) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableOwner) Unset() {
+func (v *NullableConnectedObject) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableOwner(val *Owner) *NullableOwner {
-	return &NullableOwner{value: val, isSet: true}
+func NewNullableConnectedObject(val *ConnectedObject) *NullableConnectedObject {
+	return &NullableConnectedObject{value: val, isSet: true}
 }
 
-func (v NullableOwner) MarshalJSON() ([]byte, error) {
+func (v NullableConnectedObject) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableOwner) UnmarshalJSON(src []byte) error {
+func (v *NullableConnectedObject) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

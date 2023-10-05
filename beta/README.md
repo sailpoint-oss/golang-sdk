@@ -178,8 +178,15 @@ Class | Method | HTTP request | Description
 *EntitlementsApi* | [**PutEntitlementRequestConfig**](docs/EntitlementsApi.md#putentitlementrequestconfig) | **Put** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
 *EntitlementsApi* | [**UpdateEntitlementsInBulk**](docs/EntitlementsApi.md#updateentitlementsinbulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 *GovernanceGroupsApi* | [**CreateWorkgroup**](docs/GovernanceGroupsApi.md#createworkgroup) | **Post** /workgroups | Create a new Governance Group.
-*GovernanceGroupsApi* | [**GetWorkgroup**](docs/GovernanceGroupsApi.md#getworkgroup) | **Get** /workgroups/{id} | Get an Governance Groups
+*GovernanceGroupsApi* | [**DeleteWorkgroup**](docs/GovernanceGroupsApi.md#deleteworkgroup) | **Delete** /workgroups/{id} | Delete a Governance Group
+*GovernanceGroupsApi* | [**DeleteWorkgroupMembers**](docs/GovernanceGroupsApi.md#deleteworkgroupmembers) | **Post** /workgroups/{workgrouId}/members/bulk-delete | Remove members from Governance Group
+*GovernanceGroupsApi* | [**DeleteWorkgroupsInBulk**](docs/GovernanceGroupsApi.md#deleteworkgroupsinbulk) | **Post** /workgroups/bulk-delete | Delete Governance Group(s)
+*GovernanceGroupsApi* | [**GetWorkgroup**](docs/GovernanceGroupsApi.md#getworkgroup) | **Get** /workgroups/{id} | Get Governance Group by Id
+*GovernanceGroupsApi* | [**ListConnections**](docs/GovernanceGroupsApi.md#listconnections) | **Get** /workgroups/{workgrouId}/connections | List connections for Governance Group
+*GovernanceGroupsApi* | [**ListWorkgroupMembers**](docs/GovernanceGroupsApi.md#listworkgroupmembers) | **Get** /workgroups/{workgrouId}/members | List Governance Group Members
 *GovernanceGroupsApi* | [**ListWorkgroups**](docs/GovernanceGroupsApi.md#listworkgroups) | **Get** /workgroups | List Governance Groups
+*GovernanceGroupsApi* | [**PatchWorkgroup**](docs/GovernanceGroupsApi.md#patchworkgroup) | **Patch** /workgroups/{id} | Patch a Governance Group
+*GovernanceGroupsApi* | [**UpdateWorkgroupMembers**](docs/GovernanceGroupsApi.md#updateworkgroupmembers) | **Post** /workgroups/{workgrouId}/members/bulk-add | Add members to Governance Group
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsIgnoredItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsignoreditem) | **Post** /ai-access-request-recommendations/ignored-items | Notification of Ignored Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsRequestedItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsrequesteditem) | **Post** /ai-access-request-recommendations/requested-items | Notification of Requested Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsViewedItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsvieweditem) | **Post** /ai-access-request-recommendations/viewed-items | Notification of Viewed Access Request Recommendations
@@ -691,6 +698,8 @@ Class | Method | HTTP request | Description
  - [ConfigurationItemResponse](docs/ConfigurationItemResponse.md)
  - [ConfigurationResponse](docs/ConfigurationResponse.md)
  - [ConflictingAccessCriteria](docs/ConflictingAccessCriteria.md)
+ - [ConnectedObject](docs/ConnectedObject.md)
+ - [ConnectedObjectType](docs/ConnectedObjectType.md)
  - [ConnectorDetail](docs/ConnectorDetail.md)
  - [ConnectorRuleCreateRequest](docs/ConnectorRuleCreateRequest.md)
  - [ConnectorRuleCreateRequestSignature](docs/ConnectorRuleCreateRequestSignature.md)
@@ -935,7 +944,6 @@ Class | Method | HTTP request | Description
  - [OutlierFeatureTranslation](docs/OutlierFeatureTranslation.md)
  - [OutlierSummary](docs/OutlierSummary.md)
  - [OutliersContributingFeatureAccessItems](docs/OutliersContributingFeatureAccessItems.md)
- - [Owner](docs/Owner.md)
  - [OwnerReference](docs/OwnerReference.md)
  - [OwnerReferenceDto](docs/OwnerReferenceDto.md)
  - [PasswordChangeRequest](docs/PasswordChangeRequest.md)
@@ -1203,7 +1211,12 @@ Class | Method | HTTP request | Description
  - [WorkflowLibraryTrigger](docs/WorkflowLibraryTrigger.md)
  - [WorkflowOAuthClient](docs/WorkflowOAuthClient.md)
  - [WorkflowTrigger](docs/WorkflowTrigger.md)
+ - [WorkgroupBulkDeleteRequest](docs/WorkgroupBulkDeleteRequest.md)
+ - [WorkgroupConnectionDto](docs/WorkgroupConnectionDto.md)
+ - [WorkgroupDeleteItem](docs/WorkgroupDeleteItem.md)
  - [WorkgroupDto](docs/WorkgroupDto.md)
+ - [WorkgroupMemberAddItem](docs/WorkgroupMemberAddItem.md)
+ - [WorkgroupMemberDeleteItem](docs/WorkgroupMemberDeleteItem.md)
 
 
 ## Documentation For Authorization
