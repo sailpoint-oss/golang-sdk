@@ -85,6 +85,20 @@ const fixFiles = function (myArray) {
       rawDataArra = fileOut.slice();
       fileOut = [];
     }
+
+    // fix syntax error in model_subscription_patch_request_inner_value 
+    if (file.includes("model_subscription_patch_request_inner_value.go")) {
+      for (const line of rawDataArra) {
+        if (line.includes("[]SubscriptionPatchRequestInnerValueAnyOfInnervar")) {
+          fileOut.push(line.replaceAll("[]SubscriptionPatchRequestInnerValueAnyOfInnervar", "SubscriptionPatchRequestInnerValueAnyOfInnervar"));
+          madeChange = true;
+        } else {
+          fileOut.push(line);
+        }
+      }
+      rawDataArra = fileOut.slice();
+      fileOut = [];
+    }
   
   
     //adjust the document type naming to fix the duplicate type errors
