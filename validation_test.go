@@ -147,8 +147,9 @@ func Test_cc(t *testing.T) {
 	configuration := NewDefaultConfiguration()
 	apiClient := NewAPIClient(configuration)
 
-	r, err := apiClient.CC.AccountsApi.ListAccounts(context.TODO()).Execute()
+	resp, r, err := apiClient.CC.AccountsApi.ListAccounts(context.TODO()).Execute()
 
 	require.Nil(t, err)
+	require.NotNil(t, resp)
 	assert.Equal(t, 200, r.StatusCode)
 }
