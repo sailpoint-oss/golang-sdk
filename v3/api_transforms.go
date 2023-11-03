@@ -560,7 +560,7 @@ func (r ApiListTransformsRequest) Name(name string) ApiListTransformsRequest {
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **internal**: *eq* **name**: *eq*, *sw*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **internal**: *eq*  **name**: *eq, sw*
 func (r ApiListTransformsRequest) Filters(filters string) ApiListTransformsRequest {
 	r.filters = &filters
 	return r

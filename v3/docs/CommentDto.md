@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Comment** | Pointer to **string** | Content of the comment | [optional] 
+**Comment** | Pointer to **NullableString** | Comment content. | [optional] 
 **Author** | Pointer to [**CommentDtoAuthor**](CommentDtoAuthor.md) |  | [optional] 
-**Created** | Pointer to **time.Time** | Date and time comment was created | [optional] 
+**Created** | Pointer to **time.Time** | Date and time comment was created. | [optional] 
 
 ## Methods
 
@@ -52,6 +52,16 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
+### SetCommentNil
+
+`func (o *CommentDto) SetCommentNil(b bool)`
+
+ SetCommentNil sets the value for Comment to be an explicit nil
+
+### UnsetComment
+`func (o *CommentDto) UnsetComment()`
+
+UnsetComment ensures that no value is present for Comment, not even an explicit nil
 ### GetAuthor
 
 `func (o *CommentDto) GetAuthor() CommentDtoAuthor`

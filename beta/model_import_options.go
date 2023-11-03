@@ -25,8 +25,8 @@ type ImportOptions struct {
 	IncludeTypes []string `json:"includeTypes,omitempty"`
 	// Additional options targeting specific objects related to each item in the includeTypes field
 	ObjectOptions *map[string]ObjectExportImportOptions `json:"objectOptions,omitempty"`
-	// List of BaseRefenceDtos that can be used to resolve references on import.
-	DefaultReferences []BaseReferenceDto1 `json:"defaultReferences,omitempty"`
+	// List of object types that can be used to resolve references on import.
+	DefaultReferences []string `json:"defaultReferences,omitempty"`
 	// By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. If excludeBackup is true, the backup will not be performed.
 	ExcludeBackup *bool `json:"excludeBackup,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -152,9 +152,9 @@ func (o *ImportOptions) SetObjectOptions(v map[string]ObjectExportImportOptions)
 }
 
 // GetDefaultReferences returns the DefaultReferences field value if set, zero value otherwise.
-func (o *ImportOptions) GetDefaultReferences() []BaseReferenceDto1 {
+func (o *ImportOptions) GetDefaultReferences() []string {
 	if o == nil || isNil(o.DefaultReferences) {
-		var ret []BaseReferenceDto1
+		var ret []string
 		return ret
 	}
 	return o.DefaultReferences
@@ -162,7 +162,7 @@ func (o *ImportOptions) GetDefaultReferences() []BaseReferenceDto1 {
 
 // GetDefaultReferencesOk returns a tuple with the DefaultReferences field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ImportOptions) GetDefaultReferencesOk() ([]BaseReferenceDto1, bool) {
+func (o *ImportOptions) GetDefaultReferencesOk() ([]string, bool) {
 	if o == nil || isNil(o.DefaultReferences) {
 		return nil, false
 	}
@@ -178,8 +178,8 @@ func (o *ImportOptions) HasDefaultReferences() bool {
 	return false
 }
 
-// SetDefaultReferences gets a reference to the given []BaseReferenceDto1 and assigns it to the DefaultReferences field.
-func (o *ImportOptions) SetDefaultReferences(v []BaseReferenceDto1) {
+// SetDefaultReferences gets a reference to the given []string and assigns it to the DefaultReferences field.
+func (o *ImportOptions) SetDefaultReferences(v []string) {
 	o.DefaultReferences = v
 }
 

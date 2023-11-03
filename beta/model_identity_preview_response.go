@@ -19,7 +19,7 @@ var _ MappedNullable = &IdentityPreviewResponse{}
 
 // IdentityPreviewResponse struct for IdentityPreviewResponse
 type IdentityPreviewResponse struct {
-	Identity *BaseReferenceDto1 `json:"identity,omitempty"`
+	Identity *IdentityPreviewResponseIdentity `json:"identity,omitempty"`
 	PreviewAttributes []IdentityAttributePreview `json:"previewAttributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -44,9 +44,9 @@ func NewIdentityPreviewResponseWithDefaults() *IdentityPreviewResponse {
 }
 
 // GetIdentity returns the Identity field value if set, zero value otherwise.
-func (o *IdentityPreviewResponse) GetIdentity() BaseReferenceDto1 {
+func (o *IdentityPreviewResponse) GetIdentity() IdentityPreviewResponseIdentity {
 	if o == nil || isNil(o.Identity) {
-		var ret BaseReferenceDto1
+		var ret IdentityPreviewResponseIdentity
 		return ret
 	}
 	return *o.Identity
@@ -54,7 +54,7 @@ func (o *IdentityPreviewResponse) GetIdentity() BaseReferenceDto1 {
 
 // GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityPreviewResponse) GetIdentityOk() (*BaseReferenceDto1, bool) {
+func (o *IdentityPreviewResponse) GetIdentityOk() (*IdentityPreviewResponseIdentity, bool) {
 	if o == nil || isNil(o.Identity) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *IdentityPreviewResponse) HasIdentity() bool {
 	return false
 }
 
-// SetIdentity gets a reference to the given BaseReferenceDto1 and assigns it to the Identity field.
-func (o *IdentityPreviewResponse) SetIdentity(v BaseReferenceDto1) {
+// SetIdentity gets a reference to the given IdentityPreviewResponseIdentity and assigns it to the Identity field.
+func (o *IdentityPreviewResponse) SetIdentity(v IdentityPreviewResponseIdentity) {
 	o.Identity = &v
 }
 

@@ -30,7 +30,7 @@ type SodPolicy struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// Optional description of the SOD policy
 	Description NullableString `json:"description,omitempty"`
-	OwnerRef *BaseReferenceDto `json:"ownerRef,omitempty"`
+	OwnerRef *OwnerDto `json:"ownerRef,omitempty"`
 	// Optional External Policy Reference
 	ExternalPolicyReference NullableString `json:"externalPolicyReference,omitempty"`
 	// Search query of the SOD policy
@@ -254,9 +254,9 @@ func (o *SodPolicy) UnsetDescription() {
 }
 
 // GetOwnerRef returns the OwnerRef field value if set, zero value otherwise.
-func (o *SodPolicy) GetOwnerRef() BaseReferenceDto {
+func (o *SodPolicy) GetOwnerRef() OwnerDto {
 	if o == nil || isNil(o.OwnerRef) {
-		var ret BaseReferenceDto
+		var ret OwnerDto
 		return ret
 	}
 	return *o.OwnerRef
@@ -264,7 +264,7 @@ func (o *SodPolicy) GetOwnerRef() BaseReferenceDto {
 
 // GetOwnerRefOk returns a tuple with the OwnerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetOwnerRefOk() (*BaseReferenceDto, bool) {
+func (o *SodPolicy) GetOwnerRefOk() (*OwnerDto, bool) {
 	if o == nil || isNil(o.OwnerRef) {
 		return nil, false
 	}
@@ -280,8 +280,8 @@ func (o *SodPolicy) HasOwnerRef() bool {
 	return false
 }
 
-// SetOwnerRef gets a reference to the given BaseReferenceDto and assigns it to the OwnerRef field.
-func (o *SodPolicy) SetOwnerRef(v BaseReferenceDto) {
+// SetOwnerRef gets a reference to the given OwnerDto and assigns it to the OwnerRef field.
+func (o *SodPolicy) SetOwnerRef(v OwnerDto) {
 	o.OwnerRef = &v
 }
 

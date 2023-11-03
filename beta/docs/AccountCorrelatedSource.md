@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | ID of the object to which this reference applies | 
-**Type** | **string** | The type of object that is referenced | 
-**Name** | **string** | Human-readable display name of the object to which this reference applies | 
+**Type** | **string** | The DTO type of the source the accounts are being correlated from. | 
+**Id** | **string** | The ID of the source the accounts are being correlated from. | 
+**Name** | **string** | Display name of the source the accounts are being correlated from. | 
 
 ## Methods
 
 ### NewAccountCorrelatedSource
 
-`func NewAccountCorrelatedSource(id string, type_ string, name string, ) *AccountCorrelatedSource`
+`func NewAccountCorrelatedSource(type_ string, id string, name string, ) *AccountCorrelatedSource`
 
 NewAccountCorrelatedSource instantiates a new AccountCorrelatedSource object
 This constructor will assign default values to properties that have it defined,
@@ -26,26 +26,6 @@ will change when the set of required properties is changed
 NewAccountCorrelatedSourceWithDefaults instantiates a new AccountCorrelatedSource object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *AccountCorrelatedSource) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *AccountCorrelatedSource) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *AccountCorrelatedSource) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 ### GetType
 
@@ -65,6 +45,26 @@ and a boolean to check if the value has been set.
 `func (o *AccountCorrelatedSource) SetType(v string)`
 
 SetType sets Type field to given value.
+
+
+### GetId
+
+`func (o *AccountCorrelatedSource) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *AccountCorrelatedSource) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *AccountCorrelatedSource) SetId(v string)`
+
+SetId sets Id field to given value.
 
 
 ### GetName

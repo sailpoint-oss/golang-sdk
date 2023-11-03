@@ -28,9 +28,24 @@ func Test_cc_SourcesAggregationApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.CC.SourcesAggregationApi.LoadAccounts(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CC.SourcesAggregationApi.LoadAccounts(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SourcesAggregationApiService LoadEntitlements", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.CC.SourcesAggregationApi.LoadEntitlements(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

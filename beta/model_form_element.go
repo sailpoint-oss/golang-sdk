@@ -19,15 +19,15 @@ var _ MappedNullable = &FormElement{}
 
 // FormElement struct for FormElement
 type FormElement struct {
-	// Config is a config object
-	Config map[string]map[string]interface{} `json:"config,omitempty"`
-	// ElementType is a FormElementType value TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns
-	ElementType *string `json:"elementType,omitempty"`
-	// ID is a form element identifier
+	// Form element identifier.
 	Id *string `json:"id,omitempty"`
-	// Key is the technical key
+	// FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns
+	ElementType *string `json:"elementType,omitempty"`
+	// Config object.
+	Config map[string]map[string]interface{} `json:"config,omitempty"`
+	// Technical key.
 	Key *string `json:"key,omitempty"`
-	// FormElementValidationsSet is a set of FormElementValidation items
+	// Set of FormElementValidation items.
 	Validations map[string]interface{} `json:"validations,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -51,36 +51,36 @@ func NewFormElementWithDefaults() *FormElement {
 	return &this
 }
 
-// GetConfig returns the Config field value if set, zero value otherwise.
-func (o *FormElement) GetConfig() map[string]map[string]interface{} {
-	if o == nil || isNil(o.Config) {
-		var ret map[string]map[string]interface{}
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *FormElement) GetId() string {
+	if o == nil || isNil(o.Id) {
+		var ret string
 		return ret
 	}
-	return o.Config
+	return *o.Id
 }
 
-// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormElement) GetConfigOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || isNil(o.Config) {
-		return map[string]map[string]interface{}{}, false
+func (o *FormElement) GetIdOk() (*string, bool) {
+	if o == nil || isNil(o.Id) {
+		return nil, false
 	}
-	return o.Config, true
+	return o.Id, true
 }
 
-// HasConfig returns a boolean if a field has been set.
-func (o *FormElement) HasConfig() bool {
-	if o != nil && !isNil(o.Config) {
+// HasId returns a boolean if a field has been set.
+func (o *FormElement) HasId() bool {
+	if o != nil && !isNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetConfig gets a reference to the given map[string]map[string]interface{} and assigns it to the Config field.
-func (o *FormElement) SetConfig(v map[string]map[string]interface{}) {
-	o.Config = v
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *FormElement) SetId(v string) {
+	o.Id = &v
 }
 
 // GetElementType returns the ElementType field value if set, zero value otherwise.
@@ -115,36 +115,36 @@ func (o *FormElement) SetElementType(v string) {
 	o.ElementType = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *FormElement) GetId() string {
-	if o == nil || isNil(o.Id) {
-		var ret string
+// GetConfig returns the Config field value if set, zero value otherwise.
+func (o *FormElement) GetConfig() map[string]map[string]interface{} {
+	if o == nil || isNil(o.Config) {
+		var ret map[string]map[string]interface{}
 		return ret
 	}
-	return *o.Id
+	return o.Config
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FormElement) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-		return nil, false
+func (o *FormElement) GetConfigOk() (map[string]map[string]interface{}, bool) {
+	if o == nil || isNil(o.Config) {
+		return map[string]map[string]interface{}{}, false
 	}
-	return o.Id, true
+	return o.Config, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *FormElement) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+// HasConfig returns a boolean if a field has been set.
+func (o *FormElement) HasConfig() bool {
+	if o != nil && !isNil(o.Config) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *FormElement) SetId(v string) {
-	o.Id = &v
+// SetConfig gets a reference to the given map[string]map[string]interface{} and assigns it to the Config field.
+func (o *FormElement) SetConfig(v map[string]map[string]interface{}) {
+	o.Config = v
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
@@ -221,14 +221,14 @@ func (o FormElement) MarshalJSON() ([]byte, error) {
 
 func (o FormElement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Config) {
-		toSerialize["config"] = o.Config
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if !isNil(o.ElementType) {
 		toSerialize["elementType"] = o.ElementType
 	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if !isNil(o.Config) {
+		toSerialize["config"] = o.Config
 	}
 	if !isNil(o.Key) {
 		toSerialize["key"] = o.Key
@@ -254,9 +254,9 @@ func (o *FormElement) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "config")
-		delete(additionalProperties, "elementType")
 		delete(additionalProperties, "id")
+		delete(additionalProperties, "elementType")
+		delete(additionalProperties, "config")
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "validations")
 		o.AdditionalProperties = additionalProperties

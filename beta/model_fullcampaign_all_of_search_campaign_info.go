@@ -23,8 +23,7 @@ type FullcampaignAllOfSearchCampaignInfo struct {
 	Type string `json:"type"`
 	// Describes this search campaign. Intended for storing the query used, and possibly the number of identities selected/available.
 	Description *string `json:"description,omitempty"`
-	// If specified, this identity or governance group will be the reviewer for all certifications in this campaign. The allowed DTO types are IDENTITY and GOVERNANCE_GROUP
-	Reviewer *BaseReferenceDto1 `json:"reviewer,omitempty"`
+	Reviewer *FullcampaignAllOfSearchCampaignInfoReviewer `json:"reviewer,omitempty"`
 	// The scope for the campaign. The campaign will cover identities returned by the query and identities that have access items returned by the query. One of `query` or `identityIds` must be set.
 	Query *string `json:"query,omitempty"`
 	// A direct list of identities to include in this campaign. One of `identityIds` or `query` must be set.
@@ -111,9 +110,9 @@ func (o *FullcampaignAllOfSearchCampaignInfo) SetDescription(v string) {
 }
 
 // GetReviewer returns the Reviewer field value if set, zero value otherwise.
-func (o *FullcampaignAllOfSearchCampaignInfo) GetReviewer() BaseReferenceDto1 {
+func (o *FullcampaignAllOfSearchCampaignInfo) GetReviewer() FullcampaignAllOfSearchCampaignInfoReviewer {
 	if o == nil || isNil(o.Reviewer) {
-		var ret BaseReferenceDto1
+		var ret FullcampaignAllOfSearchCampaignInfoReviewer
 		return ret
 	}
 	return *o.Reviewer
@@ -121,7 +120,7 @@ func (o *FullcampaignAllOfSearchCampaignInfo) GetReviewer() BaseReferenceDto1 {
 
 // GetReviewerOk returns a tuple with the Reviewer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FullcampaignAllOfSearchCampaignInfo) GetReviewerOk() (*BaseReferenceDto1, bool) {
+func (o *FullcampaignAllOfSearchCampaignInfo) GetReviewerOk() (*FullcampaignAllOfSearchCampaignInfoReviewer, bool) {
 	if o == nil || isNil(o.Reviewer) {
 		return nil, false
 	}
@@ -137,8 +136,8 @@ func (o *FullcampaignAllOfSearchCampaignInfo) HasReviewer() bool {
 	return false
 }
 
-// SetReviewer gets a reference to the given BaseReferenceDto1 and assigns it to the Reviewer field.
-func (o *FullcampaignAllOfSearchCampaignInfo) SetReviewer(v BaseReferenceDto1) {
+// SetReviewer gets a reference to the given FullcampaignAllOfSearchCampaignInfoReviewer and assigns it to the Reviewer field.
+func (o *FullcampaignAllOfSearchCampaignInfo) SetReviewer(v FullcampaignAllOfSearchCampaignInfoReviewer) {
 	o.Reviewer = &v
 }
 

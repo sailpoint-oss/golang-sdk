@@ -4,14 +4,14 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRoleInsightRequests**](RoleInsightsApi.md#CreateRoleInsightRequests) | **Post** /role-insights/requests | A request to generate insights for roles
+[**CreateRoleInsightRequests**](RoleInsightsApi.md#CreateRoleInsightRequests) | **Post** /role-insights/requests | Generate insights for roles
 [**DownloadRoleInsightsEntitlementsChanges**](RoleInsightsApi.md#DownloadRoleInsightsEntitlementsChanges) | **Get** /role-insights/{insightId}/entitlement-changes/download | Download entitlement insights for a role
 [**GetEntitlementChangesIdentities**](RoleInsightsApi.md#GetEntitlementChangesIdentities) | **Get** /role-insights/{insightId}/entitlement-changes/{entitlementId}/identities | Get identities for a suggested entitlement (for a role)
 [**GetRoleInsight**](RoleInsightsApi.md#GetRoleInsight) | **Get** /role-insights/{insightId} | Get a single role insight
 [**GetRoleInsights**](RoleInsightsApi.md#GetRoleInsights) | **Get** /role-insights | Get role insights
 [**GetRoleInsightsCurrentEntitlements**](RoleInsightsApi.md#GetRoleInsightsCurrentEntitlements) | **Get** /role-insights/{insightId}/current-entitlements | Get current entitlement for a role
 [**GetRoleInsightsEntitlementsChanges**](RoleInsightsApi.md#GetRoleInsightsEntitlementsChanges) | **Get** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
-[**GetRoleInsightsRequests**](RoleInsightsApi.md#GetRoleInsightsRequests) | **Get** /role-insights/requests/{id} | Returns the metadata for a request in order to generate insights for roles.
+[**GetRoleInsightsRequests**](RoleInsightsApi.md#GetRoleInsightsRequests) | **Get** /role-insights/requests/{id} | Returns metadata from prior request.
 [**GetRoleInsightsSummary**](RoleInsightsApi.md#GetRoleInsightsSummary) | **Get** /role-insights/summary | Get role insights summary information
 
 
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 > RoleInsightsResponse CreateRoleInsightRequests(ctx).Execute()
 
-A request to generate insights for roles
+Generate insights for roles
 
 
 
@@ -99,8 +99,8 @@ import (
 
 func main() {
     insightId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role insight id
-    sorters := "sorters_example" // string | sort by identitiesWithAccess, default order descending (optional)
-    filters := "filters_example" // string | Filter parameter(s) by \"starts with\" for the name and description. (optional)
+    sorters := "identitiesWithAccess" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order. (optional)
+    filters := "name sw "r"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -130,8 +130,8 @@ Other parameters are passed through a pointer to a apiDownloadRoleInsightsEntitl
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sorters** | **string** | sort by identitiesWithAccess, default order descending | 
- **filters** | **string** | Filter parameter(s) by \&quot;starts with\&quot; for the name and description. | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order. | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* | 
 
 ### Return type
 
@@ -178,8 +178,8 @@ func main() {
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    sorters := "sorters_example" // string | sort by name (optional)
-    filters := "filters_example" // string | Filter parameter by \"starts with\" for the name. (optional)
+    sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
+    filters := "name sw "Jan"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -215,8 +215,8 @@ Name | Type | Description  | Notes
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **sorters** | **string** | sort by name | 
- **filters** | **string** | Filter parameter by \&quot;starts with\&quot; for the name. | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw* | 
 
 ### Return type
 
@@ -330,8 +330,8 @@ func main() {
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    sorters := "sorters_example" // string | sort by numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities (default- ascending) (optional)
-    filters := "filters_example" // string | Filter parameter(s) by \"starts with\" for the name, ownerName and description. (optional)
+    sorters := "numberOfUpdates" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities** (optional)
+    filters := "name sw "John"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -359,8 +359,8 @@ Name | Type | Description  | Notes
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **sorters** | **string** | sort by numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities (default- ascending) | 
- **filters** | **string** | Filter parameter(s) by \&quot;starts with\&quot; for the name, ownerName and description. | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities** | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw* | 
 
 ### Return type
 
@@ -402,7 +402,7 @@ import (
 
 func main() {
     insightId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role insight id
-    filters := "filters_example" // string | Filter parameter(s) by \"starts with\" for the name and description. (optional)
+    filters := "name sw "r"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -432,7 +432,7 @@ Other parameters are passed through a pointer to a apiGetRoleInsightsCurrentEnti
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **filters** | **string** | Filter parameter(s) by \&quot;starts with\&quot; for the name and description. | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* | 
 
 ### Return type
 
@@ -474,8 +474,8 @@ import (
 
 func main() {
     insightId := "8c190e67-87aa-4ed9-a90b-d9d5344523fb" // string | The role insight id
-    sorters := "sorters_example" // string | sort by identitiesWithAccess or name (optional)
-    filters := "filters_example" // string | Filter parameter(s) by \"starts with\" for the name and description. (optional)
+    sorters := "sorters_example" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name** (optional)
+    filters := "name sw "Admin"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -505,8 +505,8 @@ Other parameters are passed through a pointer to a apiGetRoleInsightsEntitlement
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **sorters** | **string** | sort by identitiesWithAccess or name | 
- **filters** | **string** | Filter parameter(s) by \&quot;starts with\&quot; for the name and description. | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name** | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw* | 
 
 ### Return type
 
@@ -530,7 +530,7 @@ Name | Type | Description  | Notes
 
 > RoleInsightsResponse GetRoleInsightsRequests(ctx, id).Execute()
 
-Returns the metadata for a request in order to generate insights for roles.
+Returns metadata from prior request.
 
 
 

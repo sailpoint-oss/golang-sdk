@@ -7,8 +7,8 @@ Method | HTTP request | Description
 [**CreateSodPolicy**](SODPolicyApi.md#CreateSodPolicy) | **Post** /sod-policies | Create SOD policy
 [**DeleteSodPolicy**](SODPolicyApi.md#DeleteSodPolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
 [**DeleteSodPolicySchedule**](SODPolicyApi.md#DeleteSodPolicySchedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
-[**DownloadCustomViolationReport**](SODPolicyApi.md#DownloadCustomViolationReport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
-[**DownloadDefaultViolationReport**](SODPolicyApi.md#DownloadDefaultViolationReport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
+[**GetCustomViolationReport**](SODPolicyApi.md#GetCustomViolationReport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
+[**GetDefaultViolationReport**](SODPolicyApi.md#GetDefaultViolationReport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
 [**GetSodAllReportRunStatus**](SODPolicyApi.md#GetSodAllReportRunStatus) | **Get** /sod-violation-report | Get multi-report run task status
 [**GetSodPolicy**](SODPolicyApi.md#GetSodPolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
 [**GetSodPolicySchedule**](SODPolicyApi.md#GetSodPolicySchedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
@@ -16,10 +16,10 @@ Method | HTTP request | Description
 [**GetSodViolationReportStatus**](SODPolicyApi.md#GetSodViolationReportStatus) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
 [**ListSodPolicies**](SODPolicyApi.md#ListSodPolicies) | **Get** /sod-policies | List SOD policies
 [**PatchSodPolicy**](SODPolicyApi.md#PatchSodPolicy) | **Patch** /sod-policies/{id} | Patch a SOD policy
-[**RunSodAllPoliciesForOrg**](SODPolicyApi.md#RunSodAllPoliciesForOrg) | **Post** /sod-violation-report/run | Runs all policies for org
-[**RunSodPolicy**](SODPolicyApi.md#RunSodPolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
-[**UpdatePolicySchedule**](SODPolicyApi.md#UpdatePolicySchedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
-[**UpdateSodPolicy**](SODPolicyApi.md#UpdateSodPolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
+[**PutPolicySchedule**](SODPolicyApi.md#PutPolicySchedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
+[**PutSodPolicy**](SODPolicyApi.md#PutSodPolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
+[**StartSodAllPoliciesForOrg**](SODPolicyApi.md#StartSodAllPoliciesForOrg) | **Post** /sod-violation-report/run | Runs all policies for org
+[**StartSodPolicy**](SODPolicyApi.md#StartSodPolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
 
 
 
@@ -227,9 +227,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DownloadCustomViolationReport
+## GetCustomViolationReport
 
-> *os.File DownloadCustomViolationReport(ctx, reportResultId, fileName).Execute()
+> *os.File GetCustomViolationReport(ctx, reportResultId, fileName).Execute()
 
 Download custom violation report
 
@@ -253,13 +253,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyApi.DownloadCustomViolationReport(context.Background(), reportResultId, fileName).Execute()
+    resp, r, err := apiClient.SODPolicyApi.GetCustomViolationReport(context.Background(), reportResultId, fileName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.DownloadCustomViolationReport``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.GetCustomViolationReport``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DownloadCustomViolationReport`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.DownloadCustomViolationReport`: %v\n", resp)
+    // response from `GetCustomViolationReport`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.GetCustomViolationReport`: %v\n", resp)
 }
 ```
 
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDownloadCustomViolationReportRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetCustomViolationReportRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -300,9 +300,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DownloadDefaultViolationReport
+## GetDefaultViolationReport
 
-> *os.File DownloadDefaultViolationReport(ctx, reportResultId).Execute()
+> *os.File GetDefaultViolationReport(ctx, reportResultId).Execute()
 
 Download violation report
 
@@ -325,13 +325,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyApi.DownloadDefaultViolationReport(context.Background(), reportResultId).Execute()
+    resp, r, err := apiClient.SODPolicyApi.GetDefaultViolationReport(context.Background(), reportResultId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.DownloadDefaultViolationReport``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.GetDefaultViolationReport``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DownloadDefaultViolationReport`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.DownloadDefaultViolationReport`: %v\n", resp)
+    // response from `GetDefaultViolationReport`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.GetDefaultViolationReport`: %v\n", resp)
 }
 ```
 
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDownloadDefaultViolationReportRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetDefaultViolationReportRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -855,145 +855,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RunSodAllPoliciesForOrg
+## PutPolicySchedule
 
-> ReportResultReference RunSodAllPoliciesForOrg(ctx).MultiPolicyRequest(multiPolicyRequest).Execute()
-
-Runs all policies for org
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    multiPolicyRequest := *openapiclient.NewMultiPolicyRequest() // MultiPolicyRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyApi.RunSodAllPoliciesForOrg(context.Background()).MultiPolicyRequest(multiPolicyRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.RunSodAllPoliciesForOrg``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RunSodAllPoliciesForOrg`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.RunSodAllPoliciesForOrg`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRunSodAllPoliciesForOrgRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **multiPolicyRequest** | [**MultiPolicyRequest**](MultiPolicyRequest.md) |  | 
-
-### Return type
-
-[**ReportResultReference**](ReportResultReference.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RunSodPolicy
-
-> ReportResultReference RunSodPolicy(ctx, id).Execute()
-
-Runs SOD policy violation report
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The SOD policy ID to run.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyApi.RunSodPolicy(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.RunSodPolicy``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RunSodPolicy`: ReportResultReference
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.RunSodPolicy`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The SOD policy ID to run. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRunSodPolicyRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**ReportResultReference**](ReportResultReference.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## UpdatePolicySchedule
-
-> SodPolicySchedule UpdatePolicySchedule(ctx, id).SodPolicySchedule(sodPolicySchedule).Execute()
+> SodPolicySchedule PutPolicySchedule(ctx, id).SodPolicySchedule(sodPolicySchedule).Execute()
 
 Update SOD Policy schedule
 
@@ -1017,13 +881,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyApi.UpdatePolicySchedule(context.Background(), id).SodPolicySchedule(sodPolicySchedule).Execute()
+    resp, r, err := apiClient.SODPolicyApi.PutPolicySchedule(context.Background(), id).SodPolicySchedule(sodPolicySchedule).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.UpdatePolicySchedule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.PutPolicySchedule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatePolicySchedule`: SodPolicySchedule
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.UpdatePolicySchedule`: %v\n", resp)
+    // response from `PutPolicySchedule`: SodPolicySchedule
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.PutPolicySchedule`: %v\n", resp)
 }
 ```
 
@@ -1037,7 +901,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdatePolicyScheduleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutPolicyScheduleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1063,9 +927,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateSodPolicy
+## PutSodPolicy
 
-> SodPolicy UpdateSodPolicy(ctx, id).SodPolicy(sodPolicy).Execute()
+> SodPolicy PutSodPolicy(ctx, id).SodPolicy(sodPolicy).Execute()
 
 Update SOD policy by ID
 
@@ -1089,13 +953,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyApi.UpdateSodPolicy(context.Background(), id).SodPolicy(sodPolicy).Execute()
+    resp, r, err := apiClient.SODPolicyApi.PutSodPolicy(context.Background(), id).SodPolicy(sodPolicy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.UpdateSodPolicy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.PutSodPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateSodPolicy`: SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.UpdateSodPolicy`: %v\n", resp)
+    // response from `PutSodPolicy`: SodPolicy
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.PutSodPolicy`: %v\n", resp)
 }
 ```
 
@@ -1109,7 +973,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateSodPolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutSodPolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1128,6 +992,142 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StartSodAllPoliciesForOrg
+
+> ReportResultReference StartSodAllPoliciesForOrg(ctx).MultiPolicyRequest(multiPolicyRequest).Execute()
+
+Runs all policies for org
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    multiPolicyRequest := *openapiclient.NewMultiPolicyRequest() // MultiPolicyRequest |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SODPolicyApi.StartSodAllPoliciesForOrg(context.Background()).MultiPolicyRequest(multiPolicyRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.StartSodAllPoliciesForOrg``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StartSodAllPoliciesForOrg`: ReportResultReference
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.StartSodAllPoliciesForOrg`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStartSodAllPoliciesForOrgRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **multiPolicyRequest** | [**MultiPolicyRequest**](MultiPolicyRequest.md) |  | 
+
+### Return type
+
+[**ReportResultReference**](ReportResultReference.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StartSodPolicy
+
+> ReportResultReference StartSodPolicy(ctx, id).Execute()
+
+Runs SOD policy violation report
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The SOD policy ID to run.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SODPolicyApi.StartSodPolicy(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.StartSodPolicy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StartSodPolicy`: ReportResultReference
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.StartSodPolicy`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The SOD policy ID to run. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStartSodPolicyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ReportResultReference**](ReportResultReference.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -97,7 +97,7 @@ Class | Method | HTTP request | Description
 *AccessRequestsApi* | [**CreateAccessRequest**](docs/AccessRequestsApi.md#createaccessrequest) | **Post** /access-requests | Submit an Access Request
 *AccessRequestsApi* | [**GetAccessRequestConfig**](docs/AccessRequestsApi.md#getaccessrequestconfig) | **Get** /access-request-config | Get Access Request Configuration
 *AccessRequestsApi* | [**ListAccessRequestStatus**](docs/AccessRequestsApi.md#listaccessrequeststatus) | **Get** /access-request-status | Access Request Status
-*AccessRequestsApi* | [**UpdateAccessRequestConfig**](docs/AccessRequestsApi.md#updateaccessrequestconfig) | **Put** /access-request-config | Update Access Request Configuration
+*AccessRequestsApi* | [**SetAccessRequestConfig**](docs/AccessRequestsApi.md#setaccessrequestconfig) | **Put** /access-request-config | Update Access Request Configuration
 *AccountActivitiesApi* | [**GetAccountActivity**](docs/AccountActivitiesApi.md#getaccountactivity) | **Get** /account-activities/{id} | Get Account Activity
 *AccountActivitiesApi* | [**ListAccountActivities**](docs/AccountActivitiesApi.md#listaccountactivities) | **Get** /account-activities | List Account Activities
 *AccountAggregationsApi* | [**GetAccountAggregationStatus**](docs/AccountAggregationsApi.md#getaccountaggregationstatus) | **Get** /account-aggregations/{id}/status | In-progress Account Aggregation status
@@ -179,14 +179,14 @@ Class | Method | HTTP request | Description
 *EntitlementsApi* | [**UpdateEntitlementsInBulk**](docs/EntitlementsApi.md#updateentitlementsinbulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 *GovernanceGroupsApi* | [**CreateWorkgroup**](docs/GovernanceGroupsApi.md#createworkgroup) | **Post** /workgroups | Create a new Governance Group.
 *GovernanceGroupsApi* | [**DeleteWorkgroup**](docs/GovernanceGroupsApi.md#deleteworkgroup) | **Delete** /workgroups/{id} | Delete a Governance Group
-*GovernanceGroupsApi* | [**DeleteWorkgroupMembers**](docs/GovernanceGroupsApi.md#deleteworkgroupmembers) | **Post** /workgroups/{workgrouId}/members/bulk-delete | Remove members from Governance Group
+*GovernanceGroupsApi* | [**DeleteWorkgroupMembers**](docs/GovernanceGroupsApi.md#deleteworkgroupmembers) | **Post** /workgroups/{workgroupId}/members/bulk-delete | Remove members from Governance Group
 *GovernanceGroupsApi* | [**DeleteWorkgroupsInBulk**](docs/GovernanceGroupsApi.md#deleteworkgroupsinbulk) | **Post** /workgroups/bulk-delete | Delete Governance Group(s)
 *GovernanceGroupsApi* | [**GetWorkgroup**](docs/GovernanceGroupsApi.md#getworkgroup) | **Get** /workgroups/{id} | Get Governance Group by Id
-*GovernanceGroupsApi* | [**ListConnections**](docs/GovernanceGroupsApi.md#listconnections) | **Get** /workgroups/{workgrouId}/connections | List connections for Governance Group
-*GovernanceGroupsApi* | [**ListWorkgroupMembers**](docs/GovernanceGroupsApi.md#listworkgroupmembers) | **Get** /workgroups/{workgrouId}/members | List Governance Group Members
+*GovernanceGroupsApi* | [**ListConnections**](docs/GovernanceGroupsApi.md#listconnections) | **Get** /workgroups/{workgroupId}/connections | List connections for Governance Group
+*GovernanceGroupsApi* | [**ListWorkgroupMembers**](docs/GovernanceGroupsApi.md#listworkgroupmembers) | **Get** /workgroups/{workgroupId}/members | List Governance Group Members
 *GovernanceGroupsApi* | [**ListWorkgroups**](docs/GovernanceGroupsApi.md#listworkgroups) | **Get** /workgroups | List Governance Groups
 *GovernanceGroupsApi* | [**PatchWorkgroup**](docs/GovernanceGroupsApi.md#patchworkgroup) | **Patch** /workgroups/{id} | Patch a Governance Group
-*GovernanceGroupsApi* | [**UpdateWorkgroupMembers**](docs/GovernanceGroupsApi.md#updateworkgroupmembers) | **Post** /workgroups/{workgrouId}/members/bulk-add | Add members to Governance Group
+*GovernanceGroupsApi* | [**UpdateWorkgroupMembers**](docs/GovernanceGroupsApi.md#updateworkgroupmembers) | **Post** /workgroups/{workgroupId}/members/bulk-add | Add members to Governance Group
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsIgnoredItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsignoreditem) | **Post** /ai-access-request-recommendations/ignored-items | Notification of Ignored Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsRequestedItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsrequesteditem) | **Post** /ai-access-request-recommendations/requested-items | Notification of Requested Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**AddAccessRequestRecommendationsViewedItem**](docs/IAIAccessRequestRecommendationsApi.md#addaccessrequestrecommendationsvieweditem) | **Post** /ai-access-request-recommendations/viewed-items | Notification of Viewed Access Request Recommendations
@@ -219,18 +219,22 @@ Class | Method | HTTP request | Description
 *IAIRoleMiningApi* | [**ExportRoleMiningPotentialRole**](docs/IAIRoleMiningApi.md#exportroleminingpotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export | Export (download) details for a potential role in a role mining session
 *IAIRoleMiningApi* | [**ExportRoleMiningPotentialRoleAsync**](docs/IAIRoleMiningApi.md#exportroleminingpotentialroleasync) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async | Asynchronously export details for a potential role in a role mining session and upload to S3
 *IAIRoleMiningApi* | [**ExportRoleMiningPotentialRoleStatus**](docs/IAIRoleMiningApi.md#exportroleminingpotentialrolestatus) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId} | Retrieve status of a potential role export job
+*IAIRoleMiningApi* | [**GetAllPotentialRoleSummaries**](docs/IAIRoleMiningApi.md#getallpotentialrolesummaries) | **Get** /role-mining-potential-roles | Retrieves all potential role summaries
 *IAIRoleMiningApi* | [**GetEntitlementDistributionPotentialRole**](docs/IAIRoleMiningApi.md#getentitlementdistributionpotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularity-distribution | Retrieves entitlement popularity distribution for a potential role in a role mining session
 *IAIRoleMiningApi* | [**GetEntitlementsPotentialRole**](docs/IAIRoleMiningApi.md#getentitlementspotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
 *IAIRoleMiningApi* | [**GetExcludedEntitlementsPotentialRole**](docs/IAIRoleMiningApi.md#getexcludedentitlementspotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
 *IAIRoleMiningApi* | [**GetIdentitiesPotentialRole**](docs/IAIRoleMiningApi.md#getidentitiespotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
 *IAIRoleMiningApi* | [**GetPotentialRole**](docs/IAIRoleMiningApi.md#getpotentialrole) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
 *IAIRoleMiningApi* | [**GetPotentialRoleApplications**](docs/IAIRoleMiningApi.md#getpotentialroleapplications) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
+*IAIRoleMiningApi* | [**GetPotentialRoleSourceIdentityUsage**](docs/IAIRoleMiningApi.md#getpotentialrolesourceidentityusage) | **Get** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
 *IAIRoleMiningApi* | [**GetPotentialRoleSummaries**](docs/IAIRoleMiningApi.md#getpotentialrolesummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
+*IAIRoleMiningApi* | [**GetRoleMiningPotentialRole**](docs/IAIRoleMiningApi.md#getroleminingpotentialrole) | **Get** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
 *IAIRoleMiningApi* | [**GetRoleMiningSession**](docs/IAIRoleMiningApi.md#getroleminingsession) | **Get** /role-mining-sessions/{sessionId} | Get a role mining session
 *IAIRoleMiningApi* | [**GetRoleMiningSessionStatus**](docs/IAIRoleMiningApi.md#getroleminingsessionstatus) | **Get** /role-mining-sessions/{sessionId}/status | Get role mining session status state
 *IAIRoleMiningApi* | [**GetRoleMiningSessions**](docs/IAIRoleMiningApi.md#getroleminingsessions) | **Get** /role-mining-sessions | Retrieves all role mining sessions
-*IAIRoleMiningApi* | [**GetSavedRoles**](docs/IAIRoleMiningApi.md#getsavedroles) | **Get** /role-mining-sessions/{sessionId}/potential-roles/draft-roles | Retrieves all draft roles
+*IAIRoleMiningApi* | [**GetSavedPotentialRoles**](docs/IAIRoleMiningApi.md#getsavedpotentialroles) | **Get** /role-mining-potential-roles/saved | Retrieves all saved potential roles
 *IAIRoleMiningApi* | [**PatchPotentialRole**](docs/IAIRoleMiningApi.md#patchpotentialrole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
+*IAIRoleMiningApi* | [**PatchPotentialRole_0**](docs/IAIRoleMiningApi.md#patchpotentialrole_0) | **Patch** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
 *IAIRoleMiningApi* | [**PatchRoleMiningSession**](docs/IAIRoleMiningApi.md#patchroleminingsession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
 *IAIRoleMiningApi* | [**UpdateEntitlementsPotentialRole**](docs/IAIRoleMiningApi.md#updateentitlementspotentialrole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 *IdentitiesApi* | [**DeleteIdentity**](docs/IdentitiesApi.md#deleteidentity) | **Delete** /identities/{id} | Deletes an identity.
@@ -239,8 +243,12 @@ Class | Method | HTTP request | Description
 *IdentitiesApi* | [**ListIdentities**](docs/IdentitiesApi.md#listidentities) | **Get** /identities | List Identities
 *IdentitiesApi* | [**StartIdentityProcessing**](docs/IdentitiesApi.md#startidentityprocessing) | **Post** /identities/process | Process a list of identityIds
 *IdentitiesApi* | [**SynchronizeAttributesForIdentity**](docs/IdentitiesApi.md#synchronizeattributesforidentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
+*IdentityAttributesApi* | [**CreateIdentityAttribute**](docs/IdentityAttributesApi.md#createidentityattribute) | **Post** /identity-attributes/{name} | Create Identity Attribute
+*IdentityAttributesApi* | [**DeleteIdentityAttribute**](docs/IdentityAttributesApi.md#deleteidentityattribute) | **Delete** /identity-attributes/{name} | Delete Identity Attribute
+*IdentityAttributesApi* | [**DeleteIdentityAttributesInBulk**](docs/IdentityAttributesApi.md#deleteidentityattributesinbulk) | **Post** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
 *IdentityAttributesApi* | [**GetIdentityAttribute**](docs/IdentityAttributesApi.md#getidentityattribute) | **Get** /identity-attributes/{name} | Get Identity Attribute
 *IdentityAttributesApi* | [**ListIdentityAttributes**](docs/IdentityAttributesApi.md#listidentityattributes) | **Get** /identity-attributes | List Identity Attributes
+*IdentityAttributesApi* | [**PutIdentityAttribute**](docs/IdentityAttributesApi.md#putidentityattribute) | **Put** /identity-attributes/{name} | Update Identity Attribute
 *IdentityHistoryApi* | [**CompareIdentitySnapshots**](docs/IdentityHistoryApi.md#compareidentitysnapshots) | **Get** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
 *IdentityHistoryApi* | [**CompareIdentitySnapshotsAccessType**](docs/IdentityHistoryApi.md#compareidentitysnapshotsaccesstype) | **Get** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
 *IdentityHistoryApi* | [**GetHistoricalIdentity**](docs/IdentityHistoryApi.md#gethistoricalidentity) | **Get** /historical-identities/{id} | Get latest snapshot of identity
@@ -265,8 +273,11 @@ Class | Method | HTTP request | Description
 *IdentityProfilesApi* | [**UpdateIdentityProfile**](docs/IdentityProfilesApi.md#updateidentityprofile) | **Patch** /identity-profiles/{identity-profile-id} | Update the Identity Profile
 *LifecycleStatesApi* | [**ListLifecycleStates**](docs/LifecycleStatesApi.md#listlifecyclestates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Lifecycle State
 *LifecycleStatesApi* | [**UpdateLifecycleStates**](docs/LifecycleStatesApi.md#updatelifecyclestates) | **Patch** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
-*MFAConfigurationApi* | [**GetMFAConfig**](docs/MFAConfigurationApi.md#getmfaconfig) | **Get** /mfa/{method}/config | Configuration of a MFA method
-*MFAConfigurationApi* | [**SetMFAConfig**](docs/MFAConfigurationApi.md#setmfaconfig) | **Put** /mfa/{method}/config | Set MFA method configuration
+*MFAConfigurationApi* | [**DeleteMFAConfig**](docs/MFAConfigurationApi.md#deletemfaconfig) | **Delete** /mfa/{method}/delete | Delete MFA method configuration
+*MFAConfigurationApi* | [**GetMFADuoConfig**](docs/MFAConfigurationApi.md#getmfaduoconfig) | **Get** /mfa/duo-web/config | Configuration of Duo MFA method
+*MFAConfigurationApi* | [**GetMFAOktaConfig**](docs/MFAConfigurationApi.md#getmfaoktaconfig) | **Get** /mfa/okta-verify/config | Configuration of Okta MFA method
+*MFAConfigurationApi* | [**SetMFADuoConfig**](docs/MFAConfigurationApi.md#setmfaduoconfig) | **Put** /mfa/duo-web/config | Set Duo MFA configuration
+*MFAConfigurationApi* | [**SetMFAOktaConfig**](docs/MFAConfigurationApi.md#setmfaoktaconfig) | **Put** /mfa/okta-verify/config | Set Okta MFA configuration
 *MFAConfigurationApi* | [**TestMFAConfig**](docs/MFAConfigurationApi.md#testmfaconfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
 *ManagedClientsApi* | [**GetManagedClientStatus**](docs/ManagedClientsApi.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Specified Managed Client Status.
 *ManagedClientsApi* | [**UpdateManagedClientStatus**](docs/ManagedClientsApi.md#updatemanagedclientstatus) | **Post** /managed-clients/{id}/status | Handle status request from client
@@ -351,14 +362,14 @@ Class | Method | HTTP request | Description
 *PublicIdentitiesConfigApi* | [**GetPublicIdentityConfig**](docs/PublicIdentitiesConfigApi.md#getpublicidentityconfig) | **Get** /public-identities-config | Get Public Identity Config
 *PublicIdentitiesConfigApi* | [**UpdatePublicIdentityConfig**](docs/PublicIdentitiesConfigApi.md#updatepublicidentityconfig) | **Put** /public-identities-config | Update Public Identity Config
 *RequestableObjectsApi* | [**ListRequestableObjects**](docs/RequestableObjectsApi.md#listrequestableobjects) | **Get** /requestable-objects | Requestable Objects List
-*RoleInsightsApi* | [**CreateRoleInsightRequests**](docs/RoleInsightsApi.md#createroleinsightrequests) | **Post** /role-insights/requests | A request to generate insights for roles
+*RoleInsightsApi* | [**CreateRoleInsightRequests**](docs/RoleInsightsApi.md#createroleinsightrequests) | **Post** /role-insights/requests | Generate insights for roles
 *RoleInsightsApi* | [**DownloadRoleInsightsEntitlementsChanges**](docs/RoleInsightsApi.md#downloadroleinsightsentitlementschanges) | **Get** /role-insights/{insightId}/entitlement-changes/download | Download entitlement insights for a role
 *RoleInsightsApi* | [**GetEntitlementChangesIdentities**](docs/RoleInsightsApi.md#getentitlementchangesidentities) | **Get** /role-insights/{insightId}/entitlement-changes/{entitlementId}/identities | Get identities for a suggested entitlement (for a role)
 *RoleInsightsApi* | [**GetRoleInsight**](docs/RoleInsightsApi.md#getroleinsight) | **Get** /role-insights/{insightId} | Get a single role insight
 *RoleInsightsApi* | [**GetRoleInsights**](docs/RoleInsightsApi.md#getroleinsights) | **Get** /role-insights | Get role insights
 *RoleInsightsApi* | [**GetRoleInsightsCurrentEntitlements**](docs/RoleInsightsApi.md#getroleinsightscurrententitlements) | **Get** /role-insights/{insightId}/current-entitlements | Get current entitlement for a role
 *RoleInsightsApi* | [**GetRoleInsightsEntitlementsChanges**](docs/RoleInsightsApi.md#getroleinsightsentitlementschanges) | **Get** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
-*RoleInsightsApi* | [**GetRoleInsightsRequests**](docs/RoleInsightsApi.md#getroleinsightsrequests) | **Get** /role-insights/requests/{id} | Returns the metadata for a request in order to generate insights for roles.
+*RoleInsightsApi* | [**GetRoleInsightsRequests**](docs/RoleInsightsApi.md#getroleinsightsrequests) | **Get** /role-insights/requests/{id} | Returns metadata from prior request.
 *RoleInsightsApi* | [**GetRoleInsightsSummary**](docs/RoleInsightsApi.md#getroleinsightssummary) | **Get** /role-insights/summary | Get role insights summary information
 *RolesApi* | [**BulkDeleteRoles**](docs/RolesApi.md#bulkdeleteroles) | **Post** /roles/bulk-delete | Delete Role(s)
 *RolesApi* | [**CreateRole**](docs/RolesApi.md#createrole) | **Post** /roles | Create a Role
@@ -370,8 +381,8 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**CreateSodPolicy**](docs/SODPolicyApi.md#createsodpolicy) | **Post** /sod-policies | Create SOD policy
 *SODPolicyApi* | [**DeleteSodPolicy**](docs/SODPolicyApi.md#deletesodpolicy) | **Delete** /sod-policies/{id} | Delete SOD policy by ID
 *SODPolicyApi* | [**DeleteSodPolicySchedule**](docs/SODPolicyApi.md#deletesodpolicyschedule) | **Delete** /sod-policies/{id}/schedule | Delete SOD policy schedule
-*SODPolicyApi* | [**DownloadCustomViolationReport**](docs/SODPolicyApi.md#downloadcustomviolationreport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
-*SODPolicyApi* | [**DownloadDefaultViolationReport**](docs/SODPolicyApi.md#downloaddefaultviolationreport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
+*SODPolicyApi* | [**GetCustomViolationReport**](docs/SODPolicyApi.md#getcustomviolationreport) | **Get** /sod-violation-report/{reportResultId}/download/{fileName} | Download custom violation report
+*SODPolicyApi* | [**GetDefaultViolationReport**](docs/SODPolicyApi.md#getdefaultviolationreport) | **Get** /sod-violation-report/{reportResultId}/download | Download violation report
 *SODPolicyApi* | [**GetSodAllReportRunStatus**](docs/SODPolicyApi.md#getsodallreportrunstatus) | **Get** /sod-violation-report | Get multi-report run task status
 *SODPolicyApi* | [**GetSodPolicy**](docs/SODPolicyApi.md#getsodpolicy) | **Get** /sod-policies/{id} | Get SOD policy by ID
 *SODPolicyApi* | [**GetSodPolicySchedule**](docs/SODPolicyApi.md#getsodpolicyschedule) | **Get** /sod-policies/{id}/schedule | Get SOD policy schedule
@@ -379,11 +390,11 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**GetSodViolationReportStatus**](docs/SODPolicyApi.md#getsodviolationreportstatus) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
 *SODPolicyApi* | [**ListSodPolicies**](docs/SODPolicyApi.md#listsodpolicies) | **Get** /sod-policies | List SOD policies
 *SODPolicyApi* | [**PatchSodPolicy**](docs/SODPolicyApi.md#patchsodpolicy) | **Patch** /sod-policies/{id} | Patch a SOD policy
-*SODPolicyApi* | [**RunSodAllPoliciesForOrg**](docs/SODPolicyApi.md#runsodallpoliciesfororg) | **Post** /sod-violation-report/run | Runs all policies for org
-*SODPolicyApi* | [**RunSodPolicy**](docs/SODPolicyApi.md#runsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
-*SODPolicyApi* | [**UpdatePolicySchedule**](docs/SODPolicyApi.md#updatepolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
-*SODPolicyApi* | [**UpdateSodPolicy**](docs/SODPolicyApi.md#updatesodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
-*SODViolationsApi* | [**PredictSodViolations**](docs/SODViolationsApi.md#predictsodviolations) | **Post** /sod-violations/predict | Predict SOD violations for the given identity if they were granted the given access.
+*SODPolicyApi* | [**PutPolicySchedule**](docs/SODPolicyApi.md#putpolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
+*SODPolicyApi* | [**PutSodPolicy**](docs/SODPolicyApi.md#putsodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
+*SODPolicyApi* | [**StartSodAllPoliciesForOrg**](docs/SODPolicyApi.md#startsodallpoliciesfororg) | **Post** /sod-violation-report/run | Runs all policies for org
+*SODPolicyApi* | [**StartSodPolicy**](docs/SODPolicyApi.md#startsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
+*SODViolationsApi* | [**StartPredictSodViolations**](docs/SODViolationsApi.md#startpredictsodviolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
 *SPConfigApi* | [**ExportSpConfig**](docs/SPConfigApi.md#exportspconfig) | **Post** /sp-config/export | Initiates configuration objects export job
 *SPConfigApi* | [**GetSpConfigExport**](docs/SPConfigApi.md#getspconfigexport) | **Get** /sp-config/export/{id}/download | Download export job result.
 *SPConfigApi* | [**GetSpConfigExportStatus**](docs/SPConfigApi.md#getspconfigexportstatus) | **Get** /sp-config/export/{id} | Get export job status
@@ -450,14 +461,14 @@ Class | Method | HTTP request | Description
 *SourcesApi* | [**UpdateSource**](docs/SourcesApi.md#updatesource) | **Patch** /sources/{id} | Update Source (Partial)
 *SourcesApi* | [**UpdateSourceEntitlementRequestConfig**](docs/SourcesApi.md#updatesourceentitlementrequestconfig) | **Put** /sources/{id}/entitlement-request-config | Update Source Entitlement Request Configuration
 *SourcesApi* | [**UpdateSourceSchema**](docs/SourcesApi.md#updatesourceschema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
-*TaggedObjectsApi* | [**AddTagsToManyObjects**](docs/TaggedObjectsApi.md#addtagstomanyobjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
 *TaggedObjectsApi* | [**DeleteTaggedObject**](docs/TaggedObjectsApi.md#deletetaggedobject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
+*TaggedObjectsApi* | [**DeleteTagsToManyObject**](docs/TaggedObjectsApi.md#deletetagstomanyobject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsApi* | [**GetTaggedObject**](docs/TaggedObjectsApi.md#gettaggedobject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
 *TaggedObjectsApi* | [**ListTaggedObjects**](docs/TaggedObjectsApi.md#listtaggedobjects) | **Get** /tagged-objects | List Tagged Objects
 *TaggedObjectsApi* | [**ListTaggedObjectsByType**](docs/TaggedObjectsApi.md#listtaggedobjectsbytype) | **Get** /tagged-objects/{type} | List Tagged Objects
-*TaggedObjectsApi* | [**RemoveTagsToManyObject**](docs/TaggedObjectsApi.md#removetagstomanyobject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
+*TaggedObjectsApi* | [**PutTaggedObject**](docs/TaggedObjectsApi.md#puttaggedobject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
 *TaggedObjectsApi* | [**SetTagToObject**](docs/TaggedObjectsApi.md#settagtoobject) | **Post** /tagged-objects | Add Tag to Object
-*TaggedObjectsApi* | [**UpdateTaggedObject**](docs/TaggedObjectsApi.md#updatetaggedobject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
+*TaggedObjectsApi* | [**SetTagsToManyObjects**](docs/TaggedObjectsApi.md#settagstomanyobjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
 *TaskManagementApi* | [**GetPendingTaskHeaders**](docs/TaskManagementApi.md#getpendingtaskheaders) | **Head** /task-status/pending-tasks | Retrieve headers only for pending task list.
 *TaskManagementApi* | [**GetPendingTasks**](docs/TaskManagementApi.md#getpendingtasks) | **Get** /task-status/pending-tasks | Retrieve a pending task list.
 *TaskManagementApi* | [**GetTaskStatus**](docs/TaskManagementApi.md#gettaskstatus) | **Get** /task-status/{id} | Get task status by ID.
@@ -528,12 +539,19 @@ Class | Method | HTTP request | Description
  - [AccessItemAccessProfileResponse](docs/AccessItemAccessProfileResponse.md)
  - [AccessItemAccountResponse](docs/AccessItemAccountResponse.md)
  - [AccessItemAppResponse](docs/AccessItemAppResponse.md)
+ - [AccessItemApproverDto](docs/AccessItemApproverDto.md)
  - [AccessItemAssociated](docs/AccessItemAssociated.md)
  - [AccessItemAssociatedAccessItem](docs/AccessItemAssociatedAccessItem.md)
  - [AccessItemDiff](docs/AccessItemDiff.md)
  - [AccessItemEntitlementResponse](docs/AccessItemEntitlementResponse.md)
+ - [AccessItemOwnerDto](docs/AccessItemOwnerDto.md)
  - [AccessItemRef](docs/AccessItemRef.md)
  - [AccessItemRemoved](docs/AccessItemRemoved.md)
+ - [AccessItemRequestedFor](docs/AccessItemRequestedFor.md)
+ - [AccessItemRequestedForDto](docs/AccessItemRequestedForDto.md)
+ - [AccessItemRequester](docs/AccessItemRequester.md)
+ - [AccessItemRequesterDto](docs/AccessItemRequesterDto.md)
+ - [AccessItemReviewedBy](docs/AccessItemReviewedBy.md)
  - [AccessItemRoleResponse](docs/AccessItemRoleResponse.md)
  - [AccessProfile](docs/AccessProfile.md)
  - [AccessProfileApprovalScheme](docs/AccessProfileApprovalScheme.md)
@@ -542,6 +560,7 @@ Class | Method | HTTP request | Description
  - [AccessProfileRef](docs/AccessProfileRef.md)
  - [AccessProfileSourceRef](docs/AccessProfileSourceRef.md)
  - [AccessProfileUsage](docs/AccessProfileUsage.md)
+ - [AccessProfileUsageUsedByInner](docs/AccessProfileUsageUsedByInner.md)
  - [AccessRecommendationMessage](docs/AccessRecommendationMessage.md)
  - [AccessRequest](docs/AccessRequest.md)
  - [AccessRequestConfig](docs/AccessRequestConfig.md)
@@ -623,8 +642,11 @@ Class | Method | HTTP request | Description
  - [ApprovalSchemeForRole](docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](docs/ApprovalStatus.md)
  - [ApprovalStatusDto](docs/ApprovalStatusDto.md)
+ - [ApprovalStatusDtoOriginalOwner](docs/ApprovalStatusDtoOriginalOwner.md)
  - [ApprovalSummary](docs/ApprovalSummary.md)
  - [Argument](docs/Argument.md)
+ - [ArrayInner](docs/ArrayInner.md)
+ - [AttrSyncSource](docs/AttrSyncSource.md)
  - [AttrSyncSourceAttributeConfig](docs/AttrSyncSourceAttributeConfig.md)
  - [AttrSyncSourceConfig](docs/AttrSyncSourceConfig.md)
  - [AttributeChange](docs/AttributeChange.md)
@@ -635,12 +657,12 @@ Class | Method | HTTP request | Description
  - [AuditDetails](docs/AuditDetails.md)
  - [BaseCommonDto](docs/BaseCommonDto.md)
  - [BaseCommonDto1](docs/BaseCommonDto1.md)
- - [BaseReferenceDto](docs/BaseReferenceDto.md)
- - [BaseReferenceDto1](docs/BaseReferenceDto1.md)
  - [BasicAuthConfig](docs/BasicAuthConfig.md)
  - [BearerTokenAuthConfig](docs/BearerTokenAuthConfig.md)
+ - [BeforeProvisioningRuleDto](docs/BeforeProvisioningRuleDto.md)
  - [BulkIdentitiesAccountsResponse](docs/BulkIdentitiesAccountsResponse.md)
  - [BulkTaggedObject](docs/BulkTaggedObject.md)
+ - [BulkWorkgroupMembersRequestInner](docs/BulkWorkgroupMembersRequestInner.md)
  - [Campaign](docs/Campaign.md)
  - [CampaignActivated](docs/CampaignActivated.md)
  - [CampaignActivatedCampaign](docs/CampaignActivatedCampaign.md)
@@ -664,6 +686,7 @@ Class | Method | HTTP request | Description
  - [CertificationPhase](docs/CertificationPhase.md)
  - [CertificationReference](docs/CertificationReference.md)
  - [CertificationReferenceAllOf](docs/CertificationReferenceAllOf.md)
+ - [CertificationReferenceDto](docs/CertificationReferenceDto.md)
  - [CertificationSignedOff](docs/CertificationSignedOff.md)
  - [CertificationSignedOffCertification](docs/CertificationSignedOffCertification.md)
  - [CertificationTask](docs/CertificationTask.md)
@@ -673,8 +696,7 @@ Class | Method | HTTP request | Description
  - [CloseAccessRequest](docs/CloseAccessRequest.md)
  - [Comment](docs/Comment.md)
  - [CommentDto](docs/CommentDto.md)
- - [CommentDto1](docs/CommentDto1.md)
- - [CommentDto1Author](docs/CommentDto1Author.md)
+ - [CommentDtoAuthor](docs/CommentDtoAuthor.md)
  - [CommonAccessIDStatus](docs/CommonAccessIDStatus.md)
  - [CommonAccessItemAccess](docs/CommonAccessItemAccess.md)
  - [CommonAccessItemRequest](docs/CommonAccessItemRequest.md)
@@ -686,9 +708,12 @@ Class | Method | HTTP request | Description
  - [CompleteInvocation](docs/CompleteInvocation.md)
  - [CompleteInvocationInput](docs/CompleteInvocationInput.md)
  - [CompletedApproval](docs/CompletedApproval.md)
+ - [CompletedApprovalReviewedBy](docs/CompletedApprovalReviewedBy.md)
+ - [CompletedApprovalReviewerComment](docs/CompletedApprovalReviewerComment.md)
  - [CompletedApprovalState](docs/CompletedApprovalState.md)
  - [CompletionStatus](docs/CompletionStatus.md)
  - [ConditionEffect](docs/ConditionEffect.md)
+ - [ConditionEffectConfig](docs/ConditionEffectConfig.md)
  - [ConditionRule](docs/ConditionRule.md)
  - [ConfigObject](docs/ConfigObject.md)
  - [ConfigType](docs/ConfigType.md)
@@ -787,6 +812,7 @@ Class | Method | HTTP request | Description
  - [FullcampaignAllOfRoleCompositionCampaignInfo](docs/FullcampaignAllOfRoleCompositionCampaignInfo.md)
  - [FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef](docs/FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)
  - [FullcampaignAllOfSearchCampaignInfo](docs/FullcampaignAllOfSearchCampaignInfo.md)
+ - [FullcampaignAllOfSearchCampaignInfoReviewer](docs/FullcampaignAllOfSearchCampaignInfoReviewer.md)
  - [FullcampaignAllOfSourceOwnerCampaignInfo](docs/FullcampaignAllOfSourceOwnerCampaignInfo.md)
  - [FullcampaignAllOfSourcesWithOrphanEntitlements](docs/FullcampaignAllOfSourcesWithOrphanEntitlements.md)
  - [GetActiveCampaigns200ResponseInner](docs/GetActiveCampaigns200ResponseInner.md)
@@ -805,6 +831,7 @@ Class | Method | HTTP request | Description
  - [IdentityAttribute](docs/IdentityAttribute.md)
  - [IdentityAttributeConfig](docs/IdentityAttributeConfig.md)
  - [IdentityAttributeConfig1](docs/IdentityAttributeConfig1.md)
+ - [IdentityAttributeNames](docs/IdentityAttributeNames.md)
  - [IdentityAttributePreview](docs/IdentityAttributePreview.md)
  - [IdentityAttributeTransform](docs/IdentityAttributeTransform.md)
  - [IdentityAttributeTransform1](docs/IdentityAttributeTransform1.md)
@@ -822,6 +849,7 @@ Class | Method | HTTP request | Description
  - [IdentityDeleted](docs/IdentityDeleted.md)
  - [IdentityDeletedIdentity](docs/IdentityDeletedIdentity.md)
  - [IdentityDto](docs/IdentityDto.md)
+ - [IdentityDtoManagerRef](docs/IdentityDtoManagerRef.md)
  - [IdentityEntities](docs/IdentityEntities.md)
  - [IdentityEntitiesIdentityEntity](docs/IdentityEntitiesIdentityEntity.md)
  - [IdentityExceptionReportReference](docs/IdentityExceptionReportReference.md)
@@ -832,6 +860,7 @@ Class | Method | HTTP request | Description
  - [IdentityOwnershipAssociationDetailsAssociationDetailsInner](docs/IdentityOwnershipAssociationDetailsAssociationDetailsInner.md)
  - [IdentityPreviewRequest](docs/IdentityPreviewRequest.md)
  - [IdentityPreviewResponse](docs/IdentityPreviewResponse.md)
+ - [IdentityPreviewResponseIdentity](docs/IdentityPreviewResponseIdentity.md)
  - [IdentityProfile](docs/IdentityProfile.md)
  - [IdentityProfile1](docs/IdentityProfile1.md)
  - [IdentityProfile1AllOf](docs/IdentityProfile1AllOf.md)
@@ -852,6 +881,7 @@ Class | Method | HTTP request | Description
  - [ImportFormDefinitions202Response](docs/ImportFormDefinitions202Response.md)
  - [ImportFormDefinitions202ResponseErrorsInner](docs/ImportFormDefinitions202ResponseErrorsInner.md)
  - [ImportNonEmployeeRecordsInBulkRequest](docs/ImportNonEmployeeRecordsInBulkRequest.md)
+ - [ImportObject](docs/ImportObject.md)
  - [ImportOptions](docs/ImportOptions.md)
  - [ImportSpConfigRequest](docs/ImportSpConfigRequest.md)
  - [Invocation](docs/Invocation.md)
@@ -860,7 +890,6 @@ Class | Method | HTTP request | Description
  - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
- - [JsonPatchOperationValueAnyOfInner](docs/JsonPatchOperationValueAnyOfInner.md)
  - [LatestOutlierSummary](docs/LatestOutlierSummary.md)
  - [LifecycleState](docs/LifecycleState.md)
  - [LifecycleStateDto](docs/LifecycleStateDto.md)
@@ -873,6 +902,7 @@ Class | Method | HTTP request | Description
  - [ListFormInstancesByTenantResponse](docs/ListFormInstancesByTenantResponse.md)
  - [ListIdentityAccessItems200ResponseInner](docs/ListIdentityAccessItems200ResponseInner.md)
  - [ListPredefinedSelectOptionsResponse](docs/ListPredefinedSelectOptionsResponse.md)
+ - [ListWorkgroupMembers200ResponseInner](docs/ListWorkgroupMembers200ResponseInner.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [LocalizedMessage](docs/LocalizedMessage.md)
  - [LookupStep](docs/LookupStep.md)
@@ -891,13 +921,16 @@ Class | Method | HTTP request | Description
  - [ManagedClusterTypes](docs/ManagedClusterTypes.md)
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
  - [ManualWorkItemDetails](docs/ManualWorkItemDetails.md)
+ - [ManualWorkItemDetailsCurrentOwner](docs/ManualWorkItemDetailsCurrentOwner.md)
+ - [ManualWorkItemDetailsOriginalOwner](docs/ManualWorkItemDetailsOriginalOwner.md)
  - [ManualWorkItemState](docs/ManualWorkItemState.md)
  - [ManuallyUpdatedFieldsDTO](docs/ManuallyUpdatedFieldsDTO.md)
  - [Medium](docs/Medium.md)
  - [MessageCatalogDto](docs/MessageCatalogDto.md)
  - [MetricResponse](docs/MetricResponse.md)
- - [MfaConfig](docs/MfaConfig.md)
  - [MfaConfigTestResponse](docs/MfaConfigTestResponse.md)
+ - [MfaDuoConfig](docs/MfaDuoConfig.md)
+ - [MfaOktaConfig](docs/MfaOktaConfig.md)
  - [MultiPolicyRequest](docs/MultiPolicyRequest.md)
  - [NativeChangeDetectionConfig](docs/NativeChangeDetectionConfig.md)
  - [NonEmployeeApprovalDecision](docs/NonEmployeeApprovalDecision.md)
@@ -944,8 +977,10 @@ Class | Method | HTTP request | Description
  - [OutlierFeatureTranslation](docs/OutlierFeatureTranslation.md)
  - [OutlierSummary](docs/OutlierSummary.md)
  - [OutliersContributingFeatureAccessItems](docs/OutliersContributingFeatureAccessItems.md)
+ - [OwnerDto](docs/OwnerDto.md)
  - [OwnerReference](docs/OwnerReference.md)
  - [OwnerReferenceDto](docs/OwnerReferenceDto.md)
+ - [OwnerReferenceSegments](docs/OwnerReferenceSegments.md)
  - [PasswordChangeRequest](docs/PasswordChangeRequest.md)
  - [PasswordChangeResponse](docs/PasswordChangeResponse.md)
  - [PasswordDigitToken](docs/PasswordDigitToken.md)
@@ -956,6 +991,7 @@ Class | Method | HTTP request | Description
  - [PasswordOrgConfig](docs/PasswordOrgConfig.md)
  - [PasswordStatus](docs/PasswordStatus.md)
  - [PasswordSyncGroup](docs/PasswordSyncGroup.md)
+ - [PatOwner](docs/PatOwner.md)
  - [PatchPotentialRoleRequestInner](docs/PatchPotentialRoleRequestInner.md)
  - [PeerGroupMember](docs/PeerGroupMember.md)
  - [PendingApproval](docs/PendingApproval.md)
@@ -1054,14 +1090,17 @@ Class | Method | HTTP request | Description
  - [RoleMiningPotentialRoleProvisionRequest](docs/RoleMiningPotentialRoleProvisionRequest.md)
  - [RoleMiningPotentialRoleProvisionState](docs/RoleMiningPotentialRoleProvisionState.md)
  - [RoleMiningPotentialRoleRef](docs/RoleMiningPotentialRoleRef.md)
+ - [RoleMiningPotentialRoleSourceUsage](docs/RoleMiningPotentialRoleSourceUsage.md)
  - [RoleMiningPotentialRoleSummary](docs/RoleMiningPotentialRoleSummary.md)
  - [RoleMiningRoleType](docs/RoleMiningRoleType.md)
  - [RoleMiningSessionDraftRoleDto](docs/RoleMiningSessionDraftRoleDto.md)
  - [RoleMiningSessionDto](docs/RoleMiningSessionDto.md)
+ - [RoleMiningSessionDtoCreatedBy](docs/RoleMiningSessionDtoCreatedBy.md)
  - [RoleMiningSessionParametersDto](docs/RoleMiningSessionParametersDto.md)
  - [RoleMiningSessionResponse](docs/RoleMiningSessionResponse.md)
  - [RoleMiningSessionScope](docs/RoleMiningSessionScope.md)
  - [RoleMiningSessionScopingMethod](docs/RoleMiningSessionScopingMethod.md)
+ - [RoleMiningSessionState](docs/RoleMiningSessionState.md)
  - [RoleMiningSessionStatus](docs/RoleMiningSessionStatus.md)
  - [SavedSearchComplete](docs/SavedSearchComplete.md)
  - [SavedSearchCompleteSearchResults](docs/SavedSearchCompleteSearchResults.md)
@@ -1085,12 +1124,14 @@ Class | Method | HTTP request | Description
  - [Segment](docs/Segment.md)
  - [Selector](docs/Selector.md)
  - [SelectorType](docs/SelectorType.md)
+ - [SelfImportExportDto](docs/SelfImportExportDto.md)
  - [SendTestNotificationRequestDto](docs/SendTestNotificationRequestDto.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationDtoAllOf](docs/ServiceDeskIntegrationDtoAllOf.md)
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateDtoAllOf](docs/ServiceDeskIntegrationTemplateDtoAllOf.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
+ - [ServiceDeskSource](docs/ServiceDeskSource.md)
  - [SlimAccount](docs/SlimAccount.md)
  - [SlimAccountAllOf](docs/SlimAccountAllOf.md)
  - [Slimcampaign](docs/Slimcampaign.md)
@@ -1098,7 +1139,10 @@ Class | Method | HTTP request | Description
  - [SodExemptCriteria1](docs/SodExemptCriteria1.md)
  - [SodPolicy](docs/SodPolicy.md)
  - [SodPolicyConflictingAccessCriteria](docs/SodPolicyConflictingAccessCriteria.md)
+ - [SodPolicyDto](docs/SodPolicyDto.md)
  - [SodPolicySchedule](docs/SodPolicySchedule.md)
+ - [SodRecipient](docs/SodRecipient.md)
+ - [SodReportResultDto](docs/SodReportResultDto.md)
  - [SodViolationCheckResult](docs/SodViolationCheckResult.md)
  - [SodViolationCheckResult1](docs/SodViolationCheckResult1.md)
  - [SodViolationContext](docs/SodViolationContext.md)
@@ -1116,6 +1160,7 @@ Class | Method | HTTP request | Description
  - [SourceAccountCorrelationRule](docs/SourceAccountCorrelationRule.md)
  - [SourceBeforeProvisioningRule](docs/SourceBeforeProvisioningRule.md)
  - [SourceCluster](docs/SourceCluster.md)
+ - [SourceClusterDto](docs/SourceClusterDto.md)
  - [SourceCode](docs/SourceCode.md)
  - [SourceCreated](docs/SourceCreated.md)
  - [SourceCreatedActor](docs/SourceCreatedActor.md)
@@ -1145,10 +1190,16 @@ Class | Method | HTTP request | Description
  - [StatusResponse](docs/StatusResponse.md)
  - [Subscription](docs/Subscription.md)
  - [SubscriptionPatchRequestInner](docs/SubscriptionPatchRequestInner.md)
+ - [SubscriptionPatchRequestInnerValue](docs/SubscriptionPatchRequestInnerValue.md)
+ - [SubscriptionPatchRequestInnerValueAnyOfInner](docs/SubscriptionPatchRequestInnerValueAnyOfInner.md)
  - [SubscriptionPostRequest](docs/SubscriptionPostRequest.md)
  - [SubscriptionPutRequest](docs/SubscriptionPutRequest.md)
  - [SubscriptionType](docs/SubscriptionType.md)
  - [TaggedObject](docs/TaggedObject.md)
+ - [TaggedObjectDto](docs/TaggedObjectDto.md)
+ - [TaggedObjectObjectRef](docs/TaggedObjectObjectRef.md)
+ - [TaskResultDto](docs/TaskResultDto.md)
+ - [TaskResultResponse](docs/TaskResultResponse.md)
  - [TaskResultSimplified](docs/TaskResultSimplified.md)
  - [TaskReturnDetails](docs/TaskReturnDetails.md)
  - [TaskStatus](docs/TaskStatus.md)
@@ -1200,6 +1251,7 @@ Class | Method | HTTP request | Description
  - [WorkItemsSummary](docs/WorkItemsSummary.md)
  - [Workflow](docs/Workflow.md)
  - [WorkflowAllOf](docs/WorkflowAllOf.md)
+ - [WorkflowAllOfCreator](docs/WorkflowAllOfCreator.md)
  - [WorkflowBody](docs/WorkflowBody.md)
  - [WorkflowBodyOwner](docs/WorkflowBodyOwner.md)
  - [WorkflowDefinition](docs/WorkflowDefinition.md)

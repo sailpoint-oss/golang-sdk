@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **NestedType** | Pointer to **string** | The nested type. | [optional] 
 **MaxExpansions** | Pointer to **int32** | The number of suffixes the last term will be expanded into. Influences the performance of the query and the number results returned. Valid values: 1 to 1000. | [optional] [default to 10]
 **Size** | Pointer to **int32** | The max amount of records the search will return. | [optional] [default to 100]
+**Sort** | Pointer to **string** | The sort order of the returned records. | [optional] [default to "desc"]
+**SortByValue** | Pointer to **bool** | The flag that defines the sort type, by count or value. | [optional] [default to false]
 
 ## Methods
 
@@ -143,6 +145,56 @@ SetSize sets Size field to given value.
 `func (o *TypeAheadQuery) HasSize() bool`
 
 HasSize returns a boolean if a field has been set.
+
+### GetSort
+
+`func (o *TypeAheadQuery) GetSort() string`
+
+GetSort returns the Sort field if non-nil, zero value otherwise.
+
+### GetSortOk
+
+`func (o *TypeAheadQuery) GetSortOk() (*string, bool)`
+
+GetSortOk returns a tuple with the Sort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSort
+
+`func (o *TypeAheadQuery) SetSort(v string)`
+
+SetSort sets Sort field to given value.
+
+### HasSort
+
+`func (o *TypeAheadQuery) HasSort() bool`
+
+HasSort returns a boolean if a field has been set.
+
+### GetSortByValue
+
+`func (o *TypeAheadQuery) GetSortByValue() bool`
+
+GetSortByValue returns the SortByValue field if non-nil, zero value otherwise.
+
+### GetSortByValueOk
+
+`func (o *TypeAheadQuery) GetSortByValueOk() (*bool, bool)`
+
+GetSortByValueOk returns a tuple with the SortByValue field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSortByValue
+
+`func (o *TypeAheadQuery) SetSortByValue(v bool)`
+
+SetSortByValue sets SortByValue field to given value.
+
+### HasSortByValue
+
+`func (o *TypeAheadQuery) HasSortByValue() bool`
+
+HasSortByValue returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**State** | Pointer to **string** | The role mining session status. Can be one of these states - CREATED|UPDATED|IDENTITIES_OBTAINED|PRUNE_THRESHOLD_OBTAINED|POTENTIAL_ROLES_PROCESSING|POTENTIAL_ROLES_CREATED | [optional] 
+**State** | Pointer to [**RoleMiningSessionState**](RoleMiningSessionState.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetState
 
-`func (o *RoleMiningSessionStatus) GetState() string`
+`func (o *RoleMiningSessionStatus) GetState() RoleMiningSessionState`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *RoleMiningSessionStatus) GetStateOk() (*string, bool)`
+`func (o *RoleMiningSessionStatus) GetStateOk() (*RoleMiningSessionState, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *RoleMiningSessionStatus) SetState(v string)`
+`func (o *RoleMiningSessionStatus) SetState(v RoleMiningSessionState)`
 
 SetState sets State field to given value.
 

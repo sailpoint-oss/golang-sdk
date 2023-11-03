@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 ## ListConnectors
 
-> ListConnectors(ctx).Execute()
+> ListConnectors200Response ListConnectors(ctx).Execute()
 
 List Connectors
 
@@ -311,6 +311,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsApi.ListConnectors``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ListConnectors`: ListConnectors200Response
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsApi.ListConnectors`: %v\n", resp)
 }
 ```
 
@@ -325,7 +327,7 @@ Other parameters are passed through a pointer to a apiListConnectorsRequest stru
 
 ### Return type
 
- (empty response body)
+[**ListConnectors200Response**](ListConnectors200Response.md)
 
 ### Authorization
 

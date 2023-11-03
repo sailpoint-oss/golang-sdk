@@ -19,7 +19,8 @@ var _ MappedNullable = &OwnerReference{}
 
 // OwnerReference The owner of this object.
 type OwnerReference struct {
-	Type *DtoType `json:"type,omitempty"`
+	// Owner type. This field must be either left null or set to 'IDENTITY' on input, otherwise a 400 Bad Request error will result.
+	Type *string `json:"type,omitempty"`
 	// Identity id
 	Id *string `json:"id,omitempty"`
 	// Human-readable display name of the owner. It may be left null or omitted in a POST or PATCH. If set, it must match the current value of the owner's display name, otherwise a 400 Bad Request error will result.
@@ -47,9 +48,9 @@ func NewOwnerReferenceWithDefaults() *OwnerReference {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *OwnerReference) GetType() DtoType {
+func (o *OwnerReference) GetType() string {
 	if o == nil || isNil(o.Type) {
-		var ret DtoType
+		var ret string
 		return ret
 	}
 	return *o.Type
@@ -57,7 +58,7 @@ func (o *OwnerReference) GetType() DtoType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OwnerReference) GetTypeOk() (*DtoType, bool) {
+func (o *OwnerReference) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
@@ -73,8 +74,8 @@ func (o *OwnerReference) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *OwnerReference) SetType(v DtoType) {
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *OwnerReference) SetType(v string) {
 	o.Type = &v
 }
 

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Effects** | Pointer to [**[]ConditionEffect**](ConditionEffect.md) | Effects is a list of effects | [optional] 
-**RuleOperator** | Pointer to **string** | RuleOperator is a ConditionRuleLogicalOperatorType value AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr | [optional] 
-**Rules** | Pointer to [**[]ConditionRule**](ConditionRule.md) | Rules is a list of rules | [optional] 
+**RuleOperator** | Pointer to **string** | ConditionRuleLogicalOperatorType value. AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr | [optional] 
+**Rules** | Pointer to [**[]ConditionRule**](ConditionRule.md) | List of rules. | [optional] 
+**Effects** | Pointer to [**[]ConditionEffect**](ConditionEffect.md) | List of effects. | [optional] 
 
 ## Methods
 
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewFormConditionWithDefaults instantiates a new FormCondition object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEffects
-
-`func (o *FormCondition) GetEffects() []ConditionEffect`
-
-GetEffects returns the Effects field if non-nil, zero value otherwise.
-
-### GetEffectsOk
-
-`func (o *FormCondition) GetEffectsOk() (*[]ConditionEffect, bool)`
-
-GetEffectsOk returns a tuple with the Effects field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEffects
-
-`func (o *FormCondition) SetEffects(v []ConditionEffect)`
-
-SetEffects sets Effects field to given value.
-
-### HasEffects
-
-`func (o *FormCondition) HasEffects() bool`
-
-HasEffects returns a boolean if a field has been set.
 
 ### GetRuleOperator
 
@@ -101,6 +76,31 @@ SetRules sets Rules field to given value.
 `func (o *FormCondition) HasRules() bool`
 
 HasRules returns a boolean if a field has been set.
+
+### GetEffects
+
+`func (o *FormCondition) GetEffects() []ConditionEffect`
+
+GetEffects returns the Effects field if non-nil, zero value otherwise.
+
+### GetEffectsOk
+
+`func (o *FormCondition) GetEffectsOk() (*[]ConditionEffect, bool)`
+
+GetEffectsOk returns a tuple with the Effects field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffects
+
+`func (o *FormCondition) SetEffects(v []ConditionEffect)`
+
+SetEffects sets Effects field to given value.
+
+### HasEffects
+
+`func (o *FormCondition) HasEffects() bool`
+
+HasEffects returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

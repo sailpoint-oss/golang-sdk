@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ObjectRef** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**ObjectRef** | Pointer to [**TaggedObjectObjectRef**](TaggedObjectObjectRef.md) |  | [optional] 
 **Tags** | Pointer to **[]string** | Labels to be applied to an Object | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetObjectRef
 
-`func (o *TaggedObject) GetObjectRef() BaseReferenceDto1`
+`func (o *TaggedObject) GetObjectRef() TaggedObjectObjectRef`
 
 GetObjectRef returns the ObjectRef field if non-nil, zero value otherwise.
 
 ### GetObjectRefOk
 
-`func (o *TaggedObject) GetObjectRefOk() (*BaseReferenceDto1, bool)`
+`func (o *TaggedObject) GetObjectRefOk() (*TaggedObjectObjectRef, bool)`
 
 GetObjectRefOk returns a tuple with the ObjectRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObjectRef
 
-`func (o *TaggedObject) SetObjectRef(v BaseReferenceDto1)`
+`func (o *TaggedObject) SetObjectRef(v TaggedObjectObjectRef)`
 
 SetObjectRef sets ObjectRef field to given value.
 

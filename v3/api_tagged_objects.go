@@ -179,7 +179,7 @@ type ApiDeleteTagsToManyObjectRequest struct {
 	bulkTaggedObject *BulkTaggedObject
 }
 
-// Supported object types are ROLE, IDENTITY and SOD_POLICY.
+// Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 func (r ApiDeleteTagsToManyObjectRequest) BulkTaggedObject(bulkTaggedObject BulkTaggedObject) ApiDeleteTagsToManyObjectRequest {
 	r.bulkTaggedObject = &bulkTaggedObject
 	return r
@@ -1217,7 +1217,7 @@ type ApiSetTagsToManyObjectsRequest struct {
 	bulkTaggedObject *BulkTaggedObject
 }
 
-// Supported object types are ROLE, IDENTITY and SOD_POLICY.
+// Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 func (r ApiSetTagsToManyObjectsRequest) BulkTaggedObject(bulkTaggedObject BulkTaggedObject) ApiSetTagsToManyObjectsRequest {
 	r.bulkTaggedObject = &bulkTaggedObject
 	return r

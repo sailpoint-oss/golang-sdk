@@ -23,8 +23,8 @@ type SodViolationCheckResult1 struct {
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	ViolationContexts []SodViolationContext1 `json:"violationContexts,omitempty"`
-	// A list of the Policies that were violated
-	ViolatedPolicies []BaseReferenceDto `json:"violatedPolicies,omitempty"`
+	// A list of the Policies that were violated.
+	ViolatedPolicies []SodPolicyDto `json:"violatedPolicies,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -144,9 +144,9 @@ func (o *SodViolationCheckResult1) SetViolationContexts(v []SodViolationContext1
 }
 
 // GetViolatedPolicies returns the ViolatedPolicies field value if set, zero value otherwise.
-func (o *SodViolationCheckResult1) GetViolatedPolicies() []BaseReferenceDto {
+func (o *SodViolationCheckResult1) GetViolatedPolicies() []SodPolicyDto {
 	if o == nil || isNil(o.ViolatedPolicies) {
-		var ret []BaseReferenceDto
+		var ret []SodPolicyDto
 		return ret
 	}
 	return o.ViolatedPolicies
@@ -154,7 +154,7 @@ func (o *SodViolationCheckResult1) GetViolatedPolicies() []BaseReferenceDto {
 
 // GetViolatedPoliciesOk returns a tuple with the ViolatedPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodViolationCheckResult1) GetViolatedPoliciesOk() ([]BaseReferenceDto, bool) {
+func (o *SodViolationCheckResult1) GetViolatedPoliciesOk() ([]SodPolicyDto, bool) {
 	if o == nil || isNil(o.ViolatedPolicies) {
 		return nil, false
 	}
@@ -170,8 +170,8 @@ func (o *SodViolationCheckResult1) HasViolatedPolicies() bool {
 	return false
 }
 
-// SetViolatedPolicies gets a reference to the given []BaseReferenceDto and assigns it to the ViolatedPolicies field.
-func (o *SodViolationCheckResult1) SetViolatedPolicies(v []BaseReferenceDto) {
+// SetViolatedPolicies gets a reference to the given []SodPolicyDto and assigns it to the ViolatedPolicies field.
+func (o *SodViolationCheckResult1) SetViolatedPolicies(v []SodPolicyDto) {
 	o.ViolatedPolicies = v
 }
 

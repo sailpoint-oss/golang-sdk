@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ExcludeTypes** | Pointer to **[]string** | Object type names to be excluded from an sp-config export command. | [optional] 
 **IncludeTypes** | Pointer to **[]string** | Object type names to be included in an sp-config export command. IncludeTypes takes precedence over excludeTypes. | [optional] 
 **ObjectOptions** | Pointer to [**map[string]ObjectExportImportOptions**](ObjectExportImportOptions.md) | Additional options targeting specific objects related to each item in the includeTypes field | [optional] 
-**DefaultReferences** | Pointer to [**[]BaseReferenceDto1**](BaseReferenceDto1.md) | List of BaseRefenceDtos that can be used to resolve references on import. | [optional] 
+**DefaultReferences** | Pointer to **[]string** | List of object types that can be used to resolve references on import. | [optional] 
 **ExcludeBackup** | Pointer to **bool** | By default, every import will first export all existing objects supported by sp-config as a backup before the import is attempted. If excludeBackup is true, the backup will not be performed. | [optional] [default to false]
 
 ## Methods
@@ -106,20 +106,20 @@ HasObjectOptions returns a boolean if a field has been set.
 
 ### GetDefaultReferences
 
-`func (o *ImportOptions) GetDefaultReferences() []BaseReferenceDto1`
+`func (o *ImportOptions) GetDefaultReferences() []string`
 
 GetDefaultReferences returns the DefaultReferences field if non-nil, zero value otherwise.
 
 ### GetDefaultReferencesOk
 
-`func (o *ImportOptions) GetDefaultReferencesOk() (*[]BaseReferenceDto1, bool)`
+`func (o *ImportOptions) GetDefaultReferencesOk() (*[]string, bool)`
 
 GetDefaultReferencesOk returns a tuple with the DefaultReferences field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefaultReferences
 
-`func (o *ImportOptions) SetDefaultReferences(v []BaseReferenceDto1)`
+`func (o *ImportOptions) SetDefaultReferences(v []string)`
 
 SetDefaultReferences sets DefaultReferences field to given value.
 

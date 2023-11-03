@@ -29,7 +29,7 @@ type SodPolicySchedule struct {
 	// SOD Policy schedule description
 	Description *string `json:"description,omitempty"`
 	Schedule *Schedule1 `json:"schedule,omitempty"`
-	Recipients []BaseReferenceDto1 `json:"recipients,omitempty"`
+	Recipients []SodRecipient `json:"recipients,omitempty"`
 	// Indicates if empty results need to be emailed
 	EmailEmptyResults *bool `json:"emailEmptyResults,omitempty"`
 	// Policy's creator ID
@@ -219,9 +219,9 @@ func (o *SodPolicySchedule) SetSchedule(v Schedule1) {
 }
 
 // GetRecipients returns the Recipients field value if set, zero value otherwise.
-func (o *SodPolicySchedule) GetRecipients() []BaseReferenceDto1 {
+func (o *SodPolicySchedule) GetRecipients() []SodRecipient {
 	if o == nil || isNil(o.Recipients) {
-		var ret []BaseReferenceDto1
+		var ret []SodRecipient
 		return ret
 	}
 	return o.Recipients
@@ -229,7 +229,7 @@ func (o *SodPolicySchedule) GetRecipients() []BaseReferenceDto1 {
 
 // GetRecipientsOk returns a tuple with the Recipients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicySchedule) GetRecipientsOk() ([]BaseReferenceDto1, bool) {
+func (o *SodPolicySchedule) GetRecipientsOk() ([]SodRecipient, bool) {
 	if o == nil || isNil(o.Recipients) {
 		return nil, false
 	}
@@ -245,8 +245,8 @@ func (o *SodPolicySchedule) HasRecipients() bool {
 	return false
 }
 
-// SetRecipients gets a reference to the given []BaseReferenceDto1 and assigns it to the Recipients field.
-func (o *SodPolicySchedule) SetRecipients(v []BaseReferenceDto1) {
+// SetRecipients gets a reference to the given []SodRecipient and assigns it to the Recipients field.
+func (o *SodPolicySchedule) SetRecipients(v []SodRecipient) {
 	o.Recipients = v
 }
 

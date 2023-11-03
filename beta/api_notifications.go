@@ -1655,13 +1655,13 @@ func (r ApiListFromAddressesRequest) Count(count bool) ApiListFromAddressesReque
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **email**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **email**: *eq, co, ge, le, sw*
 func (r ApiListFromAddressesRequest) Filters(filters string) ApiListFromAddressesRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields:  **email**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **email**
 func (r ApiListFromAddressesRequest) Sorters(sorters string) ApiListFromAddressesRequest {
 	r.sorters = &sorters
 	return r
@@ -1839,7 +1839,7 @@ func (r ApiListNotificationTemplateDefaultsRequest) Offset(offset int32) ApiList
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in*  **medium**: *eq*  **locale**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw*
 func (r ApiListNotificationTemplateDefaultsRequest) Filters(filters string) ApiListNotificationTemplateDefaultsRequest {
 	r.filters = &filters
 	return r
@@ -2022,7 +2022,7 @@ func (r ApiListNotificationTemplatesRequest) Offset(offset int32) ApiListNotific
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in*  **medium**: *eq*  **locale**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, co, sw*  **medium**: *eq, co, sw*  **locale**: *eq, co, sw*
 func (r ApiListNotificationTemplatesRequest) Filters(filters string) ApiListNotificationTemplatesRequest {
 	r.filters = &filters
 	return r

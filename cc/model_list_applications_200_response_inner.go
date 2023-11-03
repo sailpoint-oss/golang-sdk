@@ -68,7 +68,7 @@ type ListApplications200ResponseInner struct {
 	XsdVersion *string `json:"xsdVersion,omitempty"`
 	AppProfiles []ListApplications200ResponseInnerAppProfilesInner `json:"appProfiles,omitempty"`
 	PasswordServiceId *float32 `json:"passwordServiceId,omitempty"`
-	AccessProfileIds map[string]interface{} `json:"accessProfileIds,omitempty"`
+	AccessProfileIds []string `json:"accessProfileIds,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -1660,9 +1660,9 @@ func (o *ListApplications200ResponseInner) SetPasswordServiceId(v float32) {
 }
 
 // GetAccessProfileIds returns the AccessProfileIds field value if set, zero value otherwise.
-func (o *ListApplications200ResponseInner) GetAccessProfileIds() map[string]interface{} {
+func (o *ListApplications200ResponseInner) GetAccessProfileIds() []string {
 	if o == nil || isNil(o.AccessProfileIds) {
-		var ret map[string]interface{}
+		var ret []string
 		return ret
 	}
 	return o.AccessProfileIds
@@ -1670,9 +1670,9 @@ func (o *ListApplications200ResponseInner) GetAccessProfileIds() map[string]inte
 
 // GetAccessProfileIdsOk returns a tuple with the AccessProfileIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListApplications200ResponseInner) GetAccessProfileIdsOk() (map[string]interface{}, bool) {
+func (o *ListApplications200ResponseInner) GetAccessProfileIdsOk() ([]string, bool) {
 	if o == nil || isNil(o.AccessProfileIds) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.AccessProfileIds, true
 }
@@ -1686,8 +1686,8 @@ func (o *ListApplications200ResponseInner) HasAccessProfileIds() bool {
 	return false
 }
 
-// SetAccessProfileIds gets a reference to the given map[string]interface{} and assigns it to the AccessProfileIds field.
-func (o *ListApplications200ResponseInner) SetAccessProfileIds(v map[string]interface{}) {
+// SetAccessProfileIds gets a reference to the given []string and assigns it to the AccessProfileIds field.
+func (o *ListApplications200ResponseInner) SetAccessProfileIds(v []string) {
 	o.AccessProfileIds = v
 }
 

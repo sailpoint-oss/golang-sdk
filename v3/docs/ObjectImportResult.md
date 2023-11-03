@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Infos** | [**[]SpConfigMessage**](SpConfigMessage.md) | Informational messages returned from the target service on import. | 
 **Warnings** | [**[]SpConfigMessage**](SpConfigMessage.md) | Warning messages returned from the target service on import. | 
 **Errors** | [**[]SpConfigMessage**](SpConfigMessage.md) | Error messages returned from the target service on import. | 
-**ImportedObjects** | [**[]BaseReferenceDto**](BaseReferenceDto.md) | References to objects that were created or updated by the import. | 
+**ImportedObjects** | [**[]ImportObject**](ImportObject.md) | References to objects that were created or updated by the import. | 
 
 ## Methods
 
 ### NewObjectImportResult
 
-`func NewObjectImportResult(infos []SpConfigMessage, warnings []SpConfigMessage, errors []SpConfigMessage, importedObjects []BaseReferenceDto, ) *ObjectImportResult`
+`func NewObjectImportResult(infos []SpConfigMessage, warnings []SpConfigMessage, errors []SpConfigMessage, importedObjects []ImportObject, ) *ObjectImportResult`
 
 NewObjectImportResult instantiates a new ObjectImportResult object
 This constructor will assign default values to properties that have it defined,
@@ -90,20 +90,20 @@ SetErrors sets Errors field to given value.
 
 ### GetImportedObjects
 
-`func (o *ObjectImportResult) GetImportedObjects() []BaseReferenceDto`
+`func (o *ObjectImportResult) GetImportedObjects() []ImportObject`
 
 GetImportedObjects returns the ImportedObjects field if non-nil, zero value otherwise.
 
 ### GetImportedObjectsOk
 
-`func (o *ObjectImportResult) GetImportedObjectsOk() (*[]BaseReferenceDto, bool)`
+`func (o *ObjectImportResult) GetImportedObjectsOk() (*[]ImportObject, bool)`
 
 GetImportedObjectsOk returns a tuple with the ImportedObjects field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImportedObjects
 
-`func (o *ObjectImportResult) SetImportedObjects(v []BaseReferenceDto)`
+`func (o *ObjectImportResult) SetImportedObjects(v []ImportObject)`
 
 SetImportedObjects sets ImportedObjects field to given value.
 

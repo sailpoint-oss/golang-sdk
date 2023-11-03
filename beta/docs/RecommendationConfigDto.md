@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RecommenderFeatures** | Pointer to **[]string** | List of identity attributes to use for calculating certification recommendations | [optional] 
 **PeerGroupPercentageThreshold** | Pointer to **float32** | The percent value that the recommendation calculation must surpass to produce a YES recommendation | [optional] 
-**ForceRefresh** | Pointer to **bool** | If true, rulesRecommenderConfig will be refreshed with new programatically selected attribute and threshold values on the next pipeline run | [optional] 
+**RunAutoSelectOnce** | Pointer to **bool** | If true, rulesRecommenderConfig will be refreshed with new programatically selected attribute and threshold values on the next pipeline run | [optional] [default to false]
+**OnlyTuneThreshold** | Pointer to **bool** | If true, rulesRecommenderConfig will be refreshed with new programatically selected threshold values on the next pipeline run | [optional] [default to false]
 
 ## Methods
 
@@ -77,30 +78,55 @@ SetPeerGroupPercentageThreshold sets PeerGroupPercentageThreshold field to given
 
 HasPeerGroupPercentageThreshold returns a boolean if a field has been set.
 
-### GetForceRefresh
+### GetRunAutoSelectOnce
 
-`func (o *RecommendationConfigDto) GetForceRefresh() bool`
+`func (o *RecommendationConfigDto) GetRunAutoSelectOnce() bool`
 
-GetForceRefresh returns the ForceRefresh field if non-nil, zero value otherwise.
+GetRunAutoSelectOnce returns the RunAutoSelectOnce field if non-nil, zero value otherwise.
 
-### GetForceRefreshOk
+### GetRunAutoSelectOnceOk
 
-`func (o *RecommendationConfigDto) GetForceRefreshOk() (*bool, bool)`
+`func (o *RecommendationConfigDto) GetRunAutoSelectOnceOk() (*bool, bool)`
 
-GetForceRefreshOk returns a tuple with the ForceRefresh field if it's non-nil, zero value otherwise
+GetRunAutoSelectOnceOk returns a tuple with the RunAutoSelectOnce field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetForceRefresh
+### SetRunAutoSelectOnce
 
-`func (o *RecommendationConfigDto) SetForceRefresh(v bool)`
+`func (o *RecommendationConfigDto) SetRunAutoSelectOnce(v bool)`
 
-SetForceRefresh sets ForceRefresh field to given value.
+SetRunAutoSelectOnce sets RunAutoSelectOnce field to given value.
 
-### HasForceRefresh
+### HasRunAutoSelectOnce
 
-`func (o *RecommendationConfigDto) HasForceRefresh() bool`
+`func (o *RecommendationConfigDto) HasRunAutoSelectOnce() bool`
 
-HasForceRefresh returns a boolean if a field has been set.
+HasRunAutoSelectOnce returns a boolean if a field has been set.
+
+### GetOnlyTuneThreshold
+
+`func (o *RecommendationConfigDto) GetOnlyTuneThreshold() bool`
+
+GetOnlyTuneThreshold returns the OnlyTuneThreshold field if non-nil, zero value otherwise.
+
+### GetOnlyTuneThresholdOk
+
+`func (o *RecommendationConfigDto) GetOnlyTuneThresholdOk() (*bool, bool)`
+
+GetOnlyTuneThresholdOk returns a tuple with the OnlyTuneThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOnlyTuneThreshold
+
+`func (o *RecommendationConfigDto) SetOnlyTuneThreshold(v bool)`
+
+SetOnlyTuneThreshold sets OnlyTuneThreshold field to given value.
+
+### HasOnlyTuneThreshold
+
+`func (o *RecommendationConfigDto) HasOnlyTuneThreshold() bool`
+
+HasOnlyTuneThreshold returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

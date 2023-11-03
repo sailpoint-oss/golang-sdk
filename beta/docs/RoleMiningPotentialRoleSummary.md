@@ -4,15 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** | Id of the potential role | [optional] 
+**Name** | Pointer to **string** | Name of the potential role | [optional] 
 **PotentialRoleRef** | Pointer to [**RoleMiningPotentialRoleRef**](RoleMiningPotentialRoleRef.md) |  | [optional] 
 **IdentityCount** | Pointer to **int32** | The number of identities in a potential role. | [optional] 
 **EntitlementCount** | Pointer to **int32** | The number of entitlements in a potential role. | [optional] 
 **IdentityGroupStatus** | Pointer to **string** | The status for this identity group which can be \&quot;REQUESTED\&quot; or \&quot;OBTAINED\&quot; | [optional] 
 **ProvisionState** | Pointer to [**RoleMiningPotentialRoleProvisionState**](RoleMiningPotentialRoleProvisionState.md) |  | [optional] 
-**RoleId** | Pointer to **string** | ID of the provisioned role in IIQ or IDN.  Null if this potential role has not been provisioned. | [optional] 
+**RoleId** | Pointer to **NullableString** | ID of the provisioned role in IIQ or IDN.  Null if this potential role has not been provisioned. | [optional] 
 **Density** | Pointer to **int32** | The density metric (0-100) of this potential role. Higher density values indicate higher similarity amongst the identities. | [optional] 
 **Freshness** | Pointer to **int32** | The freshness metric (0-100) of this potential role. Higher freshness values indicate this potential role is more distinctive compared to existing roles. | [optional] 
 **Quality** | Pointer to **int32** | The quality metric (0-100) of this potential role. Higher quality values indicate this potential role has high density and freshness. | [optional] 
+**Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
+**Session** | Pointer to [**RoleMiningSessionParametersDto**](RoleMiningSessionParametersDto.md) |  | [optional] 
 
 ## Methods
 
@@ -32,6 +36,56 @@ will change when the set of required properties is changed
 NewRoleMiningPotentialRoleSummaryWithDefaults instantiates a new RoleMiningPotentialRoleSummary object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *RoleMiningPotentialRoleSummary) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *RoleMiningPotentialRoleSummary) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *RoleMiningPotentialRoleSummary) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *RoleMiningPotentialRoleSummary) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *RoleMiningPotentialRoleSummary) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *RoleMiningPotentialRoleSummary) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *RoleMiningPotentialRoleSummary) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *RoleMiningPotentialRoleSummary) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetPotentialRoleRef
 
@@ -183,6 +237,16 @@ SetRoleId sets RoleId field to given value.
 
 HasRoleId returns a boolean if a field has been set.
 
+### SetRoleIdNil
+
+`func (o *RoleMiningPotentialRoleSummary) SetRoleIdNil(b bool)`
+
+ SetRoleIdNil sets the value for RoleId to be an explicit nil
+
+### UnsetRoleId
+`func (o *RoleMiningPotentialRoleSummary) UnsetRoleId()`
+
+UnsetRoleId ensures that no value is present for RoleId, not even an explicit nil
 ### GetDensity
 
 `func (o *RoleMiningPotentialRoleSummary) GetDensity() int32`
@@ -257,6 +321,56 @@ SetQuality sets Quality field to given value.
 `func (o *RoleMiningPotentialRoleSummary) HasQuality() bool`
 
 HasQuality returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *RoleMiningPotentialRoleSummary) GetType() RoleMiningRoleType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *RoleMiningPotentialRoleSummary) GetTypeOk() (*RoleMiningRoleType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *RoleMiningPotentialRoleSummary) SetType(v RoleMiningRoleType)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *RoleMiningPotentialRoleSummary) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
+### GetSession
+
+`func (o *RoleMiningPotentialRoleSummary) GetSession() RoleMiningSessionParametersDto`
+
+GetSession returns the Session field if non-nil, zero value otherwise.
+
+### GetSessionOk
+
+`func (o *RoleMiningPotentialRoleSummary) GetSessionOk() (*RoleMiningSessionParametersDto, bool)`
+
+GetSessionOk returns a tuple with the Session field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSession
+
+`func (o *RoleMiningPotentialRoleSummary) SetSession(v RoleMiningSessionParametersDto)`
+
+SetSession sets Session field to given value.
+
+### HasSession
+
+`func (o *RoleMiningPotentialRoleSummary) HasSession() bool`
+
+HasSession returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

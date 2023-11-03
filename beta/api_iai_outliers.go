@@ -216,13 +216,13 @@ func (r ApiGetIdentityOutlierSnapshotsRequest) Type_(type_ string) ApiGetIdentit
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following field and operators:  **snapshotDate**: *ge, le*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **snapshotDate**: *ge, le*
 func (r ApiGetIdentityOutlierSnapshotsRequest) Filters(filters string) ApiGetIdentityOutlierSnapshotsRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following field: **snapshotDate**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **snapshotDate**
 func (r ApiGetIdentityOutlierSnapshotsRequest) Sorters(sorters string) ApiGetIdentityOutlierSnapshotsRequest {
 	r.sorters = &sorters
 	return r
@@ -427,13 +427,13 @@ func (r ApiGetIdentityOutliersRequest) Type_(type_ string) ApiGetIdentityOutlier
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Entitlement fields and operators: **attributes**: *eq, sw, co, in*  **firstDetectionDate**: *ge, le*  **certStatus**: *eq*  **ignored**: *eq*  **score**: *ge, le*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **attributes**: *eq, sw, co, in*  **firstDetectionDate**: *ge, le*  **certStatus**: *eq*  **ignored**: *eq*  **score**: *ge, le*
 func (r ApiGetIdentityOutliersRequest) Filters(filters string) ApiGetIdentityOutliersRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **firstDetectionDate, attributes, score**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **firstDetectionDate, attributes, score**
 func (r ApiGetIdentityOutliersRequest) Sorters(sorters string) ApiGetIdentityOutliersRequest {
 	r.sorters = &sorters
 	return r
@@ -974,7 +974,7 @@ func (r ApiGetPeerGroupOutliersContributingFeaturesRequest) IncludeTranslationMe
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **importance**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **importance**
 func (r ApiGetPeerGroupOutliersContributingFeaturesRequest) Sorters(sorters string) ApiGetPeerGroupOutliersContributingFeaturesRequest {
 	r.sorters = &sorters
 	return r
@@ -1348,7 +1348,7 @@ func (r ApiListOutliersContributingFeatureAccessItemsRequest) AccessType(accessT
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **displayName**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **displayName**
 func (r ApiListOutliersContributingFeatureAccessItemsRequest) Sorters(sorters string) ApiListOutliersContributingFeatureAccessItemsRequest {
 	r.sorters = &sorters
 	return r

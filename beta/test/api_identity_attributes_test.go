@@ -22,6 +22,42 @@ func Test_beta_IdentityAttributesApiService(t *testing.T) {
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test IdentityAttributesApiService CreateIdentityAttribute", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.IdentityAttributesApi.CreateIdentityAttribute(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentityAttributesApiService DeleteIdentityAttribute", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var name string
+
+		httpRes, err := apiClient.BETA.IdentityAttributesApi.DeleteIdentityAttribute(context.Background(), name).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentityAttributesApiService DeleteIdentityAttributesInBulk", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.BETA.IdentityAttributesApi.DeleteIdentityAttributesInBulk(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IdentityAttributesApiService GetIdentityAttribute", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -41,6 +77,20 @@ func Test_beta_IdentityAttributesApiService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.BETA.IdentityAttributesApi.ListIdentityAttributes(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentityAttributesApiService PutIdentityAttribute", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var name string
+
+		resp, httpRes, err := apiClient.BETA.IdentityAttributesApi.PutIdentityAttribute(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

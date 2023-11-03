@@ -34,7 +34,7 @@ func (r ApiBulkDeleteRolesRequest) RoleBulkDeleteRequest(roleBulkDeleteRequest R
 	return r
 }
 
-func (r ApiBulkDeleteRolesRequest) Execute() (*BaseReferenceDto1, *http.Response, error) {
+func (r ApiBulkDeleteRolesRequest) Execute() (*TaskResultDto, *http.Response, error) {
 	return r.ApiService.BulkDeleteRolesExecute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *RolesApiService) BulkDeleteRoles(ctx context.Context) ApiBulkDeleteRole
 }
 
 // Execute executes the request
-//  @return BaseReferenceDto1
-func (a *RolesApiService) BulkDeleteRolesExecute(r ApiBulkDeleteRolesRequest) (*BaseReferenceDto1, *http.Response, error) {
+//  @return TaskResultDto
+func (a *RolesApiService) BulkDeleteRolesExecute(r ApiBulkDeleteRolesRequest) (*TaskResultDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BaseReferenceDto1
+		localVarReturnValue  *TaskResultDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.BulkDeleteRoles")
@@ -697,7 +697,7 @@ func (r ApiGetRoleAssignedIdentitiesRequest) Filters(filters string) ApiGetRoleA
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **aliasName**, **email**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, aliasName, email**
 func (r ApiGetRoleAssignedIdentitiesRequest) Sorters(sorters string) ApiGetRoleAssignedIdentitiesRequest {
 	r.sorters = &sorters
 	return r
@@ -904,13 +904,13 @@ func (r ApiListRolesRequest) Count(count bool) ApiListRolesRequest {
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **id**: *eq, in* **name**: *eq, sw* **created, modified**: *gt, lt, ge, le* **owner.id**: *eq, in* **requestable**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw, co*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **requestable**: *eq*
 func (r ApiListRolesRequest) Filters(filters string) ApiListRolesRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
 func (r ApiListRolesRequest) Sorters(sorters string) ApiListRolesRequest {
 	r.sorters = &sorters
 	return r

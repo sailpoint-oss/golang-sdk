@@ -17,13 +17,13 @@ import (
 // checks if the SourceUpdatedActor type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SourceUpdatedActor{}
 
-// SourceUpdatedActor The identity or system that performed the update.
+// SourceUpdatedActor Identity who updated the source.
 type SourceUpdatedActor struct {
-	// The type of object that is referenced
-	Type map[string]interface{} `json:"type"`
-	// ID of the object to which this reference applies
+	// DTO type of identity who updated the source.
+	Type string `json:"type"`
+	// ID of identity who updated the source.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the object to which this reference applies
+	// Display name of identity who updated the source.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,7 +34,7 @@ type _SourceUpdatedActor SourceUpdatedActor
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceUpdatedActor(type_ map[string]interface{}, name string) *SourceUpdatedActor {
+func NewSourceUpdatedActor(type_ string, name string) *SourceUpdatedActor {
 	this := SourceUpdatedActor{}
 	this.Type = type_
 	this.Name = name
@@ -50,9 +50,9 @@ func NewSourceUpdatedActorWithDefaults() *SourceUpdatedActor {
 }
 
 // GetType returns the Type field value
-func (o *SourceUpdatedActor) GetType() map[string]interface{} {
+func (o *SourceUpdatedActor) GetType() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -61,15 +61,15 @@ func (o *SourceUpdatedActor) GetType() map[string]interface{} {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *SourceUpdatedActor) GetTypeOk() (map[string]interface{}, bool) {
+func (o *SourceUpdatedActor) GetTypeOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
 // SetType sets field value
-func (o *SourceUpdatedActor) SetType(v map[string]interface{}) {
+func (o *SourceUpdatedActor) SetType(v string) {
 	o.Type = v
 }
 

@@ -19,8 +19,8 @@ var _ MappedNullable = &BulkTaggedObject{}
 
 // BulkTaggedObject struct for BulkTaggedObject
 type BulkTaggedObject struct {
-	ObjectRefs []BaseReferenceDto1 `json:"objectRefs,omitempty"`
-	// Label to be applied to an Object
+	ObjectRefs []TaggedObjectDto `json:"objectRefs,omitempty"`
+	// Label to be applied to object.
 	Tags []string `json:"tags,omitempty"`
 	// If APPEND, tags are appended to the list of tags for the object. A 400 error is returned if this would add duplicate tags to the object.  If MERGE, tags are merged with the existing tags. Duplicate tags are silently ignored.
 	Operation *string `json:"operation,omitempty"`
@@ -51,9 +51,9 @@ func NewBulkTaggedObjectWithDefaults() *BulkTaggedObject {
 }
 
 // GetObjectRefs returns the ObjectRefs field value if set, zero value otherwise.
-func (o *BulkTaggedObject) GetObjectRefs() []BaseReferenceDto1 {
+func (o *BulkTaggedObject) GetObjectRefs() []TaggedObjectDto {
 	if o == nil || isNil(o.ObjectRefs) {
-		var ret []BaseReferenceDto1
+		var ret []TaggedObjectDto
 		return ret
 	}
 	return o.ObjectRefs
@@ -61,7 +61,7 @@ func (o *BulkTaggedObject) GetObjectRefs() []BaseReferenceDto1 {
 
 // GetObjectRefsOk returns a tuple with the ObjectRefs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BulkTaggedObject) GetObjectRefsOk() ([]BaseReferenceDto1, bool) {
+func (o *BulkTaggedObject) GetObjectRefsOk() ([]TaggedObjectDto, bool) {
 	if o == nil || isNil(o.ObjectRefs) {
 		return nil, false
 	}
@@ -77,8 +77,8 @@ func (o *BulkTaggedObject) HasObjectRefs() bool {
 	return false
 }
 
-// SetObjectRefs gets a reference to the given []BaseReferenceDto1 and assigns it to the ObjectRefs field.
-func (o *BulkTaggedObject) SetObjectRefs(v []BaseReferenceDto1) {
+// SetObjectRefs gets a reference to the given []TaggedObjectDto and assigns it to the ObjectRefs field.
+func (o *BulkTaggedObject) SetObjectRefs(v []TaggedObjectDto) {
 	o.ObjectRefs = v
 }
 

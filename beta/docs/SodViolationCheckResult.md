@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Message** | Pointer to [**ErrorMessageDto**](ErrorMessageDto.md) |  | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check. | [optional] 
 **ViolationContexts** | Pointer to [**[]SodViolationContext**](SodViolationContext.md) |  | [optional] 
-**ViolatedPolicies** | Pointer to [**[]BaseReferenceDto1**](BaseReferenceDto1.md) | A list of the Policies that were violated | [optional] 
+**ViolatedPolicies** | Pointer to [**[]SodPolicyDto**](SodPolicyDto.md) | A list of the SOD policies that were violated. | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasViolationContexts returns a boolean if a field has been set.
 
 ### GetViolatedPolicies
 
-`func (o *SodViolationCheckResult) GetViolatedPolicies() []BaseReferenceDto1`
+`func (o *SodViolationCheckResult) GetViolatedPolicies() []SodPolicyDto`
 
 GetViolatedPolicies returns the ViolatedPolicies field if non-nil, zero value otherwise.
 
 ### GetViolatedPoliciesOk
 
-`func (o *SodViolationCheckResult) GetViolatedPoliciesOk() (*[]BaseReferenceDto1, bool)`
+`func (o *SodViolationCheckResult) GetViolatedPoliciesOk() (*[]SodPolicyDto, bool)`
 
 GetViolatedPoliciesOk returns a tuple with the ViolatedPolicies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetViolatedPolicies
 
-`func (o *SodViolationCheckResult) SetViolatedPolicies(v []BaseReferenceDto1)`
+`func (o *SodViolationCheckResult) SetViolatedPolicies(v []SodPolicyDto)`
 
 SetViolatedPolicies sets ViolatedPolicies field to given value.
 

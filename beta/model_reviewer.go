@@ -19,14 +19,14 @@ var _ MappedNullable = &Reviewer{}
 
 // Reviewer Details of the reviewer for certification.
 type Reviewer struct {
-	// The type of object that the reviewer is.
-	Type map[string]interface{} `json:"type"`
-	// The email of the reviewing identity. Only applicable to `IDENTITY`
-	Email NullableString `json:"email,omitempty"`
-	// ID of the object to which this reference applies
+	// The reviewer's DTO type.
+	Type string `json:"type"`
+	// The reviewer's ID.
 	Id string `json:"id"`
-	// Human-readable display name of the object to which this reference applies
+	// The reviewer's display name.
 	Name string `json:"name"`
+	// The reviewing identity's email. Only applicable to `IDENTITY`.
+	Email NullableString `json:"email,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +36,7 @@ type _Reviewer Reviewer
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewReviewer(type_ map[string]interface{}, id string, name string) *Reviewer {
+func NewReviewer(type_ string, id string, name string) *Reviewer {
 	this := Reviewer{}
 	this.Type = type_
 	this.Id = id
@@ -53,9 +53,9 @@ func NewReviewerWithDefaults() *Reviewer {
 }
 
 // GetType returns the Type field value
-func (o *Reviewer) GetType() map[string]interface{} {
+func (o *Reviewer) GetType() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -64,58 +64,16 @@ func (o *Reviewer) GetType() map[string]interface{} {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Reviewer) GetTypeOk() (map[string]interface{}, bool) {
-	if o == nil {
-		return map[string]interface{}{}, false
-	}
-	return o.Type, true
-}
-
-// SetType sets field value
-func (o *Reviewer) SetType(v map[string]interface{}) {
-	o.Type = v
-}
-
-// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Reviewer) GetEmail() string {
-	if o == nil || isNil(o.Email.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Email.Get()
-}
-
-// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Reviewer) GetEmailOk() (*string, bool) {
+func (o *Reviewer) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Email.Get(), o.Email.IsSet()
+	return &o.Type, true
 }
 
-// HasEmail returns a boolean if a field has been set.
-func (o *Reviewer) HasEmail() bool {
-	if o != nil && o.Email.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
-func (o *Reviewer) SetEmail(v string) {
-	o.Email.Set(&v)
-}
-// SetEmailNil sets the value for Email to be an explicit nil
-func (o *Reviewer) SetEmailNil() {
-	o.Email.Set(nil)
-}
-
-// UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *Reviewer) UnsetEmail() {
-	o.Email.Unset()
+// SetType sets field value
+func (o *Reviewer) SetType(v string) {
+	o.Type = v
 }
 
 // GetId returns the Id field value
@@ -166,6 +124,48 @@ func (o *Reviewer) SetName(v string) {
 	o.Name = v
 }
 
+// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Reviewer) GetEmail() string {
+	if o == nil || isNil(o.Email.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Email.Get()
+}
+
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Reviewer) GetEmailOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Email.Get(), o.Email.IsSet()
+}
+
+// HasEmail returns a boolean if a field has been set.
+func (o *Reviewer) HasEmail() bool {
+	if o != nil && o.Email.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
+func (o *Reviewer) SetEmail(v string) {
+	o.Email.Set(&v)
+}
+// SetEmailNil sets the value for Email to be an explicit nil
+func (o *Reviewer) SetEmailNil() {
+	o.Email.Set(nil)
+}
+
+// UnsetEmail ensures that no value is present for Email, not even an explicit nil
+func (o *Reviewer) UnsetEmail() {
+	o.Email.Unset()
+}
+
 func (o Reviewer) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -177,11 +177,11 @@ func (o Reviewer) MarshalJSON() ([]byte, error) {
 func (o Reviewer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 	if o.Email.IsSet() {
 		toSerialize["email"] = o.Email.Get()
 	}
-	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -201,9 +201,9 @@ func (o *Reviewer) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "email")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "email")
 		o.AdditionalProperties = additionalProperties
 	}
 

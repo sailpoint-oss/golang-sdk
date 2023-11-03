@@ -19,7 +19,7 @@ var _ MappedNullable = &AttrSyncSourceConfig{}
 
 // AttrSyncSourceConfig Specification of attribute sync configuration for a source
 type AttrSyncSourceConfig struct {
-	Source BaseReferenceDto1 `json:"source"`
+	Source AttrSyncSource `json:"source"`
 	// Attribute synchronization configuration for specific identity attributes in the context of a source
 	Attributes []AttrSyncSourceAttributeConfig `json:"attributes"`
 	AdditionalProperties map[string]interface{}
@@ -31,7 +31,7 @@ type _AttrSyncSourceConfig AttrSyncSourceConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAttrSyncSourceConfig(source BaseReferenceDto1, attributes []AttrSyncSourceAttributeConfig) *AttrSyncSourceConfig {
+func NewAttrSyncSourceConfig(source AttrSyncSource, attributes []AttrSyncSourceAttributeConfig) *AttrSyncSourceConfig {
 	this := AttrSyncSourceConfig{}
 	this.Source = source
 	this.Attributes = attributes
@@ -47,9 +47,9 @@ func NewAttrSyncSourceConfigWithDefaults() *AttrSyncSourceConfig {
 }
 
 // GetSource returns the Source field value
-func (o *AttrSyncSourceConfig) GetSource() BaseReferenceDto1 {
+func (o *AttrSyncSourceConfig) GetSource() AttrSyncSource {
 	if o == nil {
-		var ret BaseReferenceDto1
+		var ret AttrSyncSource
 		return ret
 	}
 
@@ -58,7 +58,7 @@ func (o *AttrSyncSourceConfig) GetSource() BaseReferenceDto1 {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *AttrSyncSourceConfig) GetSourceOk() (*BaseReferenceDto1, bool) {
+func (o *AttrSyncSourceConfig) GetSourceOk() (*AttrSyncSource, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *AttrSyncSourceConfig) GetSourceOk() (*BaseReferenceDto1, bool) {
 }
 
 // SetSource sets field value
-func (o *AttrSyncSourceConfig) SetSource(v BaseReferenceDto1) {
+func (o *AttrSyncSourceConfig) SetSource(v AttrSyncSource) {
 	o.Source = v
 }
 

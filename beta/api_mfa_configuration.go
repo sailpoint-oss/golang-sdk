@@ -23,27 +23,28 @@ import (
 // MFAConfigurationApiService MFAConfigurationApi service
 type MFAConfigurationApiService service
 
-type ApiGetMFAConfigRequest struct {
+type ApiDeleteMFAConfigRequest struct {
 	ctx context.Context
 	ApiService *MFAConfigurationApiService
 	method string
 }
 
-func (r ApiGetMFAConfigRequest) Execute() (*MfaConfig, *http.Response, error) {
-	return r.ApiService.GetMFAConfigExecute(r)
+func (r ApiDeleteMFAConfigRequest) Execute() (*MfaOktaConfig, *http.Response, error) {
+	return r.ApiService.DeleteMFAConfigExecute(r)
 }
 
 /*
-GetMFAConfig Configuration of a MFA method
+DeleteMFAConfig Delete MFA method configuration
 
-This API returns the configuration of a given MFA method. A token with ORG_ADMIN authority is required to call this API.
+This API removes the configuration for the specified MFA method.
+A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param method The name of the MFA method. The currently supported method name is okta-verify.
- @return ApiGetMFAConfigRequest
+ @param method The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
+ @return ApiDeleteMFAConfigRequest
 */
-func (a *MFAConfigurationApiService) GetMFAConfig(ctx context.Context, method string) ApiGetMFAConfigRequest {
-	return ApiGetMFAConfigRequest{
+func (a *MFAConfigurationApiService) DeleteMFAConfig(ctx context.Context, method string) ApiDeleteMFAConfigRequest {
+	return ApiDeleteMFAConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 		method: method,
@@ -51,21 +52,21 @@ func (a *MFAConfigurationApiService) GetMFAConfig(ctx context.Context, method st
 }
 
 // Execute executes the request
-//  @return MfaConfig
-func (a *MFAConfigurationApiService) GetMFAConfigExecute(r ApiGetMFAConfigRequest) (*MfaConfig, *http.Response, error) {
+//  @return MfaOktaConfig
+func (a *MFAConfigurationApiService) DeleteMFAConfigExecute(r ApiDeleteMFAConfigRequest) (*MfaOktaConfig, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *MfaConfig
+		localVarReturnValue  *MfaOktaConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.GetMFAConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.DeleteMFAConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/mfa/{method}/config"
+	localVarPath := localBasePath + "/mfa/{method}/delete"
 	localVarPath = strings.Replace(localVarPath, "{"+"method"+"}", url.PathEscape(parameterValueToString(r.method, "method")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -180,62 +181,364 @@ func (a *MFAConfigurationApiService) GetMFAConfigExecute(r ApiGetMFAConfigReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSetMFAConfigRequest struct {
+type ApiGetMFADuoConfigRequest struct {
 	ctx context.Context
 	ApiService *MFAConfigurationApiService
-	method string
-	mfaConfig *MfaConfig
 }
 
-func (r ApiSetMFAConfigRequest) MfaConfig(mfaConfig MfaConfig) ApiSetMFAConfigRequest {
-	r.mfaConfig = &mfaConfig
-	return r
-}
-
-func (r ApiSetMFAConfigRequest) Execute() (*MfaConfig, *http.Response, error) {
-	return r.ApiService.SetMFAConfigExecute(r)
+func (r ApiGetMFADuoConfigRequest) Execute() (*MfaDuoConfig, *http.Response, error) {
+	return r.ApiService.GetMFADuoConfigExecute(r)
 }
 
 /*
-SetMFAConfig Set MFA method configuration
+GetMFADuoConfig Configuration of Duo MFA method
 
-This API sets the configuration of a given MFA method. A token with ORG_ADMIN authority is required to call this API.
+This API returns the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param method The name of the MFA method. The currently supported method name is okta-verify.
- @return ApiSetMFAConfigRequest
+ @return ApiGetMFADuoConfigRequest
 */
-func (a *MFAConfigurationApiService) SetMFAConfig(ctx context.Context, method string) ApiSetMFAConfigRequest {
-	return ApiSetMFAConfigRequest{
+func (a *MFAConfigurationApiService) GetMFADuoConfig(ctx context.Context) ApiGetMFADuoConfigRequest {
+	return ApiGetMFADuoConfigRequest{
 		ApiService: a,
 		ctx: ctx,
-		method: method,
 	}
 }
 
 // Execute executes the request
-//  @return MfaConfig
-func (a *MFAConfigurationApiService) SetMFAConfigExecute(r ApiSetMFAConfigRequest) (*MfaConfig, *http.Response, error) {
+//  @return MfaDuoConfig
+func (a *MFAConfigurationApiService) GetMFADuoConfigExecute(r ApiGetMFADuoConfigRequest) (*MfaDuoConfig, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *MfaConfig
+		localVarReturnValue  *MfaDuoConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.SetMFAConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.GetMFADuoConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/mfa/{method}/config"
-	localVarPath = strings.Replace(localVarPath, "{"+"method"+"}", url.PathEscape(parameterValueToString(r.method, "method")), -1)
+	localVarPath := localBasePath + "/mfa/duo-web/config"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.mfaConfig == nil {
-		return localVarReturnValue, nil, reportError("mfaConfig is required and must be specified")
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetMFAOktaConfigRequest struct {
+	ctx context.Context
+	ApiService *MFAConfigurationApiService
+}
+
+func (r ApiGetMFAOktaConfigRequest) Execute() (*MfaOktaConfig, *http.Response, error) {
+	return r.ApiService.GetMFAOktaConfigExecute(r)
+}
+
+/*
+GetMFAOktaConfig Configuration of Okta MFA method
+
+This API returns the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetMFAOktaConfigRequest
+*/
+func (a *MFAConfigurationApiService) GetMFAOktaConfig(ctx context.Context) ApiGetMFAOktaConfigRequest {
+	return ApiGetMFAOktaConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return MfaOktaConfig
+func (a *MFAConfigurationApiService) GetMFAOktaConfigExecute(r ApiGetMFAOktaConfigRequest) (*MfaOktaConfig, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MfaOktaConfig
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.GetMFAOktaConfig")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/mfa/okta-verify/config"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSetMFADuoConfigRequest struct {
+	ctx context.Context
+	ApiService *MFAConfigurationApiService
+	mfaDuoConfig *MfaDuoConfig
+}
+
+func (r ApiSetMFADuoConfigRequest) MfaDuoConfig(mfaDuoConfig MfaDuoConfig) ApiSetMFADuoConfigRequest {
+	r.mfaDuoConfig = &mfaDuoConfig
+	return r
+}
+
+func (r ApiSetMFADuoConfigRequest) Execute() (*MfaDuoConfig, *http.Response, error) {
+	return r.ApiService.SetMFADuoConfigExecute(r)
+}
+
+/*
+SetMFADuoConfig Set Duo MFA configuration
+
+This API sets the configuration of an Duo MFA method. A token with ORG_ADMIN authority is required to call this API.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSetMFADuoConfigRequest
+*/
+func (a *MFAConfigurationApiService) SetMFADuoConfig(ctx context.Context) ApiSetMFADuoConfigRequest {
+	return ApiSetMFADuoConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return MfaDuoConfig
+func (a *MFAConfigurationApiService) SetMFADuoConfigExecute(r ApiSetMFADuoConfigRequest) (*MfaDuoConfig, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MfaDuoConfig
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.SetMFADuoConfig")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/mfa/duo-web/config"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.mfaDuoConfig == nil {
+		return localVarReturnValue, nil, reportError("mfaDuoConfig is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -256,7 +559,171 @@ func (a *MFAConfigurationApiService) SetMFAConfigExecute(r ApiSetMFAConfigReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.mfaConfig
+	localVarPostBody = r.mfaDuoConfig
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSetMFAOktaConfigRequest struct {
+	ctx context.Context
+	ApiService *MFAConfigurationApiService
+	mfaOktaConfig *MfaOktaConfig
+}
+
+func (r ApiSetMFAOktaConfigRequest) MfaOktaConfig(mfaOktaConfig MfaOktaConfig) ApiSetMFAOktaConfigRequest {
+	r.mfaOktaConfig = &mfaOktaConfig
+	return r
+}
+
+func (r ApiSetMFAOktaConfigRequest) Execute() (*MfaOktaConfig, *http.Response, error) {
+	return r.ApiService.SetMFAOktaConfigExecute(r)
+}
+
+/*
+SetMFAOktaConfig Set Okta MFA configuration
+
+This API sets the configuration of an Okta MFA method. A token with ORG_ADMIN authority is required to call this API.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSetMFAOktaConfigRequest
+*/
+func (a *MFAConfigurationApiService) SetMFAOktaConfig(ctx context.Context) ApiSetMFAOktaConfigRequest {
+	return ApiSetMFAOktaConfigRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return MfaOktaConfig
+func (a *MFAConfigurationApiService) SetMFAOktaConfigExecute(r ApiSetMFAOktaConfigRequest) (*MfaOktaConfig, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MfaOktaConfig
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.SetMFAOktaConfig")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/mfa/okta-verify/config"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.mfaOktaConfig == nil {
+		return localVarReturnValue, nil, reportError("mfaOktaConfig is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.mfaOktaConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -365,7 +832,7 @@ This API validates that the configuration is valid and will properly authenticat
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param method The name of the MFA method. The currently supported method name is okta-verify.
+ @param method The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
  @return ApiTestMFAConfigRequest
 */
 func (a *MFAConfigurationApiService) TestMFAConfig(ctx context.Context, method string) ApiTestMFAConfigRequest {

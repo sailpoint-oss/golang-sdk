@@ -24,7 +24,9 @@ type RecommendationConfigDto struct {
 	// The percent value that the recommendation calculation must surpass to produce a YES recommendation
 	PeerGroupPercentageThreshold *float32 `json:"peerGroupPercentageThreshold,omitempty"`
 	// If true, rulesRecommenderConfig will be refreshed with new programatically selected attribute and threshold values on the next pipeline run
-	ForceRefresh *bool `json:"forceRefresh,omitempty"`
+	RunAutoSelectOnce *bool `json:"runAutoSelectOnce,omitempty"`
+	// If true, rulesRecommenderConfig will be refreshed with new programatically selected threshold values on the next pipeline run
+	OnlyTuneThreshold *bool `json:"onlyTuneThreshold,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,6 +38,10 @@ type _RecommendationConfigDto RecommendationConfigDto
 // will change when the set of required properties is changed
 func NewRecommendationConfigDto() *RecommendationConfigDto {
 	this := RecommendationConfigDto{}
+	var runAutoSelectOnce bool = false
+	this.RunAutoSelectOnce = &runAutoSelectOnce
+	var onlyTuneThreshold bool = false
+	this.OnlyTuneThreshold = &onlyTuneThreshold
 	return &this
 }
 
@@ -44,6 +50,10 @@ func NewRecommendationConfigDto() *RecommendationConfigDto {
 // but it doesn't guarantee that properties required by API are set
 func NewRecommendationConfigDtoWithDefaults() *RecommendationConfigDto {
 	this := RecommendationConfigDto{}
+	var runAutoSelectOnce bool = false
+	this.RunAutoSelectOnce = &runAutoSelectOnce
+	var onlyTuneThreshold bool = false
+	this.OnlyTuneThreshold = &onlyTuneThreshold
 	return &this
 }
 
@@ -111,36 +121,68 @@ func (o *RecommendationConfigDto) SetPeerGroupPercentageThreshold(v float32) {
 	o.PeerGroupPercentageThreshold = &v
 }
 
-// GetForceRefresh returns the ForceRefresh field value if set, zero value otherwise.
-func (o *RecommendationConfigDto) GetForceRefresh() bool {
-	if o == nil || isNil(o.ForceRefresh) {
+// GetRunAutoSelectOnce returns the RunAutoSelectOnce field value if set, zero value otherwise.
+func (o *RecommendationConfigDto) GetRunAutoSelectOnce() bool {
+	if o == nil || isNil(o.RunAutoSelectOnce) {
 		var ret bool
 		return ret
 	}
-	return *o.ForceRefresh
+	return *o.RunAutoSelectOnce
 }
 
-// GetForceRefreshOk returns a tuple with the ForceRefresh field value if set, nil otherwise
+// GetRunAutoSelectOnceOk returns a tuple with the RunAutoSelectOnce field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RecommendationConfigDto) GetForceRefreshOk() (*bool, bool) {
-	if o == nil || isNil(o.ForceRefresh) {
+func (o *RecommendationConfigDto) GetRunAutoSelectOnceOk() (*bool, bool) {
+	if o == nil || isNil(o.RunAutoSelectOnce) {
 		return nil, false
 	}
-	return o.ForceRefresh, true
+	return o.RunAutoSelectOnce, true
 }
 
-// HasForceRefresh returns a boolean if a field has been set.
-func (o *RecommendationConfigDto) HasForceRefresh() bool {
-	if o != nil && !isNil(o.ForceRefresh) {
+// HasRunAutoSelectOnce returns a boolean if a field has been set.
+func (o *RecommendationConfigDto) HasRunAutoSelectOnce() bool {
+	if o != nil && !isNil(o.RunAutoSelectOnce) {
 		return true
 	}
 
 	return false
 }
 
-// SetForceRefresh gets a reference to the given bool and assigns it to the ForceRefresh field.
-func (o *RecommendationConfigDto) SetForceRefresh(v bool) {
-	o.ForceRefresh = &v
+// SetRunAutoSelectOnce gets a reference to the given bool and assigns it to the RunAutoSelectOnce field.
+func (o *RecommendationConfigDto) SetRunAutoSelectOnce(v bool) {
+	o.RunAutoSelectOnce = &v
+}
+
+// GetOnlyTuneThreshold returns the OnlyTuneThreshold field value if set, zero value otherwise.
+func (o *RecommendationConfigDto) GetOnlyTuneThreshold() bool {
+	if o == nil || isNil(o.OnlyTuneThreshold) {
+		var ret bool
+		return ret
+	}
+	return *o.OnlyTuneThreshold
+}
+
+// GetOnlyTuneThresholdOk returns a tuple with the OnlyTuneThreshold field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RecommendationConfigDto) GetOnlyTuneThresholdOk() (*bool, bool) {
+	if o == nil || isNil(o.OnlyTuneThreshold) {
+		return nil, false
+	}
+	return o.OnlyTuneThreshold, true
+}
+
+// HasOnlyTuneThreshold returns a boolean if a field has been set.
+func (o *RecommendationConfigDto) HasOnlyTuneThreshold() bool {
+	if o != nil && !isNil(o.OnlyTuneThreshold) {
+		return true
+	}
+
+	return false
+}
+
+// SetOnlyTuneThreshold gets a reference to the given bool and assigns it to the OnlyTuneThreshold field.
+func (o *RecommendationConfigDto) SetOnlyTuneThreshold(v bool) {
+	o.OnlyTuneThreshold = &v
 }
 
 func (o RecommendationConfigDto) MarshalJSON() ([]byte, error) {
@@ -159,8 +201,11 @@ func (o RecommendationConfigDto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.PeerGroupPercentageThreshold) {
 		toSerialize["peerGroupPercentageThreshold"] = o.PeerGroupPercentageThreshold
 	}
-	if !isNil(o.ForceRefresh) {
-		toSerialize["forceRefresh"] = o.ForceRefresh
+	if !isNil(o.RunAutoSelectOnce) {
+		toSerialize["runAutoSelectOnce"] = o.RunAutoSelectOnce
+	}
+	if !isNil(o.OnlyTuneThreshold) {
+		toSerialize["onlyTuneThreshold"] = o.OnlyTuneThreshold
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -182,7 +227,8 @@ func (o *RecommendationConfigDto) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "recommenderFeatures")
 		delete(additionalProperties, "peerGroupPercentageThreshold")
-		delete(additionalProperties, "forceRefresh")
+		delete(additionalProperties, "runAutoSelectOnce")
+		delete(additionalProperties, "onlyTuneThreshold")
 		o.AdditionalProperties = additionalProperties
 	}
 

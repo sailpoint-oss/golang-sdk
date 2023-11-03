@@ -10,20 +10,20 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | When the approval was modified last time. | [optional] 
 **RequestCreated** | Pointer to **time.Time** | When the access-request was created. | [optional] 
 **RequestType** | Pointer to [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
-**Requester** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
-**RequestedFor** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
-**ReviewedBy** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
-**Owner** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**Requester** | Pointer to [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | [optional] 
+**RequestedFor** | Pointer to [**AccessItemRequestedForDto**](AccessItemRequestedForDto.md) |  | [optional] 
+**ReviewedBy** | Pointer to [**CompletedApprovalReviewedBy**](CompletedApprovalReviewedBy.md) |  | [optional] 
+**Owner** | Pointer to [**AccessItemOwnerDto**](AccessItemOwnerDto.md) |  | [optional] 
 **RequestedObject** | Pointer to [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
-**RequesterComment** | Pointer to [**CommentDto1**](CommentDto1.md) |  | [optional] 
-**ReviewerComment** | Pointer to [**CommentDto1**](CommentDto1.md) |  | [optional] 
-**PreviousReviewersComments** | Pointer to [**[]CommentDto1**](CommentDto1.md) | The history of the previous reviewers comments. | [optional] 
+**RequesterComment** | Pointer to [**CommentDto**](CommentDto.md) |  | [optional] 
+**ReviewerComment** | Pointer to [**NullableCompletedApprovalReviewerComment**](CompletedApprovalReviewerComment.md) |  | [optional] 
+**PreviousReviewersComments** | Pointer to [**[]CommentDto**](CommentDto.md) | The history of the previous reviewers comments. | [optional] 
 **ForwardHistory** | Pointer to [**[]ApprovalForwardHistory**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
 **CommentRequiredWhenRejected** | Pointer to **bool** | When true the rejector has to provide comments when rejecting | [optional] 
 **State** | Pointer to [**CompletedApprovalState**](CompletedApprovalState.md) |  | [optional] 
-**RemoveDate** | Pointer to **time.Time** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
+**RemoveDate** | Pointer to **NullableTime** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
 **RemoveDateUpdateRequested** | Pointer to **bool** | If true, then the request was to change the remove date or sunset date. | [optional] 
-**CurrentRemoveDate** | Pointer to **time.Time** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
+**CurrentRemoveDate** | Pointer to **NullableTime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
 **SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted1**](SodViolationContextCheckCompleted1.md) |  | [optional] 
 
 ## Methods
@@ -197,20 +197,20 @@ HasRequestType returns a boolean if a field has been set.
 
 ### GetRequester
 
-`func (o *CompletedApproval) GetRequester() BaseReferenceDto1`
+`func (o *CompletedApproval) GetRequester() AccessItemRequesterDto`
 
 GetRequester returns the Requester field if non-nil, zero value otherwise.
 
 ### GetRequesterOk
 
-`func (o *CompletedApproval) GetRequesterOk() (*BaseReferenceDto1, bool)`
+`func (o *CompletedApproval) GetRequesterOk() (*AccessItemRequesterDto, bool)`
 
 GetRequesterOk returns a tuple with the Requester field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequester
 
-`func (o *CompletedApproval) SetRequester(v BaseReferenceDto1)`
+`func (o *CompletedApproval) SetRequester(v AccessItemRequesterDto)`
 
 SetRequester sets Requester field to given value.
 
@@ -222,20 +222,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *CompletedApproval) GetRequestedFor() BaseReferenceDto1`
+`func (o *CompletedApproval) GetRequestedFor() AccessItemRequestedForDto`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *CompletedApproval) GetRequestedForOk() (*BaseReferenceDto1, bool)`
+`func (o *CompletedApproval) GetRequestedForOk() (*AccessItemRequestedForDto, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *CompletedApproval) SetRequestedFor(v BaseReferenceDto1)`
+`func (o *CompletedApproval) SetRequestedFor(v AccessItemRequestedForDto)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
@@ -247,20 +247,20 @@ HasRequestedFor returns a boolean if a field has been set.
 
 ### GetReviewedBy
 
-`func (o *CompletedApproval) GetReviewedBy() BaseReferenceDto1`
+`func (o *CompletedApproval) GetReviewedBy() CompletedApprovalReviewedBy`
 
 GetReviewedBy returns the ReviewedBy field if non-nil, zero value otherwise.
 
 ### GetReviewedByOk
 
-`func (o *CompletedApproval) GetReviewedByOk() (*BaseReferenceDto1, bool)`
+`func (o *CompletedApproval) GetReviewedByOk() (*CompletedApprovalReviewedBy, bool)`
 
 GetReviewedByOk returns a tuple with the ReviewedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReviewedBy
 
-`func (o *CompletedApproval) SetReviewedBy(v BaseReferenceDto1)`
+`func (o *CompletedApproval) SetReviewedBy(v CompletedApprovalReviewedBy)`
 
 SetReviewedBy sets ReviewedBy field to given value.
 
@@ -272,20 +272,20 @@ HasReviewedBy returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *CompletedApproval) GetOwner() BaseReferenceDto1`
+`func (o *CompletedApproval) GetOwner() AccessItemOwnerDto`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *CompletedApproval) GetOwnerOk() (*BaseReferenceDto1, bool)`
+`func (o *CompletedApproval) GetOwnerOk() (*AccessItemOwnerDto, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *CompletedApproval) SetOwner(v BaseReferenceDto1)`
+`func (o *CompletedApproval) SetOwner(v AccessItemOwnerDto)`
 
 SetOwner sets Owner field to given value.
 
@@ -322,20 +322,20 @@ HasRequestedObject returns a boolean if a field has been set.
 
 ### GetRequesterComment
 
-`func (o *CompletedApproval) GetRequesterComment() CommentDto1`
+`func (o *CompletedApproval) GetRequesterComment() CommentDto`
 
 GetRequesterComment returns the RequesterComment field if non-nil, zero value otherwise.
 
 ### GetRequesterCommentOk
 
-`func (o *CompletedApproval) GetRequesterCommentOk() (*CommentDto1, bool)`
+`func (o *CompletedApproval) GetRequesterCommentOk() (*CommentDto, bool)`
 
 GetRequesterCommentOk returns a tuple with the RequesterComment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequesterComment
 
-`func (o *CompletedApproval) SetRequesterComment(v CommentDto1)`
+`func (o *CompletedApproval) SetRequesterComment(v CommentDto)`
 
 SetRequesterComment sets RequesterComment field to given value.
 
@@ -347,20 +347,20 @@ HasRequesterComment returns a boolean if a field has been set.
 
 ### GetReviewerComment
 
-`func (o *CompletedApproval) GetReviewerComment() CommentDto1`
+`func (o *CompletedApproval) GetReviewerComment() CompletedApprovalReviewerComment`
 
 GetReviewerComment returns the ReviewerComment field if non-nil, zero value otherwise.
 
 ### GetReviewerCommentOk
 
-`func (o *CompletedApproval) GetReviewerCommentOk() (*CommentDto1, bool)`
+`func (o *CompletedApproval) GetReviewerCommentOk() (*CompletedApprovalReviewerComment, bool)`
 
 GetReviewerCommentOk returns a tuple with the ReviewerComment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReviewerComment
 
-`func (o *CompletedApproval) SetReviewerComment(v CommentDto1)`
+`func (o *CompletedApproval) SetReviewerComment(v CompletedApprovalReviewerComment)`
 
 SetReviewerComment sets ReviewerComment field to given value.
 
@@ -370,22 +370,32 @@ SetReviewerComment sets ReviewerComment field to given value.
 
 HasReviewerComment returns a boolean if a field has been set.
 
+### SetReviewerCommentNil
+
+`func (o *CompletedApproval) SetReviewerCommentNil(b bool)`
+
+ SetReviewerCommentNil sets the value for ReviewerComment to be an explicit nil
+
+### UnsetReviewerComment
+`func (o *CompletedApproval) UnsetReviewerComment()`
+
+UnsetReviewerComment ensures that no value is present for ReviewerComment, not even an explicit nil
 ### GetPreviousReviewersComments
 
-`func (o *CompletedApproval) GetPreviousReviewersComments() []CommentDto1`
+`func (o *CompletedApproval) GetPreviousReviewersComments() []CommentDto`
 
 GetPreviousReviewersComments returns the PreviousReviewersComments field if non-nil, zero value otherwise.
 
 ### GetPreviousReviewersCommentsOk
 
-`func (o *CompletedApproval) GetPreviousReviewersCommentsOk() (*[]CommentDto1, bool)`
+`func (o *CompletedApproval) GetPreviousReviewersCommentsOk() (*[]CommentDto, bool)`
 
 GetPreviousReviewersCommentsOk returns a tuple with the PreviousReviewersComments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPreviousReviewersComments
 
-`func (o *CompletedApproval) SetPreviousReviewersComments(v []CommentDto1)`
+`func (o *CompletedApproval) SetPreviousReviewersComments(v []CommentDto)`
 
 SetPreviousReviewersComments sets PreviousReviewersComments field to given value.
 
@@ -495,6 +505,16 @@ SetRemoveDate sets RemoveDate field to given value.
 
 HasRemoveDate returns a boolean if a field has been set.
 
+### SetRemoveDateNil
+
+`func (o *CompletedApproval) SetRemoveDateNil(b bool)`
+
+ SetRemoveDateNil sets the value for RemoveDate to be an explicit nil
+
+### UnsetRemoveDate
+`func (o *CompletedApproval) UnsetRemoveDate()`
+
+UnsetRemoveDate ensures that no value is present for RemoveDate, not even an explicit nil
 ### GetRemoveDateUpdateRequested
 
 `func (o *CompletedApproval) GetRemoveDateUpdateRequested() bool`
@@ -545,6 +565,16 @@ SetCurrentRemoveDate sets CurrentRemoveDate field to given value.
 
 HasCurrentRemoveDate returns a boolean if a field has been set.
 
+### SetCurrentRemoveDateNil
+
+`func (o *CompletedApproval) SetCurrentRemoveDateNil(b bool)`
+
+ SetCurrentRemoveDateNil sets the value for CurrentRemoveDate to be an explicit nil
+
+### UnsetCurrentRemoveDate
+`func (o *CompletedApproval) UnsetCurrentRemoveDate()`
+
+UnsetCurrentRemoveDate ensures that no value is present for CurrentRemoveDate, not even an explicit nil
 ### GetSodViolationContext
 
 `func (o *CompletedApproval) GetSodViolationContext() SodViolationContextCheckCompleted1`

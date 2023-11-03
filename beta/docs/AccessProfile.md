@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | Date the Access Profile was created | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Date the Access Profile was last modified. | [optional] [readonly] 
 **Enabled** | Pointer to **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] 
-**Owner** | [**NullableOwnerReference**](OwnerReference.md) |  | 
+**Owner** | [**OwnerReference**](OwnerReference.md) |  | 
 **Source** | [**AccessProfileSourceRef**](AccessProfileSourceRef.md) |  | 
 **Entitlements** | Pointer to [**[]EntitlementRef**](EntitlementRef.md) | A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement. | [optional] 
 **Requestable** | Pointer to **bool** | Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error. | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewAccessProfile
 
-`func NewAccessProfile(name string, owner NullableOwnerReference, source AccessProfileSourceRef, ) *AccessProfile`
+`func NewAccessProfile(name string, owner OwnerReference, source AccessProfileSourceRef, ) *AccessProfile`
 
 NewAccessProfile instantiates a new AccessProfile object
 This constructor will assign default values to properties that have it defined,
@@ -213,16 +213,6 @@ and a boolean to check if the value has been set.
 SetOwner sets Owner field to given value.
 
 
-### SetOwnerNil
-
-`func (o *AccessProfile) SetOwnerNil(b bool)`
-
- SetOwnerNil sets the value for Owner to be an explicit nil
-
-### UnsetOwner
-`func (o *AccessProfile) UnsetOwner()`
-
-UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 ### GetSource
 
 `func (o *AccessProfile) GetSource() AccessProfileSourceRef`
@@ -268,6 +258,16 @@ SetEntitlements sets Entitlements field to given value.
 
 HasEntitlements returns a boolean if a field has been set.
 
+### SetEntitlementsNil
+
+`func (o *AccessProfile) SetEntitlementsNil(b bool)`
+
+ SetEntitlementsNil sets the value for Entitlements to be an explicit nil
+
+### UnsetEntitlements
+`func (o *AccessProfile) UnsetEntitlements()`
+
+UnsetEntitlements ensures that no value is present for Entitlements, not even an explicit nil
 ### GetRequestable
 
 `func (o *AccessProfile) GetRequestable() bool`

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Identity** | [**IdentityDeletedIdentity**](IdentityDeletedIdentity.md) |  | 
-**Attributes** | **map[string]interface{}** | The attributes assigned to the identity.  Attributes are determined by the identity profile. | 
+**Attributes** | **map[string]interface{}** | The attributes assigned to the identity. Attributes are determined by the identity profile. | 
 
 ## Methods
 

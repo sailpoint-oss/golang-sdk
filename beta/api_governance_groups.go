@@ -337,12 +337,12 @@ type ApiDeleteWorkgroupMembersRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsApiService
 	workgroupId string
-	baseReferenceDto1 *[]BaseReferenceDto1
+	bulkWorkgroupMembersRequestInner *[]BulkWorkgroupMembersRequestInner
 }
 
 // List of identities to be removed from  a Governance Group members list.
-func (r ApiDeleteWorkgroupMembersRequest) BaseReferenceDto1(baseReferenceDto1 []BaseReferenceDto1) ApiDeleteWorkgroupMembersRequest {
-	r.baseReferenceDto1 = &baseReferenceDto1
+func (r ApiDeleteWorkgroupMembersRequest) BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner []BulkWorkgroupMembersRequestInner) ApiDeleteWorkgroupMembersRequest {
+	r.bulkWorkgroupMembersRequestInner = &bulkWorkgroupMembersRequestInner
 	return r
 }
 
@@ -386,14 +386,14 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupMembersExecute(r ApiDeleteWo
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workgroups/{workgrouId}/members/bulk-delete"
+	localVarPath := localBasePath + "/workgroups/{workgroupId}/members/bulk-delete"
 	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterValueToString(r.workgroupId, "workgroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.baseReferenceDto1 == nil {
-		return localVarReturnValue, nil, reportError("baseReferenceDto1 is required and must be specified")
+	if r.bulkWorkgroupMembersRequestInner == nil {
+		return localVarReturnValue, nil, reportError("bulkWorkgroupMembersRequestInner is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -414,7 +414,7 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupMembersExecute(r ApiDeleteWo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.baseReferenceDto1
+	localVarPostBody = r.bulkWorkgroupMembersRequestInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -866,7 +866,7 @@ func (r ApiListConnectionsRequest) Count(count bool) ApiListConnectionsRequest {
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
 func (r ApiListConnectionsRequest) Sorters(sorters string) ApiListConnectionsRequest {
 	r.sorters = &sorters
 	return r
@@ -908,7 +908,7 @@ func (a *GovernanceGroupsApiService) ListConnectionsExecute(r ApiListConnections
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workgroups/{workgrouId}/connections"
+	localVarPath := localBasePath + "/workgroups/{workgroupId}/connections"
 	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterValueToString(r.workgroupId, "workgroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1063,13 +1063,13 @@ func (r ApiListWorkgroupMembersRequest) Count(count bool) ApiListWorkgroupMember
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified**
 func (r ApiListWorkgroupMembersRequest) Sorters(sorters string) ApiListWorkgroupMembersRequest {
 	r.sorters = &sorters
 	return r
 }
 
-func (r ApiListWorkgroupMembersRequest) Execute() ([]BaseReferenceDto1, *http.Response, error) {
+func (r ApiListWorkgroupMembersRequest) Execute() ([]ListWorkgroupMembers200ResponseInner, *http.Response, error) {
 	return r.ApiService.ListWorkgroupMembersExecute(r)
 }
 
@@ -1091,13 +1091,13 @@ func (a *GovernanceGroupsApiService) ListWorkgroupMembers(ctx context.Context, w
 }
 
 // Execute executes the request
-//  @return []BaseReferenceDto1
-func (a *GovernanceGroupsApiService) ListWorkgroupMembersExecute(r ApiListWorkgroupMembersRequest) ([]BaseReferenceDto1, *http.Response, error) {
+//  @return []ListWorkgroupMembers200ResponseInner
+func (a *GovernanceGroupsApiService) ListWorkgroupMembersExecute(r ApiListWorkgroupMembersRequest) ([]ListWorkgroupMembers200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []BaseReferenceDto1
+		localVarReturnValue  []ListWorkgroupMembers200ResponseInner
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsApiService.ListWorkgroupMembers")
@@ -1105,7 +1105,7 @@ func (a *GovernanceGroupsApiService) ListWorkgroupMembersExecute(r ApiListWorkgr
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workgroups/{workgrouId}/members"
+	localVarPath := localBasePath + "/workgroups/{workgroupId}/members"
 	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterValueToString(r.workgroupId, "workgroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1260,13 +1260,13 @@ func (r ApiListWorkgroupsRequest) Count(count bool) ApiListWorkgroupsRequest {
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Governance Group fields and operators: **id**: *eq, in*  **name**: *eq, sw*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in*
 func (r ApiListWorkgroupsRequest) Filters(filters string) ApiListWorkgroupsRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, description**
 func (r ApiListWorkgroupsRequest) Sorters(sorters string) ApiListWorkgroupsRequest {
 	r.sorters = &sorters
 	return r
@@ -1606,12 +1606,12 @@ type ApiUpdateWorkgroupMembersRequest struct {
 	ctx context.Context
 	ApiService *GovernanceGroupsApiService
 	workgroupId string
-	baseReferenceDto1 *[]BaseReferenceDto1
+	bulkWorkgroupMembersRequestInner *[]BulkWorkgroupMembersRequestInner
 }
 
 // List of identities to be added to a Governance Group members list.
-func (r ApiUpdateWorkgroupMembersRequest) BaseReferenceDto1(baseReferenceDto1 []BaseReferenceDto1) ApiUpdateWorkgroupMembersRequest {
-	r.baseReferenceDto1 = &baseReferenceDto1
+func (r ApiUpdateWorkgroupMembersRequest) BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner []BulkWorkgroupMembersRequestInner) ApiUpdateWorkgroupMembersRequest {
+	r.bulkWorkgroupMembersRequestInner = &bulkWorkgroupMembersRequestInner
 	return r
 }
 
@@ -1655,14 +1655,14 @@ func (a *GovernanceGroupsApiService) UpdateWorkgroupMembersExecute(r ApiUpdateWo
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/workgroups/{workgrouId}/members/bulk-add"
+	localVarPath := localBasePath + "/workgroups/{workgroupId}/members/bulk-add"
 	localVarPath = strings.Replace(localVarPath, "{"+"workgroupId"+"}", url.PathEscape(parameterValueToString(r.workgroupId, "workgroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.baseReferenceDto1 == nil {
-		return localVarReturnValue, nil, reportError("baseReferenceDto1 is required and must be specified")
+	if r.bulkWorkgroupMembersRequestInner == nil {
+		return localVarReturnValue, nil, reportError("bulkWorkgroupMembersRequestInner is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1683,7 +1683,7 @@ func (a *GovernanceGroupsApiService) UpdateWorkgroupMembersExecute(r ApiUpdateWo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.baseReferenceDto1
+	localVarPostBody = r.bulkWorkgroupMembersRequestInner
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

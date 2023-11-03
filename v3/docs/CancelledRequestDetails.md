@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Comment made by the owner when cancelling the associated request. | [optional] 
-**Owner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**Modified** | Pointer to **time.Time** | Date comment was added by the owner when cancelling the associated request | [optional] 
+**Owner** | Pointer to [**OwnerDto**](OwnerDto.md) |  | [optional] 
+**Modified** | Pointer to **time.Time** | Date comment was added by the owner when cancelling the associated request. | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasComment returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *CancelledRequestDetails) GetOwner() BaseReferenceDto`
+`func (o *CancelledRequestDetails) GetOwner() OwnerDto`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *CancelledRequestDetails) GetOwnerOk() (*BaseReferenceDto, bool)`
+`func (o *CancelledRequestDetails) GetOwnerOk() (*OwnerDto, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *CancelledRequestDetails) SetOwner(v BaseReferenceDto)`
+`func (o *CancelledRequestDetails) SetOwner(v OwnerDto)`
 
 SetOwner sets Owner field to given value.
 

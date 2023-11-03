@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## RefreshIdentities
 
-> RefreshIdentities(ctx).ContentType(contentType).RefreshIdentitiesRequest(refreshIdentitiesRequest).Execute()
+> map[string]interface{} RefreshIdentities(ctx).ContentType(contentType).RefreshIdentitiesRequest(refreshIdentitiesRequest).Execute()
 
 Refresh Identities
 
@@ -39,6 +39,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SystemApi.RefreshIdentities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `RefreshIdentities`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `SystemApi.RefreshIdentities`: %v\n", resp)
 }
 ```
 
@@ -58,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 

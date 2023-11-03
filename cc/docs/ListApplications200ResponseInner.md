@@ -53,7 +53,7 @@ Name | Type | Description | Notes
 **XsdVersion** | Pointer to **string** |  | [optional] 
 **AppProfiles** | Pointer to [**[]ListApplications200ResponseInnerAppProfilesInner**](ListApplications200ResponseInnerAppProfilesInner.md) |  | [optional] 
 **PasswordServiceId** | Pointer to **float32** |  | [optional] 
-**AccessProfileIds** | Pointer to **map[string]interface{}** |  | [optional] 
+**AccessProfileIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -1301,20 +1301,20 @@ HasPasswordServiceId returns a boolean if a field has been set.
 
 ### GetAccessProfileIds
 
-`func (o *ListApplications200ResponseInner) GetAccessProfileIds() map[string]interface{}`
+`func (o *ListApplications200ResponseInner) GetAccessProfileIds() []string`
 
 GetAccessProfileIds returns the AccessProfileIds field if non-nil, zero value otherwise.
 
 ### GetAccessProfileIdsOk
 
-`func (o *ListApplications200ResponseInner) GetAccessProfileIdsOk() (*map[string]interface{}, bool)`
+`func (o *ListApplications200ResponseInner) GetAccessProfileIdsOk() (*[]string, bool)`
 
 GetAccessProfileIdsOk returns a tuple with the AccessProfileIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessProfileIds
 
-`func (o *ListApplications200ResponseInner) SetAccessProfileIds(v map[string]interface{})`
+`func (o *ListApplications200ResponseInner) SetAccessProfileIds(v []string)`
 
 SetAccessProfileIds sets AccessProfileIds field to given value.
 

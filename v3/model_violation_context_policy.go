@@ -21,7 +21,7 @@ var _ MappedNullable = &ViolationContextPolicy{}
 type ViolationContextPolicy struct {
 	// The type of object that is referenced
 	Type map[string]interface{} `json:"type,omitempty"`
-	// ID of the object to which this reference applies
+	// SOD policy ID.
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}

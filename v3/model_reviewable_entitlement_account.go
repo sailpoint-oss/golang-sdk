@@ -46,6 +46,10 @@ type _ReviewableEntitlementAccount ReviewableEntitlementAccount
 // will change when the set of required properties is changed
 func NewReviewableEntitlementAccount() *ReviewableEntitlementAccount {
 	this := ReviewableEntitlementAccount{}
+	var disabled bool = false
+	this.Disabled = &disabled
+	var locked bool = false
+	this.Locked = &locked
 	return &this
 }
 
@@ -54,6 +58,10 @@ func NewReviewableEntitlementAccount() *ReviewableEntitlementAccount {
 // but it doesn't guarantee that properties required by API are set
 func NewReviewableEntitlementAccountWithDefaults() *ReviewableEntitlementAccount {
 	this := ReviewableEntitlementAccount{}
+	var disabled bool = false
+	this.Disabled = &disabled
+	var locked bool = false
+	this.Locked = &locked
 	return &this
 }
 

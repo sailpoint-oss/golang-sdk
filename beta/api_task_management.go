@@ -29,8 +29,6 @@ type ApiGetPendingTaskHeadersRequest struct {
 	offset *int32
 	limit *int32
 	count *bool
-	sorters *string
-	filters *string
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -48,18 +46,6 @@ func (r ApiGetPendingTaskHeadersRequest) Limit(limit int32) ApiGetPendingTaskHea
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiGetPendingTaskHeadersRequest) Count(count bool) ApiGetPendingTaskHeadersRequest {
 	r.count = &count
-	return r
-}
-
-// sort criteria
-func (r ApiGetPendingTaskHeadersRequest) Sorters(sorters string) ApiGetPendingTaskHeadersRequest {
-	r.sorters = &sorters
-	return r
-}
-
-// filter criteria
-func (r ApiGetPendingTaskHeadersRequest) Filters(filters string) ApiGetPendingTaskHeadersRequest {
-	r.filters = &filters
 	return r
 }
 
@@ -109,12 +95,6 @@ func (a *TaskManagementApiService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
-	}
-	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
-	}
-	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -188,8 +168,6 @@ type ApiGetPendingTasksRequest struct {
 	offset *int32
 	limit *int32
 	count *bool
-	sorters *string
-	filters *string
 }
 
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
@@ -207,18 +185,6 @@ func (r ApiGetPendingTasksRequest) Limit(limit int32) ApiGetPendingTasksRequest 
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 func (r ApiGetPendingTasksRequest) Count(count bool) ApiGetPendingTasksRequest {
 	r.count = &count
-	return r
-}
-
-// sort criteria
-func (r ApiGetPendingTasksRequest) Sorters(sorters string) ApiGetPendingTasksRequest {
-	r.sorters = &sorters
-	return r
-}
-
-// filter criteria
-func (r ApiGetPendingTasksRequest) Filters(filters string) ApiGetPendingTasksRequest {
-	r.filters = &filters
 	return r
 }
 
@@ -270,12 +236,6 @@ func (a *TaskManagementApiService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
-	}
-	if r.sorters != nil {
-		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
-	}
-	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -526,13 +486,13 @@ func (r ApiGetTaskStatusListRequest) Count(count bool) ApiGetTaskStatusListReque
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators:   **id**: *eq, in*   **sourceId**: *eq, in*   **completionStatus**: *eq, in*   **type**: *eq, in* \&quot;CLOUD_ACCOUNT_AGGREGATION\&quot;, \&quot;CLOUD_GROUP_AGGREGATION\&quot;, \&quot;CLOUD_PROCESS_UNCORRELATED_ACCOUNTS\&quot; or \&quot;CLOUD_REFRESH_ROLE\&quot;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **sourceId**: *eq, in*  **completionStatus**: *eq, in*  **type**: *eq, in*
 func (r ApiGetTaskStatusListRequest) Filters(filters string) ApiGetTaskStatusListRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **created**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created**
 func (r ApiGetTaskStatusListRequest) Sorters(sorters string) ApiGetTaskStatusListRequest {
 	r.sorters = &sorters
 	return r

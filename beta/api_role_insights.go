@@ -33,12 +33,14 @@ func (r ApiCreateRoleInsightRequestsRequest) Execute() (*RoleInsightsResponse, *
 }
 
 /*
-CreateRoleInsightRequests A request to generate insights for roles
+CreateRoleInsightRequests Generate insights for roles
 
-This submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.
+Submits a create role insights request to the role insights application. At this time there are no parameters. All business roles will be processed for the customer.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateRoleInsightRequestsRequest
+
+Deprecated
 */
 func (a *RoleInsightsApiService) CreateRoleInsightRequests(ctx context.Context) ApiCreateRoleInsightRequestsRequest {
 	return ApiCreateRoleInsightRequestsRequest{
@@ -49,6 +51,7 @@ func (a *RoleInsightsApiService) CreateRoleInsightRequests(ctx context.Context) 
 
 // Execute executes the request
 //  @return RoleInsightsResponse
+// Deprecated
 func (a *RoleInsightsApiService) CreateRoleInsightRequestsExecute(r ApiCreateRoleInsightRequestsRequest) (*RoleInsightsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -140,6 +143,17 @@ func (a *RoleInsightsApiService) CreateRoleInsightRequestsExecute(r ApiCreateRol
 					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -173,13 +187,13 @@ type ApiDownloadRoleInsightsEntitlementsChangesRequest struct {
 	filters *string
 }
 
-// sort by identitiesWithAccess, default order descending
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess**  The default sort is **identitiesWithAccess** in descending order.
 func (r ApiDownloadRoleInsightsEntitlementsChangesRequest) Sorters(sorters string) ApiDownloadRoleInsightsEntitlementsChangesRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter parameter(s) by \&quot;starts with\&quot; for the name and description.
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*
 func (r ApiDownloadRoleInsightsEntitlementsChangesRequest) Filters(filters string) ApiDownloadRoleInsightsEntitlementsChangesRequest {
 	r.filters = &filters
 	return r
@@ -368,13 +382,13 @@ func (r ApiGetEntitlementChangesIdentitiesRequest) Count(count bool) ApiGetEntit
 	return r
 }
 
-// sort by name
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**
 func (r ApiGetEntitlementChangesIdentitiesRequest) Sorters(sorters string) ApiGetEntitlementChangesIdentitiesRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter parameter by \&quot;starts with\&quot; for the name.
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*
 func (r ApiGetEntitlementChangesIdentitiesRequest) Filters(filters string) ApiGetEntitlementChangesIdentitiesRequest {
 	r.filters = &filters
 	return r
@@ -715,13 +729,13 @@ func (r ApiGetRoleInsightsRequest) Count(count bool) ApiGetRoleInsightsRequest {
 	return r
 }
 
-// sort by numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities (default- ascending)
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **numberOfUpdates, identitiesWithAccess, totalNumberOfIdentities**
 func (r ApiGetRoleInsightsRequest) Sorters(sorters string) ApiGetRoleInsightsRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter parameter(s) by \&quot;starts with\&quot; for the name, ownerName and description.
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **ownerName**: *sw*  **description**: *sw*
 func (r ApiGetRoleInsightsRequest) Filters(filters string) ApiGetRoleInsightsRequest {
 	r.filters = &filters
 	return r
@@ -886,7 +900,7 @@ type ApiGetRoleInsightsCurrentEntitlementsRequest struct {
 	filters *string
 }
 
-// Filter parameter(s) by \&quot;starts with\&quot; for the name and description.
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*
 func (r ApiGetRoleInsightsCurrentEntitlementsRequest) Filters(filters string) ApiGetRoleInsightsCurrentEntitlementsRequest {
 	r.filters = &filters
 	return r
@@ -1043,13 +1057,13 @@ type ApiGetRoleInsightsEntitlementsChangesRequest struct {
 	filters *string
 }
 
-// sort by identitiesWithAccess or name
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **identitiesWithAccess, name**
 func (r ApiGetRoleInsightsEntitlementsChangesRequest) Sorters(sorters string) ApiGetRoleInsightsEntitlementsChangesRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter parameter(s) by \&quot;starts with\&quot; for the name and description.
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*  **description**: *sw*
 func (r ApiGetRoleInsightsEntitlementsChangesRequest) Filters(filters string) ApiGetRoleInsightsEntitlementsChangesRequest {
 	r.filters = &filters
 	return r
@@ -1212,13 +1226,15 @@ func (r ApiGetRoleInsightsRequestsRequest) Execute() (*RoleInsightsResponse, *ht
 }
 
 /*
-GetRoleInsightsRequests Returns the metadata for a request in order to generate insights for roles.
+GetRoleInsightsRequests Returns metadata from prior request.
 
-This endpoint returns details of a prior request.
+This endpoint returns details of a prior role insights request. 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The role insights request id
  @return ApiGetRoleInsightsRequestsRequest
+
+Deprecated
 */
 func (a *RoleInsightsApiService) GetRoleInsightsRequests(ctx context.Context, id string) ApiGetRoleInsightsRequestsRequest {
 	return ApiGetRoleInsightsRequestsRequest{
@@ -1230,6 +1246,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsRequests(ctx context.Context, id
 
 // Execute executes the request
 //  @return RoleInsightsResponse
+// Deprecated
 func (a *RoleInsightsApiService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsightsRequestsRequest) (*RoleInsightsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1313,6 +1330,17 @@ func (a *RoleInsightsApiService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsi
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

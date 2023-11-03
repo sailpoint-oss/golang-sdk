@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **map[string]interface{}** | The type of object being referenced | [optional] 
-**Id** | Pointer to **map[string]interface{}** | ID of the source | [optional] 
-**Name** | Pointer to **map[string]interface{}** | Human-readable display name of the source | [optional] 
+**Type** | Pointer to **string** | DTO type of source for service desk integration template. | [optional] 
+**Id** | Pointer to **string** | ID of source for service desk integration template. | [optional] 
+**Name** | Pointer to **string** | Human-readable name of source for service desk integration template. | [optional] 
 
 ## Methods
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ProvisioningConfigManagedResourceRefsInner) GetType() map[string]interface{}`
+`func (o *ProvisioningConfigManagedResourceRefsInner) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ProvisioningConfigManagedResourceRefsInner) GetTypeOk() (*map[string]interface{}, bool)`
+`func (o *ProvisioningConfigManagedResourceRefsInner) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ProvisioningConfigManagedResourceRefsInner) SetType(v map[string]interface{})`
+`func (o *ProvisioningConfigManagedResourceRefsInner) SetType(v string)`
 
 SetType sets Type field to given value.
 
@@ -54,20 +54,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ProvisioningConfigManagedResourceRefsInner) GetId() map[string]interface{}`
+`func (o *ProvisioningConfigManagedResourceRefsInner) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ProvisioningConfigManagedResourceRefsInner) GetIdOk() (*map[string]interface{}, bool)`
+`func (o *ProvisioningConfigManagedResourceRefsInner) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ProvisioningConfigManagedResourceRefsInner) SetId(v map[string]interface{})`
+`func (o *ProvisioningConfigManagedResourceRefsInner) SetId(v string)`
 
 SetId sets Id field to given value.
 
@@ -79,20 +79,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *ProvisioningConfigManagedResourceRefsInner) GetName() map[string]interface{}`
+`func (o *ProvisioningConfigManagedResourceRefsInner) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *ProvisioningConfigManagedResourceRefsInner) GetNameOk() (*map[string]interface{}, bool)`
+`func (o *ProvisioningConfigManagedResourceRefsInner) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *ProvisioningConfigManagedResourceRefsInner) SetName(v map[string]interface{})`
+`func (o *ProvisioningConfigManagedResourceRefsInner) SetName(v string)`
 
 SetName sets Name field to given value.
 

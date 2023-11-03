@@ -7,17 +7,20 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | The id for the entitlement | [optional] 
 **Name** | Pointer to **string** | The name of the entitlement | [optional] 
 **Description** | Pointer to **NullableString** | Information about the entitlement | [optional] 
-**Privileged** | Pointer to **bool** | Indicates if the entitlement is a privileged entitlement | [optional] 
+**Privileged** | Pointer to **bool** | Indicates if the entitlement is a privileged entitlement | [optional] [default to false]
 **Owner** | Pointer to [**NullableIdentityReferenceWithNameAndEmail**](IdentityReferenceWithNameAndEmail.md) |  | [optional] 
 **AttributeName** | Pointer to **string** | The name of the attribute on the source | [optional] 
 **AttributeValue** | Pointer to **string** | The value of the attribute on the source | [optional] 
 **SourceSchemaObjectType** | Pointer to **string** | The schema object type on the source used to represent the entitlement and its attributes | [optional] 
 **SourceName** | Pointer to **string** | The name of the source for which this entitlement belongs | [optional] 
 **SourceType** | Pointer to **string** | The type of the source for which the entitlement belongs | [optional] 
-**HasPermissions** | Pointer to **bool** | Indicates if the entitlement has permissions | [optional] 
-**IsPermission** | Pointer to **bool** | Indicates if the entitlement is a representation of an account permission | [optional] 
-**Revocable** | Pointer to **bool** | Indicates whether the entitlement can be revoked | [optional] 
-**CloudGoverned** | Pointer to **bool** | True if the entitlement is cloud governed | [optional] 
+**SourceId** | Pointer to **string** | The ID of the source for which the entitlement belongs | [optional] 
+**HasPermissions** | Pointer to **bool** | Indicates if the entitlement has permissions | [optional] [default to false]
+**IsPermission** | Pointer to **bool** | Indicates if the entitlement is a representation of an account permission | [optional] [default to false]
+**Revocable** | Pointer to **bool** | Indicates whether the entitlement can be revoked | [optional] [default to false]
+**CloudGoverned** | Pointer to **bool** | True if the entitlement is cloud governed | [optional] [default to false]
+**ContainsDataAccess** | Pointer to **bool** | True if the entitlement has DAS data | [optional] [default to false]
+**DataAccess** | Pointer to [**NullableDataAccess**](DataAccess.md) |  | [optional] 
 **Account** | Pointer to [**NullableReviewableEntitlementAccount**](ReviewableEntitlementAccount.md) |  | [optional] 
 
 ## Methods
@@ -309,6 +312,31 @@ SetSourceType sets SourceType field to given value.
 
 HasSourceType returns a boolean if a field has been set.
 
+### GetSourceId
+
+`func (o *ReviewableEntitlement) GetSourceId() string`
+
+GetSourceId returns the SourceId field if non-nil, zero value otherwise.
+
+### GetSourceIdOk
+
+`func (o *ReviewableEntitlement) GetSourceIdOk() (*string, bool)`
+
+GetSourceIdOk returns a tuple with the SourceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceId
+
+`func (o *ReviewableEntitlement) SetSourceId(v string)`
+
+SetSourceId sets SourceId field to given value.
+
+### HasSourceId
+
+`func (o *ReviewableEntitlement) HasSourceId() bool`
+
+HasSourceId returns a boolean if a field has been set.
+
 ### GetHasPermissions
 
 `func (o *ReviewableEntitlement) GetHasPermissions() bool`
@@ -409,6 +437,66 @@ SetCloudGoverned sets CloudGoverned field to given value.
 
 HasCloudGoverned returns a boolean if a field has been set.
 
+### GetContainsDataAccess
+
+`func (o *ReviewableEntitlement) GetContainsDataAccess() bool`
+
+GetContainsDataAccess returns the ContainsDataAccess field if non-nil, zero value otherwise.
+
+### GetContainsDataAccessOk
+
+`func (o *ReviewableEntitlement) GetContainsDataAccessOk() (*bool, bool)`
+
+GetContainsDataAccessOk returns a tuple with the ContainsDataAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContainsDataAccess
+
+`func (o *ReviewableEntitlement) SetContainsDataAccess(v bool)`
+
+SetContainsDataAccess sets ContainsDataAccess field to given value.
+
+### HasContainsDataAccess
+
+`func (o *ReviewableEntitlement) HasContainsDataAccess() bool`
+
+HasContainsDataAccess returns a boolean if a field has been set.
+
+### GetDataAccess
+
+`func (o *ReviewableEntitlement) GetDataAccess() DataAccess`
+
+GetDataAccess returns the DataAccess field if non-nil, zero value otherwise.
+
+### GetDataAccessOk
+
+`func (o *ReviewableEntitlement) GetDataAccessOk() (*DataAccess, bool)`
+
+GetDataAccessOk returns a tuple with the DataAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataAccess
+
+`func (o *ReviewableEntitlement) SetDataAccess(v DataAccess)`
+
+SetDataAccess sets DataAccess field to given value.
+
+### HasDataAccess
+
+`func (o *ReviewableEntitlement) HasDataAccess() bool`
+
+HasDataAccess returns a boolean if a field has been set.
+
+### SetDataAccessNil
+
+`func (o *ReviewableEntitlement) SetDataAccessNil(b bool)`
+
+ SetDataAccessNil sets the value for DataAccess to be an explicit nil
+
+### UnsetDataAccess
+`func (o *ReviewableEntitlement) UnsetDataAccess()`
+
+UnsetDataAccess ensures that no value is present for DataAccess, not even an explicit nil
 ### GetAccount
 
 `func (o *ReviewableEntitlement) GetAccount() ReviewableEntitlementAccount`

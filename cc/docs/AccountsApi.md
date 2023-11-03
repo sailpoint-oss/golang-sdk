@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## ListAccounts
 
-> ListAccounts(ctx).Execute()
+> []ListAccounts200ResponseInner ListAccounts(ctx).Execute()
 
 List Accounts
 
@@ -36,6 +36,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `ListAccounts`: []ListAccounts200ResponseInner
+    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ListAccounts`: %v\n", resp)
 }
 ```
 
@@ -50,7 +52,7 @@ Other parameters are passed through a pointer to a apiListAccountsRequest struct
 
 ### Return type
 
- (empty response body)
+[**[]ListAccounts200ResponseInner**](ListAccounts200ResponseInner.md)
 
 ### Authorization
 

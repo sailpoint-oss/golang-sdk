@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** | The ID of the personal access token (to be used as the username for Basic Auth). | 
 **Name** | **string** | The name of the personal access token. Cannot be the same as other personal access tokens owned by a user. | 
 **Scope** | **[]string** | Scopes of the personal  access token. | 
-**Owner** | [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | 
+**Owner** | [**PatOwner**](PatOwner.md) |  | 
 **Created** | **time.Time** | The date and time, down to the millisecond, when this personal access token was created. | 
 **LastUsed** | Pointer to **NullableTime** | The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed. | [optional] 
 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewGetPersonalAccessTokenResponse
 
-`func NewGetPersonalAccessTokenResponse(id string, name string, scope []string, owner BaseReferenceDto1, created time.Time, ) *GetPersonalAccessTokenResponse`
+`func NewGetPersonalAccessTokenResponse(id string, name string, scope []string, owner PatOwner, created time.Time, ) *GetPersonalAccessTokenResponse`
 
 NewGetPersonalAccessTokenResponse instantiates a new GetPersonalAccessTokenResponse object
 This constructor will assign default values to properties that have it defined,
@@ -102,20 +102,20 @@ SetScope sets Scope field to given value.
 UnsetScope ensures that no value is present for Scope, not even an explicit nil
 ### GetOwner
 
-`func (o *GetPersonalAccessTokenResponse) GetOwner() BaseReferenceDto1`
+`func (o *GetPersonalAccessTokenResponse) GetOwner() PatOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *GetPersonalAccessTokenResponse) GetOwnerOk() (*BaseReferenceDto1, bool)`
+`func (o *GetPersonalAccessTokenResponse) GetOwnerOk() (*PatOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *GetPersonalAccessTokenResponse) SetOwner(v BaseReferenceDto1)`
+`func (o *GetPersonalAccessTokenResponse) SetOwner(v PatOwner)`
 
 SetOwner sets Owner field to given value.
 

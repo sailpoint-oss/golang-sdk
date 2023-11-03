@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **map[string]interface{}** | The type of object that is referenced | 
-**Id** | **string** | ID of the object to which this reference applies | 
-**Name** | **string** | Human-readable display name of the object to which this reference applies | 
+**Type** | **string** | Created identity&#39;s DTO type. | 
+**Id** | **string** | Created identity ID. | 
+**Name** | **string** | Created identity&#39;s display name. | 
 
 ## Methods
 
 ### NewIdentityCreatedIdentity
 
-`func NewIdentityCreatedIdentity(type_ map[string]interface{}, id string, name string, ) *IdentityCreatedIdentity`
+`func NewIdentityCreatedIdentity(type_ string, id string, name string, ) *IdentityCreatedIdentity`
 
 NewIdentityCreatedIdentity instantiates a new IdentityCreatedIdentity object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *IdentityCreatedIdentity) GetType() map[string]interface{}`
+`func (o *IdentityCreatedIdentity) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *IdentityCreatedIdentity) GetTypeOk() (*map[string]interface{}, bool)`
+`func (o *IdentityCreatedIdentity) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *IdentityCreatedIdentity) SetType(v map[string]interface{})`
+`func (o *IdentityCreatedIdentity) SetType(v string)`
 
 SetType sets Type field to given value.
 

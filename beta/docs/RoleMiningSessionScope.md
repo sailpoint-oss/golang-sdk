@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IdentityIds** | Pointer to **[]string** | The list of identities for this role mining session. | [optional] 
-**Criteria** | Pointer to **string** | The \&quot;search\&quot; criteria that produces the list of identities for this role mining session. | [optional] 
+**Criteria** | Pointer to **NullableString** | The \&quot;search\&quot; criteria that produces the list of identities for this role mining session. | [optional] 
 **AttributeFilterCriteria** | Pointer to **[]map[string]interface{}** | The filter criteria for this role mining session. | [optional] 
 
 ## Methods
@@ -77,6 +77,16 @@ SetCriteria sets Criteria field to given value.
 
 HasCriteria returns a boolean if a field has been set.
 
+### SetCriteriaNil
+
+`func (o *RoleMiningSessionScope) SetCriteriaNil(b bool)`
+
+ SetCriteriaNil sets the value for Criteria to be an explicit nil
+
+### UnsetCriteria
+`func (o *RoleMiningSessionScope) UnsetCriteria()`
+
+UnsetCriteria ensures that no value is present for Criteria, not even an explicit nil
 ### GetAttributeFilterCriteria
 
 `func (o *RoleMiningSessionScope) GetAttributeFilterCriteria() []map[string]interface{}`
@@ -102,6 +112,16 @@ SetAttributeFilterCriteria sets AttributeFilterCriteria field to given value.
 
 HasAttributeFilterCriteria returns a boolean if a field has been set.
 
+### SetAttributeFilterCriteriaNil
+
+`func (o *RoleMiningSessionScope) SetAttributeFilterCriteriaNil(b bool)`
+
+ SetAttributeFilterCriteriaNil sets the value for AttributeFilterCriteria to be an explicit nil
+
+### UnsetAttributeFilterCriteria
+`func (o *RoleMiningSessionScope) UnsetAttributeFilterCriteria()`
+
+UnsetAttributeFilterCriteria ensures that no value is present for AttributeFilterCriteria, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

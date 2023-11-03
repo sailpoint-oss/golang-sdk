@@ -21,7 +21,7 @@ var _ MappedNullable = &IdentityProfileExportedObject{}
 type IdentityProfileExportedObject struct {
 	// Version or object from the target service.
 	Version *int32 `json:"version,omitempty"`
-	Self *BaseReferenceDto1 `json:"self,omitempty"`
+	Self *SelfImportExportDto `json:"self,omitempty"`
 	Object *IdentityProfile1 `json:"object,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -78,9 +78,9 @@ func (o *IdentityProfileExportedObject) SetVersion(v int32) {
 }
 
 // GetSelf returns the Self field value if set, zero value otherwise.
-func (o *IdentityProfileExportedObject) GetSelf() BaseReferenceDto1 {
+func (o *IdentityProfileExportedObject) GetSelf() SelfImportExportDto {
 	if o == nil || isNil(o.Self) {
-		var ret BaseReferenceDto1
+		var ret SelfImportExportDto
 		return ret
 	}
 	return *o.Self
@@ -88,7 +88,7 @@ func (o *IdentityProfileExportedObject) GetSelf() BaseReferenceDto1 {
 
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProfileExportedObject) GetSelfOk() (*BaseReferenceDto1, bool) {
+func (o *IdentityProfileExportedObject) GetSelfOk() (*SelfImportExportDto, bool) {
 	if o == nil || isNil(o.Self) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *IdentityProfileExportedObject) HasSelf() bool {
 	return false
 }
 
-// SetSelf gets a reference to the given BaseReferenceDto1 and assigns it to the Self field.
-func (o *IdentityProfileExportedObject) SetSelf(v BaseReferenceDto1) {
+// SetSelf gets a reference to the given SelfImportExportDto and assigns it to the Self field.
+func (o *IdentityProfileExportedObject) SetSelf(v SelfImportExportDto) {
 	o.Self = &v
 }
 

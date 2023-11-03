@@ -17,13 +17,13 @@ import (
 // checks if the EntitlementRef type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &EntitlementRef{}
 
-// EntitlementRef struct for EntitlementRef
+// EntitlementRef Entitlement including a specific set of access.
 type EntitlementRef struct {
-	// The ID of the Entitlement
-	Id *string `json:"id,omitempty"`
-	// The type of the Entitlement, will always be ENTITLEMENT
+	// Entitlement's DTO type.
 	Type *string `json:"type,omitempty"`
-	// The display name of the Entitlement
+	// Entitlement's ID.
+	Id *string `json:"id,omitempty"`
+	// Entitlement's display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -45,38 +45,6 @@ func NewEntitlementRef() *EntitlementRef {
 func NewEntitlementRefWithDefaults() *EntitlementRef {
 	this := EntitlementRef{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *EntitlementRef) GetId() string {
-	if o == nil || isNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EntitlementRef) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *EntitlementRef) HasId() bool {
-	if o != nil && !isNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *EntitlementRef) SetId(v string) {
-	o.Id = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -109,6 +77,38 @@ func (o *EntitlementRef) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *EntitlementRef) SetType(v string) {
 	o.Type = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *EntitlementRef) GetId() string {
+	if o == nil || isNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EntitlementRef) GetIdOk() (*string, bool) {
+	if o == nil || isNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *EntitlementRef) HasId() bool {
+	if o != nil && !isNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *EntitlementRef) SetId(v string) {
+	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -153,11 +153,11 @@ func (o EntitlementRef) MarshalJSON() ([]byte, error) {
 
 func (o EntitlementRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
+	}
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -180,8 +180,8 @@ func (o *EntitlementRef) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties
 	}

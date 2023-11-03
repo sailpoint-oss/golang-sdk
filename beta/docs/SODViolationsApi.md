@@ -4,15 +4,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PredictSodViolations**](SODViolationsApi.md#PredictSodViolations) | **Post** /sod-violations/predict | Predict SOD violations for the given identity if they were granted the given access.
+[**StartPredictSodViolations**](SODViolationsApi.md#StartPredictSodViolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
 
 
 
-## PredictSodViolations
+## StartPredictSodViolations
 
-> ViolationPrediction PredictSodViolations(ctx).IdentityWithNewAccess(identityWithNewAccess).Execute()
+> ViolationPrediction StartPredictSodViolations(ctx).IdentityWithNewAccess(identityWithNewAccess).Execute()
 
-Predict SOD violations for the given identity if they were granted the given access.
+Predict SOD violations for identity.
 
 
 
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODViolationsApi.PredictSodViolations(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
+    resp, r, err := apiClient.SODViolationsApi.StartPredictSodViolations(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsApi.PredictSodViolations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsApi.StartPredictSodViolations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `PredictSodViolations`: ViolationPrediction
-    fmt.Fprintf(os.Stdout, "Response from `SODViolationsApi.PredictSodViolations`: %v\n", resp)
+    // response from `StartPredictSodViolations`: ViolationPrediction
+    fmt.Fprintf(os.Stdout, "Response from `SODViolationsApi.StartPredictSodViolations`: %v\n", resp)
 }
 ```
 
@@ -49,7 +49,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPredictSodViolationsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiStartPredictSodViolationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

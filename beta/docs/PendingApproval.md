@@ -10,12 +10,12 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | When the approval was modified last time. | [optional] 
 **RequestCreated** | Pointer to **time.Time** | When the access-request was created. | [optional] 
 **RequestType** | Pointer to [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
-**Requester** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
-**RequestedFor** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
-**Owner** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**Requester** | Pointer to [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | [optional] 
+**RequestedFor** | Pointer to [**AccessItemRequestedForDto**](AccessItemRequestedForDto.md) |  | [optional] 
+**Owner** | Pointer to [**AccessItemOwnerDto**](AccessItemOwnerDto.md) |  | [optional] 
 **RequestedObject** | Pointer to [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
-**RequesterComment** | Pointer to [**CommentDto1**](CommentDto1.md) |  | [optional] 
-**PreviousReviewersComments** | Pointer to [**[]CommentDto1**](CommentDto1.md) | The history of the previous reviewers comments. | [optional] 
+**RequesterComment** | Pointer to [**CommentDto**](CommentDto.md) |  | [optional] 
+**PreviousReviewersComments** | Pointer to [**[]CommentDto**](CommentDto.md) | The history of the previous reviewers comments. | [optional] 
 **ForwardHistory** | Pointer to [**[]ApprovalForwardHistory**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
 **CommentRequiredWhenRejected** | Pointer to **bool** | When true the rejector has to provide comments when rejecting | [optional] 
 **ActionInProcess** | Pointer to [**PendingApprovalAction**](PendingApprovalAction.md) |  | [optional] 
@@ -195,20 +195,20 @@ HasRequestType returns a boolean if a field has been set.
 
 ### GetRequester
 
-`func (o *PendingApproval) GetRequester() BaseReferenceDto1`
+`func (o *PendingApproval) GetRequester() AccessItemRequesterDto`
 
 GetRequester returns the Requester field if non-nil, zero value otherwise.
 
 ### GetRequesterOk
 
-`func (o *PendingApproval) GetRequesterOk() (*BaseReferenceDto1, bool)`
+`func (o *PendingApproval) GetRequesterOk() (*AccessItemRequesterDto, bool)`
 
 GetRequesterOk returns a tuple with the Requester field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequester
 
-`func (o *PendingApproval) SetRequester(v BaseReferenceDto1)`
+`func (o *PendingApproval) SetRequester(v AccessItemRequesterDto)`
 
 SetRequester sets Requester field to given value.
 
@@ -220,20 +220,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *PendingApproval) GetRequestedFor() BaseReferenceDto1`
+`func (o *PendingApproval) GetRequestedFor() AccessItemRequestedForDto`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *PendingApproval) GetRequestedForOk() (*BaseReferenceDto1, bool)`
+`func (o *PendingApproval) GetRequestedForOk() (*AccessItemRequestedForDto, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *PendingApproval) SetRequestedFor(v BaseReferenceDto1)`
+`func (o *PendingApproval) SetRequestedFor(v AccessItemRequestedForDto)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
@@ -245,20 +245,20 @@ HasRequestedFor returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *PendingApproval) GetOwner() BaseReferenceDto1`
+`func (o *PendingApproval) GetOwner() AccessItemOwnerDto`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *PendingApproval) GetOwnerOk() (*BaseReferenceDto1, bool)`
+`func (o *PendingApproval) GetOwnerOk() (*AccessItemOwnerDto, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *PendingApproval) SetOwner(v BaseReferenceDto1)`
+`func (o *PendingApproval) SetOwner(v AccessItemOwnerDto)`
 
 SetOwner sets Owner field to given value.
 
@@ -295,20 +295,20 @@ HasRequestedObject returns a boolean if a field has been set.
 
 ### GetRequesterComment
 
-`func (o *PendingApproval) GetRequesterComment() CommentDto1`
+`func (o *PendingApproval) GetRequesterComment() CommentDto`
 
 GetRequesterComment returns the RequesterComment field if non-nil, zero value otherwise.
 
 ### GetRequesterCommentOk
 
-`func (o *PendingApproval) GetRequesterCommentOk() (*CommentDto1, bool)`
+`func (o *PendingApproval) GetRequesterCommentOk() (*CommentDto, bool)`
 
 GetRequesterCommentOk returns a tuple with the RequesterComment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequesterComment
 
-`func (o *PendingApproval) SetRequesterComment(v CommentDto1)`
+`func (o *PendingApproval) SetRequesterComment(v CommentDto)`
 
 SetRequesterComment sets RequesterComment field to given value.
 
@@ -320,20 +320,20 @@ HasRequesterComment returns a boolean if a field has been set.
 
 ### GetPreviousReviewersComments
 
-`func (o *PendingApproval) GetPreviousReviewersComments() []CommentDto1`
+`func (o *PendingApproval) GetPreviousReviewersComments() []CommentDto`
 
 GetPreviousReviewersComments returns the PreviousReviewersComments field if non-nil, zero value otherwise.
 
 ### GetPreviousReviewersCommentsOk
 
-`func (o *PendingApproval) GetPreviousReviewersCommentsOk() (*[]CommentDto1, bool)`
+`func (o *PendingApproval) GetPreviousReviewersCommentsOk() (*[]CommentDto, bool)`
 
 GetPreviousReviewersCommentsOk returns a tuple with the PreviousReviewersComments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPreviousReviewersComments
 
-`func (o *PendingApproval) SetPreviousReviewersComments(v []CommentDto1)`
+`func (o *PendingApproval) SetPreviousReviewersComments(v []CommentDto)`
 
 SetPreviousReviewersComments sets PreviousReviewersComments field to given value.
 

@@ -21,7 +21,7 @@ var _ MappedNullable = &ConfigObject{}
 type ConfigObject struct {
 	// Current version of configuration object.
 	Version *int32 `json:"version,omitempty"`
-	Self *BaseReferenceDto1 `json:"self,omitempty"`
+	Self *SelfImportExportDto `json:"self,omitempty"`
 	// Object details. Format dependant on the object type.
 	Object map[string]interface{} `json:"object,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -79,9 +79,9 @@ func (o *ConfigObject) SetVersion(v int32) {
 }
 
 // GetSelf returns the Self field value if set, zero value otherwise.
-func (o *ConfigObject) GetSelf() BaseReferenceDto1 {
+func (o *ConfigObject) GetSelf() SelfImportExportDto {
 	if o == nil || isNil(o.Self) {
-		var ret BaseReferenceDto1
+		var ret SelfImportExportDto
 		return ret
 	}
 	return *o.Self
@@ -89,7 +89,7 @@ func (o *ConfigObject) GetSelf() BaseReferenceDto1 {
 
 // GetSelfOk returns a tuple with the Self field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConfigObject) GetSelfOk() (*BaseReferenceDto1, bool) {
+func (o *ConfigObject) GetSelfOk() (*SelfImportExportDto, bool) {
 	if o == nil || isNil(o.Self) {
 		return nil, false
 	}
@@ -105,8 +105,8 @@ func (o *ConfigObject) HasSelf() bool {
 	return false
 }
 
-// SetSelf gets a reference to the given BaseReferenceDto1 and assigns it to the Self field.
-func (o *ConfigObject) SetSelf(v BaseReferenceDto1) {
+// SetSelf gets a reference to the given SelfImportExportDto and assigns it to the Self field.
+func (o *ConfigObject) SetSelf(v SelfImportExportDto) {
 	o.Self = &v
 }
 

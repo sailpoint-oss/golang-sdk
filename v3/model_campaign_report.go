@@ -20,12 +20,13 @@ var _ MappedNullable = &CampaignReport{}
 
 // CampaignReport struct for CampaignReport
 type CampaignReport struct {
-	Type *DtoType `json:"type,omitempty"`
-	// ID of the object to which this reference applies
+	// SOD policy violation report result DTO type.
+	Type *string `json:"type,omitempty"`
+	// SOD policy violation report result ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the object to which this reference applies
+	// Human-readable name of the SOD policy violation report result.
 	Name *string `json:"name,omitempty"`
-	// Status of a violation report
+	// Status of a SOD policy violation report.
 	Status *string `json:"status,omitempty"`
 	ReportType ReportType `json:"reportType"`
 	// The most recent date and time this report was run
@@ -54,9 +55,9 @@ func NewCampaignReportWithDefaults() *CampaignReport {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *CampaignReport) GetType() DtoType {
+func (o *CampaignReport) GetType() string {
 	if o == nil || isNil(o.Type) {
-		var ret DtoType
+		var ret string
 		return ret
 	}
 	return *o.Type
@@ -64,7 +65,7 @@ func (o *CampaignReport) GetType() DtoType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CampaignReport) GetTypeOk() (*DtoType, bool) {
+func (o *CampaignReport) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
@@ -80,8 +81,8 @@ func (o *CampaignReport) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *CampaignReport) SetType(v DtoType) {
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *CampaignReport) SetType(v string) {
 	o.Type = &v
 }
 

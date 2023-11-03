@@ -20,7 +20,7 @@ var _ MappedNullable = &IdentityDeleted{}
 // IdentityDeleted struct for IdentityDeleted
 type IdentityDeleted struct {
 	Identity IdentityDeletedIdentity `json:"identity"`
-	// The attributes assigned to the identity.  Attributes are determined by the identity profile.
+	// The attributes assigned to the identity. Attributes are determined by the identity profile.
 	Attributes map[string]interface{} `json:"attributes"`
 	AdditionalProperties map[string]interface{}
 }

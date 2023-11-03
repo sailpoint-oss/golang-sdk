@@ -19,10 +19,10 @@ var _ MappedNullable = &FormOwner{}
 
 // FormOwner struct for FormOwner
 type FormOwner struct {
-	// ID is a unique identifier
-	Id *string `json:"id,omitempty"`
-	// Type is a FormOwnerType value IDENTITY FormOwnerTypeIdentity
+	// FormOwnerType value. IDENTITY FormOwnerTypeIdentity
 	Type *string `json:"type,omitempty"`
+	// Unique identifier of the form's owner.
+	Id *string `json:"id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,38 +43,6 @@ func NewFormOwner() *FormOwner {
 func NewFormOwnerWithDefaults() *FormOwner {
 	this := FormOwner{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *FormOwner) GetId() string {
-	if o == nil || isNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormOwner) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *FormOwner) HasId() bool {
-	if o != nil && !isNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *FormOwner) SetId(v string) {
-	o.Id = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -109,6 +77,38 @@ func (o *FormOwner) SetType(v string) {
 	o.Type = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *FormOwner) GetId() string {
+	if o == nil || isNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormOwner) GetIdOk() (*string, bool) {
+	if o == nil || isNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *FormOwner) HasId() bool {
+	if o != nil && !isNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *FormOwner) SetId(v string) {
+	o.Id = &v
+}
+
 func (o FormOwner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -119,11 +119,11 @@ func (o FormOwner) MarshalJSON() ([]byte, error) {
 
 func (o FormOwner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
+	}
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -143,8 +143,8 @@ func (o *FormOwner) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "id")
 		o.AdditionalProperties = additionalProperties
 	}
 

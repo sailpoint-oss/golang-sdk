@@ -4,81 +4,15 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddTagsToManyObjects**](TaggedObjectsApi.md#AddTagsToManyObjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
 [**DeleteTaggedObject**](TaggedObjectsApi.md#DeleteTaggedObject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
+[**DeleteTagsToManyObject**](TaggedObjectsApi.md#DeleteTagsToManyObject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 [**GetTaggedObject**](TaggedObjectsApi.md#GetTaggedObject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
 [**ListTaggedObjects**](TaggedObjectsApi.md#ListTaggedObjects) | **Get** /tagged-objects | List Tagged Objects
 [**ListTaggedObjectsByType**](TaggedObjectsApi.md#ListTaggedObjectsByType) | **Get** /tagged-objects/{type} | List Tagged Objects
-[**RemoveTagsToManyObject**](TaggedObjectsApi.md#RemoveTagsToManyObject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
+[**PutTaggedObject**](TaggedObjectsApi.md#PutTaggedObject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
 [**SetTagToObject**](TaggedObjectsApi.md#SetTagToObject) | **Post** /tagged-objects | Add Tag to Object
-[**UpdateTaggedObject**](TaggedObjectsApi.md#UpdateTaggedObject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
+[**SetTagsToManyObjects**](TaggedObjectsApi.md#SetTagsToManyObjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
 
-
-
-## AddTagsToManyObjects
-
-> BulkTaggedObject AddTagsToManyObjects(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
-
-Tag Multiple Objects
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    bulkTaggedObject := *openapiclient.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ROLE, IDENTITY and SOD_POLICY.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.AddTagsToManyObjects(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.AddTagsToManyObjects``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AddTagsToManyObjects`: BulkTaggedObject
-    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.AddTagsToManyObjects`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAddTagsToManyObjectsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bulkTaggedObject** | [**BulkTaggedObject**](BulkTaggedObject.md) | Supported object types are ROLE, IDENTITY and SOD_POLICY. | 
-
-### Return type
-
-[**BulkTaggedObject**](BulkTaggedObject.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## DeleteTaggedObject
@@ -145,6 +79,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteTagsToManyObject
+
+> DeleteTagsToManyObject(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
+
+Remove Tags from Multiple Objects
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    bulkTaggedObject := *openapiclient.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.TaggedObjectsApi.DeleteTagsToManyObject(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.DeleteTagsToManyObject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteTagsToManyObjectRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bulkTaggedObject** | [**BulkTaggedObject**](BulkTaggedObject.md) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -375,11 +373,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RemoveTagsToManyObject
+## PutTaggedObject
 
-> RemoveTagsToManyObject(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
+> TaggedObject PutTaggedObject(ctx, type_, id).TaggedObject(taggedObject).Execute()
 
-Remove Tags from Multiple Objects
+Update Tagged Object
 
 
 
@@ -396,34 +394,45 @@ import (
 )
 
 func main() {
-    bulkTaggedObject := *openapiclient.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ROLE, IDENTITY and SOD_POLICY.
+    type_ := "ROLE" // string | The type of tagged object to update.
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to update.
+    taggedObject := *openapiclient.NewTaggedObject() // TaggedObject | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.RemoveTagsToManyObject(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
+    resp, r, err := apiClient.TaggedObjectsApi.PutTaggedObject(context.Background(), type_, id).TaggedObject(taggedObject).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.RemoveTagsToManyObject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.PutTaggedObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `PutTaggedObject`: TaggedObject
+    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.PutTaggedObject`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**type_** | **string** | The type of tagged object to update. | 
+**id** | **string** | The ID of the object reference to update. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRemoveTagsToManyObjectRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutTaggedObjectRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bulkTaggedObject** | [**BulkTaggedObject**](BulkTaggedObject.md) | Supported object types are ROLE, IDENTITY and SOD_POLICY. | 
+
+
+ **taggedObject** | [**TaggedObject**](TaggedObject.md) |  | 
 
 ### Return type
 
- (empty response body)
+[**TaggedObject**](TaggedObject.md)
 
 ### Authorization
 
@@ -503,11 +512,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateTaggedObject
+## SetTagsToManyObjects
 
-> TaggedObject UpdateTaggedObject(ctx, type_, id).TaggedObject(taggedObject).Execute()
+> BulkTaggedObject SetTagsToManyObjects(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
 
-Update Tagged Object
+Tag Multiple Objects
 
 
 
@@ -524,45 +533,36 @@ import (
 )
 
 func main() {
-    type_ := "ROLE" // string | The type of tagged object to update.
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to update.
-    taggedObject := *openapiclient.NewTaggedObject() // TaggedObject | 
+    bulkTaggedObject := *openapiclient.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.UpdateTaggedObject(context.Background(), type_, id).TaggedObject(taggedObject).Execute()
+    resp, r, err := apiClient.TaggedObjectsApi.SetTagsToManyObjects(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.UpdateTaggedObject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.SetTagsToManyObjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateTaggedObject`: TaggedObject
-    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.UpdateTaggedObject`: %v\n", resp)
+    // response from `SetTagsToManyObjects`: BulkTaggedObject
+    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.SetTagsToManyObjects`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**type_** | **string** | The type of tagged object to update. | 
-**id** | **string** | The ID of the object reference to update. | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateTaggedObjectRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSetTagsToManyObjectsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
-
- **taggedObject** | [**TaggedObject**](TaggedObject.md) |  | 
+ **bulkTaggedObject** | [**BulkTaggedObject**](BulkTaggedObject.md) | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE. | 
 
 ### Return type
 
-[**TaggedObject**](TaggedObject.md)
+[**BulkTaggedObject**](BulkTaggedObject.md)
 
 ### Authorization
 

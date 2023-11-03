@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Count** | Pointer to **int64** | Count number of Results | [optional] 
-**Results** | Pointer to [**[]FormDefinitionResponse**](FormDefinitionResponse.md) | Results holds a list of FormDefinitionResponse items | [optional] 
+**Count** | Pointer to **int64** | Count number of results. | [optional] 
+**Results** | Pointer to [**[]FormDefinitionResponse**](FormDefinitionResponse.md) | List of FormDefinitionResponse items. | [optional] 
 
 ## Methods
 

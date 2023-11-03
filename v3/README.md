@@ -80,6 +80,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccessProfilesApi* | [**CreateAccessProfile**](docs/AccessProfilesApi.md#createaccessprofile) | **Post** /access-profiles | Create an Access Profile
+*AccessProfilesApi* | [**DeleteAccessProfile**](docs/AccessProfilesApi.md#deleteaccessprofile) | **Delete** /access-profiles/{id} | Delete the specified Access Profile
 *AccessProfilesApi* | [**DeleteAccessProfilesInBulk**](docs/AccessProfilesApi.md#deleteaccessprofilesinbulk) | **Post** /access-profiles/bulk-delete | Delete Access Profile(s)
 *AccessProfilesApi* | [**GetAccessProfile**](docs/AccessProfilesApi.md#getaccessprofile) | **Get** /access-profiles/{id} | Get an Access Profile
 *AccessProfilesApi* | [**GetAccessProfileEntitlements**](docs/AccessProfilesApi.md#getaccessprofileentitlements) | **Get** /access-profiles/{id}/entitlements | List Access Profile&#39;s Entitlements
@@ -95,7 +96,7 @@ Class | Method | HTTP request | Description
 *AccessRequestsApi* | [**CreateAccessRequest**](docs/AccessRequestsApi.md#createaccessrequest) | **Post** /access-requests | Submit an Access Request
 *AccessRequestsApi* | [**GetAccessRequestConfig**](docs/AccessRequestsApi.md#getaccessrequestconfig) | **Get** /access-request-config | Get Access Request Configuration
 *AccessRequestsApi* | [**ListAccessRequestStatus**](docs/AccessRequestsApi.md#listaccessrequeststatus) | **Get** /access-request-status | Access Request Status
-*AccessRequestsApi* | [**UpdateAccessRequestConfig**](docs/AccessRequestsApi.md#updateaccessrequestconfig) | **Put** /access-request-config | Update Access Request Configuration
+*AccessRequestsApi* | [**SetAccessRequestConfig**](docs/AccessRequestsApi.md#setaccessrequestconfig) | **Put** /access-request-config | Update Access Request Configuration
 *AccountActivitiesApi* | [**GetAccountActivity**](docs/AccountActivitiesApi.md#getaccountactivity) | **Get** /account-activities/{id} | Get an Account Activity
 *AccountActivitiesApi* | [**ListAccountActivities**](docs/AccountActivitiesApi.md#listaccountactivities) | **Get** /account-activities | List Account Activities
 *AccountUsagesApi* | [**GetUsagesByAccountId**](docs/AccountUsagesApi.md#getusagesbyaccountid) | **Get** /account-usages/{accountId}/summaries | Returns account usage insights
@@ -112,18 +113,28 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**UpdateAccount**](docs/AccountsApi.md#updateaccount) | **Patch** /accounts/{id} | Update Account
 *AuthUserApi* | [**GetAuthUser**](docs/AuthUserApi.md#getauthuser) | **Get** /auth-users/{id} | Auth User Details
 *AuthUserApi* | [**PatchAuthUser**](docs/AuthUserApi.md#patchauthuser) | **Patch** /auth-users/{id} | Auth User Update
+*CertificationCampaignFiltersApi* | [**CreateCampaignFilter**](docs/CertificationCampaignFiltersApi.md#createcampaignfilter) | **Post** /campaign-filters | Create a Campaign Filter
+*CertificationCampaignFiltersApi* | [**DeleteCampaignFilters**](docs/CertificationCampaignFiltersApi.md#deletecampaignfilters) | **Post** /campaign-filters/delete | Deletes Campaign Filters
+*CertificationCampaignFiltersApi* | [**GetCampaignFilterById**](docs/CertificationCampaignFiltersApi.md#getcampaignfilterbyid) | **Get** /campaign-filters/{id} | Get Campaign Filter by ID
+*CertificationCampaignFiltersApi* | [**ListCampaignFilters**](docs/CertificationCampaignFiltersApi.md#listcampaignfilters) | **Get** /campaign-filters | List Campaign Filters
+*CertificationCampaignFiltersApi* | [**UpdateCampaignFilter**](docs/CertificationCampaignFiltersApi.md#updatecampaignfilter) | **Post** /campaign-filters/{id} | Updates a Campaign Filter
 *CertificationCampaignsApi* | [**CompleteCampaign**](docs/CertificationCampaignsApi.md#completecampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
 *CertificationCampaignsApi* | [**CreateCampaign**](docs/CertificationCampaignsApi.md#createcampaign) | **Post** /campaigns | Create a campaign
 *CertificationCampaignsApi* | [**CreateCampaignTemplate**](docs/CertificationCampaignsApi.md#createcampaigntemplate) | **Post** /campaign-templates | Create a Campaign Template
+*CertificationCampaignsApi* | [**DeleteCampaignTemplate**](docs/CertificationCampaignsApi.md#deletecampaigntemplate) | **Delete** /campaign-templates/{id} | Delete a Campaign Template
+*CertificationCampaignsApi* | [**DeleteCampaignTemplateSchedule**](docs/CertificationCampaignsApi.md#deletecampaigntemplateschedule) | **Delete** /campaign-templates/{id}/schedule | Deletes a Campaign Template&#39;s Schedule
 *CertificationCampaignsApi* | [**DeleteCampaigns**](docs/CertificationCampaignsApi.md#deletecampaigns) | **Post** /campaigns/delete | Deletes Campaigns
 *CertificationCampaignsApi* | [**GetActiveCampaigns**](docs/CertificationCampaignsApi.md#getactivecampaigns) | **Get** /campaigns | List Campaigns
 *CertificationCampaignsApi* | [**GetCampaign**](docs/CertificationCampaignsApi.md#getcampaign) | **Get** /campaigns/{id} | Get a campaign
 *CertificationCampaignsApi* | [**GetCampaignReports**](docs/CertificationCampaignsApi.md#getcampaignreports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
 *CertificationCampaignsApi* | [**GetCampaignReportsConfig**](docs/CertificationCampaignsApi.md#getcampaignreportsconfig) | **Get** /campaigns/reports-configuration | Get Campaign Reports Configuration
+*CertificationCampaignsApi* | [**GetCampaignTemplate**](docs/CertificationCampaignsApi.md#getcampaigntemplate) | **Get** /campaign-templates/{id} | Get a Campaign Template
+*CertificationCampaignsApi* | [**GetCampaignTemplateSchedule**](docs/CertificationCampaignsApi.md#getcampaigntemplateschedule) | **Get** /campaign-templates/{id}/schedule | Gets a Campaign Template&#39;s Schedule
 *CertificationCampaignsApi* | [**ListCampaignTemplates**](docs/CertificationCampaignsApi.md#listcampaigntemplates) | **Get** /campaign-templates | List Campaign Templates
 *CertificationCampaignsApi* | [**Move**](docs/CertificationCampaignsApi.md#move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
 *CertificationCampaignsApi* | [**PatchCampaignTemplate**](docs/CertificationCampaignsApi.md#patchcampaigntemplate) | **Patch** /campaign-templates/{id} | Update a Campaign Template
 *CertificationCampaignsApi* | [**SetCampaignReportsConfig**](docs/CertificationCampaignsApi.md#setcampaignreportsconfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
+*CertificationCampaignsApi* | [**SetCampaignTemplateSchedule**](docs/CertificationCampaignsApi.md#setcampaigntemplateschedule) | **Put** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
 *CertificationCampaignsApi* | [**StartCampaign**](docs/CertificationCampaignsApi.md#startcampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
 *CertificationCampaignsApi* | [**StartCampaignRemediationScan**](docs/CertificationCampaignsApi.md#startcampaignremediationscan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
 *CertificationCampaignsApi* | [**StartCampaignReport**](docs/CertificationCampaignsApi.md#startcampaignreport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
@@ -220,6 +231,8 @@ Class | Method | HTTP request | Description
 *PublicIdentitiesConfigApi* | [**UpdatePublicIdentityConfig**](docs/PublicIdentitiesConfigApi.md#updatepublicidentityconfig) | **Put** /public-identities-config | Update the Public Identities Configuration
 *RequestableObjectsApi* | [**ListRequestableObjects**](docs/RequestableObjectsApi.md#listrequestableobjects) | **Get** /requestable-objects | Requestable Objects List
 *RolesApi* | [**CreateRole**](docs/RolesApi.md#createrole) | **Post** /roles | Create a Role
+*RolesApi* | [**DeleteBulkRoles**](docs/RolesApi.md#deletebulkroles) | **Post** /roles/bulk-delete | Delete Role(s)
+*RolesApi* | [**DeleteRole**](docs/RolesApi.md#deleterole) | **Delete** /roles/{id} | Delete a Role
 *RolesApi* | [**GetRole**](docs/RolesApi.md#getrole) | **Get** /roles/{id} | Get a Role
 *RolesApi* | [**GetRoleAssignedIdentities**](docs/RolesApi.md#getroleassignedidentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
 *RolesApi* | [**ListRoles**](docs/RolesApi.md#listroles) | **Get** /roles | List Roles
@@ -236,8 +249,8 @@ Class | Method | HTTP request | Description
 *SODPolicyApi* | [**GetSodViolationReportStatus**](docs/SODPolicyApi.md#getsodviolationreportstatus) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
 *SODPolicyApi* | [**ListSodPolicies**](docs/SODPolicyApi.md#listsodpolicies) | **Get** /sod-policies | List SOD policies
 *SODPolicyApi* | [**PatchSodPolicy**](docs/SODPolicyApi.md#patchsodpolicy) | **Patch** /sod-policies/{id} | Patch SOD policy by ID
-*SODPolicyApi* | [**SetPolicySchedule**](docs/SODPolicyApi.md#setpolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
-*SODPolicyApi* | [**SetSodPolicy**](docs/SODPolicyApi.md#setsodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
+*SODPolicyApi* | [**PutPolicySchedule**](docs/SODPolicyApi.md#putpolicyschedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
+*SODPolicyApi* | [**PutSodPolicy**](docs/SODPolicyApi.md#putsodpolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
 *SODPolicyApi* | [**StartEvaluateSodPolicy**](docs/SODPolicyApi.md#startevaluatesodpolicy) | **Post** /sod-policies/{id}/evaluate | Evaluate one policy by ID
 *SODPolicyApi* | [**StartSodAllPoliciesForOrg**](docs/SODPolicyApi.md#startsodallpoliciesfororg) | **Post** /sod-violation-report/run | Runs all policies for org
 *SODPolicyApi* | [**StartSodPolicy**](docs/SODPolicyApi.md#startsodpolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
@@ -335,6 +348,9 @@ Class | Method | HTTP request | Description
  - [AccessConstraint](docs/AccessConstraint.md)
  - [AccessCriteria](docs/AccessCriteria.md)
  - [AccessCriteriaCriteriaListInner](docs/AccessCriteriaCriteriaListInner.md)
+ - [AccessItemRequestedFor](docs/AccessItemRequestedFor.md)
+ - [AccessItemRequester](docs/AccessItemRequester.md)
+ - [AccessItemReviewedBy](docs/AccessItemReviewedBy.md)
  - [AccessProfile](docs/AccessProfile.md)
  - [AccessProfileApprovalScheme](docs/AccessProfileApprovalScheme.md)
  - [AccessProfileBulkDeleteRequest](docs/AccessProfileBulkDeleteRequest.md)
@@ -348,6 +364,7 @@ Class | Method | HTTP request | Description
  - [AccessProfileSummary](docs/AccessProfileSummary.md)
  - [AccessProfileSummaryAllOf](docs/AccessProfileSummaryAllOf.md)
  - [AccessProfileUsage](docs/AccessProfileUsage.md)
+ - [AccessProfileUsageUsedByInner](docs/AccessProfileUsageUsedByInner.md)
  - [AccessRequest](docs/AccessRequest.md)
  - [AccessRequestConfig](docs/AccessRequestConfig.md)
  - [AccessRequestItem](docs/AccessRequestItem.md)
@@ -403,7 +420,9 @@ Class | Method | HTTP request | Description
  - [ApprovalSchemeForRole](docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](docs/ApprovalStatus.md)
  - [ApprovalStatusDto](docs/ApprovalStatusDto.md)
+ - [ApprovalStatusDtoOriginalOwner](docs/ApprovalStatusDtoOriginalOwner.md)
  - [ApprovalSummary](docs/ApprovalSummary.md)
+ - [ArrayInner](docs/ArrayInner.md)
  - [AttributeDefinition](docs/AttributeDefinition.md)
  - [AttributeDefinitionSchema](docs/AttributeDefinitionSchema.md)
  - [AttributeDefinitionType](docs/AttributeDefinitionType.md)
@@ -417,7 +436,7 @@ Class | Method | HTTP request | Description
  - [BaseDocument](docs/BaseDocument.md)
  - [BaseEntitlement](docs/BaseEntitlement.md)
  - [BaseEntitlementAllOf](docs/BaseEntitlementAllOf.md)
- - [BaseReferenceDto](docs/BaseReferenceDto.md)
+ - [BeforeProvisioningRuleDto](docs/BeforeProvisioningRuleDto.md)
  - [Bound](docs/Bound.md)
  - [BucketAggregation](docs/BucketAggregation.md)
  - [BucketType](docs/BucketType.md)
@@ -429,9 +448,12 @@ Class | Method | HTTP request | Description
  - [CampaignAllOfRoleCompositionCampaignInfo](docs/CampaignAllOfRoleCompositionCampaignInfo.md)
  - [CampaignAllOfRoleCompositionCampaignInfoRemediatorRef](docs/CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md)
  - [CampaignAllOfSearchCampaignInfo](docs/CampaignAllOfSearchCampaignInfo.md)
+ - [CampaignAllOfSearchCampaignInfoReviewer](docs/CampaignAllOfSearchCampaignInfoReviewer.md)
  - [CampaignAllOfSourceOwnerCampaignInfo](docs/CampaignAllOfSourceOwnerCampaignInfo.md)
  - [CampaignAllOfSourcesWithOrphanEntitlements](docs/CampaignAllOfSourcesWithOrphanEntitlements.md)
  - [CampaignCompleteOptions](docs/CampaignCompleteOptions.md)
+ - [CampaignFilterDetails](docs/CampaignFilterDetails.md)
+ - [CampaignFilterDetailsCriteriaListInner](docs/CampaignFilterDetailsCriteriaListInner.md)
  - [CampaignReference](docs/CampaignReference.md)
  - [CampaignReport](docs/CampaignReport.md)
  - [CampaignReportAllOf](docs/CampaignReportAllOf.md)
@@ -463,6 +485,11 @@ Class | Method | HTTP request | Description
  - [CreatePersonalAccessTokenResponse](docs/CreatePersonalAccessTokenResponse.md)
  - [CreateSavedSearchRequest](docs/CreateSavedSearchRequest.md)
  - [CreateScheduledSearchRequest](docs/CreateScheduledSearchRequest.md)
+ - [CriteriaType](docs/CriteriaType.md)
+ - [DataAccess](docs/DataAccess.md)
+ - [DataAccessCategoriesInner](docs/DataAccessCategoriesInner.md)
+ - [DataAccessImpactScore](docs/DataAccessImpactScore.md)
+ - [DataAccessPoliciesInner](docs/DataAccessPoliciesInner.md)
  - [DeleteNonEmployeeRecordsInBulkRequest](docs/DeleteNonEmployeeRecordsInBulkRequest.md)
  - [DeleteSource202Response](docs/DeleteSource202Response.md)
  - [DisplayReference](docs/DisplayReference.md)
@@ -517,26 +544,31 @@ Class | Method | HTTP request | Description
  - [IdentityProfileAllOfAuthoritativeSource](docs/IdentityProfileAllOfAuthoritativeSource.md)
  - [IdentityProfileAllOfOwner](docs/IdentityProfileAllOfOwner.md)
  - [IdentityProfileExportedObject](docs/IdentityProfileExportedObject.md)
+ - [IdentityProfileExportedObjectSelf](docs/IdentityProfileExportedObjectSelf.md)
  - [IdentityReference](docs/IdentityReference.md)
  - [IdentityReferenceWithNameAndEmail](docs/IdentityReferenceWithNameAndEmail.md)
  - [IdentitySummary](docs/IdentitySummary.md)
  - [IdentityWithNewAccess](docs/IdentityWithNewAccess.md)
  - [IdentityWithNewAccess1](docs/IdentityWithNewAccess1.md)
+ - [IdentityWithNewAccess1AccessRefsInner](docs/IdentityWithNewAccess1AccessRefsInner.md)
  - [IdentityWithNewAccessAccessRefsInner](docs/IdentityWithNewAccessAccessRefsInner.md)
  - [ImportNonEmployeeRecordsInBulkRequest](docs/ImportNonEmployeeRecordsInBulkRequest.md)
+ - [ImportObject](docs/ImportObject.md)
  - [Index](docs/Index.md)
  - [InnerHit](docs/InnerHit.md)
  - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
- - [JsonPatchOperationValueAnyOfInner](docs/JsonPatchOperationValueAnyOfInner.md)
  - [LifecycleState](docs/LifecycleState.md)
  - [LifecycleStateAllOf](docs/LifecycleStateAllOf.md)
+ - [LifecyclestateDeleted](docs/LifecyclestateDeleted.md)
  - [ListAccessProfiles401Response](docs/ListAccessProfiles401Response.md)
  - [ListAccessProfiles429Response](docs/ListAccessProfiles429Response.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
  - [ManualWorkItemDetails](docs/ManualWorkItemDetails.md)
+ - [ManualWorkItemDetailsCurrentOwner](docs/ManualWorkItemDetailsCurrentOwner.md)
+ - [ManualWorkItemDetailsOriginalOwner](docs/ManualWorkItemDetailsOriginalOwner.md)
  - [ManualWorkItemState](docs/ManualWorkItemState.md)
  - [MetricAggregation](docs/MetricAggregation.md)
  - [MetricType](docs/MetricType.md)
@@ -579,10 +611,13 @@ Class | Method | HTTP request | Description
  - [NonEmployeeSourceWithNECount](docs/NonEmployeeSourceWithNECount.md)
  - [NonEmployeeSourceWithNECountAllOf](docs/NonEmployeeSourceWithNECountAllOf.md)
  - [ObjectImportResult](docs/ObjectImportResult.md)
+ - [Operation](docs/Operation.md)
  - [OriginalRequest](docs/OriginalRequest.md)
  - [Owner](docs/Owner.md)
  - [OwnerAllOf](docs/OwnerAllOf.md)
+ - [OwnerDto](docs/OwnerDto.md)
  - [OwnerReference](docs/OwnerReference.md)
+ - [OwnerReferenceSegments](docs/OwnerReferenceSegments.md)
  - [Owns](docs/Owns.md)
  - [PasswordChangeRequest](docs/PasswordChangeRequest.md)
  - [PasswordChangeResponse](docs/PasswordChangeResponse.md)
@@ -592,8 +627,10 @@ Class | Method | HTTP request | Description
  - [PasswordOrgConfig](docs/PasswordOrgConfig.md)
  - [PasswordStatus](docs/PasswordStatus.md)
  - [PasswordSyncGroup](docs/PasswordSyncGroup.md)
+ - [PatOwner](docs/PatOwner.md)
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)
+ - [PendingApprovalOwner](docs/PendingApprovalOwner.md)
  - [PermissionDto](docs/PermissionDto.md)
  - [PreApprovalTriggerDetails](docs/PreApprovalTriggerDetails.md)
  - [ProcessingDetails](docs/ProcessingDetails.md)
@@ -647,6 +684,7 @@ Class | Method | HTTP request | Description
  - [Revocability](docs/Revocability.md)
  - [Role](docs/Role.md)
  - [RoleAssignmentSourceType](docs/RoleAssignmentSourceType.md)
+ - [RoleBulkDeleteRequest](docs/RoleBulkDeleteRequest.md)
  - [RoleCriteriaKey](docs/RoleCriteriaKey.md)
  - [RoleCriteriaKeyType](docs/RoleCriteriaKeyType.md)
  - [RoleCriteriaLevel1](docs/RoleCriteriaLevel1.md)
@@ -667,8 +705,12 @@ Class | Method | HTTP request | Description
  - [SavedSearchDetailFilters](docs/SavedSearchDetailFilters.md)
  - [SavedSearchName](docs/SavedSearchName.md)
  - [Schedule](docs/Schedule.md)
+ - [Schedule1](docs/Schedule1.md)
+ - [Schedule1Days](docs/Schedule1Days.md)
+ - [Schedule1Hours](docs/Schedule1Hours.md)
  - [ScheduleDays](docs/ScheduleDays.md)
  - [ScheduleHours](docs/ScheduleHours.md)
+ - [ScheduleMonths](docs/ScheduleMonths.md)
  - [ScheduleType](docs/ScheduleType.md)
  - [ScheduledSearch](docs/ScheduledSearch.md)
  - [ScheduledSearchAllOf](docs/ScheduledSearchAllOf.md)
@@ -692,16 +734,21 @@ Class | Method | HTTP request | Description
  - [SelectorType](docs/SelectorType.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationDtoAllOf](docs/ServiceDeskIntegrationDtoAllOf.md)
+ - [ServiceDeskIntegrationDtoAllOfOwnerRef](docs/ServiceDeskIntegrationDtoAllOfOwnerRef.md)
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateDtoAllOf](docs/ServiceDeskIntegrationTemplateDtoAllOf.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
+ - [ServiceDeskSource](docs/ServiceDeskSource.md)
  - [SetLifecycleState200Response](docs/SetLifecycleState200Response.md)
  - [SetLifecycleStateRequest](docs/SetLifecycleStateRequest.md)
  - [SlimCampaign](docs/SlimCampaign.md)
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
  - [SodPolicy](docs/SodPolicy.md)
  - [SodPolicyConflictingAccessCriteria](docs/SodPolicyConflictingAccessCriteria.md)
+ - [SodPolicyDto](docs/SodPolicyDto.md)
  - [SodPolicySchedule](docs/SodPolicySchedule.md)
+ - [SodRecipient](docs/SodRecipient.md)
+ - [SodReportResultDto](docs/SodReportResultDto.md)
  - [SodViolationCheck](docs/SodViolationCheck.md)
  - [SodViolationCheckResult](docs/SodViolationCheckResult.md)
  - [SodViolationContext](docs/SodViolationContext.md)
@@ -713,6 +760,7 @@ Class | Method | HTTP request | Description
  - [SourceAccountCorrelationRule](docs/SourceAccountCorrelationRule.md)
  - [SourceBeforeProvisioningRule](docs/SourceBeforeProvisioningRule.md)
  - [SourceCluster](docs/SourceCluster.md)
+ - [SourceClusterDto](docs/SourceClusterDto.md)
  - [SourceFeature](docs/SourceFeature.md)
  - [SourceHealthDto](docs/SourceHealthDto.md)
  - [SourceManagementWorkgroup](docs/SourceManagementWorkgroup.md)
@@ -727,6 +775,7 @@ Class | Method | HTTP request | Description
  - [SubSearchAggregationSpecificationAllOf](docs/SubSearchAggregationSpecificationAllOf.md)
  - [TaggedObject](docs/TaggedObject.md)
  - [TaggedObjectDto](docs/TaggedObjectDto.md)
+ - [TaskResultDto](docs/TaskResultDto.md)
  - [TaskResultSimplified](docs/TaskResultSimplified.md)
  - [TextQuery](docs/TextQuery.md)
  - [Transform](docs/Transform.md)

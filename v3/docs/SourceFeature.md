@@ -55,6 +55,8 @@
 
 * `NO_DIRECT_PERMISSIONS_PROVISIONING` (value: `"NO_DIRECT_PERMISSIONS_PROVISIONING"`)
 
+* `PREFER_UUID` (value: `"PREFER_UUID"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

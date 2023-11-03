@@ -38,6 +38,8 @@ type ReviewableEntitlement struct {
 	SourceName *string `json:"sourceName,omitempty"`
 	// The type of the source for which the entitlement belongs
 	SourceType *string `json:"sourceType,omitempty"`
+	// The ID of the source for which the entitlement belongs
+	SourceId *string `json:"sourceId,omitempty"`
 	// Indicates if the entitlement has permissions
 	HasPermissions *bool `json:"hasPermissions,omitempty"`
 	// Indicates if the entitlement is a representation of an account permission
@@ -46,6 +48,9 @@ type ReviewableEntitlement struct {
 	Revocable *bool `json:"revocable,omitempty"`
 	// True if the entitlement is cloud governed
 	CloudGoverned *bool `json:"cloudGoverned,omitempty"`
+	// True if the entitlement has DAS data
+	ContainsDataAccess *bool `json:"containsDataAccess,omitempty"`
+	DataAccess NullableDataAccess `json:"dataAccess,omitempty"`
 	Account NullableReviewableEntitlementAccount `json:"account,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -58,6 +63,18 @@ type _ReviewableEntitlement ReviewableEntitlement
 // will change when the set of required properties is changed
 func NewReviewableEntitlement() *ReviewableEntitlement {
 	this := ReviewableEntitlement{}
+	var privileged bool = false
+	this.Privileged = &privileged
+	var hasPermissions bool = false
+	this.HasPermissions = &hasPermissions
+	var isPermission bool = false
+	this.IsPermission = &isPermission
+	var revocable bool = false
+	this.Revocable = &revocable
+	var cloudGoverned bool = false
+	this.CloudGoverned = &cloudGoverned
+	var containsDataAccess bool = false
+	this.ContainsDataAccess = &containsDataAccess
 	return &this
 }
 
@@ -66,6 +83,18 @@ func NewReviewableEntitlement() *ReviewableEntitlement {
 // but it doesn't guarantee that properties required by API are set
 func NewReviewableEntitlementWithDefaults() *ReviewableEntitlement {
 	this := ReviewableEntitlement{}
+	var privileged bool = false
+	this.Privileged = &privileged
+	var hasPermissions bool = false
+	this.HasPermissions = &hasPermissions
+	var isPermission bool = false
+	this.IsPermission = &isPermission
+	var revocable bool = false
+	this.Revocable = &revocable
+	var cloudGoverned bool = false
+	this.CloudGoverned = &cloudGoverned
+	var containsDataAccess bool = false
+	this.ContainsDataAccess = &containsDataAccess
 	return &this
 }
 
@@ -409,6 +438,38 @@ func (o *ReviewableEntitlement) SetSourceType(v string) {
 	o.SourceType = &v
 }
 
+// GetSourceId returns the SourceId field value if set, zero value otherwise.
+func (o *ReviewableEntitlement) GetSourceId() string {
+	if o == nil || isNil(o.SourceId) {
+		var ret string
+		return ret
+	}
+	return *o.SourceId
+}
+
+// GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReviewableEntitlement) GetSourceIdOk() (*string, bool) {
+	if o == nil || isNil(o.SourceId) {
+		return nil, false
+	}
+	return o.SourceId, true
+}
+
+// HasSourceId returns a boolean if a field has been set.
+func (o *ReviewableEntitlement) HasSourceId() bool {
+	if o != nil && !isNil(o.SourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceId gets a reference to the given string and assigns it to the SourceId field.
+func (o *ReviewableEntitlement) SetSourceId(v string) {
+	o.SourceId = &v
+}
+
 // GetHasPermissions returns the HasPermissions field value if set, zero value otherwise.
 func (o *ReviewableEntitlement) GetHasPermissions() bool {
 	if o == nil || isNil(o.HasPermissions) {
@@ -537,6 +598,80 @@ func (o *ReviewableEntitlement) SetCloudGoverned(v bool) {
 	o.CloudGoverned = &v
 }
 
+// GetContainsDataAccess returns the ContainsDataAccess field value if set, zero value otherwise.
+func (o *ReviewableEntitlement) GetContainsDataAccess() bool {
+	if o == nil || isNil(o.ContainsDataAccess) {
+		var ret bool
+		return ret
+	}
+	return *o.ContainsDataAccess
+}
+
+// GetContainsDataAccessOk returns a tuple with the ContainsDataAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReviewableEntitlement) GetContainsDataAccessOk() (*bool, bool) {
+	if o == nil || isNil(o.ContainsDataAccess) {
+		return nil, false
+	}
+	return o.ContainsDataAccess, true
+}
+
+// HasContainsDataAccess returns a boolean if a field has been set.
+func (o *ReviewableEntitlement) HasContainsDataAccess() bool {
+	if o != nil && !isNil(o.ContainsDataAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetContainsDataAccess gets a reference to the given bool and assigns it to the ContainsDataAccess field.
+func (o *ReviewableEntitlement) SetContainsDataAccess(v bool) {
+	o.ContainsDataAccess = &v
+}
+
+// GetDataAccess returns the DataAccess field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ReviewableEntitlement) GetDataAccess() DataAccess {
+	if o == nil || isNil(o.DataAccess.Get()) {
+		var ret DataAccess
+		return ret
+	}
+	return *o.DataAccess.Get()
+}
+
+// GetDataAccessOk returns a tuple with the DataAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ReviewableEntitlement) GetDataAccessOk() (*DataAccess, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DataAccess.Get(), o.DataAccess.IsSet()
+}
+
+// HasDataAccess returns a boolean if a field has been set.
+func (o *ReviewableEntitlement) HasDataAccess() bool {
+	if o != nil && o.DataAccess.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDataAccess gets a reference to the given NullableDataAccess and assigns it to the DataAccess field.
+func (o *ReviewableEntitlement) SetDataAccess(v DataAccess) {
+	o.DataAccess.Set(&v)
+}
+// SetDataAccessNil sets the value for DataAccess to be an explicit nil
+func (o *ReviewableEntitlement) SetDataAccessNil() {
+	o.DataAccess.Set(nil)
+}
+
+// UnsetDataAccess ensures that no value is present for DataAccess, not even an explicit nil
+func (o *ReviewableEntitlement) UnsetDataAccess() {
+	o.DataAccess.Unset()
+}
+
 // GetAccount returns the Account field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ReviewableEntitlement) GetAccount() ReviewableEntitlementAccount {
 	if o == nil || isNil(o.Account.Get()) {
@@ -619,6 +754,9 @@ func (o ReviewableEntitlement) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.SourceType) {
 		toSerialize["sourceType"] = o.SourceType
 	}
+	if !isNil(o.SourceId) {
+		toSerialize["sourceId"] = o.SourceId
+	}
 	if !isNil(o.HasPermissions) {
 		toSerialize["hasPermissions"] = o.HasPermissions
 	}
@@ -630,6 +768,12 @@ func (o ReviewableEntitlement) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.CloudGoverned) {
 		toSerialize["cloudGoverned"] = o.CloudGoverned
+	}
+	if !isNil(o.ContainsDataAccess) {
+		toSerialize["containsDataAccess"] = o.ContainsDataAccess
+	}
+	if o.DataAccess.IsSet() {
+		toSerialize["dataAccess"] = o.DataAccess.Get()
 	}
 	if o.Account.IsSet() {
 		toSerialize["account"] = o.Account.Get()
@@ -662,10 +806,13 @@ func (o *ReviewableEntitlement) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "sourceSchemaObjectType")
 		delete(additionalProperties, "sourceName")
 		delete(additionalProperties, "sourceType")
+		delete(additionalProperties, "sourceId")
 		delete(additionalProperties, "hasPermissions")
 		delete(additionalProperties, "isPermission")
 		delete(additionalProperties, "revocable")
 		delete(additionalProperties, "cloudGoverned")
+		delete(additionalProperties, "containsDataAccess")
+		delete(additionalProperties, "dataAccess")
 		delete(additionalProperties, "account")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -16,8 +16,8 @@ Method | HTTP request | Description
 [**GetSodViolationReportStatus**](SODPolicyApi.md#GetSodViolationReportStatus) | **Get** /sod-policies/{id}/violation-report | Get SOD violation report status
 [**ListSodPolicies**](SODPolicyApi.md#ListSodPolicies) | **Get** /sod-policies | List SOD policies
 [**PatchSodPolicy**](SODPolicyApi.md#PatchSodPolicy) | **Patch** /sod-policies/{id} | Patch SOD policy by ID
-[**SetPolicySchedule**](SODPolicyApi.md#SetPolicySchedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
-[**SetSodPolicy**](SODPolicyApi.md#SetSodPolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
+[**PutPolicySchedule**](SODPolicyApi.md#PutPolicySchedule) | **Put** /sod-policies/{id}/schedule | Update SOD Policy schedule
+[**PutSodPolicy**](SODPolicyApi.md#PutSodPolicy) | **Put** /sod-policies/{id} | Update SOD policy by ID
 [**StartEvaluateSodPolicy**](SODPolicyApi.md#StartEvaluateSodPolicy) | **Post** /sod-policies/{id}/evaluate | Evaluate one policy by ID
 [**StartSodAllPoliciesForOrg**](SODPolicyApi.md#StartSodAllPoliciesForOrg) | **Post** /sod-violation-report/run | Runs all policies for org
 [**StartSodPolicy**](SODPolicyApi.md#StartSodPolicy) | **Post** /sod-policies/{id}/violation-report/run | Runs SOD policy violation report
@@ -856,9 +856,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SetPolicySchedule
+## PutPolicySchedule
 
-> SodPolicySchedule SetPolicySchedule(ctx, id).SodPolicySchedule(sodPolicySchedule).Execute()
+> SodPolicySchedule PutPolicySchedule(ctx, id).SodPolicySchedule(sodPolicySchedule).Execute()
 
 Update SOD Policy schedule
 
@@ -882,13 +882,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyApi.SetPolicySchedule(context.Background(), id).SodPolicySchedule(sodPolicySchedule).Execute()
+    resp, r, err := apiClient.SODPolicyApi.PutPolicySchedule(context.Background(), id).SodPolicySchedule(sodPolicySchedule).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.SetPolicySchedule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.PutPolicySchedule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetPolicySchedule`: SodPolicySchedule
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.SetPolicySchedule`: %v\n", resp)
+    // response from `PutPolicySchedule`: SodPolicySchedule
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.PutPolicySchedule`: %v\n", resp)
 }
 ```
 
@@ -902,7 +902,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSetPolicyScheduleRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutPolicyScheduleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -928,9 +928,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SetSodPolicy
+## PutSodPolicy
 
-> SodPolicy SetSodPolicy(ctx, id).SodPolicy(sodPolicy).Execute()
+> SodPolicy PutSodPolicy(ctx, id).SodPolicy(sodPolicy).Execute()
 
 Update SOD policy by ID
 
@@ -954,13 +954,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODPolicyApi.SetSodPolicy(context.Background(), id).SodPolicy(sodPolicy).Execute()
+    resp, r, err := apiClient.SODPolicyApi.PutSodPolicy(context.Background(), id).SodPolicy(sodPolicy).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.SetSodPolicy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SODPolicyApi.PutSodPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `SetSodPolicy`: SodPolicy
-    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.SetSodPolicy`: %v\n", resp)
+    // response from `PutSodPolicy`: SodPolicy
+    fmt.Fprintf(os.Stdout, "Response from `SODPolicyApi.PutSodPolicy`: %v\n", resp)
 }
 ```
 
@@ -974,7 +974,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSetSodPolicyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutSodPolicyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

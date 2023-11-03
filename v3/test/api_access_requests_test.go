@@ -70,11 +70,11 @@ func Test_v3_AccessRequestsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessRequestsApiService UpdateAccessRequestConfig", func(t *testing.T) {
+	t.Run("Test AccessRequestsApiService SetAccessRequestConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.AccessRequestsApi.UpdateAccessRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessRequestsApi.SetAccessRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

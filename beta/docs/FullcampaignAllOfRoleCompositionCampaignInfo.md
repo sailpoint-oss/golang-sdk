@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Reviewer** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto_1.md) | If specified, this identity or governance group will be the reviewer for all certifications in this campaign. The allowed DTO types are IDENTITY and GOVERNANCE_GROUP | [optional] 
+**Reviewer** | Pointer to [**FullcampaignAllOfSearchCampaignInfoReviewer**](FullcampaignAllOfSearchCampaignInfoReviewer.md) |  | [optional] 
 **RoleIds** | Pointer to **[]string** | Optional list of roles to include in this campaign. Only one of &#x60;roleIds&#x60; and &#x60;query&#x60; may be set; if neither are set, all roles are included. | [optional] 
 **RemediatorRef** | [**FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef**](FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md) |  | 
 **Query** | Pointer to **string** | Optional search query to scope this campaign to a set of roles. Only one of &#x60;roleIds&#x60; and &#x60;query&#x60; may be set; if neither are set, all roles are included. | [optional] 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetReviewer
 
-`func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewer() BaseReferenceDto1`
+`func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewer() FullcampaignAllOfSearchCampaignInfoReviewer`
 
 GetReviewer returns the Reviewer field if non-nil, zero value otherwise.
 
 ### GetReviewerOk
 
-`func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*BaseReferenceDto1, bool)`
+`func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*FullcampaignAllOfSearchCampaignInfoReviewer, bool)`
 
 GetReviewerOk returns a tuple with the Reviewer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReviewer
 
-`func (o *FullcampaignAllOfRoleCompositionCampaignInfo) SetReviewer(v BaseReferenceDto1)`
+`func (o *FullcampaignAllOfRoleCompositionCampaignInfo) SetReviewer(v FullcampaignAllOfSearchCampaignInfoReviewer)`
 
 SetReviewer sets Reviewer field to given value.
 

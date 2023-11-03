@@ -23,7 +23,7 @@ type SubscriptionPatchRequestInner struct {
 	Op string `json:"op"`
 	// A string JSON Pointer representing the target path to an element to be affected by the operation
 	Path string `json:"path"`
-	Value *JsonPatchOperationValue `json:"value,omitempty"`
+	Value *SubscriptionPatchRequestInnerValue `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -97,9 +97,9 @@ func (o *SubscriptionPatchRequestInner) SetPath(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
-func (o *SubscriptionPatchRequestInner) GetValue() JsonPatchOperationValue {
+func (o *SubscriptionPatchRequestInner) GetValue() SubscriptionPatchRequestInnerValue {
 	if o == nil || isNil(o.Value) {
-		var ret JsonPatchOperationValue
+		var ret SubscriptionPatchRequestInnerValue
 		return ret
 	}
 	return *o.Value
@@ -107,7 +107,7 @@ func (o *SubscriptionPatchRequestInner) GetValue() JsonPatchOperationValue {
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubscriptionPatchRequestInner) GetValueOk() (*JsonPatchOperationValue, bool) {
+func (o *SubscriptionPatchRequestInner) GetValueOk() (*SubscriptionPatchRequestInnerValue, bool) {
 	if o == nil || isNil(o.Value) {
 		return nil, false
 	}
@@ -123,8 +123,8 @@ func (o *SubscriptionPatchRequestInner) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given JsonPatchOperationValue and assigns it to the Value field.
-func (o *SubscriptionPatchRequestInner) SetValue(v JsonPatchOperationValue) {
+// SetValue gets a reference to the given SubscriptionPatchRequestInnerValue and assigns it to the Value field.
+func (o *SubscriptionPatchRequestInner) SetValue(v SubscriptionPatchRequestInnerValue) {
 	o.Value = &v
 }
 

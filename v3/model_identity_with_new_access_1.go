@@ -19,10 +19,10 @@ var _ MappedNullable = &IdentityWithNewAccess1{}
 
 // IdentityWithNewAccess1 An identity with a set of access to be added
 type IdentityWithNewAccess1 struct {
-	// Set of identity id's to be checked.
+	// Set of identity IDs to be checked.
 	IdentityId string `json:"identityId"`
 	// The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type.
-	AccessRefs []BaseReferenceDto `json:"accessRefs"`
+	AccessRefs []IdentityWithNewAccess1AccessRefsInner `json:"accessRefs"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -34,7 +34,7 @@ type _IdentityWithNewAccess1 IdentityWithNewAccess1
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityWithNewAccess1(identityId string, accessRefs []BaseReferenceDto) *IdentityWithNewAccess1 {
+func NewIdentityWithNewAccess1(identityId string, accessRefs []IdentityWithNewAccess1AccessRefsInner) *IdentityWithNewAccess1 {
 	this := IdentityWithNewAccess1{}
 	this.IdentityId = identityId
 	this.AccessRefs = accessRefs
@@ -74,9 +74,9 @@ func (o *IdentityWithNewAccess1) SetIdentityId(v string) {
 }
 
 // GetAccessRefs returns the AccessRefs field value
-func (o *IdentityWithNewAccess1) GetAccessRefs() []BaseReferenceDto {
+func (o *IdentityWithNewAccess1) GetAccessRefs() []IdentityWithNewAccess1AccessRefsInner {
 	if o == nil {
-		var ret []BaseReferenceDto
+		var ret []IdentityWithNewAccess1AccessRefsInner
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *IdentityWithNewAccess1) GetAccessRefs() []BaseReferenceDto {
 
 // GetAccessRefsOk returns a tuple with the AccessRefs field value
 // and a boolean to check if the value has been set.
-func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]BaseReferenceDto, bool) {
+func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]IdentityWithNewAccess1AccessRefsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]BaseReferenceDto, bool) {
 }
 
 // SetAccessRefs sets field value
-func (o *IdentityWithNewAccess1) SetAccessRefs(v []BaseReferenceDto) {
+func (o *IdentityWithNewAccess1) SetAccessRefs(v []IdentityWithNewAccess1AccessRefsInner) {
 	o.AccessRefs = v
 }
 

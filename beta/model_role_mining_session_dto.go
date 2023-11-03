@@ -21,11 +21,11 @@ var _ MappedNullable = &RoleMiningSessionDto{}
 type RoleMiningSessionDto struct {
 	Scope *RoleMiningSessionScope `json:"scope,omitempty"`
 	// The prune threshold to be used or null to calculate prescribedPruneThreshold
-	PruneThreshold *int32 `json:"pruneThreshold,omitempty"`
+	PruneThreshold NullableInt32 `json:"pruneThreshold,omitempty"`
 	// The calculated prescribedPruneThreshold
-	PrescribedPruneThreshold *int32 `json:"prescribedPruneThreshold,omitempty"`
+	PrescribedPruneThreshold NullableInt32 `json:"prescribedPruneThreshold,omitempty"`
 	// Minimum number of identities in a potential role
-	MinNumIdentitiesInPotentialRole *int32 `json:"minNumIdentitiesInPotentialRole,omitempty"`
+	MinNumIdentitiesInPotentialRole NullableInt32 `json:"minNumIdentitiesInPotentialRole,omitempty"`
 	// Number of potential roles
 	PotentialRoleCount *int32 `json:"potentialRoleCount,omitempty"`
 	// Number of potential roles ready
@@ -33,14 +33,14 @@ type RoleMiningSessionDto struct {
 	Status *RoleMiningSessionStatus `json:"status,omitempty"`
 	Type *RoleMiningRoleType `json:"type,omitempty"`
 	// The id of the user who will receive an email about the role mining session
-	EmailRecipientId *string `json:"emailRecipientId,omitempty"`
-	CreatedBy *EntityCreatedByDTO `json:"createdBy,omitempty"`
+	EmailRecipientId NullableString `json:"emailRecipientId,omitempty"`
+	CreatedBy *RoleMiningSessionDtoCreatedBy `json:"createdBy,omitempty"`
 	// Number of identities in the population which meet the search criteria or identity list provided
 	IdentityCount *int32 `json:"identityCount,omitempty"`
 	// The session's saved status
 	Saved *bool `json:"saved,omitempty"`
 	// The session's saved name
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -52,6 +52,8 @@ type _RoleMiningSessionDto RoleMiningSessionDto
 // will change when the set of required properties is changed
 func NewRoleMiningSessionDto() *RoleMiningSessionDto {
 	this := RoleMiningSessionDto{}
+	var saved bool = false
+	this.Saved = &saved
 	return &this
 }
 
@@ -60,6 +62,8 @@ func NewRoleMiningSessionDto() *RoleMiningSessionDto {
 // but it doesn't guarantee that properties required by API are set
 func NewRoleMiningSessionDtoWithDefaults() *RoleMiningSessionDto {
 	this := RoleMiningSessionDto{}
+	var saved bool = false
+	this.Saved = &saved
 	return &this
 }
 
@@ -95,100 +99,130 @@ func (o *RoleMiningSessionDto) SetScope(v RoleMiningSessionScope) {
 	o.Scope = &v
 }
 
-// GetPruneThreshold returns the PruneThreshold field value if set, zero value otherwise.
+// GetPruneThreshold returns the PruneThreshold field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningSessionDto) GetPruneThreshold() int32 {
-	if o == nil || isNil(o.PruneThreshold) {
+	if o == nil || isNil(o.PruneThreshold.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.PruneThreshold
+	return *o.PruneThreshold.Get()
 }
 
 // GetPruneThresholdOk returns a tuple with the PruneThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleMiningSessionDto) GetPruneThresholdOk() (*int32, bool) {
-	if o == nil || isNil(o.PruneThreshold) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PruneThreshold, true
+	return o.PruneThreshold.Get(), o.PruneThreshold.IsSet()
 }
 
 // HasPruneThreshold returns a boolean if a field has been set.
 func (o *RoleMiningSessionDto) HasPruneThreshold() bool {
-	if o != nil && !isNil(o.PruneThreshold) {
+	if o != nil && o.PruneThreshold.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPruneThreshold gets a reference to the given int32 and assigns it to the PruneThreshold field.
+// SetPruneThreshold gets a reference to the given NullableInt32 and assigns it to the PruneThreshold field.
 func (o *RoleMiningSessionDto) SetPruneThreshold(v int32) {
-	o.PruneThreshold = &v
+	o.PruneThreshold.Set(&v)
+}
+// SetPruneThresholdNil sets the value for PruneThreshold to be an explicit nil
+func (o *RoleMiningSessionDto) SetPruneThresholdNil() {
+	o.PruneThreshold.Set(nil)
 }
 
-// GetPrescribedPruneThreshold returns the PrescribedPruneThreshold field value if set, zero value otherwise.
+// UnsetPruneThreshold ensures that no value is present for PruneThreshold, not even an explicit nil
+func (o *RoleMiningSessionDto) UnsetPruneThreshold() {
+	o.PruneThreshold.Unset()
+}
+
+// GetPrescribedPruneThreshold returns the PrescribedPruneThreshold field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningSessionDto) GetPrescribedPruneThreshold() int32 {
-	if o == nil || isNil(o.PrescribedPruneThreshold) {
+	if o == nil || isNil(o.PrescribedPruneThreshold.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.PrescribedPruneThreshold
+	return *o.PrescribedPruneThreshold.Get()
 }
 
 // GetPrescribedPruneThresholdOk returns a tuple with the PrescribedPruneThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleMiningSessionDto) GetPrescribedPruneThresholdOk() (*int32, bool) {
-	if o == nil || isNil(o.PrescribedPruneThreshold) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PrescribedPruneThreshold, true
+	return o.PrescribedPruneThreshold.Get(), o.PrescribedPruneThreshold.IsSet()
 }
 
 // HasPrescribedPruneThreshold returns a boolean if a field has been set.
 func (o *RoleMiningSessionDto) HasPrescribedPruneThreshold() bool {
-	if o != nil && !isNil(o.PrescribedPruneThreshold) {
+	if o != nil && o.PrescribedPruneThreshold.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPrescribedPruneThreshold gets a reference to the given int32 and assigns it to the PrescribedPruneThreshold field.
+// SetPrescribedPruneThreshold gets a reference to the given NullableInt32 and assigns it to the PrescribedPruneThreshold field.
 func (o *RoleMiningSessionDto) SetPrescribedPruneThreshold(v int32) {
-	o.PrescribedPruneThreshold = &v
+	o.PrescribedPruneThreshold.Set(&v)
+}
+// SetPrescribedPruneThresholdNil sets the value for PrescribedPruneThreshold to be an explicit nil
+func (o *RoleMiningSessionDto) SetPrescribedPruneThresholdNil() {
+	o.PrescribedPruneThreshold.Set(nil)
 }
 
-// GetMinNumIdentitiesInPotentialRole returns the MinNumIdentitiesInPotentialRole field value if set, zero value otherwise.
+// UnsetPrescribedPruneThreshold ensures that no value is present for PrescribedPruneThreshold, not even an explicit nil
+func (o *RoleMiningSessionDto) UnsetPrescribedPruneThreshold() {
+	o.PrescribedPruneThreshold.Unset()
+}
+
+// GetMinNumIdentitiesInPotentialRole returns the MinNumIdentitiesInPotentialRole field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningSessionDto) GetMinNumIdentitiesInPotentialRole() int32 {
-	if o == nil || isNil(o.MinNumIdentitiesInPotentialRole) {
+	if o == nil || isNil(o.MinNumIdentitiesInPotentialRole.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.MinNumIdentitiesInPotentialRole
+	return *o.MinNumIdentitiesInPotentialRole.Get()
 }
 
 // GetMinNumIdentitiesInPotentialRoleOk returns a tuple with the MinNumIdentitiesInPotentialRole field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleMiningSessionDto) GetMinNumIdentitiesInPotentialRoleOk() (*int32, bool) {
-	if o == nil || isNil(o.MinNumIdentitiesInPotentialRole) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MinNumIdentitiesInPotentialRole, true
+	return o.MinNumIdentitiesInPotentialRole.Get(), o.MinNumIdentitiesInPotentialRole.IsSet()
 }
 
 // HasMinNumIdentitiesInPotentialRole returns a boolean if a field has been set.
 func (o *RoleMiningSessionDto) HasMinNumIdentitiesInPotentialRole() bool {
-	if o != nil && !isNil(o.MinNumIdentitiesInPotentialRole) {
+	if o != nil && o.MinNumIdentitiesInPotentialRole.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMinNumIdentitiesInPotentialRole gets a reference to the given int32 and assigns it to the MinNumIdentitiesInPotentialRole field.
+// SetMinNumIdentitiesInPotentialRole gets a reference to the given NullableInt32 and assigns it to the MinNumIdentitiesInPotentialRole field.
 func (o *RoleMiningSessionDto) SetMinNumIdentitiesInPotentialRole(v int32) {
-	o.MinNumIdentitiesInPotentialRole = &v
+	o.MinNumIdentitiesInPotentialRole.Set(&v)
+}
+// SetMinNumIdentitiesInPotentialRoleNil sets the value for MinNumIdentitiesInPotentialRole to be an explicit nil
+func (o *RoleMiningSessionDto) SetMinNumIdentitiesInPotentialRoleNil() {
+	o.MinNumIdentitiesInPotentialRole.Set(nil)
+}
+
+// UnsetMinNumIdentitiesInPotentialRole ensures that no value is present for MinNumIdentitiesInPotentialRole, not even an explicit nil
+func (o *RoleMiningSessionDto) UnsetMinNumIdentitiesInPotentialRole() {
+	o.MinNumIdentitiesInPotentialRole.Unset()
 }
 
 // GetPotentialRoleCount returns the PotentialRoleCount field value if set, zero value otherwise.
@@ -319,42 +353,52 @@ func (o *RoleMiningSessionDto) SetType(v RoleMiningRoleType) {
 	o.Type = &v
 }
 
-// GetEmailRecipientId returns the EmailRecipientId field value if set, zero value otherwise.
+// GetEmailRecipientId returns the EmailRecipientId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningSessionDto) GetEmailRecipientId() string {
-	if o == nil || isNil(o.EmailRecipientId) {
+	if o == nil || isNil(o.EmailRecipientId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.EmailRecipientId
+	return *o.EmailRecipientId.Get()
 }
 
 // GetEmailRecipientIdOk returns a tuple with the EmailRecipientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleMiningSessionDto) GetEmailRecipientIdOk() (*string, bool) {
-	if o == nil || isNil(o.EmailRecipientId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EmailRecipientId, true
+	return o.EmailRecipientId.Get(), o.EmailRecipientId.IsSet()
 }
 
 // HasEmailRecipientId returns a boolean if a field has been set.
 func (o *RoleMiningSessionDto) HasEmailRecipientId() bool {
-	if o != nil && !isNil(o.EmailRecipientId) {
+	if o != nil && o.EmailRecipientId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEmailRecipientId gets a reference to the given string and assigns it to the EmailRecipientId field.
+// SetEmailRecipientId gets a reference to the given NullableString and assigns it to the EmailRecipientId field.
 func (o *RoleMiningSessionDto) SetEmailRecipientId(v string) {
-	o.EmailRecipientId = &v
+	o.EmailRecipientId.Set(&v)
+}
+// SetEmailRecipientIdNil sets the value for EmailRecipientId to be an explicit nil
+func (o *RoleMiningSessionDto) SetEmailRecipientIdNil() {
+	o.EmailRecipientId.Set(nil)
+}
+
+// UnsetEmailRecipientId ensures that no value is present for EmailRecipientId, not even an explicit nil
+func (o *RoleMiningSessionDto) UnsetEmailRecipientId() {
+	o.EmailRecipientId.Unset()
 }
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
-func (o *RoleMiningSessionDto) GetCreatedBy() EntityCreatedByDTO {
+func (o *RoleMiningSessionDto) GetCreatedBy() RoleMiningSessionDtoCreatedBy {
 	if o == nil || isNil(o.CreatedBy) {
-		var ret EntityCreatedByDTO
+		var ret RoleMiningSessionDtoCreatedBy
 		return ret
 	}
 	return *o.CreatedBy
@@ -362,7 +406,7 @@ func (o *RoleMiningSessionDto) GetCreatedBy() EntityCreatedByDTO {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleMiningSessionDto) GetCreatedByOk() (*EntityCreatedByDTO, bool) {
+func (o *RoleMiningSessionDto) GetCreatedByOk() (*RoleMiningSessionDtoCreatedBy, bool) {
 	if o == nil || isNil(o.CreatedBy) {
 		return nil, false
 	}
@@ -378,8 +422,8 @@ func (o *RoleMiningSessionDto) HasCreatedBy() bool {
 	return false
 }
 
-// SetCreatedBy gets a reference to the given EntityCreatedByDTO and assigns it to the CreatedBy field.
-func (o *RoleMiningSessionDto) SetCreatedBy(v EntityCreatedByDTO) {
+// SetCreatedBy gets a reference to the given RoleMiningSessionDtoCreatedBy and assigns it to the CreatedBy field.
+func (o *RoleMiningSessionDto) SetCreatedBy(v RoleMiningSessionDtoCreatedBy) {
 	o.CreatedBy = &v
 }
 
@@ -447,36 +491,46 @@ func (o *RoleMiningSessionDto) SetSaved(v bool) {
 	o.Saved = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningSessionDto) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleMiningSessionDto) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *RoleMiningSessionDto) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *RoleMiningSessionDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *RoleMiningSessionDto) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *RoleMiningSessionDto) UnsetName() {
+	o.Name.Unset()
 }
 
 func (o RoleMiningSessionDto) MarshalJSON() ([]byte, error) {
@@ -492,14 +546,14 @@ func (o RoleMiningSessionDto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Scope) {
 		toSerialize["scope"] = o.Scope
 	}
-	if !isNil(o.PruneThreshold) {
-		toSerialize["pruneThreshold"] = o.PruneThreshold
+	if o.PruneThreshold.IsSet() {
+		toSerialize["pruneThreshold"] = o.PruneThreshold.Get()
 	}
-	if !isNil(o.PrescribedPruneThreshold) {
-		toSerialize["prescribedPruneThreshold"] = o.PrescribedPruneThreshold
+	if o.PrescribedPruneThreshold.IsSet() {
+		toSerialize["prescribedPruneThreshold"] = o.PrescribedPruneThreshold.Get()
 	}
-	if !isNil(o.MinNumIdentitiesInPotentialRole) {
-		toSerialize["minNumIdentitiesInPotentialRole"] = o.MinNumIdentitiesInPotentialRole
+	if o.MinNumIdentitiesInPotentialRole.IsSet() {
+		toSerialize["minNumIdentitiesInPotentialRole"] = o.MinNumIdentitiesInPotentialRole.Get()
 	}
 	if !isNil(o.PotentialRoleCount) {
 		toSerialize["potentialRoleCount"] = o.PotentialRoleCount
@@ -513,8 +567,8 @@ func (o RoleMiningSessionDto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !isNil(o.EmailRecipientId) {
-		toSerialize["emailRecipientId"] = o.EmailRecipientId
+	if o.EmailRecipientId.IsSet() {
+		toSerialize["emailRecipientId"] = o.EmailRecipientId.Get()
 	}
 	if !isNil(o.CreatedBy) {
 		toSerialize["createdBy"] = o.CreatedBy
@@ -525,8 +579,8 @@ func (o RoleMiningSessionDto) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Saved) {
 		toSerialize["saved"] = o.Saved
 	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

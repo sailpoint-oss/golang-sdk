@@ -17,13 +17,13 @@ import (
 // checks if the AccountCorrelatedIdentity type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccountCorrelatedIdentity{}
 
-// AccountCorrelatedIdentity The identity that the account correlated with.
+// AccountCorrelatedIdentity Identity the account is correlated with.
 type AccountCorrelatedIdentity struct {
-	// The type of object that is referenced
-	Type map[string]interface{} `json:"type"`
-	// ID of the object to which this reference applies
+	// DTO type of the identity the account is correlated with.
+	Type string `json:"type"`
+	// ID of the identity the account is correlated with.
 	Id string `json:"id"`
-	// Human-readable display name of the object to which this reference applies
+	// Display name of the identity the account is correlated with.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,7 +34,7 @@ type _AccountCorrelatedIdentity AccountCorrelatedIdentity
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountCorrelatedIdentity(type_ map[string]interface{}, id string, name string) *AccountCorrelatedIdentity {
+func NewAccountCorrelatedIdentity(type_ string, id string, name string) *AccountCorrelatedIdentity {
 	this := AccountCorrelatedIdentity{}
 	this.Type = type_
 	this.Id = id
@@ -51,9 +51,9 @@ func NewAccountCorrelatedIdentityWithDefaults() *AccountCorrelatedIdentity {
 }
 
 // GetType returns the Type field value
-func (o *AccountCorrelatedIdentity) GetType() map[string]interface{} {
+func (o *AccountCorrelatedIdentity) GetType() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -62,15 +62,15 @@ func (o *AccountCorrelatedIdentity) GetType() map[string]interface{} {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AccountCorrelatedIdentity) GetTypeOk() (map[string]interface{}, bool) {
+func (o *AccountCorrelatedIdentity) GetTypeOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
 // SetType sets field value
-func (o *AccountCorrelatedIdentity) SetType(v map[string]interface{}) {
+func (o *AccountCorrelatedIdentity) SetType(v string) {
 	o.Type = v
 }
 

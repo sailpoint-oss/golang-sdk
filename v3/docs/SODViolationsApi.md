@@ -96,7 +96,7 @@ import (
 )
 
 func main() {
-    identityWithNewAccess1 := *openapiclient.NewIdentityWithNewAccess1("2c91809050db617d0150e0bf3215385e", []openapiclient.BaseReferenceDto{*openapiclient.NewBaseReferenceDto()}) // IdentityWithNewAccess1 | 
+    identityWithNewAccess1 := *openapiclient.NewIdentityWithNewAccess1("2c91809050db617d0150e0bf3215385e", []openapiclient.IdentityWithNewAccess1AccessRefsInner{*openapiclient.NewIdentityWithNewAccess1AccessRefsInner()}) // IdentityWithNewAccess1 | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

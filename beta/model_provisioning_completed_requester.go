@@ -17,13 +17,13 @@ import (
 // checks if the ProvisioningCompletedRequester type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ProvisioningCompletedRequester{}
 
-// ProvisioningCompletedRequester Reference to the identity (if any) who submitted the provisioning request.
+// ProvisioningCompletedRequester Provisioning requester's identity.
 type ProvisioningCompletedRequester struct {
-	// The type of object that is referenced
-	Type map[string]interface{} `json:"type"`
-	// ID of the object to which this reference applies
+	// Provisioning requester's DTO type.
+	Type string `json:"type"`
+	// Provisioning requester's identity ID.
 	Id string `json:"id"`
-	// Human-readable display name of the object to which this reference applies
+	// Provisioning owner's human-readable display name.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,7 +34,7 @@ type _ProvisioningCompletedRequester ProvisioningCompletedRequester
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProvisioningCompletedRequester(type_ map[string]interface{}, id string, name string) *ProvisioningCompletedRequester {
+func NewProvisioningCompletedRequester(type_ string, id string, name string) *ProvisioningCompletedRequester {
 	this := ProvisioningCompletedRequester{}
 	this.Type = type_
 	this.Id = id
@@ -51,9 +51,9 @@ func NewProvisioningCompletedRequesterWithDefaults() *ProvisioningCompletedReque
 }
 
 // GetType returns the Type field value
-func (o *ProvisioningCompletedRequester) GetType() map[string]interface{} {
+func (o *ProvisioningCompletedRequester) GetType() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -62,15 +62,15 @@ func (o *ProvisioningCompletedRequester) GetType() map[string]interface{} {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ProvisioningCompletedRequester) GetTypeOk() (map[string]interface{}, bool) {
+func (o *ProvisioningCompletedRequester) GetTypeOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
 // SetType sets field value
-func (o *ProvisioningCompletedRequester) SetType(v map[string]interface{}) {
+func (o *ProvisioningCompletedRequester) SetType(v string) {
 	o.Type = v
 }
 

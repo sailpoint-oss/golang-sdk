@@ -17,13 +17,13 @@ import (
 // checks if the AccessRequestDynamicApproverRequestedFor type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccessRequestDynamicApproverRequestedFor{}
 
-// AccessRequestDynamicApproverRequestedFor The identity for whom the access is requested for.
+// AccessRequestDynamicApproverRequestedFor struct for AccessRequestDynamicApproverRequestedFor
 type AccessRequestDynamicApproverRequestedFor struct {
-	// The type of object that is referenced
-	Type map[string]interface{} `json:"type,omitempty"`
-	// ID of the object to which this reference applies
+	// DTO type of identity the access item is requested for.
+	Type *string `json:"type,omitempty"`
+	// ID of identity the access item is requested for.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the object to which this reference applies
+	// Human-readable display name of identity the access item is requested for.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -48,19 +48,19 @@ func NewAccessRequestDynamicApproverRequestedForWithDefaults() *AccessRequestDyn
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *AccessRequestDynamicApproverRequestedFor) GetType() map[string]interface{} {
+func (o *AccessRequestDynamicApproverRequestedFor) GetType() string {
 	if o == nil || isNil(o.Type) {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
-	return o.Type
+	return *o.Type
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessRequestDynamicApproverRequestedFor) GetTypeOk() (map[string]interface{}, bool) {
+func (o *AccessRequestDynamicApproverRequestedFor) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Type, true
 }
@@ -74,9 +74,9 @@ func (o *AccessRequestDynamicApproverRequestedFor) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given map[string]interface{} and assigns it to the Type field.
-func (o *AccessRequestDynamicApproverRequestedFor) SetType(v map[string]interface{}) {
-	o.Type = v
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *AccessRequestDynamicApproverRequestedFor) SetType(v string) {
+	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.

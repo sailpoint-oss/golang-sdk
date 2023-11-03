@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**IdentityId** | **string** | Set of identity id&#39;s to be checked. | 
-**AccessRefs** | [**[]BaseReferenceDto**](BaseReferenceDto.md) | The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type. | 
+**IdentityId** | **string** | Set of identity IDs to be checked. | 
+**AccessRefs** | [**[]IdentityWithNewAccess1AccessRefsInner**](IdentityWithNewAccess1AccessRefsInner.md) | The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type. | 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check. | [optional] 
 
 ## Methods
 
 ### NewIdentityWithNewAccess1
 
-`func NewIdentityWithNewAccess1(identityId string, accessRefs []BaseReferenceDto, ) *IdentityWithNewAccess1`
+`func NewIdentityWithNewAccess1(identityId string, accessRefs []IdentityWithNewAccess1AccessRefsInner, ) *IdentityWithNewAccess1`
 
 NewIdentityWithNewAccess1 instantiates a new IdentityWithNewAccess1 object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetIdentityId sets IdentityId field to given value.
 
 ### GetAccessRefs
 
-`func (o *IdentityWithNewAccess1) GetAccessRefs() []BaseReferenceDto`
+`func (o *IdentityWithNewAccess1) GetAccessRefs() []IdentityWithNewAccess1AccessRefsInner`
 
 GetAccessRefs returns the AccessRefs field if non-nil, zero value otherwise.
 
 ### GetAccessRefsOk
 
-`func (o *IdentityWithNewAccess1) GetAccessRefsOk() (*[]BaseReferenceDto, bool)`
+`func (o *IdentityWithNewAccess1) GetAccessRefsOk() (*[]IdentityWithNewAccess1AccessRefsInner, bool)`
 
 GetAccessRefsOk returns a tuple with the AccessRefs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessRefs
 
-`func (o *IdentityWithNewAccess1) SetAccessRefs(v []BaseReferenceDto)`
+`func (o *IdentityWithNewAccess1) SetAccessRefs(v []IdentityWithNewAccess1AccessRefsInner)`
 
 SetAccessRefs sets AccessRefs field to given value.
 

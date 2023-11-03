@@ -4,17 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | [**ScheduleType**](ScheduleType.md) |  | 
+**Type** | **string** | Determines the overall schedule cadence. In general, all time period fields smaller than the chosen type can be configured. For example, a DAILY schedule can have &#39;hours&#39; set, but not &#39;days&#39;; a WEEKLY schedule can have both &#39;hours&#39; and &#39;days&#39; set. | 
+**Months** | Pointer to [**ScheduleMonths**](ScheduleMonths.md) |  | [optional] 
 **Days** | Pointer to [**ScheduleDays**](ScheduleDays.md) |  | [optional] 
 **Hours** | [**ScheduleHours**](ScheduleHours.md) |  | 
-**Expiration** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**TimeZoneId** | Pointer to **NullableString** | The GMT formatted timezone the schedule will run in (ex. GMT-06:00).  If no timezone is specified, the org&#39;s default timezone is used. | [optional] 
+**Expiration** | Pointer to **time.Time** | Specifies the time after which this schedule will no longer occur. | [optional] 
+**TimeZoneId** | Pointer to **string** | The time zone to use when running the schedule. For instance, if the schedule is scheduled to run at 1AM, and this field is set to \&quot;CST\&quot;, the schedule will run at 1AM CST. | [optional] 
 
 ## Methods
 
 ### NewSchedule
 
-`func NewSchedule(type_ ScheduleType, hours ScheduleHours, ) *Schedule`
+`func NewSchedule(type_ string, hours ScheduleHours, ) *Schedule`
 
 NewSchedule instantiates a new Schedule object
 This constructor will assign default values to properties that have it defined,
@@ -31,23 +32,48 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *Schedule) GetType() ScheduleType`
+`func (o *Schedule) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Schedule) GetTypeOk() (*ScheduleType, bool)`
+`func (o *Schedule) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Schedule) SetType(v ScheduleType)`
+`func (o *Schedule) SetType(v string)`
 
 SetType sets Type field to given value.
 
+
+### GetMonths
+
+`func (o *Schedule) GetMonths() ScheduleMonths`
+
+GetMonths returns the Months field if non-nil, zero value otherwise.
+
+### GetMonthsOk
+
+`func (o *Schedule) GetMonthsOk() (*ScheduleMonths, bool)`
+
+GetMonthsOk returns a tuple with the Months field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMonths
+
+`func (o *Schedule) SetMonths(v ScheduleMonths)`
+
+SetMonths sets Months field to given value.
+
+### HasMonths
+
+`func (o *Schedule) HasMonths() bool`
+
+HasMonths returns a boolean if a field has been set.
 
 ### GetDays
 
@@ -119,16 +145,6 @@ SetExpiration sets Expiration field to given value.
 
 HasExpiration returns a boolean if a field has been set.
 
-### SetExpirationNil
-
-`func (o *Schedule) SetExpirationNil(b bool)`
-
- SetExpirationNil sets the value for Expiration to be an explicit nil
-
-### UnsetExpiration
-`func (o *Schedule) UnsetExpiration()`
-
-UnsetExpiration ensures that no value is present for Expiration, not even an explicit nil
 ### GetTimeZoneId
 
 `func (o *Schedule) GetTimeZoneId() string`
@@ -154,16 +170,6 @@ SetTimeZoneId sets TimeZoneId field to given value.
 
 HasTimeZoneId returns a boolean if a field has been set.
 
-### SetTimeZoneIdNil
-
-`func (o *Schedule) SetTimeZoneIdNil(b bool)`
-
- SetTimeZoneIdNil sets the value for TimeZoneId to be an explicit nil
-
-### UnsetTimeZoneId
-`func (o *Schedule) UnsetTimeZoneId()`
-
-UnsetTimeZoneId ensures that no value is present for TimeZoneId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

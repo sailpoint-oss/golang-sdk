@@ -553,7 +553,7 @@ func (r ApiListScheduledSearchRequest) Count(count bool) ApiListScheduledSearchR
 	return r
 }
 
-// An expression used to constrain the result set using the filtering syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results).  Allowed filter properties: *owner.id*, *savedSearchId*  Allowed filter operator: *eq*  **Example filters**:  &#x60;&#x60;&#x60;owner.id eq \&quot;0de46054-fe90-434a-b84e-c6b3359d0c64\&quot;&#x60;&#x60;&#x60; -- returns scheduled searches for the specified owner ID  &#x60;&#x60;&#x60;savedSearchId eq \&quot;6cc0945d-9eeb-4948-9033-72d066e1153e\&quot;&#x60;&#x60;&#x60; -- returns scheduled searches that reference the specified saved search  &#x60;&#x60;&#x60;owner.id eq me or savedSearchId eq \&quot;6cc0945d-9eeb-4948-9033-72d066e1153e\&quot;&#x60;&#x60;&#x60; -- returns all of the current user&#39;s scheduled searches as well as all scheduled searches that reference the specified saved search 
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **savedSearchId**: *eq*
 func (r ApiListScheduledSearchRequest) Filters(filters string) ApiListScheduledSearchRequest {
 	r.filters = &filters
 	return r

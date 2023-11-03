@@ -26,9 +26,10 @@ func Test_cc_ApplicationsApiService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CC.ApplicationsApi.CreateApplication(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CC.ApplicationsApi.CreateApplication(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -66,9 +67,10 @@ func Test_cc_ApplicationsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.CC.ApplicationsApi.GetApplicationAccessProfiles(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CC.ApplicationsApi.GetApplicationAccessProfiles(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -91,9 +93,10 @@ func Test_cc_ApplicationsApiService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.CC.ApplicationsApi.UpdateApplication(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CC.ApplicationsApi.UpdateApplication(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

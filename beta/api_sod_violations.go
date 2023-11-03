@@ -22,33 +22,35 @@ import (
 // SODViolationsApiService SODViolationsApi service
 type SODViolationsApiService service
 
-type ApiPredictSodViolationsRequest struct {
+type ApiStartPredictSodViolationsRequest struct {
 	ctx context.Context
 	ApiService *SODViolationsApiService
 	identityWithNewAccess *IdentityWithNewAccess
 }
 
-func (r ApiPredictSodViolationsRequest) IdentityWithNewAccess(identityWithNewAccess IdentityWithNewAccess) ApiPredictSodViolationsRequest {
+func (r ApiStartPredictSodViolationsRequest) IdentityWithNewAccess(identityWithNewAccess IdentityWithNewAccess) ApiStartPredictSodViolationsRequest {
 	r.identityWithNewAccess = &identityWithNewAccess
 	return r
 }
 
-func (r ApiPredictSodViolationsRequest) Execute() (*ViolationPrediction, *http.Response, error) {
-	return r.ApiService.PredictSodViolationsExecute(r)
+func (r ApiStartPredictSodViolationsRequest) Execute() (*ViolationPrediction, *http.Response, error) {
+	return r.ApiService.StartPredictSodViolationsExecute(r)
 }
 
 /*
-PredictSodViolations Predict SOD violations for the given identity if they were granted the given access.
+StartPredictSodViolations Predict SOD violations for identity.
 
 This API is used to check if granting some additional accesses would cause the subject to be in violation of any SOD policies. Returns the violations that would be caused.
 
 A token with ORG_ADMIN or API authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPredictSodViolationsRequest
+ @return ApiStartPredictSodViolationsRequest
+
+Deprecated
 */
-func (a *SODViolationsApiService) PredictSodViolations(ctx context.Context) ApiPredictSodViolationsRequest {
-	return ApiPredictSodViolationsRequest{
+func (a *SODViolationsApiService) StartPredictSodViolations(ctx context.Context) ApiStartPredictSodViolationsRequest {
+	return ApiStartPredictSodViolationsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -56,7 +58,8 @@ func (a *SODViolationsApiService) PredictSodViolations(ctx context.Context) ApiP
 
 // Execute executes the request
 //  @return ViolationPrediction
-func (a *SODViolationsApiService) PredictSodViolationsExecute(r ApiPredictSodViolationsRequest) (*ViolationPrediction, *http.Response, error) {
+// Deprecated
+func (a *SODViolationsApiService) StartPredictSodViolationsExecute(r ApiStartPredictSodViolationsRequest) (*ViolationPrediction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -64,7 +67,7 @@ func (a *SODViolationsApiService) PredictSodViolationsExecute(r ApiPredictSodVio
 		localVarReturnValue  *ViolationPrediction
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODViolationsApiService.PredictSodViolations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODViolationsApiService.StartPredictSodViolations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

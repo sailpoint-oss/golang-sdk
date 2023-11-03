@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Id of the entitlement | [optional] 
 **Name** | Pointer to **string** | Name of the entitlement | [optional] 
-**Description** | Pointer to **string** | Description forthe entitlement | [optional] 
+**Description** | Pointer to **NullableString** | Description forthe entitlement | [optional] 
+**Attribute** | Pointer to **string** | The entitlement attribute | [optional] 
 
 ## Methods
 
@@ -101,6 +102,41 @@ SetDescription sets Description field to given value.
 `func (o *RoleMiningEntitlementRef) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *RoleMiningEntitlementRef) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *RoleMiningEntitlementRef) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetAttribute
+
+`func (o *RoleMiningEntitlementRef) GetAttribute() string`
+
+GetAttribute returns the Attribute field if non-nil, zero value otherwise.
+
+### GetAttributeOk
+
+`func (o *RoleMiningEntitlementRef) GetAttributeOk() (*string, bool)`
+
+GetAttributeOk returns a tuple with the Attribute field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttribute
+
+`func (o *RoleMiningEntitlementRef) SetAttribute(v string)`
+
+SetAttribute sets Attribute field to given value.
+
+### HasAttribute
+
+`func (o *RoleMiningEntitlementRef) HasAttribute() bool`
+
+HasAttribute returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

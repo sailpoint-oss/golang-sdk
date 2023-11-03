@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## DeleteLifecycleState
 
-> BaseReferenceDto DeleteLifecycleState(ctx, identityProfileId, lifecycleStateId).Execute()
+> LifecyclestateDeleted DeleteLifecycleState(ctx, identityProfileId, lifecycleStateId).Execute()
 
 Delete Lifecycle State by ID
 
@@ -116,7 +116,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesApi.DeleteLifecycleState``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `DeleteLifecycleState`: BaseReferenceDto
+    // response from `DeleteLifecycleState`: LifecyclestateDeleted
     fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesApi.DeleteLifecycleState`: %v\n", resp)
 }
 ```
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BaseReferenceDto**](BaseReferenceDto.md)
+[**LifecyclestateDeleted**](LifecyclestateDeleted.md)
 
 ### Authorization
 

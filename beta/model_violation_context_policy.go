@@ -17,11 +17,11 @@ import (
 // checks if the ViolationContextPolicy type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ViolationContextPolicy{}
 
-// ViolationContextPolicy The types of objects supported for SOD violations
+// ViolationContextPolicy The types of objects supported for SOD policy violations.
 type ViolationContextPolicy struct {
-	// The type of object that is referenced
+	// The type of object supported for SOD policy violations.
 	Type map[string]interface{} `json:"type,omitempty"`
-	// ID of the object to which this reference applies
+	// SOD policy ID.
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}

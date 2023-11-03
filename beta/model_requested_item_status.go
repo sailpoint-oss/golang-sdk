@@ -39,9 +39,9 @@ type RequestedItemStatus struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// When the request was created.
 	Created *time.Time `json:"created,omitempty"`
-	Requester *BaseReferenceDto1 `json:"requester,omitempty"`
-	RequestedFor *BaseReferenceDto1 `json:"requestedFor,omitempty"`
-	RequesterComment *CommentDto1 `json:"requesterComment,omitempty"`
+	Requester *AccessItemRequester `json:"requester,omitempty"`
+	RequestedFor *AccessItemRequestedFor `json:"requestedFor,omitempty"`
+	RequesterComment *CommentDto `json:"requesterComment,omitempty"`
 	SodViolationContext *SodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
 	ProvisioningDetails *ProvisioningDetails `json:"provisioningDetails,omitempty"`
 	PreApprovalTriggerDetails *PreApprovalTriggerDetails `json:"preApprovalTriggerDetails,omitempty"`
@@ -434,9 +434,9 @@ func (o *RequestedItemStatus) SetCreated(v time.Time) {
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetRequester() BaseReferenceDto1 {
+func (o *RequestedItemStatus) GetRequester() AccessItemRequester {
 	if o == nil || isNil(o.Requester) {
-		var ret BaseReferenceDto1
+		var ret AccessItemRequester
 		return ret
 	}
 	return *o.Requester
@@ -444,7 +444,7 @@ func (o *RequestedItemStatus) GetRequester() BaseReferenceDto1 {
 
 // GetRequesterOk returns a tuple with the Requester field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetRequesterOk() (*BaseReferenceDto1, bool) {
+func (o *RequestedItemStatus) GetRequesterOk() (*AccessItemRequester, bool) {
 	if o == nil || isNil(o.Requester) {
 		return nil, false
 	}
@@ -460,15 +460,15 @@ func (o *RequestedItemStatus) HasRequester() bool {
 	return false
 }
 
-// SetRequester gets a reference to the given BaseReferenceDto1 and assigns it to the Requester field.
-func (o *RequestedItemStatus) SetRequester(v BaseReferenceDto1) {
+// SetRequester gets a reference to the given AccessItemRequester and assigns it to the Requester field.
+func (o *RequestedItemStatus) SetRequester(v AccessItemRequester) {
 	o.Requester = &v
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetRequestedFor() BaseReferenceDto1 {
+func (o *RequestedItemStatus) GetRequestedFor() AccessItemRequestedFor {
 	if o == nil || isNil(o.RequestedFor) {
-		var ret BaseReferenceDto1
+		var ret AccessItemRequestedFor
 		return ret
 	}
 	return *o.RequestedFor
@@ -476,7 +476,7 @@ func (o *RequestedItemStatus) GetRequestedFor() BaseReferenceDto1 {
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetRequestedForOk() (*BaseReferenceDto1, bool) {
+func (o *RequestedItemStatus) GetRequestedForOk() (*AccessItemRequestedFor, bool) {
 	if o == nil || isNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -492,15 +492,15 @@ func (o *RequestedItemStatus) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given BaseReferenceDto1 and assigns it to the RequestedFor field.
-func (o *RequestedItemStatus) SetRequestedFor(v BaseReferenceDto1) {
+// SetRequestedFor gets a reference to the given AccessItemRequestedFor and assigns it to the RequestedFor field.
+func (o *RequestedItemStatus) SetRequestedFor(v AccessItemRequestedFor) {
 	o.RequestedFor = &v
 }
 
 // GetRequesterComment returns the RequesterComment field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetRequesterComment() CommentDto1 {
+func (o *RequestedItemStatus) GetRequesterComment() CommentDto {
 	if o == nil || isNil(o.RequesterComment) {
-		var ret CommentDto1
+		var ret CommentDto
 		return ret
 	}
 	return *o.RequesterComment
@@ -508,7 +508,7 @@ func (o *RequestedItemStatus) GetRequesterComment() CommentDto1 {
 
 // GetRequesterCommentOk returns a tuple with the RequesterComment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetRequesterCommentOk() (*CommentDto1, bool) {
+func (o *RequestedItemStatus) GetRequesterCommentOk() (*CommentDto, bool) {
 	if o == nil || isNil(o.RequesterComment) {
 		return nil, false
 	}
@@ -524,8 +524,8 @@ func (o *RequestedItemStatus) HasRequesterComment() bool {
 	return false
 }
 
-// SetRequesterComment gets a reference to the given CommentDto1 and assigns it to the RequesterComment field.
-func (o *RequestedItemStatus) SetRequesterComment(v CommentDto1) {
+// SetRequesterComment gets a reference to the given CommentDto and assigns it to the RequesterComment field.
+func (o *RequestedItemStatus) SetRequesterComment(v CommentDto) {
 	o.RequesterComment = &v
 }
 

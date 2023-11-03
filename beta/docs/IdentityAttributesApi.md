@@ -4,9 +4,211 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateIdentityAttribute**](IdentityAttributesApi.md#CreateIdentityAttribute) | **Post** /identity-attributes/{name} | Create Identity Attribute
+[**DeleteIdentityAttribute**](IdentityAttributesApi.md#DeleteIdentityAttribute) | **Delete** /identity-attributes/{name} | Delete Identity Attribute
+[**DeleteIdentityAttributesInBulk**](IdentityAttributesApi.md#DeleteIdentityAttributesInBulk) | **Post** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
 [**GetIdentityAttribute**](IdentityAttributesApi.md#GetIdentityAttribute) | **Get** /identity-attributes/{name} | Get Identity Attribute
 [**ListIdentityAttributes**](IdentityAttributesApi.md#ListIdentityAttributes) | **Get** /identity-attributes | List Identity Attributes
+[**PutIdentityAttribute**](IdentityAttributesApi.md#PutIdentityAttribute) | **Put** /identity-attributes/{name} | Update Identity Attribute
 
+
+
+## CreateIdentityAttribute
+
+> IdentityAttribute CreateIdentityAttribute(ctx).IdentityAttribute(identityAttribute).Execute()
+
+Create Identity Attribute
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    identityAttribute := *openapiclient.NewIdentityAttribute() // IdentityAttribute | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentityAttributesApi.CreateIdentityAttribute(context.Background()).IdentityAttribute(identityAttribute).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesApi.CreateIdentityAttribute``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateIdentityAttribute`: IdentityAttribute
+    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesApi.CreateIdentityAttribute`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateIdentityAttributeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identityAttribute** | [**IdentityAttribute**](IdentityAttribute.md) |  | 
+
+### Return type
+
+[**IdentityAttribute**](IdentityAttribute.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteIdentityAttribute
+
+> DeleteIdentityAttribute(ctx, name).Execute()
+
+Delete Identity Attribute
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "displayName" // string | The attribute's technical name.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentityAttributesApi.DeleteIdentityAttribute(context.Background(), name).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesApi.DeleteIdentityAttribute``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** | The attribute&#39;s technical name. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteIdentityAttributeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteIdentityAttributesInBulk
+
+> DeleteIdentityAttributesInBulk(ctx).IdentityAttributeNames(identityAttributeNames).Execute()
+
+Bulk delete Identity Attributes
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    identityAttributeNames := *openapiclient.NewIdentityAttributeNames() // IdentityAttributeNames | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentityAttributesApi.DeleteIdentityAttributesInBulk(context.Background()).IdentityAttributeNames(identityAttributeNames).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesApi.DeleteIdentityAttributesInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteIdentityAttributesInBulkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identityAttributeNames** | [**IdentityAttributeNames**](IdentityAttributeNames.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetIdentityAttribute
@@ -144,6 +346,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PutIdentityAttribute
+
+> IdentityAttribute PutIdentityAttribute(ctx, name).IdentityAttribute(identityAttribute).Execute()
+
+Update Identity Attribute
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "displayName" // string | The attribute's technical name.
+    identityAttribute := *openapiclient.NewIdentityAttribute() // IdentityAttribute | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentityAttributesApi.PutIdentityAttribute(context.Background(), name).IdentityAttribute(identityAttribute).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesApi.PutIdentityAttribute``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutIdentityAttribute`: IdentityAttribute
+    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesApi.PutIdentityAttribute`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** | The attribute&#39;s technical name. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutIdentityAttributeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **identityAttribute** | [**IdentityAttribute**](IdentityAttribute.md) |  | 
+
+### Return type
+
+[**IdentityAttribute**](IdentityAttribute.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

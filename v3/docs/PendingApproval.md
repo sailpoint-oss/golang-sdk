@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | When the approval was modified last time. | [optional] 
 **RequestCreated** | Pointer to **time.Time** | When the access-request was created. | [optional] 
 **RequestType** | Pointer to [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
-**Requester** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**RequestedFor** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
-**Owner** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**Requester** | Pointer to [**AccessItemRequester**](AccessItemRequester.md) |  | [optional] 
+**RequestedFor** | Pointer to [**AccessItemRequestedFor**](AccessItemRequestedFor.md) |  | [optional] 
+**Owner** | Pointer to [**PendingApprovalOwner**](PendingApprovalOwner.md) |  | [optional] 
 **RequestedObject** | Pointer to [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
 **RequesterComment** | Pointer to [**CommentDto**](CommentDto.md) |  | [optional] 
 **PreviousReviewersComments** | Pointer to [**[]CommentDto**](CommentDto.md) | The history of the previous reviewers comments. | [optional] 
@@ -195,20 +195,20 @@ HasRequestType returns a boolean if a field has been set.
 
 ### GetRequester
 
-`func (o *PendingApproval) GetRequester() BaseReferenceDto`
+`func (o *PendingApproval) GetRequester() AccessItemRequester`
 
 GetRequester returns the Requester field if non-nil, zero value otherwise.
 
 ### GetRequesterOk
 
-`func (o *PendingApproval) GetRequesterOk() (*BaseReferenceDto, bool)`
+`func (o *PendingApproval) GetRequesterOk() (*AccessItemRequester, bool)`
 
 GetRequesterOk returns a tuple with the Requester field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequester
 
-`func (o *PendingApproval) SetRequester(v BaseReferenceDto)`
+`func (o *PendingApproval) SetRequester(v AccessItemRequester)`
 
 SetRequester sets Requester field to given value.
 
@@ -220,20 +220,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *PendingApproval) GetRequestedFor() BaseReferenceDto`
+`func (o *PendingApproval) GetRequestedFor() AccessItemRequestedFor`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *PendingApproval) GetRequestedForOk() (*BaseReferenceDto, bool)`
+`func (o *PendingApproval) GetRequestedForOk() (*AccessItemRequestedFor, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *PendingApproval) SetRequestedFor(v BaseReferenceDto)`
+`func (o *PendingApproval) SetRequestedFor(v AccessItemRequestedFor)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
@@ -245,20 +245,20 @@ HasRequestedFor returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *PendingApproval) GetOwner() BaseReferenceDto`
+`func (o *PendingApproval) GetOwner() PendingApprovalOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *PendingApproval) GetOwnerOk() (*BaseReferenceDto, bool)`
+`func (o *PendingApproval) GetOwnerOk() (*PendingApprovalOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *PendingApproval) SetOwner(v BaseReferenceDto)`
+`func (o *PendingApproval) SetOwner(v PendingApprovalOwner)`
 
 SetOwner sets Owner field to given value.
 

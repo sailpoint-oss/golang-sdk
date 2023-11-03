@@ -17,13 +17,13 @@ import (
 // checks if the IdentityWithNewAccessAccessRefsInner type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IdentityWithNewAccessAccessRefsInner{}
 
-// IdentityWithNewAccessAccessRefsInner The types of objects supported for SOD violations
+// IdentityWithNewAccessAccessRefsInner Entitlement including a specific set of access.
 type IdentityWithNewAccessAccessRefsInner struct {
-	// The type of object that is referenced
-	Type map[string]interface{} `json:"type,omitempty"`
-	// ID of the object to which this reference applies
+	// Entitlement's DTO type.
+	Type *string `json:"type,omitempty"`
+	// Entitlement's ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the object to which this reference applies
+	// Entitlement's display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -48,19 +48,19 @@ func NewIdentityWithNewAccessAccessRefsInnerWithDefaults() *IdentityWithNewAcces
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *IdentityWithNewAccessAccessRefsInner) GetType() map[string]interface{} {
+func (o *IdentityWithNewAccessAccessRefsInner) GetType() string {
 	if o == nil || isNil(o.Type) {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
-	return o.Type
+	return *o.Type
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityWithNewAccessAccessRefsInner) GetTypeOk() (map[string]interface{}, bool) {
+func (o *IdentityWithNewAccessAccessRefsInner) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.Type, true
 }
@@ -74,9 +74,9 @@ func (o *IdentityWithNewAccessAccessRefsInner) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given map[string]interface{} and assigns it to the Type field.
-func (o *IdentityWithNewAccessAccessRefsInner) SetType(v map[string]interface{}) {
-	o.Type = v
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *IdentityWithNewAccessAccessRefsInner) SetType(v string) {
+	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.

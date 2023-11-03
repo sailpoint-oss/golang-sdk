@@ -29,6 +29,10 @@ type TypeAheadQuery struct {
 	MaxExpansions *int32 `json:"maxExpansions,omitempty"`
 	// The max amount of records the search will return.
 	Size *int32 `json:"size,omitempty"`
+	// The sort order of the returned records.
+	Sort *string `json:"sort,omitempty"`
+	// The flag that defines the sort type, by count or value.
+	SortByValue *bool `json:"sortByValue,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,6 +50,10 @@ func NewTypeAheadQuery(query string, field string) *TypeAheadQuery {
 	this.MaxExpansions = &maxExpansions
 	var size int32 = 100
 	this.Size = &size
+	var sort string = "desc"
+	this.Sort = &sort
+	var sortByValue bool = false
+	this.SortByValue = &sortByValue
 	return &this
 }
 
@@ -58,6 +66,10 @@ func NewTypeAheadQueryWithDefaults() *TypeAheadQuery {
 	this.MaxExpansions = &maxExpansions
 	var size int32 = 100
 	this.Size = &size
+	var sort string = "desc"
+	this.Sort = &sort
+	var sortByValue bool = false
+	this.SortByValue = &sortByValue
 	return &this
 }
 
@@ -205,6 +217,70 @@ func (o *TypeAheadQuery) SetSize(v int32) {
 	o.Size = &v
 }
 
+// GetSort returns the Sort field value if set, zero value otherwise.
+func (o *TypeAheadQuery) GetSort() string {
+	if o == nil || isNil(o.Sort) {
+		var ret string
+		return ret
+	}
+	return *o.Sort
+}
+
+// GetSortOk returns a tuple with the Sort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TypeAheadQuery) GetSortOk() (*string, bool) {
+	if o == nil || isNil(o.Sort) {
+		return nil, false
+	}
+	return o.Sort, true
+}
+
+// HasSort returns a boolean if a field has been set.
+func (o *TypeAheadQuery) HasSort() bool {
+	if o != nil && !isNil(o.Sort) {
+		return true
+	}
+
+	return false
+}
+
+// SetSort gets a reference to the given string and assigns it to the Sort field.
+func (o *TypeAheadQuery) SetSort(v string) {
+	o.Sort = &v
+}
+
+// GetSortByValue returns the SortByValue field value if set, zero value otherwise.
+func (o *TypeAheadQuery) GetSortByValue() bool {
+	if o == nil || isNil(o.SortByValue) {
+		var ret bool
+		return ret
+	}
+	return *o.SortByValue
+}
+
+// GetSortByValueOk returns a tuple with the SortByValue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TypeAheadQuery) GetSortByValueOk() (*bool, bool) {
+	if o == nil || isNil(o.SortByValue) {
+		return nil, false
+	}
+	return o.SortByValue, true
+}
+
+// HasSortByValue returns a boolean if a field has been set.
+func (o *TypeAheadQuery) HasSortByValue() bool {
+	if o != nil && !isNil(o.SortByValue) {
+		return true
+	}
+
+	return false
+}
+
+// SetSortByValue gets a reference to the given bool and assigns it to the SortByValue field.
+func (o *TypeAheadQuery) SetSortByValue(v bool) {
+	o.SortByValue = &v
+}
+
 func (o TypeAheadQuery) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -225,6 +301,12 @@ func (o TypeAheadQuery) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.Size) {
 		toSerialize["size"] = o.Size
+	}
+	if !isNil(o.Sort) {
+		toSerialize["sort"] = o.Sort
+	}
+	if !isNil(o.SortByValue) {
+		toSerialize["sortByValue"] = o.SortByValue
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -249,6 +331,8 @@ func (o *TypeAheadQuery) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "nestedType")
 		delete(additionalProperties, "maxExpansions")
 		delete(additionalProperties, "size")
+		delete(additionalProperties, "sort")
+		delete(additionalProperties, "sortByValue")
 		o.AdditionalProperties = additionalProperties
 	}
 

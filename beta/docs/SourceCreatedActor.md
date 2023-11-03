@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **map[string]interface{}** | The type of object that is referenced | 
-**Id** | **string** | ID of the object to which this reference applies | 
-**Name** | **string** | Human-readable display name of the object to which this reference applies | 
+**Type** | **string** | DTO type of identity who created the source. | 
+**Id** | **string** | ID of identity who created the source. | 
+**Name** | **string** | Display name of identity who created the source. | 
 
 ## Methods
 
 ### NewSourceCreatedActor
 
-`func NewSourceCreatedActor(type_ map[string]interface{}, id string, name string, ) *SourceCreatedActor`
+`func NewSourceCreatedActor(type_ string, id string, name string, ) *SourceCreatedActor`
 
 NewSourceCreatedActor instantiates a new SourceCreatedActor object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *SourceCreatedActor) GetType() map[string]interface{}`
+`func (o *SourceCreatedActor) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *SourceCreatedActor) GetTypeOk() (*map[string]interface{}, bool)`
+`func (o *SourceCreatedActor) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *SourceCreatedActor) SetType(v map[string]interface{})`
+`func (o *SourceCreatedActor) SetType(v string)`
 
 SetType sets Type field to given value.
 

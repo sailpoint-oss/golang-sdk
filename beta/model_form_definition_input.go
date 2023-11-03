@@ -19,14 +19,14 @@ var _ MappedNullable = &FormDefinitionInput{}
 
 // FormDefinitionInput struct for FormDefinitionInput
 type FormDefinitionInput struct {
-	// Description is the description for this form input value
-	Description *string `json:"description,omitempty"`
-	// ID is a unique identifier
+	// Unique identifier for the form input.
 	Id *string `json:"id,omitempty"`
-	// Label is the name for this form input value
-	Label *string `json:"label,omitempty"`
-	// Type is a FormDefinitionInputType value STRING FormDefinitionInputTypeString
+	// FormDefinitionInputType value. STRING FormDefinitionInputTypeString
 	Type *string `json:"type,omitempty"`
+	// Name for the form input.
+	Label *string `json:"label,omitempty"`
+	// Form input's description.
+	Description *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -47,38 +47,6 @@ func NewFormDefinitionInput() *FormDefinitionInput {
 func NewFormDefinitionInputWithDefaults() *FormDefinitionInput {
 	this := FormDefinitionInput{}
 	return &this
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *FormDefinitionInput) GetDescription() string {
-	if o == nil || isNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormDefinitionInput) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *FormDefinitionInput) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *FormDefinitionInput) SetDescription(v string) {
-	o.Description = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -113,38 +81,6 @@ func (o *FormDefinitionInput) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLabel returns the Label field value if set, zero value otherwise.
-func (o *FormDefinitionInput) GetLabel() string {
-	if o == nil || isNil(o.Label) {
-		var ret string
-		return ret
-	}
-	return *o.Label
-}
-
-// GetLabelOk returns a tuple with the Label field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormDefinitionInput) GetLabelOk() (*string, bool) {
-	if o == nil || isNil(o.Label) {
-		return nil, false
-	}
-	return o.Label, true
-}
-
-// HasLabel returns a boolean if a field has been set.
-func (o *FormDefinitionInput) HasLabel() bool {
-	if o != nil && !isNil(o.Label) {
-		return true
-	}
-
-	return false
-}
-
-// SetLabel gets a reference to the given string and assigns it to the Label field.
-func (o *FormDefinitionInput) SetLabel(v string) {
-	o.Label = &v
-}
-
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *FormDefinitionInput) GetType() string {
 	if o == nil || isNil(o.Type) {
@@ -177,6 +113,70 @@ func (o *FormDefinitionInput) SetType(v string) {
 	o.Type = &v
 }
 
+// GetLabel returns the Label field value if set, zero value otherwise.
+func (o *FormDefinitionInput) GetLabel() string {
+	if o == nil || isNil(o.Label) {
+		var ret string
+		return ret
+	}
+	return *o.Label
+}
+
+// GetLabelOk returns a tuple with the Label field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormDefinitionInput) GetLabelOk() (*string, bool) {
+	if o == nil || isNil(o.Label) {
+		return nil, false
+	}
+	return o.Label, true
+}
+
+// HasLabel returns a boolean if a field has been set.
+func (o *FormDefinitionInput) HasLabel() bool {
+	if o != nil && !isNil(o.Label) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabel gets a reference to the given string and assigns it to the Label field.
+func (o *FormDefinitionInput) SetLabel(v string) {
+	o.Label = &v
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *FormDefinitionInput) GetDescription() string {
+	if o == nil || isNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormDefinitionInput) GetDescriptionOk() (*string, bool) {
+	if o == nil || isNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *FormDefinitionInput) HasDescription() bool {
+	if o != nil && !isNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *FormDefinitionInput) SetDescription(v string) {
+	o.Description = &v
+}
+
 func (o FormDefinitionInput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -187,17 +187,17 @@ func (o FormDefinitionInput) MarshalJSON() ([]byte, error) {
 
 func (o FormDefinitionInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !isNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !isNil(o.Label) {
 		toSerialize["label"] = o.Label
 	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if !isNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -217,10 +217,10 @@ func (o *FormDefinitionInput) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "description")
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "label")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "label")
+		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties
 	}
 

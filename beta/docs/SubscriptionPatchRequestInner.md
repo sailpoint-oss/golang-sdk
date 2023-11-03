@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Op** | **string** | The operation to be performed | 
 **Path** | **string** | A string JSON Pointer representing the target path to an element to be affected by the operation | 
-**Value** | Pointer to [**JsonPatchOperationValue**](JsonPatchOperationValue.md) |  | [optional] 
+**Value** | Pointer to [**SubscriptionPatchRequestInnerValue**](SubscriptionPatchRequestInnerValue.md) |  | [optional] 
 
 ## Methods
 
@@ -69,20 +69,20 @@ SetPath sets Path field to given value.
 
 ### GetValue
 
-`func (o *SubscriptionPatchRequestInner) GetValue() JsonPatchOperationValue`
+`func (o *SubscriptionPatchRequestInner) GetValue() SubscriptionPatchRequestInnerValue`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *SubscriptionPatchRequestInner) GetValueOk() (*JsonPatchOperationValue, bool)`
+`func (o *SubscriptionPatchRequestInner) GetValueOk() (*SubscriptionPatchRequestInnerValue, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *SubscriptionPatchRequestInner) SetValue(v JsonPatchOperationValue)`
+`func (o *SubscriptionPatchRequestInner) SetValue(v SubscriptionPatchRequestInnerValue)`
 
 SetValue sets Value field to given value.
 

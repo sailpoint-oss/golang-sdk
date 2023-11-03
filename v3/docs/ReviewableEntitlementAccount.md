@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **NativeIdentity** | Pointer to **string** | The native identity for this account | [optional] 
-**Disabled** | Pointer to **bool** | Indicates whether this account is currently disabled | [optional] 
-**Locked** | Pointer to **bool** | Indicates whether this account is currently locked | [optional] 
+**Disabled** | Pointer to **bool** | Indicates whether this account is currently disabled | [optional] [default to false]
+**Locked** | Pointer to **bool** | Indicates whether this account is currently locked | [optional] [default to false]
 **Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
 **Id** | Pointer to **NullableString** | The id associated with the account | [optional] 
 **Name** | Pointer to **NullableString** | The account name | [optional] 

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | Pointer to **string** | Description is the description for this form input value | [optional] 
-**Id** | Pointer to **string** | ID is a unique identifier | [optional] 
-**Label** | Pointer to **string** | Label is the name for this form input value | [optional] 
-**Type** | Pointer to **string** | Type is a FormDefinitionInputType value STRING FormDefinitionInputTypeString | [optional] 
+**Id** | Pointer to **string** | Unique identifier for the form input. | [optional] 
+**Type** | Pointer to **string** | FormDefinitionInputType value. STRING FormDefinitionInputTypeString | [optional] 
+**Label** | Pointer to **string** | Name for the form input. | [optional] 
+**Description** | Pointer to **string** | Form input&#39;s description. | [optional] 
 
 ## Methods
 
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewFormDefinitionInputWithDefaults instantiates a new FormDefinitionInput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDescription
-
-`func (o *FormDefinitionInput) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *FormDefinitionInput) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *FormDefinitionInput) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *FormDefinitionInput) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 ### GetId
 
@@ -78,6 +53,31 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### GetType
+
+`func (o *FormDefinitionInput) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *FormDefinitionInput) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *FormDefinitionInput) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *FormDefinitionInput) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
 ### GetLabel
 
 `func (o *FormDefinitionInput) GetLabel() string`
@@ -103,30 +103,30 @@ SetLabel sets Label field to given value.
 
 HasLabel returns a boolean if a field has been set.
 
-### GetType
+### GetDescription
 
-`func (o *FormDefinitionInput) GetType() string`
+`func (o *FormDefinitionInput) GetDescription() string`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetDescription returns the Description field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetDescriptionOk
 
-`func (o *FormDefinitionInput) GetTypeOk() (*string, bool)`
+`func (o *FormDefinitionInput) GetDescriptionOk() (*string, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetDescription
 
-`func (o *FormDefinitionInput) SetType(v string)`
+`func (o *FormDefinitionInput) SetDescription(v string)`
 
-SetType sets Type field to given value.
+SetDescription sets Description field to given value.
 
-### HasType
+### HasDescription
 
-`func (o *FormDefinitionInput) HasType() bool`
+`func (o *FormDefinitionInput) HasDescription() bool`
 
-HasType returns a boolean if a field has been set.
+HasDescription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

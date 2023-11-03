@@ -214,13 +214,13 @@ func (r ApiGetCommonAccessRequest) Count(count bool) ApiGetCommonAccessRequest {
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407)  Filtering is supported for the following fields and operators:  **status**: *eq* \&quot;CONFIRMED\&quot; or \&quot;DENIED\&quot; **reviewedByUser** *eq* true or false **access.id**: *eq* \&quot;id\&quot; **access.type**: *eq* \&quot;ROLE\&quot; or \&quot;ACCESS_PROFILE\&quot; **access.name**: *sw* \&quot;Administrator\&quot; **access.description**: *sw* \&quot;admin\&quot;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **status**: *eq, sw*  **reviewedByUser** *eq*  **access.id**: *eq, sw*  **access.type**: *eq*  **access.name**: *sw, eq*  **access.description**: *sw, eq*
 func (r ApiGetCommonAccessRequest) Filters(filters string) ApiGetCommonAccessRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://community.sailpoint.com/t5/IdentityNow-Wiki/V3-API-Standard-Collection-Parameters/ta-p/156407)  Sorting is supported for the following fields: **access.name,status**  By default the common access items are sorted by name, ascending.
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **access.name, status**  By default the common access items are sorted by name, ascending.
 func (r ApiGetCommonAccessRequest) Sorters(sorters string) ApiGetCommonAccessRequest {
 	r.sorters = &sorters
 	return r

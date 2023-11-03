@@ -22,8 +22,8 @@ var _ MappedNullable = &CancelledRequestDetails{}
 type CancelledRequestDetails struct {
 	// Comment made by the owner when cancelling the associated request.
 	Comment *string `json:"comment,omitempty"`
-	Owner *BaseReferenceDto `json:"owner,omitempty"`
-	// Date comment was added by the owner when cancelling the associated request
+	Owner *OwnerDto `json:"owner,omitempty"`
+	// Date comment was added by the owner when cancelling the associated request.
 	Modified *time.Time `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -80,9 +80,9 @@ func (o *CancelledRequestDetails) SetComment(v string) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *CancelledRequestDetails) GetOwner() BaseReferenceDto {
+func (o *CancelledRequestDetails) GetOwner() OwnerDto {
 	if o == nil || isNil(o.Owner) {
-		var ret BaseReferenceDto
+		var ret OwnerDto
 		return ret
 	}
 	return *o.Owner
@@ -90,7 +90,7 @@ func (o *CancelledRequestDetails) GetOwner() BaseReferenceDto {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CancelledRequestDetails) GetOwnerOk() (*BaseReferenceDto, bool) {
+func (o *CancelledRequestDetails) GetOwnerOk() (*OwnerDto, bool) {
 	if o == nil || isNil(o.Owner) {
 		return nil, false
 	}
@@ -106,8 +106,8 @@ func (o *CancelledRequestDetails) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given BaseReferenceDto and assigns it to the Owner field.
-func (o *CancelledRequestDetails) SetOwner(v BaseReferenceDto) {
+// SetOwner gets a reference to the given OwnerDto and assigns it to the Owner field.
+func (o *CancelledRequestDetails) SetOwner(v OwnerDto) {
 	o.Owner = &v
 }
 

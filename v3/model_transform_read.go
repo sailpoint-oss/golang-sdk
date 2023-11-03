@@ -107,6 +107,7 @@ func (o *TransformRead) SetType(v string) {
 }
 
 // GetAttributes returns the Attributes field value
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
 func (o *TransformRead) GetAttributes() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
@@ -118,8 +119,9 @@ func (o *TransformRead) GetAttributes() map[string]interface{} {
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransformRead) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Attributes) {
 		return map[string]interface{}{}, false
 	}
 	return o.Attributes, true
@@ -190,7 +192,9 @@ func (o TransformRead) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["type"] = o.Type
-	toSerialize["attributes"] = o.Attributes
+	if o.Attributes != nil {
+		toSerialize["attributes"] = o.Attributes
+	}
 	toSerialize["id"] = o.Id
 	toSerialize["internal"] = o.Internal
 

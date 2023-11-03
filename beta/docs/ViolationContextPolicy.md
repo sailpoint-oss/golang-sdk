@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **map[string]interface{}** | The type of object that is referenced | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
+**Type** | Pointer to **map[string]interface{}** | The type of object supported for SOD policy violations. | [optional] 
+**Id** | Pointer to **string** | SOD policy ID. | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 
 ## Methods

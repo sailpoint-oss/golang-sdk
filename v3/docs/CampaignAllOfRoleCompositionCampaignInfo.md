@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Reviewer** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) | If specified, this identity or governance group will be the reviewer for all certifications in this campaign. The allowed DTO types are IDENTITY and GOVERNANCE_GROUP | [optional] 
+**Reviewer** | Pointer to [**CampaignAllOfSearchCampaignInfoReviewer**](CampaignAllOfSearchCampaignInfoReviewer.md) |  | [optional] 
 **RoleIds** | Pointer to **[]string** | Optional list of roles to include in this campaign. Only one of &#x60;roleIds&#x60; and &#x60;query&#x60; may be set; if neither are set, all roles are included. | [optional] 
 **RemediatorRef** | [**CampaignAllOfRoleCompositionCampaignInfoRemediatorRef**](CampaignAllOfRoleCompositionCampaignInfoRemediatorRef.md) |  | 
 **Query** | Pointer to **string** | Optional search query to scope this campaign to a set of roles. Only one of &#x60;roleIds&#x60; and &#x60;query&#x60; may be set; if neither are set, all roles are included. | [optional] 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetReviewer
 
-`func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewer() BaseReferenceDto`
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewer() CampaignAllOfSearchCampaignInfoReviewer`
 
 GetReviewer returns the Reviewer field if non-nil, zero value otherwise.
 
 ### GetReviewerOk
 
-`func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*BaseReferenceDto, bool)`
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*CampaignAllOfSearchCampaignInfoReviewer, bool)`
 
 GetReviewerOk returns a tuple with the Reviewer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReviewer
 
-`func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewer(v BaseReferenceDto)`
+`func (o *CampaignAllOfRoleCompositionCampaignInfo) SetReviewer(v CampaignAllOfSearchCampaignInfoReviewer)`
 
 SetReviewer sets Reviewer field to given value.
 

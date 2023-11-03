@@ -21,9 +21,9 @@ var _ MappedNullable = &AccessRequestPostApprovalRequestedItemsStatusInnerApprov
 type AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInnerApprover struct {
 	// The type of object that is referenced
 	Type map[string]interface{} `json:"type"`
-	// ID of the object to which this reference applies
+	// ID of identity who approved the access item request.
 	Id string `json:"id"`
-	// Human-readable display name of the object to which this reference applies
+	// Human-readable display name of identity who approved the access item request.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }

@@ -527,13 +527,13 @@ type ApiListIdentitiesRequest struct {
 	offset *int32
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **alias**: *eq, sw*  **firstname**: *eq, sw*  **lastname**: *eq, sw*  **email**: *eq, sw*  **cloudStatus**: *eq*  **processingState**: *eq*  **correlated**: *eq*  **protected**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, sw*  **alias**: *eq, sw*  **firstname**: *eq, sw*  **lastname**: *eq, sw*  **email**: *eq, sw*  **cloudStatus**: *eq*  **processingState**: *eq*  **correlated**: *eq*  **protected**: *eq*
 func (r ApiListIdentitiesRequest) Filters(filters string) ApiListIdentitiesRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/#sorting-results)  Sorting is supported for the following fields: **name, alias, cloudStatus**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, alias, cloudStatus**
 func (r ApiListIdentitiesRequest) Sorters(sorters string) ApiListIdentitiesRequest {
 	r.sorters = &sorters
 	return r
@@ -740,7 +740,7 @@ func (r ApiStartIdentityProcessingRequest) ProcessIdentitiesRequest(processIdent
 	return r
 }
 
-func (r ApiStartIdentityProcessingRequest) Execute() (*BaseReferenceDto, *http.Response, error) {
+func (r ApiStartIdentityProcessingRequest) Execute() (*TaskResultResponse, *http.Response, error) {
 	return r.ApiService.StartIdentityProcessingExecute(r)
 }
 
@@ -756,6 +756,8 @@ You could use this endpoint to:
 
 To learn more, refer to the [identity processing documentation](https://documentation.sailpoint.com/saas/help/setup/identity_processing.html).
 
+A token with ORG_ADMIN or HELPDESK authority is required to call this API.
+
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartIdentityProcessingRequest
@@ -768,13 +770,13 @@ func (a *IdentitiesApiService) StartIdentityProcessing(ctx context.Context) ApiS
 }
 
 // Execute executes the request
-//  @return BaseReferenceDto
-func (a *IdentitiesApiService) StartIdentityProcessingExecute(r ApiStartIdentityProcessingRequest) (*BaseReferenceDto, *http.Response, error) {
+//  @return TaskResultResponse
+func (a *IdentitiesApiService) StartIdentityProcessingExecute(r ApiStartIdentityProcessingRequest) (*TaskResultResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BaseReferenceDto
+		localVarReturnValue  *TaskResultResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesApiService.StartIdentityProcessing")

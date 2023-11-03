@@ -27,9 +27,15 @@ type RoleMiningEntitlement struct {
 	// The number of identities with this entitlement in a role.
 	IdentityCount *int32 `json:"identityCount,omitempty"`
 	// The % popularity of this entitlement in a role.
-	Popularity *int32 `json:"popularity,omitempty"`
-	// TThe % popularity of this entitlement in the org.
-	PopularityInOrg *int32 `json:"popularityInOrg,omitempty"`
+	Popularity *float32 `json:"popularity,omitempty"`
+	// The % popularity of this entitlement in the org.
+	PopularityInOrg *float32 `json:"popularityInOrg,omitempty"`
+	// The ID of the source/application.
+	SourceId *string `json:"sourceId,omitempty"`
+	// The status of activity data for the source.   Value is complete or notComplete.
+	ActivitySourceState NullableString `json:"activitySourceState,omitempty"`
+	// The percentage of identities in the potential role that have usage of the source/application of this entitlement.
+	SourceUsagePercent NullableFloat32 `json:"sourceUsagePercent,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -181,9 +187,9 @@ func (o *RoleMiningEntitlement) SetIdentityCount(v int32) {
 }
 
 // GetPopularity returns the Popularity field value if set, zero value otherwise.
-func (o *RoleMiningEntitlement) GetPopularity() int32 {
+func (o *RoleMiningEntitlement) GetPopularity() float32 {
 	if o == nil || isNil(o.Popularity) {
-		var ret int32
+		var ret float32
 		return ret
 	}
 	return *o.Popularity
@@ -191,7 +197,7 @@ func (o *RoleMiningEntitlement) GetPopularity() int32 {
 
 // GetPopularityOk returns a tuple with the Popularity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleMiningEntitlement) GetPopularityOk() (*int32, bool) {
+func (o *RoleMiningEntitlement) GetPopularityOk() (*float32, bool) {
 	if o == nil || isNil(o.Popularity) {
 		return nil, false
 	}
@@ -207,15 +213,15 @@ func (o *RoleMiningEntitlement) HasPopularity() bool {
 	return false
 }
 
-// SetPopularity gets a reference to the given int32 and assigns it to the Popularity field.
-func (o *RoleMiningEntitlement) SetPopularity(v int32) {
+// SetPopularity gets a reference to the given float32 and assigns it to the Popularity field.
+func (o *RoleMiningEntitlement) SetPopularity(v float32) {
 	o.Popularity = &v
 }
 
 // GetPopularityInOrg returns the PopularityInOrg field value if set, zero value otherwise.
-func (o *RoleMiningEntitlement) GetPopularityInOrg() int32 {
+func (o *RoleMiningEntitlement) GetPopularityInOrg() float32 {
 	if o == nil || isNil(o.PopularityInOrg) {
-		var ret int32
+		var ret float32
 		return ret
 	}
 	return *o.PopularityInOrg
@@ -223,7 +229,7 @@ func (o *RoleMiningEntitlement) GetPopularityInOrg() int32 {
 
 // GetPopularityInOrgOk returns a tuple with the PopularityInOrg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleMiningEntitlement) GetPopularityInOrgOk() (*int32, bool) {
+func (o *RoleMiningEntitlement) GetPopularityInOrgOk() (*float32, bool) {
 	if o == nil || isNil(o.PopularityInOrg) {
 		return nil, false
 	}
@@ -239,9 +245,125 @@ func (o *RoleMiningEntitlement) HasPopularityInOrg() bool {
 	return false
 }
 
-// SetPopularityInOrg gets a reference to the given int32 and assigns it to the PopularityInOrg field.
-func (o *RoleMiningEntitlement) SetPopularityInOrg(v int32) {
+// SetPopularityInOrg gets a reference to the given float32 and assigns it to the PopularityInOrg field.
+func (o *RoleMiningEntitlement) SetPopularityInOrg(v float32) {
 	o.PopularityInOrg = &v
+}
+
+// GetSourceId returns the SourceId field value if set, zero value otherwise.
+func (o *RoleMiningEntitlement) GetSourceId() string {
+	if o == nil || isNil(o.SourceId) {
+		var ret string
+		return ret
+	}
+	return *o.SourceId
+}
+
+// GetSourceIdOk returns a tuple with the SourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleMiningEntitlement) GetSourceIdOk() (*string, bool) {
+	if o == nil || isNil(o.SourceId) {
+		return nil, false
+	}
+	return o.SourceId, true
+}
+
+// HasSourceId returns a boolean if a field has been set.
+func (o *RoleMiningEntitlement) HasSourceId() bool {
+	if o != nil && !isNil(o.SourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceId gets a reference to the given string and assigns it to the SourceId field.
+func (o *RoleMiningEntitlement) SetSourceId(v string) {
+	o.SourceId = &v
+}
+
+// GetActivitySourceState returns the ActivitySourceState field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleMiningEntitlement) GetActivitySourceState() string {
+	if o == nil || isNil(o.ActivitySourceState.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ActivitySourceState.Get()
+}
+
+// GetActivitySourceStateOk returns a tuple with the ActivitySourceState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleMiningEntitlement) GetActivitySourceStateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ActivitySourceState.Get(), o.ActivitySourceState.IsSet()
+}
+
+// HasActivitySourceState returns a boolean if a field has been set.
+func (o *RoleMiningEntitlement) HasActivitySourceState() bool {
+	if o != nil && o.ActivitySourceState.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetActivitySourceState gets a reference to the given NullableString and assigns it to the ActivitySourceState field.
+func (o *RoleMiningEntitlement) SetActivitySourceState(v string) {
+	o.ActivitySourceState.Set(&v)
+}
+// SetActivitySourceStateNil sets the value for ActivitySourceState to be an explicit nil
+func (o *RoleMiningEntitlement) SetActivitySourceStateNil() {
+	o.ActivitySourceState.Set(nil)
+}
+
+// UnsetActivitySourceState ensures that no value is present for ActivitySourceState, not even an explicit nil
+func (o *RoleMiningEntitlement) UnsetActivitySourceState() {
+	o.ActivitySourceState.Unset()
+}
+
+// GetSourceUsagePercent returns the SourceUsagePercent field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RoleMiningEntitlement) GetSourceUsagePercent() float32 {
+	if o == nil || isNil(o.SourceUsagePercent.Get()) {
+		var ret float32
+		return ret
+	}
+	return *o.SourceUsagePercent.Get()
+}
+
+// GetSourceUsagePercentOk returns a tuple with the SourceUsagePercent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RoleMiningEntitlement) GetSourceUsagePercentOk() (*float32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SourceUsagePercent.Get(), o.SourceUsagePercent.IsSet()
+}
+
+// HasSourceUsagePercent returns a boolean if a field has been set.
+func (o *RoleMiningEntitlement) HasSourceUsagePercent() bool {
+	if o != nil && o.SourceUsagePercent.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceUsagePercent gets a reference to the given NullableFloat32 and assigns it to the SourceUsagePercent field.
+func (o *RoleMiningEntitlement) SetSourceUsagePercent(v float32) {
+	o.SourceUsagePercent.Set(&v)
+}
+// SetSourceUsagePercentNil sets the value for SourceUsagePercent to be an explicit nil
+func (o *RoleMiningEntitlement) SetSourceUsagePercentNil() {
+	o.SourceUsagePercent.Set(nil)
+}
+
+// UnsetSourceUsagePercent ensures that no value is present for SourceUsagePercent, not even an explicit nil
+func (o *RoleMiningEntitlement) UnsetSourceUsagePercent() {
+	o.SourceUsagePercent.Unset()
 }
 
 func (o RoleMiningEntitlement) MarshalJSON() ([]byte, error) {
@@ -272,6 +394,15 @@ func (o RoleMiningEntitlement) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.PopularityInOrg) {
 		toSerialize["popularityInOrg"] = o.PopularityInOrg
 	}
+	if !isNil(o.SourceId) {
+		toSerialize["sourceId"] = o.SourceId
+	}
+	if o.ActivitySourceState.IsSet() {
+		toSerialize["activitySourceState"] = o.ActivitySourceState.Get()
+	}
+	if o.SourceUsagePercent.IsSet() {
+		toSerialize["sourceUsagePercent"] = o.SourceUsagePercent.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -296,6 +427,9 @@ func (o *RoleMiningEntitlement) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "identityCount")
 		delete(additionalProperties, "popularity")
 		delete(additionalProperties, "popularityInOrg")
+		delete(additionalProperties, "sourceId")
+		delete(additionalProperties, "activitySourceState")
+		delete(additionalProperties, "sourceUsagePercent")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**CreateAccessRequest**](AccessRequestsApi.md#CreateAccessRequest) | **Post** /access-requests | Submit an Access Request
 [**GetAccessRequestConfig**](AccessRequestsApi.md#GetAccessRequestConfig) | **Get** /access-request-config | Get Access Request Configuration
 [**ListAccessRequestStatus**](AccessRequestsApi.md#ListAccessRequestStatus) | **Get** /access-request-status | Access Request Status
-[**UpdateAccessRequestConfig**](AccessRequestsApi.md#UpdateAccessRequestConfig) | **Put** /access-request-config | Update Access Request Configuration
+[**SetAccessRequestConfig**](AccessRequestsApi.md#SetAccessRequestConfig) | **Put** /access-request-config | Update Access Request Configuration
 
 
 
@@ -207,7 +207,7 @@ Other parameters are passed through a pointer to a apiGetAccessRequestConfigRequ
 
 ## ListAccessRequestStatus
 
-> []RequestedItemStatus ListAccessRequestStatus(ctx).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
+> []RequestedItemStatus ListAccessRequestStatus(ctx).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
 
 Access Request Status
 
@@ -229,15 +229,16 @@ func main() {
     requestedFor := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     requestedBy := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. (optional)
     regardingIdentity := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. (optional)
+    assignedTo := "2c9180877b2b6ea4017b2c545f971429" // string | Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user. (optional)
     count := false // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored. (optional) (default to false)
     limit := int32(100) // int32 | Max number of results to return. (optional) (default to 250)
     offset := int32(10) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. (optional)
-    filters := "accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in* (optional)
-    sorters := "created" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId** (optional)
+    filters := "accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw* (optional)
+    sorters := "created" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name** (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsApi.ListAccessRequestStatus(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccessRequestsApi.ListAccessRequestStatus(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsApi.ListAccessRequestStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -261,11 +262,12 @@ Name | Type | Description  | Notes
  **requestedFor** | **string** | Filter the results by the identity for which the requests were made. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | 
  **requestedBy** | **string** | Filter the results by the identity that made the requests. *me* indicates the current user. Mutually exclusive with *regarding-identity*. | 
  **regardingIdentity** | **string** | Filter the results by the specified identity which is either the requester or target of the requests. *me* indicates the current user. Mutually exclusive with *requested-for* and *requested-by*. | 
+ **assignedTo** | **string** | Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user. | 
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored. | [default to false]
  **limit** | **int32** | Max number of results to return. | [default to 250]
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. Defaults to 0 if not specified. | 
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in* | 
- **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId** | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw* | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name** | 
 
 ### Return type
 
@@ -285,9 +287,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateAccessRequestConfig
+## SetAccessRequestConfig
 
-> AccessRequestConfig UpdateAccessRequestConfig(ctx).AccessRequestConfig(accessRequestConfig).Execute()
+> AccessRequestConfig SetAccessRequestConfig(ctx).AccessRequestConfig(accessRequestConfig).Execute()
 
 Update Access Request Configuration
 
@@ -310,13 +312,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsApi.UpdateAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
+    resp, r, err := apiClient.AccessRequestsApi.SetAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsApi.UpdateAccessRequestConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsApi.SetAccessRequestConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdateAccessRequestConfig`: AccessRequestConfig
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsApi.UpdateAccessRequestConfig`: %v\n", resp)
+    // response from `SetAccessRequestConfig`: AccessRequestConfig
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsApi.SetAccessRequestConfig`: %v\n", resp)
 }
 ```
 
@@ -326,7 +328,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateAccessRequestConfigRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSetAccessRequestConfigRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -19,8 +19,7 @@ var _ MappedNullable = &RoleMiningSessionStatus{}
 
 // RoleMiningSessionStatus struct for RoleMiningSessionStatus
 type RoleMiningSessionStatus struct {
-	// The role mining session status. Can be one of these states - CREATED|UPDATED|IDENTITIES_OBTAINED|PRUNE_THRESHOLD_OBTAINED|POTENTIAL_ROLES_PROCESSING|POTENTIAL_ROLES_CREATED
-	State *string `json:"state,omitempty"`
+	State *RoleMiningSessionState `json:"state,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,9 +43,9 @@ func NewRoleMiningSessionStatusWithDefaults() *RoleMiningSessionStatus {
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *RoleMiningSessionStatus) GetState() string {
+func (o *RoleMiningSessionStatus) GetState() RoleMiningSessionState {
 	if o == nil || isNil(o.State) {
-		var ret string
+		var ret RoleMiningSessionState
 		return ret
 	}
 	return *o.State
@@ -54,7 +53,7 @@ func (o *RoleMiningSessionStatus) GetState() string {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleMiningSessionStatus) GetStateOk() (*string, bool) {
+func (o *RoleMiningSessionStatus) GetStateOk() (*RoleMiningSessionState, bool) {
 	if o == nil || isNil(o.State) {
 		return nil, false
 	}
@@ -70,8 +69,8 @@ func (o *RoleMiningSessionStatus) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *RoleMiningSessionStatus) SetState(v string) {
+// SetState gets a reference to the given RoleMiningSessionState and assigns it to the State field.
+func (o *RoleMiningSessionStatus) SetState(v RoleMiningSessionState) {
 	o.State = &v
 }
 

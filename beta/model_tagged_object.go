@@ -19,7 +19,7 @@ var _ MappedNullable = &TaggedObject{}
 
 // TaggedObject struct for TaggedObject
 type TaggedObject struct {
-	ObjectRef *BaseReferenceDto1 `json:"objectRef,omitempty"`
+	ObjectRef *TaggedObjectObjectRef `json:"objectRef,omitempty"`
 	// Labels to be applied to an Object
 	Tags []string `json:"tags,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -45,9 +45,9 @@ func NewTaggedObjectWithDefaults() *TaggedObject {
 }
 
 // GetObjectRef returns the ObjectRef field value if set, zero value otherwise.
-func (o *TaggedObject) GetObjectRef() BaseReferenceDto1 {
+func (o *TaggedObject) GetObjectRef() TaggedObjectObjectRef {
 	if o == nil || isNil(o.ObjectRef) {
-		var ret BaseReferenceDto1
+		var ret TaggedObjectObjectRef
 		return ret
 	}
 	return *o.ObjectRef
@@ -55,7 +55,7 @@ func (o *TaggedObject) GetObjectRef() BaseReferenceDto1 {
 
 // GetObjectRefOk returns a tuple with the ObjectRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TaggedObject) GetObjectRefOk() (*BaseReferenceDto1, bool) {
+func (o *TaggedObject) GetObjectRefOk() (*TaggedObjectObjectRef, bool) {
 	if o == nil || isNil(o.ObjectRef) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *TaggedObject) HasObjectRef() bool {
 	return false
 }
 
-// SetObjectRef gets a reference to the given BaseReferenceDto1 and assigns it to the ObjectRef field.
-func (o *TaggedObject) SetObjectRef(v BaseReferenceDto1) {
+// SetObjectRef gets a reference to the given TaggedObjectObjectRef and assigns it to the ObjectRef field.
+func (o *TaggedObject) SetObjectRef(v TaggedObjectObjectRef) {
 	o.ObjectRef = &v
 }
 

@@ -17,14 +17,14 @@ import (
 // checks if the FormCondition type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FormCondition{}
 
-// FormCondition FormCondition represent a form conditional
+// FormCondition Represent a form conditional.
 type FormCondition struct {
-	// Effects is a list of effects
-	Effects []ConditionEffect `json:"effects,omitempty"`
-	// RuleOperator is a ConditionRuleLogicalOperatorType value AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr
+	// ConditionRuleLogicalOperatorType value. AND ConditionRuleLogicalOperatorTypeAnd OR ConditionRuleLogicalOperatorTypeOr
 	RuleOperator *string `json:"ruleOperator,omitempty"`
-	// Rules is a list of rules
+	// List of rules.
 	Rules []ConditionRule `json:"rules,omitempty"`
+	// List of effects.
+	Effects []ConditionEffect `json:"effects,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -45,38 +45,6 @@ func NewFormCondition() *FormCondition {
 func NewFormConditionWithDefaults() *FormCondition {
 	this := FormCondition{}
 	return &this
-}
-
-// GetEffects returns the Effects field value if set, zero value otherwise.
-func (o *FormCondition) GetEffects() []ConditionEffect {
-	if o == nil || isNil(o.Effects) {
-		var ret []ConditionEffect
-		return ret
-	}
-	return o.Effects
-}
-
-// GetEffectsOk returns a tuple with the Effects field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FormCondition) GetEffectsOk() ([]ConditionEffect, bool) {
-	if o == nil || isNil(o.Effects) {
-		return nil, false
-	}
-	return o.Effects, true
-}
-
-// HasEffects returns a boolean if a field has been set.
-func (o *FormCondition) HasEffects() bool {
-	if o != nil && !isNil(o.Effects) {
-		return true
-	}
-
-	return false
-}
-
-// SetEffects gets a reference to the given []ConditionEffect and assigns it to the Effects field.
-func (o *FormCondition) SetEffects(v []ConditionEffect) {
-	o.Effects = v
 }
 
 // GetRuleOperator returns the RuleOperator field value if set, zero value otherwise.
@@ -143,6 +111,38 @@ func (o *FormCondition) SetRules(v []ConditionRule) {
 	o.Rules = v
 }
 
+// GetEffects returns the Effects field value if set, zero value otherwise.
+func (o *FormCondition) GetEffects() []ConditionEffect {
+	if o == nil || isNil(o.Effects) {
+		var ret []ConditionEffect
+		return ret
+	}
+	return o.Effects
+}
+
+// GetEffectsOk returns a tuple with the Effects field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FormCondition) GetEffectsOk() ([]ConditionEffect, bool) {
+	if o == nil || isNil(o.Effects) {
+		return nil, false
+	}
+	return o.Effects, true
+}
+
+// HasEffects returns a boolean if a field has been set.
+func (o *FormCondition) HasEffects() bool {
+	if o != nil && !isNil(o.Effects) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffects gets a reference to the given []ConditionEffect and assigns it to the Effects field.
+func (o *FormCondition) SetEffects(v []ConditionEffect) {
+	o.Effects = v
+}
+
 func (o FormCondition) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -153,14 +153,14 @@ func (o FormCondition) MarshalJSON() ([]byte, error) {
 
 func (o FormCondition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Effects) {
-		toSerialize["effects"] = o.Effects
-	}
 	if !isNil(o.RuleOperator) {
 		toSerialize["ruleOperator"] = o.RuleOperator
 	}
 	if !isNil(o.Rules) {
 		toSerialize["rules"] = o.Rules
+	}
+	if !isNil(o.Effects) {
+		toSerialize["effects"] = o.Effects
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -180,9 +180,9 @@ func (o *FormCondition) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "effects")
 		delete(additionalProperties, "ruleOperator")
 		delete(additionalProperties, "rules")
+		delete(additionalProperties, "effects")
 		o.AdditionalProperties = additionalProperties
 	}
 

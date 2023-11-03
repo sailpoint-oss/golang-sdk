@@ -17,7 +17,7 @@ import (
 // checks if the TaggedObject type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TaggedObject{}
 
-// TaggedObject struct for TaggedObject
+// TaggedObject Tagged object.
 type TaggedObject struct {
 	ObjectRef *TaggedObjectDto `json:"objectRef,omitempty"`
 	// Labels to be applied to an Object

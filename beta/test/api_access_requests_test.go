@@ -82,11 +82,11 @@ func Test_beta_AccessRequestsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessRequestsApiService UpdateAccessRequestConfig", func(t *testing.T) {
+	t.Run("Test AccessRequestsApiService SetAccessRequestConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.AccessRequestsApi.UpdateAccessRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.AccessRequestsApi.SetAccessRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

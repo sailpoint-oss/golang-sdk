@@ -12,105 +12,65 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
-// checks if the RoleMiningSessionScopingMethod type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RoleMiningSessionScopingMethod{}
+// RoleMiningSessionScopingMethod The scoping method used in the current role mining session.
+type RoleMiningSessionScopingMethod string
 
-// RoleMiningSessionScopingMethod struct for RoleMiningSessionScopingMethod
-type RoleMiningSessionScopingMethod struct {
-	// The scoping method used in the current role mining session. Can be one of these states - MANUAL|AUTO_RM
-	State *string `json:"state,omitempty"`
-	AdditionalProperties map[string]interface{}
+// List of RoleMiningSessionScopingMethod
+const (
+	ROLEMININGSESSIONSCOPINGMETHOD_MANUAL RoleMiningSessionScopingMethod = "MANUAL"
+	ROLEMININGSESSIONSCOPINGMETHOD_AUTO_RM RoleMiningSessionScopingMethod = "AUTO_RM"
+)
+
+// All allowed values of RoleMiningSessionScopingMethod enum
+var AllowedRoleMiningSessionScopingMethodEnumValues = []RoleMiningSessionScopingMethod{
+	"MANUAL",
+	"AUTO_RM",
 }
 
-type _RoleMiningSessionScopingMethod RoleMiningSessionScopingMethod
-
-// NewRoleMiningSessionScopingMethod instantiates a new RoleMiningSessionScopingMethod object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewRoleMiningSessionScopingMethod() *RoleMiningSessionScopingMethod {
-	this := RoleMiningSessionScopingMethod{}
-	return &this
-}
-
-// NewRoleMiningSessionScopingMethodWithDefaults instantiates a new RoleMiningSessionScopingMethod object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewRoleMiningSessionScopingMethodWithDefaults() *RoleMiningSessionScopingMethod {
-	this := RoleMiningSessionScopingMethod{}
-	return &this
-}
-
-// GetState returns the State field value if set, zero value otherwise.
-func (o *RoleMiningSessionScopingMethod) GetState() string {
-	if o == nil || isNil(o.State) {
-		var ret string
-		return ret
+func (v *RoleMiningSessionScopingMethod) UnmarshalJSON(src []byte) error {
+	var value string
+	err := json.Unmarshal(src, &value)
+	if err != nil {
+		return err
 	}
-	return *o.State
-}
-
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RoleMiningSessionScopingMethod) GetStateOk() (*string, bool) {
-	if o == nil || isNil(o.State) {
-		return nil, false
-	}
-	return o.State, true
-}
-
-// HasState returns a boolean if a field has been set.
-func (o *RoleMiningSessionScopingMethod) HasState() bool {
-	if o != nil && !isNil(o.State) {
-		return true
+	enumTypeValue := RoleMiningSessionScopingMethod(value)
+	for _, existing := range AllowedRoleMiningSessionScopingMethodEnumValues {
+		if existing == enumTypeValue {
+			*v = enumTypeValue
+			return nil
+		}
 	}
 
+	return fmt.Errorf("%+v is not a valid RoleMiningSessionScopingMethod", value)
+}
+
+// NewRoleMiningSessionScopingMethodFromValue returns a pointer to a valid RoleMiningSessionScopingMethod
+// for the value passed as argument, or an error if the value passed is not allowed by the enum
+func NewRoleMiningSessionScopingMethodFromValue(v string) (*RoleMiningSessionScopingMethod, error) {
+	ev := RoleMiningSessionScopingMethod(v)
+	if ev.IsValid() {
+		return &ev, nil
+	} else {
+		return nil, fmt.Errorf("invalid value '%v' for RoleMiningSessionScopingMethod: valid values are %v", v, AllowedRoleMiningSessionScopingMethodEnumValues)
+	}
+}
+
+// IsValid return true if the value is valid for the enum, false otherwise
+func (v RoleMiningSessionScopingMethod) IsValid() bool {
+	for _, existing := range AllowedRoleMiningSessionScopingMethodEnumValues {
+		if existing == v {
+			return true
+		}
+	}
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *RoleMiningSessionScopingMethod) SetState(v string) {
-	o.State = &v
-}
-
-func (o RoleMiningSessionScopingMethod) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o RoleMiningSessionScopingMethod) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.State) {
-		toSerialize["state"] = o.State
-	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
-	return toSerialize, nil
-}
-
-func (o *RoleMiningSessionScopingMethod) UnmarshalJSON(bytes []byte) (err error) {
-	varRoleMiningSessionScopingMethod := _RoleMiningSessionScopingMethod{}
-
-	if err = json.Unmarshal(bytes, &varRoleMiningSessionScopingMethod); err == nil {
-		*o = RoleMiningSessionScopingMethod(varRoleMiningSessionScopingMethod)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "state")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
+// Ptr returns reference to RoleMiningSessionScopingMethod value
+func (v RoleMiningSessionScopingMethod) Ptr() *RoleMiningSessionScopingMethod {
+	return &v
 }
 
 type NullableRoleMiningSessionScopingMethod struct {
@@ -148,5 +108,4 @@ func (v *NullableRoleMiningSessionScopingMethod) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
 

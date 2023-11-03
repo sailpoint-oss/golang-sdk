@@ -19,7 +19,7 @@ var _ MappedNullable = &ReportResultReferenceAllOf{}
 
 // ReportResultReferenceAllOf struct for ReportResultReferenceAllOf
 type ReportResultReferenceAllOf struct {
-	// Status of a violation report
+	// Status of a SOD policy violation report.
 	Status *string `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

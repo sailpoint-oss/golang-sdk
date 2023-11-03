@@ -19,12 +19,13 @@ var _ MappedNullable = &ReportResultReference{}
 
 // ReportResultReference struct for ReportResultReference
 type ReportResultReference struct {
-	Type *DtoType `json:"type,omitempty"`
-	// ID of the object to which this reference applies
+	// SOD policy violation report result DTO type.
+	Type *string `json:"type,omitempty"`
+	// SOD policy violation report result ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the object to which this reference applies
+	// Human-readable name of the SOD policy violation report result.
 	Name *string `json:"name,omitempty"`
-	// Status of a violation report
+	// Status of a SOD policy violation report.
 	Status *string `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -49,9 +50,9 @@ func NewReportResultReferenceWithDefaults() *ReportResultReference {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *ReportResultReference) GetType() DtoType {
+func (o *ReportResultReference) GetType() string {
 	if o == nil || isNil(o.Type) {
-		var ret DtoType
+		var ret string
 		return ret
 	}
 	return *o.Type
@@ -59,7 +60,7 @@ func (o *ReportResultReference) GetType() DtoType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ReportResultReference) GetTypeOk() (*DtoType, bool) {
+func (o *ReportResultReference) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
@@ -75,8 +76,8 @@ func (o *ReportResultReference) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *ReportResultReference) SetType(v DtoType) {
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *ReportResultReference) SetType(v string) {
 	o.Type = &v
 }
 

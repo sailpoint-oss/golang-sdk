@@ -183,13 +183,13 @@ func Test_v3_SODPolicyApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODPolicyApiService SetPolicySchedule", func(t *testing.T) {
+	t.Run("Test SODPolicyApiService PutPolicySchedule", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.SODPolicyApi.SetPolicySchedule(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SODPolicyApi.PutPolicySchedule(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -197,13 +197,13 @@ func Test_v3_SODPolicyApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODPolicyApiService SetSodPolicy", func(t *testing.T) {
+	t.Run("Test SODPolicyApiService PutSodPolicy", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.SODPolicyApi.SetSodPolicy(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.SODPolicyApi.PutSodPolicy(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

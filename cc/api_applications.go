@@ -34,7 +34,7 @@ func (r ApiCreateApplicationRequest) CreateApplicationRequest(createApplicationR
 	return r
 }
 
-func (r ApiCreateApplicationRequest) Execute() (*http.Response, error) {
+func (r ApiCreateApplicationRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CreateApplicationExecute(r)
 }
 
@@ -52,16 +52,18 @@ func (a *ApplicationsApiService) CreateApplication(ctx context.Context) ApiCreat
 }
 
 // Execute executes the request
-func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplicationRequest) (*http.Response, error) {
+//  @return map[string]interface{}
+func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplicationRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.CreateApplication")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/cc/api/app/create"
@@ -91,19 +93,19 @@ func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplication
 	localVarPostBody = r.createApplicationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -111,10 +113,19 @@ func (a *ApplicationsApiService) CreateApplicationExecute(r ApiCreateApplication
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiDeleteApplicationRequest struct {
@@ -213,7 +224,7 @@ type ApiGetApplicationRequest struct {
 	id string
 }
 
-func (r ApiGetApplicationRequest) Execute() (*ListApplications200ResponseInner, *http.Response, error) {
+func (r ApiGetApplicationRequest) Execute() (*GetApplication200Response, *http.Response, error) {
 	return r.ApiService.GetApplicationExecute(r)
 }
 
@@ -233,13 +244,13 @@ func (a *ApplicationsApiService) GetApplication(ctx context.Context, id string) 
 }
 
 // Execute executes the request
-//  @return ListApplications200ResponseInner
-func (a *ApplicationsApiService) GetApplicationExecute(r ApiGetApplicationRequest) (*ListApplications200ResponseInner, *http.Response, error) {
+//  @return GetApplication200Response
+func (a *ApplicationsApiService) GetApplicationExecute(r ApiGetApplicationRequest) (*GetApplication200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListApplications200ResponseInner
+		localVarReturnValue  *GetApplication200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetApplication")
@@ -314,7 +325,7 @@ type ApiGetApplicationAccessProfilesRequest struct {
 	id string
 }
 
-func (r ApiGetApplicationAccessProfilesRequest) Execute() (*http.Response, error) {
+func (r ApiGetApplicationAccessProfilesRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.GetApplicationAccessProfilesExecute(r)
 }
 
@@ -334,16 +345,18 @@ func (a *ApplicationsApiService) GetApplicationAccessProfiles(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *ApplicationsApiService) GetApplicationAccessProfilesExecute(r ApiGetApplicationAccessProfilesRequest) (*http.Response, error) {
+//  @return map[string]interface{}
+func (a *ApplicationsApiService) GetApplicationAccessProfilesExecute(r ApiGetApplicationAccessProfilesRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.GetApplicationAccessProfiles")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/cc/api/app/getAccessProfiles/{id}"
@@ -372,19 +385,19 @@ func (a *ApplicationsApiService) GetApplicationAccessProfilesExecute(r ApiGetApp
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -392,10 +405,19 @@ func (a *ApplicationsApiService) GetApplicationAccessProfilesExecute(r ApiGetApp
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiListApplicationsRequest struct {
@@ -499,15 +521,15 @@ type ApiUpdateApplicationRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApiService
 	id string
-	updateApplicationRequest *UpdateApplicationRequest
+	requestBody *map[string]interface{}
 }
 
-func (r ApiUpdateApplicationRequest) UpdateApplicationRequest(updateApplicationRequest UpdateApplicationRequest) ApiUpdateApplicationRequest {
-	r.updateApplicationRequest = &updateApplicationRequest
+func (r ApiUpdateApplicationRequest) RequestBody(requestBody map[string]interface{}) ApiUpdateApplicationRequest {
+	r.requestBody = &requestBody
 	return r
 }
 
-func (r ApiUpdateApplicationRequest) Execute() (*http.Response, error) {
+func (r ApiUpdateApplicationRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.UpdateApplicationExecute(r)
 }
 
@@ -527,16 +549,18 @@ func (a *ApplicationsApiService) UpdateApplication(ctx context.Context, id strin
 }
 
 // Execute executes the request
-func (a *ApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplicationRequest) (*http.Response, error) {
+//  @return map[string]interface{}
+func (a *ApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplicationRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationsApiService.UpdateApplication")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/cc/api/app/update/{id}"
@@ -564,22 +588,22 @@ func (a *ApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplication
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.updateApplicationRequest
+	localVarPostBody = r.requestBody
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -587,8 +611,17 @@ func (a *ApplicationsApiService) UpdateApplicationExecute(r ApiUpdateApplication
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

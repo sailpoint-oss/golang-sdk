@@ -17,13 +17,13 @@ import (
 // checks if the AccessRequestPostApprovalRequestedBy type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccessRequestPostApprovalRequestedBy{}
 
-// AccessRequestPostApprovalRequestedBy The identity that initiated the access request.
+// AccessRequestPostApprovalRequestedBy struct for AccessRequestPostApprovalRequestedBy
 type AccessRequestPostApprovalRequestedBy struct {
-	// The type of object that is referenced
-	Type map[string]interface{} `json:"type"`
-	// ID of the object to which this reference applies
+	// Access item requester's DTO type.
+	Type string `json:"type"`
+	// Access item requester's identity ID.
 	Id string `json:"id"`
-	// Human-readable display name of the object to which this reference applies
+	// Access item owner's human-readable display name.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,7 +34,7 @@ type _AccessRequestPostApprovalRequestedBy AccessRequestPostApprovalRequestedBy
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessRequestPostApprovalRequestedBy(type_ map[string]interface{}, id string, name string) *AccessRequestPostApprovalRequestedBy {
+func NewAccessRequestPostApprovalRequestedBy(type_ string, id string, name string) *AccessRequestPostApprovalRequestedBy {
 	this := AccessRequestPostApprovalRequestedBy{}
 	this.Type = type_
 	this.Id = id
@@ -51,9 +51,9 @@ func NewAccessRequestPostApprovalRequestedByWithDefaults() *AccessRequestPostApp
 }
 
 // GetType returns the Type field value
-func (o *AccessRequestPostApprovalRequestedBy) GetType() map[string]interface{} {
+func (o *AccessRequestPostApprovalRequestedBy) GetType() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -62,15 +62,15 @@ func (o *AccessRequestPostApprovalRequestedBy) GetType() map[string]interface{} 
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AccessRequestPostApprovalRequestedBy) GetTypeOk() (map[string]interface{}, bool) {
+func (o *AccessRequestPostApprovalRequestedBy) GetTypeOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
 // SetType sets field value
-func (o *AccessRequestPostApprovalRequestedBy) SetType(v map[string]interface{}) {
+func (o *AccessRequestPostApprovalRequestedBy) SetType(v string) {
 	o.Type = v
 }
 

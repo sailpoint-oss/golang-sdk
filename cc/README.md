@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 *ConnectorsApi* | [**ListConnectors**](docs/ConnectorsApi.md#listconnectors) | **Get** /cc/api/connector/list | List Connectors
 *SourcesAccountsApi* | [**ExportAccountFeed**](docs/SourcesAccountsApi.md#exportaccountfeed) | **Get** /cc/api/source/exportAccountFeed/{id} | Export Account Feed
 *SourcesAggregationApi* | [**LoadAccounts**](docs/SourcesAggregationApi.md#loadaccounts) | **Post** /cc/api/source/loadAccounts/{id} | Account Aggregation (File)
+*SourcesAggregationApi* | [**LoadEntitlements**](docs/SourcesAggregationApi.md#loadentitlements) | **Post** /cc/api/source/loadEntitlements/{id} | Account Aggregation (File)
 *SystemApi* | [**RefreshIdentities**](docs/SystemApi.md#refreshidentities) | **Post** /cc/api/system/refreshIdentities | Refresh Identities
 *UserApi* | [**GetIdentity**](docs/UserApi.md#getidentity) | **Get** /cc/api/user/get/{id} | Get Single Identity
 *UserApi* | [**UpdateUserPermissions**](docs/UserApi.md#updateuserpermissions) | **Post** /cc/api/user/updatePermissions | Update User Permissions
@@ -102,19 +103,24 @@ Class | Method | HTTP request | Description
 
  - [CreateApplicationRequest](docs/CreateApplicationRequest.md)
  - [CreateConnectorRequest](docs/CreateConnectorRequest.md)
+ - [GetApplication200Response](docs/GetApplication200Response.md)
  - [GetIdentity200Response](docs/GetIdentity200Response.md)
  - [GetIdentity200ResponseAuth](docs/GetIdentity200ResponseAuth.md)
  - [GetIdentity200ResponseOrg](docs/GetIdentity200ResponseOrg.md)
  - [ImportConnectorConfigRequest](docs/ImportConnectorConfigRequest.md)
+ - [ListAccounts200ResponseInner](docs/ListAccounts200ResponseInner.md)
+ - [ListAccounts200ResponseInnerPasswordChangeResult](docs/ListAccounts200ResponseInnerPasswordChangeResult.md)
  - [ListApplications200ResponseInner](docs/ListApplications200ResponseInner.md)
  - [ListApplications200ResponseInnerAccountServicePoliciesInner](docs/ListApplications200ResponseInnerAccountServicePoliciesInner.md)
  - [ListApplications200ResponseInnerAppProfilesInner](docs/ListApplications200ResponseInnerAppProfilesInner.md)
  - [ListApplications200ResponseInnerHealth](docs/ListApplications200ResponseInnerHealth.md)
  - [ListApplications200ResponseInnerOwner](docs/ListApplications200ResponseInnerOwner.md)
+ - [ListConnectors200Response](docs/ListConnectors200Response.md)
+ - [ListConnectors200ResponseItemsInner](docs/ListConnectors200ResponseItemsInner.md)
  - [LoadAccountsRequest](docs/LoadAccountsRequest.md)
+ - [LoadEntitlementsRequest](docs/LoadEntitlementsRequest.md)
  - [RefreshIdentitiesRequest](docs/RefreshIdentitiesRequest.md)
  - [RefreshIdentitiesRequestRefreshArgs](docs/RefreshIdentitiesRequestRefreshArgs.md)
- - [UpdateApplicationRequest](docs/UpdateApplicationRequest.md)
  - [UpdateUserPermissionsRequest](docs/UpdateUserPermissionsRequest.md)
 
 

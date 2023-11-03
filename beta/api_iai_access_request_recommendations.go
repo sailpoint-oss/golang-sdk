@@ -725,7 +725,7 @@ func (r ApiGetAccessRequestRecommendationsRequest) IncludeTranslationMessages(in
 	return r
 }
 
-// Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.name**: *co*  **access.type**: *eq, in*  **access.description**: *co*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.name**: *co*  **access.type**: *eq, in*  **access.description**: *co, eq, in*
 func (r ApiGetAccessRequestRecommendationsRequest) Filters(filters string) ApiGetAccessRequestRecommendationsRequest {
 	r.filters = &filters
 	return r
@@ -934,7 +934,7 @@ func (r ApiGetAccessRequestRecommendationsIgnoredItemsRequest) Count(count bool)
 	return r
 }
 
-// Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*
 func (r ApiGetAccessRequestRecommendationsIgnoredItemsRequest) Filters(filters string) ApiGetAccessRequestRecommendationsIgnoredItemsRequest {
 	r.filters = &filters
 	return r
@@ -1137,7 +1137,7 @@ func (r ApiGetAccessRequestRecommendationsRequestedItemsRequest) Count(count boo
 	return r
 }
 
-// Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*
 func (r ApiGetAccessRequestRecommendationsRequestedItemsRequest) Filters(filters string) ApiGetAccessRequestRecommendationsRequestedItemsRequest {
 	r.filters = &filters
 	return r
@@ -1340,7 +1340,7 @@ func (r ApiGetAccessRequestRecommendationsViewedItemsRequest) Count(count bool) 
 	return r
 }
 
-// Filter recommendations using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **access.id**: *eq, in*  **access.type**: *eq, in*  **identityId**: *eq, in*
 func (r ApiGetAccessRequestRecommendationsViewedItemsRequest) Filters(filters string) ApiGetAccessRequestRecommendationsViewedItemsRequest {
 	r.filters = &filters
 	return r

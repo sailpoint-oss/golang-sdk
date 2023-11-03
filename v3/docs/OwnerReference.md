@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
+**Type** | Pointer to **string** | Owner type. This field must be either left null or set to &#39;IDENTITY&#39; on input, otherwise a 400 Bad Request error will result. | [optional] 
 **Id** | Pointer to **string** | Identity id | [optional] 
 **Name** | Pointer to **string** | Human-readable display name of the owner. It may be left null or omitted in a POST or PATCH. If set, it must match the current value of the owner&#39;s display name, otherwise a 400 Bad Request error will result. | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *OwnerReference) GetType() DtoType`
+`func (o *OwnerReference) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *OwnerReference) GetTypeOk() (*DtoType, bool)`
+`func (o *OwnerReference) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *OwnerReference) SetType(v DtoType)`
+`func (o *OwnerReference) SetType(v string)`
 
 SetType sets Type field to given value.
 

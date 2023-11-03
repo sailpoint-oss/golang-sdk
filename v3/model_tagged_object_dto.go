@@ -19,7 +19,8 @@ var _ MappedNullable = &TaggedObjectDto{}
 
 // TaggedObjectDto struct for TaggedObjectDto
 type TaggedObjectDto struct {
-	Type *DtoType `json:"type,omitempty"`
+	// DTO type
+	Type *string `json:"type,omitempty"`
 	// ID of the object to which this reference applies
 	Id *string `json:"id,omitempty"`
 	// Human-readable display name of the object to which this reference applies
@@ -47,9 +48,9 @@ func NewTaggedObjectDtoWithDefaults() *TaggedObjectDto {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *TaggedObjectDto) GetType() DtoType {
+func (o *TaggedObjectDto) GetType() string {
 	if o == nil || isNil(o.Type) {
-		var ret DtoType
+		var ret string
 		return ret
 	}
 	return *o.Type
@@ -57,7 +58,7 @@ func (o *TaggedObjectDto) GetType() DtoType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TaggedObjectDto) GetTypeOk() (*DtoType, bool) {
+func (o *TaggedObjectDto) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
@@ -73,8 +74,8 @@ func (o *TaggedObjectDto) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *TaggedObjectDto) SetType(v DtoType) {
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *TaggedObjectDto) SetType(v string) {
 	o.Type = &v
 }
 

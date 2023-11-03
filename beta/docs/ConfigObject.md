@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Version** | Pointer to **int32** | Current version of configuration object. | [optional] 
-**Self** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**Self** | Pointer to [**SelfImportExportDto**](SelfImportExportDto.md) |  | [optional] 
 **Object** | Pointer to **map[string]interface{}** | Object details. Format dependant on the object type. | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasVersion returns a boolean if a field has been set.
 
 ### GetSelf
 
-`func (o *ConfigObject) GetSelf() BaseReferenceDto1`
+`func (o *ConfigObject) GetSelf() SelfImportExportDto`
 
 GetSelf returns the Self field if non-nil, zero value otherwise.
 
 ### GetSelfOk
 
-`func (o *ConfigObject) GetSelfOk() (*BaseReferenceDto1, bool)`
+`func (o *ConfigObject) GetSelfOk() (*SelfImportExportDto, bool)`
 
 GetSelfOk returns a tuple with the Self field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSelf
 
-`func (o *ConfigObject) SetSelf(v BaseReferenceDto1)`
+`func (o *ConfigObject) SetSelf(v SelfImportExportDto)`
 
 SetSelf sets Self field to given value.
 

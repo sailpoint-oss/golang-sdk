@@ -17,13 +17,13 @@ import (
 // checks if the IdentityAttributesChangedIdentity type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IdentityAttributesChangedIdentity{}
 
-// IdentityAttributesChangedIdentity The identity who's attributes changed.
+// IdentityAttributesChangedIdentity Identity whose attributes changed.
 type IdentityAttributesChangedIdentity struct {
-	// The type of object that is referenced
-	Type map[string]interface{} `json:"type"`
-	// ID of the object to which this reference applies
+	// DTO type of identity whose attributes changed.
+	Type string `json:"type"`
+	// ID of identity whose attributes changed.
 	Id string `json:"id"`
-	// Human-readable display name of the object to which this reference applies
+	// Display name of identity whose attributes changed.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,7 +34,7 @@ type _IdentityAttributesChangedIdentity IdentityAttributesChangedIdentity
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityAttributesChangedIdentity(type_ map[string]interface{}, id string, name string) *IdentityAttributesChangedIdentity {
+func NewIdentityAttributesChangedIdentity(type_ string, id string, name string) *IdentityAttributesChangedIdentity {
 	this := IdentityAttributesChangedIdentity{}
 	this.Type = type_
 	this.Id = id
@@ -51,9 +51,9 @@ func NewIdentityAttributesChangedIdentityWithDefaults() *IdentityAttributesChang
 }
 
 // GetType returns the Type field value
-func (o *IdentityAttributesChangedIdentity) GetType() map[string]interface{} {
+func (o *IdentityAttributesChangedIdentity) GetType() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -62,15 +62,15 @@ func (o *IdentityAttributesChangedIdentity) GetType() map[string]interface{} {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *IdentityAttributesChangedIdentity) GetTypeOk() (map[string]interface{}, bool) {
+func (o *IdentityAttributesChangedIdentity) GetTypeOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
 // SetType sets field value
-func (o *IdentityAttributesChangedIdentity) SetType(v map[string]interface{}) {
+func (o *IdentityAttributesChangedIdentity) SetType(v string) {
 	o.Type = v
 }
 

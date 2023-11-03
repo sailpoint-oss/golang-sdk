@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **map[string]interface{}** | The type of object that is referenced | 
-**Id** | **string** | ID of the object to which this reference applies | 
-**Name** | **string** | Human-readable display name of the object to which this reference applies | 
+**Type** | **string** | Provisioning recipient DTO type. | 
+**Id** | **string** | Provisioning recipient&#39;s identity ID. | 
+**Name** | **string** | Provisioning recipient&#39;s display name. | 
 
 ## Methods
 
 ### NewProvisioningCompletedRecipient
 
-`func NewProvisioningCompletedRecipient(type_ map[string]interface{}, id string, name string, ) *ProvisioningCompletedRecipient`
+`func NewProvisioningCompletedRecipient(type_ string, id string, name string, ) *ProvisioningCompletedRecipient`
 
 NewProvisioningCompletedRecipient instantiates a new ProvisioningCompletedRecipient object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ProvisioningCompletedRecipient) GetType() map[string]interface{}`
+`func (o *ProvisioningCompletedRecipient) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ProvisioningCompletedRecipient) GetTypeOk() (*map[string]interface{}, bool)`
+`func (o *ProvisioningCompletedRecipient) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ProvisioningCompletedRecipient) SetType(v map[string]interface{})`
+`func (o *ProvisioningCompletedRecipient) SetType(v string)`
 
 SetType sets Type field to given value.
 

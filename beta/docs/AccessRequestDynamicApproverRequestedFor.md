@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **map[string]interface{}** | The type of object that is referenced | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
+**Type** | Pointer to **string** | DTO type of identity the access item is requested for. | [optional] 
+**Id** | Pointer to **string** | ID of identity the access item is requested for. | [optional] 
+**Name** | Pointer to **string** | Human-readable display name of identity the access item is requested for. | [optional] 
 
 ## Methods
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *AccessRequestDynamicApproverRequestedFor) GetType() map[string]interface{}`
+`func (o *AccessRequestDynamicApproverRequestedFor) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AccessRequestDynamicApproverRequestedFor) GetTypeOk() (*map[string]interface{}, bool)`
+`func (o *AccessRequestDynamicApproverRequestedFor) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AccessRequestDynamicApproverRequestedFor) SetType(v map[string]interface{})`
+`func (o *AccessRequestDynamicApproverRequestedFor) SetType(v string)`
 
 SetType sets Type field to given value.
 

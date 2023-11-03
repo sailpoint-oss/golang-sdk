@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessProfileId** | Pointer to **string** | ID of the Access Profile that is in use | [optional] 
-**UsedBy** | Pointer to [**[]BaseReferenceDto**](BaseReferenceDto.md) | List of references to objects which are using the indicated Access Profile | [optional] 
+**UsedBy** | Pointer to [**[]AccessProfileUsageUsedByInner**](AccessProfileUsageUsedByInner.md) | List of references to objects which are using the indicated Access Profile | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasAccessProfileId returns a boolean if a field has been set.
 
 ### GetUsedBy
 
-`func (o *AccessProfileUsage) GetUsedBy() []BaseReferenceDto`
+`func (o *AccessProfileUsage) GetUsedBy() []AccessProfileUsageUsedByInner`
 
 GetUsedBy returns the UsedBy field if non-nil, zero value otherwise.
 
 ### GetUsedByOk
 
-`func (o *AccessProfileUsage) GetUsedByOk() (*[]BaseReferenceDto, bool)`
+`func (o *AccessProfileUsage) GetUsedByOk() (*[]AccessProfileUsageUsedByInner, bool)`
 
 GetUsedByOk returns a tuple with the UsedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsedBy
 
-`func (o *AccessProfileUsage) SetUsedBy(v []BaseReferenceDto)`
+`func (o *AccessProfileUsage) SetUsedBy(v []AccessProfileUsageUsedByInner)`
 
 SetUsedBy sets UsedBy field to given value.
 

@@ -30,7 +30,11 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/listAccounts_200_response_inner'
+                type: array
           description: Successful response
       security:
       - UserContextAuth: []
@@ -93,7 +97,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/listApplications_200_response_inner'
+                $ref: '#/components/schemas/GetApplication_200_response'
           description: Successful response
       security:
       - UserContextAuth: []
@@ -115,7 +119,10 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
           description: Successful response
       summary: Get Access Profiles for Application
       tags:
@@ -131,7 +138,10 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
           description: Successful response
       security:
       - UserContextAuth: []
@@ -154,11 +164,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateApplication_request'
+              additionalProperties: true
+              type: object
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
           description: Successful response
       security:
       - UserContextAuth: []
@@ -193,7 +207,9 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listConnectors_200_response'
           description: Successful response
       security:
       - UserContextAuth: []
@@ -366,7 +382,49 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+          description: Successful response
+      security:
+      - UserContextAuth: []
+      summary: Account Aggregation (File)
+      tags:
+      - Sources > Aggregation
+  /cc/api/source/loadEntitlements/{id}:
+    post:
+      description: Aggregates a delimited file for the given source.  This only works
+        for file-based sources.
+      operationId: loadEntitlements
+      parameters:
+      - example: application/x-www-form-urlencoded
+        explode: false
+        in: header
+        name: Content-Type
+        required: false
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/loadEntitlements_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
           description: Successful response
       security:
       - UserContextAuth: []
@@ -430,7 +488,10 @@ paths:
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
           description: Successful response
       security:
       - UserContextAuth: []
@@ -606,6 +667,14 @@ components:
           format: binary
           type: string
       type: object
+    listAccounts_200_response_inner_passwordChangeResult:
+      example:
+        completionStatus: SUCCESS
+      properties:
+        completionStatus:
+          example: SUCCESS
+          type: string
+      type: object
     createConnector_request:
       properties:
         name:
@@ -624,12 +693,6 @@ components:
           example: released
           type: string
       type: object
-    UpdateApplication_request:
-      properties:
-        description:
-          format: This is my application
-          type: string
-      type: object
     listApplications_200_response_inner_accountServicePolicies_inner:
       example:
         policyId: policyId
@@ -641,6 +704,186 @@ components:
         policyName:
           type: string
         selectors:
+          type: object
+      type: object
+    GetApplication_200_response:
+      example:
+        xsdVersion: xsdVersion
+        usageCertText: "{}"
+        lastUpdated: 6.027456183070403
+        launcherCount: 5.637376656633329
+        supportedSsoMethods: 1.4658129805029452
+        appId: appId
+        stepUpAuthType: stepUpAuthType
+        id: id
+        provisionRequestEnabled: true
+        launchpadEnabled: true
+        selectedSsoMethod: selectedSsoMethod
+        offNetworkBlockedRoles: "{}"
+        accountServicePolicies:
+        - policyId: policyId
+          policyName: policyName
+          selectors: "{}"
+        - policyId: policyId
+          policyName: policyName
+          selectors: "{}"
+        serviceAppId: serviceAppId
+        stepUpAuthData: "{}"
+        usageCertRequired: true
+        privateApp: true
+        ssoMethod: ssoMethod
+        hasAutomations: true
+        name: name
+        scriptName: scriptName
+        accountServiceMatchAllAccounts: true
+        status: status
+        accountServicePolicyId: accountServicePolicyId
+        supportedOffNetwork: supportedOffNetwork
+        icon: icon
+        description: description
+        passwordServiceId: 2.3021358869347655
+        passwordManaged: true
+        accountServiceId: 5.962133916683182
+        appCenterEnabled: true
+        accountServiceName: accountServiceName
+        defaultAccessProfile: "{}"
+        dateCreated: 0.8008281904610115
+        enableSso: true
+        requireStrongAuthn: true
+        serviceId: serviceId
+        accountServicePolicyName: accountServicePolicyName
+        owner:
+          name: name
+          id: id
+        accessProfileIds: "{}"
+        mobile: true
+        health:
+          healthy: true
+          lastChanged: lastChanged
+          status: status
+          since: 0.8008281904610115
+        externalId: externalId
+        usageAnalytics: true
+        hasLinks: true
+        controlType: controlType
+        service: service
+        accountServiceUseForPasswordManagement: true
+        accountServiceExternalId: accountServiceExternalId
+        appProfiles:
+        - xsdVersion: xsdVersion
+          filename: filename
+          dateCreated: dateCreated
+          createdBy: createdBy
+          id: 7.061401241503109
+        - xsdVersion: xsdVersion
+          filename: filename
+          dateCreated: dateCreated
+          createdBy: createdBy
+          id: 7.061401241503109
+      properties:
+        id:
+          type: string
+        appId:
+          type: string
+        serviceId:
+          type: string
+        serviceAppId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        appCenterEnabled:
+          type: boolean
+        provisionRequestEnabled:
+          type: boolean
+        controlType:
+          type: string
+        mobile:
+          type: boolean
+        privateApp:
+          type: boolean
+        scriptName:
+          type: string
+        status:
+          type: string
+        icon:
+          type: string
+        health:
+          $ref: '#/components/schemas/listApplications_200_response_inner_health'
+        enableSso:
+          type: boolean
+        ssoMethod:
+          type: string
+        hasLinks:
+          type: boolean
+        hasAutomations:
+          type: boolean
+        stepUpAuthData:
+          type: object
+        stepUpAuthType:
+          type: string
+        usageAnalytics:
+          type: boolean
+        usageCertRequired:
+          type: boolean
+        usageCertText:
+          type: object
+        launchpadEnabled:
+          type: boolean
+        passwordManaged:
+          type: boolean
+        owner:
+          $ref: '#/components/schemas/listApplications_200_response_inner_owner'
+        dateCreated:
+          type: number
+        lastUpdated:
+          type: number
+        defaultAccessProfile:
+          type: object
+        service:
+          type: string
+        selectedSsoMethod:
+          type: string
+        supportedSsoMethods:
+          type: number
+        offNetworkBlockedRoles:
+          type: object
+        supportedOffNetwork:
+          type: string
+        accountServiceId:
+          type: number
+        launcherCount:
+          type: number
+        accountServiceName:
+          type: string
+        accountServiceExternalId:
+          type: string
+        accountServiceMatchAllAccounts:
+          type: boolean
+        externalId:
+          type: string
+        accountServiceUseForPasswordManagement:
+          type: boolean
+        accountServicePolicyId:
+          type: string
+        accountServicePolicyName:
+          type: string
+        requireStrongAuthn:
+          type: boolean
+        accountServicePolicies:
+          items:
+            $ref: '#/components/schemas/listApplications_200_response_inner_accountServicePolicies_inner'
+          type: array
+        xsdVersion:
+          type: string
+        appProfiles:
+          items:
+            $ref: '#/components/schemas/listApplications_200_response_inner_appProfiles_inner'
+          type: array
+        passwordServiceId:
+          type: number
+        accessProfileIds:
           type: object
       type: object
     updateUserPermissions_request:
@@ -680,6 +923,81 @@ components:
           type: number
         healthy:
           type: boolean
+      type: object
+    listConnectors_200_response_items_inner:
+      example:
+        applicationXml: applicationXml
+        uploadedFiles: []
+        translationProperties: "{}"
+        directConnect: true
+        className: className
+        fileUpload: true
+        type: ACF2 - Full
+        sourceConfigFrom: sourceConfigFrom
+        sourceConfig: sourceConfig
+        scope: global
+        correlationConfigXml: correlationConfigXml
+        name: ACF2
+        sourceConfigXml: sourceConfigXml
+        scriptName: acf2-angularsc
+        id: 8017
+        s3Location: s3Location
+        connectorMetadata: "{}"
+        status: RELEASED
+      properties:
+        applicationXml:
+          nullable: true
+          type: string
+        className:
+          nullable: true
+          type: string
+        connectorMetadata:
+          type: object
+        correlationConfigXml:
+          nullable: true
+          type: string
+        directConnect:
+          type: boolean
+        fileUpload:
+          type: boolean
+        id:
+          example: 8017
+          format: int32
+          type: integer
+        name:
+          example: ACF2
+          type: string
+        s3Location:
+          nullable: true
+          type: string
+        scope:
+          example: global
+          type: string
+        scriptName:
+          example: acf2-angularsc
+          type: string
+        sourceConfig:
+          nullable: true
+          type: string
+        sourceConfigFrom:
+          nullable: true
+          type: string
+        sourceConfigXml:
+          nullable: true
+          type: string
+        status:
+          example: RELEASED
+          type: string
+        translationProperties:
+          type: object
+        type:
+          example: ACF2 - Full
+          type: string
+        uploadedFiles:
+          example: []
+          items:
+            type: object
+          type: array
       type: object
     GetIdentity_200_response:
       example:
@@ -919,7 +1237,9 @@ components:
         owner:
           name: name
           id: id
-        accessProfileIds: "{}"
+        accessProfileIds:
+        - accessProfileIds
+        - accessProfileIds
         mobile: true
         health:
           healthy: true
@@ -1048,7 +1368,9 @@ components:
         passwordServiceId:
           type: number
         accessProfileIds:
-          type: object
+          items:
+            type: string
+          type: array
       type: object
     listApplications_200_response_inner_owner:
       example:
@@ -1066,6 +1388,54 @@ components:
           description: This is the connector config zip bundle which gets uploaded.
           format: binary
           type: string
+      type: object
+    listConnectors_200_response:
+      example:
+        total: 0.8008281904610115
+        items:
+        - applicationXml: applicationXml
+          uploadedFiles: []
+          translationProperties: "{}"
+          directConnect: true
+          className: className
+          fileUpload: true
+          type: ACF2 - Full
+          sourceConfigFrom: sourceConfigFrom
+          sourceConfig: sourceConfig
+          scope: global
+          correlationConfigXml: correlationConfigXml
+          name: ACF2
+          sourceConfigXml: sourceConfigXml
+          scriptName: acf2-angularsc
+          id: 8017
+          s3Location: s3Location
+          connectorMetadata: "{}"
+          status: RELEASED
+        - applicationXml: applicationXml
+          uploadedFiles: []
+          translationProperties: "{}"
+          directConnect: true
+          className: className
+          fileUpload: true
+          type: ACF2 - Full
+          sourceConfigFrom: sourceConfigFrom
+          sourceConfig: sourceConfig
+          scope: global
+          correlationConfigXml: correlationConfigXml
+          name: ACF2
+          sourceConfigXml: sourceConfigXml
+          scriptName: acf2-angularsc
+          id: 8017
+          s3Location: s3Location
+          connectorMetadata: "{}"
+          status: RELEASED
+      properties:
+        total:
+          type: number
+        items:
+          items:
+            $ref: '#/components/schemas/listConnectors_200_response_items_inner'
+          type: array
       type: object
     GetIdentity_200_response_auth:
       example:
@@ -1102,6 +1472,85 @@ components:
           type: string
         refreshArgs:
           $ref: '#/components/schemas/refreshIdentities_request_refreshArgs'
+      type: object
+    listAccounts_200_response_inner:
+      example:
+        passwordProvided: true
+        idEncryption: NONE
+        displayName: tyler.mairose
+        passwordChangeStatus: SUCCESS
+        pendingPasswordRequestId: pendingPasswordRequestId
+        type: SYSTEM_CONTROLLED
+        serviceName: airtable v4
+        accountServiceId: 44663
+        lastPasswdChange: lastPasswdChange
+        passwordRequired: true
+        ssoMethod: NONE
+        passwordChangeResult:
+          completionStatus: SUCCESS
+        passwordEncryption: NONE
+        id: "17248154"
+        serviceId: 44663
+        dateDisabled: dateDisabled
+        username: tyler.mairose
+        apps:
+        - "{}"
+        - "{}"
+      properties:
+        id:
+          example: "17248154"
+          type: string
+        type:
+          example: SYSTEM_CONTROLLED
+          type: string
+        displayName:
+          example: tyler.mairose
+          type: string
+        username:
+          example: tyler.mairose
+          type: string
+        passwordRequired:
+          type: boolean
+        passwordProvided:
+          type: boolean
+        apps:
+          items:
+            type: object
+          type: array
+        ssoMethod:
+          example: NONE
+          type: string
+        idEncryption:
+          example: NONE
+          type: string
+        passwordEncryption:
+          example: NONE
+          type: string
+        lastPasswdChange:
+          nullable: true
+          type: string
+        serviceName:
+          example: airtable v4
+          type: string
+        dateDisabled:
+          nullable: true
+          type: string
+        accountServiceId:
+          example: 44663
+          format: int32
+          type: integer
+        serviceId:
+          example: 44663
+          format: int32
+          type: integer
+        pendingPasswordRequestId:
+          nullable: true
+          type: string
+        passwordChangeStatus:
+          example: SUCCESS
+          type: string
+        passwordChangeResult:
+          $ref: '#/components/schemas/listAccounts_200_response_inner_passwordChangeResult'
       type: object
     listApplications_200_response_inner_appProfiles_inner:
       example:
@@ -1151,6 +1600,12 @@ components:
             that are not currently fulfilled.
           example: false
           type: boolean
+      type: object
+    loadEntitlements_request:
+      properties:
+        file:
+          format: binary
+          type: string
       type: object
   securitySchemes:
     UserContextAuth:

@@ -22,7 +22,7 @@ type RoleMiningSessionScope struct {
 	// The list of identities for this role mining session.
 	IdentityIds []string `json:"identityIds,omitempty"`
 	// The \"search\" criteria that produces the list of identities for this role mining session.
-	Criteria *string `json:"criteria,omitempty"`
+	Criteria NullableString `json:"criteria,omitempty"`
 	// The filter criteria for this role mining session.
 	AttributeFilterCriteria []map[string]interface{} `json:"attributeFilterCriteria,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -79,41 +79,51 @@ func (o *RoleMiningSessionScope) SetIdentityIds(v []string) {
 	o.IdentityIds = v
 }
 
-// GetCriteria returns the Criteria field value if set, zero value otherwise.
+// GetCriteria returns the Criteria field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningSessionScope) GetCriteria() string {
-	if o == nil || isNil(o.Criteria) {
+	if o == nil || isNil(o.Criteria.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Criteria
+	return *o.Criteria.Get()
 }
 
 // GetCriteriaOk returns a tuple with the Criteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleMiningSessionScope) GetCriteriaOk() (*string, bool) {
-	if o == nil || isNil(o.Criteria) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Criteria, true
+	return o.Criteria.Get(), o.Criteria.IsSet()
 }
 
 // HasCriteria returns a boolean if a field has been set.
 func (o *RoleMiningSessionScope) HasCriteria() bool {
-	if o != nil && !isNil(o.Criteria) {
+	if o != nil && o.Criteria.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCriteria gets a reference to the given string and assigns it to the Criteria field.
+// SetCriteria gets a reference to the given NullableString and assigns it to the Criteria field.
 func (o *RoleMiningSessionScope) SetCriteria(v string) {
-	o.Criteria = &v
+	o.Criteria.Set(&v)
+}
+// SetCriteriaNil sets the value for Criteria to be an explicit nil
+func (o *RoleMiningSessionScope) SetCriteriaNil() {
+	o.Criteria.Set(nil)
 }
 
-// GetAttributeFilterCriteria returns the AttributeFilterCriteria field value if set, zero value otherwise.
+// UnsetCriteria ensures that no value is present for Criteria, not even an explicit nil
+func (o *RoleMiningSessionScope) UnsetCriteria() {
+	o.Criteria.Unset()
+}
+
+// GetAttributeFilterCriteria returns the AttributeFilterCriteria field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RoleMiningSessionScope) GetAttributeFilterCriteria() []map[string]interface{} {
-	if o == nil || isNil(o.AttributeFilterCriteria) {
+	if o == nil {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -122,6 +132,7 @@ func (o *RoleMiningSessionScope) GetAttributeFilterCriteria() []map[string]inter
 
 // GetAttributeFilterCriteriaOk returns a tuple with the AttributeFilterCriteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RoleMiningSessionScope) GetAttributeFilterCriteriaOk() ([]map[string]interface{}, bool) {
 	if o == nil || isNil(o.AttributeFilterCriteria) {
 		return nil, false
@@ -131,7 +142,7 @@ func (o *RoleMiningSessionScope) GetAttributeFilterCriteriaOk() ([]map[string]in
 
 // HasAttributeFilterCriteria returns a boolean if a field has been set.
 func (o *RoleMiningSessionScope) HasAttributeFilterCriteria() bool {
-	if o != nil && !isNil(o.AttributeFilterCriteria) {
+	if o != nil && isNil(o.AttributeFilterCriteria) {
 		return true
 	}
 
@@ -156,10 +167,10 @@ func (o RoleMiningSessionScope) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.IdentityIds) {
 		toSerialize["identityIds"] = o.IdentityIds
 	}
-	if !isNil(o.Criteria) {
-		toSerialize["criteria"] = o.Criteria
+	if o.Criteria.IsSet() {
+		toSerialize["criteria"] = o.Criteria.Get()
 	}
-	if !isNil(o.AttributeFilterCriteria) {
+	if o.AttributeFilterCriteria != nil {
 		toSerialize["attributeFilterCriteria"] = o.AttributeFilterCriteria
 	}
 

@@ -87,6 +87,16 @@ and a boolean to check if the value has been set.
 SetAttributes sets Attributes field to given value.
 
 
+### SetAttributesNil
+
+`func (o *Transform) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *Transform) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

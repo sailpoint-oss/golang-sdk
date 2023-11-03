@@ -19,9 +19,9 @@ var _ MappedNullable = &ListFormDefinitionsByTenantResponse{}
 
 // ListFormDefinitionsByTenantResponse struct for ListFormDefinitionsByTenantResponse
 type ListFormDefinitionsByTenantResponse struct {
-	// Count number of Results
+	// Count number of results.
 	Count *int64 `json:"count,omitempty"`
-	// Results holds a list of FormDefinitionResponse items
+	// List of FormDefinitionResponse items.
 	Results []FormDefinitionResponse `json:"results,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

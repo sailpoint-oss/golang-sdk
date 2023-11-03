@@ -31,9 +31,9 @@ type PendingApproval struct {
 	// When the access-request was created.
 	RequestCreated *time.Time `json:"requestCreated,omitempty"`
 	RequestType *AccessRequestType `json:"requestType,omitempty"`
-	Requester *BaseReferenceDto `json:"requester,omitempty"`
-	RequestedFor *BaseReferenceDto `json:"requestedFor,omitempty"`
-	Owner *BaseReferenceDto `json:"owner,omitempty"`
+	Requester *AccessItemRequester `json:"requester,omitempty"`
+	RequestedFor *AccessItemRequestedFor `json:"requestedFor,omitempty"`
+	Owner *PendingApprovalOwner `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
 	RequesterComment *CommentDto `json:"requesterComment,omitempty"`
 	// The history of the previous reviewers comments.
@@ -265,9 +265,9 @@ func (o *PendingApproval) SetRequestType(v AccessRequestType) {
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
-func (o *PendingApproval) GetRequester() BaseReferenceDto {
+func (o *PendingApproval) GetRequester() AccessItemRequester {
 	if o == nil || isNil(o.Requester) {
-		var ret BaseReferenceDto
+		var ret AccessItemRequester
 		return ret
 	}
 	return *o.Requester
@@ -275,7 +275,7 @@ func (o *PendingApproval) GetRequester() BaseReferenceDto {
 
 // GetRequesterOk returns a tuple with the Requester field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PendingApproval) GetRequesterOk() (*BaseReferenceDto, bool) {
+func (o *PendingApproval) GetRequesterOk() (*AccessItemRequester, bool) {
 	if o == nil || isNil(o.Requester) {
 		return nil, false
 	}
@@ -291,15 +291,15 @@ func (o *PendingApproval) HasRequester() bool {
 	return false
 }
 
-// SetRequester gets a reference to the given BaseReferenceDto and assigns it to the Requester field.
-func (o *PendingApproval) SetRequester(v BaseReferenceDto) {
+// SetRequester gets a reference to the given AccessItemRequester and assigns it to the Requester field.
+func (o *PendingApproval) SetRequester(v AccessItemRequester) {
 	o.Requester = &v
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *PendingApproval) GetRequestedFor() BaseReferenceDto {
+func (o *PendingApproval) GetRequestedFor() AccessItemRequestedFor {
 	if o == nil || isNil(o.RequestedFor) {
-		var ret BaseReferenceDto
+		var ret AccessItemRequestedFor
 		return ret
 	}
 	return *o.RequestedFor
@@ -307,7 +307,7 @@ func (o *PendingApproval) GetRequestedFor() BaseReferenceDto {
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PendingApproval) GetRequestedForOk() (*BaseReferenceDto, bool) {
+func (o *PendingApproval) GetRequestedForOk() (*AccessItemRequestedFor, bool) {
 	if o == nil || isNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -323,15 +323,15 @@ func (o *PendingApproval) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given BaseReferenceDto and assigns it to the RequestedFor field.
-func (o *PendingApproval) SetRequestedFor(v BaseReferenceDto) {
+// SetRequestedFor gets a reference to the given AccessItemRequestedFor and assigns it to the RequestedFor field.
+func (o *PendingApproval) SetRequestedFor(v AccessItemRequestedFor) {
 	o.RequestedFor = &v
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *PendingApproval) GetOwner() BaseReferenceDto {
+func (o *PendingApproval) GetOwner() PendingApprovalOwner {
 	if o == nil || isNil(o.Owner) {
-		var ret BaseReferenceDto
+		var ret PendingApprovalOwner
 		return ret
 	}
 	return *o.Owner
@@ -339,7 +339,7 @@ func (o *PendingApproval) GetOwner() BaseReferenceDto {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PendingApproval) GetOwnerOk() (*BaseReferenceDto, bool) {
+func (o *PendingApproval) GetOwnerOk() (*PendingApprovalOwner, bool) {
 	if o == nil || isNil(o.Owner) {
 		return nil, false
 	}
@@ -355,8 +355,8 @@ func (o *PendingApproval) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given BaseReferenceDto and assigns it to the Owner field.
-func (o *PendingApproval) SetOwner(v BaseReferenceDto) {
+// SetOwner gets a reference to the given PendingApprovalOwner and assigns it to the Owner field.
+func (o *PendingApproval) SetOwner(v PendingApprovalOwner) {
 	o.Owner = &v
 }
 

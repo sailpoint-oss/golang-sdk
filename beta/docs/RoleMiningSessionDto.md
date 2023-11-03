@@ -5,18 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Scope** | Pointer to [**RoleMiningSessionScope**](RoleMiningSessionScope.md) |  | [optional] 
-**PruneThreshold** | Pointer to **int32** | The prune threshold to be used or null to calculate prescribedPruneThreshold | [optional] 
-**PrescribedPruneThreshold** | Pointer to **int32** | The calculated prescribedPruneThreshold | [optional] 
-**MinNumIdentitiesInPotentialRole** | Pointer to **int32** | Minimum number of identities in a potential role | [optional] 
+**PruneThreshold** | Pointer to **NullableInt32** | The prune threshold to be used or null to calculate prescribedPruneThreshold | [optional] 
+**PrescribedPruneThreshold** | Pointer to **NullableInt32** | The calculated prescribedPruneThreshold | [optional] 
+**MinNumIdentitiesInPotentialRole** | Pointer to **NullableInt32** | Minimum number of identities in a potential role | [optional] 
 **PotentialRoleCount** | Pointer to **int32** | Number of potential roles | [optional] 
 **PotentialRolesReadyCount** | Pointer to **int32** | Number of potential roles ready | [optional] 
 **Status** | Pointer to [**RoleMiningSessionStatus**](RoleMiningSessionStatus.md) |  | [optional] 
 **Type** | Pointer to [**RoleMiningRoleType**](RoleMiningRoleType.md) |  | [optional] 
-**EmailRecipientId** | Pointer to **string** | The id of the user who will receive an email about the role mining session | [optional] 
-**CreatedBy** | Pointer to [**EntityCreatedByDTO**](EntityCreatedByDTO.md) |  | [optional] 
+**EmailRecipientId** | Pointer to **NullableString** | The id of the user who will receive an email about the role mining session | [optional] 
+**CreatedBy** | Pointer to [**RoleMiningSessionDtoCreatedBy**](RoleMiningSessionDtoCreatedBy.md) |  | [optional] 
 **IdentityCount** | Pointer to **int32** | Number of identities in the population which meet the search criteria or identity list provided | [optional] 
-**Saved** | Pointer to **bool** | The session&#39;s saved status | [optional] 
-**Name** | Pointer to **string** | The session&#39;s saved name | [optional] 
+**Saved** | Pointer to **bool** | The session&#39;s saved status | [optional] [default to false]
+**Name** | Pointer to **NullableString** | The session&#39;s saved name | [optional] 
 
 ## Methods
 
@@ -87,6 +87,16 @@ SetPruneThreshold sets PruneThreshold field to given value.
 
 HasPruneThreshold returns a boolean if a field has been set.
 
+### SetPruneThresholdNil
+
+`func (o *RoleMiningSessionDto) SetPruneThresholdNil(b bool)`
+
+ SetPruneThresholdNil sets the value for PruneThreshold to be an explicit nil
+
+### UnsetPruneThreshold
+`func (o *RoleMiningSessionDto) UnsetPruneThreshold()`
+
+UnsetPruneThreshold ensures that no value is present for PruneThreshold, not even an explicit nil
 ### GetPrescribedPruneThreshold
 
 `func (o *RoleMiningSessionDto) GetPrescribedPruneThreshold() int32`
@@ -112,6 +122,16 @@ SetPrescribedPruneThreshold sets PrescribedPruneThreshold field to given value.
 
 HasPrescribedPruneThreshold returns a boolean if a field has been set.
 
+### SetPrescribedPruneThresholdNil
+
+`func (o *RoleMiningSessionDto) SetPrescribedPruneThresholdNil(b bool)`
+
+ SetPrescribedPruneThresholdNil sets the value for PrescribedPruneThreshold to be an explicit nil
+
+### UnsetPrescribedPruneThreshold
+`func (o *RoleMiningSessionDto) UnsetPrescribedPruneThreshold()`
+
+UnsetPrescribedPruneThreshold ensures that no value is present for PrescribedPruneThreshold, not even an explicit nil
 ### GetMinNumIdentitiesInPotentialRole
 
 `func (o *RoleMiningSessionDto) GetMinNumIdentitiesInPotentialRole() int32`
@@ -137,6 +157,16 @@ SetMinNumIdentitiesInPotentialRole sets MinNumIdentitiesInPotentialRole field to
 
 HasMinNumIdentitiesInPotentialRole returns a boolean if a field has been set.
 
+### SetMinNumIdentitiesInPotentialRoleNil
+
+`func (o *RoleMiningSessionDto) SetMinNumIdentitiesInPotentialRoleNil(b bool)`
+
+ SetMinNumIdentitiesInPotentialRoleNil sets the value for MinNumIdentitiesInPotentialRole to be an explicit nil
+
+### UnsetMinNumIdentitiesInPotentialRole
+`func (o *RoleMiningSessionDto) UnsetMinNumIdentitiesInPotentialRole()`
+
+UnsetMinNumIdentitiesInPotentialRole ensures that no value is present for MinNumIdentitiesInPotentialRole, not even an explicit nil
 ### GetPotentialRoleCount
 
 `func (o *RoleMiningSessionDto) GetPotentialRoleCount() int32`
@@ -262,22 +292,32 @@ SetEmailRecipientId sets EmailRecipientId field to given value.
 
 HasEmailRecipientId returns a boolean if a field has been set.
 
+### SetEmailRecipientIdNil
+
+`func (o *RoleMiningSessionDto) SetEmailRecipientIdNil(b bool)`
+
+ SetEmailRecipientIdNil sets the value for EmailRecipientId to be an explicit nil
+
+### UnsetEmailRecipientId
+`func (o *RoleMiningSessionDto) UnsetEmailRecipientId()`
+
+UnsetEmailRecipientId ensures that no value is present for EmailRecipientId, not even an explicit nil
 ### GetCreatedBy
 
-`func (o *RoleMiningSessionDto) GetCreatedBy() EntityCreatedByDTO`
+`func (o *RoleMiningSessionDto) GetCreatedBy() RoleMiningSessionDtoCreatedBy`
 
 GetCreatedBy returns the CreatedBy field if non-nil, zero value otherwise.
 
 ### GetCreatedByOk
 
-`func (o *RoleMiningSessionDto) GetCreatedByOk() (*EntityCreatedByDTO, bool)`
+`func (o *RoleMiningSessionDto) GetCreatedByOk() (*RoleMiningSessionDtoCreatedBy, bool)`
 
 GetCreatedByOk returns a tuple with the CreatedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedBy
 
-`func (o *RoleMiningSessionDto) SetCreatedBy(v EntityCreatedByDTO)`
+`func (o *RoleMiningSessionDto) SetCreatedBy(v RoleMiningSessionDtoCreatedBy)`
 
 SetCreatedBy sets CreatedBy field to given value.
 
@@ -362,6 +402,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *RoleMiningSessionDto) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *RoleMiningSessionDto) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

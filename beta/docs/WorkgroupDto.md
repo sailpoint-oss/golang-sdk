@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Owner** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] [readonly] 
-**Name** | Pointer to **string** | Name of the Governance Group | [optional] 
-**Description** | Pointer to **string** | Description of the Governance Group | [optional] 
-**MemberCount** | Pointer to **int64** | Number of members in the Governance Group. | [optional] [readonly] 
-**ConnectionCount** | Pointer to **int64** | Number of connections in the Governance Group. | [optional] [readonly] 
+**Owner** | Pointer to [**OwnerDto**](OwnerDto.md) |  | [optional] 
+**Id** | Pointer to **string** | Governance group ID. | [optional] [readonly] 
+**Name** | Pointer to **string** | Governance group name. | [optional] 
+**Description** | Pointer to **string** | Governance group description. | [optional] 
+**MemberCount** | Pointer to **int64** | Number of members in the governance group. | [optional] [readonly] 
+**ConnectionCount** | Pointer to **int64** | Number of connections in the governance group. | [optional] [readonly] 
 
 ## Methods
 
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOwner
 
-`func (o *WorkgroupDto) GetOwner() BaseReferenceDto1`
+`func (o *WorkgroupDto) GetOwner() OwnerDto`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *WorkgroupDto) GetOwnerOk() (*BaseReferenceDto1, bool)`
+`func (o *WorkgroupDto) GetOwnerOk() (*OwnerDto, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *WorkgroupDto) SetOwner(v BaseReferenceDto1)`
+`func (o *WorkgroupDto) SetOwner(v OwnerDto)`
 
 SetOwner sets Owner field to given value.
 

@@ -17,13 +17,13 @@ import (
 // checks if the AccountAggregationCompletedSource type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccountAggregationCompletedSource{}
 
-// AccountAggregationCompletedSource The source from which the accounts were aggregated.
+// AccountAggregationCompletedSource The source the accounts are being aggregated from.
 type AccountAggregationCompletedSource struct {
-	// The type of object that is referenced
-	Type map[string]interface{} `json:"type"`
-	// ID of the object to which this reference applies
+	// The DTO type of the source the accounts are being aggregated from.
+	Type string `json:"type"`
+	// The ID of the source the accounts are being aggregated from.
 	Id string `json:"id"`
-	// Human-readable display name of the object to which this reference applies
+	// Display name of the source the accounts are being aggregated from.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,7 +34,7 @@ type _AccountAggregationCompletedSource AccountAggregationCompletedSource
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountAggregationCompletedSource(type_ map[string]interface{}, id string, name string) *AccountAggregationCompletedSource {
+func NewAccountAggregationCompletedSource(type_ string, id string, name string) *AccountAggregationCompletedSource {
 	this := AccountAggregationCompletedSource{}
 	this.Type = type_
 	this.Id = id
@@ -51,9 +51,9 @@ func NewAccountAggregationCompletedSourceWithDefaults() *AccountAggregationCompl
 }
 
 // GetType returns the Type field value
-func (o *AccountAggregationCompletedSource) GetType() map[string]interface{} {
+func (o *AccountAggregationCompletedSource) GetType() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -62,15 +62,15 @@ func (o *AccountAggregationCompletedSource) GetType() map[string]interface{} {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AccountAggregationCompletedSource) GetTypeOk() (map[string]interface{}, bool) {
+func (o *AccountAggregationCompletedSource) GetTypeOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
 // SetType sets field value
-func (o *AccountAggregationCompletedSource) SetType(v map[string]interface{}) {
+func (o *AccountAggregationCompletedSource) SetType(v string) {
 	o.Type = v
 }
 

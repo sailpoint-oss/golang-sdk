@@ -32,7 +32,7 @@ type AccessProfile struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement.
 	Enabled *bool `json:"enabled,omitempty"`
-	Owner NullableOwnerReference `json:"owner"`
+	Owner OwnerReference `json:"owner"`
 	Source AccessProfileSourceRef `json:"source"`
 	// A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement.
 	Entitlements []EntitlementRef `json:"entitlements,omitempty"`
@@ -52,7 +52,7 @@ type _AccessProfile AccessProfile
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessProfile(name string, owner NullableOwnerReference, source AccessProfileSourceRef) *AccessProfile {
+func NewAccessProfile(name string, owner OwnerReference, source AccessProfileSourceRef) *AccessProfile {
 	this := AccessProfile{}
 	this.Name = name
 	this.Owner = owner
@@ -263,29 +263,27 @@ func (o *AccessProfile) SetEnabled(v bool) {
 }
 
 // GetOwner returns the Owner field value
-// If the value is explicit nil, the zero value for OwnerReference will be returned
 func (o *AccessProfile) GetOwner() OwnerReference {
-	if o == nil || o.Owner.Get() == nil {
+	if o == nil {
 		var ret OwnerReference
 		return ret
 	}
 
-	return *o.Owner.Get()
+	return o.Owner
 }
 
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfile) GetOwnerOk() (*OwnerReference, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Owner.Get(), o.Owner.IsSet()
+	return &o.Owner, true
 }
 
 // SetOwner sets field value
 func (o *AccessProfile) SetOwner(v OwnerReference) {
-	o.Owner.Set(&v)
+	o.Owner = v
 }
 
 // GetSource returns the Source field value
@@ -312,9 +310,9 @@ func (o *AccessProfile) SetSource(v AccessProfileSourceRef) {
 	o.Source = v
 }
 
-// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
+// GetEntitlements returns the Entitlements field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfile) GetEntitlements() []EntitlementRef {
-	if o == nil || isNil(o.Entitlements) {
+	if o == nil {
 		var ret []EntitlementRef
 		return ret
 	}
@@ -323,6 +321,7 @@ func (o *AccessProfile) GetEntitlements() []EntitlementRef {
 
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfile) GetEntitlementsOk() ([]EntitlementRef, bool) {
 	if o == nil || isNil(o.Entitlements) {
 		return nil, false
@@ -332,7 +331,7 @@ func (o *AccessProfile) GetEntitlementsOk() ([]EntitlementRef, bool) {
 
 // HasEntitlements returns a boolean if a field has been set.
 func (o *AccessProfile) HasEntitlements() bool {
-	if o != nil && !isNil(o.Entitlements) {
+	if o != nil && isNil(o.Entitlements) {
 		return true
 	}
 
@@ -535,9 +534,9 @@ func (o AccessProfile) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	toSerialize["owner"] = o.Owner.Get()
+	toSerialize["owner"] = o.Owner
 	toSerialize["source"] = o.Source
-	if !isNil(o.Entitlements) {
+	if o.Entitlements != nil {
 		toSerialize["entitlements"] = o.Entitlements
 	}
 	if !isNil(o.Requestable) {

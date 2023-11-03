@@ -19,10 +19,11 @@ var _ MappedNullable = &CommentDtoAuthor{}
 
 // CommentDtoAuthor struct for CommentDtoAuthor
 type CommentDtoAuthor struct {
-	Type *DtoType `json:"type,omitempty"`
-	// ID of the author
+	// DTO type of the commenting identity.
+	Type *string `json:"type,omitempty"`
+	// ID of the commenting identity.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the identity making the comment
+	// Display name of the commenting identity.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -47,9 +48,9 @@ func NewCommentDtoAuthorWithDefaults() *CommentDtoAuthor {
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *CommentDtoAuthor) GetType() DtoType {
+func (o *CommentDtoAuthor) GetType() string {
 	if o == nil || isNil(o.Type) {
-		var ret DtoType
+		var ret string
 		return ret
 	}
 	return *o.Type
@@ -57,7 +58,7 @@ func (o *CommentDtoAuthor) GetType() DtoType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CommentDtoAuthor) GetTypeOk() (*DtoType, bool) {
+func (o *CommentDtoAuthor) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
@@ -73,8 +74,8 @@ func (o *CommentDtoAuthor) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *CommentDtoAuthor) SetType(v DtoType) {
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *CommentDtoAuthor) SetType(v string) {
 	o.Type = &v
 }
 

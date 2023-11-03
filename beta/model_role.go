@@ -30,7 +30,7 @@ type Role struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// A human-readable description of the Role
 	Description NullableString `json:"description,omitempty"`
-	Owner NullableOwnerReference `json:"owner"`
+	Owner OwnerReference `json:"owner"`
 	AccessProfiles []AccessProfileRef `json:"accessProfiles,omitempty"`
 	Membership NullableRoleMembershipSelector `json:"membership,omitempty"`
 	// This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration.
@@ -52,7 +52,7 @@ type _Role Role
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRole(name string, owner NullableOwnerReference) *Role {
+func NewRole(name string, owner OwnerReference) *Role {
 	this := Role{}
 	this.Name = name
 	this.Owner = owner
@@ -238,29 +238,27 @@ func (o *Role) UnsetDescription() {
 }
 
 // GetOwner returns the Owner field value
-// If the value is explicit nil, the zero value for OwnerReference will be returned
 func (o *Role) GetOwner() OwnerReference {
-	if o == nil || o.Owner.Get() == nil {
+	if o == nil {
 		var ret OwnerReference
 		return ret
 	}
 
-	return *o.Owner.Get()
+	return o.Owner
 }
 
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Role) GetOwnerOk() (*OwnerReference, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Owner.Get(), o.Owner.IsSet()
+	return &o.Owner, true
 }
 
 // SetOwner sets field value
 func (o *Role) SetOwner(v OwnerReference) {
-	o.Owner.Set(&v)
+	o.Owner = v
 }
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -551,7 +549,7 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	toSerialize["owner"] = o.Owner.Get()
+	toSerialize["owner"] = o.Owner
 	if o.AccessProfiles != nil {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}

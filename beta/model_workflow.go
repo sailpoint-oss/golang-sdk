@@ -22,14 +22,13 @@ var _ MappedNullable = &Workflow{}
 type Workflow struct {
 	// Workflow ID. This is a UUID generated upon creation.
 	Id *string `json:"id,omitempty"`
-	// The number of times this workflow has been executed
+	// The number of times this workflow has been executed.
 	ExecutionCount *int32 `json:"executionCount,omitempty"`
-	// The number of times this workflow has failed during execution
+	// The number of times this workflow has failed during execution.
 	FailureCount *int32 `json:"failureCount,omitempty"`
-	// The date and time the workflow was created
+	// The date and time the workflow was created.
 	Created *time.Time `json:"created,omitempty"`
-	// The identity that created the workflow.
-	Creator *BaseReferenceDto1 `json:"creator,omitempty"`
+	Creator *WorkflowAllOfCreator `json:"creator,omitempty"`
 	// The name of the workflow
 	Name *string `json:"name,omitempty"`
 	Owner *WorkflowBodyOwner `json:"owner,omitempty"`
@@ -194,9 +193,9 @@ func (o *Workflow) SetCreated(v time.Time) {
 }
 
 // GetCreator returns the Creator field value if set, zero value otherwise.
-func (o *Workflow) GetCreator() BaseReferenceDto1 {
+func (o *Workflow) GetCreator() WorkflowAllOfCreator {
 	if o == nil || isNil(o.Creator) {
-		var ret BaseReferenceDto1
+		var ret WorkflowAllOfCreator
 		return ret
 	}
 	return *o.Creator
@@ -204,7 +203,7 @@ func (o *Workflow) GetCreator() BaseReferenceDto1 {
 
 // GetCreatorOk returns a tuple with the Creator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Workflow) GetCreatorOk() (*BaseReferenceDto1, bool) {
+func (o *Workflow) GetCreatorOk() (*WorkflowAllOfCreator, bool) {
 	if o == nil || isNil(o.Creator) {
 		return nil, false
 	}
@@ -220,8 +219,8 @@ func (o *Workflow) HasCreator() bool {
 	return false
 }
 
-// SetCreator gets a reference to the given BaseReferenceDto1 and assigns it to the Creator field.
-func (o *Workflow) SetCreator(v BaseReferenceDto1) {
+// SetCreator gets a reference to the given WorkflowAllOfCreator and assigns it to the Creator field.
+func (o *Workflow) SetCreator(v WorkflowAllOfCreator) {
 	o.Creator = &v
 }
 

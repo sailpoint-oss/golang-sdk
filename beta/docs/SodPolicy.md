@@ -4,23 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Policy id | [optional] [readonly] 
-**Name** | Pointer to **string** | Policy Business Name | [optional] 
+**Id** | Pointer to **string** | Policy ID. | [optional] [readonly] 
+**Name** | Pointer to **string** | Policy business name. | [optional] 
 **Created** | Pointer to **time.Time** | The time when this SOD policy is created. | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | The time when this SOD policy is modified. | [optional] [readonly] 
-**Description** | Pointer to **NullableString** | Optional description of the SOD policy | [optional] 
-**OwnerRef** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
-**ExternalPolicyReference** | Pointer to **NullableString** | Optional External Policy Reference | [optional] 
-**PolicyQuery** | Pointer to **string** | Search query of the SOD policy | [optional] 
-**CompensatingControls** | Pointer to **NullableString** | Optional compensating controls(Mitigating Controls) | [optional] 
-**CorrectionAdvice** | Pointer to **NullableString** | Optional correction advice | [optional] 
-**State** | Pointer to **string** | whether the policy is enforced or not | [optional] 
-**Tags** | Pointer to **[]string** | tags for this policy object | [optional] 
-**CreatorId** | Pointer to **string** | Policy&#39;s creator ID | [optional] [readonly] 
-**ModifierId** | Pointer to **NullableString** | Policy&#39;s modifier ID | [optional] [readonly] 
+**Description** | Pointer to **NullableString** | Optional description of the SOD policy. | [optional] 
+**OwnerRef** | Pointer to [**OwnerDto**](OwnerDto.md) |  | [optional] 
+**ExternalPolicyReference** | Pointer to **NullableString** | Optional external policy reference. | [optional] 
+**PolicyQuery** | Pointer to **string** | Search query of the SOD policy. | [optional] 
+**CompensatingControls** | Pointer to **NullableString** | Optional compensating controls (Mitigating Controls). | [optional] 
+**CorrectionAdvice** | Pointer to **NullableString** | Optional correction advice. | [optional] 
+**State** | Pointer to **string** | Whether the policy is enforced or not. | [optional] 
+**Tags** | Pointer to **[]string** | Tags for the policy object. | [optional] 
+**CreatorId** | Pointer to **string** | Policy&#39;s creator ID. | [optional] [readonly] 
+**ModifierId** | Pointer to **NullableString** | Policy&#39;s modifier ID. | [optional] [readonly] 
 **ViolationOwnerAssignmentConfig** | Pointer to [**ViolationOwnerAssignmentConfig**](ViolationOwnerAssignmentConfig.md) |  | [optional] 
-**Scheduled** | Pointer to **bool** | defines whether a policy has been scheduled or not | [optional] [default to false]
-**Type** | Pointer to **string** | whether a policy is query based or conflicting access based | [optional] [default to "GENERAL"]
+**Scheduled** | Pointer to **bool** | Defines whether a policy has been scheduled or not. | [optional] [default to false]
+**Type** | Pointer to **string** | Whether a policy is query based or conflicting access based. | [optional] [default to "GENERAL"]
 **ConflictingAccessCriteria** | Pointer to [**SodPolicyConflictingAccessCriteria**](SodPolicyConflictingAccessCriteria.md) |  | [optional] 
 
 ## Methods
@@ -179,20 +179,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetOwnerRef
 
-`func (o *SodPolicy) GetOwnerRef() BaseReferenceDto1`
+`func (o *SodPolicy) GetOwnerRef() OwnerDto`
 
 GetOwnerRef returns the OwnerRef field if non-nil, zero value otherwise.
 
 ### GetOwnerRefOk
 
-`func (o *SodPolicy) GetOwnerRefOk() (*BaseReferenceDto1, bool)`
+`func (o *SodPolicy) GetOwnerRefOk() (*OwnerDto, bool)`
 
 GetOwnerRefOk returns a tuple with the OwnerRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerRef
 
-`func (o *SodPolicy) SetOwnerRef(v BaseReferenceDto1)`
+`func (o *SodPolicy) SetOwnerRef(v OwnerDto)`
 
 SetOwnerRef sets OwnerRef field to given value.
 

@@ -23,173 +23,6 @@ import (
 // TaggedObjectsApiService TaggedObjectsApi service
 type TaggedObjectsApiService service
 
-type ApiAddTagsToManyObjectsRequest struct {
-	ctx context.Context
-	ApiService *TaggedObjectsApiService
-	bulkTaggedObject *BulkTaggedObject
-}
-
-// Supported object types are ROLE, IDENTITY and SOD_POLICY.
-func (r ApiAddTagsToManyObjectsRequest) BulkTaggedObject(bulkTaggedObject BulkTaggedObject) ApiAddTagsToManyObjectsRequest {
-	r.bulkTaggedObject = &bulkTaggedObject
-	return r
-}
-
-func (r ApiAddTagsToManyObjectsRequest) Execute() (*BulkTaggedObject, *http.Response, error) {
-	return r.ApiService.AddTagsToManyObjectsExecute(r)
-}
-
-/*
-AddTagsToManyObjects Tag Multiple Objects
-
-This API adds tags to multiple objects.
-
-A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAddTagsToManyObjectsRequest
-*/
-func (a *TaggedObjectsApiService) AddTagsToManyObjects(ctx context.Context) ApiAddTagsToManyObjectsRequest {
-	return ApiAddTagsToManyObjectsRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return BulkTaggedObject
-func (a *TaggedObjectsApiService) AddTagsToManyObjectsExecute(r ApiAddTagsToManyObjectsRequest) (*BulkTaggedObject, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BulkTaggedObject
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.AddTagsToManyObjects")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/tagged-objects/bulk-add"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.bulkTaggedObject == nil {
-		return localVarReturnValue, nil, reportError("bulkTaggedObject is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.bulkTaggedObject
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiDeleteTaggedObjectRequest struct {
 	ctx context.Context
 	ApiService *TaggedObjectsApiService
@@ -258,6 +91,162 @@ func (a *TaggedObjectsApiService) DeleteTaggedObjectExecute(r ApiDeleteTaggedObj
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteTagsToManyObjectRequest struct {
+	ctx context.Context
+	ApiService *TaggedObjectsApiService
+	bulkTaggedObject *BulkTaggedObject
+}
+
+// Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+func (r ApiDeleteTagsToManyObjectRequest) BulkTaggedObject(bulkTaggedObject BulkTaggedObject) ApiDeleteTagsToManyObjectRequest {
+	r.bulkTaggedObject = &bulkTaggedObject
+	return r
+}
+
+func (r ApiDeleteTagsToManyObjectRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteTagsToManyObjectExecute(r)
+}
+
+/*
+DeleteTagsToManyObject Remove Tags from Multiple Objects
+
+This API removes tags from multiple objects.
+
+A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDeleteTagsToManyObjectRequest
+*/
+func (a *TaggedObjectsApiService) DeleteTagsToManyObject(ctx context.Context) ApiDeleteTagsToManyObjectRequest {
+	return ApiDeleteTagsToManyObjectRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *TaggedObjectsApiService) DeleteTagsToManyObjectExecute(r ApiDeleteTagsToManyObjectRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.DeleteTagsToManyObject")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/tagged-objects/bulk-remove"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.bulkTaggedObject == nil {
+		return nil, reportError("bulkTaggedObject is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.bulkTaggedObject
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err
@@ -895,59 +884,66 @@ func (a *TaggedObjectsApiService) ListTaggedObjectsByTypeExecute(r ApiListTagged
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRemoveTagsToManyObjectRequest struct {
+type ApiPutTaggedObjectRequest struct {
 	ctx context.Context
 	ApiService *TaggedObjectsApiService
-	bulkTaggedObject *BulkTaggedObject
+	type_ string
+	id string
+	taggedObject *TaggedObject
 }
 
-// Supported object types are ROLE, IDENTITY and SOD_POLICY.
-func (r ApiRemoveTagsToManyObjectRequest) BulkTaggedObject(bulkTaggedObject BulkTaggedObject) ApiRemoveTagsToManyObjectRequest {
-	r.bulkTaggedObject = &bulkTaggedObject
+func (r ApiPutTaggedObjectRequest) TaggedObject(taggedObject TaggedObject) ApiPutTaggedObjectRequest {
+	r.taggedObject = &taggedObject
 	return r
 }
 
-func (r ApiRemoveTagsToManyObjectRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RemoveTagsToManyObjectExecute(r)
+func (r ApiPutTaggedObjectRequest) Execute() (*TaggedObject, *http.Response, error) {
+	return r.ApiService.PutTaggedObjectExecute(r)
 }
 
 /*
-RemoveTagsToManyObject Remove Tags from Multiple Objects
+PutTaggedObject Update Tagged Object
 
-This API removes tags from multiple objects.
-
-A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+This updates a tagged object for the specified type.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRemoveTagsToManyObjectRequest
+ @param type_ The type of tagged object to update.
+ @param id The ID of the object reference to update.
+ @return ApiPutTaggedObjectRequest
 */
-func (a *TaggedObjectsApiService) RemoveTagsToManyObject(ctx context.Context) ApiRemoveTagsToManyObjectRequest {
-	return ApiRemoveTagsToManyObjectRequest{
+func (a *TaggedObjectsApiService) PutTaggedObject(ctx context.Context, type_ string, id string) ApiPutTaggedObjectRequest {
+	return ApiPutTaggedObjectRequest{
 		ApiService: a,
 		ctx: ctx,
+		type_: type_,
+		id: id,
 	}
 }
 
 // Execute executes the request
-func (a *TaggedObjectsApiService) RemoveTagsToManyObjectExecute(r ApiRemoveTagsToManyObjectRequest) (*http.Response, error) {
+//  @return TaggedObject
+func (a *TaggedObjectsApiService) PutTaggedObjectExecute(r ApiPutTaggedObjectRequest) (*TaggedObject, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
+		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *TaggedObject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.RemoveTagsToManyObject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.PutTaggedObject")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/tagged-objects/bulk-remove"
+	localVarPath := localBasePath + "/tagged-objects/{type}/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bulkTaggedObject == nil {
-		return nil, reportError("bulkTaggedObject is required and must be specified")
+	if r.taggedObject == nil {
+		return localVarReturnValue, nil, reportError("taggedObject is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -968,22 +964,22 @@ func (a *TaggedObjectsApiService) RemoveTagsToManyObjectExecute(r ApiRemoveTagsT
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bulkTaggedObject
+	localVarPostBody = r.taggedObject
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -996,59 +992,68 @@ func (a *TaggedObjectsApiService) RemoveTagsToManyObjectExecute(r ApiRemoveTagsT
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ListAccessProfiles401Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v ListAccessProfiles429Response
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiSetTagToObjectRequest struct {
@@ -1206,66 +1211,61 @@ func (a *TaggedObjectsApiService) SetTagToObjectExecute(r ApiSetTagToObjectReque
 	return localVarHTTPResponse, nil
 }
 
-type ApiUpdateTaggedObjectRequest struct {
+type ApiSetTagsToManyObjectsRequest struct {
 	ctx context.Context
 	ApiService *TaggedObjectsApiService
-	type_ string
-	id string
-	taggedObject *TaggedObject
+	bulkTaggedObject *BulkTaggedObject
 }
 
-func (r ApiUpdateTaggedObjectRequest) TaggedObject(taggedObject TaggedObject) ApiUpdateTaggedObjectRequest {
-	r.taggedObject = &taggedObject
+// Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+func (r ApiSetTagsToManyObjectsRequest) BulkTaggedObject(bulkTaggedObject BulkTaggedObject) ApiSetTagsToManyObjectsRequest {
+	r.bulkTaggedObject = &bulkTaggedObject
 	return r
 }
 
-func (r ApiUpdateTaggedObjectRequest) Execute() (*TaggedObject, *http.Response, error) {
-	return r.ApiService.UpdateTaggedObjectExecute(r)
+func (r ApiSetTagsToManyObjectsRequest) Execute() (*BulkTaggedObject, *http.Response, error) {
+	return r.ApiService.SetTagsToManyObjectsExecute(r)
 }
 
 /*
-UpdateTaggedObject Update Tagged Object
+SetTagsToManyObjects Tag Multiple Objects
 
-This updates a tagged object for the specified type.
+This API adds tags to multiple objects.
+
+A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param type_ The type of tagged object to update.
- @param id The ID of the object reference to update.
- @return ApiUpdateTaggedObjectRequest
+ @return ApiSetTagsToManyObjectsRequest
 */
-func (a *TaggedObjectsApiService) UpdateTaggedObject(ctx context.Context, type_ string, id string) ApiUpdateTaggedObjectRequest {
-	return ApiUpdateTaggedObjectRequest{
+func (a *TaggedObjectsApiService) SetTagsToManyObjects(ctx context.Context) ApiSetTagsToManyObjectsRequest {
+	return ApiSetTagsToManyObjectsRequest{
 		ApiService: a,
 		ctx: ctx,
-		type_: type_,
-		id: id,
 	}
 }
 
 // Execute executes the request
-//  @return TaggedObject
-func (a *TaggedObjectsApiService) UpdateTaggedObjectExecute(r ApiUpdateTaggedObjectRequest) (*TaggedObject, *http.Response, error) {
+//  @return BulkTaggedObject
+func (a *TaggedObjectsApiService) SetTagsToManyObjectsExecute(r ApiSetTagsToManyObjectsRequest) (*BulkTaggedObject, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TaggedObject
+		localVarReturnValue  *BulkTaggedObject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.UpdateTaggedObject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.SetTagsToManyObjects")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/tagged-objects/{type}/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath := localBasePath + "/tagged-objects/bulk-add"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.taggedObject == nil {
-		return localVarReturnValue, nil, reportError("taggedObject is required and must be specified")
+	if r.bulkTaggedObject == nil {
+		return localVarReturnValue, nil, reportError("bulkTaggedObject is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1286,7 +1286,7 @@ func (a *TaggedObjectsApiService) UpdateTaggedObjectExecute(r ApiUpdateTaggedObj
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.taggedObject
+	localVarPostBody = r.bulkTaggedObject
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -28,7 +28,7 @@ type CreatePersonalAccessTokenResponse struct {
 	Scope []string `json:"scope"`
 	// The name of the personal access token. Cannot be the same as other personal access tokens owned by a user.
 	Name string `json:"name"`
-	Owner BaseReferenceDto `json:"owner"`
+	Owner PatOwner `json:"owner"`
 	// The date and time, down to the millisecond, when this personal access token was created.
 	Created time.Time `json:"created"`
 	AdditionalProperties map[string]interface{}
@@ -40,7 +40,7 @@ type _CreatePersonalAccessTokenResponse CreatePersonalAccessTokenResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner BaseReferenceDto, created time.Time) *CreatePersonalAccessTokenResponse {
+func NewCreatePersonalAccessTokenResponse(id string, secret string, scope []string, name string, owner PatOwner, created time.Time) *CreatePersonalAccessTokenResponse {
 	this := CreatePersonalAccessTokenResponse{}
 	this.Id = id
 	this.Secret = secret
@@ -158,9 +158,9 @@ func (o *CreatePersonalAccessTokenResponse) SetName(v string) {
 }
 
 // GetOwner returns the Owner field value
-func (o *CreatePersonalAccessTokenResponse) GetOwner() BaseReferenceDto {
+func (o *CreatePersonalAccessTokenResponse) GetOwner() PatOwner {
 	if o == nil {
-		var ret BaseReferenceDto
+		var ret PatOwner
 		return ret
 	}
 
@@ -169,7 +169,7 @@ func (o *CreatePersonalAccessTokenResponse) GetOwner() BaseReferenceDto {
 
 // GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
-func (o *CreatePersonalAccessTokenResponse) GetOwnerOk() (*BaseReferenceDto, bool) {
+func (o *CreatePersonalAccessTokenResponse) GetOwnerOk() (*PatOwner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -177,7 +177,7 @@ func (o *CreatePersonalAccessTokenResponse) GetOwnerOk() (*BaseReferenceDto, boo
 }
 
 // SetOwner sets field value
-func (o *CreatePersonalAccessTokenResponse) SetOwner(v BaseReferenceDto) {
+func (o *CreatePersonalAccessTokenResponse) SetOwner(v PatOwner) {
 	o.Owner = v
 }
 

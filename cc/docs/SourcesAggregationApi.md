@@ -5,12 +5,13 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**LoadAccounts**](SourcesAggregationApi.md#LoadAccounts) | **Post** /cc/api/source/loadAccounts/{id} | Account Aggregation (File)
+[**LoadEntitlements**](SourcesAggregationApi.md#LoadEntitlements) | **Post** /cc/api/source/loadEntitlements/{id} | Account Aggregation (File)
 
 
 
 ## LoadAccounts
 
-> LoadAccounts(ctx, id).ContentType(contentType).DisableOptimization(disableOptimization).File(file).Execute()
+> map[string]interface{} LoadAccounts(ctx, id).ContentType(contentType).DisableOptimization(disableOptimization).File(file).Execute()
 
 Account Aggregation (File)
 
@@ -41,6 +42,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAggregationApi.LoadAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `LoadAccounts`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAggregationApi.LoadAccounts`: %v\n", resp)
 }
 ```
 
@@ -66,7 +69,81 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## LoadEntitlements
+
+> map[string]interface{} LoadEntitlements(ctx, id).ContentType(contentType).File(file).Execute()
+
+Account Aggregation (File)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := "id_example" // string | 
+    contentType := "application/x-www-form-urlencoded" // string |  (optional)
+    file := os.NewFile(1234, "some_file") // *os.File |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SourcesAggregationApi.LoadEntitlements(context.Background(), id).ContentType(contentType).File(file).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAggregationApi.LoadEntitlements``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `LoadEntitlements`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAggregationApi.LoadEntitlements`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiLoadEntitlementsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **contentType** | **string** |  | 
+ **file** | ***os.File** |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 

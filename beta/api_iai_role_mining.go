@@ -995,6 +995,209 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleStatusExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetAllPotentialRoleSummariesRequest struct {
+	ctx context.Context
+	ApiService *IAIRoleMiningApiService
+	sorters *string
+	filters *string
+	offset *int32
+	limit *int32
+	count *bool
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **createdDate, identityCount, entitlementCount, freshness, quality**
+func (r ApiGetAllPotentialRoleSummariesRequest) Sorters(sorters string) ApiGetAllPotentialRoleSummariesRequest {
+	r.sorters = &sorters
+	return r
+}
+
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **createdById**: *eq, sw, co*  **createdByName**: *eq, sw, co*  **description**: *sw, co*  **endDate**: *le, lt*  **freshness**: *eq, ge, gt, le, lt*  **name**: *eq, sw, co, ge, gt, le, lt*  **quality**: *eq, ge, gt, le, lt*  **startDate**: *ge, gt*  **saved**: *eq*  **type**: *eq, ge, gt, le, lt*  **scopingMethod**: *eq*  **sessionState**: *eq*  **identityAttribute**: *co*
+func (r ApiGetAllPotentialRoleSummariesRequest) Filters(filters string) ApiGetAllPotentialRoleSummariesRequest {
+	r.filters = &filters
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetAllPotentialRoleSummariesRequest) Offset(offset int32) ApiGetAllPotentialRoleSummariesRequest {
+	r.offset = &offset
+	return r
+}
+
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetAllPotentialRoleSummariesRequest) Limit(limit int32) ApiGetAllPotentialRoleSummariesRequest {
+	r.limit = &limit
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetAllPotentialRoleSummariesRequest) Count(count bool) ApiGetAllPotentialRoleSummariesRequest {
+	r.count = &count
+	return r
+}
+
+func (r ApiGetAllPotentialRoleSummariesRequest) Execute() ([]RoleMiningPotentialRoleSummary, *http.Response, error) {
+	return r.ApiService.GetAllPotentialRoleSummariesExecute(r)
+}
+
+/*
+GetAllPotentialRoleSummaries Retrieves all potential role summaries
+
+Returns all potential role summaries that match the query parameters
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetAllPotentialRoleSummariesRequest
+*/
+func (a *IAIRoleMiningApiService) GetAllPotentialRoleSummaries(ctx context.Context) ApiGetAllPotentialRoleSummariesRequest {
+	return ApiGetAllPotentialRoleSummariesRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []RoleMiningPotentialRoleSummary
+func (a *IAIRoleMiningApiService) GetAllPotentialRoleSummariesExecute(r ApiGetAllPotentialRoleSummariesRequest) ([]RoleMiningPotentialRoleSummary, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []RoleMiningPotentialRoleSummary
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetAllPotentialRoleSummaries")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/role-mining-potential-roles"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.sorters != nil {
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+	}
+	if r.filters != nil {
+		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
+	}
+	if r.offset != nil {
+		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	}
+	if r.limit != nil {
+		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	}
+	if r.count != nil {
+		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetEntitlementDistributionPotentialRoleRequest struct {
 	ctx context.Context
 	ApiService *IAIRoleMiningApiService
@@ -1174,13 +1377,13 @@ func (r ApiGetEntitlementsPotentialRoleRequest) IncludeCommonAccess(includeCommo
 	return r
 }
 
-// sort by popularity, default order descending
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **popularity**  The default sort is **popularity** in descending order. 
 func (r ApiGetEntitlementsPotentialRoleRequest) Sorters(sorters string) ApiGetEntitlementsPotentialRoleRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter parameter by \&quot;starts with\&quot; for the applicationName and entitlementRef.name.
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **applicationName**: *sw*  **entitlementRef.name**: *sw*
 func (r ApiGetEntitlementsPotentialRoleRequest) Filters(filters string) ApiGetEntitlementsPotentialRoleRequest {
 	r.filters = &filters
 	return r
@@ -1377,13 +1580,13 @@ type ApiGetExcludedEntitlementsPotentialRoleRequest struct {
 	count *bool
 }
 
-// sort by popularity, default order descending
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **popularity**
 func (r ApiGetExcludedEntitlementsPotentialRoleRequest) Sorters(sorters string) ApiGetExcludedEntitlementsPotentialRoleRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter parameter by \&quot;starts with\&quot; for the applicationName and entitlementRef.name.
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **applicationName**: *sw*  **entitlementRef.name**: *sw*
 func (r ApiGetExcludedEntitlementsPotentialRoleRequest) Filters(filters string) ApiGetExcludedEntitlementsPotentialRoleRequest {
 	r.filters = &filters
 	return r
@@ -1577,13 +1780,13 @@ type ApiGetIdentitiesPotentialRoleRequest struct {
 	count *bool
 }
 
-// sort by name, default order ascending
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**
 func (r ApiGetIdentitiesPotentialRoleRequest) Sorters(sorters string) ApiGetIdentitiesPotentialRoleRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter parameter by \&quot;starts with\&quot; for the name.
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *sw*
 func (r ApiGetIdentitiesPotentialRoleRequest) Filters(filters string) ApiGetIdentitiesPotentialRoleRequest {
 	r.filters = &filters
 	return r
@@ -2106,6 +2309,207 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleApplicationsExecute(r ApiGetPo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetPotentialRoleSourceIdentityUsageRequest struct {
+	ctx context.Context
+	ApiService *IAIRoleMiningApiService
+	potentialRoleId string
+	sourceId string
+	sorters *string
+	offset *int32
+	limit *int32
+	count *bool
+}
+
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **displayName, email, usageCount**
+func (r ApiGetPotentialRoleSourceIdentityUsageRequest) Sorters(sorters string) ApiGetPotentialRoleSourceIdentityUsageRequest {
+	r.sorters = &sorters
+	return r
+}
+
+// Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetPotentialRoleSourceIdentityUsageRequest) Offset(offset int32) ApiGetPotentialRoleSourceIdentityUsageRequest {
+	r.offset = &offset
+	return r
+}
+
+// Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetPotentialRoleSourceIdentityUsageRequest) Limit(limit int32) ApiGetPotentialRoleSourceIdentityUsageRequest {
+	r.limit = &limit
+	return r
+}
+
+// If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+func (r ApiGetPotentialRoleSourceIdentityUsageRequest) Count(count bool) ApiGetPotentialRoleSourceIdentityUsageRequest {
+	r.count = &count
+	return r
+}
+
+func (r ApiGetPotentialRoleSourceIdentityUsageRequest) Execute() ([]RoleMiningPotentialRoleSourceUsage, *http.Response, error) {
+	return r.ApiService.GetPotentialRoleSourceIdentityUsageExecute(r)
+}
+
+/*
+GetPotentialRoleSourceIdentityUsage Retrieves potential role source usage
+
+This method returns source usageCount (as number of days in the last 90 days) for each identity in a potential role.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param potentialRoleId A potential role id
+ @param sourceId A source id
+ @return ApiGetPotentialRoleSourceIdentityUsageRequest
+*/
+func (a *IAIRoleMiningApiService) GetPotentialRoleSourceIdentityUsage(ctx context.Context, potentialRoleId string, sourceId string) ApiGetPotentialRoleSourceIdentityUsageRequest {
+	return ApiGetPotentialRoleSourceIdentityUsageRequest{
+		ApiService: a,
+		ctx: ctx,
+		potentialRoleId: potentialRoleId,
+		sourceId: sourceId,
+	}
+}
+
+// Execute executes the request
+//  @return []RoleMiningPotentialRoleSourceUsage
+func (a *IAIRoleMiningApiService) GetPotentialRoleSourceIdentityUsageExecute(r ApiGetPotentialRoleSourceIdentityUsageRequest) ([]RoleMiningPotentialRoleSourceUsage, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []RoleMiningPotentialRoleSourceUsage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetPotentialRoleSourceIdentityUsage")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage"
+	localVarPath = strings.Replace(localVarPath, "{"+"potentialRoleId"+"}", url.PathEscape(parameterValueToString(r.potentialRoleId, "potentialRoleId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sourceId"+"}", url.PathEscape(parameterValueToString(r.sourceId, "sourceId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.sorters != nil {
+		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
+	}
+	if r.offset != nil {
+		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	}
+	if r.limit != nil {
+		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	}
+	if r.count != nil {
+		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetPotentialRoleSummariesRequest struct {
 	ctx context.Context
 	ApiService *IAIRoleMiningApiService
@@ -2117,13 +2521,13 @@ type ApiGetPotentialRoleSummariesRequest struct {
 	count *bool
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **createdDate**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **createdDate**
 func (r ApiGetPotentialRoleSummariesRequest) Sorters(sorters string) ApiGetPotentialRoleSummariesRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **createdById**: *eq, sw, co* **createdByName**: *eq, sw, co* **description**: *sw, co* **endDate**: *le, lt* **freshness**: *eq, ge, gt, le, lt* **name**: *eq, sw, co* **quality**: *eq, ge, gt, le, lt* **startDate**: *ge, gt* **saved**: *eq* **type**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **createdById**: *eq, sw, co*  **createdByName**: *eq, sw, co*  **description**: *sw, co*  **endDate**: *le, lt*  **freshness**: *eq, ge, gt, le, lt*  **name**: *eq, sw, co*  **quality**: *eq, ge, gt, le, lt*  **startDate**: *ge, gt*  **saved**: *eq*  **type**: *eq*
 func (r ApiGetPotentialRoleSummariesRequest) Filters(filters string) ApiGetPotentialRoleSummariesRequest {
 	r.filters = &filters
 	return r
@@ -2205,6 +2609,163 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleSummariesExecute(r ApiGetPoten
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
 	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetRoleMiningPotentialRoleRequest struct {
+	ctx context.Context
+	ApiService *IAIRoleMiningApiService
+	potentialRoleId string
+}
+
+func (r ApiGetRoleMiningPotentialRoleRequest) Execute() (*RoleMiningPotentialRole, *http.Response, error) {
+	return r.ApiService.GetRoleMiningPotentialRoleExecute(r)
+}
+
+/*
+GetRoleMiningPotentialRole Retrieves a specific potential role
+
+This method returns a specific potential role.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param potentialRoleId A potential role id
+ @return ApiGetRoleMiningPotentialRoleRequest
+*/
+func (a *IAIRoleMiningApiService) GetRoleMiningPotentialRole(ctx context.Context, potentialRoleId string) ApiGetRoleMiningPotentialRoleRequest {
+	return ApiGetRoleMiningPotentialRoleRequest{
+		ApiService: a,
+		ctx: ctx,
+		potentialRoleId: potentialRoleId,
+	}
+}
+
+// Execute executes the request
+//  @return RoleMiningPotentialRole
+func (a *IAIRoleMiningApiService) GetRoleMiningPotentialRoleExecute(r ApiGetRoleMiningPotentialRoleRequest) (*RoleMiningPotentialRole, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RoleMiningPotentialRole
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetRoleMiningPotentialRole")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/role-mining-potential-roles/{potentialRoleId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"potentialRoleId"+"}", url.PathEscape(parameterValueToString(r.potentialRoleId, "potentialRoleId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2637,13 +3198,13 @@ type ApiGetRoleMiningSessionsRequest struct {
 	count *bool
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: **saved**: *eq* \&quot;true\&quot; or \&quot;false\&quot; **name**: *eq, sw*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **saved**: *eq*  **name**: *eq, sw*
 func (r ApiGetRoleMiningSessionsRequest) Filters(filters string) ApiGetRoleMiningSessionsRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **createdBy, createdDate**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **createdBy, createdDate**
 func (r ApiGetRoleMiningSessionsRequest) Sorters(sorters string) ApiGetRoleMiningSessionsRequest {
 	r.sorters = &sorters
 	return r
@@ -2830,71 +3391,61 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionsExecute(r ApiGetRoleMinin
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetSavedRolesRequest struct {
+type ApiGetSavedPotentialRolesRequest struct {
 	ctx context.Context
 	ApiService *IAIRoleMiningApiService
-	sessionId string
 	sorters *string
-	filters *string
 	offset *int32
 	limit *int32
 	count *bool
 }
 
 // Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Sorting is supported for the following fields: **modified**
-func (r ApiGetSavedRolesRequest) Sorters(sorters string) ApiGetSavedRolesRequest {
+func (r ApiGetSavedPotentialRolesRequest) Sorters(sorters string) ApiGetSavedPotentialRolesRequest {
 	r.sorters = &sorters
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/) Filtering is supported for the following fields and operators: **description**: *sw, co* **name**: *eq, sw, co* **type**: *eq*
-func (r ApiGetSavedRolesRequest) Filters(filters string) ApiGetSavedRolesRequest {
-	r.filters = &filters
-	return r
-}
-
 // Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetSavedRolesRequest) Offset(offset int32) ApiGetSavedRolesRequest {
+func (r ApiGetSavedPotentialRolesRequest) Offset(offset int32) ApiGetSavedPotentialRolesRequest {
 	r.offset = &offset
 	return r
 }
 
 // Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetSavedRolesRequest) Limit(limit int32) ApiGetSavedRolesRequest {
+func (r ApiGetSavedPotentialRolesRequest) Limit(limit int32) ApiGetSavedPotentialRolesRequest {
 	r.limit = &limit
 	return r
 }
 
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-func (r ApiGetSavedRolesRequest) Count(count bool) ApiGetSavedRolesRequest {
+func (r ApiGetSavedPotentialRolesRequest) Count(count bool) ApiGetSavedPotentialRolesRequest {
 	r.count = &count
 	return r
 }
 
-func (r ApiGetSavedRolesRequest) Execute() ([]RoleMiningSessionDraftRoleDto, *http.Response, error) {
-	return r.ApiService.GetSavedRolesExecute(r)
+func (r ApiGetSavedPotentialRolesRequest) Execute() ([]RoleMiningSessionDraftRoleDto, *http.Response, error) {
+	return r.ApiService.GetSavedPotentialRolesExecute(r)
 }
 
 /*
-GetSavedRoles Retrieves all draft roles
+GetSavedPotentialRoles Retrieves all saved potential roles
 
-This method returns all saved potential roles (draft roles) for a role mining session.
+This method returns all saved potential roles (draft roles).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param sessionId The role mining session id
- @return ApiGetSavedRolesRequest
+ @return ApiGetSavedPotentialRolesRequest
 */
-func (a *IAIRoleMiningApiService) GetSavedRoles(ctx context.Context, sessionId string) ApiGetSavedRolesRequest {
-	return ApiGetSavedRolesRequest{
+func (a *IAIRoleMiningApiService) GetSavedPotentialRoles(ctx context.Context) ApiGetSavedPotentialRolesRequest {
+	return ApiGetSavedPotentialRolesRequest{
 		ApiService: a,
 		ctx: ctx,
-		sessionId: sessionId,
 	}
 }
 
 // Execute executes the request
 //  @return []RoleMiningSessionDraftRoleDto
-func (a *IAIRoleMiningApiService) GetSavedRolesExecute(r ApiGetSavedRolesRequest) ([]RoleMiningSessionDraftRoleDto, *http.Response, error) {
+func (a *IAIRoleMiningApiService) GetSavedPotentialRolesExecute(r ApiGetSavedPotentialRolesRequest) ([]RoleMiningSessionDraftRoleDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2902,13 +3453,12 @@ func (a *IAIRoleMiningApiService) GetSavedRolesExecute(r ApiGetSavedRolesRequest
 		localVarReturnValue  []RoleMiningSessionDraftRoleDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetSavedRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetSavedPotentialRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/role-mining-sessions/{sessionId}/potential-roles/draft-roles"
-	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterValueToString(r.sessionId, "sessionId")), -1)
+	localVarPath := localBasePath + "/role-mining-potential-roles/saved"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2916,9 +3466,6 @@ func (a *IAIRoleMiningApiService) GetSavedRolesExecute(r ApiGetSavedRolesRequest
 
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
-	}
-	if r.filters != nil {
-		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
@@ -3101,6 +3648,201 @@ func (a *IAIRoleMiningApiService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 	}
 
 	localVarPath := localBasePath + "/role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterValueToString(r.sessionId, "sessionId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"potentialRoleId"+"}", url.PathEscape(parameterValueToString(r.potentialRoleId, "potentialRoleId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.patchPotentialRoleRequestInner == nil {
+		return localVarReturnValue, nil, reportError("patchPotentialRoleRequestInner is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json-patch+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.patchPotentialRoleRequestInner
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiPatchPotentialRole_0Request struct {
+	ctx context.Context
+	ApiService *IAIRoleMiningApiService
+	sessionId string
+	potentialRoleId string
+	patchPotentialRoleRequestInner *[]PatchPotentialRoleRequestInner
+}
+
+func (r ApiPatchPotentialRole_0Request) PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner []PatchPotentialRoleRequestInner) ApiPatchPotentialRole_0Request {
+	r.patchPotentialRoleRequestInner = &patchPotentialRoleRequestInner
+	return r
+}
+
+func (r ApiPatchPotentialRole_0Request) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.PatchPotentialRole_1Execute(r)
+}
+
+/*
+PatchPotentialRole_0 Update a potential role
+
+The method updates an existing potential role using.
+
+The following fields can be modified:
+
+* `description`
+
+* `name`
+
+* `saved`
+
+
+>**NOTE: All other fields cannot be modified.**
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param sessionId The role mining session id
+ @param potentialRoleId The potential role summary id
+ @return ApiPatchPotentialRole_0Request
+*/
+func (a *IAIRoleMiningApiService) PatchPotentialRole_1(ctx context.Context, sessionId string, potentialRoleId string) ApiPatchPotentialRole_0Request {
+	return ApiPatchPotentialRole_0Request{
+		ApiService: a,
+		ctx: ctx,
+		sessionId: sessionId,
+		potentialRoleId: potentialRoleId,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *IAIRoleMiningApiService) PatchPotentialRole_1Execute(r ApiPatchPotentialRole_0Request) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.PatchPotentialRole_1")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/role-mining-potential-roles/{potentialRoleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterValueToString(r.sessionId, "sessionId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"potentialRoleId"+"}", url.PathEscape(parameterValueToString(r.potentialRoleId, "potentialRoleId")), -1)
 

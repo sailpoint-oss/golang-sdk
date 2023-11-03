@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **map[string]interface{}** | The type of object that is referenced | 
-**Id** | **string** | ID of the object to which this reference applies | 
-**Name** | **string** | Human-readable display name of the object to which this reference applies | 
+**Id** | **string** | ID of identity who approved the access item request. | 
+**Name** | **string** | Human-readable display name of identity who approved the access item request. | 
 
 ## Methods
 

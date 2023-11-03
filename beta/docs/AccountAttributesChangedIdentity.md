@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **map[string]interface{}** | The type of object that is referenced | 
-**Id** | **string** | ID of the object to which this reference applies | 
-**Name** | **string** | Human-readable display name of the object to which this reference applies | 
+**Type** | **string** | DTO type of the identity whose account attributes were updated. | 
+**Id** | **string** | ID of the identity whose account attributes were updated. | 
+**Name** | **string** | Display name of the identity whose account attributes were updated. | 
 
 ## Methods
 
 ### NewAccountAttributesChangedIdentity
 
-`func NewAccountAttributesChangedIdentity(type_ map[string]interface{}, id string, name string, ) *AccountAttributesChangedIdentity`
+`func NewAccountAttributesChangedIdentity(type_ string, id string, name string, ) *AccountAttributesChangedIdentity`
 
 NewAccountAttributesChangedIdentity instantiates a new AccountAttributesChangedIdentity object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *AccountAttributesChangedIdentity) GetType() map[string]interface{}`
+`func (o *AccountAttributesChangedIdentity) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AccountAttributesChangedIdentity) GetTypeOk() (*map[string]interface{}, bool)`
+`func (o *AccountAttributesChangedIdentity) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AccountAttributesChangedIdentity) SetType(v map[string]interface{})`
+`func (o *AccountAttributesChangedIdentity) SetType(v string)`
 
 SetType sets Type field to given value.
 

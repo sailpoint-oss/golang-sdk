@@ -20,37 +20,37 @@ var _ MappedNullable = &SodPolicy{}
 
 // SodPolicy struct for SodPolicy
 type SodPolicy struct {
-	// Policy id
+	// Policy ID.
 	Id *string `json:"id,omitempty"`
-	// Policy Business Name
+	// Policy business name.
 	Name *string `json:"name,omitempty"`
 	// The time when this SOD policy is created.
 	Created *time.Time `json:"created,omitempty"`
 	// The time when this SOD policy is modified.
 	Modified *time.Time `json:"modified,omitempty"`
-	// Optional description of the SOD policy
+	// Optional description of the SOD policy.
 	Description NullableString `json:"description,omitempty"`
-	OwnerRef *BaseReferenceDto1 `json:"ownerRef,omitempty"`
-	// Optional External Policy Reference
+	OwnerRef *OwnerDto `json:"ownerRef,omitempty"`
+	// Optional external policy reference.
 	ExternalPolicyReference NullableString `json:"externalPolicyReference,omitempty"`
-	// Search query of the SOD policy
+	// Search query of the SOD policy.
 	PolicyQuery *string `json:"policyQuery,omitempty"`
-	// Optional compensating controls(Mitigating Controls)
+	// Optional compensating controls (Mitigating Controls).
 	CompensatingControls NullableString `json:"compensatingControls,omitempty"`
-	// Optional correction advice
+	// Optional correction advice.
 	CorrectionAdvice NullableString `json:"correctionAdvice,omitempty"`
-	// whether the policy is enforced or not
+	// Whether the policy is enforced or not.
 	State *string `json:"state,omitempty"`
-	// tags for this policy object
+	// Tags for the policy object.
 	Tags []string `json:"tags,omitempty"`
-	// Policy's creator ID
+	// Policy's creator ID.
 	CreatorId *string `json:"creatorId,omitempty"`
-	// Policy's modifier ID
+	// Policy's modifier ID.
 	ModifierId NullableString `json:"modifierId,omitempty"`
 	ViolationOwnerAssignmentConfig *ViolationOwnerAssignmentConfig `json:"violationOwnerAssignmentConfig,omitempty"`
-	// defines whether a policy has been scheduled or not
+	// Defines whether a policy has been scheduled or not.
 	Scheduled *bool `json:"scheduled,omitempty"`
-	// whether a policy is query based or conflicting access based
+	// Whether a policy is query based or conflicting access based.
 	Type *string `json:"type,omitempty"`
 	ConflictingAccessCriteria *SodPolicyConflictingAccessCriteria `json:"conflictingAccessCriteria,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -254,9 +254,9 @@ func (o *SodPolicy) UnsetDescription() {
 }
 
 // GetOwnerRef returns the OwnerRef field value if set, zero value otherwise.
-func (o *SodPolicy) GetOwnerRef() BaseReferenceDto1 {
+func (o *SodPolicy) GetOwnerRef() OwnerDto {
 	if o == nil || isNil(o.OwnerRef) {
-		var ret BaseReferenceDto1
+		var ret OwnerDto
 		return ret
 	}
 	return *o.OwnerRef
@@ -264,7 +264,7 @@ func (o *SodPolicy) GetOwnerRef() BaseReferenceDto1 {
 
 // GetOwnerRefOk returns a tuple with the OwnerRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SodPolicy) GetOwnerRefOk() (*BaseReferenceDto1, bool) {
+func (o *SodPolicy) GetOwnerRefOk() (*OwnerDto, bool) {
 	if o == nil || isNil(o.OwnerRef) {
 		return nil, false
 	}
@@ -280,8 +280,8 @@ func (o *SodPolicy) HasOwnerRef() bool {
 	return false
 }
 
-// SetOwnerRef gets a reference to the given BaseReferenceDto1 and assigns it to the OwnerRef field.
-func (o *SodPolicy) SetOwnerRef(v BaseReferenceDto1) {
+// SetOwnerRef gets a reference to the given OwnerDto and assigns it to the OwnerRef field.
+func (o *SodPolicy) SetOwnerRef(v OwnerDto) {
 	o.OwnerRef = &v
 }
 

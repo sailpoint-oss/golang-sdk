@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
-**Status** | Pointer to **string** | Status of a violation report | [optional] 
+**Type** | Pointer to **string** | SOD policy violation report result DTO type. | [optional] 
+**Id** | Pointer to **string** | SOD policy violation report result ID. | [optional] 
+**Name** | Pointer to **string** | Human-readable name of the SOD policy violation report result. | [optional] 
+**Status** | Pointer to **string** | Status of a SOD policy violation report. | [optional] 
 **ReportType** | [**ReportType**](ReportType.md) |  | 
 **LastRunAt** | Pointer to **time.Time** | The most recent date and time this report was run | [optional] [readonly] 
 
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *CampaignReport) GetType() DtoType`
+`func (o *CampaignReport) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *CampaignReport) GetTypeOk() (*DtoType, bool)`
+`func (o *CampaignReport) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *CampaignReport) SetType(v DtoType)`
+`func (o *CampaignReport) SetType(v string)`
 
 SetType sets Type field to given value.
 

@@ -17,13 +17,13 @@ import (
 // checks if the IdentityDeletedIdentity type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IdentityDeletedIdentity{}
 
-// IdentityDeletedIdentity The identity that was deleted.
+// IdentityDeletedIdentity Deleted identity.
 type IdentityDeletedIdentity struct {
-	// The type of object that is referenced
-	Type map[string]interface{} `json:"type"`
-	// ID of the object to which this reference applies
+	// Deleted identity's DTO type.
+	Type string `json:"type"`
+	// Deleted identity ID.
 	Id string `json:"id"`
-	// Human-readable display name of the object to which this reference applies
+	// Deleted identity's display name.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,7 +34,7 @@ type _IdentityDeletedIdentity IdentityDeletedIdentity
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityDeletedIdentity(type_ map[string]interface{}, id string, name string) *IdentityDeletedIdentity {
+func NewIdentityDeletedIdentity(type_ string, id string, name string) *IdentityDeletedIdentity {
 	this := IdentityDeletedIdentity{}
 	this.Type = type_
 	this.Id = id
@@ -51,9 +51,9 @@ func NewIdentityDeletedIdentityWithDefaults() *IdentityDeletedIdentity {
 }
 
 // GetType returns the Type field value
-func (o *IdentityDeletedIdentity) GetType() map[string]interface{} {
+func (o *IdentityDeletedIdentity) GetType() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -62,15 +62,15 @@ func (o *IdentityDeletedIdentity) GetType() map[string]interface{} {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *IdentityDeletedIdentity) GetTypeOk() (map[string]interface{}, bool) {
+func (o *IdentityDeletedIdentity) GetTypeOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
 // SetType sets field value
-func (o *IdentityDeletedIdentity) SetType(v map[string]interface{}) {
+func (o *IdentityDeletedIdentity) SetType(v string) {
 	o.Type = v
 }
 

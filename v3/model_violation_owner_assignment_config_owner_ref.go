@@ -19,10 +19,11 @@ var _ MappedNullable = &ViolationOwnerAssignmentConfigOwnerRef{}
 
 // ViolationOwnerAssignmentConfigOwnerRef struct for ViolationOwnerAssignmentConfigOwnerRef
 type ViolationOwnerAssignmentConfigOwnerRef struct {
-	Type *DtoType `json:"type,omitempty"`
-	// ID of the object to which this reference applies
+	// Owner's DTO type.
+	Type *string `json:"type,omitempty"`
+	// Owner's identity ID.
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the object to which this reference applies
+	// Owner's display name.
 	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -47,9 +48,9 @@ func NewViolationOwnerAssignmentConfigOwnerRefWithDefaults() *ViolationOwnerAssi
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) GetType() DtoType {
+func (o *ViolationOwnerAssignmentConfigOwnerRef) GetType() string {
 	if o == nil || isNil(o.Type) {
-		var ret DtoType
+		var ret string
 		return ret
 	}
 	return *o.Type
@@ -57,7 +58,7 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) GetType() DtoType {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) GetTypeOk() (*DtoType, bool) {
+func (o *ViolationOwnerAssignmentConfigOwnerRef) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
@@ -73,8 +74,8 @@ func (o *ViolationOwnerAssignmentConfigOwnerRef) HasType() bool {
 	return false
 }
 
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *ViolationOwnerAssignmentConfigOwnerRef) SetType(v DtoType) {
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *ViolationOwnerAssignmentConfigOwnerRef) SetType(v string) {
 	o.Type = &v
 }
 

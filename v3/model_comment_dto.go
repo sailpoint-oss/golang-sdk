@@ -20,10 +20,10 @@ var _ MappedNullable = &CommentDto{}
 
 // CommentDto struct for CommentDto
 type CommentDto struct {
-	// Content of the comment
-	Comment *string `json:"comment,omitempty"`
+	// Comment content.
+	Comment NullableString `json:"comment,omitempty"`
 	Author *CommentDtoAuthor `json:"author,omitempty"`
-	// Date and time comment was created
+	// Date and time comment was created.
 	Created *time.Time `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -47,36 +47,46 @@ func NewCommentDtoWithDefaults() *CommentDto {
 	return &this
 }
 
-// GetComment returns the Comment field value if set, zero value otherwise.
+// GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CommentDto) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || isNil(o.Comment.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Comment
+	return *o.Comment.Get()
 }
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CommentDto) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Comment, true
+	return o.Comment.Get(), o.Comment.IsSet()
 }
 
 // HasComment returns a boolean if a field has been set.
 func (o *CommentDto) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && o.Comment.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetComment gets a reference to the given string and assigns it to the Comment field.
+// SetComment gets a reference to the given NullableString and assigns it to the Comment field.
 func (o *CommentDto) SetComment(v string) {
-	o.Comment = &v
+	o.Comment.Set(&v)
+}
+// SetCommentNil sets the value for Comment to be an explicit nil
+func (o *CommentDto) SetCommentNil() {
+	o.Comment.Set(nil)
+}
+
+// UnsetComment ensures that no value is present for Comment, not even an explicit nil
+func (o *CommentDto) UnsetComment() {
+	o.Comment.Unset()
 }
 
 // GetAuthor returns the Author field value if set, zero value otherwise.
@@ -153,8 +163,8 @@ func (o CommentDto) MarshalJSON() ([]byte, error) {
 
 func (o CommentDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
+	if o.Comment.IsSet() {
+		toSerialize["comment"] = o.Comment.Get()
 	}
 	if !isNil(o.Author) {
 		toSerialize["author"] = o.Author

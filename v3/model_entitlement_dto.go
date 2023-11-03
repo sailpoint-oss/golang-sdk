@@ -42,7 +42,7 @@ type EntitlementDto struct {
 	Privileged *bool `json:"privileged,omitempty"`
 	// Determines if this Entitlement is goverened in the cloud.
 	CloudGoverned *bool `json:"cloudGoverned,omitempty"`
-	Source *BaseReferenceDto `json:"source,omitempty"`
+	Source *EntitlementSource `json:"source,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -411,9 +411,9 @@ func (o *EntitlementDto) SetCloudGoverned(v bool) {
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *EntitlementDto) GetSource() BaseReferenceDto {
+func (o *EntitlementDto) GetSource() EntitlementSource {
 	if o == nil || isNil(o.Source) {
-		var ret BaseReferenceDto
+		var ret EntitlementSource
 		return ret
 	}
 	return *o.Source
@@ -421,7 +421,7 @@ func (o *EntitlementDto) GetSource() BaseReferenceDto {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EntitlementDto) GetSourceOk() (*BaseReferenceDto, bool) {
+func (o *EntitlementDto) GetSourceOk() (*EntitlementSource, bool) {
 	if o == nil || isNil(o.Source) {
 		return nil, false
 	}
@@ -437,8 +437,8 @@ func (o *EntitlementDto) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given BaseReferenceDto and assigns it to the Source field.
-func (o *EntitlementDto) SetSource(v BaseReferenceDto) {
+// SetSource gets a reference to the given EntitlementSource and assigns it to the Source field.
+func (o *EntitlementDto) SetSource(v EntitlementSource) {
 	o.Source = &v
 }
 

@@ -22,8 +22,8 @@ var _ MappedNullable = &ManualWorkItemDetails{}
 type ManualWorkItemDetails struct {
 	// True if the request for this item was forwarded from one owner to another.
 	Forwarded *bool `json:"forwarded,omitempty"`
-	OriginalOwner *BaseReferenceDto1 `json:"originalOwner,omitempty"`
-	CurrentOwner *BaseReferenceDto1 `json:"currentOwner,omitempty"`
+	OriginalOwner *ManualWorkItemDetailsOriginalOwner `json:"originalOwner,omitempty"`
+	CurrentOwner *ManualWorkItemDetailsCurrentOwner `json:"currentOwner,omitempty"`
 	// Time at which item was modified.
 	Modified *time.Time `json:"modified,omitempty"`
 	Status *ManualWorkItemState `json:"status,omitempty"`
@@ -84,9 +84,9 @@ func (o *ManualWorkItemDetails) SetForwarded(v bool) {
 }
 
 // GetOriginalOwner returns the OriginalOwner field value if set, zero value otherwise.
-func (o *ManualWorkItemDetails) GetOriginalOwner() BaseReferenceDto1 {
+func (o *ManualWorkItemDetails) GetOriginalOwner() ManualWorkItemDetailsOriginalOwner {
 	if o == nil || isNil(o.OriginalOwner) {
-		var ret BaseReferenceDto1
+		var ret ManualWorkItemDetailsOriginalOwner
 		return ret
 	}
 	return *o.OriginalOwner
@@ -94,7 +94,7 @@ func (o *ManualWorkItemDetails) GetOriginalOwner() BaseReferenceDto1 {
 
 // GetOriginalOwnerOk returns a tuple with the OriginalOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ManualWorkItemDetails) GetOriginalOwnerOk() (*BaseReferenceDto1, bool) {
+func (o *ManualWorkItemDetails) GetOriginalOwnerOk() (*ManualWorkItemDetailsOriginalOwner, bool) {
 	if o == nil || isNil(o.OriginalOwner) {
 		return nil, false
 	}
@@ -110,15 +110,15 @@ func (o *ManualWorkItemDetails) HasOriginalOwner() bool {
 	return false
 }
 
-// SetOriginalOwner gets a reference to the given BaseReferenceDto1 and assigns it to the OriginalOwner field.
-func (o *ManualWorkItemDetails) SetOriginalOwner(v BaseReferenceDto1) {
+// SetOriginalOwner gets a reference to the given ManualWorkItemDetailsOriginalOwner and assigns it to the OriginalOwner field.
+func (o *ManualWorkItemDetails) SetOriginalOwner(v ManualWorkItemDetailsOriginalOwner) {
 	o.OriginalOwner = &v
 }
 
 // GetCurrentOwner returns the CurrentOwner field value if set, zero value otherwise.
-func (o *ManualWorkItemDetails) GetCurrentOwner() BaseReferenceDto1 {
+func (o *ManualWorkItemDetails) GetCurrentOwner() ManualWorkItemDetailsCurrentOwner {
 	if o == nil || isNil(o.CurrentOwner) {
-		var ret BaseReferenceDto1
+		var ret ManualWorkItemDetailsCurrentOwner
 		return ret
 	}
 	return *o.CurrentOwner
@@ -126,7 +126,7 @@ func (o *ManualWorkItemDetails) GetCurrentOwner() BaseReferenceDto1 {
 
 // GetCurrentOwnerOk returns a tuple with the CurrentOwner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ManualWorkItemDetails) GetCurrentOwnerOk() (*BaseReferenceDto1, bool) {
+func (o *ManualWorkItemDetails) GetCurrentOwnerOk() (*ManualWorkItemDetailsCurrentOwner, bool) {
 	if o == nil || isNil(o.CurrentOwner) {
 		return nil, false
 	}
@@ -142,8 +142,8 @@ func (o *ManualWorkItemDetails) HasCurrentOwner() bool {
 	return false
 }
 
-// SetCurrentOwner gets a reference to the given BaseReferenceDto1 and assigns it to the CurrentOwner field.
-func (o *ManualWorkItemDetails) SetCurrentOwner(v BaseReferenceDto1) {
+// SetCurrentOwner gets a reference to the given ManualWorkItemDetailsCurrentOwner and assigns it to the CurrentOwner field.
+func (o *ManualWorkItemDetails) SetCurrentOwner(v ManualWorkItemDetailsCurrentOwner) {
 	o.CurrentOwner = &v
 }
 

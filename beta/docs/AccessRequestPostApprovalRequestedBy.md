@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **map[string]interface{}** | The type of object that is referenced | 
-**Id** | **string** | ID of the object to which this reference applies | 
-**Name** | **string** | Human-readable display name of the object to which this reference applies | 
+**Type** | **string** | Access item requester&#39;s DTO type. | 
+**Id** | **string** | Access item requester&#39;s identity ID. | 
+**Name** | **string** | Access item owner&#39;s human-readable display name. | 
 
 ## Methods
 
 ### NewAccessRequestPostApprovalRequestedBy
 
-`func NewAccessRequestPostApprovalRequestedBy(type_ map[string]interface{}, id string, name string, ) *AccessRequestPostApprovalRequestedBy`
+`func NewAccessRequestPostApprovalRequestedBy(type_ string, id string, name string, ) *AccessRequestPostApprovalRequestedBy`
 
 NewAccessRequestPostApprovalRequestedBy instantiates a new AccessRequestPostApprovalRequestedBy object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *AccessRequestPostApprovalRequestedBy) GetType() map[string]interface{}`
+`func (o *AccessRequestPostApprovalRequestedBy) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *AccessRequestPostApprovalRequestedBy) GetTypeOk() (*map[string]interface{}, bool)`
+`func (o *AccessRequestPostApprovalRequestedBy) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *AccessRequestPostApprovalRequestedBy) SetType(v map[string]interface{})`
+`func (o *AccessRequestPostApprovalRequestedBy) SetType(v string)`
 
 SetType sets Type field to given value.
 

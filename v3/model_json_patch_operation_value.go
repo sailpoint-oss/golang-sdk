@@ -15,91 +15,158 @@ import (
 	"fmt"
 )
 
-// JsonPatchOperationValue The value to be used for the operation, required for \"add\" and \"replace\" operations
+// JsonPatchOperationValue - The value to be used for the operation, required for \"add\" and \"replace\" operations
 type JsonPatchOperationValue struct {
-	jsonPatchOperationValueAnyOfInnervar *[]JsonPatchOperationValueAnyOfInner
-	int32var *int32
-	mapvar *map[string]interface{}
-	stringvar *string
+	ArrayOfArrayInner *[]ArrayInner
+	Int32 *int32
+	MapmapOfStringinterface *map[string]interface{}
+	String *string
 }
 
-// Unmarshal JSON data into any of the pointers in the struct
+// []ArrayInnerAsJsonPatchOperationValue is a convenience function that returns []ArrayInner wrapped in JsonPatchOperationValue
+func ArrayOfArrayInnerAsJsonPatchOperationValue(v *[]ArrayInner) JsonPatchOperationValue {
+	return JsonPatchOperationValue{
+		ArrayOfArrayInner: v,
+	}
+}
+
+// int32AsJsonPatchOperationValue is a convenience function that returns int32 wrapped in JsonPatchOperationValue
+func Int32AsJsonPatchOperationValue(v *int32) JsonPatchOperationValue {
+	return JsonPatchOperationValue{
+		Int32: v,
+	}
+}
+
+// map[string]interface{}AsJsonPatchOperationValue is a convenience function that returns map[string]interface{} wrapped in JsonPatchOperationValue
+func MapmapOfStringinterfaceAsJsonPatchOperationValue(v *map[string]interface{}) JsonPatchOperationValue {
+	return JsonPatchOperationValue{
+		MapmapOfStringinterface: v,
+	}
+}
+
+// stringAsJsonPatchOperationValue is a convenience function that returns string wrapped in JsonPatchOperationValue
+func StringAsJsonPatchOperationValue(v *string) JsonPatchOperationValue {
+	return JsonPatchOperationValue{
+		String: v,
+	}
+}
+
+
+// Unmarshal JSON data into one of the pointers in the struct
 func (dst *JsonPatchOperationValue) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into jsonPatchOperationValueAnyOfInnervar
-	err = json.Unmarshal(data, &dst.jsonPatchOperationValueAnyOfInnervar);
+	match := 0
+	// try to unmarshal data into ArrayOfArrayInner
+	err = newStrictDecoder(data).Decode(&dst.ArrayOfArrayInner)
 	if err == nil {
-		jsonjsonPatchOperationValueAnyOfInnervar, _ := json.Marshal(dst.jsonPatchOperationValueAnyOfInnervar)
-		if string(jsonjsonPatchOperationValueAnyOfInnervar) == "{}" { // empty struct
-			dst.jsonPatchOperationValueAnyOfInnervar = nil
+		jsonArrayOfArrayInner, _ := json.Marshal(dst.ArrayOfArrayInner)
+		if string(jsonArrayOfArrayInner) == "{}" { // empty struct
+			dst.ArrayOfArrayInner = nil
 		} else {
-			return nil // data stored in dst.jsonPatchOperationValueAnyOfInnervar, return on the first match
+			match++
 		}
 	} else {
-		dst.jsonPatchOperationValueAnyOfInnervar = nil
+		dst.ArrayOfArrayInner = nil
 	}
 
-	// try to unmarshal JSON data into int32var
-	err = json.Unmarshal(data, &dst.int32var);
+	// try to unmarshal data into Int32
+	err = newStrictDecoder(data).Decode(&dst.Int32)
 	if err == nil {
-		jsonint32var, _ := json.Marshal(dst.int32var)
-		if string(jsonint32var) == "{}" { // empty struct
-			dst.int32var = nil
+		jsonInt32, _ := json.Marshal(dst.Int32)
+		if string(jsonInt32) == "{}" { // empty struct
+			dst.Int32 = nil
 		} else {
-			return nil // data stored in dst.int32var, return on the first match
+			match++
 		}
 	} else {
-		dst.int32var = nil
+		dst.Int32 = nil
 	}
 
-	// try to unmarshal JSON data into mapvar
-	err = json.Unmarshal(data, &dst.mapvar);
+	// try to unmarshal data into MapmapOfStringinterface
+	err = newStrictDecoder(data).Decode(&dst.MapmapOfStringinterface)
 	if err == nil {
-		jsonmapvar, _ := json.Marshal(dst.mapvar)
-		if string(jsonmapvar) == "{}" { // empty struct
-			dst.mapvar = nil
+		jsonMapmapOfStringinterface, _ := json.Marshal(dst.MapmapOfStringinterface)
+		if string(jsonMapmapOfStringinterface) == "{}" { // empty struct
+			dst.MapmapOfStringinterface = nil
 		} else {
-			return nil // data stored in dst.mapvar, return on the first match
+			match++
 		}
 	} else {
-		dst.mapvar = nil
+		dst.MapmapOfStringinterface = nil
 	}
 
-	// try to unmarshal JSON data into stringvar
-	err = json.Unmarshal(data, &dst.stringvar);
+	// try to unmarshal data into String
+	err = newStrictDecoder(data).Decode(&dst.String)
 	if err == nil {
-		jsonstringvar, _ := json.Marshal(dst.stringvar)
-		if string(jsonstringvar) == "{}" { // empty struct
-			dst.stringvar = nil
+		jsonString, _ := json.Marshal(dst.String)
+		if string(jsonString) == "{}" { // empty struct
+			dst.String = nil
 		} else {
-			return nil // data stored in dst.stringvar, return on the first match
+			match++
 		}
 	} else {
-		dst.stringvar = nil
+		dst.String = nil
 	}
 
-	return fmt.Errorf("data failed to match schemas in anyOf(JsonPatchOperationValue)")
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.ArrayOfArrayInner = nil
+		dst.Int32 = nil
+		dst.MapmapOfStringinterface = nil
+		dst.String = nil
+
+		return fmt.Errorf("data matches more than one schema in oneOf(JsonPatchOperationValue)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(JsonPatchOperationValue)")
+	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *JsonPatchOperationValue) MarshalJSON() ([]byte, error) {
-	if src.jsonPatchOperationValueAnyOfInnervar != nil {
-		return json.Marshal(&src.jsonPatchOperationValueAnyOfInnervar)
+func (src JsonPatchOperationValue) MarshalJSON() ([]byte, error) {
+	if src.ArrayOfArrayInner != nil {
+		return json.Marshal(&src.ArrayOfArrayInner)
 	}
 
-	if src.int32var != nil {
-		return json.Marshal(&src.int32var)
+	if src.Int32 != nil {
+		return json.Marshal(&src.Int32)
 	}
 
-	if src.mapvar != nil {
-		return json.Marshal(&src.mapvar)
+	if src.MapmapOfStringinterface != nil {
+		return json.Marshal(&src.MapmapOfStringinterface)
 	}
 
-	if src.stringvar != nil {
-		return json.Marshal(&src.stringvar)
+	if src.String != nil {
+		return json.Marshal(&src.String)
 	}
 
-	return nil, nil // no data in anyOf schemas
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *JsonPatchOperationValue) GetActualInstance() (interface{}) {
+	if obj == nil {
+		return nil
+	}
+	if obj.ArrayOfArrayInner != nil {
+		return obj.ArrayOfArrayInner
+	}
+
+	if obj.Int32 != nil {
+		return obj.Int32
+	}
+
+	if obj.MapmapOfStringinterface != nil {
+		return obj.MapmapOfStringinterface
+	}
+
+	if obj.String != nil {
+		return obj.String
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableJsonPatchOperationValue struct {

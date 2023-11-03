@@ -19,8 +19,7 @@ var _ MappedNullable = &FullcampaignAllOfRoleCompositionCampaignInfo{}
 
 // FullcampaignAllOfRoleCompositionCampaignInfo Optional configuration options for role composition campaigns.
 type FullcampaignAllOfRoleCompositionCampaignInfo struct {
-	// If specified, this identity or governance group will be the reviewer for all certifications in this campaign. The allowed DTO types are IDENTITY and GOVERNANCE_GROUP
-	Reviewer *BaseReferenceDto1 `json:"reviewer,omitempty"`
+	Reviewer *FullcampaignAllOfSearchCampaignInfoReviewer `json:"reviewer,omitempty"`
 	// Optional list of roles to include in this campaign. Only one of `roleIds` and `query` may be set; if neither are set, all roles are included.
 	RoleIds []string `json:"roleIds,omitempty"`
 	RemediatorRef FullcampaignAllOfRoleCompositionCampaignInfoRemediatorRef `json:"remediatorRef"`
@@ -52,9 +51,9 @@ func NewFullcampaignAllOfRoleCompositionCampaignInfoWithDefaults() *Fullcampaign
 }
 
 // GetReviewer returns the Reviewer field value if set, zero value otherwise.
-func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewer() BaseReferenceDto1 {
+func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewer() FullcampaignAllOfSearchCampaignInfoReviewer {
 	if o == nil || isNil(o.Reviewer) {
-		var ret BaseReferenceDto1
+		var ret FullcampaignAllOfSearchCampaignInfoReviewer
 		return ret
 	}
 	return *o.Reviewer
@@ -62,7 +61,7 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewer() BaseReferen
 
 // GetReviewerOk returns a tuple with the Reviewer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*BaseReferenceDto1, bool) {
+func (o *FullcampaignAllOfRoleCompositionCampaignInfo) GetReviewerOk() (*FullcampaignAllOfSearchCampaignInfoReviewer, bool) {
 	if o == nil || isNil(o.Reviewer) {
 		return nil, false
 	}
@@ -78,8 +77,8 @@ func (o *FullcampaignAllOfRoleCompositionCampaignInfo) HasReviewer() bool {
 	return false
 }
 
-// SetReviewer gets a reference to the given BaseReferenceDto1 and assigns it to the Reviewer field.
-func (o *FullcampaignAllOfRoleCompositionCampaignInfo) SetReviewer(v BaseReferenceDto1) {
+// SetReviewer gets a reference to the given FullcampaignAllOfSearchCampaignInfoReviewer and assigns it to the Reviewer field.
+func (o *FullcampaignAllOfRoleCompositionCampaignInfo) SetReviewer(v FullcampaignAllOfSearchCampaignInfoReviewer) {
 	o.Reviewer = &v
 }
 

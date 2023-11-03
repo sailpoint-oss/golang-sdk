@@ -20,19 +20,19 @@ var _ MappedNullable = &Segment{}
 
 // Segment struct for Segment
 type Segment struct {
-	// The id of the Segment.
+	// The segment's ID.
 	Id *string `json:"id,omitempty"`
-	// Segment Business Name
+	// The segment's business name.
 	Name *string `json:"name,omitempty"`
-	// The time when this Segment is created
+	// The time when the segment is created.
 	Created *time.Time `json:"created,omitempty"`
-	// The time when this Segment is modified
+	// The time when the segment is modified.
 	Modified *time.Time `json:"modified,omitempty"`
-	// Optional description of the Segment
+	// The segment's optional description.
 	Description *string `json:"description,omitempty"`
-	Owner NullableOwnerReference `json:"owner,omitempty"`
+	Owner NullableOwnerReferenceSegments `json:"owner,omitempty"`
 	VisibilityCriteria *VisibilityCriteria `json:"visibilityCriteria,omitempty"`
-	// Whether the Segment is currently active. Inactive segments have no effect.
+	// This boolean indicates whether the segment is currently active. Inactive segments have no effect.
 	Active *bool `json:"active,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -221,9 +221,9 @@ func (o *Segment) SetDescription(v string) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Segment) GetOwner() OwnerReference {
+func (o *Segment) GetOwner() OwnerReferenceSegments {
 	if o == nil || isNil(o.Owner.Get()) {
-		var ret OwnerReference
+		var ret OwnerReferenceSegments
 		return ret
 	}
 	return *o.Owner.Get()
@@ -232,7 +232,7 @@ func (o *Segment) GetOwner() OwnerReference {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Segment) GetOwnerOk() (*OwnerReference, bool) {
+func (o *Segment) GetOwnerOk() (*OwnerReferenceSegments, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -248,8 +248,8 @@ func (o *Segment) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given NullableOwnerReference and assigns it to the Owner field.
-func (o *Segment) SetOwner(v OwnerReference) {
+// SetOwner gets a reference to the given NullableOwnerReferenceSegments and assigns it to the Owner field.
+func (o *Segment) SetOwner(v OwnerReferenceSegments) {
 	o.Owner.Set(&v)
 }
 // SetOwnerNil sets the value for Owner to be an explicit nil

@@ -200,14 +200,14 @@ type ApiDeleteLifecycleStateRequest struct {
 	lifecycleStateId string
 }
 
-func (r ApiDeleteLifecycleStateRequest) Execute() (*BaseReferenceDto, *http.Response, error) {
+func (r ApiDeleteLifecycleStateRequest) Execute() (*LifecyclestateDeleted, *http.Response, error) {
 	return r.ApiService.DeleteLifecycleStateExecute(r)
 }
 
 /*
 DeleteLifecycleState Delete Lifecycle State by ID
 
-This endpoint deletes the Lifecycle State using it's ID.
+This endpoint deletes the Lifecycle State using its ID.
 A token with API, or ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -225,13 +225,13 @@ func (a *LifecycleStatesApiService) DeleteLifecycleState(ctx context.Context, id
 }
 
 // Execute executes the request
-//  @return BaseReferenceDto
-func (a *LifecycleStatesApiService) DeleteLifecycleStateExecute(r ApiDeleteLifecycleStateRequest) (*BaseReferenceDto, *http.Response, error) {
+//  @return LifecyclestateDeleted
+func (a *LifecycleStatesApiService) DeleteLifecycleStateExecute(r ApiDeleteLifecycleStateRequest) (*LifecyclestateDeleted, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *BaseReferenceDto
+		localVarReturnValue  *LifecyclestateDeleted
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesApiService.DeleteLifecycleState")

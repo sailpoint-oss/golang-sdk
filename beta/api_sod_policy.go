@@ -47,6 +47,8 @@ Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSodPolicyRequest
+
+Deprecated
 */
 func (a *SODPolicyApiService) CreateSodPolicy(ctx context.Context) ApiCreateSodPolicyRequest {
 	return ApiCreateSodPolicyRequest{
@@ -57,6 +59,7 @@ func (a *SODPolicyApiService) CreateSodPolicy(ctx context.Context) ApiCreateSodP
 
 // Execute executes the request
 //  @return SodPolicy
+// Deprecated
 func (a *SODPolicyApiService) CreateSodPolicyExecute(r ApiCreateSodPolicyRequest) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -215,6 +218,8 @@ Requires role of ORG_ADMIN.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the SOD Policy to delete.
  @return ApiDeleteSodPolicyRequest
+
+Deprecated
 */
 func (a *SODPolicyApiService) DeleteSodPolicy(ctx context.Context, id string) ApiDeleteSodPolicyRequest {
 	return ApiDeleteSodPolicyRequest{
@@ -225,6 +230,7 @@ func (a *SODPolicyApiService) DeleteSodPolicy(ctx context.Context, id string) Ap
 }
 
 // Execute executes the request
+// Deprecated
 func (a *SODPolicyApiService) DeleteSodPolicyExecute(r ApiDeleteSodPolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -376,6 +382,8 @@ Requires role of ORG_ADMIN.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the SOD policy the schedule must be deleted for.
  @return ApiDeleteSodPolicyScheduleRequest
+
+Deprecated
 */
 func (a *SODPolicyApiService) DeleteSodPolicySchedule(ctx context.Context, id string) ApiDeleteSodPolicyScheduleRequest {
 	return ApiDeleteSodPolicyScheduleRequest{
@@ -386,6 +394,7 @@ func (a *SODPolicyApiService) DeleteSodPolicySchedule(ctx context.Context, id st
 }
 
 // Execute executes the request
+// Deprecated
 func (a *SODPolicyApiService) DeleteSodPolicyScheduleExecute(r ApiDeleteSodPolicyScheduleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -515,19 +524,19 @@ func (a *SODPolicyApiService) DeleteSodPolicyScheduleExecute(r ApiDeleteSodPolic
 	return localVarHTTPResponse, nil
 }
 
-type ApiDownloadCustomViolationReportRequest struct {
+type ApiGetCustomViolationReportRequest struct {
 	ctx context.Context
 	ApiService *SODPolicyApiService
 	reportResultId string
 	fileName string
 }
 
-func (r ApiDownloadCustomViolationReportRequest) Execute() (*os.File, *http.Response, error) {
-	return r.ApiService.DownloadCustomViolationReportExecute(r)
+func (r ApiGetCustomViolationReportRequest) Execute() (*os.File, *http.Response, error) {
+	return r.ApiService.GetCustomViolationReportExecute(r)
 }
 
 /*
-DownloadCustomViolationReport Download custom violation report
+GetCustomViolationReport Download custom violation report
 
 This allows to download a specified named violation report for a given report reference.
 Requires role of ORG_ADMIN.
@@ -535,10 +544,12 @@ Requires role of ORG_ADMIN.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param reportResultId The ID of the report reference to download.
  @param fileName Custom Name for the  file.
- @return ApiDownloadCustomViolationReportRequest
+ @return ApiGetCustomViolationReportRequest
+
+Deprecated
 */
-func (a *SODPolicyApiService) DownloadCustomViolationReport(ctx context.Context, reportResultId string, fileName string) ApiDownloadCustomViolationReportRequest {
-	return ApiDownloadCustomViolationReportRequest{
+func (a *SODPolicyApiService) GetCustomViolationReport(ctx context.Context, reportResultId string, fileName string) ApiGetCustomViolationReportRequest {
+	return ApiGetCustomViolationReportRequest{
 		ApiService: a,
 		ctx: ctx,
 		reportResultId: reportResultId,
@@ -548,7 +559,8 @@ func (a *SODPolicyApiService) DownloadCustomViolationReport(ctx context.Context,
 
 // Execute executes the request
 //  @return *os.File
-func (a *SODPolicyApiService) DownloadCustomViolationReportExecute(r ApiDownloadCustomViolationReportRequest) (*os.File, *http.Response, error) {
+// Deprecated
+func (a *SODPolicyApiService) GetCustomViolationReportExecute(r ApiGetCustomViolationReportRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -556,7 +568,7 @@ func (a *SODPolicyApiService) DownloadCustomViolationReportExecute(r ApiDownload
 		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.DownloadCustomViolationReport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.GetCustomViolationReport")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -688,28 +700,30 @@ func (a *SODPolicyApiService) DownloadCustomViolationReportExecute(r ApiDownload
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDownloadDefaultViolationReportRequest struct {
+type ApiGetDefaultViolationReportRequest struct {
 	ctx context.Context
 	ApiService *SODPolicyApiService
 	reportResultId string
 }
 
-func (r ApiDownloadDefaultViolationReportRequest) Execute() (*os.File, *http.Response, error) {
-	return r.ApiService.DownloadDefaultViolationReportExecute(r)
+func (r ApiGetDefaultViolationReportRequest) Execute() (*os.File, *http.Response, error) {
+	return r.ApiService.GetDefaultViolationReportExecute(r)
 }
 
 /*
-DownloadDefaultViolationReport Download violation report
+GetDefaultViolationReport Download violation report
 
 This allows to download a violation report for a given report reference.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param reportResultId The ID of the report reference to download.
- @return ApiDownloadDefaultViolationReportRequest
+ @return ApiGetDefaultViolationReportRequest
+
+Deprecated
 */
-func (a *SODPolicyApiService) DownloadDefaultViolationReport(ctx context.Context, reportResultId string) ApiDownloadDefaultViolationReportRequest {
-	return ApiDownloadDefaultViolationReportRequest{
+func (a *SODPolicyApiService) GetDefaultViolationReport(ctx context.Context, reportResultId string) ApiGetDefaultViolationReportRequest {
+	return ApiGetDefaultViolationReportRequest{
 		ApiService: a,
 		ctx: ctx,
 		reportResultId: reportResultId,
@@ -718,7 +732,8 @@ func (a *SODPolicyApiService) DownloadDefaultViolationReport(ctx context.Context
 
 // Execute executes the request
 //  @return *os.File
-func (a *SODPolicyApiService) DownloadDefaultViolationReportExecute(r ApiDownloadDefaultViolationReportRequest) (*os.File, *http.Response, error) {
+// Deprecated
+func (a *SODPolicyApiService) GetDefaultViolationReportExecute(r ApiGetDefaultViolationReportRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -726,7 +741,7 @@ func (a *SODPolicyApiService) DownloadDefaultViolationReportExecute(r ApiDownloa
 		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.DownloadDefaultViolationReport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.GetDefaultViolationReport")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -874,6 +889,8 @@ Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSodAllReportRunStatusRequest
+
+Deprecated
 */
 func (a *SODPolicyApiService) GetSodAllReportRunStatus(ctx context.Context) ApiGetSodAllReportRunStatusRequest {
 	return ApiGetSodAllReportRunStatusRequest{
@@ -884,6 +901,7 @@ func (a *SODPolicyApiService) GetSodAllReportRunStatus(ctx context.Context) ApiG
 
 // Execute executes the request
 //  @return ReportResultReference
+// Deprecated
 func (a *SODPolicyApiService) GetSodAllReportRunStatusExecute(r ApiGetSodAllReportRunStatusRequest) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1030,6 +1048,8 @@ Requires role of ORG_ADMIN.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the object reference to retrieve.
  @return ApiGetSodPolicyRequest
+
+Deprecated
 */
 func (a *SODPolicyApiService) GetSodPolicy(ctx context.Context, id string) ApiGetSodPolicyRequest {
 	return ApiGetSodPolicyRequest{
@@ -1041,6 +1061,7 @@ func (a *SODPolicyApiService) GetSodPolicy(ctx context.Context, id string) ApiGe
 
 // Execute executes the request
 //  @return SodPolicy
+// Deprecated
 func (a *SODPolicyApiService) GetSodPolicyExecute(r ApiGetSodPolicyRequest) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1199,6 +1220,8 @@ Requires the role of ORG_ADMIN.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the object reference to retrieve.
  @return ApiGetSodPolicyScheduleRequest
+
+Deprecated
 */
 func (a *SODPolicyApiService) GetSodPolicySchedule(ctx context.Context, id string) ApiGetSodPolicyScheduleRequest {
 	return ApiGetSodPolicyScheduleRequest{
@@ -1210,6 +1233,7 @@ func (a *SODPolicyApiService) GetSodPolicySchedule(ctx context.Context, id strin
 
 // Execute executes the request
 //  @return SodPolicySchedule
+// Deprecated
 func (a *SODPolicyApiService) GetSodPolicyScheduleExecute(r ApiGetSodPolicyScheduleRequest) (*SodPolicySchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1357,6 +1381,8 @@ Requires role of ORG_ADMIN.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param reportResultId The ID of the report reference to retrieve.
  @return ApiGetSodViolationReportRunStatusRequest
+
+Deprecated
 */
 func (a *SODPolicyApiService) GetSodViolationReportRunStatus(ctx context.Context, reportResultId string) ApiGetSodViolationReportRunStatusRequest {
 	return ApiGetSodViolationReportRunStatusRequest{
@@ -1368,6 +1394,7 @@ func (a *SODPolicyApiService) GetSodViolationReportRunStatus(ctx context.Context
 
 // Execute executes the request
 //  @return ReportResultReference
+// Deprecated
 func (a *SODPolicyApiService) GetSodViolationReportRunStatusExecute(r ApiGetSodViolationReportRunStatusRequest) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1526,6 +1553,8 @@ Requires role of ORG_ADMIN.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the object reference to retrieve.
  @return ApiGetSodViolationReportStatusRequest
+
+Deprecated
 */
 func (a *SODPolicyApiService) GetSodViolationReportStatus(ctx context.Context, id string) ApiGetSodViolationReportStatusRequest {
 	return ApiGetSodViolationReportStatusRequest{
@@ -1537,6 +1566,7 @@ func (a *SODPolicyApiService) GetSodViolationReportStatus(ctx context.Context, i
 
 // Execute executes the request
 //  @return ReportResultReference
+// Deprecated
 func (a *SODPolicyApiService) GetSodViolationReportStatusExecute(r ApiGetSodViolationReportStatusRequest) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1721,6 +1751,8 @@ Requires role of ORG_ADMIN
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSodPoliciesRequest
+
+Deprecated
 */
 func (a *SODPolicyApiService) ListSodPolicies(ctx context.Context) ApiListSodPoliciesRequest {
 	return ApiListSodPoliciesRequest{
@@ -1731,6 +1763,7 @@ func (a *SODPolicyApiService) ListSodPolicies(ctx context.Context) ApiListSodPol
 
 // Execute executes the request
 //  @return []SodPolicy
+// Deprecated
 func (a *SODPolicyApiService) ListSodPoliciesExecute(r ApiListSodPoliciesRequest) ([]SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1892,11 +1925,13 @@ PatchSodPolicy Patch a SOD policy
 
 Allows updating SOD Policy fields other than ["id","created","creatorId","policyQuery","type"] using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 Requires role of ORG_ADMIN.
-This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception. 
+This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use this endpoint to patch general policies - doing so will build an API exception.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the SOD policy being modified.
  @return ApiPatchSodPolicyRequest
+
+Deprecated
 */
 func (a *SODPolicyApiService) PatchSodPolicy(ctx context.Context, id string) ApiPatchSodPolicyRequest {
 	return ApiPatchSodPolicyRequest{
@@ -1908,6 +1943,7 @@ func (a *SODPolicyApiService) PatchSodPolicy(ctx context.Context, id string) Api
 
 // Execute executes the request
 //  @return SodPolicy
+// Deprecated
 func (a *SODPolicyApiService) PatchSodPolicyExecute(r ApiPatchSodPolicyRequest) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
@@ -2052,365 +2088,36 @@ func (a *SODPolicyApiService) PatchSodPolicyExecute(r ApiPatchSodPolicyRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRunSodAllPoliciesForOrgRequest struct {
-	ctx context.Context
-	ApiService *SODPolicyApiService
-	multiPolicyRequest *MultiPolicyRequest
-}
-
-func (r ApiRunSodAllPoliciesForOrgRequest) MultiPolicyRequest(multiPolicyRequest MultiPolicyRequest) ApiRunSodAllPoliciesForOrgRequest {
-	r.multiPolicyRequest = &multiPolicyRequest
-	return r
-}
-
-func (r ApiRunSodAllPoliciesForOrgRequest) Execute() (*ReportResultReference, *http.Response, error) {
-	return r.ApiService.RunSodAllPoliciesForOrgExecute(r)
-}
-
-/*
-RunSodAllPoliciesForOrg Runs all policies for org
-
-Runs multi-policy report for the org. If a policy reports more than 5000 violations, the report mentions that the violation limit was exceeded for that policy. If the request is empty, the report runs for all policies. Otherwise, the report runs for only the filtered policy list provided.
-Requires role of ORG_ADMIN.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRunSodAllPoliciesForOrgRequest
-*/
-func (a *SODPolicyApiService) RunSodAllPoliciesForOrg(ctx context.Context) ApiRunSodAllPoliciesForOrgRequest {
-	return ApiRunSodAllPoliciesForOrgRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return ReportResultReference
-func (a *SODPolicyApiService) RunSodAllPoliciesForOrgExecute(r ApiRunSodAllPoliciesForOrgRequest) (*ReportResultReference, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReportResultReference
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.RunSodAllPoliciesForOrg")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sod-violation-report/run"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.multiPolicyRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiRunSodPolicyRequest struct {
-	ctx context.Context
-	ApiService *SODPolicyApiService
-	id string
-}
-
-func (r ApiRunSodPolicyRequest) Execute() (*ReportResultReference, *http.Response, error) {
-	return r.ApiService.RunSodPolicyExecute(r)
-}
-
-/*
-RunSodPolicy Runs SOD policy violation report
-
-This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message.
-Requires role of ORG_ADMIN.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The SOD policy ID to run.
- @return ApiRunSodPolicyRequest
-*/
-func (a *SODPolicyApiService) RunSodPolicy(ctx context.Context, id string) ApiRunSodPolicyRequest {
-	return ApiRunSodPolicyRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return ReportResultReference
-func (a *SODPolicyApiService) RunSodPolicyExecute(r ApiRunSodPolicyRequest) (*ReportResultReference, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ReportResultReference
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.RunSodPolicy")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/sod-policies/{id}/violation-report/run"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ListAccessProfiles401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v ListAccessProfiles429Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ErrorResponseDto
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiUpdatePolicyScheduleRequest struct {
+type ApiPutPolicyScheduleRequest struct {
 	ctx context.Context
 	ApiService *SODPolicyApiService
 	id string
 	sodPolicySchedule *SodPolicySchedule
 }
 
-func (r ApiUpdatePolicyScheduleRequest) SodPolicySchedule(sodPolicySchedule SodPolicySchedule) ApiUpdatePolicyScheduleRequest {
+func (r ApiPutPolicyScheduleRequest) SodPolicySchedule(sodPolicySchedule SodPolicySchedule) ApiPutPolicyScheduleRequest {
 	r.sodPolicySchedule = &sodPolicySchedule
 	return r
 }
 
-func (r ApiUpdatePolicyScheduleRequest) Execute() (*SodPolicySchedule, *http.Response, error) {
-	return r.ApiService.UpdatePolicyScheduleExecute(r)
+func (r ApiPutPolicyScheduleRequest) Execute() (*SodPolicySchedule, *http.Response, error) {
+	return r.ApiService.PutPolicyScheduleExecute(r)
 }
 
 /*
-UpdatePolicySchedule Update SOD Policy schedule
+PutPolicySchedule Update SOD Policy schedule
 
 This updates schedule for a specified SOD policy.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the SOD policy to update its schedule.
- @return ApiUpdatePolicyScheduleRequest
+ @return ApiPutPolicyScheduleRequest
+
+Deprecated
 */
-func (a *SODPolicyApiService) UpdatePolicySchedule(ctx context.Context, id string) ApiUpdatePolicyScheduleRequest {
-	return ApiUpdatePolicyScheduleRequest{
+func (a *SODPolicyApiService) PutPolicySchedule(ctx context.Context, id string) ApiPutPolicyScheduleRequest {
+	return ApiPutPolicyScheduleRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2419,7 +2126,8 @@ func (a *SODPolicyApiService) UpdatePolicySchedule(ctx context.Context, id strin
 
 // Execute executes the request
 //  @return SodPolicySchedule
-func (a *SODPolicyApiService) UpdatePolicyScheduleExecute(r ApiUpdatePolicyScheduleRequest) (*SodPolicySchedule, *http.Response, error) {
+// Deprecated
+func (a *SODPolicyApiService) PutPolicyScheduleExecute(r ApiPutPolicyScheduleRequest) (*SodPolicySchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2427,7 +2135,7 @@ func (a *SODPolicyApiService) UpdatePolicyScheduleExecute(r ApiUpdatePolicySched
 		localVarReturnValue  *SodPolicySchedule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.UpdatePolicySchedule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.PutPolicySchedule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2552,34 +2260,36 @@ func (a *SODPolicyApiService) UpdatePolicyScheduleExecute(r ApiUpdatePolicySched
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateSodPolicyRequest struct {
+type ApiPutSodPolicyRequest struct {
 	ctx context.Context
 	ApiService *SODPolicyApiService
 	id string
 	sodPolicy *SodPolicy
 }
 
-func (r ApiUpdateSodPolicyRequest) SodPolicy(sodPolicy SodPolicy) ApiUpdateSodPolicyRequest {
+func (r ApiPutSodPolicyRequest) SodPolicy(sodPolicy SodPolicy) ApiPutSodPolicyRequest {
 	r.sodPolicy = &sodPolicy
 	return r
 }
 
-func (r ApiUpdateSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) {
-	return r.ApiService.UpdateSodPolicyExecute(r)
+func (r ApiPutSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) {
+	return r.ApiService.PutSodPolicyExecute(r)
 }
 
 /*
-UpdateSodPolicy Update SOD policy by ID
+PutSodPolicy Update SOD policy by ID
 
 This updates a specified SOD policy.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the SOD policy to update.
- @return ApiUpdateSodPolicyRequest
+ @return ApiPutSodPolicyRequest
+
+Deprecated
 */
-func (a *SODPolicyApiService) UpdateSodPolicy(ctx context.Context, id string) ApiUpdateSodPolicyRequest {
-	return ApiUpdateSodPolicyRequest{
+func (a *SODPolicyApiService) PutSodPolicy(ctx context.Context, id string) ApiPutSodPolicyRequest {
+	return ApiPutSodPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2588,7 +2298,8 @@ func (a *SODPolicyApiService) UpdateSodPolicy(ctx context.Context, id string) Ap
 
 // Execute executes the request
 //  @return SodPolicy
-func (a *SODPolicyApiService) UpdateSodPolicyExecute(r ApiUpdateSodPolicyRequest) (*SodPolicy, *http.Response, error) {
+// Deprecated
+func (a *SODPolicyApiService) PutSodPolicyExecute(r ApiPutSodPolicyRequest) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2596,7 +2307,7 @@ func (a *SODPolicyApiService) UpdateSodPolicyExecute(r ApiUpdateSodPolicyRequest
 		localVarReturnValue  *SodPolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.UpdateSodPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.PutSodPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2630,6 +2341,343 @@ func (a *SODPolicyApiService) UpdateSodPolicyExecute(r ApiUpdateSodPolicyRequest
 	}
 	// body params
 	localVarPostBody = r.sodPolicy
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStartSodAllPoliciesForOrgRequest struct {
+	ctx context.Context
+	ApiService *SODPolicyApiService
+	multiPolicyRequest *MultiPolicyRequest
+}
+
+func (r ApiStartSodAllPoliciesForOrgRequest) MultiPolicyRequest(multiPolicyRequest MultiPolicyRequest) ApiStartSodAllPoliciesForOrgRequest {
+	r.multiPolicyRequest = &multiPolicyRequest
+	return r
+}
+
+func (r ApiStartSodAllPoliciesForOrgRequest) Execute() (*ReportResultReference, *http.Response, error) {
+	return r.ApiService.StartSodAllPoliciesForOrgExecute(r)
+}
+
+/*
+StartSodAllPoliciesForOrg Runs all policies for org
+
+Runs multi-policy report for the org. If a policy reports more than 5000 violations, the report mentions that the violation limit was exceeded for that policy. If the request is empty, the report runs for all policies. Otherwise, the report runs for only the filtered policy list provided.
+Requires role of ORG_ADMIN.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStartSodAllPoliciesForOrgRequest
+
+Deprecated
+*/
+func (a *SODPolicyApiService) StartSodAllPoliciesForOrg(ctx context.Context) ApiStartSodAllPoliciesForOrgRequest {
+	return ApiStartSodAllPoliciesForOrgRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ReportResultReference
+// Deprecated
+func (a *SODPolicyApiService) StartSodAllPoliciesForOrgExecute(r ApiStartSodAllPoliciesForOrgRequest) (*ReportResultReference, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ReportResultReference
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.StartSodAllPoliciesForOrg")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sod-violation-report/run"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.multiPolicyRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ListAccessProfiles401Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 429 {
+			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStartSodPolicyRequest struct {
+	ctx context.Context
+	ApiService *SODPolicyApiService
+	id string
+}
+
+func (r ApiStartSodPolicyRequest) Execute() (*ReportResultReference, *http.Response, error) {
+	return r.ApiService.StartSodPolicyExecute(r)
+}
+
+/*
+StartSodPolicy Runs SOD policy violation report
+
+This invokes processing of violation report for given SOD policy. If the policy reports more than 5000 violations, the report returns with violation limit exceeded message.
+Requires role of ORG_ADMIN.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The SOD policy ID to run.
+ @return ApiStartSodPolicyRequest
+
+Deprecated
+*/
+func (a *SODPolicyApiService) StartSodPolicy(ctx context.Context, id string) ApiStartSodPolicyRequest {
+	return ApiStartSodPolicyRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ReportResultReference
+// Deprecated
+func (a *SODPolicyApiService) StartSodPolicyExecute(r ApiStartSodPolicyRequest) (*ReportResultReference, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ReportResultReference
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.StartSodPolicy")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/sod-policies/{id}/violation-report/run"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

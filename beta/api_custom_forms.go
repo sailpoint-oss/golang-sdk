@@ -703,13 +703,13 @@ func (r ApiExportFormDefinitionsByTenantRequest) Limit(limit int64) ApiExportFor
 	return r
 }
 
-// Filters  Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: &lt;b&gt;name&lt;/b&gt;: &lt;i&gt;eq, gt, sw, in&lt;/i&gt; &lt;b&gt;description&lt;/b&gt;: &lt;i&gt;eq, gt, sw, in&lt;/i&gt; &lt;b&gt;created&lt;/b&gt;: &lt;i&gt;eq, gt, sw, in&lt;/i&gt; &lt;b&gt;modified&lt;/b&gt;: &lt;i&gt;eq, gt, sw, in&lt;/i&gt;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*
 func (r ApiExportFormDefinitionsByTenantRequest) Filters(filters string) ApiExportFormDefinitionsByTenantRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sorters  Item will be sorted in the returned array if the sorters expression evaluates to true for that item. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/#sorting-results). Sorting is supported for the following fields: &lt;b&gt;name&lt;/b&gt; &lt;b&gt;description&lt;/b&gt; &lt;b&gt;created&lt;/b&gt; &lt;b&gt;modified&lt;/b&gt;
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**
 func (r ApiExportFormDefinitionsByTenantRequest) Sorters(sorters string) ApiExportFormDefinitionsByTenantRequest {
 	r.sorters = &sorters
 	return r
@@ -1757,13 +1757,13 @@ func (r ApiSearchFormDefinitionsByTenantRequest) Limit(limit int64) ApiSearchFor
 	return r
 }
 
-// Filters  Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: &lt;b&gt;name&lt;/b&gt;: &lt;i&gt;eq, gt, sw, in&lt;/i&gt; &lt;b&gt;description&lt;/b&gt;: &lt;i&gt;eq, gt, sw, in&lt;/i&gt; &lt;b&gt;created&lt;/b&gt;: &lt;i&gt;eq, gt, sw, in&lt;/i&gt; &lt;b&gt;modified&lt;/b&gt;: &lt;i&gt;eq, gt, sw, in&lt;/i&gt;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, gt, sw, in*  **description**: *eq, gt, sw, in*  **created**: *eq, gt, sw, in*  **modified**: *eq, gt, sw, in*
 func (r ApiSearchFormDefinitionsByTenantRequest) Filters(filters string) ApiSearchFormDefinitionsByTenantRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sorters  Item will be sorted in the returned array if the sorters expression evaluates to true for that item. The standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters/#sorting-results). Sorting is supported for the following fields: &lt;b&gt;name&lt;/b&gt; &lt;b&gt;description&lt;/b&gt; &lt;b&gt;created&lt;/b&gt; &lt;b&gt;modified&lt;/b&gt;
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, description, created, modified**
 func (r ApiSearchFormDefinitionsByTenantRequest) Sorters(sorters string) ApiSearchFormDefinitionsByTenantRequest {
 	r.sorters = &sorters
 	return r
@@ -1944,7 +1944,7 @@ func (r ApiSearchFormElementDataByElementIDRequest) Limit(limit int64) ApiSearch
 	return r
 }
 
-// Filters  Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: &lt;b&gt;value&lt;/b&gt;: &lt;i&gt;eq, ne, in&lt;/i&gt; &lt;b&gt;label&lt;/b&gt;: &lt;i&gt;eq, ne, in&lt;/i&gt; &lt;b&gt;subLabel&lt;/b&gt;: &lt;i&gt;eq, ne, in&lt;/i&gt;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, ne, in*  **label**: *eq, ne, in*  **subLabel**: *eq, ne, in*
 func (r ApiSearchFormElementDataByElementIDRequest) Filters(filters string) ApiSearchFormElementDataByElementIDRequest {
 	r.filters = &filters
 	return r
@@ -2444,7 +2444,7 @@ func (r ApiShowPreviewDataSourceRequest) Limit(limit int64) ApiShowPreviewDataSo
 	return r
 }
 
-// Filters  Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results) Filtering is supported for the following fields and operators: &lt;b&gt;value&lt;/b&gt;: &lt;i&gt;eq, gt, sw, in&lt;/i&gt; &lt;b&gt;label&lt;/b&gt;: &lt;i&gt;eq, gt, sw, in&lt;/i&gt; &lt;b&gt;subLabel&lt;/b&gt;: &lt;i&gt;eq, gt, sw, in&lt;/i&gt;
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **value**: *eq, gt, sw, in*  **label**: *eq, gt, sw, in*  **subLabel**: *eq, gt, sw, in*
 func (r ApiShowPreviewDataSourceRequest) Filters(filters string) ApiShowPreviewDataSourceRequest {
 	r.filters = &filters
 	return r

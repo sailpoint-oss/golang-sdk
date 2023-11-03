@@ -89,6 +89,16 @@ and a boolean to check if the value has been set.
 SetAttributes sets Attributes field to given value.
 
 
+### SetAttributesNil
+
+`func (o *TransformRead) SetAttributesNil(b bool)`
+
+ SetAttributesNil sets the value for Attributes to be an explicit nil
+
+### UnsetAttributes
+`func (o *TransformRead) UnsetAttributes()`
+
+UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
 ### GetId
 
 `func (o *TransformRead) GetId() string`

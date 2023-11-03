@@ -21,7 +21,7 @@ var _ MappedNullable = &IdentityWithNewAccess{}
 type IdentityWithNewAccess struct {
 	// Identity id to be checked.
 	IdentityId string `json:"identityId"`
-	// The list of ENTITLEMENTs to consider for calculating possible violations in a preventive check.
+	// The list of entitlements to consider for possible violations in a preventive check.
 	AccessRefs []IdentityWithNewAccessAccessRefsInner `json:"accessRefs"`
 	AdditionalProperties map[string]interface{}
 }

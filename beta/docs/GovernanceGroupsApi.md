@@ -6,14 +6,14 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateWorkgroup**](GovernanceGroupsApi.md#CreateWorkgroup) | **Post** /workgroups | Create a new Governance Group.
 [**DeleteWorkgroup**](GovernanceGroupsApi.md#DeleteWorkgroup) | **Delete** /workgroups/{id} | Delete a Governance Group
-[**DeleteWorkgroupMembers**](GovernanceGroupsApi.md#DeleteWorkgroupMembers) | **Post** /workgroups/{workgrouId}/members/bulk-delete | Remove members from Governance Group
+[**DeleteWorkgroupMembers**](GovernanceGroupsApi.md#DeleteWorkgroupMembers) | **Post** /workgroups/{workgroupId}/members/bulk-delete | Remove members from Governance Group
 [**DeleteWorkgroupsInBulk**](GovernanceGroupsApi.md#DeleteWorkgroupsInBulk) | **Post** /workgroups/bulk-delete | Delete Governance Group(s)
 [**GetWorkgroup**](GovernanceGroupsApi.md#GetWorkgroup) | **Get** /workgroups/{id} | Get Governance Group by Id
-[**ListConnections**](GovernanceGroupsApi.md#ListConnections) | **Get** /workgroups/{workgrouId}/connections | List connections for Governance Group
-[**ListWorkgroupMembers**](GovernanceGroupsApi.md#ListWorkgroupMembers) | **Get** /workgroups/{workgrouId}/members | List Governance Group Members
+[**ListConnections**](GovernanceGroupsApi.md#ListConnections) | **Get** /workgroups/{workgroupId}/connections | List connections for Governance Group
+[**ListWorkgroupMembers**](GovernanceGroupsApi.md#ListWorkgroupMembers) | **Get** /workgroups/{workgroupId}/members | List Governance Group Members
 [**ListWorkgroups**](GovernanceGroupsApi.md#ListWorkgroups) | **Get** /workgroups | List Governance Groups
 [**PatchWorkgroup**](GovernanceGroupsApi.md#PatchWorkgroup) | **Patch** /workgroups/{id} | Patch a Governance Group
-[**UpdateWorkgroupMembers**](GovernanceGroupsApi.md#UpdateWorkgroupMembers) | **Post** /workgroups/{workgrouId}/members/bulk-add | Add members to Governance Group
+[**UpdateWorkgroupMembers**](GovernanceGroupsApi.md#UpdateWorkgroupMembers) | **Post** /workgroups/{workgroupId}/members/bulk-add | Add members to Governance Group
 
 
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## DeleteWorkgroupMembers
 
-> []WorkgroupMemberDeleteItem DeleteWorkgroupMembers(ctx, workgroupId).BaseReferenceDto1(baseReferenceDto1).Execute()
+> []WorkgroupMemberDeleteItem DeleteWorkgroupMembers(ctx, workgroupId).BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner).Execute()
 
 Remove members from Governance Group
 
@@ -173,11 +173,11 @@ import (
 
 func main() {
     workgroupId := "2c91808a7813090a017814121919ecca" // string | ID of the Governance Group.
-    baseReferenceDto1 := []openapiclient.BaseReferenceDto1{*openapiclient.NewBaseReferenceDto1()} // []BaseReferenceDto1 | List of identities to be removed from  a Governance Group members list.
+    bulkWorkgroupMembersRequestInner := []openapiclient.BulkWorkgroupMembersRequestInner{*openapiclient.NewBulkWorkgroupMembersRequestInner()} // []BulkWorkgroupMembersRequestInner | List of identities to be removed from  a Governance Group members list.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.DeleteWorkgroupMembers(context.Background(), workgroupId).BaseReferenceDto1(baseReferenceDto1).Execute()
+    resp, r, err := apiClient.GovernanceGroupsApi.DeleteWorkgroupMembers(context.Background(), workgroupId).BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.DeleteWorkgroupMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -203,7 +203,7 @@ Other parameters are passed through a pointer to a apiDeleteWorkgroupMembersRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **baseReferenceDto1** | [**[]BaseReferenceDto1**](BaseReferenceDto1.md) | List of identities to be removed from  a Governance Group members list. | 
+ **bulkWorkgroupMembersRequestInner** | [**[]BulkWorkgroupMembersRequestInner**](BulkWorkgroupMembersRequestInner.md) | List of identities to be removed from  a Governance Group members list. | 
 
 ### Return type
 
@@ -384,7 +384,7 @@ func main() {
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := int32(50) // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    sorters := "name,-modified" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified** (optional)
+    sorters := "name,-modified" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -417,7 +417,7 @@ Name | Type | Description  | Notes
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 50]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified** | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** | 
 
 ### Return type
 
@@ -439,7 +439,7 @@ Name | Type | Description  | Notes
 
 ## ListWorkgroupMembers
 
-> []BaseReferenceDto1 ListWorkgroupMembers(ctx, workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
+> []ListWorkgroupMembers200ResponseInner ListWorkgroupMembers(ctx, workgroupId).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Execute()
 
 List Governance Group Members
 
@@ -462,7 +462,7 @@ func main() {
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := int32(50) // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    sorters := "name,-modified" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified** (optional)
+    sorters := "name,-modified" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -471,7 +471,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.ListWorkgroupMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListWorkgroupMembers`: []BaseReferenceDto1
+    // response from `ListWorkgroupMembers`: []ListWorkgroupMembers200ResponseInner
     fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.ListWorkgroupMembers`: %v\n", resp)
 }
 ```
@@ -495,11 +495,11 @@ Name | Type | Description  | Notes
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 50]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified** | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified** | 
 
 ### Return type
 
-[**[]BaseReferenceDto1**](BaseReferenceDto1.md)
+[**[]ListWorkgroupMembers200ResponseInner**](ListWorkgroupMembers200ResponseInner.md)
 
 ### Authorization
 
@@ -539,8 +539,8 @@ func main() {
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     limit := int32(50) // int32 | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 50)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "name sw "Test"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Governance Group fields and operators: **id**: *eq, in*  **name**: *eq, sw* (optional)
-    sorters := "name,-modified" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified** (optional)
+    filters := "name sw "Test"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in* (optional)
+    sorters := "name,-modified" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, description** (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -568,8 +568,8 @@ Name | Type | Description  | Notes
  **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
  **limit** | **int32** | Note that for this API the maximum value for limit is 50. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 50]
  **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Governance Group fields and operators: **id**: *eq, in*  **name**: *eq, sw* | 
- **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results) Sorting is supported for the following fields: **name, created, modified** | 
+ **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **name**: *eq, sw, in* | 
+ **sorters** | **string** | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, modified, id, description** | 
 
 ### Return type
 
@@ -663,7 +663,7 @@ Name | Type | Description  | Notes
 
 ## UpdateWorkgroupMembers
 
-> []WorkgroupMemberAddItem UpdateWorkgroupMembers(ctx, workgroupId).BaseReferenceDto1(baseReferenceDto1).Execute()
+> []WorkgroupMemberAddItem UpdateWorkgroupMembers(ctx, workgroupId).BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner).Execute()
 
 Add members to Governance Group
 
@@ -683,11 +683,11 @@ import (
 
 func main() {
     workgroupId := "2c91808a7813090a017814121919ecca" // string | ID of the Governance Group.
-    baseReferenceDto1 := []openapiclient.BaseReferenceDto1{*openapiclient.NewBaseReferenceDto1()} // []BaseReferenceDto1 | List of identities to be added to a Governance Group members list.
+    bulkWorkgroupMembersRequestInner := []openapiclient.BulkWorkgroupMembersRequestInner{*openapiclient.NewBulkWorkgroupMembersRequestInner()} // []BulkWorkgroupMembersRequestInner | List of identities to be added to a Governance Group members list.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.UpdateWorkgroupMembers(context.Background(), workgroupId).BaseReferenceDto1(baseReferenceDto1).Execute()
+    resp, r, err := apiClient.GovernanceGroupsApi.UpdateWorkgroupMembers(context.Background(), workgroupId).BulkWorkgroupMembersRequestInner(bulkWorkgroupMembersRequestInner).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.UpdateWorkgroupMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -713,7 +713,7 @@ Other parameters are passed through a pointer to a apiUpdateWorkgroupMembersRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **baseReferenceDto1** | [**[]BaseReferenceDto1**](BaseReferenceDto1.md) | List of identities to be added to a Governance Group members list. | 
+ **bulkWorkgroupMembersRequestInner** | [**[]BulkWorkgroupMembersRequestInner**](BulkWorkgroupMembersRequestInner.md) | List of identities to be added to a Governance Group members list. | 
 
 ### Return type
 

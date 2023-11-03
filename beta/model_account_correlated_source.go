@@ -17,13 +17,13 @@ import (
 // checks if the AccountCorrelatedSource type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccountCorrelatedSource{}
 
-// AccountCorrelatedSource The source from which the account came from.
+// AccountCorrelatedSource The source the accounts are being correlated from.
 type AccountCorrelatedSource struct {
-	// ID of the object to which this reference applies
-	Id string `json:"id"`
-	// The type of object that is referenced
+	// The DTO type of the source the accounts are being correlated from.
 	Type string `json:"type"`
-	// Human-readable display name of the object to which this reference applies
+	// The ID of the source the accounts are being correlated from.
+	Id string `json:"id"`
+	// Display name of the source the accounts are being correlated from.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,10 +34,10 @@ type _AccountCorrelatedSource AccountCorrelatedSource
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountCorrelatedSource(id string, type_ string, name string) *AccountCorrelatedSource {
+func NewAccountCorrelatedSource(type_ string, id string, name string) *AccountCorrelatedSource {
 	this := AccountCorrelatedSource{}
-	this.Id = id
 	this.Type = type_
+	this.Id = id
 	this.Name = name
 	return &this
 }
@@ -48,30 +48,6 @@ func NewAccountCorrelatedSource(id string, type_ string, name string) *AccountCo
 func NewAccountCorrelatedSourceWithDefaults() *AccountCorrelatedSource {
 	this := AccountCorrelatedSource{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *AccountCorrelatedSource) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *AccountCorrelatedSource) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *AccountCorrelatedSource) SetId(v string) {
-	o.Id = v
 }
 
 // GetType returns the Type field value
@@ -96,6 +72,30 @@ func (o *AccountCorrelatedSource) GetTypeOk() (*string, bool) {
 // SetType sets field value
 func (o *AccountCorrelatedSource) SetType(v string) {
 	o.Type = v
+}
+
+// GetId returns the Id field value
+func (o *AccountCorrelatedSource) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *AccountCorrelatedSource) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *AccountCorrelatedSource) SetId(v string) {
+	o.Id = v
 }
 
 // GetName returns the Name field value
@@ -132,8 +132,8 @@ func (o AccountCorrelatedSource) MarshalJSON() ([]byte, error) {
 
 func (o AccountCorrelatedSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
 	toSerialize["type"] = o.Type
+	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 
 	for key, value := range o.AdditionalProperties {
@@ -153,8 +153,8 @@ func (o *AccountCorrelatedSource) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to [**DtoType**](DtoType.md) |  | [optional] 
-**Id** | Pointer to **string** | ID of the object to which this reference applies | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the object to which this reference applies | [optional] 
+**Type** | Pointer to **string** | Owner&#39;s DTO type. | [optional] 
+**Id** | Pointer to **string** | Owner&#39;s identity ID. | [optional] 
+**Name** | Pointer to **string** | Owner&#39;s display name. | [optional] 
 
 ## Methods
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) GetType() DtoType`
+`func (o *ViolationOwnerAssignmentConfigOwnerRef) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) GetTypeOk() (*DtoType, bool)`
+`func (o *ViolationOwnerAssignmentConfigOwnerRef) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ViolationOwnerAssignmentConfigOwnerRef) SetType(v DtoType)`
+`func (o *ViolationOwnerAssignmentConfigOwnerRef) SetType(v string)`
 
 SetType sets Type field to given value.
 

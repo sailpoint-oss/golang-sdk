@@ -567,6 +567,8 @@ Deletes a campaign template by ID.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the campaign template being deleted.
  @return ApiDeleteCampaignTemplateRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) DeleteCampaignTemplate(ctx context.Context, id string) ApiDeleteCampaignTemplateRequest {
 	return ApiDeleteCampaignTemplateRequest{
@@ -577,6 +579,7 @@ func (a *CertificationCampaignsApiService) DeleteCampaignTemplate(ctx context.Co
 }
 
 // Execute executes the request
+// Deprecated
 func (a *CertificationCampaignsApiService) DeleteCampaignTemplateExecute(r ApiDeleteCampaignTemplateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -724,6 +727,8 @@ Deletes the schedule for a campaign template. Returns a 404 if there is no sched
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the campaign template whose schedule is being deleted.
  @return ApiDeleteCampaignTemplateScheduleRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) DeleteCampaignTemplateSchedule(ctx context.Context, id string) ApiDeleteCampaignTemplateScheduleRequest {
 	return ApiDeleteCampaignTemplateScheduleRequest{
@@ -734,6 +739,7 @@ func (a *CertificationCampaignsApiService) DeleteCampaignTemplateSchedule(ctx co
 }
 
 // Execute executes the request
+// Deprecated
 func (a *CertificationCampaignsApiService) DeleteCampaignTemplateScheduleExecute(r ApiDeleteCampaignTemplateScheduleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -1083,7 +1089,7 @@ func (r ApiGetActiveCampaignsRequest) Filters(filters string) ApiGetActiveCampai
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name**, **created**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created**
 func (r ApiGetActiveCampaignsRequest) Sorters(sorters string) ApiGetActiveCampaignsRequest {
 	r.sorters = &sorters
 	return r
@@ -1776,6 +1782,8 @@ Fetches a campaign template by ID.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The desired campaign template's ID.
  @return ApiGetCampaignTemplateRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) GetCampaignTemplate(ctx context.Context, id string) ApiGetCampaignTemplateRequest {
 	return ApiGetCampaignTemplateRequest{
@@ -1787,6 +1795,7 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplate(ctx context.Conte
 
 // Execute executes the request
 //  @return CampaignTemplate
+// Deprecated
 func (a *CertificationCampaignsApiService) GetCampaignTemplateExecute(r ApiGetCampaignTemplateRequest) (*CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1944,6 +1953,8 @@ Gets the schedule for a campaign template. Returns a 404 if there is no schedule
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the campaign template whose schedule is being fetched.
  @return ApiGetCampaignTemplateScheduleRequest
+
+Deprecated
 */
 func (a *CertificationCampaignsApiService) GetCampaignTemplateSchedule(ctx context.Context, id string) ApiGetCampaignTemplateScheduleRequest {
 	return ApiGetCampaignTemplateScheduleRequest{
@@ -1955,6 +1966,7 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplateSchedule(ctx conte
 
 // Execute executes the request
 //  @return Schedule
+// Deprecated
 func (a *CertificationCampaignsApiService) GetCampaignTemplateScheduleExecute(r ApiGetCampaignTemplateScheduleRequest) (*Schedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -2128,7 +2140,7 @@ func (r ApiListCampaignTemplatesRequest) Sorters(sorters string) ApiListCampaign
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields: **name, id**
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **name**: *eq, ge, gt, in, le, lt, ne, sw*  **id**: *eq, ge, gt, in, le, lt, ne, sw*
 func (r ApiListCampaignTemplatesRequest) Filters(filters string) ApiListCampaignTemplatesRequest {
 	r.filters = &filters
 	return r

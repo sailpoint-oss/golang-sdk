@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateApplication
 
-> CreateApplication(ctx).CreateApplicationRequest(createApplicationRequest).Execute()
+> map[string]interface{} CreateApplication(ctx).CreateApplicationRequest(createApplicationRequest).Execute()
 
 Create Application
 
@@ -41,6 +41,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.CreateApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `CreateApplication`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.CreateApplication`: %v\n", resp)
 }
 ```
 
@@ -59,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -143,7 +145,7 @@ Name | Type | Description  | Notes
 
 ## GetApplication
 
-> ListApplications200ResponseInner GetApplication(ctx, id).Execute()
+> GetApplication200Response GetApplication(ctx, id).Execute()
 
 Get Single Application
 
@@ -169,7 +171,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.GetApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetApplication`: ListApplications200ResponseInner
+    // response from `GetApplication`: GetApplication200Response
     fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.GetApplication`: %v\n", resp)
 }
 ```
@@ -193,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListApplications200ResponseInner**](ListApplications200ResponseInner.md)
+[**GetApplication200Response**](GetApplication200Response.md)
 
 ### Authorization
 
@@ -211,7 +213,7 @@ Name | Type | Description  | Notes
 
 ## GetApplicationAccessProfiles
 
-> GetApplicationAccessProfiles(ctx, id).Execute()
+> map[string]interface{} GetApplicationAccessProfiles(ctx, id).Execute()
 
 Get Access Profiles for Application
 
@@ -237,6 +239,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.GetApplicationAccessProfiles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `GetApplicationAccessProfiles`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.GetApplicationAccessProfiles`: %v\n", resp)
 }
 ```
 
@@ -259,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -336,7 +340,7 @@ Other parameters are passed through a pointer to a apiListApplicationsRequest st
 
 ## UpdateApplication
 
-> UpdateApplication(ctx, id).UpdateApplicationRequest(updateApplicationRequest).Execute()
+> map[string]interface{} UpdateApplication(ctx, id).RequestBody(requestBody).Execute()
 
 Update Application
 
@@ -354,15 +358,17 @@ import (
 
 func main() {
     id := "12345" // string | 
-    updateApplicationRequest := *openapiclient.NewUpdateApplicationRequest() // UpdateApplicationRequest |  (optional)
+    requestBody := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationsApi.UpdateApplication(context.Background(), id).UpdateApplicationRequest(updateApplicationRequest).Execute()
+    resp, r, err := apiClient.ApplicationsApi.UpdateApplication(context.Background(), id).RequestBody(requestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsApi.UpdateApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `UpdateApplication`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationsApi.UpdateApplication`: %v\n", resp)
 }
 ```
 
@@ -382,11 +388,11 @@ Other parameters are passed through a pointer to a apiUpdateApplicationRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **updateApplicationRequest** | [**UpdateApplicationRequest**](UpdateApplicationRequest.md) |  | 
+ **requestBody** | **map[string]interface{}** |  | 
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 

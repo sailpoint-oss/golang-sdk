@@ -1791,7 +1791,7 @@ func (r ApiListAccountsRequest) Filters(filters string) ApiListAccountsRequest {
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id**, **name**, **created**, **modified**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified**
 func (r ApiListAccountsRequest) Sorters(sorters string) ApiListAccountsRequest {
 	r.sorters = &sorters
 	return r

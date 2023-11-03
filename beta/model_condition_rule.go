@@ -19,16 +19,16 @@ var _ MappedNullable = &ConditionRule{}
 
 // ConditionRule struct for ConditionRule
 type ConditionRule struct {
-	// Operator is a ConditionRuleComparisonOperatorType value EQ ConditionRuleComparisonOperatorTypeEquals  ConditionRuleComparisonOperatorTypeEquals is a comparison operator, the source and target are compared for equality NE ConditionRuleComparisonOperatorTypeNotEquals  ConditionRuleComparisonOperatorTypeNotEquals is a comparison operator, the source and target are compared for the opposite of equality CO ConditionRuleComparisonOperatorTypeContains  ConditionRuleComparisonOperatorTypeContains is a comparison operator, the source is searched to see if it contains the value NOT_CO ConditionRuleComparisonOperatorTypeNotContains IN ConditionRuleComparisonOperatorTypeIncludes  ConditionRuleComparisonOperatorTypeIncludes is a comparison operator, the source will be searched if it equals any of the values NOT_IN ConditionRuleComparisonOperatorTypeNotIncludes EM ConditionRuleComparisonOperatorTypeEmpty NOT_EM ConditionRuleComparisonOperatorTypeNotEmpty SW ConditionRuleComparisonOperatorTypeStartsWith  ConditionRuleComparisonOperatorTypeStartsWith checks if a string starts with another substring of the same string, this operator is case-sensitive NOT_SW ConditionRuleComparisonOperatorTypeNotStartsWith EW ConditionRuleComparisonOperatorTypeEndsWith  ConditionRuleComparisonOperatorTypeEndsWith checks if a string ends with another substring of the same string, this operator is case-sensitive NOT_EW ConditionRuleComparisonOperatorTypeNotEndsWith
-	Operator *string `json:"operator,omitempty"`
-	// Source, if the sourceType is ConditionRuleSourceTypeInput then the source type is the name of the form input to accept. While if the sourceType is ConditionRuleSourceTypeElement then source is the name of a technical key of an element to retrieve its value
-	Source *string `json:"source,omitempty"`
-	// SourceType defines what type of object is being selected. Either a reference to a form input (by input name), or a form element (by technical key) INPUT ConditionRuleSourceTypeInput ELEMENT ConditionRuleSourceTypeElement
+	// Defines the type of object being selected. It will be either a reference to a form input (by input name) or a form element (by technical key). INPUT ConditionRuleSourceTypeInput ELEMENT ConditionRuleSourceTypeElement
 	SourceType *string `json:"sourceType,omitempty"`
-	// Value is the value based on the ValueType
-	Value map[string]interface{} `json:"value,omitempty"`
-	// ValueType is a ConditionRuleValueType type STRING ConditionRuleValueTypeString  ConditionRuleValueTypeString the value field is a static string STRING_LIST ConditionRuleValueTypeStringList  ConditionRuleValueTypeStringList the value field is an array of string values INPUT ConditionRuleValueTypeInput  ConditionRuleValueTypeInput the value field is a reference to a form input by ELEMENT ConditionRuleValueTypeElement  ConditionRuleValueTypeElement the value field is a reference to form element (by technical key) LIST ConditionRuleValueTypeList BOOLEAN ConditionRuleValueTypeBoolean
+	// Source - if the sourceType is ConditionRuleSourceTypeInput, the source type is the name of the form input to accept. However, if the sourceType is ConditionRuleSourceTypeElement, the source is the name of a technical key of an element to retrieve its value.
+	Source *string `json:"source,omitempty"`
+	// ConditionRuleComparisonOperatorType value. EQ ConditionRuleComparisonOperatorTypeEquals  This comparison operator compares the source and target for equality. NE ConditionRuleComparisonOperatorTypeNotEquals  This comparison operator compares the source and target for inequality. CO ConditionRuleComparisonOperatorTypeContains  This comparison operator searches the source to see whether it contains the value. NOT_CO ConditionRuleComparisonOperatorTypeNotContains IN ConditionRuleComparisonOperatorTypeIncludes  This comparison operator searches the source if it equals any of the values. NOT_IN ConditionRuleComparisonOperatorTypeNotIncludes EM ConditionRuleComparisonOperatorTypeEmpty NOT_EM ConditionRuleComparisonOperatorTypeNotEmpty SW ConditionRuleComparisonOperatorTypeStartsWith  Checks whether a string starts with another substring of the same string. This operator is case-sensitive. NOT_SW ConditionRuleComparisonOperatorTypeNotStartsWith EW ConditionRuleComparisonOperatorTypeEndsWith  Checks whether a string ends with another substring of the same string. This operator is case-sensitive. NOT_EW ConditionRuleComparisonOperatorTypeNotEndsWith
+	Operator *string `json:"operator,omitempty"`
+	// ConditionRuleValueType type. STRING ConditionRuleValueTypeString  This value is a static string. STRING_LIST ConditionRuleValueTypeStringList  This value is an array of string values. INPUT ConditionRuleValueTypeInput  This value is a reference to a form input. ELEMENT ConditionRuleValueTypeElement  This value is a reference to a form element (by technical key). LIST ConditionRuleValueTypeList BOOLEAN ConditionRuleValueTypeBoolean
 	ValueType *string `json:"valueType,omitempty"`
+	// Based on the ValueType.
+	Value map[string]interface{} `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -49,70 +49,6 @@ func NewConditionRule() *ConditionRule {
 func NewConditionRuleWithDefaults() *ConditionRule {
 	this := ConditionRule{}
 	return &this
-}
-
-// GetOperator returns the Operator field value if set, zero value otherwise.
-func (o *ConditionRule) GetOperator() string {
-	if o == nil || isNil(o.Operator) {
-		var ret string
-		return ret
-	}
-	return *o.Operator
-}
-
-// GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConditionRule) GetOperatorOk() (*string, bool) {
-	if o == nil || isNil(o.Operator) {
-		return nil, false
-	}
-	return o.Operator, true
-}
-
-// HasOperator returns a boolean if a field has been set.
-func (o *ConditionRule) HasOperator() bool {
-	if o != nil && !isNil(o.Operator) {
-		return true
-	}
-
-	return false
-}
-
-// SetOperator gets a reference to the given string and assigns it to the Operator field.
-func (o *ConditionRule) SetOperator(v string) {
-	o.Operator = &v
-}
-
-// GetSource returns the Source field value if set, zero value otherwise.
-func (o *ConditionRule) GetSource() string {
-	if o == nil || isNil(o.Source) {
-		var ret string
-		return ret
-	}
-	return *o.Source
-}
-
-// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConditionRule) GetSourceOk() (*string, bool) {
-	if o == nil || isNil(o.Source) {
-		return nil, false
-	}
-	return o.Source, true
-}
-
-// HasSource returns a boolean if a field has been set.
-func (o *ConditionRule) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
-		return true
-	}
-
-	return false
-}
-
-// SetSource gets a reference to the given string and assigns it to the Source field.
-func (o *ConditionRule) SetSource(v string) {
-	o.Source = &v
 }
 
 // GetSourceType returns the SourceType field value if set, zero value otherwise.
@@ -147,36 +83,68 @@ func (o *ConditionRule) SetSourceType(v string) {
 	o.SourceType = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
-func (o *ConditionRule) GetValue() map[string]interface{} {
-	if o == nil || isNil(o.Value) {
-		var ret map[string]interface{}
+// GetSource returns the Source field value if set, zero value otherwise.
+func (o *ConditionRule) GetSource() string {
+	if o == nil || isNil(o.Source) {
+		var ret string
 		return ret
 	}
-	return o.Value
+	return *o.Source
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConditionRule) GetValueOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Value) {
-		return map[string]interface{}{}, false
+func (o *ConditionRule) GetSourceOk() (*string, bool) {
+	if o == nil || isNil(o.Source) {
+		return nil, false
 	}
-	return o.Value, true
+	return o.Source, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *ConditionRule) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+// HasSource returns a boolean if a field has been set.
+func (o *ConditionRule) HasSource() bool {
+	if o != nil && !isNil(o.Source) {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given map[string]interface{} and assigns it to the Value field.
-func (o *ConditionRule) SetValue(v map[string]interface{}) {
-	o.Value = v
+// SetSource gets a reference to the given string and assigns it to the Source field.
+func (o *ConditionRule) SetSource(v string) {
+	o.Source = &v
+}
+
+// GetOperator returns the Operator field value if set, zero value otherwise.
+func (o *ConditionRule) GetOperator() string {
+	if o == nil || isNil(o.Operator) {
+		var ret string
+		return ret
+	}
+	return *o.Operator
+}
+
+// GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConditionRule) GetOperatorOk() (*string, bool) {
+	if o == nil || isNil(o.Operator) {
+		return nil, false
+	}
+	return o.Operator, true
+}
+
+// HasOperator returns a boolean if a field has been set.
+func (o *ConditionRule) HasOperator() bool {
+	if o != nil && !isNil(o.Operator) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperator gets a reference to the given string and assigns it to the Operator field.
+func (o *ConditionRule) SetOperator(v string) {
+	o.Operator = &v
 }
 
 // GetValueType returns the ValueType field value if set, zero value otherwise.
@@ -211,6 +179,38 @@ func (o *ConditionRule) SetValueType(v string) {
 	o.ValueType = &v
 }
 
+// GetValue returns the Value field value if set, zero value otherwise.
+func (o *ConditionRule) GetValue() map[string]interface{} {
+	if o == nil || isNil(o.Value) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.Value
+}
+
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConditionRule) GetValueOk() (map[string]interface{}, bool) {
+	if o == nil || isNil(o.Value) {
+		return map[string]interface{}{}, false
+	}
+	return o.Value, true
+}
+
+// HasValue returns a boolean if a field has been set.
+func (o *ConditionRule) HasValue() bool {
+	if o != nil && !isNil(o.Value) {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given map[string]interface{} and assigns it to the Value field.
+func (o *ConditionRule) SetValue(v map[string]interface{}) {
+	o.Value = v
+}
+
 func (o ConditionRule) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -221,20 +221,20 @@ func (o ConditionRule) MarshalJSON() ([]byte, error) {
 
 func (o ConditionRule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Operator) {
-		toSerialize["operator"] = o.Operator
+	if !isNil(o.SourceType) {
+		toSerialize["sourceType"] = o.SourceType
 	}
 	if !isNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
-	if !isNil(o.SourceType) {
-		toSerialize["sourceType"] = o.SourceType
-	}
-	if !isNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if !isNil(o.Operator) {
+		toSerialize["operator"] = o.Operator
 	}
 	if !isNil(o.ValueType) {
 		toSerialize["valueType"] = o.ValueType
+	}
+	if !isNil(o.Value) {
+		toSerialize["value"] = o.Value
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -254,11 +254,11 @@ func (o *ConditionRule) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "operator")
-		delete(additionalProperties, "source")
 		delete(additionalProperties, "sourceType")
-		delete(additionalProperties, "value")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "operator")
 		delete(additionalProperties, "valueType")
+		delete(additionalProperties, "value")
 		o.AdditionalProperties = additionalProperties
 	}
 

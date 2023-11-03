@@ -17,13 +17,13 @@ import (
 // checks if the AccountUncorrelatedSource type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccountUncorrelatedSource{}
 
-// AccountUncorrelatedSource The source from which the account came from.
+// AccountUncorrelatedSource The source the accounts are uncorrelated from.
 type AccountUncorrelatedSource struct {
-	// The type of object that is referenced
-	Type map[string]interface{} `json:"type"`
-	// ID of the object to which this reference applies
+	// The DTO type of the source the accounts are uncorrelated from.
+	Type string `json:"type"`
+	// The ID of the source the accounts are uncorrelated from.
 	Id string `json:"id"`
-	// Human-readable display name of the object to which this reference applies
+	// Display name of the source the accounts are uncorrelated from.
 	Name string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,7 +34,7 @@ type _AccountUncorrelatedSource AccountUncorrelatedSource
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountUncorrelatedSource(type_ map[string]interface{}, id string, name string) *AccountUncorrelatedSource {
+func NewAccountUncorrelatedSource(type_ string, id string, name string) *AccountUncorrelatedSource {
 	this := AccountUncorrelatedSource{}
 	this.Type = type_
 	this.Id = id
@@ -51,9 +51,9 @@ func NewAccountUncorrelatedSourceWithDefaults() *AccountUncorrelatedSource {
 }
 
 // GetType returns the Type field value
-func (o *AccountUncorrelatedSource) GetType() map[string]interface{} {
+func (o *AccountUncorrelatedSource) GetType() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -62,15 +62,15 @@ func (o *AccountUncorrelatedSource) GetType() map[string]interface{} {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *AccountUncorrelatedSource) GetTypeOk() (map[string]interface{}, bool) {
+func (o *AccountUncorrelatedSource) GetTypeOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
 // SetType sets field value
-func (o *AccountUncorrelatedSource) SetType(v map[string]interface{}) {
+func (o *AccountUncorrelatedSource) SetType(v string) {
 	o.Type = v
 }
 

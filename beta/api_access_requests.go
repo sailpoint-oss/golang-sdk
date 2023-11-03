@@ -727,6 +727,7 @@ type ApiListAccessRequestStatusRequest struct {
 	requestedFor *string
 	requestedBy *string
 	regardingIdentity *string
+	assignedTo *string
 	count *bool
 	limit *int32
 	offset *int32
@@ -752,6 +753,12 @@ func (r ApiListAccessRequestStatusRequest) RegardingIdentity(regardingIdentity s
 	return r
 }
 
+// Filter the results by the specified identity which is the owner of the Identity Request Work Item. *me* indicates the current user.
+func (r ApiListAccessRequestStatusRequest) AssignedTo(assignedTo string) ApiListAccessRequestStatusRequest {
+	r.assignedTo = &assignedTo
+	return r
+}
+
 // If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.
 func (r ApiListAccessRequestStatusRequest) Count(count bool) ApiListAccessRequestStatusRequest {
 	r.count = &count
@@ -770,13 +777,13 @@ func (r ApiListAccessRequestStatusRequest) Offset(offset int32) ApiListAccessReq
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*
 func (r ApiListAccessRequestStatusRequest) Filters(filters string) ApiListAccessRequestStatusRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name**
 func (r ApiListAccessRequestStatusRequest) Sorters(sorters string) ApiListAccessRequestStatusRequest {
 	r.sorters = &sorters
 	return r
@@ -831,6 +838,9 @@ func (a *AccessRequestsApiService) ListAccessRequestStatusExecute(r ApiListAcces
 	}
 	if r.regardingIdentity != nil {
 		parameterAddToQuery(localVarQueryParams, "regarding-identity", r.regardingIdentity, "")
+	}
+	if r.assignedTo != nil {
+		parameterAddToQuery(localVarQueryParams, "assigned-to", r.assignedTo, "")
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
@@ -955,32 +965,32 @@ func (a *AccessRequestsApiService) ListAccessRequestStatusExecute(r ApiListAcces
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateAccessRequestConfigRequest struct {
+type ApiSetAccessRequestConfigRequest struct {
 	ctx context.Context
 	ApiService *AccessRequestsApiService
 	accessRequestConfig *AccessRequestConfig
 }
 
-func (r ApiUpdateAccessRequestConfigRequest) AccessRequestConfig(accessRequestConfig AccessRequestConfig) ApiUpdateAccessRequestConfigRequest {
+func (r ApiSetAccessRequestConfigRequest) AccessRequestConfig(accessRequestConfig AccessRequestConfig) ApiSetAccessRequestConfigRequest {
 	r.accessRequestConfig = &accessRequestConfig
 	return r
 }
 
-func (r ApiUpdateAccessRequestConfigRequest) Execute() (*AccessRequestConfig, *http.Response, error) {
-	return r.ApiService.UpdateAccessRequestConfigExecute(r)
+func (r ApiSetAccessRequestConfigRequest) Execute() (*AccessRequestConfig, *http.Response, error) {
+	return r.ApiService.SetAccessRequestConfigExecute(r)
 }
 
 /*
-UpdateAccessRequestConfig Update Access Request Configuration
+SetAccessRequestConfig Update Access Request Configuration
 
 This endpoint replaces the current access-request configuration.
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUpdateAccessRequestConfigRequest
+ @return ApiSetAccessRequestConfigRequest
 */
-func (a *AccessRequestsApiService) UpdateAccessRequestConfig(ctx context.Context) ApiUpdateAccessRequestConfigRequest {
-	return ApiUpdateAccessRequestConfigRequest{
+func (a *AccessRequestsApiService) SetAccessRequestConfig(ctx context.Context) ApiSetAccessRequestConfigRequest {
+	return ApiSetAccessRequestConfigRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -988,7 +998,7 @@ func (a *AccessRequestsApiService) UpdateAccessRequestConfig(ctx context.Context
 
 // Execute executes the request
 //  @return AccessRequestConfig
-func (a *AccessRequestsApiService) UpdateAccessRequestConfigExecute(r ApiUpdateAccessRequestConfigRequest) (*AccessRequestConfig, *http.Response, error) {
+func (a *AccessRequestsApiService) SetAccessRequestConfigExecute(r ApiSetAccessRequestConfigRequest) (*AccessRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -996,7 +1006,7 @@ func (a *AccessRequestsApiService) UpdateAccessRequestConfigExecute(r ApiUpdateA
 		localVarReturnValue  *AccessRequestConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsApiService.UpdateAccessRequestConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsApiService.SetAccessRequestConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **map[string]interface{}** | The type of object that is referenced | 
-**Id** | **string** | ID of the object to which this reference applies | 
-**Name** | **string** | Human-readable display name of the object to which this reference applies | 
+**Type** | **string** | Deleted identity&#39;s DTO type. | 
+**Id** | **string** | Deleted identity ID. | 
+**Name** | **string** | Deleted identity&#39;s display name. | 
 
 ## Methods
 
 ### NewIdentityDeletedIdentity
 
-`func NewIdentityDeletedIdentity(type_ map[string]interface{}, id string, name string, ) *IdentityDeletedIdentity`
+`func NewIdentityDeletedIdentity(type_ string, id string, name string, ) *IdentityDeletedIdentity`
 
 NewIdentityDeletedIdentity instantiates a new IdentityDeletedIdentity object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *IdentityDeletedIdentity) GetType() map[string]interface{}`
+`func (o *IdentityDeletedIdentity) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *IdentityDeletedIdentity) GetTypeOk() (*map[string]interface{}, bool)`
+`func (o *IdentityDeletedIdentity) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *IdentityDeletedIdentity) SetType(v map[string]interface{})`
+`func (o *IdentityDeletedIdentity) SetType(v string)`
 
 SetType sets Type field to given value.
 

@@ -17,13 +17,14 @@ import (
 // checks if the ScheduleHours type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ScheduleHours{}
 
-// ScheduleHours struct for ScheduleHours
+// ScheduleHours Specifies which hour(s) a schedule is active for. Examples:  Every three hours starting from 8AM, inclusive: * type LIST * values \"8\" * interval 3  During business hours: * type RANGE * values \"9\", \"5\"  At 5AM, noon, and 5PM: * type LIST * values \"5\", \"12\", \"17\" 
 type ScheduleHours struct {
-	Type SelectorType `json:"type"`
-	// The selected values. 
+	// Enum type to specify hours value
+	Type string `json:"type"`
+	// Values of the days based on the enum type mentioned above
 	Values []string `json:"values"`
-	// The selected interval for RANGE selectors. 
-	Interval NullableInt32 `json:"interval,omitempty"`
+	// Interval between the cert generations
+	Interval *int64 `json:"interval,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,7 +34,7 @@ type _ScheduleHours ScheduleHours
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScheduleHours(type_ SelectorType, values []string) *ScheduleHours {
+func NewScheduleHours(type_ string, values []string) *ScheduleHours {
 	this := ScheduleHours{}
 	this.Type = type_
 	this.Values = values
@@ -49,9 +50,9 @@ func NewScheduleHoursWithDefaults() *ScheduleHours {
 }
 
 // GetType returns the Type field value
-func (o *ScheduleHours) GetType() SelectorType {
+func (o *ScheduleHours) GetType() string {
 	if o == nil {
-		var ret SelectorType
+		var ret string
 		return ret
 	}
 
@@ -60,7 +61,7 @@ func (o *ScheduleHours) GetType() SelectorType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *ScheduleHours) GetTypeOk() (*SelectorType, bool) {
+func (o *ScheduleHours) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,7 +69,7 @@ func (o *ScheduleHours) GetTypeOk() (*SelectorType, bool) {
 }
 
 // SetType sets field value
-func (o *ScheduleHours) SetType(v SelectorType) {
+func (o *ScheduleHours) SetType(v string) {
 	o.Type = v
 }
 
@@ -96,46 +97,36 @@ func (o *ScheduleHours) SetValues(v []string) {
 	o.Values = v
 }
 
-// GetInterval returns the Interval field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ScheduleHours) GetInterval() int32 {
-	if o == nil || isNil(o.Interval.Get()) {
-		var ret int32
+// GetInterval returns the Interval field value if set, zero value otherwise.
+func (o *ScheduleHours) GetInterval() int64 {
+	if o == nil || isNil(o.Interval) {
+		var ret int64
 		return ret
 	}
-	return *o.Interval.Get()
+	return *o.Interval
 }
 
 // GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ScheduleHours) GetIntervalOk() (*int32, bool) {
-	if o == nil {
+func (o *ScheduleHours) GetIntervalOk() (*int64, bool) {
+	if o == nil || isNil(o.Interval) {
 		return nil, false
 	}
-	return o.Interval.Get(), o.Interval.IsSet()
+	return o.Interval, true
 }
 
 // HasInterval returns a boolean if a field has been set.
 func (o *ScheduleHours) HasInterval() bool {
-	if o != nil && o.Interval.IsSet() {
+	if o != nil && !isNil(o.Interval) {
 		return true
 	}
 
 	return false
 }
 
-// SetInterval gets a reference to the given NullableInt32 and assigns it to the Interval field.
-func (o *ScheduleHours) SetInterval(v int32) {
-	o.Interval.Set(&v)
-}
-// SetIntervalNil sets the value for Interval to be an explicit nil
-func (o *ScheduleHours) SetIntervalNil() {
-	o.Interval.Set(nil)
-}
-
-// UnsetInterval ensures that no value is present for Interval, not even an explicit nil
-func (o *ScheduleHours) UnsetInterval() {
-	o.Interval.Unset()
+// SetInterval gets a reference to the given int64 and assigns it to the Interval field.
+func (o *ScheduleHours) SetInterval(v int64) {
+	o.Interval = &v
 }
 
 func (o ScheduleHours) MarshalJSON() ([]byte, error) {
@@ -150,8 +141,8 @@ func (o ScheduleHours) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["values"] = o.Values
-	if o.Interval.IsSet() {
-		toSerialize["interval"] = o.Interval.Get()
+	if !isNil(o.Interval) {
+		toSerialize["interval"] = o.Interval
 	}
 
 	for key, value := range o.AdditionalProperties {

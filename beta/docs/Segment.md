@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** | Segment Business Name | [optional] 
-**Created** | Pointer to **time.Time** | The time when this Segment is created | [optional] 
-**Modified** | Pointer to **time.Time** | The time when this Segment is modified | [optional] 
-**Description** | Pointer to **string** | Optional description of the Segment | [optional] 
-**Owner** | Pointer to [**NullableOwnerReference**](OwnerReference.md) |  | [optional] 
+**Id** | Pointer to **string** | The segment&#39;s ID. | [optional] 
+**Name** | Pointer to **string** | The segment&#39;s business name. | [optional] 
+**Created** | Pointer to **time.Time** | The time when the segment is created. | [optional] 
+**Modified** | Pointer to **time.Time** | The time when the segment is modified. | [optional] 
+**Description** | Pointer to **string** | The segment&#39;s optional description. | [optional] 
+**Owner** | Pointer to [**NullableOwnerReferenceSegments**](OwnerReferenceSegments.md) |  | [optional] 
 **VisibilityCriteria** | Pointer to [**VisibilityCriteria**](VisibilityCriteria.md) |  | [optional] 
-**Active** | Pointer to **bool** | Whether the Segment is currently active. Inactive segments have no effect. | [optional] 
+**Active** | Pointer to **bool** | This boolean indicates whether the segment is currently active. Inactive segments have no effect. | [optional] [default to false]
 
 ## Methods
 
@@ -159,20 +159,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *Segment) GetOwner() OwnerReference`
+`func (o *Segment) GetOwner() OwnerReferenceSegments`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *Segment) GetOwnerOk() (*OwnerReference, bool)`
+`func (o *Segment) GetOwnerOk() (*OwnerReferenceSegments, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *Segment) SetOwner(v OwnerReference)`
+`func (o *Segment) SetOwner(v OwnerReferenceSegments)`
 
 SetOwner sets Owner field to given value.
 

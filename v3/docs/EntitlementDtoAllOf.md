@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **SourceSchemaObjectType** | Pointer to **string** | Schema objectType on the given application that maps to an Account Group | [optional] 
 **Privileged** | Pointer to **bool** | Determines if this Entitlement is privileged. | [optional] 
 **CloudGoverned** | Pointer to **bool** | Determines if this Entitlement is goverened in the cloud. | [optional] 
-**Source** | Pointer to [**BaseReferenceDto**](BaseReferenceDto.md) |  | [optional] 
+**Source** | Pointer to [**EntitlementSource**](EntitlementSource.md) |  | [optional] 
 
 ## Methods
 
@@ -209,20 +209,20 @@ HasCloudGoverned returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *EntitlementDtoAllOf) GetSource() BaseReferenceDto`
+`func (o *EntitlementDtoAllOf) GetSource() EntitlementSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *EntitlementDtoAllOf) GetSourceOk() (*BaseReferenceDto, bool)`
+`func (o *EntitlementDtoAllOf) GetSourceOk() (*EntitlementSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *EntitlementDtoAllOf) SetSource(v BaseReferenceDto)`
+`func (o *EntitlementDtoAllOf) SetSource(v EntitlementSource)`
 
 SetSource sets Source field to given value.
 

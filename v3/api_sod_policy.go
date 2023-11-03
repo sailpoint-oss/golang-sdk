@@ -2045,33 +2045,33 @@ func (a *SODPolicyApiService) PatchSodPolicyExecute(r ApiPatchSodPolicyRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSetPolicyScheduleRequest struct {
+type ApiPutPolicyScheduleRequest struct {
 	ctx context.Context
 	ApiService *SODPolicyApiService
 	id string
 	sodPolicySchedule *SodPolicySchedule
 }
 
-func (r ApiSetPolicyScheduleRequest) SodPolicySchedule(sodPolicySchedule SodPolicySchedule) ApiSetPolicyScheduleRequest {
+func (r ApiPutPolicyScheduleRequest) SodPolicySchedule(sodPolicySchedule SodPolicySchedule) ApiPutPolicyScheduleRequest {
 	r.sodPolicySchedule = &sodPolicySchedule
 	return r
 }
 
-func (r ApiSetPolicyScheduleRequest) Execute() (*SodPolicySchedule, *http.Response, error) {
-	return r.ApiService.SetPolicyScheduleExecute(r)
+func (r ApiPutPolicyScheduleRequest) Execute() (*SodPolicySchedule, *http.Response, error) {
+	return r.ApiService.PutPolicyScheduleExecute(r)
 }
 
 /*
-SetPolicySchedule Update SOD Policy schedule
+PutPolicySchedule Update SOD Policy schedule
 
 This updates schedule for a specified SOD policy.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the SOD policy to update its schedule.
- @return ApiSetPolicyScheduleRequest
+ @return ApiPutPolicyScheduleRequest
 */
-func (a *SODPolicyApiService) SetPolicySchedule(ctx context.Context, id string) ApiSetPolicyScheduleRequest {
-	return ApiSetPolicyScheduleRequest{
+func (a *SODPolicyApiService) PutPolicySchedule(ctx context.Context, id string) ApiPutPolicyScheduleRequest {
+	return ApiPutPolicyScheduleRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2080,7 +2080,7 @@ func (a *SODPolicyApiService) SetPolicySchedule(ctx context.Context, id string) 
 
 // Execute executes the request
 //  @return SodPolicySchedule
-func (a *SODPolicyApiService) SetPolicyScheduleExecute(r ApiSetPolicyScheduleRequest) (*SodPolicySchedule, *http.Response, error) {
+func (a *SODPolicyApiService) PutPolicyScheduleExecute(r ApiPutPolicyScheduleRequest) (*SodPolicySchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2088,7 +2088,7 @@ func (a *SODPolicyApiService) SetPolicyScheduleExecute(r ApiSetPolicyScheduleReq
 		localVarReturnValue  *SodPolicySchedule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.SetPolicySchedule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.PutPolicySchedule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2213,34 +2213,34 @@ func (a *SODPolicyApiService) SetPolicyScheduleExecute(r ApiSetPolicyScheduleReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSetSodPolicyRequest struct {
+type ApiPutSodPolicyRequest struct {
 	ctx context.Context
 	ApiService *SODPolicyApiService
 	id string
 	sodPolicy *SodPolicy
 }
 
-func (r ApiSetSodPolicyRequest) SodPolicy(sodPolicy SodPolicy) ApiSetSodPolicyRequest {
+func (r ApiPutSodPolicyRequest) SodPolicy(sodPolicy SodPolicy) ApiPutSodPolicyRequest {
 	r.sodPolicy = &sodPolicy
 	return r
 }
 
-func (r ApiSetSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) {
-	return r.ApiService.SetSodPolicyExecute(r)
+func (r ApiPutSodPolicyRequest) Execute() (*SodPolicy, *http.Response, error) {
+	return r.ApiService.PutSodPolicyExecute(r)
 }
 
 /*
-SetSodPolicy Update SOD policy by ID
+PutSodPolicy Update SOD policy by ID
 
 This updates a specified SOD policy.
 Requires role of ORG_ADMIN.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id The ID of the SOD policy to update.
- @return ApiSetSodPolicyRequest
+ @return ApiPutSodPolicyRequest
 */
-func (a *SODPolicyApiService) SetSodPolicy(ctx context.Context, id string) ApiSetSodPolicyRequest {
-	return ApiSetSodPolicyRequest{
+func (a *SODPolicyApiService) PutSodPolicy(ctx context.Context, id string) ApiPutSodPolicyRequest {
+	return ApiPutSodPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2249,7 +2249,7 @@ func (a *SODPolicyApiService) SetSodPolicy(ctx context.Context, id string) ApiSe
 
 // Execute executes the request
 //  @return SodPolicy
-func (a *SODPolicyApiService) SetSodPolicyExecute(r ApiSetSodPolicyRequest) (*SodPolicy, *http.Response, error) {
+func (a *SODPolicyApiService) PutSodPolicyExecute(r ApiPutSodPolicyRequest) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2257,7 +2257,7 @@ func (a *SODPolicyApiService) SetSodPolicyExecute(r ApiSetSodPolicyRequest) (*So
 		localVarReturnValue  *SodPolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.SetSodPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.PutSodPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

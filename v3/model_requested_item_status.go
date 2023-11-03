@@ -39,8 +39,8 @@ type RequestedItemStatus struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// When the request was created.
 	Created *time.Time `json:"created,omitempty"`
-	Requester *BaseReferenceDto `json:"requester,omitempty"`
-	RequestedFor *BaseReferenceDto `json:"requestedFor,omitempty"`
+	Requester *AccessItemRequester `json:"requester,omitempty"`
+	RequestedFor *AccessItemRequestedFor `json:"requestedFor,omitempty"`
 	RequesterComment *CommentDto `json:"requesterComment,omitempty"`
 	SodViolationContext *SodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
 	ProvisioningDetails *ProvisioningDetails `json:"provisioningDetails,omitempty"`
@@ -434,9 +434,9 @@ func (o *RequestedItemStatus) SetCreated(v time.Time) {
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetRequester() BaseReferenceDto {
+func (o *RequestedItemStatus) GetRequester() AccessItemRequester {
 	if o == nil || isNil(o.Requester) {
-		var ret BaseReferenceDto
+		var ret AccessItemRequester
 		return ret
 	}
 	return *o.Requester
@@ -444,7 +444,7 @@ func (o *RequestedItemStatus) GetRequester() BaseReferenceDto {
 
 // GetRequesterOk returns a tuple with the Requester field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetRequesterOk() (*BaseReferenceDto, bool) {
+func (o *RequestedItemStatus) GetRequesterOk() (*AccessItemRequester, bool) {
 	if o == nil || isNil(o.Requester) {
 		return nil, false
 	}
@@ -460,15 +460,15 @@ func (o *RequestedItemStatus) HasRequester() bool {
 	return false
 }
 
-// SetRequester gets a reference to the given BaseReferenceDto and assigns it to the Requester field.
-func (o *RequestedItemStatus) SetRequester(v BaseReferenceDto) {
+// SetRequester gets a reference to the given AccessItemRequester and assigns it to the Requester field.
+func (o *RequestedItemStatus) SetRequester(v AccessItemRequester) {
 	o.Requester = &v
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetRequestedFor() BaseReferenceDto {
+func (o *RequestedItemStatus) GetRequestedFor() AccessItemRequestedFor {
 	if o == nil || isNil(o.RequestedFor) {
-		var ret BaseReferenceDto
+		var ret AccessItemRequestedFor
 		return ret
 	}
 	return *o.RequestedFor
@@ -476,7 +476,7 @@ func (o *RequestedItemStatus) GetRequestedFor() BaseReferenceDto {
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetRequestedForOk() (*BaseReferenceDto, bool) {
+func (o *RequestedItemStatus) GetRequestedForOk() (*AccessItemRequestedFor, bool) {
 	if o == nil || isNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -492,8 +492,8 @@ func (o *RequestedItemStatus) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given BaseReferenceDto and assigns it to the RequestedFor field.
-func (o *RequestedItemStatus) SetRequestedFor(v BaseReferenceDto) {
+// SetRequestedFor gets a reference to the given AccessItemRequestedFor and assigns it to the RequestedFor field.
+func (o *RequestedItemStatus) SetRequestedFor(v AccessItemRequestedFor) {
 	o.RequestedFor = &v
 }
 

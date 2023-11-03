@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Policy** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto1.md) |  | [optional] 
+**Policy** | Pointer to [**SodPolicyDto**](SodPolicyDto.md) |  | [optional] 
 **ConflictingAccessCriteria** | Pointer to [**SodViolationContext1ConflictingAccessCriteria**](SodViolationContext1ConflictingAccessCriteria.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPolicy
 
-`func (o *SodViolationContext1) GetPolicy() BaseReferenceDto1`
+`func (o *SodViolationContext1) GetPolicy() SodPolicyDto`
 
 GetPolicy returns the Policy field if non-nil, zero value otherwise.
 
 ### GetPolicyOk
 
-`func (o *SodViolationContext1) GetPolicyOk() (*BaseReferenceDto1, bool)`
+`func (o *SodViolationContext1) GetPolicyOk() (*SodPolicyDto, bool)`
 
 GetPolicyOk returns a tuple with the Policy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPolicy
 
-`func (o *SodViolationContext1) SetPolicy(v BaseReferenceDto1)`
+`func (o *SodViolationContext1) SetPolicy(v SodPolicyDto)`
 
 SetPolicy sets Policy field to given value.
 

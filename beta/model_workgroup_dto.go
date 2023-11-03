@@ -19,16 +19,16 @@ var _ MappedNullable = &WorkgroupDto{}
 
 // WorkgroupDto struct for WorkgroupDto
 type WorkgroupDto struct {
-	Owner *BaseReferenceDto1 `json:"owner,omitempty"`
-	// ID of the object to which this reference applies
+	Owner *OwnerDto `json:"owner,omitempty"`
+	// Governance group ID.
 	Id *string `json:"id,omitempty"`
-	// Name of the Governance Group
+	// Governance group name.
 	Name *string `json:"name,omitempty"`
-	// Description of the Governance Group
+	// Governance group description.
 	Description *string `json:"description,omitempty"`
-	// Number of members in the Governance Group.
+	// Number of members in the governance group.
 	MemberCount *int64 `json:"memberCount,omitempty"`
-	// Number of connections in the Governance Group.
+	// Number of connections in the governance group.
 	ConnectionCount *int64 `json:"connectionCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -53,9 +53,9 @@ func NewWorkgroupDtoWithDefaults() *WorkgroupDto {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *WorkgroupDto) GetOwner() BaseReferenceDto1 {
+func (o *WorkgroupDto) GetOwner() OwnerDto {
 	if o == nil || isNil(o.Owner) {
-		var ret BaseReferenceDto1
+		var ret OwnerDto
 		return ret
 	}
 	return *o.Owner
@@ -63,7 +63,7 @@ func (o *WorkgroupDto) GetOwner() BaseReferenceDto1 {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WorkgroupDto) GetOwnerOk() (*BaseReferenceDto1, bool) {
+func (o *WorkgroupDto) GetOwnerOk() (*OwnerDto, bool) {
 	if o == nil || isNil(o.Owner) {
 		return nil, false
 	}
@@ -79,8 +79,8 @@ func (o *WorkgroupDto) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given BaseReferenceDto1 and assigns it to the Owner field.
-func (o *WorkgroupDto) SetOwner(v BaseReferenceDto1) {
+// SetOwner gets a reference to the given OwnerDto and assigns it to the Owner field.
+func (o *WorkgroupDto) SetOwner(v OwnerDto) {
 	o.Owner = &v
 }
 

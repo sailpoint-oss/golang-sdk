@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Config** | Pointer to **map[string]map[string]interface{}** | Config is a config object | [optional] 
-**ElementType** | Pointer to **string** | ElementType is a FormElementType value TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns | [optional] 
-**Id** | Pointer to **string** | ID is a form element identifier | [optional] 
-**Key** | Pointer to **string** | Key is the technical key | [optional] 
-**Validations** | Pointer to **map[string]interface{}** | FormElementValidationsSet is a set of FormElementValidation items | [optional] 
+**Id** | Pointer to **string** | Form element identifier. | [optional] 
+**ElementType** | Pointer to **string** | FormElementType value.  TEXT FormElementTypeText TOGGLE FormElementTypeToggle TEXTAREA FormElementTypeTextArea HIDDEN FormElementTypeHidden PHONE FormElementTypePhone EMAIL FormElementTypeEmail SELECT FormElementTypeSelect DATE FormElementTypeDate SECTION FormElementTypeSection COLUMNS FormElementTypeColumns | [optional] 
+**Config** | Pointer to **map[string]map[string]interface{}** | Config object. | [optional] 
+**Key** | Pointer to **string** | Technical key. | [optional] 
+**Validations** | Pointer to **map[string]interface{}** | Set of FormElementValidation items. | [optional] 
 
 ## Methods
 
@@ -29,30 +29,30 @@ NewFormElementWithDefaults instantiates a new FormElement object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetConfig
+### GetId
 
-`func (o *FormElement) GetConfig() map[string]map[string]interface{}`
+`func (o *FormElement) GetId() string`
 
-GetConfig returns the Config field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetConfigOk
+### GetIdOk
 
-`func (o *FormElement) GetConfigOk() (*map[string]map[string]interface{}, bool)`
+`func (o *FormElement) GetIdOk() (*string, bool)`
 
-GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetConfig
+### SetId
 
-`func (o *FormElement) SetConfig(v map[string]map[string]interface{})`
+`func (o *FormElement) SetId(v string)`
 
-SetConfig sets Config field to given value.
+SetId sets Id field to given value.
 
-### HasConfig
+### HasId
 
-`func (o *FormElement) HasConfig() bool`
+`func (o *FormElement) HasId() bool`
 
-HasConfig returns a boolean if a field has been set.
+HasId returns a boolean if a field has been set.
 
 ### GetElementType
 
@@ -79,30 +79,30 @@ SetElementType sets ElementType field to given value.
 
 HasElementType returns a boolean if a field has been set.
 
-### GetId
+### GetConfig
 
-`func (o *FormElement) GetId() string`
+`func (o *FormElement) GetConfig() map[string]map[string]interface{}`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetConfig returns the Config field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetConfigOk
 
-`func (o *FormElement) GetIdOk() (*string, bool)`
+`func (o *FormElement) GetConfigOk() (*map[string]map[string]interface{}, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetConfig
 
-`func (o *FormElement) SetId(v string)`
+`func (o *FormElement) SetConfig(v map[string]map[string]interface{})`
 
-SetId sets Id field to given value.
+SetConfig sets Config field to given value.
 
-### HasId
+### HasConfig
 
-`func (o *FormElement) HasId() bool`
+`func (o *FormElement) HasConfig() bool`
 
-HasId returns a boolean if a field has been set.
+HasConfig returns a boolean if a field has been set.
 
 ### GetKey
 

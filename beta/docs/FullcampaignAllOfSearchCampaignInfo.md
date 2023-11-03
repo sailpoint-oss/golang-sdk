@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | The type of search campaign represented. | 
 **Description** | Pointer to **string** | Describes this search campaign. Intended for storing the query used, and possibly the number of identities selected/available. | [optional] 
-**Reviewer** | Pointer to [**BaseReferenceDto1**](BaseReferenceDto_1.md) | If specified, this identity or governance group will be the reviewer for all certifications in this campaign. The allowed DTO types are IDENTITY and GOVERNANCE_GROUP | [optional] 
+**Reviewer** | Pointer to [**FullcampaignAllOfSearchCampaignInfoReviewer**](FullcampaignAllOfSearchCampaignInfoReviewer.md) |  | [optional] 
 **Query** | Pointer to **string** | The scope for the campaign. The campaign will cover identities returned by the query and identities that have access items returned by the query. One of &#x60;query&#x60; or &#x60;identityIds&#x60; must be set. | [optional] 
 **IdentityIds** | Pointer to **[]string** | A direct list of identities to include in this campaign. One of &#x60;identityIds&#x60; or &#x60;query&#x60; must be set. | [optional] 
 **AccessConstraints** | Pointer to [**[]AccessConstraint**](AccessConstraint.md) | Further reduces the scope of the campaign by excluding identities (from &#x60;query&#x60; or &#x60;identityIds&#x60;) that do not have this access. | [optional] 
@@ -77,20 +77,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetReviewer
 
-`func (o *FullcampaignAllOfSearchCampaignInfo) GetReviewer() BaseReferenceDto1`
+`func (o *FullcampaignAllOfSearchCampaignInfo) GetReviewer() FullcampaignAllOfSearchCampaignInfoReviewer`
 
 GetReviewer returns the Reviewer field if non-nil, zero value otherwise.
 
 ### GetReviewerOk
 
-`func (o *FullcampaignAllOfSearchCampaignInfo) GetReviewerOk() (*BaseReferenceDto1, bool)`
+`func (o *FullcampaignAllOfSearchCampaignInfo) GetReviewerOk() (*FullcampaignAllOfSearchCampaignInfoReviewer, bool)`
 
 GetReviewerOk returns a tuple with the Reviewer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReviewer
 
-`func (o *FullcampaignAllOfSearchCampaignInfo) SetReviewer(v BaseReferenceDto1)`
+`func (o *FullcampaignAllOfSearchCampaignInfo) SetReviewer(v FullcampaignAllOfSearchCampaignInfoReviewer)`
 
 SetReviewer sets Reviewer field to given value.
 
