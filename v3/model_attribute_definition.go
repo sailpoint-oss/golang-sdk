@@ -26,7 +26,7 @@ type AttributeDefinition struct {
 	// A human-readable description of the attribute.
 	Description *string `json:"description,omitempty"`
 	// Flag indicating whether or not the attribute is multi-valued.
-	IsMultiValued *bool `json:"isMultiValued,omitempty"`
+	IsMulti *bool `json:"isMulti,omitempty"`
 	// Flag indicating whether or not the attribute is an entitlement.
 	IsEntitlement *bool `json:"isEntitlement,omitempty"`
 	// Flag indicating whether or not the attribute represents a group. This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute.. 
@@ -42,6 +42,12 @@ type _AttributeDefinition AttributeDefinition
 // will change when the set of required properties is changed
 func NewAttributeDefinition() *AttributeDefinition {
 	this := AttributeDefinition{}
+	var isMulti bool = false
+	this.IsMulti = &isMulti
+	var isEntitlement bool = false
+	this.IsEntitlement = &isEntitlement
+	var isGroup bool = false
+	this.IsGroup = &isGroup
 	return &this
 }
 
@@ -50,6 +56,12 @@ func NewAttributeDefinition() *AttributeDefinition {
 // but it doesn't guarantee that properties required by API are set
 func NewAttributeDefinitionWithDefaults() *AttributeDefinition {
 	this := AttributeDefinition{}
+	var isMulti bool = false
+	this.IsMulti = &isMulti
+	var isEntitlement bool = false
+	this.IsEntitlement = &isEntitlement
+	var isGroup bool = false
+	this.IsGroup = &isGroup
 	return &this
 }
 
@@ -181,36 +193,36 @@ func (o *AttributeDefinition) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetIsMultiValued returns the IsMultiValued field value if set, zero value otherwise.
-func (o *AttributeDefinition) GetIsMultiValued() bool {
-	if o == nil || isNil(o.IsMultiValued) {
+// GetIsMulti returns the IsMulti field value if set, zero value otherwise.
+func (o *AttributeDefinition) GetIsMulti() bool {
+	if o == nil || isNil(o.IsMulti) {
 		var ret bool
 		return ret
 	}
-	return *o.IsMultiValued
+	return *o.IsMulti
 }
 
-// GetIsMultiValuedOk returns a tuple with the IsMultiValued field value if set, nil otherwise
+// GetIsMultiOk returns a tuple with the IsMulti field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AttributeDefinition) GetIsMultiValuedOk() (*bool, bool) {
-	if o == nil || isNil(o.IsMultiValued) {
+func (o *AttributeDefinition) GetIsMultiOk() (*bool, bool) {
+	if o == nil || isNil(o.IsMulti) {
 		return nil, false
 	}
-	return o.IsMultiValued, true
+	return o.IsMulti, true
 }
 
-// HasIsMultiValued returns a boolean if a field has been set.
-func (o *AttributeDefinition) HasIsMultiValued() bool {
-	if o != nil && !isNil(o.IsMultiValued) {
+// HasIsMulti returns a boolean if a field has been set.
+func (o *AttributeDefinition) HasIsMulti() bool {
+	if o != nil && !isNil(o.IsMulti) {
 		return true
 	}
 
 	return false
 }
 
-// SetIsMultiValued gets a reference to the given bool and assigns it to the IsMultiValued field.
-func (o *AttributeDefinition) SetIsMultiValued(v bool) {
-	o.IsMultiValued = &v
+// SetIsMulti gets a reference to the given bool and assigns it to the IsMulti field.
+func (o *AttributeDefinition) SetIsMulti(v bool) {
+	o.IsMulti = &v
 }
 
 // GetIsEntitlement returns the IsEntitlement field value if set, zero value otherwise.
@@ -299,8 +311,8 @@ func (o AttributeDefinition) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !isNil(o.IsMultiValued) {
-		toSerialize["isMultiValued"] = o.IsMultiValued
+	if !isNil(o.IsMulti) {
+		toSerialize["isMulti"] = o.IsMulti
 	}
 	if !isNil(o.IsEntitlement) {
 		toSerialize["isEntitlement"] = o.IsEntitlement
@@ -330,7 +342,7 @@ func (o *AttributeDefinition) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "schema")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "isMultiValued")
+		delete(additionalProperties, "isMulti")
 		delete(additionalProperties, "isEntitlement")
 		delete(additionalProperties, "isGroup")
 		o.AdditionalProperties = additionalProperties

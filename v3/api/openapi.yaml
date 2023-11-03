@@ -42175,15 +42175,18 @@ components:
           description: A human-readable description of the attribute.
           example: SAM Account Name
           type: string
-        isMultiValued:
+        isMulti:
+          default: false
           description: Flag indicating whether or not the attribute is multi-valued.
           example: false
           type: boolean
         isEntitlement:
+          default: false
           description: Flag indicating whether or not the attribute is an entitlement.
           example: false
           type: boolean
         isGroup:
+          default: false
           description: |
             Flag indicating whether or not the attribute represents a group.
             This can only be `true` if `isEntitlement` is also `true` **and** there is a schema defined for the attribute..

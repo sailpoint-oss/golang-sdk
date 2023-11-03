@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **Type** | Pointer to [**AttributeDefinitionType**](AttributeDefinitionType.md) |  | [optional] 
 **Schema** | Pointer to [**AttributeDefinitionSchema**](AttributeDefinitionSchema.md) |  | [optional] 
 **Description** | Pointer to **string** | A human-readable description of the attribute. | [optional] 
-**IsMultiValued** | Pointer to **bool** | Flag indicating whether or not the attribute is multi-valued. | [optional] 
-**IsEntitlement** | Pointer to **bool** | Flag indicating whether or not the attribute is an entitlement. | [optional] 
-**IsGroup** | Pointer to **bool** | Flag indicating whether or not the attribute represents a group. This can only be &#x60;true&#x60; if &#x60;isEntitlement&#x60; is also &#x60;true&#x60; **and** there is a schema defined for the attribute..  | [optional] 
+**IsMulti** | Pointer to **bool** | Flag indicating whether or not the attribute is multi-valued. | [optional] [default to false]
+**IsEntitlement** | Pointer to **bool** | Flag indicating whether or not the attribute is an entitlement. | [optional] [default to false]
+**IsGroup** | Pointer to **bool** | Flag indicating whether or not the attribute represents a group. This can only be &#x60;true&#x60; if &#x60;isEntitlement&#x60; is also &#x60;true&#x60; **and** there is a schema defined for the attribute..  | [optional] [default to false]
 
 ## Methods
 
@@ -131,30 +131,30 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetIsMultiValued
+### GetIsMulti
 
-`func (o *AttributeDefinition) GetIsMultiValued() bool`
+`func (o *AttributeDefinition) GetIsMulti() bool`
 
-GetIsMultiValued returns the IsMultiValued field if non-nil, zero value otherwise.
+GetIsMulti returns the IsMulti field if non-nil, zero value otherwise.
 
-### GetIsMultiValuedOk
+### GetIsMultiOk
 
-`func (o *AttributeDefinition) GetIsMultiValuedOk() (*bool, bool)`
+`func (o *AttributeDefinition) GetIsMultiOk() (*bool, bool)`
 
-GetIsMultiValuedOk returns a tuple with the IsMultiValued field if it's non-nil, zero value otherwise
+GetIsMultiOk returns a tuple with the IsMulti field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsMultiValued
+### SetIsMulti
 
-`func (o *AttributeDefinition) SetIsMultiValued(v bool)`
+`func (o *AttributeDefinition) SetIsMulti(v bool)`
 
-SetIsMultiValued sets IsMultiValued field to given value.
+SetIsMulti sets IsMulti field to given value.
 
-### HasIsMultiValued
+### HasIsMulti
 
-`func (o *AttributeDefinition) HasIsMultiValued() bool`
+`func (o *AttributeDefinition) HasIsMulti() bool`
 
-HasIsMultiValued returns a boolean if a field has been set.
+HasIsMulti returns a boolean if a field has been set.
 
 ### GetIsEntitlement
 
