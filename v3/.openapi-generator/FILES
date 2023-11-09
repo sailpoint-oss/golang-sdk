@@ -26,6 +26,7 @@ api_password_sync_groups.go
 api_personal_access_tokens.go
 api_public_identities.go
 api_public_identities_config.go
+api_reports_data_extraction.go
 api_requestable_objects.go
 api_roles.go
 api_saved_search.go
@@ -103,6 +104,7 @@ docs/AccountUsage.md
 docs/AccountUsagesApi.md
 docs/AccountsApi.md
 docs/AccountsAsyncResult.md
+docs/AccountsExportReportArguments.md
 docs/ActivateCampaignOptions.md
 docs/AdminReviewReassign.md
 docs/AdminReviewReassignReassignTo.md
@@ -241,6 +243,8 @@ docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
 docs/GlobalTenantSecuritySettingsApi.md
 docs/GrantType.md
+docs/IdentitiesDetailsReportArguments.md
+docs/IdentitiesReportArguments.md
 docs/IdentityAccess.md
 docs/IdentityAttribute.md
 docs/IdentityAttributeConfig.md
@@ -256,6 +260,7 @@ docs/IdentityProfileAllOfAuthoritativeSource.md
 docs/IdentityProfileAllOfOwner.md
 docs/IdentityProfileExportedObject.md
 docs/IdentityProfileExportedObjectSelf.md
+docs/IdentityProfileIdentityErrorReportArguments.md
 docs/IdentityProfilesApi.md
 docs/IdentityReference.md
 docs/IdentityReferenceWithNameAndEmail.md
@@ -328,6 +333,7 @@ docs/OAuthClientsApi.md
 docs/ObjectImportResult.md
 docs/Operation.md
 docs/OriginalRequest.md
+docs/OrphanUncorrelatedReportArguments.md
 docs/Owner.md
 docs/OwnerAllOf.md
 docs/OwnerDto.md
@@ -383,9 +389,13 @@ docs/ReassignmentType.md
 docs/Reference.md
 docs/RemediationItemDetails.md
 docs/RemediationItems.md
+docs/ReportDetails.md
+docs/ReportDetailsArguments.md
 docs/ReportResultReference.md
 docs/ReportResultReferenceAllOf.md
+docs/ReportResults.md
 docs/ReportType.md
+docs/ReportsDataExtractionApi.md
 docs/RequestOnBehalfOfConfig.md
 docs/Requestability.md
 docs/RequestabilityForRole.md
@@ -451,6 +461,7 @@ docs/SearchAggregationSpecificationAllOf.md
 docs/SearchApi.md
 docs/SearchArguments.md
 docs/SearchArgumentsOwner.md
+docs/SearchExportReportArguments.md
 docs/SearchFilterType.md
 docs/SearchIdentityReference.md
 docs/SearchIdentityReferenceAllOf.md
@@ -509,6 +520,9 @@ docs/SubSearchAggregationSpecificationAllOf.md
 docs/TaggedObject.md
 docs/TaggedObjectDto.md
 docs/TaggedObjectsApi.md
+docs/TaskResultDetails.md
+docs/TaskResultDetailsMessagesInner.md
+docs/TaskResultDetailsReturnsInner.md
 docs/TaskResultDto.md
 docs/TaskResultSimplified.md
 docs/TextQuery.md
@@ -594,6 +608,7 @@ model_account_toggle_request.go
 model_account_unlock_request.go
 model_account_usage.go
 model_accounts_async_result.go
+model_accounts_export_report_arguments.go
 model_activate_campaign_options.go
 model_admin_review_reassign.go
 model_admin_review_reassign_reassign_to.go
@@ -726,6 +741,8 @@ model_get_active_campaigns_200_response_inner.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
 model_grant_type.go
+model_identities_details_report_arguments.go
+model_identities_report_arguments.go
 model_identity_access.go
 model_identity_attribute.go
 model_identity_attribute_config.go
@@ -741,6 +758,7 @@ model_identity_profile_all_of_authoritative_source.go
 model_identity_profile_all_of_owner.go
 model_identity_profile_exported_object.go
 model_identity_profile_exported_object_self.go
+model_identity_profile_identity_error_report_arguments.go
 model_identity_reference.go
 model_identity_reference_with_name_and_email.go
 model_identity_summary.go
@@ -809,6 +827,7 @@ model_non_employee_source_with_ne_count_all_of.go
 model_object_import_result.go
 model_operation.go
 model_original_request.go
+model_orphan_uncorrelated_report_arguments.go
 model_owner.go
 model_owner_all_of.go
 model_owner_dto.go
@@ -857,8 +876,11 @@ model_reassignment_type.go
 model_reference.go
 model_remediation_item_details.go
 model_remediation_items.go
+model_report_details.go
+model_report_details_arguments.go
 model_report_result_reference.go
 model_report_result_reference_all_of.go
+model_report_results.go
 model_report_type.go
 model_request_on_behalf_of_config.go
 model_requestability.go
@@ -918,6 +940,7 @@ model_search_aggregation_specification.go
 model_search_aggregation_specification_all_of.go
 model_search_arguments.go
 model_search_arguments_owner.go
+model_search_export_report_arguments.go
 model_search_filter_type.go
 model_search_identity_reference.go
 model_search_identity_reference_all_of.go
@@ -971,6 +994,9 @@ model_sub_search_aggregation_specification.go
 model_sub_search_aggregation_specification_all_of.go
 model_tagged_object.go
 model_tagged_object_dto.go
+model_task_result_details.go
+model_task_result_details_messages_inner.go
+model_task_result_details_returns_inner.go
 model_task_result_dto.go
 model_task_result_simplified.go
 model_text_query.go
@@ -1020,6 +1046,7 @@ test/api_password_sync_groups_test.go
 test/api_personal_access_tokens_test.go
 test/api_public_identities_config_test.go
 test/api_public_identities_test.go
+test/api_reports_data_extraction_test.go
 test/api_requestable_objects_test.go
 test/api_roles_test.go
 test/api_saved_search_test.go

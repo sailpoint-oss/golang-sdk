@@ -98,6 +98,8 @@ type APIClient struct {
 
 	PublicIdentitiesConfigApi *PublicIdentitiesConfigApiService
 
+	ReportsDataExtractionApi *ReportsDataExtractionApiService
+
 	RequestableObjectsApi *RequestableObjectsApiService
 
 	RolesApi *RolesApiService
@@ -166,6 +168,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PersonalAccessTokensApi = (*PersonalAccessTokensApiService)(&c.common)
 	c.PublicIdentitiesApi = (*PublicIdentitiesApiService)(&c.common)
 	c.PublicIdentitiesConfigApi = (*PublicIdentitiesConfigApiService)(&c.common)
+	c.ReportsDataExtractionApi = (*ReportsDataExtractionApiService)(&c.common)
 	c.RequestableObjectsApi = (*RequestableObjectsApiService)(&c.common)
 	c.RolesApi = (*RolesApiService)(&c.common)
 	c.SODPolicyApi = (*SODPolicyApiService)(&c.common)
