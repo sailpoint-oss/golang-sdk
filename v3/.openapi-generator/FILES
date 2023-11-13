@@ -91,8 +91,6 @@ docs/AccountAllOf.md
 docs/AccountAttributes.md
 docs/AccountAttributesCreate.md
 docs/AccountAttributesCreateAttributes.md
-docs/AccountDocument.md
-docs/AccountDocumentAllOf.md
 docs/AccountRequest.md
 docs/AccountRequestInfo.md
 docs/AccountRequestResult.md
@@ -108,9 +106,6 @@ docs/AccountsExportReportArguments.md
 docs/ActivateCampaignOptions.md
 docs/AdminReviewReassign.md
 docs/AdminReviewReassignReassignTo.md
-docs/Aggregation.md
-docs/AggregationAllOf.md
-docs/AggregationDocument.md
 docs/AggregationResult.md
 docs/AggregationType.md
 docs/Aggregations.md
@@ -597,8 +592,6 @@ model_account_all_of.go
 model_account_attributes.go
 model_account_attributes_create.go
 model_account_attributes_create_attributes.go
-model_account_document.go
-model_account_document_all_of.go
 model_account_request.go
 model_account_request_info.go
 model_account_request_result.go
@@ -612,9 +605,6 @@ model_accounts_export_report_arguments.go
 model_activate_campaign_options.go
 model_admin_review_reassign.go
 model_admin_review_reassign_reassign_to.go
-model_aggregation.go
-model_aggregation_all_of.go
-model_aggregation_document.go
 model_aggregation_result.go
 model_aggregation_type.go
 model_aggregations.go

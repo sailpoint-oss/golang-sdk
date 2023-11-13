@@ -19309,7 +19309,7 @@ paths:
       - description: |
           The index from which to fetch the specified document.
 
-          The currently supported index names are: *accessprofiles*, *accountactivities*, *accounts*, *aggregations*, *entitlements*, *events*, *identities*, and *roles*.
+          The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.
         example: accounts
         in: path
         name: index
@@ -31626,7 +31626,7 @@ components:
       summary: MetricAggregation
       value:
         indices:
-        - aggregations
+        - identities
         aggregationType: SAILPOINT
         aggregations:
           metric:
@@ -31637,7 +31637,7 @@ components:
       summary: MetricAggregation using DSL
       value:
         indices:
-        - aggregations
+        - identities
         aggregationType: DSL
         aggregationsDsl:
           How Many Locations:
@@ -31647,7 +31647,7 @@ components:
       summary: BucketAggregation
       value:
         indices:
-        - aggregations
+        - identities
         aggregationType: SAILPOINT
         aggregations:
           bucket:
@@ -31658,7 +31658,7 @@ components:
       summary: BucketAggregation using DSL
       value:
         indices:
-        - aggregations
+        - identities
         aggregationType: DSL
         aggregationsDsl:
           Identity Locations:
@@ -31668,7 +31668,7 @@ components:
       summary: NestedAggregation with BucketAggregation
       value:
         indices:
-        - aggregations
+        - identities
         aggregationType: SAILPOINT
         aggregations:
           nested:
@@ -31683,7 +31683,7 @@ components:
       summary: NestedAggregation with BucketAggregation using DSL
       value:
         indices:
-        - aggregations
+        - identities
         aggregationType: DSL
         aggregationsDsl:
           access:
@@ -31697,7 +31697,7 @@ components:
       summary: NestedAggregation with FilterAggregation and BucketAggregation
       value:
         indices:
-        - aggregations
+        - identities
         aggregationType: SAILPOINT
         aggregations:
           nested:
@@ -31717,7 +31717,7 @@ components:
         DSL
       value:
         indices:
-        - aggregations
+        - identities
         aggregationType: DSL
         aggregationsDsl:
           access:
@@ -31736,7 +31736,7 @@ components:
       summary: BucketAggregation with SubAggregation
       value:
         indices:
-        - aggregations
+        - identities
         aggregationType: SAILPOINT
         aggregations:
           bucket:
@@ -31752,7 +31752,7 @@ components:
       summary: BucketAggregation with SubAggregation using DSL
       value:
         indices:
-        - aggregations
+        - identities
         aggregationType: DSL
         aggregationsDsl:
           Identity Department:
@@ -32128,7 +32128,7 @@ components:
       description: |
         The index from which to fetch the specified document.
 
-        The currently supported index names are: *accessprofiles*, *accountactivities*, *accounts*, *aggregations*, *entitlements*, *events*, *identities*, and *roles*.
+        The currently supported index names are: *accessprofiles*, *accountactivities*, *entitlements*, *events*, *identities*, and *roles*.
       example: accounts
       in: path
       name: index
@@ -32584,12 +32584,6 @@ components:
       required:
       - attributes
       type: object
-    AccountDocument:
-      allOf:
-      - $ref: '#/components/schemas/BaseDocument'
-      - $ref: '#/components/schemas/BaseAccount'
-      - $ref: '#/components/schemas/AccountDocument_allOf'
-      description: Account
     AccountsAsyncResult:
       description: Accounts async response containing details on started async process
       example:
@@ -32644,11 +32638,6 @@ components:
           example: false
           type: boolean
       type: object
-    Aggregation:
-      allOf:
-      - $ref: '#/components/schemas/BaseDocument'
-      - $ref: '#/components/schemas/Aggregation_allOf'
-      description: Aggregation
     ApprovalItems:
       example:
         application: Active Directory
@@ -40072,11 +40061,6 @@ components:
       - $ref: '#/components/schemas/BaseDocument'
       - $ref: '#/components/schemas/AccountActivitySearchedItem_allOf'
       description: AccountActivity
-    AggregationDocument:
-      allOf:
-      - $ref: '#/components/schemas/BaseDocument'
-      - $ref: '#/components/schemas/Aggregation_allOf'
-      description: Aggregation
     ApprovalItemDetails:
       example:
         application: Active Directory
@@ -43230,10 +43214,6 @@ components:
         source:
           $ref: '#/components/schemas/AccountSource'
       type: object
-    BaseAccount:
-      allOf:
-      - $ref: '#/components/schemas/Reference'
-      - $ref: '#/components/schemas/BaseAccount_allOf'
     NameType:
       properties:
         name:
@@ -43265,6 +43245,10 @@ components:
           example: <message>
           type: string
       type: object
+    BaseAccount:
+      allOf:
+      - $ref: '#/components/schemas/Reference'
+      - $ref: '#/components/schemas/BaseAccount_allOf'
     App:
       allOf:
       - $ref: '#/components/schemas/Reference'
@@ -44814,80 +44798,6 @@ components:
           type: array
         sources:
           example: "smartsheet-test, airtable-v4, IdentityNow"
-          type: string
-      type: object
-      example: null
-    AccountDocument_allOf:
-      properties:
-        modified:
-          description: A date-time in ISO-8601 format
-          example: 2018-06-25T20:22:28.104Z
-          format: date-time
-          nullable: true
-          type: string
-        attributes:
-          additionalProperties: true
-          description: a map or dictionary of key/value pairs
-          example:
-            firstName: John
-            lastName: Doe
-            displayName: John.Doe
-          type: object
-        identity:
-          $ref: '#/components/schemas/DisplayReference'
-        access:
-          items:
-            $ref: '#/components/schemas/AccessProfileEntitlement'
-          type: array
-        entitlementCount:
-          description: The number of entitlements assigned to the account
-          example: 2
-          format: int32
-          type: integer
-        uncorrelated:
-          description: Indicates if the account is not correlated to an identity
-          example: false
-          type: boolean
-        tags:
-          example:
-          - TAG_1
-          - TAG_2
-          items:
-            type: string
-          type: array
-      type: object
-      example: null
-    Aggregation_allOf:
-      properties:
-        status:
-          example: Success
-          type: string
-        duration:
-          example: 20
-          format: int32
-          type: integer
-        avgDuration:
-          example: 20
-          format: int32
-          type: integer
-        changedAccounts:
-          example: 1
-          format: int32
-          type: integer
-        nextScheduled:
-          description: A date-time in ISO-8601 format
-          example: 2018-06-25T20:22:28.104Z
-          format: date-time
-          nullable: true
-          type: string
-        startTime:
-          description: A date-time in ISO-8601 format
-          example: 2018-06-25T20:22:28.104Z
-          format: date-time
-          nullable: true
-          type: string
-        sourceOwner:
-          description: John Doe
           type: string
       type: object
       example: null
