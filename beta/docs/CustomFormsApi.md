@@ -6,11 +6,14 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateFormDefinition**](CustomFormsApi.md#CreateFormDefinition) | **Post** /form-definitions | Creates a form definition.
 [**CreateFormDefinitionDynamicSchema**](CustomFormsApi.md#CreateFormDefinitionDynamicSchema) | **Post** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.
+[**CreateFormDefinitionFileRequest**](CustomFormsApi.md#CreateFormDefinitionFileRequest) | **Post** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
 [**CreateFormInstance**](CustomFormsApi.md#CreateFormInstance) | **Post** /form-instances | Creates a form instance.
 [**DeleteFormDefinition**](CustomFormsApi.md#DeleteFormDefinition) | **Delete** /form-definitions/{formDefinitionID} | Deletes a form definition.
 [**ExportFormDefinitionsByTenant**](CustomFormsApi.md#ExportFormDefinitionsByTenant) | **Get** /form-definitions/export | List form definitions by tenant.
+[**GetFileFromS3**](CustomFormsApi.md#GetFileFromS3) | **Get** /form-definitions/{formDefinitionID}/file/{fileID} | Download definition file by fileId.
 [**GetFormDefinitionByKey**](CustomFormsApi.md#GetFormDefinitionByKey) | **Get** /form-definitions/{formDefinitionID} | Return a form definition.
 [**GetFormInstanceByKey**](CustomFormsApi.md#GetFormInstanceByKey) | **Get** /form-instances/{formInstanceID} | Returns a form instance.
+[**GetFormInstanceFile**](CustomFormsApi.md#GetFormInstanceFile) | **Get** /form-instances/{formInstanceID}/file/{fileID} | Download instance file by fileId.
 [**ImportFormDefinitions**](CustomFormsApi.md#ImportFormDefinitions) | **Post** /form-definitions/import | Import form definitions from export.
 [**PatchFormDefinition**](CustomFormsApi.md#PatchFormDefinition) | **Patch** /form-definitions/{formDefinitionID} | Patch a form definition.
 [**PatchFormInstance**](CustomFormsApi.md#PatchFormInstance) | **Patch** /form-instances/{formInstanceID} | Patch a form instance.
@@ -143,6 +146,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateFormDefinitionFileRequest
+
+> FormDefinitionFileUploadResponse CreateFormDefinitionFileRequest(ctx, formDefinitionID).File(file).Execute()
+
+Upload new form definition file.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    formDefinitionID := "00000000-0000-0000-0000-000000000000" // string | FormDefinitionID  String specifying FormDefinitionID
+    file := os.NewFile(1234, "some_file") // *os.File | File specifying the multipart
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CustomFormsApi.CreateFormDefinitionFileRequest(context.Background(), formDefinitionID).File(file).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsApi.CreateFormDefinitionFileRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateFormDefinitionFileRequest`: FormDefinitionFileUploadResponse
+    fmt.Fprintf(os.Stdout, "Response from `CustomFormsApi.CreateFormDefinitionFileRequest`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**formDefinitionID** | **string** | FormDefinitionID  String specifying FormDefinitionID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateFormDefinitionFileRequestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** | File specifying the multipart | 
+
+### Return type
+
+[**FormDefinitionFileUploadResponse**](FormDefinitionFileUploadResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -356,6 +431,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetFileFromS3
+
+> *os.File GetFileFromS3(ctx, formDefinitionID, fileID).Execute()
+
+Download definition file by fileId.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    formDefinitionID := "00000000-0000-0000-0000-000000000000" // string | FormDefinitionID  Form definition ID
+    fileID := "00000031N0J7R2B57M8YG73J7M.png" // string | FileID  String specifying the hashed name of the uploaded file we are retrieving.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CustomFormsApi.GetFileFromS3(context.Background(), formDefinitionID, fileID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsApi.GetFileFromS3``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetFileFromS3`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `CustomFormsApi.GetFileFromS3`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**formDefinitionID** | **string** | FormDefinitionID  Form definition ID | 
+**fileID** | **string** | FileID  String specifying the hashed name of the uploaded file we are retrieving. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetFileFromS3Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, image/jpeg, image/png, application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetFormDefinitionByKey
 
 > FormDefinitionResponse GetFormDefinitionByKey(ctx, formDefinitionID).Execute()
@@ -490,6 +636,77 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetFormInstanceFile
+
+> *os.File GetFormInstanceFile(ctx, formInstanceID, fileID).Execute()
+
+Download instance file by fileId.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    formInstanceID := "00000000-0000-0000-0000-000000000000" // string | FormInstanceID  Form instance ID
+    fileID := "00000031N0J7R2B57M8YG73J7M.png" // string | FileID  String specifying the hashed name of the uploaded file we are retrieving.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CustomFormsApi.GetFormInstanceFile(context.Background(), formInstanceID, fileID).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomFormsApi.GetFormInstanceFile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetFormInstanceFile`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `CustomFormsApi.GetFormInstanceFile`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**formInstanceID** | **string** | FormInstanceID  Form instance ID | 
+**fileID** | **string** | FileID  String specifying the hashed name of the uploaded file we are retrieving. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetFormInstanceFileRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, image/jpeg, image/png, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -153,11 +153,14 @@ Class | Method | HTTP request | Description
 *ConnectorsApi* | [**GetConnectorList**](docs/ConnectorsApi.md#getconnectorlist) | **Get** /connectors | Gets connector list
 *CustomFormsApi* | [**CreateFormDefinition**](docs/CustomFormsApi.md#createformdefinition) | **Post** /form-definitions | Creates a form definition.
 *CustomFormsApi* | [**CreateFormDefinitionDynamicSchema**](docs/CustomFormsApi.md#createformdefinitiondynamicschema) | **Post** /form-definitions/forms-action-dynamic-schema | Generate JSON Schema dynamically.
+*CustomFormsApi* | [**CreateFormDefinitionFileRequest**](docs/CustomFormsApi.md#createformdefinitionfilerequest) | **Post** /form-definitions/{formDefinitionID}/upload | Upload new form definition file.
 *CustomFormsApi* | [**CreateFormInstance**](docs/CustomFormsApi.md#createforminstance) | **Post** /form-instances | Creates a form instance.
 *CustomFormsApi* | [**DeleteFormDefinition**](docs/CustomFormsApi.md#deleteformdefinition) | **Delete** /form-definitions/{formDefinitionID} | Deletes a form definition.
 *CustomFormsApi* | [**ExportFormDefinitionsByTenant**](docs/CustomFormsApi.md#exportformdefinitionsbytenant) | **Get** /form-definitions/export | List form definitions by tenant.
+*CustomFormsApi* | [**GetFileFromS3**](docs/CustomFormsApi.md#getfilefroms3) | **Get** /form-definitions/{formDefinitionID}/file/{fileID} | Download definition file by fileId.
 *CustomFormsApi* | [**GetFormDefinitionByKey**](docs/CustomFormsApi.md#getformdefinitionbykey) | **Get** /form-definitions/{formDefinitionID} | Return a form definition.
 *CustomFormsApi* | [**GetFormInstanceByKey**](docs/CustomFormsApi.md#getforminstancebykey) | **Get** /form-instances/{formInstanceID} | Returns a form instance.
+*CustomFormsApi* | [**GetFormInstanceFile**](docs/CustomFormsApi.md#getforminstancefile) | **Get** /form-instances/{formInstanceID}/file/{fileID} | Download instance file by fileId.
 *CustomFormsApi* | [**ImportFormDefinitions**](docs/CustomFormsApi.md#importformdefinitions) | **Post** /form-definitions/import | Import form definitions from export.
 *CustomFormsApi* | [**PatchFormDefinition**](docs/CustomFormsApi.md#patchformdefinition) | **Patch** /form-definitions/{formDefinitionID} | Patch a form definition.
 *CustomFormsApi* | [**PatchFormInstance**](docs/CustomFormsApi.md#patchforminstance) | **Patch** /form-instances/{formInstanceID} | Patch a form instance.
@@ -736,6 +739,7 @@ Class | Method | HTTP request | Description
  - [ConnectorRuleValidationResponseDetailsInner](docs/ConnectorRuleValidationResponseDetailsInner.md)
  - [CorrelatedGovernanceEvent](docs/CorrelatedGovernanceEvent.md)
  - [CreateDomainDkim405Response](docs/CreateDomainDkim405Response.md)
+ - [CreateFormDefinitionFileRequestRequest](docs/CreateFormDefinitionFileRequestRequest.md)
  - [CreateFormDefinitionRequest](docs/CreateFormDefinitionRequest.md)
  - [CreateFormInstanceRequest](docs/CreateFormInstanceRequest.md)
  - [CreateOAuthClientRequest](docs/CreateOAuthClientRequest.md)
@@ -787,6 +791,7 @@ Class | Method | HTTP request | Description
  - [FormDefinitionDynamicSchemaRequest](docs/FormDefinitionDynamicSchemaRequest.md)
  - [FormDefinitionDynamicSchemaRequestAttributes](docs/FormDefinitionDynamicSchemaRequestAttributes.md)
  - [FormDefinitionDynamicSchemaResponse](docs/FormDefinitionDynamicSchemaResponse.md)
+ - [FormDefinitionFileUploadResponse](docs/FormDefinitionFileUploadResponse.md)
  - [FormDefinitionInput](docs/FormDefinitionInput.md)
  - [FormDefinitionResponse](docs/FormDefinitionResponse.md)
  - [FormDetails](docs/FormDetails.md)

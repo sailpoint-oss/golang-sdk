@@ -48645,6 +48645,253 @@ paths:
       tags:
       - Custom Forms
       x-codegen-request-body-name: Body
+  /form-definitions/{formDefinitionID}/upload:
+    post:
+      description: "Parameter `{formDefinitionID}` should match a form definition\
+        \ ID."
+      operationId: createFormDefinitionFileRequest
+      parameters:
+      - description: |-
+          FormDefinitionID
+
+          String specifying FormDefinitionID
+        example: 00000000-0000-0000-0000-000000000000
+        in: path
+        name: formDefinitionID
+        required: true
+        schema:
+          type: string
+          x-go-name: FormDefinitionID
+        x-go-name: FormDefinitionID
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding:
+              file:
+                contentType: "image/png, image/jpeg"
+            schema:
+              $ref: '#/components/schemas/createFormDefinitionFileRequest_request'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormDefinitionFileUploadResponse'
+          description: Returns a new form definition file
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the request occurred
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the authorization occurred
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the user permissions occurred
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the item not found
+        "413":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with payload size too large
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with unsupported media type
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Too many requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An internal server error occurred
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An external service is not available
+      security:
+      - UserContextAuth:
+        - sp:forms:manage
+      summary: Upload new form definition file.
+      tags:
+      - Custom Forms
+      x-codegen-request-body-name: Body
+  /form-definitions/{formDefinitionID}/file/{fileID}:
+    get:
+      operationId: getFileFromS3
+      parameters:
+      - description: |-
+          FormDefinitionID
+
+          Form definition ID
+        example: 00000000-0000-0000-0000-000000000000
+        in: path
+        name: formDefinitionID
+        required: true
+        schema:
+          type: string
+          x-go-name: FormDefinitionID
+        x-go-name: FormDefinitionID
+      - description: |-
+          FileID
+
+          String specifying the hashed name of the uploaded file we are retrieving.
+        example: 00000031N0J7R2B57M8YG73J7M.png
+        in: path
+        name: fileID
+        required: true
+        schema:
+          type: string
+          x-go-name: FileID
+        x-go-name: FileID
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+            image/jpeg:
+              schema:
+                format: binary
+                type: string
+            image/png:
+              schema:
+                format: binary
+                type: string
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: Returns a file that is referred to by fileID and associated
+            with the formDefinitionID
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the request occurred
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the authorization occurred
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the user permissions occurred
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the item not found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Too many requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An internal server error occurred
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An external service is not available
+      security:
+      - UserContextAuth:
+        - sp:forms:manage
+      summary: Download definition file by fileId.
+      tags:
+      - Custom Forms
+      x-codegen-request-body-name: Body
   /form-instances:
     get:
       description: No parameters required.
@@ -49011,6 +49258,158 @@ paths:
       summary: Retrieves dynamic data by element.
       tags:
       - Custom Forms
+  /form-instances/{formInstanceID}/file/{fileID}:
+    get:
+      operationId: getFormInstanceFile
+      parameters:
+      - description: |-
+          FormInstanceID
+
+          Form instance ID
+        example: 00000000-0000-0000-0000-000000000000
+        in: path
+        name: formInstanceID
+        required: true
+        schema:
+          type: string
+          x-go-name: FormInstanceID
+        x-go-name: FormInstanceID
+      - description: |-
+          FileID
+
+          String specifying the hashed name of the uploaded file we are retrieving.
+        example: 00000031N0J7R2B57M8YG73J7M.png
+        in: path
+        name: fileID
+        required: true
+        schema:
+          type: string
+          x-go-name: FileID
+        x-go-name: FileID
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                format: binary
+                type: string
+            image/jpeg:
+              schema:
+                format: binary
+                type: string
+            image/png:
+              schema:
+                format: binary
+                type: string
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: Returns a file that is referred to by fileID and associated
+            with the formInstanceID
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the request occurred
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the authorization occurred
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the user permissions occurred
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An error with the item not found
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Too many requests
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An internal server error occurred
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/jpeg:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            image/png:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/searchFormDefinitionsByTenant_400_response'
+          description: An external service is not available
+      security:
+      - UserContextAuth:
+        - sp:forms:manage
+      summary: Download instance file by fileId.
+      tags:
+      - Custom Forms
+      x-codegen-request-body-name: Body
   /form-definitions/predefined-select-options:
     get:
       description: No parameters required.
@@ -62365,6 +62764,30 @@ components:
           x-go-name: OutputSchema
       type: object
       x-go-package: github.com/sailpoint/sp-forms/domain
+    FormDefinitionFileUploadResponse:
+      example:
+        created: 2023-07-12T20:14:57.74486Z
+        formDefinitionId: 00000000-0000-0000-0000-000000000000
+        fileId: 01FHZXHK8PTP9FVK99Z66GXQTX.png
+      properties:
+        created:
+          description: Created is the date the file was uploaded
+          example: 2023-07-12T20:14:57.74486Z
+          type: string
+          x-go-name: Created
+        fileId:
+          description: fileId is a unique ULID that serves as an identifier for the
+            form definition file
+          example: 01FHZXHK8PTP9FVK99Z66GXQTX.png
+          type: string
+          x-go-name: FileID
+        formDefinitionId:
+          description: FormDefinitionID is a unique guid identifying this form definition
+          example: 00000000-0000-0000-0000-000000000000
+          type: string
+          x-go-name: FormDefinitionID
+      type: object
+      x-go-package: github.com/sailpoint/sp-forms/internal/rest/response
     ListFormInstancesByTenantResponse:
       example:
         count: 1
@@ -70502,6 +70925,16 @@ components:
             $ref: '#/components/schemas/importFormDefinitions_202_response_errors_inner'
           type: array
           x-go-name: Warnings
+      type: object
+    createFormDefinitionFileRequest_request:
+      properties:
+        file:
+          description: File specifying the multipart
+          format: binary
+          type: string
+          x-go-name: File
+      required:
+      - file
       type: object
     fullcampaign_allOf_filter:
       description: Determines which items will be included in this campaign. The default

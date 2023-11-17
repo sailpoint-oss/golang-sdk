@@ -276,6 +276,7 @@ docs/ConnectorRuleValidationResponseDetailsInner.md
 docs/ConnectorsApi.md
 docs/CorrelatedGovernanceEvent.md
 docs/CreateDomainDkim405Response.md
+docs/CreateFormDefinitionFileRequestRequest.md
 docs/CreateFormDefinitionRequest.md
 docs/CreateFormInstanceRequest.md
 docs/CreateOAuthClientRequest.md
@@ -330,6 +331,7 @@ docs/FormCondition.md
 docs/FormDefinitionDynamicSchemaRequest.md
 docs/FormDefinitionDynamicSchemaRequestAttributes.md
 docs/FormDefinitionDynamicSchemaResponse.md
+docs/FormDefinitionFileUploadResponse.md
 docs/FormDefinitionInput.md
 docs/FormDefinitionResponse.md
 docs/FormDetails.md
@@ -1061,6 +1063,7 @@ model_connector_rule_validation_response.go
 model_connector_rule_validation_response_details_inner.go
 model_correlated_governance_event.go
 model_create_domain_dkim_405_response.go
+model_create_form_definition_file_request_request.go
 model_create_form_definition_request.go
 model_create_form_instance_request.go
 model_create_o_auth_client_request.go
@@ -1112,6 +1115,7 @@ model_form_condition.go
 model_form_definition_dynamic_schema_request.go
 model_form_definition_dynamic_schema_request_attributes.go
 model_form_definition_dynamic_schema_response.go
+model_form_definition_file_upload_response.go
 model_form_definition_input.go
 model_form_definition_response.go
 model_form_details.go

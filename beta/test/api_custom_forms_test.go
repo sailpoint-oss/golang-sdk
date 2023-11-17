@@ -46,6 +46,20 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test CustomFormsApiService CreateFormDefinitionFileRequest", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var formDefinitionID string
+
+		resp, httpRes, err := apiClient.BETA.CustomFormsApi.CreateFormDefinitionFileRequest(context.Background(), formDefinitionID).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CustomFormsApiService CreateFormInstance", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -84,6 +98,21 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test CustomFormsApiService GetFileFromS3", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var formDefinitionID string
+		var fileID string
+
+		resp, httpRes, err := apiClient.BETA.CustomFormsApi.GetFileFromS3(context.Background(), formDefinitionID, fileID).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CustomFormsApiService GetFormDefinitionByKey", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -105,6 +134,21 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 		var formInstanceID string
 
 		resp, httpRes, err := apiClient.BETA.CustomFormsApi.GetFormInstanceByKey(context.Background(), formInstanceID).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CustomFormsApiService GetFormInstanceFile", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var formInstanceID string
+		var fileID string
+
+		resp, httpRes, err := apiClient.BETA.CustomFormsApi.GetFormInstanceFile(context.Background(), formInstanceID, fileID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
