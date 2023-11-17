@@ -646,7 +646,7 @@ tags:
     \n- Access Requests: Configure roles to be requestable and establish an approval\
     \ process for any requests that the role be granted or revoked. \nDo not configure\
     \ a role to be requestable without establishing a secure access request approval\
-    \ process for that role first. \n\nRefer to [Working with Roles](https://documentation.sailpoint.com/saas/help/provisioning/roles.html)\
+    \ process for that role first. \n\nRefer to [Working with Roles](https://documentation.sailpoint.com/saas/help/access/roles.html)\
     \ for more information about roles.\n"
   name: Roles
 - description: "Use this API to implement saved search functionality. \nWith saved\
