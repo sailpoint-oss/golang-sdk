@@ -68,7 +68,7 @@ func (a *IdentityAttributesApiService) CreateIdentityAttributeExecute(r ApiCreat
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/identity-attributes/{name}"
+	localVarPath := localBasePath + "/identity-attributes"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

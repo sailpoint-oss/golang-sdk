@@ -14613,6 +14613,102 @@ paths:
       summary: List Identity Attributes
       tags:
       - Identity Attributes
+    post:
+      description: This creates a new identity attribute.
+      operationId: createIdentityAttribute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityAttribute'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityAttribute'
+          description: The identity attribute was created successfully
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:identity-profile-attribute:create
+      summary: Create Identity Attribute
+      tags:
+      - Identity Attributes
   /identity-attributes/{name}:
     delete:
       description: This deletes an identity attribute for a given technical name.
@@ -14807,102 +14903,6 @@ paths:
       summary: Get Identity Attribute
       tags:
       - Identity Attributes
-    post:
-      description: This creates a new identity attribute.
-      operationId: createIdentityAttribute
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/IdentityAttribute'
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/IdentityAttribute'
-          description: The identity attribute was created successfully
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - UserContextAuth:
-        - idn:identity-profile-attribute:create
-      summary: Create Identity Attribute
-      tags:
-      - Identity Attributes
     put:
       description: This updates an existing identity attribute.
       operationId: putIdentityAttribute
@@ -14921,12 +14921,12 @@ paths:
               $ref: '#/components/schemas/IdentityAttribute'
         required: true
       responses:
-        "201":
+        "202":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/IdentityAttribute'
-          description: The identity attribute was created successfully
+          description: The identity attribute was updated successfully
         "400":
           content:
             application/json:

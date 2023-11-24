@@ -246,7 +246,7 @@ Class | Method | HTTP request | Description
 *IdentitiesApi* | [**ListIdentities**](docs/IdentitiesApi.md#listidentities) | **Get** /identities | List Identities
 *IdentitiesApi* | [**StartIdentityProcessing**](docs/IdentitiesApi.md#startidentityprocessing) | **Post** /identities/process | Process a list of identityIds
 *IdentitiesApi* | [**SynchronizeAttributesForIdentity**](docs/IdentitiesApi.md#synchronizeattributesforidentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
-*IdentityAttributesApi* | [**CreateIdentityAttribute**](docs/IdentityAttributesApi.md#createidentityattribute) | **Post** /identity-attributes/{name} | Create Identity Attribute
+*IdentityAttributesApi* | [**CreateIdentityAttribute**](docs/IdentityAttributesApi.md#createidentityattribute) | **Post** /identity-attributes | Create Identity Attribute
 *IdentityAttributesApi* | [**DeleteIdentityAttribute**](docs/IdentityAttributesApi.md#deleteidentityattribute) | **Delete** /identity-attributes/{name} | Delete Identity Attribute
 *IdentityAttributesApi* | [**DeleteIdentityAttributesInBulk**](docs/IdentityAttributesApi.md#deleteidentityattributesinbulk) | **Post** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
 *IdentityAttributesApi* | [**GetIdentityAttribute**](docs/IdentityAttributesApi.md#getidentityattribute) | **Get** /identity-attributes/{name} | Get Identity Attribute
