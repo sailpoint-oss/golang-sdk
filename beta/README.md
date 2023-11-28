@@ -282,6 +282,10 @@ Class | Method | HTTP request | Description
 *MFAConfigurationApi* | [**SetMFADuoConfig**](docs/MFAConfigurationApi.md#setmfaduoconfig) | **Put** /mfa/duo-web/config | Set Duo MFA configuration
 *MFAConfigurationApi* | [**SetMFAOktaConfig**](docs/MFAConfigurationApi.md#setmfaoktaconfig) | **Put** /mfa/okta-verify/config | Set Okta MFA configuration
 *MFAConfigurationApi* | [**TestMFAConfig**](docs/MFAConfigurationApi.md#testmfaconfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
+*MFAControllerApi* | [**CreateSendToken**](docs/MFAControllerApi.md#createsendtoken) | **Post** /mfa/token/send | Create and send user token
+*MFAControllerApi* | [**PingVerificationStatus**](docs/MFAControllerApi.md#pingverificationstatus) | **Post** /mfa/{method}/poll | Polling MFA method by VerificationPollRequest
+*MFAControllerApi* | [**SendKbaAnswers**](docs/MFAControllerApi.md#sendkbaanswers) | **Post** /mfa/kba/authenticate | Authenticate KBA provided MFA method
+*MFAControllerApi* | [**SendTokenAuthRequest**](docs/MFAControllerApi.md#sendtokenauthrequest) | **Post** /mfa/token/authenticate | Authenticate Token provided MFA method
 *ManagedClientsApi* | [**GetManagedClientStatus**](docs/ManagedClientsApi.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Specified Managed Client Status.
 *ManagedClientsApi* | [**UpdateManagedClientStatus**](docs/ManagedClientsApi.md#updatemanagedclientstatus) | **Post** /managed-clients/{id}/status | Handle status request from client
 *ManagedClustersApi* | [**GetClientLogConfiguration**](docs/ManagedClustersApi.md#getclientlogconfiguration) | **Get** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
@@ -895,6 +899,10 @@ Class | Method | HTTP request | Description
  - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
+ - [KbaAnswerRequest](docs/KbaAnswerRequest.md)
+ - [KbaAnswerRequestItem](docs/KbaAnswerRequestItem.md)
+ - [KbaAuthResponse](docs/KbaAuthResponse.md)
+ - [KbaAuthResponseItem](docs/KbaAuthResponseItem.md)
  - [LatestOutlierSummary](docs/LatestOutlierSummary.md)
  - [LifecycleState](docs/LifecycleState.md)
  - [LifecycleStateDto](docs/LifecycleStateDto.md)
@@ -1131,6 +1139,8 @@ Class | Method | HTTP request | Description
  - [SelectorType](docs/SelectorType.md)
  - [SelfImportExportDto](docs/SelfImportExportDto.md)
  - [SendTestNotificationRequestDto](docs/SendTestNotificationRequestDto.md)
+ - [SendTokenRequest](docs/SendTokenRequest.md)
+ - [SendTokenResponse](docs/SendTokenResponse.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
  - [ServiceDeskIntegrationDtoAllOf](docs/ServiceDeskIntegrationDtoAllOf.md)
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
@@ -1220,6 +1230,8 @@ Class | Method | HTTP request | Description
  - [TestInvocation](docs/TestInvocation.md)
  - [TestWorkflow200Response](docs/TestWorkflow200Response.md)
  - [TestWorkflowRequest](docs/TestWorkflowRequest.md)
+ - [TokenAuthRequest](docs/TokenAuthRequest.md)
+ - [TokenAuthResponse](docs/TokenAuthResponse.md)
  - [Transform](docs/Transform.md)
  - [TransformDefinition](docs/TransformDefinition.md)
  - [TransformDefinition1](docs/TransformDefinition1.md)
@@ -1241,6 +1253,8 @@ Class | Method | HTTP request | Description
  - [ValidateFilterInputDto](docs/ValidateFilterInputDto.md)
  - [ValidateFilterOutputDto](docs/ValidateFilterOutputDto.md)
  - [Value](docs/Value.md)
+ - [VerificationPollRequest](docs/VerificationPollRequest.md)
+ - [VerificationResponse](docs/VerificationResponse.md)
  - [ViolationContext](docs/ViolationContext.md)
  - [ViolationContextPolicy](docs/ViolationContextPolicy.md)
  - [ViolationContextPolicyAllOf](docs/ViolationContextPolicyAllOf.md)

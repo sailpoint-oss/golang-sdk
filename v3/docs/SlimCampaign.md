@@ -14,6 +14,10 @@ Name | Type | Description | Notes
 **RecommendationsEnabled** | Pointer to **bool** | Enables IAI for this campaign. Accepts true even if the IAI product feature is off. If IAI is turned off then campaigns generated from this template will indicate false. The real value will then be returned if IAI is ever enabled for the org in the future. | [optional] [default to false]
 **Status** | Pointer to **string** | The campaign&#39;s current status. | [optional] [readonly] 
 **CorrelatedStatus** | Pointer to **string** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | [optional] 
+**Created** | Pointer to **time.Time** | Created time of the campaign | [optional] [readonly] 
+**TotalCertifications** | Pointer to **int32** | The total number of certifications in this campaign. | [optional] [readonly] 
+**CompletedCertifications** | Pointer to **int32** | The number of completed certifications in this campaign. | [optional] [readonly] 
+**Alerts** | Pointer to [**[]CampaignAlert**](CampaignAlert.md) | A list of errors and warnings that have accumulated. | [optional] [readonly] 
 
 ## Methods
 
@@ -268,6 +272,106 @@ SetCorrelatedStatus sets CorrelatedStatus field to given value.
 `func (o *SlimCampaign) HasCorrelatedStatus() bool`
 
 HasCorrelatedStatus returns a boolean if a field has been set.
+
+### GetCreated
+
+`func (o *SlimCampaign) GetCreated() time.Time`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *SlimCampaign) GetCreatedOk() (*time.Time, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *SlimCampaign) SetCreated(v time.Time)`
+
+SetCreated sets Created field to given value.
+
+### HasCreated
+
+`func (o *SlimCampaign) HasCreated() bool`
+
+HasCreated returns a boolean if a field has been set.
+
+### GetTotalCertifications
+
+`func (o *SlimCampaign) GetTotalCertifications() int32`
+
+GetTotalCertifications returns the TotalCertifications field if non-nil, zero value otherwise.
+
+### GetTotalCertificationsOk
+
+`func (o *SlimCampaign) GetTotalCertificationsOk() (*int32, bool)`
+
+GetTotalCertificationsOk returns a tuple with the TotalCertifications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalCertifications
+
+`func (o *SlimCampaign) SetTotalCertifications(v int32)`
+
+SetTotalCertifications sets TotalCertifications field to given value.
+
+### HasTotalCertifications
+
+`func (o *SlimCampaign) HasTotalCertifications() bool`
+
+HasTotalCertifications returns a boolean if a field has been set.
+
+### GetCompletedCertifications
+
+`func (o *SlimCampaign) GetCompletedCertifications() int32`
+
+GetCompletedCertifications returns the CompletedCertifications field if non-nil, zero value otherwise.
+
+### GetCompletedCertificationsOk
+
+`func (o *SlimCampaign) GetCompletedCertificationsOk() (*int32, bool)`
+
+GetCompletedCertificationsOk returns a tuple with the CompletedCertifications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompletedCertifications
+
+`func (o *SlimCampaign) SetCompletedCertifications(v int32)`
+
+SetCompletedCertifications sets CompletedCertifications field to given value.
+
+### HasCompletedCertifications
+
+`func (o *SlimCampaign) HasCompletedCertifications() bool`
+
+HasCompletedCertifications returns a boolean if a field has been set.
+
+### GetAlerts
+
+`func (o *SlimCampaign) GetAlerts() []CampaignAlert`
+
+GetAlerts returns the Alerts field if non-nil, zero value otherwise.
+
+### GetAlertsOk
+
+`func (o *SlimCampaign) GetAlertsOk() (*[]CampaignAlert, bool)`
+
+GetAlertsOk returns a tuple with the Alerts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlerts
+
+`func (o *SlimCampaign) SetAlerts(v []CampaignAlert)`
+
+SetAlerts sets Alerts field to given value.
+
+### HasAlerts
+
+`func (o *SlimCampaign) HasAlerts() bool`
+
+HasAlerts returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

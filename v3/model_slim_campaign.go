@@ -40,6 +40,14 @@ type SlimCampaign struct {
 	Status *string `json:"status,omitempty"`
 	// The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source).
 	CorrelatedStatus *string `json:"correlatedStatus,omitempty"`
+	// Created time of the campaign
+	Created *time.Time `json:"created,omitempty"`
+	// The total number of certifications in this campaign.
+	TotalCertifications *int32 `json:"totalCertifications,omitempty"`
+	// The number of completed certifications in this campaign.
+	CompletedCertifications *int32 `json:"completedCertifications,omitempty"`
+	// A list of errors and warnings that have accumulated.
+	Alerts []CampaignAlert `json:"alerts,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -373,6 +381,134 @@ func (o *SlimCampaign) SetCorrelatedStatus(v string) {
 	o.CorrelatedStatus = &v
 }
 
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *SlimCampaign) GetCreated() time.Time {
+	if o == nil || isNil(o.Created) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SlimCampaign) GetCreatedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Created) {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *SlimCampaign) HasCreated() bool {
+	if o != nil && !isNil(o.Created) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *SlimCampaign) SetCreated(v time.Time) {
+	o.Created = &v
+}
+
+// GetTotalCertifications returns the TotalCertifications field value if set, zero value otherwise.
+func (o *SlimCampaign) GetTotalCertifications() int32 {
+	if o == nil || isNil(o.TotalCertifications) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalCertifications
+}
+
+// GetTotalCertificationsOk returns a tuple with the TotalCertifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SlimCampaign) GetTotalCertificationsOk() (*int32, bool) {
+	if o == nil || isNil(o.TotalCertifications) {
+		return nil, false
+	}
+	return o.TotalCertifications, true
+}
+
+// HasTotalCertifications returns a boolean if a field has been set.
+func (o *SlimCampaign) HasTotalCertifications() bool {
+	if o != nil && !isNil(o.TotalCertifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalCertifications gets a reference to the given int32 and assigns it to the TotalCertifications field.
+func (o *SlimCampaign) SetTotalCertifications(v int32) {
+	o.TotalCertifications = &v
+}
+
+// GetCompletedCertifications returns the CompletedCertifications field value if set, zero value otherwise.
+func (o *SlimCampaign) GetCompletedCertifications() int32 {
+	if o == nil || isNil(o.CompletedCertifications) {
+		var ret int32
+		return ret
+	}
+	return *o.CompletedCertifications
+}
+
+// GetCompletedCertificationsOk returns a tuple with the CompletedCertifications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SlimCampaign) GetCompletedCertificationsOk() (*int32, bool) {
+	if o == nil || isNil(o.CompletedCertifications) {
+		return nil, false
+	}
+	return o.CompletedCertifications, true
+}
+
+// HasCompletedCertifications returns a boolean if a field has been set.
+func (o *SlimCampaign) HasCompletedCertifications() bool {
+	if o != nil && !isNil(o.CompletedCertifications) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompletedCertifications gets a reference to the given int32 and assigns it to the CompletedCertifications field.
+func (o *SlimCampaign) SetCompletedCertifications(v int32) {
+	o.CompletedCertifications = &v
+}
+
+// GetAlerts returns the Alerts field value if set, zero value otherwise.
+func (o *SlimCampaign) GetAlerts() []CampaignAlert {
+	if o == nil || isNil(o.Alerts) {
+		var ret []CampaignAlert
+		return ret
+	}
+	return o.Alerts
+}
+
+// GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SlimCampaign) GetAlertsOk() ([]CampaignAlert, bool) {
+	if o == nil || isNil(o.Alerts) {
+		return nil, false
+	}
+	return o.Alerts, true
+}
+
+// HasAlerts returns a boolean if a field has been set.
+func (o *SlimCampaign) HasAlerts() bool {
+	if o != nil && !isNil(o.Alerts) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlerts gets a reference to the given []CampaignAlert and assigns it to the Alerts field.
+func (o *SlimCampaign) SetAlerts(v []CampaignAlert) {
+	o.Alerts = v
+}
+
 func (o SlimCampaign) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -403,6 +539,10 @@ func (o SlimCampaign) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.CorrelatedStatus) {
 		toSerialize["correlatedStatus"] = o.CorrelatedStatus
 	}
+	// skip: created is readOnly
+	// skip: totalCertifications is readOnly
+	// skip: completedCertifications is readOnly
+	// skip: alerts is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -431,6 +571,10 @@ func (o *SlimCampaign) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "recommendationsEnabled")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "correlatedStatus")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "totalCertifications")
+		delete(additionalProperties, "completedCertifications")
+		delete(additionalProperties, "alerts")
 		o.AdditionalProperties = additionalProperties
 	}
 

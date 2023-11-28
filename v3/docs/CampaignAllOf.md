@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Created** | Pointer to **time.Time** | Created time of the campaign | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Modified time of the campaign | [optional] [readonly] 
 **CorrelatedStatus** | Pointer to **map[string]interface{}** | The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns can be Uncorrelated. An Uncorrelated certification campaign only includes Uncorrelated identities (An identity is uncorrelated if it has no accounts on an authoritative source). | [optional] 
 **Filter** | Pointer to [**CampaignAllOfFilter**](CampaignAllOfFilter.md) |  | [optional] 
@@ -12,9 +11,6 @@ Name | Type | Description | Notes
 **SourceOwnerCampaignInfo** | Pointer to [**CampaignAllOfSourceOwnerCampaignInfo**](CampaignAllOfSourceOwnerCampaignInfo.md) |  | [optional] 
 **SearchCampaignInfo** | Pointer to [**CampaignAllOfSearchCampaignInfo**](CampaignAllOfSearchCampaignInfo.md) |  | [optional] 
 **RoleCompositionCampaignInfo** | Pointer to [**CampaignAllOfRoleCompositionCampaignInfo**](CampaignAllOfRoleCompositionCampaignInfo.md) |  | [optional] 
-**Alerts** | Pointer to [**[]CampaignAlert**](CampaignAlert.md) | A list of errors and warnings that have accumulated. | [optional] [readonly] 
-**TotalCertifications** | Pointer to **int32** | The total number of certifications in this campaign. | [optional] [readonly] 
-**CompletedCertifications** | Pointer to **int32** | The number of completed certifications in this campaign. | [optional] [readonly] 
 **SourcesWithOrphanEntitlements** | Pointer to [**[]CampaignAllOfSourcesWithOrphanEntitlements**](CampaignAllOfSourcesWithOrphanEntitlements.md) | A list of sources in the campaign that contain \\\&quot;orphan entitlements\\\&quot; (entitlements without a corresponding Managed Attribute). An empty list indicates the campaign has no orphan entitlements. Null indicates there may be unknown orphan entitlements in the campaign (the campaign was created before this feature was implemented). | [optional] [readonly] 
 **MandatoryCommentRequirement** | Pointer to **string** | Determines whether comments are required for decisions during certification reviews. You can require comments for all decisions, revoke-only decisions, or no decisions. By default, comments are not required for decisions. | [optional] 
 
@@ -36,31 +32,6 @@ will change when the set of required properties is changed
 NewCampaignAllOfWithDefaults instantiates a new CampaignAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCreated
-
-`func (o *CampaignAllOf) GetCreated() time.Time`
-
-GetCreated returns the Created field if non-nil, zero value otherwise.
-
-### GetCreatedOk
-
-`func (o *CampaignAllOf) GetCreatedOk() (*time.Time, bool)`
-
-GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreated
-
-`func (o *CampaignAllOf) SetCreated(v time.Time)`
-
-SetCreated sets Created field to given value.
-
-### HasCreated
-
-`func (o *CampaignAllOf) HasCreated() bool`
-
-HasCreated returns a boolean if a field has been set.
 
 ### GetModified
 
@@ -236,81 +207,6 @@ SetRoleCompositionCampaignInfo sets RoleCompositionCampaignInfo field to given v
 `func (o *CampaignAllOf) HasRoleCompositionCampaignInfo() bool`
 
 HasRoleCompositionCampaignInfo returns a boolean if a field has been set.
-
-### GetAlerts
-
-`func (o *CampaignAllOf) GetAlerts() []CampaignAlert`
-
-GetAlerts returns the Alerts field if non-nil, zero value otherwise.
-
-### GetAlertsOk
-
-`func (o *CampaignAllOf) GetAlertsOk() (*[]CampaignAlert, bool)`
-
-GetAlertsOk returns a tuple with the Alerts field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAlerts
-
-`func (o *CampaignAllOf) SetAlerts(v []CampaignAlert)`
-
-SetAlerts sets Alerts field to given value.
-
-### HasAlerts
-
-`func (o *CampaignAllOf) HasAlerts() bool`
-
-HasAlerts returns a boolean if a field has been set.
-
-### GetTotalCertifications
-
-`func (o *CampaignAllOf) GetTotalCertifications() int32`
-
-GetTotalCertifications returns the TotalCertifications field if non-nil, zero value otherwise.
-
-### GetTotalCertificationsOk
-
-`func (o *CampaignAllOf) GetTotalCertificationsOk() (*int32, bool)`
-
-GetTotalCertificationsOk returns a tuple with the TotalCertifications field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTotalCertifications
-
-`func (o *CampaignAllOf) SetTotalCertifications(v int32)`
-
-SetTotalCertifications sets TotalCertifications field to given value.
-
-### HasTotalCertifications
-
-`func (o *CampaignAllOf) HasTotalCertifications() bool`
-
-HasTotalCertifications returns a boolean if a field has been set.
-
-### GetCompletedCertifications
-
-`func (o *CampaignAllOf) GetCompletedCertifications() int32`
-
-GetCompletedCertifications returns the CompletedCertifications field if non-nil, zero value otherwise.
-
-### GetCompletedCertificationsOk
-
-`func (o *CampaignAllOf) GetCompletedCertificationsOk() (*int32, bool)`
-
-GetCompletedCertificationsOk returns a tuple with the CompletedCertifications field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCompletedCertifications
-
-`func (o *CampaignAllOf) SetCompletedCertifications(v int32)`
-
-SetCompletedCertifications sets CompletedCertifications field to given value.
-
-### HasCompletedCertifications
-
-`func (o *CampaignAllOf) HasCompletedCertifications() bool`
-
-HasCompletedCertifications returns a boolean if a field has been set.
 
 ### GetSourcesWithOrphanEntitlements
 

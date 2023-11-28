@@ -5167,7 +5167,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/getActiveCampaigns_200_response_inner'
                 type: array
-          description: A list of campaign objects.
+          description: A list of campaign objects. By default list of SLIM campaigns
+            is returned.
         "400":
           content:
             application/json:
@@ -30617,6 +30618,16 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
+        created: 2022-08-02T19:00:27.731Z
+        totalCertifications: 10
+        completedCertifications: 3
+        alerts:
+        - level: ERROR
+          localizations:
+          - locale: en
+            localeOrigin: DEFAULT
+            text: Composite criterion must have children non-composite criterion must
+              not.
       - id: 7e1a731e3fb845cfbe58112ba4673ee4
         name: Search Campaign
         description: Search Campaign Info
@@ -30626,6 +30637,10 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
+        created: 2022-07-25T15:42:18.276Z
+        totalCertifications: 5
+        completedCertifications: 3
+        alerts: null
       - id: 2c918086719eec070171a7e3355a412b
         name: AD Source Review
         description: A review of our AD source.
@@ -30636,6 +30651,15 @@ components:
         autoRevokeAllowed: false
         recommendationsEnabled: false
         correlatedStatus: CORRELATED
+        created: 2022-07-27T17:04:19.027Z
+        totalCertifications: 7
+        completedCertifications: 3
+        alerts:
+        - level: WARN
+          localizations:
+          - locale: en
+            localeOrigin: DEFAULT
+            text: Composite criterion is in wrong format.
       - id: 3b2e2e5821e84127b6d693d41c40623b
         name: Role Composition Campaign
         description: A review done by a role owner.
@@ -30645,6 +30669,10 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
+        created: 2022-08-02T20:29:51.065Z
+        totalCertifications: 1
+        completedCertifications: 1
+        alerts: null
     FullCampaigns:
       description: List of Campaigns that would result from specifying *detail* as
         FULL
@@ -30658,7 +30686,6 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
-        created: 2022-08-02T20:29:51.065Z
         modified: 2022-08-02T20:29:51.331Z
         filter:
           type: CAMPAIGN_FILTER
@@ -30678,15 +30705,6 @@ components:
           - b15d609fc5c8434b865fe552315fda8f
           query: null
           description: null
-        alerts:
-        - level: ERROR
-          localizations:
-          - locale: en
-            localeOrigin: DEFAULT
-            text: Composite criterion must have children non-composite criterion must
-              not.
-        totalCertifications: 0
-        completedCertifications: 0
         sourcesWithOrphanEntitlements: null
         mandatoryCommentRequirement: NO_DECISIONS
       - id: 1be8fc1103914bf0a4e14e316b6a7b7c
@@ -30698,7 +30716,6 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
-        created: 2022-08-02T19:00:27.731Z
         modified: 2022-08-02T19:00:34.391Z
         filter:
           type: CAMPAIGN_FILTER
@@ -30708,9 +30725,6 @@ components:
         sourceOwnerCampaignInfo: null
         searchCampaignInfo: null
         roleCompositionCampaignInfo: null
-        alerts: null
-        totalCertifications: 5
-        completedCertifications: 0
         sourcesWithOrphanEntitlements: []
         mandatoryCommentRequirement: NO_DECISIONS
       - id: 7e1a731e3fb845cfbe58112ba4673ee4
@@ -30722,7 +30736,6 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
-        created: 2022-07-25T15:42:18.276Z
         modified: 2022-07-25T15:42:53.718Z
         filter:
           type: CAMPAIGN_FILTER
@@ -30741,9 +30754,6 @@ components:
           identityIds: null
           accessConstraints: []
         roleCompositionCampaignInfo: null
-        alerts: null
-        totalCertifications: 6
-        completedCertifications: 0
         sourcesWithOrphanEntitlements: []
         mandatoryCommentRequirement: NO_DECISIONS
       - id: ad3cf3dd50394b1bad646de4bc51b999
@@ -30755,7 +30765,6 @@ components:
         emailNotificationEnabled: true
         autoRevokeAllowed: false
         recommendationsEnabled: false
-        created: 2022-07-27T17:04:19.027Z
         modified: 2022-07-27T17:09:13.925Z
         filter:
           type: CAMPAIGN_FILTER
@@ -30767,9 +30776,6 @@ components:
           - 2c91808781fd5aea01821200dc88318e
         searchCampaignInfo: null
         roleCompositionCampaignInfo: null
-        alerts: null
-        totalCertifications: 2
-        completedCertifications: 0
         sourcesWithOrphanEntitlements: []
         correlatedStatus: CORRELATED
         mandatoryCommentRequirement: NO_DECISIONS
@@ -35223,14 +35229,38 @@ components:
       type: object
     SlimCampaign:
       example:
+        totalCertifications: 100
         recommendationsEnabled: true
-        autoRevokeAllowed: false
-        name: Manager Campaign
+        created: 2020-03-03T22:15:13.611Z
         description: Everyone needs to be reviewed by their manager
-        id: 2c9079b270a266a60170a2779fcb0007
-        deadline: 2020-03-15T10:00:01.456Z
         type: MANAGER
         emailNotificationEnabled: false
+        alerts:
+        - level: ERROR
+          localizations:
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+        - level: ERROR
+          localizations:
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+        autoRevokeAllowed: false
+        name: Manager Campaign
+        completedCertifications: 10
+        id: 2c9079b270a266a60170a2779fcb0007
+        deadline: 2020-03-15T10:00:01.456Z
         status: ACTIVE
         correlatedStatus: CORRELATED
       properties:
@@ -35311,6 +35341,30 @@ components:
           - UNCORRELATED
           example: CORRELATED
           type: string
+        created:
+          description: Created time of the campaign
+          example: 2020-03-03T22:15:13.611Z
+          format: date-time
+          readOnly: true
+          type: string
+        totalCertifications:
+          description: The total number of certifications in this campaign.
+          example: 100
+          format: int32
+          readOnly: true
+          type: integer
+        completedCertifications:
+          description: The number of completed certifications in this campaign.
+          example: 10
+          format: int32
+          readOnly: true
+          type: integer
+        alerts:
+          description: A list of errors and warnings that have accumulated.
+          items:
+            $ref: '#/components/schemas/CampaignAlert'
+          readOnly: true
+          type: array
       required:
       - description
       - name
@@ -40127,21 +40181,6 @@ components:
       - operator
       - type
       type: object
-    CampaignAlert:
-      properties:
-        level:
-          description: Denotes the level of the message
-          enum:
-          - ERROR
-          - WARN
-          - INFO
-          example: ERROR
-          type: string
-        localizations:
-          items:
-            $ref: '#/components/schemas/ErrorMessageDto'
-          type: array
-      type: object
     AccessProfileEntitlement:
       allOf:
       - $ref: '#/components/schemas/Access'
@@ -41235,6 +41274,32 @@ components:
           description: Human-readable name of source the entitlement belongs to.
           example: HR Active Directory
           type: string
+      type: object
+    CampaignAlert:
+      example:
+        level: ERROR
+        localizations:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+      properties:
+        level:
+          description: Denotes the level of the message
+          enum:
+          - ERROR
+          - WARN
+          - INFO
+          example: ERROR
+          type: string
+        localizations:
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
       type: object
     ReassignmentTrailDTOList:
       description: Reassignment trails that lead to self certification identity
@@ -44976,12 +45041,6 @@ components:
       example: null
     Campaign_allOf:
       properties:
-        created:
-          description: Created time of the campaign
-          example: 2020-03-03T22:15:13.611Z
-          format: date-time
-          readOnly: true
-          type: string
         modified:
           description: Modified time of the campaign
           example: 2020-03-03T22:20:12.674Z
@@ -45011,22 +45070,6 @@ components:
           $ref: '#/components/schemas/Campaign_allOf_searchCampaignInfo'
         roleCompositionCampaignInfo:
           $ref: '#/components/schemas/Campaign_allOf_roleCompositionCampaignInfo'
-        alerts:
-          description: A list of errors and warnings that have accumulated.
-          items:
-            $ref: '#/components/schemas/CampaignAlert'
-          readOnly: true
-          type: array
-        totalCertifications:
-          description: The total number of certifications in this campaign.
-          example: 100
-          readOnly: true
-          type: integer
-        completedCertifications:
-          description: The number of completed certifications in this campaign.
-          example: 10
-          readOnly: true
-          type: integer
         sourcesWithOrphanEntitlements:
           description: A list of sources in the campaign that contain \"orphan entitlements\"
             (entitlements without a corresponding Managed Attribute). An empty list

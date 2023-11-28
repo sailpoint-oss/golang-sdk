@@ -446,6 +446,10 @@ tags:
   name: Managed Clusters
 - description: Configure and test multifactor authentication (MFA) methods
   name: MFA Configuration
+- description: This API used for multifactor authentication functionality belong to
+    gov-multi-auth service. This controller allow you to verify authentication by
+    specified method
+  name: MFA Controller
 - description: |
     Use this API to implement non-employee lifecycle management functionality.
     With this functionality in place, administrators can create non-employee records and configure them for use in their organizations.
@@ -6543,7 +6547,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/getActiveCampaigns_200_response_inner'
                 type: array
-          description: A list of campaign objects.
+          description: A list of campaign objects. By default list of SLIM campaigns
+            is returned.
         "400":
           content:
             application/json:
@@ -21003,6 +21008,364 @@ paths:
       summary: Delete MFA method configuration
       tags:
       - MFA Configuration
+  /mfa/{method}/poll:
+    post:
+      description: This API poll the VerificationPollRequest for the specified MFA
+        method. A token with ORG_ADMIN authority is required to call this API.
+      operationId: pingVerificationStatus
+      parameters:
+      - description: "The name of the MFA method. The currently supported method names\
+          \ are 'okta-verify', 'duo-web', 'kba','token', 'rsa'"
+        in: path
+        name: method
+        required: true
+        schema:
+          example: okta-verify
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              requestId: 089899f13a8f4da7824996191587bab9
+            schema:
+              $ref: '#/components/schemas/VerificationPollRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                requestId: 089899f13a8f4da7824996191587bab9
+                status: PENDING
+                error: ""
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+          description: MFA VerificationPollRequest status an MFA method.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa:poll
+      summary: Polling MFA method by VerificationPollRequest
+      tags:
+      - MFA Controller
+  /mfa/kba/authenticate:
+    post:
+      description: This API Authenticate user in KBA MFA method.
+      operationId: sendKbaAnswers
+      requestBody:
+        content:
+          application/json:
+            example:
+              answers:
+              - questionId: 089899f13a8f4da7824996191587bab9
+                answer: Your answer
+              - questionId: 067899f13a8f4da7824996191587bab9
+                answer: Your answer1
+            schema:
+              $ref: '#/components/schemas/KbaAnswerRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                kbaAuthResponseItem:
+                - questionId: 089899f13a8f4da7824996191587bab9
+                  IsVerified: false
+                - questionId: 089899f13a8f4da7824996191587bda8
+                  IsVerified: true
+                status: PENDING
+              schema:
+                $ref: '#/components/schemas/KbaAuthResponse'
+          description: KBA authenticated status.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa-kba:authenticate
+      summary: Authenticate KBA provided MFA method
+      tags:
+      - MFA Controller
+  /mfa/token/authenticate:
+    post:
+      description: This API Authenticate user in Token MFA method.
+      operationId: sendTokenAuthRequest
+      requestBody:
+        content:
+          application/json:
+            example:
+              token: "12345"
+              userAlias: will.albin
+              deliveryType: EMAIL_WORK
+            schema:
+              $ref: '#/components/schemas/TokenAuthRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                status: PENDING
+              schema:
+                $ref: '#/components/schemas/TokenAuthResponse'
+          description: Token authenticated status.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa:verify
+      summary: Authenticate Token provided MFA method
+      tags:
+      - MFA Controller
+  /mfa/token/send:
+    post:
+      description: This API send token request.
+      operationId: createSendToken
+      requestBody:
+        content:
+          application/json:
+            example:
+              userAlias: will.albin
+              deliveryType: EMAIL_WORK
+            schema:
+              $ref: '#/components/schemas/SendTokenRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                requestId: 089899f13a8f4da7824996191587bab9
+                status: SUCCESS
+                errorMessage: ""
+              schema:
+                $ref: '#/components/schemas/SendTokenResponse'
+          description: Token send status.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa:send
+      summary: Create and send user token
+      tags:
+      - MFA Controller
   /notification-template-defaults:
     get:
       description: "This lists the default templates used for notifications, such\
@@ -49818,6 +50181,16 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
+        created: 2022-08-02T20:29:51.065Z
+        totalCertifications: 10
+        completedCertifications: 3
+        alerts:
+        - level: ERROR
+          localizations:
+          - locale: en
+            localeOrigin: DEFAULT
+            text: Composite criterion must have children non-composite criterion must
+              not.
       - id: 7e1a731e3fb845cfbe58112ba4673ee4
         name: Search Campaign
         description: Search Campaign Info
@@ -49827,6 +50200,10 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
+        created: 2022-08-02T19:00:27.731Z
+        totalCertifications: 5
+        completedCertifications: 3
+        alerts: null
       - id: 2c918086719eec070171a7e3355a412b
         name: AD Source Review
         description: A review of our AD source.
@@ -49836,6 +50213,15 @@ components:
         emailNotificationEnabled: true
         autoRevokeAllowed: false
         recommendationsEnabled: false
+        created: 2022-07-25T15:42:18.276Z
+        totalCertifications: 7
+        completedCertifications: 3
+        alerts:
+        - level: WARN
+          localizations:
+          - locale: en
+            localeOrigin: DEFAULT
+            text: Composite criterion is in wrong format.
         correlatedStatus: CORRELATED
       - id: 3b2e2e5821e84127b6d693d41c40623b
         name: Role Composition Campaign
@@ -49846,6 +50232,10 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
+        created: 2022-07-27T17:04:19.027Z
+        totalCertifications: 1
+        completedCertifications: 1
+        alerts: null
     FullCampaigns:
       description: List of Campaigns that would result from specifying *detail* as
         FULL
@@ -49859,7 +50249,6 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
-        created: 2022-08-02T20:29:51.065Z
         modified: 2022-08-02T20:29:51.331Z
         filter:
           type: CAMPAIGN_FILTER
@@ -49879,15 +50268,6 @@ components:
           - b15d609fc5c8434b865fe552315fda8f
           query: null
           description: null
-        alerts:
-        - level: ERROR
-          localizations:
-          - locale: en
-            localeOrigin: DEFAULT
-            text: Composite criterion must have children non-composite criterion must
-              not.
-        totalCertifications: 0
-        completedCertifications: 0
         sourcesWithOrphanEntitlements: null
         mandatoryCommentRequirement: NO_DECISIONS
       - id: 1be8fc1103914bf0a4e14e316b6a7b7c
@@ -49899,7 +50279,6 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
-        created: 2022-08-02T19:00:27.731Z
         modified: 2022-08-02T19:00:34.391Z
         filter:
           type: CAMPAIGN_FILTER
@@ -49909,9 +50288,6 @@ components:
         sourceOwnerCampaignInfo: null
         searchCampaignInfo: null
         roleCompositionCampaignInfo: null
-        alerts: null
-        totalCertifications: 5
-        completedCertifications: 0
         sourcesWithOrphanEntitlements: []
         mandatoryCommentRequirement: NO_DECISIONS
       - id: 7e1a731e3fb845cfbe58112ba4673ee4
@@ -49923,7 +50299,6 @@ components:
         emailNotificationEnabled: false
         autoRevokeAllowed: false
         recommendationsEnabled: false
-        created: 2022-07-25T15:42:18.276Z
         modified: 2022-07-25T15:42:53.718Z
         filter:
           type: CAMPAIGN_FILTER
@@ -49942,9 +50317,6 @@ components:
           identityIds: null
           accessConstraints: []
         roleCompositionCampaignInfo: null
-        alerts: null
-        totalCertifications: 6
-        completedCertifications: 0
         sourcesWithOrphanEntitlements: []
         mandatoryCommentRequirement: NO_DECISIONS
       - id: ad3cf3dd50394b1bad646de4bc51b999
@@ -49956,7 +50328,6 @@ components:
         emailNotificationEnabled: true
         autoRevokeAllowed: false
         recommendationsEnabled: false
-        created: 2022-07-27T17:04:19.027Z
         modified: 2022-07-27T17:09:13.925Z
         filter:
           type: CAMPAIGN_FILTER
@@ -49968,9 +50339,6 @@ components:
           - 2c91808781fd5aea01821200dc88318e
         searchCampaignInfo: null
         roleCompositionCampaignInfo: null
-        alerts: null
-        totalCertifications: 2
-        completedCertifications: 0
         sourcesWithOrphanEntitlements: []
         correlatedStatus: CORRELATED
         mandatoryCommentRequirement: NO_DECISIONS
@@ -50752,14 +51120,38 @@ components:
       type: object
     slimcampaign:
       example:
+        totalCertifications: 100
         recommendationsEnabled: true
-        autoRevokeAllowed: false
-        name: Manager Campaign
+        created: 2020-03-03T22:15:13.611Z
         description: Everyone needs to be reviewed by their manager
-        id: 2c9079b270a266a60170a2779fcb0007
-        deadline: 2020-03-15T10:00:01.456Z
         type: MANAGER
         emailNotificationEnabled: false
+        alerts:
+        - level: ERROR
+          localizations:
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+        - level: ERROR
+          localizations:
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+          - localeOrigin: DEFAULT
+            text: The request was syntactically correct but its content is semantically
+              invalid.
+            locale: en-US
+        autoRevokeAllowed: false
+        name: Manager Campaign
+        completedCertifications: 10
+        id: 2c9079b270a266a60170a2779fcb0007
+        deadline: 2020-03-15T10:00:01.456Z
         status: ACTIVE
         correlatedStatus: CORRELATED
       properties:
@@ -50840,6 +51232,30 @@ components:
           - UNCORRELATED
           example: CORRELATED
           type: string
+        created:
+          description: Created time of the campaign
+          example: 2020-03-03T22:15:13.611Z
+          format: date-time
+          readOnly: true
+          type: string
+        totalCertifications:
+          description: The total number of certifications in this campaign.
+          example: 100
+          format: int32
+          readOnly: true
+          type: integer
+        completedCertifications:
+          description: The number of completed certifications in this campaign.
+          example: 10
+          format: int32
+          readOnly: true
+          type: integer
+        alerts:
+          description: A list of errors and warnings that have accumulated.
+          items:
+            $ref: '#/components/schemas/CampaignAlert'
+          readOnly: true
+          type: array
       required:
       - description
       - name
@@ -56119,6 +56535,190 @@ components:
             test.
           example: MFA Method is disabled.
           readOnly: true
+          type: string
+      type: object
+    VerificationPollRequest:
+      example:
+        requestId: 089899f13a8f4da7824996191587bab9
+      properties:
+        requestId:
+          description: Verification request Id
+          example: 089899f13a8f4da7824996191587bab9
+          nullable: false
+          type: string
+      required:
+      - requestId
+      type: object
+    VerificationResponse:
+      example:
+        requestId: 089899f13a8f4da7824996191587bab9
+        error: Unable to connect DUO Service during verification
+        status: SUCCESS
+      properties:
+        requestId:
+          description: The verificationPollRequest request ID
+          example: 089899f13a8f4da7824996191587bab9
+          nullable: true
+          type: string
+        status:
+          description: MFA Authentication status
+          enum:
+          - PENDING
+          - SUCCESS
+          - FAILED
+          - LOCKOUT
+          - NOT_ENOUGH_DATA
+          example: SUCCESS
+          type: string
+        error:
+          description: Error messages from MFA verification request
+          example: Unable to connect DUO Service during verification
+          nullable: true
+          type: string
+      type: object
+    KbaAnswerRequest:
+      example:
+        answers:
+        - questionId: 089899f13a8f4da7824996191587bab9
+          answer: Your answer
+        - questionId: 067899f13a8f4da7824996191587bab9
+          answer: Your answer1
+      properties:
+        answers:
+          description: Kba answers
+          example:
+          - questionId: 089899f13a8f4da7824996191587bab9
+            answer: Your answer
+          - questionId: 067899f13a8f4da7824996191587bab9
+            answer: Your answer1
+          items:
+            $ref: '#/components/schemas/KbaAnswerRequestItem'
+          nullable: false
+          type: array
+      required:
+      - answers
+      type: object
+    KbaAuthResponse:
+      example:
+        kbaAuthResponseItems:
+        - questionId: 089899f13a8f4da7824996191587bab9
+          isVerified: false
+        status: PENDING
+      properties:
+        kbaAuthResponseItems:
+          example:
+          - questionId: 089899f13a8f4da7824996191587bab9
+            isVerified: false
+          items:
+            $ref: '#/components/schemas/KbaAuthResponseItem'
+          type: array
+        status:
+          description: MFA Authentication status
+          enum:
+          - PENDING
+          - SUCCESS
+          - FAILED
+          - LOCKOUT
+          - NOT_ENOUGH_DATA
+          example: PENDING
+          type: string
+      type: object
+    TokenAuthRequest:
+      example:
+        userAlias: will.albin
+        deliveryType: EMAIL_WORK
+        token: "12345"
+      properties:
+        token:
+          description: Token value
+          example: "12345"
+          nullable: false
+          type: string
+        userAlias:
+          description: User alias from table spt_identity field named 'name'
+          example: will.albin
+          nullable: false
+          type: string
+        deliveryType:
+          description: Token delivery type
+          enum:
+          - SMS_PERSONAL
+          - VOICE_PERSONAL
+          - SMS_WORK
+          - VOICE_WORK
+          - EMAIL_WORK
+          - EMAIL_PERSONAL
+          example: EMAIL_WORK
+          nullable: false
+          type: string
+      required:
+      - deliveryType
+      - token
+      - userAlias
+      type: object
+    TokenAuthResponse:
+      example:
+        status: PENDING
+      properties:
+        status:
+          description: MFA Authentication status
+          enum:
+          - PENDING
+          - SUCCESS
+          - FAILED
+          - LOCKOUT
+          - NOT_ENOUGH_DATA
+          example: PENDING
+          type: string
+      type: object
+    SendTokenRequest:
+      example:
+        userAlias: will.albin
+        deliveryType: EMAIL_WORK
+      properties:
+        userAlias:
+          description: User alias from table spt_identity field named 'name'
+          example: will.albin
+          nullable: false
+          type: string
+        deliveryType:
+          description: Token delivery type
+          enum:
+          - SMS_PERSONAL
+          - VOICE_PERSONAL
+          - SMS_WORK
+          - VOICE_WORK
+          - EMAIL_WORK
+          - EMAIL_PERSONAL
+          example: EMAIL_WORK
+          nullable: false
+          type: string
+      required:
+      - deliveryType
+      - userAlias
+      type: object
+    SendTokenResponse:
+      example:
+        requestId: 089899f13a8f4da7824996191587bab9
+        errorMessage: Unable to sent text message
+        status: SUCCESS
+      properties:
+        requestId:
+          description: The token request ID
+          example: 089899f13a8f4da7824996191587bab9
+          nullable: true
+          type: string
+        status:
+          description: Status of sending token
+          enum:
+          - SUCCESS
+          - FAILED
+          example: SUCCESS
+          type: string
+        errorMessage:
+          description: Error messages from token send request
+          example: Unable to sent text message
+          nullable: true
           type: string
       type: object
     TemplateDtoDefault:
@@ -63415,6 +64015,32 @@ components:
         state:
           $ref: '#/components/schemas/WorkItemState'
       type: object
+    CampaignAlert:
+      example:
+        level: ERROR
+        localizations:
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+        - localeOrigin: DEFAULT
+          text: The request was syntactically correct but its content is semantically
+            invalid.
+          locale: en-US
+      properties:
+        level:
+          description: Denotes the level of the message
+          enum:
+          - ERROR
+          - WARN
+          - INFO
+          example: ERROR
+          type: string
+        localizations:
+          items:
+            $ref: '#/components/schemas/ErrorMessageDto'
+          type: array
+      type: object
     BaseCommonDto:
       properties:
         id:
@@ -64966,21 +65592,6 @@ components:
       - operator
       - type
       type: object
-    CampaignAlert:
-      properties:
-        level:
-          description: Denotes the level of the message
-          enum:
-          - ERROR
-          - WARN
-          - INFO
-          example: ERROR
-          type: string
-        localizations:
-          items:
-            $ref: '#/components/schemas/ErrorMessageDto'
-          type: array
-      type: object
     ReassignReference:
       example:
         id: ef38f94347e94562b5bb8424a56397d8
@@ -65639,6 +66250,35 @@ components:
         $ref: '#/components/schemas/StandardLevel'
       description: Mapping of identifiers to Standard Log Level values
       example: INFO
+      type: object
+    KbaAnswerRequestItem:
+      properties:
+        questionId:
+          description: Question Id
+          example: 089899f13a8f4da7824996191587bab9
+          nullable: false
+          type: string
+        answer:
+          description: An answer for the KBA question
+          example: Your answer
+          nullable: false
+          type: string
+      required:
+      - answer
+      - questionId
+      type: object
+    KbaAuthResponseItem:
+      properties:
+        questionId:
+          description: The KBA question id
+          example: 089899f13a8f4da7824996191587bab9
+          nullable: true
+          type: string
+        isVerified:
+          description: Return true if verified
+          example: true
+          nullable: true
+          type: boolean
       type: object
     GrantType:
       description: OAuth2 Grant Type
@@ -71111,12 +71751,6 @@ components:
       example: null
     fullcampaign_allOf:
       properties:
-        created:
-          description: Created time of the campaign
-          example: 2020-03-03T22:15:13.611Z
-          format: date-time
-          readOnly: true
-          type: string
         modified:
           description: Modified time of the campaign
           example: 2020-03-03T22:20:12.674Z
@@ -71146,22 +71780,6 @@ components:
           $ref: '#/components/schemas/fullcampaign_allOf_searchCampaignInfo'
         roleCompositionCampaignInfo:
           $ref: '#/components/schemas/fullcampaign_allOf_roleCompositionCampaignInfo'
-        alerts:
-          description: A list of errors and warnings that have accumulated.
-          items:
-            $ref: '#/components/schemas/CampaignAlert'
-          readOnly: true
-          type: array
-        totalCertifications:
-          description: The total number of certifications in this campaign.
-          example: 100
-          readOnly: true
-          type: integer
-        completedCertifications:
-          description: The number of completed certifications in this campaign.
-          example: 10
-          readOnly: true
-          type: integer
         sourcesWithOrphanEntitlements:
           description: A list of sources in the campaign that contain \"orphan entitlements\"
             (entitlements without a corresponding Managed Attribute). An empty list

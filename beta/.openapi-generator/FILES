@@ -32,6 +32,7 @@ api_lifecycle_states.go
 api_managed_clients.go
 api_managed_clusters.go
 api_mfa_configuration.go
+api_mfa_controller.go
 api_non_employee_lifecycle_management.go
 api_notifications.go
 api_o_auth_clients.go
@@ -446,6 +447,10 @@ docs/InvocationStatusType.md
 docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
+docs/KbaAnswerRequest.md
+docs/KbaAnswerRequestItem.md
+docs/KbaAuthResponse.md
+docs/KbaAuthResponseItem.md
 docs/LatestOutlierSummary.md
 docs/LifecycleState.md
 docs/LifecycleStateDto.md
@@ -464,6 +469,7 @@ docs/LocaleOrigin.md
 docs/LocalizedMessage.md
 docs/LookupStep.md
 docs/MFAConfigurationApi.md
+docs/MFAControllerApi.md
 docs/MailFromAttributes.md
 docs/MailFromAttributesDto.md
 docs/ManagedClient.md
@@ -704,6 +710,8 @@ docs/Selector.md
 docs/SelectorType.md
 docs/SelfImportExportDto.md
 docs/SendTestNotificationRequestDto.md
+docs/SendTokenRequest.md
+docs/SendTokenResponse.md
 docs/ServiceDeskIntegrationApi.md
 docs/ServiceDeskIntegrationDto.md
 docs/ServiceDeskIntegrationDtoAllOf.md
@@ -798,6 +806,8 @@ docs/TestExternalExecuteWorkflowRequest.md
 docs/TestInvocation.md
 docs/TestWorkflow200Response.md
 docs/TestWorkflowRequest.md
+docs/TokenAuthRequest.md
+docs/TokenAuthResponse.md
 docs/Transform.md
 docs/TransformDefinition.md
 docs/TransformDefinition1.md
@@ -821,6 +831,8 @@ docs/VAClusterStatusChangeEventPreviousHealthCheckResult.md
 docs/ValidateFilterInputDto.md
 docs/ValidateFilterOutputDto.md
 docs/Value.md
+docs/VerificationPollRequest.md
+docs/VerificationResponse.md
 docs/ViolationContext.md
 docs/ViolationContextPolicy.md
 docs/ViolationContextPolicyAllOf.md
@@ -1219,6 +1231,10 @@ model_invocation_status_type.go
 model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
+model_kba_answer_request.go
+model_kba_answer_request_item.go
+model_kba_auth_response.go
+model_kba_auth_response_item.go
 model_latest_outlier_summary.go
 model_lifecycle_state.go
 model_lifecycle_state_dto.go
@@ -1455,6 +1471,8 @@ model_selector.go
 model_selector_type.go
 model_self_import_export_dto.go
 model_send_test_notification_request_dto.go
+model_send_token_request.go
+model_send_token_response.go
 model_service_desk_integration_dto.go
 model_service_desk_integration_dto_all_of.go
 model_service_desk_integration_template_dto.go
@@ -1544,6 +1562,8 @@ model_test_external_execute_workflow_request.go
 model_test_invocation.go
 model_test_workflow_200_response.go
 model_test_workflow_request.go
+model_token_auth_request.go
+model_token_auth_response.go
 model_transform.go
 model_transform_definition.go
 model_transform_definition_1.go
@@ -1565,6 +1585,8 @@ model_va_cluster_status_change_event_previous_health_check_result.go
 model_validate_filter_input_dto.go
 model_validate_filter_output_dto.go
 model_value.go
+model_verification_poll_request.go
+model_verification_response.go
 model_violation_context.go
 model_violation_context_policy.go
 model_violation_context_policy_all_of.go
@@ -1628,6 +1650,7 @@ test/api_lifecycle_states_test.go
 test/api_managed_clients_test.go
 test/api_managed_clusters_test.go
 test/api_mfa_configuration_test.go
+test/api_mfa_controller_test.go
 test/api_non_employee_lifecycle_management_test.go
 test/api_notifications_test.go
 test/api_o_auth_clients_test.go
