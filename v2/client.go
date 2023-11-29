@@ -468,10 +468,16 @@ type AccessToken struct {
 }
 
 func getAccessToken(clientId string, clientSecret string, tokenURL string) (string, error) {
-	url := tokenURL + "?grant_type=client_credentials&client_id=" + clientId + "&client_secret=" + clientSecret
+	requestUrl := tokenURL
 	method := "POST"
 	client := &http.Client{}
-	req, err := http.NewRequest(method, url, nil)
+	form := url.Values{
+		"grant_type": {"client_credentials"},
+		"client_id": {clientId},
+		"client_secret": {clientSecret},
+	}
+	req, err := http.NewRequest(method, requestUrl, strings.NewReader(form.Encode()))
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	if err != nil {
 		fmt.Println(err)
