@@ -295,6 +295,7 @@ docs/DkimAttributes.md
 docs/DomainAddress.md
 docs/DomainStatusDto.md
 docs/DtoType.md
+docs/DuoVerificationRequest.md
 docs/EmailNotificationOption.md
 docs/EmailStatusDto.md
 docs/Entitlement.md
@@ -537,6 +538,7 @@ docs/NotificationsApi.md
 docs/OAuthClientsApi.md
 docs/ObjectExportImportOptions.md
 docs/ObjectImportResult.md
+docs/OktaVerificationRequest.md
 docs/OrgConfig.md
 docs/OrgConfigApi.md
 docs/Outlier.md
@@ -1091,6 +1093,7 @@ model_dkim_attributes.go
 model_domain_address.go
 model_domain_status_dto.go
 model_dto_type.go
+model_duo_verification_request.go
 model_email_notification_option.go
 model_email_status_dto.go
 model_entitlement.go
@@ -1313,6 +1316,7 @@ model_non_employee_source_with_ne_count_all_of.go
 model_notification_template_context.go
 model_object_export_import_options.go
 model_object_import_result.go
+model_okta_verification_request.go
 model_org_config.go
 model_outlier.go
 model_outlier_contributing_feature.go

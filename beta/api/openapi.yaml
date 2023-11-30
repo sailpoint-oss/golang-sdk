@@ -21008,6 +21008,179 @@ paths:
       summary: Delete MFA method configuration
       tags:
       - MFA Configuration
+  /mfa/okta-verify/verify:
+    post:
+      description: "This API Authenticates the user via Okta-Verify MFA method. Request\
+        \ requires a header called 'slpt-forwarding', and it must contain a remote\
+        \ IP Address of caller."
+      operationId: sendOktaVerifyRequest
+      requestBody:
+        content:
+          application/json:
+            example:
+              userId: example@mail.com
+            schema:
+              $ref: '#/components/schemas/OktaVerificationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                requestId: 089899f13a8f4da7824996191587bab9
+                status: SUCCESS
+                error: ""
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+          description: The status of verification request.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa:verify
+      summary: Verifying authentication via Okta method
+      tags:
+      - MFA Controller
+  /mfa/duo-web/verify:
+    post:
+      description: This API Authenticates the user via Duo-Web MFA method.
+      operationId: sendDuoVerifyRequest
+      requestBody:
+        content:
+          application/json:
+            example:
+              userId: 2c9180947f0ef465017f215cbcfd004b
+              signedResponse: AUTH|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjUzMDg5|f1f5f8ced5b340f3d303b05d0efa0e43b6a8f970:APP|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjU2NjE5|cb44cf44353f5127edcae31b1da0355f87357db2
+            schema:
+              $ref: '#/components/schemas/DuoVerificationRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                requestId: 089899f13a8f4da7824996191587bab9
+                status: SUCCESS
+                error: ""
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+          description: The status of verification request.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:mfa:verify
+      summary: Verifying authentication via Duo method
+      tags:
+      - MFA Controller
   /mfa/{method}/poll:
     post:
       description: This API poll the VerificationPollRequest for the specified MFA
@@ -56537,17 +56710,18 @@ components:
           readOnly: true
           type: string
       type: object
-    VerificationPollRequest:
+    OktaVerificationRequest:
       example:
-        requestId: 089899f13a8f4da7824996191587bab9
+        userId: example@mail.com
       properties:
-        requestId:
-          description: Verification request Id
-          example: 089899f13a8f4da7824996191587bab9
+        userId:
+          description: User identifier for Verification request. The value of the
+            user's attribute.
+          example: example@mail.com
           nullable: false
           type: string
       required:
-      - requestId
+      - userId
       type: object
     VerificationResponse:
       example:
@@ -56575,6 +56749,37 @@ components:
           example: Unable to connect DUO Service during verification
           nullable: true
           type: string
+      type: object
+    DuoVerificationRequest:
+      example:
+        signedResponse: AUTH|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjUzMDg5|f1f5f8ced5b340f3d303b05d0efa0e43b6a8f970:APP|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjU2NjE5|cb44cf44353f5127edcae31b1da0355f87357db2
+        userId: 2c9180947f0ef465017f215cbcfd004b
+      properties:
+        userId:
+          description: User id for Verification request.
+          example: 2c9180947f0ef465017f215cbcfd004b
+          nullable: false
+          type: string
+        signedResponse:
+          description: User id for Verification request.
+          example: AUTH|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjUzMDg5|f1f5f8ced5b340f3d303b05d0efa0e43b6a8f970:APP|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjU2NjE5|cb44cf44353f5127edcae31b1da0355f87357db2
+          nullable: false
+          type: string
+      required:
+      - signedResponse
+      - userId
+      type: object
+    VerificationPollRequest:
+      example:
+        requestId: 089899f13a8f4da7824996191587bab9
+      properties:
+        requestId:
+          description: Verification request Id
+          example: 089899f13a8f4da7824996191587bab9
+          nullable: false
+          type: string
+      required:
+      - requestId
       type: object
     KbaAnswerRequest:
       example:

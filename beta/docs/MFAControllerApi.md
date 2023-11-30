@@ -6,7 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateSendToken**](MFAControllerApi.md#CreateSendToken) | **Post** /mfa/token/send | Create and send user token
 [**PingVerificationStatus**](MFAControllerApi.md#PingVerificationStatus) | **Post** /mfa/{method}/poll | Polling MFA method by VerificationPollRequest
+[**SendDuoVerifyRequest**](MFAControllerApi.md#SendDuoVerifyRequest) | **Post** /mfa/duo-web/verify | Verifying authentication via Duo method
 [**SendKbaAnswers**](MFAControllerApi.md#SendKbaAnswers) | **Post** /mfa/kba/authenticate | Authenticate KBA provided MFA method
+[**SendOktaVerifyRequest**](MFAControllerApi.md#SendOktaVerifyRequest) | **Post** /mfa/okta-verify/verify | Verifying authentication via Okta method
 [**SendTokenAuthRequest**](MFAControllerApi.md#SendTokenAuthRequest) | **Post** /mfa/token/authenticate | Authenticate Token provided MFA method
 
 
@@ -149,6 +151,72 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## SendDuoVerifyRequest
+
+> VerificationResponse SendDuoVerifyRequest(ctx).DuoVerificationRequest(duoVerificationRequest).Execute()
+
+Verifying authentication via Duo method
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    duoVerificationRequest := *openapiclient.NewDuoVerificationRequest("2c9180947f0ef465017f215cbcfd004b", "AUTH|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjUzMDg5|f1f5f8ced5b340f3d303b05d0efa0e43b6a8f970:APP|d2lsbC5hbGJpbnxESTZNMFpHSThKQVRWTVpZN0M5VXwxNzAxMjU2NjE5|cb44cf44353f5127edcae31b1da0355f87357db2") // DuoVerificationRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MFAControllerApi.SendDuoVerifyRequest(context.Background()).DuoVerificationRequest(duoVerificationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerApi.SendDuoVerifyRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SendDuoVerifyRequest`: VerificationResponse
+    fmt.Fprintf(os.Stdout, "Response from `MFAControllerApi.SendDuoVerifyRequest`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSendDuoVerifyRequestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **duoVerificationRequest** | [**DuoVerificationRequest**](DuoVerificationRequest.md) |  | 
+
+### Return type
+
+[**VerificationResponse**](VerificationResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SendKbaAnswers
 
 > KbaAuthResponse SendKbaAnswers(ctx).KbaAnswerRequest(kbaAnswerRequest).Execute()
@@ -200,6 +268,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**KbaAuthResponse**](KbaAuthResponse.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SendOktaVerifyRequest
+
+> VerificationResponse SendOktaVerifyRequest(ctx).OktaVerificationRequest(oktaVerificationRequest).Execute()
+
+Verifying authentication via Okta method
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    oktaVerificationRequest := *openapiclient.NewOktaVerificationRequest("example@mail.com") // OktaVerificationRequest | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.MFAControllerApi.SendOktaVerifyRequest(context.Background()).OktaVerificationRequest(oktaVerificationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerApi.SendOktaVerifyRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SendOktaVerifyRequest`: VerificationResponse
+    fmt.Fprintf(os.Stdout, "Response from `MFAControllerApi.SendOktaVerifyRequest`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSendOktaVerifyRequestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **oktaVerificationRequest** | [**OktaVerificationRequest**](OktaVerificationRequest.md) |  | 
+
+### Return type
+
+[**VerificationResponse**](VerificationResponse.md)
 
 ### Authorization
 

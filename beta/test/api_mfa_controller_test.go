@@ -48,11 +48,35 @@ func Test_beta_MFAControllerApiService(t *testing.T) {
 
 	})
 
+	t.Run("Test MFAControllerApiService SendDuoVerifyRequest", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.MFAControllerApi.SendDuoVerifyRequest(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MFAControllerApiService SendKbaAnswers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.BETA.MFAControllerApi.SendKbaAnswers(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MFAControllerApiService SendOktaVerifyRequest", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.MFAControllerApi.SendOktaVerifyRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

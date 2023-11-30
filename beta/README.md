@@ -284,7 +284,9 @@ Class | Method | HTTP request | Description
 *MFAConfigurationApi* | [**TestMFAConfig**](docs/MFAConfigurationApi.md#testmfaconfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
 *MFAControllerApi* | [**CreateSendToken**](docs/MFAControllerApi.md#createsendtoken) | **Post** /mfa/token/send | Create and send user token
 *MFAControllerApi* | [**PingVerificationStatus**](docs/MFAControllerApi.md#pingverificationstatus) | **Post** /mfa/{method}/poll | Polling MFA method by VerificationPollRequest
+*MFAControllerApi* | [**SendDuoVerifyRequest**](docs/MFAControllerApi.md#sendduoverifyrequest) | **Post** /mfa/duo-web/verify | Verifying authentication via Duo method
 *MFAControllerApi* | [**SendKbaAnswers**](docs/MFAControllerApi.md#sendkbaanswers) | **Post** /mfa/kba/authenticate | Authenticate KBA provided MFA method
+*MFAControllerApi* | [**SendOktaVerifyRequest**](docs/MFAControllerApi.md#sendoktaverifyrequest) | **Post** /mfa/okta-verify/verify | Verifying authentication via Okta method
 *MFAControllerApi* | [**SendTokenAuthRequest**](docs/MFAControllerApi.md#sendtokenauthrequest) | **Post** /mfa/token/authenticate | Authenticate Token provided MFA method
 *ManagedClientsApi* | [**GetManagedClientStatus**](docs/ManagedClientsApi.md#getmanagedclientstatus) | **Get** /managed-clients/{id}/status | Specified Managed Client Status.
 *ManagedClientsApi* | [**UpdateManagedClientStatus**](docs/ManagedClientsApi.md#updatemanagedclientstatus) | **Post** /managed-clients/{id}/status | Handle status request from client
@@ -759,6 +761,7 @@ Class | Method | HTTP request | Description
  - [DomainAddress](docs/DomainAddress.md)
  - [DomainStatusDto](docs/DomainStatusDto.md)
  - [DtoType](docs/DtoType.md)
+ - [DuoVerificationRequest](docs/DuoVerificationRequest.md)
  - [EmailNotificationOption](docs/EmailNotificationOption.md)
  - [EmailStatusDto](docs/EmailStatusDto.md)
  - [Entitlement](docs/Entitlement.md)
@@ -981,6 +984,7 @@ Class | Method | HTTP request | Description
  - [NotificationTemplateContext](docs/NotificationTemplateContext.md)
  - [ObjectExportImportOptions](docs/ObjectExportImportOptions.md)
  - [ObjectImportResult](docs/ObjectImportResult.md)
+ - [OktaVerificationRequest](docs/OktaVerificationRequest.md)
  - [OrgConfig](docs/OrgConfig.md)
  - [Outlier](docs/Outlier.md)
  - [OutlierContributingFeature](docs/OutlierContributingFeature.md)
