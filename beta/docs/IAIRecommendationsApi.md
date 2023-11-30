@@ -4,81 +4,10 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetMessageCatalogs**](IAIRecommendationsApi.md#GetMessageCatalogs) | **Get** /translation-catalogs/{catalog-id} | Get Message catalogs
 [**GetRecommendations**](IAIRecommendationsApi.md#GetRecommendations) | **Post** /recommendations/request | Returns a Recommendation Based on Object
 [**GetRecommendationsConfig**](IAIRecommendationsApi.md#GetRecommendationsConfig) | **Get** /recommendations/config | Get certification recommendation config values
 [**UpdateRecommendationsConfig**](IAIRecommendationsApi.md#UpdateRecommendationsConfig) | **Put** /recommendations/config | Update certification recommendation config values
 
-
-
-## GetMessageCatalogs
-
-> []MessageCatalogDto GetMessageCatalogs(ctx, catalogId).Execute()
-
-Get Message catalogs
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    catalogId := "catalogId_example" // string | The ID of the message catalog.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRecommendationsApi.GetMessageCatalogs(context.Background(), catalogId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsApi.GetMessageCatalogs``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetMessageCatalogs`: []MessageCatalogDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsApi.GetMessageCatalogs`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**catalogId** | **string** | The ID of the message catalog. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetMessageCatalogsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]MessageCatalogDto**](MessageCatalogDto.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## GetRecommendations

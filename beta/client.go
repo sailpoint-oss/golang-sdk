@@ -86,6 +86,8 @@ type APIClient struct {
 
 	IAICommonAccessApi *IAICommonAccessApiService
 
+	IAIMessageCatalogsApi *IAIMessageCatalogsApiService
+
 	IAIOutliersApi *IAIOutliersApiService
 
 	IAIPeerGroupStrategiesApi *IAIPeerGroupStrategiesApiService
@@ -202,6 +204,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.GovernanceGroupsApi = (*GovernanceGroupsApiService)(&c.common)
 	c.IAIAccessRequestRecommendationsApi = (*IAIAccessRequestRecommendationsApiService)(&c.common)
 	c.IAICommonAccessApi = (*IAICommonAccessApiService)(&c.common)
+	c.IAIMessageCatalogsApi = (*IAIMessageCatalogsApiService)(&c.common)
 	c.IAIOutliersApi = (*IAIOutliersApiService)(&c.common)
 	c.IAIPeerGroupStrategiesApi = (*IAIPeerGroupStrategiesApiService)(&c.common)
 	c.IAIRecommendationsApi = (*IAIRecommendationsApiService)(&c.common)

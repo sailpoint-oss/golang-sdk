@@ -363,6 +363,7 @@ tags:
 
     Refer to [Creating and Managing Governance Groups](https://documentation.sailpoint.com/saas/help/common/users/governance_groups.html) for more information about how to build Governance Groups in the visual builder in the IdentityNow UI.
   name: Governance Groups
+- name: IAI Message Catalogs
 - name: IAI Access Request Recommendations
 - name: IAI Common Access
 - name: IAI Outliers
@@ -40515,6 +40516,7 @@ paths:
       operationId: getMessageCatalogs
       parameters:
       - description: The ID of the message catalog.
+        example: recommender
         in: path
         name: catalog-id
         required: true
@@ -40592,8 +40594,7 @@ paths:
       - UserContextAuth: []
       summary: Get Message catalogs
       tags:
-      - IAI Recommendations
-      - IAI Access Request Recommendations
+      - IAI Message Catalogs
   /triggers:
     get:
       description: Gets a list of triggers that are available in the tenant.

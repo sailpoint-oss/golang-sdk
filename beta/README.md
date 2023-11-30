@@ -198,10 +198,10 @@ Class | Method | HTTP request | Description
 *IAIAccessRequestRecommendationsApi* | [**GetAccessRequestRecommendationsIgnoredItems**](docs/IAIAccessRequestRecommendationsApi.md#getaccessrequestrecommendationsignoreditems) | **Get** /ai-access-request-recommendations/ignored-items | List of Ignored Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**GetAccessRequestRecommendationsRequestedItems**](docs/IAIAccessRequestRecommendationsApi.md#getaccessrequestrecommendationsrequesteditems) | **Get** /ai-access-request-recommendations/requested-items | List of Requested Access Request Recommendations
 *IAIAccessRequestRecommendationsApi* | [**GetAccessRequestRecommendationsViewedItems**](docs/IAIAccessRequestRecommendationsApi.md#getaccessrequestrecommendationsvieweditems) | **Get** /ai-access-request-recommendations/viewed-items | List of Viewed Access Request Recommendations
-*IAIAccessRequestRecommendationsApi* | [**GetMessageCatalogs**](docs/IAIAccessRequestRecommendationsApi.md#getmessagecatalogs) | **Get** /translation-catalogs/{catalog-id} | Get Message catalogs
 *IAICommonAccessApi* | [**CreateCommonAccess**](docs/IAICommonAccessApi.md#createcommonaccess) | **Post** /common-access | Create common access items
 *IAICommonAccessApi* | [**GetCommonAccess**](docs/IAICommonAccessApi.md#getcommonaccess) | **Get** /common-access | Get a paginated list of common access
 *IAICommonAccessApi* | [**UpdateCommonAccessStatusInBulk**](docs/IAICommonAccessApi.md#updatecommonaccessstatusinbulk) | **Post** /common-access/update-status | Bulk update common access status
+*IAIMessageCatalogsApi* | [**GetMessageCatalogs**](docs/IAIMessageCatalogsApi.md#getmessagecatalogs) | **Get** /translation-catalogs/{catalog-id} | Get Message catalogs
 *IAIOutliersApi* | [**ExportOutliersZip**](docs/IAIOutliersApi.md#exportoutlierszip) | **Get** /outliers/export | IAI Identity Outliers Export
 *IAIOutliersApi* | [**GetIdentityOutlierSnapshots**](docs/IAIOutliersApi.md#getidentityoutliersnapshots) | **Get** /outlier-summaries | IAI Identity Outliers Summary
 *IAIOutliersApi* | [**GetIdentityOutliers**](docs/IAIOutliersApi.md#getidentityoutliers) | **Get** /outliers | IAI Get Identity Outliers
@@ -212,7 +212,6 @@ Class | Method | HTTP request | Description
 *IAIOutliersApi* | [**ListOutliersContributingFeatureAccessItems**](docs/IAIOutliersApi.md#listoutlierscontributingfeatureaccessitems) | **Get** /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items | Gets a list of access items associated with each identity outlier contributing feature
 *IAIOutliersApi* | [**UnIgnoreIdentityOutliers**](docs/IAIOutliersApi.md#unignoreidentityoutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
 *IAIPeerGroupStrategiesApi* | [**GetPeerGroupOutliers**](docs/IAIPeerGroupStrategiesApi.md#getpeergroupoutliers) | **Get** /peer-group-strategies/{strategy}/identity-outliers | Identity Outliers List
-*IAIRecommendationsApi* | [**GetMessageCatalogs**](docs/IAIRecommendationsApi.md#getmessagecatalogs) | **Get** /translation-catalogs/{catalog-id} | Get Message catalogs
 *IAIRecommendationsApi* | [**GetRecommendations**](docs/IAIRecommendationsApi.md#getrecommendations) | **Post** /recommendations/request | Returns a Recommendation Based on Object
 *IAIRecommendationsApi* | [**GetRecommendationsConfig**](docs/IAIRecommendationsApi.md#getrecommendationsconfig) | **Get** /recommendations/config | Get certification recommendation config values
 *IAIRecommendationsApi* | [**UpdateRecommendationsConfig**](docs/IAIRecommendationsApi.md#updaterecommendationsconfig) | **Put** /recommendations/config | Update certification recommendation config values

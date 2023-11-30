@@ -118,18 +118,4 @@ func Test_beta_IAIAccessRequestRecommendationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIAccessRequestRecommendationsApiService GetMessageCatalogs", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var catalogId string
-
-		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsApi.GetMessageCatalogs(context.Background(), catalogId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 }

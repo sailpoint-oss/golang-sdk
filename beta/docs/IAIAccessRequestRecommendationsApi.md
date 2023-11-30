@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**GetAccessRequestRecommendationsIgnoredItems**](IAIAccessRequestRecommendationsApi.md#GetAccessRequestRecommendationsIgnoredItems) | **Get** /ai-access-request-recommendations/ignored-items | List of Ignored Access Request Recommendations
 [**GetAccessRequestRecommendationsRequestedItems**](IAIAccessRequestRecommendationsApi.md#GetAccessRequestRecommendationsRequestedItems) | **Get** /ai-access-request-recommendations/requested-items | List of Requested Access Request Recommendations
 [**GetAccessRequestRecommendationsViewedItems**](IAIAccessRequestRecommendationsApi.md#GetAccessRequestRecommendationsViewedItems) | **Get** /ai-access-request-recommendations/viewed-items | List of Viewed Access Request Recommendations
-[**GetMessageCatalogs**](IAIAccessRequestRecommendationsApi.md#GetMessageCatalogs) | **Get** /translation-catalogs/{catalog-id} | Get Message catalogs
 
 
 
@@ -565,76 +564,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]AccessRequestRecommendationActionItemResponseDto**](AccessRequestRecommendationActionItemResponseDto.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetMessageCatalogs
-
-> []MessageCatalogDto GetMessageCatalogs(ctx, catalogId).Execute()
-
-Get Message catalogs
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    catalogId := "catalogId_example" // string | The ID of the message catalog.
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsApi.GetMessageCatalogs(context.Background(), catalogId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsApi.GetMessageCatalogs``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetMessageCatalogs`: []MessageCatalogDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsApi.GetMessageCatalogs`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**catalogId** | **string** | The ID of the message catalog. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetMessageCatalogsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]MessageCatalogDto**](MessageCatalogDto.md)
 
 ### Authorization
 

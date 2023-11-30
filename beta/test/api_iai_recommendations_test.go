@@ -22,20 +22,6 @@ func Test_beta_IAIRecommendationsApiService(t *testing.T) {
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test IAIRecommendationsApiService GetMessageCatalogs", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var catalogId string
-
-		resp, httpRes, err := apiClient.BETA.IAIRecommendationsApi.GetMessageCatalogs(context.Background(), catalogId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test IAIRecommendationsApiService GetRecommendations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

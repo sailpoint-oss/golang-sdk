@@ -20,6 +20,7 @@ api_entitlements.go
 api_governance_groups.go
 api_iai_access_request_recommendations.go
 api_iai_common_access.go
+api_iai_message_catalogs.go
 api_iai_outliers.go
 api_iai_peer_group_strategies.go
 api_iai_recommendations.go
@@ -373,6 +374,7 @@ docs/HttpConfig.md
 docs/HttpDispatchMode.md
 docs/IAIAccessRequestRecommendationsApi.md
 docs/IAICommonAccessApi.md
+docs/IAIMessageCatalogsApi.md
 docs/IAIOutliersApi.md
 docs/IAIPeerGroupStrategiesApi.md
 docs/IAIRecommendationsApi.md
@@ -1642,6 +1644,7 @@ test/api_entitlements_test.go
 test/api_governance_groups_test.go
 test/api_iai_access_request_recommendations_test.go
 test/api_iai_common_access_test.go
+test/api_iai_message_catalogs_test.go
 test/api_iai_outliers_test.go
 test/api_iai_peer_group_strategies_test.go
 test/api_iai_recommendations_test.go
