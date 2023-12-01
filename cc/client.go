@@ -70,7 +70,6 @@ type APIClient struct {
 	
 	TaskResultsApi *TaskResultsApiService
 
-	ListUserApi *ListUserListApiService
 }
 
 type service struct {
@@ -98,7 +97,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UserApi = (*UserApiService)(&c.common)
 	c.ListEventsApi = (*ListEventsApiService)(&c.common)
 	c.TaskResultsApi =  (*TaskResultsApiService)(&c.common)
-	c.ListUserApi = (*ListUserListApiService)(&c.common)
 
 	return c
 }
