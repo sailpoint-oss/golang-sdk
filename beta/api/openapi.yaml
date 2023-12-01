@@ -14717,7 +14717,9 @@ paths:
       - Identity Attributes
   /identity-attributes/{name}:
     delete:
-      description: This deletes an identity attribute for a given technical name.
+      description: This deletes an identity attribute with the given name.  The `system`
+        and `standard` properties must be set to false before you can delete an identity
+        attribute.
       operationId: deleteIdentityAttribute
       parameters:
       - description: The attribute's technical name.
@@ -14910,7 +14912,9 @@ paths:
       tags:
       - Identity Attributes
     put:
-      description: This updates an existing identity attribute.
+      description: "This updates an existing identity attribute.  Making an attribute\
+        \ searchable requires that the `system`, `standard`, and `multi` properties\
+        \ be set to false."
       operationId: putIdentityAttribute
       parameters:
       - description: The attribute's technical name.
@@ -14927,7 +14931,7 @@ paths:
               $ref: '#/components/schemas/IdentityAttribute'
         required: true
       responses:
-        "202":
+        "200":
           content:
             application/json:
               schema:
@@ -15015,7 +15019,10 @@ paths:
       - Identity Attributes
   /identity-attributes/bulk-delete:
     post:
-      description: This deletes identity attributes for a given set of technical names.
+      description: This deletes identity attributes for a given set of names. Attributes
+        that are currently mapped in an Identity Profile cannot be deleted.  The `system`
+        and `standard` properties must be set to false before you can delete an identity
+        attribute.
       operationId: deleteIdentityAttributesInBulk
       requestBody:
         content:

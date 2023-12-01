@@ -211,7 +211,7 @@ func (r ApiDeleteIdentityAttributeRequest) Execute() (*http.Response, error) {
 /*
 DeleteIdentityAttribute Delete Identity Attribute
 
-This deletes an identity attribute for a given technical name.
+This deletes an identity attribute with the given name.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name The attribute's technical name.
@@ -373,7 +373,7 @@ func (r ApiDeleteIdentityAttributesInBulkRequest) Execute() (*http.Response, err
 /*
 DeleteIdentityAttributesInBulk Bulk delete Identity Attributes
 
-This deletes identity attributes for a given set of technical names.
+This deletes identity attributes for a given set of names. Attributes that are currently mapped in an Identity Profile cannot be deleted.  The `system` and `standard` properties must be set to false before you can delete an identity attribute.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteIdentityAttributesInBulkRequest
@@ -899,7 +899,7 @@ func (r ApiPutIdentityAttributeRequest) Execute() (*IdentityAttribute, *http.Res
 /*
 PutIdentityAttribute Update Identity Attribute
 
-This updates an existing identity attribute.
+This updates an existing identity attribute.  Making an attribute searchable requires that the `system`, `standard`, and `multi` properties be set to false.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name The attribute's technical name.
