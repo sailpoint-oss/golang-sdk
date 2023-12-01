@@ -423,6 +423,13 @@ func (a *ApplicationsApiService) GetApplicationAccessProfilesExecute(r ApiGetApp
 type ApiListApplicationsRequest struct {
 	ctx context.Context
 	ApiService *ApplicationsApiService
+	filter *string
+}
+
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following Entitlement fields and operators: **id**: *eq, in*  **name**: *eq, sw*  **attribute**: *eq, sw*  **value**: *eq, sw*  **created, modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*  **source.id**: *eq, in*
+func (r ApiListApplicationsRequest) Filter(filter string) ApiListApplicationsRequest {
+	r.filter = &filter
+	return r
 }
 
 func (r ApiListApplicationsRequest) Execute() ([]ListApplications200ResponseInner, *http.Response, error) {
@@ -462,6 +469,10 @@ func (a *ApplicationsApiService) ListApplicationsExecute(r ApiListApplicationsRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+
+	if r.filter != nil {
+		parameterAddToQuery(localVarQueryParams, "filter", r.filter, "")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

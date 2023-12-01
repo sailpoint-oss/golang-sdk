@@ -186,7 +186,7 @@ func (r ApiLoadEntitlementsRequest) File(file *os.File) ApiLoadEntitlementsReque
 	return r
 }
 
-func (r ApiLoadEntitlementsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiLoadEntitlementsRequest) Execute() (LoadEntitlementResponse, *http.Response, error) {
 	return r.ApiService.LoadEntitlementsExecute(r)
 }
 
@@ -208,13 +208,13 @@ func (a *SourcesAggregationApiService) LoadEntitlements(ctx context.Context, id 
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *SourcesAggregationApiService) LoadEntitlementsExecute(r ApiLoadEntitlementsRequest) (map[string]interface{}, *http.Response, error) {
+//  @return LoadEntitlementResponse
+func (a *SourcesAggregationApiService) LoadEntitlementsExecute(r ApiLoadEntitlementsRequest) (LoadEntitlementResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  LoadEntitlementResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAggregationApiService.LoadEntitlements")
