@@ -433,8 +433,8 @@ func (o *FormDefinitionResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varFormDefinitionResponse := _FormDefinitionResponse{}
 
 	if err = json.Unmarshal(bytes, &varFormDefinitionResponse); err == nil {
-		*o = FormDefinitionResponse(varFormDefinitionResponse)
-	}
+	*o = FormDefinitionResponse(varFormDefinitionResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

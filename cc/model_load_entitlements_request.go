@@ -100,8 +100,8 @@ func (o *LoadEntitlementsRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varLoadEntitlementsRequest := _LoadEntitlementsRequest{}
 
 	if err = json.Unmarshal(bytes, &varLoadEntitlementsRequest); err == nil {
-		*o = LoadEntitlementsRequest(varLoadEntitlementsRequest)
-	}
+	*o = LoadEntitlementsRequest(varLoadEntitlementsRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -322,8 +322,8 @@ func (o *AccessItemAccountResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessItemAccountResponse := _AccessItemAccountResponse{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemAccountResponse); err == nil {
-		*o = AccessItemAccountResponse(varAccessItemAccountResponse)
-	}
+	*o = AccessItemAccountResponse(varAccessItemAccountResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

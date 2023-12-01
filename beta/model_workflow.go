@@ -20,15 +20,6 @@ var _ MappedNullable = &Workflow{}
 
 // Workflow struct for Workflow
 type Workflow struct {
-	// Workflow ID. This is a UUID generated upon creation.
-	Id *string `json:"id,omitempty"`
-	// The number of times this workflow has been executed.
-	ExecutionCount *int32 `json:"executionCount,omitempty"`
-	// The number of times this workflow has failed during execution.
-	FailureCount *int32 `json:"failureCount,omitempty"`
-	// The date and time the workflow was created.
-	Created *time.Time `json:"created,omitempty"`
-	Creator *WorkflowAllOfCreator `json:"creator,omitempty"`
 	// The name of the workflow
 	Name *string `json:"name,omitempty"`
 	Owner *WorkflowBodyOwner `json:"owner,omitempty"`
@@ -38,6 +29,15 @@ type Workflow struct {
 	// Enable or disable the workflow.  Workflows cannot be created in an enabled state.
 	Enabled *bool `json:"enabled,omitempty"`
 	Trigger *WorkflowTrigger `json:"trigger,omitempty"`
+	// Workflow ID. This is a UUID generated upon creation.
+	Id *string `json:"id,omitempty"`
+	// The number of times this workflow has been executed.
+	ExecutionCount *int32 `json:"executionCount,omitempty"`
+	// The number of times this workflow has failed during execution.
+	FailureCount *int32 `json:"failureCount,omitempty"`
+	// The date and time the workflow was created.
+	Created *time.Time `json:"created,omitempty"`
+	Creator *WorkflowAllOfCreator `json:"creator,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -62,166 +62,6 @@ func NewWorkflowWithDefaults() *Workflow {
 	var enabled bool = false
 	this.Enabled = &enabled
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *Workflow) GetId() string {
-	if o == nil || isNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Workflow) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *Workflow) HasId() bool {
-	if o != nil && !isNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Workflow) SetId(v string) {
-	o.Id = &v
-}
-
-// GetExecutionCount returns the ExecutionCount field value if set, zero value otherwise.
-func (o *Workflow) GetExecutionCount() int32 {
-	if o == nil || isNil(o.ExecutionCount) {
-		var ret int32
-		return ret
-	}
-	return *o.ExecutionCount
-}
-
-// GetExecutionCountOk returns a tuple with the ExecutionCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Workflow) GetExecutionCountOk() (*int32, bool) {
-	if o == nil || isNil(o.ExecutionCount) {
-		return nil, false
-	}
-	return o.ExecutionCount, true
-}
-
-// HasExecutionCount returns a boolean if a field has been set.
-func (o *Workflow) HasExecutionCount() bool {
-	if o != nil && !isNil(o.ExecutionCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetExecutionCount gets a reference to the given int32 and assigns it to the ExecutionCount field.
-func (o *Workflow) SetExecutionCount(v int32) {
-	o.ExecutionCount = &v
-}
-
-// GetFailureCount returns the FailureCount field value if set, zero value otherwise.
-func (o *Workflow) GetFailureCount() int32 {
-	if o == nil || isNil(o.FailureCount) {
-		var ret int32
-		return ret
-	}
-	return *o.FailureCount
-}
-
-// GetFailureCountOk returns a tuple with the FailureCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Workflow) GetFailureCountOk() (*int32, bool) {
-	if o == nil || isNil(o.FailureCount) {
-		return nil, false
-	}
-	return o.FailureCount, true
-}
-
-// HasFailureCount returns a boolean if a field has been set.
-func (o *Workflow) HasFailureCount() bool {
-	if o != nil && !isNil(o.FailureCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetFailureCount gets a reference to the given int32 and assigns it to the FailureCount field.
-func (o *Workflow) SetFailureCount(v int32) {
-	o.FailureCount = &v
-}
-
-// GetCreated returns the Created field value if set, zero value otherwise.
-func (o *Workflow) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Created
-}
-
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Workflow) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
-		return nil, false
-	}
-	return o.Created, true
-}
-
-// HasCreated returns a boolean if a field has been set.
-func (o *Workflow) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *Workflow) SetCreated(v time.Time) {
-	o.Created = &v
-}
-
-// GetCreator returns the Creator field value if set, zero value otherwise.
-func (o *Workflow) GetCreator() WorkflowAllOfCreator {
-	if o == nil || isNil(o.Creator) {
-		var ret WorkflowAllOfCreator
-		return ret
-	}
-	return *o.Creator
-}
-
-// GetCreatorOk returns a tuple with the Creator field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Workflow) GetCreatorOk() (*WorkflowAllOfCreator, bool) {
-	if o == nil || isNil(o.Creator) {
-		return nil, false
-	}
-	return o.Creator, true
-}
-
-// HasCreator returns a boolean if a field has been set.
-func (o *Workflow) HasCreator() bool {
-	if o != nil && !isNil(o.Creator) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreator gets a reference to the given WorkflowAllOfCreator and assigns it to the Creator field.
-func (o *Workflow) SetCreator(v WorkflowAllOfCreator) {
-	o.Creator = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -416,6 +256,166 @@ func (o *Workflow) SetTrigger(v WorkflowTrigger) {
 	o.Trigger = &v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *Workflow) GetId() string {
+	if o == nil || isNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Workflow) GetIdOk() (*string, bool) {
+	if o == nil || isNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *Workflow) HasId() bool {
+	if o != nil && !isNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *Workflow) SetId(v string) {
+	o.Id = &v
+}
+
+// GetExecutionCount returns the ExecutionCount field value if set, zero value otherwise.
+func (o *Workflow) GetExecutionCount() int32 {
+	if o == nil || isNil(o.ExecutionCount) {
+		var ret int32
+		return ret
+	}
+	return *o.ExecutionCount
+}
+
+// GetExecutionCountOk returns a tuple with the ExecutionCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Workflow) GetExecutionCountOk() (*int32, bool) {
+	if o == nil || isNil(o.ExecutionCount) {
+		return nil, false
+	}
+	return o.ExecutionCount, true
+}
+
+// HasExecutionCount returns a boolean if a field has been set.
+func (o *Workflow) HasExecutionCount() bool {
+	if o != nil && !isNil(o.ExecutionCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetExecutionCount gets a reference to the given int32 and assigns it to the ExecutionCount field.
+func (o *Workflow) SetExecutionCount(v int32) {
+	o.ExecutionCount = &v
+}
+
+// GetFailureCount returns the FailureCount field value if set, zero value otherwise.
+func (o *Workflow) GetFailureCount() int32 {
+	if o == nil || isNil(o.FailureCount) {
+		var ret int32
+		return ret
+	}
+	return *o.FailureCount
+}
+
+// GetFailureCountOk returns a tuple with the FailureCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Workflow) GetFailureCountOk() (*int32, bool) {
+	if o == nil || isNil(o.FailureCount) {
+		return nil, false
+	}
+	return o.FailureCount, true
+}
+
+// HasFailureCount returns a boolean if a field has been set.
+func (o *Workflow) HasFailureCount() bool {
+	if o != nil && !isNil(o.FailureCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailureCount gets a reference to the given int32 and assigns it to the FailureCount field.
+func (o *Workflow) SetFailureCount(v int32) {
+	o.FailureCount = &v
+}
+
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *Workflow) GetCreated() time.Time {
+	if o == nil || isNil(o.Created) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Workflow) GetCreatedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Created) {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *Workflow) HasCreated() bool {
+	if o != nil && !isNil(o.Created) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Workflow) SetCreated(v time.Time) {
+	o.Created = &v
+}
+
+// GetCreator returns the Creator field value if set, zero value otherwise.
+func (o *Workflow) GetCreator() WorkflowAllOfCreator {
+	if o == nil || isNil(o.Creator) {
+		var ret WorkflowAllOfCreator
+		return ret
+	}
+	return *o.Creator
+}
+
+// GetCreatorOk returns a tuple with the Creator field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Workflow) GetCreatorOk() (*WorkflowAllOfCreator, bool) {
+	if o == nil || isNil(o.Creator) {
+		return nil, false
+	}
+	return o.Creator, true
+}
+
+// HasCreator returns a boolean if a field has been set.
+func (o *Workflow) HasCreator() bool {
+	if o != nil && !isNil(o.Creator) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreator gets a reference to the given WorkflowAllOfCreator and assigns it to the Creator field.
+func (o *Workflow) SetCreator(v WorkflowAllOfCreator) {
+	o.Creator = &v
+}
+
 func (o Workflow) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -426,21 +426,6 @@ func (o Workflow) MarshalJSON() ([]byte, error) {
 
 func (o Workflow) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.ExecutionCount) {
-		toSerialize["executionCount"] = o.ExecutionCount
-	}
-	if !isNil(o.FailureCount) {
-		toSerialize["failureCount"] = o.FailureCount
-	}
-	if !isNil(o.Created) {
-		toSerialize["created"] = o.Created
-	}
-	if !isNil(o.Creator) {
-		toSerialize["creator"] = o.Creator
-	}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
@@ -459,6 +444,21 @@ func (o Workflow) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Trigger) {
 		toSerialize["trigger"] = o.Trigger
 	}
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !isNil(o.ExecutionCount) {
+		toSerialize["executionCount"] = o.ExecutionCount
+	}
+	if !isNil(o.FailureCount) {
+		toSerialize["failureCount"] = o.FailureCount
+	}
+	if !isNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !isNil(o.Creator) {
+		toSerialize["creator"] = o.Creator
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -471,23 +471,23 @@ func (o *Workflow) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkflow := _Workflow{}
 
 	if err = json.Unmarshal(bytes, &varWorkflow); err == nil {
-		*o = Workflow(varWorkflow)
-	}
+	*o = Workflow(varWorkflow)
+}
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "executionCount")
-		delete(additionalProperties, "failureCount")
-		delete(additionalProperties, "created")
-		delete(additionalProperties, "creator")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "definition")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "trigger")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "executionCount")
+		delete(additionalProperties, "failureCount")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "creator")
 		o.AdditionalProperties = additionalProperties
 	}
 

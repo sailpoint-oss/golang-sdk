@@ -321,8 +321,8 @@ func (o *CorrelatedGovernanceEvent) UnmarshalJSON(bytes []byte) (err error) {
 	varCorrelatedGovernanceEvent := _CorrelatedGovernanceEvent{}
 
 	if err = json.Unmarshal(bytes, &varCorrelatedGovernanceEvent); err == nil {
-		*o = CorrelatedGovernanceEvent(varCorrelatedGovernanceEvent)
-	}
+	*o = CorrelatedGovernanceEvent(varCorrelatedGovernanceEvent)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -13,7 +13,7 @@ package cc
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,12 +21,12 @@ import (
 )
 
 
-// ConnectorsApiService ConnectorsApi service
-type ConnectorsApiService service
+// ConnectorsAPIService ConnectorsAPI service
+type ConnectorsAPIService service
 
 type ApiCreateConnectorRequest struct {
 	ctx context.Context
-	ApiService *ConnectorsApiService
+	ApiService *ConnectorsAPIService
 	contentType *string
 	name *string
 	description *string
@@ -75,7 +75,7 @@ CreateConnector Create Connector
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateConnectorRequest
 */
-func (a *ConnectorsApiService) CreateConnector(ctx context.Context) ApiCreateConnectorRequest {
+func (a *ConnectorsAPIService) CreateConnector(ctx context.Context) ApiCreateConnectorRequest {
 	return ApiCreateConnectorRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -83,14 +83,14 @@ func (a *ConnectorsApiService) CreateConnector(ctx context.Context) ApiCreateCon
 }
 
 // Execute executes the request
-func (a *ConnectorsApiService) CreateConnectorExecute(r ApiCreateConnectorRequest) (*http.Response, error) {
+func (a *ConnectorsAPIService) CreateConnectorExecute(r ApiCreateConnectorRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsApiService.CreateConnector")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.CreateConnector")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -146,9 +146,9 @@ func (a *ConnectorsApiService) CreateConnectorExecute(r ApiCreateConnectorReques
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -166,7 +166,7 @@ func (a *ConnectorsApiService) CreateConnectorExecute(r ApiCreateConnectorReques
 
 type ApiDeleteConnectorRequest struct {
 	ctx context.Context
-	ApiService *ConnectorsApiService
+	ApiService *ConnectorsAPIService
 	id string
 }
 
@@ -181,7 +181,7 @@ DeleteConnector Delete Connector
  @param id
  @return ApiDeleteConnectorRequest
 */
-func (a *ConnectorsApiService) DeleteConnector(ctx context.Context, id string) ApiDeleteConnectorRequest {
+func (a *ConnectorsAPIService) DeleteConnector(ctx context.Context, id string) ApiDeleteConnectorRequest {
 	return ApiDeleteConnectorRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -190,14 +190,14 @@ func (a *ConnectorsApiService) DeleteConnector(ctx context.Context, id string) A
 }
 
 // Execute executes the request
-func (a *ConnectorsApiService) DeleteConnectorExecute(r ApiDeleteConnectorRequest) (*http.Response, error) {
+func (a *ConnectorsAPIService) DeleteConnectorExecute(r ApiDeleteConnectorRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsApiService.DeleteConnector")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.DeleteConnector")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -236,9 +236,9 @@ func (a *ConnectorsApiService) DeleteConnectorExecute(r ApiDeleteConnectorReques
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -256,7 +256,7 @@ func (a *ConnectorsApiService) DeleteConnectorExecute(r ApiDeleteConnectorReques
 
 type ApiExportConnectorConfigRequest struct {
 	ctx context.Context
-	ApiService *ConnectorsApiService
+	ApiService *ConnectorsAPIService
 	id string
 }
 
@@ -271,7 +271,7 @@ ExportConnectorConfig Export Connector Config
  @param id
  @return ApiExportConnectorConfigRequest
 */
-func (a *ConnectorsApiService) ExportConnectorConfig(ctx context.Context, id string) ApiExportConnectorConfigRequest {
+func (a *ConnectorsAPIService) ExportConnectorConfig(ctx context.Context, id string) ApiExportConnectorConfigRequest {
 	return ApiExportConnectorConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -280,14 +280,14 @@ func (a *ConnectorsApiService) ExportConnectorConfig(ctx context.Context, id str
 }
 
 // Execute executes the request
-func (a *ConnectorsApiService) ExportConnectorConfigExecute(r ApiExportConnectorConfigRequest) (*http.Response, error) {
+func (a *ConnectorsAPIService) ExportConnectorConfigExecute(r ApiExportConnectorConfigRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsApiService.ExportConnectorConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.ExportConnectorConfig")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -326,9 +326,9 @@ func (a *ConnectorsApiService) ExportConnectorConfigExecute(r ApiExportConnector
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -346,7 +346,7 @@ func (a *ConnectorsApiService) ExportConnectorConfigExecute(r ApiExportConnector
 
 type ApiImportConnectorConfigRequest struct {
 	ctx context.Context
-	ApiService *ConnectorsApiService
+	ApiService *ConnectorsAPIService
 	id string
 	file *os.File
 }
@@ -368,7 +368,7 @@ ImportConnectorConfig Import Connector Config
  @param id
  @return ApiImportConnectorConfigRequest
 */
-func (a *ConnectorsApiService) ImportConnectorConfig(ctx context.Context, id string) ApiImportConnectorConfigRequest {
+func (a *ConnectorsAPIService) ImportConnectorConfig(ctx context.Context, id string) ApiImportConnectorConfigRequest {
 	return ApiImportConnectorConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -377,14 +377,14 @@ func (a *ConnectorsApiService) ImportConnectorConfig(ctx context.Context, id str
 }
 
 // Execute executes the request
-func (a *ConnectorsApiService) ImportConnectorConfigExecute(r ApiImportConnectorConfigRequest) (*http.Response, error) {
+func (a *ConnectorsAPIService) ImportConnectorConfigExecute(r ApiImportConnectorConfigRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsApiService.ImportConnectorConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.ImportConnectorConfig")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -418,12 +418,10 @@ func (a *ConnectorsApiService) ImportConnectorConfigExecute(r ApiImportConnector
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
 
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
@@ -440,9 +438,9 @@ func (a *ConnectorsApiService) ImportConnectorConfigExecute(r ApiImportConnector
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -460,7 +458,7 @@ func (a *ConnectorsApiService) ImportConnectorConfigExecute(r ApiImportConnector
 
 type ApiListConnectorsRequest struct {
 	ctx context.Context
-	ApiService *ConnectorsApiService
+	ApiService *ConnectorsAPIService
 }
 
 func (r ApiListConnectorsRequest) Execute() (*ListConnectors200Response, *http.Response, error) {
@@ -473,7 +471,7 @@ ListConnectors List Connectors
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListConnectorsRequest
 */
-func (a *ConnectorsApiService) ListConnectors(ctx context.Context) ApiListConnectorsRequest {
+func (a *ConnectorsAPIService) ListConnectors(ctx context.Context) ApiListConnectorsRequest {
 	return ApiListConnectorsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -482,7 +480,7 @@ func (a *ConnectorsApiService) ListConnectors(ctx context.Context) ApiListConnec
 
 // Execute executes the request
 //  @return ListConnectors200Response
-func (a *ConnectorsApiService) ListConnectorsExecute(r ApiListConnectorsRequest) (*ListConnectors200Response, *http.Response, error) {
+func (a *ConnectorsAPIService) ListConnectorsExecute(r ApiListConnectorsRequest) (*ListConnectors200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -490,7 +488,7 @@ func (a *ConnectorsApiService) ListConnectorsExecute(r ApiListConnectorsRequest)
 		localVarReturnValue  *ListConnectors200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsApiService.ListConnectors")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.ListConnectors")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -528,9 +526,9 @@ func (a *ConnectorsApiService) ListConnectorsExecute(r ApiListConnectorsRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -1,15 +1,15 @@
-# \AccessRequestsApi
+# \AccessRequestsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CancelAccessRequest**](AccessRequestsApi.md#CancelAccessRequest) | **Post** /access-requests/cancel | Cancel Access Request
-[**CloseAccessRequest**](AccessRequestsApi.md#CloseAccessRequest) | **Post** /access-requests/close | Close Access Request
-[**CreateAccessRequest**](AccessRequestsApi.md#CreateAccessRequest) | **Post** /access-requests | Submit an Access Request
-[**GetAccessRequestConfig**](AccessRequestsApi.md#GetAccessRequestConfig) | **Get** /access-request-config | Get Access Request Configuration
-[**ListAccessRequestStatus**](AccessRequestsApi.md#ListAccessRequestStatus) | **Get** /access-request-status | Access Request Status
-[**SetAccessRequestConfig**](AccessRequestsApi.md#SetAccessRequestConfig) | **Put** /access-request-config | Update Access Request Configuration
+[**CancelAccessRequest**](AccessRequestsAPI.md#CancelAccessRequest) | **Post** /access-requests/cancel | Cancel Access Request
+[**CloseAccessRequest**](AccessRequestsAPI.md#CloseAccessRequest) | **Post** /access-requests/close | Close Access Request
+[**CreateAccessRequest**](AccessRequestsAPI.md#CreateAccessRequest) | **Post** /access-requests | Submit an Access Request
+[**GetAccessRequestConfig**](AccessRequestsAPI.md#GetAccessRequestConfig) | **Get** /access-request-config | Get Access Request Configuration
+[**ListAccessRequestStatus**](AccessRequestsAPI.md#ListAccessRequestStatus) | **Get** /access-request-status | Access Request Status
+[**SetAccessRequestConfig**](AccessRequestsAPI.md#SetAccessRequestConfig) | **Put** /access-request-config | Update Access Request Configuration
 
 
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -38,13 +38,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsApi.CancelAccessRequest(context.Background()).CancelAccessRequest(cancelAccessRequest).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequest(context.Background()).CancelAccessRequest(cancelAccessRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsApi.CancelAccessRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CancelAccessRequest`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsApi.CancelAccessRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CancelAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -104,13 +104,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsApi.CloseAccessRequest(context.Background()).CloseAccessRequest(closeAccessRequest).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.CloseAccessRequest(context.Background()).CloseAccessRequest(closeAccessRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsApi.CloseAccessRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CloseAccessRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CloseAccessRequest`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsApi.CloseAccessRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CloseAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -162,7 +162,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -170,13 +170,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsApi.CreateAccessRequest(context.Background()).AccessRequest(accessRequest).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.CreateAccessRequest(context.Background()).AccessRequest(accessRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsApi.CreateAccessRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CreateAccessRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateAccessRequest`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsApi.CreateAccessRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.CreateAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -228,20 +228,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsApi.GetAccessRequestConfig(context.Background()).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsApi.GetAccessRequestConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAccessRequestConfig`: AccessRequestConfig
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsApi.GetAccessRequestConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.GetAccessRequestConfig`: %v\n", resp)
 }
 ```
 
@@ -289,7 +289,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -305,13 +305,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsApi.ListAccessRequestStatus(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsApi.ListAccessRequestStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ListAccessRequestStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListAccessRequestStatus`: []RequestedItemStatus
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsApi.ListAccessRequestStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.ListAccessRequestStatus`: %v\n", resp)
 }
 ```
 
@@ -371,7 +371,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -379,13 +379,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsApi.SetAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
+    resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsApi.SetAccessRequestConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SetAccessRequestConfig`: AccessRequestConfig
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsApi.SetAccessRequestConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestsAPI.SetAccessRequestConfig`: %v\n", resp)
 }
 ```
 

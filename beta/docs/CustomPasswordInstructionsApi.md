@@ -1,12 +1,12 @@
-# \CustomPasswordInstructionsApi
+# \CustomPasswordInstructionsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCustomPasswordInstructions**](CustomPasswordInstructionsApi.md#CreateCustomPasswordInstructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
-[**DeleteCustomPasswordInstructions**](CustomPasswordInstructionsApi.md#DeleteCustomPasswordInstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
-[**GetCustomPasswordInstructions**](CustomPasswordInstructionsApi.md#GetCustomPasswordInstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
+[**CreateCustomPasswordInstructions**](CustomPasswordInstructionsAPI.md#CreateCustomPasswordInstructions) | **Post** /custom-password-instructions | Create Custom Password Instructions
+[**DeleteCustomPasswordInstructions**](CustomPasswordInstructionsAPI.md#DeleteCustomPasswordInstructions) | **Delete** /custom-password-instructions/{pageId} | Delete Custom Password Instructions by page ID
+[**GetCustomPasswordInstructions**](CustomPasswordInstructionsAPI.md#GetCustomPasswordInstructions) | **Get** /custom-password-instructions/{pageId} | Get Custom Password Instructions by Page ID
 
 
 
@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -35,13 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomPasswordInstructionsApi.CreateCustomPasswordInstructions(context.Background()).CustomPasswordInstruction(customPasswordInstruction).Execute()
+    resp, r, err := apiClient.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions(context.Background()).CustomPasswordInstruction(customPasswordInstruction).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsApi.CreateCustomPasswordInstructions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateCustomPasswordInstructions`: CustomPasswordInstruction
-    fmt.Fprintf(os.Stdout, "Response from `CustomPasswordInstructionsApi.CreateCustomPasswordInstructions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions`: %v\n", resp)
 }
 ```
 
@@ -93,7 +93,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -102,9 +102,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomPasswordInstructionsApi.DeleteCustomPasswordInstructions(context.Background(), pageId).Locale(locale).Execute()
+    r, err := apiClient.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions(context.Background(), pageId).Locale(locale).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsApi.DeleteCustomPasswordInstructions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -163,7 +163,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -172,13 +172,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomPasswordInstructionsApi.GetCustomPasswordInstructions(context.Background(), pageId).Locale(locale).Execute()
+    resp, r, err := apiClient.CustomPasswordInstructionsAPI.GetCustomPasswordInstructions(context.Background(), pageId).Locale(locale).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsApi.GetCustomPasswordInstructions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CustomPasswordInstructionsAPI.GetCustomPasswordInstructions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCustomPasswordInstructions`: CustomPasswordInstruction
-    fmt.Fprintf(os.Stdout, "Response from `CustomPasswordInstructionsApi.GetCustomPasswordInstructions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CustomPasswordInstructionsAPI.GetCustomPasswordInstructions`: %v\n", resp)
 }
 ```
 

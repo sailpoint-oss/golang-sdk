@@ -211,8 +211,8 @@ func (o *AccessItemAppResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessItemAppResponse := _AccessItemAppResponse{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemAppResponse); err == nil {
-		*o = AccessItemAppResponse(varAccessItemAppResponse)
-	}
+	*o = AccessItemAppResponse(varAccessItemAppResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

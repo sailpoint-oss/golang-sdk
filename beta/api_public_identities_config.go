@@ -13,18 +13,18 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// PublicIdentitiesConfigApiService PublicIdentitiesConfigApi service
-type PublicIdentitiesConfigApiService service
+// PublicIdentitiesConfigAPIService PublicIdentitiesConfigAPI service
+type PublicIdentitiesConfigAPIService service
 
 type ApiGetPublicIdentityConfigRequest struct {
 	ctx context.Context
-	ApiService *PublicIdentitiesConfigApiService
+	ApiService *PublicIdentitiesConfigAPIService
 }
 
 func (r ApiGetPublicIdentityConfigRequest) Execute() (*PublicIdentityConfig, *http.Response, error) {
@@ -39,7 +39,7 @@ This gets details of public identity config.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPublicIdentityConfigRequest
 */
-func (a *PublicIdentitiesConfigApiService) GetPublicIdentityConfig(ctx context.Context) ApiGetPublicIdentityConfigRequest {
+func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfig(ctx context.Context) ApiGetPublicIdentityConfigRequest {
 	return ApiGetPublicIdentityConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -48,7 +48,7 @@ func (a *PublicIdentitiesConfigApiService) GetPublicIdentityConfig(ctx context.C
 
 // Execute executes the request
 //  @return PublicIdentityConfig
-func (a *PublicIdentitiesConfigApiService) GetPublicIdentityConfigExecute(r ApiGetPublicIdentityConfigRequest) (*PublicIdentityConfig, *http.Response, error) {
+func (a *PublicIdentitiesConfigAPIService) GetPublicIdentityConfigExecute(r ApiGetPublicIdentityConfigRequest) (*PublicIdentityConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -56,7 +56,7 @@ func (a *PublicIdentitiesConfigApiService) GetPublicIdentityConfigExecute(r ApiG
 		localVarReturnValue  *PublicIdentityConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PublicIdentitiesConfigApiService.GetPublicIdentityConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PublicIdentitiesConfigAPIService.GetPublicIdentityConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -94,9 +94,9 @@ func (a *PublicIdentitiesConfigApiService) GetPublicIdentityConfigExecute(r ApiG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -177,7 +177,7 @@ func (a *PublicIdentitiesConfigApiService) GetPublicIdentityConfigExecute(r ApiG
 
 type ApiUpdatePublicIdentityConfigRequest struct {
 	ctx context.Context
-	ApiService *PublicIdentitiesConfigApiService
+	ApiService *PublicIdentitiesConfigAPIService
 	publicIdentityConfig *PublicIdentityConfig
 }
 
@@ -198,7 +198,7 @@ This updates the details of public identity config.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdatePublicIdentityConfigRequest
 */
-func (a *PublicIdentitiesConfigApiService) UpdatePublicIdentityConfig(ctx context.Context) ApiUpdatePublicIdentityConfigRequest {
+func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfig(ctx context.Context) ApiUpdatePublicIdentityConfigRequest {
 	return ApiUpdatePublicIdentityConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -207,7 +207,7 @@ func (a *PublicIdentitiesConfigApiService) UpdatePublicIdentityConfig(ctx contex
 
 // Execute executes the request
 //  @return PublicIdentityConfig
-func (a *PublicIdentitiesConfigApiService) UpdatePublicIdentityConfigExecute(r ApiUpdatePublicIdentityConfigRequest) (*PublicIdentityConfig, *http.Response, error) {
+func (a *PublicIdentitiesConfigAPIService) UpdatePublicIdentityConfigExecute(r ApiUpdatePublicIdentityConfigRequest) (*PublicIdentityConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -215,7 +215,7 @@ func (a *PublicIdentitiesConfigApiService) UpdatePublicIdentityConfigExecute(r A
 		localVarReturnValue  *PublicIdentityConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PublicIdentitiesConfigApiService.UpdatePublicIdentityConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PublicIdentitiesConfigAPIService.UpdatePublicIdentityConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -258,9 +258,9 @@ func (a *PublicIdentitiesConfigApiService) UpdatePublicIdentityConfigExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

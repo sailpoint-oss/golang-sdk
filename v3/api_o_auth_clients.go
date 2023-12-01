@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// OAuthClientsApiService OAuthClientsApi service
-type OAuthClientsApiService service
+// OAuthClientsAPIService OAuthClientsAPI service
+type OAuthClientsAPIService service
 
 type ApiCreateOauthClientRequest struct {
 	ctx context.Context
-	ApiService *OAuthClientsApiService
+	ApiService *OAuthClientsAPIService
 	createOAuthClientRequest *CreateOAuthClientRequest
 }
 
@@ -46,7 +46,7 @@ This creates an OAuth client.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateOauthClientRequest
 */
-func (a *OAuthClientsApiService) CreateOauthClient(ctx context.Context) ApiCreateOauthClientRequest {
+func (a *OAuthClientsAPIService) CreateOauthClient(ctx context.Context) ApiCreateOauthClientRequest {
 	return ApiCreateOauthClientRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *OAuthClientsApiService) CreateOauthClient(ctx context.Context) ApiCreat
 
 // Execute executes the request
 //  @return CreateOAuthClientResponse
-func (a *OAuthClientsApiService) CreateOauthClientExecute(r ApiCreateOauthClientRequest) (*CreateOAuthClientResponse, *http.Response, error) {
+func (a *OAuthClientsAPIService) CreateOauthClientExecute(r ApiCreateOauthClientRequest) (*CreateOAuthClientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *OAuthClientsApiService) CreateOauthClientExecute(r ApiCreateOauthClient
 		localVarReturnValue  *CreateOAuthClientResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsApiService.CreateOauthClient")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsAPIService.CreateOauthClient")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *OAuthClientsApiService) CreateOauthClientExecute(r ApiCreateOauthClient
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -189,7 +189,7 @@ func (a *OAuthClientsApiService) CreateOauthClientExecute(r ApiCreateOauthClient
 
 type ApiDeleteOauthClientRequest struct {
 	ctx context.Context
-	ApiService *OAuthClientsApiService
+	ApiService *OAuthClientsAPIService
 	id string
 }
 
@@ -206,7 +206,7 @@ This deletes an OAuth client.
  @param id The OAuth client id
  @return ApiDeleteOauthClientRequest
 */
-func (a *OAuthClientsApiService) DeleteOauthClient(ctx context.Context, id string) ApiDeleteOauthClientRequest {
+func (a *OAuthClientsAPIService) DeleteOauthClient(ctx context.Context, id string) ApiDeleteOauthClientRequest {
 	return ApiDeleteOauthClientRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -215,14 +215,14 @@ func (a *OAuthClientsApiService) DeleteOauthClient(ctx context.Context, id strin
 }
 
 // Execute executes the request
-func (a *OAuthClientsApiService) DeleteOauthClientExecute(r ApiDeleteOauthClientRequest) (*http.Response, error) {
+func (a *OAuthClientsAPIService) DeleteOauthClientExecute(r ApiDeleteOauthClientRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsApiService.DeleteOauthClient")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsAPIService.DeleteOauthClient")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -261,9 +261,9 @@ func (a *OAuthClientsApiService) DeleteOauthClientExecute(r ApiDeleteOauthClient
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -346,7 +346,7 @@ func (a *OAuthClientsApiService) DeleteOauthClientExecute(r ApiDeleteOauthClient
 
 type ApiGetOauthClientRequest struct {
 	ctx context.Context
-	ApiService *OAuthClientsApiService
+	ApiService *OAuthClientsAPIService
 	id string
 }
 
@@ -363,7 +363,7 @@ This gets details of an OAuth client.
  @param id The OAuth client id
  @return ApiGetOauthClientRequest
 */
-func (a *OAuthClientsApiService) GetOauthClient(ctx context.Context, id string) ApiGetOauthClientRequest {
+func (a *OAuthClientsAPIService) GetOauthClient(ctx context.Context, id string) ApiGetOauthClientRequest {
 	return ApiGetOauthClientRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -373,7 +373,7 @@ func (a *OAuthClientsApiService) GetOauthClient(ctx context.Context, id string) 
 
 // Execute executes the request
 //  @return GetOAuthClientResponse
-func (a *OAuthClientsApiService) GetOauthClientExecute(r ApiGetOauthClientRequest) (*GetOAuthClientResponse, *http.Response, error) {
+func (a *OAuthClientsAPIService) GetOauthClientExecute(r ApiGetOauthClientRequest) (*GetOAuthClientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -381,7 +381,7 @@ func (a *OAuthClientsApiService) GetOauthClientExecute(r ApiGetOauthClientReques
 		localVarReturnValue  *GetOAuthClientResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsApiService.GetOauthClient")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsAPIService.GetOauthClient")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -420,9 +420,9 @@ func (a *OAuthClientsApiService) GetOauthClientExecute(r ApiGetOauthClientReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -514,7 +514,7 @@ func (a *OAuthClientsApiService) GetOauthClientExecute(r ApiGetOauthClientReques
 
 type ApiListOauthClientsRequest struct {
 	ctx context.Context
-	ApiService *OAuthClientsApiService
+	ApiService *OAuthClientsAPIService
 	filters *string
 }
 
@@ -536,7 +536,7 @@ This gets a list of OAuth clients.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListOauthClientsRequest
 */
-func (a *OAuthClientsApiService) ListOauthClients(ctx context.Context) ApiListOauthClientsRequest {
+func (a *OAuthClientsAPIService) ListOauthClients(ctx context.Context) ApiListOauthClientsRequest {
 	return ApiListOauthClientsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -545,7 +545,7 @@ func (a *OAuthClientsApiService) ListOauthClients(ctx context.Context) ApiListOa
 
 // Execute executes the request
 //  @return []GetOAuthClientResponse
-func (a *OAuthClientsApiService) ListOauthClientsExecute(r ApiListOauthClientsRequest) ([]GetOAuthClientResponse, *http.Response, error) {
+func (a *OAuthClientsAPIService) ListOauthClientsExecute(r ApiListOauthClientsRequest) ([]GetOAuthClientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -553,7 +553,7 @@ func (a *OAuthClientsApiService) ListOauthClientsExecute(r ApiListOauthClientsRe
 		localVarReturnValue  []GetOAuthClientResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsApiService.ListOauthClients")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsAPIService.ListOauthClients")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -594,9 +594,9 @@ func (a *OAuthClientsApiService) ListOauthClientsExecute(r ApiListOauthClientsRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -677,7 +677,7 @@ func (a *OAuthClientsApiService) ListOauthClientsExecute(r ApiListOauthClientsRe
 
 type ApiPatchOauthClientRequest struct {
 	ctx context.Context
-	ApiService *OAuthClientsApiService
+	ApiService *OAuthClientsAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -701,7 +701,7 @@ This performs a targeted update to the field(s) of an OAuth client.
  @param id The OAuth client id
  @return ApiPatchOauthClientRequest
 */
-func (a *OAuthClientsApiService) PatchOauthClient(ctx context.Context, id string) ApiPatchOauthClientRequest {
+func (a *OAuthClientsAPIService) PatchOauthClient(ctx context.Context, id string) ApiPatchOauthClientRequest {
 	return ApiPatchOauthClientRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -711,7 +711,7 @@ func (a *OAuthClientsApiService) PatchOauthClient(ctx context.Context, id string
 
 // Execute executes the request
 //  @return GetOAuthClientResponse
-func (a *OAuthClientsApiService) PatchOauthClientExecute(r ApiPatchOauthClientRequest) (*GetOAuthClientResponse, *http.Response, error) {
+func (a *OAuthClientsAPIService) PatchOauthClientExecute(r ApiPatchOauthClientRequest) (*GetOAuthClientResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -719,7 +719,7 @@ func (a *OAuthClientsApiService) PatchOauthClientExecute(r ApiPatchOauthClientRe
 		localVarReturnValue  *GetOAuthClientResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsApiService.PatchOauthClient")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OAuthClientsAPIService.PatchOauthClient")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -763,9 +763,9 @@ func (a *OAuthClientsApiService) PatchOauthClientExecute(r ApiPatchOauthClientRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

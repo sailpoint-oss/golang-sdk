@@ -100,8 +100,8 @@ func (o *WorkItemsCount) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkItemsCount := _WorkItemsCount{}
 
 	if err = json.Unmarshal(bytes, &varWorkItemsCount); err == nil {
-		*o = WorkItemsCount(varWorkItemsCount)
-	}
+	*o = WorkItemsCount(varWorkItemsCount)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -498,8 +498,8 @@ func (o *TemplateDtoDefault) UnmarshalJSON(bytes []byte) (err error) {
 	varTemplateDtoDefault := _TemplateDtoDefault{}
 
 	if err = json.Unmarshal(bytes, &varTemplateDtoDefault); err == nil {
-		*o = TemplateDtoDefault(varTemplateDtoDefault)
-	}
+	*o = TemplateDtoDefault(varTemplateDtoDefault)
+}
 
 	additionalProperties := make(map[string]interface{})
 

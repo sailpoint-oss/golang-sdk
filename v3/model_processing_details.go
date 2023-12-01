@@ -255,8 +255,8 @@ func (o *ProcessingDetails) UnmarshalJSON(bytes []byte) (err error) {
 	varProcessingDetails := _ProcessingDetails{}
 
 	if err = json.Unmarshal(bytes, &varProcessingDetails); err == nil {
-		*o = ProcessingDetails(varProcessingDetails)
-	}
+	*o = ProcessingDetails(varProcessingDetails)
+}
 
 	additionalProperties := make(map[string]interface{})
 

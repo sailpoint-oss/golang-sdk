@@ -1,14 +1,14 @@
-# \CertificationsApi
+# \CertificationsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetIdentityCertificationItemPermissions**](CertificationsApi.md#GetIdentityCertificationItemPermissions) | **Get** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for Entitlement Certification Item
-[**GetIdentityCertificationPendingTasks**](CertificationsApi.md#GetIdentityCertificationPendingTasks) | **Get** /certifications/{id}/tasks-pending | Pending Certification Tasks
-[**GetIdentityCertificationTaskStatus**](CertificationsApi.md#GetIdentityCertificationTaskStatus) | **Get** /certifications/{id}/tasks/{taskId} | Certification Task Status
-[**ListCertificationReviewers**](CertificationsApi.md#ListCertificationReviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
-[**SubmitReassignCertsAsync**](CertificationsApi.md#SubmitReassignCertsAsync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
+[**GetIdentityCertificationItemPermissions**](CertificationsAPI.md#GetIdentityCertificationItemPermissions) | **Get** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for Entitlement Certification Item
+[**GetIdentityCertificationPendingTasks**](CertificationsAPI.md#GetIdentityCertificationPendingTasks) | **Get** /certifications/{id}/tasks-pending | Pending Certification Tasks
+[**GetIdentityCertificationTaskStatus**](CertificationsAPI.md#GetIdentityCertificationTaskStatus) | **Get** /certifications/{id}/tasks/{taskId} | Certification Task Status
+[**ListCertificationReviewers**](CertificationsAPI.md#ListCertificationReviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
+[**SubmitReassignCertsAsync**](CertificationsAPI.md#SubmitReassignCertsAsync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 
 
 
@@ -29,7 +29,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -42,13 +42,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.GetIdentityCertificationItemPermissions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetIdentityCertificationItemPermissions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityCertificationItemPermissions`: []PermissionDto
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.GetIdentityCertificationItemPermissions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.GetIdentityCertificationItemPermissions`: %v\n", resp)
 }
 ```
 
@@ -110,7 +110,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -118,13 +118,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.GetIdentityCertificationPendingTasks(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationsAPI.GetIdentityCertificationPendingTasks(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.GetIdentityCertificationPendingTasks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetIdentityCertificationPendingTasks``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityCertificationPendingTasks`: []IdentityCertificationTask
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.GetIdentityCertificationPendingTasks`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.GetIdentityCertificationPendingTasks`: %v\n", resp)
 }
 ```
 
@@ -180,7 +180,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -189,13 +189,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.GetIdentityCertificationTaskStatus(context.Background(), id, taskId).Execute()
+    resp, r, err := apiClient.CertificationsAPI.GetIdentityCertificationTaskStatus(context.Background(), id, taskId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.GetIdentityCertificationTaskStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetIdentityCertificationTaskStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityCertificationTaskStatus`: IdentityCertificationTask
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.GetIdentityCertificationTaskStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.GetIdentityCertificationTaskStatus`: %v\n", resp)
 }
 ```
 
@@ -253,7 +253,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -266,13 +266,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.ListCertificationReviewers(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.ListCertificationReviewers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListCertificationReviewers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListCertificationReviewers`: []IdentityReferenceWithNameAndEmail
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.ListCertificationReviewers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.ListCertificationReviewers`: %v\n", resp)
 }
 ```
 
@@ -333,7 +333,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -342,13 +342,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.SubmitReassignCertsAsync(context.Background(), id).ReviewReassign(reviewReassign).Execute()
+    resp, r, err := apiClient.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).ReviewReassign(reviewReassign).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.SubmitReassignCertsAsync``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.SubmitReassignCertsAsync``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SubmitReassignCertsAsync`: IdentityCertificationTask
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.SubmitReassignCertsAsync`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.SubmitReassignCertsAsync`: %v\n", resp)
 }
 ```
 

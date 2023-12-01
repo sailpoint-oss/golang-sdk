@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing PasswordManagementApiService
+Testing PasswordManagementAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_PasswordManagementApiService(t *testing.T) {
+func Test_beta_PasswordManagementAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test PasswordManagementApiService GenerateDigitToken", func(t *testing.T) {
+	t.Run("Test PasswordManagementAPIService GenerateDigitToken", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.PasswordManagementApi.GenerateDigitToken(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordManagementAPI.GenerateDigitToken(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_beta_PasswordManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordManagementApiService GetIdentityPasswordChangeStatus", func(t *testing.T) {
+	t.Run("Test PasswordManagementAPIService GetIdentityPasswordChangeStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.PasswordManagementApi.GetIdentityPasswordChangeStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordManagementAPI.GetIdentityPasswordChangeStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,11 +48,11 @@ func Test_beta_PasswordManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordManagementApiService QueryPasswordInfo", func(t *testing.T) {
+	t.Run("Test PasswordManagementAPIService QueryPasswordInfo", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.PasswordManagementApi.QueryPasswordInfo(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordManagementAPI.QueryPasswordInfo(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -60,11 +60,11 @@ func Test_beta_PasswordManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordManagementApiService SetIdentityPassword", func(t *testing.T) {
+	t.Run("Test PasswordManagementAPIService SetIdentityPassword", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.PasswordManagementApi.SetIdentityPassword(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordManagementAPI.SetIdentityPassword(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

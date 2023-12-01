@@ -1,10 +1,10 @@
-# \SODViolationsApi
+# \SODViolationsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**StartPredictSodViolations**](SODViolationsApi.md#StartPredictSodViolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
+[**StartPredictSodViolations**](SODViolationsAPI.md#StartPredictSodViolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODViolationsApi.StartPredictSodViolations(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
+    resp, r, err := apiClient.SODViolationsAPI.StartPredictSodViolations(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsApi.StartPredictSodViolations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.StartPredictSodViolations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `StartPredictSodViolations`: ViolationPrediction
-    fmt.Fprintf(os.Stdout, "Response from `SODViolationsApi.StartPredictSodViolations`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SODViolationsAPI.StartPredictSodViolations`: %v\n", resp)
 }
 ```
 

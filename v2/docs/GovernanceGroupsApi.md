@@ -1,18 +1,18 @@
-# \GovernanceGroupsApi
+# \GovernanceGroupsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BulkDeleteWorkGroups**](GovernanceGroupsApi.md#BulkDeleteWorkGroups) | **Post** /workgroups/bulk-delete | Bulk delete work groups
-[**CreateWorkgroup**](GovernanceGroupsApi.md#CreateWorkgroup) | **Post** /workgroups | Create Work Group
-[**DeleteWorkgroup**](GovernanceGroupsApi.md#DeleteWorkgroup) | **Delete** /workgroups/{workgroupId} | Delete Work Group By Id
-[**GetWorkgroup**](GovernanceGroupsApi.md#GetWorkgroup) | **Get** /workgroups/{workgroupId} | Get Work Group By Id
-[**ListWorkgroupConnections**](GovernanceGroupsApi.md#ListWorkgroupConnections) | **Get** /workgroups/{workgroupId}/connections | List Work Group Connections
-[**ListWorkgroupMembers**](GovernanceGroupsApi.md#ListWorkgroupMembers) | **Get** /workgroups/{workgroupId}/members | List Work Group Members
-[**ListWorkgroups**](GovernanceGroupsApi.md#ListWorkgroups) | **Get** /workgroups | List Work Groups
-[**ModifyWorkgroupMembers**](GovernanceGroupsApi.md#ModifyWorkgroupMembers) | **Post** /workgroups/{workgroupId}/members | Modify Work Group Members
-[**UpdateWorkgroup**](GovernanceGroupsApi.md#UpdateWorkgroup) | **Patch** /workgroups/{workgroupId} | Update Work Group By Id
+[**BulkDeleteWorkGroups**](GovernanceGroupsAPI.md#BulkDeleteWorkGroups) | **Post** /workgroups/bulk-delete | Bulk delete work groups
+[**CreateWorkgroup**](GovernanceGroupsAPI.md#CreateWorkgroup) | **Post** /workgroups | Create Work Group
+[**DeleteWorkgroup**](GovernanceGroupsAPI.md#DeleteWorkgroup) | **Delete** /workgroups/{workgroupId} | Delete Work Group By Id
+[**GetWorkgroup**](GovernanceGroupsAPI.md#GetWorkgroup) | **Get** /workgroups/{workgroupId} | Get Work Group By Id
+[**ListWorkgroupConnections**](GovernanceGroupsAPI.md#ListWorkgroupConnections) | **Get** /workgroups/{workgroupId}/connections | List Work Group Connections
+[**ListWorkgroupMembers**](GovernanceGroupsAPI.md#ListWorkgroupMembers) | **Get** /workgroups/{workgroupId}/members | List Work Group Members
+[**ListWorkgroups**](GovernanceGroupsAPI.md#ListWorkgroups) | **Get** /workgroups | List Work Groups
+[**ModifyWorkgroupMembers**](GovernanceGroupsAPI.md#ModifyWorkgroupMembers) | **Post** /workgroups/{workgroupId}/members | Modify Work Group Members
+[**UpdateWorkgroup**](GovernanceGroupsAPI.md#UpdateWorkgroup) | **Patch** /workgroups/{workgroupId} | Update Work Group By Id
 
 
 
@@ -33,7 +33,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -41,13 +41,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.BulkDeleteWorkGroups(context.Background()).BulkDeleteWorkGroupsRequest(bulkDeleteWorkGroupsRequest).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.BulkDeleteWorkGroups(context.Background()).BulkDeleteWorkGroupsRequest(bulkDeleteWorkGroupsRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.BulkDeleteWorkGroups``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.BulkDeleteWorkGroups``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `BulkDeleteWorkGroups`: BulkDeleteWorkGroups200Response
-    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.BulkDeleteWorkGroups`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.BulkDeleteWorkGroups`: %v\n", resp)
 }
 ```
 
@@ -99,7 +99,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -107,13 +107,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.CreateWorkgroup(context.Background()).CreateWorkgroupRequest(createWorkgroupRequest).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).CreateWorkgroupRequest(createWorkgroupRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.CreateWorkgroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.CreateWorkgroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateWorkgroup`: []ListWorkgroups200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.CreateWorkgroup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.CreateWorkgroup`: %v\n", resp)
 }
 ```
 
@@ -165,7 +165,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -173,9 +173,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.DeleteWorkgroup(context.Background(), workgroupId).Execute()
+    r, err := apiClient.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), workgroupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.DeleteWorkgroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.DeleteWorkgroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -233,7 +233,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -241,13 +241,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.GetWorkgroup(context.Background(), workgroupId).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.GetWorkgroup(context.Background(), workgroupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.GetWorkgroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.GetWorkgroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetWorkgroup`: ListWorkgroups200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.GetWorkgroup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.GetWorkgroup`: %v\n", resp)
 }
 ```
 
@@ -303,7 +303,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -311,13 +311,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.ListWorkgroupConnections(context.Background(), workgroupId).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.ListWorkgroupConnections(context.Background(), workgroupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.ListWorkgroupConnections``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroupConnections``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListWorkgroupConnections`: []ListWorkgroupConnections200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.ListWorkgroupConnections`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.ListWorkgroupConnections`: %v\n", resp)
 }
 ```
 
@@ -373,7 +373,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -384,13 +384,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.ListWorkgroupMembers(context.Background(), workgroupId).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.ListWorkgroupMembers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroupMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListWorkgroupMembers`: []ListWorkgroupMembers200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.ListWorkgroupMembers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.ListWorkgroupMembers`: %v\n", resp)
 }
 ```
 
@@ -449,7 +449,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -459,13 +459,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.ListWorkgroups(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.ListWorkgroups(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.ListWorkgroups``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ListWorkgroups``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListWorkgroups`: []ListWorkgroups200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.ListWorkgroups`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.ListWorkgroups`: %v\n", resp)
 }
 ```
 
@@ -519,7 +519,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -528,9 +528,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.ModifyWorkgroupMembers(context.Background(), workgroupId).ModifyWorkgroupMembersRequest(modifyWorkgroupMembersRequest).Execute()
+    r, err := apiClient.GovernanceGroupsAPI.ModifyWorkgroupMembers(context.Background(), workgroupId).ModifyWorkgroupMembersRequest(modifyWorkgroupMembersRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.ModifyWorkgroupMembers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.ModifyWorkgroupMembers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -589,7 +589,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -598,13 +598,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GovernanceGroupsApi.UpdateWorkgroup(context.Background(), workgroupId).CreateWorkgroupRequest(createWorkgroupRequest).Execute()
+    resp, r, err := apiClient.GovernanceGroupsAPI.UpdateWorkgroup(context.Background(), workgroupId).CreateWorkgroupRequest(createWorkgroupRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsApi.UpdateWorkgroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GovernanceGroupsAPI.UpdateWorkgroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateWorkgroup`: ListWorkgroups200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsApi.UpdateWorkgroup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GovernanceGroupsAPI.UpdateWorkgroup`: %v\n", resp)
 }
 ```
 

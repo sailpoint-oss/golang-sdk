@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// ManagedClientsApiService ManagedClientsApi service
-type ManagedClientsApiService service
+// ManagedClientsAPIService ManagedClientsAPI service
+type ManagedClientsAPIService service
 
 type ApiGetManagedClientStatusRequest struct {
 	ctx context.Context
-	ApiService *ManagedClientsApiService
+	ApiService *ManagedClientsAPIService
 	id string
 	type_ *ManagedClientType
 }
@@ -49,7 +49,7 @@ Retrieve Managed Client Status by ID.
  @param id ID of the Managed Client Status to get
  @return ApiGetManagedClientStatusRequest
 */
-func (a *ManagedClientsApiService) GetManagedClientStatus(ctx context.Context, id string) ApiGetManagedClientStatusRequest {
+func (a *ManagedClientsAPIService) GetManagedClientStatus(ctx context.Context, id string) ApiGetManagedClientStatusRequest {
 	return ApiGetManagedClientStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,7 +59,7 @@ func (a *ManagedClientsApiService) GetManagedClientStatus(ctx context.Context, i
 
 // Execute executes the request
 //  @return ManagedClientStatus
-func (a *ManagedClientsApiService) GetManagedClientStatusExecute(r ApiGetManagedClientStatusRequest) (*ManagedClientStatus, *http.Response, error) {
+func (a *ManagedClientsAPIService) GetManagedClientStatusExecute(r ApiGetManagedClientStatusRequest) (*ManagedClientStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -67,7 +67,7 @@ func (a *ManagedClientsApiService) GetManagedClientStatusExecute(r ApiGetManaged
 		localVarReturnValue  *ManagedClientStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClientsApiService.GetManagedClientStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClientsAPIService.GetManagedClientStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -110,9 +110,9 @@ func (a *ManagedClientsApiService) GetManagedClientStatusExecute(r ApiGetManaged
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -204,7 +204,7 @@ func (a *ManagedClientsApiService) GetManagedClientStatusExecute(r ApiGetManaged
 
 type ApiUpdateManagedClientStatusRequest struct {
 	ctx context.Context
-	ApiService *ManagedClientsApiService
+	ApiService *ManagedClientsAPIService
 	id string
 	managedClientStatus *ManagedClientStatus
 }
@@ -227,7 +227,7 @@ Update a status detail passed in from the client
  @param id ID of the Managed Client Status to update
  @return ApiUpdateManagedClientStatusRequest
 */
-func (a *ManagedClientsApiService) UpdateManagedClientStatus(ctx context.Context, id string) ApiUpdateManagedClientStatusRequest {
+func (a *ManagedClientsAPIService) UpdateManagedClientStatus(ctx context.Context, id string) ApiUpdateManagedClientStatusRequest {
 	return ApiUpdateManagedClientStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -237,7 +237,7 @@ func (a *ManagedClientsApiService) UpdateManagedClientStatus(ctx context.Context
 
 // Execute executes the request
 //  @return ManagedClientStatusAggResponse
-func (a *ManagedClientsApiService) UpdateManagedClientStatusExecute(r ApiUpdateManagedClientStatusRequest) (*ManagedClientStatusAggResponse, *http.Response, error) {
+func (a *ManagedClientsAPIService) UpdateManagedClientStatusExecute(r ApiUpdateManagedClientStatusRequest) (*ManagedClientStatusAggResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -245,7 +245,7 @@ func (a *ManagedClientsApiService) UpdateManagedClientStatusExecute(r ApiUpdateM
 		localVarReturnValue  *ManagedClientStatusAggResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClientsApiService.UpdateManagedClientStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClientsAPIService.UpdateManagedClientStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -289,9 +289,9 @@ func (a *ManagedClientsApiService) UpdateManagedClientStatusExecute(r ApiUpdateM
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

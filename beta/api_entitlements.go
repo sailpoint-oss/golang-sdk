@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// EntitlementsApiService EntitlementsApi service
-type EntitlementsApiService service
+// EntitlementsAPIService EntitlementsAPI service
+type EntitlementsAPIService service
 
 type ApiGetEntitlementRequest struct {
 	ctx context.Context
-	ApiService *EntitlementsApiService
+	ApiService *EntitlementsAPIService
 	id string
 }
 
@@ -42,7 +42,7 @@ This API returns an entitlement by its ID.
  @param id The entitlement ID
  @return ApiGetEntitlementRequest
 */
-func (a *EntitlementsApiService) GetEntitlement(ctx context.Context, id string) ApiGetEntitlementRequest {
+func (a *EntitlementsAPIService) GetEntitlement(ctx context.Context, id string) ApiGetEntitlementRequest {
 	return ApiGetEntitlementRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -52,7 +52,7 @@ func (a *EntitlementsApiService) GetEntitlement(ctx context.Context, id string) 
 
 // Execute executes the request
 //  @return Entitlement
-func (a *EntitlementsApiService) GetEntitlementExecute(r ApiGetEntitlementRequest) (*Entitlement, *http.Response, error) {
+func (a *EntitlementsAPIService) GetEntitlementExecute(r ApiGetEntitlementRequest) (*Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -60,7 +60,7 @@ func (a *EntitlementsApiService) GetEntitlementExecute(r ApiGetEntitlementReques
 		localVarReturnValue  *Entitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsApiService.GetEntitlement")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.GetEntitlement")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -99,9 +99,9 @@ func (a *EntitlementsApiService) GetEntitlementExecute(r ApiGetEntitlementReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -193,7 +193,7 @@ func (a *EntitlementsApiService) GetEntitlementExecute(r ApiGetEntitlementReques
 
 type ApiGetEntitlementRequestConfigRequest struct {
 	ctx context.Context
-	ApiService *EntitlementsApiService
+	ApiService *EntitlementsAPIService
 	id string
 }
 
@@ -210,7 +210,7 @@ This API returns the entitlement request config for a specified entitlement.
  @param id Entitlement Id
  @return ApiGetEntitlementRequestConfigRequest
 */
-func (a *EntitlementsApiService) GetEntitlementRequestConfig(ctx context.Context, id string) ApiGetEntitlementRequestConfigRequest {
+func (a *EntitlementsAPIService) GetEntitlementRequestConfig(ctx context.Context, id string) ApiGetEntitlementRequestConfigRequest {
 	return ApiGetEntitlementRequestConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -220,7 +220,7 @@ func (a *EntitlementsApiService) GetEntitlementRequestConfig(ctx context.Context
 
 // Execute executes the request
 //  @return EntitlementRequestConfig
-func (a *EntitlementsApiService) GetEntitlementRequestConfigExecute(r ApiGetEntitlementRequestConfigRequest) (*EntitlementRequestConfig, *http.Response, error) {
+func (a *EntitlementsAPIService) GetEntitlementRequestConfigExecute(r ApiGetEntitlementRequestConfigRequest) (*EntitlementRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -228,7 +228,7 @@ func (a *EntitlementsApiService) GetEntitlementRequestConfigExecute(r ApiGetEnti
 		localVarReturnValue  *EntitlementRequestConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsApiService.GetEntitlementRequestConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.GetEntitlementRequestConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -267,9 +267,9 @@ func (a *EntitlementsApiService) GetEntitlementRequestConfigExecute(r ApiGetEnti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -361,7 +361,7 @@ func (a *EntitlementsApiService) GetEntitlementRequestConfigExecute(r ApiGetEnti
 
 type ApiListEntitlementChildrenRequest struct {
 	ctx context.Context
-	ApiService *EntitlementsApiService
+	ApiService *EntitlementsAPIService
 	id string
 	limit *int32
 	offset *int32
@@ -413,7 +413,7 @@ This API returns a list of all child entitlements of a given entitlement.
  @param id Entitlement Id
  @return ApiListEntitlementChildrenRequest
 */
-func (a *EntitlementsApiService) ListEntitlementChildren(ctx context.Context, id string) ApiListEntitlementChildrenRequest {
+func (a *EntitlementsAPIService) ListEntitlementChildren(ctx context.Context, id string) ApiListEntitlementChildrenRequest {
 	return ApiListEntitlementChildrenRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -423,7 +423,7 @@ func (a *EntitlementsApiService) ListEntitlementChildren(ctx context.Context, id
 
 // Execute executes the request
 //  @return []Entitlement
-func (a *EntitlementsApiService) ListEntitlementChildrenExecute(r ApiListEntitlementChildrenRequest) ([]Entitlement, *http.Response, error) {
+func (a *EntitlementsAPIService) ListEntitlementChildrenExecute(r ApiListEntitlementChildrenRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -431,7 +431,7 @@ func (a *EntitlementsApiService) ListEntitlementChildrenExecute(r ApiListEntitle
 		localVarReturnValue  []Entitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsApiService.ListEntitlementChildren")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ListEntitlementChildren")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -445,12 +445,21 @@ func (a *EntitlementsApiService) ListEntitlementChildrenExecute(r ApiListEntitle
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -485,9 +494,9 @@ func (a *EntitlementsApiService) ListEntitlementChildrenExecute(r ApiListEntitle
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -579,7 +588,7 @@ func (a *EntitlementsApiService) ListEntitlementChildrenExecute(r ApiListEntitle
 
 type ApiListEntitlementParentsRequest struct {
 	ctx context.Context
-	ApiService *EntitlementsApiService
+	ApiService *EntitlementsAPIService
 	id string
 	limit *int32
 	offset *int32
@@ -631,7 +640,7 @@ This API returns a list of all parent entitlements of a given entitlement.
  @param id Entitlement Id
  @return ApiListEntitlementParentsRequest
 */
-func (a *EntitlementsApiService) ListEntitlementParents(ctx context.Context, id string) ApiListEntitlementParentsRequest {
+func (a *EntitlementsAPIService) ListEntitlementParents(ctx context.Context, id string) ApiListEntitlementParentsRequest {
 	return ApiListEntitlementParentsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -641,7 +650,7 @@ func (a *EntitlementsApiService) ListEntitlementParents(ctx context.Context, id 
 
 // Execute executes the request
 //  @return []Entitlement
-func (a *EntitlementsApiService) ListEntitlementParentsExecute(r ApiListEntitlementParentsRequest) ([]Entitlement, *http.Response, error) {
+func (a *EntitlementsAPIService) ListEntitlementParentsExecute(r ApiListEntitlementParentsRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -649,7 +658,7 @@ func (a *EntitlementsApiService) ListEntitlementParentsExecute(r ApiListEntitlem
 		localVarReturnValue  []Entitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsApiService.ListEntitlementParents")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ListEntitlementParents")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -663,12 +672,21 @@ func (a *EntitlementsApiService) ListEntitlementParentsExecute(r ApiListEntitlem
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -703,9 +721,9 @@ func (a *EntitlementsApiService) ListEntitlementParentsExecute(r ApiListEntitlem
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -797,7 +815,7 @@ func (a *EntitlementsApiService) ListEntitlementParentsExecute(r ApiListEntitlem
 
 type ApiListEntitlementsRequest struct {
 	ctx context.Context
-	ApiService *EntitlementsApiService
+	ApiService *EntitlementsAPIService
 	accountId *string
 	segmentedForIdentity *string
 	forSegmentIds *string
@@ -879,7 +897,7 @@ Any authenticated token can call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListEntitlementsRequest
 */
-func (a *EntitlementsApiService) ListEntitlements(ctx context.Context) ApiListEntitlementsRequest {
+func (a *EntitlementsAPIService) ListEntitlements(ctx context.Context) ApiListEntitlementsRequest {
 	return ApiListEntitlementsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -888,7 +906,7 @@ func (a *EntitlementsApiService) ListEntitlements(ctx context.Context) ApiListEn
 
 // Execute executes the request
 //  @return []Entitlement
-func (a *EntitlementsApiService) ListEntitlementsExecute(r ApiListEntitlementsRequest) ([]Entitlement, *http.Response, error) {
+func (a *EntitlementsAPIService) ListEntitlementsExecute(r ApiListEntitlementsRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -896,7 +914,7 @@ func (a *EntitlementsApiService) ListEntitlementsExecute(r ApiListEntitlementsRe
 		localVarReturnValue  []Entitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsApiService.ListEntitlements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.ListEntitlements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -918,15 +936,27 @@ func (a *EntitlementsApiService) ListEntitlementsExecute(r ApiListEntitlementsRe
 	}
 	if r.includeUnsegmented != nil {
 		parameterAddToQuery(localVarQueryParams, "include-unsegmented", r.includeUnsegmented, "")
+	} else {
+		var defaultValue bool = true
+		r.includeUnsegmented = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -961,9 +991,9 @@ func (a *EntitlementsApiService) ListEntitlementsExecute(r ApiListEntitlementsRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1044,7 +1074,7 @@ func (a *EntitlementsApiService) ListEntitlementsExecute(r ApiListEntitlementsRe
 
 type ApiPatchEntitlementRequest struct {
 	ctx context.Context
-	ApiService *EntitlementsApiService
+	ApiService *EntitlementsAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -1073,7 +1103,7 @@ A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
  @param id ID of the entitlement to patch
  @return ApiPatchEntitlementRequest
 */
-func (a *EntitlementsApiService) PatchEntitlement(ctx context.Context, id string) ApiPatchEntitlementRequest {
+func (a *EntitlementsAPIService) PatchEntitlement(ctx context.Context, id string) ApiPatchEntitlementRequest {
 	return ApiPatchEntitlementRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1083,7 +1113,7 @@ func (a *EntitlementsApiService) PatchEntitlement(ctx context.Context, id string
 
 // Execute executes the request
 //  @return Entitlement
-func (a *EntitlementsApiService) PatchEntitlementExecute(r ApiPatchEntitlementRequest) (*Entitlement, *http.Response, error) {
+func (a *EntitlementsAPIService) PatchEntitlementExecute(r ApiPatchEntitlementRequest) (*Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -1091,7 +1121,7 @@ func (a *EntitlementsApiService) PatchEntitlementExecute(r ApiPatchEntitlementRe
 		localVarReturnValue  *Entitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsApiService.PatchEntitlement")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.PatchEntitlement")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1132,9 +1162,9 @@ func (a *EntitlementsApiService) PatchEntitlementExecute(r ApiPatchEntitlementRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1226,7 +1256,7 @@ func (a *EntitlementsApiService) PatchEntitlementExecute(r ApiPatchEntitlementRe
 
 type ApiPutEntitlementRequestConfigRequest struct {
 	ctx context.Context
-	ApiService *EntitlementsApiService
+	ApiService *EntitlementsAPIService
 	id string
 	entitlementRequestConfig *EntitlementRequestConfig
 }
@@ -1249,7 +1279,7 @@ This API replaces the entitlement request config for a specified entitlement.
  @param id Entitlement ID
  @return ApiPutEntitlementRequestConfigRequest
 */
-func (a *EntitlementsApiService) PutEntitlementRequestConfig(ctx context.Context, id string) ApiPutEntitlementRequestConfigRequest {
+func (a *EntitlementsAPIService) PutEntitlementRequestConfig(ctx context.Context, id string) ApiPutEntitlementRequestConfigRequest {
 	return ApiPutEntitlementRequestConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1259,7 +1289,7 @@ func (a *EntitlementsApiService) PutEntitlementRequestConfig(ctx context.Context
 
 // Execute executes the request
 //  @return EntitlementRequestConfig
-func (a *EntitlementsApiService) PutEntitlementRequestConfigExecute(r ApiPutEntitlementRequestConfigRequest) (*EntitlementRequestConfig, *http.Response, error) {
+func (a *EntitlementsAPIService) PutEntitlementRequestConfigExecute(r ApiPutEntitlementRequestConfigRequest) (*EntitlementRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1267,7 +1297,7 @@ func (a *EntitlementsApiService) PutEntitlementRequestConfigExecute(r ApiPutEnti
 		localVarReturnValue  *EntitlementRequestConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsApiService.PutEntitlementRequestConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.PutEntitlementRequestConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1311,9 +1341,9 @@ func (a *EntitlementsApiService) PutEntitlementRequestConfigExecute(r ApiPutEnti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1405,7 +1435,7 @@ func (a *EntitlementsApiService) PutEntitlementRequestConfigExecute(r ApiPutEnti
 
 type ApiUpdateEntitlementsInBulkRequest struct {
 	ctx context.Context
-	ApiService *EntitlementsApiService
+	ApiService *EntitlementsAPIService
 	entitlementBulkUpdateRequest *EntitlementBulkUpdateRequest
 }
 
@@ -1432,7 +1462,7 @@ A token with ORG_ADMIN or API authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateEntitlementsInBulkRequest
 */
-func (a *EntitlementsApiService) UpdateEntitlementsInBulk(ctx context.Context) ApiUpdateEntitlementsInBulkRequest {
+func (a *EntitlementsAPIService) UpdateEntitlementsInBulk(ctx context.Context) ApiUpdateEntitlementsInBulkRequest {
 	return ApiUpdateEntitlementsInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1440,14 +1470,14 @@ func (a *EntitlementsApiService) UpdateEntitlementsInBulk(ctx context.Context) A
 }
 
 // Execute executes the request
-func (a *EntitlementsApiService) UpdateEntitlementsInBulkExecute(r ApiUpdateEntitlementsInBulkRequest) (*http.Response, error) {
+func (a *EntitlementsAPIService) UpdateEntitlementsInBulkExecute(r ApiUpdateEntitlementsInBulkRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsApiService.UpdateEntitlementsInBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EntitlementsAPIService.UpdateEntitlementsInBulk")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1490,9 +1520,9 @@ func (a *EntitlementsApiService) UpdateEntitlementsInBulkExecute(r ApiUpdateEnti
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

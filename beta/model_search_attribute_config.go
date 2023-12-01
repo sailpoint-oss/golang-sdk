@@ -174,8 +174,8 @@ func (o *SearchAttributeConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varSearchAttributeConfig := _SearchAttributeConfig{}
 
 	if err = json.Unmarshal(bytes, &varSearchAttributeConfig); err == nil {
-		*o = SearchAttributeConfig(varSearchAttributeConfig)
-	}
+	*o = SearchAttributeConfig(varSearchAttributeConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

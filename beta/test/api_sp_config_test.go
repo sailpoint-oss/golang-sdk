@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing SPConfigApiService
+Testing SPConfigAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_SPConfigApiService(t *testing.T) {
+func Test_beta_SPConfigAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SPConfigApiService ExportSpConfig", func(t *testing.T) {
+	t.Run("Test SPConfigAPIService ExportSpConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.SPConfigApi.ExportSpConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigAPI.ExportSpConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SPConfigApiService GetSpConfigExport", func(t *testing.T) {
+	t.Run("Test SPConfigAPIService GetSpConfigExport", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.SPConfigApi.GetSpConfigExport(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigAPI.GetSpConfigExport(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,13 +48,13 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SPConfigApiService GetSpConfigExportStatus", func(t *testing.T) {
+	t.Run("Test SPConfigAPIService GetSpConfigExportStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.SPConfigApi.GetSpConfigExportStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigAPI.GetSpConfigExportStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,13 +62,13 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SPConfigApiService GetSpConfigImport", func(t *testing.T) {
+	t.Run("Test SPConfigAPIService GetSpConfigImport", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.SPConfigApi.GetSpConfigImport(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigAPI.GetSpConfigImport(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,13 +76,13 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SPConfigApiService GetSpConfigImportStatus", func(t *testing.T) {
+	t.Run("Test SPConfigAPIService GetSpConfigImportStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.SPConfigApi.GetSpConfigImportStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigAPI.GetSpConfigImportStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -90,11 +90,11 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SPConfigApiService ImportSpConfig", func(t *testing.T) {
+	t.Run("Test SPConfigAPIService ImportSpConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.SPConfigApi.ImportSpConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigAPI.ImportSpConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -102,11 +102,11 @@ func Test_beta_SPConfigApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SPConfigApiService ListSpConfigObjects", func(t *testing.T) {
+	t.Run("Test SPConfigAPIService ListSpConfigObjects", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.SPConfigApi.ListSpConfigObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SPConfigAPI.ListSpConfigObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

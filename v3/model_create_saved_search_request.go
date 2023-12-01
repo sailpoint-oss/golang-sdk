@@ -13,6 +13,7 @@ package v3
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the CreateSavedSearchRequest type satisfies the MappedNullable interface at compile time
@@ -494,11 +495,33 @@ func (o CreateSavedSearchRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *CreateSavedSearchRequest) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"indices",
+		"query",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varCreateSavedSearchRequest := _CreateSavedSearchRequest{}
 
 	if err = json.Unmarshal(bytes, &varCreateSavedSearchRequest); err == nil {
-		*o = CreateSavedSearchRequest(varCreateSavedSearchRequest)
-	}
+	*o = CreateSavedSearchRequest(varCreateSavedSearchRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

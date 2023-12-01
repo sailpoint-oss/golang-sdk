@@ -1,17 +1,17 @@
-# \TaggedObjectsApi
+# \TaggedObjectsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteTaggedObject**](TaggedObjectsApi.md#DeleteTaggedObject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
-[**DeleteTagsToManyObject**](TaggedObjectsApi.md#DeleteTagsToManyObject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
-[**GetTaggedObject**](TaggedObjectsApi.md#GetTaggedObject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
-[**ListTaggedObjects**](TaggedObjectsApi.md#ListTaggedObjects) | **Get** /tagged-objects | List Tagged Objects
-[**ListTaggedObjectsByType**](TaggedObjectsApi.md#ListTaggedObjectsByType) | **Get** /tagged-objects/{type} | List Tagged Objects
-[**PutTaggedObject**](TaggedObjectsApi.md#PutTaggedObject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
-[**SetTagToObject**](TaggedObjectsApi.md#SetTagToObject) | **Post** /tagged-objects | Add Tag to Object
-[**SetTagsToManyObjects**](TaggedObjectsApi.md#SetTagsToManyObjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
+[**DeleteTaggedObject**](TaggedObjectsAPI.md#DeleteTaggedObject) | **Delete** /tagged-objects/{type}/{id} | Delete Tagged Object
+[**DeleteTagsToManyObject**](TaggedObjectsAPI.md#DeleteTagsToManyObject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
+[**GetTaggedObject**](TaggedObjectsAPI.md#GetTaggedObject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
+[**ListTaggedObjects**](TaggedObjectsAPI.md#ListTaggedObjects) | **Get** /tagged-objects | List Tagged Objects
+[**ListTaggedObjectsByType**](TaggedObjectsAPI.md#ListTaggedObjectsByType) | **Get** /tagged-objects/{type} | List Tagged Objects
+[**PutTaggedObject**](TaggedObjectsAPI.md#PutTaggedObject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
+[**SetTagToObject**](TaggedObjectsAPI.md#SetTagToObject) | **Post** /tagged-objects | Add Tag to Object
+[**SetTagsToManyObjects**](TaggedObjectsAPI.md#SetTagsToManyObjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
 
 
 
@@ -32,7 +32,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -41,9 +41,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.DeleteTaggedObject(context.Background(), type_, id).Execute()
+    r, err := apiClient.TaggedObjectsAPI.DeleteTaggedObject(context.Background(), type_, id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.DeleteTaggedObject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.DeleteTaggedObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -103,7 +103,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -111,9 +111,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.DeleteTagsToManyObject(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
+    r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.DeleteTagsToManyObject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.DeleteTagsToManyObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -167,7 +167,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -176,13 +176,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.GetTaggedObject(context.Background(), type_, id).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.GetTaggedObject(context.Background(), type_, id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.GetTaggedObject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.GetTaggedObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetTaggedObject`: TaggedObject
-    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.GetTaggedObject`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.GetTaggedObject`: %v\n", resp)
 }
 ```
 
@@ -240,7 +240,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -251,13 +251,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.ListTaggedObjects(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.ListTaggedObjects(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.ListTaggedObjects``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.ListTaggedObjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTaggedObjects`: []TaggedObject
-    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.ListTaggedObjects`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.ListTaggedObjects`: %v\n", resp)
 }
 ```
 
@@ -312,7 +312,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -324,13 +324,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.ListTaggedObjectsByType(context.Background(), type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.ListTaggedObjectsByType(context.Background(), type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.ListTaggedObjectsByType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.ListTaggedObjectsByType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTaggedObjectsByType`: []TaggedObject
-    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.ListTaggedObjectsByType`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.ListTaggedObjectsByType`: %v\n", resp)
 }
 ```
 
@@ -390,7 +390,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -400,13 +400,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.PutTaggedObject(context.Background(), type_, id).TaggedObject(taggedObject).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.PutTaggedObject(context.Background(), type_, id).TaggedObject(taggedObject).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.PutTaggedObject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.PutTaggedObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutTaggedObject`: TaggedObject
-    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.PutTaggedObject`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.PutTaggedObject`: %v\n", resp)
 }
 ```
 
@@ -465,7 +465,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -473,9 +473,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.SetTagToObject(context.Background()).TaggedObject(taggedObject).Execute()
+    r, err := apiClient.TaggedObjectsAPI.SetTagToObject(context.Background()).TaggedObject(taggedObject).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.SetTagToObject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.SetTagToObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -529,7 +529,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -537,13 +537,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsApi.SetTagsToManyObjects(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
+    resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsApi.SetTagsToManyObjects``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.SetTagsToManyObjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SetTagsToManyObjects`: BulkTaggedObject
-    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsApi.SetTagsToManyObjects`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TaggedObjectsAPI.SetTagsToManyObjects`: %v\n", resp)
 }
 ```
 

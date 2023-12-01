@@ -249,8 +249,8 @@ func (o *WorkflowLibraryFormFields) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkflowLibraryFormFields := _WorkflowLibraryFormFields{}
 
 	if err = json.Unmarshal(bytes, &varWorkflowLibraryFormFields); err == nil {
-		*o = WorkflowLibraryFormFields(varWorkflowLibraryFormFields)
-	}
+	*o = WorkflowLibraryFormFields(varWorkflowLibraryFormFields)
+}
 
 	additionalProperties := make(map[string]interface{})
 

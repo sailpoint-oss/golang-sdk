@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessRequestId** | **string** | The unique ID of the access request. | 
-**RequestedFor** | [**AccessRequestPostApprovalRequestedFor**](AccessRequestPostApprovalRequestedFor.md) |  | 
+**RequestedFor** | [**AccessItemRequestedForDto**](AccessItemRequestedForDto.md) |  | 
 **RequestedItems** | [**[]AccessRequestPreApprovalRequestedItemsInner**](AccessRequestPreApprovalRequestedItemsInner.md) | Details of the access items being requested. | 
-**RequestedBy** | [**AccessRequestPostApprovalRequestedBy**](AccessRequestPostApprovalRequestedBy.md) |  | 
+**RequestedBy** | [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | 
 **RequestedItemsStatus** | [**[]AccessRequestPostApprovalRequestedItemsStatusInner**](AccessRequestPostApprovalRequestedItemsStatusInner.md) | Details on the outcome of each access item. | 
 **Source** | [**AccountUncorrelatedSource**](AccountUncorrelatedSource.md) |  | 
 **Status** | **map[string]interface{}** | The overall status of the collection. | 
@@ -44,7 +44,7 @@ Name | Type | Description | Notes
 **IdentityId** | **string** | The ID of the identity that is correlated with this account. | 
 **IdentityName** | **string** | The name of the identity that is correlated with this account. | 
 **Name** | **string** | The user friendly name of the source. | 
-**Type** | **map[string]interface{}** | The type of the object that initiated this event. | 
+**Type** | **string** | The connection type of the source. | 
 **Created** | **time.Time** | The date and time the status change occurred. | 
 **Connector** | **string** | The connector type used to connect to the source. | 
 **Actor** | [**SourceUpdatedActor**](SourceUpdatedActor.md) |  | 
@@ -58,7 +58,7 @@ Name | Type | Description | Notes
 
 ### NewTriggerExampleInput
 
-`func NewTriggerExampleInput(accessRequestId string, requestedFor AccessRequestPostApprovalRequestedFor, requestedItems []AccessRequestPreApprovalRequestedItemsInner, requestedBy AccessRequestPostApprovalRequestedBy, requestedItemsStatus []AccessRequestPostApprovalRequestedItemsStatusInner, source AccountUncorrelatedSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats AccountsCollectedForAggregationStats, identity IdentityDeletedIdentity, account AccountUncorrelatedAccount, changes []IdentityAttributesChangedChangesInner, attributes map[string]interface{}, campaign CampaignGeneratedCampaign, certification CertificationSignedOffCertification, trackingNumber string, sources string, recipient ProvisioningCompletedRecipient, accountRequests []ProvisioningCompletedAccountRequestsInner, fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults SavedSearchCompleteSearchResults, signedS3Url string, id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, name string, type_ map[string]interface{}, created time.Time, connector string, actor SourceUpdatedActor, deleted time.Time, modified time.Time, application VAClusterStatusChangeEventApplication, healthCheckResult VAClusterStatusChangeEventHealthCheckResult, previousHealthCheckResult VAClusterStatusChangeEventPreviousHealthCheckResult, ) *TriggerExampleInput`
+`func NewTriggerExampleInput(accessRequestId string, requestedFor AccessItemRequestedForDto, requestedItems []AccessRequestPreApprovalRequestedItemsInner, requestedBy AccessItemRequesterDto, requestedItemsStatus []AccessRequestPostApprovalRequestedItemsStatusInner, source AccountUncorrelatedSource, status map[string]interface{}, started time.Time, completed time.Time, errors []string, warnings []string, stats AccountsCollectedForAggregationStats, identity IdentityDeletedIdentity, account AccountUncorrelatedAccount, changes []IdentityAttributesChangedChangesInner, attributes map[string]interface{}, campaign CampaignGeneratedCampaign, certification CertificationSignedOffCertification, trackingNumber string, sources string, recipient ProvisioningCompletedRecipient, accountRequests []ProvisioningCompletedAccountRequestsInner, fileName string, ownerEmail string, ownerName string, query string, searchName string, searchResults SavedSearchCompleteSearchResults, signedS3Url string, id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, name string, type_ string, created time.Time, connector string, actor SourceUpdatedActor, deleted time.Time, modified time.Time, application VAClusterStatusChangeEventApplication, healthCheckResult VAClusterStatusChangeEventHealthCheckResult, previousHealthCheckResult VAClusterStatusChangeEventPreviousHealthCheckResult, ) *TriggerExampleInput`
 
 NewTriggerExampleInput instantiates a new TriggerExampleInput object
 This constructor will assign default values to properties that have it defined,
@@ -95,20 +95,20 @@ SetAccessRequestId sets AccessRequestId field to given value.
 
 ### GetRequestedFor
 
-`func (o *TriggerExampleInput) GetRequestedFor() AccessRequestPostApprovalRequestedFor`
+`func (o *TriggerExampleInput) GetRequestedFor() AccessItemRequestedForDto`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *TriggerExampleInput) GetRequestedForOk() (*AccessRequestPostApprovalRequestedFor, bool)`
+`func (o *TriggerExampleInput) GetRequestedForOk() (*AccessItemRequestedForDto, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *TriggerExampleInput) SetRequestedFor(v AccessRequestPostApprovalRequestedFor)`
+`func (o *TriggerExampleInput) SetRequestedFor(v AccessItemRequestedForDto)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
@@ -135,20 +135,20 @@ SetRequestedItems sets RequestedItems field to given value.
 
 ### GetRequestedBy
 
-`func (o *TriggerExampleInput) GetRequestedBy() AccessRequestPostApprovalRequestedBy`
+`func (o *TriggerExampleInput) GetRequestedBy() AccessItemRequesterDto`
 
 GetRequestedBy returns the RequestedBy field if non-nil, zero value otherwise.
 
 ### GetRequestedByOk
 
-`func (o *TriggerExampleInput) GetRequestedByOk() (*AccessRequestPostApprovalRequestedBy, bool)`
+`func (o *TriggerExampleInput) GetRequestedByOk() (*AccessItemRequesterDto, bool)`
 
 GetRequestedByOk returns a tuple with the RequestedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedBy
 
-`func (o *TriggerExampleInput) SetRequestedBy(v AccessRequestPostApprovalRequestedBy)`
+`func (o *TriggerExampleInput) SetRequestedBy(v AccessItemRequesterDto)`
 
 SetRequestedBy sets RequestedBy field to given value.
 
@@ -935,20 +935,20 @@ SetName sets Name field to given value.
 
 ### GetType
 
-`func (o *TriggerExampleInput) GetType() map[string]interface{}`
+`func (o *TriggerExampleInput) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *TriggerExampleInput) GetTypeOk() (*map[string]interface{}, bool)`
+`func (o *TriggerExampleInput) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *TriggerExampleInput) SetType(v map[string]interface{})`
+`func (o *TriggerExampleInput) SetType(v string)`
 
 SetType sets Type field to given value.
 

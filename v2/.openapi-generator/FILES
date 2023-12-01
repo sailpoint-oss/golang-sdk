@@ -16,13 +16,13 @@ docs/GetOrgSettings200ResponseApprovalConfig.md
 docs/GetOrgSettings200ResponseSystemNotificationConfig.md
 docs/GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner.md
 docs/GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds.md
-docs/GovernanceGroupsApi.md
+docs/GovernanceGroupsAPI.md
 docs/ListWorkgroupConnections200ResponseInner.md
 docs/ListWorkgroupMembers200ResponseInner.md
 docs/ListWorkgroups200ResponseInner.md
 docs/ListWorkgroups200ResponseInnerOwner.md
 docs/ModifyWorkgroupMembersRequest.md
-docs/OrgApi.md
+docs/OrgAPI.md
 docs/UpdateOrgSettingsRequest.md
 git_push.sh
 go.mod

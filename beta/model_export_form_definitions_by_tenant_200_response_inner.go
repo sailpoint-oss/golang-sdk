@@ -171,8 +171,8 @@ func (o *ExportFormDefinitionsByTenant200ResponseInner) UnmarshalJSON(bytes []by
 	varExportFormDefinitionsByTenant200ResponseInner := _ExportFormDefinitionsByTenant200ResponseInner{}
 
 	if err = json.Unmarshal(bytes, &varExportFormDefinitionsByTenant200ResponseInner); err == nil {
-		*o = ExportFormDefinitionsByTenant200ResponseInner(varExportFormDefinitionsByTenant200ResponseInner)
-	}
+	*o = ExportFormDefinitionsByTenant200ResponseInner(varExportFormDefinitionsByTenant200ResponseInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

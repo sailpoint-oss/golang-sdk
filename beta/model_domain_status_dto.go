@@ -248,8 +248,8 @@ func (o *DomainStatusDto) UnmarshalJSON(bytes []byte) (err error) {
 	varDomainStatusDto := _DomainStatusDto{}
 
 	if err = json.Unmarshal(bytes, &varDomainStatusDto); err == nil {
-		*o = DomainStatusDto(varDomainStatusDto)
-	}
+	*o = DomainStatusDto(varDomainStatusDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

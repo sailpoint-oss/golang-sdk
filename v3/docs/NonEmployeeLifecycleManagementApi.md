@@ -1,41 +1,41 @@
-# \NonEmployeeLifecycleManagementApi
+# \NonEmployeeLifecycleManagementAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApproveNonEmployeeRequest**](NonEmployeeLifecycleManagementApi.md#ApproveNonEmployeeRequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
-[**CreateNonEmployeeRecord**](NonEmployeeLifecycleManagementApi.md#CreateNonEmployeeRecord) | **Post** /non-employee-records | Create Non-Employee Record
-[**CreateNonEmployeeRequest**](NonEmployeeLifecycleManagementApi.md#CreateNonEmployeeRequest) | **Post** /non-employee-requests | Create Non-Employee Request
-[**CreateNonEmployeeSource**](NonEmployeeLifecycleManagementApi.md#CreateNonEmployeeSource) | **Post** /non-employee-sources | Create Non-Employee Source
-[**CreateNonEmployeeSourceSchemaAttributes**](NonEmployeeLifecycleManagementApi.md#CreateNonEmployeeSourceSchemaAttributes) | **Post** /non-employee-sources/{sourceId}/schema-attributes | Create a new Schema Attribute for Non-Employee Source
-[**DeleteNonEmployeeRecord**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeRecord) | **Delete** /non-employee-records/{id} | Delete Non-Employee Record
-[**DeleteNonEmployeeRecordsInBulk**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeRecordsInBulk) | **Post** /non-employee-records/bulk-delete | Delete Multiple Non-Employee Records
-[**DeleteNonEmployeeRequest**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeRequest) | **Delete** /non-employee-requests/{id} | Delete Non-Employee Request
-[**DeleteNonEmployeeSchemaAttribute**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeSchemaAttribute) | **Delete** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Delete a Schema Attribute for Non-Employee Source
-[**DeleteNonEmployeeSource**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeSource) | **Delete** /non-employee-sources/{sourceId} | Delete Non-Employee Source
-[**DeleteNonEmployeeSourceSchemaAttributes**](NonEmployeeLifecycleManagementApi.md#DeleteNonEmployeeSourceSchemaAttributes) | **Delete** /non-employee-sources/{sourceId}/schema-attributes | Delete all custom schema attributes for Non-Employee Source
-[**ExportNonEmployeeRecords**](NonEmployeeLifecycleManagementApi.md#ExportNonEmployeeRecords) | **Get** /non-employee-sources/{id}/non-employees/download | Exports Non-Employee Records to CSV
-[**ExportNonEmployeeSourceSchemaTemplate**](NonEmployeeLifecycleManagementApi.md#ExportNonEmployeeSourceSchemaTemplate) | **Get** /non-employee-sources/{id}/schema-attributes-template/download | Exports Source Schema Template
-[**GetNonEmployeeApproval**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeApproval) | **Get** /non-employee-approvals/{id} | Get a non-employee approval item detail
-[**GetNonEmployeeApprovalSummary**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeApprovalSummary) | **Get** /non-employee-approvals/summary/{requested-for} | Get Summary of Non-Employee Approval Requests
-[**GetNonEmployeeBulkUploadStatus**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeBulkUploadStatus) | **Get** /non-employee-sources/{id}/non-employee-bulk-upload/status | Obtain the status of bulk upload on the source
-[**GetNonEmployeeRecord**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeRecord) | **Get** /non-employee-records/{id} | Get a Non-Employee Record
-[**GetNonEmployeeRequest**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeRequest) | **Get** /non-employee-requests/{id} | Get a Non-Employee Request
-[**GetNonEmployeeRequestSummary**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeRequestSummary) | **Get** /non-employee-requests/summary/{requested-for} | Get Summary of Non-Employee Requests
-[**GetNonEmployeeSchemaAttribute**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeSchemaAttribute) | **Get** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Get Schema Attribute Non-Employee Source
-[**GetNonEmployeeSource**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeSource) | **Get** /non-employee-sources/{sourceId} | Get a Non-Employee Source
-[**GetNonEmployeeSourceSchemaAttributes**](NonEmployeeLifecycleManagementApi.md#GetNonEmployeeSourceSchemaAttributes) | **Get** /non-employee-sources/{sourceId}/schema-attributes | List Schema Attributes Non-Employee Source
-[**ImportNonEmployeeRecordsInBulk**](NonEmployeeLifecycleManagementApi.md#ImportNonEmployeeRecordsInBulk) | **Post** /non-employee-sources/{id}/non-employee-bulk-upload | Imports, or Updates, Non-Employee Records
-[**ListNonEmployeeApprovals**](NonEmployeeLifecycleManagementApi.md#ListNonEmployeeApprovals) | **Get** /non-employee-approvals | Get List of Non-Employee Approval Requests
-[**ListNonEmployeeRecords**](NonEmployeeLifecycleManagementApi.md#ListNonEmployeeRecords) | **Get** /non-employee-records | List Non-Employee Records
-[**ListNonEmployeeRequests**](NonEmployeeLifecycleManagementApi.md#ListNonEmployeeRequests) | **Get** /non-employee-requests | List Non-Employee Requests
-[**ListNonEmployeeSources**](NonEmployeeLifecycleManagementApi.md#ListNonEmployeeSources) | **Get** /non-employee-sources | List Non-Employee Sources
-[**PatchNonEmployeeRecord**](NonEmployeeLifecycleManagementApi.md#PatchNonEmployeeRecord) | **Patch** /non-employee-records/{id} | Patch Non-Employee Record
-[**PatchNonEmployeeSchemaAttribute**](NonEmployeeLifecycleManagementApi.md#PatchNonEmployeeSchemaAttribute) | **Patch** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Patch a Schema Attribute for Non-Employee Source
-[**PatchNonEmployeeSource**](NonEmployeeLifecycleManagementApi.md#PatchNonEmployeeSource) | **Patch** /non-employee-sources/{sourceId} | Patch a Non-Employee Source
-[**RejectNonEmployeeRequest**](NonEmployeeLifecycleManagementApi.md#RejectNonEmployeeRequest) | **Post** /non-employee-approvals/{id}/reject | Reject a Non-Employee Request
-[**UpdateNonEmployeeRecord**](NonEmployeeLifecycleManagementApi.md#UpdateNonEmployeeRecord) | **Put** /non-employee-records/{id} | Update Non-Employee Record
+[**ApproveNonEmployeeRequest**](NonEmployeeLifecycleManagementAPI.md#ApproveNonEmployeeRequest) | **Post** /non-employee-approvals/{id}/approve | Approve a Non-Employee Request
+[**CreateNonEmployeeRecord**](NonEmployeeLifecycleManagementAPI.md#CreateNonEmployeeRecord) | **Post** /non-employee-records | Create Non-Employee Record
+[**CreateNonEmployeeRequest**](NonEmployeeLifecycleManagementAPI.md#CreateNonEmployeeRequest) | **Post** /non-employee-requests | Create Non-Employee Request
+[**CreateNonEmployeeSource**](NonEmployeeLifecycleManagementAPI.md#CreateNonEmployeeSource) | **Post** /non-employee-sources | Create Non-Employee Source
+[**CreateNonEmployeeSourceSchemaAttributes**](NonEmployeeLifecycleManagementAPI.md#CreateNonEmployeeSourceSchemaAttributes) | **Post** /non-employee-sources/{sourceId}/schema-attributes | Create a new Schema Attribute for Non-Employee Source
+[**DeleteNonEmployeeRecord**](NonEmployeeLifecycleManagementAPI.md#DeleteNonEmployeeRecord) | **Delete** /non-employee-records/{id} | Delete Non-Employee Record
+[**DeleteNonEmployeeRecordsInBulk**](NonEmployeeLifecycleManagementAPI.md#DeleteNonEmployeeRecordsInBulk) | **Post** /non-employee-records/bulk-delete | Delete Multiple Non-Employee Records
+[**DeleteNonEmployeeRequest**](NonEmployeeLifecycleManagementAPI.md#DeleteNonEmployeeRequest) | **Delete** /non-employee-requests/{id} | Delete Non-Employee Request
+[**DeleteNonEmployeeSchemaAttribute**](NonEmployeeLifecycleManagementAPI.md#DeleteNonEmployeeSchemaAttribute) | **Delete** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Delete a Schema Attribute for Non-Employee Source
+[**DeleteNonEmployeeSource**](NonEmployeeLifecycleManagementAPI.md#DeleteNonEmployeeSource) | **Delete** /non-employee-sources/{sourceId} | Delete Non-Employee Source
+[**DeleteNonEmployeeSourceSchemaAttributes**](NonEmployeeLifecycleManagementAPI.md#DeleteNonEmployeeSourceSchemaAttributes) | **Delete** /non-employee-sources/{sourceId}/schema-attributes | Delete all custom schema attributes for Non-Employee Source
+[**ExportNonEmployeeRecords**](NonEmployeeLifecycleManagementAPI.md#ExportNonEmployeeRecords) | **Get** /non-employee-sources/{id}/non-employees/download | Exports Non-Employee Records to CSV
+[**ExportNonEmployeeSourceSchemaTemplate**](NonEmployeeLifecycleManagementAPI.md#ExportNonEmployeeSourceSchemaTemplate) | **Get** /non-employee-sources/{id}/schema-attributes-template/download | Exports Source Schema Template
+[**GetNonEmployeeApproval**](NonEmployeeLifecycleManagementAPI.md#GetNonEmployeeApproval) | **Get** /non-employee-approvals/{id} | Get a non-employee approval item detail
+[**GetNonEmployeeApprovalSummary**](NonEmployeeLifecycleManagementAPI.md#GetNonEmployeeApprovalSummary) | **Get** /non-employee-approvals/summary/{requested-for} | Get Summary of Non-Employee Approval Requests
+[**GetNonEmployeeBulkUploadStatus**](NonEmployeeLifecycleManagementAPI.md#GetNonEmployeeBulkUploadStatus) | **Get** /non-employee-sources/{id}/non-employee-bulk-upload/status | Obtain the status of bulk upload on the source
+[**GetNonEmployeeRecord**](NonEmployeeLifecycleManagementAPI.md#GetNonEmployeeRecord) | **Get** /non-employee-records/{id} | Get a Non-Employee Record
+[**GetNonEmployeeRequest**](NonEmployeeLifecycleManagementAPI.md#GetNonEmployeeRequest) | **Get** /non-employee-requests/{id} | Get a Non-Employee Request
+[**GetNonEmployeeRequestSummary**](NonEmployeeLifecycleManagementAPI.md#GetNonEmployeeRequestSummary) | **Get** /non-employee-requests/summary/{requested-for} | Get Summary of Non-Employee Requests
+[**GetNonEmployeeSchemaAttribute**](NonEmployeeLifecycleManagementAPI.md#GetNonEmployeeSchemaAttribute) | **Get** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Get Schema Attribute Non-Employee Source
+[**GetNonEmployeeSource**](NonEmployeeLifecycleManagementAPI.md#GetNonEmployeeSource) | **Get** /non-employee-sources/{sourceId} | Get a Non-Employee Source
+[**GetNonEmployeeSourceSchemaAttributes**](NonEmployeeLifecycleManagementAPI.md#GetNonEmployeeSourceSchemaAttributes) | **Get** /non-employee-sources/{sourceId}/schema-attributes | List Schema Attributes Non-Employee Source
+[**ImportNonEmployeeRecordsInBulk**](NonEmployeeLifecycleManagementAPI.md#ImportNonEmployeeRecordsInBulk) | **Post** /non-employee-sources/{id}/non-employee-bulk-upload | Imports, or Updates, Non-Employee Records
+[**ListNonEmployeeApprovals**](NonEmployeeLifecycleManagementAPI.md#ListNonEmployeeApprovals) | **Get** /non-employee-approvals | Get List of Non-Employee Approval Requests
+[**ListNonEmployeeRecords**](NonEmployeeLifecycleManagementAPI.md#ListNonEmployeeRecords) | **Get** /non-employee-records | List Non-Employee Records
+[**ListNonEmployeeRequests**](NonEmployeeLifecycleManagementAPI.md#ListNonEmployeeRequests) | **Get** /non-employee-requests | List Non-Employee Requests
+[**ListNonEmployeeSources**](NonEmployeeLifecycleManagementAPI.md#ListNonEmployeeSources) | **Get** /non-employee-sources | List Non-Employee Sources
+[**PatchNonEmployeeRecord**](NonEmployeeLifecycleManagementAPI.md#PatchNonEmployeeRecord) | **Patch** /non-employee-records/{id} | Patch Non-Employee Record
+[**PatchNonEmployeeSchemaAttribute**](NonEmployeeLifecycleManagementAPI.md#PatchNonEmployeeSchemaAttribute) | **Patch** /non-employee-sources/{sourceId}/schema-attributes/{attributeId} | Patch a Schema Attribute for Non-Employee Source
+[**PatchNonEmployeeSource**](NonEmployeeLifecycleManagementAPI.md#PatchNonEmployeeSource) | **Patch** /non-employee-sources/{sourceId} | Patch a Non-Employee Source
+[**RejectNonEmployeeRequest**](NonEmployeeLifecycleManagementAPI.md#RejectNonEmployeeRequest) | **Post** /non-employee-approvals/{id}/reject | Reject a Non-Employee Request
+[**UpdateNonEmployeeRecord**](NonEmployeeLifecycleManagementAPI.md#UpdateNonEmployeeRecord) | **Put** /non-employee-records/{id} | Update Non-Employee Record
 
 
 
@@ -56,7 +56,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -65,13 +65,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.ApproveNonEmployeeRequest(context.Background(), id).NonEmployeeApprovalDecision(nonEmployeeApprovalDecision).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequest(context.Background(), id).NonEmployeeApprovalDecision(nonEmployeeApprovalDecision).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.ApproveNonEmployeeRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ApproveNonEmployeeRequest`: NonEmployeeApprovalItem
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.ApproveNonEmployeeRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequest`: %v\n", resp)
 }
 ```
 
@@ -129,7 +129,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -137,13 +137,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.CreateNonEmployeeRecord(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecord(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.CreateNonEmployeeRecord``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateNonEmployeeRecord`: NonEmployeeRecord
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.CreateNonEmployeeRecord`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecord`: %v\n", resp)
 }
 ```
 
@@ -196,7 +196,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -204,13 +204,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.CreateNonEmployeeRequest(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequest(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.CreateNonEmployeeRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateNonEmployeeRequest`: NonEmployeeRequest
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.CreateNonEmployeeRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequest`: %v\n", resp)
 }
 ```
 
@@ -262,7 +262,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -270,13 +270,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.CreateNonEmployeeSource(context.Background()).NonEmployeeSourceRequestBody(nonEmployeeSourceRequestBody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSource(context.Background()).NonEmployeeSourceRequestBody(nonEmployeeSourceRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.CreateNonEmployeeSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateNonEmployeeSource`: NonEmployeeSourceWithCloudExternalId
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.CreateNonEmployeeSource`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSource`: %v\n", resp)
 }
 ```
 
@@ -328,7 +328,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -337,13 +337,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.CreateNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).NonEmployeeSchemaAttributeBody(nonEmployeeSchemaAttributeBody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).NonEmployeeSchemaAttributeBody(nonEmployeeSchemaAttributeBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.CreateNonEmployeeSourceSchemaAttributes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateNonEmployeeSourceSchemaAttributes`: NonEmployeeSchemaAttribute
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.CreateNonEmployeeSourceSchemaAttributes`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributes`: %v\n", resp)
 }
 ```
 
@@ -400,7 +400,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -408,9 +408,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeRecord(context.Background(), id).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecord(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.DeleteNonEmployeeRecord``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -468,7 +468,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -476,9 +476,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeRecordsInBulk(context.Background()).DeleteNonEmployeeRecordsInBulkRequest(deleteNonEmployeeRecordsInBulkRequest).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordsInBulk(context.Background()).DeleteNonEmployeeRecordsInBulkRequest(deleteNonEmployeeRecordsInBulkRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.DeleteNonEmployeeRecordsInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordsInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -532,7 +532,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -540,9 +540,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeRequest(context.Background(), id).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRequest(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.DeleteNonEmployeeRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -600,7 +600,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -609,9 +609,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.DeleteNonEmployeeSchemaAttribute``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSchemaAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -671,7 +671,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -679,9 +679,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeSource(context.Background(), sourceId).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSource(context.Background(), sourceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.DeleteNonEmployeeSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -739,7 +739,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -747,9 +747,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.DeleteNonEmployeeSourceSchemaAttributes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceSchemaAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -807,7 +807,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -815,9 +815,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.ExportNonEmployeeRecords(context.Background(), id).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeRecords(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.ExportNonEmployeeRecords``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ExportNonEmployeeRecords``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -875,7 +875,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -883,9 +883,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.ExportNonEmployeeSourceSchemaTemplate(context.Background(), id).Execute()
+    r, err := apiClient.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeSourceSchemaTemplate(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.ExportNonEmployeeSourceSchemaTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ExportNonEmployeeSourceSchemaTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -943,7 +943,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -952,13 +952,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.GetNonEmployeeApproval(context.Background(), id).IncludeDetail(includeDetail).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApproval(context.Background(), id).IncludeDetail(includeDetail).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.GetNonEmployeeApproval``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApproval``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNonEmployeeApproval`: NonEmployeeApprovalItemDetail
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.GetNonEmployeeApproval`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApproval`: %v\n", resp)
 }
 ```
 
@@ -1015,7 +1015,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1023,13 +1023,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.GetNonEmployeeApprovalSummary(context.Background(), requestedFor).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummary(context.Background(), requestedFor).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.GetNonEmployeeApprovalSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNonEmployeeApprovalSummary`: NonEmployeeApprovalSummary
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.GetNonEmployeeApprovalSummary`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummary`: %v\n", resp)
 }
 ```
 
@@ -1085,7 +1085,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1093,13 +1093,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.GetNonEmployeeBulkUploadStatus(context.Background(), id).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatus(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.GetNonEmployeeBulkUploadStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNonEmployeeBulkUploadStatus`: NonEmployeeBulkUploadStatus
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.GetNonEmployeeBulkUploadStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatus`: %v\n", resp)
 }
 ```
 
@@ -1155,7 +1155,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1163,13 +1163,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.GetNonEmployeeRecord(context.Background(), id).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecord(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.GetNonEmployeeRecord``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNonEmployeeRecord`: NonEmployeeRecord
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.GetNonEmployeeRecord`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecord`: %v\n", resp)
 }
 ```
 
@@ -1225,7 +1225,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1233,13 +1233,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.GetNonEmployeeRequest(context.Background(), id).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequest(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.GetNonEmployeeRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNonEmployeeRequest`: NonEmployeeRequest
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.GetNonEmployeeRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequest`: %v\n", resp)
 }
 ```
 
@@ -1295,7 +1295,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1303,13 +1303,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.GetNonEmployeeRequestSummary(context.Background(), requestedFor).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummary(context.Background(), requestedFor).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.GetNonEmployeeRequestSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNonEmployeeRequestSummary`: NonEmployeeRequestSummary
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.GetNonEmployeeRequestSummary`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummary`: %v\n", resp)
 }
 ```
 
@@ -1365,7 +1365,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1374,13 +1374,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.GetNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.GetNonEmployeeSchemaAttribute``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNonEmployeeSchemaAttribute`: NonEmployeeSchemaAttribute
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.GetNonEmployeeSchemaAttribute`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttribute`: %v\n", resp)
 }
 ```
 
@@ -1438,7 +1438,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1446,13 +1446,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.GetNonEmployeeSource(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSource(context.Background(), sourceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.GetNonEmployeeSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNonEmployeeSource`: NonEmployeeSource
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.GetNonEmployeeSource`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSource`: %v\n", resp)
 }
 ```
 
@@ -1508,7 +1508,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1516,13 +1516,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.GetNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.GetNonEmployeeSourceSchemaAttributes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNonEmployeeSourceSchemaAttributes`: []NonEmployeeSchemaAttribute
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.GetNonEmployeeSourceSchemaAttributes`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributes`: %v\n", resp)
 }
 ```
 
@@ -1578,7 +1578,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1587,13 +1587,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.ImportNonEmployeeRecordsInBulk(context.Background(), id).Data(data).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulk(context.Background(), id).Data(data).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.ImportNonEmployeeRecordsInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ImportNonEmployeeRecordsInBulk`: NonEmployeeBulkUploadJob
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.ImportNonEmployeeRecordsInBulk`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulk`: %v\n", resp)
 }
 ```
 
@@ -1650,7 +1650,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1663,13 +1663,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.ListNonEmployeeApprovals(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovals(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.ListNonEmployeeApprovals``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovals``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListNonEmployeeApprovals`: []NonEmployeeApprovalItem
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.ListNonEmployeeApprovals`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovals`: %v\n", resp)
 }
 ```
 
@@ -1726,7 +1726,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1738,13 +1738,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.ListNonEmployeeRecords(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecords(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.ListNonEmployeeRecords``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecords``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListNonEmployeeRecords`: []NonEmployeeRecord
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.ListNonEmployeeRecords`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecords`: %v\n", resp)
 }
 ```
 
@@ -1800,7 +1800,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1813,13 +1813,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.ListNonEmployeeRequests(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequests(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.ListNonEmployeeRequests``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequests``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListNonEmployeeRequests`: []NonEmployeeRequest
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.ListNonEmployeeRequests`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequests`: %v\n", resp)
 }
 ```
 
@@ -1876,7 +1876,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1889,13 +1889,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.ListNonEmployeeSources(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).NonEmployeeCount(nonEmployeeCount).Sorters(sorters).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeSources(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).NonEmployeeCount(nonEmployeeCount).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.ListNonEmployeeSources``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeSources``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListNonEmployeeSources`: []NonEmployeeSourceWithNECount
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.ListNonEmployeeSources`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.ListNonEmployeeSources`: %v\n", resp)
 }
 ```
 
@@ -1952,7 +1952,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1961,13 +1961,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.PatchNonEmployeeRecord(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecord(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.PatchNonEmployeeRecord``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchNonEmployeeRecord`: NonEmployeeRecord
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.PatchNonEmployeeRecord`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecord`: %v\n", resp)
 }
 ```
 
@@ -2024,7 +2024,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -2034,13 +2034,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.PatchNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.PatchNonEmployeeSchemaAttribute``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchNonEmployeeSchemaAttribute`: NonEmployeeSchemaAttribute
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.PatchNonEmployeeSchemaAttribute`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttribute`: %v\n", resp)
 }
 ```
 
@@ -2099,7 +2099,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -2108,13 +2108,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.PatchNonEmployeeSource(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSource(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.PatchNonEmployeeSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchNonEmployeeSource`: NonEmployeeSource
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.PatchNonEmployeeSource`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSource`: %v\n", resp)
 }
 ```
 
@@ -2171,7 +2171,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -2180,13 +2180,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.RejectNonEmployeeRequest(context.Background(), id).NonEmployeeRejectApprovalDecision(nonEmployeeRejectApprovalDecision).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequest(context.Background(), id).NonEmployeeRejectApprovalDecision(nonEmployeeRejectApprovalDecision).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.RejectNonEmployeeRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RejectNonEmployeeRequest`: NonEmployeeApprovalItem
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.RejectNonEmployeeRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequest`: %v\n", resp)
 }
 ```
 
@@ -2244,7 +2244,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -2253,13 +2253,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementApi.UpdateNonEmployeeRecord(context.Background(), id).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
+    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecord(context.Background(), id).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementApi.UpdateNonEmployeeRecord``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateNonEmployeeRecord`: NonEmployeeRecord
-    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementApi.UpdateNonEmployeeRecord`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecord`: %v\n", resp)
 }
 ```
 

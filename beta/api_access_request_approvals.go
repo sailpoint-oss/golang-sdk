@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// AccessRequestApprovalsApiService AccessRequestApprovalsApi service
-type AccessRequestApprovalsApiService service
+// AccessRequestApprovalsAPIService AccessRequestApprovalsAPI service
+type AccessRequestApprovalsAPIService service
 
 type ApiApproveAccessRequestRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestApprovalsApiService
+	ApiService *AccessRequestApprovalsAPIService
 	approvalId string
 	commentDto *CommentDto
 }
@@ -49,7 +49,7 @@ This endpoint approves an access request approval. Only the owner of the approva
  @param approvalId The id of the approval.
  @return ApiApproveAccessRequestRequest
 */
-func (a *AccessRequestApprovalsApiService) ApproveAccessRequest(ctx context.Context, approvalId string) ApiApproveAccessRequestRequest {
+func (a *AccessRequestApprovalsAPIService) ApproveAccessRequest(ctx context.Context, approvalId string) ApiApproveAccessRequestRequest {
 	return ApiApproveAccessRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,7 +59,7 @@ func (a *AccessRequestApprovalsApiService) ApproveAccessRequest(ctx context.Cont
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *AccessRequestApprovalsApiService) ApproveAccessRequestExecute(r ApiApproveAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AccessRequestApprovalsAPIService) ApproveAccessRequestExecute(r ApiApproveAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -67,7 +67,7 @@ func (a *AccessRequestApprovalsApiService) ApproveAccessRequestExecute(r ApiAppr
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsApiService.ApproveAccessRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsAPIService.ApproveAccessRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,9 +108,9 @@ func (a *AccessRequestApprovalsApiService) ApproveAccessRequestExecute(r ApiAppr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -191,7 +191,7 @@ func (a *AccessRequestApprovalsApiService) ApproveAccessRequestExecute(r ApiAppr
 
 type ApiForwardAccessRequestRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestApprovalsApiService
+	ApiService *AccessRequestApprovalsAPIService
 	approvalId string
 	forwardApprovalDto *ForwardApprovalDto
 }
@@ -215,7 +215,7 @@ This endpoint forwards an access request approval. Only the owner of the approva
  @param approvalId The id of the approval.
  @return ApiForwardAccessRequestRequest
 */
-func (a *AccessRequestApprovalsApiService) ForwardAccessRequest(ctx context.Context, approvalId string) ApiForwardAccessRequestRequest {
+func (a *AccessRequestApprovalsAPIService) ForwardAccessRequest(ctx context.Context, approvalId string) ApiForwardAccessRequestRequest {
 	return ApiForwardAccessRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -225,7 +225,7 @@ func (a *AccessRequestApprovalsApiService) ForwardAccessRequest(ctx context.Cont
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *AccessRequestApprovalsApiService) ForwardAccessRequestExecute(r ApiForwardAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AccessRequestApprovalsAPIService) ForwardAccessRequestExecute(r ApiForwardAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -233,7 +233,7 @@ func (a *AccessRequestApprovalsApiService) ForwardAccessRequestExecute(r ApiForw
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsApiService.ForwardAccessRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsAPIService.ForwardAccessRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -277,9 +277,9 @@ func (a *AccessRequestApprovalsApiService) ForwardAccessRequestExecute(r ApiForw
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -371,7 +371,7 @@ func (a *AccessRequestApprovalsApiService) ForwardAccessRequestExecute(r ApiForw
 
 type ApiGetAccessRequestApprovalSummaryRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestApprovalsApiService
+	ApiService *AccessRequestApprovalsAPIService
 	ownerId *string
 	fromDate *string
 }
@@ -400,7 +400,7 @@ This endpoint returns the number of pending, approved and rejected access reques
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessRequestApprovalSummaryRequest
 */
-func (a *AccessRequestApprovalsApiService) GetAccessRequestApprovalSummary(ctx context.Context) ApiGetAccessRequestApprovalSummaryRequest {
+func (a *AccessRequestApprovalsAPIService) GetAccessRequestApprovalSummary(ctx context.Context) ApiGetAccessRequestApprovalSummaryRequest {
 	return ApiGetAccessRequestApprovalSummaryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -409,7 +409,7 @@ func (a *AccessRequestApprovalsApiService) GetAccessRequestApprovalSummary(ctx c
 
 // Execute executes the request
 //  @return ApprovalSummary
-func (a *AccessRequestApprovalsApiService) GetAccessRequestApprovalSummaryExecute(r ApiGetAccessRequestApprovalSummaryRequest) (*ApprovalSummary, *http.Response, error) {
+func (a *AccessRequestApprovalsAPIService) GetAccessRequestApprovalSummaryExecute(r ApiGetAccessRequestApprovalSummaryRequest) (*ApprovalSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -417,7 +417,7 @@ func (a *AccessRequestApprovalsApiService) GetAccessRequestApprovalSummaryExecut
 		localVarReturnValue  *ApprovalSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsApiService.GetAccessRequestApprovalSummary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsAPIService.GetAccessRequestApprovalSummary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -461,9 +461,9 @@ func (a *AccessRequestApprovalsApiService) GetAccessRequestApprovalSummaryExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -544,7 +544,7 @@ func (a *AccessRequestApprovalsApiService) GetAccessRequestApprovalSummaryExecut
 
 type ApiListCompletedApprovalsRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestApprovalsApiService
+	ApiService *AccessRequestApprovalsAPIService
 	ownerId *string
 	limit *int32
 	offset *int32
@@ -601,7 +601,7 @@ This endpoint returns list of completed approvals. See *owner-id* query paramete
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListCompletedApprovalsRequest
 */
-func (a *AccessRequestApprovalsApiService) ListCompletedApprovals(ctx context.Context) ApiListCompletedApprovalsRequest {
+func (a *AccessRequestApprovalsAPIService) ListCompletedApprovals(ctx context.Context) ApiListCompletedApprovalsRequest {
 	return ApiListCompletedApprovalsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -610,7 +610,7 @@ func (a *AccessRequestApprovalsApiService) ListCompletedApprovals(ctx context.Co
 
 // Execute executes the request
 //  @return []CompletedApproval
-func (a *AccessRequestApprovalsApiService) ListCompletedApprovalsExecute(r ApiListCompletedApprovalsRequest) ([]CompletedApproval, *http.Response, error) {
+func (a *AccessRequestApprovalsAPIService) ListCompletedApprovalsExecute(r ApiListCompletedApprovalsRequest) ([]CompletedApproval, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -618,7 +618,7 @@ func (a *AccessRequestApprovalsApiService) ListCompletedApprovalsExecute(r ApiLi
 		localVarReturnValue  []CompletedApproval
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsApiService.ListCompletedApprovals")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsAPIService.ListCompletedApprovals")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -634,12 +634,21 @@ func (a *AccessRequestApprovalsApiService) ListCompletedApprovalsExecute(r ApiLi
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -674,9 +683,9 @@ func (a *AccessRequestApprovalsApiService) ListCompletedApprovalsExecute(r ApiLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -746,7 +755,7 @@ func (a *AccessRequestApprovalsApiService) ListCompletedApprovalsExecute(r ApiLi
 
 type ApiListPendingApprovalsRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestApprovalsApiService
+	ApiService *AccessRequestApprovalsAPIService
 	ownerId *string
 	limit *int32
 	offset *int32
@@ -803,7 +812,7 @@ This endpoint returns a list of pending approvals. See "owner-id" query paramete
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListPendingApprovalsRequest
 */
-func (a *AccessRequestApprovalsApiService) ListPendingApprovals(ctx context.Context) ApiListPendingApprovalsRequest {
+func (a *AccessRequestApprovalsAPIService) ListPendingApprovals(ctx context.Context) ApiListPendingApprovalsRequest {
 	return ApiListPendingApprovalsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -812,7 +821,7 @@ func (a *AccessRequestApprovalsApiService) ListPendingApprovals(ctx context.Cont
 
 // Execute executes the request
 //  @return []PendingApproval
-func (a *AccessRequestApprovalsApiService) ListPendingApprovalsExecute(r ApiListPendingApprovalsRequest) ([]PendingApproval, *http.Response, error) {
+func (a *AccessRequestApprovalsAPIService) ListPendingApprovalsExecute(r ApiListPendingApprovalsRequest) ([]PendingApproval, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -820,7 +829,7 @@ func (a *AccessRequestApprovalsApiService) ListPendingApprovalsExecute(r ApiList
 		localVarReturnValue  []PendingApproval
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsApiService.ListPendingApprovals")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsAPIService.ListPendingApprovals")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -836,12 +845,21 @@ func (a *AccessRequestApprovalsApiService) ListPendingApprovalsExecute(r ApiList
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -876,9 +894,9 @@ func (a *AccessRequestApprovalsApiService) ListPendingApprovalsExecute(r ApiList
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -948,7 +966,7 @@ func (a *AccessRequestApprovalsApiService) ListPendingApprovalsExecute(r ApiList
 
 type ApiRejectAccessRequestRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestApprovalsApiService
+	ApiService *AccessRequestApprovalsAPIService
 	approvalId string
 	commentDto *CommentDto
 }
@@ -972,7 +990,7 @@ This endpoint rejects an access request approval. Only the owner of the approval
  @param approvalId The id of the approval.
  @return ApiRejectAccessRequestRequest
 */
-func (a *AccessRequestApprovalsApiService) RejectAccessRequest(ctx context.Context, approvalId string) ApiRejectAccessRequestRequest {
+func (a *AccessRequestApprovalsAPIService) RejectAccessRequest(ctx context.Context, approvalId string) ApiRejectAccessRequestRequest {
 	return ApiRejectAccessRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -982,7 +1000,7 @@ func (a *AccessRequestApprovalsApiService) RejectAccessRequest(ctx context.Conte
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *AccessRequestApprovalsApiService) RejectAccessRequestExecute(r ApiRejectAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AccessRequestApprovalsAPIService) RejectAccessRequestExecute(r ApiRejectAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -990,7 +1008,7 @@ func (a *AccessRequestApprovalsApiService) RejectAccessRequestExecute(r ApiRejec
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsApiService.RejectAccessRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestApprovalsAPIService.RejectAccessRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1031,9 +1049,9 @@ func (a *AccessRequestApprovalsApiService) RejectAccessRequestExecute(r ApiRejec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

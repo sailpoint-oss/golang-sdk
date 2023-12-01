@@ -213,8 +213,8 @@ func (o *Filter) UnmarshalJSON(bytes []byte) (err error) {
 	varFilter := _Filter{}
 
 	if err = json.Unmarshal(bytes, &varFilter); err == nil {
-		*o = Filter(varFilter)
-	}
+	*o = Filter(varFilter)
+}
 
 	additionalProperties := make(map[string]interface{})
 

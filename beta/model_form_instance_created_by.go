@@ -137,8 +137,8 @@ func (o *FormInstanceCreatedBy) UnmarshalJSON(bytes []byte) (err error) {
 	varFormInstanceCreatedBy := _FormInstanceCreatedBy{}
 
 	if err = json.Unmarshal(bytes, &varFormInstanceCreatedBy); err == nil {
-		*o = FormInstanceCreatedBy(varFormInstanceCreatedBy)
-	}
+	*o = FormInstanceCreatedBy(varFormInstanceCreatedBy)
+}
 
 	additionalProperties := make(map[string]interface{})
 

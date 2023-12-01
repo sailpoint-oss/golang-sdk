@@ -360,8 +360,8 @@ func (o *ReportResults) UnmarshalJSON(bytes []byte) (err error) {
 	varReportResults := _ReportResults{}
 
 	if err = json.Unmarshal(bytes, &varReportResults); err == nil {
-		*o = ReportResults(varReportResults)
-	}
+	*o = ReportResults(varReportResults)
+}
 
 	additionalProperties := make(map[string]interface{})
 

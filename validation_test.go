@@ -19,7 +19,7 @@ func Test_v3(t *testing.T) {
 
 	t.Run("Test List Accounts", func(t *testing.T) {
 
-		resp, r, err := apiClient.V3.AccountsApi.ListAccounts(context.TODO()).Execute()
+		resp, r, err := apiClient.V3.AccountsAPI.ListAccounts(context.TODO()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -59,7 +59,7 @@ func Test_v3(t *testing.T) {
 
 	t.Run("Test List Transforms", func(t *testing.T) {
 
-		resp, r, err := apiClient.V3.TransformsApi.ListTransforms(context.TODO()).Execute()
+		resp, r, err := apiClient.V3.TransformsAPI.ListTransforms(context.TODO()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -69,7 +69,7 @@ func Test_v3(t *testing.T) {
 
 	t.Run("Test Pagination", func(t *testing.T) {
 
-		resp, r, err := Paginate[v3.Account](apiClient.V3.AccountsApi.ListAccounts(context.TODO()), 0, 10, 100)
+		resp, r, err := Paginate[v3.Account](apiClient.V3.AccountsAPI.ListAccounts(context.TODO()), 0, 10, 100)
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -87,7 +87,7 @@ func Test_beta(t *testing.T) {
 
 	t.Run("Test List Accounts", func(t *testing.T) {
 
-		resp, r, err := apiClient.Beta.AccountsApi.ListAccounts(context.TODO()).Execute()
+		resp, r, err := apiClient.Beta.AccountsAPI.ListAccounts(context.TODO()).Execute()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "during test`: %v\n", err)
 		}
@@ -99,7 +99,7 @@ func Test_beta(t *testing.T) {
 
 	t.Run("Test connector api", func(t *testing.T) {
 
-		resp, r, err := apiClient.Beta.ConnectorsApi.GetConnectorList(context.TODO()).Execute()
+		resp, r, err := apiClient.Beta.ConnectorsAPI.GetConnectorList(context.TODO()).Execute()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "during test`: %v\n", err)
 		}
@@ -112,7 +112,7 @@ func Test_beta(t *testing.T) {
 
 	t.Run("Test List Sources", func(t *testing.T) {
 
-		resp, r, err := apiClient.Beta.SourcesApi.ListSources(context.TODO()).Execute()
+		resp, r, err := apiClient.Beta.SourcesAPI.ListSources(context.TODO()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -122,7 +122,7 @@ func Test_beta(t *testing.T) {
 
 	t.Run("Test Pagination", func(t *testing.T) {
 
-		resp, r, err := Paginate[beta.IdentityProfile](apiClient.Beta.IdentityProfilesApi.ListIdentityProfiles(context.TODO()), 0, 1, 2)
+		resp, r, err := Paginate[beta.IdentityProfile](apiClient.Beta.IdentityProfilesAPI.ListIdentityProfiles(context.TODO()), 0, 1, 2)
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -136,7 +136,7 @@ func Test_v2(t *testing.T) {
 	configuration := NewDefaultConfiguration()
 	apiClient := NewAPIClient(configuration)
 
-	resp, r, err := apiClient.V2.GovernanceGroupsApi.ListWorkgroups(context.TODO()).Execute()
+	resp, r, err := apiClient.V2.GovernanceGroupsAPI.ListWorkgroups(context.TODO()).Execute()
 
 	require.Nil(t, err)
 	require.NotNil(t, resp)
@@ -147,7 +147,7 @@ func Test_cc(t *testing.T) {
 	configuration := NewDefaultConfiguration()
 	apiClient := NewAPIClient(configuration)
 
-	resp, r, err := apiClient.CC.AccountsApi.ListAccounts(context.TODO()).Execute()
+	resp, r, err := apiClient.CC.AccountsAPI.ListAccounts(context.TODO()).Execute()
 
 	require.Nil(t, err)
 	require.NotNil(t, resp)

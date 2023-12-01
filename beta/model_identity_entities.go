@@ -99,8 +99,8 @@ func (o *IdentityEntities) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityEntities := _IdentityEntities{}
 
 	if err = json.Unmarshal(bytes, &varIdentityEntities); err == nil {
-		*o = IdentityEntities(varIdentityEntities)
-	}
+	*o = IdentityEntities(varIdentityEntities)
+}
 
 	additionalProperties := make(map[string]interface{})
 

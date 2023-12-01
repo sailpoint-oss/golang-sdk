@@ -13,7 +13,7 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,12 +21,12 @@ import (
 )
 
 
-// NonEmployeeLifecycleManagementApiService NonEmployeeLifecycleManagementApi service
-type NonEmployeeLifecycleManagementApiService service
+// NonEmployeeLifecycleManagementAPIService NonEmployeeLifecycleManagementAPI service
+type NonEmployeeLifecycleManagementAPIService service
 
 type ApiApproveNonEmployeeRequestRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 	nonEmployeeApprovalDecision *NonEmployeeApprovalDecision
 }
@@ -49,7 +49,7 @@ Approves a non-employee approval request and notifies the next approver. The cur
  @param id Non-Employee approval item id (UUID)
  @return ApiApproveNonEmployeeRequestRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) ApproveNonEmployeeRequest(ctx context.Context, id string) ApiApproveNonEmployeeRequestRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequest(ctx context.Context, id string) ApiApproveNonEmployeeRequestRequest {
 	return ApiApproveNonEmployeeRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,7 +59,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ApproveNonEmployeeRequest(ctx
 
 // Execute executes the request
 //  @return NonEmployeeApprovalItem
-func (a *NonEmployeeLifecycleManagementApiService) ApproveNonEmployeeRequestExecute(r ApiApproveNonEmployeeRequestRequest) (*NonEmployeeApprovalItem, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) ApproveNonEmployeeRequestExecute(r ApiApproveNonEmployeeRequestRequest) (*NonEmployeeApprovalItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -67,7 +67,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ApproveNonEmployeeRequestExec
 		localVarReturnValue  *NonEmployeeApprovalItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.ApproveNonEmployeeRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ApproveNonEmployeeRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -111,9 +111,9 @@ func (a *NonEmployeeLifecycleManagementApiService) ApproveNonEmployeeRequestExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -194,7 +194,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ApproveNonEmployeeRequestExec
 
 type ApiCreateNonEmployeeRecordRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	nonEmployeeRequestBody *NonEmployeeRequestBody
 }
 
@@ -217,7 +217,7 @@ Requires role context of `idn:nesr:create`
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateNonEmployeeRecordRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRecord(ctx context.Context) ApiCreateNonEmployeeRecordRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecord(ctx context.Context) ApiCreateNonEmployeeRecordRequest {
 	return ApiCreateNonEmployeeRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -226,7 +226,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRecord(ctx c
 
 // Execute executes the request
 //  @return NonEmployeeRecord
-func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRecordExecute(r ApiCreateNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRecordExecute(r ApiCreateNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -234,7 +234,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRecordExecut
 		localVarReturnValue  *NonEmployeeRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.CreateNonEmployeeRecord")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.CreateNonEmployeeRecord")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -277,9 +277,9 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRecordExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -360,7 +360,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRecordExecut
 
 type ApiCreateNonEmployeeRequestRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	nonEmployeeRequestBody *NonEmployeeRequestBody
 }
 
@@ -382,7 +382,7 @@ This request will create a non-employee request and notify the approver. Require
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateNonEmployeeRequestRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRequest(ctx context.Context) ApiCreateNonEmployeeRequestRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequest(ctx context.Context) ApiCreateNonEmployeeRequestRequest {
 	return ApiCreateNonEmployeeRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -391,7 +391,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRequest(ctx 
 
 // Execute executes the request
 //  @return NonEmployeeRequest
-func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRequestExecute(r ApiCreateNonEmployeeRequestRequest) (*NonEmployeeRequest, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeRequestExecute(r ApiCreateNonEmployeeRequestRequest) (*NonEmployeeRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -399,7 +399,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRequestExecu
 		localVarReturnValue  *NonEmployeeRequest
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.CreateNonEmployeeRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.CreateNonEmployeeRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -442,9 +442,9 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRequestExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -525,7 +525,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeRequestExecu
 
 type ApiCreateNonEmployeeSourceRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	nonEmployeeSourceRequestBody *NonEmployeeSourceRequestBody
 }
 
@@ -547,7 +547,7 @@ This request will create a non-employee source. Requires role context of `idn:ne
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateNonEmployeeSourceRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSource(ctx context.Context) ApiCreateNonEmployeeSourceRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSource(ctx context.Context) ApiCreateNonEmployeeSourceRequest {
 	return ApiCreateNonEmployeeSourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -556,7 +556,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSource(ctx c
 
 // Execute executes the request
 //  @return NonEmployeeSourceWithCloudExternalId
-func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSourceExecute(r ApiCreateNonEmployeeSourceRequest) (*NonEmployeeSourceWithCloudExternalId, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceExecute(r ApiCreateNonEmployeeSourceRequest) (*NonEmployeeSourceWithCloudExternalId, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -564,7 +564,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSourceExecut
 		localVarReturnValue  *NonEmployeeSourceWithCloudExternalId
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.CreateNonEmployeeSource")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.CreateNonEmployeeSource")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -607,9 +607,9 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSourceExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -690,7 +690,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSourceExecut
 
 type ApiCreateNonEmployeeSourceSchemaAttributesRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	sourceId string
 	nonEmployeeSchemaAttributeBody *NonEmployeeSchemaAttributeBody
 }
@@ -714,7 +714,7 @@ Requires role context of `idn:nesr:create`
  @param sourceId The Source id
  @return ApiCreateNonEmployeeSourceSchemaAttributesRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSourceSchemaAttributes(ctx context.Context, sourceId string) ApiCreateNonEmployeeSourceSchemaAttributesRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchemaAttributes(ctx context.Context, sourceId string) ApiCreateNonEmployeeSourceSchemaAttributesRequest {
 	return ApiCreateNonEmployeeSourceSchemaAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -724,7 +724,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSourceSchema
 
 // Execute executes the request
 //  @return NonEmployeeSchemaAttribute
-func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSourceSchemaAttributesExecute(r ApiCreateNonEmployeeSourceSchemaAttributesRequest) (*NonEmployeeSchemaAttribute, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) CreateNonEmployeeSourceSchemaAttributesExecute(r ApiCreateNonEmployeeSourceSchemaAttributesRequest) (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -732,7 +732,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSourceSchema
 		localVarReturnValue  *NonEmployeeSchemaAttribute
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.CreateNonEmployeeSourceSchemaAttributes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.CreateNonEmployeeSourceSchemaAttributes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -776,9 +776,9 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSourceSchema
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -859,7 +859,7 @@ func (a *NonEmployeeLifecycleManagementApiService) CreateNonEmployeeSourceSchema
 
 type ApiDeleteNonEmployeeRecordRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 }
 
@@ -877,7 +877,7 @@ Requires role context of `idn:nesr:delete`
  @param id Non-Employee record id (UUID)
  @return ApiDeleteNonEmployeeRecordRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRecord(ctx context.Context, id string) ApiDeleteNonEmployeeRecordRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecord(ctx context.Context, id string) ApiDeleteNonEmployeeRecordRequest {
 	return ApiDeleteNonEmployeeRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -886,14 +886,14 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRecord(ctx c
 }
 
 // Execute executes the request
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRecordExecute(r ApiDeleteNonEmployeeRecordRequest) (*http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordExecute(r ApiDeleteNonEmployeeRecordRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.DeleteNonEmployeeRecord")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.DeleteNonEmployeeRecord")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -932,9 +932,9 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRecordExecut
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1006,7 +1006,7 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRecordExecut
 
 type ApiDeleteNonEmployeeRecordsInBulkRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	deleteNonEmployeeRecordsInBulkRequest *DeleteNonEmployeeRecordsInBulkRequest
 }
 
@@ -1028,7 +1028,7 @@ This request will delete multiple non-employee records based on the non-employee
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteNonEmployeeRecordsInBulkRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRecordsInBulk(ctx context.Context) ApiDeleteNonEmployeeRecordsInBulkRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordsInBulk(ctx context.Context) ApiDeleteNonEmployeeRecordsInBulkRequest {
 	return ApiDeleteNonEmployeeRecordsInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1036,14 +1036,14 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRecordsInBul
 }
 
 // Execute executes the request
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRecordsInBulkExecute(r ApiDeleteNonEmployeeRecordsInBulkRequest) (*http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRecordsInBulkExecute(r ApiDeleteNonEmployeeRecordsInBulkRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.DeleteNonEmployeeRecordsInBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.DeleteNonEmployeeRecordsInBulk")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1086,9 +1086,9 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRecordsInBul
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1160,7 +1160,7 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRecordsInBul
 
 type ApiDeleteNonEmployeeRequestRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 }
 
@@ -1178,7 +1178,7 @@ Requires role context of `idn:nesr:delete`
  @param id Non-Employee request id in the UUID format
  @return ApiDeleteNonEmployeeRequestRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRequest(ctx context.Context, id string) ApiDeleteNonEmployeeRequestRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRequest(ctx context.Context, id string) ApiDeleteNonEmployeeRequestRequest {
 	return ApiDeleteNonEmployeeRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1187,14 +1187,14 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRequest(ctx 
 }
 
 // Execute executes the request
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRequestExecute(r ApiDeleteNonEmployeeRequestRequest) (*http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeRequestExecute(r ApiDeleteNonEmployeeRequestRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.DeleteNonEmployeeRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.DeleteNonEmployeeRequest")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1233,9 +1233,9 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRequestExecu
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1318,7 +1318,7 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeRequestExecu
 
 type ApiDeleteNonEmployeeSchemaAttributeRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	attributeId string
 	sourceId string
 }
@@ -1339,7 +1339,7 @@ Requires role context of `idn:nesr:delete`
  @param sourceId The Source id
  @return ApiDeleteNonEmployeeSchemaAttributeRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSchemaAttribute(ctx context.Context, attributeId string, sourceId string) ApiDeleteNonEmployeeSchemaAttributeRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSchemaAttribute(ctx context.Context, attributeId string, sourceId string) ApiDeleteNonEmployeeSchemaAttributeRequest {
 	return ApiDeleteNonEmployeeSchemaAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1349,14 +1349,14 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSchemaAttrib
 }
 
 // Execute executes the request
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSchemaAttributeExecute(r ApiDeleteNonEmployeeSchemaAttributeRequest) (*http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSchemaAttributeExecute(r ApiDeleteNonEmployeeSchemaAttributeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.DeleteNonEmployeeSchemaAttribute")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.DeleteNonEmployeeSchemaAttribute")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1396,9 +1396,9 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSchemaAttrib
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1470,7 +1470,7 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSchemaAttrib
 
 type ApiDeleteNonEmployeeSourceRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	sourceId string
 }
 
@@ -1487,7 +1487,7 @@ This request will delete a non-employee source. Requires role context of `idn:ne
  @param sourceId Source Id
  @return ApiDeleteNonEmployeeSourceRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSource(ctx context.Context, sourceId string) ApiDeleteNonEmployeeSourceRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSource(ctx context.Context, sourceId string) ApiDeleteNonEmployeeSourceRequest {
 	return ApiDeleteNonEmployeeSourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1496,14 +1496,14 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSource(ctx c
 }
 
 // Execute executes the request
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSourceExecute(r ApiDeleteNonEmployeeSourceRequest) (*http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceExecute(r ApiDeleteNonEmployeeSourceRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.DeleteNonEmployeeSource")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.DeleteNonEmployeeSource")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1542,9 +1542,9 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSourceExecut
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1616,7 +1616,7 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSourceExecut
 
 type ApiDeleteNonEmployeeSourceSchemaAttributesRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	sourceId string
 }
 
@@ -1633,7 +1633,7 @@ This end-point deletes all custom schema attributes for a non-employee source. R
  @param sourceId The Source id
  @return ApiDeleteNonEmployeeSourceSchemaAttributesRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSourceSchemaAttributes(ctx context.Context, sourceId string) ApiDeleteNonEmployeeSourceSchemaAttributesRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceSchemaAttributes(ctx context.Context, sourceId string) ApiDeleteNonEmployeeSourceSchemaAttributesRequest {
 	return ApiDeleteNonEmployeeSourceSchemaAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1642,14 +1642,14 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSourceSchema
 }
 
 // Execute executes the request
-func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSourceSchemaAttributesExecute(r ApiDeleteNonEmployeeSourceSchemaAttributesRequest) (*http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) DeleteNonEmployeeSourceSchemaAttributesExecute(r ApiDeleteNonEmployeeSourceSchemaAttributesRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.DeleteNonEmployeeSourceSchemaAttributes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.DeleteNonEmployeeSourceSchemaAttributes")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1688,9 +1688,9 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSourceSchema
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1762,7 +1762,7 @@ func (a *NonEmployeeLifecycleManagementApiService) DeleteNonEmployeeSourceSchema
 
 type ApiExportNonEmployeeRecordsRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 }
 
@@ -1779,7 +1779,7 @@ This requests a CSV download for all non-employees from a provided source. Requi
  @param id Source Id (UUID)
  @return ApiExportNonEmployeeRecordsRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) ExportNonEmployeeRecords(ctx context.Context, id string) ApiExportNonEmployeeRecordsRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeRecords(ctx context.Context, id string) ApiExportNonEmployeeRecordsRequest {
 	return ApiExportNonEmployeeRecordsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1788,14 +1788,14 @@ func (a *NonEmployeeLifecycleManagementApiService) ExportNonEmployeeRecords(ctx 
 }
 
 // Execute executes the request
-func (a *NonEmployeeLifecycleManagementApiService) ExportNonEmployeeRecordsExecute(r ApiExportNonEmployeeRecordsRequest) (*http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeRecordsExecute(r ApiExportNonEmployeeRecordsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.ExportNonEmployeeRecords")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ExportNonEmployeeRecords")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1834,9 +1834,9 @@ func (a *NonEmployeeLifecycleManagementApiService) ExportNonEmployeeRecordsExecu
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1919,7 +1919,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ExportNonEmployeeRecordsExecu
 
 type ApiExportNonEmployeeSourceSchemaTemplateRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 }
 
@@ -1936,7 +1936,7 @@ This requests a download for the Source Schema Template for a provided source. R
  @param id Source Id (UUID)
  @return ApiExportNonEmployeeSourceSchemaTemplateRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) ExportNonEmployeeSourceSchemaTemplate(ctx context.Context, id string) ApiExportNonEmployeeSourceSchemaTemplateRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeSourceSchemaTemplate(ctx context.Context, id string) ApiExportNonEmployeeSourceSchemaTemplateRequest {
 	return ApiExportNonEmployeeSourceSchemaTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1945,14 +1945,14 @@ func (a *NonEmployeeLifecycleManagementApiService) ExportNonEmployeeSourceSchema
 }
 
 // Execute executes the request
-func (a *NonEmployeeLifecycleManagementApiService) ExportNonEmployeeSourceSchemaTemplateExecute(r ApiExportNonEmployeeSourceSchemaTemplateRequest) (*http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) ExportNonEmployeeSourceSchemaTemplateExecute(r ApiExportNonEmployeeSourceSchemaTemplateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.ExportNonEmployeeSourceSchemaTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ExportNonEmployeeSourceSchemaTemplate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1991,9 +1991,9 @@ func (a *NonEmployeeLifecycleManagementApiService) ExportNonEmployeeSourceSchema
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2076,7 +2076,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ExportNonEmployeeSourceSchema
 
 type ApiGetNonEmployeeApprovalRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 	includeDetail *bool
 }
@@ -2103,7 +2103,7 @@ can get any approval.
  @param id Non-Employee approval item id (UUID)
  @return ApiGetNonEmployeeApprovalRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApproval(ctx context.Context, id string) ApiGetNonEmployeeApprovalRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApproval(ctx context.Context, id string) ApiGetNonEmployeeApprovalRequest {
 	return ApiGetNonEmployeeApprovalRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2113,7 +2113,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApproval(ctx co
 
 // Execute executes the request
 //  @return NonEmployeeApprovalItemDetail
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApprovalExecute(r ApiGetNonEmployeeApprovalRequest) (*NonEmployeeApprovalItemDetail, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalExecute(r ApiGetNonEmployeeApprovalRequest) (*NonEmployeeApprovalItemDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2121,7 +2121,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApprovalExecute
 		localVarReturnValue  *NonEmployeeApprovalItemDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.GetNonEmployeeApproval")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeApproval")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2163,9 +2163,9 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApprovalExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2246,7 +2246,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApprovalExecute
 
 type ApiGetNonEmployeeApprovalSummaryRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	requestedFor string
 }
 
@@ -2267,7 +2267,7 @@ as the `requested-for` value. This will provide the approver with a summary of t
  @param requestedFor The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
  @return ApiGetNonEmployeeApprovalSummaryRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApprovalSummary(ctx context.Context, requestedFor string) ApiGetNonEmployeeApprovalSummaryRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummary(ctx context.Context, requestedFor string) ApiGetNonEmployeeApprovalSummaryRequest {
 	return ApiGetNonEmployeeApprovalSummaryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2277,7 +2277,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApprovalSummary
 
 // Execute executes the request
 //  @return NonEmployeeApprovalSummary
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApprovalSummaryExecute(r ApiGetNonEmployeeApprovalSummaryRequest) (*NonEmployeeApprovalSummary, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeApprovalSummaryExecute(r ApiGetNonEmployeeApprovalSummaryRequest) (*NonEmployeeApprovalSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2285,7 +2285,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApprovalSummary
 		localVarReturnValue  *NonEmployeeApprovalSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.GetNonEmployeeApprovalSummary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeApprovalSummary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2324,9 +2324,9 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApprovalSummary
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2407,7 +2407,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeApprovalSummary
 
 type ApiGetNonEmployeeBulkUploadStatusRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 }
 
@@ -2426,7 +2426,7 @@ Requires role context of `idn:nesr:read`
  @param id Source ID (UUID)
  @return ApiGetNonEmployeeBulkUploadStatusRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeBulkUploadStatus(ctx context.Context, id string) ApiGetNonEmployeeBulkUploadStatusRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatus(ctx context.Context, id string) ApiGetNonEmployeeBulkUploadStatusRequest {
 	return ApiGetNonEmployeeBulkUploadStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2436,7 +2436,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeBulkUploadStatu
 
 // Execute executes the request
 //  @return NonEmployeeBulkUploadStatus
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeBulkUploadStatusExecute(r ApiGetNonEmployeeBulkUploadStatusRequest) (*NonEmployeeBulkUploadStatus, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeBulkUploadStatusExecute(r ApiGetNonEmployeeBulkUploadStatusRequest) (*NonEmployeeBulkUploadStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2444,7 +2444,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeBulkUploadStatu
 		localVarReturnValue  *NonEmployeeBulkUploadStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.GetNonEmployeeBulkUploadStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeBulkUploadStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2483,9 +2483,9 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeBulkUploadStatu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2566,7 +2566,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeBulkUploadStatu
 
 type ApiGetNonEmployeeRecordRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 }
 
@@ -2584,7 +2584,7 @@ Requires role context of `idn:nesr:read`
  @param id Non-Employee record id (UUID)
  @return ApiGetNonEmployeeRecordRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRecord(ctx context.Context, id string) ApiGetNonEmployeeRecordRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecord(ctx context.Context, id string) ApiGetNonEmployeeRecordRequest {
 	return ApiGetNonEmployeeRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2594,7 +2594,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRecord(ctx cont
 
 // Execute executes the request
 //  @return NonEmployeeRecord
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRecordExecute(r ApiGetNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRecordExecute(r ApiGetNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2602,7 +2602,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRecordExecute(r
 		localVarReturnValue  *NonEmployeeRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.GetNonEmployeeRecord")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeRecord")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2641,9 +2641,9 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRecordExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2724,7 +2724,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRecordExecute(r
 
 type ApiGetNonEmployeeRequestRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 }
 
@@ -2745,7 +2745,7 @@ can get the non-employee request for any user.
  @param id Non-Employee request id (UUID)
  @return ApiGetNonEmployeeRequestRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequest(ctx context.Context, id string) ApiGetNonEmployeeRequestRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequest(ctx context.Context, id string) ApiGetNonEmployeeRequestRequest {
 	return ApiGetNonEmployeeRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2755,7 +2755,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequest(ctx con
 
 // Execute executes the request
 //  @return NonEmployeeRequest
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequestExecute(r ApiGetNonEmployeeRequestRequest) (*NonEmployeeRequest, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestExecute(r ApiGetNonEmployeeRequestRequest) (*NonEmployeeRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2763,7 +2763,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequestExecute(
 		localVarReturnValue  *NonEmployeeRequest
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.GetNonEmployeeRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2802,9 +2802,9 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequestExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2896,7 +2896,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequestExecute(
 
 type ApiGetNonEmployeeRequestSummaryRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	requestedFor string
 }
 
@@ -2917,7 +2917,7 @@ provided as the `requested-for` value. This will provide the user with a summary
  @param requestedFor The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
  @return ApiGetNonEmployeeRequestSummaryRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequestSummary(ctx context.Context, requestedFor string) ApiGetNonEmployeeRequestSummaryRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummary(ctx context.Context, requestedFor string) ApiGetNonEmployeeRequestSummaryRequest {
 	return ApiGetNonEmployeeRequestSummaryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2927,7 +2927,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequestSummary(
 
 // Execute executes the request
 //  @return NonEmployeeRequestSummary
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequestSummaryExecute(r ApiGetNonEmployeeRequestSummaryRequest) (*NonEmployeeRequestSummary, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeRequestSummaryExecute(r ApiGetNonEmployeeRequestSummaryRequest) (*NonEmployeeRequestSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2935,7 +2935,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequestSummaryE
 		localVarReturnValue  *NonEmployeeRequestSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.GetNonEmployeeRequestSummary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeRequestSummary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2974,9 +2974,9 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequestSummaryE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3057,7 +3057,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeRequestSummaryE
 
 type ApiGetNonEmployeeSchemaAttributeRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	attributeId string
 	sourceId string
 }
@@ -3076,7 +3076,7 @@ This API gets a schema attribute by Id for the specified Non-Employee SourceId. 
  @param sourceId The Source id
  @return ApiGetNonEmployeeSchemaAttributeRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSchemaAttribute(ctx context.Context, attributeId string, sourceId string) ApiGetNonEmployeeSchemaAttributeRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttribute(ctx context.Context, attributeId string, sourceId string) ApiGetNonEmployeeSchemaAttributeRequest {
 	return ApiGetNonEmployeeSchemaAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3087,7 +3087,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSchemaAttribute
 
 // Execute executes the request
 //  @return NonEmployeeSchemaAttribute
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSchemaAttributeExecute(r ApiGetNonEmployeeSchemaAttributeRequest) (*NonEmployeeSchemaAttribute, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSchemaAttributeExecute(r ApiGetNonEmployeeSchemaAttributeRequest) (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3095,7 +3095,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSchemaAttribute
 		localVarReturnValue  *NonEmployeeSchemaAttribute
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.GetNonEmployeeSchemaAttribute")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeSchemaAttribute")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3135,9 +3135,9 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSchemaAttribute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3218,7 +3218,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSchemaAttribute
 
 type ApiGetNonEmployeeSourceRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	sourceId string
 }
 
@@ -3239,7 +3239,7 @@ request sources that they own.
  @param sourceId Source Id
  @return ApiGetNonEmployeeSourceRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSource(ctx context.Context, sourceId string) ApiGetNonEmployeeSourceRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSource(ctx context.Context, sourceId string) ApiGetNonEmployeeSourceRequest {
 	return ApiGetNonEmployeeSourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3249,7 +3249,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSource(ctx cont
 
 // Execute executes the request
 //  @return NonEmployeeSource
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSourceExecute(r ApiGetNonEmployeeSourceRequest) (*NonEmployeeSource, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceExecute(r ApiGetNonEmployeeSourceRequest) (*NonEmployeeSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3257,7 +3257,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSourceExecute(r
 		localVarReturnValue  *NonEmployeeSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.GetNonEmployeeSource")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeSource")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3296,9 +3296,9 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSourceExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3379,7 +3379,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSourceExecute(r
 
 type ApiGetNonEmployeeSourceSchemaAttributesRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	sourceId string
 }
 
@@ -3397,7 +3397,7 @@ Requires role context of `idn:nesr:read` or the user must be an account manager 
  @param sourceId The Source id
  @return ApiGetNonEmployeeSourceSchemaAttributesRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSourceSchemaAttributes(ctx context.Context, sourceId string) ApiGetNonEmployeeSourceSchemaAttributesRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAttributes(ctx context.Context, sourceId string) ApiGetNonEmployeeSourceSchemaAttributesRequest {
 	return ApiGetNonEmployeeSourceSchemaAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3407,7 +3407,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSourceSchemaAtt
 
 // Execute executes the request
 //  @return []NonEmployeeSchemaAttribute
-func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSourceSchemaAttributesExecute(r ApiGetNonEmployeeSourceSchemaAttributesRequest) ([]NonEmployeeSchemaAttribute, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) GetNonEmployeeSourceSchemaAttributesExecute(r ApiGetNonEmployeeSourceSchemaAttributesRequest) ([]NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3415,7 +3415,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSourceSchemaAtt
 		localVarReturnValue  []NonEmployeeSchemaAttribute
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.GetNonEmployeeSourceSchemaAttributes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.GetNonEmployeeSourceSchemaAttributes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3454,9 +3454,9 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSourceSchemaAtt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3548,7 +3548,7 @@ func (a *NonEmployeeLifecycleManagementApiService) GetNonEmployeeSourceSchemaAtt
 
 type ApiImportNonEmployeeRecordsInBulkRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 	data *os.File
 }
@@ -3571,7 +3571,7 @@ This post will import, or update, Non-Employee records found in the CSV. Require
  @param id Source Id (UUID)
  @return ApiImportNonEmployeeRecordsInBulkRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) ImportNonEmployeeRecordsInBulk(ctx context.Context, id string) ApiImportNonEmployeeRecordsInBulkRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBulk(ctx context.Context, id string) ApiImportNonEmployeeRecordsInBulkRequest {
 	return ApiImportNonEmployeeRecordsInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3581,7 +3581,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ImportNonEmployeeRecordsInBul
 
 // Execute executes the request
 //  @return NonEmployeeBulkUploadJob
-func (a *NonEmployeeLifecycleManagementApiService) ImportNonEmployeeRecordsInBulkExecute(r ApiImportNonEmployeeRecordsInBulkRequest) (*NonEmployeeBulkUploadJob, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) ImportNonEmployeeRecordsInBulkExecute(r ApiImportNonEmployeeRecordsInBulkRequest) (*NonEmployeeBulkUploadJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3589,7 +3589,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ImportNonEmployeeRecordsInBul
 		localVarReturnValue  *NonEmployeeBulkUploadJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.ImportNonEmployeeRecordsInBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ImportNonEmployeeRecordsInBulk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3626,12 +3626,10 @@ func (a *NonEmployeeLifecycleManagementApiService) ImportNonEmployeeRecordsInBul
 	var dataLocalVarFileBytes    []byte
 
 	dataLocalVarFormFileName = "data"
-
-
 	dataLocalVarFile := r.data
 
 	if dataLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(dataLocalVarFile)
+		fbs, _ := io.ReadAll(dataLocalVarFile)
 
 		dataLocalVarFileBytes = fbs
 		dataLocalVarFileName = dataLocalVarFile.Name()
@@ -3648,9 +3646,9 @@ func (a *NonEmployeeLifecycleManagementApiService) ImportNonEmployeeRecordsInBul
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3742,7 +3740,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ImportNonEmployeeRecordsInBul
 
 type ApiListNonEmployeeApprovalsRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	requestedFor *string
 	limit *int32
 	offset *int32
@@ -3803,7 +3801,7 @@ can list the approvals for any approver.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNonEmployeeApprovalsRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeApprovals(ctx context.Context) ApiListNonEmployeeApprovalsRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApprovals(ctx context.Context) ApiListNonEmployeeApprovalsRequest {
 	return ApiListNonEmployeeApprovalsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3812,7 +3810,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeApprovals(ctx 
 
 // Execute executes the request
 //  @return []NonEmployeeApprovalItem
-func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeApprovalsExecute(r ApiListNonEmployeeApprovalsRequest) ([]NonEmployeeApprovalItem, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeApprovalsExecute(r ApiListNonEmployeeApprovalsRequest) ([]NonEmployeeApprovalItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3820,7 +3818,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeApprovalsExecu
 		localVarReturnValue  []NonEmployeeApprovalItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.ListNonEmployeeApprovals")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ListNonEmployeeApprovals")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3836,12 +3834,21 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeApprovalsExecu
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -3876,9 +3883,9 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeApprovalsExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3959,7 +3966,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeApprovalsExecu
 
 type ApiListNonEmployeeRecordsRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -4011,7 +4018,7 @@ This gets a list of non-employee records. There are two contextual uses for this
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNonEmployeeRecordsRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRecords(ctx context.Context) ApiListNonEmployeeRecordsRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecords(ctx context.Context) ApiListNonEmployeeRecordsRequest {
 	return ApiListNonEmployeeRecordsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4020,7 +4027,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRecords(ctx co
 
 // Execute executes the request
 //  @return []NonEmployeeRecord
-func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRecordsExecute(r ApiListNonEmployeeRecordsRequest) ([]NonEmployeeRecord, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRecordsExecute(r ApiListNonEmployeeRecordsRequest) ([]NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4028,7 +4035,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRecordsExecute
 		localVarReturnValue  []NonEmployeeRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.ListNonEmployeeRecords")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ListNonEmployeeRecords")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4041,12 +4048,21 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRecordsExecute
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -4081,9 +4097,9 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRecordsExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4164,7 +4180,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRecordsExecute
 
 type ApiListNonEmployeeRequestsRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	requestedFor *string
 	limit *int32
 	offset *int32
@@ -4225,7 +4241,7 @@ provided as the `requested-for` value. This will provide the user with a list of
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNonEmployeeRequestsRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRequests(ctx context.Context) ApiListNonEmployeeRequestsRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequests(ctx context.Context) ApiListNonEmployeeRequestsRequest {
 	return ApiListNonEmployeeRequestsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4234,7 +4250,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRequests(ctx c
 
 // Execute executes the request
 //  @return []NonEmployeeRequest
-func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRequestsExecute(r ApiListNonEmployeeRequestsRequest) ([]NonEmployeeRequest, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeRequestsExecute(r ApiListNonEmployeeRequestsRequest) ([]NonEmployeeRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4242,7 +4258,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRequestsExecut
 		localVarReturnValue  []NonEmployeeRequest
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.ListNonEmployeeRequests")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ListNonEmployeeRequests")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4258,12 +4274,21 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRequestsExecut
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	parameterAddToQuery(localVarQueryParams, "requested-for", r.requestedFor, "")
 	if r.sorters != nil {
@@ -4299,9 +4324,9 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRequestsExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4382,7 +4407,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeRequestsExecut
 
 type ApiListNonEmployeeSourcesRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	requestedFor *string
 	limit *int32
 	offset *int32
@@ -4443,7 +4468,7 @@ provided as the `requested-for` value. This will provide the user with a list of
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNonEmployeeSourcesRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeSources(ctx context.Context) ApiListNonEmployeeSourcesRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSources(ctx context.Context) ApiListNonEmployeeSourcesRequest {
 	return ApiListNonEmployeeSourcesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4452,7 +4477,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeSources(ctx co
 
 // Execute executes the request
 //  @return []NonEmployeeSourceWithNECount
-func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeSourcesExecute(r ApiListNonEmployeeSourcesRequest) ([]NonEmployeeSourceWithNECount, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) ListNonEmployeeSourcesExecute(r ApiListNonEmployeeSourcesRequest) ([]NonEmployeeSourceWithNECount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4460,7 +4485,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeSourcesExecute
 		localVarReturnValue  []NonEmployeeSourceWithNECount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.ListNonEmployeeSources")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.ListNonEmployeeSources")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4476,12 +4501,21 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeSourcesExecute
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	parameterAddToQuery(localVarQueryParams, "requested-for", r.requestedFor, "")
 	if r.nonEmployeeCount != nil {
@@ -4517,9 +4551,9 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeSourcesExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4600,7 +4634,7 @@ func (a *NonEmployeeLifecycleManagementApiService) ListNonEmployeeSourcesExecute
 
 type ApiPatchNonEmployeeRecordRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -4628,7 +4662,7 @@ end date.
  @param id Non-employee record id (UUID)
  @return ApiPatchNonEmployeeRecordRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeRecord(ctx context.Context, id string) ApiPatchNonEmployeeRecordRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecord(ctx context.Context, id string) ApiPatchNonEmployeeRecordRequest {
 	return ApiPatchNonEmployeeRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4638,7 +4672,7 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeRecord(ctx co
 
 // Execute executes the request
 //  @return NonEmployeeRecord
-func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeRecordExecute(r ApiPatchNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeRecordExecute(r ApiPatchNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -4646,7 +4680,7 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeRecordExecute
 		localVarReturnValue  *NonEmployeeRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.PatchNonEmployeeRecord")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.PatchNonEmployeeRecord")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4690,9 +4724,9 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeRecordExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4784,7 +4818,7 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeRecordExecute
 
 type ApiPatchNonEmployeeSchemaAttributeRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	attributeId string
 	sourceId string
 	jsonPatchOperation *[]JsonPatchOperation
@@ -4812,7 +4846,7 @@ Requires role context of `idn:nesr:update`
  @param sourceId The Source id
  @return ApiPatchNonEmployeeSchemaAttributeRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSchemaAttribute(ctx context.Context, attributeId string, sourceId string) ApiPatchNonEmployeeSchemaAttributeRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttribute(ctx context.Context, attributeId string, sourceId string) ApiPatchNonEmployeeSchemaAttributeRequest {
 	return ApiPatchNonEmployeeSchemaAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4823,7 +4857,7 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSchemaAttribu
 
 // Execute executes the request
 //  @return NonEmployeeSchemaAttribute
-func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSchemaAttributeExecute(r ApiPatchNonEmployeeSchemaAttributeRequest) (*NonEmployeeSchemaAttribute, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSchemaAttributeExecute(r ApiPatchNonEmployeeSchemaAttributeRequest) (*NonEmployeeSchemaAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -4831,7 +4865,7 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSchemaAttribu
 		localVarReturnValue  *NonEmployeeSchemaAttribute
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.PatchNonEmployeeSchemaAttribute")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.PatchNonEmployeeSchemaAttribute")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4876,9 +4910,9 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSchemaAttribu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4970,7 +5004,7 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSchemaAttribu
 
 type ApiPatchNonEmployeeSourceRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	sourceId string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -4994,7 +5028,7 @@ patch a non-employee source. (partial update) <br/> Patchable field: **name, des
  @param sourceId Source Id
  @return ApiPatchNonEmployeeSourceRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSource(ctx context.Context, sourceId string) ApiPatchNonEmployeeSourceRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSource(ctx context.Context, sourceId string) ApiPatchNonEmployeeSourceRequest {
 	return ApiPatchNonEmployeeSourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5004,7 +5038,7 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSource(ctx co
 
 // Execute executes the request
 //  @return NonEmployeeSource
-func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSourceExecute(r ApiPatchNonEmployeeSourceRequest) (*NonEmployeeSource, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) PatchNonEmployeeSourceExecute(r ApiPatchNonEmployeeSourceRequest) (*NonEmployeeSource, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -5012,7 +5046,7 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSourceExecute
 		localVarReturnValue  *NonEmployeeSource
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.PatchNonEmployeeSource")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.PatchNonEmployeeSource")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5056,9 +5090,9 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSourceExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5139,7 +5173,7 @@ func (a *NonEmployeeLifecycleManagementApiService) PatchNonEmployeeSourceExecute
 
 type ApiRejectNonEmployeeRequestRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 	nonEmployeeRejectApprovalDecision *NonEmployeeRejectApprovalDecision
 }
@@ -5162,7 +5196,7 @@ This endpoint will reject an approval item request and notify user. The current 
  @param id Non-Employee approval item id (UUID)
  @return ApiRejectNonEmployeeRequestRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) RejectNonEmployeeRequest(ctx context.Context, id string) ApiRejectNonEmployeeRequestRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequest(ctx context.Context, id string) ApiRejectNonEmployeeRequestRequest {
 	return ApiRejectNonEmployeeRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5172,7 +5206,7 @@ func (a *NonEmployeeLifecycleManagementApiService) RejectNonEmployeeRequest(ctx 
 
 // Execute executes the request
 //  @return NonEmployeeApprovalItem
-func (a *NonEmployeeLifecycleManagementApiService) RejectNonEmployeeRequestExecute(r ApiRejectNonEmployeeRequestRequest) (*NonEmployeeApprovalItem, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) RejectNonEmployeeRequestExecute(r ApiRejectNonEmployeeRequestRequest) (*NonEmployeeApprovalItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5180,7 +5214,7 @@ func (a *NonEmployeeLifecycleManagementApiService) RejectNonEmployeeRequestExecu
 		localVarReturnValue  *NonEmployeeApprovalItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.RejectNonEmployeeRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.RejectNonEmployeeRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5224,9 +5258,9 @@ func (a *NonEmployeeLifecycleManagementApiService) RejectNonEmployeeRequestExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5307,7 +5341,7 @@ func (a *NonEmployeeLifecycleManagementApiService) RejectNonEmployeeRequestExecu
 
 type ApiUpdateNonEmployeeRecordRequest struct {
 	ctx context.Context
-	ApiService *NonEmployeeLifecycleManagementApiService
+	ApiService *NonEmployeeLifecycleManagementAPIService
 	id string
 	nonEmployeeRequestBody *NonEmployeeRequestBody
 }
@@ -5335,7 +5369,7 @@ end date.
  @param id Non-employee record id (UUID)
  @return ApiUpdateNonEmployeeRecordRequest
 */
-func (a *NonEmployeeLifecycleManagementApiService) UpdateNonEmployeeRecord(ctx context.Context, id string) ApiUpdateNonEmployeeRecordRequest {
+func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecord(ctx context.Context, id string) ApiUpdateNonEmployeeRecordRequest {
 	return ApiUpdateNonEmployeeRecordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5345,7 +5379,7 @@ func (a *NonEmployeeLifecycleManagementApiService) UpdateNonEmployeeRecord(ctx c
 
 // Execute executes the request
 //  @return NonEmployeeRecord
-func (a *NonEmployeeLifecycleManagementApiService) UpdateNonEmployeeRecordExecute(r ApiUpdateNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
+func (a *NonEmployeeLifecycleManagementAPIService) UpdateNonEmployeeRecordExecute(r ApiUpdateNonEmployeeRecordRequest) (*NonEmployeeRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -5353,7 +5387,7 @@ func (a *NonEmployeeLifecycleManagementApiService) UpdateNonEmployeeRecordExecut
 		localVarReturnValue  *NonEmployeeRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementApiService.UpdateNonEmployeeRecord")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NonEmployeeLifecycleManagementAPIService.UpdateNonEmployeeRecord")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5397,9 +5431,9 @@ func (a *NonEmployeeLifecycleManagementApiService) UpdateNonEmployeeRecordExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

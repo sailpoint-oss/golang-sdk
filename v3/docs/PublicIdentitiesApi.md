@@ -1,10 +1,10 @@
-# \PublicIdentitiesApi
+# \PublicIdentitiesAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPublicIdentities**](PublicIdentitiesApi.md#GetPublicIdentities) | **Get** /public-identities | Get a list of public identities
+[**GetPublicIdentities**](PublicIdentitiesAPI.md#GetPublicIdentities) | **Get** /public-identities | Get a list of public identities
 
 
 
@@ -23,7 +23,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -36,13 +36,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentitiesApi.GetPublicIdentities(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).AddCoreFilters(addCoreFilters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.PublicIdentitiesAPI.GetPublicIdentities(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).AddCoreFilters(addCoreFilters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesApi.GetPublicIdentities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesAPI.GetPublicIdentities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPublicIdentities`: []PublicIdentity
-    fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesApi.GetPublicIdentities`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesAPI.GetPublicIdentities`: %v\n", resp)
 }
 ```
 

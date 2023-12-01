@@ -1,15 +1,15 @@
-# \LifecycleStatesApi
+# \LifecycleStatesAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateLifecycleState**](LifecycleStatesApi.md#CreateLifecycleState) | **Post** /identity-profiles/{identity-profile-id}/lifecycle-states | Create Lifecycle State
-[**DeleteLifecycleState**](LifecycleStatesApi.md#DeleteLifecycleState) | **Delete** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Delete Lifecycle State by ID
-[**GetLifecycleState**](LifecycleStatesApi.md#GetLifecycleState) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Retrieves Lifecycle State
-[**ListLifecycleStates**](LifecycleStatesApi.md#ListLifecycleStates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states | Lists LifecycleStates
-[**SetLifecycleState**](LifecycleStatesApi.md#SetLifecycleState) | **Post** /identities/{identity-id}/set-lifecycle-state | Set Lifecycle State
-[**UpdateLifecycleStates**](LifecycleStatesApi.md#UpdateLifecycleStates) | **Patch** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
+[**CreateLifecycleState**](LifecycleStatesAPI.md#CreateLifecycleState) | **Post** /identity-profiles/{identity-profile-id}/lifecycle-states | Create Lifecycle State
+[**DeleteLifecycleState**](LifecycleStatesAPI.md#DeleteLifecycleState) | **Delete** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Delete Lifecycle State by ID
+[**GetLifecycleState**](LifecycleStatesAPI.md#GetLifecycleState) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Retrieves Lifecycle State
+[**ListLifecycleStates**](LifecycleStatesAPI.md#ListLifecycleStates) | **Get** /identity-profiles/{identity-profile-id}/lifecycle-states | Lists LifecycleStates
+[**SetLifecycleState**](LifecycleStatesAPI.md#SetLifecycleState) | **Post** /identities/{identity-id}/set-lifecycle-state | Set Lifecycle State
+[**UpdateLifecycleStates**](LifecycleStatesAPI.md#UpdateLifecycleStates) | **Patch** /identity-profiles/{identity-profile-id}/lifecycle-states/{lifecycle-state-id} | Update Lifecycle State
 
 
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -39,13 +39,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesApi.CreateLifecycleState(context.Background(), identityProfileId).LifecycleState(lifecycleState).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.CreateLifecycleState(context.Background(), identityProfileId).LifecycleState(lifecycleState).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesApi.CreateLifecycleState``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.CreateLifecycleState``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateLifecycleState`: LifecycleState
-    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesApi.CreateLifecycleState`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.CreateLifecycleState`: %v\n", resp)
 }
 ```
 
@@ -102,7 +102,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -111,13 +111,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesApi.DeleteLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.DeleteLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesApi.DeleteLifecycleState``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.DeleteLifecycleState``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DeleteLifecycleState`: LifecyclestateDeleted
-    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesApi.DeleteLifecycleState`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.DeleteLifecycleState`: %v\n", resp)
 }
 ```
 
@@ -175,7 +175,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -184,13 +184,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesApi.GetLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.GetLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesApi.GetLifecycleState``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.GetLifecycleState``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetLifecycleState`: LifecycleState
-    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesApi.GetLifecycleState`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.GetLifecycleState`: %v\n", resp)
 }
 ```
 
@@ -248,7 +248,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -260,13 +260,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesApi.ListLifecycleStates(context.Background(), identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesApi.ListLifecycleStates``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.ListLifecycleStates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListLifecycleStates`: []LifecycleState
-    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesApi.ListLifecycleStates`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.ListLifecycleStates`: %v\n", resp)
 }
 ```
 
@@ -326,7 +326,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -335,13 +335,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesApi.SetLifecycleState(context.Background(), identityId).SetLifecycleStateRequest(setLifecycleStateRequest).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.SetLifecycleState(context.Background(), identityId).SetLifecycleStateRequest(setLifecycleStateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesApi.SetLifecycleState``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.SetLifecycleState``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SetLifecycleState`: SetLifecycleState200Response
-    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesApi.SetLifecycleState`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.SetLifecycleState`: %v\n", resp)
 }
 ```
 
@@ -398,7 +398,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -408,13 +408,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesApi.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.LifecycleStatesAPI.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesApi.UpdateLifecycleStates``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.UpdateLifecycleStates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateLifecycleStates`: LifecycleState
-    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesApi.UpdateLifecycleStates`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LifecycleStatesAPI.UpdateLifecycleStates`: %v\n", resp)
 }
 ```
 

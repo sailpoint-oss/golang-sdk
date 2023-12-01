@@ -13,19 +13,19 @@ package cc
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// SourcesAccountsApiService SourcesAccountsApi service
-type SourcesAccountsApiService service
+// SourcesAccountsAPIService SourcesAccountsAPI service
+type SourcesAccountsAPIService service
 
 type ApiExportAccountFeedRequest struct {
 	ctx context.Context
-	ApiService *SourcesAccountsApiService
+	ApiService *SourcesAccountsAPIService
 	id string
 }
 
@@ -42,7 +42,7 @@ Exports a CSV of the accounts for a particular source.
  @param id
  @return ApiExportAccountFeedRequest
 */
-func (a *SourcesAccountsApiService) ExportAccountFeed(ctx context.Context, id string) ApiExportAccountFeedRequest {
+func (a *SourcesAccountsAPIService) ExportAccountFeed(ctx context.Context, id string) ApiExportAccountFeedRequest {
 	return ApiExportAccountFeedRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -51,14 +51,14 @@ func (a *SourcesAccountsApiService) ExportAccountFeed(ctx context.Context, id st
 }
 
 // Execute executes the request
-func (a *SourcesAccountsApiService) ExportAccountFeedExecute(r ApiExportAccountFeedRequest) (*http.Response, error) {
+func (a *SourcesAccountsAPIService) ExportAccountFeedExecute(r ApiExportAccountFeedRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAccountsApiService.ExportAccountFeed")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAccountsAPIService.ExportAccountFeed")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -97,9 +97,9 @@ func (a *SourcesAccountsApiService) ExportAccountFeedExecute(r ApiExportAccountF
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

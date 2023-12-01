@@ -140,8 +140,8 @@ func (o *IdentityAttributeConfig1) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityAttributeConfig1 := _IdentityAttributeConfig1{}
 
 	if err = json.Unmarshal(bytes, &varIdentityAttributeConfig1); err == nil {
-		*o = IdentityAttributeConfig1(varIdentityAttributeConfig1)
-	}
+	*o = IdentityAttributeConfig1(varIdentityAttributeConfig1)
+}
 
 	additionalProperties := make(map[string]interface{})
 

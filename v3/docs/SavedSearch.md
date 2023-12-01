@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The saved search ID.  | [optional] 
-**Owner** | Pointer to [**TypedReference**](TypedReference.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the saved search.  | [optional] 
 **Description** | Pointer to **NullableString** | The description of the saved search.  | [optional] 
 **Public** | Pointer to **bool** | Indicates if the saved search is public.  | [optional] [default to false]
@@ -17,6 +15,8 @@ Name | Type | Description | Notes
 **Fields** | Pointer to **[]string** | The fields to be searched against in a multi-field query.  | [optional] 
 **Sort** | Pointer to **[]string** | The fields to be used to sort the search results.  | [optional] 
 **Filters** | Pointer to [**NullableSavedSearchDetailFilters**](SavedSearchDetailFilters.md) |  | [optional] 
+**Id** | Pointer to **string** | The saved search ID.  | [optional] 
+**Owner** | Pointer to [**TypedReference**](TypedReference.md) |  | [optional] 
 
 ## Methods
 
@@ -36,56 +36,6 @@ will change when the set of required properties is changed
 NewSavedSearchWithDefaults instantiates a new SavedSearch object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *SavedSearch) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *SavedSearch) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *SavedSearch) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *SavedSearch) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetOwner
-
-`func (o *SavedSearch) GetOwner() TypedReference`
-
-GetOwner returns the Owner field if non-nil, zero value otherwise.
-
-### GetOwnerOk
-
-`func (o *SavedSearch) GetOwnerOk() (*TypedReference, bool)`
-
-GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOwner
-
-`func (o *SavedSearch) SetOwner(v TypedReference)`
-
-SetOwner sets Owner field to given value.
-
-### HasOwner
-
-`func (o *SavedSearch) HasOwner() bool`
-
-HasOwner returns a boolean if a field has been set.
 
 ### GetName
 
@@ -402,6 +352,56 @@ HasFilters returns a boolean if a field has been set.
 `func (o *SavedSearch) UnsetFilters()`
 
 UnsetFilters ensures that no value is present for Filters, not even an explicit nil
+### GetId
+
+`func (o *SavedSearch) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *SavedSearch) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *SavedSearch) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *SavedSearch) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetOwner
+
+`func (o *SavedSearch) GetOwner() TypedReference`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *SavedSearch) GetOwnerOk() (*TypedReference, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *SavedSearch) SetOwner(v TypedReference)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *SavedSearch) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

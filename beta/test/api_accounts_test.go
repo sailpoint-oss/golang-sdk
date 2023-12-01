@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing AccountsApiService
+Testing AccountsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_AccountsApiService(t *testing.T) {
+func Test_beta_AccountsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AccountsApiService CreateAccount", func(t *testing.T) {
+	t.Run("Test AccountsAPIService CreateAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.AccountsApi.CreateAccount(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.CreateAccount(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService DeleteAccount", func(t *testing.T) {
+	t.Run("Test AccountsAPIService DeleteAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.AccountsApi.DeleteAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.DeleteAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,13 +48,13 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService DisableAccount", func(t *testing.T) {
+	t.Run("Test AccountsAPIService DisableAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.AccountsApi.DisableAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.DisableAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,13 +62,13 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService DisableAccountForIdentity", func(t *testing.T) {
+	t.Run("Test AccountsAPIService DisableAccountForIdentity", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.AccountsApi.DisableAccountForIdentity(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.DisableAccountForIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,11 +76,11 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService DisableAccountsForIdentities", func(t *testing.T) {
+	t.Run("Test AccountsAPIService DisableAccountsForIdentities", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.AccountsApi.DisableAccountsForIdentities(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.DisableAccountsForIdentities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -88,27 +88,13 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService EnableAccount", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.AccountsApi.EnableAccount(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AccountsApiService EnableAccountForIdentity", func(t *testing.T) {
+	t.Run("Test AccountsAPIService EnableAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.AccountsApi.EnableAccountForIdentity(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.EnableAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -116,25 +102,13 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService EnableAccountsForIdentities", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.AccountsApi.EnableAccountsForIdentities(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AccountsApiService GetAccount", func(t *testing.T) {
+	t.Run("Test AccountsAPIService EnableAccountForIdentity", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.AccountsApi.GetAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.EnableAccountForIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -142,13 +116,25 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService GetAccountEntitlements", func(t *testing.T) {
+	t.Run("Test AccountsAPIService EnableAccountsForIdentities", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.EnableAccountsForIdentities(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccountsAPIService GetAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.AccountsApi.GetAccountEntitlements(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.GetAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -156,25 +142,13 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService ListAccounts", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.AccountsApi.ListAccounts(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AccountsApiService PutAccount", func(t *testing.T) {
+	t.Run("Test AccountsAPIService GetAccountEntitlements", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.AccountsApi.PutAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.GetAccountEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -182,13 +156,11 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService ReloadAccount", func(t *testing.T) {
+	t.Run("Test AccountsAPIService ListAccounts", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.AccountsApi.ReloadAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.ListAccounts(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -196,13 +168,13 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService UnlockAccount", func(t *testing.T) {
+	t.Run("Test AccountsAPIService PutAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.AccountsApi.UnlockAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.PutAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -210,13 +182,41 @@ func Test_beta_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService UpdateAccount", func(t *testing.T) {
+	t.Run("Test AccountsAPIService ReloadAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.AccountsApi.UpdateAccount(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.ReloadAccount(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccountsAPIService UnlockAccount", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.UnlockAccount(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AccountsAPIService UpdateAccount", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.AccountsAPI.UpdateAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

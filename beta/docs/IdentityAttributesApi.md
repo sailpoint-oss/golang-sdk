@@ -1,15 +1,15 @@
-# \IdentityAttributesApi
+# \IdentityAttributesAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateIdentityAttribute**](IdentityAttributesApi.md#CreateIdentityAttribute) | **Post** /identity-attributes | Create Identity Attribute
-[**DeleteIdentityAttribute**](IdentityAttributesApi.md#DeleteIdentityAttribute) | **Delete** /identity-attributes/{name} | Delete Identity Attribute
-[**DeleteIdentityAttributesInBulk**](IdentityAttributesApi.md#DeleteIdentityAttributesInBulk) | **Post** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
-[**GetIdentityAttribute**](IdentityAttributesApi.md#GetIdentityAttribute) | **Get** /identity-attributes/{name} | Get Identity Attribute
-[**ListIdentityAttributes**](IdentityAttributesApi.md#ListIdentityAttributes) | **Get** /identity-attributes | List Identity Attributes
-[**PutIdentityAttribute**](IdentityAttributesApi.md#PutIdentityAttribute) | **Put** /identity-attributes/{name} | Update Identity Attribute
+[**CreateIdentityAttribute**](IdentityAttributesAPI.md#CreateIdentityAttribute) | **Post** /identity-attributes | Create Identity Attribute
+[**DeleteIdentityAttribute**](IdentityAttributesAPI.md#DeleteIdentityAttribute) | **Delete** /identity-attributes/{name} | Delete Identity Attribute
+[**DeleteIdentityAttributesInBulk**](IdentityAttributesAPI.md#DeleteIdentityAttributesInBulk) | **Post** /identity-attributes/bulk-delete | Bulk delete Identity Attributes
+[**GetIdentityAttribute**](IdentityAttributesAPI.md#GetIdentityAttribute) | **Get** /identity-attributes/{name} | Get Identity Attribute
+[**ListIdentityAttributes**](IdentityAttributesAPI.md#ListIdentityAttributes) | **Get** /identity-attributes | List Identity Attributes
+[**PutIdentityAttribute**](IdentityAttributesAPI.md#PutIdentityAttribute) | **Put** /identity-attributes/{name} | Update Identity Attribute
 
 
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -38,13 +38,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesApi.CreateIdentityAttribute(context.Background()).IdentityAttribute(identityAttribute).Execute()
+    resp, r, err := apiClient.IdentityAttributesAPI.CreateIdentityAttribute(context.Background()).IdentityAttribute(identityAttribute).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesApi.CreateIdentityAttribute``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.CreateIdentityAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateIdentityAttribute`: IdentityAttribute
-    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesApi.CreateIdentityAttribute`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.CreateIdentityAttribute`: %v\n", resp)
 }
 ```
 
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -104,9 +104,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesApi.DeleteIdentityAttribute(context.Background(), name).Execute()
+    r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttribute(context.Background(), name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesApi.DeleteIdentityAttribute``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.DeleteIdentityAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -164,7 +164,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -172,9 +172,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesApi.DeleteIdentityAttributesInBulk(context.Background()).IdentityAttributeNames(identityAttributeNames).Execute()
+    r, err := apiClient.IdentityAttributesAPI.DeleteIdentityAttributesInBulk(context.Background()).IdentityAttributeNames(identityAttributeNames).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesApi.DeleteIdentityAttributesInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.DeleteIdentityAttributesInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -228,7 +228,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -236,13 +236,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesApi.GetIdentityAttribute(context.Background(), name).Execute()
+    resp, r, err := apiClient.IdentityAttributesAPI.GetIdentityAttribute(context.Background(), name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesApi.GetIdentityAttribute``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.GetIdentityAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityAttribute`: IdentityAttribute
-    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesApi.GetIdentityAttribute`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.GetIdentityAttribute`: %v\n", resp)
 }
 ```
 
@@ -298,7 +298,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -309,13 +309,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesApi.ListIdentityAttributes(context.Background()).IncludeSystem(includeSystem).IncludeSilent(includeSilent).SearchableOnly(searchableOnly).Count(count).Execute()
+    resp, r, err := apiClient.IdentityAttributesAPI.ListIdentityAttributes(context.Background()).IncludeSystem(includeSystem).IncludeSilent(includeSilent).SearchableOnly(searchableOnly).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesApi.ListIdentityAttributes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.ListIdentityAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListIdentityAttributes`: []IdentityAttribute
-    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesApi.ListIdentityAttributes`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.ListIdentityAttributes`: %v\n", resp)
 }
 ```
 
@@ -370,7 +370,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -379,13 +379,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityAttributesApi.PutIdentityAttribute(context.Background(), name).IdentityAttribute(identityAttribute).Execute()
+    resp, r, err := apiClient.IdentityAttributesAPI.PutIdentityAttribute(context.Background(), name).IdentityAttribute(identityAttribute).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesApi.PutIdentityAttribute``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityAttributesAPI.PutIdentityAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutIdentityAttribute`: IdentityAttribute
-    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesApi.PutIdentityAttribute`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityAttributesAPI.PutIdentityAttribute`: %v\n", resp)
 }
 ```
 

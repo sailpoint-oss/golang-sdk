@@ -9,7 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
+"io/ioutil"
 	"log"
 	"mime/multipart"
 	"net/http"
@@ -27,7 +27,7 @@ import (
 	{{#hasOAuthMethods}}
 	"golang.org/x/oauth2"
 	{{/hasOAuthMethods}}
-	retryablehttp "github.com/hashicorp/go-retryablehttp"
+retryablehttp "github.com/hashicorp/go-retryablehttp"
 	{{#withAWSV4Signature}}
 	awsv4 "github.com/aws/aws-sdk-go/aws/signer/v4"
 	awscredentials "github.com/aws/aws-sdk-go/aws/credentials"
@@ -422,7 +422,7 @@ func (c *APIClient) prepareRequest(
 
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-	localVarRequest.Header.Add("X-SailPoint-SDK", "{{packageVersion}}")
+localVarRequest.Header.Add("X-SailPoint-SDK", "{{packageVersion}}")
 
 	if ctx != nil {
 		// add context to the request
@@ -441,7 +441,7 @@ func (c *APIClient) prepareRequest(
 
 			latestToken.SetAuthHeader(localVarRequest)
 		}
-		if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
+if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
 			auth, err := getAccessToken(c.cfg.ClientId, c.cfg.ClientSecret, c.cfg.TokenURL)
 			if err != nil {
 				return nil, err
@@ -507,7 +507,7 @@ func (c *APIClient) prepareRequest(
 		c.cfg.Middleware(localVarRequest)
 	}
 
-{{/withCustomMiddlewareFunction}}
+	{{/withCustomMiddlewareFunction}}
 {{#hasHttpSignatureMethods}}
 	if ctx != nil {
 		// HTTP Signature Authentication. All request headers must be set (including default headers)
@@ -795,16 +795,16 @@ func formatErrorMessage(status string, v interface{}) string {
 	str := ""
 	metaValue := reflect.ValueOf(v).Elem()
 
-	field := metaValue.FieldByName("Title")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s", field.Interface())
-	}
+			field := metaValue.FieldByName("Title")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s", field.Interface())
+		}
 
-	field = metaValue.FieldByName("Detail")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s (%s)", str, field.Interface())
-	}
+		field = metaValue.FieldByName("Detail")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s (%s)", str, field.Interface())
+			}
 
-	// status title (detail)
+// status title (detail)
 	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
 }

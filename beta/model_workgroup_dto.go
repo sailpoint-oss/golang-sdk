@@ -278,8 +278,8 @@ func (o *WorkgroupDto) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkgroupDto := _WorkgroupDto{}
 
 	if err = json.Unmarshal(bytes, &varWorkgroupDto); err == nil {
-		*o = WorkgroupDto(varWorkgroupDto)
-	}
+	*o = WorkgroupDto(varWorkgroupDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

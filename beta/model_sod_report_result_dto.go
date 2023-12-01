@@ -174,8 +174,8 @@ func (o *SodReportResultDto) UnmarshalJSON(bytes []byte) (err error) {
 	varSodReportResultDto := _SodReportResultDto{}
 
 	if err = json.Unmarshal(bytes, &varSodReportResultDto); err == nil {
-		*o = SodReportResultDto(varSodReportResultDto)
-	}
+	*o = SodReportResultDto(varSodReportResultDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

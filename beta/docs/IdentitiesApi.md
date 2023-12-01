@@ -1,15 +1,15 @@
-# \IdentitiesApi
+# \IdentitiesAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteIdentity**](IdentitiesApi.md#DeleteIdentity) | **Delete** /identities/{id} | Deletes an identity.
-[**GetIdentity**](IdentitiesApi.md#GetIdentity) | **Get** /identities/{id} | Identity Details
-[**GetIdentityOwnershipDetails**](IdentitiesApi.md#GetIdentityOwnershipDetails) | **Get** /identities/{identityId}/ownership | Get ownership details
-[**ListIdentities**](IdentitiesApi.md#ListIdentities) | **Get** /identities | List Identities
-[**StartIdentityProcessing**](IdentitiesApi.md#StartIdentityProcessing) | **Post** /identities/process | Process a list of identityIds
-[**SynchronizeAttributesForIdentity**](IdentitiesApi.md#SynchronizeAttributesForIdentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
+[**DeleteIdentity**](IdentitiesAPI.md#DeleteIdentity) | **Delete** /identities/{id} | Deletes an identity.
+[**GetIdentity**](IdentitiesAPI.md#GetIdentity) | **Get** /identities/{id} | Identity Details
+[**GetIdentityOwnershipDetails**](IdentitiesAPI.md#GetIdentityOwnershipDetails) | **Get** /identities/{identityId}/ownership | Get ownership details
+[**ListIdentities**](IdentitiesAPI.md#ListIdentities) | **Get** /identities | List Identities
+[**StartIdentityProcessing**](IdentitiesAPI.md#StartIdentityProcessing) | **Post** /identities/process | Process a list of identityIds
+[**SynchronizeAttributesForIdentity**](IdentitiesAPI.md#SynchronizeAttributesForIdentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
 
 
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -38,9 +38,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesApi.DeleteIdentity(context.Background(), id).Execute()
+    r, err := apiClient.IdentitiesAPI.DeleteIdentity(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesApi.DeleteIdentity``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.DeleteIdentity``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -98,7 +98,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -106,13 +106,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesApi.GetIdentity(context.Background(), id).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.GetIdentity(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesApi.GetIdentity``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetIdentity``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentity`: Identity
-    fmt.Fprintf(os.Stdout, "Response from `IdentitiesApi.GetIdentity`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.GetIdentity`: %v\n", resp)
 }
 ```
 
@@ -168,7 +168,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -176,13 +176,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesApi.GetIdentityOwnershipDetails(context.Background(), identityId).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.GetIdentityOwnershipDetails(context.Background(), identityId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesApi.GetIdentityOwnershipDetails``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetIdentityOwnershipDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityOwnershipDetails`: IdentityOwnershipAssociationDetails
-    fmt.Fprintf(os.Stdout, "Response from `IdentitiesApi.GetIdentityOwnershipDetails`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.GetIdentityOwnershipDetails`: %v\n", resp)
 }
 ```
 
@@ -238,7 +238,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -251,13 +251,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesApi.ListIdentities(context.Background()).Filters(filters).Sorters(sorters).DefaultFilter(defaultFilter).Count(count).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.ListIdentities(context.Background()).Filters(filters).Sorters(sorters).DefaultFilter(defaultFilter).Count(count).Limit(limit).Offset(offset).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesApi.ListIdentities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.ListIdentities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListIdentities`: []Identity
-    fmt.Fprintf(os.Stdout, "Response from `IdentitiesApi.ListIdentities`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.ListIdentities`: %v\n", resp)
 }
 ```
 
@@ -314,7 +314,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -322,13 +322,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesApi.StartIdentityProcessing(context.Background()).ProcessIdentitiesRequest(processIdentitiesRequest).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.StartIdentityProcessing(context.Background()).ProcessIdentitiesRequest(processIdentitiesRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesApi.StartIdentityProcessing``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.StartIdentityProcessing``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `StartIdentityProcessing`: TaskResultResponse
-    fmt.Fprintf(os.Stdout, "Response from `IdentitiesApi.StartIdentityProcessing`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.StartIdentityProcessing`: %v\n", resp)
 }
 ```
 
@@ -380,7 +380,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -388,13 +388,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentitiesApi.SynchronizeAttributesForIdentity(context.Background(), identityId).Execute()
+    resp, r, err := apiClient.IdentitiesAPI.SynchronizeAttributesForIdentity(context.Background(), identityId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesApi.SynchronizeAttributesForIdentity``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.SynchronizeAttributesForIdentity``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SynchronizeAttributesForIdentity`: IdentitySyncJob
-    fmt.Fprintf(os.Stdout, "Response from `IdentitiesApi.SynchronizeAttributesForIdentity`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.SynchronizeAttributesForIdentity`: %v\n", resp)
 }
 ```
 

@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// IdentityHistoryApiService IdentityHistoryApi service
-type IdentityHistoryApiService service
+// IdentityHistoryAPIService IdentityHistoryAPI service
+type IdentityHistoryAPIService service
 
 type ApiCompareIdentitySnapshotsRequest struct {
 	ctx context.Context
-	ApiService *IdentityHistoryApiService
+	ApiService *IdentityHistoryAPIService
 	id string
 	snapshot1 *string
 	snapshot2 *string
@@ -84,7 +84,7 @@ This method gets a difference of count for each access item types for the given 
  @param id The identity id
  @return ApiCompareIdentitySnapshotsRequest
 */
-func (a *IdentityHistoryApiService) CompareIdentitySnapshots(ctx context.Context, id string) ApiCompareIdentitySnapshotsRequest {
+func (a *IdentityHistoryAPIService) CompareIdentitySnapshots(ctx context.Context, id string) ApiCompareIdentitySnapshotsRequest {
 	return ApiCompareIdentitySnapshotsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -94,7 +94,7 @@ func (a *IdentityHistoryApiService) CompareIdentitySnapshots(ctx context.Context
 
 // Execute executes the request
 //  @return []IdentityCompareResponse
-func (a *IdentityHistoryApiService) CompareIdentitySnapshotsExecute(r ApiCompareIdentitySnapshotsRequest) ([]IdentityCompareResponse, *http.Response, error) {
+func (a *IdentityHistoryAPIService) CompareIdentitySnapshotsExecute(r ApiCompareIdentitySnapshotsRequest) ([]IdentityCompareResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -102,7 +102,7 @@ func (a *IdentityHistoryApiService) CompareIdentitySnapshotsExecute(r ApiCompare
 		localVarReturnValue  []IdentityCompareResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.CompareIdentitySnapshots")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.CompareIdentitySnapshots")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -125,12 +125,21 @@ func (a *IdentityHistoryApiService) CompareIdentitySnapshotsExecute(r ApiCompare
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -159,9 +168,9 @@ func (a *IdentityHistoryApiService) CompareIdentitySnapshotsExecute(r ApiCompare
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -242,7 +251,7 @@ func (a *IdentityHistoryApiService) CompareIdentitySnapshotsExecute(r ApiCompare
 
 type ApiCompareIdentitySnapshotsAccessTypeRequest struct {
 	ctx context.Context
-	ApiService *IdentityHistoryApiService
+	ApiService *IdentityHistoryAPIService
 	id string
 	accessType string
 	accessAssociated *bool
@@ -303,7 +312,7 @@ This method gets a list of differences of specific accessType for the given iden
  @param accessType The specific type which needs to be compared
  @return ApiCompareIdentitySnapshotsAccessTypeRequest
 */
-func (a *IdentityHistoryApiService) CompareIdentitySnapshotsAccessType(ctx context.Context, id string, accessType string) ApiCompareIdentitySnapshotsAccessTypeRequest {
+func (a *IdentityHistoryAPIService) CompareIdentitySnapshotsAccessType(ctx context.Context, id string, accessType string) ApiCompareIdentitySnapshotsAccessTypeRequest {
 	return ApiCompareIdentitySnapshotsAccessTypeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -314,7 +323,7 @@ func (a *IdentityHistoryApiService) CompareIdentitySnapshotsAccessType(ctx conte
 
 // Execute executes the request
 //  @return []AccessItemDiff
-func (a *IdentityHistoryApiService) CompareIdentitySnapshotsAccessTypeExecute(r ApiCompareIdentitySnapshotsAccessTypeRequest) ([]AccessItemDiff, *http.Response, error) {
+func (a *IdentityHistoryAPIService) CompareIdentitySnapshotsAccessTypeExecute(r ApiCompareIdentitySnapshotsAccessTypeRequest) ([]AccessItemDiff, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -322,7 +331,7 @@ func (a *IdentityHistoryApiService) CompareIdentitySnapshotsAccessTypeExecute(r 
 		localVarReturnValue  []AccessItemDiff
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.CompareIdentitySnapshotsAccessType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.CompareIdentitySnapshotsAccessType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -346,12 +355,21 @@ func (a *IdentityHistoryApiService) CompareIdentitySnapshotsAccessTypeExecute(r 
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -380,9 +398,9 @@ func (a *IdentityHistoryApiService) CompareIdentitySnapshotsAccessTypeExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -463,7 +481,7 @@ func (a *IdentityHistoryApiService) CompareIdentitySnapshotsAccessTypeExecute(r 
 
 type ApiGetHistoricalIdentityRequest struct {
 	ctx context.Context
-	ApiService *IdentityHistoryApiService
+	ApiService *IdentityHistoryAPIService
 	id string
 }
 
@@ -480,7 +498,7 @@ This method retrieves a specified identity Requires authorization scope of 'idn:
  @param id The identity id
  @return ApiGetHistoricalIdentityRequest
 */
-func (a *IdentityHistoryApiService) GetHistoricalIdentity(ctx context.Context, id string) ApiGetHistoricalIdentityRequest {
+func (a *IdentityHistoryAPIService) GetHistoricalIdentity(ctx context.Context, id string) ApiGetHistoricalIdentityRequest {
 	return ApiGetHistoricalIdentityRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -490,7 +508,7 @@ func (a *IdentityHistoryApiService) GetHistoricalIdentity(ctx context.Context, i
 
 // Execute executes the request
 //  @return IdentityHistoryResponse
-func (a *IdentityHistoryApiService) GetHistoricalIdentityExecute(r ApiGetHistoricalIdentityRequest) (*IdentityHistoryResponse, *http.Response, error) {
+func (a *IdentityHistoryAPIService) GetHistoricalIdentityExecute(r ApiGetHistoricalIdentityRequest) (*IdentityHistoryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -498,7 +516,7 @@ func (a *IdentityHistoryApiService) GetHistoricalIdentityExecute(r ApiGetHistori
 		localVarReturnValue  *IdentityHistoryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.GetHistoricalIdentity")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.GetHistoricalIdentity")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -537,9 +555,9 @@ func (a *IdentityHistoryApiService) GetHistoricalIdentityExecute(r ApiGetHistori
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -620,7 +638,7 @@ func (a *IdentityHistoryApiService) GetHistoricalIdentityExecute(r ApiGetHistori
 
 type ApiGetHistoricalIdentityEventsRequest struct {
 	ctx context.Context
-	ApiService *IdentityHistoryApiService
+	ApiService *IdentityHistoryAPIService
 	id string
 	from *string
 	eventTypes *[]string
@@ -679,7 +697,7 @@ This method retrieves all access events for the identity Requires authorization 
  @param id The identity id
  @return ApiGetHistoricalIdentityEventsRequest
 */
-func (a *IdentityHistoryApiService) GetHistoricalIdentityEvents(ctx context.Context, id string) ApiGetHistoricalIdentityEventsRequest {
+func (a *IdentityHistoryAPIService) GetHistoricalIdentityEvents(ctx context.Context, id string) ApiGetHistoricalIdentityEventsRequest {
 	return ApiGetHistoricalIdentityEventsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -689,7 +707,7 @@ func (a *IdentityHistoryApiService) GetHistoricalIdentityEvents(ctx context.Cont
 
 // Execute executes the request
 //  @return []GetHistoricalIdentityEvents200ResponseInner
-func (a *IdentityHistoryApiService) GetHistoricalIdentityEventsExecute(r ApiGetHistoricalIdentityEventsRequest) ([]GetHistoricalIdentityEvents200ResponseInner, *http.Response, error) {
+func (a *IdentityHistoryAPIService) GetHistoricalIdentityEventsExecute(r ApiGetHistoricalIdentityEventsRequest) ([]GetHistoricalIdentityEvents200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -697,7 +715,7 @@ func (a *IdentityHistoryApiService) GetHistoricalIdentityEventsExecute(r ApiGetH
 		localVarReturnValue  []GetHistoricalIdentityEvents200ResponseInner
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.GetHistoricalIdentityEvents")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.GetHistoricalIdentityEvents")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -720,12 +738,21 @@ func (a *IdentityHistoryApiService) GetHistoricalIdentityEventsExecute(r ApiGetH
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -754,9 +781,9 @@ func (a *IdentityHistoryApiService) GetHistoricalIdentityEventsExecute(r ApiGetH
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -848,7 +875,7 @@ func (a *IdentityHistoryApiService) GetHistoricalIdentityEventsExecute(r ApiGetH
 
 type ApiGetIdentitySnapshotRequest struct {
 	ctx context.Context
-	ApiService *IdentityHistoryApiService
+	ApiService *IdentityHistoryAPIService
 	id string
 	date string
 }
@@ -867,7 +894,7 @@ This method retrieves a specified identity snapshot at a given date Requires aut
  @param date The specified date
  @return ApiGetIdentitySnapshotRequest
 */
-func (a *IdentityHistoryApiService) GetIdentitySnapshot(ctx context.Context, id string, date string) ApiGetIdentitySnapshotRequest {
+func (a *IdentityHistoryAPIService) GetIdentitySnapshot(ctx context.Context, id string, date string) ApiGetIdentitySnapshotRequest {
 	return ApiGetIdentitySnapshotRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -878,7 +905,7 @@ func (a *IdentityHistoryApiService) GetIdentitySnapshot(ctx context.Context, id 
 
 // Execute executes the request
 //  @return IdentityHistoryResponse
-func (a *IdentityHistoryApiService) GetIdentitySnapshotExecute(r ApiGetIdentitySnapshotRequest) (*IdentityHistoryResponse, *http.Response, error) {
+func (a *IdentityHistoryAPIService) GetIdentitySnapshotExecute(r ApiGetIdentitySnapshotRequest) (*IdentityHistoryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -886,7 +913,7 @@ func (a *IdentityHistoryApiService) GetIdentitySnapshotExecute(r ApiGetIdentityS
 		localVarReturnValue  *IdentityHistoryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.GetIdentitySnapshot")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.GetIdentitySnapshot")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -926,9 +953,9 @@ func (a *IdentityHistoryApiService) GetIdentitySnapshotExecute(r ApiGetIdentityS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1009,7 +1036,7 @@ func (a *IdentityHistoryApiService) GetIdentitySnapshotExecute(r ApiGetIdentityS
 
 type ApiGetIdentitySnapshotSummaryRequest struct {
 	ctx context.Context
-	ApiService *IdentityHistoryApiService
+	ApiService *IdentityHistoryAPIService
 	id string
 	before *string
 	interval *string
@@ -1068,7 +1095,7 @@ This method gets the summary for the event count for a specific identity by mont
  @param id The identity id
  @return ApiGetIdentitySnapshotSummaryRequest
 */
-func (a *IdentityHistoryApiService) GetIdentitySnapshotSummary(ctx context.Context, id string) ApiGetIdentitySnapshotSummaryRequest {
+func (a *IdentityHistoryAPIService) GetIdentitySnapshotSummary(ctx context.Context, id string) ApiGetIdentitySnapshotSummaryRequest {
 	return ApiGetIdentitySnapshotSummaryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1078,7 +1105,7 @@ func (a *IdentityHistoryApiService) GetIdentitySnapshotSummary(ctx context.Conte
 
 // Execute executes the request
 //  @return []MetricResponse
-func (a *IdentityHistoryApiService) GetIdentitySnapshotSummaryExecute(r ApiGetIdentitySnapshotSummaryRequest) ([]MetricResponse, *http.Response, error) {
+func (a *IdentityHistoryAPIService) GetIdentitySnapshotSummaryExecute(r ApiGetIdentitySnapshotSummaryRequest) ([]MetricResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1086,7 +1113,7 @@ func (a *IdentityHistoryApiService) GetIdentitySnapshotSummaryExecute(r ApiGetId
 		localVarReturnValue  []MetricResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.GetIdentitySnapshotSummary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.GetIdentitySnapshotSummary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1109,12 +1136,21 @@ func (a *IdentityHistoryApiService) GetIdentitySnapshotSummaryExecute(r ApiGetId
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1143,9 +1179,9 @@ func (a *IdentityHistoryApiService) GetIdentitySnapshotSummaryExecute(r ApiGetId
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1226,7 +1262,7 @@ func (a *IdentityHistoryApiService) GetIdentitySnapshotSummaryExecute(r ApiGetId
 
 type ApiGetIdentityStartDateRequest struct {
 	ctx context.Context
-	ApiService *IdentityHistoryApiService
+	ApiService *IdentityHistoryAPIService
 	id string
 }
 
@@ -1243,7 +1279,7 @@ This method retrieves start date of the identity Requires authorization scope of
  @param id The identity id
  @return ApiGetIdentityStartDateRequest
 */
-func (a *IdentityHistoryApiService) GetIdentityStartDate(ctx context.Context, id string) ApiGetIdentityStartDateRequest {
+func (a *IdentityHistoryAPIService) GetIdentityStartDate(ctx context.Context, id string) ApiGetIdentityStartDateRequest {
 	return ApiGetIdentityStartDateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1253,7 +1289,7 @@ func (a *IdentityHistoryApiService) GetIdentityStartDate(ctx context.Context, id
 
 // Execute executes the request
 //  @return string
-func (a *IdentityHistoryApiService) GetIdentityStartDateExecute(r ApiGetIdentityStartDateRequest) (string, *http.Response, error) {
+func (a *IdentityHistoryAPIService) GetIdentityStartDateExecute(r ApiGetIdentityStartDateRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1261,7 +1297,7 @@ func (a *IdentityHistoryApiService) GetIdentityStartDateExecute(r ApiGetIdentity
 		localVarReturnValue  string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.GetIdentityStartDate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.GetIdentityStartDate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1300,9 +1336,9 @@ func (a *IdentityHistoryApiService) GetIdentityStartDateExecute(r ApiGetIdentity
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1383,7 +1419,7 @@ func (a *IdentityHistoryApiService) GetIdentityStartDateExecute(r ApiGetIdentity
 
 type ApiListHistoricalIdentitiesRequest struct {
 	ctx context.Context
-	ApiService *IdentityHistoryApiService
+	ApiService *IdentityHistoryAPIService
 	startsWithQuery *string
 	isDeleted *bool
 	isActive *bool
@@ -1433,7 +1469,7 @@ This gets the list of identities for the customer. This list end point does not 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListHistoricalIdentitiesRequest
 */
-func (a *IdentityHistoryApiService) ListHistoricalIdentities(ctx context.Context) ApiListHistoricalIdentitiesRequest {
+func (a *IdentityHistoryAPIService) ListHistoricalIdentities(ctx context.Context) ApiListHistoricalIdentitiesRequest {
 	return ApiListHistoricalIdentitiesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1442,7 +1478,7 @@ func (a *IdentityHistoryApiService) ListHistoricalIdentities(ctx context.Context
 
 // Execute executes the request
 //  @return []IdentityListItem
-func (a *IdentityHistoryApiService) ListHistoricalIdentitiesExecute(r ApiListHistoricalIdentitiesRequest) ([]IdentityListItem, *http.Response, error) {
+func (a *IdentityHistoryAPIService) ListHistoricalIdentitiesExecute(r ApiListHistoricalIdentitiesRequest) ([]IdentityListItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1450,7 +1486,7 @@ func (a *IdentityHistoryApiService) ListHistoricalIdentitiesExecute(r ApiListHis
 		localVarReturnValue  []IdentityListItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.ListHistoricalIdentities")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.ListHistoricalIdentities")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1472,9 +1508,15 @@ func (a *IdentityHistoryApiService) ListHistoricalIdentitiesExecute(r ApiListHis
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1503,9 +1545,9 @@ func (a *IdentityHistoryApiService) ListHistoricalIdentitiesExecute(r ApiListHis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1586,7 +1628,7 @@ func (a *IdentityHistoryApiService) ListHistoricalIdentitiesExecute(r ApiListHis
 
 type ApiListIdentityAccessItemsRequest struct {
 	ctx context.Context
-	ApiService *IdentityHistoryApiService
+	ApiService *IdentityHistoryAPIService
 	id string
 	type_ *string
 }
@@ -1610,7 +1652,7 @@ This method retrieves a list of access item for the identity filtered by the acc
  @param id The identity id
  @return ApiListIdentityAccessItemsRequest
 */
-func (a *IdentityHistoryApiService) ListIdentityAccessItems(ctx context.Context, id string) ApiListIdentityAccessItemsRequest {
+func (a *IdentityHistoryAPIService) ListIdentityAccessItems(ctx context.Context, id string) ApiListIdentityAccessItemsRequest {
 	return ApiListIdentityAccessItemsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1620,7 +1662,7 @@ func (a *IdentityHistoryApiService) ListIdentityAccessItems(ctx context.Context,
 
 // Execute executes the request
 //  @return []ListIdentityAccessItems200ResponseInner
-func (a *IdentityHistoryApiService) ListIdentityAccessItemsExecute(r ApiListIdentityAccessItemsRequest) ([]ListIdentityAccessItems200ResponseInner, *http.Response, error) {
+func (a *IdentityHistoryAPIService) ListIdentityAccessItemsExecute(r ApiListIdentityAccessItemsRequest) ([]ListIdentityAccessItems200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1628,7 +1670,7 @@ func (a *IdentityHistoryApiService) ListIdentityAccessItemsExecute(r ApiListIden
 		localVarReturnValue  []ListIdentityAccessItems200ResponseInner
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.ListIdentityAccessItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.ListIdentityAccessItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1670,9 +1712,9 @@ func (a *IdentityHistoryApiService) ListIdentityAccessItemsExecute(r ApiListIden
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1753,7 +1795,7 @@ func (a *IdentityHistoryApiService) ListIdentityAccessItemsExecute(r ApiListIden
 
 type ApiListIdentitySnapshotAccessItemsRequest struct {
 	ctx context.Context
-	ApiService *IdentityHistoryApiService
+	ApiService *IdentityHistoryAPIService
 	id string
 	date string
 	type_ *string
@@ -1779,7 +1821,7 @@ This method retrieves the list of identity access items at a given date filterd 
  @param date The specified date
  @return ApiListIdentitySnapshotAccessItemsRequest
 */
-func (a *IdentityHistoryApiService) ListIdentitySnapshotAccessItems(ctx context.Context, id string, date string) ApiListIdentitySnapshotAccessItemsRequest {
+func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItems(ctx context.Context, id string, date string) ApiListIdentitySnapshotAccessItemsRequest {
 	return ApiListIdentitySnapshotAccessItemsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1790,7 +1832,7 @@ func (a *IdentityHistoryApiService) ListIdentitySnapshotAccessItems(ctx context.
 
 // Execute executes the request
 //  @return []ListIdentityAccessItems200ResponseInner
-func (a *IdentityHistoryApiService) ListIdentitySnapshotAccessItemsExecute(r ApiListIdentitySnapshotAccessItemsRequest) ([]ListIdentityAccessItems200ResponseInner, *http.Response, error) {
+func (a *IdentityHistoryAPIService) ListIdentitySnapshotAccessItemsExecute(r ApiListIdentitySnapshotAccessItemsRequest) ([]ListIdentityAccessItems200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1798,7 +1840,7 @@ func (a *IdentityHistoryApiService) ListIdentitySnapshotAccessItemsExecute(r Api
 		localVarReturnValue  []ListIdentityAccessItems200ResponseInner
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.ListIdentitySnapshotAccessItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.ListIdentitySnapshotAccessItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1841,9 +1883,9 @@ func (a *IdentityHistoryApiService) ListIdentitySnapshotAccessItemsExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1924,7 +1966,7 @@ func (a *IdentityHistoryApiService) ListIdentitySnapshotAccessItemsExecute(r Api
 
 type ApiListIdentitySnapshotsRequest struct {
 	ctx context.Context
-	ApiService *IdentityHistoryApiService
+	ApiService *IdentityHistoryAPIService
 	id string
 	start *string
 	interval *string
@@ -1976,7 +2018,7 @@ This method retrieves all the snapshots for the identity Requires authorization 
  @param id The identity id
  @return ApiListIdentitySnapshotsRequest
 */
-func (a *IdentityHistoryApiService) ListIdentitySnapshots(ctx context.Context, id string) ApiListIdentitySnapshotsRequest {
+func (a *IdentityHistoryAPIService) ListIdentitySnapshots(ctx context.Context, id string) ApiListIdentitySnapshotsRequest {
 	return ApiListIdentitySnapshotsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1986,7 +2028,7 @@ func (a *IdentityHistoryApiService) ListIdentitySnapshots(ctx context.Context, i
 
 // Execute executes the request
 //  @return []IdentitySnapshotSummaryResponse
-func (a *IdentityHistoryApiService) ListIdentitySnapshotsExecute(r ApiListIdentitySnapshotsRequest) ([]IdentitySnapshotSummaryResponse, *http.Response, error) {
+func (a *IdentityHistoryAPIService) ListIdentitySnapshotsExecute(r ApiListIdentitySnapshotsRequest) ([]IdentitySnapshotSummaryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1994,7 +2036,7 @@ func (a *IdentityHistoryApiService) ListIdentitySnapshotsExecute(r ApiListIdenti
 		localVarReturnValue  []IdentitySnapshotSummaryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryApiService.ListIdentitySnapshots")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityHistoryAPIService.ListIdentitySnapshots")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2014,12 +2056,21 @@ func (a *IdentityHistoryApiService) ListIdentitySnapshotsExecute(r ApiListIdenti
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2048,9 +2099,9 @@ func (a *IdentityHistoryApiService) ListIdentitySnapshotsExecute(r ApiListIdenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

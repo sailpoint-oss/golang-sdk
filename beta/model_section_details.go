@@ -174,8 +174,8 @@ func (o *SectionDetails) UnmarshalJSON(bytes []byte) (err error) {
 	varSectionDetails := _SectionDetails{}
 
 	if err = json.Unmarshal(bytes, &varSectionDetails); err == nil {
-		*o = SectionDetails(varSectionDetails)
-	}
+	*o = SectionDetails(varSectionDetails)
+}
 
 	additionalProperties := make(map[string]interface{})
 

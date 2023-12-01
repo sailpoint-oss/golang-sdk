@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// RolesApiService RolesApi service
-type RolesApiService service
+// RolesAPIService RolesAPI service
+type RolesAPIService service
 
 type ApiCreateRoleRequest struct {
 	ctx context.Context
-	ApiService *RolesApiService
+	ApiService *RolesAPIService
 	role *Role
 }
 
@@ -49,7 +49,7 @@ The maximum supported length for the description field is 2000 characters. Longe
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateRoleRequest
 */
-func (a *RolesApiService) CreateRole(ctx context.Context) ApiCreateRoleRequest {
+func (a *RolesAPIService) CreateRole(ctx context.Context) ApiCreateRoleRequest {
 	return ApiCreateRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -58,7 +58,7 @@ func (a *RolesApiService) CreateRole(ctx context.Context) ApiCreateRoleRequest {
 
 // Execute executes the request
 //  @return Role
-func (a *RolesApiService) CreateRoleExecute(r ApiCreateRoleRequest) (*Role, *http.Response, error) {
+func (a *RolesAPIService) CreateRoleExecute(r ApiCreateRoleRequest) (*Role, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -66,7 +66,7 @@ func (a *RolesApiService) CreateRoleExecute(r ApiCreateRoleRequest) (*Role, *htt
 		localVarReturnValue  *Role
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.CreateRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.CreateRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -109,9 +109,9 @@ func (a *RolesApiService) CreateRoleExecute(r ApiCreateRoleRequest) (*Role, *htt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -192,7 +192,7 @@ func (a *RolesApiService) CreateRoleExecute(r ApiCreateRoleRequest) (*Role, *htt
 
 type ApiDeleteBulkRolesRequest struct {
 	ctx context.Context
-	ApiService *RolesApiService
+	ApiService *RolesAPIService
 	roleBulkDeleteRequest *RoleBulkDeleteRequest
 }
 
@@ -215,7 +215,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteBulkRolesRequest
 */
-func (a *RolesApiService) DeleteBulkRoles(ctx context.Context) ApiDeleteBulkRolesRequest {
+func (a *RolesAPIService) DeleteBulkRoles(ctx context.Context) ApiDeleteBulkRolesRequest {
 	return ApiDeleteBulkRolesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -224,7 +224,7 @@ func (a *RolesApiService) DeleteBulkRoles(ctx context.Context) ApiDeleteBulkRole
 
 // Execute executes the request
 //  @return TaskResultDto
-func (a *RolesApiService) DeleteBulkRolesExecute(r ApiDeleteBulkRolesRequest) (*TaskResultDto, *http.Response, error) {
+func (a *RolesAPIService) DeleteBulkRolesExecute(r ApiDeleteBulkRolesRequest) (*TaskResultDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -232,7 +232,7 @@ func (a *RolesApiService) DeleteBulkRolesExecute(r ApiDeleteBulkRolesRequest) (*
 		localVarReturnValue  *TaskResultDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.DeleteBulkRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.DeleteBulkRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -275,9 +275,9 @@ func (a *RolesApiService) DeleteBulkRolesExecute(r ApiDeleteBulkRolesRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -358,7 +358,7 @@ func (a *RolesApiService) DeleteBulkRolesExecute(r ApiDeleteBulkRolesRequest) (*
 
 type ApiDeleteRoleRequest struct {
 	ctx context.Context
-	ApiService *RolesApiService
+	ApiService *RolesAPIService
 	id string
 }
 
@@ -376,7 +376,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required 
  @param id ID of the Role
  @return ApiDeleteRoleRequest
 */
-func (a *RolesApiService) DeleteRole(ctx context.Context, id string) ApiDeleteRoleRequest {
+func (a *RolesAPIService) DeleteRole(ctx context.Context, id string) ApiDeleteRoleRequest {
 	return ApiDeleteRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -385,14 +385,14 @@ func (a *RolesApiService) DeleteRole(ctx context.Context, id string) ApiDeleteRo
 }
 
 // Execute executes the request
-func (a *RolesApiService) DeleteRoleExecute(r ApiDeleteRoleRequest) (*http.Response, error) {
+func (a *RolesAPIService) DeleteRoleExecute(r ApiDeleteRoleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.DeleteRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.DeleteRole")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -431,9 +431,9 @@ func (a *RolesApiService) DeleteRoleExecute(r ApiDeleteRoleRequest) (*http.Respo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -505,7 +505,7 @@ func (a *RolesApiService) DeleteRoleExecute(r ApiDeleteRoleRequest) (*http.Respo
 
 type ApiGetRoleRequest struct {
 	ctx context.Context
-	ApiService *RolesApiService
+	ApiService *RolesAPIService
 	id string
 }
 
@@ -524,7 +524,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required 
  @param id ID of the Role
  @return ApiGetRoleRequest
 */
-func (a *RolesApiService) GetRole(ctx context.Context, id string) ApiGetRoleRequest {
+func (a *RolesAPIService) GetRole(ctx context.Context, id string) ApiGetRoleRequest {
 	return ApiGetRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -534,7 +534,7 @@ func (a *RolesApiService) GetRole(ctx context.Context, id string) ApiGetRoleRequ
 
 // Execute executes the request
 //  @return Role
-func (a *RolesApiService) GetRoleExecute(r ApiGetRoleRequest) (*Role, *http.Response, error) {
+func (a *RolesAPIService) GetRoleExecute(r ApiGetRoleRequest) (*Role, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -542,7 +542,7 @@ func (a *RolesApiService) GetRoleExecute(r ApiGetRoleRequest) (*Role, *http.Resp
 		localVarReturnValue  *Role
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.GetRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -581,9 +581,9 @@ func (a *RolesApiService) GetRoleExecute(r ApiGetRoleRequest) (*Role, *http.Resp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -664,7 +664,7 @@ func (a *RolesApiService) GetRoleExecute(r ApiGetRoleRequest) (*Role, *http.Resp
 
 type ApiGetRoleAssignedIdentitiesRequest struct {
 	ctx context.Context
-	ApiService *RolesApiService
+	ApiService *RolesAPIService
 	id string
 	limit *int32
 	offset *int32
@@ -714,7 +714,7 @@ GetRoleAssignedIdentities List Identities assigned a Role
  @param id ID of the Role for which the assigned Identities are to be listed
  @return ApiGetRoleAssignedIdentitiesRequest
 */
-func (a *RolesApiService) GetRoleAssignedIdentities(ctx context.Context, id string) ApiGetRoleAssignedIdentitiesRequest {
+func (a *RolesAPIService) GetRoleAssignedIdentities(ctx context.Context, id string) ApiGetRoleAssignedIdentitiesRequest {
 	return ApiGetRoleAssignedIdentitiesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -724,7 +724,7 @@ func (a *RolesApiService) GetRoleAssignedIdentities(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return []RoleIdentity
-func (a *RolesApiService) GetRoleAssignedIdentitiesExecute(r ApiGetRoleAssignedIdentitiesRequest) ([]RoleIdentity, *http.Response, error) {
+func (a *RolesAPIService) GetRoleAssignedIdentitiesExecute(r ApiGetRoleAssignedIdentitiesRequest) ([]RoleIdentity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -732,7 +732,7 @@ func (a *RolesApiService) GetRoleAssignedIdentitiesExecute(r ApiGetRoleAssignedI
 		localVarReturnValue  []RoleIdentity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.GetRoleAssignedIdentities")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.GetRoleAssignedIdentities")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -746,12 +746,21 @@ func (a *RolesApiService) GetRoleAssignedIdentitiesExecute(r ApiGetRoleAssignedI
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -786,9 +795,9 @@ func (a *RolesApiService) GetRoleAssignedIdentitiesExecute(r ApiGetRoleAssignedI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -869,7 +878,7 @@ func (a *RolesApiService) GetRoleAssignedIdentitiesExecute(r ApiGetRoleAssignedI
 
 type ApiListRolesRequest struct {
 	ctx context.Context
-	ApiService *RolesApiService
+	ApiService *RolesAPIService
 	forSubadmin *string
 	limit *int32
 	offset *int32
@@ -942,7 +951,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, or ROLE_SUBADMIN authority is required 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListRolesRequest
 */
-func (a *RolesApiService) ListRoles(ctx context.Context) ApiListRolesRequest {
+func (a *RolesAPIService) ListRoles(ctx context.Context) ApiListRolesRequest {
 	return ApiListRolesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -951,7 +960,7 @@ func (a *RolesApiService) ListRoles(ctx context.Context) ApiListRolesRequest {
 
 // Execute executes the request
 //  @return []Role
-func (a *RolesApiService) ListRolesExecute(r ApiListRolesRequest) ([]Role, *http.Response, error) {
+func (a *RolesAPIService) ListRolesExecute(r ApiListRolesRequest) ([]Role, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -959,7 +968,7 @@ func (a *RolesApiService) ListRolesExecute(r ApiListRolesRequest) ([]Role, *http
 		localVarReturnValue  []Role
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.ListRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.ListRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -975,12 +984,21 @@ func (a *RolesApiService) ListRolesExecute(r ApiListRolesRequest) ([]Role, *http
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -993,6 +1011,9 @@ func (a *RolesApiService) ListRolesExecute(r ApiListRolesRequest) ([]Role, *http
 	}
 	if r.includeUnsegmented != nil {
 		parameterAddToQuery(localVarQueryParams, "include-unsegmented", r.includeUnsegmented, "")
+	} else {
+		var defaultValue bool = true
+		r.includeUnsegmented = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1021,9 +1042,9 @@ func (a *RolesApiService) ListRolesExecute(r ApiListRolesRequest) ([]Role, *http
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1104,7 +1125,7 @@ func (a *RolesApiService) ListRolesExecute(r ApiListRolesRequest) ([]Role, *http
 
 type ApiPatchRoleRequest struct {
 	ctx context.Context
-	ApiService *RolesApiService
+	ApiService *RolesAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -1131,7 +1152,7 @@ The maximum supported length for the description field is 2000 characters. Longe
  @param id ID of the Role to patch
  @return ApiPatchRoleRequest
 */
-func (a *RolesApiService) PatchRole(ctx context.Context, id string) ApiPatchRoleRequest {
+func (a *RolesAPIService) PatchRole(ctx context.Context, id string) ApiPatchRoleRequest {
 	return ApiPatchRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1141,7 +1162,7 @@ func (a *RolesApiService) PatchRole(ctx context.Context, id string) ApiPatchRole
 
 // Execute executes the request
 //  @return Role
-func (a *RolesApiService) PatchRoleExecute(r ApiPatchRoleRequest) (*Role, *http.Response, error) {
+func (a *RolesAPIService) PatchRoleExecute(r ApiPatchRoleRequest) (*Role, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -1149,7 +1170,7 @@ func (a *RolesApiService) PatchRoleExecute(r ApiPatchRoleRequest) (*Role, *http.
 		localVarReturnValue  *Role
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesApiService.PatchRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RolesAPIService.PatchRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1193,9 +1214,9 @@ func (a *RolesApiService) PatchRoleExecute(r ApiPatchRoleRequest) (*Role, *http.
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

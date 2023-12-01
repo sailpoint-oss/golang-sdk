@@ -641,8 +641,8 @@ func (o *AccountActivity) UnmarshalJSON(bytes []byte) (err error) {
 	varAccountActivity := _AccountActivity{}
 
 	if err = json.Unmarshal(bytes, &varAccountActivity); err == nil {
-		*o = AccountActivity(varAccountActivity)
-	}
+	*o = AccountActivity(varAccountActivity)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// IAIMessageCatalogsApiService IAIMessageCatalogsApi service
-type IAIMessageCatalogsApiService service
+// IAIMessageCatalogsAPIService IAIMessageCatalogsAPI service
+type IAIMessageCatalogsAPIService service
 
 type ApiGetMessageCatalogsRequest struct {
 	ctx context.Context
-	ApiService *IAIMessageCatalogsApiService
+	ApiService *IAIMessageCatalogsAPIService
 	catalogId string
 }
 
@@ -42,7 +42,7 @@ The getMessageCatalogs API returns message catalog based on the language headers
  @param catalogId The ID of the message catalog.
  @return ApiGetMessageCatalogsRequest
 */
-func (a *IAIMessageCatalogsApiService) GetMessageCatalogs(ctx context.Context, catalogId string) ApiGetMessageCatalogsRequest {
+func (a *IAIMessageCatalogsAPIService) GetMessageCatalogs(ctx context.Context, catalogId string) ApiGetMessageCatalogsRequest {
 	return ApiGetMessageCatalogsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -52,7 +52,7 @@ func (a *IAIMessageCatalogsApiService) GetMessageCatalogs(ctx context.Context, c
 
 // Execute executes the request
 //  @return []MessageCatalogDto
-func (a *IAIMessageCatalogsApiService) GetMessageCatalogsExecute(r ApiGetMessageCatalogsRequest) ([]MessageCatalogDto, *http.Response, error) {
+func (a *IAIMessageCatalogsAPIService) GetMessageCatalogsExecute(r ApiGetMessageCatalogsRequest) ([]MessageCatalogDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -60,7 +60,7 @@ func (a *IAIMessageCatalogsApiService) GetMessageCatalogsExecute(r ApiGetMessage
 		localVarReturnValue  []MessageCatalogDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIMessageCatalogsApiService.GetMessageCatalogs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIMessageCatalogsAPIService.GetMessageCatalogs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -99,9 +99,9 @@ func (a *IAIMessageCatalogsApiService) GetMessageCatalogsExecute(r ApiGetMessage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

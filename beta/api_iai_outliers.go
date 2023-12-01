@@ -13,7 +13,7 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,12 +21,12 @@ import (
 )
 
 
-// IAIOutliersApiService IAIOutliersApi service
-type IAIOutliersApiService service
+// IAIOutliersAPIService IAIOutliersAPI service
+type IAIOutliersAPIService service
 
 type ApiExportOutliersZipRequest struct {
 	ctx context.Context
-	ApiService *IAIOutliersApiService
+	ApiService *IAIOutliersAPIService
 	type_ *string
 }
 
@@ -49,7 +49,7 @@ Requires authorization scope of 'iai:outliers-management:read'
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiExportOutliersZipRequest
 */
-func (a *IAIOutliersApiService) ExportOutliersZip(ctx context.Context) ApiExportOutliersZipRequest {
+func (a *IAIOutliersAPIService) ExportOutliersZip(ctx context.Context) ApiExportOutliersZipRequest {
 	return ApiExportOutliersZipRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -58,7 +58,7 @@ func (a *IAIOutliersApiService) ExportOutliersZip(ctx context.Context) ApiExport
 
 // Execute executes the request
 //  @return *os.File
-func (a *IAIOutliersApiService) ExportOutliersZipExecute(r ApiExportOutliersZipRequest) (*os.File, *http.Response, error) {
+func (a *IAIOutliersAPIService) ExportOutliersZipExecute(r ApiExportOutliersZipRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -66,7 +66,7 @@ func (a *IAIOutliersApiService) ExportOutliersZipExecute(r ApiExportOutliersZipR
 		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersApiService.ExportOutliersZip")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.ExportOutliersZip")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -107,9 +107,9 @@ func (a *IAIOutliersApiService) ExportOutliersZipExecute(r ApiExportOutliersZipR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -190,7 +190,7 @@ func (a *IAIOutliersApiService) ExportOutliersZipExecute(r ApiExportOutliersZipR
 
 type ApiGetIdentityOutlierSnapshotsRequest struct {
 	ctx context.Context
-	ApiService *IAIOutliersApiService
+	ApiService *IAIOutliersAPIService
 	limit *int32
 	offset *int32
 	type_ *string
@@ -241,7 +241,7 @@ Requires authorization scope of 'iai:outliers-management:read'
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIdentityOutlierSnapshotsRequest
 */
-func (a *IAIOutliersApiService) GetIdentityOutlierSnapshots(ctx context.Context) ApiGetIdentityOutlierSnapshotsRequest {
+func (a *IAIOutliersAPIService) GetIdentityOutlierSnapshots(ctx context.Context) ApiGetIdentityOutlierSnapshotsRequest {
 	return ApiGetIdentityOutlierSnapshotsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -250,7 +250,7 @@ func (a *IAIOutliersApiService) GetIdentityOutlierSnapshots(ctx context.Context)
 
 // Execute executes the request
 //  @return []OutlierSummary
-func (a *IAIOutliersApiService) GetIdentityOutlierSnapshotsExecute(r ApiGetIdentityOutlierSnapshotsRequest) ([]OutlierSummary, *http.Response, error) {
+func (a *IAIOutliersAPIService) GetIdentityOutlierSnapshotsExecute(r ApiGetIdentityOutlierSnapshotsRequest) ([]OutlierSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -258,7 +258,7 @@ func (a *IAIOutliersApiService) GetIdentityOutlierSnapshotsExecute(r ApiGetIdent
 		localVarReturnValue  []OutlierSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersApiService.GetIdentityOutlierSnapshots")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.GetIdentityOutlierSnapshots")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -271,9 +271,15 @@ func (a *IAIOutliersApiService) GetIdentityOutlierSnapshotsExecute(r ApiGetIdent
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.type_ != nil {
 		parameterAddToQuery(localVarQueryParams, "type", r.type_, "")
@@ -311,9 +317,9 @@ func (a *IAIOutliersApiService) GetIdentityOutlierSnapshotsExecute(r ApiGetIdent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -394,7 +400,7 @@ func (a *IAIOutliersApiService) GetIdentityOutlierSnapshotsExecute(r ApiGetIdent
 
 type ApiGetIdentityOutliersRequest struct {
 	ctx context.Context
-	ApiService *IAIOutliersApiService
+	ApiService *IAIOutliersAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -452,7 +458,7 @@ Requires authorization scope of 'iai:outliers-management:read'
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetIdentityOutliersRequest
 */
-func (a *IAIOutliersApiService) GetIdentityOutliers(ctx context.Context) ApiGetIdentityOutliersRequest {
+func (a *IAIOutliersAPIService) GetIdentityOutliers(ctx context.Context) ApiGetIdentityOutliersRequest {
 	return ApiGetIdentityOutliersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -461,7 +467,7 @@ func (a *IAIOutliersApiService) GetIdentityOutliers(ctx context.Context) ApiGetI
 
 // Execute executes the request
 //  @return []Outlier
-func (a *IAIOutliersApiService) GetIdentityOutliersExecute(r ApiGetIdentityOutliersRequest) ([]Outlier, *http.Response, error) {
+func (a *IAIOutliersAPIService) GetIdentityOutliersExecute(r ApiGetIdentityOutliersRequest) ([]Outlier, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -469,7 +475,7 @@ func (a *IAIOutliersApiService) GetIdentityOutliersExecute(r ApiGetIdentityOutli
 		localVarReturnValue  []Outlier
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersApiService.GetIdentityOutliers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.GetIdentityOutliers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -482,12 +488,21 @@ func (a *IAIOutliersApiService) GetIdentityOutliersExecute(r ApiGetIdentityOutli
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.type_ != nil {
 		parameterAddToQuery(localVarQueryParams, "type", r.type_, "")
@@ -525,9 +540,9 @@ func (a *IAIOutliersApiService) GetIdentityOutliersExecute(r ApiGetIdentityOutli
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -608,7 +623,7 @@ func (a *IAIOutliersApiService) GetIdentityOutliersExecute(r ApiGetIdentityOutli
 
 type ApiGetLatestIdentityOutlierSnapshotsRequest struct {
 	ctx context.Context
-	ApiService *IAIOutliersApiService
+	ApiService *IAIOutliersAPIService
 	type_ *string
 }
 
@@ -631,7 +646,7 @@ Requires authorization scope of 'iai:outliers-management:read'
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetLatestIdentityOutlierSnapshotsRequest
 */
-func (a *IAIOutliersApiService) GetLatestIdentityOutlierSnapshots(ctx context.Context) ApiGetLatestIdentityOutlierSnapshotsRequest {
+func (a *IAIOutliersAPIService) GetLatestIdentityOutlierSnapshots(ctx context.Context) ApiGetLatestIdentityOutlierSnapshotsRequest {
 	return ApiGetLatestIdentityOutlierSnapshotsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -640,7 +655,7 @@ func (a *IAIOutliersApiService) GetLatestIdentityOutlierSnapshots(ctx context.Co
 
 // Execute executes the request
 //  @return []LatestOutlierSummary
-func (a *IAIOutliersApiService) GetLatestIdentityOutlierSnapshotsExecute(r ApiGetLatestIdentityOutlierSnapshotsRequest) ([]LatestOutlierSummary, *http.Response, error) {
+func (a *IAIOutliersAPIService) GetLatestIdentityOutlierSnapshotsExecute(r ApiGetLatestIdentityOutlierSnapshotsRequest) ([]LatestOutlierSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -648,7 +663,7 @@ func (a *IAIOutliersApiService) GetLatestIdentityOutlierSnapshotsExecute(r ApiGe
 		localVarReturnValue  []LatestOutlierSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersApiService.GetLatestIdentityOutlierSnapshots")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.GetLatestIdentityOutlierSnapshots")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -689,9 +704,9 @@ func (a *IAIOutliersApiService) GetLatestIdentityOutlierSnapshotsExecute(r ApiGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -772,7 +787,7 @@ func (a *IAIOutliersApiService) GetLatestIdentityOutlierSnapshotsExecute(r ApiGe
 
 type ApiGetOutlierContributingFeatureSummaryRequest struct {
 	ctx context.Context
-	ApiService *IAIOutliersApiService
+	ApiService *IAIOutliersAPIService
 	outlierFeatureId string
 }
 
@@ -790,7 +805,7 @@ Requires authorization scope of 'iai:outliers-management:read'
  @param outlierFeatureId Contributing feature id
  @return ApiGetOutlierContributingFeatureSummaryRequest
 */
-func (a *IAIOutliersApiService) GetOutlierContributingFeatureSummary(ctx context.Context, outlierFeatureId string) ApiGetOutlierContributingFeatureSummaryRequest {
+func (a *IAIOutliersAPIService) GetOutlierContributingFeatureSummary(ctx context.Context, outlierFeatureId string) ApiGetOutlierContributingFeatureSummaryRequest {
 	return ApiGetOutlierContributingFeatureSummaryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -800,7 +815,7 @@ func (a *IAIOutliersApiService) GetOutlierContributingFeatureSummary(ctx context
 
 // Execute executes the request
 //  @return OutlierFeatureSummary
-func (a *IAIOutliersApiService) GetOutlierContributingFeatureSummaryExecute(r ApiGetOutlierContributingFeatureSummaryRequest) (*OutlierFeatureSummary, *http.Response, error) {
+func (a *IAIOutliersAPIService) GetOutlierContributingFeatureSummaryExecute(r ApiGetOutlierContributingFeatureSummaryRequest) (*OutlierFeatureSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -808,7 +823,7 @@ func (a *IAIOutliersApiService) GetOutlierContributingFeatureSummaryExecute(r Ap
 		localVarReturnValue  *OutlierFeatureSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersApiService.GetOutlierContributingFeatureSummary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.GetOutlierContributingFeatureSummary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -847,9 +862,9 @@ func (a *IAIOutliersApiService) GetOutlierContributingFeatureSummaryExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -941,7 +956,7 @@ func (a *IAIOutliersApiService) GetOutlierContributingFeatureSummaryExecute(r Ap
 
 type ApiGetPeerGroupOutliersContributingFeaturesRequest struct {
 	ctx context.Context
-	ApiService *IAIOutliersApiService
+	ApiService *IAIOutliersAPIService
 	outlierId string
 	limit *int32
 	offset *int32
@@ -994,7 +1009,7 @@ Requires authorization scope of 'iai:outliers-management:read'
  @param outlierId The outlier id
  @return ApiGetPeerGroupOutliersContributingFeaturesRequest
 */
-func (a *IAIOutliersApiService) GetPeerGroupOutliersContributingFeatures(ctx context.Context, outlierId string) ApiGetPeerGroupOutliersContributingFeaturesRequest {
+func (a *IAIOutliersAPIService) GetPeerGroupOutliersContributingFeatures(ctx context.Context, outlierId string) ApiGetPeerGroupOutliersContributingFeaturesRequest {
 	return ApiGetPeerGroupOutliersContributingFeaturesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1004,7 +1019,7 @@ func (a *IAIOutliersApiService) GetPeerGroupOutliersContributingFeatures(ctx con
 
 // Execute executes the request
 //  @return []OutlierContributingFeature
-func (a *IAIOutliersApiService) GetPeerGroupOutliersContributingFeaturesExecute(r ApiGetPeerGroupOutliersContributingFeaturesRequest) ([]OutlierContributingFeature, *http.Response, error) {
+func (a *IAIOutliersAPIService) GetPeerGroupOutliersContributingFeaturesExecute(r ApiGetPeerGroupOutliersContributingFeaturesRequest) ([]OutlierContributingFeature, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1012,7 +1027,7 @@ func (a *IAIOutliersApiService) GetPeerGroupOutliersContributingFeaturesExecute(
 		localVarReturnValue  []OutlierContributingFeature
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersApiService.GetPeerGroupOutliersContributingFeatures")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.GetPeerGroupOutliersContributingFeatures")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1026,12 +1041,21 @@ func (a *IAIOutliersApiService) GetPeerGroupOutliersContributingFeaturesExecute(
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.includeTranslationMessages != nil {
 		parameterAddToQuery(localVarQueryParams, "include-translation-messages", r.includeTranslationMessages, "")
@@ -1066,9 +1090,9 @@ func (a *IAIOutliersApiService) GetPeerGroupOutliersContributingFeaturesExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1160,7 +1184,7 @@ func (a *IAIOutliersApiService) GetPeerGroupOutliersContributingFeaturesExecute(
 
 type ApiIgnoreIdentityOutliersRequest struct {
 	ctx context.Context
-	ApiService *IAIOutliersApiService
+	ApiService *IAIOutliersAPIService
 	requestBody *[]string
 }
 
@@ -1182,7 +1206,7 @@ Requires authorization scope of 'iai:outliers-management:update'
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiIgnoreIdentityOutliersRequest
 */
-func (a *IAIOutliersApiService) IgnoreIdentityOutliers(ctx context.Context) ApiIgnoreIdentityOutliersRequest {
+func (a *IAIOutliersAPIService) IgnoreIdentityOutliers(ctx context.Context) ApiIgnoreIdentityOutliersRequest {
 	return ApiIgnoreIdentityOutliersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1190,14 +1214,14 @@ func (a *IAIOutliersApiService) IgnoreIdentityOutliers(ctx context.Context) ApiI
 }
 
 // Execute executes the request
-func (a *IAIOutliersApiService) IgnoreIdentityOutliersExecute(r ApiIgnoreIdentityOutliersRequest) (*http.Response, error) {
+func (a *IAIOutliersAPIService) IgnoreIdentityOutliersExecute(r ApiIgnoreIdentityOutliersRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersApiService.IgnoreIdentityOutliers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.IgnoreIdentityOutliers")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1240,9 +1264,9 @@ func (a *IAIOutliersApiService) IgnoreIdentityOutliersExecute(r ApiIgnoreIdentit
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1314,7 +1338,7 @@ func (a *IAIOutliersApiService) IgnoreIdentityOutliersExecute(r ApiIgnoreIdentit
 
 type ApiListOutliersContributingFeatureAccessItemsRequest struct {
 	ctx context.Context
-	ApiService *IAIOutliersApiService
+	ApiService *IAIOutliersAPIService
 	outlierId string
 	contributingFeatureName string
 	limit *int32
@@ -1369,7 +1393,7 @@ Requires authorization scope of 'iai:outliers-management:read'
  @param contributingFeatureName The name of contributing feature
  @return ApiListOutliersContributingFeatureAccessItemsRequest
 */
-func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItems(ctx context.Context, outlierId string, contributingFeatureName string) ApiListOutliersContributingFeatureAccessItemsRequest {
+func (a *IAIOutliersAPIService) ListOutliersContributingFeatureAccessItems(ctx context.Context, outlierId string, contributingFeatureName string) ApiListOutliersContributingFeatureAccessItemsRequest {
 	return ApiListOutliersContributingFeatureAccessItemsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1380,7 +1404,7 @@ func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItems(ctx c
 
 // Execute executes the request
 //  @return []OutliersContributingFeatureAccessItems
-func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItemsExecute(r ApiListOutliersContributingFeatureAccessItemsRequest) ([]OutliersContributingFeatureAccessItems, *http.Response, error) {
+func (a *IAIOutliersAPIService) ListOutliersContributingFeatureAccessItemsExecute(r ApiListOutliersContributingFeatureAccessItemsRequest) ([]OutliersContributingFeatureAccessItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1388,7 +1412,7 @@ func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItemsExecut
 		localVarReturnValue  []OutliersContributingFeatureAccessItems
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersApiService.ListOutliersContributingFeatureAccessItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.ListOutliersContributingFeatureAccessItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1403,12 +1427,21 @@ func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItemsExecut
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.accessType != nil {
 		parameterAddToQuery(localVarQueryParams, "accessType", r.accessType, "")
@@ -1443,9 +1476,9 @@ func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItemsExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1537,7 +1570,7 @@ func (a *IAIOutliersApiService) ListOutliersContributingFeatureAccessItemsExecut
 
 type ApiUnIgnoreIdentityOutliersRequest struct {
 	ctx context.Context
-	ApiService *IAIOutliersApiService
+	ApiService *IAIOutliersAPIService
 	requestBody *[]string
 }
 
@@ -1559,7 +1592,7 @@ Requires authorization scope of 'iai:outliers-management:update'
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUnIgnoreIdentityOutliersRequest
 */
-func (a *IAIOutliersApiService) UnIgnoreIdentityOutliers(ctx context.Context) ApiUnIgnoreIdentityOutliersRequest {
+func (a *IAIOutliersAPIService) UnIgnoreIdentityOutliers(ctx context.Context) ApiUnIgnoreIdentityOutliersRequest {
 	return ApiUnIgnoreIdentityOutliersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1567,14 +1600,14 @@ func (a *IAIOutliersApiService) UnIgnoreIdentityOutliers(ctx context.Context) Ap
 }
 
 // Execute executes the request
-func (a *IAIOutliersApiService) UnIgnoreIdentityOutliersExecute(r ApiUnIgnoreIdentityOutliersRequest) (*http.Response, error) {
+func (a *IAIOutliersAPIService) UnIgnoreIdentityOutliersExecute(r ApiUnIgnoreIdentityOutliersRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersApiService.UnIgnoreIdentityOutliers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIOutliersAPIService.UnIgnoreIdentityOutliers")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1617,9 +1650,9 @@ func (a *IAIOutliersApiService) UnIgnoreIdentityOutliersExecute(r ApiUnIgnoreIde
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

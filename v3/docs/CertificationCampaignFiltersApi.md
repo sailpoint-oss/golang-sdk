@@ -1,14 +1,14 @@
-# \CertificationCampaignFiltersApi
+# \CertificationCampaignFiltersAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCampaignFilter**](CertificationCampaignFiltersApi.md#CreateCampaignFilter) | **Post** /campaign-filters | Create a Campaign Filter
-[**DeleteCampaignFilters**](CertificationCampaignFiltersApi.md#DeleteCampaignFilters) | **Post** /campaign-filters/delete | Deletes Campaign Filters
-[**GetCampaignFilterById**](CertificationCampaignFiltersApi.md#GetCampaignFilterById) | **Get** /campaign-filters/{id} | Get Campaign Filter by ID
-[**ListCampaignFilters**](CertificationCampaignFiltersApi.md#ListCampaignFilters) | **Get** /campaign-filters | List Campaign Filters
-[**UpdateCampaignFilter**](CertificationCampaignFiltersApi.md#UpdateCampaignFilter) | **Post** /campaign-filters/{id} | Updates a Campaign Filter
+[**CreateCampaignFilter**](CertificationCampaignFiltersAPI.md#CreateCampaignFilter) | **Post** /campaign-filters | Create a Campaign Filter
+[**DeleteCampaignFilters**](CertificationCampaignFiltersAPI.md#DeleteCampaignFilters) | **Post** /campaign-filters/delete | Deletes Campaign Filters
+[**GetCampaignFilterById**](CertificationCampaignFiltersAPI.md#GetCampaignFilterById) | **Get** /campaign-filters/{id} | Get Campaign Filter by ID
+[**ListCampaignFilters**](CertificationCampaignFiltersAPI.md#ListCampaignFilters) | **Get** /campaign-filters | List Campaign Filters
+[**UpdateCampaignFilter**](CertificationCampaignFiltersAPI.md#UpdateCampaignFilter) | **Post** /campaign-filters/{id} | Updates a Campaign Filter
 
 
 
@@ -29,7 +29,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignFiltersApi.CreateCampaignFilter(context.Background()).CampaignFilterDetails(campaignFilterDetails).Execute()
+    resp, r, err := apiClient.CertificationCampaignFiltersAPI.CreateCampaignFilter(context.Background()).CampaignFilterDetails(campaignFilterDetails).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersApi.CreateCampaignFilter``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.CreateCampaignFilter``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateCampaignFilter`: CampaignFilterDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersApi.CreateCampaignFilter`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.CreateCampaignFilter`: %v\n", resp)
 }
 ```
 
@@ -95,7 +95,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -103,9 +103,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignFiltersApi.DeleteCampaignFilters(context.Background()).RequestBody(requestBody).Execute()
+    r, err := apiClient.CertificationCampaignFiltersAPI.DeleteCampaignFilters(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersApi.DeleteCampaignFilters``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.DeleteCampaignFilters``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -159,7 +159,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -167,13 +167,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignFiltersApi.GetCampaignFilterById(context.Background(), filterId).Execute()
+    resp, r, err := apiClient.CertificationCampaignFiltersAPI.GetCampaignFilterById(context.Background(), filterId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersApi.GetCampaignFilterById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.GetCampaignFilterById``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCampaignFilterById`: []CampaignFilterDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersApi.GetCampaignFilterById`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.GetCampaignFilterById`: %v\n", resp)
 }
 ```
 
@@ -229,7 +229,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -239,13 +239,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignFiltersApi.ListCampaignFilters(context.Background()).Limit(limit).Start(start).IncludeSystemFilters(includeSystemFilters).Execute()
+    resp, r, err := apiClient.CertificationCampaignFiltersAPI.ListCampaignFilters(context.Background()).Limit(limit).Start(start).IncludeSystemFilters(includeSystemFilters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersApi.ListCampaignFilters``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.ListCampaignFilters``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListCampaignFilters`: []CampaignFilterDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersApi.ListCampaignFilters`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.ListCampaignFilters`: %v\n", resp)
 }
 ```
 
@@ -299,7 +299,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -308,13 +308,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignFiltersApi.UpdateCampaignFilter(context.Background(), filterId).CampaignFilterDetails(campaignFilterDetails).Execute()
+    resp, r, err := apiClient.CertificationCampaignFiltersAPI.UpdateCampaignFilter(context.Background(), filterId).CampaignFilterDetails(campaignFilterDetails).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersApi.UpdateCampaignFilter``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.UpdateCampaignFilter``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateCampaignFilter`: CampaignFilterDetails
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersApi.UpdateCampaignFilter`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.UpdateCampaignFilter`: %v\n", resp)
 }
 ```
 

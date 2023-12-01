@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// SegmentsApiService SegmentsApi service
-type SegmentsApiService service
+// SegmentsAPIService SegmentsAPI service
+type SegmentsAPIService service
 
 type ApiCreateSegmentRequest struct {
 	ctx context.Context
-	ApiService *SegmentsApiService
+	ApiService *SegmentsAPIService
 	segment *Segment
 }
 
@@ -48,7 +48,7 @@ A token with ORG_ADMIN or API authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSegmentRequest
 */
-func (a *SegmentsApiService) CreateSegment(ctx context.Context) ApiCreateSegmentRequest {
+func (a *SegmentsAPIService) CreateSegment(ctx context.Context) ApiCreateSegmentRequest {
 	return ApiCreateSegmentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,7 +57,7 @@ func (a *SegmentsApiService) CreateSegment(ctx context.Context) ApiCreateSegment
 
 // Execute executes the request
 //  @return Segment
-func (a *SegmentsApiService) CreateSegmentExecute(r ApiCreateSegmentRequest) (*Segment, *http.Response, error) {
+func (a *SegmentsAPIService) CreateSegmentExecute(r ApiCreateSegmentRequest) (*Segment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *SegmentsApiService) CreateSegmentExecute(r ApiCreateSegmentRequest) (*S
 		localVarReturnValue  *Segment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SegmentsApiService.CreateSegment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SegmentsAPIService.CreateSegment")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,9 +108,9 @@ func (a *SegmentsApiService) CreateSegmentExecute(r ApiCreateSegmentRequest) (*S
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -191,7 +191,7 @@ func (a *SegmentsApiService) CreateSegmentExecute(r ApiCreateSegmentRequest) (*S
 
 type ApiDeleteSegmentRequest struct {
 	ctx context.Context
-	ApiService *SegmentsApiService
+	ApiService *SegmentsAPIService
 	id string
 }
 
@@ -210,7 +210,7 @@ A token with ORG_ADMIN or API authority is required to call this API.
  @param id The segment ID to delete.
  @return ApiDeleteSegmentRequest
 */
-func (a *SegmentsApiService) DeleteSegment(ctx context.Context, id string) ApiDeleteSegmentRequest {
+func (a *SegmentsAPIService) DeleteSegment(ctx context.Context, id string) ApiDeleteSegmentRequest {
 	return ApiDeleteSegmentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -219,14 +219,14 @@ func (a *SegmentsApiService) DeleteSegment(ctx context.Context, id string) ApiDe
 }
 
 // Execute executes the request
-func (a *SegmentsApiService) DeleteSegmentExecute(r ApiDeleteSegmentRequest) (*http.Response, error) {
+func (a *SegmentsAPIService) DeleteSegmentExecute(r ApiDeleteSegmentRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SegmentsApiService.DeleteSegment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SegmentsAPIService.DeleteSegment")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -265,9 +265,9 @@ func (a *SegmentsApiService) DeleteSegmentExecute(r ApiDeleteSegmentRequest) (*h
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -350,7 +350,7 @@ func (a *SegmentsApiService) DeleteSegmentExecute(r ApiDeleteSegmentRequest) (*h
 
 type ApiGetSegmentRequest struct {
 	ctx context.Context
-	ApiService *SegmentsApiService
+	ApiService *SegmentsAPIService
 	id string
 }
 
@@ -368,7 +368,7 @@ A token with ORG_ADMIN or API authority is required to call this API.
  @param id The segment ID to retrieve.
  @return ApiGetSegmentRequest
 */
-func (a *SegmentsApiService) GetSegment(ctx context.Context, id string) ApiGetSegmentRequest {
+func (a *SegmentsAPIService) GetSegment(ctx context.Context, id string) ApiGetSegmentRequest {
 	return ApiGetSegmentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -378,7 +378,7 @@ func (a *SegmentsApiService) GetSegment(ctx context.Context, id string) ApiGetSe
 
 // Execute executes the request
 //  @return Segment
-func (a *SegmentsApiService) GetSegmentExecute(r ApiGetSegmentRequest) (*Segment, *http.Response, error) {
+func (a *SegmentsAPIService) GetSegmentExecute(r ApiGetSegmentRequest) (*Segment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -386,7 +386,7 @@ func (a *SegmentsApiService) GetSegmentExecute(r ApiGetSegmentRequest) (*Segment
 		localVarReturnValue  *Segment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SegmentsApiService.GetSegment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SegmentsAPIService.GetSegment")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -425,9 +425,9 @@ func (a *SegmentsApiService) GetSegmentExecute(r ApiGetSegmentRequest) (*Segment
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -519,7 +519,7 @@ func (a *SegmentsApiService) GetSegmentExecute(r ApiGetSegmentRequest) (*Segment
 
 type ApiListSegmentsRequest struct {
 	ctx context.Context
-	ApiService *SegmentsApiService
+	ApiService *SegmentsAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -556,7 +556,7 @@ A token with ORG_ADMIN or API authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSegmentsRequest
 */
-func (a *SegmentsApiService) ListSegments(ctx context.Context) ApiListSegmentsRequest {
+func (a *SegmentsAPIService) ListSegments(ctx context.Context) ApiListSegmentsRequest {
 	return ApiListSegmentsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -565,7 +565,7 @@ func (a *SegmentsApiService) ListSegments(ctx context.Context) ApiListSegmentsRe
 
 // Execute executes the request
 //  @return []Segment
-func (a *SegmentsApiService) ListSegmentsExecute(r ApiListSegmentsRequest) ([]Segment, *http.Response, error) {
+func (a *SegmentsAPIService) ListSegmentsExecute(r ApiListSegmentsRequest) ([]Segment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -573,7 +573,7 @@ func (a *SegmentsApiService) ListSegmentsExecute(r ApiListSegmentsRequest) ([]Se
 		localVarReturnValue  []Segment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SegmentsApiService.ListSegments")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SegmentsAPIService.ListSegments")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -586,12 +586,21 @@ func (a *SegmentsApiService) ListSegmentsExecute(r ApiListSegmentsRequest) ([]Se
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -620,9 +629,9 @@ func (a *SegmentsApiService) ListSegmentsExecute(r ApiListSegmentsRequest) ([]Se
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -703,7 +712,7 @@ func (a *SegmentsApiService) ListSegmentsExecute(r ApiListSegmentsRequest) ([]Se
 
 type ApiPatchSegmentRequest struct {
 	ctx context.Context
-	ApiService *SegmentsApiService
+	ApiService *SegmentsAPIService
 	id string
 	requestBody *[]map[string]interface{}
 }
@@ -729,7 +738,7 @@ A token with ORG_ADMIN or API authority is required to call this API.
  @param id The segment ID to modify.
  @return ApiPatchSegmentRequest
 */
-func (a *SegmentsApiService) PatchSegment(ctx context.Context, id string) ApiPatchSegmentRequest {
+func (a *SegmentsAPIService) PatchSegment(ctx context.Context, id string) ApiPatchSegmentRequest {
 	return ApiPatchSegmentRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -739,7 +748,7 @@ func (a *SegmentsApiService) PatchSegment(ctx context.Context, id string) ApiPat
 
 // Execute executes the request
 //  @return Segment
-func (a *SegmentsApiService) PatchSegmentExecute(r ApiPatchSegmentRequest) (*Segment, *http.Response, error) {
+func (a *SegmentsAPIService) PatchSegmentExecute(r ApiPatchSegmentRequest) (*Segment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -747,7 +756,7 @@ func (a *SegmentsApiService) PatchSegmentExecute(r ApiPatchSegmentRequest) (*Seg
 		localVarReturnValue  *Segment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SegmentsApiService.PatchSegment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SegmentsAPIService.PatchSegment")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -791,9 +800,9 @@ func (a *SegmentsApiService) PatchSegmentExecute(r ApiPatchSegmentRequest) (*Seg
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

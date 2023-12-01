@@ -173,8 +173,8 @@ func (o *ConfigObject) UnmarshalJSON(bytes []byte) (err error) {
 	varConfigObject := _ConfigObject{}
 
 	if err = json.Unmarshal(bytes, &varConfigObject); err == nil {
-		*o = ConfigObject(varConfigObject)
-	}
+	*o = ConfigObject(varConfigObject)
+}
 
 	additionalProperties := make(map[string]interface{})
 

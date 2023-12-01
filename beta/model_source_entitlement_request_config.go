@@ -99,8 +99,8 @@ func (o *SourceEntitlementRequestConfig) UnmarshalJSON(bytes []byte) (err error)
 	varSourceEntitlementRequestConfig := _SourceEntitlementRequestConfig{}
 
 	if err = json.Unmarshal(bytes, &varSourceEntitlementRequestConfig); err == nil {
-		*o = SourceEntitlementRequestConfig(varSourceEntitlementRequestConfig)
-	}
+	*o = SourceEntitlementRequestConfig(varSourceEntitlementRequestConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

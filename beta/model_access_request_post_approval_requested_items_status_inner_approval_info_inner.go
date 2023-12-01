@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner type satisfies the MappedNullable interface at compile time
@@ -190,11 +191,34 @@ func (o AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) ToM
 }
 
 func (o *AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"approvalDecision",
+		"approverName",
+		"approver",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner := _AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner); err == nil {
-		*o = AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(varAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner)
-	}
+	*o = AccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner(varAccessRequestPostApprovalRequestedItemsStatusInnerApprovalInfoInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

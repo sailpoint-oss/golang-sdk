@@ -174,8 +174,8 @@ func (o *RoleMiningPotentialRoleProvisionRequest) UnmarshalJSON(bytes []byte) (e
 	varRoleMiningPotentialRoleProvisionRequest := _RoleMiningPotentialRoleProvisionRequest{}
 
 	if err = json.Unmarshal(bytes, &varRoleMiningPotentialRoleProvisionRequest); err == nil {
-		*o = RoleMiningPotentialRoleProvisionRequest(varRoleMiningPotentialRoleProvisionRequest)
-	}
+	*o = RoleMiningPotentialRoleProvisionRequest(varRoleMiningPotentialRoleProvisionRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

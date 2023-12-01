@@ -135,8 +135,8 @@ func (o *GetOrgSettings200ResponseSystemNotificationConfig) UnmarshalJSON(bytes 
 	varGetOrgSettings200ResponseSystemNotificationConfig := _GetOrgSettings200ResponseSystemNotificationConfig{}
 
 	if err = json.Unmarshal(bytes, &varGetOrgSettings200ResponseSystemNotificationConfig); err == nil {
-		*o = GetOrgSettings200ResponseSystemNotificationConfig(varGetOrgSettings200ResponseSystemNotificationConfig)
-	}
+	*o = GetOrgSettings200ResponseSystemNotificationConfig(varGetOrgSettings200ResponseSystemNotificationConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

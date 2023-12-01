@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// PasswordSyncGroupsApiService PasswordSyncGroupsApi service
-type PasswordSyncGroupsApiService service
+// PasswordSyncGroupsAPIService PasswordSyncGroupsAPI service
+type PasswordSyncGroupsAPIService service
 
 type ApiCreatePasswordSyncGroupRequest struct {
 	ctx context.Context
-	ApiService *PasswordSyncGroupsApiService
+	ApiService *PasswordSyncGroupsAPIService
 	passwordSyncGroup *PasswordSyncGroup
 }
 
@@ -46,7 +46,7 @@ This API creates a password sync group based on the specifications provided. A t
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreatePasswordSyncGroupRequest
 */
-func (a *PasswordSyncGroupsApiService) CreatePasswordSyncGroup(ctx context.Context) ApiCreatePasswordSyncGroupRequest {
+func (a *PasswordSyncGroupsAPIService) CreatePasswordSyncGroup(ctx context.Context) ApiCreatePasswordSyncGroupRequest {
 	return ApiCreatePasswordSyncGroupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *PasswordSyncGroupsApiService) CreatePasswordSyncGroup(ctx context.Conte
 
 // Execute executes the request
 //  @return PasswordSyncGroup
-func (a *PasswordSyncGroupsApiService) CreatePasswordSyncGroupExecute(r ApiCreatePasswordSyncGroupRequest) (*PasswordSyncGroup, *http.Response, error) {
+func (a *PasswordSyncGroupsAPIService) CreatePasswordSyncGroupExecute(r ApiCreatePasswordSyncGroupRequest) (*PasswordSyncGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *PasswordSyncGroupsApiService) CreatePasswordSyncGroupExecute(r ApiCreat
 		localVarReturnValue  *PasswordSyncGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsApiService.CreatePasswordSyncGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsAPIService.CreatePasswordSyncGroup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *PasswordSyncGroupsApiService) CreatePasswordSyncGroupExecute(r ApiCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -189,7 +189,7 @@ func (a *PasswordSyncGroupsApiService) CreatePasswordSyncGroupExecute(r ApiCreat
 
 type ApiDeletePasswordSyncGroupRequest struct {
 	ctx context.Context
-	ApiService *PasswordSyncGroupsApiService
+	ApiService *PasswordSyncGroupsAPIService
 	id string
 }
 
@@ -206,7 +206,7 @@ This API deletes the specified password sync group. A token with ORG_ADMIN autho
  @param id The ID of password sync group to delete.
  @return ApiDeletePasswordSyncGroupRequest
 */
-func (a *PasswordSyncGroupsApiService) DeletePasswordSyncGroup(ctx context.Context, id string) ApiDeletePasswordSyncGroupRequest {
+func (a *PasswordSyncGroupsAPIService) DeletePasswordSyncGroup(ctx context.Context, id string) ApiDeletePasswordSyncGroupRequest {
 	return ApiDeletePasswordSyncGroupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -215,14 +215,14 @@ func (a *PasswordSyncGroupsApiService) DeletePasswordSyncGroup(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *PasswordSyncGroupsApiService) DeletePasswordSyncGroupExecute(r ApiDeletePasswordSyncGroupRequest) (*http.Response, error) {
+func (a *PasswordSyncGroupsAPIService) DeletePasswordSyncGroupExecute(r ApiDeletePasswordSyncGroupRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsApiService.DeletePasswordSyncGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsAPIService.DeletePasswordSyncGroup")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -261,9 +261,9 @@ func (a *PasswordSyncGroupsApiService) DeletePasswordSyncGroupExecute(r ApiDelet
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -335,7 +335,7 @@ func (a *PasswordSyncGroupsApiService) DeletePasswordSyncGroupExecute(r ApiDelet
 
 type ApiGetPasswordSyncGroupRequest struct {
 	ctx context.Context
-	ApiService *PasswordSyncGroupsApiService
+	ApiService *PasswordSyncGroupsAPIService
 	id string
 }
 
@@ -352,7 +352,7 @@ This API returns the sync group for the specified ID. A token with ORG_ADMIN aut
  @param id The ID of password sync group to retrieve.
  @return ApiGetPasswordSyncGroupRequest
 */
-func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroup(ctx context.Context, id string) ApiGetPasswordSyncGroupRequest {
+func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroup(ctx context.Context, id string) ApiGetPasswordSyncGroupRequest {
 	return ApiGetPasswordSyncGroupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -362,7 +362,7 @@ func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroup(ctx context.Context,
 
 // Execute executes the request
 //  @return PasswordSyncGroup
-func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroupExecute(r ApiGetPasswordSyncGroupRequest) (*PasswordSyncGroup, *http.Response, error) {
+func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupExecute(r ApiGetPasswordSyncGroupRequest) (*PasswordSyncGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -370,7 +370,7 @@ func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroupExecute(r ApiGetPassw
 		localVarReturnValue  *PasswordSyncGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsApiService.GetPasswordSyncGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsAPIService.GetPasswordSyncGroup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -409,9 +409,9 @@ func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroupExecute(r ApiGetPassw
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -503,7 +503,7 @@ func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroupExecute(r ApiGetPassw
 
 type ApiGetPasswordSyncGroupsRequest struct {
 	ctx context.Context
-	ApiService *PasswordSyncGroupsApiService
+	ApiService *PasswordSyncGroupsAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -539,7 +539,7 @@ This API returns a list of password sync groups. A token with ORG_ADMIN authorit
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPasswordSyncGroupsRequest
 */
-func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroups(ctx context.Context) ApiGetPasswordSyncGroupsRequest {
+func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroups(ctx context.Context) ApiGetPasswordSyncGroupsRequest {
 	return ApiGetPasswordSyncGroupsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -548,7 +548,7 @@ func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroups(ctx context.Context
 
 // Execute executes the request
 //  @return []PasswordSyncGroup
-func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroupsExecute(r ApiGetPasswordSyncGroupsRequest) ([]PasswordSyncGroup, *http.Response, error) {
+func (a *PasswordSyncGroupsAPIService) GetPasswordSyncGroupsExecute(r ApiGetPasswordSyncGroupsRequest) ([]PasswordSyncGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -556,7 +556,7 @@ func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroupsExecute(r ApiGetPass
 		localVarReturnValue  []PasswordSyncGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsApiService.GetPasswordSyncGroups")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsAPIService.GetPasswordSyncGroups")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -569,12 +569,21 @@ func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroupsExecute(r ApiGetPass
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -603,9 +612,9 @@ func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroupsExecute(r ApiGetPass
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -686,7 +695,7 @@ func (a *PasswordSyncGroupsApiService) GetPasswordSyncGroupsExecute(r ApiGetPass
 
 type ApiUpdatePasswordSyncGroupRequest struct {
 	ctx context.Context
-	ApiService *PasswordSyncGroupsApiService
+	ApiService *PasswordSyncGroupsAPIService
 	id string
 	passwordSyncGroup *PasswordSyncGroup
 }
@@ -709,7 +718,7 @@ This API updates the specified password sync group. A token with ORG_ADMIN autho
  @param id The ID of password sync group to update.
  @return ApiUpdatePasswordSyncGroupRequest
 */
-func (a *PasswordSyncGroupsApiService) UpdatePasswordSyncGroup(ctx context.Context, id string) ApiUpdatePasswordSyncGroupRequest {
+func (a *PasswordSyncGroupsAPIService) UpdatePasswordSyncGroup(ctx context.Context, id string) ApiUpdatePasswordSyncGroupRequest {
 	return ApiUpdatePasswordSyncGroupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -719,7 +728,7 @@ func (a *PasswordSyncGroupsApiService) UpdatePasswordSyncGroup(ctx context.Conte
 
 // Execute executes the request
 //  @return PasswordSyncGroup
-func (a *PasswordSyncGroupsApiService) UpdatePasswordSyncGroupExecute(r ApiUpdatePasswordSyncGroupRequest) (*PasswordSyncGroup, *http.Response, error) {
+func (a *PasswordSyncGroupsAPIService) UpdatePasswordSyncGroupExecute(r ApiUpdatePasswordSyncGroupRequest) (*PasswordSyncGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -727,7 +736,7 @@ func (a *PasswordSyncGroupsApiService) UpdatePasswordSyncGroupExecute(r ApiUpdat
 		localVarReturnValue  *PasswordSyncGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsApiService.UpdatePasswordSyncGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordSyncGroupsAPIService.UpdatePasswordSyncGroup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -771,9 +780,9 @@ func (a *PasswordSyncGroupsApiService) UpdatePasswordSyncGroupExecute(r ApiUpdat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -136,8 +136,8 @@ func (o *IdentityReferenceWithId) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityReferenceWithId := _IdentityReferenceWithId{}
 
 	if err = json.Unmarshal(bytes, &varIdentityReferenceWithId); err == nil {
-		*o = IdentityReferenceWithId(varIdentityReferenceWithId)
-	}
+	*o = IdentityReferenceWithId(varIdentityReferenceWithId)
+}
 
 	additionalProperties := make(map[string]interface{})
 

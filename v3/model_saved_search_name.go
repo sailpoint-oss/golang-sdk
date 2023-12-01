@@ -147,8 +147,8 @@ func (o *SavedSearchName) UnmarshalJSON(bytes []byte) (err error) {
 	varSavedSearchName := _SavedSearchName{}
 
 	if err = json.Unmarshal(bytes, &varSavedSearchName); err == nil {
-		*o = SavedSearchName(varSavedSearchName)
-	}
+	*o = SavedSearchName(varSavedSearchName)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -1,33 +1,33 @@
-# \IAIRoleMiningApi
+# \IAIRoleMiningAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePotentialRoleProvisionRequest**](IAIRoleMiningApi.md#CreatePotentialRoleProvisionRequest) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/provision | Create request to provision a potential role into an actual role.
-[**CreateRoleMiningSessions**](IAIRoleMiningApi.md#CreateRoleMiningSessions) | **Post** /role-mining-sessions | Create a role mining session
-[**DownloadRoleMiningPotentialRoleZip**](IAIRoleMiningApi.md#DownloadRoleMiningPotentialRoleZip) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId}/download | Export (download) details for a potential role in a role mining session
-[**ExportRoleMiningPotentialRole**](IAIRoleMiningApi.md#ExportRoleMiningPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export | Export (download) details for a potential role in a role mining session
-[**ExportRoleMiningPotentialRoleAsync**](IAIRoleMiningApi.md#ExportRoleMiningPotentialRoleAsync) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async | Asynchronously export details for a potential role in a role mining session and upload to S3
-[**ExportRoleMiningPotentialRoleStatus**](IAIRoleMiningApi.md#ExportRoleMiningPotentialRoleStatus) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId} | Retrieve status of a potential role export job
-[**GetAllPotentialRoleSummaries**](IAIRoleMiningApi.md#GetAllPotentialRoleSummaries) | **Get** /role-mining-potential-roles | Retrieves all potential role summaries
-[**GetEntitlementDistributionPotentialRole**](IAIRoleMiningApi.md#GetEntitlementDistributionPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularity-distribution | Retrieves entitlement popularity distribution for a potential role in a role mining session
-[**GetEntitlementsPotentialRole**](IAIRoleMiningApi.md#GetEntitlementsPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
-[**GetExcludedEntitlementsPotentialRole**](IAIRoleMiningApi.md#GetExcludedEntitlementsPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
-[**GetIdentitiesPotentialRole**](IAIRoleMiningApi.md#GetIdentitiesPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
-[**GetPotentialRole**](IAIRoleMiningApi.md#GetPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
-[**GetPotentialRoleApplications**](IAIRoleMiningApi.md#GetPotentialRoleApplications) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
-[**GetPotentialRoleSourceIdentityUsage**](IAIRoleMiningApi.md#GetPotentialRoleSourceIdentityUsage) | **Get** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
-[**GetPotentialRoleSummaries**](IAIRoleMiningApi.md#GetPotentialRoleSummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
-[**GetRoleMiningPotentialRole**](IAIRoleMiningApi.md#GetRoleMiningPotentialRole) | **Get** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
-[**GetRoleMiningSession**](IAIRoleMiningApi.md#GetRoleMiningSession) | **Get** /role-mining-sessions/{sessionId} | Get a role mining session
-[**GetRoleMiningSessionStatus**](IAIRoleMiningApi.md#GetRoleMiningSessionStatus) | **Get** /role-mining-sessions/{sessionId}/status | Get role mining session status state
-[**GetRoleMiningSessions**](IAIRoleMiningApi.md#GetRoleMiningSessions) | **Get** /role-mining-sessions | Retrieves all role mining sessions
-[**GetSavedPotentialRoles**](IAIRoleMiningApi.md#GetSavedPotentialRoles) | **Get** /role-mining-potential-roles/saved | Retrieves all saved potential roles
-[**PatchPotentialRole**](IAIRoleMiningApi.md#PatchPotentialRole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
-[**PatchPotentialRole_0**](IAIRoleMiningApi.md#PatchPotentialRole_0) | **Patch** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
-[**PatchRoleMiningSession**](IAIRoleMiningApi.md#PatchRoleMiningSession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
-[**UpdateEntitlementsPotentialRole**](IAIRoleMiningApi.md#UpdateEntitlementsPotentialRole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
+[**CreatePotentialRoleProvisionRequest**](IAIRoleMiningAPI.md#CreatePotentialRoleProvisionRequest) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/provision | Create request to provision a potential role into an actual role.
+[**CreateRoleMiningSessions**](IAIRoleMiningAPI.md#CreateRoleMiningSessions) | **Post** /role-mining-sessions | Create a role mining session
+[**DownloadRoleMiningPotentialRoleZip**](IAIRoleMiningAPI.md#DownloadRoleMiningPotentialRoleZip) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId}/download | Export (download) details for a potential role in a role mining session
+[**ExportRoleMiningPotentialRole**](IAIRoleMiningAPI.md#ExportRoleMiningPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export | Export (download) details for a potential role in a role mining session
+[**ExportRoleMiningPotentialRoleAsync**](IAIRoleMiningAPI.md#ExportRoleMiningPotentialRoleAsync) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async | Asynchronously export details for a potential role in a role mining session and upload to S3
+[**ExportRoleMiningPotentialRoleStatus**](IAIRoleMiningAPI.md#ExportRoleMiningPotentialRoleStatus) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/export-async/{exportId} | Retrieve status of a potential role export job
+[**GetAllPotentialRoleSummaries**](IAIRoleMiningAPI.md#GetAllPotentialRoleSummaries) | **Get** /role-mining-potential-roles | Retrieves all potential role summaries
+[**GetEntitlementDistributionPotentialRole**](IAIRoleMiningAPI.md#GetEntitlementDistributionPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularity-distribution | Retrieves entitlement popularity distribution for a potential role in a role mining session
+[**GetEntitlementsPotentialRole**](IAIRoleMiningAPI.md#GetEntitlementsPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/entitlement-popularities | Retrieves entitlements for a potential role in a role mining session
+[**GetExcludedEntitlementsPotentialRole**](IAIRoleMiningAPI.md#GetExcludedEntitlementsPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/excluded-entitlements | Retrieves excluded entitlements for a potential role in a role mining session
+[**GetIdentitiesPotentialRole**](IAIRoleMiningAPI.md#GetIdentitiesPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/identities | Retrieves identities for a potential role in a role mining session
+[**GetPotentialRole**](IAIRoleMiningAPI.md#GetPotentialRole) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Retrieves a specific potential role
+[**GetPotentialRoleApplications**](IAIRoleMiningAPI.md#GetPotentialRoleApplications) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId}/applications | Retrieves the applications of a potential role for a role mining session
+[**GetPotentialRoleSourceIdentityUsage**](IAIRoleMiningAPI.md#GetPotentialRoleSourceIdentityUsage) | **Get** /role-mining-potential-roles/{potentialRoleId}/sources/{sourceId}/identityUsage | Retrieves potential role source usage
+[**GetPotentialRoleSummaries**](IAIRoleMiningAPI.md#GetPotentialRoleSummaries) | **Get** /role-mining-sessions/{sessionId}/potential-role-summaries | Retrieves all potential role summaries
+[**GetRoleMiningPotentialRole**](IAIRoleMiningAPI.md#GetRoleMiningPotentialRole) | **Get** /role-mining-potential-roles/{potentialRoleId} | Retrieves a specific potential role
+[**GetRoleMiningSession**](IAIRoleMiningAPI.md#GetRoleMiningSession) | **Get** /role-mining-sessions/{sessionId} | Get a role mining session
+[**GetRoleMiningSessionStatus**](IAIRoleMiningAPI.md#GetRoleMiningSessionStatus) | **Get** /role-mining-sessions/{sessionId}/status | Get role mining session status state
+[**GetRoleMiningSessions**](IAIRoleMiningAPI.md#GetRoleMiningSessions) | **Get** /role-mining-sessions | Retrieves all role mining sessions
+[**GetSavedPotentialRoles**](IAIRoleMiningAPI.md#GetSavedPotentialRoles) | **Get** /role-mining-potential-roles/saved | Retrieves all saved potential roles
+[**PatchPotentialRole**](IAIRoleMiningAPI.md#PatchPotentialRole) | **Patch** /role-mining-sessions/{sessionId}/potential-role-summaries/{potentialRoleId} | Update a potential role
+[**PatchPotentialRole_0**](IAIRoleMiningAPI.md#PatchPotentialRole_0) | **Patch** /role-mining-potential-roles/{potentialRoleId} | Update a potential role
+[**PatchRoleMiningSession**](IAIRoleMiningAPI.md#PatchRoleMiningSession) | **Patch** /role-mining-sessions/{sessionId} | Patch a role mining session
+[**UpdateEntitlementsPotentialRole**](IAIRoleMiningAPI.md#UpdateEntitlementsPotentialRole) | **Post** /role-mining-sessions/{sessionId}/potential-roles/{potentialRoleId}/edit-entitlements | Edit entitlements for a potential role to exclude some entitlements
 
 
 
@@ -48,7 +48,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -60,13 +60,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.CreatePotentialRoleProvisionRequest(context.Background(), sessionId, potentialRoleId).MinEntitlementPopularity(minEntitlementPopularity).IncludeCommonAccess(includeCommonAccess).RoleMiningPotentialRoleProvisionRequest(roleMiningPotentialRoleProvisionRequest).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.CreatePotentialRoleProvisionRequest(context.Background(), sessionId, potentialRoleId).MinEntitlementPopularity(minEntitlementPopularity).IncludeCommonAccess(includeCommonAccess).RoleMiningPotentialRoleProvisionRequest(roleMiningPotentialRoleProvisionRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.CreatePotentialRoleProvisionRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.CreatePotentialRoleProvisionRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreatePotentialRoleProvisionRequest`: RoleMiningPotentialRoleSummary
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.CreatePotentialRoleProvisionRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.CreatePotentialRoleProvisionRequest`: %v\n", resp)
 }
 ```
 
@@ -127,7 +127,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -135,13 +135,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.CreateRoleMiningSessions(context.Background()).RoleMiningSessionDto(roleMiningSessionDto).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.CreateRoleMiningSessions(context.Background()).RoleMiningSessionDto(roleMiningSessionDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.CreateRoleMiningSessions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.CreateRoleMiningSessions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateRoleMiningSessions`: RoleMiningSessionResponse
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.CreateRoleMiningSessions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.CreateRoleMiningSessions`: %v\n", resp)
 }
 ```
 
@@ -193,7 +193,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -203,13 +203,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.DownloadRoleMiningPotentialRoleZip(context.Background(), sessionId, potentialRoleId, exportId).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.DownloadRoleMiningPotentialRoleZip(context.Background(), sessionId, potentialRoleId, exportId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.DownloadRoleMiningPotentialRoleZip``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.DownloadRoleMiningPotentialRoleZip``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DownloadRoleMiningPotentialRoleZip`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.DownloadRoleMiningPotentialRoleZip`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.DownloadRoleMiningPotentialRoleZip`: %v\n", resp)
 }
 ```
 
@@ -269,7 +269,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -278,13 +278,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.ExportRoleMiningPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.ExportRoleMiningPotentialRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.ExportRoleMiningPotentialRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ExportRoleMiningPotentialRole`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.ExportRoleMiningPotentialRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.ExportRoleMiningPotentialRole`: %v\n", resp)
 }
 ```
 
@@ -342,7 +342,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -352,13 +352,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.ExportRoleMiningPotentialRoleAsync(context.Background(), sessionId, potentialRoleId).RoleMiningPotentialRoleExportRequest(roleMiningPotentialRoleExportRequest).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsync(context.Background(), sessionId, potentialRoleId).RoleMiningPotentialRoleExportRequest(roleMiningPotentialRoleExportRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.ExportRoleMiningPotentialRoleAsync``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsync``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ExportRoleMiningPotentialRoleAsync`: RoleMiningPotentialRoleExportResponse
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.ExportRoleMiningPotentialRoleAsync`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.ExportRoleMiningPotentialRoleAsync`: %v\n", resp)
 }
 ```
 
@@ -417,7 +417,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -427,13 +427,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.ExportRoleMiningPotentialRoleStatus(context.Background(), sessionId, potentialRoleId, exportId).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.ExportRoleMiningPotentialRoleStatus(context.Background(), sessionId, potentialRoleId, exportId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.ExportRoleMiningPotentialRoleStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.ExportRoleMiningPotentialRoleStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ExportRoleMiningPotentialRoleStatus`: RoleMiningPotentialRoleExportResponse
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.ExportRoleMiningPotentialRoleStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.ExportRoleMiningPotentialRoleStatus`: %v\n", resp)
 }
 ```
 
@@ -493,7 +493,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -505,13 +505,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetAllPotentialRoleSummaries(context.Background()).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetAllPotentialRoleSummaries(context.Background()).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetAllPotentialRoleSummaries``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetAllPotentialRoleSummaries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAllPotentialRoleSummaries`: []RoleMiningPotentialRoleSummary
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetAllPotentialRoleSummaries`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetAllPotentialRoleSummaries`: %v\n", resp)
 }
 ```
 
@@ -567,7 +567,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -577,13 +577,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetEntitlementDistributionPotentialRole(context.Background(), sessionId, potentialRoleId).IncludeCommonAccess(includeCommonAccess).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetEntitlementDistributionPotentialRole(context.Background(), sessionId, potentialRoleId).IncludeCommonAccess(includeCommonAccess).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetEntitlementDistributionPotentialRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetEntitlementDistributionPotentialRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetEntitlementDistributionPotentialRole`: map[string]int32
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetEntitlementDistributionPotentialRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetEntitlementDistributionPotentialRole`: %v\n", resp)
 }
 ```
 
@@ -642,7 +642,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -657,13 +657,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).IncludeCommonAccess(includeCommonAccess).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).IncludeCommonAccess(includeCommonAccess).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetEntitlementsPotentialRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetEntitlementsPotentialRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetEntitlementsPotentialRole`: []RoleMiningEntitlement
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetEntitlementsPotentialRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetEntitlementsPotentialRole`: %v\n", resp)
 }
 ```
 
@@ -727,7 +727,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -741,13 +741,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetExcludedEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetExcludedEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetExcludedEntitlementsPotentialRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetExcludedEntitlementsPotentialRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetExcludedEntitlementsPotentialRole`: []RoleMiningEntitlement
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetExcludedEntitlementsPotentialRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetExcludedEntitlementsPotentialRole`: %v\n", resp)
 }
 ```
 
@@ -810,7 +810,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -824,13 +824,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetIdentitiesPotentialRole(context.Background(), sessionId, potentialRoleId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetIdentitiesPotentialRole(context.Background(), sessionId, potentialRoleId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetIdentitiesPotentialRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetIdentitiesPotentialRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentitiesPotentialRole`: []RoleMiningIdentity
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetIdentitiesPotentialRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetIdentitiesPotentialRole`: %v\n", resp)
 }
 ```
 
@@ -893,7 +893,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -902,13 +902,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRole(context.Background(), sessionId, potentialRoleId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetPotentialRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPotentialRole`: RoleMiningPotentialRole
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetPotentialRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetPotentialRole`: %v\n", resp)
 }
 ```
 
@@ -966,7 +966,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -978,13 +978,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetPotentialRoleApplications(context.Background(), sessionId, potentialRoleId).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleApplications(context.Background(), sessionId, potentialRoleId).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetPotentialRoleApplications``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleApplications``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPotentialRoleApplications`: []RoleMiningPotentialRoleApplication
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetPotentialRoleApplications`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetPotentialRoleApplications`: %v\n", resp)
 }
 ```
 
@@ -1045,7 +1045,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1058,13 +1058,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetPotentialRoleSourceIdentityUsage(context.Background(), potentialRoleId, sourceId).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleSourceIdentityUsage(context.Background(), potentialRoleId, sourceId).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetPotentialRoleSourceIdentityUsage``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleSourceIdentityUsage``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPotentialRoleSourceIdentityUsage`: []RoleMiningPotentialRoleSourceUsage
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetPotentialRoleSourceIdentityUsage`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetPotentialRoleSourceIdentityUsage`: %v\n", resp)
 }
 ```
 
@@ -1126,7 +1126,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1139,13 +1139,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetPotentialRoleSummaries(context.Background(), sessionId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetPotentialRoleSummaries(context.Background(), sessionId).Sorters(sorters).Filters(filters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetPotentialRoleSummaries``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetPotentialRoleSummaries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPotentialRoleSummaries`: []RoleMiningPotentialRoleSummary
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetPotentialRoleSummaries`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetPotentialRoleSummaries`: %v\n", resp)
 }
 ```
 
@@ -1206,7 +1206,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1214,13 +1214,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetRoleMiningPotentialRole(context.Background(), potentialRoleId).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningPotentialRole(context.Background(), potentialRoleId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetRoleMiningPotentialRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningPotentialRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRoleMiningPotentialRole`: RoleMiningPotentialRole
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetRoleMiningPotentialRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetRoleMiningPotentialRole`: %v\n", resp)
 }
 ```
 
@@ -1276,7 +1276,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1284,13 +1284,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetRoleMiningSession(context.Background(), sessionId).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningSession(context.Background(), sessionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetRoleMiningSession``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningSession``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRoleMiningSession`: RoleMiningSessionResponse
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetRoleMiningSession`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetRoleMiningSession`: %v\n", resp)
 }
 ```
 
@@ -1346,7 +1346,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1354,13 +1354,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetRoleMiningSessionStatus(context.Background(), sessionId).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningSessionStatus(context.Background(), sessionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetRoleMiningSessionStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningSessionStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRoleMiningSessionStatus`: RoleMiningSessionStatus
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetRoleMiningSessionStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetRoleMiningSessionStatus`: %v\n", resp)
 }
 ```
 
@@ -1416,7 +1416,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1428,13 +1428,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetRoleMiningSessions(context.Background()).Filters(filters).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetRoleMiningSessions(context.Background()).Filters(filters).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetRoleMiningSessions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetRoleMiningSessions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRoleMiningSessions`: []RoleMiningSessionDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetRoleMiningSessions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetRoleMiningSessions`: %v\n", resp)
 }
 ```
 
@@ -1490,7 +1490,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1501,13 +1501,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.GetSavedPotentialRoles(context.Background()).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.GetSavedPotentialRoles(context.Background()).Sorters(sorters).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.GetSavedPotentialRoles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.GetSavedPotentialRoles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetSavedPotentialRoles`: []RoleMiningSessionDraftRoleDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.GetSavedPotentialRoles`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.GetSavedPotentialRoles`: %v\n", resp)
 }
 ```
 
@@ -1562,7 +1562,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1572,13 +1572,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.PatchPotentialRole(context.Background(), sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRole(context.Background(), sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.PatchPotentialRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchPotentialRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchPotentialRole`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.PatchPotentialRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.PatchPotentialRole`: %v\n", resp)
 }
 ```
 
@@ -1637,7 +1637,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1647,13 +1647,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.PatchPotentialRole_0(context.Background(), sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.PatchPotentialRole_0(context.Background(), sessionId, potentialRoleId).PatchPotentialRoleRequestInner(patchPotentialRoleRequestInner).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.PatchPotentialRole_0``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchPotentialRole_0``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchPotentialRole_0`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.PatchPotentialRole_0`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.PatchPotentialRole_0`: %v\n", resp)
 }
 ```
 
@@ -1712,7 +1712,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1721,13 +1721,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.PatchRoleMiningSession(context.Background(), sessionId).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.PatchRoleMiningSession(context.Background(), sessionId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.PatchRoleMiningSession``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.PatchRoleMiningSession``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchRoleMiningSession`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.PatchRoleMiningSession`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.PatchRoleMiningSession`: %v\n", resp)
 }
 ```
 
@@ -1784,7 +1784,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1794,13 +1794,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRoleMiningApi.UpdateEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).RoleMiningPotentialRoleEditEntitlements(roleMiningPotentialRoleEditEntitlements).Execute()
+    resp, r, err := apiClient.IAIRoleMiningAPI.UpdateEntitlementsPotentialRole(context.Background(), sessionId, potentialRoleId).RoleMiningPotentialRoleEditEntitlements(roleMiningPotentialRoleEditEntitlements).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningApi.UpdateEntitlementsPotentialRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRoleMiningAPI.UpdateEntitlementsPotentialRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateEntitlementsPotentialRole`: RoleMiningPotentialRole
-    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningApi.UpdateEntitlementsPotentialRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRoleMiningAPI.UpdateEntitlementsPotentialRole`: %v\n", resp)
 }
 ```
 

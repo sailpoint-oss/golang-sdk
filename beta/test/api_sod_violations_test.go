@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing SODViolationsApiService
+Testing SODViolationsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_SODViolationsApiService(t *testing.T) {
+func Test_beta_SODViolationsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SODViolationsApiService StartPredictSodViolations", func(t *testing.T) {
+	t.Run("Test SODViolationsAPIService StartPredictSodViolations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.SODViolationsApi.StartPredictSodViolations(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SODViolationsAPI.StartPredictSodViolations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

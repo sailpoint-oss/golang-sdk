@@ -212,8 +212,8 @@ func (o *OutlierSummary) UnmarshalJSON(bytes []byte) (err error) {
 	varOutlierSummary := _OutlierSummary{}
 
 	if err = json.Unmarshal(bytes, &varOutlierSummary); err == nil {
-		*o = OutlierSummary(varOutlierSummary)
-	}
+	*o = OutlierSummary(varOutlierSummary)
+}
 
 	additionalProperties := make(map[string]interface{})
 

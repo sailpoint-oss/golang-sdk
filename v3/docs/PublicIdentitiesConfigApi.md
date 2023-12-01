@@ -1,11 +1,11 @@
-# \PublicIdentitiesConfigApi
+# \PublicIdentitiesConfigAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPublicIdentityConfig**](PublicIdentitiesConfigApi.md#GetPublicIdentityConfig) | **Get** /public-identities-config | Get the Public Identities Configuration
-[**UpdatePublicIdentityConfig**](PublicIdentitiesConfigApi.md#UpdatePublicIdentityConfig) | **Put** /public-identities-config | Update the Public Identities Configuration
+[**GetPublicIdentityConfig**](PublicIdentitiesConfigAPI.md#GetPublicIdentityConfig) | **Get** /public-identities-config | Get the Public Identities Configuration
+[**UpdatePublicIdentityConfig**](PublicIdentitiesConfigAPI.md#UpdatePublicIdentityConfig) | **Put** /public-identities-config | Update the Public Identities Configuration
 
 
 
@@ -26,20 +26,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentitiesConfigApi.GetPublicIdentityConfig(context.Background()).Execute()
+    resp, r, err := apiClient.PublicIdentitiesConfigAPI.GetPublicIdentityConfig(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigApi.GetPublicIdentityConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.GetPublicIdentityConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPublicIdentityConfig`: PublicIdentityConfig
-    fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigApi.GetPublicIdentityConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigAPI.GetPublicIdentityConfig`: %v\n", resp)
 }
 ```
 
@@ -87,7 +87,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -95,13 +95,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentitiesConfigApi.UpdatePublicIdentityConfig(context.Background()).PublicIdentityConfig(publicIdentityConfig).Execute()
+    resp, r, err := apiClient.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig(context.Background()).PublicIdentityConfig(publicIdentityConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigApi.UpdatePublicIdentityConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdatePublicIdentityConfig`: PublicIdentityConfig
-    fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigApi.UpdatePublicIdentityConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig`: %v\n", resp)
 }
 ```
 

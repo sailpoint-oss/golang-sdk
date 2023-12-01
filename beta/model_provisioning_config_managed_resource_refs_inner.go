@@ -174,8 +174,8 @@ func (o *ProvisioningConfigManagedResourceRefsInner) UnmarshalJSON(bytes []byte)
 	varProvisioningConfigManagedResourceRefsInner := _ProvisioningConfigManagedResourceRefsInner{}
 
 	if err = json.Unmarshal(bytes, &varProvisioningConfigManagedResourceRefsInner); err == nil {
-		*o = ProvisioningConfigManagedResourceRefsInner(varProvisioningConfigManagedResourceRefsInner)
-	}
+	*o = ProvisioningConfigManagedResourceRefsInner(varProvisioningConfigManagedResourceRefsInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

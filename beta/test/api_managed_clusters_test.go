@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing ManagedClustersApiService
+Testing ManagedClustersAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_ManagedClustersApiService(t *testing.T) {
+func Test_beta_ManagedClustersAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ManagedClustersApiService GetClientLogConfiguration", func(t *testing.T) {
+	t.Run("Test ManagedClustersAPIService GetClientLogConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.ManagedClustersApi.GetClientLogConfiguration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.ManagedClustersAPI.GetClientLogConfiguration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,13 +36,13 @@ func Test_beta_ManagedClustersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ManagedClustersApiService GetManagedCluster", func(t *testing.T) {
+	t.Run("Test ManagedClustersAPIService GetManagedCluster", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.ManagedClustersApi.GetManagedCluster(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.ManagedClustersAPI.GetManagedCluster(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,11 +50,11 @@ func Test_beta_ManagedClustersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ManagedClustersApiService GetManagedClusters", func(t *testing.T) {
+	t.Run("Test ManagedClustersAPIService GetManagedClusters", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.ManagedClustersApi.GetManagedClusters(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.ManagedClustersAPI.GetManagedClusters(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,13 +62,13 @@ func Test_beta_ManagedClustersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ManagedClustersApiService PutClientLogConfiguration", func(t *testing.T) {
+	t.Run("Test ManagedClustersAPIService PutClientLogConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.ManagedClustersApi.PutClientLogConfiguration(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.ManagedClustersAPI.PutClientLogConfiguration(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

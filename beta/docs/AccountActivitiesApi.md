@@ -1,11 +1,11 @@
-# \AccountActivitiesApi
+# \AccountActivitiesAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAccountActivity**](AccountActivitiesApi.md#GetAccountActivity) | **Get** /account-activities/{id} | Get Account Activity
-[**ListAccountActivities**](AccountActivitiesApi.md#ListAccountActivities) | **Get** /account-activities | List Account Activities
+[**GetAccountActivity**](AccountActivitiesAPI.md#GetAccountActivity) | **Get** /account-activities/{id} | Get Account Activity
+[**ListAccountActivities**](AccountActivitiesAPI.md#ListAccountActivities) | **Get** /account-activities | List Account Activities
 
 
 
@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountActivitiesApi.GetAccountActivity(context.Background(), id).Execute()
+    resp, r, err := apiClient.AccountActivitiesAPI.GetAccountActivity(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountActivitiesApi.GetAccountActivity``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountActivitiesAPI.GetAccountActivity``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAccountActivity`: CancelableAccountActivity
-    fmt.Fprintf(os.Stdout, "Response from `AccountActivitiesApi.GetAccountActivity`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountActivitiesAPI.GetAccountActivity`: %v\n", resp)
 }
 ```
 
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -112,13 +112,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountActivitiesApi.ListAccountActivities(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).Type_(type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccountActivitiesAPI.ListAccountActivities(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).Type_(type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountActivitiesApi.ListAccountActivities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountActivitiesAPI.ListAccountActivities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListAccountActivities`: []CancelableAccountActivity
-    fmt.Fprintf(os.Stdout, "Response from `AccountActivitiesApi.ListAccountActivities`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountActivitiesAPI.ListAccountActivities`: %v\n", resp)
 }
 ```
 

@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing SourceUsagesApiService
+Testing SourceUsagesAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_SourceUsagesApiService(t *testing.T) {
+func Test_v3_SourceUsagesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SourceUsagesApiService GetStatusBySourceId", func(t *testing.T) {
+	t.Run("Test SourceUsagesAPIService GetStatusBySourceId", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.V3.SourceUsagesApi.GetStatusBySourceId(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.V3.SourceUsagesAPI.GetStatusBySourceId(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,13 +36,13 @@ func Test_v3_SourceUsagesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SourceUsagesApiService GetUsagesBySourceId", func(t *testing.T) {
+	t.Run("Test SourceUsagesAPIService GetUsagesBySourceId", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.V3.SourceUsagesApi.GetUsagesBySourceId(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.V3.SourceUsagesAPI.GetUsagesBySourceId(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

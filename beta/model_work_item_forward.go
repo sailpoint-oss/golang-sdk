@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the WorkItemForward type satisfies the MappedNullable interface at compile time
@@ -157,11 +158,33 @@ func (o WorkItemForward) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *WorkItemForward) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"targetOwnerId",
+		"comment",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varWorkItemForward := _WorkItemForward{}
 
 	if err = json.Unmarshal(bytes, &varWorkItemForward); err == nil {
-		*o = WorkItemForward(varWorkItemForward)
-	}
+	*o = WorkItemForward(varWorkItemForward)
+}
 
 	additionalProperties := make(map[string]interface{})
 

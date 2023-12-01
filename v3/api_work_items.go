@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// WorkItemsApiService WorkItemsApi service
-type WorkItemsApiService service
+// WorkItemsAPIService WorkItemsAPI service
+type WorkItemsAPIService service
 
 type ApiApproveApprovalItemRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	id string
 	approvalItemId string
 }
@@ -44,7 +44,7 @@ This API approves an Approval Item. Either an admin, or the owning/current user 
  @param approvalItemId The ID of the approval item.
  @return ApiApproveApprovalItemRequest
 */
-func (a *WorkItemsApiService) ApproveApprovalItem(ctx context.Context, id string, approvalItemId string) ApiApproveApprovalItemRequest {
+func (a *WorkItemsAPIService) ApproveApprovalItem(ctx context.Context, id string, approvalItemId string) ApiApproveApprovalItemRequest {
 	return ApiApproveApprovalItemRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *WorkItemsApiService) ApproveApprovalItem(ctx context.Context, id string
 
 // Execute executes the request
 //  @return WorkItems
-func (a *WorkItemsApiService) ApproveApprovalItemExecute(r ApiApproveApprovalItemRequest) (*WorkItems, *http.Response, error) {
+func (a *WorkItemsAPIService) ApproveApprovalItemExecute(r ApiApproveApprovalItemRequest) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *WorkItemsApiService) ApproveApprovalItemExecute(r ApiApproveApprovalIte
 		localVarReturnValue  *WorkItems
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.ApproveApprovalItem")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.ApproveApprovalItem")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -103,9 +103,9 @@ func (a *WorkItemsApiService) ApproveApprovalItemExecute(r ApiApproveApprovalIte
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -197,7 +197,7 @@ func (a *WorkItemsApiService) ApproveApprovalItemExecute(r ApiApproveApprovalIte
 
 type ApiApproveApprovalItemsInBulkRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	id string
 }
 
@@ -214,7 +214,7 @@ This API bulk approves Approval Items. Either an admin, or the owning/current us
  @param id The ID of the work item
  @return ApiApproveApprovalItemsInBulkRequest
 */
-func (a *WorkItemsApiService) ApproveApprovalItemsInBulk(ctx context.Context, id string) ApiApproveApprovalItemsInBulkRequest {
+func (a *WorkItemsAPIService) ApproveApprovalItemsInBulk(ctx context.Context, id string) ApiApproveApprovalItemsInBulkRequest {
 	return ApiApproveApprovalItemsInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -224,7 +224,7 @@ func (a *WorkItemsApiService) ApproveApprovalItemsInBulk(ctx context.Context, id
 
 // Execute executes the request
 //  @return WorkItems
-func (a *WorkItemsApiService) ApproveApprovalItemsInBulkExecute(r ApiApproveApprovalItemsInBulkRequest) (*WorkItems, *http.Response, error) {
+func (a *WorkItemsAPIService) ApproveApprovalItemsInBulkExecute(r ApiApproveApprovalItemsInBulkRequest) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -232,7 +232,7 @@ func (a *WorkItemsApiService) ApproveApprovalItemsInBulkExecute(r ApiApproveAppr
 		localVarReturnValue  *WorkItems
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.ApproveApprovalItemsInBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.ApproveApprovalItemsInBulk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -271,9 +271,9 @@ func (a *WorkItemsApiService) ApproveApprovalItemsInBulkExecute(r ApiApproveAppr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -365,7 +365,7 @@ func (a *WorkItemsApiService) ApproveApprovalItemsInBulkExecute(r ApiApproveAppr
 
 type ApiCompleteWorkItemRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	id string
 }
 
@@ -382,7 +382,7 @@ This API completes a work item. Either an admin, or the owning/current user must
  @param id The ID of the work item
  @return ApiCompleteWorkItemRequest
 */
-func (a *WorkItemsApiService) CompleteWorkItem(ctx context.Context, id string) ApiCompleteWorkItemRequest {
+func (a *WorkItemsAPIService) CompleteWorkItem(ctx context.Context, id string) ApiCompleteWorkItemRequest {
 	return ApiCompleteWorkItemRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -392,7 +392,7 @@ func (a *WorkItemsApiService) CompleteWorkItem(ctx context.Context, id string) A
 
 // Execute executes the request
 //  @return WorkItems
-func (a *WorkItemsApiService) CompleteWorkItemExecute(r ApiCompleteWorkItemRequest) (*WorkItems, *http.Response, error) {
+func (a *WorkItemsAPIService) CompleteWorkItemExecute(r ApiCompleteWorkItemRequest) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -400,7 +400,7 @@ func (a *WorkItemsApiService) CompleteWorkItemExecute(r ApiCompleteWorkItemReque
 		localVarReturnValue  *WorkItems
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.CompleteWorkItem")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.CompleteWorkItem")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -439,9 +439,9 @@ func (a *WorkItemsApiService) CompleteWorkItemExecute(r ApiCompleteWorkItemReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -533,7 +533,7 @@ func (a *WorkItemsApiService) CompleteWorkItemExecute(r ApiCompleteWorkItemReque
 
 type ApiGetCompletedWorkItemsRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	ownerId *string
 	limit *int32
 	offset *int32
@@ -576,7 +576,7 @@ This gets a collection of completed work items belonging to either the specified
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCompletedWorkItemsRequest
 */
-func (a *WorkItemsApiService) GetCompletedWorkItems(ctx context.Context) ApiGetCompletedWorkItemsRequest {
+func (a *WorkItemsAPIService) GetCompletedWorkItems(ctx context.Context) ApiGetCompletedWorkItemsRequest {
 	return ApiGetCompletedWorkItemsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -585,7 +585,7 @@ func (a *WorkItemsApiService) GetCompletedWorkItems(ctx context.Context) ApiGetC
 
 // Execute executes the request
 //  @return []WorkItems
-func (a *WorkItemsApiService) GetCompletedWorkItemsExecute(r ApiGetCompletedWorkItemsRequest) ([]WorkItems, *http.Response, error) {
+func (a *WorkItemsAPIService) GetCompletedWorkItemsExecute(r ApiGetCompletedWorkItemsRequest) ([]WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -593,7 +593,7 @@ func (a *WorkItemsApiService) GetCompletedWorkItemsExecute(r ApiGetCompletedWork
 		localVarReturnValue  []WorkItems
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.GetCompletedWorkItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetCompletedWorkItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -609,12 +609,21 @@ func (a *WorkItemsApiService) GetCompletedWorkItemsExecute(r ApiGetCompletedWork
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -643,9 +652,9 @@ func (a *WorkItemsApiService) GetCompletedWorkItemsExecute(r ApiGetCompletedWork
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -726,7 +735,7 @@ func (a *WorkItemsApiService) GetCompletedWorkItemsExecute(r ApiGetCompletedWork
 
 type ApiGetCountCompletedWorkItemsRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	ownerId *string
 }
 
@@ -748,7 +757,7 @@ This gets a count of completed work items belonging to either the specified user
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCountCompletedWorkItemsRequest
 */
-func (a *WorkItemsApiService) GetCountCompletedWorkItems(ctx context.Context) ApiGetCountCompletedWorkItemsRequest {
+func (a *WorkItemsAPIService) GetCountCompletedWorkItems(ctx context.Context) ApiGetCountCompletedWorkItemsRequest {
 	return ApiGetCountCompletedWorkItemsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -757,7 +766,7 @@ func (a *WorkItemsApiService) GetCountCompletedWorkItems(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return WorkItemsCount
-func (a *WorkItemsApiService) GetCountCompletedWorkItemsExecute(r ApiGetCountCompletedWorkItemsRequest) (*WorkItemsCount, *http.Response, error) {
+func (a *WorkItemsAPIService) GetCountCompletedWorkItemsExecute(r ApiGetCountCompletedWorkItemsRequest) (*WorkItemsCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -765,7 +774,7 @@ func (a *WorkItemsApiService) GetCountCompletedWorkItemsExecute(r ApiGetCountCom
 		localVarReturnValue  *WorkItemsCount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.GetCountCompletedWorkItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetCountCompletedWorkItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -806,9 +815,9 @@ func (a *WorkItemsApiService) GetCountCompletedWorkItemsExecute(r ApiGetCountCom
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -889,7 +898,7 @@ func (a *WorkItemsApiService) GetCountCompletedWorkItemsExecute(r ApiGetCountCom
 
 type ApiGetCountWorkItemsRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	ownerId *string
 }
 
@@ -911,7 +920,7 @@ This gets a count of work items belonging to either the specified user(admin req
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCountWorkItemsRequest
 */
-func (a *WorkItemsApiService) GetCountWorkItems(ctx context.Context) ApiGetCountWorkItemsRequest {
+func (a *WorkItemsAPIService) GetCountWorkItems(ctx context.Context) ApiGetCountWorkItemsRequest {
 	return ApiGetCountWorkItemsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -920,7 +929,7 @@ func (a *WorkItemsApiService) GetCountWorkItems(ctx context.Context) ApiGetCount
 
 // Execute executes the request
 //  @return WorkItemsCount
-func (a *WorkItemsApiService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsRequest) (*WorkItemsCount, *http.Response, error) {
+func (a *WorkItemsAPIService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsRequest) (*WorkItemsCount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -928,7 +937,7 @@ func (a *WorkItemsApiService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsReq
 		localVarReturnValue  *WorkItemsCount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.GetCountWorkItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetCountWorkItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -969,9 +978,9 @@ func (a *WorkItemsApiService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1052,7 +1061,7 @@ func (a *WorkItemsApiService) GetCountWorkItemsExecute(r ApiGetCountWorkItemsReq
 
 type ApiGetWorkItemRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	id string
 }
 
@@ -1069,7 +1078,7 @@ This gets the details of a Work Item belonging to either the specified user(admi
  @param id ID of the work item.
  @return ApiGetWorkItemRequest
 */
-func (a *WorkItemsApiService) GetWorkItem(ctx context.Context, id string) ApiGetWorkItemRequest {
+func (a *WorkItemsAPIService) GetWorkItem(ctx context.Context, id string) ApiGetWorkItemRequest {
 	return ApiGetWorkItemRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1079,7 +1088,7 @@ func (a *WorkItemsApiService) GetWorkItem(ctx context.Context, id string) ApiGet
 
 // Execute executes the request
 //  @return WorkItems
-func (a *WorkItemsApiService) GetWorkItemExecute(r ApiGetWorkItemRequest) (*WorkItems, *http.Response, error) {
+func (a *WorkItemsAPIService) GetWorkItemExecute(r ApiGetWorkItemRequest) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1087,7 +1096,7 @@ func (a *WorkItemsApiService) GetWorkItemExecute(r ApiGetWorkItemRequest) (*Work
 		localVarReturnValue  *WorkItems
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.GetWorkItem")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetWorkItem")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1126,9 +1135,9 @@ func (a *WorkItemsApiService) GetWorkItemExecute(r ApiGetWorkItemRequest) (*Work
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1209,7 +1218,7 @@ func (a *WorkItemsApiService) GetWorkItemExecute(r ApiGetWorkItemRequest) (*Work
 
 type ApiGetWorkItemsSummaryRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	ownerId *string
 }
 
@@ -1231,7 +1240,7 @@ This gets a summary of work items belonging to either the specified user(admin r
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetWorkItemsSummaryRequest
 */
-func (a *WorkItemsApiService) GetWorkItemsSummary(ctx context.Context) ApiGetWorkItemsSummaryRequest {
+func (a *WorkItemsAPIService) GetWorkItemsSummary(ctx context.Context) ApiGetWorkItemsSummaryRequest {
 	return ApiGetWorkItemsSummaryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1240,7 +1249,7 @@ func (a *WorkItemsApiService) GetWorkItemsSummary(ctx context.Context) ApiGetWor
 
 // Execute executes the request
 //  @return WorkItemsSummary
-func (a *WorkItemsApiService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummaryRequest) (*WorkItemsSummary, *http.Response, error) {
+func (a *WorkItemsAPIService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummaryRequest) (*WorkItemsSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1248,7 +1257,7 @@ func (a *WorkItemsApiService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummar
 		localVarReturnValue  *WorkItemsSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.GetWorkItemsSummary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.GetWorkItemsSummary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1289,9 +1298,9 @@ func (a *WorkItemsApiService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummar
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1372,7 +1381,7 @@ func (a *WorkItemsApiService) GetWorkItemsSummaryExecute(r ApiGetWorkItemsSummar
 
 type ApiListWorkItemsRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -1415,7 +1424,7 @@ This gets a collection of work items belonging to either the specified user(admi
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListWorkItemsRequest
 */
-func (a *WorkItemsApiService) ListWorkItems(ctx context.Context) ApiListWorkItemsRequest {
+func (a *WorkItemsAPIService) ListWorkItems(ctx context.Context) ApiListWorkItemsRequest {
 	return ApiListWorkItemsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1424,7 +1433,7 @@ func (a *WorkItemsApiService) ListWorkItems(ctx context.Context) ApiListWorkItem
 
 // Execute executes the request
 //  @return []WorkItems
-func (a *WorkItemsApiService) ListWorkItemsExecute(r ApiListWorkItemsRequest) ([]WorkItems, *http.Response, error) {
+func (a *WorkItemsAPIService) ListWorkItemsExecute(r ApiListWorkItemsRequest) ([]WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1432,7 +1441,7 @@ func (a *WorkItemsApiService) ListWorkItemsExecute(r ApiListWorkItemsRequest) ([
 		localVarReturnValue  []WorkItems
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.ListWorkItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.ListWorkItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1445,12 +1454,21 @@ func (a *WorkItemsApiService) ListWorkItemsExecute(r ApiListWorkItemsRequest) ([
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.ownerId != nil {
 		parameterAddToQuery(localVarQueryParams, "ownerId", r.ownerId, "")
@@ -1482,9 +1500,9 @@ func (a *WorkItemsApiService) ListWorkItemsExecute(r ApiListWorkItemsRequest) ([
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1565,7 +1583,7 @@ func (a *WorkItemsApiService) ListWorkItemsExecute(r ApiListWorkItemsRequest) ([
 
 type ApiRejectApprovalItemRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	id string
 	approvalItemId string
 }
@@ -1584,7 +1602,7 @@ This API rejects an Approval Item. Either an admin, or the owning/current user m
  @param approvalItemId The ID of the approval item.
  @return ApiRejectApprovalItemRequest
 */
-func (a *WorkItemsApiService) RejectApprovalItem(ctx context.Context, id string, approvalItemId string) ApiRejectApprovalItemRequest {
+func (a *WorkItemsAPIService) RejectApprovalItem(ctx context.Context, id string, approvalItemId string) ApiRejectApprovalItemRequest {
 	return ApiRejectApprovalItemRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1595,7 +1613,7 @@ func (a *WorkItemsApiService) RejectApprovalItem(ctx context.Context, id string,
 
 // Execute executes the request
 //  @return WorkItems
-func (a *WorkItemsApiService) RejectApprovalItemExecute(r ApiRejectApprovalItemRequest) (*WorkItems, *http.Response, error) {
+func (a *WorkItemsAPIService) RejectApprovalItemExecute(r ApiRejectApprovalItemRequest) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1603,7 +1621,7 @@ func (a *WorkItemsApiService) RejectApprovalItemExecute(r ApiRejectApprovalItemR
 		localVarReturnValue  *WorkItems
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.RejectApprovalItem")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.RejectApprovalItem")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1643,9 +1661,9 @@ func (a *WorkItemsApiService) RejectApprovalItemExecute(r ApiRejectApprovalItemR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1737,7 +1755,7 @@ func (a *WorkItemsApiService) RejectApprovalItemExecute(r ApiRejectApprovalItemR
 
 type ApiRejectApprovalItemsInBulkRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	id string
 }
 
@@ -1754,7 +1772,7 @@ This API bulk rejects Approval Items. Either an admin, or the owning/current use
  @param id The ID of the work item
  @return ApiRejectApprovalItemsInBulkRequest
 */
-func (a *WorkItemsApiService) RejectApprovalItemsInBulk(ctx context.Context, id string) ApiRejectApprovalItemsInBulkRequest {
+func (a *WorkItemsAPIService) RejectApprovalItemsInBulk(ctx context.Context, id string) ApiRejectApprovalItemsInBulkRequest {
 	return ApiRejectApprovalItemsInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1764,7 +1782,7 @@ func (a *WorkItemsApiService) RejectApprovalItemsInBulk(ctx context.Context, id 
 
 // Execute executes the request
 //  @return WorkItems
-func (a *WorkItemsApiService) RejectApprovalItemsInBulkExecute(r ApiRejectApprovalItemsInBulkRequest) (*WorkItems, *http.Response, error) {
+func (a *WorkItemsAPIService) RejectApprovalItemsInBulkExecute(r ApiRejectApprovalItemsInBulkRequest) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1772,7 +1790,7 @@ func (a *WorkItemsApiService) RejectApprovalItemsInBulkExecute(r ApiRejectApprov
 		localVarReturnValue  *WorkItems
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.RejectApprovalItemsInBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.RejectApprovalItemsInBulk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1811,9 +1829,9 @@ func (a *WorkItemsApiService) RejectApprovalItemsInBulkExecute(r ApiRejectApprov
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1905,7 +1923,7 @@ func (a *WorkItemsApiService) RejectApprovalItemsInBulkExecute(r ApiRejectApprov
 
 type ApiSubmitAccountSelectionRequest struct {
 	ctx context.Context
-	ApiService *WorkItemsApiService
+	ApiService *WorkItemsAPIService
 	id string
 	requestBody *map[string]interface{}
 }
@@ -1929,7 +1947,7 @@ This API submits account selections. Either an admin, or the owning/current user
  @param id The ID of the work item
  @return ApiSubmitAccountSelectionRequest
 */
-func (a *WorkItemsApiService) SubmitAccountSelection(ctx context.Context, id string) ApiSubmitAccountSelectionRequest {
+func (a *WorkItemsAPIService) SubmitAccountSelection(ctx context.Context, id string) ApiSubmitAccountSelectionRequest {
 	return ApiSubmitAccountSelectionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1939,7 +1957,7 @@ func (a *WorkItemsApiService) SubmitAccountSelection(ctx context.Context, id str
 
 // Execute executes the request
 //  @return WorkItems
-func (a *WorkItemsApiService) SubmitAccountSelectionExecute(r ApiSubmitAccountSelectionRequest) (*WorkItems, *http.Response, error) {
+func (a *WorkItemsAPIService) SubmitAccountSelectionExecute(r ApiSubmitAccountSelectionRequest) (*WorkItems, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1947,7 +1965,7 @@ func (a *WorkItemsApiService) SubmitAccountSelectionExecute(r ApiSubmitAccountSe
 		localVarReturnValue  *WorkItems
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsApiService.SubmitAccountSelection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkItemsAPIService.SubmitAccountSelection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1991,9 +2009,9 @@ func (a *WorkItemsApiService) SubmitAccountSelectionExecute(r ApiSubmitAccountSe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

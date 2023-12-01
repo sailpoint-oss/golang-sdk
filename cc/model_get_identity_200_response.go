@@ -1539,8 +1539,8 @@ func (o *GetIdentity200Response) UnmarshalJSON(bytes []byte) (err error) {
 	varGetIdentity200Response := _GetIdentity200Response{}
 
 	if err = json.Unmarshal(bytes, &varGetIdentity200Response); err == nil {
-		*o = GetIdentity200Response(varGetIdentity200Response)
-	}
+	*o = GetIdentity200Response(varGetIdentity200Response)
+}
 
 	additionalProperties := make(map[string]interface{})
 

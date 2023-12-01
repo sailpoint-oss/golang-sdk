@@ -100,8 +100,8 @@ func (o *ProcessIdentitiesRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varProcessIdentitiesRequest := _ProcessIdentitiesRequest{}
 
 	if err = json.Unmarshal(bytes, &varProcessIdentitiesRequest); err == nil {
-		*o = ProcessIdentitiesRequest(varProcessIdentitiesRequest)
-	}
+	*o = ProcessIdentitiesRequest(varProcessIdentitiesRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

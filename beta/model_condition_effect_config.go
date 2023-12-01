@@ -137,8 +137,8 @@ func (o *ConditionEffectConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varConditionEffectConfig := _ConditionEffectConfig{}
 
 	if err = json.Unmarshal(bytes, &varConditionEffectConfig); err == nil {
-		*o = ConditionEffectConfig(varConditionEffectConfig)
-	}
+	*o = ConditionEffectConfig(varConditionEffectConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

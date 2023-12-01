@@ -1,11 +1,11 @@
-# \ManagedClientsApi
+# \ManagedClientsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetManagedClientStatus**](ManagedClientsApi.md#GetManagedClientStatus) | **Get** /managed-clients/{id}/status | Specified Managed Client Status.
-[**UpdateManagedClientStatus**](ManagedClientsApi.md#UpdateManagedClientStatus) | **Post** /managed-clients/{id}/status | Handle status request from client
+[**GetManagedClientStatus**](ManagedClientsAPI.md#GetManagedClientStatus) | **Get** /managed-clients/{id}/status | Specified Managed Client Status.
+[**UpdateManagedClientStatus**](ManagedClientsAPI.md#UpdateManagedClientStatus) | **Post** /managed-clients/{id}/status | Handle status request from client
 
 
 
@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -35,13 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClientsApi.GetManagedClientStatus(context.Background(), id).Type_(type_).Execute()
+    resp, r, err := apiClient.ManagedClientsAPI.GetManagedClientStatus(context.Background(), id).Type_(type_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsApi.GetManagedClientStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.GetManagedClientStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetManagedClientStatus`: ManagedClientStatus
-    fmt.Fprintf(os.Stdout, "Response from `ManagedClientsApi.GetManagedClientStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.GetManagedClientStatus`: %v\n", resp)
 }
 ```
 
@@ -99,7 +99,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -108,13 +108,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClientsApi.UpdateManagedClientStatus(context.Background(), id).ManagedClientStatus(managedClientStatus).Execute()
+    resp, r, err := apiClient.ManagedClientsAPI.UpdateManagedClientStatus(context.Background(), id).ManagedClientStatus(managedClientStatus).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsApi.UpdateManagedClientStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClientsAPI.UpdateManagedClientStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateManagedClientStatus`: ManagedClientStatusAggResponse
-    fmt.Fprintf(os.Stdout, "Response from `ManagedClientsApi.UpdateManagedClientStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ManagedClientsAPI.UpdateManagedClientStatus`: %v\n", resp)
 }
 ```
 

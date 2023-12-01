@@ -13,18 +13,18 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// AccessRequestsApiService AccessRequestsApi service
-type AccessRequestsApiService service
+// AccessRequestsAPIService AccessRequestsAPI service
+type AccessRequestsAPIService service
 
 type ApiCancelAccessRequestRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestsApiService
+	ApiService *AccessRequestsAPIService
 	cancelAccessRequest *CancelAccessRequest
 }
 
@@ -46,7 +46,7 @@ Any token with ORG_ADMIN authority or token of the user who originally requested
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCancelAccessRequestRequest
 */
-func (a *AccessRequestsApiService) CancelAccessRequest(ctx context.Context) ApiCancelAccessRequestRequest {
+func (a *AccessRequestsAPIService) CancelAccessRequest(ctx context.Context) ApiCancelAccessRequestRequest {
 	return ApiCancelAccessRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *AccessRequestsApiService) CancelAccessRequest(ctx context.Context) ApiC
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *AccessRequestsApiService) CancelAccessRequestExecute(r ApiCancelAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AccessRequestsAPIService) CancelAccessRequestExecute(r ApiCancelAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *AccessRequestsApiService) CancelAccessRequestExecute(r ApiCancelAccessR
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsApiService.CancelAccessRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.CancelAccessRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *AccessRequestsApiService) CancelAccessRequestExecute(r ApiCancelAccessR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -200,7 +200,7 @@ func (a *AccessRequestsApiService) CancelAccessRequestExecute(r ApiCancelAccessR
 
 type ApiCloseAccessRequestRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestsApiService
+	ApiService *AccessRequestsAPIService
 	closeAccessRequest *CloseAccessRequest
 }
 
@@ -232,7 +232,7 @@ This API triggers the [Provisioning Completed event trigger](https://developer.s
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCloseAccessRequestRequest
 */
-func (a *AccessRequestsApiService) CloseAccessRequest(ctx context.Context) ApiCloseAccessRequestRequest {
+func (a *AccessRequestsAPIService) CloseAccessRequest(ctx context.Context) ApiCloseAccessRequestRequest {
 	return ApiCloseAccessRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -241,7 +241,7 @@ func (a *AccessRequestsApiService) CloseAccessRequest(ctx context.Context) ApiCl
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *AccessRequestsApiService) CloseAccessRequestExecute(r ApiCloseAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AccessRequestsAPIService) CloseAccessRequestExecute(r ApiCloseAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -249,7 +249,7 @@ func (a *AccessRequestsApiService) CloseAccessRequestExecute(r ApiCloseAccessReq
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsApiService.CloseAccessRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.CloseAccessRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -292,9 +292,9 @@ func (a *AccessRequestsApiService) CloseAccessRequestExecute(r ApiCloseAccessReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -375,7 +375,7 @@ func (a *AccessRequestsApiService) CloseAccessRequestExecute(r ApiCloseAccessReq
 
 type ApiCreateAccessRequestRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestsApiService
+	ApiService *AccessRequestsAPIService
 	accessRequest *AccessRequest
 }
 
@@ -427,7 +427,7 @@ A token with API authority cannot be used to call this endpoint.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateAccessRequestRequest
 */
-func (a *AccessRequestsApiService) CreateAccessRequest(ctx context.Context) ApiCreateAccessRequestRequest {
+func (a *AccessRequestsAPIService) CreateAccessRequest(ctx context.Context) ApiCreateAccessRequestRequest {
 	return ApiCreateAccessRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -436,7 +436,7 @@ func (a *AccessRequestsApiService) CreateAccessRequest(ctx context.Context) ApiC
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *AccessRequestsApiService) CreateAccessRequestExecute(r ApiCreateAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AccessRequestsAPIService) CreateAccessRequestExecute(r ApiCreateAccessRequestRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -444,7 +444,7 @@ func (a *AccessRequestsApiService) CreateAccessRequestExecute(r ApiCreateAccessR
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsApiService.CreateAccessRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.CreateAccessRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -487,9 +487,9 @@ func (a *AccessRequestsApiService) CreateAccessRequestExecute(r ApiCreateAccessR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -570,7 +570,7 @@ func (a *AccessRequestsApiService) CreateAccessRequestExecute(r ApiCreateAccessR
 
 type ApiGetAccessRequestConfigRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestsApiService
+	ApiService *AccessRequestsAPIService
 }
 
 func (r ApiGetAccessRequestConfigRequest) Execute() (*AccessRequestConfig, *http.Response, error) {
@@ -585,7 +585,7 @@ This endpoint returns the current access-request configuration.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessRequestConfigRequest
 */
-func (a *AccessRequestsApiService) GetAccessRequestConfig(ctx context.Context) ApiGetAccessRequestConfigRequest {
+func (a *AccessRequestsAPIService) GetAccessRequestConfig(ctx context.Context) ApiGetAccessRequestConfigRequest {
 	return ApiGetAccessRequestConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -594,7 +594,7 @@ func (a *AccessRequestsApiService) GetAccessRequestConfig(ctx context.Context) A
 
 // Execute executes the request
 //  @return AccessRequestConfig
-func (a *AccessRequestsApiService) GetAccessRequestConfigExecute(r ApiGetAccessRequestConfigRequest) (*AccessRequestConfig, *http.Response, error) {
+func (a *AccessRequestsAPIService) GetAccessRequestConfigExecute(r ApiGetAccessRequestConfigRequest) (*AccessRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -602,7 +602,7 @@ func (a *AccessRequestsApiService) GetAccessRequestConfigExecute(r ApiGetAccessR
 		localVarReturnValue  *AccessRequestConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsApiService.GetAccessRequestConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.GetAccessRequestConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -640,9 +640,9 @@ func (a *AccessRequestsApiService) GetAccessRequestConfigExecute(r ApiGetAccessR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -723,7 +723,7 @@ func (a *AccessRequestsApiService) GetAccessRequestConfigExecute(r ApiGetAccessR
 
 type ApiListAccessRequestStatusRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestsApiService
+	ApiService *AccessRequestsAPIService
 	requestedFor *string
 	requestedBy *string
 	regardingIdentity *string
@@ -802,7 +802,7 @@ Any token with any authority can request their own status. A token with ORG_ADMI
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccessRequestStatusRequest
 */
-func (a *AccessRequestsApiService) ListAccessRequestStatus(ctx context.Context) ApiListAccessRequestStatusRequest {
+func (a *AccessRequestsAPIService) ListAccessRequestStatus(ctx context.Context) ApiListAccessRequestStatusRequest {
 	return ApiListAccessRequestStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -811,7 +811,7 @@ func (a *AccessRequestsApiService) ListAccessRequestStatus(ctx context.Context) 
 
 // Execute executes the request
 //  @return []RequestedItemStatus
-func (a *AccessRequestsApiService) ListAccessRequestStatusExecute(r ApiListAccessRequestStatusRequest) ([]RequestedItemStatus, *http.Response, error) {
+func (a *AccessRequestsAPIService) ListAccessRequestStatusExecute(r ApiListAccessRequestStatusRequest) ([]RequestedItemStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -819,7 +819,7 @@ func (a *AccessRequestsApiService) ListAccessRequestStatusExecute(r ApiListAcces
 		localVarReturnValue  []RequestedItemStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsApiService.ListAccessRequestStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.ListAccessRequestStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -844,9 +844,15 @@ func (a *AccessRequestsApiService) ListAccessRequestStatusExecute(r ApiListAcces
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
@@ -884,9 +890,9 @@ func (a *AccessRequestsApiService) ListAccessRequestStatusExecute(r ApiListAcces
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -967,7 +973,7 @@ func (a *AccessRequestsApiService) ListAccessRequestStatusExecute(r ApiListAcces
 
 type ApiSetAccessRequestConfigRequest struct {
 	ctx context.Context
-	ApiService *AccessRequestsApiService
+	ApiService *AccessRequestsAPIService
 	accessRequestConfig *AccessRequestConfig
 }
 
@@ -989,7 +995,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetAccessRequestConfigRequest
 */
-func (a *AccessRequestsApiService) SetAccessRequestConfig(ctx context.Context) ApiSetAccessRequestConfigRequest {
+func (a *AccessRequestsAPIService) SetAccessRequestConfig(ctx context.Context) ApiSetAccessRequestConfigRequest {
 	return ApiSetAccessRequestConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -998,7 +1004,7 @@ func (a *AccessRequestsApiService) SetAccessRequestConfig(ctx context.Context) A
 
 // Execute executes the request
 //  @return AccessRequestConfig
-func (a *AccessRequestsApiService) SetAccessRequestConfigExecute(r ApiSetAccessRequestConfigRequest) (*AccessRequestConfig, *http.Response, error) {
+func (a *AccessRequestsAPIService) SetAccessRequestConfigExecute(r ApiSetAccessRequestConfigRequest) (*AccessRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1006,7 +1012,7 @@ func (a *AccessRequestsApiService) SetAccessRequestConfigExecute(r ApiSetAccessR
 		localVarReturnValue  *AccessRequestConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsApiService.SetAccessRequestConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessRequestsAPIService.SetAccessRequestConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1049,9 +1055,9 @@ func (a *AccessRequestsApiService) SetAccessRequestConfigExecute(r ApiSetAccessR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

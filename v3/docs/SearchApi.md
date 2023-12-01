@@ -1,13 +1,13 @@
-# \SearchApi
+# \SearchAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SearchAggregate**](SearchApi.md#SearchAggregate) | **Post** /search/aggregate | Perform a Search Query Aggregation
-[**SearchCount**](SearchApi.md#SearchCount) | **Post** /search/count | Count Documents Satisfying a Query
-[**SearchGet**](SearchApi.md#SearchGet) | **Get** /search/{index}/{id} | Get a Document by ID
-[**SearchPost**](SearchApi.md#SearchPost) | **Post** /search | Perform Search
+[**SearchAggregate**](SearchAPI.md#SearchAggregate) | **Post** /search/aggregate | Perform a Search Query Aggregation
+[**SearchCount**](SearchAPI.md#SearchCount) | **Post** /search/count | Count Documents Satisfying a Query
+[**SearchGet**](SearchAPI.md#SearchGet) | **Get** /search/{index}/{id} | Get a Document by ID
+[**SearchPost**](SearchAPI.md#SearchPost) | **Post** /search | Perform Search
 
 
 
@@ -28,7 +28,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -39,13 +39,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchApi.SearchAggregate(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.SearchAPI.SearchAggregate(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchAggregate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchAggregate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SearchAggregate`: AggregationResult
-    fmt.Fprintf(os.Stdout, "Response from `SearchApi.SearchAggregate`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchAggregate`: %v\n", resp)
 }
 ```
 
@@ -100,7 +100,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -108,9 +108,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchApi.SearchCount(context.Background()).Search(search).Execute()
+    r, err := apiClient.SearchAPI.SearchCount(context.Background()).Search(search).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchCount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchCount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -164,7 +164,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -173,13 +173,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchApi.SearchGet(context.Background(), index, id).Execute()
+    resp, r, err := apiClient.SearchAPI.SearchGet(context.Background(), index, id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SearchGet`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `SearchApi.SearchGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchGet`: %v\n", resp)
 }
 ```
 
@@ -237,7 +237,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -248,13 +248,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchApi.SearchPost(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.SearchAPI.SearchPost(context.Background()).Search(search).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchApi.SearchPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAPI.SearchPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SearchPost`: []map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `SearchApi.SearchPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SearchAPI.SearchPost`: %v\n", resp)
 }
 ```
 

@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing PasswordSyncGroupsApiService
+Testing PasswordSyncGroupsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_PasswordSyncGroupsApiService(t *testing.T) {
+func Test_v3_PasswordSyncGroupsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test PasswordSyncGroupsApiService CreatePasswordSyncGroup", func(t *testing.T) {
+	t.Run("Test PasswordSyncGroupsAPIService CreatePasswordSyncGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.PasswordSyncGroupsApi.CreatePasswordSyncGroup(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,38 +34,26 @@ func Test_v3_PasswordSyncGroupsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordSyncGroupsApiService DeletePasswordSyncGroup", func(t *testing.T) {
+	t.Run("Test PasswordSyncGroupsAPIService DeletePasswordSyncGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.V3.PasswordSyncGroupsApi.DeletePasswordSyncGroup(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test PasswordSyncGroupsApiService GetPasswordSyncGroup", func(t *testing.T) {
+	t.Run("Test PasswordSyncGroupsAPIService GetPasswordSyncGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.PasswordSyncGroupsApi.GetPasswordSyncGroup(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test PasswordSyncGroupsApiService GetPasswordSyncGroups", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.V3.PasswordSyncGroupsApi.GetPasswordSyncGroups(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,13 +61,25 @@ func Test_v3_PasswordSyncGroupsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordSyncGroupsApiService UpdatePasswordSyncGroup", func(t *testing.T) {
+	t.Run("Test PasswordSyncGroupsAPIService GetPasswordSyncGroups", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.V3.PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PasswordSyncGroupsAPIService UpdatePasswordSyncGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.PasswordSyncGroupsApi.UpdatePasswordSyncGroup(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

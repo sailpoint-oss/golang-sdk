@@ -173,8 +173,8 @@ func (o *AccessSummaryAccess) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessSummaryAccess := _AccessSummaryAccess{}
 
 	if err = json.Unmarshal(bytes, &varAccessSummaryAccess); err == nil {
-		*o = AccessSummaryAccess(varAccessSummaryAccess)
-	}
+	*o = AccessSummaryAccess(varAccessSummaryAccess)
+}
 
 	additionalProperties := make(map[string]interface{})
 

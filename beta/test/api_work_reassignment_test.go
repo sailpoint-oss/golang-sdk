@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing WorkReassignmentApiService
+Testing WorkReassignmentAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_WorkReassignmentApiService(t *testing.T) {
+func Test_beta_WorkReassignmentAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test WorkReassignmentApiService CreateReassignmentConfiguration", func(t *testing.T) {
+	t.Run("Test WorkReassignmentAPIService CreateReassignmentConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.WorkReassignmentApi.CreateReassignmentConfiguration(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkReassignmentAPI.CreateReassignmentConfiguration(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,27 +34,27 @@ func Test_beta_WorkReassignmentApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkReassignmentApiService DeleteReassignmentConfiguration", func(t *testing.T) {
+	t.Run("Test WorkReassignmentAPIService DeleteReassignmentConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityId string
 
-		httpRes, err := apiClient.BETA.WorkReassignmentApi.DeleteReassignmentConfiguration(context.Background(), identityId).Execute()
+		httpRes, err := apiClient.BETA.WorkReassignmentAPI.DeleteReassignmentConfiguration(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test WorkReassignmentApiService GetEvaluateReassignmentConfiguration", func(t *testing.T) {
+	t.Run("Test WorkReassignmentAPIService GetEvaluateReassignmentConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityId string
 		var configType ConfigTypeEnum
 
-		resp, httpRes, err := apiClient.BETA.WorkReassignmentApi.GetEvaluateReassignmentConfiguration(context.Background(), identityId, configType).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkReassignmentAPI.GetEvaluateReassignmentConfiguration(context.Background(), identityId, configType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,11 +62,11 @@ func Test_beta_WorkReassignmentApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkReassignmentApiService GetReassignmentConfigTypes", func(t *testing.T) {
+	t.Run("Test WorkReassignmentAPIService GetReassignmentConfigTypes", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.WorkReassignmentApi.GetReassignmentConfigTypes(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkReassignmentAPI.GetReassignmentConfigTypes(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,51 +74,13 @@ func Test_beta_WorkReassignmentApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkReassignmentApiService GetReassignmentConfiguration", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var identityId string
-
-		resp, httpRes, err := apiClient.BETA.WorkReassignmentApi.GetReassignmentConfiguration(context.Background(), identityId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WorkReassignmentApiService GetTenantConfigConfiguration", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.WorkReassignmentApi.GetTenantConfigConfiguration(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WorkReassignmentApiService ListReassignmentConfigurations", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.WorkReassignmentApi.ListReassignmentConfigurations(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WorkReassignmentApiService PutReassignmentConfig", func(t *testing.T) {
+	t.Run("Test WorkReassignmentAPIService GetReassignmentConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.BETA.WorkReassignmentApi.PutReassignmentConfig(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkReassignmentAPI.GetReassignmentConfiguration(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -126,11 +88,49 @@ func Test_beta_WorkReassignmentApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkReassignmentApiService PutTenantConfiguration", func(t *testing.T) {
+	t.Run("Test WorkReassignmentAPIService GetTenantConfigConfiguration", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.WorkReassignmentApi.PutTenantConfiguration(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkReassignmentAPI.GetTenantConfigConfiguration(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test WorkReassignmentAPIService ListReassignmentConfigurations", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.WorkReassignmentAPI.ListReassignmentConfigurations(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test WorkReassignmentAPIService PutReassignmentConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityId string
+
+		resp, httpRes, err := apiClient.BETA.WorkReassignmentAPI.PutReassignmentConfig(context.Background(), identityId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test WorkReassignmentAPIService PutTenantConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.WorkReassignmentAPI.PutTenantConfiguration(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

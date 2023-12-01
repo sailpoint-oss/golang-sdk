@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// CertificationsApiService CertificationsApi service
-type CertificationsApiService service
+// CertificationsAPIService CertificationsAPI service
+type CertificationsAPIService service
 
 type ApiGetIdentityCertificationItemPermissionsRequest struct {
 	ctx context.Context
-	ApiService *CertificationsApiService
+	ApiService *CertificationsAPIService
 	certificationId string
 	itemId string
 	filters *string
@@ -74,7 +74,7 @@ This API returns the permissions associated with an entitlement certification it
 
 Deprecated
 */
-func (a *CertificationsApiService) GetIdentityCertificationItemPermissions(ctx context.Context, certificationId string, itemId string) ApiGetIdentityCertificationItemPermissionsRequest {
+func (a *CertificationsAPIService) GetIdentityCertificationItemPermissions(ctx context.Context, certificationId string, itemId string) ApiGetIdentityCertificationItemPermissionsRequest {
 	return ApiGetIdentityCertificationItemPermissionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -86,7 +86,7 @@ func (a *CertificationsApiService) GetIdentityCertificationItemPermissions(ctx c
 // Execute executes the request
 //  @return []PermissionDto
 // Deprecated
-func (a *CertificationsApiService) GetIdentityCertificationItemPermissionsExecute(r ApiGetIdentityCertificationItemPermissionsRequest) ([]PermissionDto, *http.Response, error) {
+func (a *CertificationsAPIService) GetIdentityCertificationItemPermissionsExecute(r ApiGetIdentityCertificationItemPermissionsRequest) ([]PermissionDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -94,7 +94,7 @@ func (a *CertificationsApiService) GetIdentityCertificationItemPermissionsExecut
 		localVarReturnValue  []PermissionDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsApiService.GetIdentityCertificationItemPermissions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.GetIdentityCertificationItemPermissions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -112,12 +112,21 @@ func (a *CertificationsApiService) GetIdentityCertificationItemPermissionsExecut
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -146,9 +155,9 @@ func (a *CertificationsApiService) GetIdentityCertificationItemPermissionsExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -240,7 +249,7 @@ func (a *CertificationsApiService) GetIdentityCertificationItemPermissionsExecut
 
 type ApiGetIdentityCertificationPendingTasksRequest struct {
 	ctx context.Context
-	ApiService *CertificationsApiService
+	ApiService *CertificationsAPIService
 	id string
 }
 
@@ -257,7 +266,7 @@ This API returns the status of all pending (`QUEUED` or `IN_PROGRESS`) tasks for
  @param id The identity campaign certification ID
  @return ApiGetIdentityCertificationPendingTasksRequest
 */
-func (a *CertificationsApiService) GetIdentityCertificationPendingTasks(ctx context.Context, id string) ApiGetIdentityCertificationPendingTasksRequest {
+func (a *CertificationsAPIService) GetIdentityCertificationPendingTasks(ctx context.Context, id string) ApiGetIdentityCertificationPendingTasksRequest {
 	return ApiGetIdentityCertificationPendingTasksRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -267,7 +276,7 @@ func (a *CertificationsApiService) GetIdentityCertificationPendingTasks(ctx cont
 
 // Execute executes the request
 //  @return []IdentityCertificationTask
-func (a *CertificationsApiService) GetIdentityCertificationPendingTasksExecute(r ApiGetIdentityCertificationPendingTasksRequest) ([]IdentityCertificationTask, *http.Response, error) {
+func (a *CertificationsAPIService) GetIdentityCertificationPendingTasksExecute(r ApiGetIdentityCertificationPendingTasksRequest) ([]IdentityCertificationTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -275,7 +284,7 @@ func (a *CertificationsApiService) GetIdentityCertificationPendingTasksExecute(r
 		localVarReturnValue  []IdentityCertificationTask
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsApiService.GetIdentityCertificationPendingTasks")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.GetIdentityCertificationPendingTasks")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -314,9 +323,9 @@ func (a *CertificationsApiService) GetIdentityCertificationPendingTasksExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -408,7 +417,7 @@ func (a *CertificationsApiService) GetIdentityCertificationPendingTasksExecute(r
 
 type ApiGetIdentityCertificationTaskStatusRequest struct {
 	ctx context.Context
-	ApiService *CertificationsApiService
+	ApiService *CertificationsAPIService
 	id string
 	taskId string
 }
@@ -427,7 +436,7 @@ This API returns the status of a certification task. A token with ORG_ADMIN or C
  @param taskId The certification task ID
  @return ApiGetIdentityCertificationTaskStatusRequest
 */
-func (a *CertificationsApiService) GetIdentityCertificationTaskStatus(ctx context.Context, id string, taskId string) ApiGetIdentityCertificationTaskStatusRequest {
+func (a *CertificationsAPIService) GetIdentityCertificationTaskStatus(ctx context.Context, id string, taskId string) ApiGetIdentityCertificationTaskStatusRequest {
 	return ApiGetIdentityCertificationTaskStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -438,7 +447,7 @@ func (a *CertificationsApiService) GetIdentityCertificationTaskStatus(ctx contex
 
 // Execute executes the request
 //  @return IdentityCertificationTask
-func (a *CertificationsApiService) GetIdentityCertificationTaskStatusExecute(r ApiGetIdentityCertificationTaskStatusRequest) (*IdentityCertificationTask, *http.Response, error) {
+func (a *CertificationsAPIService) GetIdentityCertificationTaskStatusExecute(r ApiGetIdentityCertificationTaskStatusRequest) (*IdentityCertificationTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -446,7 +455,7 @@ func (a *CertificationsApiService) GetIdentityCertificationTaskStatusExecute(r A
 		localVarReturnValue  *IdentityCertificationTask
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsApiService.GetIdentityCertificationTaskStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.GetIdentityCertificationTaskStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -486,9 +495,9 @@ func (a *CertificationsApiService) GetIdentityCertificationTaskStatusExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -580,7 +589,7 @@ func (a *CertificationsApiService) GetIdentityCertificationTaskStatusExecute(r A
 
 type ApiListCertificationReviewersRequest struct {
 	ctx context.Context
-	ApiService *CertificationsApiService
+	ApiService *CertificationsAPIService
 	id string
 	limit *int32
 	offset *int32
@@ -634,7 +643,7 @@ This API returns a list of reviewers for the certification. A token with ORG_ADM
 
 Deprecated
 */
-func (a *CertificationsApiService) ListCertificationReviewers(ctx context.Context, id string) ApiListCertificationReviewersRequest {
+func (a *CertificationsAPIService) ListCertificationReviewers(ctx context.Context, id string) ApiListCertificationReviewersRequest {
 	return ApiListCertificationReviewersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -645,7 +654,7 @@ func (a *CertificationsApiService) ListCertificationReviewers(ctx context.Contex
 // Execute executes the request
 //  @return []IdentityReferenceWithNameAndEmail
 // Deprecated
-func (a *CertificationsApiService) ListCertificationReviewersExecute(r ApiListCertificationReviewersRequest) ([]IdentityReferenceWithNameAndEmail, *http.Response, error) {
+func (a *CertificationsAPIService) ListCertificationReviewersExecute(r ApiListCertificationReviewersRequest) ([]IdentityReferenceWithNameAndEmail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -653,7 +662,7 @@ func (a *CertificationsApiService) ListCertificationReviewersExecute(r ApiListCe
 		localVarReturnValue  []IdentityReferenceWithNameAndEmail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsApiService.ListCertificationReviewers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.ListCertificationReviewers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -667,12 +676,21 @@ func (a *CertificationsApiService) ListCertificationReviewersExecute(r ApiListCe
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -707,9 +725,9 @@ func (a *CertificationsApiService) ListCertificationReviewersExecute(r ApiListCe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -801,7 +819,7 @@ func (a *CertificationsApiService) ListCertificationReviewersExecute(r ApiListCe
 
 type ApiSubmitReassignCertsAsyncRequest struct {
 	ctx context.Context
-	ApiService *CertificationsApiService
+	ApiService *CertificationsAPIService
 	id string
 	reviewReassign *ReviewReassign
 }
@@ -826,7 +844,7 @@ This API initiates a task to reassign up to 500 identities or items in an identi
 
 Deprecated
 */
-func (a *CertificationsApiService) SubmitReassignCertsAsync(ctx context.Context, id string) ApiSubmitReassignCertsAsyncRequest {
+func (a *CertificationsAPIService) SubmitReassignCertsAsync(ctx context.Context, id string) ApiSubmitReassignCertsAsyncRequest {
 	return ApiSubmitReassignCertsAsyncRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -837,7 +855,7 @@ func (a *CertificationsApiService) SubmitReassignCertsAsync(ctx context.Context,
 // Execute executes the request
 //  @return IdentityCertificationTask
 // Deprecated
-func (a *CertificationsApiService) SubmitReassignCertsAsyncExecute(r ApiSubmitReassignCertsAsyncRequest) (*IdentityCertificationTask, *http.Response, error) {
+func (a *CertificationsAPIService) SubmitReassignCertsAsyncExecute(r ApiSubmitReassignCertsAsyncRequest) (*IdentityCertificationTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -845,7 +863,7 @@ func (a *CertificationsApiService) SubmitReassignCertsAsyncExecute(r ApiSubmitRe
 		localVarReturnValue  *IdentityCertificationTask
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsApiService.SubmitReassignCertsAsync")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationsAPIService.SubmitReassignCertsAsync")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -889,9 +907,9 @@ func (a *CertificationsApiService) SubmitReassignCertsAsyncExecute(r ApiSubmitRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -730,8 +730,8 @@ func (o *AccountActivityItem) UnmarshalJSON(bytes []byte) (err error) {
 	varAccountActivityItem := _AccountActivityItem{}
 
 	if err = json.Unmarshal(bytes, &varAccountActivityItem); err == nil {
-		*o = AccountActivityItem(varAccountActivityItem)
-	}
+	*o = AccountActivityItem(varAccountActivityItem)
+}
 
 	additionalProperties := make(map[string]interface{})
 

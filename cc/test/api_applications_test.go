@@ -1,7 +1,7 @@
 /*
 IdentityNow cc (private) APIs
 
-Testing ApplicationsApiService
+Testing ApplicationsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_cc_ApplicationsApiService(t *testing.T) {
+func Test_cc_ApplicationsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ApplicationsApiService CreateApplication", func(t *testing.T) {
+	t.Run("Test ApplicationsAPIService CreateApplication", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CC.ApplicationsApi.CreateApplication(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CC.ApplicationsAPI.CreateApplication(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,40 +34,26 @@ func Test_cc_ApplicationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApplicationsApiService DeleteApplication", func(t *testing.T) {
+	t.Run("Test ApplicationsAPIService DeleteApplication", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.CC.ApplicationsApi.DeleteApplication(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.ApplicationsAPI.DeleteApplication(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ApplicationsApiService GetApplication", func(t *testing.T) {
+	t.Run("Test ApplicationsAPIService GetApplication", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.CC.ApplicationsApi.GetApplication(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ApplicationsApiService GetApplicationAccessProfiles", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.CC.ApplicationsApi.GetApplicationAccessProfiles(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CC.ApplicationsAPI.GetApplication(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -75,11 +61,13 @@ func Test_cc_ApplicationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApplicationsApiService ListApplications", func(t *testing.T) {
+	t.Run("Test ApplicationsAPIService GetApplicationAccessProfiles", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CC.ApplicationsApi.ListApplications(context.Background()).Execute()
+		var id string
+
+		resp, httpRes, err := apiClient.CC.ApplicationsAPI.GetApplicationAccessProfiles(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -87,13 +75,25 @@ func Test_cc_ApplicationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApplicationsApiService UpdateApplication", func(t *testing.T) {
+	t.Run("Test ApplicationsAPIService ListApplications", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.CC.ApplicationsAPI.ListApplications(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ApplicationsAPIService UpdateApplication", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.CC.ApplicationsApi.UpdateApplication(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CC.ApplicationsAPI.UpdateApplication(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

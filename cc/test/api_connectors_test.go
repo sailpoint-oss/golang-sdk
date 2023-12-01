@@ -1,7 +1,7 @@
 /*
 IdentityNow cc (private) APIs
 
-Testing ConnectorsApiService
+Testing ConnectorsAPIService
 
 */
 
@@ -17,66 +17,66 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_cc_ConnectorsApiService(t *testing.T) {
+func Test_cc_ConnectorsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ConnectorsApiService CreateConnector", func(t *testing.T) {
+	t.Run("Test ConnectorsAPIService CreateConnector", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CC.ConnectorsApi.CreateConnector(context.Background()).Execute()
+		httpRes, err := apiClient.CC.ConnectorsAPI.CreateConnector(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ConnectorsApiService DeleteConnector", func(t *testing.T) {
+	t.Run("Test ConnectorsAPIService DeleteConnector", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.CC.ConnectorsApi.DeleteConnector(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.ConnectorsAPI.DeleteConnector(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ConnectorsApiService ExportConnectorConfig", func(t *testing.T) {
+	t.Run("Test ConnectorsAPIService ExportConnectorConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.CC.ConnectorsApi.ExportConnectorConfig(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.ConnectorsAPI.ExportConnectorConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ConnectorsApiService ImportConnectorConfig", func(t *testing.T) {
+	t.Run("Test ConnectorsAPIService ImportConnectorConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.CC.ConnectorsApi.ImportConnectorConfig(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.ConnectorsAPI.ImportConnectorConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ConnectorsApiService ListConnectors", func(t *testing.T) {
+	t.Run("Test ConnectorsAPIService ListConnectors", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CC.ConnectorsApi.ListConnectors(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CC.ConnectorsAPI.ListConnectors(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

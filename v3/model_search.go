@@ -658,8 +658,8 @@ func (o *Search) UnmarshalJSON(bytes []byte) (err error) {
 	varSearch := _Search{}
 
 	if err = json.Unmarshal(bytes, &varSearch); err == nil {
-		*o = Search(varSearch)
-	}
+	*o = Search(varSearch)
+}
 
 	additionalProperties := make(map[string]interface{})
 

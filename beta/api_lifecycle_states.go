@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// LifecycleStatesApiService LifecycleStatesApi service
-type LifecycleStatesApiService service
+// LifecycleStatesAPIService LifecycleStatesAPI service
+type LifecycleStatesAPIService service
 
 type ApiListLifecycleStatesRequest struct {
 	ctx context.Context
-	ApiService *LifecycleStatesApiService
+	ApiService *LifecycleStatesAPIService
 	identityProfileId string
 	lifecycleStateId string
 }
@@ -47,7 +47,7 @@ A token with ORG_ADMIN or API authority is required to call this API.
  @param lifecycleStateId Lifecycle State ID
  @return ApiListLifecycleStatesRequest
 */
-func (a *LifecycleStatesApiService) ListLifecycleStates(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiListLifecycleStatesRequest {
+func (a *LifecycleStatesAPIService) ListLifecycleStates(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiListLifecycleStatesRequest {
 	return ApiListLifecycleStatesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -58,7 +58,7 @@ func (a *LifecycleStatesApiService) ListLifecycleStates(ctx context.Context, ide
 
 // Execute executes the request
 //  @return LifecycleState
-func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycleStatesRequest) (*LifecycleState, *http.Response, error) {
+func (a *LifecycleStatesAPIService) ListLifecycleStatesExecute(r ApiListLifecycleStatesRequest) (*LifecycleState, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -66,7 +66,7 @@ func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycl
 		localVarReturnValue  *LifecycleState
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesApiService.ListLifecycleStates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.ListLifecycleStates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -189,7 +189,7 @@ func (a *LifecycleStatesApiService) ListLifecycleStatesExecute(r ApiListLifecycl
 
 type ApiUpdateLifecycleStatesRequest struct {
 	ctx context.Context
-	ApiService *LifecycleStatesApiService
+	ApiService *LifecycleStatesAPIService
 	identityProfileId string
 	lifecycleStateId string
 	jsonPatchOperation *[]JsonPatchOperation
@@ -218,7 +218,7 @@ A token with ORG_ADMIN or API authority is required to call this API.
  @param lifecycleStateId Lifecycle State ID
  @return ApiUpdateLifecycleStatesRequest
 */
-func (a *LifecycleStatesApiService) UpdateLifecycleStates(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiUpdateLifecycleStatesRequest {
+func (a *LifecycleStatesAPIService) UpdateLifecycleStates(ctx context.Context, identityProfileId string, lifecycleStateId string) ApiUpdateLifecycleStatesRequest {
 	return ApiUpdateLifecycleStatesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -229,7 +229,7 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStates(ctx context.Context, i
 
 // Execute executes the request
 //  @return LifecycleState
-func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLifecycleStatesRequest) (*LifecycleState, *http.Response, error) {
+func (a *LifecycleStatesAPIService) UpdateLifecycleStatesExecute(r ApiUpdateLifecycleStatesRequest) (*LifecycleState, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -237,7 +237,7 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 		localVarReturnValue  *LifecycleState
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesApiService.UpdateLifecycleStates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleStatesAPIService.UpdateLifecycleStates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -282,9 +282,9 @@ func (a *LifecycleStatesApiService) UpdateLifecycleStatesExecute(r ApiUpdateLife
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

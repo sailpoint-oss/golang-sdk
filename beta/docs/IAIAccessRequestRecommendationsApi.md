@@ -1,17 +1,17 @@
-# \IAIAccessRequestRecommendationsApi
+# \IAIAccessRequestRecommendationsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddAccessRequestRecommendationsIgnoredItem**](IAIAccessRequestRecommendationsApi.md#AddAccessRequestRecommendationsIgnoredItem) | **Post** /ai-access-request-recommendations/ignored-items | Notification of Ignored Access Request Recommendations
-[**AddAccessRequestRecommendationsRequestedItem**](IAIAccessRequestRecommendationsApi.md#AddAccessRequestRecommendationsRequestedItem) | **Post** /ai-access-request-recommendations/requested-items | Notification of Requested Access Request Recommendations
-[**AddAccessRequestRecommendationsViewedItem**](IAIAccessRequestRecommendationsApi.md#AddAccessRequestRecommendationsViewedItem) | **Post** /ai-access-request-recommendations/viewed-items | Notification of Viewed Access Request Recommendations
-[**AddAccessRequestRecommendationsViewedItems**](IAIAccessRequestRecommendationsApi.md#AddAccessRequestRecommendationsViewedItems) | **Post** /ai-access-request-recommendations/viewed-items/bulk-create | Notification of Viewed Access Request Recommendations in Bulk
-[**GetAccessRequestRecommendations**](IAIAccessRequestRecommendationsApi.md#GetAccessRequestRecommendations) | **Get** /ai-access-request-recommendations | Identity Access Request Recommendations
-[**GetAccessRequestRecommendationsIgnoredItems**](IAIAccessRequestRecommendationsApi.md#GetAccessRequestRecommendationsIgnoredItems) | **Get** /ai-access-request-recommendations/ignored-items | List of Ignored Access Request Recommendations
-[**GetAccessRequestRecommendationsRequestedItems**](IAIAccessRequestRecommendationsApi.md#GetAccessRequestRecommendationsRequestedItems) | **Get** /ai-access-request-recommendations/requested-items | List of Requested Access Request Recommendations
-[**GetAccessRequestRecommendationsViewedItems**](IAIAccessRequestRecommendationsApi.md#GetAccessRequestRecommendationsViewedItems) | **Get** /ai-access-request-recommendations/viewed-items | List of Viewed Access Request Recommendations
+[**AddAccessRequestRecommendationsIgnoredItem**](IAIAccessRequestRecommendationsAPI.md#AddAccessRequestRecommendationsIgnoredItem) | **Post** /ai-access-request-recommendations/ignored-items | Notification of Ignored Access Request Recommendations
+[**AddAccessRequestRecommendationsRequestedItem**](IAIAccessRequestRecommendationsAPI.md#AddAccessRequestRecommendationsRequestedItem) | **Post** /ai-access-request-recommendations/requested-items | Notification of Requested Access Request Recommendations
+[**AddAccessRequestRecommendationsViewedItem**](IAIAccessRequestRecommendationsAPI.md#AddAccessRequestRecommendationsViewedItem) | **Post** /ai-access-request-recommendations/viewed-items | Notification of Viewed Access Request Recommendations
+[**AddAccessRequestRecommendationsViewedItems**](IAIAccessRequestRecommendationsAPI.md#AddAccessRequestRecommendationsViewedItems) | **Post** /ai-access-request-recommendations/viewed-items/bulk-create | Notification of Viewed Access Request Recommendations in Bulk
+[**GetAccessRequestRecommendations**](IAIAccessRequestRecommendationsAPI.md#GetAccessRequestRecommendations) | **Get** /ai-access-request-recommendations | Identity Access Request Recommendations
+[**GetAccessRequestRecommendationsIgnoredItems**](IAIAccessRequestRecommendationsAPI.md#GetAccessRequestRecommendationsIgnoredItems) | **Get** /ai-access-request-recommendations/ignored-items | List of Ignored Access Request Recommendations
+[**GetAccessRequestRecommendationsRequestedItems**](IAIAccessRequestRecommendationsAPI.md#GetAccessRequestRecommendationsRequestedItems) | **Get** /ai-access-request-recommendations/requested-items | List of Requested Access Request Recommendations
+[**GetAccessRequestRecommendationsViewedItems**](IAIAccessRequestRecommendationsAPI.md#GetAccessRequestRecommendationsViewedItems) | **Get** /ai-access-request-recommendations/viewed-items | List of Viewed Access Request Recommendations
 
 
 
@@ -32,7 +32,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -40,13 +40,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsIgnoredItem(context.Background()).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItem(context.Background()).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsIgnoredItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `AddAccessRequestRecommendationsIgnoredItem`: AccessRequestRecommendationActionItemResponseDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsIgnoredItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItem`: %v\n", resp)
 }
 ```
 
@@ -98,7 +98,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -106,13 +106,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsRequestedItem(context.Background()).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItem(context.Background()).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsRequestedItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `AddAccessRequestRecommendationsRequestedItem`: AccessRequestRecommendationActionItemResponseDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsRequestedItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItem`: %v\n", resp)
 }
 ```
 
@@ -164,7 +164,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -172,13 +172,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsViewedItem(context.Background()).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItem(context.Background()).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsViewedItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `AddAccessRequestRecommendationsViewedItem`: AccessRequestRecommendationActionItemResponseDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsViewedItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItem`: %v\n", resp)
 }
 ```
 
@@ -230,7 +230,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -238,13 +238,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsViewedItems(context.Background()).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItems(context.Background()).AccessRequestRecommendationActionItemDto(accessRequestRecommendationActionItemDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsViewedItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `AddAccessRequestRecommendationsViewedItems`: []AccessRequestRecommendationActionItemResponseDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsViewedItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItems`: %v\n", resp)
 }
 ```
 
@@ -296,7 +296,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -310,13 +310,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendations(context.Background()).IdentityId(identityId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendations(context.Background()).IdentityId(identityId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAccessRequestRecommendations`: []AccessRequestRecommendationItemDetail
-    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendations`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendations`: %v\n", resp)
 }
 ```
 
@@ -374,7 +374,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -386,13 +386,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsIgnoredItems(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItems(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsIgnoredItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAccessRequestRecommendationsIgnoredItems`: []AccessRequestRecommendationActionItemResponseDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsIgnoredItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItems`: %v\n", resp)
 }
 ```
 
@@ -448,7 +448,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -460,13 +460,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsRequestedItems(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItems(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsRequestedItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAccessRequestRecommendationsRequestedItems`: []AccessRequestRecommendationActionItemResponseDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsRequestedItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItems`: %v\n", resp)
 }
 ```
 
@@ -522,7 +522,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -534,13 +534,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsViewedItems(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItems(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsViewedItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAccessRequestRecommendationsViewedItems`: []AccessRequestRecommendationActionItemResponseDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsViewedItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItems`: %v\n", resp)
 }
 ```
 

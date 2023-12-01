@@ -135,8 +135,8 @@ func (o *CommonAccessItemRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varCommonAccessItemRequest := _CommonAccessItemRequest{}
 
 	if err = json.Unmarshal(bytes, &varCommonAccessItemRequest); err == nil {
-		*o = CommonAccessItemRequest(varCommonAccessItemRequest)
-	}
+	*o = CommonAccessItemRequest(varCommonAccessItemRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

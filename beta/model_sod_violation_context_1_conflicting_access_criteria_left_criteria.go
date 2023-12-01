@@ -99,8 +99,8 @@ func (o *SodViolationContext1ConflictingAccessCriteriaLeftCriteria) UnmarshalJSO
 	varSodViolationContext1ConflictingAccessCriteriaLeftCriteria := _SodViolationContext1ConflictingAccessCriteriaLeftCriteria{}
 
 	if err = json.Unmarshal(bytes, &varSodViolationContext1ConflictingAccessCriteriaLeftCriteria); err == nil {
-		*o = SodViolationContext1ConflictingAccessCriteriaLeftCriteria(varSodViolationContext1ConflictingAccessCriteriaLeftCriteria)
-	}
+	*o = SodViolationContext1ConflictingAccessCriteriaLeftCriteria(varSodViolationContext1ConflictingAccessCriteriaLeftCriteria)
+}
 
 	additionalProperties := make(map[string]interface{})
 

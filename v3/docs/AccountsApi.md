@@ -1,20 +1,20 @@
-# \AccountsApi
+# \AccountsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAccount**](AccountsApi.md#CreateAccount) | **Post** /accounts | Create Account
-[**DeleteAccount**](AccountsApi.md#DeleteAccount) | **Delete** /accounts/{id} | Delete Account
-[**DisableAccount**](AccountsApi.md#DisableAccount) | **Post** /accounts/{id}/disable | Disable Account
-[**EnableAccount**](AccountsApi.md#EnableAccount) | **Post** /accounts/{id}/enable | Enable Account
-[**GetAccount**](AccountsApi.md#GetAccount) | **Get** /accounts/{id} | Account Details
-[**GetAccountEntitlements**](AccountsApi.md#GetAccountEntitlements) | **Get** /accounts/{id}/entitlements | Account Entitlements
-[**ListAccounts**](AccountsApi.md#ListAccounts) | **Get** /accounts | Accounts List
-[**PutAccount**](AccountsApi.md#PutAccount) | **Put** /accounts/{id} | Update Account
-[**ReloadAccount**](AccountsApi.md#ReloadAccount) | **Post** /accounts/{id}/reload | Reload Account
-[**UnlockAccount**](AccountsApi.md#UnlockAccount) | **Post** /accounts/{id}/unlock | Unlock Account
-[**UpdateAccount**](AccountsApi.md#UpdateAccount) | **Patch** /accounts/{id} | Update Account
+[**CreateAccount**](AccountsAPI.md#CreateAccount) | **Post** /accounts | Create Account
+[**DeleteAccount**](AccountsAPI.md#DeleteAccount) | **Delete** /accounts/{id} | Delete Account
+[**DisableAccount**](AccountsAPI.md#DisableAccount) | **Post** /accounts/{id}/disable | Disable Account
+[**EnableAccount**](AccountsAPI.md#EnableAccount) | **Post** /accounts/{id}/enable | Enable Account
+[**GetAccount**](AccountsAPI.md#GetAccount) | **Get** /accounts/{id} | Account Details
+[**GetAccountEntitlements**](AccountsAPI.md#GetAccountEntitlements) | **Get** /accounts/{id}/entitlements | Account Entitlements
+[**ListAccounts**](AccountsAPI.md#ListAccounts) | **Get** /accounts | Accounts List
+[**PutAccount**](AccountsAPI.md#PutAccount) | **Put** /accounts/{id} | Update Account
+[**ReloadAccount**](AccountsAPI.md#ReloadAccount) | **Post** /accounts/{id}/reload | Reload Account
+[**UnlockAccount**](AccountsAPI.md#UnlockAccount) | **Post** /accounts/{id}/unlock | Unlock Account
+[**UpdateAccount**](AccountsAPI.md#UpdateAccount) | **Patch** /accounts/{id} | Update Account
 
 
 
@@ -35,7 +35,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -43,13 +43,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.CreateAccount(context.Background()).AccountAttributesCreate(accountAttributesCreate).Execute()
+    resp, r, err := apiClient.AccountsAPI.CreateAccount(context.Background()).AccountAttributesCreate(accountAttributesCreate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.CreateAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.CreateAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateAccount`: AccountsAsyncResult
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.CreateAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.CreateAccount`: %v\n", resp)
 }
 ```
 
@@ -101,7 +101,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -109,13 +109,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.DeleteAccount(context.Background(), id).Execute()
+    resp, r, err := apiClient.AccountsAPI.DeleteAccount(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.DeleteAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DeleteAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DeleteAccount`: AccountsAsyncResult
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.DeleteAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.DeleteAccount`: %v\n", resp)
 }
 ```
 
@@ -171,7 +171,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -180,13 +180,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.DisableAccount(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
+    resp, r, err := apiClient.AccountsAPI.DisableAccount(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.DisableAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DisableAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DisableAccount`: AccountsAsyncResult
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.DisableAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.DisableAccount`: %v\n", resp)
 }
 ```
 
@@ -243,7 +243,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -252,13 +252,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.EnableAccount(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
+    resp, r, err := apiClient.AccountsAPI.EnableAccount(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.EnableAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.EnableAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `EnableAccount`: AccountsAsyncResult
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.EnableAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.EnableAccount`: %v\n", resp)
 }
 ```
 
@@ -315,7 +315,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -323,13 +323,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.GetAccount(context.Background(), id).Execute()
+    resp, r, err := apiClient.AccountsAPI.GetAccount(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.GetAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.GetAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAccount`: Account
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.GetAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.GetAccount`: %v\n", resp)
 }
 ```
 
@@ -385,7 +385,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -396,13 +396,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.GetAccountEntitlements(context.Background(), id).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.AccountsAPI.GetAccountEntitlements(context.Background(), id).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.GetAccountEntitlements``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.GetAccountEntitlements``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAccountEntitlements`: []EntitlementDto
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.GetAccountEntitlements`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.GetAccountEntitlements`: %v\n", resp)
 }
 ```
 
@@ -461,7 +461,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -473,13 +473,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.ListAccounts(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccountsAPI.ListAccounts(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListAccounts`: []Account
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ListAccounts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.ListAccounts`: %v\n", resp)
 }
 ```
 
@@ -535,7 +535,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -544,13 +544,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.PutAccount(context.Background(), id).AccountAttributes(accountAttributes).Execute()
+    resp, r, err := apiClient.AccountsAPI.PutAccount(context.Background(), id).AccountAttributes(accountAttributes).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.PutAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.PutAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutAccount`: AccountsAsyncResult
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.PutAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.PutAccount`: %v\n", resp)
 }
 ```
 
@@ -607,7 +607,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -615,13 +615,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.ReloadAccount(context.Background(), id).Execute()
+    resp, r, err := apiClient.AccountsAPI.ReloadAccount(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ReloadAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.ReloadAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReloadAccount`: AccountsAsyncResult
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ReloadAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.ReloadAccount`: %v\n", resp)
 }
 ```
 
@@ -677,7 +677,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -686,13 +686,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.UnlockAccount(context.Background(), id).AccountUnlockRequest(accountUnlockRequest).Execute()
+    resp, r, err := apiClient.AccountsAPI.UnlockAccount(context.Background(), id).AccountUnlockRequest(accountUnlockRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.UnlockAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.UnlockAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UnlockAccount`: AccountsAsyncResult
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.UnlockAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.UnlockAccount`: %v\n", resp)
 }
 ```
 
@@ -749,7 +749,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -758,13 +758,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.UpdateAccount(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.AccountsAPI.UpdateAccount(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.UpdateAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.UpdateAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateAccount`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.UpdateAccount`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.UpdateAccount`: %v\n", resp)
 }
 ```
 

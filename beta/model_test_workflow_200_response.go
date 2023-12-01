@@ -100,8 +100,8 @@ func (o *TestWorkflow200Response) UnmarshalJSON(bytes []byte) (err error) {
 	varTestWorkflow200Response := _TestWorkflow200Response{}
 
 	if err = json.Unmarshal(bytes, &varTestWorkflow200Response); err == nil {
-		*o = TestWorkflow200Response(varTestWorkflow200Response)
-	}
+	*o = TestWorkflow200Response(varTestWorkflow200Response)
+}
 
 	additionalProperties := make(map[string]interface{})
 

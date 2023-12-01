@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// TaggedObjectsApiService TaggedObjectsApi service
-type TaggedObjectsApiService service
+// TaggedObjectsAPIService TaggedObjectsAPI service
+type TaggedObjectsAPIService service
 
 type ApiDeleteTaggedObjectRequest struct {
 	ctx context.Context
-	ApiService *TaggedObjectsApiService
+	ApiService *TaggedObjectsAPIService
 	type_ string
 	id string
 }
@@ -44,7 +44,7 @@ This deletes a tagged object for the specified type.
  @param id The ID of the object reference to delete.
  @return ApiDeleteTaggedObjectRequest
 */
-func (a *TaggedObjectsApiService) DeleteTaggedObject(ctx context.Context, type_ string, id string) ApiDeleteTaggedObjectRequest {
+func (a *TaggedObjectsAPIService) DeleteTaggedObject(ctx context.Context, type_ string, id string) ApiDeleteTaggedObjectRequest {
 	return ApiDeleteTaggedObjectRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -54,14 +54,14 @@ func (a *TaggedObjectsApiService) DeleteTaggedObject(ctx context.Context, type_ 
 }
 
 // Execute executes the request
-func (a *TaggedObjectsApiService) DeleteTaggedObjectExecute(r ApiDeleteTaggedObjectRequest) (*http.Response, error) {
+func (a *TaggedObjectsAPIService) DeleteTaggedObjectExecute(r ApiDeleteTaggedObjectRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.DeleteTaggedObject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsAPIService.DeleteTaggedObject")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -101,9 +101,9 @@ func (a *TaggedObjectsApiService) DeleteTaggedObjectExecute(r ApiDeleteTaggedObj
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -175,7 +175,7 @@ func (a *TaggedObjectsApiService) DeleteTaggedObjectExecute(r ApiDeleteTaggedObj
 
 type ApiDeleteTagsToManyObjectRequest struct {
 	ctx context.Context
-	ApiService *TaggedObjectsApiService
+	ApiService *TaggedObjectsAPIService
 	bulkTaggedObject *BulkTaggedObject
 }
 
@@ -199,7 +199,7 @@ A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteTagsToManyObjectRequest
 */
-func (a *TaggedObjectsApiService) DeleteTagsToManyObject(ctx context.Context) ApiDeleteTagsToManyObjectRequest {
+func (a *TaggedObjectsAPIService) DeleteTagsToManyObject(ctx context.Context) ApiDeleteTagsToManyObjectRequest {
 	return ApiDeleteTagsToManyObjectRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -207,14 +207,14 @@ func (a *TaggedObjectsApiService) DeleteTagsToManyObject(ctx context.Context) Ap
 }
 
 // Execute executes the request
-func (a *TaggedObjectsApiService) DeleteTagsToManyObjectExecute(r ApiDeleteTagsToManyObjectRequest) (*http.Response, error) {
+func (a *TaggedObjectsAPIService) DeleteTagsToManyObjectExecute(r ApiDeleteTagsToManyObjectRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.DeleteTagsToManyObject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsAPIService.DeleteTagsToManyObject")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -257,9 +257,9 @@ func (a *TaggedObjectsApiService) DeleteTagsToManyObjectExecute(r ApiDeleteTagsT
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -331,7 +331,7 @@ func (a *TaggedObjectsApiService) DeleteTagsToManyObjectExecute(r ApiDeleteTagsT
 
 type ApiGetTaggedObjectRequest struct {
 	ctx context.Context
-	ApiService *TaggedObjectsApiService
+	ApiService *TaggedObjectsAPIService
 	type_ string
 	id string
 }
@@ -350,7 +350,7 @@ This gets a tagged object for the specified type.
  @param id The ID of the object reference to retrieve.
  @return ApiGetTaggedObjectRequest
 */
-func (a *TaggedObjectsApiService) GetTaggedObject(ctx context.Context, type_ string, id string) ApiGetTaggedObjectRequest {
+func (a *TaggedObjectsAPIService) GetTaggedObject(ctx context.Context, type_ string, id string) ApiGetTaggedObjectRequest {
 	return ApiGetTaggedObjectRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -361,7 +361,7 @@ func (a *TaggedObjectsApiService) GetTaggedObject(ctx context.Context, type_ str
 
 // Execute executes the request
 //  @return TaggedObject
-func (a *TaggedObjectsApiService) GetTaggedObjectExecute(r ApiGetTaggedObjectRequest) (*TaggedObject, *http.Response, error) {
+func (a *TaggedObjectsAPIService) GetTaggedObjectExecute(r ApiGetTaggedObjectRequest) (*TaggedObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -369,7 +369,7 @@ func (a *TaggedObjectsApiService) GetTaggedObjectExecute(r ApiGetTaggedObjectReq
 		localVarReturnValue  *TaggedObject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.GetTaggedObject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsAPIService.GetTaggedObject")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -409,9 +409,9 @@ func (a *TaggedObjectsApiService) GetTaggedObjectExecute(r ApiGetTaggedObjectReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -492,7 +492,7 @@ func (a *TaggedObjectsApiService) GetTaggedObjectExecute(r ApiGetTaggedObjectReq
 
 type ApiListTaggedObjectsRequest struct {
 	ctx context.Context
-	ApiService *TaggedObjectsApiService
+	ApiService *TaggedObjectsAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -537,7 +537,7 @@ Any authenticated token may be used to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListTaggedObjectsRequest
 */
-func (a *TaggedObjectsApiService) ListTaggedObjects(ctx context.Context) ApiListTaggedObjectsRequest {
+func (a *TaggedObjectsAPIService) ListTaggedObjects(ctx context.Context) ApiListTaggedObjectsRequest {
 	return ApiListTaggedObjectsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -546,7 +546,7 @@ func (a *TaggedObjectsApiService) ListTaggedObjects(ctx context.Context) ApiList
 
 // Execute executes the request
 //  @return []TaggedObject
-func (a *TaggedObjectsApiService) ListTaggedObjectsExecute(r ApiListTaggedObjectsRequest) ([]TaggedObject, *http.Response, error) {
+func (a *TaggedObjectsAPIService) ListTaggedObjectsExecute(r ApiListTaggedObjectsRequest) ([]TaggedObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -554,7 +554,7 @@ func (a *TaggedObjectsApiService) ListTaggedObjectsExecute(r ApiListTaggedObject
 		localVarReturnValue  []TaggedObject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.ListTaggedObjects")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsAPIService.ListTaggedObjects")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -567,12 +567,21 @@ func (a *TaggedObjectsApiService) ListTaggedObjectsExecute(r ApiListTaggedObject
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -604,9 +613,9 @@ func (a *TaggedObjectsApiService) ListTaggedObjectsExecute(r ApiListTaggedObject
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -687,7 +696,7 @@ func (a *TaggedObjectsApiService) ListTaggedObjectsExecute(r ApiListTaggedObject
 
 type ApiListTaggedObjectsByTypeRequest struct {
 	ctx context.Context
-	ApiService *TaggedObjectsApiService
+	ApiService *TaggedObjectsAPIService
 	type_ string
 	limit *int32
 	offset *int32
@@ -734,7 +743,7 @@ Any authenticated token may be used to call this API.
  @param type_ The type of tagged object to retrieve.
  @return ApiListTaggedObjectsByTypeRequest
 */
-func (a *TaggedObjectsApiService) ListTaggedObjectsByType(ctx context.Context, type_ string) ApiListTaggedObjectsByTypeRequest {
+func (a *TaggedObjectsAPIService) ListTaggedObjectsByType(ctx context.Context, type_ string) ApiListTaggedObjectsByTypeRequest {
 	return ApiListTaggedObjectsByTypeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -744,7 +753,7 @@ func (a *TaggedObjectsApiService) ListTaggedObjectsByType(ctx context.Context, t
 
 // Execute executes the request
 //  @return []TaggedObject
-func (a *TaggedObjectsApiService) ListTaggedObjectsByTypeExecute(r ApiListTaggedObjectsByTypeRequest) ([]TaggedObject, *http.Response, error) {
+func (a *TaggedObjectsAPIService) ListTaggedObjectsByTypeExecute(r ApiListTaggedObjectsByTypeRequest) ([]TaggedObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -752,7 +761,7 @@ func (a *TaggedObjectsApiService) ListTaggedObjectsByTypeExecute(r ApiListTagged
 		localVarReturnValue  []TaggedObject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.ListTaggedObjectsByType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsAPIService.ListTaggedObjectsByType")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -766,12 +775,21 @@ func (a *TaggedObjectsApiService) ListTaggedObjectsByTypeExecute(r ApiListTagged
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -803,9 +821,9 @@ func (a *TaggedObjectsApiService) ListTaggedObjectsByTypeExecute(r ApiListTagged
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -886,7 +904,7 @@ func (a *TaggedObjectsApiService) ListTaggedObjectsByTypeExecute(r ApiListTagged
 
 type ApiPutTaggedObjectRequest struct {
 	ctx context.Context
-	ApiService *TaggedObjectsApiService
+	ApiService *TaggedObjectsAPIService
 	type_ string
 	id string
 	taggedObject *TaggedObject
@@ -911,7 +929,7 @@ This updates a tagged object for the specified type.
  @param id The ID of the object reference to update.
  @return ApiPutTaggedObjectRequest
 */
-func (a *TaggedObjectsApiService) PutTaggedObject(ctx context.Context, type_ string, id string) ApiPutTaggedObjectRequest {
+func (a *TaggedObjectsAPIService) PutTaggedObject(ctx context.Context, type_ string, id string) ApiPutTaggedObjectRequest {
 	return ApiPutTaggedObjectRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -922,7 +940,7 @@ func (a *TaggedObjectsApiService) PutTaggedObject(ctx context.Context, type_ str
 
 // Execute executes the request
 //  @return TaggedObject
-func (a *TaggedObjectsApiService) PutTaggedObjectExecute(r ApiPutTaggedObjectRequest) (*TaggedObject, *http.Response, error) {
+func (a *TaggedObjectsAPIService) PutTaggedObjectExecute(r ApiPutTaggedObjectRequest) (*TaggedObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -930,7 +948,7 @@ func (a *TaggedObjectsApiService) PutTaggedObjectExecute(r ApiPutTaggedObjectReq
 		localVarReturnValue  *TaggedObject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.PutTaggedObject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsAPIService.PutTaggedObject")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -975,9 +993,9 @@ func (a *TaggedObjectsApiService) PutTaggedObjectExecute(r ApiPutTaggedObjectReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1058,7 +1076,7 @@ func (a *TaggedObjectsApiService) PutTaggedObjectExecute(r ApiPutTaggedObjectReq
 
 type ApiSetTagToObjectRequest struct {
 	ctx context.Context
-	ApiService *TaggedObjectsApiService
+	ApiService *TaggedObjectsAPIService
 	taggedObject *TaggedObject
 }
 
@@ -1081,7 +1099,7 @@ Any authenticated token may be used to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetTagToObjectRequest
 */
-func (a *TaggedObjectsApiService) SetTagToObject(ctx context.Context) ApiSetTagToObjectRequest {
+func (a *TaggedObjectsAPIService) SetTagToObject(ctx context.Context) ApiSetTagToObjectRequest {
 	return ApiSetTagToObjectRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1089,14 +1107,14 @@ func (a *TaggedObjectsApiService) SetTagToObject(ctx context.Context) ApiSetTagT
 }
 
 // Execute executes the request
-func (a *TaggedObjectsApiService) SetTagToObjectExecute(r ApiSetTagToObjectRequest) (*http.Response, error) {
+func (a *TaggedObjectsAPIService) SetTagToObjectExecute(r ApiSetTagToObjectRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.SetTagToObject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsAPIService.SetTagToObject")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1139,9 +1157,9 @@ func (a *TaggedObjectsApiService) SetTagToObjectExecute(r ApiSetTagToObjectReque
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1213,7 +1231,7 @@ func (a *TaggedObjectsApiService) SetTagToObjectExecute(r ApiSetTagToObjectReque
 
 type ApiSetTagsToManyObjectsRequest struct {
 	ctx context.Context
-	ApiService *TaggedObjectsApiService
+	ApiService *TaggedObjectsAPIService
 	bulkTaggedObject *BulkTaggedObject
 }
 
@@ -1237,7 +1255,7 @@ A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetTagsToManyObjectsRequest
 */
-func (a *TaggedObjectsApiService) SetTagsToManyObjects(ctx context.Context) ApiSetTagsToManyObjectsRequest {
+func (a *TaggedObjectsAPIService) SetTagsToManyObjects(ctx context.Context) ApiSetTagsToManyObjectsRequest {
 	return ApiSetTagsToManyObjectsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1246,7 +1264,7 @@ func (a *TaggedObjectsApiService) SetTagsToManyObjects(ctx context.Context) ApiS
 
 // Execute executes the request
 //  @return BulkTaggedObject
-func (a *TaggedObjectsApiService) SetTagsToManyObjectsExecute(r ApiSetTagsToManyObjectsRequest) (*BulkTaggedObject, *http.Response, error) {
+func (a *TaggedObjectsAPIService) SetTagsToManyObjectsExecute(r ApiSetTagsToManyObjectsRequest) (*BulkTaggedObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1254,7 +1272,7 @@ func (a *TaggedObjectsApiService) SetTagsToManyObjectsExecute(r ApiSetTagsToMany
 		localVarReturnValue  *BulkTaggedObject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsApiService.SetTagsToManyObjects")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaggedObjectsAPIService.SetTagsToManyObjects")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1297,9 +1315,9 @@ func (a *TaggedObjectsApiService) SetTagsToManyObjectsExecute(r ApiSetTagsToMany
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

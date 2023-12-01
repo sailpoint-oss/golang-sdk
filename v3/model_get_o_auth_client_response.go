@@ -13,6 +13,7 @@ package v3
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the GetOAuthClientResponse type satisfies the MappedNullable interface at compile time
@@ -624,11 +625,49 @@ func (o GetOAuthClientResponse) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *GetOAuthClientResponse) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"businessName",
+		"homepageUrl",
+		"name",
+		"description",
+		"accessTokenValiditySeconds",
+		"refreshTokenValiditySeconds",
+		"redirectUris",
+		"grantTypes",
+		"accessType",
+		"type",
+		"internal",
+		"enabled",
+		"strongAuthSupported",
+		"claimsSupported",
+		"created",
+		"modified",
+		"scope",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varGetOAuthClientResponse := _GetOAuthClientResponse{}
 
 	if err = json.Unmarshal(bytes, &varGetOAuthClientResponse); err == nil {
-		*o = GetOAuthClientResponse(varGetOAuthClientResponse)
-	}
+	*o = GetOAuthClientResponse(varGetOAuthClientResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

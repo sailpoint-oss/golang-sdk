@@ -1,14 +1,14 @@
-# \PasswordSyncGroupsApi
+# \PasswordSyncGroupsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePasswordSyncGroup**](PasswordSyncGroupsApi.md#CreatePasswordSyncGroup) | **Post** /password-sync-groups | Create Password Sync Group
-[**DeletePasswordSyncGroup**](PasswordSyncGroupsApi.md#DeletePasswordSyncGroup) | **Delete** /password-sync-groups/{id} | Delete Password Sync Group by ID
-[**GetPasswordSyncGroup**](PasswordSyncGroupsApi.md#GetPasswordSyncGroup) | **Get** /password-sync-groups/{id} | Get Password Sync Group by ID
-[**GetPasswordSyncGroups**](PasswordSyncGroupsApi.md#GetPasswordSyncGroups) | **Get** /password-sync-groups | Get Password Sync Group List
-[**UpdatePasswordSyncGroup**](PasswordSyncGroupsApi.md#UpdatePasswordSyncGroup) | **Put** /password-sync-groups/{id} | Update Password Sync Group by ID
+[**CreatePasswordSyncGroup**](PasswordSyncGroupsAPI.md#CreatePasswordSyncGroup) | **Post** /password-sync-groups | Create Password Sync Group
+[**DeletePasswordSyncGroup**](PasswordSyncGroupsAPI.md#DeletePasswordSyncGroup) | **Delete** /password-sync-groups/{id} | Delete Password Sync Group by ID
+[**GetPasswordSyncGroup**](PasswordSyncGroupsAPI.md#GetPasswordSyncGroup) | **Get** /password-sync-groups/{id} | Get Password Sync Group by ID
+[**GetPasswordSyncGroups**](PasswordSyncGroupsAPI.md#GetPasswordSyncGroups) | **Get** /password-sync-groups | Get Password Sync Group List
+[**UpdatePasswordSyncGroup**](PasswordSyncGroupsAPI.md#UpdatePasswordSyncGroup) | **Put** /password-sync-groups/{id} | Update Password Sync Group by ID
 
 
 
@@ -29,7 +29,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsApi.CreatePasswordSyncGroup(context.Background()).PasswordSyncGroup(passwordSyncGroup).Execute()
+    resp, r, err := apiClient.PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).PasswordSyncGroup(passwordSyncGroup).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsApi.CreatePasswordSyncGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.CreatePasswordSyncGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreatePasswordSyncGroup`: PasswordSyncGroup
-    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsApi.CreatePasswordSyncGroup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.CreatePasswordSyncGroup`: %v\n", resp)
 }
 ```
 
@@ -95,7 +95,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -103,9 +103,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsApi.DeletePasswordSyncGroup(context.Background(), id).Execute()
+    r, err := apiClient.PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsApi.DeletePasswordSyncGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.DeletePasswordSyncGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -163,7 +163,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -171,13 +171,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsApi.GetPasswordSyncGroup(context.Background(), id).Execute()
+    resp, r, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsApi.GetPasswordSyncGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPasswordSyncGroup`: PasswordSyncGroup
-    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsApi.GetPasswordSyncGroup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.GetPasswordSyncGroup`: %v\n", resp)
 }
 ```
 
@@ -233,7 +233,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -243,13 +243,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsApi.GetPasswordSyncGroups(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsApi.GetPasswordSyncGroups``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroups``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPasswordSyncGroups`: []PasswordSyncGroup
-    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsApi.GetPasswordSyncGroups`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.GetPasswordSyncGroups`: %v\n", resp)
 }
 ```
 
@@ -303,7 +303,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -312,13 +312,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsApi.UpdatePasswordSyncGroup(context.Background(), id).PasswordSyncGroup(passwordSyncGroup).Execute()
+    resp, r, err := apiClient.PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).PasswordSyncGroup(passwordSyncGroup).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsApi.UpdatePasswordSyncGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.UpdatePasswordSyncGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdatePasswordSyncGroup`: PasswordSyncGroup
-    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsApi.UpdatePasswordSyncGroup`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordSyncGroupsAPI.UpdatePasswordSyncGroup`: %v\n", resp)
 }
 ```
 

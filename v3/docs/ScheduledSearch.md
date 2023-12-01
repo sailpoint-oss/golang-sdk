@@ -4,25 +4,25 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The scheduled search ID. | [readonly] 
-**Owner** | [**ScheduledSearchAllOfOwner**](ScheduledSearchAllOfOwner.md) |  | 
-**OwnerId** | **string** | The ID of the scheduled search owner.  Please use the &#x60;id&#x60; in the &#x60;owner&#x60; object instead.  | [readonly] 
 **Name** | Pointer to **NullableString** | The name of the scheduled search.  | [optional] 
 **Description** | Pointer to **NullableString** | The description of the scheduled search.  | [optional] 
 **SavedSearchId** | **string** | The ID of the saved search that will be executed. | 
-**Created** | Pointer to [**time.Time**](time.Time.md) | The date the scheduled search was initially created. | [optional] [readonly] 
-**Modified** | Pointer to [**time.Time**](time.Time.md) | The last date the scheduled search was modified. | [optional] [readonly] 
+**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] [readonly] 
+**Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] [readonly] 
 **Schedule** | [**Schedule1**](Schedule1.md) |  | 
 **Recipients** | [**[]SearchScheduleRecipientsInner**](SearchScheduleRecipientsInner.md) | A list of identities that should receive the scheduled search report via email. | 
 **Enabled** | Pointer to **bool** | Indicates if the scheduled search is enabled.  | [optional] [default to false]
 **EmailEmptyResults** | Pointer to **bool** | Indicates if email generation should not be suppressed if search returns no results.  | [optional] [default to false]
 **DisplayQueryDetails** | Pointer to **bool** | Indicates if the generated email should include the query and search results preview (which could include PII).  | [optional] [default to false]
+**Id** | **string** | The scheduled search ID. | [readonly] 
+**Owner** | [**ScheduledSearchAllOfOwner**](ScheduledSearchAllOfOwner.md) |  | 
+**OwnerId** | **string** | The ID of the scheduled search owner.  Please use the &#x60;id&#x60; in the &#x60;owner&#x60; object instead.  | [readonly] 
 
 ## Methods
 
 ### NewScheduledSearch
 
-`func NewScheduledSearch(id string, owner ScheduledSearchAllOfOwner, ownerId string, savedSearchId string, schedule Schedule1, recipients []SearchScheduleRecipientsInner, ) *ScheduledSearch`
+`func NewScheduledSearch(savedSearchId string, schedule Schedule1, recipients []SearchScheduleRecipientsInner, id string, owner ScheduledSearchAllOfOwner, ownerId string, ) *ScheduledSearch`
 
 NewScheduledSearch instantiates a new ScheduledSearch object
 This constructor will assign default values to properties that have it defined,
@@ -36,66 +36,6 @@ will change when the set of required properties is changed
 NewScheduledSearchWithDefaults instantiates a new ScheduledSearch object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *ScheduledSearch) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *ScheduledSearch) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *ScheduledSearch) SetId(v string)`
-
-SetId sets Id field to given value.
-
-
-### GetOwner
-
-`func (o *ScheduledSearch) GetOwner() ScheduledSearchAllOfOwner`
-
-GetOwner returns the Owner field if non-nil, zero value otherwise.
-
-### GetOwnerOk
-
-`func (o *ScheduledSearch) GetOwnerOk() (*ScheduledSearchAllOfOwner, bool)`
-
-GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOwner
-
-`func (o *ScheduledSearch) SetOwner(v ScheduledSearchAllOfOwner)`
-
-SetOwner sets Owner field to given value.
-
-
-### GetOwnerId
-
-`func (o *ScheduledSearch) GetOwnerId() string`
-
-GetOwnerId returns the OwnerId field if non-nil, zero value otherwise.
-
-### GetOwnerIdOk
-
-`func (o *ScheduledSearch) GetOwnerIdOk() (*string, bool)`
-
-GetOwnerIdOk returns a tuple with the OwnerId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOwnerId
-
-`func (o *ScheduledSearch) SetOwnerId(v string)`
-
-SetOwnerId sets OwnerId field to given value.
-
 
 ### GetName
 
@@ -212,6 +152,16 @@ SetCreated sets Created field to given value.
 
 HasCreated returns a boolean if a field has been set.
 
+### SetCreatedNil
+
+`func (o *ScheduledSearch) SetCreatedNil(b bool)`
+
+ SetCreatedNil sets the value for Created to be an explicit nil
+
+### UnsetCreated
+`func (o *ScheduledSearch) UnsetCreated()`
+
+UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetModified
 
 `func (o *ScheduledSearch) GetModified() time.Time`
@@ -237,6 +187,16 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
+### SetModifiedNil
+
+`func (o *ScheduledSearch) SetModifiedNil(b bool)`
+
+ SetModifiedNil sets the value for Modified to be an explicit nil
+
+### UnsetModified
+`func (o *ScheduledSearch) UnsetModified()`
+
+UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetSchedule
 
 `func (o *ScheduledSearch) GetSchedule() Schedule1`
@@ -351,6 +311,66 @@ SetDisplayQueryDetails sets DisplayQueryDetails field to given value.
 `func (o *ScheduledSearch) HasDisplayQueryDetails() bool`
 
 HasDisplayQueryDetails returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *ScheduledSearch) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ScheduledSearch) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ScheduledSearch) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
+### GetOwner
+
+`func (o *ScheduledSearch) GetOwner() ScheduledSearchAllOfOwner`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *ScheduledSearch) GetOwnerOk() (*ScheduledSearchAllOfOwner, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *ScheduledSearch) SetOwner(v ScheduledSearchAllOfOwner)`
+
+SetOwner sets Owner field to given value.
+
+
+### GetOwnerId
+
+`func (o *ScheduledSearch) GetOwnerId() string`
+
+GetOwnerId returns the OwnerId field if non-nil, zero value otherwise.
+
+### GetOwnerIdOk
+
+`func (o *ScheduledSearch) GetOwnerIdOk() (*string, bool)`
+
+GetOwnerIdOk returns a tuple with the OwnerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwnerId
+
+`func (o *ScheduledSearch) SetOwnerId(v string)`
+
+SetOwnerId sets OwnerId field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

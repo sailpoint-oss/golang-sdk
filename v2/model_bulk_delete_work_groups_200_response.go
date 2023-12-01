@@ -171,8 +171,8 @@ func (o *BulkDeleteWorkGroups200Response) UnmarshalJSON(bytes []byte) (err error
 	varBulkDeleteWorkGroups200Response := _BulkDeleteWorkGroups200Response{}
 
 	if err = json.Unmarshal(bytes, &varBulkDeleteWorkGroups200Response); err == nil {
-		*o = BulkDeleteWorkGroups200Response(varBulkDeleteWorkGroups200Response)
-	}
+	*o = BulkDeleteWorkGroups200Response(varBulkDeleteWorkGroups200Response)
+}
 
 	additionalProperties := make(map[string]interface{})
 

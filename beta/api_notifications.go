@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// NotificationsApiService NotificationsApi service
-type NotificationsApiService service
+// NotificationsAPIService NotificationsAPI service
+type NotificationsAPIService service
 
 type ApiCreateDomainDkimRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	domainAddress *DomainAddress
 }
 
@@ -46,7 +46,7 @@ Create a domain to be verified via DKIM (DomainKeys Identified Mail)
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateDomainDkimRequest
 */
-func (a *NotificationsApiService) CreateDomainDkim(ctx context.Context) ApiCreateDomainDkimRequest {
+func (a *NotificationsAPIService) CreateDomainDkim(ctx context.Context) ApiCreateDomainDkimRequest {
 	return ApiCreateDomainDkimRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *NotificationsApiService) CreateDomainDkim(ctx context.Context) ApiCreat
 
 // Execute executes the request
 //  @return DomainStatusDto
-func (a *NotificationsApiService) CreateDomainDkimExecute(r ApiCreateDomainDkimRequest) (*DomainStatusDto, *http.Response, error) {
+func (a *NotificationsAPIService) CreateDomainDkimExecute(r ApiCreateDomainDkimRequest) (*DomainStatusDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *NotificationsApiService) CreateDomainDkimExecute(r ApiCreateDomainDkimR
 		localVarReturnValue  *DomainStatusDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.CreateDomainDkim")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.CreateDomainDkim")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *NotificationsApiService) CreateDomainDkimExecute(r ApiCreateDomainDkimR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -200,7 +200,7 @@ func (a *NotificationsApiService) CreateDomainDkimExecute(r ApiCreateDomainDkimR
 
 type ApiCreateNotificationTemplateRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	templateDto *TemplateDto
 }
 
@@ -223,7 +223,7 @@ You can also use this endpoint to update a template.  First, copy the response b
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateNotificationTemplateRequest
 */
-func (a *NotificationsApiService) CreateNotificationTemplate(ctx context.Context) ApiCreateNotificationTemplateRequest {
+func (a *NotificationsAPIService) CreateNotificationTemplate(ctx context.Context) ApiCreateNotificationTemplateRequest {
 	return ApiCreateNotificationTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -232,7 +232,7 @@ func (a *NotificationsApiService) CreateNotificationTemplate(ctx context.Context
 
 // Execute executes the request
 //  @return TemplateDto
-func (a *NotificationsApiService) CreateNotificationTemplateExecute(r ApiCreateNotificationTemplateRequest) (*TemplateDto, *http.Response, error) {
+func (a *NotificationsAPIService) CreateNotificationTemplateExecute(r ApiCreateNotificationTemplateRequest) (*TemplateDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -240,7 +240,7 @@ func (a *NotificationsApiService) CreateNotificationTemplateExecute(r ApiCreateN
 		localVarReturnValue  *TemplateDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.CreateNotificationTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.CreateNotificationTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -283,9 +283,9 @@ func (a *NotificationsApiService) CreateNotificationTemplateExecute(r ApiCreateN
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -366,7 +366,7 @@ func (a *NotificationsApiService) CreateNotificationTemplateExecute(r ApiCreateN
 
 type ApiCreateVerifiedFromAddressRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	emailStatusDto *EmailStatusDto
 }
 
@@ -387,7 +387,7 @@ Create a new sender email address and initiate verification process.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateVerifiedFromAddressRequest
 */
-func (a *NotificationsApiService) CreateVerifiedFromAddress(ctx context.Context) ApiCreateVerifiedFromAddressRequest {
+func (a *NotificationsAPIService) CreateVerifiedFromAddress(ctx context.Context) ApiCreateVerifiedFromAddressRequest {
 	return ApiCreateVerifiedFromAddressRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -396,7 +396,7 @@ func (a *NotificationsApiService) CreateVerifiedFromAddress(ctx context.Context)
 
 // Execute executes the request
 //  @return EmailStatusDto
-func (a *NotificationsApiService) CreateVerifiedFromAddressExecute(r ApiCreateVerifiedFromAddressRequest) (*EmailStatusDto, *http.Response, error) {
+func (a *NotificationsAPIService) CreateVerifiedFromAddressExecute(r ApiCreateVerifiedFromAddressRequest) (*EmailStatusDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -404,7 +404,7 @@ func (a *NotificationsApiService) CreateVerifiedFromAddressExecute(r ApiCreateVe
 		localVarReturnValue  *EmailStatusDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.CreateVerifiedFromAddress")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.CreateVerifiedFromAddress")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -447,9 +447,9 @@ func (a *NotificationsApiService) CreateVerifiedFromAddressExecute(r ApiCreateVe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -530,7 +530,7 @@ func (a *NotificationsApiService) CreateVerifiedFromAddressExecute(r ApiCreateVe
 
 type ApiDeleteNotificationTemplatesInBulkRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	templateBulkDeleteDto *[]TemplateBulkDeleteDto
 }
 
@@ -551,7 +551,7 @@ This lets you bulk delete templates that you previously created for your site. S
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteNotificationTemplatesInBulkRequest
 */
-func (a *NotificationsApiService) DeleteNotificationTemplatesInBulk(ctx context.Context) ApiDeleteNotificationTemplatesInBulkRequest {
+func (a *NotificationsAPIService) DeleteNotificationTemplatesInBulk(ctx context.Context) ApiDeleteNotificationTemplatesInBulkRequest {
 	return ApiDeleteNotificationTemplatesInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -559,14 +559,14 @@ func (a *NotificationsApiService) DeleteNotificationTemplatesInBulk(ctx context.
 }
 
 // Execute executes the request
-func (a *NotificationsApiService) DeleteNotificationTemplatesInBulkExecute(r ApiDeleteNotificationTemplatesInBulkRequest) (*http.Response, error) {
+func (a *NotificationsAPIService) DeleteNotificationTemplatesInBulkExecute(r ApiDeleteNotificationTemplatesInBulkRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.DeleteNotificationTemplatesInBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.DeleteNotificationTemplatesInBulk")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -609,9 +609,9 @@ func (a *NotificationsApiService) DeleteNotificationTemplatesInBulkExecute(r Api
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -683,7 +683,7 @@ func (a *NotificationsApiService) DeleteNotificationTemplatesInBulkExecute(r Api
 
 type ApiDeleteVerifiedFromAddressRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	id string
 }
 
@@ -700,7 +700,7 @@ Delete a verified sender email address
  @param id
  @return ApiDeleteVerifiedFromAddressRequest
 */
-func (a *NotificationsApiService) DeleteVerifiedFromAddress(ctx context.Context, id string) ApiDeleteVerifiedFromAddressRequest {
+func (a *NotificationsAPIService) DeleteVerifiedFromAddress(ctx context.Context, id string) ApiDeleteVerifiedFromAddressRequest {
 	return ApiDeleteVerifiedFromAddressRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -709,14 +709,14 @@ func (a *NotificationsApiService) DeleteVerifiedFromAddress(ctx context.Context,
 }
 
 // Execute executes the request
-func (a *NotificationsApiService) DeleteVerifiedFromAddressExecute(r ApiDeleteVerifiedFromAddressRequest) (*http.Response, error) {
+func (a *NotificationsAPIService) DeleteVerifiedFromAddressExecute(r ApiDeleteVerifiedFromAddressRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.DeleteVerifiedFromAddress")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.DeleteVerifiedFromAddress")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -755,9 +755,9 @@ func (a *NotificationsApiService) DeleteVerifiedFromAddressExecute(r ApiDeleteVe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -840,7 +840,7 @@ func (a *NotificationsApiService) DeleteVerifiedFromAddressExecute(r ApiDeleteVe
 
 type ApiGetDkimAttributesRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 }
 
 func (r ApiGetDkimAttributesRequest) Execute() ([]DkimAttributes, *http.Response, error) {
@@ -855,7 +855,7 @@ Retrieve DKIM (DomainKeys Identified Mail) attributes for all your tenants' AWS 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetDkimAttributesRequest
 */
-func (a *NotificationsApiService) GetDkimAttributes(ctx context.Context) ApiGetDkimAttributesRequest {
+func (a *NotificationsAPIService) GetDkimAttributes(ctx context.Context) ApiGetDkimAttributesRequest {
 	return ApiGetDkimAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -864,7 +864,7 @@ func (a *NotificationsApiService) GetDkimAttributes(ctx context.Context) ApiGetD
 
 // Execute executes the request
 //  @return []DkimAttributes
-func (a *NotificationsApiService) GetDkimAttributesExecute(r ApiGetDkimAttributesRequest) ([]DkimAttributes, *http.Response, error) {
+func (a *NotificationsAPIService) GetDkimAttributesExecute(r ApiGetDkimAttributesRequest) ([]DkimAttributes, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -872,7 +872,7 @@ func (a *NotificationsApiService) GetDkimAttributesExecute(r ApiGetDkimAttribute
 		localVarReturnValue  []DkimAttributes
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.GetDkimAttributes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetDkimAttributes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -910,9 +910,9 @@ func (a *NotificationsApiService) GetDkimAttributesExecute(r ApiGetDkimAttribute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -993,7 +993,7 @@ func (a *NotificationsApiService) GetDkimAttributesExecute(r ApiGetDkimAttribute
 
 type ApiGetMailFromAttributesRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	id *string
 }
 
@@ -1015,7 +1015,7 @@ Retrieve MAIL FROM attributes for a given AWS SES identity.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetMailFromAttributesRequest
 */
-func (a *NotificationsApiService) GetMailFromAttributes(ctx context.Context) ApiGetMailFromAttributesRequest {
+func (a *NotificationsAPIService) GetMailFromAttributes(ctx context.Context) ApiGetMailFromAttributesRequest {
 	return ApiGetMailFromAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1024,7 +1024,7 @@ func (a *NotificationsApiService) GetMailFromAttributes(ctx context.Context) Api
 
 // Execute executes the request
 //  @return MailFromAttributes
-func (a *NotificationsApiService) GetMailFromAttributesExecute(r ApiGetMailFromAttributesRequest) (*MailFromAttributes, *http.Response, error) {
+func (a *NotificationsAPIService) GetMailFromAttributesExecute(r ApiGetMailFromAttributesRequest) (*MailFromAttributes, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1032,7 +1032,7 @@ func (a *NotificationsApiService) GetMailFromAttributesExecute(r ApiGetMailFromA
 		localVarReturnValue  *MailFromAttributes
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.GetMailFromAttributes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetMailFromAttributes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1074,9 +1074,9 @@ func (a *NotificationsApiService) GetMailFromAttributesExecute(r ApiGetMailFromA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1157,7 +1157,7 @@ func (a *NotificationsApiService) GetMailFromAttributesExecute(r ApiGetMailFromA
 
 type ApiGetNotificationPreferenceRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	key string
 }
 
@@ -1175,7 +1175,7 @@ Request will require the following legacy roles:  ORG_ADMIN and API
  @param key The notification key.
  @return ApiGetNotificationPreferenceRequest
 */
-func (a *NotificationsApiService) GetNotificationPreference(ctx context.Context, key string) ApiGetNotificationPreferenceRequest {
+func (a *NotificationsAPIService) GetNotificationPreference(ctx context.Context, key string) ApiGetNotificationPreferenceRequest {
 	return ApiGetNotificationPreferenceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1185,7 +1185,7 @@ func (a *NotificationsApiService) GetNotificationPreference(ctx context.Context,
 
 // Execute executes the request
 //  @return PreferencesDto
-func (a *NotificationsApiService) GetNotificationPreferenceExecute(r ApiGetNotificationPreferenceRequest) (*PreferencesDto, *http.Response, error) {
+func (a *NotificationsAPIService) GetNotificationPreferenceExecute(r ApiGetNotificationPreferenceRequest) (*PreferencesDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1193,7 +1193,7 @@ func (a *NotificationsApiService) GetNotificationPreferenceExecute(r ApiGetNotif
 		localVarReturnValue  *PreferencesDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.GetNotificationPreference")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetNotificationPreference")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1232,9 +1232,9 @@ func (a *NotificationsApiService) GetNotificationPreferenceExecute(r ApiGetNotif
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1315,7 +1315,7 @@ func (a *NotificationsApiService) GetNotificationPreferenceExecute(r ApiGetNotif
 
 type ApiGetNotificationTemplateRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	id string
 }
 
@@ -1332,7 +1332,7 @@ This gets a template that you have modified for your site by Id.
  @param id Id of the Notification Template
  @return ApiGetNotificationTemplateRequest
 */
-func (a *NotificationsApiService) GetNotificationTemplate(ctx context.Context, id string) ApiGetNotificationTemplateRequest {
+func (a *NotificationsAPIService) GetNotificationTemplate(ctx context.Context, id string) ApiGetNotificationTemplateRequest {
 	return ApiGetNotificationTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1342,7 +1342,7 @@ func (a *NotificationsApiService) GetNotificationTemplate(ctx context.Context, i
 
 // Execute executes the request
 //  @return []TemplateDto
-func (a *NotificationsApiService) GetNotificationTemplateExecute(r ApiGetNotificationTemplateRequest) ([]TemplateDto, *http.Response, error) {
+func (a *NotificationsAPIService) GetNotificationTemplateExecute(r ApiGetNotificationTemplateRequest) ([]TemplateDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1350,7 +1350,7 @@ func (a *NotificationsApiService) GetNotificationTemplateExecute(r ApiGetNotific
 		localVarReturnValue  []TemplateDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.GetNotificationTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetNotificationTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1389,9 +1389,9 @@ func (a *NotificationsApiService) GetNotificationTemplateExecute(r ApiGetNotific
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1472,7 +1472,7 @@ func (a *NotificationsApiService) GetNotificationTemplateExecute(r ApiGetNotific
 
 type ApiGetNotificationsTemplateContextRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 }
 
 func (r ApiGetNotificationsTemplateContextRequest) Execute() ([]NotificationTemplateContext, *http.Response, error) {
@@ -1491,7 +1491,7 @@ Requires the following security scope:  idn:notification-templates:read
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetNotificationsTemplateContextRequest
 */
-func (a *NotificationsApiService) GetNotificationsTemplateContext(ctx context.Context) ApiGetNotificationsTemplateContextRequest {
+func (a *NotificationsAPIService) GetNotificationsTemplateContext(ctx context.Context) ApiGetNotificationsTemplateContextRequest {
 	return ApiGetNotificationsTemplateContextRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1500,7 +1500,7 @@ func (a *NotificationsApiService) GetNotificationsTemplateContext(ctx context.Co
 
 // Execute executes the request
 //  @return []NotificationTemplateContext
-func (a *NotificationsApiService) GetNotificationsTemplateContextExecute(r ApiGetNotificationsTemplateContextRequest) ([]NotificationTemplateContext, *http.Response, error) {
+func (a *NotificationsAPIService) GetNotificationsTemplateContextExecute(r ApiGetNotificationsTemplateContextRequest) ([]NotificationTemplateContext, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1508,7 +1508,7 @@ func (a *NotificationsApiService) GetNotificationsTemplateContextExecute(r ApiGe
 		localVarReturnValue  []NotificationTemplateContext
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.GetNotificationsTemplateContext")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetNotificationsTemplateContext")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1546,9 +1546,9 @@ func (a *NotificationsApiService) GetNotificationsTemplateContextExecute(r ApiGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1629,7 +1629,7 @@ func (a *NotificationsApiService) GetNotificationsTemplateContextExecute(r ApiGe
 
 type ApiListFromAddressesRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -1679,7 +1679,7 @@ Retrieve a list of sender email addresses and their verification statuses
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListFromAddressesRequest
 */
-func (a *NotificationsApiService) ListFromAddresses(ctx context.Context) ApiListFromAddressesRequest {
+func (a *NotificationsAPIService) ListFromAddresses(ctx context.Context) ApiListFromAddressesRequest {
 	return ApiListFromAddressesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1688,7 +1688,7 @@ func (a *NotificationsApiService) ListFromAddresses(ctx context.Context) ApiList
 
 // Execute executes the request
 //  @return []EmailStatusDto
-func (a *NotificationsApiService) ListFromAddressesExecute(r ApiListFromAddressesRequest) ([]EmailStatusDto, *http.Response, error) {
+func (a *NotificationsAPIService) ListFromAddressesExecute(r ApiListFromAddressesRequest) ([]EmailStatusDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1696,7 +1696,7 @@ func (a *NotificationsApiService) ListFromAddressesExecute(r ApiListFromAddresse
 		localVarReturnValue  []EmailStatusDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.ListFromAddresses")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.ListFromAddresses")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1709,12 +1709,21 @@ func (a *NotificationsApiService) ListFromAddressesExecute(r ApiListFromAddresse
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1749,9 +1758,9 @@ func (a *NotificationsApiService) ListFromAddressesExecute(r ApiListFromAddresse
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1821,7 +1830,7 @@ func (a *NotificationsApiService) ListFromAddressesExecute(r ApiListFromAddresse
 
 type ApiListNotificationTemplateDefaultsRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	limit *int32
 	offset *int32
 	filters *string
@@ -1857,7 +1866,7 @@ This lists the default templates used for notifications, such as emails from Ide
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNotificationTemplateDefaultsRequest
 */
-func (a *NotificationsApiService) ListNotificationTemplateDefaults(ctx context.Context) ApiListNotificationTemplateDefaultsRequest {
+func (a *NotificationsAPIService) ListNotificationTemplateDefaults(ctx context.Context) ApiListNotificationTemplateDefaultsRequest {
 	return ApiListNotificationTemplateDefaultsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1866,7 +1875,7 @@ func (a *NotificationsApiService) ListNotificationTemplateDefaults(ctx context.C
 
 // Execute executes the request
 //  @return []TemplateDtoDefault
-func (a *NotificationsApiService) ListNotificationTemplateDefaultsExecute(r ApiListNotificationTemplateDefaultsRequest) ([]TemplateDtoDefault, *http.Response, error) {
+func (a *NotificationsAPIService) ListNotificationTemplateDefaultsExecute(r ApiListNotificationTemplateDefaultsRequest) ([]TemplateDtoDefault, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1874,7 +1883,7 @@ func (a *NotificationsApiService) ListNotificationTemplateDefaultsExecute(r ApiL
 		localVarReturnValue  []TemplateDtoDefault
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.ListNotificationTemplateDefaults")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.ListNotificationTemplateDefaults")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1887,9 +1896,15 @@ func (a *NotificationsApiService) ListNotificationTemplateDefaultsExecute(r ApiL
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1921,9 +1936,9 @@ func (a *NotificationsApiService) ListNotificationTemplateDefaultsExecute(r ApiL
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2004,7 +2019,7 @@ func (a *NotificationsApiService) ListNotificationTemplateDefaultsExecute(r ApiL
 
 type ApiListNotificationTemplatesRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	limit *int32
 	offset *int32
 	filters *string
@@ -2040,7 +2055,7 @@ This lists the templates that you have modified for your site. Since this is a b
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNotificationTemplatesRequest
 */
-func (a *NotificationsApiService) ListNotificationTemplates(ctx context.Context) ApiListNotificationTemplatesRequest {
+func (a *NotificationsAPIService) ListNotificationTemplates(ctx context.Context) ApiListNotificationTemplatesRequest {
 	return ApiListNotificationTemplatesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2049,7 +2064,7 @@ func (a *NotificationsApiService) ListNotificationTemplates(ctx context.Context)
 
 // Execute executes the request
 //  @return []TemplateDto
-func (a *NotificationsApiService) ListNotificationTemplatesExecute(r ApiListNotificationTemplatesRequest) ([]TemplateDto, *http.Response, error) {
+func (a *NotificationsAPIService) ListNotificationTemplatesExecute(r ApiListNotificationTemplatesRequest) ([]TemplateDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2057,7 +2072,7 @@ func (a *NotificationsApiService) ListNotificationTemplatesExecute(r ApiListNoti
 		localVarReturnValue  []TemplateDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.ListNotificationTemplates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.ListNotificationTemplates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2070,9 +2085,15 @@ func (a *NotificationsApiService) ListNotificationTemplatesExecute(r ApiListNoti
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -2104,9 +2125,9 @@ func (a *NotificationsApiService) ListNotificationTemplatesExecute(r ApiListNoti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2187,7 +2208,7 @@ func (a *NotificationsApiService) ListNotificationTemplatesExecute(r ApiListNoti
 
 type ApiPutMailFromAttributesRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	mailFromAttributesDto *MailFromAttributesDto
 }
 
@@ -2208,7 +2229,7 @@ Change the MAIL FROM domain of an AWS SES email identity and provide the MX and 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutMailFromAttributesRequest
 */
-func (a *NotificationsApiService) PutMailFromAttributes(ctx context.Context) ApiPutMailFromAttributesRequest {
+func (a *NotificationsAPIService) PutMailFromAttributes(ctx context.Context) ApiPutMailFromAttributesRequest {
 	return ApiPutMailFromAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2217,7 +2238,7 @@ func (a *NotificationsApiService) PutMailFromAttributes(ctx context.Context) Api
 
 // Execute executes the request
 //  @return MailFromAttributes
-func (a *NotificationsApiService) PutMailFromAttributesExecute(r ApiPutMailFromAttributesRequest) (*MailFromAttributes, *http.Response, error) {
+func (a *NotificationsAPIService) PutMailFromAttributesExecute(r ApiPutMailFromAttributesRequest) (*MailFromAttributes, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2225,7 +2246,7 @@ func (a *NotificationsApiService) PutMailFromAttributesExecute(r ApiPutMailFromA
 		localVarReturnValue  *MailFromAttributes
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.PutMailFromAttributes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.PutMailFromAttributes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2268,9 +2289,9 @@ func (a *NotificationsApiService) PutMailFromAttributesExecute(r ApiPutMailFromA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2351,7 +2372,7 @@ func (a *NotificationsApiService) PutMailFromAttributesExecute(r ApiPutMailFromA
 
 type ApiPutNotificationPreferenceRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	key string
 	preferencesDto *PreferencesDto
 }
@@ -2380,7 +2401,7 @@ Request will require the following legacy roles:  ORG_ADMIN and API
  @param key The notification key.
  @return ApiPutNotificationPreferenceRequest
 */
-func (a *NotificationsApiService) PutNotificationPreference(ctx context.Context, key string) ApiPutNotificationPreferenceRequest {
+func (a *NotificationsAPIService) PutNotificationPreference(ctx context.Context, key string) ApiPutNotificationPreferenceRequest {
 	return ApiPutNotificationPreferenceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2390,7 +2411,7 @@ func (a *NotificationsApiService) PutNotificationPreference(ctx context.Context,
 
 // Execute executes the request
 //  @return PreferencesDto
-func (a *NotificationsApiService) PutNotificationPreferenceExecute(r ApiPutNotificationPreferenceRequest) (*PreferencesDto, *http.Response, error) {
+func (a *NotificationsAPIService) PutNotificationPreferenceExecute(r ApiPutNotificationPreferenceRequest) (*PreferencesDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2398,7 +2419,7 @@ func (a *NotificationsApiService) PutNotificationPreferenceExecute(r ApiPutNotif
 		localVarReturnValue  *PreferencesDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.PutNotificationPreference")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.PutNotificationPreference")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2442,9 +2463,9 @@ func (a *NotificationsApiService) PutNotificationPreferenceExecute(r ApiPutNotif
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2525,7 +2546,7 @@ func (a *NotificationsApiService) PutNotificationPreferenceExecute(r ApiPutNotif
 
 type ApiSendTestNotificationRequest struct {
 	ctx context.Context
-	ApiService *NotificationsApiService
+	ApiService *NotificationsAPIService
 	sendTestNotificationRequestDto *SendTestNotificationRequestDto
 }
 
@@ -2546,7 +2567,7 @@ Send a Test Notification
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSendTestNotificationRequest
 */
-func (a *NotificationsApiService) SendTestNotification(ctx context.Context) ApiSendTestNotificationRequest {
+func (a *NotificationsAPIService) SendTestNotification(ctx context.Context) ApiSendTestNotificationRequest {
 	return ApiSendTestNotificationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2554,14 +2575,14 @@ func (a *NotificationsApiService) SendTestNotification(ctx context.Context) ApiS
 }
 
 // Execute executes the request
-func (a *NotificationsApiService) SendTestNotificationExecute(r ApiSendTestNotificationRequest) (*http.Response, error) {
+func (a *NotificationsAPIService) SendTestNotificationExecute(r ApiSendTestNotificationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsApiService.SendTestNotification")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.SendTestNotification")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2604,9 +2625,9 @@ func (a *NotificationsApiService) SendTestNotificationExecute(r ApiSendTestNotif
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

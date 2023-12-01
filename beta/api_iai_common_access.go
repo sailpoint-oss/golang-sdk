@@ -13,18 +13,18 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// IAICommonAccessApiService IAICommonAccessApi service
-type IAICommonAccessApiService service
+// IAICommonAccessAPIService IAICommonAccessAPI service
+type IAICommonAccessAPIService service
 
 type ApiCreateCommonAccessRequest struct {
 	ctx context.Context
-	ApiService *IAICommonAccessApiService
+	ApiService *IAICommonAccessAPIService
 	commonAccessItemRequest *CommonAccessItemRequest
 }
 
@@ -45,7 +45,7 @@ This API is used to add roles/access profiles to the list of common access for a
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCommonAccessRequest
 */
-func (a *IAICommonAccessApiService) CreateCommonAccess(ctx context.Context) ApiCreateCommonAccessRequest {
+func (a *IAICommonAccessAPIService) CreateCommonAccess(ctx context.Context) ApiCreateCommonAccessRequest {
 	return ApiCreateCommonAccessRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -54,7 +54,7 @@ func (a *IAICommonAccessApiService) CreateCommonAccess(ctx context.Context) ApiC
 
 // Execute executes the request
 //  @return CommonAccessItemResponse
-func (a *IAICommonAccessApiService) CreateCommonAccessExecute(r ApiCreateCommonAccessRequest) (*CommonAccessItemResponse, *http.Response, error) {
+func (a *IAICommonAccessAPIService) CreateCommonAccessExecute(r ApiCreateCommonAccessRequest) (*CommonAccessItemResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -62,7 +62,7 @@ func (a *IAICommonAccessApiService) CreateCommonAccessExecute(r ApiCreateCommonA
 		localVarReturnValue  *CommonAccessItemResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAICommonAccessApiService.CreateCommonAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAICommonAccessAPIService.CreateCommonAccess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -105,9 +105,9 @@ func (a *IAICommonAccessApiService) CreateCommonAccessExecute(r ApiCreateCommonA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -188,7 +188,7 @@ func (a *IAICommonAccessApiService) CreateCommonAccessExecute(r ApiCreateCommonA
 
 type ApiGetCommonAccessRequest struct {
 	ctx context.Context
-	ApiService *IAICommonAccessApiService
+	ApiService *IAICommonAccessAPIService
 	offset *int32
 	limit *int32
 	count *bool
@@ -238,7 +238,7 @@ This endpoint returns the current common access for a customer. The returned ite
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCommonAccessRequest
 */
-func (a *IAICommonAccessApiService) GetCommonAccess(ctx context.Context) ApiGetCommonAccessRequest {
+func (a *IAICommonAccessAPIService) GetCommonAccess(ctx context.Context) ApiGetCommonAccessRequest {
 	return ApiGetCommonAccessRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -247,7 +247,7 @@ func (a *IAICommonAccessApiService) GetCommonAccess(ctx context.Context) ApiGetC
 
 // Execute executes the request
 //  @return []CommonAccessResponse
-func (a *IAICommonAccessApiService) GetCommonAccessExecute(r ApiGetCommonAccessRequest) ([]CommonAccessResponse, *http.Response, error) {
+func (a *IAICommonAccessAPIService) GetCommonAccessExecute(r ApiGetCommonAccessRequest) ([]CommonAccessResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -255,7 +255,7 @@ func (a *IAICommonAccessApiService) GetCommonAccessExecute(r ApiGetCommonAccessR
 		localVarReturnValue  []CommonAccessResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAICommonAccessApiService.GetCommonAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAICommonAccessAPIService.GetCommonAccess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -268,12 +268,21 @@ func (a *IAICommonAccessApiService) GetCommonAccessExecute(r ApiGetCommonAccessR
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -308,9 +317,9 @@ func (a *IAICommonAccessApiService) GetCommonAccessExecute(r ApiGetCommonAccessR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -380,7 +389,7 @@ func (a *IAICommonAccessApiService) GetCommonAccessExecute(r ApiGetCommonAccessR
 
 type ApiUpdateCommonAccessStatusInBulkRequest struct {
 	ctx context.Context
-	ApiService *IAICommonAccessApiService
+	ApiService *IAICommonAccessAPIService
 	commonAccessIDStatus *[]CommonAccessIDStatus
 }
 
@@ -402,7 +411,7 @@ This submits an update request to the common access application. At this time th
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateCommonAccessStatusInBulkRequest
 */
-func (a *IAICommonAccessApiService) UpdateCommonAccessStatusInBulk(ctx context.Context) ApiUpdateCommonAccessStatusInBulkRequest {
+func (a *IAICommonAccessAPIService) UpdateCommonAccessStatusInBulk(ctx context.Context) ApiUpdateCommonAccessStatusInBulkRequest {
 	return ApiUpdateCommonAccessStatusInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -411,7 +420,7 @@ func (a *IAICommonAccessApiService) UpdateCommonAccessStatusInBulk(ctx context.C
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *IAICommonAccessApiService) UpdateCommonAccessStatusInBulkExecute(r ApiUpdateCommonAccessStatusInBulkRequest) (map[string]interface{}, *http.Response, error) {
+func (a *IAICommonAccessAPIService) UpdateCommonAccessStatusInBulkExecute(r ApiUpdateCommonAccessStatusInBulkRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -419,7 +428,7 @@ func (a *IAICommonAccessApiService) UpdateCommonAccessStatusInBulkExecute(r ApiU
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAICommonAccessApiService.UpdateCommonAccessStatusInBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAICommonAccessAPIService.UpdateCommonAccessStatusInBulk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -462,9 +471,9 @@ func (a *IAICommonAccessApiService) UpdateCommonAccessStatusInBulkExecute(r ApiU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

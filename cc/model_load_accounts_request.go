@@ -136,8 +136,8 @@ func (o *LoadAccountsRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varLoadAccountsRequest := _LoadAccountsRequest{}
 
 	if err = json.Unmarshal(bytes, &varLoadAccountsRequest); err == nil {
-		*o = LoadAccountsRequest(varLoadAccountsRequest)
-	}
+	*o = LoadAccountsRequest(varLoadAccountsRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

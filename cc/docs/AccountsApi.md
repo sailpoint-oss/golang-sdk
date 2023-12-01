@@ -1,11 +1,11 @@
-# \AccountsApi
+# \AccountsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListAccounts**](AccountsApi.md#ListAccounts) | **Get** /cc/api/account/list | List Accounts
-[**RemoveAccount**](AccountsApi.md#RemoveAccount) | **Post** /cc/api/account/remove/{id} | Remove Account
+[**ListAccounts**](AccountsAPI.md#ListAccounts) | **Get** /cc/api/account/list | List Accounts
+[**RemoveAccount**](AccountsAPI.md#RemoveAccount) | **Post** /cc/api/account/remove/{id} | Remove Account
 
 
 
@@ -24,20 +24,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.ListAccounts(context.Background()).Execute()
+    resp, r, err := apiClient.AccountsAPI.ListAccounts(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListAccounts`: []ListAccounts200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `AccountsApi.ListAccounts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.ListAccounts`: %v\n", resp)
 }
 ```
 
@@ -83,7 +83,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -91,9 +91,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsApi.RemoveAccount(context.Background(), id).Execute()
+    r, err := apiClient.AccountsAPI.RemoveAccount(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.RemoveAccount``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.RemoveAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

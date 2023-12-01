@@ -1,20 +1,20 @@
-# \IdentityHistoryApi
+# \IdentityHistoryAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CompareIdentitySnapshots**](IdentityHistoryApi.md#CompareIdentitySnapshots) | **Get** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
-[**CompareIdentitySnapshotsAccessType**](IdentityHistoryApi.md#CompareIdentitySnapshotsAccessType) | **Get** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
-[**GetHistoricalIdentity**](IdentityHistoryApi.md#GetHistoricalIdentity) | **Get** /historical-identities/{id} | Get latest snapshot of identity
-[**GetHistoricalIdentityEvents**](IdentityHistoryApi.md#GetHistoricalIdentityEvents) | **Get** /historical-identities/{id}/events | Lists all events for the given identity
-[**GetIdentitySnapshot**](IdentityHistoryApi.md#GetIdentitySnapshot) | **Get** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
-[**GetIdentitySnapshotSummary**](IdentityHistoryApi.md#GetIdentitySnapshotSummary) | **Get** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
-[**GetIdentityStartDate**](IdentityHistoryApi.md#GetIdentityStartDate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
-[**ListHistoricalIdentities**](IdentityHistoryApi.md#ListHistoricalIdentities) | **Get** /historical-identities | Lists all the identities
-[**ListIdentityAccessItems**](IdentityHistoryApi.md#ListIdentityAccessItems) | **Get** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
-[**ListIdentitySnapshotAccessItems**](IdentityHistoryApi.md#ListIdentitySnapshotAccessItems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
-[**ListIdentitySnapshots**](IdentityHistoryApi.md#ListIdentitySnapshots) | **Get** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
+[**CompareIdentitySnapshots**](IdentityHistoryAPI.md#CompareIdentitySnapshots) | **Get** /historical-identities/{id}/compare | Gets a difference of count for each access item types for the given identity between 2 snapshots
+[**CompareIdentitySnapshotsAccessType**](IdentityHistoryAPI.md#CompareIdentitySnapshotsAccessType) | **Get** /historical-identities/{id}/compare/{access-type} | Gets a list of differences of specific accessType for the given identity between 2 snapshots
+[**GetHistoricalIdentity**](IdentityHistoryAPI.md#GetHistoricalIdentity) | **Get** /historical-identities/{id} | Get latest snapshot of identity
+[**GetHistoricalIdentityEvents**](IdentityHistoryAPI.md#GetHistoricalIdentityEvents) | **Get** /historical-identities/{id}/events | Lists all events for the given identity
+[**GetIdentitySnapshot**](IdentityHistoryAPI.md#GetIdentitySnapshot) | **Get** /historical-identities/{id}/snapshots/{date} | Gets an identity snapshot at a given date
+[**GetIdentitySnapshotSummary**](IdentityHistoryAPI.md#GetIdentitySnapshotSummary) | **Get** /historical-identities/{id}/snapshot-summary | Gets the summary for the event count for a specific identity
+[**GetIdentityStartDate**](IdentityHistoryAPI.md#GetIdentityStartDate) | **Get** /historical-identities/{id}/start-date | Gets the start date of the identity
+[**ListHistoricalIdentities**](IdentityHistoryAPI.md#ListHistoricalIdentities) | **Get** /historical-identities | Lists all the identities
+[**ListIdentityAccessItems**](IdentityHistoryAPI.md#ListIdentityAccessItems) | **Get** /historical-identities/{id}/access-items | Gets a list of access items for the identity filtered by item type
+[**ListIdentitySnapshotAccessItems**](IdentityHistoryAPI.md#ListIdentitySnapshotAccessItems) | **Get** /historical-identities/{id}/snapshots/{date}/access-items | Gets the list of identity access items at a given date filterd by item type
+[**ListIdentitySnapshots**](IdentityHistoryAPI.md#ListIdentitySnapshots) | **Get** /historical-identities/{id}/snapshots | Lists all the snapshots for the identity
 
 
 
@@ -35,7 +35,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -49,13 +49,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.CompareIdentitySnapshots(context.Background(), id).Snapshot1(snapshot1).Snapshot2(snapshot2).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.CompareIdentitySnapshots(context.Background(), id).Snapshot1(snapshot1).Snapshot2(snapshot2).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.CompareIdentitySnapshots``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.CompareIdentitySnapshots``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CompareIdentitySnapshots`: []IdentityCompareResponse
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.CompareIdentitySnapshots`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.CompareIdentitySnapshots`: %v\n", resp)
 }
 ```
 
@@ -117,7 +117,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -132,13 +132,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.CompareIdentitySnapshotsAccessType(context.Background(), id, accessType).AccessAssociated(accessAssociated).Snapshot1(snapshot1).Snapshot2(snapshot2).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.CompareIdentitySnapshotsAccessType(context.Background(), id, accessType).AccessAssociated(accessAssociated).Snapshot1(snapshot1).Snapshot2(snapshot2).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.CompareIdentitySnapshotsAccessType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.CompareIdentitySnapshotsAccessType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CompareIdentitySnapshotsAccessType`: []AccessItemDiff
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.CompareIdentitySnapshotsAccessType`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.CompareIdentitySnapshotsAccessType`: %v\n", resp)
 }
 ```
 
@@ -202,7 +202,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -210,13 +210,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.GetHistoricalIdentity(context.Background(), id).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.GetHistoricalIdentity(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.GetHistoricalIdentity``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetHistoricalIdentity``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetHistoricalIdentity`: IdentityHistoryResponse
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.GetHistoricalIdentity`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.GetHistoricalIdentity`: %v\n", resp)
 }
 ```
 
@@ -272,7 +272,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -286,13 +286,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.GetHistoricalIdentityEvents(context.Background(), id).From(from).EventTypes(eventTypes).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.GetHistoricalIdentityEvents(context.Background(), id).From(from).EventTypes(eventTypes).AccessItemTypes(accessItemTypes).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.GetHistoricalIdentityEvents``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetHistoricalIdentityEvents``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetHistoricalIdentityEvents`: []GetHistoricalIdentityEvents200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.GetHistoricalIdentityEvents`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.GetHistoricalIdentityEvents`: %v\n", resp)
 }
 ```
 
@@ -354,7 +354,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -363,13 +363,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.GetIdentitySnapshot(context.Background(), id, date).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.GetIdentitySnapshot(context.Background(), id, date).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.GetIdentitySnapshot``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetIdentitySnapshot``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentitySnapshot`: IdentityHistoryResponse
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.GetIdentitySnapshot`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.GetIdentitySnapshot`: %v\n", resp)
 }
 ```
 
@@ -427,7 +427,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -441,13 +441,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.GetIdentitySnapshotSummary(context.Background(), id).Before(before).Interval(interval).TimeZone(timeZone).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.GetIdentitySnapshotSummary(context.Background(), id).Before(before).Interval(interval).TimeZone(timeZone).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.GetIdentitySnapshotSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetIdentitySnapshotSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentitySnapshotSummary`: []MetricResponse
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.GetIdentitySnapshotSummary`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.GetIdentitySnapshotSummary`: %v\n", resp)
 }
 ```
 
@@ -509,7 +509,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -517,13 +517,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.GetIdentityStartDate(context.Background(), id).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.GetIdentityStartDate(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.GetIdentityStartDate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.GetIdentityStartDate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityStartDate`: string
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.GetIdentityStartDate`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.GetIdentityStartDate`: %v\n", resp)
 }
 ```
 
@@ -579,7 +579,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -591,13 +591,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.ListHistoricalIdentities(context.Background()).StartsWithQuery(startsWithQuery).IsDeleted(isDeleted).IsActive(isActive).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.ListHistoricalIdentities(context.Background()).StartsWithQuery(startsWithQuery).IsDeleted(isDeleted).IsActive(isActive).Limit(limit).Offset(offset).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.ListHistoricalIdentities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListHistoricalIdentities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListHistoricalIdentities`: []IdentityListItem
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.ListHistoricalIdentities`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.ListHistoricalIdentities`: %v\n", resp)
 }
 ```
 
@@ -653,7 +653,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -662,13 +662,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.ListIdentityAccessItems(context.Background(), id).Type_(type_).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Type_(type_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.ListIdentityAccessItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentityAccessItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListIdentityAccessItems`: []ListIdentityAccessItems200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.ListIdentityAccessItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.ListIdentityAccessItems`: %v\n", resp)
 }
 ```
 
@@ -725,7 +725,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -735,13 +735,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.ListIdentitySnapshotAccessItems(context.Background(), id, date).Type_(type_).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.ListIdentitySnapshotAccessItems(context.Background(), id, date).Type_(type_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.ListIdentitySnapshotAccessItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentitySnapshotAccessItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListIdentitySnapshotAccessItems`: []ListIdentityAccessItems200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.ListIdentitySnapshotAccessItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.ListIdentitySnapshotAccessItems`: %v\n", resp)
 }
 ```
 
@@ -800,7 +800,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -813,13 +813,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityHistoryApi.ListIdentitySnapshots(context.Background(), id).Start(start).Interval(interval).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IdentityHistoryAPI.ListIdentitySnapshots(context.Background(), id).Start(start).Interval(interval).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryApi.ListIdentitySnapshots``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentityHistoryAPI.ListIdentitySnapshots``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListIdentitySnapshots`: []IdentitySnapshotSummaryResponse
-    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryApi.ListIdentitySnapshots`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IdentityHistoryAPI.ListIdentitySnapshots`: %v\n", resp)
 }
 ```
 

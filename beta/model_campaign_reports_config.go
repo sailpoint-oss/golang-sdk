@@ -100,8 +100,8 @@ func (o *CampaignReportsConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varCampaignReportsConfig := _CampaignReportsConfig{}
 
 	if err = json.Unmarshal(bytes, &varCampaignReportsConfig); err == nil {
-		*o = CampaignReportsConfig(varCampaignReportsConfig)
-	}
+	*o = CampaignReportsConfig(varCampaignReportsConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

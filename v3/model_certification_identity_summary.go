@@ -211,8 +211,8 @@ func (o *CertificationIdentitySummary) UnmarshalJSON(bytes []byte) (err error) {
 	varCertificationIdentitySummary := _CertificationIdentitySummary{}
 
 	if err = json.Unmarshal(bytes, &varCertificationIdentitySummary); err == nil {
-		*o = CertificationIdentitySummary(varCertificationIdentitySummary)
-	}
+	*o = CertificationIdentitySummary(varCertificationIdentitySummary)
+}
 
 	additionalProperties := make(map[string]interface{})
 

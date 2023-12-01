@@ -1,18 +1,18 @@
-# \IAIOutliersApi
+# \IAIOutliersAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ExportOutliersZip**](IAIOutliersApi.md#ExportOutliersZip) | **Get** /outliers/export | IAI Identity Outliers Export
-[**GetIdentityOutlierSnapshots**](IAIOutliersApi.md#GetIdentityOutlierSnapshots) | **Get** /outlier-summaries | IAI Identity Outliers Summary
-[**GetIdentityOutliers**](IAIOutliersApi.md#GetIdentityOutliers) | **Get** /outliers | IAI Get Identity Outliers
-[**GetLatestIdentityOutlierSnapshots**](IAIOutliersApi.md#GetLatestIdentityOutlierSnapshots) | **Get** /outlier-summaries/latest | IAI Identity Outliers Latest Summary
-[**GetOutlierContributingFeatureSummary**](IAIOutliersApi.md#GetOutlierContributingFeatureSummary) | **Get** /outlier-feature-summaries/{outlierFeatureId} | Get identity outlier contibuting feature summary
-[**GetPeerGroupOutliersContributingFeatures**](IAIOutliersApi.md#GetPeerGroupOutliersContributingFeatures) | **Get** /outliers/{outlierId}/contributing-features | Get identity outlier&#39;s contibuting features
-[**IgnoreIdentityOutliers**](IAIOutliersApi.md#IgnoreIdentityOutliers) | **Post** /outliers/ignore | IAI Identity Outliers Ignore
-[**ListOutliersContributingFeatureAccessItems**](IAIOutliersApi.md#ListOutliersContributingFeatureAccessItems) | **Get** /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items | Gets a list of access items associated with each identity outlier contributing feature
-[**UnIgnoreIdentityOutliers**](IAIOutliersApi.md#UnIgnoreIdentityOutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
+[**ExportOutliersZip**](IAIOutliersAPI.md#ExportOutliersZip) | **Get** /outliers/export | IAI Identity Outliers Export
+[**GetIdentityOutlierSnapshots**](IAIOutliersAPI.md#GetIdentityOutlierSnapshots) | **Get** /outlier-summaries | IAI Identity Outliers Summary
+[**GetIdentityOutliers**](IAIOutliersAPI.md#GetIdentityOutliers) | **Get** /outliers | IAI Get Identity Outliers
+[**GetLatestIdentityOutlierSnapshots**](IAIOutliersAPI.md#GetLatestIdentityOutlierSnapshots) | **Get** /outlier-summaries/latest | IAI Identity Outliers Latest Summary
+[**GetOutlierContributingFeatureSummary**](IAIOutliersAPI.md#GetOutlierContributingFeatureSummary) | **Get** /outlier-feature-summaries/{outlierFeatureId} | Get identity outlier contibuting feature summary
+[**GetPeerGroupOutliersContributingFeatures**](IAIOutliersAPI.md#GetPeerGroupOutliersContributingFeatures) | **Get** /outliers/{outlierId}/contributing-features | Get identity outlier&#39;s contibuting features
+[**IgnoreIdentityOutliers**](IAIOutliersAPI.md#IgnoreIdentityOutliers) | **Post** /outliers/ignore | IAI Identity Outliers Ignore
+[**ListOutliersContributingFeatureAccessItems**](IAIOutliersAPI.md#ListOutliersContributingFeatureAccessItems) | **Get** /outliers/{outlierId}/feature-details/{contributingFeatureName}/access-items | Gets a list of access items associated with each identity outlier contributing feature
+[**UnIgnoreIdentityOutliers**](IAIOutliersAPI.md#UnIgnoreIdentityOutliers) | **Post** /outliers/unignore | IAI Identity Outliers Unignore
 
 
 
@@ -33,7 +33,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -41,13 +41,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.ExportOutliersZip(context.Background()).Type_(type_).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.ExportOutliersZip(context.Background()).Type_(type_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.ExportOutliersZip``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.ExportOutliersZip``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ExportOutliersZip`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.ExportOutliersZip`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.ExportOutliersZip`: %v\n", resp)
 }
 ```
 
@@ -99,7 +99,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -111,13 +111,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.GetIdentityOutlierSnapshots(context.Background()).Limit(limit).Offset(offset).Type_(type_).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.GetIdentityOutlierSnapshots(context.Background()).Limit(limit).Offset(offset).Type_(type_).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetIdentityOutlierSnapshots``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetIdentityOutlierSnapshots``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityOutlierSnapshots`: []OutlierSummary
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetIdentityOutlierSnapshots`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetIdentityOutlierSnapshots`: %v\n", resp)
 }
 ```
 
@@ -173,7 +173,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -186,13 +186,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.GetIdentityOutliers(context.Background()).Limit(limit).Offset(offset).Count(count).Type_(type_).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.GetIdentityOutliers(context.Background()).Limit(limit).Offset(offset).Count(count).Type_(type_).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetIdentityOutliers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetIdentityOutliers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityOutliers`: []Outlier
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetIdentityOutliers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetIdentityOutliers`: %v\n", resp)
 }
 ```
 
@@ -249,7 +249,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -257,13 +257,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.GetLatestIdentityOutlierSnapshots(context.Background()).Type_(type_).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.GetLatestIdentityOutlierSnapshots(context.Background()).Type_(type_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetLatestIdentityOutlierSnapshots``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetLatestIdentityOutlierSnapshots``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetLatestIdentityOutlierSnapshots`: []LatestOutlierSummary
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetLatestIdentityOutlierSnapshots`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetLatestIdentityOutlierSnapshots`: %v\n", resp)
 }
 ```
 
@@ -315,7 +315,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -323,13 +323,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.GetOutlierContributingFeatureSummary(context.Background(), outlierFeatureId).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.GetOutlierContributingFeatureSummary(context.Background(), outlierFeatureId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetOutlierContributingFeatureSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetOutlierContributingFeatureSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetOutlierContributingFeatureSummary`: OutlierFeatureSummary
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetOutlierContributingFeatureSummary`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetOutlierContributingFeatureSummary`: %v\n", resp)
 }
 ```
 
@@ -385,7 +385,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -398,13 +398,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.GetPeerGroupOutliersContributingFeatures(context.Background(), outlierId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.GetPeerGroupOutliersContributingFeatures(context.Background(), outlierId).Limit(limit).Offset(offset).Count(count).IncludeTranslationMessages(includeTranslationMessages).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.GetPeerGroupOutliersContributingFeatures``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.GetPeerGroupOutliersContributingFeatures``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPeerGroupOutliersContributingFeatures`: []OutlierContributingFeature
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.GetPeerGroupOutliersContributingFeatures`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.GetPeerGroupOutliersContributingFeatures`: %v\n", resp)
 }
 ```
 
@@ -465,7 +465,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -473,9 +473,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.IgnoreIdentityOutliers(context.Background()).RequestBody(requestBody).Execute()
+    r, err := apiClient.IAIOutliersAPI.IgnoreIdentityOutliers(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.IgnoreIdentityOutliers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.IgnoreIdentityOutliers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -529,7 +529,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -543,13 +543,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.ListOutliersContributingFeatureAccessItems(context.Background(), outlierId, contributingFeatureName).Limit(limit).Offset(offset).Count(count).AccessType(accessType).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAIOutliersAPI.ListOutliersContributingFeatureAccessItems(context.Background(), outlierId, contributingFeatureName).Limit(limit).Offset(offset).Count(count).AccessType(accessType).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.ListOutliersContributingFeatureAccessItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.ListOutliersContributingFeatureAccessItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListOutliersContributingFeatureAccessItems`: []OutliersContributingFeatureAccessItems
-    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersApi.ListOutliersContributingFeatureAccessItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIOutliersAPI.ListOutliersContributingFeatureAccessItems`: %v\n", resp)
 }
 ```
 
@@ -612,7 +612,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -620,9 +620,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIOutliersApi.UnIgnoreIdentityOutliers(context.Background()).RequestBody(requestBody).Execute()
+    r, err := apiClient.IAIOutliersAPI.UnIgnoreIdentityOutliers(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersApi.UnIgnoreIdentityOutliers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIOutliersAPI.UnIgnoreIdentityOutliers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

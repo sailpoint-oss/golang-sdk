@@ -21,7 +21,7 @@ var _ MappedNullable = &SearchArguments{}
 type SearchArguments struct {
 	// The ID of the scheduled search that triggered the saved search execution. 
 	ScheduleId *string `json:"scheduleId,omitempty"`
-	Owner *SearchArgumentsOwner `json:"owner,omitempty"`
+	Owner *TypedReference `json:"owner,omitempty"`
 	// The email recipients of the scheduled search being tested. 
 	Recipients []TypedReference `json:"recipients,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -79,9 +79,9 @@ func (o *SearchArguments) SetScheduleId(v string) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *SearchArguments) GetOwner() SearchArgumentsOwner {
+func (o *SearchArguments) GetOwner() TypedReference {
 	if o == nil || isNil(o.Owner) {
-		var ret SearchArgumentsOwner
+		var ret TypedReference
 		return ret
 	}
 	return *o.Owner
@@ -89,7 +89,7 @@ func (o *SearchArguments) GetOwner() SearchArgumentsOwner {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SearchArguments) GetOwnerOk() (*SearchArgumentsOwner, bool) {
+func (o *SearchArguments) GetOwnerOk() (*TypedReference, bool) {
 	if o == nil || isNil(o.Owner) {
 		return nil, false
 	}
@@ -105,8 +105,8 @@ func (o *SearchArguments) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given SearchArgumentsOwner and assigns it to the Owner field.
-func (o *SearchArguments) SetOwner(v SearchArgumentsOwner) {
+// SetOwner gets a reference to the given TypedReference and assigns it to the Owner field.
+func (o *SearchArguments) SetOwner(v TypedReference) {
 	o.Owner = &v
 }
 
@@ -173,8 +173,8 @@ func (o *SearchArguments) UnmarshalJSON(bytes []byte) (err error) {
 	varSearchArguments := _SearchArguments{}
 
 	if err = json.Unmarshal(bytes, &varSearchArguments); err == nil {
-		*o = SearchArguments(varSearchArguments)
-	}
+	*o = SearchArguments(varSearchArguments)
+}
 
 	additionalProperties := make(map[string]interface{})
 

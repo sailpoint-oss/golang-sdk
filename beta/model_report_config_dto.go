@@ -219,8 +219,8 @@ func (o *ReportConfigDTO) UnmarshalJSON(bytes []byte) (err error) {
 	varReportConfigDTO := _ReportConfigDTO{}
 
 	if err = json.Unmarshal(bytes, &varReportConfigDTO); err == nil {
-		*o = ReportConfigDTO(varReportConfigDTO)
-	}
+	*o = ReportConfigDTO(varReportConfigDTO)
+}
 
 	additionalProperties := make(map[string]interface{})
 

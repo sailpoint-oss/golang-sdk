@@ -1,15 +1,15 @@
-# \ConnectorRuleManagementApi
+# \ConnectorRuleManagementAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateConnectorRule**](ConnectorRuleManagementApi.md#CreateConnectorRule) | **Post** /connector-rules | Create Connector Rule
-[**DeleteConnectorRule**](ConnectorRuleManagementApi.md#DeleteConnectorRule) | **Delete** /connector-rules/{id} | Delete a Connector-Rule
-[**GetConnectorRule**](ConnectorRuleManagementApi.md#GetConnectorRule) | **Get** /connector-rules/{id} | Connector-Rule by ID
-[**GetConnectorRuleList**](ConnectorRuleManagementApi.md#GetConnectorRuleList) | **Get** /connector-rules | List Connector Rules
-[**UpdateConnectorRule**](ConnectorRuleManagementApi.md#UpdateConnectorRule) | **Put** /connector-rules/{id} | Update a Connector Rule
-[**ValidateConnectorRule**](ConnectorRuleManagementApi.md#ValidateConnectorRule) | **Post** /connector-rules/validate | Validate Connector Rule
+[**CreateConnectorRule**](ConnectorRuleManagementAPI.md#CreateConnectorRule) | **Post** /connector-rules | Create Connector Rule
+[**DeleteConnectorRule**](ConnectorRuleManagementAPI.md#DeleteConnectorRule) | **Delete** /connector-rules/{id} | Delete a Connector-Rule
+[**GetConnectorRule**](ConnectorRuleManagementAPI.md#GetConnectorRule) | **Get** /connector-rules/{id} | Connector-Rule by ID
+[**GetConnectorRuleList**](ConnectorRuleManagementAPI.md#GetConnectorRuleList) | **Get** /connector-rules | List Connector Rules
+[**UpdateConnectorRule**](ConnectorRuleManagementAPI.md#UpdateConnectorRule) | **Put** /connector-rules/{id} | Update a Connector Rule
+[**ValidateConnectorRule**](ConnectorRuleManagementAPI.md#ValidateConnectorRule) | **Post** /connector-rules/validate | Validate Connector Rule
 
 
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -38,13 +38,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagementApi.CreateConnectorRule(context.Background()).ConnectorRuleCreateRequest(connectorRuleCreateRequest).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.CreateConnectorRule(context.Background()).ConnectorRuleCreateRequest(connectorRuleCreateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementApi.CreateConnectorRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.CreateConnectorRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateConnectorRule`: ConnectorRuleResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementApi.CreateConnectorRule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.CreateConnectorRule`: %v\n", resp)
 }
 ```
 
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -104,9 +104,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagementApi.DeleteConnectorRule(context.Background(), id).Execute()
+    r, err := apiClient.ConnectorRuleManagementAPI.DeleteConnectorRule(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementApi.DeleteConnectorRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.DeleteConnectorRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -164,7 +164,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -172,13 +172,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagementApi.GetConnectorRule(context.Background(), id).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.GetConnectorRule(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementApi.GetConnectorRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.GetConnectorRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetConnectorRule`: ConnectorRuleResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementApi.GetConnectorRule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.GetConnectorRule`: %v\n", resp)
 }
 ```
 
@@ -234,20 +234,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagementApi.GetConnectorRuleList(context.Background()).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.GetConnectorRuleList(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementApi.GetConnectorRuleList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.GetConnectorRuleList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetConnectorRuleList`: []ConnectorRuleResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementApi.GetConnectorRuleList`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.GetConnectorRuleList`: %v\n", resp)
 }
 ```
 
@@ -295,22 +295,22 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
     id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | ID of the connector rule to update
-    connectorRuleUpdateRequest := *openapiclient.NewConnectorRuleUpdateRequest("8113d48c0b914f17b4c6072d4dcb9dfe", "WebServiceBeforeOperationRule", "BuildMap", *openapiclient.NewSourceCode("1.0", "return "Mr. " + firstName;")) // ConnectorRuleUpdateRequest | The connector rule with updated data (optional)
+    connectorRuleUpdateRequest := *openapiclient.NewConnectorRuleUpdateRequest("WebServiceBeforeOperationRule", "BuildMap", *openapiclient.NewSourceCode("1.0", "return "Mr. " + firstName;"), "8113d48c0b914f17b4c6072d4dcb9dfe") // ConnectorRuleUpdateRequest | The connector rule with updated data (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagementApi.UpdateConnectorRule(context.Background(), id).ConnectorRuleUpdateRequest(connectorRuleUpdateRequest).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.UpdateConnectorRule(context.Background(), id).ConnectorRuleUpdateRequest(connectorRuleUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementApi.UpdateConnectorRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.UpdateConnectorRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateConnectorRule`: ConnectorRuleResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementApi.UpdateConnectorRule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.UpdateConnectorRule`: %v\n", resp)
 }
 ```
 
@@ -367,7 +367,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -375,13 +375,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorRuleManagementApi.ValidateConnectorRule(context.Background()).SourceCode(sourceCode).Execute()
+    resp, r, err := apiClient.ConnectorRuleManagementAPI.ValidateConnectorRule(context.Background()).SourceCode(sourceCode).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementApi.ValidateConnectorRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorRuleManagementAPI.ValidateConnectorRule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ValidateConnectorRule`: ConnectorRuleValidationResponse
-    fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementApi.ValidateConnectorRule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorRuleManagementAPI.ValidateConnectorRule`: %v\n", resp)
 }
 ```
 

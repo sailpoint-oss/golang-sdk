@@ -174,8 +174,8 @@ func (o *SodPolicyDto) UnmarshalJSON(bytes []byte) (err error) {
 	varSodPolicyDto := _SodPolicyDto{}
 
 	if err = json.Unmarshal(bytes, &varSodPolicyDto); err == nil {
-		*o = SodPolicyDto(varSodPolicyDto)
-	}
+	*o = SodPolicyDto(varSodPolicyDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

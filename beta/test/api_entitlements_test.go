@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing EntitlementsApiService
+Testing EntitlementsAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_EntitlementsApiService(t *testing.T) {
+func Test_beta_EntitlementsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test EntitlementsApiService GetEntitlement", func(t *testing.T) {
+	t.Run("Test EntitlementsAPIService GetEntitlement", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.EntitlementsApi.GetEntitlement(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.EntitlementsAPI.GetEntitlement(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,13 +36,13 @@ func Test_beta_EntitlementsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementsApiService GetEntitlementRequestConfig", func(t *testing.T) {
+	t.Run("Test EntitlementsAPIService GetEntitlementRequestConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.EntitlementsApi.GetEntitlementRequestConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.EntitlementsAPI.GetEntitlementRequestConfig(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,13 +50,13 @@ func Test_beta_EntitlementsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementsApiService ListEntitlementChildren", func(t *testing.T) {
+	t.Run("Test EntitlementsAPIService ListEntitlementChildren", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.EntitlementsApi.ListEntitlementChildren(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.EntitlementsAPI.ListEntitlementChildren(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -64,13 +64,13 @@ func Test_beta_EntitlementsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementsApiService ListEntitlementParents", func(t *testing.T) {
+	t.Run("Test EntitlementsAPIService ListEntitlementParents", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.EntitlementsApi.ListEntitlementParents(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.EntitlementsAPI.ListEntitlementParents(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -78,11 +78,11 @@ func Test_beta_EntitlementsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementsApiService ListEntitlements", func(t *testing.T) {
+	t.Run("Test EntitlementsAPIService ListEntitlements", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.EntitlementsApi.ListEntitlements(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.EntitlementsAPI.ListEntitlements(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -90,27 +90,13 @@ func Test_beta_EntitlementsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementsApiService PatchEntitlement", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.EntitlementsApi.PatchEntitlement(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test EntitlementsApiService PutEntitlementRequestConfig", func(t *testing.T) {
+	t.Run("Test EntitlementsAPIService PatchEntitlement", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.EntitlementsApi.PutEntitlementRequestConfig(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.EntitlementsAPI.PatchEntitlement(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -118,11 +104,25 @@ func Test_beta_EntitlementsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test EntitlementsApiService UpdateEntitlementsInBulk", func(t *testing.T) {
+	t.Run("Test EntitlementsAPIService PutEntitlementRequestConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BETA.EntitlementsApi.UpdateEntitlementsInBulk(context.Background()).Execute()
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.EntitlementsAPI.PutEntitlementRequestConfig(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EntitlementsAPIService UpdateEntitlementsInBulk", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.BETA.EntitlementsAPI.UpdateEntitlementsInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

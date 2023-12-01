@@ -174,8 +174,8 @@ func (o *TaskResultResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varTaskResultResponse := _TaskResultResponse{}
 
 	if err = json.Unmarshal(bytes, &varTaskResultResponse); err == nil {
-		*o = TaskResultResponse(varTaskResultResponse)
-	}
+	*o = TaskResultResponse(varTaskResultResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

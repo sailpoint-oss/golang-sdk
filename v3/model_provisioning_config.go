@@ -22,7 +22,7 @@ type ProvisioningConfig struct {
 	// Specifies whether this configuration is used to manage provisioning requests for all sources from the org.  If true, no managedResourceRefs are allowed.
 	UniversalManager *bool `json:"universalManager,omitempty"`
 	// References to sources for the Service Desk integration template.  May only be specified if universalManager is false.
-	ManagedResourceRefs []ProvisioningConfigManagedResourceRefsInner `json:"managedResourceRefs,omitempty"`
+	ManagedResourceRefs []ServiceDeskSource `json:"managedResourceRefs,omitempty"`
 	PlanInitializerScript *ProvisioningConfigPlanInitializerScript `json:"planInitializerScript,omitempty"`
 	// Name of an attribute that when true disables the saving of ProvisioningRequest objects whenever plans are sent through this integration.
 	NoProvisioningRequests *bool `json:"noProvisioningRequests,omitempty"`
@@ -83,9 +83,9 @@ func (o *ProvisioningConfig) SetUniversalManager(v bool) {
 }
 
 // GetManagedResourceRefs returns the ManagedResourceRefs field value if set, zero value otherwise.
-func (o *ProvisioningConfig) GetManagedResourceRefs() []ProvisioningConfigManagedResourceRefsInner {
+func (o *ProvisioningConfig) GetManagedResourceRefs() []ServiceDeskSource {
 	if o == nil || isNil(o.ManagedResourceRefs) {
-		var ret []ProvisioningConfigManagedResourceRefsInner
+		var ret []ServiceDeskSource
 		return ret
 	}
 	return o.ManagedResourceRefs
@@ -93,7 +93,7 @@ func (o *ProvisioningConfig) GetManagedResourceRefs() []ProvisioningConfigManage
 
 // GetManagedResourceRefsOk returns a tuple with the ManagedResourceRefs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProvisioningConfig) GetManagedResourceRefsOk() ([]ProvisioningConfigManagedResourceRefsInner, bool) {
+func (o *ProvisioningConfig) GetManagedResourceRefsOk() ([]ServiceDeskSource, bool) {
 	if o == nil || isNil(o.ManagedResourceRefs) {
 		return nil, false
 	}
@@ -109,8 +109,8 @@ func (o *ProvisioningConfig) HasManagedResourceRefs() bool {
 	return false
 }
 
-// SetManagedResourceRefs gets a reference to the given []ProvisioningConfigManagedResourceRefsInner and assigns it to the ManagedResourceRefs field.
-func (o *ProvisioningConfig) SetManagedResourceRefs(v []ProvisioningConfigManagedResourceRefsInner) {
+// SetManagedResourceRefs gets a reference to the given []ServiceDeskSource and assigns it to the ManagedResourceRefs field.
+func (o *ProvisioningConfig) SetManagedResourceRefs(v []ServiceDeskSource) {
 	o.ManagedResourceRefs = v
 }
 
@@ -245,8 +245,8 @@ func (o *ProvisioningConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varProvisioningConfig := _ProvisioningConfig{}
 
 	if err = json.Unmarshal(bytes, &varProvisioningConfig); err == nil {
-		*o = ProvisioningConfig(varProvisioningConfig)
-	}
+	*o = ProvisioningConfig(varProvisioningConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -137,8 +137,8 @@ func (o *AccountUsage) UnmarshalJSON(bytes []byte) (err error) {
 	varAccountUsage := _AccountUsage{}
 
 	if err = json.Unmarshal(bytes, &varAccountUsage); err == nil {
-		*o = AccountUsage(varAccountUsage)
-	}
+	*o = AccountUsage(varAccountUsage)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// ConnectorRuleManagementApiService ConnectorRuleManagementApi service
-type ConnectorRuleManagementApiService service
+// ConnectorRuleManagementAPIService ConnectorRuleManagementAPI service
+type ConnectorRuleManagementAPIService service
 
 type ApiCreateConnectorRuleRequest struct {
 	ctx context.Context
-	ApiService *ConnectorRuleManagementApiService
+	ApiService *ConnectorRuleManagementAPIService
 	connectorRuleCreateRequest *ConnectorRuleCreateRequest
 }
 
@@ -48,7 +48,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateConnectorRuleRequest
 */
-func (a *ConnectorRuleManagementApiService) CreateConnectorRule(ctx context.Context) ApiCreateConnectorRuleRequest {
+func (a *ConnectorRuleManagementAPIService) CreateConnectorRule(ctx context.Context) ApiCreateConnectorRuleRequest {
 	return ApiCreateConnectorRuleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,7 +57,7 @@ func (a *ConnectorRuleManagementApiService) CreateConnectorRule(ctx context.Cont
 
 // Execute executes the request
 //  @return ConnectorRuleResponse
-func (a *ConnectorRuleManagementApiService) CreateConnectorRuleExecute(r ApiCreateConnectorRuleRequest) (*ConnectorRuleResponse, *http.Response, error) {
+func (a *ConnectorRuleManagementAPIService) CreateConnectorRuleExecute(r ApiCreateConnectorRuleRequest) (*ConnectorRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *ConnectorRuleManagementApiService) CreateConnectorRuleExecute(r ApiCrea
 		localVarReturnValue  *ConnectorRuleResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementApiService.CreateConnectorRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.CreateConnectorRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,9 +108,9 @@ func (a *ConnectorRuleManagementApiService) CreateConnectorRuleExecute(r ApiCrea
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -191,7 +191,7 @@ func (a *ConnectorRuleManagementApiService) CreateConnectorRuleExecute(r ApiCrea
 
 type ApiDeleteConnectorRuleRequest struct {
 	ctx context.Context
-	ApiService *ConnectorRuleManagementApiService
+	ApiService *ConnectorRuleManagementAPIService
 	id string
 }
 
@@ -209,7 +209,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id ID of the connector rule to delete
  @return ApiDeleteConnectorRuleRequest
 */
-func (a *ConnectorRuleManagementApiService) DeleteConnectorRule(ctx context.Context, id string) ApiDeleteConnectorRuleRequest {
+func (a *ConnectorRuleManagementAPIService) DeleteConnectorRule(ctx context.Context, id string) ApiDeleteConnectorRuleRequest {
 	return ApiDeleteConnectorRuleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -218,14 +218,14 @@ func (a *ConnectorRuleManagementApiService) DeleteConnectorRule(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *ConnectorRuleManagementApiService) DeleteConnectorRuleExecute(r ApiDeleteConnectorRuleRequest) (*http.Response, error) {
+func (a *ConnectorRuleManagementAPIService) DeleteConnectorRuleExecute(r ApiDeleteConnectorRuleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementApiService.DeleteConnectorRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.DeleteConnectorRule")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -264,9 +264,9 @@ func (a *ConnectorRuleManagementApiService) DeleteConnectorRuleExecute(r ApiDele
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -349,7 +349,7 @@ func (a *ConnectorRuleManagementApiService) DeleteConnectorRuleExecute(r ApiDele
 
 type ApiGetConnectorRuleRequest struct {
 	ctx context.Context
-	ApiService *ConnectorRuleManagementApiService
+	ApiService *ConnectorRuleManagementAPIService
 	id string
 }
 
@@ -367,7 +367,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id ID of the connector rule to retrieve
  @return ApiGetConnectorRuleRequest
 */
-func (a *ConnectorRuleManagementApiService) GetConnectorRule(ctx context.Context, id string) ApiGetConnectorRuleRequest {
+func (a *ConnectorRuleManagementAPIService) GetConnectorRule(ctx context.Context, id string) ApiGetConnectorRuleRequest {
 	return ApiGetConnectorRuleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -377,7 +377,7 @@ func (a *ConnectorRuleManagementApiService) GetConnectorRule(ctx context.Context
 
 // Execute executes the request
 //  @return ConnectorRuleResponse
-func (a *ConnectorRuleManagementApiService) GetConnectorRuleExecute(r ApiGetConnectorRuleRequest) (*ConnectorRuleResponse, *http.Response, error) {
+func (a *ConnectorRuleManagementAPIService) GetConnectorRuleExecute(r ApiGetConnectorRuleRequest) (*ConnectorRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -385,7 +385,7 @@ func (a *ConnectorRuleManagementApiService) GetConnectorRuleExecute(r ApiGetConn
 		localVarReturnValue  *ConnectorRuleResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementApiService.GetConnectorRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.GetConnectorRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -424,9 +424,9 @@ func (a *ConnectorRuleManagementApiService) GetConnectorRuleExecute(r ApiGetConn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -518,7 +518,7 @@ func (a *ConnectorRuleManagementApiService) GetConnectorRuleExecute(r ApiGetConn
 
 type ApiGetConnectorRuleListRequest struct {
 	ctx context.Context
-	ApiService *ConnectorRuleManagementApiService
+	ApiService *ConnectorRuleManagementAPIService
 }
 
 func (r ApiGetConnectorRuleListRequest) Execute() ([]ConnectorRuleResponse, *http.Response, error) {
@@ -534,7 +534,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetConnectorRuleListRequest
 */
-func (a *ConnectorRuleManagementApiService) GetConnectorRuleList(ctx context.Context) ApiGetConnectorRuleListRequest {
+func (a *ConnectorRuleManagementAPIService) GetConnectorRuleList(ctx context.Context) ApiGetConnectorRuleListRequest {
 	return ApiGetConnectorRuleListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -543,7 +543,7 @@ func (a *ConnectorRuleManagementApiService) GetConnectorRuleList(ctx context.Con
 
 // Execute executes the request
 //  @return []ConnectorRuleResponse
-func (a *ConnectorRuleManagementApiService) GetConnectorRuleListExecute(r ApiGetConnectorRuleListRequest) ([]ConnectorRuleResponse, *http.Response, error) {
+func (a *ConnectorRuleManagementAPIService) GetConnectorRuleListExecute(r ApiGetConnectorRuleListRequest) ([]ConnectorRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -551,7 +551,7 @@ func (a *ConnectorRuleManagementApiService) GetConnectorRuleListExecute(r ApiGet
 		localVarReturnValue  []ConnectorRuleResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementApiService.GetConnectorRuleList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.GetConnectorRuleList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -589,9 +589,9 @@ func (a *ConnectorRuleManagementApiService) GetConnectorRuleListExecute(r ApiGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -672,7 +672,7 @@ func (a *ConnectorRuleManagementApiService) GetConnectorRuleListExecute(r ApiGet
 
 type ApiUpdateConnectorRuleRequest struct {
 	ctx context.Context
-	ApiService *ConnectorRuleManagementApiService
+	ApiService *ConnectorRuleManagementAPIService
 	id string
 	connectorRuleUpdateRequest *ConnectorRuleUpdateRequest
 }
@@ -697,7 +697,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id ID of the connector rule to update
  @return ApiUpdateConnectorRuleRequest
 */
-func (a *ConnectorRuleManagementApiService) UpdateConnectorRule(ctx context.Context, id string) ApiUpdateConnectorRuleRequest {
+func (a *ConnectorRuleManagementAPIService) UpdateConnectorRule(ctx context.Context, id string) ApiUpdateConnectorRuleRequest {
 	return ApiUpdateConnectorRuleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -707,7 +707,7 @@ func (a *ConnectorRuleManagementApiService) UpdateConnectorRule(ctx context.Cont
 
 // Execute executes the request
 //  @return ConnectorRuleResponse
-func (a *ConnectorRuleManagementApiService) UpdateConnectorRuleExecute(r ApiUpdateConnectorRuleRequest) (*ConnectorRuleResponse, *http.Response, error) {
+func (a *ConnectorRuleManagementAPIService) UpdateConnectorRuleExecute(r ApiUpdateConnectorRuleRequest) (*ConnectorRuleResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -715,7 +715,7 @@ func (a *ConnectorRuleManagementApiService) UpdateConnectorRuleExecute(r ApiUpda
 		localVarReturnValue  *ConnectorRuleResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementApiService.UpdateConnectorRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.UpdateConnectorRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -756,9 +756,9 @@ func (a *ConnectorRuleManagementApiService) UpdateConnectorRuleExecute(r ApiUpda
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -850,7 +850,7 @@ func (a *ConnectorRuleManagementApiService) UpdateConnectorRuleExecute(r ApiUpda
 
 type ApiValidateConnectorRuleRequest struct {
 	ctx context.Context
-	ApiService *ConnectorRuleManagementApiService
+	ApiService *ConnectorRuleManagementAPIService
 	sourceCode *SourceCode
 }
 
@@ -873,7 +873,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiValidateConnectorRuleRequest
 */
-func (a *ConnectorRuleManagementApiService) ValidateConnectorRule(ctx context.Context) ApiValidateConnectorRuleRequest {
+func (a *ConnectorRuleManagementAPIService) ValidateConnectorRule(ctx context.Context) ApiValidateConnectorRuleRequest {
 	return ApiValidateConnectorRuleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -882,7 +882,7 @@ func (a *ConnectorRuleManagementApiService) ValidateConnectorRule(ctx context.Co
 
 // Execute executes the request
 //  @return ConnectorRuleValidationResponse
-func (a *ConnectorRuleManagementApiService) ValidateConnectorRuleExecute(r ApiValidateConnectorRuleRequest) (*ConnectorRuleValidationResponse, *http.Response, error) {
+func (a *ConnectorRuleManagementAPIService) ValidateConnectorRuleExecute(r ApiValidateConnectorRuleRequest) (*ConnectorRuleValidationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -890,7 +890,7 @@ func (a *ConnectorRuleManagementApiService) ValidateConnectorRuleExecute(r ApiVa
 		localVarReturnValue  *ConnectorRuleValidationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementApiService.ValidateConnectorRule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorRuleManagementAPIService.ValidateConnectorRule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -933,9 +933,9 @@ func (a *ConnectorRuleManagementApiService) ValidateConnectorRuleExecute(r ApiVa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// WorkReassignmentApiService WorkReassignmentApi service
-type WorkReassignmentApiService service
+// WorkReassignmentAPIService WorkReassignmentAPI service
+type WorkReassignmentAPIService service
 
 type ApiCreateReassignmentConfigurationRequest struct {
 	ctx context.Context
-	ApiService *WorkReassignmentApiService
+	ApiService *WorkReassignmentAPIService
 	configurationItemRequest *ConfigurationItemRequest
 }
 
@@ -46,7 +46,7 @@ Creates a new Reassignment Configuration for the specified identity.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateReassignmentConfigurationRequest
 */
-func (a *WorkReassignmentApiService) CreateReassignmentConfiguration(ctx context.Context) ApiCreateReassignmentConfigurationRequest {
+func (a *WorkReassignmentAPIService) CreateReassignmentConfiguration(ctx context.Context) ApiCreateReassignmentConfigurationRequest {
 	return ApiCreateReassignmentConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *WorkReassignmentApiService) CreateReassignmentConfiguration(ctx context
 
 // Execute executes the request
 //  @return ConfigurationItemResponse
-func (a *WorkReassignmentApiService) CreateReassignmentConfigurationExecute(r ApiCreateReassignmentConfigurationRequest) (*ConfigurationItemResponse, *http.Response, error) {
+func (a *WorkReassignmentAPIService) CreateReassignmentConfigurationExecute(r ApiCreateReassignmentConfigurationRequest) (*ConfigurationItemResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *WorkReassignmentApiService) CreateReassignmentConfigurationExecute(r Ap
 		localVarReturnValue  *ConfigurationItemResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentApiService.CreateReassignmentConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.CreateReassignmentConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *WorkReassignmentApiService) CreateReassignmentConfigurationExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -189,7 +189,7 @@ func (a *WorkReassignmentApiService) CreateReassignmentConfigurationExecute(r Ap
 
 type ApiDeleteReassignmentConfigurationRequest struct {
 	ctx context.Context
-	ApiService *WorkReassignmentApiService
+	ApiService *WorkReassignmentAPIService
 	identityId string
 }
 
@@ -206,7 +206,7 @@ Deletes all Reassignment Configuration for the specified identity
  @param identityId unique identity id
  @return ApiDeleteReassignmentConfigurationRequest
 */
-func (a *WorkReassignmentApiService) DeleteReassignmentConfiguration(ctx context.Context, identityId string) ApiDeleteReassignmentConfigurationRequest {
+func (a *WorkReassignmentAPIService) DeleteReassignmentConfiguration(ctx context.Context, identityId string) ApiDeleteReassignmentConfigurationRequest {
 	return ApiDeleteReassignmentConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -215,14 +215,14 @@ func (a *WorkReassignmentApiService) DeleteReassignmentConfiguration(ctx context
 }
 
 // Execute executes the request
-func (a *WorkReassignmentApiService) DeleteReassignmentConfigurationExecute(r ApiDeleteReassignmentConfigurationRequest) (*http.Response, error) {
+func (a *WorkReassignmentAPIService) DeleteReassignmentConfigurationExecute(r ApiDeleteReassignmentConfigurationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentApiService.DeleteReassignmentConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.DeleteReassignmentConfiguration")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -261,9 +261,9 @@ func (a *WorkReassignmentApiService) DeleteReassignmentConfigurationExecute(r Ap
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -335,7 +335,7 @@ func (a *WorkReassignmentApiService) DeleteReassignmentConfigurationExecute(r Ap
 
 type ApiGetEvaluateReassignmentConfigurationRequest struct {
 	ctx context.Context
-	ApiService *WorkReassignmentApiService
+	ApiService *WorkReassignmentAPIService
 	identityId string
 	configType ConfigTypeEnum
 	exclusionFilters *[]string
@@ -361,7 +361,7 @@ Evaluates the Reassignment Configuration for an `Identity` to determine if work 
  @param configType Reassignment work type
  @return ApiGetEvaluateReassignmentConfigurationRequest
 */
-func (a *WorkReassignmentApiService) GetEvaluateReassignmentConfiguration(ctx context.Context, identityId string, configType ConfigTypeEnum) ApiGetEvaluateReassignmentConfigurationRequest {
+func (a *WorkReassignmentAPIService) GetEvaluateReassignmentConfiguration(ctx context.Context, identityId string, configType ConfigTypeEnum) ApiGetEvaluateReassignmentConfigurationRequest {
 	return ApiGetEvaluateReassignmentConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -372,7 +372,7 @@ func (a *WorkReassignmentApiService) GetEvaluateReassignmentConfiguration(ctx co
 
 // Execute executes the request
 //  @return []EvaluateResponse
-func (a *WorkReassignmentApiService) GetEvaluateReassignmentConfigurationExecute(r ApiGetEvaluateReassignmentConfigurationRequest) ([]EvaluateResponse, *http.Response, error) {
+func (a *WorkReassignmentAPIService) GetEvaluateReassignmentConfigurationExecute(r ApiGetEvaluateReassignmentConfigurationRequest) ([]EvaluateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -380,7 +380,7 @@ func (a *WorkReassignmentApiService) GetEvaluateReassignmentConfigurationExecute
 		localVarReturnValue  []EvaluateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentApiService.GetEvaluateReassignmentConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.GetEvaluateReassignmentConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -423,9 +423,9 @@ func (a *WorkReassignmentApiService) GetEvaluateReassignmentConfigurationExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -506,7 +506,7 @@ func (a *WorkReassignmentApiService) GetEvaluateReassignmentConfigurationExecute
 
 type ApiGetReassignmentConfigTypesRequest struct {
 	ctx context.Context
-	ApiService *WorkReassignmentApiService
+	ApiService *WorkReassignmentAPIService
 }
 
 func (r ApiGetReassignmentConfigTypesRequest) Execute() ([]ConfigType, *http.Response, error) {
@@ -521,7 +521,7 @@ Gets a collection of types which are available in the Reassignment Configuration
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetReassignmentConfigTypesRequest
 */
-func (a *WorkReassignmentApiService) GetReassignmentConfigTypes(ctx context.Context) ApiGetReassignmentConfigTypesRequest {
+func (a *WorkReassignmentAPIService) GetReassignmentConfigTypes(ctx context.Context) ApiGetReassignmentConfigTypesRequest {
 	return ApiGetReassignmentConfigTypesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -530,7 +530,7 @@ func (a *WorkReassignmentApiService) GetReassignmentConfigTypes(ctx context.Cont
 
 // Execute executes the request
 //  @return []ConfigType
-func (a *WorkReassignmentApiService) GetReassignmentConfigTypesExecute(r ApiGetReassignmentConfigTypesRequest) ([]ConfigType, *http.Response, error) {
+func (a *WorkReassignmentAPIService) GetReassignmentConfigTypesExecute(r ApiGetReassignmentConfigTypesRequest) ([]ConfigType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -538,7 +538,7 @@ func (a *WorkReassignmentApiService) GetReassignmentConfigTypesExecute(r ApiGetR
 		localVarReturnValue  []ConfigType
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentApiService.GetReassignmentConfigTypes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.GetReassignmentConfigTypes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -576,9 +576,9 @@ func (a *WorkReassignmentApiService) GetReassignmentConfigTypesExecute(r ApiGetR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -659,7 +659,7 @@ func (a *WorkReassignmentApiService) GetReassignmentConfigTypesExecute(r ApiGetR
 
 type ApiGetReassignmentConfigurationRequest struct {
 	ctx context.Context
-	ApiService *WorkReassignmentApiService
+	ApiService *WorkReassignmentAPIService
 	identityId string
 }
 
@@ -676,7 +676,7 @@ Gets the Reassignment Configuration for an identity.
  @param identityId unique identity id
  @return ApiGetReassignmentConfigurationRequest
 */
-func (a *WorkReassignmentApiService) GetReassignmentConfiguration(ctx context.Context, identityId string) ApiGetReassignmentConfigurationRequest {
+func (a *WorkReassignmentAPIService) GetReassignmentConfiguration(ctx context.Context, identityId string) ApiGetReassignmentConfigurationRequest {
 	return ApiGetReassignmentConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -686,7 +686,7 @@ func (a *WorkReassignmentApiService) GetReassignmentConfiguration(ctx context.Co
 
 // Execute executes the request
 //  @return ConfigurationResponse
-func (a *WorkReassignmentApiService) GetReassignmentConfigurationExecute(r ApiGetReassignmentConfigurationRequest) (*ConfigurationResponse, *http.Response, error) {
+func (a *WorkReassignmentAPIService) GetReassignmentConfigurationExecute(r ApiGetReassignmentConfigurationRequest) (*ConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -694,7 +694,7 @@ func (a *WorkReassignmentApiService) GetReassignmentConfigurationExecute(r ApiGe
 		localVarReturnValue  *ConfigurationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentApiService.GetReassignmentConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.GetReassignmentConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -733,9 +733,9 @@ func (a *WorkReassignmentApiService) GetReassignmentConfigurationExecute(r ApiGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -827,7 +827,7 @@ func (a *WorkReassignmentApiService) GetReassignmentConfigurationExecute(r ApiGe
 
 type ApiGetTenantConfigConfigurationRequest struct {
 	ctx context.Context
-	ApiService *WorkReassignmentApiService
+	ApiService *WorkReassignmentAPIService
 }
 
 func (r ApiGetTenantConfigConfigurationRequest) Execute() (*TenantConfigurationResponse, *http.Response, error) {
@@ -842,7 +842,7 @@ Gets the global Reassignment Configuration settings for the requestor's tenant.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetTenantConfigConfigurationRequest
 */
-func (a *WorkReassignmentApiService) GetTenantConfigConfiguration(ctx context.Context) ApiGetTenantConfigConfigurationRequest {
+func (a *WorkReassignmentAPIService) GetTenantConfigConfiguration(ctx context.Context) ApiGetTenantConfigConfigurationRequest {
 	return ApiGetTenantConfigConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -851,7 +851,7 @@ func (a *WorkReassignmentApiService) GetTenantConfigConfiguration(ctx context.Co
 
 // Execute executes the request
 //  @return TenantConfigurationResponse
-func (a *WorkReassignmentApiService) GetTenantConfigConfigurationExecute(r ApiGetTenantConfigConfigurationRequest) (*TenantConfigurationResponse, *http.Response, error) {
+func (a *WorkReassignmentAPIService) GetTenantConfigConfigurationExecute(r ApiGetTenantConfigConfigurationRequest) (*TenantConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -859,7 +859,7 @@ func (a *WorkReassignmentApiService) GetTenantConfigConfigurationExecute(r ApiGe
 		localVarReturnValue  *TenantConfigurationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentApiService.GetTenantConfigConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.GetTenantConfigConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -897,9 +897,9 @@ func (a *WorkReassignmentApiService) GetTenantConfigConfigurationExecute(r ApiGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -991,7 +991,7 @@ func (a *WorkReassignmentApiService) GetTenantConfigConfigurationExecute(r ApiGe
 
 type ApiListReassignmentConfigurationsRequest struct {
 	ctx context.Context
-	ApiService *WorkReassignmentApiService
+	ApiService *WorkReassignmentAPIService
 }
 
 func (r ApiListReassignmentConfigurationsRequest) Execute() ([]ConfigurationResponse, *http.Response, error) {
@@ -1006,7 +1006,7 @@ Gets all Reassignment configuration for the current org.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListReassignmentConfigurationsRequest
 */
-func (a *WorkReassignmentApiService) ListReassignmentConfigurations(ctx context.Context) ApiListReassignmentConfigurationsRequest {
+func (a *WorkReassignmentAPIService) ListReassignmentConfigurations(ctx context.Context) ApiListReassignmentConfigurationsRequest {
 	return ApiListReassignmentConfigurationsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1015,7 +1015,7 @@ func (a *WorkReassignmentApiService) ListReassignmentConfigurations(ctx context.
 
 // Execute executes the request
 //  @return []ConfigurationResponse
-func (a *WorkReassignmentApiService) ListReassignmentConfigurationsExecute(r ApiListReassignmentConfigurationsRequest) ([]ConfigurationResponse, *http.Response, error) {
+func (a *WorkReassignmentAPIService) ListReassignmentConfigurationsExecute(r ApiListReassignmentConfigurationsRequest) ([]ConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1023,7 +1023,7 @@ func (a *WorkReassignmentApiService) ListReassignmentConfigurationsExecute(r Api
 		localVarReturnValue  []ConfigurationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentApiService.ListReassignmentConfigurations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.ListReassignmentConfigurations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1061,9 +1061,9 @@ func (a *WorkReassignmentApiService) ListReassignmentConfigurationsExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1155,7 +1155,7 @@ func (a *WorkReassignmentApiService) ListReassignmentConfigurationsExecute(r Api
 
 type ApiPutReassignmentConfigRequest struct {
 	ctx context.Context
-	ApiService *WorkReassignmentApiService
+	ApiService *WorkReassignmentAPIService
 	identityId string
 	configurationItemRequest *ConfigurationItemRequest
 }
@@ -1178,7 +1178,7 @@ Replaces existing Reassignment configuration for an identity with the newly prov
  @param identityId unique identity id
  @return ApiPutReassignmentConfigRequest
 */
-func (a *WorkReassignmentApiService) PutReassignmentConfig(ctx context.Context, identityId string) ApiPutReassignmentConfigRequest {
+func (a *WorkReassignmentAPIService) PutReassignmentConfig(ctx context.Context, identityId string) ApiPutReassignmentConfigRequest {
 	return ApiPutReassignmentConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1188,7 +1188,7 @@ func (a *WorkReassignmentApiService) PutReassignmentConfig(ctx context.Context, 
 
 // Execute executes the request
 //  @return ConfigurationItemResponse
-func (a *WorkReassignmentApiService) PutReassignmentConfigExecute(r ApiPutReassignmentConfigRequest) (*ConfigurationItemResponse, *http.Response, error) {
+func (a *WorkReassignmentAPIService) PutReassignmentConfigExecute(r ApiPutReassignmentConfigRequest) (*ConfigurationItemResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1196,7 +1196,7 @@ func (a *WorkReassignmentApiService) PutReassignmentConfigExecute(r ApiPutReassi
 		localVarReturnValue  *ConfigurationItemResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentApiService.PutReassignmentConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.PutReassignmentConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1240,9 +1240,9 @@ func (a *WorkReassignmentApiService) PutReassignmentConfigExecute(r ApiPutReassi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1323,7 +1323,7 @@ func (a *WorkReassignmentApiService) PutReassignmentConfigExecute(r ApiPutReassi
 
 type ApiPutTenantConfigurationRequest struct {
 	ctx context.Context
-	ApiService *WorkReassignmentApiService
+	ApiService *WorkReassignmentAPIService
 	tenantConfigurationRequest *TenantConfigurationRequest
 }
 
@@ -1344,7 +1344,7 @@ Replaces existing Tenant-wide Reassignment Configuration settings with the newly
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutTenantConfigurationRequest
 */
-func (a *WorkReassignmentApiService) PutTenantConfiguration(ctx context.Context) ApiPutTenantConfigurationRequest {
+func (a *WorkReassignmentAPIService) PutTenantConfiguration(ctx context.Context) ApiPutTenantConfigurationRequest {
 	return ApiPutTenantConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1353,7 +1353,7 @@ func (a *WorkReassignmentApiService) PutTenantConfiguration(ctx context.Context)
 
 // Execute executes the request
 //  @return TenantConfigurationResponse
-func (a *WorkReassignmentApiService) PutTenantConfigurationExecute(r ApiPutTenantConfigurationRequest) (*TenantConfigurationResponse, *http.Response, error) {
+func (a *WorkReassignmentAPIService) PutTenantConfigurationExecute(r ApiPutTenantConfigurationRequest) (*TenantConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1361,7 +1361,7 @@ func (a *WorkReassignmentApiService) PutTenantConfigurationExecute(r ApiPutTenan
 		localVarReturnValue  *TenantConfigurationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentApiService.PutTenantConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkReassignmentAPIService.PutTenantConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1404,9 +1404,9 @@ func (a *WorkReassignmentApiService) PutTenantConfigurationExecute(r ApiPutTenan
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -1,13 +1,13 @@
-# \PasswordManagementApi
+# \PasswordManagementAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GenerateDigitToken**](PasswordManagementApi.md#GenerateDigitToken) | **Post** /generate-password-reset-token/digit | Generate a digit token
-[**GetIdentityPasswordChangeStatus**](PasswordManagementApi.md#GetIdentityPasswordChangeStatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
-[**QueryPasswordInfo**](PasswordManagementApi.md#QueryPasswordInfo) | **Post** /query-password-info | Query Password Info
-[**SetIdentityPassword**](PasswordManagementApi.md#SetIdentityPassword) | **Post** /set-password | Set Identity&#39;s Password
+[**GenerateDigitToken**](PasswordManagementAPI.md#GenerateDigitToken) | **Post** /generate-password-reset-token/digit | Generate a digit token
+[**GetIdentityPasswordChangeStatus**](PasswordManagementAPI.md#GetIdentityPasswordChangeStatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
+[**QueryPasswordInfo**](PasswordManagementAPI.md#QueryPasswordInfo) | **Post** /query-password-info | Query Password Info
+[**SetIdentityPassword**](PasswordManagementAPI.md#SetIdentityPassword) | **Post** /set-password | Set Identity&#39;s Password
 
 
 
@@ -28,7 +28,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -36,13 +36,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementApi.GenerateDigitToken(context.Background()).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
+    resp, r, err := apiClient.PasswordManagementAPI.GenerateDigitToken(context.Background()).PasswordDigitTokenReset(passwordDigitTokenReset).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementApi.GenerateDigitToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.GenerateDigitToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GenerateDigitToken`: PasswordDigitToken
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementApi.GenerateDigitToken`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.GenerateDigitToken`: %v\n", resp)
 }
 ```
 
@@ -94,7 +94,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -102,13 +102,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementApi.GetIdentityPasswordChangeStatus(context.Background(), id).Execute()
+    resp, r, err := apiClient.PasswordManagementAPI.GetIdentityPasswordChangeStatus(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementApi.GetIdentityPasswordChangeStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.GetIdentityPasswordChangeStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityPasswordChangeStatus`: PasswordStatus
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementApi.GetIdentityPasswordChangeStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.GetIdentityPasswordChangeStatus`: %v\n", resp)
 }
 ```
 
@@ -164,7 +164,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -172,13 +172,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementApi.QueryPasswordInfo(context.Background()).PasswordInfoQueryDTO(passwordInfoQueryDTO).Execute()
+    resp, r, err := apiClient.PasswordManagementAPI.QueryPasswordInfo(context.Background()).PasswordInfoQueryDTO(passwordInfoQueryDTO).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementApi.QueryPasswordInfo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.QueryPasswordInfo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `QueryPasswordInfo`: PasswordInfo
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementApi.QueryPasswordInfo`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.QueryPasswordInfo`: %v\n", resp)
 }
 ```
 
@@ -230,7 +230,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -238,13 +238,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordManagementApi.SetIdentityPassword(context.Background()).PasswordChangeRequest(passwordChangeRequest).Execute()
+    resp, r, err := apiClient.PasswordManagementAPI.SetIdentityPassword(context.Background()).PasswordChangeRequest(passwordChangeRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementApi.SetIdentityPassword``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordManagementAPI.SetIdentityPassword``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SetIdentityPassword`: PasswordChangeResponse
-    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementApi.SetIdentityPassword`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordManagementAPI.SetIdentityPassword`: %v\n", resp)
 }
 ```
 

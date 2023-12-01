@@ -13,6 +13,7 @@ package beta
 import (
 	"encoding/json"
 	"os"
+	"fmt"
 )
 
 // checks if the CreateFormDefinitionFileRequestRequest type satisfies the MappedNullable interface at compile time
@@ -89,11 +90,32 @@ func (o CreateFormDefinitionFileRequestRequest) ToMap() (map[string]interface{},
 }
 
 func (o *CreateFormDefinitionFileRequestRequest) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"file",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varCreateFormDefinitionFileRequestRequest := _CreateFormDefinitionFileRequestRequest{}
 
 	if err = json.Unmarshal(bytes, &varCreateFormDefinitionFileRequestRequest); err == nil {
-		*o = CreateFormDefinitionFileRequestRequest(varCreateFormDefinitionFileRequestRequest)
-	}
+	*o = CreateFormDefinitionFileRequestRequest(varCreateFormDefinitionFileRequestRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

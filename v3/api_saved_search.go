@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// SavedSearchApiService SavedSearchApi service
-type SavedSearchApiService service
+// SavedSearchAPIService SavedSearchAPI service
+type SavedSearchAPIService service
 
 type ApiCreateSavedSearchRequest struct {
 	ctx context.Context
-	ApiService *SavedSearchApiService
+	ApiService *SavedSearchAPIService
 	createSavedSearchRequest *CreateSavedSearchRequest
 }
 
@@ -48,7 +48,7 @@ Creates a new saved search.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSavedSearchRequest
 */
-func (a *SavedSearchApiService) CreateSavedSearch(ctx context.Context) ApiCreateSavedSearchRequest {
+func (a *SavedSearchAPIService) CreateSavedSearch(ctx context.Context) ApiCreateSavedSearchRequest {
 	return ApiCreateSavedSearchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,7 +57,7 @@ func (a *SavedSearchApiService) CreateSavedSearch(ctx context.Context) ApiCreate
 
 // Execute executes the request
 //  @return SavedSearch
-func (a *SavedSearchApiService) CreateSavedSearchExecute(r ApiCreateSavedSearchRequest) (*SavedSearch, *http.Response, error) {
+func (a *SavedSearchAPIService) CreateSavedSearchExecute(r ApiCreateSavedSearchRequest) (*SavedSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *SavedSearchApiService) CreateSavedSearchExecute(r ApiCreateSavedSearchR
 		localVarReturnValue  *SavedSearch
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchApiService.CreateSavedSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchAPIService.CreateSavedSearch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,9 +108,9 @@ func (a *SavedSearchApiService) CreateSavedSearchExecute(r ApiCreateSavedSearchR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -158,7 +158,7 @@ func (a *SavedSearchApiService) CreateSavedSearchExecute(r ApiCreateSavedSearchR
 
 type ApiDeleteSavedSearchRequest struct {
 	ctx context.Context
-	ApiService *SavedSearchApiService
+	ApiService *SavedSearchAPIService
 	id string
 }
 
@@ -176,7 +176,7 @@ Deletes the specified saved search.
  @param id ID of the requested document.
  @return ApiDeleteSavedSearchRequest
 */
-func (a *SavedSearchApiService) DeleteSavedSearch(ctx context.Context, id string) ApiDeleteSavedSearchRequest {
+func (a *SavedSearchAPIService) DeleteSavedSearch(ctx context.Context, id string) ApiDeleteSavedSearchRequest {
 	return ApiDeleteSavedSearchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -185,14 +185,14 @@ func (a *SavedSearchApiService) DeleteSavedSearch(ctx context.Context, id string
 }
 
 // Execute executes the request
-func (a *SavedSearchApiService) DeleteSavedSearchExecute(r ApiDeleteSavedSearchRequest) (*http.Response, error) {
+func (a *SavedSearchAPIService) DeleteSavedSearchExecute(r ApiDeleteSavedSearchRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchApiService.DeleteSavedSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchAPIService.DeleteSavedSearch")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -231,9 +231,9 @@ func (a *SavedSearchApiService) DeleteSavedSearchExecute(r ApiDeleteSavedSearchR
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -316,7 +316,7 @@ func (a *SavedSearchApiService) DeleteSavedSearchExecute(r ApiDeleteSavedSearchR
 
 type ApiExecuteSavedSearchRequest struct {
 	ctx context.Context
-	ApiService *SavedSearchApiService
+	ApiService *SavedSearchAPIService
 	id string
 	searchArguments *SearchArguments
 }
@@ -341,7 +341,7 @@ Executes the specified saved search.
  @param id ID of the requested document.
  @return ApiExecuteSavedSearchRequest
 */
-func (a *SavedSearchApiService) ExecuteSavedSearch(ctx context.Context, id string) ApiExecuteSavedSearchRequest {
+func (a *SavedSearchAPIService) ExecuteSavedSearch(ctx context.Context, id string) ApiExecuteSavedSearchRequest {
 	return ApiExecuteSavedSearchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -350,14 +350,14 @@ func (a *SavedSearchApiService) ExecuteSavedSearch(ctx context.Context, id strin
 }
 
 // Execute executes the request
-func (a *SavedSearchApiService) ExecuteSavedSearchExecute(r ApiExecuteSavedSearchRequest) (*http.Response, error) {
+func (a *SavedSearchAPIService) ExecuteSavedSearchExecute(r ApiExecuteSavedSearchRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchApiService.ExecuteSavedSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchAPIService.ExecuteSavedSearch")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -401,9 +401,9 @@ func (a *SavedSearchApiService) ExecuteSavedSearchExecute(r ApiExecuteSavedSearc
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -486,7 +486,7 @@ func (a *SavedSearchApiService) ExecuteSavedSearchExecute(r ApiExecuteSavedSearc
 
 type ApiGetSavedSearchRequest struct {
 	ctx context.Context
-	ApiService *SavedSearchApiService
+	ApiService *SavedSearchAPIService
 	id string
 }
 
@@ -504,7 +504,7 @@ Returns the specified saved search.
  @param id ID of the requested document.
  @return ApiGetSavedSearchRequest
 */
-func (a *SavedSearchApiService) GetSavedSearch(ctx context.Context, id string) ApiGetSavedSearchRequest {
+func (a *SavedSearchAPIService) GetSavedSearch(ctx context.Context, id string) ApiGetSavedSearchRequest {
 	return ApiGetSavedSearchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -514,7 +514,7 @@ func (a *SavedSearchApiService) GetSavedSearch(ctx context.Context, id string) A
 
 // Execute executes the request
 //  @return SavedSearch
-func (a *SavedSearchApiService) GetSavedSearchExecute(r ApiGetSavedSearchRequest) (*SavedSearch, *http.Response, error) {
+func (a *SavedSearchAPIService) GetSavedSearchExecute(r ApiGetSavedSearchRequest) (*SavedSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -522,7 +522,7 @@ func (a *SavedSearchApiService) GetSavedSearchExecute(r ApiGetSavedSearchRequest
 		localVarReturnValue  *SavedSearch
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchApiService.GetSavedSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchAPIService.GetSavedSearch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -561,9 +561,9 @@ func (a *SavedSearchApiService) GetSavedSearchExecute(r ApiGetSavedSearchRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -655,7 +655,7 @@ func (a *SavedSearchApiService) GetSavedSearchExecute(r ApiGetSavedSearchRequest
 
 type ApiListSavedSearchesRequest struct {
 	ctx context.Context
-	ApiService *SavedSearchApiService
+	ApiService *SavedSearchAPIService
 	offset *int32
 	limit *int32
 	count *bool
@@ -699,7 +699,7 @@ Returns a list of saved searches.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSavedSearchesRequest
 */
-func (a *SavedSearchApiService) ListSavedSearches(ctx context.Context) ApiListSavedSearchesRequest {
+func (a *SavedSearchAPIService) ListSavedSearches(ctx context.Context) ApiListSavedSearchesRequest {
 	return ApiListSavedSearchesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -708,7 +708,7 @@ func (a *SavedSearchApiService) ListSavedSearches(ctx context.Context) ApiListSa
 
 // Execute executes the request
 //  @return []SavedSearch
-func (a *SavedSearchApiService) ListSavedSearchesExecute(r ApiListSavedSearchesRequest) ([]SavedSearch, *http.Response, error) {
+func (a *SavedSearchAPIService) ListSavedSearchesExecute(r ApiListSavedSearchesRequest) ([]SavedSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -716,7 +716,7 @@ func (a *SavedSearchApiService) ListSavedSearchesExecute(r ApiListSavedSearchesR
 		localVarReturnValue  []SavedSearch
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchApiService.ListSavedSearches")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchAPIService.ListSavedSearches")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -729,12 +729,21 @@ func (a *SavedSearchApiService) ListSavedSearchesExecute(r ApiListSavedSearchesR
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -766,9 +775,9 @@ func (a *SavedSearchApiService) ListSavedSearchesExecute(r ApiListSavedSearchesR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -816,7 +825,7 @@ func (a *SavedSearchApiService) ListSavedSearchesExecute(r ApiListSavedSearchesR
 
 type ApiPutSavedSearchRequest struct {
 	ctx context.Context
-	ApiService *SavedSearchApiService
+	ApiService *SavedSearchAPIService
 	id string
 	savedSearch *SavedSearch
 }
@@ -843,7 +852,7 @@ Updates an existing saved search.
  @param id ID of the requested document.
  @return ApiPutSavedSearchRequest
 */
-func (a *SavedSearchApiService) PutSavedSearch(ctx context.Context, id string) ApiPutSavedSearchRequest {
+func (a *SavedSearchAPIService) PutSavedSearch(ctx context.Context, id string) ApiPutSavedSearchRequest {
 	return ApiPutSavedSearchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -853,7 +862,7 @@ func (a *SavedSearchApiService) PutSavedSearch(ctx context.Context, id string) A
 
 // Execute executes the request
 //  @return SavedSearch
-func (a *SavedSearchApiService) PutSavedSearchExecute(r ApiPutSavedSearchRequest) (*SavedSearch, *http.Response, error) {
+func (a *SavedSearchAPIService) PutSavedSearchExecute(r ApiPutSavedSearchRequest) (*SavedSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -861,7 +870,7 @@ func (a *SavedSearchApiService) PutSavedSearchExecute(r ApiPutSavedSearchRequest
 		localVarReturnValue  *SavedSearch
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchApiService.PutSavedSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SavedSearchAPIService.PutSavedSearch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -905,9 +914,9 @@ func (a *SavedSearchApiService) PutSavedSearchExecute(r ApiPutSavedSearchRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

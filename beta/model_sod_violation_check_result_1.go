@@ -209,8 +209,8 @@ func (o *SodViolationCheckResult1) UnmarshalJSON(bytes []byte) (err error) {
 	varSodViolationCheckResult1 := _SodViolationCheckResult1{}
 
 	if err = json.Unmarshal(bytes, &varSodViolationCheckResult1); err == nil {
-		*o = SodViolationCheckResult1(varSodViolationCheckResult1)
-	}
+	*o = SodViolationCheckResult1(varSodViolationCheckResult1)
+}
 
 	additionalProperties := make(map[string]interface{})
 

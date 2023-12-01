@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing CustomFormsApiService
+Testing CustomFormsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_CustomFormsApiService(t *testing.T) {
+func Test_beta_CustomFormsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test CustomFormsApiService CreateFormDefinition", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService CreateFormDefinition", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.CreateFormDefinition(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.CreateFormDefinition(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService CreateFormDefinitionDynamicSchema", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService CreateFormDefinitionDynamicSchema", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.CreateFormDefinitionDynamicSchema(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.CreateFormDefinitionDynamicSchema(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,39 +46,13 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService CreateFormDefinitionFileRequest", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var formDefinitionID string
-
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.CreateFormDefinitionFileRequest(context.Background(), formDefinitionID).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CustomFormsApiService CreateFormInstance", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.CreateFormInstance(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CustomFormsApiService DeleteFormDefinition", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService CreateFormDefinitionFileRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var formDefinitionID string
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.DeleteFormDefinition(context.Background(), formDefinitionID).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.CreateFormDefinitionFileRequest(context.Background(), formDefinitionID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -86,11 +60,11 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService ExportFormDefinitionsByTenant", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService CreateFormInstance", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.ExportFormDefinitionsByTenant(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.CreateFormInstance(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -98,14 +72,40 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService GetFileFromS3", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService DeleteFormDefinition", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var formDefinitionID string
+
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.DeleteFormDefinition(context.Background(), formDefinitionID).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CustomFormsAPIService ExportFormDefinitionsByTenant", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.ExportFormDefinitionsByTenant(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CustomFormsAPIService GetFileFromS3", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var formDefinitionID string
 		var fileID string
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.GetFileFromS3(context.Background(), formDefinitionID, fileID).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.GetFileFromS3(context.Background(), formDefinitionID, fileID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -113,13 +113,13 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService GetFormDefinitionByKey", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService GetFormDefinitionByKey", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var formDefinitionID string
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.GetFormDefinitionByKey(context.Background(), formDefinitionID).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.GetFormDefinitionByKey(context.Background(), formDefinitionID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -127,13 +127,13 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService GetFormInstanceByKey", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService GetFormInstanceByKey", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var formInstanceID string
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.GetFormInstanceByKey(context.Background(), formInstanceID).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.GetFormInstanceByKey(context.Background(), formInstanceID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -141,14 +141,14 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService GetFormInstanceFile", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService GetFormInstanceFile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var formInstanceID string
 		var fileID string
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.GetFormInstanceFile(context.Background(), formInstanceID, fileID).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.GetFormInstanceFile(context.Background(), formInstanceID, fileID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -156,11 +156,11 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService ImportFormDefinitions", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService ImportFormDefinitions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.ImportFormDefinitions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.ImportFormDefinitions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -168,13 +168,13 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService PatchFormDefinition", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService PatchFormDefinition", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var formDefinitionID string
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.PatchFormDefinition(context.Background(), formDefinitionID).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.PatchFormDefinition(context.Background(), formDefinitionID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -182,13 +182,13 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService PatchFormInstance", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService PatchFormInstance", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var formInstanceID string
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.PatchFormInstance(context.Background(), formInstanceID).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.PatchFormInstance(context.Background(), formInstanceID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -196,11 +196,11 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService SearchFormDefinitionsByTenant", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService SearchFormDefinitionsByTenant", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.SearchFormDefinitionsByTenant(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.SearchFormDefinitionsByTenant(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -208,14 +208,14 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService SearchFormElementDataByElementID", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService SearchFormElementDataByElementID", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var formInstanceID string
 		var formElementID string
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.SearchFormElementDataByElementID(context.Background(), formInstanceID, formElementID).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.SearchFormElementDataByElementID(context.Background(), formInstanceID, formElementID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -223,11 +223,11 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService SearchFormInstancesByTenant", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService SearchFormInstancesByTenant", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.SearchFormInstancesByTenant(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.SearchFormInstancesByTenant(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -235,11 +235,11 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService SearchPreDefinedSelectOptions", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService SearchPreDefinedSelectOptions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.SearchPreDefinedSelectOptions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.SearchPreDefinedSelectOptions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -247,13 +247,13 @@ func Test_beta_CustomFormsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomFormsApiService ShowPreviewDataSource", func(t *testing.T) {
+	t.Run("Test CustomFormsAPIService ShowPreviewDataSource", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var formDefinitionID string
 
-		resp, httpRes, err := apiClient.BETA.CustomFormsApi.ShowPreviewDataSource(context.Background(), formDefinitionID).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomFormsAPI.ShowPreviewDataSource(context.Background(), formDefinitionID).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// CustomPasswordInstructionsApiService CustomPasswordInstructionsApi service
-type CustomPasswordInstructionsApiService service
+// CustomPasswordInstructionsAPIService CustomPasswordInstructionsAPI service
+type CustomPasswordInstructionsAPIService service
 
 type ApiCreateCustomPasswordInstructionsRequest struct {
 	ctx context.Context
-	ApiService *CustomPasswordInstructionsApiService
+	ApiService *CustomPasswordInstructionsAPIService
 	customPasswordInstruction *CustomPasswordInstruction
 }
 
@@ -46,7 +46,7 @@ This API creates the custom password instructions for the specified page ID. A t
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCustomPasswordInstructionsRequest
 */
-func (a *CustomPasswordInstructionsApiService) CreateCustomPasswordInstructions(ctx context.Context) ApiCreateCustomPasswordInstructionsRequest {
+func (a *CustomPasswordInstructionsAPIService) CreateCustomPasswordInstructions(ctx context.Context) ApiCreateCustomPasswordInstructionsRequest {
 	return ApiCreateCustomPasswordInstructionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *CustomPasswordInstructionsApiService) CreateCustomPasswordInstructions(
 
 // Execute executes the request
 //  @return CustomPasswordInstruction
-func (a *CustomPasswordInstructionsApiService) CreateCustomPasswordInstructionsExecute(r ApiCreateCustomPasswordInstructionsRequest) (*CustomPasswordInstruction, *http.Response, error) {
+func (a *CustomPasswordInstructionsAPIService) CreateCustomPasswordInstructionsExecute(r ApiCreateCustomPasswordInstructionsRequest) (*CustomPasswordInstruction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *CustomPasswordInstructionsApiService) CreateCustomPasswordInstructionsE
 		localVarReturnValue  *CustomPasswordInstruction
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPasswordInstructionsApiService.CreateCustomPasswordInstructions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPasswordInstructionsAPIService.CreateCustomPasswordInstructions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *CustomPasswordInstructionsApiService) CreateCustomPasswordInstructionsE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -167,7 +167,7 @@ func (a *CustomPasswordInstructionsApiService) CreateCustomPasswordInstructionsE
 
 type ApiDeleteCustomPasswordInstructionsRequest struct {
 	ctx context.Context
-	ApiService *CustomPasswordInstructionsApiService
+	ApiService *CustomPasswordInstructionsAPIService
 	pageId string
 	locale *string
 }
@@ -191,7 +191,7 @@ This API delete the custom password instructions for the specified page ID. A to
  @param pageId The page ID of custom password instructions to delete.
  @return ApiDeleteCustomPasswordInstructionsRequest
 */
-func (a *CustomPasswordInstructionsApiService) DeleteCustomPasswordInstructions(ctx context.Context, pageId string) ApiDeleteCustomPasswordInstructionsRequest {
+func (a *CustomPasswordInstructionsAPIService) DeleteCustomPasswordInstructions(ctx context.Context, pageId string) ApiDeleteCustomPasswordInstructionsRequest {
 	return ApiDeleteCustomPasswordInstructionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -200,14 +200,14 @@ func (a *CustomPasswordInstructionsApiService) DeleteCustomPasswordInstructions(
 }
 
 // Execute executes the request
-func (a *CustomPasswordInstructionsApiService) DeleteCustomPasswordInstructionsExecute(r ApiDeleteCustomPasswordInstructionsRequest) (*http.Response, error) {
+func (a *CustomPasswordInstructionsAPIService) DeleteCustomPasswordInstructionsExecute(r ApiDeleteCustomPasswordInstructionsRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPasswordInstructionsApiService.DeleteCustomPasswordInstructions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPasswordInstructionsAPIService.DeleteCustomPasswordInstructions")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -249,9 +249,9 @@ func (a *CustomPasswordInstructionsApiService) DeleteCustomPasswordInstructionsE
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -312,7 +312,7 @@ func (a *CustomPasswordInstructionsApiService) DeleteCustomPasswordInstructionsE
 
 type ApiGetCustomPasswordInstructionsRequest struct {
 	ctx context.Context
-	ApiService *CustomPasswordInstructionsApiService
+	ApiService *CustomPasswordInstructionsAPIService
 	pageId string
 	locale *string
 }
@@ -336,7 +336,7 @@ This API returns the custom password instructions for the specified page ID. A t
  @param pageId The page ID of custom password instructions to query.
  @return ApiGetCustomPasswordInstructionsRequest
 */
-func (a *CustomPasswordInstructionsApiService) GetCustomPasswordInstructions(ctx context.Context, pageId string) ApiGetCustomPasswordInstructionsRequest {
+func (a *CustomPasswordInstructionsAPIService) GetCustomPasswordInstructions(ctx context.Context, pageId string) ApiGetCustomPasswordInstructionsRequest {
 	return ApiGetCustomPasswordInstructionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -346,7 +346,7 @@ func (a *CustomPasswordInstructionsApiService) GetCustomPasswordInstructions(ctx
 
 // Execute executes the request
 //  @return CustomPasswordInstruction
-func (a *CustomPasswordInstructionsApiService) GetCustomPasswordInstructionsExecute(r ApiGetCustomPasswordInstructionsRequest) (*CustomPasswordInstruction, *http.Response, error) {
+func (a *CustomPasswordInstructionsAPIService) GetCustomPasswordInstructionsExecute(r ApiGetCustomPasswordInstructionsRequest) (*CustomPasswordInstruction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -354,7 +354,7 @@ func (a *CustomPasswordInstructionsApiService) GetCustomPasswordInstructionsExec
 		localVarReturnValue  *CustomPasswordInstruction
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPasswordInstructionsApiService.GetCustomPasswordInstructions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomPasswordInstructionsAPIService.GetCustomPasswordInstructions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -396,9 +396,9 @@ func (a *CustomPasswordInstructionsApiService) GetCustomPasswordInstructionsExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

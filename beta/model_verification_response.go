@@ -194,8 +194,8 @@ func (o *VerificationResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varVerificationResponse := _VerificationResponse{}
 
 	if err = json.Unmarshal(bytes, &varVerificationResponse); err == nil {
-		*o = VerificationResponse(varVerificationResponse)
-	}
+	*o = VerificationResponse(varVerificationResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

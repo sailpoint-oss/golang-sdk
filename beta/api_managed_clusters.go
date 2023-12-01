@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// ManagedClustersApiService ManagedClustersApi service
-type ManagedClustersApiService service
+// ManagedClustersAPIService ManagedClustersAPI service
+type ManagedClustersAPIService service
 
 type ApiGetClientLogConfigurationRequest struct {
 	ctx context.Context
-	ApiService *ManagedClustersApiService
+	ApiService *ManagedClustersAPIService
 	id string
 }
 
@@ -42,7 +42,7 @@ Get managed cluster's log configuration.
  @param id ID of ManagedCluster to get log configuration for
  @return ApiGetClientLogConfigurationRequest
 */
-func (a *ManagedClustersApiService) GetClientLogConfiguration(ctx context.Context, id string) ApiGetClientLogConfigurationRequest {
+func (a *ManagedClustersAPIService) GetClientLogConfiguration(ctx context.Context, id string) ApiGetClientLogConfigurationRequest {
 	return ApiGetClientLogConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -52,7 +52,7 @@ func (a *ManagedClustersApiService) GetClientLogConfiguration(ctx context.Contex
 
 // Execute executes the request
 //  @return ClientLogConfiguration
-func (a *ManagedClustersApiService) GetClientLogConfigurationExecute(r ApiGetClientLogConfigurationRequest) (*ClientLogConfiguration, *http.Response, error) {
+func (a *ManagedClustersAPIService) GetClientLogConfigurationExecute(r ApiGetClientLogConfigurationRequest) (*ClientLogConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -60,7 +60,7 @@ func (a *ManagedClustersApiService) GetClientLogConfigurationExecute(r ApiGetCli
 		localVarReturnValue  *ClientLogConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClustersApiService.GetClientLogConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClustersAPIService.GetClientLogConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -99,9 +99,9 @@ func (a *ManagedClustersApiService) GetClientLogConfigurationExecute(r ApiGetCli
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -193,7 +193,7 @@ func (a *ManagedClustersApiService) GetClientLogConfigurationExecute(r ApiGetCli
 
 type ApiGetManagedClusterRequest struct {
 	ctx context.Context
-	ApiService *ManagedClustersApiService
+	ApiService *ManagedClustersAPIService
 	id string
 }
 
@@ -210,7 +210,7 @@ Retrieve a ManagedCluster by ID.
  @param id ID of the ManagedCluster to get
  @return ApiGetManagedClusterRequest
 */
-func (a *ManagedClustersApiService) GetManagedCluster(ctx context.Context, id string) ApiGetManagedClusterRequest {
+func (a *ManagedClustersAPIService) GetManagedCluster(ctx context.Context, id string) ApiGetManagedClusterRequest {
 	return ApiGetManagedClusterRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -220,7 +220,7 @@ func (a *ManagedClustersApiService) GetManagedCluster(ctx context.Context, id st
 
 // Execute executes the request
 //  @return ManagedCluster
-func (a *ManagedClustersApiService) GetManagedClusterExecute(r ApiGetManagedClusterRequest) (*ManagedCluster, *http.Response, error) {
+func (a *ManagedClustersAPIService) GetManagedClusterExecute(r ApiGetManagedClusterRequest) (*ManagedCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -228,7 +228,7 @@ func (a *ManagedClustersApiService) GetManagedClusterExecute(r ApiGetManagedClus
 		localVarReturnValue  *ManagedCluster
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClustersApiService.GetManagedCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClustersAPIService.GetManagedCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -267,9 +267,9 @@ func (a *ManagedClustersApiService) GetManagedClusterExecute(r ApiGetManagedClus
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -361,7 +361,7 @@ func (a *ManagedClustersApiService) GetManagedClusterExecute(r ApiGetManagedClus
 
 type ApiGetManagedClustersRequest struct {
 	ctx context.Context
-	ApiService *ManagedClustersApiService
+	ApiService *ManagedClustersAPIService
 	offset *int32
 	limit *int32
 	count *bool
@@ -404,7 +404,7 @@ Retrieve all Managed Clusters for the current Org, based on request context.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetManagedClustersRequest
 */
-func (a *ManagedClustersApiService) GetManagedClusters(ctx context.Context) ApiGetManagedClustersRequest {
+func (a *ManagedClustersAPIService) GetManagedClusters(ctx context.Context) ApiGetManagedClustersRequest {
 	return ApiGetManagedClustersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -413,7 +413,7 @@ func (a *ManagedClustersApiService) GetManagedClusters(ctx context.Context) ApiG
 
 // Execute executes the request
 //  @return []ManagedCluster
-func (a *ManagedClustersApiService) GetManagedClustersExecute(r ApiGetManagedClustersRequest) ([]ManagedCluster, *http.Response, error) {
+func (a *ManagedClustersAPIService) GetManagedClustersExecute(r ApiGetManagedClustersRequest) ([]ManagedCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -421,7 +421,7 @@ func (a *ManagedClustersApiService) GetManagedClustersExecute(r ApiGetManagedClu
 		localVarReturnValue  []ManagedCluster
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClustersApiService.GetManagedClusters")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClustersAPIService.GetManagedClusters")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -434,12 +434,21 @@ func (a *ManagedClustersApiService) GetManagedClustersExecute(r ApiGetManagedClu
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -471,9 +480,9 @@ func (a *ManagedClustersApiService) GetManagedClustersExecute(r ApiGetManagedClu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -554,7 +563,7 @@ func (a *ManagedClustersApiService) GetManagedClustersExecute(r ApiGetManagedClu
 
 type ApiPutClientLogConfigurationRequest struct {
 	ctx context.Context
-	ApiService *ManagedClustersApiService
+	ApiService *ManagedClustersAPIService
 	id string
 	clientLogConfiguration *ClientLogConfiguration
 }
@@ -578,7 +587,7 @@ Update managed cluster's log configuration
  @param id ID of ManagedCluster to update log configuration for
  @return ApiPutClientLogConfigurationRequest
 */
-func (a *ManagedClustersApiService) PutClientLogConfiguration(ctx context.Context, id string) ApiPutClientLogConfigurationRequest {
+func (a *ManagedClustersAPIService) PutClientLogConfiguration(ctx context.Context, id string) ApiPutClientLogConfigurationRequest {
 	return ApiPutClientLogConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -588,7 +597,7 @@ func (a *ManagedClustersApiService) PutClientLogConfiguration(ctx context.Contex
 
 // Execute executes the request
 //  @return ClientLogConfiguration
-func (a *ManagedClustersApiService) PutClientLogConfigurationExecute(r ApiPutClientLogConfigurationRequest) (*ClientLogConfiguration, *http.Response, error) {
+func (a *ManagedClustersAPIService) PutClientLogConfigurationExecute(r ApiPutClientLogConfigurationRequest) (*ClientLogConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -596,7 +605,7 @@ func (a *ManagedClustersApiService) PutClientLogConfigurationExecute(r ApiPutCli
 		localVarReturnValue  *ClientLogConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClustersApiService.PutClientLogConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedClustersAPIService.PutClientLogConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -640,9 +649,9 @@ func (a *ManagedClustersApiService) PutClientLogConfigurationExecute(r ApiPutCli
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

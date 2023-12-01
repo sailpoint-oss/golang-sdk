@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing CertificationsApiService
+Testing CertificationsAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_CertificationsApiService(t *testing.T) {
+func Test_v3_CertificationsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test CertificationsApiService GetCertificationTask", func(t *testing.T) {
+	t.Run("Test CertificationsAPIService GetCertificationTask", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.CertificationsApi.GetCertificationTask(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationsAPI.GetCertificationTask(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,13 +36,13 @@ func Test_v3_CertificationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationsApiService GetIdentityCertification", func(t *testing.T) {
+	t.Run("Test CertificationsAPIService GetIdentityCertification", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.CertificationsApi.GetIdentityCertification(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationsAPI.GetIdentityCertification(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,14 +50,14 @@ func Test_v3_CertificationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationsApiService GetIdentityCertificationItemPermissions", func(t *testing.T) {
+	t.Run("Test CertificationsAPIService GetIdentityCertificationItemPermissions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var certificationId string
 		var itemId string
 
-		resp, httpRes, err := apiClient.V3.CertificationsApi.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,11 +65,11 @@ func Test_v3_CertificationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationsApiService GetPendingCertificationTasks", func(t *testing.T) {
+	t.Run("Test CertificationsAPIService GetPendingCertificationTasks", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.CertificationsApi.GetPendingCertificationTasks(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationsAPI.GetPendingCertificationTasks(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -77,27 +77,13 @@ func Test_v3_CertificationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationsApiService ListCertificationReviewers", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.V3.CertificationsApi.ListCertificationReviewers(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CertificationsApiService ListIdentityAccessReviewItems", func(t *testing.T) {
+	t.Run("Test CertificationsAPIService ListCertificationReviewers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.CertificationsApi.ListIdentityAccessReviewItems(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -105,25 +91,13 @@ func Test_v3_CertificationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationsApiService ListIdentityCertifications", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.V3.CertificationsApi.ListIdentityCertifications(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CertificationsApiService MakeIdentityDecision", func(t *testing.T) {
+	t.Run("Test CertificationsAPIService ListIdentityAccessReviewItems", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.CertificationsApi.MakeIdentityDecision(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationsAPI.ListIdentityAccessReviewItems(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -131,13 +105,11 @@ func Test_v3_CertificationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationsApiService ReassignIdentityCertifications", func(t *testing.T) {
+	t.Run("Test CertificationsAPIService ListIdentityCertifications", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
-
-		resp, httpRes, err := apiClient.V3.CertificationsApi.ReassignIdentityCertifications(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationsAPI.ListIdentityCertifications(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -145,13 +117,13 @@ func Test_v3_CertificationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationsApiService SignOffIdentityCertification", func(t *testing.T) {
+	t.Run("Test CertificationsAPIService MakeIdentityDecision", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.CertificationsApi.SignOffIdentityCertification(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationsAPI.MakeIdentityDecision(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -159,13 +131,41 @@ func Test_v3_CertificationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationsApiService SubmitReassignCertsAsync", func(t *testing.T) {
+	t.Run("Test CertificationsAPIService ReassignIdentityCertifications", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.CertificationsApi.SubmitReassignCertsAsync(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationsAPI.ReassignIdentityCertifications(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CertificationsAPIService SignOffIdentityCertification", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.V3.CertificationsAPI.SignOffIdentityCertification(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CertificationsAPIService SubmitReassignCertsAsync", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.V3.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1,14 +1,14 @@
-# \SegmentsApi
+# \SegmentsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSegment**](SegmentsApi.md#CreateSegment) | **Post** /segments | Create Segment
-[**DeleteSegment**](SegmentsApi.md#DeleteSegment) | **Delete** /segments/{id} | Delete Segment by ID
-[**GetSegment**](SegmentsApi.md#GetSegment) | **Get** /segments/{id} | Get Segment by ID
-[**ListSegments**](SegmentsApi.md#ListSegments) | **Get** /segments | List Segments
-[**PatchSegment**](SegmentsApi.md#PatchSegment) | **Patch** /segments/{id} | Update Segment
+[**CreateSegment**](SegmentsAPI.md#CreateSegment) | **Post** /segments | Create Segment
+[**DeleteSegment**](SegmentsAPI.md#DeleteSegment) | **Delete** /segments/{id} | Delete Segment by ID
+[**GetSegment**](SegmentsAPI.md#GetSegment) | **Get** /segments/{id} | Get Segment by ID
+[**ListSegments**](SegmentsAPI.md#ListSegments) | **Get** /segments | List Segments
+[**PatchSegment**](SegmentsAPI.md#PatchSegment) | **Patch** /segments/{id} | Update Segment
 
 
 
@@ -29,7 +29,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SegmentsApi.CreateSegment(context.Background()).Segment(segment).Execute()
+    resp, r, err := apiClient.SegmentsAPI.CreateSegment(context.Background()).Segment(segment).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsApi.CreateSegment``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.CreateSegment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateSegment`: Segment
-    fmt.Fprintf(os.Stdout, "Response from `SegmentsApi.CreateSegment`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SegmentsAPI.CreateSegment`: %v\n", resp)
 }
 ```
 
@@ -95,7 +95,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -103,9 +103,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SegmentsApi.DeleteSegment(context.Background(), id).Execute()
+    r, err := apiClient.SegmentsAPI.DeleteSegment(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsApi.DeleteSegment``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.DeleteSegment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -163,7 +163,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -171,13 +171,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SegmentsApi.GetSegment(context.Background(), id).Execute()
+    resp, r, err := apiClient.SegmentsAPI.GetSegment(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsApi.GetSegment``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.GetSegment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetSegment`: Segment
-    fmt.Fprintf(os.Stdout, "Response from `SegmentsApi.GetSegment`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SegmentsAPI.GetSegment`: %v\n", resp)
 }
 ```
 
@@ -233,7 +233,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -243,13 +243,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SegmentsApi.ListSegments(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.SegmentsAPI.ListSegments(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsApi.ListSegments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.ListSegments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListSegments`: []Segment
-    fmt.Fprintf(os.Stdout, "Response from `SegmentsApi.ListSegments`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SegmentsAPI.ListSegments`: %v\n", resp)
 }
 ```
 
@@ -303,7 +303,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -312,13 +312,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SegmentsApi.PatchSegment(context.Background(), id).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.SegmentsAPI.PatchSegment(context.Background(), id).RequestBody(requestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsApi.PatchSegment``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.PatchSegment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchSegment`: Segment
-    fmt.Fprintf(os.Stdout, "Response from `SegmentsApi.PatchSegment`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SegmentsAPI.PatchSegment`: %v\n", resp)
 }
 ```
 

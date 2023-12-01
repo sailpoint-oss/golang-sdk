@@ -100,8 +100,8 @@ func (o *PreviewDataSourceResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varPreviewDataSourceResponse := _PreviewDataSourceResponse{}
 
 	if err = json.Unmarshal(bytes, &varPreviewDataSourceResponse); err == nil {
-		*o = PreviewDataSourceResponse(varPreviewDataSourceResponse)
-	}
+	*o = PreviewDataSourceResponse(varPreviewDataSourceResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

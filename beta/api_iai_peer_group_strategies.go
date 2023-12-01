@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// IAIPeerGroupStrategiesApiService IAIPeerGroupStrategiesApi service
-type IAIPeerGroupStrategiesApiService service
+// IAIPeerGroupStrategiesAPIService IAIPeerGroupStrategiesAPI service
+type IAIPeerGroupStrategiesAPIService service
 
 type ApiGetPeerGroupOutliersRequest struct {
 	ctx context.Context
-	ApiService *IAIPeerGroupStrategiesApiService
+	ApiService *IAIPeerGroupStrategiesAPIService
 	strategy string
 	limit *int32
 	offset *int32
@@ -65,7 +65,7 @@ GetPeerGroupOutliers Identity Outliers List
 
 Deprecated
 */
-func (a *IAIPeerGroupStrategiesApiService) GetPeerGroupOutliers(ctx context.Context, strategy string) ApiGetPeerGroupOutliersRequest {
+func (a *IAIPeerGroupStrategiesAPIService) GetPeerGroupOutliers(ctx context.Context, strategy string) ApiGetPeerGroupOutliersRequest {
 	return ApiGetPeerGroupOutliersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -76,7 +76,7 @@ func (a *IAIPeerGroupStrategiesApiService) GetPeerGroupOutliers(ctx context.Cont
 // Execute executes the request
 //  @return []PeerGroupMember
 // Deprecated
-func (a *IAIPeerGroupStrategiesApiService) GetPeerGroupOutliersExecute(r ApiGetPeerGroupOutliersRequest) ([]PeerGroupMember, *http.Response, error) {
+func (a *IAIPeerGroupStrategiesAPIService) GetPeerGroupOutliersExecute(r ApiGetPeerGroupOutliersRequest) ([]PeerGroupMember, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -84,7 +84,7 @@ func (a *IAIPeerGroupStrategiesApiService) GetPeerGroupOutliersExecute(r ApiGetP
 		localVarReturnValue  []PeerGroupMember
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIPeerGroupStrategiesApiService.GetPeerGroupOutliers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIPeerGroupStrategiesAPIService.GetPeerGroupOutliers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -98,12 +98,21 @@ func (a *IAIPeerGroupStrategiesApiService) GetPeerGroupOutliersExecute(r ApiGetP
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -132,9 +141,9 @@ func (a *IAIPeerGroupStrategiesApiService) GetPeerGroupOutliersExecute(r ApiGetP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

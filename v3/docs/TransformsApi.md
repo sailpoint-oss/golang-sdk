@@ -1,14 +1,14 @@
-# \TransformsApi
+# \TransformsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateTransform**](TransformsApi.md#CreateTransform) | **Post** /transforms | Create transform
-[**DeleteTransform**](TransformsApi.md#DeleteTransform) | **Delete** /transforms/{id} | Delete a transform
-[**GetTransform**](TransformsApi.md#GetTransform) | **Get** /transforms/{id} | Transform by ID
-[**ListTransforms**](TransformsApi.md#ListTransforms) | **Get** /transforms | List transforms
-[**UpdateTransform**](TransformsApi.md#UpdateTransform) | **Put** /transforms/{id} | Update a transform
+[**CreateTransform**](TransformsAPI.md#CreateTransform) | **Post** /transforms | Create transform
+[**DeleteTransform**](TransformsAPI.md#DeleteTransform) | **Delete** /transforms/{id} | Delete a transform
+[**GetTransform**](TransformsAPI.md#GetTransform) | **Get** /transforms/{id} | Transform by ID
+[**ListTransforms**](TransformsAPI.md#ListTransforms) | **Get** /transforms | List transforms
+[**UpdateTransform**](TransformsAPI.md#UpdateTransform) | **Put** /transforms/{id} | Update a transform
 
 
 
@@ -29,7 +29,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransformsApi.CreateTransform(context.Background()).Transform(transform).Execute()
+    resp, r, err := apiClient.TransformsAPI.CreateTransform(context.Background()).Transform(transform).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.CreateTransform``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.CreateTransform``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateTransform`: TransformRead
-    fmt.Fprintf(os.Stdout, "Response from `TransformsApi.CreateTransform`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.CreateTransform`: %v\n", resp)
 }
 ```
 
@@ -95,7 +95,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -103,9 +103,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransformsApi.DeleteTransform(context.Background(), id).Execute()
+    r, err := apiClient.TransformsAPI.DeleteTransform(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.DeleteTransform``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.DeleteTransform``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -163,7 +163,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -171,13 +171,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransformsApi.GetTransform(context.Background(), id).Execute()
+    resp, r, err := apiClient.TransformsAPI.GetTransform(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.GetTransform``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.GetTransform``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetTransform`: TransformRead
-    fmt.Fprintf(os.Stdout, "Response from `TransformsApi.GetTransform`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.GetTransform`: %v\n", resp)
 }
 ```
 
@@ -233,7 +233,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -245,13 +245,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransformsApi.ListTransforms(context.Background()).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
+    resp, r, err := apiClient.TransformsAPI.ListTransforms(context.Background()).Offset(offset).Limit(limit).Count(count).Name(name).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.ListTransforms``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.ListTransforms``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTransforms`: []TransformRead
-    fmt.Fprintf(os.Stdout, "Response from `TransformsApi.ListTransforms`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.ListTransforms`: %v\n", resp)
 }
 ```
 
@@ -307,7 +307,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -316,13 +316,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TransformsApi.UpdateTransform(context.Background(), id).Transform(transform).Execute()
+    resp, r, err := apiClient.TransformsAPI.UpdateTransform(context.Background(), id).Transform(transform).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.UpdateTransform``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TransformsAPI.UpdateTransform``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateTransform`: TransformRead
-    fmt.Fprintf(os.Stdout, "Response from `TransformsApi.UpdateTransform`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TransformsAPI.UpdateTransform`: %v\n", resp)
 }
 ```
 

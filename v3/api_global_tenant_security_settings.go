@@ -13,18 +13,18 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// GlobalTenantSecuritySettingsApiService GlobalTenantSecuritySettingsApi service
-type GlobalTenantSecuritySettingsApiService service
+// GlobalTenantSecuritySettingsAPIService GlobalTenantSecuritySettingsAPI service
+type GlobalTenantSecuritySettingsAPIService service
 
 type ApiCreateAuthOrgNetworkConfigRequest struct {
 	ctx context.Context
-	ApiService *GlobalTenantSecuritySettingsApiService
+	ApiService *GlobalTenantSecuritySettingsAPIService
 	networkConfiguration *NetworkConfiguration
 }
 
@@ -46,7 +46,7 @@ This API returns the details of an org's network auth configuration. Requires se
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateAuthOrgNetworkConfigRequest
 */
-func (a *GlobalTenantSecuritySettingsApiService) CreateAuthOrgNetworkConfig(ctx context.Context) ApiCreateAuthOrgNetworkConfigRequest {
+func (a *GlobalTenantSecuritySettingsAPIService) CreateAuthOrgNetworkConfig(ctx context.Context) ApiCreateAuthOrgNetworkConfigRequest {
 	return ApiCreateAuthOrgNetworkConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *GlobalTenantSecuritySettingsApiService) CreateAuthOrgNetworkConfig(ctx 
 
 // Execute executes the request
 //  @return NetworkConfiguration
-func (a *GlobalTenantSecuritySettingsApiService) CreateAuthOrgNetworkConfigExecute(r ApiCreateAuthOrgNetworkConfigRequest) (*NetworkConfiguration, *http.Response, error) {
+func (a *GlobalTenantSecuritySettingsAPIService) CreateAuthOrgNetworkConfigExecute(r ApiCreateAuthOrgNetworkConfigRequest) (*NetworkConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *GlobalTenantSecuritySettingsApiService) CreateAuthOrgNetworkConfigExecu
 		localVarReturnValue  *NetworkConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsApiService.CreateAuthOrgNetworkConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.CreateAuthOrgNetworkConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *GlobalTenantSecuritySettingsApiService) CreateAuthOrgNetworkConfigExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -200,7 +200,7 @@ func (a *GlobalTenantSecuritySettingsApiService) CreateAuthOrgNetworkConfigExecu
 
 type ApiGetAuthOrgNetworkConfigRequest struct {
 	ctx context.Context
-	ApiService *GlobalTenantSecuritySettingsApiService
+	ApiService *GlobalTenantSecuritySettingsAPIService
 }
 
 func (r ApiGetAuthOrgNetworkConfigRequest) Execute() (*NetworkConfiguration, *http.Response, error) {
@@ -215,7 +215,7 @@ This API returns the details of an org's network auth configuration. Requires se
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAuthOrgNetworkConfigRequest
 */
-func (a *GlobalTenantSecuritySettingsApiService) GetAuthOrgNetworkConfig(ctx context.Context) ApiGetAuthOrgNetworkConfigRequest {
+func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgNetworkConfig(ctx context.Context) ApiGetAuthOrgNetworkConfigRequest {
 	return ApiGetAuthOrgNetworkConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -224,7 +224,7 @@ func (a *GlobalTenantSecuritySettingsApiService) GetAuthOrgNetworkConfig(ctx con
 
 // Execute executes the request
 //  @return NetworkConfiguration
-func (a *GlobalTenantSecuritySettingsApiService) GetAuthOrgNetworkConfigExecute(r ApiGetAuthOrgNetworkConfigRequest) (*NetworkConfiguration, *http.Response, error) {
+func (a *GlobalTenantSecuritySettingsAPIService) GetAuthOrgNetworkConfigExecute(r ApiGetAuthOrgNetworkConfigRequest) (*NetworkConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -232,7 +232,7 @@ func (a *GlobalTenantSecuritySettingsApiService) GetAuthOrgNetworkConfigExecute(
 		localVarReturnValue  *NetworkConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsApiService.GetAuthOrgNetworkConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.GetAuthOrgNetworkConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -270,9 +270,9 @@ func (a *GlobalTenantSecuritySettingsApiService) GetAuthOrgNetworkConfigExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -364,7 +364,7 @@ func (a *GlobalTenantSecuritySettingsApiService) GetAuthOrgNetworkConfigExecute(
 
 type ApiPatchAuthOrgNetworkConfigRequest struct {
 	ctx context.Context
-	ApiService *GlobalTenantSecuritySettingsApiService
+	ApiService *GlobalTenantSecuritySettingsAPIService
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
@@ -387,7 +387,7 @@ This API updates an existing network configuration for an org using PATCH
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPatchAuthOrgNetworkConfigRequest
 */
-func (a *GlobalTenantSecuritySettingsApiService) PatchAuthOrgNetworkConfig(ctx context.Context) ApiPatchAuthOrgNetworkConfigRequest {
+func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfig(ctx context.Context) ApiPatchAuthOrgNetworkConfigRequest {
 	return ApiPatchAuthOrgNetworkConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -396,7 +396,7 @@ func (a *GlobalTenantSecuritySettingsApiService) PatchAuthOrgNetworkConfig(ctx c
 
 // Execute executes the request
 //  @return NetworkConfiguration
-func (a *GlobalTenantSecuritySettingsApiService) PatchAuthOrgNetworkConfigExecute(r ApiPatchAuthOrgNetworkConfigRequest) (*NetworkConfiguration, *http.Response, error) {
+func (a *GlobalTenantSecuritySettingsAPIService) PatchAuthOrgNetworkConfigExecute(r ApiPatchAuthOrgNetworkConfigRequest) (*NetworkConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -404,7 +404,7 @@ func (a *GlobalTenantSecuritySettingsApiService) PatchAuthOrgNetworkConfigExecut
 		localVarReturnValue  *NetworkConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsApiService.PatchAuthOrgNetworkConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalTenantSecuritySettingsAPIService.PatchAuthOrgNetworkConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -447,9 +447,9 @@ func (a *GlobalTenantSecuritySettingsApiService) PatchAuthOrgNetworkConfigExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -1,10 +1,10 @@
-# \SourcesAccountsApi
+# \SourcesAccountsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ExportAccountFeed**](SourcesAccountsApi.md#ExportAccountFeed) | **Get** /cc/api/source/exportAccountFeed/{id} | Export Account Feed
+[**ExportAccountFeed**](SourcesAccountsAPI.md#ExportAccountFeed) | **Get** /cc/api/source/exportAccountFeed/{id} | Export Account Feed
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -33,9 +33,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAccountsApi.ExportAccountFeed(context.Background(), id).Execute()
+    r, err := apiClient.SourcesAccountsAPI.ExportAccountFeed(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAccountsApi.ExportAccountFeed``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAccountsAPI.ExportAccountFeed``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

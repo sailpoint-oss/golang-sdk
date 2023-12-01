@@ -1,15 +1,15 @@
-# \MFAConfigurationApi
+# \MFAConfigurationAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteMFAConfig**](MFAConfigurationApi.md#DeleteMFAConfig) | **Delete** /mfa/{method}/delete | Delete MFA method configuration
-[**GetMFADuoConfig**](MFAConfigurationApi.md#GetMFADuoConfig) | **Get** /mfa/duo-web/config | Configuration of Duo MFA method
-[**GetMFAOktaConfig**](MFAConfigurationApi.md#GetMFAOktaConfig) | **Get** /mfa/okta-verify/config | Configuration of Okta MFA method
-[**SetMFADuoConfig**](MFAConfigurationApi.md#SetMFADuoConfig) | **Put** /mfa/duo-web/config | Set Duo MFA configuration
-[**SetMFAOktaConfig**](MFAConfigurationApi.md#SetMFAOktaConfig) | **Put** /mfa/okta-verify/config | Set Okta MFA configuration
-[**TestMFAConfig**](MFAConfigurationApi.md#TestMFAConfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
+[**DeleteMFAConfig**](MFAConfigurationAPI.md#DeleteMFAConfig) | **Delete** /mfa/{method}/delete | Delete MFA method configuration
+[**GetMFADuoConfig**](MFAConfigurationAPI.md#GetMFADuoConfig) | **Get** /mfa/duo-web/config | Configuration of Duo MFA method
+[**GetMFAOktaConfig**](MFAConfigurationAPI.md#GetMFAOktaConfig) | **Get** /mfa/okta-verify/config | Configuration of Okta MFA method
+[**SetMFADuoConfig**](MFAConfigurationAPI.md#SetMFADuoConfig) | **Put** /mfa/duo-web/config | Set Duo MFA configuration
+[**SetMFAOktaConfig**](MFAConfigurationAPI.md#SetMFAOktaConfig) | **Put** /mfa/okta-verify/config | Set Okta MFA configuration
+[**TestMFAConfig**](MFAConfigurationAPI.md#TestMFAConfig) | **Get** /mfa/{method}/test | MFA method&#39;s test configuration
 
 
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -38,13 +38,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationApi.DeleteMFAConfig(context.Background(), method).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.DeleteMFAConfig(context.Background(), method).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationApi.DeleteMFAConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.DeleteMFAConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DeleteMFAConfig`: MfaOktaConfig
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationApi.DeleteMFAConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.DeleteMFAConfig`: %v\n", resp)
 }
 ```
 
@@ -100,20 +100,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationApi.GetMFADuoConfig(context.Background()).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.GetMFADuoConfig(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationApi.GetMFADuoConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFADuoConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetMFADuoConfig`: MfaDuoConfig
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationApi.GetMFADuoConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFADuoConfig`: %v\n", resp)
 }
 ```
 
@@ -161,20 +161,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationApi.GetMFAOktaConfig(context.Background()).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.GetMFAOktaConfig(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationApi.GetMFAOktaConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.GetMFAOktaConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetMFAOktaConfig`: MfaOktaConfig
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationApi.GetMFAOktaConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.GetMFAOktaConfig`: %v\n", resp)
 }
 ```
 
@@ -222,7 +222,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -230,13 +230,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationApi.SetMFADuoConfig(context.Background()).MfaDuoConfig(mfaDuoConfig).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.SetMFADuoConfig(context.Background()).MfaDuoConfig(mfaDuoConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationApi.SetMFADuoConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFADuoConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SetMFADuoConfig`: MfaDuoConfig
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationApi.SetMFADuoConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFADuoConfig`: %v\n", resp)
 }
 ```
 
@@ -288,7 +288,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -296,13 +296,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationApi.SetMFAOktaConfig(context.Background()).MfaOktaConfig(mfaOktaConfig).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.SetMFAOktaConfig(context.Background()).MfaOktaConfig(mfaOktaConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationApi.SetMFAOktaConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.SetMFAOktaConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SetMFAOktaConfig`: MfaOktaConfig
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationApi.SetMFAOktaConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.SetMFAOktaConfig`: %v\n", resp)
 }
 ```
 
@@ -354,7 +354,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -362,13 +362,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAConfigurationApi.TestMFAConfig(context.Background(), method).Execute()
+    resp, r, err := apiClient.MFAConfigurationAPI.TestMFAConfig(context.Background(), method).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationApi.TestMFAConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAConfigurationAPI.TestMFAConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `TestMFAConfig`: MfaConfigTestResponse
-    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationApi.TestMFAConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAConfigurationAPI.TestMFAConfig`: %v\n", resp)
 }
 ```
 

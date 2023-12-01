@@ -490,8 +490,8 @@ func (o *BaseAccount) UnmarshalJSON(bytes []byte) (err error) {
 	varBaseAccount := _BaseAccount{}
 
 	if err = json.Unmarshal(bytes, &varBaseAccount); err == nil {
-		*o = BaseAccount(varBaseAccount)
-	}
+	*o = BaseAccount(varBaseAccount)
+}
 
 	additionalProperties := make(map[string]interface{})
 

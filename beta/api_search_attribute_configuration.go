@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// SearchAttributeConfigurationApiService SearchAttributeConfigurationApi service
-type SearchAttributeConfigurationApiService service
+// SearchAttributeConfigurationAPIService SearchAttributeConfigurationAPI service
+type SearchAttributeConfigurationAPIService service
 
 type ApiCreateSearchAttributeConfigRequest struct {
 	ctx context.Context
-	ApiService *SearchAttributeConfigurationApiService
+	ApiService *SearchAttributeConfigurationAPIService
 	searchAttributeConfig *SearchAttributeConfig
 }
 
@@ -47,7 +47,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSearchAttributeConfigRequest
 */
-func (a *SearchAttributeConfigurationApiService) CreateSearchAttributeConfig(ctx context.Context) ApiCreateSearchAttributeConfigRequest {
+func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfig(ctx context.Context) ApiCreateSearchAttributeConfigRequest {
 	return ApiCreateSearchAttributeConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,7 +56,7 @@ func (a *SearchAttributeConfigurationApiService) CreateSearchAttributeConfig(ctx
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *SearchAttributeConfigurationApiService) CreateSearchAttributeConfigExecute(r ApiCreateSearchAttributeConfigRequest) (map[string]interface{}, *http.Response, error) {
+func (a *SearchAttributeConfigurationAPIService) CreateSearchAttributeConfigExecute(r ApiCreateSearchAttributeConfigRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -64,7 +64,7 @@ func (a *SearchAttributeConfigurationApiService) CreateSearchAttributeConfigExec
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationApiService.CreateSearchAttributeConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationAPIService.CreateSearchAttributeConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -107,9 +107,9 @@ func (a *SearchAttributeConfigurationApiService) CreateSearchAttributeConfigExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -201,7 +201,7 @@ func (a *SearchAttributeConfigurationApiService) CreateSearchAttributeConfigExec
 
 type ApiDeleteSearchAttributeConfigRequest struct {
 	ctx context.Context
-	ApiService *SearchAttributeConfigurationApiService
+	ApiService *SearchAttributeConfigurationAPIService
 	name string
 }
 
@@ -219,7 +219,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param name Name of the extended search attribute configuration to delete.
  @return ApiDeleteSearchAttributeConfigRequest
 */
-func (a *SearchAttributeConfigurationApiService) DeleteSearchAttributeConfig(ctx context.Context, name string) ApiDeleteSearchAttributeConfigRequest {
+func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfig(ctx context.Context, name string) ApiDeleteSearchAttributeConfigRequest {
 	return ApiDeleteSearchAttributeConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -228,14 +228,14 @@ func (a *SearchAttributeConfigurationApiService) DeleteSearchAttributeConfig(ctx
 }
 
 // Execute executes the request
-func (a *SearchAttributeConfigurationApiService) DeleteSearchAttributeConfigExecute(r ApiDeleteSearchAttributeConfigRequest) (*http.Response, error) {
+func (a *SearchAttributeConfigurationAPIService) DeleteSearchAttributeConfigExecute(r ApiDeleteSearchAttributeConfigRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationApiService.DeleteSearchAttributeConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationAPIService.DeleteSearchAttributeConfig")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -274,9 +274,9 @@ func (a *SearchAttributeConfigurationApiService) DeleteSearchAttributeConfigExec
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -348,7 +348,7 @@ func (a *SearchAttributeConfigurationApiService) DeleteSearchAttributeConfigExec
 
 type ApiGetSearchAttributeConfigRequest struct {
 	ctx context.Context
-	ApiService *SearchAttributeConfigurationApiService
+	ApiService *SearchAttributeConfigurationAPIService
 }
 
 func (r ApiGetSearchAttributeConfigRequest) Execute() ([]SearchAttributeConfig, *http.Response, error) {
@@ -364,7 +364,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSearchAttributeConfigRequest
 */
-func (a *SearchAttributeConfigurationApiService) GetSearchAttributeConfig(ctx context.Context) ApiGetSearchAttributeConfigRequest {
+func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfig(ctx context.Context) ApiGetSearchAttributeConfigRequest {
 	return ApiGetSearchAttributeConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -373,7 +373,7 @@ func (a *SearchAttributeConfigurationApiService) GetSearchAttributeConfig(ctx co
 
 // Execute executes the request
 //  @return []SearchAttributeConfig
-func (a *SearchAttributeConfigurationApiService) GetSearchAttributeConfigExecute(r ApiGetSearchAttributeConfigRequest) ([]SearchAttributeConfig, *http.Response, error) {
+func (a *SearchAttributeConfigurationAPIService) GetSearchAttributeConfigExecute(r ApiGetSearchAttributeConfigRequest) ([]SearchAttributeConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -381,7 +381,7 @@ func (a *SearchAttributeConfigurationApiService) GetSearchAttributeConfigExecute
 		localVarReturnValue  []SearchAttributeConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationApiService.GetSearchAttributeConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationAPIService.GetSearchAttributeConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -419,9 +419,9 @@ func (a *SearchAttributeConfigurationApiService) GetSearchAttributeConfigExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -491,7 +491,7 @@ func (a *SearchAttributeConfigurationApiService) GetSearchAttributeConfigExecute
 
 type ApiGetSingleSearchAttributeConfigRequest struct {
 	ctx context.Context
-	ApiService *SearchAttributeConfigurationApiService
+	ApiService *SearchAttributeConfigurationAPIService
 	name string
 }
 
@@ -509,7 +509,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param name Name of the extended search attribute configuration to delete.
  @return ApiGetSingleSearchAttributeConfigRequest
 */
-func (a *SearchAttributeConfigurationApiService) GetSingleSearchAttributeConfig(ctx context.Context, name string) ApiGetSingleSearchAttributeConfigRequest {
+func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfig(ctx context.Context, name string) ApiGetSingleSearchAttributeConfigRequest {
 	return ApiGetSingleSearchAttributeConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -519,7 +519,7 @@ func (a *SearchAttributeConfigurationApiService) GetSingleSearchAttributeConfig(
 
 // Execute executes the request
 //  @return []SearchAttributeConfig
-func (a *SearchAttributeConfigurationApiService) GetSingleSearchAttributeConfigExecute(r ApiGetSingleSearchAttributeConfigRequest) ([]SearchAttributeConfig, *http.Response, error) {
+func (a *SearchAttributeConfigurationAPIService) GetSingleSearchAttributeConfigExecute(r ApiGetSingleSearchAttributeConfigRequest) ([]SearchAttributeConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -527,7 +527,7 @@ func (a *SearchAttributeConfigurationApiService) GetSingleSearchAttributeConfigE
 		localVarReturnValue  []SearchAttributeConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationApiService.GetSingleSearchAttributeConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationAPIService.GetSingleSearchAttributeConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -566,9 +566,9 @@ func (a *SearchAttributeConfigurationApiService) GetSingleSearchAttributeConfigE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -649,7 +649,7 @@ func (a *SearchAttributeConfigurationApiService) GetSingleSearchAttributeConfigE
 
 type ApiPatchSearchAttributeConfigRequest struct {
 	ctx context.Context
-	ApiService *SearchAttributeConfigurationApiService
+	ApiService *SearchAttributeConfigurationAPIService
 	name string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -674,7 +674,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param name Name of the Search Attribute Configuration to patch.
  @return ApiPatchSearchAttributeConfigRequest
 */
-func (a *SearchAttributeConfigurationApiService) PatchSearchAttributeConfig(ctx context.Context, name string) ApiPatchSearchAttributeConfigRequest {
+func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfig(ctx context.Context, name string) ApiPatchSearchAttributeConfigRequest {
 	return ApiPatchSearchAttributeConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -684,7 +684,7 @@ func (a *SearchAttributeConfigurationApiService) PatchSearchAttributeConfig(ctx 
 
 // Execute executes the request
 //  @return SearchAttributeConfig
-func (a *SearchAttributeConfigurationApiService) PatchSearchAttributeConfigExecute(r ApiPatchSearchAttributeConfigRequest) (*SearchAttributeConfig, *http.Response, error) {
+func (a *SearchAttributeConfigurationAPIService) PatchSearchAttributeConfigExecute(r ApiPatchSearchAttributeConfigRequest) (*SearchAttributeConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -692,7 +692,7 @@ func (a *SearchAttributeConfigurationApiService) PatchSearchAttributeConfigExecu
 		localVarReturnValue  *SearchAttributeConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationApiService.PatchSearchAttributeConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAttributeConfigurationAPIService.PatchSearchAttributeConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -736,9 +736,9 @@ func (a *SearchAttributeConfigurationApiService) PatchSearchAttributeConfigExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// CertificationSummariesApiService CertificationSummariesApi service
-type CertificationSummariesApiService service
+// CertificationSummariesAPIService CertificationSummariesAPI service
+type CertificationSummariesAPIService service
 
 type ApiGetIdentityAccessSummariesRequest struct {
 	ctx context.Context
-	ApiService *CertificationSummariesApiService
+	ApiService *CertificationSummariesAPIService
 	id string
 	type_ string
 	limit *int32
@@ -79,7 +79,7 @@ This API returns a list of access summaries for the specified identity campaign 
  @param type_ The type of access review item to retrieve summaries for
  @return ApiGetIdentityAccessSummariesRequest
 */
-func (a *CertificationSummariesApiService) GetIdentityAccessSummaries(ctx context.Context, id string, type_ string) ApiGetIdentityAccessSummariesRequest {
+func (a *CertificationSummariesAPIService) GetIdentityAccessSummaries(ctx context.Context, id string, type_ string) ApiGetIdentityAccessSummariesRequest {
 	return ApiGetIdentityAccessSummariesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -90,7 +90,7 @@ func (a *CertificationSummariesApiService) GetIdentityAccessSummaries(ctx contex
 
 // Execute executes the request
 //  @return []AccessSummary
-func (a *CertificationSummariesApiService) GetIdentityAccessSummariesExecute(r ApiGetIdentityAccessSummariesRequest) ([]AccessSummary, *http.Response, error) {
+func (a *CertificationSummariesAPIService) GetIdentityAccessSummariesExecute(r ApiGetIdentityAccessSummariesRequest) ([]AccessSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -98,7 +98,7 @@ func (a *CertificationSummariesApiService) GetIdentityAccessSummariesExecute(r A
 		localVarReturnValue  []AccessSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesApiService.GetIdentityAccessSummaries")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesAPIService.GetIdentityAccessSummaries")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -113,12 +113,21 @@ func (a *CertificationSummariesApiService) GetIdentityAccessSummariesExecute(r A
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -153,9 +162,9 @@ func (a *CertificationSummariesApiService) GetIdentityAccessSummariesExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -247,7 +256,7 @@ func (a *CertificationSummariesApiService) GetIdentityAccessSummariesExecute(r A
 
 type ApiGetIdentityDecisionSummaryRequest struct {
 	ctx context.Context
-	ApiService *CertificationSummariesApiService
+	ApiService *CertificationSummariesAPIService
 	id string
 	filters *string
 }
@@ -271,7 +280,7 @@ This API returns a summary of the decisions made on an identity campaign certifi
  @param id The certification ID
  @return ApiGetIdentityDecisionSummaryRequest
 */
-func (a *CertificationSummariesApiService) GetIdentityDecisionSummary(ctx context.Context, id string) ApiGetIdentityDecisionSummaryRequest {
+func (a *CertificationSummariesAPIService) GetIdentityDecisionSummary(ctx context.Context, id string) ApiGetIdentityDecisionSummaryRequest {
 	return ApiGetIdentityDecisionSummaryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -281,7 +290,7 @@ func (a *CertificationSummariesApiService) GetIdentityDecisionSummary(ctx contex
 
 // Execute executes the request
 //  @return IdentityCertDecisionSummary
-func (a *CertificationSummariesApiService) GetIdentityDecisionSummaryExecute(r ApiGetIdentityDecisionSummaryRequest) (*IdentityCertDecisionSummary, *http.Response, error) {
+func (a *CertificationSummariesAPIService) GetIdentityDecisionSummaryExecute(r ApiGetIdentityDecisionSummaryRequest) (*IdentityCertDecisionSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -289,7 +298,7 @@ func (a *CertificationSummariesApiService) GetIdentityDecisionSummaryExecute(r A
 		localVarReturnValue  *IdentityCertDecisionSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesApiService.GetIdentityDecisionSummary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesAPIService.GetIdentityDecisionSummary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -331,9 +340,9 @@ func (a *CertificationSummariesApiService) GetIdentityDecisionSummaryExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -425,7 +434,7 @@ func (a *CertificationSummariesApiService) GetIdentityDecisionSummaryExecute(r A
 
 type ApiGetIdentitySummariesRequest struct {
 	ctx context.Context
-	ApiService *CertificationSummariesApiService
+	ApiService *CertificationSummariesAPIService
 	id string
 	limit *int32
 	offset *int32
@@ -477,7 +486,7 @@ This API returns a list of the identity summaries for a specific identity campai
  @param id The identity campaign certification ID
  @return ApiGetIdentitySummariesRequest
 */
-func (a *CertificationSummariesApiService) GetIdentitySummaries(ctx context.Context, id string) ApiGetIdentitySummariesRequest {
+func (a *CertificationSummariesAPIService) GetIdentitySummaries(ctx context.Context, id string) ApiGetIdentitySummariesRequest {
 	return ApiGetIdentitySummariesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -487,7 +496,7 @@ func (a *CertificationSummariesApiService) GetIdentitySummaries(ctx context.Cont
 
 // Execute executes the request
 //  @return []CertificationIdentitySummary
-func (a *CertificationSummariesApiService) GetIdentitySummariesExecute(r ApiGetIdentitySummariesRequest) ([]CertificationIdentitySummary, *http.Response, error) {
+func (a *CertificationSummariesAPIService) GetIdentitySummariesExecute(r ApiGetIdentitySummariesRequest) ([]CertificationIdentitySummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -495,7 +504,7 @@ func (a *CertificationSummariesApiService) GetIdentitySummariesExecute(r ApiGetI
 		localVarReturnValue  []CertificationIdentitySummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesApiService.GetIdentitySummaries")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesAPIService.GetIdentitySummaries")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -509,12 +518,21 @@ func (a *CertificationSummariesApiService) GetIdentitySummariesExecute(r ApiGetI
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -549,9 +567,9 @@ func (a *CertificationSummariesApiService) GetIdentitySummariesExecute(r ApiGetI
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -643,7 +661,7 @@ func (a *CertificationSummariesApiService) GetIdentitySummariesExecute(r ApiGetI
 
 type ApiGetIdentitySummaryRequest struct {
 	ctx context.Context
-	ApiService *CertificationSummariesApiService
+	ApiService *CertificationSummariesAPIService
 	id string
 	identitySummaryId string
 }
@@ -662,7 +680,7 @@ This API returns the summary for an identity on a specified identity campaign ce
  @param identitySummaryId The identity summary ID
  @return ApiGetIdentitySummaryRequest
 */
-func (a *CertificationSummariesApiService) GetIdentitySummary(ctx context.Context, id string, identitySummaryId string) ApiGetIdentitySummaryRequest {
+func (a *CertificationSummariesAPIService) GetIdentitySummary(ctx context.Context, id string, identitySummaryId string) ApiGetIdentitySummaryRequest {
 	return ApiGetIdentitySummaryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -673,7 +691,7 @@ func (a *CertificationSummariesApiService) GetIdentitySummary(ctx context.Contex
 
 // Execute executes the request
 //  @return CertificationIdentitySummary
-func (a *CertificationSummariesApiService) GetIdentitySummaryExecute(r ApiGetIdentitySummaryRequest) (*CertificationIdentitySummary, *http.Response, error) {
+func (a *CertificationSummariesAPIService) GetIdentitySummaryExecute(r ApiGetIdentitySummaryRequest) (*CertificationIdentitySummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -681,7 +699,7 @@ func (a *CertificationSummariesApiService) GetIdentitySummaryExecute(r ApiGetIde
 		localVarReturnValue  *CertificationIdentitySummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesApiService.GetIdentitySummary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationSummariesAPIService.GetIdentitySummary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -721,9 +739,9 @@ func (a *CertificationSummariesApiService) GetIdentitySummaryExecute(r ApiGetIde
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -100,8 +100,8 @@ func (o *TokenAuthResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varTokenAuthResponse := _TokenAuthResponse{}
 
 	if err = json.Unmarshal(bytes, &varTokenAuthResponse); err == nil {
-		*o = TokenAuthResponse(varTokenAuthResponse)
-	}
+	*o = TokenAuthResponse(varTokenAuthResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

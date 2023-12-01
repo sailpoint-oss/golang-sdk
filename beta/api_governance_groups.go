@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// GovernanceGroupsApiService GovernanceGroupsApi service
-type GovernanceGroupsApiService service
+// GovernanceGroupsAPIService GovernanceGroupsAPI service
+type GovernanceGroupsAPIService service
 
 type ApiCreateWorkgroupRequest struct {
 	ctx context.Context
-	ApiService *GovernanceGroupsApiService
+	ApiService *GovernanceGroupsAPIService
 	workgroupDto *WorkgroupDto
 }
 
@@ -46,7 +46,7 @@ This API creates a new Governance Group.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateWorkgroupRequest
 */
-func (a *GovernanceGroupsApiService) CreateWorkgroup(ctx context.Context) ApiCreateWorkgroupRequest {
+func (a *GovernanceGroupsAPIService) CreateWorkgroup(ctx context.Context) ApiCreateWorkgroupRequest {
 	return ApiCreateWorkgroupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *GovernanceGroupsApiService) CreateWorkgroup(ctx context.Context) ApiCre
 
 // Execute executes the request
 //  @return WorkgroupDto
-func (a *GovernanceGroupsApiService) CreateWorkgroupExecute(r ApiCreateWorkgroupRequest) (*WorkgroupDto, *http.Response, error) {
+func (a *GovernanceGroupsAPIService) CreateWorkgroupExecute(r ApiCreateWorkgroupRequest) (*WorkgroupDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *GovernanceGroupsApiService) CreateWorkgroupExecute(r ApiCreateWorkgroup
 		localVarReturnValue  *WorkgroupDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsApiService.CreateWorkgroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.CreateWorkgroup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *GovernanceGroupsApiService) CreateWorkgroupExecute(r ApiCreateWorkgroup
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -189,7 +189,7 @@ func (a *GovernanceGroupsApiService) CreateWorkgroupExecute(r ApiCreateWorkgroup
 
 type ApiDeleteWorkgroupRequest struct {
 	ctx context.Context
-	ApiService *GovernanceGroupsApiService
+	ApiService *GovernanceGroupsAPIService
 	id string
 }
 
@@ -206,7 +206,7 @@ This API deletes a Governance Group by its ID.
  @param id ID of the Governance Group
  @return ApiDeleteWorkgroupRequest
 */
-func (a *GovernanceGroupsApiService) DeleteWorkgroup(ctx context.Context, id string) ApiDeleteWorkgroupRequest {
+func (a *GovernanceGroupsAPIService) DeleteWorkgroup(ctx context.Context, id string) ApiDeleteWorkgroupRequest {
 	return ApiDeleteWorkgroupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -215,14 +215,14 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroup(ctx context.Context, id str
 }
 
 // Execute executes the request
-func (a *GovernanceGroupsApiService) DeleteWorkgroupExecute(r ApiDeleteWorkgroupRequest) (*http.Response, error) {
+func (a *GovernanceGroupsAPIService) DeleteWorkgroupExecute(r ApiDeleteWorkgroupRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsApiService.DeleteWorkgroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.DeleteWorkgroup")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -261,9 +261,9 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupExecute(r ApiDeleteWorkgroup
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -335,7 +335,7 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupExecute(r ApiDeleteWorkgroup
 
 type ApiDeleteWorkgroupMembersRequest struct {
 	ctx context.Context
-	ApiService *GovernanceGroupsApiService
+	ApiService *GovernanceGroupsAPIService
 	workgroupId string
 	bulkWorkgroupMembersRequestInner *[]BulkWorkgroupMembersRequestInner
 }
@@ -363,7 +363,7 @@ This API removes one or more  members from a Governance Group.  A token with API
  @param workgroupId ID of the Governance Group.
  @return ApiDeleteWorkgroupMembersRequest
 */
-func (a *GovernanceGroupsApiService) DeleteWorkgroupMembers(ctx context.Context, workgroupId string) ApiDeleteWorkgroupMembersRequest {
+func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembers(ctx context.Context, workgroupId string) ApiDeleteWorkgroupMembersRequest {
 	return ApiDeleteWorkgroupMembersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -373,7 +373,7 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupMembers(ctx context.Context,
 
 // Execute executes the request
 //  @return []WorkgroupMemberDeleteItem
-func (a *GovernanceGroupsApiService) DeleteWorkgroupMembersExecute(r ApiDeleteWorkgroupMembersRequest) ([]WorkgroupMemberDeleteItem, *http.Response, error) {
+func (a *GovernanceGroupsAPIService) DeleteWorkgroupMembersExecute(r ApiDeleteWorkgroupMembersRequest) ([]WorkgroupMemberDeleteItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -381,7 +381,7 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupMembersExecute(r ApiDeleteWo
 		localVarReturnValue  []WorkgroupMemberDeleteItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsApiService.DeleteWorkgroupMembers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.DeleteWorkgroupMembers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -425,9 +425,9 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupMembersExecute(r ApiDeleteWo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -508,7 +508,7 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupMembersExecute(r ApiDeleteWo
 
 type ApiDeleteWorkgroupsInBulkRequest struct {
 	ctx context.Context
-	ApiService *GovernanceGroupsApiService
+	ApiService *GovernanceGroupsAPIService
 	workgroupBulkDeleteRequest *WorkgroupBulkDeleteRequest
 }
 
@@ -540,7 +540,7 @@ This API initiates a bulk deletion of one or more Governance Groups.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteWorkgroupsInBulkRequest
 */
-func (a *GovernanceGroupsApiService) DeleteWorkgroupsInBulk(ctx context.Context) ApiDeleteWorkgroupsInBulkRequest {
+func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulk(ctx context.Context) ApiDeleteWorkgroupsInBulkRequest {
 	return ApiDeleteWorkgroupsInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -549,7 +549,7 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupsInBulk(ctx context.Context)
 
 // Execute executes the request
 //  @return []WorkgroupDeleteItem
-func (a *GovernanceGroupsApiService) DeleteWorkgroupsInBulkExecute(r ApiDeleteWorkgroupsInBulkRequest) ([]WorkgroupDeleteItem, *http.Response, error) {
+func (a *GovernanceGroupsAPIService) DeleteWorkgroupsInBulkExecute(r ApiDeleteWorkgroupsInBulkRequest) ([]WorkgroupDeleteItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -557,7 +557,7 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupsInBulkExecute(r ApiDeleteWo
 		localVarReturnValue  []WorkgroupDeleteItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsApiService.DeleteWorkgroupsInBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.DeleteWorkgroupsInBulk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -600,9 +600,9 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupsInBulkExecute(r ApiDeleteWo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -683,7 +683,7 @@ func (a *GovernanceGroupsApiService) DeleteWorkgroupsInBulkExecute(r ApiDeleteWo
 
 type ApiGetWorkgroupRequest struct {
 	ctx context.Context
-	ApiService *GovernanceGroupsApiService
+	ApiService *GovernanceGroupsAPIService
 	id string
 }
 
@@ -700,7 +700,7 @@ This API returns a Governance Groups by its ID.
  @param id ID of the Governance Group
  @return ApiGetWorkgroupRequest
 */
-func (a *GovernanceGroupsApiService) GetWorkgroup(ctx context.Context, id string) ApiGetWorkgroupRequest {
+func (a *GovernanceGroupsAPIService) GetWorkgroup(ctx context.Context, id string) ApiGetWorkgroupRequest {
 	return ApiGetWorkgroupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -710,7 +710,7 @@ func (a *GovernanceGroupsApiService) GetWorkgroup(ctx context.Context, id string
 
 // Execute executes the request
 //  @return WorkgroupDto
-func (a *GovernanceGroupsApiService) GetWorkgroupExecute(r ApiGetWorkgroupRequest) (*WorkgroupDto, *http.Response, error) {
+func (a *GovernanceGroupsAPIService) GetWorkgroupExecute(r ApiGetWorkgroupRequest) (*WorkgroupDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -718,7 +718,7 @@ func (a *GovernanceGroupsApiService) GetWorkgroupExecute(r ApiGetWorkgroupReques
 		localVarReturnValue  *WorkgroupDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsApiService.GetWorkgroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.GetWorkgroup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -757,9 +757,9 @@ func (a *GovernanceGroupsApiService) GetWorkgroupExecute(r ApiGetWorkgroupReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -840,7 +840,7 @@ func (a *GovernanceGroupsApiService) GetWorkgroupExecute(r ApiGetWorkgroupReques
 
 type ApiListConnectionsRequest struct {
 	ctx context.Context
-	ApiService *GovernanceGroupsApiService
+	ApiService *GovernanceGroupsAPIService
 	workgroupId string
 	offset *int32
 	limit *int32
@@ -885,7 +885,7 @@ This API returns list of connections associated with a Governance Group.
  @param workgroupId ID of the Governance Group.
  @return ApiListConnectionsRequest
 */
-func (a *GovernanceGroupsApiService) ListConnections(ctx context.Context, workgroupId string) ApiListConnectionsRequest {
+func (a *GovernanceGroupsAPIService) ListConnections(ctx context.Context, workgroupId string) ApiListConnectionsRequest {
 	return ApiListConnectionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -895,7 +895,7 @@ func (a *GovernanceGroupsApiService) ListConnections(ctx context.Context, workgr
 
 // Execute executes the request
 //  @return []WorkgroupConnectionDto
-func (a *GovernanceGroupsApiService) ListConnectionsExecute(r ApiListConnectionsRequest) ([]WorkgroupConnectionDto, *http.Response, error) {
+func (a *GovernanceGroupsAPIService) ListConnectionsExecute(r ApiListConnectionsRequest) ([]WorkgroupConnectionDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -903,7 +903,7 @@ func (a *GovernanceGroupsApiService) ListConnectionsExecute(r ApiListConnections
 		localVarReturnValue  []WorkgroupConnectionDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsApiService.ListConnections")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.ListConnections")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -917,12 +917,21 @@ func (a *GovernanceGroupsApiService) ListConnectionsExecute(r ApiListConnections
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -954,9 +963,9 @@ func (a *GovernanceGroupsApiService) ListConnectionsExecute(r ApiListConnections
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1037,7 +1046,7 @@ func (a *GovernanceGroupsApiService) ListConnectionsExecute(r ApiListConnections
 
 type ApiListWorkgroupMembersRequest struct {
 	ctx context.Context
-	ApiService *GovernanceGroupsApiService
+	ApiService *GovernanceGroupsAPIService
 	workgroupId string
 	offset *int32
 	limit *int32
@@ -1082,7 +1091,7 @@ This API returns list of members associated with a Governance Group.
  @param workgroupId ID of the Governance Group.
  @return ApiListWorkgroupMembersRequest
 */
-func (a *GovernanceGroupsApiService) ListWorkgroupMembers(ctx context.Context, workgroupId string) ApiListWorkgroupMembersRequest {
+func (a *GovernanceGroupsAPIService) ListWorkgroupMembers(ctx context.Context, workgroupId string) ApiListWorkgroupMembersRequest {
 	return ApiListWorkgroupMembersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1092,7 +1101,7 @@ func (a *GovernanceGroupsApiService) ListWorkgroupMembers(ctx context.Context, w
 
 // Execute executes the request
 //  @return []ListWorkgroupMembers200ResponseInner
-func (a *GovernanceGroupsApiService) ListWorkgroupMembersExecute(r ApiListWorkgroupMembersRequest) ([]ListWorkgroupMembers200ResponseInner, *http.Response, error) {
+func (a *GovernanceGroupsAPIService) ListWorkgroupMembersExecute(r ApiListWorkgroupMembersRequest) ([]ListWorkgroupMembers200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1100,7 +1109,7 @@ func (a *GovernanceGroupsApiService) ListWorkgroupMembersExecute(r ApiListWorkgr
 		localVarReturnValue  []ListWorkgroupMembers200ResponseInner
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsApiService.ListWorkgroupMembers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.ListWorkgroupMembers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1114,12 +1123,21 @@ func (a *GovernanceGroupsApiService) ListWorkgroupMembersExecute(r ApiListWorkgr
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -1151,9 +1169,9 @@ func (a *GovernanceGroupsApiService) ListWorkgroupMembersExecute(r ApiListWorkgr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1234,7 +1252,7 @@ func (a *GovernanceGroupsApiService) ListWorkgroupMembersExecute(r ApiListWorkgr
 
 type ApiListWorkgroupsRequest struct {
 	ctx context.Context
-	ApiService *GovernanceGroupsApiService
+	ApiService *GovernanceGroupsAPIService
 	offset *int32
 	limit *int32
 	count *bool
@@ -1284,7 +1302,7 @@ This API returns list of Governance Groups
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListWorkgroupsRequest
 */
-func (a *GovernanceGroupsApiService) ListWorkgroups(ctx context.Context) ApiListWorkgroupsRequest {
+func (a *GovernanceGroupsAPIService) ListWorkgroups(ctx context.Context) ApiListWorkgroupsRequest {
 	return ApiListWorkgroupsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1293,7 +1311,7 @@ func (a *GovernanceGroupsApiService) ListWorkgroups(ctx context.Context) ApiList
 
 // Execute executes the request
 //  @return []WorkgroupDto
-func (a *GovernanceGroupsApiService) ListWorkgroupsExecute(r ApiListWorkgroupsRequest) ([]WorkgroupDto, *http.Response, error) {
+func (a *GovernanceGroupsAPIService) ListWorkgroupsExecute(r ApiListWorkgroupsRequest) ([]WorkgroupDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1301,7 +1319,7 @@ func (a *GovernanceGroupsApiService) ListWorkgroupsExecute(r ApiListWorkgroupsRe
 		localVarReturnValue  []WorkgroupDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsApiService.ListWorkgroups")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.ListWorkgroups")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1314,12 +1332,21 @@ func (a *GovernanceGroupsApiService) ListWorkgroupsExecute(r ApiListWorkgroupsRe
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1354,9 +1381,9 @@ func (a *GovernanceGroupsApiService) ListWorkgroupsExecute(r ApiListWorkgroupsRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1437,7 +1464,7 @@ func (a *GovernanceGroupsApiService) ListWorkgroupsExecute(r ApiListWorkgroupsRe
 
 type ApiPatchWorkgroupRequest struct {
 	ctx context.Context
-	ApiService *GovernanceGroupsApiService
+	ApiService *GovernanceGroupsAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -1462,7 +1489,7 @@ A token with API, ORG_ADMIN is required to call this API. In addition.
  @param id ID of the Governance Group
  @return ApiPatchWorkgroupRequest
 */
-func (a *GovernanceGroupsApiService) PatchWorkgroup(ctx context.Context, id string) ApiPatchWorkgroupRequest {
+func (a *GovernanceGroupsAPIService) PatchWorkgroup(ctx context.Context, id string) ApiPatchWorkgroupRequest {
 	return ApiPatchWorkgroupRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1472,7 +1499,7 @@ func (a *GovernanceGroupsApiService) PatchWorkgroup(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return WorkgroupDto
-func (a *GovernanceGroupsApiService) PatchWorkgroupExecute(r ApiPatchWorkgroupRequest) (*WorkgroupDto, *http.Response, error) {
+func (a *GovernanceGroupsAPIService) PatchWorkgroupExecute(r ApiPatchWorkgroupRequest) (*WorkgroupDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -1480,7 +1507,7 @@ func (a *GovernanceGroupsApiService) PatchWorkgroupExecute(r ApiPatchWorkgroupRe
 		localVarReturnValue  *WorkgroupDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsApiService.PatchWorkgroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.PatchWorkgroup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1521,9 +1548,9 @@ func (a *GovernanceGroupsApiService) PatchWorkgroupExecute(r ApiPatchWorkgroupRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1604,7 +1631,7 @@ func (a *GovernanceGroupsApiService) PatchWorkgroupExecute(r ApiPatchWorkgroupRe
 
 type ApiUpdateWorkgroupMembersRequest struct {
 	ctx context.Context
-	ApiService *GovernanceGroupsApiService
+	ApiService *GovernanceGroupsAPIService
 	workgroupId string
 	bulkWorkgroupMembersRequestInner *[]BulkWorkgroupMembersRequestInner
 }
@@ -1632,7 +1659,7 @@ This API adds one or more members to a Governance Group.  A token with API, ORG_
  @param workgroupId ID of the Governance Group.
  @return ApiUpdateWorkgroupMembersRequest
 */
-func (a *GovernanceGroupsApiService) UpdateWorkgroupMembers(ctx context.Context, workgroupId string) ApiUpdateWorkgroupMembersRequest {
+func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembers(ctx context.Context, workgroupId string) ApiUpdateWorkgroupMembersRequest {
 	return ApiUpdateWorkgroupMembersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1642,7 +1669,7 @@ func (a *GovernanceGroupsApiService) UpdateWorkgroupMembers(ctx context.Context,
 
 // Execute executes the request
 //  @return []WorkgroupMemberAddItem
-func (a *GovernanceGroupsApiService) UpdateWorkgroupMembersExecute(r ApiUpdateWorkgroupMembersRequest) ([]WorkgroupMemberAddItem, *http.Response, error) {
+func (a *GovernanceGroupsAPIService) UpdateWorkgroupMembersExecute(r ApiUpdateWorkgroupMembersRequest) ([]WorkgroupMemberAddItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1650,7 +1677,7 @@ func (a *GovernanceGroupsApiService) UpdateWorkgroupMembersExecute(r ApiUpdateWo
 		localVarReturnValue  []WorkgroupMemberAddItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsApiService.UpdateWorkgroupMembers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GovernanceGroupsAPIService.UpdateWorkgroupMembers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1694,9 +1721,9 @@ func (a *GovernanceGroupsApiService) UpdateWorkgroupMembersExecute(r ApiUpdateWo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

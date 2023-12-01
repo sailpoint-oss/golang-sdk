@@ -178,8 +178,8 @@ func (o *NetworkConfiguration) UnmarshalJSON(bytes []byte) (err error) {
 	varNetworkConfiguration := _NetworkConfiguration{}
 
 	if err = json.Unmarshal(bytes, &varNetworkConfiguration); err == nil {
-		*o = NetworkConfiguration(varNetworkConfiguration)
-	}
+	*o = NetworkConfiguration(varNetworkConfiguration)
+}
 
 	additionalProperties := make(map[string]interface{})
 

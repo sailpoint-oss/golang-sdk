@@ -99,8 +99,8 @@ func (o *TenantConfigurationRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varTenantConfigurationRequest := _TenantConfigurationRequest{}
 
 	if err = json.Unmarshal(bytes, &varTenantConfigurationRequest); err == nil {
-		*o = TenantConfigurationRequest(varTenantConfigurationRequest)
-	}
+	*o = TenantConfigurationRequest(varTenantConfigurationRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

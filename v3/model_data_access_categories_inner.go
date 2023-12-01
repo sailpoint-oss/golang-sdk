@@ -137,8 +137,8 @@ func (o *DataAccessCategoriesInner) UnmarshalJSON(bytes []byte) (err error) {
 	varDataAccessCategoriesInner := _DataAccessCategoriesInner{}
 
 	if err = json.Unmarshal(bytes, &varDataAccessCategoriesInner); err == nil {
-		*o = DataAccessCategoriesInner(varDataAccessCategoriesInner)
-	}
+	*o = DataAccessCategoriesInner(varDataAccessCategoriesInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

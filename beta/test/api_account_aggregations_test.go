@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing AccountAggregationsApiService
+Testing AccountAggregationsAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_AccountAggregationsApiService(t *testing.T) {
+func Test_beta_AccountAggregationsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AccountAggregationsApiService GetAccountAggregationStatus", func(t *testing.T) {
+	t.Run("Test AccountAggregationsAPIService GetAccountAggregationStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.AccountAggregationsApi.GetAccountAggregationStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.AccountAggregationsAPI.GetAccountAggregationStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

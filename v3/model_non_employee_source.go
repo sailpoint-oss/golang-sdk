@@ -360,8 +360,8 @@ func (o *NonEmployeeSource) UnmarshalJSON(bytes []byte) (err error) {
 	varNonEmployeeSource := _NonEmployeeSource{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeSource); err == nil {
-		*o = NonEmployeeSource(varNonEmployeeSource)
-	}
+	*o = NonEmployeeSource(varNonEmployeeSource)
+}
 
 	additionalProperties := make(map[string]interface{})
 

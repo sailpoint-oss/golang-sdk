@@ -1,18 +1,18 @@
-# \RoleInsightsApi
+# \RoleInsightsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRoleInsightRequests**](RoleInsightsApi.md#CreateRoleInsightRequests) | **Post** /role-insights/requests | Generate insights for roles
-[**DownloadRoleInsightsEntitlementsChanges**](RoleInsightsApi.md#DownloadRoleInsightsEntitlementsChanges) | **Get** /role-insights/{insightId}/entitlement-changes/download | Download entitlement insights for a role
-[**GetEntitlementChangesIdentities**](RoleInsightsApi.md#GetEntitlementChangesIdentities) | **Get** /role-insights/{insightId}/entitlement-changes/{entitlementId}/identities | Get identities for a suggested entitlement (for a role)
-[**GetRoleInsight**](RoleInsightsApi.md#GetRoleInsight) | **Get** /role-insights/{insightId} | Get a single role insight
-[**GetRoleInsights**](RoleInsightsApi.md#GetRoleInsights) | **Get** /role-insights | Get role insights
-[**GetRoleInsightsCurrentEntitlements**](RoleInsightsApi.md#GetRoleInsightsCurrentEntitlements) | **Get** /role-insights/{insightId}/current-entitlements | Get current entitlement for a role
-[**GetRoleInsightsEntitlementsChanges**](RoleInsightsApi.md#GetRoleInsightsEntitlementsChanges) | **Get** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
-[**GetRoleInsightsRequests**](RoleInsightsApi.md#GetRoleInsightsRequests) | **Get** /role-insights/requests/{id} | Returns metadata from prior request.
-[**GetRoleInsightsSummary**](RoleInsightsApi.md#GetRoleInsightsSummary) | **Get** /role-insights/summary | Get role insights summary information
+[**CreateRoleInsightRequests**](RoleInsightsAPI.md#CreateRoleInsightRequests) | **Post** /role-insights/requests | Generate insights for roles
+[**DownloadRoleInsightsEntitlementsChanges**](RoleInsightsAPI.md#DownloadRoleInsightsEntitlementsChanges) | **Get** /role-insights/{insightId}/entitlement-changes/download | Download entitlement insights for a role
+[**GetEntitlementChangesIdentities**](RoleInsightsAPI.md#GetEntitlementChangesIdentities) | **Get** /role-insights/{insightId}/entitlement-changes/{entitlementId}/identities | Get identities for a suggested entitlement (for a role)
+[**GetRoleInsight**](RoleInsightsAPI.md#GetRoleInsight) | **Get** /role-insights/{insightId} | Get a single role insight
+[**GetRoleInsights**](RoleInsightsAPI.md#GetRoleInsights) | **Get** /role-insights | Get role insights
+[**GetRoleInsightsCurrentEntitlements**](RoleInsightsAPI.md#GetRoleInsightsCurrentEntitlements) | **Get** /role-insights/{insightId}/current-entitlements | Get current entitlement for a role
+[**GetRoleInsightsEntitlementsChanges**](RoleInsightsAPI.md#GetRoleInsightsEntitlementsChanges) | **Get** /role-insights/{insightId}/entitlement-changes | Get entitlement insights for a role
+[**GetRoleInsightsRequests**](RoleInsightsAPI.md#GetRoleInsightsRequests) | **Get** /role-insights/requests/{id} | Returns metadata from prior request.
+[**GetRoleInsightsSummary**](RoleInsightsAPI.md#GetRoleInsightsSummary) | **Get** /role-insights/summary | Get role insights summary information
 
 
 
@@ -33,20 +33,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsightsApi.CreateRoleInsightRequests(context.Background()).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.CreateRoleInsightRequests(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsApi.CreateRoleInsightRequests``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.CreateRoleInsightRequests``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateRoleInsightRequests`: RoleInsightsResponse
-    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsApi.CreateRoleInsightRequests`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.CreateRoleInsightRequests`: %v\n", resp)
 }
 ```
 
@@ -94,7 +94,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -104,13 +104,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsightsApi.DownloadRoleInsightsEntitlementsChanges(context.Background(), insightId).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.DownloadRoleInsightsEntitlementsChanges(context.Background(), insightId).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsApi.DownloadRoleInsightsEntitlementsChanges``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.DownloadRoleInsightsEntitlementsChanges``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DownloadRoleInsightsEntitlementsChanges`: string
-    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsApi.DownloadRoleInsightsEntitlementsChanges`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.DownloadRoleInsightsEntitlementsChanges`: %v\n", resp)
 }
 ```
 
@@ -168,7 +168,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -183,13 +183,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsightsApi.GetEntitlementChangesIdentities(context.Background(), insightId, entitlementId).HasEntitlement(hasEntitlement).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetEntitlementChangesIdentities(context.Background(), insightId, entitlementId).HasEntitlement(hasEntitlement).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsApi.GetEntitlementChangesIdentities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetEntitlementChangesIdentities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetEntitlementChangesIdentities`: []RoleInsightsIdentities
-    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsApi.GetEntitlementChangesIdentities`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetEntitlementChangesIdentities`: %v\n", resp)
 }
 ```
 
@@ -253,7 +253,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -261,13 +261,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsightsApi.GetRoleInsight(context.Background(), insightId).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsight(context.Background(), insightId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsApi.GetRoleInsight``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsight``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRoleInsight`: RoleInsight
-    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsApi.GetRoleInsight`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsight`: %v\n", resp)
 }
 ```
 
@@ -323,7 +323,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -335,13 +335,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsightsApi.GetRoleInsights(context.Background()).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsights(context.Background()).Offset(offset).Limit(limit).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsApi.GetRoleInsights``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsights``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRoleInsights`: []RoleInsight
-    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsApi.GetRoleInsights`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsights`: %v\n", resp)
 }
 ```
 
@@ -397,7 +397,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -406,13 +406,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsightsApi.GetRoleInsightsCurrentEntitlements(context.Background(), insightId).Filters(filters).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsCurrentEntitlements(context.Background(), insightId).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsApi.GetRoleInsightsCurrentEntitlements``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsCurrentEntitlements``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRoleInsightsCurrentEntitlements`: []RoleInsightsEntitlement
-    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsApi.GetRoleInsightsCurrentEntitlements`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsCurrentEntitlements`: %v\n", resp)
 }
 ```
 
@@ -469,7 +469,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -479,13 +479,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsightsApi.GetRoleInsightsEntitlementsChanges(context.Background(), insightId).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsEntitlementsChanges(context.Background(), insightId).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsApi.GetRoleInsightsEntitlementsChanges``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsEntitlementsChanges``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRoleInsightsEntitlementsChanges`: []RoleInsightsEntitlementChanges
-    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsApi.GetRoleInsightsEntitlementsChanges`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsEntitlementsChanges`: %v\n", resp)
 }
 ```
 
@@ -543,7 +543,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -551,13 +551,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsightsApi.GetRoleInsightsRequests(context.Background(), id).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsRequests(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsApi.GetRoleInsightsRequests``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsRequests``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRoleInsightsRequests`: RoleInsightsResponse
-    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsApi.GetRoleInsightsRequests`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsRequests`: %v\n", resp)
 }
 ```
 
@@ -613,20 +613,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RoleInsightsApi.GetRoleInsightsSummary(context.Background()).Execute()
+    resp, r, err := apiClient.RoleInsightsAPI.GetRoleInsightsSummary(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsApi.GetRoleInsightsSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RoleInsightsAPI.GetRoleInsightsSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRoleInsightsSummary`: RoleInsightsSummary
-    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsApi.GetRoleInsightsSummary`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RoleInsightsAPI.GetRoleInsightsSummary`: %v\n", resp)
 }
 ```
 

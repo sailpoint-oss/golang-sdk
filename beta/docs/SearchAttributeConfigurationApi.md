@@ -1,14 +1,14 @@
-# \SearchAttributeConfigurationApi
+# \SearchAttributeConfigurationAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSearchAttributeConfig**](SearchAttributeConfigurationApi.md#CreateSearchAttributeConfig) | **Post** /accounts/search-attribute-config | Configure/create extended search attributes in IdentityNow.
-[**DeleteSearchAttributeConfig**](SearchAttributeConfigurationApi.md#DeleteSearchAttributeConfig) | **Delete** /accounts/search-attribute-config/{name} | Delete an extended search attribute in IdentityNow.
-[**GetSearchAttributeConfig**](SearchAttributeConfigurationApi.md#GetSearchAttributeConfig) | **Get** /accounts/search-attribute-config | Retrieve a list of extended search attributes in IdentityNow.
-[**GetSingleSearchAttributeConfig**](SearchAttributeConfigurationApi.md#GetSingleSearchAttributeConfig) | **Get** /accounts/search-attribute-config/{name} | Get the details of a specific extended search attribute in IdentityNow.
-[**PatchSearchAttributeConfig**](SearchAttributeConfigurationApi.md#PatchSearchAttributeConfig) | **Patch** /accounts/search-attribute-config/{name} | Update the details of a specific extended search attribute in IdentityNow.
+[**CreateSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#CreateSearchAttributeConfig) | **Post** /accounts/search-attribute-config | Configure/create extended search attributes in IdentityNow.
+[**DeleteSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#DeleteSearchAttributeConfig) | **Delete** /accounts/search-attribute-config/{name} | Delete an extended search attribute in IdentityNow.
+[**GetSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSearchAttributeConfig) | **Get** /accounts/search-attribute-config | Retrieve a list of extended search attributes in IdentityNow.
+[**GetSingleSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#GetSingleSearchAttributeConfig) | **Get** /accounts/search-attribute-config/{name} | Get the details of a specific extended search attribute in IdentityNow.
+[**PatchSearchAttributeConfig**](SearchAttributeConfigurationAPI.md#PatchSearchAttributeConfig) | **Patch** /accounts/search-attribute-config/{name} | Update the details of a specific extended search attribute in IdentityNow.
 
 
 
@@ -29,7 +29,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationApi.CreateSearchAttributeConfig(context.Background()).SearchAttributeConfig(searchAttributeConfig).Execute()
+    resp, r, err := apiClient.SearchAttributeConfigurationAPI.CreateSearchAttributeConfig(context.Background()).SearchAttributeConfig(searchAttributeConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationApi.CreateSearchAttributeConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.CreateSearchAttributeConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateSearchAttributeConfig`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationApi.CreateSearchAttributeConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.CreateSearchAttributeConfig`: %v\n", resp)
 }
 ```
 
@@ -95,7 +95,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -103,9 +103,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationApi.DeleteSearchAttributeConfig(context.Background(), name).Execute()
+    r, err := apiClient.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig(context.Background(), name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationApi.DeleteSearchAttributeConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -163,20 +163,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationApi.GetSearchAttributeConfig(context.Background()).Execute()
+    resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationApi.GetSearchAttributeConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSearchAttributeConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetSearchAttributeConfig`: []SearchAttributeConfig
-    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationApi.GetSearchAttributeConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.GetSearchAttributeConfig`: %v\n", resp)
 }
 ```
 
@@ -224,7 +224,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -232,13 +232,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationApi.GetSingleSearchAttributeConfig(context.Background(), name).Execute()
+    resp, r, err := apiClient.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig(context.Background(), name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationApi.GetSingleSearchAttributeConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetSingleSearchAttributeConfig`: []SearchAttributeConfig
-    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationApi.GetSingleSearchAttributeConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig`: %v\n", resp)
 }
 ```
 
@@ -294,7 +294,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -303,13 +303,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SearchAttributeConfigurationApi.PatchSearchAttributeConfig(context.Background(), name).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.SearchAttributeConfigurationAPI.PatchSearchAttributeConfig(context.Background(), name).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationApi.PatchSearchAttributeConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SearchAttributeConfigurationAPI.PatchSearchAttributeConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchSearchAttributeConfig`: SearchAttributeConfig
-    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationApi.PatchSearchAttributeConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SearchAttributeConfigurationAPI.PatchSearchAttributeConfig`: %v\n", resp)
 }
 ```
 

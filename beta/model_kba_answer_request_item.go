@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the KbaAnswerRequestItem type satisfies the MappedNullable interface at compile time
@@ -116,11 +117,33 @@ func (o KbaAnswerRequestItem) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *KbaAnswerRequestItem) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"questionId",
+		"answer",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varKbaAnswerRequestItem := _KbaAnswerRequestItem{}
 
 	if err = json.Unmarshal(bytes, &varKbaAnswerRequestItem); err == nil {
-		*o = KbaAnswerRequestItem(varKbaAnswerRequestItem)
-	}
+	*o = KbaAnswerRequestItem(varKbaAnswerRequestItem)
+}
 
 	additionalProperties := make(map[string]interface{})
 

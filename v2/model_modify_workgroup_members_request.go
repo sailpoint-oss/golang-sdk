@@ -135,8 +135,8 @@ func (o *ModifyWorkgroupMembersRequest) UnmarshalJSON(bytes []byte) (err error) 
 	varModifyWorkgroupMembersRequest := _ModifyWorkgroupMembersRequest{}
 
 	if err = json.Unmarshal(bytes, &varModifyWorkgroupMembersRequest); err == nil {
-		*o = ModifyWorkgroupMembersRequest(varModifyWorkgroupMembersRequest)
-	}
+	*o = ModifyWorkgroupMembersRequest(varModifyWorkgroupMembersRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

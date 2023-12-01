@@ -283,8 +283,8 @@ func (o *ManualWorkItemDetails) UnmarshalJSON(bytes []byte) (err error) {
 	varManualWorkItemDetails := _ManualWorkItemDetails{}
 
 	if err = json.Unmarshal(bytes, &varManualWorkItemDetails); err == nil {
-		*o = ManualWorkItemDetails(varManualWorkItemDetails)
-	}
+	*o = ManualWorkItemDetails(varManualWorkItemDetails)
+}
 
 	additionalProperties := make(map[string]interface{})
 

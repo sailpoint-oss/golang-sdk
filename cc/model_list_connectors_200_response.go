@@ -135,8 +135,8 @@ func (o *ListConnectors200Response) UnmarshalJSON(bytes []byte) (err error) {
 	varListConnectors200Response := _ListConnectors200Response{}
 
 	if err = json.Unmarshal(bytes, &varListConnectors200Response); err == nil {
-		*o = ListConnectors200Response(varListConnectors200Response)
-	}
+	*o = ListConnectors200Response(varListConnectors200Response)
+}
 
 	additionalProperties := make(map[string]interface{})
 

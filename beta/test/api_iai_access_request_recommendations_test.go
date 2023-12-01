@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing IAIAccessRequestRecommendationsApiService
+Testing IAIAccessRequestRecommendationsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_IAIAccessRequestRecommendationsApiService(t *testing.T) {
+func Test_beta_IAIAccessRequestRecommendationsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test IAIAccessRequestRecommendationsApiService AddAccessRequestRecommendationsIgnoredItem", func(t *testing.T) {
+	t.Run("Test IAIAccessRequestRecommendationsAPIService AddAccessRequestRecommendationsIgnoredItem", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsIgnoredItem(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItem(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_beta_IAIAccessRequestRecommendationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIAccessRequestRecommendationsApiService AddAccessRequestRecommendationsRequestedItem", func(t *testing.T) {
+	t.Run("Test IAIAccessRequestRecommendationsAPIService AddAccessRequestRecommendationsRequestedItem", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsRequestedItem(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItem(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,11 +46,11 @@ func Test_beta_IAIAccessRequestRecommendationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIAccessRequestRecommendationsApiService AddAccessRequestRecommendationsViewedItem", func(t *testing.T) {
+	t.Run("Test IAIAccessRequestRecommendationsAPIService AddAccessRequestRecommendationsViewedItem", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsViewedItem(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItem(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -58,11 +58,11 @@ func Test_beta_IAIAccessRequestRecommendationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIAccessRequestRecommendationsApiService AddAccessRequestRecommendationsViewedItems", func(t *testing.T) {
+	t.Run("Test IAIAccessRequestRecommendationsAPIService AddAccessRequestRecommendationsViewedItems", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsApi.AddAccessRequestRecommendationsViewedItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -70,11 +70,11 @@ func Test_beta_IAIAccessRequestRecommendationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIAccessRequestRecommendationsApiService GetAccessRequestRecommendations", func(t *testing.T) {
+	t.Run("Test IAIAccessRequestRecommendationsAPIService GetAccessRequestRecommendations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendations(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -82,11 +82,11 @@ func Test_beta_IAIAccessRequestRecommendationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIAccessRequestRecommendationsApiService GetAccessRequestRecommendationsIgnoredItems", func(t *testing.T) {
+	t.Run("Test IAIAccessRequestRecommendationsAPIService GetAccessRequestRecommendationsIgnoredItems", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsIgnoredItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -94,11 +94,11 @@ func Test_beta_IAIAccessRequestRecommendationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIAccessRequestRecommendationsApiService GetAccessRequestRecommendationsRequestedItems", func(t *testing.T) {
+	t.Run("Test IAIAccessRequestRecommendationsAPIService GetAccessRequestRecommendationsRequestedItems", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsRequestedItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -106,11 +106,11 @@ func Test_beta_IAIAccessRequestRecommendationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAIAccessRequestRecommendationsApiService GetAccessRequestRecommendationsViewedItems", func(t *testing.T) {
+	t.Run("Test IAIAccessRequestRecommendationsAPIService GetAccessRequestRecommendationsViewedItems", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsApi.GetAccessRequestRecommendationsViewedItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItems(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

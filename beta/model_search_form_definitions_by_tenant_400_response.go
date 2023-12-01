@@ -207,8 +207,8 @@ func (o *SearchFormDefinitionsByTenant400Response) UnmarshalJSON(bytes []byte) (
 	varSearchFormDefinitionsByTenant400Response := _SearchFormDefinitionsByTenant400Response{}
 
 	if err = json.Unmarshal(bytes, &varSearchFormDefinitionsByTenant400Response); err == nil {
-		*o = SearchFormDefinitionsByTenant400Response(varSearchFormDefinitionsByTenant400Response)
-	}
+	*o = SearchFormDefinitionsByTenant400Response(varSearchFormDefinitionsByTenant400Response)
+}
 
 	additionalProperties := make(map[string]interface{})
 

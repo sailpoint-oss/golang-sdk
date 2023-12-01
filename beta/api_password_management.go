@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// PasswordManagementApiService PasswordManagementApi service
-type PasswordManagementApiService service
+// PasswordManagementAPIService PasswordManagementAPI service
+type PasswordManagementAPIService service
 
 type ApiGenerateDigitTokenRequest struct {
 	ctx context.Context
-	ApiService *PasswordManagementApiService
+	ApiService *PasswordManagementAPIService
 	passwordDigitTokenReset *PasswordDigitTokenReset
 }
 
@@ -46,7 +46,7 @@ This API is used to generate a digit token for password management. Requires aut
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGenerateDigitTokenRequest
 */
-func (a *PasswordManagementApiService) GenerateDigitToken(ctx context.Context) ApiGenerateDigitTokenRequest {
+func (a *PasswordManagementAPIService) GenerateDigitToken(ctx context.Context) ApiGenerateDigitTokenRequest {
 	return ApiGenerateDigitTokenRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *PasswordManagementApiService) GenerateDigitToken(ctx context.Context) A
 
 // Execute executes the request
 //  @return PasswordDigitToken
-func (a *PasswordManagementApiService) GenerateDigitTokenExecute(r ApiGenerateDigitTokenRequest) (*PasswordDigitToken, *http.Response, error) {
+func (a *PasswordManagementAPIService) GenerateDigitTokenExecute(r ApiGenerateDigitTokenRequest) (*PasswordDigitToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *PasswordManagementApiService) GenerateDigitTokenExecute(r ApiGenerateDi
 		localVarReturnValue  *PasswordDigitToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementApiService.GenerateDigitToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.GenerateDigitToken")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *PasswordManagementApiService) GenerateDigitTokenExecute(r ApiGenerateDi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -167,7 +167,7 @@ func (a *PasswordManagementApiService) GenerateDigitTokenExecute(r ApiGenerateDi
 
 type ApiGetIdentityPasswordChangeStatusRequest struct {
 	ctx context.Context
-	ApiService *PasswordManagementApiService
+	ApiService *PasswordManagementAPIService
 	id string
 }
 
@@ -184,7 +184,7 @@ This API returns the status of a password change request. A token with identity 
  @param id
  @return ApiGetIdentityPasswordChangeStatusRequest
 */
-func (a *PasswordManagementApiService) GetIdentityPasswordChangeStatus(ctx context.Context, id string) ApiGetIdentityPasswordChangeStatusRequest {
+func (a *PasswordManagementAPIService) GetIdentityPasswordChangeStatus(ctx context.Context, id string) ApiGetIdentityPasswordChangeStatusRequest {
 	return ApiGetIdentityPasswordChangeStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -194,7 +194,7 @@ func (a *PasswordManagementApiService) GetIdentityPasswordChangeStatus(ctx conte
 
 // Execute executes the request
 //  @return PasswordStatus
-func (a *PasswordManagementApiService) GetIdentityPasswordChangeStatusExecute(r ApiGetIdentityPasswordChangeStatusRequest) (*PasswordStatus, *http.Response, error) {
+func (a *PasswordManagementAPIService) GetIdentityPasswordChangeStatusExecute(r ApiGetIdentityPasswordChangeStatusRequest) (*PasswordStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -202,7 +202,7 @@ func (a *PasswordManagementApiService) GetIdentityPasswordChangeStatusExecute(r 
 		localVarReturnValue  *PasswordStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementApiService.GetIdentityPasswordChangeStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.GetIdentityPasswordChangeStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -241,9 +241,9 @@ func (a *PasswordManagementApiService) GetIdentityPasswordChangeStatusExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -324,7 +324,7 @@ func (a *PasswordManagementApiService) GetIdentityPasswordChangeStatusExecute(r 
 
 type ApiQueryPasswordInfoRequest struct {
 	ctx context.Context
-	ApiService *PasswordManagementApiService
+	ApiService *PasswordManagementAPIService
 	passwordInfoQueryDTO *PasswordInfoQueryDTO
 }
 
@@ -353,7 +353,7 @@ will be returned.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiQueryPasswordInfoRequest
 */
-func (a *PasswordManagementApiService) QueryPasswordInfo(ctx context.Context) ApiQueryPasswordInfoRequest {
+func (a *PasswordManagementAPIService) QueryPasswordInfo(ctx context.Context) ApiQueryPasswordInfoRequest {
 	return ApiQueryPasswordInfoRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -362,7 +362,7 @@ func (a *PasswordManagementApiService) QueryPasswordInfo(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return PasswordInfo
-func (a *PasswordManagementApiService) QueryPasswordInfoExecute(r ApiQueryPasswordInfoRequest) (*PasswordInfo, *http.Response, error) {
+func (a *PasswordManagementAPIService) QueryPasswordInfoExecute(r ApiQueryPasswordInfoRequest) (*PasswordInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -370,7 +370,7 @@ func (a *PasswordManagementApiService) QueryPasswordInfoExecute(r ApiQueryPasswo
 		localVarReturnValue  *PasswordInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementApiService.QueryPasswordInfo")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.QueryPasswordInfo")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -413,9 +413,9 @@ func (a *PasswordManagementApiService) QueryPasswordInfoExecute(r ApiQueryPasswo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -496,7 +496,7 @@ func (a *PasswordManagementApiService) QueryPasswordInfoExecute(r ApiQueryPasswo
 
 type ApiSetIdentityPasswordRequest struct {
 	ctx context.Context
-	ApiService *PasswordManagementApiService
+	ApiService *PasswordManagementAPIService
 	passwordChangeRequest *PasswordChangeRequest
 }
 
@@ -558,7 +558,7 @@ You can then use [Get Password Change Request Status](https://developer.sailpoin
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetIdentityPasswordRequest
 */
-func (a *PasswordManagementApiService) SetIdentityPassword(ctx context.Context) ApiSetIdentityPasswordRequest {
+func (a *PasswordManagementAPIService) SetIdentityPassword(ctx context.Context) ApiSetIdentityPasswordRequest {
 	return ApiSetIdentityPasswordRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -567,7 +567,7 @@ func (a *PasswordManagementApiService) SetIdentityPassword(ctx context.Context) 
 
 // Execute executes the request
 //  @return PasswordChangeResponse
-func (a *PasswordManagementApiService) SetIdentityPasswordExecute(r ApiSetIdentityPasswordRequest) (*PasswordChangeResponse, *http.Response, error) {
+func (a *PasswordManagementAPIService) SetIdentityPasswordExecute(r ApiSetIdentityPasswordRequest) (*PasswordChangeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -575,7 +575,7 @@ func (a *PasswordManagementApiService) SetIdentityPasswordExecute(r ApiSetIdenti
 		localVarReturnValue  *PasswordChangeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementApiService.SetIdentityPassword")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordManagementAPIService.SetIdentityPassword")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -618,9 +618,9 @@ func (a *PasswordManagementApiService) SetIdentityPasswordExecute(r ApiSetIdenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

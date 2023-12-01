@@ -243,8 +243,8 @@ func (o *SearchAggregationSpecification) UnmarshalJSON(bytes []byte) (err error)
 	varSearchAggregationSpecification := _SearchAggregationSpecification{}
 
 	if err = json.Unmarshal(bytes, &varSearchAggregationSpecification); err == nil {
-		*o = SearchAggregationSpecification(varSearchAggregationSpecification)
-	}
+	*o = SearchAggregationSpecification(varSearchAggregationSpecification)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -397,8 +397,8 @@ func (o *NonEmployeeSourceWithNECount) UnmarshalJSON(bytes []byte) (err error) {
 	varNonEmployeeSourceWithNECount := _NonEmployeeSourceWithNECount{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeSourceWithNECount); err == nil {
-		*o = NonEmployeeSourceWithNECount(varNonEmployeeSourceWithNECount)
-	}
+	*o = NonEmployeeSourceWithNECount(varNonEmployeeSourceWithNECount)
+}
 
 	additionalProperties := make(map[string]interface{})
 

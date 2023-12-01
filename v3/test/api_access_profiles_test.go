@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing AccessProfilesApiService
+Testing AccessProfilesAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_AccessProfilesApiService(t *testing.T) {
+func Test_v3_AccessProfilesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AccessProfilesApiService CreateAccessProfile", func(t *testing.T) {
+	t.Run("Test AccessProfilesAPIService CreateAccessProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.AccessProfilesApi.CreateAccessProfile(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.CreateAccessProfile(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,24 +34,24 @@ func Test_v3_AccessProfilesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessProfilesApiService DeleteAccessProfile", func(t *testing.T) {
+	t.Run("Test AccessProfilesAPIService DeleteAccessProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.V3.AccessProfilesApi.DeleteAccessProfile(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.AccessProfilesAPI.DeleteAccessProfile(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test AccessProfilesApiService DeleteAccessProfilesInBulk", func(t *testing.T) {
+	t.Run("Test AccessProfilesAPIService DeleteAccessProfilesInBulk", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.AccessProfilesApi.DeleteAccessProfilesInBulk(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.DeleteAccessProfilesInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -59,13 +59,13 @@ func Test_v3_AccessProfilesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessProfilesApiService GetAccessProfile", func(t *testing.T) {
+	t.Run("Test AccessProfilesAPIService GetAccessProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.AccessProfilesApi.GetAccessProfile(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.GetAccessProfile(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,13 +73,13 @@ func Test_v3_AccessProfilesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessProfilesApiService GetAccessProfileEntitlements", func(t *testing.T) {
+	t.Run("Test AccessProfilesAPIService GetAccessProfileEntitlements", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.AccessProfilesApi.GetAccessProfileEntitlements(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.GetAccessProfileEntitlements(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -87,11 +87,11 @@ func Test_v3_AccessProfilesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessProfilesApiService ListAccessProfiles", func(t *testing.T) {
+	t.Run("Test AccessProfilesAPIService ListAccessProfiles", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.AccessProfilesApi.ListAccessProfiles(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.ListAccessProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -99,13 +99,13 @@ func Test_v3_AccessProfilesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessProfilesApiService PatchAccessProfile", func(t *testing.T) {
+	t.Run("Test AccessProfilesAPIService PatchAccessProfile", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.AccessProfilesApi.PatchAccessProfile(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.AccessProfilesAPI.PatchAccessProfile(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1,10 +1,10 @@
-# \SystemApi
+# \SystemAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RefreshIdentities**](SystemApi.md#RefreshIdentities) | **Post** /cc/api/system/refreshIdentities | Refresh Identities
+[**RefreshIdentities**](SystemAPI.md#RefreshIdentities) | **Post** /cc/api/system/refreshIdentities | Refresh Identities
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SystemApi.RefreshIdentities(context.Background()).ContentType(contentType).RefreshIdentitiesRequest(refreshIdentitiesRequest).Execute()
+    resp, r, err := apiClient.SystemAPI.RefreshIdentities(context.Background()).ContentType(contentType).RefreshIdentitiesRequest(refreshIdentitiesRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SystemApi.RefreshIdentities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SystemAPI.RefreshIdentities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RefreshIdentities`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `SystemApi.RefreshIdentities`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SystemAPI.RefreshIdentities`: %v\n", resp)
 }
 ```
 

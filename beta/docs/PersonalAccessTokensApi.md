@@ -1,13 +1,13 @@
-# \PersonalAccessTokensApi
+# \PersonalAccessTokensAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePersonalAccessToken**](PersonalAccessTokensApi.md#CreatePersonalAccessToken) | **Post** /personal-access-tokens | Create Personal Access Token
-[**DeletePersonalAccessToken**](PersonalAccessTokensApi.md#DeletePersonalAccessToken) | **Delete** /personal-access-tokens/{id} | Delete Personal Access Token
-[**ListPersonalAccessTokens**](PersonalAccessTokensApi.md#ListPersonalAccessTokens) | **Get** /personal-access-tokens | List Personal Access Tokens
-[**PatchPersonalAccessToken**](PersonalAccessTokensApi.md#PatchPersonalAccessToken) | **Patch** /personal-access-tokens/{id} | Patch Personal Access Token
+[**CreatePersonalAccessToken**](PersonalAccessTokensAPI.md#CreatePersonalAccessToken) | **Post** /personal-access-tokens | Create Personal Access Token
+[**DeletePersonalAccessToken**](PersonalAccessTokensAPI.md#DeletePersonalAccessToken) | **Delete** /personal-access-tokens/{id} | Delete Personal Access Token
+[**ListPersonalAccessTokens**](PersonalAccessTokensAPI.md#ListPersonalAccessTokens) | **Get** /personal-access-tokens | List Personal Access Tokens
+[**PatchPersonalAccessToken**](PersonalAccessTokensAPI.md#PatchPersonalAccessToken) | **Patch** /personal-access-tokens/{id} | Patch Personal Access Token
 
 
 
@@ -28,7 +28,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -36,13 +36,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokensApi.CreatePersonalAccessToken(context.Background()).CreatePersonalAccessTokenRequest(createPersonalAccessTokenRequest).Execute()
+    resp, r, err := apiClient.PersonalAccessTokensAPI.CreatePersonalAccessToken(context.Background()).CreatePersonalAccessTokenRequest(createPersonalAccessTokenRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensApi.CreatePersonalAccessToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.CreatePersonalAccessToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreatePersonalAccessToken`: CreatePersonalAccessTokenResponse
-    fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensApi.CreatePersonalAccessToken`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensAPI.CreatePersonalAccessToken`: %v\n", resp)
 }
 ```
 
@@ -94,7 +94,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -102,9 +102,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokensApi.DeletePersonalAccessToken(context.Background(), id).Execute()
+    r, err := apiClient.PersonalAccessTokensAPI.DeletePersonalAccessToken(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensApi.DeletePersonalAccessToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.DeletePersonalAccessToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -162,7 +162,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -171,13 +171,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokensApi.ListPersonalAccessTokens(context.Background()).OwnerId(ownerId).Filters(filters).Execute()
+    resp, r, err := apiClient.PersonalAccessTokensAPI.ListPersonalAccessTokens(context.Background()).OwnerId(ownerId).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensApi.ListPersonalAccessTokens``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.ListPersonalAccessTokens``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListPersonalAccessTokens`: []GetPersonalAccessTokenResponse
-    fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensApi.ListPersonalAccessTokens`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensAPI.ListPersonalAccessTokens`: %v\n", resp)
 }
 ```
 
@@ -230,7 +230,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -239,13 +239,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokensApi.PatchPersonalAccessToken(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.PersonalAccessTokensAPI.PatchPersonalAccessToken(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensApi.PatchPersonalAccessToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.PatchPersonalAccessToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchPersonalAccessToken`: GetPersonalAccessTokenResponse
-    fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensApi.PatchPersonalAccessToken`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PersonalAccessTokensAPI.PatchPersonalAccessToken`: %v\n", resp)
 }
 ```
 

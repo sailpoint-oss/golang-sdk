@@ -100,8 +100,8 @@ func (o *FormDefinitionDynamicSchemaRequestAttributes) UnmarshalJSON(bytes []byt
 	varFormDefinitionDynamicSchemaRequestAttributes := _FormDefinitionDynamicSchemaRequestAttributes{}
 
 	if err = json.Unmarshal(bytes, &varFormDefinitionDynamicSchemaRequestAttributes); err == nil {
-		*o = FormDefinitionDynamicSchemaRequestAttributes(varFormDefinitionDynamicSchemaRequestAttributes)
-	}
+	*o = FormDefinitionDynamicSchemaRequestAttributes(varFormDefinitionDynamicSchemaRequestAttributes)
+}
 
 	additionalProperties := make(map[string]interface{})
 

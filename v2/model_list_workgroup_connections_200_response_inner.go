@@ -279,8 +279,8 @@ func (o *ListWorkgroupConnections200ResponseInner) UnmarshalJSON(bytes []byte) (
 	varListWorkgroupConnections200ResponseInner := _ListWorkgroupConnections200ResponseInner{}
 
 	if err = json.Unmarshal(bytes, &varListWorkgroupConnections200ResponseInner); err == nil {
-		*o = ListWorkgroupConnections200ResponseInner(varListWorkgroupConnections200ResponseInner)
-	}
+	*o = ListWorkgroupConnections200ResponseInner(varListWorkgroupConnections200ResponseInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

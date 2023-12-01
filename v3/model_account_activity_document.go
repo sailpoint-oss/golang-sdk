@@ -13,6 +13,7 @@ package v3
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the AccountActivityDocument type satisfies the MappedNullable interface at compile time
@@ -755,11 +756,34 @@ func (o AccountActivityDocument) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccountActivityDocument) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"_type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccountActivityDocument := _AccountActivityDocument{}
 
 	if err = json.Unmarshal(bytes, &varAccountActivityDocument); err == nil {
-		*o = AccountActivityDocument(varAccountActivityDocument)
-	}
+	*o = AccountActivityDocument(varAccountActivityDocument)
+}
 
 	additionalProperties := make(map[string]interface{})
 

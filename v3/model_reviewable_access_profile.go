@@ -453,8 +453,8 @@ func (o *ReviewableAccessProfile) UnmarshalJSON(bytes []byte) (err error) {
 	varReviewableAccessProfile := _ReviewableAccessProfile{}
 
 	if err = json.Unmarshal(bytes, &varReviewableAccessProfile); err == nil {
-		*o = ReviewableAccessProfile(varReviewableAccessProfile)
-	}
+	*o = ReviewableAccessProfile(varReviewableAccessProfile)
+}
 
 	additionalProperties := make(map[string]interface{})
 

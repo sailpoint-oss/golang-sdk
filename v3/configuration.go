@@ -13,7 +13,7 @@ package v3
 import (
 	"context"
 	"fmt"
-	"strings"
+		"strings"
 
 	retryablehttp "github.com/hashicorp/go-retryablehttp"
 )
@@ -84,7 +84,7 @@ type Configuration struct {
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *retryablehttp.Client
-	ClientId 		 string
+ClientId 		 string
 	ClientSecret     string
 	BaseURL          string
 	TokenURL         string
@@ -94,7 +94,7 @@ type Configuration struct {
 // NewConfiguration returns a new Configuration object
 func NewConfiguration(clientId string, clientSecret string, baseURL string, tokenURL string, token string) *Configuration {
 	cfg := &Configuration{
-		ClientId: 		  clientId,
+ClientId: 		  clientId,
 		ClientSecret:	  clientSecret,
 		BaseURL:	      baseURL,
 		TokenURL:		  tokenURL,

@@ -104,8 +104,8 @@ func (o *ActivateCampaignOptions) UnmarshalJSON(bytes []byte) (err error) {
 	varActivateCampaignOptions := _ActivateCampaignOptions{}
 
 	if err = json.Unmarshal(bytes, &varActivateCampaignOptions); err == nil {
-		*o = ActivateCampaignOptions(varActivateCampaignOptions)
-	}
+	*o = ActivateCampaignOptions(varActivateCampaignOptions)
+}
 
 	additionalProperties := make(map[string]interface{})
 

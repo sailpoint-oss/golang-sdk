@@ -137,8 +137,8 @@ func (o *ResourceBundleMessage) UnmarshalJSON(bytes []byte) (err error) {
 	varResourceBundleMessage := _ResourceBundleMessage{}
 
 	if err = json.Unmarshal(bytes, &varResourceBundleMessage); err == nil {
-		*o = ResourceBundleMessage(varResourceBundleMessage)
-	}
+	*o = ResourceBundleMessage(varResourceBundleMessage)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -1,25 +1,25 @@
-# \NotificationsApi
+# \NotificationsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDomainDkim**](NotificationsApi.md#CreateDomainDkim) | **Post** /verified-domains | Verify domain address via DKIM
-[**CreateNotificationTemplate**](NotificationsApi.md#CreateNotificationTemplate) | **Post** /notification-templates | Create Notification Template
-[**CreateVerifiedFromAddress**](NotificationsApi.md#CreateVerifiedFromAddress) | **Post** /verified-from-addresses | Create Verified From Address
-[**DeleteNotificationTemplatesInBulk**](NotificationsApi.md#DeleteNotificationTemplatesInBulk) | **Post** /notification-templates/bulk-delete | Bulk Delete Notification Templates
-[**DeleteVerifiedFromAddress**](NotificationsApi.md#DeleteVerifiedFromAddress) | **Delete** /verified-from-addresses/{id} | Delete Verified From Address
-[**GetDkimAttributes**](NotificationsApi.md#GetDkimAttributes) | **Get** /verified-domains | Get DKIM Attributes
-[**GetMailFromAttributes**](NotificationsApi.md#GetMailFromAttributes) | **Get** /mail-from-attributes/{identity} | Get MAIL FROM Attributes
-[**GetNotificationPreference**](NotificationsApi.md#GetNotificationPreference) | **Get** /notification-preferences/{key} | Get Notification Preferences for tenant.
-[**GetNotificationTemplate**](NotificationsApi.md#GetNotificationTemplate) | **Get** /notification-templates/{id} | Get Notification Template By Id
-[**GetNotificationsTemplateContext**](NotificationsApi.md#GetNotificationsTemplateContext) | **Get** /notification-template-context | Get Notification Template Context
-[**ListFromAddresses**](NotificationsApi.md#ListFromAddresses) | **Get** /verified-from-addresses | List From Addresses
-[**ListNotificationTemplateDefaults**](NotificationsApi.md#ListNotificationTemplateDefaults) | **Get** /notification-template-defaults | List Notification Template Defaults
-[**ListNotificationTemplates**](NotificationsApi.md#ListNotificationTemplates) | **Get** /notification-templates | List Notification Templates
-[**PutMailFromAttributes**](NotificationsApi.md#PutMailFromAttributes) | **Put** /mail-from-attributes | Change MAIL FROM domain
-[**PutNotificationPreference**](NotificationsApi.md#PutNotificationPreference) | **Put** /notification-preferences/{key} | Overwrite the preferences for the given notification key.
-[**SendTestNotification**](NotificationsApi.md#SendTestNotification) | **Post** /send-test-notification | Send Test Notification
+[**CreateDomainDkim**](NotificationsAPI.md#CreateDomainDkim) | **Post** /verified-domains | Verify domain address via DKIM
+[**CreateNotificationTemplate**](NotificationsAPI.md#CreateNotificationTemplate) | **Post** /notification-templates | Create Notification Template
+[**CreateVerifiedFromAddress**](NotificationsAPI.md#CreateVerifiedFromAddress) | **Post** /verified-from-addresses | Create Verified From Address
+[**DeleteNotificationTemplatesInBulk**](NotificationsAPI.md#DeleteNotificationTemplatesInBulk) | **Post** /notification-templates/bulk-delete | Bulk Delete Notification Templates
+[**DeleteVerifiedFromAddress**](NotificationsAPI.md#DeleteVerifiedFromAddress) | **Delete** /verified-from-addresses/{id} | Delete Verified From Address
+[**GetDkimAttributes**](NotificationsAPI.md#GetDkimAttributes) | **Get** /verified-domains | Get DKIM Attributes
+[**GetMailFromAttributes**](NotificationsAPI.md#GetMailFromAttributes) | **Get** /mail-from-attributes/{identity} | Get MAIL FROM Attributes
+[**GetNotificationPreference**](NotificationsAPI.md#GetNotificationPreference) | **Get** /notification-preferences/{key} | Get Notification Preferences for tenant.
+[**GetNotificationTemplate**](NotificationsAPI.md#GetNotificationTemplate) | **Get** /notification-templates/{id} | Get Notification Template By Id
+[**GetNotificationsTemplateContext**](NotificationsAPI.md#GetNotificationsTemplateContext) | **Get** /notification-template-context | Get Notification Template Context
+[**ListFromAddresses**](NotificationsAPI.md#ListFromAddresses) | **Get** /verified-from-addresses | List From Addresses
+[**ListNotificationTemplateDefaults**](NotificationsAPI.md#ListNotificationTemplateDefaults) | **Get** /notification-template-defaults | List Notification Template Defaults
+[**ListNotificationTemplates**](NotificationsAPI.md#ListNotificationTemplates) | **Get** /notification-templates | List Notification Templates
+[**PutMailFromAttributes**](NotificationsAPI.md#PutMailFromAttributes) | **Put** /mail-from-attributes | Change MAIL FROM domain
+[**PutNotificationPreference**](NotificationsAPI.md#PutNotificationPreference) | **Put** /notification-preferences/{key} | Overwrite the preferences for the given notification key.
+[**SendTestNotification**](NotificationsAPI.md#SendTestNotification) | **Post** /send-test-notification | Send Test Notification
 
 
 
@@ -40,7 +40,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -48,13 +48,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.CreateDomainDkim(context.Background()).DomainAddress(domainAddress).Execute()
+    resp, r, err := apiClient.NotificationsAPI.CreateDomainDkim(context.Background()).DomainAddress(domainAddress).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.CreateDomainDkim``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateDomainDkim``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateDomainDkim`: DomainStatusDto
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.CreateDomainDkim`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.CreateDomainDkim`: %v\n", resp)
 }
 ```
 
@@ -106,7 +106,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -114,13 +114,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.CreateNotificationTemplate(context.Background()).TemplateDto(templateDto).Execute()
+    resp, r, err := apiClient.NotificationsAPI.CreateNotificationTemplate(context.Background()).TemplateDto(templateDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.CreateNotificationTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateNotificationTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateNotificationTemplate`: TemplateDto
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.CreateNotificationTemplate`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.CreateNotificationTemplate`: %v\n", resp)
 }
 ```
 
@@ -172,7 +172,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -180,13 +180,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.CreateVerifiedFromAddress(context.Background()).EmailStatusDto(emailStatusDto).Execute()
+    resp, r, err := apiClient.NotificationsAPI.CreateVerifiedFromAddress(context.Background()).EmailStatusDto(emailStatusDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.CreateVerifiedFromAddress``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.CreateVerifiedFromAddress``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateVerifiedFromAddress`: EmailStatusDto
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.CreateVerifiedFromAddress`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.CreateVerifiedFromAddress`: %v\n", resp)
 }
 ```
 
@@ -238,7 +238,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -246,9 +246,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.DeleteNotificationTemplatesInBulk(context.Background()).TemplateBulkDeleteDto(templateBulkDeleteDto).Execute()
+    r, err := apiClient.NotificationsAPI.DeleteNotificationTemplatesInBulk(context.Background()).TemplateBulkDeleteDto(templateBulkDeleteDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.DeleteNotificationTemplatesInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.DeleteNotificationTemplatesInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -302,7 +302,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -310,9 +310,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.DeleteVerifiedFromAddress(context.Background(), id).Execute()
+    r, err := apiClient.NotificationsAPI.DeleteVerifiedFromAddress(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.DeleteVerifiedFromAddress``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.DeleteVerifiedFromAddress``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -370,20 +370,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.GetDkimAttributes(context.Background()).Execute()
+    resp, r, err := apiClient.NotificationsAPI.GetDkimAttributes(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.GetDkimAttributes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetDkimAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetDkimAttributes`: []DkimAttributes
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.GetDkimAttributes`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetDkimAttributes`: %v\n", resp)
 }
 ```
 
@@ -431,7 +431,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -439,13 +439,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.GetMailFromAttributes(context.Background()).Id(id).Execute()
+    resp, r, err := apiClient.NotificationsAPI.GetMailFromAttributes(context.Background()).Id(id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.GetMailFromAttributes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetMailFromAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetMailFromAttributes`: MailFromAttributes
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.GetMailFromAttributes`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetMailFromAttributes`: %v\n", resp)
 }
 ```
 
@@ -497,7 +497,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -505,13 +505,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.GetNotificationPreference(context.Background(), key).Execute()
+    resp, r, err := apiClient.NotificationsAPI.GetNotificationPreference(context.Background(), key).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.GetNotificationPreference``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationPreference``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNotificationPreference`: PreferencesDto
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.GetNotificationPreference`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationPreference`: %v\n", resp)
 }
 ```
 
@@ -567,7 +567,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -575,13 +575,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.GetNotificationTemplate(context.Background(), id).Execute()
+    resp, r, err := apiClient.NotificationsAPI.GetNotificationTemplate(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.GetNotificationTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNotificationTemplate`: []TemplateDto
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.GetNotificationTemplate`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationTemplate`: %v\n", resp)
 }
 ```
 
@@ -637,20 +637,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.GetNotificationsTemplateContext(context.Background()).Execute()
+    resp, r, err := apiClient.NotificationsAPI.GetNotificationsTemplateContext(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.GetNotificationsTemplateContext``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationsTemplateContext``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetNotificationsTemplateContext`: []NotificationTemplateContext
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.GetNotificationsTemplateContext`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationsTemplateContext`: %v\n", resp)
 }
 ```
 
@@ -698,7 +698,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -710,13 +710,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.ListFromAddresses(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.NotificationsAPI.ListFromAddresses(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.ListFromAddresses``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListFromAddresses``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListFromAddresses`: []EmailStatusDto
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.ListFromAddresses`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListFromAddresses`: %v\n", resp)
 }
 ```
 
@@ -772,7 +772,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -782,13 +782,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.ListNotificationTemplateDefaults(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.NotificationsAPI.ListNotificationTemplateDefaults(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.ListNotificationTemplateDefaults``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationTemplateDefaults``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListNotificationTemplateDefaults`: []TemplateDtoDefault
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.ListNotificationTemplateDefaults`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListNotificationTemplateDefaults`: %v\n", resp)
 }
 ```
 
@@ -842,7 +842,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -852,13 +852,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.ListNotificationTemplates(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.NotificationsAPI.ListNotificationTemplates(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.ListNotificationTemplates``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.ListNotificationTemplates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListNotificationTemplates`: []TemplateDto
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.ListNotificationTemplates`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.ListNotificationTemplates`: %v\n", resp)
 }
 ```
 
@@ -912,7 +912,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -920,13 +920,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.PutMailFromAttributes(context.Background()).MailFromAttributesDto(mailFromAttributesDto).Execute()
+    resp, r, err := apiClient.NotificationsAPI.PutMailFromAttributes(context.Background()).MailFromAttributesDto(mailFromAttributesDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.PutMailFromAttributes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.PutMailFromAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutMailFromAttributes`: MailFromAttributes
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.PutMailFromAttributes`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.PutMailFromAttributes`: %v\n", resp)
 }
 ```
 
@@ -978,7 +978,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -987,13 +987,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.PutNotificationPreference(context.Background(), key).PreferencesDto(preferencesDto).Execute()
+    resp, r, err := apiClient.NotificationsAPI.PutNotificationPreference(context.Background(), key).PreferencesDto(preferencesDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.PutNotificationPreference``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.PutNotificationPreference``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutNotificationPreference`: PreferencesDto
-    fmt.Fprintf(os.Stdout, "Response from `NotificationsApi.PutNotificationPreference`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.PutNotificationPreference`: %v\n", resp)
 }
 ```
 
@@ -1050,7 +1050,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1058,9 +1058,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NotificationsApi.SendTestNotification(context.Background()).SendTestNotificationRequestDto(sendTestNotificationRequestDto).Execute()
+    r, err := apiClient.NotificationsAPI.SendTestNotification(context.Background()).SendTestNotificationRequestDto(sendTestNotificationRequestDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsApi.SendTestNotification``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.SendTestNotification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

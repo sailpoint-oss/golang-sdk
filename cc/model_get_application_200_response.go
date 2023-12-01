@@ -1863,8 +1863,8 @@ func (o *GetApplication200Response) UnmarshalJSON(bytes []byte) (err error) {
 	varGetApplication200Response := _GetApplication200Response{}
 
 	if err = json.Unmarshal(bytes, &varGetApplication200Response); err == nil {
-		*o = GetApplication200Response(varGetApplication200Response)
-	}
+	*o = GetApplication200Response(varGetApplication200Response)
+}
 
 	additionalProperties := make(map[string]interface{})
 

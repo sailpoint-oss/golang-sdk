@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | the ID of the rule to update | 
 **Name** | **string** | the name of the rule | 
 **Description** | Pointer to **string** | a description of the rule&#39;s purpose | [optional] 
 **Type** | **string** | the type of rule | 
 **Signature** | Pointer to [**ConnectorRuleCreateRequestSignature**](ConnectorRuleCreateRequestSignature.md) |  | [optional] 
 **SourceCode** | [**SourceCode**](SourceCode.md) |  | 
 **Attributes** | Pointer to **map[string]interface{}** | a map of string to objects | [optional] 
+**Id** | **string** | the ID of the rule to update | 
 
 ## Methods
 
 ### NewConnectorRuleUpdateRequest
 
-`func NewConnectorRuleUpdateRequest(id string, name string, type_ string, sourceCode SourceCode, ) *ConnectorRuleUpdateRequest`
+`func NewConnectorRuleUpdateRequest(name string, type_ string, sourceCode SourceCode, id string, ) *ConnectorRuleUpdateRequest`
 
 NewConnectorRuleUpdateRequest instantiates a new ConnectorRuleUpdateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -30,26 +30,6 @@ will change when the set of required properties is changed
 NewConnectorRuleUpdateRequestWithDefaults instantiates a new ConnectorRuleUpdateRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *ConnectorRuleUpdateRequest) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *ConnectorRuleUpdateRequest) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *ConnectorRuleUpdateRequest) SetId(v string)`
-
-SetId sets Id field to given value.
-
 
 ### GetName
 
@@ -196,6 +176,26 @@ HasAttributes returns a boolean if a field has been set.
 `func (o *ConnectorRuleUpdateRequest) UnsetAttributes()`
 
 UnsetAttributes ensures that no value is present for Attributes, not even an explicit nil
+### GetId
+
+`func (o *ConnectorRuleUpdateRequest) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ConnectorRuleUpdateRequest) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ConnectorRuleUpdateRequest) SetId(v string)`
+
+SetId sets Id field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

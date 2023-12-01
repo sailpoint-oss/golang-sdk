@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// MFAControllerApiService MFAControllerApi service
-type MFAControllerApiService service
+// MFAControllerAPIService MFAControllerAPI service
+type MFAControllerAPIService service
 
 type ApiCreateSendTokenRequest struct {
 	ctx context.Context
-	ApiService *MFAControllerApiService
+	ApiService *MFAControllerAPIService
 	sendTokenRequest *SendTokenRequest
 }
 
@@ -46,7 +46,7 @@ This API send token request.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSendTokenRequest
 */
-func (a *MFAControllerApiService) CreateSendToken(ctx context.Context) ApiCreateSendTokenRequest {
+func (a *MFAControllerAPIService) CreateSendToken(ctx context.Context) ApiCreateSendTokenRequest {
 	return ApiCreateSendTokenRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *MFAControllerApiService) CreateSendToken(ctx context.Context) ApiCreate
 
 // Execute executes the request
 //  @return SendTokenResponse
-func (a *MFAControllerApiService) CreateSendTokenExecute(r ApiCreateSendTokenRequest) (*SendTokenResponse, *http.Response, error) {
+func (a *MFAControllerAPIService) CreateSendTokenExecute(r ApiCreateSendTokenRequest) (*SendTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *MFAControllerApiService) CreateSendTokenExecute(r ApiCreateSendTokenReq
 		localVarReturnValue  *SendTokenResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerApiService.CreateSendToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerAPIService.CreateSendToken")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *MFAControllerApiService) CreateSendTokenExecute(r ApiCreateSendTokenReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -189,7 +189,7 @@ func (a *MFAControllerApiService) CreateSendTokenExecute(r ApiCreateSendTokenReq
 
 type ApiPingVerificationStatusRequest struct {
 	ctx context.Context
-	ApiService *MFAControllerApiService
+	ApiService *MFAControllerAPIService
 	method string
 	verificationPollRequest *VerificationPollRequest
 }
@@ -212,7 +212,7 @@ This API poll the VerificationPollRequest for the specified MFA method. A token 
  @param method The name of the MFA method. The currently supported method names are 'okta-verify', 'duo-web', 'kba','token', 'rsa'
  @return ApiPingVerificationStatusRequest
 */
-func (a *MFAControllerApiService) PingVerificationStatus(ctx context.Context, method string) ApiPingVerificationStatusRequest {
+func (a *MFAControllerAPIService) PingVerificationStatus(ctx context.Context, method string) ApiPingVerificationStatusRequest {
 	return ApiPingVerificationStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -222,7 +222,7 @@ func (a *MFAControllerApiService) PingVerificationStatus(ctx context.Context, me
 
 // Execute executes the request
 //  @return VerificationResponse
-func (a *MFAControllerApiService) PingVerificationStatusExecute(r ApiPingVerificationStatusRequest) (*VerificationResponse, *http.Response, error) {
+func (a *MFAControllerAPIService) PingVerificationStatusExecute(r ApiPingVerificationStatusRequest) (*VerificationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -230,7 +230,7 @@ func (a *MFAControllerApiService) PingVerificationStatusExecute(r ApiPingVerific
 		localVarReturnValue  *VerificationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerApiService.PingVerificationStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerAPIService.PingVerificationStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -274,9 +274,9 @@ func (a *MFAControllerApiService) PingVerificationStatusExecute(r ApiPingVerific
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -357,7 +357,7 @@ func (a *MFAControllerApiService) PingVerificationStatusExecute(r ApiPingVerific
 
 type ApiSendDuoVerifyRequestRequest struct {
 	ctx context.Context
-	ApiService *MFAControllerApiService
+	ApiService *MFAControllerAPIService
 	duoVerificationRequest *DuoVerificationRequest
 }
 
@@ -378,7 +378,7 @@ This API Authenticates the user via Duo-Web MFA method.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSendDuoVerifyRequestRequest
 */
-func (a *MFAControllerApiService) SendDuoVerifyRequest(ctx context.Context) ApiSendDuoVerifyRequestRequest {
+func (a *MFAControllerAPIService) SendDuoVerifyRequest(ctx context.Context) ApiSendDuoVerifyRequestRequest {
 	return ApiSendDuoVerifyRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -387,7 +387,7 @@ func (a *MFAControllerApiService) SendDuoVerifyRequest(ctx context.Context) ApiS
 
 // Execute executes the request
 //  @return VerificationResponse
-func (a *MFAControllerApiService) SendDuoVerifyRequestExecute(r ApiSendDuoVerifyRequestRequest) (*VerificationResponse, *http.Response, error) {
+func (a *MFAControllerAPIService) SendDuoVerifyRequestExecute(r ApiSendDuoVerifyRequestRequest) (*VerificationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -395,7 +395,7 @@ func (a *MFAControllerApiService) SendDuoVerifyRequestExecute(r ApiSendDuoVerify
 		localVarReturnValue  *VerificationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerApiService.SendDuoVerifyRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerAPIService.SendDuoVerifyRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -438,9 +438,9 @@ func (a *MFAControllerApiService) SendDuoVerifyRequestExecute(r ApiSendDuoVerify
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -521,7 +521,7 @@ func (a *MFAControllerApiService) SendDuoVerifyRequestExecute(r ApiSendDuoVerify
 
 type ApiSendKbaAnswersRequest struct {
 	ctx context.Context
-	ApiService *MFAControllerApiService
+	ApiService *MFAControllerAPIService
 	kbaAnswerRequest *KbaAnswerRequest
 }
 
@@ -542,7 +542,7 @@ This API Authenticate user in KBA MFA method.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSendKbaAnswersRequest
 */
-func (a *MFAControllerApiService) SendKbaAnswers(ctx context.Context) ApiSendKbaAnswersRequest {
+func (a *MFAControllerAPIService) SendKbaAnswers(ctx context.Context) ApiSendKbaAnswersRequest {
 	return ApiSendKbaAnswersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -551,7 +551,7 @@ func (a *MFAControllerApiService) SendKbaAnswers(ctx context.Context) ApiSendKba
 
 // Execute executes the request
 //  @return KbaAuthResponse
-func (a *MFAControllerApiService) SendKbaAnswersExecute(r ApiSendKbaAnswersRequest) (*KbaAuthResponse, *http.Response, error) {
+func (a *MFAControllerAPIService) SendKbaAnswersExecute(r ApiSendKbaAnswersRequest) (*KbaAuthResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -559,7 +559,7 @@ func (a *MFAControllerApiService) SendKbaAnswersExecute(r ApiSendKbaAnswersReque
 		localVarReturnValue  *KbaAuthResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerApiService.SendKbaAnswers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerAPIService.SendKbaAnswers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -602,9 +602,9 @@ func (a *MFAControllerApiService) SendKbaAnswersExecute(r ApiSendKbaAnswersReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -685,7 +685,7 @@ func (a *MFAControllerApiService) SendKbaAnswersExecute(r ApiSendKbaAnswersReque
 
 type ApiSendOktaVerifyRequestRequest struct {
 	ctx context.Context
-	ApiService *MFAControllerApiService
+	ApiService *MFAControllerAPIService
 	oktaVerificationRequest *OktaVerificationRequest
 }
 
@@ -706,7 +706,7 @@ This API Authenticates the user via Okta-Verify MFA method. Request requires a h
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSendOktaVerifyRequestRequest
 */
-func (a *MFAControllerApiService) SendOktaVerifyRequest(ctx context.Context) ApiSendOktaVerifyRequestRequest {
+func (a *MFAControllerAPIService) SendOktaVerifyRequest(ctx context.Context) ApiSendOktaVerifyRequestRequest {
 	return ApiSendOktaVerifyRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -715,7 +715,7 @@ func (a *MFAControllerApiService) SendOktaVerifyRequest(ctx context.Context) Api
 
 // Execute executes the request
 //  @return VerificationResponse
-func (a *MFAControllerApiService) SendOktaVerifyRequestExecute(r ApiSendOktaVerifyRequestRequest) (*VerificationResponse, *http.Response, error) {
+func (a *MFAControllerAPIService) SendOktaVerifyRequestExecute(r ApiSendOktaVerifyRequestRequest) (*VerificationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -723,7 +723,7 @@ func (a *MFAControllerApiService) SendOktaVerifyRequestExecute(r ApiSendOktaVeri
 		localVarReturnValue  *VerificationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerApiService.SendOktaVerifyRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerAPIService.SendOktaVerifyRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -766,9 +766,9 @@ func (a *MFAControllerApiService) SendOktaVerifyRequestExecute(r ApiSendOktaVeri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -849,7 +849,7 @@ func (a *MFAControllerApiService) SendOktaVerifyRequestExecute(r ApiSendOktaVeri
 
 type ApiSendTokenAuthRequestRequest struct {
 	ctx context.Context
-	ApiService *MFAControllerApiService
+	ApiService *MFAControllerAPIService
 	tokenAuthRequest *TokenAuthRequest
 }
 
@@ -870,7 +870,7 @@ This API Authenticate user in Token MFA method.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSendTokenAuthRequestRequest
 */
-func (a *MFAControllerApiService) SendTokenAuthRequest(ctx context.Context) ApiSendTokenAuthRequestRequest {
+func (a *MFAControllerAPIService) SendTokenAuthRequest(ctx context.Context) ApiSendTokenAuthRequestRequest {
 	return ApiSendTokenAuthRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -879,7 +879,7 @@ func (a *MFAControllerApiService) SendTokenAuthRequest(ctx context.Context) ApiS
 
 // Execute executes the request
 //  @return TokenAuthResponse
-func (a *MFAControllerApiService) SendTokenAuthRequestExecute(r ApiSendTokenAuthRequestRequest) (*TokenAuthResponse, *http.Response, error) {
+func (a *MFAControllerAPIService) SendTokenAuthRequestExecute(r ApiSendTokenAuthRequestRequest) (*TokenAuthResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -887,7 +887,7 @@ func (a *MFAControllerApiService) SendTokenAuthRequestExecute(r ApiSendTokenAuth
 		localVarReturnValue  *TokenAuthResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerApiService.SendTokenAuthRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAControllerAPIService.SendTokenAuthRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -930,9 +930,9 @@ func (a *MFAControllerApiService) SendTokenAuthRequestExecute(r ApiSendTokenAuth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

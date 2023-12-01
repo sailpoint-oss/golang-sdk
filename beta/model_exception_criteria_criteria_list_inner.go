@@ -211,8 +211,8 @@ func (o *ExceptionCriteriaCriteriaListInner) UnmarshalJSON(bytes []byte) (err er
 	varExceptionCriteriaCriteriaListInner := _ExceptionCriteriaCriteriaListInner{}
 
 	if err = json.Unmarshal(bytes, &varExceptionCriteriaCriteriaListInner); err == nil {
-		*o = ExceptionCriteriaCriteriaListInner(varExceptionCriteriaCriteriaListInner)
-	}
+	*o = ExceptionCriteriaCriteriaListInner(varExceptionCriteriaCriteriaListInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

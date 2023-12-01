@@ -1,27 +1,27 @@
-# \WorkflowsApi
+# \WorkflowsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CancelWorkflowExecution**](WorkflowsApi.md#CancelWorkflowExecution) | **Post** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
-[**CreateWorkflow**](WorkflowsApi.md#CreateWorkflow) | **Post** /workflows | Create Workflow
-[**DeleteWorkflow**](WorkflowsApi.md#DeleteWorkflow) | **Delete** /workflows/{id} | Delete Workflow By Id
-[**GetWorkflow**](WorkflowsApi.md#GetWorkflow) | **Get** /workflows/{id} | Get Workflow By Id
-[**GetWorkflowExecution**](WorkflowsApi.md#GetWorkflowExecution) | **Get** /workflow-executions/{id} | Get a Workflow Execution
-[**GetWorkflowExecutionHistory**](WorkflowsApi.md#GetWorkflowExecutionHistory) | **Get** /workflow-executions/{id}/history | Get Workflow Execution History
-[**ListCompleteWorkflowLibrary**](WorkflowsApi.md#ListCompleteWorkflowLibrary) | **Get** /workflow-library | List Complete Workflow Library
-[**ListWorkflowExecutions**](WorkflowsApi.md#ListWorkflowExecutions) | **Get** /workflows/{id}/executions | List Workflow Executions
-[**ListWorkflowLibraryActions**](WorkflowsApi.md#ListWorkflowLibraryActions) | **Get** /workflow-library/actions | List Workflow Library Actions
-[**ListWorkflowLibraryOperators**](WorkflowsApi.md#ListWorkflowLibraryOperators) | **Get** /workflow-library/operators | List Workflow Library Operators
-[**ListWorkflowLibraryTriggers**](WorkflowsApi.md#ListWorkflowLibraryTriggers) | **Get** /workflow-library/triggers | List Workflow Library Triggers
-[**ListWorkflows**](WorkflowsApi.md#ListWorkflows) | **Get** /workflows | List Workflows
-[**PatchWorkflow**](WorkflowsApi.md#PatchWorkflow) | **Patch** /workflows/{id} | Patch Workflow
-[**PostExternalExecuteWorkflow**](WorkflowsApi.md#PostExternalExecuteWorkflow) | **Post** /workflows/execute/external/{id} | Execute Workflow via External Trigger
-[**PostWorkflowExternalTrigger**](WorkflowsApi.md#PostWorkflowExternalTrigger) | **Post** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
-[**TestExternalExecuteWorkflow**](WorkflowsApi.md#TestExternalExecuteWorkflow) | **Post** /workflows/execute/external/{id}/test | Test Workflow via External Trigger
-[**TestWorkflow**](WorkflowsApi.md#TestWorkflow) | **Post** /workflows/{id}/test | Test Workflow By Id
-[**UpdateWorkflow**](WorkflowsApi.md#UpdateWorkflow) | **Put** /workflows/{id} | Update Workflow
+[**CancelWorkflowExecution**](WorkflowsAPI.md#CancelWorkflowExecution) | **Post** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
+[**CreateWorkflow**](WorkflowsAPI.md#CreateWorkflow) | **Post** /workflows | Create Workflow
+[**DeleteWorkflow**](WorkflowsAPI.md#DeleteWorkflow) | **Delete** /workflows/{id} | Delete Workflow By Id
+[**GetWorkflow**](WorkflowsAPI.md#GetWorkflow) | **Get** /workflows/{id} | Get Workflow By Id
+[**GetWorkflowExecution**](WorkflowsAPI.md#GetWorkflowExecution) | **Get** /workflow-executions/{id} | Get a Workflow Execution
+[**GetWorkflowExecutionHistory**](WorkflowsAPI.md#GetWorkflowExecutionHistory) | **Get** /workflow-executions/{id}/history | Get Workflow Execution History
+[**ListCompleteWorkflowLibrary**](WorkflowsAPI.md#ListCompleteWorkflowLibrary) | **Get** /workflow-library | List Complete Workflow Library
+[**ListWorkflowExecutions**](WorkflowsAPI.md#ListWorkflowExecutions) | **Get** /workflows/{id}/executions | List Workflow Executions
+[**ListWorkflowLibraryActions**](WorkflowsAPI.md#ListWorkflowLibraryActions) | **Get** /workflow-library/actions | List Workflow Library Actions
+[**ListWorkflowLibraryOperators**](WorkflowsAPI.md#ListWorkflowLibraryOperators) | **Get** /workflow-library/operators | List Workflow Library Operators
+[**ListWorkflowLibraryTriggers**](WorkflowsAPI.md#ListWorkflowLibraryTriggers) | **Get** /workflow-library/triggers | List Workflow Library Triggers
+[**ListWorkflows**](WorkflowsAPI.md#ListWorkflows) | **Get** /workflows | List Workflows
+[**PatchWorkflow**](WorkflowsAPI.md#PatchWorkflow) | **Patch** /workflows/{id} | Patch Workflow
+[**PostExternalExecuteWorkflow**](WorkflowsAPI.md#PostExternalExecuteWorkflow) | **Post** /workflows/execute/external/{id} | Execute Workflow via External Trigger
+[**PostWorkflowExternalTrigger**](WorkflowsAPI.md#PostWorkflowExternalTrigger) | **Post** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
+[**TestExternalExecuteWorkflow**](WorkflowsAPI.md#TestExternalExecuteWorkflow) | **Post** /workflows/execute/external/{id}/test | Test Workflow via External Trigger
+[**TestWorkflow**](WorkflowsAPI.md#TestWorkflow) | **Post** /workflows/{id}/test | Test Workflow By Id
+[**UpdateWorkflow**](WorkflowsAPI.md#UpdateWorkflow) | **Put** /workflows/{id} | Update Workflow
 
 
 
@@ -42,7 +42,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -50,9 +50,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.CancelWorkflowExecution(context.Background(), id).Execute()
+    r, err := apiClient.WorkflowsAPI.CancelWorkflowExecution(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.CancelWorkflowExecution``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CancelWorkflowExecution``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -110,7 +110,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -118,13 +118,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.CreateWorkflow(context.Background()).CreateWorkflowRequest(createWorkflowRequest).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.CreateWorkflow(context.Background()).CreateWorkflowRequest(createWorkflowRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.CreateWorkflow``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.CreateWorkflow``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateWorkflow`: Workflow
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.CreateWorkflow`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.CreateWorkflow`: %v\n", resp)
 }
 ```
 
@@ -176,7 +176,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -184,9 +184,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.DeleteWorkflow(context.Background(), id).Execute()
+    r, err := apiClient.WorkflowsAPI.DeleteWorkflow(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.DeleteWorkflow``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.DeleteWorkflow``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -244,7 +244,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -252,13 +252,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.GetWorkflow(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.GetWorkflow(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.GetWorkflow``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflow``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetWorkflow`: Workflow
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.GetWorkflow`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflow`: %v\n", resp)
 }
 ```
 
@@ -314,7 +314,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -322,13 +322,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.GetWorkflowExecution(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecution(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.GetWorkflowExecution``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecution``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetWorkflowExecution`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.GetWorkflowExecution`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowExecution`: %v\n", resp)
 }
 ```
 
@@ -384,7 +384,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -392,13 +392,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.GetWorkflowExecutionHistory(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.GetWorkflowExecutionHistory(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.GetWorkflowExecutionHistory``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.GetWorkflowExecutionHistory``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetWorkflowExecutionHistory`: []WorkflowExecutionEvent
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.GetWorkflowExecutionHistory`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.GetWorkflowExecutionHistory`: %v\n", resp)
 }
 ```
 
@@ -454,7 +454,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -463,13 +463,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.ListCompleteWorkflowLibrary(context.Background()).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.ListCompleteWorkflowLibrary(context.Background()).Limit(limit).Offset(offset).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.ListCompleteWorkflowLibrary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListCompleteWorkflowLibrary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListCompleteWorkflowLibrary`: []ListCompleteWorkflowLibrary200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.ListCompleteWorkflowLibrary`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListCompleteWorkflowLibrary`: %v\n", resp)
 }
 ```
 
@@ -522,7 +522,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -534,13 +534,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.ListWorkflowExecutions(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowExecutions(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.ListWorkflowExecutions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowExecutions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListWorkflowExecutions`: []WorkflowExecution
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.ListWorkflowExecutions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowExecutions`: %v\n", resp)
 }
 ```
 
@@ -600,7 +600,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -610,13 +610,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.ListWorkflowLibraryActions(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryActions(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.ListWorkflowLibraryActions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryActions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListWorkflowLibraryActions`: []WorkflowLibraryAction
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.ListWorkflowLibraryActions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowLibraryActions`: %v\n", resp)
 }
 ```
 
@@ -670,20 +670,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.ListWorkflowLibraryOperators(context.Background()).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryOperators(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.ListWorkflowLibraryOperators``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryOperators``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListWorkflowLibraryOperators`: []WorkflowLibraryOperator
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.ListWorkflowLibraryOperators`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowLibraryOperators`: %v\n", resp)
 }
 ```
 
@@ -731,7 +731,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -741,13 +741,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.ListWorkflowLibraryTriggers(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.ListWorkflowLibraryTriggers(context.Background()).Limit(limit).Offset(offset).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.ListWorkflowLibraryTriggers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflowLibraryTriggers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListWorkflowLibraryTriggers`: []WorkflowLibraryTrigger
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.ListWorkflowLibraryTriggers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflowLibraryTriggers`: %v\n", resp)
 }
 ```
 
@@ -801,20 +801,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.ListWorkflows(context.Background()).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.ListWorkflows(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.ListWorkflows``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.ListWorkflows``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListWorkflows`: []Workflow
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.ListWorkflows`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.ListWorkflows`: %v\n", resp)
 }
 ```
 
@@ -862,7 +862,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -871,13 +871,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.PatchWorkflow(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.PatchWorkflow(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.PatchWorkflow``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PatchWorkflow``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchWorkflow`: Workflow
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.PatchWorkflow`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PatchWorkflow`: %v\n", resp)
 }
 ```
 
@@ -934,7 +934,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -943,13 +943,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.PostExternalExecuteWorkflow(context.Background(), id).PostExternalExecuteWorkflowRequest(postExternalExecuteWorkflowRequest).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.PostExternalExecuteWorkflow(context.Background(), id).PostExternalExecuteWorkflowRequest(postExternalExecuteWorkflowRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.PostExternalExecuteWorkflow``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PostExternalExecuteWorkflow``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PostExternalExecuteWorkflow`: PostExternalExecuteWorkflow200Response
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.PostExternalExecuteWorkflow`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PostExternalExecuteWorkflow`: %v\n", resp)
 }
 ```
 
@@ -1006,7 +1006,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1014,13 +1014,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.PostWorkflowExternalTrigger(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.PostWorkflowExternalTrigger(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.PostWorkflowExternalTrigger``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.PostWorkflowExternalTrigger``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PostWorkflowExternalTrigger`: WorkflowOAuthClient
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.PostWorkflowExternalTrigger`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.PostWorkflowExternalTrigger`: %v\n", resp)
 }
 ```
 
@@ -1076,7 +1076,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1085,13 +1085,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.TestExternalExecuteWorkflow(context.Background(), id).TestExternalExecuteWorkflowRequest(testExternalExecuteWorkflowRequest).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.TestExternalExecuteWorkflow(context.Background(), id).TestExternalExecuteWorkflowRequest(testExternalExecuteWorkflowRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.TestExternalExecuteWorkflow``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.TestExternalExecuteWorkflow``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `TestExternalExecuteWorkflow`: TestExternalExecuteWorkflow200Response
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.TestExternalExecuteWorkflow`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.TestExternalExecuteWorkflow`: %v\n", resp)
 }
 ```
 
@@ -1148,7 +1148,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1157,13 +1157,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.TestWorkflow(context.Background(), id).TestWorkflowRequest(testWorkflowRequest).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.TestWorkflow(context.Background(), id).TestWorkflowRequest(testWorkflowRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.TestWorkflow``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.TestWorkflow``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `TestWorkflow`: TestWorkflow200Response
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.TestWorkflow`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.TestWorkflow`: %v\n", resp)
 }
 ```
 
@@ -1220,7 +1220,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1229,13 +1229,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkflowsApi.UpdateWorkflow(context.Background(), id).WorkflowBody(workflowBody).Execute()
+    resp, r, err := apiClient.WorkflowsAPI.UpdateWorkflow(context.Background(), id).WorkflowBody(workflowBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsApi.UpdateWorkflow``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkflowsAPI.UpdateWorkflow``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateWorkflow`: Workflow
-    fmt.Fprintf(os.Stdout, "Response from `WorkflowsApi.UpdateWorkflow`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkflowsAPI.UpdateWorkflow`: %v\n", resp)
 }
 ```
 

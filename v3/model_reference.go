@@ -137,8 +137,8 @@ func (o *Reference) UnmarshalJSON(bytes []byte) (err error) {
 	varReference := _Reference{}
 
 	if err = json.Unmarshal(bytes, &varReference); err == nil {
-		*o = Reference(varReference)
-	}
+	*o = Reference(varReference)
+}
 
 	additionalProperties := make(map[string]interface{})
 

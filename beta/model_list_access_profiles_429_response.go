@@ -100,8 +100,8 @@ func (o *ListAccessProfiles429Response) UnmarshalJSON(bytes []byte) (err error) 
 	varListAccessProfiles429Response := _ListAccessProfiles429Response{}
 
 	if err = json.Unmarshal(bytes, &varListAccessProfiles429Response); err == nil {
-		*o = ListAccessProfiles429Response(varListAccessProfiles429Response)
-	}
+	*o = ListAccessProfiles429Response(varListAccessProfiles429Response)
+}
 
 	additionalProperties := make(map[string]interface{})
 

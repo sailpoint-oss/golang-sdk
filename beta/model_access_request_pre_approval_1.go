@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccessRequestPreApproval1 type satisfies the MappedNullable interface at compile time
@@ -144,11 +145,34 @@ func (o AccessRequestPreApproval1) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessRequestPreApproval1) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"approved",
+		"comment",
+		"approver",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccessRequestPreApproval1 := _AccessRequestPreApproval1{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestPreApproval1); err == nil {
-		*o = AccessRequestPreApproval1(varAccessRequestPreApproval1)
-	}
+	*o = AccessRequestPreApproval1(varAccessRequestPreApproval1)
+}
 
 	additionalProperties := make(map[string]interface{})
 

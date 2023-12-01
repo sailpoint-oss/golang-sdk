@@ -174,8 +174,8 @@ func (o *OwnerReferenceSegments) UnmarshalJSON(bytes []byte) (err error) {
 	varOwnerReferenceSegments := _OwnerReferenceSegments{}
 
 	if err = json.Unmarshal(bytes, &varOwnerReferenceSegments); err == nil {
-		*o = OwnerReferenceSegments(varOwnerReferenceSegments)
-	}
+	*o = OwnerReferenceSegments(varOwnerReferenceSegments)
+}
 
 	additionalProperties := make(map[string]interface{})
 

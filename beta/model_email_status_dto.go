@@ -171,8 +171,8 @@ func (o *EmailStatusDto) UnmarshalJSON(bytes []byte) (err error) {
 	varEmailStatusDto := _EmailStatusDto{}
 
 	if err = json.Unmarshal(bytes, &varEmailStatusDto); err == nil {
-		*o = EmailStatusDto(varEmailStatusDto)
-	}
+	*o = EmailStatusDto(varEmailStatusDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

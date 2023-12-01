@@ -252,8 +252,8 @@ func (o *DkimAttributes) UnmarshalJSON(bytes []byte) (err error) {
 	varDkimAttributes := _DkimAttributes{}
 
 	if err = json.Unmarshal(bytes, &varDkimAttributes); err == nil {
-		*o = DkimAttributes(varDkimAttributes)
-	}
+	*o = DkimAttributes(varDkimAttributes)
+}
 
 	additionalProperties := make(map[string]interface{})
 

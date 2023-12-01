@@ -1,10 +1,10 @@
-# \AccountUsagesApi
+# \AccountUsagesAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetUsagesByAccountId**](AccountUsagesApi.md#GetUsagesByAccountId) | **Get** /account-usages/{accountId}/summaries | Returns account usage insights
+[**GetUsagesByAccountId**](AccountUsagesAPI.md#GetUsagesByAccountId) | **Get** /account-usages/{accountId}/summaries | Returns account usage insights
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountUsagesApi.GetUsagesByAccountId(context.Background(), accountId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccountUsagesAPI.GetUsagesByAccountId(context.Background(), accountId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountUsagesApi.GetUsagesByAccountId``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountUsagesAPI.GetUsagesByAccountId``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetUsagesByAccountId`: []AccountUsage
-    fmt.Fprintf(os.Stdout, "Response from `AccountUsagesApi.GetUsagesByAccountId`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountUsagesAPI.GetUsagesByAccountId`: %v\n", resp)
 }
 ```
 

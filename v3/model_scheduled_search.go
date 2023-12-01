@@ -13,6 +13,7 @@ package v3
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the ScheduledSearch type satisfies the MappedNullable interface at compile time
@@ -20,22 +21,16 @@ var _ MappedNullable = &ScheduledSearch{}
 
 // ScheduledSearch struct for ScheduledSearch
 type ScheduledSearch struct {
-	// The scheduled search ID.
-	Id string `json:"id"`
-	Owner ScheduledSearchAllOfOwner `json:"owner"`
-	// The ID of the scheduled search owner.  Please use the `id` in the `owner` object instead. 
-	// Deprecated
-	OwnerId string `json:"ownerId"`
 	// The name of the scheduled search. 
 	Name NullableString `json:"name,omitempty"`
 	// The description of the scheduled search. 
 	Description NullableString `json:"description,omitempty"`
 	// The ID of the saved search that will be executed.
 	SavedSearchId string `json:"savedSearchId"`
-	// The date the scheduled search was initially created.
-	Created *time.Time `json:"created,omitempty"`
-	// The last date the scheduled search was modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	// A date-time in ISO-8601 format
+	Created NullableTime `json:"created,omitempty"`
+	// A date-time in ISO-8601 format
+	Modified NullableTime `json:"modified,omitempty"`
 	Schedule Schedule1 `json:"schedule"`
 	// A list of identities that should receive the scheduled search report via email.
 	Recipients []SearchScheduleRecipientsInner `json:"recipients"`
@@ -45,6 +40,12 @@ type ScheduledSearch struct {
 	EmailEmptyResults *bool `json:"emailEmptyResults,omitempty"`
 	// Indicates if the generated email should include the query and search results preview (which could include PII). 
 	DisplayQueryDetails *bool `json:"displayQueryDetails,omitempty"`
+	// The scheduled search ID.
+	Id string `json:"id"`
+	Owner ScheduledSearchAllOfOwner `json:"owner"`
+	// The ID of the scheduled search owner.  Please use the `id` in the `owner` object instead. 
+	// Deprecated
+	OwnerId string `json:"ownerId"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -54,11 +55,8 @@ type _ScheduledSearch ScheduledSearch
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScheduledSearch(id string, owner ScheduledSearchAllOfOwner, ownerId string, savedSearchId string, schedule Schedule1, recipients []SearchScheduleRecipientsInner) *ScheduledSearch {
+func NewScheduledSearch(savedSearchId string, schedule Schedule1, recipients []SearchScheduleRecipientsInner, id string, owner ScheduledSearchAllOfOwner, ownerId string) *ScheduledSearch {
 	this := ScheduledSearch{}
-	this.Id = id
-	this.Owner = owner
-	this.OwnerId = ownerId
 	this.SavedSearchId = savedSearchId
 	this.Schedule = schedule
 	this.Recipients = recipients
@@ -68,6 +66,9 @@ func NewScheduledSearch(id string, owner ScheduledSearchAllOfOwner, ownerId stri
 	this.EmailEmptyResults = &emailEmptyResults
 	var displayQueryDetails bool = false
 	this.DisplayQueryDetails = &displayQueryDetails
+	this.Id = id
+	this.Owner = owner
+	this.OwnerId = ownerId
 	return &this
 }
 
@@ -83,81 +84,6 @@ func NewScheduledSearchWithDefaults() *ScheduledSearch {
 	var displayQueryDetails bool = false
 	this.DisplayQueryDetails = &displayQueryDetails
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *ScheduledSearch) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *ScheduledSearch) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *ScheduledSearch) SetId(v string) {
-	o.Id = v
-}
-
-// GetOwner returns the Owner field value
-func (o *ScheduledSearch) GetOwner() ScheduledSearchAllOfOwner {
-	if o == nil {
-		var ret ScheduledSearchAllOfOwner
-		return ret
-	}
-
-	return o.Owner
-}
-
-// GetOwnerOk returns a tuple with the Owner field value
-// and a boolean to check if the value has been set.
-func (o *ScheduledSearch) GetOwnerOk() (*ScheduledSearchAllOfOwner, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Owner, true
-}
-
-// SetOwner sets field value
-func (o *ScheduledSearch) SetOwner(v ScheduledSearchAllOfOwner) {
-	o.Owner = v
-}
-
-// GetOwnerId returns the OwnerId field value
-// Deprecated
-func (o *ScheduledSearch) GetOwnerId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.OwnerId
-}
-
-// GetOwnerIdOk returns a tuple with the OwnerId field value
-// and a boolean to check if the value has been set.
-// Deprecated
-func (o *ScheduledSearch) GetOwnerIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.OwnerId, true
-}
-
-// SetOwnerId sets field value
-// Deprecated
-func (o *ScheduledSearch) SetOwnerId(v string) {
-	o.OwnerId = v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -268,68 +194,88 @@ func (o *ScheduledSearch) SetSavedSearchId(v string) {
 	o.SavedSearchId = v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScheduledSearch) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || isNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.Created
+	return *o.Created.Get()
 }
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ScheduledSearch) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Created, true
+	return o.Created.Get(), o.Created.IsSet()
 }
 
 // HasCreated returns a boolean if a field has been set.
 func (o *ScheduledSearch) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && o.Created.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *ScheduledSearch) SetCreated(v time.Time) {
-	o.Created = &v
+	o.Created.Set(&v)
+}
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *ScheduledSearch) SetCreatedNil() {
+	o.Created.Set(nil)
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise.
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *ScheduledSearch) UnsetCreated() {
+	o.Created.Unset()
+}
+
+// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ScheduledSearch) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || isNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.Modified
+	return *o.Modified.Get()
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ScheduledSearch) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Modified, true
+	return o.Modified.Get(), o.Modified.IsSet()
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *ScheduledSearch) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && o.Modified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+// SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
 func (o *ScheduledSearch) SetModified(v time.Time) {
-	o.Modified = &v
+	o.Modified.Set(&v)
+}
+// SetModifiedNil sets the value for Modified to be an explicit nil
+func (o *ScheduledSearch) SetModifiedNil() {
+	o.Modified.Set(nil)
+}
+
+// UnsetModified ensures that no value is present for Modified, not even an explicit nil
+func (o *ScheduledSearch) UnsetModified() {
+	o.Modified.Unset()
 }
 
 // GetSchedule returns the Schedule field value
@@ -476,6 +422,81 @@ func (o *ScheduledSearch) SetDisplayQueryDetails(v bool) {
 	o.DisplayQueryDetails = &v
 }
 
+// GetId returns the Id field value
+func (o *ScheduledSearch) GetId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value
+// and a boolean to check if the value has been set.
+func (o *ScheduledSearch) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Id, true
+}
+
+// SetId sets field value
+func (o *ScheduledSearch) SetId(v string) {
+	o.Id = v
+}
+
+// GetOwner returns the Owner field value
+func (o *ScheduledSearch) GetOwner() ScheduledSearchAllOfOwner {
+	if o == nil {
+		var ret ScheduledSearchAllOfOwner
+		return ret
+	}
+
+	return o.Owner
+}
+
+// GetOwnerOk returns a tuple with the Owner field value
+// and a boolean to check if the value has been set.
+func (o *ScheduledSearch) GetOwnerOk() (*ScheduledSearchAllOfOwner, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Owner, true
+}
+
+// SetOwner sets field value
+func (o *ScheduledSearch) SetOwner(v ScheduledSearchAllOfOwner) {
+	o.Owner = v
+}
+
+// GetOwnerId returns the OwnerId field value
+// Deprecated
+func (o *ScheduledSearch) GetOwnerId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.OwnerId
+}
+
+// GetOwnerIdOk returns a tuple with the OwnerId field value
+// and a boolean to check if the value has been set.
+// Deprecated
+func (o *ScheduledSearch) GetOwnerIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.OwnerId, true
+}
+
+// SetOwnerId sets field value
+// Deprecated
+func (o *ScheduledSearch) SetOwnerId(v string) {
+	o.OwnerId = v
+}
+
 func (o ScheduledSearch) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -486,9 +507,6 @@ func (o ScheduledSearch) MarshalJSON() ([]byte, error) {
 
 func (o ScheduledSearch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
-	toSerialize["owner"] = o.Owner
-	// skip: ownerId is readOnly
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
@@ -496,8 +514,12 @@ func (o ScheduledSearch) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description.Get()
 	}
 	toSerialize["savedSearchId"] = o.SavedSearchId
-	// skip: created is readOnly
-	// skip: modified is readOnly
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.Modified.IsSet() {
+		toSerialize["modified"] = o.Modified.Get()
+	}
 	toSerialize["schedule"] = o.Schedule
 	toSerialize["recipients"] = o.Recipients
 	if !isNil(o.Enabled) {
@@ -509,6 +531,9 @@ func (o ScheduledSearch) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.DisplayQueryDetails) {
 		toSerialize["displayQueryDetails"] = o.DisplayQueryDetails
 	}
+	// skip: id is readOnly
+	toSerialize["owner"] = o.Owner
+	// skip: ownerId is readOnly
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -518,18 +543,41 @@ func (o ScheduledSearch) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ScheduledSearch) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"savedSearchId",
+		"schedule",
+		"recipients",
+		"id",
+		"owner",
+		"ownerId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varScheduledSearch := _ScheduledSearch{}
 
 	if err = json.Unmarshal(bytes, &varScheduledSearch); err == nil {
-		*o = ScheduledSearch(varScheduledSearch)
-	}
+	*o = ScheduledSearch(varScheduledSearch)
+}
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "owner")
-		delete(additionalProperties, "ownerId")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "savedSearchId")
@@ -540,6 +588,9 @@ func (o *ScheduledSearch) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "emailEmptyResults")
 		delete(additionalProperties, "displayQueryDetails")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "owner")
+		delete(additionalProperties, "ownerId")
 		o.AdditionalProperties = additionalProperties
 	}
 

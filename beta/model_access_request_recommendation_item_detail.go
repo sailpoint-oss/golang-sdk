@@ -320,8 +320,8 @@ func (o *AccessRequestRecommendationItemDetail) UnmarshalJSON(bytes []byte) (err
 	varAccessRequestRecommendationItemDetail := _AccessRequestRecommendationItemDetail{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestRecommendationItemDetail); err == nil {
-		*o = AccessRequestRecommendationItemDetail(varAccessRequestRecommendationItemDetail)
-	}
+	*o = AccessRequestRecommendationItemDetail(varAccessRequestRecommendationItemDetail)
+}
 
 	additionalProperties := make(map[string]interface{})
 

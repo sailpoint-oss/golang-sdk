@@ -174,8 +174,8 @@ func (o *FormElementDataSourceConfigOptions) UnmarshalJSON(bytes []byte) (err er
 	varFormElementDataSourceConfigOptions := _FormElementDataSourceConfigOptions{}
 
 	if err = json.Unmarshal(bytes, &varFormElementDataSourceConfigOptions); err == nil {
-		*o = FormElementDataSourceConfigOptions(varFormElementDataSourceConfigOptions)
-	}
+	*o = FormElementDataSourceConfigOptions(varFormElementDataSourceConfigOptions)
+}
 
 	additionalProperties := make(map[string]interface{})
 

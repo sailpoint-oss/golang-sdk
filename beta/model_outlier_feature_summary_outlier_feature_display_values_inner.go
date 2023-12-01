@@ -174,8 +174,8 @@ func (o *OutlierFeatureSummaryOutlierFeatureDisplayValuesInner) UnmarshalJSON(by
 	varOutlierFeatureSummaryOutlierFeatureDisplayValuesInner := _OutlierFeatureSummaryOutlierFeatureDisplayValuesInner{}
 
 	if err = json.Unmarshal(bytes, &varOutlierFeatureSummaryOutlierFeatureDisplayValuesInner); err == nil {
-		*o = OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(varOutlierFeatureSummaryOutlierFeatureDisplayValuesInner)
-	}
+	*o = OutlierFeatureSummaryOutlierFeatureDisplayValuesInner(varOutlierFeatureSummaryOutlierFeatureDisplayValuesInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

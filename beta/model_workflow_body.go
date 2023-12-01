@@ -286,8 +286,8 @@ func (o *WorkflowBody) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkflowBody := _WorkflowBody{}
 
 	if err = json.Unmarshal(bytes, &varWorkflowBody); err == nil {
-		*o = WorkflowBody(varWorkflowBody)
-	}
+	*o = WorkflowBody(varWorkflowBody)
+}
 
 	additionalProperties := make(map[string]interface{})
 

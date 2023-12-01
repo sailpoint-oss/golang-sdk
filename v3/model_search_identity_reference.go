@@ -173,8 +173,8 @@ func (o *SearchIdentityReference) UnmarshalJSON(bytes []byte) (err error) {
 	varSearchIdentityReference := _SearchIdentityReference{}
 
 	if err = json.Unmarshal(bytes, &varSearchIdentityReference); err == nil {
-		*o = SearchIdentityReference(varSearchIdentityReference)
-	}
+	*o = SearchIdentityReference(varSearchIdentityReference)
+}
 
 	additionalProperties := make(map[string]interface{})
 

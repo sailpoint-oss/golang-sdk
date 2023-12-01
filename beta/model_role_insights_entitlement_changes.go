@@ -321,8 +321,8 @@ func (o *RoleInsightsEntitlementChanges) UnmarshalJSON(bytes []byte) (err error)
 	varRoleInsightsEntitlementChanges := _RoleInsightsEntitlementChanges{}
 
 	if err = json.Unmarshal(bytes, &varRoleInsightsEntitlementChanges); err == nil {
-		*o = RoleInsightsEntitlementChanges(varRoleInsightsEntitlementChanges)
-	}
+	*o = RoleInsightsEntitlementChanges(varRoleInsightsEntitlementChanges)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccountUncorrelatedIdentity type satisfies the MappedNullable interface at compile time
@@ -144,11 +145,34 @@ func (o AccountUncorrelatedIdentity) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccountUncorrelatedIdentity) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"id",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccountUncorrelatedIdentity := _AccountUncorrelatedIdentity{}
 
 	if err = json.Unmarshal(bytes, &varAccountUncorrelatedIdentity); err == nil {
-		*o = AccountUncorrelatedIdentity(varAccountUncorrelatedIdentity)
-	}
+	*o = AccountUncorrelatedIdentity(varAccountUncorrelatedIdentity)
+}
 
 	additionalProperties := make(map[string]interface{})
 

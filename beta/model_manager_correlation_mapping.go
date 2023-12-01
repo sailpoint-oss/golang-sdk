@@ -137,8 +137,8 @@ func (o *ManagerCorrelationMapping) UnmarshalJSON(bytes []byte) (err error) {
 	varManagerCorrelationMapping := _ManagerCorrelationMapping{}
 
 	if err = json.Unmarshal(bytes, &varManagerCorrelationMapping); err == nil {
-		*o = ManagerCorrelationMapping(varManagerCorrelationMapping)
-	}
+	*o = ManagerCorrelationMapping(varManagerCorrelationMapping)
+}
 
 	additionalProperties := make(map[string]interface{})
 

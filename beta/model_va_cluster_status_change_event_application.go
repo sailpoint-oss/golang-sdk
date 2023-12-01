@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the VAClusterStatusChangeEventApplication type satisfies the MappedNullable interface at compile time
@@ -148,11 +149,34 @@ func (o VAClusterStatusChangeEventApplication) ToMap() (map[string]interface{}, 
 }
 
 func (o *VAClusterStatusChangeEventApplication) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"attributes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varVAClusterStatusChangeEventApplication := _VAClusterStatusChangeEventApplication{}
 
 	if err = json.Unmarshal(bytes, &varVAClusterStatusChangeEventApplication); err == nil {
-		*o = VAClusterStatusChangeEventApplication(varVAClusterStatusChangeEventApplication)
-	}
+	*o = VAClusterStatusChangeEventApplication(varVAClusterStatusChangeEventApplication)
+}
 
 	additionalProperties := make(map[string]interface{})
 

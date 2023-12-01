@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing PasswordDictionaryApiService
+Testing PasswordDictionaryAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_PasswordDictionaryApiService(t *testing.T) {
+func Test_beta_PasswordDictionaryAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test PasswordDictionaryApiService GetPasswordDictionary", func(t *testing.T) {
+	t.Run("Test PasswordDictionaryAPIService GetPasswordDictionary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.PasswordDictionaryApi.GetPasswordDictionary(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_beta_PasswordDictionaryApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordDictionaryApiService UpdatePasswordDictionary", func(t *testing.T) {
+	t.Run("Test PasswordDictionaryAPIService UpdatePasswordDictionary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BETA.PasswordDictionaryApi.UpdatePasswordDictionary(context.Background()).Execute()
+		httpRes, err := apiClient.BETA.PasswordDictionaryAPI.UpdatePasswordDictionary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

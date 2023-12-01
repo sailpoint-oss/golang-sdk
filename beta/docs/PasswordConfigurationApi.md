@@ -1,12 +1,12 @@
-# \PasswordConfigurationApi
+# \PasswordConfigurationAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePasswordOrgConfig**](PasswordConfigurationApi.md#CreatePasswordOrgConfig) | **Post** /password-org-config | Create Password Org Config
-[**GetPasswordOrgConfig**](PasswordConfigurationApi.md#GetPasswordOrgConfig) | **Get** /password-org-config | Get Password Org Config
-[**PutPasswordOrgConfig**](PasswordConfigurationApi.md#PutPasswordOrgConfig) | **Put** /password-org-config | Update Password Org Config
+[**CreatePasswordOrgConfig**](PasswordConfigurationAPI.md#CreatePasswordOrgConfig) | **Post** /password-org-config | Create Password Org Config
+[**GetPasswordOrgConfig**](PasswordConfigurationAPI.md#GetPasswordOrgConfig) | **Get** /password-org-config | Get Password Org Config
+[**PutPasswordOrgConfig**](PasswordConfigurationAPI.md#PutPasswordOrgConfig) | **Put** /password-org-config | Update Password Org Config
 
 
 
@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -35,13 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationApi.CreatePasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
+    resp, r, err := apiClient.PasswordConfigurationAPI.CreatePasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationApi.CreatePasswordOrgConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.CreatePasswordOrgConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreatePasswordOrgConfig`: PasswordOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationApi.CreatePasswordOrgConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.CreatePasswordOrgConfig`: %v\n", resp)
 }
 ```
 
@@ -93,20 +93,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationApi.GetPasswordOrgConfig(context.Background()).Execute()
+    resp, r, err := apiClient.PasswordConfigurationAPI.GetPasswordOrgConfig(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationApi.GetPasswordOrgConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.GetPasswordOrgConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPasswordOrgConfig`: PasswordOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationApi.GetPasswordOrgConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.GetPasswordOrgConfig`: %v\n", resp)
 }
 ```
 
@@ -154,7 +154,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -162,13 +162,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationApi.PutPasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
+    resp, r, err := apiClient.PasswordConfigurationAPI.PutPasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationApi.PutPasswordOrgConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.PutPasswordOrgConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutPasswordOrgConfig`: PasswordOrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationApi.PutPasswordOrgConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordConfigurationAPI.PutPasswordOrgConfig`: %v\n", resp)
 }
 ```
 

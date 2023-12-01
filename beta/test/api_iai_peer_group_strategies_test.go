@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing IAIPeerGroupStrategiesApiService
+Testing IAIPeerGroupStrategiesAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_IAIPeerGroupStrategiesApiService(t *testing.T) {
+func Test_beta_IAIPeerGroupStrategiesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test IAIPeerGroupStrategiesApiService GetPeerGroupOutliers", func(t *testing.T) {
+	t.Run("Test IAIPeerGroupStrategiesAPIService GetPeerGroupOutliers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var strategy string
 
-		resp, httpRes, err := apiClient.BETA.IAIPeerGroupStrategiesApi.GetPeerGroupOutliers(context.Background(), strategy).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIPeerGroupStrategiesAPI.GetPeerGroupOutliers(context.Background(), strategy).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

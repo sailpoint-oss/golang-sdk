@@ -12,6 +12,7 @@ package v3
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the IdentityWithNewAccess1 type satisfies the MappedNullable interface at compile time
@@ -22,7 +23,7 @@ type IdentityWithNewAccess1 struct {
 	// Set of identity IDs to be checked.
 	IdentityId string `json:"identityId"`
 	// The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type.
-	AccessRefs []IdentityWithNewAccess1AccessRefsInner `json:"accessRefs"`
+	AccessRefs []EntitlementRef `json:"accessRefs"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -34,7 +35,7 @@ type _IdentityWithNewAccess1 IdentityWithNewAccess1
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityWithNewAccess1(identityId string, accessRefs []IdentityWithNewAccess1AccessRefsInner) *IdentityWithNewAccess1 {
+func NewIdentityWithNewAccess1(identityId string, accessRefs []EntitlementRef) *IdentityWithNewAccess1 {
 	this := IdentityWithNewAccess1{}
 	this.IdentityId = identityId
 	this.AccessRefs = accessRefs
@@ -74,9 +75,9 @@ func (o *IdentityWithNewAccess1) SetIdentityId(v string) {
 }
 
 // GetAccessRefs returns the AccessRefs field value
-func (o *IdentityWithNewAccess1) GetAccessRefs() []IdentityWithNewAccess1AccessRefsInner {
+func (o *IdentityWithNewAccess1) GetAccessRefs() []EntitlementRef {
 	if o == nil {
-		var ret []IdentityWithNewAccess1AccessRefsInner
+		var ret []EntitlementRef
 		return ret
 	}
 
@@ -85,7 +86,7 @@ func (o *IdentityWithNewAccess1) GetAccessRefs() []IdentityWithNewAccess1AccessR
 
 // GetAccessRefsOk returns a tuple with the AccessRefs field value
 // and a boolean to check if the value has been set.
-func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]IdentityWithNewAccess1AccessRefsInner, bool) {
+func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]EntitlementRef, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +94,7 @@ func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]IdentityWithNewAccess1Acce
 }
 
 // SetAccessRefs sets field value
-func (o *IdentityWithNewAccess1) SetAccessRefs(v []IdentityWithNewAccess1AccessRefsInner) {
+func (o *IdentityWithNewAccess1) SetAccessRefs(v []EntitlementRef) {
 	o.AccessRefs = v
 }
 
@@ -153,11 +154,33 @@ func (o IdentityWithNewAccess1) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *IdentityWithNewAccess1) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"identityId",
+		"accessRefs",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varIdentityWithNewAccess1 := _IdentityWithNewAccess1{}
 
 	if err = json.Unmarshal(bytes, &varIdentityWithNewAccess1); err == nil {
-		*o = IdentityWithNewAccess1(varIdentityWithNewAccess1)
-	}
+	*o = IdentityWithNewAccess1(varIdentityWithNewAccess1)
+}
 
 	additionalProperties := make(map[string]interface{})
 

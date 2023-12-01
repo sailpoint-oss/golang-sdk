@@ -37,7 +37,7 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `v2.ContextServerIndex` of type `int`.
 
 ```golang
 ctx := context.WithValue(context.Background(), v2.ContextServerIndex, 1)
@@ -45,7 +45,7 @@ ctx := context.WithValue(context.Background(), v2.ContextServerIndex, 1)
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `v2.ContextServerVariables` of type `map[string]string`.
 
 ```golang
 ctx := context.WithValue(context.Background(), v2.ContextServerVariables, map[string]string{
@@ -59,7 +59,7 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `v2.ContextOperationServerIndices` and `v2.ContextOperationServerVariables` context maps.
 
 ```golang
 ctx := context.WithValue(context.Background(), v2.ContextOperationServerIndices, map[string]int{
@@ -78,17 +78,17 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*GovernanceGroupsApi* | [**BulkDeleteWorkGroups**](docs/GovernanceGroupsApi.md#bulkdeleteworkgroups) | **Post** /workgroups/bulk-delete | Bulk delete work groups
-*GovernanceGroupsApi* | [**CreateWorkgroup**](docs/GovernanceGroupsApi.md#createworkgroup) | **Post** /workgroups | Create Work Group
-*GovernanceGroupsApi* | [**DeleteWorkgroup**](docs/GovernanceGroupsApi.md#deleteworkgroup) | **Delete** /workgroups/{workgroupId} | Delete Work Group By Id
-*GovernanceGroupsApi* | [**GetWorkgroup**](docs/GovernanceGroupsApi.md#getworkgroup) | **Get** /workgroups/{workgroupId} | Get Work Group By Id
-*GovernanceGroupsApi* | [**ListWorkgroupConnections**](docs/GovernanceGroupsApi.md#listworkgroupconnections) | **Get** /workgroups/{workgroupId}/connections | List Work Group Connections
-*GovernanceGroupsApi* | [**ListWorkgroupMembers**](docs/GovernanceGroupsApi.md#listworkgroupmembers) | **Get** /workgroups/{workgroupId}/members | List Work Group Members
-*GovernanceGroupsApi* | [**ListWorkgroups**](docs/GovernanceGroupsApi.md#listworkgroups) | **Get** /workgroups | List Work Groups
-*GovernanceGroupsApi* | [**ModifyWorkgroupMembers**](docs/GovernanceGroupsApi.md#modifyworkgroupmembers) | **Post** /workgroups/{workgroupId}/members | Modify Work Group Members
-*GovernanceGroupsApi* | [**UpdateWorkgroup**](docs/GovernanceGroupsApi.md#updateworkgroup) | **Patch** /workgroups/{workgroupId} | Update Work Group By Id
-*OrgApi* | [**GetOrgSettings**](docs/OrgApi.md#getorgsettings) | **Get** /org | Retrieves your org settings.
-*OrgApi* | [**UpdateOrgSettings**](docs/OrgApi.md#updateorgsettings) | **Patch** /org | Updates one or more org attributes.
+*GovernanceGroupsAPI* | [**BulkDeleteWorkGroups**](docs/GovernanceGroupsAPI.md#bulkdeleteworkgroups) | **Post** /workgroups/bulk-delete | Bulk delete work groups
+*GovernanceGroupsAPI* | [**CreateWorkgroup**](docs/GovernanceGroupsAPI.md#createworkgroup) | **Post** /workgroups | Create Work Group
+*GovernanceGroupsAPI* | [**DeleteWorkgroup**](docs/GovernanceGroupsAPI.md#deleteworkgroup) | **Delete** /workgroups/{workgroupId} | Delete Work Group By Id
+*GovernanceGroupsAPI* | [**GetWorkgroup**](docs/GovernanceGroupsAPI.md#getworkgroup) | **Get** /workgroups/{workgroupId} | Get Work Group By Id
+*GovernanceGroupsAPI* | [**ListWorkgroupConnections**](docs/GovernanceGroupsAPI.md#listworkgroupconnections) | **Get** /workgroups/{workgroupId}/connections | List Work Group Connections
+*GovernanceGroupsAPI* | [**ListWorkgroupMembers**](docs/GovernanceGroupsAPI.md#listworkgroupmembers) | **Get** /workgroups/{workgroupId}/members | List Work Group Members
+*GovernanceGroupsAPI* | [**ListWorkgroups**](docs/GovernanceGroupsAPI.md#listworkgroups) | **Get** /workgroups | List Work Groups
+*GovernanceGroupsAPI* | [**ModifyWorkgroupMembers**](docs/GovernanceGroupsAPI.md#modifyworkgroupmembers) | **Post** /workgroups/{workgroupId}/members | Modify Work Group Members
+*GovernanceGroupsAPI* | [**UpdateWorkgroup**](docs/GovernanceGroupsAPI.md#updateworkgroup) | **Patch** /workgroups/{workgroupId} | Update Work Group By Id
+*OrgAPI* | [**GetOrgSettings**](docs/OrgAPI.md#getorgsettings) | **Get** /org | Retrieves your org settings.
+*OrgAPI* | [**UpdateOrgSettings**](docs/OrgAPI.md#updateorgsettings) | **Patch** /org | Updates one or more org attributes.
 
 
 ## Documentation For Models
@@ -113,7 +113,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-
+Authentication schemes defined for the API:
 ### UserContextAuth
 
 
@@ -127,7 +127,7 @@ Class | Method | HTTP request | Description
 Example
 
 ```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "ACCESSTOKENSTRING")
+auth := context.WithValue(context.Background(), v2.ContextAccessToken, "ACCESSTOKENSTRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
@@ -139,10 +139,9 @@ import "golang.org/x/oauth2"
 /* Perform OAuth2 round trip request and obtain a token */
 
 tokenSource := oauth2cfg.TokenSource(createContext(httpClient), &token)
-auth := context.WithValue(oauth2.NoContext, sw.ContextOAuth2, tokenSource)
+auth := context.WithValue(oauth2.NoContext, v2.ContextOAuth2, tokenSource)
 r, err := client.Service.Operation(auth, args)
 ```
-
 
 ### UserContextAuth
 
@@ -157,7 +156,7 @@ r, err := client.Service.Operation(auth, args)
 Example
 
 ```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "ACCESSTOKENSTRING")
+auth := context.WithValue(context.Background(), v2.ContextAccessToken, "ACCESSTOKENSTRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
@@ -169,7 +168,7 @@ import "golang.org/x/oauth2"
 /* Perform OAuth2 round trip request and obtain a token */
 
 tokenSource := oauth2cfg.TokenSource(createContext(httpClient), &token)
-auth := context.WithValue(oauth2.NoContext, sw.ContextOAuth2, tokenSource)
+auth := context.WithValue(oauth2.NoContext, v2.ContextOAuth2, tokenSource)
 r, err := client.Service.Operation(auth, args)
 ```
 

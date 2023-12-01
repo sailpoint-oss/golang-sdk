@@ -13,7 +13,7 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,12 +21,12 @@ import (
 )
 
 
-// SPConfigApiService SPConfigApi service
-type SPConfigApiService service
+// SPConfigAPIService SPConfigAPI service
+type SPConfigAPIService service
 
 type ApiExportSpConfigRequest struct {
 	ctx context.Context
-	ApiService *SPConfigApiService
+	ApiService *SPConfigAPIService
 	exportPayload *ExportPayload
 }
 
@@ -49,7 +49,7 @@ For more information about the object types that currently support export functi
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiExportSpConfigRequest
 */
-func (a *SPConfigApiService) ExportSpConfig(ctx context.Context) ApiExportSpConfigRequest {
+func (a *SPConfigAPIService) ExportSpConfig(ctx context.Context) ApiExportSpConfigRequest {
 	return ApiExportSpConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -58,7 +58,7 @@ func (a *SPConfigApiService) ExportSpConfig(ctx context.Context) ApiExportSpConf
 
 // Execute executes the request
 //  @return SpConfigJob
-func (a *SPConfigApiService) ExportSpConfigExecute(r ApiExportSpConfigRequest) (*SpConfigJob, *http.Response, error) {
+func (a *SPConfigAPIService) ExportSpConfigExecute(r ApiExportSpConfigRequest) (*SpConfigJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -66,7 +66,7 @@ func (a *SPConfigApiService) ExportSpConfigExecute(r ApiExportSpConfigRequest) (
 		localVarReturnValue  *SpConfigJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigApiService.ExportSpConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.ExportSpConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -109,9 +109,9 @@ func (a *SPConfigApiService) ExportSpConfigExecute(r ApiExportSpConfigRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -203,7 +203,7 @@ func (a *SPConfigApiService) ExportSpConfigExecute(r ApiExportSpConfigRequest) (
 
 type ApiGetSpConfigExportRequest struct {
 	ctx context.Context
-	ApiService *SPConfigApiService
+	ApiService *SPConfigAPIService
 	id string
 }
 
@@ -222,7 +222,7 @@ The request will need one of the following security scopes:
  @param id The ID of the export job whose results will be downloaded.
  @return ApiGetSpConfigExportRequest
 */
-func (a *SPConfigApiService) GetSpConfigExport(ctx context.Context, id string) ApiGetSpConfigExportRequest {
+func (a *SPConfigAPIService) GetSpConfigExport(ctx context.Context, id string) ApiGetSpConfigExportRequest {
 	return ApiGetSpConfigExportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -232,7 +232,7 @@ func (a *SPConfigApiService) GetSpConfigExport(ctx context.Context, id string) A
 
 // Execute executes the request
 //  @return SpConfigExportResults
-func (a *SPConfigApiService) GetSpConfigExportExecute(r ApiGetSpConfigExportRequest) (*SpConfigExportResults, *http.Response, error) {
+func (a *SPConfigAPIService) GetSpConfigExportExecute(r ApiGetSpConfigExportRequest) (*SpConfigExportResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -240,7 +240,7 @@ func (a *SPConfigApiService) GetSpConfigExportExecute(r ApiGetSpConfigExportRequ
 		localVarReturnValue  *SpConfigExportResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigApiService.GetSpConfigExport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.GetSpConfigExport")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -279,9 +279,9 @@ func (a *SPConfigApiService) GetSpConfigExportExecute(r ApiGetSpConfigExportRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -373,7 +373,7 @@ func (a *SPConfigApiService) GetSpConfigExportExecute(r ApiGetSpConfigExportRequ
 
 type ApiGetSpConfigExportStatusRequest struct {
 	ctx context.Context
-	ApiService *SPConfigApiService
+	ApiService *SPConfigAPIService
 	id string
 }
 
@@ -392,7 +392,7 @@ The request will need one of the following security scopes:
  @param id The ID of the export job whose status will be returned.
  @return ApiGetSpConfigExportStatusRequest
 */
-func (a *SPConfigApiService) GetSpConfigExportStatus(ctx context.Context, id string) ApiGetSpConfigExportStatusRequest {
+func (a *SPConfigAPIService) GetSpConfigExportStatus(ctx context.Context, id string) ApiGetSpConfigExportStatusRequest {
 	return ApiGetSpConfigExportStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -402,7 +402,7 @@ func (a *SPConfigApiService) GetSpConfigExportStatus(ctx context.Context, id str
 
 // Execute executes the request
 //  @return SpConfigJob
-func (a *SPConfigApiService) GetSpConfigExportStatusExecute(r ApiGetSpConfigExportStatusRequest) (*SpConfigJob, *http.Response, error) {
+func (a *SPConfigAPIService) GetSpConfigExportStatusExecute(r ApiGetSpConfigExportStatusRequest) (*SpConfigJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -410,7 +410,7 @@ func (a *SPConfigApiService) GetSpConfigExportStatusExecute(r ApiGetSpConfigExpo
 		localVarReturnValue  *SpConfigJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigApiService.GetSpConfigExportStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.GetSpConfigExportStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -449,9 +449,9 @@ func (a *SPConfigApiService) GetSpConfigExportStatusExecute(r ApiGetSpConfigExpo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -543,7 +543,7 @@ func (a *SPConfigApiService) GetSpConfigExportStatusExecute(r ApiGetSpConfigExpo
 
 type ApiGetSpConfigImportRequest struct {
 	ctx context.Context
-	ApiService *SPConfigApiService
+	ApiService *SPConfigAPIService
 	id string
 }
 
@@ -562,7 +562,7 @@ The request will need the following security scope:
  @param id The ID of the import job whose results will be downloaded.
  @return ApiGetSpConfigImportRequest
 */
-func (a *SPConfigApiService) GetSpConfigImport(ctx context.Context, id string) ApiGetSpConfigImportRequest {
+func (a *SPConfigAPIService) GetSpConfigImport(ctx context.Context, id string) ApiGetSpConfigImportRequest {
 	return ApiGetSpConfigImportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -572,7 +572,7 @@ func (a *SPConfigApiService) GetSpConfigImport(ctx context.Context, id string) A
 
 // Execute executes the request
 //  @return SpConfigImportResults
-func (a *SPConfigApiService) GetSpConfigImportExecute(r ApiGetSpConfigImportRequest) (*SpConfigImportResults, *http.Response, error) {
+func (a *SPConfigAPIService) GetSpConfigImportExecute(r ApiGetSpConfigImportRequest) (*SpConfigImportResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -580,7 +580,7 @@ func (a *SPConfigApiService) GetSpConfigImportExecute(r ApiGetSpConfigImportRequ
 		localVarReturnValue  *SpConfigImportResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigApiService.GetSpConfigImport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.GetSpConfigImport")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -619,9 +619,9 @@ func (a *SPConfigApiService) GetSpConfigImportExecute(r ApiGetSpConfigImportRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -713,7 +713,7 @@ func (a *SPConfigApiService) GetSpConfigImportExecute(r ApiGetSpConfigImportRequ
 
 type ApiGetSpConfigImportStatusRequest struct {
 	ctx context.Context
-	ApiService *SPConfigApiService
+	ApiService *SPConfigAPIService
 	id string
 }
 
@@ -733,7 +733,7 @@ The request will need the following security scope:
  @param id The ID of the import job whose status will be returned.
  @return ApiGetSpConfigImportStatusRequest
 */
-func (a *SPConfigApiService) GetSpConfigImportStatus(ctx context.Context, id string) ApiGetSpConfigImportStatusRequest {
+func (a *SPConfigAPIService) GetSpConfigImportStatus(ctx context.Context, id string) ApiGetSpConfigImportStatusRequest {
 	return ApiGetSpConfigImportStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -743,7 +743,7 @@ func (a *SPConfigApiService) GetSpConfigImportStatus(ctx context.Context, id str
 
 // Execute executes the request
 //  @return SpConfigJob
-func (a *SPConfigApiService) GetSpConfigImportStatusExecute(r ApiGetSpConfigImportStatusRequest) (*SpConfigJob, *http.Response, error) {
+func (a *SPConfigAPIService) GetSpConfigImportStatusExecute(r ApiGetSpConfigImportStatusRequest) (*SpConfigJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -751,7 +751,7 @@ func (a *SPConfigApiService) GetSpConfigImportStatusExecute(r ApiGetSpConfigImpo
 		localVarReturnValue  *SpConfigJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigApiService.GetSpConfigImportStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.GetSpConfigImportStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -790,9 +790,9 @@ func (a *SPConfigApiService) GetSpConfigImportStatusExecute(r ApiGetSpConfigImpo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -884,7 +884,7 @@ func (a *SPConfigApiService) GetSpConfigImportStatusExecute(r ApiGetSpConfigImpo
 
 type ApiImportSpConfigRequest struct {
 	ctx context.Context
-	ApiService *SPConfigApiService
+	ApiService *SPConfigAPIService
 	data *os.File
 	preview *bool
 	options *ImportOptions
@@ -923,7 +923,7 @@ The request will need the following security scope:
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiImportSpConfigRequest
 */
-func (a *SPConfigApiService) ImportSpConfig(ctx context.Context) ApiImportSpConfigRequest {
+func (a *SPConfigAPIService) ImportSpConfig(ctx context.Context) ApiImportSpConfigRequest {
 	return ApiImportSpConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -932,7 +932,7 @@ func (a *SPConfigApiService) ImportSpConfig(ctx context.Context) ApiImportSpConf
 
 // Execute executes the request
 //  @return SpConfigJob
-func (a *SPConfigApiService) ImportSpConfigExecute(r ApiImportSpConfigRequest) (*SpConfigJob, *http.Response, error) {
+func (a *SPConfigAPIService) ImportSpConfigExecute(r ApiImportSpConfigRequest) (*SpConfigJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -940,7 +940,7 @@ func (a *SPConfigApiService) ImportSpConfigExecute(r ApiImportSpConfigRequest) (
 		localVarReturnValue  *SpConfigJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigApiService.ImportSpConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.ImportSpConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -956,6 +956,9 @@ func (a *SPConfigApiService) ImportSpConfigExecute(r ApiImportSpConfigRequest) (
 
 	if r.preview != nil {
 		parameterAddToQuery(localVarQueryParams, "preview", r.preview, "")
+	} else {
+		var defaultValue bool = false
+		r.preview = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -979,12 +982,10 @@ func (a *SPConfigApiService) ImportSpConfigExecute(r ApiImportSpConfigRequest) (
 	var dataLocalVarFileBytes    []byte
 
 	dataLocalVarFormFileName = "data"
-
-
 	dataLocalVarFile := r.data
 
 	if dataLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(dataLocalVarFile)
+		fbs, _ := io.ReadAll(dataLocalVarFile)
 
 		dataLocalVarFileBytes = fbs
 		dataLocalVarFileName = dataLocalVarFile.Name()
@@ -1008,9 +1009,9 @@ func (a *SPConfigApiService) ImportSpConfigExecute(r ApiImportSpConfigRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1102,7 +1103,7 @@ func (a *SPConfigApiService) ImportSpConfigExecute(r ApiImportSpConfigRequest) (
 
 type ApiListSpConfigObjectsRequest struct {
 	ctx context.Context
-	ApiService *SPConfigApiService
+	ApiService *SPConfigAPIService
 }
 
 func (r ApiListSpConfigObjectsRequest) Execute() ([]SpConfigObject, *http.Response, error) {
@@ -1117,7 +1118,7 @@ This gets the list of object configurations which are known to the tenant export
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSpConfigObjectsRequest
 */
-func (a *SPConfigApiService) ListSpConfigObjects(ctx context.Context) ApiListSpConfigObjectsRequest {
+func (a *SPConfigAPIService) ListSpConfigObjects(ctx context.Context) ApiListSpConfigObjectsRequest {
 	return ApiListSpConfigObjectsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1126,7 +1127,7 @@ func (a *SPConfigApiService) ListSpConfigObjects(ctx context.Context) ApiListSpC
 
 // Execute executes the request
 //  @return []SpConfigObject
-func (a *SPConfigApiService) ListSpConfigObjectsExecute(r ApiListSpConfigObjectsRequest) ([]SpConfigObject, *http.Response, error) {
+func (a *SPConfigAPIService) ListSpConfigObjectsExecute(r ApiListSpConfigObjectsRequest) ([]SpConfigObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1134,7 +1135,7 @@ func (a *SPConfigApiService) ListSpConfigObjectsExecute(r ApiListSpConfigObjects
 		localVarReturnValue  []SpConfigObject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigApiService.ListSpConfigObjects")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.ListSpConfigObjects")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1172,9 +1173,9 @@ func (a *SPConfigApiService) ListSpConfigObjectsExecute(r ApiListSpConfigObjects
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

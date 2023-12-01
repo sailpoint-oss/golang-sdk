@@ -221,8 +221,8 @@ func (o *PasswordStatus) UnmarshalJSON(bytes []byte) (err error) {
 	varPasswordStatus := _PasswordStatus{}
 
 	if err = json.Unmarshal(bytes, &varPasswordStatus); err == nil {
-		*o = PasswordStatus(varPasswordStatus)
-	}
+	*o = PasswordStatus(varPasswordStatus)
+}
 
 	additionalProperties := make(map[string]interface{})
 

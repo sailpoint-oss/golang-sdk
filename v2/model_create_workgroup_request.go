@@ -171,8 +171,8 @@ func (o *CreateWorkgroupRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varCreateWorkgroupRequest := _CreateWorkgroupRequest{}
 
 	if err = json.Unmarshal(bytes, &varCreateWorkgroupRequest); err == nil {
-		*o = CreateWorkgroupRequest(varCreateWorkgroupRequest)
-	}
+	*o = CreateWorkgroupRequest(varCreateWorkgroupRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

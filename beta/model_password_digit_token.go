@@ -137,8 +137,8 @@ func (o *PasswordDigitToken) UnmarshalJSON(bytes []byte) (err error) {
 	varPasswordDigitToken := _PasswordDigitToken{}
 
 	if err = json.Unmarshal(bytes, &varPasswordDigitToken); err == nil {
-		*o = PasswordDigitToken(varPasswordDigitToken)
-	}
+	*o = PasswordDigitToken(varPasswordDigitToken)
+}
 
 	additionalProperties := make(map[string]interface{})
 

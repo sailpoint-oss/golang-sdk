@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// CertificationCampaignFiltersApiService CertificationCampaignFiltersApi service
-type CertificationCampaignFiltersApiService service
+// CertificationCampaignFiltersAPIService CertificationCampaignFiltersAPI service
+type CertificationCampaignFiltersAPIService service
 
 type ApiCreateCampaignFilterRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignFiltersApiService
+	ApiService *CertificationCampaignFiltersAPIService
 	campaignFilterDetails *CampaignFilterDetails
 }
 
@@ -46,7 +46,7 @@ Create a campaign Filter based on filter details and criteria.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignFilterRequest
 */
-func (a *CertificationCampaignFiltersApiService) CreateCampaignFilter(ctx context.Context) ApiCreateCampaignFilterRequest {
+func (a *CertificationCampaignFiltersAPIService) CreateCampaignFilter(ctx context.Context) ApiCreateCampaignFilterRequest {
 	return ApiCreateCampaignFilterRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *CertificationCampaignFiltersApiService) CreateCampaignFilter(ctx contex
 
 // Execute executes the request
 //  @return CampaignFilterDetails
-func (a *CertificationCampaignFiltersApiService) CreateCampaignFilterExecute(r ApiCreateCampaignFilterRequest) (*CampaignFilterDetails, *http.Response, error) {
+func (a *CertificationCampaignFiltersAPIService) CreateCampaignFilterExecute(r ApiCreateCampaignFilterRequest) (*CampaignFilterDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *CertificationCampaignFiltersApiService) CreateCampaignFilterExecute(r A
 		localVarReturnValue  *CampaignFilterDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersApiService.CreateCampaignFilter")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersAPIService.CreateCampaignFilter")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *CertificationCampaignFiltersApiService) CreateCampaignFilterExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -189,7 +189,7 @@ func (a *CertificationCampaignFiltersApiService) CreateCampaignFilterExecute(r A
 
 type ApiDeleteCampaignFiltersRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignFiltersApiService
+	ApiService *CertificationCampaignFiltersAPIService
 	requestBody *[]string
 }
 
@@ -211,7 +211,7 @@ Deletes campaign filters whose Ids are specified in the provided list of campaig
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteCampaignFiltersRequest
 */
-func (a *CertificationCampaignFiltersApiService) DeleteCampaignFilters(ctx context.Context) ApiDeleteCampaignFiltersRequest {
+func (a *CertificationCampaignFiltersAPIService) DeleteCampaignFilters(ctx context.Context) ApiDeleteCampaignFiltersRequest {
 	return ApiDeleteCampaignFiltersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -219,14 +219,14 @@ func (a *CertificationCampaignFiltersApiService) DeleteCampaignFilters(ctx conte
 }
 
 // Execute executes the request
-func (a *CertificationCampaignFiltersApiService) DeleteCampaignFiltersExecute(r ApiDeleteCampaignFiltersRequest) (*http.Response, error) {
+func (a *CertificationCampaignFiltersAPIService) DeleteCampaignFiltersExecute(r ApiDeleteCampaignFiltersRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersApiService.DeleteCampaignFilters")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersAPIService.DeleteCampaignFilters")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -269,9 +269,9 @@ func (a *CertificationCampaignFiltersApiService) DeleteCampaignFiltersExecute(r 
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -354,7 +354,7 @@ func (a *CertificationCampaignFiltersApiService) DeleteCampaignFiltersExecute(r 
 
 type ApiGetCampaignFilterByIdRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignFiltersApiService
+	ApiService *CertificationCampaignFiltersAPIService
 	filterId string
 }
 
@@ -371,7 +371,7 @@ Retrieves information for an existing campaign filter using the filter's ID.
  @param filterId The ID of the campaign filter to be retrieved.
  @return ApiGetCampaignFilterByIdRequest
 */
-func (a *CertificationCampaignFiltersApiService) GetCampaignFilterById(ctx context.Context, filterId string) ApiGetCampaignFilterByIdRequest {
+func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterById(ctx context.Context, filterId string) ApiGetCampaignFilterByIdRequest {
 	return ApiGetCampaignFilterByIdRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -381,7 +381,7 @@ func (a *CertificationCampaignFiltersApiService) GetCampaignFilterById(ctx conte
 
 // Execute executes the request
 //  @return []CampaignFilterDetails
-func (a *CertificationCampaignFiltersApiService) GetCampaignFilterByIdExecute(r ApiGetCampaignFilterByIdRequest) ([]CampaignFilterDetails, *http.Response, error) {
+func (a *CertificationCampaignFiltersAPIService) GetCampaignFilterByIdExecute(r ApiGetCampaignFilterByIdRequest) ([]CampaignFilterDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -389,7 +389,7 @@ func (a *CertificationCampaignFiltersApiService) GetCampaignFilterByIdExecute(r 
 		localVarReturnValue  []CampaignFilterDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersApiService.GetCampaignFilterById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersAPIService.GetCampaignFilterById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -428,9 +428,9 @@ func (a *CertificationCampaignFiltersApiService) GetCampaignFilterByIdExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -522,7 +522,7 @@ func (a *CertificationCampaignFiltersApiService) GetCampaignFilterByIdExecute(r 
 
 type ApiListCampaignFiltersRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignFiltersApiService
+	ApiService *CertificationCampaignFiltersAPIService
 	limit *int32
 	start *int32
 	includeSystemFilters *bool
@@ -560,7 +560,7 @@ All Campaign Filters matching the query params
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListCampaignFiltersRequest
 */
-func (a *CertificationCampaignFiltersApiService) ListCampaignFilters(ctx context.Context) ApiListCampaignFiltersRequest {
+func (a *CertificationCampaignFiltersAPIService) ListCampaignFilters(ctx context.Context) ApiListCampaignFiltersRequest {
 	return ApiListCampaignFiltersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -569,7 +569,7 @@ func (a *CertificationCampaignFiltersApiService) ListCampaignFilters(ctx context
 
 // Execute executes the request
 //  @return []CampaignFilterDetails
-func (a *CertificationCampaignFiltersApiService) ListCampaignFiltersExecute(r ApiListCampaignFiltersRequest) ([]CampaignFilterDetails, *http.Response, error) {
+func (a *CertificationCampaignFiltersAPIService) ListCampaignFiltersExecute(r ApiListCampaignFiltersRequest) ([]CampaignFilterDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -577,7 +577,7 @@ func (a *CertificationCampaignFiltersApiService) ListCampaignFiltersExecute(r Ap
 		localVarReturnValue  []CampaignFilterDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersApiService.ListCampaignFilters")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersAPIService.ListCampaignFilters")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -590,12 +590,21 @@ func (a *CertificationCampaignFiltersApiService) ListCampaignFiltersExecute(r Ap
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.start != nil {
 		parameterAddToQuery(localVarQueryParams, "start", r.start, "")
+	} else {
+		var defaultValue int32 = 0
+		r.start = &defaultValue
 	}
 	if r.includeSystemFilters != nil {
 		parameterAddToQuery(localVarQueryParams, "includeSystemFilters", r.includeSystemFilters, "")
+	} else {
+		var defaultValue bool = true
+		r.includeSystemFilters = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -624,9 +633,9 @@ func (a *CertificationCampaignFiltersApiService) ListCampaignFiltersExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -707,7 +716,7 @@ func (a *CertificationCampaignFiltersApiService) ListCampaignFiltersExecute(r Ap
 
 type ApiUpdateCampaignFilterRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignFiltersApiService
+	ApiService *CertificationCampaignFiltersAPIService
 	filterId string
 	campaignFilterDetails *CampaignFilterDetails
 }
@@ -731,7 +740,7 @@ Updates an existing campaign filter using the filter's ID.
  @param filterId The ID of the campaign filter being modified.
  @return ApiUpdateCampaignFilterRequest
 */
-func (a *CertificationCampaignFiltersApiService) UpdateCampaignFilter(ctx context.Context, filterId string) ApiUpdateCampaignFilterRequest {
+func (a *CertificationCampaignFiltersAPIService) UpdateCampaignFilter(ctx context.Context, filterId string) ApiUpdateCampaignFilterRequest {
 	return ApiUpdateCampaignFilterRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -741,7 +750,7 @@ func (a *CertificationCampaignFiltersApiService) UpdateCampaignFilter(ctx contex
 
 // Execute executes the request
 //  @return CampaignFilterDetails
-func (a *CertificationCampaignFiltersApiService) UpdateCampaignFilterExecute(r ApiUpdateCampaignFilterRequest) (*CampaignFilterDetails, *http.Response, error) {
+func (a *CertificationCampaignFiltersAPIService) UpdateCampaignFilterExecute(r ApiUpdateCampaignFilterRequest) (*CampaignFilterDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -749,7 +758,7 @@ func (a *CertificationCampaignFiltersApiService) UpdateCampaignFilterExecute(r A
 		localVarReturnValue  *CampaignFilterDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersApiService.UpdateCampaignFilter")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignFiltersAPIService.UpdateCampaignFilter")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -793,9 +802,9 @@ func (a *CertificationCampaignFiltersApiService) UpdateCampaignFilterExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

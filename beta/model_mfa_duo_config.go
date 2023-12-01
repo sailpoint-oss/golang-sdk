@@ -330,8 +330,8 @@ func (o *MfaDuoConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varMfaDuoConfig := _MfaDuoConfig{}
 
 	if err = json.Unmarshal(bytes, &varMfaDuoConfig); err == nil {
-		*o = MfaDuoConfig(varMfaDuoConfig)
-	}
+	*o = MfaDuoConfig(varMfaDuoConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

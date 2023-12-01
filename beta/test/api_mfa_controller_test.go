@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing MFAControllerApiService
+Testing MFAControllerAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_MFAControllerApiService(t *testing.T) {
+func Test_beta_MFAControllerAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test MFAControllerApiService CreateSendToken", func(t *testing.T) {
+	t.Run("Test MFAControllerAPIService CreateSendToken", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.MFAControllerApi.CreateSendToken(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAControllerAPI.CreateSendToken(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_beta_MFAControllerApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test MFAControllerApiService PingVerificationStatus", func(t *testing.T) {
+	t.Run("Test MFAControllerAPIService PingVerificationStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var method string
 
-		resp, httpRes, err := apiClient.BETA.MFAControllerApi.PingVerificationStatus(context.Background(), method).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAControllerAPI.PingVerificationStatus(context.Background(), method).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,11 +48,11 @@ func Test_beta_MFAControllerApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test MFAControllerApiService SendDuoVerifyRequest", func(t *testing.T) {
+	t.Run("Test MFAControllerAPIService SendDuoVerifyRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.MFAControllerApi.SendDuoVerifyRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAControllerAPI.SendDuoVerifyRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -60,11 +60,11 @@ func Test_beta_MFAControllerApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test MFAControllerApiService SendKbaAnswers", func(t *testing.T) {
+	t.Run("Test MFAControllerAPIService SendKbaAnswers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.MFAControllerApi.SendKbaAnswers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAControllerAPI.SendKbaAnswers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,11 +72,11 @@ func Test_beta_MFAControllerApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test MFAControllerApiService SendOktaVerifyRequest", func(t *testing.T) {
+	t.Run("Test MFAControllerAPIService SendOktaVerifyRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.MFAControllerApi.SendOktaVerifyRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAControllerAPI.SendOktaVerifyRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -84,11 +84,11 @@ func Test_beta_MFAControllerApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test MFAControllerApiService SendTokenAuthRequest", func(t *testing.T) {
+	t.Run("Test MFAControllerAPIService SendTokenAuthRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.MFAControllerApi.SendTokenAuthRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAControllerAPI.SendTokenAuthRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

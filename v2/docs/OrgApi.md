@@ -1,11 +1,11 @@
-# \OrgApi
+# \OrgAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetOrgSettings**](OrgApi.md#GetOrgSettings) | **Get** /org | Retrieves your org settings.
-[**UpdateOrgSettings**](OrgApi.md#UpdateOrgSettings) | **Patch** /org | Updates one or more org attributes.
+[**GetOrgSettings**](OrgAPI.md#GetOrgSettings) | **Get** /org | Retrieves your org settings.
+[**UpdateOrgSettings**](OrgAPI.md#UpdateOrgSettings) | **Patch** /org | Updates one or more org attributes.
 
 
 
@@ -26,20 +26,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrgApi.GetOrgSettings(context.Background()).Execute()
+    resp, r, err := apiClient.OrgAPI.GetOrgSettings(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrgApi.GetOrgSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgAPI.GetOrgSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetOrgSettings`: GetOrgSettings200Response
-    fmt.Fprintf(os.Stdout, "Response from `OrgApi.GetOrgSettings`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrgAPI.GetOrgSettings`: %v\n", resp)
 }
 ```
 
@@ -87,7 +87,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -95,13 +95,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrgApi.UpdateOrgSettings(context.Background()).UpdateOrgSettingsRequest(updateOrgSettingsRequest).Execute()
+    resp, r, err := apiClient.OrgAPI.UpdateOrgSettings(context.Background()).UpdateOrgSettingsRequest(updateOrgSettingsRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrgApi.UpdateOrgSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgAPI.UpdateOrgSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateOrgSettings`: GetOrgSettings200Response
-    fmt.Fprintf(os.Stdout, "Response from `OrgApi.UpdateOrgSettings`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrgAPI.UpdateOrgSettings`: %v\n", resp)
 }
 ```
 

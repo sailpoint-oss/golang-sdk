@@ -1,7 +1,7 @@
 /*
 IdentityNow cc (private) APIs
 
-Testing SourcesAccountsApiService
+Testing SourcesAccountsAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_cc_SourcesAccountsApiService(t *testing.T) {
+func Test_cc_SourcesAccountsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SourcesAccountsApiService ExportAccountFeed", func(t *testing.T) {
+	t.Run("Test SourcesAccountsAPIService ExportAccountFeed", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.CC.SourcesAccountsApi.ExportAccountFeed(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.SourcesAccountsAPI.ExportAccountFeed(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

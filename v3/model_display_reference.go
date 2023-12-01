@@ -173,8 +173,8 @@ func (o *DisplayReference) UnmarshalJSON(bytes []byte) (err error) {
 	varDisplayReference := _DisplayReference{}
 
 	if err = json.Unmarshal(bytes, &varDisplayReference); err == nil {
-		*o = DisplayReference(varDisplayReference)
-	}
+	*o = DisplayReference(varDisplayReference)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -1,13 +1,13 @@
-# \ReportsDataExtractionApi
+# \ReportsDataExtractionAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CancelReport**](ReportsDataExtractionApi.md#CancelReport) | **Post** /reports/{id}/cancel | Cancel Report
-[**GetReport**](ReportsDataExtractionApi.md#GetReport) | **Get** /reports/{taskResultId} | Get Report File
-[**GetReportResult**](ReportsDataExtractionApi.md#GetReportResult) | **Get** /reports/{taskResultId}/result | Get Report Result
-[**StartReport**](ReportsDataExtractionApi.md#StartReport) | **Post** /reports/run | Run Report
+[**CancelReport**](ReportsDataExtractionAPI.md#CancelReport) | **Post** /reports/{id}/cancel | Cancel Report
+[**GetReport**](ReportsDataExtractionAPI.md#GetReport) | **Get** /reports/{taskResultId} | Get Report File
+[**GetReportResult**](ReportsDataExtractionAPI.md#GetReportResult) | **Get** /reports/{taskResultId}/result | Get Report Result
+[**StartReport**](ReportsDataExtractionAPI.md#StartReport) | **Post** /reports/run | Run Report
 
 
 
@@ -28,7 +28,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -36,9 +36,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReportsDataExtractionApi.CancelReport(context.Background(), id).Execute()
+    r, err := apiClient.ReportsDataExtractionAPI.CancelReport(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionApi.CancelReport``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.CancelReport``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -107,13 +107,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReportsDataExtractionApi.GetReport(context.Background(), taskResultId).FileFormat(fileFormat).Name(name).Auditable(auditable).Execute()
+    resp, r, err := apiClient.ReportsDataExtractionAPI.GetReport(context.Background(), taskResultId).FileFormat(fileFormat).Name(name).Auditable(auditable).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionApi.GetReport``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.GetReport``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetReport`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `ReportsDataExtractionApi.GetReport`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ReportsDataExtractionAPI.GetReport`: %v\n", resp)
 }
 ```
 
@@ -172,7 +172,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -181,13 +181,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReportsDataExtractionApi.GetReportResult(context.Background(), taskResultId).Completed(completed).Execute()
+    resp, r, err := apiClient.ReportsDataExtractionAPI.GetReportResult(context.Background(), taskResultId).Completed(completed).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionApi.GetReportResult``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.GetReportResult``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetReportResult`: ReportResults
-    fmt.Fprintf(os.Stdout, "Response from `ReportsDataExtractionApi.GetReportResult`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ReportsDataExtractionAPI.GetReportResult`: %v\n", resp)
 }
 ```
 
@@ -244,7 +244,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -252,13 +252,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReportsDataExtractionApi.StartReport(context.Background()).ReportDetails(reportDetails).Execute()
+    resp, r, err := apiClient.ReportsDataExtractionAPI.StartReport(context.Background()).ReportDetails(reportDetails).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionApi.StartReport``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ReportsDataExtractionAPI.StartReport``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `StartReport`: TaskResultDetails
-    fmt.Fprintf(os.Stdout, "Response from `ReportsDataExtractionApi.StartReport`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ReportsDataExtractionAPI.StartReport`: %v\n", resp)
 }
 ```
 

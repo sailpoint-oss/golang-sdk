@@ -1,10 +1,10 @@
-# \IAIMessageCatalogsApi
+# \IAIMessageCatalogsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetMessageCatalogs**](IAIMessageCatalogsApi.md#GetMessageCatalogs) | **Get** /translation-catalogs/{catalog-id} | Get Message catalogs
+[**GetMessageCatalogs**](IAIMessageCatalogsAPI.md#GetMessageCatalogs) | **Get** /translation-catalogs/{catalog-id} | Get Message catalogs
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIMessageCatalogsApi.GetMessageCatalogs(context.Background(), catalogId).Execute()
+    resp, r, err := apiClient.IAIMessageCatalogsAPI.GetMessageCatalogs(context.Background(), catalogId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIMessageCatalogsApi.GetMessageCatalogs``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIMessageCatalogsAPI.GetMessageCatalogs``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetMessageCatalogs`: []MessageCatalogDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIMessageCatalogsApi.GetMessageCatalogs`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIMessageCatalogsAPI.GetMessageCatalogs`: %v\n", resp)
 }
 ```
 

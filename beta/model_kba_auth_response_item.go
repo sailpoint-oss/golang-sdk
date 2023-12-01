@@ -157,8 +157,8 @@ func (o *KbaAuthResponseItem) UnmarshalJSON(bytes []byte) (err error) {
 	varKbaAuthResponseItem := _KbaAuthResponseItem{}
 
 	if err = json.Unmarshal(bytes, &varKbaAuthResponseItem); err == nil {
-		*o = KbaAuthResponseItem(varKbaAuthResponseItem)
-	}
+	*o = KbaAuthResponseItem(varKbaAuthResponseItem)
+}
 
 	additionalProperties := make(map[string]interface{})
 

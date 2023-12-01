@@ -174,8 +174,8 @@ func (o *SourceClusterDto) UnmarshalJSON(bytes []byte) (err error) {
 	varSourceClusterDto := _SourceClusterDto{}
 
 	if err = json.Unmarshal(bytes, &varSourceClusterDto); err == nil {
-		*o = SourceClusterDto(varSourceClusterDto)
-	}
+	*o = SourceClusterDto(varSourceClusterDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

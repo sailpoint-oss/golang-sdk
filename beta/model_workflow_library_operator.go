@@ -248,8 +248,8 @@ func (o *WorkflowLibraryOperator) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkflowLibraryOperator := _WorkflowLibraryOperator{}
 
 	if err = json.Unmarshal(bytes, &varWorkflowLibraryOperator); err == nil {
-		*o = WorkflowLibraryOperator(varWorkflowLibraryOperator)
-	}
+	*o = WorkflowLibraryOperator(varWorkflowLibraryOperator)
+}
 
 	additionalProperties := make(map[string]interface{})
 

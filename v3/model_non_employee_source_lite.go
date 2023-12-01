@@ -211,8 +211,8 @@ func (o *NonEmployeeSourceLite) UnmarshalJSON(bytes []byte) (err error) {
 	varNonEmployeeSourceLite := _NonEmployeeSourceLite{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeSourceLite); err == nil {
-		*o = NonEmployeeSourceLite(varNonEmployeeSourceLite)
-	}
+	*o = NonEmployeeSourceLite(varNonEmployeeSourceLite)
+}
 
 	additionalProperties := make(map[string]interface{})
 

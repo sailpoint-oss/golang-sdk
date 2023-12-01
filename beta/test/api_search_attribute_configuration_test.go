@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing SearchAttributeConfigurationApiService
+Testing SearchAttributeConfigurationAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_SearchAttributeConfigurationApiService(t *testing.T) {
+func Test_beta_SearchAttributeConfigurationAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SearchAttributeConfigurationApiService CreateSearchAttributeConfig", func(t *testing.T) {
+	t.Run("Test SearchAttributeConfigurationAPIService CreateSearchAttributeConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationApi.CreateSearchAttributeConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationAPI.CreateSearchAttributeConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,38 +34,24 @@ func Test_beta_SearchAttributeConfigurationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SearchAttributeConfigurationApiService DeleteSearchAttributeConfig", func(t *testing.T) {
+	t.Run("Test SearchAttributeConfigurationAPIService DeleteSearchAttributeConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var name string
 
-		httpRes, err := apiClient.BETA.SearchAttributeConfigurationApi.DeleteSearchAttributeConfig(context.Background(), name).Execute()
+		httpRes, err := apiClient.BETA.SearchAttributeConfigurationAPI.DeleteSearchAttributeConfig(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test SearchAttributeConfigurationApiService GetSearchAttributeConfig", func(t *testing.T) {
+	t.Run("Test SearchAttributeConfigurationAPIService GetSearchAttributeConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationApi.GetSearchAttributeConfig(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SearchAttributeConfigurationApiService GetSingleSearchAttributeConfig", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var name string
-
-		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationApi.GetSingleSearchAttributeConfig(context.Background(), name).Execute()
+		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,13 +59,27 @@ func Test_beta_SearchAttributeConfigurationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SearchAttributeConfigurationApiService PatchSearchAttributeConfig", func(t *testing.T) {
+	t.Run("Test SearchAttributeConfigurationAPIService GetSingleSearchAttributeConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var name string
 
-		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationApi.PatchSearchAttributeConfig(context.Background(), name).Execute()
+		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationAPI.GetSingleSearchAttributeConfig(context.Background(), name).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SearchAttributeConfigurationAPIService PatchSearchAttributeConfig", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var name string
+
+		resp, httpRes, err := apiClient.BETA.SearchAttributeConfigurationAPI.PatchSearchAttributeConfig(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

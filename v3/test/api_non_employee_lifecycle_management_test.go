@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing NonEmployeeLifecycleManagementApiService
+Testing NonEmployeeLifecycleManagementAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
+func Test_v3_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService ApproveNonEmployeeRequest", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService ApproveNonEmployeeRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.ApproveNonEmployeeRequest(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequest(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,11 +36,11 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService CreateNonEmployeeRecord", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService CreateNonEmployeeRecord", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.CreateNonEmployeeRecord(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecord(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,11 +48,11 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService CreateNonEmployeeRequest", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService CreateNonEmployeeRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.CreateNonEmployeeRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -60,11 +60,11 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService CreateNonEmployeeSource", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService CreateNonEmployeeSource", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.CreateNonEmployeeSource(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSource(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,13 +72,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService CreateNonEmployeeSourceSchemaAttributes", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService CreateNonEmployeeSourceSchemaAttributes", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.CreateNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -86,116 +86,116 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService DeleteNonEmployeeRecord", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeRecord", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeRecord(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecord(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService DeleteNonEmployeeRecordsInBulk", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeRecordsInBulk", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeRecordsInBulk(context.Background()).Execute()
+		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordsInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService DeleteNonEmployeeRequest", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeRequest(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRequest(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService DeleteNonEmployeeSchemaAttribute", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeSchemaAttribute", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var attributeId string
 		var sourceId string
 
-		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
+		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService DeleteNonEmployeeSource", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeSource", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 
-		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeSource(context.Background(), sourceId).Execute()
+		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSource(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService DeleteNonEmployeeSourceSchemaAttributes", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeSourceSchemaAttributes", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 
-		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.DeleteNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
+		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService ExportNonEmployeeRecords", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService ExportNonEmployeeRecords", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.ExportNonEmployeeRecords(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeRecords(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService ExportNonEmployeeSourceSchemaTemplate", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService ExportNonEmployeeSourceSchemaTemplate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.ExportNonEmployeeSourceSchemaTemplate(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeSourceSchemaTemplate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService GetNonEmployeeApproval", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeApproval", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.GetNonEmployeeApproval(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApproval(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -203,13 +203,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService GetNonEmployeeApprovalSummary", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeApprovalSummary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var requestedFor string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.GetNonEmployeeApprovalSummary(context.Background(), requestedFor).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummary(context.Background(), requestedFor).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -217,13 +217,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService GetNonEmployeeBulkUploadStatus", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeBulkUploadStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.GetNonEmployeeBulkUploadStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -231,13 +231,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService GetNonEmployeeRecord", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeRecord", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.GetNonEmployeeRecord(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecord(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -245,13 +245,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService GetNonEmployeeRequest", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.GetNonEmployeeRequest(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequest(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -259,13 +259,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService GetNonEmployeeRequestSummary", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeRequestSummary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var requestedFor string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.GetNonEmployeeRequestSummary(context.Background(), requestedFor).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummary(context.Background(), requestedFor).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -273,14 +273,14 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService GetNonEmployeeSchemaAttribute", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeSchemaAttribute", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var attributeId string
 		var sourceId string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.GetNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -288,13 +288,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService GetNonEmployeeSource", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeSource", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.GetNonEmployeeSource(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSource(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -302,13 +302,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService GetNonEmployeeSourceSchemaAttributes", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeSourceSchemaAttributes", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.GetNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -316,13 +316,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService ImportNonEmployeeRecordsInBulk", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService ImportNonEmployeeRecordsInBulk", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.ImportNonEmployeeRecordsInBulk(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulk(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -330,11 +330,11 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService ListNonEmployeeApprovals", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService ListNonEmployeeApprovals", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.ListNonEmployeeApprovals(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovals(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -342,11 +342,11 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService ListNonEmployeeRecords", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService ListNonEmployeeRecords", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.ListNonEmployeeRecords(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecords(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -354,11 +354,11 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService ListNonEmployeeRequests", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService ListNonEmployeeRequests", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.ListNonEmployeeRequests(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequests(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -366,11 +366,11 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService ListNonEmployeeSources", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService ListNonEmployeeSources", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.ListNonEmployeeSources(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ListNonEmployeeSources(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -378,13 +378,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService PatchNonEmployeeRecord", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService PatchNonEmployeeRecord", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.PatchNonEmployeeRecord(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecord(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -392,14 +392,14 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService PatchNonEmployeeSchemaAttribute", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService PatchNonEmployeeSchemaAttribute", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var attributeId string
 		var sourceId string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.PatchNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -407,13 +407,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService PatchNonEmployeeSource", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService PatchNonEmployeeSource", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var sourceId string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.PatchNonEmployeeSource(context.Background(), sourceId).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSource(context.Background(), sourceId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -421,13 +421,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService RejectNonEmployeeRequest", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService RejectNonEmployeeRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.RejectNonEmployeeRequest(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequest(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -435,13 +435,13 @@ func Test_v3_NonEmployeeLifecycleManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test NonEmployeeLifecycleManagementApiService UpdateNonEmployeeRecord", func(t *testing.T) {
+	t.Run("Test NonEmployeeLifecycleManagementAPIService UpdateNonEmployeeRecord", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementApi.UpdateNonEmployeeRecord(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecord(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

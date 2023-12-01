@@ -147,8 +147,8 @@ func (o *EntitlementApprovalScheme) UnmarshalJSON(bytes []byte) (err error) {
 	varEntitlementApprovalScheme := _EntitlementApprovalScheme{}
 
 	if err = json.Unmarshal(bytes, &varEntitlementApprovalScheme); err == nil {
-		*o = EntitlementApprovalScheme(varEntitlementApprovalScheme)
-	}
+	*o = EntitlementApprovalScheme(varEntitlementApprovalScheme)
+}
 
 	additionalProperties := make(map[string]interface{})
 

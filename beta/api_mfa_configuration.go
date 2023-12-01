@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// MFAConfigurationApiService MFAConfigurationApi service
-type MFAConfigurationApiService service
+// MFAConfigurationAPIService MFAConfigurationAPI service
+type MFAConfigurationAPIService service
 
 type ApiDeleteMFAConfigRequest struct {
 	ctx context.Context
-	ApiService *MFAConfigurationApiService
+	ApiService *MFAConfigurationAPIService
 	method string
 }
 
@@ -43,7 +43,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param method The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
  @return ApiDeleteMFAConfigRequest
 */
-func (a *MFAConfigurationApiService) DeleteMFAConfig(ctx context.Context, method string) ApiDeleteMFAConfigRequest {
+func (a *MFAConfigurationAPIService) DeleteMFAConfig(ctx context.Context, method string) ApiDeleteMFAConfigRequest {
 	return ApiDeleteMFAConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -53,7 +53,7 @@ func (a *MFAConfigurationApiService) DeleteMFAConfig(ctx context.Context, method
 
 // Execute executes the request
 //  @return MfaOktaConfig
-func (a *MFAConfigurationApiService) DeleteMFAConfigExecute(r ApiDeleteMFAConfigRequest) (*MfaOktaConfig, *http.Response, error) {
+func (a *MFAConfigurationAPIService) DeleteMFAConfigExecute(r ApiDeleteMFAConfigRequest) (*MfaOktaConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -61,7 +61,7 @@ func (a *MFAConfigurationApiService) DeleteMFAConfigExecute(r ApiDeleteMFAConfig
 		localVarReturnValue  *MfaOktaConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.DeleteMFAConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.DeleteMFAConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -100,9 +100,9 @@ func (a *MFAConfigurationApiService) DeleteMFAConfigExecute(r ApiDeleteMFAConfig
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -183,7 +183,7 @@ func (a *MFAConfigurationApiService) DeleteMFAConfigExecute(r ApiDeleteMFAConfig
 
 type ApiGetMFADuoConfigRequest struct {
 	ctx context.Context
-	ApiService *MFAConfigurationApiService
+	ApiService *MFAConfigurationAPIService
 }
 
 func (r ApiGetMFADuoConfigRequest) Execute() (*MfaDuoConfig, *http.Response, error) {
@@ -198,7 +198,7 @@ This API returns the configuration of an Duo MFA method. A token with ORG_ADMIN 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetMFADuoConfigRequest
 */
-func (a *MFAConfigurationApiService) GetMFADuoConfig(ctx context.Context) ApiGetMFADuoConfigRequest {
+func (a *MFAConfigurationAPIService) GetMFADuoConfig(ctx context.Context) ApiGetMFADuoConfigRequest {
 	return ApiGetMFADuoConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -207,7 +207,7 @@ func (a *MFAConfigurationApiService) GetMFADuoConfig(ctx context.Context) ApiGet
 
 // Execute executes the request
 //  @return MfaDuoConfig
-func (a *MFAConfigurationApiService) GetMFADuoConfigExecute(r ApiGetMFADuoConfigRequest) (*MfaDuoConfig, *http.Response, error) {
+func (a *MFAConfigurationAPIService) GetMFADuoConfigExecute(r ApiGetMFADuoConfigRequest) (*MfaDuoConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -215,7 +215,7 @@ func (a *MFAConfigurationApiService) GetMFADuoConfigExecute(r ApiGetMFADuoConfig
 		localVarReturnValue  *MfaDuoConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.GetMFADuoConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.GetMFADuoConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -253,9 +253,9 @@ func (a *MFAConfigurationApiService) GetMFADuoConfigExecute(r ApiGetMFADuoConfig
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -336,7 +336,7 @@ func (a *MFAConfigurationApiService) GetMFADuoConfigExecute(r ApiGetMFADuoConfig
 
 type ApiGetMFAOktaConfigRequest struct {
 	ctx context.Context
-	ApiService *MFAConfigurationApiService
+	ApiService *MFAConfigurationAPIService
 }
 
 func (r ApiGetMFAOktaConfigRequest) Execute() (*MfaOktaConfig, *http.Response, error) {
@@ -351,7 +351,7 @@ This API returns the configuration of an Okta MFA method. A token with ORG_ADMIN
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetMFAOktaConfigRequest
 */
-func (a *MFAConfigurationApiService) GetMFAOktaConfig(ctx context.Context) ApiGetMFAOktaConfigRequest {
+func (a *MFAConfigurationAPIService) GetMFAOktaConfig(ctx context.Context) ApiGetMFAOktaConfigRequest {
 	return ApiGetMFAOktaConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -360,7 +360,7 @@ func (a *MFAConfigurationApiService) GetMFAOktaConfig(ctx context.Context) ApiGe
 
 // Execute executes the request
 //  @return MfaOktaConfig
-func (a *MFAConfigurationApiService) GetMFAOktaConfigExecute(r ApiGetMFAOktaConfigRequest) (*MfaOktaConfig, *http.Response, error) {
+func (a *MFAConfigurationAPIService) GetMFAOktaConfigExecute(r ApiGetMFAOktaConfigRequest) (*MfaOktaConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -368,7 +368,7 @@ func (a *MFAConfigurationApiService) GetMFAOktaConfigExecute(r ApiGetMFAOktaConf
 		localVarReturnValue  *MfaOktaConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.GetMFAOktaConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.GetMFAOktaConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -406,9 +406,9 @@ func (a *MFAConfigurationApiService) GetMFAOktaConfigExecute(r ApiGetMFAOktaConf
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -489,7 +489,7 @@ func (a *MFAConfigurationApiService) GetMFAOktaConfigExecute(r ApiGetMFAOktaConf
 
 type ApiSetMFADuoConfigRequest struct {
 	ctx context.Context
-	ApiService *MFAConfigurationApiService
+	ApiService *MFAConfigurationAPIService
 	mfaDuoConfig *MfaDuoConfig
 }
 
@@ -510,7 +510,7 @@ This API sets the configuration of an Duo MFA method. A token with ORG_ADMIN aut
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetMFADuoConfigRequest
 */
-func (a *MFAConfigurationApiService) SetMFADuoConfig(ctx context.Context) ApiSetMFADuoConfigRequest {
+func (a *MFAConfigurationAPIService) SetMFADuoConfig(ctx context.Context) ApiSetMFADuoConfigRequest {
 	return ApiSetMFADuoConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -519,7 +519,7 @@ func (a *MFAConfigurationApiService) SetMFADuoConfig(ctx context.Context) ApiSet
 
 // Execute executes the request
 //  @return MfaDuoConfig
-func (a *MFAConfigurationApiService) SetMFADuoConfigExecute(r ApiSetMFADuoConfigRequest) (*MfaDuoConfig, *http.Response, error) {
+func (a *MFAConfigurationAPIService) SetMFADuoConfigExecute(r ApiSetMFADuoConfigRequest) (*MfaDuoConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -527,7 +527,7 @@ func (a *MFAConfigurationApiService) SetMFADuoConfigExecute(r ApiSetMFADuoConfig
 		localVarReturnValue  *MfaDuoConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.SetMFADuoConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.SetMFADuoConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -570,9 +570,9 @@ func (a *MFAConfigurationApiService) SetMFADuoConfigExecute(r ApiSetMFADuoConfig
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -653,7 +653,7 @@ func (a *MFAConfigurationApiService) SetMFADuoConfigExecute(r ApiSetMFADuoConfig
 
 type ApiSetMFAOktaConfigRequest struct {
 	ctx context.Context
-	ApiService *MFAConfigurationApiService
+	ApiService *MFAConfigurationAPIService
 	mfaOktaConfig *MfaOktaConfig
 }
 
@@ -674,7 +674,7 @@ This API sets the configuration of an Okta MFA method. A token with ORG_ADMIN au
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetMFAOktaConfigRequest
 */
-func (a *MFAConfigurationApiService) SetMFAOktaConfig(ctx context.Context) ApiSetMFAOktaConfigRequest {
+func (a *MFAConfigurationAPIService) SetMFAOktaConfig(ctx context.Context) ApiSetMFAOktaConfigRequest {
 	return ApiSetMFAOktaConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -683,7 +683,7 @@ func (a *MFAConfigurationApiService) SetMFAOktaConfig(ctx context.Context) ApiSe
 
 // Execute executes the request
 //  @return MfaOktaConfig
-func (a *MFAConfigurationApiService) SetMFAOktaConfigExecute(r ApiSetMFAOktaConfigRequest) (*MfaOktaConfig, *http.Response, error) {
+func (a *MFAConfigurationAPIService) SetMFAOktaConfigExecute(r ApiSetMFAOktaConfigRequest) (*MfaOktaConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -691,7 +691,7 @@ func (a *MFAConfigurationApiService) SetMFAOktaConfigExecute(r ApiSetMFAOktaConf
 		localVarReturnValue  *MfaOktaConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.SetMFAOktaConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.SetMFAOktaConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -734,9 +734,9 @@ func (a *MFAConfigurationApiService) SetMFAOktaConfigExecute(r ApiSetMFAOktaConf
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -817,7 +817,7 @@ func (a *MFAConfigurationApiService) SetMFAOktaConfigExecute(r ApiSetMFAOktaConf
 
 type ApiTestMFAConfigRequest struct {
 	ctx context.Context
-	ApiService *MFAConfigurationApiService
+	ApiService *MFAConfigurationAPIService
 	method string
 }
 
@@ -835,7 +835,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param method The name of the MFA method. The currently supported method names are 'okta-verify' and 'duo-web'.
  @return ApiTestMFAConfigRequest
 */
-func (a *MFAConfigurationApiService) TestMFAConfig(ctx context.Context, method string) ApiTestMFAConfigRequest {
+func (a *MFAConfigurationAPIService) TestMFAConfig(ctx context.Context, method string) ApiTestMFAConfigRequest {
 	return ApiTestMFAConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -845,7 +845,7 @@ func (a *MFAConfigurationApiService) TestMFAConfig(ctx context.Context, method s
 
 // Execute executes the request
 //  @return MfaConfigTestResponse
-func (a *MFAConfigurationApiService) TestMFAConfigExecute(r ApiTestMFAConfigRequest) (*MfaConfigTestResponse, *http.Response, error) {
+func (a *MFAConfigurationAPIService) TestMFAConfigExecute(r ApiTestMFAConfigRequest) (*MfaConfigTestResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -853,7 +853,7 @@ func (a *MFAConfigurationApiService) TestMFAConfigExecute(r ApiTestMFAConfigRequ
 		localVarReturnValue  *MfaConfigTestResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationApiService.TestMFAConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MFAConfigurationAPIService.TestMFAConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -892,9 +892,9 @@ func (a *MFAConfigurationApiService) TestMFAConfigExecute(r ApiTestMFAConfigRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

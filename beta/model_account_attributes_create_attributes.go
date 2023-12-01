@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccountAttributesCreateAttributes type satisfies the MappedNullable interface at compile time
@@ -21,7 +22,10 @@ var _ MappedNullable = &AccountAttributesCreateAttributes{}
 type AccountAttributesCreateAttributes struct {
 	// Target source to create an account
 	SourceId string `json:"sourceId"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AccountAttributesCreateAttributes AccountAttributesCreateAttributes
 
 // NewAccountAttributesCreateAttributes instantiates a new AccountAttributesCreateAttributes object
 // This constructor will assign default values to properties that have it defined,
@@ -76,7 +80,50 @@ func (o AccountAttributesCreateAttributes) MarshalJSON() ([]byte, error) {
 func (o AccountAttributesCreateAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["sourceId"] = o.SourceId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AccountAttributesCreateAttributes) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"sourceId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAccountAttributesCreateAttributes := _AccountAttributesCreateAttributes{}
+
+	if err = json.Unmarshal(bytes, &varAccountAttributesCreateAttributes); err == nil {
+	*o = AccountAttributesCreateAttributes(varAccountAttributesCreateAttributes)
+}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "sourceId")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAccountAttributesCreateAttributes struct {
