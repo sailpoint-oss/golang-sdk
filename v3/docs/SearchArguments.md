@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ScheduleId** | Pointer to **string** | The ID of the scheduled search that triggered the saved search execution.  | [optional] 
-**Owner** | Pointer to [**SearchArgumentsOwner**](SearchArgumentsOwner.md) |  | [optional] 
+**Owner** | Pointer to [**TypedReference**](TypedReference.md) |  | [optional] 
 **Recipients** | Pointer to [**[]TypedReference**](TypedReference.md) | The email recipients of the scheduled search being tested.  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasScheduleId returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *SearchArguments) GetOwner() SearchArgumentsOwner`
+`func (o *SearchArguments) GetOwner() TypedReference`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *SearchArguments) GetOwnerOk() (*SearchArgumentsOwner, bool)`
+`func (o *SearchArguments) GetOwnerOk() (*TypedReference, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *SearchArguments) SetOwner(v SearchArgumentsOwner)`
+`func (o *SearchArguments) SetOwner(v TypedReference)`
 
 SetOwner sets Owner field to given value.
 

@@ -174,8 +174,8 @@ func (o *OwnerReferenceDto) UnmarshalJSON(bytes []byte) (err error) {
 	varOwnerReferenceDto := _OwnerReferenceDto{}
 
 	if err = json.Unmarshal(bytes, &varOwnerReferenceDto); err == nil {
-		*o = OwnerReferenceDto(varOwnerReferenceDto)
-	}
+	*o = OwnerReferenceDto(varOwnerReferenceDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

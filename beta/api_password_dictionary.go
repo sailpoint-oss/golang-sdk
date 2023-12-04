@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"os"
 )
 
 
-// PasswordDictionaryApiService PasswordDictionaryApi service
-type PasswordDictionaryApiService service
+// PasswordDictionaryAPIService PasswordDictionaryAPI service
+type PasswordDictionaryAPIService service
 
 type ApiGetPasswordDictionaryRequest struct {
 	ctx context.Context
-	ApiService *PasswordDictionaryApiService
+	ApiService *PasswordDictionaryAPIService
 }
 
 func (r ApiGetPasswordDictionaryRequest) Execute() (string, *http.Response, error) {
@@ -41,7 +41,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPasswordDictionaryRequest
 */
-func (a *PasswordDictionaryApiService) GetPasswordDictionary(ctx context.Context) ApiGetPasswordDictionaryRequest {
+func (a *PasswordDictionaryAPIService) GetPasswordDictionary(ctx context.Context) ApiGetPasswordDictionaryRequest {
 	return ApiGetPasswordDictionaryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -50,7 +50,7 @@ func (a *PasswordDictionaryApiService) GetPasswordDictionary(ctx context.Context
 
 // Execute executes the request
 //  @return string
-func (a *PasswordDictionaryApiService) GetPasswordDictionaryExecute(r ApiGetPasswordDictionaryRequest) (string, *http.Response, error) {
+func (a *PasswordDictionaryAPIService) GetPasswordDictionaryExecute(r ApiGetPasswordDictionaryRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -58,7 +58,7 @@ func (a *PasswordDictionaryApiService) GetPasswordDictionaryExecute(r ApiGetPass
 		localVarReturnValue  string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordDictionaryApiService.GetPasswordDictionary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordDictionaryAPIService.GetPasswordDictionary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -96,9 +96,9 @@ func (a *PasswordDictionaryApiService) GetPasswordDictionaryExecute(r ApiGetPass
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -190,7 +190,7 @@ func (a *PasswordDictionaryApiService) GetPasswordDictionaryExecute(r ApiGetPass
 
 type ApiUpdatePasswordDictionaryRequest struct {
 	ctx context.Context
-	ApiService *PasswordDictionaryApiService
+	ApiService *PasswordDictionaryAPIService
 	file *os.File
 }
 
@@ -212,7 +212,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdatePasswordDictionaryRequest
 */
-func (a *PasswordDictionaryApiService) UpdatePasswordDictionary(ctx context.Context) ApiUpdatePasswordDictionaryRequest {
+func (a *PasswordDictionaryAPIService) UpdatePasswordDictionary(ctx context.Context) ApiUpdatePasswordDictionaryRequest {
 	return ApiUpdatePasswordDictionaryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -220,14 +220,14 @@ func (a *PasswordDictionaryApiService) UpdatePasswordDictionary(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *PasswordDictionaryApiService) UpdatePasswordDictionaryExecute(r ApiUpdatePasswordDictionaryRequest) (*http.Response, error) {
+func (a *PasswordDictionaryAPIService) UpdatePasswordDictionaryExecute(r ApiUpdatePasswordDictionaryRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordDictionaryApiService.UpdatePasswordDictionary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordDictionaryAPIService.UpdatePasswordDictionary")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -260,12 +260,10 @@ func (a *PasswordDictionaryApiService) UpdatePasswordDictionaryExecute(r ApiUpda
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
 
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
@@ -282,9 +280,9 @@ func (a *PasswordDictionaryApiService) UpdatePasswordDictionaryExecute(r ApiUpda
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

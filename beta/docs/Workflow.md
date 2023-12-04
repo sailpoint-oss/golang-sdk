@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Workflow ID. This is a UUID generated upon creation. | [optional] 
-**ExecutionCount** | Pointer to **int32** | The number of times this workflow has been executed. | [optional] 
-**FailureCount** | Pointer to **int32** | The number of times this workflow has failed during execution. | [optional] 
-**Created** | Pointer to **time.Time** | The date and time the workflow was created. | [optional] 
-**Creator** | Pointer to [**WorkflowAllOfCreator**](WorkflowAllOfCreator.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the workflow | [optional] 
 **Owner** | Pointer to [**WorkflowBodyOwner**](WorkflowBodyOwner.md) |  | [optional] 
 **Description** | Pointer to **string** | Description of what the workflow accomplishes | [optional] 
 **Definition** | Pointer to [**WorkflowDefinition**](WorkflowDefinition.md) |  | [optional] 
 **Enabled** | Pointer to **bool** | Enable or disable the workflow.  Workflows cannot be created in an enabled state. | [optional] [default to false]
 **Trigger** | Pointer to [**WorkflowTrigger**](WorkflowTrigger.md) |  | [optional] 
+**Id** | Pointer to **string** | Workflow ID. This is a UUID generated upon creation. | [optional] 
+**ExecutionCount** | Pointer to **int32** | The number of times this workflow has been executed. | [optional] 
+**FailureCount** | Pointer to **int32** | The number of times this workflow has failed during execution. | [optional] 
+**Created** | Pointer to **time.Time** | The date and time the workflow was created. | [optional] 
+**Creator** | Pointer to [**WorkflowAllOfCreator**](WorkflowAllOfCreator.md) |  | [optional] 
 
 ## Methods
 
@@ -34,131 +34,6 @@ will change when the set of required properties is changed
 NewWorkflowWithDefaults instantiates a new Workflow object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetId
-
-`func (o *Workflow) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *Workflow) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *Workflow) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *Workflow) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
-### GetExecutionCount
-
-`func (o *Workflow) GetExecutionCount() int32`
-
-GetExecutionCount returns the ExecutionCount field if non-nil, zero value otherwise.
-
-### GetExecutionCountOk
-
-`func (o *Workflow) GetExecutionCountOk() (*int32, bool)`
-
-GetExecutionCountOk returns a tuple with the ExecutionCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExecutionCount
-
-`func (o *Workflow) SetExecutionCount(v int32)`
-
-SetExecutionCount sets ExecutionCount field to given value.
-
-### HasExecutionCount
-
-`func (o *Workflow) HasExecutionCount() bool`
-
-HasExecutionCount returns a boolean if a field has been set.
-
-### GetFailureCount
-
-`func (o *Workflow) GetFailureCount() int32`
-
-GetFailureCount returns the FailureCount field if non-nil, zero value otherwise.
-
-### GetFailureCountOk
-
-`func (o *Workflow) GetFailureCountOk() (*int32, bool)`
-
-GetFailureCountOk returns a tuple with the FailureCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFailureCount
-
-`func (o *Workflow) SetFailureCount(v int32)`
-
-SetFailureCount sets FailureCount field to given value.
-
-### HasFailureCount
-
-`func (o *Workflow) HasFailureCount() bool`
-
-HasFailureCount returns a boolean if a field has been set.
-
-### GetCreated
-
-`func (o *Workflow) GetCreated() time.Time`
-
-GetCreated returns the Created field if non-nil, zero value otherwise.
-
-### GetCreatedOk
-
-`func (o *Workflow) GetCreatedOk() (*time.Time, bool)`
-
-GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreated
-
-`func (o *Workflow) SetCreated(v time.Time)`
-
-SetCreated sets Created field to given value.
-
-### HasCreated
-
-`func (o *Workflow) HasCreated() bool`
-
-HasCreated returns a boolean if a field has been set.
-
-### GetCreator
-
-`func (o *Workflow) GetCreator() WorkflowAllOfCreator`
-
-GetCreator returns the Creator field if non-nil, zero value otherwise.
-
-### GetCreatorOk
-
-`func (o *Workflow) GetCreatorOk() (*WorkflowAllOfCreator, bool)`
-
-GetCreatorOk returns a tuple with the Creator field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreator
-
-`func (o *Workflow) SetCreator(v WorkflowAllOfCreator)`
-
-SetCreator sets Creator field to given value.
-
-### HasCreator
-
-`func (o *Workflow) HasCreator() bool`
-
-HasCreator returns a boolean if a field has been set.
 
 ### GetName
 
@@ -309,6 +184,131 @@ SetTrigger sets Trigger field to given value.
 `func (o *Workflow) HasTrigger() bool`
 
 HasTrigger returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *Workflow) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *Workflow) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *Workflow) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *Workflow) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetExecutionCount
+
+`func (o *Workflow) GetExecutionCount() int32`
+
+GetExecutionCount returns the ExecutionCount field if non-nil, zero value otherwise.
+
+### GetExecutionCountOk
+
+`func (o *Workflow) GetExecutionCountOk() (*int32, bool)`
+
+GetExecutionCountOk returns a tuple with the ExecutionCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExecutionCount
+
+`func (o *Workflow) SetExecutionCount(v int32)`
+
+SetExecutionCount sets ExecutionCount field to given value.
+
+### HasExecutionCount
+
+`func (o *Workflow) HasExecutionCount() bool`
+
+HasExecutionCount returns a boolean if a field has been set.
+
+### GetFailureCount
+
+`func (o *Workflow) GetFailureCount() int32`
+
+GetFailureCount returns the FailureCount field if non-nil, zero value otherwise.
+
+### GetFailureCountOk
+
+`func (o *Workflow) GetFailureCountOk() (*int32, bool)`
+
+GetFailureCountOk returns a tuple with the FailureCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailureCount
+
+`func (o *Workflow) SetFailureCount(v int32)`
+
+SetFailureCount sets FailureCount field to given value.
+
+### HasFailureCount
+
+`func (o *Workflow) HasFailureCount() bool`
+
+HasFailureCount returns a boolean if a field has been set.
+
+### GetCreated
+
+`func (o *Workflow) GetCreated() time.Time`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *Workflow) GetCreatedOk() (*time.Time, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *Workflow) SetCreated(v time.Time)`
+
+SetCreated sets Created field to given value.
+
+### HasCreated
+
+`func (o *Workflow) HasCreated() bool`
+
+HasCreated returns a boolean if a field has been set.
+
+### GetCreator
+
+`func (o *Workflow) GetCreator() WorkflowAllOfCreator`
+
+GetCreator returns the Creator field if non-nil, zero value otherwise.
+
+### GetCreatorOk
+
+`func (o *Workflow) GetCreatorOk() (*WorkflowAllOfCreator, bool)`
+
+GetCreatorOk returns a tuple with the Creator field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreator
+
+`func (o *Workflow) SetCreator(v WorkflowAllOfCreator)`
+
+SetCreator sets Creator field to given value.
+
+### HasCreator
+
+`func (o *Workflow) HasCreator() bool`
+
+HasCreator returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

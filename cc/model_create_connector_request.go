@@ -243,8 +243,8 @@ func (o *CreateConnectorRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varCreateConnectorRequest := _CreateConnectorRequest{}
 
 	if err = json.Unmarshal(bytes, &varCreateConnectorRequest); err == nil {
-		*o = CreateConnectorRequest(varCreateConnectorRequest)
-	}
+	*o = CreateConnectorRequest(varCreateConnectorRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

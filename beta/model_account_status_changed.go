@@ -246,8 +246,8 @@ func (o *AccountStatusChanged) UnmarshalJSON(bytes []byte) (err error) {
 	varAccountStatusChanged := _AccountStatusChanged{}
 
 	if err = json.Unmarshal(bytes, &varAccountStatusChanged); err == nil {
-		*o = AccountStatusChanged(varAccountStatusChanged)
-	}
+	*o = AccountStatusChanged(varAccountStatusChanged)
+}
 
 	additionalProperties := make(map[string]interface{})
 

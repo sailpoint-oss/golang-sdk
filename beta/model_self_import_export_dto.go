@@ -174,8 +174,8 @@ func (o *SelfImportExportDto) UnmarshalJSON(bytes []byte) (err error) {
 	varSelfImportExportDto := _SelfImportExportDto{}
 
 	if err = json.Unmarshal(bytes, &varSelfImportExportDto); err == nil {
-		*o = SelfImportExportDto(varSelfImportExportDto)
-	}
+	*o = SelfImportExportDto(varSelfImportExportDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

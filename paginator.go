@@ -61,7 +61,7 @@ func PaginateSearchApi(ctx context.Context, apiClient *APIClient, search v3.Sear
 			search.SearchAfter = []string{returnObject[len(returnObject)-1][strings.Trim(search.Sort[0], "-")].(string)}
 		}
 		// convert the expected return values to their respective types
-		actualValue, latestResponse, err := apiClient.V3.SearchApi.SearchPost(ctx).Limit(increment).Search(search).Execute()
+		actualValue, latestResponse, err := apiClient.V3.SearchAPI.SearchPost(ctx).Limit(increment).Search(search).Execute()
 
 		if err != nil {
 			return returnObject, latestResponse, err.(error)

@@ -212,8 +212,8 @@ func (o *AccountAggregation) UnmarshalJSON(bytes []byte) (err error) {
 	varAccountAggregation := _AccountAggregation{}
 
 	if err = json.Unmarshal(bytes, &varAccountAggregation); err == nil {
-		*o = AccountAggregation(varAccountAggregation)
-	}
+	*o = AccountAggregation(varAccountAggregation)
+}
 
 	additionalProperties := make(map[string]interface{})
 

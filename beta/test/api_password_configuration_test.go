@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing PasswordConfigurationApiService
+Testing PasswordConfigurationAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_PasswordConfigurationApiService(t *testing.T) {
+func Test_beta_PasswordConfigurationAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test PasswordConfigurationApiService CreatePasswordOrgConfig", func(t *testing.T) {
+	t.Run("Test PasswordConfigurationAPIService CreatePasswordOrgConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.PasswordConfigurationApi.CreatePasswordOrgConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordConfigurationAPI.CreatePasswordOrgConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_beta_PasswordConfigurationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordConfigurationApiService GetPasswordOrgConfig", func(t *testing.T) {
+	t.Run("Test PasswordConfigurationAPIService GetPasswordOrgConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.PasswordConfigurationApi.GetPasswordOrgConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordConfigurationAPI.GetPasswordOrgConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,11 +46,11 @@ func Test_beta_PasswordConfigurationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordConfigurationApiService PutPasswordOrgConfig", func(t *testing.T) {
+	t.Run("Test PasswordConfigurationAPIService PutPasswordOrgConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.PasswordConfigurationApi.PutPasswordOrgConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.PasswordConfigurationAPI.PutPasswordOrgConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

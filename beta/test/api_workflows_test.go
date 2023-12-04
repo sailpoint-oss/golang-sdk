@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing WorkflowsApiService
+Testing WorkflowsAPIService
 
 */
 
@@ -17,29 +17,29 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_WorkflowsApiService(t *testing.T) {
+func Test_beta_WorkflowsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test WorkflowsApiService CancelWorkflowExecution", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService CancelWorkflowExecution", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.BETA.WorkflowsApi.CancelWorkflowExecution(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.WorkflowsAPI.CancelWorkflowExecution(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test WorkflowsApiService CreateWorkflow", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService CreateWorkflow", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.CreateWorkflow(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.CreateWorkflow(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,26 +47,26 @@ func Test_beta_WorkflowsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsApiService DeleteWorkflow", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService DeleteWorkflow", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.BETA.WorkflowsApi.DeleteWorkflow(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.WorkflowsAPI.DeleteWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test WorkflowsApiService GetWorkflow", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService GetWorkflow", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.GetWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.GetWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func Test_beta_WorkflowsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsApiService GetWorkflowExecution", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService GetWorkflowExecution", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.GetWorkflowExecution(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.GetWorkflowExecution(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -88,13 +88,13 @@ func Test_beta_WorkflowsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsApiService GetWorkflowExecutionHistory", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService GetWorkflowExecutionHistory", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.GetWorkflowExecutionHistory(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.GetWorkflowExecutionHistory(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -102,11 +102,11 @@ func Test_beta_WorkflowsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsApiService ListCompleteWorkflowLibrary", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService ListCompleteWorkflowLibrary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.ListCompleteWorkflowLibrary(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.ListCompleteWorkflowLibrary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -114,75 +114,13 @@ func Test_beta_WorkflowsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsApiService ListWorkflowExecutions", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.ListWorkflowExecutions(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WorkflowsApiService ListWorkflowLibraryActions", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.ListWorkflowLibraryActions(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WorkflowsApiService ListWorkflowLibraryOperators", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.ListWorkflowLibraryOperators(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WorkflowsApiService ListWorkflowLibraryTriggers", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.ListWorkflowLibraryTriggers(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WorkflowsApiService ListWorkflows", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.ListWorkflows(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test WorkflowsApiService PatchWorkflow", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService ListWorkflowExecutions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.PatchWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.ListWorkflowExecutions(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -190,13 +128,11 @@ func Test_beta_WorkflowsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsApiService PostExternalExecuteWorkflow", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService ListWorkflowLibraryActions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.PostExternalExecuteWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.ListWorkflowLibraryActions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -204,13 +140,11 @@ func Test_beta_WorkflowsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsApiService PostWorkflowExternalTrigger", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService ListWorkflowLibraryOperators", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.PostWorkflowExternalTrigger(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.ListWorkflowLibraryOperators(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -218,13 +152,11 @@ func Test_beta_WorkflowsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsApiService TestExternalExecuteWorkflow", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService ListWorkflowLibraryTriggers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.TestExternalExecuteWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.ListWorkflowLibraryTriggers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -232,13 +164,11 @@ func Test_beta_WorkflowsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsApiService TestWorkflow", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService ListWorkflows", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.TestWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.ListWorkflows(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -246,13 +176,83 @@ func Test_beta_WorkflowsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test WorkflowsApiService UpdateWorkflow", func(t *testing.T) {
+	t.Run("Test WorkflowsAPIService PatchWorkflow", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.WorkflowsApi.UpdateWorkflow(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.PatchWorkflow(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test WorkflowsAPIService PostExternalExecuteWorkflow", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.PostExternalExecuteWorkflow(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test WorkflowsAPIService PostWorkflowExternalTrigger", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.PostWorkflowExternalTrigger(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test WorkflowsAPIService TestExternalExecuteWorkflow", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.TestExternalExecuteWorkflow(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test WorkflowsAPIService TestWorkflow", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.TestWorkflow(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test WorkflowsAPIService UpdateWorkflow", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.WorkflowsAPI.UpdateWorkflow(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

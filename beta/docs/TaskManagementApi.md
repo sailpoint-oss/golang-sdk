@@ -1,14 +1,14 @@
-# \TaskManagementApi
+# \TaskManagementAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPendingTaskHeaders**](TaskManagementApi.md#GetPendingTaskHeaders) | **Head** /task-status/pending-tasks | Retrieve headers only for pending task list.
-[**GetPendingTasks**](TaskManagementApi.md#GetPendingTasks) | **Get** /task-status/pending-tasks | Retrieve a pending task list.
-[**GetTaskStatus**](TaskManagementApi.md#GetTaskStatus) | **Get** /task-status/{id} | Get task status by ID.
-[**GetTaskStatusList**](TaskManagementApi.md#GetTaskStatusList) | **Get** /task-status | Retrieve a task status list.
-[**UpdateTaskStatus**](TaskManagementApi.md#UpdateTaskStatus) | **Patch** /task-status/{id} | Update task status by ID
+[**GetPendingTaskHeaders**](TaskManagementAPI.md#GetPendingTaskHeaders) | **Head** /task-status/pending-tasks | Retrieve headers only for pending task list.
+[**GetPendingTasks**](TaskManagementAPI.md#GetPendingTasks) | **Get** /task-status/pending-tasks | Retrieve a pending task list.
+[**GetTaskStatus**](TaskManagementAPI.md#GetTaskStatus) | **Get** /task-status/{id} | Get task status by ID.
+[**GetTaskStatusList**](TaskManagementAPI.md#GetTaskStatusList) | **Get** /task-status | Retrieve a task status list.
+[**UpdateTaskStatus**](TaskManagementAPI.md#UpdateTaskStatus) | **Patch** /task-status/{id} | Update task status by ID
 
 
 
@@ -29,7 +29,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -39,9 +39,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaskManagementApi.GetPendingTaskHeaders(context.Background()).Offset(offset).Limit(limit).Count(count).Execute()
+    r, err := apiClient.TaskManagementAPI.GetPendingTaskHeaders(context.Background()).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementApi.GetPendingTaskHeaders``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.GetPendingTaskHeaders``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -97,7 +97,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -107,13 +107,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaskManagementApi.GetPendingTasks(context.Background()).Offset(offset).Limit(limit).Count(count).Execute()
+    resp, r, err := apiClient.TaskManagementAPI.GetPendingTasks(context.Background()).Offset(offset).Limit(limit).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementApi.GetPendingTasks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.GetPendingTasks``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPendingTasks`: []TaskStatus
-    fmt.Fprintf(os.Stdout, "Response from `TaskManagementApi.GetPendingTasks`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TaskManagementAPI.GetPendingTasks`: %v\n", resp)
 }
 ```
 
@@ -167,7 +167,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -175,13 +175,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaskManagementApi.GetTaskStatus(context.Background(), id).Execute()
+    resp, r, err := apiClient.TaskManagementAPI.GetTaskStatus(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementApi.GetTaskStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.GetTaskStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetTaskStatus`: TaskStatus
-    fmt.Fprintf(os.Stdout, "Response from `TaskManagementApi.GetTaskStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TaskManagementAPI.GetTaskStatus`: %v\n", resp)
 }
 ```
 
@@ -237,7 +237,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -249,13 +249,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaskManagementApi.GetTaskStatusList(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.TaskManagementAPI.GetTaskStatusList(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementApi.GetTaskStatusList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.GetTaskStatusList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetTaskStatusList`: []TaskStatus
-    fmt.Fprintf(os.Stdout, "Response from `TaskManagementApi.GetTaskStatusList`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TaskManagementAPI.GetTaskStatusList`: %v\n", resp)
 }
 ```
 
@@ -311,7 +311,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -320,13 +320,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaskManagementApi.UpdateTaskStatus(context.Background(), id).JsonPatch(jsonPatch).Execute()
+    resp, r, err := apiClient.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).JsonPatch(jsonPatch).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementApi.UpdateTaskStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TaskManagementAPI.UpdateTaskStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateTaskStatus`: TaskStatus
-    fmt.Fprintf(os.Stdout, "Response from `TaskManagementApi.UpdateTaskStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TaskManagementAPI.UpdateTaskStatus`: %v\n", resp)
 }
 ```
 

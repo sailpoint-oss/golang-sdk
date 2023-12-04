@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing SODViolationsApiService
+Testing SODViolationsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_SODViolationsApiService(t *testing.T) {
+func Test_v3_SODViolationsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SODViolationsApiService StartPredictSodViolations", func(t *testing.T) {
+	t.Run("Test SODViolationsAPIService StartPredictSodViolations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.SODViolationsApi.StartPredictSodViolations(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SODViolationsAPI.StartPredictSodViolations(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_v3_SODViolationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SODViolationsApiService StartViolationCheck", func(t *testing.T) {
+	t.Run("Test SODViolationsAPIService StartViolationCheck", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.SODViolationsApi.StartViolationCheck(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.SODViolationsAPI.StartViolationCheck(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

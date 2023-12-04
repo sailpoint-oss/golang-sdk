@@ -13,7 +13,7 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,12 +21,12 @@ import (
 )
 
 
-// SourcesApiService SourcesApi service
-type SourcesApiService service
+// SourcesAPIService SourcesAPI service
+type SourcesAPIService service
 
 type ApiCreateProvisioningPolicyRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	provisioningPolicyDto *ProvisioningPolicyDto
 }
@@ -52,7 +52,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param sourceId The Source id
  @return ApiCreateProvisioningPolicyRequest
 */
-func (a *SourcesApiService) CreateProvisioningPolicy(ctx context.Context, sourceId string) ApiCreateProvisioningPolicyRequest {
+func (a *SourcesAPIService) CreateProvisioningPolicy(ctx context.Context, sourceId string) ApiCreateProvisioningPolicyRequest {
 	return ApiCreateProvisioningPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -62,7 +62,7 @@ func (a *SourcesApiService) CreateProvisioningPolicy(ctx context.Context, source
 
 // Execute executes the request
 //  @return ProvisioningPolicyDto
-func (a *SourcesApiService) CreateProvisioningPolicyExecute(r ApiCreateProvisioningPolicyRequest) (*ProvisioningPolicyDto, *http.Response, error) {
+func (a *SourcesAPIService) CreateProvisioningPolicyExecute(r ApiCreateProvisioningPolicyRequest) (*ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -70,7 +70,7 @@ func (a *SourcesApiService) CreateProvisioningPolicyExecute(r ApiCreateProvision
 		localVarReturnValue  *ProvisioningPolicyDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.CreateProvisioningPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.CreateProvisioningPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -114,9 +114,9 @@ func (a *SourcesApiService) CreateProvisioningPolicyExecute(r ApiCreateProvision
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -208,7 +208,7 @@ func (a *SourcesApiService) CreateProvisioningPolicyExecute(r ApiCreateProvision
 
 type ApiCreateSourceRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	source *Source
 	provisionAsCsv *bool
 }
@@ -237,7 +237,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required t
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSourceRequest
 */
-func (a *SourcesApiService) CreateSource(ctx context.Context) ApiCreateSourceRequest {
+func (a *SourcesAPIService) CreateSource(ctx context.Context) ApiCreateSourceRequest {
 	return ApiCreateSourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -246,7 +246,7 @@ func (a *SourcesApiService) CreateSource(ctx context.Context) ApiCreateSourceReq
 
 // Execute executes the request
 //  @return Source
-func (a *SourcesApiService) CreateSourceExecute(r ApiCreateSourceRequest) (*Source, *http.Response, error) {
+func (a *SourcesAPIService) CreateSourceExecute(r ApiCreateSourceRequest) (*Source, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -254,7 +254,7 @@ func (a *SourcesApiService) CreateSourceExecute(r ApiCreateSourceRequest) (*Sour
 		localVarReturnValue  *Source
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.CreateSource")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.CreateSource")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -300,9 +300,9 @@ func (a *SourcesApiService) CreateSourceExecute(r ApiCreateSourceRequest) (*Sour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -383,7 +383,7 @@ func (a *SourcesApiService) CreateSourceExecute(r ApiCreateSourceRequest) (*Sour
 
 type ApiCreateSourceSchemaRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	schema *Schema
 }
@@ -404,7 +404,7 @@ CreateSourceSchema Creates a new Schema on the specified Source in IdentityNow.
  @param sourceId The Source id.
  @return ApiCreateSourceSchemaRequest
 */
-func (a *SourcesApiService) CreateSourceSchema(ctx context.Context, sourceId string) ApiCreateSourceSchemaRequest {
+func (a *SourcesAPIService) CreateSourceSchema(ctx context.Context, sourceId string) ApiCreateSourceSchemaRequest {
 	return ApiCreateSourceSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -414,7 +414,7 @@ func (a *SourcesApiService) CreateSourceSchema(ctx context.Context, sourceId str
 
 // Execute executes the request
 //  @return Schema
-func (a *SourcesApiService) CreateSourceSchemaExecute(r ApiCreateSourceSchemaRequest) (*Schema, *http.Response, error) {
+func (a *SourcesAPIService) CreateSourceSchemaExecute(r ApiCreateSourceSchemaRequest) (*Schema, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -422,7 +422,7 @@ func (a *SourcesApiService) CreateSourceSchemaExecute(r ApiCreateSourceSchemaReq
 		localVarReturnValue  *Schema
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.CreateSourceSchema")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.CreateSourceSchema")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -466,9 +466,9 @@ func (a *SourcesApiService) CreateSourceSchemaExecute(r ApiCreateSourceSchemaReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -549,7 +549,7 @@ func (a *SourcesApiService) CreateSourceSchemaExecute(r ApiCreateSourceSchemaReq
 
 type ApiDeleteRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 }
 
@@ -568,7 +568,7 @@ All of accounts on the source will be removed first, then the source will be del
  @param id The Source ID
  @return ApiDeleteRequest
 */
-func (a *SourcesApiService) Delete(ctx context.Context, id string) ApiDeleteRequest {
+func (a *SourcesAPIService) Delete(ctx context.Context, id string) ApiDeleteRequest {
 	return ApiDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -578,7 +578,7 @@ func (a *SourcesApiService) Delete(ctx context.Context, id string) ApiDeleteRequ
 
 // Execute executes the request
 //  @return Delete202Response
-func (a *SourcesApiService) DeleteExecute(r ApiDeleteRequest) (*Delete202Response, *http.Response, error) {
+func (a *SourcesAPIService) DeleteExecute(r ApiDeleteRequest) (*Delete202Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -586,7 +586,7 @@ func (a *SourcesApiService) DeleteExecute(r ApiDeleteRequest) (*Delete202Respons
 		localVarReturnValue  *Delete202Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.Delete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.Delete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -625,9 +625,9 @@ func (a *SourcesApiService) DeleteExecute(r ApiDeleteRequest) (*Delete202Respons
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -719,7 +719,7 @@ func (a *SourcesApiService) DeleteExecute(r ApiDeleteRequest) (*Delete202Respons
 
 type ApiDeleteNativeChangeDetectionConfigRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 }
 
@@ -737,7 +737,7 @@ A token with API, or ORG_ADMIN authority is required to call this API.
  @param id The source id
  @return ApiDeleteNativeChangeDetectionConfigRequest
 */
-func (a *SourcesApiService) DeleteNativeChangeDetectionConfig(ctx context.Context, id string) ApiDeleteNativeChangeDetectionConfigRequest {
+func (a *SourcesAPIService) DeleteNativeChangeDetectionConfig(ctx context.Context, id string) ApiDeleteNativeChangeDetectionConfigRequest {
 	return ApiDeleteNativeChangeDetectionConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -746,14 +746,14 @@ func (a *SourcesApiService) DeleteNativeChangeDetectionConfig(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *SourcesApiService) DeleteNativeChangeDetectionConfigExecute(r ApiDeleteNativeChangeDetectionConfigRequest) (*http.Response, error) {
+func (a *SourcesAPIService) DeleteNativeChangeDetectionConfigExecute(r ApiDeleteNativeChangeDetectionConfigRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.DeleteNativeChangeDetectionConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.DeleteNativeChangeDetectionConfig")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -792,9 +792,9 @@ func (a *SourcesApiService) DeleteNativeChangeDetectionConfigExecute(r ApiDelete
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -877,7 +877,7 @@ func (a *SourcesApiService) DeleteNativeChangeDetectionConfigExecute(r ApiDelete
 
 type ApiDeleteProvisioningPolicyRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	usageType UsageType
 }
@@ -897,7 +897,7 @@ A token with API, or ORG_ADMIN authority is required to call this API.
  @param usageType The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
  @return ApiDeleteProvisioningPolicyRequest
 */
-func (a *SourcesApiService) DeleteProvisioningPolicy(ctx context.Context, sourceId string, usageType UsageType) ApiDeleteProvisioningPolicyRequest {
+func (a *SourcesAPIService) DeleteProvisioningPolicy(ctx context.Context, sourceId string, usageType UsageType) ApiDeleteProvisioningPolicyRequest {
 	return ApiDeleteProvisioningPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -907,14 +907,14 @@ func (a *SourcesApiService) DeleteProvisioningPolicy(ctx context.Context, source
 }
 
 // Execute executes the request
-func (a *SourcesApiService) DeleteProvisioningPolicyExecute(r ApiDeleteProvisioningPolicyRequest) (*http.Response, error) {
+func (a *SourcesAPIService) DeleteProvisioningPolicyExecute(r ApiDeleteProvisioningPolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.DeleteProvisioningPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.DeleteProvisioningPolicy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -954,9 +954,9 @@ func (a *SourcesApiService) DeleteProvisioningPolicyExecute(r ApiDeleteProvision
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1039,7 +1039,7 @@ func (a *SourcesApiService) DeleteProvisioningPolicyExecute(r ApiDeleteProvision
 
 type ApiDeleteSourceSchemaRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	schemaId string
 }
@@ -1056,7 +1056,7 @@ DeleteSourceSchema Delete Source Schema by ID
  @param schemaId The Schema ID.
  @return ApiDeleteSourceSchemaRequest
 */
-func (a *SourcesApiService) DeleteSourceSchema(ctx context.Context, sourceId string, schemaId string) ApiDeleteSourceSchemaRequest {
+func (a *SourcesAPIService) DeleteSourceSchema(ctx context.Context, sourceId string, schemaId string) ApiDeleteSourceSchemaRequest {
 	return ApiDeleteSourceSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1066,14 +1066,14 @@ func (a *SourcesApiService) DeleteSourceSchema(ctx context.Context, sourceId str
 }
 
 // Execute executes the request
-func (a *SourcesApiService) DeleteSourceSchemaExecute(r ApiDeleteSourceSchemaRequest) (*http.Response, error) {
+func (a *SourcesAPIService) DeleteSourceSchemaExecute(r ApiDeleteSourceSchemaRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.DeleteSourceSchema")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.DeleteSourceSchema")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1113,9 +1113,9 @@ func (a *SourcesApiService) DeleteSourceSchemaExecute(r ApiDeleteSourceSchemaReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1198,7 +1198,7 @@ func (a *SourcesApiService) DeleteSourceSchemaExecute(r ApiDeleteSourceSchemaReq
 
 type ApiGetNativeChangeDetectionConfigRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 }
 
@@ -1216,7 +1216,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The source id
  @return ApiGetNativeChangeDetectionConfigRequest
 */
-func (a *SourcesApiService) GetNativeChangeDetectionConfig(ctx context.Context, id string) ApiGetNativeChangeDetectionConfigRequest {
+func (a *SourcesAPIService) GetNativeChangeDetectionConfig(ctx context.Context, id string) ApiGetNativeChangeDetectionConfigRequest {
 	return ApiGetNativeChangeDetectionConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1226,7 +1226,7 @@ func (a *SourcesApiService) GetNativeChangeDetectionConfig(ctx context.Context, 
 
 // Execute executes the request
 //  @return NativeChangeDetectionConfig
-func (a *SourcesApiService) GetNativeChangeDetectionConfigExecute(r ApiGetNativeChangeDetectionConfigRequest) (*NativeChangeDetectionConfig, *http.Response, error) {
+func (a *SourcesAPIService) GetNativeChangeDetectionConfigExecute(r ApiGetNativeChangeDetectionConfigRequest) (*NativeChangeDetectionConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1234,7 +1234,7 @@ func (a *SourcesApiService) GetNativeChangeDetectionConfigExecute(r ApiGetNative
 		localVarReturnValue  *NativeChangeDetectionConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.GetNativeChangeDetectionConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetNativeChangeDetectionConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1273,9 +1273,9 @@ func (a *SourcesApiService) GetNativeChangeDetectionConfigExecute(r ApiGetNative
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1367,7 +1367,7 @@ func (a *SourcesApiService) GetNativeChangeDetectionConfigExecute(r ApiGetNative
 
 type ApiGetProvisioningPolicyRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	usageType UsageType
 }
@@ -1387,7 +1387,7 @@ A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is requi
  @param usageType The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
  @return ApiGetProvisioningPolicyRequest
 */
-func (a *SourcesApiService) GetProvisioningPolicy(ctx context.Context, sourceId string, usageType UsageType) ApiGetProvisioningPolicyRequest {
+func (a *SourcesAPIService) GetProvisioningPolicy(ctx context.Context, sourceId string, usageType UsageType) ApiGetProvisioningPolicyRequest {
 	return ApiGetProvisioningPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1398,7 +1398,7 @@ func (a *SourcesApiService) GetProvisioningPolicy(ctx context.Context, sourceId 
 
 // Execute executes the request
 //  @return ProvisioningPolicyDto
-func (a *SourcesApiService) GetProvisioningPolicyExecute(r ApiGetProvisioningPolicyRequest) (*ProvisioningPolicyDto, *http.Response, error) {
+func (a *SourcesAPIService) GetProvisioningPolicyExecute(r ApiGetProvisioningPolicyRequest) (*ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1406,7 +1406,7 @@ func (a *SourcesApiService) GetProvisioningPolicyExecute(r ApiGetProvisioningPol
 		localVarReturnValue  *ProvisioningPolicyDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.GetProvisioningPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetProvisioningPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1446,9 +1446,9 @@ func (a *SourcesApiService) GetProvisioningPolicyExecute(r ApiGetProvisioningPol
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1540,7 +1540,7 @@ func (a *SourcesApiService) GetProvisioningPolicyExecute(r ApiGetProvisioningPol
 
 type ApiGetSourceRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 }
 
@@ -1558,7 +1558,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required t
  @param id The Source ID
  @return ApiGetSourceRequest
 */
-func (a *SourcesApiService) GetSource(ctx context.Context, id string) ApiGetSourceRequest {
+func (a *SourcesAPIService) GetSource(ctx context.Context, id string) ApiGetSourceRequest {
 	return ApiGetSourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1568,7 +1568,7 @@ func (a *SourcesApiService) GetSource(ctx context.Context, id string) ApiGetSour
 
 // Execute executes the request
 //  @return Source
-func (a *SourcesApiService) GetSourceExecute(r ApiGetSourceRequest) (*Source, *http.Response, error) {
+func (a *SourcesAPIService) GetSourceExecute(r ApiGetSourceRequest) (*Source, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1576,7 +1576,7 @@ func (a *SourcesApiService) GetSourceExecute(r ApiGetSourceRequest) (*Source, *h
 		localVarReturnValue  *Source
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.GetSource")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSource")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1615,9 +1615,9 @@ func (a *SourcesApiService) GetSourceExecute(r ApiGetSourceRequest) (*Source, *h
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1709,7 +1709,7 @@ func (a *SourcesApiService) GetSourceExecute(r ApiGetSourceRequest) (*Source, *h
 
 type ApiGetSourceAccountsSchemaRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 }
 
@@ -1724,7 +1724,7 @@ GetSourceAccountsSchema Downloads source accounts schema template
  @param id The Source id
  @return ApiGetSourceAccountsSchemaRequest
 */
-func (a *SourcesApiService) GetSourceAccountsSchema(ctx context.Context, id string) ApiGetSourceAccountsSchemaRequest {
+func (a *SourcesAPIService) GetSourceAccountsSchema(ctx context.Context, id string) ApiGetSourceAccountsSchemaRequest {
 	return ApiGetSourceAccountsSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1733,14 +1733,14 @@ func (a *SourcesApiService) GetSourceAccountsSchema(ctx context.Context, id stri
 }
 
 // Execute executes the request
-func (a *SourcesApiService) GetSourceAccountsSchemaExecute(r ApiGetSourceAccountsSchemaRequest) (*http.Response, error) {
+func (a *SourcesAPIService) GetSourceAccountsSchemaExecute(r ApiGetSourceAccountsSchemaRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.GetSourceAccountsSchema")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceAccountsSchema")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1779,9 +1779,9 @@ func (a *SourcesApiService) GetSourceAccountsSchemaExecute(r ApiGetSourceAccount
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1864,7 +1864,7 @@ func (a *SourcesApiService) GetSourceAccountsSchemaExecute(r ApiGetSourceAccount
 
 type ApiGetSourceAttrSyncConfigRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 }
 
@@ -1882,7 +1882,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The source id
  @return ApiGetSourceAttrSyncConfigRequest
 */
-func (a *SourcesApiService) GetSourceAttrSyncConfig(ctx context.Context, id string) ApiGetSourceAttrSyncConfigRequest {
+func (a *SourcesAPIService) GetSourceAttrSyncConfig(ctx context.Context, id string) ApiGetSourceAttrSyncConfigRequest {
 	return ApiGetSourceAttrSyncConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1892,7 +1892,7 @@ func (a *SourcesApiService) GetSourceAttrSyncConfig(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return AttrSyncSourceConfig
-func (a *SourcesApiService) GetSourceAttrSyncConfigExecute(r ApiGetSourceAttrSyncConfigRequest) (*AttrSyncSourceConfig, *http.Response, error) {
+func (a *SourcesAPIService) GetSourceAttrSyncConfigExecute(r ApiGetSourceAttrSyncConfigRequest) (*AttrSyncSourceConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1900,7 +1900,7 @@ func (a *SourcesApiService) GetSourceAttrSyncConfigExecute(r ApiGetSourceAttrSyn
 		localVarReturnValue  *AttrSyncSourceConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.GetSourceAttrSyncConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceAttrSyncConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1939,9 +1939,9 @@ func (a *SourcesApiService) GetSourceAttrSyncConfigExecute(r ApiGetSourceAttrSyn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2033,7 +2033,7 @@ func (a *SourcesApiService) GetSourceAttrSyncConfigExecute(r ApiGetSourceAttrSyn
 
 type ApiGetSourceConfigRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 	locale *string
 }
@@ -2058,7 +2058,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The Source id
  @return ApiGetSourceConfigRequest
 */
-func (a *SourcesApiService) GetSourceConfig(ctx context.Context, id string) ApiGetSourceConfigRequest {
+func (a *SourcesAPIService) GetSourceConfig(ctx context.Context, id string) ApiGetSourceConfigRequest {
 	return ApiGetSourceConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2068,7 +2068,7 @@ func (a *SourcesApiService) GetSourceConfig(ctx context.Context, id string) ApiG
 
 // Execute executes the request
 //  @return ConnectorDetail
-func (a *SourcesApiService) GetSourceConfigExecute(r ApiGetSourceConfigRequest) (*ConnectorDetail, *http.Response, error) {
+func (a *SourcesAPIService) GetSourceConfigExecute(r ApiGetSourceConfigRequest) (*ConnectorDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2076,7 +2076,7 @@ func (a *SourcesApiService) GetSourceConfigExecute(r ApiGetSourceConfigRequest) 
 		localVarReturnValue  *ConnectorDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.GetSourceConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2118,9 +2118,9 @@ func (a *SourcesApiService) GetSourceConfigExecute(r ApiGetSourceConfigRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2201,7 +2201,7 @@ func (a *SourcesApiService) GetSourceConfigExecute(r ApiGetSourceConfigRequest) 
 
 type ApiGetSourceEntitlementRequestConfigRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 }
 
 func (r ApiGetSourceEntitlementRequestConfigRequest) Execute() (*SourceEntitlementRequestConfig, *http.Response, error) {
@@ -2222,7 +2222,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required t
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSourceEntitlementRequestConfigRequest
 */
-func (a *SourcesApiService) GetSourceEntitlementRequestConfig(ctx context.Context) ApiGetSourceEntitlementRequestConfigRequest {
+func (a *SourcesAPIService) GetSourceEntitlementRequestConfig(ctx context.Context) ApiGetSourceEntitlementRequestConfigRequest {
 	return ApiGetSourceEntitlementRequestConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2231,7 +2231,7 @@ func (a *SourcesApiService) GetSourceEntitlementRequestConfig(ctx context.Contex
 
 // Execute executes the request
 //  @return SourceEntitlementRequestConfig
-func (a *SourcesApiService) GetSourceEntitlementRequestConfigExecute(r ApiGetSourceEntitlementRequestConfigRequest) (*SourceEntitlementRequestConfig, *http.Response, error) {
+func (a *SourcesAPIService) GetSourceEntitlementRequestConfigExecute(r ApiGetSourceEntitlementRequestConfigRequest) (*SourceEntitlementRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2239,7 +2239,7 @@ func (a *SourcesApiService) GetSourceEntitlementRequestConfigExecute(r ApiGetSou
 		localVarReturnValue  *SourceEntitlementRequestConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.GetSourceEntitlementRequestConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceEntitlementRequestConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2277,9 +2277,9 @@ func (a *SourcesApiService) GetSourceEntitlementRequestConfigExecute(r ApiGetSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2360,7 +2360,7 @@ func (a *SourcesApiService) GetSourceEntitlementRequestConfigExecute(r ApiGetSou
 
 type ApiGetSourceEntitlementsSchemaRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 	schemaName *string
 }
@@ -2382,7 +2382,7 @@ GetSourceEntitlementsSchema Downloads source entitlements schema template
  @param id The Source id
  @return ApiGetSourceEntitlementsSchemaRequest
 */
-func (a *SourcesApiService) GetSourceEntitlementsSchema(ctx context.Context, id string) ApiGetSourceEntitlementsSchemaRequest {
+func (a *SourcesAPIService) GetSourceEntitlementsSchema(ctx context.Context, id string) ApiGetSourceEntitlementsSchemaRequest {
 	return ApiGetSourceEntitlementsSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2391,14 +2391,14 @@ func (a *SourcesApiService) GetSourceEntitlementsSchema(ctx context.Context, id 
 }
 
 // Execute executes the request
-func (a *SourcesApiService) GetSourceEntitlementsSchemaExecute(r ApiGetSourceEntitlementsSchemaRequest) (*http.Response, error) {
+func (a *SourcesAPIService) GetSourceEntitlementsSchemaExecute(r ApiGetSourceEntitlementsSchemaRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.GetSourceEntitlementsSchema")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceEntitlementsSchema")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2440,9 +2440,9 @@ func (a *SourcesApiService) GetSourceEntitlementsSchemaExecute(r ApiGetSourceEnt
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2525,7 +2525,7 @@ func (a *SourcesApiService) GetSourceEntitlementsSchemaExecute(r ApiGetSourceEnt
 
 type ApiGetSourceSchemaRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	schemaId string
 }
@@ -2545,7 +2545,7 @@ Get the Source Schema by ID in IdentityNow.
  @param schemaId The Schema ID.
  @return ApiGetSourceSchemaRequest
 */
-func (a *SourcesApiService) GetSourceSchema(ctx context.Context, sourceId string, schemaId string) ApiGetSourceSchemaRequest {
+func (a *SourcesAPIService) GetSourceSchema(ctx context.Context, sourceId string, schemaId string) ApiGetSourceSchemaRequest {
 	return ApiGetSourceSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2556,7 +2556,7 @@ func (a *SourcesApiService) GetSourceSchema(ctx context.Context, sourceId string
 
 // Execute executes the request
 //  @return Schema
-func (a *SourcesApiService) GetSourceSchemaExecute(r ApiGetSourceSchemaRequest) (*Schema, *http.Response, error) {
+func (a *SourcesAPIService) GetSourceSchemaExecute(r ApiGetSourceSchemaRequest) (*Schema, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2564,7 +2564,7 @@ func (a *SourcesApiService) GetSourceSchemaExecute(r ApiGetSourceSchemaRequest) 
 		localVarReturnValue  *Schema
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.GetSourceSchema")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.GetSourceSchema")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2604,9 +2604,9 @@ func (a *SourcesApiService) GetSourceSchemaExecute(r ApiGetSourceSchemaRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2698,7 +2698,7 @@ func (a *SourcesApiService) GetSourceSchemaExecute(r ApiGetSourceSchemaRequest) 
 
 type ApiImportSourceAccountsSchemaRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 	file *os.File
 }
@@ -2721,7 +2721,7 @@ This API uploads a source schema template file to configure a source's account a
  @param id The Source id
  @return ApiImportSourceAccountsSchemaRequest
 */
-func (a *SourcesApiService) ImportSourceAccountsSchema(ctx context.Context, id string) ApiImportSourceAccountsSchemaRequest {
+func (a *SourcesAPIService) ImportSourceAccountsSchema(ctx context.Context, id string) ApiImportSourceAccountsSchemaRequest {
 	return ApiImportSourceAccountsSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2731,7 +2731,7 @@ func (a *SourcesApiService) ImportSourceAccountsSchema(ctx context.Context, id s
 
 // Execute executes the request
 //  @return Schema
-func (a *SourcesApiService) ImportSourceAccountsSchemaExecute(r ApiImportSourceAccountsSchemaRequest) (*Schema, *http.Response, error) {
+func (a *SourcesAPIService) ImportSourceAccountsSchemaExecute(r ApiImportSourceAccountsSchemaRequest) (*Schema, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2739,7 +2739,7 @@ func (a *SourcesApiService) ImportSourceAccountsSchemaExecute(r ApiImportSourceA
 		localVarReturnValue  *Schema
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.ImportSourceAccountsSchema")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ImportSourceAccountsSchema")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2773,12 +2773,10 @@ func (a *SourcesApiService) ImportSourceAccountsSchemaExecute(r ApiImportSourceA
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
 
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
@@ -2795,9 +2793,9 @@ func (a *SourcesApiService) ImportSourceAccountsSchemaExecute(r ApiImportSourceA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2878,7 +2876,7 @@ func (a *SourcesApiService) ImportSourceAccountsSchemaExecute(r ApiImportSourceA
 
 type ApiImportSourceConnectorFileRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	file *os.File
 }
@@ -2902,7 +2900,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param sourceId The Source id
  @return ApiImportSourceConnectorFileRequest
 */
-func (a *SourcesApiService) ImportSourceConnectorFile(ctx context.Context, sourceId string) ApiImportSourceConnectorFileRequest {
+func (a *SourcesAPIService) ImportSourceConnectorFile(ctx context.Context, sourceId string) ApiImportSourceConnectorFileRequest {
 	return ApiImportSourceConnectorFileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2912,7 +2910,7 @@ func (a *SourcesApiService) ImportSourceConnectorFile(ctx context.Context, sourc
 
 // Execute executes the request
 //  @return Source
-func (a *SourcesApiService) ImportSourceConnectorFileExecute(r ApiImportSourceConnectorFileRequest) (*Source, *http.Response, error) {
+func (a *SourcesAPIService) ImportSourceConnectorFileExecute(r ApiImportSourceConnectorFileRequest) (*Source, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2920,7 +2918,7 @@ func (a *SourcesApiService) ImportSourceConnectorFileExecute(r ApiImportSourceCo
 		localVarReturnValue  *Source
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.ImportSourceConnectorFile")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ImportSourceConnectorFile")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2954,12 +2952,10 @@ func (a *SourcesApiService) ImportSourceConnectorFileExecute(r ApiImportSourceCo
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
 
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
@@ -2976,9 +2972,9 @@ func (a *SourcesApiService) ImportSourceConnectorFileExecute(r ApiImportSourceCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3059,7 +3055,7 @@ func (a *SourcesApiService) ImportSourceConnectorFileExecute(r ApiImportSourceCo
 
 type ApiImportSourceEntitlementsSchemaRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 	schemaName *string
 	file *os.File
@@ -3089,7 +3085,7 @@ This API uploads a source schema template file to configure a source's entitleme
  @param id The Source id
  @return ApiImportSourceEntitlementsSchemaRequest
 */
-func (a *SourcesApiService) ImportSourceEntitlementsSchema(ctx context.Context, id string) ApiImportSourceEntitlementsSchemaRequest {
+func (a *SourcesAPIService) ImportSourceEntitlementsSchema(ctx context.Context, id string) ApiImportSourceEntitlementsSchemaRequest {
 	return ApiImportSourceEntitlementsSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3099,7 +3095,7 @@ func (a *SourcesApiService) ImportSourceEntitlementsSchema(ctx context.Context, 
 
 // Execute executes the request
 //  @return Schema
-func (a *SourcesApiService) ImportSourceEntitlementsSchemaExecute(r ApiImportSourceEntitlementsSchemaRequest) (*Schema, *http.Response, error) {
+func (a *SourcesAPIService) ImportSourceEntitlementsSchemaExecute(r ApiImportSourceEntitlementsSchemaRequest) (*Schema, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3107,7 +3103,7 @@ func (a *SourcesApiService) ImportSourceEntitlementsSchemaExecute(r ApiImportSou
 		localVarReturnValue  *Schema
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.ImportSourceEntitlementsSchema")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ImportSourceEntitlementsSchema")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3144,12 +3140,10 @@ func (a *SourcesApiService) ImportSourceEntitlementsSchemaExecute(r ApiImportSou
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
 
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
@@ -3166,9 +3160,9 @@ func (a *SourcesApiService) ImportSourceEntitlementsSchemaExecute(r ApiImportSou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3249,7 +3243,7 @@ func (a *SourcesApiService) ImportSourceEntitlementsSchemaExecute(r ApiImportSou
 
 type ApiListProvisioningPoliciesRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 }
 
@@ -3267,7 +3261,7 @@ A token with API, or ORG_ADMIN authority is required to call this API.
  @param sourceId The Source id
  @return ApiListProvisioningPoliciesRequest
 */
-func (a *SourcesApiService) ListProvisioningPolicies(ctx context.Context, sourceId string) ApiListProvisioningPoliciesRequest {
+func (a *SourcesAPIService) ListProvisioningPolicies(ctx context.Context, sourceId string) ApiListProvisioningPoliciesRequest {
 	return ApiListProvisioningPoliciesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3277,7 +3271,7 @@ func (a *SourcesApiService) ListProvisioningPolicies(ctx context.Context, source
 
 // Execute executes the request
 //  @return []ProvisioningPolicyDto
-func (a *SourcesApiService) ListProvisioningPoliciesExecute(r ApiListProvisioningPoliciesRequest) ([]ProvisioningPolicyDto, *http.Response, error) {
+func (a *SourcesAPIService) ListProvisioningPoliciesExecute(r ApiListProvisioningPoliciesRequest) ([]ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3285,7 +3279,7 @@ func (a *SourcesApiService) ListProvisioningPoliciesExecute(r ApiListProvisionin
 		localVarReturnValue  []ProvisioningPolicyDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.ListProvisioningPolicies")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ListProvisioningPolicies")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3324,9 +3318,9 @@ func (a *SourcesApiService) ListProvisioningPoliciesExecute(r ApiListProvisionin
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3418,7 +3412,7 @@ func (a *SourcesApiService) ListProvisioningPoliciesExecute(r ApiListProvisionin
 
 type ApiListSourceSchemasRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	includeTypes *string
 }
@@ -3440,7 +3434,7 @@ ListSourceSchemas Lists the Schemas that exist on the specified Source in Identi
  @param sourceId The Source id.
  @return ApiListSourceSchemasRequest
 */
-func (a *SourcesApiService) ListSourceSchemas(ctx context.Context, sourceId string) ApiListSourceSchemasRequest {
+func (a *SourcesAPIService) ListSourceSchemas(ctx context.Context, sourceId string) ApiListSourceSchemasRequest {
 	return ApiListSourceSchemasRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3450,7 +3444,7 @@ func (a *SourcesApiService) ListSourceSchemas(ctx context.Context, sourceId stri
 
 // Execute executes the request
 //  @return []Schema
-func (a *SourcesApiService) ListSourceSchemasExecute(r ApiListSourceSchemasRequest) ([]Schema, *http.Response, error) {
+func (a *SourcesAPIService) ListSourceSchemasExecute(r ApiListSourceSchemasRequest) ([]Schema, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3458,7 +3452,7 @@ func (a *SourcesApiService) ListSourceSchemasExecute(r ApiListSourceSchemasReque
 		localVarReturnValue  []Schema
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.ListSourceSchemas")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ListSourceSchemas")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3500,9 +3494,9 @@ func (a *SourcesApiService) ListSourceSchemasExecute(r ApiListSourceSchemasReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3583,7 +3577,7 @@ func (a *SourcesApiService) ListSourceSchemasExecute(r ApiListSourceSchemasReque
 
 type ApiListSourcesRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -3642,7 +3636,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or ROLE_SUBADMIN authorit
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSourcesRequest
 */
-func (a *SourcesApiService) ListSources(ctx context.Context) ApiListSourcesRequest {
+func (a *SourcesAPIService) ListSources(ctx context.Context) ApiListSourcesRequest {
 	return ApiListSourcesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3651,7 +3645,7 @@ func (a *SourcesApiService) ListSources(ctx context.Context) ApiListSourcesReque
 
 // Execute executes the request
 //  @return []Source
-func (a *SourcesApiService) ListSourcesExecute(r ApiListSourcesRequest) ([]Source, *http.Response, error) {
+func (a *SourcesAPIService) ListSourcesExecute(r ApiListSourcesRequest) ([]Source, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3659,7 +3653,7 @@ func (a *SourcesApiService) ListSourcesExecute(r ApiListSourcesRequest) ([]Sourc
 		localVarReturnValue  []Source
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.ListSources")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.ListSources")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3672,12 +3666,21 @@ func (a *SourcesApiService) ListSourcesExecute(r ApiListSourcesRequest) ([]Sourc
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -3715,9 +3718,9 @@ func (a *SourcesApiService) ListSourcesExecute(r ApiListSourcesRequest) ([]Sourc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3809,7 +3812,7 @@ func (a *SourcesApiService) ListSourcesExecute(r ApiListSourcesRequest) ([]Sourc
 
 type ApiPeekResourceObjectsRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	resourceObjectsRequest *ResourceObjectsRequest
 }
@@ -3833,7 +3836,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param sourceId The ID of the Source
  @return ApiPeekResourceObjectsRequest
 */
-func (a *SourcesApiService) PeekResourceObjects(ctx context.Context, sourceId string) ApiPeekResourceObjectsRequest {
+func (a *SourcesAPIService) PeekResourceObjects(ctx context.Context, sourceId string) ApiPeekResourceObjectsRequest {
 	return ApiPeekResourceObjectsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3843,7 +3846,7 @@ func (a *SourcesApiService) PeekResourceObjects(ctx context.Context, sourceId st
 
 // Execute executes the request
 //  @return ResourceObjectsResponse
-func (a *SourcesApiService) PeekResourceObjectsExecute(r ApiPeekResourceObjectsRequest) (*ResourceObjectsResponse, *http.Response, error) {
+func (a *SourcesAPIService) PeekResourceObjectsExecute(r ApiPeekResourceObjectsRequest) (*ResourceObjectsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3851,7 +3854,7 @@ func (a *SourcesApiService) PeekResourceObjectsExecute(r ApiPeekResourceObjectsR
 		localVarReturnValue  *ResourceObjectsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.PeekResourceObjects")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PeekResourceObjects")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3895,9 +3898,9 @@ func (a *SourcesApiService) PeekResourceObjectsExecute(r ApiPeekResourceObjectsR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3989,7 +3992,7 @@ func (a *SourcesApiService) PeekResourceObjectsExecute(r ApiPeekResourceObjectsR
 
 type ApiPingClusterRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 }
 
@@ -4007,7 +4010,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param sourceId The ID of the Source
  @return ApiPingClusterRequest
 */
-func (a *SourcesApiService) PingCluster(ctx context.Context, sourceId string) ApiPingClusterRequest {
+func (a *SourcesAPIService) PingCluster(ctx context.Context, sourceId string) ApiPingClusterRequest {
 	return ApiPingClusterRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4017,7 +4020,7 @@ func (a *SourcesApiService) PingCluster(ctx context.Context, sourceId string) Ap
 
 // Execute executes the request
 //  @return StatusResponse
-func (a *SourcesApiService) PingClusterExecute(r ApiPingClusterRequest) (*StatusResponse, *http.Response, error) {
+func (a *SourcesAPIService) PingClusterExecute(r ApiPingClusterRequest) (*StatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4025,7 +4028,7 @@ func (a *SourcesApiService) PingClusterExecute(r ApiPingClusterRequest) (*Status
 		localVarReturnValue  *StatusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.PingCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PingCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4064,9 +4067,9 @@ func (a *SourcesApiService) PingClusterExecute(r ApiPingClusterRequest) (*Status
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4158,7 +4161,7 @@ func (a *SourcesApiService) PingClusterExecute(r ApiPingClusterRequest) (*Status
 
 type ApiPutNativeChangeDetectionConfigRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 	nativeChangeDetectionConfig *NativeChangeDetectionConfig
 }
@@ -4183,7 +4186,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The source id
  @return ApiPutNativeChangeDetectionConfigRequest
 */
-func (a *SourcesApiService) PutNativeChangeDetectionConfig(ctx context.Context, id string) ApiPutNativeChangeDetectionConfigRequest {
+func (a *SourcesAPIService) PutNativeChangeDetectionConfig(ctx context.Context, id string) ApiPutNativeChangeDetectionConfigRequest {
 	return ApiPutNativeChangeDetectionConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4193,7 +4196,7 @@ func (a *SourcesApiService) PutNativeChangeDetectionConfig(ctx context.Context, 
 
 // Execute executes the request
 //  @return NativeChangeDetectionConfig
-func (a *SourcesApiService) PutNativeChangeDetectionConfigExecute(r ApiPutNativeChangeDetectionConfigRequest) (*NativeChangeDetectionConfig, *http.Response, error) {
+func (a *SourcesAPIService) PutNativeChangeDetectionConfigExecute(r ApiPutNativeChangeDetectionConfigRequest) (*NativeChangeDetectionConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -4201,7 +4204,7 @@ func (a *SourcesApiService) PutNativeChangeDetectionConfigExecute(r ApiPutNative
 		localVarReturnValue  *NativeChangeDetectionConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.PutNativeChangeDetectionConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PutNativeChangeDetectionConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4245,9 +4248,9 @@ func (a *SourcesApiService) PutNativeChangeDetectionConfigExecute(r ApiPutNative
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4339,7 +4342,7 @@ func (a *SourcesApiService) PutNativeChangeDetectionConfigExecute(r ApiPutNative
 
 type ApiPutProvisioningPolicyRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	usageType UsageType
 	provisioningPolicyDto *ProvisioningPolicyDto
@@ -4367,7 +4370,7 @@ A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is requi
  @param usageType The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
  @return ApiPutProvisioningPolicyRequest
 */
-func (a *SourcesApiService) PutProvisioningPolicy(ctx context.Context, sourceId string, usageType UsageType) ApiPutProvisioningPolicyRequest {
+func (a *SourcesAPIService) PutProvisioningPolicy(ctx context.Context, sourceId string, usageType UsageType) ApiPutProvisioningPolicyRequest {
 	return ApiPutProvisioningPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4378,7 +4381,7 @@ func (a *SourcesApiService) PutProvisioningPolicy(ctx context.Context, sourceId 
 
 // Execute executes the request
 //  @return ProvisioningPolicyDto
-func (a *SourcesApiService) PutProvisioningPolicyExecute(r ApiPutProvisioningPolicyRequest) (*ProvisioningPolicyDto, *http.Response, error) {
+func (a *SourcesAPIService) PutProvisioningPolicyExecute(r ApiPutProvisioningPolicyRequest) (*ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -4386,7 +4389,7 @@ func (a *SourcesApiService) PutProvisioningPolicyExecute(r ApiPutProvisioningPol
 		localVarReturnValue  *ProvisioningPolicyDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.PutProvisioningPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PutProvisioningPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4431,9 +4434,9 @@ func (a *SourcesApiService) PutProvisioningPolicyExecute(r ApiPutProvisioningPol
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4525,7 +4528,7 @@ func (a *SourcesApiService) PutProvisioningPolicyExecute(r ApiPutProvisioningPol
 
 type ApiPutSourceRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 	source *Source
 }
@@ -4563,7 +4566,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required t
  @param id The Source id
  @return ApiPutSourceRequest
 */
-func (a *SourcesApiService) PutSource(ctx context.Context, id string) ApiPutSourceRequest {
+func (a *SourcesAPIService) PutSource(ctx context.Context, id string) ApiPutSourceRequest {
 	return ApiPutSourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4573,7 +4576,7 @@ func (a *SourcesApiService) PutSource(ctx context.Context, id string) ApiPutSour
 
 // Execute executes the request
 //  @return Source
-func (a *SourcesApiService) PutSourceExecute(r ApiPutSourceRequest) (*Source, *http.Response, error) {
+func (a *SourcesAPIService) PutSourceExecute(r ApiPutSourceRequest) (*Source, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -4581,7 +4584,7 @@ func (a *SourcesApiService) PutSourceExecute(r ApiPutSourceRequest) (*Source, *h
 		localVarReturnValue  *Source
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.PutSource")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PutSource")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4625,9 +4628,9 @@ func (a *SourcesApiService) PutSourceExecute(r ApiPutSourceRequest) (*Source, *h
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4719,7 +4722,7 @@ func (a *SourcesApiService) PutSourceExecute(r ApiPutSourceRequest) (*Source, *h
 
 type ApiPutSourceAttrSyncConfigRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 	attrSyncSourceConfig *AttrSyncSourceConfig
 }
@@ -4744,7 +4747,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The source id
  @return ApiPutSourceAttrSyncConfigRequest
 */
-func (a *SourcesApiService) PutSourceAttrSyncConfig(ctx context.Context, id string) ApiPutSourceAttrSyncConfigRequest {
+func (a *SourcesAPIService) PutSourceAttrSyncConfig(ctx context.Context, id string) ApiPutSourceAttrSyncConfigRequest {
 	return ApiPutSourceAttrSyncConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4754,7 +4757,7 @@ func (a *SourcesApiService) PutSourceAttrSyncConfig(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return AttrSyncSourceConfig
-func (a *SourcesApiService) PutSourceAttrSyncConfigExecute(r ApiPutSourceAttrSyncConfigRequest) (*AttrSyncSourceConfig, *http.Response, error) {
+func (a *SourcesAPIService) PutSourceAttrSyncConfigExecute(r ApiPutSourceAttrSyncConfigRequest) (*AttrSyncSourceConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -4762,7 +4765,7 @@ func (a *SourcesApiService) PutSourceAttrSyncConfigExecute(r ApiPutSourceAttrSyn
 		localVarReturnValue  *AttrSyncSourceConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.PutSourceAttrSyncConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PutSourceAttrSyncConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4806,9 +4809,9 @@ func (a *SourcesApiService) PutSourceAttrSyncConfigExecute(r ApiPutSourceAttrSyn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4900,7 +4903,7 @@ func (a *SourcesApiService) PutSourceAttrSyncConfigExecute(r ApiPutSourceAttrSyn
 
 type ApiPutSourceSchemaRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	schemaId string
 	schema *Schema
@@ -4930,7 +4933,7 @@ Any attempt to modify these fields will result in an error response with a statu
  @param schemaId The Schema ID.
  @return ApiPutSourceSchemaRequest
 */
-func (a *SourcesApiService) PutSourceSchema(ctx context.Context, sourceId string, schemaId string) ApiPutSourceSchemaRequest {
+func (a *SourcesAPIService) PutSourceSchema(ctx context.Context, sourceId string, schemaId string) ApiPutSourceSchemaRequest {
 	return ApiPutSourceSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4941,7 +4944,7 @@ func (a *SourcesApiService) PutSourceSchema(ctx context.Context, sourceId string
 
 // Execute executes the request
 //  @return Schema
-func (a *SourcesApiService) PutSourceSchemaExecute(r ApiPutSourceSchemaRequest) (*Schema, *http.Response, error) {
+func (a *SourcesAPIService) PutSourceSchemaExecute(r ApiPutSourceSchemaRequest) (*Schema, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -4949,7 +4952,7 @@ func (a *SourcesApiService) PutSourceSchemaExecute(r ApiPutSourceSchemaRequest) 
 		localVarReturnValue  *Schema
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.PutSourceSchema")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.PutSourceSchema")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4994,9 +4997,9 @@ func (a *SourcesApiService) PutSourceSchemaExecute(r ApiPutSourceSchemaRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5088,7 +5091,7 @@ func (a *SourcesApiService) PutSourceSchemaExecute(r ApiPutSourceSchemaRequest) 
 
 type ApiSyncAttributesForSourceRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 }
 
@@ -5106,7 +5109,7 @@ A token with ORG_ADMIN or SOURCE_ADMIN authority is required to call this API.
  @param id The Source id
  @return ApiSyncAttributesForSourceRequest
 */
-func (a *SourcesApiService) SyncAttributesForSource(ctx context.Context, id string) ApiSyncAttributesForSourceRequest {
+func (a *SourcesAPIService) SyncAttributesForSource(ctx context.Context, id string) ApiSyncAttributesForSourceRequest {
 	return ApiSyncAttributesForSourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5116,7 +5119,7 @@ func (a *SourcesApiService) SyncAttributesForSource(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return SourceSyncJob
-func (a *SourcesApiService) SyncAttributesForSourceExecute(r ApiSyncAttributesForSourceRequest) (*SourceSyncJob, *http.Response, error) {
+func (a *SourcesAPIService) SyncAttributesForSourceExecute(r ApiSyncAttributesForSourceRequest) (*SourceSyncJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5124,7 +5127,7 @@ func (a *SourcesApiService) SyncAttributesForSourceExecute(r ApiSyncAttributesFo
 		localVarReturnValue  *SourceSyncJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.SyncAttributesForSource")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.SyncAttributesForSource")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5163,9 +5166,9 @@ func (a *SourcesApiService) SyncAttributesForSourceExecute(r ApiSyncAttributesFo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5257,7 +5260,7 @@ func (a *SourcesApiService) SyncAttributesForSourceExecute(r ApiSyncAttributesFo
 
 type ApiTestSourceConfigurationRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 }
 
@@ -5275,7 +5278,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param sourceId The ID of the Source
  @return ApiTestSourceConfigurationRequest
 */
-func (a *SourcesApiService) TestSourceConfiguration(ctx context.Context, sourceId string) ApiTestSourceConfigurationRequest {
+func (a *SourcesAPIService) TestSourceConfiguration(ctx context.Context, sourceId string) ApiTestSourceConfigurationRequest {
 	return ApiTestSourceConfigurationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5285,7 +5288,7 @@ func (a *SourcesApiService) TestSourceConfiguration(ctx context.Context, sourceI
 
 // Execute executes the request
 //  @return StatusResponse
-func (a *SourcesApiService) TestSourceConfigurationExecute(r ApiTestSourceConfigurationRequest) (*StatusResponse, *http.Response, error) {
+func (a *SourcesAPIService) TestSourceConfigurationExecute(r ApiTestSourceConfigurationRequest) (*StatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5293,7 +5296,7 @@ func (a *SourcesApiService) TestSourceConfigurationExecute(r ApiTestSourceConfig
 		localVarReturnValue  *StatusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.TestSourceConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.TestSourceConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5332,9 +5335,9 @@ func (a *SourcesApiService) TestSourceConfigurationExecute(r ApiTestSourceConfig
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5426,7 +5429,7 @@ func (a *SourcesApiService) TestSourceConfigurationExecute(r ApiTestSourceConfig
 
 type ApiTestSourceConnectionRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 }
 
@@ -5444,7 +5447,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param sourceId The ID of the Source.
  @return ApiTestSourceConnectionRequest
 */
-func (a *SourcesApiService) TestSourceConnection(ctx context.Context, sourceId string) ApiTestSourceConnectionRequest {
+func (a *SourcesAPIService) TestSourceConnection(ctx context.Context, sourceId string) ApiTestSourceConnectionRequest {
 	return ApiTestSourceConnectionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5454,7 +5457,7 @@ func (a *SourcesApiService) TestSourceConnection(ctx context.Context, sourceId s
 
 // Execute executes the request
 //  @return StatusResponse
-func (a *SourcesApiService) TestSourceConnectionExecute(r ApiTestSourceConnectionRequest) (*StatusResponse, *http.Response, error) {
+func (a *SourcesAPIService) TestSourceConnectionExecute(r ApiTestSourceConnectionRequest) (*StatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5462,7 +5465,7 @@ func (a *SourcesApiService) TestSourceConnectionExecute(r ApiTestSourceConnectio
 		localVarReturnValue  *StatusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.TestSourceConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.TestSourceConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5501,9 +5504,9 @@ func (a *SourcesApiService) TestSourceConnectionExecute(r ApiTestSourceConnectio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5595,7 +5598,7 @@ func (a *SourcesApiService) TestSourceConnectionExecute(r ApiTestSourceConnectio
 
 type ApiUpdateProvisioningPoliciesInBulkRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	provisioningPolicyDto *[]ProvisioningPolicyDto
 }
@@ -5619,7 +5622,7 @@ A token with API, or ORG_ADMIN authority is required to call this API.
  @param sourceId The Source id.
  @return ApiUpdateProvisioningPoliciesInBulkRequest
 */
-func (a *SourcesApiService) UpdateProvisioningPoliciesInBulk(ctx context.Context, sourceId string) ApiUpdateProvisioningPoliciesInBulkRequest {
+func (a *SourcesAPIService) UpdateProvisioningPoliciesInBulk(ctx context.Context, sourceId string) ApiUpdateProvisioningPoliciesInBulkRequest {
 	return ApiUpdateProvisioningPoliciesInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5629,7 +5632,7 @@ func (a *SourcesApiService) UpdateProvisioningPoliciesInBulk(ctx context.Context
 
 // Execute executes the request
 //  @return []ProvisioningPolicyDto
-func (a *SourcesApiService) UpdateProvisioningPoliciesInBulkExecute(r ApiUpdateProvisioningPoliciesInBulkRequest) ([]ProvisioningPolicyDto, *http.Response, error) {
+func (a *SourcesAPIService) UpdateProvisioningPoliciesInBulkExecute(r ApiUpdateProvisioningPoliciesInBulkRequest) ([]ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -5637,7 +5640,7 @@ func (a *SourcesApiService) UpdateProvisioningPoliciesInBulkExecute(r ApiUpdateP
 		localVarReturnValue  []ProvisioningPolicyDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.UpdateProvisioningPoliciesInBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdateProvisioningPoliciesInBulk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5681,9 +5684,9 @@ func (a *SourcesApiService) UpdateProvisioningPoliciesInBulkExecute(r ApiUpdateP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5775,7 +5778,7 @@ func (a *SourcesApiService) UpdateProvisioningPoliciesInBulkExecute(r ApiUpdateP
 
 type ApiUpdateProvisioningPolicyRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	usageType UsageType
 	jsonPatchOperation *[]JsonPatchOperation
@@ -5804,7 +5807,7 @@ A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is requi
  @param usageType The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
  @return ApiUpdateProvisioningPolicyRequest
 */
-func (a *SourcesApiService) UpdateProvisioningPolicy(ctx context.Context, sourceId string, usageType UsageType) ApiUpdateProvisioningPolicyRequest {
+func (a *SourcesAPIService) UpdateProvisioningPolicy(ctx context.Context, sourceId string, usageType UsageType) ApiUpdateProvisioningPolicyRequest {
 	return ApiUpdateProvisioningPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -5815,7 +5818,7 @@ func (a *SourcesApiService) UpdateProvisioningPolicy(ctx context.Context, source
 
 // Execute executes the request
 //  @return ProvisioningPolicyDto
-func (a *SourcesApiService) UpdateProvisioningPolicyExecute(r ApiUpdateProvisioningPolicyRequest) (*ProvisioningPolicyDto, *http.Response, error) {
+func (a *SourcesAPIService) UpdateProvisioningPolicyExecute(r ApiUpdateProvisioningPolicyRequest) (*ProvisioningPolicyDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -5823,7 +5826,7 @@ func (a *SourcesApiService) UpdateProvisioningPolicyExecute(r ApiUpdateProvision
 		localVarReturnValue  *ProvisioningPolicyDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.UpdateProvisioningPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdateProvisioningPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5868,9 +5871,9 @@ func (a *SourcesApiService) UpdateProvisioningPolicyExecute(r ApiUpdateProvision
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -5962,7 +5965,7 @@ func (a *SourcesApiService) UpdateProvisioningPolicyExecute(r ApiUpdateProvision
 
 type ApiUpdateSourceRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -6002,7 +6005,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is requi
  @param id The Source id
  @return ApiUpdateSourceRequest
 */
-func (a *SourcesApiService) UpdateSource(ctx context.Context, id string) ApiUpdateSourceRequest {
+func (a *SourcesAPIService) UpdateSource(ctx context.Context, id string) ApiUpdateSourceRequest {
 	return ApiUpdateSourceRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6012,7 +6015,7 @@ func (a *SourcesApiService) UpdateSource(ctx context.Context, id string) ApiUpda
 
 // Execute executes the request
 //  @return Source
-func (a *SourcesApiService) UpdateSourceExecute(r ApiUpdateSourceRequest) (*Source, *http.Response, error) {
+func (a *SourcesAPIService) UpdateSourceExecute(r ApiUpdateSourceRequest) (*Source, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -6020,7 +6023,7 @@ func (a *SourcesApiService) UpdateSourceExecute(r ApiUpdateSourceRequest) (*Sour
 		localVarReturnValue  *Source
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.UpdateSource")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdateSource")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6064,9 +6067,9 @@ func (a *SourcesApiService) UpdateSourceExecute(r ApiUpdateSourceRequest) (*Sour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6158,7 +6161,7 @@ func (a *SourcesApiService) UpdateSourceExecute(r ApiUpdateSourceRequest) (*Sour
 
 type ApiUpdateSourceEntitlementRequestConfigRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceEntitlementRequestConfig *SourceEntitlementRequestConfig
 }
 
@@ -6185,7 +6188,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required t
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateSourceEntitlementRequestConfigRequest
 */
-func (a *SourcesApiService) UpdateSourceEntitlementRequestConfig(ctx context.Context) ApiUpdateSourceEntitlementRequestConfigRequest {
+func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfig(ctx context.Context) ApiUpdateSourceEntitlementRequestConfigRequest {
 	return ApiUpdateSourceEntitlementRequestConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6194,7 +6197,7 @@ func (a *SourcesApiService) UpdateSourceEntitlementRequestConfig(ctx context.Con
 
 // Execute executes the request
 //  @return SourceEntitlementRequestConfig
-func (a *SourcesApiService) UpdateSourceEntitlementRequestConfigExecute(r ApiUpdateSourceEntitlementRequestConfigRequest) (*SourceEntitlementRequestConfig, *http.Response, error) {
+func (a *SourcesAPIService) UpdateSourceEntitlementRequestConfigExecute(r ApiUpdateSourceEntitlementRequestConfigRequest) (*SourceEntitlementRequestConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -6202,7 +6205,7 @@ func (a *SourcesApiService) UpdateSourceEntitlementRequestConfigExecute(r ApiUpd
 		localVarReturnValue  *SourceEntitlementRequestConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.UpdateSourceEntitlementRequestConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdateSourceEntitlementRequestConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6245,9 +6248,9 @@ func (a *SourcesApiService) UpdateSourceEntitlementRequestConfigExecute(r ApiUpd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -6328,7 +6331,7 @@ func (a *SourcesApiService) UpdateSourceEntitlementRequestConfigExecute(r ApiUpd
 
 type ApiUpdateSourceSchemaRequest struct {
 	ctx context.Context
-	ApiService *SourcesApiService
+	ApiService *SourcesAPIService
 	sourceId string
 	schemaId string
 	jsonPatchOperation *[]JsonPatchOperation
@@ -6383,7 +6386,7 @@ To switch an account attribute to a group entitlement, you need to have the foll
  @param schemaId The Schema id.
  @return ApiUpdateSourceSchemaRequest
 */
-func (a *SourcesApiService) UpdateSourceSchema(ctx context.Context, sourceId string, schemaId string) ApiUpdateSourceSchemaRequest {
+func (a *SourcesAPIService) UpdateSourceSchema(ctx context.Context, sourceId string, schemaId string) ApiUpdateSourceSchemaRequest {
 	return ApiUpdateSourceSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -6394,7 +6397,7 @@ func (a *SourcesApiService) UpdateSourceSchema(ctx context.Context, sourceId str
 
 // Execute executes the request
 //  @return Schema
-func (a *SourcesApiService) UpdateSourceSchemaExecute(r ApiUpdateSourceSchemaRequest) (*Schema, *http.Response, error) {
+func (a *SourcesAPIService) UpdateSourceSchemaExecute(r ApiUpdateSourceSchemaRequest) (*Schema, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -6402,7 +6405,7 @@ func (a *SourcesApiService) UpdateSourceSchemaExecute(r ApiUpdateSourceSchemaReq
 		localVarReturnValue  *Schema
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesApiService.UpdateSourceSchema")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAPIService.UpdateSourceSchema")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -6447,9 +6450,9 @@ func (a *SourcesApiService) UpdateSourceSchemaExecute(r ApiUpdateSourceSchemaReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -174,8 +174,8 @@ func (o *AccessCriteriaCriteriaListInner) UnmarshalJSON(bytes []byte) (err error
 	varAccessCriteriaCriteriaListInner := _AccessCriteriaCriteriaListInner{}
 
 	if err = json.Unmarshal(bytes, &varAccessCriteriaCriteriaListInner); err == nil {
-		*o = AccessCriteriaCriteriaListInner(varAccessCriteriaCriteriaListInner)
-	}
+	*o = AccessCriteriaCriteriaListInner(varAccessCriteriaCriteriaListInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

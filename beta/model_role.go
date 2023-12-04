@@ -13,6 +13,7 @@ package beta
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the Role type satisfies the MappedNullable interface at compile time
@@ -583,11 +584,33 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *Role) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"owner",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varRole := _Role{}
 
 	if err = json.Unmarshal(bytes, &varRole); err == nil {
-		*o = Role(varRole)
-	}
+	*o = Role(varRole)
+}
 
 	additionalProperties := make(map[string]interface{})
 

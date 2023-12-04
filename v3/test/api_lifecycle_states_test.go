@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing LifecycleStatesApiService
+Testing LifecycleStatesAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_LifecycleStatesApiService(t *testing.T) {
+func Test_v3_LifecycleStatesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test LifecycleStatesApiService CreateLifecycleState", func(t *testing.T) {
+	t.Run("Test LifecycleStatesAPIService CreateLifecycleState", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.V3.LifecycleStatesApi.CreateLifecycleState(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.V3.LifecycleStatesAPI.CreateLifecycleState(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,29 +36,14 @@ func Test_v3_LifecycleStatesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test LifecycleStatesApiService DeleteLifecycleState", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var identityProfileId string
-		var lifecycleStateId string
-
-		resp, httpRes, err := apiClient.V3.LifecycleStatesApi.DeleteLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test LifecycleStatesApiService GetLifecycleState", func(t *testing.T) {
+	t.Run("Test LifecycleStatesAPIService DeleteLifecycleState", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityProfileId string
 		var lifecycleStateId string
 
-		resp, httpRes, err := apiClient.V3.LifecycleStatesApi.GetLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
+		resp, httpRes, err := apiClient.V3.LifecycleStatesAPI.DeleteLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,13 +51,28 @@ func Test_v3_LifecycleStatesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test LifecycleStatesApiService ListLifecycleStates", func(t *testing.T) {
+	t.Run("Test LifecycleStatesAPIService GetLifecycleState", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityProfileId string
+		var lifecycleStateId string
+
+		resp, httpRes, err := apiClient.V3.LifecycleStatesAPI.GetLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test LifecycleStatesAPIService ListLifecycleStates", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityProfileId string
 
-		resp, httpRes, err := apiClient.V3.LifecycleStatesApi.ListLifecycleStates(context.Background(), identityProfileId).Execute()
+		resp, httpRes, err := apiClient.V3.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,13 +80,13 @@ func Test_v3_LifecycleStatesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test LifecycleStatesApiService SetLifecycleState", func(t *testing.T) {
+	t.Run("Test LifecycleStatesAPIService SetLifecycleState", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityId string
 
-		resp, httpRes, err := apiClient.V3.LifecycleStatesApi.SetLifecycleState(context.Background(), identityId).Execute()
+		resp, httpRes, err := apiClient.V3.LifecycleStatesAPI.SetLifecycleState(context.Background(), identityId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -94,14 +94,14 @@ func Test_v3_LifecycleStatesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test LifecycleStatesApiService UpdateLifecycleStates", func(t *testing.T) {
+	t.Run("Test LifecycleStatesAPIService UpdateLifecycleStates", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityProfileId string
 		var lifecycleStateId string
 
-		resp, httpRes, err := apiClient.V3.LifecycleStatesApi.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
+		resp, httpRes, err := apiClient.V3.LifecycleStatesAPI.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

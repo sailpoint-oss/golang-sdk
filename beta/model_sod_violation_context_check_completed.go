@@ -173,8 +173,8 @@ func (o *SodViolationContextCheckCompleted) UnmarshalJSON(bytes []byte) (err err
 	varSodViolationContextCheckCompleted := _SodViolationContextCheckCompleted{}
 
 	if err = json.Unmarshal(bytes, &varSodViolationContextCheckCompleted); err == nil {
-		*o = SodViolationContextCheckCompleted(varSodViolationContextCheckCompleted)
-	}
+	*o = SodViolationContextCheckCompleted(varSodViolationContextCheckCompleted)
+}
 
 	additionalProperties := make(map[string]interface{})
 

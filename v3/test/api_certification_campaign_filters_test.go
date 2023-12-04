@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing CertificationCampaignFiltersApiService
+Testing CertificationCampaignFiltersAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_CertificationCampaignFiltersApiService(t *testing.T) {
+func Test_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test CertificationCampaignFiltersApiService CreateCampaignFilter", func(t *testing.T) {
+	t.Run("Test CertificationCampaignFiltersAPIService CreateCampaignFilter", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersApi.CreateCampaignFilter(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersAPI.CreateCampaignFilter(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,24 +34,24 @@ func Test_v3_CertificationCampaignFiltersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationCampaignFiltersApiService DeleteCampaignFilters", func(t *testing.T) {
+	t.Run("Test CertificationCampaignFiltersAPIService DeleteCampaignFilters", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.V3.CertificationCampaignFiltersApi.DeleteCampaignFilters(context.Background()).Execute()
+		httpRes, err := apiClient.V3.CertificationCampaignFiltersAPI.DeleteCampaignFilters(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test CertificationCampaignFiltersApiService GetCampaignFilterById", func(t *testing.T) {
+	t.Run("Test CertificationCampaignFiltersAPIService GetCampaignFilterById", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var filterId string
 
-		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersApi.GetCampaignFilterById(context.Background(), filterId).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersAPI.GetCampaignFilterById(context.Background(), filterId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -59,11 +59,11 @@ func Test_v3_CertificationCampaignFiltersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationCampaignFiltersApiService ListCampaignFilters", func(t *testing.T) {
+	t.Run("Test CertificationCampaignFiltersAPIService ListCampaignFilters", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersApi.ListCampaignFilters(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersAPI.ListCampaignFilters(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -71,13 +71,13 @@ func Test_v3_CertificationCampaignFiltersApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationCampaignFiltersApiService UpdateCampaignFilter", func(t *testing.T) {
+	t.Run("Test CertificationCampaignFiltersAPIService UpdateCampaignFilter", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var filterId string
 
-		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersApi.UpdateCampaignFilter(context.Background(), filterId).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationCampaignFiltersAPI.UpdateCampaignFilter(context.Background(), filterId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

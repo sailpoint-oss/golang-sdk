@@ -135,8 +135,8 @@ func (o *ViolationContext) UnmarshalJSON(bytes []byte) (err error) {
 	varViolationContext := _ViolationContext{}
 
 	if err = json.Unmarshal(bytes, &varViolationContext); err == nil {
-		*o = ViolationContext(varViolationContext)
-	}
+	*o = ViolationContext(varViolationContext)
+}
 
 	additionalProperties := make(map[string]interface{})
 

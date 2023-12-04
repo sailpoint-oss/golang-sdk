@@ -286,8 +286,8 @@ func (o *AccessRequestPhases) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessRequestPhases := _AccessRequestPhases{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestPhases); err == nil {
-		*o = AccessRequestPhases(varAccessRequestPhases)
-	}
+	*o = AccessRequestPhases(varAccessRequestPhases)
+}
 
 	additionalProperties := make(map[string]interface{})
 

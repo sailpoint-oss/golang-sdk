@@ -137,8 +137,8 @@ func (o *TaskResultDetailsReturnsInner) UnmarshalJSON(bytes []byte) (err error) 
 	varTaskResultDetailsReturnsInner := _TaskResultDetailsReturnsInner{}
 
 	if err = json.Unmarshal(bytes, &varTaskResultDetailsReturnsInner); err == nil {
-		*o = TaskResultDetailsReturnsInner(varTaskResultDetailsReturnsInner)
-	}
+	*o = TaskResultDetailsReturnsInner(varTaskResultDetailsReturnsInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

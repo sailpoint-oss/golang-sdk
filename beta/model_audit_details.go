@@ -210,8 +210,8 @@ func (o *AuditDetails) UnmarshalJSON(bytes []byte) (err error) {
 	varAuditDetails := _AuditDetails{}
 
 	if err = json.Unmarshal(bytes, &varAuditDetails); err == nil {
-		*o = AuditDetails(varAuditDetails)
-	}
+	*o = AuditDetails(varAuditDetails)
+}
 
 	additionalProperties := make(map[string]interface{})
 

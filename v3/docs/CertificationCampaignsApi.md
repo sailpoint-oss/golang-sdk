@@ -1,31 +1,31 @@
-# \CertificationCampaignsApi
+# \CertificationCampaignsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CompleteCampaign**](CertificationCampaignsApi.md#CompleteCampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
-[**CreateCampaign**](CertificationCampaignsApi.md#CreateCampaign) | **Post** /campaigns | Create a campaign
-[**CreateCampaignTemplate**](CertificationCampaignsApi.md#CreateCampaignTemplate) | **Post** /campaign-templates | Create a Campaign Template
-[**DeleteCampaignTemplate**](CertificationCampaignsApi.md#DeleteCampaignTemplate) | **Delete** /campaign-templates/{id} | Delete a Campaign Template
-[**DeleteCampaignTemplateSchedule**](CertificationCampaignsApi.md#DeleteCampaignTemplateSchedule) | **Delete** /campaign-templates/{id}/schedule | Deletes a Campaign Template&#39;s Schedule
-[**DeleteCampaigns**](CertificationCampaignsApi.md#DeleteCampaigns) | **Post** /campaigns/delete | Deletes Campaigns
-[**GetActiveCampaigns**](CertificationCampaignsApi.md#GetActiveCampaigns) | **Get** /campaigns | List Campaigns
-[**GetCampaign**](CertificationCampaignsApi.md#GetCampaign) | **Get** /campaigns/{id} | Get a campaign
-[**GetCampaignReports**](CertificationCampaignsApi.md#GetCampaignReports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
-[**GetCampaignReportsConfig**](CertificationCampaignsApi.md#GetCampaignReportsConfig) | **Get** /campaigns/reports-configuration | Get Campaign Reports Configuration
-[**GetCampaignTemplate**](CertificationCampaignsApi.md#GetCampaignTemplate) | **Get** /campaign-templates/{id} | Get a Campaign Template
-[**GetCampaignTemplateSchedule**](CertificationCampaignsApi.md#GetCampaignTemplateSchedule) | **Get** /campaign-templates/{id}/schedule | Gets a Campaign Template&#39;s Schedule
-[**ListCampaignTemplates**](CertificationCampaignsApi.md#ListCampaignTemplates) | **Get** /campaign-templates | List Campaign Templates
-[**Move**](CertificationCampaignsApi.md#Move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
-[**PatchCampaignTemplate**](CertificationCampaignsApi.md#PatchCampaignTemplate) | **Patch** /campaign-templates/{id} | Update a Campaign Template
-[**SetCampaignReportsConfig**](CertificationCampaignsApi.md#SetCampaignReportsConfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
-[**SetCampaignTemplateSchedule**](CertificationCampaignsApi.md#SetCampaignTemplateSchedule) | **Put** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
-[**StartCampaign**](CertificationCampaignsApi.md#StartCampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
-[**StartCampaignRemediationScan**](CertificationCampaignsApi.md#StartCampaignRemediationScan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
-[**StartCampaignReport**](CertificationCampaignsApi.md#StartCampaignReport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
-[**StartGenerateCampaignTemplate**](CertificationCampaignsApi.md#StartGenerateCampaignTemplate) | **Post** /campaign-templates/{id}/generate | Generate a Campaign from Template
-[**UpdateCampaign**](CertificationCampaignsApi.md#UpdateCampaign) | **Patch** /campaigns/{id} | Update a Campaign
+[**CompleteCampaign**](CertificationCampaignsAPI.md#CompleteCampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
+[**CreateCampaign**](CertificationCampaignsAPI.md#CreateCampaign) | **Post** /campaigns | Create a campaign
+[**CreateCampaignTemplate**](CertificationCampaignsAPI.md#CreateCampaignTemplate) | **Post** /campaign-templates | Create a Campaign Template
+[**DeleteCampaignTemplate**](CertificationCampaignsAPI.md#DeleteCampaignTemplate) | **Delete** /campaign-templates/{id} | Delete a Campaign Template
+[**DeleteCampaignTemplateSchedule**](CertificationCampaignsAPI.md#DeleteCampaignTemplateSchedule) | **Delete** /campaign-templates/{id}/schedule | Deletes a Campaign Template&#39;s Schedule
+[**DeleteCampaigns**](CertificationCampaignsAPI.md#DeleteCampaigns) | **Post** /campaigns/delete | Deletes Campaigns
+[**GetActiveCampaigns**](CertificationCampaignsAPI.md#GetActiveCampaigns) | **Get** /campaigns | List Campaigns
+[**GetCampaign**](CertificationCampaignsAPI.md#GetCampaign) | **Get** /campaigns/{id} | Get a campaign
+[**GetCampaignReports**](CertificationCampaignsAPI.md#GetCampaignReports) | **Get** /campaigns/{id}/reports | Get Campaign Reports
+[**GetCampaignReportsConfig**](CertificationCampaignsAPI.md#GetCampaignReportsConfig) | **Get** /campaigns/reports-configuration | Get Campaign Reports Configuration
+[**GetCampaignTemplate**](CertificationCampaignsAPI.md#GetCampaignTemplate) | **Get** /campaign-templates/{id} | Get a Campaign Template
+[**GetCampaignTemplateSchedule**](CertificationCampaignsAPI.md#GetCampaignTemplateSchedule) | **Get** /campaign-templates/{id}/schedule | Gets a Campaign Template&#39;s Schedule
+[**ListCampaignTemplates**](CertificationCampaignsAPI.md#ListCampaignTemplates) | **Get** /campaign-templates | List Campaign Templates
+[**Move**](CertificationCampaignsAPI.md#Move) | **Post** /campaigns/{id}/reassign | Reassign Certifications
+[**PatchCampaignTemplate**](CertificationCampaignsAPI.md#PatchCampaignTemplate) | **Patch** /campaign-templates/{id} | Update a Campaign Template
+[**SetCampaignReportsConfig**](CertificationCampaignsAPI.md#SetCampaignReportsConfig) | **Put** /campaigns/reports-configuration | Set Campaign Reports Configuration
+[**SetCampaignTemplateSchedule**](CertificationCampaignsAPI.md#SetCampaignTemplateSchedule) | **Put** /campaign-templates/{id}/schedule | Sets a Campaign Template&#39;s Schedule
+[**StartCampaign**](CertificationCampaignsAPI.md#StartCampaign) | **Post** /campaigns/{id}/activate | Activate a Campaign
+[**StartCampaignRemediationScan**](CertificationCampaignsAPI.md#StartCampaignRemediationScan) | **Post** /campaigns/{id}/run-remediation-scan | Run Campaign Remediation Scan
+[**StartCampaignReport**](CertificationCampaignsAPI.md#StartCampaignReport) | **Post** /campaigns/{id}/run-report/{type} | Run Campaign Report
+[**StartGenerateCampaignTemplate**](CertificationCampaignsAPI.md#StartGenerateCampaignTemplate) | **Post** /campaign-templates/{id}/generate | Generate a Campaign from Template
+[**UpdateCampaign**](CertificationCampaignsAPI.md#UpdateCampaign) | **Patch** /campaigns/{id} | Update a Campaign
 
 
 
@@ -46,7 +46,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -55,13 +55,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.CompleteCampaign(context.Background(), id).CampaignCompleteOptions(campaignCompleteOptions).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.CompleteCampaign(context.Background(), id).CampaignCompleteOptions(campaignCompleteOptions).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.CompleteCampaign``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CompleteCampaign``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CompleteCampaign`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.CompleteCampaign`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.CompleteCampaign`: %v\n", resp)
 }
 ```
 
@@ -118,7 +118,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -126,13 +126,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.CreateCampaign(context.Background()).Campaign(campaign).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.CreateCampaign(context.Background()).Campaign(campaign).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.CreateCampaign``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CreateCampaign``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateCampaign`: Campaign
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.CreateCampaign`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.CreateCampaign`: %v\n", resp)
 }
 ```
 
@@ -185,7 +185,7 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -193,13 +193,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.CreateCampaignTemplate(context.Background()).CampaignTemplate(campaignTemplate).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.CreateCampaignTemplate(context.Background()).CampaignTemplate(campaignTemplate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.CreateCampaignTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.CreateCampaignTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateCampaignTemplate`: CampaignTemplate
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.CreateCampaignTemplate`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.CreateCampaignTemplate`: %v\n", resp)
 }
 ```
 
@@ -251,7 +251,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -259,9 +259,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.DeleteCampaignTemplate(context.Background(), id).Execute()
+    r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignTemplate(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.DeleteCampaignTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaignTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -319,7 +319,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -327,9 +327,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.DeleteCampaignTemplateSchedule(context.Background(), id).Execute()
+    r, err := apiClient.CertificationCampaignsAPI.DeleteCampaignTemplateSchedule(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.DeleteCampaignTemplateSchedule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaignTemplateSchedule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -387,7 +387,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -395,13 +395,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.DeleteCampaigns(context.Background()).CampaignsDeleteRequest(campaignsDeleteRequest).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.DeleteCampaigns(context.Background()).CampaignsDeleteRequest(campaignsDeleteRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.DeleteCampaigns``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.DeleteCampaigns``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DeleteCampaigns`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.DeleteCampaigns`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.DeleteCampaigns`: %v\n", resp)
 }
 ```
 
@@ -453,7 +453,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -466,13 +466,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.GetActiveCampaigns(context.Background()).Detail(detail).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.GetActiveCampaigns(context.Background()).Detail(detail).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.GetActiveCampaigns``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetActiveCampaigns``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetActiveCampaigns`: []GetActiveCampaigns200ResponseInner
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.GetActiveCampaigns`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetActiveCampaigns`: %v\n", resp)
 }
 ```
 
@@ -529,7 +529,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -537,13 +537,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.GetCampaign(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaign(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.GetCampaign``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaign``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCampaign`: SlimCampaign
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.GetCampaign`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaign`: %v\n", resp)
 }
 ```
 
@@ -599,7 +599,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -607,13 +607,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.GetCampaignReports(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignReports(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.GetCampaignReports``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReports``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCampaignReports`: []CampaignReport
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.GetCampaignReports`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignReports`: %v\n", resp)
 }
 ```
 
@@ -669,20 +669,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.GetCampaignReportsConfig(context.Background()).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignReportsConfig(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.GetCampaignReportsConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignReportsConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCampaignReportsConfig`: CampaignReportsConfig
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.GetCampaignReportsConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignReportsConfig`: %v\n", resp)
 }
 ```
 
@@ -730,7 +730,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -738,13 +738,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.GetCampaignTemplate(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignTemplate(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.GetCampaignTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCampaignTemplate`: CampaignTemplate
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.GetCampaignTemplate`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignTemplate`: %v\n", resp)
 }
 ```
 
@@ -800,7 +800,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -808,13 +808,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.GetCampaignTemplateSchedule(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.GetCampaignTemplateSchedule(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.GetCampaignTemplateSchedule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.GetCampaignTemplateSchedule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCampaignTemplateSchedule`: Schedule
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.GetCampaignTemplateSchedule`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.GetCampaignTemplateSchedule`: %v\n", resp)
 }
 ```
 
@@ -870,7 +870,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -882,13 +882,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.ListCampaignTemplates(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.ListCampaignTemplates(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.ListCampaignTemplates``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.ListCampaignTemplates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListCampaignTemplates`: []CampaignTemplate
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.ListCampaignTemplates`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.ListCampaignTemplates`: %v\n", resp)
 }
 ```
 
@@ -944,7 +944,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -953,13 +953,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.Move(context.Background(), id).AdminReviewReassign(adminReviewReassign).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.Move(context.Background(), id).AdminReviewReassign(adminReviewReassign).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.Move``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.Move``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `Move`: CertificationTask
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.Move`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.Move`: %v\n", resp)
 }
 ```
 
@@ -1016,7 +1016,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1025,13 +1025,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.PatchCampaignTemplate(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.PatchCampaignTemplate(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.PatchCampaignTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.PatchCampaignTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchCampaignTemplate`: CampaignTemplate
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.PatchCampaignTemplate`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.PatchCampaignTemplate`: %v\n", resp)
 }
 ```
 
@@ -1088,7 +1088,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1096,13 +1096,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.SetCampaignReportsConfig(context.Background()).CampaignReportsConfig(campaignReportsConfig).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.SetCampaignReportsConfig(context.Background()).CampaignReportsConfig(campaignReportsConfig).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.SetCampaignReportsConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.SetCampaignReportsConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SetCampaignReportsConfig`: CampaignReportsConfig
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.SetCampaignReportsConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.SetCampaignReportsConfig`: %v\n", resp)
 }
 ```
 
@@ -1154,7 +1154,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1163,9 +1163,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.SetCampaignTemplateSchedule(context.Background(), id).Schedule(schedule).Execute()
+    r, err := apiClient.CertificationCampaignsAPI.SetCampaignTemplateSchedule(context.Background(), id).Schedule(schedule).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.SetCampaignTemplateSchedule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.SetCampaignTemplateSchedule``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1224,7 +1224,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1233,13 +1233,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.StartCampaign(context.Background(), id).ActivateCampaignOptions(activateCampaignOptions).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaign(context.Background(), id).ActivateCampaignOptions(activateCampaignOptions).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.StartCampaign``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaign``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `StartCampaign`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.StartCampaign`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartCampaign`: %v\n", resp)
 }
 ```
 
@@ -1296,7 +1296,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1304,13 +1304,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.StartCampaignRemediationScan(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaignRemediationScan(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.StartCampaignRemediationScan``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaignRemediationScan``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `StartCampaignRemediationScan`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.StartCampaignRemediationScan`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartCampaignRemediationScan`: %v\n", resp)
 }
 ```
 
@@ -1366,7 +1366,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1375,13 +1375,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.StartCampaignReport(context.Background(), id, type_).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.StartCampaignReport(context.Background(), id, type_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.StartCampaignReport``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartCampaignReport``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `StartCampaignReport`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.StartCampaignReport`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartCampaignReport`: %v\n", resp)
 }
 ```
 
@@ -1439,7 +1439,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1447,13 +1447,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.StartGenerateCampaignTemplate(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.StartGenerateCampaignTemplate(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.StartGenerateCampaignTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.StartGenerateCampaignTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `StartGenerateCampaignTemplate`: CampaignReference
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.StartGenerateCampaignTemplate`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.StartGenerateCampaignTemplate`: %v\n", resp)
 }
 ```
 
@@ -1509,7 +1509,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1518,13 +1518,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationCampaignsApi.UpdateCampaign(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.CertificationCampaignsAPI.UpdateCampaign(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsApi.UpdateCampaign``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignsAPI.UpdateCampaign``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateCampaign`: SlimCampaign
-    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsApi.UpdateCampaign`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignsAPI.UpdateCampaign`: %v\n", resp)
 }
 ```
 

@@ -1,19 +1,19 @@
-# \TriggersApi
+# \TriggersAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CompleteTriggerInvocation**](TriggersApi.md#CompleteTriggerInvocation) | **Post** /trigger-invocations/{id}/complete | Complete Trigger Invocation
-[**CreateSubscription**](TriggersApi.md#CreateSubscription) | **Post** /trigger-subscriptions | Create a Subscription
-[**DeleteSubscription**](TriggersApi.md#DeleteSubscription) | **Delete** /trigger-subscriptions/{id} | Delete a Subscription
-[**ListSubscriptions**](TriggersApi.md#ListSubscriptions) | **Get** /trigger-subscriptions | List Subscriptions
-[**ListTriggerInvocationStatus**](TriggersApi.md#ListTriggerInvocationStatus) | **Get** /trigger-invocations/status | List Latest Invocation Statuses
-[**ListTriggers**](TriggersApi.md#ListTriggers) | **Get** /triggers | List Triggers
-[**PatchSubscription**](TriggersApi.md#PatchSubscription) | **Patch** /trigger-subscriptions/{id} | Patch a Subscription
-[**StartTestTriggerInvocation**](TriggersApi.md#StartTestTriggerInvocation) | **Post** /trigger-invocations/test | Start a Test Invocation
-[**TestSubscriptionFilter**](TriggersApi.md#TestSubscriptionFilter) | **Post** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
-[**UpdateSubscription**](TriggersApi.md#UpdateSubscription) | **Put** /trigger-subscriptions/{id} | Update a Subscription
+[**CompleteTriggerInvocation**](TriggersAPI.md#CompleteTriggerInvocation) | **Post** /trigger-invocations/{id}/complete | Complete Trigger Invocation
+[**CreateSubscription**](TriggersAPI.md#CreateSubscription) | **Post** /trigger-subscriptions | Create a Subscription
+[**DeleteSubscription**](TriggersAPI.md#DeleteSubscription) | **Delete** /trigger-subscriptions/{id} | Delete a Subscription
+[**ListSubscriptions**](TriggersAPI.md#ListSubscriptions) | **Get** /trigger-subscriptions | List Subscriptions
+[**ListTriggerInvocationStatus**](TriggersAPI.md#ListTriggerInvocationStatus) | **Get** /trigger-invocations/status | List Latest Invocation Statuses
+[**ListTriggers**](TriggersAPI.md#ListTriggers) | **Get** /triggers | List Triggers
+[**PatchSubscription**](TriggersAPI.md#PatchSubscription) | **Patch** /trigger-subscriptions/{id} | Patch a Subscription
+[**StartTestTriggerInvocation**](TriggersAPI.md#StartTestTriggerInvocation) | **Post** /trigger-invocations/test | Start a Test Invocation
+[**TestSubscriptionFilter**](TriggersAPI.md#TestSubscriptionFilter) | **Post** /trigger-subscriptions/validate-filter | Validate a Subscription Filter
+[**UpdateSubscription**](TriggersAPI.md#UpdateSubscription) | **Put** /trigger-subscriptions/{id} | Update a Subscription
 
 
 
@@ -34,7 +34,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -43,9 +43,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.CompleteTriggerInvocation(context.Background(), id).CompleteInvocation(completeInvocation).Execute()
+    r, err := apiClient.TriggersAPI.CompleteTriggerInvocation(context.Background(), id).CompleteInvocation(completeInvocation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.CompleteTriggerInvocation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CompleteTriggerInvocation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -104,7 +104,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -112,13 +112,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.CreateSubscription(context.Background()).SubscriptionPostRequest(subscriptionPostRequest).Execute()
+    resp, r, err := apiClient.TriggersAPI.CreateSubscription(context.Background()).SubscriptionPostRequest(subscriptionPostRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.CreateSubscription``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.CreateSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateSubscription`: Subscription
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.CreateSubscription`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.CreateSubscription`: %v\n", resp)
 }
 ```
 
@@ -170,7 +170,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -178,9 +178,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.DeleteSubscription(context.Background(), id).Execute()
+    r, err := apiClient.TriggersAPI.DeleteSubscription(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.DeleteSubscription``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.DeleteSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -238,7 +238,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -250,13 +250,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.ListSubscriptions(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.TriggersAPI.ListSubscriptions(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.ListSubscriptions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListSubscriptions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListSubscriptions`: []Subscription
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.ListSubscriptions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.ListSubscriptions`: %v\n", resp)
 }
 ```
 
@@ -312,7 +312,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -324,13 +324,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.ListTriggerInvocationStatus(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.TriggersAPI.ListTriggerInvocationStatus(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.ListTriggerInvocationStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggerInvocationStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTriggerInvocationStatus`: []InvocationStatus
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.ListTriggerInvocationStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.ListTriggerInvocationStatus`: %v\n", resp)
 }
 ```
 
@@ -386,7 +386,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -398,13 +398,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.ListTriggers(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.TriggersAPI.ListTriggers(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.ListTriggers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.ListTriggers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListTriggers`: []Trigger
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.ListTriggers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.ListTriggers`: %v\n", resp)
 }
 ```
 
@@ -460,7 +460,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -469,13 +469,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.PatchSubscription(context.Background(), id).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
+    resp, r, err := apiClient.TriggersAPI.PatchSubscription(context.Background(), id).SubscriptionPatchRequestInner(subscriptionPatchRequestInner).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.PatchSubscription``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.PatchSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchSubscription`: Subscription
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.PatchSubscription`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.PatchSubscription`: %v\n", resp)
 }
 ```
 
@@ -532,7 +532,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -540,13 +540,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.StartTestTriggerInvocation(context.Background()).TestInvocation(testInvocation).Execute()
+    resp, r, err := apiClient.TriggersAPI.StartTestTriggerInvocation(context.Background()).TestInvocation(testInvocation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.StartTestTriggerInvocation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.StartTestTriggerInvocation``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `StartTestTriggerInvocation`: []Invocation
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.StartTestTriggerInvocation`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.StartTestTriggerInvocation`: %v\n", resp)
 }
 ```
 
@@ -598,7 +598,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -606,13 +606,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.TestSubscriptionFilter(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
+    resp, r, err := apiClient.TriggersAPI.TestSubscriptionFilter(context.Background()).ValidateFilterInputDto(validateFilterInputDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.TestSubscriptionFilter``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.TestSubscriptionFilter``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `TestSubscriptionFilter`: ValidateFilterOutputDto
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.TestSubscriptionFilter`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.TestSubscriptionFilter`: %v\n", resp)
 }
 ```
 
@@ -664,7 +664,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -673,13 +673,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TriggersApi.UpdateSubscription(context.Background(), id).SubscriptionPutRequest(subscriptionPutRequest).Execute()
+    resp, r, err := apiClient.TriggersAPI.UpdateSubscription(context.Background(), id).SubscriptionPutRequest(subscriptionPutRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TriggersApi.UpdateSubscription``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TriggersAPI.UpdateSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateSubscription`: Subscription
-    fmt.Fprintf(os.Stdout, "Response from `TriggersApi.UpdateSubscription`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TriggersAPI.UpdateSubscription`: %v\n", resp)
 }
 ```
 

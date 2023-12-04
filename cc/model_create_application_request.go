@@ -135,8 +135,8 @@ func (o *CreateApplicationRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varCreateApplicationRequest := _CreateApplicationRequest{}
 
 	if err = json.Unmarshal(bytes, &varCreateApplicationRequest); err == nil {
-		*o = CreateApplicationRequest(varCreateApplicationRequest)
-	}
+	*o = CreateApplicationRequest(varCreateApplicationRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

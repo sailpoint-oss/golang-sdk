@@ -802,8 +802,8 @@ func (o *NonEmployeeRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varNonEmployeeRequest := _NonEmployeeRequest{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeRequest); err == nil {
-		*o = NonEmployeeRequest(varNonEmployeeRequest)
-	}
+	*o = NonEmployeeRequest(varNonEmployeeRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

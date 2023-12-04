@@ -1,22 +1,22 @@
-# \WorkItemsApi
+# \WorkItemsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApproveApprovalItem**](WorkItemsApi.md#ApproveApprovalItem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
-[**ApproveApprovalItemsInBulk**](WorkItemsApi.md#ApproveApprovalItemsInBulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
-[**CompleteWorkItem**](WorkItemsApi.md#CompleteWorkItem) | **Post** /work-items/{id} | Complete a Work Item
-[**ForwardWorkItem**](WorkItemsApi.md#ForwardWorkItem) | **Post** /work-items/{id}/forward | Forward a Work Item
-[**GetCompletedWorkItems**](WorkItemsApi.md#GetCompletedWorkItems) | **Get** /work-items/completed | Completed Work Items
-[**GetCountCompletedWorkItems**](WorkItemsApi.md#GetCountCompletedWorkItems) | **Get** /work-items/count/completed | Count Completed Work Items
-[**GetCountWorkItems**](WorkItemsApi.md#GetCountWorkItems) | **Get** /work-items/count | Count Work Items
-[**GetWorkItem**](WorkItemsApi.md#GetWorkItem) | **Get** /work-items/{id} | Get a Work Item
-[**GetWorkItemsSummary**](WorkItemsApi.md#GetWorkItemsSummary) | **Get** /work-items/summary | Work Items Summary
-[**ListWorkItems**](WorkItemsApi.md#ListWorkItems) | **Get** /work-items | List Work Items
-[**RejectApprovalItem**](WorkItemsApi.md#RejectApprovalItem) | **Post** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
-[**RejectApprovalItemsInBulk**](WorkItemsApi.md#RejectApprovalItemsInBulk) | **Post** /work-items/bulk-reject/{id} | Bulk reject Approval Items
-[**SubmitAccountSelection**](WorkItemsApi.md#SubmitAccountSelection) | **Post** /work-items/{id}/submit-account-selection | Submit Account Selections
+[**ApproveApprovalItem**](WorkItemsAPI.md#ApproveApprovalItem) | **Post** /work-items/{id}/approve/{approvalItemId} | Approve an Approval Item
+[**ApproveApprovalItemsInBulk**](WorkItemsAPI.md#ApproveApprovalItemsInBulk) | **Post** /work-items/bulk-approve/{id} | Bulk approve Approval Items
+[**CompleteWorkItem**](WorkItemsAPI.md#CompleteWorkItem) | **Post** /work-items/{id} | Complete a Work Item
+[**ForwardWorkItem**](WorkItemsAPI.md#ForwardWorkItem) | **Post** /work-items/{id}/forward | Forward a Work Item
+[**GetCompletedWorkItems**](WorkItemsAPI.md#GetCompletedWorkItems) | **Get** /work-items/completed | Completed Work Items
+[**GetCountCompletedWorkItems**](WorkItemsAPI.md#GetCountCompletedWorkItems) | **Get** /work-items/count/completed | Count Completed Work Items
+[**GetCountWorkItems**](WorkItemsAPI.md#GetCountWorkItems) | **Get** /work-items/count | Count Work Items
+[**GetWorkItem**](WorkItemsAPI.md#GetWorkItem) | **Get** /work-items/{id} | Get a Work Item
+[**GetWorkItemsSummary**](WorkItemsAPI.md#GetWorkItemsSummary) | **Get** /work-items/summary | Work Items Summary
+[**ListWorkItems**](WorkItemsAPI.md#ListWorkItems) | **Get** /work-items | List Work Items
+[**RejectApprovalItem**](WorkItemsAPI.md#RejectApprovalItem) | **Post** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
+[**RejectApprovalItemsInBulk**](WorkItemsAPI.md#RejectApprovalItemsInBulk) | **Post** /work-items/bulk-reject/{id} | Bulk reject Approval Items
+[**SubmitAccountSelection**](WorkItemsAPI.md#SubmitAccountSelection) | **Post** /work-items/{id}/submit-account-selection | Submit Account Selections
 
 
 
@@ -37,7 +37,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -46,13 +46,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.ApproveApprovalItem(context.Background(), id, approvalItemId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.ApproveApprovalItem(context.Background(), id, approvalItemId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.ApproveApprovalItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ApproveApprovalItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ApproveApprovalItem`: WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.ApproveApprovalItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.ApproveApprovalItem`: %v\n", resp)
 }
 ```
 
@@ -110,7 +110,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -118,13 +118,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.ApproveApprovalItemsInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ApproveApprovalItemsInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ApproveApprovalItemsInBulk`: WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.ApproveApprovalItemsInBulk`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.ApproveApprovalItemsInBulk`: %v\n", resp)
 }
 ```
 
@@ -180,7 +180,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -188,13 +188,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.CompleteWorkItem(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.CompleteWorkItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.CompleteWorkItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CompleteWorkItem`: WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.CompleteWorkItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.CompleteWorkItem`: %v\n", resp)
 }
 ```
 
@@ -250,7 +250,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -259,9 +259,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.ForwardWorkItem(context.Background(), id).WorkItemForward(workItemForward).Execute()
+    r, err := apiClient.WorkItemsAPI.ForwardWorkItem(context.Background(), id).WorkItemForward(workItemForward).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.ForwardWorkItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ForwardWorkItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -320,7 +320,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -331,13 +331,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.GetCompletedWorkItems(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.GetCompletedWorkItems(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.GetCompletedWorkItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCompletedWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCompletedWorkItems`: []WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.GetCompletedWorkItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetCompletedWorkItems`: %v\n", resp)
 }
 ```
 
@@ -392,7 +392,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -400,13 +400,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.GetCountCompletedWorkItems(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).OwnerId(ownerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.GetCountCompletedWorkItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountCompletedWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCountCompletedWorkItems`: []WorkItemsCount
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.GetCountCompletedWorkItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetCountCompletedWorkItems`: %v\n", resp)
 }
 ```
 
@@ -458,7 +458,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -466,13 +466,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.GetCountWorkItems(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.GetCountWorkItems(context.Background()).OwnerId(ownerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.GetCountWorkItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCountWorkItems`: []WorkItemsCount
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.GetCountWorkItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetCountWorkItems`: %v\n", resp)
 }
 ```
 
@@ -524,7 +524,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -533,13 +533,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.GetWorkItem(context.Background(), id).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.GetWorkItem(context.Background(), id).OwnerId(ownerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.GetWorkItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetWorkItem`: []WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.GetWorkItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetWorkItem`: %v\n", resp)
 }
 ```
 
@@ -596,7 +596,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -604,13 +604,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.GetWorkItemsSummary(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.GetWorkItemsSummary(context.Background()).OwnerId(ownerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.GetWorkItemsSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItemsSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetWorkItemsSummary`: []WorkItemsSummary
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.GetWorkItemsSummary`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.GetWorkItemsSummary`: %v\n", resp)
 }
 ```
 
@@ -662,7 +662,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -673,13 +673,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.ListWorkItems(context.Background()).Limit(limit).Offset(offset).Count(count).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.ListWorkItems(context.Background()).Limit(limit).Offset(offset).Count(count).OwnerId(ownerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.ListWorkItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ListWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListWorkItems`: []WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.ListWorkItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.ListWorkItems`: %v\n", resp)
 }
 ```
 
@@ -734,7 +734,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -743,13 +743,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.RejectApprovalItem(context.Background(), id, approvalItemId).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.RejectApprovalItem(context.Background(), id, approvalItemId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.RejectApprovalItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.RejectApprovalItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RejectApprovalItem`: WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.RejectApprovalItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.RejectApprovalItem`: %v\n", resp)
 }
 ```
 
@@ -807,7 +807,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -815,13 +815,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.RejectApprovalItemsInBulk(context.Background(), id).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.RejectApprovalItemsInBulk(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.RejectApprovalItemsInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.RejectApprovalItemsInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RejectApprovalItemsInBulk`: WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.RejectApprovalItemsInBulk`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.RejectApprovalItemsInBulk`: %v\n", resp)
 }
 ```
 
@@ -877,7 +877,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -886,13 +886,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsApi.SubmitAccountSelection(context.Background(), id).RequestBody(requestBody).Execute()
+    resp, r, err := apiClient.WorkItemsAPI.SubmitAccountSelection(context.Background(), id).RequestBody(requestBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsApi.SubmitAccountSelection``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.SubmitAccountSelection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SubmitAccountSelection`: WorkItems
-    fmt.Fprintf(os.Stdout, "Response from `WorkItemsApi.SubmitAccountSelection`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `WorkItemsAPI.SubmitAccountSelection`: %v\n", resp)
 }
 ```
 

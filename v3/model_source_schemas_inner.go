@@ -174,8 +174,8 @@ func (o *SourceSchemasInner) UnmarshalJSON(bytes []byte) (err error) {
 	varSourceSchemasInner := _SourceSchemasInner{}
 
 	if err = json.Unmarshal(bytes, &varSourceSchemasInner); err == nil {
-		*o = SourceSchemasInner(varSourceSchemasInner)
-	}
+	*o = SourceSchemasInner(varSourceSchemasInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

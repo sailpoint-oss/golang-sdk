@@ -174,8 +174,8 @@ func (o *AccessItemReviewedBy) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessItemReviewedBy := _AccessItemReviewedBy{}
 
 	if err = json.Unmarshal(bytes, &varAccessItemReviewedBy); err == nil {
-		*o = AccessItemReviewedBy(varAccessItemReviewedBy)
-	}
+	*o = AccessItemReviewedBy(varAccessItemReviewedBy)
+}
 
 	additionalProperties := make(map[string]interface{})
 

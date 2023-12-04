@@ -174,8 +174,8 @@ func (o *ApprovalStatusDtoOriginalOwner) UnmarshalJSON(bytes []byte) (err error)
 	varApprovalStatusDtoOriginalOwner := _ApprovalStatusDtoOriginalOwner{}
 
 	if err = json.Unmarshal(bytes, &varApprovalStatusDtoOriginalOwner); err == nil {
-		*o = ApprovalStatusDtoOriginalOwner(varApprovalStatusDtoOriginalOwner)
-	}
+	*o = ApprovalStatusDtoOriginalOwner(varApprovalStatusDtoOriginalOwner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

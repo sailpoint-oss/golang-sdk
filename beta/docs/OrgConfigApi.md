@@ -1,12 +1,12 @@
-# \OrgConfigApi
+# \OrgConfigAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetOrgConfig**](OrgConfigApi.md#GetOrgConfig) | **Get** /org-config | Get Org configuration settings
-[**GetValidTimeZones**](OrgConfigApi.md#GetValidTimeZones) | **Get** /org-config/valid-time-zones | Get list of time zones
-[**PatchOrgConfig**](OrgConfigApi.md#PatchOrgConfig) | **Patch** /org-config | Patch an Org configuration property
+[**GetOrgConfig**](OrgConfigAPI.md#GetOrgConfig) | **Get** /org-config | Get Org configuration settings
+[**GetValidTimeZones**](OrgConfigAPI.md#GetValidTimeZones) | **Get** /org-config/valid-time-zones | Get list of time zones
+[**PatchOrgConfig**](OrgConfigAPI.md#PatchOrgConfig) | **Patch** /org-config | Patch an Org configuration property
 
 
 
@@ -27,20 +27,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrgConfigApi.GetOrgConfig(context.Background()).Execute()
+    resp, r, err := apiClient.OrgConfigAPI.GetOrgConfig(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrgConfigApi.GetOrgConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConfigAPI.GetOrgConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetOrgConfig`: OrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `OrgConfigApi.GetOrgConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrgConfigAPI.GetOrgConfig`: %v\n", resp)
 }
 ```
 
@@ -88,20 +88,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrgConfigApi.GetValidTimeZones(context.Background()).Execute()
+    resp, r, err := apiClient.OrgConfigAPI.GetValidTimeZones(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrgConfigApi.GetValidTimeZones``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConfigAPI.GetValidTimeZones``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetValidTimeZones`: []string
-    fmt.Fprintf(os.Stdout, "Response from `OrgConfigApi.GetValidTimeZones`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrgConfigAPI.GetValidTimeZones`: %v\n", resp)
 }
 ```
 
@@ -149,7 +149,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -157,13 +157,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrgConfigApi.PatchOrgConfig(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.OrgConfigAPI.PatchOrgConfig(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrgConfigApi.PatchOrgConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConfigAPI.PatchOrgConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchOrgConfig`: OrgConfig
-    fmt.Fprintf(os.Stdout, "Response from `OrgConfigApi.PatchOrgConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OrgConfigAPI.PatchOrgConfig`: %v\n", resp)
 }
 ```
 

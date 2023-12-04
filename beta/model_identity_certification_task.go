@@ -246,8 +246,8 @@ func (o *IdentityCertificationTask) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityCertificationTask := _IdentityCertificationTask{}
 
 	if err = json.Unmarshal(bytes, &varIdentityCertificationTask); err == nil {
-		*o = IdentityCertificationTask(varIdentityCertificationTask)
-	}
+	*o = IdentityCertificationTask(varIdentityCertificationTask)
+}
 
 	additionalProperties := make(map[string]interface{})
 

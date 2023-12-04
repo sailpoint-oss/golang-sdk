@@ -13,18 +13,18 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// PasswordConfigurationApiService PasswordConfigurationApi service
-type PasswordConfigurationApiService service
+// PasswordConfigurationAPIService PasswordConfigurationAPI service
+type PasswordConfigurationAPIService service
 
 type ApiCreatePasswordOrgConfigRequest struct {
 	ctx context.Context
-	ApiService *PasswordConfigurationApiService
+	ApiService *PasswordConfigurationAPIService
 	passwordOrgConfig *PasswordOrgConfig
 }
 
@@ -47,7 +47,7 @@ Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreatePasswordOrgConfigRequest
 */
-func (a *PasswordConfigurationApiService) CreatePasswordOrgConfig(ctx context.Context) ApiCreatePasswordOrgConfigRequest {
+func (a *PasswordConfigurationAPIService) CreatePasswordOrgConfig(ctx context.Context) ApiCreatePasswordOrgConfigRequest {
 	return ApiCreatePasswordOrgConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,7 +56,7 @@ func (a *PasswordConfigurationApiService) CreatePasswordOrgConfig(ctx context.Co
 
 // Execute executes the request
 //  @return PasswordOrgConfig
-func (a *PasswordConfigurationApiService) CreatePasswordOrgConfigExecute(r ApiCreatePasswordOrgConfigRequest) (*PasswordOrgConfig, *http.Response, error) {
+func (a *PasswordConfigurationAPIService) CreatePasswordOrgConfigExecute(r ApiCreatePasswordOrgConfigRequest) (*PasswordOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -64,7 +64,7 @@ func (a *PasswordConfigurationApiService) CreatePasswordOrgConfigExecute(r ApiCr
 		localVarReturnValue  *PasswordOrgConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordConfigurationApiService.CreatePasswordOrgConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordConfigurationAPIService.CreatePasswordOrgConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -107,9 +107,9 @@ func (a *PasswordConfigurationApiService) CreatePasswordOrgConfigExecute(r ApiCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -190,7 +190,7 @@ func (a *PasswordConfigurationApiService) CreatePasswordOrgConfigExecute(r ApiCr
 
 type ApiGetPasswordOrgConfigRequest struct {
 	ctx context.Context
-	ApiService *PasswordConfigurationApiService
+	ApiService *PasswordConfigurationAPIService
 }
 
 func (r ApiGetPasswordOrgConfigRequest) Execute() (*PasswordOrgConfig, *http.Response, error) {
@@ -205,7 +205,7 @@ This API returns the password org config . Requires ORG_ADMIN, API role or autho
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPasswordOrgConfigRequest
 */
-func (a *PasswordConfigurationApiService) GetPasswordOrgConfig(ctx context.Context) ApiGetPasswordOrgConfigRequest {
+func (a *PasswordConfigurationAPIService) GetPasswordOrgConfig(ctx context.Context) ApiGetPasswordOrgConfigRequest {
 	return ApiGetPasswordOrgConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -214,7 +214,7 @@ func (a *PasswordConfigurationApiService) GetPasswordOrgConfig(ctx context.Conte
 
 // Execute executes the request
 //  @return PasswordOrgConfig
-func (a *PasswordConfigurationApiService) GetPasswordOrgConfigExecute(r ApiGetPasswordOrgConfigRequest) (*PasswordOrgConfig, *http.Response, error) {
+func (a *PasswordConfigurationAPIService) GetPasswordOrgConfigExecute(r ApiGetPasswordOrgConfigRequest) (*PasswordOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -222,7 +222,7 @@ func (a *PasswordConfigurationApiService) GetPasswordOrgConfigExecute(r ApiGetPa
 		localVarReturnValue  *PasswordOrgConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordConfigurationApiService.GetPasswordOrgConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordConfigurationAPIService.GetPasswordOrgConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -260,9 +260,9 @@ func (a *PasswordConfigurationApiService) GetPasswordOrgConfigExecute(r ApiGetPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -343,7 +343,7 @@ func (a *PasswordConfigurationApiService) GetPasswordOrgConfigExecute(r ApiGetPa
 
 type ApiPutPasswordOrgConfigRequest struct {
 	ctx context.Context
-	ApiService *PasswordConfigurationApiService
+	ApiService *PasswordConfigurationAPIService
 	passwordOrgConfig *PasswordOrgConfig
 }
 
@@ -366,7 +366,7 @@ Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPutPasswordOrgConfigRequest
 */
-func (a *PasswordConfigurationApiService) PutPasswordOrgConfig(ctx context.Context) ApiPutPasswordOrgConfigRequest {
+func (a *PasswordConfigurationAPIService) PutPasswordOrgConfig(ctx context.Context) ApiPutPasswordOrgConfigRequest {
 	return ApiPutPasswordOrgConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -375,7 +375,7 @@ func (a *PasswordConfigurationApiService) PutPasswordOrgConfig(ctx context.Conte
 
 // Execute executes the request
 //  @return PasswordOrgConfig
-func (a *PasswordConfigurationApiService) PutPasswordOrgConfigExecute(r ApiPutPasswordOrgConfigRequest) (*PasswordOrgConfig, *http.Response, error) {
+func (a *PasswordConfigurationAPIService) PutPasswordOrgConfigExecute(r ApiPutPasswordOrgConfigRequest) (*PasswordOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -383,7 +383,7 @@ func (a *PasswordConfigurationApiService) PutPasswordOrgConfigExecute(r ApiPutPa
 		localVarReturnValue  *PasswordOrgConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordConfigurationApiService.PutPasswordOrgConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordConfigurationAPIService.PutPasswordOrgConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -426,9 +426,9 @@ func (a *PasswordConfigurationApiService) PutPasswordOrgConfigExecute(r ApiPutPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

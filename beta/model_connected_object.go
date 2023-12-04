@@ -210,8 +210,8 @@ func (o *ConnectedObject) UnmarshalJSON(bytes []byte) (err error) {
 	varConnectedObject := _ConnectedObject{}
 
 	if err = json.Unmarshal(bytes, &varConnectedObject); err == nil {
-		*o = ConnectedObject(varConnectedObject)
-	}
+	*o = ConnectedObject(varConnectedObject)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -211,8 +211,8 @@ func (o *Invocation) UnmarshalJSON(bytes []byte) (err error) {
 	varInvocation := _Invocation{}
 
 	if err = json.Unmarshal(bytes, &varInvocation); err == nil {
-		*o = Invocation(varInvocation)
-	}
+	*o = Invocation(varInvocation)
+}
 
 	additionalProperties := make(map[string]interface{})
 

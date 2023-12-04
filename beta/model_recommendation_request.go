@@ -136,8 +136,8 @@ func (o *RecommendationRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varRecommendationRequest := _RecommendationRequest{}
 
 	if err = json.Unmarshal(bytes, &varRecommendationRequest); err == nil {
-		*o = RecommendationRequest(varRecommendationRequest)
-	}
+	*o = RecommendationRequest(varRecommendationRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

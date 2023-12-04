@@ -13,19 +13,19 @@ package cc
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// AccountsApiService AccountsApi service
-type AccountsApiService service
+// AccountsAPIService AccountsAPI service
+type AccountsAPIService service
 
 type ApiListAccountsRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 }
 
 func (r ApiListAccountsRequest) Execute() ([]ListAccounts200ResponseInner, *http.Response, error) {
@@ -38,7 +38,7 @@ ListAccounts List Accounts
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccountsRequest
 */
-func (a *AccountsApiService) ListAccounts(ctx context.Context) ApiListAccountsRequest {
+func (a *AccountsAPIService) ListAccounts(ctx context.Context) ApiListAccountsRequest {
 	return ApiListAccountsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -47,7 +47,7 @@ func (a *AccountsApiService) ListAccounts(ctx context.Context) ApiListAccountsRe
 
 // Execute executes the request
 //  @return []ListAccounts200ResponseInner
-func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]ListAccounts200ResponseInner, *http.Response, error) {
+func (a *AccountsAPIService) ListAccountsExecute(r ApiListAccountsRequest) ([]ListAccounts200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -55,7 +55,7 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]Li
 		localVarReturnValue  []ListAccounts200ResponseInner
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ListAccounts")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.ListAccounts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -93,9 +93,9 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]Li
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -122,7 +122,7 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]Li
 
 type ApiRemoveAccountRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 }
 
@@ -137,7 +137,7 @@ RemoveAccount Remove Account
  @param id
  @return ApiRemoveAccountRequest
 */
-func (a *AccountsApiService) RemoveAccount(ctx context.Context, id string) ApiRemoveAccountRequest {
+func (a *AccountsAPIService) RemoveAccount(ctx context.Context, id string) ApiRemoveAccountRequest {
 	return ApiRemoveAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -146,14 +146,14 @@ func (a *AccountsApiService) RemoveAccount(ctx context.Context, id string) ApiRe
 }
 
 // Execute executes the request
-func (a *AccountsApiService) RemoveAccountExecute(r ApiRemoveAccountRequest) (*http.Response, error) {
+func (a *AccountsAPIService) RemoveAccountExecute(r ApiRemoveAccountRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.RemoveAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.RemoveAccount")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -192,9 +192,9 @@ func (a *AccountsApiService) RemoveAccountExecute(r ApiRemoveAccountRequest) (*h
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

@@ -13,6 +13,7 @@ package v3
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the ReviewDecision type satisfies the MappedNullable interface at compile time
@@ -254,11 +255,34 @@ func (o ReviewDecision) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ReviewDecision) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"decision",
+		"bulk",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varReviewDecision := _ReviewDecision{}
 
 	if err = json.Unmarshal(bytes, &varReviewDecision); err == nil {
-		*o = ReviewDecision(varReviewDecision)
-	}
+	*o = ReviewDecision(varReviewDecision)
+}
 
 	additionalProperties := make(map[string]interface{})
 

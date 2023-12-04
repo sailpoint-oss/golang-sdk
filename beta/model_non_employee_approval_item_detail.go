@@ -394,8 +394,8 @@ func (o *NonEmployeeApprovalItemDetail) UnmarshalJSON(bytes []byte) (err error) 
 	varNonEmployeeApprovalItemDetail := _NonEmployeeApprovalItemDetail{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeApprovalItemDetail); err == nil {
-		*o = NonEmployeeApprovalItemDetail(varNonEmployeeApprovalItemDetail)
-	}
+	*o = NonEmployeeApprovalItemDetail(varNonEmployeeApprovalItemDetail)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -137,8 +137,8 @@ func (o *ListFormDefinitionsByTenantResponse) UnmarshalJSON(bytes []byte) (err e
 	varListFormDefinitionsByTenantResponse := _ListFormDefinitionsByTenantResponse{}
 
 	if err = json.Unmarshal(bytes, &varListFormDefinitionsByTenantResponse); err == nil {
-		*o = ListFormDefinitionsByTenantResponse(varListFormDefinitionsByTenantResponse)
-	}
+	*o = ListFormDefinitionsByTenantResponse(varListFormDefinitionsByTenantResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -1,10 +1,10 @@
-# \IAIPeerGroupStrategiesApi
+# \IAIPeerGroupStrategiesAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPeerGroupOutliers**](IAIPeerGroupStrategiesApi.md#GetPeerGroupOutliers) | **Get** /peer-group-strategies/{strategy}/identity-outliers | Identity Outliers List
+[**GetPeerGroupOutliers**](IAIPeerGroupStrategiesAPI.md#GetPeerGroupOutliers) | **Get** /peer-group-strategies/{strategy}/identity-outliers | Identity Outliers List
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -36,13 +36,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIPeerGroupStrategiesApi.GetPeerGroupOutliers(context.Background(), strategy).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.IAIPeerGroupStrategiesAPI.GetPeerGroupOutliers(context.Background(), strategy).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIPeerGroupStrategiesApi.GetPeerGroupOutliers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIPeerGroupStrategiesAPI.GetPeerGroupOutliers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPeerGroupOutliers`: []PeerGroupMember
-    fmt.Fprintf(os.Stdout, "Response from `IAIPeerGroupStrategiesApi.GetPeerGroupOutliers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIPeerGroupStrategiesAPI.GetPeerGroupOutliers`: %v\n", resp)
 }
 ```
 

@@ -518,8 +518,8 @@ func (o *ResourceObject) UnmarshalJSON(bytes []byte) (err error) {
 	varResourceObject := _ResourceObject{}
 
 	if err = json.Unmarshal(bytes, &varResourceObject); err == nil {
-		*o = ResourceObject(varResourceObject)
-	}
+	*o = ResourceObject(varResourceObject)
+}
 
 	additionalProperties := make(map[string]interface{})
 

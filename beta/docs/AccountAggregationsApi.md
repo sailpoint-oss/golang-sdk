@@ -1,10 +1,10 @@
-# \AccountAggregationsApi
+# \AccountAggregationsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAccountAggregationStatus**](AccountAggregationsApi.md#GetAccountAggregationStatus) | **Get** /account-aggregations/{id}/status | In-progress Account Aggregation status
+[**GetAccountAggregationStatus**](AccountAggregationsAPI.md#GetAccountAggregationStatus) | **Get** /account-aggregations/{id}/status | In-progress Account Aggregation status
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountAggregationsApi.GetAccountAggregationStatus(context.Background(), id).Execute()
+    resp, r, err := apiClient.AccountAggregationsAPI.GetAccountAggregationStatus(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountAggregationsApi.GetAccountAggregationStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccountAggregationsAPI.GetAccountAggregationStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAccountAggregationStatus`: AccountAggregationStatus
-    fmt.Fprintf(os.Stdout, "Response from `AccountAggregationsApi.GetAccountAggregationStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccountAggregationsAPI.GetAccountAggregationStatus`: %v\n", resp)
 }
 ```
 

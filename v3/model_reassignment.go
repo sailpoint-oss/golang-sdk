@@ -136,8 +136,8 @@ func (o *Reassignment) UnmarshalJSON(bytes []byte) (err error) {
 	varReassignment := _Reassignment{}
 
 	if err = json.Unmarshal(bytes, &varReassignment); err == nil {
-		*o = Reassignment(varReassignment)
-	}
+	*o = Reassignment(varReassignment)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -13,6 +13,7 @@ package v3
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the SavedSearch type satisfies the MappedNullable interface at compile time
@@ -20,9 +21,6 @@ var _ MappedNullable = &SavedSearch{}
 
 // SavedSearch struct for SavedSearch
 type SavedSearch struct {
-	// The saved search ID. 
-	Id *string `json:"id,omitempty"`
-	Owner *TypedReference `json:"owner,omitempty"`
 	// The name of the saved search. 
 	Name *string `json:"name,omitempty"`
 	// The description of the saved search. 
@@ -44,6 +42,9 @@ type SavedSearch struct {
 	// The fields to be used to sort the search results. 
 	Sort []string `json:"sort,omitempty"`
 	Filters NullableSavedSearchDetailFilters `json:"filters,omitempty"`
+	// The saved search ID. 
+	Id *string `json:"id,omitempty"`
+	Owner *TypedReference `json:"owner,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -70,70 +71,6 @@ func NewSavedSearchWithDefaults() *SavedSearch {
 	var public bool = false
 	this.Public = &public
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *SavedSearch) GetId() string {
-	if o == nil || isNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SavedSearch) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *SavedSearch) HasId() bool {
-	if o != nil && !isNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *SavedSearch) SetId(v string) {
-	o.Id = &v
-}
-
-// GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *SavedSearch) GetOwner() TypedReference {
-	if o == nil || isNil(o.Owner) {
-		var ret TypedReference
-		return ret
-	}
-	return *o.Owner
-}
-
-// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SavedSearch) GetOwnerOk() (*TypedReference, bool) {
-	if o == nil || isNil(o.Owner) {
-		return nil, false
-	}
-	return o.Owner, true
-}
-
-// HasOwner returns a boolean if a field has been set.
-func (o *SavedSearch) HasOwner() bool {
-	if o != nil && !isNil(o.Owner) {
-		return true
-	}
-
-	return false
-}
-
-// SetOwner gets a reference to the given TypedReference and assigns it to the Owner field.
-func (o *SavedSearch) SetOwner(v TypedReference) {
-	o.Owner = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -513,6 +450,70 @@ func (o *SavedSearch) UnsetFilters() {
 	o.Filters.Unset()
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *SavedSearch) GetId() string {
+	if o == nil || isNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SavedSearch) GetIdOk() (*string, bool) {
+	if o == nil || isNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *SavedSearch) HasId() bool {
+	if o != nil && !isNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *SavedSearch) SetId(v string) {
+	o.Id = &v
+}
+
+// GetOwner returns the Owner field value if set, zero value otherwise.
+func (o *SavedSearch) GetOwner() TypedReference {
+	if o == nil || isNil(o.Owner) {
+		var ret TypedReference
+		return ret
+	}
+	return *o.Owner
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SavedSearch) GetOwnerOk() (*TypedReference, bool) {
+	if o == nil || isNil(o.Owner) {
+		return nil, false
+	}
+	return o.Owner, true
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *SavedSearch) HasOwner() bool {
+	if o != nil && !isNil(o.Owner) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given TypedReference and assigns it to the Owner field.
+func (o *SavedSearch) SetOwner(v TypedReference) {
+	o.Owner = &v
+}
+
 func (o SavedSearch) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -523,12 +524,6 @@ func (o SavedSearch) MarshalJSON() ([]byte, error) {
 
 func (o SavedSearch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Owner) {
-		toSerialize["owner"] = o.Owner
-	}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
@@ -558,6 +553,12 @@ func (o SavedSearch) ToMap() (map[string]interface{}, error) {
 	if o.Filters.IsSet() {
 		toSerialize["filters"] = o.Filters.Get()
 	}
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !isNil(o.Owner) {
+		toSerialize["owner"] = o.Owner
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -567,17 +568,37 @@ func (o SavedSearch) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *SavedSearch) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"indices",
+		"query",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varSavedSearch := _SavedSearch{}
 
 	if err = json.Unmarshal(bytes, &varSavedSearch); err == nil {
-		*o = SavedSearch(varSavedSearch)
-	}
+	*o = SavedSearch(varSavedSearch)
+}
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "owner")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "public")
@@ -589,6 +610,8 @@ func (o *SavedSearch) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "fields")
 		delete(additionalProperties, "sort")
 		delete(additionalProperties, "filters")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "owner")
 		o.AdditionalProperties = additionalProperties
 	}
 

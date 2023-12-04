@@ -1,10 +1,10 @@
-# \RequestableObjectsApi
+# \RequestableObjectsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListRequestableObjects**](RequestableObjectsApi.md#ListRequestableObjects) | **Get** /requestable-objects | Requestable Objects List
+[**ListRequestableObjects**](RequestableObjectsAPI.md#ListRequestableObjects) | **Get** /requestable-objects | Requestable Objects List
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -41,13 +41,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RequestableObjectsApi.ListRequestableObjects(context.Background()).IdentityId(identityId).Types(types).Term(term).Statuses(statuses).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.RequestableObjectsAPI.ListRequestableObjects(context.Background()).IdentityId(identityId).Types(types).Term(term).Statuses(statuses).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RequestableObjectsApi.ListRequestableObjects``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RequestableObjectsAPI.ListRequestableObjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListRequestableObjects`: []RequestableObject
-    fmt.Fprintf(os.Stdout, "Response from `RequestableObjectsApi.ListRequestableObjects`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RequestableObjectsAPI.ListRequestableObjects`: %v\n", resp)
 }
 ```
 

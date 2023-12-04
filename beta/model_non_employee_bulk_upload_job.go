@@ -249,8 +249,8 @@ func (o *NonEmployeeBulkUploadJob) UnmarshalJSON(bytes []byte) (err error) {
 	varNonEmployeeBulkUploadJob := _NonEmployeeBulkUploadJob{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeBulkUploadJob); err == nil {
-		*o = NonEmployeeBulkUploadJob(varNonEmployeeBulkUploadJob)
-	}
+	*o = NonEmployeeBulkUploadJob(varNonEmployeeBulkUploadJob)
+}
 
 	additionalProperties := make(map[string]interface{})
 

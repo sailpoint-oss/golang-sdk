@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing ReportsDataExtractionApiService
+Testing ReportsDataExtractionAPIService
 
 */
 
@@ -17,31 +17,31 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_ReportsDataExtractionApiService(t *testing.T) {
+func Test_v3_ReportsDataExtractionAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ReportsDataExtractionApiService CancelReport", func(t *testing.T) {
+	t.Run("Test ReportsDataExtractionAPIService CancelReport", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.V3.ReportsDataExtractionApi.CancelReport(context.Background(), id).Execute()
+		httpRes, err := apiClient.V3.ReportsDataExtractionAPI.CancelReport(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ReportsDataExtractionApiService GetReport", func(t *testing.T) {
+	t.Run("Test ReportsDataExtractionAPIService GetReport", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var taskResultId string
 
-		resp, httpRes, err := apiClient.V3.ReportsDataExtractionApi.GetReport(context.Background(), taskResultId).Execute()
+		resp, httpRes, err := apiClient.V3.ReportsDataExtractionAPI.GetReport(context.Background(), taskResultId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,13 +49,13 @@ func Test_v3_ReportsDataExtractionApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ReportsDataExtractionApiService GetReportResult", func(t *testing.T) {
+	t.Run("Test ReportsDataExtractionAPIService GetReportResult", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var taskResultId string
 
-		resp, httpRes, err := apiClient.V3.ReportsDataExtractionApi.GetReportResult(context.Background(), taskResultId).Execute()
+		resp, httpRes, err := apiClient.V3.ReportsDataExtractionAPI.GetReportResult(context.Background(), taskResultId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -63,11 +63,11 @@ func Test_v3_ReportsDataExtractionApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ReportsDataExtractionApiService StartReport", func(t *testing.T) {
+	t.Run("Test ReportsDataExtractionAPIService StartReport", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.ReportsDataExtractionApi.StartReport(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.ReportsDataExtractionAPI.StartReport(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

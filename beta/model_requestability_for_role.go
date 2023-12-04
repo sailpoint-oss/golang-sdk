@@ -202,8 +202,8 @@ func (o *RequestabilityForRole) UnmarshalJSON(bytes []byte) (err error) {
 	varRequestabilityForRole := _RequestabilityForRole{}
 
 	if err = json.Unmarshal(bytes, &varRequestabilityForRole); err == nil {
-		*o = RequestabilityForRole(varRequestabilityForRole)
-	}
+	*o = RequestabilityForRole(varRequestabilityForRole)
+}
 
 	additionalProperties := make(map[string]interface{})
 

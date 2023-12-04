@@ -174,8 +174,8 @@ func (o *CommentDtoAuthor) UnmarshalJSON(bytes []byte) (err error) {
 	varCommentDtoAuthor := _CommentDtoAuthor{}
 
 	if err = json.Unmarshal(bytes, &varCommentDtoAuthor); err == nil {
-		*o = CommentDtoAuthor(varCommentDtoAuthor)
-	}
+	*o = CommentDtoAuthor(varCommentDtoAuthor)
+}
 
 	additionalProperties := make(map[string]interface{})
 

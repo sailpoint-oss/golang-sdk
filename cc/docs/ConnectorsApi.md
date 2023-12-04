@@ -1,14 +1,14 @@
-# \ConnectorsApi
+# \ConnectorsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateConnector**](ConnectorsApi.md#CreateConnector) | **Post** /cc/api/connector/create | Create Connector
-[**DeleteConnector**](ConnectorsApi.md#DeleteConnector) | **Post** /cc/api/connector/delete/{id} | Delete Connector
-[**ExportConnectorConfig**](ConnectorsApi.md#ExportConnectorConfig) | **Get** /cc/api/connector/export/{id} | Export Connector Config
-[**ImportConnectorConfig**](ConnectorsApi.md#ImportConnectorConfig) | **Post** /cc/api/connector/import/{id} | Import Connector Config
-[**ListConnectors**](ConnectorsApi.md#ListConnectors) | **Get** /cc/api/connector/list | List Connectors
+[**CreateConnector**](ConnectorsAPI.md#CreateConnector) | **Post** /cc/api/connector/create | Create Connector
+[**DeleteConnector**](ConnectorsAPI.md#DeleteConnector) | **Post** /cc/api/connector/delete/{id} | Delete Connector
+[**ExportConnectorConfig**](ConnectorsAPI.md#ExportConnectorConfig) | **Get** /cc/api/connector/export/{id} | Export Connector Config
+[**ImportConnectorConfig**](ConnectorsAPI.md#ImportConnectorConfig) | **Post** /cc/api/connector/import/{id} | Import Connector Config
+[**ListConnectors**](ConnectorsAPI.md#ListConnectors) | **Get** /cc/api/connector/list | List Connectors
 
 
 
@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -40,9 +40,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorsApi.CreateConnector(context.Background()).ContentType(contentType).Name(name).Description(description).ClassName(className).DirectConnect(directConnect).Status(status).Execute()
+    r, err := apiClient.ConnectorsAPI.CreateConnector(context.Background()).ContentType(contentType).Name(name).Description(description).ClassName(className).DirectConnect(directConnect).Status(status).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsApi.CreateConnector``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.CreateConnector``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -99,7 +99,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -107,9 +107,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorsApi.DeleteConnector(context.Background(), id).Execute()
+    r, err := apiClient.ConnectorsAPI.DeleteConnector(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsApi.DeleteConnector``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.DeleteConnector``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -165,7 +165,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -173,9 +173,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorsApi.ExportConnectorConfig(context.Background(), id).Execute()
+    r, err := apiClient.ConnectorsAPI.ExportConnectorConfig(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsApi.ExportConnectorConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.ExportConnectorConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -231,7 +231,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -240,9 +240,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorsApi.ImportConnectorConfig(context.Background(), id).File(file).Execute()
+    r, err := apiClient.ConnectorsAPI.ImportConnectorConfig(context.Background(), id).File(file).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsApi.ImportConnectorConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.ImportConnectorConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -299,20 +299,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorsApi.ListConnectors(context.Background()).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.ListConnectors(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsApi.ListConnectors``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.ListConnectors``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListConnectors`: ListConnectors200Response
-    fmt.Fprintf(os.Stdout, "Response from `ConnectorsApi.ListConnectors`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.ListConnectors`: %v\n", resp)
 }
 ```
 

@@ -136,8 +136,8 @@ func (o *RoleMiningIdentityDistribution) UnmarshalJSON(bytes []byte) (err error)
 	varRoleMiningIdentityDistribution := _RoleMiningIdentityDistribution{}
 
 	if err = json.Unmarshal(bytes, &varRoleMiningIdentityDistribution); err == nil {
-		*o = RoleMiningIdentityDistribution(varRoleMiningIdentityDistribution)
-	}
+	*o = RoleMiningIdentityDistribution(varRoleMiningIdentityDistribution)
+}
 
 	additionalProperties := make(map[string]interface{})
 

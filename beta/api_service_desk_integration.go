@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// ServiceDeskIntegrationApiService ServiceDeskIntegrationApi service
-type ServiceDeskIntegrationApiService service
+// ServiceDeskIntegrationAPIService ServiceDeskIntegrationAPI service
+type ServiceDeskIntegrationAPIService service
 
 type ApiCreateServiceDeskIntegrationRequest struct {
 	ctx context.Context
-	ApiService *ServiceDeskIntegrationApiService
+	ApiService *ServiceDeskIntegrationAPIService
 	serviceDeskIntegrationDto *ServiceDeskIntegrationDto
 }
 
@@ -47,7 +47,7 @@ Create a new Service Desk Integrations.  A token with Org Admin or Service Desk 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateServiceDeskIntegrationRequest
 */
-func (a *ServiceDeskIntegrationApiService) CreateServiceDeskIntegration(ctx context.Context) ApiCreateServiceDeskIntegrationRequest {
+func (a *ServiceDeskIntegrationAPIService) CreateServiceDeskIntegration(ctx context.Context) ApiCreateServiceDeskIntegrationRequest {
 	return ApiCreateServiceDeskIntegrationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,7 +56,7 @@ func (a *ServiceDeskIntegrationApiService) CreateServiceDeskIntegration(ctx cont
 
 // Execute executes the request
 //  @return ServiceDeskIntegrationDto
-func (a *ServiceDeskIntegrationApiService) CreateServiceDeskIntegrationExecute(r ApiCreateServiceDeskIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
+func (a *ServiceDeskIntegrationAPIService) CreateServiceDeskIntegrationExecute(r ApiCreateServiceDeskIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -64,7 +64,7 @@ func (a *ServiceDeskIntegrationApiService) CreateServiceDeskIntegrationExecute(r
 		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.CreateServiceDeskIntegration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.CreateServiceDeskIntegration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -107,9 +107,9 @@ func (a *ServiceDeskIntegrationApiService) CreateServiceDeskIntegrationExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -201,7 +201,7 @@ func (a *ServiceDeskIntegrationApiService) CreateServiceDeskIntegrationExecute(r
 
 type ApiDeleteServiceDeskIntegrationRequest struct {
 	ctx context.Context
-	ApiService *ServiceDeskIntegrationApiService
+	ApiService *ServiceDeskIntegrationAPIService
 	id string
 }
 
@@ -218,7 +218,7 @@ Delete an existing Service Desk integration by ID.  A token with Org Admin or Se
  @param id ID of Service Desk integration to delete
  @return ApiDeleteServiceDeskIntegrationRequest
 */
-func (a *ServiceDeskIntegrationApiService) DeleteServiceDeskIntegration(ctx context.Context, id string) ApiDeleteServiceDeskIntegrationRequest {
+func (a *ServiceDeskIntegrationAPIService) DeleteServiceDeskIntegration(ctx context.Context, id string) ApiDeleteServiceDeskIntegrationRequest {
 	return ApiDeleteServiceDeskIntegrationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -227,14 +227,14 @@ func (a *ServiceDeskIntegrationApiService) DeleteServiceDeskIntegration(ctx cont
 }
 
 // Execute executes the request
-func (a *ServiceDeskIntegrationApiService) DeleteServiceDeskIntegrationExecute(r ApiDeleteServiceDeskIntegrationRequest) (*http.Response, error) {
+func (a *ServiceDeskIntegrationAPIService) DeleteServiceDeskIntegrationExecute(r ApiDeleteServiceDeskIntegrationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.DeleteServiceDeskIntegration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.DeleteServiceDeskIntegration")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -273,9 +273,9 @@ func (a *ServiceDeskIntegrationApiService) DeleteServiceDeskIntegrationExecute(r
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -358,7 +358,7 @@ func (a *ServiceDeskIntegrationApiService) DeleteServiceDeskIntegrationExecute(r
 
 type ApiGetServiceDeskIntegrationRequest struct {
 	ctx context.Context
-	ApiService *ServiceDeskIntegrationApiService
+	ApiService *ServiceDeskIntegrationAPIService
 	id string
 }
 
@@ -375,7 +375,7 @@ Get an existing Service Desk integration by ID.  A token with Org Admin or Servi
  @param id ID of the Service Desk integration to get
  @return ApiGetServiceDeskIntegrationRequest
 */
-func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegration(ctx context.Context, id string) ApiGetServiceDeskIntegrationRequest {
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegration(ctx context.Context, id string) ApiGetServiceDeskIntegrationRequest {
 	return ApiGetServiceDeskIntegrationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -385,7 +385,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegration(ctx context
 
 // Execute executes the request
 //  @return ServiceDeskIntegrationDto
-func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationExecute(r ApiGetServiceDeskIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationExecute(r ApiGetServiceDeskIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -393,7 +393,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationExecute(r Ap
 		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.GetServiceDeskIntegration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.GetServiceDeskIntegration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -432,9 +432,9 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -526,7 +526,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationExecute(r Ap
 
 type ApiGetServiceDeskIntegrationListRequest struct {
 	ctx context.Context
-	ApiService *ServiceDeskIntegrationApiService
+	ApiService *ServiceDeskIntegrationAPIService
 	offset *int32
 	limit *int32
 	sorters *string
@@ -576,7 +576,7 @@ Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations. 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetServiceDeskIntegrationListRequest
 */
-func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationList(ctx context.Context) ApiGetServiceDeskIntegrationListRequest {
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationList(ctx context.Context) ApiGetServiceDeskIntegrationListRequest {
 	return ApiGetServiceDeskIntegrationListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -585,7 +585,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationList(ctx con
 
 // Execute executes the request
 //  @return []ServiceDeskIntegrationDto
-func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationListExecute(r ApiGetServiceDeskIntegrationListRequest) ([]ServiceDeskIntegrationDto, *http.Response, error) {
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationListExecute(r ApiGetServiceDeskIntegrationListRequest) ([]ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -593,7 +593,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationListExecute(
 		localVarReturnValue  []ServiceDeskIntegrationDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.GetServiceDeskIntegrationList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.GetServiceDeskIntegrationList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -606,9 +606,15 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationListExecute(
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -618,6 +624,9 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationListExecute(
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -646,9 +655,9 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationListExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -740,7 +749,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationListExecute(
 
 type ApiGetServiceDeskIntegrationTemplateRequest struct {
 	ctx context.Context
-	ApiService *ServiceDeskIntegrationApiService
+	ApiService *ServiceDeskIntegrationAPIService
 	scriptName string
 }
 
@@ -757,7 +766,7 @@ This API endpoint returns an existing Service Desk integration template by scrip
  @param scriptName The scriptName value of the Service Desk integration template to get
  @return ApiGetServiceDeskIntegrationTemplateRequest
 */
-func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTemplate(ctx context.Context, scriptName string) ApiGetServiceDeskIntegrationTemplateRequest {
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTemplate(ctx context.Context, scriptName string) ApiGetServiceDeskIntegrationTemplateRequest {
 	return ApiGetServiceDeskIntegrationTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -767,7 +776,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTemplate(ctx
 
 // Execute executes the request
 //  @return ServiceDeskIntegrationTemplateDto
-func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTemplateExecute(r ApiGetServiceDeskIntegrationTemplateRequest) (*ServiceDeskIntegrationTemplateDto, *http.Response, error) {
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTemplateExecute(r ApiGetServiceDeskIntegrationTemplateRequest) (*ServiceDeskIntegrationTemplateDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -775,7 +784,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTemplateExec
 		localVarReturnValue  *ServiceDeskIntegrationTemplateDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.GetServiceDeskIntegrationTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.GetServiceDeskIntegrationTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -814,9 +823,9 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTemplateExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -908,7 +917,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTemplateExec
 
 type ApiGetServiceDeskIntegrationTypesRequest struct {
 	ctx context.Context
-	ApiService *ServiceDeskIntegrationApiService
+	ApiService *ServiceDeskIntegrationAPIService
 }
 
 func (r ApiGetServiceDeskIntegrationTypesRequest) Execute() ([]ServiceDeskIntegrationTemplateType, *http.Response, error) {
@@ -923,7 +932,7 @@ This API endpoint returns the current list of supported Service Desk integration
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetServiceDeskIntegrationTypesRequest
 */
-func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTypes(ctx context.Context) ApiGetServiceDeskIntegrationTypesRequest {
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTypes(ctx context.Context) ApiGetServiceDeskIntegrationTypesRequest {
 	return ApiGetServiceDeskIntegrationTypesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -932,7 +941,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTypes(ctx co
 
 // Execute executes the request
 //  @return []ServiceDeskIntegrationTemplateType
-func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTypesExecute(r ApiGetServiceDeskIntegrationTypesRequest) ([]ServiceDeskIntegrationTemplateType, *http.Response, error) {
+func (a *ServiceDeskIntegrationAPIService) GetServiceDeskIntegrationTypesExecute(r ApiGetServiceDeskIntegrationTypesRequest) ([]ServiceDeskIntegrationTemplateType, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -940,7 +949,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTypesExecute
 		localVarReturnValue  []ServiceDeskIntegrationTemplateType
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.GetServiceDeskIntegrationTypes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.GetServiceDeskIntegrationTypes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -978,9 +987,9 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTypesExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1072,7 +1081,7 @@ func (a *ServiceDeskIntegrationApiService) GetServiceDeskIntegrationTypesExecute
 
 type ApiGetStatusCheckDetailsRequest struct {
 	ctx context.Context
-	ApiService *ServiceDeskIntegrationApiService
+	ApiService *ServiceDeskIntegrationAPIService
 }
 
 func (r ApiGetStatusCheckDetailsRequest) Execute() (*QueuedCheckConfigDetails, *http.Response, error) {
@@ -1087,7 +1096,7 @@ Get the time check configuration of queued SDIM tickets.  A token with Org Admin
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetStatusCheckDetailsRequest
 */
-func (a *ServiceDeskIntegrationApiService) GetStatusCheckDetails(ctx context.Context) ApiGetStatusCheckDetailsRequest {
+func (a *ServiceDeskIntegrationAPIService) GetStatusCheckDetails(ctx context.Context) ApiGetStatusCheckDetailsRequest {
 	return ApiGetStatusCheckDetailsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1096,7 +1105,7 @@ func (a *ServiceDeskIntegrationApiService) GetStatusCheckDetails(ctx context.Con
 
 // Execute executes the request
 //  @return QueuedCheckConfigDetails
-func (a *ServiceDeskIntegrationApiService) GetStatusCheckDetailsExecute(r ApiGetStatusCheckDetailsRequest) (*QueuedCheckConfigDetails, *http.Response, error) {
+func (a *ServiceDeskIntegrationAPIService) GetStatusCheckDetailsExecute(r ApiGetStatusCheckDetailsRequest) (*QueuedCheckConfigDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1104,7 +1113,7 @@ func (a *ServiceDeskIntegrationApiService) GetStatusCheckDetailsExecute(r ApiGet
 		localVarReturnValue  *QueuedCheckConfigDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.GetStatusCheckDetails")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.GetStatusCheckDetails")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1142,9 +1151,9 @@ func (a *ServiceDeskIntegrationApiService) GetStatusCheckDetailsExecute(r ApiGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1236,7 +1245,7 @@ func (a *ServiceDeskIntegrationApiService) GetStatusCheckDetailsExecute(r ApiGet
 
 type ApiPatchServiceDeskIntegrationRequest struct {
 	ctx context.Context
-	ApiService *ServiceDeskIntegrationApiService
+	ApiService *ServiceDeskIntegrationAPIService
 	id string
 	jsonPatch *JsonPatch
 }
@@ -1260,7 +1269,7 @@ Update an existing ServiceDeskIntegration by ID with a PATCH request.
  @param id ID of the Service Desk integration to update
  @return ApiPatchServiceDeskIntegrationRequest
 */
-func (a *ServiceDeskIntegrationApiService) PatchServiceDeskIntegration(ctx context.Context, id string) ApiPatchServiceDeskIntegrationRequest {
+func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegration(ctx context.Context, id string) ApiPatchServiceDeskIntegrationRequest {
 	return ApiPatchServiceDeskIntegrationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1270,7 +1279,7 @@ func (a *ServiceDeskIntegrationApiService) PatchServiceDeskIntegration(ctx conte
 
 // Execute executes the request
 //  @return ServiceDeskIntegrationDto
-func (a *ServiceDeskIntegrationApiService) PatchServiceDeskIntegrationExecute(r ApiPatchServiceDeskIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
+func (a *ServiceDeskIntegrationAPIService) PatchServiceDeskIntegrationExecute(r ApiPatchServiceDeskIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -1278,7 +1287,7 @@ func (a *ServiceDeskIntegrationApiService) PatchServiceDeskIntegrationExecute(r 
 		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.PatchServiceDeskIntegration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.PatchServiceDeskIntegration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1322,9 +1331,9 @@ func (a *ServiceDeskIntegrationApiService) PatchServiceDeskIntegrationExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1416,7 +1425,7 @@ func (a *ServiceDeskIntegrationApiService) PatchServiceDeskIntegrationExecute(r 
 
 type ApiPutServiceDeskIntegrationRequest struct {
 	ctx context.Context
-	ApiService *ServiceDeskIntegrationApiService
+	ApiService *ServiceDeskIntegrationAPIService
 	id string
 	serviceDeskIntegrationDto *ServiceDeskIntegrationDto
 }
@@ -1440,7 +1449,7 @@ Update an existing Service Desk integration by ID with updated value in JSON for
  @param id ID of the Service Desk integration to update
  @return ApiPutServiceDeskIntegrationRequest
 */
-func (a *ServiceDeskIntegrationApiService) PutServiceDeskIntegration(ctx context.Context, id string) ApiPutServiceDeskIntegrationRequest {
+func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegration(ctx context.Context, id string) ApiPutServiceDeskIntegrationRequest {
 	return ApiPutServiceDeskIntegrationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1450,7 +1459,7 @@ func (a *ServiceDeskIntegrationApiService) PutServiceDeskIntegration(ctx context
 
 // Execute executes the request
 //  @return ServiceDeskIntegrationDto
-func (a *ServiceDeskIntegrationApiService) PutServiceDeskIntegrationExecute(r ApiPutServiceDeskIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
+func (a *ServiceDeskIntegrationAPIService) PutServiceDeskIntegrationExecute(r ApiPutServiceDeskIntegrationRequest) (*ServiceDeskIntegrationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1458,7 +1467,7 @@ func (a *ServiceDeskIntegrationApiService) PutServiceDeskIntegrationExecute(r Ap
 		localVarReturnValue  *ServiceDeskIntegrationDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.PutServiceDeskIntegration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.PutServiceDeskIntegration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1502,9 +1511,9 @@ func (a *ServiceDeskIntegrationApiService) PutServiceDeskIntegrationExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1596,7 +1605,7 @@ func (a *ServiceDeskIntegrationApiService) PutServiceDeskIntegrationExecute(r Ap
 
 type ApiUpdateStatusCheckDetailsRequest struct {
 	ctx context.Context
-	ApiService *ServiceDeskIntegrationApiService
+	ApiService *ServiceDeskIntegrationAPIService
 	queuedCheckConfigDetails *QueuedCheckConfigDetails
 }
 
@@ -1618,7 +1627,7 @@ Update the time check configuration of queued SDIM tickets.  A token with Org Ad
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateStatusCheckDetailsRequest
 */
-func (a *ServiceDeskIntegrationApiService) UpdateStatusCheckDetails(ctx context.Context) ApiUpdateStatusCheckDetailsRequest {
+func (a *ServiceDeskIntegrationAPIService) UpdateStatusCheckDetails(ctx context.Context) ApiUpdateStatusCheckDetailsRequest {
 	return ApiUpdateStatusCheckDetailsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1627,7 +1636,7 @@ func (a *ServiceDeskIntegrationApiService) UpdateStatusCheckDetails(ctx context.
 
 // Execute executes the request
 //  @return QueuedCheckConfigDetails
-func (a *ServiceDeskIntegrationApiService) UpdateStatusCheckDetailsExecute(r ApiUpdateStatusCheckDetailsRequest) (*QueuedCheckConfigDetails, *http.Response, error) {
+func (a *ServiceDeskIntegrationAPIService) UpdateStatusCheckDetailsExecute(r ApiUpdateStatusCheckDetailsRequest) (*QueuedCheckConfigDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1635,7 +1644,7 @@ func (a *ServiceDeskIntegrationApiService) UpdateStatusCheckDetailsExecute(r Api
 		localVarReturnValue  *QueuedCheckConfigDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationApiService.UpdateStatusCheckDetails")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceDeskIntegrationAPIService.UpdateStatusCheckDetails")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1678,9 +1687,9 @@ func (a *ServiceDeskIntegrationApiService) UpdateStatusCheckDetailsExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

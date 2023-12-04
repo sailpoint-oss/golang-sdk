@@ -391,8 +391,8 @@ func (o *SodPolicySchedule) UnmarshalJSON(bytes []byte) (err error) {
 	varSodPolicySchedule := _SodPolicySchedule{}
 
 	if err = json.Unmarshal(bytes, &varSodPolicySchedule); err == nil {
-		*o = SodPolicySchedule(varSodPolicySchedule)
-	}
+	*o = SodPolicySchedule(varSodPolicySchedule)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the EntitlementBulkUpdateRequest type satisfies the MappedNullable interface at compile time
@@ -115,11 +116,33 @@ func (o EntitlementBulkUpdateRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *EntitlementBulkUpdateRequest) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"entitlementIds",
+		"jsonPatch",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varEntitlementBulkUpdateRequest := _EntitlementBulkUpdateRequest{}
 
 	if err = json.Unmarshal(bytes, &varEntitlementBulkUpdateRequest); err == nil {
-		*o = EntitlementBulkUpdateRequest(varEntitlementBulkUpdateRequest)
-	}
+	*o = EntitlementBulkUpdateRequest(varEntitlementBulkUpdateRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

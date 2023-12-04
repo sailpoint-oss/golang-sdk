@@ -146,8 +146,8 @@ func (o *ManagedClusterAttributes) UnmarshalJSON(bytes []byte) (err error) {
 	varManagedClusterAttributes := _ManagedClusterAttributes{}
 
 	if err = json.Unmarshal(bytes, &varManagedClusterAttributes); err == nil {
-		*o = ManagedClusterAttributes(varManagedClusterAttributes)
-	}
+	*o = ManagedClusterAttributes(varManagedClusterAttributes)
+}
 
 	additionalProperties := make(map[string]interface{})
 

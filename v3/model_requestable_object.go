@@ -461,8 +461,8 @@ func (o *RequestableObject) UnmarshalJSON(bytes []byte) (err error) {
 	varRequestableObject := _RequestableObject{}
 
 	if err = json.Unmarshal(bytes, &varRequestableObject); err == nil {
-		*o = RequestableObject(varRequestableObject)
-	}
+	*o = RequestableObject(varRequestableObject)
+}
 
 	additionalProperties := make(map[string]interface{})
 

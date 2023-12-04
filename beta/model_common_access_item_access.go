@@ -284,8 +284,8 @@ func (o *CommonAccessItemAccess) UnmarshalJSON(bytes []byte) (err error) {
 	varCommonAccessItemAccess := _CommonAccessItemAccess{}
 
 	if err = json.Unmarshal(bytes, &varCommonAccessItemAccess); err == nil {
-		*o = CommonAccessItemAccess(varCommonAccessItemAccess)
-	}
+	*o = CommonAccessItemAccess(varCommonAccessItemAccess)
+}
 
 	additionalProperties := make(map[string]interface{})
 

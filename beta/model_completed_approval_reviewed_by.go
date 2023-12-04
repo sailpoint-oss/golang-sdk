@@ -174,8 +174,8 @@ func (o *CompletedApprovalReviewedBy) UnmarshalJSON(bytes []byte) (err error) {
 	varCompletedApprovalReviewedBy := _CompletedApprovalReviewedBy{}
 
 	if err = json.Unmarshal(bytes, &varCompletedApprovalReviewedBy); err == nil {
-		*o = CompletedApprovalReviewedBy(varCompletedApprovalReviewedBy)
-	}
+	*o = CompletedApprovalReviewedBy(varCompletedApprovalReviewedBy)
+}
 
 	additionalProperties := make(map[string]interface{})
 

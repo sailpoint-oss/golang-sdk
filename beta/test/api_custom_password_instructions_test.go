@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing CustomPasswordInstructionsApiService
+Testing CustomPasswordInstructionsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_CustomPasswordInstructionsApiService(t *testing.T) {
+func Test_beta_CustomPasswordInstructionsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test CustomPasswordInstructionsApiService CreateCustomPasswordInstructions", func(t *testing.T) {
+	t.Run("Test CustomPasswordInstructionsAPIService CreateCustomPasswordInstructions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.CustomPasswordInstructionsApi.CreateCustomPasswordInstructions(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,26 +34,26 @@ func Test_beta_CustomPasswordInstructionsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomPasswordInstructionsApiService DeleteCustomPasswordInstructions", func(t *testing.T) {
+	t.Run("Test CustomPasswordInstructionsAPIService DeleteCustomPasswordInstructions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var pageId string
 
-		httpRes, err := apiClient.BETA.CustomPasswordInstructionsApi.DeleteCustomPasswordInstructions(context.Background(), pageId).Execute()
+		httpRes, err := apiClient.BETA.CustomPasswordInstructionsAPI.DeleteCustomPasswordInstructions(context.Background(), pageId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test CustomPasswordInstructionsApiService GetCustomPasswordInstructions", func(t *testing.T) {
+	t.Run("Test CustomPasswordInstructionsAPIService GetCustomPasswordInstructions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var pageId string
 
-		resp, httpRes, err := apiClient.BETA.CustomPasswordInstructionsApi.GetCustomPasswordInstructions(context.Background(), pageId).Execute()
+		resp, httpRes, err := apiClient.BETA.CustomPasswordInstructionsAPI.GetCustomPasswordInstructions(context.Background(), pageId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

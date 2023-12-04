@@ -172,8 +172,8 @@ func (o *UpdateUserPermissionsRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varUpdateUserPermissionsRequest := _UpdateUserPermissionsRequest{}
 
 	if err = json.Unmarshal(bytes, &varUpdateUserPermissionsRequest); err == nil {
-		*o = UpdateUserPermissionsRequest(varUpdateUserPermissionsRequest)
-	}
+	*o = UpdateUserPermissionsRequest(varUpdateUserPermissionsRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

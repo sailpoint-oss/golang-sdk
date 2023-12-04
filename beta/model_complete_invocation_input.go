@@ -136,8 +136,8 @@ func (o *CompleteInvocationInput) UnmarshalJSON(bytes []byte) (err error) {
 	varCompleteInvocationInput := _CompleteInvocationInput{}
 
 	if err = json.Unmarshal(bytes, &varCompleteInvocationInput); err == nil {
-		*o = CompleteInvocationInput(varCompleteInvocationInput)
-	}
+	*o = CompleteInvocationInput(varCompleteInvocationInput)
+}
 
 	additionalProperties := make(map[string]interface{})
 

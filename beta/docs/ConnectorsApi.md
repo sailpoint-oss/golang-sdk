@@ -1,10 +1,10 @@
-# \ConnectorsApi
+# \ConnectorsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetConnectorList**](ConnectorsApi.md#GetConnectorList) | **Get** /connectors | Gets connector list
+[**GetConnectorList**](ConnectorsAPI.md#GetConnectorList) | **Get** /connectors | Gets connector list
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConnectorsApi.GetConnectorList(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Locale(locale).Execute()
+    resp, r, err := apiClient.ConnectorsAPI.GetConnectorList(context.Background()).Filters(filters).Limit(limit).Offset(offset).Count(count).Locale(locale).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsApi.GetConnectorList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetConnectorList`: []V3ConnectorDto
-    fmt.Fprintf(os.Stdout, "Response from `ConnectorsApi.GetConnectorList`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.GetConnectorList`: %v\n", resp)
 }
 ```
 

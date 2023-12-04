@@ -210,8 +210,8 @@ func (o *Owner) UnmarshalJSON(bytes []byte) (err error) {
 	varOwner := _Owner{}
 
 	if err = json.Unmarshal(bytes, &varOwner); err == nil {
-		*o = Owner(varOwner)
-	}
+	*o = Owner(varOwner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -13,18 +13,18 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// IAIAccessRequestRecommendationsApiService IAIAccessRequestRecommendationsApi service
-type IAIAccessRequestRecommendationsApiService service
+// IAIAccessRequestRecommendationsAPIService IAIAccessRequestRecommendationsAPI service
+type IAIAccessRequestRecommendationsAPIService service
 
 type ApiAddAccessRequestRecommendationsIgnoredItemRequest struct {
 	ctx context.Context
-	ApiService *IAIAccessRequestRecommendationsApiService
+	ApiService *IAIAccessRequestRecommendationsAPIService
 	accessRequestRecommendationActionItemDto *AccessRequestRecommendationActionItemDto
 }
 
@@ -46,7 +46,7 @@ This API ignores a recommended access request item. Once an item is ignored, it 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAddAccessRequestRecommendationsIgnoredItemRequest
 */
-func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendationsIgnoredItem(ctx context.Context) ApiAddAccessRequestRecommendationsIgnoredItemRequest {
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsIgnoredItem(ctx context.Context) ApiAddAccessRequestRecommendationsIgnoredItemRequest {
 	return ApiAddAccessRequestRecommendationsIgnoredItemRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 
 // Execute executes the request
 //  @return AccessRequestRecommendationActionItemResponseDto
-func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendationsIgnoredItemExecute(r ApiAddAccessRequestRecommendationsIgnoredItemRequest) (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsIgnoredItemExecute(r ApiAddAccessRequestRecommendationsIgnoredItemRequest) (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 		localVarReturnValue  *AccessRequestRecommendationActionItemResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsApiService.AddAccessRequestRecommendationsIgnoredItem")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.AddAccessRequestRecommendationsIgnoredItem")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -189,7 +189,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 
 type ApiAddAccessRequestRecommendationsRequestedItemRequest struct {
 	ctx context.Context
-	ApiService *IAIAccessRequestRecommendationsApiService
+	ApiService *IAIAccessRequestRecommendationsAPIService
 	accessRequestRecommendationActionItemDto *AccessRequestRecommendationActionItemDto
 }
 
@@ -211,7 +211,7 @@ This API consumes a notification that a recommended access request item was requ
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAddAccessRequestRecommendationsRequestedItemRequest
 */
-func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendationsRequestedItem(ctx context.Context) ApiAddAccessRequestRecommendationsRequestedItemRequest {
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsRequestedItem(ctx context.Context) ApiAddAccessRequestRecommendationsRequestedItemRequest {
 	return ApiAddAccessRequestRecommendationsRequestedItemRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -220,7 +220,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 
 // Execute executes the request
 //  @return AccessRequestRecommendationActionItemResponseDto
-func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendationsRequestedItemExecute(r ApiAddAccessRequestRecommendationsRequestedItemRequest) (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsRequestedItemExecute(r ApiAddAccessRequestRecommendationsRequestedItemRequest) (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -228,7 +228,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 		localVarReturnValue  *AccessRequestRecommendationActionItemResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsApiService.AddAccessRequestRecommendationsRequestedItem")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.AddAccessRequestRecommendationsRequestedItem")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -271,9 +271,9 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -354,7 +354,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 
 type ApiAddAccessRequestRecommendationsViewedItemRequest struct {
 	ctx context.Context
-	ApiService *IAIAccessRequestRecommendationsApiService
+	ApiService *IAIAccessRequestRecommendationsAPIService
 	accessRequestRecommendationActionItemDto *AccessRequestRecommendationActionItemDto
 }
 
@@ -376,7 +376,7 @@ This API consumes a notification that a recommended access request item was view
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAddAccessRequestRecommendationsViewedItemRequest
 */
-func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendationsViewedItem(ctx context.Context) ApiAddAccessRequestRecommendationsViewedItemRequest {
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsViewedItem(ctx context.Context) ApiAddAccessRequestRecommendationsViewedItemRequest {
 	return ApiAddAccessRequestRecommendationsViewedItemRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -385,7 +385,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 
 // Execute executes the request
 //  @return AccessRequestRecommendationActionItemResponseDto
-func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendationsViewedItemExecute(r ApiAddAccessRequestRecommendationsViewedItemRequest) (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsViewedItemExecute(r ApiAddAccessRequestRecommendationsViewedItemRequest) (*AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -393,7 +393,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 		localVarReturnValue  *AccessRequestRecommendationActionItemResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsApiService.AddAccessRequestRecommendationsViewedItem")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.AddAccessRequestRecommendationsViewedItem")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -436,9 +436,9 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -519,7 +519,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 
 type ApiAddAccessRequestRecommendationsViewedItemsRequest struct {
 	ctx context.Context
-	ApiService *IAIAccessRequestRecommendationsApiService
+	ApiService *IAIAccessRequestRecommendationsAPIService
 	accessRequestRecommendationActionItemDto *[]AccessRequestRecommendationActionItemDto
 }
 
@@ -541,7 +541,7 @@ This API consumes a notification that a set of recommended access request item w
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAddAccessRequestRecommendationsViewedItemsRequest
 */
-func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendationsViewedItems(ctx context.Context) ApiAddAccessRequestRecommendationsViewedItemsRequest {
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsViewedItems(ctx context.Context) ApiAddAccessRequestRecommendationsViewedItemsRequest {
 	return ApiAddAccessRequestRecommendationsViewedItemsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -550,7 +550,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 
 // Execute executes the request
 //  @return []AccessRequestRecommendationActionItemResponseDto
-func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendationsViewedItemsExecute(r ApiAddAccessRequestRecommendationsViewedItemsRequest) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
+func (a *IAIAccessRequestRecommendationsAPIService) AddAccessRequestRecommendationsViewedItemsExecute(r ApiAddAccessRequestRecommendationsViewedItemsRequest) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -558,7 +558,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 		localVarReturnValue  []AccessRequestRecommendationActionItemResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsApiService.AddAccessRequestRecommendationsViewedItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.AddAccessRequestRecommendationsViewedItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -601,9 +601,9 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -684,7 +684,7 @@ func (a *IAIAccessRequestRecommendationsApiService) AddAccessRequestRecommendati
 
 type ApiGetAccessRequestRecommendationsRequest struct {
 	ctx context.Context
-	ApiService *IAIAccessRequestRecommendationsApiService
+	ApiService *IAIAccessRequestRecommendationsAPIService
 	identityId *string
 	limit *int32
 	offset *int32
@@ -748,7 +748,7 @@ This API returns the access request recommendations for the specified identity. 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessRequestRecommendationsRequest
 */
-func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendations(ctx context.Context) ApiGetAccessRequestRecommendationsRequest {
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendations(ctx context.Context) ApiGetAccessRequestRecommendationsRequest {
 	return ApiGetAccessRequestRecommendationsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -757,7 +757,7 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 
 // Execute executes the request
 //  @return []AccessRequestRecommendationItemDetail
-func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendationsExecute(r ApiGetAccessRequestRecommendationsRequest) ([]AccessRequestRecommendationItemDetail, *http.Response, error) {
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsExecute(r ApiGetAccessRequestRecommendationsRequest) ([]AccessRequestRecommendationItemDetail, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -765,7 +765,7 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 		localVarReturnValue  []AccessRequestRecommendationItemDetail
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsApiService.GetAccessRequestRecommendations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.GetAccessRequestRecommendations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -778,18 +778,33 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 
 	if r.identityId != nil {
 		parameterAddToQuery(localVarQueryParams, "identity-id", r.identityId, "")
+	} else {
+		var defaultValue string = "me"
+		r.identityId = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 15
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.includeTranslationMessages != nil {
 		parameterAddToQuery(localVarQueryParams, "include-translation-messages", r.includeTranslationMessages, "")
+	} else {
+		var defaultValue bool = false
+		r.includeTranslationMessages = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -824,9 +839,9 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -907,7 +922,7 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 
 type ApiGetAccessRequestRecommendationsIgnoredItemsRequest struct {
 	ctx context.Context
-	ApiService *IAIAccessRequestRecommendationsApiService
+	ApiService *IAIAccessRequestRecommendationsAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -957,7 +972,7 @@ This API returns the list of ignored access request recommendations.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessRequestRecommendationsIgnoredItemsRequest
 */
-func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendationsIgnoredItems(ctx context.Context) ApiGetAccessRequestRecommendationsIgnoredItemsRequest {
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsIgnoredItems(ctx context.Context) ApiGetAccessRequestRecommendationsIgnoredItemsRequest {
 	return ApiGetAccessRequestRecommendationsIgnoredItemsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -966,7 +981,7 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 
 // Execute executes the request
 //  @return []AccessRequestRecommendationActionItemResponseDto
-func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendationsIgnoredItemsExecute(r ApiGetAccessRequestRecommendationsIgnoredItemsRequest) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsIgnoredItemsExecute(r ApiGetAccessRequestRecommendationsIgnoredItemsRequest) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -974,7 +989,7 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 		localVarReturnValue  []AccessRequestRecommendationActionItemResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsApiService.GetAccessRequestRecommendationsIgnoredItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.GetAccessRequestRecommendationsIgnoredItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -987,12 +1002,21 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1027,9 +1051,9 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1110,7 +1134,7 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 
 type ApiGetAccessRequestRecommendationsRequestedItemsRequest struct {
 	ctx context.Context
-	ApiService *IAIAccessRequestRecommendationsApiService
+	ApiService *IAIAccessRequestRecommendationsAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -1160,7 +1184,7 @@ This API returns a list of requested access request recommendations.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessRequestRecommendationsRequestedItemsRequest
 */
-func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendationsRequestedItems(ctx context.Context) ApiGetAccessRequestRecommendationsRequestedItemsRequest {
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsRequestedItems(ctx context.Context) ApiGetAccessRequestRecommendationsRequestedItemsRequest {
 	return ApiGetAccessRequestRecommendationsRequestedItemsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1169,7 +1193,7 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 
 // Execute executes the request
 //  @return []AccessRequestRecommendationActionItemResponseDto
-func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendationsRequestedItemsExecute(r ApiGetAccessRequestRecommendationsRequestedItemsRequest) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsRequestedItemsExecute(r ApiGetAccessRequestRecommendationsRequestedItemsRequest) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1177,7 +1201,7 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 		localVarReturnValue  []AccessRequestRecommendationActionItemResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsApiService.GetAccessRequestRecommendationsRequestedItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.GetAccessRequestRecommendationsRequestedItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1190,12 +1214,21 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1230,9 +1263,9 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1313,7 +1346,7 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 
 type ApiGetAccessRequestRecommendationsViewedItemsRequest struct {
 	ctx context.Context
-	ApiService *IAIAccessRequestRecommendationsApiService
+	ApiService *IAIAccessRequestRecommendationsAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -1363,7 +1396,7 @@ This API returns the list of viewed access request recommendations.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAccessRequestRecommendationsViewedItemsRequest
 */
-func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendationsViewedItems(ctx context.Context) ApiGetAccessRequestRecommendationsViewedItemsRequest {
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsViewedItems(ctx context.Context) ApiGetAccessRequestRecommendationsViewedItemsRequest {
 	return ApiGetAccessRequestRecommendationsViewedItemsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1372,7 +1405,7 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 
 // Execute executes the request
 //  @return []AccessRequestRecommendationActionItemResponseDto
-func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendationsViewedItemsExecute(r ApiGetAccessRequestRecommendationsViewedItemsRequest) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
+func (a *IAIAccessRequestRecommendationsAPIService) GetAccessRequestRecommendationsViewedItemsExecute(r ApiGetAccessRequestRecommendationsViewedItemsRequest) ([]AccessRequestRecommendationActionItemResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1380,7 +1413,7 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 		localVarReturnValue  []AccessRequestRecommendationActionItemResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsApiService.GetAccessRequestRecommendationsViewedItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIAccessRequestRecommendationsAPIService.GetAccessRequestRecommendationsViewedItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1393,12 +1426,21 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1433,9 +1475,9 @@ func (a *IAIAccessRequestRecommendationsApiService) GetAccessRequestRecommendati
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

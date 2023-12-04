@@ -1,12 +1,12 @@
-# \IAICommonAccessApi
+# \IAICommonAccessAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCommonAccess**](IAICommonAccessApi.md#CreateCommonAccess) | **Post** /common-access | Create common access items
-[**GetCommonAccess**](IAICommonAccessApi.md#GetCommonAccess) | **Get** /common-access | Get a paginated list of common access
-[**UpdateCommonAccessStatusInBulk**](IAICommonAccessApi.md#UpdateCommonAccessStatusInBulk) | **Post** /common-access/update-status | Bulk update common access status
+[**CreateCommonAccess**](IAICommonAccessAPI.md#CreateCommonAccess) | **Post** /common-access | Create common access items
+[**GetCommonAccess**](IAICommonAccessAPI.md#GetCommonAccess) | **Get** /common-access | Get a paginated list of common access
+[**UpdateCommonAccessStatusInBulk**](IAICommonAccessAPI.md#UpdateCommonAccessStatusInBulk) | **Post** /common-access/update-status | Bulk update common access status
 
 
 
@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -35,13 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAICommonAccessApi.CreateCommonAccess(context.Background()).CommonAccessItemRequest(commonAccessItemRequest).Execute()
+    resp, r, err := apiClient.IAICommonAccessAPI.CreateCommonAccess(context.Background()).CommonAccessItemRequest(commonAccessItemRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessApi.CreateCommonAccess``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.CreateCommonAccess``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateCommonAccess`: CommonAccessItemResponse
-    fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessApi.CreateCommonAccess`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessAPI.CreateCommonAccess`: %v\n", resp)
 }
 ```
 
@@ -93,7 +93,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -105,13 +105,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAICommonAccessApi.GetCommonAccess(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.IAICommonAccessAPI.GetCommonAccess(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessApi.GetCommonAccess``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.GetCommonAccess``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCommonAccess`: []CommonAccessResponse
-    fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessApi.GetCommonAccess`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessAPI.GetCommonAccess`: %v\n", resp)
 }
 ```
 
@@ -167,7 +167,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -175,13 +175,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAICommonAccessApi.UpdateCommonAccessStatusInBulk(context.Background()).CommonAccessIDStatus(commonAccessIDStatus).Execute()
+    resp, r, err := apiClient.IAICommonAccessAPI.UpdateCommonAccessStatusInBulk(context.Background()).CommonAccessIDStatus(commonAccessIDStatus).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessApi.UpdateCommonAccessStatusInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAICommonAccessAPI.UpdateCommonAccessStatusInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateCommonAccessStatusInBulk`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessApi.UpdateCommonAccessStatusInBulk`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAICommonAccessAPI.UpdateCommonAccessStatusInBulk`: %v\n", resp)
 }
 ```
 

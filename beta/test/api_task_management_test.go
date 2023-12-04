@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing TaskManagementApiService
+Testing TaskManagementAPIService
 
 */
 
@@ -17,27 +17,27 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_TaskManagementApiService(t *testing.T) {
+func Test_beta_TaskManagementAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test TaskManagementApiService GetPendingTaskHeaders", func(t *testing.T) {
+	t.Run("Test TaskManagementAPIService GetPendingTaskHeaders", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BETA.TaskManagementApi.GetPendingTaskHeaders(context.Background()).Execute()
+		httpRes, err := apiClient.BETA.TaskManagementAPI.GetPendingTaskHeaders(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test TaskManagementApiService GetPendingTasks", func(t *testing.T) {
+	t.Run("Test TaskManagementAPIService GetPendingTasks", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.TaskManagementApi.GetPendingTasks(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.TaskManagementAPI.GetPendingTasks(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -45,13 +45,13 @@ func Test_beta_TaskManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TaskManagementApiService GetTaskStatus", func(t *testing.T) {
+	t.Run("Test TaskManagementAPIService GetTaskStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.TaskManagementApi.GetTaskStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.TaskManagementAPI.GetTaskStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -59,11 +59,11 @@ func Test_beta_TaskManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TaskManagementApiService GetTaskStatusList", func(t *testing.T) {
+	t.Run("Test TaskManagementAPIService GetTaskStatusList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.TaskManagementApi.GetTaskStatusList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.TaskManagementAPI.GetTaskStatusList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -71,13 +71,13 @@ func Test_beta_TaskManagementApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TaskManagementApiService UpdateTaskStatus", func(t *testing.T) {
+	t.Run("Test TaskManagementAPIService UpdateTaskStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.TaskManagementApi.UpdateTaskStatus(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.TaskManagementAPI.UpdateTaskStatus(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

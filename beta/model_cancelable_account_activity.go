@@ -683,8 +683,8 @@ func (o *CancelableAccountActivity) UnmarshalJSON(bytes []byte) (err error) {
 	varCancelableAccountActivity := _CancelableAccountActivity{}
 
 	if err = json.Unmarshal(bytes, &varCancelableAccountActivity); err == nil {
-		*o = CancelableAccountActivity(varCancelableAccountActivity)
-	}
+	*o = CancelableAccountActivity(varCancelableAccountActivity)
+}
 
 	additionalProperties := make(map[string]interface{})
 

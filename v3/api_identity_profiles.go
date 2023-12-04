@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// IdentityProfilesApiService IdentityProfilesApi service
-type IdentityProfilesApiService service
+// IdentityProfilesAPIService IdentityProfilesAPI service
+type IdentityProfilesAPIService service
 
 type ApiDeleteIdentityProfileRequest struct {
 	ctx context.Context
-	ApiService *IdentityProfilesApiService
+	ApiService *IdentityProfilesAPIService
 	identityProfileId string
 }
 
@@ -48,7 +48,7 @@ The following rights are required to access this endpoint: idn:identity-profile:
  @param identityProfileId The Identity Profile ID.
  @return ApiDeleteIdentityProfileRequest
 */
-func (a *IdentityProfilesApiService) DeleteIdentityProfile(ctx context.Context, identityProfileId string) ApiDeleteIdentityProfileRequest {
+func (a *IdentityProfilesAPIService) DeleteIdentityProfile(ctx context.Context, identityProfileId string) ApiDeleteIdentityProfileRequest {
 	return ApiDeleteIdentityProfileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -58,7 +58,7 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfile(ctx context.Context, 
 
 // Execute executes the request
 //  @return TaskResultSimplified
-func (a *IdentityProfilesApiService) DeleteIdentityProfileExecute(r ApiDeleteIdentityProfileRequest) (*TaskResultSimplified, *http.Response, error) {
+func (a *IdentityProfilesAPIService) DeleteIdentityProfileExecute(r ApiDeleteIdentityProfileRequest) (*TaskResultSimplified, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -66,7 +66,7 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfileExecute(r ApiDeleteIde
 		localVarReturnValue  *TaskResultSimplified
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.DeleteIdentityProfile")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesAPIService.DeleteIdentityProfile")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -105,9 +105,9 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfileExecute(r ApiDeleteIde
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -199,7 +199,7 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfileExecute(r ApiDeleteIde
 
 type ApiDeleteIdentityProfilesRequest struct {
 	ctx context.Context
-	ApiService *IdentityProfilesApiService
+	ApiService *IdentityProfilesAPIService
 	requestBody *[]string
 }
 
@@ -227,7 +227,7 @@ The following rights are required to access this endpoint: idn:identity-profile:
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteIdentityProfilesRequest
 */
-func (a *IdentityProfilesApiService) DeleteIdentityProfiles(ctx context.Context) ApiDeleteIdentityProfilesRequest {
+func (a *IdentityProfilesAPIService) DeleteIdentityProfiles(ctx context.Context) ApiDeleteIdentityProfilesRequest {
 	return ApiDeleteIdentityProfilesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -236,7 +236,7 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfiles(ctx context.Context)
 
 // Execute executes the request
 //  @return TaskResultSimplified
-func (a *IdentityProfilesApiService) DeleteIdentityProfilesExecute(r ApiDeleteIdentityProfilesRequest) (*TaskResultSimplified, *http.Response, error) {
+func (a *IdentityProfilesAPIService) DeleteIdentityProfilesExecute(r ApiDeleteIdentityProfilesRequest) (*TaskResultSimplified, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -244,7 +244,7 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfilesExecute(r ApiDeleteId
 		localVarReturnValue  *TaskResultSimplified
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.DeleteIdentityProfiles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesAPIService.DeleteIdentityProfiles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -287,9 +287,9 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfilesExecute(r ApiDeleteId
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -370,7 +370,7 @@ func (a *IdentityProfilesApiService) DeleteIdentityProfilesExecute(r ApiDeleteId
 
 type ApiExportIdentityProfilesRequest struct {
 	ctx context.Context
-	ApiService *IdentityProfilesApiService
+	ApiService *IdentityProfilesAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -420,7 +420,7 @@ This exports existing identity profiles in the format specified by the sp-config
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiExportIdentityProfilesRequest
 */
-func (a *IdentityProfilesApiService) ExportIdentityProfiles(ctx context.Context) ApiExportIdentityProfilesRequest {
+func (a *IdentityProfilesAPIService) ExportIdentityProfiles(ctx context.Context) ApiExportIdentityProfilesRequest {
 	return ApiExportIdentityProfilesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -429,7 +429,7 @@ func (a *IdentityProfilesApiService) ExportIdentityProfiles(ctx context.Context)
 
 // Execute executes the request
 //  @return []IdentityProfileExportedObject
-func (a *IdentityProfilesApiService) ExportIdentityProfilesExecute(r ApiExportIdentityProfilesRequest) ([]IdentityProfileExportedObject, *http.Response, error) {
+func (a *IdentityProfilesAPIService) ExportIdentityProfilesExecute(r ApiExportIdentityProfilesRequest) ([]IdentityProfileExportedObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -437,7 +437,7 @@ func (a *IdentityProfilesApiService) ExportIdentityProfilesExecute(r ApiExportId
 		localVarReturnValue  []IdentityProfileExportedObject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.ExportIdentityProfiles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesAPIService.ExportIdentityProfiles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -450,12 +450,21 @@ func (a *IdentityProfilesApiService) ExportIdentityProfilesExecute(r ApiExportId
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -490,9 +499,9 @@ func (a *IdentityProfilesApiService) ExportIdentityProfilesExecute(r ApiExportId
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -573,7 +582,7 @@ func (a *IdentityProfilesApiService) ExportIdentityProfilesExecute(r ApiExportId
 
 type ApiGetDefaultIdentityAttributeConfigRequest struct {
 	ctx context.Context
-	ApiService *IdentityProfilesApiService
+	ApiService *IdentityProfilesAPIService
 	identityProfileId string
 }
 
@@ -591,7 +600,7 @@ A token with ORG_ADMIN authority is required to call this API to get the default
  @param identityProfileId The Identity Profile ID.
  @return ApiGetDefaultIdentityAttributeConfigRequest
 */
-func (a *IdentityProfilesApiService) GetDefaultIdentityAttributeConfig(ctx context.Context, identityProfileId string) ApiGetDefaultIdentityAttributeConfigRequest {
+func (a *IdentityProfilesAPIService) GetDefaultIdentityAttributeConfig(ctx context.Context, identityProfileId string) ApiGetDefaultIdentityAttributeConfigRequest {
 	return ApiGetDefaultIdentityAttributeConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -601,7 +610,7 @@ func (a *IdentityProfilesApiService) GetDefaultIdentityAttributeConfig(ctx conte
 
 // Execute executes the request
 //  @return IdentityAttributeConfig
-func (a *IdentityProfilesApiService) GetDefaultIdentityAttributeConfigExecute(r ApiGetDefaultIdentityAttributeConfigRequest) (*IdentityAttributeConfig, *http.Response, error) {
+func (a *IdentityProfilesAPIService) GetDefaultIdentityAttributeConfigExecute(r ApiGetDefaultIdentityAttributeConfigRequest) (*IdentityAttributeConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -609,7 +618,7 @@ func (a *IdentityProfilesApiService) GetDefaultIdentityAttributeConfigExecute(r 
 		localVarReturnValue  *IdentityAttributeConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.GetDefaultIdentityAttributeConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesAPIService.GetDefaultIdentityAttributeConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -648,9 +657,9 @@ func (a *IdentityProfilesApiService) GetDefaultIdentityAttributeConfigExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -742,7 +751,7 @@ func (a *IdentityProfilesApiService) GetDefaultIdentityAttributeConfigExecute(r 
 
 type ApiGetIdentityProfileRequest struct {
 	ctx context.Context
-	ApiService *IdentityProfilesApiService
+	ApiService *IdentityProfilesAPIService
 	identityProfileId string
 }
 
@@ -760,7 +769,7 @@ A token with ORG_ADMIN or API authority is required to call this API.
  @param identityProfileId The Identity Profile ID.
  @return ApiGetIdentityProfileRequest
 */
-func (a *IdentityProfilesApiService) GetIdentityProfile(ctx context.Context, identityProfileId string) ApiGetIdentityProfileRequest {
+func (a *IdentityProfilesAPIService) GetIdentityProfile(ctx context.Context, identityProfileId string) ApiGetIdentityProfileRequest {
 	return ApiGetIdentityProfileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -770,7 +779,7 @@ func (a *IdentityProfilesApiService) GetIdentityProfile(ctx context.Context, ide
 
 // Execute executes the request
 //  @return IdentityProfile
-func (a *IdentityProfilesApiService) GetIdentityProfileExecute(r ApiGetIdentityProfileRequest) (*IdentityProfile, *http.Response, error) {
+func (a *IdentityProfilesAPIService) GetIdentityProfileExecute(r ApiGetIdentityProfileRequest) (*IdentityProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -778,7 +787,7 @@ func (a *IdentityProfilesApiService) GetIdentityProfileExecute(r ApiGetIdentityP
 		localVarReturnValue  *IdentityProfile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.GetIdentityProfile")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesAPIService.GetIdentityProfile")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -817,9 +826,9 @@ func (a *IdentityProfilesApiService) GetIdentityProfileExecute(r ApiGetIdentityP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -911,7 +920,7 @@ func (a *IdentityProfilesApiService) GetIdentityProfileExecute(r ApiGetIdentityP
 
 type ApiImportIdentityProfilesRequest struct {
 	ctx context.Context
-	ApiService *IdentityProfilesApiService
+	ApiService *IdentityProfilesAPIService
 	identityProfileExportedObject *[]IdentityProfileExportedObject
 }
 
@@ -933,7 +942,7 @@ This imports previously exported identity profiles.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiImportIdentityProfilesRequest
 */
-func (a *IdentityProfilesApiService) ImportIdentityProfiles(ctx context.Context) ApiImportIdentityProfilesRequest {
+func (a *IdentityProfilesAPIService) ImportIdentityProfiles(ctx context.Context) ApiImportIdentityProfilesRequest {
 	return ApiImportIdentityProfilesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -942,7 +951,7 @@ func (a *IdentityProfilesApiService) ImportIdentityProfiles(ctx context.Context)
 
 // Execute executes the request
 //  @return ObjectImportResult
-func (a *IdentityProfilesApiService) ImportIdentityProfilesExecute(r ApiImportIdentityProfilesRequest) (*ObjectImportResult, *http.Response, error) {
+func (a *IdentityProfilesAPIService) ImportIdentityProfilesExecute(r ApiImportIdentityProfilesRequest) (*ObjectImportResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -950,7 +959,7 @@ func (a *IdentityProfilesApiService) ImportIdentityProfilesExecute(r ApiImportId
 		localVarReturnValue  *ObjectImportResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.ImportIdentityProfiles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesAPIService.ImportIdentityProfiles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -993,9 +1002,9 @@ func (a *IdentityProfilesApiService) ImportIdentityProfilesExecute(r ApiImportId
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1076,7 +1085,7 @@ func (a *IdentityProfilesApiService) ImportIdentityProfilesExecute(r ApiImportId
 
 type ApiListIdentityProfilesRequest struct {
 	ctx context.Context
-	ApiService *IdentityProfilesApiService
+	ApiService *IdentityProfilesAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -1127,7 +1136,7 @@ A token with ORG_ADMIN or API authority is required to call this API to get a li
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListIdentityProfilesRequest
 */
-func (a *IdentityProfilesApiService) ListIdentityProfiles(ctx context.Context) ApiListIdentityProfilesRequest {
+func (a *IdentityProfilesAPIService) ListIdentityProfiles(ctx context.Context) ApiListIdentityProfilesRequest {
 	return ApiListIdentityProfilesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1136,7 +1145,7 @@ func (a *IdentityProfilesApiService) ListIdentityProfiles(ctx context.Context) A
 
 // Execute executes the request
 //  @return []IdentityProfile
-func (a *IdentityProfilesApiService) ListIdentityProfilesExecute(r ApiListIdentityProfilesRequest) ([]IdentityProfile, *http.Response, error) {
+func (a *IdentityProfilesAPIService) ListIdentityProfilesExecute(r ApiListIdentityProfilesRequest) ([]IdentityProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1144,7 +1153,7 @@ func (a *IdentityProfilesApiService) ListIdentityProfilesExecute(r ApiListIdenti
 		localVarReturnValue  []IdentityProfile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.ListIdentityProfiles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesAPIService.ListIdentityProfiles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1157,12 +1166,21 @@ func (a *IdentityProfilesApiService) ListIdentityProfilesExecute(r ApiListIdenti
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1197,9 +1215,9 @@ func (a *IdentityProfilesApiService) ListIdentityProfilesExecute(r ApiListIdenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1280,7 +1298,7 @@ func (a *IdentityProfilesApiService) ListIdentityProfilesExecute(r ApiListIdenti
 
 type ApiSyncIdentityProfileRequest struct {
 	ctx context.Context
-	ApiService *IdentityProfilesApiService
+	ApiService *IdentityProfilesAPIService
 	identityProfileId string
 }
 
@@ -1299,7 +1317,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param identityProfileId The Identity Profile ID to be processed
  @return ApiSyncIdentityProfileRequest
 */
-func (a *IdentityProfilesApiService) SyncIdentityProfile(ctx context.Context, identityProfileId string) ApiSyncIdentityProfileRequest {
+func (a *IdentityProfilesAPIService) SyncIdentityProfile(ctx context.Context, identityProfileId string) ApiSyncIdentityProfileRequest {
 	return ApiSyncIdentityProfileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1309,7 +1327,7 @@ func (a *IdentityProfilesApiService) SyncIdentityProfile(ctx context.Context, id
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *IdentityProfilesApiService) SyncIdentityProfileExecute(r ApiSyncIdentityProfileRequest) (map[string]interface{}, *http.Response, error) {
+func (a *IdentityProfilesAPIService) SyncIdentityProfileExecute(r ApiSyncIdentityProfileRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1317,7 +1335,7 @@ func (a *IdentityProfilesApiService) SyncIdentityProfileExecute(r ApiSyncIdentit
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesApiService.SyncIdentityProfile")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityProfilesAPIService.SyncIdentityProfile")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1356,9 +1374,9 @@ func (a *IdentityProfilesApiService) SyncIdentityProfileExecute(r ApiSyncIdentit
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

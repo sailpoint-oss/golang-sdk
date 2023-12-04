@@ -13,18 +13,18 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// SODViolationsApiService SODViolationsApi service
-type SODViolationsApiService service
+// SODViolationsAPIService SODViolationsAPI service
+type SODViolationsAPIService service
 
 type ApiStartPredictSodViolationsRequest struct {
 	ctx context.Context
-	ApiService *SODViolationsApiService
+	ApiService *SODViolationsAPIService
 	identityWithNewAccess *IdentityWithNewAccess
 }
 
@@ -49,7 +49,7 @@ A token with ORG_ADMIN or API authority is required to call this API.
 
 Deprecated
 */
-func (a *SODViolationsApiService) StartPredictSodViolations(ctx context.Context) ApiStartPredictSodViolationsRequest {
+func (a *SODViolationsAPIService) StartPredictSodViolations(ctx context.Context) ApiStartPredictSodViolationsRequest {
 	return ApiStartPredictSodViolationsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -59,7 +59,7 @@ func (a *SODViolationsApiService) StartPredictSodViolations(ctx context.Context)
 // Execute executes the request
 //  @return ViolationPrediction
 // Deprecated
-func (a *SODViolationsApiService) StartPredictSodViolationsExecute(r ApiStartPredictSodViolationsRequest) (*ViolationPrediction, *http.Response, error) {
+func (a *SODViolationsAPIService) StartPredictSodViolationsExecute(r ApiStartPredictSodViolationsRequest) (*ViolationPrediction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -67,7 +67,7 @@ func (a *SODViolationsApiService) StartPredictSodViolationsExecute(r ApiStartPre
 		localVarReturnValue  *ViolationPrediction
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODViolationsApiService.StartPredictSodViolations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODViolationsAPIService.StartPredictSodViolations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -110,9 +110,9 @@ func (a *SODViolationsApiService) StartPredictSodViolationsExecute(r ApiStartPre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

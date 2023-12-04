@@ -173,8 +173,8 @@ func (o *AccessRequestResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varAccessRequestResponse := _AccessRequestResponse{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestResponse); err == nil {
-		*o = AccessRequestResponse(varAccessRequestResponse)
-	}
+	*o = AccessRequestResponse(varAccessRequestResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -133,8 +133,8 @@ func (o *MfaConfigTestResponse) UnmarshalJSON(bytes []byte) (err error) {
 	varMfaConfigTestResponse := _MfaConfigTestResponse{}
 
 	if err = json.Unmarshal(bytes, &varMfaConfigTestResponse); err == nil {
-		*o = MfaConfigTestResponse(varMfaConfigTestResponse)
-	}
+	*o = MfaConfigTestResponse(varMfaConfigTestResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

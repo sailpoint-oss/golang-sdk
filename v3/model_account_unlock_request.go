@@ -174,8 +174,8 @@ func (o *AccountUnlockRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varAccountUnlockRequest := _AccountUnlockRequest{}
 
 	if err = json.Unmarshal(bytes, &varAccountUnlockRequest); err == nil {
-		*o = AccountUnlockRequest(varAccountUnlockRequest)
-	}
+	*o = AccountUnlockRequest(varAccountUnlockRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

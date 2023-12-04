@@ -13,6 +13,7 @@ package beta
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the SourceUpdated type satisfies the MappedNullable interface at compile time
@@ -228,11 +229,37 @@ func (o SourceUpdated) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *SourceUpdated) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"type",
+		"modified",
+		"connector",
+		"actor",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varSourceUpdated := _SourceUpdated{}
 
 	if err = json.Unmarshal(bytes, &varSourceUpdated); err == nil {
-		*o = SourceUpdated(varSourceUpdated)
-	}
+	*o = SourceUpdated(varSourceUpdated)
+}
 
 	additionalProperties := make(map[string]interface{})
 

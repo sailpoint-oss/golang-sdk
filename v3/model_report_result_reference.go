@@ -211,8 +211,8 @@ func (o *ReportResultReference) UnmarshalJSON(bytes []byte) (err error) {
 	varReportResultReference := _ReportResultReference{}
 
 	if err = json.Unmarshal(bytes, &varReportResultReference); err == nil {
-		*o = ReportResultReference(varReportResultReference)
-	}
+	*o = ReportResultReference(varReportResultReference)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -1,11 +1,11 @@
-# \SODViolationsApi
+# \SODViolationsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**StartPredictSodViolations**](SODViolationsApi.md#StartPredictSodViolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
-[**StartViolationCheck**](SODViolationsApi.md#StartViolationCheck) | **Post** /sod-violations/check | Check SOD violations
+[**StartPredictSodViolations**](SODViolationsAPI.md#StartPredictSodViolations) | **Post** /sod-violations/predict | Predict SOD violations for identity.
+[**StartViolationCheck**](SODViolationsAPI.md#StartViolationCheck) | **Post** /sod-violations/check | Check SOD violations
 
 
 
@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODViolationsApi.StartPredictSodViolations(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
+    resp, r, err := apiClient.SODViolationsAPI.StartPredictSodViolations(context.Background()).IdentityWithNewAccess(identityWithNewAccess).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsApi.StartPredictSodViolations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.StartPredictSodViolations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `StartPredictSodViolations`: ViolationPrediction
-    fmt.Fprintf(os.Stdout, "Response from `SODViolationsApi.StartPredictSodViolations`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SODViolationsAPI.StartPredictSodViolations`: %v\n", resp)
 }
 ```
 
@@ -92,21 +92,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
-    identityWithNewAccess1 := *openapiclient.NewIdentityWithNewAccess1("2c91809050db617d0150e0bf3215385e", []openapiclient.IdentityWithNewAccess1AccessRefsInner{*openapiclient.NewIdentityWithNewAccess1AccessRefsInner()}) // IdentityWithNewAccess1 | 
+    identityWithNewAccess1 := *openapiclient.NewIdentityWithNewAccess1("2c91809050db617d0150e0bf3215385e", []openapiclient.EntitlementRef{*openapiclient.NewEntitlementRef()}) // IdentityWithNewAccess1 | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SODViolationsApi.StartViolationCheck(context.Background()).IdentityWithNewAccess1(identityWithNewAccess1).Execute()
+    resp, r, err := apiClient.SODViolationsAPI.StartViolationCheck(context.Background()).IdentityWithNewAccess1(identityWithNewAccess1).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsApi.StartViolationCheck``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SODViolationsAPI.StartViolationCheck``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `StartViolationCheck`: SodViolationCheck
-    fmt.Fprintf(os.Stdout, "Response from `SODViolationsApi.StartViolationCheck`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SODViolationsAPI.StartViolationCheck`: %v\n", resp)
 }
 ```
 

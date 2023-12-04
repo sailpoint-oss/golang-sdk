@@ -351,8 +351,8 @@ func (o *PublicIdentity) UnmarshalJSON(bytes []byte) (err error) {
 	varPublicIdentity := _PublicIdentity{}
 
 	if err = json.Unmarshal(bytes, &varPublicIdentity); err == nil {
-		*o = PublicIdentity(varPublicIdentity)
-	}
+	*o = PublicIdentity(varPublicIdentity)
+}
 
 	additionalProperties := make(map[string]interface{})
 

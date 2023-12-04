@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing SegmentsApiService
+Testing SegmentsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_SegmentsApiService(t *testing.T) {
+func Test_beta_SegmentsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SegmentsApiService CreateSegment", func(t *testing.T) {
+	t.Run("Test SegmentsAPIService CreateSegment", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.SegmentsApi.CreateSegment(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SegmentsAPI.CreateSegment(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,38 +34,26 @@ func Test_beta_SegmentsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SegmentsApiService DeleteSegment", func(t *testing.T) {
+	t.Run("Test SegmentsAPIService DeleteSegment", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.BETA.SegmentsApi.DeleteSegment(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.SegmentsAPI.DeleteSegment(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test SegmentsApiService GetSegment", func(t *testing.T) {
+	t.Run("Test SegmentsAPIService GetSegment", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.SegmentsApi.GetSegment(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SegmentsApiService ListSegments", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.SegmentsApi.ListSegments(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.SegmentsAPI.GetSegment(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,13 +61,25 @@ func Test_beta_SegmentsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SegmentsApiService PatchSegment", func(t *testing.T) {
+	t.Run("Test SegmentsAPIService ListSegments", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.SegmentsAPI.ListSegments(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SegmentsAPIService PatchSegment", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.SegmentsApi.PatchSegment(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.SegmentsAPI.PatchSegment(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -248,8 +248,8 @@ func (o *PasswordChangeRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varPasswordChangeRequest := _PasswordChangeRequest{}
 
 	if err = json.Unmarshal(bytes, &varPasswordChangeRequest); err == nil {
-		*o = PasswordChangeRequest(varPasswordChangeRequest)
-	}
+	*o = PasswordChangeRequest(varPasswordChangeRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -6540,10 +6540,8 @@ paths:
               examples:
                 Slim Campaign:
                   $ref: '#/components/examples/SlimCampaigns'
-                  value: null
                 Full Campaign:
                   $ref: '#/components/examples/FullCampaigns'
-                  value: null
               schema:
                 items:
                   $ref: '#/components/schemas/getActiveCampaigns_200_response_inner'
@@ -6622,16 +6620,12 @@ paths:
             examples:
               Manager:
                 $ref: '#/components/examples/CreateCampaignManager'
-                value: null
               Search:
                 $ref: '#/components/examples/CreateCampaignSearch'
-                value: null
               Source Owner:
                 $ref: '#/components/examples/CreateCampaignSourceOwner'
-                value: null
               Role Composition:
                 $ref: '#/components/examples/CreateCampaignRoleComposition'
-                value: null
             schema:
               $ref: '#/components/schemas/Campaign'
         required: true
@@ -6642,16 +6636,12 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/FullCampaignManager'
-                  value: null
                 Search:
                   $ref: '#/components/examples/FullCampaignSearch'
-                  value: null
                 Source Owner:
                   $ref: '#/components/examples/FullCampaignSourceOwner'
-                  value: null
                 Role Composition:
                   $ref: '#/components/examples/FullCampaignRoleComposition'
-                  value: null
               schema:
                 $ref: '#/components/schemas/Campaign'
           description: Indicates that the campaign requested was successfully created
@@ -6841,16 +6831,12 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/SlimCampaignManager'
-                  value: null
                 Search:
                   $ref: '#/components/examples/SlimCampaignSearch'
-                  value: null
                 Source Owner:
                   $ref: '#/components/examples/SlimCampaignSourceOwner'
-                  value: null
                 RoleComposition:
                   $ref: '#/components/examples/SlimCampaignRoleComposition'
-                  value: null
               schema:
                 $ref: '#/components/schemas/slimcampaign'
           description: A campaign object
@@ -6982,16 +6968,12 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/SlimCampaignManager'
-                  value: null
                 Search:
                   $ref: '#/components/examples/SlimCampaignSearch'
-                  value: null
                 Source Owner:
                   $ref: '#/components/examples/SlimCampaignSourceOwner'
-                  value: null
                 RoleComposition:
                   $ref: '#/components/examples/SlimCampaignRoleComposition'
-                  value: null
               schema:
                 $ref: '#/components/schemas/slimcampaign'
           description: "Indicates the PATCH operation succeeded, and returns the campaign's\
@@ -8057,16 +8039,12 @@ paths:
             examples:
               Manager:
                 $ref: '#/components/examples/CreateCampaignTemplateManager'
-                value: null
               Search:
                 $ref: '#/components/examples/CreateCampaignTemplateSearch'
-                value: null
               Source Owner:
                 $ref: '#/components/examples/CreateCampaignTemplateSourceOwner'
-                value: null
               RoleComposition:
                 $ref: '#/components/examples/CreateCampaignTemplateRoleComposition'
-                value: null
             schema:
               $ref: '#/components/schemas/CampaignTemplate'
         required: true
@@ -8077,16 +8055,12 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/CampaignTemplateManager'
-                  value: null
                 Search:
                   $ref: '#/components/examples/CampaignTemplateSearch'
-                  value: null
                 Source Owner:
                   $ref: '#/components/examples/CampaignTemplateSourceOwner'
-                  value: null
                 RoleComposition:
                   $ref: '#/components/examples/CampaignTemplateRoleComposition'
-                  value: null
               schema:
                 $ref: '#/components/schemas/CampaignTemplate'
           description: Created successfully.
@@ -8268,16 +8242,12 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/CampaignTemplateManager'
-                  value: null
                 Search:
                   $ref: '#/components/examples/CampaignTemplateSearch'
-                  value: null
                 Source Owner:
                   $ref: '#/components/examples/CampaignTemplateSourceOwner'
-                  value: null
                 RoleComposition:
                   $ref: '#/components/examples/CampaignTemplateRoleComposition'
-                  value: null
               schema:
                 $ref: '#/components/schemas/CampaignTemplate'
           description: The data for the campaign matching the given ID.
@@ -8404,16 +8374,12 @@ paths:
               examples:
                 Manager:
                   $ref: '#/components/examples/CampaignTemplateManager'
-                  value: null
                 Search:
                   $ref: '#/components/examples/CampaignTemplateSearch'
-                  value: null
                 Source Owner:
                   $ref: '#/components/examples/CampaignTemplateSourceOwner'
-                  value: null
                 RoleComposition:
                   $ref: '#/components/examples/CampaignTemplateRoleComposition'
-                  value: null
               schema:
                 $ref: '#/components/schemas/CampaignTemplate'
           description: "Indicates the PATCH operation succeeded, and returns the template's\
@@ -26688,13 +26654,10 @@ paths:
               examples:
                 empty:
                   $ref: '#/components/examples/evaluateEmpty'
-                  value: null
                 longTrail:
                   $ref: '#/components/examples/evaluateLong'
-                  value: null
                 selfReview:
                   $ref: '#/components/examples/evaluateSelfReview'
-                  value: null
               schema:
                 items:
                   $ref: '#/components/schemas/EvaluateResponse'
@@ -51446,13 +51409,102 @@ components:
     fullcampaign:
       allOf:
       - $ref: '#/components/schemas/slimcampaign'
-      - $ref: '#/components/schemas/fullcampaign_allOf'
+      - properties:
+          modified:
+            description: Modified time of the campaign
+            example: 2020-03-03T22:20:12.674Z
+            format: date-time
+            readOnly: true
+            type: string
+          correlatedStatus:
+            description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
+              can be Uncorrelated. An Uncorrelated certification campaign only includes
+              Uncorrelated identities (An identity is uncorrelated if it has no accounts
+              on an authoritative source).
+            enum:
+            - CORRELATED
+            - UNCORRELATED
+            example: CORRELATED
+            type: object
+          filter:
+            $ref: '#/components/schemas/fullcampaign_allOf_filter'
+          sunsetCommentsRequired:
+            default: true
+            description: Determines if comments on sunset date changes are required.
+            example: true
+            type: boolean
+          sourceOwnerCampaignInfo:
+            $ref: '#/components/schemas/fullcampaign_allOf_sourceOwnerCampaignInfo'
+          searchCampaignInfo:
+            $ref: '#/components/schemas/fullcampaign_allOf_searchCampaignInfo'
+          roleCompositionCampaignInfo:
+            $ref: '#/components/schemas/fullcampaign_allOf_roleCompositionCampaignInfo'
+          sourcesWithOrphanEntitlements:
+            description: A list of sources in the campaign that contain \"orphan entitlements\"
+              (entitlements without a corresponding Managed Attribute). An empty list
+              indicates the campaign has no orphan entitlements. Null indicates there
+              may be unknown orphan entitlements in the campaign (the campaign was
+              created before this feature was implemented).
+            items:
+              $ref: '#/components/schemas/fullcampaign_allOf_sourcesWithOrphanEntitlements'
+            readOnly: true
+            type: array
+          mandatoryCommentRequirement:
+            description: "Determines whether comments are required for decisions during\
+              \ certification reviews. You can require comments for all decisions,\
+              \ revoke-only decisions, or no decisions. By default, comments are not\
+              \ required for decisions."
+            enum:
+            - ALL_DECISIONS
+            - REVOKE_ONLY_DECISIONS
+            - NO_DECISIONS
+            example: NO_DECISIONS
+            type: string
+        type: object
       title: Campaign
       type: object
     IdentityProfile:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
-      - $ref: '#/components/schemas/IdentityProfile_allOf'
+      - properties:
+          description:
+            description: The description of the Identity Profile.
+            example: My custom flat file profile
+            nullable: true
+            type: string
+          owner:
+            $ref: '#/components/schemas/IdentityProfile_allOf_owner'
+          priority:
+            description: The priority for an Identity Profile.
+            example: 10
+            format: int64
+            type: integer
+          authoritativeSource:
+            $ref: '#/components/schemas/IdentityProfile_allOf_authoritativeSource'
+          identityRefreshRequired:
+            default: false
+            description: True if a identity refresh is needed. Typically triggered
+              when a change on the source has been made
+            example: true
+            type: boolean
+          identityCount:
+            description: The number of identities that belong to the Identity Profile.
+            example: 8
+            format: int32
+            type: integer
+          identityAttributeConfig:
+            $ref: '#/components/schemas/IdentityAttributeConfig'
+          identityExceptionReportReference:
+            $ref: '#/components/schemas/IdentityExceptionReportReference'
+          hasTimeBasedAttr:
+            default: true
+            description: Indicates the value of requiresPeriodicRefresh attribute
+              for the Identity Profile.
+            example: true
+            type: boolean
+        required:
+        - authoritativeSource
+        type: object
     ManagedClient:
       description: Managed Client
       properties:
@@ -52010,12 +52062,49 @@ components:
     Section:
       allOf:
       - $ref: '#/components/schemas/FormItemDetails'
-      - $ref: '#/components/schemas/Section_allOf'
+      - properties:
+          label:
+            description: Label of the section
+            example: Section 1
+            type: string
+          formItems:
+            description: List of FormItems. FormItems can be SectionDetails and/or
+              FieldDetails
+            example: []
+            items:
+              type: object
+            type: array
+        type: object
       type: object
     Field:
       allOf:
       - $ref: '#/components/schemas/FormItemDetails'
-      - $ref: '#/components/schemas/Field_allOf'
+      - properties:
+          displayName:
+            description: Display name of the field
+            example: Field 1
+            type: string
+          displayType:
+            description: Type of the field to display
+            example: checkbox
+            type: string
+          required:
+            description: True if the field is required
+            type: boolean
+          allowedValuesList:
+            description: List of allowed values for the field
+            example:
+            - Val1Display: null
+              Val1Value: null
+            - Val2Display: null
+              Val2Value: null
+            items:
+              type: object
+            type: array
+          value:
+            description: Value of the field
+            type: object
+        type: object
       type: object
     AccountUsage:
       example:
@@ -53494,13 +53583,83 @@ components:
     SlimAccount:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
-      - $ref: '#/components/schemas/SlimAccount_allOf'
+      - properties:
+          uuid:
+            description: Unique ID from the owning source
+            format: uuid
+            nullable: true
+            type: string
+          nativeIdentity:
+            description: The native identifier of the account
+            example: brandin.gray
+            type: string
+          description:
+            description: The description for the account
+            example: Brandin Gray the CEO of Silly Inc.
+            nullable: true
+            type: string
+          disabled:
+            description: Whether the account is disabled
+            example: false
+            type: boolean
+          locked:
+            description: Whether the account is locked
+            example: false
+            type: boolean
+          manuallyCorrelated:
+            description: Whether the account was manually correlated
+            example: false
+            type: boolean
+          hasEntitlements:
+            description: Whether the account has any entitlements associated with
+              it
+            example: true
+            type: boolean
+          sourceId:
+            description: The ID of the source for which this account belongs
+            example: 2c9180835d2e5168015d32f890ca1581
+            type: string
+          sourceName:
+            description: The name of the source
+            example: Large Source
+            type: string
+          identityId:
+            description: The ID of the identity for which this account is correlated
+              to if not uncorrelated
+            example: 4b9163835d2e5168015d32f890ca5936
+            type: string
+          attributes:
+            additionalProperties: true
+            description: A map containing attributes associated with the account
+            example:
+              firstName: SailPoint
+              lastName: Support
+              displayName: SailPoint Support
+            type: object
+        type: object
       title: Slim Account
       type: object
     FullAccount:
       allOf:
       - $ref: '#/components/schemas/SlimAccount'
-      - $ref: '#/components/schemas/FullAccount_allOf'
+      - properties:
+          authoritative:
+            description: Whether this account belongs to an authoritative source
+            example: false
+            type: boolean
+          systemAccount:
+            description: Whether this account is for the IdentityNow source
+            example: false
+            type: boolean
+          uncorrelated:
+            description: True if this account is not correlated to an identity
+            example: false
+            type: boolean
+          features:
+            description: A string list containing the owning source's features
+            example: ENABLE
+            type: string
+        type: object
       title: Full Account
       type: object
     AccountAttributesCreate:
@@ -53533,7 +53692,86 @@ components:
     Account:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
-      - $ref: '#/components/schemas/Account_allOf'
+      - properties:
+          sourceId:
+            description: The unique ID of the source this account belongs to
+            example: 2c9180835d2e5168015d32f890ca1581
+            type: string
+          sourceName:
+            description: The display name of the source this account belongs to
+            example: Employees
+            type: string
+          identityId:
+            description: The unique ID of the identity this account is correlated
+              to
+            example: 2c9180835d2e5168015d32f890ca1581
+            type: string
+          attributes:
+            additionalProperties: true
+            description: The account attributes that are aggregated
+            example:
+              firstName: SailPoint
+              lastName: Support
+              displayName: SailPoint Support
+            type: object
+          authoritative:
+            description: Indicates if this account is from an authoritative source
+            example: false
+            type: boolean
+          description:
+            description: A description of the account
+            nullable: true
+            type: string
+            example: null
+          disabled:
+            description: Indicates if the account is currently disabled
+            example: false
+            type: boolean
+          locked:
+            description: Indicates if the account is currently locked
+            example: false
+            type: boolean
+          nativeIdentity:
+            description: The unique ID of the account generated by the source system
+            example: "552775"
+            type: string
+          systemAccount:
+            description: "If true, this is a user account within IdentityNow.  If\
+              \ false, this is an account from a source system."
+            example: false
+            type: boolean
+          uncorrelated:
+            description: Indicates if this account is not correlated to an identity
+            example: false
+            type: boolean
+          uuid:
+            description: The unique ID of the account as determined by the account
+              schema
+            example: slpt.support
+            nullable: true
+            type: string
+          manuallyCorrelated:
+            description: Indicates if the account has been manually correlated to
+              an identity
+            example: false
+            type: boolean
+          hasEntitlements:
+            description: Indicates if the account has entitlements
+            example: true
+            type: boolean
+        required:
+        - attributes
+        - authoritative
+        - disabled
+        - hasEntitlements
+        - locked
+        - manuallyCorrelated
+        - nativeIdentity
+        - sourceId
+        - sourceName
+        - systemAccount
+        - uncorrelated
+        type: object
     AccountAttributes:
       example:
         attributes:
@@ -53850,7 +54088,58 @@ components:
     Campaign:
       allOf:
       - $ref: '#/components/schemas/slimcampaign'
-      - $ref: '#/components/schemas/fullcampaign_allOf'
+      - properties:
+          modified:
+            description: Modified time of the campaign
+            example: 2020-03-03T22:20:12.674Z
+            format: date-time
+            readOnly: true
+            type: string
+          correlatedStatus:
+            description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
+              can be Uncorrelated. An Uncorrelated certification campaign only includes
+              Uncorrelated identities (An identity is uncorrelated if it has no accounts
+              on an authoritative source).
+            enum:
+            - CORRELATED
+            - UNCORRELATED
+            example: CORRELATED
+            type: object
+          filter:
+            $ref: '#/components/schemas/fullcampaign_allOf_filter'
+          sunsetCommentsRequired:
+            default: true
+            description: Determines if comments on sunset date changes are required.
+            example: true
+            type: boolean
+          sourceOwnerCampaignInfo:
+            $ref: '#/components/schemas/fullcampaign_allOf_sourceOwnerCampaignInfo'
+          searchCampaignInfo:
+            $ref: '#/components/schemas/fullcampaign_allOf_searchCampaignInfo'
+          roleCompositionCampaignInfo:
+            $ref: '#/components/schemas/fullcampaign_allOf_roleCompositionCampaignInfo'
+          sourcesWithOrphanEntitlements:
+            description: A list of sources in the campaign that contain \"orphan entitlements\"
+              (entitlements without a corresponding Managed Attribute). An empty list
+              indicates the campaign has no orphan entitlements. Null indicates there
+              may be unknown orphan entitlements in the campaign (the campaign was
+              created before this feature was implemented).
+            items:
+              $ref: '#/components/schemas/fullcampaign_allOf_sourcesWithOrphanEntitlements'
+            readOnly: true
+            type: array
+          mandatoryCommentRequirement:
+            description: "Determines whether comments are required for decisions during\
+              \ certification reviews. You can require comments for all decisions,\
+              \ revoke-only decisions, or no decisions. By default, comments are not\
+              \ required for decisions."
+            enum:
+            - ALL_DECISIONS
+            - REVOKE_ONLY_DECISIONS
+            - NO_DECISIONS
+            example: NO_DECISIONS
+            type: string
+        type: object
       title: Campaign
       type: object
     DeleteCampaignsRequest:
@@ -53992,7 +54281,15 @@ components:
     CampaignReport:
       allOf:
       - $ref: '#/components/schemas/ReportResultReference'
-      - $ref: '#/components/schemas/CampaignReport_allOf'
+      - properties:
+          reportType:
+            $ref: '#/components/schemas/ReportType'
+          lastRunAt:
+            description: The most recent date and time this report was run
+            format: date-time
+            readOnly: true
+            type: string
+        type: object
       example:
         type: REPORT_RESULT
         id: 2c91808568c529c60168cca6f90c1313
@@ -54333,7 +54630,25 @@ components:
     ConnectorRuleResponse:
       allOf:
       - $ref: '#/components/schemas/ConnectorRuleCreateRequest'
-      - $ref: '#/components/schemas/ConnectorRuleResponse_allOf'
+      - nullable: true
+        properties:
+          id:
+            description: the ID of the rule
+            example: 8113d48c0b914f17b4c6072d4dcb9dfe
+            type: string
+          created:
+            description: an ISO 8601 UTC timestamp when this rule was created
+            example: 021-07-22T15:59:23Z
+            type: string
+          modified:
+            description: an ISO 8601 UTC timestamp when this rule was last modified
+            example: 021-07-22T15:59:23Z
+            nullable: true
+            type: string
+        required:
+        - created
+        - id
+        type: object
       description: ConnectorRuleResponse
     ConnectorRuleCreateRequest:
       description: ConnectorRuleCreateRequest
@@ -54410,7 +54725,14 @@ components:
       type: object
     ConnectorRuleUpdateRequest:
       allOf:
-      - $ref: '#/components/schemas/ConnectorRuleUpdateRequest_allOf'
+      - properties:
+          id:
+            description: the ID of the rule to update
+            example: 8113d48c0b914f17b4c6072d4dcb9dfe
+            type: string
+        required:
+        - id
+        type: object
       - $ref: '#/components/schemas/ConnectorRuleCreateRequest'
       description: ConnectorRuleUpdateRequest
     SourceCode:
@@ -55243,7 +55565,61 @@ components:
     Identity:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
-      - $ref: '#/components/schemas/IdentityDto'
+      - properties:
+          alias:
+            description: Alternate unique identifier for the identity
+            example: walter.white
+            type: string
+          emailAddress:
+            description: The email address of the identity
+            example: sender@example.com
+            type: string
+          processingState:
+            description: The processing state of the identity
+            enum:
+            - ERROR
+            - OK
+            example: ERROR
+            nullable: true
+            type: string
+          identityStatus:
+            description: The identity's status in the system
+            enum:
+            - UNREGISTERED
+            - REGISTERED
+            - PENDING
+            - WARNING
+            - DISABLED
+            - ACTIVE
+            - DEACTIVATED
+            - TERMINATED
+            - ERROR
+            - LOCKED
+            example: LOCKED
+            type: string
+          managerRef:
+            $ref: '#/components/schemas/IdentityDto_managerRef'
+          isManager:
+            default: false
+            description: Whether this identity is a manager of another identity
+            example: true
+            type: boolean
+          lastRefresh:
+            description: The last time the identity was refreshed by the system
+            example: 2020-11-22T15:42:31.123Z
+            format: date-time
+            type: string
+          attributes:
+            description: A map with the identity attributes for the identity
+            example: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
+              :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
+              :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\"\
+              ,\"lastname\":\"white\"}"
+            type: object
+          lifecycleState:
+            $ref: '#/components/schemas/LifecycleStateDto'
+        title: IdentityDto
+        type: object
     IdentityAssociationDetails:
       properties:
         message:
@@ -55846,7 +56222,75 @@ components:
     NonEmployeeRequest:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeSourceLite'
-      - $ref: '#/components/schemas/NonEmployeeRequest_allOf'
+      - properties:
+          accountName:
+            description: Requested identity account name.
+            example: william.smith
+            type: string
+          firstName:
+            description: Non-Employee's first name.
+            example: William
+            type: string
+          lastName:
+            description: Non-Employee's last name.
+            example: Smith
+            type: string
+          email:
+            description: Non-Employee's email.
+            example: william.smith@example.com
+            type: string
+          phone:
+            description: Non-Employee's phone.
+            example: "5555555555"
+            type: string
+          manager:
+            description: The account ID of a valid identity to serve as this non-employee's
+              manager.
+            example: jane.doe
+            type: string
+          nonEmployeeSource:
+            $ref: '#/components/schemas/NonEmployeeSourceLite'
+          data:
+            additionalProperties:
+              type: string
+            description: Attribute blob/bag for a non-employee.
+            type: object
+          approvalItems:
+            description: List of approval item for the request
+            items:
+              $ref: '#/components/schemas/NonEmployeeApprovalItemBase'
+            type: array
+          approvalStatus:
+            $ref: '#/components/schemas/ApprovalStatus'
+          comment:
+            description: comment of requester
+            type: string
+          completionDate:
+            description: When the request was completely approved.
+            example: 2020-03-24T11:11:41.139-05:00
+            format: date-time
+            type: string
+          startDate:
+            description: Non-Employee employment start date.
+            example: 2020-03-24T00:00:00-05:00
+            format: date-time
+            type: string
+          endDate:
+            description: Non-Employee employment end date.
+            example: 2021-03-25T00:00:00-05:00
+            format: date-time
+            type: string
+          modified:
+            description: When the request was last modified.
+            example: 2020-03-24T11:11:41.139-05:00
+            format: date-time
+            type: string
+          created:
+            description: When the request was created.
+            example: 2020-03-24T11:11:41.139-05:00
+            format: date-time
+            type: string
+        type: object
     NonEmployeeRequestSummary:
       example:
         approved: 0.8008281904610115
@@ -55874,7 +56318,13 @@ components:
     NonEmployeeSourceWithNECount:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeSource'
-      - $ref: '#/components/schemas/NonEmployeeSourceWithNECount_allOf'
+      - properties:
+          nonEmployeeCount:
+            description: Number of non-employee records associated with this source.
+            example: 2
+            format: int32
+            type: integer
+        type: object
     NonEmployeeSourceRequestBody:
       example:
         owner:
@@ -55927,11 +56377,46 @@ components:
     NonEmployeeSourceWithCloudExternalId:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeSource'
-      - $ref: '#/components/schemas/NonEmployeeSourceWithCloudExternalId_allOf'
+      - properties:
+          cloudExternalId:
+            description: Legacy ID used for sources from the V1 API. This attribute
+              will be removed from a future version of the API and will not be considered
+              a breaking change. No clients should rely on this ID always being present.
+            example: "99999"
+            type: string
+        type: object
     NonEmployeeSource:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeSourceLite'
-      - $ref: '#/components/schemas/NonEmployeeSource_allOf'
+      - properties:
+          approvers:
+            description: List of approvers
+            items:
+              $ref: '#/components/schemas/IdentityReferenceWithId'
+            type: array
+          accountManagers:
+            description: List of account managers
+            items:
+              $ref: '#/components/schemas/IdentityReferenceWithId'
+            type: array
+          modified:
+            description: When the request was last modified.
+            example: 2019-08-23T18:52:59.162Z
+            format: date-time
+            type: string
+          created:
+            description: When the request was created.
+            example: 2019-08-23T18:40:35.772Z
+            format: date-time
+            type: string
+          nonEmployeeCount:
+            description: The number of non-employee records on all sources that *requested-for*
+              user manages.
+            example: 2
+            format: int32
+            nullable: true
+            type: integer
+        type: object
     NonEmployeeBulkUploadJob:
       example:
         sourceId: 2c91808568c529c60168cca6f90c1313
@@ -55996,11 +56481,17 @@ components:
     NonEmployeeApprovalItem:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeApprovalItemBase'
-      - $ref: '#/components/schemas/NonEmployeeApprovalItem_allOf'
+      - properties:
+          nonEmployeeRequest:
+            $ref: '#/components/schemas/NonEmployeeRequestLite'
+        type: object
     NonEmployeeApprovalItemDetail:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeApprovalItemBase'
-      - $ref: '#/components/schemas/NonEmployeeApprovalItemDetail_allOf'
+      - properties:
+          nonEmployeeRequest:
+            $ref: '#/components/schemas/NonEmployeeRequestWithoutApprovalItem'
+        type: object
     NonEmployeeApprovalDecision:
       example:
         comment: comment
@@ -59418,7 +59909,15 @@ components:
     RoleMiningPotentialRoleExportResponse:
       allOf:
       - $ref: '#/components/schemas/RoleMiningPotentialRoleExportRequest'
-      - $ref: '#/components/schemas/RoleMiningPotentialRoleExportResponse_allOf'
+      - properties:
+          exportId:
+            description: ID used to reference this export
+            example: 0c6cdb76-1227-4aaf-af21-192dbdfbfa04
+            format: uuid
+            type: string
+          status:
+            $ref: '#/components/schemas/RoleMiningPotentialRoleExportState'
+        type: object
       example:
         exportId: 0c6cdb76-1227-4aaf-af21-192dbdfbfa04
         status: QUEUED
@@ -59853,7 +60352,62 @@ components:
     ServiceDeskIntegrationDto:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
-      - $ref: '#/components/schemas/ServiceDeskIntegrationDto_allOf'
+      - description: Specification of a Service Desk integration.
+        properties:
+          description:
+            description: Description of the Service Desk integration.
+            example: A very nice Service Desk integration
+            type: string
+          type:
+            default: ServiceNowSDIM
+            description: |
+              Service Desk integration types
+
+              - ServiceNowSDIM
+              - ServiceNow
+            example: ServiceNowSDIM
+            type: string
+          ownerRef:
+            allOf:
+            - $ref: '#/components/schemas/OwnerDto'
+          clusterRef:
+            allOf:
+            - $ref: '#/components/schemas/SourceClusterDto'
+          cluster:
+            deprecated: true
+            description: "ID of the cluster for the Service Desk integration (replaced\
+              \ by clusterRef, retained for backward compatibility)."
+            example: xyzzy999
+            type: string
+          managedSources:
+            deprecated: true
+            description: "Source IDs for the Service Desk integration (replaced by\
+              \ provisioningConfig.managedSResourceRefs, but retained here for backward\
+              \ compatibility)."
+            example:
+            - 2c9180835d191a86015d28455b4a2329
+            - 2c5680835d191a85765d28455b4a9823
+            items:
+              type: string
+            type: array
+          provisioningConfig:
+            $ref: '#/components/schemas/ProvisioningConfig'
+          attributes:
+            additionalProperties: true
+            description: Attributes of the Service Desk integration.  Validation constraints
+              enforced by the implementation.
+            example:
+              property: value
+              key: value
+            type: object
+          beforeProvisioningRule:
+            allOf:
+            - $ref: '#/components/schemas/BeforeProvisioningRuleDto'
+        required:
+        - attributes
+        - description
+        - type
+        type: object
     JsonPatch:
       description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
       example: "[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\
@@ -59891,7 +60445,27 @@ components:
     ServiceDeskIntegrationTemplateDto:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
-      - $ref: '#/components/schemas/ServiceDeskIntegrationTemplateDto_allOf'
+      - description: "This is the model for a Service Desk integration template, used\
+          \ to create and edit Service Desk Integrations."
+        properties:
+          type:
+            default: Web Service SDIM
+            description: The 'type' property specifies the type of the Service Desk
+              integration template.
+            example: Web Service SDIM
+            type: string
+          attributes:
+            additionalProperties: true
+            description: The 'attributes' property value is a map of attributes available
+              for integrations using this Service Desk integration template.
+            type: object
+          provisioningConfig:
+            $ref: '#/components/schemas/ProvisioningConfig'
+        required:
+        - attributes
+        - provisioningConfig
+        - type
+        type: object
     QueuedCheckConfigDetails:
       description: Configuration of maximum number days and interval for checking
         Service Desk integration queue status
@@ -61246,7 +61820,21 @@ components:
     TransformRead:
       allOf:
       - $ref: '#/components/schemas/Transform'
-      - $ref: '#/components/schemas/TransformRead_allOf'
+      - properties:
+          id:
+            description: Unique ID of this transform
+            example: 2cd78adghjkja34jh2b1hkjhasuecd
+            type: string
+          internal:
+            default: false
+            description: Indicates whether this is an internal SailPoint-created transform
+              or a customer-created transform
+            example: false
+            type: boolean
+        required:
+        - id
+        - internal
+        type: object
     Transform:
       description: The representation of an internally- or customer-defined transform.
       example:
@@ -62115,7 +62703,19 @@ components:
     ReportResultReference:
       allOf:
       - $ref: '#/components/schemas/SodReportResultDto'
-      - $ref: '#/components/schemas/ReportResultReference_allOf'
+      - properties:
+          status:
+            description: Status of a SOD policy violation report.
+            enum:
+            - SUCCESS
+            - WARNING
+            - ERROR
+            - TERMINATED
+            - TEMP_ERROR
+            - PENDING
+            example: PENDING
+            type: string
+        type: object
     IdentityWithNewAccess:
       description: An identity with a set of access to be added
       example:
@@ -62238,7 +62838,29 @@ components:
       type: object
     Workflow:
       allOf:
-      - $ref: '#/components/schemas/Workflow_allOf'
+      - properties:
+          id:
+            description: Workflow ID. This is a UUID generated upon creation.
+            example: d201c5e9-d37b-4aff-af14-66414f39d569
+            type: string
+          executionCount:
+            description: The number of times this workflow has been executed.
+            example: 2
+            format: int32
+            type: integer
+          failureCount:
+            description: The number of times this workflow has failed during execution.
+            example: 0
+            format: int32
+            type: integer
+          created:
+            description: The date and time the workflow was created.
+            example: 2022-01-10T16:06:16.636381447Z
+            format: date-time
+            type: string
+          creator:
+            $ref: '#/components/schemas/Workflow_allOf_creator'
+        type: object
       - $ref: '#/components/schemas/WorkflowBody'
     WorkflowBody:
       example:
@@ -64528,12 +65150,49 @@ components:
     SectionDetails:
       allOf:
       - $ref: '#/components/schemas/FormItemDetails'
-      - $ref: '#/components/schemas/Section_allOf'
+      - properties:
+          label:
+            description: Label of the section
+            example: Section 1
+            type: string
+          formItems:
+            description: List of FormItems. FormItems can be SectionDetails and/or
+              FieldDetails
+            example: []
+            items:
+              type: object
+            type: array
+        type: object
       type: object
     FieldDetails:
       allOf:
       - $ref: '#/components/schemas/FormItemDetails'
-      - $ref: '#/components/schemas/Field_allOf'
+      - properties:
+          displayName:
+            description: Display name of the field
+            example: Field 1
+            type: string
+          displayType:
+            description: Type of the field to display
+            example: checkbox
+            type: string
+          required:
+            description: True if the field is required
+            type: boolean
+          allowedValuesList:
+            description: List of allowed values for the field
+            example:
+            - Val1Display: null
+              Val1Value: null
+            - Val2Display: null
+              Val2Value: null
+            items:
+              type: object
+            type: array
+          value:
+            description: Value of the field
+            type: object
+        type: object
       type: object
     OwnerReference:
       description: The owner of this object.
@@ -66112,7 +66771,45 @@ components:
     IdentityProfile_1:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto_1'
-      - $ref: '#/components/schemas/IdentityProfile_1_allOf'
+      - properties:
+          description:
+            description: The description of the Identity Profile.
+            example: My custom flat file profile
+            nullable: true
+            type: string
+          owner:
+            $ref: '#/components/schemas/IdentityProfile_allOf_owner'
+          priority:
+            description: The priority for an Identity Profile.
+            example: 10
+            format: int64
+            type: integer
+          authoritativeSource:
+            $ref: '#/components/schemas/IdentityProfile_1_allOf_authoritativeSource'
+          identityRefreshRequired:
+            default: false
+            description: True if a identity refresh is needed. Typically triggered
+              when a change on the source has been made.
+            example: true
+            type: boolean
+          identityCount:
+            description: The number of identities that belong to the Identity Profile.
+            example: 8
+            format: int32
+            type: integer
+          identityAttributeConfig:
+            $ref: '#/components/schemas/IdentityAttributeConfig_1'
+          identityExceptionReportReference:
+            $ref: '#/components/schemas/IdentityExceptionReportReference_1'
+          hasTimeBasedAttr:
+            default: false
+            description: Indicates the value of requiresPeriodicRefresh attribute
+              for the Identity Profile.
+            example: true
+            type: boolean
+        required:
+        - authoritativeSource
+        type: object
     SpConfigMessage:
       description: Message model for Config Import/Export.
       example:
@@ -66375,7 +67072,70 @@ components:
     NonEmployeeRequestWithoutApprovalItem:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeRequestLite'
-      - $ref: '#/components/schemas/NonEmployeeRequestWithoutApprovalItem_allOf'
+      - properties:
+          accountName:
+            description: Requested identity account name.
+            example: william.smith
+            type: string
+          firstName:
+            description: Non-Employee's first name.
+            example: William
+            type: string
+          lastName:
+            description: Non-Employee's last name.
+            example: Smith
+            type: string
+          email:
+            description: Non-Employee's email.
+            example: william.smith@example.com
+            type: string
+          phone:
+            description: Non-Employee's phone.
+            example: "5555555555"
+            type: string
+          manager:
+            description: The account ID of a valid identity to serve as this non-employee's
+              manager.
+            example: jane.doe
+            type: string
+          nonEmployeeSource:
+            $ref: '#/components/schemas/NonEmployeeSourceLiteWithSchemaAttributes'
+          data:
+            additionalProperties:
+              type: string
+            description: Attribute blob/bag for a non-employee.
+            type: object
+          approvalStatus:
+            $ref: '#/components/schemas/ApprovalStatus'
+          comment:
+            description: comment of requester
+            type: string
+          completionDate:
+            description: When the request was completely approved.
+            example: 2020-03-24T11:11:41.139-05:00
+            format: date-time
+            type: string
+          startDate:
+            description: Non-Employee employment start date.
+            example: 2020-03-24
+            format: date
+            type: string
+          endDate:
+            description: Non-Employee employment end date.
+            example: 2021-03-25
+            format: date
+            type: string
+          modified:
+            description: When the request was last modified.
+            example: 2020-03-24T11:11:41.139-05:00
+            format: date-time
+            type: string
+          created:
+            description: When the request was created.
+            example: 2020-03-24T11:11:41.139-05:00
+            format: date-time
+            type: string
+        type: object
     NonEmployeeSchemaAttributeType:
       description: Enum representing the type of data a schema attribute accepts.
       enum:
@@ -67897,14 +68657,16 @@ components:
           example: 4b4d982dddff4267ab12f0f1e72b5a6d
           type: string
         requestedFor:
-          $ref: '#/components/schemas/AccessRequestDynamicApprover_requestedFor'
+          allOf:
+          - $ref: '#/components/schemas/AccessItemRequestedForDto'
         requestedItems:
           description: The access items that are being requested.
           items:
             $ref: '#/components/schemas/AccessRequestDynamicApprover_requestedItems_inner'
           type: array
         requestedBy:
-          $ref: '#/components/schemas/AccessRequestDynamicApprover_requestedBy'
+          allOf:
+          - $ref: '#/components/schemas/AccessItemRequesterDto'
       required:
       - accessRequestId
       - requestedBy
@@ -67919,14 +68681,24 @@ components:
           example: 2c91808b6ef1d43e016efba0ce470904
           type: string
         requestedFor:
-          $ref: '#/components/schemas/AccessRequestPostApproval_requestedFor'
+          allOf:
+          - $ref: '#/components/schemas/AccessItemRequestedForDto'
+          required:
+          - id
+          - name
+          - type
         requestedItemsStatus:
           description: Details on the outcome of each access item.
           items:
             $ref: '#/components/schemas/AccessRequestPostApproval_requestedItemsStatus_inner'
           type: array
         requestedBy:
-          $ref: '#/components/schemas/AccessRequestPostApproval_requestedBy'
+          allOf:
+          - $ref: '#/components/schemas/AccessItemRequesterDto'
+          required:
+          - id
+          - name
+          - type
       required:
       - accessRequestId
       - requestedBy
@@ -67941,14 +68713,24 @@ components:
           example: 2c91808b6ef1d43e016efba0ce470904
           type: string
         requestedFor:
-          $ref: '#/components/schemas/AccessRequestPostApproval_requestedFor'
+          allOf:
+          - $ref: '#/components/schemas/AccessItemRequestedForDto'
+          required:
+          - id
+          - name
+          - type
         requestedItems:
           description: Details of the access items being requested.
           items:
             $ref: '#/components/schemas/AccessRequestPreApproval_requestedItems_inner'
           type: array
         requestedBy:
-          $ref: '#/components/schemas/AccessRequestPostApproval_requestedBy'
+          allOf:
+          - $ref: '#/components/schemas/AccessItemRequesterDto'
+          required:
+          - id
+          - name
+          - type
       required:
       - accessRequestId
       - requestedBy
@@ -68295,8 +69077,8 @@ components:
       title: Saved Search Complete
       type: object
     SourceAccountCreated:
-      $ref: '#/components/schemas/SourceAccount'
-    SourceAccount:
+      $ref: '#/components/schemas/beta\schemas\trigger\example-input\SourceAccount'
+    beta\schemas\trigger\example-input\SourceAccount:
       properties:
         uuid:
           description: Source unique identifier for the identity. UUID is generated
@@ -68354,9 +69136,9 @@ components:
       - sourceName
       type: object
     SourceAccountDeleted:
-      $ref: '#/components/schemas/SourceAccount'
+      $ref: '#/components/schemas/beta\schemas\trigger\example-input\SourceAccount'
     SourceAccountUpdated:
-      $ref: '#/components/schemas/SourceAccount'
+      $ref: '#/components/schemas/beta\schemas\trigger\example-input\SourceAccount'
     SourceCreated:
       properties:
         id:
@@ -70007,7 +70789,14 @@ components:
     NonEmployeeSourceLiteWithSchemaAttributes:
       allOf:
       - $ref: '#/components/schemas/NonEmployeeSourceLite'
-      - $ref: '#/components/schemas/NonEmployeeSourceLiteWithSchemaAttributes_allOf'
+      - properties:
+          schemaAttributes:
+            description: List of schema attributes associated with this non-employee
+              source.
+            items:
+              $ref: '#/components/schemas/NonEmployeeSchemaAttribute'
+            type: array
+        type: object
     ManagedClusterQueue:
       description: Managed Cluster key pair for Cluster
       example:
@@ -71166,7 +71955,10 @@ components:
     CertificationReference:
       allOf:
       - $ref: '#/components/schemas/CertificationReferenceDto'
-      - $ref: '#/components/schemas/CertificationReference_allOf'
+      - properties:
+          reviewer:
+            $ref: '#/components/schemas/Reviewer'
+        type: object
       description: Previous certification.
       type: object
     ExceptionCriteriaAccess:
@@ -71962,60 +72754,6 @@ components:
           type: string
       type: object
       example: null
-    fullcampaign_allOf:
-      properties:
-        modified:
-          description: Modified time of the campaign
-          example: 2020-03-03T22:20:12.674Z
-          format: date-time
-          readOnly: true
-          type: string
-        correlatedStatus:
-          description: The correlatedStatus of the campaign. Only SOURCE_OWNER campaigns
-            can be Uncorrelated. An Uncorrelated certification campaign only includes
-            Uncorrelated identities (An identity is uncorrelated if it has no accounts
-            on an authoritative source).
-          enum:
-          - CORRELATED
-          - UNCORRELATED
-          example: CORRELATED
-          type: object
-        filter:
-          $ref: '#/components/schemas/fullcampaign_allOf_filter'
-        sunsetCommentsRequired:
-          default: true
-          description: Determines if comments on sunset date changes are required.
-          example: true
-          type: boolean
-        sourceOwnerCampaignInfo:
-          $ref: '#/components/schemas/fullcampaign_allOf_sourceOwnerCampaignInfo'
-        searchCampaignInfo:
-          $ref: '#/components/schemas/fullcampaign_allOf_searchCampaignInfo'
-        roleCompositionCampaignInfo:
-          $ref: '#/components/schemas/fullcampaign_allOf_roleCompositionCampaignInfo'
-        sourcesWithOrphanEntitlements:
-          description: A list of sources in the campaign that contain \"orphan entitlements\"
-            (entitlements without a corresponding Managed Attribute). An empty list
-            indicates the campaign has no orphan entitlements. Null indicates there
-            may be unknown orphan entitlements in the campaign (the campaign was created
-            before this feature was implemented).
-          items:
-            $ref: '#/components/schemas/fullcampaign_allOf_sourcesWithOrphanEntitlements'
-          readOnly: true
-          type: array
-        mandatoryCommentRequirement:
-          description: "Determines whether comments are required for decisions during\
-            \ certification reviews. You can require comments for all decisions, revoke-only\
-            \ decisions, or no decisions. By default, comments are not required for\
-            \ decisions."
-          enum:
-          - ALL_DECISIONS
-          - REVOKE_ONLY_DECISIONS
-          - NO_DECISIONS
-          example: NO_DECISIONS
-          type: string
-      type: object
-      example: null
     IdentityProfile_allOf_owner:
       description: The owner of the Identity Profile.
       nullable: true
@@ -72055,89 +72793,6 @@ components:
             applies
           example: HR Active Directory
           type: string
-      type: object
-      example: null
-    IdentityProfile_allOf:
-      properties:
-        description:
-          description: The description of the Identity Profile.
-          example: My custom flat file profile
-          nullable: true
-          type: string
-        owner:
-          $ref: '#/components/schemas/IdentityProfile_allOf_owner'
-        priority:
-          description: The priority for an Identity Profile.
-          example: 10
-          format: int64
-          type: integer
-        authoritativeSource:
-          $ref: '#/components/schemas/IdentityProfile_allOf_authoritativeSource'
-        identityRefreshRequired:
-          default: false
-          description: True if a identity refresh is needed. Typically triggered when
-            a change on the source has been made
-          example: true
-          type: boolean
-        identityCount:
-          description: The number of identities that belong to the Identity Profile.
-          example: 8
-          format: int32
-          type: integer
-        identityAttributeConfig:
-          $ref: '#/components/schemas/IdentityAttributeConfig'
-        identityExceptionReportReference:
-          $ref: '#/components/schemas/IdentityExceptionReportReference'
-        hasTimeBasedAttr:
-          default: true
-          description: Indicates the value of requiresPeriodicRefresh attribute for
-            the Identity Profile.
-          example: true
-          type: boolean
-      required:
-      - authoritativeSource
-      type: object
-      example: null
-    Section_allOf:
-      properties:
-        label:
-          description: Label of the section
-          example: Section 1
-          type: string
-        formItems:
-          description: List of FormItems. FormItems can be SectionDetails and/or FieldDetails
-          example: []
-          items:
-            type: object
-          type: array
-      type: object
-      example: null
-    Field_allOf:
-      properties:
-        displayName:
-          description: Display name of the field
-          example: Field 1
-          type: string
-        displayType:
-          description: Type of the field to display
-          example: checkbox
-          type: string
-        required:
-          description: True if the field is required
-          type: boolean
-        allowedValuesList:
-          description: List of allowed values for the field
-          example:
-          - Val1Display: null
-            Val1Value: null
-          - Val2Display: null
-            Val2Value: null
-          items:
-            type: object
-          type: array
-        value:
-          description: Value of the field
-          type: object
       type: object
       example: null
     array_inner:
@@ -72261,81 +72916,6 @@ components:
           example: This item grants an employee read and write access to the database
           type: string
       type: object
-    SlimAccount_allOf:
-      properties:
-        uuid:
-          description: Unique ID from the owning source
-          format: uuid
-          nullable: true
-          type: string
-        nativeIdentity:
-          description: The native identifier of the account
-          example: brandin.gray
-          type: string
-        description:
-          description: The description for the account
-          example: Brandin Gray the CEO of Silly Inc.
-          nullable: true
-          type: string
-        disabled:
-          description: Whether the account is disabled
-          example: false
-          type: boolean
-        locked:
-          description: Whether the account is locked
-          example: false
-          type: boolean
-        manuallyCorrelated:
-          description: Whether the account was manually correlated
-          example: false
-          type: boolean
-        hasEntitlements:
-          description: Whether the account has any entitlements associated with it
-          example: true
-          type: boolean
-        sourceId:
-          description: The ID of the source for which this account belongs
-          example: 2c9180835d2e5168015d32f890ca1581
-          type: string
-        sourceName:
-          description: The name of the source
-          example: Large Source
-          type: string
-        identityId:
-          description: The ID of the identity for which this account is correlated
-            to if not uncorrelated
-          example: 4b9163835d2e5168015d32f890ca5936
-          type: string
-        attributes:
-          additionalProperties: true
-          description: A map containing attributes associated with the account
-          example:
-            firstName: SailPoint
-            lastName: Support
-            displayName: SailPoint Support
-          type: object
-      type: object
-      example: null
-    FullAccount_allOf:
-      properties:
-        authoritative:
-          description: Whether this account belongs to an authoritative source
-          example: false
-          type: boolean
-        systemAccount:
-          description: Whether this account is for the IdentityNow source
-          example: false
-          type: boolean
-        uncorrelated:
-          description: True if this account is not correlated to an identity
-          example: false
-          type: boolean
-        features:
-          description: A string list containing the owning source's features
-          example: ENABLE
-          type: string
-      type: object
-      example: null
     AccountAttributesCreate_attributes:
       additionalProperties:
         type: string
@@ -72355,86 +72935,6 @@ components:
       required:
       - sourceId
       type: object
-    Account_allOf:
-      properties:
-        sourceId:
-          description: The unique ID of the source this account belongs to
-          example: 2c9180835d2e5168015d32f890ca1581
-          type: string
-        sourceName:
-          description: The display name of the source this account belongs to
-          example: Employees
-          type: string
-        identityId:
-          description: The unique ID of the identity this account is correlated to
-          example: 2c9180835d2e5168015d32f890ca1581
-          type: string
-        attributes:
-          additionalProperties: true
-          description: The account attributes that are aggregated
-          example:
-            firstName: SailPoint
-            lastName: Support
-            displayName: SailPoint Support
-          type: object
-        authoritative:
-          description: Indicates if this account is from an authoritative source
-          example: false
-          type: boolean
-        description:
-          description: A description of the account
-          nullable: true
-          type: string
-          example: null
-        disabled:
-          description: Indicates if the account is currently disabled
-          example: false
-          type: boolean
-        locked:
-          description: Indicates if the account is currently locked
-          example: false
-          type: boolean
-        nativeIdentity:
-          description: The unique ID of the account generated by the source system
-          example: "552775"
-          type: string
-        systemAccount:
-          description: "If true, this is a user account within IdentityNow.  If false,\
-            \ this is an account from a source system."
-          example: false
-          type: boolean
-        uncorrelated:
-          description: Indicates if this account is not correlated to an identity
-          example: false
-          type: boolean
-        uuid:
-          description: The unique ID of the account as determined by the account schema
-          example: slpt.support
-          nullable: true
-          type: string
-        manuallyCorrelated:
-          description: Indicates if the account has been manually correlated to an
-            identity
-          example: false
-          type: boolean
-        hasEntitlements:
-          description: Indicates if the account has entitlements
-          example: true
-          type: boolean
-      required:
-      - attributes
-      - authoritative
-      - disabled
-      - hasEntitlements
-      - locked
-      - manuallyCorrelated
-      - nativeIdentity
-      - sourceId
-      - sourceName
-      - systemAccount
-      - uncorrelated
-      type: object
-      example: null
     AdminReviewReassign_reassignTo:
       example:
         id: ef38f94347e94562b5bb8424a56397d8
@@ -72451,17 +72951,6 @@ components:
           example: IDENTITY
           type: string
       type: object
-    CampaignReport_allOf:
-      properties:
-        reportType:
-          $ref: '#/components/schemas/ReportType'
-        lastRunAt:
-          description: The most recent date and time this report was run
-          format: date-time
-          readOnly: true
-          type: string
-      type: object
-      example: null
     CampaignTemplate_ownerRef:
       description: "The owner of this template, and the owner of campaigns generated\
         \ from this template via a schedule. This field is automatically populated\
@@ -72644,27 +73133,6 @@ components:
       - type
       - values
       type: object
-    ConnectorRuleResponse_allOf:
-      nullable: true
-      properties:
-        id:
-          description: the ID of the rule
-          example: 8113d48c0b914f17b4c6072d4dcb9dfe
-          type: string
-        created:
-          description: an ISO 8601 UTC timestamp when this rule was created
-          example: 021-07-22T15:59:23Z
-          type: string
-        modified:
-          description: an ISO 8601 UTC timestamp when this rule was last modified
-          example: 021-07-22T15:59:23Z
-          nullable: true
-          type: string
-      required:
-      - created
-      - id
-      type: object
-      example: null
     ConnectorRuleCreateRequest_signature:
       description: The rule's function signature. Describes the rule's input arguments
         and output (if any)
@@ -72690,16 +73158,6 @@ components:
       required:
       - input
       type: object
-    ConnectorRuleUpdateRequest_allOf:
-      properties:
-        id:
-          description: the ID of the rule to update
-          example: 8113d48c0b914f17b4c6072d4dcb9dfe
-          type: string
-      required:
-      - id
-      type: object
-      example: null
     ConnectorRuleValidationResponse_details_inner:
       description: CodeErrorDetail
       example:
@@ -72821,63 +73279,6 @@ components:
           type: string
       type: object
       example: null
-    IdentityDto:
-      properties:
-        alias:
-          description: Alternate unique identifier for the identity
-          example: walter.white
-          type: string
-        emailAddress:
-          description: The email address of the identity
-          example: sender@example.com
-          type: string
-        processingState:
-          description: The processing state of the identity
-          enum:
-          - ERROR
-          - OK
-          example: ERROR
-          nullable: true
-          type: string
-        identityStatus:
-          description: The identity's status in the system
-          enum:
-          - UNREGISTERED
-          - REGISTERED
-          - PENDING
-          - WARNING
-          - DISABLED
-          - ACTIVE
-          - DEACTIVATED
-          - TERMINATED
-          - ERROR
-          - LOCKED
-          example: LOCKED
-          type: string
-        managerRef:
-          $ref: '#/components/schemas/IdentityDto_managerRef'
-        isManager:
-          default: false
-          description: Whether this identity is a manager of another identity
-          example: true
-          type: boolean
-        lastRefresh:
-          description: The last time the identity was refreshed by the system
-          example: 2020-11-22T15:42:31.123Z
-          format: date-time
-          type: string
-        attributes:
-          description: A map with the identity attributes for the identity
-          example: "{\"uid\":\"Walter White\",\"firstname\":\"walter\",\"cloudStatus\"\
-            :\"UNREGISTERED\",\"displayName\":\"Walter White\",\"identificationNumber\"\
-            :\"942\",\"lastSyncDate\":1470348809380,\"email\":\"walter@gmail.com\"\
-            ,\"lastname\":\"white\"}"
-          type: object
-        lifecycleState:
-          $ref: '#/components/schemas/LifecycleStateDto'
-      title: IdentityDto
-      type: object
-      example: null
     IdentityAssociationDetails_associationDetails_inner:
       properties:
         associationType:
@@ -72916,139 +73317,6 @@ components:
           example: Robert Robinson
           type: string
       type: object
-    NonEmployeeRequest_allOf:
-      properties:
-        accountName:
-          description: Requested identity account name.
-          example: william.smith
-          type: string
-        firstName:
-          description: Non-Employee's first name.
-          example: William
-          type: string
-        lastName:
-          description: Non-Employee's last name.
-          example: Smith
-          type: string
-        email:
-          description: Non-Employee's email.
-          example: william.smith@example.com
-          type: string
-        phone:
-          description: Non-Employee's phone.
-          example: "5555555555"
-          type: string
-        manager:
-          description: The account ID of a valid identity to serve as this non-employee's
-            manager.
-          example: jane.doe
-          type: string
-        nonEmployeeSource:
-          $ref: '#/components/schemas/NonEmployeeSourceLite'
-        data:
-          additionalProperties:
-            type: string
-          description: Attribute blob/bag for a non-employee.
-          type: object
-        approvalItems:
-          description: List of approval item for the request
-          items:
-            $ref: '#/components/schemas/NonEmployeeApprovalItemBase'
-          type: array
-        approvalStatus:
-          $ref: '#/components/schemas/ApprovalStatus'
-        comment:
-          description: comment of requester
-          type: string
-        completionDate:
-          description: When the request was completely approved.
-          example: 2020-03-24T11:11:41.139-05:00
-          format: date-time
-          type: string
-        startDate:
-          description: Non-Employee employment start date.
-          example: 2020-03-24T00:00:00-05:00
-          format: date-time
-          type: string
-        endDate:
-          description: Non-Employee employment end date.
-          example: 2021-03-25T00:00:00-05:00
-          format: date-time
-          type: string
-        modified:
-          description: When the request was last modified.
-          example: 2020-03-24T11:11:41.139-05:00
-          format: date-time
-          type: string
-        created:
-          description: When the request was created.
-          example: 2020-03-24T11:11:41.139-05:00
-          format: date-time
-          type: string
-      type: object
-      example: null
-    NonEmployeeSourceWithNECount_allOf:
-      properties:
-        nonEmployeeCount:
-          description: Number of non-employee records associated with this source.
-          example: 2
-          format: int32
-          type: integer
-      type: object
-      example: null
-    NonEmployeeSourceWithCloudExternalId_allOf:
-      properties:
-        cloudExternalId:
-          description: Legacy ID used for sources from the V1 API. This attribute
-            will be removed from a future version of the API and will not be considered
-            a breaking change. No clients should rely on this ID always being present.
-          example: "99999"
-          type: string
-      type: object
-      example: null
-    NonEmployeeSource_allOf:
-      properties:
-        approvers:
-          description: List of approvers
-          items:
-            $ref: '#/components/schemas/IdentityReferenceWithId'
-          type: array
-        accountManagers:
-          description: List of account managers
-          items:
-            $ref: '#/components/schemas/IdentityReferenceWithId'
-          type: array
-        modified:
-          description: When the request was last modified.
-          example: 2019-08-23T18:52:59.162Z
-          format: date-time
-          type: string
-        created:
-          description: When the request was created.
-          example: 2019-08-23T18:40:35.772Z
-          format: date-time
-          type: string
-        nonEmployeeCount:
-          description: The number of non-employee records on all sources that *requested-for*
-            user manages.
-          example: 2
-          format: int32
-          nullable: true
-          type: integer
-      type: object
-      example: null
-    NonEmployeeApprovalItem_allOf:
-      properties:
-        nonEmployeeRequest:
-          $ref: '#/components/schemas/NonEmployeeRequestLite'
-      type: object
-      example: null
-    NonEmployeeApprovalItemDetail_allOf:
-      properties:
-        nonEmployeeRequest:
-          $ref: '#/components/schemas/NonEmployeeRequestWithoutApprovalItem'
-      type: object
-      example: null
     OutlierContributingFeature_value:
       description: The feature value
       example: 0.92
@@ -73086,97 +73354,6 @@ components:
       oneOf:
       - $ref: '#/components/schemas/EntityCreatedByDTO'
       - $ref: '#/components/schemas/NullableEntityCreatedByDTO'
-    RoleMiningPotentialRoleExportResponse_allOf:
-      properties:
-        exportId:
-          description: ID used to reference this export
-          example: 0c6cdb76-1227-4aaf-af21-192dbdfbfa04
-          format: uuid
-          type: string
-        status:
-          $ref: '#/components/schemas/RoleMiningPotentialRoleExportState'
-      type: object
-      example: null
-    ServiceDeskIntegrationDto_allOf:
-      description: Specification of a Service Desk integration.
-      properties:
-        description:
-          description: Description of the Service Desk integration.
-          example: A very nice Service Desk integration
-          type: string
-        type:
-          default: ServiceNowSDIM
-          description: |
-            Service Desk integration types
-
-            - ServiceNowSDIM
-            - ServiceNow
-          example: ServiceNowSDIM
-          type: string
-        ownerRef:
-          allOf:
-          - $ref: '#/components/schemas/OwnerDto'
-        clusterRef:
-          allOf:
-          - $ref: '#/components/schemas/SourceClusterDto'
-        cluster:
-          deprecated: true
-          description: "ID of the cluster for the Service Desk integration (replaced\
-            \ by clusterRef, retained for backward compatibility)."
-          example: xyzzy999
-          type: string
-        managedSources:
-          deprecated: true
-          description: "Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs,\
-            \ but retained here for backward compatibility)."
-          example:
-          - 2c9180835d191a86015d28455b4a2329
-          - 2c5680835d191a85765d28455b4a9823
-          items:
-            type: string
-          type: array
-        provisioningConfig:
-          $ref: '#/components/schemas/ProvisioningConfig'
-        attributes:
-          additionalProperties: true
-          description: Attributes of the Service Desk integration.  Validation constraints
-            enforced by the implementation.
-          example:
-            property: value
-            key: value
-          type: object
-        beforeProvisioningRule:
-          allOf:
-          - $ref: '#/components/schemas/BeforeProvisioningRuleDto'
-      required:
-      - attributes
-      - description
-      - type
-      type: object
-      example: null
-    ServiceDeskIntegrationTemplateDto_allOf:
-      description: "This is the model for a Service Desk integration template, used\
-        \ to create and edit Service Desk Integrations."
-      properties:
-        type:
-          default: Web Service SDIM
-          description: The 'type' property specifies the type of the Service Desk
-            integration template.
-          example: Web Service SDIM
-          type: string
-        attributes:
-          additionalProperties: true
-          description: The 'attributes' property value is a map of attributes available
-            for integrations using this Service Desk integration template.
-          type: object
-        provisioningConfig:
-          $ref: '#/components/schemas/ProvisioningConfig'
-      required:
-      - attributes
-      - provisioningConfig
-      - type
-      type: object
-      example: null
     Source_owner:
       description: Reference to an owning Identity Object
       example:
@@ -73402,23 +73579,6 @@ components:
           nullable: true
           type: string
       type: object
-    TransformRead_allOf:
-      properties:
-        id:
-          description: Unique ID of this transform
-          example: 2cd78adghjkja34jh2b1hkjhasuecd
-          type: string
-        internal:
-          default: false
-          description: Indicates whether this is an internal SailPoint-created transform
-            or a customer-created transform
-          example: false
-          type: boolean
-      required:
-      - id
-      - internal
-      type: object
-      example: null
     Trigger_exampleInput:
       description: An example of the JSON payload that will be sent by the trigger
         to the subscribed service.
@@ -73499,21 +73659,6 @@ components:
       - $ref: '#/components/schemas/ConflictingAccessCriteria'
       - nullable: true
         type: object
-    ReportResultReference_allOf:
-      properties:
-        status:
-          description: Status of a SOD policy violation report.
-          enum:
-          - SUCCESS
-          - WARNING
-          - ERROR
-          - TERMINATED
-          - TEMP_ERROR
-          - PENDING
-          example: PENDING
-          type: string
-      type: object
-      example: null
     IdentityWithNewAccess_accessRefs_inner:
       description: Entitlement including a specific set of access.
       properties:
@@ -73549,31 +73694,6 @@ components:
           description: Workflow creator's display name.
           example: Michael Michaels
           type: string
-      type: object
-      example: null
-    Workflow_allOf:
-      properties:
-        id:
-          description: Workflow ID. This is a UUID generated upon creation.
-          example: d201c5e9-d37b-4aff-af14-66414f39d569
-          type: string
-        executionCount:
-          description: The number of times this workflow has been executed.
-          example: 2
-          format: int32
-          type: integer
-        failureCount:
-          description: The number of times this workflow has failed during execution.
-          example: 0
-          format: int32
-          type: integer
-        created:
-          description: The date and time the workflow was created.
-          example: 2022-01-10T16:06:16.636381447Z
-          format: date-time
-          type: string
-        creator:
-          $ref: '#/components/schemas/Workflow_allOf_creator'
       type: object
       example: null
     WorkflowBody_owner:
@@ -73755,113 +73875,6 @@ components:
           type: string
       type: object
       example: null
-    IdentityProfile_1_allOf:
-      properties:
-        description:
-          description: The description of the Identity Profile.
-          example: My custom flat file profile
-          nullable: true
-          type: string
-        owner:
-          $ref: '#/components/schemas/IdentityProfile_allOf_owner'
-        priority:
-          description: The priority for an Identity Profile.
-          example: 10
-          format: int64
-          type: integer
-        authoritativeSource:
-          $ref: '#/components/schemas/IdentityProfile_1_allOf_authoritativeSource'
-        identityRefreshRequired:
-          default: false
-          description: True if a identity refresh is needed. Typically triggered when
-            a change on the source has been made.
-          example: true
-          type: boolean
-        identityCount:
-          description: The number of identities that belong to the Identity Profile.
-          example: 8
-          format: int32
-          type: integer
-        identityAttributeConfig:
-          $ref: '#/components/schemas/IdentityAttributeConfig_1'
-        identityExceptionReportReference:
-          $ref: '#/components/schemas/IdentityExceptionReportReference_1'
-        hasTimeBasedAttr:
-          default: false
-          description: Indicates the value of requiresPeriodicRefresh attribute for
-            the Identity Profile.
-          example: true
-          type: boolean
-      required:
-      - authoritativeSource
-      type: object
-      example: null
-    NonEmployeeRequestWithoutApprovalItem_allOf:
-      properties:
-        accountName:
-          description: Requested identity account name.
-          example: william.smith
-          type: string
-        firstName:
-          description: Non-Employee's first name.
-          example: William
-          type: string
-        lastName:
-          description: Non-Employee's last name.
-          example: Smith
-          type: string
-        email:
-          description: Non-Employee's email.
-          example: william.smith@example.com
-          type: string
-        phone:
-          description: Non-Employee's phone.
-          example: "5555555555"
-          type: string
-        manager:
-          description: The account ID of a valid identity to serve as this non-employee's
-            manager.
-          example: jane.doe
-          type: string
-        nonEmployeeSource:
-          $ref: '#/components/schemas/NonEmployeeSourceLiteWithSchemaAttributes'
-        data:
-          additionalProperties:
-            type: string
-          description: Attribute blob/bag for a non-employee.
-          type: object
-        approvalStatus:
-          $ref: '#/components/schemas/ApprovalStatus'
-        comment:
-          description: comment of requester
-          type: string
-        completionDate:
-          description: When the request was completely approved.
-          example: 2020-03-24T11:11:41.139-05:00
-          format: date-time
-          type: string
-        startDate:
-          description: Non-Employee employment start date.
-          example: 2020-03-24
-          format: date
-          type: string
-        endDate:
-          description: Non-Employee employment end date.
-          example: 2021-03-25
-          format: date
-          type: string
-        modified:
-          description: When the request was last modified.
-          example: 2020-03-24T11:11:41.139-05:00
-          format: date-time
-          type: string
-        created:
-          description: When the request was created.
-          example: 2020-03-24T11:11:41.139-05:00
-          format: date-time
-          type: string
-      type: object
-      example: null
     ProvisioningConfig_managedResourceRefs_inner:
       allOf:
       - $ref: '#/components/schemas/ServiceDeskSource'
@@ -73908,9 +73921,6 @@ components:
           example: group
           type: string
       type: object
-    AccessRequestDynamicApprover_requestedFor:
-      allOf:
-      - $ref: '#/components/schemas/AccessItemRequestedForDto'
     AccessRequestDynamicApprover_requestedItems_inner:
       properties:
         id:
@@ -73952,16 +73962,6 @@ components:
       - operation
       - type
       type: object
-    AccessRequestDynamicApprover_requestedBy:
-      allOf:
-      - $ref: '#/components/schemas/AccessItemRequesterDto'
-    AccessRequestPostApproval_requestedFor:
-      allOf:
-      - $ref: '#/components/schemas/AccessItemRequestedForDto'
-      required:
-      - id
-      - name
-      - type
     AccessRequestPostApproval_requestedItemsStatus_inner_approvalInfo_inner_approver:
       allOf:
       - $ref: '#/components/schemas/AccessItemApproverDto'
@@ -74056,13 +74056,6 @@ components:
       - operation
       - type
       type: object
-    AccessRequestPostApproval_requestedBy:
-      allOf:
-      - $ref: '#/components/schemas/AccessItemRequesterDto'
-      required:
-      - id
-      - name
-      - type
     AccessRequestPreApproval_requestedItems_inner:
       properties:
         id:
@@ -75266,19 +75259,17 @@ components:
           - "18"
           interval: 3
         type: object
-    ViolationContext_policy_allOf:
-      properties:
-        type:
-          example: SOD_POLICY
-          type: string
-        name:
-          example: A very cool policy name
-          type: string
-      type: object
     ViolationContext_policy:
       allOf:
       - $ref: '#/components/schemas/SodPolicyDto'
-      - $ref: '#/components/schemas/ViolationContext_policy_allOf'
+      - properties:
+          type:
+            example: SOD_POLICY
+            type: string
+          name:
+            example: A very cool policy name
+            type: string
+        type: object
       description: The types of objects supported for SOD policy violations.
       example:
         type: ENTITLEMENT
@@ -75296,16 +75287,6 @@ components:
         value:
           type: string
       type: object
-    NonEmployeeSourceLiteWithSchemaAttributes_allOf:
-      properties:
-        schemaAttributes:
-          description: List of schema attributes associated with this non-employee
-            source.
-          items:
-            $ref: '#/components/schemas/NonEmployeeSchemaAttribute'
-          type: array
-      type: object
-      example: null
     AccessCriteria_criteriaList_inner:
       properties:
         type:
@@ -75449,12 +75430,6 @@ components:
       anyOf:
       - type: string
       - type: object
-    CertificationReference_allOf:
-      properties:
-        reviewer:
-          $ref: '#/components/schemas/Reviewer'
-      type: object
-      example: null
   securitySchemes:
     UserContextAuth:
       description: "OAuth2 Bearer token (JWT) generated using either a Personal Access\

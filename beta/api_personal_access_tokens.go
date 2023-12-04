@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// PersonalAccessTokensApiService PersonalAccessTokensApi service
-type PersonalAccessTokensApiService service
+// PersonalAccessTokensAPIService PersonalAccessTokensAPI service
+type PersonalAccessTokensAPIService service
 
 type ApiCreatePersonalAccessTokenRequest struct {
 	ctx context.Context
-	ApiService *PersonalAccessTokensApiService
+	ApiService *PersonalAccessTokensAPIService
 	createPersonalAccessTokenRequest *CreatePersonalAccessTokenRequest
 }
 
@@ -47,7 +47,7 @@ This creates a personal access token.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreatePersonalAccessTokenRequest
 */
-func (a *PersonalAccessTokensApiService) CreatePersonalAccessToken(ctx context.Context) ApiCreatePersonalAccessTokenRequest {
+func (a *PersonalAccessTokensAPIService) CreatePersonalAccessToken(ctx context.Context) ApiCreatePersonalAccessTokenRequest {
 	return ApiCreatePersonalAccessTokenRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,7 +56,7 @@ func (a *PersonalAccessTokensApiService) CreatePersonalAccessToken(ctx context.C
 
 // Execute executes the request
 //  @return CreatePersonalAccessTokenResponse
-func (a *PersonalAccessTokensApiService) CreatePersonalAccessTokenExecute(r ApiCreatePersonalAccessTokenRequest) (*CreatePersonalAccessTokenResponse, *http.Response, error) {
+func (a *PersonalAccessTokensAPIService) CreatePersonalAccessTokenExecute(r ApiCreatePersonalAccessTokenRequest) (*CreatePersonalAccessTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -64,7 +64,7 @@ func (a *PersonalAccessTokensApiService) CreatePersonalAccessTokenExecute(r ApiC
 		localVarReturnValue  *CreatePersonalAccessTokenResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersonalAccessTokensApiService.CreatePersonalAccessToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersonalAccessTokensAPIService.CreatePersonalAccessToken")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -107,9 +107,9 @@ func (a *PersonalAccessTokensApiService) CreatePersonalAccessTokenExecute(r ApiC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -190,7 +190,7 @@ func (a *PersonalAccessTokensApiService) CreatePersonalAccessTokenExecute(r ApiC
 
 type ApiDeletePersonalAccessTokenRequest struct {
 	ctx context.Context
-	ApiService *PersonalAccessTokensApiService
+	ApiService *PersonalAccessTokensAPIService
 	id string
 }
 
@@ -207,7 +207,7 @@ This deletes a personal access token.
  @param id The personal access token id
  @return ApiDeletePersonalAccessTokenRequest
 */
-func (a *PersonalAccessTokensApiService) DeletePersonalAccessToken(ctx context.Context, id string) ApiDeletePersonalAccessTokenRequest {
+func (a *PersonalAccessTokensAPIService) DeletePersonalAccessToken(ctx context.Context, id string) ApiDeletePersonalAccessTokenRequest {
 	return ApiDeletePersonalAccessTokenRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -216,14 +216,14 @@ func (a *PersonalAccessTokensApiService) DeletePersonalAccessToken(ctx context.C
 }
 
 // Execute executes the request
-func (a *PersonalAccessTokensApiService) DeletePersonalAccessTokenExecute(r ApiDeletePersonalAccessTokenRequest) (*http.Response, error) {
+func (a *PersonalAccessTokensAPIService) DeletePersonalAccessTokenExecute(r ApiDeletePersonalAccessTokenRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersonalAccessTokensApiService.DeletePersonalAccessToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersonalAccessTokensAPIService.DeletePersonalAccessToken")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -262,9 +262,9 @@ func (a *PersonalAccessTokensApiService) DeletePersonalAccessTokenExecute(r ApiD
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -347,7 +347,7 @@ func (a *PersonalAccessTokensApiService) DeletePersonalAccessTokenExecute(r ApiD
 
 type ApiListPersonalAccessTokensRequest struct {
 	ctx context.Context
-	ApiService *PersonalAccessTokensApiService
+	ApiService *PersonalAccessTokensAPIService
 	ownerId *string
 	filters *string
 }
@@ -376,7 +376,7 @@ This gets a collection of personal access tokens associated with the optional `o
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListPersonalAccessTokensRequest
 */
-func (a *PersonalAccessTokensApiService) ListPersonalAccessTokens(ctx context.Context) ApiListPersonalAccessTokensRequest {
+func (a *PersonalAccessTokensAPIService) ListPersonalAccessTokens(ctx context.Context) ApiListPersonalAccessTokensRequest {
 	return ApiListPersonalAccessTokensRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -385,7 +385,7 @@ func (a *PersonalAccessTokensApiService) ListPersonalAccessTokens(ctx context.Co
 
 // Execute executes the request
 //  @return []GetPersonalAccessTokenResponse
-func (a *PersonalAccessTokensApiService) ListPersonalAccessTokensExecute(r ApiListPersonalAccessTokensRequest) ([]GetPersonalAccessTokenResponse, *http.Response, error) {
+func (a *PersonalAccessTokensAPIService) ListPersonalAccessTokensExecute(r ApiListPersonalAccessTokensRequest) ([]GetPersonalAccessTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -393,7 +393,7 @@ func (a *PersonalAccessTokensApiService) ListPersonalAccessTokensExecute(r ApiLi
 		localVarReturnValue  []GetPersonalAccessTokenResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersonalAccessTokensApiService.ListPersonalAccessTokens")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersonalAccessTokensAPIService.ListPersonalAccessTokens")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -437,9 +437,9 @@ func (a *PersonalAccessTokensApiService) ListPersonalAccessTokensExecute(r ApiLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -520,7 +520,7 @@ func (a *PersonalAccessTokensApiService) ListPersonalAccessTokensExecute(r ApiLi
 
 type ApiPatchPersonalAccessTokenRequest struct {
 	ctx context.Context
-	ApiService *PersonalAccessTokensApiService
+	ApiService *PersonalAccessTokensAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -544,7 +544,7 @@ This performs a targeted update to the field(s) of a Personal Access Token.
  @param id The Personal Access Token id
  @return ApiPatchPersonalAccessTokenRequest
 */
-func (a *PersonalAccessTokensApiService) PatchPersonalAccessToken(ctx context.Context, id string) ApiPatchPersonalAccessTokenRequest {
+func (a *PersonalAccessTokensAPIService) PatchPersonalAccessToken(ctx context.Context, id string) ApiPatchPersonalAccessTokenRequest {
 	return ApiPatchPersonalAccessTokenRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -554,7 +554,7 @@ func (a *PersonalAccessTokensApiService) PatchPersonalAccessToken(ctx context.Co
 
 // Execute executes the request
 //  @return GetPersonalAccessTokenResponse
-func (a *PersonalAccessTokensApiService) PatchPersonalAccessTokenExecute(r ApiPatchPersonalAccessTokenRequest) (*GetPersonalAccessTokenResponse, *http.Response, error) {
+func (a *PersonalAccessTokensAPIService) PatchPersonalAccessTokenExecute(r ApiPatchPersonalAccessTokenRequest) (*GetPersonalAccessTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -562,7 +562,7 @@ func (a *PersonalAccessTokensApiService) PatchPersonalAccessTokenExecute(r ApiPa
 		localVarReturnValue  *GetPersonalAccessTokenResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersonalAccessTokensApiService.PatchPersonalAccessToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersonalAccessTokensAPIService.PatchPersonalAccessToken")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -606,9 +606,9 @@ func (a *PersonalAccessTokensApiService) PatchPersonalAccessTokenExecute(r ApiPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

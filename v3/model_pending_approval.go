@@ -759,8 +759,8 @@ func (o *PendingApproval) UnmarshalJSON(bytes []byte) (err error) {
 	varPendingApproval := _PendingApproval{}
 
 	if err = json.Unmarshal(bytes, &varPendingApproval); err == nil {
-		*o = PendingApproval(varPendingApproval)
-	}
+	*o = PendingApproval(varPendingApproval)
+}
 
 	additionalProperties := make(map[string]interface{})
 

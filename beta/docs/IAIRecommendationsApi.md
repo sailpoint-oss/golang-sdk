@@ -1,12 +1,12 @@
-# \IAIRecommendationsApi
+# \IAIRecommendationsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetRecommendations**](IAIRecommendationsApi.md#GetRecommendations) | **Post** /recommendations/request | Returns a Recommendation Based on Object
-[**GetRecommendationsConfig**](IAIRecommendationsApi.md#GetRecommendationsConfig) | **Get** /recommendations/config | Get certification recommendation config values
-[**UpdateRecommendationsConfig**](IAIRecommendationsApi.md#UpdateRecommendationsConfig) | **Put** /recommendations/config | Update certification recommendation config values
+[**GetRecommendations**](IAIRecommendationsAPI.md#GetRecommendations) | **Post** /recommendations/request | Returns a Recommendation Based on Object
+[**GetRecommendationsConfig**](IAIRecommendationsAPI.md#GetRecommendationsConfig) | **Get** /recommendations/config | Get certification recommendation config values
+[**UpdateRecommendationsConfig**](IAIRecommendationsAPI.md#UpdateRecommendationsConfig) | **Put** /recommendations/config | Update certification recommendation config values
 
 
 
@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -35,13 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRecommendationsApi.GetRecommendations(context.Background()).RecommendationRequestDto(recommendationRequestDto).Execute()
+    resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendations(context.Background()).RecommendationRequestDto(recommendationRequestDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsApi.GetRecommendations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.GetRecommendations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRecommendations`: RecommendationResponseDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsApi.GetRecommendations`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsAPI.GetRecommendations`: %v\n", resp)
 }
 ```
 
@@ -93,20 +93,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRecommendationsApi.GetRecommendationsConfig(context.Background()).Execute()
+    resp, r, err := apiClient.IAIRecommendationsAPI.GetRecommendationsConfig(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsApi.GetRecommendationsConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.GetRecommendationsConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRecommendationsConfig`: RecommendationConfigDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsApi.GetRecommendationsConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsAPI.GetRecommendationsConfig`: %v\n", resp)
 }
 ```
 
@@ -154,7 +154,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -162,13 +162,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IAIRecommendationsApi.UpdateRecommendationsConfig(context.Background()).RecommendationConfigDto(recommendationConfigDto).Execute()
+    resp, r, err := apiClient.IAIRecommendationsAPI.UpdateRecommendationsConfig(context.Background()).RecommendationConfigDto(recommendationConfigDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsApi.UpdateRecommendationsConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `IAIRecommendationsAPI.UpdateRecommendationsConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateRecommendationsConfig`: RecommendationConfigDto
-    fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsApi.UpdateRecommendationsConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `IAIRecommendationsAPI.UpdateRecommendationsConfig`: %v\n", resp)
 }
 ```
 

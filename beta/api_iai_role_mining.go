@@ -13,7 +13,7 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,12 +21,12 @@ import (
 )
 
 
-// IAIRoleMiningApiService IAIRoleMiningApi service
-type IAIRoleMiningApiService service
+// IAIRoleMiningAPIService IAIRoleMiningAPI service
+type IAIRoleMiningAPIService service
 
 type ApiCreatePotentialRoleProvisionRequestRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	minEntitlementPopularity *int32
@@ -66,7 +66,7 @@ This method starts a job to provision a potential role
  @param potentialRoleId A potential role id in a role mining session
  @return ApiCreatePotentialRoleProvisionRequestRequest
 */
-func (a *IAIRoleMiningApiService) CreatePotentialRoleProvisionRequest(ctx context.Context, sessionId string, potentialRoleId string) ApiCreatePotentialRoleProvisionRequestRequest {
+func (a *IAIRoleMiningAPIService) CreatePotentialRoleProvisionRequest(ctx context.Context, sessionId string, potentialRoleId string) ApiCreatePotentialRoleProvisionRequestRequest {
 	return ApiCreatePotentialRoleProvisionRequestRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -77,7 +77,7 @@ func (a *IAIRoleMiningApiService) CreatePotentialRoleProvisionRequest(ctx contex
 
 // Execute executes the request
 //  @return RoleMiningPotentialRoleSummary
-func (a *IAIRoleMiningApiService) CreatePotentialRoleProvisionRequestExecute(r ApiCreatePotentialRoleProvisionRequestRequest) (*RoleMiningPotentialRoleSummary, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) CreatePotentialRoleProvisionRequestExecute(r ApiCreatePotentialRoleProvisionRequestRequest) (*RoleMiningPotentialRoleSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -85,7 +85,7 @@ func (a *IAIRoleMiningApiService) CreatePotentialRoleProvisionRequestExecute(r A
 		localVarReturnValue  *RoleMiningPotentialRoleSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.CreatePotentialRoleProvisionRequest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.CreatePotentialRoleProvisionRequest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -100,9 +100,15 @@ func (a *IAIRoleMiningApiService) CreatePotentialRoleProvisionRequestExecute(r A
 
 	if r.minEntitlementPopularity != nil {
 		parameterAddToQuery(localVarQueryParams, "min-entitlement-popularity", r.minEntitlementPopularity, "")
+	} else {
+		var defaultValue int32 = 0
+		r.minEntitlementPopularity = &defaultValue
 	}
 	if r.includeCommonAccess != nil {
 		parameterAddToQuery(localVarQueryParams, "include-common-access", r.includeCommonAccess, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCommonAccess = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -133,9 +139,9 @@ func (a *IAIRoleMiningApiService) CreatePotentialRoleProvisionRequestExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -216,7 +222,7 @@ func (a *IAIRoleMiningApiService) CreatePotentialRoleProvisionRequestExecute(r A
 
 type ApiCreateRoleMiningSessionsRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	roleMiningSessionDto *RoleMiningSessionDto
 }
 
@@ -238,7 +244,7 @@ This submits a create role mining session request to the role mining application
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateRoleMiningSessionsRequest
 */
-func (a *IAIRoleMiningApiService) CreateRoleMiningSessions(ctx context.Context) ApiCreateRoleMiningSessionsRequest {
+func (a *IAIRoleMiningAPIService) CreateRoleMiningSessions(ctx context.Context) ApiCreateRoleMiningSessionsRequest {
 	return ApiCreateRoleMiningSessionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -247,7 +253,7 @@ func (a *IAIRoleMiningApiService) CreateRoleMiningSessions(ctx context.Context) 
 
 // Execute executes the request
 //  @return RoleMiningSessionResponse
-func (a *IAIRoleMiningApiService) CreateRoleMiningSessionsExecute(r ApiCreateRoleMiningSessionsRequest) (*RoleMiningSessionResponse, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) CreateRoleMiningSessionsExecute(r ApiCreateRoleMiningSessionsRequest) (*RoleMiningSessionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -255,7 +261,7 @@ func (a *IAIRoleMiningApiService) CreateRoleMiningSessionsExecute(r ApiCreateRol
 		localVarReturnValue  *RoleMiningSessionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.CreateRoleMiningSessions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.CreateRoleMiningSessions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -298,9 +304,9 @@ func (a *IAIRoleMiningApiService) CreateRoleMiningSessionsExecute(r ApiCreateRol
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -381,7 +387,7 @@ func (a *IAIRoleMiningApiService) CreateRoleMiningSessionsExecute(r ApiCreateRol
 
 type ApiDownloadRoleMiningPotentialRoleZipRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	exportId string
@@ -402,7 +408,7 @@ This endpoint downloads a completed export of information for a potential role i
  @param exportId The id of a previously run export job for this potential role
  @return ApiDownloadRoleMiningPotentialRoleZipRequest
 */
-func (a *IAIRoleMiningApiService) DownloadRoleMiningPotentialRoleZip(ctx context.Context, sessionId string, potentialRoleId string, exportId string) ApiDownloadRoleMiningPotentialRoleZipRequest {
+func (a *IAIRoleMiningAPIService) DownloadRoleMiningPotentialRoleZip(ctx context.Context, sessionId string, potentialRoleId string, exportId string) ApiDownloadRoleMiningPotentialRoleZipRequest {
 	return ApiDownloadRoleMiningPotentialRoleZipRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -414,7 +420,7 @@ func (a *IAIRoleMiningApiService) DownloadRoleMiningPotentialRoleZip(ctx context
 
 // Execute executes the request
 //  @return *os.File
-func (a *IAIRoleMiningApiService) DownloadRoleMiningPotentialRoleZipExecute(r ApiDownloadRoleMiningPotentialRoleZipRequest) (*os.File, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) DownloadRoleMiningPotentialRoleZipExecute(r ApiDownloadRoleMiningPotentialRoleZipRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -422,7 +428,7 @@ func (a *IAIRoleMiningApiService) DownloadRoleMiningPotentialRoleZipExecute(r Ap
 		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.DownloadRoleMiningPotentialRoleZip")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.DownloadRoleMiningPotentialRoleZip")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -463,9 +469,9 @@ func (a *IAIRoleMiningApiService) DownloadRoleMiningPotentialRoleZipExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -535,7 +541,7 @@ func (a *IAIRoleMiningApiService) DownloadRoleMiningPotentialRoleZipExecute(r Ap
 
 type ApiExportRoleMiningPotentialRoleRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 }
@@ -554,7 +560,7 @@ This endpoint downloads all the information for a potential role in a role minin
  @param potentialRoleId A potential role id in a role mining session
  @return ApiExportRoleMiningPotentialRoleRequest
 */
-func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiExportRoleMiningPotentialRoleRequest {
+func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiExportRoleMiningPotentialRoleRequest {
 	return ApiExportRoleMiningPotentialRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -565,7 +571,7 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRole(ctx context.Cont
 
 // Execute executes the request
 //  @return *os.File
-func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleExecute(r ApiExportRoleMiningPotentialRoleRequest) (*os.File, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleExecute(r ApiExportRoleMiningPotentialRoleRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -573,7 +579,7 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleExecute(r ApiExpo
 		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.ExportRoleMiningPotentialRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.ExportRoleMiningPotentialRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -613,9 +619,9 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleExecute(r ApiExpo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -685,7 +691,7 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleExecute(r ApiExpo
 
 type ApiExportRoleMiningPotentialRoleAsyncRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	roleMiningPotentialRoleExportRequest *RoleMiningPotentialRoleExportRequest
@@ -710,7 +716,7 @@ This endpoint uploads all the information for a potential role in a role mining 
  @param potentialRoleId A potential role id in a role mining session
  @return ApiExportRoleMiningPotentialRoleAsyncRequest
 */
-func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleAsync(ctx context.Context, sessionId string, potentialRoleId string) ApiExportRoleMiningPotentialRoleAsyncRequest {
+func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleAsync(ctx context.Context, sessionId string, potentialRoleId string) ApiExportRoleMiningPotentialRoleAsyncRequest {
 	return ApiExportRoleMiningPotentialRoleAsyncRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -721,7 +727,7 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleAsync(ctx context
 
 // Execute executes the request
 //  @return RoleMiningPotentialRoleExportResponse
-func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleAsyncExecute(r ApiExportRoleMiningPotentialRoleAsyncRequest) (*RoleMiningPotentialRoleExportResponse, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleAsyncExecute(r ApiExportRoleMiningPotentialRoleAsyncRequest) (*RoleMiningPotentialRoleExportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -729,7 +735,7 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleAsyncExecute(r Ap
 		localVarReturnValue  *RoleMiningPotentialRoleExportResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.ExportRoleMiningPotentialRoleAsync")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.ExportRoleMiningPotentialRoleAsync")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -771,9 +777,9 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleAsyncExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -843,7 +849,7 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleAsyncExecute(r Ap
 
 type ApiExportRoleMiningPotentialRoleStatusRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	exportId string
@@ -864,7 +870,7 @@ This endpoint retrieves information about the current status of a potential role
  @param exportId The id of a previously run export job for this potential role
  @return ApiExportRoleMiningPotentialRoleStatusRequest
 */
-func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleStatus(ctx context.Context, sessionId string, potentialRoleId string, exportId string) ApiExportRoleMiningPotentialRoleStatusRequest {
+func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleStatus(ctx context.Context, sessionId string, potentialRoleId string, exportId string) ApiExportRoleMiningPotentialRoleStatusRequest {
 	return ApiExportRoleMiningPotentialRoleStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -876,7 +882,7 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleStatus(ctx contex
 
 // Execute executes the request
 //  @return RoleMiningPotentialRoleExportResponse
-func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleStatusExecute(r ApiExportRoleMiningPotentialRoleStatusRequest) (*RoleMiningPotentialRoleExportResponse, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) ExportRoleMiningPotentialRoleStatusExecute(r ApiExportRoleMiningPotentialRoleStatusRequest) (*RoleMiningPotentialRoleExportResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -884,7 +890,7 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleStatusExecute(r A
 		localVarReturnValue  *RoleMiningPotentialRoleExportResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.ExportRoleMiningPotentialRoleStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.ExportRoleMiningPotentialRoleStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -925,9 +931,9 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleStatusExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -997,7 +1003,7 @@ func (a *IAIRoleMiningApiService) ExportRoleMiningPotentialRoleStatusExecute(r A
 
 type ApiGetAllPotentialRoleSummariesRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sorters *string
 	filters *string
 	offset *int32
@@ -1047,7 +1053,7 @@ Returns all potential role summaries that match the query parameters
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetAllPotentialRoleSummariesRequest
 */
-func (a *IAIRoleMiningApiService) GetAllPotentialRoleSummaries(ctx context.Context) ApiGetAllPotentialRoleSummariesRequest {
+func (a *IAIRoleMiningAPIService) GetAllPotentialRoleSummaries(ctx context.Context) ApiGetAllPotentialRoleSummariesRequest {
 	return ApiGetAllPotentialRoleSummariesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1056,7 +1062,7 @@ func (a *IAIRoleMiningApiService) GetAllPotentialRoleSummaries(ctx context.Conte
 
 // Execute executes the request
 //  @return []RoleMiningPotentialRoleSummary
-func (a *IAIRoleMiningApiService) GetAllPotentialRoleSummariesExecute(r ApiGetAllPotentialRoleSummariesRequest) ([]RoleMiningPotentialRoleSummary, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetAllPotentialRoleSummariesExecute(r ApiGetAllPotentialRoleSummariesRequest) ([]RoleMiningPotentialRoleSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1064,7 +1070,7 @@ func (a *IAIRoleMiningApiService) GetAllPotentialRoleSummariesExecute(r ApiGetAl
 		localVarReturnValue  []RoleMiningPotentialRoleSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetAllPotentialRoleSummaries")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetAllPotentialRoleSummaries")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1083,12 +1089,21 @@ func (a *IAIRoleMiningApiService) GetAllPotentialRoleSummariesExecute(r ApiGetAl
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1117,9 +1132,9 @@ func (a *IAIRoleMiningApiService) GetAllPotentialRoleSummariesExecute(r ApiGetAl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1200,7 +1215,7 @@ func (a *IAIRoleMiningApiService) GetAllPotentialRoleSummariesExecute(r ApiGetAl
 
 type ApiGetEntitlementDistributionPotentialRoleRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	includeCommonAccess *bool
@@ -1226,7 +1241,7 @@ This method returns entitlement popularity distribution for a potential role in 
  @param potentialRoleId A potential role id in a role mining session
  @return ApiGetEntitlementDistributionPotentialRoleRequest
 */
-func (a *IAIRoleMiningApiService) GetEntitlementDistributionPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiGetEntitlementDistributionPotentialRoleRequest {
+func (a *IAIRoleMiningAPIService) GetEntitlementDistributionPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiGetEntitlementDistributionPotentialRoleRequest {
 	return ApiGetEntitlementDistributionPotentialRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1237,7 +1252,7 @@ func (a *IAIRoleMiningApiService) GetEntitlementDistributionPotentialRole(ctx co
 
 // Execute executes the request
 //  @return map[string]int32
-func (a *IAIRoleMiningApiService) GetEntitlementDistributionPotentialRoleExecute(r ApiGetEntitlementDistributionPotentialRoleRequest) (map[string]int32, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetEntitlementDistributionPotentialRoleExecute(r ApiGetEntitlementDistributionPotentialRoleRequest) (map[string]int32, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1245,7 +1260,7 @@ func (a *IAIRoleMiningApiService) GetEntitlementDistributionPotentialRoleExecute
 		localVarReturnValue  map[string]int32
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetEntitlementDistributionPotentialRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetEntitlementDistributionPotentialRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1288,9 +1303,9 @@ func (a *IAIRoleMiningApiService) GetEntitlementDistributionPotentialRoleExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1360,7 +1375,7 @@ func (a *IAIRoleMiningApiService) GetEntitlementDistributionPotentialRoleExecute
 
 type ApiGetEntitlementsPotentialRoleRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	includeCommonAccess *bool
@@ -1421,7 +1436,7 @@ This method returns entitlements for a potential role in a role mining session.
  @param potentialRoleId A potential role id in a role mining session
  @return ApiGetEntitlementsPotentialRoleRequest
 */
-func (a *IAIRoleMiningApiService) GetEntitlementsPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiGetEntitlementsPotentialRoleRequest {
+func (a *IAIRoleMiningAPIService) GetEntitlementsPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiGetEntitlementsPotentialRoleRequest {
 	return ApiGetEntitlementsPotentialRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1432,7 +1447,7 @@ func (a *IAIRoleMiningApiService) GetEntitlementsPotentialRole(ctx context.Conte
 
 // Execute executes the request
 //  @return []RoleMiningEntitlement
-func (a *IAIRoleMiningApiService) GetEntitlementsPotentialRoleExecute(r ApiGetEntitlementsPotentialRoleRequest) ([]RoleMiningEntitlement, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetEntitlementsPotentialRoleExecute(r ApiGetEntitlementsPotentialRoleRequest) ([]RoleMiningEntitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1440,7 +1455,7 @@ func (a *IAIRoleMiningApiService) GetEntitlementsPotentialRoleExecute(r ApiGetEn
 		localVarReturnValue  []RoleMiningEntitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetEntitlementsPotentialRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetEntitlementsPotentialRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1464,12 +1479,21 @@ func (a *IAIRoleMiningApiService) GetEntitlementsPotentialRoleExecute(r ApiGetEn
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1498,9 +1522,9 @@ func (a *IAIRoleMiningApiService) GetEntitlementsPotentialRoleExecute(r ApiGetEn
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1570,7 +1594,7 @@ func (a *IAIRoleMiningApiService) GetEntitlementsPotentialRoleExecute(r ApiGetEn
 
 type ApiGetExcludedEntitlementsPotentialRoleRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	sorters *string
@@ -1624,7 +1648,7 @@ This method returns excluded entitlements for a potential role in a role mining 
  @param potentialRoleId A potential role id in a role mining session
  @return ApiGetExcludedEntitlementsPotentialRoleRequest
 */
-func (a *IAIRoleMiningApiService) GetExcludedEntitlementsPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiGetExcludedEntitlementsPotentialRoleRequest {
+func (a *IAIRoleMiningAPIService) GetExcludedEntitlementsPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiGetExcludedEntitlementsPotentialRoleRequest {
 	return ApiGetExcludedEntitlementsPotentialRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1635,7 +1659,7 @@ func (a *IAIRoleMiningApiService) GetExcludedEntitlementsPotentialRole(ctx conte
 
 // Execute executes the request
 //  @return []RoleMiningEntitlement
-func (a *IAIRoleMiningApiService) GetExcludedEntitlementsPotentialRoleExecute(r ApiGetExcludedEntitlementsPotentialRoleRequest) ([]RoleMiningEntitlement, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetExcludedEntitlementsPotentialRoleExecute(r ApiGetExcludedEntitlementsPotentialRoleRequest) ([]RoleMiningEntitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1643,7 +1667,7 @@ func (a *IAIRoleMiningApiService) GetExcludedEntitlementsPotentialRoleExecute(r 
 		localVarReturnValue  []RoleMiningEntitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetExcludedEntitlementsPotentialRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetExcludedEntitlementsPotentialRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1664,12 +1688,21 @@ func (a *IAIRoleMiningApiService) GetExcludedEntitlementsPotentialRoleExecute(r 
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1698,9 +1731,9 @@ func (a *IAIRoleMiningApiService) GetExcludedEntitlementsPotentialRoleExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1770,7 +1803,7 @@ func (a *IAIRoleMiningApiService) GetExcludedEntitlementsPotentialRoleExecute(r 
 
 type ApiGetIdentitiesPotentialRoleRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	sorters *string
@@ -1824,7 +1857,7 @@ This method returns identities for a potential role in a role mining session.
  @param potentialRoleId A potential role id in a role mining session
  @return ApiGetIdentitiesPotentialRoleRequest
 */
-func (a *IAIRoleMiningApiService) GetIdentitiesPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiGetIdentitiesPotentialRoleRequest {
+func (a *IAIRoleMiningAPIService) GetIdentitiesPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiGetIdentitiesPotentialRoleRequest {
 	return ApiGetIdentitiesPotentialRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1835,7 +1868,7 @@ func (a *IAIRoleMiningApiService) GetIdentitiesPotentialRole(ctx context.Context
 
 // Execute executes the request
 //  @return []RoleMiningIdentity
-func (a *IAIRoleMiningApiService) GetIdentitiesPotentialRoleExecute(r ApiGetIdentitiesPotentialRoleRequest) ([]RoleMiningIdentity, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetIdentitiesPotentialRoleExecute(r ApiGetIdentitiesPotentialRoleRequest) ([]RoleMiningIdentity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1843,7 +1876,7 @@ func (a *IAIRoleMiningApiService) GetIdentitiesPotentialRoleExecute(r ApiGetIden
 		localVarReturnValue  []RoleMiningIdentity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetIdentitiesPotentialRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetIdentitiesPotentialRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1864,12 +1897,21 @@ func (a *IAIRoleMiningApiService) GetIdentitiesPotentialRoleExecute(r ApiGetIden
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1898,9 +1940,9 @@ func (a *IAIRoleMiningApiService) GetIdentitiesPotentialRoleExecute(r ApiGetIden
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1970,7 +2012,7 @@ func (a *IAIRoleMiningApiService) GetIdentitiesPotentialRoleExecute(r ApiGetIden
 
 type ApiGetPotentialRoleRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 }
@@ -1989,7 +2031,7 @@ This method returns a specific potential role for a role mining session.
  @param potentialRoleId A potential role id in a role mining session
  @return ApiGetPotentialRoleRequest
 */
-func (a *IAIRoleMiningApiService) GetPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiGetPotentialRoleRequest {
+func (a *IAIRoleMiningAPIService) GetPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiGetPotentialRoleRequest {
 	return ApiGetPotentialRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2000,7 +2042,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRole(ctx context.Context, sessionI
 
 // Execute executes the request
 //  @return RoleMiningPotentialRole
-func (a *IAIRoleMiningApiService) GetPotentialRoleExecute(r ApiGetPotentialRoleRequest) (*RoleMiningPotentialRole, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetPotentialRoleExecute(r ApiGetPotentialRoleRequest) (*RoleMiningPotentialRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2008,7 +2050,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleExecute(r ApiGetPotentialRoleR
 		localVarReturnValue  *RoleMiningPotentialRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetPotentialRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetPotentialRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2048,9 +2090,9 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleExecute(r ApiGetPotentialRoleR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2131,7 +2173,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleExecute(r ApiGetPotentialRoleR
 
 type ApiGetPotentialRoleApplicationsRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	offset *int32
@@ -2171,7 +2213,7 @@ This method returns the applications of a potential role for a role mining sessi
  @param potentialRoleId A potential role id in a role mining session
  @return ApiGetPotentialRoleApplicationsRequest
 */
-func (a *IAIRoleMiningApiService) GetPotentialRoleApplications(ctx context.Context, sessionId string, potentialRoleId string) ApiGetPotentialRoleApplicationsRequest {
+func (a *IAIRoleMiningAPIService) GetPotentialRoleApplications(ctx context.Context, sessionId string, potentialRoleId string) ApiGetPotentialRoleApplicationsRequest {
 	return ApiGetPotentialRoleApplicationsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2182,7 +2224,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleApplications(ctx context.Conte
 
 // Execute executes the request
 //  @return []RoleMiningPotentialRoleApplication
-func (a *IAIRoleMiningApiService) GetPotentialRoleApplicationsExecute(r ApiGetPotentialRoleApplicationsRequest) ([]RoleMiningPotentialRoleApplication, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetPotentialRoleApplicationsExecute(r ApiGetPotentialRoleApplicationsRequest) ([]RoleMiningPotentialRoleApplication, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2190,7 +2232,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleApplicationsExecute(r ApiGetPo
 		localVarReturnValue  []RoleMiningPotentialRoleApplication
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetPotentialRoleApplications")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetPotentialRoleApplications")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2205,12 +2247,21 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleApplicationsExecute(r ApiGetPo
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2239,9 +2290,9 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleApplicationsExecute(r ApiGetPo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2311,7 +2362,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleApplicationsExecute(r ApiGetPo
 
 type ApiGetPotentialRoleSourceIdentityUsageRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	potentialRoleId string
 	sourceId string
 	sorters *string
@@ -2358,7 +2409,7 @@ This method returns source usageCount (as number of days in the last 90 days) fo
  @param sourceId A source id
  @return ApiGetPotentialRoleSourceIdentityUsageRequest
 */
-func (a *IAIRoleMiningApiService) GetPotentialRoleSourceIdentityUsage(ctx context.Context, potentialRoleId string, sourceId string) ApiGetPotentialRoleSourceIdentityUsageRequest {
+func (a *IAIRoleMiningAPIService) GetPotentialRoleSourceIdentityUsage(ctx context.Context, potentialRoleId string, sourceId string) ApiGetPotentialRoleSourceIdentityUsageRequest {
 	return ApiGetPotentialRoleSourceIdentityUsageRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2369,7 +2420,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleSourceIdentityUsage(ctx contex
 
 // Execute executes the request
 //  @return []RoleMiningPotentialRoleSourceUsage
-func (a *IAIRoleMiningApiService) GetPotentialRoleSourceIdentityUsageExecute(r ApiGetPotentialRoleSourceIdentityUsageRequest) ([]RoleMiningPotentialRoleSourceUsage, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetPotentialRoleSourceIdentityUsageExecute(r ApiGetPotentialRoleSourceIdentityUsageRequest) ([]RoleMiningPotentialRoleSourceUsage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2377,7 +2428,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleSourceIdentityUsageExecute(r A
 		localVarReturnValue  []RoleMiningPotentialRoleSourceUsage
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetPotentialRoleSourceIdentityUsage")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetPotentialRoleSourceIdentityUsage")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2395,12 +2446,21 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleSourceIdentityUsageExecute(r A
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2429,9 +2489,9 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleSourceIdentityUsageExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2512,7 +2572,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleSourceIdentityUsageExecute(r A
 
 type ApiGetPotentialRoleSummariesRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	sorters *string
 	filters *string
@@ -2564,7 +2624,7 @@ This method returns the potential role summaries for a role mining session.
  @param sessionId The role mining session id
  @return ApiGetPotentialRoleSummariesRequest
 */
-func (a *IAIRoleMiningApiService) GetPotentialRoleSummaries(ctx context.Context, sessionId string) ApiGetPotentialRoleSummariesRequest {
+func (a *IAIRoleMiningAPIService) GetPotentialRoleSummaries(ctx context.Context, sessionId string) ApiGetPotentialRoleSummariesRequest {
 	return ApiGetPotentialRoleSummariesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2574,7 +2634,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleSummaries(ctx context.Context,
 
 // Execute executes the request
 //  @return []RoleMiningPotentialRoleSummary
-func (a *IAIRoleMiningApiService) GetPotentialRoleSummariesExecute(r ApiGetPotentialRoleSummariesRequest) ([]RoleMiningPotentialRoleSummary, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetPotentialRoleSummariesExecute(r ApiGetPotentialRoleSummariesRequest) ([]RoleMiningPotentialRoleSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2582,7 +2642,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleSummariesExecute(r ApiGetPoten
 		localVarReturnValue  []RoleMiningPotentialRoleSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetPotentialRoleSummaries")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetPotentialRoleSummaries")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2602,12 +2662,21 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleSummariesExecute(r ApiGetPoten
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2636,9 +2705,9 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleSummariesExecute(r ApiGetPoten
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2719,7 +2788,7 @@ func (a *IAIRoleMiningApiService) GetPotentialRoleSummariesExecute(r ApiGetPoten
 
 type ApiGetRoleMiningPotentialRoleRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	potentialRoleId string
 }
 
@@ -2736,7 +2805,7 @@ This method returns a specific potential role.
  @param potentialRoleId A potential role id
  @return ApiGetRoleMiningPotentialRoleRequest
 */
-func (a *IAIRoleMiningApiService) GetRoleMiningPotentialRole(ctx context.Context, potentialRoleId string) ApiGetRoleMiningPotentialRoleRequest {
+func (a *IAIRoleMiningAPIService) GetRoleMiningPotentialRole(ctx context.Context, potentialRoleId string) ApiGetRoleMiningPotentialRoleRequest {
 	return ApiGetRoleMiningPotentialRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2746,7 +2815,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningPotentialRole(ctx context.Context
 
 // Execute executes the request
 //  @return RoleMiningPotentialRole
-func (a *IAIRoleMiningApiService) GetRoleMiningPotentialRoleExecute(r ApiGetRoleMiningPotentialRoleRequest) (*RoleMiningPotentialRole, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetRoleMiningPotentialRoleExecute(r ApiGetRoleMiningPotentialRoleRequest) (*RoleMiningPotentialRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2754,7 +2823,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningPotentialRoleExecute(r ApiGetRole
 		localVarReturnValue  *RoleMiningPotentialRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetRoleMiningPotentialRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetRoleMiningPotentialRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2793,9 +2862,9 @@ func (a *IAIRoleMiningApiService) GetRoleMiningPotentialRoleExecute(r ApiGetRole
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2876,7 +2945,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningPotentialRoleExecute(r ApiGetRole
 
 type ApiGetRoleMiningSessionRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 }
 
@@ -2893,7 +2962,7 @@ The method retrieves a role mining session.
  @param sessionId The role mining session id to be retrieved.
  @return ApiGetRoleMiningSessionRequest
 */
-func (a *IAIRoleMiningApiService) GetRoleMiningSession(ctx context.Context, sessionId string) ApiGetRoleMiningSessionRequest {
+func (a *IAIRoleMiningAPIService) GetRoleMiningSession(ctx context.Context, sessionId string) ApiGetRoleMiningSessionRequest {
 	return ApiGetRoleMiningSessionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2903,7 +2972,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSession(ctx context.Context, sess
 
 // Execute executes the request
 //  @return RoleMiningSessionResponse
-func (a *IAIRoleMiningApiService) GetRoleMiningSessionExecute(r ApiGetRoleMiningSessionRequest) (*RoleMiningSessionResponse, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetRoleMiningSessionExecute(r ApiGetRoleMiningSessionRequest) (*RoleMiningSessionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2911,7 +2980,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionExecute(r ApiGetRoleMining
 		localVarReturnValue  *RoleMiningSessionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetRoleMiningSession")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetRoleMiningSession")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2950,9 +3019,9 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionExecute(r ApiGetRoleMining
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3044,7 +3113,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionExecute(r ApiGetRoleMining
 
 type ApiGetRoleMiningSessionStatusRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 }
 
@@ -3061,7 +3130,7 @@ This method returns a role mining session status for a customer.
  @param sessionId The role mining session id
  @return ApiGetRoleMiningSessionStatusRequest
 */
-func (a *IAIRoleMiningApiService) GetRoleMiningSessionStatus(ctx context.Context, sessionId string) ApiGetRoleMiningSessionStatusRequest {
+func (a *IAIRoleMiningAPIService) GetRoleMiningSessionStatus(ctx context.Context, sessionId string) ApiGetRoleMiningSessionStatusRequest {
 	return ApiGetRoleMiningSessionStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3071,7 +3140,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionStatus(ctx context.Context
 
 // Execute executes the request
 //  @return RoleMiningSessionStatus
-func (a *IAIRoleMiningApiService) GetRoleMiningSessionStatusExecute(r ApiGetRoleMiningSessionStatusRequest) (*RoleMiningSessionStatus, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetRoleMiningSessionStatusExecute(r ApiGetRoleMiningSessionStatusRequest) (*RoleMiningSessionStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3079,7 +3148,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionStatusExecute(r ApiGetRole
 		localVarReturnValue  *RoleMiningSessionStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetRoleMiningSessionStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetRoleMiningSessionStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3118,9 +3187,9 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionStatusExecute(r ApiGetRole
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3190,7 +3259,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionStatusExecute(r ApiGetRole
 
 type ApiGetRoleMiningSessionsRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	filters *string
 	sorters *string
 	offset *int32
@@ -3240,7 +3309,7 @@ Returns all role mining sessions that match the query parameters
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetRoleMiningSessionsRequest
 */
-func (a *IAIRoleMiningApiService) GetRoleMiningSessions(ctx context.Context) ApiGetRoleMiningSessionsRequest {
+func (a *IAIRoleMiningAPIService) GetRoleMiningSessions(ctx context.Context) ApiGetRoleMiningSessionsRequest {
 	return ApiGetRoleMiningSessionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3249,7 +3318,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessions(ctx context.Context) Api
 
 // Execute executes the request
 //  @return []RoleMiningSessionDto
-func (a *IAIRoleMiningApiService) GetRoleMiningSessionsExecute(r ApiGetRoleMiningSessionsRequest) ([]RoleMiningSessionDto, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetRoleMiningSessionsExecute(r ApiGetRoleMiningSessionsRequest) ([]RoleMiningSessionDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3257,7 +3326,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionsExecute(r ApiGetRoleMinin
 		localVarReturnValue  []RoleMiningSessionDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetRoleMiningSessions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetRoleMiningSessions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3276,12 +3345,21 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionsExecute(r ApiGetRoleMinin
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3310,9 +3388,9 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionsExecute(r ApiGetRoleMinin
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3393,7 +3471,7 @@ func (a *IAIRoleMiningApiService) GetRoleMiningSessionsExecute(r ApiGetRoleMinin
 
 type ApiGetSavedPotentialRolesRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sorters *string
 	offset *int32
 	limit *int32
@@ -3436,7 +3514,7 @@ This method returns all saved potential roles (draft roles).
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSavedPotentialRolesRequest
 */
-func (a *IAIRoleMiningApiService) GetSavedPotentialRoles(ctx context.Context) ApiGetSavedPotentialRolesRequest {
+func (a *IAIRoleMiningAPIService) GetSavedPotentialRoles(ctx context.Context) ApiGetSavedPotentialRolesRequest {
 	return ApiGetSavedPotentialRolesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3445,7 +3523,7 @@ func (a *IAIRoleMiningApiService) GetSavedPotentialRoles(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return []RoleMiningSessionDraftRoleDto
-func (a *IAIRoleMiningApiService) GetSavedPotentialRolesExecute(r ApiGetSavedPotentialRolesRequest) ([]RoleMiningSessionDraftRoleDto, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) GetSavedPotentialRolesExecute(r ApiGetSavedPotentialRolesRequest) ([]RoleMiningSessionDraftRoleDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3453,7 +3531,7 @@ func (a *IAIRoleMiningApiService) GetSavedPotentialRolesExecute(r ApiGetSavedPot
 		localVarReturnValue  []RoleMiningSessionDraftRoleDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.GetSavedPotentialRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.GetSavedPotentialRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3469,12 +3547,21 @@ func (a *IAIRoleMiningApiService) GetSavedPotentialRolesExecute(r ApiGetSavedPot
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3503,9 +3590,9 @@ func (a *IAIRoleMiningApiService) GetSavedPotentialRolesExecute(r ApiGetSavedPot
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3586,7 +3673,7 @@ func (a *IAIRoleMiningApiService) GetSavedPotentialRolesExecute(r ApiGetSavedPot
 
 type ApiPatchPotentialRoleRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	patchPotentialRoleRequestInner *[]PatchPotentialRoleRequestInner
@@ -3623,7 +3710,7 @@ The following fields can be modified:
  @param potentialRoleId The potential role summary id
  @return ApiPatchPotentialRoleRequest
 */
-func (a *IAIRoleMiningApiService) PatchPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiPatchPotentialRoleRequest {
+func (a *IAIRoleMiningAPIService) PatchPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiPatchPotentialRoleRequest {
 	return ApiPatchPotentialRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3634,7 +3721,7 @@ func (a *IAIRoleMiningApiService) PatchPotentialRole(ctx context.Context, sessio
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *IAIRoleMiningApiService) PatchPotentialRoleExecute(r ApiPatchPotentialRoleRequest) (map[string]interface{}, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) PatchPotentialRoleExecute(r ApiPatchPotentialRoleRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -3642,7 +3729,7 @@ func (a *IAIRoleMiningApiService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.PatchPotentialRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.PatchPotentialRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3687,9 +3774,9 @@ func (a *IAIRoleMiningApiService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3781,7 +3868,7 @@ func (a *IAIRoleMiningApiService) PatchPotentialRoleExecute(r ApiPatchPotentialR
 
 type ApiPatchPotentialRole_0Request struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	patchPotentialRoleRequestInner *[]PatchPotentialRoleRequestInner
@@ -3818,7 +3905,7 @@ The following fields can be modified:
  @param potentialRoleId The potential role summary id
  @return ApiPatchPotentialRole_0Request
 */
-func (a *IAIRoleMiningApiService) PatchPotentialRole_1(ctx context.Context, sessionId string, potentialRoleId string) ApiPatchPotentialRole_0Request {
+func (a *IAIRoleMiningAPIService) PatchPotentialRole_1(ctx context.Context, sessionId string, potentialRoleId string) ApiPatchPotentialRole_0Request {
 	return ApiPatchPotentialRole_0Request{
 		ApiService: a,
 		ctx: ctx,
@@ -3829,7 +3916,7 @@ func (a *IAIRoleMiningApiService) PatchPotentialRole_1(ctx context.Context, sess
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *IAIRoleMiningApiService) PatchPotentialRole_1Execute(r ApiPatchPotentialRole_0Request) (map[string]interface{}, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) PatchPotentialRole_1Execute(r ApiPatchPotentialRole_0Request) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -3837,7 +3924,7 @@ func (a *IAIRoleMiningApiService) PatchPotentialRole_1Execute(r ApiPatchPotentia
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.PatchPotentialRole_1")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.PatchPotentialRole_1")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3882,9 +3969,9 @@ func (a *IAIRoleMiningApiService) PatchPotentialRole_1Execute(r ApiPatchPotentia
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3976,7 +4063,7 @@ func (a *IAIRoleMiningApiService) PatchPotentialRole_1Execute(r ApiPatchPotentia
 
 type ApiPatchRoleMiningSessionRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -4000,7 +4087,7 @@ The  method updates an existing role mining session using PATCH. Supports op in 
  @param sessionId The role mining session id to be patched
  @return ApiPatchRoleMiningSessionRequest
 */
-func (a *IAIRoleMiningApiService) PatchRoleMiningSession(ctx context.Context, sessionId string) ApiPatchRoleMiningSessionRequest {
+func (a *IAIRoleMiningAPIService) PatchRoleMiningSession(ctx context.Context, sessionId string) ApiPatchRoleMiningSessionRequest {
 	return ApiPatchRoleMiningSessionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4010,7 +4097,7 @@ func (a *IAIRoleMiningApiService) PatchRoleMiningSession(ctx context.Context, se
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *IAIRoleMiningApiService) PatchRoleMiningSessionExecute(r ApiPatchRoleMiningSessionRequest) (map[string]interface{}, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) PatchRoleMiningSessionExecute(r ApiPatchRoleMiningSessionRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -4018,7 +4105,7 @@ func (a *IAIRoleMiningApiService) PatchRoleMiningSessionExecute(r ApiPatchRoleMi
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.PatchRoleMiningSession")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.PatchRoleMiningSession")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4062,9 +4149,9 @@ func (a *IAIRoleMiningApiService) PatchRoleMiningSessionExecute(r ApiPatchRoleMi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4156,7 +4243,7 @@ func (a *IAIRoleMiningApiService) PatchRoleMiningSessionExecute(r ApiPatchRoleMi
 
 type ApiUpdateEntitlementsPotentialRoleRequest struct {
 	ctx context.Context
-	ApiService *IAIRoleMiningApiService
+	ApiService *IAIRoleMiningAPIService
 	sessionId string
 	potentialRoleId string
 	roleMiningPotentialRoleEditEntitlements *RoleMiningPotentialRoleEditEntitlements
@@ -4182,7 +4269,7 @@ This endpoint adds or removes entitlements from an exclusion list for a potentia
  @param potentialRoleId A potential role id in a role mining session
  @return ApiUpdateEntitlementsPotentialRoleRequest
 */
-func (a *IAIRoleMiningApiService) UpdateEntitlementsPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiUpdateEntitlementsPotentialRoleRequest {
+func (a *IAIRoleMiningAPIService) UpdateEntitlementsPotentialRole(ctx context.Context, sessionId string, potentialRoleId string) ApiUpdateEntitlementsPotentialRoleRequest {
 	return ApiUpdateEntitlementsPotentialRoleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -4193,7 +4280,7 @@ func (a *IAIRoleMiningApiService) UpdateEntitlementsPotentialRole(ctx context.Co
 
 // Execute executes the request
 //  @return RoleMiningPotentialRole
-func (a *IAIRoleMiningApiService) UpdateEntitlementsPotentialRoleExecute(r ApiUpdateEntitlementsPotentialRoleRequest) (*RoleMiningPotentialRole, *http.Response, error) {
+func (a *IAIRoleMiningAPIService) UpdateEntitlementsPotentialRoleExecute(r ApiUpdateEntitlementsPotentialRoleRequest) (*RoleMiningPotentialRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4201,7 +4288,7 @@ func (a *IAIRoleMiningApiService) UpdateEntitlementsPotentialRoleExecute(r ApiUp
 		localVarReturnValue  *RoleMiningPotentialRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningApiService.UpdateEntitlementsPotentialRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRoleMiningAPIService.UpdateEntitlementsPotentialRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4246,9 +4333,9 @@ func (a *IAIRoleMiningApiService) UpdateEntitlementsPotentialRoleExecute(r ApiUp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

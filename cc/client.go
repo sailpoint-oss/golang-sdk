@@ -18,7 +18,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
+"io/ioutil"
 	"log"
 	"mime/multipart"
 	"net/http"
@@ -34,7 +34,7 @@ import (
 	"unicode/utf8"
 
 	"golang.org/x/oauth2"
-	retryablehttp "github.com/hashicorp/go-retryablehttp"
+retryablehttp "github.com/hashicorp/go-retryablehttp"
 )
 
 var (
@@ -52,19 +52,19 @@ type APIClient struct {
 
 	// API Services
 
-	AccountsApi *AccountsApiService
+	AccountsAPI *AccountsAPIService
 
-	ApplicationsApi *ApplicationsApiService
+	ApplicationsAPI *ApplicationsAPIService
 
-	ConnectorsApi *ConnectorsApiService
+	ConnectorsAPI *ConnectorsAPIService
 
-	SourcesAccountsApi *SourcesAccountsApiService
+	SourcesAccountsAPI *SourcesAccountsAPIService
 
-	SourcesAggregationApi *SourcesAggregationApiService
+	SourcesAggregationAPI *SourcesAggregationAPIService
 
-	SystemApi *SystemApiService
+	SystemAPI *SystemAPIService
 
-	UserApi *UserApiService
+	UserAPI *UserAPIService
 }
 
 type service struct {
@@ -83,13 +83,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.AccountsApi = (*AccountsApiService)(&c.common)
-	c.ApplicationsApi = (*ApplicationsApiService)(&c.common)
-	c.ConnectorsApi = (*ConnectorsApiService)(&c.common)
-	c.SourcesAccountsApi = (*SourcesAccountsApiService)(&c.common)
-	c.SourcesAggregationApi = (*SourcesAggregationApiService)(&c.common)
-	c.SystemApi = (*SystemApiService)(&c.common)
-	c.UserApi = (*UserApiService)(&c.common)
+	c.AccountsAPI = (*AccountsAPIService)(&c.common)
+	c.ApplicationsAPI = (*ApplicationsAPIService)(&c.common)
+	c.ConnectorsAPI = (*ConnectorsAPIService)(&c.common)
+	c.SourcesAccountsAPI = (*SourcesAccountsAPIService)(&c.common)
+	c.SourcesAggregationAPI = (*SourcesAggregationAPIService)(&c.common)
+	c.SystemAPI = (*SystemAPIService)(&c.common)
+	c.UserAPI = (*UserAPIService)(&c.common)
 
 	return c
 }
@@ -431,7 +431,7 @@ func (c *APIClient) prepareRequest(
 
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-	localVarRequest.Header.Add("X-SailPoint-SDK", "1.2.0")
+localVarRequest.Header.Add("X-SailPoint-SDK", "1.2.0")
 
 	if ctx != nil {
 		// add context to the request
@@ -449,7 +449,7 @@ func (c *APIClient) prepareRequest(
 
 			latestToken.SetAuthHeader(localVarRequest)
 		}
-		if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
+if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
 			auth, err := getAccessToken(c.cfg.ClientId, c.cfg.ClientSecret, c.cfg.TokenURL)
 			if err != nil {
 				return nil, err
@@ -739,16 +739,16 @@ func formatErrorMessage(status string, v interface{}) string {
 	str := ""
 	metaValue := reflect.ValueOf(v).Elem()
 
-	field := metaValue.FieldByName("Title")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s", field.Interface())
-	}
+			field := metaValue.FieldByName("Title")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s", field.Interface())
+		}
 
-	field = metaValue.FieldByName("Detail")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s (%s)", str, field.Interface())
-	}
+		field = metaValue.FieldByName("Detail")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s (%s)", str, field.Interface())
+			}
 
-	// status title (detail)
+// status title (detail)
 	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
 }

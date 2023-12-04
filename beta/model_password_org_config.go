@@ -227,8 +227,8 @@ func (o *PasswordOrgConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varPasswordOrgConfig := _PasswordOrgConfig{}
 
 	if err = json.Unmarshal(bytes, &varPasswordOrgConfig); err == nil {
-		*o = PasswordOrgConfig(varPasswordOrgConfig)
-	}
+	*o = PasswordOrgConfig(varPasswordOrgConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -174,8 +174,8 @@ func (o *StartInvocationInput) UnmarshalJSON(bytes []byte) (err error) {
 	varStartInvocationInput := _StartInvocationInput{}
 
 	if err = json.Unmarshal(bytes, &varStartInvocationInput); err == nil {
-		*o = StartInvocationInput(varStartInvocationInput)
-	}
+	*o = StartInvocationInput(varStartInvocationInput)
+}
 
 	additionalProperties := make(map[string]interface{})
 

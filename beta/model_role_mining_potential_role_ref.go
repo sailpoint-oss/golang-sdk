@@ -137,8 +137,8 @@ func (o *RoleMiningPotentialRoleRef) UnmarshalJSON(bytes []byte) (err error) {
 	varRoleMiningPotentialRoleRef := _RoleMiningPotentialRoleRef{}
 
 	if err = json.Unmarshal(bytes, &varRoleMiningPotentialRoleRef); err == nil {
-		*o = RoleMiningPotentialRoleRef(varRoleMiningPotentialRoleRef)
-	}
+	*o = RoleMiningPotentialRoleRef(varRoleMiningPotentialRoleRef)
+}
 
 	additionalProperties := make(map[string]interface{})
 

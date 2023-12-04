@@ -1,12 +1,12 @@
-# \GlobalTenantSecuritySettingsApi
+# \GlobalTenantSecuritySettingsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAuthOrgNetworkConfig**](GlobalTenantSecuritySettingsApi.md#CreateAuthOrgNetworkConfig) | **Post** /auth-org/network-config | Create security network configuration.
-[**GetAuthOrgNetworkConfig**](GlobalTenantSecuritySettingsApi.md#GetAuthOrgNetworkConfig) | **Get** /auth-org/network-config | Get security network configuration.
-[**PatchAuthOrgNetworkConfig**](GlobalTenantSecuritySettingsApi.md#PatchAuthOrgNetworkConfig) | **Patch** /auth-org/network-config | Update security network configuration.
+[**CreateAuthOrgNetworkConfig**](GlobalTenantSecuritySettingsAPI.md#CreateAuthOrgNetworkConfig) | **Post** /auth-org/network-config | Create security network configuration.
+[**GetAuthOrgNetworkConfig**](GlobalTenantSecuritySettingsAPI.md#GetAuthOrgNetworkConfig) | **Get** /auth-org/network-config | Get security network configuration.
+[**PatchAuthOrgNetworkConfig**](GlobalTenantSecuritySettingsAPI.md#PatchAuthOrgNetworkConfig) | **Patch** /auth-org/network-config | Update security network configuration.
 
 
 
@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -35,13 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettingsApi.CreateAuthOrgNetworkConfig(context.Background()).NetworkConfiguration(networkConfiguration).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfig(context.Background()).NetworkConfiguration(networkConfiguration).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsApi.CreateAuthOrgNetworkConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateAuthOrgNetworkConfig`: NetworkConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsApi.CreateAuthOrgNetworkConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfig`: %v\n", resp)
 }
 ```
 
@@ -93,20 +93,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettingsApi.GetAuthOrgNetworkConfig(context.Background()).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfig(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsApi.GetAuthOrgNetworkConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAuthOrgNetworkConfig`: NetworkConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsApi.GetAuthOrgNetworkConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfig`: %v\n", resp)
 }
 ```
 
@@ -154,7 +154,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -162,13 +162,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GlobalTenantSecuritySettingsApi.PatchAuthOrgNetworkConfig(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfig(context.Background()).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsApi.PatchAuthOrgNetworkConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchAuthOrgNetworkConfig`: NetworkConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsApi.PatchAuthOrgNetworkConfig`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfig`: %v\n", resp)
 }
 ```
 

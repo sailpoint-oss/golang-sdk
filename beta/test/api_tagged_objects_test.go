@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing TaggedObjectsApiService
+Testing TaggedObjectsAPIService
 
 */
 
@@ -17,85 +17,44 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_TaggedObjectsApiService(t *testing.T) {
+func Test_beta_TaggedObjectsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test TaggedObjectsApiService DeleteTaggedObject", func(t *testing.T) {
+	t.Run("Test TaggedObjectsAPIService DeleteTaggedObject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var type_ string
 		var id string
 
-		httpRes, err := apiClient.BETA.TaggedObjectsApi.DeleteTaggedObject(context.Background(), type_, id).Execute()
+		httpRes, err := apiClient.BETA.TaggedObjectsAPI.DeleteTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test TaggedObjectsApiService DeleteTagsToManyObject", func(t *testing.T) {
+	t.Run("Test TaggedObjectsAPIService DeleteTagsToManyObject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BETA.TaggedObjectsApi.DeleteTagsToManyObject(context.Background()).Execute()
+		httpRes, err := apiClient.BETA.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test TaggedObjectsApiService GetTaggedObject", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var type_ string
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.TaggedObjectsApi.GetTaggedObject(context.Background(), type_, id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TaggedObjectsApiService ListTaggedObjects", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.TaggedObjectsApi.ListTaggedObjects(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TaggedObjectsApiService ListTaggedObjectsByType", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var type_ string
-
-		resp, httpRes, err := apiClient.BETA.TaggedObjectsApi.ListTaggedObjectsByType(context.Background(), type_).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TaggedObjectsApiService PutTaggedObject", func(t *testing.T) {
+	t.Run("Test TaggedObjectsAPIService GetTaggedObject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var type_ string
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.TaggedObjectsApi.PutTaggedObject(context.Background(), type_, id).Execute()
+		resp, httpRes, err := apiClient.BETA.TaggedObjectsAPI.GetTaggedObject(context.Background(), type_, id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -103,22 +62,63 @@ func Test_beta_TaggedObjectsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TaggedObjectsApiService SetTagToObject", func(t *testing.T) {
+	t.Run("Test TaggedObjectsAPIService ListTaggedObjects", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BETA.TaggedObjectsApi.SetTagToObject(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.TaggedObjectsAPI.ListTaggedObjects(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TaggedObjectsAPIService ListTaggedObjectsByType", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var type_ string
+
+		resp, httpRes, err := apiClient.BETA.TaggedObjectsAPI.ListTaggedObjectsByType(context.Background(), type_).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TaggedObjectsAPIService PutTaggedObject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var type_ string
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.TaggedObjectsAPI.PutTaggedObject(context.Background(), type_, id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TaggedObjectsAPIService SetTagToObject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.BETA.TaggedObjectsAPI.SetTagToObject(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test TaggedObjectsApiService SetTagsToManyObjects", func(t *testing.T) {
+	t.Run("Test TaggedObjectsAPIService SetTagsToManyObjects", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.TaggedObjectsApi.SetTagsToManyObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

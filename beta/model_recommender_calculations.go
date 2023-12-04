@@ -358,8 +358,8 @@ func (o *RecommenderCalculations) UnmarshalJSON(bytes []byte) (err error) {
 	varRecommenderCalculations := _RecommenderCalculations{}
 
 	if err = json.Unmarshal(bytes, &varRecommenderCalculations); err == nil {
-		*o = RecommenderCalculations(varRecommenderCalculations)
-	}
+	*o = RecommenderCalculations(varRecommenderCalculations)
+}
 
 	additionalProperties := make(map[string]interface{})
 

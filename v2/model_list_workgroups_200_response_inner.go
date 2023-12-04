@@ -351,8 +351,8 @@ func (o *ListWorkgroups200ResponseInner) UnmarshalJSON(bytes []byte) (err error)
 	varListWorkgroups200ResponseInner := _ListWorkgroups200ResponseInner{}
 
 	if err = json.Unmarshal(bytes, &varListWorkgroups200ResponseInner); err == nil {
-		*o = ListWorkgroups200ResponseInner(varListWorkgroups200ResponseInner)
-	}
+	*o = ListWorkgroups200ResponseInner(varListWorkgroups200ResponseInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

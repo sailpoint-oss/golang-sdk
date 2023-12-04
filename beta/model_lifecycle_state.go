@@ -457,8 +457,8 @@ func (o *LifecycleState) UnmarshalJSON(bytes []byte) (err error) {
 	varLifecycleState := _LifecycleState{}
 
 	if err = json.Unmarshal(bytes, &varLifecycleState); err == nil {
-		*o = LifecycleState(varLifecycleState)
-	}
+	*o = LifecycleState(varLifecycleState)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing TransformsApiService
+Testing TransformsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_TransformsApiService(t *testing.T) {
+func Test_beta_TransformsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test TransformsApiService CreateTransform", func(t *testing.T) {
+	t.Run("Test TransformsAPIService CreateTransform", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.TransformsApi.CreateTransform(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.TransformsAPI.CreateTransform(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,38 +34,26 @@ func Test_beta_TransformsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TransformsApiService DeleteTransform", func(t *testing.T) {
+	t.Run("Test TransformsAPIService DeleteTransform", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.BETA.TransformsApi.DeleteTransform(context.Background(), id).Execute()
+		httpRes, err := apiClient.BETA.TransformsAPI.DeleteTransform(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test TransformsApiService GetTransform", func(t *testing.T) {
+	t.Run("Test TransformsAPIService GetTransform", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.TransformsApi.GetTransform(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TransformsApiService ListTransforms", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.TransformsApi.ListTransforms(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.TransformsAPI.GetTransform(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,13 +61,25 @@ func Test_beta_TransformsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TransformsApiService UpdateTransform", func(t *testing.T) {
+	t.Run("Test TransformsAPIService ListTransforms", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.TransformsAPI.ListTransforms(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TransformsAPIService UpdateTransform", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.TransformsApi.UpdateTransform(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.TransformsAPI.UpdateTransform(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

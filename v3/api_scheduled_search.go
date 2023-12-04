@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// ScheduledSearchApiService ScheduledSearchApi service
-type ScheduledSearchApiService service
+// ScheduledSearchAPIService ScheduledSearchAPI service
+type ScheduledSearchAPIService service
 
 type ApiCreateScheduledSearchRequest struct {
 	ctx context.Context
-	ApiService *ScheduledSearchApiService
+	ApiService *ScheduledSearchAPIService
 	createScheduledSearchRequest *CreateScheduledSearchRequest
 }
 
@@ -48,7 +48,7 @@ Creates a new scheduled search.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateScheduledSearchRequest
 */
-func (a *ScheduledSearchApiService) CreateScheduledSearch(ctx context.Context) ApiCreateScheduledSearchRequest {
+func (a *ScheduledSearchAPIService) CreateScheduledSearch(ctx context.Context) ApiCreateScheduledSearchRequest {
 	return ApiCreateScheduledSearchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,7 +57,7 @@ func (a *ScheduledSearchApiService) CreateScheduledSearch(ctx context.Context) A
 
 // Execute executes the request
 //  @return ScheduledSearch
-func (a *ScheduledSearchApiService) CreateScheduledSearchExecute(r ApiCreateScheduledSearchRequest) (*ScheduledSearch, *http.Response, error) {
+func (a *ScheduledSearchAPIService) CreateScheduledSearchExecute(r ApiCreateScheduledSearchRequest) (*ScheduledSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *ScheduledSearchApiService) CreateScheduledSearchExecute(r ApiCreateSche
 		localVarReturnValue  *ScheduledSearch
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchApiService.CreateScheduledSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchAPIService.CreateScheduledSearch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,9 +108,9 @@ func (a *ScheduledSearchApiService) CreateScheduledSearchExecute(r ApiCreateSche
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -202,7 +202,7 @@ func (a *ScheduledSearchApiService) CreateScheduledSearchExecute(r ApiCreateSche
 
 type ApiDeleteScheduledSearchRequest struct {
 	ctx context.Context
-	ApiService *ScheduledSearchApiService
+	ApiService *ScheduledSearchAPIService
 	id string
 }
 
@@ -220,7 +220,7 @@ Deletes the specified scheduled search.
  @param id ID of the requested document.
  @return ApiDeleteScheduledSearchRequest
 */
-func (a *ScheduledSearchApiService) DeleteScheduledSearch(ctx context.Context, id string) ApiDeleteScheduledSearchRequest {
+func (a *ScheduledSearchAPIService) DeleteScheduledSearch(ctx context.Context, id string) ApiDeleteScheduledSearchRequest {
 	return ApiDeleteScheduledSearchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -229,14 +229,14 @@ func (a *ScheduledSearchApiService) DeleteScheduledSearch(ctx context.Context, i
 }
 
 // Execute executes the request
-func (a *ScheduledSearchApiService) DeleteScheduledSearchExecute(r ApiDeleteScheduledSearchRequest) (*http.Response, error) {
+func (a *ScheduledSearchAPIService) DeleteScheduledSearchExecute(r ApiDeleteScheduledSearchRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchApiService.DeleteScheduledSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchAPIService.DeleteScheduledSearch")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -275,9 +275,9 @@ func (a *ScheduledSearchApiService) DeleteScheduledSearchExecute(r ApiDeleteSche
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -360,7 +360,7 @@ func (a *ScheduledSearchApiService) DeleteScheduledSearchExecute(r ApiDeleteSche
 
 type ApiGetScheduledSearchRequest struct {
 	ctx context.Context
-	ApiService *ScheduledSearchApiService
+	ApiService *ScheduledSearchAPIService
 	id string
 }
 
@@ -377,7 +377,7 @@ Returns the specified scheduled search.
  @param id ID of the requested document.
  @return ApiGetScheduledSearchRequest
 */
-func (a *ScheduledSearchApiService) GetScheduledSearch(ctx context.Context, id string) ApiGetScheduledSearchRequest {
+func (a *ScheduledSearchAPIService) GetScheduledSearch(ctx context.Context, id string) ApiGetScheduledSearchRequest {
 	return ApiGetScheduledSearchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -387,7 +387,7 @@ func (a *ScheduledSearchApiService) GetScheduledSearch(ctx context.Context, id s
 
 // Execute executes the request
 //  @return ScheduledSearch
-func (a *ScheduledSearchApiService) GetScheduledSearchExecute(r ApiGetScheduledSearchRequest) (*ScheduledSearch, *http.Response, error) {
+func (a *ScheduledSearchAPIService) GetScheduledSearchExecute(r ApiGetScheduledSearchRequest) (*ScheduledSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -395,7 +395,7 @@ func (a *ScheduledSearchApiService) GetScheduledSearchExecute(r ApiGetScheduledS
 		localVarReturnValue  *ScheduledSearch
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchApiService.GetScheduledSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchAPIService.GetScheduledSearch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -434,9 +434,9 @@ func (a *ScheduledSearchApiService) GetScheduledSearchExecute(r ApiGetScheduledS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -528,7 +528,7 @@ func (a *ScheduledSearchApiService) GetScheduledSearchExecute(r ApiGetScheduledS
 
 type ApiListScheduledSearchRequest struct {
 	ctx context.Context
-	ApiService *ScheduledSearchApiService
+	ApiService *ScheduledSearchAPIService
 	offset *int32
 	limit *int32
 	count *bool
@@ -572,7 +572,7 @@ Returns a list of scheduled searches.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListScheduledSearchRequest
 */
-func (a *ScheduledSearchApiService) ListScheduledSearch(ctx context.Context) ApiListScheduledSearchRequest {
+func (a *ScheduledSearchAPIService) ListScheduledSearch(ctx context.Context) ApiListScheduledSearchRequest {
 	return ApiListScheduledSearchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -581,7 +581,7 @@ func (a *ScheduledSearchApiService) ListScheduledSearch(ctx context.Context) Api
 
 // Execute executes the request
 //  @return []ScheduledSearch
-func (a *ScheduledSearchApiService) ListScheduledSearchExecute(r ApiListScheduledSearchRequest) ([]ScheduledSearch, *http.Response, error) {
+func (a *ScheduledSearchAPIService) ListScheduledSearchExecute(r ApiListScheduledSearchRequest) ([]ScheduledSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -589,7 +589,7 @@ func (a *ScheduledSearchApiService) ListScheduledSearchExecute(r ApiListSchedule
 		localVarReturnValue  []ScheduledSearch
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchApiService.ListScheduledSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchAPIService.ListScheduledSearch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -602,12 +602,21 @@ func (a *ScheduledSearchApiService) ListScheduledSearchExecute(r ApiListSchedule
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -639,9 +648,9 @@ func (a *ScheduledSearchApiService) ListScheduledSearchExecute(r ApiListSchedule
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -733,7 +742,7 @@ func (a *ScheduledSearchApiService) ListScheduledSearchExecute(r ApiListSchedule
 
 type ApiUnsubscribeScheduledSearchRequest struct {
 	ctx context.Context
-	ApiService *ScheduledSearchApiService
+	ApiService *ScheduledSearchAPIService
 	id string
 	typedReference *TypedReference
 }
@@ -758,7 +767,7 @@ Unsubscribes a recipient from the specified scheduled search.
  @param id ID of the requested document.
  @return ApiUnsubscribeScheduledSearchRequest
 */
-func (a *ScheduledSearchApiService) UnsubscribeScheduledSearch(ctx context.Context, id string) ApiUnsubscribeScheduledSearchRequest {
+func (a *ScheduledSearchAPIService) UnsubscribeScheduledSearch(ctx context.Context, id string) ApiUnsubscribeScheduledSearchRequest {
 	return ApiUnsubscribeScheduledSearchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -767,14 +776,14 @@ func (a *ScheduledSearchApiService) UnsubscribeScheduledSearch(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *ScheduledSearchApiService) UnsubscribeScheduledSearchExecute(r ApiUnsubscribeScheduledSearchRequest) (*http.Response, error) {
+func (a *ScheduledSearchAPIService) UnsubscribeScheduledSearchExecute(r ApiUnsubscribeScheduledSearchRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchApiService.UnsubscribeScheduledSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchAPIService.UnsubscribeScheduledSearch")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -818,9 +827,9 @@ func (a *ScheduledSearchApiService) UnsubscribeScheduledSearchExecute(r ApiUnsub
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -870,7 +879,7 @@ func (a *ScheduledSearchApiService) UnsubscribeScheduledSearchExecute(r ApiUnsub
 
 type ApiUpdateScheduledSearchRequest struct {
 	ctx context.Context
-	ApiService *ScheduledSearchApiService
+	ApiService *ScheduledSearchAPIService
 	id string
 	scheduledSearch *ScheduledSearch
 }
@@ -895,7 +904,7 @@ Updates an existing scheduled search.
  @param id ID of the requested document.
  @return ApiUpdateScheduledSearchRequest
 */
-func (a *ScheduledSearchApiService) UpdateScheduledSearch(ctx context.Context, id string) ApiUpdateScheduledSearchRequest {
+func (a *ScheduledSearchAPIService) UpdateScheduledSearch(ctx context.Context, id string) ApiUpdateScheduledSearchRequest {
 	return ApiUpdateScheduledSearchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -905,7 +914,7 @@ func (a *ScheduledSearchApiService) UpdateScheduledSearch(ctx context.Context, i
 
 // Execute executes the request
 //  @return ScheduledSearch
-func (a *ScheduledSearchApiService) UpdateScheduledSearchExecute(r ApiUpdateScheduledSearchRequest) (*ScheduledSearch, *http.Response, error) {
+func (a *ScheduledSearchAPIService) UpdateScheduledSearchExecute(r ApiUpdateScheduledSearchRequest) (*ScheduledSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -913,7 +922,7 @@ func (a *ScheduledSearchApiService) UpdateScheduledSearchExecute(r ApiUpdateSche
 		localVarReturnValue  *ScheduledSearch
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchApiService.UpdateScheduledSearch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScheduledSearchAPIService.UpdateScheduledSearch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -957,9 +966,9 @@ func (a *ScheduledSearchApiService) UpdateScheduledSearchExecute(r ApiUpdateSche
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

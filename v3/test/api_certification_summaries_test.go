@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing CertificationSummariesApiService
+Testing CertificationSummariesAPIService
 
 */
 
@@ -17,19 +17,19 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_CertificationSummariesApiService(t *testing.T) {
+func Test_v3_CertificationSummariesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test CertificationSummariesApiService GetIdentityAccessSummaries", func(t *testing.T) {
+	t.Run("Test CertificationSummariesAPIService GetIdentityAccessSummaries", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var type_ string
 
-		resp, httpRes, err := apiClient.V3.CertificationSummariesApi.GetIdentityAccessSummaries(context.Background(), id, type_).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesAPI.GetIdentityAccessSummaries(context.Background(), id, type_).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,13 +37,13 @@ func Test_v3_CertificationSummariesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationSummariesApiService GetIdentityDecisionSummary", func(t *testing.T) {
+	t.Run("Test CertificationSummariesAPIService GetIdentityDecisionSummary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.CertificationSummariesApi.GetIdentityDecisionSummary(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesAPI.GetIdentityDecisionSummary(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -51,13 +51,13 @@ func Test_v3_CertificationSummariesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationSummariesApiService GetIdentitySummaries", func(t *testing.T) {
+	t.Run("Test CertificationSummariesAPIService GetIdentitySummaries", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.V3.CertificationSummariesApi.GetIdentitySummaries(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesAPI.GetIdentitySummaries(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,14 +65,14 @@ func Test_v3_CertificationSummariesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test CertificationSummariesApiService GetIdentitySummary", func(t *testing.T) {
+	t.Run("Test CertificationSummariesAPIService GetIdentitySummary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var identitySummaryId string
 
-		resp, httpRes, err := apiClient.V3.CertificationSummariesApi.GetIdentitySummary(context.Background(), id, identitySummaryId).Execute()
+		resp, httpRes, err := apiClient.V3.CertificationSummariesAPI.GetIdentitySummary(context.Background(), id, identitySummaryId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

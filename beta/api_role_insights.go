@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// RoleInsightsApiService RoleInsightsApi service
-type RoleInsightsApiService service
+// RoleInsightsAPIService RoleInsightsAPI service
+type RoleInsightsAPIService service
 
 type ApiCreateRoleInsightRequestsRequest struct {
 	ctx context.Context
-	ApiService *RoleInsightsApiService
+	ApiService *RoleInsightsAPIService
 }
 
 func (r ApiCreateRoleInsightRequestsRequest) Execute() (*RoleInsightsResponse, *http.Response, error) {
@@ -42,7 +42,7 @@ Submits a create role insights request to the role insights application. At this
 
 Deprecated
 */
-func (a *RoleInsightsApiService) CreateRoleInsightRequests(ctx context.Context) ApiCreateRoleInsightRequestsRequest {
+func (a *RoleInsightsAPIService) CreateRoleInsightRequests(ctx context.Context) ApiCreateRoleInsightRequestsRequest {
 	return ApiCreateRoleInsightRequestsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -52,7 +52,7 @@ func (a *RoleInsightsApiService) CreateRoleInsightRequests(ctx context.Context) 
 // Execute executes the request
 //  @return RoleInsightsResponse
 // Deprecated
-func (a *RoleInsightsApiService) CreateRoleInsightRequestsExecute(r ApiCreateRoleInsightRequestsRequest) (*RoleInsightsResponse, *http.Response, error) {
+func (a *RoleInsightsAPIService) CreateRoleInsightRequestsExecute(r ApiCreateRoleInsightRequestsRequest) (*RoleInsightsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -60,7 +60,7 @@ func (a *RoleInsightsApiService) CreateRoleInsightRequestsExecute(r ApiCreateRol
 		localVarReturnValue  *RoleInsightsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsApiService.CreateRoleInsightRequests")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.CreateRoleInsightRequests")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -98,9 +98,9 @@ func (a *RoleInsightsApiService) CreateRoleInsightRequestsExecute(r ApiCreateRol
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -181,7 +181,7 @@ func (a *RoleInsightsApiService) CreateRoleInsightRequestsExecute(r ApiCreateRol
 
 type ApiDownloadRoleInsightsEntitlementsChangesRequest struct {
 	ctx context.Context
-	ApiService *RoleInsightsApiService
+	ApiService *RoleInsightsAPIService
 	insightId string
 	sorters *string
 	filters *string
@@ -212,7 +212,7 @@ This endpoint returns the entitlement insights for a role.
  @param insightId The role insight id
  @return ApiDownloadRoleInsightsEntitlementsChangesRequest
 */
-func (a *RoleInsightsApiService) DownloadRoleInsightsEntitlementsChanges(ctx context.Context, insightId string) ApiDownloadRoleInsightsEntitlementsChangesRequest {
+func (a *RoleInsightsAPIService) DownloadRoleInsightsEntitlementsChanges(ctx context.Context, insightId string) ApiDownloadRoleInsightsEntitlementsChangesRequest {
 	return ApiDownloadRoleInsightsEntitlementsChangesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -222,7 +222,7 @@ func (a *RoleInsightsApiService) DownloadRoleInsightsEntitlementsChanges(ctx con
 
 // Execute executes the request
 //  @return string
-func (a *RoleInsightsApiService) DownloadRoleInsightsEntitlementsChangesExecute(r ApiDownloadRoleInsightsEntitlementsChangesRequest) (string, *http.Response, error) {
+func (a *RoleInsightsAPIService) DownloadRoleInsightsEntitlementsChangesExecute(r ApiDownloadRoleInsightsEntitlementsChangesRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -230,7 +230,7 @@ func (a *RoleInsightsApiService) DownloadRoleInsightsEntitlementsChangesExecute(
 		localVarReturnValue  string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsApiService.DownloadRoleInsightsEntitlementsChanges")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.DownloadRoleInsightsEntitlementsChanges")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -275,9 +275,9 @@ func (a *RoleInsightsApiService) DownloadRoleInsightsEntitlementsChangesExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -347,7 +347,7 @@ func (a *RoleInsightsApiService) DownloadRoleInsightsEntitlementsChangesExecute(
 
 type ApiGetEntitlementChangesIdentitiesRequest struct {
 	ctx context.Context
-	ApiService *RoleInsightsApiService
+	ApiService *RoleInsightsAPIService
 	insightId string
 	entitlementId string
 	hasEntitlement *bool
@@ -408,7 +408,7 @@ Role insights suggests entitlements to be added for a role. This endpoint return
  @param entitlementId The entitlement id
  @return ApiGetEntitlementChangesIdentitiesRequest
 */
-func (a *RoleInsightsApiService) GetEntitlementChangesIdentities(ctx context.Context, insightId string, entitlementId string) ApiGetEntitlementChangesIdentitiesRequest {
+func (a *RoleInsightsAPIService) GetEntitlementChangesIdentities(ctx context.Context, insightId string, entitlementId string) ApiGetEntitlementChangesIdentitiesRequest {
 	return ApiGetEntitlementChangesIdentitiesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -419,7 +419,7 @@ func (a *RoleInsightsApiService) GetEntitlementChangesIdentities(ctx context.Con
 
 // Execute executes the request
 //  @return []RoleInsightsIdentities
-func (a *RoleInsightsApiService) GetEntitlementChangesIdentitiesExecute(r ApiGetEntitlementChangesIdentitiesRequest) ([]RoleInsightsIdentities, *http.Response, error) {
+func (a *RoleInsightsAPIService) GetEntitlementChangesIdentitiesExecute(r ApiGetEntitlementChangesIdentitiesRequest) ([]RoleInsightsIdentities, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -427,7 +427,7 @@ func (a *RoleInsightsApiService) GetEntitlementChangesIdentitiesExecute(r ApiGet
 		localVarReturnValue  []RoleInsightsIdentities
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsApiService.GetEntitlementChangesIdentities")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetEntitlementChangesIdentities")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -442,15 +442,27 @@ func (a *RoleInsightsApiService) GetEntitlementChangesIdentitiesExecute(r ApiGet
 
 	if r.hasEntitlement != nil {
 		parameterAddToQuery(localVarQueryParams, "hasEntitlement", r.hasEntitlement, "")
+	} else {
+		var defaultValue bool = false
+		r.hasEntitlement = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -485,9 +497,9 @@ func (a *RoleInsightsApiService) GetEntitlementChangesIdentitiesExecute(r ApiGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -557,7 +569,7 @@ func (a *RoleInsightsApiService) GetEntitlementChangesIdentitiesExecute(r ApiGet
 
 type ApiGetRoleInsightRequest struct {
 	ctx context.Context
-	ApiService *RoleInsightsApiService
+	ApiService *RoleInsightsAPIService
 	insightId string
 }
 
@@ -574,7 +586,7 @@ This endpoint gets role insights information for a role.
  @param insightId The role insight id
  @return ApiGetRoleInsightRequest
 */
-func (a *RoleInsightsApiService) GetRoleInsight(ctx context.Context, insightId string) ApiGetRoleInsightRequest {
+func (a *RoleInsightsAPIService) GetRoleInsight(ctx context.Context, insightId string) ApiGetRoleInsightRequest {
 	return ApiGetRoleInsightRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -584,7 +596,7 @@ func (a *RoleInsightsApiService) GetRoleInsight(ctx context.Context, insightId s
 
 // Execute executes the request
 //  @return RoleInsight
-func (a *RoleInsightsApiService) GetRoleInsightExecute(r ApiGetRoleInsightRequest) (*RoleInsight, *http.Response, error) {
+func (a *RoleInsightsAPIService) GetRoleInsightExecute(r ApiGetRoleInsightRequest) (*RoleInsight, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -592,7 +604,7 @@ func (a *RoleInsightsApiService) GetRoleInsightExecute(r ApiGetRoleInsightReques
 		localVarReturnValue  *RoleInsight
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsApiService.GetRoleInsight")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsight")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -631,9 +643,9 @@ func (a *RoleInsightsApiService) GetRoleInsightExecute(r ApiGetRoleInsightReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -703,7 +715,7 @@ func (a *RoleInsightsApiService) GetRoleInsightExecute(r ApiGetRoleInsightReques
 
 type ApiGetRoleInsightsRequest struct {
 	ctx context.Context
-	ApiService *RoleInsightsApiService
+	ApiService *RoleInsightsAPIService
 	offset *int32
 	limit *int32
 	count *bool
@@ -753,7 +765,7 @@ This method returns detailed role insights for each role.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetRoleInsightsRequest
 */
-func (a *RoleInsightsApiService) GetRoleInsights(ctx context.Context) ApiGetRoleInsightsRequest {
+func (a *RoleInsightsAPIService) GetRoleInsights(ctx context.Context) ApiGetRoleInsightsRequest {
 	return ApiGetRoleInsightsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -762,7 +774,7 @@ func (a *RoleInsightsApiService) GetRoleInsights(ctx context.Context) ApiGetRole
 
 // Execute executes the request
 //  @return []RoleInsight
-func (a *RoleInsightsApiService) GetRoleInsightsExecute(r ApiGetRoleInsightsRequest) ([]RoleInsight, *http.Response, error) {
+func (a *RoleInsightsAPIService) GetRoleInsightsExecute(r ApiGetRoleInsightsRequest) ([]RoleInsight, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -770,7 +782,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsExecute(r ApiGetRoleInsightsRequ
 		localVarReturnValue  []RoleInsight
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsApiService.GetRoleInsights")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsights")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -783,12 +795,21 @@ func (a *RoleInsightsApiService) GetRoleInsightsExecute(r ApiGetRoleInsightsRequ
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -823,9 +844,9 @@ func (a *RoleInsightsApiService) GetRoleInsightsExecute(r ApiGetRoleInsightsRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -895,7 +916,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsExecute(r ApiGetRoleInsightsRequ
 
 type ApiGetRoleInsightsCurrentEntitlementsRequest struct {
 	ctx context.Context
-	ApiService *RoleInsightsApiService
+	ApiService *RoleInsightsAPIService
 	insightId string
 	filters *string
 }
@@ -919,7 +940,7 @@ This endpoint gets the entitlements for a role. The term "current" is to disting
  @param insightId The role insight id
  @return ApiGetRoleInsightsCurrentEntitlementsRequest
 */
-func (a *RoleInsightsApiService) GetRoleInsightsCurrentEntitlements(ctx context.Context, insightId string) ApiGetRoleInsightsCurrentEntitlementsRequest {
+func (a *RoleInsightsAPIService) GetRoleInsightsCurrentEntitlements(ctx context.Context, insightId string) ApiGetRoleInsightsCurrentEntitlementsRequest {
 	return ApiGetRoleInsightsCurrentEntitlementsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -929,7 +950,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsCurrentEntitlements(ctx context.
 
 // Execute executes the request
 //  @return []RoleInsightsEntitlement
-func (a *RoleInsightsApiService) GetRoleInsightsCurrentEntitlementsExecute(r ApiGetRoleInsightsCurrentEntitlementsRequest) ([]RoleInsightsEntitlement, *http.Response, error) {
+func (a *RoleInsightsAPIService) GetRoleInsightsCurrentEntitlementsExecute(r ApiGetRoleInsightsCurrentEntitlementsRequest) ([]RoleInsightsEntitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -937,7 +958,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsCurrentEntitlementsExecute(r Api
 		localVarReturnValue  []RoleInsightsEntitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsApiService.GetRoleInsightsCurrentEntitlements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsightsCurrentEntitlements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -979,9 +1000,9 @@ func (a *RoleInsightsApiService) GetRoleInsightsCurrentEntitlementsExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1051,7 +1072,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsCurrentEntitlementsExecute(r Api
 
 type ApiGetRoleInsightsEntitlementsChangesRequest struct {
 	ctx context.Context
-	ApiService *RoleInsightsApiService
+	ApiService *RoleInsightsAPIService
 	insightId string
 	sorters *string
 	filters *string
@@ -1082,7 +1103,7 @@ This endpoint returns entitlement insights for a role.
  @param insightId The role insight id
  @return ApiGetRoleInsightsEntitlementsChangesRequest
 */
-func (a *RoleInsightsApiService) GetRoleInsightsEntitlementsChanges(ctx context.Context, insightId string) ApiGetRoleInsightsEntitlementsChangesRequest {
+func (a *RoleInsightsAPIService) GetRoleInsightsEntitlementsChanges(ctx context.Context, insightId string) ApiGetRoleInsightsEntitlementsChangesRequest {
 	return ApiGetRoleInsightsEntitlementsChangesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1092,7 +1113,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsEntitlementsChanges(ctx context.
 
 // Execute executes the request
 //  @return []RoleInsightsEntitlementChanges
-func (a *RoleInsightsApiService) GetRoleInsightsEntitlementsChangesExecute(r ApiGetRoleInsightsEntitlementsChangesRequest) ([]RoleInsightsEntitlementChanges, *http.Response, error) {
+func (a *RoleInsightsAPIService) GetRoleInsightsEntitlementsChangesExecute(r ApiGetRoleInsightsEntitlementsChangesRequest) ([]RoleInsightsEntitlementChanges, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1100,7 +1121,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsEntitlementsChangesExecute(r Api
 		localVarReturnValue  []RoleInsightsEntitlementChanges
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsApiService.GetRoleInsightsEntitlementsChanges")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsightsEntitlementsChanges")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1145,9 +1166,9 @@ func (a *RoleInsightsApiService) GetRoleInsightsEntitlementsChangesExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1217,7 +1238,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsEntitlementsChangesExecute(r Api
 
 type ApiGetRoleInsightsRequestsRequest struct {
 	ctx context.Context
-	ApiService *RoleInsightsApiService
+	ApiService *RoleInsightsAPIService
 	id string
 }
 
@@ -1236,7 +1257,7 @@ This endpoint returns details of a prior role insights request.
 
 Deprecated
 */
-func (a *RoleInsightsApiService) GetRoleInsightsRequests(ctx context.Context, id string) ApiGetRoleInsightsRequestsRequest {
+func (a *RoleInsightsAPIService) GetRoleInsightsRequests(ctx context.Context, id string) ApiGetRoleInsightsRequestsRequest {
 	return ApiGetRoleInsightsRequestsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1247,7 +1268,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsRequests(ctx context.Context, id
 // Execute executes the request
 //  @return RoleInsightsResponse
 // Deprecated
-func (a *RoleInsightsApiService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsightsRequestsRequest) (*RoleInsightsResponse, *http.Response, error) {
+func (a *RoleInsightsAPIService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsightsRequestsRequest) (*RoleInsightsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1255,7 +1276,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsi
 		localVarReturnValue  *RoleInsightsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsApiService.GetRoleInsightsRequests")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsightsRequests")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1294,9 +1315,9 @@ func (a *RoleInsightsApiService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1377,7 +1398,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsRequestsExecute(r ApiGetRoleInsi
 
 type ApiGetRoleInsightsSummaryRequest struct {
 	ctx context.Context
-	ApiService *RoleInsightsApiService
+	ApiService *RoleInsightsAPIService
 }
 
 func (r ApiGetRoleInsightsSummaryRequest) Execute() (*RoleInsightsSummary, *http.Response, error) {
@@ -1392,7 +1413,7 @@ This method returns high level summary information for role insights for a custo
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetRoleInsightsSummaryRequest
 */
-func (a *RoleInsightsApiService) GetRoleInsightsSummary(ctx context.Context) ApiGetRoleInsightsSummaryRequest {
+func (a *RoleInsightsAPIService) GetRoleInsightsSummary(ctx context.Context) ApiGetRoleInsightsSummaryRequest {
 	return ApiGetRoleInsightsSummaryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1401,7 +1422,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsSummary(ctx context.Context) Api
 
 // Execute executes the request
 //  @return RoleInsightsSummary
-func (a *RoleInsightsApiService) GetRoleInsightsSummaryExecute(r ApiGetRoleInsightsSummaryRequest) (*RoleInsightsSummary, *http.Response, error) {
+func (a *RoleInsightsAPIService) GetRoleInsightsSummaryExecute(r ApiGetRoleInsightsSummaryRequest) (*RoleInsightsSummary, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1409,7 +1430,7 @@ func (a *RoleInsightsApiService) GetRoleInsightsSummaryExecute(r ApiGetRoleInsig
 		localVarReturnValue  *RoleInsightsSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsApiService.GetRoleInsightsSummary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RoleInsightsAPIService.GetRoleInsightsSummary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1447,9 +1468,9 @@ func (a *RoleInsightsApiService) GetRoleInsightsSummaryExecute(r ApiGetRoleInsig
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

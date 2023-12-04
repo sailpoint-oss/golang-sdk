@@ -648,8 +648,8 @@ func (o *WorkItems) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkItems := _WorkItems{}
 
 	if err = json.Unmarshal(bytes, &varWorkItems); err == nil {
-		*o = WorkItems(varWorkItems)
-	}
+	*o = WorkItems(varWorkItems)
+}
 
 	additionalProperties := make(map[string]interface{})
 

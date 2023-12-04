@@ -135,8 +135,8 @@ func (o *GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThre
 	varGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds := _GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds{}
 
 	if err = json.Unmarshal(bytes, &varGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds); err == nil {
-		*o = GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds(varGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds)
-	}
+	*o = GetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds(varGetOrgSettings200ResponseSystemNotificationConfigNotificationsInnerThresholds)
+}
 
 	additionalProperties := make(map[string]interface{})
 

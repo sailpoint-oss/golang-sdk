@@ -13,7 +13,7 @@ package cc
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,12 +21,12 @@ import (
 )
 
 
-// SourcesAggregationApiService SourcesAggregationApi service
-type SourcesAggregationApiService service
+// SourcesAggregationAPIService SourcesAggregationAPI service
+type SourcesAggregationAPIService service
 
 type ApiLoadAccountsRequest struct {
 	ctx context.Context
-	ApiService *SourcesAggregationApiService
+	ApiService *SourcesAggregationAPIService
 	id string
 	contentType *string
 	disableOptimization *bool
@@ -61,7 +61,7 @@ Aggregates a delimited file for the given source.  This only works for file-base
  @param id
  @return ApiLoadAccountsRequest
 */
-func (a *SourcesAggregationApiService) LoadAccounts(ctx context.Context, id string) ApiLoadAccountsRequest {
+func (a *SourcesAggregationAPIService) LoadAccounts(ctx context.Context, id string) ApiLoadAccountsRequest {
 	return ApiLoadAccountsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -71,7 +71,7 @@ func (a *SourcesAggregationApiService) LoadAccounts(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *SourcesAggregationApiService) LoadAccountsExecute(r ApiLoadAccountsRequest) (map[string]interface{}, *http.Response, error) {
+func (a *SourcesAggregationAPIService) LoadAccountsExecute(r ApiLoadAccountsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -79,7 +79,7 @@ func (a *SourcesAggregationApiService) LoadAccountsExecute(r ApiLoadAccountsRequ
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAggregationApiService.LoadAccounts")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAggregationAPIService.LoadAccounts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -119,12 +119,10 @@ func (a *SourcesAggregationApiService) LoadAccountsExecute(r ApiLoadAccountsRequ
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
 
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
@@ -141,9 +139,9 @@ func (a *SourcesAggregationApiService) LoadAccountsExecute(r ApiLoadAccountsRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -170,7 +168,7 @@ func (a *SourcesAggregationApiService) LoadAccountsExecute(r ApiLoadAccountsRequ
 
 type ApiLoadEntitlementsRequest struct {
 	ctx context.Context
-	ApiService *SourcesAggregationApiService
+	ApiService *SourcesAggregationAPIService
 	id string
 	contentType *string
 	file *os.File
@@ -199,7 +197,7 @@ Aggregates a delimited file for the given source.  This only works for file-base
  @param id
  @return ApiLoadEntitlementsRequest
 */
-func (a *SourcesAggregationApiService) LoadEntitlements(ctx context.Context, id string) ApiLoadEntitlementsRequest {
+func (a *SourcesAggregationAPIService) LoadEntitlements(ctx context.Context, id string) ApiLoadEntitlementsRequest {
 	return ApiLoadEntitlementsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -209,7 +207,7 @@ func (a *SourcesAggregationApiService) LoadEntitlements(ctx context.Context, id 
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *SourcesAggregationApiService) LoadEntitlementsExecute(r ApiLoadEntitlementsRequest) (map[string]interface{}, *http.Response, error) {
+func (a *SourcesAggregationAPIService) LoadEntitlementsExecute(r ApiLoadEntitlementsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -217,7 +215,7 @@ func (a *SourcesAggregationApiService) LoadEntitlementsExecute(r ApiLoadEntitlem
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAggregationApiService.LoadEntitlements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourcesAggregationAPIService.LoadEntitlements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -254,12 +252,10 @@ func (a *SourcesAggregationApiService) LoadEntitlementsExecute(r ApiLoadEntitlem
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
 
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
@@ -276,9 +272,9 @@ func (a *SourcesAggregationApiService) LoadEntitlementsExecute(r ApiLoadEntitlem
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// WorkflowsApiService WorkflowsApi service
-type WorkflowsApiService service
+// WorkflowsAPIService WorkflowsAPI service
+type WorkflowsAPIService service
 
 type ApiCancelWorkflowExecutionRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 }
 
@@ -42,7 +42,7 @@ Use this API to cancel a running workflow execution.
  @param id The workflow execution ID
  @return ApiCancelWorkflowExecutionRequest
 */
-func (a *WorkflowsApiService) CancelWorkflowExecution(ctx context.Context, id string) ApiCancelWorkflowExecutionRequest {
+func (a *WorkflowsAPIService) CancelWorkflowExecution(ctx context.Context, id string) ApiCancelWorkflowExecutionRequest {
 	return ApiCancelWorkflowExecutionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -51,14 +51,14 @@ func (a *WorkflowsApiService) CancelWorkflowExecution(ctx context.Context, id st
 }
 
 // Execute executes the request
-func (a *WorkflowsApiService) CancelWorkflowExecutionExecute(r ApiCancelWorkflowExecutionRequest) (*http.Response, error) {
+func (a *WorkflowsAPIService) CancelWorkflowExecutionExecute(r ApiCancelWorkflowExecutionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.CancelWorkflowExecution")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.CancelWorkflowExecution")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -97,9 +97,9 @@ func (a *WorkflowsApiService) CancelWorkflowExecutionExecute(r ApiCancelWorkflow
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -182,7 +182,7 @@ func (a *WorkflowsApiService) CancelWorkflowExecutionExecute(r ApiCancelWorkflow
 
 type ApiCreateWorkflowRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	createWorkflowRequest *CreateWorkflowRequest
 }
 
@@ -203,7 +203,7 @@ Create a new workflow with the desired trigger and steps specified in the reques
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateWorkflowRequest
 */
-func (a *WorkflowsApiService) CreateWorkflow(ctx context.Context) ApiCreateWorkflowRequest {
+func (a *WorkflowsAPIService) CreateWorkflow(ctx context.Context) ApiCreateWorkflowRequest {
 	return ApiCreateWorkflowRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -212,7 +212,7 @@ func (a *WorkflowsApiService) CreateWorkflow(ctx context.Context) ApiCreateWorkf
 
 // Execute executes the request
 //  @return Workflow
-func (a *WorkflowsApiService) CreateWorkflowExecute(r ApiCreateWorkflowRequest) (*Workflow, *http.Response, error) {
+func (a *WorkflowsAPIService) CreateWorkflowExecute(r ApiCreateWorkflowRequest) (*Workflow, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -220,7 +220,7 @@ func (a *WorkflowsApiService) CreateWorkflowExecute(r ApiCreateWorkflowRequest) 
 		localVarReturnValue  *Workflow
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.CreateWorkflow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.CreateWorkflow")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -263,9 +263,9 @@ func (a *WorkflowsApiService) CreateWorkflowExecute(r ApiCreateWorkflowRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -346,7 +346,7 @@ func (a *WorkflowsApiService) CreateWorkflowExecute(r ApiCreateWorkflowRequest) 
 
 type ApiDeleteWorkflowRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 }
 
@@ -363,7 +363,7 @@ Delete a workflow.  **Enabled workflows cannot be deleted**.  They must first be
  @param id Id of the Workflow
  @return ApiDeleteWorkflowRequest
 */
-func (a *WorkflowsApiService) DeleteWorkflow(ctx context.Context, id string) ApiDeleteWorkflowRequest {
+func (a *WorkflowsAPIService) DeleteWorkflow(ctx context.Context, id string) ApiDeleteWorkflowRequest {
 	return ApiDeleteWorkflowRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -372,14 +372,14 @@ func (a *WorkflowsApiService) DeleteWorkflow(ctx context.Context, id string) Api
 }
 
 // Execute executes the request
-func (a *WorkflowsApiService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*http.Response, error) {
+func (a *WorkflowsAPIService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.DeleteWorkflow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.DeleteWorkflow")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -418,9 +418,9 @@ func (a *WorkflowsApiService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) 
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -492,7 +492,7 @@ func (a *WorkflowsApiService) DeleteWorkflowExecute(r ApiDeleteWorkflowRequest) 
 
 type ApiGetWorkflowRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 }
 
@@ -509,7 +509,7 @@ Get a single workflow by id.
  @param id Id of the workflow
  @return ApiGetWorkflowRequest
 */
-func (a *WorkflowsApiService) GetWorkflow(ctx context.Context, id string) ApiGetWorkflowRequest {
+func (a *WorkflowsAPIService) GetWorkflow(ctx context.Context, id string) ApiGetWorkflowRequest {
 	return ApiGetWorkflowRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -519,7 +519,7 @@ func (a *WorkflowsApiService) GetWorkflow(ctx context.Context, id string) ApiGet
 
 // Execute executes the request
 //  @return Workflow
-func (a *WorkflowsApiService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Workflow, *http.Response, error) {
+func (a *WorkflowsAPIService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Workflow, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -527,7 +527,7 @@ func (a *WorkflowsApiService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Work
 		localVarReturnValue  *Workflow
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.GetWorkflow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.GetWorkflow")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -566,9 +566,9 @@ func (a *WorkflowsApiService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Work
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -649,7 +649,7 @@ func (a *WorkflowsApiService) GetWorkflowExecute(r ApiGetWorkflowRequest) (*Work
 
 type ApiGetWorkflowExecutionRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 }
 
@@ -666,7 +666,7 @@ Get a single workflow execution.  Workflow executions are available for up to 90
  @param id Id of the workflow execution
  @return ApiGetWorkflowExecutionRequest
 */
-func (a *WorkflowsApiService) GetWorkflowExecution(ctx context.Context, id string) ApiGetWorkflowExecutionRequest {
+func (a *WorkflowsAPIService) GetWorkflowExecution(ctx context.Context, id string) ApiGetWorkflowExecutionRequest {
 	return ApiGetWorkflowExecutionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -676,7 +676,7 @@ func (a *WorkflowsApiService) GetWorkflowExecution(ctx context.Context, id strin
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *WorkflowsApiService) GetWorkflowExecutionExecute(r ApiGetWorkflowExecutionRequest) (map[string]interface{}, *http.Response, error) {
+func (a *WorkflowsAPIService) GetWorkflowExecutionExecute(r ApiGetWorkflowExecutionRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -684,7 +684,7 @@ func (a *WorkflowsApiService) GetWorkflowExecutionExecute(r ApiGetWorkflowExecut
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.GetWorkflowExecution")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.GetWorkflowExecution")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -723,9 +723,9 @@ func (a *WorkflowsApiService) GetWorkflowExecutionExecute(r ApiGetWorkflowExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -817,7 +817,7 @@ func (a *WorkflowsApiService) GetWorkflowExecutionExecute(r ApiGetWorkflowExecut
 
 type ApiGetWorkflowExecutionHistoryRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 }
 
@@ -834,7 +834,7 @@ Get a detailed history of a single workflow execution.  Workflow executions are 
  @param id Id of the workflow execution
  @return ApiGetWorkflowExecutionHistoryRequest
 */
-func (a *WorkflowsApiService) GetWorkflowExecutionHistory(ctx context.Context, id string) ApiGetWorkflowExecutionHistoryRequest {
+func (a *WorkflowsAPIService) GetWorkflowExecutionHistory(ctx context.Context, id string) ApiGetWorkflowExecutionHistoryRequest {
 	return ApiGetWorkflowExecutionHistoryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -844,7 +844,7 @@ func (a *WorkflowsApiService) GetWorkflowExecutionHistory(ctx context.Context, i
 
 // Execute executes the request
 //  @return []WorkflowExecutionEvent
-func (a *WorkflowsApiService) GetWorkflowExecutionHistoryExecute(r ApiGetWorkflowExecutionHistoryRequest) ([]WorkflowExecutionEvent, *http.Response, error) {
+func (a *WorkflowsAPIService) GetWorkflowExecutionHistoryExecute(r ApiGetWorkflowExecutionHistoryRequest) ([]WorkflowExecutionEvent, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -852,7 +852,7 @@ func (a *WorkflowsApiService) GetWorkflowExecutionHistoryExecute(r ApiGetWorkflo
 		localVarReturnValue  []WorkflowExecutionEvent
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.GetWorkflowExecutionHistory")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.GetWorkflowExecutionHistory")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -891,9 +891,9 @@ func (a *WorkflowsApiService) GetWorkflowExecutionHistoryExecute(r ApiGetWorkflo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -985,7 +985,7 @@ func (a *WorkflowsApiService) GetWorkflowExecutionHistoryExecute(r ApiGetWorkflo
 
 type ApiListCompleteWorkflowLibraryRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	limit *int32
 	offset *int32
 }
@@ -1014,7 +1014,7 @@ This lists all triggers, actions, and operators in the library
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListCompleteWorkflowLibraryRequest
 */
-func (a *WorkflowsApiService) ListCompleteWorkflowLibrary(ctx context.Context) ApiListCompleteWorkflowLibraryRequest {
+func (a *WorkflowsAPIService) ListCompleteWorkflowLibrary(ctx context.Context) ApiListCompleteWorkflowLibraryRequest {
 	return ApiListCompleteWorkflowLibraryRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1023,7 +1023,7 @@ func (a *WorkflowsApiService) ListCompleteWorkflowLibrary(ctx context.Context) A
 
 // Execute executes the request
 //  @return []ListCompleteWorkflowLibrary200ResponseInner
-func (a *WorkflowsApiService) ListCompleteWorkflowLibraryExecute(r ApiListCompleteWorkflowLibraryRequest) ([]ListCompleteWorkflowLibrary200ResponseInner, *http.Response, error) {
+func (a *WorkflowsAPIService) ListCompleteWorkflowLibraryExecute(r ApiListCompleteWorkflowLibraryRequest) ([]ListCompleteWorkflowLibrary200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1031,7 +1031,7 @@ func (a *WorkflowsApiService) ListCompleteWorkflowLibraryExecute(r ApiListComple
 		localVarReturnValue  []ListCompleteWorkflowLibrary200ResponseInner
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.ListCompleteWorkflowLibrary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.ListCompleteWorkflowLibrary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1044,9 +1044,15 @@ func (a *WorkflowsApiService) ListCompleteWorkflowLibraryExecute(r ApiListComple
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1075,9 +1081,9 @@ func (a *WorkflowsApiService) ListCompleteWorkflowLibraryExecute(r ApiListComple
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1158,7 +1164,7 @@ func (a *WorkflowsApiService) ListCompleteWorkflowLibraryExecute(r ApiListComple
 
 type ApiListWorkflowExecutionsRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 	limit *int32
 	offset *int32
@@ -1213,7 +1219,7 @@ This lists the executions for a given workflow. Workflow executions are availabl
  @param id Id of the workflow
  @return ApiListWorkflowExecutionsRequest
 */
-func (a *WorkflowsApiService) ListWorkflowExecutions(ctx context.Context, id string) ApiListWorkflowExecutionsRequest {
+func (a *WorkflowsAPIService) ListWorkflowExecutions(ctx context.Context, id string) ApiListWorkflowExecutionsRequest {
 	return ApiListWorkflowExecutionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1223,7 +1229,7 @@ func (a *WorkflowsApiService) ListWorkflowExecutions(ctx context.Context, id str
 
 // Execute executes the request
 //  @return []WorkflowExecution
-func (a *WorkflowsApiService) ListWorkflowExecutionsExecute(r ApiListWorkflowExecutionsRequest) ([]WorkflowExecution, *http.Response, error) {
+func (a *WorkflowsAPIService) ListWorkflowExecutionsExecute(r ApiListWorkflowExecutionsRequest) ([]WorkflowExecution, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1231,7 +1237,7 @@ func (a *WorkflowsApiService) ListWorkflowExecutionsExecute(r ApiListWorkflowExe
 		localVarReturnValue  []WorkflowExecution
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.ListWorkflowExecutions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.ListWorkflowExecutions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1245,12 +1251,21 @@ func (a *WorkflowsApiService) ListWorkflowExecutionsExecute(r ApiListWorkflowExe
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1282,9 +1297,9 @@ func (a *WorkflowsApiService) ListWorkflowExecutionsExecute(r ApiListWorkflowExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1376,7 +1391,7 @@ func (a *WorkflowsApiService) ListWorkflowExecutionsExecute(r ApiListWorkflowExe
 
 type ApiListWorkflowLibraryActionsRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	limit *int32
 	offset *int32
 	filters *string
@@ -1412,7 +1427,7 @@ This lists the workflow actions available to you.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListWorkflowLibraryActionsRequest
 */
-func (a *WorkflowsApiService) ListWorkflowLibraryActions(ctx context.Context) ApiListWorkflowLibraryActionsRequest {
+func (a *WorkflowsAPIService) ListWorkflowLibraryActions(ctx context.Context) ApiListWorkflowLibraryActionsRequest {
 	return ApiListWorkflowLibraryActionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1421,7 +1436,7 @@ func (a *WorkflowsApiService) ListWorkflowLibraryActions(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return []WorkflowLibraryAction
-func (a *WorkflowsApiService) ListWorkflowLibraryActionsExecute(r ApiListWorkflowLibraryActionsRequest) ([]WorkflowLibraryAction, *http.Response, error) {
+func (a *WorkflowsAPIService) ListWorkflowLibraryActionsExecute(r ApiListWorkflowLibraryActionsRequest) ([]WorkflowLibraryAction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1429,7 +1444,7 @@ func (a *WorkflowsApiService) ListWorkflowLibraryActionsExecute(r ApiListWorkflo
 		localVarReturnValue  []WorkflowLibraryAction
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.ListWorkflowLibraryActions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.ListWorkflowLibraryActions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1442,9 +1457,15 @@ func (a *WorkflowsApiService) ListWorkflowLibraryActionsExecute(r ApiListWorkflo
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1476,9 +1497,9 @@ func (a *WorkflowsApiService) ListWorkflowLibraryActionsExecute(r ApiListWorkflo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1559,7 +1580,7 @@ func (a *WorkflowsApiService) ListWorkflowLibraryActionsExecute(r ApiListWorkflo
 
 type ApiListWorkflowLibraryOperatorsRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 }
 
 func (r ApiListWorkflowLibraryOperatorsRequest) Execute() ([]WorkflowLibraryOperator, *http.Response, error) {
@@ -1574,7 +1595,7 @@ This lists the workflow operators available to you
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListWorkflowLibraryOperatorsRequest
 */
-func (a *WorkflowsApiService) ListWorkflowLibraryOperators(ctx context.Context) ApiListWorkflowLibraryOperatorsRequest {
+func (a *WorkflowsAPIService) ListWorkflowLibraryOperators(ctx context.Context) ApiListWorkflowLibraryOperatorsRequest {
 	return ApiListWorkflowLibraryOperatorsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1583,7 +1604,7 @@ func (a *WorkflowsApiService) ListWorkflowLibraryOperators(ctx context.Context) 
 
 // Execute executes the request
 //  @return []WorkflowLibraryOperator
-func (a *WorkflowsApiService) ListWorkflowLibraryOperatorsExecute(r ApiListWorkflowLibraryOperatorsRequest) ([]WorkflowLibraryOperator, *http.Response, error) {
+func (a *WorkflowsAPIService) ListWorkflowLibraryOperatorsExecute(r ApiListWorkflowLibraryOperatorsRequest) ([]WorkflowLibraryOperator, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1591,7 +1612,7 @@ func (a *WorkflowsApiService) ListWorkflowLibraryOperatorsExecute(r ApiListWorkf
 		localVarReturnValue  []WorkflowLibraryOperator
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.ListWorkflowLibraryOperators")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.ListWorkflowLibraryOperators")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1629,9 +1650,9 @@ func (a *WorkflowsApiService) ListWorkflowLibraryOperatorsExecute(r ApiListWorkf
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1712,7 +1733,7 @@ func (a *WorkflowsApiService) ListWorkflowLibraryOperatorsExecute(r ApiListWorkf
 
 type ApiListWorkflowLibraryTriggersRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	limit *int32
 	offset *int32
 	filters *string
@@ -1748,7 +1769,7 @@ This lists the workflow triggers available to you
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListWorkflowLibraryTriggersRequest
 */
-func (a *WorkflowsApiService) ListWorkflowLibraryTriggers(ctx context.Context) ApiListWorkflowLibraryTriggersRequest {
+func (a *WorkflowsAPIService) ListWorkflowLibraryTriggers(ctx context.Context) ApiListWorkflowLibraryTriggersRequest {
 	return ApiListWorkflowLibraryTriggersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1757,7 +1778,7 @@ func (a *WorkflowsApiService) ListWorkflowLibraryTriggers(ctx context.Context) A
 
 // Execute executes the request
 //  @return []WorkflowLibraryTrigger
-func (a *WorkflowsApiService) ListWorkflowLibraryTriggersExecute(r ApiListWorkflowLibraryTriggersRequest) ([]WorkflowLibraryTrigger, *http.Response, error) {
+func (a *WorkflowsAPIService) ListWorkflowLibraryTriggersExecute(r ApiListWorkflowLibraryTriggersRequest) ([]WorkflowLibraryTrigger, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1765,7 +1786,7 @@ func (a *WorkflowsApiService) ListWorkflowLibraryTriggersExecute(r ApiListWorkfl
 		localVarReturnValue  []WorkflowLibraryTrigger
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.ListWorkflowLibraryTriggers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.ListWorkflowLibraryTriggers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1778,9 +1799,15 @@ func (a *WorkflowsApiService) ListWorkflowLibraryTriggersExecute(r ApiListWorkfl
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1812,9 +1839,9 @@ func (a *WorkflowsApiService) ListWorkflowLibraryTriggersExecute(r ApiListWorkfl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1895,7 +1922,7 @@ func (a *WorkflowsApiService) ListWorkflowLibraryTriggersExecute(r ApiListWorkfl
 
 type ApiListWorkflowsRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 }
 
 func (r ApiListWorkflowsRequest) Execute() ([]Workflow, *http.Response, error) {
@@ -1910,7 +1937,7 @@ List all workflows in the tenant.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListWorkflowsRequest
 */
-func (a *WorkflowsApiService) ListWorkflows(ctx context.Context) ApiListWorkflowsRequest {
+func (a *WorkflowsAPIService) ListWorkflows(ctx context.Context) ApiListWorkflowsRequest {
 	return ApiListWorkflowsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1919,7 +1946,7 @@ func (a *WorkflowsApiService) ListWorkflows(ctx context.Context) ApiListWorkflow
 
 // Execute executes the request
 //  @return []Workflow
-func (a *WorkflowsApiService) ListWorkflowsExecute(r ApiListWorkflowsRequest) ([]Workflow, *http.Response, error) {
+func (a *WorkflowsAPIService) ListWorkflowsExecute(r ApiListWorkflowsRequest) ([]Workflow, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1927,7 +1954,7 @@ func (a *WorkflowsApiService) ListWorkflowsExecute(r ApiListWorkflowsRequest) ([
 		localVarReturnValue  []Workflow
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.ListWorkflows")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.ListWorkflows")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1965,9 +1992,9 @@ func (a *WorkflowsApiService) ListWorkflowsExecute(r ApiListWorkflowsRequest) ([
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2048,7 +2075,7 @@ func (a *WorkflowsApiService) ListWorkflowsExecute(r ApiListWorkflowsRequest) ([
 
 type ApiPatchWorkflowRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -2071,7 +2098,7 @@ Partially update an existing Workflow using [JSON Patch](https://tools.ietf.org/
  @param id Id of the Workflow
  @return ApiPatchWorkflowRequest
 */
-func (a *WorkflowsApiService) PatchWorkflow(ctx context.Context, id string) ApiPatchWorkflowRequest {
+func (a *WorkflowsAPIService) PatchWorkflow(ctx context.Context, id string) ApiPatchWorkflowRequest {
 	return ApiPatchWorkflowRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2081,7 +2108,7 @@ func (a *WorkflowsApiService) PatchWorkflow(ctx context.Context, id string) ApiP
 
 // Execute executes the request
 //  @return Workflow
-func (a *WorkflowsApiService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*Workflow, *http.Response, error) {
+func (a *WorkflowsAPIService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*Workflow, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -2089,7 +2116,7 @@ func (a *WorkflowsApiService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*
 		localVarReturnValue  *Workflow
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.PatchWorkflow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PatchWorkflow")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2133,9 +2160,9 @@ func (a *WorkflowsApiService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2216,7 +2243,7 @@ func (a *WorkflowsApiService) PatchWorkflowExecute(r ApiPatchWorkflowRequest) (*
 
 type ApiPostExternalExecuteWorkflowRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 	postExternalExecuteWorkflowRequest *PostExternalExecuteWorkflowRequest
 }
@@ -2239,7 +2266,7 @@ This endpoint allows a service outside of IdentityNow to initiate a workflow tha
  @param id Id of the workflow
  @return ApiPostExternalExecuteWorkflowRequest
 */
-func (a *WorkflowsApiService) PostExternalExecuteWorkflow(ctx context.Context, id string) ApiPostExternalExecuteWorkflowRequest {
+func (a *WorkflowsAPIService) PostExternalExecuteWorkflow(ctx context.Context, id string) ApiPostExternalExecuteWorkflowRequest {
 	return ApiPostExternalExecuteWorkflowRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2249,7 +2276,7 @@ func (a *WorkflowsApiService) PostExternalExecuteWorkflow(ctx context.Context, i
 
 // Execute executes the request
 //  @return PostExternalExecuteWorkflow200Response
-func (a *WorkflowsApiService) PostExternalExecuteWorkflowExecute(r ApiPostExternalExecuteWorkflowRequest) (*PostExternalExecuteWorkflow200Response, *http.Response, error) {
+func (a *WorkflowsAPIService) PostExternalExecuteWorkflowExecute(r ApiPostExternalExecuteWorkflowRequest) (*PostExternalExecuteWorkflow200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2257,7 +2284,7 @@ func (a *WorkflowsApiService) PostExternalExecuteWorkflowExecute(r ApiPostExtern
 		localVarReturnValue  *PostExternalExecuteWorkflow200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.PostExternalExecuteWorkflow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PostExternalExecuteWorkflow")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2298,9 +2325,9 @@ func (a *WorkflowsApiService) PostExternalExecuteWorkflowExecute(r ApiPostExtern
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2381,7 +2408,7 @@ func (a *WorkflowsApiService) PostExternalExecuteWorkflowExecute(r ApiPostExtern
 
 type ApiPostWorkflowExternalTriggerRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 }
 
@@ -2398,7 +2425,7 @@ Create OAuth client ID, client secret, and callback URL for use in an external t
  @param id Id of the workflow
  @return ApiPostWorkflowExternalTriggerRequest
 */
-func (a *WorkflowsApiService) PostWorkflowExternalTrigger(ctx context.Context, id string) ApiPostWorkflowExternalTriggerRequest {
+func (a *WorkflowsAPIService) PostWorkflowExternalTrigger(ctx context.Context, id string) ApiPostWorkflowExternalTriggerRequest {
 	return ApiPostWorkflowExternalTriggerRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2408,7 +2435,7 @@ func (a *WorkflowsApiService) PostWorkflowExternalTrigger(ctx context.Context, i
 
 // Execute executes the request
 //  @return WorkflowOAuthClient
-func (a *WorkflowsApiService) PostWorkflowExternalTriggerExecute(r ApiPostWorkflowExternalTriggerRequest) (*WorkflowOAuthClient, *http.Response, error) {
+func (a *WorkflowsAPIService) PostWorkflowExternalTriggerExecute(r ApiPostWorkflowExternalTriggerRequest) (*WorkflowOAuthClient, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2416,7 +2443,7 @@ func (a *WorkflowsApiService) PostWorkflowExternalTriggerExecute(r ApiPostWorkfl
 		localVarReturnValue  *WorkflowOAuthClient
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.PostWorkflowExternalTrigger")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.PostWorkflowExternalTrigger")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2455,9 +2482,9 @@ func (a *WorkflowsApiService) PostWorkflowExternalTriggerExecute(r ApiPostWorkfl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2538,7 +2565,7 @@ func (a *WorkflowsApiService) PostWorkflowExternalTriggerExecute(r ApiPostWorkfl
 
 type ApiTestExternalExecuteWorkflowRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 	testExternalExecuteWorkflowRequest *TestExternalExecuteWorkflowRequest
 }
@@ -2561,7 +2588,7 @@ Validate a workflow with an "External Trigger" can receive input.  The response 
  @param id Id of the workflow
  @return ApiTestExternalExecuteWorkflowRequest
 */
-func (a *WorkflowsApiService) TestExternalExecuteWorkflow(ctx context.Context, id string) ApiTestExternalExecuteWorkflowRequest {
+func (a *WorkflowsAPIService) TestExternalExecuteWorkflow(ctx context.Context, id string) ApiTestExternalExecuteWorkflowRequest {
 	return ApiTestExternalExecuteWorkflowRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2571,7 +2598,7 @@ func (a *WorkflowsApiService) TestExternalExecuteWorkflow(ctx context.Context, i
 
 // Execute executes the request
 //  @return TestExternalExecuteWorkflow200Response
-func (a *WorkflowsApiService) TestExternalExecuteWorkflowExecute(r ApiTestExternalExecuteWorkflowRequest) (*TestExternalExecuteWorkflow200Response, *http.Response, error) {
+func (a *WorkflowsAPIService) TestExternalExecuteWorkflowExecute(r ApiTestExternalExecuteWorkflowRequest) (*TestExternalExecuteWorkflow200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2579,7 +2606,7 @@ func (a *WorkflowsApiService) TestExternalExecuteWorkflowExecute(r ApiTestExtern
 		localVarReturnValue  *TestExternalExecuteWorkflow200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.TestExternalExecuteWorkflow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.TestExternalExecuteWorkflow")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2620,9 +2647,9 @@ func (a *WorkflowsApiService) TestExternalExecuteWorkflowExecute(r ApiTestExtern
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2703,7 +2730,7 @@ func (a *WorkflowsApiService) TestExternalExecuteWorkflowExecute(r ApiTestExtern
 
 type ApiTestWorkflowRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 	testWorkflowRequest *TestWorkflowRequest
 }
@@ -2728,7 +2755,7 @@ This endpoint will return an execution ID, which can be used to lookup more info
  @param id Id of the workflow
  @return ApiTestWorkflowRequest
 */
-func (a *WorkflowsApiService) TestWorkflow(ctx context.Context, id string) ApiTestWorkflowRequest {
+func (a *WorkflowsAPIService) TestWorkflow(ctx context.Context, id string) ApiTestWorkflowRequest {
 	return ApiTestWorkflowRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2738,7 +2765,7 @@ func (a *WorkflowsApiService) TestWorkflow(ctx context.Context, id string) ApiTe
 
 // Execute executes the request
 //  @return TestWorkflow200Response
-func (a *WorkflowsApiService) TestWorkflowExecute(r ApiTestWorkflowRequest) (*TestWorkflow200Response, *http.Response, error) {
+func (a *WorkflowsAPIService) TestWorkflowExecute(r ApiTestWorkflowRequest) (*TestWorkflow200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2746,7 +2773,7 @@ func (a *WorkflowsApiService) TestWorkflowExecute(r ApiTestWorkflowRequest) (*Te
 		localVarReturnValue  *TestWorkflow200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.TestWorkflow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.TestWorkflow")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2790,9 +2817,9 @@ func (a *WorkflowsApiService) TestWorkflowExecute(r ApiTestWorkflowRequest) (*Te
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2873,7 +2900,7 @@ func (a *WorkflowsApiService) TestWorkflowExecute(r ApiTestWorkflowRequest) (*Te
 
 type ApiUpdateWorkflowRequest struct {
 	ctx context.Context
-	ApiService *WorkflowsApiService
+	ApiService *WorkflowsAPIService
 	id string
 	workflowBody *WorkflowBody
 }
@@ -2896,7 +2923,7 @@ Perform a full update of a workflow.  The updated workflow object is returned in
  @param id Id of the Workflow
  @return ApiUpdateWorkflowRequest
 */
-func (a *WorkflowsApiService) UpdateWorkflow(ctx context.Context, id string) ApiUpdateWorkflowRequest {
+func (a *WorkflowsAPIService) UpdateWorkflow(ctx context.Context, id string) ApiUpdateWorkflowRequest {
 	return ApiUpdateWorkflowRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2906,7 +2933,7 @@ func (a *WorkflowsApiService) UpdateWorkflow(ctx context.Context, id string) Api
 
 // Execute executes the request
 //  @return Workflow
-func (a *WorkflowsApiService) UpdateWorkflowExecute(r ApiUpdateWorkflowRequest) (*Workflow, *http.Response, error) {
+func (a *WorkflowsAPIService) UpdateWorkflowExecute(r ApiUpdateWorkflowRequest) (*Workflow, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2914,7 +2941,7 @@ func (a *WorkflowsApiService) UpdateWorkflowExecute(r ApiUpdateWorkflowRequest) 
 		localVarReturnValue  *Workflow
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsApiService.UpdateWorkflow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WorkflowsAPIService.UpdateWorkflow")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2958,9 +2985,9 @@ func (a *WorkflowsApiService) UpdateWorkflowExecute(r ApiUpdateWorkflowRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

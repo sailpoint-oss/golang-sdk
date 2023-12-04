@@ -175,8 +175,8 @@ func (o *NotificationTemplateContext) UnmarshalJSON(bytes []byte) (err error) {
 	varNotificationTemplateContext := _NotificationTemplateContext{}
 
 	if err = json.Unmarshal(bytes, &varNotificationTemplateContext); err == nil {
-		*o = NotificationTemplateContext(varNotificationTemplateContext)
-	}
+	*o = NotificationTemplateContext(varNotificationTemplateContext)
+}
 
 	additionalProperties := make(map[string]interface{})
 

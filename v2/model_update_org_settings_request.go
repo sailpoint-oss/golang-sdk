@@ -891,8 +891,8 @@ func (o *UpdateOrgSettingsRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varUpdateOrgSettingsRequest := _UpdateOrgSettingsRequest{}
 
 	if err = json.Unmarshal(bytes, &varUpdateOrgSettingsRequest); err == nil {
-		*o = UpdateOrgSettingsRequest(varUpdateOrgSettingsRequest)
-	}
+	*o = UpdateOrgSettingsRequest(varUpdateOrgSettingsRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

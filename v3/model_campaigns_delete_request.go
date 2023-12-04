@@ -100,8 +100,8 @@ func (o *CampaignsDeleteRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varCampaignsDeleteRequest := _CampaignsDeleteRequest{}
 
 	if err = json.Unmarshal(bytes, &varCampaignsDeleteRequest); err == nil {
-		*o = CampaignsDeleteRequest(varCampaignsDeleteRequest)
-	}
+	*o = CampaignsDeleteRequest(varCampaignsDeleteRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// AccountsApiService AccountsApi service
-type AccountsApiService service
+// AccountsAPIService AccountsAPI service
+type AccountsAPIService service
 
 type ApiCreateAccountRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	accountAttributesCreate *AccountAttributesCreate
 }
 
@@ -48,7 +48,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateAccountRequest
 */
-func (a *AccountsApiService) CreateAccount(ctx context.Context) ApiCreateAccountRequest {
+func (a *AccountsAPIService) CreateAccount(ctx context.Context) ApiCreateAccountRequest {
 	return ApiCreateAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,7 +57,7 @@ func (a *AccountsApiService) CreateAccount(ctx context.Context) ApiCreateAccount
 
 // Execute executes the request
 //  @return AccountsAsyncResult
-func (a *AccountsApiService) CreateAccountExecute(r ApiCreateAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
+func (a *AccountsAPIService) CreateAccountExecute(r ApiCreateAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *AccountsApiService) CreateAccountExecute(r ApiCreateAccountRequest) (*A
 		localVarReturnValue  *AccountsAsyncResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.CreateAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.CreateAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,9 +108,9 @@ func (a *AccountsApiService) CreateAccountExecute(r ApiCreateAccountRequest) (*A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -191,7 +191,7 @@ func (a *AccountsApiService) CreateAccountExecute(r ApiCreateAccountRequest) (*A
 
 type ApiDeleteAccountRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 }
 
@@ -209,7 +209,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The account ID
  @return ApiDeleteAccountRequest
 */
-func (a *AccountsApiService) DeleteAccount(ctx context.Context, id string) ApiDeleteAccountRequest {
+func (a *AccountsAPIService) DeleteAccount(ctx context.Context, id string) ApiDeleteAccountRequest {
 	return ApiDeleteAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -219,7 +219,7 @@ func (a *AccountsApiService) DeleteAccount(ctx context.Context, id string) ApiDe
 
 // Execute executes the request
 //  @return AccountsAsyncResult
-func (a *AccountsApiService) DeleteAccountExecute(r ApiDeleteAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
+func (a *AccountsAPIService) DeleteAccountExecute(r ApiDeleteAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -227,7 +227,7 @@ func (a *AccountsApiService) DeleteAccountExecute(r ApiDeleteAccountRequest) (*A
 		localVarReturnValue  *AccountsAsyncResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.DeleteAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.DeleteAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -266,9 +266,9 @@ func (a *AccountsApiService) DeleteAccountExecute(r ApiDeleteAccountRequest) (*A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -360,7 +360,7 @@ func (a *AccountsApiService) DeleteAccountExecute(r ApiDeleteAccountRequest) (*A
 
 type ApiDisableAccountRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 	accountToggleRequest *AccountToggleRequest
 }
@@ -384,7 +384,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The account id
  @return ApiDisableAccountRequest
 */
-func (a *AccountsApiService) DisableAccount(ctx context.Context, id string) ApiDisableAccountRequest {
+func (a *AccountsAPIService) DisableAccount(ctx context.Context, id string) ApiDisableAccountRequest {
 	return ApiDisableAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -394,7 +394,7 @@ func (a *AccountsApiService) DisableAccount(ctx context.Context, id string) ApiD
 
 // Execute executes the request
 //  @return AccountsAsyncResult
-func (a *AccountsApiService) DisableAccountExecute(r ApiDisableAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
+func (a *AccountsAPIService) DisableAccountExecute(r ApiDisableAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -402,7 +402,7 @@ func (a *AccountsApiService) DisableAccountExecute(r ApiDisableAccountRequest) (
 		localVarReturnValue  *AccountsAsyncResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.DisableAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.DisableAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -446,9 +446,9 @@ func (a *AccountsApiService) DisableAccountExecute(r ApiDisableAccountRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -540,7 +540,7 @@ func (a *AccountsApiService) DisableAccountExecute(r ApiDisableAccountRequest) (
 
 type ApiDisableAccountForIdentityRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 }
 
@@ -557,7 +557,7 @@ This API submits a task to disable IDN account for a single identity.
  @param id The identity id.
  @return ApiDisableAccountForIdentityRequest
 */
-func (a *AccountsApiService) DisableAccountForIdentity(ctx context.Context, id string) ApiDisableAccountForIdentityRequest {
+func (a *AccountsAPIService) DisableAccountForIdentity(ctx context.Context, id string) ApiDisableAccountForIdentityRequest {
 	return ApiDisableAccountForIdentityRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -567,7 +567,7 @@ func (a *AccountsApiService) DisableAccountForIdentity(ctx context.Context, id s
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *AccountsApiService) DisableAccountForIdentityExecute(r ApiDisableAccountForIdentityRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AccountsAPIService) DisableAccountForIdentityExecute(r ApiDisableAccountForIdentityRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -575,7 +575,7 @@ func (a *AccountsApiService) DisableAccountForIdentityExecute(r ApiDisableAccoun
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.DisableAccountForIdentity")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.DisableAccountForIdentity")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -614,9 +614,9 @@ func (a *AccountsApiService) DisableAccountForIdentityExecute(r ApiDisableAccoun
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -708,7 +708,7 @@ func (a *AccountsApiService) DisableAccountForIdentityExecute(r ApiDisableAccoun
 
 type ApiDisableAccountsForIdentitiesRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	identitiesAccountsBulkRequest *IdentitiesAccountsBulkRequest
 }
 
@@ -729,7 +729,7 @@ This API submits tasks to disable IDN account for each identity provided in the 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDisableAccountsForIdentitiesRequest
 */
-func (a *AccountsApiService) DisableAccountsForIdentities(ctx context.Context) ApiDisableAccountsForIdentitiesRequest {
+func (a *AccountsAPIService) DisableAccountsForIdentities(ctx context.Context) ApiDisableAccountsForIdentitiesRequest {
 	return ApiDisableAccountsForIdentitiesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -738,7 +738,7 @@ func (a *AccountsApiService) DisableAccountsForIdentities(ctx context.Context) A
 
 // Execute executes the request
 //  @return []BulkIdentitiesAccountsResponse
-func (a *AccountsApiService) DisableAccountsForIdentitiesExecute(r ApiDisableAccountsForIdentitiesRequest) ([]BulkIdentitiesAccountsResponse, *http.Response, error) {
+func (a *AccountsAPIService) DisableAccountsForIdentitiesExecute(r ApiDisableAccountsForIdentitiesRequest) ([]BulkIdentitiesAccountsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -746,7 +746,7 @@ func (a *AccountsApiService) DisableAccountsForIdentitiesExecute(r ApiDisableAcc
 		localVarReturnValue  []BulkIdentitiesAccountsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.DisableAccountsForIdentities")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.DisableAccountsForIdentities")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -789,9 +789,9 @@ func (a *AccountsApiService) DisableAccountsForIdentitiesExecute(r ApiDisableAcc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -872,7 +872,7 @@ func (a *AccountsApiService) DisableAccountsForIdentitiesExecute(r ApiDisableAcc
 
 type ApiEnableAccountRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 	accountToggleRequest *AccountToggleRequest
 }
@@ -896,7 +896,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The account id
  @return ApiEnableAccountRequest
 */
-func (a *AccountsApiService) EnableAccount(ctx context.Context, id string) ApiEnableAccountRequest {
+func (a *AccountsAPIService) EnableAccount(ctx context.Context, id string) ApiEnableAccountRequest {
 	return ApiEnableAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -906,7 +906,7 @@ func (a *AccountsApiService) EnableAccount(ctx context.Context, id string) ApiEn
 
 // Execute executes the request
 //  @return AccountsAsyncResult
-func (a *AccountsApiService) EnableAccountExecute(r ApiEnableAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
+func (a *AccountsAPIService) EnableAccountExecute(r ApiEnableAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -914,7 +914,7 @@ func (a *AccountsApiService) EnableAccountExecute(r ApiEnableAccountRequest) (*A
 		localVarReturnValue  *AccountsAsyncResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.EnableAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.EnableAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -958,9 +958,9 @@ func (a *AccountsApiService) EnableAccountExecute(r ApiEnableAccountRequest) (*A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1052,7 +1052,7 @@ func (a *AccountsApiService) EnableAccountExecute(r ApiEnableAccountRequest) (*A
 
 type ApiEnableAccountForIdentityRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 }
 
@@ -1069,7 +1069,7 @@ This API submits a task to enable IDN account for a single identity.
  @param id The identity id.
  @return ApiEnableAccountForIdentityRequest
 */
-func (a *AccountsApiService) EnableAccountForIdentity(ctx context.Context, id string) ApiEnableAccountForIdentityRequest {
+func (a *AccountsAPIService) EnableAccountForIdentity(ctx context.Context, id string) ApiEnableAccountForIdentityRequest {
 	return ApiEnableAccountForIdentityRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1079,7 +1079,7 @@ func (a *AccountsApiService) EnableAccountForIdentity(ctx context.Context, id st
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *AccountsApiService) EnableAccountForIdentityExecute(r ApiEnableAccountForIdentityRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AccountsAPIService) EnableAccountForIdentityExecute(r ApiEnableAccountForIdentityRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1087,7 +1087,7 @@ func (a *AccountsApiService) EnableAccountForIdentityExecute(r ApiEnableAccountF
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.EnableAccountForIdentity")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.EnableAccountForIdentity")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1126,9 +1126,9 @@ func (a *AccountsApiService) EnableAccountForIdentityExecute(r ApiEnableAccountF
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1220,7 +1220,7 @@ func (a *AccountsApiService) EnableAccountForIdentityExecute(r ApiEnableAccountF
 
 type ApiEnableAccountsForIdentitiesRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	identitiesAccountsBulkRequest *IdentitiesAccountsBulkRequest
 }
 
@@ -1241,7 +1241,7 @@ This API submits tasks to enable IDN account for each identity provided in the r
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiEnableAccountsForIdentitiesRequest
 */
-func (a *AccountsApiService) EnableAccountsForIdentities(ctx context.Context) ApiEnableAccountsForIdentitiesRequest {
+func (a *AccountsAPIService) EnableAccountsForIdentities(ctx context.Context) ApiEnableAccountsForIdentitiesRequest {
 	return ApiEnableAccountsForIdentitiesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1250,7 +1250,7 @@ func (a *AccountsApiService) EnableAccountsForIdentities(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return []BulkIdentitiesAccountsResponse
-func (a *AccountsApiService) EnableAccountsForIdentitiesExecute(r ApiEnableAccountsForIdentitiesRequest) ([]BulkIdentitiesAccountsResponse, *http.Response, error) {
+func (a *AccountsAPIService) EnableAccountsForIdentitiesExecute(r ApiEnableAccountsForIdentitiesRequest) ([]BulkIdentitiesAccountsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1258,7 +1258,7 @@ func (a *AccountsApiService) EnableAccountsForIdentitiesExecute(r ApiEnableAccou
 		localVarReturnValue  []BulkIdentitiesAccountsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.EnableAccountsForIdentities")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.EnableAccountsForIdentities")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1301,9 +1301,9 @@ func (a *AccountsApiService) EnableAccountsForIdentitiesExecute(r ApiEnableAccou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1384,7 +1384,7 @@ func (a *AccountsApiService) EnableAccountsForIdentitiesExecute(r ApiEnableAccou
 
 type ApiGetAccountRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 }
 
@@ -1402,7 +1402,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The account ID
  @return ApiGetAccountRequest
 */
-func (a *AccountsApiService) GetAccount(ctx context.Context, id string) ApiGetAccountRequest {
+func (a *AccountsAPIService) GetAccount(ctx context.Context, id string) ApiGetAccountRequest {
 	return ApiGetAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1412,7 +1412,7 @@ func (a *AccountsApiService) GetAccount(ctx context.Context, id string) ApiGetAc
 
 // Execute executes the request
 //  @return Account
-func (a *AccountsApiService) GetAccountExecute(r ApiGetAccountRequest) (*Account, *http.Response, error) {
+func (a *AccountsAPIService) GetAccountExecute(r ApiGetAccountRequest) (*Account, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1420,7 +1420,7 @@ func (a *AccountsApiService) GetAccountExecute(r ApiGetAccountRequest) (*Account
 		localVarReturnValue  *Account
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.GetAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.GetAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1459,9 +1459,9 @@ func (a *AccountsApiService) GetAccountExecute(r ApiGetAccountRequest) (*Account
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1553,7 +1553,7 @@ func (a *AccountsApiService) GetAccountExecute(r ApiGetAccountRequest) (*Account
 
 type ApiGetAccountEntitlementsRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 	offset *int32
 	limit *int32
@@ -1592,7 +1592,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The account id
  @return ApiGetAccountEntitlementsRequest
 */
-func (a *AccountsApiService) GetAccountEntitlements(ctx context.Context, id string) ApiGetAccountEntitlementsRequest {
+func (a *AccountsAPIService) GetAccountEntitlements(ctx context.Context, id string) ApiGetAccountEntitlementsRequest {
 	return ApiGetAccountEntitlementsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1602,7 +1602,7 @@ func (a *AccountsApiService) GetAccountEntitlements(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return []Entitlement
-func (a *AccountsApiService) GetAccountEntitlementsExecute(r ApiGetAccountEntitlementsRequest) ([]Entitlement, *http.Response, error) {
+func (a *AccountsAPIService) GetAccountEntitlementsExecute(r ApiGetAccountEntitlementsRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1610,7 +1610,7 @@ func (a *AccountsApiService) GetAccountEntitlementsExecute(r ApiGetAccountEntitl
 		localVarReturnValue  []Entitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.GetAccountEntitlements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.GetAccountEntitlements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1624,12 +1624,21 @@ func (a *AccountsApiService) GetAccountEntitlementsExecute(r ApiGetAccountEntitl
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1658,9 +1667,9 @@ func (a *AccountsApiService) GetAccountEntitlementsExecute(r ApiGetAccountEntitl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1752,7 +1761,7 @@ func (a *AccountsApiService) GetAccountEntitlementsExecute(r ApiGetAccountEntitl
 
 type ApiListAccountsRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	detailLevel *string
 	limit *int32
 	offset *int32
@@ -1810,7 +1819,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccountsRequest
 */
-func (a *AccountsApiService) ListAccounts(ctx context.Context) ApiListAccountsRequest {
+func (a *AccountsAPIService) ListAccounts(ctx context.Context) ApiListAccountsRequest {
 	return ApiListAccountsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1819,7 +1828,7 @@ func (a *AccountsApiService) ListAccounts(ctx context.Context) ApiListAccountsRe
 
 // Execute executes the request
 //  @return []ListAccounts200ResponseInner
-func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]ListAccounts200ResponseInner, *http.Response, error) {
+func (a *AccountsAPIService) ListAccountsExecute(r ApiListAccountsRequest) ([]ListAccounts200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1827,7 +1836,7 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]Li
 		localVarReturnValue  []ListAccounts200ResponseInner
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ListAccounts")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.ListAccounts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1843,12 +1852,21 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]Li
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1883,9 +1901,9 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]Li
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1966,7 +1984,7 @@ func (a *AccountsApiService) ListAccountsExecute(r ApiListAccountsRequest) ([]Li
 
 type ApiPutAccountRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 	accountAttributes *AccountAttributes
 }
@@ -1990,7 +2008,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The account ID
  @return ApiPutAccountRequest
 */
-func (a *AccountsApiService) PutAccount(ctx context.Context, id string) ApiPutAccountRequest {
+func (a *AccountsAPIService) PutAccount(ctx context.Context, id string) ApiPutAccountRequest {
 	return ApiPutAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2000,7 +2018,7 @@ func (a *AccountsApiService) PutAccount(ctx context.Context, id string) ApiPutAc
 
 // Execute executes the request
 //  @return AccountsAsyncResult
-func (a *AccountsApiService) PutAccountExecute(r ApiPutAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
+func (a *AccountsAPIService) PutAccountExecute(r ApiPutAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2008,7 +2026,7 @@ func (a *AccountsApiService) PutAccountExecute(r ApiPutAccountRequest) (*Account
 		localVarReturnValue  *AccountsAsyncResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.PutAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.PutAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2052,9 +2070,9 @@ func (a *AccountsApiService) PutAccountExecute(r ApiPutAccountRequest) (*Account
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2146,7 +2164,7 @@ func (a *AccountsApiService) PutAccountExecute(r ApiPutAccountRequest) (*Account
 
 type ApiReloadAccountRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 }
 
@@ -2164,7 +2182,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The account id
  @return ApiReloadAccountRequest
 */
-func (a *AccountsApiService) ReloadAccount(ctx context.Context, id string) ApiReloadAccountRequest {
+func (a *AccountsAPIService) ReloadAccount(ctx context.Context, id string) ApiReloadAccountRequest {
 	return ApiReloadAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2174,7 +2192,7 @@ func (a *AccountsApiService) ReloadAccount(ctx context.Context, id string) ApiRe
 
 // Execute executes the request
 //  @return AccountsAsyncResult
-func (a *AccountsApiService) ReloadAccountExecute(r ApiReloadAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
+func (a *AccountsAPIService) ReloadAccountExecute(r ApiReloadAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2182,7 +2200,7 @@ func (a *AccountsApiService) ReloadAccountExecute(r ApiReloadAccountRequest) (*A
 		localVarReturnValue  *AccountsAsyncResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.ReloadAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.ReloadAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2221,9 +2239,9 @@ func (a *AccountsApiService) ReloadAccountExecute(r ApiReloadAccountRequest) (*A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2315,7 +2333,7 @@ func (a *AccountsApiService) ReloadAccountExecute(r ApiReloadAccountRequest) (*A
 
 type ApiUnlockAccountRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 	accountUnlockRequest *AccountUnlockRequest
 }
@@ -2339,7 +2357,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The account id
  @return ApiUnlockAccountRequest
 */
-func (a *AccountsApiService) UnlockAccount(ctx context.Context, id string) ApiUnlockAccountRequest {
+func (a *AccountsAPIService) UnlockAccount(ctx context.Context, id string) ApiUnlockAccountRequest {
 	return ApiUnlockAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2349,7 +2367,7 @@ func (a *AccountsApiService) UnlockAccount(ctx context.Context, id string) ApiUn
 
 // Execute executes the request
 //  @return AccountsAsyncResult
-func (a *AccountsApiService) UnlockAccountExecute(r ApiUnlockAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
+func (a *AccountsAPIService) UnlockAccountExecute(r ApiUnlockAccountRequest) (*AccountsAsyncResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2357,7 +2375,7 @@ func (a *AccountsApiService) UnlockAccountExecute(r ApiUnlockAccountRequest) (*A
 		localVarReturnValue  *AccountsAsyncResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.UnlockAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.UnlockAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2401,9 +2419,9 @@ func (a *AccountsApiService) UnlockAccountExecute(r ApiUnlockAccountRequest) (*A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2495,7 +2513,7 @@ func (a *AccountsApiService) UnlockAccountExecute(r ApiUnlockAccountRequest) (*A
 
 type ApiUpdateAccountRequest struct {
 	ctx context.Context
-	ApiService *AccountsApiService
+	ApiService *AccountsAPIService
 	id string
 	requestBody *[]map[string]interface{}
 }
@@ -2520,7 +2538,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param id The account ID
  @return ApiUpdateAccountRequest
 */
-func (a *AccountsApiService) UpdateAccount(ctx context.Context, id string) ApiUpdateAccountRequest {
+func (a *AccountsAPIService) UpdateAccount(ctx context.Context, id string) ApiUpdateAccountRequest {
 	return ApiUpdateAccountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2530,7 +2548,7 @@ func (a *AccountsApiService) UpdateAccount(ctx context.Context, id string) ApiUp
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *AccountsApiService) UpdateAccountExecute(r ApiUpdateAccountRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AccountsAPIService) UpdateAccountExecute(r ApiUpdateAccountRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -2538,7 +2556,7 @@ func (a *AccountsApiService) UpdateAccountExecute(r ApiUpdateAccountRequest) (ma
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsApiService.UpdateAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountsAPIService.UpdateAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2582,9 +2600,9 @@ func (a *AccountsApiService) UpdateAccountExecute(r ApiUpdateAccountRequest) (ma
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

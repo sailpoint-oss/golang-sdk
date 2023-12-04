@@ -110,8 +110,8 @@ func (o *BearerTokenAuthConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varBearerTokenAuthConfig := _BearerTokenAuthConfig{}
 
 	if err = json.Unmarshal(bytes, &varBearerTokenAuthConfig); err == nil {
-		*o = BearerTokenAuthConfig(varBearerTokenAuthConfig)
-	}
+	*o = BearerTokenAuthConfig(varBearerTokenAuthConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

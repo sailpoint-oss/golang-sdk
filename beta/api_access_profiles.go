@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// AccessProfilesApiService AccessProfilesApi service
-type AccessProfilesApiService service
+// AccessProfilesAPIService AccessProfilesAPI service
+type AccessProfilesAPIService service
 
 type ApiCreateAccessProfileRequest struct {
 	ctx context.Context
-	ApiService *AccessProfilesApiService
+	ApiService *AccessProfilesAPIService
 	accessProfile *AccessProfile
 }
 
@@ -48,7 +48,7 @@ The maximum supported length for the description field is 2000 characters. Longe
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateAccessProfileRequest
 */
-func (a *AccessProfilesApiService) CreateAccessProfile(ctx context.Context) ApiCreateAccessProfileRequest {
+func (a *AccessProfilesAPIService) CreateAccessProfile(ctx context.Context) ApiCreateAccessProfileRequest {
 	return ApiCreateAccessProfileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,7 +57,7 @@ func (a *AccessProfilesApiService) CreateAccessProfile(ctx context.Context) ApiC
 
 // Execute executes the request
 //  @return AccessProfile
-func (a *AccessProfilesApiService) CreateAccessProfileExecute(r ApiCreateAccessProfileRequest) (*AccessProfile, *http.Response, error) {
+func (a *AccessProfilesAPIService) CreateAccessProfileExecute(r ApiCreateAccessProfileRequest) (*AccessProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *AccessProfilesApiService) CreateAccessProfileExecute(r ApiCreateAccessP
 		localVarReturnValue  *AccessProfile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesApiService.CreateAccessProfile")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.CreateAccessProfile")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,9 +108,9 @@ func (a *AccessProfilesApiService) CreateAccessProfileExecute(r ApiCreateAccessP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -191,7 +191,7 @@ func (a *AccessProfilesApiService) CreateAccessProfileExecute(r ApiCreateAccessP
 
 type ApiDeleteAccessProfileRequest struct {
 	ctx context.Context
-	ApiService *AccessProfilesApiService
+	ApiService *AccessProfilesAPIService
 	id string
 }
 
@@ -212,7 +212,7 @@ A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is requi
  @param id ID of the Access Profile to delete
  @return ApiDeleteAccessProfileRequest
 */
-func (a *AccessProfilesApiService) DeleteAccessProfile(ctx context.Context, id string) ApiDeleteAccessProfileRequest {
+func (a *AccessProfilesAPIService) DeleteAccessProfile(ctx context.Context, id string) ApiDeleteAccessProfileRequest {
 	return ApiDeleteAccessProfileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -221,14 +221,14 @@ func (a *AccessProfilesApiService) DeleteAccessProfile(ctx context.Context, id s
 }
 
 // Execute executes the request
-func (a *AccessProfilesApiService) DeleteAccessProfileExecute(r ApiDeleteAccessProfileRequest) (*http.Response, error) {
+func (a *AccessProfilesAPIService) DeleteAccessProfileExecute(r ApiDeleteAccessProfileRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesApiService.DeleteAccessProfile")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.DeleteAccessProfile")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -267,9 +267,9 @@ func (a *AccessProfilesApiService) DeleteAccessProfileExecute(r ApiDeleteAccessP
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -341,7 +341,7 @@ func (a *AccessProfilesApiService) DeleteAccessProfileExecute(r ApiDeleteAccessP
 
 type ApiDeleteAccessProfilesInBulkRequest struct {
 	ctx context.Context
-	ApiService *AccessProfilesApiService
+	ApiService *AccessProfilesAPIService
 	accessProfileBulkDeleteRequest *AccessProfileBulkDeleteRequest
 }
 
@@ -366,7 +366,7 @@ A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is requi
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteAccessProfilesInBulkRequest
 */
-func (a *AccessProfilesApiService) DeleteAccessProfilesInBulk(ctx context.Context) ApiDeleteAccessProfilesInBulkRequest {
+func (a *AccessProfilesAPIService) DeleteAccessProfilesInBulk(ctx context.Context) ApiDeleteAccessProfilesInBulkRequest {
 	return ApiDeleteAccessProfilesInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -375,7 +375,7 @@ func (a *AccessProfilesApiService) DeleteAccessProfilesInBulk(ctx context.Contex
 
 // Execute executes the request
 //  @return AccessProfileBulkDeleteResponse
-func (a *AccessProfilesApiService) DeleteAccessProfilesInBulkExecute(r ApiDeleteAccessProfilesInBulkRequest) (*AccessProfileBulkDeleteResponse, *http.Response, error) {
+func (a *AccessProfilesAPIService) DeleteAccessProfilesInBulkExecute(r ApiDeleteAccessProfilesInBulkRequest) (*AccessProfileBulkDeleteResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -383,7 +383,7 @@ func (a *AccessProfilesApiService) DeleteAccessProfilesInBulkExecute(r ApiDelete
 		localVarReturnValue  *AccessProfileBulkDeleteResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesApiService.DeleteAccessProfilesInBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.DeleteAccessProfilesInBulk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -426,9 +426,9 @@ func (a *AccessProfilesApiService) DeleteAccessProfilesInBulkExecute(r ApiDelete
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -509,7 +509,7 @@ func (a *AccessProfilesApiService) DeleteAccessProfilesInBulkExecute(r ApiDelete
 
 type ApiGetAccessProfileRequest struct {
 	ctx context.Context
-	ApiService *AccessProfilesApiService
+	ApiService *AccessProfilesAPIService
 	id string
 }
 
@@ -528,7 +528,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_
  @param id ID of the Access Profile
  @return ApiGetAccessProfileRequest
 */
-func (a *AccessProfilesApiService) GetAccessProfile(ctx context.Context, id string) ApiGetAccessProfileRequest {
+func (a *AccessProfilesAPIService) GetAccessProfile(ctx context.Context, id string) ApiGetAccessProfileRequest {
 	return ApiGetAccessProfileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -538,7 +538,7 @@ func (a *AccessProfilesApiService) GetAccessProfile(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return AccessProfile
-func (a *AccessProfilesApiService) GetAccessProfileExecute(r ApiGetAccessProfileRequest) (*AccessProfile, *http.Response, error) {
+func (a *AccessProfilesAPIService) GetAccessProfileExecute(r ApiGetAccessProfileRequest) (*AccessProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -546,7 +546,7 @@ func (a *AccessProfilesApiService) GetAccessProfileExecute(r ApiGetAccessProfile
 		localVarReturnValue  *AccessProfile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesApiService.GetAccessProfile")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.GetAccessProfile")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -585,9 +585,9 @@ func (a *AccessProfilesApiService) GetAccessProfileExecute(r ApiGetAccessProfile
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -668,7 +668,7 @@ func (a *AccessProfilesApiService) GetAccessProfileExecute(r ApiGetAccessProfile
 
 type ApiGetAccessProfileEntitlementsRequest struct {
 	ctx context.Context
-	ApiService *AccessProfilesApiService
+	ApiService *AccessProfilesAPIService
 	id string
 	limit *int32
 	offset *int32
@@ -722,7 +722,7 @@ A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is requi
  @param id ID of the containing Access Profile
  @return ApiGetAccessProfileEntitlementsRequest
 */
-func (a *AccessProfilesApiService) GetAccessProfileEntitlements(ctx context.Context, id string) ApiGetAccessProfileEntitlementsRequest {
+func (a *AccessProfilesAPIService) GetAccessProfileEntitlements(ctx context.Context, id string) ApiGetAccessProfileEntitlementsRequest {
 	return ApiGetAccessProfileEntitlementsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -732,7 +732,7 @@ func (a *AccessProfilesApiService) GetAccessProfileEntitlements(ctx context.Cont
 
 // Execute executes the request
 //  @return []Entitlement
-func (a *AccessProfilesApiService) GetAccessProfileEntitlementsExecute(r ApiGetAccessProfileEntitlementsRequest) ([]Entitlement, *http.Response, error) {
+func (a *AccessProfilesAPIService) GetAccessProfileEntitlementsExecute(r ApiGetAccessProfileEntitlementsRequest) ([]Entitlement, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -740,7 +740,7 @@ func (a *AccessProfilesApiService) GetAccessProfileEntitlementsExecute(r ApiGetA
 		localVarReturnValue  []Entitlement
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesApiService.GetAccessProfileEntitlements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.GetAccessProfileEntitlements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -754,12 +754,21 @@ func (a *AccessProfilesApiService) GetAccessProfileEntitlementsExecute(r ApiGetA
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -794,9 +803,9 @@ func (a *AccessProfilesApiService) GetAccessProfileEntitlementsExecute(r ApiGetA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -877,7 +886,7 @@ func (a *AccessProfilesApiService) GetAccessProfileEntitlementsExecute(r ApiGetA
 
 type ApiListAccessProfilesRequest struct {
 	ctx context.Context
-	ApiService *AccessProfilesApiService
+	ApiService *AccessProfilesAPIService
 	forSubadmin *string
 	limit *int32
 	offset *int32
@@ -950,7 +959,7 @@ A token with API, ORG_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccessProfilesRequest
 */
-func (a *AccessProfilesApiService) ListAccessProfiles(ctx context.Context) ApiListAccessProfilesRequest {
+func (a *AccessProfilesAPIService) ListAccessProfiles(ctx context.Context) ApiListAccessProfilesRequest {
 	return ApiListAccessProfilesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -959,7 +968,7 @@ func (a *AccessProfilesApiService) ListAccessProfiles(ctx context.Context) ApiLi
 
 // Execute executes the request
 //  @return []AccessProfile
-func (a *AccessProfilesApiService) ListAccessProfilesExecute(r ApiListAccessProfilesRequest) ([]AccessProfile, *http.Response, error) {
+func (a *AccessProfilesAPIService) ListAccessProfilesExecute(r ApiListAccessProfilesRequest) ([]AccessProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -967,7 +976,7 @@ func (a *AccessProfilesApiService) ListAccessProfilesExecute(r ApiListAccessProf
 		localVarReturnValue  []AccessProfile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesApiService.ListAccessProfiles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.ListAccessProfiles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -983,12 +992,21 @@ func (a *AccessProfilesApiService) ListAccessProfilesExecute(r ApiListAccessProf
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1001,6 +1019,9 @@ func (a *AccessProfilesApiService) ListAccessProfilesExecute(r ApiListAccessProf
 	}
 	if r.includeUnsegmented != nil {
 		parameterAddToQuery(localVarQueryParams, "include-unsegmented", r.includeUnsegmented, "")
+	} else {
+		var defaultValue bool = true
+		r.includeUnsegmented = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1029,9 +1050,9 @@ func (a *AccessProfilesApiService) ListAccessProfilesExecute(r ApiListAccessProf
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1112,7 +1133,7 @@ func (a *AccessProfilesApiService) ListAccessProfilesExecute(r ApiListAccessProf
 
 type ApiPatchAccessProfileRequest struct {
 	ctx context.Context
-	ApiService *AccessProfilesApiService
+	ApiService *AccessProfilesAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -1142,7 +1163,7 @@ A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is requi
  @param id ID of the Access Profile to patch
  @return ApiPatchAccessProfileRequest
 */
-func (a *AccessProfilesApiService) PatchAccessProfile(ctx context.Context, id string) ApiPatchAccessProfileRequest {
+func (a *AccessProfilesAPIService) PatchAccessProfile(ctx context.Context, id string) ApiPatchAccessProfileRequest {
 	return ApiPatchAccessProfileRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1152,7 +1173,7 @@ func (a *AccessProfilesApiService) PatchAccessProfile(ctx context.Context, id st
 
 // Execute executes the request
 //  @return AccessProfile
-func (a *AccessProfilesApiService) PatchAccessProfileExecute(r ApiPatchAccessProfileRequest) (*AccessProfile, *http.Response, error) {
+func (a *AccessProfilesAPIService) PatchAccessProfileExecute(r ApiPatchAccessProfileRequest) (*AccessProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -1160,7 +1181,7 @@ func (a *AccessProfilesApiService) PatchAccessProfileExecute(r ApiPatchAccessPro
 		localVarReturnValue  *AccessProfile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesApiService.PatchAccessProfile")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessProfilesAPIService.PatchAccessProfile")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1204,9 +1225,9 @@ func (a *AccessProfilesApiService) PatchAccessProfileExecute(r ApiPatchAccessPro
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

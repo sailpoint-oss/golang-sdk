@@ -172,8 +172,8 @@ func (o *IdentityProfileExportedObject) UnmarshalJSON(bytes []byte) (err error) 
 	varIdentityProfileExportedObject := _IdentityProfileExportedObject{}
 
 	if err = json.Unmarshal(bytes, &varIdentityProfileExportedObject); err == nil {
-		*o = IdentityProfileExportedObject(varIdentityProfileExportedObject)
-	}
+	*o = IdentityProfileExportedObject(varIdentityProfileExportedObject)
+}
 
 	additionalProperties := make(map[string]interface{})
 

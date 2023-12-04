@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccountsCollectedForAggregationSource type satisfies the MappedNullable interface at compile time
@@ -144,11 +145,34 @@ func (o AccountsCollectedForAggregationSource) ToMap() (map[string]interface{}, 
 }
 
 func (o *AccountsCollectedForAggregationSource) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"type",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccountsCollectedForAggregationSource := _AccountsCollectedForAggregationSource{}
 
 	if err = json.Unmarshal(bytes, &varAccountsCollectedForAggregationSource); err == nil {
-		*o = AccountsCollectedForAggregationSource(varAccountsCollectedForAggregationSource)
-	}
+	*o = AccountsCollectedForAggregationSource(varAccountsCollectedForAggregationSource)
+}
 
 	additionalProperties := make(map[string]interface{})
 

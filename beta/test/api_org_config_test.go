@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing OrgConfigApiService
+Testing OrgConfigAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_OrgConfigApiService(t *testing.T) {
+func Test_beta_OrgConfigAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test OrgConfigApiService GetOrgConfig", func(t *testing.T) {
+	t.Run("Test OrgConfigAPIService GetOrgConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.OrgConfigApi.GetOrgConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.OrgConfigAPI.GetOrgConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_beta_OrgConfigApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrgConfigApiService GetValidTimeZones", func(t *testing.T) {
+	t.Run("Test OrgConfigAPIService GetValidTimeZones", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.OrgConfigApi.GetValidTimeZones(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.OrgConfigAPI.GetValidTimeZones(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,11 +46,11 @@ func Test_beta_OrgConfigApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrgConfigApiService PatchOrgConfig", func(t *testing.T) {
+	t.Run("Test OrgConfigAPIService PatchOrgConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.OrgConfigApi.PatchOrgConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.OrgConfigAPI.PatchOrgConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

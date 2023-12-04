@@ -13,18 +13,18 @@ package cc
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// SystemApiService SystemApi service
-type SystemApiService service
+// SystemAPIService SystemAPI service
+type SystemAPIService service
 
 type ApiRefreshIdentitiesRequest struct {
 	ctx context.Context
-	ApiService *SystemApiService
+	ApiService *SystemAPIService
 	contentType *string
 	refreshIdentitiesRequest *RefreshIdentitiesRequest
 }
@@ -64,7 +64,7 @@ Refresh Arguments:
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiRefreshIdentitiesRequest
 */
-func (a *SystemApiService) RefreshIdentities(ctx context.Context) ApiRefreshIdentitiesRequest {
+func (a *SystemAPIService) RefreshIdentities(ctx context.Context) ApiRefreshIdentitiesRequest {
 	return ApiRefreshIdentitiesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -73,7 +73,7 @@ func (a *SystemApiService) RefreshIdentities(ctx context.Context) ApiRefreshIden
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *SystemApiService) RefreshIdentitiesExecute(r ApiRefreshIdentitiesRequest) (map[string]interface{}, *http.Response, error) {
+func (a *SystemAPIService) RefreshIdentitiesExecute(r ApiRefreshIdentitiesRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -81,7 +81,7 @@ func (a *SystemApiService) RefreshIdentitiesExecute(r ApiRefreshIdentitiesReques
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemApiService.RefreshIdentities")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAPIService.RefreshIdentities")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -124,9 +124,9 @@ func (a *SystemApiService) RefreshIdentitiesExecute(r ApiRefreshIdentitiesReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

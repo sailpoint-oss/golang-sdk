@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// TaskManagementApiService TaskManagementApi service
-type TaskManagementApiService service
+// TaskManagementAPIService TaskManagementAPI service
+type TaskManagementAPIService service
 
 type ApiGetPendingTaskHeadersRequest struct {
 	ctx context.Context
-	ApiService *TaskManagementApiService
+	ApiService *TaskManagementAPIService
 	offset *int32
 	limit *int32
 	count *bool
@@ -61,7 +61,7 @@ Retrieve headers for a list of TaskStatus for pending tasks.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPendingTaskHeadersRequest
 */
-func (a *TaskManagementApiService) GetPendingTaskHeaders(ctx context.Context) ApiGetPendingTaskHeadersRequest {
+func (a *TaskManagementAPIService) GetPendingTaskHeaders(ctx context.Context) ApiGetPendingTaskHeadersRequest {
 	return ApiGetPendingTaskHeadersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -69,14 +69,14 @@ func (a *TaskManagementApiService) GetPendingTaskHeaders(ctx context.Context) Ap
 }
 
 // Execute executes the request
-func (a *TaskManagementApiService) GetPendingTaskHeadersExecute(r ApiGetPendingTaskHeadersRequest) (*http.Response, error) {
+func (a *TaskManagementAPIService) GetPendingTaskHeadersExecute(r ApiGetPendingTaskHeadersRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodHead
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementApiService.GetPendingTaskHeaders")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementAPIService.GetPendingTaskHeaders")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -89,12 +89,21 @@ func (a *TaskManagementApiService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -123,9 +132,9 @@ func (a *TaskManagementApiService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -164,7 +173,7 @@ func (a *TaskManagementApiService) GetPendingTaskHeadersExecute(r ApiGetPendingT
 
 type ApiGetPendingTasksRequest struct {
 	ctx context.Context
-	ApiService *TaskManagementApiService
+	ApiService *TaskManagementAPIService
 	offset *int32
 	limit *int32
 	count *bool
@@ -200,7 +209,7 @@ Retrieve a list of TaskStatus for pending tasks.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPendingTasksRequest
 */
-func (a *TaskManagementApiService) GetPendingTasks(ctx context.Context) ApiGetPendingTasksRequest {
+func (a *TaskManagementAPIService) GetPendingTasks(ctx context.Context) ApiGetPendingTasksRequest {
 	return ApiGetPendingTasksRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -209,7 +218,7 @@ func (a *TaskManagementApiService) GetPendingTasks(ctx context.Context) ApiGetPe
 
 // Execute executes the request
 //  @return []TaskStatus
-func (a *TaskManagementApiService) GetPendingTasksExecute(r ApiGetPendingTasksRequest) ([]TaskStatus, *http.Response, error) {
+func (a *TaskManagementAPIService) GetPendingTasksExecute(r ApiGetPendingTasksRequest) ([]TaskStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -217,7 +226,7 @@ func (a *TaskManagementApiService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 		localVarReturnValue  []TaskStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementApiService.GetPendingTasks")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementAPIService.GetPendingTasks")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -230,12 +239,21 @@ func (a *TaskManagementApiService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -264,9 +282,9 @@ func (a *TaskManagementApiService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -314,7 +332,7 @@ func (a *TaskManagementApiService) GetPendingTasksExecute(r ApiGetPendingTasksRe
 
 type ApiGetTaskStatusRequest struct {
 	ctx context.Context
-	ApiService *TaskManagementApiService
+	ApiService *TaskManagementAPIService
 	id string
 }
 
@@ -331,7 +349,7 @@ Get a TaskStatus for a task by task ID.
  @param id Task ID of the TaskStatus to get
  @return ApiGetTaskStatusRequest
 */
-func (a *TaskManagementApiService) GetTaskStatus(ctx context.Context, id string) ApiGetTaskStatusRequest {
+func (a *TaskManagementAPIService) GetTaskStatus(ctx context.Context, id string) ApiGetTaskStatusRequest {
 	return ApiGetTaskStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -341,7 +359,7 @@ func (a *TaskManagementApiService) GetTaskStatus(ctx context.Context, id string)
 
 // Execute executes the request
 //  @return TaskStatus
-func (a *TaskManagementApiService) GetTaskStatusExecute(r ApiGetTaskStatusRequest) (*TaskStatus, *http.Response, error) {
+func (a *TaskManagementAPIService) GetTaskStatusExecute(r ApiGetTaskStatusRequest) (*TaskStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -349,7 +367,7 @@ func (a *TaskManagementApiService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 		localVarReturnValue  *TaskStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementApiService.GetTaskStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementAPIService.GetTaskStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -388,9 +406,9 @@ func (a *TaskManagementApiService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -460,7 +478,7 @@ func (a *TaskManagementApiService) GetTaskStatusExecute(r ApiGetTaskStatusReques
 
 type ApiGetTaskStatusListRequest struct {
 	ctx context.Context
-	ApiService *TaskManagementApiService
+	ApiService *TaskManagementAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -510,7 +528,7 @@ Get a TaskStatus list.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetTaskStatusListRequest
 */
-func (a *TaskManagementApiService) GetTaskStatusList(ctx context.Context) ApiGetTaskStatusListRequest {
+func (a *TaskManagementAPIService) GetTaskStatusList(ctx context.Context) ApiGetTaskStatusListRequest {
 	return ApiGetTaskStatusListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -519,7 +537,7 @@ func (a *TaskManagementApiService) GetTaskStatusList(ctx context.Context) ApiGet
 
 // Execute executes the request
 //  @return []TaskStatus
-func (a *TaskManagementApiService) GetTaskStatusListExecute(r ApiGetTaskStatusListRequest) ([]TaskStatus, *http.Response, error) {
+func (a *TaskManagementAPIService) GetTaskStatusListExecute(r ApiGetTaskStatusListRequest) ([]TaskStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -527,7 +545,7 @@ func (a *TaskManagementApiService) GetTaskStatusListExecute(r ApiGetTaskStatusLi
 		localVarReturnValue  []TaskStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementApiService.GetTaskStatusList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementAPIService.GetTaskStatusList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -540,12 +558,21 @@ func (a *TaskManagementApiService) GetTaskStatusListExecute(r ApiGetTaskStatusLi
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -580,9 +607,9 @@ func (a *TaskManagementApiService) GetTaskStatusListExecute(r ApiGetTaskStatusLi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -674,7 +701,7 @@ func (a *TaskManagementApiService) GetTaskStatusListExecute(r ApiGetTaskStatusLi
 
 type ApiUpdateTaskStatusRequest struct {
 	ctx context.Context
-	ApiService *TaskManagementApiService
+	ApiService *TaskManagementAPIService
 	id string
 	jsonPatch *JsonPatch
 }
@@ -697,7 +724,7 @@ Update a current TaskStatus for a task by task ID.
  @param id Task ID of the task whose TaskStatus to update
  @return ApiUpdateTaskStatusRequest
 */
-func (a *TaskManagementApiService) UpdateTaskStatus(ctx context.Context, id string) ApiUpdateTaskStatusRequest {
+func (a *TaskManagementAPIService) UpdateTaskStatus(ctx context.Context, id string) ApiUpdateTaskStatusRequest {
 	return ApiUpdateTaskStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -707,7 +734,7 @@ func (a *TaskManagementApiService) UpdateTaskStatus(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return TaskStatus
-func (a *TaskManagementApiService) UpdateTaskStatusExecute(r ApiUpdateTaskStatusRequest) (*TaskStatus, *http.Response, error) {
+func (a *TaskManagementAPIService) UpdateTaskStatusExecute(r ApiUpdateTaskStatusRequest) (*TaskStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -715,7 +742,7 @@ func (a *TaskManagementApiService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 		localVarReturnValue  *TaskStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementApiService.UpdateTaskStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaskManagementAPIService.UpdateTaskStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -759,9 +786,9 @@ func (a *TaskManagementApiService) UpdateTaskStatusExecute(r ApiUpdateTaskStatus
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

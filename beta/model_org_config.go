@@ -482,8 +482,8 @@ func (o *OrgConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varOrgConfig := _OrgConfig{}
 
 	if err = json.Unmarshal(bytes, &varOrgConfig); err == nil {
-		*o = OrgConfig(varOrgConfig)
-	}
+	*o = OrgConfig(varOrgConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

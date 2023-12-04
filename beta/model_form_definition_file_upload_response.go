@@ -174,8 +174,8 @@ func (o *FormDefinitionFileUploadResponse) UnmarshalJSON(bytes []byte) (err erro
 	varFormDefinitionFileUploadResponse := _FormDefinitionFileUploadResponse{}
 
 	if err = json.Unmarshal(bytes, &varFormDefinitionFileUploadResponse); err == nil {
-		*o = FormDefinitionFileUploadResponse(varFormDefinitionFileUploadResponse)
-	}
+	*o = FormDefinitionFileUploadResponse(varFormDefinitionFileUploadResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

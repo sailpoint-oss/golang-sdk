@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// AccountAggregationsApiService AccountAggregationsApi service
-type AccountAggregationsApiService service
+// AccountAggregationsAPIService AccountAggregationsAPI service
+type AccountAggregationsAPIService service
 
 type ApiGetAccountAggregationStatusRequest struct {
 	ctx context.Context
-	ApiService *AccountAggregationsApiService
+	ApiService *AccountAggregationsAPIService
 	id string
 }
 
@@ -50,7 +50,7 @@ A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN or DASHBOARD authority is 
  @param id The account aggregation id
  @return ApiGetAccountAggregationStatusRequest
 */
-func (a *AccountAggregationsApiService) GetAccountAggregationStatus(ctx context.Context, id string) ApiGetAccountAggregationStatusRequest {
+func (a *AccountAggregationsAPIService) GetAccountAggregationStatus(ctx context.Context, id string) ApiGetAccountAggregationStatusRequest {
 	return ApiGetAccountAggregationStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -60,7 +60,7 @@ func (a *AccountAggregationsApiService) GetAccountAggregationStatus(ctx context.
 
 // Execute executes the request
 //  @return AccountAggregationStatus
-func (a *AccountAggregationsApiService) GetAccountAggregationStatusExecute(r ApiGetAccountAggregationStatusRequest) (*AccountAggregationStatus, *http.Response, error) {
+func (a *AccountAggregationsAPIService) GetAccountAggregationStatusExecute(r ApiGetAccountAggregationStatusRequest) (*AccountAggregationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -68,7 +68,7 @@ func (a *AccountAggregationsApiService) GetAccountAggregationStatusExecute(r Api
 		localVarReturnValue  *AccountAggregationStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAggregationsApiService.GetAccountAggregationStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountAggregationsAPIService.GetAccountAggregationStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -107,9 +107,9 @@ func (a *AccountAggregationsApiService) GetAccountAggregationStatusExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

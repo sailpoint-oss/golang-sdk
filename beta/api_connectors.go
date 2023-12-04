@@ -13,18 +13,18 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// ConnectorsApiService ConnectorsApi service
-type ConnectorsApiService service
+// ConnectorsAPIService ConnectorsAPI service
+type ConnectorsAPIService service
 
 type ApiGetConnectorListRequest struct {
 	ctx context.Context
-	ApiService *ConnectorsApiService
+	ApiService *ConnectorsAPIService
 	filters *string
 	limit *int32
 	offset *int32
@@ -75,7 +75,7 @@ A token with ORG_ADMIN authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetConnectorListRequest
 */
-func (a *ConnectorsApiService) GetConnectorList(ctx context.Context) ApiGetConnectorListRequest {
+func (a *ConnectorsAPIService) GetConnectorList(ctx context.Context) ApiGetConnectorListRequest {
 	return ApiGetConnectorListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -84,7 +84,7 @@ func (a *ConnectorsApiService) GetConnectorList(ctx context.Context) ApiGetConne
 
 // Execute executes the request
 //  @return []V3ConnectorDto
-func (a *ConnectorsApiService) GetConnectorListExecute(r ApiGetConnectorListRequest) ([]V3ConnectorDto, *http.Response, error) {
+func (a *ConnectorsAPIService) GetConnectorListExecute(r ApiGetConnectorListRequest) ([]V3ConnectorDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -92,7 +92,7 @@ func (a *ConnectorsApiService) GetConnectorListExecute(r ApiGetConnectorListRequ
 		localVarReturnValue  []V3ConnectorDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsApiService.GetConnectorList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectorsAPIService.GetConnectorList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,12 +108,21 @@ func (a *ConnectorsApiService) GetConnectorListExecute(r ApiGetConnectorListRequ
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.locale != nil {
 		parameterAddToQuery(localVarQueryParams, "locale", r.locale, "")
@@ -145,9 +154,9 @@ func (a *ConnectorsApiService) GetConnectorListExecute(r ApiGetConnectorListRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

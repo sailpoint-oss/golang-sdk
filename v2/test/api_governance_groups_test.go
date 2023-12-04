@@ -1,7 +1,7 @@
 /*
 SailPoint SaaS API
 
-Testing GovernanceGroupsApiService
+Testing GovernanceGroupsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v2_GovernanceGroupsApiService(t *testing.T) {
+func Test_v2_GovernanceGroupsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test GovernanceGroupsApiService BulkDeleteWorkGroups", func(t *testing.T) {
+	t.Run("Test GovernanceGroupsAPIService BulkDeleteWorkGroups", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V2.GovernanceGroupsApi.BulkDeleteWorkGroups(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V2.GovernanceGroupsAPI.BulkDeleteWorkGroups(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_v2_GovernanceGroupsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test GovernanceGroupsApiService CreateWorkgroup", func(t *testing.T) {
+	t.Run("Test GovernanceGroupsAPIService CreateWorkgroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V2.GovernanceGroupsApi.CreateWorkgroup(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V2.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,40 +46,26 @@ func Test_v2_GovernanceGroupsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test GovernanceGroupsApiService DeleteWorkgroup", func(t *testing.T) {
+	t.Run("Test GovernanceGroupsAPIService DeleteWorkgroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var workgroupId string
 
-		httpRes, err := apiClient.V2.GovernanceGroupsApi.DeleteWorkgroup(context.Background(), workgroupId).Execute()
+		httpRes, err := apiClient.V2.GovernanceGroupsAPI.DeleteWorkgroup(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test GovernanceGroupsApiService GetWorkgroup", func(t *testing.T) {
+	t.Run("Test GovernanceGroupsAPIService GetWorkgroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var workgroupId string
 
-		resp, httpRes, err := apiClient.V2.GovernanceGroupsApi.GetWorkgroup(context.Background(), workgroupId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test GovernanceGroupsApiService ListWorkgroupConnections", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var workgroupId string
-
-		resp, httpRes, err := apiClient.V2.GovernanceGroupsApi.ListWorkgroupConnections(context.Background(), workgroupId).Execute()
+		resp, httpRes, err := apiClient.V2.GovernanceGroupsAPI.GetWorkgroup(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -87,13 +73,13 @@ func Test_v2_GovernanceGroupsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test GovernanceGroupsApiService ListWorkgroupMembers", func(t *testing.T) {
+	t.Run("Test GovernanceGroupsAPIService ListWorkgroupConnections", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var workgroupId string
 
-		resp, httpRes, err := apiClient.V2.GovernanceGroupsApi.ListWorkgroupMembers(context.Background(), workgroupId).Execute()
+		resp, httpRes, err := apiClient.V2.GovernanceGroupsAPI.ListWorkgroupConnections(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -101,11 +87,13 @@ func Test_v2_GovernanceGroupsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test GovernanceGroupsApiService ListWorkgroups", func(t *testing.T) {
+	t.Run("Test GovernanceGroupsAPIService ListWorkgroupMembers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V2.GovernanceGroupsApi.ListWorkgroups(context.Background()).Execute()
+		var workgroupId string
+
+		resp, httpRes, err := apiClient.V2.GovernanceGroupsAPI.ListWorkgroupMembers(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -113,26 +101,38 @@ func Test_v2_GovernanceGroupsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test GovernanceGroupsApiService ModifyWorkgroupMembers", func(t *testing.T) {
+	t.Run("Test GovernanceGroupsAPIService ListWorkgroups", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.V2.GovernanceGroupsAPI.ListWorkgroups(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GovernanceGroupsAPIService ModifyWorkgroupMembers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var workgroupId string
 
-		httpRes, err := apiClient.V2.GovernanceGroupsApi.ModifyWorkgroupMembers(context.Background(), workgroupId).Execute()
+		httpRes, err := apiClient.V2.GovernanceGroupsAPI.ModifyWorkgroupMembers(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test GovernanceGroupsApiService UpdateWorkgroup", func(t *testing.T) {
+	t.Run("Test GovernanceGroupsAPIService UpdateWorkgroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var workgroupId string
 
-		resp, httpRes, err := apiClient.V2.GovernanceGroupsApi.UpdateWorkgroup(context.Background(), workgroupId).Execute()
+		resp, httpRes, err := apiClient.V2.GovernanceGroupsAPI.UpdateWorkgroup(context.Background(), workgroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

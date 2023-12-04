@@ -1324,8 +1324,8 @@ func (o *GetOrgSettings200Response) UnmarshalJSON(bytes []byte) (err error) {
 	varGetOrgSettings200Response := _GetOrgSettings200Response{}
 
 	if err = json.Unmarshal(bytes, &varGetOrgSettings200Response); err == nil {
-		*o = GetOrgSettings200Response(varGetOrgSettings200Response)
-	}
+	*o = GetOrgSettings200Response(varGetOrgSettings200Response)
+}
 
 	additionalProperties := make(map[string]interface{})
 

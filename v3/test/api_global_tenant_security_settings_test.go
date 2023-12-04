@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing GlobalTenantSecuritySettingsApiService
+Testing GlobalTenantSecuritySettingsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_GlobalTenantSecuritySettingsApiService(t *testing.T) {
+func Test_v3_GlobalTenantSecuritySettingsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test GlobalTenantSecuritySettingsApiService CreateAuthOrgNetworkConfig", func(t *testing.T) {
+	t.Run("Test GlobalTenantSecuritySettingsAPIService CreateAuthOrgNetworkConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.GlobalTenantSecuritySettingsApi.CreateAuthOrgNetworkConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_v3_GlobalTenantSecuritySettingsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test GlobalTenantSecuritySettingsApiService GetAuthOrgNetworkConfig", func(t *testing.T) {
+	t.Run("Test GlobalTenantSecuritySettingsAPIService GetAuthOrgNetworkConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.GlobalTenantSecuritySettingsApi.GetAuthOrgNetworkConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,11 +46,11 @@ func Test_v3_GlobalTenantSecuritySettingsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test GlobalTenantSecuritySettingsApiService PatchAuthOrgNetworkConfig", func(t *testing.T) {
+	t.Run("Test GlobalTenantSecuritySettingsAPIService PatchAuthOrgNetworkConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.GlobalTenantSecuritySettingsApi.PatchAuthOrgNetworkConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

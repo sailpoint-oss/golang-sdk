@@ -719,8 +719,8 @@ func (o *Certification) UnmarshalJSON(bytes []byte) (err error) {
 	varCertification := _Certification{}
 
 	if err = json.Unmarshal(bytes, &varCertification); err == nil {
-		*o = Certification(varCertification)
-	}
+	*o = Certification(varCertification)
+}
 
 	additionalProperties := make(map[string]interface{})
 

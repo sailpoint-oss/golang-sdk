@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// IdentitiesApiService IdentitiesApi service
-type IdentitiesApiService service
+// IdentitiesAPIService IdentitiesAPI service
+type IdentitiesAPIService service
 
 type ApiDeleteIdentityRequest struct {
 	ctx context.Context
-	ApiService *IdentitiesApiService
+	ApiService *IdentitiesAPIService
 	id string
 }
 
@@ -42,7 +42,7 @@ The API returns successful response if the requested identity was deleted.
  @param id Identity Id
  @return ApiDeleteIdentityRequest
 */
-func (a *IdentitiesApiService) DeleteIdentity(ctx context.Context, id string) ApiDeleteIdentityRequest {
+func (a *IdentitiesAPIService) DeleteIdentity(ctx context.Context, id string) ApiDeleteIdentityRequest {
 	return ApiDeleteIdentityRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -51,14 +51,14 @@ func (a *IdentitiesApiService) DeleteIdentity(ctx context.Context, id string) Ap
 }
 
 // Execute executes the request
-func (a *IdentitiesApiService) DeleteIdentityExecute(r ApiDeleteIdentityRequest) (*http.Response, error) {
+func (a *IdentitiesAPIService) DeleteIdentityExecute(r ApiDeleteIdentityRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesApiService.DeleteIdentity")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesAPIService.DeleteIdentity")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -97,9 +97,9 @@ func (a *IdentitiesApiService) DeleteIdentityExecute(r ApiDeleteIdentityRequest)
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -182,7 +182,7 @@ func (a *IdentitiesApiService) DeleteIdentityExecute(r ApiDeleteIdentityRequest)
 
 type ApiGetIdentityRequest struct {
 	ctx context.Context
-	ApiService *IdentitiesApiService
+	ApiService *IdentitiesAPIService
 	id string
 }
 
@@ -199,7 +199,7 @@ This API returns a single identity using the Identity ID.
  @param id Identity Id
  @return ApiGetIdentityRequest
 */
-func (a *IdentitiesApiService) GetIdentity(ctx context.Context, id string) ApiGetIdentityRequest {
+func (a *IdentitiesAPIService) GetIdentity(ctx context.Context, id string) ApiGetIdentityRequest {
 	return ApiGetIdentityRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -209,7 +209,7 @@ func (a *IdentitiesApiService) GetIdentity(ctx context.Context, id string) ApiGe
 
 // Execute executes the request
 //  @return Identity
-func (a *IdentitiesApiService) GetIdentityExecute(r ApiGetIdentityRequest) (*Identity, *http.Response, error) {
+func (a *IdentitiesAPIService) GetIdentityExecute(r ApiGetIdentityRequest) (*Identity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -217,7 +217,7 @@ func (a *IdentitiesApiService) GetIdentityExecute(r ApiGetIdentityRequest) (*Ide
 		localVarReturnValue  *Identity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesApiService.GetIdentity")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesAPIService.GetIdentity")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -256,9 +256,9 @@ func (a *IdentitiesApiService) GetIdentityExecute(r ApiGetIdentityRequest) (*Ide
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -350,7 +350,7 @@ func (a *IdentitiesApiService) GetIdentityExecute(r ApiGetIdentityRequest) (*Ide
 
 type ApiGetIdentityOwnershipDetailsRequest struct {
 	ctx context.Context
-	ApiService *IdentitiesApiService
+	ApiService *IdentitiesAPIService
 	identityId string
 }
 
@@ -367,7 +367,7 @@ Get Ownership association details of an Identity
  @param identityId The identity id
  @return ApiGetIdentityOwnershipDetailsRequest
 */
-func (a *IdentitiesApiService) GetIdentityOwnershipDetails(ctx context.Context, identityId string) ApiGetIdentityOwnershipDetailsRequest {
+func (a *IdentitiesAPIService) GetIdentityOwnershipDetails(ctx context.Context, identityId string) ApiGetIdentityOwnershipDetailsRequest {
 	return ApiGetIdentityOwnershipDetailsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -377,7 +377,7 @@ func (a *IdentitiesApiService) GetIdentityOwnershipDetails(ctx context.Context, 
 
 // Execute executes the request
 //  @return IdentityOwnershipAssociationDetails
-func (a *IdentitiesApiService) GetIdentityOwnershipDetailsExecute(r ApiGetIdentityOwnershipDetailsRequest) (*IdentityOwnershipAssociationDetails, *http.Response, error) {
+func (a *IdentitiesAPIService) GetIdentityOwnershipDetailsExecute(r ApiGetIdentityOwnershipDetailsRequest) (*IdentityOwnershipAssociationDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -385,7 +385,7 @@ func (a *IdentitiesApiService) GetIdentityOwnershipDetailsExecute(r ApiGetIdenti
 		localVarReturnValue  *IdentityOwnershipAssociationDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesApiService.GetIdentityOwnershipDetails")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesAPIService.GetIdentityOwnershipDetails")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -424,9 +424,9 @@ func (a *IdentitiesApiService) GetIdentityOwnershipDetailsExecute(r ApiGetIdenti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -518,7 +518,7 @@ func (a *IdentitiesApiService) GetIdentityOwnershipDetailsExecute(r ApiGetIdenti
 
 type ApiListIdentitiesRequest struct {
 	ctx context.Context
-	ApiService *IdentitiesApiService
+	ApiService *IdentitiesAPIService
 	filters *string
 	sorters *string
 	defaultFilter *string
@@ -575,7 +575,7 @@ This API returns a list of identities.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListIdentitiesRequest
 */
-func (a *IdentitiesApiService) ListIdentities(ctx context.Context) ApiListIdentitiesRequest {
+func (a *IdentitiesAPIService) ListIdentities(ctx context.Context) ApiListIdentitiesRequest {
 	return ApiListIdentitiesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -584,7 +584,7 @@ func (a *IdentitiesApiService) ListIdentities(ctx context.Context) ApiListIdenti
 
 // Execute executes the request
 //  @return []Identity
-func (a *IdentitiesApiService) ListIdentitiesExecute(r ApiListIdentitiesRequest) ([]Identity, *http.Response, error) {
+func (a *IdentitiesAPIService) ListIdentitiesExecute(r ApiListIdentitiesRequest) ([]Identity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -592,7 +592,7 @@ func (a *IdentitiesApiService) ListIdentitiesExecute(r ApiListIdentitiesRequest)
 		localVarReturnValue  []Identity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesApiService.ListIdentities")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesAPIService.ListIdentities")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -611,15 +611,27 @@ func (a *IdentitiesApiService) ListIdentitiesExecute(r ApiListIdentitiesRequest)
 	}
 	if r.defaultFilter != nil {
 		parameterAddToQuery(localVarQueryParams, "defaultFilter", r.defaultFilter, "")
+	} else {
+		var defaultValue string = "CORRELATED_ONLY"
+		r.defaultFilter = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -648,9 +660,9 @@ func (a *IdentitiesApiService) ListIdentitiesExecute(r ApiListIdentitiesRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -731,7 +743,7 @@ func (a *IdentitiesApiService) ListIdentitiesExecute(r ApiListIdentitiesRequest)
 
 type ApiStartIdentityProcessingRequest struct {
 	ctx context.Context
-	ApiService *IdentitiesApiService
+	ApiService *IdentitiesAPIService
 	processIdentitiesRequest *ProcessIdentitiesRequest
 }
 
@@ -762,7 +774,7 @@ A token with ORG_ADMIN or HELPDESK authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartIdentityProcessingRequest
 */
-func (a *IdentitiesApiService) StartIdentityProcessing(ctx context.Context) ApiStartIdentityProcessingRequest {
+func (a *IdentitiesAPIService) StartIdentityProcessing(ctx context.Context) ApiStartIdentityProcessingRequest {
 	return ApiStartIdentityProcessingRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -771,7 +783,7 @@ func (a *IdentitiesApiService) StartIdentityProcessing(ctx context.Context) ApiS
 
 // Execute executes the request
 //  @return TaskResultResponse
-func (a *IdentitiesApiService) StartIdentityProcessingExecute(r ApiStartIdentityProcessingRequest) (*TaskResultResponse, *http.Response, error) {
+func (a *IdentitiesAPIService) StartIdentityProcessingExecute(r ApiStartIdentityProcessingRequest) (*TaskResultResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -779,7 +791,7 @@ func (a *IdentitiesApiService) StartIdentityProcessingExecute(r ApiStartIdentity
 		localVarReturnValue  *TaskResultResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesApiService.StartIdentityProcessing")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesAPIService.StartIdentityProcessing")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -822,9 +834,9 @@ func (a *IdentitiesApiService) StartIdentityProcessingExecute(r ApiStartIdentity
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -916,7 +928,7 @@ func (a *IdentitiesApiService) StartIdentityProcessingExecute(r ApiStartIdentity
 
 type ApiSynchronizeAttributesForIdentityRequest struct {
 	ctx context.Context
-	ApiService *IdentitiesApiService
+	ApiService *IdentitiesAPIService
 	identityId string
 }
 
@@ -933,7 +945,7 @@ This end-point performs attribute synchronization for a selected identity. The e
  @param identityId The Identity id
  @return ApiSynchronizeAttributesForIdentityRequest
 */
-func (a *IdentitiesApiService) SynchronizeAttributesForIdentity(ctx context.Context, identityId string) ApiSynchronizeAttributesForIdentityRequest {
+func (a *IdentitiesAPIService) SynchronizeAttributesForIdentity(ctx context.Context, identityId string) ApiSynchronizeAttributesForIdentityRequest {
 	return ApiSynchronizeAttributesForIdentityRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -943,7 +955,7 @@ func (a *IdentitiesApiService) SynchronizeAttributesForIdentity(ctx context.Cont
 
 // Execute executes the request
 //  @return IdentitySyncJob
-func (a *IdentitiesApiService) SynchronizeAttributesForIdentityExecute(r ApiSynchronizeAttributesForIdentityRequest) (*IdentitySyncJob, *http.Response, error) {
+func (a *IdentitiesAPIService) SynchronizeAttributesForIdentityExecute(r ApiSynchronizeAttributesForIdentityRequest) (*IdentitySyncJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -951,7 +963,7 @@ func (a *IdentitiesApiService) SynchronizeAttributesForIdentityExecute(r ApiSync
 		localVarReturnValue  *IdentitySyncJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesApiService.SynchronizeAttributesForIdentity")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentitiesAPIService.SynchronizeAttributesForIdentity")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -990,9 +1002,9 @@ func (a *IdentitiesApiService) SynchronizeAttributesForIdentityExecute(r ApiSync
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

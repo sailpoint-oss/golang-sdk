@@ -212,8 +212,8 @@ func (o *Comment) UnmarshalJSON(bytes []byte) (err error) {
 	varComment := _Comment{}
 
 	if err = json.Unmarshal(bytes, &varComment); err == nil {
-		*o = Comment(varComment)
-	}
+	*o = Comment(varComment)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -211,8 +211,8 @@ func (o *IdentitySummary) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentitySummary := _IdentitySummary{}
 
 	if err = json.Unmarshal(bytes, &varIdentitySummary); err == nil {
-		*o = IdentitySummary(varIdentitySummary)
-	}
+	*o = IdentitySummary(varIdentitySummary)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -186,8 +186,8 @@ func (o *ValidateFilterOutputDto) UnmarshalJSON(bytes []byte) (err error) {
 	varValidateFilterOutputDto := _ValidateFilterOutputDto{}
 
 	if err = json.Unmarshal(bytes, &varValidateFilterOutputDto); err == nil {
-		*o = ValidateFilterOutputDto(varValidateFilterOutputDto)
-	}
+	*o = ValidateFilterOutputDto(varValidateFilterOutputDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

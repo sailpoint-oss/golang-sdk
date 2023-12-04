@@ -100,8 +100,8 @@ func (o *IdentityOwnershipAssociationDetails) UnmarshalJSON(bytes []byte) (err e
 	varIdentityOwnershipAssociationDetails := _IdentityOwnershipAssociationDetails{}
 
 	if err = json.Unmarshal(bytes, &varIdentityOwnershipAssociationDetails); err == nil {
-		*o = IdentityOwnershipAssociationDetails(varIdentityOwnershipAssociationDetails)
-	}
+	*o = IdentityOwnershipAssociationDetails(varIdentityOwnershipAssociationDetails)
+}
 
 	additionalProperties := make(map[string]interface{})
 

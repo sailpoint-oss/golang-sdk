@@ -207,8 +207,8 @@ func (o *ListApplications200ResponseInnerHealth) UnmarshalJSON(bytes []byte) (er
 	varListApplications200ResponseInnerHealth := _ListApplications200ResponseInnerHealth{}
 
 	if err = json.Unmarshal(bytes, &varListApplications200ResponseInnerHealth); err == nil {
-		*o = ListApplications200ResponseInnerHealth(varListApplications200ResponseInnerHealth)
-	}
+	*o = ListApplications200ResponseInnerHealth(varListApplications200ResponseInnerHealth)
+}
 
 	additionalProperties := make(map[string]interface{})
 

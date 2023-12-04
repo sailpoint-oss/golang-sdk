@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// SearchApiService SearchApi service
-type SearchApiService service
+// SearchAPIService SearchAPI service
+type SearchAPIService service
 
 type ApiSearchAggregateRequest struct {
 	ctx context.Context
-	ApiService *SearchApiService
+	ApiService *SearchAPIService
 	search *Search
 	offset *int32
 	limit *int32
@@ -67,7 +67,7 @@ Performs a search query aggregation and returns the aggregation result. By defau
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSearchAggregateRequest
 */
-func (a *SearchApiService) SearchAggregate(ctx context.Context) ApiSearchAggregateRequest {
+func (a *SearchAPIService) SearchAggregate(ctx context.Context) ApiSearchAggregateRequest {
 	return ApiSearchAggregateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -76,7 +76,7 @@ func (a *SearchApiService) SearchAggregate(ctx context.Context) ApiSearchAggrega
 
 // Execute executes the request
 //  @return AggregationResult
-func (a *SearchApiService) SearchAggregateExecute(r ApiSearchAggregateRequest) (*AggregationResult, *http.Response, error) {
+func (a *SearchAPIService) SearchAggregateExecute(r ApiSearchAggregateRequest) (*AggregationResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -84,7 +84,7 @@ func (a *SearchApiService) SearchAggregateExecute(r ApiSearchAggregateRequest) (
 		localVarReturnValue  *AggregationResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchApiService.SearchAggregate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchAggregate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -100,12 +100,21 @@ func (a *SearchApiService) SearchAggregateExecute(r ApiSearchAggregateRequest) (
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -136,9 +145,9 @@ func (a *SearchApiService) SearchAggregateExecute(r ApiSearchAggregateRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -219,7 +228,7 @@ func (a *SearchApiService) SearchAggregateExecute(r ApiSearchAggregateRequest) (
 
 type ApiSearchCountRequest struct {
 	ctx context.Context
-	ApiService *SearchApiService
+	ApiService *SearchAPIService
 	search *Search
 }
 
@@ -240,7 +249,7 @@ Performs a search with a provided query and returns the count of results in the 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSearchCountRequest
 */
-func (a *SearchApiService) SearchCount(ctx context.Context) ApiSearchCountRequest {
+func (a *SearchAPIService) SearchCount(ctx context.Context) ApiSearchCountRequest {
 	return ApiSearchCountRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -248,14 +257,14 @@ func (a *SearchApiService) SearchCount(ctx context.Context) ApiSearchCountReques
 }
 
 // Execute executes the request
-func (a *SearchApiService) SearchCountExecute(r ApiSearchCountRequest) (*http.Response, error) {
+func (a *SearchAPIService) SearchCountExecute(r ApiSearchCountRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchApiService.SearchCount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchCount")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -298,9 +307,9 @@ func (a *SearchApiService) SearchCountExecute(r ApiSearchCountRequest) (*http.Re
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -372,7 +381,7 @@ func (a *SearchApiService) SearchCountExecute(r ApiSearchCountRequest) (*http.Re
 
 type ApiSearchGetRequest struct {
 	ctx context.Context
-	ApiService *SearchApiService
+	ApiService *SearchAPIService
 	index string
 	id string
 }
@@ -391,7 +400,7 @@ Fetches a single document from the specified index, using the specified document
  @param id ID of the requested document.
  @return ApiSearchGetRequest
 */
-func (a *SearchApiService) SearchGet(ctx context.Context, index string, id string) ApiSearchGetRequest {
+func (a *SearchAPIService) SearchGet(ctx context.Context, index string, id string) ApiSearchGetRequest {
 	return ApiSearchGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -402,7 +411,7 @@ func (a *SearchApiService) SearchGet(ctx context.Context, index string, id strin
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *SearchApiService) SearchGetExecute(r ApiSearchGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *SearchAPIService) SearchGetExecute(r ApiSearchGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -410,7 +419,7 @@ func (a *SearchApiService) SearchGetExecute(r ApiSearchGetRequest) (map[string]i
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchApiService.SearchGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -450,9 +459,9 @@ func (a *SearchApiService) SearchGetExecute(r ApiSearchGetRequest) (map[string]i
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -544,7 +553,7 @@ func (a *SearchApiService) SearchGetExecute(r ApiSearchGetRequest) (map[string]i
 
 type ApiSearchPostRequest struct {
 	ctx context.Context
-	ApiService *SearchApiService
+	ApiService *SearchAPIService
 	search *Search
 	offset *int32
 	limit *int32
@@ -586,7 +595,7 @@ Performs a search with the provided query and returns a matching result collecti
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSearchPostRequest
 */
-func (a *SearchApiService) SearchPost(ctx context.Context) ApiSearchPostRequest {
+func (a *SearchAPIService) SearchPost(ctx context.Context) ApiSearchPostRequest {
 	return ApiSearchPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -595,7 +604,7 @@ func (a *SearchApiService) SearchPost(ctx context.Context) ApiSearchPostRequest 
 
 // Execute executes the request
 //  @return []map[string]interface{}
-func (a *SearchApiService) SearchPostExecute(r ApiSearchPostRequest) ([]map[string]interface{}, *http.Response, error) {
+func (a *SearchAPIService) SearchPostExecute(r ApiSearchPostRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -603,7 +612,7 @@ func (a *SearchApiService) SearchPostExecute(r ApiSearchPostRequest) ([]map[stri
 		localVarReturnValue  []map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchApiService.SearchPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SearchAPIService.SearchPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -619,12 +628,21 @@ func (a *SearchApiService) SearchPostExecute(r ApiSearchPostRequest) ([]map[stri
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -655,9 +673,9 @@ func (a *SearchApiService) SearchPostExecute(r ApiSearchPostRequest) ([]map[stri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

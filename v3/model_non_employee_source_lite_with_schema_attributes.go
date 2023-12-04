@@ -248,8 +248,8 @@ func (o *NonEmployeeSourceLiteWithSchemaAttributes) UnmarshalJSON(bytes []byte) 
 	varNonEmployeeSourceLiteWithSchemaAttributes := _NonEmployeeSourceLiteWithSchemaAttributes{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeSourceLiteWithSchemaAttributes); err == nil {
-		*o = NonEmployeeSourceLiteWithSchemaAttributes(varNonEmployeeSourceLiteWithSchemaAttributes)
-	}
+	*o = NonEmployeeSourceLiteWithSchemaAttributes(varNonEmployeeSourceLiteWithSchemaAttributes)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -285,8 +285,8 @@ func (o *RefreshIdentitiesRequestRefreshArgs) UnmarshalJSON(bytes []byte) (err e
 	varRefreshIdentitiesRequestRefreshArgs := _RefreshIdentitiesRequestRefreshArgs{}
 
 	if err = json.Unmarshal(bytes, &varRefreshIdentitiesRequestRefreshArgs); err == nil {
-		*o = RefreshIdentitiesRequestRefreshArgs(varRefreshIdentitiesRequestRefreshArgs)
-	}
+	*o = RefreshIdentitiesRequestRefreshArgs(varRefreshIdentitiesRequestRefreshArgs)
+}
 
 	additionalProperties := make(map[string]interface{})
 

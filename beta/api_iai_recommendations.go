@@ -13,18 +13,18 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// IAIRecommendationsApiService IAIRecommendationsApi service
-type IAIRecommendationsApiService service
+// IAIRecommendationsAPIService IAIRecommendationsAPI service
+type IAIRecommendationsAPIService service
 
 type ApiGetRecommendationsRequest struct {
 	ctx context.Context
-	ApiService *IAIRecommendationsApiService
+	ApiService *IAIRecommendationsAPIService
 	recommendationRequestDto *RecommendationRequestDto
 }
 
@@ -45,7 +45,7 @@ The getRecommendations API returns recommendations based on the requested object
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetRecommendationsRequest
 */
-func (a *IAIRecommendationsApiService) GetRecommendations(ctx context.Context) ApiGetRecommendationsRequest {
+func (a *IAIRecommendationsAPIService) GetRecommendations(ctx context.Context) ApiGetRecommendationsRequest {
 	return ApiGetRecommendationsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -54,7 +54,7 @@ func (a *IAIRecommendationsApiService) GetRecommendations(ctx context.Context) A
 
 // Execute executes the request
 //  @return RecommendationResponseDto
-func (a *IAIRecommendationsApiService) GetRecommendationsExecute(r ApiGetRecommendationsRequest) (*RecommendationResponseDto, *http.Response, error) {
+func (a *IAIRecommendationsAPIService) GetRecommendationsExecute(r ApiGetRecommendationsRequest) (*RecommendationResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -62,7 +62,7 @@ func (a *IAIRecommendationsApiService) GetRecommendationsExecute(r ApiGetRecomme
 		localVarReturnValue  *RecommendationResponseDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRecommendationsApiService.GetRecommendations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRecommendationsAPIService.GetRecommendations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -105,9 +105,9 @@ func (a *IAIRecommendationsApiService) GetRecommendationsExecute(r ApiGetRecomme
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -188,7 +188,7 @@ func (a *IAIRecommendationsApiService) GetRecommendationsExecute(r ApiGetRecomme
 
 type ApiGetRecommendationsConfigRequest struct {
 	ctx context.Context
-	ApiService *IAIRecommendationsApiService
+	ApiService *IAIRecommendationsAPIService
 }
 
 func (r ApiGetRecommendationsConfigRequest) Execute() (*RecommendationConfigDto, *http.Response, error) {
@@ -203,7 +203,7 @@ Retrieves configuration attributes used by certification recommendations.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetRecommendationsConfigRequest
 */
-func (a *IAIRecommendationsApiService) GetRecommendationsConfig(ctx context.Context) ApiGetRecommendationsConfigRequest {
+func (a *IAIRecommendationsAPIService) GetRecommendationsConfig(ctx context.Context) ApiGetRecommendationsConfigRequest {
 	return ApiGetRecommendationsConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -212,7 +212,7 @@ func (a *IAIRecommendationsApiService) GetRecommendationsConfig(ctx context.Cont
 
 // Execute executes the request
 //  @return RecommendationConfigDto
-func (a *IAIRecommendationsApiService) GetRecommendationsConfigExecute(r ApiGetRecommendationsConfigRequest) (*RecommendationConfigDto, *http.Response, error) {
+func (a *IAIRecommendationsAPIService) GetRecommendationsConfigExecute(r ApiGetRecommendationsConfigRequest) (*RecommendationConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -220,7 +220,7 @@ func (a *IAIRecommendationsApiService) GetRecommendationsConfigExecute(r ApiGetR
 		localVarReturnValue  *RecommendationConfigDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRecommendationsApiService.GetRecommendationsConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRecommendationsAPIService.GetRecommendationsConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -258,9 +258,9 @@ func (a *IAIRecommendationsApiService) GetRecommendationsConfigExecute(r ApiGetR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -330,7 +330,7 @@ func (a *IAIRecommendationsApiService) GetRecommendationsConfigExecute(r ApiGetR
 
 type ApiUpdateRecommendationsConfigRequest struct {
 	ctx context.Context
-	ApiService *IAIRecommendationsApiService
+	ApiService *IAIRecommendationsAPIService
 	recommendationConfigDto *RecommendationConfigDto
 }
 
@@ -351,7 +351,7 @@ Updates configuration attributes used by certification recommendations.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateRecommendationsConfigRequest
 */
-func (a *IAIRecommendationsApiService) UpdateRecommendationsConfig(ctx context.Context) ApiUpdateRecommendationsConfigRequest {
+func (a *IAIRecommendationsAPIService) UpdateRecommendationsConfig(ctx context.Context) ApiUpdateRecommendationsConfigRequest {
 	return ApiUpdateRecommendationsConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -360,7 +360,7 @@ func (a *IAIRecommendationsApiService) UpdateRecommendationsConfig(ctx context.C
 
 // Execute executes the request
 //  @return RecommendationConfigDto
-func (a *IAIRecommendationsApiService) UpdateRecommendationsConfigExecute(r ApiUpdateRecommendationsConfigRequest) (*RecommendationConfigDto, *http.Response, error) {
+func (a *IAIRecommendationsAPIService) UpdateRecommendationsConfigExecute(r ApiUpdateRecommendationsConfigRequest) (*RecommendationConfigDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -368,7 +368,7 @@ func (a *IAIRecommendationsApiService) UpdateRecommendationsConfigExecute(r ApiU
 		localVarReturnValue  *RecommendationConfigDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRecommendationsApiService.UpdateRecommendationsConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IAIRecommendationsAPIService.UpdateRecommendationsConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -411,9 +411,9 @@ func (a *IAIRecommendationsApiService) UpdateRecommendationsConfigExecute(r ApiU
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -101,8 +101,8 @@ func (o *ImportConnectorConfigRequest) UnmarshalJSON(bytes []byte) (err error) {
 	varImportConnectorConfigRequest := _ImportConnectorConfigRequest{}
 
 	if err = json.Unmarshal(bytes, &varImportConnectorConfigRequest); err == nil {
-		*o = ImportConnectorConfigRequest(varImportConnectorConfigRequest)
-	}
+	*o = ImportConnectorConfigRequest(varImportConnectorConfigRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

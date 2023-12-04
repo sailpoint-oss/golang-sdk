@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **NullableString** | The name of the scheduled search.  | [optional] 
 **Description** | Pointer to **NullableString** | The description of the scheduled search.  | [optional] 
 **SavedSearchId** | **string** | The ID of the saved search that will be executed. | 
-**Created** | Pointer to [**time.Time**](time.Time.md) | The date the scheduled search was initially created. | [optional] [readonly] 
-**Modified** | Pointer to [**time.Time**](time.Time.md) | The last date the scheduled search was modified. | [optional] [readonly] 
+**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] [readonly] 
+**Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] [readonly] 
 **Schedule** | [**Schedule1**](Schedule1.md) |  | 
 **Recipients** | [**[]SearchScheduleRecipientsInner**](SearchScheduleRecipientsInner.md) | A list of identities that should receive the scheduled search report via email. | 
 **Enabled** | Pointer to **bool** | Indicates if the scheduled search is enabled.  | [optional] [default to false]
@@ -149,6 +149,16 @@ SetCreated sets Created field to given value.
 
 HasCreated returns a boolean if a field has been set.
 
+### SetCreatedNil
+
+`func (o *CreateScheduledSearchRequest) SetCreatedNil(b bool)`
+
+ SetCreatedNil sets the value for Created to be an explicit nil
+
+### UnsetCreated
+`func (o *CreateScheduledSearchRequest) UnsetCreated()`
+
+UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetModified
 
 `func (o *CreateScheduledSearchRequest) GetModified() time.Time`
@@ -174,6 +184,16 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
+### SetModifiedNil
+
+`func (o *CreateScheduledSearchRequest) SetModifiedNil(b bool)`
+
+ SetModifiedNil sets the value for Modified to be an explicit nil
+
+### UnsetModified
+`func (o *CreateScheduledSearchRequest) UnsetModified()`
+
+UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetSchedule
 
 `func (o *CreateScheduledSearchRequest) GetSchedule() Schedule1`

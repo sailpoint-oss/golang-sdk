@@ -1,11 +1,11 @@
-# \PasswordDictionaryApi
+# \PasswordDictionaryAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPasswordDictionary**](PasswordDictionaryApi.md#GetPasswordDictionary) | **Get** /password-dictionary | Get Password Dictionary
-[**UpdatePasswordDictionary**](PasswordDictionaryApi.md#UpdatePasswordDictionary) | **Put** /password-dictionary | Update Password Dictionary
+[**GetPasswordDictionary**](PasswordDictionaryAPI.md#GetPasswordDictionary) | **Get** /password-dictionary | Get Password Dictionary
+[**UpdatePasswordDictionary**](PasswordDictionaryAPI.md#UpdatePasswordDictionary) | **Put** /password-dictionary | Update Password Dictionary
 
 
 
@@ -26,20 +26,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordDictionaryApi.GetPasswordDictionary(context.Background()).Execute()
+    resp, r, err := apiClient.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryApi.GetPasswordDictionary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.GetPasswordDictionary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPasswordDictionary`: string
-    fmt.Fprintf(os.Stdout, "Response from `PasswordDictionaryApi.GetPasswordDictionary`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PasswordDictionaryAPI.GetPasswordDictionary`: %v\n", resp)
 }
 ```
 
@@ -87,7 +87,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -95,9 +95,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordDictionaryApi.UpdatePasswordDictionary(context.Background()).File(file).Execute()
+    r, err := apiClient.PasswordDictionaryAPI.UpdatePasswordDictionary(context.Background()).File(file).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryApi.UpdatePasswordDictionary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.UpdatePasswordDictionary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

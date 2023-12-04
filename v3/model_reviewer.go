@@ -306,8 +306,8 @@ func (o *Reviewer) UnmarshalJSON(bytes []byte) (err error) {
 	varReviewer := _Reviewer{}
 
 	if err = json.Unmarshal(bytes, &varReviewer); err == nil {
-		*o = Reviewer(varReviewer)
-	}
+	*o = Reviewer(varReviewer)
+}
 
 	additionalProperties := make(map[string]interface{})
 

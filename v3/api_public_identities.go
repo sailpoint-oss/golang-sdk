@@ -13,18 +13,18 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// PublicIdentitiesApiService PublicIdentitiesApi service
-type PublicIdentitiesApiService service
+// PublicIdentitiesAPIService PublicIdentitiesAPI service
+type PublicIdentitiesAPIService service
 
 type ApiGetPublicIdentitiesRequest struct {
 	ctx context.Context
-	ApiService *PublicIdentitiesApiService
+	ApiService *PublicIdentitiesAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -79,7 +79,7 @@ GetPublicIdentities Get a list of public identities
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPublicIdentitiesRequest
 */
-func (a *PublicIdentitiesApiService) GetPublicIdentities(ctx context.Context) ApiGetPublicIdentitiesRequest {
+func (a *PublicIdentitiesAPIService) GetPublicIdentities(ctx context.Context) ApiGetPublicIdentitiesRequest {
 	return ApiGetPublicIdentitiesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -88,7 +88,7 @@ func (a *PublicIdentitiesApiService) GetPublicIdentities(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return []PublicIdentity
-func (a *PublicIdentitiesApiService) GetPublicIdentitiesExecute(r ApiGetPublicIdentitiesRequest) ([]PublicIdentity, *http.Response, error) {
+func (a *PublicIdentitiesAPIService) GetPublicIdentitiesExecute(r ApiGetPublicIdentitiesRequest) ([]PublicIdentity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -96,7 +96,7 @@ func (a *PublicIdentitiesApiService) GetPublicIdentitiesExecute(r ApiGetPublicId
 		localVarReturnValue  []PublicIdentity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PublicIdentitiesApiService.GetPublicIdentities")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PublicIdentitiesAPIService.GetPublicIdentities")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -109,18 +109,30 @@ func (a *PublicIdentitiesApiService) GetPublicIdentitiesExecute(r ApiGetPublicId
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
 	}
 	if r.addCoreFilters != nil {
 		parameterAddToQuery(localVarQueryParams, "add-core-filters", r.addCoreFilters, "")
+	} else {
+		var defaultValue bool = false
+		r.addCoreFilters = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -152,9 +164,9 @@ func (a *PublicIdentitiesApiService) GetPublicIdentitiesExecute(r ApiGetPublicId
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

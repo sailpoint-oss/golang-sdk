@@ -1,20 +1,20 @@
-# \CertificationsApi
+# \CertificationsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetCertificationTask**](CertificationsApi.md#GetCertificationTask) | **Get** /certification-tasks/{id} | Certification Task by ID
-[**GetIdentityCertification**](CertificationsApi.md#GetIdentityCertification) | **Get** /certifications/{id} | Identity Certification by ID
-[**GetIdentityCertificationItemPermissions**](CertificationsApi.md#GetIdentityCertificationItemPermissions) | **Get** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for Entitlement Certification Item
-[**GetPendingCertificationTasks**](CertificationsApi.md#GetPendingCertificationTasks) | **Get** /certification-tasks | List of Pending Certification Tasks
-[**ListCertificationReviewers**](CertificationsApi.md#ListCertificationReviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
-[**ListIdentityAccessReviewItems**](CertificationsApi.md#ListIdentityAccessReviewItems) | **Get** /certifications/{id}/access-review-items | List of Access Review Items
-[**ListIdentityCertifications**](CertificationsApi.md#ListIdentityCertifications) | **Get** /certifications | Identity Campaign Certifications by IDs
-[**MakeIdentityDecision**](CertificationsApi.md#MakeIdentityDecision) | **Post** /certifications/{id}/decide | Decide on a Certification Item
-[**ReassignIdentityCertifications**](CertificationsApi.md#ReassignIdentityCertifications) | **Post** /certifications/{id}/reassign | Reassign Identities or Items
-[**SignOffIdentityCertification**](CertificationsApi.md#SignOffIdentityCertification) | **Post** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
-[**SubmitReassignCertsAsync**](CertificationsApi.md#SubmitReassignCertsAsync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
+[**GetCertificationTask**](CertificationsAPI.md#GetCertificationTask) | **Get** /certification-tasks/{id} | Certification Task by ID
+[**GetIdentityCertification**](CertificationsAPI.md#GetIdentityCertification) | **Get** /certifications/{id} | Identity Certification by ID
+[**GetIdentityCertificationItemPermissions**](CertificationsAPI.md#GetIdentityCertificationItemPermissions) | **Get** /certifications/{certificationId}/access-review-items/{itemId}/permissions | Permissions for Entitlement Certification Item
+[**GetPendingCertificationTasks**](CertificationsAPI.md#GetPendingCertificationTasks) | **Get** /certification-tasks | List of Pending Certification Tasks
+[**ListCertificationReviewers**](CertificationsAPI.md#ListCertificationReviewers) | **Get** /certifications/{id}/reviewers | List of Reviewers for certification
+[**ListIdentityAccessReviewItems**](CertificationsAPI.md#ListIdentityAccessReviewItems) | **Get** /certifications/{id}/access-review-items | List of Access Review Items
+[**ListIdentityCertifications**](CertificationsAPI.md#ListIdentityCertifications) | **Get** /certifications | Identity Campaign Certifications by IDs
+[**MakeIdentityDecision**](CertificationsAPI.md#MakeIdentityDecision) | **Post** /certifications/{id}/decide | Decide on a Certification Item
+[**ReassignIdentityCertifications**](CertificationsAPI.md#ReassignIdentityCertifications) | **Post** /certifications/{id}/reassign | Reassign Identities or Items
+[**SignOffIdentityCertification**](CertificationsAPI.md#SignOffIdentityCertification) | **Post** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
+[**SubmitReassignCertsAsync**](CertificationsAPI.md#SubmitReassignCertsAsync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
 
 
 
@@ -35,7 +35,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -43,13 +43,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.GetCertificationTask(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationsAPI.GetCertificationTask(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.GetCertificationTask``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetCertificationTask``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetCertificationTask`: CertificationTask
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.GetCertificationTask`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.GetCertificationTask`: %v\n", resp)
 }
 ```
 
@@ -105,7 +105,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -113,13 +113,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.GetIdentityCertification(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationsAPI.GetIdentityCertification(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.GetIdentityCertification``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetIdentityCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityCertification`: IdentityCertificationDto
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.GetIdentityCertification`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.GetIdentityCertification`: %v\n", resp)
 }
 ```
 
@@ -175,7 +175,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -188,13 +188,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.CertificationsAPI.GetIdentityCertificationItemPermissions(context.Background(), certificationId, itemId).Filters(filters).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.GetIdentityCertificationItemPermissions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetIdentityCertificationItemPermissions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityCertificationItemPermissions`: []PermissionDto
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.GetIdentityCertificationItemPermissions`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.GetIdentityCertificationItemPermissions`: %v\n", resp)
 }
 ```
 
@@ -256,7 +256,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -268,13 +268,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.GetPendingCertificationTasks(context.Background()).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.CertificationsAPI.GetPendingCertificationTasks(context.Background()).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.GetPendingCertificationTasks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.GetPendingCertificationTasks``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetPendingCertificationTasks`: []CertificationTask
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.GetPendingCertificationTasks`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.GetPendingCertificationTasks`: %v\n", resp)
 }
 ```
 
@@ -330,7 +330,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -343,13 +343,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.ListCertificationReviewers(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CertificationsAPI.ListCertificationReviewers(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.ListCertificationReviewers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListCertificationReviewers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListCertificationReviewers`: []IdentityReferenceWithNameAndEmail
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.ListCertificationReviewers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.ListCertificationReviewers`: %v\n", resp)
 }
 ```
 
@@ -410,7 +410,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -426,13 +426,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.ListIdentityAccessReviewItems(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Entitlements(entitlements).AccessProfiles(accessProfiles).Roles(roles).Execute()
+    resp, r, err := apiClient.CertificationsAPI.ListIdentityAccessReviewItems(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Entitlements(entitlements).AccessProfiles(accessProfiles).Roles(roles).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.ListIdentityAccessReviewItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListIdentityAccessReviewItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListIdentityAccessReviewItems`: []AccessReviewItem
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.ListIdentityAccessReviewItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.ListIdentityAccessReviewItems`: %v\n", resp)
 }
 ```
 
@@ -496,7 +496,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -509,13 +509,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.ListIdentityCertifications(context.Background()).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CertificationsAPI.ListIdentityCertifications(context.Background()).ReviewerIdentity(reviewerIdentity).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.ListIdentityCertifications``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ListIdentityCertifications``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListIdentityCertifications`: []IdentityCertificationDto
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.ListIdentityCertifications`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.ListIdentityCertifications`: %v\n", resp)
 }
 ```
 
@@ -572,7 +572,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -581,13 +581,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.MakeIdentityDecision(context.Background(), id).ReviewDecision(reviewDecision).Execute()
+    resp, r, err := apiClient.CertificationsAPI.MakeIdentityDecision(context.Background(), id).ReviewDecision(reviewDecision).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.MakeIdentityDecision``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.MakeIdentityDecision``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `MakeIdentityDecision`: IdentityCertificationDto
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.MakeIdentityDecision`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.MakeIdentityDecision`: %v\n", resp)
 }
 ```
 
@@ -644,7 +644,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -653,13 +653,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.ReassignIdentityCertifications(context.Background(), id).ReviewReassign(reviewReassign).Execute()
+    resp, r, err := apiClient.CertificationsAPI.ReassignIdentityCertifications(context.Background(), id).ReviewReassign(reviewReassign).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.ReassignIdentityCertifications``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.ReassignIdentityCertifications``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ReassignIdentityCertifications`: IdentityCertificationDto
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.ReassignIdentityCertifications`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.ReassignIdentityCertifications`: %v\n", resp)
 }
 ```
 
@@ -716,7 +716,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -724,13 +724,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.SignOffIdentityCertification(context.Background(), id).Execute()
+    resp, r, err := apiClient.CertificationsAPI.SignOffIdentityCertification(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.SignOffIdentityCertification``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.SignOffIdentityCertification``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SignOffIdentityCertification`: IdentityCertificationDto
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.SignOffIdentityCertification`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.SignOffIdentityCertification`: %v\n", resp)
 }
 ```
 
@@ -786,7 +786,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -795,13 +795,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationsApi.SubmitReassignCertsAsync(context.Background(), id).ReviewReassign(reviewReassign).Execute()
+    resp, r, err := apiClient.CertificationsAPI.SubmitReassignCertsAsync(context.Background(), id).ReviewReassign(reviewReassign).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsApi.SubmitReassignCertsAsync``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationsAPI.SubmitReassignCertsAsync``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SubmitReassignCertsAsync`: CertificationTask
-    fmt.Fprintf(os.Stdout, "Response from `CertificationsApi.SubmitReassignCertsAsync`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationsAPI.SubmitReassignCertsAsync`: %v\n", resp)
 }
 ```
 

@@ -1,13 +1,13 @@
-# \CertificationSummariesApi
+# \CertificationSummariesAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetIdentityAccessSummaries**](CertificationSummariesApi.md#GetIdentityAccessSummaries) | **Get** /certifications/{id}/access-summaries/{type} | Access Summaries
-[**GetIdentityDecisionSummary**](CertificationSummariesApi.md#GetIdentityDecisionSummary) | **Get** /certifications/{id}/decision-summary | Summary of Certification Decisions
-[**GetIdentitySummaries**](CertificationSummariesApi.md#GetIdentitySummaries) | **Get** /certifications/{id}/identity-summaries | Identity Summaries for Campaign Certification
-[**GetIdentitySummary**](CertificationSummariesApi.md#GetIdentitySummary) | **Get** /certifications/{id}/identity-summaries/{identitySummaryId} | Summary for Identity
+[**GetIdentityAccessSummaries**](CertificationSummariesAPI.md#GetIdentityAccessSummaries) | **Get** /certifications/{id}/access-summaries/{type} | Access Summaries
+[**GetIdentityDecisionSummary**](CertificationSummariesAPI.md#GetIdentityDecisionSummary) | **Get** /certifications/{id}/decision-summary | Summary of Certification Decisions
+[**GetIdentitySummaries**](CertificationSummariesAPI.md#GetIdentitySummaries) | **Get** /certifications/{id}/identity-summaries | Identity Summaries for Campaign Certification
+[**GetIdentitySummary**](CertificationSummariesAPI.md#GetIdentitySummary) | **Get** /certifications/{id}/identity-summaries/{identitySummaryId} | Summary for Identity
 
 
 
@@ -28,7 +28,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -42,13 +42,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationSummariesApi.GetIdentityAccessSummaries(context.Background(), id, type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CertificationSummariesAPI.GetIdentityAccessSummaries(context.Background(), id, type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesApi.GetIdentityAccessSummaries``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentityAccessSummaries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityAccessSummaries`: []AccessSummary
-    fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesApi.GetIdentityAccessSummaries`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentityAccessSummaries`: %v\n", resp)
 }
 ```
 
@@ -111,7 +111,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -120,13 +120,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationSummariesApi.GetIdentityDecisionSummary(context.Background(), id).Filters(filters).Execute()
+    resp, r, err := apiClient.CertificationSummariesAPI.GetIdentityDecisionSummary(context.Background(), id).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesApi.GetIdentityDecisionSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentityDecisionSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentityDecisionSummary`: IdentityCertDecisionSummary
-    fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesApi.GetIdentityDecisionSummary`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentityDecisionSummary`: %v\n", resp)
 }
 ```
 
@@ -183,7 +183,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -196,13 +196,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationSummariesApi.GetIdentitySummaries(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.CertificationSummariesAPI.GetIdentitySummaries(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesApi.GetIdentitySummaries``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentitySummaries``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentitySummaries`: []CertificationIdentitySummary
-    fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesApi.GetIdentitySummaries`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentitySummaries`: %v\n", resp)
 }
 ```
 
@@ -263,7 +263,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -272,13 +272,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificationSummariesApi.GetIdentitySummary(context.Background(), id, identitySummaryId).Execute()
+    resp, r, err := apiClient.CertificationSummariesAPI.GetIdentitySummary(context.Background(), id, identitySummaryId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesApi.GetIdentitySummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CertificationSummariesAPI.GetIdentitySummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentitySummary`: CertificationIdentitySummary
-    fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesApi.GetIdentitySummary`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CertificationSummariesAPI.GetIdentitySummary`: %v\n", resp)
 }
 ```
 

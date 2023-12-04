@@ -407,8 +407,8 @@ func (o *ReviewableEntitlementAccount) UnmarshalJSON(bytes []byte) (err error) {
 	varReviewableEntitlementAccount := _ReviewableEntitlementAccount{}
 
 	if err = json.Unmarshal(bytes, &varReviewableEntitlementAccount); err == nil {
-		*o = ReviewableEntitlementAccount(varReviewableEntitlementAccount)
-	}
+	*o = ReviewableEntitlementAccount(varReviewableEntitlementAccount)
+}
 
 	additionalProperties := make(map[string]interface{})
 

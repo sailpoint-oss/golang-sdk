@@ -194,8 +194,8 @@ func (o *PublicIdentityConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varPublicIdentityConfig := _PublicIdentityConfig{}
 
 	if err = json.Unmarshal(bytes, &varPublicIdentityConfig); err == nil {
-		*o = PublicIdentityConfig(varPublicIdentityConfig)
-	}
+	*o = PublicIdentityConfig(varPublicIdentityConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

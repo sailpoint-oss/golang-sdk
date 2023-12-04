@@ -1,11 +1,11 @@
-# \SourcesAggregationApi
+# \SourcesAggregationAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**LoadAccounts**](SourcesAggregationApi.md#LoadAccounts) | **Post** /cc/api/source/loadAccounts/{id} | Account Aggregation (File)
-[**LoadEntitlements**](SourcesAggregationApi.md#LoadEntitlements) | **Post** /cc/api/source/loadEntitlements/{id} | Account Aggregation (File)
+[**LoadAccounts**](SourcesAggregationAPI.md#LoadAccounts) | **Post** /cc/api/source/loadAccounts/{id} | Account Aggregation (File)
+[**LoadEntitlements**](SourcesAggregationAPI.md#LoadEntitlements) | **Post** /cc/api/source/loadEntitlements/{id} | Account Aggregation (File)
 
 
 
@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAggregationApi.LoadAccounts(context.Background(), id).ContentType(contentType).DisableOptimization(disableOptimization).File(file).Execute()
+    resp, r, err := apiClient.SourcesAggregationAPI.LoadAccounts(context.Background(), id).ContentType(contentType).DisableOptimization(disableOptimization).File(file).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAggregationApi.LoadAccounts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAggregationAPI.LoadAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `LoadAccounts`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `SourcesAggregationApi.LoadAccounts`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAggregationAPI.LoadAccounts`: %v\n", resp)
 }
 ```
 
@@ -102,7 +102,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -112,13 +112,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAggregationApi.LoadEntitlements(context.Background(), id).ContentType(contentType).File(file).Execute()
+    resp, r, err := apiClient.SourcesAggregationAPI.LoadEntitlements(context.Background(), id).ContentType(contentType).File(file).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAggregationApi.LoadEntitlements``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAggregationAPI.LoadEntitlements``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `LoadEntitlements`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `SourcesAggregationApi.LoadEntitlements`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAggregationAPI.LoadEntitlements`: %v\n", resp)
 }
 ```
 

@@ -13,18 +13,18 @@ package v2
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// OrgApiService OrgApi service
-type OrgApiService service
+// OrgAPIService OrgAPI service
+type OrgAPIService service
 
 type ApiGetOrgSettingsRequest struct {
 	ctx context.Context
-	ApiService *OrgApiService
+	ApiService *OrgAPIService
 }
 
 func (r ApiGetOrgSettingsRequest) Execute() (*GetOrgSettings200Response, *http.Response, error) {
@@ -39,7 +39,7 @@ Retrieves information and operational settings for your org (as determined by th
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetOrgSettingsRequest
 */
-func (a *OrgApiService) GetOrgSettings(ctx context.Context) ApiGetOrgSettingsRequest {
+func (a *OrgAPIService) GetOrgSettings(ctx context.Context) ApiGetOrgSettingsRequest {
 	return ApiGetOrgSettingsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -48,7 +48,7 @@ func (a *OrgApiService) GetOrgSettings(ctx context.Context) ApiGetOrgSettingsReq
 
 // Execute executes the request
 //  @return GetOrgSettings200Response
-func (a *OrgApiService) GetOrgSettingsExecute(r ApiGetOrgSettingsRequest) (*GetOrgSettings200Response, *http.Response, error) {
+func (a *OrgAPIService) GetOrgSettingsExecute(r ApiGetOrgSettingsRequest) (*GetOrgSettings200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -56,7 +56,7 @@ func (a *OrgApiService) GetOrgSettingsExecute(r ApiGetOrgSettingsRequest) (*GetO
 		localVarReturnValue  *GetOrgSettings200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgApiService.GetOrgSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgAPIService.GetOrgSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -94,9 +94,9 @@ func (a *OrgApiService) GetOrgSettingsExecute(r ApiGetOrgSettingsRequest) (*GetO
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -123,7 +123,7 @@ func (a *OrgApiService) GetOrgSettingsExecute(r ApiGetOrgSettingsRequest) (*GetO
 
 type ApiUpdateOrgSettingsRequest struct {
 	ctx context.Context
-	ApiService *OrgApiService
+	ApiService *OrgAPIService
 	updateOrgSettingsRequest *UpdateOrgSettingsRequest
 }
 
@@ -145,7 +145,7 @@ Updates one or more attributes for your org.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateOrgSettingsRequest
 */
-func (a *OrgApiService) UpdateOrgSettings(ctx context.Context) ApiUpdateOrgSettingsRequest {
+func (a *OrgAPIService) UpdateOrgSettings(ctx context.Context) ApiUpdateOrgSettingsRequest {
 	return ApiUpdateOrgSettingsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -154,7 +154,7 @@ func (a *OrgApiService) UpdateOrgSettings(ctx context.Context) ApiUpdateOrgSetti
 
 // Execute executes the request
 //  @return GetOrgSettings200Response
-func (a *OrgApiService) UpdateOrgSettingsExecute(r ApiUpdateOrgSettingsRequest) (*GetOrgSettings200Response, *http.Response, error) {
+func (a *OrgAPIService) UpdateOrgSettingsExecute(r ApiUpdateOrgSettingsRequest) (*GetOrgSettings200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -162,7 +162,7 @@ func (a *OrgApiService) UpdateOrgSettingsExecute(r ApiUpdateOrgSettingsRequest) 
 		localVarReturnValue  *GetOrgSettings200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgApiService.UpdateOrgSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgAPIService.UpdateOrgSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -205,9 +205,9 @@ func (a *OrgApiService) UpdateOrgSettingsExecute(r ApiUpdateOrgSettingsRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

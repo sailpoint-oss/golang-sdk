@@ -174,8 +174,8 @@ func (o *CreateDomainDkim405Response) UnmarshalJSON(bytes []byte) (err error) {
 	varCreateDomainDkim405Response := _CreateDomainDkim405Response{}
 
 	if err = json.Unmarshal(bytes, &varCreateDomainDkim405Response); err == nil {
-		*o = CreateDomainDkim405Response(varCreateDomainDkim405Response)
-	}
+	*o = CreateDomainDkim405Response(varCreateDomainDkim405Response)
+}
 
 	additionalProperties := make(map[string]interface{})
 

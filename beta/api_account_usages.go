@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// AccountUsagesApiService AccountUsagesApi service
-type AccountUsagesApiService service
+// AccountUsagesAPIService AccountUsagesAPI service
+type AccountUsagesAPIService service
 
 type ApiGetUsagesByAccountIdRequest struct {
 	ctx context.Context
-	ApiService *AccountUsagesApiService
+	ApiService *AccountUsagesAPIService
 	accountId string
 	limit *int32
 	offset *int32
@@ -70,7 +70,7 @@ This API returns a summary of account usage insights for past 12 months.
  @param accountId ID of IDN account
  @return ApiGetUsagesByAccountIdRequest
 */
-func (a *AccountUsagesApiService) GetUsagesByAccountId(ctx context.Context, accountId string) ApiGetUsagesByAccountIdRequest {
+func (a *AccountUsagesAPIService) GetUsagesByAccountId(ctx context.Context, accountId string) ApiGetUsagesByAccountIdRequest {
 	return ApiGetUsagesByAccountIdRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -80,7 +80,7 @@ func (a *AccountUsagesApiService) GetUsagesByAccountId(ctx context.Context, acco
 
 // Execute executes the request
 //  @return []AccountUsage
-func (a *AccountUsagesApiService) GetUsagesByAccountIdExecute(r ApiGetUsagesByAccountIdRequest) ([]AccountUsage, *http.Response, error) {
+func (a *AccountUsagesAPIService) GetUsagesByAccountIdExecute(r ApiGetUsagesByAccountIdRequest) ([]AccountUsage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -88,7 +88,7 @@ func (a *AccountUsagesApiService) GetUsagesByAccountIdExecute(r ApiGetUsagesByAc
 		localVarReturnValue  []AccountUsage
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountUsagesApiService.GetUsagesByAccountId")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountUsagesAPIService.GetUsagesByAccountId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -102,12 +102,21 @@ func (a *AccountUsagesApiService) GetUsagesByAccountIdExecute(r ApiGetUsagesByAc
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -139,9 +148,9 @@ func (a *AccountUsagesApiService) GetUsagesByAccountIdExecute(r ApiGetUsagesByAc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

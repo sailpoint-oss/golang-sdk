@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing RequestableObjectsApiService
+Testing RequestableObjectsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_RequestableObjectsApiService(t *testing.T) {
+func Test_beta_RequestableObjectsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test RequestableObjectsApiService ListRequestableObjects", func(t *testing.T) {
+	t.Run("Test RequestableObjectsAPIService ListRequestableObjects", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.RequestableObjectsApi.ListRequestableObjects(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.RequestableObjectsAPI.ListRequestableObjects(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

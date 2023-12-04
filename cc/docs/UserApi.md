@@ -1,11 +1,11 @@
-# \UserApi
+# \UserAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetIdentity**](UserApi.md#GetIdentity) | **Get** /cc/api/user/get/{id} | Get Single Identity
-[**UpdateUserPermissions**](UserApi.md#UpdateUserPermissions) | **Post** /cc/api/user/updatePermissions | Update User Permissions
+[**GetIdentity**](UserAPI.md#GetIdentity) | **Get** /cc/api/user/get/{id} | Get Single Identity
+[**UpdateUserPermissions**](UserAPI.md#UpdateUserPermissions) | **Post** /cc/api/user/updatePermissions | Update User Permissions
 
 
 
@@ -24,7 +24,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -32,13 +32,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserApi.GetIdentity(context.Background(), id).Execute()
+    resp, r, err := apiClient.UserAPI.GetIdentity(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserApi.GetIdentity``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserAPI.GetIdentity``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetIdentity`: GetIdentity200Response
-    fmt.Fprintf(os.Stdout, "Response from `UserApi.GetIdentity`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `UserAPI.GetIdentity`: %v\n", resp)
 }
 ```
 
@@ -92,7 +92,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -100,9 +100,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserApi.UpdateUserPermissions(context.Background()).UpdateUserPermissionsRequest(updateUserPermissionsRequest).Execute()
+    r, err := apiClient.UserAPI.UpdateUserPermissions(context.Background()).UpdateUserPermissionsRequest(updateUserPermissionsRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserApi.UpdateUserPermissions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserAPI.UpdateUserPermissions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

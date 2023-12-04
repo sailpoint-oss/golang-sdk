@@ -692,8 +692,8 @@ func (o *AuthUser) UnmarshalJSON(bytes []byte) (err error) {
 	varAuthUser := _AuthUser{}
 
 	if err = json.Unmarshal(bytes, &varAuthUser); err == nil {
-		*o = AuthUser(varAuthUser)
-	}
+	*o = AuthUser(varAuthUser)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -135,8 +135,8 @@ func (o *ListApplications200ResponseInnerOwner) UnmarshalJSON(bytes []byte) (err
 	varListApplications200ResponseInnerOwner := _ListApplications200ResponseInnerOwner{}
 
 	if err = json.Unmarshal(bytes, &varListApplications200ResponseInnerOwner); err == nil {
-		*o = ListApplications200ResponseInnerOwner(varListApplications200ResponseInnerOwner)
-	}
+	*o = ListApplications200ResponseInnerOwner(varListApplications200ResponseInnerOwner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

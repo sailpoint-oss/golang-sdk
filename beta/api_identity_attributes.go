@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// IdentityAttributesApiService IdentityAttributesApi service
-type IdentityAttributesApiService service
+// IdentityAttributesAPIService IdentityAttributesAPI service
+type IdentityAttributesAPIService service
 
 type ApiCreateIdentityAttributeRequest struct {
 	ctx context.Context
-	ApiService *IdentityAttributesApiService
+	ApiService *IdentityAttributesAPIService
 	identityAttribute *IdentityAttribute
 }
 
@@ -46,7 +46,7 @@ This creates a new identity attribute.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateIdentityAttributeRequest
 */
-func (a *IdentityAttributesApiService) CreateIdentityAttribute(ctx context.Context) ApiCreateIdentityAttributeRequest {
+func (a *IdentityAttributesAPIService) CreateIdentityAttribute(ctx context.Context) ApiCreateIdentityAttributeRequest {
 	return ApiCreateIdentityAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -55,7 +55,7 @@ func (a *IdentityAttributesApiService) CreateIdentityAttribute(ctx context.Conte
 
 // Execute executes the request
 //  @return IdentityAttribute
-func (a *IdentityAttributesApiService) CreateIdentityAttributeExecute(r ApiCreateIdentityAttributeRequest) (*IdentityAttribute, *http.Response, error) {
+func (a *IdentityAttributesAPIService) CreateIdentityAttributeExecute(r ApiCreateIdentityAttributeRequest) (*IdentityAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *IdentityAttributesApiService) CreateIdentityAttributeExecute(r ApiCreat
 		localVarReturnValue  *IdentityAttribute
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesApiService.CreateIdentityAttribute")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesAPIService.CreateIdentityAttribute")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -106,9 +106,9 @@ func (a *IdentityAttributesApiService) CreateIdentityAttributeExecute(r ApiCreat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -200,7 +200,7 @@ func (a *IdentityAttributesApiService) CreateIdentityAttributeExecute(r ApiCreat
 
 type ApiDeleteIdentityAttributeRequest struct {
 	ctx context.Context
-	ApiService *IdentityAttributesApiService
+	ApiService *IdentityAttributesAPIService
 	name string
 }
 
@@ -217,7 +217,7 @@ This deletes an identity attribute with the given name.  The `system` and `stand
  @param name The attribute's technical name.
  @return ApiDeleteIdentityAttributeRequest
 */
-func (a *IdentityAttributesApiService) DeleteIdentityAttribute(ctx context.Context, name string) ApiDeleteIdentityAttributeRequest {
+func (a *IdentityAttributesAPIService) DeleteIdentityAttribute(ctx context.Context, name string) ApiDeleteIdentityAttributeRequest {
 	return ApiDeleteIdentityAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -226,14 +226,14 @@ func (a *IdentityAttributesApiService) DeleteIdentityAttribute(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *IdentityAttributesApiService) DeleteIdentityAttributeExecute(r ApiDeleteIdentityAttributeRequest) (*http.Response, error) {
+func (a *IdentityAttributesAPIService) DeleteIdentityAttributeExecute(r ApiDeleteIdentityAttributeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesApiService.DeleteIdentityAttribute")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesAPIService.DeleteIdentityAttribute")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -272,9 +272,9 @@ func (a *IdentityAttributesApiService) DeleteIdentityAttributeExecute(r ApiDelet
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -357,7 +357,7 @@ func (a *IdentityAttributesApiService) DeleteIdentityAttributeExecute(r ApiDelet
 
 type ApiDeleteIdentityAttributesInBulkRequest struct {
 	ctx context.Context
-	ApiService *IdentityAttributesApiService
+	ApiService *IdentityAttributesAPIService
 	identityAttributeNames *IdentityAttributeNames
 }
 
@@ -378,7 +378,7 @@ This deletes identity attributes for a given set of names. Attributes that are c
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteIdentityAttributesInBulkRequest
 */
-func (a *IdentityAttributesApiService) DeleteIdentityAttributesInBulk(ctx context.Context) ApiDeleteIdentityAttributesInBulkRequest {
+func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulk(ctx context.Context) ApiDeleteIdentityAttributesInBulkRequest {
 	return ApiDeleteIdentityAttributesInBulkRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -386,14 +386,14 @@ func (a *IdentityAttributesApiService) DeleteIdentityAttributesInBulk(ctx contex
 }
 
 // Execute executes the request
-func (a *IdentityAttributesApiService) DeleteIdentityAttributesInBulkExecute(r ApiDeleteIdentityAttributesInBulkRequest) (*http.Response, error) {
+func (a *IdentityAttributesAPIService) DeleteIdentityAttributesInBulkExecute(r ApiDeleteIdentityAttributesInBulkRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesApiService.DeleteIdentityAttributesInBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesAPIService.DeleteIdentityAttributesInBulk")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -436,9 +436,9 @@ func (a *IdentityAttributesApiService) DeleteIdentityAttributesInBulkExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -521,7 +521,7 @@ func (a *IdentityAttributesApiService) DeleteIdentityAttributesInBulkExecute(r A
 
 type ApiGetIdentityAttributeRequest struct {
 	ctx context.Context
-	ApiService *IdentityAttributesApiService
+	ApiService *IdentityAttributesAPIService
 	name string
 }
 
@@ -538,7 +538,7 @@ This gets an identity attribute for a given technical name.
  @param name The attribute's technical name.
  @return ApiGetIdentityAttributeRequest
 */
-func (a *IdentityAttributesApiService) GetIdentityAttribute(ctx context.Context, name string) ApiGetIdentityAttributeRequest {
+func (a *IdentityAttributesAPIService) GetIdentityAttribute(ctx context.Context, name string) ApiGetIdentityAttributeRequest {
 	return ApiGetIdentityAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -548,7 +548,7 @@ func (a *IdentityAttributesApiService) GetIdentityAttribute(ctx context.Context,
 
 // Execute executes the request
 //  @return IdentityAttribute
-func (a *IdentityAttributesApiService) GetIdentityAttributeExecute(r ApiGetIdentityAttributeRequest) (*IdentityAttribute, *http.Response, error) {
+func (a *IdentityAttributesAPIService) GetIdentityAttributeExecute(r ApiGetIdentityAttributeRequest) (*IdentityAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -556,7 +556,7 @@ func (a *IdentityAttributesApiService) GetIdentityAttributeExecute(r ApiGetIdent
 		localVarReturnValue  *IdentityAttribute
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesApiService.GetIdentityAttribute")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesAPIService.GetIdentityAttribute")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -595,9 +595,9 @@ func (a *IdentityAttributesApiService) GetIdentityAttributeExecute(r ApiGetIdent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -689,7 +689,7 @@ func (a *IdentityAttributesApiService) GetIdentityAttributeExecute(r ApiGetIdent
 
 type ApiListIdentityAttributesRequest struct {
 	ctx context.Context
-	ApiService *IdentityAttributesApiService
+	ApiService *IdentityAttributesAPIService
 	includeSystem *bool
 	includeSilent *bool
 	searchableOnly *bool
@@ -732,7 +732,7 @@ This gets a collection of identity attributes.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListIdentityAttributesRequest
 */
-func (a *IdentityAttributesApiService) ListIdentityAttributes(ctx context.Context) ApiListIdentityAttributesRequest {
+func (a *IdentityAttributesAPIService) ListIdentityAttributes(ctx context.Context) ApiListIdentityAttributesRequest {
 	return ApiListIdentityAttributesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -741,7 +741,7 @@ func (a *IdentityAttributesApiService) ListIdentityAttributes(ctx context.Contex
 
 // Execute executes the request
 //  @return []IdentityAttribute
-func (a *IdentityAttributesApiService) ListIdentityAttributesExecute(r ApiListIdentityAttributesRequest) ([]IdentityAttribute, *http.Response, error) {
+func (a *IdentityAttributesAPIService) ListIdentityAttributesExecute(r ApiListIdentityAttributesRequest) ([]IdentityAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -749,7 +749,7 @@ func (a *IdentityAttributesApiService) ListIdentityAttributesExecute(r ApiListId
 		localVarReturnValue  []IdentityAttribute
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesApiService.ListIdentityAttributes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesAPIService.ListIdentityAttributes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -762,15 +762,27 @@ func (a *IdentityAttributesApiService) ListIdentityAttributesExecute(r ApiListId
 
 	if r.includeSystem != nil {
 		parameterAddToQuery(localVarQueryParams, "includeSystem", r.includeSystem, "")
+	} else {
+		var defaultValue bool = false
+		r.includeSystem = &defaultValue
 	}
 	if r.includeSilent != nil {
 		parameterAddToQuery(localVarQueryParams, "includeSilent", r.includeSilent, "")
+	} else {
+		var defaultValue bool = false
+		r.includeSilent = &defaultValue
 	}
 	if r.searchableOnly != nil {
 		parameterAddToQuery(localVarQueryParams, "searchableOnly", r.searchableOnly, "")
+	} else {
+		var defaultValue bool = false
+		r.searchableOnly = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -799,9 +811,9 @@ func (a *IdentityAttributesApiService) ListIdentityAttributesExecute(r ApiListId
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -882,7 +894,7 @@ func (a *IdentityAttributesApiService) ListIdentityAttributesExecute(r ApiListId
 
 type ApiPutIdentityAttributeRequest struct {
 	ctx context.Context
-	ApiService *IdentityAttributesApiService
+	ApiService *IdentityAttributesAPIService
 	name string
 	identityAttribute *IdentityAttribute
 }
@@ -905,7 +917,7 @@ This updates an existing identity attribute.  Making an attribute searchable req
  @param name The attribute's technical name.
  @return ApiPutIdentityAttributeRequest
 */
-func (a *IdentityAttributesApiService) PutIdentityAttribute(ctx context.Context, name string) ApiPutIdentityAttributeRequest {
+func (a *IdentityAttributesAPIService) PutIdentityAttribute(ctx context.Context, name string) ApiPutIdentityAttributeRequest {
 	return ApiPutIdentityAttributeRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -915,7 +927,7 @@ func (a *IdentityAttributesApiService) PutIdentityAttribute(ctx context.Context,
 
 // Execute executes the request
 //  @return IdentityAttribute
-func (a *IdentityAttributesApiService) PutIdentityAttributeExecute(r ApiPutIdentityAttributeRequest) (*IdentityAttribute, *http.Response, error) {
+func (a *IdentityAttributesAPIService) PutIdentityAttributeExecute(r ApiPutIdentityAttributeRequest) (*IdentityAttribute, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -923,7 +935,7 @@ func (a *IdentityAttributesApiService) PutIdentityAttributeExecute(r ApiPutIdent
 		localVarReturnValue  *IdentityAttribute
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesApiService.PutIdentityAttribute")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IdentityAttributesAPIService.PutIdentityAttribute")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -967,9 +979,9 @@ func (a *IdentityAttributesApiService) PutIdentityAttributeExecute(r ApiPutIdent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

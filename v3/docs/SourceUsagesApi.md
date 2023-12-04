@@ -1,11 +1,11 @@
-# \SourceUsagesApi
+# \SourceUsagesAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetStatusBySourceId**](SourceUsagesApi.md#GetStatusBySourceId) | **Get** /source-usages/{sourceId}/status | Finds status of source usage
-[**GetUsagesBySourceId**](SourceUsagesApi.md#GetUsagesBySourceId) | **Get** /source-usages/{sourceId}/summaries | Returns source usage insights
+[**GetStatusBySourceId**](SourceUsagesAPI.md#GetStatusBySourceId) | **Get** /source-usages/{sourceId}/status | Finds status of source usage
+[**GetUsagesBySourceId**](SourceUsagesAPI.md#GetUsagesBySourceId) | **Get** /source-usages/{sourceId}/summaries | Returns source usage insights
 
 
 
@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourceUsagesApi.GetStatusBySourceId(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourceUsagesAPI.GetStatusBySourceId(context.Background(), sourceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourceUsagesApi.GetStatusBySourceId``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourceUsagesAPI.GetStatusBySourceId``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetStatusBySourceId`: SourceUsageStatus
-    fmt.Fprintf(os.Stdout, "Response from `SourceUsagesApi.GetStatusBySourceId`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourceUsagesAPI.GetStatusBySourceId`: %v\n", resp)
 }
 ```
 
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -108,13 +108,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourceUsagesApi.GetUsagesBySourceId(context.Background(), sourceId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+    resp, r, err := apiClient.SourceUsagesAPI.GetUsagesBySourceId(context.Background(), sourceId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourceUsagesApi.GetUsagesBySourceId``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourceUsagesAPI.GetUsagesBySourceId``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetUsagesBySourceId`: []SourceUsage
-    fmt.Fprintf(os.Stdout, "Response from `SourceUsagesApi.GetUsagesBySourceId`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourceUsagesAPI.GetUsagesBySourceId`: %v\n", resp)
 }
 ```
 

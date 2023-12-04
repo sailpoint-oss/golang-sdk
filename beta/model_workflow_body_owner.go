@@ -174,8 +174,8 @@ func (o *WorkflowBodyOwner) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkflowBodyOwner := _WorkflowBodyOwner{}
 
 	if err = json.Unmarshal(bytes, &varWorkflowBodyOwner); err == nil {
-		*o = WorkflowBodyOwner(varWorkflowBodyOwner)
-	}
+	*o = WorkflowBodyOwner(varWorkflowBodyOwner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

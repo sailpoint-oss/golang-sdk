@@ -25,6 +25,7 @@ type TriggerExampleInput struct {
 	AccountCorrelated *AccountCorrelated
 	AccountUncorrelated *AccountUncorrelated
 	AccountsCollectedForAggregation *AccountsCollectedForAggregation
+	BetaSchemasTriggerExampleInputSourceAccount *BetaSchemasTriggerExampleInputSourceAccount
 	CampaignActivated *CampaignActivated
 	CampaignEnded *CampaignEnded
 	CampaignGenerated *CampaignGenerated
@@ -34,7 +35,6 @@ type TriggerExampleInput struct {
 	IdentityDeleted *IdentityDeleted
 	ProvisioningCompleted *ProvisioningCompleted
 	SavedSearchComplete *SavedSearchComplete
-	SourceAccount *SourceAccount
 	SourceCreated *SourceCreated
 	SourceDeleted *SourceDeleted
 	SourceUpdated *SourceUpdated
@@ -94,6 +94,13 @@ func AccountUncorrelatedAsTriggerExampleInput(v *AccountUncorrelated) TriggerExa
 func AccountsCollectedForAggregationAsTriggerExampleInput(v *AccountsCollectedForAggregation) TriggerExampleInput {
 	return TriggerExampleInput{
 		AccountsCollectedForAggregation: v,
+	}
+}
+
+// BetaSchemasTriggerExampleInputSourceAccountAsTriggerExampleInput is a convenience function that returns BetaSchemasTriggerExampleInputSourceAccount wrapped in TriggerExampleInput
+func BetaSchemasTriggerExampleInputSourceAccountAsTriggerExampleInput(v *BetaSchemasTriggerExampleInputSourceAccount) TriggerExampleInput {
+	return TriggerExampleInput{
+		BetaSchemasTriggerExampleInputSourceAccount: v,
 	}
 }
 
@@ -157,13 +164,6 @@ func ProvisioningCompletedAsTriggerExampleInput(v *ProvisioningCompleted) Trigge
 func SavedSearchCompleteAsTriggerExampleInput(v *SavedSearchComplete) TriggerExampleInput {
 	return TriggerExampleInput{
 		SavedSearchComplete: v,
-	}
-}
-
-// SourceAccountAsTriggerExampleInput is a convenience function that returns SourceAccount wrapped in TriggerExampleInput
-func SourceAccountAsTriggerExampleInput(v *SourceAccount) TriggerExampleInput {
-	return TriggerExampleInput{
-		SourceAccount: v,
 	}
 }
 
@@ -304,6 +304,19 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		dst.AccountsCollectedForAggregation = nil
 	}
 
+	// try to unmarshal data into BetaSchemasTriggerExampleInputSourceAccount
+	err = newStrictDecoder(data).Decode(&dst.BetaSchemasTriggerExampleInputSourceAccount)
+	if err == nil {
+		jsonBetaSchemasTriggerExampleInputSourceAccount, _ := json.Marshal(dst.BetaSchemasTriggerExampleInputSourceAccount)
+		if string(jsonBetaSchemasTriggerExampleInputSourceAccount) == "{}" { // empty struct
+			dst.BetaSchemasTriggerExampleInputSourceAccount = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.BetaSchemasTriggerExampleInputSourceAccount = nil
+	}
+
 	// try to unmarshal data into CampaignActivated
 	err = newStrictDecoder(data).Decode(&dst.CampaignActivated)
 	if err == nil {
@@ -421,19 +434,6 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		dst.SavedSearchComplete = nil
 	}
 
-	// try to unmarshal data into SourceAccount
-	err = newStrictDecoder(data).Decode(&dst.SourceAccount)
-	if err == nil {
-		jsonSourceAccount, _ := json.Marshal(dst.SourceAccount)
-		if string(jsonSourceAccount) == "{}" { // empty struct
-			dst.SourceAccount = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.SourceAccount = nil
-	}
-
 	// try to unmarshal data into SourceCreated
 	err = newStrictDecoder(data).Decode(&dst.SourceCreated)
 	if err == nil {
@@ -496,6 +496,7 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		dst.AccountCorrelated = nil
 		dst.AccountUncorrelated = nil
 		dst.AccountsCollectedForAggregation = nil
+		dst.BetaSchemasTriggerExampleInputSourceAccount = nil
 		dst.CampaignActivated = nil
 		dst.CampaignEnded = nil
 		dst.CampaignGenerated = nil
@@ -505,7 +506,6 @@ func (dst *TriggerExampleInput) UnmarshalJSON(data []byte) error {
 		dst.IdentityDeleted = nil
 		dst.ProvisioningCompleted = nil
 		dst.SavedSearchComplete = nil
-		dst.SourceAccount = nil
 		dst.SourceCreated = nil
 		dst.SourceDeleted = nil
 		dst.SourceUpdated = nil
@@ -553,6 +553,10 @@ func (src TriggerExampleInput) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AccountsCollectedForAggregation)
 	}
 
+	if src.BetaSchemasTriggerExampleInputSourceAccount != nil {
+		return json.Marshal(&src.BetaSchemasTriggerExampleInputSourceAccount)
+	}
+
 	if src.CampaignActivated != nil {
 		return json.Marshal(&src.CampaignActivated)
 	}
@@ -587,10 +591,6 @@ func (src TriggerExampleInput) MarshalJSON() ([]byte, error) {
 
 	if src.SavedSearchComplete != nil {
 		return json.Marshal(&src.SavedSearchComplete)
-	}
-
-	if src.SourceAccount != nil {
-		return json.Marshal(&src.SourceAccount)
 	}
 
 	if src.SourceCreated != nil {
@@ -649,6 +649,10 @@ func (obj *TriggerExampleInput) GetActualInstance() (interface{}) {
 		return obj.AccountsCollectedForAggregation
 	}
 
+	if obj.BetaSchemasTriggerExampleInputSourceAccount != nil {
+		return obj.BetaSchemasTriggerExampleInputSourceAccount
+	}
+
 	if obj.CampaignActivated != nil {
 		return obj.CampaignActivated
 	}
@@ -683,10 +687,6 @@ func (obj *TriggerExampleInput) GetActualInstance() (interface{}) {
 
 	if obj.SavedSearchComplete != nil {
 		return obj.SavedSearchComplete
-	}
-
-	if obj.SourceAccount != nil {
-		return obj.SourceAccount
 	}
 
 	if obj.SourceCreated != nil {

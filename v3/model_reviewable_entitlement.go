@@ -790,8 +790,8 @@ func (o *ReviewableEntitlement) UnmarshalJSON(bytes []byte) (err error) {
 	varReviewableEntitlement := _ReviewableEntitlement{}
 
 	if err = json.Unmarshal(bytes, &varReviewableEntitlement); err == nil {
-		*o = ReviewableEntitlement(varReviewableEntitlement)
-	}
+	*o = ReviewableEntitlement(varReviewableEntitlement)
+}
 
 	additionalProperties := make(map[string]interface{})
 

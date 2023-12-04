@@ -135,8 +135,8 @@ func (o *Range) UnmarshalJSON(bytes []byte) (err error) {
 	varRange := _Range{}
 
 	if err = json.Unmarshal(bytes, &varRange); err == nil {
-		*o = Range(varRange)
-	}
+	*o = Range(varRange)
+}
 
 	additionalProperties := make(map[string]interface{})
 

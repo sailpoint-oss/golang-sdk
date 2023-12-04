@@ -100,8 +100,8 @@ func (o *ProvisioningConfigPlanInitializerScript) UnmarshalJSON(bytes []byte) (e
 	varProvisioningConfigPlanInitializerScript := _ProvisioningConfigPlanInitializerScript{}
 
 	if err = json.Unmarshal(bytes, &varProvisioningConfigPlanInitializerScript); err == nil {
-		*o = ProvisioningConfigPlanInitializerScript(varProvisioningConfigPlanInitializerScript)
-	}
+	*o = ProvisioningConfigPlanInitializerScript(varProvisioningConfigPlanInitializerScript)
+}
 
 	additionalProperties := make(map[string]interface{})
 

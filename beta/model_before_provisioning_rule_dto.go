@@ -174,8 +174,8 @@ func (o *BeforeProvisioningRuleDto) UnmarshalJSON(bytes []byte) (err error) {
 	varBeforeProvisioningRuleDto := _BeforeProvisioningRuleDto{}
 
 	if err = json.Unmarshal(bytes, &varBeforeProvisioningRuleDto); err == nil {
-		*o = BeforeProvisioningRuleDto(varBeforeProvisioningRuleDto)
-	}
+	*o = BeforeProvisioningRuleDto(varBeforeProvisioningRuleDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

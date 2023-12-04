@@ -13,6 +13,7 @@ package v3
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the SearchSchedule type satisfies the MappedNullable interface at compile time
@@ -22,10 +23,10 @@ var _ MappedNullable = &SearchSchedule{}
 type SearchSchedule struct {
 	// The ID of the saved search that will be executed.
 	SavedSearchId string `json:"savedSearchId"`
-	// The date the scheduled search was initially created.
-	Created *time.Time `json:"created,omitempty"`
-	// The last date the scheduled search was modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	// A date-time in ISO-8601 format
+	Created NullableTime `json:"created,omitempty"`
+	// A date-time in ISO-8601 format
+	Modified NullableTime `json:"modified,omitempty"`
 	Schedule Schedule1 `json:"schedule"`
 	// A list of identities that should receive the scheduled search report via email.
 	Recipients []SearchScheduleRecipientsInner `json:"recipients"`
@@ -96,68 +97,88 @@ func (o *SearchSchedule) SetSavedSearchId(v string) {
 	o.SavedSearchId = v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SearchSchedule) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
+	if o == nil || isNil(o.Created.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.Created
+	return *o.Created.Get()
 }
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SearchSchedule) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Created, true
+	return o.Created.Get(), o.Created.IsSet()
 }
 
 // HasCreated returns a boolean if a field has been set.
 func (o *SearchSchedule) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
+	if o != nil && o.Created.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
 func (o *SearchSchedule) SetCreated(v time.Time) {
-	o.Created = &v
+	o.Created.Set(&v)
+}
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *SearchSchedule) SetCreatedNil() {
+	o.Created.Set(nil)
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise.
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *SearchSchedule) UnsetCreated() {
+	o.Created.Unset()
+}
+
+// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SearchSchedule) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || isNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.Modified
+	return *o.Modified.Get()
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SearchSchedule) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Modified, true
+	return o.Modified.Get(), o.Modified.IsSet()
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *SearchSchedule) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && o.Modified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+// SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
 func (o *SearchSchedule) SetModified(v time.Time) {
-	o.Modified = &v
+	o.Modified.Set(&v)
+}
+// SetModifiedNil sets the value for Modified to be an explicit nil
+func (o *SearchSchedule) SetModifiedNil() {
+	o.Modified.Set(nil)
+}
+
+// UnsetModified ensures that no value is present for Modified, not even an explicit nil
+func (o *SearchSchedule) UnsetModified() {
+	o.Modified.Unset()
 }
 
 // GetSchedule returns the Schedule field value
@@ -315,8 +336,12 @@ func (o SearchSchedule) MarshalJSON() ([]byte, error) {
 func (o SearchSchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["savedSearchId"] = o.SavedSearchId
-	// skip: created is readOnly
-	// skip: modified is readOnly
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
+	if o.Modified.IsSet() {
+		toSerialize["modified"] = o.Modified.Get()
+	}
 	toSerialize["schedule"] = o.Schedule
 	toSerialize["recipients"] = o.Recipients
 	if !isNil(o.Enabled) {
@@ -337,11 +362,34 @@ func (o SearchSchedule) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *SearchSchedule) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"savedSearchId",
+		"schedule",
+		"recipients",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varSearchSchedule := _SearchSchedule{}
 
 	if err = json.Unmarshal(bytes, &varSearchSchedule); err == nil {
-		*o = SearchSchedule(varSearchSchedule)
-	}
+	*o = SearchSchedule(varSearchSchedule)
+}
 
 	additionalProperties := make(map[string]interface{})
 

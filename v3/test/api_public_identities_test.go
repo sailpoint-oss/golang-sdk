@@ -1,7 +1,7 @@
 /*
 IdentityNow V3 API
 
-Testing PublicIdentitiesApiService
+Testing PublicIdentitiesAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_v3_PublicIdentitiesApiService(t *testing.T) {
+func Test_v3_PublicIdentitiesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test PublicIdentitiesApiService GetPublicIdentities", func(t *testing.T) {
+	t.Run("Test PublicIdentitiesAPIService GetPublicIdentities", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.V3.PublicIdentitiesApi.GetPublicIdentities(context.Background()).Execute()
+		resp, httpRes, err := apiClient.V3.PublicIdentitiesAPI.GetPublicIdentities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the CampaignEnded type satisfies the MappedNullable interface at compile time
@@ -87,11 +88,32 @@ func (o CampaignEnded) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *CampaignEnded) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"campaign",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varCampaignEnded := _CampaignEnded{}
 
 	if err = json.Unmarshal(bytes, &varCampaignEnded); err == nil {
-		*o = CampaignEnded(varCampaignEnded)
-	}
+	*o = CampaignEnded(varCampaignEnded)
+}
 
 	additionalProperties := make(map[string]interface{})
 

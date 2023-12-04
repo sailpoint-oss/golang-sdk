@@ -431,8 +431,8 @@ func (o *SourceHealthDto) UnmarshalJSON(bytes []byte) (err error) {
 	varSourceHealthDto := _SourceHealthDto{}
 
 	if err = json.Unmarshal(bytes, &varSourceHealthDto); err == nil {
-		*o = SourceHealthDto(varSourceHealthDto)
-	}
+	*o = SourceHealthDto(varSourceHealthDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

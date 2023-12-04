@@ -13,6 +13,7 @@ package v3
 import (
 	"encoding/json"
 	"os"
+	"fmt"
 )
 
 // checks if the ImportNonEmployeeRecordsInBulkRequest type satisfies the MappedNullable interface at compile time
@@ -88,11 +89,32 @@ func (o ImportNonEmployeeRecordsInBulkRequest) ToMap() (map[string]interface{}, 
 }
 
 func (o *ImportNonEmployeeRecordsInBulkRequest) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varImportNonEmployeeRecordsInBulkRequest := _ImportNonEmployeeRecordsInBulkRequest{}
 
 	if err = json.Unmarshal(bytes, &varImportNonEmployeeRecordsInBulkRequest); err == nil {
-		*o = ImportNonEmployeeRecordsInBulkRequest(varImportNonEmployeeRecordsInBulkRequest)
-	}
+	*o = ImportNonEmployeeRecordsInBulkRequest(varImportNonEmployeeRecordsInBulkRequest)
+}
 
 	additionalProperties := make(map[string]interface{})
 

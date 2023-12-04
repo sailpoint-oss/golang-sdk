@@ -37,7 +37,7 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `cc.ContextServerIndex` of type `int`.
 
 ```golang
 ctx := context.WithValue(context.Background(), cc.ContextServerIndex, 1)
@@ -45,7 +45,7 @@ ctx := context.WithValue(context.Background(), cc.ContextServerIndex, 1)
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `cc.ContextServerVariables` of type `map[string]string`.
 
 ```golang
 ctx := context.WithValue(context.Background(), cc.ContextServerVariables, map[string]string{
@@ -59,7 +59,7 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `cc.ContextOperationServerIndices` and `cc.ContextOperationServerVariables` context maps.
 
 ```golang
 ctx := context.WithValue(context.Background(), cc.ContextOperationServerIndices, map[string]int{
@@ -78,25 +78,25 @@ All URIs are relative to *https://sailpoint.api.identitynow.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountsApi* | [**ListAccounts**](docs/AccountsApi.md#listaccounts) | **Get** /cc/api/account/list | List Accounts
-*AccountsApi* | [**RemoveAccount**](docs/AccountsApi.md#removeaccount) | **Post** /cc/api/account/remove/{id} | Remove Account
-*ApplicationsApi* | [**CreateApplication**](docs/ApplicationsApi.md#createapplication) | **Post** /cc/api/app/create | Create Application
-*ApplicationsApi* | [**DeleteApplication**](docs/ApplicationsApi.md#deleteapplication) | **Post** /cc/api/app/delete/{id} | Delete Application
-*ApplicationsApi* | [**GetApplication**](docs/ApplicationsApi.md#getapplication) | **Get** /cc/api/app/get/{id} | Get Single Application
-*ApplicationsApi* | [**GetApplicationAccessProfiles**](docs/ApplicationsApi.md#getapplicationaccessprofiles) | **Get** /cc/api/app/getAccessProfiles/{id} | Get Access Profiles for Application
-*ApplicationsApi* | [**ListApplications**](docs/ApplicationsApi.md#listapplications) | **Get** /cc/api/app/list | List Applications
-*ApplicationsApi* | [**UpdateApplication**](docs/ApplicationsApi.md#updateapplication) | **Post** /cc/api/app/update/{id} | Update Application
-*ConnectorsApi* | [**CreateConnector**](docs/ConnectorsApi.md#createconnector) | **Post** /cc/api/connector/create | Create Connector
-*ConnectorsApi* | [**DeleteConnector**](docs/ConnectorsApi.md#deleteconnector) | **Post** /cc/api/connector/delete/{id} | Delete Connector
-*ConnectorsApi* | [**ExportConnectorConfig**](docs/ConnectorsApi.md#exportconnectorconfig) | **Get** /cc/api/connector/export/{id} | Export Connector Config
-*ConnectorsApi* | [**ImportConnectorConfig**](docs/ConnectorsApi.md#importconnectorconfig) | **Post** /cc/api/connector/import/{id} | Import Connector Config
-*ConnectorsApi* | [**ListConnectors**](docs/ConnectorsApi.md#listconnectors) | **Get** /cc/api/connector/list | List Connectors
-*SourcesAccountsApi* | [**ExportAccountFeed**](docs/SourcesAccountsApi.md#exportaccountfeed) | **Get** /cc/api/source/exportAccountFeed/{id} | Export Account Feed
-*SourcesAggregationApi* | [**LoadAccounts**](docs/SourcesAggregationApi.md#loadaccounts) | **Post** /cc/api/source/loadAccounts/{id} | Account Aggregation (File)
-*SourcesAggregationApi* | [**LoadEntitlements**](docs/SourcesAggregationApi.md#loadentitlements) | **Post** /cc/api/source/loadEntitlements/{id} | Account Aggregation (File)
-*SystemApi* | [**RefreshIdentities**](docs/SystemApi.md#refreshidentities) | **Post** /cc/api/system/refreshIdentities | Refresh Identities
-*UserApi* | [**GetIdentity**](docs/UserApi.md#getidentity) | **Get** /cc/api/user/get/{id} | Get Single Identity
-*UserApi* | [**UpdateUserPermissions**](docs/UserApi.md#updateuserpermissions) | **Post** /cc/api/user/updatePermissions | Update User Permissions
+*AccountsAPI* | [**ListAccounts**](docs/AccountsAPI.md#listaccounts) | **Get** /cc/api/account/list | List Accounts
+*AccountsAPI* | [**RemoveAccount**](docs/AccountsAPI.md#removeaccount) | **Post** /cc/api/account/remove/{id} | Remove Account
+*ApplicationsAPI* | [**CreateApplication**](docs/ApplicationsAPI.md#createapplication) | **Post** /cc/api/app/create | Create Application
+*ApplicationsAPI* | [**DeleteApplication**](docs/ApplicationsAPI.md#deleteapplication) | **Post** /cc/api/app/delete/{id} | Delete Application
+*ApplicationsAPI* | [**GetApplication**](docs/ApplicationsAPI.md#getapplication) | **Get** /cc/api/app/get/{id} | Get Single Application
+*ApplicationsAPI* | [**GetApplicationAccessProfiles**](docs/ApplicationsAPI.md#getapplicationaccessprofiles) | **Get** /cc/api/app/getAccessProfiles/{id} | Get Access Profiles for Application
+*ApplicationsAPI* | [**ListApplications**](docs/ApplicationsAPI.md#listapplications) | **Get** /cc/api/app/list | List Applications
+*ApplicationsAPI* | [**UpdateApplication**](docs/ApplicationsAPI.md#updateapplication) | **Post** /cc/api/app/update/{id} | Update Application
+*ConnectorsAPI* | [**CreateConnector**](docs/ConnectorsAPI.md#createconnector) | **Post** /cc/api/connector/create | Create Connector
+*ConnectorsAPI* | [**DeleteConnector**](docs/ConnectorsAPI.md#deleteconnector) | **Post** /cc/api/connector/delete/{id} | Delete Connector
+*ConnectorsAPI* | [**ExportConnectorConfig**](docs/ConnectorsAPI.md#exportconnectorconfig) | **Get** /cc/api/connector/export/{id} | Export Connector Config
+*ConnectorsAPI* | [**ImportConnectorConfig**](docs/ConnectorsAPI.md#importconnectorconfig) | **Post** /cc/api/connector/import/{id} | Import Connector Config
+*ConnectorsAPI* | [**ListConnectors**](docs/ConnectorsAPI.md#listconnectors) | **Get** /cc/api/connector/list | List Connectors
+*SourcesAccountsAPI* | [**ExportAccountFeed**](docs/SourcesAccountsAPI.md#exportaccountfeed) | **Get** /cc/api/source/exportAccountFeed/{id} | Export Account Feed
+*SourcesAggregationAPI* | [**LoadAccounts**](docs/SourcesAggregationAPI.md#loadaccounts) | **Post** /cc/api/source/loadAccounts/{id} | Account Aggregation (File)
+*SourcesAggregationAPI* | [**LoadEntitlements**](docs/SourcesAggregationAPI.md#loadentitlements) | **Post** /cc/api/source/loadEntitlements/{id} | Account Aggregation (File)
+*SystemAPI* | [**RefreshIdentities**](docs/SystemAPI.md#refreshidentities) | **Post** /cc/api/system/refreshIdentities | Refresh Identities
+*UserAPI* | [**GetIdentity**](docs/UserAPI.md#getidentity) | **Get** /cc/api/user/get/{id} | Get Single Identity
+*UserAPI* | [**UpdateUserPermissions**](docs/UserAPI.md#updateuserpermissions) | **Post** /cc/api/user/updatePermissions | Update User Permissions
 
 
 ## Documentation For Models
@@ -127,7 +127,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-
+Authentication schemes defined for the API:
 ### UserContextAuth
 
 
@@ -141,7 +141,7 @@ Class | Method | HTTP request | Description
 Example
 
 ```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "ACCESSTOKENSTRING")
+auth := context.WithValue(context.Background(), cc.ContextAccessToken, "ACCESSTOKENSTRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
@@ -153,10 +153,9 @@ import "golang.org/x/oauth2"
 /* Perform OAuth2 round trip request and obtain a token */
 
 tokenSource := oauth2cfg.TokenSource(createContext(httpClient), &token)
-auth := context.WithValue(oauth2.NoContext, sw.ContextOAuth2, tokenSource)
+auth := context.WithValue(oauth2.NoContext, cc.ContextOAuth2, tokenSource)
 r, err := client.Service.Operation(auth, args)
 ```
-
 
 ### UserContextAuth
 
@@ -171,7 +170,7 @@ r, err := client.Service.Operation(auth, args)
 Example
 
 ```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "ACCESSTOKENSTRING")
+auth := context.WithValue(context.Background(), cc.ContextAccessToken, "ACCESSTOKENSTRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
@@ -183,7 +182,7 @@ import "golang.org/x/oauth2"
 /* Perform OAuth2 round trip request and obtain a token */
 
 tokenSource := oauth2cfg.TokenSource(createContext(httpClient), &token)
-auth := context.WithValue(oauth2.NoContext, sw.ContextOAuth2, tokenSource)
+auth := context.WithValue(oauth2.NoContext, cc.ContextOAuth2, tokenSource)
 r, err := client.Service.Operation(auth, args)
 ```
 

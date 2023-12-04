@@ -230,8 +230,8 @@ func (o *RoleMembershipIdentity) UnmarshalJSON(bytes []byte) (err error) {
 	varRoleMembershipIdentity := _RoleMembershipIdentity{}
 
 	if err = json.Unmarshal(bytes, &varRoleMembershipIdentity); err == nil {
-		*o = RoleMembershipIdentity(varRoleMembershipIdentity)
-	}
+	*o = RoleMembershipIdentity(varRoleMembershipIdentity)
+}
 
 	additionalProperties := make(map[string]interface{})
 

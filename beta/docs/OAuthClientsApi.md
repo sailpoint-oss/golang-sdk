@@ -1,14 +1,14 @@
-# \OAuthClientsApi
+# \OAuthClientsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateOauthClient**](OAuthClientsApi.md#CreateOauthClient) | **Post** /oauth-clients | Create OAuth Client
-[**DeleteOauthClient**](OAuthClientsApi.md#DeleteOauthClient) | **Delete** /oauth-clients/{id} | Delete OAuth Client
-[**GetOauthClient**](OAuthClientsApi.md#GetOauthClient) | **Get** /oauth-clients/{id} | Get OAuth Client
-[**ListOauthClients**](OAuthClientsApi.md#ListOauthClients) | **Get** /oauth-clients | List OAuth Clients
-[**PatchOauthClient**](OAuthClientsApi.md#PatchOauthClient) | **Patch** /oauth-clients/{id} | Patch OAuth Client
+[**CreateOauthClient**](OAuthClientsAPI.md#CreateOauthClient) | **Post** /oauth-clients | Create OAuth Client
+[**DeleteOauthClient**](OAuthClientsAPI.md#DeleteOauthClient) | **Delete** /oauth-clients/{id} | Delete OAuth Client
+[**GetOauthClient**](OAuthClientsAPI.md#GetOauthClient) | **Get** /oauth-clients/{id} | Get OAuth Client
+[**ListOauthClients**](OAuthClientsAPI.md#ListOauthClients) | **Get** /oauth-clients | List OAuth Clients
+[**PatchOauthClient**](OAuthClientsAPI.md#PatchOauthClient) | **Patch** /oauth-clients/{id} | Patch OAuth Client
 
 
 
@@ -29,7 +29,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsApi.CreateOauthClient(context.Background()).CreateOAuthClientRequest(createOAuthClientRequest).Execute()
+    resp, r, err := apiClient.OAuthClientsAPI.CreateOauthClient(context.Background()).CreateOAuthClientRequest(createOAuthClientRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsApi.CreateOauthClient``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.CreateOauthClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateOauthClient`: CreateOAuthClientResponse
-    fmt.Fprintf(os.Stdout, "Response from `OAuthClientsApi.CreateOauthClient`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OAuthClientsAPI.CreateOauthClient`: %v\n", resp)
 }
 ```
 
@@ -95,7 +95,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -103,9 +103,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsApi.DeleteOauthClient(context.Background(), id).Execute()
+    r, err := apiClient.OAuthClientsAPI.DeleteOauthClient(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsApi.DeleteOauthClient``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.DeleteOauthClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -163,7 +163,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -171,13 +171,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsApi.GetOauthClient(context.Background(), id).Execute()
+    resp, r, err := apiClient.OAuthClientsAPI.GetOauthClient(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsApi.GetOauthClient``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.GetOauthClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetOauthClient`: GetOAuthClientResponse
-    fmt.Fprintf(os.Stdout, "Response from `OAuthClientsApi.GetOauthClient`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OAuthClientsAPI.GetOauthClient`: %v\n", resp)
 }
 ```
 
@@ -233,7 +233,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -241,13 +241,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsApi.ListOauthClients(context.Background()).Filters(filters).Execute()
+    resp, r, err := apiClient.OAuthClientsAPI.ListOauthClients(context.Background()).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsApi.ListOauthClients``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.ListOauthClients``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListOauthClients`: []GetOAuthClientResponse
-    fmt.Fprintf(os.Stdout, "Response from `OAuthClientsApi.ListOauthClients`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OAuthClientsAPI.ListOauthClients`: %v\n", resp)
 }
 ```
 
@@ -299,7 +299,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -308,13 +308,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsApi.PatchOauthClient(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.OAuthClientsAPI.PatchOauthClient(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsApi.PatchOauthClient``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.PatchOauthClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchOauthClient`: GetOAuthClientResponse
-    fmt.Fprintf(os.Stdout, "Response from `OAuthClientsApi.PatchOauthClient`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `OAuthClientsAPI.PatchOauthClient`: %v\n", resp)
 }
 ```
 

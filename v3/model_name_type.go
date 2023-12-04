@@ -136,8 +136,8 @@ func (o *NameType) UnmarshalJSON(bytes []byte) (err error) {
 	varNameType := _NameType{}
 
 	if err = json.Unmarshal(bytes, &varNameType); err == nil {
-		*o = NameType(varNameType)
-	}
+	*o = NameType(varNameType)
+}
 
 	additionalProperties := make(map[string]interface{})
 

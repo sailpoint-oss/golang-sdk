@@ -137,8 +137,8 @@ func (o *TransformDefinition1) UnmarshalJSON(bytes []byte) (err error) {
 	varTransformDefinition1 := _TransformDefinition1{}
 
 	if err = json.Unmarshal(bytes, &varTransformDefinition1); err == nil {
-		*o = TransformDefinition1(varTransformDefinition1)
-	}
+	*o = TransformDefinition1(varTransformDefinition1)
+}
 
 	additionalProperties := make(map[string]interface{})
 

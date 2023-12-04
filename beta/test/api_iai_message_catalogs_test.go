@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing IAIMessageCatalogsApiService
+Testing IAIMessageCatalogsAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_IAIMessageCatalogsApiService(t *testing.T) {
+func Test_beta_IAIMessageCatalogsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test IAIMessageCatalogsApiService GetMessageCatalogs", func(t *testing.T) {
+	t.Run("Test IAIMessageCatalogsAPIService GetMessageCatalogs", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var catalogId string
 
-		resp, httpRes, err := apiClient.BETA.IAIMessageCatalogsApi.GetMessageCatalogs(context.Background(), catalogId).Execute()
+		resp, httpRes, err := apiClient.BETA.IAIMessageCatalogsAPI.GetMessageCatalogs(context.Background(), catalogId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

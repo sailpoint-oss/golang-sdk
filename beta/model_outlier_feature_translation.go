@@ -135,8 +135,8 @@ func (o *OutlierFeatureTranslation) UnmarshalJSON(bytes []byte) (err error) {
 	varOutlierFeatureTranslation := _OutlierFeatureTranslation{}
 
 	if err = json.Unmarshal(bytes, &varOutlierFeatureTranslation); err == nil {
-		*o = OutlierFeatureTranslation(varOutlierFeatureTranslation)
-	}
+	*o = OutlierFeatureTranslation(varOutlierFeatureTranslation)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -1,16 +1,16 @@
-# \RolesApi
+# \RolesAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRole**](RolesApi.md#CreateRole) | **Post** /roles | Create a Role
-[**DeleteBulkRoles**](RolesApi.md#DeleteBulkRoles) | **Post** /roles/bulk-delete | Delete Role(s)
-[**DeleteRole**](RolesApi.md#DeleteRole) | **Delete** /roles/{id} | Delete a Role
-[**GetRole**](RolesApi.md#GetRole) | **Get** /roles/{id} | Get a Role
-[**GetRoleAssignedIdentities**](RolesApi.md#GetRoleAssignedIdentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
-[**ListRoles**](RolesApi.md#ListRoles) | **Get** /roles | List Roles
-[**PatchRole**](RolesApi.md#PatchRole) | **Patch** /roles/{id} | Patch a specified Role
+[**CreateRole**](RolesAPI.md#CreateRole) | **Post** /roles | Create a Role
+[**DeleteBulkRoles**](RolesAPI.md#DeleteBulkRoles) | **Post** /roles/bulk-delete | Delete Role(s)
+[**DeleteRole**](RolesAPI.md#DeleteRole) | **Delete** /roles/{id} | Delete a Role
+[**GetRole**](RolesAPI.md#GetRole) | **Get** /roles/{id} | Get a Role
+[**GetRoleAssignedIdentities**](RolesAPI.md#GetRoleAssignedIdentities) | **Get** /roles/{id}/assigned-identities | List Identities assigned a Role
+[**ListRoles**](RolesAPI.md#ListRoles) | **Get** /roles | List Roles
+[**PatchRole**](RolesAPI.md#PatchRole) | **Patch** /roles/{id} | Patch a specified Role
 
 
 
@@ -31,7 +31,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -39,13 +39,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesApi.CreateRole(context.Background()).Role(role).Execute()
+    resp, r, err := apiClient.RolesAPI.CreateRole(context.Background()).Role(role).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.CreateRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.CreateRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateRole`: Role
-    fmt.Fprintf(os.Stdout, "Response from `RolesApi.CreateRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.CreateRole`: %v\n", resp)
 }
 ```
 
@@ -97,7 +97,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -105,13 +105,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesApi.DeleteBulkRoles(context.Background()).RoleBulkDeleteRequest(roleBulkDeleteRequest).Execute()
+    resp, r, err := apiClient.RolesAPI.DeleteBulkRoles(context.Background()).RoleBulkDeleteRequest(roleBulkDeleteRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.DeleteBulkRoles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.DeleteBulkRoles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DeleteBulkRoles`: TaskResultDto
-    fmt.Fprintf(os.Stdout, "Response from `RolesApi.DeleteBulkRoles`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.DeleteBulkRoles`: %v\n", resp)
 }
 ```
 
@@ -163,7 +163,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -171,9 +171,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesApi.DeleteRole(context.Background(), id).Execute()
+    r, err := apiClient.RolesAPI.DeleteRole(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.DeleteRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.DeleteRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -231,7 +231,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -239,13 +239,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesApi.GetRole(context.Background(), id).Execute()
+    resp, r, err := apiClient.RolesAPI.GetRole(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.GetRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRole`: Role
-    fmt.Fprintf(os.Stdout, "Response from `RolesApi.GetRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.GetRole`: %v\n", resp)
 }
 ```
 
@@ -299,7 +299,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -312,13 +312,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesApi.GetRoleAssignedIdentities(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.RolesAPI.GetRoleAssignedIdentities(context.Background(), id).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.GetRoleAssignedIdentities``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRoleAssignedIdentities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetRoleAssignedIdentities`: []RoleIdentity
-    fmt.Fprintf(os.Stdout, "Response from `RolesApi.GetRoleAssignedIdentities`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.GetRoleAssignedIdentities`: %v\n", resp)
 }
 ```
 
@@ -379,7 +379,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -394,13 +394,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesApi.ListRoles(context.Background()).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Execute()
+    resp, r, err := apiClient.RolesAPI.ListRoles(context.Background()).ForSubadmin(forSubadmin).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSegmentIds(forSegmentIds).IncludeUnsegmented(includeUnsegmented).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ListRoles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.ListRoles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListRoles`: []Role
-    fmt.Fprintf(os.Stdout, "Response from `RolesApi.ListRoles`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.ListRoles`: %v\n", resp)
 }
 ```
 
@@ -459,7 +459,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -468,13 +468,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RolesApi.PatchRole(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.RolesAPI.PatchRole(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.PatchRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.PatchRole``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PatchRole`: Role
-    fmt.Fprintf(os.Stdout, "Response from `RolesApi.PatchRole`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RolesAPI.PatchRole`: %v\n", resp)
 }
 ```
 

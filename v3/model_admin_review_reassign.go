@@ -173,8 +173,8 @@ func (o *AdminReviewReassign) UnmarshalJSON(bytes []byte) (err error) {
 	varAdminReviewReassign := _AdminReviewReassign{}
 
 	if err = json.Unmarshal(bytes, &varAdminReviewReassign); err == nil {
-		*o = AdminReviewReassign(varAdminReviewReassign)
-	}
+	*o = AdminReviewReassign(varAdminReviewReassign)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -174,8 +174,8 @@ func (o *ServiceDeskIntegrationDtoAllOfOwnerRef) UnmarshalJSON(bytes []byte) (er
 	varServiceDeskIntegrationDtoAllOfOwnerRef := _ServiceDeskIntegrationDtoAllOfOwnerRef{}
 
 	if err = json.Unmarshal(bytes, &varServiceDeskIntegrationDtoAllOfOwnerRef); err == nil {
-		*o = ServiceDeskIntegrationDtoAllOfOwnerRef(varServiceDeskIntegrationDtoAllOfOwnerRef)
-	}
+	*o = ServiceDeskIntegrationDtoAllOfOwnerRef(varServiceDeskIntegrationDtoAllOfOwnerRef)
+}
 
 	additionalProperties := make(map[string]interface{})
 

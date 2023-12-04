@@ -1,7 +1,7 @@
 /*
 IdentityNow cc (private) APIs
 
-Testing AccountsApiService
+Testing AccountsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_cc_AccountsApiService(t *testing.T) {
+func Test_cc_AccountsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AccountsApiService ListAccounts", func(t *testing.T) {
+	t.Run("Test AccountsAPIService ListAccounts", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CC.AccountsApi.ListAccounts(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CC.AccountsAPI.ListAccounts(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_cc_AccountsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsApiService RemoveAccount", func(t *testing.T) {
+	t.Run("Test AccountsAPIService RemoveAccount", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		httpRes, err := apiClient.CC.AccountsApi.RemoveAccount(context.Background(), id).Execute()
+		httpRes, err := apiClient.CC.AccountsAPI.RemoveAccount(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

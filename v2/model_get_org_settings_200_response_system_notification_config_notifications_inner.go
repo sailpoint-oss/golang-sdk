@@ -171,8 +171,8 @@ func (o *GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner) Un
 	varGetOrgSettings200ResponseSystemNotificationConfigNotificationsInner := _GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner{}
 
 	if err = json.Unmarshal(bytes, &varGetOrgSettings200ResponseSystemNotificationConfigNotificationsInner); err == nil {
-		*o = GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner(varGetOrgSettings200ResponseSystemNotificationConfigNotificationsInner)
-	}
+	*o = GetOrgSettings200ResponseSystemNotificationConfigNotificationsInner(varGetOrgSettings200ResponseSystemNotificationConfigNotificationsInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

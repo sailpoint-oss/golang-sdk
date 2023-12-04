@@ -211,8 +211,8 @@ func (o *ExportPayload) UnmarshalJSON(bytes []byte) (err error) {
 	varExportPayload := _ExportPayload{}
 
 	if err = json.Unmarshal(bytes, &varExportPayload); err == nil {
-		*o = ExportPayload(varExportPayload)
-	}
+	*o = ExportPayload(varExportPayload)
+}
 
 	additionalProperties := make(map[string]interface{})
 

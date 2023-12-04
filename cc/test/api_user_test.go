@@ -1,7 +1,7 @@
 /*
 IdentityNow cc (private) APIs
 
-Testing UserApiService
+Testing UserAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_cc_UserApiService(t *testing.T) {
+func Test_cc_UserAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test UserApiService GetIdentity", func(t *testing.T) {
+	t.Run("Test UserAPIService GetIdentity", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.CC.UserApi.GetIdentity(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CC.UserAPI.GetIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,11 +36,11 @@ func Test_cc_UserApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test UserApiService UpdateUserPermissions", func(t *testing.T) {
+	t.Run("Test UserAPIService UpdateUserPermissions", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CC.UserApi.UpdateUserPermissions(context.Background()).Execute()
+		httpRes, err := apiClient.CC.UserAPI.UpdateUserPermissions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

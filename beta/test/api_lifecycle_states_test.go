@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing LifecycleStatesApiService
+Testing LifecycleStatesAPIService
 
 */
 
@@ -17,19 +17,19 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_LifecycleStatesApiService(t *testing.T) {
+func Test_beta_LifecycleStatesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test LifecycleStatesApiService ListLifecycleStates", func(t *testing.T) {
+	t.Run("Test LifecycleStatesAPIService ListLifecycleStates", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityProfileId string
 		var lifecycleStateId string
 
-		resp, httpRes, err := apiClient.BETA.LifecycleStatesApi.ListLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
+		resp, httpRes, err := apiClient.BETA.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,14 +37,14 @@ func Test_beta_LifecycleStatesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test LifecycleStatesApiService UpdateLifecycleStates", func(t *testing.T) {
+	t.Run("Test LifecycleStatesAPIService UpdateLifecycleStates", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var identityProfileId string
 		var lifecycleStateId string
 
-		resp, httpRes, err := apiClient.BETA.LifecycleStatesApi.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
+		resp, httpRes, err := apiClient.BETA.LifecycleStatesAPI.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

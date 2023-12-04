@@ -292,8 +292,8 @@ func (o *MfaOktaConfig) UnmarshalJSON(bytes []byte) (err error) {
 	varMfaOktaConfig := _MfaOktaConfig{}
 
 	if err = json.Unmarshal(bytes, &varMfaOktaConfig); err == nil {
-		*o = MfaOktaConfig(varMfaOktaConfig)
-	}
+	*o = MfaOktaConfig(varMfaOktaConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

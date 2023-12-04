@@ -13,18 +13,18 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// OrgConfigApiService OrgConfigApi service
-type OrgConfigApiService service
+// OrgConfigAPIService OrgConfigAPI service
+type OrgConfigAPIService service
 
 type ApiGetOrgConfigRequest struct {
 	ctx context.Context
-	ApiService *OrgConfigApiService
+	ApiService *OrgConfigAPIService
 }
 
 func (r ApiGetOrgConfigRequest) Execute() (*OrgConfig, *http.Response, error) {
@@ -39,7 +39,7 @@ Get org configuration with only external (org admin) accessible properties for t
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetOrgConfigRequest
 */
-func (a *OrgConfigApiService) GetOrgConfig(ctx context.Context) ApiGetOrgConfigRequest {
+func (a *OrgConfigAPIService) GetOrgConfig(ctx context.Context) ApiGetOrgConfigRequest {
 	return ApiGetOrgConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -48,7 +48,7 @@ func (a *OrgConfigApiService) GetOrgConfig(ctx context.Context) ApiGetOrgConfigR
 
 // Execute executes the request
 //  @return OrgConfig
-func (a *OrgConfigApiService) GetOrgConfigExecute(r ApiGetOrgConfigRequest) (*OrgConfig, *http.Response, error) {
+func (a *OrgConfigAPIService) GetOrgConfigExecute(r ApiGetOrgConfigRequest) (*OrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -56,7 +56,7 @@ func (a *OrgConfigApiService) GetOrgConfigExecute(r ApiGetOrgConfigRequest) (*Or
 		localVarReturnValue  *OrgConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgConfigApiService.GetOrgConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgConfigAPIService.GetOrgConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -94,9 +94,9 @@ func (a *OrgConfigApiService) GetOrgConfigExecute(r ApiGetOrgConfigRequest) (*Or
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -188,7 +188,7 @@ func (a *OrgConfigApiService) GetOrgConfigExecute(r ApiGetOrgConfigRequest) (*Or
 
 type ApiGetValidTimeZonesRequest struct {
 	ctx context.Context
-	ApiService *OrgConfigApiService
+	ApiService *OrgConfigAPIService
 }
 
 func (r ApiGetValidTimeZonesRequest) Execute() ([]string, *http.Response, error) {
@@ -203,7 +203,7 @@ Get a list of valid time zones that can be set in org configurations.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetValidTimeZonesRequest
 */
-func (a *OrgConfigApiService) GetValidTimeZones(ctx context.Context) ApiGetValidTimeZonesRequest {
+func (a *OrgConfigAPIService) GetValidTimeZones(ctx context.Context) ApiGetValidTimeZonesRequest {
 	return ApiGetValidTimeZonesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -212,7 +212,7 @@ func (a *OrgConfigApiService) GetValidTimeZones(ctx context.Context) ApiGetValid
 
 // Execute executes the request
 //  @return []string
-func (a *OrgConfigApiService) GetValidTimeZonesExecute(r ApiGetValidTimeZonesRequest) ([]string, *http.Response, error) {
+func (a *OrgConfigAPIService) GetValidTimeZonesExecute(r ApiGetValidTimeZonesRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -220,7 +220,7 @@ func (a *OrgConfigApiService) GetValidTimeZonesExecute(r ApiGetValidTimeZonesReq
 		localVarReturnValue  []string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgConfigApiService.GetValidTimeZones")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgConfigAPIService.GetValidTimeZones")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -258,9 +258,9 @@ func (a *OrgConfigApiService) GetValidTimeZonesExecute(r ApiGetValidTimeZonesReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -341,7 +341,7 @@ func (a *OrgConfigApiService) GetValidTimeZonesExecute(r ApiGetValidTimeZonesReq
 
 type ApiPatchOrgConfigRequest struct {
 	ctx context.Context
-	ApiService *OrgConfigApiService
+	ApiService *OrgConfigAPIService
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
@@ -363,7 +363,7 @@ Patch configuration of the current org using http://jsonpatch.com/ syntax.  Comm
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPatchOrgConfigRequest
 */
-func (a *OrgConfigApiService) PatchOrgConfig(ctx context.Context) ApiPatchOrgConfigRequest {
+func (a *OrgConfigAPIService) PatchOrgConfig(ctx context.Context) ApiPatchOrgConfigRequest {
 	return ApiPatchOrgConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -372,7 +372,7 @@ func (a *OrgConfigApiService) PatchOrgConfig(ctx context.Context) ApiPatchOrgCon
 
 // Execute executes the request
 //  @return OrgConfig
-func (a *OrgConfigApiService) PatchOrgConfigExecute(r ApiPatchOrgConfigRequest) (*OrgConfig, *http.Response, error) {
+func (a *OrgConfigAPIService) PatchOrgConfigExecute(r ApiPatchOrgConfigRequest) (*OrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -380,7 +380,7 @@ func (a *OrgConfigApiService) PatchOrgConfigExecute(r ApiPatchOrgConfigRequest) 
 		localVarReturnValue  *OrgConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgConfigApiService.PatchOrgConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrgConfigAPIService.PatchOrgConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -423,9 +423,9 @@ func (a *OrgConfigApiService) PatchOrgConfigExecute(r ApiPatchOrgConfigRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

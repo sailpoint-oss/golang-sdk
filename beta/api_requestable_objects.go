@@ -13,18 +13,18 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// RequestableObjectsApiService RequestableObjectsApi service
-type RequestableObjectsApiService service
+// RequestableObjectsAPIService RequestableObjectsAPI service
+type RequestableObjectsAPIService service
 
 type ApiListRequestableObjectsRequest struct {
 	ctx context.Context
-	ApiService *RequestableObjectsApiService
+	ApiService *RequestableObjectsAPIService
 	identityId *string
 	types *[]RequestableObjectType
 	term *string
@@ -103,7 +103,7 @@ Any authenticated token can call this endpoint to see their requestable access i
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListRequestableObjectsRequest
 */
-func (a *RequestableObjectsApiService) ListRequestableObjects(ctx context.Context) ApiListRequestableObjectsRequest {
+func (a *RequestableObjectsAPIService) ListRequestableObjects(ctx context.Context) ApiListRequestableObjectsRequest {
 	return ApiListRequestableObjectsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -112,7 +112,7 @@ func (a *RequestableObjectsApiService) ListRequestableObjects(ctx context.Contex
 
 // Execute executes the request
 //  @return []RequestableObject
-func (a *RequestableObjectsApiService) ListRequestableObjectsExecute(r ApiListRequestableObjectsRequest) ([]RequestableObject, *http.Response, error) {
+func (a *RequestableObjectsAPIService) ListRequestableObjectsExecute(r ApiListRequestableObjectsRequest) ([]RequestableObject, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -120,7 +120,7 @@ func (a *RequestableObjectsApiService) ListRequestableObjectsExecute(r ApiListRe
 		localVarReturnValue  []RequestableObject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestableObjectsApiService.ListRequestableObjects")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RequestableObjectsAPIService.ListRequestableObjects")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -145,12 +145,21 @@ func (a *RequestableObjectsApiService) ListRequestableObjectsExecute(r ApiListRe
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -185,9 +194,9 @@ func (a *RequestableObjectsApiService) ListRequestableObjectsExecute(r ApiListRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

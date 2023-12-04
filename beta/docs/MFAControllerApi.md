@@ -1,15 +1,15 @@
-# \MFAControllerApi
+# \MFAControllerAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSendToken**](MFAControllerApi.md#CreateSendToken) | **Post** /mfa/token/send | Create and send user token
-[**PingVerificationStatus**](MFAControllerApi.md#PingVerificationStatus) | **Post** /mfa/{method}/poll | Polling MFA method by VerificationPollRequest
-[**SendDuoVerifyRequest**](MFAControllerApi.md#SendDuoVerifyRequest) | **Post** /mfa/duo-web/verify | Verifying authentication via Duo method
-[**SendKbaAnswers**](MFAControllerApi.md#SendKbaAnswers) | **Post** /mfa/kba/authenticate | Authenticate KBA provided MFA method
-[**SendOktaVerifyRequest**](MFAControllerApi.md#SendOktaVerifyRequest) | **Post** /mfa/okta-verify/verify | Verifying authentication via Okta method
-[**SendTokenAuthRequest**](MFAControllerApi.md#SendTokenAuthRequest) | **Post** /mfa/token/authenticate | Authenticate Token provided MFA method
+[**CreateSendToken**](MFAControllerAPI.md#CreateSendToken) | **Post** /mfa/token/send | Create and send user token
+[**PingVerificationStatus**](MFAControllerAPI.md#PingVerificationStatus) | **Post** /mfa/{method}/poll | Polling MFA method by VerificationPollRequest
+[**SendDuoVerifyRequest**](MFAControllerAPI.md#SendDuoVerifyRequest) | **Post** /mfa/duo-web/verify | Verifying authentication via Duo method
+[**SendKbaAnswers**](MFAControllerAPI.md#SendKbaAnswers) | **Post** /mfa/kba/authenticate | Authenticate KBA provided MFA method
+[**SendOktaVerifyRequest**](MFAControllerAPI.md#SendOktaVerifyRequest) | **Post** /mfa/okta-verify/verify | Verifying authentication via Okta method
+[**SendTokenAuthRequest**](MFAControllerAPI.md#SendTokenAuthRequest) | **Post** /mfa/token/authenticate | Authenticate Token provided MFA method
 
 
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -38,13 +38,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAControllerApi.CreateSendToken(context.Background()).SendTokenRequest(sendTokenRequest).Execute()
+    resp, r, err := apiClient.MFAControllerAPI.CreateSendToken(context.Background()).SendTokenRequest(sendTokenRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerApi.CreateSendToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerAPI.CreateSendToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateSendToken`: SendTokenResponse
-    fmt.Fprintf(os.Stdout, "Response from `MFAControllerApi.CreateSendToken`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAControllerAPI.CreateSendToken`: %v\n", resp)
 }
 ```
 
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -105,13 +105,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAControllerApi.PingVerificationStatus(context.Background(), method).VerificationPollRequest(verificationPollRequest).Execute()
+    resp, r, err := apiClient.MFAControllerAPI.PingVerificationStatus(context.Background(), method).VerificationPollRequest(verificationPollRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerApi.PingVerificationStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerAPI.PingVerificationStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PingVerificationStatus`: VerificationResponse
-    fmt.Fprintf(os.Stdout, "Response from `MFAControllerApi.PingVerificationStatus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAControllerAPI.PingVerificationStatus`: %v\n", resp)
 }
 ```
 
@@ -168,7 +168,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -176,13 +176,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAControllerApi.SendDuoVerifyRequest(context.Background()).DuoVerificationRequest(duoVerificationRequest).Execute()
+    resp, r, err := apiClient.MFAControllerAPI.SendDuoVerifyRequest(context.Background()).DuoVerificationRequest(duoVerificationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerApi.SendDuoVerifyRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerAPI.SendDuoVerifyRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SendDuoVerifyRequest`: VerificationResponse
-    fmt.Fprintf(os.Stdout, "Response from `MFAControllerApi.SendDuoVerifyRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAControllerAPI.SendDuoVerifyRequest`: %v\n", resp)
 }
 ```
 
@@ -234,7 +234,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -242,13 +242,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAControllerApi.SendKbaAnswers(context.Background()).KbaAnswerRequest(kbaAnswerRequest).Execute()
+    resp, r, err := apiClient.MFAControllerAPI.SendKbaAnswers(context.Background()).KbaAnswerRequest(kbaAnswerRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerApi.SendKbaAnswers``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerAPI.SendKbaAnswers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SendKbaAnswers`: KbaAuthResponse
-    fmt.Fprintf(os.Stdout, "Response from `MFAControllerApi.SendKbaAnswers`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAControllerAPI.SendKbaAnswers`: %v\n", resp)
 }
 ```
 
@@ -300,7 +300,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -308,13 +308,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAControllerApi.SendOktaVerifyRequest(context.Background()).OktaVerificationRequest(oktaVerificationRequest).Execute()
+    resp, r, err := apiClient.MFAControllerAPI.SendOktaVerifyRequest(context.Background()).OktaVerificationRequest(oktaVerificationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerApi.SendOktaVerifyRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerAPI.SendOktaVerifyRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SendOktaVerifyRequest`: VerificationResponse
-    fmt.Fprintf(os.Stdout, "Response from `MFAControllerApi.SendOktaVerifyRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAControllerAPI.SendOktaVerifyRequest`: %v\n", resp)
 }
 ```
 
@@ -366,7 +366,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -374,13 +374,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MFAControllerApi.SendTokenAuthRequest(context.Background()).TokenAuthRequest(tokenAuthRequest).Execute()
+    resp, r, err := apiClient.MFAControllerAPI.SendTokenAuthRequest(context.Background()).TokenAuthRequest(tokenAuthRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerApi.SendTokenAuthRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MFAControllerAPI.SendTokenAuthRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SendTokenAuthRequest`: TokenAuthResponse
-    fmt.Fprintf(os.Stdout, "Response from `MFAControllerApi.SendTokenAuthRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MFAControllerAPI.SendTokenAuthRequest`: %v\n", resp)
 }
 ```
 

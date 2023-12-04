@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing MFAConfigurationApiService
+Testing MFAConfigurationAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_MFAConfigurationApiService(t *testing.T) {
+func Test_beta_MFAConfigurationAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test MFAConfigurationApiService DeleteMFAConfig", func(t *testing.T) {
+	t.Run("Test MFAConfigurationAPIService DeleteMFAConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var method string
 
-		resp, httpRes, err := apiClient.BETA.MFAConfigurationApi.DeleteMFAConfig(context.Background(), method).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAConfigurationAPI.DeleteMFAConfig(context.Background(), method).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,11 +36,11 @@ func Test_beta_MFAConfigurationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test MFAConfigurationApiService GetMFADuoConfig", func(t *testing.T) {
+	t.Run("Test MFAConfigurationAPIService GetMFADuoConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.MFAConfigurationApi.GetMFADuoConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAConfigurationAPI.GetMFADuoConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,11 +48,11 @@ func Test_beta_MFAConfigurationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test MFAConfigurationApiService GetMFAOktaConfig", func(t *testing.T) {
+	t.Run("Test MFAConfigurationAPIService GetMFAOktaConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.MFAConfigurationApi.GetMFAOktaConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAConfigurationAPI.GetMFAOktaConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -60,11 +60,11 @@ func Test_beta_MFAConfigurationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test MFAConfigurationApiService SetMFADuoConfig", func(t *testing.T) {
+	t.Run("Test MFAConfigurationAPIService SetMFADuoConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.MFAConfigurationApi.SetMFADuoConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAConfigurationAPI.SetMFADuoConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,11 +72,11 @@ func Test_beta_MFAConfigurationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test MFAConfigurationApiService SetMFAOktaConfig", func(t *testing.T) {
+	t.Run("Test MFAConfigurationAPIService SetMFAOktaConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.MFAConfigurationApi.SetMFAOktaConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAConfigurationAPI.SetMFAOktaConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -84,13 +84,13 @@ func Test_beta_MFAConfigurationApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test MFAConfigurationApiService TestMFAConfig", func(t *testing.T) {
+	t.Run("Test MFAConfigurationAPIService TestMFAConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var method string
 
-		resp, httpRes, err := apiClient.BETA.MFAConfigurationApi.TestMFAConfig(context.Background(), method).Execute()
+		resp, httpRes, err := apiClient.BETA.MFAConfigurationAPI.TestMFAConfig(context.Background(), method).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// CertificationCampaignsApiService CertificationCampaignsApi service
-type CertificationCampaignsApiService service
+// CertificationCampaignsAPIService CertificationCampaignsAPI service
+type CertificationCampaignsAPIService service
 
 type ApiCompleteCampaignRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 	campaignCompleteOptions *CampaignCompleteOptions
 }
@@ -61,7 +61,7 @@ Requires roles of CERT_ADMIN and ORG_ADMIN
  @param id The campaign id
  @return ApiCompleteCampaignRequest
 */
-func (a *CertificationCampaignsApiService) CompleteCampaign(ctx context.Context, id string) ApiCompleteCampaignRequest {
+func (a *CertificationCampaignsAPIService) CompleteCampaign(ctx context.Context, id string) ApiCompleteCampaignRequest {
 	return ApiCompleteCampaignRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -71,7 +71,7 @@ func (a *CertificationCampaignsApiService) CompleteCampaign(ctx context.Context,
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CertificationCampaignsApiService) CompleteCampaignExecute(r ApiCompleteCampaignRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) CompleteCampaignExecute(r ApiCompleteCampaignRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -79,7 +79,7 @@ func (a *CertificationCampaignsApiService) CompleteCampaignExecute(r ApiComplete
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.CompleteCampaign")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.CompleteCampaign")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -120,9 +120,9 @@ func (a *CertificationCampaignsApiService) CompleteCampaignExecute(r ApiComplete
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -214,7 +214,7 @@ func (a *CertificationCampaignsApiService) CompleteCampaignExecute(r ApiComplete
 
 type ApiCreateCampaignRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	campaign *Campaign
 }
 
@@ -235,7 +235,7 @@ Creates a new Certification Campaign with the information provided in the reques
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignRequest
 */
-func (a *CertificationCampaignsApiService) CreateCampaign(ctx context.Context) ApiCreateCampaignRequest {
+func (a *CertificationCampaignsAPIService) CreateCampaign(ctx context.Context) ApiCreateCampaignRequest {
 	return ApiCreateCampaignRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -244,7 +244,7 @@ func (a *CertificationCampaignsApiService) CreateCampaign(ctx context.Context) A
 
 // Execute executes the request
 //  @return Campaign
-func (a *CertificationCampaignsApiService) CreateCampaignExecute(r ApiCreateCampaignRequest) (*Campaign, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) CreateCampaignExecute(r ApiCreateCampaignRequest) (*Campaign, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -252,7 +252,7 @@ func (a *CertificationCampaignsApiService) CreateCampaignExecute(r ApiCreateCamp
 		localVarReturnValue  *Campaign
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.CreateCampaign")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.CreateCampaign")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -295,9 +295,9 @@ func (a *CertificationCampaignsApiService) CreateCampaignExecute(r ApiCreateCamp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -378,7 +378,7 @@ func (a *CertificationCampaignsApiService) CreateCampaignExecute(r ApiCreateCamp
 
 type ApiCreateCampaignTemplateRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	campaignTemplate *CampaignTemplate
 }
 
@@ -399,7 +399,7 @@ Create a campaign Template based on campaign.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateCampaignTemplateRequest
 */
-func (a *CertificationCampaignsApiService) CreateCampaignTemplate(ctx context.Context) ApiCreateCampaignTemplateRequest {
+func (a *CertificationCampaignsAPIService) CreateCampaignTemplate(ctx context.Context) ApiCreateCampaignTemplateRequest {
 	return ApiCreateCampaignTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -408,7 +408,7 @@ func (a *CertificationCampaignsApiService) CreateCampaignTemplate(ctx context.Co
 
 // Execute executes the request
 //  @return CampaignTemplate
-func (a *CertificationCampaignsApiService) CreateCampaignTemplateExecute(r ApiCreateCampaignTemplateRequest) (*CampaignTemplate, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) CreateCampaignTemplateExecute(r ApiCreateCampaignTemplateRequest) (*CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -416,7 +416,7 @@ func (a *CertificationCampaignsApiService) CreateCampaignTemplateExecute(r ApiCr
 		localVarReturnValue  *CampaignTemplate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.CreateCampaignTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.CreateCampaignTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -459,9 +459,9 @@ func (a *CertificationCampaignsApiService) CreateCampaignTemplateExecute(r ApiCr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -542,7 +542,7 @@ func (a *CertificationCampaignsApiService) CreateCampaignTemplateExecute(r ApiCr
 
 type ApiDeleteCampaignTemplateRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 }
 
@@ -559,7 +559,7 @@ Deletes a campaign template by ID.
  @param id The ID of the campaign template being deleted.
  @return ApiDeleteCampaignTemplateRequest
 */
-func (a *CertificationCampaignsApiService) DeleteCampaignTemplate(ctx context.Context, id string) ApiDeleteCampaignTemplateRequest {
+func (a *CertificationCampaignsAPIService) DeleteCampaignTemplate(ctx context.Context, id string) ApiDeleteCampaignTemplateRequest {
 	return ApiDeleteCampaignTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -568,14 +568,14 @@ func (a *CertificationCampaignsApiService) DeleteCampaignTemplate(ctx context.Co
 }
 
 // Execute executes the request
-func (a *CertificationCampaignsApiService) DeleteCampaignTemplateExecute(r ApiDeleteCampaignTemplateRequest) (*http.Response, error) {
+func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateExecute(r ApiDeleteCampaignTemplateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.DeleteCampaignTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.DeleteCampaignTemplate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -614,9 +614,9 @@ func (a *CertificationCampaignsApiService) DeleteCampaignTemplateExecute(r ApiDe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -699,7 +699,7 @@ func (a *CertificationCampaignsApiService) DeleteCampaignTemplateExecute(r ApiDe
 
 type ApiDeleteCampaignTemplateScheduleRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 }
 
@@ -716,7 +716,7 @@ Deletes the schedule for a campaign template. Returns a 404 if there is no sched
  @param id The ID of the campaign template whose schedule is being deleted.
  @return ApiDeleteCampaignTemplateScheduleRequest
 */
-func (a *CertificationCampaignsApiService) DeleteCampaignTemplateSchedule(ctx context.Context, id string) ApiDeleteCampaignTemplateScheduleRequest {
+func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateSchedule(ctx context.Context, id string) ApiDeleteCampaignTemplateScheduleRequest {
 	return ApiDeleteCampaignTemplateScheduleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -725,14 +725,14 @@ func (a *CertificationCampaignsApiService) DeleteCampaignTemplateSchedule(ctx co
 }
 
 // Execute executes the request
-func (a *CertificationCampaignsApiService) DeleteCampaignTemplateScheduleExecute(r ApiDeleteCampaignTemplateScheduleRequest) (*http.Response, error) {
+func (a *CertificationCampaignsAPIService) DeleteCampaignTemplateScheduleExecute(r ApiDeleteCampaignTemplateScheduleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.DeleteCampaignTemplateSchedule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.DeleteCampaignTemplateSchedule")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -771,9 +771,9 @@ func (a *CertificationCampaignsApiService) DeleteCampaignTemplateScheduleExecute
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -856,7 +856,7 @@ func (a *CertificationCampaignsApiService) DeleteCampaignTemplateScheduleExecute
 
 type ApiDeleteCampaignsRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	campaignsDeleteRequest *CampaignsDeleteRequest
 }
 
@@ -878,7 +878,7 @@ Deletes campaigns whose Ids are specified in the provided list of campaign Ids. 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteCampaignsRequest
 */
-func (a *CertificationCampaignsApiService) DeleteCampaigns(ctx context.Context) ApiDeleteCampaignsRequest {
+func (a *CertificationCampaignsAPIService) DeleteCampaigns(ctx context.Context) ApiDeleteCampaignsRequest {
 	return ApiDeleteCampaignsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -887,7 +887,7 @@ func (a *CertificationCampaignsApiService) DeleteCampaigns(ctx context.Context) 
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CertificationCampaignsApiService) DeleteCampaignsExecute(r ApiDeleteCampaignsRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) DeleteCampaignsExecute(r ApiDeleteCampaignsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -895,7 +895,7 @@ func (a *CertificationCampaignsApiService) DeleteCampaignsExecute(r ApiDeleteCam
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.DeleteCampaigns")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.DeleteCampaigns")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -938,9 +938,9 @@ func (a *CertificationCampaignsApiService) DeleteCampaignsExecute(r ApiDeleteCam
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1032,7 +1032,7 @@ func (a *CertificationCampaignsApiService) DeleteCampaignsExecute(r ApiDeleteCam
 
 type ApiGetActiveCampaignsRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	detail *string
 	limit *int32
 	offset *int32
@@ -1089,7 +1089,7 @@ Gets campaigns and returns them in a list. Can provide increased level of detail
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetActiveCampaignsRequest
 */
-func (a *CertificationCampaignsApiService) GetActiveCampaigns(ctx context.Context) ApiGetActiveCampaignsRequest {
+func (a *CertificationCampaignsAPIService) GetActiveCampaigns(ctx context.Context) ApiGetActiveCampaignsRequest {
 	return ApiGetActiveCampaignsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1098,7 +1098,7 @@ func (a *CertificationCampaignsApiService) GetActiveCampaigns(ctx context.Contex
 
 // Execute executes the request
 //  @return []GetActiveCampaigns200ResponseInner
-func (a *CertificationCampaignsApiService) GetActiveCampaignsExecute(r ApiGetActiveCampaignsRequest) ([]GetActiveCampaigns200ResponseInner, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) GetActiveCampaignsExecute(r ApiGetActiveCampaignsRequest) ([]GetActiveCampaigns200ResponseInner, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1106,7 +1106,7 @@ func (a *CertificationCampaignsApiService) GetActiveCampaignsExecute(r ApiGetAct
 		localVarReturnValue  []GetActiveCampaigns200ResponseInner
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.GetActiveCampaigns")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetActiveCampaigns")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1122,12 +1122,21 @@ func (a *CertificationCampaignsApiService) GetActiveCampaignsExecute(r ApiGetAct
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1162,9 +1171,9 @@ func (a *CertificationCampaignsApiService) GetActiveCampaignsExecute(r ApiGetAct
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1245,7 +1254,7 @@ func (a *CertificationCampaignsApiService) GetActiveCampaignsExecute(r ApiGetAct
 
 type ApiGetCampaignRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 }
 
@@ -1262,7 +1271,7 @@ Retrieves information for an existing campaign using the campaign's ID. Authoriz
  @param id The ID of the campaign to be retrieved
  @return ApiGetCampaignRequest
 */
-func (a *CertificationCampaignsApiService) GetCampaign(ctx context.Context, id string) ApiGetCampaignRequest {
+func (a *CertificationCampaignsAPIService) GetCampaign(ctx context.Context, id string) ApiGetCampaignRequest {
 	return ApiGetCampaignRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1272,7 +1281,7 @@ func (a *CertificationCampaignsApiService) GetCampaign(ctx context.Context, id s
 
 // Execute executes the request
 //  @return SlimCampaign
-func (a *CertificationCampaignsApiService) GetCampaignExecute(r ApiGetCampaignRequest) (*SlimCampaign, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) GetCampaignExecute(r ApiGetCampaignRequest) (*SlimCampaign, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1280,7 +1289,7 @@ func (a *CertificationCampaignsApiService) GetCampaignExecute(r ApiGetCampaignRe
 		localVarReturnValue  *SlimCampaign
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.GetCampaign")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaign")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1319,9 +1328,9 @@ func (a *CertificationCampaignsApiService) GetCampaignExecute(r ApiGetCampaignRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1413,7 +1422,7 @@ func (a *CertificationCampaignsApiService) GetCampaignExecute(r ApiGetCampaignRe
 
 type ApiGetCampaignReportsRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 }
 
@@ -1431,7 +1440,7 @@ Requires roles of CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN
  @param id The ID of the campaign for which reports are being fetched.
  @return ApiGetCampaignReportsRequest
 */
-func (a *CertificationCampaignsApiService) GetCampaignReports(ctx context.Context, id string) ApiGetCampaignReportsRequest {
+func (a *CertificationCampaignsAPIService) GetCampaignReports(ctx context.Context, id string) ApiGetCampaignReportsRequest {
 	return ApiGetCampaignReportsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1441,7 +1450,7 @@ func (a *CertificationCampaignsApiService) GetCampaignReports(ctx context.Contex
 
 // Execute executes the request
 //  @return []CampaignReport
-func (a *CertificationCampaignsApiService) GetCampaignReportsExecute(r ApiGetCampaignReportsRequest) ([]CampaignReport, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) GetCampaignReportsExecute(r ApiGetCampaignReportsRequest) ([]CampaignReport, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1449,7 +1458,7 @@ func (a *CertificationCampaignsApiService) GetCampaignReportsExecute(r ApiGetCam
 		localVarReturnValue  []CampaignReport
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.GetCampaignReports")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaignReports")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1488,9 +1497,9 @@ func (a *CertificationCampaignsApiService) GetCampaignReportsExecute(r ApiGetCam
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1582,7 +1591,7 @@ func (a *CertificationCampaignsApiService) GetCampaignReportsExecute(r ApiGetCam
 
 type ApiGetCampaignReportsConfigRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 }
 
 func (r ApiGetCampaignReportsConfigRequest) Execute() (*CampaignReportsConfig, *http.Response, error) {
@@ -1598,7 +1607,7 @@ Requires roles of CERT_ADMIN and ORG_ADMIN.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetCampaignReportsConfigRequest
 */
-func (a *CertificationCampaignsApiService) GetCampaignReportsConfig(ctx context.Context) ApiGetCampaignReportsConfigRequest {
+func (a *CertificationCampaignsAPIService) GetCampaignReportsConfig(ctx context.Context) ApiGetCampaignReportsConfigRequest {
 	return ApiGetCampaignReportsConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1607,7 +1616,7 @@ func (a *CertificationCampaignsApiService) GetCampaignReportsConfig(ctx context.
 
 // Execute executes the request
 //  @return CampaignReportsConfig
-func (a *CertificationCampaignsApiService) GetCampaignReportsConfigExecute(r ApiGetCampaignReportsConfigRequest) (*CampaignReportsConfig, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) GetCampaignReportsConfigExecute(r ApiGetCampaignReportsConfigRequest) (*CampaignReportsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1615,7 +1624,7 @@ func (a *CertificationCampaignsApiService) GetCampaignReportsConfigExecute(r Api
 		localVarReturnValue  *CampaignReportsConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.GetCampaignReportsConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaignReportsConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1653,9 +1662,9 @@ func (a *CertificationCampaignsApiService) GetCampaignReportsConfigExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1736,7 +1745,7 @@ func (a *CertificationCampaignsApiService) GetCampaignReportsConfigExecute(r Api
 
 type ApiGetCampaignTemplateRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 }
 
@@ -1753,7 +1762,7 @@ Fetches a campaign template by ID.
  @param id The desired campaign template's ID.
  @return ApiGetCampaignTemplateRequest
 */
-func (a *CertificationCampaignsApiService) GetCampaignTemplate(ctx context.Context, id string) ApiGetCampaignTemplateRequest {
+func (a *CertificationCampaignsAPIService) GetCampaignTemplate(ctx context.Context, id string) ApiGetCampaignTemplateRequest {
 	return ApiGetCampaignTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1763,7 +1772,7 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplate(ctx context.Conte
 
 // Execute executes the request
 //  @return CampaignTemplate
-func (a *CertificationCampaignsApiService) GetCampaignTemplateExecute(r ApiGetCampaignTemplateRequest) (*CampaignTemplate, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) GetCampaignTemplateExecute(r ApiGetCampaignTemplateRequest) (*CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1771,7 +1780,7 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplateExecute(r ApiGetCa
 		localVarReturnValue  *CampaignTemplate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.GetCampaignTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaignTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1810,9 +1819,9 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplateExecute(r ApiGetCa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1904,7 +1913,7 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplateExecute(r ApiGetCa
 
 type ApiGetCampaignTemplateScheduleRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 }
 
@@ -1921,7 +1930,7 @@ Gets the schedule for a campaign template. Returns a 404 if there is no schedule
  @param id The ID of the campaign template whose schedule is being fetched.
  @return ApiGetCampaignTemplateScheduleRequest
 */
-func (a *CertificationCampaignsApiService) GetCampaignTemplateSchedule(ctx context.Context, id string) ApiGetCampaignTemplateScheduleRequest {
+func (a *CertificationCampaignsAPIService) GetCampaignTemplateSchedule(ctx context.Context, id string) ApiGetCampaignTemplateScheduleRequest {
 	return ApiGetCampaignTemplateScheduleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1931,7 +1940,7 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplateSchedule(ctx conte
 
 // Execute executes the request
 //  @return Schedule
-func (a *CertificationCampaignsApiService) GetCampaignTemplateScheduleExecute(r ApiGetCampaignTemplateScheduleRequest) (*Schedule, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) GetCampaignTemplateScheduleExecute(r ApiGetCampaignTemplateScheduleRequest) (*Schedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1939,7 +1948,7 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplateScheduleExecute(r 
 		localVarReturnValue  *Schedule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.GetCampaignTemplateSchedule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.GetCampaignTemplateSchedule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1978,9 +1987,9 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplateScheduleExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2072,7 +2081,7 @@ func (a *CertificationCampaignsApiService) GetCampaignTemplateScheduleExecute(r 
 
 type ApiListCampaignTemplatesRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -2124,7 +2133,7 @@ All CampaignTemplates matching the query params
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListCampaignTemplatesRequest
 */
-func (a *CertificationCampaignsApiService) ListCampaignTemplates(ctx context.Context) ApiListCampaignTemplatesRequest {
+func (a *CertificationCampaignsAPIService) ListCampaignTemplates(ctx context.Context) ApiListCampaignTemplatesRequest {
 	return ApiListCampaignTemplatesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2133,7 +2142,7 @@ func (a *CertificationCampaignsApiService) ListCampaignTemplates(ctx context.Con
 
 // Execute executes the request
 //  @return []CampaignTemplate
-func (a *CertificationCampaignsApiService) ListCampaignTemplatesExecute(r ApiListCampaignTemplatesRequest) ([]CampaignTemplate, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) ListCampaignTemplatesExecute(r ApiListCampaignTemplatesRequest) ([]CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2141,7 +2150,7 @@ func (a *CertificationCampaignsApiService) ListCampaignTemplatesExecute(r ApiLis
 		localVarReturnValue  []CampaignTemplate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.ListCampaignTemplates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.ListCampaignTemplates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2154,12 +2163,21 @@ func (a *CertificationCampaignsApiService) ListCampaignTemplatesExecute(r ApiLis
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -2194,9 +2212,9 @@ func (a *CertificationCampaignsApiService) ListCampaignTemplatesExecute(r ApiLis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2277,7 +2295,7 @@ func (a *CertificationCampaignsApiService) ListCampaignTemplatesExecute(r ApiLis
 
 type ApiMoveRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 	adminReviewReassign *AdminReviewReassign
 }
@@ -2300,7 +2318,7 @@ This API reassigns the specified certifications from one identity to another. A 
  @param id The certification campaign ID
  @return ApiMoveRequest
 */
-func (a *CertificationCampaignsApiService) Move(ctx context.Context, id string) ApiMoveRequest {
+func (a *CertificationCampaignsAPIService) Move(ctx context.Context, id string) ApiMoveRequest {
 	return ApiMoveRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2310,7 +2328,7 @@ func (a *CertificationCampaignsApiService) Move(ctx context.Context, id string) 
 
 // Execute executes the request
 //  @return CertificationTask
-func (a *CertificationCampaignsApiService) MoveExecute(r ApiMoveRequest) (*CertificationTask, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) MoveExecute(r ApiMoveRequest) (*CertificationTask, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2318,7 +2336,7 @@ func (a *CertificationCampaignsApiService) MoveExecute(r ApiMoveRequest) (*Certi
 		localVarReturnValue  *CertificationTask
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.Move")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.Move")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2362,9 +2380,9 @@ func (a *CertificationCampaignsApiService) MoveExecute(r ApiMoveRequest) (*Certi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2456,7 +2474,7 @@ func (a *CertificationCampaignsApiService) MoveExecute(r ApiMoveRequest) (*Certi
 
 type ApiPatchCampaignTemplateRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -2480,7 +2498,7 @@ Allows updating individual fields on a campaign template using the [JSON Patch](
  @param id The ID of the campaign template being modified.
  @return ApiPatchCampaignTemplateRequest
 */
-func (a *CertificationCampaignsApiService) PatchCampaignTemplate(ctx context.Context, id string) ApiPatchCampaignTemplateRequest {
+func (a *CertificationCampaignsAPIService) PatchCampaignTemplate(ctx context.Context, id string) ApiPatchCampaignTemplateRequest {
 	return ApiPatchCampaignTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2490,7 +2508,7 @@ func (a *CertificationCampaignsApiService) PatchCampaignTemplate(ctx context.Con
 
 // Execute executes the request
 //  @return CampaignTemplate
-func (a *CertificationCampaignsApiService) PatchCampaignTemplateExecute(r ApiPatchCampaignTemplateRequest) (*CampaignTemplate, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) PatchCampaignTemplateExecute(r ApiPatchCampaignTemplateRequest) (*CampaignTemplate, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -2498,7 +2516,7 @@ func (a *CertificationCampaignsApiService) PatchCampaignTemplateExecute(r ApiPat
 		localVarReturnValue  *CampaignTemplate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.PatchCampaignTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.PatchCampaignTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2542,9 +2560,9 @@ func (a *CertificationCampaignsApiService) PatchCampaignTemplateExecute(r ApiPat
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2636,7 +2654,7 @@ func (a *CertificationCampaignsApiService) PatchCampaignTemplateExecute(r ApiPat
 
 type ApiSetCampaignReportsConfigRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	campaignReportsConfig *CampaignReportsConfig
 }
 
@@ -2659,7 +2677,7 @@ Requires roles CERT_ADMIN and ORG_ADMIN.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSetCampaignReportsConfigRequest
 */
-func (a *CertificationCampaignsApiService) SetCampaignReportsConfig(ctx context.Context) ApiSetCampaignReportsConfigRequest {
+func (a *CertificationCampaignsAPIService) SetCampaignReportsConfig(ctx context.Context) ApiSetCampaignReportsConfigRequest {
 	return ApiSetCampaignReportsConfigRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2668,7 +2686,7 @@ func (a *CertificationCampaignsApiService) SetCampaignReportsConfig(ctx context.
 
 // Execute executes the request
 //  @return CampaignReportsConfig
-func (a *CertificationCampaignsApiService) SetCampaignReportsConfigExecute(r ApiSetCampaignReportsConfigRequest) (*CampaignReportsConfig, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) SetCampaignReportsConfigExecute(r ApiSetCampaignReportsConfigRequest) (*CampaignReportsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2676,7 +2694,7 @@ func (a *CertificationCampaignsApiService) SetCampaignReportsConfigExecute(r Api
 		localVarReturnValue  *CampaignReportsConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.SetCampaignReportsConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.SetCampaignReportsConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2719,9 +2737,9 @@ func (a *CertificationCampaignsApiService) SetCampaignReportsConfigExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2802,7 +2820,7 @@ func (a *CertificationCampaignsApiService) SetCampaignReportsConfigExecute(r Api
 
 type ApiSetCampaignTemplateScheduleRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 	schedule *Schedule
 }
@@ -2825,7 +2843,7 @@ Sets the schedule for a campaign template. If a schedule already exists, it will
  @param id The ID of the campaign template being scheduled.
  @return ApiSetCampaignTemplateScheduleRequest
 */
-func (a *CertificationCampaignsApiService) SetCampaignTemplateSchedule(ctx context.Context, id string) ApiSetCampaignTemplateScheduleRequest {
+func (a *CertificationCampaignsAPIService) SetCampaignTemplateSchedule(ctx context.Context, id string) ApiSetCampaignTemplateScheduleRequest {
 	return ApiSetCampaignTemplateScheduleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2834,14 +2852,14 @@ func (a *CertificationCampaignsApiService) SetCampaignTemplateSchedule(ctx conte
 }
 
 // Execute executes the request
-func (a *CertificationCampaignsApiService) SetCampaignTemplateScheduleExecute(r ApiSetCampaignTemplateScheduleRequest) (*http.Response, error) {
+func (a *CertificationCampaignsAPIService) SetCampaignTemplateScheduleExecute(r ApiSetCampaignTemplateScheduleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.SetCampaignTemplateSchedule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.SetCampaignTemplateSchedule")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2882,9 +2900,9 @@ func (a *CertificationCampaignsApiService) SetCampaignTemplateScheduleExecute(r 
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2967,7 +2985,7 @@ func (a *CertificationCampaignsApiService) SetCampaignTemplateScheduleExecute(r 
 
 type ApiStartCampaignRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 	activateCampaignOptions *ActivateCampaignOptions
 }
@@ -2992,7 +3010,7 @@ Requires roles of CERT_ADMIN and ORG_ADMIN
  @param id The campaign id
  @return ApiStartCampaignRequest
 */
-func (a *CertificationCampaignsApiService) StartCampaign(ctx context.Context, id string) ApiStartCampaignRequest {
+func (a *CertificationCampaignsAPIService) StartCampaign(ctx context.Context, id string) ApiStartCampaignRequest {
 	return ApiStartCampaignRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3002,7 +3020,7 @@ func (a *CertificationCampaignsApiService) StartCampaign(ctx context.Context, id
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CertificationCampaignsApiService) StartCampaignExecute(r ApiStartCampaignRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) StartCampaignExecute(r ApiStartCampaignRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3010,7 +3028,7 @@ func (a *CertificationCampaignsApiService) StartCampaignExecute(r ApiStartCampai
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.StartCampaign")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.StartCampaign")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3051,9 +3069,9 @@ func (a *CertificationCampaignsApiService) StartCampaignExecute(r ApiStartCampai
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3145,7 +3163,7 @@ func (a *CertificationCampaignsApiService) StartCampaignExecute(r ApiStartCampai
 
 type ApiStartCampaignRemediationScanRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 }
 
@@ -3163,7 +3181,7 @@ Requires roles of CERT_ADMIN and ORG_ADMIN
  @param id The ID of the campaign for which remediation scan is being run.
  @return ApiStartCampaignRemediationScanRequest
 */
-func (a *CertificationCampaignsApiService) StartCampaignRemediationScan(ctx context.Context, id string) ApiStartCampaignRemediationScanRequest {
+func (a *CertificationCampaignsAPIService) StartCampaignRemediationScan(ctx context.Context, id string) ApiStartCampaignRemediationScanRequest {
 	return ApiStartCampaignRemediationScanRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3173,7 +3191,7 @@ func (a *CertificationCampaignsApiService) StartCampaignRemediationScan(ctx cont
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CertificationCampaignsApiService) StartCampaignRemediationScanExecute(r ApiStartCampaignRemediationScanRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) StartCampaignRemediationScanExecute(r ApiStartCampaignRemediationScanRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3181,7 +3199,7 @@ func (a *CertificationCampaignsApiService) StartCampaignRemediationScanExecute(r
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.StartCampaignRemediationScan")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.StartCampaignRemediationScan")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3220,9 +3238,9 @@ func (a *CertificationCampaignsApiService) StartCampaignRemediationScanExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3314,7 +3332,7 @@ func (a *CertificationCampaignsApiService) StartCampaignRemediationScanExecute(r
 
 type ApiStartCampaignReportRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 	type_ ReportType
 }
@@ -3334,7 +3352,7 @@ Requires the following roles: CERT_ADMIN, DASHBOARD, ORG_ADMIN and REPORT_ADMIN.
  @param type_ The type of the report to run.
  @return ApiStartCampaignReportRequest
 */
-func (a *CertificationCampaignsApiService) StartCampaignReport(ctx context.Context, id string, type_ ReportType) ApiStartCampaignReportRequest {
+func (a *CertificationCampaignsAPIService) StartCampaignReport(ctx context.Context, id string, type_ ReportType) ApiStartCampaignReportRequest {
 	return ApiStartCampaignReportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3345,7 +3363,7 @@ func (a *CertificationCampaignsApiService) StartCampaignReport(ctx context.Conte
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CertificationCampaignsApiService) StartCampaignReportExecute(r ApiStartCampaignReportRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) StartCampaignReportExecute(r ApiStartCampaignReportRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3353,7 +3371,7 @@ func (a *CertificationCampaignsApiService) StartCampaignReportExecute(r ApiStart
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.StartCampaignReport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.StartCampaignReport")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3393,9 +3411,9 @@ func (a *CertificationCampaignsApiService) StartCampaignReportExecute(r ApiStart
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3487,7 +3505,7 @@ func (a *CertificationCampaignsApiService) StartCampaignReportExecute(r ApiStart
 
 type ApiStartGenerateCampaignTemplateRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 }
 
@@ -3508,7 +3526,7 @@ Requires roles ORG_ADMIN.
  @param id The ID of the campaign template to use for generation.
  @return ApiStartGenerateCampaignTemplateRequest
 */
-func (a *CertificationCampaignsApiService) StartGenerateCampaignTemplate(ctx context.Context, id string) ApiStartGenerateCampaignTemplateRequest {
+func (a *CertificationCampaignsAPIService) StartGenerateCampaignTemplate(ctx context.Context, id string) ApiStartGenerateCampaignTemplateRequest {
 	return ApiStartGenerateCampaignTemplateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3518,7 +3536,7 @@ func (a *CertificationCampaignsApiService) StartGenerateCampaignTemplate(ctx con
 
 // Execute executes the request
 //  @return CampaignReference
-func (a *CertificationCampaignsApiService) StartGenerateCampaignTemplateExecute(r ApiStartGenerateCampaignTemplateRequest) (*CampaignReference, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) StartGenerateCampaignTemplateExecute(r ApiStartGenerateCampaignTemplateRequest) (*CampaignReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3526,7 +3544,7 @@ func (a *CertificationCampaignsApiService) StartGenerateCampaignTemplateExecute(
 		localVarReturnValue  *CampaignReference
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.StartGenerateCampaignTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.StartGenerateCampaignTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3565,9 +3583,9 @@ func (a *CertificationCampaignsApiService) StartGenerateCampaignTemplateExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3648,7 +3666,7 @@ func (a *CertificationCampaignsApiService) StartGenerateCampaignTemplateExecute(
 
 type ApiUpdateCampaignRequest struct {
 	ctx context.Context
-	ApiService *CertificationCampaignsApiService
+	ApiService *CertificationCampaignsAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -3672,7 +3690,7 @@ Allows updating individual fields on a campaign using the [JSON Patch](https://t
  @param id The ID of the campaign template being modified.
  @return ApiUpdateCampaignRequest
 */
-func (a *CertificationCampaignsApiService) UpdateCampaign(ctx context.Context, id string) ApiUpdateCampaignRequest {
+func (a *CertificationCampaignsAPIService) UpdateCampaign(ctx context.Context, id string) ApiUpdateCampaignRequest {
 	return ApiUpdateCampaignRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3682,7 +3700,7 @@ func (a *CertificationCampaignsApiService) UpdateCampaign(ctx context.Context, i
 
 // Execute executes the request
 //  @return SlimCampaign
-func (a *CertificationCampaignsApiService) UpdateCampaignExecute(r ApiUpdateCampaignRequest) (*SlimCampaign, *http.Response, error) {
+func (a *CertificationCampaignsAPIService) UpdateCampaignExecute(r ApiUpdateCampaignRequest) (*SlimCampaign, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -3690,7 +3708,7 @@ func (a *CertificationCampaignsApiService) UpdateCampaignExecute(r ApiUpdateCamp
 		localVarReturnValue  *SlimCampaign
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsApiService.UpdateCampaign")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificationCampaignsAPIService.UpdateCampaign")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3734,9 +3752,9 @@ func (a *CertificationCampaignsApiService) UpdateCampaignExecute(r ApiUpdateCamp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

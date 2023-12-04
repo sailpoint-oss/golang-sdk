@@ -210,8 +210,8 @@ func (o *SodExemptCriteria1) UnmarshalJSON(bytes []byte) (err error) {
 	varSodExemptCriteria1 := _SodExemptCriteria1{}
 
 	if err = json.Unmarshal(bytes, &varSodExemptCriteria1); err == nil {
-		*o = SodExemptCriteria1(varSodExemptCriteria1)
-	}
+	*o = SodExemptCriteria1(varSodExemptCriteria1)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -174,8 +174,8 @@ func (o *SourceManagementWorkgroup) UnmarshalJSON(bytes []byte) (err error) {
 	varSourceManagementWorkgroup := _SourceManagementWorkgroup{}
 
 	if err = json.Unmarshal(bytes, &varSourceManagementWorkgroup); err == nil {
-		*o = SourceManagementWorkgroup(varSourceManagementWorkgroup)
-	}
+	*o = SourceManagementWorkgroup(varSourceManagementWorkgroup)
+}
 
 	additionalProperties := make(map[string]interface{})
 

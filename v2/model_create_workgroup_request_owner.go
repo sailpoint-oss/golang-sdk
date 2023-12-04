@@ -99,8 +99,8 @@ func (o *CreateWorkgroupRequestOwner) UnmarshalJSON(bytes []byte) (err error) {
 	varCreateWorkgroupRequestOwner := _CreateWorkgroupRequestOwner{}
 
 	if err = json.Unmarshal(bytes, &varCreateWorkgroupRequestOwner); err == nil {
-		*o = CreateWorkgroupRequestOwner(varCreateWorkgroupRequestOwner)
-	}
+	*o = CreateWorkgroupRequestOwner(varCreateWorkgroupRequestOwner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

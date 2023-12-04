@@ -171,8 +171,8 @@ func (o *ListApplications200ResponseInnerAccountServicePoliciesInner) UnmarshalJ
 	varListApplications200ResponseInnerAccountServicePoliciesInner := _ListApplications200ResponseInnerAccountServicePoliciesInner{}
 
 	if err = json.Unmarshal(bytes, &varListApplications200ResponseInnerAccountServicePoliciesInner); err == nil {
-		*o = ListApplications200ResponseInnerAccountServicePoliciesInner(varListApplications200ResponseInnerAccountServicePoliciesInner)
-	}
+	*o = ListApplications200ResponseInnerAccountServicePoliciesInner(varListApplications200ResponseInnerAccountServicePoliciesInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

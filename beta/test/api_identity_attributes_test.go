@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing IdentityAttributesApiService
+Testing IdentityAttributesAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_IdentityAttributesApiService(t *testing.T) {
+func Test_beta_IdentityAttributesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test IdentityAttributesApiService CreateIdentityAttribute", func(t *testing.T) {
+	t.Run("Test IdentityAttributesAPIService CreateIdentityAttribute", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IdentityAttributesApi.CreateIdentityAttribute(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentityAttributesAPI.CreateIdentityAttribute(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,37 +34,37 @@ func Test_beta_IdentityAttributesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityAttributesApiService DeleteIdentityAttribute", func(t *testing.T) {
+	t.Run("Test IdentityAttributesAPIService DeleteIdentityAttribute", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var name string
 
-		httpRes, err := apiClient.BETA.IdentityAttributesApi.DeleteIdentityAttribute(context.Background(), name).Execute()
+		httpRes, err := apiClient.BETA.IdentityAttributesAPI.DeleteIdentityAttribute(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test IdentityAttributesApiService DeleteIdentityAttributesInBulk", func(t *testing.T) {
+	t.Run("Test IdentityAttributesAPIService DeleteIdentityAttributesInBulk", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BETA.IdentityAttributesApi.DeleteIdentityAttributesInBulk(context.Background()).Execute()
+		httpRes, err := apiClient.BETA.IdentityAttributesAPI.DeleteIdentityAttributesInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test IdentityAttributesApiService GetIdentityAttribute", func(t *testing.T) {
+	t.Run("Test IdentityAttributesAPIService GetIdentityAttribute", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var name string
 
-		resp, httpRes, err := apiClient.BETA.IdentityAttributesApi.GetIdentityAttribute(context.Background(), name).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentityAttributesAPI.GetIdentityAttribute(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -72,11 +72,11 @@ func Test_beta_IdentityAttributesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityAttributesApiService ListIdentityAttributes", func(t *testing.T) {
+	t.Run("Test IdentityAttributesAPIService ListIdentityAttributes", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IdentityAttributesApi.ListIdentityAttributes(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentityAttributesAPI.ListIdentityAttributes(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -84,13 +84,13 @@ func Test_beta_IdentityAttributesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityAttributesApiService PutIdentityAttribute", func(t *testing.T) {
+	t.Run("Test IdentityAttributesAPIService PutIdentityAttribute", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var name string
 
-		resp, httpRes, err := apiClient.BETA.IdentityAttributesApi.PutIdentityAttribute(context.Background(), name).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentityAttributesAPI.PutIdentityAttribute(context.Background(), name).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

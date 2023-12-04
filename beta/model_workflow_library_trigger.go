@@ -324,8 +324,8 @@ func (o *WorkflowLibraryTrigger) UnmarshalJSON(bytes []byte) (err error) {
 	varWorkflowLibraryTrigger := _WorkflowLibraryTrigger{}
 
 	if err = json.Unmarshal(bytes, &varWorkflowLibraryTrigger); err == nil {
-		*o = WorkflowLibraryTrigger(varWorkflowLibraryTrigger)
-	}
+	*o = WorkflowLibraryTrigger(varWorkflowLibraryTrigger)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -1,34 +1,34 @@
-# \SourcesApi
+# \SourcesAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateProvisioningPolicy**](SourcesApi.md#CreateProvisioningPolicy) | **Post** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
-[**CreateSource**](SourcesApi.md#CreateSource) | **Post** /sources | Creates a source in IdentityNow.
-[**CreateSourceSchema**](SourcesApi.md#CreateSourceSchema) | **Post** /sources/{sourceId}/schemas | Create Schema on a Source
-[**DeleteProvisioningPolicy**](SourcesApi.md#DeleteProvisioningPolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
-[**DeleteSource**](SourcesApi.md#DeleteSource) | **Delete** /sources/{id} | Delete Source by ID
-[**DeleteSourceSchema**](SourcesApi.md#DeleteSourceSchema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
-[**GetAccountsSchema**](SourcesApi.md#GetAccountsSchema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
-[**GetEntitlementsSchema**](SourcesApi.md#GetEntitlementsSchema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
-[**GetProvisioningPolicy**](SourcesApi.md#GetProvisioningPolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
-[**GetSource**](SourcesApi.md#GetSource) | **Get** /sources/{id} | Get Source by ID
-[**GetSourceHealth**](SourcesApi.md#GetSourceHealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
-[**GetSourceSchema**](SourcesApi.md#GetSourceSchema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
-[**ImportAccountsSchema**](SourcesApi.md#ImportAccountsSchema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
-[**ImportConnectorFile**](SourcesApi.md#ImportConnectorFile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
-[**ImportEntitlementsSchema**](SourcesApi.md#ImportEntitlementsSchema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
-[**ListProvisioningPolicies**](SourcesApi.md#ListProvisioningPolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
-[**ListSourceSchemas**](SourcesApi.md#ListSourceSchemas) | **Get** /sources/{sourceId}/schemas | List Schemas on a Source
-[**ListSources**](SourcesApi.md#ListSources) | **Get** /sources | Lists all sources in IdentityNow.
-[**PutProvisioningPolicy**](SourcesApi.md#PutProvisioningPolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
-[**PutSource**](SourcesApi.md#PutSource) | **Put** /sources/{id} | Update Source (Full)
-[**PutSourceSchema**](SourcesApi.md#PutSourceSchema) | **Put** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
-[**UpdateProvisioningPoliciesInBulk**](SourcesApi.md#UpdateProvisioningPoliciesInBulk) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
-[**UpdateProvisioningPolicy**](SourcesApi.md#UpdateProvisioningPolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
-[**UpdateSource**](SourcesApi.md#UpdateSource) | **Patch** /sources/{id} | Update Source (Partial)
-[**UpdateSourceSchema**](SourcesApi.md#UpdateSourceSchema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
+[**CreateProvisioningPolicy**](SourcesAPI.md#CreateProvisioningPolicy) | **Post** /sources/{sourceId}/provisioning-policies | Create Provisioning Policy
+[**CreateSource**](SourcesAPI.md#CreateSource) | **Post** /sources | Creates a source in IdentityNow.
+[**CreateSourceSchema**](SourcesAPI.md#CreateSourceSchema) | **Post** /sources/{sourceId}/schemas | Create Schema on a Source
+[**DeleteProvisioningPolicy**](SourcesAPI.md#DeleteProvisioningPolicy) | **Delete** /sources/{sourceId}/provisioning-policies/{usageType} | Delete Provisioning Policy by UsageType
+[**DeleteSource**](SourcesAPI.md#DeleteSource) | **Delete** /sources/{id} | Delete Source by ID
+[**DeleteSourceSchema**](SourcesAPI.md#DeleteSourceSchema) | **Delete** /sources/{sourceId}/schemas/{schemaId} | Delete Source Schema by ID
+[**GetAccountsSchema**](SourcesAPI.md#GetAccountsSchema) | **Get** /sources/{id}/schemas/accounts | Downloads source accounts schema template
+[**GetEntitlementsSchema**](SourcesAPI.md#GetEntitlementsSchema) | **Get** /sources/{id}/schemas/entitlements | Downloads source entitlements schema template
+[**GetProvisioningPolicy**](SourcesAPI.md#GetProvisioningPolicy) | **Get** /sources/{sourceId}/provisioning-policies/{usageType} | Get Provisioning Policy by UsageType
+[**GetSource**](SourcesAPI.md#GetSource) | **Get** /sources/{id} | Get Source by ID
+[**GetSourceHealth**](SourcesAPI.md#GetSourceHealth) | **Get** /sources/{sourceId}/source-health | Fetches source health by id
+[**GetSourceSchema**](SourcesAPI.md#GetSourceSchema) | **Get** /sources/{sourceId}/schemas/{schemaId} | Get Source Schema by ID
+[**ImportAccountsSchema**](SourcesAPI.md#ImportAccountsSchema) | **Post** /sources/{id}/schemas/accounts | Uploads source accounts schema template
+[**ImportConnectorFile**](SourcesAPI.md#ImportConnectorFile) | **Post** /sources/{sourceId}/upload-connector-file | Upload connector file to source
+[**ImportEntitlementsSchema**](SourcesAPI.md#ImportEntitlementsSchema) | **Post** /sources/{id}/schemas/entitlements | Uploads source entitlements schema template
+[**ListProvisioningPolicies**](SourcesAPI.md#ListProvisioningPolicies) | **Get** /sources/{sourceId}/provisioning-policies | Lists ProvisioningPolicies
+[**ListSourceSchemas**](SourcesAPI.md#ListSourceSchemas) | **Get** /sources/{sourceId}/schemas | List Schemas on a Source
+[**ListSources**](SourcesAPI.md#ListSources) | **Get** /sources | Lists all sources in IdentityNow.
+[**PutProvisioningPolicy**](SourcesAPI.md#PutProvisioningPolicy) | **Put** /sources/{sourceId}/provisioning-policies/{usageType} | Update Provisioning Policy by UsageType
+[**PutSource**](SourcesAPI.md#PutSource) | **Put** /sources/{id} | Update Source (Full)
+[**PutSourceSchema**](SourcesAPI.md#PutSourceSchema) | **Put** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Full)
+[**UpdateProvisioningPoliciesInBulk**](SourcesAPI.md#UpdateProvisioningPoliciesInBulk) | **Post** /sources/{sourceId}/provisioning-policies/bulk-update | Bulk Update Provisioning Policies
+[**UpdateProvisioningPolicy**](SourcesAPI.md#UpdateProvisioningPolicy) | **Patch** /sources/{sourceId}/provisioning-policies/{usageType} | Partial update of Provisioning Policy
+[**UpdateSource**](SourcesAPI.md#UpdateSource) | **Patch** /sources/{id} | Update Source (Partial)
+[**UpdateSourceSchema**](SourcesAPI.md#UpdateSourceSchema) | **Patch** /sources/{sourceId}/schemas/{schemaId} | Update Source Schema (Partial)
 
 
 
@@ -49,7 +49,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -58,13 +58,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.CreateProvisioningPolicy(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+    resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicy(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.CreateProvisioningPolicy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateProvisioningPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateProvisioningPolicy`: ProvisioningPolicyDto
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.CreateProvisioningPolicy`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateProvisioningPolicy`: %v\n", resp)
 }
 ```
 
@@ -121,7 +121,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -130,13 +130,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.CreateSource(context.Background()).Source(source).ProvisionAsCsv(provisionAsCsv).Execute()
+    resp, r, err := apiClient.SourcesAPI.CreateSource(context.Background()).Source(source).ProvisionAsCsv(provisionAsCsv).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.CreateSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateSource`: Source
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.CreateSource`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateSource`: %v\n", resp)
 }
 ```
 
@@ -189,7 +189,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -198,13 +198,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.CreateSourceSchema(context.Background(), sourceId).Schema(schema).Execute()
+    resp, r, err := apiClient.SourcesAPI.CreateSourceSchema(context.Background(), sourceId).Schema(schema).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.CreateSourceSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateSourceSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.CreateSourceSchema`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.CreateSourceSchema`: %v\n", resp)
 }
 ```
 
@@ -261,7 +261,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -270,9 +270,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.DeleteProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+    r, err := apiClient.SourcesAPI.DeleteProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.DeleteProvisioningPolicy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteProvisioningPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -332,7 +332,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -340,13 +340,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.DeleteSource(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesAPI.DeleteSource(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.DeleteSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DeleteSource`: DeleteSource202Response
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.DeleteSource`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.DeleteSource`: %v\n", resp)
 }
 ```
 
@@ -400,7 +400,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -409,9 +409,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
+    r, err := apiClient.SourcesAPI.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.DeleteSourceSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -471,7 +471,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -479,9 +479,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.GetAccountsSchema(context.Background(), id).Execute()
+    r, err := apiClient.SourcesAPI.GetAccountsSchema(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetAccountsSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetAccountsSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -539,7 +539,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -548,9 +548,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.GetEntitlementsSchema(context.Background(), id).SchemaName(schemaName).Execute()
+    r, err := apiClient.SourcesAPI.GetEntitlementsSchema(context.Background(), id).SchemaName(schemaName).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetEntitlementsSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetEntitlementsSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -609,7 +609,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -618,13 +618,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.GetProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetProvisioningPolicy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetProvisioningPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetProvisioningPolicy`: ProvisioningPolicyDto
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.GetProvisioningPolicy`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetProvisioningPolicy`: %v\n", resp)
 }
 ```
 
@@ -682,7 +682,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -690,13 +690,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.GetSource(context.Background(), id).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSource(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetSource`: Source
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.GetSource`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSource`: %v\n", resp)
 }
 ```
 
@@ -752,7 +752,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -760,13 +760,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.GetSourceHealth(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceHealth(context.Background(), sourceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetSourceHealth``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceHealth``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetSourceHealth`: SourceHealthDto
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.GetSourceHealth`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceHealth`: %v\n", resp)
 }
 ```
 
@@ -822,7 +822,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -831,13 +831,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.GetSourceSchema(context.Background(), sourceId, schemaId).Execute()
+    resp, r, err := apiClient.SourcesAPI.GetSourceSchema(context.Background(), sourceId, schemaId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.GetSourceSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetSourceSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.GetSourceSchema`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.GetSourceSchema`: %v\n", resp)
 }
 ```
 
@@ -895,7 +895,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -904,13 +904,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.ImportAccountsSchema(context.Background(), id).File(file).Execute()
+    resp, r, err := apiClient.SourcesAPI.ImportAccountsSchema(context.Background(), id).File(file).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ImportAccountsSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportAccountsSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ImportAccountsSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ImportAccountsSchema`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ImportAccountsSchema`: %v\n", resp)
 }
 ```
 
@@ -967,7 +967,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -976,13 +976,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.ImportConnectorFile(context.Background(), sourceId).File(file).Execute()
+    resp, r, err := apiClient.SourcesAPI.ImportConnectorFile(context.Background(), sourceId).File(file).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ImportConnectorFile``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportConnectorFile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ImportConnectorFile`: Source
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ImportConnectorFile`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ImportConnectorFile`: %v\n", resp)
 }
 ```
 
@@ -1039,7 +1039,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1049,13 +1049,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.ImportEntitlementsSchema(context.Background(), id).SchemaName(schemaName).File(file).Execute()
+    resp, r, err := apiClient.SourcesAPI.ImportEntitlementsSchema(context.Background(), id).SchemaName(schemaName).File(file).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ImportEntitlementsSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportEntitlementsSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ImportEntitlementsSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ImportEntitlementsSchema`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ImportEntitlementsSchema`: %v\n", resp)
 }
 ```
 
@@ -1113,7 +1113,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1121,13 +1121,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.ListProvisioningPolicies(context.Background(), sourceId).Execute()
+    resp, r, err := apiClient.SourcesAPI.ListProvisioningPolicies(context.Background(), sourceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ListProvisioningPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListProvisioningPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListProvisioningPolicies`: []ProvisioningPolicyDto
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ListProvisioningPolicies`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ListProvisioningPolicies`: %v\n", resp)
 }
 ```
 
@@ -1183,7 +1183,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1192,13 +1192,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.ListSourceSchemas(context.Background(), sourceId).IncludeTypes(includeTypes).Execute()
+    resp, r, err := apiClient.SourcesAPI.ListSourceSchemas(context.Background(), sourceId).IncludeTypes(includeTypes).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ListSourceSchemas``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListSourceSchemas``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListSourceSchemas`: []Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ListSourceSchemas`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ListSourceSchemas`: %v\n", resp)
 }
 ```
 
@@ -1255,7 +1255,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1268,13 +1268,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.ListSources(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSubadmin(forSubadmin).Execute()
+    resp, r, err := apiClient.SourcesAPI.ListSources(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSubadmin(forSubadmin).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.ListSources``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListSources``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListSources`: []Source
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.ListSources`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.ListSources`: %v\n", resp)
 }
 ```
 
@@ -1331,7 +1331,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1341,13 +1341,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.PutProvisioningPolicy(context.Background(), sourceId, usageType).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicy(context.Background(), sourceId, usageType).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.PutProvisioningPolicy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutProvisioningPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutProvisioningPolicy`: ProvisioningPolicyDto
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.PutProvisioningPolicy`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutProvisioningPolicy`: %v\n", resp)
 }
 ```
 
@@ -1406,7 +1406,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1415,13 +1415,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.PutSource(context.Background(), id).Source(source).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutSource(context.Background(), id).Source(source).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.PutSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutSource`: Source
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.PutSource`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutSource`: %v\n", resp)
 }
 ```
 
@@ -1478,7 +1478,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1488,13 +1488,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.PutSourceSchema(context.Background(), sourceId, schemaId).Schema(schema).Execute()
+    resp, r, err := apiClient.SourcesAPI.PutSourceSchema(context.Background(), sourceId, schemaId).Schema(schema).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.PutSourceSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutSourceSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.PutSourceSchema`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.PutSourceSchema`: %v\n", resp)
 }
 ```
 
@@ -1553,7 +1553,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1562,13 +1562,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.UpdateProvisioningPoliciesInBulk(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPoliciesInBulk(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UpdateProvisioningPoliciesInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateProvisioningPoliciesInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateProvisioningPoliciesInBulk`: []ProvisioningPolicyDto
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UpdateProvisioningPoliciesInBulk`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateProvisioningPoliciesInBulk`: %v\n", resp)
 }
 ```
 
@@ -1625,7 +1625,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1635,13 +1635,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.UpdateProvisioningPolicy(context.Background(), sourceId, usageType).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicy(context.Background(), sourceId, usageType).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UpdateProvisioningPolicy``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateProvisioningPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateProvisioningPolicy`: ProvisioningPolicyDto
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UpdateProvisioningPolicy`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateProvisioningPolicy`: %v\n", resp)
 }
 ```
 
@@ -1700,7 +1700,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1709,13 +1709,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.UpdateSource(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateSource(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UpdateSource``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateSource`: Source
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UpdateSource`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateSource`: %v\n", resp)
 }
 ```
 
@@ -1772,7 +1772,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -1782,13 +1782,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesApi.UpdateSourceSchema(context.Background(), sourceId, schemaId).JsonPatchOperation(jsonPatchOperation).Execute()
+    resp, r, err := apiClient.SourcesAPI.UpdateSourceSchema(context.Background(), sourceId, schemaId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SourcesApi.UpdateSourceSchema``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateSourceSchema`: Schema
-    fmt.Fprintf(os.Stdout, "Response from `SourcesApi.UpdateSourceSchema`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SourcesAPI.UpdateSourceSchema`: %v\n", resp)
 }
 ```
 

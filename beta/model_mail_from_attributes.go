@@ -248,8 +248,8 @@ func (o *MailFromAttributes) UnmarshalJSON(bytes []byte) (err error) {
 	varMailFromAttributes := _MailFromAttributes{}
 
 	if err = json.Unmarshal(bytes, &varMailFromAttributes); err == nil {
-		*o = MailFromAttributes(varMailFromAttributes)
-	}
+	*o = MailFromAttributes(varMailFromAttributes)
+}
 
 	additionalProperties := make(map[string]interface{})
 

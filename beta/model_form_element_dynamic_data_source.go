@@ -136,8 +136,8 @@ func (o *FormElementDynamicDataSource) UnmarshalJSON(bytes []byte) (err error) {
 	varFormElementDynamicDataSource := _FormElementDynamicDataSource{}
 
 	if err = json.Unmarshal(bytes, &varFormElementDynamicDataSource); err == nil {
-		*o = FormElementDynamicDataSource(varFormElementDynamicDataSource)
-	}
+	*o = FormElementDynamicDataSource(varFormElementDynamicDataSource)
+}
 
 	additionalProperties := make(map[string]interface{})
 

@@ -173,8 +173,8 @@ func (o *LookupStep) UnmarshalJSON(bytes []byte) (err error) {
 	varLookupStep := _LookupStep{}
 
 	if err = json.Unmarshal(bytes, &varLookupStep); err == nil {
-		*o = LookupStep(varLookupStep)
-	}
+	*o = LookupStep(varLookupStep)
+}
 
 	additionalProperties := make(map[string]interface{})
 

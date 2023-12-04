@@ -248,8 +248,8 @@ func (o *BaseEntitlement) UnmarshalJSON(bytes []byte) (err error) {
 	varBaseEntitlement := _BaseEntitlement{}
 
 	if err = json.Unmarshal(bytes, &varBaseEntitlement); err == nil {
-		*o = BaseEntitlement(varBaseEntitlement)
-	}
+	*o = BaseEntitlement(varBaseEntitlement)
+}
 
 	additionalProperties := make(map[string]interface{})
 

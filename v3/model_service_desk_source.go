@@ -174,8 +174,8 @@ func (o *ServiceDeskSource) UnmarshalJSON(bytes []byte) (err error) {
 	varServiceDeskSource := _ServiceDeskSource{}
 
 	if err = json.Unmarshal(bytes, &varServiceDeskSource); err == nil {
-		*o = ServiceDeskSource(varServiceDeskSource)
-	}
+	*o = ServiceDeskSource(varServiceDeskSource)
+}
 
 	additionalProperties := make(map[string]interface{})
 

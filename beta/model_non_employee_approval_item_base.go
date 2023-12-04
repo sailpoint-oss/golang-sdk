@@ -358,8 +358,8 @@ func (o *NonEmployeeApprovalItemBase) UnmarshalJSON(bytes []byte) (err error) {
 	varNonEmployeeApprovalItemBase := _NonEmployeeApprovalItemBase{}
 
 	if err = json.Unmarshal(bytes, &varNonEmployeeApprovalItemBase); err == nil {
-		*o = NonEmployeeApprovalItemBase(varNonEmployeeApprovalItemBase)
-	}
+	*o = NonEmployeeApprovalItemBase(varNonEmployeeApprovalItemBase)
+}
 
 	additionalProperties := make(map[string]interface{})
 

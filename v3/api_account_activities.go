@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// AccountActivitiesApiService AccountActivitiesApi service
-type AccountActivitiesApiService service
+// AccountActivitiesAPIService AccountActivitiesAPI service
+type AccountActivitiesAPIService service
 
 type ApiGetAccountActivityRequest struct {
 	ctx context.Context
-	ApiService *AccountActivitiesApiService
+	ApiService *AccountActivitiesAPIService
 	id string
 }
 
@@ -42,7 +42,7 @@ This gets a single account activity by its id.
  @param id The account activity id
  @return ApiGetAccountActivityRequest
 */
-func (a *AccountActivitiesApiService) GetAccountActivity(ctx context.Context, id string) ApiGetAccountActivityRequest {
+func (a *AccountActivitiesAPIService) GetAccountActivity(ctx context.Context, id string) ApiGetAccountActivityRequest {
 	return ApiGetAccountActivityRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -52,7 +52,7 @@ func (a *AccountActivitiesApiService) GetAccountActivity(ctx context.Context, id
 
 // Execute executes the request
 //  @return AccountActivity
-func (a *AccountActivitiesApiService) GetAccountActivityExecute(r ApiGetAccountActivityRequest) (*AccountActivity, *http.Response, error) {
+func (a *AccountActivitiesAPIService) GetAccountActivityExecute(r ApiGetAccountActivityRequest) (*AccountActivity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -60,7 +60,7 @@ func (a *AccountActivitiesApiService) GetAccountActivityExecute(r ApiGetAccountA
 		localVarReturnValue  *AccountActivity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountActivitiesApiService.GetAccountActivity")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountActivitiesAPIService.GetAccountActivity")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -99,9 +99,9 @@ func (a *AccountActivitiesApiService) GetAccountActivityExecute(r ApiGetAccountA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -193,7 +193,7 @@ func (a *AccountActivitiesApiService) GetAccountActivityExecute(r ApiGetAccountA
 
 type ApiListAccountActivitiesRequest struct {
 	ctx context.Context
-	ApiService *AccountActivitiesApiService
+	ApiService *AccountActivitiesAPIService
 	requestedFor *string
 	requestedBy *string
 	regardingIdentity *string
@@ -264,7 +264,7 @@ This gets a collection of account activities that satisfy the given query parame
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListAccountActivitiesRequest
 */
-func (a *AccountActivitiesApiService) ListAccountActivities(ctx context.Context) ApiListAccountActivitiesRequest {
+func (a *AccountActivitiesAPIService) ListAccountActivities(ctx context.Context) ApiListAccountActivitiesRequest {
 	return ApiListAccountActivitiesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -273,7 +273,7 @@ func (a *AccountActivitiesApiService) ListAccountActivities(ctx context.Context)
 
 // Execute executes the request
 //  @return []AccountActivity
-func (a *AccountActivitiesApiService) ListAccountActivitiesExecute(r ApiListAccountActivitiesRequest) ([]AccountActivity, *http.Response, error) {
+func (a *AccountActivitiesAPIService) ListAccountActivitiesExecute(r ApiListAccountActivitiesRequest) ([]AccountActivity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -281,7 +281,7 @@ func (a *AccountActivitiesApiService) ListAccountActivitiesExecute(r ApiListAcco
 		localVarReturnValue  []AccountActivity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountActivitiesApiService.ListAccountActivities")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccountActivitiesAPIService.ListAccountActivities")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -303,12 +303,21 @@ func (a *AccountActivitiesApiService) ListAccountActivitiesExecute(r ApiListAcco
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -343,9 +352,9 @@ func (a *AccountActivitiesApiService) ListAccountActivitiesExecute(r ApiListAcco
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

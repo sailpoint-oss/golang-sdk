@@ -13,7 +13,7 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,12 +21,12 @@ import (
 )
 
 
-// ReportsDataExtractionApiService ReportsDataExtractionApi service
-type ReportsDataExtractionApiService service
+// ReportsDataExtractionAPIService ReportsDataExtractionAPI service
+type ReportsDataExtractionAPIService service
 
 type ApiCancelReportRequest struct {
 	ctx context.Context
-	ApiService *ReportsDataExtractionApiService
+	ApiService *ReportsDataExtractionAPIService
 	id string
 }
 
@@ -43,7 +43,7 @@ Cancels a running report.
  @param id ID of the running Report to cancel
  @return ApiCancelReportRequest
 */
-func (a *ReportsDataExtractionApiService) CancelReport(ctx context.Context, id string) ApiCancelReportRequest {
+func (a *ReportsDataExtractionAPIService) CancelReport(ctx context.Context, id string) ApiCancelReportRequest {
 	return ApiCancelReportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -52,14 +52,14 @@ func (a *ReportsDataExtractionApiService) CancelReport(ctx context.Context, id s
 }
 
 // Execute executes the request
-func (a *ReportsDataExtractionApiService) CancelReportExecute(r ApiCancelReportRequest) (*http.Response, error) {
+func (a *ReportsDataExtractionAPIService) CancelReportExecute(r ApiCancelReportRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsDataExtractionApiService.CancelReport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsDataExtractionAPIService.CancelReport")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -98,9 +98,9 @@ func (a *ReportsDataExtractionApiService) CancelReportExecute(r ApiCancelReportR
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -172,7 +172,7 @@ func (a *ReportsDataExtractionApiService) CancelReportExecute(r ApiCancelReportR
 
 type ApiGetReportRequest struct {
 	ctx context.Context
-	ApiService *ReportsDataExtractionApiService
+	ApiService *ReportsDataExtractionAPIService
 	taskResultId string
 	fileFormat *string
 	name *string
@@ -210,7 +210,7 @@ Gets a report in file format.
  @param taskResultId Unique identifier of the task result which handled report
  @return ApiGetReportRequest
 */
-func (a *ReportsDataExtractionApiService) GetReport(ctx context.Context, taskResultId string) ApiGetReportRequest {
+func (a *ReportsDataExtractionAPIService) GetReport(ctx context.Context, taskResultId string) ApiGetReportRequest {
 	return ApiGetReportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -220,7 +220,7 @@ func (a *ReportsDataExtractionApiService) GetReport(ctx context.Context, taskRes
 
 // Execute executes the request
 //  @return *os.File
-func (a *ReportsDataExtractionApiService) GetReportExecute(r ApiGetReportRequest) (*os.File, *http.Response, error) {
+func (a *ReportsDataExtractionAPIService) GetReportExecute(r ApiGetReportRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -228,7 +228,7 @@ func (a *ReportsDataExtractionApiService) GetReportExecute(r ApiGetReportRequest
 		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsDataExtractionApiService.GetReport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsDataExtractionAPIService.GetReport")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -249,6 +249,9 @@ func (a *ReportsDataExtractionApiService) GetReportExecute(r ApiGetReportRequest
 	}
 	if r.auditable != nil {
 		parameterAddToQuery(localVarQueryParams, "auditable", r.auditable, "")
+	} else {
+		var defaultValue bool = false
+		r.auditable = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -277,9 +280,9 @@ func (a *ReportsDataExtractionApiService) GetReportExecute(r ApiGetReportRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -371,7 +374,7 @@ func (a *ReportsDataExtractionApiService) GetReportExecute(r ApiGetReportRequest
 
 type ApiGetReportResultRequest struct {
 	ctx context.Context
-	ApiService *ReportsDataExtractionApiService
+	ApiService *ReportsDataExtractionAPIService
 	taskResultId string
 	completed *bool
 }
@@ -395,7 +398,7 @@ Get the report results for a report that was run or is running. Returns empty re
  @param taskResultId Unique identifier of the task result which handled report
  @return ApiGetReportResultRequest
 */
-func (a *ReportsDataExtractionApiService) GetReportResult(ctx context.Context, taskResultId string) ApiGetReportResultRequest {
+func (a *ReportsDataExtractionAPIService) GetReportResult(ctx context.Context, taskResultId string) ApiGetReportResultRequest {
 	return ApiGetReportResultRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -405,7 +408,7 @@ func (a *ReportsDataExtractionApiService) GetReportResult(ctx context.Context, t
 
 // Execute executes the request
 //  @return ReportResults
-func (a *ReportsDataExtractionApiService) GetReportResultExecute(r ApiGetReportResultRequest) (*ReportResults, *http.Response, error) {
+func (a *ReportsDataExtractionAPIService) GetReportResultExecute(r ApiGetReportResultRequest) (*ReportResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -413,7 +416,7 @@ func (a *ReportsDataExtractionApiService) GetReportResultExecute(r ApiGetReportR
 		localVarReturnValue  *ReportResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsDataExtractionApiService.GetReportResult")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsDataExtractionAPIService.GetReportResult")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -427,6 +430,9 @@ func (a *ReportsDataExtractionApiService) GetReportResultExecute(r ApiGetReportR
 
 	if r.completed != nil {
 		parameterAddToQuery(localVarQueryParams, "completed", r.completed, "")
+	} else {
+		var defaultValue bool = false
+		r.completed = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -455,9 +461,9 @@ func (a *ReportsDataExtractionApiService) GetReportResultExecute(r ApiGetReportR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -538,7 +544,7 @@ func (a *ReportsDataExtractionApiService) GetReportResultExecute(r ApiGetReportR
 
 type ApiStartReportRequest struct {
 	ctx context.Context
-	ApiService *ReportsDataExtractionApiService
+	ApiService *ReportsDataExtractionAPIService
 	reportDetails *ReportDetails
 }
 
@@ -559,7 +565,7 @@ Runs a report according to input report details. If non-concurrent task is alrea
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartReportRequest
 */
-func (a *ReportsDataExtractionApiService) StartReport(ctx context.Context) ApiStartReportRequest {
+func (a *ReportsDataExtractionAPIService) StartReport(ctx context.Context) ApiStartReportRequest {
 	return ApiStartReportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -568,7 +574,7 @@ func (a *ReportsDataExtractionApiService) StartReport(ctx context.Context) ApiSt
 
 // Execute executes the request
 //  @return TaskResultDetails
-func (a *ReportsDataExtractionApiService) StartReportExecute(r ApiStartReportRequest) (*TaskResultDetails, *http.Response, error) {
+func (a *ReportsDataExtractionAPIService) StartReportExecute(r ApiStartReportRequest) (*TaskResultDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -576,7 +582,7 @@ func (a *ReportsDataExtractionApiService) StartReportExecute(r ApiStartReportReq
 		localVarReturnValue  *TaskResultDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsDataExtractionApiService.StartReport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReportsDataExtractionAPIService.StartReport")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -619,9 +625,9 @@ func (a *ReportsDataExtractionApiService) StartReportExecute(r ApiStartReportReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -1,13 +1,13 @@
-# \ManagedClustersApi
+# \ManagedClustersAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetClientLogConfiguration**](ManagedClustersApi.md#GetClientLogConfiguration) | **Get** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
-[**GetManagedCluster**](ManagedClustersApi.md#GetManagedCluster) | **Get** /managed-clusters/{id} | Get a specified ManagedCluster.
-[**GetManagedClusters**](ManagedClustersApi.md#GetManagedClusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
-[**PutClientLogConfiguration**](ManagedClustersApi.md#PutClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
+[**GetClientLogConfiguration**](ManagedClustersAPI.md#GetClientLogConfiguration) | **Get** /managed-clusters/{id}/log-config | Get managed cluster&#39;s log configuration
+[**GetManagedCluster**](ManagedClustersAPI.md#GetManagedCluster) | **Get** /managed-clusters/{id} | Get a specified ManagedCluster.
+[**GetManagedClusters**](ManagedClustersAPI.md#GetManagedClusters) | **Get** /managed-clusters | Retrieve all Managed Clusters.
+[**PutClientLogConfiguration**](ManagedClustersAPI.md#PutClientLogConfiguration) | **Put** /managed-clusters/{id}/log-config | Update managed cluster&#39;s log configuration
 
 
 
@@ -28,7 +28,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -36,13 +36,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClustersApi.GetClientLogConfiguration(context.Background(), id).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.GetClientLogConfiguration(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersApi.GetClientLogConfiguration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetClientLogConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetClientLogConfiguration`: ClientLogConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `ManagedClustersApi.GetClientLogConfiguration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.GetClientLogConfiguration`: %v\n", resp)
 }
 ```
 
@@ -98,7 +98,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -106,13 +106,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClustersApi.GetManagedCluster(context.Background(), id).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.GetManagedCluster(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersApi.GetManagedCluster``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetManagedCluster``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetManagedCluster`: ManagedCluster
-    fmt.Fprintf(os.Stdout, "Response from `ManagedClustersApi.GetManagedCluster`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.GetManagedCluster`: %v\n", resp)
 }
 ```
 
@@ -168,7 +168,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -179,13 +179,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClustersApi.GetManagedClusters(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.GetManagedClusters(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersApi.GetManagedClusters``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.GetManagedClusters``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetManagedClusters`: []ManagedCluster
-    fmt.Fprintf(os.Stdout, "Response from `ManagedClustersApi.GetManagedClusters`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.GetManagedClusters`: %v\n", resp)
 }
 ```
 
@@ -240,7 +240,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -249,13 +249,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedClustersApi.PutClientLogConfiguration(context.Background(), id).ClientLogConfiguration(clientLogConfiguration).Execute()
+    resp, r, err := apiClient.ManagedClustersAPI.PutClientLogConfiguration(context.Background(), id).ClientLogConfiguration(clientLogConfiguration).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersApi.PutClientLogConfiguration``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ManagedClustersAPI.PutClientLogConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PutClientLogConfiguration`: ClientLogConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `ManagedClustersApi.PutClientLogConfiguration`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ManagedClustersAPI.PutClientLogConfiguration`: %v\n", resp)
 }
 ```
 

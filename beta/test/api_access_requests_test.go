@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing AccessRequestsApiService
+Testing AccessRequestsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_AccessRequestsApiService(t *testing.T) {
+func Test_beta_AccessRequestsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AccessRequestsApiService CancelAccessRequest", func(t *testing.T) {
+	t.Run("Test AccessRequestsAPIService CancelAccessRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.AccessRequestsApi.CancelAccessRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.AccessRequestsAPI.CancelAccessRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_beta_AccessRequestsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessRequestsApiService CloseAccessRequest", func(t *testing.T) {
+	t.Run("Test AccessRequestsAPIService CloseAccessRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.AccessRequestsApi.CloseAccessRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.AccessRequestsAPI.CloseAccessRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,11 +46,11 @@ func Test_beta_AccessRequestsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessRequestsApiService CreateAccessRequest", func(t *testing.T) {
+	t.Run("Test AccessRequestsAPIService CreateAccessRequest", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.AccessRequestsApi.CreateAccessRequest(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.AccessRequestsAPI.CreateAccessRequest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -58,11 +58,11 @@ func Test_beta_AccessRequestsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessRequestsApiService GetAccessRequestConfig", func(t *testing.T) {
+	t.Run("Test AccessRequestsAPIService GetAccessRequestConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.AccessRequestsApi.GetAccessRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -70,11 +70,11 @@ func Test_beta_AccessRequestsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessRequestsApiService ListAccessRequestStatus", func(t *testing.T) {
+	t.Run("Test AccessRequestsAPIService ListAccessRequestStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.AccessRequestsApi.ListAccessRequestStatus(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -82,11 +82,11 @@ func Test_beta_AccessRequestsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccessRequestsApiService SetAccessRequestConfig", func(t *testing.T) {
+	t.Run("Test AccessRequestsAPIService SetAccessRequestConfig", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.AccessRequestsApi.SetAccessRequestConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

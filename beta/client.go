@@ -18,7 +18,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
+"io/ioutil"
 	"log"
 	"mime/multipart"
 	"net/http"
@@ -34,7 +34,7 @@ import (
 	"unicode/utf8"
 
 	"golang.org/x/oauth2"
-	retryablehttp "github.com/hashicorp/go-retryablehttp"
+retryablehttp "github.com/hashicorp/go-retryablehttp"
 )
 
 var (
@@ -52,123 +52,123 @@ type APIClient struct {
 
 	// API Services
 
-	AccessProfilesApi *AccessProfilesApiService
+	AccessProfilesAPI *AccessProfilesAPIService
 
-	AccessRequestApprovalsApi *AccessRequestApprovalsApiService
+	AccessRequestApprovalsAPI *AccessRequestApprovalsAPIService
 
-	AccessRequestsApi *AccessRequestsApiService
+	AccessRequestsAPI *AccessRequestsAPIService
 
-	AccountActivitiesApi *AccountActivitiesApiService
+	AccountActivitiesAPI *AccountActivitiesAPIService
 
-	AccountAggregationsApi *AccountAggregationsApiService
+	AccountAggregationsAPI *AccountAggregationsAPIService
 
-	AccountUsagesApi *AccountUsagesApiService
+	AccountUsagesAPI *AccountUsagesAPIService
 
-	AccountsApi *AccountsApiService
+	AccountsAPI *AccountsAPIService
 
-	CertificationCampaignsApi *CertificationCampaignsApiService
+	CertificationCampaignsAPI *CertificationCampaignsAPIService
 
-	CertificationsApi *CertificationsApiService
+	CertificationsAPI *CertificationsAPIService
 
-	ConnectorRuleManagementApi *ConnectorRuleManagementApiService
+	ConnectorRuleManagementAPI *ConnectorRuleManagementAPIService
 
-	ConnectorsApi *ConnectorsApiService
+	ConnectorsAPI *ConnectorsAPIService
 
-	CustomFormsApi *CustomFormsApiService
+	CustomFormsAPI *CustomFormsAPIService
 
-	CustomPasswordInstructionsApi *CustomPasswordInstructionsApiService
+	CustomPasswordInstructionsAPI *CustomPasswordInstructionsAPIService
 
-	EntitlementsApi *EntitlementsApiService
+	EntitlementsAPI *EntitlementsAPIService
 
-	GovernanceGroupsApi *GovernanceGroupsApiService
+	GovernanceGroupsAPI *GovernanceGroupsAPIService
 
-	IAIAccessRequestRecommendationsApi *IAIAccessRequestRecommendationsApiService
+	IAIAccessRequestRecommendationsAPI *IAIAccessRequestRecommendationsAPIService
 
-	IAICommonAccessApi *IAICommonAccessApiService
+	IAICommonAccessAPI *IAICommonAccessAPIService
 
-	IAIMessageCatalogsApi *IAIMessageCatalogsApiService
+	IAIMessageCatalogsAPI *IAIMessageCatalogsAPIService
 
-	IAIOutliersApi *IAIOutliersApiService
+	IAIOutliersAPI *IAIOutliersAPIService
 
-	IAIPeerGroupStrategiesApi *IAIPeerGroupStrategiesApiService
+	IAIPeerGroupStrategiesAPI *IAIPeerGroupStrategiesAPIService
 
-	IAIRecommendationsApi *IAIRecommendationsApiService
+	IAIRecommendationsAPI *IAIRecommendationsAPIService
 
-	IAIRoleMiningApi *IAIRoleMiningApiService
+	IAIRoleMiningAPI *IAIRoleMiningAPIService
 
-	IdentitiesApi *IdentitiesApiService
+	IdentitiesAPI *IdentitiesAPIService
 
-	IdentityAttributesApi *IdentityAttributesApiService
+	IdentityAttributesAPI *IdentityAttributesAPIService
 
-	IdentityHistoryApi *IdentityHistoryApiService
+	IdentityHistoryAPI *IdentityHistoryAPIService
 
-	IdentityProfilesApi *IdentityProfilesApiService
+	IdentityProfilesAPI *IdentityProfilesAPIService
 
-	LifecycleStatesApi *LifecycleStatesApiService
+	LifecycleStatesAPI *LifecycleStatesAPIService
 
-	MFAConfigurationApi *MFAConfigurationApiService
+	MFAConfigurationAPI *MFAConfigurationAPIService
 
-	MFAControllerApi *MFAControllerApiService
+	MFAControllerAPI *MFAControllerAPIService
 
-	ManagedClientsApi *ManagedClientsApiService
+	ManagedClientsAPI *ManagedClientsAPIService
 
-	ManagedClustersApi *ManagedClustersApiService
+	ManagedClustersAPI *ManagedClustersAPIService
 
-	NonEmployeeLifecycleManagementApi *NonEmployeeLifecycleManagementApiService
+	NonEmployeeLifecycleManagementAPI *NonEmployeeLifecycleManagementAPIService
 
-	NotificationsApi *NotificationsApiService
+	NotificationsAPI *NotificationsAPIService
 
-	OAuthClientsApi *OAuthClientsApiService
+	OAuthClientsAPI *OAuthClientsAPIService
 
-	OrgConfigApi *OrgConfigApiService
+	OrgConfigAPI *OrgConfigAPIService
 
-	PasswordConfigurationApi *PasswordConfigurationApiService
+	PasswordConfigurationAPI *PasswordConfigurationAPIService
 
-	PasswordDictionaryApi *PasswordDictionaryApiService
+	PasswordDictionaryAPI *PasswordDictionaryAPIService
 
-	PasswordManagementApi *PasswordManagementApiService
+	PasswordManagementAPI *PasswordManagementAPIService
 
-	PasswordSyncGroupsApi *PasswordSyncGroupsApiService
+	PasswordSyncGroupsAPI *PasswordSyncGroupsAPIService
 
-	PersonalAccessTokensApi *PersonalAccessTokensApiService
+	PersonalAccessTokensAPI *PersonalAccessTokensAPIService
 
-	PublicIdentitiesConfigApi *PublicIdentitiesConfigApiService
+	PublicIdentitiesConfigAPI *PublicIdentitiesConfigAPIService
 
-	RequestableObjectsApi *RequestableObjectsApiService
+	RequestableObjectsAPI *RequestableObjectsAPIService
 
-	RoleInsightsApi *RoleInsightsApiService
+	RoleInsightsAPI *RoleInsightsAPIService
 
-	RolesApi *RolesApiService
+	RolesAPI *RolesAPIService
 
-	SODPolicyApi *SODPolicyApiService
+	SODPolicyAPI *SODPolicyAPIService
 
-	SODViolationsApi *SODViolationsApiService
+	SODViolationsAPI *SODViolationsAPIService
 
-	SPConfigApi *SPConfigApiService
+	SPConfigAPI *SPConfigAPIService
 
-	SearchAttributeConfigurationApi *SearchAttributeConfigurationApiService
+	SearchAttributeConfigurationAPI *SearchAttributeConfigurationAPIService
 
-	SegmentsApi *SegmentsApiService
+	SegmentsAPI *SegmentsAPIService
 
-	ServiceDeskIntegrationApi *ServiceDeskIntegrationApiService
+	ServiceDeskIntegrationAPI *ServiceDeskIntegrationAPIService
 
-	SourceUsagesApi *SourceUsagesApiService
+	SourceUsagesAPI *SourceUsagesAPIService
 
-	SourcesApi *SourcesApiService
+	SourcesAPI *SourcesAPIService
 
-	TaggedObjectsApi *TaggedObjectsApiService
+	TaggedObjectsAPI *TaggedObjectsAPIService
 
-	TaskManagementApi *TaskManagementApiService
+	TaskManagementAPI *TaskManagementAPIService
 
-	TransformsApi *TransformsApiService
+	TransformsAPI *TransformsAPIService
 
-	TriggersApi *TriggersApiService
+	TriggersAPI *TriggersAPIService
 
-	WorkItemsApi *WorkItemsApiService
+	WorkItemsAPI *WorkItemsAPIService
 
-	WorkReassignmentApi *WorkReassignmentApiService
+	WorkReassignmentAPI *WorkReassignmentAPIService
 
-	WorkflowsApi *WorkflowsApiService
+	WorkflowsAPI *WorkflowsAPIService
 }
 
 type service struct {
@@ -187,65 +187,65 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.AccessProfilesApi = (*AccessProfilesApiService)(&c.common)
-	c.AccessRequestApprovalsApi = (*AccessRequestApprovalsApiService)(&c.common)
-	c.AccessRequestsApi = (*AccessRequestsApiService)(&c.common)
-	c.AccountActivitiesApi = (*AccountActivitiesApiService)(&c.common)
-	c.AccountAggregationsApi = (*AccountAggregationsApiService)(&c.common)
-	c.AccountUsagesApi = (*AccountUsagesApiService)(&c.common)
-	c.AccountsApi = (*AccountsApiService)(&c.common)
-	c.CertificationCampaignsApi = (*CertificationCampaignsApiService)(&c.common)
-	c.CertificationsApi = (*CertificationsApiService)(&c.common)
-	c.ConnectorRuleManagementApi = (*ConnectorRuleManagementApiService)(&c.common)
-	c.ConnectorsApi = (*ConnectorsApiService)(&c.common)
-	c.CustomFormsApi = (*CustomFormsApiService)(&c.common)
-	c.CustomPasswordInstructionsApi = (*CustomPasswordInstructionsApiService)(&c.common)
-	c.EntitlementsApi = (*EntitlementsApiService)(&c.common)
-	c.GovernanceGroupsApi = (*GovernanceGroupsApiService)(&c.common)
-	c.IAIAccessRequestRecommendationsApi = (*IAIAccessRequestRecommendationsApiService)(&c.common)
-	c.IAICommonAccessApi = (*IAICommonAccessApiService)(&c.common)
-	c.IAIMessageCatalogsApi = (*IAIMessageCatalogsApiService)(&c.common)
-	c.IAIOutliersApi = (*IAIOutliersApiService)(&c.common)
-	c.IAIPeerGroupStrategiesApi = (*IAIPeerGroupStrategiesApiService)(&c.common)
-	c.IAIRecommendationsApi = (*IAIRecommendationsApiService)(&c.common)
-	c.IAIRoleMiningApi = (*IAIRoleMiningApiService)(&c.common)
-	c.IdentitiesApi = (*IdentitiesApiService)(&c.common)
-	c.IdentityAttributesApi = (*IdentityAttributesApiService)(&c.common)
-	c.IdentityHistoryApi = (*IdentityHistoryApiService)(&c.common)
-	c.IdentityProfilesApi = (*IdentityProfilesApiService)(&c.common)
-	c.LifecycleStatesApi = (*LifecycleStatesApiService)(&c.common)
-	c.MFAConfigurationApi = (*MFAConfigurationApiService)(&c.common)
-	c.MFAControllerApi = (*MFAControllerApiService)(&c.common)
-	c.ManagedClientsApi = (*ManagedClientsApiService)(&c.common)
-	c.ManagedClustersApi = (*ManagedClustersApiService)(&c.common)
-	c.NonEmployeeLifecycleManagementApi = (*NonEmployeeLifecycleManagementApiService)(&c.common)
-	c.NotificationsApi = (*NotificationsApiService)(&c.common)
-	c.OAuthClientsApi = (*OAuthClientsApiService)(&c.common)
-	c.OrgConfigApi = (*OrgConfigApiService)(&c.common)
-	c.PasswordConfigurationApi = (*PasswordConfigurationApiService)(&c.common)
-	c.PasswordDictionaryApi = (*PasswordDictionaryApiService)(&c.common)
-	c.PasswordManagementApi = (*PasswordManagementApiService)(&c.common)
-	c.PasswordSyncGroupsApi = (*PasswordSyncGroupsApiService)(&c.common)
-	c.PersonalAccessTokensApi = (*PersonalAccessTokensApiService)(&c.common)
-	c.PublicIdentitiesConfigApi = (*PublicIdentitiesConfigApiService)(&c.common)
-	c.RequestableObjectsApi = (*RequestableObjectsApiService)(&c.common)
-	c.RoleInsightsApi = (*RoleInsightsApiService)(&c.common)
-	c.RolesApi = (*RolesApiService)(&c.common)
-	c.SODPolicyApi = (*SODPolicyApiService)(&c.common)
-	c.SODViolationsApi = (*SODViolationsApiService)(&c.common)
-	c.SPConfigApi = (*SPConfigApiService)(&c.common)
-	c.SearchAttributeConfigurationApi = (*SearchAttributeConfigurationApiService)(&c.common)
-	c.SegmentsApi = (*SegmentsApiService)(&c.common)
-	c.ServiceDeskIntegrationApi = (*ServiceDeskIntegrationApiService)(&c.common)
-	c.SourceUsagesApi = (*SourceUsagesApiService)(&c.common)
-	c.SourcesApi = (*SourcesApiService)(&c.common)
-	c.TaggedObjectsApi = (*TaggedObjectsApiService)(&c.common)
-	c.TaskManagementApi = (*TaskManagementApiService)(&c.common)
-	c.TransformsApi = (*TransformsApiService)(&c.common)
-	c.TriggersApi = (*TriggersApiService)(&c.common)
-	c.WorkItemsApi = (*WorkItemsApiService)(&c.common)
-	c.WorkReassignmentApi = (*WorkReassignmentApiService)(&c.common)
-	c.WorkflowsApi = (*WorkflowsApiService)(&c.common)
+	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
+	c.AccessRequestApprovalsAPI = (*AccessRequestApprovalsAPIService)(&c.common)
+	c.AccessRequestsAPI = (*AccessRequestsAPIService)(&c.common)
+	c.AccountActivitiesAPI = (*AccountActivitiesAPIService)(&c.common)
+	c.AccountAggregationsAPI = (*AccountAggregationsAPIService)(&c.common)
+	c.AccountUsagesAPI = (*AccountUsagesAPIService)(&c.common)
+	c.AccountsAPI = (*AccountsAPIService)(&c.common)
+	c.CertificationCampaignsAPI = (*CertificationCampaignsAPIService)(&c.common)
+	c.CertificationsAPI = (*CertificationsAPIService)(&c.common)
+	c.ConnectorRuleManagementAPI = (*ConnectorRuleManagementAPIService)(&c.common)
+	c.ConnectorsAPI = (*ConnectorsAPIService)(&c.common)
+	c.CustomFormsAPI = (*CustomFormsAPIService)(&c.common)
+	c.CustomPasswordInstructionsAPI = (*CustomPasswordInstructionsAPIService)(&c.common)
+	c.EntitlementsAPI = (*EntitlementsAPIService)(&c.common)
+	c.GovernanceGroupsAPI = (*GovernanceGroupsAPIService)(&c.common)
+	c.IAIAccessRequestRecommendationsAPI = (*IAIAccessRequestRecommendationsAPIService)(&c.common)
+	c.IAICommonAccessAPI = (*IAICommonAccessAPIService)(&c.common)
+	c.IAIMessageCatalogsAPI = (*IAIMessageCatalogsAPIService)(&c.common)
+	c.IAIOutliersAPI = (*IAIOutliersAPIService)(&c.common)
+	c.IAIPeerGroupStrategiesAPI = (*IAIPeerGroupStrategiesAPIService)(&c.common)
+	c.IAIRecommendationsAPI = (*IAIRecommendationsAPIService)(&c.common)
+	c.IAIRoleMiningAPI = (*IAIRoleMiningAPIService)(&c.common)
+	c.IdentitiesAPI = (*IdentitiesAPIService)(&c.common)
+	c.IdentityAttributesAPI = (*IdentityAttributesAPIService)(&c.common)
+	c.IdentityHistoryAPI = (*IdentityHistoryAPIService)(&c.common)
+	c.IdentityProfilesAPI = (*IdentityProfilesAPIService)(&c.common)
+	c.LifecycleStatesAPI = (*LifecycleStatesAPIService)(&c.common)
+	c.MFAConfigurationAPI = (*MFAConfigurationAPIService)(&c.common)
+	c.MFAControllerAPI = (*MFAControllerAPIService)(&c.common)
+	c.ManagedClientsAPI = (*ManagedClientsAPIService)(&c.common)
+	c.ManagedClustersAPI = (*ManagedClustersAPIService)(&c.common)
+	c.NonEmployeeLifecycleManagementAPI = (*NonEmployeeLifecycleManagementAPIService)(&c.common)
+	c.NotificationsAPI = (*NotificationsAPIService)(&c.common)
+	c.OAuthClientsAPI = (*OAuthClientsAPIService)(&c.common)
+	c.OrgConfigAPI = (*OrgConfigAPIService)(&c.common)
+	c.PasswordConfigurationAPI = (*PasswordConfigurationAPIService)(&c.common)
+	c.PasswordDictionaryAPI = (*PasswordDictionaryAPIService)(&c.common)
+	c.PasswordManagementAPI = (*PasswordManagementAPIService)(&c.common)
+	c.PasswordSyncGroupsAPI = (*PasswordSyncGroupsAPIService)(&c.common)
+	c.PersonalAccessTokensAPI = (*PersonalAccessTokensAPIService)(&c.common)
+	c.PublicIdentitiesConfigAPI = (*PublicIdentitiesConfigAPIService)(&c.common)
+	c.RequestableObjectsAPI = (*RequestableObjectsAPIService)(&c.common)
+	c.RoleInsightsAPI = (*RoleInsightsAPIService)(&c.common)
+	c.RolesAPI = (*RolesAPIService)(&c.common)
+	c.SODPolicyAPI = (*SODPolicyAPIService)(&c.common)
+	c.SODViolationsAPI = (*SODViolationsAPIService)(&c.common)
+	c.SPConfigAPI = (*SPConfigAPIService)(&c.common)
+	c.SearchAttributeConfigurationAPI = (*SearchAttributeConfigurationAPIService)(&c.common)
+	c.SegmentsAPI = (*SegmentsAPIService)(&c.common)
+	c.ServiceDeskIntegrationAPI = (*ServiceDeskIntegrationAPIService)(&c.common)
+	c.SourceUsagesAPI = (*SourceUsagesAPIService)(&c.common)
+	c.SourcesAPI = (*SourcesAPIService)(&c.common)
+	c.TaggedObjectsAPI = (*TaggedObjectsAPIService)(&c.common)
+	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)
+	c.TransformsAPI = (*TransformsAPIService)(&c.common)
+	c.TriggersAPI = (*TriggersAPIService)(&c.common)
+	c.WorkItemsAPI = (*WorkItemsAPIService)(&c.common)
+	c.WorkReassignmentAPI = (*WorkReassignmentAPIService)(&c.common)
+	c.WorkflowsAPI = (*WorkflowsAPIService)(&c.common)
 
 	return c
 }
@@ -587,7 +587,7 @@ func (c *APIClient) prepareRequest(
 
 	// Add the user agent to the request.
 	localVarRequest.Header.Add("User-Agent", c.cfg.UserAgent)
-	localVarRequest.Header.Add("X-SailPoint-SDK", "1.2.0")
+localVarRequest.Header.Add("X-SailPoint-SDK", "1.2.0")
 
 	if ctx != nil {
 		// add context to the request
@@ -605,7 +605,7 @@ func (c *APIClient) prepareRequest(
 
 			latestToken.SetAuthHeader(localVarRequest)
 		}
-		if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
+if c.cfg.Token == "" && c.cfg.ClientId != "" && c.cfg.ClientSecret != "" && c.cfg.TokenURL != "" {
 			auth, err := getAccessToken(c.cfg.ClientId, c.cfg.ClientSecret, c.cfg.TokenURL)
 			if err != nil {
 				return nil, err
@@ -895,16 +895,16 @@ func formatErrorMessage(status string, v interface{}) string {
 	str := ""
 	metaValue := reflect.ValueOf(v).Elem()
 
-	field := metaValue.FieldByName("Title")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s", field.Interface())
-	}
+			field := metaValue.FieldByName("Title")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s", field.Interface())
+		}
 
-	field = metaValue.FieldByName("Detail")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s (%s)", str, field.Interface())
-	}
+		field = metaValue.FieldByName("Detail")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s (%s)", str, field.Interface())
+			}
 
-	// status title (detail)
+// status title (detail)
 	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
 }

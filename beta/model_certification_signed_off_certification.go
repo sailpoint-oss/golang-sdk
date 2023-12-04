@@ -13,6 +13,7 @@ package beta
 import (
 	"encoding/json"
 	"time"
+	"fmt"
 )
 
 // checks if the CertificationSignedOffCertification type satisfies the MappedNullable interface at compile time
@@ -577,11 +578,45 @@ func (o CertificationSignedOffCertification) ToMap() (map[string]interface{}, er
 }
 
 func (o *CertificationSignedOffCertification) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"created",
+		"campaignRef",
+		"phase",
+		"due",
+		"signed",
+		"reviewer",
+		"hasErrors",
+		"completed",
+		"decisionsMade",
+		"decisionsTotal",
+		"entitiesCompleted",
+		"entitiesTotal",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varCertificationSignedOffCertification := _CertificationSignedOffCertification{}
 
 	if err = json.Unmarshal(bytes, &varCertificationSignedOffCertification); err == nil {
-		*o = CertificationSignedOffCertification(varCertificationSignedOffCertification)
-	}
+	*o = CertificationSignedOffCertification(varCertificationSignedOffCertification)
+}
 
 	additionalProperties := make(map[string]interface{})
 

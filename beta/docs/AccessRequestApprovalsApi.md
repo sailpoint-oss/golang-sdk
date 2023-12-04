@@ -1,15 +1,15 @@
-# \AccessRequestApprovalsApi
+# \AccessRequestApprovalsAPI
 
 All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApproveAccessRequest**](AccessRequestApprovalsApi.md#ApproveAccessRequest) | **Post** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
-[**ForwardAccessRequest**](AccessRequestApprovalsApi.md#ForwardAccessRequest) | **Post** /access-request-approvals/{approvalId}/forward | Forwards an access request approval to a new owner.
-[**GetAccessRequestApprovalSummary**](AccessRequestApprovalsApi.md#GetAccessRequestApprovalSummary) | **Get** /access-request-approvals/approval-summary | Get the number of pending, approved and rejected access requests approvals
-[**ListCompletedApprovals**](AccessRequestApprovalsApi.md#ListCompletedApprovals) | **Get** /access-request-approvals/completed | Completed Access Request Approvals List
-[**ListPendingApprovals**](AccessRequestApprovalsApi.md#ListPendingApprovals) | **Get** /access-request-approvals/pending | Pending Access Request Approvals List
-[**RejectAccessRequest**](AccessRequestApprovalsApi.md#RejectAccessRequest) | **Post** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
+[**ApproveAccessRequest**](AccessRequestApprovalsAPI.md#ApproveAccessRequest) | **Post** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
+[**ForwardAccessRequest**](AccessRequestApprovalsAPI.md#ForwardAccessRequest) | **Post** /access-request-approvals/{approvalId}/forward | Forwards an access request approval to a new owner.
+[**GetAccessRequestApprovalSummary**](AccessRequestApprovalsAPI.md#GetAccessRequestApprovalSummary) | **Get** /access-request-approvals/approval-summary | Get the number of pending, approved and rejected access requests approvals
+[**ListCompletedApprovals**](AccessRequestApprovalsAPI.md#ListCompletedApprovals) | **Get** /access-request-approvals/completed | Completed Access Request Approvals List
+[**ListPendingApprovals**](AccessRequestApprovalsAPI.md#ListPendingApprovals) | **Get** /access-request-approvals/pending | Pending Access Request Approvals List
+[**RejectAccessRequest**](AccessRequestApprovalsAPI.md#RejectAccessRequest) | **Post** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
 
 
 
@@ -30,7 +30,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -39,13 +39,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsApi.ApproveAccessRequest(context.Background(), approvalId).CommentDto(commentDto).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.ApproveAccessRequest(context.Background(), approvalId).CommentDto(commentDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.ApproveAccessRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ApproveAccessRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ApproveAccessRequest`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.ApproveAccessRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ApproveAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -102,7 +102,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -111,13 +111,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsApi.ForwardAccessRequest(context.Background(), approvalId).ForwardApprovalDto(forwardApprovalDto).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.ForwardAccessRequest(context.Background(), approvalId).ForwardApprovalDto(forwardApprovalDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.ForwardAccessRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ForwardAccessRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ForwardAccessRequest`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.ForwardAccessRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ForwardAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -174,7 +174,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -183,13 +183,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsApi.GetAccessRequestApprovalSummary(context.Background()).OwnerId(ownerId).FromDate(fromDate).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummary(context.Background()).OwnerId(ownerId).FromDate(fromDate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.GetAccessRequestApprovalSummary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.GetAccessRequestApprovalSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetAccessRequestApprovalSummary`: ApprovalSummary
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.GetAccessRequestApprovalSummary`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.GetAccessRequestApprovalSummary`: %v\n", resp)
 }
 ```
 
@@ -242,7 +242,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -255,13 +255,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsApi.ListCompletedApprovals(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.ListCompletedApprovals(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.ListCompletedApprovals``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ListCompletedApprovals``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListCompletedApprovals`: []CompletedApproval
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.ListCompletedApprovals`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ListCompletedApprovals`: %v\n", resp)
 }
 ```
 
@@ -318,7 +318,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -331,13 +331,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsApi.ListPendingApprovals(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.ListPendingApprovals(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.ListPendingApprovals``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.ListPendingApprovals``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListPendingApprovals`: []PendingApproval
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.ListPendingApprovals`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.ListPendingApprovals`: %v\n", resp)
 }
 ```
 
@@ -394,7 +394,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func main() {
@@ -403,13 +403,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestApprovalsApi.RejectAccessRequest(context.Background(), approvalId).CommentDto(commentDto).Execute()
+    resp, r, err := apiClient.AccessRequestApprovalsAPI.RejectAccessRequest(context.Background(), approvalId).CommentDto(commentDto).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsApi.RejectAccessRequest``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestApprovalsAPI.RejectAccessRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RejectAccessRequest`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsApi.RejectAccessRequest`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AccessRequestApprovalsAPI.RejectAccessRequest`: %v\n", resp)
 }
 ```
 

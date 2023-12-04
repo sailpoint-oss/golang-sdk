@@ -12,6 +12,7 @@ package beta
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AccessRequestDynamicApprover type satisfies the MappedNullable interface at compile time
@@ -21,10 +22,10 @@ var _ MappedNullable = &AccessRequestDynamicApprover{}
 type AccessRequestDynamicApprover struct {
 	// The unique ID of the access request object. Can be used with the [access request status endpoint](https://developer.sailpoint.com/idn/api/beta/list-access-request-status) to get the status of the request. 
 	AccessRequestId string `json:"accessRequestId"`
-	RequestedFor AccessRequestDynamicApproverRequestedFor `json:"requestedFor"`
+	RequestedFor AccessItemRequestedForDto `json:"requestedFor"`
 	// The access items that are being requested.
 	RequestedItems []AccessRequestDynamicApproverRequestedItemsInner `json:"requestedItems"`
-	RequestedBy AccessRequestDynamicApproverRequestedBy `json:"requestedBy"`
+	RequestedBy AccessItemRequesterDto `json:"requestedBy"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,7 +35,7 @@ type _AccessRequestDynamicApprover AccessRequestDynamicApprover
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessRequestDynamicApprover(accessRequestId string, requestedFor AccessRequestDynamicApproverRequestedFor, requestedItems []AccessRequestDynamicApproverRequestedItemsInner, requestedBy AccessRequestDynamicApproverRequestedBy) *AccessRequestDynamicApprover {
+func NewAccessRequestDynamicApprover(accessRequestId string, requestedFor AccessItemRequestedForDto, requestedItems []AccessRequestDynamicApproverRequestedItemsInner, requestedBy AccessItemRequesterDto) *AccessRequestDynamicApprover {
 	this := AccessRequestDynamicApprover{}
 	this.AccessRequestId = accessRequestId
 	this.RequestedFor = requestedFor
@@ -76,9 +77,9 @@ func (o *AccessRequestDynamicApprover) SetAccessRequestId(v string) {
 }
 
 // GetRequestedFor returns the RequestedFor field value
-func (o *AccessRequestDynamicApprover) GetRequestedFor() AccessRequestDynamicApproverRequestedFor {
+func (o *AccessRequestDynamicApprover) GetRequestedFor() AccessItemRequestedForDto {
 	if o == nil {
-		var ret AccessRequestDynamicApproverRequestedFor
+		var ret AccessItemRequestedForDto
 		return ret
 	}
 
@@ -87,7 +88,7 @@ func (o *AccessRequestDynamicApprover) GetRequestedFor() AccessRequestDynamicApp
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value
 // and a boolean to check if the value has been set.
-func (o *AccessRequestDynamicApprover) GetRequestedForOk() (*AccessRequestDynamicApproverRequestedFor, bool) {
+func (o *AccessRequestDynamicApprover) GetRequestedForOk() (*AccessItemRequestedForDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,7 +96,7 @@ func (o *AccessRequestDynamicApprover) GetRequestedForOk() (*AccessRequestDynami
 }
 
 // SetRequestedFor sets field value
-func (o *AccessRequestDynamicApprover) SetRequestedFor(v AccessRequestDynamicApproverRequestedFor) {
+func (o *AccessRequestDynamicApprover) SetRequestedFor(v AccessItemRequestedForDto) {
 	o.RequestedFor = v
 }
 
@@ -124,9 +125,9 @@ func (o *AccessRequestDynamicApprover) SetRequestedItems(v []AccessRequestDynami
 }
 
 // GetRequestedBy returns the RequestedBy field value
-func (o *AccessRequestDynamicApprover) GetRequestedBy() AccessRequestDynamicApproverRequestedBy {
+func (o *AccessRequestDynamicApprover) GetRequestedBy() AccessItemRequesterDto {
 	if o == nil {
-		var ret AccessRequestDynamicApproverRequestedBy
+		var ret AccessItemRequesterDto
 		return ret
 	}
 
@@ -135,7 +136,7 @@ func (o *AccessRequestDynamicApprover) GetRequestedBy() AccessRequestDynamicAppr
 
 // GetRequestedByOk returns a tuple with the RequestedBy field value
 // and a boolean to check if the value has been set.
-func (o *AccessRequestDynamicApprover) GetRequestedByOk() (*AccessRequestDynamicApproverRequestedBy, bool) {
+func (o *AccessRequestDynamicApprover) GetRequestedByOk() (*AccessItemRequesterDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -143,7 +144,7 @@ func (o *AccessRequestDynamicApprover) GetRequestedByOk() (*AccessRequestDynamic
 }
 
 // SetRequestedBy sets field value
-func (o *AccessRequestDynamicApprover) SetRequestedBy(v AccessRequestDynamicApproverRequestedBy) {
+func (o *AccessRequestDynamicApprover) SetRequestedBy(v AccessItemRequesterDto) {
 	o.RequestedBy = v
 }
 
@@ -170,11 +171,35 @@ func (o AccessRequestDynamicApprover) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *AccessRequestDynamicApprover) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"accessRequestId",
+		"requestedFor",
+		"requestedItems",
+		"requestedBy",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varAccessRequestDynamicApprover := _AccessRequestDynamicApprover{}
 
 	if err = json.Unmarshal(bytes, &varAccessRequestDynamicApprover); err == nil {
-		*o = AccessRequestDynamicApprover(varAccessRequestDynamicApprover)
-	}
+	*o = AccessRequestDynamicApprover(varAccessRequestDynamicApprover)
+}
 
 	additionalProperties := make(map[string]interface{})
 

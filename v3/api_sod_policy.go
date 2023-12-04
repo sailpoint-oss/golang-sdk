@@ -13,7 +13,7 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,12 +21,12 @@ import (
 )
 
 
-// SODPolicyApiService SODPolicyApi service
-type SODPolicyApiService service
+// SODPolicyAPIService SODPolicyAPI service
+type SODPolicyAPIService service
 
 type ApiCreateSodPolicyRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	sodPolicy *SodPolicy
 }
 
@@ -48,7 +48,7 @@ Requires role of ORG_ADMIN.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSodPolicyRequest
 */
-func (a *SODPolicyApiService) CreateSodPolicy(ctx context.Context) ApiCreateSodPolicyRequest {
+func (a *SODPolicyAPIService) CreateSodPolicy(ctx context.Context) ApiCreateSodPolicyRequest {
 	return ApiCreateSodPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,7 +57,7 @@ func (a *SODPolicyApiService) CreateSodPolicy(ctx context.Context) ApiCreateSodP
 
 // Execute executes the request
 //  @return SodPolicy
-func (a *SODPolicyApiService) CreateSodPolicyExecute(r ApiCreateSodPolicyRequest) (*SodPolicy, *http.Response, error) {
+func (a *SODPolicyAPIService) CreateSodPolicyExecute(r ApiCreateSodPolicyRequest) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *SODPolicyApiService) CreateSodPolicyExecute(r ApiCreateSodPolicyRequest
 		localVarReturnValue  *SodPolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.CreateSodPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.CreateSodPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,9 +108,9 @@ func (a *SODPolicyApiService) CreateSodPolicyExecute(r ApiCreateSodPolicyRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -191,7 +191,7 @@ func (a *SODPolicyApiService) CreateSodPolicyExecute(r ApiCreateSodPolicyRequest
 
 type ApiDeleteSodPolicyRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	id string
 	logical *bool
 }
@@ -216,7 +216,7 @@ Requires role of ORG_ADMIN.
  @param id The ID of the SOD Policy to delete.
  @return ApiDeleteSodPolicyRequest
 */
-func (a *SODPolicyApiService) DeleteSodPolicy(ctx context.Context, id string) ApiDeleteSodPolicyRequest {
+func (a *SODPolicyAPIService) DeleteSodPolicy(ctx context.Context, id string) ApiDeleteSodPolicyRequest {
 	return ApiDeleteSodPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -225,14 +225,14 @@ func (a *SODPolicyApiService) DeleteSodPolicy(ctx context.Context, id string) Ap
 }
 
 // Execute executes the request
-func (a *SODPolicyApiService) DeleteSodPolicyExecute(r ApiDeleteSodPolicyRequest) (*http.Response, error) {
+func (a *SODPolicyAPIService) DeleteSodPolicyExecute(r ApiDeleteSodPolicyRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.DeleteSodPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.DeleteSodPolicy")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -246,6 +246,9 @@ func (a *SODPolicyApiService) DeleteSodPolicyExecute(r ApiDeleteSodPolicyRequest
 
 	if r.logical != nil {
 		parameterAddToQuery(localVarQueryParams, "logical", r.logical, "")
+	} else {
+		var defaultValue bool = true
+		r.logical = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -274,9 +277,9 @@ func (a *SODPolicyApiService) DeleteSodPolicyExecute(r ApiDeleteSodPolicyRequest
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -359,7 +362,7 @@ func (a *SODPolicyApiService) DeleteSodPolicyExecute(r ApiDeleteSodPolicyRequest
 
 type ApiDeleteSodPolicyScheduleRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	id string
 }
 
@@ -376,7 +379,7 @@ This deletes schedule for a specified SOD policy by ID.
  @param id The ID of the SOD policy the schedule must be deleted for.
  @return ApiDeleteSodPolicyScheduleRequest
 */
-func (a *SODPolicyApiService) DeleteSodPolicySchedule(ctx context.Context, id string) ApiDeleteSodPolicyScheduleRequest {
+func (a *SODPolicyAPIService) DeleteSodPolicySchedule(ctx context.Context, id string) ApiDeleteSodPolicyScheduleRequest {
 	return ApiDeleteSodPolicyScheduleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -385,14 +388,14 @@ func (a *SODPolicyApiService) DeleteSodPolicySchedule(ctx context.Context, id st
 }
 
 // Execute executes the request
-func (a *SODPolicyApiService) DeleteSodPolicyScheduleExecute(r ApiDeleteSodPolicyScheduleRequest) (*http.Response, error) {
+func (a *SODPolicyAPIService) DeleteSodPolicyScheduleExecute(r ApiDeleteSodPolicyScheduleRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.DeleteSodPolicySchedule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.DeleteSodPolicySchedule")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -431,9 +434,9 @@ func (a *SODPolicyApiService) DeleteSodPolicyScheduleExecute(r ApiDeleteSodPolic
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -516,7 +519,7 @@ func (a *SODPolicyApiService) DeleteSodPolicyScheduleExecute(r ApiDeleteSodPolic
 
 type ApiGetCustomViolationReportRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	reportResultId string
 	fileName string
 }
@@ -535,7 +538,7 @@ This allows to download a specified named violation report for a given report re
  @param fileName Custom Name for the  file.
  @return ApiGetCustomViolationReportRequest
 */
-func (a *SODPolicyApiService) GetCustomViolationReport(ctx context.Context, reportResultId string, fileName string) ApiGetCustomViolationReportRequest {
+func (a *SODPolicyAPIService) GetCustomViolationReport(ctx context.Context, reportResultId string, fileName string) ApiGetCustomViolationReportRequest {
 	return ApiGetCustomViolationReportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -546,7 +549,7 @@ func (a *SODPolicyApiService) GetCustomViolationReport(ctx context.Context, repo
 
 // Execute executes the request
 //  @return *os.File
-func (a *SODPolicyApiService) GetCustomViolationReportExecute(r ApiGetCustomViolationReportRequest) (*os.File, *http.Response, error) {
+func (a *SODPolicyAPIService) GetCustomViolationReportExecute(r ApiGetCustomViolationReportRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -554,7 +557,7 @@ func (a *SODPolicyApiService) GetCustomViolationReportExecute(r ApiGetCustomViol
 		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.GetCustomViolationReport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.GetCustomViolationReport")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -594,9 +597,9 @@ func (a *SODPolicyApiService) GetCustomViolationReportExecute(r ApiGetCustomViol
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -688,7 +691,7 @@ func (a *SODPolicyApiService) GetCustomViolationReportExecute(r ApiGetCustomViol
 
 type ApiGetDefaultViolationReportRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	reportResultId string
 }
 
@@ -705,7 +708,7 @@ This allows to download a violation report for a given report reference.
  @param reportResultId The ID of the report reference to download.
  @return ApiGetDefaultViolationReportRequest
 */
-func (a *SODPolicyApiService) GetDefaultViolationReport(ctx context.Context, reportResultId string) ApiGetDefaultViolationReportRequest {
+func (a *SODPolicyAPIService) GetDefaultViolationReport(ctx context.Context, reportResultId string) ApiGetDefaultViolationReportRequest {
 	return ApiGetDefaultViolationReportRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -715,7 +718,7 @@ func (a *SODPolicyApiService) GetDefaultViolationReport(ctx context.Context, rep
 
 // Execute executes the request
 //  @return *os.File
-func (a *SODPolicyApiService) GetDefaultViolationReportExecute(r ApiGetDefaultViolationReportRequest) (*os.File, *http.Response, error) {
+func (a *SODPolicyAPIService) GetDefaultViolationReportExecute(r ApiGetDefaultViolationReportRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -723,7 +726,7 @@ func (a *SODPolicyApiService) GetDefaultViolationReportExecute(r ApiGetDefaultVi
 		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.GetDefaultViolationReport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.GetDefaultViolationReport")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -762,9 +765,9 @@ func (a *SODPolicyApiService) GetDefaultViolationReportExecute(r ApiGetDefaultVi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -856,7 +859,7 @@ func (a *SODPolicyApiService) GetDefaultViolationReportExecute(r ApiGetDefaultVi
 
 type ApiGetSodAllReportRunStatusRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 }
 
 func (r ApiGetSodAllReportRunStatusRequest) Execute() (*ReportResultReference, *http.Response, error) {
@@ -871,7 +874,7 @@ This endpoint gets the status for a violation report for all policy run.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetSodAllReportRunStatusRequest
 */
-func (a *SODPolicyApiService) GetSodAllReportRunStatus(ctx context.Context) ApiGetSodAllReportRunStatusRequest {
+func (a *SODPolicyAPIService) GetSodAllReportRunStatus(ctx context.Context) ApiGetSodAllReportRunStatusRequest {
 	return ApiGetSodAllReportRunStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -880,7 +883,7 @@ func (a *SODPolicyApiService) GetSodAllReportRunStatus(ctx context.Context) ApiG
 
 // Execute executes the request
 //  @return ReportResultReference
-func (a *SODPolicyApiService) GetSodAllReportRunStatusExecute(r ApiGetSodAllReportRunStatusRequest) (*ReportResultReference, *http.Response, error) {
+func (a *SODPolicyAPIService) GetSodAllReportRunStatusExecute(r ApiGetSodAllReportRunStatusRequest) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -888,7 +891,7 @@ func (a *SODPolicyApiService) GetSodAllReportRunStatusExecute(r ApiGetSodAllRepo
 		localVarReturnValue  *ReportResultReference
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.GetSodAllReportRunStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.GetSodAllReportRunStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -926,9 +929,9 @@ func (a *SODPolicyApiService) GetSodAllReportRunStatusExecute(r ApiGetSodAllRepo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1009,7 +1012,7 @@ func (a *SODPolicyApiService) GetSodAllReportRunStatusExecute(r ApiGetSodAllRepo
 
 type ApiGetSodPolicyRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	id string
 }
 
@@ -1027,7 +1030,7 @@ Requires role of ORG_ADMIN.
  @param id The ID of the SOD Policy to retrieve.
  @return ApiGetSodPolicyRequest
 */
-func (a *SODPolicyApiService) GetSodPolicy(ctx context.Context, id string) ApiGetSodPolicyRequest {
+func (a *SODPolicyAPIService) GetSodPolicy(ctx context.Context, id string) ApiGetSodPolicyRequest {
 	return ApiGetSodPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1037,7 +1040,7 @@ func (a *SODPolicyApiService) GetSodPolicy(ctx context.Context, id string) ApiGe
 
 // Execute executes the request
 //  @return SodPolicy
-func (a *SODPolicyApiService) GetSodPolicyExecute(r ApiGetSodPolicyRequest) (*SodPolicy, *http.Response, error) {
+func (a *SODPolicyAPIService) GetSodPolicyExecute(r ApiGetSodPolicyRequest) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1045,7 +1048,7 @@ func (a *SODPolicyApiService) GetSodPolicyExecute(r ApiGetSodPolicyRequest) (*So
 		localVarReturnValue  *SodPolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.GetSodPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.GetSodPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1084,9 +1087,9 @@ func (a *SODPolicyApiService) GetSodPolicyExecute(r ApiGetSodPolicyRequest) (*So
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1178,7 +1181,7 @@ func (a *SODPolicyApiService) GetSodPolicyExecute(r ApiGetSodPolicyRequest) (*So
 
 type ApiGetSodPolicyScheduleRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	id string
 }
 
@@ -1195,7 +1198,7 @@ This endpoint gets a specified SOD policy's schedule.
  @param id The ID of the SOD policy schedule to retrieve.
  @return ApiGetSodPolicyScheduleRequest
 */
-func (a *SODPolicyApiService) GetSodPolicySchedule(ctx context.Context, id string) ApiGetSodPolicyScheduleRequest {
+func (a *SODPolicyAPIService) GetSodPolicySchedule(ctx context.Context, id string) ApiGetSodPolicyScheduleRequest {
 	return ApiGetSodPolicyScheduleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1205,7 +1208,7 @@ func (a *SODPolicyApiService) GetSodPolicySchedule(ctx context.Context, id strin
 
 // Execute executes the request
 //  @return SodPolicySchedule
-func (a *SODPolicyApiService) GetSodPolicyScheduleExecute(r ApiGetSodPolicyScheduleRequest) (*SodPolicySchedule, *http.Response, error) {
+func (a *SODPolicyAPIService) GetSodPolicyScheduleExecute(r ApiGetSodPolicyScheduleRequest) (*SodPolicySchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1213,7 +1216,7 @@ func (a *SODPolicyApiService) GetSodPolicyScheduleExecute(r ApiGetSodPolicySched
 		localVarReturnValue  *SodPolicySchedule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.GetSodPolicySchedule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.GetSodPolicySchedule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1252,9 +1255,9 @@ func (a *SODPolicyApiService) GetSodPolicyScheduleExecute(r ApiGetSodPolicySched
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1335,7 +1338,7 @@ func (a *SODPolicyApiService) GetSodPolicyScheduleExecute(r ApiGetSodPolicySched
 
 type ApiGetSodViolationReportRunStatusRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	reportResultId string
 }
 
@@ -1352,7 +1355,7 @@ This gets the status for a violation report run task that has already been invok
  @param reportResultId The ID of the report reference to retrieve.
  @return ApiGetSodViolationReportRunStatusRequest
 */
-func (a *SODPolicyApiService) GetSodViolationReportRunStatus(ctx context.Context, reportResultId string) ApiGetSodViolationReportRunStatusRequest {
+func (a *SODPolicyAPIService) GetSodViolationReportRunStatus(ctx context.Context, reportResultId string) ApiGetSodViolationReportRunStatusRequest {
 	return ApiGetSodViolationReportRunStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1362,7 +1365,7 @@ func (a *SODPolicyApiService) GetSodViolationReportRunStatus(ctx context.Context
 
 // Execute executes the request
 //  @return ReportResultReference
-func (a *SODPolicyApiService) GetSodViolationReportRunStatusExecute(r ApiGetSodViolationReportRunStatusRequest) (*ReportResultReference, *http.Response, error) {
+func (a *SODPolicyAPIService) GetSodViolationReportRunStatusExecute(r ApiGetSodViolationReportRunStatusRequest) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1370,7 +1373,7 @@ func (a *SODPolicyApiService) GetSodViolationReportRunStatusExecute(r ApiGetSodV
 		localVarReturnValue  *ReportResultReference
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.GetSodViolationReportRunStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.GetSodViolationReportRunStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1409,9 +1412,9 @@ func (a *SODPolicyApiService) GetSodViolationReportRunStatusExecute(r ApiGetSodV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1503,7 +1506,7 @@ func (a *SODPolicyApiService) GetSodViolationReportRunStatusExecute(r ApiGetSodV
 
 type ApiGetSodViolationReportStatusRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	id string
 }
 
@@ -1520,7 +1523,7 @@ This gets the status for a violation report run task that has already been invok
  @param id The ID of the violation report to retrieve status for.
  @return ApiGetSodViolationReportStatusRequest
 */
-func (a *SODPolicyApiService) GetSodViolationReportStatus(ctx context.Context, id string) ApiGetSodViolationReportStatusRequest {
+func (a *SODPolicyAPIService) GetSodViolationReportStatus(ctx context.Context, id string) ApiGetSodViolationReportStatusRequest {
 	return ApiGetSodViolationReportStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1530,7 +1533,7 @@ func (a *SODPolicyApiService) GetSodViolationReportStatus(ctx context.Context, i
 
 // Execute executes the request
 //  @return ReportResultReference
-func (a *SODPolicyApiService) GetSodViolationReportStatusExecute(r ApiGetSodViolationReportStatusRequest) (*ReportResultReference, *http.Response, error) {
+func (a *SODPolicyAPIService) GetSodViolationReportStatusExecute(r ApiGetSodViolationReportStatusRequest) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1538,7 +1541,7 @@ func (a *SODPolicyApiService) GetSodViolationReportStatusExecute(r ApiGetSodViol
 		localVarReturnValue  *ReportResultReference
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.GetSodViolationReportStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.GetSodViolationReportStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1577,9 +1580,9 @@ func (a *SODPolicyApiService) GetSodViolationReportStatusExecute(r ApiGetSodViol
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1671,7 +1674,7 @@ func (a *SODPolicyApiService) GetSodViolationReportStatusExecute(r ApiGetSodViol
 
 type ApiListSodPoliciesRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -1715,7 +1718,7 @@ Requires role of ORG_ADMIN
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSodPoliciesRequest
 */
-func (a *SODPolicyApiService) ListSodPolicies(ctx context.Context) ApiListSodPoliciesRequest {
+func (a *SODPolicyAPIService) ListSodPolicies(ctx context.Context) ApiListSodPoliciesRequest {
 	return ApiListSodPoliciesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1724,7 +1727,7 @@ func (a *SODPolicyApiService) ListSodPolicies(ctx context.Context) ApiListSodPol
 
 // Execute executes the request
 //  @return []SodPolicy
-func (a *SODPolicyApiService) ListSodPoliciesExecute(r ApiListSodPoliciesRequest) ([]SodPolicy, *http.Response, error) {
+func (a *SODPolicyAPIService) ListSodPoliciesExecute(r ApiListSodPoliciesRequest) ([]SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1732,7 +1735,7 @@ func (a *SODPolicyApiService) ListSodPoliciesExecute(r ApiListSodPoliciesRequest
 		localVarReturnValue  []SodPolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.ListSodPolicies")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.ListSodPolicies")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1745,12 +1748,21 @@ func (a *SODPolicyApiService) ListSodPoliciesExecute(r ApiListSodPoliciesRequest
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1782,9 +1794,9 @@ func (a *SODPolicyApiService) ListSodPoliciesExecute(r ApiListSodPoliciesRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1865,7 +1877,7 @@ func (a *SODPolicyApiService) ListSodPoliciesExecute(r ApiListSodPoliciesRequest
 
 type ApiPatchSodPolicyRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	id string
 	jsonPatchOperation *[]JsonPatchOperation
 }
@@ -1891,7 +1903,7 @@ This endpoint can only patch CONFLICTING_ACCESS_BASED type policies. Do not use 
  @param id The ID of the SOD policy being modified.
  @return ApiPatchSodPolicyRequest
 */
-func (a *SODPolicyApiService) PatchSodPolicy(ctx context.Context, id string) ApiPatchSodPolicyRequest {
+func (a *SODPolicyAPIService) PatchSodPolicy(ctx context.Context, id string) ApiPatchSodPolicyRequest {
 	return ApiPatchSodPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1901,7 +1913,7 @@ func (a *SODPolicyApiService) PatchSodPolicy(ctx context.Context, id string) Api
 
 // Execute executes the request
 //  @return SodPolicy
-func (a *SODPolicyApiService) PatchSodPolicyExecute(r ApiPatchSodPolicyRequest) (*SodPolicy, *http.Response, error) {
+func (a *SODPolicyAPIService) PatchSodPolicyExecute(r ApiPatchSodPolicyRequest) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -1909,7 +1921,7 @@ func (a *SODPolicyApiService) PatchSodPolicyExecute(r ApiPatchSodPolicyRequest) 
 		localVarReturnValue  *SodPolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.PatchSodPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.PatchSodPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1953,9 +1965,9 @@ func (a *SODPolicyApiService) PatchSodPolicyExecute(r ApiPatchSodPolicyRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2047,7 +2059,7 @@ func (a *SODPolicyApiService) PatchSodPolicyExecute(r ApiPatchSodPolicyRequest) 
 
 type ApiPutPolicyScheduleRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	id string
 	sodPolicySchedule *SodPolicySchedule
 }
@@ -2070,7 +2082,7 @@ This updates schedule for a specified SOD policy.
  @param id The ID of the SOD policy to update its schedule.
  @return ApiPutPolicyScheduleRequest
 */
-func (a *SODPolicyApiService) PutPolicySchedule(ctx context.Context, id string) ApiPutPolicyScheduleRequest {
+func (a *SODPolicyAPIService) PutPolicySchedule(ctx context.Context, id string) ApiPutPolicyScheduleRequest {
 	return ApiPutPolicyScheduleRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2080,7 +2092,7 @@ func (a *SODPolicyApiService) PutPolicySchedule(ctx context.Context, id string) 
 
 // Execute executes the request
 //  @return SodPolicySchedule
-func (a *SODPolicyApiService) PutPolicyScheduleExecute(r ApiPutPolicyScheduleRequest) (*SodPolicySchedule, *http.Response, error) {
+func (a *SODPolicyAPIService) PutPolicyScheduleExecute(r ApiPutPolicyScheduleRequest) (*SodPolicySchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2088,7 +2100,7 @@ func (a *SODPolicyApiService) PutPolicyScheduleExecute(r ApiPutPolicyScheduleReq
 		localVarReturnValue  *SodPolicySchedule
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.PutPolicySchedule")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.PutPolicySchedule")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2132,9 +2144,9 @@ func (a *SODPolicyApiService) PutPolicyScheduleExecute(r ApiPutPolicyScheduleReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2215,7 +2227,7 @@ func (a *SODPolicyApiService) PutPolicyScheduleExecute(r ApiPutPolicyScheduleReq
 
 type ApiPutSodPolicyRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	id string
 	sodPolicy *SodPolicy
 }
@@ -2239,7 +2251,7 @@ Requires role of ORG_ADMIN.
  @param id The ID of the SOD policy to update.
  @return ApiPutSodPolicyRequest
 */
-func (a *SODPolicyApiService) PutSodPolicy(ctx context.Context, id string) ApiPutSodPolicyRequest {
+func (a *SODPolicyAPIService) PutSodPolicy(ctx context.Context, id string) ApiPutSodPolicyRequest {
 	return ApiPutSodPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2249,7 +2261,7 @@ func (a *SODPolicyApiService) PutSodPolicy(ctx context.Context, id string) ApiPu
 
 // Execute executes the request
 //  @return SodPolicy
-func (a *SODPolicyApiService) PutSodPolicyExecute(r ApiPutSodPolicyRequest) (*SodPolicy, *http.Response, error) {
+func (a *SODPolicyAPIService) PutSodPolicyExecute(r ApiPutSodPolicyRequest) (*SodPolicy, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2257,7 +2269,7 @@ func (a *SODPolicyApiService) PutSodPolicyExecute(r ApiPutSodPolicyRequest) (*So
 		localVarReturnValue  *SodPolicy
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.PutSodPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.PutSodPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2301,9 +2313,9 @@ func (a *SODPolicyApiService) PutSodPolicyExecute(r ApiPutSodPolicyRequest) (*So
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2395,7 +2407,7 @@ func (a *SODPolicyApiService) PutSodPolicyExecute(r ApiPutSodPolicyRequest) (*So
 
 type ApiStartEvaluateSodPolicyRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	id string
 }
 
@@ -2412,7 +2424,7 @@ Runs the scheduled report for the policy retrieved by passed policy ID.  The rep
  @param id The SOD policy ID to run.
  @return ApiStartEvaluateSodPolicyRequest
 */
-func (a *SODPolicyApiService) StartEvaluateSodPolicy(ctx context.Context, id string) ApiStartEvaluateSodPolicyRequest {
+func (a *SODPolicyAPIService) StartEvaluateSodPolicy(ctx context.Context, id string) ApiStartEvaluateSodPolicyRequest {
 	return ApiStartEvaluateSodPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2422,7 +2434,7 @@ func (a *SODPolicyApiService) StartEvaluateSodPolicy(ctx context.Context, id str
 
 // Execute executes the request
 //  @return ReportResultReference
-func (a *SODPolicyApiService) StartEvaluateSodPolicyExecute(r ApiStartEvaluateSodPolicyRequest) (*ReportResultReference, *http.Response, error) {
+func (a *SODPolicyAPIService) StartEvaluateSodPolicyExecute(r ApiStartEvaluateSodPolicyRequest) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2430,7 +2442,7 @@ func (a *SODPolicyApiService) StartEvaluateSodPolicyExecute(r ApiStartEvaluateSo
 		localVarReturnValue  *ReportResultReference
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.StartEvaluateSodPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.StartEvaluateSodPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2469,9 +2481,9 @@ func (a *SODPolicyApiService) StartEvaluateSodPolicyExecute(r ApiStartEvaluateSo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2552,7 +2564,7 @@ func (a *SODPolicyApiService) StartEvaluateSodPolicyExecute(r ApiStartEvaluateSo
 
 type ApiStartSodAllPoliciesForOrgRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	multiPolicyRequest *MultiPolicyRequest
 }
 
@@ -2573,7 +2585,7 @@ Runs multi-policy report for the org. If a policy reports more than 5000 violati
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartSodAllPoliciesForOrgRequest
 */
-func (a *SODPolicyApiService) StartSodAllPoliciesForOrg(ctx context.Context) ApiStartSodAllPoliciesForOrgRequest {
+func (a *SODPolicyAPIService) StartSodAllPoliciesForOrg(ctx context.Context) ApiStartSodAllPoliciesForOrgRequest {
 	return ApiStartSodAllPoliciesForOrgRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2582,7 +2594,7 @@ func (a *SODPolicyApiService) StartSodAllPoliciesForOrg(ctx context.Context) Api
 
 // Execute executes the request
 //  @return ReportResultReference
-func (a *SODPolicyApiService) StartSodAllPoliciesForOrgExecute(r ApiStartSodAllPoliciesForOrgRequest) (*ReportResultReference, *http.Response, error) {
+func (a *SODPolicyAPIService) StartSodAllPoliciesForOrgExecute(r ApiStartSodAllPoliciesForOrgRequest) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2590,7 +2602,7 @@ func (a *SODPolicyApiService) StartSodAllPoliciesForOrgExecute(r ApiStartSodAllP
 		localVarReturnValue  *ReportResultReference
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.StartSodAllPoliciesForOrg")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.StartSodAllPoliciesForOrg")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2630,9 +2642,9 @@ func (a *SODPolicyApiService) StartSodAllPoliciesForOrgExecute(r ApiStartSodAllP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2713,7 +2725,7 @@ func (a *SODPolicyApiService) StartSodAllPoliciesForOrgExecute(r ApiStartSodAllP
 
 type ApiStartSodPolicyRequest struct {
 	ctx context.Context
-	ApiService *SODPolicyApiService
+	ApiService *SODPolicyAPIService
 	id string
 }
 
@@ -2730,7 +2742,7 @@ This invokes processing of violation report for given SOD policy. If the policy 
  @param id The SOD policy ID to run.
  @return ApiStartSodPolicyRequest
 */
-func (a *SODPolicyApiService) StartSodPolicy(ctx context.Context, id string) ApiStartSodPolicyRequest {
+func (a *SODPolicyAPIService) StartSodPolicy(ctx context.Context, id string) ApiStartSodPolicyRequest {
 	return ApiStartSodPolicyRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2740,7 +2752,7 @@ func (a *SODPolicyApiService) StartSodPolicy(ctx context.Context, id string) Api
 
 // Execute executes the request
 //  @return ReportResultReference
-func (a *SODPolicyApiService) StartSodPolicyExecute(r ApiStartSodPolicyRequest) (*ReportResultReference, *http.Response, error) {
+func (a *SODPolicyAPIService) StartSodPolicyExecute(r ApiStartSodPolicyRequest) (*ReportResultReference, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2748,7 +2760,7 @@ func (a *SODPolicyApiService) StartSodPolicyExecute(r ApiStartSodPolicyRequest) 
 		localVarReturnValue  *ReportResultReference
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyApiService.StartSodPolicy")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SODPolicyAPIService.StartSodPolicy")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2787,9 +2799,9 @@ func (a *SODPolicyApiService) StartSodPolicyExecute(r ApiStartSodPolicyRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

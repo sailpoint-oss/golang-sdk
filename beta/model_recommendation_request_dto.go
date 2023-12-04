@@ -263,8 +263,8 @@ func (o *RecommendationRequestDto) UnmarshalJSON(bytes []byte) (err error) {
 	varRecommendationRequestDto := _RecommendationRequestDto{}
 
 	if err = json.Unmarshal(bytes, &varRecommendationRequestDto); err == nil {
-		*o = RecommendationRequestDto(varRecommendationRequestDto)
-	}
+	*o = RecommendationRequestDto(varRecommendationRequestDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

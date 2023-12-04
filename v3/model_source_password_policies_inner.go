@@ -174,8 +174,8 @@ func (o *SourcePasswordPoliciesInner) UnmarshalJSON(bytes []byte) (err error) {
 	varSourcePasswordPoliciesInner := _SourcePasswordPoliciesInner{}
 
 	if err = json.Unmarshal(bytes, &varSourcePasswordPoliciesInner); err == nil {
-		*o = SourcePasswordPoliciesInner(varSourcePasswordPoliciesInner)
-	}
+	*o = SourcePasswordPoliciesInner(varSourcePasswordPoliciesInner)
+}
 
 	additionalProperties := make(map[string]interface{})
 

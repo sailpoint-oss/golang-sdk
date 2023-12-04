@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing IdentityHistoryApiService
+Testing IdentityHistoryAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_IdentityHistoryApiService(t *testing.T) {
+func Test_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test IdentityHistoryApiService CompareIdentitySnapshots", func(t *testing.T) {
+	t.Run("Test IdentityHistoryAPIService CompareIdentitySnapshots", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.IdentityHistoryApi.CompareIdentitySnapshots(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentityHistoryAPI.CompareIdentitySnapshots(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,14 +36,14 @@ func Test_beta_IdentityHistoryApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityHistoryApiService CompareIdentitySnapshotsAccessType", func(t *testing.T) {
+	t.Run("Test IdentityHistoryAPIService CompareIdentitySnapshotsAccessType", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var accessType string
 
-		resp, httpRes, err := apiClient.BETA.IdentityHistoryApi.CompareIdentitySnapshotsAccessType(context.Background(), id, accessType).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentityHistoryAPI.CompareIdentitySnapshotsAccessType(context.Background(), id, accessType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -51,13 +51,13 @@ func Test_beta_IdentityHistoryApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityHistoryApiService GetHistoricalIdentity", func(t *testing.T) {
+	t.Run("Test IdentityHistoryAPIService GetHistoricalIdentity", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.IdentityHistoryApi.GetHistoricalIdentity(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentityHistoryAPI.GetHistoricalIdentity(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -65,13 +65,13 @@ func Test_beta_IdentityHistoryApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityHistoryApiService GetHistoricalIdentityEvents", func(t *testing.T) {
+	t.Run("Test IdentityHistoryAPIService GetHistoricalIdentityEvents", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.IdentityHistoryApi.GetHistoricalIdentityEvents(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentityHistoryAPI.GetHistoricalIdentityEvents(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -79,83 +79,14 @@ func Test_beta_IdentityHistoryApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityHistoryApiService GetIdentitySnapshot", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-		var date string
-
-		resp, httpRes, err := apiClient.BETA.IdentityHistoryApi.GetIdentitySnapshot(context.Background(), id, date).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test IdentityHistoryApiService GetIdentitySnapshotSummary", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.IdentityHistoryApi.GetIdentitySnapshotSummary(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test IdentityHistoryApiService GetIdentityStartDate", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.IdentityHistoryApi.GetIdentityStartDate(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test IdentityHistoryApiService ListHistoricalIdentities", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.BETA.IdentityHistoryApi.ListHistoricalIdentities(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test IdentityHistoryApiService ListIdentityAccessItems", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var id string
-
-		resp, httpRes, err := apiClient.BETA.IdentityHistoryApi.ListIdentityAccessItems(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test IdentityHistoryApiService ListIdentitySnapshotAccessItems", func(t *testing.T) {
+	t.Run("Test IdentityHistoryAPIService GetIdentitySnapshot", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var date string
 
-		resp, httpRes, err := apiClient.BETA.IdentityHistoryApi.ListIdentitySnapshotAccessItems(context.Background(), id, date).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentityHistoryAPI.GetIdentitySnapshot(context.Background(), id, date).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -163,13 +94,82 @@ func Test_beta_IdentityHistoryApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IdentityHistoryApiService ListIdentitySnapshots", func(t *testing.T) {
+	t.Run("Test IdentityHistoryAPIService GetIdentitySnapshotSummary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.BETA.IdentityHistoryApi.ListIdentitySnapshots(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.BETA.IdentityHistoryAPI.GetIdentitySnapshotSummary(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentityHistoryAPIService GetIdentityStartDate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.IdentityHistoryAPI.GetIdentityStartDate(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentityHistoryAPIService ListHistoricalIdentities", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.BETA.IdentityHistoryAPI.ListHistoricalIdentities(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentityHistoryAPIService ListIdentityAccessItems", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.IdentityHistoryAPI.ListIdentityAccessItems(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentityHistoryAPIService ListIdentitySnapshotAccessItems", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+		var date string
+
+		resp, httpRes, err := apiClient.BETA.IdentityHistoryAPI.ListIdentitySnapshotAccessItems(context.Background(), id, date).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentityHistoryAPIService ListIdentitySnapshots", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.IdentityHistoryAPI.ListIdentitySnapshots(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing IAICommonAccessApiService
+Testing IAICommonAccessAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_IAICommonAccessApiService(t *testing.T) {
+func Test_beta_IAICommonAccessAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test IAICommonAccessApiService CreateCommonAccess", func(t *testing.T) {
+	t.Run("Test IAICommonAccessAPIService CreateCommonAccess", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IAICommonAccessApi.CreateCommonAccess(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAICommonAccessAPI.CreateCommonAccess(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_beta_IAICommonAccessApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAICommonAccessApiService GetCommonAccess", func(t *testing.T) {
+	t.Run("Test IAICommonAccessAPIService GetCommonAccess", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IAICommonAccessApi.GetCommonAccess(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAICommonAccessAPI.GetCommonAccess(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,11 +46,11 @@ func Test_beta_IAICommonAccessApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test IAICommonAccessApiService UpdateCommonAccessStatusInBulk", func(t *testing.T) {
+	t.Run("Test IAICommonAccessAPIService UpdateCommonAccessStatusInBulk", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.IAICommonAccessApi.UpdateCommonAccessStatusInBulk(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.IAICommonAccessAPI.UpdateCommonAccessStatusInBulk(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// TransformsApiService TransformsApi service
-type TransformsApiService service
+// TransformsAPIService TransformsAPI service
+type TransformsAPIService service
 
 type ApiCreateTransformRequest struct {
 	ctx context.Context
-	ApiService *TransformsApiService
+	ApiService *TransformsAPIService
 	transform *Transform
 }
 
@@ -47,7 +47,7 @@ Creates a new transform object immediately. By default, the internal flag is set
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateTransformRequest
 */
-func (a *TransformsApiService) CreateTransform(ctx context.Context) ApiCreateTransformRequest {
+func (a *TransformsAPIService) CreateTransform(ctx context.Context) ApiCreateTransformRequest {
 	return ApiCreateTransformRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -56,7 +56,7 @@ func (a *TransformsApiService) CreateTransform(ctx context.Context) ApiCreateTra
 
 // Execute executes the request
 //  @return TransformRead
-func (a *TransformsApiService) CreateTransformExecute(r ApiCreateTransformRequest) (*TransformRead, *http.Response, error) {
+func (a *TransformsAPIService) CreateTransformExecute(r ApiCreateTransformRequest) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -64,7 +64,7 @@ func (a *TransformsApiService) CreateTransformExecute(r ApiCreateTransformReques
 		localVarReturnValue  *TransformRead
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.CreateTransform")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsAPIService.CreateTransform")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -107,9 +107,9 @@ func (a *TransformsApiService) CreateTransformExecute(r ApiCreateTransformReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -201,7 +201,7 @@ func (a *TransformsApiService) CreateTransformExecute(r ApiCreateTransformReques
 
 type ApiDeleteTransformRequest struct {
 	ctx context.Context
-	ApiService *TransformsApiService
+	ApiService *TransformsAPIService
 	id string
 }
 
@@ -219,7 +219,7 @@ A token with transform delete authority is required to call this API.
  @param id ID of the transform to delete
  @return ApiDeleteTransformRequest
 */
-func (a *TransformsApiService) DeleteTransform(ctx context.Context, id string) ApiDeleteTransformRequest {
+func (a *TransformsAPIService) DeleteTransform(ctx context.Context, id string) ApiDeleteTransformRequest {
 	return ApiDeleteTransformRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -228,14 +228,14 @@ func (a *TransformsApiService) DeleteTransform(ctx context.Context, id string) A
 }
 
 // Execute executes the request
-func (a *TransformsApiService) DeleteTransformExecute(r ApiDeleteTransformRequest) (*http.Response, error) {
+func (a *TransformsAPIService) DeleteTransformExecute(r ApiDeleteTransformRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.DeleteTransform")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsAPIService.DeleteTransform")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -274,9 +274,9 @@ func (a *TransformsApiService) DeleteTransformExecute(r ApiDeleteTransformReques
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -359,7 +359,7 @@ func (a *TransformsApiService) DeleteTransformExecute(r ApiDeleteTransformReques
 
 type ApiGetTransformRequest struct {
 	ctx context.Context
-	ApiService *TransformsApiService
+	ApiService *TransformsAPIService
 	id string
 }
 
@@ -377,7 +377,7 @@ A token with transform read authority is required to call this API.
  @param id ID of the transform to retrieve
  @return ApiGetTransformRequest
 */
-func (a *TransformsApiService) GetTransform(ctx context.Context, id string) ApiGetTransformRequest {
+func (a *TransformsAPIService) GetTransform(ctx context.Context, id string) ApiGetTransformRequest {
 	return ApiGetTransformRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -387,7 +387,7 @@ func (a *TransformsApiService) GetTransform(ctx context.Context, id string) ApiG
 
 // Execute executes the request
 //  @return TransformRead
-func (a *TransformsApiService) GetTransformExecute(r ApiGetTransformRequest) (*TransformRead, *http.Response, error) {
+func (a *TransformsAPIService) GetTransformExecute(r ApiGetTransformRequest) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -395,7 +395,7 @@ func (a *TransformsApiService) GetTransformExecute(r ApiGetTransformRequest) (*T
 		localVarReturnValue  *TransformRead
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.GetTransform")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsAPIService.GetTransform")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -434,9 +434,9 @@ func (a *TransformsApiService) GetTransformExecute(r ApiGetTransformRequest) (*T
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -528,7 +528,7 @@ func (a *TransformsApiService) GetTransformExecute(r ApiGetTransformRequest) (*T
 
 type ApiListTransformsRequest struct {
 	ctx context.Context
-	ApiService *TransformsApiService
+	ApiService *TransformsAPIService
 	offset *int32
 	limit *int32
 	count *bool
@@ -579,7 +579,7 @@ A token with transforms-list read authority is required to call this API.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListTransformsRequest
 */
-func (a *TransformsApiService) ListTransforms(ctx context.Context) ApiListTransformsRequest {
+func (a *TransformsAPIService) ListTransforms(ctx context.Context) ApiListTransformsRequest {
 	return ApiListTransformsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -588,7 +588,7 @@ func (a *TransformsApiService) ListTransforms(ctx context.Context) ApiListTransf
 
 // Execute executes the request
 //  @return []TransformRead
-func (a *TransformsApiService) ListTransformsExecute(r ApiListTransformsRequest) ([]TransformRead, *http.Response, error) {
+func (a *TransformsAPIService) ListTransformsExecute(r ApiListTransformsRequest) ([]TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -596,7 +596,7 @@ func (a *TransformsApiService) ListTransformsExecute(r ApiListTransformsRequest)
 		localVarReturnValue  []TransformRead
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.ListTransforms")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsAPIService.ListTransforms")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -609,12 +609,21 @@ func (a *TransformsApiService) ListTransformsExecute(r ApiListTransformsRequest)
 
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.name != nil {
 		parameterAddToQuery(localVarQueryParams, "name", r.name, "")
@@ -649,9 +658,9 @@ func (a *TransformsApiService) ListTransformsExecute(r ApiListTransformsRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -743,7 +752,7 @@ func (a *TransformsApiService) ListTransformsExecute(r ApiListTransformsRequest)
 
 type ApiUpdateTransformRequest struct {
 	ctx context.Context
-	ApiService *TransformsApiService
+	ApiService *TransformsAPIService
 	id string
 	transform *Transform
 }
@@ -768,7 +777,7 @@ A token with transform write authority is required to call this API.
  @param id ID of the transform to update
  @return ApiUpdateTransformRequest
 */
-func (a *TransformsApiService) UpdateTransform(ctx context.Context, id string) ApiUpdateTransformRequest {
+func (a *TransformsAPIService) UpdateTransform(ctx context.Context, id string) ApiUpdateTransformRequest {
 	return ApiUpdateTransformRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -778,7 +787,7 @@ func (a *TransformsApiService) UpdateTransform(ctx context.Context, id string) A
 
 // Execute executes the request
 //  @return TransformRead
-func (a *TransformsApiService) UpdateTransformExecute(r ApiUpdateTransformRequest) (*TransformRead, *http.Response, error) {
+func (a *TransformsAPIService) UpdateTransformExecute(r ApiUpdateTransformRequest) (*TransformRead, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -786,7 +795,7 @@ func (a *TransformsApiService) UpdateTransformExecute(r ApiUpdateTransformReques
 		localVarReturnValue  *TransformRead
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsApiService.UpdateTransform")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TransformsAPIService.UpdateTransform")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -827,9 +836,9 @@ func (a *TransformsApiService) UpdateTransformExecute(r ApiUpdateTransformReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

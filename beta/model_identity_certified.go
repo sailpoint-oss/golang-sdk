@@ -358,8 +358,8 @@ func (o *IdentityCertified) UnmarshalJSON(bytes []byte) (err error) {
 	varIdentityCertified := _IdentityCertified{}
 
 	if err = json.Unmarshal(bytes, &varIdentityCertified); err == nil {
-		*o = IdentityCertified(varIdentityCertified)
-	}
+	*o = IdentityCertified(varIdentityCertified)
+}
 
 	additionalProperties := make(map[string]interface{})
 

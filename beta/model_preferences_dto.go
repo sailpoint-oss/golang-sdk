@@ -175,8 +175,8 @@ func (o *PreferencesDto) UnmarshalJSON(bytes []byte) (err error) {
 	varPreferencesDto := _PreferencesDto{}
 
 	if err = json.Unmarshal(bytes, &varPreferencesDto); err == nil {
-		*o = PreferencesDto(varPreferencesDto)
-	}
+	*o = PreferencesDto(varPreferencesDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

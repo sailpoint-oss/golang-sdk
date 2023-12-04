@@ -13,19 +13,19 @@ package beta
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// TriggersApiService TriggersApi service
-type TriggersApiService service
+// TriggersAPIService TriggersAPI service
+type TriggersAPIService service
 
 type ApiCompleteTriggerInvocationRequest struct {
 	ctx context.Context
-	ApiService *TriggersApiService
+	ApiService *TriggersAPIService
 	id string
 	completeInvocation *CompleteInvocation
 }
@@ -48,7 +48,7 @@ Completes an invocation to a REQUEST_RESPONSE type trigger.
  @param id The ID of the invocation to complete.
  @return ApiCompleteTriggerInvocationRequest
 */
-func (a *TriggersApiService) CompleteTriggerInvocation(ctx context.Context, id string) ApiCompleteTriggerInvocationRequest {
+func (a *TriggersAPIService) CompleteTriggerInvocation(ctx context.Context, id string) ApiCompleteTriggerInvocationRequest {
 	return ApiCompleteTriggerInvocationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,14 +57,14 @@ func (a *TriggersApiService) CompleteTriggerInvocation(ctx context.Context, id s
 }
 
 // Execute executes the request
-func (a *TriggersApiService) CompleteTriggerInvocationExecute(r ApiCompleteTriggerInvocationRequest) (*http.Response, error) {
+func (a *TriggersAPIService) CompleteTriggerInvocationExecute(r ApiCompleteTriggerInvocationRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersApiService.CompleteTriggerInvocation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.CompleteTriggerInvocation")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,9 +108,9 @@ func (a *TriggersApiService) CompleteTriggerInvocationExecute(r ApiCompleteTrigg
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -182,7 +182,7 @@ func (a *TriggersApiService) CompleteTriggerInvocationExecute(r ApiCompleteTrigg
 
 type ApiCreateSubscriptionRequest struct {
 	ctx context.Context
-	ApiService *TriggersApiService
+	ApiService *TriggersAPIService
 	subscriptionPostRequest *SubscriptionPostRequest
 }
 
@@ -205,7 +205,7 @@ This API creates a new subscription to a trigger and defines trigger invocation 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateSubscriptionRequest
 */
-func (a *TriggersApiService) CreateSubscription(ctx context.Context) ApiCreateSubscriptionRequest {
+func (a *TriggersAPIService) CreateSubscription(ctx context.Context) ApiCreateSubscriptionRequest {
 	return ApiCreateSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -214,7 +214,7 @@ func (a *TriggersApiService) CreateSubscription(ctx context.Context) ApiCreateSu
 
 // Execute executes the request
 //  @return Subscription
-func (a *TriggersApiService) CreateSubscriptionExecute(r ApiCreateSubscriptionRequest) (*Subscription, *http.Response, error) {
+func (a *TriggersAPIService) CreateSubscriptionExecute(r ApiCreateSubscriptionRequest) (*Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -222,7 +222,7 @@ func (a *TriggersApiService) CreateSubscriptionExecute(r ApiCreateSubscriptionRe
 		localVarReturnValue  *Subscription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersApiService.CreateSubscription")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.CreateSubscription")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -265,9 +265,9 @@ func (a *TriggersApiService) CreateSubscriptionExecute(r ApiCreateSubscriptionRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -348,7 +348,7 @@ func (a *TriggersApiService) CreateSubscriptionExecute(r ApiCreateSubscriptionRe
 
 type ApiDeleteSubscriptionRequest struct {
 	ctx context.Context
-	ApiService *TriggersApiService
+	ApiService *TriggersAPIService
 	id string
 }
 
@@ -365,7 +365,7 @@ Deletes an existing subscription to a trigger.
  @param id Subscription ID
  @return ApiDeleteSubscriptionRequest
 */
-func (a *TriggersApiService) DeleteSubscription(ctx context.Context, id string) ApiDeleteSubscriptionRequest {
+func (a *TriggersAPIService) DeleteSubscription(ctx context.Context, id string) ApiDeleteSubscriptionRequest {
 	return ApiDeleteSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -374,14 +374,14 @@ func (a *TriggersApiService) DeleteSubscription(ctx context.Context, id string) 
 }
 
 // Execute executes the request
-func (a *TriggersApiService) DeleteSubscriptionExecute(r ApiDeleteSubscriptionRequest) (*http.Response, error) {
+func (a *TriggersAPIService) DeleteSubscriptionExecute(r ApiDeleteSubscriptionRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersApiService.DeleteSubscription")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.DeleteSubscription")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -420,9 +420,9 @@ func (a *TriggersApiService) DeleteSubscriptionExecute(r ApiDeleteSubscriptionRe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -505,7 +505,7 @@ func (a *TriggersApiService) DeleteSubscriptionExecute(r ApiDeleteSubscriptionRe
 
 type ApiListSubscriptionsRequest struct {
 	ctx context.Context
-	ApiService *TriggersApiService
+	ApiService *TriggersAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -555,7 +555,7 @@ Gets a list of all trigger subscriptions.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListSubscriptionsRequest
 */
-func (a *TriggersApiService) ListSubscriptions(ctx context.Context) ApiListSubscriptionsRequest {
+func (a *TriggersAPIService) ListSubscriptions(ctx context.Context) ApiListSubscriptionsRequest {
 	return ApiListSubscriptionsRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -564,7 +564,7 @@ func (a *TriggersApiService) ListSubscriptions(ctx context.Context) ApiListSubsc
 
 // Execute executes the request
 //  @return []Subscription
-func (a *TriggersApiService) ListSubscriptionsExecute(r ApiListSubscriptionsRequest) ([]Subscription, *http.Response, error) {
+func (a *TriggersAPIService) ListSubscriptionsExecute(r ApiListSubscriptionsRequest) ([]Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -572,7 +572,7 @@ func (a *TriggersApiService) ListSubscriptionsExecute(r ApiListSubscriptionsRequ
 		localVarReturnValue  []Subscription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersApiService.ListSubscriptions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.ListSubscriptions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -585,12 +585,21 @@ func (a *TriggersApiService) ListSubscriptionsExecute(r ApiListSubscriptionsRequ
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -625,9 +634,9 @@ func (a *TriggersApiService) ListSubscriptionsExecute(r ApiListSubscriptionsRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -708,7 +717,7 @@ func (a *TriggersApiService) ListSubscriptionsExecute(r ApiListSubscriptionsRequ
 
 type ApiListTriggerInvocationStatusRequest struct {
 	ctx context.Context
-	ApiService *TriggersApiService
+	ApiService *TriggersAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -760,7 +769,7 @@ This endpoint may only fetch up to 2000 invocations, and should not be treated a
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListTriggerInvocationStatusRequest
 */
-func (a *TriggersApiService) ListTriggerInvocationStatus(ctx context.Context) ApiListTriggerInvocationStatusRequest {
+func (a *TriggersAPIService) ListTriggerInvocationStatus(ctx context.Context) ApiListTriggerInvocationStatusRequest {
 	return ApiListTriggerInvocationStatusRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -769,7 +778,7 @@ func (a *TriggersApiService) ListTriggerInvocationStatus(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return []InvocationStatus
-func (a *TriggersApiService) ListTriggerInvocationStatusExecute(r ApiListTriggerInvocationStatusRequest) ([]InvocationStatus, *http.Response, error) {
+func (a *TriggersAPIService) ListTriggerInvocationStatusExecute(r ApiListTriggerInvocationStatusRequest) ([]InvocationStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -777,7 +786,7 @@ func (a *TriggersApiService) ListTriggerInvocationStatusExecute(r ApiListTrigger
 		localVarReturnValue  []InvocationStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersApiService.ListTriggerInvocationStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.ListTriggerInvocationStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -790,12 +799,21 @@ func (a *TriggersApiService) ListTriggerInvocationStatusExecute(r ApiListTrigger
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -830,9 +848,9 @@ func (a *TriggersApiService) ListTriggerInvocationStatusExecute(r ApiListTrigger
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -913,7 +931,7 @@ func (a *TriggersApiService) ListTriggerInvocationStatusExecute(r ApiListTrigger
 
 type ApiListTriggersRequest struct {
 	ctx context.Context
-	ApiService *TriggersApiService
+	ApiService *TriggersAPIService
 	limit *int32
 	offset *int32
 	count *bool
@@ -963,7 +981,7 @@ Gets a list of triggers that are available in the tenant.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListTriggersRequest
 */
-func (a *TriggersApiService) ListTriggers(ctx context.Context) ApiListTriggersRequest {
+func (a *TriggersAPIService) ListTriggers(ctx context.Context) ApiListTriggersRequest {
 	return ApiListTriggersRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -972,7 +990,7 @@ func (a *TriggersApiService) ListTriggers(ctx context.Context) ApiListTriggersRe
 
 // Execute executes the request
 //  @return []Trigger
-func (a *TriggersApiService) ListTriggersExecute(r ApiListTriggersRequest) ([]Trigger, *http.Response, error) {
+func (a *TriggersAPIService) ListTriggersExecute(r ApiListTriggersRequest) ([]Trigger, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -980,7 +998,7 @@ func (a *TriggersApiService) ListTriggersExecute(r ApiListTriggersRequest) ([]Tr
 		localVarReturnValue  []Trigger
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersApiService.ListTriggers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.ListTriggers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -993,12 +1011,21 @@ func (a *TriggersApiService) ListTriggersExecute(r ApiListTriggersRequest) ([]Tr
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.filters != nil {
 		parameterAddToQuery(localVarQueryParams, "filters", r.filters, "")
@@ -1033,9 +1060,9 @@ func (a *TriggersApiService) ListTriggersExecute(r ApiListTriggersRequest) ([]Tr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1116,7 +1143,7 @@ func (a *TriggersApiService) ListTriggersExecute(r ApiListTriggersRequest) ([]Tr
 
 type ApiPatchSubscriptionRequest struct {
 	ctx context.Context
-	ApiService *TriggersApiService
+	ApiService *TriggersAPIService
 	id string
 	subscriptionPatchRequestInner *[]SubscriptionPatchRequestInner
 }
@@ -1141,7 +1168,7 @@ This API updates a trigger subscription in IdentityNow, using a set of instructi
  @param id ID of the Subscription to patch
  @return ApiPatchSubscriptionRequest
 */
-func (a *TriggersApiService) PatchSubscription(ctx context.Context, id string) ApiPatchSubscriptionRequest {
+func (a *TriggersAPIService) PatchSubscription(ctx context.Context, id string) ApiPatchSubscriptionRequest {
 	return ApiPatchSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1151,7 +1178,7 @@ func (a *TriggersApiService) PatchSubscription(ctx context.Context, id string) A
 
 // Execute executes the request
 //  @return Subscription
-func (a *TriggersApiService) PatchSubscriptionExecute(r ApiPatchSubscriptionRequest) (*Subscription, *http.Response, error) {
+func (a *TriggersAPIService) PatchSubscriptionExecute(r ApiPatchSubscriptionRequest) (*Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -1159,7 +1186,7 @@ func (a *TriggersApiService) PatchSubscriptionExecute(r ApiPatchSubscriptionRequ
 		localVarReturnValue  *Subscription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersApiService.PatchSubscription")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.PatchSubscription")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1203,9 +1230,9 @@ func (a *TriggersApiService) PatchSubscriptionExecute(r ApiPatchSubscriptionRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1297,7 +1324,7 @@ func (a *TriggersApiService) PatchSubscriptionExecute(r ApiPatchSubscriptionRequ
 
 type ApiStartTestTriggerInvocationRequest struct {
 	ctx context.Context
-	ApiService *TriggersApiService
+	ApiService *TriggersAPIService
 	testInvocation *TestInvocation
 }
 
@@ -1318,7 +1345,7 @@ Initiate a test event for all subscribers of the specified event trigger.  If th
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStartTestTriggerInvocationRequest
 */
-func (a *TriggersApiService) StartTestTriggerInvocation(ctx context.Context) ApiStartTestTriggerInvocationRequest {
+func (a *TriggersAPIService) StartTestTriggerInvocation(ctx context.Context) ApiStartTestTriggerInvocationRequest {
 	return ApiStartTestTriggerInvocationRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1327,7 +1354,7 @@ func (a *TriggersApiService) StartTestTriggerInvocation(ctx context.Context) Api
 
 // Execute executes the request
 //  @return []Invocation
-func (a *TriggersApiService) StartTestTriggerInvocationExecute(r ApiStartTestTriggerInvocationRequest) ([]Invocation, *http.Response, error) {
+func (a *TriggersAPIService) StartTestTriggerInvocationExecute(r ApiStartTestTriggerInvocationRequest) ([]Invocation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1335,7 +1362,7 @@ func (a *TriggersApiService) StartTestTriggerInvocationExecute(r ApiStartTestTri
 		localVarReturnValue  []Invocation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersApiService.StartTestTriggerInvocation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.StartTestTriggerInvocation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1378,9 +1405,9 @@ func (a *TriggersApiService) StartTestTriggerInvocationExecute(r ApiStartTestTri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1461,7 +1488,7 @@ func (a *TriggersApiService) StartTestTriggerInvocationExecute(r ApiStartTestTri
 
 type ApiTestSubscriptionFilterRequest struct {
 	ctx context.Context
-	ApiService *TriggersApiService
+	ApiService *TriggersAPIService
 	validateFilterInputDto *ValidateFilterInputDto
 }
 
@@ -1483,7 +1510,7 @@ Request requires a security scope of:
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestSubscriptionFilterRequest
 */
-func (a *TriggersApiService) TestSubscriptionFilter(ctx context.Context) ApiTestSubscriptionFilterRequest {
+func (a *TriggersAPIService) TestSubscriptionFilter(ctx context.Context) ApiTestSubscriptionFilterRequest {
 	return ApiTestSubscriptionFilterRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1492,7 +1519,7 @@ func (a *TriggersApiService) TestSubscriptionFilter(ctx context.Context) ApiTest
 
 // Execute executes the request
 //  @return ValidateFilterOutputDto
-func (a *TriggersApiService) TestSubscriptionFilterExecute(r ApiTestSubscriptionFilterRequest) (*ValidateFilterOutputDto, *http.Response, error) {
+func (a *TriggersAPIService) TestSubscriptionFilterExecute(r ApiTestSubscriptionFilterRequest) (*ValidateFilterOutputDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1500,7 +1527,7 @@ func (a *TriggersApiService) TestSubscriptionFilterExecute(r ApiTestSubscription
 		localVarReturnValue  *ValidateFilterOutputDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersApiService.TestSubscriptionFilter")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.TestSubscriptionFilter")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1543,9 +1570,9 @@ func (a *TriggersApiService) TestSubscriptionFilterExecute(r ApiTestSubscription
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1626,7 +1653,7 @@ func (a *TriggersApiService) TestSubscriptionFilterExecute(r ApiTestSubscription
 
 type ApiUpdateSubscriptionRequest struct {
 	ctx context.Context
-	ApiService *TriggersApiService
+	ApiService *TriggersAPIService
 	id string
 	subscriptionPutRequest *SubscriptionPutRequest
 }
@@ -1658,7 +1685,7 @@ This API updates a trigger subscription in IdentityNow, using a full object repr
  @param id Subscription ID
  @return ApiUpdateSubscriptionRequest
 */
-func (a *TriggersApiService) UpdateSubscription(ctx context.Context, id string) ApiUpdateSubscriptionRequest {
+func (a *TriggersAPIService) UpdateSubscription(ctx context.Context, id string) ApiUpdateSubscriptionRequest {
 	return ApiUpdateSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1668,7 +1695,7 @@ func (a *TriggersApiService) UpdateSubscription(ctx context.Context, id string) 
 
 // Execute executes the request
 //  @return Subscription
-func (a *TriggersApiService) UpdateSubscriptionExecute(r ApiUpdateSubscriptionRequest) (*Subscription, *http.Response, error) {
+func (a *TriggersAPIService) UpdateSubscriptionExecute(r ApiUpdateSubscriptionRequest) (*Subscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1676,7 +1703,7 @@ func (a *TriggersApiService) UpdateSubscriptionExecute(r ApiUpdateSubscriptionRe
 		localVarReturnValue  *Subscription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersApiService.UpdateSubscription")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TriggersAPIService.UpdateSubscription")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1720,9 +1747,9 @@ func (a *TriggersApiService) UpdateSubscriptionExecute(r ApiUpdateSubscriptionRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

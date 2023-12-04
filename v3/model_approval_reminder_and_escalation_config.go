@@ -220,8 +220,8 @@ func (o *ApprovalReminderAndEscalationConfig) UnmarshalJSON(bytes []byte) (err e
 	varApprovalReminderAndEscalationConfig := _ApprovalReminderAndEscalationConfig{}
 
 	if err = json.Unmarshal(bytes, &varApprovalReminderAndEscalationConfig); err == nil {
-		*o = ApprovalReminderAndEscalationConfig(varApprovalReminderAndEscalationConfig)
-	}
+	*o = ApprovalReminderAndEscalationConfig(varApprovalReminderAndEscalationConfig)
+}
 
 	additionalProperties := make(map[string]interface{})
 

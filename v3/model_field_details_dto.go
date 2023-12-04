@@ -287,8 +287,8 @@ func (o *FieldDetailsDto) UnmarshalJSON(bytes []byte) (err error) {
 	varFieldDetailsDto := _FieldDetailsDto{}
 
 	if err = json.Unmarshal(bytes, &varFieldDetailsDto); err == nil {
-		*o = FieldDetailsDto(varFieldDetailsDto)
-	}
+	*o = FieldDetailsDto(varFieldDetailsDto)
+}
 
 	additionalProperties := make(map[string]interface{})
 

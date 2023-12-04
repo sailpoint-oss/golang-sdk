@@ -104,8 +104,8 @@ func (o *CampaignCompleteOptions) UnmarshalJSON(bytes []byte) (err error) {
 	varCampaignCompleteOptions := _CampaignCompleteOptions{}
 
 	if err = json.Unmarshal(bytes, &varCampaignCompleteOptions); err == nil {
-		*o = CampaignCompleteOptions(varCampaignCompleteOptions)
-	}
+	*o = CampaignCompleteOptions(varCampaignCompleteOptions)
+}
 
 	additionalProperties := make(map[string]interface{})
 

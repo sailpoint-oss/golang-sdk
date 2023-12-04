@@ -100,8 +100,8 @@ func (o *ListFormElementDataByElementIDResponse) UnmarshalJSON(bytes []byte) (er
 	varListFormElementDataByElementIDResponse := _ListFormElementDataByElementIDResponse{}
 
 	if err = json.Unmarshal(bytes, &varListFormElementDataByElementIDResponse); err == nil {
-		*o = ListFormElementDataByElementIDResponse(varListFormElementDataByElementIDResponse)
-	}
+	*o = ListFormElementDataByElementIDResponse(varListFormElementDataByElementIDResponse)
+}
 
 	additionalProperties := make(map[string]interface{})
 

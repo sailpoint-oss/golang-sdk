@@ -13,19 +13,19 @@ package v3
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// SourceUsagesApiService SourceUsagesApi service
-type SourceUsagesApiService service
+// SourceUsagesAPIService SourceUsagesAPI service
+type SourceUsagesAPIService service
 
 type ApiGetStatusBySourceIdRequest struct {
 	ctx context.Context
-	ApiService *SourceUsagesApiService
+	ApiService *SourceUsagesAPIService
 	sourceId string
 }
 
@@ -42,7 +42,7 @@ This API returns the status of the source usage insights setup by IDN source ID.
  @param sourceId ID of IDN source
  @return ApiGetStatusBySourceIdRequest
 */
-func (a *SourceUsagesApiService) GetStatusBySourceId(ctx context.Context, sourceId string) ApiGetStatusBySourceIdRequest {
+func (a *SourceUsagesAPIService) GetStatusBySourceId(ctx context.Context, sourceId string) ApiGetStatusBySourceIdRequest {
 	return ApiGetStatusBySourceIdRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -52,7 +52,7 @@ func (a *SourceUsagesApiService) GetStatusBySourceId(ctx context.Context, source
 
 // Execute executes the request
 //  @return SourceUsageStatus
-func (a *SourceUsagesApiService) GetStatusBySourceIdExecute(r ApiGetStatusBySourceIdRequest) (*SourceUsageStatus, *http.Response, error) {
+func (a *SourceUsagesAPIService) GetStatusBySourceIdExecute(r ApiGetStatusBySourceIdRequest) (*SourceUsageStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -60,7 +60,7 @@ func (a *SourceUsagesApiService) GetStatusBySourceIdExecute(r ApiGetStatusBySour
 		localVarReturnValue  *SourceUsageStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourceUsagesApiService.GetStatusBySourceId")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourceUsagesAPIService.GetStatusBySourceId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -99,9 +99,9 @@ func (a *SourceUsagesApiService) GetStatusBySourceIdExecute(r ApiGetStatusBySour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -182,7 +182,7 @@ func (a *SourceUsagesApiService) GetStatusBySourceIdExecute(r ApiGetStatusBySour
 
 type ApiGetUsagesBySourceIdRequest struct {
 	ctx context.Context
-	ApiService *SourceUsagesApiService
+	ApiService *SourceUsagesAPIService
 	sourceId string
 	limit *int32
 	offset *int32
@@ -227,7 +227,7 @@ This API returns a summary of source usage insights for past 12 months.
  @param sourceId ID of IDN source
  @return ApiGetUsagesBySourceIdRequest
 */
-func (a *SourceUsagesApiService) GetUsagesBySourceId(ctx context.Context, sourceId string) ApiGetUsagesBySourceIdRequest {
+func (a *SourceUsagesAPIService) GetUsagesBySourceId(ctx context.Context, sourceId string) ApiGetUsagesBySourceIdRequest {
 	return ApiGetUsagesBySourceIdRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -237,7 +237,7 @@ func (a *SourceUsagesApiService) GetUsagesBySourceId(ctx context.Context, source
 
 // Execute executes the request
 //  @return []SourceUsage
-func (a *SourceUsagesApiService) GetUsagesBySourceIdExecute(r ApiGetUsagesBySourceIdRequest) ([]SourceUsage, *http.Response, error) {
+func (a *SourceUsagesAPIService) GetUsagesBySourceIdExecute(r ApiGetUsagesBySourceIdRequest) ([]SourceUsage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -245,7 +245,7 @@ func (a *SourceUsagesApiService) GetUsagesBySourceIdExecute(r ApiGetUsagesBySour
 		localVarReturnValue  []SourceUsage
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourceUsagesApiService.GetUsagesBySourceId")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SourceUsagesAPIService.GetUsagesBySourceId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -259,12 +259,21 @@ func (a *SourceUsagesApiService) GetUsagesBySourceIdExecute(r ApiGetUsagesBySour
 
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 250
+		r.limit = &defaultValue
 	}
 	if r.offset != nil {
 		parameterAddToQuery(localVarQueryParams, "offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	if r.count != nil {
 		parameterAddToQuery(localVarQueryParams, "count", r.count, "")
+	} else {
+		var defaultValue bool = false
+		r.count = &defaultValue
 	}
 	if r.sorters != nil {
 		parameterAddToQuery(localVarQueryParams, "sorters", r.sorters, "")
@@ -296,9 +305,9 @@ func (a *SourceUsagesApiService) GetUsagesBySourceIdExecute(r ApiGetUsagesBySour
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

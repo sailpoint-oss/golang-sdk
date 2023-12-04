@@ -1,7 +1,7 @@
 /*
 IdentityNow Beta API
 
-Testing ConnectorsApiService
+Testing ConnectorsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
-func Test_beta_ConnectorsApiService(t *testing.T) {
+func Test_beta_ConnectorsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewDefaultConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ConnectorsApiService GetConnectorList", func(t *testing.T) {
+	t.Run("Test ConnectorsAPIService GetConnectorList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.BETA.ConnectorsApi.GetConnectorList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BETA.ConnectorsAPI.GetConnectorList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

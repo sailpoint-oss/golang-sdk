@@ -99,8 +99,8 @@ func (o *ListAccounts200ResponseInnerPasswordChangeResult) UnmarshalJSON(bytes [
 	varListAccounts200ResponseInnerPasswordChangeResult := _ListAccounts200ResponseInnerPasswordChangeResult{}
 
 	if err = json.Unmarshal(bytes, &varListAccounts200ResponseInnerPasswordChangeResult); err == nil {
-		*o = ListAccounts200ResponseInnerPasswordChangeResult(varListAccounts200ResponseInnerPasswordChangeResult)
-	}
+	*o = ListAccounts200ResponseInnerPasswordChangeResult(varListAccounts200ResponseInnerPasswordChangeResult)
+}
 
 	additionalProperties := make(map[string]interface{})
 

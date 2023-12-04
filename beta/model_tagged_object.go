@@ -136,8 +136,8 @@ func (o *TaggedObject) UnmarshalJSON(bytes []byte) (err error) {
 	varTaggedObject := _TaggedObject{}
 
 	if err = json.Unmarshal(bytes, &varTaggedObject); err == nil {
-		*o = TaggedObject(varTaggedObject)
-	}
+	*o = TaggedObject(varTaggedObject)
+}
 
 	additionalProperties := make(map[string]interface{})
 
