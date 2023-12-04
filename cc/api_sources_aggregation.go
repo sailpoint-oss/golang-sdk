@@ -230,7 +230,7 @@ func (a *SourcesAggregationApiService) LoadEntitlementsExecute(r ApiLoadEntitlem
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
