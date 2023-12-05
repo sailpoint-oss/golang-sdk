@@ -1,4 +1,4 @@
-# BetaSchemasTriggerExampleInputSourceAccount
+# SourceAccount
 
 ## Properties
 
@@ -15,184 +15,184 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewBetaSchemasTriggerExampleInputSourceAccount
+### NewSourceAccount
 
-`func NewBetaSchemasTriggerExampleInputSourceAccount(id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, attributes map[string]interface{}, ) *BetaSchemasTriggerExampleInputSourceAccount`
+`func NewSourceAccount(id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, attributes map[string]interface{}, ) *SourceAccount`
 
-NewBetaSchemasTriggerExampleInputSourceAccount instantiates a new BetaSchemasTriggerExampleInputSourceAccount object
+NewSourceAccount instantiates a new SourceAccount object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewBetaSchemasTriggerExampleInputSourceAccountWithDefaults
+### NewSourceAccountWithDefaults
 
-`func NewBetaSchemasTriggerExampleInputSourceAccountWithDefaults() *BetaSchemasTriggerExampleInputSourceAccount`
+`func NewSourceAccountWithDefaults() *SourceAccount`
 
-NewBetaSchemasTriggerExampleInputSourceAccountWithDefaults instantiates a new BetaSchemasTriggerExampleInputSourceAccount object
+NewSourceAccountWithDefaults instantiates a new SourceAccount object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetUuid
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetUuid() string`
+`func (o *SourceAccount) GetUuid() string`
 
 GetUuid returns the Uuid field if non-nil, zero value otherwise.
 
 ### GetUuidOk
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetUuidOk() (*string, bool)`
+`func (o *SourceAccount) GetUuidOk() (*string, bool)`
 
 GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUuid
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) SetUuid(v string)`
+`func (o *SourceAccount) SetUuid(v string)`
 
 SetUuid sets Uuid field to given value.
 
 ### HasUuid
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) HasUuid() bool`
+`func (o *SourceAccount) HasUuid() bool`
 
 HasUuid returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetId() string`
+`func (o *SourceAccount) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetIdOk() (*string, bool)`
+`func (o *SourceAccount) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) SetId(v string)`
+`func (o *SourceAccount) SetId(v string)`
 
 SetId sets Id field to given value.
 
 
 ### GetNativeIdentifier
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetNativeIdentifier() string`
+`func (o *SourceAccount) GetNativeIdentifier() string`
 
 GetNativeIdentifier returns the NativeIdentifier field if non-nil, zero value otherwise.
 
 ### GetNativeIdentifierOk
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetNativeIdentifierOk() (*string, bool)`
+`func (o *SourceAccount) GetNativeIdentifierOk() (*string, bool)`
 
 GetNativeIdentifierOk returns a tuple with the NativeIdentifier field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNativeIdentifier
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) SetNativeIdentifier(v string)`
+`func (o *SourceAccount) SetNativeIdentifier(v string)`
 
 SetNativeIdentifier sets NativeIdentifier field to given value.
 
 
 ### GetSourceId
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetSourceId() string`
+`func (o *SourceAccount) GetSourceId() string`
 
 GetSourceId returns the SourceId field if non-nil, zero value otherwise.
 
 ### GetSourceIdOk
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetSourceIdOk() (*string, bool)`
+`func (o *SourceAccount) GetSourceIdOk() (*string, bool)`
 
 GetSourceIdOk returns a tuple with the SourceId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSourceId
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) SetSourceId(v string)`
+`func (o *SourceAccount) SetSourceId(v string)`
 
 SetSourceId sets SourceId field to given value.
 
 
 ### GetSourceName
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetSourceName() string`
+`func (o *SourceAccount) GetSourceName() string`
 
 GetSourceName returns the SourceName field if non-nil, zero value otherwise.
 
 ### GetSourceNameOk
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetSourceNameOk() (*string, bool)`
+`func (o *SourceAccount) GetSourceNameOk() (*string, bool)`
 
 GetSourceNameOk returns a tuple with the SourceName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSourceName
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) SetSourceName(v string)`
+`func (o *SourceAccount) SetSourceName(v string)`
 
 SetSourceName sets SourceName field to given value.
 
 
 ### GetIdentityId
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetIdentityId() string`
+`func (o *SourceAccount) GetIdentityId() string`
 
 GetIdentityId returns the IdentityId field if non-nil, zero value otherwise.
 
 ### GetIdentityIdOk
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetIdentityIdOk() (*string, bool)`
+`func (o *SourceAccount) GetIdentityIdOk() (*string, bool)`
 
 GetIdentityIdOk returns a tuple with the IdentityId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentityId
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) SetIdentityId(v string)`
+`func (o *SourceAccount) SetIdentityId(v string)`
 
 SetIdentityId sets IdentityId field to given value.
 
 
 ### GetIdentityName
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetIdentityName() string`
+`func (o *SourceAccount) GetIdentityName() string`
 
 GetIdentityName returns the IdentityName field if non-nil, zero value otherwise.
 
 ### GetIdentityNameOk
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetIdentityNameOk() (*string, bool)`
+`func (o *SourceAccount) GetIdentityNameOk() (*string, bool)`
 
 GetIdentityNameOk returns a tuple with the IdentityName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentityName
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) SetIdentityName(v string)`
+`func (o *SourceAccount) SetIdentityName(v string)`
 
 SetIdentityName sets IdentityName field to given value.
 
 
 ### GetAttributes
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetAttributes() map[string]interface{}`
+`func (o *SourceAccount) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *SourceAccount) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *BetaSchemasTriggerExampleInputSourceAccount) SetAttributes(v map[string]interface{})`
+`func (o *SourceAccount) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 

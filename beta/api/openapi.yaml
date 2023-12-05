@@ -35170,7 +35170,7 @@ paths:
     get:
       description: |-
         This API returns the existing attribute synchronization configuration for a source specified by the given ID. The response contains all attributes, regardless of whether they enabled or not.
-        A token with ORG_ADMIN authority is required to call this API.
+        A token with ORG_ADMIN or HELPDESK authority is required to call this API.
       operationId: getSourceAttrSyncConfig
       parameters:
       - description: The source id
@@ -35261,6 +35261,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:attr-sync-source-config:read
+        - idn:attr-sync-source-config:manage
       summary: Attribute Sync Config
       tags:
       - Sources
@@ -35367,6 +35371,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:attr-sync-source-config:manage
       summary: Update Attribute Sync Config
       tags:
       - Sources
@@ -69077,8 +69084,8 @@ components:
       title: Saved Search Complete
       type: object
     SourceAccountCreated:
-      $ref: '#/components/schemas/beta\schemas\trigger\example-input\SourceAccount'
-    beta\schemas\trigger\example-input\SourceAccount:
+      $ref: '#/components/schemas/SourceAccount'
+    SourceAccount:
       properties:
         uuid:
           description: Source unique identifier for the identity. UUID is generated
@@ -69136,9 +69143,9 @@ components:
       - sourceName
       type: object
     SourceAccountDeleted:
-      $ref: '#/components/schemas/beta\schemas\trigger\example-input\SourceAccount'
+      $ref: '#/components/schemas/SourceAccount'
     SourceAccountUpdated:
-      $ref: '#/components/schemas/beta\schemas\trigger\example-input\SourceAccount'
+      $ref: '#/components/schemas/SourceAccount'
     SourceCreated:
       properties:
         id:
