@@ -875,7 +875,7 @@ func (r ApiListEntitlementsRequest) Sorters(sorters string) ApiListEntitlementsR
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq, in, sw*  **type**: *eq, in*  **attribute**: *eq, in*  **value**: *eq, in, sw*  **source.id**: *eq, in*  **requestable**: *eq*  **created**: *gt, lt, ge, le*  **modified**: *gt, lt, ge, le*  **owner.id**: *eq, in*
 func (r ApiListEntitlementsRequest) Filters(filters string) ApiListEntitlementsRequest {
 	r.filters = &filters
 	return r
@@ -1093,7 +1093,7 @@ PatchEntitlement Patch an entitlement
 
 This API updates an existing entitlement using [JSON Patch](https://tools.ietf.org/html/rfc6902) syntax.
 
-The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**, **name**, **description**.
+The following fields are patchable: **requestable**, **privileged**, **segments**, **owner**, **name**, **description**, and **manuallyUpdatedFields**
 
 When you're patching owner, only owner type and owner id must be provided. Owner name is optional, and it won't be modified. If the owner name is provided, it should correspond to the real name. The only owner type currently supported is IDENTITY.
 
