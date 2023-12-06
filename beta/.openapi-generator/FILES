@@ -743,7 +743,10 @@ docs/SourceUsage.md
 docs/SourceUsageStatus.md
 docs/SourceUsagesAPI.md
 docs/SourcesAPI.md
+docs/SpConfigExportJob.md
+docs/SpConfigExportJobStatus.md
 docs/SpConfigExportResults.md
+docs/SpConfigImportJobStatus.md
 docs/SpConfigImportResults.md
 docs/SpConfigJob.md
 docs/SpConfigMessage.md
@@ -1471,7 +1474,10 @@ model_source_updated.go
 model_source_updated_actor.go
 model_source_usage.go
 model_source_usage_status.go
+model_sp_config_export_job.go
+model_sp_config_export_job_status.go
 model_sp_config_export_results.go
+model_sp_config_import_job_status.go
 model_sp_config_import_results.go
 model_sp_config_job.go
 model_sp_config_message.go

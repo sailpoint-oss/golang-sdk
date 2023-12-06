@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## ExportSpConfig
 
-> SpConfigJob ExportSpConfig(ctx).ExportPayload(exportPayload).Execute()
+> SpConfigExportJob ExportSpConfig(ctx).ExportPayload(exportPayload).Execute()
 
 Initiates configuration objects export job
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.ExportSpConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ExportSpConfig`: SpConfigJob
+    // response from `ExportSpConfig`: SpConfigExportJob
     fmt.Fprintf(os.Stdout, "Response from `SPConfigAPI.ExportSpConfig`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SpConfigJob**](SpConfigJob.md)
+[**SpConfigExportJob**](SpConfigExportJob.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## GetSpConfigExportStatus
 
-> SpConfigJob GetSpConfigExportStatus(ctx, id).Execute()
+> SpConfigExportJobStatus GetSpConfigExportStatus(ctx, id).Execute()
 
 Get export job status
 
@@ -180,7 +180,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigExportStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSpConfigExportStatus`: SpConfigJob
+    // response from `GetSpConfigExportStatus`: SpConfigExportJobStatus
     fmt.Fprintf(os.Stdout, "Response from `SPConfigAPI.GetSpConfigExportStatus`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SpConfigJob**](SpConfigJob.md)
+[**SpConfigExportJobStatus**](SpConfigExportJobStatus.md)
 
 ### Authorization
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## GetSpConfigImportStatus
 
-> SpConfigJob GetSpConfigImportStatus(ctx, id).Execute()
+> SpConfigImportJobStatus GetSpConfigImportStatus(ctx, id).Execute()
 
 Get import job status
 
@@ -320,7 +320,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SPConfigAPI.GetSpConfigImportStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSpConfigImportStatus`: SpConfigJob
+    // response from `GetSpConfigImportStatus`: SpConfigImportJobStatus
     fmt.Fprintf(os.Stdout, "Response from `SPConfigAPI.GetSpConfigImportStatus`: %v\n", resp)
 }
 ```
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SpConfigJob**](SpConfigJob.md)
+[**SpConfigImportJobStatus**](SpConfigImportJobStatus.md)
 
 ### Authorization
 

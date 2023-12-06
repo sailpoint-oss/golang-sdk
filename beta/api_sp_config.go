@@ -36,7 +36,7 @@ func (r ApiExportSpConfigRequest) ExportPayload(exportPayload ExportPayload) Api
 	return r
 }
 
-func (r ApiExportSpConfigRequest) Execute() (*SpConfigJob, *http.Response, error) {
+func (r ApiExportSpConfigRequest) Execute() (*SpConfigExportJob, *http.Response, error) {
 	return r.ApiService.ExportSpConfigExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *SPConfigAPIService) ExportSpConfig(ctx context.Context) ApiExportSpConf
 }
 
 // Execute executes the request
-//  @return SpConfigJob
-func (a *SPConfigAPIService) ExportSpConfigExecute(r ApiExportSpConfigRequest) (*SpConfigJob, *http.Response, error) {
+//  @return SpConfigExportJob
+func (a *SPConfigAPIService) ExportSpConfigExecute(r ApiExportSpConfigRequest) (*SpConfigExportJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SpConfigJob
+		localVarReturnValue  *SpConfigExportJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.ExportSpConfig")
@@ -377,7 +377,7 @@ type ApiGetSpConfigExportStatusRequest struct {
 	id string
 }
 
-func (r ApiGetSpConfigExportStatusRequest) Execute() (*SpConfigJob, *http.Response, error) {
+func (r ApiGetSpConfigExportStatusRequest) Execute() (*SpConfigExportJobStatus, *http.Response, error) {
 	return r.ApiService.GetSpConfigExportStatusExecute(r)
 }
 
@@ -401,13 +401,13 @@ func (a *SPConfigAPIService) GetSpConfigExportStatus(ctx context.Context, id str
 }
 
 // Execute executes the request
-//  @return SpConfigJob
-func (a *SPConfigAPIService) GetSpConfigExportStatusExecute(r ApiGetSpConfigExportStatusRequest) (*SpConfigJob, *http.Response, error) {
+//  @return SpConfigExportJobStatus
+func (a *SPConfigAPIService) GetSpConfigExportStatusExecute(r ApiGetSpConfigExportStatusRequest) (*SpConfigExportJobStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SpConfigJob
+		localVarReturnValue  *SpConfigExportJobStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.GetSpConfigExportStatus")
@@ -717,7 +717,7 @@ type ApiGetSpConfigImportStatusRequest struct {
 	id string
 }
 
-func (r ApiGetSpConfigImportStatusRequest) Execute() (*SpConfigJob, *http.Response, error) {
+func (r ApiGetSpConfigImportStatusRequest) Execute() (*SpConfigImportJobStatus, *http.Response, error) {
 	return r.ApiService.GetSpConfigImportStatusExecute(r)
 }
 
@@ -742,13 +742,13 @@ func (a *SPConfigAPIService) GetSpConfigImportStatus(ctx context.Context, id str
 }
 
 // Execute executes the request
-//  @return SpConfigJob
-func (a *SPConfigAPIService) GetSpConfigImportStatusExecute(r ApiGetSpConfigImportStatusRequest) (*SpConfigJob, *http.Response, error) {
+//  @return SpConfigImportJobStatus
+func (a *SPConfigAPIService) GetSpConfigImportStatusExecute(r ApiGetSpConfigImportStatusRequest) (*SpConfigImportJobStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SpConfigJob
+		localVarReturnValue  *SpConfigImportJobStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SPConfigAPIService.GetSpConfigImportStatus")

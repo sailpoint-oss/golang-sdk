@@ -16,11 +16,11 @@ import (
 	"fmt"
 )
 
-// checks if the SpConfigJob type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SpConfigJob{}
+// checks if the SpConfigExportJob type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SpConfigExportJob{}
 
-// SpConfigJob struct for SpConfigJob
-type SpConfigJob struct {
+// SpConfigExportJob struct for SpConfigExportJob
+type SpConfigExportJob struct {
 	// Unique id assigned to this job.
 	JobId string `json:"jobId"`
 	// Status of the job.
@@ -33,36 +33,39 @@ type SpConfigJob struct {
 	Created time.Time `json:"created"`
 	// The time of the last update to the job.
 	Modified time.Time `json:"modified"`
+	// Optional user defined description/name for export job.
+	Description string `json:"description"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SpConfigJob SpConfigJob
+type _SpConfigExportJob SpConfigExportJob
 
-// NewSpConfigJob instantiates a new SpConfigJob object
+// NewSpConfigExportJob instantiates a new SpConfigExportJob object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSpConfigJob(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time) *SpConfigJob {
-	this := SpConfigJob{}
+func NewSpConfigExportJob(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, description string) *SpConfigExportJob {
+	this := SpConfigExportJob{}
 	this.JobId = jobId
 	this.Status = status
 	this.Type = type_
 	this.Expiration = expiration
 	this.Created = created
 	this.Modified = modified
+	this.Description = description
 	return &this
 }
 
-// NewSpConfigJobWithDefaults instantiates a new SpConfigJob object
+// NewSpConfigExportJobWithDefaults instantiates a new SpConfigExportJob object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSpConfigJobWithDefaults() *SpConfigJob {
-	this := SpConfigJob{}
+func NewSpConfigExportJobWithDefaults() *SpConfigExportJob {
+	this := SpConfigExportJob{}
 	return &this
 }
 
 // GetJobId returns the JobId field value
-func (o *SpConfigJob) GetJobId() string {
+func (o *SpConfigExportJob) GetJobId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -73,7 +76,7 @@ func (o *SpConfigJob) GetJobId() string {
 
 // GetJobIdOk returns a tuple with the JobId field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigJob) GetJobIdOk() (*string, bool) {
+func (o *SpConfigExportJob) GetJobIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -81,12 +84,12 @@ func (o *SpConfigJob) GetJobIdOk() (*string, bool) {
 }
 
 // SetJobId sets field value
-func (o *SpConfigJob) SetJobId(v string) {
+func (o *SpConfigExportJob) SetJobId(v string) {
 	o.JobId = v
 }
 
 // GetStatus returns the Status field value
-func (o *SpConfigJob) GetStatus() string {
+func (o *SpConfigExportJob) GetStatus() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -97,7 +100,7 @@ func (o *SpConfigJob) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigJob) GetStatusOk() (*string, bool) {
+func (o *SpConfigExportJob) GetStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -105,12 +108,12 @@ func (o *SpConfigJob) GetStatusOk() (*string, bool) {
 }
 
 // SetStatus sets field value
-func (o *SpConfigJob) SetStatus(v string) {
+func (o *SpConfigExportJob) SetStatus(v string) {
 	o.Status = v
 }
 
 // GetType returns the Type field value
-func (o *SpConfigJob) GetType() string {
+func (o *SpConfigExportJob) GetType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -121,7 +124,7 @@ func (o *SpConfigJob) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigJob) GetTypeOk() (*string, bool) {
+func (o *SpConfigExportJob) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -129,12 +132,12 @@ func (o *SpConfigJob) GetTypeOk() (*string, bool) {
 }
 
 // SetType sets field value
-func (o *SpConfigJob) SetType(v string) {
+func (o *SpConfigExportJob) SetType(v string) {
 	o.Type = v
 }
 
 // GetExpiration returns the Expiration field value
-func (o *SpConfigJob) GetExpiration() time.Time {
+func (o *SpConfigExportJob) GetExpiration() time.Time {
 	if o == nil {
 		var ret time.Time
 		return ret
@@ -145,7 +148,7 @@ func (o *SpConfigJob) GetExpiration() time.Time {
 
 // GetExpirationOk returns a tuple with the Expiration field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigJob) GetExpirationOk() (*time.Time, bool) {
+func (o *SpConfigExportJob) GetExpirationOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -153,12 +156,12 @@ func (o *SpConfigJob) GetExpirationOk() (*time.Time, bool) {
 }
 
 // SetExpiration sets field value
-func (o *SpConfigJob) SetExpiration(v time.Time) {
+func (o *SpConfigExportJob) SetExpiration(v time.Time) {
 	o.Expiration = v
 }
 
 // GetCreated returns the Created field value
-func (o *SpConfigJob) GetCreated() time.Time {
+func (o *SpConfigExportJob) GetCreated() time.Time {
 	if o == nil {
 		var ret time.Time
 		return ret
@@ -169,7 +172,7 @@ func (o *SpConfigJob) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigJob) GetCreatedOk() (*time.Time, bool) {
+func (o *SpConfigExportJob) GetCreatedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -177,12 +180,12 @@ func (o *SpConfigJob) GetCreatedOk() (*time.Time, bool) {
 }
 
 // SetCreated sets field value
-func (o *SpConfigJob) SetCreated(v time.Time) {
+func (o *SpConfigExportJob) SetCreated(v time.Time) {
 	o.Created = v
 }
 
 // GetModified returns the Modified field value
-func (o *SpConfigJob) GetModified() time.Time {
+func (o *SpConfigExportJob) GetModified() time.Time {
 	if o == nil {
 		var ret time.Time
 		return ret
@@ -193,7 +196,7 @@ func (o *SpConfigJob) GetModified() time.Time {
 
 // GetModifiedOk returns a tuple with the Modified field value
 // and a boolean to check if the value has been set.
-func (o *SpConfigJob) GetModifiedOk() (*time.Time, bool) {
+func (o *SpConfigExportJob) GetModifiedOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -201,11 +204,35 @@ func (o *SpConfigJob) GetModifiedOk() (*time.Time, bool) {
 }
 
 // SetModified sets field value
-func (o *SpConfigJob) SetModified(v time.Time) {
+func (o *SpConfigExportJob) SetModified(v time.Time) {
 	o.Modified = v
 }
 
-func (o SpConfigJob) MarshalJSON() ([]byte, error) {
+// GetDescription returns the Description field value
+func (o *SpConfigExportJob) GetDescription() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value
+// and a boolean to check if the value has been set.
+func (o *SpConfigExportJob) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Description, true
+}
+
+// SetDescription sets field value
+func (o *SpConfigExportJob) SetDescription(v string) {
+	o.Description = v
+}
+
+func (o SpConfigExportJob) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -213,7 +240,7 @@ func (o SpConfigJob) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SpConfigJob) ToMap() (map[string]interface{}, error) {
+func (o SpConfigExportJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["jobId"] = o.JobId
 	toSerialize["status"] = o.Status
@@ -221,6 +248,7 @@ func (o SpConfigJob) ToMap() (map[string]interface{}, error) {
 	toSerialize["expiration"] = o.Expiration
 	toSerialize["created"] = o.Created
 	toSerialize["modified"] = o.Modified
+	toSerialize["description"] = o.Description
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -229,7 +257,7 @@ func (o SpConfigJob) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SpConfigJob) UnmarshalJSON(bytes []byte) (err error) {
+func (o *SpConfigExportJob) UnmarshalJSON(bytes []byte) (err error) {
     // This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -240,6 +268,7 @@ func (o *SpConfigJob) UnmarshalJSON(bytes []byte) (err error) {
 		"expiration",
 		"created",
 		"modified",
+		"description",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -256,10 +285,10 @@ func (o *SpConfigJob) UnmarshalJSON(bytes []byte) (err error) {
 		}
 	}
 
-	varSpConfigJob := _SpConfigJob{}
+	varSpConfigExportJob := _SpConfigExportJob{}
 
-	if err = json.Unmarshal(bytes, &varSpConfigJob); err == nil {
-	*o = SpConfigJob(varSpConfigJob)
+	if err = json.Unmarshal(bytes, &varSpConfigExportJob); err == nil {
+	*o = SpConfigExportJob(varSpConfigExportJob)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -271,44 +300,45 @@ func (o *SpConfigJob) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "expiration")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
+		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableSpConfigJob struct {
-	value *SpConfigJob
+type NullableSpConfigExportJob struct {
+	value *SpConfigExportJob
 	isSet bool
 }
 
-func (v NullableSpConfigJob) Get() *SpConfigJob {
+func (v NullableSpConfigExportJob) Get() *SpConfigExportJob {
 	return v.value
 }
 
-func (v *NullableSpConfigJob) Set(val *SpConfigJob) {
+func (v *NullableSpConfigExportJob) Set(val *SpConfigExportJob) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSpConfigJob) IsSet() bool {
+func (v NullableSpConfigExportJob) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSpConfigJob) Unset() {
+func (v *NullableSpConfigExportJob) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSpConfigJob(val *SpConfigJob) *NullableSpConfigJob {
-	return &NullableSpConfigJob{value: val, isSet: true}
+func NewNullableSpConfigExportJob(val *SpConfigExportJob) *NullableSpConfigExportJob {
+	return &NullableSpConfigExportJob{value: val, isSet: true}
 }
 
-func (v NullableSpConfigJob) MarshalJSON() ([]byte, error) {
+func (v NullableSpConfigExportJob) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSpConfigJob) UnmarshalJSON(src []byte) error {
+func (v *NullableSpConfigExportJob) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

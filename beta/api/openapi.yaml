@@ -33610,7 +33610,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SpConfigJob'
+                $ref: '#/components/schemas/SpConfigExportJob'
           description: Export job accepted and queued for processing.
         "400":
           content:
@@ -33724,7 +33724,7 @@ paths:
                 modified: 2021-05-13T15:04:27.363Z
                 completed: 2021-05-13T15:04:27.358Z
               schema:
-                $ref: '#/components/schemas/SpConfigJob'
+                $ref: '#/components/schemas/SpConfigExportJobStatus'
           description: Export job status successfully returned.
         "400":
           content:
@@ -33800,6 +33800,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - sp:config:read
+        - sp:config:manage
       summary: Get export job status
       tags:
       - SP-Config
@@ -34098,7 +34102,7 @@ paths:
                 modified: 2021-05-13T16:42:40.71Z
                 completed: 2021-05-13T16:42:40.705Z
               schema:
-                $ref: '#/components/schemas/SpConfigJob'
+                $ref: '#/components/schemas/SpConfigImportJobStatus'
           description: Import job status successfully returned.
         "400":
           content:
@@ -34174,6 +34178,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - sp:config:manage
       summary: Get import job status
       tags:
       - SP-Config
@@ -60505,79 +60512,29 @@ components:
           example: Export Job 1 Test
           type: string
       type: object
-    SpConfigJob:
-      example:
-        jobId: 3469b87d-48ca-439a-868f-2160001da8c1
-        created: 2021-05-11T22:23:16Z
-        description: ETS configuration objects from Acme-Solar sandbox
-        modified: 2021-05-11T22:23:16Z
-        expiration: 2021-05-11T22:23:16Z
-        completed: 2021-05-11T22:23:16Z
-        type: IMPORT
-        message: Download import results for details.
-        status: COMPLETE
-      properties:
-        jobId:
-          description: Unique id assigned to this job.
-          example: 3469b87d-48ca-439a-868f-2160001da8c1
-          type: string
-        status:
-          description: Status of the job.
-          enum:
-          - NOT_STARTED
-          - IN_PROGRESS
-          - COMPLETE
-          - CANCELLED
-          - FAILED
-          example: COMPLETE
-          type: string
-        type:
-          description: "Type of the job, either export or import."
-          enum:
-          - EXPORT
-          - IMPORT
-          example: IMPORT
-          type: string
-        message:
-          description: This message contains additional information about the overall
-            status of the job.
-          example: Download import results for details.
-          type: string
-        description:
-          description: Optional user defined description/name for export job.
-          example: ETS configuration objects from Acme-Solar sandbox
-          type: string
-        expiration:
-          description: The time until which the artifacts will be available for download.
-          example: 2021-05-11T22:23:16Z
-          format: date-time
-          type: string
-        created:
-          description: The time the job was started.
-          example: 2021-05-11T22:23:16Z
-          format: date-time
-          type: string
-        modified:
-          description: The time of the last update to the job.
-          example: 2021-05-11T22:23:16Z
-          format: date-time
-          type: string
-        completed:
-          description: The time the job was completed.
-          example: 2021-05-11T22:23:16Z
-          format: date-time
-          type: string
-      required:
-      - completed
-      - created
-      - description
-      - expiration
-      - jobId
-      - message
-      - modified
-      - status
-      - type
-      type: object
+    SpConfigExportJob:
+      allOf:
+      - $ref: '#/components/schemas/SpConfigJob'
+      - properties:
+          description:
+            description: Optional user defined description/name for export job.
+            example: ETS configuration objects from Acme-Solar sandbox
+            type: string
+        required:
+        - description
+        type: object
+    SpConfigExportJobStatus:
+      allOf:
+      - $ref: '#/components/schemas/SpConfigExportJob'
+      - properties:
+          completed:
+            description: The time the job was completed.
+            example: 2021-05-11T22:23:16Z
+            format: date-time
+            type: string
+        required:
+        - completed
+        type: object
     SpConfigExportResults:
       description: Response model for config export download response.
       example:
@@ -60702,6 +60659,77 @@ components:
           example: false
           type: boolean
       type: object
+    SpConfigJob:
+      example:
+        jobId: 3469b87d-48ca-439a-868f-2160001da8c1
+        created: 2021-05-11T22:23:16Z
+        modified: 2021-05-11T22:23:16Z
+        expiration: 2021-05-11T22:23:16Z
+        type: IMPORT
+        status: COMPLETE
+      properties:
+        jobId:
+          description: Unique id assigned to this job.
+          example: 3469b87d-48ca-439a-868f-2160001da8c1
+          type: string
+        status:
+          description: Status of the job.
+          enum:
+          - NOT_STARTED
+          - IN_PROGRESS
+          - COMPLETE
+          - CANCELLED
+          - FAILED
+          example: COMPLETE
+          type: string
+        type:
+          description: "Type of the job, either export or import."
+          enum:
+          - EXPORT
+          - IMPORT
+          example: IMPORT
+          type: string
+        expiration:
+          description: The time until which the artifacts will be available for download.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        created:
+          description: The time the job was started.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+        modified:
+          description: The time of the last update to the job.
+          example: 2021-05-11T22:23:16Z
+          format: date-time
+          type: string
+      required:
+      - created
+      - expiration
+      - jobId
+      - modified
+      - status
+      - type
+      type: object
+    SpConfigImportJobStatus:
+      allOf:
+      - $ref: '#/components/schemas/SpConfigJob'
+      - properties:
+          message:
+            description: This message contains additional information about the overall
+              status of the job.
+            example: Download import results for details.
+            type: string
+          completed:
+            description: The time the job was completed.
+            example: 2021-05-11T22:23:16Z
+            format: date-time
+            type: string
+        required:
+        - completed
+        - message
+        type: object
     SpConfigImportResults:
       description: Response Body for Config Import command.
       example:

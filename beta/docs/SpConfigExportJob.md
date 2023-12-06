@@ -1,4 +1,4 @@
-# SpConfigJob
+# SpConfigExportJob
 
 ## Properties
 
@@ -10,144 +10,165 @@ Name | Type | Description | Notes
 **Expiration** | **time.Time** | The time until which the artifacts will be available for download. | 
 **Created** | **time.Time** | The time the job was started. | 
 **Modified** | **time.Time** | The time of the last update to the job. | 
+**Description** | **string** | Optional user defined description/name for export job. | 
 
 ## Methods
 
-### NewSpConfigJob
+### NewSpConfigExportJob
 
-`func NewSpConfigJob(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, ) *SpConfigJob`
+`func NewSpConfigExportJob(jobId string, status string, type_ string, expiration time.Time, created time.Time, modified time.Time, description string, ) *SpConfigExportJob`
 
-NewSpConfigJob instantiates a new SpConfigJob object
+NewSpConfigExportJob instantiates a new SpConfigExportJob object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSpConfigJobWithDefaults
+### NewSpConfigExportJobWithDefaults
 
-`func NewSpConfigJobWithDefaults() *SpConfigJob`
+`func NewSpConfigExportJobWithDefaults() *SpConfigExportJob`
 
-NewSpConfigJobWithDefaults instantiates a new SpConfigJob object
+NewSpConfigExportJobWithDefaults instantiates a new SpConfigExportJob object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetJobId
 
-`func (o *SpConfigJob) GetJobId() string`
+`func (o *SpConfigExportJob) GetJobId() string`
 
 GetJobId returns the JobId field if non-nil, zero value otherwise.
 
 ### GetJobIdOk
 
-`func (o *SpConfigJob) GetJobIdOk() (*string, bool)`
+`func (o *SpConfigExportJob) GetJobIdOk() (*string, bool)`
 
 GetJobIdOk returns a tuple with the JobId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJobId
 
-`func (o *SpConfigJob) SetJobId(v string)`
+`func (o *SpConfigExportJob) SetJobId(v string)`
 
 SetJobId sets JobId field to given value.
 
 
 ### GetStatus
 
-`func (o *SpConfigJob) GetStatus() string`
+`func (o *SpConfigExportJob) GetStatus() string`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *SpConfigJob) GetStatusOk() (*string, bool)`
+`func (o *SpConfigExportJob) GetStatusOk() (*string, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *SpConfigJob) SetStatus(v string)`
+`func (o *SpConfigExportJob) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
 
 
 ### GetType
 
-`func (o *SpConfigJob) GetType() string`
+`func (o *SpConfigExportJob) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *SpConfigJob) GetTypeOk() (*string, bool)`
+`func (o *SpConfigExportJob) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *SpConfigJob) SetType(v string)`
+`func (o *SpConfigExportJob) SetType(v string)`
 
 SetType sets Type field to given value.
 
 
 ### GetExpiration
 
-`func (o *SpConfigJob) GetExpiration() time.Time`
+`func (o *SpConfigExportJob) GetExpiration() time.Time`
 
 GetExpiration returns the Expiration field if non-nil, zero value otherwise.
 
 ### GetExpirationOk
 
-`func (o *SpConfigJob) GetExpirationOk() (*time.Time, bool)`
+`func (o *SpConfigExportJob) GetExpirationOk() (*time.Time, bool)`
 
 GetExpirationOk returns a tuple with the Expiration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiration
 
-`func (o *SpConfigJob) SetExpiration(v time.Time)`
+`func (o *SpConfigExportJob) SetExpiration(v time.Time)`
 
 SetExpiration sets Expiration field to given value.
 
 
 ### GetCreated
 
-`func (o *SpConfigJob) GetCreated() time.Time`
+`func (o *SpConfigExportJob) GetCreated() time.Time`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *SpConfigJob) GetCreatedOk() (*time.Time, bool)`
+`func (o *SpConfigExportJob) GetCreatedOk() (*time.Time, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *SpConfigJob) SetCreated(v time.Time)`
+`func (o *SpConfigExportJob) SetCreated(v time.Time)`
 
 SetCreated sets Created field to given value.
 
 
 ### GetModified
 
-`func (o *SpConfigJob) GetModified() time.Time`
+`func (o *SpConfigExportJob) GetModified() time.Time`
 
 GetModified returns the Modified field if non-nil, zero value otherwise.
 
 ### GetModifiedOk
 
-`func (o *SpConfigJob) GetModifiedOk() (*time.Time, bool)`
+`func (o *SpConfigExportJob) GetModifiedOk() (*time.Time, bool)`
 
 GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModified
 
-`func (o *SpConfigJob) SetModified(v time.Time)`
+`func (o *SpConfigExportJob) SetModified(v time.Time)`
 
 SetModified sets Modified field to given value.
+
+
+### GetDescription
+
+`func (o *SpConfigExportJob) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *SpConfigExportJob) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *SpConfigExportJob) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
 
 
 
