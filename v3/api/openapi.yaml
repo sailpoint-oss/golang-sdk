@@ -976,7 +976,7 @@ paths:
 
           **id**: *eq, in*
 
-          **name**: *eq, sw, co*
+          **name**: *eq, sw*
 
           **created**: *gt, lt, ge, le*
 
@@ -2250,7 +2250,7 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **accountActivityItemId**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*
+          **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
         example: accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"
         in: query
         name: filters
@@ -2551,11 +2551,11 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*
+          **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 
-          **requestedFor.id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*
+          **requestedFor.id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 
-          **modified**: *gt, lt, ge, le, co, eq, in, ne, sw*
+          **modified**: *gt, lt, ge, le, eq, in, ne, sw*
         example: id eq "2c91808568c529c60168cca6f90c1313"
         in: query
         name: filters
@@ -3103,15 +3103,15 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*
+          **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 
-          **identityId**: *eq, co, ge, gt, in, le, lt, ne, isnull, sw*
+          **identityId**: *eq, ge, gt, in, le, lt, ne, isnull, sw*
 
-          **name**: *eq, in, co, ge, gt, ne, isnull, sw*
+          **name**: *eq, in, ge, gt, ne, isnull, sw*
 
-          **nativeIdentity**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*
+          **nativeIdentity**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 
-          **sourceId**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*
+          **sourceId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 
           **uncorrelated**: *eq*
         example: identityId eq "2c9180858082150f0180893dbaf44201"
@@ -4345,11 +4345,11 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **type**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*
+          **type**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 
-          **created**: *gt, lt, ge, le, co, eq, in, ne, isnull, sw*
+          **created**: *gt, lt, ge, le, eq, in, ne, isnull, sw*
 
-          **modified**: *gt, lt, ge, le, co, eq, in, ne, isnull, sw*
+          **modified**: *gt, lt, ge, le, eq, in, ne, isnull, sw*
         example: type eq "Identity Refresh"
         in: query
         name: filters
@@ -10887,9 +10887,9 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **id**: *eq, ne, co, ge, gt, in, le, lt, isnull, sw*
+          **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*
 
-          **name**: *eq, ne, co, in, le, lt, isnull, sw*
+          **name**: *eq, ne, in, le, lt, isnull, sw*
 
           **priority**: *eq, ne*
         example: id eq "ef38f94347e94562b5bb8424a56397d8"
@@ -16681,7 +16681,7 @@ paths:
 
           **id**: *eq, in*
 
-          **name**: *eq, in, sw, co*
+          **name**: *eq, in, sw*
         example: name sw "bob"
         in: query
         name: filters
@@ -16832,7 +16832,7 @@ paths:
 
           **id**: *eq, in*
 
-          **name**: *eq, sw, co*
+          **name**: *eq, sw*
 
           **created**: *gt, lt, ge, le*
 
@@ -24636,13 +24636,13 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*
+          **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 
           **name**: *co, eq, in, sw, ge, gt, ne, isnull*
 
-          **type**: *eq, in, co, ge, gt, ne, isnull, sw*
+          **type**: *eq, in, ge, gt, ne, isnull, sw*
 
-          **owner.id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*
+          **owner.id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 
           **features**: *ca, co*
 
@@ -24650,7 +24650,7 @@ paths:
 
           **modified**: *eq*
 
-          **managementWorkgroup.id**: *eq, co, ge, gt, in, le, lt, ne, isnull, sw*
+          **managementWorkgroup.id**: *eq, ge, gt, in, le, lt, ne, isnull, sw*
 
           **description**: *eq, sw*
 
@@ -24658,11 +24658,11 @@ paths:
 
           **healthy**: *isnull*
 
-          **status**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*
+          **status**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
 
-          **connectionType**: *eq, co, ge, gt, in, le, lt, ne, isnull, sw*
+          **connectionType**: *eq, ge, gt, in, le, lt, ne, isnull, sw*
 
-          **connectorName**: *eq, co, ge, gt, in, ne, isnull, sw*
+          **connectorName**: *eq, ge, gt, in, ne, isnull, sw*
         example: name eq "Employees"
         in: query
         name: filters

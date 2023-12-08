@@ -1123,7 +1123,7 @@ func (r ApiListAccountsRequest) Count(count bool) ApiListAccountsRequest {
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **identityId**: *eq, co, ge, gt, in, le, lt, ne, isnull, sw*  **name**: *eq, in, co, ge, gt, ne, isnull, sw*  **nativeIdentity**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **sourceId**: *eq, in, co, ge, gt, le, lt, ne, isnull, sw*  **uncorrelated**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **identityId**: *eq, ge, gt, in, le, lt, ne, isnull, sw*  **name**: *eq, in, ge, gt, ne, isnull, sw*  **nativeIdentity**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **sourceId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **uncorrelated**: *eq*
 func (r ApiListAccountsRequest) Filters(filters string) ApiListAccountsRequest {
 	r.filters = &filters
 	return r
