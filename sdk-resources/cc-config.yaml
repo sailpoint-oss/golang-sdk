@@ -2,6 +2,8 @@ templateDir: ./sdk-resources/resources
 packageName: cc
 packageVersion: 2.0.0
 generateInterfaces: false
-enumClassPrefix: false
 disallowAdditionalPropertiesIfNotPresent: false
 useOneOfDiscriminatorLookup: false
+enumClassPrefix: true
+gitRepoId: golang-sdk/v2
+gitUserId: sailpoint-oss 
