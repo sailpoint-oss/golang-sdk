@@ -36499,6 +36499,10 @@ components:
                   locked: false
                   type: IDENTITY
                   nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
               - owner:
                   name: Alison Ferguso
                   id: 5168015d32f890ca15812c9180835d2e
@@ -36539,6 +36543,10 @@ components:
                   locked: false
                   type: IDENTITY
                   nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
               endDate: 2021-12-25T00:00:00Z
               created: 2021-01-01T22:32:58.104Z
               name: Employee-database-read-write
@@ -36593,6 +36601,10 @@ components:
                   locked: false
                   type: IDENTITY
                   nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
               - owner:
                   name: Alison Ferguso
                   id: 5168015d32f890ca15812c9180835d2e
@@ -36633,6 +36645,10 @@ components:
                   locked: false
                   type: IDENTITY
                   nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
               endDate: 2021-12-25T00:00:00Z
               created: 2021-01-01T22:32:58.104Z
               name: Employee-database-read-write
@@ -36686,6 +36702,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           accessProfile:
             privileged: false
             owner:
@@ -36734,6 +36754,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             - owner:
                 name: Alison Ferguso
                 id: 5168015d32f890ca15812c9180835d2e
@@ -36774,6 +36798,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             endDate: 2021-12-25T00:00:00Z
             created: 2021-01-01T22:32:58.104Z
             name: Employee-database-read-write
@@ -37077,6 +37105,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             - owner:
                 name: Alison Ferguso
                 id: 5168015d32f890ca15812c9180835d2e
@@ -37117,6 +37149,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             endDate: 2021-12-25T00:00:00Z
             created: 2021-01-01T22:32:58.104Z
             name: Employee-database-read-write
@@ -37171,6 +37207,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             - owner:
                 name: Alison Ferguso
                 id: 5168015d32f890ca15812c9180835d2e
@@ -37211,6 +37251,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             endDate: 2021-12-25T00:00:00Z
             created: 2021-01-01T22:32:58.104Z
             name: Employee-database-read-write
@@ -37264,6 +37308,10 @@ components:
             locked: false
             type: IDENTITY
             nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
         accessProfile:
           privileged: false
           owner:
@@ -37312,6 +37360,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           - owner:
               name: Alison Ferguso
               id: 5168015d32f890ca15812c9180835d2e
@@ -37352,6 +37404,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           endDate: 2021-12-25T00:00:00Z
           created: 2021-01-01T22:32:58.104Z
           name: Employee-database-read-write
@@ -42314,6 +42370,10 @@ components:
           locked: false
           type: IDENTITY
           nativeIdentity: CN=Alison Ferguso
+          activityInsights:
+            accountID: c4ddd5421d8549f0abd309162cafd3b1
+            usageDays: 45
+            usageDaysState: COMPLETE
       nullable: true
       properties:
         id:
@@ -42441,6 +42501,10 @@ components:
             locked: false
             type: IDENTITY
             nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
         - owner:
             name: Alison Ferguso
             id: 5168015d32f890ca15812c9180835d2e
@@ -42481,6 +42545,10 @@ components:
             locked: false
             type: IDENTITY
             nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
         endDate: 2021-12-25T00:00:00Z
         created: 2021-01-01T22:32:58.104Z
         name: Employee-database-read-write
@@ -42590,6 +42658,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           - owner:
               name: Alison Ferguso
               id: 5168015d32f890ca15812c9180835d2e
@@ -42630,6 +42702,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           endDate: 2021-12-25T00:00:00Z
           created: 2021-01-01T22:32:58.104Z
           name: Employee-database-read-write
@@ -42684,6 +42760,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           - owner:
               name: Alison Ferguso
               id: 5168015d32f890ca15812c9180835d2e
@@ -42724,6 +42804,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           endDate: 2021-12-25T00:00:00Z
           created: 2021-01-01T22:32:58.104Z
           name: Employee-database-read-write
@@ -44773,6 +44857,32 @@ components:
         impactScore:
           $ref: '#/components/schemas/DataAccess_impactScore'
       type: object
+    ActivityInsights:
+      description: Insights into account activity
+      example:
+        accountID: c4ddd5421d8549f0abd309162cafd3b1
+        usageDays: 45
+        usageDaysState: COMPLETE
+      properties:
+        accountID:
+          description: UUID of the account
+          example: c4ddd5421d8549f0abd309162cafd3b1
+          type: string
+        usageDays:
+          description: The number of days of activity
+          example: 45
+          format: int32
+          maximum: 90
+          minimum: 0
+          type: integer
+        usageDaysState:
+          description: Status indicating if the activity is complete or unknown
+          enum:
+          - COMPLETE
+          - UNKNOWN
+          example: COMPLETE
+          type: string
+      type: object
     TransformDefinition:
       example:
         attributes:
@@ -46808,6 +46918,10 @@ components:
         locked: false
         type: IDENTITY
         nativeIdentity: CN=Alison Ferguso
+        activityInsights:
+          accountID: c4ddd5421d8549f0abd309162cafd3b1
+          usageDays: 45
+          usageDaysState: COMPLETE
       nullable: true
       properties:
         nativeIdentity:
@@ -46848,6 +46962,8 @@ components:
           format: date-time
           nullable: true
           type: string
+        activityInsights:
+          $ref: '#/components/schemas/ActivityInsights'
       type: object
     Schedule_1_days:
       allOf:

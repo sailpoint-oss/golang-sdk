@@ -35,6 +35,7 @@ type ReviewableEntitlementAccount struct {
 	Created NullableTime `json:"created,omitempty"`
 	// When the account was last modified
 	Modified NullableTime `json:"modified,omitempty"`
+	ActivityInsights *ActivityInsights `json:"activityInsights,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -361,6 +362,38 @@ func (o *ReviewableEntitlementAccount) UnsetModified() {
 	o.Modified.Unset()
 }
 
+// GetActivityInsights returns the ActivityInsights field value if set, zero value otherwise.
+func (o *ReviewableEntitlementAccount) GetActivityInsights() ActivityInsights {
+	if o == nil || isNil(o.ActivityInsights) {
+		var ret ActivityInsights
+		return ret
+	}
+	return *o.ActivityInsights
+}
+
+// GetActivityInsightsOk returns a tuple with the ActivityInsights field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReviewableEntitlementAccount) GetActivityInsightsOk() (*ActivityInsights, bool) {
+	if o == nil || isNil(o.ActivityInsights) {
+		return nil, false
+	}
+	return o.ActivityInsights, true
+}
+
+// HasActivityInsights returns a boolean if a field has been set.
+func (o *ReviewableEntitlementAccount) HasActivityInsights() bool {
+	if o != nil && !isNil(o.ActivityInsights) {
+		return true
+	}
+
+	return false
+}
+
+// SetActivityInsights gets a reference to the given ActivityInsights and assigns it to the ActivityInsights field.
+func (o *ReviewableEntitlementAccount) SetActivityInsights(v ActivityInsights) {
+	o.ActivityInsights = &v
+}
+
 func (o ReviewableEntitlementAccount) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -395,6 +428,9 @@ func (o ReviewableEntitlementAccount) ToMap() (map[string]interface{}, error) {
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
+	if !isNil(o.ActivityInsights) {
+		toSerialize["activityInsights"] = o.ActivityInsights
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -421,6 +457,7 @@ func (o *ReviewableEntitlementAccount) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
+		delete(additionalProperties, "activityInsights")
 		o.AdditionalProperties = additionalProperties
 	}
 

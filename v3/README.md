@@ -396,6 +396,7 @@ Class | Method | HTTP request | Description
  - [AccountsAsyncResult](docs/AccountsAsyncResult.md)
  - [AccountsExportReportArguments](docs/AccountsExportReportArguments.md)
  - [ActivateCampaignOptions](docs/ActivateCampaignOptions.md)
+ - [ActivityInsights](docs/ActivityInsights.md)
  - [AdminReviewReassign](docs/AdminReviewReassign.md)
  - [AdminReviewReassignReassignTo](docs/AdminReviewReassignReassignTo.md)
  - [AggregationResult](docs/AggregationResult.md)

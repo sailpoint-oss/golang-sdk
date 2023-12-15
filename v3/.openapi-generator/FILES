@@ -98,6 +98,7 @@ docs/AccountsAPI.md
 docs/AccountsAsyncResult.md
 docs/AccountsExportReportArguments.md
 docs/ActivateCampaignOptions.md
+docs/ActivityInsights.md
 docs/AdminReviewReassign.md
 docs/AdminReviewReassignReassignTo.md
 docs/AggregationResult.md
@@ -552,6 +553,7 @@ model_account_usage.go
 model_accounts_async_result.go
 model_accounts_export_report_arguments.go
 model_activate_campaign_options.go
+model_activity_insights.go
 model_admin_review_reassign.go
 model_admin_review_reassign_reassign_to.go
 model_aggregation_result.go
