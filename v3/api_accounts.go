@@ -1123,13 +1123,13 @@ func (r ApiListAccountsRequest) Count(count bool) ApiListAccountsRequest {
 	return r
 }
 
-// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **identityId**: *eq, ge, gt, in, le, lt, ne, isnull, sw*  **name**: *eq, in, ge, gt, ne, isnull, sw*  **nativeIdentity**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **sourceId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*  **uncorrelated**: *eq*
+// Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **identityId**: *eq, in, sw*  **name**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **sourceId**: *eq, in, sw*  **uncorrelated**: *eq*  **identity.name**: *eq, in, sw*
 func (r ApiListAccountsRequest) Filters(filters string) ApiListAccountsRequest {
 	r.filters = &filters
 	return r
 }
 
-// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, nativeIdentity, uuid, manuallyCorrelated**
+// Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, nativeIdentity, uuid, manuallyCorrelated, identity.name**
 func (r ApiListAccountsRequest) Sorters(sorters string) ApiListAccountsRequest {
 	r.sorters = &sorters
 	return r

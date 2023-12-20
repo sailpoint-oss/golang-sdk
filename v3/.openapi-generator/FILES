@@ -130,6 +130,7 @@ docs/BaseAccount.md
 docs/BaseCommonDto.md
 docs/BaseDocument.md
 docs/BaseEntitlement.md
+docs/BaseReferenceDto.md
 docs/BeforeProvisioningRuleDto.md
 docs/Bound.md
 docs/BucketAggregation.md
@@ -584,6 +585,7 @@ model_base_account.go
 model_base_common_dto.go
 model_base_document.go
 model_base_entitlement.go
+model_base_reference_dto.go
 model_before_provisioning_rule_dto.go
 model_bound.go
 model_bucket_aggregation.go

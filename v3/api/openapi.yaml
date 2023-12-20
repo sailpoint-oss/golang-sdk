@@ -3103,17 +3103,19 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+          **id**: *eq, in, sw*
 
-          **identityId**: *eq, ge, gt, in, le, lt, ne, isnull, sw*
+          **identityId**: *eq, in, sw*
 
-          **name**: *eq, in, ge, gt, ne, isnull, sw*
+          **name**: *eq, in, sw*
 
-          **nativeIdentity**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+          **nativeIdentity**: *eq, in, sw*
 
-          **sourceId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+          **sourceId**: *eq, in, sw*
 
           **uncorrelated**: *eq*
+
+          **identity.name**: *eq, in, sw*
         example: identityId eq "2c9180858082150f0180893dbaf44201"
         in: query
         name: filters
@@ -3123,7 +3125,7 @@ paths:
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
-          Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, nativeIdentity, uuid, manuallyCorrelated**
+          Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, nativeIdentity, uuid, manuallyCorrelated, identity.name**
         example: "id,name"
         in: query
         name: sorters
@@ -32391,6 +32393,10 @@ components:
             description: Indicates if the account has entitlements
             example: true
             type: boolean
+          identity:
+            $ref: '#/components/schemas/BaseReferenceDto'
+          sourceOwner:
+            $ref: '#/components/schemas/BaseReferenceDto'
         required:
         - attributes
         - authoritative
@@ -40736,6 +40742,20 @@ components:
           type: string
       required:
       - name
+      type: object
+    BaseReferenceDto:
+      properties:
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
       type: object
     CompletionStatus:
       description: The status after completion.

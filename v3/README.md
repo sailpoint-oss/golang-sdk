@@ -427,6 +427,7 @@ Class | Method | HTTP request | Description
  - [BaseCommonDto](docs/BaseCommonDto.md)
  - [BaseDocument](docs/BaseDocument.md)
  - [BaseEntitlement](docs/BaseEntitlement.md)
+ - [BaseReferenceDto](docs/BaseReferenceDto.md)
  - [BeforeProvisioningRuleDto](docs/BeforeProvisioningRuleDto.md)
  - [Bound](docs/Bound.md)
  - [BucketAggregation](docs/BucketAggregation.md)
