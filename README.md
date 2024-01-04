@@ -1,92 +1,32 @@
-# golang-sdk
+## About the project
 
-### Create your project
+This repository contains the complete build, with assets, for the SailPoint Golang SDK. 
+The Golang SDK allows you to use Golang to interact with the SailPoint APIs and other resources to customize and extend your SailPoint platform. 
 
-```bash
-go mod init github.com/github-repo-name/projectname
-```
+## Documentation 
 
-### Create sdk.go file and copy the below code into the file
+To get started with the Golang SDK and learn about its various functionalities, refer to the [documentation](https://developer.sailpoint.com/idn/tools/sdk/go) on https://developer.sailpoint.com. 
 
-```go
-package main
+## Examples
 
-import (
-	"context"
-	"fmt"
-	"os"
+In addition to the examples shown in the [documentation](https://developer.sailpoint.com/idn/tools/sdk/go), you can find more uses of the Golang SDK in the [examples](./examples/sdk.go).
 
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
+## Contributing 
 
-func main() {
+The SailPoint Developer Relations Team is always actively working to improve the SailPoint Golang SDK to make it as useful as possible to the SailPoint Developer Community. 
+This means adding and maintaining new resources and functionalities for the SDK.
+The most valuable resource of all, however, is the community itself! 
+We greatly appreciate any input, feedback, and direct contributions you can provide to the Golang SDK, big or small. 
 
-	ctx := context.TODO()
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
+Refer to our [contribution guidelines](./CONTRIBUTING.md) to learn more about the different ways you can contribute to the SDK. 
 
-	resp, r, err := apiClient.V3.AccountsApi.ListAccounts(ctx).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAccounts`: []Account
-	fmt.Fprintf(os.Stdout, "First response from `AccountsApi.ListAccount`: %v\n", resp[0].Name)
+Before you contribute, you [must sign our CLA](https://cla-assistant.io/sailpoint-oss/developer.sailpoint.com).
 
-}
-```
+## License
 
-### Create a configuration file or save your configuration as environment variables
+Distributed under the MIT License. Refer to [the license](./LICENSE) for more information.
 
-You can create a local configuration file using the [CLI tool](https://github.com/sailpoint-oss/sailpoint-cli#configuration) or you can store your configuration in environment variables
- - SAIL_BASE_URL
- - SAIL_CLIENT_ID
- - SAIL_CLIENT_SECRET
+## Code of Conduct
 
-### Install sdk
+We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community. Read our [code of conduct](./CODE_OF_CONDUCT.md) to learn more.
 
-```bash
-go mod tidy
-```
-
-### Run the example
-
-```bash
-go run sdk.go
-```
-
-
-### Handling Pagination
-
-there is a built in pagination function that can be used to automatically call and collect responses from APIs that support pagination. Use the following syntax to call it:
-
-```go
-import (
-	"context"
-	"fmt"
-	"os"
-
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-	// need to import the v3 library so we are aware of the sailpointsdk.Account struct
-	sailpointsdk "github.com/sailpoint-oss/golang-sdk/v2/v3"
-)
-
-func main() {
-
-	ctx := context.TODO()
-	configuration := sailpoint.NewDefaultConfiguration()
-	apiClient := sailpoint.NewAPIClient(configuration)
-
-	// use the paginate function to get 1000 results instead of hitting the normal 250 limit
-	resp, r, err := sailpoint.PaginateWithDefaults[sailpointsdk.Account](apiClient.V3.AccountsApi.ListAccounts(ctx))
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAccounts`: []Account
-	fmt.Fprintf(os.Stdout, "First response from `AccountsApi.ListAccount`: %v\n", resp[0].Name)
-
-}
-
-```
-### See more uses of the SDK [here](./examples/sdk.go).
