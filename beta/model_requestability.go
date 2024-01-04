@@ -20,9 +20,9 @@ var _ MappedNullable = &Requestability{}
 // Requestability struct for Requestability
 type Requestability struct {
 	// Whether the requester of the containing object must provide comments justifying the request
-	CommentsRequired *bool `json:"commentsRequired,omitempty"`
+	CommentsRequired NullableBool `json:"commentsRequired,omitempty"`
 	// Whether an approver must provide comments when denying the request
-	DenialCommentsRequired *bool `json:"denialCommentsRequired,omitempty"`
+	DenialCommentsRequired NullableBool `json:"denialCommentsRequired,omitempty"`
 	// List describing the steps in approving the request
 	ApprovalSchemes []AccessProfileApprovalScheme `json:"approvalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -36,6 +36,10 @@ type _Requestability Requestability
 // will change when the set of required properties is changed
 func NewRequestability() *Requestability {
 	this := Requestability{}
+	var commentsRequired bool = false
+	this.CommentsRequired = *NewNullableBool(&commentsRequired)
+	var denialCommentsRequired bool = false
+	this.DenialCommentsRequired = *NewNullableBool(&denialCommentsRequired)
 	return &this
 }
 
@@ -44,76 +48,100 @@ func NewRequestability() *Requestability {
 // but it doesn't guarantee that properties required by API are set
 func NewRequestabilityWithDefaults() *Requestability {
 	this := Requestability{}
+	var commentsRequired bool = false
+	this.CommentsRequired = *NewNullableBool(&commentsRequired)
+	var denialCommentsRequired bool = false
+	this.DenialCommentsRequired = *NewNullableBool(&denialCommentsRequired)
 	return &this
 }
 
-// GetCommentsRequired returns the CommentsRequired field value if set, zero value otherwise.
+// GetCommentsRequired returns the CommentsRequired field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Requestability) GetCommentsRequired() bool {
-	if o == nil || isNil(o.CommentsRequired) {
+	if o == nil || isNil(o.CommentsRequired.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.CommentsRequired
+	return *o.CommentsRequired.Get()
 }
 
 // GetCommentsRequiredOk returns a tuple with the CommentsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Requestability) GetCommentsRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.CommentsRequired) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CommentsRequired, true
+	return o.CommentsRequired.Get(), o.CommentsRequired.IsSet()
 }
 
 // HasCommentsRequired returns a boolean if a field has been set.
 func (o *Requestability) HasCommentsRequired() bool {
-	if o != nil && !isNil(o.CommentsRequired) {
+	if o != nil && o.CommentsRequired.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCommentsRequired gets a reference to the given bool and assigns it to the CommentsRequired field.
+// SetCommentsRequired gets a reference to the given NullableBool and assigns it to the CommentsRequired field.
 func (o *Requestability) SetCommentsRequired(v bool) {
-	o.CommentsRequired = &v
+	o.CommentsRequired.Set(&v)
+}
+// SetCommentsRequiredNil sets the value for CommentsRequired to be an explicit nil
+func (o *Requestability) SetCommentsRequiredNil() {
+	o.CommentsRequired.Set(nil)
 }
 
-// GetDenialCommentsRequired returns the DenialCommentsRequired field value if set, zero value otherwise.
+// UnsetCommentsRequired ensures that no value is present for CommentsRequired, not even an explicit nil
+func (o *Requestability) UnsetCommentsRequired() {
+	o.CommentsRequired.Unset()
+}
+
+// GetDenialCommentsRequired returns the DenialCommentsRequired field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Requestability) GetDenialCommentsRequired() bool {
-	if o == nil || isNil(o.DenialCommentsRequired) {
+	if o == nil || isNil(o.DenialCommentsRequired.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.DenialCommentsRequired
+	return *o.DenialCommentsRequired.Get()
 }
 
 // GetDenialCommentsRequiredOk returns a tuple with the DenialCommentsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Requestability) GetDenialCommentsRequiredOk() (*bool, bool) {
-	if o == nil || isNil(o.DenialCommentsRequired) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DenialCommentsRequired, true
+	return o.DenialCommentsRequired.Get(), o.DenialCommentsRequired.IsSet()
 }
 
 // HasDenialCommentsRequired returns a boolean if a field has been set.
 func (o *Requestability) HasDenialCommentsRequired() bool {
-	if o != nil && !isNil(o.DenialCommentsRequired) {
+	if o != nil && o.DenialCommentsRequired.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDenialCommentsRequired gets a reference to the given bool and assigns it to the DenialCommentsRequired field.
+// SetDenialCommentsRequired gets a reference to the given NullableBool and assigns it to the DenialCommentsRequired field.
 func (o *Requestability) SetDenialCommentsRequired(v bool) {
-	o.DenialCommentsRequired = &v
+	o.DenialCommentsRequired.Set(&v)
+}
+// SetDenialCommentsRequiredNil sets the value for DenialCommentsRequired to be an explicit nil
+func (o *Requestability) SetDenialCommentsRequiredNil() {
+	o.DenialCommentsRequired.Set(nil)
 }
 
-// GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise.
+// UnsetDenialCommentsRequired ensures that no value is present for DenialCommentsRequired, not even an explicit nil
+func (o *Requestability) UnsetDenialCommentsRequired() {
+	o.DenialCommentsRequired.Unset()
+}
+
+// GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Requestability) GetApprovalSchemes() []AccessProfileApprovalScheme {
-	if o == nil || isNil(o.ApprovalSchemes) {
+	if o == nil {
 		var ret []AccessProfileApprovalScheme
 		return ret
 	}
@@ -122,6 +150,7 @@ func (o *Requestability) GetApprovalSchemes() []AccessProfileApprovalScheme {
 
 // GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Requestability) GetApprovalSchemesOk() ([]AccessProfileApprovalScheme, bool) {
 	if o == nil || isNil(o.ApprovalSchemes) {
 		return nil, false
@@ -131,7 +160,7 @@ func (o *Requestability) GetApprovalSchemesOk() ([]AccessProfileApprovalScheme, 
 
 // HasApprovalSchemes returns a boolean if a field has been set.
 func (o *Requestability) HasApprovalSchemes() bool {
-	if o != nil && !isNil(o.ApprovalSchemes) {
+	if o != nil && isNil(o.ApprovalSchemes) {
 		return true
 	}
 
@@ -153,13 +182,13 @@ func (o Requestability) MarshalJSON() ([]byte, error) {
 
 func (o Requestability) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.CommentsRequired) {
-		toSerialize["commentsRequired"] = o.CommentsRequired
+	if o.CommentsRequired.IsSet() {
+		toSerialize["commentsRequired"] = o.CommentsRequired.Get()
 	}
-	if !isNil(o.DenialCommentsRequired) {
-		toSerialize["denialCommentsRequired"] = o.DenialCommentsRequired
+	if o.DenialCommentsRequired.IsSet() {
+		toSerialize["denialCommentsRequired"] = o.DenialCommentsRequired.Get()
 	}
-	if !isNil(o.ApprovalSchemes) {
+	if o.ApprovalSchemes != nil {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
 	}
 

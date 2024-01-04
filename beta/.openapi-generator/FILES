@@ -612,6 +612,7 @@ docs/ResourceObjectsResponse.md
 docs/ReviewReassign.md
 docs/Reviewer.md
 docs/Revocability.md
+docs/RevocabilityForRole.md
 docs/Role.md
 docs/RoleAssignmentSourceType.md
 docs/RoleBulkDeleteRequest.md
@@ -1353,6 +1354,7 @@ model_resource_objects_response.go
 model_review_reassign.go
 model_reviewer.go
 model_revocability.go
+model_revocability_for_role.go
 model_role.go
 model_role_assignment_source_type.go
 model_role_bulk_delete_request.go

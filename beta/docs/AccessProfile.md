@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** | Information about the Access Profile | [optional] 
 **Created** | Pointer to **time.Time** | Date the Access Profile was created | [optional] [readonly] 
 **Modified** | Pointer to **time.Time** | Date the Access Profile was last modified. | [optional] [readonly] 
-**Enabled** | Pointer to **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] 
+**Enabled** | Pointer to **bool** | Whether the Access Profile is enabled. If the Access Profile is enabled then you must include at least one Entitlement. | [optional] [default to true]
 **Owner** | [**OwnerReference**](OwnerReference.md) |  | 
 **Source** | [**AccessProfileSourceRef**](AccessProfileSourceRef.md) |  | 
 **Entitlements** | Pointer to [**[]EntitlementRef**](EntitlementRef.md) | A list of entitlements associated with the Access Profile. If enabled is false this is allowed to be empty otherwise it needs to contain at least one Entitlement. | [optional] 
-**Requestable** | Pointer to **bool** | Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error. | [optional] 
-**AccessRequestConfig** | Pointer to [**Requestability**](Requestability.md) |  | [optional] 
-**RevocationRequestConfig** | Pointer to [**Revocability**](Revocability.md) |  | [optional] 
+**Requestable** | Pointer to **bool** | Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error. | [optional] [default to true]
+**AccessRequestConfig** | Pointer to [**NullableRequestability**](Requestability.md) |  | [optional] 
+**RevocationRequestConfig** | Pointer to [**NullableRevocability**](Revocability.md) |  | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Access Profile is assigned. | [optional] 
 **ProvisioningCriteria** | Pointer to [**NullableProvisioningCriteriaLevel1**](ProvisioningCriteriaLevel1.md) |  | [optional] 
 
@@ -318,6 +318,16 @@ SetAccessRequestConfig sets AccessRequestConfig field to given value.
 
 HasAccessRequestConfig returns a boolean if a field has been set.
 
+### SetAccessRequestConfigNil
+
+`func (o *AccessProfile) SetAccessRequestConfigNil(b bool)`
+
+ SetAccessRequestConfigNil sets the value for AccessRequestConfig to be an explicit nil
+
+### UnsetAccessRequestConfig
+`func (o *AccessProfile) UnsetAccessRequestConfig()`
+
+UnsetAccessRequestConfig ensures that no value is present for AccessRequestConfig, not even an explicit nil
 ### GetRevocationRequestConfig
 
 `func (o *AccessProfile) GetRevocationRequestConfig() Revocability`
@@ -343,6 +353,16 @@ SetRevocationRequestConfig sets RevocationRequestConfig field to given value.
 
 HasRevocationRequestConfig returns a boolean if a field has been set.
 
+### SetRevocationRequestConfigNil
+
+`func (o *AccessProfile) SetRevocationRequestConfigNil(b bool)`
+
+ SetRevocationRequestConfigNil sets the value for RevocationRequestConfig to be an explicit nil
+
+### UnsetRevocationRequestConfig
+`func (o *AccessProfile) UnsetRevocationRequestConfig()`
+
+UnsetRevocationRequestConfig ensures that no value is present for RevocationRequestConfig, not even an explicit nil
 ### GetSegments
 
 `func (o *AccessProfile) GetSegments() []string`

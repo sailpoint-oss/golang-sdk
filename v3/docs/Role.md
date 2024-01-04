@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Whether the Role is enabled or not. | [optional] [default to false]
 **Requestable** | Pointer to **bool** | Whether the Role can be the target of access requests. | [optional] [default to false]
 **AccessRequestConfig** | Pointer to [**RequestabilityForRole**](RequestabilityForRole.md) |  | [optional] 
-**RevocationRequestConfig** | Pointer to [**Revocability**](Revocability.md) |  | [optional] 
+**RevocationRequestConfig** | Pointer to [**RevocabilityForRole**](RevocabilityForRole.md) |  | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Role is assigned. | [optional] 
 
 ## Methods
@@ -370,20 +370,20 @@ HasAccessRequestConfig returns a boolean if a field has been set.
 
 ### GetRevocationRequestConfig
 
-`func (o *Role) GetRevocationRequestConfig() Revocability`
+`func (o *Role) GetRevocationRequestConfig() RevocabilityForRole`
 
 GetRevocationRequestConfig returns the RevocationRequestConfig field if non-nil, zero value otherwise.
 
 ### GetRevocationRequestConfigOk
 
-`func (o *Role) GetRevocationRequestConfigOk() (*Revocability, bool)`
+`func (o *Role) GetRevocationRequestConfigOk() (*RevocabilityForRole, bool)`
 
 GetRevocationRequestConfigOk returns a tuple with the RevocationRequestConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRevocationRequestConfig
 
-`func (o *Role) SetRevocationRequestConfig(v Revocability)`
+`func (o *Role) SetRevocationRequestConfig(v RevocabilityForRole)`
 
 SetRevocationRequestConfig sets RevocationRequestConfig field to given value.
 

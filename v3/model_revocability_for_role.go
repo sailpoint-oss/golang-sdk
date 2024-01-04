@@ -14,28 +14,28 @@ import (
 	"encoding/json"
 )
 
-// checks if the Requestability type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Requestability{}
+// checks if the RevocabilityForRole type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RevocabilityForRole{}
 
-// Requestability struct for Requestability
-type Requestability struct {
+// RevocabilityForRole struct for RevocabilityForRole
+type RevocabilityForRole struct {
 	// Whether the requester of the containing object must provide comments justifying the request
 	CommentsRequired NullableBool `json:"commentsRequired,omitempty"`
 	// Whether an approver must provide comments when denying the request
 	DenialCommentsRequired NullableBool `json:"denialCommentsRequired,omitempty"`
-	// List describing the steps in approving the request
-	ApprovalSchemes []AccessProfileApprovalScheme `json:"approvalSchemes,omitempty"`
+	// List describing the steps in approving the revocation request
+	ApprovalSchemes []ApprovalSchemeForRole `json:"approvalSchemes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _Requestability Requestability
+type _RevocabilityForRole RevocabilityForRole
 
-// NewRequestability instantiates a new Requestability object
+// NewRevocabilityForRole instantiates a new RevocabilityForRole object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRequestability() *Requestability {
-	this := Requestability{}
+func NewRevocabilityForRole() *RevocabilityForRole {
+	this := RevocabilityForRole{}
 	var commentsRequired bool = false
 	this.CommentsRequired = *NewNullableBool(&commentsRequired)
 	var denialCommentsRequired bool = false
@@ -43,11 +43,11 @@ func NewRequestability() *Requestability {
 	return &this
 }
 
-// NewRequestabilityWithDefaults instantiates a new Requestability object
+// NewRevocabilityForRoleWithDefaults instantiates a new RevocabilityForRole object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewRequestabilityWithDefaults() *Requestability {
-	this := Requestability{}
+func NewRevocabilityForRoleWithDefaults() *RevocabilityForRole {
+	this := RevocabilityForRole{}
 	var commentsRequired bool = false
 	this.CommentsRequired = *NewNullableBool(&commentsRequired)
 	var denialCommentsRequired bool = false
@@ -56,7 +56,7 @@ func NewRequestabilityWithDefaults() *Requestability {
 }
 
 // GetCommentsRequired returns the CommentsRequired field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Requestability) GetCommentsRequired() bool {
+func (o *RevocabilityForRole) GetCommentsRequired() bool {
 	if o == nil || isNil(o.CommentsRequired.Get()) {
 		var ret bool
 		return ret
@@ -67,7 +67,7 @@ func (o *Requestability) GetCommentsRequired() bool {
 // GetCommentsRequiredOk returns a tuple with the CommentsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Requestability) GetCommentsRequiredOk() (*bool, bool) {
+func (o *RevocabilityForRole) GetCommentsRequiredOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -75,7 +75,7 @@ func (o *Requestability) GetCommentsRequiredOk() (*bool, bool) {
 }
 
 // HasCommentsRequired returns a boolean if a field has been set.
-func (o *Requestability) HasCommentsRequired() bool {
+func (o *RevocabilityForRole) HasCommentsRequired() bool {
 	if o != nil && o.CommentsRequired.IsSet() {
 		return true
 	}
@@ -84,21 +84,21 @@ func (o *Requestability) HasCommentsRequired() bool {
 }
 
 // SetCommentsRequired gets a reference to the given NullableBool and assigns it to the CommentsRequired field.
-func (o *Requestability) SetCommentsRequired(v bool) {
+func (o *RevocabilityForRole) SetCommentsRequired(v bool) {
 	o.CommentsRequired.Set(&v)
 }
 // SetCommentsRequiredNil sets the value for CommentsRequired to be an explicit nil
-func (o *Requestability) SetCommentsRequiredNil() {
+func (o *RevocabilityForRole) SetCommentsRequiredNil() {
 	o.CommentsRequired.Set(nil)
 }
 
 // UnsetCommentsRequired ensures that no value is present for CommentsRequired, not even an explicit nil
-func (o *Requestability) UnsetCommentsRequired() {
+func (o *RevocabilityForRole) UnsetCommentsRequired() {
 	o.CommentsRequired.Unset()
 }
 
 // GetDenialCommentsRequired returns the DenialCommentsRequired field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Requestability) GetDenialCommentsRequired() bool {
+func (o *RevocabilityForRole) GetDenialCommentsRequired() bool {
 	if o == nil || isNil(o.DenialCommentsRequired.Get()) {
 		var ret bool
 		return ret
@@ -109,7 +109,7 @@ func (o *Requestability) GetDenialCommentsRequired() bool {
 // GetDenialCommentsRequiredOk returns a tuple with the DenialCommentsRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Requestability) GetDenialCommentsRequiredOk() (*bool, bool) {
+func (o *RevocabilityForRole) GetDenialCommentsRequiredOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -117,7 +117,7 @@ func (o *Requestability) GetDenialCommentsRequiredOk() (*bool, bool) {
 }
 
 // HasDenialCommentsRequired returns a boolean if a field has been set.
-func (o *Requestability) HasDenialCommentsRequired() bool {
+func (o *RevocabilityForRole) HasDenialCommentsRequired() bool {
 	if o != nil && o.DenialCommentsRequired.IsSet() {
 		return true
 	}
@@ -126,23 +126,23 @@ func (o *Requestability) HasDenialCommentsRequired() bool {
 }
 
 // SetDenialCommentsRequired gets a reference to the given NullableBool and assigns it to the DenialCommentsRequired field.
-func (o *Requestability) SetDenialCommentsRequired(v bool) {
+func (o *RevocabilityForRole) SetDenialCommentsRequired(v bool) {
 	o.DenialCommentsRequired.Set(&v)
 }
 // SetDenialCommentsRequiredNil sets the value for DenialCommentsRequired to be an explicit nil
-func (o *Requestability) SetDenialCommentsRequiredNil() {
+func (o *RevocabilityForRole) SetDenialCommentsRequiredNil() {
 	o.DenialCommentsRequired.Set(nil)
 }
 
 // UnsetDenialCommentsRequired ensures that no value is present for DenialCommentsRequired, not even an explicit nil
-func (o *Requestability) UnsetDenialCommentsRequired() {
+func (o *RevocabilityForRole) UnsetDenialCommentsRequired() {
 	o.DenialCommentsRequired.Unset()
 }
 
-// GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Requestability) GetApprovalSchemes() []AccessProfileApprovalScheme {
-	if o == nil {
-		var ret []AccessProfileApprovalScheme
+// GetApprovalSchemes returns the ApprovalSchemes field value if set, zero value otherwise.
+func (o *RevocabilityForRole) GetApprovalSchemes() []ApprovalSchemeForRole {
+	if o == nil || isNil(o.ApprovalSchemes) {
+		var ret []ApprovalSchemeForRole
 		return ret
 	}
 	return o.ApprovalSchemes
@@ -150,8 +150,7 @@ func (o *Requestability) GetApprovalSchemes() []AccessProfileApprovalScheme {
 
 // GetApprovalSchemesOk returns a tuple with the ApprovalSchemes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Requestability) GetApprovalSchemesOk() ([]AccessProfileApprovalScheme, bool) {
+func (o *RevocabilityForRole) GetApprovalSchemesOk() ([]ApprovalSchemeForRole, bool) {
 	if o == nil || isNil(o.ApprovalSchemes) {
 		return nil, false
 	}
@@ -159,20 +158,20 @@ func (o *Requestability) GetApprovalSchemesOk() ([]AccessProfileApprovalScheme, 
 }
 
 // HasApprovalSchemes returns a boolean if a field has been set.
-func (o *Requestability) HasApprovalSchemes() bool {
-	if o != nil && isNil(o.ApprovalSchemes) {
+func (o *RevocabilityForRole) HasApprovalSchemes() bool {
+	if o != nil && !isNil(o.ApprovalSchemes) {
 		return true
 	}
 
 	return false
 }
 
-// SetApprovalSchemes gets a reference to the given []AccessProfileApprovalScheme and assigns it to the ApprovalSchemes field.
-func (o *Requestability) SetApprovalSchemes(v []AccessProfileApprovalScheme) {
+// SetApprovalSchemes gets a reference to the given []ApprovalSchemeForRole and assigns it to the ApprovalSchemes field.
+func (o *RevocabilityForRole) SetApprovalSchemes(v []ApprovalSchemeForRole) {
 	o.ApprovalSchemes = v
 }
 
-func (o Requestability) MarshalJSON() ([]byte, error) {
+func (o RevocabilityForRole) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -180,7 +179,7 @@ func (o Requestability) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Requestability) ToMap() (map[string]interface{}, error) {
+func (o RevocabilityForRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.CommentsRequired.IsSet() {
 		toSerialize["commentsRequired"] = o.CommentsRequired.Get()
@@ -188,7 +187,7 @@ func (o Requestability) ToMap() (map[string]interface{}, error) {
 	if o.DenialCommentsRequired.IsSet() {
 		toSerialize["denialCommentsRequired"] = o.DenialCommentsRequired.Get()
 	}
-	if o.ApprovalSchemes != nil {
+	if !isNil(o.ApprovalSchemes) {
 		toSerialize["approvalSchemes"] = o.ApprovalSchemes
 	}
 
@@ -199,11 +198,11 @@ func (o Requestability) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Requestability) UnmarshalJSON(bytes []byte) (err error) {
-	varRequestability := _Requestability{}
+func (o *RevocabilityForRole) UnmarshalJSON(bytes []byte) (err error) {
+	varRevocabilityForRole := _RevocabilityForRole{}
 
-	if err = json.Unmarshal(bytes, &varRequestability); err == nil {
-	*o = Requestability(varRequestability)
+	if err = json.Unmarshal(bytes, &varRevocabilityForRole); err == nil {
+	*o = RevocabilityForRole(varRevocabilityForRole)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -218,38 +217,38 @@ func (o *Requestability) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableRequestability struct {
-	value *Requestability
+type NullableRevocabilityForRole struct {
+	value *RevocabilityForRole
 	isSet bool
 }
 
-func (v NullableRequestability) Get() *Requestability {
+func (v NullableRevocabilityForRole) Get() *RevocabilityForRole {
 	return v.value
 }
 
-func (v *NullableRequestability) Set(val *Requestability) {
+func (v *NullableRevocabilityForRole) Set(val *RevocabilityForRole) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableRequestability) IsSet() bool {
+func (v NullableRevocabilityForRole) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableRequestability) Unset() {
+func (v *NullableRevocabilityForRole) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableRequestability(val *Requestability) *NullableRequestability {
-	return &NullableRequestability{value: val, isSet: true}
+func NewNullableRevocabilityForRole(val *RevocabilityForRole) *NullableRevocabilityForRole {
+	return &NullableRevocabilityForRole{value: val, isSet: true}
 }
 
-func (v NullableRequestability) MarshalJSON() ([]byte, error) {
+func (v NullableRevocabilityForRole) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableRequestability) UnmarshalJSON(src []byte) error {
+func (v *NullableRevocabilityForRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

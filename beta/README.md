@@ -1047,6 +1047,7 @@ Class | Method | HTTP request | Description
  - [ReviewReassign](docs/ReviewReassign.md)
  - [Reviewer](docs/Reviewer.md)
  - [Revocability](docs/Revocability.md)
+ - [RevocabilityForRole](docs/RevocabilityForRole.md)
  - [Role](docs/Role.md)
  - [RoleAssignmentSourceType](docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](docs/RoleBulkDeleteRequest.md)

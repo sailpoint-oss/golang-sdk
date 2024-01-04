@@ -34359,6 +34359,7 @@ components:
           type: string
       type: object
     AccessProfile:
+      description: Access Profile
       example:
         owner:
           name: support
@@ -34379,13 +34380,11 @@ components:
           type: SOURCE
         enabled: true
         revocationRequestConfig:
-          commentsRequired: false
           approvalSchemes:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
-          denialCommentsRequired: false
         segments:
         - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
         - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
@@ -34454,6 +34453,7 @@ components:
           readOnly: true
           type: string
         enabled:
+          default: true
           description: Whether the Access Profile is enabled. If the Access Profile
             is enabled then you must include at least one Entitlement.
           example: true
@@ -34471,6 +34471,7 @@ components:
           nullable: true
           type: array
         requestable:
+          default: true
           description: "Whether the Access Profile is requestable via access request.\
             \ Currently, making an Access Profile non-requestable is only supported\
             \  for customers enabled with the new Request Center. Otherwise, attempting\
@@ -39122,7 +39123,7 @@ components:
         accessRequestConfig:
           $ref: '#/components/schemas/RequestabilityForRole'
         revocationRequestConfig:
-          $ref: '#/components/schemas/Revocability'
+          $ref: '#/components/schemas/RevocabilityForRole'
         segments:
           description: "List of IDs of segments, if any, to which this Role is assigned."
           example:
@@ -41462,51 +41463,43 @@ components:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
         denialCommentsRequired: true
+      nullable: true
       properties:
         commentsRequired:
+          default: false
           description: Whether the requester of the containing object must provide
             comments justifying the request
           example: true
+          nullable: true
           type: boolean
         denialCommentsRequired:
+          default: false
           description: Whether an approver must provide comments when denying the
             request
           example: true
+          nullable: true
           type: boolean
         approvalSchemes:
           description: List describing the steps in approving the request
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
+          nullable: true
           type: array
       type: object
     Revocability:
       example:
-        commentsRequired: false
         approvalSchemes:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
-        denialCommentsRequired: false
+      nullable: true
       properties:
-        commentsRequired:
-          default: false
-          description: Whether the requester of the containing object must provide
-            comments justifying the request
-          example: false
-          nullable: true
-          type: boolean
-        denialCommentsRequired:
-          default: false
-          description: Whether an approver must provide comments when denying the
-            request
-          example: false
-          nullable: true
-          type: boolean
         approvalSchemes:
           description: List describing the steps in approving the revocation request
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
+          nullable: true
           type: array
       type: object
     ProvisioningCriteriaLevel1:
@@ -43398,6 +43391,36 @@ components:
           type: boolean
         approvalSchemes:
           description: List describing the steps in approving the request
+          items:
+            $ref: '#/components/schemas/ApprovalSchemeForRole'
+          type: array
+      type: object
+    RevocabilityForRole:
+      example:
+        commentsRequired: false
+        approvalSchemes:
+        - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+          approverType: GOVERNANCE_GROUP
+        - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+          approverType: GOVERNANCE_GROUP
+        denialCommentsRequired: false
+      properties:
+        commentsRequired:
+          default: false
+          description: Whether the requester of the containing object must provide
+            comments justifying the request
+          example: false
+          nullable: true
+          type: boolean
+        denialCommentsRequired:
+          default: false
+          description: Whether an approver must provide comments when denying the
+            request
+          example: false
+          nullable: true
+          type: boolean
+        approvalSchemes:
+          description: List describing the steps in approving the revocation request
           items:
             $ref: '#/components/schemas/ApprovalSchemeForRole'
           type: array

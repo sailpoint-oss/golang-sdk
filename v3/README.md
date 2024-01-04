@@ -659,6 +659,7 @@ Class | Method | HTTP request | Description
  - [ReviewableRole](docs/ReviewableRole.md)
  - [Reviewer](docs/Reviewer.md)
  - [Revocability](docs/Revocability.md)
+ - [RevocabilityForRole](docs/RevocabilityForRole.md)
  - [Role](docs/Role.md)
  - [RoleAssignmentSourceType](docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](docs/RoleBulkDeleteRequest.md)
