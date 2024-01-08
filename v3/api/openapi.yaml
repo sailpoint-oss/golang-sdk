@@ -42233,18 +42233,17 @@ components:
         $ref: '#/components/schemas/ReassignmentTrailDTO'
       type: array
     CriteriaType:
-      description: Type of the criteria in the filter.
+      description: Type of the criteria in the filter. The `COMPOSITE` filter can
+        contain multiple filters in an AND/OR relationship.
       enum:
       - COMPOSITE
       - ROLE
       - IDENTITY
       - IDENTITY_ATTRIBUTE
       - ENTITLEMENT
-      - INVALID_CERTIFIABLE_ENTITY
       - ACCESS_PROFILE
       - SOURCE
       - ACCOUNT
-      - INVALID_CERTIFIABLE_BUNDLE
       - AGGREGATED_ENTITLEMENT
       example: IDENTITY_ATTRIBUTE
       type: string

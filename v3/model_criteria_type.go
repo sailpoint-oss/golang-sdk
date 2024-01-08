@@ -15,7 +15,7 @@ import (
 	"fmt"
 )
 
-// CriteriaType Type of the criteria in the filter.
+// CriteriaType Type of the criteria in the filter. The `COMPOSITE` filter can contain multiple filters in an AND/OR relationship.
 type CriteriaType string
 
 // List of CriteriaType
@@ -25,11 +25,9 @@ const (
 	CRITERIATYPE_IDENTITY CriteriaType = "IDENTITY"
 	CRITERIATYPE_IDENTITY_ATTRIBUTE CriteriaType = "IDENTITY_ATTRIBUTE"
 	CRITERIATYPE_ENTITLEMENT CriteriaType = "ENTITLEMENT"
-	CRITERIATYPE_INVALID_CERTIFIABLE_ENTITY CriteriaType = "INVALID_CERTIFIABLE_ENTITY"
 	CRITERIATYPE_ACCESS_PROFILE CriteriaType = "ACCESS_PROFILE"
 	CRITERIATYPE_SOURCE CriteriaType = "SOURCE"
 	CRITERIATYPE_ACCOUNT CriteriaType = "ACCOUNT"
-	CRITERIATYPE_INVALID_CERTIFIABLE_BUNDLE CriteriaType = "INVALID_CERTIFIABLE_BUNDLE"
 	CRITERIATYPE_AGGREGATED_ENTITLEMENT CriteriaType = "AGGREGATED_ENTITLEMENT"
 )
 
@@ -40,11 +38,9 @@ var AllowedCriteriaTypeEnumValues = []CriteriaType{
 	"IDENTITY",
 	"IDENTITY_ATTRIBUTE",
 	"ENTITLEMENT",
-	"INVALID_CERTIFIABLE_ENTITY",
 	"ACCESS_PROFILE",
 	"SOURCE",
 	"ACCOUNT",
-	"INVALID_CERTIFIABLE_BUNDLE",
 	"AGGREGATED_ENTITLEMENT",
 }
 

@@ -47732,10 +47732,9 @@ paths:
       tags:
       - Governance Groups
     patch:
-      description: |-
-        This API updates existing Governance Group by its ID. Following fields are patchable.
-        **name**, **description**
-        A token with API, ORG_ADMIN is required to call this API. In addition.
+      description: "This API updates an existing governance group by ID. \nThe following\
+        \ fields and objects are patchable:\n  * name\n  * description\n  * owner\n\
+        \nA token with API or ORG_ADMIN authority is required to call this API."
       operationId: patchWorkgroup
       parameters:
       - description: ID of the Governance Group
