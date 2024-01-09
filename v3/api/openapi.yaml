@@ -19092,6 +19092,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - sp:search:read
       summary: Count Documents Satisfying a Query
       tags:
       - Search
@@ -19242,6 +19245,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - sp:search:read
       summary: Perform a Search Query Aggregation
       tags:
       - Search
@@ -19360,6 +19366,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - sp:search:read
       summary: Get a Document by ID
       tags:
       - Search
