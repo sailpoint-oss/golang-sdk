@@ -1807,8 +1807,10 @@ paths:
         * Roles, access profiles and entitlements can be requested.\n* While requesting\
         \ entitlements, maximum of 25 entitlements and 10 recipients are allowed in\
         \ a request.\n \n__REVOKE_ACCESS__\n* Can only be requested for a single identity\
-        \ at a time.\n* Does not support self request. Only manager can request to\
-        \ revoke access for their directly managed employees.\n* If a `removeDate`\
+        \ at a time.\n* You cannot use an access request to revoke access from an\
+        \ identity if that access has been granted by role membership or by birthright\
+        \ provisioning. \n* Does not support self request. Only manager can request\
+        \ to revoke access for their directly managed employees.\n* If a `removeDate`\
         \ is specified, then the access will be removed on that date and time only\
         \ for roles and access profiles. Entitlements are currently unsupported for\
         \ `removeDate`.\n* Roles, access profiles, and entitlements can be requested\
