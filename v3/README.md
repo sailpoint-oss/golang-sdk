@@ -264,7 +264,7 @@ Class | Method | HTTP request | Description
 *SavedSearchAPI* | [**DeleteSavedSearch**](docs/SavedSearchAPI.md#deletesavedsearch) | **Delete** /saved-searches/{id} | Delete document by ID
 *SavedSearchAPI* | [**ExecuteSavedSearch**](docs/SavedSearchAPI.md#executesavedsearch) | **Post** /saved-searches/{id}/execute | Execute a saved search by ID
 *SavedSearchAPI* | [**GetSavedSearch**](docs/SavedSearchAPI.md#getsavedsearch) | **Get** /saved-searches/{id} | Return saved search by ID
-*SavedSearchAPI* | [**ListSavedSearches**](docs/SavedSearchAPI.md#listsavedsearches) | **Get** /saved-searches | Return a list of Saved Searches
+*SavedSearchAPI* | [**ListSavedSearches**](docs/SavedSearchAPI.md#listsavedsearches) | **Get** /saved-searches | A list of Saved Searches
 *SavedSearchAPI* | [**PutSavedSearch**](docs/SavedSearchAPI.md#putsavedsearch) | **Put** /saved-searches/{id} | Updates an existing saved search 
 *ScheduledSearchAPI* | [**CreateScheduledSearch**](docs/ScheduledSearchAPI.md#createscheduledsearch) | **Post** /scheduled-searches | Create a new scheduled search
 *ScheduledSearchAPI* | [**DeleteScheduledSearch**](docs/ScheduledSearchAPI.md#deletescheduledsearch) | **Delete** /scheduled-searches/{id} | Delete a Scheduled Search

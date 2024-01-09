@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | The name of the saved search.  | [optional] 
 **Description** | Pointer to **NullableString** | The description of the saved search.  | [optional] 
-**Public** | Pointer to **bool** | Indicates if the saved search is public.  | [optional] [default to false]
 **Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
 **Indices** | [**[]Index**](Index.md) | The names of the Elasticsearch indices in which to search.  | 
@@ -97,31 +96,6 @@ HasDescription returns a boolean if a field has been set.
 `func (o *SavedSearch) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
-### GetPublic
-
-`func (o *SavedSearch) GetPublic() bool`
-
-GetPublic returns the Public field if non-nil, zero value otherwise.
-
-### GetPublicOk
-
-`func (o *SavedSearch) GetPublicOk() (*bool, bool)`
-
-GetPublicOk returns a tuple with the Public field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPublic
-
-`func (o *SavedSearch) SetPublic(v bool)`
-
-SetPublic sets Public field to given value.
-
-### HasPublic
-
-`func (o *SavedSearch) HasPublic() bool`
-
-HasPublic returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *SavedSearch) GetCreated() time.Time`
