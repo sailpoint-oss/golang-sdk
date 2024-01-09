@@ -31785,7 +31785,6 @@ components:
       value:
         id: 2c9180825a6c1adc015a71c9023f0818
         name: Cloud Eng
-        _type: accessprofile
         description: Cloud Eng
         created: 2017-02-24T20:21:23.145Z
         modified: 2019-05-24T20:36:04.312Z
@@ -31816,7 +31815,6 @@ components:
       value:
         id: 2c9180946ed0c43d016eec1a80892fbd
         name: entitlement.aa415ae7
-        _type: entitlement
         description: "null"
         attribute: groups
         value: entitlement.aa415ae7
@@ -31841,7 +31839,6 @@ components:
       value:
         id: e092842f-c904-4b59-aac8-2544abeeef4b
         name: Update Task Schedule Passed
-        _type: event
         created: 2020-02-17T16:23:18.327Z
         synced: 2020-02-17T16:23:18.388Z
         action: TASK_SCHEDULE_UPDATE_PASSED
@@ -31867,7 +31864,6 @@ components:
       value:
         id: 2c9180865c45e7e3015c46c434a80622
         name: ad.admin
-        _type: identity
         firstName: AD
         lastName: Admin
         displayName: AD Admin
@@ -31996,7 +31992,6 @@ components:
       value:
         id: 2c91808c6faadea6016fb4f2bc69077b
         name: IT Role
-        _type: role
         description: IT role
         created: 2020-01-17T19:20:15.040Z
         modified: null
