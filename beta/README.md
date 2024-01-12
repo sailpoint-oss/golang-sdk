@@ -697,6 +697,7 @@ Class | Method | HTTP request | Description
  - [CloseAccessRequest](docs/CloseAccessRequest.md)
  - [Comment](docs/Comment.md)
  - [CommentDto](docs/CommentDto.md)
+ - [CommentDto1](docs/CommentDto1.md)
  - [CommentDtoAuthor](docs/CommentDtoAuthor.md)
  - [CommonAccessIDStatus](docs/CommonAccessIDStatus.md)
  - [CommonAccessItemAccess](docs/CommonAccessItemAccess.md)

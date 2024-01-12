@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Days** | Pointer to [**Schedule1Days**](Schedule1Days.md) |  | [optional] 
 **Hours** | [**Schedule1Hours**](Schedule1Hours.md) |  | 
 **Expiration** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**TimeZoneId** | Pointer to **NullableString** | The GMT formatted timezone the schedule will run in (ex. GMT-06:00).  If no timezone is specified, the org&#39;s default timezone is used. | [optional] 
+**TimeZoneId** | Pointer to **NullableString** | The canonical TZ identifier the schedule will run in (ex. America/New_York).  If no timezone is specified, the org&#39;s default timezone is used. | [optional] 
 
 ## Methods
 

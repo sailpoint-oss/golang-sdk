@@ -36,7 +36,7 @@ type ScheduledSearch struct {
 	Recipients []SearchScheduleRecipientsInner `json:"recipients"`
 	// Indicates if the scheduled search is enabled. 
 	Enabled *bool `json:"enabled,omitempty"`
-	// Indicates if email generation should not be suppressed if search returns no results. 
+	// Indicates if email generation should occur when search returns no results. 
 	EmailEmptyResults *bool `json:"emailEmptyResults,omitempty"`
 	// Indicates if the generated email should include the query and search results preview (which could include PII). 
 	DisplayQueryDetails *bool `json:"displayQueryDetails,omitempty"`

@@ -463,7 +463,6 @@ Class | Method | HTTP request | Description
  - [Column](docs/Column.md)
  - [Comment](docs/Comment.md)
  - [CommentDto](docs/CommentDto.md)
- - [CommentDtoAuthor](docs/CommentDtoAuthor.md)
  - [CompletedApproval](docs/CompletedApproval.md)
  - [CompletedApprovalReviewerComment](docs/CompletedApprovalReviewerComment.md)
  - [CompletedApprovalState](docs/CompletedApprovalState.md)

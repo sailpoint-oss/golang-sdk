@@ -34909,10 +34909,6 @@ components:
         requestType: GRANT_ACCESS
         created: 2019-08-23T18:40:35.772Z
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         preApprovalTriggerDetails:
@@ -35188,23 +35184,11 @@ components:
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
         previousReviewersComments:
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         currentRemoveDate: 2020-07-11T00:00:00Z
@@ -35394,23 +35378,11 @@ components:
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
         previousReviewersComments:
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         currentRemoveDate: 2020-07-11T00:00:00Z
@@ -35592,10 +35564,6 @@ components:
       type: object
     CommentDto:
       example:
-        author:
-          name: Adam Kennedy
-          id: 2c91808568c529c60168cca6f90c1313
-          type: IDENTITY
         created: 2017-07-11T18:45:37.098Z
         comment: This is a comment.
       properties:
@@ -35604,8 +35572,6 @@ components:
           example: This is a comment.
           nullable: true
           type: string
-        author:
-          $ref: '#/components/schemas/CommentDto_author'
         created:
           description: Date and time comment was created.
           example: 2017-07-11T18:45:37.098Z
@@ -39434,7 +39400,7 @@ components:
         emailEmptyResults:
           default: false
           description: |
-            Indicates if email generation should not be suppressed if search returns no results.
+            Indicates if email generation should occur when search returns no results.
           example: false
           type: boolean
         displayQueryDetails:
@@ -40291,7 +40257,7 @@ components:
       example:
         schedule:
           hours: null
-          timeZoneId: GMT-06:00
+          timeZoneId: America/Chicago
           days: null
           expiration: 2018-06-25T20:22:28.104Z
           type: WEEKLY
@@ -43557,7 +43523,7 @@ components:
       description: The schedule information.
       example:
         hours: null
-        timeZoneId: GMT-06:00
+        timeZoneId: America/Chicago
         days: null
         expiration: 2018-06-25T20:22:28.104Z
         type: WEEKLY
@@ -43575,9 +43541,10 @@ components:
           nullable: true
           type: string
         timeZoneId:
-          description: "The GMT formatted timezone the schedule will run in (ex. GMT-06:00).\
-            \  If no timezone is specified, the org's default timezone is used."
-          example: GMT-06:00
+          description: "The canonical TZ identifier the schedule will run in (ex.\
+            \ America/New_York).  If no timezone is specified, the org's default timezone\
+            \ is used."
+          example: America/Chicago
           nullable: true
           type: string
       required:
@@ -46632,27 +46599,6 @@ components:
       - $ref: '#/components/schemas/CommentDto'
       description: The approval's reviewer's comment.
       nullable: true
-    CommentDto_author:
-      example:
-        name: Adam Kennedy
-        id: 2c91808568c529c60168cca6f90c1313
-        type: IDENTITY
-      properties:
-        type:
-          description: DTO type of the commenting identity.
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: ID of the commenting identity.
-          example: 2c91808568c529c60168cca6f90c1313
-          type: string
-        name:
-          description: Display name of the commenting identity.
-          example: Adam Kennedy
-          type: string
-      type: object
     AccountAttributesCreate_attributes:
       additionalProperties:
         type: string

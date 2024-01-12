@@ -170,7 +170,6 @@ docs/ClientType.md
 docs/Column.md
 docs/Comment.md
 docs/CommentDto.md
-docs/CommentDtoAuthor.md
 docs/CompletedApproval.md
 docs/CompletedApprovalReviewerComment.md
 docs/CompletedApprovalState.md
@@ -622,7 +621,6 @@ model_client_type.go
 model_column.go
 model_comment.go
 model_comment_dto.go
-model_comment_dto_author.go
 model_completed_approval.go
 model_completed_approval_reviewer_comment.go
 model_completed_approval_state.go

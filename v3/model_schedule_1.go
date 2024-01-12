@@ -26,7 +26,7 @@ type Schedule1 struct {
 	Hours Schedule1Hours `json:"hours"`
 	// A date-time in ISO-8601 format
 	Expiration NullableTime `json:"expiration,omitempty"`
-	// The GMT formatted timezone the schedule will run in (ex. GMT-06:00).  If no timezone is specified, the org's default timezone is used.
+	// The canonical TZ identifier the schedule will run in (ex. America/New_York).  If no timezone is specified, the org's default timezone is used.
 	TimeZoneId NullableString `json:"timeZoneId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

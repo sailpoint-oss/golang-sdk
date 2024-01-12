@@ -1,4 +1,4 @@
-# CompletedApprovalReviewerComment
+# CommentDto1
 
 ## Properties
 
@@ -9,80 +9,80 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCompletedApprovalReviewerComment
+### NewCommentDto1
 
-`func NewCompletedApprovalReviewerComment() *CompletedApprovalReviewerComment`
+`func NewCommentDto1() *CommentDto1`
 
-NewCompletedApprovalReviewerComment instantiates a new CompletedApprovalReviewerComment object
+NewCommentDto1 instantiates a new CommentDto1 object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCompletedApprovalReviewerCommentWithDefaults
+### NewCommentDto1WithDefaults
 
-`func NewCompletedApprovalReviewerCommentWithDefaults() *CompletedApprovalReviewerComment`
+`func NewCommentDto1WithDefaults() *CommentDto1`
 
-NewCompletedApprovalReviewerCommentWithDefaults instantiates a new CompletedApprovalReviewerComment object
+NewCommentDto1WithDefaults instantiates a new CommentDto1 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetComment
 
-`func (o *CompletedApprovalReviewerComment) GetComment() string`
+`func (o *CommentDto1) GetComment() string`
 
 GetComment returns the Comment field if non-nil, zero value otherwise.
 
 ### GetCommentOk
 
-`func (o *CompletedApprovalReviewerComment) GetCommentOk() (*string, bool)`
+`func (o *CommentDto1) GetCommentOk() (*string, bool)`
 
 GetCommentOk returns a tuple with the Comment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetComment
 
-`func (o *CompletedApprovalReviewerComment) SetComment(v string)`
+`func (o *CommentDto1) SetComment(v string)`
 
 SetComment sets Comment field to given value.
 
 ### HasComment
 
-`func (o *CompletedApprovalReviewerComment) HasComment() bool`
+`func (o *CommentDto1) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
 
 ### SetCommentNil
 
-`func (o *CompletedApprovalReviewerComment) SetCommentNil(b bool)`
+`func (o *CommentDto1) SetCommentNil(b bool)`
 
  SetCommentNil sets the value for Comment to be an explicit nil
 
 ### UnsetComment
-`func (o *CompletedApprovalReviewerComment) UnsetComment()`
+`func (o *CommentDto1) UnsetComment()`
 
 UnsetComment ensures that no value is present for Comment, not even an explicit nil
 ### GetCreated
 
-`func (o *CompletedApprovalReviewerComment) GetCreated() time.Time`
+`func (o *CommentDto1) GetCreated() time.Time`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *CompletedApprovalReviewerComment) GetCreatedOk() (*time.Time, bool)`
+`func (o *CommentDto1) GetCreatedOk() (*time.Time, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *CompletedApprovalReviewerComment) SetCreated(v time.Time)`
+`func (o *CommentDto1) SetCreated(v time.Time)`
 
 SetCreated sets Created field to given value.
 
 ### HasCreated
 
-`func (o *CompletedApprovalReviewerComment) HasCreated() bool`
+`func (o *CommentDto1) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
 

@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **RequestedFor** | Pointer to [**AccessItemRequestedForDto**](AccessItemRequestedForDto.md) |  | [optional] 
 **Owner** | Pointer to [**AccessItemOwnerDto**](AccessItemOwnerDto.md) |  | [optional] 
 **RequestedObject** | Pointer to [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
-**RequesterComment** | Pointer to [**CommentDto**](CommentDto.md) |  | [optional] 
-**PreviousReviewersComments** | Pointer to [**[]CommentDto**](CommentDto.md) | The history of the previous reviewers comments. | [optional] 
+**RequesterComment** | Pointer to [**CommentDto1**](CommentDto1.md) |  | [optional] 
+**PreviousReviewersComments** | Pointer to [**[]CommentDto1**](CommentDto1.md) | The history of the previous reviewers comments. | [optional] 
 **ForwardHistory** | Pointer to [**[]ApprovalForwardHistory**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
 **CommentRequiredWhenRejected** | Pointer to **bool** | When true the rejector has to provide comments when rejecting | [optional] 
 **ActionInProcess** | Pointer to [**PendingApprovalAction**](PendingApprovalAction.md) |  | [optional] 
@@ -295,20 +295,20 @@ HasRequestedObject returns a boolean if a field has been set.
 
 ### GetRequesterComment
 
-`func (o *PendingApproval) GetRequesterComment() CommentDto`
+`func (o *PendingApproval) GetRequesterComment() CommentDto1`
 
 GetRequesterComment returns the RequesterComment field if non-nil, zero value otherwise.
 
 ### GetRequesterCommentOk
 
-`func (o *PendingApproval) GetRequesterCommentOk() (*CommentDto, bool)`
+`func (o *PendingApproval) GetRequesterCommentOk() (*CommentDto1, bool)`
 
 GetRequesterCommentOk returns a tuple with the RequesterComment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequesterComment
 
-`func (o *PendingApproval) SetRequesterComment(v CommentDto)`
+`func (o *PendingApproval) SetRequesterComment(v CommentDto1)`
 
 SetRequesterComment sets RequesterComment field to given value.
 
@@ -320,20 +320,20 @@ HasRequesterComment returns a boolean if a field has been set.
 
 ### GetPreviousReviewersComments
 
-`func (o *PendingApproval) GetPreviousReviewersComments() []CommentDto`
+`func (o *PendingApproval) GetPreviousReviewersComments() []CommentDto1`
 
 GetPreviousReviewersComments returns the PreviousReviewersComments field if non-nil, zero value otherwise.
 
 ### GetPreviousReviewersCommentsOk
 
-`func (o *PendingApproval) GetPreviousReviewersCommentsOk() (*[]CommentDto, bool)`
+`func (o *PendingApproval) GetPreviousReviewersCommentsOk() (*[]CommentDto1, bool)`
 
 GetPreviousReviewersCommentsOk returns a tuple with the PreviousReviewersComments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPreviousReviewersComments
 
-`func (o *PendingApproval) SetPreviousReviewersComments(v []CommentDto)`
+`func (o *PendingApproval) SetPreviousReviewersComments(v []CommentDto1)`
 
 SetPreviousReviewersComments sets PreviousReviewersComments field to given value.
 

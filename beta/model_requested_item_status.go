@@ -41,7 +41,7 @@ type RequestedItemStatus struct {
 	Created *time.Time `json:"created,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
 	RequestedFor *AccessItemRequestedFor `json:"requestedFor,omitempty"`
-	RequesterComment *CommentDto `json:"requesterComment,omitempty"`
+	RequesterComment *CommentDto1 `json:"requesterComment,omitempty"`
 	SodViolationContext *SodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
 	ProvisioningDetails *ProvisioningDetails `json:"provisioningDetails,omitempty"`
 	PreApprovalTriggerDetails *PreApprovalTriggerDetails `json:"preApprovalTriggerDetails,omitempty"`
@@ -498,9 +498,9 @@ func (o *RequestedItemStatus) SetRequestedFor(v AccessItemRequestedFor) {
 }
 
 // GetRequesterComment returns the RequesterComment field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetRequesterComment() CommentDto {
+func (o *RequestedItemStatus) GetRequesterComment() CommentDto1 {
 	if o == nil || isNil(o.RequesterComment) {
-		var ret CommentDto
+		var ret CommentDto1
 		return ret
 	}
 	return *o.RequesterComment
@@ -508,7 +508,7 @@ func (o *RequestedItemStatus) GetRequesterComment() CommentDto {
 
 // GetRequesterCommentOk returns a tuple with the RequesterComment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetRequesterCommentOk() (*CommentDto, bool) {
+func (o *RequestedItemStatus) GetRequesterCommentOk() (*CommentDto1, bool) {
 	if o == nil || isNil(o.RequesterComment) {
 		return nil, false
 	}
@@ -524,8 +524,8 @@ func (o *RequestedItemStatus) HasRequesterComment() bool {
 	return false
 }
 
-// SetRequesterComment gets a reference to the given CommentDto and assigns it to the RequesterComment field.
-func (o *RequestedItemStatus) SetRequesterComment(v CommentDto) {
+// SetRequesterComment gets a reference to the given CommentDto1 and assigns it to the RequesterComment field.
+func (o *RequestedItemStatus) SetRequesterComment(v CommentDto1) {
 	o.RequesterComment = &v
 }
 

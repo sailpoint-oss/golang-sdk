@@ -229,6 +229,7 @@ docs/ClientType.md
 docs/CloseAccessRequest.md
 docs/Comment.md
 docs/CommentDto.md
+docs/CommentDto1.md
 docs/CommentDtoAuthor.md
 docs/CommonAccessIDStatus.md
 docs/CommonAccessItemAccess.md
@@ -1004,6 +1005,7 @@ model_client_type.go
 model_close_access_request.go
 model_comment.go
 model_comment_dto.go
+model_comment_dto_1.go
 model_comment_dto_author.go
 model_common_access_id_status.go
 model_common_access_item_access.go

@@ -35,9 +35,9 @@ type PendingApproval struct {
 	RequestedFor *AccessItemRequestedForDto `json:"requestedFor,omitempty"`
 	Owner *AccessItemOwnerDto `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
-	RequesterComment *CommentDto `json:"requesterComment,omitempty"`
+	RequesterComment *CommentDto1 `json:"requesterComment,omitempty"`
 	// The history of the previous reviewers comments.
-	PreviousReviewersComments []CommentDto `json:"previousReviewersComments,omitempty"`
+	PreviousReviewersComments []CommentDto1 `json:"previousReviewersComments,omitempty"`
 	// The history of approval forward action.
 	ForwardHistory []ApprovalForwardHistory `json:"forwardHistory,omitempty"`
 	// When true the rejector has to provide comments when rejecting
@@ -393,9 +393,9 @@ func (o *PendingApproval) SetRequestedObject(v RequestableObjectReference) {
 }
 
 // GetRequesterComment returns the RequesterComment field value if set, zero value otherwise.
-func (o *PendingApproval) GetRequesterComment() CommentDto {
+func (o *PendingApproval) GetRequesterComment() CommentDto1 {
 	if o == nil || isNil(o.RequesterComment) {
-		var ret CommentDto
+		var ret CommentDto1
 		return ret
 	}
 	return *o.RequesterComment
@@ -403,7 +403,7 @@ func (o *PendingApproval) GetRequesterComment() CommentDto {
 
 // GetRequesterCommentOk returns a tuple with the RequesterComment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PendingApproval) GetRequesterCommentOk() (*CommentDto, bool) {
+func (o *PendingApproval) GetRequesterCommentOk() (*CommentDto1, bool) {
 	if o == nil || isNil(o.RequesterComment) {
 		return nil, false
 	}
@@ -419,15 +419,15 @@ func (o *PendingApproval) HasRequesterComment() bool {
 	return false
 }
 
-// SetRequesterComment gets a reference to the given CommentDto and assigns it to the RequesterComment field.
-func (o *PendingApproval) SetRequesterComment(v CommentDto) {
+// SetRequesterComment gets a reference to the given CommentDto1 and assigns it to the RequesterComment field.
+func (o *PendingApproval) SetRequesterComment(v CommentDto1) {
 	o.RequesterComment = &v
 }
 
 // GetPreviousReviewersComments returns the PreviousReviewersComments field value if set, zero value otherwise.
-func (o *PendingApproval) GetPreviousReviewersComments() []CommentDto {
+func (o *PendingApproval) GetPreviousReviewersComments() []CommentDto1 {
 	if o == nil || isNil(o.PreviousReviewersComments) {
-		var ret []CommentDto
+		var ret []CommentDto1
 		return ret
 	}
 	return o.PreviousReviewersComments
@@ -435,7 +435,7 @@ func (o *PendingApproval) GetPreviousReviewersComments() []CommentDto {
 
 // GetPreviousReviewersCommentsOk returns a tuple with the PreviousReviewersComments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PendingApproval) GetPreviousReviewersCommentsOk() ([]CommentDto, bool) {
+func (o *PendingApproval) GetPreviousReviewersCommentsOk() ([]CommentDto1, bool) {
 	if o == nil || isNil(o.PreviousReviewersComments) {
 		return nil, false
 	}
@@ -451,8 +451,8 @@ func (o *PendingApproval) HasPreviousReviewersComments() bool {
 	return false
 }
 
-// SetPreviousReviewersComments gets a reference to the given []CommentDto and assigns it to the PreviousReviewersComments field.
-func (o *PendingApproval) SetPreviousReviewersComments(v []CommentDto) {
+// SetPreviousReviewersComments gets a reference to the given []CommentDto1 and assigns it to the PreviousReviewersComments field.
+func (o *PendingApproval) SetPreviousReviewersComments(v []CommentDto1) {
 	o.PreviousReviewersComments = v
 }
 

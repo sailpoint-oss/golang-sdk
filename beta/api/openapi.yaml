@@ -52766,10 +52766,6 @@ components:
         requestType: GRANT_ACCESS
         created: 2019-08-23T18:40:35.772Z
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         preApprovalTriggerDetails:
@@ -52983,7 +52979,7 @@ components:
         requestedFor:
           $ref: '#/components/schemas/AccessItemRequestedFor'
         requesterComment:
-          $ref: '#/components/schemas/CommentDto'
+          $ref: '#/components/schemas/CommentDto_1'
         sodViolationContext:
           $ref: '#/components/schemas/SodViolationContextCheckCompleted'
         provisioningDetails:
@@ -53045,23 +53041,11 @@ components:
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
         previousReviewersComments:
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         currentRemoveDate: 2020-07-11T00:00:00Z
@@ -53194,11 +53178,11 @@ components:
         requestedObject:
           $ref: '#/components/schemas/RequestableObjectReference'
         requesterComment:
-          $ref: '#/components/schemas/CommentDto'
+          $ref: '#/components/schemas/CommentDto_1'
         previousReviewersComments:
           description: The history of the previous reviewers comments.
           items:
-            $ref: '#/components/schemas/CommentDto'
+            $ref: '#/components/schemas/CommentDto_1'
           type: array
         forwardHistory:
           description: The history of approval forward action.
@@ -53251,23 +53235,11 @@ components:
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
         previousReviewersComments:
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         currentRemoveDate: 2020-07-11T00:00:00Z
@@ -53406,13 +53378,13 @@ components:
         requestedObject:
           $ref: '#/components/schemas/RequestableObjectReference'
         requesterComment:
-          $ref: '#/components/schemas/CommentDto'
+          $ref: '#/components/schemas/CommentDto_1'
         reviewerComment:
           $ref: '#/components/schemas/CompletedApproval_reviewerComment'
         previousReviewersComments:
           description: The history of the previous reviewers comments.
           items:
-            $ref: '#/components/schemas/CommentDto'
+            $ref: '#/components/schemas/CommentDto_1'
           type: array
         forwardHistory:
           description: The history of approval forward action.
@@ -62683,7 +62655,7 @@ components:
       example:
         schedule:
           hours: null
-          timeZoneId: GMT-06:00
+          timeZoneId: America/Chicago
           days: null
           expiration: 2018-06-25T20:22:28.104Z
           type: WEEKLY
@@ -65836,6 +65808,22 @@ components:
           description: Human-readable display name of identity the access item is
             requested for.
           example: Robert Robinson
+          type: string
+      type: object
+    CommentDto_1:
+      example:
+        created: 2017-07-11T18:45:37.098Z
+        comment: This is a comment.
+      properties:
+        comment:
+          description: Comment content.
+          example: This is a comment.
+          nullable: true
+          type: string
+        created:
+          description: Date and time comment was created.
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
           type: string
       type: object
     SodViolationContextCheckCompleted:
@@ -69518,7 +69506,7 @@ components:
       description: The schedule information.
       example:
         hours: null
-        timeZoneId: GMT-06:00
+        timeZoneId: America/Chicago
         days: null
         expiration: 2018-06-25T20:22:28.104Z
         type: WEEKLY
@@ -69536,9 +69524,10 @@ components:
           nullable: true
           type: string
         timeZoneId:
-          description: "The GMT formatted timezone the schedule will run in (ex. GMT-06:00).\
-            \  If no timezone is specified, the org's default timezone is used."
-          example: GMT-06:00
+          description: "The canonical TZ identifier the schedule will run in (ex.\
+            \ America/New_York).  If no timezone is specified, the org's default timezone\
+            \ is used."
+          example: America/Chicago
           nullable: true
           type: string
       required:
