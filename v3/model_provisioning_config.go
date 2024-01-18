@@ -39,6 +39,8 @@ type _ProvisioningConfig ProvisioningConfig
 // will change when the set of required properties is changed
 func NewProvisioningConfig() *ProvisioningConfig {
 	this := ProvisioningConfig{}
+	var noProvisioningRequests bool = false
+	this.NoProvisioningRequests = &noProvisioningRequests
 	return &this
 }
 
@@ -47,6 +49,8 @@ func NewProvisioningConfig() *ProvisioningConfig {
 // but it doesn't guarantee that properties required by API are set
 func NewProvisioningConfigWithDefaults() *ProvisioningConfig {
 	this := ProvisioningConfig{}
+	var noProvisioningRequests bool = false
+	this.NoProvisioningRequests = &noProvisioningRequests
 	return &this
 }
 

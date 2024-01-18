@@ -38,7 +38,7 @@ import (
 )
 
 func main() {
-    serviceDeskIntegrationDto := *openapiclient.NewServiceDeskIntegrationDto("aName", "A very nice Service Desk integration", "ServiceNowSDIM", map[string]interface{}{"key": interface{}(123)}) // ServiceDeskIntegrationDto | The specifics of a new integration to create
+    serviceDeskIntegrationDto := *openapiclient.NewServiceDeskIntegrationDto("Service Desk Integration Name", "A very nice Service Desk integration", "ServiceNowSDIM", map[string]interface{}{"key": interface{}(123)}) // ServiceDeskIntegrationDto | The specifics of a new integration to create
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -581,7 +581,7 @@ import (
 
 func main() {
     id := "anId" // string | ID of the Service Desk integration to update
-    serviceDeskIntegrationDto := *openapiclient.NewServiceDeskIntegrationDto("aName", "A very nice Service Desk integration", "ServiceNowSDIM", map[string]interface{}{"key": interface{}(123)}) // ServiceDeskIntegrationDto | The specifics of the integration to update
+    serviceDeskIntegrationDto := *openapiclient.NewServiceDeskIntegrationDto("Service Desk Integration Name", "A very nice Service Desk integration", "ServiceNowSDIM", map[string]interface{}{"key": interface{}(123)}) // ServiceDeskIntegrationDto | The specifics of the integration to update
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

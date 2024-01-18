@@ -795,7 +795,30 @@ tags:
     \ for more information about SOD policies. \n\nRefer to [Subscribe to a SOD Policy](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html#subscribe-to-an-sod-policy)\
     \ for more information about SOD policy subscriptions. \n"
   name: SOD Policy
-- description: Operations for Predicting SOD (Separation of Duties) violations
+- description: "Use this API to check for current \"separation of duties\" (SOD) policy\
+    \ violations as well as potential future SOD policy violations. \nWith SOD violation\
+    \ functionality in place, administrators can get information about current SOD\
+    \ policy violations and predict whether an access change will trigger new violations,\
+    \ which helps to prevent them from occurring at all. \n\n\"Separation of duties\"\
+    \ refers to the concept that people shouldn't have conflicting sets of access\
+    \ - all their access should be configured in a way that protects your organization's\
+    \ assets and data.  \nFor example, people who record monetary transactions shouldn't\
+    \ be able to issue payment for those transactions.\nAny changes to major system\
+    \ configurations should be approved by someone other than the person requesting\
+    \ the change. \n\nOrganizations can use \"separation of duties\" (SOD) policies\
+    \ to enforce and track their internal security rules throughout their tenants.\n\
+    These SOD policies limit each user's involvement in important processes and protects\
+    \ the organization from individuals gaining excessive access. \n\nOnce a SOD policy\
+    \ is in place, if an identity has conflicting access items, a SOD violation will\
+    \ trigger. \nThese violations are included in SOD violation reports that other\
+    \ users will see in emails at regular intervals if they're subscribed to the SOD\
+    \ policy.\nThe other users can then better help to enforce these SOD policies.\n\
+    \nAdministrators can use the SOD violations APIs to check a set of identities\
+    \ for any current SOD violations, and they can use them to check whether adding\
+    \ an access item would potentially trigger a SOD violation. \nThis second option\
+    \ is a good way to prevent SOD violations from triggering at all. \n\nRefer to\
+    \ [Handling Policy Violations](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html)\
+    \ for more information about SOD policy violations. \n"
   name: SOD Violations
 - description: "Use this API to implement and customize source functionality. \nWith\
     \ source functionality in place, organizations can use IdentityNow to connect\
@@ -33347,6 +33370,7 @@ components:
       description: Specification of a Service Desk integration provisioning configuration.
       properties:
         universalManager:
+          default: false
           description: "Specifies whether this configuration is used to manage provisioning\
             \ requests for all sources from the org.  If true, no managedResourceRefs\
             \ are allowed."
@@ -33370,6 +33394,7 @@ components:
         planInitializerScript:
           $ref: '#/components/schemas/ProvisioningConfig_planInitializerScript'
         noProvisioningRequests:
+          default: false
           description: Name of an attribute that when true disables the saving of
             ProvisioningRequest objects whenever plans are sent through this integration.
           example: true
@@ -33791,31 +33816,35 @@ components:
       type: object
     ServiceDeskIntegrationDto:
       allOf:
-      - $ref: '#/components/schemas/BaseCommonDto'
-      - description: Specification of a Service Desk integration
+      - description: Service Desk integration's specification.
         properties:
+          name:
+            description: Service Desk integration's name. The name must be unique.
+            example: Service Desk Integration Name
+            type: string
           description:
-            description: Description of the Service Desk integration
+            description: Service Desk integration's description.
             example: A very nice Service Desk integration
             type: string
           type:
             default: ServiceNowSDIM
             description: |
-              Service Desk integration types
+              Service Desk integration types:
 
               - ServiceNowSDIM
               - ServiceNow
             example: ServiceNowSDIM
             type: string
           ownerRef:
-            $ref: '#/components/schemas/ServiceDeskIntegrationDto_allOf_ownerRef'
+            allOf:
+            - $ref: '#/components/schemas/OwnerDto'
           clusterRef:
             allOf:
             - $ref: '#/components/schemas/SourceClusterDto'
           cluster:
             deprecated: true
-            description: "ID of the cluster for the Service Desk integration (replaced\
-              \ by clusterRef, retained for backward compatibility)."
+            description: "Cluster ID for the Service Desk integration (replaced by\
+              \ clusterRef, retained for backward compatibility)."
             example: xyzzy999
             type: string
           managedSources:
@@ -33833,7 +33862,7 @@ components:
             $ref: '#/components/schemas/ProvisioningConfig'
           attributes:
             additionalProperties: true
-            description: Attributes of the Service Desk integration.  Validation constraints
+            description: Service Desk integration's attributes. Validation constraints
               enforced by the implementation.
             example:
               property: value
@@ -33845,6 +33874,7 @@ components:
         required:
         - attributes
         - description
+        - name
         - type
         type: object
     ServiceDeskIntegrationTemplateDto:
@@ -41243,6 +41273,28 @@ components:
             type: boolean
         type: object
       description: Role
+    OwnerDto:
+      description: Owner's identity.
+      example:
+        name: Support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
+      properties:
+        type:
+          description: Owner's DTO type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Owner's identity ID.
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: Owner's display name.
+          example: Support
+          type: string
+      type: object
     SourceClusterDto:
       description: Source cluster.
       properties:
@@ -42182,28 +42234,6 @@ components:
           description: Human-readable display name of identity who reviewed the access
             item request.
           example: Allen Albertson
-          type: string
-      type: object
-    OwnerDto:
-      description: Owner's identity.
-      example:
-        name: Support
-        id: 2c9180a46faadee4016fb4e018c20639
-        type: IDENTITY
-      properties:
-        type:
-          description: Owner's DTO type.
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: Owner's identity ID.
-          example: 2c9180a46faadee4016fb4e018c20639
-          type: string
-        name:
-          description: Owner's display name.
-          example: Support
           type: string
       type: object
     CompletedApprovalState:
@@ -46307,26 +46337,6 @@ components:
       required:
       - id
       - type
-      type: object
-      example: null
-    ServiceDeskIntegrationDto_allOf_ownerRef:
-      description: Source for Service Desk integration template.
-      properties:
-        type:
-          description: DTO type of source for service desk integration template.
-          enum:
-          - SOURCE
-          example: SOURCE
-          type: string
-        id:
-          description: ID of source for service desk integration template.
-          example: 2c9180835d191a86015d28455b4b232a
-          type: string
-        name:
-          description: Human-readable name of source for service desk integration
-            template.
-          example: HR Active Directory
-          type: string
       type: object
       example: null
     Source_owner:

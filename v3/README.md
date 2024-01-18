@@ -703,7 +703,6 @@ Class | Method | HTTP request | Description
  - [Selector](docs/Selector.md)
  - [SelectorType](docs/SelectorType.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
- - [ServiceDeskIntegrationDtoAllOfOwnerRef](docs/ServiceDeskIntegrationDtoAllOfOwnerRef.md)
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](docs/ServiceDeskSource.md)

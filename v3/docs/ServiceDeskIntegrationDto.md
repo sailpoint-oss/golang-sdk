@@ -4,18 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | System-generated unique ID of the Object | [optional] [readonly] 
-**Name** | **string** | Name of the Object | 
-**Created** | Pointer to **time.Time** | Creation date of the Object | [optional] [readonly] 
-**Modified** | Pointer to **time.Time** | Last modification date of the Object | [optional] [readonly] 
-**Description** | **string** | Description of the Service Desk integration | 
-**Type** | **string** | Service Desk integration types  - ServiceNowSDIM - ServiceNow  | [default to "ServiceNowSDIM"]
-**OwnerRef** | Pointer to [**ServiceDeskIntegrationDtoAllOfOwnerRef**](ServiceDeskIntegrationDtoAllOfOwnerRef.md) |  | [optional] 
+**Name** | **string** | Service Desk integration&#39;s name. The name must be unique. | 
+**Description** | **string** | Service Desk integration&#39;s description. | 
+**Type** | **string** | Service Desk integration types:  - ServiceNowSDIM - ServiceNow  | [default to "ServiceNowSDIM"]
+**OwnerRef** | Pointer to [**OwnerDto**](OwnerDto.md) |  | [optional] 
 **ClusterRef** | Pointer to [**SourceClusterDto**](SourceClusterDto.md) |  | [optional] 
-**Cluster** | Pointer to **string** | ID of the cluster for the Service Desk integration (replaced by clusterRef, retained for backward compatibility). | [optional] 
+**Cluster** | Pointer to **string** | Cluster ID for the Service Desk integration (replaced by clusterRef, retained for backward compatibility). | [optional] 
 **ManagedSources** | Pointer to **[]string** | Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility). | [optional] 
 **ProvisioningConfig** | Pointer to [**ProvisioningConfig**](ProvisioningConfig.md) |  | [optional] 
-**Attributes** | **map[string]interface{}** | Attributes of the Service Desk integration.  Validation constraints enforced by the implementation. | 
+**Attributes** | **map[string]interface{}** | Service Desk integration&#39;s attributes. Validation constraints enforced by the implementation. | 
 **BeforeProvisioningRule** | Pointer to [**BeforeProvisioningRuleDto**](BeforeProvisioningRuleDto.md) |  | [optional] 
 
 ## Methods
@@ -37,31 +34,6 @@ NewServiceDeskIntegrationDtoWithDefaults instantiates a new ServiceDeskIntegrati
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
-
-`func (o *ServiceDeskIntegrationDto) GetId() string`
-
-GetId returns the Id field if non-nil, zero value otherwise.
-
-### GetIdOk
-
-`func (o *ServiceDeskIntegrationDto) GetIdOk() (*string, bool)`
-
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetId
-
-`func (o *ServiceDeskIntegrationDto) SetId(v string)`
-
-SetId sets Id field to given value.
-
-### HasId
-
-`func (o *ServiceDeskIntegrationDto) HasId() bool`
-
-HasId returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *ServiceDeskIntegrationDto) GetName() string`
@@ -81,56 +53,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
-### GetCreated
-
-`func (o *ServiceDeskIntegrationDto) GetCreated() time.Time`
-
-GetCreated returns the Created field if non-nil, zero value otherwise.
-
-### GetCreatedOk
-
-`func (o *ServiceDeskIntegrationDto) GetCreatedOk() (*time.Time, bool)`
-
-GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCreated
-
-`func (o *ServiceDeskIntegrationDto) SetCreated(v time.Time)`
-
-SetCreated sets Created field to given value.
-
-### HasCreated
-
-`func (o *ServiceDeskIntegrationDto) HasCreated() bool`
-
-HasCreated returns a boolean if a field has been set.
-
-### GetModified
-
-`func (o *ServiceDeskIntegrationDto) GetModified() time.Time`
-
-GetModified returns the Modified field if non-nil, zero value otherwise.
-
-### GetModifiedOk
-
-`func (o *ServiceDeskIntegrationDto) GetModifiedOk() (*time.Time, bool)`
-
-GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModified
-
-`func (o *ServiceDeskIntegrationDto) SetModified(v time.Time)`
-
-SetModified sets Modified field to given value.
-
-### HasModified
-
-`func (o *ServiceDeskIntegrationDto) HasModified() bool`
-
-HasModified returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -174,20 +96,20 @@ SetType sets Type field to given value.
 
 ### GetOwnerRef
 
-`func (o *ServiceDeskIntegrationDto) GetOwnerRef() ServiceDeskIntegrationDtoAllOfOwnerRef`
+`func (o *ServiceDeskIntegrationDto) GetOwnerRef() OwnerDto`
 
 GetOwnerRef returns the OwnerRef field if non-nil, zero value otherwise.
 
 ### GetOwnerRefOk
 
-`func (o *ServiceDeskIntegrationDto) GetOwnerRefOk() (*ServiceDeskIntegrationDtoAllOfOwnerRef, bool)`
+`func (o *ServiceDeskIntegrationDto) GetOwnerRefOk() (*OwnerDto, bool)`
 
 GetOwnerRefOk returns a tuple with the OwnerRef field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwnerRef
 
-`func (o *ServiceDeskIntegrationDto) SetOwnerRef(v ServiceDeskIntegrationDtoAllOfOwnerRef)`
+`func (o *ServiceDeskIntegrationDto) SetOwnerRef(v OwnerDto)`
 
 SetOwnerRef sets OwnerRef field to given value.
 

@@ -12,7 +12,6 @@ package beta
 
 import (
 	"encoding/json"
-	"time"
 	"fmt"
 )
 
@@ -21,28 +20,22 @@ var _ MappedNullable = &ServiceDeskIntegrationDto{}
 
 // ServiceDeskIntegrationDto struct for ServiceDeskIntegrationDto
 type ServiceDeskIntegrationDto struct {
-	// System-generated unique ID of the Object
-	Id *string `json:"id,omitempty"`
-	// Name of the Object
+	// Service Desk integration's name. The name must be unique.
 	Name string `json:"name"`
-	// Creation date of the Object
-	Created *time.Time `json:"created,omitempty"`
-	// Last modification date of the Object
-	Modified *time.Time `json:"modified,omitempty"`
-	// Description of the Service Desk integration.
+	// Service Desk integration's description.
 	Description string `json:"description"`
-	// Service Desk integration types  - ServiceNowSDIM - ServiceNow 
+	// Service Desk integration types:  - ServiceNowSDIM - ServiceNow 
 	Type string `json:"type"`
 	OwnerRef *OwnerDto `json:"ownerRef,omitempty"`
 	ClusterRef *SourceClusterDto `json:"clusterRef,omitempty"`
-	// ID of the cluster for the Service Desk integration (replaced by clusterRef, retained for backward compatibility).
+	// Cluster ID for the Service Desk integration (replaced by clusterRef, retained for backward compatibility).
 	// Deprecated
 	Cluster *string `json:"cluster,omitempty"`
 	// Source IDs for the Service Desk integration (replaced by provisioningConfig.managedSResourceRefs, but retained here for backward compatibility).
 	// Deprecated
 	ManagedSources []string `json:"managedSources,omitempty"`
 	ProvisioningConfig *ProvisioningConfig `json:"provisioningConfig,omitempty"`
-	// Attributes of the Service Desk integration.  Validation constraints enforced by the implementation.
+	// Service Desk integration's attributes. Validation constraints enforced by the implementation.
 	Attributes map[string]interface{} `json:"attributes"`
 	BeforeProvisioningRule *BeforeProvisioningRuleDto `json:"beforeProvisioningRule,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -73,38 +66,6 @@ func NewServiceDeskIntegrationDtoWithDefaults() *ServiceDeskIntegrationDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *ServiceDeskIntegrationDto) GetId() string {
-	if o == nil || isNil(o.Id) {
-		var ret string
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceDeskIntegrationDto) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *ServiceDeskIntegrationDto) HasId() bool {
-	if o != nil && !isNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ServiceDeskIntegrationDto) SetId(v string) {
-	o.Id = &v
-}
-
 // GetName returns the Name field value
 func (o *ServiceDeskIntegrationDto) GetName() string {
 	if o == nil {
@@ -127,70 +88,6 @@ func (o *ServiceDeskIntegrationDto) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *ServiceDeskIntegrationDto) SetName(v string) {
 	o.Name = v
-}
-
-// GetCreated returns the Created field value if set, zero value otherwise.
-func (o *ServiceDeskIntegrationDto) GetCreated() time.Time {
-	if o == nil || isNil(o.Created) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Created
-}
-
-// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceDeskIntegrationDto) GetCreatedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Created) {
-		return nil, false
-	}
-	return o.Created, true
-}
-
-// HasCreated returns a boolean if a field has been set.
-func (o *ServiceDeskIntegrationDto) HasCreated() bool {
-	if o != nil && !isNil(o.Created) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *ServiceDeskIntegrationDto) SetCreated(v time.Time) {
-	o.Created = &v
-}
-
-// GetModified returns the Modified field value if set, zero value otherwise.
-func (o *ServiceDeskIntegrationDto) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Modified
-}
-
-// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceDeskIntegrationDto) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
-		return nil, false
-	}
-	return o.Modified, true
-}
-
-// HasModified returns a boolean if a field has been set.
-func (o *ServiceDeskIntegrationDto) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
-		return true
-	}
-
-	return false
-}
-
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
-func (o *ServiceDeskIntegrationDto) SetModified(v time.Time) {
-	o.Modified = &v
 }
 
 // GetDescription returns the Description field value
@@ -473,10 +370,7 @@ func (o ServiceDeskIntegrationDto) MarshalJSON() ([]byte, error) {
 
 func (o ServiceDeskIntegrationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	// skip: id is readOnly
 	toSerialize["name"] = o.Name
-	// skip: created is readOnly
-	// skip: modified is readOnly
 	toSerialize["description"] = o.Description
 	toSerialize["type"] = o.Type
 	if !isNil(o.OwnerRef) {
@@ -540,10 +434,7 @@ func (o *ServiceDeskIntegrationDto) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "created")
-		delete(additionalProperties, "modified")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "ownerRef")

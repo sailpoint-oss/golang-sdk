@@ -60341,17 +60341,20 @@ components:
       type: object
     ServiceDeskIntegrationDto:
       allOf:
-      - $ref: '#/components/schemas/BaseCommonDto'
-      - description: Specification of a Service Desk integration.
+      - description: Service Desk integration's specification.
         properties:
+          name:
+            description: Service Desk integration's name. The name must be unique.
+            example: Service Desk Integration Name
+            type: string
           description:
-            description: Description of the Service Desk integration.
+            description: Service Desk integration's description.
             example: A very nice Service Desk integration
             type: string
           type:
             default: ServiceNowSDIM
             description: |
-              Service Desk integration types
+              Service Desk integration types:
 
               - ServiceNowSDIM
               - ServiceNow
@@ -60365,8 +60368,8 @@ components:
             - $ref: '#/components/schemas/SourceClusterDto'
           cluster:
             deprecated: true
-            description: "ID of the cluster for the Service Desk integration (replaced\
-              \ by clusterRef, retained for backward compatibility)."
+            description: "Cluster ID for the Service Desk integration (replaced by\
+              \ clusterRef, retained for backward compatibility)."
             example: xyzzy999
             type: string
           managedSources:
@@ -60384,7 +60387,7 @@ components:
             $ref: '#/components/schemas/ProvisioningConfig'
           attributes:
             additionalProperties: true
-            description: Attributes of the Service Desk integration.  Validation constraints
+            description: Service Desk integration's attributes. Validation constraints
               enforced by the implementation.
             example:
               property: value
@@ -60396,6 +60399,7 @@ components:
         required:
         - attributes
         - description
+        - name
         - type
         type: object
     JsonPatch:
@@ -68074,6 +68078,7 @@ components:
       description: Specification of a Service Desk integration provisioning configuration.
       properties:
         universalManager:
+          default: false
           description: "Specifies whether this configuration is used to manage provisioning\
             \ requests for all sources from the org.  If true, no managedResourceRefs\
             \ are allowed."
@@ -68096,6 +68101,7 @@ components:
         planInitializerScript:
           $ref: '#/components/schemas/ProvisioningConfig_planInitializerScript'
         noProvisioningRequests:
+          default: false
           description: Name of an attribute that when true disables the saving of
             ProvisioningRequest objects whenever plans are sent through this integration.
           example: true
