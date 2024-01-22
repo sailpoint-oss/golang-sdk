@@ -35,6 +35,8 @@ type ReviewableRole struct {
 	EndDate *time.Time `json:"endDate,omitempty"`
 	// The list of Access Profiles associated with this Role
 	AccessProfiles []ReviewableAccessProfile `json:"accessProfiles,omitempty"`
+	// The list of entitlements associated with this Role
+	Entitlements []ReviewableEntitlement `json:"entitlements,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -323,6 +325,38 @@ func (o *ReviewableRole) SetAccessProfiles(v []ReviewableAccessProfile) {
 	o.AccessProfiles = v
 }
 
+// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
+func (o *ReviewableRole) GetEntitlements() []ReviewableEntitlement {
+	if o == nil || isNil(o.Entitlements) {
+		var ret []ReviewableEntitlement
+		return ret
+	}
+	return o.Entitlements
+}
+
+// GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReviewableRole) GetEntitlementsOk() ([]ReviewableEntitlement, bool) {
+	if o == nil || isNil(o.Entitlements) {
+		return nil, false
+	}
+	return o.Entitlements, true
+}
+
+// HasEntitlements returns a boolean if a field has been set.
+func (o *ReviewableRole) HasEntitlements() bool {
+	if o != nil && !isNil(o.Entitlements) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntitlements gets a reference to the given []ReviewableEntitlement and assigns it to the Entitlements field.
+func (o *ReviewableRole) SetEntitlements(v []ReviewableEntitlement) {
+	o.Entitlements = v
+}
+
 func (o ReviewableRole) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -357,6 +391,9 @@ func (o ReviewableRole) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.AccessProfiles) {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
+	if !isNil(o.Entitlements) {
+		toSerialize["entitlements"] = o.Entitlements
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -383,6 +420,7 @@ func (o *ReviewableRole) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "revocable")
 		delete(additionalProperties, "endDate")
 		delete(additionalProperties, "accessProfiles")
+		delete(additionalProperties, "entitlements")
 		o.AdditionalProperties = additionalProperties
 	}
 

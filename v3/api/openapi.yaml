@@ -36527,6 +36527,95 @@ components:
               id: 5168015d32f890ca15812c9180835d2e
               type: IDENTITY
               email: alison.ferguso@identitysoon.com
+            entitlements:
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                disabled: false
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                disabled: false
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             endDate: 2021-12-25T00:00:00Z
             accessProfiles:
             - privileged: false
@@ -37133,6 +37222,95 @@ components:
             id: 5168015d32f890ca15812c9180835d2e
             type: IDENTITY
             email: alison.ferguso@identitysoon.com
+          entitlements:
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              disabled: false
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              disabled: false
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           endDate: 2021-12-25T00:00:00Z
           accessProfiles:
           - privileged: false
@@ -42685,6 +42863,95 @@ components:
           id: 5168015d32f890ca15812c9180835d2e
           type: IDENTITY
           email: alison.ferguso@identitysoon.com
+        entitlements:
+        - owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+          dataAccess:
+            policies:
+            - value: GDPR-20
+            - value: GDPR-20
+            categories:
+            - matchCount: 10
+              value: email-7
+            - matchCount: 10
+              value: email-7
+            impactScore:
+              value: Medium
+          hasPermissions: false
+          attributeValue: CN=entitlement.bbb7c650
+          containsDataAccess: true
+          description: Gives read/write access to the company database
+          isPermission: false
+          revocable: true
+          privileged: false
+          sourceType: Active Directory - Direct
+          name: CN=entitlement.bbb7c650
+          attributeName: memberOf
+          sourceSchemaObjectType: groups
+          id: 2c918085718230600171993742c63558
+          sourceName: ODS-AD-Source
+          cloudGoverned: false
+          account:
+            created: 2020-04-20T20:11:05.067Z
+            name: Alison Ferguso
+            modified: 2020-05-20T18:57:16.987Z
+            disabled: false
+            id: 2c9180857182305e0171993737eb29e6
+            locked: false
+            type: IDENTITY
+            nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
+        - owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+          dataAccess:
+            policies:
+            - value: GDPR-20
+            - value: GDPR-20
+            categories:
+            - matchCount: 10
+              value: email-7
+            - matchCount: 10
+              value: email-7
+            impactScore:
+              value: Medium
+          hasPermissions: false
+          attributeValue: CN=entitlement.bbb7c650
+          containsDataAccess: true
+          description: Gives read/write access to the company database
+          isPermission: false
+          revocable: true
+          privileged: false
+          sourceType: Active Directory - Direct
+          name: CN=entitlement.bbb7c650
+          attributeName: memberOf
+          sourceSchemaObjectType: groups
+          id: 2c918085718230600171993742c63558
+          sourceName: ODS-AD-Source
+          cloudGoverned: false
+          account:
+            created: 2020-04-20T20:11:05.067Z
+            name: Alison Ferguso
+            modified: 2020-05-20T18:57:16.987Z
+            disabled: false
+            id: 2c9180857182305e0171993737eb29e6
+            locked: false
+            type: IDENTITY
+            nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
         endDate: 2021-12-25T00:00:00Z
         accessProfiles:
         - privileged: false
@@ -42930,6 +43197,11 @@ components:
           description: The list of Access Profiles associated with this Role
           items:
             $ref: '#/components/schemas/ReviewableAccessProfile'
+          type: array
+        entitlements:
+          description: The list of entitlements associated with this Role
+          items:
+            $ref: '#/components/schemas/ReviewableEntitlement'
           type: array
       type: object
     EmailNotificationOption:
