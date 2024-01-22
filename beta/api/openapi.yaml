@@ -32893,24 +32893,26 @@ paths:
       requestBody:
         content:
           application/json-patch+json:
-            example:
-            - op: replace
-              path: /ownerRef
-              value:
-                id: 2c9180867d05b227017d09921a205b4d
-                type: IDENTITY
-                name: Angelo2 tester
+            example: |-
+              [
+                {
+                    "op": "replace",
+                    "path": "/ownerRef",
+                    "value": {
+                        "id": "2c9180867d05b227017d09921a205b4d",
+                        "type": "IDENTITY",
+                        "name": "Angelo2 tester"
+                    }
+                }
+              ]
             schema:
-              $ref: '#/components/schemas/JsonPatch'
+              $ref: '#/components/schemas/patchServiceDeskIntegration_request'
         description: |
           A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-          PATCH can only be applied to the following fields:
-            * `beforeProvisioningRule`
-            * `description`
-            * `ownerRef`
+          Only `replace` operations are accepted by this endpoint.
 
-          A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.
+          A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.
         required: true
       responses:
         "200":
@@ -60402,17 +60404,6 @@ components:
         - name
         - type
         type: object
-    JsonPatch:
-      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
-      example: "[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\
-        \t  \"value\": \"A new description\"\n  }\n]"
-      properties:
-        operations:
-          description: Operations to be applied
-          items:
-            $ref: '#/components/schemas/JsonPatchOperation'
-          type: array
-      type: object
     ServiceDeskIntegrationTemplateType:
       description: This represents a Service Desk Integration template type.
       example:
@@ -61772,6 +61763,17 @@ components:
       - returns
       - type
       - uniqueName
+      type: object
+    JsonPatch:
+      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example: "[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\
+        \t  \"value\": \"A new description\"\n  }\n]"
+      properties:
+        operations:
+          description: Operations to be applied
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
       type: object
     TaggedObject:
       example:
@@ -72128,6 +72130,16 @@ components:
           - replace
           example: replace
           type: string
+    patchServiceDeskIntegration_request:
+      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902).\
+        \  Only `replace` operations are accepted by this endpoint."
+      properties:
+        operations:
+          description: Operations to be applied
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      type: object
     importSpConfig_request:
       properties:
         data:

@@ -549,6 +549,7 @@ docs/PasswordSyncGroup.md
 docs/PasswordSyncGroupsAPI.md
 docs/PatOwner.md
 docs/PatchPotentialRoleRequestInner.md
+docs/PatchServiceDeskIntegrationRequest.md
 docs/PeerGroupMember.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
@@ -1295,6 +1296,7 @@ model_password_status.go
 model_password_sync_group.go
 model_pat_owner.go
 model_patch_potential_role_request_inner.go
+model_patch_service_desk_integration_request.go
 model_peer_group_member.go
 model_pending_approval.go
 model_pending_approval_action.go
