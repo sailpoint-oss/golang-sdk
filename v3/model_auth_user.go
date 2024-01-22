@@ -23,11 +23,11 @@ type AuthUser struct {
 	Tenant *string `json:"tenant,omitempty"`
 	// Identity ID.
 	Id *string `json:"id,omitempty"`
-	// Identity unique identitifier.
+	// Identity's unique identitifier.
 	Uid *string `json:"uid,omitempty"`
-	// ID of the auth profile associated with this auth user.
+	// ID of the auth profile associated with the auth user.
 	Profile *string `json:"profile,omitempty"`
-	// Auth user employee number.
+	// Auth user's employee number.
 	IdentificationNumber *string `json:"identificationNumber,omitempty"`
 	// Auth user's email.
 	Email *string `json:"email,omitempty"`
@@ -45,13 +45,13 @@ type AuthUser struct {
 	DisplayName *string `json:"displayName,omitempty"`
 	// Auth user's alias.
 	Alias *string `json:"alias,omitempty"`
-	// the date of last password change
+	// Date of last password change.
 	LastPasswordChangeDate *string `json:"lastPasswordChangeDate,omitempty"`
 	// Timestamp of the last login (long type value).
 	LastLoginTimestamp *int64 `json:"lastLoginTimestamp,omitempty"`
 	// Timestamp of the current login (long type value).
 	CurrentLoginTimestamp *int64 `json:"currentLoginTimestamp,omitempty"`
-	// Array of capabilities for this auth user.
+	// Array of the auth user's capabilities.
 	Capabilities []string `json:"capabilities,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

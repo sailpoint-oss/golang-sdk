@@ -21,9 +21,9 @@ var _ MappedNullable = &TaggedObjectDto{}
 type TaggedObjectDto struct {
 	// DTO type
 	Type *string `json:"type,omitempty"`
-	// ID of the object to which this reference applies
+	// ID of the object this reference applies to
 	Id *string `json:"id,omitempty"`
-	// Human-readable display name of the object to which this reference applies
+	// Human-readable display name of the object this reference applies to
 	Name NullableString `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

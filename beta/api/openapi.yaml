@@ -39304,9 +39304,14 @@ paths:
         required: true
         schema:
           enum:
-          - ROLE
+          - ACCESS_PROFILE
+          - APPLICATION
+          - CAMPAIGN
+          - ENTITLEMENT
           - IDENTITY
+          - ROLE
           - SOD_POLICY
+          - SOURCE
           type: string
       - description: |-
           Max number of results to return.
@@ -39429,7 +39434,7 @@ paths:
       - UserContextAuth:
         - idn:tag:read
         - idn:tag:manage
-      summary: List Tagged Objects
+      summary: List Tagged Objects by Type
       tags:
       - Tagged Objects
   /tagged-objects/{type}/{id}:
@@ -68689,12 +68694,12 @@ components:
           example: IDENTITY
           type: string
         id:
-          description: ID of the object to which this reference applies
+          description: ID of the object this reference applies to
           example: 2c91808568c529c60168cca6f90c1313
           type: string
         name:
-          description: Human-readable display name of the object to which this reference
-            applies
+          description: Human-readable display name of the object this reference applies
+            to
           example: William Wilson
           nullable: true
           type: string
