@@ -489,7 +489,7 @@ Other parameters are passed through a pointer to a apiGetStatusCheckDetailsReque
 
 ## PatchServiceDeskIntegration
 
-> ServiceDeskIntegrationDto PatchServiceDeskIntegration(ctx, id).JsonPatch(jsonPatch).Execute()
+> ServiceDeskIntegrationDto PatchServiceDeskIntegration(ctx, id).PatchServiceDeskIntegrationRequest(patchServiceDeskIntegrationRequest).Execute()
 
 Service Desk Integration Update PATCH
 
@@ -509,11 +509,11 @@ import (
 
 func main() {
     id := "anId" // string | ID of the Service Desk integration to update
-    jsonPatch := *openapiclient.NewJsonPatch() // JsonPatch | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * `beforeProvisioningRule`   * `description`   * `ownerRef`  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed. 
+    patchServiceDeskIntegrationRequest := *openapiclient.NewPatchServiceDeskIntegrationRequest() // PatchServiceDeskIntegrationRequest | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PatchServiceDeskIntegration(context.Background(), id).JsonPatch(jsonPatch).Execute()
+    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PatchServiceDeskIntegration(context.Background(), id).PatchServiceDeskIntegrationRequest(patchServiceDeskIntegrationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.PatchServiceDeskIntegration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -539,7 +539,7 @@ Other parameters are passed through a pointer to a apiPatchServiceDeskIntegratio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **jsonPatch** | [**JsonPatch**](JsonPatch.md) | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   * &#x60;beforeProvisioningRule&#x60;   * &#x60;description&#x60;   * &#x60;ownerRef&#x60;  A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.  | 
+ **patchServiceDeskIntegrationRequest** | [**PatchServiceDeskIntegrationRequest**](PatchServiceDeskIntegrationRequest.md) | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only &#x60;replace&#x60; operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.  | 
 
 ### Return type
 

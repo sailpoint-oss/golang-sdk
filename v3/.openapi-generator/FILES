@@ -249,7 +249,6 @@ docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportObject.md
 docs/Index.md
 docs/InnerHit.md
-docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
 docs/LifecycleState.md
@@ -319,6 +318,7 @@ docs/PasswordStatus.md
 docs/PasswordSyncGroup.md
 docs/PasswordSyncGroupsAPI.md
 docs/PatOwner.md
+docs/PatchServiceDeskIntegrationRequest.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
 docs/PendingApprovalOwner.md
@@ -697,7 +697,6 @@ model_import_non_employee_records_in_bulk_request.go
 model_import_object.go
 model_index.go
 model_inner_hit.go
-model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
 model_lifecycle_state.go
@@ -760,6 +759,7 @@ model_password_org_config.go
 model_password_status.go
 model_password_sync_group.go
 model_pat_owner.go
+model_patch_service_desk_integration_request.go
 model_pending_approval.go
 model_pending_approval_action.go
 model_pending_approval_owner.go

@@ -20481,24 +20481,14 @@ paths:
       requestBody:
         content:
           application/json-patch+json:
-            example:
-            - op: replace
-              path: /ownerRef
-              value:
-                id: 2c9180867d05b227017d09921a205b4d
-                type: IDENTITY
-                name: Angelo2 tester
             schema:
-              $ref: '#/components/schemas/JsonPatch'
+              $ref: '#/components/schemas/patchServiceDeskIntegration_request'
         description: |
           A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-          PATCH can only be applied to the following fields:
-            * `beforeProvisioningRule`
-            * `description`
-            * `ownerRef`
+          Only `replace` operations are accepted by this endpoint.
 
-          A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.
+          A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.
         required: true
       responses:
         "200":
@@ -39911,23 +39901,6 @@ components:
           example: true
           type: boolean
       type: object
-    JsonPatch:
-      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
-      example:
-        operations:
-        - op: replace
-          path: /description
-          value: New description
-        - op: replace
-          path: /description
-          value: New description
-      properties:
-        operations:
-          description: Operations to be applied
-          items:
-            $ref: '#/components/schemas/JsonPatchOperation'
-          type: array
-      type: object
     PasswordInfoQueryDTO:
       example:
         sourceName: My-AD
@@ -46190,6 +46163,28 @@ components:
       allOf:
       - $ref: '#/components/schemas/ScheduledSearchName'
       - $ref: '#/components/schemas/SearchSchedule'
+    patchServiceDeskIntegration_request:
+      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902).\
+        \  Only `replace` operations are accepted by this endpoint."
+      example: |-
+        [
+          {
+            "op": "replace",
+            "path": "/ownerRef",
+            "value": {
+              "id": "2c9180867d05b227017d09921a205b4d",
+              "type": "IDENTITY",
+              "name": "Angelo2 tester"
+            }
+          }
+        ]
+      properties:
+        operations:
+          description: Operations to be applied
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      type: object
     updatePasswordDictionary_request:
       properties:
         file:
