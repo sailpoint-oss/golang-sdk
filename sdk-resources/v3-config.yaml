@@ -5,5 +5,5 @@ generateInterfaces: false
 disallowAdditionalPropertiesIfNotPresent: false
 useOneOfDiscriminatorLookup: false
 enumClassPrefix: true
-gitRepoId: golang-sdk/v2
+gitRepoId: golang-sdk
 gitUserId: sailpoint-oss

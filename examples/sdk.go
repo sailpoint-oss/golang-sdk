@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"os"
 
-	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-	v3 "github.com/sailpoint-oss/golang-sdk/v2/v3"
+	sailpoint "github.com/sailpoint-oss/golang-sdk"
+	v3 "github.com/sailpoint-oss/golang-sdk/v3"
 )
 
 func main() {
