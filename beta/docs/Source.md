@@ -31,6 +31,8 @@ Name | Type | Description | Notes
 **ConnectorName** | Pointer to **string** | The name of the connector that was chosen on source creation | [optional] 
 **ConnectionType** | Pointer to **string** | The type of connection (direct or file) | [optional] 
 **ConnectorImplementationId** | Pointer to **string** | The connector implementation id | [optional] 
+**Created** | Pointer to **time.Time** | The date-time when the source was created | [optional] 
+**Modified** | Pointer to **time.Time** | The date-time when the source was last modified | [optional] 
 
 ## Methods
 
@@ -710,6 +712,56 @@ SetConnectorImplementationId sets ConnectorImplementationId field to given value
 `func (o *Source) HasConnectorImplementationId() bool`
 
 HasConnectorImplementationId returns a boolean if a field has been set.
+
+### GetCreated
+
+`func (o *Source) GetCreated() time.Time`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *Source) GetCreatedOk() (*time.Time, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *Source) SetCreated(v time.Time)`
+
+SetCreated sets Created field to given value.
+
+### HasCreated
+
+`func (o *Source) HasCreated() bool`
+
+HasCreated returns a boolean if a field has been set.
+
+### GetModified
+
+`func (o *Source) GetModified() time.Time`
+
+GetModified returns the Modified field if non-nil, zero value otherwise.
+
+### GetModifiedOk
+
+`func (o *Source) GetModifiedOk() (*time.Time, bool)`
+
+GetModifiedOk returns a tuple with the Modified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModified
+
+`func (o *Source) SetModified(v time.Time)`
+
+SetModified sets Modified field to given value.
+
+### HasModified
+
+`func (o *Source) HasModified() bool`
+
+HasModified returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

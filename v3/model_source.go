@@ -12,6 +12,7 @@ package v3
 
 import (
 	"encoding/json"
+	"time"
 	"fmt"
 )
 
@@ -66,6 +67,10 @@ type Source struct {
 	ConnectionType *string `json:"connectionType,omitempty"`
 	// The connector implementation id
 	ConnectorImplementationId *string `json:"connectorImplementationId,omitempty"`
+	// The date-time when the source was created
+	Created *time.Time `json:"created,omitempty"`
+	// The date-time when the source was last modified
+	Modified *time.Time `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -939,6 +944,70 @@ func (o *Source) SetConnectorImplementationId(v string) {
 	o.ConnectorImplementationId = &v
 }
 
+// GetCreated returns the Created field value if set, zero value otherwise.
+func (o *Source) GetCreated() time.Time {
+	if o == nil || isNil(o.Created) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Created
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Source) GetCreatedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Created) {
+		return nil, false
+	}
+	return o.Created, true
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *Source) HasCreated() bool {
+	if o != nil && !isNil(o.Created) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given time.Time and assigns it to the Created field.
+func (o *Source) SetCreated(v time.Time) {
+	o.Created = &v
+}
+
+// GetModified returns the Modified field value if set, zero value otherwise.
+func (o *Source) GetModified() time.Time {
+	if o == nil || isNil(o.Modified) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Modified
+}
+
+// GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Source) GetModifiedOk() (*time.Time, bool) {
+	if o == nil || isNil(o.Modified) {
+		return nil, false
+	}
+	return o.Modified, true
+}
+
+// HasModified returns a boolean if a field has been set.
+func (o *Source) HasModified() bool {
+	if o != nil && !isNil(o.Modified) {
+		return true
+	}
+
+	return false
+}
+
+// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+func (o *Source) SetModified(v time.Time) {
+	o.Modified = &v
+}
+
 func (o Source) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1022,6 +1091,12 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ConnectorImplementationId) {
 		toSerialize["connectorImplementationId"] = o.ConnectorImplementationId
 	}
+	if !isNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !isNil(o.Modified) {
+		toSerialize["modified"] = o.Modified
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1090,6 +1165,8 @@ func (o *Source) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "connectorName")
 		delete(additionalProperties, "connectionType")
 		delete(additionalProperties, "connectorImplementationId")
+		delete(additionalProperties, "created")
+		delete(additionalProperties, "modified")
 		o.AdditionalProperties = additionalProperties
 	}
 

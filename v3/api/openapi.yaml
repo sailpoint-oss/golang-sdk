@@ -33995,6 +33995,7 @@ components:
         - type: PASSWORD_POLICY
           id: 2c9180855d191c59015d291ceb057777
           name: Vendor Password Policy
+        modified: 2024-01-23T18:08:50.897Z
         id: 2c91808568c529c60168cca6f90c1324
         connectorImplementationId: delimited-file
         managerCorrelationRule:
@@ -34020,6 +34021,7 @@ components:
           - cn
           - uid
           - mail
+        created: 2022-02-08T14:50:03.827Z
         managerCorrelationMapping:
           accountAttribute: manager
           identityAttribute: manager
@@ -34176,6 +34178,16 @@ components:
         connectorImplementationId:
           description: The connector implementation id
           example: delimited-file
+          type: string
+        created:
+          description: The date-time when the source was created
+          example: 2022-02-08T14:50:03.827Z
+          format: date-time
+          type: string
+        modified:
+          description: The date-time when the source was last modified
+          example: 2024-01-23T18:08:50.897Z
+          format: date-time
           type: string
       required:
       - connector
