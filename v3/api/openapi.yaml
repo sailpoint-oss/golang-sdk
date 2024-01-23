@@ -32044,6 +32044,18 @@ components:
         - id: 2c91809c6faade77016fb4f0b63407ae
           name: Admin Access
         accessProfileCount: 1
+        segments:
+        - id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          name: segment-xyz
+          description: This segment represents xyz
+        segmentCount: 1
+        entitlements:
+        - id: 2c91809c6faade77016fb4f0b63407ae
+          name: Admin Access
+          description: Access to everything
+          privileged: true
+          hasPermissions: true
+        entitlementCount: 1
         tags:
         - TAG_1
         - TAG_2
@@ -33716,6 +33728,22 @@ components:
             type: integer
           tags:
             $ref: '#/components/schemas/Tags'
+          segments:
+            items:
+              $ref: '#/components/schemas/Reference'
+            type: array
+          segmentCount:
+            example: 1
+            format: int32
+            type: integer
+          entitlements:
+            items:
+              $ref: '#/components/schemas/AccessProfileRole'
+            type: array
+          entitlementCount:
+            example: 3
+            format: int32
+            type: integer
         type: object
       description: Role
     RoleSummary:

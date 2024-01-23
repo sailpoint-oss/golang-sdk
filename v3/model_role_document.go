@@ -43,6 +43,10 @@ type RoleDocument struct {
 	AccessProfiles []Reference `json:"accessProfiles,omitempty"`
 	AccessProfileCount *int32 `json:"accessProfileCount,omitempty"`
 	Tags []string `json:"tags,omitempty"`
+	Segments []Reference `json:"segments,omitempty"`
+	SegmentCount *int32 `json:"segmentCount,omitempty"`
+	Entitlements []AccessProfileRole `json:"entitlements,omitempty"`
+	EntitlementCount *int32 `json:"entitlementCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -522,6 +526,134 @@ func (o *RoleDocument) SetTags(v []string) {
 	o.Tags = v
 }
 
+// GetSegments returns the Segments field value if set, zero value otherwise.
+func (o *RoleDocument) GetSegments() []Reference {
+	if o == nil || isNil(o.Segments) {
+		var ret []Reference
+		return ret
+	}
+	return o.Segments
+}
+
+// GetSegmentsOk returns a tuple with the Segments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleDocument) GetSegmentsOk() ([]Reference, bool) {
+	if o == nil || isNil(o.Segments) {
+		return nil, false
+	}
+	return o.Segments, true
+}
+
+// HasSegments returns a boolean if a field has been set.
+func (o *RoleDocument) HasSegments() bool {
+	if o != nil && !isNil(o.Segments) {
+		return true
+	}
+
+	return false
+}
+
+// SetSegments gets a reference to the given []Reference and assigns it to the Segments field.
+func (o *RoleDocument) SetSegments(v []Reference) {
+	o.Segments = v
+}
+
+// GetSegmentCount returns the SegmentCount field value if set, zero value otherwise.
+func (o *RoleDocument) GetSegmentCount() int32 {
+	if o == nil || isNil(o.SegmentCount) {
+		var ret int32
+		return ret
+	}
+	return *o.SegmentCount
+}
+
+// GetSegmentCountOk returns a tuple with the SegmentCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleDocument) GetSegmentCountOk() (*int32, bool) {
+	if o == nil || isNil(o.SegmentCount) {
+		return nil, false
+	}
+	return o.SegmentCount, true
+}
+
+// HasSegmentCount returns a boolean if a field has been set.
+func (o *RoleDocument) HasSegmentCount() bool {
+	if o != nil && !isNil(o.SegmentCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetSegmentCount gets a reference to the given int32 and assigns it to the SegmentCount field.
+func (o *RoleDocument) SetSegmentCount(v int32) {
+	o.SegmentCount = &v
+}
+
+// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
+func (o *RoleDocument) GetEntitlements() []AccessProfileRole {
+	if o == nil || isNil(o.Entitlements) {
+		var ret []AccessProfileRole
+		return ret
+	}
+	return o.Entitlements
+}
+
+// GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleDocument) GetEntitlementsOk() ([]AccessProfileRole, bool) {
+	if o == nil || isNil(o.Entitlements) {
+		return nil, false
+	}
+	return o.Entitlements, true
+}
+
+// HasEntitlements returns a boolean if a field has been set.
+func (o *RoleDocument) HasEntitlements() bool {
+	if o != nil && !isNil(o.Entitlements) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntitlements gets a reference to the given []AccessProfileRole and assigns it to the Entitlements field.
+func (o *RoleDocument) SetEntitlements(v []AccessProfileRole) {
+	o.Entitlements = v
+}
+
+// GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
+func (o *RoleDocument) GetEntitlementCount() int32 {
+	if o == nil || isNil(o.EntitlementCount) {
+		var ret int32
+		return ret
+	}
+	return *o.EntitlementCount
+}
+
+// GetEntitlementCountOk returns a tuple with the EntitlementCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleDocument) GetEntitlementCountOk() (*int32, bool) {
+	if o == nil || isNil(o.EntitlementCount) {
+		return nil, false
+	}
+	return o.EntitlementCount, true
+}
+
+// HasEntitlementCount returns a boolean if a field has been set.
+func (o *RoleDocument) HasEntitlementCount() bool {
+	if o != nil && !isNil(o.EntitlementCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntitlementCount gets a reference to the given int32 and assigns it to the EntitlementCount field.
+func (o *RoleDocument) SetEntitlementCount(v int32) {
+	o.EntitlementCount = &v
+}
+
 func (o RoleDocument) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -567,6 +699,18 @@ func (o RoleDocument) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !isNil(o.Segments) {
+		toSerialize["segments"] = o.Segments
+	}
+	if !isNil(o.SegmentCount) {
+		toSerialize["segmentCount"] = o.SegmentCount
+	}
+	if !isNil(o.Entitlements) {
+		toSerialize["entitlements"] = o.Entitlements
+	}
+	if !isNil(o.EntitlementCount) {
+		toSerialize["entitlementCount"] = o.EntitlementCount
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -623,6 +767,10 @@ func (o *RoleDocument) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "accessProfiles")
 		delete(additionalProperties, "accessProfileCount")
 		delete(additionalProperties, "tags")
+		delete(additionalProperties, "segments")
+		delete(additionalProperties, "segmentCount")
+		delete(additionalProperties, "entitlements")
+		delete(additionalProperties, "entitlementCount")
 		o.AdditionalProperties = additionalProperties
 	}
 

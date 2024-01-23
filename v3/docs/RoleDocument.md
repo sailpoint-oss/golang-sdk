@@ -18,6 +18,10 @@ Name | Type | Description | Notes
 **AccessProfiles** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
 **AccessProfileCount** | Pointer to **int32** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
+**Segments** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
+**SegmentCount** | Pointer to **int32** |  | [optional] 
+**Entitlements** | Pointer to [**[]AccessProfileRole**](AccessProfileRole.md) |  | [optional] 
+**EntitlementCount** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -402,6 +406,106 @@ SetTags sets Tags field to given value.
 `func (o *RoleDocument) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetSegments
+
+`func (o *RoleDocument) GetSegments() []Reference`
+
+GetSegments returns the Segments field if non-nil, zero value otherwise.
+
+### GetSegmentsOk
+
+`func (o *RoleDocument) GetSegmentsOk() (*[]Reference, bool)`
+
+GetSegmentsOk returns a tuple with the Segments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSegments
+
+`func (o *RoleDocument) SetSegments(v []Reference)`
+
+SetSegments sets Segments field to given value.
+
+### HasSegments
+
+`func (o *RoleDocument) HasSegments() bool`
+
+HasSegments returns a boolean if a field has been set.
+
+### GetSegmentCount
+
+`func (o *RoleDocument) GetSegmentCount() int32`
+
+GetSegmentCount returns the SegmentCount field if non-nil, zero value otherwise.
+
+### GetSegmentCountOk
+
+`func (o *RoleDocument) GetSegmentCountOk() (*int32, bool)`
+
+GetSegmentCountOk returns a tuple with the SegmentCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSegmentCount
+
+`func (o *RoleDocument) SetSegmentCount(v int32)`
+
+SetSegmentCount sets SegmentCount field to given value.
+
+### HasSegmentCount
+
+`func (o *RoleDocument) HasSegmentCount() bool`
+
+HasSegmentCount returns a boolean if a field has been set.
+
+### GetEntitlements
+
+`func (o *RoleDocument) GetEntitlements() []AccessProfileRole`
+
+GetEntitlements returns the Entitlements field if non-nil, zero value otherwise.
+
+### GetEntitlementsOk
+
+`func (o *RoleDocument) GetEntitlementsOk() (*[]AccessProfileRole, bool)`
+
+GetEntitlementsOk returns a tuple with the Entitlements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntitlements
+
+`func (o *RoleDocument) SetEntitlements(v []AccessProfileRole)`
+
+SetEntitlements sets Entitlements field to given value.
+
+### HasEntitlements
+
+`func (o *RoleDocument) HasEntitlements() bool`
+
+HasEntitlements returns a boolean if a field has been set.
+
+### GetEntitlementCount
+
+`func (o *RoleDocument) GetEntitlementCount() int32`
+
+GetEntitlementCount returns the EntitlementCount field if non-nil, zero value otherwise.
+
+### GetEntitlementCountOk
+
+`func (o *RoleDocument) GetEntitlementCountOk() (*int32, bool)`
+
+GetEntitlementCountOk returns a tuple with the EntitlementCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntitlementCount
+
+`func (o *RoleDocument) SetEntitlementCount(v int32)`
+
+SetEntitlementCount sets EntitlementCount field to given value.
+
+### HasEntitlementCount
+
+`func (o *RoleDocument) HasEntitlementCount() bool`
+
+HasEntitlementCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
