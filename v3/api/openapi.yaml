@@ -18986,14 +18986,14 @@ paths:
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: 250
+        example: 10000
         in: query
         name: limit
         required: false
         schema:
-          default: 250
+          default: 10000
           format: int32
-          maximum: 250
+          maximum: 10000
           minimum: 0
           type: integer
       - description: |-
@@ -32185,6 +32185,20 @@ components:
       required: true
       schema:
         type: string
+    searchlimit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 10000
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 10000
+        format: int32
+        maximum: 10000
+        minimum: 0
+        type: integer
     index:
       description: |
         The index from which to fetch the specified document.

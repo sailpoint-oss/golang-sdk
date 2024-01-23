@@ -635,7 +635,7 @@ func (a *SearchAPIService) SearchPostExecute(r ApiSearchPostRequest) ([]map[stri
 	if r.limit != nil {
 		parameterAddToQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue int32 = 250
+		var defaultValue int32 = 10000
 		r.limit = &defaultValue
 	}
 	if r.count != nil {
