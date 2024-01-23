@@ -733,7 +733,7 @@ func (r ApiListTaggedObjectsByTypeRequest) Execute() ([]TaggedObject, *http.Resp
 }
 
 /*
-ListTaggedObjectsByType List Tagged Objects
+ListTaggedObjectsByType List Tagged Objects by Type
 
 This API returns a list of all tagged objects by type.
 

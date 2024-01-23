@@ -57,6 +57,8 @@ type Account struct {
 	ManuallyCorrelated bool `json:"manuallyCorrelated"`
 	// Indicates if the account has entitlements
 	HasEntitlements bool `json:"hasEntitlements"`
+	Identity *BaseReferenceDto `json:"identity,omitempty"`
+	SourceOwner *BaseReferenceDto `json:"sourceOwner,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -591,6 +593,70 @@ func (o *Account) SetHasEntitlements(v bool) {
 	o.HasEntitlements = v
 }
 
+// GetIdentity returns the Identity field value if set, zero value otherwise.
+func (o *Account) GetIdentity() BaseReferenceDto {
+	if o == nil || isNil(o.Identity) {
+		var ret BaseReferenceDto
+		return ret
+	}
+	return *o.Identity
+}
+
+// GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Account) GetIdentityOk() (*BaseReferenceDto, bool) {
+	if o == nil || isNil(o.Identity) {
+		return nil, false
+	}
+	return o.Identity, true
+}
+
+// HasIdentity returns a boolean if a field has been set.
+func (o *Account) HasIdentity() bool {
+	if o != nil && !isNil(o.Identity) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentity gets a reference to the given BaseReferenceDto and assigns it to the Identity field.
+func (o *Account) SetIdentity(v BaseReferenceDto) {
+	o.Identity = &v
+}
+
+// GetSourceOwner returns the SourceOwner field value if set, zero value otherwise.
+func (o *Account) GetSourceOwner() BaseReferenceDto {
+	if o == nil || isNil(o.SourceOwner) {
+		var ret BaseReferenceDto
+		return ret
+	}
+	return *o.SourceOwner
+}
+
+// GetSourceOwnerOk returns a tuple with the SourceOwner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Account) GetSourceOwnerOk() (*BaseReferenceDto, bool) {
+	if o == nil || isNil(o.SourceOwner) {
+		return nil, false
+	}
+	return o.SourceOwner, true
+}
+
+// HasSourceOwner returns a boolean if a field has been set.
+func (o *Account) HasSourceOwner() bool {
+	if o != nil && !isNil(o.SourceOwner) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceOwner gets a reference to the given BaseReferenceDto and assigns it to the SourceOwner field.
+func (o *Account) SetSourceOwner(v BaseReferenceDto) {
+	o.SourceOwner = &v
+}
+
 func (o Account) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -625,6 +691,12 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["manuallyCorrelated"] = o.ManuallyCorrelated
 	toSerialize["hasEntitlements"] = o.HasEntitlements
+	if !isNil(o.Identity) {
+		toSerialize["identity"] = o.Identity
+	}
+	if !isNil(o.SourceOwner) {
+		toSerialize["sourceOwner"] = o.SourceOwner
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -693,6 +765,8 @@ func (o *Account) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "uuid")
 		delete(additionalProperties, "manuallyCorrelated")
 		delete(additionalProperties, "hasEntitlements")
+		delete(additionalProperties, "identity")
+		delete(additionalProperties, "sourceOwner")
 		o.AdditionalProperties = additionalProperties
 	}
 

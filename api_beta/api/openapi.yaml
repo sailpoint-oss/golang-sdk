@@ -1807,8 +1807,10 @@ paths:
         * Roles, access profiles and entitlements can be requested.\n* While requesting\
         \ entitlements, maximum of 25 entitlements and 10 recipients are allowed in\
         \ a request.\n \n__REVOKE_ACCESS__\n* Can only be requested for a single identity\
-        \ at a time.\n* Does not support self request. Only manager can request to\
-        \ revoke access for their directly managed employees.\n* If a `removeDate`\
+        \ at a time.\n* You cannot use an access request to revoke access from an\
+        \ identity if that access has been granted by role membership or by birthright\
+        \ provisioning. \n* Does not support self request. Only manager can request\
+        \ to revoke access for their directly managed employees.\n* If a `removeDate`\
         \ is specified, then the access will be removed on that date and time only\
         \ for roles and access profiles. Entitlements are currently unsupported for\
         \ `removeDate`.\n* Roles, access profiles, and entitlements can be requested\
@@ -32891,24 +32893,26 @@ paths:
       requestBody:
         content:
           application/json-patch+json:
-            example:
-            - op: replace
-              path: /ownerRef
-              value:
-                id: 2c9180867d05b227017d09921a205b4d
-                type: IDENTITY
-                name: Angelo2 tester
+            example: |-
+              [
+                {
+                    "op": "replace",
+                    "path": "/ownerRef",
+                    "value": {
+                        "id": "2c9180867d05b227017d09921a205b4d",
+                        "type": "IDENTITY",
+                        "name": "Angelo2 tester"
+                    }
+                }
+              ]
             schema:
-              $ref: '#/components/schemas/JsonPatch'
+              $ref: '#/components/schemas/patchServiceDeskIntegration_request'
         description: |
           A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-          PATCH can only be applied to the following fields:
-            * `beforeProvisioningRule`
-            * `description`
-            * `ownerRef`
+          Only `replace` operations are accepted by this endpoint.
 
-          A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.
+          A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.
         required: true
       responses:
         "200":
@@ -39300,9 +39304,14 @@ paths:
         required: true
         schema:
           enum:
-          - ROLE
+          - ACCESS_PROFILE
+          - APPLICATION
+          - CAMPAIGN
+          - ENTITLEMENT
           - IDENTITY
+          - ROLE
           - SOD_POLICY
+          - SOURCE
           type: string
       - description: |-
           Max number of results to return.
@@ -39425,7 +39434,7 @@ paths:
       - UserContextAuth:
         - idn:tag:read
         - idn:tag:manage
-      summary: List Tagged Objects
+      summary: List Tagged Objects by Type
       tags:
       - Tagged Objects
   /tagged-objects/{type}/{id}:
@@ -47732,10 +47741,9 @@ paths:
       tags:
       - Governance Groups
     patch:
-      description: |-
-        This API updates existing Governance Group by its ID. Following fields are patchable.
-        **name**, **description**
-        A token with API, ORG_ADMIN is required to call this API. In addition.
+      description: "This API updates an existing governance group by ID. \nThe following\
+        \ fields and objects are patchable:\n  * name\n  * description\n  * owner\n\
+        \nA token with API or ORG_ADMIN authority is required to call this API."
       operationId: patchWorkgroup
       parameters:
       - description: ID of the Governance Group
@@ -52174,6 +52182,7 @@ components:
           type: string
       type: object
     AccessProfile:
+      description: Access Profile
       example:
         owner:
           name: support
@@ -52194,13 +52203,11 @@ components:
           type: SOURCE
         enabled: true
         revocationRequestConfig:
-          commentsRequired: false
           approvalSchemes:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
-          denialCommentsRequired: false
         segments:
         - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
         - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
@@ -52269,6 +52276,7 @@ components:
           readOnly: true
           type: string
         enabled:
+          default: true
           description: Whether the Access Profile is enabled. If the Access Profile
             is enabled then you must include at least one Entitlement.
           example: true
@@ -52286,6 +52294,7 @@ components:
           nullable: true
           type: array
         requestable:
+          default: true
           description: "Whether the Access Profile is requestable via access request.\
             \ Currently, making an Access Profile non-requestable is only supported\
             \  for customers enabled with the new Request Center. Otherwise, attempting\
@@ -52764,10 +52773,6 @@ components:
         requestType: GRANT_ACCESS
         created: 2019-08-23T18:40:35.772Z
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         preApprovalTriggerDetails:
@@ -52981,7 +52986,7 @@ components:
         requestedFor:
           $ref: '#/components/schemas/AccessItemRequestedFor'
         requesterComment:
-          $ref: '#/components/schemas/CommentDto'
+          $ref: '#/components/schemas/CommentDto_1'
         sodViolationContext:
           $ref: '#/components/schemas/SodViolationContextCheckCompleted'
         provisioningDetails:
@@ -53043,23 +53048,11 @@ components:
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
         previousReviewersComments:
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         currentRemoveDate: 2020-07-11T00:00:00Z
@@ -53192,11 +53185,11 @@ components:
         requestedObject:
           $ref: '#/components/schemas/RequestableObjectReference'
         requesterComment:
-          $ref: '#/components/schemas/CommentDto'
+          $ref: '#/components/schemas/CommentDto_1'
         previousReviewersComments:
           description: The history of the previous reviewers comments.
           items:
-            $ref: '#/components/schemas/CommentDto'
+            $ref: '#/components/schemas/CommentDto_1'
           type: array
         forwardHistory:
           description: The history of approval forward action.
@@ -53249,23 +53242,11 @@ components:
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
         previousReviewersComments:
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         currentRemoveDate: 2020-07-11T00:00:00Z
@@ -53404,13 +53385,13 @@ components:
         requestedObject:
           $ref: '#/components/schemas/RequestableObjectReference'
         requesterComment:
-          $ref: '#/components/schemas/CommentDto'
+          $ref: '#/components/schemas/CommentDto_1'
         reviewerComment:
           $ref: '#/components/schemas/CompletedApproval_reviewerComment'
         previousReviewersComments:
           description: The history of the previous reviewers comments.
           items:
-            $ref: '#/components/schemas/CommentDto'
+            $ref: '#/components/schemas/CommentDto_1'
           type: array
         forwardHistory:
           description: The history of approval forward action.
@@ -60207,7 +60188,7 @@ components:
         accessRequestConfig:
           $ref: '#/components/schemas/RequestabilityForRole'
         revocationRequestConfig:
-          $ref: '#/components/schemas/Revocability'
+          $ref: '#/components/schemas/RevocabilityForRole'
         segments:
           description: "List of IDs of segments, if any, to which this Role is assigned."
           example:
@@ -60367,17 +60348,20 @@ components:
       type: object
     ServiceDeskIntegrationDto:
       allOf:
-      - $ref: '#/components/schemas/BaseCommonDto'
-      - description: Specification of a Service Desk integration.
+      - description: Service Desk integration's specification.
         properties:
+          name:
+            description: Service Desk integration's name. The name must be unique.
+            example: Service Desk Integration Name
+            type: string
           description:
-            description: Description of the Service Desk integration.
+            description: Service Desk integration's description.
             example: A very nice Service Desk integration
             type: string
           type:
             default: ServiceNowSDIM
             description: |
-              Service Desk integration types
+              Service Desk integration types:
 
               - ServiceNowSDIM
               - ServiceNow
@@ -60391,8 +60375,8 @@ components:
             - $ref: '#/components/schemas/SourceClusterDto'
           cluster:
             deprecated: true
-            description: "ID of the cluster for the Service Desk integration (replaced\
-              \ by clusterRef, retained for backward compatibility)."
+            description: "Cluster ID for the Service Desk integration (replaced by\
+              \ clusterRef, retained for backward compatibility)."
             example: xyzzy999
             type: string
           managedSources:
@@ -60410,7 +60394,7 @@ components:
             $ref: '#/components/schemas/ProvisioningConfig'
           attributes:
             additionalProperties: true
-            description: Attributes of the Service Desk integration.  Validation constraints
+            description: Service Desk integration's attributes. Validation constraints
               enforced by the implementation.
             example:
               property: value
@@ -60422,19 +60406,9 @@ components:
         required:
         - attributes
         - description
+        - name
         - type
         type: object
-    JsonPatch:
-      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
-      example: "[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\
-        \t  \"value\": \"A new description\"\n  }\n]"
-      properties:
-        operations:
-          description: Operations to be applied
-          items:
-            $ref: '#/components/schemas/JsonPatchOperation'
-          type: array
-      type: object
     ServiceDeskIntegrationTemplateType:
       description: This represents a Service Desk Integration template type.
       example:
@@ -61795,6 +61769,17 @@ components:
       - type
       - uniqueName
       type: object
+    JsonPatch:
+      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
+      example: "[\n  {\n\t  \"op\": \"replace\",\n\t  \"path\": \"/description\",\n\
+        \t  \"value\": \"A new description\"\n  }\n]"
+      properties:
+        operations:
+          description: Operations to be applied
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      type: object
     TaggedObject:
       example:
         objectRef:
@@ -62681,7 +62666,7 @@ components:
       example:
         schedule:
           hours: null
-          timeZoneId: GMT-06:00
+          timeZoneId: America/Chicago
           days: null
           expiration: 2018-06-25T20:22:28.104Z
           type: WEEKLY
@@ -65311,51 +65296,43 @@ components:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
         denialCommentsRequired: true
+      nullable: true
       properties:
         commentsRequired:
+          default: false
           description: Whether the requester of the containing object must provide
             comments justifying the request
           example: true
+          nullable: true
           type: boolean
         denialCommentsRequired:
+          default: false
           description: Whether an approver must provide comments when denying the
             request
           example: true
+          nullable: true
           type: boolean
         approvalSchemes:
           description: List describing the steps in approving the request
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
+          nullable: true
           type: array
       type: object
     Revocability:
       example:
-        commentsRequired: false
         approvalSchemes:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
-        denialCommentsRequired: false
+      nullable: true
       properties:
-        commentsRequired:
-          default: false
-          description: Whether the requester of the containing object must provide
-            comments justifying the request
-          example: false
-          nullable: true
-          type: boolean
-        denialCommentsRequired:
-          default: false
-          description: Whether an approver must provide comments when denying the
-            request
-          example: false
-          nullable: true
-          type: boolean
         approvalSchemes:
           description: List describing the steps in approving the revocation request
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
+          nullable: true
           type: array
       type: object
     ProvisioningCriteriaLevel1:
@@ -65842,6 +65819,22 @@ components:
           description: Human-readable display name of identity the access item is
             requested for.
           example: Robert Robinson
+          type: string
+      type: object
+    CommentDto_1:
+      example:
+        created: 2017-07-11T18:45:37.098Z
+        comment: This is a comment.
+      properties:
+        comment:
+          description: Comment content.
+          example: This is a comment.
+          nullable: true
+          type: string
+        created:
+          description: Date and time comment was created.
+          example: 2017-07-11T18:45:37.098Z
+          format: date-time
           type: string
       type: object
     SodViolationContextCheckCompleted:
@@ -67970,6 +67963,36 @@ components:
             $ref: '#/components/schemas/ApprovalSchemeForRole'
           type: array
       type: object
+    RevocabilityForRole:
+      example:
+        commentsRequired: false
+        approvalSchemes:
+        - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+          approverType: GOVERNANCE_GROUP
+        - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+          approverType: GOVERNANCE_GROUP
+        denialCommentsRequired: false
+      properties:
+        commentsRequired:
+          default: false
+          description: Whether the requester of the containing object must provide
+            comments justifying the request
+          example: false
+          nullable: true
+          type: boolean
+        denialCommentsRequired:
+          default: false
+          description: Whether an approver must provide comments when denying the
+            request
+          example: false
+          nullable: true
+          type: boolean
+        approvalSchemes:
+          description: List describing the steps in approving the revocation request
+          items:
+            $ref: '#/components/schemas/ApprovalSchemeForRole'
+          type: array
+      type: object
     RoleAssignmentSourceType:
       description: Type which indicates how a particular Identity obtained a particular
         Role
@@ -68062,6 +68085,7 @@ components:
       description: Specification of a Service Desk integration provisioning configuration.
       properties:
         universalManager:
+          default: false
           description: "Specifies whether this configuration is used to manage provisioning\
             \ requests for all sources from the org.  If true, no managedResourceRefs\
             \ are allowed."
@@ -68084,6 +68108,7 @@ components:
         planInitializerScript:
           $ref: '#/components/schemas/ProvisioningConfig_planInitializerScript'
         noProvisioningRequests:
+          default: false
           description: Name of an attribute that when true disables the saving of
             ProvisioningRequest objects whenever plans are sent through this integration.
           example: true
@@ -68669,12 +68694,12 @@ components:
           example: IDENTITY
           type: string
         id:
-          description: ID of the object to which this reference applies
+          description: ID of the object this reference applies to
           example: 2c91808568c529c60168cca6f90c1313
           type: string
         name:
-          description: Human-readable display name of the object to which this reference
-            applies
+          description: Human-readable display name of the object this reference applies
+            to
           example: William Wilson
           nullable: true
           type: string
@@ -69494,7 +69519,7 @@ components:
       description: The schedule information.
       example:
         hours: null
-        timeZoneId: GMT-06:00
+        timeZoneId: America/Chicago
         days: null
         expiration: 2018-06-25T20:22:28.104Z
         type: WEEKLY
@@ -69512,9 +69537,10 @@ components:
           nullable: true
           type: string
         timeZoneId:
-          description: "The GMT formatted timezone the schedule will run in (ex. GMT-06:00).\
-            \  If no timezone is specified, the org's default timezone is used."
-          example: GMT-06:00
+          description: "The canonical TZ identifier the schedule will run in (ex.\
+            \ America/New_York).  If no timezone is specified, the org's default timezone\
+            \ is used."
+          example: America/Chicago
           nullable: true
           type: string
       required:
@@ -72109,6 +72135,16 @@ components:
           - replace
           example: replace
           type: string
+    patchServiceDeskIntegration_request:
+      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902).\
+        \  Only `replace` operations are accepted by this endpoint."
+      properties:
+        operations:
+          description: Operations to be applied
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      type: object
     importSpConfig_request:
       properties:
         data:

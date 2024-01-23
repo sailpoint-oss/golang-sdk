@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **NullableString** | Comment content. | [optional] 
-**Author** | Pointer to [**CommentDtoAuthor**](CommentDtoAuthor.md) |  | [optional] 
 **Created** | Pointer to **time.Time** | Date and time comment was created. | [optional] 
 
 ## Methods
@@ -62,31 +61,6 @@ HasComment returns a boolean if a field has been set.
 `func (o *CompletedApprovalReviewerComment) UnsetComment()`
 
 UnsetComment ensures that no value is present for Comment, not even an explicit nil
-### GetAuthor
-
-`func (o *CompletedApprovalReviewerComment) GetAuthor() CommentDtoAuthor`
-
-GetAuthor returns the Author field if non-nil, zero value otherwise.
-
-### GetAuthorOk
-
-`func (o *CompletedApprovalReviewerComment) GetAuthorOk() (*CommentDtoAuthor, bool)`
-
-GetAuthorOk returns a tuple with the Author field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthor
-
-`func (o *CompletedApprovalReviewerComment) SetAuthor(v CommentDtoAuthor)`
-
-SetAuthor sets Author field to given value.
-
-### HasAuthor
-
-`func (o *CompletedApprovalReviewerComment) HasAuthor() bool`
-
-HasAuthor returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *CompletedApprovalReviewerComment) GetCreated() time.Time`

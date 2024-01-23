@@ -264,7 +264,7 @@ Class | Method | HTTP request | Description
 *SavedSearchAPI* | [**DeleteSavedSearch**](docs/SavedSearchAPI.md#deletesavedsearch) | **Delete** /saved-searches/{id} | Delete document by ID
 *SavedSearchAPI* | [**ExecuteSavedSearch**](docs/SavedSearchAPI.md#executesavedsearch) | **Post** /saved-searches/{id}/execute | Execute a saved search by ID
 *SavedSearchAPI* | [**GetSavedSearch**](docs/SavedSearchAPI.md#getsavedsearch) | **Get** /saved-searches/{id} | Return saved search by ID
-*SavedSearchAPI* | [**ListSavedSearches**](docs/SavedSearchAPI.md#listsavedsearches) | **Get** /saved-searches | Return a list of Saved Searches
+*SavedSearchAPI* | [**ListSavedSearches**](docs/SavedSearchAPI.md#listsavedsearches) | **Get** /saved-searches | A list of Saved Searches
 *SavedSearchAPI* | [**PutSavedSearch**](docs/SavedSearchAPI.md#putsavedsearch) | **Put** /saved-searches/{id} | Updates an existing saved search 
 *ScheduledSearchAPI* | [**CreateScheduledSearch**](docs/ScheduledSearchAPI.md#createscheduledsearch) | **Post** /scheduled-searches | Create a new scheduled search
 *ScheduledSearchAPI* | [**DeleteScheduledSearch**](docs/ScheduledSearchAPI.md#deletescheduledsearch) | **Delete** /scheduled-searches/{id} | Delete a Scheduled Search
@@ -322,7 +322,7 @@ Class | Method | HTTP request | Description
 *TaggedObjectsAPI* | [**DeleteTagsToManyObject**](docs/TaggedObjectsAPI.md#deletetagstomanyobject) | **Post** /tagged-objects/bulk-remove | Remove Tags from Multiple Objects
 *TaggedObjectsAPI* | [**GetTaggedObject**](docs/TaggedObjectsAPI.md#gettaggedobject) | **Get** /tagged-objects/{type}/{id} | Get Tagged Object
 *TaggedObjectsAPI* | [**ListTaggedObjects**](docs/TaggedObjectsAPI.md#listtaggedobjects) | **Get** /tagged-objects | List Tagged Objects
-*TaggedObjectsAPI* | [**ListTaggedObjectsByType**](docs/TaggedObjectsAPI.md#listtaggedobjectsbytype) | **Get** /tagged-objects/{type} | List Tagged Objects
+*TaggedObjectsAPI* | [**ListTaggedObjectsByType**](docs/TaggedObjectsAPI.md#listtaggedobjectsbytype) | **Get** /tagged-objects/{type} | List Tagged Objects by Type
 *TaggedObjectsAPI* | [**PutTaggedObject**](docs/TaggedObjectsAPI.md#puttaggedobject) | **Put** /tagged-objects/{type}/{id} | Update Tagged Object
 *TaggedObjectsAPI* | [**SetTagToObject**](docs/TaggedObjectsAPI.md#settagtoobject) | **Post** /tagged-objects | Add Tag to Object
 *TaggedObjectsAPI* | [**SetTagsToManyObjects**](docs/TaggedObjectsAPI.md#settagstomanyobjects) | **Post** /tagged-objects/bulk-add | Tag Multiple Objects
@@ -396,6 +396,7 @@ Class | Method | HTTP request | Description
  - [AccountsAsyncResult](docs/AccountsAsyncResult.md)
  - [AccountsExportReportArguments](docs/AccountsExportReportArguments.md)
  - [ActivateCampaignOptions](docs/ActivateCampaignOptions.md)
+ - [ActivityInsights](docs/ActivityInsights.md)
  - [AdminReviewReassign](docs/AdminReviewReassign.md)
  - [AdminReviewReassignReassignTo](docs/AdminReviewReassignReassignTo.md)
  - [AggregationResult](docs/AggregationResult.md)
@@ -426,6 +427,7 @@ Class | Method | HTTP request | Description
  - [BaseCommonDto](docs/BaseCommonDto.md)
  - [BaseDocument](docs/BaseDocument.md)
  - [BaseEntitlement](docs/BaseEntitlement.md)
+ - [BaseReferenceDto](docs/BaseReferenceDto.md)
  - [BeforeProvisioningRuleDto](docs/BeforeProvisioningRuleDto.md)
  - [Bound](docs/Bound.md)
  - [BucketAggregation](docs/BucketAggregation.md)
@@ -461,7 +463,6 @@ Class | Method | HTTP request | Description
  - [Column](docs/Column.md)
  - [Comment](docs/Comment.md)
  - [CommentDto](docs/CommentDto.md)
- - [CommentDtoAuthor](docs/CommentDtoAuthor.md)
  - [CompletedApproval](docs/CompletedApproval.md)
  - [CompletedApprovalReviewerComment](docs/CompletedApprovalReviewerComment.md)
  - [CompletedApprovalState](docs/CompletedApprovalState.md)
@@ -539,7 +540,6 @@ Class | Method | HTTP request | Description
  - [ImportObject](docs/ImportObject.md)
  - [Index](docs/Index.md)
  - [InnerHit](docs/InnerHit.md)
- - [JsonPatch](docs/JsonPatch.md)
  - [JsonPatchOperation](docs/JsonPatchOperation.md)
  - [JsonPatchOperationValue](docs/JsonPatchOperationValue.md)
  - [LifecycleState](docs/LifecycleState.md)
@@ -602,6 +602,7 @@ Class | Method | HTTP request | Description
  - [PasswordStatus](docs/PasswordStatus.md)
  - [PasswordSyncGroup](docs/PasswordSyncGroup.md)
  - [PatOwner](docs/PatOwner.md)
+ - [PatchServiceDeskIntegrationRequest](docs/PatchServiceDeskIntegrationRequest.md)
  - [PendingApproval](docs/PendingApproval.md)
  - [PendingApprovalAction](docs/PendingApprovalAction.md)
  - [PendingApprovalOwner](docs/PendingApprovalOwner.md)
@@ -657,6 +658,7 @@ Class | Method | HTTP request | Description
  - [ReviewableRole](docs/ReviewableRole.md)
  - [Reviewer](docs/Reviewer.md)
  - [Revocability](docs/Revocability.md)
+ - [RevocabilityForRole](docs/RevocabilityForRole.md)
  - [Role](docs/Role.md)
  - [RoleAssignmentSourceType](docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](docs/RoleBulkDeleteRequest.md)
@@ -701,7 +703,6 @@ Class | Method | HTTP request | Description
  - [Selector](docs/Selector.md)
  - [SelectorType](docs/SelectorType.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
- - [ServiceDeskIntegrationDtoAllOfOwnerRef](docs/ServiceDeskIntegrationDtoAllOfOwnerRef.md)
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](docs/ServiceDeskSource.md)

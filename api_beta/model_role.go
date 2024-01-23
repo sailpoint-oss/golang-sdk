@@ -41,7 +41,7 @@ type Role struct {
 	// Whether the Role can be the target of access requests.
 	Requestable *bool `json:"requestable,omitempty"`
 	AccessRequestConfig *RequestabilityForRole `json:"accessRequestConfig,omitempty"`
-	RevocationRequestConfig *Revocability `json:"revocationRequestConfig,omitempty"`
+	RevocationRequestConfig *RevocabilityForRole `json:"revocationRequestConfig,omitempty"`
 	// List of IDs of segments, if any, to which this Role is assigned.
 	Segments []string `json:"segments,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -467,9 +467,9 @@ func (o *Role) SetAccessRequestConfig(v RequestabilityForRole) {
 }
 
 // GetRevocationRequestConfig returns the RevocationRequestConfig field value if set, zero value otherwise.
-func (o *Role) GetRevocationRequestConfig() Revocability {
+func (o *Role) GetRevocationRequestConfig() RevocabilityForRole {
 	if o == nil || isNil(o.RevocationRequestConfig) {
-		var ret Revocability
+		var ret RevocabilityForRole
 		return ret
 	}
 	return *o.RevocationRequestConfig
@@ -477,7 +477,7 @@ func (o *Role) GetRevocationRequestConfig() Revocability {
 
 // GetRevocationRequestConfigOk returns a tuple with the RevocationRequestConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Role) GetRevocationRequestConfigOk() (*Revocability, bool) {
+func (o *Role) GetRevocationRequestConfigOk() (*RevocabilityForRole, bool) {
 	if o == nil || isNil(o.RevocationRequestConfig) {
 		return nil, false
 	}
@@ -493,8 +493,8 @@ func (o *Role) HasRevocationRequestConfig() bool {
 	return false
 }
 
-// SetRevocationRequestConfig gets a reference to the given Revocability and assigns it to the RevocationRequestConfig field.
-func (o *Role) SetRevocationRequestConfig(v Revocability) {
+// SetRevocationRequestConfig gets a reference to the given RevocabilityForRole and assigns it to the RevocationRequestConfig field.
+func (o *Role) SetRevocationRequestConfig(v RevocabilityForRole) {
 	o.RevocationRequestConfig = &v
 }
 

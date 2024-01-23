@@ -795,7 +795,30 @@ tags:
     \ for more information about SOD policies. \n\nRefer to [Subscribe to a SOD Policy](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html#subscribe-to-an-sod-policy)\
     \ for more information about SOD policy subscriptions. \n"
   name: SOD Policy
-- description: Operations for Predicting SOD (Separation of Duties) violations
+- description: "Use this API to check for current \"separation of duties\" (SOD) policy\
+    \ violations as well as potential future SOD policy violations. \nWith SOD violation\
+    \ functionality in place, administrators can get information about current SOD\
+    \ policy violations and predict whether an access change will trigger new violations,\
+    \ which helps to prevent them from occurring at all. \n\n\"Separation of duties\"\
+    \ refers to the concept that people shouldn't have conflicting sets of access\
+    \ - all their access should be configured in a way that protects your organization's\
+    \ assets and data.  \nFor example, people who record monetary transactions shouldn't\
+    \ be able to issue payment for those transactions.\nAny changes to major system\
+    \ configurations should be approved by someone other than the person requesting\
+    \ the change. \n\nOrganizations can use \"separation of duties\" (SOD) policies\
+    \ to enforce and track their internal security rules throughout their tenants.\n\
+    These SOD policies limit each user's involvement in important processes and protects\
+    \ the organization from individuals gaining excessive access. \n\nOnce a SOD policy\
+    \ is in place, if an identity has conflicting access items, a SOD violation will\
+    \ trigger. \nThese violations are included in SOD violation reports that other\
+    \ users will see in emails at regular intervals if they're subscribed to the SOD\
+    \ policy.\nThe other users can then better help to enforce these SOD policies.\n\
+    \nAdministrators can use the SOD violations APIs to check a set of identities\
+    \ for any current SOD violations, and they can use them to check whether adding\
+    \ an access item would potentially trigger a SOD violation. \nThis second option\
+    \ is a good way to prevent SOD violations from triggering at all. \n\nRefer to\
+    \ [Handling Policy Violations](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html)\
+    \ for more information about SOD policy violations. \n"
   name: SOD Violations
 - description: "Use this API to implement and customize source functionality. \nWith\
     \ source functionality in place, organizations can use IdentityNow to connect\
@@ -876,7 +899,37 @@ tags:
     \ for more information about all the different things admins can do with sources\
     \ once they are connected. \n"
   name: Sources
-- name: Tagged Objects
+- description: "Use this API to implement object tagging functionality. \nWith object\
+    \ tagging functionality in place, any user in an organization can use tags as\
+    \ a way to group objects together and find them more quickly when the user searches\
+    \ IdentityNow. \n\nIn IdentityNow, users can search their tenants for information\
+    \ and add tags objects they find.\nTagging an object provides users with a way\
+    \ of grouping objects together and makes it easier to find these objects in the\
+    \ future. \n\nFor example, if a user is searching for an entitlement that grants\
+    \ a risky level of access to Active Directory, it's possible that the user may\
+    \ have to search through hundreds of entitlements to find the correct one. \n\
+    Once the user finds that entitlement, the user can add a tag to the entitlement,\
+    \ \"AD_RISKY\" to make it easier to find the entitlement again.\nThe user can\
+    \ add the same tag to multiple objects the user wants to group together for an\
+    \ easy future search, and the user can also do so in bulk.\nWhen the user wants\
+    \ to find that tagged entitlement again, the user can search for \"tags:AD_RISKY\"\
+    \ to find all objects with that tag. \n\nWith the API, you can tag even more different\
+    \ object types than you can in IdentityNow (access profiles, entitlements, identities,\
+    \ and roles). \nYou can use the API to tag all these objects:\n\n- Access profiles\
+    \ \n\n- Applications \n\n- Certification campaigns\n\n- Entitlements\n\n- Identities\
+    \ \n\n- Roles \n\n- SOD (separation of duties) policies\n\n- Sources \n\nYou can\
+    \ also use the API to directly find, create, and manage tagged objects without\
+    \ using search queries. \n\nThere are limits to tags: \n\n- You can have up to\
+    \ 500 different tags in your tenant.\n\n- You can apply up to 30 tags to one object.\
+    \ \n\n- You can have up to 10,000 tag associations, pairings of 1 tag to 1 object,\
+    \ in your tenant. \n\nBecause of these limits, it is recommended that you work\
+    \ with your governance experts and security teams to establish a list of tags\
+    \ that are most expressive of governance objects and access managed by IdentityNow.\
+    \ \n\nThese are the types of information often expressed in tags: \n\n- Affected\
+    \ departments\n\n- Compliance and regulatory categories \n\n- Remediation urgency\
+    \ levels \n\n- Risk levels \n\nRefer to [Tagging Items in Search](https://documentation.sailpoint.com/saas/help/search/index.html?h=tags#tagging-items-in-search)\
+    \ for more information about tagging objects in IdentityNow. \n"
+  name: Tagged Objects
 - description: |
     The purpose of this API is to expose functionality for the manipulation of Transform objects.
     Transforms are a form of configurable objects which define an easy way to manipulate attribute data without having
@@ -1827,8 +1880,10 @@ paths:
         * Roles, access profiles and entitlements can be requested.\n* While requesting\
         \ entitlements, maximum of 25 entitlements and 10 recipients are allowed in\
         \ a request.\n \n__REVOKE_ACCESS__\n* Can only be requested for a single identity\
-        \ at a time.\n* Does not support self request. Only manager can request to\
-        \ revoke access for their directly managed employees.\n* If a `removeDate`\
+        \ at a time.\n* You cannot use an access request to revoke access from an\
+        \ identity if that access has been granted by role membership or by birthright\
+        \ provisioning. \n* Does not support self request. Only manager can request\
+        \ to revoke access for their directly managed employees.\n* If a `removeDate`\
         \ is specified, then the access will be removed on that date and time only\
         \ for roles and access profiles. Entitlements are currently unsupported for\
         \ `removeDate`.\n* Roles, access profiles, and entitlements can be requested\
@@ -3103,17 +3158,19 @@ paths:
 
           Filtering is supported for the following fields and operators:
 
-          **id**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+          **id**: *eq, in, sw*
 
-          **identityId**: *eq, ge, gt, in, le, lt, ne, isnull, sw*
+          **identityId**: *eq, in, sw*
 
-          **name**: *eq, in, ge, gt, ne, isnull, sw*
+          **name**: *eq, in, sw*
 
-          **nativeIdentity**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+          **nativeIdentity**: *eq, in, sw*
 
-          **sourceId**: *eq, in, ge, gt, le, lt, ne, isnull, sw*
+          **sourceId**: *eq, in, sw*
 
           **uncorrelated**: *eq*
+
+          **identity.name**: *eq, in, sw*
         example: identityId eq "2c9180858082150f0180893dbaf44201"
         in: query
         name: filters
@@ -3123,7 +3180,7 @@ paths:
       - description: |-
           Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)
 
-          Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, nativeIdentity, uuid, manuallyCorrelated**
+          Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, nativeIdentity, uuid, manuallyCorrelated, identity.name**
         example: "id,name"
         in: query
         name: sorters
@@ -4845,9 +4902,7 @@ paths:
       - Global Tenant Security Settings
   /auth-users/{id}:
     get:
-      description: |-
-        This API returns the specified user's authentication system details.
-        Requires security scope of:  'sp:auth-user:read'
+      description: Return the specified user's authentication system details.
       operationId: getAuthUser
       parameters:
       - description: Identity ID
@@ -4945,8 +5000,10 @@ paths:
       tags:
       - Auth User
     patch:
-      description: Update an existing user in the authentication system with a PATCH
-        request.
+      description: "Use a PATCH request to update an existing user in the authentication\
+        \ system.\nUse this endpoint to modify these fields: \n  * `capabilities`\n\
+        \nA '400.1.1 Illegal update attempt' detail code indicates that you attempted\
+        \ to PATCH a field that is not allowed."
       operationId: patchAuthUser
       parameters:
       - description: Identity ID
@@ -4968,20 +5025,8 @@ paths:
               items:
                 $ref: '#/components/schemas/JsonPatchOperation'
               type: array
-        description: |
-          A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
-
-          PATCH can only be applied to the following fields:
-            *   "capabilities"
-
-          A list of valid capabilities can be found using the GET ams/v3/authorization/authorization-capabilities/ endpoint.
-          Capabilities can only be patched if they are administrator assignable, as indicated by the 'adminAssignable' field from the output of list authorization-capabilities.
-          Capabilities that have a legacy group ('legacyGroup' field) need to be patched using the legacyGroup name (e.g. 'ORG_ADMIN').
-          Capabilities that are adminAssignable but do not have a legacyGroup can be patched using the ams id (e.g. 'cam:new-role').
-
-          A 400.1.1 Illegal update attempt detail code indicates that you attempted to PATCH a field that is not allowed.
-
-          Requires security scope of 'sp:auth-user:update'
+        description: "A list of auth user update operations according to the [JSON\
+          \ Patch](https://tools.ietf.org/html/rfc6902) standard."
         required: true
       responses:
         "200":
@@ -17683,9 +17728,7 @@ paths:
           Filtering is supported for the following fields and operators:
 
           **owner.id**: *eq*
-
-          **publiic**: *eq*
-        example: public eq true
+        example: owner.id eq "7a724640-0c17-4ce9-a8c3-4a89738459c8"
         in: query
         name: filters
         schema:
@@ -17712,6 +17755,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -17730,7 +17780,35 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
-      summary: Return a list of Saved Searches
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:saved-search:read
+      summary: A list of Saved Searches
       tags:
       - Saved Search
     post:
@@ -17757,6 +17835,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
         "403":
           content:
             application/json:
@@ -17775,6 +17860,34 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: "Forbidden - Returned if the user you are running as, doesn't\
             \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:saved-search:create
       summary: Create a saved search
       tags:
       - Saved Search
@@ -19088,6 +19201,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - sp:search:read
       summary: Count Documents Satisfying a Query
       tags:
       - Search
@@ -19238,6 +19354,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - sp:search:read
       summary: Perform a Search Query Aggregation
       tags:
       - Search
@@ -19356,6 +19475,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - sp:search:read
       summary: Get a Document by ID
       tags:
       - Search
@@ -20377,24 +20499,14 @@ paths:
       requestBody:
         content:
           application/json-patch+json:
-            example:
-            - op: replace
-              path: /ownerRef
-              value:
-                id: 2c9180867d05b227017d09921a205b4d
-                type: IDENTITY
-                name: Angelo2 tester
             schema:
-              $ref: '#/components/schemas/JsonPatch'
+              $ref: '#/components/schemas/patchServiceDeskIntegration_request'
         description: |
           A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-          PATCH can only be applied to the following fields:
-            * `beforeProvisioningRule`
-            * `description`
-            * `ownerRef`
+          Only `replace` operations are accepted by this endpoint.
 
-          A 403 Forbidden Error indicates that you attempted to PATCH a field that is not allowed.
+          A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed.
         required: true
       responses:
         "200":
@@ -27761,9 +27873,14 @@ paths:
         required: true
         schema:
           enum:
-          - ROLE
+          - ACCESS_PROFILE
+          - APPLICATION
+          - CAMPAIGN
+          - ENTITLEMENT
           - IDENTITY
+          - ROLE
           - SOD_POLICY
+          - SOURCE
           type: string
       - description: |-
           Max number of results to return.
@@ -27886,7 +28003,7 @@ paths:
       - UserContextAuth:
         - idn:tag:read
         - idn:tag:manage
-      summary: List Tagged Objects
+      summary: List Tagged Objects by Type
       tags:
       - Tagged Objects
   /tagged-objects/{type}/{id}:
@@ -31704,7 +31821,6 @@ components:
       value:
         id: 2c9180825a6c1adc015a71c9023f0818
         name: Cloud Eng
-        _type: accessprofile
         description: Cloud Eng
         created: 2017-02-24T20:21:23.145Z
         modified: 2019-05-24T20:36:04.312Z
@@ -31735,7 +31851,6 @@ components:
       value:
         id: 2c9180946ed0c43d016eec1a80892fbd
         name: entitlement.aa415ae7
-        _type: entitlement
         description: "null"
         attribute: groups
         value: entitlement.aa415ae7
@@ -31760,7 +31875,6 @@ components:
       value:
         id: e092842f-c904-4b59-aac8-2544abeeef4b
         name: Update Task Schedule Passed
-        _type: event
         created: 2020-02-17T16:23:18.327Z
         synced: 2020-02-17T16:23:18.388Z
         action: TASK_SCHEDULE_UPDATE_PASSED
@@ -31786,7 +31900,6 @@ components:
       value:
         id: 2c9180865c45e7e3015c46c434a80622
         name: ad.admin
-        _type: identity
         firstName: AD
         lastName: Admin
         displayName: AD Admin
@@ -31915,7 +32028,6 @@ components:
       value:
         id: 2c91808c6faadea6016fb4f2bc69077b
         name: IT Role
-        _type: role
         description: IT role
         created: 2020-01-17T19:20:15.040Z
         modified: null
@@ -32391,6 +32503,10 @@ components:
             description: Indicates if the account has entitlements
             example: true
             type: boolean
+          identity:
+            $ref: '#/components/schemas/BaseReferenceDto'
+          sourceOwner:
+            $ref: '#/components/schemas/BaseReferenceDto'
         required:
         - attributes
         - authoritative
@@ -33267,6 +33383,7 @@ components:
       description: Specification of a Service Desk integration provisioning configuration.
       properties:
         universalManager:
+          default: false
           description: "Specifies whether this configuration is used to manage provisioning\
             \ requests for all sources from the org.  If true, no managedResourceRefs\
             \ are allowed."
@@ -33290,6 +33407,7 @@ components:
         planInitializerScript:
           $ref: '#/components/schemas/ProvisioningConfig_planInitializerScript'
         noProvisioningRequests:
+          default: false
           description: Name of an attribute that when true disables the saving of
             ProvisioningRequest objects whenever plans are sent through this integration.
           example: true
@@ -33711,31 +33829,35 @@ components:
       type: object
     ServiceDeskIntegrationDto:
       allOf:
-      - $ref: '#/components/schemas/BaseCommonDto'
-      - description: Specification of a Service Desk integration
+      - description: Service Desk integration's specification.
         properties:
+          name:
+            description: Service Desk integration's name. The name must be unique.
+            example: Service Desk Integration Name
+            type: string
           description:
-            description: Description of the Service Desk integration
+            description: Service Desk integration's description.
             example: A very nice Service Desk integration
             type: string
           type:
             default: ServiceNowSDIM
             description: |
-              Service Desk integration types
+              Service Desk integration types:
 
               - ServiceNowSDIM
               - ServiceNow
             example: ServiceNowSDIM
             type: string
           ownerRef:
-            $ref: '#/components/schemas/ServiceDeskIntegrationDto_allOf_ownerRef'
+            allOf:
+            - $ref: '#/components/schemas/OwnerDto'
           clusterRef:
             allOf:
             - $ref: '#/components/schemas/SourceClusterDto'
           cluster:
             deprecated: true
-            description: "ID of the cluster for the Service Desk integration (replaced\
-              \ by clusterRef, retained for backward compatibility)."
+            description: "Cluster ID for the Service Desk integration (replaced by\
+              \ clusterRef, retained for backward compatibility)."
             example: xyzzy999
             type: string
           managedSources:
@@ -33753,7 +33875,7 @@ components:
             $ref: '#/components/schemas/ProvisioningConfig'
           attributes:
             additionalProperties: true
-            description: Attributes of the Service Desk integration.  Validation constraints
+            description: Service Desk integration's attributes. Validation constraints
               enforced by the implementation.
             example:
               property: value
@@ -33765,6 +33887,7 @@ components:
         required:
         - attributes
         - description
+        - name
         - type
         type: object
     ServiceDeskIntegrationTemplateDto:
@@ -34353,6 +34476,7 @@ components:
           type: string
       type: object
     AccessProfile:
+      description: Access Profile
       example:
         owner:
           name: support
@@ -34373,13 +34497,11 @@ components:
           type: SOURCE
         enabled: true
         revocationRequestConfig:
-          commentsRequired: false
           approvalSchemes:
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
           - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
             approverType: GOVERNANCE_GROUP
-          denialCommentsRequired: false
         segments:
         - f7b1b8a3-5fed-4fd4-ad29-82014e137e19
         - 29cb6c06-1da8-43ea-8be4-b3125f248f2a
@@ -34448,6 +34570,7 @@ components:
           readOnly: true
           type: string
         enabled:
+          default: true
           description: Whether the Access Profile is enabled. If the Access Profile
             is enabled then you must include at least one Entitlement.
           example: true
@@ -34465,6 +34588,7 @@ components:
           nullable: true
           type: array
         requestable:
+          default: true
           description: "Whether the Access Profile is requestable via access request.\
             \ Currently, making an Access Profile non-requestable is only supported\
             \  for customers enabled with the new Request Center. Otherwise, attempting\
@@ -34828,10 +34952,6 @@ components:
         requestType: GRANT_ACCESS
         created: 2019-08-23T18:40:35.772Z
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         preApprovalTriggerDetails:
@@ -35107,23 +35227,11 @@ components:
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
         previousReviewersComments:
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         currentRemoveDate: 2020-07-11T00:00:00Z
@@ -35313,23 +35421,11 @@ components:
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
         previousReviewersComments:
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
-        - author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
-          created: 2017-07-11T18:45:37.098Z
+        - created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         requesterComment:
-          author:
-            name: Adam Kennedy
-            id: 2c91808568c529c60168cca6f90c1313
-            type: IDENTITY
           created: 2017-07-11T18:45:37.098Z
           comment: This is a comment.
         currentRemoveDate: 2020-07-11T00:00:00Z
@@ -35511,10 +35607,6 @@ components:
       type: object
     CommentDto:
       example:
-        author:
-          name: Adam Kennedy
-          id: 2c91808568c529c60168cca6f90c1313
-          type: IDENTITY
         created: 2017-07-11T18:45:37.098Z
         comment: This is a comment.
       properties:
@@ -35523,8 +35615,6 @@ components:
           example: This is a comment.
           nullable: true
           type: string
-        author:
-          $ref: '#/components/schemas/CommentDto_author'
         created:
           description: Date and time comment was created.
           example: 2017-07-11T18:45:37.098Z
@@ -35695,15 +35785,15 @@ components:
           example: 2c91808458ae7a4f0158b1bbf8af0628
           type: string
         uid:
-          description: Identity unique identitifier.
+          description: Identity's unique identitifier.
           example: will.smith
           type: string
         profile:
-          description: ID of the auth profile associated with this auth user.
+          description: ID of the auth profile associated with the auth user.
           example: 2c91808458ae7a4f0158b1bbf8af0756
           type: string
         identificationNumber:
-          description: Auth user employee number.
+          description: Auth user's employee number.
           example: 19-5588452
           type: string
         email:
@@ -35739,7 +35829,7 @@ components:
           example: will.smith
           type: string
         lastPasswordChangeDate:
-          description: the date of last password change
+          description: Date of last password change.
           example: 2021-03-08T22:37:33.901Z
           type: string
         lastLoginTimestamp:
@@ -35753,8 +35843,28 @@ components:
           format: int64
           type: integer
         capabilities:
-          description: Array of capabilities for this auth user.
+          description: Array of the auth user's capabilities.
           items:
+            enum:
+            - CERT_ADMIN
+            - CLOUD_GOV_ADMIN
+            - CLOUD_GOV_USER
+            - DASHBOARD
+            - HELPDESK
+            - ORG_ADMIN
+            - REPORT_ADMIN
+            - ROLE_ADMIN
+            - ROLE_SUBADMIN
+            - SAAS_MANAGEMENT_ADMIN
+            - SAAS_MANAGEMENT_READER
+            - SOURCE_ADMIN
+            - SOURCE_SUBADMIN
+            - das:ui-administrator
+            - das:ui-compliance_manager
+            - das:ui-auditor
+            - das:ui-data-scope
+            - sp:aic-dashboard-read
+            - sp:aic-dashboard-write
             example: ORG_ADMIN
             type: string
           type: array
@@ -36450,6 +36560,95 @@ components:
               id: 5168015d32f890ca15812c9180835d2e
               type: IDENTITY
               email: alison.ferguso@identitysoon.com
+            entitlements:
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                disabled: false
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
+            - owner:
+                name: Alison Ferguso
+                id: 5168015d32f890ca15812c9180835d2e
+                type: IDENTITY
+                email: alison.ferguso@identitysoon.com
+              sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+              dataAccess:
+                policies:
+                - value: GDPR-20
+                - value: GDPR-20
+                categories:
+                - matchCount: 10
+                  value: email-7
+                - matchCount: 10
+                  value: email-7
+                impactScore:
+                  value: Medium
+              hasPermissions: false
+              attributeValue: CN=entitlement.bbb7c650
+              containsDataAccess: true
+              description: Gives read/write access to the company database
+              isPermission: false
+              revocable: true
+              privileged: false
+              sourceType: Active Directory - Direct
+              name: CN=entitlement.bbb7c650
+              attributeName: memberOf
+              sourceSchemaObjectType: groups
+              id: 2c918085718230600171993742c63558
+              sourceName: ODS-AD-Source
+              cloudGoverned: false
+              account:
+                created: 2020-04-20T20:11:05.067Z
+                name: Alison Ferguso
+                modified: 2020-05-20T18:57:16.987Z
+                disabled: false
+                id: 2c9180857182305e0171993737eb29e6
+                locked: false
+                type: IDENTITY
+                nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             endDate: 2021-12-25T00:00:00Z
             accessProfiles:
             - privileged: false
@@ -36499,6 +36698,10 @@ components:
                   locked: false
                   type: IDENTITY
                   nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
               - owner:
                   name: Alison Ferguso
                   id: 5168015d32f890ca15812c9180835d2e
@@ -36539,6 +36742,10 @@ components:
                   locked: false
                   type: IDENTITY
                   nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
               endDate: 2021-12-25T00:00:00Z
               created: 2021-01-01T22:32:58.104Z
               name: Employee-database-read-write
@@ -36593,6 +36800,10 @@ components:
                   locked: false
                   type: IDENTITY
                   nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
               - owner:
                   name: Alison Ferguso
                   id: 5168015d32f890ca15812c9180835d2e
@@ -36633,6 +36844,10 @@ components:
                   locked: false
                   type: IDENTITY
                   nativeIdentity: CN=Alison Ferguso
+                  activityInsights:
+                    accountID: c4ddd5421d8549f0abd309162cafd3b1
+                    usageDays: 45
+                    usageDaysState: COMPLETE
               endDate: 2021-12-25T00:00:00Z
               created: 2021-01-01T22:32:58.104Z
               name: Employee-database-read-write
@@ -36686,6 +36901,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           accessProfile:
             privileged: false
             owner:
@@ -36734,6 +36953,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             - owner:
                 name: Alison Ferguso
                 id: 5168015d32f890ca15812c9180835d2e
@@ -36774,6 +36997,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             endDate: 2021-12-25T00:00:00Z
             created: 2021-01-01T22:32:58.104Z
             name: Employee-database-read-write
@@ -37028,6 +37255,95 @@ components:
             id: 5168015d32f890ca15812c9180835d2e
             type: IDENTITY
             email: alison.ferguso@identitysoon.com
+          entitlements:
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              disabled: false
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
+          - owner:
+              name: Alison Ferguso
+              id: 5168015d32f890ca15812c9180835d2e
+              type: IDENTITY
+              email: alison.ferguso@identitysoon.com
+            sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+            dataAccess:
+              policies:
+              - value: GDPR-20
+              - value: GDPR-20
+              categories:
+              - matchCount: 10
+                value: email-7
+              - matchCount: 10
+                value: email-7
+              impactScore:
+                value: Medium
+            hasPermissions: false
+            attributeValue: CN=entitlement.bbb7c650
+            containsDataAccess: true
+            description: Gives read/write access to the company database
+            isPermission: false
+            revocable: true
+            privileged: false
+            sourceType: Active Directory - Direct
+            name: CN=entitlement.bbb7c650
+            attributeName: memberOf
+            sourceSchemaObjectType: groups
+            id: 2c918085718230600171993742c63558
+            sourceName: ODS-AD-Source
+            cloudGoverned: false
+            account:
+              created: 2020-04-20T20:11:05.067Z
+              name: Alison Ferguso
+              modified: 2020-05-20T18:57:16.987Z
+              disabled: false
+              id: 2c9180857182305e0171993737eb29e6
+              locked: false
+              type: IDENTITY
+              nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           endDate: 2021-12-25T00:00:00Z
           accessProfiles:
           - privileged: false
@@ -37077,6 +37393,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             - owner:
                 name: Alison Ferguso
                 id: 5168015d32f890ca15812c9180835d2e
@@ -37117,6 +37437,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             endDate: 2021-12-25T00:00:00Z
             created: 2021-01-01T22:32:58.104Z
             name: Employee-database-read-write
@@ -37171,6 +37495,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             - owner:
                 name: Alison Ferguso
                 id: 5168015d32f890ca15812c9180835d2e
@@ -37211,6 +37539,10 @@ components:
                 locked: false
                 type: IDENTITY
                 nativeIdentity: CN=Alison Ferguso
+                activityInsights:
+                  accountID: c4ddd5421d8549f0abd309162cafd3b1
+                  usageDays: 45
+                  usageDaysState: COMPLETE
             endDate: 2021-12-25T00:00:00Z
             created: 2021-01-01T22:32:58.104Z
             name: Employee-database-read-write
@@ -37264,6 +37596,10 @@ components:
             locked: false
             type: IDENTITY
             nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
         accessProfile:
           privileged: false
           owner:
@@ -37312,6 +37648,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           - owner:
               name: Alison Ferguso
               id: 5168015d32f890ca15812c9180835d2e
@@ -37352,6 +37692,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           endDate: 2021-12-25T00:00:00Z
           created: 2021-01-01T22:32:58.104Z
           name: Employee-database-read-write
@@ -39060,7 +39404,7 @@ components:
         accessRequestConfig:
           $ref: '#/components/schemas/RequestabilityForRole'
         revocationRequestConfig:
-          $ref: '#/components/schemas/Revocability'
+          $ref: '#/components/schemas/RevocabilityForRole'
         segments:
           description: "List of IDs of segments, if any, to which this Role is assigned."
           example:
@@ -39158,12 +39502,6 @@ components:
       type: object
     SavedSearchDetail:
       properties:
-        public:
-          default: false
-          description: |
-            Indicates if the saved search is public.
-          example: false
-          type: boolean
         created:
           description: A date-time in ISO-8601 format
           example: 2018-06-25T20:22:28.104Z
@@ -39303,7 +39641,7 @@ components:
         emailEmptyResults:
           default: false
           description: |
-            Indicates if email generation should not be suppressed if search returns no results.
+            Indicates if email generation should occur when search returns no results.
           example: false
           type: boolean
         displayQueryDetails:
@@ -39605,23 +39943,6 @@ components:
             Inactive segments have no effect.
           example: true
           type: boolean
-      type: object
-    JsonPatch:
-      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902)"
-      example:
-        operations:
-        - op: replace
-          path: /description
-          value: New description
-        - op: replace
-          path: /description
-          value: New description
-      properties:
-        operations:
-          description: Operations to be applied
-          items:
-            $ref: '#/components/schemas/JsonPatchOperation'
-          type: array
       type: object
     PasswordInfoQueryDTO:
       example:
@@ -40160,7 +40481,7 @@ components:
       example:
         schedule:
           hours: null
-          timeZoneId: GMT-06:00
+          timeZoneId: America/Chicago
           days: null
           expiration: 2018-06-25T20:22:28.104Z
           type: WEEKLY
@@ -40681,6 +41002,20 @@ components:
       required:
       - name
       type: object
+    BaseReferenceDto:
+      properties:
+        type:
+          $ref: '#/components/schemas/DtoType'
+        id:
+          description: ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: William Wilson
+          type: string
+      type: object
     CompletionStatus:
       description: The status after completion.
       enum:
@@ -41132,6 +41467,28 @@ components:
             type: boolean
         type: object
       description: Role
+    OwnerDto:
+      description: Owner's identity.
+      example:
+        name: Support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
+      properties:
+        type:
+          description: Owner's DTO type.
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Owner's identity ID.
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: Owner's display name.
+          example: Support
+          type: string
+      type: object
     SourceClusterDto:
       description: Source cluster.
       properties:
@@ -41386,51 +41743,43 @@ components:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
         denialCommentsRequired: true
+      nullable: true
       properties:
         commentsRequired:
+          default: false
           description: Whether the requester of the containing object must provide
             comments justifying the request
           example: true
+          nullable: true
           type: boolean
         denialCommentsRequired:
+          default: false
           description: Whether an approver must provide comments when denying the
             request
           example: true
+          nullable: true
           type: boolean
         approvalSchemes:
           description: List describing the steps in approving the request
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
+          nullable: true
           type: array
       type: object
     Revocability:
       example:
-        commentsRequired: false
         approvalSchemes:
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
         - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
           approverType: GOVERNANCE_GROUP
-        denialCommentsRequired: false
+      nullable: true
       properties:
-        commentsRequired:
-          default: false
-          description: Whether the requester of the containing object must provide
-            comments justifying the request
-          example: false
-          nullable: true
-          type: boolean
-        denialCommentsRequired:
-          default: false
-          description: Whether an approver must provide comments when denying the
-            request
-          example: false
-          nullable: true
-          type: boolean
         approvalSchemes:
           description: List describing the steps in approving the revocation request
           items:
             $ref: '#/components/schemas/AccessProfileApprovalScheme'
+          nullable: true
           type: array
       type: object
     ProvisioningCriteriaLevel1:
@@ -42081,28 +42430,6 @@ components:
           example: Allen Albertson
           type: string
       type: object
-    OwnerDto:
-      description: Owner's identity.
-      example:
-        name: Support
-        id: 2c9180a46faadee4016fb4e018c20639
-        type: IDENTITY
-      properties:
-        type:
-          description: Owner's DTO type.
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: Owner's identity ID.
-          example: 2c9180a46faadee4016fb4e018c20639
-          type: string
-        name:
-          description: Owner's display name.
-          example: Support
-          type: string
-      type: object
     CompletedApprovalState:
       description: Enum represents completed approval object's state.
       enum:
@@ -42164,18 +42491,17 @@ components:
         $ref: '#/components/schemas/ReassignmentTrailDTO'
       type: array
     CriteriaType:
-      description: Type of the criteria in the filter.
+      description: Type of the criteria in the filter. The `COMPOSITE` filter can
+        contain multiple filters in an AND/OR relationship.
       enum:
       - COMPOSITE
       - ROLE
       - IDENTITY
       - IDENTITY_ATTRIBUTE
       - ENTITLEMENT
-      - INVALID_CERTIFIABLE_ENTITY
       - ACCESS_PROFILE
       - SOURCE
       - ACCOUNT
-      - INVALID_CERTIFIABLE_BUNDLE
       - AGGREGATED_ENTITLEMENT
       example: IDENTITY_ATTRIBUTE
       type: string
@@ -42314,6 +42640,10 @@ components:
           locked: false
           type: IDENTITY
           nativeIdentity: CN=Alison Ferguso
+          activityInsights:
+            accountID: c4ddd5421d8549f0abd309162cafd3b1
+            usageDays: 45
+            usageDaysState: COMPLETE
       nullable: true
       properties:
         id:
@@ -42441,6 +42771,10 @@ components:
             locked: false
             type: IDENTITY
             nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
         - owner:
             name: Alison Ferguso
             id: 5168015d32f890ca15812c9180835d2e
@@ -42481,6 +42815,10 @@ components:
             locked: false
             type: IDENTITY
             nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
         endDate: 2021-12-25T00:00:00Z
         created: 2021-01-01T22:32:58.104Z
         name: Employee-database-read-write
@@ -42541,6 +42879,95 @@ components:
           id: 5168015d32f890ca15812c9180835d2e
           type: IDENTITY
           email: alison.ferguso@identitysoon.com
+        entitlements:
+        - owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+          dataAccess:
+            policies:
+            - value: GDPR-20
+            - value: GDPR-20
+            categories:
+            - matchCount: 10
+              value: email-7
+            - matchCount: 10
+              value: email-7
+            impactScore:
+              value: Medium
+          hasPermissions: false
+          attributeValue: CN=entitlement.bbb7c650
+          containsDataAccess: true
+          description: Gives read/write access to the company database
+          isPermission: false
+          revocable: true
+          privileged: false
+          sourceType: Active Directory - Direct
+          name: CN=entitlement.bbb7c650
+          attributeName: memberOf
+          sourceSchemaObjectType: groups
+          id: 2c918085718230600171993742c63558
+          sourceName: ODS-AD-Source
+          cloudGoverned: false
+          account:
+            created: 2020-04-20T20:11:05.067Z
+            name: Alison Ferguso
+            modified: 2020-05-20T18:57:16.987Z
+            disabled: false
+            id: 2c9180857182305e0171993737eb29e6
+            locked: false
+            type: IDENTITY
+            nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
+        - owner:
+            name: Alison Ferguso
+            id: 5168015d32f890ca15812c9180835d2e
+            type: IDENTITY
+            email: alison.ferguso@identitysoon.com
+          sourceId: 78ca6be511cb41fbb86dba2fcca7780c
+          dataAccess:
+            policies:
+            - value: GDPR-20
+            - value: GDPR-20
+            categories:
+            - matchCount: 10
+              value: email-7
+            - matchCount: 10
+              value: email-7
+            impactScore:
+              value: Medium
+          hasPermissions: false
+          attributeValue: CN=entitlement.bbb7c650
+          containsDataAccess: true
+          description: Gives read/write access to the company database
+          isPermission: false
+          revocable: true
+          privileged: false
+          sourceType: Active Directory - Direct
+          name: CN=entitlement.bbb7c650
+          attributeName: memberOf
+          sourceSchemaObjectType: groups
+          id: 2c918085718230600171993742c63558
+          sourceName: ODS-AD-Source
+          cloudGoverned: false
+          account:
+            created: 2020-04-20T20:11:05.067Z
+            name: Alison Ferguso
+            modified: 2020-05-20T18:57:16.987Z
+            disabled: false
+            id: 2c9180857182305e0171993737eb29e6
+            locked: false
+            type: IDENTITY
+            nativeIdentity: CN=Alison Ferguso
+            activityInsights:
+              accountID: c4ddd5421d8549f0abd309162cafd3b1
+              usageDays: 45
+              usageDaysState: COMPLETE
         endDate: 2021-12-25T00:00:00Z
         accessProfiles:
         - privileged: false
@@ -42590,6 +43017,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           - owner:
               name: Alison Ferguso
               id: 5168015d32f890ca15812c9180835d2e
@@ -42630,6 +43061,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           endDate: 2021-12-25T00:00:00Z
           created: 2021-01-01T22:32:58.104Z
           name: Employee-database-read-write
@@ -42684,6 +43119,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           - owner:
               name: Alison Ferguso
               id: 5168015d32f890ca15812c9180835d2e
@@ -42724,6 +43163,10 @@ components:
               locked: false
               type: IDENTITY
               nativeIdentity: CN=Alison Ferguso
+              activityInsights:
+                accountID: c4ddd5421d8549f0abd309162cafd3b1
+                usageDays: 45
+                usageDaysState: COMPLETE
           endDate: 2021-12-25T00:00:00Z
           created: 2021-01-01T22:32:58.104Z
           name: Employee-database-read-write
@@ -42770,6 +43213,11 @@ components:
           description: The list of Access Profiles associated with this Role
           items:
             $ref: '#/components/schemas/ReviewableAccessProfile'
+          type: array
+        entitlements:
+          description: The list of entitlements associated with this Role
+          items:
+            $ref: '#/components/schemas/ReviewableEntitlement'
           type: array
       type: object
     EmailNotificationOption:
@@ -43298,6 +43746,36 @@ components:
             $ref: '#/components/schemas/ApprovalSchemeForRole'
           type: array
       type: object
+    RevocabilityForRole:
+      example:
+        commentsRequired: false
+        approvalSchemes:
+        - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+          approverType: GOVERNANCE_GROUP
+        - approverId: 46c79819-a69f-49a2-becb-12c971ae66c6
+          approverType: GOVERNANCE_GROUP
+        denialCommentsRequired: false
+      properties:
+        commentsRequired:
+          default: false
+          description: Whether the requester of the containing object must provide
+            comments justifying the request
+          example: false
+          nullable: true
+          type: boolean
+        denialCommentsRequired:
+          default: false
+          description: Whether an approver must provide comments when denying the
+            request
+          example: false
+          nullable: true
+          type: boolean
+        approvalSchemes:
+          description: List describing the steps in approving the revocation request
+          items:
+            $ref: '#/components/schemas/ApprovalSchemeForRole'
+          type: array
+      type: object
     RoleAssignmentSourceType:
       description: Type which indicates how a particular Identity obtained a particular
         Role
@@ -43363,7 +43841,7 @@ components:
       description: The schedule information.
       example:
         hours: null
-        timeZoneId: GMT-06:00
+        timeZoneId: America/Chicago
         days: null
         expiration: 2018-06-25T20:22:28.104Z
         type: WEEKLY
@@ -43381,9 +43859,10 @@ components:
           nullable: true
           type: string
         timeZoneId:
-          description: "The GMT formatted timezone the schedule will run in (ex. GMT-06:00).\
-            \  If no timezone is specified, the org's default timezone is used."
-          example: GMT-06:00
+          description: "The canonical TZ identifier the schedule will run in (ex.\
+            \ America/New_York).  If no timezone is specified, the org's default timezone\
+            \ is used."
+          example: America/Chicago
           nullable: true
           type: string
       required:
@@ -44051,12 +44530,12 @@ components:
           example: IDENTITY
           type: string
         id:
-          description: ID of the object to which this reference applies
+          description: ID of the object this reference applies to
           example: 2c91808568c529c60168cca6f90c1313
           type: string
         name:
-          description: Human-readable display name of the object to which this reference
-            applies
+          description: Human-readable display name of the object this reference applies
+            to
           example: William Wilson
           nullable: true
           type: string
@@ -44772,6 +45251,32 @@ components:
           type: array
         impactScore:
           $ref: '#/components/schemas/DataAccess_impactScore'
+      type: object
+    ActivityInsights:
+      description: Insights into account activity
+      example:
+        accountID: c4ddd5421d8549f0abd309162cafd3b1
+        usageDays: 45
+        usageDaysState: COMPLETE
+      properties:
+        accountID:
+          description: UUID of the account
+          example: c4ddd5421d8549f0abd309162cafd3b1
+          type: string
+        usageDays:
+          description: The number of days of activity
+          example: 45
+          format: int32
+          maximum: 90
+          minimum: 0
+          type: integer
+        usageDaysState:
+          description: Status indicating if the activity is complete or unknown
+          enum:
+          - COMPLETE
+          - UNKNOWN
+          example: COMPLETE
+          type: string
       type: object
     TransformDefinition:
       example:
@@ -45701,6 +46206,28 @@ components:
       allOf:
       - $ref: '#/components/schemas/ScheduledSearchName'
       - $ref: '#/components/schemas/SearchSchedule'
+    patchServiceDeskIntegration_request:
+      description: "A JSONPatch document as defined by [RFC 6902 - JSON Patch](https://tools.ietf.org/html/rfc6902).\
+        \  Only `replace` operations are accepted by this endpoint."
+      example: |-
+        [
+          {
+            "op": "replace",
+            "path": "/ownerRef",
+            "value": {
+              "id": "2c9180867d05b227017d09921a205b4d",
+              "type": "IDENTITY",
+              "name": "Angelo2 tester"
+            }
+          }
+        ]
+      properties:
+        operations:
+          description: Operations to be applied
+          items:
+            $ref: '#/components/schemas/JsonPatchOperation'
+          type: array
+      type: object
     updatePasswordDictionary_request:
       properties:
         file:
@@ -46122,26 +46649,6 @@ components:
       - type
       type: object
       example: null
-    ServiceDeskIntegrationDto_allOf_ownerRef:
-      description: Source for Service Desk integration template.
-      properties:
-        type:
-          description: DTO type of source for service desk integration template.
-          enum:
-          - SOURCE
-          example: SOURCE
-          type: string
-        id:
-          description: ID of source for service desk integration template.
-          example: 2c9180835d191a86015d28455b4b232a
-          type: string
-        name:
-          description: Human-readable name of source for service desk integration
-            template.
-          example: HR Active Directory
-          type: string
-      type: object
-      example: null
     Source_owner:
       description: Reference to an owning Identity Object
       example:
@@ -46412,27 +46919,6 @@ components:
       - $ref: '#/components/schemas/CommentDto'
       description: The approval's reviewer's comment.
       nullable: true
-    CommentDto_author:
-      example:
-        name: Adam Kennedy
-        id: 2c91808568c529c60168cca6f90c1313
-        type: IDENTITY
-      properties:
-        type:
-          description: DTO type of the commenting identity.
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: ID of the commenting identity.
-          example: 2c91808568c529c60168cca6f90c1313
-          type: string
-        name:
-          description: Display name of the commenting identity.
-          example: Adam Kennedy
-          type: string
-      type: object
     AccountAttributesCreate_attributes:
       additionalProperties:
         type: string
@@ -46808,6 +47294,10 @@ components:
         locked: false
         type: IDENTITY
         nativeIdentity: CN=Alison Ferguso
+        activityInsights:
+          accountID: c4ddd5421d8549f0abd309162cafd3b1
+          usageDays: 45
+          usageDaysState: COMPLETE
       nullable: true
       properties:
         nativeIdentity:
@@ -46848,6 +47338,8 @@ components:
           format: date-time
           nullable: true
           type: string
+        activityInsights:
+          $ref: '#/components/schemas/ActivityInsights'
       type: object
     Schedule_1_days:
       allOf:

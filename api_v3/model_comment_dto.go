@@ -22,7 +22,6 @@ var _ MappedNullable = &CommentDto{}
 type CommentDto struct {
 	// Comment content.
 	Comment NullableString `json:"comment,omitempty"`
-	Author *CommentDtoAuthor `json:"author,omitempty"`
 	// Date and time comment was created.
 	Created *time.Time `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -89,38 +88,6 @@ func (o *CommentDto) UnsetComment() {
 	o.Comment.Unset()
 }
 
-// GetAuthor returns the Author field value if set, zero value otherwise.
-func (o *CommentDto) GetAuthor() CommentDtoAuthor {
-	if o == nil || isNil(o.Author) {
-		var ret CommentDtoAuthor
-		return ret
-	}
-	return *o.Author
-}
-
-// GetAuthorOk returns a tuple with the Author field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CommentDto) GetAuthorOk() (*CommentDtoAuthor, bool) {
-	if o == nil || isNil(o.Author) {
-		return nil, false
-	}
-	return o.Author, true
-}
-
-// HasAuthor returns a boolean if a field has been set.
-func (o *CommentDto) HasAuthor() bool {
-	if o != nil && !isNil(o.Author) {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthor gets a reference to the given CommentDtoAuthor and assigns it to the Author field.
-func (o *CommentDto) SetAuthor(v CommentDtoAuthor) {
-	o.Author = &v
-}
-
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *CommentDto) GetCreated() time.Time {
 	if o == nil || isNil(o.Created) {
@@ -166,9 +133,6 @@ func (o CommentDto) ToMap() (map[string]interface{}, error) {
 	if o.Comment.IsSet() {
 		toSerialize["comment"] = o.Comment.Get()
 	}
-	if !isNil(o.Author) {
-		toSerialize["author"] = o.Author
-	}
 	if !isNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
@@ -191,7 +155,6 @@ func (o *CommentDto) UnmarshalJSON(bytes []byte) (err error) {
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
-		delete(additionalProperties, "author")
 		delete(additionalProperties, "created")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -21,8 +21,6 @@ var _ MappedNullable = &SavedSearchDetail{}
 
 // SavedSearchDetail struct for SavedSearchDetail
 type SavedSearchDetail struct {
-	// Indicates if the saved search is public. 
-	Public *bool `json:"public,omitempty"`
 	// A date-time in ISO-8601 format
 	Created NullableTime `json:"created,omitempty"`
 	// A date-time in ISO-8601 format
@@ -49,8 +47,6 @@ type _SavedSearchDetail SavedSearchDetail
 // will change when the set of required properties is changed
 func NewSavedSearchDetail(indices []Index, query string) *SavedSearchDetail {
 	this := SavedSearchDetail{}
-	var public bool = false
-	this.Public = &public
 	this.Indices = indices
 	this.Query = query
 	return &this
@@ -61,41 +57,7 @@ func NewSavedSearchDetail(indices []Index, query string) *SavedSearchDetail {
 // but it doesn't guarantee that properties required by API are set
 func NewSavedSearchDetailWithDefaults() *SavedSearchDetail {
 	this := SavedSearchDetail{}
-	var public bool = false
-	this.Public = &public
 	return &this
-}
-
-// GetPublic returns the Public field value if set, zero value otherwise.
-func (o *SavedSearchDetail) GetPublic() bool {
-	if o == nil || isNil(o.Public) {
-		var ret bool
-		return ret
-	}
-	return *o.Public
-}
-
-// GetPublicOk returns a tuple with the Public field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SavedSearchDetail) GetPublicOk() (*bool, bool) {
-	if o == nil || isNil(o.Public) {
-		return nil, false
-	}
-	return o.Public, true
-}
-
-// HasPublic returns a boolean if a field has been set.
-func (o *SavedSearchDetail) HasPublic() bool {
-	if o != nil && !isNil(o.Public) {
-		return true
-	}
-
-	return false
-}
-
-// SetPublic gets a reference to the given bool and assigns it to the Public field.
-func (o *SavedSearchDetail) SetPublic(v bool) {
-	o.Public = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -379,9 +341,6 @@ func (o SavedSearchDetail) MarshalJSON() ([]byte, error) {
 
 func (o SavedSearchDetail) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Public) {
-		toSerialize["public"] = o.Public
-	}
 	if o.Created.IsSet() {
 		toSerialize["created"] = o.Created.Get()
 	}
@@ -442,7 +401,6 @@ func (o *SavedSearchDetail) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "public")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
 		delete(additionalProperties, "indices")

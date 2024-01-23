@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **NullableString** | The account name | [optional] 
 **Created** | Pointer to **NullableTime** | When the account was created | [optional] 
 **Modified** | Pointer to **NullableTime** | When the account was last modified | [optional] 
+**ActivityInsights** | Pointer to [**ActivityInsights**](ActivityInsights.md) |  | [optional] 
 
 ## Methods
 
@@ -272,6 +273,31 @@ HasModified returns a boolean if a field has been set.
 `func (o *ReviewableEntitlementAccount) UnsetModified()`
 
 UnsetModified ensures that no value is present for Modified, not even an explicit nil
+### GetActivityInsights
+
+`func (o *ReviewableEntitlementAccount) GetActivityInsights() ActivityInsights`
+
+GetActivityInsights returns the ActivityInsights field if non-nil, zero value otherwise.
+
+### GetActivityInsightsOk
+
+`func (o *ReviewableEntitlementAccount) GetActivityInsightsOk() (*ActivityInsights, bool)`
+
+GetActivityInsightsOk returns a tuple with the ActivityInsights field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActivityInsights
+
+`func (o *ReviewableEntitlementAccount) SetActivityInsights(v ActivityInsights)`
+
+SetActivityInsights sets ActivityInsights field to given value.
+
+### HasActivityInsights
+
+`func (o *ReviewableEntitlementAccount) HasActivityInsights() bool`
+
+HasActivityInsights returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Tenant** | Pointer to **string** | Tenant name. | [optional] 
 **Id** | Pointer to **string** | Identity ID. | [optional] 
-**Uid** | Pointer to **string** | Identity unique identitifier. | [optional] 
-**Profile** | Pointer to **string** | ID of the auth profile associated with this auth user. | [optional] 
-**IdentificationNumber** | Pointer to **string** | Auth user employee number. | [optional] 
+**Uid** | Pointer to **string** | Identity&#39;s unique identitifier. | [optional] 
+**Profile** | Pointer to **string** | ID of the auth profile associated with the auth user. | [optional] 
+**IdentificationNumber** | Pointer to **string** | Auth user&#39;s employee number. | [optional] 
 **Email** | Pointer to **string** | Auth user&#39;s email. | [optional] 
 **Phone** | Pointer to **string** | Auth user&#39;s phone number. | [optional] 
 **WorkPhone** | Pointer to **string** | Auth user&#39;s work phone number. | [optional] 
@@ -17,10 +17,10 @@ Name | Type | Description | Notes
 **Lastname** | Pointer to **string** | Auth user&#39;s last name. | [optional] 
 **DisplayName** | Pointer to **string** | Auth user&#39;s name in displayed format. | [optional] 
 **Alias** | Pointer to **string** | Auth user&#39;s alias. | [optional] 
-**LastPasswordChangeDate** | Pointer to **string** | the date of last password change | [optional] 
+**LastPasswordChangeDate** | Pointer to **string** | Date of last password change. | [optional] 
 **LastLoginTimestamp** | Pointer to **int64** | Timestamp of the last login (long type value). | [optional] 
 **CurrentLoginTimestamp** | Pointer to **int64** | Timestamp of the current login (long type value). | [optional] 
-**Capabilities** | Pointer to **[]string** | Array of capabilities for this auth user. | [optional] 
+**Capabilities** | Pointer to **[]string** | Array of the auth user&#39;s capabilities. | [optional] 
 
 ## Methods
 

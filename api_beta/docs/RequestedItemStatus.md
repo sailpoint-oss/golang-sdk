@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | When the request was created. | [optional] 
 **Requester** | Pointer to [**AccessItemRequester**](AccessItemRequester.md) |  | [optional] 
 **RequestedFor** | Pointer to [**AccessItemRequestedFor**](AccessItemRequestedFor.md) |  | [optional] 
-**RequesterComment** | Pointer to [**CommentDto**](CommentDto.md) |  | [optional] 
+**RequesterComment** | Pointer to [**CommentDto1**](CommentDto1.md) |  | [optional] 
 **SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 **ProvisioningDetails** | Pointer to [**ProvisioningDetails**](ProvisioningDetails.md) |  | [optional] 
 **PreApprovalTriggerDetails** | Pointer to [**PreApprovalTriggerDetails**](PreApprovalTriggerDetails.md) |  | [optional] 
@@ -394,20 +394,20 @@ HasRequestedFor returns a boolean if a field has been set.
 
 ### GetRequesterComment
 
-`func (o *RequestedItemStatus) GetRequesterComment() CommentDto`
+`func (o *RequestedItemStatus) GetRequesterComment() CommentDto1`
 
 GetRequesterComment returns the RequesterComment field if non-nil, zero value otherwise.
 
 ### GetRequesterCommentOk
 
-`func (o *RequestedItemStatus) GetRequesterCommentOk() (*CommentDto, bool)`
+`func (o *RequestedItemStatus) GetRequesterCommentOk() (*CommentDto1, bool)`
 
 GetRequesterCommentOk returns a tuple with the RequesterComment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequesterComment
 
-`func (o *RequestedItemStatus) SetRequesterComment(v CommentDto)`
+`func (o *RequestedItemStatus) SetRequesterComment(v CommentDto1)`
 
 SetRequesterComment sets RequesterComment field to given value.
 

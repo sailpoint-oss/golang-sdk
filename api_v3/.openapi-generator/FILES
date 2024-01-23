@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -98,6 +97,7 @@ docs/AccountsAPI.md
 docs/AccountsAsyncResult.md
 docs/AccountsExportReportArguments.md
 docs/ActivateCampaignOptions.md
+docs/ActivityInsights.md
 docs/AdminReviewReassign.md
 docs/AdminReviewReassignReassignTo.md
 docs/AggregationResult.md
@@ -129,6 +129,7 @@ docs/BaseAccount.md
 docs/BaseCommonDto.md
 docs/BaseDocument.md
 docs/BaseEntitlement.md
+docs/BaseReferenceDto.md
 docs/BeforeProvisioningRuleDto.md
 docs/Bound.md
 docs/BucketAggregation.md
@@ -168,7 +169,6 @@ docs/ClientType.md
 docs/Column.md
 docs/Comment.md
 docs/CommentDto.md
-docs/CommentDtoAuthor.md
 docs/CompletedApproval.md
 docs/CompletedApprovalReviewerComment.md
 docs/CompletedApprovalState.md
@@ -248,7 +248,6 @@ docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportObject.md
 docs/Index.md
 docs/InnerHit.md
-docs/JsonPatch.md
 docs/JsonPatchOperation.md
 docs/JsonPatchOperationValue.md
 docs/LifecycleState.md
@@ -318,6 +317,7 @@ docs/PasswordStatus.md
 docs/PasswordSyncGroup.md
 docs/PasswordSyncGroupsAPI.md
 docs/PatOwner.md
+docs/PatchServiceDeskIntegrationRequest.md
 docs/PendingApproval.md
 docs/PendingApprovalAction.md
 docs/PendingApprovalOwner.md
@@ -378,6 +378,7 @@ docs/ReviewableEntitlementAccount.md
 docs/ReviewableRole.md
 docs/Reviewer.md
 docs/Revocability.md
+docs/RevocabilityForRole.md
 docs/Role.md
 docs/RoleAssignmentSourceType.md
 docs/RoleBulkDeleteRequest.md
@@ -430,7 +431,6 @@ docs/Selector.md
 docs/SelectorType.md
 docs/ServiceDeskIntegrationAPI.md
 docs/ServiceDeskIntegrationDto.md
-docs/ServiceDeskIntegrationDtoAllOfOwnerRef.md
 docs/ServiceDeskIntegrationTemplateDto.md
 docs/ServiceDeskIntegrationTemplateType.md
 docs/ServiceDeskSource.md
@@ -552,6 +552,7 @@ model_account_usage.go
 model_accounts_async_result.go
 model_accounts_export_report_arguments.go
 model_activate_campaign_options.go
+model_activity_insights.go
 model_admin_review_reassign.go
 model_admin_review_reassign_reassign_to.go
 model_aggregation_result.go
@@ -582,6 +583,7 @@ model_base_account.go
 model_base_common_dto.go
 model_base_document.go
 model_base_entitlement.go
+model_base_reference_dto.go
 model_before_provisioning_rule_dto.go
 model_bound.go
 model_bucket_aggregation.go
@@ -617,7 +619,6 @@ model_client_type.go
 model_column.go
 model_comment.go
 model_comment_dto.go
-model_comment_dto_author.go
 model_completed_approval.go
 model_completed_approval_reviewer_comment.go
 model_completed_approval_state.go
@@ -695,7 +696,6 @@ model_import_non_employee_records_in_bulk_request.go
 model_import_object.go
 model_index.go
 model_inner_hit.go
-model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
 model_lifecycle_state.go
@@ -758,6 +758,7 @@ model_password_org_config.go
 model_password_status.go
 model_password_sync_group.go
 model_pat_owner.go
+model_patch_service_desk_integration_request.go
 model_pending_approval.go
 model_pending_approval_action.go
 model_pending_approval_owner.go
@@ -813,6 +814,7 @@ model_reviewable_entitlement_account.go
 model_reviewable_role.go
 model_reviewer.go
 model_revocability.go
+model_revocability_for_role.go
 model_role.go
 model_role_assignment_source_type.go
 model_role_bulk_delete_request.go
@@ -857,7 +859,6 @@ model_segment.go
 model_selector.go
 model_selector_type.go
 model_service_desk_integration_dto.go
-model_service_desk_integration_dto_all_of_owner_ref.go
 model_service_desk_integration_template_dto.go
 model_service_desk_integration_template_type.go
 model_service_desk_source.go
@@ -923,42 +924,4 @@ model_work_items.go
 model_work_items_count.go
 model_work_items_summary.go
 response.go
-test/api_access_profiles_test.go
-test/api_access_request_approvals_test.go
-test/api_access_requests_test.go
-test/api_account_activities_test.go
-test/api_account_usages_test.go
-test/api_accounts_test.go
-test/api_auth_user_test.go
-test/api_certification_campaign_filters_test.go
-test/api_certification_campaigns_test.go
-test/api_certification_summaries_test.go
-test/api_certifications_test.go
-test/api_global_tenant_security_settings_test.go
-test/api_identity_profiles_test.go
-test/api_lifecycle_states_test.go
-test/api_non_employee_lifecycle_management_test.go
-test/api_o_auth_clients_test.go
-test/api_password_configuration_test.go
-test/api_password_dictionary_test.go
-test/api_password_management_test.go
-test/api_password_sync_groups_test.go
-test/api_personal_access_tokens_test.go
-test/api_public_identities_config_test.go
-test/api_public_identities_test.go
-test/api_reports_data_extraction_test.go
-test/api_requestable_objects_test.go
-test/api_roles_test.go
-test/api_saved_search_test.go
-test/api_scheduled_search_test.go
-test/api_search_test.go
-test/api_segments_test.go
-test/api_service_desk_integration_test.go
-test/api_sod_policy_test.go
-test/api_sod_violations_test.go
-test/api_source_usages_test.go
-test/api_sources_test.go
-test/api_tagged_objects_test.go
-test/api_transforms_test.go
-test/api_work_items_test.go
 utils.go

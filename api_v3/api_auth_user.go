@@ -36,8 +36,7 @@ func (r ApiGetAuthUserRequest) Execute() (*AuthUser, *http.Response, error) {
 /*
 GetAuthUser Auth User Details
 
-This API returns the specified user's authentication system details.
-Requires security scope of:  'sp:auth-user:read'
+Return the specified user's authentication system details.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Identity ID
@@ -199,7 +198,7 @@ type ApiPatchAuthUserRequest struct {
 	jsonPatchOperation *[]JsonPatchOperation
 }
 
-// A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  PATCH can only be applied to the following fields:   *   \&quot;capabilities\&quot;  A list of valid capabilities can be found using the GET ams/v3/authorization/authorization-capabilities/ endpoint. Capabilities can only be patched if they are administrator assignable, as indicated by the &#39;adminAssignable&#39; field from the output of list authorization-capabilities. Capabilities that have a legacy group (&#39;legacyGroup&#39; field) need to be patched using the legacyGroup name (e.g. &#39;ORG_ADMIN&#39;). Capabilities that are adminAssignable but do not have a legacyGroup can be patched using the ams id (e.g. &#39;cam:new-role&#39;).  A 400.1.1 Illegal update attempt detail code indicates that you attempted to PATCH a field that is not allowed.  Requires security scope of &#39;sp:auth-user:update&#39; 
+// A list of auth user update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 func (r ApiPatchAuthUserRequest) JsonPatchOperation(jsonPatchOperation []JsonPatchOperation) ApiPatchAuthUserRequest {
 	r.jsonPatchOperation = &jsonPatchOperation
 	return r
@@ -212,7 +211,11 @@ func (r ApiPatchAuthUserRequest) Execute() (*AuthUser, *http.Response, error) {
 /*
 PatchAuthUser Auth User Update
 
-Update an existing user in the authentication system with a PATCH request.
+Use a PATCH request to update an existing user in the authentication system.
+Use this endpoint to modify these fields: 
+  * `capabilities`
+
+A '400.1.1 Illegal update attempt' detail code indicates that you attempted to PATCH a field that is not allowed.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Identity ID

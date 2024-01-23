@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -43,6 +42,4 @@ model_list_workgroups_200_response_inner_owner.go
 model_modify_workgroup_members_request.go
 model_update_org_settings_request.go
 response.go
-test/api_governance_groups_test.go
-test/api_org_test.go
 utils.go

@@ -19,7 +19,7 @@ import (
 // checks if the AccessProfile type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccessProfile{}
 
-// AccessProfile struct for AccessProfile
+// AccessProfile Access Profile
 type AccessProfile struct {
 	// The ID of the Access Profile
 	Id *string `json:"id,omitempty"`
@@ -39,8 +39,8 @@ type AccessProfile struct {
 	Entitlements []EntitlementRef `json:"entitlements,omitempty"`
 	// Whether the Access Profile is requestable via access request. Currently, making an Access Profile non-requestable is only supported  for customers enabled with the new Request Center. Otherwise, attempting to create an Access Profile with a value  **false** in this field results in a 400 error.
 	Requestable *bool `json:"requestable,omitempty"`
-	AccessRequestConfig *Requestability `json:"accessRequestConfig,omitempty"`
-	RevocationRequestConfig *Revocability `json:"revocationRequestConfig,omitempty"`
+	AccessRequestConfig NullableRequestability `json:"accessRequestConfig,omitempty"`
+	RevocationRequestConfig NullableRevocability `json:"revocationRequestConfig,omitempty"`
 	// List of IDs of segments, if any, to which this Access Profile is assigned.
 	Segments []string `json:"segments,omitempty"`
 	ProvisioningCriteria NullableProvisioningCriteriaLevel1 `json:"provisioningCriteria,omitempty"`
@@ -56,8 +56,12 @@ type _AccessProfile AccessProfile
 func NewAccessProfile(name string, owner OwnerReference, source AccessProfileSourceRef) *AccessProfile {
 	this := AccessProfile{}
 	this.Name = name
+	var enabled bool = true
+	this.Enabled = &enabled
 	this.Owner = owner
 	this.Source = source
+	var requestable bool = true
+	this.Requestable = &requestable
 	return &this
 }
 
@@ -66,6 +70,10 @@ func NewAccessProfile(name string, owner OwnerReference, source AccessProfileSou
 // but it doesn't guarantee that properties required by API are set
 func NewAccessProfileWithDefaults() *AccessProfile {
 	this := AccessProfile{}
+	var enabled bool = true
+	this.Enabled = &enabled
+	var requestable bool = true
+	this.Requestable = &requestable
 	return &this
 }
 
@@ -376,68 +384,88 @@ func (o *AccessProfile) SetRequestable(v bool) {
 	o.Requestable = &v
 }
 
-// GetAccessRequestConfig returns the AccessRequestConfig field value if set, zero value otherwise.
+// GetAccessRequestConfig returns the AccessRequestConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfile) GetAccessRequestConfig() Requestability {
-	if o == nil || isNil(o.AccessRequestConfig) {
+	if o == nil || isNil(o.AccessRequestConfig.Get()) {
 		var ret Requestability
 		return ret
 	}
-	return *o.AccessRequestConfig
+	return *o.AccessRequestConfig.Get()
 }
 
 // GetAccessRequestConfigOk returns a tuple with the AccessRequestConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfile) GetAccessRequestConfigOk() (*Requestability, bool) {
-	if o == nil || isNil(o.AccessRequestConfig) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AccessRequestConfig, true
+	return o.AccessRequestConfig.Get(), o.AccessRequestConfig.IsSet()
 }
 
 // HasAccessRequestConfig returns a boolean if a field has been set.
 func (o *AccessProfile) HasAccessRequestConfig() bool {
-	if o != nil && !isNil(o.AccessRequestConfig) {
+	if o != nil && o.AccessRequestConfig.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessRequestConfig gets a reference to the given Requestability and assigns it to the AccessRequestConfig field.
+// SetAccessRequestConfig gets a reference to the given NullableRequestability and assigns it to the AccessRequestConfig field.
 func (o *AccessProfile) SetAccessRequestConfig(v Requestability) {
-	o.AccessRequestConfig = &v
+	o.AccessRequestConfig.Set(&v)
+}
+// SetAccessRequestConfigNil sets the value for AccessRequestConfig to be an explicit nil
+func (o *AccessProfile) SetAccessRequestConfigNil() {
+	o.AccessRequestConfig.Set(nil)
 }
 
-// GetRevocationRequestConfig returns the RevocationRequestConfig field value if set, zero value otherwise.
+// UnsetAccessRequestConfig ensures that no value is present for AccessRequestConfig, not even an explicit nil
+func (o *AccessProfile) UnsetAccessRequestConfig() {
+	o.AccessRequestConfig.Unset()
+}
+
+// GetRevocationRequestConfig returns the RevocationRequestConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessProfile) GetRevocationRequestConfig() Revocability {
-	if o == nil || isNil(o.RevocationRequestConfig) {
+	if o == nil || isNil(o.RevocationRequestConfig.Get()) {
 		var ret Revocability
 		return ret
 	}
-	return *o.RevocationRequestConfig
+	return *o.RevocationRequestConfig.Get()
 }
 
 // GetRevocationRequestConfigOk returns a tuple with the RevocationRequestConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfile) GetRevocationRequestConfigOk() (*Revocability, bool) {
-	if o == nil || isNil(o.RevocationRequestConfig) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RevocationRequestConfig, true
+	return o.RevocationRequestConfig.Get(), o.RevocationRequestConfig.IsSet()
 }
 
 // HasRevocationRequestConfig returns a boolean if a field has been set.
 func (o *AccessProfile) HasRevocationRequestConfig() bool {
-	if o != nil && !isNil(o.RevocationRequestConfig) {
+	if o != nil && o.RevocationRequestConfig.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRevocationRequestConfig gets a reference to the given Revocability and assigns it to the RevocationRequestConfig field.
+// SetRevocationRequestConfig gets a reference to the given NullableRevocability and assigns it to the RevocationRequestConfig field.
 func (o *AccessProfile) SetRevocationRequestConfig(v Revocability) {
-	o.RevocationRequestConfig = &v
+	o.RevocationRequestConfig.Set(&v)
+}
+// SetRevocationRequestConfigNil sets the value for RevocationRequestConfig to be an explicit nil
+func (o *AccessProfile) SetRevocationRequestConfigNil() {
+	o.RevocationRequestConfig.Set(nil)
+}
+
+// UnsetRevocationRequestConfig ensures that no value is present for RevocationRequestConfig, not even an explicit nil
+func (o *AccessProfile) UnsetRevocationRequestConfig() {
+	o.RevocationRequestConfig.Unset()
 }
 
 // GetSegments returns the Segments field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -543,11 +571,11 @@ func (o AccessProfile) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Requestable) {
 		toSerialize["requestable"] = o.Requestable
 	}
-	if !isNil(o.AccessRequestConfig) {
-		toSerialize["accessRequestConfig"] = o.AccessRequestConfig
+	if o.AccessRequestConfig.IsSet() {
+		toSerialize["accessRequestConfig"] = o.AccessRequestConfig.Get()
 	}
-	if !isNil(o.RevocationRequestConfig) {
-		toSerialize["revocationRequestConfig"] = o.RevocationRequestConfig
+	if o.RevocationRequestConfig.IsSet() {
+		toSerialize["revocationRequestConfig"] = o.RevocationRequestConfig.Get()
 	}
 	if o.Segments != nil {
 		toSerialize["segments"] = o.Segments

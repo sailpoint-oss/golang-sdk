@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Revocable** | Pointer to **bool** | Indicates whether the Role can be revoked or requested | [optional] 
 **EndDate** | Pointer to **time.Time** | The date when a user&#39;s access expires. | [optional] 
 **AccessProfiles** | Pointer to [**[]ReviewableAccessProfile**](ReviewableAccessProfile.md) | The list of Access Profiles associated with this Role | [optional] 
+**Entitlements** | Pointer to [**[]ReviewableEntitlement**](ReviewableEntitlement.md) | The list of entitlements associated with this Role | [optional] 
 
 ## Methods
 
@@ -241,6 +242,31 @@ SetAccessProfiles sets AccessProfiles field to given value.
 `func (o *ReviewableRole) HasAccessProfiles() bool`
 
 HasAccessProfiles returns a boolean if a field has been set.
+
+### GetEntitlements
+
+`func (o *ReviewableRole) GetEntitlements() []ReviewableEntitlement`
+
+GetEntitlements returns the Entitlements field if non-nil, zero value otherwise.
+
+### GetEntitlementsOk
+
+`func (o *ReviewableRole) GetEntitlementsOk() (*[]ReviewableEntitlement, bool)`
+
+GetEntitlementsOk returns a tuple with the Entitlements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntitlements
+
+`func (o *ReviewableRole) SetEntitlements(v []ReviewableEntitlement)`
+
+SetEntitlements sets Entitlements field to given value.
+
+### HasEntitlements
+
+`func (o *ReviewableRole) HasEntitlements() bool`
+
+HasEntitlements returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
