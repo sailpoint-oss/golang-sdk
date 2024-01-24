@@ -851,7 +851,37 @@ tags:
   name: Sources
 - description: Import and export configuration for some objects between tenants.
   name: SP-Config
-- name: Tagged Objects
+- description: "Use this API to implement object tagging functionality. \nWith object\
+    \ tagging functionality in place, any user in an organization can use tags as\
+    \ a way to group objects together and find them more quickly when the user searches\
+    \ IdentityNow. \n\nIn IdentityNow, users can search their tenants for information\
+    \ and add tags objects they find.\nTagging an object provides users with a way\
+    \ of grouping objects together and makes it easier to find these objects in the\
+    \ future. \n\nFor example, if a user is searching for an entitlement that grants\
+    \ a risky level of access to Active Directory, it's possible that the user may\
+    \ have to search through hundreds of entitlements to find the correct one. \n\
+    Once the user finds that entitlement, the user can add a tag to the entitlement,\
+    \ \"AD_RISKY\" to make it easier to find the entitlement again.\nThe user can\
+    \ add the same tag to multiple objects the user wants to group together for an\
+    \ easy future search, and the user can also do so in bulk.\nWhen the user wants\
+    \ to find that tagged entitlement again, the user can search for \"tags:AD_RISKY\"\
+    \ to find all objects with that tag. \n\nWith the API, you can tag even more different\
+    \ object types than you can in IdentityNow (access profiles, entitlements, identities,\
+    \ and roles). \nYou can use the API to tag all these objects:\n\n- Access profiles\
+    \ \n\n- Applications \n\n- Certification campaigns\n\n- Entitlements\n\n- Identities\
+    \ \n\n- Roles \n\n- SOD (separation of duties) policies\n\n- Sources \n\nYou can\
+    \ also use the API to directly find, create, and manage tagged objects without\
+    \ using search queries. \n\nThere are limits to tags: \n\n- You can have up to\
+    \ 500 different tags in your tenant.\n\n- You can apply up to 30 tags to one object.\
+    \ \n\n- You can have up to 10,000 tag associations, pairings of 1 tag to 1 object,\
+    \ in your tenant. \n\nBecause of these limits, it is recommended that you work\
+    \ with your governance experts and security teams to establish a list of tags\
+    \ that are most expressive of governance objects and access managed by IdentityNow.\
+    \ \n\nThese are the types of information often expressed in tags: \n\n- Affected\
+    \ departments\n\n- Compliance and regulatory categories \n\n- Remediation urgency\
+    \ levels \n\n- Risk levels \n\nRefer to [Tagging Items in Search](https://documentation.sailpoint.com/saas/help/search/index.html?h=tags#tagging-items-in-search)\
+    \ for more information about tagging objects in IdentityNow. \n"
+  name: Tagged Objects
 - name: Task Management
 - description: "Operations for creating, managing, and deleting transforms"
   name: Transforms
@@ -60862,6 +60892,7 @@ components:
         - type: PASSWORD_POLICY
           id: 2c9180855d191c59015d291ceb057777
           name: Vendor Password Policy
+        modified: 2024-01-23T18:08:50.897Z
         id: 2c91808568c529c60168cca6f90c1324
         connectorImplementationId: delimited-file
         managerCorrelationRule:
@@ -60887,6 +60918,7 @@ components:
           - cn
           - uid
           - mail
+        created: 2022-02-08T14:50:03.827Z
         managerCorrelationMapping:
           accountAttribute: manager
           identityAttribute: manager
@@ -61043,6 +61075,16 @@ components:
         connectorImplementationId:
           description: The connector implementation id
           example: delimited-file
+          type: string
+        created:
+          description: The date-time when the source was created
+          example: 2022-02-08T14:50:03.827Z
+          format: date-time
+          type: string
+        modified:
+          description: The date-time when the source was last modified
+          example: 2024-01-23T18:08:50.897Z
+          format: date-time
           type: string
       required:
       - connector

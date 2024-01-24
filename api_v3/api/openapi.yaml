@@ -18986,14 +18986,14 @@ paths:
       - description: |-
           Max number of results to return.
           See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
-        example: 250
+        example: 10000
         in: query
         name: limit
         required: false
         schema:
-          default: 250
+          default: 10000
           format: int32
-          maximum: 250
+          maximum: 10000
           minimum: 0
           type: integer
       - description: |-
@@ -22205,11 +22205,15 @@ paths:
       responses:
         "200":
           content:
-            application/octet-stream:
+            application/csv:
               schema:
                 format: binary
                 type: string
-          description: Details about running report task.
+            application/pdf:
+              schema:
+                format: binary
+                type: string
+          description: Report file in selected format. CSV by default.
           headers:
             Content-disposition:
               description: The requested report's filename
@@ -32044,6 +32048,18 @@ components:
         - id: 2c91809c6faade77016fb4f0b63407ae
           name: Admin Access
         accessProfileCount: 1
+        segments:
+        - id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
+          name: segment-xyz
+          description: This segment represents xyz
+        segmentCount: 1
+        entitlements:
+        - id: 2c91809c6faade77016fb4f0b63407ae
+          name: Admin Access
+          description: Access to everything
+          privileged: true
+          hasPermissions: true
+        entitlementCount: 1
         tags:
         - TAG_1
         - TAG_2
@@ -32173,6 +32189,20 @@ components:
       required: true
       schema:
         type: string
+    searchlimit:
+      description: |-
+        Max number of results to return.
+        See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+      example: 10000
+      in: query
+      name: limit
+      required: false
+      schema:
+        default: 10000
+        format: int32
+        maximum: 10000
+        minimum: 0
+        type: integer
     index:
       description: |
         The index from which to fetch the specified document.
@@ -33716,6 +33746,22 @@ components:
             type: integer
           tags:
             $ref: '#/components/schemas/Tags'
+          segments:
+            items:
+              $ref: '#/components/schemas/Reference'
+            type: array
+          segmentCount:
+            example: 1
+            format: int32
+            type: integer
+          entitlements:
+            items:
+              $ref: '#/components/schemas/AccessProfileRole'
+            type: array
+          entitlementCount:
+            example: 3
+            format: int32
+            type: integer
         type: object
       description: Role
     RoleSummary:
@@ -33967,6 +34013,7 @@ components:
         - type: PASSWORD_POLICY
           id: 2c9180855d191c59015d291ceb057777
           name: Vendor Password Policy
+        modified: 2024-01-23T18:08:50.897Z
         id: 2c91808568c529c60168cca6f90c1324
         connectorImplementationId: delimited-file
         managerCorrelationRule:
@@ -33992,6 +34039,7 @@ components:
           - cn
           - uid
           - mail
+        created: 2022-02-08T14:50:03.827Z
         managerCorrelationMapping:
           accountAttribute: manager
           identityAttribute: manager
@@ -34148,6 +34196,16 @@ components:
         connectorImplementationId:
           description: The connector implementation id
           example: delimited-file
+          type: string
+        created:
+          description: The date-time when the source was created
+          example: 2022-02-08T14:50:03.827Z
+          format: date-time
+          type: string
+        modified:
+          description: The date-time when the source was last modified
+          example: 2024-01-23T18:08:50.897Z
+          format: date-time
           type: string
       required:
       - connector
