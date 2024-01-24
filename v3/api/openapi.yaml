@@ -22205,11 +22205,15 @@ paths:
       responses:
         "200":
           content:
-            application/octet-stream:
+            application/csv:
               schema:
                 format: binary
                 type: string
-          description: Details about running report task.
+            application/pdf:
+              schema:
+                format: binary
+                type: string
+          description: Report file in selected format. CSV by default.
           headers:
             Content-disposition:
               description: The requested report's filename
