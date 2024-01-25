@@ -75556,7 +75556,7 @@ components:
         \ our docs](https://developer.sailpoint.com/idn/api/authentication#find-your-tenants-oauth-details)\n"
       flows:
         authorizationCode:
-          authorizationUrl: https://tenant.identitynow.com/oauth/authorize
+          authorizationUrl: https://tenant.login.sailpoint.com/oauth/authorize
           scopes:
             sp:scopes:default: default scope
             sp:scopes:all: access to all scopes
