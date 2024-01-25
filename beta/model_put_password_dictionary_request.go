@@ -15,36 +15,36 @@ import (
 	"os"
 )
 
-// checks if the UpdatePasswordDictionaryRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UpdatePasswordDictionaryRequest{}
+// checks if the PutPasswordDictionaryRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PutPasswordDictionaryRequest{}
 
-// UpdatePasswordDictionaryRequest struct for UpdatePasswordDictionaryRequest
-type UpdatePasswordDictionaryRequest struct {
+// PutPasswordDictionaryRequest struct for PutPasswordDictionaryRequest
+type PutPasswordDictionaryRequest struct {
 	File **os.File `json:"file,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _UpdatePasswordDictionaryRequest UpdatePasswordDictionaryRequest
+type _PutPasswordDictionaryRequest PutPasswordDictionaryRequest
 
-// NewUpdatePasswordDictionaryRequest instantiates a new UpdatePasswordDictionaryRequest object
+// NewPutPasswordDictionaryRequest instantiates a new PutPasswordDictionaryRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdatePasswordDictionaryRequest() *UpdatePasswordDictionaryRequest {
-	this := UpdatePasswordDictionaryRequest{}
+func NewPutPasswordDictionaryRequest() *PutPasswordDictionaryRequest {
+	this := PutPasswordDictionaryRequest{}
 	return &this
 }
 
-// NewUpdatePasswordDictionaryRequestWithDefaults instantiates a new UpdatePasswordDictionaryRequest object
+// NewPutPasswordDictionaryRequestWithDefaults instantiates a new PutPasswordDictionaryRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewUpdatePasswordDictionaryRequestWithDefaults() *UpdatePasswordDictionaryRequest {
-	this := UpdatePasswordDictionaryRequest{}
+func NewPutPasswordDictionaryRequestWithDefaults() *PutPasswordDictionaryRequest {
+	this := PutPasswordDictionaryRequest{}
 	return &this
 }
 
 // GetFile returns the File field value if set, zero value otherwise.
-func (o *UpdatePasswordDictionaryRequest) GetFile() *os.File {
+func (o *PutPasswordDictionaryRequest) GetFile() *os.File {
 	if o == nil || isNil(o.File) {
 		var ret *os.File
 		return ret
@@ -54,7 +54,7 @@ func (o *UpdatePasswordDictionaryRequest) GetFile() *os.File {
 
 // GetFileOk returns a tuple with the File field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdatePasswordDictionaryRequest) GetFileOk() (**os.File, bool) {
+func (o *PutPasswordDictionaryRequest) GetFileOk() (**os.File, bool) {
 	if o == nil || isNil(o.File) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *UpdatePasswordDictionaryRequest) GetFileOk() (**os.File, bool) {
 }
 
 // HasFile returns a boolean if a field has been set.
-func (o *UpdatePasswordDictionaryRequest) HasFile() bool {
+func (o *PutPasswordDictionaryRequest) HasFile() bool {
 	if o != nil && !isNil(o.File) {
 		return true
 	}
@@ -71,11 +71,11 @@ func (o *UpdatePasswordDictionaryRequest) HasFile() bool {
 }
 
 // SetFile gets a reference to the given *os.File and assigns it to the File field.
-func (o *UpdatePasswordDictionaryRequest) SetFile(v *os.File) {
+func (o *PutPasswordDictionaryRequest) SetFile(v *os.File) {
 	o.File = &v
 }
 
-func (o UpdatePasswordDictionaryRequest) MarshalJSON() ([]byte, error) {
+func (o PutPasswordDictionaryRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -83,7 +83,7 @@ func (o UpdatePasswordDictionaryRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o UpdatePasswordDictionaryRequest) ToMap() (map[string]interface{}, error) {
+func (o PutPasswordDictionaryRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.File) {
 		toSerialize["file"] = o.File
@@ -96,11 +96,11 @@ func (o UpdatePasswordDictionaryRequest) ToMap() (map[string]interface{}, error)
 	return toSerialize, nil
 }
 
-func (o *UpdatePasswordDictionaryRequest) UnmarshalJSON(bytes []byte) (err error) {
-	varUpdatePasswordDictionaryRequest := _UpdatePasswordDictionaryRequest{}
+func (o *PutPasswordDictionaryRequest) UnmarshalJSON(bytes []byte) (err error) {
+	varPutPasswordDictionaryRequest := _PutPasswordDictionaryRequest{}
 
-	if err = json.Unmarshal(bytes, &varUpdatePasswordDictionaryRequest); err == nil {
-	*o = UpdatePasswordDictionaryRequest(varUpdatePasswordDictionaryRequest)
+	if err = json.Unmarshal(bytes, &varPutPasswordDictionaryRequest); err == nil {
+	*o = PutPasswordDictionaryRequest(varPutPasswordDictionaryRequest)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -113,38 +113,38 @@ func (o *UpdatePasswordDictionaryRequest) UnmarshalJSON(bytes []byte) (err error
 	return err
 }
 
-type NullableUpdatePasswordDictionaryRequest struct {
-	value *UpdatePasswordDictionaryRequest
+type NullablePutPasswordDictionaryRequest struct {
+	value *PutPasswordDictionaryRequest
 	isSet bool
 }
 
-func (v NullableUpdatePasswordDictionaryRequest) Get() *UpdatePasswordDictionaryRequest {
+func (v NullablePutPasswordDictionaryRequest) Get() *PutPasswordDictionaryRequest {
 	return v.value
 }
 
-func (v *NullableUpdatePasswordDictionaryRequest) Set(val *UpdatePasswordDictionaryRequest) {
+func (v *NullablePutPasswordDictionaryRequest) Set(val *PutPasswordDictionaryRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableUpdatePasswordDictionaryRequest) IsSet() bool {
+func (v NullablePutPasswordDictionaryRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableUpdatePasswordDictionaryRequest) Unset() {
+func (v *NullablePutPasswordDictionaryRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableUpdatePasswordDictionaryRequest(val *UpdatePasswordDictionaryRequest) *NullableUpdatePasswordDictionaryRequest {
-	return &NullableUpdatePasswordDictionaryRequest{value: val, isSet: true}
+func NewNullablePutPasswordDictionaryRequest(val *PutPasswordDictionaryRequest) *NullablePutPasswordDictionaryRequest {
+	return &NullablePutPasswordDictionaryRequest{value: val, isSet: true}
 }
 
-func (v NullableUpdatePasswordDictionaryRequest) MarshalJSON() ([]byte, error) {
+func (v NullablePutPasswordDictionaryRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableUpdatePasswordDictionaryRequest) UnmarshalJSON(src []byte) error {
+func (v *NullablePutPasswordDictionaryRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

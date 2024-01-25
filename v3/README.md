@@ -213,7 +213,7 @@ Class | Method | HTTP request | Description
 *PasswordConfigurationAPI* | [**GetPasswordOrgConfig**](docs/PasswordConfigurationAPI.md#getpasswordorgconfig) | **Get** /password-org-config | Get Password Org Config
 *PasswordConfigurationAPI* | [**PutPasswordOrgConfig**](docs/PasswordConfigurationAPI.md#putpasswordorgconfig) | **Put** /password-org-config | Update Password Org Config
 *PasswordDictionaryAPI* | [**GetPasswordDictionary**](docs/PasswordDictionaryAPI.md#getpassworddictionary) | **Get** /password-dictionary | Get Password Dictionary
-*PasswordDictionaryAPI* | [**UpdatePasswordDictionary**](docs/PasswordDictionaryAPI.md#updatepassworddictionary) | **Put** /password-dictionary | Update Password Dictionary
+*PasswordDictionaryAPI* | [**PutPasswordDictionary**](docs/PasswordDictionaryAPI.md#putpassworddictionary) | **Put** /password-dictionary | Update Password Dictionary
 *PasswordManagementAPI* | [**GetPasswordChangeStatus**](docs/PasswordManagementAPI.md#getpasswordchangestatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
 *PasswordManagementAPI* | [**QueryPasswordInfo**](docs/PasswordManagementAPI.md#querypasswordinfo) | **Post** /query-password-info | Query Password Info
 *PasswordManagementAPI* | [**SetPassword**](docs/PasswordManagementAPI.md#setpassword) | **Post** /set-password | Set Identity&#39;s Password
@@ -622,6 +622,7 @@ Class | Method | HTTP request | Description
  - [PublicIdentity](docs/PublicIdentity.md)
  - [PublicIdentityAttributeConfig](docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityConfig](docs/PublicIdentityConfig.md)
+ - [PutPasswordDictionaryRequest](docs/PutPasswordDictionaryRequest.md)
  - [Query](docs/Query.md)
  - [QueryResultFilter](docs/QueryResultFilter.md)
  - [QueryType](docs/QueryType.md)
@@ -753,7 +754,6 @@ Class | Method | HTTP request | Description
  - [TransformRead](docs/TransformRead.md)
  - [TypeAheadQuery](docs/TypeAheadQuery.md)
  - [TypedReference](docs/TypedReference.md)
- - [UpdatePasswordDictionaryRequest](docs/UpdatePasswordDictionaryRequest.md)
  - [UsageType](docs/UsageType.md)
  - [Value](docs/Value.md)
  - [ViolationContext](docs/ViolationContext.md)

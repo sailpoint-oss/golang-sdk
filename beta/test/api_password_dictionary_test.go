@@ -34,11 +34,11 @@ func Test_beta_PasswordDictionaryAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PasswordDictionaryAPIService UpdatePasswordDictionary", func(t *testing.T) {
+	t.Run("Test PasswordDictionaryAPIService PutPasswordDictionary", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BETA.PasswordDictionaryAPI.UpdatePasswordDictionary(context.Background()).Execute()
+		httpRes, err := apiClient.BETA.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

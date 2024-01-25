@@ -5,7 +5,7 @@ All URIs are relative to *https://sailpoint.api.identitynow.com/beta*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetPasswordDictionary**](PasswordDictionaryAPI.md#GetPasswordDictionary) | **Get** /password-dictionary | Get Password Dictionary
-[**UpdatePasswordDictionary**](PasswordDictionaryAPI.md#UpdatePasswordDictionary) | **Put** /password-dictionary | Update Password Dictionary
+[**PutPasswordDictionary**](PasswordDictionaryAPI.md#PutPasswordDictionary) | **Put** /password-dictionary | Update Password Dictionary
 
 
 
@@ -70,9 +70,9 @@ Other parameters are passed through a pointer to a apiGetPasswordDictionaryReque
 [[Back to README]](../README.md)
 
 
-## UpdatePasswordDictionary
+## PutPasswordDictionary
 
-> UpdatePasswordDictionary(ctx).File(file).Execute()
+> PutPasswordDictionary(ctx).File(file).Execute()
 
 Update Password Dictionary
 
@@ -95,9 +95,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PasswordDictionaryAPI.UpdatePasswordDictionary(context.Background()).File(file).Execute()
+    r, err := apiClient.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).File(file).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.UpdatePasswordDictionary``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.PutPasswordDictionary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -109,7 +109,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdatePasswordDictionaryRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutPasswordDictionaryRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -341,6 +341,7 @@ docs/PublicIdentitiesConfigAPI.md
 docs/PublicIdentity.md
 docs/PublicIdentityAttributeConfig.md
 docs/PublicIdentityConfig.md
+docs/PutPasswordDictionaryRequest.md
 docs/Query.md
 docs/QueryResultFilter.md
 docs/QueryType.md
@@ -486,7 +487,6 @@ docs/TransformRead.md
 docs/TransformsAPI.md
 docs/TypeAheadQuery.md
 docs/TypedReference.md
-docs/UpdatePasswordDictionaryRequest.md
 docs/UsageType.md
 docs/Value.md
 docs/ViolationContext.md
@@ -779,6 +779,7 @@ model_provisioning_state.go
 model_public_identity.go
 model_public_identity_attribute_config.go
 model_public_identity_config.go
+model_put_password_dictionary_request.go
 model_query.go
 model_query_result_filter.go
 model_query_type.go
@@ -910,7 +911,6 @@ model_transform_definition_attributes_value.go
 model_transform_read.go
 model_type_ahead_query.go
 model_typed_reference.go
-model_update_password_dictionary_request.go
 model_usage_type.go
 model_value.go
 model_violation_context.go

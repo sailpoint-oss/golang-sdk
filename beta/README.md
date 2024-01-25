@@ -353,7 +353,7 @@ Class | Method | HTTP request | Description
 *PasswordConfigurationAPI* | [**GetPasswordOrgConfig**](docs/PasswordConfigurationAPI.md#getpasswordorgconfig) | **Get** /password-org-config | Get Password Org Config
 *PasswordConfigurationAPI* | [**PutPasswordOrgConfig**](docs/PasswordConfigurationAPI.md#putpasswordorgconfig) | **Put** /password-org-config | Update Password Org Config
 *PasswordDictionaryAPI* | [**GetPasswordDictionary**](docs/PasswordDictionaryAPI.md#getpassworddictionary) | **Get** /password-dictionary | Get Password Dictionary
-*PasswordDictionaryAPI* | [**UpdatePasswordDictionary**](docs/PasswordDictionaryAPI.md#updatepassworddictionary) | **Put** /password-dictionary | Update Password Dictionary
+*PasswordDictionaryAPI* | [**PutPasswordDictionary**](docs/PasswordDictionaryAPI.md#putpassworddictionary) | **Put** /password-dictionary | Update Password Dictionary
 *PasswordManagementAPI* | [**GenerateDigitToken**](docs/PasswordManagementAPI.md#generatedigittoken) | **Post** /generate-password-reset-token/digit | Generate a digit token
 *PasswordManagementAPI* | [**GetIdentityPasswordChangeStatus**](docs/PasswordManagementAPI.md#getidentitypasswordchangestatus) | **Get** /password-change-status/{id} | Get Password Change Request Status
 *PasswordManagementAPI* | [**QueryPasswordInfo**](docs/PasswordManagementAPI.md#querypasswordinfo) | **Post** /query-password-info | Query Password Info
@@ -1016,6 +1016,7 @@ Class | Method | HTTP request | Description
  - [ProvisioningState](docs/ProvisioningState.md)
  - [PublicIdentityAttributeConfig](docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityConfig](docs/PublicIdentityConfig.md)
+ - [PutPasswordDictionaryRequest](docs/PutPasswordDictionaryRequest.md)
  - [QueuedCheckConfigDetails](docs/QueuedCheckConfigDetails.md)
  - [ReassignReference](docs/ReassignReference.md)
  - [Reassignment](docs/Reassignment.md)
@@ -1222,7 +1223,6 @@ Class | Method | HTTP request | Description
  - [TriggerExampleInput](docs/TriggerExampleInput.md)
  - [TriggerExampleOutput](docs/TriggerExampleOutput.md)
  - [TriggerType](docs/TriggerType.md)
- - [UpdatePasswordDictionaryRequest](docs/UpdatePasswordDictionaryRequest.md)
  - [UsageType](docs/UsageType.md)
  - [V3ConnectorDto](docs/V3ConnectorDto.md)
  - [VAClusterStatusChangeEvent](docs/VAClusterStatusChangeEvent.md)
