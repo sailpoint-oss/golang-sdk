@@ -10,6 +10,7 @@ api_account_activities.go
 api_account_usages.go
 api_accounts.go
 api_auth_user.go
+api_branding.go
 api_certification_campaign_filters.go
 api_certification_campaigns.go
 api_certification_summaries.go
@@ -133,6 +134,9 @@ docs/BaseEntitlement.md
 docs/BaseReferenceDto.md
 docs/BeforeProvisioningRuleDto.md
 docs/Bound.md
+docs/BrandingAPI.md
+docs/BrandingItem.md
+docs/BrandingItemCreate.md
 docs/BucketAggregation.md
 docs/BucketType.md
 docs/BulkTaggedObject.md
@@ -587,6 +591,8 @@ model_base_entitlement.go
 model_base_reference_dto.go
 model_before_provisioning_rule_dto.go
 model_bound.go
+model_branding_item.go
+model_branding_item_create.go
 model_bucket_aggregation.go
 model_bucket_type.go
 model_bulk_tagged_object.go
@@ -932,6 +938,7 @@ test/api_account_activities_test.go
 test/api_account_usages_test.go
 test/api_accounts_test.go
 test/api_auth_user_test.go
+test/api_branding_test.go
 test/api_certification_campaign_filters_test.go
 test/api_certification_campaigns_test.go
 test/api_certification_summaries_test.go

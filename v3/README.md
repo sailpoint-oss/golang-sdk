@@ -113,6 +113,11 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**UpdateAccount**](docs/AccountsAPI.md#updateaccount) | **Patch** /accounts/{id} | Update Account
 *AuthUserAPI* | [**GetAuthUser**](docs/AuthUserAPI.md#getauthuser) | **Get** /auth-users/{id} | Auth User Details
 *AuthUserAPI* | [**PatchAuthUser**](docs/AuthUserAPI.md#patchauthuser) | **Patch** /auth-users/{id} | Auth User Update
+*BrandingAPI* | [**CreateBrandingItem**](docs/BrandingAPI.md#createbrandingitem) | **Post** /brandings | Create a branding item
+*BrandingAPI* | [**DeleteBranding**](docs/BrandingAPI.md#deletebranding) | **Delete** /brandings/{name} | Delete a branding item
+*BrandingAPI* | [**GetBranding**](docs/BrandingAPI.md#getbranding) | **Get** /brandings/{name} | Get a branding item
+*BrandingAPI* | [**GetBrandingList**](docs/BrandingAPI.md#getbrandinglist) | **Get** /brandings | List of branding items
+*BrandingAPI* | [**SetBrandingItem**](docs/BrandingAPI.md#setbrandingitem) | **Put** /brandings/{name} | Update a branding item
 *CertificationCampaignFiltersAPI* | [**CreateCampaignFilter**](docs/CertificationCampaignFiltersAPI.md#createcampaignfilter) | **Post** /campaign-filters | Create a Campaign Filter
 *CertificationCampaignFiltersAPI* | [**DeleteCampaignFilters**](docs/CertificationCampaignFiltersAPI.md#deletecampaignfilters) | **Post** /campaign-filters/delete | Deletes Campaign Filters
 *CertificationCampaignFiltersAPI* | [**GetCampaignFilterById**](docs/CertificationCampaignFiltersAPI.md#getcampaignfilterbyid) | **Get** /campaign-filters/{id} | Get Campaign Filter by ID
@@ -430,6 +435,8 @@ Class | Method | HTTP request | Description
  - [BaseReferenceDto](docs/BaseReferenceDto.md)
  - [BeforeProvisioningRuleDto](docs/BeforeProvisioningRuleDto.md)
  - [Bound](docs/Bound.md)
+ - [BrandingItem](docs/BrandingItem.md)
+ - [BrandingItemCreate](docs/BrandingItemCreate.md)
  - [BucketAggregation](docs/BucketAggregation.md)
  - [BucketType](docs/BucketType.md)
  - [BulkTaggedObject](docs/BulkTaggedObject.md)

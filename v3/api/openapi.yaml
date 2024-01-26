@@ -660,7 +660,7 @@ tags:
     \ for more information about running saved searches on a schedule. \n\nIn IdentityNow,\
     \ users can save searches under a name, and then they can access that saved search\
     \ and run it again when they want. \n\nRefer to [Managing Saved Searches](https://documentation.sailpoint.com/saas/help/search/saved-searches.html)\
-    \ for more information about saving searches and using them. \n"
+    \ for more information about saving searches and using them.\n"
   name: Saved Search
 - description: "Use this API to implement scheduled search functionality. \nWith scheduled\
     \ search functionality in place, users can run saved search queries on their tenants\
@@ -716,7 +716,7 @@ tags:
     \ has to be ingested into Elasticsearch. \nThis ingestion process introduces a\
     \ latency from when the operational data is created to when it is available in\
     \ search. \nDepending on the system load, this can take a few seconds to a few\
-    \ minutes. \nPlease keep this latency in mind when you use search. \n"
+    \ minutes. \nPlease keep this latency in mind when you use search.\n"
   name: Search
 - description: "Use this API to implement and customize access request segment functionality.\
     \ \nWith this functionality in place, administrators can create and manage access\
@@ -740,7 +740,7 @@ tags:
     \ the API to create and manage segments, they use a JSON expression in the `visibilityCriteria`\
     \ object to define the segment's identities and access items. \n\nRefer to [Managing\
     \ Access Request Segments](https://documentation.sailpoint.com/saas/help/requests/segments.html)\
-    \ for more information about segments in IdentityNow. \n"
+    \ for more information about segments in IdentityNow.\n"
   name: Segments
 - description: "Use this API to build an integration between IdentityNow and a service\
     \ desk ITSM (IT service management) solution. \nOnce an administrator builds this\
@@ -793,7 +793,7 @@ tags:
     \ to the policy and schedule it to run at a regular interval. \n\nRefer to [Managing\
     \ Policies](https://documentation.sailpoint.com/saas/help/sod/manage-policies.html)\
     \ for more information about SOD policies. \n\nRefer to [Subscribe to a SOD Policy](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html#subscribe-to-an-sod-policy)\
-    \ for more information about SOD policy subscriptions. \n"
+    \ for more information about SOD policy subscriptions.\n"
   name: SOD Policy
 - description: "Use this API to check for current \"separation of duties\" (SOD) policy\
     \ violations as well as potential future SOD policy violations. \nWith SOD violation\
@@ -897,7 +897,7 @@ tags:
     \ identity access governance across all the source systems organizations need.\
     \ \nRefer to [Managing Sources](https://documentation.sailpoint.com/saas/help/sources/managing_sources.html)\
     \ for more information about all the different things admins can do with sources\
-    \ once they are connected. \n"
+    \ once they are connected.\n"
   name: Sources
 - description: "Use this API to implement object tagging functionality. \nWith object\
     \ tagging functionality in place, any user in an organization can use tags as\
@@ -965,6 +965,11 @@ tags:
     With this functionality in place, administrators can gather information and insights about how their tenants' source accounts are being used.
     This allows organizations to get the information they need to start optimizing and securing source account usage.
   name: Account Usages
+- description: "Use this API to implement and customize branding functionality. \n\
+    With this functionality in place, administrators can get list of existing branding\
+    \ items, create new branding and configure them for use throughout IdentityNow.\
+    \ \nIt allows to customise color of navigation bar, action buttons, logo and emailFromAddress.\n"
+  name: Branding
 paths:
   /access-profiles:
     get:
@@ -5115,6 +5120,468 @@ paths:
       summary: Auth User Update
       tags:
       - Auth User
+  /brandings:
+    get:
+      description: |-
+        This API endpoint returns a list of branding items.
+
+        A token with API, ORG_ADMIN authority is required to call this API.
+      operationId: getBrandingList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BrandingItem'
+                type: array
+          description: A list of branding items.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:branding:read
+      summary: List of branding items
+      tags:
+      - Branding
+    post:
+      description: |-
+        This API endpoint creates a branding item.
+        A token with API, ORG_ADMIN authority is required to call this API.
+      operationId: createBrandingItem
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BrandingItemCreate'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingItem'
+          description: Branding item created
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:branding:write
+      summary: Create a branding item
+      tags:
+      - Branding
+  /brandings/{name}:
+    delete:
+      description: |-
+        This API endpoint delete information for an existing branding item by name.
+        A token with API, ORG_ADMIN authority is required to call this API.
+      operationId: deleteBranding
+      parameters:
+      - description: The name of the branding item to be deleted
+        example: default
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:branding:write
+      summary: Delete a branding item
+      tags:
+      - Branding
+    get:
+      description: |-
+        This API endpoint retrieves information for an existing branding item by name.
+        A token with API, ORG_ADMIN authority is required to call this API.
+      operationId: getBranding
+      parameters:
+      - description: The name of the branding item to be retrieved
+        example: default
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingItem'
+          description: A branding item object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:branding:read
+      summary: Get a branding item
+      tags:
+      - Branding
+    put:
+      description: |-
+        This API endpoint updates information for an existing branding item.
+        A token with API, ORG_ADMIN authority is required to call this API.
+      operationId: setBrandingItem
+      parameters:
+      - description: The name of the branding item to be retrieved
+        example: default
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BrandingItemCreate'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingItem'
+          description: Branding item updated
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:branding:write
+      summary: Update a branding item
+      tags:
+      - Branding
   /campaigns:
     get:
       description: Gets campaigns and returns them in a list. Can provide increased
@@ -34530,6 +34997,97 @@ components:
           - INCOMPLETE
           example: COMPLETE
           type: string
+      type: object
+    BrandingItem:
+      example:
+        standardLogoURL: ""
+        emailFromAddress: no-reply@sailpoint.com
+        actionButtonColor: 0074D9
+        name: default
+        navigationColor: 011E69
+        productName: product name
+        loginInformationalMessage: ""
+        activeLinkColor: 011E69
+      properties:
+        name:
+          description: name of branding item
+          example: default
+          type: string
+        productName:
+          description: product name
+          example: product name
+          nullable: true
+          type: string
+        actionButtonColor:
+          description: hex value of color for action button
+          example: 0074D9
+          nullable: true
+          type: string
+        activeLinkColor:
+          description: hex value of color for link
+          example: 011E69
+          nullable: true
+          type: string
+        navigationColor:
+          description: hex value of color for navigation bar
+          example: 011E69
+          nullable: true
+          type: string
+        emailFromAddress:
+          description: email from address
+          example: no-reply@sailpoint.com
+          nullable: true
+          type: string
+        standardLogoURL:
+          description: url to standard logo
+          example: ""
+          nullable: true
+          type: string
+        loginInformationalMessage:
+          description: login information message
+          example: ""
+          nullable: true
+          type: string
+      type: object
+    BrandingItemCreate:
+      properties:
+        name:
+          description: name of branding item
+          example: custom-branding-item
+          type: string
+        productName:
+          description: product name
+          example: product name
+          nullable: true
+          type: string
+        actionButtonColor:
+          description: hex value of color for action button
+          example: 0074D9
+          type: string
+        activeLinkColor:
+          description: hex value of color for link
+          example: 011E69
+          type: string
+        navigationColor:
+          description: hex value of color for navigation bar
+          example: 011E69
+          type: string
+        emailFromAddress:
+          description: email from address
+          example: no-reply@sailpoint.com
+          type: string
+        loginInformationalMessage:
+          description: login information message
+          example: ""
+          type: string
+        fileStandard:
+          description: png file with logo
+          example: \x00\x00\x00\x02
+          format: binary
+          type: string
+      required:
+      - name
+      - productName
       type: object
     AccessProfile:
       description: Access Profile
