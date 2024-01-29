@@ -930,5 +930,4 @@ model_work_items.go
 model_work_items_count.go
 model_work_items_summary.go
 response.go
-test/api_branding_test.go
 utils.go
