@@ -1620,7 +1620,7 @@ components:
         Learn more about how to find your `tokenUrl` and `authorizationUrl` [in our docs](https://developer.sailpoint.com/idn/api/authentication#find-your-tenants-oauth-details)
       flows:
         authorizationCode:
-          authorizationUrl: https://tenant.identitynow.com/oauth/authorize
+          authorizationUrl: https://tenant.login.sailpoint.com/oauth/authorize
           scopes:
             sp:scopes:default: default scope
             sp:scopes:all: access to all scopes

@@ -580,6 +580,7 @@ docs/ProvisioningState.md
 docs/PublicIdentitiesConfigAPI.md
 docs/PublicIdentityAttributeConfig.md
 docs/PublicIdentityConfig.md
+docs/PutPasswordDictionaryRequest.md
 docs/QueuedCheckConfigDetails.md
 docs/ReassignReference.md
 docs/Reassignment.md
@@ -800,7 +801,6 @@ docs/TriggerExampleInput.md
 docs/TriggerExampleOutput.md
 docs/TriggerType.md
 docs/TriggersAPI.md
-docs/UpdatePasswordDictionaryRequest.md
 docs/UsageType.md
 docs/V3ConnectorDto.md
 docs/VAClusterStatusChangeEvent.md
@@ -1325,6 +1325,7 @@ model_provisioning_policy_dto.go
 model_provisioning_state.go
 model_public_identity_attribute_config.go
 model_public_identity_config.go
+model_put_password_dictionary_request.go
 model_queued_check_config_details.go
 model_reassign_reference.go
 model_reassignment.go
@@ -1530,7 +1531,6 @@ model_trigger.go
 model_trigger_example_input.go
 model_trigger_example_output.go
 model_trigger_type.go
-model_update_password_dictionary_request.go
 model_usage_type.go
 model_v3_connector_dto.go
 model_va_cluster_status_change_event.go

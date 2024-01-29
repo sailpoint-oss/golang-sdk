@@ -37,6 +37,34 @@ GetPasswordDictionary Get Password Dictionary
 
 This gets password dictionary for the organization.
 A token with ORG_ADMIN authority is required to call this API.
+The password dictionary file can contain lines that are:
+1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
+2. empty lines
+3. locale line - the first line that starts with "locale=" is considered to be locale line, the rest are treated as normal content lines
+4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;
+        maximum length of the line is 128 Unicode codepoints
+
+
+Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).
+  Password dict file must contain UTF-8 characters only.
+
+# Sample password text file
+
+```
+
+# Password dictionary small test file
+
+locale=en_US
+
+# Password dictionary prohibited words
+
+qwerty
+abcd
+aaaaa
+password
+qazxsws
+
+```
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetPasswordDictionaryRequest
@@ -188,46 +216,74 @@ func (a *PasswordDictionaryAPIService) GetPasswordDictionaryExecute(r ApiGetPass
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdatePasswordDictionaryRequest struct {
+type ApiPutPasswordDictionaryRequest struct {
 	ctx context.Context
 	ApiService *PasswordDictionaryAPIService
 	file *os.File
 }
 
-func (r ApiUpdatePasswordDictionaryRequest) File(file *os.File) ApiUpdatePasswordDictionaryRequest {
+func (r ApiPutPasswordDictionaryRequest) File(file *os.File) ApiPutPasswordDictionaryRequest {
 	r.file = file
 	return r
 }
 
-func (r ApiUpdatePasswordDictionaryRequest) Execute() (*http.Response, error) {
-	return r.ApiService.UpdatePasswordDictionaryExecute(r)
+func (r ApiPutPasswordDictionaryRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PutPasswordDictionaryExecute(r)
 }
 
 /*
-UpdatePasswordDictionary Update Password Dictionary
+PutPasswordDictionary Update Password Dictionary
 
 This updates password dictionary for the organization.
 A token with ORG_ADMIN authority is required to call this API.
+The password dictionary file can contain lines that are:
+1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
+2. empty lines
+3. locale line - the first line that starts with "locale=" is considered to be locale line, the rest are treated as normal content lines
+4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;
+        maximum length of the line is 128 Unicode codepoints
+
+
+Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).
+  Password dict file must contain UTF-8 characters only.
+
+# Sample password text file
+
+```
+
+# Password dictionary small test file
+
+locale=en_US
+
+# Password dictionary prohibited words
+
+qwerty
+abcd
+aaaaa
+password
+qazxsws
+
+```
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUpdatePasswordDictionaryRequest
+ @return ApiPutPasswordDictionaryRequest
 */
-func (a *PasswordDictionaryAPIService) UpdatePasswordDictionary(ctx context.Context) ApiUpdatePasswordDictionaryRequest {
-	return ApiUpdatePasswordDictionaryRequest{
+func (a *PasswordDictionaryAPIService) PutPasswordDictionary(ctx context.Context) ApiPutPasswordDictionaryRequest {
+	return ApiPutPasswordDictionaryRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *PasswordDictionaryAPIService) UpdatePasswordDictionaryExecute(r ApiUpdatePasswordDictionaryRequest) (*http.Response, error) {
+func (a *PasswordDictionaryAPIService) PutPasswordDictionaryExecute(r ApiPutPasswordDictionaryRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordDictionaryAPIService.UpdatePasswordDictionary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PasswordDictionaryAPIService.PutPasswordDictionary")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
