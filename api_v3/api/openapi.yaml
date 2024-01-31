@@ -112,6 +112,11 @@ tags:
     \ to track and/or cancel the requests.\n\nRefer to [Requesting Access](https://documentation.sailpoint.com/saas/user-help/requests/requesting_access.html)\
     \ for more information about access requests.\n"
   name: Access Requests
+- description: |
+    Use this API to implement account usage insight functionality.
+    With this functionality in place, administrators can gather information and insights about how their tenants' source accounts are being used.
+    This allows organizations to get the information they need to start optimizing and securing source account usage.
+  name: Account Usages
 - description: "Use this API to implement and customize account functionality.\nWith\
     \ this functionality in place, administrators can manage users' access across\
     \ sources in IdentityNow. \n\nIn IdentityNow, an account refers to a user's account\
@@ -179,6 +184,11 @@ tags:
   name: Account Activities
 - description: Authentication service user retrieval and user capabilities update
   name: Auth User
+- description: "Use this API to implement and customize branding functionality. \n\
+    With this functionality in place, administrators can get list of existing branding\
+    \ items, create new branding and configure them for use throughout IdentityNow.\
+    \ \nIt allows to customise color of navigation bar, action buttons, logo and emailFromAddress.\n"
+  name: Branding
 - description: "Use this API to implement certification campaign functionality.\n\
     With this functionality in place, administrators can create, customize, and manage\
     \ certification campaigns for their organizations' use. \nCertification campaigns\
@@ -820,6 +830,11 @@ tags:
     \ [Handling Policy Violations](https://documentation.sailpoint.com/saas/help/sod/policy-violations.html)\
     \ for more information about SOD policy violations. \n"
   name: SOD Violations
+- description: |
+    Use this API to implement source usage insight functionality.
+    With this functionality in place, administrators can gather information and insights about how their tenants' sources are being used.
+    This allows organizations to get the information they need to start optimizing and securing source usage.
+  name: Source Usages
 - description: "Use this API to implement and customize source functionality. \nWith\
     \ source functionality in place, organizations can use IdentityNow to connect\
     \ their various sources and user data sets and manage access across all those\
@@ -955,21 +970,6 @@ tags:
     \ for more information about work items, including the different types of work\
     \ items users may need to complete.\n"
   name: Work Items
-- description: |
-    Use this API to implement source usage insight functionality.
-    With this functionality in place, administrators can gather information and insights about how their tenants' sources are being used.
-    This allows organizations to get the information they need to start optimizing and securing source usage.
-  name: Source Usages
-- description: |
-    Use this API to implement account usage insight functionality.
-    With this functionality in place, administrators can gather information and insights about how their tenants' source accounts are being used.
-    This allows organizations to get the information they need to start optimizing and securing source account usage.
-  name: Account Usages
-- description: "Use this API to implement and customize branding functionality. \n\
-    With this functionality in place, administrators can get list of existing branding\
-    \ items, create new branding and configure them for use throughout IdentityNow.\
-    \ \nIt allows to customise color of navigation bar, action buttons, logo and emailFromAddress.\n"
-  name: Branding
 paths:
   /access-profiles:
     get:

@@ -193,7 +193,6 @@ docs/BaseCommonDto1.md
 docs/BasicAuthConfig.md
 docs/BearerTokenAuthConfig.md
 docs/BeforeProvisioningRuleDto.md
-docs/BetaSchemasTriggerExampleInputSourceAccount.md
 docs/BulkIdentitiesAccountsResponse.md
 docs/BulkTaggedObject.md
 docs/BulkWorkgroupMembersRequestInner.md
@@ -722,6 +721,7 @@ docs/SodViolationContextConflictingAccessCriteria.md
 docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md
 docs/Source.md
 docs/Source1.md
+docs/SourceAccount.md
 docs/SourceAccountCorrelationConfig.md
 docs/SourceAccountCorrelationRule.md
 docs/SourceBeforeProvisioningRule.md
@@ -972,7 +972,6 @@ model_base_common_dto_1.go
 model_basic_auth_config.go
 model_bearer_token_auth_config.go
 model_before_provisioning_rule_dto.go
-model_beta_schemas_trigger_example_input_source_account.go
 model_bulk_identities_accounts_response.go
 model_bulk_tagged_object.go
 model_bulk_workgroup_members_request_inner.go
@@ -1458,6 +1457,7 @@ model_sod_violation_context_conflicting_access_criteria.go
 model_sod_violation_context_conflicting_access_criteria_left_criteria.go
 model_source.go
 model_source_1.go
+model_source_account.go
 model_source_account_correlation_config.go
 model_source_account_correlation_rule.go
 model_source_before_provisioning_rule.go

@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import api_beta "github.com/sailpoint-oss/golang-sdk"
+import api_beta "github.com/sailpoint-oss/golang-sdk/v2"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -664,7 +664,6 @@ Class | Method | HTTP request | Description
  - [BasicAuthConfig](docs/BasicAuthConfig.md)
  - [BearerTokenAuthConfig](docs/BearerTokenAuthConfig.md)
  - [BeforeProvisioningRuleDto](docs/BeforeProvisioningRuleDto.md)
- - [BetaSchemasTriggerExampleInputSourceAccount](docs/BetaSchemasTriggerExampleInputSourceAccount.md)
  - [BulkIdentitiesAccountsResponse](docs/BulkIdentitiesAccountsResponse.md)
  - [BulkTaggedObject](docs/BulkTaggedObject.md)
  - [BulkWorkgroupMembersRequestInner](docs/BulkWorkgroupMembersRequestInner.md)
@@ -1150,6 +1149,7 @@ Class | Method | HTTP request | Description
  - [SodViolationContextConflictingAccessCriteriaLeftCriteria](docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md)
  - [Source](docs/Source.md)
  - [Source1](docs/Source1.md)
+ - [SourceAccount](docs/SourceAccount.md)
  - [SourceAccountCorrelationConfig](docs/SourceAccountCorrelationConfig.md)
  - [SourceAccountCorrelationRule](docs/SourceAccountCorrelationRule.md)
  - [SourceBeforeProvisioningRule](docs/SourceBeforeProvisioningRule.md)
