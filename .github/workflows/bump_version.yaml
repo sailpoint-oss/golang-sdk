@@ -72,7 +72,7 @@ jobs:
         id: buildV3
         if: steps.updateVersion.outcome == 'success'
         run: |
-          rm -rf ./v3
+          rm -rf ./api_v3
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v3.yaml -g go -o api_v3 --global-property skipFormModel=false --config sdk-resources/v3-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk --git-user-id sailpoint-oss
           node sdk-resources/postscript.js ./api_v3
 
@@ -80,7 +80,7 @@ jobs:
         id: buildBeta
         if: steps.buildV3.outcome == 'success'
         run: |
-          rm -rf ./beta
+          rm -rf ./api_beta
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.beta.yaml -g go -o api_beta --global-property skipFormModel=false --config sdk-resources/beta-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk --git-user-id sailpoint-oss
           node sdk-resources/postscript.js ./api_beta
 
@@ -88,7 +88,7 @@ jobs:
         id: buildV2
         if: steps.buildBeta.outcome == 'success'
         run: |
-          rm -rf ./v2
+          rm -rf ./api_v2
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2.yaml -g go -o api_v2 --global-property skipFormModel=false --config sdk-resources/v2-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk --git-user-id sailpoint-oss
           node sdk-resources/postscript.js ./api_v2
 
@@ -96,7 +96,7 @@ jobs:
         id: buildCC
         if: steps.buildV2.outcome == 'success'
         run: |
-          rm -rf ./cc
+          rm -rf ./api_cc
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.cc.yaml -g go -o api_cc --global-property skipFormModel=false --config sdk-resources/cc-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk --git-user-id sailpoint-oss
           node sdk-resources/postscript.js ./api_cc
 
