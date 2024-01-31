@@ -87,6 +87,20 @@ func Test_api_v3_RolesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test RolesAPIService GetRoleEntitlements", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.BETA.RolesAPI.GetRoleEntitlements(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test RolesAPIService ListRoles", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
