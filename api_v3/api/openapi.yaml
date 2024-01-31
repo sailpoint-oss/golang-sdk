@@ -39949,6 +39949,13 @@ components:
         - name: Access Profile 2567
           id: ff808081751e6e129f1518161919ecca
           type: ACCESS_PROFILE
+        Entitlements:
+        - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
+          id: 2c91809773dee32014e13e122092014e
+          type: ENTITLEMENT
+        - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
+          id: 2c91809773dee32014e13e122092014e
+          type: ENTITLEMENT
         name: Role 2567
         modified: 2021-03-02T20:22:28.104Z
         id: 2c918086749d78830174a1a40e121518
@@ -39989,6 +39996,11 @@ components:
         accessProfiles:
           items:
             $ref: '#/components/schemas/AccessProfileRef'
+          nullable: true
+          type: array
+        Entitlements:
+          items:
+            $ref: '#/components/schemas/EntitlementRef'
           nullable: true
           type: array
         membership:

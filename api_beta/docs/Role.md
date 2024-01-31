@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** | A human-readable description of the Role | [optional] 
 **Owner** | [**OwnerReference**](OwnerReference.md) |  | 
 **AccessProfiles** | Pointer to [**[]AccessProfileRef**](AccessProfileRef.md) |  | [optional] 
+**Entitlements** | Pointer to [**[]EntitlementRef**](EntitlementRef.md) |  | [optional] 
 **Membership** | Pointer to [**NullableRoleMembershipSelector**](RoleMembershipSelector.md) |  | [optional] 
 **LegacyMembershipInfo** | Pointer to **map[string]interface{}** | This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration. | [optional] 
 **Enabled** | Pointer to **bool** | Whether the Role is enabled or not. | [optional] [default to false]
@@ -223,6 +224,41 @@ HasAccessProfiles returns a boolean if a field has been set.
 `func (o *Role) UnsetAccessProfiles()`
 
 UnsetAccessProfiles ensures that no value is present for AccessProfiles, not even an explicit nil
+### GetEntitlements
+
+`func (o *Role) GetEntitlements() []EntitlementRef`
+
+GetEntitlements returns the Entitlements field if non-nil, zero value otherwise.
+
+### GetEntitlementsOk
+
+`func (o *Role) GetEntitlementsOk() (*[]EntitlementRef, bool)`
+
+GetEntitlementsOk returns a tuple with the Entitlements field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntitlements
+
+`func (o *Role) SetEntitlements(v []EntitlementRef)`
+
+SetEntitlements sets Entitlements field to given value.
+
+### HasEntitlements
+
+`func (o *Role) HasEntitlements() bool`
+
+HasEntitlements returns a boolean if a field has been set.
+
+### SetEntitlementsNil
+
+`func (o *Role) SetEntitlementsNil(b bool)`
+
+ SetEntitlementsNil sets the value for Entitlements to be an explicit nil
+
+### UnsetEntitlements
+`func (o *Role) UnsetEntitlements()`
+
+UnsetEntitlements ensures that no value is present for Entitlements, not even an explicit nil
 ### GetMembership
 
 `func (o *Role) GetMembership() RoleMembershipSelector`

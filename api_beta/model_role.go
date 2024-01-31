@@ -33,6 +33,7 @@ type Role struct {
 	Description NullableString `json:"description,omitempty"`
 	Owner OwnerReference `json:"owner"`
 	AccessProfiles []AccessProfileRef `json:"accessProfiles,omitempty"`
+	Entitlements []EntitlementRef `json:"Entitlements,omitempty"`
 	Membership NullableRoleMembershipSelector `json:"membership,omitempty"`
 	// This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration.
 	LegacyMembershipInfo map[string]interface{} `json:"legacyMembershipInfo,omitempty"`
@@ -295,6 +296,39 @@ func (o *Role) SetAccessProfiles(v []AccessProfileRef) {
 	o.AccessProfiles = v
 }
 
+// GetEntitlements returns the Entitlements field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Role) GetEntitlements() []EntitlementRef {
+	if o == nil {
+		var ret []EntitlementRef
+		return ret
+	}
+	return o.Entitlements
+}
+
+// GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Role) GetEntitlementsOk() ([]EntitlementRef, bool) {
+	if o == nil || isNil(o.Entitlements) {
+		return nil, false
+	}
+	return o.Entitlements, true
+}
+
+// HasEntitlements returns a boolean if a field has been set.
+func (o *Role) HasEntitlements() bool {
+	if o != nil && isNil(o.Entitlements) {
+		return true
+	}
+
+	return false
+}
+
+// SetEntitlements gets a reference to the given []EntitlementRef and assigns it to the Entitlements field.
+func (o *Role) SetEntitlements(v []EntitlementRef) {
+	o.Entitlements = v
+}
+
 // GetMembership returns the Membership field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Role) GetMembership() RoleMembershipSelector {
 	if o == nil || isNil(o.Membership.Get()) {
@@ -554,6 +588,9 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	if o.AccessProfiles != nil {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
+	if o.Entitlements != nil {
+		toSerialize["Entitlements"] = o.Entitlements
+	}
 	if o.Membership.IsSet() {
 		toSerialize["membership"] = o.Membership.Get()
 	}
@@ -622,6 +659,7 @@ func (o *Role) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "accessProfiles")
+		delete(additionalProperties, "Entitlements")
 		delete(additionalProperties, "membership")
 		delete(additionalProperties, "legacyMembershipInfo")
 		delete(additionalProperties, "enabled")
