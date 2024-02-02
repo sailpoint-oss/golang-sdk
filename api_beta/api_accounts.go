@@ -202,11 +202,13 @@ func (r ApiDeleteAccountRequest) Execute() (*AccountsAsyncResult, *http.Response
 /*
 DeleteAccount Delete Account
 
-This API submits an account delete task and returns the task ID.  
+Use this API to delete an account. 
+This endpoint submits an account delete task and returns the task ID. 
 A token with ORG_ADMIN authority is required to call this API.
+>**NOTE:** You can only delete accounts from sources of the "DelimitedFile" type.**
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The account ID
+ @param id Account ID.
  @return ApiDeleteAccountRequest
 */
 func (a *AccountsAPIService) DeleteAccount(ctx context.Context, id string) ApiDeleteAccountRequest {
@@ -1395,11 +1397,11 @@ func (r ApiGetAccountRequest) Execute() (*Account, *http.Response, error) {
 /*
 GetAccount Account Details
 
-This API returns the details for a single account based on the ID.  
+Use this API to return the details for a single account by its ID.  
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The account ID
+ @param id Account ID.
  @return ApiGetAccountRequest
 */
 func (a *AccountsAPIService) GetAccount(ctx context.Context, id string) ApiGetAccountRequest {
@@ -2001,11 +2003,13 @@ func (r ApiPutAccountRequest) Execute() (*AccountsAsyncResult, *http.Response, e
 /*
 PutAccount Update Account
 
-This API submits an account update task and returns the task ID.  
+Use this API to update an account with a PUT request. 
+This endpoint submits an account update task and returns the task ID.  
 A token with ORG_ADMIN authority is required to call this API.
+>**NOTE: You can only use this PUT endpoint to update accounts from sources of the "DelimitedFile" type.**
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The account ID
+ @param id Account ID.
  @return ApiPutAccountRequest
 */
 func (a *AccountsAPIService) PutAccount(ctx context.Context, id string) ApiPutAccountRequest {
@@ -2531,11 +2535,12 @@ func (r ApiUpdateAccountRequest) Execute() (map[string]interface{}, *http.Respon
 /*
 UpdateAccount Update Account
 
-This updates account details.  
+Use this endpoint to update an account with a PATCH request. 
+The request must provide a JSONPatch payload.
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id The account ID
+ @param id Account ID.
  @return ApiUpdateAccountRequest
 */
 func (a *AccountsAPIService) UpdateAccount(ctx context.Context, id string) ApiUpdateAccountRequest {

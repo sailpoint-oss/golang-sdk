@@ -3347,12 +3347,13 @@ paths:
       - Accounts
   /accounts/{id}:
     delete:
-      description: |-
-        This API submits an account delete task and returns the task ID. This operation can only be used on Flat File Sources. Any attempt to execute this request on the source of other type will result in an error response with a status code of 400.
-        A token with ORG_ADMIN authority is required to call this API.
+      description: "Use this API to delete an account. \nThis endpoint submits an\
+        \ account delete task and returns the task ID. \nA token with ORG_ADMIN authority\
+        \ is required to call this API.\n>**NOTE: You can only delete accounts from\
+        \ sources of the \"DelimitedFile\" type.**"
       operationId: deleteAccount
       parameters:
-      - description: The account ID
+      - description: Account ID.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
@@ -3365,7 +3366,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountsAsyncResult'
-          description: Async task details
+          description: Async task details.
         "400":
           content:
             application/json:
@@ -3447,11 +3448,11 @@ paths:
       tags:
       - Accounts
     get:
-      description: "This API returns the details for a single account based on the\
+      description: "Use this API to return the details for a single account by its\
         \ ID.  \nA token with ORG_ADMIN authority is required to call this API."
       operationId: getAccount
       parameters:
-      - description: The account ID
+      - description: Account ID.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
@@ -3464,7 +3465,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
-          description: An account object
+          description: Account object.
         "400":
           content:
             application/json:
@@ -3547,19 +3548,15 @@ paths:
       - Accounts
     patch:
       description: |-
-        Use this API to modify the following fields:
+        Use this API to update the account with a PATCH request.
+        This endpoint can only modify these fields:
         * `identityId`
-
         * `manuallyCorrelated`
-
-        >**NOTE: All other fields cannot be modified.**
-
         The request must provide a JSONPatch payload.
-
         A token with ORG_ADMIN authority is required to call this API.
       operationId: updateAccount
       parameters:
-      - description: The account ID
+      - description: Account ID.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
@@ -3669,12 +3666,13 @@ paths:
       tags:
       - Accounts
     put:
-      description: "This API submits an account update task and returns the task ID.\
-        \  \nA token with ORG_ADMIN authority is required to call this API.\n>**NOTE:\
-        \ The PUT Account API is designated only for Delimited File sources.**"
+      description: "Use this API to update an account with a PUT request. \nThis endpoint\
+        \ submits an account update task and returns the task ID. \nA token with ORG_ADMIN\
+        \ authority is required to call this API.\n>**NOTE: You can only use this\
+        \ PUT endpoint to update accounts from sources of the \"DelimitedFile\" type.**"
       operationId: putAccount
       parameters:
-      - description: The account ID
+      - description: Account ID.
         example: ef38f94347e94562b5bb8424a56397d8
         in: path
         name: id
@@ -3693,7 +3691,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountsAsyncResult'
-          description: Async task details
+          description: Async task details.
         "400":
           content:
             application/json:

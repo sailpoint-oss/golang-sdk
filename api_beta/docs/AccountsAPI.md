@@ -109,7 +109,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The account ID
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | Account ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -129,7 +129,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The account ID | 
+**id** | **string** | Account ID. | 
 
 ### Other Parameters
 
@@ -595,7 +595,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The account ID
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | Account ID.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -615,7 +615,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The account ID | 
+**id** | **string** | Account ID. | 
 
 ### Other Parameters
 
@@ -817,7 +817,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The account ID
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | Account ID.
     accountAttributes := *openapiclient.NewAccountAttributes(map[string]interface{}({city=Austin, displayName=John Doe, userName=jdoe, sAMAccountName=jDoe, mail=john.doe@sailpoint.com})) // AccountAttributes | 
 
     configuration := openapiclient.NewConfiguration()
@@ -838,7 +838,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The account ID | 
+**id** | **string** | Account ID. | 
 
 ### Other Parameters
 
@@ -1031,7 +1031,7 @@ import (
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The account ID
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | Account ID.
     requestBody := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
     configuration := openapiclient.NewConfiguration()
@@ -1052,7 +1052,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The account ID | 
+**id** | **string** | Account ID. | 
 
 ### Other Parameters
 
