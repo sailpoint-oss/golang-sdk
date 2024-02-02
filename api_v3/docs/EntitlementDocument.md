@@ -4,19 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the referenced object. | 
-**Name** | **string** | The human readable name of the referenced object. | 
+**Id** | **string** |  | 
+**Name** | **string** |  | 
 **Type** | [**DocumentType**](DocumentType.md) |  | 
-**Description** | Pointer to **string** | A description of the entitlement | [optional] 
-**Attribute** | Pointer to **string** | The name of the entitlement attribute | [optional] 
-**Value** | Pointer to **string** | The value of the entitlement | [optional] 
-**Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Synced** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**DisplayName** | Pointer to **string** | The display name of the entitlement | [optional] 
-**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
-**Privileged** | Pointer to **bool** |  | [optional] 
-**IdentityCount** | Pointer to **int32** |  | [optional] 
-**Tags** | Pointer to **[]string** |  | [optional] 
+**Modified** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
+**Synced** | Pointer to **string** | ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the &#x60;synced&#x60; time and the time when the updated data is actually available in the search API.  | [optional] 
+**DisplayName** | Pointer to **string** | Entitlement&#39;s display name. | [optional] 
+**Source** | Pointer to [**EntitlementDocumentAllOfSource**](EntitlementDocumentAllOfSource.md) |  | [optional] 
+**Segments** | Pointer to [**[]BaseSegment**](BaseSegment.md) | Segments with the role. | [optional] 
+**SegmentCount** | Pointer to **int32** | Number of segments with the role. | [optional] 
+**Requestable** | Pointer to **bool** | Indicates whether the entitlement is requestable. | [optional] [default to false]
+**CloudGoverned** | Pointer to **bool** | Indicates whether the entitlement is cloud governed. | [optional] [default to false]
+**Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
+**Privileged** | Pointer to **bool** | Indicates whether the entitlement is privileged. | [optional] [default to false]
+**IdentityCount** | Pointer to **int32** | Number of identities who have access to the entitlement. | [optional] 
+**Tags** | Pointer to **[]string** | Tags that have been applied to the object. | [optional] 
 
 ## Methods
 
@@ -97,81 +99,6 @@ and a boolean to check if the value has been set.
 SetType sets Type field to given value.
 
 
-### GetDescription
-
-`func (o *EntitlementDocument) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *EntitlementDocument) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *EntitlementDocument) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *EntitlementDocument) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### GetAttribute
-
-`func (o *EntitlementDocument) GetAttribute() string`
-
-GetAttribute returns the Attribute field if non-nil, zero value otherwise.
-
-### GetAttributeOk
-
-`func (o *EntitlementDocument) GetAttributeOk() (*string, bool)`
-
-GetAttributeOk returns a tuple with the Attribute field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAttribute
-
-`func (o *EntitlementDocument) SetAttribute(v string)`
-
-SetAttribute sets Attribute field to given value.
-
-### HasAttribute
-
-`func (o *EntitlementDocument) HasAttribute() bool`
-
-HasAttribute returns a boolean if a field has been set.
-
-### GetValue
-
-`func (o *EntitlementDocument) GetValue() string`
-
-GetValue returns the Value field if non-nil, zero value otherwise.
-
-### GetValueOk
-
-`func (o *EntitlementDocument) GetValueOk() (*string, bool)`
-
-GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetValue
-
-`func (o *EntitlementDocument) SetValue(v string)`
-
-SetValue sets Value field to given value.
-
-### HasValue
-
-`func (o *EntitlementDocument) HasValue() bool`
-
-HasValue returns a boolean if a field has been set.
-
 ### GetModified
 
 `func (o *EntitlementDocument) GetModified() time.Time`
@@ -209,20 +136,20 @@ HasModified returns a boolean if a field has been set.
 UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetSynced
 
-`func (o *EntitlementDocument) GetSynced() time.Time`
+`func (o *EntitlementDocument) GetSynced() string`
 
 GetSynced returns the Synced field if non-nil, zero value otherwise.
 
 ### GetSyncedOk
 
-`func (o *EntitlementDocument) GetSyncedOk() (*time.Time, bool)`
+`func (o *EntitlementDocument) GetSyncedOk() (*string, bool)`
 
 GetSyncedOk returns a tuple with the Synced field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSynced
 
-`func (o *EntitlementDocument) SetSynced(v time.Time)`
+`func (o *EntitlementDocument) SetSynced(v string)`
 
 SetSynced sets Synced field to given value.
 
@@ -232,16 +159,6 @@ SetSynced sets Synced field to given value.
 
 HasSynced returns a boolean if a field has been set.
 
-### SetSyncedNil
-
-`func (o *EntitlementDocument) SetSyncedNil(b bool)`
-
- SetSyncedNil sets the value for Synced to be an explicit nil
-
-### UnsetSynced
-`func (o *EntitlementDocument) UnsetSynced()`
-
-UnsetSynced ensures that no value is present for Synced, not even an explicit nil
 ### GetDisplayName
 
 `func (o *EntitlementDocument) GetDisplayName() string`
@@ -269,20 +186,20 @@ HasDisplayName returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *EntitlementDocument) GetSource() Reference`
+`func (o *EntitlementDocument) GetSource() EntitlementDocumentAllOfSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *EntitlementDocument) GetSourceOk() (*Reference, bool)`
+`func (o *EntitlementDocument) GetSourceOk() (*EntitlementDocumentAllOfSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *EntitlementDocument) SetSource(v Reference)`
+`func (o *EntitlementDocument) SetSource(v EntitlementDocumentAllOfSource)`
 
 SetSource sets Source field to given value.
 
@@ -292,6 +209,141 @@ SetSource sets Source field to given value.
 
 HasSource returns a boolean if a field has been set.
 
+### GetSegments
+
+`func (o *EntitlementDocument) GetSegments() []BaseSegment`
+
+GetSegments returns the Segments field if non-nil, zero value otherwise.
+
+### GetSegmentsOk
+
+`func (o *EntitlementDocument) GetSegmentsOk() (*[]BaseSegment, bool)`
+
+GetSegmentsOk returns a tuple with the Segments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSegments
+
+`func (o *EntitlementDocument) SetSegments(v []BaseSegment)`
+
+SetSegments sets Segments field to given value.
+
+### HasSegments
+
+`func (o *EntitlementDocument) HasSegments() bool`
+
+HasSegments returns a boolean if a field has been set.
+
+### GetSegmentCount
+
+`func (o *EntitlementDocument) GetSegmentCount() int32`
+
+GetSegmentCount returns the SegmentCount field if non-nil, zero value otherwise.
+
+### GetSegmentCountOk
+
+`func (o *EntitlementDocument) GetSegmentCountOk() (*int32, bool)`
+
+GetSegmentCountOk returns a tuple with the SegmentCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSegmentCount
+
+`func (o *EntitlementDocument) SetSegmentCount(v int32)`
+
+SetSegmentCount sets SegmentCount field to given value.
+
+### HasSegmentCount
+
+`func (o *EntitlementDocument) HasSegmentCount() bool`
+
+HasSegmentCount returns a boolean if a field has been set.
+
+### GetRequestable
+
+`func (o *EntitlementDocument) GetRequestable() bool`
+
+GetRequestable returns the Requestable field if non-nil, zero value otherwise.
+
+### GetRequestableOk
+
+`func (o *EntitlementDocument) GetRequestableOk() (*bool, bool)`
+
+GetRequestableOk returns a tuple with the Requestable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestable
+
+`func (o *EntitlementDocument) SetRequestable(v bool)`
+
+SetRequestable sets Requestable field to given value.
+
+### HasRequestable
+
+`func (o *EntitlementDocument) HasRequestable() bool`
+
+HasRequestable returns a boolean if a field has been set.
+
+### GetCloudGoverned
+
+`func (o *EntitlementDocument) GetCloudGoverned() bool`
+
+GetCloudGoverned returns the CloudGoverned field if non-nil, zero value otherwise.
+
+### GetCloudGovernedOk
+
+`func (o *EntitlementDocument) GetCloudGovernedOk() (*bool, bool)`
+
+GetCloudGovernedOk returns a tuple with the CloudGoverned field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudGoverned
+
+`func (o *EntitlementDocument) SetCloudGoverned(v bool)`
+
+SetCloudGoverned sets CloudGoverned field to given value.
+
+### HasCloudGoverned
+
+`func (o *EntitlementDocument) HasCloudGoverned() bool`
+
+HasCloudGoverned returns a boolean if a field has been set.
+
+### GetCreated
+
+`func (o *EntitlementDocument) GetCreated() time.Time`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *EntitlementDocument) GetCreatedOk() (*time.Time, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *EntitlementDocument) SetCreated(v time.Time)`
+
+SetCreated sets Created field to given value.
+
+### HasCreated
+
+`func (o *EntitlementDocument) HasCreated() bool`
+
+HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *EntitlementDocument) SetCreatedNil(b bool)`
+
+ SetCreatedNil sets the value for Created to be an explicit nil
+
+### UnsetCreated
+`func (o *EntitlementDocument) UnsetCreated()`
+
+UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetPrivileged
 
 `func (o *EntitlementDocument) GetPrivileged() bool`

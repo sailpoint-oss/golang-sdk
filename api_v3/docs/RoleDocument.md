@@ -7,21 +7,21 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique ID of the referenced object. | 
 **Name** | **string** | The human readable name of the referenced object. | 
 **Type** | [**DocumentType**](DocumentType.md) |  | 
-**Description** | Pointer to **string** | The description of the access item | [optional] 
-**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Synced** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Enabled** | Pointer to **bool** |  | [optional] 
-**Requestable** | Pointer to **bool** | Indicates if the access can be requested | [optional] 
-**RequestCommentsRequired** | Pointer to **bool** | Indicates if comments are required when requesting access | [optional] 
-**Owner** | Pointer to [**Owner**](Owner.md) |  | [optional] 
-**AccessProfiles** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
-**AccessProfileCount** | Pointer to **int32** |  | [optional] 
-**Tags** | Pointer to **[]string** |  | [optional] 
-**Segments** | Pointer to [**[]Reference**](Reference.md) |  | [optional] 
-**SegmentCount** | Pointer to **int32** |  | [optional] 
-**Entitlements** | Pointer to [**[]AccessProfileRole**](AccessProfileRole.md) |  | [optional] 
-**EntitlementCount** | Pointer to **int32** |  | [optional] 
+**Description** | Pointer to **string** | Access item&#39;s description. | [optional] 
+**Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
+**Modified** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
+**Synced** | Pointer to **NullableTime** | ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the &#x60;synced&#x60; time and the time when the updated data is actually available in the search API.  | [optional] 
+**Enabled** | Pointer to **bool** | Indicates whether the access item is currently enabled. | [optional] [default to false]
+**Requestable** | Pointer to **bool** | Indicates whether the access item can be requested. | [optional] [default to true]
+**RequestCommentsRequired** | Pointer to **bool** | Indicates whether comments are required for requests to access the item. | [optional] [default to false]
+**Owner** | Pointer to [**BaseAccessAllOfOwner**](BaseAccessAllOfOwner.md) |  | [optional] 
+**AccessProfiles** | Pointer to [**[]BaseAccessProfile**](BaseAccessProfile.md) | Access profiles included with the role. | [optional] 
+**AccessProfileCount** | Pointer to **int32** | Number of access profiles included with the role. | [optional] 
+**Tags** | Pointer to **[]string** | Tags that have been applied to the object. | [optional] 
+**Segments** | Pointer to [**[]BaseSegment**](BaseSegment.md) | Segments with the role. | [optional] 
+**SegmentCount** | Pointer to **int32** | Number of segments with the role. | [optional] 
+**Entitlements** | Pointer to [**[]BaseEntitlement**](BaseEntitlement.md) | Entitlements included with the role. | [optional] 
+**EntitlementCount** | Pointer to **int32** | Number of entitlements included with the role. | [optional] 
 
 ## Methods
 
@@ -309,20 +309,20 @@ HasRequestCommentsRequired returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *RoleDocument) GetOwner() Owner`
+`func (o *RoleDocument) GetOwner() BaseAccessAllOfOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *RoleDocument) GetOwnerOk() (*Owner, bool)`
+`func (o *RoleDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *RoleDocument) SetOwner(v Owner)`
+`func (o *RoleDocument) SetOwner(v BaseAccessAllOfOwner)`
 
 SetOwner sets Owner field to given value.
 
@@ -334,20 +334,20 @@ HasOwner returns a boolean if a field has been set.
 
 ### GetAccessProfiles
 
-`func (o *RoleDocument) GetAccessProfiles() []Reference`
+`func (o *RoleDocument) GetAccessProfiles() []BaseAccessProfile`
 
 GetAccessProfiles returns the AccessProfiles field if non-nil, zero value otherwise.
 
 ### GetAccessProfilesOk
 
-`func (o *RoleDocument) GetAccessProfilesOk() (*[]Reference, bool)`
+`func (o *RoleDocument) GetAccessProfilesOk() (*[]BaseAccessProfile, bool)`
 
 GetAccessProfilesOk returns a tuple with the AccessProfiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessProfiles
 
-`func (o *RoleDocument) SetAccessProfiles(v []Reference)`
+`func (o *RoleDocument) SetAccessProfiles(v []BaseAccessProfile)`
 
 SetAccessProfiles sets AccessProfiles field to given value.
 
@@ -409,20 +409,20 @@ HasTags returns a boolean if a field has been set.
 
 ### GetSegments
 
-`func (o *RoleDocument) GetSegments() []Reference`
+`func (o *RoleDocument) GetSegments() []BaseSegment`
 
 GetSegments returns the Segments field if non-nil, zero value otherwise.
 
 ### GetSegmentsOk
 
-`func (o *RoleDocument) GetSegmentsOk() (*[]Reference, bool)`
+`func (o *RoleDocument) GetSegmentsOk() (*[]BaseSegment, bool)`
 
 GetSegmentsOk returns a tuple with the Segments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSegments
 
-`func (o *RoleDocument) SetSegments(v []Reference)`
+`func (o *RoleDocument) SetSegments(v []BaseSegment)`
 
 SetSegments sets Segments field to given value.
 
@@ -459,20 +459,20 @@ HasSegmentCount returns a boolean if a field has been set.
 
 ### GetEntitlements
 
-`func (o *RoleDocument) GetEntitlements() []AccessProfileRole`
+`func (o *RoleDocument) GetEntitlements() []BaseEntitlement`
 
 GetEntitlements returns the Entitlements field if non-nil, zero value otherwise.
 
 ### GetEntitlementsOk
 
-`func (o *RoleDocument) GetEntitlementsOk() (*[]AccessProfileRole, bool)`
+`func (o *RoleDocument) GetEntitlementsOk() (*[]BaseEntitlement, bool)`
 
 GetEntitlementsOk returns a tuple with the Entitlements field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEntitlements
 
-`func (o *RoleDocument) SetEntitlements(v []AccessProfileRole)`
+`func (o *RoleDocument) SetEntitlements(v []BaseEntitlement)`
 
 SetEntitlements sets Entitlements field to given value.
 

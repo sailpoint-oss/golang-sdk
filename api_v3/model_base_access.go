@@ -24,20 +24,21 @@ type BaseAccess struct {
 	Id *string `json:"id,omitempty"`
 	// The human readable name of the referenced object.
 	Name *string `json:"name,omitempty"`
-	// The description of the access item
+	// Access item's description.
 	Description *string `json:"description,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was created.
 	Created NullableTime `json:"created,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. 
 	Synced NullableTime `json:"synced,omitempty"`
+	// Indicates whether the access item is currently enabled.
 	Enabled *bool `json:"enabled,omitempty"`
-	// Indicates if the access can be requested
+	// Indicates whether the access item can be requested.
 	Requestable *bool `json:"requestable,omitempty"`
-	// Indicates if comments are required when requesting access
+	// Indicates whether comments are required for requests to access the item.
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
-	Owner *Owner `json:"owner,omitempty"`
+	Owner *BaseAccessAllOfOwner `json:"owner,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -49,6 +50,12 @@ type _BaseAccess BaseAccess
 // will change when the set of required properties is changed
 func NewBaseAccess() *BaseAccess {
 	this := BaseAccess{}
+	var enabled bool = false
+	this.Enabled = &enabled
+	var requestable bool = true
+	this.Requestable = &requestable
+	var requestCommentsRequired bool = false
+	this.RequestCommentsRequired = &requestCommentsRequired
 	return &this
 }
 
@@ -57,6 +64,12 @@ func NewBaseAccess() *BaseAccess {
 // but it doesn't guarantee that properties required by API are set
 func NewBaseAccessWithDefaults() *BaseAccess {
 	this := BaseAccess{}
+	var enabled bool = false
+	this.Enabled = &enabled
+	var requestable bool = true
+	this.Requestable = &requestable
+	var requestCommentsRequired bool = false
+	this.RequestCommentsRequired = &requestCommentsRequired
 	return &this
 }
 
@@ -379,9 +392,9 @@ func (o *BaseAccess) SetRequestCommentsRequired(v bool) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *BaseAccess) GetOwner() Owner {
+func (o *BaseAccess) GetOwner() BaseAccessAllOfOwner {
 	if o == nil || isNil(o.Owner) {
-		var ret Owner
+		var ret BaseAccessAllOfOwner
 		return ret
 	}
 	return *o.Owner
@@ -389,7 +402,7 @@ func (o *BaseAccess) GetOwner() Owner {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseAccess) GetOwnerOk() (*Owner, bool) {
+func (o *BaseAccess) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
 	if o == nil || isNil(o.Owner) {
 		return nil, false
 	}
@@ -405,8 +418,8 @@ func (o *BaseAccess) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given Owner and assigns it to the Owner field.
-func (o *BaseAccess) SetOwner(v Owner) {
+// SetOwner gets a reference to the given BaseAccessAllOfOwner and assigns it to the Owner field.
+func (o *BaseAccess) SetOwner(v BaseAccessAllOfOwner) {
 	o.Owner = &v
 }
 

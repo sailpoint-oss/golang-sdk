@@ -26,26 +26,34 @@ type RoleDocument struct {
 	// The human readable name of the referenced object.
 	Name string `json:"name"`
 	Type DocumentType `json:"_type"`
-	// The description of the access item
+	// Access item's description.
 	Description *string `json:"description,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was created.
 	Created NullableTime `json:"created,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. 
 	Synced NullableTime `json:"synced,omitempty"`
+	// Indicates whether the access item is currently enabled.
 	Enabled *bool `json:"enabled,omitempty"`
-	// Indicates if the access can be requested
+	// Indicates whether the access item can be requested.
 	Requestable *bool `json:"requestable,omitempty"`
-	// Indicates if comments are required when requesting access
+	// Indicates whether comments are required for requests to access the item.
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
-	Owner *Owner `json:"owner,omitempty"`
-	AccessProfiles []Reference `json:"accessProfiles,omitempty"`
+	Owner *BaseAccessAllOfOwner `json:"owner,omitempty"`
+	// Access profiles included with the role.
+	AccessProfiles []BaseAccessProfile `json:"accessProfiles,omitempty"`
+	// Number of access profiles included with the role.
 	AccessProfileCount *int32 `json:"accessProfileCount,omitempty"`
+	// Tags that have been applied to the object.
 	Tags []string `json:"tags,omitempty"`
-	Segments []Reference `json:"segments,omitempty"`
+	// Segments with the role.
+	Segments []BaseSegment `json:"segments,omitempty"`
+	// Number of segments with the role.
 	SegmentCount *int32 `json:"segmentCount,omitempty"`
-	Entitlements []AccessProfileRole `json:"entitlements,omitempty"`
+	// Entitlements included with the role.
+	Entitlements []BaseEntitlement `json:"entitlements,omitempty"`
+	// Number of entitlements included with the role.
 	EntitlementCount *int32 `json:"entitlementCount,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -61,6 +69,12 @@ func NewRoleDocument(id string, name string, type_ DocumentType) *RoleDocument {
 	this.Id = id
 	this.Name = name
 	this.Type = type_
+	var enabled bool = false
+	this.Enabled = &enabled
+	var requestable bool = true
+	this.Requestable = &requestable
+	var requestCommentsRequired bool = false
+	this.RequestCommentsRequired = &requestCommentsRequired
 	return &this
 }
 
@@ -69,6 +83,12 @@ func NewRoleDocument(id string, name string, type_ DocumentType) *RoleDocument {
 // but it doesn't guarantee that properties required by API are set
 func NewRoleDocumentWithDefaults() *RoleDocument {
 	this := RoleDocument{}
+	var enabled bool = false
+	this.Enabled = &enabled
+	var requestable bool = true
+	this.Requestable = &requestable
+	var requestCommentsRequired bool = false
+	this.RequestCommentsRequired = &requestCommentsRequired
 	return &this
 }
 
@@ -399,9 +419,9 @@ func (o *RoleDocument) SetRequestCommentsRequired(v bool) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *RoleDocument) GetOwner() Owner {
+func (o *RoleDocument) GetOwner() BaseAccessAllOfOwner {
 	if o == nil || isNil(o.Owner) {
-		var ret Owner
+		var ret BaseAccessAllOfOwner
 		return ret
 	}
 	return *o.Owner
@@ -409,7 +429,7 @@ func (o *RoleDocument) GetOwner() Owner {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleDocument) GetOwnerOk() (*Owner, bool) {
+func (o *RoleDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
 	if o == nil || isNil(o.Owner) {
 		return nil, false
 	}
@@ -425,15 +445,15 @@ func (o *RoleDocument) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given Owner and assigns it to the Owner field.
-func (o *RoleDocument) SetOwner(v Owner) {
+// SetOwner gets a reference to the given BaseAccessAllOfOwner and assigns it to the Owner field.
+func (o *RoleDocument) SetOwner(v BaseAccessAllOfOwner) {
 	o.Owner = &v
 }
 
 // GetAccessProfiles returns the AccessProfiles field value if set, zero value otherwise.
-func (o *RoleDocument) GetAccessProfiles() []Reference {
+func (o *RoleDocument) GetAccessProfiles() []BaseAccessProfile {
 	if o == nil || isNil(o.AccessProfiles) {
-		var ret []Reference
+		var ret []BaseAccessProfile
 		return ret
 	}
 	return o.AccessProfiles
@@ -441,7 +461,7 @@ func (o *RoleDocument) GetAccessProfiles() []Reference {
 
 // GetAccessProfilesOk returns a tuple with the AccessProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleDocument) GetAccessProfilesOk() ([]Reference, bool) {
+func (o *RoleDocument) GetAccessProfilesOk() ([]BaseAccessProfile, bool) {
 	if o == nil || isNil(o.AccessProfiles) {
 		return nil, false
 	}
@@ -457,8 +477,8 @@ func (o *RoleDocument) HasAccessProfiles() bool {
 	return false
 }
 
-// SetAccessProfiles gets a reference to the given []Reference and assigns it to the AccessProfiles field.
-func (o *RoleDocument) SetAccessProfiles(v []Reference) {
+// SetAccessProfiles gets a reference to the given []BaseAccessProfile and assigns it to the AccessProfiles field.
+func (o *RoleDocument) SetAccessProfiles(v []BaseAccessProfile) {
 	o.AccessProfiles = v
 }
 
@@ -527,9 +547,9 @@ func (o *RoleDocument) SetTags(v []string) {
 }
 
 // GetSegments returns the Segments field value if set, zero value otherwise.
-func (o *RoleDocument) GetSegments() []Reference {
+func (o *RoleDocument) GetSegments() []BaseSegment {
 	if o == nil || isNil(o.Segments) {
-		var ret []Reference
+		var ret []BaseSegment
 		return ret
 	}
 	return o.Segments
@@ -537,7 +557,7 @@ func (o *RoleDocument) GetSegments() []Reference {
 
 // GetSegmentsOk returns a tuple with the Segments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleDocument) GetSegmentsOk() ([]Reference, bool) {
+func (o *RoleDocument) GetSegmentsOk() ([]BaseSegment, bool) {
 	if o == nil || isNil(o.Segments) {
 		return nil, false
 	}
@@ -553,8 +573,8 @@ func (o *RoleDocument) HasSegments() bool {
 	return false
 }
 
-// SetSegments gets a reference to the given []Reference and assigns it to the Segments field.
-func (o *RoleDocument) SetSegments(v []Reference) {
+// SetSegments gets a reference to the given []BaseSegment and assigns it to the Segments field.
+func (o *RoleDocument) SetSegments(v []BaseSegment) {
 	o.Segments = v
 }
 
@@ -591,9 +611,9 @@ func (o *RoleDocument) SetSegmentCount(v int32) {
 }
 
 // GetEntitlements returns the Entitlements field value if set, zero value otherwise.
-func (o *RoleDocument) GetEntitlements() []AccessProfileRole {
+func (o *RoleDocument) GetEntitlements() []BaseEntitlement {
 	if o == nil || isNil(o.Entitlements) {
-		var ret []AccessProfileRole
+		var ret []BaseEntitlement
 		return ret
 	}
 	return o.Entitlements
@@ -601,7 +621,7 @@ func (o *RoleDocument) GetEntitlements() []AccessProfileRole {
 
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RoleDocument) GetEntitlementsOk() ([]AccessProfileRole, bool) {
+func (o *RoleDocument) GetEntitlementsOk() ([]BaseEntitlement, bool) {
 	if o == nil || isNil(o.Entitlements) {
 		return nil, false
 	}
@@ -617,8 +637,8 @@ func (o *RoleDocument) HasEntitlements() bool {
 	return false
 }
 
-// SetEntitlements gets a reference to the given []AccessProfileRole and assigns it to the Entitlements field.
-func (o *RoleDocument) SetEntitlements(v []AccessProfileRole) {
+// SetEntitlements gets a reference to the given []BaseEntitlement and assigns it to the Entitlements field.
+func (o *RoleDocument) SetEntitlements(v []BaseEntitlement) {
 	o.Entitlements = v
 }
 

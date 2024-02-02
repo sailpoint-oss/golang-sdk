@@ -14,41 +14,39 @@ import (
 	"encoding/json"
 )
 
-// checks if the AccountSource type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccountSource{}
+// checks if the BaseAccessProfile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BaseAccessProfile{}
 
-// AccountSource struct for AccountSource
-type AccountSource struct {
-	// The unique ID of the referenced object.
+// BaseAccessProfile struct for BaseAccessProfile
+type BaseAccessProfile struct {
+	// Access profile's unique ID.
 	Id *string `json:"id,omitempty"`
-	// The human readable name of the referenced object.
+	// Access profile's display name.
 	Name *string `json:"name,omitempty"`
-	// Type of source returned.
-	Type *string `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _AccountSource AccountSource
+type _BaseAccessProfile BaseAccessProfile
 
-// NewAccountSource instantiates a new AccountSource object
+// NewBaseAccessProfile instantiates a new BaseAccessProfile object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountSource() *AccountSource {
-	this := AccountSource{}
+func NewBaseAccessProfile() *BaseAccessProfile {
+	this := BaseAccessProfile{}
 	return &this
 }
 
-// NewAccountSourceWithDefaults instantiates a new AccountSource object
+// NewBaseAccessProfileWithDefaults instantiates a new BaseAccessProfile object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAccountSourceWithDefaults() *AccountSource {
-	this := AccountSource{}
+func NewBaseAccessProfileWithDefaults() *BaseAccessProfile {
+	this := BaseAccessProfile{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *AccountSource) GetId() string {
+func (o *BaseAccessProfile) GetId() string {
 	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
@@ -58,7 +56,7 @@ func (o *AccountSource) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountSource) GetIdOk() (*string, bool) {
+func (o *BaseAccessProfile) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
@@ -66,7 +64,7 @@ func (o *AccountSource) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *AccountSource) HasId() bool {
+func (o *BaseAccessProfile) HasId() bool {
 	if o != nil && !isNil(o.Id) {
 		return true
 	}
@@ -75,12 +73,12 @@ func (o *AccountSource) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AccountSource) SetId(v string) {
+func (o *BaseAccessProfile) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *AccountSource) GetName() string {
+func (o *BaseAccessProfile) GetName() string {
 	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
@@ -90,7 +88,7 @@ func (o *AccountSource) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountSource) GetNameOk() (*string, bool) {
+func (o *BaseAccessProfile) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
@@ -98,7 +96,7 @@ func (o *AccountSource) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *AccountSource) HasName() bool {
+func (o *BaseAccessProfile) HasName() bool {
 	if o != nil && !isNil(o.Name) {
 		return true
 	}
@@ -107,43 +105,11 @@ func (o *AccountSource) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *AccountSource) SetName(v string) {
+func (o *BaseAccessProfile) SetName(v string) {
 	o.Name = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *AccountSource) GetType() string {
-	if o == nil || isNil(o.Type) {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AccountSource) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *AccountSource) HasType() bool {
-	if o != nil && !isNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *AccountSource) SetType(v string) {
-	o.Type = &v
-}
-
-func (o AccountSource) MarshalJSON() ([]byte, error) {
+func (o BaseAccessProfile) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -151,16 +117,13 @@ func (o AccountSource) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AccountSource) ToMap() (map[string]interface{}, error) {
+func (o BaseAccessProfile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -170,11 +133,11 @@ func (o AccountSource) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AccountSource) UnmarshalJSON(bytes []byte) (err error) {
-	varAccountSource := _AccountSource{}
+func (o *BaseAccessProfile) UnmarshalJSON(bytes []byte) (err error) {
+	varBaseAccessProfile := _BaseAccessProfile{}
 
-	if err = json.Unmarshal(bytes, &varAccountSource); err == nil {
-	*o = AccountSource(varAccountSource)
+	if err = json.Unmarshal(bytes, &varBaseAccessProfile); err == nil {
+	*o = BaseAccessProfile(varBaseAccessProfile)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -182,45 +145,44 @@ func (o *AccountSource) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "type")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableAccountSource struct {
-	value *AccountSource
+type NullableBaseAccessProfile struct {
+	value *BaseAccessProfile
 	isSet bool
 }
 
-func (v NullableAccountSource) Get() *AccountSource {
+func (v NullableBaseAccessProfile) Get() *BaseAccessProfile {
 	return v.value
 }
 
-func (v *NullableAccountSource) Set(val *AccountSource) {
+func (v *NullableBaseAccessProfile) Set(val *BaseAccessProfile) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAccountSource) IsSet() bool {
+func (v NullableBaseAccessProfile) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAccountSource) Unset() {
+func (v *NullableBaseAccessProfile) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAccountSource(val *AccountSource) *NullableAccountSource {
-	return &NullableAccountSource{value: val, isSet: true}
+func NewNullableBaseAccessProfile(val *BaseAccessProfile) *NullableBaseAccessProfile {
+	return &NullableBaseAccessProfile{value: val, isSet: true}
 }
 
-func (v NullableAccountSource) MarshalJSON() ([]byte, error) {
+func (v NullableBaseAccessProfile) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAccountSource) UnmarshalJSON(src []byte) error {
+func (v *NullableBaseAccessProfile) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

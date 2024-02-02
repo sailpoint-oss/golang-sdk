@@ -19,16 +19,22 @@ var _ MappedNullable = &BaseEntitlement{}
 
 // BaseEntitlement struct for BaseEntitlement
 type BaseEntitlement struct {
-	// The unique ID of the referenced object.
-	Id *string `json:"id,omitempty"`
-	// The human readable name of the referenced object.
-	Name *string `json:"name,omitempty"`
-	// A description of the entitlement
+	// Indicates whether the entitlement has permissions.
+	HasPermissions *bool `json:"hasPermissions,omitempty"`
+	// Entitlement's description.
 	Description *string `json:"description,omitempty"`
-	// The name of the entitlement attribute
+	// Entitlement attribute's name.
 	Attribute *string `json:"attribute,omitempty"`
-	// The value of the entitlement
+	// Entitlement's value.
 	Value *string `json:"value,omitempty"`
+	// Entitlement's schema.
+	Schema *string `json:"schema,omitempty"`
+	// Indicates whether the entitlement is privileged.
+	Privileged *bool `json:"privileged,omitempty"`
+	// Entitlement's ID.
+	Id *string `json:"id,omitempty"`
+	// Entitlement's name.
+	Name *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,6 +46,10 @@ type _BaseEntitlement BaseEntitlement
 // will change when the set of required properties is changed
 func NewBaseEntitlement() *BaseEntitlement {
 	this := BaseEntitlement{}
+	var hasPermissions bool = false
+	this.HasPermissions = &hasPermissions
+	var privileged bool = false
+	this.Privileged = &privileged
 	return &this
 }
 
@@ -48,71 +58,43 @@ func NewBaseEntitlement() *BaseEntitlement {
 // but it doesn't guarantee that properties required by API are set
 func NewBaseEntitlementWithDefaults() *BaseEntitlement {
 	this := BaseEntitlement{}
+	var hasPermissions bool = false
+	this.HasPermissions = &hasPermissions
+	var privileged bool = false
+	this.Privileged = &privileged
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *BaseEntitlement) GetId() string {
-	if o == nil || isNil(o.Id) {
-		var ret string
+// GetHasPermissions returns the HasPermissions field value if set, zero value otherwise.
+func (o *BaseEntitlement) GetHasPermissions() bool {
+	if o == nil || isNil(o.HasPermissions) {
+		var ret bool
 		return ret
 	}
-	return *o.Id
+	return *o.HasPermissions
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetHasPermissionsOk returns a tuple with the HasPermissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BaseEntitlement) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
+func (o *BaseEntitlement) GetHasPermissionsOk() (*bool, bool) {
+	if o == nil || isNil(o.HasPermissions) {
 		return nil, false
 	}
-	return o.Id, true
+	return o.HasPermissions, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *BaseEntitlement) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+// HasHasPermissions returns a boolean if a field has been set.
+func (o *BaseEntitlement) HasHasPermissions() bool {
+	if o != nil && !isNil(o.HasPermissions) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
-func (o *BaseEntitlement) SetId(v string) {
-	o.Id = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *BaseEntitlement) GetName() string {
-	if o == nil || isNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BaseEntitlement) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *BaseEntitlement) HasName() bool {
-	if o != nil && !isNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *BaseEntitlement) SetName(v string) {
-	o.Name = &v
+// SetHasPermissions gets a reference to the given bool and assigns it to the HasPermissions field.
+func (o *BaseEntitlement) SetHasPermissions(v bool) {
+	o.HasPermissions = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -211,6 +193,134 @@ func (o *BaseEntitlement) SetValue(v string) {
 	o.Value = &v
 }
 
+// GetSchema returns the Schema field value if set, zero value otherwise.
+func (o *BaseEntitlement) GetSchema() string {
+	if o == nil || isNil(o.Schema) {
+		var ret string
+		return ret
+	}
+	return *o.Schema
+}
+
+// GetSchemaOk returns a tuple with the Schema field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseEntitlement) GetSchemaOk() (*string, bool) {
+	if o == nil || isNil(o.Schema) {
+		return nil, false
+	}
+	return o.Schema, true
+}
+
+// HasSchema returns a boolean if a field has been set.
+func (o *BaseEntitlement) HasSchema() bool {
+	if o != nil && !isNil(o.Schema) {
+		return true
+	}
+
+	return false
+}
+
+// SetSchema gets a reference to the given string and assigns it to the Schema field.
+func (o *BaseEntitlement) SetSchema(v string) {
+	o.Schema = &v
+}
+
+// GetPrivileged returns the Privileged field value if set, zero value otherwise.
+func (o *BaseEntitlement) GetPrivileged() bool {
+	if o == nil || isNil(o.Privileged) {
+		var ret bool
+		return ret
+	}
+	return *o.Privileged
+}
+
+// GetPrivilegedOk returns a tuple with the Privileged field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseEntitlement) GetPrivilegedOk() (*bool, bool) {
+	if o == nil || isNil(o.Privileged) {
+		return nil, false
+	}
+	return o.Privileged, true
+}
+
+// HasPrivileged returns a boolean if a field has been set.
+func (o *BaseEntitlement) HasPrivileged() bool {
+	if o != nil && !isNil(o.Privileged) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivileged gets a reference to the given bool and assigns it to the Privileged field.
+func (o *BaseEntitlement) SetPrivileged(v bool) {
+	o.Privileged = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *BaseEntitlement) GetId() string {
+	if o == nil || isNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseEntitlement) GetIdOk() (*string, bool) {
+	if o == nil || isNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *BaseEntitlement) HasId() bool {
+	if o != nil && !isNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *BaseEntitlement) SetId(v string) {
+	o.Id = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise.
+func (o *BaseEntitlement) GetName() string {
+	if o == nil || isNil(o.Name) {
+		var ret string
+		return ret
+	}
+	return *o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseEntitlement) GetNameOk() (*string, bool) {
+	if o == nil || isNil(o.Name) {
+		return nil, false
+	}
+	return o.Name, true
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *BaseEntitlement) HasName() bool {
+	if o != nil && !isNil(o.Name) {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given string and assigns it to the Name field.
+func (o *BaseEntitlement) SetName(v string) {
+	o.Name = &v
+}
+
 func (o BaseEntitlement) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -221,11 +331,8 @@ func (o BaseEntitlement) MarshalJSON() ([]byte, error) {
 
 func (o BaseEntitlement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if !isNil(o.HasPermissions) {
+		toSerialize["hasPermissions"] = o.HasPermissions
 	}
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -235,6 +342,18 @@ func (o BaseEntitlement) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.Value) {
 		toSerialize["value"] = o.Value
+	}
+	if !isNil(o.Schema) {
+		toSerialize["schema"] = o.Schema
+	}
+	if !isNil(o.Privileged) {
+		toSerialize["privileged"] = o.Privileged
+	}
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !isNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -254,11 +373,14 @@ func (o *BaseEntitlement) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
+		delete(additionalProperties, "hasPermissions")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "attribute")
 		delete(additionalProperties, "value")
+		delete(additionalProperties, "schema")
+		delete(additionalProperties, "privileged")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -7,21 +7,21 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Name** | **string** |  | 
 **Type** | [**DocumentType**](DocumentType.md) |  | 
-**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Synced** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Action** | Pointer to **string** | The action that was performed | [optional] 
-**Type** | Pointer to **string** | The type of event | [optional] 
-**Actor** | Pointer to [**NameType**](NameType.md) |  | [optional] 
-**Target** | Pointer to [**NameType**](NameType.md) |  | [optional] 
-**Stack** | Pointer to **string** |  | [optional] 
-**TrackingNumber** | Pointer to **string** |  | [optional] 
-**IpAddress** | Pointer to **string** |  | [optional] 
-**Details** | Pointer to **string** |  | [optional] 
-**Attributes** | Pointer to **map[string]interface{}** |  | [optional] 
-**Objects** | Pointer to **[]string** |  | [optional] 
-**Operation** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to **string** |  | [optional] 
-**TechnicalName** | Pointer to **string** |  | [optional] 
+**Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
+**Synced** | Pointer to **string** | ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the &#x60;synced&#x60; time and the time when the updated data is actually available in the search API.  | [optional] 
+**Action** | Pointer to **string** | Name of the event as it&#39;s displayed in audit reports. | [optional] 
+**Type** | Pointer to **string** | Event type. Refer to [Event Types](https://documentation.sailpoint.com/saas/help/search/index.html#event-types) for a list of event types and their meanings. | [optional] 
+**Actor** | Pointer to **string** | Name of the actor that generated the event. | [optional] 
+**Target** | Pointer to **string** | Name of the target, or recipient, of the event. | [optional] 
+**Stack** | Pointer to **string** | The event&#39;s stack. | [optional] 
+**TrackingNumber** | Pointer to **string** | ID of the group of events. | [optional] 
+**IpAddress** | Pointer to **string** | Target system&#39;s IP address. | [optional] 
+**Details** | Pointer to **string** | ID of event&#39;s details. | [optional] 
+**Attributes** | Pointer to **map[string]interface{}** | Attributes involved in the event. | [optional] 
+**Objects** | Pointer to **[]string** | Objects the event is happening to. | [optional] 
+**Operation** | Pointer to **string** | Operation, or action, performed during the event. | [optional] 
+**Status** | Pointer to **string** | Event status. Refer to [Event Statuses](https://documentation.sailpoint.com/saas/help/search/index.html#event-statuses) for a list of event statuses and their meanings. | [optional] 
+**TechnicalName** | Pointer to **string** | Event&#39;s normalized name. This normalized name always follows the pattern of &#39;objects_operation_status&#39;. | [optional] 
 
 ## Methods
 
@@ -139,20 +139,20 @@ HasCreated returns a boolean if a field has been set.
 UnsetCreated ensures that no value is present for Created, not even an explicit nil
 ### GetSynced
 
-`func (o *EventDocument) GetSynced() time.Time`
+`func (o *EventDocument) GetSynced() string`
 
 GetSynced returns the Synced field if non-nil, zero value otherwise.
 
 ### GetSyncedOk
 
-`func (o *EventDocument) GetSyncedOk() (*time.Time, bool)`
+`func (o *EventDocument) GetSyncedOk() (*string, bool)`
 
 GetSyncedOk returns a tuple with the Synced field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSynced
 
-`func (o *EventDocument) SetSynced(v time.Time)`
+`func (o *EventDocument) SetSynced(v string)`
 
 SetSynced sets Synced field to given value.
 
@@ -162,16 +162,6 @@ SetSynced sets Synced field to given value.
 
 HasSynced returns a boolean if a field has been set.
 
-### SetSyncedNil
-
-`func (o *EventDocument) SetSyncedNil(b bool)`
-
- SetSyncedNil sets the value for Synced to be an explicit nil
-
-### UnsetSynced
-`func (o *EventDocument) UnsetSynced()`
-
-UnsetSynced ensures that no value is present for Synced, not even an explicit nil
 ### GetAction
 
 `func (o *EventDocument) GetAction() string`
@@ -224,20 +214,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetActor
 
-`func (o *EventDocument) GetActor() NameType`
+`func (o *EventDocument) GetActor() string`
 
 GetActor returns the Actor field if non-nil, zero value otherwise.
 
 ### GetActorOk
 
-`func (o *EventDocument) GetActorOk() (*NameType, bool)`
+`func (o *EventDocument) GetActorOk() (*string, bool)`
 
 GetActorOk returns a tuple with the Actor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetActor
 
-`func (o *EventDocument) SetActor(v NameType)`
+`func (o *EventDocument) SetActor(v string)`
 
 SetActor sets Actor field to given value.
 
@@ -249,20 +239,20 @@ HasActor returns a boolean if a field has been set.
 
 ### GetTarget
 
-`func (o *EventDocument) GetTarget() NameType`
+`func (o *EventDocument) GetTarget() string`
 
 GetTarget returns the Target field if non-nil, zero value otherwise.
 
 ### GetTargetOk
 
-`func (o *EventDocument) GetTargetOk() (*NameType, bool)`
+`func (o *EventDocument) GetTargetOk() (*string, bool)`
 
 GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTarget
 
-`func (o *EventDocument) SetTarget(v NameType)`
+`func (o *EventDocument) SetTarget(v string)`
 
 SetTarget sets Target field to given value.
 

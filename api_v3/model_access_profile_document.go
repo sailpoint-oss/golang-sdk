@@ -19,30 +19,35 @@ import (
 // checks if the AccessProfileDocument type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AccessProfileDocument{}
 
-// AccessProfileDocument This is more of a complete representation of an access profile.  
+// AccessProfileDocument More complete representation of an access profile.  
 type AccessProfileDocument struct {
-	// The unique ID of the referenced object.
+	// Access profile's ID.
 	Id string `json:"id"`
-	// The human readable name of the referenced object.
+	// Access profile's name.
 	Name string `json:"name"`
-	Type DocumentType `json:"_type"`
-	// The description of the access item
+	// Access item's description.
 	Description *string `json:"description,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was created.
 	Created NullableTime `json:"created,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. 
 	Synced NullableTime `json:"synced,omitempty"`
+	// Indicates whether the access item is currently enabled.
 	Enabled *bool `json:"enabled,omitempty"`
-	// Indicates if the access can be requested
+	// Indicates whether the access item can be requested.
 	Requestable *bool `json:"requestable,omitempty"`
-	// Indicates if comments are required when requesting access
+	// Indicates whether comments are required for requests to access the item.
 	RequestCommentsRequired *bool `json:"requestCommentsRequired,omitempty"`
-	Owner *Owner `json:"owner,omitempty"`
-	Source *Reference `json:"source,omitempty"`
+	Owner *BaseAccessAllOfOwner `json:"owner,omitempty"`
+	// Access profile's document type.  This enum represents the currently supported document types. Additional values may be added in the future without notice.
+	Type string `json:"_type"`
+	Source *AccessProfileDocumentAllOfSource `json:"source,omitempty"`
+	// Entitlements the access profile has access to.
 	Entitlements []BaseEntitlement `json:"entitlements,omitempty"`
+	// Number of entitlements.
 	EntitlementCount *int32 `json:"entitlementCount,omitempty"`
+	// Tags that have been applied to the object.
 	Tags []string `json:"tags,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -53,10 +58,16 @@ type _AccessProfileDocument AccessProfileDocument
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccessProfileDocument(id string, name string, type_ DocumentType) *AccessProfileDocument {
+func NewAccessProfileDocument(id string, name string, type_ string) *AccessProfileDocument {
 	this := AccessProfileDocument{}
 	this.Id = id
 	this.Name = name
+	var enabled bool = false
+	this.Enabled = &enabled
+	var requestable bool = true
+	this.Requestable = &requestable
+	var requestCommentsRequired bool = false
+	this.RequestCommentsRequired = &requestCommentsRequired
 	this.Type = type_
 	return &this
 }
@@ -66,6 +77,12 @@ func NewAccessProfileDocument(id string, name string, type_ DocumentType) *Acces
 // but it doesn't guarantee that properties required by API are set
 func NewAccessProfileDocumentWithDefaults() *AccessProfileDocument {
 	this := AccessProfileDocument{}
+	var enabled bool = false
+	this.Enabled = &enabled
+	var requestable bool = true
+	this.Requestable = &requestable
+	var requestCommentsRequired bool = false
+	this.RequestCommentsRequired = &requestCommentsRequired
 	return &this
 }
 
@@ -115,30 +132,6 @@ func (o *AccessProfileDocument) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *AccessProfileDocument) SetName(v string) {
 	o.Name = v
-}
-
-// GetType returns the Type field value
-func (o *AccessProfileDocument) GetType() DocumentType {
-	if o == nil {
-		var ret DocumentType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AccessProfileDocument) GetTypeOk() (*DocumentType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *AccessProfileDocument) SetType(v DocumentType) {
-	o.Type = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -396,9 +389,9 @@ func (o *AccessProfileDocument) SetRequestCommentsRequired(v bool) {
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.
-func (o *AccessProfileDocument) GetOwner() Owner {
+func (o *AccessProfileDocument) GetOwner() BaseAccessAllOfOwner {
 	if o == nil || isNil(o.Owner) {
-		var ret Owner
+		var ret BaseAccessAllOfOwner
 		return ret
 	}
 	return *o.Owner
@@ -406,7 +399,7 @@ func (o *AccessProfileDocument) GetOwner() Owner {
 
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessProfileDocument) GetOwnerOk() (*Owner, bool) {
+func (o *AccessProfileDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool) {
 	if o == nil || isNil(o.Owner) {
 		return nil, false
 	}
@@ -422,15 +415,39 @@ func (o *AccessProfileDocument) HasOwner() bool {
 	return false
 }
 
-// SetOwner gets a reference to the given Owner and assigns it to the Owner field.
-func (o *AccessProfileDocument) SetOwner(v Owner) {
+// SetOwner gets a reference to the given BaseAccessAllOfOwner and assigns it to the Owner field.
+func (o *AccessProfileDocument) SetOwner(v BaseAccessAllOfOwner) {
 	o.Owner = &v
 }
 
+// GetType returns the Type field value
+func (o *AccessProfileDocument) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AccessProfileDocument) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AccessProfileDocument) SetType(v string) {
+	o.Type = v
+}
+
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *AccessProfileDocument) GetSource() Reference {
+func (o *AccessProfileDocument) GetSource() AccessProfileDocumentAllOfSource {
 	if o == nil || isNil(o.Source) {
-		var ret Reference
+		var ret AccessProfileDocumentAllOfSource
 		return ret
 	}
 	return *o.Source
@@ -438,7 +455,7 @@ func (o *AccessProfileDocument) GetSource() Reference {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccessProfileDocument) GetSourceOk() (*Reference, bool) {
+func (o *AccessProfileDocument) GetSourceOk() (*AccessProfileDocumentAllOfSource, bool) {
 	if o == nil || isNil(o.Source) {
 		return nil, false
 	}
@@ -454,8 +471,8 @@ func (o *AccessProfileDocument) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given Reference and assigns it to the Source field.
-func (o *AccessProfileDocument) SetSource(v Reference) {
+// SetSource gets a reference to the given AccessProfileDocumentAllOfSource and assigns it to the Source field.
+func (o *AccessProfileDocument) SetSource(v AccessProfileDocumentAllOfSource) {
 	o.Source = &v
 }
 
@@ -567,7 +584,6 @@ func (o AccessProfileDocument) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	toSerialize["_type"] = o.Type
 	if !isNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -592,6 +608,7 @@ func (o AccessProfileDocument) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
+	toSerialize["_type"] = o.Type
 	if !isNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
@@ -647,7 +664,6 @@ func (o *AccessProfileDocument) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "_type")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
@@ -656,6 +672,7 @@ func (o *AccessProfileDocument) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "requestable")
 		delete(additionalProperties, "requestCommentsRequired")
 		delete(additionalProperties, "owner")
+		delete(additionalProperties, "_type")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "entitlements")
 		delete(additionalProperties, "entitlementCount")

@@ -7,22 +7,22 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Name** | **string** |  | 
 **Type** | [**DocumentType**](DocumentType.md) |  | 
-**Action** | Pointer to **string** | The type of action that this activity performed | [optional] 
-**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Stage** | Pointer to **string** | The current stage of the activity | [optional] 
-**Origin** | Pointer to **NullableString** |  | [optional] 
-**Status** | Pointer to **string** | the current status of the activity | [optional] 
+**Action** | Pointer to **string** | Type of action performed in the activity. | [optional] 
+**Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
+**Modified** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
+**Stage** | Pointer to **string** | Activity&#39;s current stage. | [optional] 
+**Origin** | Pointer to **NullableString** | Activity&#39;s origin. | [optional] 
+**Status** | Pointer to **string** | Activity&#39;s current status. | [optional] 
 **Requester** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
 **Recipient** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
-**TrackingNumber** | Pointer to **string** |  | [optional] 
-**Errors** | Pointer to **[]string** |  | [optional] 
-**Warnings** | Pointer to **[]string** |  | [optional] 
-**Approvals** | Pointer to [**[]Approval**](Approval.md) |  | [optional] 
-**OriginalRequests** | Pointer to [**[]OriginalRequest**](OriginalRequest.md) |  | [optional] 
-**ExpansionItems** | Pointer to [**[]ExpansionItem**](ExpansionItem.md) |  | [optional] 
-**AccountRequests** | Pointer to [**[]AccountRequest**](AccountRequest.md) |  | [optional] 
-**Sources** | Pointer to **string** |  | [optional] 
+**TrackingNumber** | Pointer to **string** | Account activity&#39;s tracking number. | [optional] 
+**Errors** | Pointer to **[]string** | Errors provided by the source while completing account actions. | [optional] 
+**Warnings** | Pointer to **[]string** | Warnings provided by the source while completing account actions. | [optional] 
+**Approvals** | Pointer to [**[]Approval**](Approval.md) | Approvals performed on an item during activity. | [optional] 
+**OriginalRequests** | Pointer to [**[]OriginalRequest**](OriginalRequest.md) | Original actions that triggered all individual source actions related to the account action. | [optional] 
+**ExpansionItems** | Pointer to [**[]ExpansionItem**](ExpansionItem.md) | Controls that translated the attribute requests into actual provisioning actions on the source. | [optional] 
+**AccountRequests** | Pointer to [**[]AccountRequest**](AccountRequest.md) | Account data for each individual source action triggered by the original requests. | [optional] 
+**Sources** | Pointer to **string** | Sources involved in the account activity. | [optional] 
 
 ## Methods
 

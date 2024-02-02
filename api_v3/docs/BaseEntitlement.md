@@ -4,11 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
-**Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
-**Description** | Pointer to **string** | A description of the entitlement | [optional] 
-**Attribute** | Pointer to **string** | The name of the entitlement attribute | [optional] 
-**Value** | Pointer to **string** | The value of the entitlement | [optional] 
+**HasPermissions** | Pointer to **bool** | Indicates whether the entitlement has permissions. | [optional] [default to false]
+**Description** | Pointer to **string** | Entitlement&#39;s description. | [optional] 
+**Attribute** | Pointer to **string** | Entitlement attribute&#39;s name. | [optional] 
+**Value** | Pointer to **string** | Entitlement&#39;s value. | [optional] 
+**Schema** | Pointer to **string** | Entitlement&#39;s schema. | [optional] 
+**Privileged** | Pointer to **bool** | Indicates whether the entitlement is privileged. | [optional] [default to false]
+**Id** | Pointer to **string** | Entitlement&#39;s ID. | [optional] 
+**Name** | Pointer to **string** | Entitlement&#39;s name. | [optional] 
 
 ## Methods
 
@@ -29,55 +32,30 @@ NewBaseEntitlementWithDefaults instantiates a new BaseEntitlement object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetHasPermissions
 
-`func (o *BaseEntitlement) GetId() string`
+`func (o *BaseEntitlement) GetHasPermissions() bool`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetHasPermissions returns the HasPermissions field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetHasPermissionsOk
 
-`func (o *BaseEntitlement) GetIdOk() (*string, bool)`
+`func (o *BaseEntitlement) GetHasPermissionsOk() (*bool, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetHasPermissionsOk returns a tuple with the HasPermissions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetHasPermissions
 
-`func (o *BaseEntitlement) SetId(v string)`
+`func (o *BaseEntitlement) SetHasPermissions(v bool)`
 
-SetId sets Id field to given value.
+SetHasPermissions sets HasPermissions field to given value.
 
-### HasId
+### HasHasPermissions
 
-`func (o *BaseEntitlement) HasId() bool`
+`func (o *BaseEntitlement) HasHasPermissions() bool`
 
-HasId returns a boolean if a field has been set.
-
-### GetName
-
-`func (o *BaseEntitlement) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *BaseEntitlement) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *BaseEntitlement) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *BaseEntitlement) HasName() bool`
-
-HasName returns a boolean if a field has been set.
+HasHasPermissions returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -153,6 +131,106 @@ SetValue sets Value field to given value.
 `func (o *BaseEntitlement) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
+
+### GetSchema
+
+`func (o *BaseEntitlement) GetSchema() string`
+
+GetSchema returns the Schema field if non-nil, zero value otherwise.
+
+### GetSchemaOk
+
+`func (o *BaseEntitlement) GetSchemaOk() (*string, bool)`
+
+GetSchemaOk returns a tuple with the Schema field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchema
+
+`func (o *BaseEntitlement) SetSchema(v string)`
+
+SetSchema sets Schema field to given value.
+
+### HasSchema
+
+`func (o *BaseEntitlement) HasSchema() bool`
+
+HasSchema returns a boolean if a field has been set.
+
+### GetPrivileged
+
+`func (o *BaseEntitlement) GetPrivileged() bool`
+
+GetPrivileged returns the Privileged field if non-nil, zero value otherwise.
+
+### GetPrivilegedOk
+
+`func (o *BaseEntitlement) GetPrivilegedOk() (*bool, bool)`
+
+GetPrivilegedOk returns a tuple with the Privileged field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivileged
+
+`func (o *BaseEntitlement) SetPrivileged(v bool)`
+
+SetPrivileged sets Privileged field to given value.
+
+### HasPrivileged
+
+`func (o *BaseEntitlement) HasPrivileged() bool`
+
+HasPrivileged returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *BaseEntitlement) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *BaseEntitlement) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *BaseEntitlement) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *BaseEntitlement) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *BaseEntitlement) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *BaseEntitlement) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *BaseEntitlement) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *BaseEntitlement) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

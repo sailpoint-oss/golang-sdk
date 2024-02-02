@@ -4,27 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | The unique ID of the referenced object. | 
-**Name** | **string** | The human readable name of the referenced object. | 
-**Type** | [**DocumentType**](DocumentType.md) |  | 
-**Description** | Pointer to **string** | The description of the access item | [optional] 
-**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Synced** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Enabled** | Pointer to **bool** |  | [optional] 
-**Requestable** | Pointer to **bool** | Indicates if the access can be requested | [optional] 
-**RequestCommentsRequired** | Pointer to **bool** | Indicates if comments are required when requesting access | [optional] 
-**Owner** | Pointer to [**Owner**](Owner.md) |  | [optional] 
-**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
-**Entitlements** | Pointer to [**[]BaseEntitlement**](BaseEntitlement.md) |  | [optional] 
-**EntitlementCount** | Pointer to **int32** |  | [optional] 
-**Tags** | Pointer to **[]string** |  | [optional] 
+**Id** | **string** | Access profile&#39;s ID. | 
+**Name** | **string** | Access profile&#39;s name. | 
+**Description** | Pointer to **string** | Access item&#39;s description. | [optional] 
+**Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
+**Modified** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
+**Synced** | Pointer to **NullableTime** | ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the &#x60;synced&#x60; time and the time when the updated data is actually available in the search API.  | [optional] 
+**Enabled** | Pointer to **bool** | Indicates whether the access item is currently enabled. | [optional] [default to false]
+**Requestable** | Pointer to **bool** | Indicates whether the access item can be requested. | [optional] [default to true]
+**RequestCommentsRequired** | Pointer to **bool** | Indicates whether comments are required for requests to access the item. | [optional] [default to false]
+**Owner** | Pointer to [**BaseAccessAllOfOwner**](BaseAccessAllOfOwner.md) |  | [optional] 
+**Type** | **string** | Access profile&#39;s document type.  This enum represents the currently supported document types. Additional values may be added in the future without notice. | 
+**Source** | Pointer to [**AccessProfileDocumentAllOfSource**](AccessProfileDocumentAllOfSource.md) |  | [optional] 
+**Entitlements** | Pointer to [**[]BaseEntitlement**](BaseEntitlement.md) | Entitlements the access profile has access to. | [optional] 
+**EntitlementCount** | Pointer to **int32** | Number of entitlements. | [optional] 
+**Tags** | Pointer to **[]string** | Tags that have been applied to the object. | [optional] 
 
 ## Methods
 
 ### NewAccessProfileDocument
 
-`func NewAccessProfileDocument(id string, name string, type_ DocumentType, ) *AccessProfileDocument`
+`func NewAccessProfileDocument(id string, name string, type_ string, ) *AccessProfileDocument`
 
 NewAccessProfileDocument instantiates a new AccessProfileDocument object
 This constructor will assign default values to properties that have it defined,
@@ -77,26 +77,6 @@ and a boolean to check if the value has been set.
 `func (o *AccessProfileDocument) SetName(v string)`
 
 SetName sets Name field to given value.
-
-
-### GetType
-
-`func (o *AccessProfileDocument) GetType() DocumentType`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *AccessProfileDocument) GetTypeOk() (*DocumentType, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *AccessProfileDocument) SetType(v DocumentType)`
-
-SetType sets Type field to given value.
 
 
 ### GetDescription
@@ -306,20 +286,20 @@ HasRequestCommentsRequired returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *AccessProfileDocument) GetOwner() Owner`
+`func (o *AccessProfileDocument) GetOwner() BaseAccessAllOfOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *AccessProfileDocument) GetOwnerOk() (*Owner, bool)`
+`func (o *AccessProfileDocument) GetOwnerOk() (*BaseAccessAllOfOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *AccessProfileDocument) SetOwner(v Owner)`
+`func (o *AccessProfileDocument) SetOwner(v BaseAccessAllOfOwner)`
 
 SetOwner sets Owner field to given value.
 
@@ -329,22 +309,42 @@ SetOwner sets Owner field to given value.
 
 HasOwner returns a boolean if a field has been set.
 
+### GetType
+
+`func (o *AccessProfileDocument) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AccessProfileDocument) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AccessProfileDocument) SetType(v string)`
+
+SetType sets Type field to given value.
+
+
 ### GetSource
 
-`func (o *AccessProfileDocument) GetSource() Reference`
+`func (o *AccessProfileDocument) GetSource() AccessProfileDocumentAllOfSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *AccessProfileDocument) GetSourceOk() (*Reference, bool)`
+`func (o *AccessProfileDocument) GetSourceOk() (*AccessProfileDocumentAllOfSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *AccessProfileDocument) SetSource(v Reference)`
+`func (o *AccessProfileDocument) SetSource(v AccessProfileDocumentAllOfSource)`
 
 SetSource sets Source field to given value.
 

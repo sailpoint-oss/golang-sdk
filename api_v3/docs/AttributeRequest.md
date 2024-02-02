@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | The attribute name | [optional] 
-**Op** | Pointer to **string** | The operation to perform | [optional] 
-**Value** | Pointer to **string** | The value of the attribute | [optional] 
+**Name** | Pointer to **string** | Attribute name. | [optional] 
+**Op** | Pointer to **string** | Operation to perform on attribute. | [optional] 
+**Value** | Pointer to **string** | Value of attribute. | [optional] 
 
 ## Methods
 

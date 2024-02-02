@@ -19,10 +19,11 @@ var _ MappedNullable = &OriginalRequest{}
 
 // OriginalRequest struct for OriginalRequest
 type OriginalRequest struct {
-	// the account id
+	// Account ID.
 	AccountId *string `json:"accountId,omitempty"`
+	// Attribute changes requested for account.
 	AttributeRequests []AttributeRequest `json:"attributeRequests,omitempty"`
-	// the operation that was used
+	// Operation used.
 	Op *string `json:"op,omitempty"`
 	Source *AccountSource `json:"source,omitempty"`
 	AdditionalProperties map[string]interface{}

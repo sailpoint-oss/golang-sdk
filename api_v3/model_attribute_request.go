@@ -19,11 +19,11 @@ var _ MappedNullable = &AttributeRequest{}
 
 // AttributeRequest struct for AttributeRequest
 type AttributeRequest struct {
-	// The attribute name
+	// Attribute name.
 	Name *string `json:"name,omitempty"`
-	// The operation to perform
+	// Operation to perform on attribute.
 	Op *string `json:"op,omitempty"`
-	// The value of the attribute
+	// Value of attribute.
 	Value *string `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

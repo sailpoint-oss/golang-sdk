@@ -6,15 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
 **Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
-**AccountId** | Pointer to **string** | The ID of the account | [optional] 
+**AccountId** | Pointer to **string** | Account ID. | [optional] 
 **Source** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
-**Disabled** | Pointer to **bool** | Indicates if the account is disabled | [optional] 
-**Locked** | Pointer to **bool** | Indicates if the account is locked | [optional] 
-**Privileged** | Pointer to **bool** |  | [optional] 
-**ManuallyCorrelated** | Pointer to **bool** | Indicates if the account has been manually correlated to an identity | [optional] 
+**Disabled** | Pointer to **bool** | Indicates whether the account is disabled. | [optional] [default to false]
+**Locked** | Pointer to **bool** | Indicates whether the account is locked. | [optional] [default to false]
+**Privileged** | Pointer to **bool** | Indicates whether the account is privileged. | [optional] [default to false]
+**ManuallyCorrelated** | Pointer to **bool** | Indicates whether the account has been manually correlated to an identity. | [optional] [default to false]
 **PasswordLastSet** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**EntitlementAttributes** | Pointer to **map[string]interface{}** | a map or dictionary of key/value pairs | [optional] 
-**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
+**EntitlementAttributes** | Pointer to **map[string]interface{}** | Map or dictionary of key/value pairs. | [optional] 
+**Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
 
 ## Methods
 

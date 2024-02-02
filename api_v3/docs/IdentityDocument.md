@@ -7,36 +7,37 @@ Name | Type | Description | Notes
 **Id** | **string** | The unique ID of the referenced object. | 
 **Name** | **string** | The human readable name of the referenced object. | 
 **Type** | [**DocumentType**](DocumentType.md) |  | 
-**DisplayName** | Pointer to **string** | The display name of the identity | [optional] 
-**FirstName** | Pointer to **string** | The first name of the identity | [optional] 
-**LastName** | Pointer to **string** | The last name of the identity | [optional] 
-**Email** | Pointer to **string** | The identity&#39;s primary email address | [optional] 
-**Created** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Modified** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Synced** | Pointer to **NullableTime** | A date-time in ISO-8601 format | [optional] 
-**Phone** | Pointer to **string** | The phone number of the identity | [optional] 
-**Inactive** | Pointer to **bool** | Indicates if the identity is inactive | [optional] 
-**Protected** | Pointer to **bool** |  | [optional] 
-**Status** | Pointer to **string** | The identity&#39;s status in SailPoint | [optional] 
-**EmployeeNumber** | Pointer to **string** |  | [optional] 
-**Manager** | Pointer to [**DisplayReference**](DisplayReference.md) |  | [optional] 
-**IsManager** | Pointer to **bool** | Indicates if this identity is a manager of other identities | [optional] 
-**IdentityProfile** | Pointer to [**Reference**](Reference.md) |  | [optional] 
-**Source** | Pointer to [**Reference**](Reference.md) |  | [optional] 
-**Attributes** | Pointer to **map[string]interface{}** | a map or dictionary of key/value pairs | [optional] 
-**ProcessingState** | Pointer to **NullableString** |  | [optional] 
+**DisplayName** | Pointer to **string** | Identity&#39;s display name. | [optional] 
+**FirstName** | Pointer to **string** | Identity&#39;s first name. | [optional] 
+**LastName** | Pointer to **string** | Identity&#39;s last name. | [optional] 
+**Email** | Pointer to **string** | Identity&#39;s primary email address. | [optional] 
+**Created** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was created. | [optional] 
+**Modified** | Pointer to **NullableTime** | ISO-8601 date-time referring to the time when the object was last modified. | [optional] 
+**Phone** | Pointer to **string** | Identity&#39;s phone number. | [optional] 
+**Synced** | Pointer to **string** | ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the &#x60;synced&#x60; time and the time when the updated data is actually available in the search API.  | [optional] 
+**Inactive** | Pointer to **bool** | Indicates whether the identity is inactive. | [optional] [default to false]
+**Protected** | Pointer to **bool** | Indicates whether the identity is protected. | [optional] [default to false]
+**Status** | Pointer to **string** | Identity&#39;s status in SailPoint. | [optional] 
+**EmployeeNumber** | Pointer to **string** | Identity&#39;s employee number. | [optional] 
+**Manager** | Pointer to [**NullableIdentityDocumentAllOfManager**](IdentityDocumentAllOfManager.md) |  | [optional] 
+**IsManager** | Pointer to **bool** | Indicates whether the identity is a manager of other identities. | [optional] 
+**IdentityProfile** | Pointer to [**IdentityDocumentAllOfIdentityProfile**](IdentityDocumentAllOfIdentityProfile.md) |  | [optional] 
+**Source** | Pointer to [**IdentityDocumentAllOfSource**](IdentityDocumentAllOfSource.md) |  | [optional] 
+**Attributes** | Pointer to **map[string]interface{}** | Map or dictionary of key/value pairs. | [optional] 
+**ProcessingState** | Pointer to **NullableString** | Identity&#39;s processing state. | [optional] 
 **ProcessingDetails** | Pointer to [**ProcessingDetails**](ProcessingDetails.md) |  | [optional] 
-**Accounts** | Pointer to [**[]BaseAccount**](BaseAccount.md) | List of accounts associated with the identity | [optional] 
-**AccountCount** | Pointer to **int32** | Number of accounts associated with the identity | [optional] 
-**Apps** | Pointer to [**[]App**](App.md) | The list of applications the identity has access to | [optional] 
-**AppCount** | Pointer to **int32** | The number of applications the identity has access to | [optional] 
-**Access** | Pointer to [**[]IdentityAccess**](IdentityAccess.md) | The list of access items assigned to the identity | [optional] 
-**AccessCount** | Pointer to **int32** | The number of access items assigned to the identity | [optional] 
-**AccessProfileCount** | Pointer to **int32** | The number of access profiles assigned to the identity | [optional] 
-**EntitlementCount** | Pointer to **int32** | The number of entitlements assigned to the identity | [optional] 
-**RoleCount** | Pointer to **int32** | The number of roles assigned to the identity | [optional] 
-**Owns** | Pointer to [**Owns**](Owns.md) |  | [optional] 
-**Tags** | Pointer to **[]string** |  | [optional] 
+**Accounts** | Pointer to [**[]BaseAccount**](BaseAccount.md) | List of accounts associated with the identity. | [optional] 
+**AccountCount** | Pointer to **int32** | Number of accounts associated with the identity. | [optional] 
+**Apps** | Pointer to [**[]App**](App.md) | List of applications the identity has access to. | [optional] 
+**AppCount** | Pointer to **int32** | Number of applications the identity has access to. | [optional] 
+**Access** | Pointer to [**[]IdentityAccess**](IdentityAccess.md) | List of access items assigned to the identity. | [optional] 
+**AccessCount** | Pointer to **int32** | Number of access items assigned to the identity. | [optional] 
+**EntitlementCount** | Pointer to **int32** | Number of entitlements assigned to the identity. | [optional] 
+**RoleCount** | Pointer to **int32** | Number of roles assigned to the identity. | [optional] 
+**AccessProfileCount** | Pointer to **int32** | Number of access profiles assigned to the identity. | [optional] 
+**Owns** | Pointer to [**[]Owns**](Owns.md) | Access items the identity owns. | [optional] 
+**OwnsCount** | Pointer to **int32** | Number of access items the identity owns. | [optional] 
+**Tags** | Pointer to **[]string** | Tags that have been applied to the object. | [optional] 
 
 ## Methods
 
@@ -287,41 +288,6 @@ HasModified returns a boolean if a field has been set.
 `func (o *IdentityDocument) UnsetModified()`
 
 UnsetModified ensures that no value is present for Modified, not even an explicit nil
-### GetSynced
-
-`func (o *IdentityDocument) GetSynced() time.Time`
-
-GetSynced returns the Synced field if non-nil, zero value otherwise.
-
-### GetSyncedOk
-
-`func (o *IdentityDocument) GetSyncedOk() (*time.Time, bool)`
-
-GetSyncedOk returns a tuple with the Synced field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSynced
-
-`func (o *IdentityDocument) SetSynced(v time.Time)`
-
-SetSynced sets Synced field to given value.
-
-### HasSynced
-
-`func (o *IdentityDocument) HasSynced() bool`
-
-HasSynced returns a boolean if a field has been set.
-
-### SetSyncedNil
-
-`func (o *IdentityDocument) SetSyncedNil(b bool)`
-
- SetSyncedNil sets the value for Synced to be an explicit nil
-
-### UnsetSynced
-`func (o *IdentityDocument) UnsetSynced()`
-
-UnsetSynced ensures that no value is present for Synced, not even an explicit nil
 ### GetPhone
 
 `func (o *IdentityDocument) GetPhone() string`
@@ -346,6 +312,31 @@ SetPhone sets Phone field to given value.
 `func (o *IdentityDocument) HasPhone() bool`
 
 HasPhone returns a boolean if a field has been set.
+
+### GetSynced
+
+`func (o *IdentityDocument) GetSynced() string`
+
+GetSynced returns the Synced field if non-nil, zero value otherwise.
+
+### GetSyncedOk
+
+`func (o *IdentityDocument) GetSyncedOk() (*string, bool)`
+
+GetSyncedOk returns a tuple with the Synced field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSynced
+
+`func (o *IdentityDocument) SetSynced(v string)`
+
+SetSynced sets Synced field to given value.
+
+### HasSynced
+
+`func (o *IdentityDocument) HasSynced() bool`
+
+HasSynced returns a boolean if a field has been set.
 
 ### GetInactive
 
@@ -449,20 +440,20 @@ HasEmployeeNumber returns a boolean if a field has been set.
 
 ### GetManager
 
-`func (o *IdentityDocument) GetManager() DisplayReference`
+`func (o *IdentityDocument) GetManager() IdentityDocumentAllOfManager`
 
 GetManager returns the Manager field if non-nil, zero value otherwise.
 
 ### GetManagerOk
 
-`func (o *IdentityDocument) GetManagerOk() (*DisplayReference, bool)`
+`func (o *IdentityDocument) GetManagerOk() (*IdentityDocumentAllOfManager, bool)`
 
 GetManagerOk returns a tuple with the Manager field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetManager
 
-`func (o *IdentityDocument) SetManager(v DisplayReference)`
+`func (o *IdentityDocument) SetManager(v IdentityDocumentAllOfManager)`
 
 SetManager sets Manager field to given value.
 
@@ -472,6 +463,16 @@ SetManager sets Manager field to given value.
 
 HasManager returns a boolean if a field has been set.
 
+### SetManagerNil
+
+`func (o *IdentityDocument) SetManagerNil(b bool)`
+
+ SetManagerNil sets the value for Manager to be an explicit nil
+
+### UnsetManager
+`func (o *IdentityDocument) UnsetManager()`
+
+UnsetManager ensures that no value is present for Manager, not even an explicit nil
 ### GetIsManager
 
 `func (o *IdentityDocument) GetIsManager() bool`
@@ -499,20 +500,20 @@ HasIsManager returns a boolean if a field has been set.
 
 ### GetIdentityProfile
 
-`func (o *IdentityDocument) GetIdentityProfile() Reference`
+`func (o *IdentityDocument) GetIdentityProfile() IdentityDocumentAllOfIdentityProfile`
 
 GetIdentityProfile returns the IdentityProfile field if non-nil, zero value otherwise.
 
 ### GetIdentityProfileOk
 
-`func (o *IdentityDocument) GetIdentityProfileOk() (*Reference, bool)`
+`func (o *IdentityDocument) GetIdentityProfileOk() (*IdentityDocumentAllOfIdentityProfile, bool)`
 
 GetIdentityProfileOk returns a tuple with the IdentityProfile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentityProfile
 
-`func (o *IdentityDocument) SetIdentityProfile(v Reference)`
+`func (o *IdentityDocument) SetIdentityProfile(v IdentityDocumentAllOfIdentityProfile)`
 
 SetIdentityProfile sets IdentityProfile field to given value.
 
@@ -524,20 +525,20 @@ HasIdentityProfile returns a boolean if a field has been set.
 
 ### GetSource
 
-`func (o *IdentityDocument) GetSource() Reference`
+`func (o *IdentityDocument) GetSource() IdentityDocumentAllOfSource`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *IdentityDocument) GetSourceOk() (*Reference, bool)`
+`func (o *IdentityDocument) GetSourceOk() (*IdentityDocumentAllOfSource, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *IdentityDocument) SetSource(v Reference)`
+`func (o *IdentityDocument) SetSource(v IdentityDocumentAllOfSource)`
 
 SetSource sets Source field to given value.
 
@@ -782,31 +783,6 @@ SetAccessCount sets AccessCount field to given value.
 
 HasAccessCount returns a boolean if a field has been set.
 
-### GetAccessProfileCount
-
-`func (o *IdentityDocument) GetAccessProfileCount() int32`
-
-GetAccessProfileCount returns the AccessProfileCount field if non-nil, zero value otherwise.
-
-### GetAccessProfileCountOk
-
-`func (o *IdentityDocument) GetAccessProfileCountOk() (*int32, bool)`
-
-GetAccessProfileCountOk returns a tuple with the AccessProfileCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAccessProfileCount
-
-`func (o *IdentityDocument) SetAccessProfileCount(v int32)`
-
-SetAccessProfileCount sets AccessProfileCount field to given value.
-
-### HasAccessProfileCount
-
-`func (o *IdentityDocument) HasAccessProfileCount() bool`
-
-HasAccessProfileCount returns a boolean if a field has been set.
-
 ### GetEntitlementCount
 
 `func (o *IdentityDocument) GetEntitlementCount() int32`
@@ -857,22 +833,47 @@ SetRoleCount sets RoleCount field to given value.
 
 HasRoleCount returns a boolean if a field has been set.
 
+### GetAccessProfileCount
+
+`func (o *IdentityDocument) GetAccessProfileCount() int32`
+
+GetAccessProfileCount returns the AccessProfileCount field if non-nil, zero value otherwise.
+
+### GetAccessProfileCountOk
+
+`func (o *IdentityDocument) GetAccessProfileCountOk() (*int32, bool)`
+
+GetAccessProfileCountOk returns a tuple with the AccessProfileCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessProfileCount
+
+`func (o *IdentityDocument) SetAccessProfileCount(v int32)`
+
+SetAccessProfileCount sets AccessProfileCount field to given value.
+
+### HasAccessProfileCount
+
+`func (o *IdentityDocument) HasAccessProfileCount() bool`
+
+HasAccessProfileCount returns a boolean if a field has been set.
+
 ### GetOwns
 
-`func (o *IdentityDocument) GetOwns() Owns`
+`func (o *IdentityDocument) GetOwns() []Owns`
 
 GetOwns returns the Owns field if non-nil, zero value otherwise.
 
 ### GetOwnsOk
 
-`func (o *IdentityDocument) GetOwnsOk() (*Owns, bool)`
+`func (o *IdentityDocument) GetOwnsOk() (*[]Owns, bool)`
 
 GetOwnsOk returns a tuple with the Owns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwns
 
-`func (o *IdentityDocument) SetOwns(v Owns)`
+`func (o *IdentityDocument) SetOwns(v []Owns)`
 
 SetOwns sets Owns field to given value.
 
@@ -881,6 +882,31 @@ SetOwns sets Owns field to given value.
 `func (o *IdentityDocument) HasOwns() bool`
 
 HasOwns returns a boolean if a field has been set.
+
+### GetOwnsCount
+
+`func (o *IdentityDocument) GetOwnsCount() int32`
+
+GetOwnsCount returns the OwnsCount field if non-nil, zero value otherwise.
+
+### GetOwnsCountOk
+
+`func (o *IdentityDocument) GetOwnsCountOk() (*int32, bool)`
+
+GetOwnsCountOk returns a tuple with the OwnsCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwnsCount
+
+`func (o *IdentityDocument) SetOwnsCount(v int32)`
+
+SetOwnsCount sets OwnsCount field to given value.
+
+### HasOwnsCount
+
+`func (o *IdentityDocument) HasOwnsCount() bool`
+
+HasOwnsCount returns a boolean if a field has been set.
 
 ### GetTags
 

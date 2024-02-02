@@ -24,21 +24,22 @@ type BaseAccount struct {
 	Id *string `json:"id,omitempty"`
 	// The human readable name of the referenced object.
 	Name *string `json:"name,omitempty"`
-	// The ID of the account
+	// Account ID.
 	AccountId *string `json:"accountId,omitempty"`
 	Source *AccountSource `json:"source,omitempty"`
-	// Indicates if the account is disabled
+	// Indicates whether the account is disabled.
 	Disabled *bool `json:"disabled,omitempty"`
-	// Indicates if the account is locked
+	// Indicates whether the account is locked.
 	Locked *bool `json:"locked,omitempty"`
+	// Indicates whether the account is privileged.
 	Privileged *bool `json:"privileged,omitempty"`
-	// Indicates if the account has been manually correlated to an identity
+	// Indicates whether the account has been manually correlated to an identity.
 	ManuallyCorrelated *bool `json:"manuallyCorrelated,omitempty"`
 	// A date-time in ISO-8601 format
 	PasswordLastSet NullableTime `json:"passwordLastSet,omitempty"`
-	// a map or dictionary of key/value pairs
+	// Map or dictionary of key/value pairs.
 	EntitlementAttributes map[string]interface{} `json:"entitlementAttributes,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was created.
 	Created NullableTime `json:"created,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -51,6 +52,14 @@ type _BaseAccount BaseAccount
 // will change when the set of required properties is changed
 func NewBaseAccount() *BaseAccount {
 	this := BaseAccount{}
+	var disabled bool = false
+	this.Disabled = &disabled
+	var locked bool = false
+	this.Locked = &locked
+	var privileged bool = false
+	this.Privileged = &privileged
+	var manuallyCorrelated bool = false
+	this.ManuallyCorrelated = &manuallyCorrelated
 	return &this
 }
 
@@ -59,6 +68,14 @@ func NewBaseAccount() *BaseAccount {
 // but it doesn't guarantee that properties required by API are set
 func NewBaseAccountWithDefaults() *BaseAccount {
 	this := BaseAccount{}
+	var disabled bool = false
+	this.Disabled = &disabled
+	var locked bool = false
+	this.Locked = &locked
+	var privileged bool = false
+	this.Privileged = &privileged
+	var manuallyCorrelated bool = false
+	this.ManuallyCorrelated = &manuallyCorrelated
 	return &this
 }
 

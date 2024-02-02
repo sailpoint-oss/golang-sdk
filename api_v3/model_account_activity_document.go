@@ -24,26 +24,35 @@ type AccountActivityDocument struct {
 	Id string `json:"id"`
 	Name string `json:"name"`
 	Type DocumentType `json:"_type"`
-	// The type of action that this activity performed
+	// Type of action performed in the activity.
 	Action *string `json:"action,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was created.
 	Created NullableTime `json:"created,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
-	// The current stage of the activity
+	// Activity's current stage.
 	Stage *string `json:"stage,omitempty"`
+	// Activity's origin.
 	Origin NullableString `json:"origin,omitempty"`
-	// the current status of the activity
+	// Activity's current status.
 	Status *string `json:"status,omitempty"`
 	Requester *AccountSource `json:"requester,omitempty"`
 	Recipient *AccountSource `json:"recipient,omitempty"`
+	// Account activity's tracking number.
 	TrackingNumber *string `json:"trackingNumber,omitempty"`
+	// Errors provided by the source while completing account actions.
 	Errors []string `json:"errors,omitempty"`
+	// Warnings provided by the source while completing account actions.
 	Warnings []string `json:"warnings,omitempty"`
+	// Approvals performed on an item during activity.
 	Approvals []Approval `json:"approvals,omitempty"`
+	// Original actions that triggered all individual source actions related to the account action.
 	OriginalRequests []OriginalRequest `json:"originalRequests,omitempty"`
+	// Controls that translated the attribute requests into actual provisioning actions on the source.
 	ExpansionItems []ExpansionItem `json:"expansionItems,omitempty"`
+	// Account data for each individual source action triggered by the original requests.
 	AccountRequests []AccountRequest `json:"accountRequests,omitempty"`
+	// Sources involved in the account activity.
 	Sources *string `json:"sources,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

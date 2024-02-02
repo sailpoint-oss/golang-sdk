@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountId** | Pointer to **string** | the account id | [optional] 
-**AttributeRequests** | Pointer to [**[]AttributeRequest**](AttributeRequest.md) |  | [optional] 
-**Op** | Pointer to **string** | the operation that was used | [optional] 
+**AccountId** | Pointer to **string** | Account ID. | [optional] 
+**AttributeRequests** | Pointer to [**[]AttributeRequest**](AttributeRequest.md) | Attribute changes requested for account. | [optional] 
+**Op** | Pointer to **string** | Operation used. | [optional] 
 **Source** | Pointer to [**AccountSource**](AccountSource.md) |  | [optional] 
 
 ## Methods

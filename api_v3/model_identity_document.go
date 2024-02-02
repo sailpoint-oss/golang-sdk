@@ -26,56 +26,63 @@ type IdentityDocument struct {
 	// The human readable name of the referenced object.
 	Name string `json:"name"`
 	Type DocumentType `json:"_type"`
-	// The display name of the identity
+	// Identity's display name.
 	DisplayName *string `json:"displayName,omitempty"`
-	// The first name of the identity
+	// Identity's first name.
 	FirstName *string `json:"firstName,omitempty"`
-	// The last name of the identity
+	// Identity's last name.
 	LastName *string `json:"lastName,omitempty"`
-	// The identity's primary email address
+	// Identity's primary email address.
 	Email *string `json:"email,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was created.
 	Created NullableTime `json:"created,omitempty"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was last modified.
 	Modified NullableTime `json:"modified,omitempty"`
-	// A date-time in ISO-8601 format
-	Synced NullableTime `json:"synced,omitempty"`
-	// The phone number of the identity
+	// Identity's phone number.
 	Phone *string `json:"phone,omitempty"`
-	// Indicates if the identity is inactive
+	// ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. 
+	Synced *string `json:"synced,omitempty"`
+	// Indicates whether the identity is inactive.
 	Inactive *bool `json:"inactive,omitempty"`
+	// Indicates whether the identity is protected.
 	Protected *bool `json:"protected,omitempty"`
-	// The identity's status in SailPoint
+	// Identity's status in SailPoint.
 	Status *string `json:"status,omitempty"`
+	// Identity's employee number.
 	EmployeeNumber *string `json:"employeeNumber,omitempty"`
-	Manager *DisplayReference `json:"manager,omitempty"`
-	// Indicates if this identity is a manager of other identities
+	Manager NullableIdentityDocumentAllOfManager `json:"manager,omitempty"`
+	// Indicates whether the identity is a manager of other identities.
 	IsManager *bool `json:"isManager,omitempty"`
-	IdentityProfile *Reference `json:"identityProfile,omitempty"`
-	Source *Reference `json:"source,omitempty"`
-	// a map or dictionary of key/value pairs
+	IdentityProfile *IdentityDocumentAllOfIdentityProfile `json:"identityProfile,omitempty"`
+	Source *IdentityDocumentAllOfSource `json:"source,omitempty"`
+	// Map or dictionary of key/value pairs.
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	// Identity's processing state.
 	ProcessingState NullableString `json:"processingState,omitempty"`
 	ProcessingDetails *ProcessingDetails `json:"processingDetails,omitempty"`
-	// List of accounts associated with the identity
+	// List of accounts associated with the identity.
 	Accounts []BaseAccount `json:"accounts,omitempty"`
-	// Number of accounts associated with the identity
+	// Number of accounts associated with the identity.
 	AccountCount *int32 `json:"accountCount,omitempty"`
-	// The list of applications the identity has access to
+	// List of applications the identity has access to.
 	Apps []App `json:"apps,omitempty"`
-	// The number of applications the identity has access to
+	// Number of applications the identity has access to.
 	AppCount *int32 `json:"appCount,omitempty"`
-	// The list of access items assigned to the identity
+	// List of access items assigned to the identity.
 	Access []IdentityAccess `json:"access,omitempty"`
-	// The number of access items assigned to the identity
+	// Number of access items assigned to the identity.
 	AccessCount *int32 `json:"accessCount,omitempty"`
-	// The number of access profiles assigned to the identity
-	AccessProfileCount *int32 `json:"accessProfileCount,omitempty"`
-	// The number of entitlements assigned to the identity
+	// Number of entitlements assigned to the identity.
 	EntitlementCount *int32 `json:"entitlementCount,omitempty"`
-	// The number of roles assigned to the identity
+	// Number of roles assigned to the identity.
 	RoleCount *int32 `json:"roleCount,omitempty"`
-	Owns *Owns `json:"owns,omitempty"`
+	// Number of access profiles assigned to the identity.
+	AccessProfileCount *int32 `json:"accessProfileCount,omitempty"`
+	// Access items the identity owns.
+	Owns []Owns `json:"owns,omitempty"`
+	// Number of access items the identity owns.
+	OwnsCount *int32 `json:"ownsCount,omitempty"`
+	// Tags that have been applied to the object.
 	Tags []string `json:"tags,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -91,6 +98,10 @@ func NewIdentityDocument(id string, name string, type_ DocumentType) *IdentityDo
 	this.Id = id
 	this.Name = name
 	this.Type = type_
+	var inactive bool = false
+	this.Inactive = &inactive
+	var protected bool = false
+	this.Protected = &protected
 	return &this
 }
 
@@ -99,6 +110,10 @@ func NewIdentityDocument(id string, name string, type_ DocumentType) *IdentityDo
 // but it doesn't guarantee that properties required by API are set
 func NewIdentityDocumentWithDefaults() *IdentityDocument {
 	this := IdentityDocument{}
+	var inactive bool = false
+	this.Inactive = &inactive
+	var protected bool = false
+	this.Protected = &protected
 	return &this
 }
 
@@ -386,48 +401,6 @@ func (o *IdentityDocument) UnsetModified() {
 	o.Modified.Unset()
 }
 
-// GetSynced returns the Synced field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *IdentityDocument) GetSynced() time.Time {
-	if o == nil || isNil(o.Synced.Get()) {
-		var ret time.Time
-		return ret
-	}
-	return *o.Synced.Get()
-}
-
-// GetSyncedOk returns a tuple with the Synced field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *IdentityDocument) GetSyncedOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Synced.Get(), o.Synced.IsSet()
-}
-
-// HasSynced returns a boolean if a field has been set.
-func (o *IdentityDocument) HasSynced() bool {
-	if o != nil && o.Synced.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSynced gets a reference to the given NullableTime and assigns it to the Synced field.
-func (o *IdentityDocument) SetSynced(v time.Time) {
-	o.Synced.Set(&v)
-}
-// SetSyncedNil sets the value for Synced to be an explicit nil
-func (o *IdentityDocument) SetSyncedNil() {
-	o.Synced.Set(nil)
-}
-
-// UnsetSynced ensures that no value is present for Synced, not even an explicit nil
-func (o *IdentityDocument) UnsetSynced() {
-	o.Synced.Unset()
-}
-
 // GetPhone returns the Phone field value if set, zero value otherwise.
 func (o *IdentityDocument) GetPhone() string {
 	if o == nil || isNil(o.Phone) {
@@ -458,6 +431,38 @@ func (o *IdentityDocument) HasPhone() bool {
 // SetPhone gets a reference to the given string and assigns it to the Phone field.
 func (o *IdentityDocument) SetPhone(v string) {
 	o.Phone = &v
+}
+
+// GetSynced returns the Synced field value if set, zero value otherwise.
+func (o *IdentityDocument) GetSynced() string {
+	if o == nil || isNil(o.Synced) {
+		var ret string
+		return ret
+	}
+	return *o.Synced
+}
+
+// GetSyncedOk returns a tuple with the Synced field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityDocument) GetSyncedOk() (*string, bool) {
+	if o == nil || isNil(o.Synced) {
+		return nil, false
+	}
+	return o.Synced, true
+}
+
+// HasSynced returns a boolean if a field has been set.
+func (o *IdentityDocument) HasSynced() bool {
+	if o != nil && !isNil(o.Synced) {
+		return true
+	}
+
+	return false
+}
+
+// SetSynced gets a reference to the given string and assigns it to the Synced field.
+func (o *IdentityDocument) SetSynced(v string) {
+	o.Synced = &v
 }
 
 // GetInactive returns the Inactive field value if set, zero value otherwise.
@@ -588,36 +593,46 @@ func (o *IdentityDocument) SetEmployeeNumber(v string) {
 	o.EmployeeNumber = &v
 }
 
-// GetManager returns the Manager field value if set, zero value otherwise.
-func (o *IdentityDocument) GetManager() DisplayReference {
-	if o == nil || isNil(o.Manager) {
-		var ret DisplayReference
+// GetManager returns the Manager field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *IdentityDocument) GetManager() IdentityDocumentAllOfManager {
+	if o == nil || isNil(o.Manager.Get()) {
+		var ret IdentityDocumentAllOfManager
 		return ret
 	}
-	return *o.Manager
+	return *o.Manager.Get()
 }
 
 // GetManagerOk returns a tuple with the Manager field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityDocument) GetManagerOk() (*DisplayReference, bool) {
-	if o == nil || isNil(o.Manager) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *IdentityDocument) GetManagerOk() (*IdentityDocumentAllOfManager, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Manager, true
+	return o.Manager.Get(), o.Manager.IsSet()
 }
 
 // HasManager returns a boolean if a field has been set.
 func (o *IdentityDocument) HasManager() bool {
-	if o != nil && !isNil(o.Manager) {
+	if o != nil && o.Manager.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetManager gets a reference to the given DisplayReference and assigns it to the Manager field.
-func (o *IdentityDocument) SetManager(v DisplayReference) {
-	o.Manager = &v
+// SetManager gets a reference to the given NullableIdentityDocumentAllOfManager and assigns it to the Manager field.
+func (o *IdentityDocument) SetManager(v IdentityDocumentAllOfManager) {
+	o.Manager.Set(&v)
+}
+// SetManagerNil sets the value for Manager to be an explicit nil
+func (o *IdentityDocument) SetManagerNil() {
+	o.Manager.Set(nil)
+}
+
+// UnsetManager ensures that no value is present for Manager, not even an explicit nil
+func (o *IdentityDocument) UnsetManager() {
+	o.Manager.Unset()
 }
 
 // GetIsManager returns the IsManager field value if set, zero value otherwise.
@@ -653,9 +668,9 @@ func (o *IdentityDocument) SetIsManager(v bool) {
 }
 
 // GetIdentityProfile returns the IdentityProfile field value if set, zero value otherwise.
-func (o *IdentityDocument) GetIdentityProfile() Reference {
+func (o *IdentityDocument) GetIdentityProfile() IdentityDocumentAllOfIdentityProfile {
 	if o == nil || isNil(o.IdentityProfile) {
-		var ret Reference
+		var ret IdentityDocumentAllOfIdentityProfile
 		return ret
 	}
 	return *o.IdentityProfile
@@ -663,7 +678,7 @@ func (o *IdentityDocument) GetIdentityProfile() Reference {
 
 // GetIdentityProfileOk returns a tuple with the IdentityProfile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityDocument) GetIdentityProfileOk() (*Reference, bool) {
+func (o *IdentityDocument) GetIdentityProfileOk() (*IdentityDocumentAllOfIdentityProfile, bool) {
 	if o == nil || isNil(o.IdentityProfile) {
 		return nil, false
 	}
@@ -679,15 +694,15 @@ func (o *IdentityDocument) HasIdentityProfile() bool {
 	return false
 }
 
-// SetIdentityProfile gets a reference to the given Reference and assigns it to the IdentityProfile field.
-func (o *IdentityDocument) SetIdentityProfile(v Reference) {
+// SetIdentityProfile gets a reference to the given IdentityDocumentAllOfIdentityProfile and assigns it to the IdentityProfile field.
+func (o *IdentityDocument) SetIdentityProfile(v IdentityDocumentAllOfIdentityProfile) {
 	o.IdentityProfile = &v
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
-func (o *IdentityDocument) GetSource() Reference {
+func (o *IdentityDocument) GetSource() IdentityDocumentAllOfSource {
 	if o == nil || isNil(o.Source) {
-		var ret Reference
+		var ret IdentityDocumentAllOfSource
 		return ret
 	}
 	return *o.Source
@@ -695,7 +710,7 @@ func (o *IdentityDocument) GetSource() Reference {
 
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityDocument) GetSourceOk() (*Reference, bool) {
+func (o *IdentityDocument) GetSourceOk() (*IdentityDocumentAllOfSource, bool) {
 	if o == nil || isNil(o.Source) {
 		return nil, false
 	}
@@ -711,8 +726,8 @@ func (o *IdentityDocument) HasSource() bool {
 	return false
 }
 
-// SetSource gets a reference to the given Reference and assigns it to the Source field.
-func (o *IdentityDocument) SetSource(v Reference) {
+// SetSource gets a reference to the given IdentityDocumentAllOfSource and assigns it to the Source field.
+func (o *IdentityDocument) SetSource(v IdentityDocumentAllOfSource) {
 	o.Source = &v
 }
 
@@ -1014,38 +1029,6 @@ func (o *IdentityDocument) SetAccessCount(v int32) {
 	o.AccessCount = &v
 }
 
-// GetAccessProfileCount returns the AccessProfileCount field value if set, zero value otherwise.
-func (o *IdentityDocument) GetAccessProfileCount() int32 {
-	if o == nil || isNil(o.AccessProfileCount) {
-		var ret int32
-		return ret
-	}
-	return *o.AccessProfileCount
-}
-
-// GetAccessProfileCountOk returns a tuple with the AccessProfileCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IdentityDocument) GetAccessProfileCountOk() (*int32, bool) {
-	if o == nil || isNil(o.AccessProfileCount) {
-		return nil, false
-	}
-	return o.AccessProfileCount, true
-}
-
-// HasAccessProfileCount returns a boolean if a field has been set.
-func (o *IdentityDocument) HasAccessProfileCount() bool {
-	if o != nil && !isNil(o.AccessProfileCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessProfileCount gets a reference to the given int32 and assigns it to the AccessProfileCount field.
-func (o *IdentityDocument) SetAccessProfileCount(v int32) {
-	o.AccessProfileCount = &v
-}
-
 // GetEntitlementCount returns the EntitlementCount field value if set, zero value otherwise.
 func (o *IdentityDocument) GetEntitlementCount() int32 {
 	if o == nil || isNil(o.EntitlementCount) {
@@ -1110,18 +1093,50 @@ func (o *IdentityDocument) SetRoleCount(v int32) {
 	o.RoleCount = &v
 }
 
-// GetOwns returns the Owns field value if set, zero value otherwise.
-func (o *IdentityDocument) GetOwns() Owns {
-	if o == nil || isNil(o.Owns) {
-		var ret Owns
+// GetAccessProfileCount returns the AccessProfileCount field value if set, zero value otherwise.
+func (o *IdentityDocument) GetAccessProfileCount() int32 {
+	if o == nil || isNil(o.AccessProfileCount) {
+		var ret int32
 		return ret
 	}
-	return *o.Owns
+	return *o.AccessProfileCount
+}
+
+// GetAccessProfileCountOk returns a tuple with the AccessProfileCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityDocument) GetAccessProfileCountOk() (*int32, bool) {
+	if o == nil || isNil(o.AccessProfileCount) {
+		return nil, false
+	}
+	return o.AccessProfileCount, true
+}
+
+// HasAccessProfileCount returns a boolean if a field has been set.
+func (o *IdentityDocument) HasAccessProfileCount() bool {
+	if o != nil && !isNil(o.AccessProfileCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessProfileCount gets a reference to the given int32 and assigns it to the AccessProfileCount field.
+func (o *IdentityDocument) SetAccessProfileCount(v int32) {
+	o.AccessProfileCount = &v
+}
+
+// GetOwns returns the Owns field value if set, zero value otherwise.
+func (o *IdentityDocument) GetOwns() []Owns {
+	if o == nil || isNil(o.Owns) {
+		var ret []Owns
+		return ret
+	}
+	return o.Owns
 }
 
 // GetOwnsOk returns a tuple with the Owns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityDocument) GetOwnsOk() (*Owns, bool) {
+func (o *IdentityDocument) GetOwnsOk() ([]Owns, bool) {
 	if o == nil || isNil(o.Owns) {
 		return nil, false
 	}
@@ -1137,9 +1152,41 @@ func (o *IdentityDocument) HasOwns() bool {
 	return false
 }
 
-// SetOwns gets a reference to the given Owns and assigns it to the Owns field.
-func (o *IdentityDocument) SetOwns(v Owns) {
-	o.Owns = &v
+// SetOwns gets a reference to the given []Owns and assigns it to the Owns field.
+func (o *IdentityDocument) SetOwns(v []Owns) {
+	o.Owns = v
+}
+
+// GetOwnsCount returns the OwnsCount field value if set, zero value otherwise.
+func (o *IdentityDocument) GetOwnsCount() int32 {
+	if o == nil || isNil(o.OwnsCount) {
+		var ret int32
+		return ret
+	}
+	return *o.OwnsCount
+}
+
+// GetOwnsCountOk returns a tuple with the OwnsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IdentityDocument) GetOwnsCountOk() (*int32, bool) {
+	if o == nil || isNil(o.OwnsCount) {
+		return nil, false
+	}
+	return o.OwnsCount, true
+}
+
+// HasOwnsCount returns a boolean if a field has been set.
+func (o *IdentityDocument) HasOwnsCount() bool {
+	if o != nil && !isNil(o.OwnsCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnsCount gets a reference to the given int32 and assigns it to the OwnsCount field.
+func (o *IdentityDocument) SetOwnsCount(v int32) {
+	o.OwnsCount = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -1205,11 +1252,11 @@ func (o IdentityDocument) ToMap() (map[string]interface{}, error) {
 	if o.Modified.IsSet() {
 		toSerialize["modified"] = o.Modified.Get()
 	}
-	if o.Synced.IsSet() {
-		toSerialize["synced"] = o.Synced.Get()
-	}
 	if !isNil(o.Phone) {
 		toSerialize["phone"] = o.Phone
+	}
+	if !isNil(o.Synced) {
+		toSerialize["synced"] = o.Synced
 	}
 	if !isNil(o.Inactive) {
 		toSerialize["inactive"] = o.Inactive
@@ -1223,8 +1270,8 @@ func (o IdentityDocument) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.EmployeeNumber) {
 		toSerialize["employeeNumber"] = o.EmployeeNumber
 	}
-	if !isNil(o.Manager) {
-		toSerialize["manager"] = o.Manager
+	if o.Manager.IsSet() {
+		toSerialize["manager"] = o.Manager.Get()
 	}
 	if !isNil(o.IsManager) {
 		toSerialize["isManager"] = o.IsManager
@@ -1262,17 +1309,20 @@ func (o IdentityDocument) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.AccessCount) {
 		toSerialize["accessCount"] = o.AccessCount
 	}
-	if !isNil(o.AccessProfileCount) {
-		toSerialize["accessProfileCount"] = o.AccessProfileCount
-	}
 	if !isNil(o.EntitlementCount) {
 		toSerialize["entitlementCount"] = o.EntitlementCount
 	}
 	if !isNil(o.RoleCount) {
 		toSerialize["roleCount"] = o.RoleCount
 	}
+	if !isNil(o.AccessProfileCount) {
+		toSerialize["accessProfileCount"] = o.AccessProfileCount
+	}
 	if !isNil(o.Owns) {
 		toSerialize["owns"] = o.Owns
+	}
+	if !isNil(o.OwnsCount) {
+		toSerialize["ownsCount"] = o.OwnsCount
 	}
 	if !isNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
@@ -1327,8 +1377,8 @@ func (o *IdentityDocument) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "email")
 		delete(additionalProperties, "created")
 		delete(additionalProperties, "modified")
-		delete(additionalProperties, "synced")
 		delete(additionalProperties, "phone")
+		delete(additionalProperties, "synced")
 		delete(additionalProperties, "inactive")
 		delete(additionalProperties, "protected")
 		delete(additionalProperties, "status")
@@ -1346,10 +1396,11 @@ func (o *IdentityDocument) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "appCount")
 		delete(additionalProperties, "access")
 		delete(additionalProperties, "accessCount")
-		delete(additionalProperties, "accessProfileCount")
 		delete(additionalProperties, "entitlementCount")
 		delete(additionalProperties, "roleCount")
+		delete(additionalProperties, "accessProfileCount")
 		delete(additionalProperties, "owns")
+		delete(additionalProperties, "ownsCount")
 		delete(additionalProperties, "tags")
 		o.AdditionalProperties = additionalProperties
 	}

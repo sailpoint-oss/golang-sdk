@@ -14,42 +14,75 @@ import (
 	"encoding/json"
 )
 
-// checks if the Owner type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Owner{}
+// checks if the BaseAccessAllOfOwner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BaseAccessAllOfOwner{}
 
-// Owner struct for Owner
-type Owner struct {
-	// The unique ID of the referenced object.
+// BaseAccessAllOfOwner Owner's identity.
+type BaseAccessAllOfOwner struct {
+	// Owner's DTO type.
+	Type *string `json:"type,omitempty"`
+	// Owner's identity ID.
 	Id *string `json:"id,omitempty"`
-	// The human readable name of the referenced object.
+	// Owner's display name.
 	Name *string `json:"name,omitempty"`
-	Type *DtoType `json:"type,omitempty"`
-	// The email of the identity
+	// Owner's email.
 	Email *string `json:"email,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _Owner Owner
+type _BaseAccessAllOfOwner BaseAccessAllOfOwner
 
-// NewOwner instantiates a new Owner object
+// NewBaseAccessAllOfOwner instantiates a new BaseAccessAllOfOwner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOwner() *Owner {
-	this := Owner{}
+func NewBaseAccessAllOfOwner() *BaseAccessAllOfOwner {
+	this := BaseAccessAllOfOwner{}
 	return &this
 }
 
-// NewOwnerWithDefaults instantiates a new Owner object
+// NewBaseAccessAllOfOwnerWithDefaults instantiates a new BaseAccessAllOfOwner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewOwnerWithDefaults() *Owner {
-	this := Owner{}
+func NewBaseAccessAllOfOwnerWithDefaults() *BaseAccessAllOfOwner {
+	this := BaseAccessAllOfOwner{}
 	return &this
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *BaseAccessAllOfOwner) GetType() string {
+	if o == nil || isNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseAccessAllOfOwner) GetTypeOk() (*string, bool) {
+	if o == nil || isNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *BaseAccessAllOfOwner) HasType() bool {
+	if o != nil && !isNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *BaseAccessAllOfOwner) SetType(v string) {
+	o.Type = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Owner) GetId() string {
+func (o *BaseAccessAllOfOwner) GetId() string {
 	if o == nil || isNil(o.Id) {
 		var ret string
 		return ret
@@ -59,7 +92,7 @@ func (o *Owner) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owner) GetIdOk() (*string, bool) {
+func (o *BaseAccessAllOfOwner) GetIdOk() (*string, bool) {
 	if o == nil || isNil(o.Id) {
 		return nil, false
 	}
@@ -67,7 +100,7 @@ func (o *Owner) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *Owner) HasId() bool {
+func (o *BaseAccessAllOfOwner) HasId() bool {
 	if o != nil && !isNil(o.Id) {
 		return true
 	}
@@ -76,12 +109,12 @@ func (o *Owner) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Owner) SetId(v string) {
+func (o *BaseAccessAllOfOwner) SetId(v string) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *Owner) GetName() string {
+func (o *BaseAccessAllOfOwner) GetName() string {
 	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
@@ -91,7 +124,7 @@ func (o *Owner) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owner) GetNameOk() (*string, bool) {
+func (o *BaseAccessAllOfOwner) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
@@ -99,7 +132,7 @@ func (o *Owner) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *Owner) HasName() bool {
+func (o *BaseAccessAllOfOwner) HasName() bool {
 	if o != nil && !isNil(o.Name) {
 		return true
 	}
@@ -108,44 +141,12 @@ func (o *Owner) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *Owner) SetName(v string) {
+func (o *BaseAccessAllOfOwner) SetName(v string) {
 	o.Name = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *Owner) GetType() DtoType {
-	if o == nil || isNil(o.Type) {
-		var ret DtoType
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Owner) GetTypeOk() (*DtoType, bool) {
-	if o == nil || isNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *Owner) HasType() bool {
-	if o != nil && !isNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given DtoType and assigns it to the Type field.
-func (o *Owner) SetType(v DtoType) {
-	o.Type = &v
-}
-
 // GetEmail returns the Email field value if set, zero value otherwise.
-func (o *Owner) GetEmail() string {
+func (o *BaseAccessAllOfOwner) GetEmail() string {
 	if o == nil || isNil(o.Email) {
 		var ret string
 		return ret
@@ -155,7 +156,7 @@ func (o *Owner) GetEmail() string {
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Owner) GetEmailOk() (*string, bool) {
+func (o *BaseAccessAllOfOwner) GetEmailOk() (*string, bool) {
 	if o == nil || isNil(o.Email) {
 		return nil, false
 	}
@@ -163,7 +164,7 @@ func (o *Owner) GetEmailOk() (*string, bool) {
 }
 
 // HasEmail returns a boolean if a field has been set.
-func (o *Owner) HasEmail() bool {
+func (o *BaseAccessAllOfOwner) HasEmail() bool {
 	if o != nil && !isNil(o.Email) {
 		return true
 	}
@@ -172,11 +173,11 @@ func (o *Owner) HasEmail() bool {
 }
 
 // SetEmail gets a reference to the given string and assigns it to the Email field.
-func (o *Owner) SetEmail(v string) {
+func (o *BaseAccessAllOfOwner) SetEmail(v string) {
 	o.Email = &v
 }
 
-func (o Owner) MarshalJSON() ([]byte, error) {
+func (o BaseAccessAllOfOwner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -184,16 +185,16 @@ func (o Owner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Owner) ToMap() (map[string]interface{}, error) {
+func (o BaseAccessAllOfOwner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !isNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	if !isNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
 	}
 	if !isNil(o.Email) {
 		toSerialize["email"] = o.Email
@@ -206,19 +207,19 @@ func (o Owner) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *Owner) UnmarshalJSON(bytes []byte) (err error) {
-	varOwner := _Owner{}
+func (o *BaseAccessAllOfOwner) UnmarshalJSON(bytes []byte) (err error) {
+	varBaseAccessAllOfOwner := _BaseAccessAllOfOwner{}
 
-	if err = json.Unmarshal(bytes, &varOwner); err == nil {
-	*o = Owner(varOwner)
+	if err = json.Unmarshal(bytes, &varBaseAccessAllOfOwner); err == nil {
+	*o = BaseAccessAllOfOwner(varBaseAccessAllOfOwner)
 }
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "type")
 		delete(additionalProperties, "email")
 		o.AdditionalProperties = additionalProperties
 	}
@@ -226,38 +227,38 @@ func (o *Owner) UnmarshalJSON(bytes []byte) (err error) {
 	return err
 }
 
-type NullableOwner struct {
-	value *Owner
+type NullableBaseAccessAllOfOwner struct {
+	value *BaseAccessAllOfOwner
 	isSet bool
 }
 
-func (v NullableOwner) Get() *Owner {
+func (v NullableBaseAccessAllOfOwner) Get() *BaseAccessAllOfOwner {
 	return v.value
 }
 
-func (v *NullableOwner) Set(val *Owner) {
+func (v *NullableBaseAccessAllOfOwner) Set(val *BaseAccessAllOfOwner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableOwner) IsSet() bool {
+func (v NullableBaseAccessAllOfOwner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableOwner) Unset() {
+func (v *NullableBaseAccessAllOfOwner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableOwner(val *Owner) *NullableOwner {
-	return &NullableOwner{value: val, isSet: true}
+func NewNullableBaseAccessAllOfOwner(val *BaseAccessAllOfOwner) *NullableBaseAccessAllOfOwner {
+	return &NullableBaseAccessAllOfOwner{value: val, isSet: true}
 }
 
-func (v NullableOwner) MarshalJSON() ([]byte, error) {
+func (v NullableBaseAccessAllOfOwner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableOwner) UnmarshalJSON(src []byte) error {
+func (v *NullableBaseAccessAllOfOwner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

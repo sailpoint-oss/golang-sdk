@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The unique ID of the referenced object. | [optional] 
 **Name** | Pointer to **string** | The human readable name of the referenced object. | [optional] 
-**Type** | Pointer to **string** | the type of source returned | [optional] 
+**Type** | Pointer to **string** | Type of source returned. | [optional] 
 
 ## Methods
 

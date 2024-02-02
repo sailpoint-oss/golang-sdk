@@ -24,24 +24,35 @@ type EventDocument struct {
 	Id string `json:"id"`
 	Name string `json:"name"`
 	DocumentType DocumentType `json:"_type"`
-	// A date-time in ISO-8601 format
+	// ISO-8601 date-time referring to the time when the object was created.
 	Created NullableTime `json:"created,omitempty"`
-	// A date-time in ISO-8601 format
-	Synced NullableTime `json:"synced,omitempty"`
-	// The action that was performed
+	// ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. 
+	Synced *string `json:"synced,omitempty"`
+	// Name of the event as it's displayed in audit reports.
 	Action *string `json:"action,omitempty"`
-	// The type of event
+	// Event type. Refer to [Event Types](https://documentation.sailpoint.com/saas/help/search/index.html#event-types) for a list of event types and their meanings.
 	Type *string `json:"type,omitempty"`
-	Actor *NameType `json:"actor,omitempty"`
-	Target *NameType `json:"target,omitempty"`
+	// Name of the actor that generated the event.
+	Actor *string `json:"actor,omitempty"`
+	// Name of the target, or recipient, of the event.
+	Target *string `json:"target,omitempty"`
+	// The event's stack.
 	Stack *string `json:"stack,omitempty"`
+	// ID of the group of events.
 	TrackingNumber *string `json:"trackingNumber,omitempty"`
+	// Target system's IP address.
 	IpAddress *string `json:"ipAddress,omitempty"`
+	// ID of event's details.
 	Details *string `json:"details,omitempty"`
+	// Attributes involved in the event.
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
+	// Objects the event is happening to.
 	Objects []string `json:"objects,omitempty"`
+	// Operation, or action, performed during the event.
 	Operation *string `json:"operation,omitempty"`
+	// Event status. Refer to [Event Statuses](https://documentation.sailpoint.com/saas/help/search/index.html#event-statuses) for a list of event statuses and their meanings.
 	Status *string `json:"status,omitempty"`
+	// Event's normalized name. This normalized name always follows the pattern of 'objects_operation_status'.
 	TechnicalName *string `json:"technicalName,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -182,46 +193,36 @@ func (o *EventDocument) UnsetCreated() {
 	o.Created.Unset()
 }
 
-// GetSynced returns the Synced field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *EventDocument) GetSynced() time.Time {
-	if o == nil || isNil(o.Synced.Get()) {
-		var ret time.Time
+// GetSynced returns the Synced field value if set, zero value otherwise.
+func (o *EventDocument) GetSynced() string {
+	if o == nil || isNil(o.Synced) {
+		var ret string
 		return ret
 	}
-	return *o.Synced.Get()
+	return *o.Synced
 }
 
 // GetSyncedOk returns a tuple with the Synced field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *EventDocument) GetSyncedOk() (*time.Time, bool) {
-	if o == nil {
+func (o *EventDocument) GetSyncedOk() (*string, bool) {
+	if o == nil || isNil(o.Synced) {
 		return nil, false
 	}
-	return o.Synced.Get(), o.Synced.IsSet()
+	return o.Synced, true
 }
 
 // HasSynced returns a boolean if a field has been set.
 func (o *EventDocument) HasSynced() bool {
-	if o != nil && o.Synced.IsSet() {
+	if o != nil && !isNil(o.Synced) {
 		return true
 	}
 
 	return false
 }
 
-// SetSynced gets a reference to the given NullableTime and assigns it to the Synced field.
-func (o *EventDocument) SetSynced(v time.Time) {
-	o.Synced.Set(&v)
-}
-// SetSyncedNil sets the value for Synced to be an explicit nil
-func (o *EventDocument) SetSyncedNil() {
-	o.Synced.Set(nil)
-}
-
-// UnsetSynced ensures that no value is present for Synced, not even an explicit nil
-func (o *EventDocument) UnsetSynced() {
-	o.Synced.Unset()
+// SetSynced gets a reference to the given string and assigns it to the Synced field.
+func (o *EventDocument) SetSynced(v string) {
+	o.Synced = &v
 }
 
 // GetAction returns the Action field value if set, zero value otherwise.
@@ -289,9 +290,9 @@ func (o *EventDocument) SetType(v string) {
 }
 
 // GetActor returns the Actor field value if set, zero value otherwise.
-func (o *EventDocument) GetActor() NameType {
+func (o *EventDocument) GetActor() string {
 	if o == nil || isNil(o.Actor) {
-		var ret NameType
+		var ret string
 		return ret
 	}
 	return *o.Actor
@@ -299,7 +300,7 @@ func (o *EventDocument) GetActor() NameType {
 
 // GetActorOk returns a tuple with the Actor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventDocument) GetActorOk() (*NameType, bool) {
+func (o *EventDocument) GetActorOk() (*string, bool) {
 	if o == nil || isNil(o.Actor) {
 		return nil, false
 	}
@@ -315,15 +316,15 @@ func (o *EventDocument) HasActor() bool {
 	return false
 }
 
-// SetActor gets a reference to the given NameType and assigns it to the Actor field.
-func (o *EventDocument) SetActor(v NameType) {
+// SetActor gets a reference to the given string and assigns it to the Actor field.
+func (o *EventDocument) SetActor(v string) {
 	o.Actor = &v
 }
 
 // GetTarget returns the Target field value if set, zero value otherwise.
-func (o *EventDocument) GetTarget() NameType {
+func (o *EventDocument) GetTarget() string {
 	if o == nil || isNil(o.Target) {
-		var ret NameType
+		var ret string
 		return ret
 	}
 	return *o.Target
@@ -331,7 +332,7 @@ func (o *EventDocument) GetTarget() NameType {
 
 // GetTargetOk returns a tuple with the Target field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventDocument) GetTargetOk() (*NameType, bool) {
+func (o *EventDocument) GetTargetOk() (*string, bool) {
 	if o == nil || isNil(o.Target) {
 		return nil, false
 	}
@@ -347,8 +348,8 @@ func (o *EventDocument) HasTarget() bool {
 	return false
 }
 
-// SetTarget gets a reference to the given NameType and assigns it to the Target field.
-func (o *EventDocument) SetTarget(v NameType) {
+// SetTarget gets a reference to the given string and assigns it to the Target field.
+func (o *EventDocument) SetTarget(v string) {
 	o.Target = &v
 }
 
@@ -656,8 +657,8 @@ func (o EventDocument) ToMap() (map[string]interface{}, error) {
 	if o.Created.IsSet() {
 		toSerialize["created"] = o.Created.Get()
 	}
-	if o.Synced.IsSet() {
-		toSerialize["synced"] = o.Synced.Get()
+	if !isNil(o.Synced) {
+		toSerialize["synced"] = o.Synced
 	}
 	if !isNil(o.Action) {
 		toSerialize["action"] = o.Action
