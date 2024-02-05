@@ -19,9 +19,9 @@ var _ MappedNullable = &AccessItemRef{}
 
 // AccessItemRef struct for AccessItemRef
 type AccessItemRef struct {
-	// The ID of the access item for which to retrieve the recommendation
+	// ID of the access item to retrieve the recommendation for.
 	Id *string `json:"id,omitempty"`
-	// The type of the access item.
+	// Access item's type.
 	Type *string `json:"type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

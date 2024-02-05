@@ -56,6 +56,8 @@ type APIClient struct {
 
 	AccessRequestApprovalsAPI *AccessRequestApprovalsAPIService
 
+	AccessRequestIdentityMetricsAPI *AccessRequestIdentityMetricsAPIService
+
 	AccessRequestsAPI *AccessRequestsAPIService
 
 	AccountActivitiesAPI *AccountActivitiesAPIService
@@ -189,6 +191,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
 	c.AccessRequestApprovalsAPI = (*AccessRequestApprovalsAPIService)(&c.common)
+	c.AccessRequestIdentityMetricsAPI = (*AccessRequestIdentityMetricsAPIService)(&c.common)
 	c.AccessRequestsAPI = (*AccessRequestsAPIService)(&c.common)
 	c.AccountActivitiesAPI = (*AccountActivitiesAPIService)(&c.common)
 	c.AccountAggregationsAPI = (*AccountAggregationsAPIService)(&c.common)

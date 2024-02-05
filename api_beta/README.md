@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 *AccessRequestApprovalsAPI* | [**ListCompletedApprovals**](docs/AccessRequestApprovalsAPI.md#listcompletedapprovals) | **Get** /access-request-approvals/completed | Completed Access Request Approvals List
 *AccessRequestApprovalsAPI* | [**ListPendingApprovals**](docs/AccessRequestApprovalsAPI.md#listpendingapprovals) | **Get** /access-request-approvals/pending | Pending Access Request Approvals List
 *AccessRequestApprovalsAPI* | [**RejectAccessRequest**](docs/AccessRequestApprovalsAPI.md#rejectaccessrequest) | **Post** /access-request-approvals/{approvalId}/reject | Rejects an access request approval.
+*AccessRequestIdentityMetricsAPI* | [**GetAccessRequestIdentityMetrics**](docs/AccessRequestIdentityMetricsAPI.md#getaccessrequestidentitymetrics) | **Get** /access-request-identity-metrics/{identityId}/requested-objects/{requestedObjectId}/type/{type} | Return access request identity metrics
 *AccessRequestsAPI* | [**CancelAccessRequest**](docs/AccessRequestsAPI.md#cancelaccessrequest) | **Post** /access-requests/cancel | Cancel Access Request
 *AccessRequestsAPI* | [**CloseAccessRequest**](docs/AccessRequestsAPI.md#closeaccessrequest) | **Post** /access-requests/close | Close Access Request
 *AccessRequestsAPI* | [**CreateAccessRequest**](docs/AccessRequestsAPI.md#createaccessrequest) | **Post** /access-requests | Submit an Access Request

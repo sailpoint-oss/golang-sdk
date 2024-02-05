@@ -102,6 +102,15 @@ tags:
 
     Refer to [Requesting Access](https://documentation.sailpoint.com/saas/user-help/requests/requesting_access.html) for more information about access requests.
   name: Access Requests
+- description: "Use this API to implement access request identity metrics functionality.\n\
+    With this functionality in place, access request reviewers can see relevant details\
+    \ about the requested access item and associated source activity. \nThis allows\
+    \ reviewers to see how many of the identities who share a manager with the access\
+    \ requester have this same type of access and how many of them have had activity\
+    \ in the related source. \nThis additional context about whether the access has\
+    \ been granted before and how often it has been used can help those approving\
+    \ access requests make more informed decisions.\n"
+  name: Access Request Identity Metrics
 - description: |
     Use this API to implement account activity tracking functionality.
     With this functionality in place, users can track source account activity in IdentityNow, which greatly improves traceability in the system.
@@ -50532,6 +50541,106 @@ paths:
       summary: Returns account usage insights
       tags:
       - Account Usages
+  /access-request-identity-metrics/{identityId}/requested-objects/{requestedObjectId}/type/{type}:
+    get:
+      description: Use this API to return information access metrics.
+      operationId: getAccessRequestIdentityMetrics
+      parameters:
+      - description: Identity's ID.
+        example: 7025c863-c270-4ba6-beea-edf3cb091573
+        in: path
+        name: identityId
+        required: true
+        schema:
+          type: string
+      - description: Requested access item's ID.
+        example: 2db501be-f0fb-4cc5-a695-334133c52891
+        in: path
+        name: requestedObjectId
+        required: true
+        schema:
+          type: string
+      - description: Requested access item's type.
+        example: ENTITLEMENT
+        in: path
+        name: type
+        required: true
+        schema:
+          items:
+            $ref: ../schemas/AccessItemRef.yaml
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: ../schemas/AccessRequestIdentityMetrics.yaml
+                type: object
+          description: Summary of the resource access and source activity for the
+            group of identities sharing a manager with the provided identity.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:access-request-approvals:read
+      summary: Return access request identity metrics
+      tags:
+      - Access Request Identity Metrics
 components:
   examples:
     SlimCampaigns:
@@ -70417,11 +70526,11 @@ components:
         type: ENTITLEMENT
       properties:
         id:
-          description: The ID of the access item for which to retrieve the recommendation
+          description: ID of the access item to retrieve the recommendation for.
           example: 2c938083633d259901633d2623ec0375
           type: string
         type:
-          description: The type of the access item.
+          description: Access item's type.
           enum:
           - ENTITLEMENT
           - ACCESS_PROFILE

@@ -5,6 +5,7 @@ README.md
 api/openapi.yaml
 api_access_profiles.go
 api_access_request_approvals.go
+api_access_request_identity_metrics.go
 api_access_requests.go
 api_account_activities.go
 api_account_aggregations.go
@@ -100,6 +101,7 @@ docs/AccessRequestConfig.md
 docs/AccessRequestDynamicApprover.md
 docs/AccessRequestDynamicApprover1.md
 docs/AccessRequestDynamicApproverRequestedItemsInner.md
+docs/AccessRequestIdentityMetricsAPI.md
 docs/AccessRequestItem.md
 docs/AccessRequestItemResponse.md
 docs/AccessRequestPhases.md
@@ -1577,6 +1579,7 @@ model_workgroup_member_delete_item.go
 response.go
 test/api_access_profiles_test.go
 test/api_access_request_approvals_test.go
+test/api_access_request_identity_metrics_test.go
 test/api_access_requests_test.go
 test/api_account_activities_test.go
 test/api_account_aggregations_test.go
