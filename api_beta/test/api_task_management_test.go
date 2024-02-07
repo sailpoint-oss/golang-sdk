@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_TaskManagementAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_TaskManagementAPIService(t *testing.T) {
 
 	t.Run("Test TaskManagementAPIService GetPendingTaskHeaders", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.API_BETA.TaskManagementAPI.GetPendingTaskHeaders(context.Background()).Execute()
 
@@ -35,7 +36,7 @@ func Test_api_beta_TaskManagementAPIService(t *testing.T) {
 
 	t.Run("Test TaskManagementAPIService GetPendingTasks", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.TaskManagementAPI.GetPendingTasks(context.Background()).Execute()
 
@@ -47,7 +48,7 @@ func Test_api_beta_TaskManagementAPIService(t *testing.T) {
 
 	t.Run("Test TaskManagementAPIService GetTaskStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -61,7 +62,7 @@ func Test_api_beta_TaskManagementAPIService(t *testing.T) {
 
 	t.Run("Test TaskManagementAPIService GetTaskStatusList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.TaskManagementAPI.GetTaskStatusList(context.Background()).Execute()
 
@@ -73,7 +74,7 @@ func Test_api_beta_TaskManagementAPIService(t *testing.T) {
 
 	t.Run("Test TaskManagementAPIService UpdateTaskStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService ApproveNonEmployeeRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -38,7 +39,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService CreateNonEmployeeRecord", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecord(context.Background()).Execute()
 
@@ -50,7 +51,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService CreateNonEmployeeRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequest(context.Background()).Execute()
 
@@ -62,7 +63,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService CreateNonEmployeeSource", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSource(context.Background()).Execute()
 
@@ -74,7 +75,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService CreateNonEmployeeSourceSchemaAttributes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -88,7 +89,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeRecord", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -101,7 +102,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeRecordInBulk", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.API_BETA.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordInBulk(context.Background()).Execute()
 
@@ -112,7 +113,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -125,7 +126,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeSchemaAttribute", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var attributeId string
 		var sourceId string
@@ -139,7 +140,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeSource", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -152,7 +153,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService DeleteNonEmployeeSourceSchemaAttributes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -165,7 +166,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService ExportNonEmployeeRecords", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -178,7 +179,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService ExportNonEmployeeSourceSchemaTemplate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -191,7 +192,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeApproval", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -205,7 +206,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeApprovalSummary", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var requestedFor string
 
@@ -219,7 +220,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeBulkUploadStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -233,7 +234,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeRecord", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -247,7 +248,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -261,7 +262,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeRequestSummary", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var requestedFor string
 
@@ -275,7 +276,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeSchemaAttribute", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var attributeId string
 		var sourceId string
@@ -290,7 +291,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeSource", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -304,7 +305,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService GetNonEmployeeSourceSchemaAttributes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -318,7 +319,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService ImportNonEmployeeRecordsInBulk", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -332,7 +333,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService ListNonEmployeeApproval", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NonEmployeeLifecycleManagementAPI.ListNonEmployeeApproval(context.Background()).Execute()
 
@@ -344,7 +345,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService ListNonEmployeeRecords", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecords(context.Background()).Execute()
 
@@ -356,7 +357,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService ListNonEmployeeRequests", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequests(context.Background()).Execute()
 
@@ -368,7 +369,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService ListNonEmployeeSources", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NonEmployeeLifecycleManagementAPI.ListNonEmployeeSources(context.Background()).Execute()
 
@@ -380,7 +381,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService PatchNonEmployeeRecord", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -394,7 +395,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService PatchNonEmployeeSchemaAttribute", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var attributeId string
 		var sourceId string
@@ -409,7 +410,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService PatchNonEmployeeSource", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -423,7 +424,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService RejectNonEmployeeRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -437,7 +438,7 @@ func Test_api_beta_NonEmployeeLifecycleManagementAPIService(t *testing.T) {
 
 	t.Run("Test NonEmployeeLifecycleManagementAPIService UpdateNonEmployeeRecord", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

@@ -11,10 +11,11 @@ package api_cc
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_cc_ConnectorsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_cc_ConnectorsAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorsAPIService CreateConnector", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.API_CC.ConnectorsAPI.CreateConnector(context.Background()).Execute()
 
@@ -35,7 +36,7 @@ func Test_api_cc_ConnectorsAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorsAPIService DeleteConnector", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -48,7 +49,7 @@ func Test_api_cc_ConnectorsAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorsAPIService ExportConnectorConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -61,7 +62,7 @@ func Test_api_cc_ConnectorsAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorsAPIService ImportConnectorConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -74,7 +75,7 @@ func Test_api_cc_ConnectorsAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorsAPIService ListConnectors", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_CC.ConnectorsAPI.ListConnectors(context.Background()).Execute()
 

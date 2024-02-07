@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_OAuthClientsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_OAuthClientsAPIService(t *testing.T) {
 
 	t.Run("Test OAuthClientsAPIService CreateOauthClient", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.OAuthClientsAPI.CreateOauthClient(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_OAuthClientsAPIService(t *testing.T) {
 
 	t.Run("Test OAuthClientsAPIService DeleteOauthClient", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -49,7 +50,7 @@ func Test_api_beta_OAuthClientsAPIService(t *testing.T) {
 
 	t.Run("Test OAuthClientsAPIService GetOauthClient", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -63,7 +64,7 @@ func Test_api_beta_OAuthClientsAPIService(t *testing.T) {
 
 	t.Run("Test OAuthClientsAPIService ListOauthClients", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.OAuthClientsAPI.ListOauthClients(context.Background()).Execute()
 
@@ -75,7 +76,7 @@ func Test_api_beta_OAuthClientsAPIService(t *testing.T) {
 
 	t.Run("Test OAuthClientsAPIService PatchOauthClient", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

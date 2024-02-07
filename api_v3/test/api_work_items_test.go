@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_WorkItemsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService ApproveApprovalItem", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 		var approvalItemId string
@@ -39,7 +40,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService ApproveApprovalItemsInBulk", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -53,7 +54,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService CompleteWorkItem", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -67,7 +68,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService GetCompletedWorkItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.GetCompletedWorkItems(context.Background()).Execute()
 
@@ -79,7 +80,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService GetCountCompletedWorkItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).Execute()
 
@@ -91,7 +92,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService GetCountWorkItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.GetCountWorkItems(context.Background()).Execute()
 
@@ -103,7 +104,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService GetWorkItem", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -117,7 +118,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService GetWorkItemsSummary", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.GetWorkItemsSummary(context.Background()).Execute()
 
@@ -129,7 +130,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService ListWorkItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.WorkItemsAPI.ListWorkItems(context.Background()).Execute()
 
@@ -141,7 +142,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService RejectApprovalItem", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 		var approvalItemId string
@@ -156,7 +157,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService RejectApprovalItemsInBulk", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -170,7 +171,7 @@ func Test_api_v3_WorkItemsAPIService(t *testing.T) {
 
 	t.Run("Test WorkItemsAPIService SubmitAccountSelection", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

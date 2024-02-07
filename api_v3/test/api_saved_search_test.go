@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_SavedSearchAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
 	t.Run("Test SavedSearchAPIService CreateSavedSearch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.SavedSearchAPI.CreateSavedSearch(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
 	t.Run("Test SavedSearchAPIService DeleteSavedSearch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -49,7 +50,7 @@ func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
 	t.Run("Test SavedSearchAPIService ExecuteSavedSearch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -62,7 +63,7 @@ func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
 	t.Run("Test SavedSearchAPIService GetSavedSearch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -76,7 +77,7 @@ func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
 	t.Run("Test SavedSearchAPIService ListSavedSearches", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.SavedSearchAPI.ListSavedSearches(context.Background()).Execute()
 
@@ -88,7 +89,7 @@ func Test_api_v3_SavedSearchAPIService(t *testing.T) {
 
 	t.Run("Test SavedSearchAPIService PutSavedSearch", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

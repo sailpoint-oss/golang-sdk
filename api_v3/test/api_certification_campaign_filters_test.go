@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignFiltersAPIService CreateCampaignFilter", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.CertificationCampaignFiltersAPI.CreateCampaignFilter(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignFiltersAPIService DeleteCampaignFilters", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.API_V3.CertificationCampaignFiltersAPI.DeleteCampaignFilters(context.Background()).Execute()
 
@@ -47,7 +48,7 @@ func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignFiltersAPIService GetCampaignFilterById", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var filterId string
 
@@ -61,7 +62,7 @@ func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignFiltersAPIService ListCampaignFilters", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.CertificationCampaignFiltersAPI.ListCampaignFilters(context.Background()).Execute()
 
@@ -73,7 +74,7 @@ func Test_api_v3_CertificationCampaignFiltersAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignFiltersAPIService UpdateCampaignFilter", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var filterId string
 

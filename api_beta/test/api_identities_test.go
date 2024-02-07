@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_IdentitiesAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 	t.Run("Test IdentitiesAPIService DeleteIdentity", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -37,7 +38,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 	t.Run("Test IdentitiesAPIService GetIdentity", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -51,7 +52,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 	t.Run("Test IdentitiesAPIService GetIdentityOwnershipDetails", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityId string
 
@@ -65,7 +66,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 	t.Run("Test IdentitiesAPIService ListIdentities", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.ListIdentities(context.Background()).Execute()
 
@@ -77,7 +78,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 	t.Run("Test IdentitiesAPIService StartIdentityProcessing", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.StartIdentityProcessing(context.Background()).Execute()
 
@@ -89,7 +90,7 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 	t.Run("Test IdentitiesAPIService SynchronizeAttributesForIdentity", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityId string
 

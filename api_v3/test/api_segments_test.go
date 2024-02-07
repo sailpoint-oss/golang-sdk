@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_SegmentsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_SegmentsAPIService(t *testing.T) {
 
 	t.Run("Test SegmentsAPIService CreateSegment", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.SegmentsAPI.CreateSegment(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_v3_SegmentsAPIService(t *testing.T) {
 
 	t.Run("Test SegmentsAPIService DeleteSegment", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -49,7 +50,7 @@ func Test_api_v3_SegmentsAPIService(t *testing.T) {
 
 	t.Run("Test SegmentsAPIService GetSegment", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -63,7 +64,7 @@ func Test_api_v3_SegmentsAPIService(t *testing.T) {
 
 	t.Run("Test SegmentsAPIService ListSegments", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.SegmentsAPI.ListSegments(context.Background()).Execute()
 
@@ -75,7 +76,7 @@ func Test_api_v3_SegmentsAPIService(t *testing.T) {
 
 	t.Run("Test SegmentsAPIService PatchSegment", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

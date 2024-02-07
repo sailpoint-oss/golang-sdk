@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService DeleteIdentityProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityProfileId string
 
@@ -38,7 +39,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService DeleteIdentityProfiles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.DeleteIdentityProfiles(context.Background()).Execute()
 
@@ -50,7 +51,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService ExportIdentityProfiles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.ExportIdentityProfiles(context.Background()).Execute()
 
@@ -62,7 +63,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService GetDefaultIdentityAttributeConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityProfileId string
 
@@ -76,7 +77,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService GetIdentityProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityProfileId string
 
@@ -90,7 +91,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService ImportIdentityProfiles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.ImportIdentityProfiles(context.Background()).Execute()
 
@@ -102,7 +103,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService ListIdentityProfiles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.IdentityProfilesAPI.ListIdentityProfiles(context.Background()).Execute()
 
@@ -114,7 +115,7 @@ func Test_api_v3_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService SyncIdentityProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityProfileId string
 

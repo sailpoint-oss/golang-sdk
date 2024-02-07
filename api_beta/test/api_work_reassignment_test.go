@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 	t.Run("Test WorkReassignmentAPIService CreateReassignmentConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.CreateReassignmentConfiguration(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 	t.Run("Test WorkReassignmentAPIService DeleteReassignmentConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityId string
 
@@ -49,7 +50,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 	t.Run("Test WorkReassignmentAPIService GetEvaluateReassignmentConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityId string
 		var configType ConfigTypeEnum
@@ -64,7 +65,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 	t.Run("Test WorkReassignmentAPIService GetReassignmentConfigTypes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.GetReassignmentConfigTypes(context.Background()).Execute()
 
@@ -76,7 +77,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 	t.Run("Test WorkReassignmentAPIService GetReassignmentConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityId string
 
@@ -90,7 +91,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 	t.Run("Test WorkReassignmentAPIService GetTenantConfigConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.GetTenantConfigConfiguration(context.Background()).Execute()
 
@@ -102,7 +103,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 	t.Run("Test WorkReassignmentAPIService ListReassignmentConfigurations", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.ListReassignmentConfigurations(context.Background()).Execute()
 
@@ -114,7 +115,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 	t.Run("Test WorkReassignmentAPIService PutReassignmentConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityId string
 
@@ -128,7 +129,7 @@ func Test_api_beta_WorkReassignmentAPIService(t *testing.T) {
 
 	t.Run("Test WorkReassignmentAPIService PutTenantConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.WorkReassignmentAPI.PutTenantConfiguration(context.Background()).Execute()
 

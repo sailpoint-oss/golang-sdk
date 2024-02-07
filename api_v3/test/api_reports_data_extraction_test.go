@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_ReportsDataExtractionAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_ReportsDataExtractionAPIService(t *testing.T) {
 
 	t.Run("Test ReportsDataExtractionAPIService CancelReport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -37,7 +38,7 @@ func Test_api_v3_ReportsDataExtractionAPIService(t *testing.T) {
 
 	t.Run("Test ReportsDataExtractionAPIService GetReport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var taskResultId string
 
@@ -51,7 +52,7 @@ func Test_api_v3_ReportsDataExtractionAPIService(t *testing.T) {
 
 	t.Run("Test ReportsDataExtractionAPIService GetReportResult", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var taskResultId string
 
@@ -65,7 +66,7 @@ func Test_api_v3_ReportsDataExtractionAPIService(t *testing.T) {
 
 	t.Run("Test ReportsDataExtractionAPIService StartReport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.ReportsDataExtractionAPI.StartReport(context.Background()).Execute()
 

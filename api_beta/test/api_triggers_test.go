@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_TriggersAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 	t.Run("Test TriggersAPIService CompleteTriggerInvocation", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -37,7 +38,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 	t.Run("Test TriggersAPIService CreateSubscription", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.CreateSubscription(context.Background()).Execute()
 
@@ -49,7 +50,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 	t.Run("Test TriggersAPIService DeleteSubscription", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -62,7 +63,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 	t.Run("Test TriggersAPIService ListSubscriptions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.ListSubscriptions(context.Background()).Execute()
 
@@ -74,7 +75,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 	t.Run("Test TriggersAPIService ListTriggerInvocationStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.ListTriggerInvocationStatus(context.Background()).Execute()
 
@@ -86,7 +87,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 	t.Run("Test TriggersAPIService ListTriggers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.ListTriggers(context.Background()).Execute()
 
@@ -98,7 +99,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 	t.Run("Test TriggersAPIService PatchSubscription", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -112,7 +113,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 	t.Run("Test TriggersAPIService StartTestTriggerInvocation", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.StartTestTriggerInvocation(context.Background()).Execute()
 
@@ -124,7 +125,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 	t.Run("Test TriggersAPIService TestSubscriptionFilter", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.TriggersAPI.TestSubscriptionFilter(context.Background()).Execute()
 
@@ -136,7 +137,7 @@ func Test_api_beta_TriggersAPIService(t *testing.T) {
 
 	t.Run("Test TriggersAPIService UpdateSubscription", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

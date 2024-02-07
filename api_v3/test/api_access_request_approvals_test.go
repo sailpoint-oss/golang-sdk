@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_AccessRequestApprovalsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_AccessRequestApprovalsAPIService(t *testing.T) {
 
 	t.Run("Test AccessRequestApprovalsAPIService ApproveAccessRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var approvalId string
 
@@ -38,7 +39,7 @@ func Test_api_v3_AccessRequestApprovalsAPIService(t *testing.T) {
 
 	t.Run("Test AccessRequestApprovalsAPIService ForwardAccessRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var approvalId string
 
@@ -52,7 +53,7 @@ func Test_api_v3_AccessRequestApprovalsAPIService(t *testing.T) {
 
 	t.Run("Test AccessRequestApprovalsAPIService GetAccessRequestApprovalSummary", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.AccessRequestApprovalsAPI.GetAccessRequestApprovalSummary(context.Background()).Execute()
 
@@ -64,7 +65,7 @@ func Test_api_v3_AccessRequestApprovalsAPIService(t *testing.T) {
 
 	t.Run("Test AccessRequestApprovalsAPIService ListCompletedApprovals", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.AccessRequestApprovalsAPI.ListCompletedApprovals(context.Background()).Execute()
 
@@ -76,7 +77,7 @@ func Test_api_v3_AccessRequestApprovalsAPIService(t *testing.T) {
 
 	t.Run("Test AccessRequestApprovalsAPIService ListPendingApprovals", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.AccessRequestApprovalsAPI.ListPendingApprovals(context.Background()).Execute()
 
@@ -88,7 +89,7 @@ func Test_api_v3_AccessRequestApprovalsAPIService(t *testing.T) {
 
 	t.Run("Test AccessRequestApprovalsAPIService RejectAccessRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var approvalId string
 

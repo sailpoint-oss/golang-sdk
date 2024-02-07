@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService CompleteCampaign", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -38,7 +39,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService CreateCampaign", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.CertificationCampaignsAPI.CreateCampaign(context.Background()).Execute()
 
@@ -50,7 +51,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService CreateCampaignTemplate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.CertificationCampaignsAPI.CreateCampaignTemplate(context.Background()).Execute()
 
@@ -62,7 +63,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService DeleteCampaignTemplate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -75,7 +76,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService DeleteCampaignTemplateSchedule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -88,7 +89,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService DeleteCampaigns", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.CertificationCampaignsAPI.DeleteCampaigns(context.Background()).Execute()
 
@@ -100,7 +101,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService GetActiveCampaigns", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.CertificationCampaignsAPI.GetActiveCampaigns(context.Background()).Execute()
 
@@ -112,7 +113,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService GetCampaign", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -126,7 +127,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService GetCampaignReports", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -140,7 +141,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService GetCampaignReportsConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.CertificationCampaignsAPI.GetCampaignReportsConfig(context.Background()).Execute()
 
@@ -152,7 +153,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService GetCampaignTemplate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -166,7 +167,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService GetCampaignTemplateSchedule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -180,7 +181,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService ListCampaignTemplates", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.CertificationCampaignsAPI.ListCampaignTemplates(context.Background()).Execute()
 
@@ -192,7 +193,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService Move", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -206,7 +207,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService PatchCampaignTemplate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -220,7 +221,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService SetCampaignReportsConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.CertificationCampaignsAPI.SetCampaignReportsConfig(context.Background()).Execute()
 
@@ -232,7 +233,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService SetCampaignTemplateSchedule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -245,7 +246,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService StartCampaign", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -259,7 +260,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService StartCampaignRemediationScan", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -273,7 +274,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService StartCampaignReport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 		var type_ ReportType
@@ -288,7 +289,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService StartGenerateCampaignTemplate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -302,7 +303,7 @@ func Test_api_v3_CertificationCampaignsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationCampaignsAPIService UpdateCampaign", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

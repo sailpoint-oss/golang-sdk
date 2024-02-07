@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_NotificationsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService CreateDomainDkim", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.CreateDomainDkim(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService CreateNotificationTemplate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.CreateNotificationTemplate(context.Background()).Execute()
 
@@ -48,7 +49,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService CreateVerifiedFromAddress", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.CreateVerifiedFromAddress(context.Background()).Execute()
 
@@ -60,7 +61,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService DeleteNotificationTemplatesInBulk", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.API_BETA.NotificationsAPI.DeleteNotificationTemplatesInBulk(context.Background()).Execute()
 
@@ -71,7 +72,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService DeleteVerifiedFromAddress", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -84,7 +85,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService GetDkimAttributes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.GetDkimAttributes(context.Background()).Execute()
 
@@ -96,7 +97,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService GetMailFromAttributes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.GetMailFromAttributes(context.Background()).Execute()
 
@@ -108,7 +109,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService GetNotificationPreference", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var key string
 
@@ -122,7 +123,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService GetNotificationTemplate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -136,7 +137,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService GetNotificationsTemplateContext", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.GetNotificationsTemplateContext(context.Background()).Execute()
 
@@ -148,7 +149,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService ListFromAddresses", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.ListFromAddresses(context.Background()).Execute()
 
@@ -160,7 +161,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService ListNotificationTemplateDefaults", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.ListNotificationTemplateDefaults(context.Background()).Execute()
 
@@ -172,7 +173,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService ListNotificationTemplates", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.ListNotificationTemplates(context.Background()).Execute()
 
@@ -184,7 +185,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService PutMailFromAttributes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.NotificationsAPI.PutMailFromAttributes(context.Background()).Execute()
 
@@ -196,7 +197,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService PutNotificationPreference", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var key string
 
@@ -210,7 +211,7 @@ func Test_api_beta_NotificationsAPIService(t *testing.T) {
 
 	t.Run("Test NotificationsAPIService SendTestNotification", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.API_BETA.NotificationsAPI.SendTestNotification(context.Background()).Execute()
 

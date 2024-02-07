@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	t.Run("Test IdentityHistoryAPIService CompareIdentitySnapshots", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -38,7 +39,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	t.Run("Test IdentityHistoryAPIService CompareIdentitySnapshotsAccessType", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 		var accessType string
@@ -53,7 +54,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	t.Run("Test IdentityHistoryAPIService GetHistoricalIdentity", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -67,7 +68,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	t.Run("Test IdentityHistoryAPIService GetHistoricalIdentityEvents", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -81,7 +82,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	t.Run("Test IdentityHistoryAPIService GetIdentitySnapshot", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 		var date string
@@ -96,7 +97,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	t.Run("Test IdentityHistoryAPIService GetIdentitySnapshotSummary", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -110,7 +111,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	t.Run("Test IdentityHistoryAPIService GetIdentityStartDate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -124,7 +125,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	t.Run("Test IdentityHistoryAPIService ListHistoricalIdentities", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IdentityHistoryAPI.ListHistoricalIdentities(context.Background()).Execute()
 
@@ -136,7 +137,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	t.Run("Test IdentityHistoryAPIService ListIdentityAccessItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -150,7 +151,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	t.Run("Test IdentityHistoryAPIService ListIdentitySnapshotAccessItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 		var date string
@@ -165,7 +166,7 @@ func Test_api_beta_IdentityHistoryAPIService(t *testing.T) {
 
 	t.Run("Test IdentityHistoryAPIService ListIdentitySnapshots", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

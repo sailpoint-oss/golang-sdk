@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_IAIOutliersAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_IAIOutliersAPIService(t *testing.T) {
 
 	t.Run("Test IAIOutliersAPIService ExportOutliersZip", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIOutliersAPI.ExportOutliersZip(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_IAIOutliersAPIService(t *testing.T) {
 
 	t.Run("Test IAIOutliersAPIService GetIdentityOutlierSnapshots", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIOutliersAPI.GetIdentityOutlierSnapshots(context.Background()).Execute()
 
@@ -48,7 +49,7 @@ func Test_api_beta_IAIOutliersAPIService(t *testing.T) {
 
 	t.Run("Test IAIOutliersAPIService GetIdentityOutliers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIOutliersAPI.GetIdentityOutliers(context.Background()).Execute()
 
@@ -60,7 +61,7 @@ func Test_api_beta_IAIOutliersAPIService(t *testing.T) {
 
 	t.Run("Test IAIOutliersAPIService GetLatestIdentityOutlierSnapshots", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIOutliersAPI.GetLatestIdentityOutlierSnapshots(context.Background()).Execute()
 
@@ -72,7 +73,7 @@ func Test_api_beta_IAIOutliersAPIService(t *testing.T) {
 
 	t.Run("Test IAIOutliersAPIService GetOutlierContributingFeatureSummary", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var outlierFeatureId string
 
@@ -86,7 +87,7 @@ func Test_api_beta_IAIOutliersAPIService(t *testing.T) {
 
 	t.Run("Test IAIOutliersAPIService GetPeerGroupOutliersContributingFeatures", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var outlierId string
 
@@ -100,7 +101,7 @@ func Test_api_beta_IAIOutliersAPIService(t *testing.T) {
 
 	t.Run("Test IAIOutliersAPIService IgnoreIdentityOutliers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.API_BETA.IAIOutliersAPI.IgnoreIdentityOutliers(context.Background()).Execute()
 
@@ -111,7 +112,7 @@ func Test_api_beta_IAIOutliersAPIService(t *testing.T) {
 
 	t.Run("Test IAIOutliersAPIService ListOutliersContributingFeatureAccessItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var outlierId string
 		var contributingFeatureName string
@@ -126,7 +127,7 @@ func Test_api_beta_IAIOutliersAPIService(t *testing.T) {
 
 	t.Run("Test IAIOutliersAPIService UnIgnoreIdentityOutliers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.API_BETA.IAIOutliersAPI.UnIgnoreIdentityOutliers(context.Background()).Execute()
 

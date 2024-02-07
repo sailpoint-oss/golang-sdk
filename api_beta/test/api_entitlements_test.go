@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_EntitlementsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementsAPIService GetEntitlement", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -38,7 +39,7 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementsAPIService GetEntitlementRequestConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -52,7 +53,7 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementsAPIService ListEntitlementChildren", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -66,7 +67,7 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementsAPIService ListEntitlementParents", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -80,7 +81,7 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementsAPIService ListEntitlements", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.EntitlementsAPI.ListEntitlements(context.Background()).Execute()
 
@@ -92,7 +93,7 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementsAPIService PatchEntitlement", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -106,7 +107,7 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementsAPIService PutEntitlementRequestConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -120,7 +121,7 @@ func Test_api_beta_EntitlementsAPIService(t *testing.T) {
 
 	t.Run("Test EntitlementsAPIService UpdateEntitlementsInBulk", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.API_BETA.EntitlementsAPI.UpdateEntitlementsInBulk(context.Background()).Execute()
 

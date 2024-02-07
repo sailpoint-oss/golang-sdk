@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_MFAConfigurationAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_MFAConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test MFAConfigurationAPIService DeleteMFAConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var method string
 
@@ -38,7 +39,7 @@ func Test_api_beta_MFAConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test MFAConfigurationAPIService GetMFADuoConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.MFAConfigurationAPI.GetMFADuoConfig(context.Background()).Execute()
 
@@ -50,7 +51,7 @@ func Test_api_beta_MFAConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test MFAConfigurationAPIService GetMFAOktaConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.MFAConfigurationAPI.GetMFAOktaConfig(context.Background()).Execute()
 
@@ -62,7 +63,7 @@ func Test_api_beta_MFAConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test MFAConfigurationAPIService SetMFADuoConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.MFAConfigurationAPI.SetMFADuoConfig(context.Background()).Execute()
 
@@ -74,7 +75,7 @@ func Test_api_beta_MFAConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test MFAConfigurationAPIService SetMFAOktaConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.MFAConfigurationAPI.SetMFAOktaConfig(context.Background()).Execute()
 
@@ -86,7 +87,7 @@ func Test_api_beta_MFAConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test MFAConfigurationAPIService TestMFAConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var method string
 

@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_SPConfigAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 	t.Run("Test SPConfigAPIService ExportSpConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.SPConfigAPI.ExportSpConfig(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 	t.Run("Test SPConfigAPIService GetSpConfigExport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -50,7 +51,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 	t.Run("Test SPConfigAPIService GetSpConfigExportStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -64,7 +65,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 	t.Run("Test SPConfigAPIService GetSpConfigImport", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -78,7 +79,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 	t.Run("Test SPConfigAPIService GetSpConfigImportStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -92,7 +93,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 	t.Run("Test SPConfigAPIService ImportSpConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.SPConfigAPI.ImportSpConfig(context.Background()).Execute()
 
@@ -104,7 +105,7 @@ func Test_api_beta_SPConfigAPIService(t *testing.T) {
 
 	t.Run("Test SPConfigAPIService ListSpConfigObjects", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.SPConfigAPI.ListSpConfigObjects(context.Background()).Execute()
 

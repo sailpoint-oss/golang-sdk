@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorRuleManagementAPIService CreateConnectorRule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.ConnectorRuleManagementAPI.CreateConnectorRule(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorRuleManagementAPIService DeleteConnectorRule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -49,7 +50,7 @@ func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorRuleManagementAPIService GetConnectorRule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -63,7 +64,7 @@ func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorRuleManagementAPIService GetConnectorRuleList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.ConnectorRuleManagementAPI.GetConnectorRuleList(context.Background()).Execute()
 
@@ -75,7 +76,7 @@ func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorRuleManagementAPIService UpdateConnectorRule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -89,7 +90,7 @@ func Test_api_beta_ConnectorRuleManagementAPIService(t *testing.T) {
 
 	t.Run("Test ConnectorRuleManagementAPIService ValidateConnectorRule", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.ConnectorRuleManagementAPI.ValidateConnectorRule(context.Background()).Execute()
 

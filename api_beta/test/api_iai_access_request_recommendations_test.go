@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_IAIAccessRequestRecommendationsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_IAIAccessRequestRecommendationsAPIService(t *testing.T) {
 
 	t.Run("Test IAIAccessRequestRecommendationsAPIService AddAccessRequestRecommendationsIgnoredItem", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsIgnoredItem(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_IAIAccessRequestRecommendationsAPIService(t *testing.T) {
 
 	t.Run("Test IAIAccessRequestRecommendationsAPIService AddAccessRequestRecommendationsRequestedItem", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsRequestedItem(context.Background()).Execute()
 
@@ -48,7 +49,7 @@ func Test_api_beta_IAIAccessRequestRecommendationsAPIService(t *testing.T) {
 
 	t.Run("Test IAIAccessRequestRecommendationsAPIService AddAccessRequestRecommendationsViewedItem", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItem(context.Background()).Execute()
 
@@ -60,7 +61,7 @@ func Test_api_beta_IAIAccessRequestRecommendationsAPIService(t *testing.T) {
 
 	t.Run("Test IAIAccessRequestRecommendationsAPIService AddAccessRequestRecommendationsViewedItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIAccessRequestRecommendationsAPI.AddAccessRequestRecommendationsViewedItems(context.Background()).Execute()
 
@@ -72,7 +73,7 @@ func Test_api_beta_IAIAccessRequestRecommendationsAPIService(t *testing.T) {
 
 	t.Run("Test IAIAccessRequestRecommendationsAPIService GetAccessRequestRecommendations", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendations(context.Background()).Execute()
 
@@ -84,7 +85,7 @@ func Test_api_beta_IAIAccessRequestRecommendationsAPIService(t *testing.T) {
 
 	t.Run("Test IAIAccessRequestRecommendationsAPIService GetAccessRequestRecommendationsIgnoredItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsIgnoredItems(context.Background()).Execute()
 
@@ -96,7 +97,7 @@ func Test_api_beta_IAIAccessRequestRecommendationsAPIService(t *testing.T) {
 
 	t.Run("Test IAIAccessRequestRecommendationsAPIService GetAccessRequestRecommendationsRequestedItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsRequestedItems(context.Background()).Execute()
 
@@ -108,7 +109,7 @@ func Test_api_beta_IAIAccessRequestRecommendationsAPIService(t *testing.T) {
 
 	t.Run("Test IAIAccessRequestRecommendationsAPIService GetAccessRequestRecommendationsViewedItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIAccessRequestRecommendationsAPI.GetAccessRequestRecommendationsViewedItems(context.Background()).Execute()
 

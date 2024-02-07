@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_BrandingAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_BrandingAPIService(t *testing.T) {
 
 	t.Run("Test BrandingAPIService CreateBrandingItem", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.BrandingAPI.CreateBrandingItem(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_v3_BrandingAPIService(t *testing.T) {
 
 	t.Run("Test BrandingAPIService DeleteBranding", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var name string
 
@@ -49,7 +50,7 @@ func Test_api_v3_BrandingAPIService(t *testing.T) {
 
 	t.Run("Test BrandingAPIService GetBranding", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var name string
 
@@ -63,7 +64,7 @@ func Test_api_v3_BrandingAPIService(t *testing.T) {
 
 	t.Run("Test BrandingAPIService GetBrandingList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.BrandingAPI.GetBrandingList(context.Background()).Execute()
 
@@ -75,7 +76,7 @@ func Test_api_v3_BrandingAPIService(t *testing.T) {
 
 	t.Run("Test BrandingAPIService SetBrandingItem", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var name string
 

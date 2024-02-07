@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_MFAControllerAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 	t.Run("Test MFAControllerAPIService CreateSendToken", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.MFAControllerAPI.CreateSendToken(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 	t.Run("Test MFAControllerAPIService PingVerificationStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var method string
 
@@ -50,7 +51,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 	t.Run("Test MFAControllerAPIService SendDuoVerifyRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.MFAControllerAPI.SendDuoVerifyRequest(context.Background()).Execute()
 
@@ -62,7 +63,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 	t.Run("Test MFAControllerAPIService SendKbaAnswers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.MFAControllerAPI.SendKbaAnswers(context.Background()).Execute()
 
@@ -74,7 +75,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 	t.Run("Test MFAControllerAPIService SendOktaVerifyRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.MFAControllerAPI.SendOktaVerifyRequest(context.Background()).Execute()
 
@@ -86,7 +87,7 @@ func Test_api_beta_MFAControllerAPIService(t *testing.T) {
 
 	t.Run("Test MFAControllerAPIService SendTokenAuthRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.MFAControllerAPI.SendTokenAuthRequest(context.Background()).Execute()
 

@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 
 	t.Run("Test CertificationSummariesAPIService GetIdentityAccessSummaries", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 		var type_ string
@@ -39,7 +40,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 
 	t.Run("Test CertificationSummariesAPIService GetIdentityDecisionSummary", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -53,7 +54,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 
 	t.Run("Test CertificationSummariesAPIService GetIdentitySummaries", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -67,7 +68,7 @@ func Test_api_v3_CertificationSummariesAPIService(t *testing.T) {
 
 	t.Run("Test CertificationSummariesAPIService GetIdentitySummary", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 		var identitySummaryId string

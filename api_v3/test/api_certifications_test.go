@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_CertificationsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_CertificationsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationsAPIService GetCertificationTask", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -38,7 +39,7 @@ func Test_api_v3_CertificationsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationsAPIService GetIdentityCertification", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -52,7 +53,7 @@ func Test_api_v3_CertificationsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationsAPIService GetIdentityCertificationItemPermissions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var certificationId string
 		var itemId string
@@ -67,7 +68,7 @@ func Test_api_v3_CertificationsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationsAPIService GetPendingCertificationTasks", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.CertificationsAPI.GetPendingCertificationTasks(context.Background()).Execute()
 
@@ -79,7 +80,7 @@ func Test_api_v3_CertificationsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationsAPIService ListCertificationReviewers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -93,7 +94,7 @@ func Test_api_v3_CertificationsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationsAPIService ListIdentityAccessReviewItems", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -107,7 +108,7 @@ func Test_api_v3_CertificationsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationsAPIService ListIdentityCertifications", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.CertificationsAPI.ListIdentityCertifications(context.Background()).Execute()
 
@@ -119,7 +120,7 @@ func Test_api_v3_CertificationsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationsAPIService MakeIdentityDecision", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -133,7 +134,7 @@ func Test_api_v3_CertificationsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationsAPIService ReassignIdentityCertifications", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -147,7 +148,7 @@ func Test_api_v3_CertificationsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationsAPIService SignOffIdentityCertification", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -161,7 +162,7 @@ func Test_api_v3_CertificationsAPIService(t *testing.T) {
 
 	t.Run("Test CertificationsAPIService SubmitReassignCertsAsync", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

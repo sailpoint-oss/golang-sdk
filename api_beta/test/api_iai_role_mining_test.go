@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService CreatePotentialRoleProvisionRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -39,7 +40,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService CreateRoleMiningSessions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIRoleMiningAPI.CreateRoleMiningSessions(context.Background()).Execute()
 
@@ -51,7 +52,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService DownloadRoleMiningPotentialRoleZip", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -67,7 +68,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService ExportRoleMiningPotentialRole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -82,7 +83,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService ExportRoleMiningPotentialRoleAsync", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -97,7 +98,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService ExportRoleMiningPotentialRoleStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -113,7 +114,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetAllPotentialRoleSummaries", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIRoleMiningAPI.GetAllPotentialRoleSummaries(context.Background()).Execute()
 
@@ -125,7 +126,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetEntitlementDistributionPotentialRole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -140,7 +141,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetEntitlementsPotentialRole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -155,7 +156,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetExcludedEntitlementsPotentialRole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -170,7 +171,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetIdentitiesPotentialRole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -185,7 +186,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetPotentialRole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -200,7 +201,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetPotentialRoleApplications", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -215,7 +216,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetPotentialRoleSourceIdentityUsage", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var potentialRoleId string
 		var sourceId string
@@ -230,7 +231,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetPotentialRoleSummaries", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 
@@ -244,7 +245,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetRoleMiningPotentialRole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var potentialRoleId string
 
@@ -258,7 +259,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetRoleMiningSession", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 
@@ -272,7 +273,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetRoleMiningSessionStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 
@@ -286,7 +287,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetRoleMiningSessions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIRoleMiningAPI.GetRoleMiningSessions(context.Background()).Execute()
 
@@ -298,7 +299,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService GetSavedPotentialRoles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIRoleMiningAPI.GetSavedPotentialRoles(context.Background()).Execute()
 
@@ -310,7 +311,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService PatchPotentialRole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -325,7 +326,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService PatchPotentialRole_1", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string
@@ -340,7 +341,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService PatchRoleMiningSession", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 
@@ -354,7 +355,7 @@ func Test_api_beta_IAIRoleMiningAPIService(t *testing.T) {
 
 	t.Run("Test IAIRoleMiningAPIService UpdateEntitlementsPotentialRole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sessionId string
 		var potentialRoleId string

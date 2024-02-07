@@ -11,10 +11,11 @@ package api_v2
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v2_GovernanceGroupsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v2_GovernanceGroupsAPIService(t *testing.T) {
 
 	t.Run("Test GovernanceGroupsAPIService BulkDeleteWorkGroups", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V2.GovernanceGroupsAPI.BulkDeleteWorkGroups(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_v2_GovernanceGroupsAPIService(t *testing.T) {
 
 	t.Run("Test GovernanceGroupsAPIService CreateWorkgroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V2.GovernanceGroupsAPI.CreateWorkgroup(context.Background()).Execute()
 
@@ -48,7 +49,7 @@ func Test_api_v2_GovernanceGroupsAPIService(t *testing.T) {
 
 	t.Run("Test GovernanceGroupsAPIService DeleteWorkgroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var workgroupId string
 
@@ -61,7 +62,7 @@ func Test_api_v2_GovernanceGroupsAPIService(t *testing.T) {
 
 	t.Run("Test GovernanceGroupsAPIService GetWorkgroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var workgroupId string
 
@@ -75,7 +76,7 @@ func Test_api_v2_GovernanceGroupsAPIService(t *testing.T) {
 
 	t.Run("Test GovernanceGroupsAPIService ListWorkgroupConnections", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var workgroupId string
 
@@ -89,7 +90,7 @@ func Test_api_v2_GovernanceGroupsAPIService(t *testing.T) {
 
 	t.Run("Test GovernanceGroupsAPIService ListWorkgroupMembers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var workgroupId string
 
@@ -103,7 +104,7 @@ func Test_api_v2_GovernanceGroupsAPIService(t *testing.T) {
 
 	t.Run("Test GovernanceGroupsAPIService ListWorkgroups", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V2.GovernanceGroupsAPI.ListWorkgroups(context.Background()).Execute()
 
@@ -115,7 +116,7 @@ func Test_api_v2_GovernanceGroupsAPIService(t *testing.T) {
 
 	t.Run("Test GovernanceGroupsAPIService ModifyWorkgroupMembers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var workgroupId string
 
@@ -128,7 +129,7 @@ func Test_api_v2_GovernanceGroupsAPIService(t *testing.T) {
 
 	t.Run("Test GovernanceGroupsAPIService UpdateWorkgroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var workgroupId string
 

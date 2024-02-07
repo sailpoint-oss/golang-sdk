@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_GlobalTenantSecuritySettingsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_GlobalTenantSecuritySettingsAPIService(t *testing.T) {
 
 	t.Run("Test GlobalTenantSecuritySettingsAPIService CreateAuthOrgNetworkConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.GlobalTenantSecuritySettingsAPI.CreateAuthOrgNetworkConfig(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_v3_GlobalTenantSecuritySettingsAPIService(t *testing.T) {
 
 	t.Run("Test GlobalTenantSecuritySettingsAPIService GetAuthOrgNetworkConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.GlobalTenantSecuritySettingsAPI.GetAuthOrgNetworkConfig(context.Background()).Execute()
 
@@ -48,7 +49,7 @@ func Test_api_v3_GlobalTenantSecuritySettingsAPIService(t *testing.T) {
 
 	t.Run("Test GlobalTenantSecuritySettingsAPIService PatchAuthOrgNetworkConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.GlobalTenantSecuritySettingsAPI.PatchAuthOrgNetworkConfig(context.Background()).Execute()
 

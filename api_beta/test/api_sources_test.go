@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_SourcesAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService CreateProvisioningPolicy", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -38,7 +39,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService CreateSource", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.SourcesAPI.CreateSource(context.Background()).Execute()
 
@@ -50,7 +51,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService CreateSourceSchema", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -64,7 +65,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService Delete", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -78,7 +79,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService DeleteNativeChangeDetectionConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -91,7 +92,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService DeleteProvisioningPolicy", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 		var usageType UsageType
@@ -105,7 +106,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService DeleteSourceSchema", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 		var schemaId string
@@ -119,7 +120,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService GetNativeChangeDetectionConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -133,7 +134,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService GetProvisioningPolicy", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 		var usageType UsageType
@@ -148,7 +149,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService GetSource", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -162,7 +163,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService GetSourceAccountsSchema", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -175,7 +176,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService GetSourceAttrSyncConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -189,7 +190,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService GetSourceConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -203,7 +204,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService GetSourceEntitlementRequestConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.SourcesAPI.GetSourceEntitlementRequestConfig(context.Background()).Execute()
 
@@ -215,7 +216,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService GetSourceEntitlementsSchema", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -228,7 +229,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService GetSourceSchema", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 		var schemaId string
@@ -243,7 +244,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService ImportSourceAccountsSchema", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -257,7 +258,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService ImportSourceConnectorFile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -271,7 +272,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService ImportSourceEntitlementsSchema", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -285,7 +286,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService ListProvisioningPolicies", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -299,7 +300,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService ListSourceSchemas", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -313,7 +314,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService ListSources", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.SourcesAPI.ListSources(context.Background()).Execute()
 
@@ -325,7 +326,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService PeekResourceObjects", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -339,7 +340,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService PingCluster", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -353,7 +354,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService PutNativeChangeDetectionConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -367,7 +368,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService PutProvisioningPolicy", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 		var usageType UsageType
@@ -382,7 +383,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService PutSource", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -396,7 +397,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService PutSourceAttrSyncConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -410,7 +411,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService PutSourceSchema", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 		var schemaId string
@@ -425,7 +426,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService SyncAttributesForSource", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -439,7 +440,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService TestSourceConfiguration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -453,7 +454,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService TestSourceConnection", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -467,7 +468,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService UpdateProvisioningPoliciesInBulk", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -481,7 +482,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService UpdateProvisioningPolicy", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 		var usageType UsageType
@@ -496,7 +497,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService UpdateSource", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -510,7 +511,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService UpdateSourceEntitlementRequestConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.SourcesAPI.UpdateSourceEntitlementRequestConfig(context.Background()).Execute()
 
@@ -522,7 +523,7 @@ func Test_api_beta_SourcesAPIService(t *testing.T) {
 
 	t.Run("Test SourcesAPIService UpdateSourceSchema", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 		var schemaId string

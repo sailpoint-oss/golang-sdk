@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_AccessRequestsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_AccessRequestsAPIService(t *testing.T) {
 
 	t.Run("Test AccessRequestsAPIService CancelAccessRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.AccessRequestsAPI.CancelAccessRequest(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_v3_AccessRequestsAPIService(t *testing.T) {
 
 	t.Run("Test AccessRequestsAPIService CreateAccessRequest", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.AccessRequestsAPI.CreateAccessRequest(context.Background()).Execute()
 
@@ -48,7 +49,7 @@ func Test_api_v3_AccessRequestsAPIService(t *testing.T) {
 
 	t.Run("Test AccessRequestsAPIService GetAccessRequestConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
 
@@ -60,7 +61,7 @@ func Test_api_v3_AccessRequestsAPIService(t *testing.T) {
 
 	t.Run("Test AccessRequestsAPIService ListAccessRequestStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).Execute()
 
@@ -72,7 +73,7 @@ func Test_api_v3_AccessRequestsAPIService(t *testing.T) {
 
 	t.Run("Test AccessRequestsAPIService SetAccessRequestConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).Execute()
 

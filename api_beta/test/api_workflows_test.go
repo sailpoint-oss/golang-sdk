@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_WorkflowsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService CancelWorkflowExecution", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -37,7 +38,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService CreateWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.WorkflowsAPI.CreateWorkflow(context.Background()).Execute()
 
@@ -49,7 +50,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService DeleteWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -62,7 +63,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService GetWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -76,7 +77,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService GetWorkflowExecution", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -90,7 +91,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService GetWorkflowExecutionHistory", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -104,7 +105,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService ListCompleteWorkflowLibrary", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.WorkflowsAPI.ListCompleteWorkflowLibrary(context.Background()).Execute()
 
@@ -116,7 +117,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService ListWorkflowExecutions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -130,7 +131,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService ListWorkflowLibraryActions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.WorkflowsAPI.ListWorkflowLibraryActions(context.Background()).Execute()
 
@@ -142,7 +143,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService ListWorkflowLibraryOperators", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.WorkflowsAPI.ListWorkflowLibraryOperators(context.Background()).Execute()
 
@@ -154,7 +155,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService ListWorkflowLibraryTriggers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.WorkflowsAPI.ListWorkflowLibraryTriggers(context.Background()).Execute()
 
@@ -166,7 +167,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService ListWorkflows", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.WorkflowsAPI.ListWorkflows(context.Background()).Execute()
 
@@ -178,7 +179,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService PatchWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -192,7 +193,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService PostExternalExecuteWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -206,7 +207,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService PostWorkflowExternalTrigger", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -220,7 +221,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService TestExternalExecuteWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -234,7 +235,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService TestWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -248,7 +249,7 @@ func Test_api_beta_WorkflowsAPIService(t *testing.T) {
 
 	t.Run("Test WorkflowsAPIService UpdateWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

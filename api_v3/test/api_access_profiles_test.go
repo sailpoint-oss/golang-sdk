@@ -11,10 +11,11 @@ package api_v3
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AccessProfilesAPIService CreateAccessProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.AccessProfilesAPI.CreateAccessProfile(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AccessProfilesAPIService DeleteAccessProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -49,7 +50,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AccessProfilesAPIService DeleteAccessProfilesInBulk", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.AccessProfilesAPI.DeleteAccessProfilesInBulk(context.Background()).Execute()
 
@@ -61,7 +62,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AccessProfilesAPIService GetAccessProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -75,7 +76,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AccessProfilesAPIService GetAccessProfileEntitlements", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -89,7 +90,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AccessProfilesAPIService ListAccessProfiles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_V3.AccessProfilesAPI.ListAccessProfiles(context.Background()).Execute()
 
@@ -101,7 +102,7 @@ func Test_api_v3_AccessProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AccessProfilesAPIService PatchAccessProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

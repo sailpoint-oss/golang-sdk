@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_ServiceDeskIntegrationAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 	t.Run("Test ServiceDeskIntegrationAPIService CreateServiceDeskIntegration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.ServiceDeskIntegrationAPI.CreateServiceDeskIntegration(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 	t.Run("Test ServiceDeskIntegrationAPIService DeleteServiceDeskIntegration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -49,7 +50,7 @@ func Test_api_beta_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 	t.Run("Test ServiceDeskIntegrationAPIService GetServiceDeskIntegration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -63,7 +64,7 @@ func Test_api_beta_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 	t.Run("Test ServiceDeskIntegrationAPIService GetServiceDeskIntegrationList", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationList(context.Background()).Execute()
 
@@ -75,7 +76,7 @@ func Test_api_beta_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 	t.Run("Test ServiceDeskIntegrationAPIService GetServiceDeskIntegrationTemplate", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var scriptName string
 
@@ -89,7 +90,7 @@ func Test_api_beta_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 	t.Run("Test ServiceDeskIntegrationAPIService GetServiceDeskIntegrationTypes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes(context.Background()).Execute()
 
@@ -101,7 +102,7 @@ func Test_api_beta_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 	t.Run("Test ServiceDeskIntegrationAPIService GetStatusCheckDetails", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.ServiceDeskIntegrationAPI.GetStatusCheckDetails(context.Background()).Execute()
 
@@ -113,7 +114,7 @@ func Test_api_beta_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 	t.Run("Test ServiceDeskIntegrationAPIService PatchServiceDeskIntegration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -127,7 +128,7 @@ func Test_api_beta_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 	t.Run("Test ServiceDeskIntegrationAPIService PutServiceDeskIntegration", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -141,7 +142,7 @@ func Test_api_beta_ServiceDeskIntegrationAPIService(t *testing.T) {
 
 	t.Run("Test ServiceDeskIntegrationAPIService UpdateStatusCheckDetails", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.ServiceDeskIntegrationAPI.UpdateStatusCheckDetails(context.Background()).Execute()
 

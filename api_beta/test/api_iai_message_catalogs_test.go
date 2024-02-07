@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_IAIMessageCatalogsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_IAIMessageCatalogsAPIService(t *testing.T) {
 
 	t.Run("Test IAIMessageCatalogsAPIService GetMessageCatalogs", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var catalogId string
 

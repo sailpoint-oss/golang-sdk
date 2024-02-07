@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_SearchAttributeConfigurationAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_SearchAttributeConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test SearchAttributeConfigurationAPIService CreateSearchAttributeConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.SearchAttributeConfigurationAPI.CreateSearchAttributeConfig(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_SearchAttributeConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test SearchAttributeConfigurationAPIService DeleteSearchAttributeConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var name string
 
@@ -49,7 +50,7 @@ func Test_api_beta_SearchAttributeConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test SearchAttributeConfigurationAPIService GetSearchAttributeConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.SearchAttributeConfigurationAPI.GetSearchAttributeConfig(context.Background()).Execute()
 
@@ -61,7 +62,7 @@ func Test_api_beta_SearchAttributeConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test SearchAttributeConfigurationAPIService GetSingleSearchAttributeConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var name string
 
@@ -75,7 +76,7 @@ func Test_api_beta_SearchAttributeConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test SearchAttributeConfigurationAPIService PatchSearchAttributeConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var name string
 

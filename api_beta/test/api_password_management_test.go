@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_PasswordManagementAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_PasswordManagementAPIService(t *testing.T) {
 
 	t.Run("Test PasswordManagementAPIService GenerateDigitToken", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.PasswordManagementAPI.GenerateDigitToken(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_PasswordManagementAPIService(t *testing.T) {
 
 	t.Run("Test PasswordManagementAPIService GetIdentityPasswordChangeStatus", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -50,7 +51,7 @@ func Test_api_beta_PasswordManagementAPIService(t *testing.T) {
 
 	t.Run("Test PasswordManagementAPIService QueryPasswordInfo", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.PasswordManagementAPI.QueryPasswordInfo(context.Background()).Execute()
 
@@ -62,7 +63,7 @@ func Test_api_beta_PasswordManagementAPIService(t *testing.T) {
 
 	t.Run("Test PasswordManagementAPIService SetIdentityPassword", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.PasswordManagementAPI.SetIdentityPassword(context.Background()).Execute()
 

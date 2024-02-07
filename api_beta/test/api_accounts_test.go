@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_AccountsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService CreateAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.AccountsAPI.CreateAccount(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService DeleteAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -50,7 +51,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService DisableAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -64,7 +65,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService DisableAccountForIdentity", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -78,7 +79,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService DisableAccountsForIdentities", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.AccountsAPI.DisableAccountsForIdentities(context.Background()).Execute()
 
@@ -90,7 +91,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService EnableAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -104,7 +105,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService EnableAccountForIdentity", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -118,7 +119,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService EnableAccountsForIdentities", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.AccountsAPI.EnableAccountsForIdentities(context.Background()).Execute()
 
@@ -130,7 +131,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService GetAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -144,7 +145,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService GetAccountEntitlements", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -158,7 +159,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService ListAccounts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.AccountsAPI.ListAccounts(context.Background()).Execute()
 
@@ -170,7 +171,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService PutAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -184,7 +185,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService ReloadAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -198,7 +199,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService UnlockAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -212,7 +213,7 @@ func Test_api_beta_AccountsAPIService(t *testing.T) {
 
 	t.Run("Test AccountsAPIService UpdateAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

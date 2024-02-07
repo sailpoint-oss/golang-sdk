@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_SourceUsagesAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_SourceUsagesAPIService(t *testing.T) {
 
 	t.Run("Test SourceUsagesAPIService GetStatusBySourceId", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 
@@ -38,7 +39,7 @@ func Test_api_beta_SourceUsagesAPIService(t *testing.T) {
 
 	t.Run("Test SourceUsagesAPIService GetUsagesBySourceId", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var sourceId string
 

@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_CustomPasswordInstructionsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_CustomPasswordInstructionsAPIService(t *testing.T) {
 
 	t.Run("Test CustomPasswordInstructionsAPIService CreateCustomPasswordInstructions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.CustomPasswordInstructionsAPI.CreateCustomPasswordInstructions(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_CustomPasswordInstructionsAPIService(t *testing.T) {
 
 	t.Run("Test CustomPasswordInstructionsAPIService DeleteCustomPasswordInstructions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var pageId string
 
@@ -49,7 +50,7 @@ func Test_api_beta_CustomPasswordInstructionsAPIService(t *testing.T) {
 
 	t.Run("Test CustomPasswordInstructionsAPIService GetCustomPasswordInstructions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var pageId string
 

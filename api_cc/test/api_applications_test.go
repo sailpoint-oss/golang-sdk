@@ -11,10 +11,11 @@ package api_cc
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_cc_ApplicationsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_cc_ApplicationsAPIService(t *testing.T) {
 
 	t.Run("Test ApplicationsAPIService CreateApplication", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_CC.ApplicationsAPI.CreateApplication(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_cc_ApplicationsAPIService(t *testing.T) {
 
 	t.Run("Test ApplicationsAPIService DeleteApplication", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -49,7 +50,7 @@ func Test_api_cc_ApplicationsAPIService(t *testing.T) {
 
 	t.Run("Test ApplicationsAPIService GetApplication", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -63,7 +64,7 @@ func Test_api_cc_ApplicationsAPIService(t *testing.T) {
 
 	t.Run("Test ApplicationsAPIService GetApplicationAccessProfiles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 
@@ -77,7 +78,7 @@ func Test_api_cc_ApplicationsAPIService(t *testing.T) {
 
 	t.Run("Test ApplicationsAPIService ListApplications", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_CC.ApplicationsAPI.ListApplications(context.Background()).Execute()
 
@@ -89,7 +90,7 @@ func Test_api_cc_ApplicationsAPIService(t *testing.T) {
 
 	t.Run("Test ApplicationsAPIService UpdateApplication", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var id string
 

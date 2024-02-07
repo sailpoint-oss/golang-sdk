@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_IdentityAttributesAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_IdentityAttributesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityAttributesAPIService CreateIdentityAttribute", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IdentityAttributesAPI.CreateIdentityAttribute(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_IdentityAttributesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityAttributesAPIService DeleteIdentityAttribute", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var name string
 
@@ -49,7 +50,7 @@ func Test_api_beta_IdentityAttributesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityAttributesAPIService DeleteIdentityAttributesInBulk", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.API_BETA.IdentityAttributesAPI.DeleteIdentityAttributesInBulk(context.Background()).Execute()
 
@@ -60,7 +61,7 @@ func Test_api_beta_IdentityAttributesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityAttributesAPIService GetIdentityAttribute", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var name string
 
@@ -74,7 +75,7 @@ func Test_api_beta_IdentityAttributesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityAttributesAPIService ListIdentityAttributes", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IdentityAttributesAPI.ListIdentityAttributes(context.Background()).Execute()
 
@@ -86,7 +87,7 @@ func Test_api_beta_IdentityAttributesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityAttributesAPIService PutIdentityAttribute", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var name string
 

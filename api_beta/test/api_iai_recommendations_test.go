@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_IAIRecommendationsAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_IAIRecommendationsAPIService(t *testing.T) {
 
 	t.Run("Test IAIRecommendationsAPIService GetRecommendations", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIRecommendationsAPI.GetRecommendations(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_IAIRecommendationsAPIService(t *testing.T) {
 
 	t.Run("Test IAIRecommendationsAPIService GetRecommendationsConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIRecommendationsAPI.GetRecommendationsConfig(context.Background()).Execute()
 
@@ -48,7 +49,7 @@ func Test_api_beta_IAIRecommendationsAPIService(t *testing.T) {
 
 	t.Run("Test IAIRecommendationsAPIService UpdateRecommendationsConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IAIRecommendationsAPI.UpdateRecommendationsConfig(context.Background()).Execute()
 

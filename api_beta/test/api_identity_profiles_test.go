@@ -11,10 +11,11 @@ package api_beta
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/sailpoint-oss/golang-sdk"
 )
 
 func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService CreateIdentityProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.CreateIdentityProfile(context.Background()).Execute()
 
@@ -36,7 +37,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService DeleteIdentityProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityProfileId string
 
@@ -50,7 +51,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService DeleteIdentityProfiles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.DeleteIdentityProfiles(context.Background()).Execute()
 
@@ -62,7 +63,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService ExportIdentityProfiles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.ExportIdentityProfiles(context.Background()).Execute()
 
@@ -74,7 +75,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService GenerateIdentityPreview", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.GenerateIdentityPreview(context.Background()).Execute()
 
@@ -86,7 +87,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService GetDefaultIdentityAttributeConfig", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityProfileId string
 
@@ -100,7 +101,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService GetIdentityProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityProfileId string
 
@@ -114,7 +115,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService ImportIdentityProfiles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.ImportIdentityProfiles(context.Background()).Execute()
 
@@ -126,7 +127,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService ListIdentityProfiles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.API_BETA.IdentityProfilesAPI.ListIdentityProfiles(context.Background()).Execute()
 
@@ -138,7 +139,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService SyncIdentityProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityProfileId string
 
@@ -152,7 +153,7 @@ func Test_api_beta_IdentityProfilesAPIService(t *testing.T) {
 
 	t.Run("Test IdentityProfilesAPIService UpdateIdentityProfile", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var identityProfileId string
 
