@@ -83,6 +83,17 @@ func NewConfiguration(clientConfiguration ClientConfiguration) *Configuration {
 	return cfg
 }
 
+// NewCLIConfiguration returns a new Configuration object
+func NewCLIConfiguration(clientConfiguration ClientConfiguration) *Configuration {
+	cfg := &Configuration{
+		DefaultHeader:       make(map[string]string),
+		UserAgent:           "SailPoint-CLI/0.1.0/go",
+		Debug:               false,
+		ClientConfiguration: clientConfiguration,
+	}
+	return cfg
+}
+
 func localConfig() ClientConfiguration {
 	executableDir, err := os.Executable()
 	if err != nil {

@@ -69470,8 +69470,8 @@ components:
       title: Saved Search Complete
       type: object
     SourceAccountCreated:
-      $ref: '#/components/schemas/SourceAccount'
-    SourceAccount:
+      $ref: '#/components/schemas/beta\schemas\trigger\example-input\SourceAccount'
+    beta\schemas\trigger\example-input\SourceAccount:
       properties:
         uuid:
           description: Source unique identifier for the identity. UUID is generated
@@ -69529,9 +69529,9 @@ components:
       - sourceName
       type: object
     SourceAccountDeleted:
-      $ref: '#/components/schemas/SourceAccount'
+      $ref: '#/components/schemas/beta\schemas\trigger\example-input\SourceAccount'
     SourceAccountUpdated:
-      $ref: '#/components/schemas/SourceAccount'
+      $ref: '#/components/schemas/beta\schemas\trigger\example-input\SourceAccount'
     SourceCreated:
       properties:
         id:
