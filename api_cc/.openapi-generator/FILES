@@ -65,4 +65,11 @@ model_refresh_identities_request.go
 model_refresh_identities_request_refresh_args.go
 model_update_user_permissions_request.go
 response.go
+test/api_accounts_test.go
+test/api_applications_test.go
+test/api_connectors_test.go
+test/api_sources_accounts_test.go
+test/api_sources_aggregation_test.go
+test/api_system_test.go
+test/api_user_test.go
 utils.go

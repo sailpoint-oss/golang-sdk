@@ -43,7 +43,7 @@ jobs:
         if: steps.prescript.outcome == 'success'
         run: |
           rm -rf ./api_v3
-          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v3.yaml -g go -o api_v3 --global-property skipFormModel=false --global-property apiTests=false --config sdk-resources/v3-config.yaml
+          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v3.yaml -g go -o api_v3 --global-property skipFormModel=false --config sdk-resources/v3-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk/v2 --git-user-id sailpoint-oss
           node sdk-resources/postscript.js ./api_v3
 
       - name: Build Beta SDK
@@ -51,7 +51,7 @@ jobs:
         if: steps.buildV3.outcome == 'success'
         run: |
           rm -rf ./api_beta
-          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.beta.yaml -g go -o api_beta --global-property skipFormModel=false --global-property apiTests=false --config sdk-resources/beta-config.yaml
+          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.beta.yaml -g go -o api_beta --global-property skipFormModel=false --config sdk-resources/beta-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk/v2 --git-user-id sailpoint-oss
           node sdk-resources/postscript.js ./api_beta
 
       - name: Build V2 SDK
@@ -59,7 +59,7 @@ jobs:
         if: steps.buildBeta.outcome == 'success'
         run: |
           rm -rf ./api_v2
-          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2.yaml -g go -o api_v2 --global-property skipFormModel=false --global-property apiTests=false --config sdk-resources/v2-config.yaml
+          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2.yaml -g go -o api_v2 --global-property skipFormModel=false --config sdk-resources/v2-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk/v2 --git-user-id sailpoint-oss
           node sdk-resources/postscript.js ./api_v2
 
       - name: Build CC SDK
@@ -67,7 +67,7 @@ jobs:
         if: steps.buildV2.outcome == 'success'
         run: |
           rm -rf ./api_cc
-          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.cc.yaml -g go -o api_cc --global-property skipFormModel=false --global-property apiTests=false --config sdk-resources/cc-config.yaml
+          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.cc.yaml -g go -o api_cc --global-property skipFormModel=false --config sdk-resources/cc-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk/v2 --git-user-id sailpoint-oss
           node sdk-resources/postscript.js ./api_cc
 
       - name: After SDK Build
