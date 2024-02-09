@@ -607,8 +607,10 @@ tags:
     \ to make the \"department\" attribute public, the approver can see the department\
     \ and make a decision without requesting any more information.\n"
   name: Public Identities Config
-- description: |
-    Use this API to implement reports lifecycle managing and monitoring.
+- description: "Use this API to implement reports lifecycle managing and monitoring.\n\
+    With this functionality in place, users can run reports, view their results, and\
+    \ cancel reports in progress. \nThis can be potentially helpful for auditing purposes.\
+    \ \n"
   name: Reports Data Extraction
 - description: "Use this API to implement requestable object functionality. \nWith\
     \ this functionality in place, administrators can determine which access items\
