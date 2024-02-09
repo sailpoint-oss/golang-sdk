@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**GetAccessProfileEntitlements**](AccessProfilesAPI.md#GetAccessProfileEntitlements) | **Get** /access-profiles/{id}/entitlements | List Access Profile&#39;s Entitlements
 [**ListAccessProfiles**](AccessProfilesAPI.md#ListAccessProfiles) | **Get** /access-profiles | List Access Profiles
 [**PatchAccessProfile**](AccessProfilesAPI.md#PatchAccessProfile) | **Patch** /access-profiles/{id} | Patch a specified Access Profile
+[**UpdateAccessProfilesInBulk**](AccessProfilesAPI.md#UpdateAccessProfilesInBulk) | **Post** /access-profiles/bulk-update-requestable | Update Access Profile(s) requestable field.
 
 
 
@@ -509,6 +510,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAccessProfilesInBulk
+
+> []AccessProfileUpdateItem UpdateAccessProfilesInBulk(ctx).AccessProfileBulkUpdateRequestInner(accessProfileBulkUpdateRequestInner).Execute()
+
+Update Access Profile(s) requestable field.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    accessProfileBulkUpdateRequestInner := []openapiclient.AccessProfileBulkUpdateRequestInner{*openapiclient.NewAccessProfileBulkUpdateRequestInner()} // []AccessProfileBulkUpdateRequestInner | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.AccessProfilesAPI.UpdateAccessProfilesInBulk(context.Background()).AccessProfileBulkUpdateRequestInner(accessProfileBulkUpdateRequestInner).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AccessProfilesAPI.UpdateAccessProfilesInBulk``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateAccessProfilesInBulk`: []AccessProfileUpdateItem
+    fmt.Fprintf(os.Stdout, "Response from `AccessProfilesAPI.UpdateAccessProfilesInBulk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAccessProfilesInBulkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accessProfileBulkUpdateRequestInner** | [**[]AccessProfileBulkUpdateRequestInner**](AccessProfileBulkUpdateRequestInner.md) |  | 
+
+### Return type
+
+[**[]AccessProfileUpdateItem**](AccessProfileUpdateItem.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

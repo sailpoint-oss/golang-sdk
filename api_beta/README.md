@@ -86,6 +86,7 @@ Class | Method | HTTP request | Description
 *AccessProfilesAPI* | [**GetAccessProfileEntitlements**](docs/AccessProfilesAPI.md#getaccessprofileentitlements) | **Get** /access-profiles/{id}/entitlements | List Access Profile&#39;s Entitlements
 *AccessProfilesAPI* | [**ListAccessProfiles**](docs/AccessProfilesAPI.md#listaccessprofiles) | **Get** /access-profiles | List Access Profiles
 *AccessProfilesAPI* | [**PatchAccessProfile**](docs/AccessProfilesAPI.md#patchaccessprofile) | **Patch** /access-profiles/{id} | Patch a specified Access Profile
+*AccessProfilesAPI* | [**UpdateAccessProfilesInBulk**](docs/AccessProfilesAPI.md#updateaccessprofilesinbulk) | **Post** /access-profiles/bulk-update-requestable | Update Access Profile(s) requestable field.
 *AccessRequestApprovalsAPI* | [**ApproveAccessRequest**](docs/AccessRequestApprovalsAPI.md#approveaccessrequest) | **Post** /access-request-approvals/{approvalId}/approve | Approves an access request approval.
 *AccessRequestApprovalsAPI* | [**ForwardAccessRequest**](docs/AccessRequestApprovalsAPI.md#forwardaccessrequest) | **Post** /access-request-approvals/{approvalId}/forward | Forwards an access request approval to a new owner.
 *AccessRequestApprovalsAPI* | [**GetAccessRequestApprovalSummary**](docs/AccessRequestApprovalsAPI.md#getaccessrequestapprovalsummary) | **Get** /access-request-approvals/approval-summary | Get the number of pending, approved and rejected access requests approvals
@@ -567,8 +568,10 @@ Class | Method | HTTP request | Description
  - [AccessProfileApprovalScheme](docs/AccessProfileApprovalScheme.md)
  - [AccessProfileBulkDeleteRequest](docs/AccessProfileBulkDeleteRequest.md)
  - [AccessProfileBulkDeleteResponse](docs/AccessProfileBulkDeleteResponse.md)
+ - [AccessProfileBulkUpdateRequestInner](docs/AccessProfileBulkUpdateRequestInner.md)
  - [AccessProfileRef](docs/AccessProfileRef.md)
  - [AccessProfileSourceRef](docs/AccessProfileSourceRef.md)
+ - [AccessProfileUpdateItem](docs/AccessProfileUpdateItem.md)
  - [AccessProfileUsage](docs/AccessProfileUsage.md)
  - [AccessProfileUsageUsedByInner](docs/AccessProfileUsageUsedByInner.md)
  - [AccessRecommendationMessage](docs/AccessRecommendationMessage.md)
@@ -1225,6 +1228,7 @@ Class | Method | HTTP request | Description
  - [TriggerExampleInput](docs/TriggerExampleInput.md)
  - [TriggerExampleOutput](docs/TriggerExampleOutput.md)
  - [TriggerType](docs/TriggerType.md)
+ - [UpdateAccessProfilesInBulk412Response](docs/UpdateAccessProfilesInBulk412Response.md)
  - [UsageType](docs/UsageType.md)
  - [V3ConnectorDto](docs/V3ConnectorDto.md)
  - [VAClusterStatusChangeEvent](docs/VAClusterStatusChangeEvent.md)

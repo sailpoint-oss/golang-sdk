@@ -89,8 +89,10 @@ docs/AccessProfile.md
 docs/AccessProfileApprovalScheme.md
 docs/AccessProfileBulkDeleteRequest.md
 docs/AccessProfileBulkDeleteResponse.md
+docs/AccessProfileBulkUpdateRequestInner.md
 docs/AccessProfileRef.md
 docs/AccessProfileSourceRef.md
+docs/AccessProfileUpdateItem.md
 docs/AccessProfileUsage.md
 docs/AccessProfileUsageUsedByInner.md
 docs/AccessProfilesAPI.md
@@ -804,6 +806,7 @@ docs/TriggerExampleInput.md
 docs/TriggerExampleOutput.md
 docs/TriggerType.md
 docs/TriggersAPI.md
+docs/UpdateAccessProfilesInBulk412Response.md
 docs/UsageType.md
 docs/V3ConnectorDto.md
 docs/VAClusterStatusChangeEvent.md
@@ -876,8 +879,10 @@ model_access_profile.go
 model_access_profile_approval_scheme.go
 model_access_profile_bulk_delete_request.go
 model_access_profile_bulk_delete_response.go
+model_access_profile_bulk_update_request_inner.go
 model_access_profile_ref.go
 model_access_profile_source_ref.go
+model_access_profile_update_item.go
 model_access_profile_usage.go
 model_access_profile_usage_used_by_inner.go
 model_access_recommendation_message.go
@@ -1534,6 +1539,7 @@ model_trigger.go
 model_trigger_example_input.go
 model_trigger_example_output.go
 model_trigger_type.go
+model_update_access_profiles_in_bulk_412_response.go
 model_usage_type.go
 model_v3_connector_dto.go
 model_va_cluster_status_change_event.go

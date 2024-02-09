@@ -1658,6 +1658,107 @@ paths:
       summary: Delete Access Profile(s)
       tags:
       - Access Profiles
+  /access-profiles/bulk-update-requestable:
+    post:
+      description: |-
+        This API initiates a bulk update of field requestable for one or more Access Profiles.
+
+        >  If any of the indicated Access Profiles is exists in Organization,then those Access Profiles will be added in **updated**
+            list of the response.Requestable field of these Access Profiles marked as **true** or **false**.
+
+        >  If any of the indicated Access Profiles is not does not exists in Organization,then those Access Profiles will be added in **notFound** list of the response. Access Profiles marked as **notFound** will not be updated.
+        >  A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API. In addition, a SOURCE_SUBADMIN may only use this API to update Access Profiles which are associated with Sources they are able to administer.
+      operationId: updateAccessProfilesInBulk
+      requestBody:
+        content:
+          application/json:
+            example:
+            - id: 464ae7bf-791e-49fd-b746-06a2e4a89635
+              requestable: false
+            schema:
+              $ref: '#/components/schemas/AccessProfileBulkUpdateRequest'
+        required: true
+      responses:
+        "207":
+          content:
+            application/json:
+              example:
+              - id: 464ae7bf-791e-49fd-b746-06a2e4a89635
+                status: "201"
+                requestable: false
+                description: Access Profile updated successfully.
+              schema:
+                $ref: '#/components/schemas/AccessProfileBulkUpdateResponse'
+          description: List of updated and not updated Access Profiles.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "412":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/updateAccessProfilesInBulk_412_response'
+          description: Precondition Failed - Returned in response if API/Feature not
+            enabled for an organization.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:access-profile:manage
+      summary: Update Access Profile(s) requestable field.
+      tags:
+      - Access Profiles
   /access-profiles/{id}/entitlements:
     get:
       description: |-
@@ -51472,6 +51573,13 @@ components:
     "204":
       description: No content - indicates the request was successful but there is
         no content to be returned in the response.
+    "412":
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/updateAccessProfilesInBulk_412_response'
+      description: Precondition Failed - Returned in response if API/Feature not enabled
+        for an organization.
     "202":
       content:
         application/json:
@@ -52747,6 +52855,27 @@ components:
             $ref: '#/components/schemas/AccessProfileUsage'
           type: array
       type: object
+    AccessProfileBulkUpdateRequest:
+      description: List of Access profiles to be updated.
+      example:
+      - id: 464ae7bf-791e-49fd-b746-06a2e4a8
+        requestable: false
+      items:
+        $ref: '#/components/schemas/AccessProfileBulkUpdateRequest_inner'
+      required:
+      - id
+      - requestable
+      type: array
+    AccessProfileBulkUpdateResponse:
+      description: Access Profile Bulk update response.
+      example:
+      - id: 464ae7bf-791e-49fd-b746-06a2e4a8
+        status: "201"
+        requestable: false
+        description: Access Profile updated successfully.
+      items:
+        $ref: '#/components/schemas/AccessProfileUpdateItem'
+      type: array
     Entitlement:
       example:
         owner:
@@ -65765,6 +65894,40 @@ components:
             $ref: '#/components/schemas/AccessProfileUsage_usedBy_inner'
           type: array
       type: object
+    AccessProfileUpdateItem:
+      properties:
+        id:
+          description: Identifier of Access Profile in bulk update request.
+          example: 2c7180a46faadee4016fb4e018c20642
+          type: string
+        requestable:
+          description: Access Profile requestable or not.
+          example: false
+          type: boolean
+        status:
+          description: |2
+
+            The HTTP response status code returned for an individual Access Profile that is requested for update during a bulk update operation.
+
+            > 201   - Access profile is updated successfully.
+
+            > 404   - Access profile not found.
+          example: "201"
+          type: string
+        description:
+          description: |
+            Human readable status description and containing additional context information about success or failures etc.
+          example: |2
+
+            > Access profile is updated successfully.
+
+            > Referenced Access profile with Id "2c7180a46faadee4016fb4e018c20642" was not found.
+          type: string
+      required:
+      - id
+      - requestable
+      - status
+      type: object
     OwnerReferenceDto:
       description: Simplified DTO for the owner object of the entitlement
       example:
@@ -72407,6 +72570,13 @@ components:
           example: ' Rate Limit Exceeded '
           type: object
       type: object
+    updateAccessProfilesInBulk_412_response:
+      properties:
+        message:
+          description: A message describing the error
+          example: ' API/Feature not enabled for your organization.'
+          type: object
+      type: object
     listAccounts_200_response_inner:
       anyOf:
       - $ref: '#/components/schemas/SlimAccount'
@@ -73228,6 +73398,18 @@ components:
           $ref: '#/components/schemas/array_inner'
         title: array
         type: array
+    AccessProfileBulkUpdateRequest_inner:
+      description: Access Profile's basic details.
+      properties:
+        id:
+          description: Access Profile ID.
+          example: 464ae7bf-791e-49fd-b746-06a2e4a8
+          type: string
+        requestable:
+          description: Access Profile is requestable or not.
+          example: false
+          type: boolean
+      type: object
     Entitlement_source:
       example:
         name: ODS-AD-Source
