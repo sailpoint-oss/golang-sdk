@@ -58,7 +58,7 @@ jobs:
       - name: Update config files with new version
         id: updateVersion
         run: |
-          yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/v2-config.yaml
+
           yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/beta-config.yaml
           yq -i '.packageVersion = "${{ github.event.inputs.version }}"' sdk-resources/v3-config.yaml
 
@@ -83,17 +83,9 @@ jobs:
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.beta.yaml -g go -o api_beta --global-property skipFormModel=false --config sdk-resources/beta-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk --git-user-id sailpoint-oss
           node sdk-resources/postscript.js ./api_beta
 
-      - name: Build V2 SDK
-        id: buildV2
-        if: steps.buildBeta.outcome == 'success'
-        run: |
-          rm -rf ./api_v2
-          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2.yaml -g go -o api_v2 --global-property skipFormModel=false --config sdk-resources/v2-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk --git-user-id sailpoint-oss
-          node sdk-resources/postscript.js ./api_v2
-
       - name: After SDK Build
         id: buildSDK
-        if: steps.buildV2.outcome == 'success'
+        if: steps.buildBeta.outcome == 'success'
         run: |
           go get -d ./...
           go install

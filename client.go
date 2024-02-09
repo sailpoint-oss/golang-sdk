@@ -13,7 +13,6 @@ import (
 
 	"github.com/hashicorp/go-retryablehttp"
 	beta "github.com/sailpoint-oss/golang-sdk/v2/api_beta"
-	v2 "github.com/sailpoint-oss/golang-sdk/v2/api_v2"
 	v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
 )
 
@@ -31,14 +30,12 @@ type APIClient struct {
 	// API Services
 
 	V3    *v3.APIClient
-	V2    *v2.APIClient
 	Beta  *beta.APIClient
 	token string
 }
 
 type service struct {
 	client     *v3.APIClient
-	v2client   *v2.APIClient
 	betaClient *beta.APIClient
 }
 
@@ -52,15 +49,12 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c := &APIClient{}
 
 	CV3 := v3.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v3", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token)
-	CV2 := v2.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/v2", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token)
 	CBeta := beta.NewConfiguration(cfg.ClientConfiguration.ClientId, cfg.ClientConfiguration.ClientSecret, cfg.ClientConfiguration.BaseURL+"/beta", cfg.ClientConfiguration.TokenURL, cfg.ClientConfiguration.Token)
 
 	CV3.HTTPClient = cfg.HTTPClient
-	CV2.HTTPClient = cfg.HTTPClient
 	CBeta.HTTPClient = cfg.HTTPClient
 
 	c.V3 = v3.NewAPIClient(CV3)
-	c.V2 = v2.NewAPIClient(CV2)
 	c.Beta = beta.NewAPIClient(CBeta)
 
 	// API Services

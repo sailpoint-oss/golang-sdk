@@ -132,13 +132,3 @@ func Test_beta(t *testing.T) {
 	})
 
 }
-func Test_v2(t *testing.T) {
-	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-
-	resp, r, err := apiClient.V2.GovernanceGroupsAPI.ListWorkgroups(context.TODO()).Execute()
-
-	require.Nil(t, err)
-	require.NotNil(t, resp)
-	assert.Equal(t, 200, r.StatusCode)
-}
