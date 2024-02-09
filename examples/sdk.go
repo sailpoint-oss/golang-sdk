@@ -7,7 +7,7 @@ import (
 	"os"
 
 	sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-	v3 "github.com/sailpoint-oss/golang-sdk/v2/v3"
+	v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
 )
 
 func main() {
@@ -26,7 +26,7 @@ func main() {
 }
 
 func getResults(ctx context.Context, apiClient *sailpoint.APIClient) {
-	resp, r, err := apiClient.V3.AccountsApi.ListAccounts(ctx).Execute()
+	resp, r, err := apiClient.V3.AccountsAPI.ListAccounts(ctx).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -64,7 +64,7 @@ func getSearchResults(ctx context.Context, apiClient *sailpoint.APIClient) {
 }
 
 func getTransformResults(ctx context.Context, apiClient *sailpoint.APIClient) {
-	resp, r, err := apiClient.V3.TransformsApi.ListTransforms(ctx).Execute()
+	resp, r, err := apiClient.V3.TransformsAPI.ListTransforms(ctx).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TransformsApi.GetTransformsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -74,7 +74,7 @@ func getTransformResults(ctx context.Context, apiClient *sailpoint.APIClient) {
 }
 
 func getAllPaginatedResults(ctx context.Context, apiClient *sailpoint.APIClient) {
-	resp, r, err := sailpoint.PaginateWithDefaults[v3.Account](apiClient.V3.AccountsApi.ListAccounts(ctx))
+	resp, r, err := sailpoint.PaginateWithDefaults[v3.Account](apiClient.V3.AccountsAPI.ListAccounts(ctx))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -84,7 +84,7 @@ func getAllPaginatedResults(ctx context.Context, apiClient *sailpoint.APIClient)
 }
 
 func getBeta(ctx context.Context, apiClient *sailpoint.APIClient) {
-	resp, _, err := apiClient.Beta.AccountsApi.ListAccounts(context.TODO()).Execute()
+	resp, _, err := apiClient.Beta.AccountsAPI.ListAccounts(context.TODO()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccountsApi.ListAccount``: %v\n", err)
 		//fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

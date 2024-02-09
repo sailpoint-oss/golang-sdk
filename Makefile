@@ -18,9 +18,6 @@ build:
 	rm -rf ./v2
 	java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2.yaml -g go -o v2 --global-property skipFormModel=false --global-property apiTests=false --config sdk-resources/v2-config.yaml
 	node sdk-resources/postscript.js ./v2
-	rm -rf ./cc
-	java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.cc.yaml -g go -o cc --global-property skipFormModel=false --global-property apiTests=false --config sdk-resources/cc-config.yaml
-	node sdk-resources/postscript.js ./cc
 
 test:	
 	go get -d ./...

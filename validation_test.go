@@ -142,14 +142,3 @@ func Test_v2(t *testing.T) {
 	require.NotNil(t, resp)
 	assert.Equal(t, 200, r.StatusCode)
 }
-
-func Test_cc(t *testing.T) {
-	configuration := NewDefaultConfiguration()
-	apiClient := NewAPIClient(configuration)
-
-	resp, r, err := apiClient.CC.AccountsAPI.ListAccounts(context.TODO()).Execute()
-
-	require.Nil(t, err)
-	require.NotNil(t, resp)
-	assert.Equal(t, 200, r.StatusCode)
-}

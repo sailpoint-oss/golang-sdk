@@ -27,7 +27,7 @@ jobs:
           repository: sailpoint-oss/api-specs
           path: api-specs
           ref: main
-      
+
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
@@ -62,16 +62,8 @@ jobs:
           java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.v2.yaml -g go -o api_v2 --global-property skipFormModel=false --config sdk-resources/v2-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk --git-user-id sailpoint-oss
           node sdk-resources/postscript.js ./api_v2
 
-      - name: Build CC SDK
-        id: buildCC
-        if: steps.buildV2.outcome == 'success'
-        run: |
-          rm -rf ./api_cc
-          java -jar openapi-generator-cli.jar generate -i api-specs/idn/sailpoint-api.cc.yaml -g go -o api_cc --global-property skipFormModel=false --config sdk-resources/cc-config.yaml -p enumClassPrefix=true --git-repo-id golang-sdk --git-user-id sailpoint-oss
-          node sdk-resources/postscript.js ./api_cc
-
       - name: After SDK Build
-        if: steps.buildCC.outcome == 'success'
+        if: steps.buildV2.outcome == 'success'
         run: |
           go get -d ./...
           go install
