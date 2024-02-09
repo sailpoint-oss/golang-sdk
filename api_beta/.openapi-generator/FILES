@@ -136,6 +136,7 @@ docs/AccountAggregationCompletedSource.md
 docs/AccountAggregationCompletedStats.md
 docs/AccountAggregationStatus.md
 docs/AccountAggregationsAPI.md
+docs/AccountAttribute.md
 docs/AccountAttributes.md
 docs/AccountAttributesChanged.md
 docs/AccountAttributesChangedAccount.md
@@ -192,11 +193,14 @@ docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
 docs/AttributesChanged.md
 docs/AuditDetails.md
+docs/Base64Decode.md
+docs/Base64Encode.md
 docs/BaseCommonDto.md
 docs/BaseCommonDto1.md
 docs/BasicAuthConfig.md
 docs/BearerTokenAuthConfig.md
 docs/BeforeProvisioningRuleDto.md
+docs/BetaSchemasTriggerExampleInputSourceAccount.md
 docs/BulkIdentitiesAccountsResponse.md
 docs/BulkTaggedObject.md
 docs/BulkWorkgroupMembersRequestInner.md
@@ -250,9 +254,11 @@ docs/CompletedApprovalReviewedBy.md
 docs/CompletedApprovalReviewerComment.md
 docs/CompletedApprovalState.md
 docs/CompletionStatus.md
+docs/Concatenation.md
 docs/ConditionEffect.md
 docs/ConditionEffectConfig.md
 docs/ConditionRule.md
+docs/Conditional.md
 docs/ConfigObject.md
 docs/ConfigType.md
 docs/ConfigTypeEnum.md
@@ -285,6 +291,14 @@ docs/CreateWorkflowRequest.md
 docs/CustomFormsAPI.md
 docs/CustomPasswordInstruction.md
 docs/CustomPasswordInstructionsAPI.md
+docs/DateCompare.md
+docs/DateCompareFirstDate.md
+docs/DateCompareSecondDate.md
+docs/DateFormat.md
+docs/DateFormatInputFormat.md
+docs/DateFormatOutputFormat.md
+docs/DateMath.md
+docs/DecomposeDiacriticalMarks.md
 docs/Delete202Response.md
 docs/DeleteCampaignsRequest.md
 docs/DeleteNonEmployeeRecordInBulkRequest.md
@@ -293,6 +307,7 @@ docs/DomainAddress.md
 docs/DomainStatusDto.md
 docs/DtoType.md
 docs/DuoVerificationRequest.md
+docs/E164phone.md
 docs/EmailNotificationOption.md
 docs/EmailStatusDto.md
 docs/Entitlement.md
@@ -310,6 +325,7 @@ docs/ErrorMessage.md
 docs/ErrorMessageDto.md
 docs/ErrorResponseDto.md
 docs/EvaluateResponse.md
+docs/EventAttributes.md
 docs/EventBridgeConfig.md
 docs/ExceptionAccessCriteria.md
 docs/ExceptionCriteria.md
@@ -320,10 +336,12 @@ docs/ExportFormDefinitionsByTenant200ResponseInner.md
 docs/ExportOptions.md
 docs/ExportPayload.md
 docs/Expression.md
+docs/ExternalAttributes.md
 docs/FeatureValueDto.md
 docs/Field.md
 docs/FieldDetails.md
 docs/FieldDetailsDto.md
+docs/FirstValid.md
 docs/Form.md
 docs/FormCondition.md
 docs/FormDefinitionDynamicSchemaRequest.md
@@ -356,10 +374,13 @@ docs/FullcampaignAllOfSearchCampaignInfo.md
 docs/FullcampaignAllOfSearchCampaignInfoReviewer.md
 docs/FullcampaignAllOfSourceOwnerCampaignInfo.md
 docs/FullcampaignAllOfSourcesWithOrphanEntitlements.md
+docs/GenerateRandomString.md
+docs/GenericRule.md
 docs/GetActiveCampaigns200ResponseInner.md
 docs/GetHistoricalIdentityEvents200ResponseInner.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
+docs/GetReferenceIdentityAttribute.md
 docs/GovernanceGroupsAPI.md
 docs/GrantType.md
 docs/HttpAuthenticationType.md
@@ -372,6 +393,7 @@ docs/IAIOutliersAPI.md
 docs/IAIPeerGroupStrategiesAPI.md
 docs/IAIRecommendationsAPI.md
 docs/IAIRoleMiningAPI.md
+docs/ISO3166.md
 docs/IdentitiesAPI.md
 docs/IdentitiesAccountsBulkRequest.md
 docs/Identity.md
@@ -379,6 +401,7 @@ docs/Identity1.md
 docs/IdentityAssociationDetails.md
 docs/IdentityAssociationDetailsAssociationDetailsInner.md
 docs/IdentityAttribute.md
+docs/IdentityAttribute1.md
 docs/IdentityAttributeConfig.md
 docs/IdentityAttributeConfig1.md
 docs/IdentityAttributeNames.md
@@ -434,6 +457,7 @@ docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportObject.md
 docs/ImportOptions.md
 docs/ImportSpConfigRequest.md
+docs/IndexOf.md
 docs/Invocation.md
 docs/InvocationStatus.md
 docs/InvocationStatusType.md
@@ -445,6 +469,7 @@ docs/KbaAnswerRequestItem.md
 docs/KbaAuthResponse.md
 docs/KbaAuthResponseItem.md
 docs/LatestOutlierSummary.md
+docs/LeftPad.md
 docs/LifecycleState.md
 docs/LifecycleStateDto.md
 docs/LifecycleStatesAPI.md
@@ -460,7 +485,9 @@ docs/ListPredefinedSelectOptionsResponse.md
 docs/ListWorkgroupMembers200ResponseInner.md
 docs/LocaleOrigin.md
 docs/LocalizedMessage.md
+docs/Lookup.md
 docs/LookupStep.md
+docs/Lower.md
 docs/MFAConfigurationAPI.md
 docs/MFAControllerAPI.md
 docs/MailFromAttributes.md
@@ -491,6 +518,8 @@ docs/MfaConfigTestResponse.md
 docs/MfaDuoConfig.md
 docs/MfaOktaConfig.md
 docs/MultiPolicyRequest.md
+docs/NameNormalizer.md
+docs/NamedConstructs.md
 docs/NativeChangeDetectionConfig.md
 docs/NonEmployeeApprovalDecision.md
 docs/NonEmployeeApprovalItem.md
@@ -586,6 +615,8 @@ docs/PublicIdentityAttributeConfig.md
 docs/PublicIdentityConfig.md
 docs/PutPasswordDictionaryRequest.md
 docs/QueuedCheckConfigDetails.md
+docs/RandomAlphaNumeric.md
+docs/RandomNumeric.md
 docs/ReassignReference.md
 docs/Reassignment.md
 docs/ReassignmentType.md
@@ -597,8 +628,11 @@ docs/RecommendationResponse.md
 docs/RecommendationResponseDto.md
 docs/RecommenderCalculations.md
 docs/RecommenderCalculationsIdentityAttributesValue.md
+docs/Reference.md
 docs/RemediationItemDetails.md
 docs/RemediationItems.md
+docs/Replace.md
+docs/ReplaceAll.md
 docs/ReportConfigDTO.md
 docs/ReportResultReference.md
 docs/ReportType.md
@@ -620,6 +654,7 @@ docs/ReviewReassign.md
 docs/Reviewer.md
 docs/Revocability.md
 docs/RevocabilityForRole.md
+docs/RightPad.md
 docs/Role.md
 docs/RoleAssignmentSourceType.md
 docs/RoleBulkDeleteRequest.md
@@ -668,6 +703,7 @@ docs/RoleMiningSessionScopingMethod.md
 docs/RoleMiningSessionState.md
 docs/RoleMiningSessionStatus.md
 docs/RolesAPI.md
+docs/Rule.md
 docs/SODPolicyAPI.md
 docs/SODViolationsAPI.md
 docs/SPConfigAPI.md
@@ -684,6 +720,7 @@ docs/ScheduleDays.md
 docs/ScheduleHours.md
 docs/ScheduleMonths.md
 docs/ScheduleType.md
+docs/ScheduledAttributes.md
 docs/Schema.md
 docs/SearchAttributeConfig.md
 docs/SearchAttributeConfigurationAPI.md
@@ -725,7 +762,6 @@ docs/SodViolationContextConflictingAccessCriteria.md
 docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md
 docs/Source.md
 docs/Source1.md
-docs/SourceAccount.md
 docs/SourceAccountCorrelationConfig.md
 docs/SourceAccountCorrelationRule.md
 docs/SourceBeforeProvisioningRule.md
@@ -760,8 +796,10 @@ docs/SpConfigJob.md
 docs/SpConfigMessage.md
 docs/SpConfigObject.md
 docs/SpConfigUrl.md
+docs/Split.md
 docs/StandardLevel.md
 docs/StartInvocationInput.md
+docs/Static.md
 docs/StatusResponse.md
 docs/Subscription.md
 docs/SubscriptionPatchRequestInner.md
@@ -770,6 +808,7 @@ docs/SubscriptionPatchRequestInnerValueAnyOfInner.md
 docs/SubscriptionPostRequest.md
 docs/SubscriptionPutRequest.md
 docs/SubscriptionType.md
+docs/Substring.md
 docs/TaggedObject.md
 docs/TaggedObjectDto.md
 docs/TaggedObjectObjectRef.md
@@ -795,6 +834,7 @@ docs/TestWorkflowRequest.md
 docs/TokenAuthRequest.md
 docs/TokenAuthResponse.md
 docs/Transform.md
+docs/TransformAttributes.md
 docs/TransformDefinition.md
 docs/TransformDefinition1.md
 docs/TransformDefinition1AttributesValue.md
@@ -806,7 +846,10 @@ docs/TriggerExampleInput.md
 docs/TriggerExampleOutput.md
 docs/TriggerType.md
 docs/TriggersAPI.md
+docs/Trim.md
+docs/UUIDGenerator.md
 docs/UpdateAccessProfilesInBulk412Response.md
+docs/Upper.md
 docs/UsageType.md
 docs/V3ConnectorDto.md
 docs/VAClusterStatusChangeEvent.md
@@ -845,6 +888,7 @@ docs/WorkflowLibraryOperator.md
 docs/WorkflowLibraryTrigger.md
 docs/WorkflowOAuthClient.md
 docs/WorkflowTrigger.md
+docs/WorkflowTriggerAttributes.md
 docs/WorkflowsAPI.md
 docs/WorkgroupBulkDeleteRequest.md
 docs/WorkgroupConnectionDto.md
@@ -920,6 +964,7 @@ model_account_aggregation_completed.go
 model_account_aggregation_completed_source.go
 model_account_aggregation_completed_stats.go
 model_account_aggregation_status.go
+model_account_attribute.go
 model_account_attributes.go
 model_account_attributes_changed.go
 model_account_attributes_changed_account.go
@@ -974,11 +1019,14 @@ model_attribute_definition_schema.go
 model_attribute_definition_type.go
 model_attributes_changed.go
 model_audit_details.go
+model_base64_decode.go
+model_base64_encode.go
 model_base_common_dto.go
 model_base_common_dto_1.go
 model_basic_auth_config.go
 model_bearer_token_auth_config.go
 model_before_provisioning_rule_dto.go
+model_beta_schemas_trigger_example_input_source_account.go
 model_bulk_identities_accounts_response.go
 model_bulk_tagged_object.go
 model_bulk_workgroup_members_request_inner.go
@@ -1030,9 +1078,11 @@ model_completed_approval_reviewed_by.go
 model_completed_approval_reviewer_comment.go
 model_completed_approval_state.go
 model_completion_status.go
+model_concatenation.go
 model_condition_effect.go
 model_condition_effect_config.go
 model_condition_rule.go
+model_conditional.go
 model_config_object.go
 model_config_type.go
 model_config_type_enum.go
@@ -1061,6 +1111,14 @@ model_create_personal_access_token_request.go
 model_create_personal_access_token_response.go
 model_create_workflow_request.go
 model_custom_password_instruction.go
+model_date_compare.go
+model_date_compare_first_date.go
+model_date_compare_second_date.go
+model_date_format.go
+model_date_format_input_format.go
+model_date_format_output_format.go
+model_date_math.go
+model_decompose_diacritical_marks.go
 model_delete_202_response.go
 model_delete_campaigns_request.go
 model_delete_non_employee_record_in_bulk_request.go
@@ -1069,6 +1127,7 @@ model_domain_address.go
 model_domain_status_dto.go
 model_dto_type.go
 model_duo_verification_request.go
+model_e164phone.go
 model_email_notification_option.go
 model_email_status_dto.go
 model_entitlement.go
@@ -1085,6 +1144,7 @@ model_error_message.go
 model_error_message_dto.go
 model_error_response_dto.go
 model_evaluate_response.go
+model_event_attributes.go
 model_event_bridge_config.go
 model_exception_access_criteria.go
 model_exception_criteria.go
@@ -1095,10 +1155,12 @@ model_export_form_definitions_by_tenant_200_response_inner.go
 model_export_options.go
 model_export_payload.go
 model_expression.go
+model_external_attributes.go
 model_feature_value_dto.go
 model_field.go
 model_field_details.go
 model_field_details_dto.go
+model_first_valid.go
 model_form.go
 model_form_condition.go
 model_form_definition_dynamic_schema_request.go
@@ -1131,10 +1193,13 @@ model_fullcampaign_all_of_search_campaign_info.go
 model_fullcampaign_all_of_search_campaign_info_reviewer.go
 model_fullcampaign_all_of_source_owner_campaign_info.go
 model_fullcampaign_all_of_sources_with_orphan_entitlements.go
+model_generate_random_string.go
+model_generic_rule.go
 model_get_active_campaigns_200_response_inner.go
 model_get_historical_identity_events_200_response_inner.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
+model_get_reference_identity_attribute.go
 model_grant_type.go
 model_http_authentication_type.go
 model_http_config.go
@@ -1145,6 +1210,7 @@ model_identity_1.go
 model_identity_association_details.go
 model_identity_association_details_association_details_inner.go
 model_identity_attribute.go
+model_identity_attribute_1.go
 model_identity_attribute_config.go
 model_identity_attribute_config_1.go
 model_identity_attribute_names.go
@@ -1197,9 +1263,11 @@ model_import_non_employee_records_in_bulk_request.go
 model_import_object.go
 model_import_options.go
 model_import_sp_config_request.go
+model_index_of.go
 model_invocation.go
 model_invocation_status.go
 model_invocation_status_type.go
+model_iso3166.go
 model_json_patch.go
 model_json_patch_operation.go
 model_json_patch_operation_value.go
@@ -1208,6 +1276,7 @@ model_kba_answer_request_item.go
 model_kba_auth_response.go
 model_kba_auth_response_item.go
 model_latest_outlier_summary.go
+model_left_pad.go
 model_lifecycle_state.go
 model_lifecycle_state_dto.go
 model_list_access_profiles_401_response.go
@@ -1222,7 +1291,9 @@ model_list_predefined_select_options_response.go
 model_list_workgroup_members_200_response_inner.go
 model_locale_origin.go
 model_localized_message.go
+model_lookup.go
 model_lookup_step.go
+model_lower.go
 model_mail_from_attributes.go
 model_mail_from_attributes_dto.go
 model_managed_client.go
@@ -1249,6 +1320,8 @@ model_mfa_config_test_response.go
 model_mfa_duo_config.go
 model_mfa_okta_config.go
 model_multi_policy_request.go
+model_name_normalizer.go
+model_named_constructs.go
 model_native_change_detection_config.go
 model_non_employee_approval_decision.go
 model_non_employee_approval_item.go
@@ -1334,6 +1407,8 @@ model_public_identity_attribute_config.go
 model_public_identity_config.go
 model_put_password_dictionary_request.go
 model_queued_check_config_details.go
+model_random_alpha_numeric.go
+model_random_numeric.go
 model_reassign_reference.go
 model_reassignment.go
 model_reassignment_type.go
@@ -1345,8 +1420,11 @@ model_recommendation_response.go
 model_recommendation_response_dto.go
 model_recommender_calculations.go
 model_recommender_calculations_identity_attributes_value.go
+model_reference.go
 model_remediation_item_details.go
 model_remediation_items.go
+model_replace.go
+model_replace_all.go
 model_report_config_dto.go
 model_report_result_reference.go
 model_report_type.go
@@ -1367,6 +1445,7 @@ model_review_reassign.go
 model_reviewer.go
 model_revocability.go
 model_revocability_for_role.go
+model_right_pad.go
 model_role.go
 model_role_assignment_source_type.go
 model_role_bulk_delete_request.go
@@ -1413,6 +1492,7 @@ model_role_mining_session_scope.go
 model_role_mining_session_scoping_method.go
 model_role_mining_session_state.go
 model_role_mining_session_status.go
+model_rule.go
 model_saved_search_complete.go
 model_saved_search_complete_search_results.go
 model_saved_search_complete_search_results_account.go
@@ -1426,6 +1506,7 @@ model_schedule_days.go
 model_schedule_hours.go
 model_schedule_months.go
 model_schedule_type.go
+model_scheduled_attributes.go
 model_schema.go
 model_search_attribute_config.go
 model_search_form_definitions_by_tenant_400_response.go
@@ -1464,7 +1545,6 @@ model_sod_violation_context_conflicting_access_criteria.go
 model_sod_violation_context_conflicting_access_criteria_left_criteria.go
 model_source.go
 model_source_1.go
-model_source_account.go
 model_source_account_correlation_config.go
 model_source_account_correlation_rule.go
 model_source_before_provisioning_rule.go
@@ -1497,8 +1577,10 @@ model_sp_config_job.go
 model_sp_config_message.go
 model_sp_config_object.go
 model_sp_config_url.go
+model_split.go
 model_standard_level.go
 model_start_invocation_input.go
+model_static.go
 model_status_response.go
 model_subscription.go
 model_subscription_patch_request_inner.go
@@ -1507,6 +1589,7 @@ model_subscription_patch_request_inner_value_any_of_inner.go
 model_subscription_post_request.go
 model_subscription_put_request.go
 model_subscription_type.go
+model_substring.go
 model_tagged_object.go
 model_tagged_object_dto.go
 model_tagged_object_object_ref.go
@@ -1530,6 +1613,7 @@ model_test_workflow_request.go
 model_token_auth_request.go
 model_token_auth_response.go
 model_transform.go
+model_transform_attributes.go
 model_transform_definition.go
 model_transform_definition_1.go
 model_transform_definition_1_attributes_value.go
@@ -1539,8 +1623,11 @@ model_trigger.go
 model_trigger_example_input.go
 model_trigger_example_output.go
 model_trigger_type.go
+model_trim.go
 model_update_access_profiles_in_bulk_412_response.go
+model_upper.go
 model_usage_type.go
+model_uuid_generator.go
 model_v3_connector_dto.go
 model_va_cluster_status_change_event.go
 model_va_cluster_status_change_event_application.go
@@ -1576,6 +1663,7 @@ model_workflow_library_operator.go
 model_workflow_library_trigger.go
 model_workflow_o_auth_client.go
 model_workflow_trigger.go
+model_workflow_trigger_attributes.go
 model_workgroup_bulk_delete_request.go
 model_workgroup_connection_dto.go
 model_workgroup_delete_item.go

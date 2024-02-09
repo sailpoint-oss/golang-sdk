@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Unique name of this transform | 
 **Type** | **string** | The type of transform operation | 
-**Attributes** | **map[string]interface{}** | Meta-data about the transform. Values in this list are specific to the type of transform to be executed. | 
+**Attributes** | [**NullableTransformAttributes**](TransformAttributes.md) |  | 
 **Id** | **string** | Unique ID of this transform | 
 **Internal** | **bool** | Indicates whether this is an internal SailPoint-created transform or a customer-created transform | [default to false]
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewTransformRead
 
-`func NewTransformRead(name string, type_ string, attributes map[string]interface{}, id string, internal bool, ) *TransformRead`
+`func NewTransformRead(name string, type_ string, attributes NullableTransformAttributes, id string, internal bool, ) *TransformRead`
 
 NewTransformRead instantiates a new TransformRead object
 This constructor will assign default values to properties that have it defined,
@@ -71,20 +71,20 @@ SetType sets Type field to given value.
 
 ### GetAttributes
 
-`func (o *TransformRead) GetAttributes() map[string]interface{}`
+`func (o *TransformRead) GetAttributes() TransformAttributes`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *TransformRead) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *TransformRead) GetAttributesOk() (*TransformAttributes, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *TransformRead) SetAttributes(v map[string]interface{})`
+`func (o *TransformRead) SetAttributes(v TransformAttributes)`
 
 SetAttributes sets Attributes field to given value.
 

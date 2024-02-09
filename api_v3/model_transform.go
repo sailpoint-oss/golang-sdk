@@ -24,8 +24,7 @@ type Transform struct {
 	Name string `json:"name"`
 	// The type of transform operation
 	Type string `json:"type"`
-	// Meta-data about the transform. Values in this list are specific to the type of transform to be executed.
-	Attributes map[string]interface{} `json:"attributes"`
+	Attributes NullableTransformAttributes `json:"attributes"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,7 +34,7 @@ type _Transform Transform
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransform(name string, type_ string, attributes map[string]interface{}) *Transform {
+func NewTransform(name string, type_ string, attributes NullableTransformAttributes) *Transform {
 	this := Transform{}
 	this.Name = name
 	this.Type = type_
@@ -100,29 +99,29 @@ func (o *Transform) SetType(v string) {
 }
 
 // GetAttributes returns the Attributes field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *Transform) GetAttributes() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+// If the value is explicit nil, the zero value for TransformAttributes will be returned
+func (o *Transform) GetAttributes() TransformAttributes {
+	if o == nil || o.Attributes.Get() == nil {
+		var ret TransformAttributes
 		return ret
 	}
 
-	return o.Attributes
+	return *o.Attributes.Get()
 }
 
 // GetAttributesOk returns a tuple with the Attributes field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Transform) GetAttributesOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Attributes) {
-		return map[string]interface{}{}, false
+func (o *Transform) GetAttributesOk() (*TransformAttributes, bool) {
+	if o == nil {
+		return nil, false
 	}
-	return o.Attributes, true
+	return o.Attributes.Get(), o.Attributes.IsSet()
 }
 
 // SetAttributes sets field value
-func (o *Transform) SetAttributes(v map[string]interface{}) {
-	o.Attributes = v
+func (o *Transform) SetAttributes(v TransformAttributes) {
+	o.Attributes.Set(&v)
 }
 
 func (o Transform) MarshalJSON() ([]byte, error) {
@@ -137,9 +136,7 @@ func (o Transform) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["type"] = o.Type
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
-	}
+	toSerialize["attributes"] = o.Attributes.Get()
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Email** | Pointer to **NullableString** | Email address of identity. | [optional] 
 **Status** | Pointer to **NullableString** | The lifecycle status for the identity | [optional] 
 **Manager** | Pointer to [**NullableIdentityReference**](IdentityReference.md) |  | [optional] 
-**Attributes** | Pointer to [**[]IdentityAttribute**](IdentityAttribute.md) | The public identity attributes of the identity | [optional] 
+**Attributes** | Pointer to [**[]IdentityAttribute1**](IdentityAttribute1.md) | The public identity attributes of the identity | [optional] 
 
 ## Methods
 
@@ -213,20 +213,20 @@ HasManager returns a boolean if a field has been set.
 UnsetManager ensures that no value is present for Manager, not even an explicit nil
 ### GetAttributes
 
-`func (o *PublicIdentity) GetAttributes() []IdentityAttribute`
+`func (o *PublicIdentity) GetAttributes() []IdentityAttribute1`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *PublicIdentity) GetAttributesOk() (*[]IdentityAttribute, bool)`
+`func (o *PublicIdentity) GetAttributesOk() (*[]IdentityAttribute1, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *PublicIdentity) SetAttributes(v []IdentityAttribute)`
+`func (o *PublicIdentity) SetAttributes(v []IdentityAttribute1)`
 
 SetAttributes sets Attributes field to given value.
 

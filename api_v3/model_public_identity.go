@@ -31,7 +31,7 @@ type PublicIdentity struct {
 	Status NullableString `json:"status,omitempty"`
 	Manager NullableIdentityReference `json:"manager,omitempty"`
 	// The public identity attributes of the identity
-	Attributes []IdentityAttribute `json:"attributes,omitempty"`
+	Attributes []IdentityAttribute1 `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -277,9 +277,9 @@ func (o *PublicIdentity) UnsetManager() {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *PublicIdentity) GetAttributes() []IdentityAttribute {
+func (o *PublicIdentity) GetAttributes() []IdentityAttribute1 {
 	if o == nil || isNil(o.Attributes) {
-		var ret []IdentityAttribute
+		var ret []IdentityAttribute1
 		return ret
 	}
 	return o.Attributes
@@ -287,7 +287,7 @@ func (o *PublicIdentity) GetAttributes() []IdentityAttribute {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PublicIdentity) GetAttributesOk() ([]IdentityAttribute, bool) {
+func (o *PublicIdentity) GetAttributesOk() ([]IdentityAttribute1, bool) {
 	if o == nil || isNil(o.Attributes) {
 		return nil, false
 	}
@@ -303,8 +303,8 @@ func (o *PublicIdentity) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given []IdentityAttribute and assigns it to the Attributes field.
-func (o *PublicIdentity) SetAttributes(v []IdentityAttribute) {
+// SetAttributes gets a reference to the given []IdentityAttribute1 and assigns it to the Attributes field.
+func (o *PublicIdentity) SetAttributes(v []IdentityAttribute1) {
 	o.Attributes = v
 }
 

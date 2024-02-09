@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    transform := *openapiclient.NewTransform("Timestamp To Date", "dateFormat", map[string]interface{}(123)) // Transform | The transform to be created.
+    transform := *openapiclient.NewTransform("Timestamp To Date", "dateFormat", "TODO") // Transform | The transform to be created.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -312,7 +312,7 @@ import (
 
 func main() {
     id := "2cd78adghjkja34jh2b1hkjhasuecd" // string | ID of the transform to update
-    transform := *openapiclient.NewTransform("Timestamp To Date", "dateFormat", map[string]interface{}(123)) // Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
+    transform := *openapiclient.NewTransform("Timestamp To Date", "dateFormat", "TODO") // Transform | The updated transform object. Must include \"name\", \"type\", and \"attributes\" fields, but \"name\" and \"type\" must not be modified. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

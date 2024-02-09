@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | The attribute key | [optional] 
-**Name** | Pointer to **string** | Human-readable display name of the attribute | [optional] 
-**Value** | Pointer to **string** | The attribute value | [optional] 
+**Name** | **string** | The system (camel-cased) name of the identity attribute to bring in | 
+**RequiresPeriodicRefresh** | Pointer to **bool** | A value that indicates whether the transform logic should be re-evaluated every evening as part of the identity refresh process | [optional] [default to false]
+**Input** | Pointer to **map[string]interface{}** | This is an optional attribute that can explicitly define the input data which will be fed into the transform logic. If input is not provided, the transform will take its input from the source and attribute combination configured via the UI. | [optional] 
 
 ## Methods
 
 ### NewIdentityAttribute
 
-`func NewIdentityAttribute() *IdentityAttribute`
+`func NewIdentityAttribute(name string, ) *IdentityAttribute`
 
 NewIdentityAttribute instantiates a new IdentityAttribute object
 This constructor will assign default values to properties that have it defined,
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewIdentityAttributeWithDefaults instantiates a new IdentityAttribute object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetKey
-
-`func (o *IdentityAttribute) GetKey() string`
-
-GetKey returns the Key field if non-nil, zero value otherwise.
-
-### GetKeyOk
-
-`func (o *IdentityAttribute) GetKeyOk() (*string, bool)`
-
-GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKey
-
-`func (o *IdentityAttribute) SetKey(v string)`
-
-SetKey sets Key field to given value.
-
-### HasKey
-
-`func (o *IdentityAttribute) HasKey() bool`
-
-HasKey returns a boolean if a field has been set.
 
 ### GetName
 
@@ -71,36 +46,56 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
 
-`func (o *IdentityAttribute) HasName() bool`
+### GetRequiresPeriodicRefresh
 
-HasName returns a boolean if a field has been set.
+`func (o *IdentityAttribute) GetRequiresPeriodicRefresh() bool`
 
-### GetValue
+GetRequiresPeriodicRefresh returns the RequiresPeriodicRefresh field if non-nil, zero value otherwise.
 
-`func (o *IdentityAttribute) GetValue() string`
+### GetRequiresPeriodicRefreshOk
 
-GetValue returns the Value field if non-nil, zero value otherwise.
+`func (o *IdentityAttribute) GetRequiresPeriodicRefreshOk() (*bool, bool)`
 
-### GetValueOk
-
-`func (o *IdentityAttribute) GetValueOk() (*string, bool)`
-
-GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
+GetRequiresPeriodicRefreshOk returns a tuple with the RequiresPeriodicRefresh field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetValue
+### SetRequiresPeriodicRefresh
 
-`func (o *IdentityAttribute) SetValue(v string)`
+`func (o *IdentityAttribute) SetRequiresPeriodicRefresh(v bool)`
 
-SetValue sets Value field to given value.
+SetRequiresPeriodicRefresh sets RequiresPeriodicRefresh field to given value.
 
-### HasValue
+### HasRequiresPeriodicRefresh
 
-`func (o *IdentityAttribute) HasValue() bool`
+`func (o *IdentityAttribute) HasRequiresPeriodicRefresh() bool`
 
-HasValue returns a boolean if a field has been set.
+HasRequiresPeriodicRefresh returns a boolean if a field has been set.
+
+### GetInput
+
+`func (o *IdentityAttribute) GetInput() map[string]interface{}`
+
+GetInput returns the Input field if non-nil, zero value otherwise.
+
+### GetInputOk
+
+`func (o *IdentityAttribute) GetInputOk() (*map[string]interface{}, bool)`
+
+GetInputOk returns a tuple with the Input field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInput
+
+`func (o *IdentityAttribute) SetInput(v map[string]interface{})`
+
+SetInput sets Input field to given value.
+
+### HasInput
+
+`func (o *IdentityAttribute) HasInput() bool`
+
+HasInput returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
