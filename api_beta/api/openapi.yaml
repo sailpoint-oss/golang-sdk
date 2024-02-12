@@ -69633,8 +69633,6 @@ components:
       title: Saved Search Complete
       type: object
     SourceAccountCreated:
-      $ref: '#/components/schemas/SourceAccount'
-    SourceAccount:
       properties:
         uuid:
           description: Source unique identifier for the identity. UUID is generated
@@ -69692,9 +69690,119 @@ components:
       - sourceName
       type: object
     SourceAccountDeleted:
-      $ref: '#/components/schemas/SourceAccount'
+      properties:
+        uuid:
+          description: Source unique identifier for the identity. UUID is generated
+            by the source system.
+          example: b7264868-7201-415f-9118-b581d431c688
+          type: string
+        id:
+          description: SailPoint generated unique identifier.
+          example: ee769173319b41d19ccec35ba52f237b
+          type: string
+        nativeIdentifier:
+          description: Unique ID of the account on the source.
+          example: E009
+          type: string
+        sourceId:
+          description: The ID of the source.
+          example: 2c918082814e693601816e09471b29b6
+          type: string
+        sourceName:
+          description: The name of the source.
+          example: Active Directory
+          type: string
+        identityId:
+          description: The ID of the identity that is correlated with this account.
+          example: ee769173319b41d19ccec6c235423237b
+          type: string
+        identityName:
+          description: The name of the identity that is correlated with this account.
+          example: john.doe
+          type: string
+        attributes:
+          additionalProperties: true
+          description: The attributes of the account. The contents of attributes depends
+            on the account schema for the source.
+          example:
+            firstname: John
+            lastname: Doe
+            email: john.doe@gmail.com
+            department: Sales
+            displayName: John Doe
+            created: 2020-04-27T16:48:33.597Z
+            employeeNumber: E009
+            uid: E009
+            inactive: "true"
+            phone: null
+            identificationNumber: E009
+          type: object
+      required:
+      - attributes
+      - id
+      - identityId
+      - identityName
+      - nativeIdentifier
+      - sourceId
+      - sourceName
+      type: object
     SourceAccountUpdated:
-      $ref: '#/components/schemas/SourceAccount'
+      properties:
+        uuid:
+          description: Source unique identifier for the identity. UUID is generated
+            by the source system.
+          example: b7264868-7201-415f-9118-b581d431c688
+          type: string
+        id:
+          description: SailPoint generated unique identifier.
+          example: ee769173319b41d19ccec35ba52f237b
+          type: string
+        nativeIdentifier:
+          description: Unique ID of the account on the source.
+          example: E009
+          type: string
+        sourceId:
+          description: The ID of the source.
+          example: 2c918082814e693601816e09471b29b6
+          type: string
+        sourceName:
+          description: The name of the source.
+          example: Active Directory
+          type: string
+        identityId:
+          description: The ID of the identity that is correlated with this account.
+          example: ee769173319b41d19ccec6c235423237b
+          type: string
+        identityName:
+          description: The name of the identity that is correlated with this account.
+          example: john.doe
+          type: string
+        attributes:
+          additionalProperties: true
+          description: The attributes of the account. The contents of attributes depends
+            on the account schema for the source.
+          example:
+            firstname: John
+            lastname: Doe
+            email: john.doe@gmail.com
+            department: Sales
+            displayName: John Doe
+            created: 2020-04-27T16:48:33.597Z
+            employeeNumber: E009
+            uid: E009
+            inactive: "true"
+            phone: null
+            identificationNumber: E009
+          type: object
+      required:
+      - attributes
+      - id
+      - identityId
+      - identityName
+      - nativeIdentifier
+      - sourceId
+      - sourceName
+      type: object
     SourceCreated:
       properties:
         id:

@@ -725,9 +725,11 @@ docs/SodViolationContextConflictingAccessCriteria.md
 docs/SodViolationContextConflictingAccessCriteriaLeftCriteria.md
 docs/Source.md
 docs/Source1.md
-docs/SourceAccount.md
 docs/SourceAccountCorrelationConfig.md
 docs/SourceAccountCorrelationRule.md
+docs/SourceAccountCreated.md
+docs/SourceAccountDeleted.md
+docs/SourceAccountUpdated.md
 docs/SourceBeforeProvisioningRule.md
 docs/SourceCluster.md
 docs/SourceClusterDto.md
@@ -1464,9 +1466,11 @@ model_sod_violation_context_conflicting_access_criteria.go
 model_sod_violation_context_conflicting_access_criteria_left_criteria.go
 model_source.go
 model_source_1.go
-model_source_account.go
 model_source_account_correlation_config.go
 model_source_account_correlation_rule.go
+model_source_account_created.go
+model_source_account_deleted.go
+model_source_account_updated.go
 model_source_before_provisioning_rule.go
 model_source_cluster.go
 model_source_cluster_dto.go

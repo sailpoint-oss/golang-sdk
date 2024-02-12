@@ -1,4 +1,4 @@
-# SourceAccount
+# SourceAccountDeleted
 
 ## Properties
 
@@ -15,184 +15,184 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewSourceAccount
+### NewSourceAccountDeleted
 
-`func NewSourceAccount(id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, attributes map[string]interface{}, ) *SourceAccount`
+`func NewSourceAccountDeleted(id string, nativeIdentifier string, sourceId string, sourceName string, identityId string, identityName string, attributes map[string]interface{}, ) *SourceAccountDeleted`
 
-NewSourceAccount instantiates a new SourceAccount object
+NewSourceAccountDeleted instantiates a new SourceAccountDeleted object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSourceAccountWithDefaults
+### NewSourceAccountDeletedWithDefaults
 
-`func NewSourceAccountWithDefaults() *SourceAccount`
+`func NewSourceAccountDeletedWithDefaults() *SourceAccountDeleted`
 
-NewSourceAccountWithDefaults instantiates a new SourceAccount object
+NewSourceAccountDeletedWithDefaults instantiates a new SourceAccountDeleted object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetUuid
 
-`func (o *SourceAccount) GetUuid() string`
+`func (o *SourceAccountDeleted) GetUuid() string`
 
 GetUuid returns the Uuid field if non-nil, zero value otherwise.
 
 ### GetUuidOk
 
-`func (o *SourceAccount) GetUuidOk() (*string, bool)`
+`func (o *SourceAccountDeleted) GetUuidOk() (*string, bool)`
 
 GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUuid
 
-`func (o *SourceAccount) SetUuid(v string)`
+`func (o *SourceAccountDeleted) SetUuid(v string)`
 
 SetUuid sets Uuid field to given value.
 
 ### HasUuid
 
-`func (o *SourceAccount) HasUuid() bool`
+`func (o *SourceAccountDeleted) HasUuid() bool`
 
 HasUuid returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *SourceAccount) GetId() string`
+`func (o *SourceAccountDeleted) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *SourceAccount) GetIdOk() (*string, bool)`
+`func (o *SourceAccountDeleted) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *SourceAccount) SetId(v string)`
+`func (o *SourceAccountDeleted) SetId(v string)`
 
 SetId sets Id field to given value.
 
 
 ### GetNativeIdentifier
 
-`func (o *SourceAccount) GetNativeIdentifier() string`
+`func (o *SourceAccountDeleted) GetNativeIdentifier() string`
 
 GetNativeIdentifier returns the NativeIdentifier field if non-nil, zero value otherwise.
 
 ### GetNativeIdentifierOk
 
-`func (o *SourceAccount) GetNativeIdentifierOk() (*string, bool)`
+`func (o *SourceAccountDeleted) GetNativeIdentifierOk() (*string, bool)`
 
 GetNativeIdentifierOk returns a tuple with the NativeIdentifier field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNativeIdentifier
 
-`func (o *SourceAccount) SetNativeIdentifier(v string)`
+`func (o *SourceAccountDeleted) SetNativeIdentifier(v string)`
 
 SetNativeIdentifier sets NativeIdentifier field to given value.
 
 
 ### GetSourceId
 
-`func (o *SourceAccount) GetSourceId() string`
+`func (o *SourceAccountDeleted) GetSourceId() string`
 
 GetSourceId returns the SourceId field if non-nil, zero value otherwise.
 
 ### GetSourceIdOk
 
-`func (o *SourceAccount) GetSourceIdOk() (*string, bool)`
+`func (o *SourceAccountDeleted) GetSourceIdOk() (*string, bool)`
 
 GetSourceIdOk returns a tuple with the SourceId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSourceId
 
-`func (o *SourceAccount) SetSourceId(v string)`
+`func (o *SourceAccountDeleted) SetSourceId(v string)`
 
 SetSourceId sets SourceId field to given value.
 
 
 ### GetSourceName
 
-`func (o *SourceAccount) GetSourceName() string`
+`func (o *SourceAccountDeleted) GetSourceName() string`
 
 GetSourceName returns the SourceName field if non-nil, zero value otherwise.
 
 ### GetSourceNameOk
 
-`func (o *SourceAccount) GetSourceNameOk() (*string, bool)`
+`func (o *SourceAccountDeleted) GetSourceNameOk() (*string, bool)`
 
 GetSourceNameOk returns a tuple with the SourceName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSourceName
 
-`func (o *SourceAccount) SetSourceName(v string)`
+`func (o *SourceAccountDeleted) SetSourceName(v string)`
 
 SetSourceName sets SourceName field to given value.
 
 
 ### GetIdentityId
 
-`func (o *SourceAccount) GetIdentityId() string`
+`func (o *SourceAccountDeleted) GetIdentityId() string`
 
 GetIdentityId returns the IdentityId field if non-nil, zero value otherwise.
 
 ### GetIdentityIdOk
 
-`func (o *SourceAccount) GetIdentityIdOk() (*string, bool)`
+`func (o *SourceAccountDeleted) GetIdentityIdOk() (*string, bool)`
 
 GetIdentityIdOk returns a tuple with the IdentityId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentityId
 
-`func (o *SourceAccount) SetIdentityId(v string)`
+`func (o *SourceAccountDeleted) SetIdentityId(v string)`
 
 SetIdentityId sets IdentityId field to given value.
 
 
 ### GetIdentityName
 
-`func (o *SourceAccount) GetIdentityName() string`
+`func (o *SourceAccountDeleted) GetIdentityName() string`
 
 GetIdentityName returns the IdentityName field if non-nil, zero value otherwise.
 
 ### GetIdentityNameOk
 
-`func (o *SourceAccount) GetIdentityNameOk() (*string, bool)`
+`func (o *SourceAccountDeleted) GetIdentityNameOk() (*string, bool)`
 
 GetIdentityNameOk returns a tuple with the IdentityName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIdentityName
 
-`func (o *SourceAccount) SetIdentityName(v string)`
+`func (o *SourceAccountDeleted) SetIdentityName(v string)`
 
 SetIdentityName sets IdentityName field to given value.
 
 
 ### GetAttributes
 
-`func (o *SourceAccount) GetAttributes() map[string]interface{}`
+`func (o *SourceAccountDeleted) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *SourceAccount) GetAttributesOk() (*map[string]interface{}, bool)`
+`func (o *SourceAccountDeleted) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *SourceAccount) SetAttributes(v map[string]interface{})`
+`func (o *SourceAccountDeleted) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 
