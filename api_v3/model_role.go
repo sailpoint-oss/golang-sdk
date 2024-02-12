@@ -33,7 +33,7 @@ type Role struct {
 	Description NullableString `json:"description,omitempty"`
 	Owner OwnerReference `json:"owner"`
 	AccessProfiles []AccessProfileRef `json:"accessProfiles,omitempty"`
-	Entitlements []EntitlementRef `json:"Entitlements,omitempty"`
+	Entitlements []EntitlementRef `json:"entitlements,omitempty"`
 	Membership NullableRoleMembershipSelector `json:"membership,omitempty"`
 	// This field is not directly modifiable and is generally expected to be *null*. In very rare instances, some Roles may have been created using membership selection criteria that are no longer fully supported. While these Roles will still work, they should be migrated to STANDARD or IDENTITY_LIST selection criteria. This field exists for informational purposes as an aid to such migration.
 	LegacyMembershipInfo map[string]interface{} `json:"legacyMembershipInfo,omitempty"`
@@ -589,7 +589,7 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
 	if o.Entitlements != nil {
-		toSerialize["Entitlements"] = o.Entitlements
+		toSerialize["entitlements"] = o.Entitlements
 	}
 	if o.Membership.IsSet() {
 		toSerialize["membership"] = o.Membership.Get()
@@ -659,7 +659,7 @@ func (o *Role) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "accessProfiles")
-		delete(additionalProperties, "Entitlements")
+		delete(additionalProperties, "entitlements")
 		delete(additionalProperties, "membership")
 		delete(additionalProperties, "legacyMembershipInfo")
 		delete(additionalProperties, "enabled")
