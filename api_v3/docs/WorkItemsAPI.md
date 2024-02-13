@@ -19,13 +19,11 @@ Method | HTTP request | Description
 
 
 
-## ApproveApprovalItem
+## Approve an Approval Item
 
 > WorkItems ApproveApprovalItem(ctx, id, approvalItemId).Execute()
 
-Approve an Approval Item
-
-
+This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
 
 ### Example
 
@@ -36,16 +34,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
     approvalItemId := "1211bcaa32112bcef6122adb21cef1ac" // string | The ID of the approval item.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.ApproveApprovalItem(context.Background(), id, approvalItemId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.ApproveApprovalItem(context.Background(), id, approvalItemId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ApproveApprovalItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -92,13 +90,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ApproveApprovalItemsInBulk
+## Bulk approve Approval Items
 
 > WorkItems ApproveApprovalItemsInBulk(ctx, id).Execute()
 
-Bulk approve Approval Items
-
-
+This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
 ### Example
 
@@ -109,15 +105,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.ApproveApprovalItemsInBulk(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ApproveApprovalItemsInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -162,13 +158,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CompleteWorkItem
+## Complete a Work Item
 
 > WorkItems CompleteWorkItem(ctx, id).Execute()
 
-Complete a Work Item
-
-
+This API completes a work item. Either an admin, or the owning/current user must make this request.
 
 ### Example
 
@@ -179,15 +173,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.CompleteWorkItem(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.CompleteWorkItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -232,13 +226,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCompletedWorkItems
+## Completed Work Items
 
 > []WorkItems GetCompletedWorkItems(ctx).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
 
-Completed Work Items
-
-
+This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
 
 ### Example
 
@@ -249,7 +241,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -258,9 +250,9 @@ func main() {
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.GetCompletedWorkItems(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.GetCompletedWorkItems(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCompletedWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -304,13 +296,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCountCompletedWorkItems
+## Count Completed Work Items
 
 > WorkItemsCount GetCountCompletedWorkItems(ctx).OwnerId(ownerId).Execute()
 
-Count Completed Work Items
-
-
+This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
 
 ### Example
 
@@ -321,15 +311,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     ownerId := "1211bcaa32112bcef6122adb21cef1ac" // string | ID of the work item owner. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).OwnerId(ownerId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).OwnerId(ownerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountCompletedWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -370,13 +360,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCountWorkItems
+## Count Work Items
 
 > WorkItemsCount GetCountWorkItems(ctx).OwnerId(ownerId).Execute()
 
-Count Work Items
-
-
+This gets a count of work items belonging to either the specified user(admin required), or the current user.
 
 ### Example
 
@@ -387,15 +375,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     ownerId := "ef38f94347e94562b5bb8424a56397d8" // string | ID of the work item owner. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.GetCountWorkItems(context.Background()).OwnerId(ownerId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.GetCountWorkItems(context.Background()).OwnerId(ownerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -436,13 +424,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetWorkItem
+## Get a Work Item
 
 > WorkItems GetWorkItem(ctx, id).Execute()
 
-Get a Work Item
-
-
+This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
 
 ### Example
 
@@ -453,15 +439,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c9180835d191a86015d28455b4a2329" // string | ID of the work item.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.GetWorkItem(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.GetWorkItem(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -506,13 +492,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetWorkItemsSummary
+## Work Items Summary
 
 > WorkItemsSummary GetWorkItemsSummary(ctx).OwnerId(ownerId).Execute()
 
-Work Items Summary
-
-
+This gets a summary of work items belonging to either the specified user(admin required), or the current user.
 
 ### Example
 
@@ -523,15 +507,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     ownerId := "1211bcaa32112bcef6122adb21cef1ac" // string | ID of the work item owner. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.GetWorkItemsSummary(context.Background()).OwnerId(ownerId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.GetWorkItemsSummary(context.Background()).OwnerId(ownerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItemsSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -572,13 +556,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListWorkItems
+## List Work Items
 
 > []WorkItems ListWorkItems(ctx).Limit(limit).Offset(offset).Count(count).OwnerId(ownerId).Execute()
 
-List Work Items
-
-
+This gets a collection of work items belonging to either the specified user(admin required), or the current user.
 
 ### Example
 
@@ -589,7 +571,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -598,9 +580,9 @@ func main() {
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     ownerId := "1211bcaa32112bcef6122adb21cef1ac" // string | ID of the work item owner. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.ListWorkItems(context.Background()).Limit(limit).Offset(offset).Count(count).OwnerId(ownerId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.ListWorkItems(context.Background()).Limit(limit).Offset(offset).Count(count).OwnerId(ownerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ListWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -644,13 +626,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RejectApprovalItem
+## Reject an Approval Item
 
 > WorkItems RejectApprovalItem(ctx, id, approvalItemId).Execute()
 
-Reject an Approval Item
-
-
+This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
 
 ### Example
 
@@ -661,16 +641,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
     approvalItemId := "1211bcaa32112bcef6122adb21cef1ac" // string | The ID of the approval item.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.RejectApprovalItem(context.Background(), id, approvalItemId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.RejectApprovalItem(context.Background(), id, approvalItemId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.RejectApprovalItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -717,13 +697,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RejectApprovalItemsInBulk
+## Bulk reject Approval Items
 
 > WorkItems RejectApprovalItemsInBulk(ctx, id).Execute()
 
-Bulk reject Approval Items
-
-
+This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
 ### Example
 
@@ -734,15 +712,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.RejectApprovalItemsInBulk(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.RejectApprovalItemsInBulk(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.RejectApprovalItemsInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -787,13 +765,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SubmitAccountSelection
+## Submit Account Selections
 
 > WorkItems SubmitAccountSelection(ctx, id).RequestBody(requestBody).Execute()
 
-Submit Account Selections
-
-
+This API submits account selections. Either an admin, or the owning/current user must make this request.
 
 ### Example
 
@@ -804,16 +780,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
     requestBody := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} | Account Selection Data map, keyed on fieldName
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.WorkItemsAPI.SubmitAccountSelection(context.Background(), id).RequestBody(requestBody).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.WorkItemsAPI.SubmitAccountSelection(context.Background(), id).RequestBody(requestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.SubmitAccountSelection``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

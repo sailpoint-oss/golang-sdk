@@ -18,13 +18,13 @@ Method | HTTP request | Description
 
 
 
-## CreateAccount
+## Create Account
 
 > AccountsAsyncResult CreateAccount(ctx).AccountAttributesCreate(accountAttributesCreate).Execute()
 
-Create Account
-
-
+This API submits an account creation task and returns the task ID.  
+The `sourceId` where this account will be created must be included in the `attributes` object.
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -35,15 +35,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    accountAttributesCreate := *openapiclient.NewAccountAttributesCreate(*openapiclient.NewAccountAttributesCreateAttributes("34bfcbe116c9407464af37acbaf7a4dc")) // AccountAttributesCreate | 
+    accountAttributesCreate := *sailpoint.NewAccountAttributesCreate(*sailpoint.NewAccountAttributesCreateAttributes("34bfcbe116c9407464af37acbaf7a4dc")) // AccountAttributesCreate | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.CreateAccount(context.Background()).AccountAttributesCreate(accountAttributesCreate).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccountsAPI.CreateAccount(context.Background()).AccountAttributesCreate(accountAttributesCreate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.CreateAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -84,13 +84,14 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteAccount
+## Delete Account
 
 > AccountsAsyncResult DeleteAccount(ctx, id).Execute()
 
-Delete Account
-
-
+Use this API to delete an account. 
+This endpoint submits an account delete task and returns the task ID. 
+A token with ORG_ADMIN authority is required to call this API.
+>**NOTE: You can only delete accounts from sources of the "DelimitedFile" type.**
 
 ### Example
 
@@ -101,15 +102,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Account ID.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.DeleteAccount(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccountsAPI.DeleteAccount(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DeleteAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -154,13 +155,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DisableAccount
+## Disable Account
 
 > AccountsAsyncResult DisableAccount(ctx, id).AccountToggleRequest(accountToggleRequest).Execute()
 
-Disable Account
-
-
+This API submits a task to disable the account and returns the task ID.  
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -171,16 +171,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The account id
-    accountToggleRequest := *openapiclient.NewAccountToggleRequest() // AccountToggleRequest | 
+    accountToggleRequest := *sailpoint.NewAccountToggleRequest() // AccountToggleRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.DisableAccount(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccountsAPI.DisableAccount(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DisableAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -226,13 +226,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## EnableAccount
+## Enable Account
 
 > AccountsAsyncResult EnableAccount(ctx, id).AccountToggleRequest(accountToggleRequest).Execute()
 
-Enable Account
-
-
+This API submits a task to enable account and returns the task ID.  
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -243,16 +242,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The account id
-    accountToggleRequest := *openapiclient.NewAccountToggleRequest() // AccountToggleRequest | 
+    accountToggleRequest := *sailpoint.NewAccountToggleRequest() // AccountToggleRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.EnableAccount(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccountsAPI.EnableAccount(context.Background(), id).AccountToggleRequest(accountToggleRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.EnableAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -298,13 +297,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAccount
+## Account Details
 
 > Account GetAccount(ctx, id).Execute()
 
-Account Details
-
-
+Use this API to return the details for a single account by its ID.  
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -315,15 +313,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Account ID.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.GetAccount(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccountsAPI.GetAccount(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.GetAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -368,13 +366,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAccountEntitlements
+## Account Entitlements
 
 > []EntitlementDto GetAccountEntitlements(ctx, id).Limit(limit).Offset(offset).Count(count).Execute()
 
-Account Entitlements
-
-
+This API returns entitlements of the account.  
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -385,7 +382,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -394,9 +391,9 @@ func main() {
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.GetAccountEntitlements(context.Background(), id).Limit(limit).Offset(offset).Count(count).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccountsAPI.GetAccountEntitlements(context.Background(), id).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.GetAccountEntitlements``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -444,13 +441,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListAccounts
+## Accounts List
 
 > []Account ListAccounts(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
-Accounts List
-
-
+This returns a list of accounts.  
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -461,7 +457,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -471,9 +467,9 @@ func main() {
     filters := "identityId eq "2c9180858082150f0180893dbaf44201"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in, sw*  **identityId**: *eq, in, sw*  **name**: *eq, in, sw*  **nativeIdentity**: *eq, in, sw*  **sourceId**: *eq, in, sw*  **uncorrelated**: *eq*  **identity.name**: *eq, in, sw* (optional)
     sorters := "id,name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, created, modified, sourceId, identityId, nativeIdentity, uuid, manuallyCorrelated, identity.name** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.ListAccounts(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccountsAPI.ListAccounts(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.ListAccounts``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -518,13 +514,14 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutAccount
+## Update Account
 
 > AccountsAsyncResult PutAccount(ctx, id).AccountAttributes(accountAttributes).Execute()
 
-Update Account
-
-
+Use this API to update an account with a PUT request. 
+This endpoint submits an account update task and returns the task ID. 
+A token with ORG_ADMIN authority is required to call this API.
+>**NOTE: You can only use this PUT endpoint to update accounts from sources of the "DelimitedFile" type.**
 
 ### Example
 
@@ -535,16 +532,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Account ID.
-    accountAttributes := *openapiclient.NewAccountAttributes(map[string]interface{}{"key": interface{}(123)}) // AccountAttributes | 
+    accountAttributes := *sailpoint.NewAccountAttributes(map[string]interface{}{"key": interface{}(123)}) // AccountAttributes | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.PutAccount(context.Background(), id).AccountAttributes(accountAttributes).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccountsAPI.PutAccount(context.Background(), id).AccountAttributes(accountAttributes).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.PutAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -590,13 +587,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ReloadAccount
+## Reload Account
 
 > AccountsAsyncResult ReloadAccount(ctx, id).Execute()
 
-Reload Account
-
-
+This API asynchronously reloads the account directly from the connector and performs a one-time aggregation process.  
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -607,15 +603,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The account id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.ReloadAccount(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccountsAPI.ReloadAccount(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.ReloadAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -660,13 +656,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UnlockAccount
+## Unlock Account
 
 > AccountsAsyncResult UnlockAccount(ctx, id).AccountUnlockRequest(accountUnlockRequest).Execute()
 
-Unlock Account
-
-
+This API submits a task to unlock an account and returns the task ID.  
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -677,16 +672,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The account id
-    accountUnlockRequest := *openapiclient.NewAccountUnlockRequest() // AccountUnlockRequest | 
+    accountUnlockRequest := *sailpoint.NewAccountUnlockRequest() // AccountUnlockRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.UnlockAccount(context.Background(), id).AccountUnlockRequest(accountUnlockRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccountsAPI.UnlockAccount(context.Background(), id).AccountUnlockRequest(accountUnlockRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.UnlockAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -732,13 +727,16 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateAccount
+## Update Account
 
 > map[string]interface{} UpdateAccount(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Update Account
-
-
+Use this API to update the account with a PATCH request.
+This endpoint can only modify these fields:
+* `identityId`
+* `manuallyCorrelated`
+The request must provide a JSONPatch payload.
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -749,16 +747,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Account ID.
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountsAPI.UpdateAccount(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccountsAPI.UpdateAccount(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.UpdateAccount``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

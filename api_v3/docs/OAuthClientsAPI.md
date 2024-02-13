@@ -12,13 +12,11 @@ Method | HTTP request | Description
 
 
 
-## CreateOauthClient
+## Create OAuth Client
 
 > CreateOAuthClientResponse CreateOauthClient(ctx).CreateOAuthClientRequest(createOAuthClientRequest).Execute()
 
-Create OAuth Client
-
-
+This creates an OAuth client.
 
 ### Example
 
@@ -29,15 +27,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    createOAuthClientRequest := *openapiclient.NewCreateOAuthClientRequest("Demo API Client", "An API client used for the authorization_code, refresh_token, and client_credentials flows", int32(750), []openapiclient.GrantType{openapiclient.GrantType("CLIENT_CREDENTIALS")}, openapiclient.AccessType("ONLINE"), true) // CreateOAuthClientRequest | 
+    createOAuthClientRequest := *sailpoint.NewCreateOAuthClientRequest("Demo API Client", "An API client used for the authorization_code, refresh_token, and client_credentials flows", int32(750), []sailpoint.GrantType{sailpoint.GrantType("CLIENT_CREDENTIALS")}, sailpoint.AccessType("ONLINE"), true) // CreateOAuthClientRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsAPI.CreateOauthClient(context.Background()).CreateOAuthClientRequest(createOAuthClientRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.OAuthClientsAPI.CreateOauthClient(context.Background()).CreateOAuthClientRequest(createOAuthClientRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.CreateOauthClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -78,13 +76,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteOauthClient
+## Delete OAuth Client
 
 > DeleteOauthClient(ctx, id).Execute()
 
-Delete OAuth Client
-
-
+This deletes an OAuth client.
 
 ### Example
 
@@ -95,15 +91,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The OAuth client id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.OAuthClientsAPI.DeleteOauthClient(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.OAuthClientsAPI.DeleteOauthClient(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.DeleteOauthClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,13 +142,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetOauthClient
+## Get OAuth Client
 
 > GetOAuthClientResponse GetOauthClient(ctx, id).Execute()
 
-Get OAuth Client
-
-
+This gets details of an OAuth client.
 
 ### Example
 
@@ -163,15 +157,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The OAuth client id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsAPI.GetOauthClient(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.OAuthClientsAPI.GetOauthClient(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.GetOauthClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -216,13 +210,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListOauthClients
+## List OAuth Clients
 
 > []GetOAuthClientResponse ListOauthClients(ctx).Filters(filters).Execute()
 
-List OAuth Clients
-
-
+This gets a list of OAuth clients.
 
 ### Example
 
@@ -233,15 +225,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     filters := "lastUsed le 2023-02-05T10:59:27.214Z" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull* (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsAPI.ListOauthClients(context.Background()).Filters(filters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.OAuthClientsAPI.ListOauthClients(context.Background()).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.ListOauthClients``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -282,13 +274,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchOauthClient
+## Patch OAuth Client
 
 > GetOAuthClientResponse PatchOauthClient(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Patch OAuth Client
-
-
+This performs a targeted update to the field(s) of an OAuth client.
 
 ### Example
 
@@ -299,16 +289,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The OAuth client id
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
+    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * tenant * businessName * homepageUrl * name * description * accessTokenValiditySeconds * refreshTokenValiditySeconds * redirectUris * grantTypes * accessType * enabled * strongAuthSupported * claimsSupported 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OAuthClientsAPI.PatchOauthClient(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.OAuthClientsAPI.PatchOauthClient(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OAuthClientsAPI.PatchOauthClient``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

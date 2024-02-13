@@ -32,13 +32,14 @@ Method | HTTP request | Description
 
 
 
-## CreateProvisioningPolicy
+## Create Provisioning Policy
 
 > ProvisioningPolicyDto CreateProvisioningPolicy(ctx, sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
 
-Create Provisioning Policy
-
-
+This API generates a create policy/template based on field value transforms. This API is intended for use when setting up JDBC Provisioning type sources, but it will also work on other source types.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -49,16 +50,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id
-    provisioningPolicyDto := *openapiclient.NewProvisioningPolicyDto("example provisioning policy for inactive identities") // ProvisioningPolicyDto | 
+    provisioningPolicyDto := *sailpoint.NewProvisioningPolicyDto("example provisioning policy for inactive identities") // ProvisioningPolicyDto | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.CreateProvisioningPolicy(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.CreateProvisioningPolicy(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateProvisioningPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,13 +105,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateSource
+## Creates a source in IdentityNow.
 
 > Source CreateSource(ctx).Source(source).ProvisionAsCsv(provisionAsCsv).Execute()
 
-Creates a source in IdentityNow.
-
-
+This creates a specific source with a full source JSON representation. Any passwords are submitted as plain-text and encrypted upon receipt in IdentityNow.
+A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -121,16 +121,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    source := *openapiclient.NewSource("My Source", *openapiclient.NewSourceOwner(), "active-directory") // Source | 
+    source := *sailpoint.NewSource("My Source", *sailpoint.NewSourceOwner(), "active-directory") // Source | 
     provisionAsCsv := false // bool | If this parameter is `true`, it configures the source as a Delimited File (CSV) source. Setting this to `true` will automatically set the `type` of the source to `DelimitedFile`.  You must use this query parameter to create a Delimited File source as you would in the UI.  If you don't set this query parameter and you attempt to set the `type` attribute directly, the request won't correctly generate the source.   (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.CreateSource(context.Background()).Source(source).ProvisionAsCsv(provisionAsCsv).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.CreateSource(context.Background()).Source(source).ProvisionAsCsv(provisionAsCsv).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -172,12 +172,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateSourceSchema
+## Create Schema on a Source
 
 > Schema CreateSourceSchema(ctx, sourceId).Schema(schema).Execute()
 
-Create Schema on a Source
-
+Creates a new Schema on the specified Source in IdentityNow.
 
 
 ### Example
@@ -189,16 +188,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
-    schema := *openapiclient.NewSchema() // Schema | 
+    schema := *sailpoint.NewSchema() // Schema | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.CreateSourceSchema(context.Background(), sourceId).Schema(schema).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.CreateSourceSchema(context.Background(), sourceId).Schema(schema).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.CreateSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -244,13 +243,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteProvisioningPolicy
+## Delete Provisioning Policy by UsageType
 
 > DeleteProvisioningPolicy(ctx, sourceId, usageType).Execute()
 
-Delete Provisioning Policy by UsageType
-
-
+Deletes the provisioning policy with the specified usage on an application.
+A token with API, or ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -261,16 +259,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source ID.
-    usageType := openapiclient.UsageType("CREATE") // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    usageType := sailpoint.UsageType("CREATE") // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SourcesAPI.DeleteProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.SourcesAPI.DeleteProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteProvisioningPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -315,13 +313,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteSource
+## Delete Source by ID
 
 > DeleteSource202Response DeleteSource(ctx, id).Execute()
 
-Delete Source by ID
-
-
+This end-point deletes a specific source in IdentityNow.
+A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
+All of accounts on the source will be removed first, then the source will be deleted. Actual status of task execution can be retrieved via method GET `/task-status/{id}`
 
 ### Example
 
@@ -332,15 +330,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c9180835d191a86015d28455b4a2329" // string | The Source id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.DeleteSource(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.DeleteSource(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -385,11 +383,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteSourceSchema
+## Delete Source Schema by ID
 
 > DeleteSourceSchema(ctx, sourceId, schemaId).Execute()
 
-Delete Source Schema by ID
+
 
 ### Example
 
@@ -400,16 +398,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
     schemaId := "2c9180835d191a86015d28455b4a2329" // string | The Schema id.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SourcesAPI.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.SourcesAPI.DeleteSourceSchema(context.Background(), sourceId, schemaId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.DeleteSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -454,13 +452,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAccountsSchema
+## Downloads source accounts schema template
 
 > GetAccountsSchema(ctx, id).Execute()
 
-Downloads source accounts schema template
-
-
+This API downloads the CSV schema that defines the account attributes on a source.
+>**NOTE: This API is designated only for Delimited File sources.**
 
 ### Example
 
@@ -471,15 +468,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SourcesAPI.GetAccountsSchema(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.SourcesAPI.GetAccountsSchema(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetAccountsSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -522,13 +519,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetEntitlementsSchema
+## Downloads source entitlements schema template
 
 > GetEntitlementsSchema(ctx, id).SchemaName(schemaName).Execute()
 
-Downloads source entitlements schema template
+This API downloads the CSV schema that defines the entitlement attributes on a source.
 
-
+>**NOTE: This API is designated only for Delimited File sources.**
 
 ### Example
 
@@ -539,16 +536,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
     schemaName := "?schemaName=group" // string | Name of entitlement schema (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SourcesAPI.GetEntitlementsSchema(context.Background(), id).SchemaName(schemaName).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.SourcesAPI.GetEntitlementsSchema(context.Background(), id).SchemaName(schemaName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetEntitlementsSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -592,13 +589,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetProvisioningPolicy
+## Get Provisioning Policy by UsageType
 
 > ProvisioningPolicyDto GetProvisioningPolicy(ctx, sourceId, usageType).Execute()
 
-Get Provisioning Policy by UsageType
-
-
+This end-point retrieves the ProvisioningPolicy with the specified usage on the specified Source in IdentityNow.
+A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -609,16 +605,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source ID.
-    usageType := openapiclient.UsageType("CREATE") // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    usageType := sailpoint.UsageType("CREATE") // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.GetProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.GetProvisioningPolicy(context.Background(), sourceId, usageType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetProvisioningPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -665,13 +661,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSource
+## Get Source by ID
 
 > Source GetSource(ctx, id).Execute()
 
-Get Source by ID
-
-
+This end-point gets a specific source in IdentityNow.
+A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -682,15 +677,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c9180835d191a86015d28455b4a2329" // string | The Source id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.GetSource(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.GetSource(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -735,13 +730,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSourceHealth
+## Fetches source health by id
 
 > SourceHealthDto GetSourceHealth(ctx, sourceId).Execute()
 
-Fetches source health by id
-
-
+This endpoint fetches source health by source's id
 
 ### Example
 
@@ -752,15 +745,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.GetSourceHealth(context.Background(), sourceId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.GetSourceHealth(context.Background(), sourceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceHealth``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -805,12 +798,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSourceSchema
+## Get Source Schema by ID
 
 > Schema GetSourceSchema(ctx, sourceId, schemaId).Execute()
 
-Get Source Schema by ID
-
+Get the Source Schema by ID in IdentityNow.
 
 
 ### Example
@@ -822,16 +814,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
     schemaId := "2c9180835d191a86015d28455b4a2329" // string | The Schema id.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.GetSourceSchema(context.Background(), sourceId, schemaId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.GetSourceSchema(context.Background(), sourceId, schemaId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.GetSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -878,13 +870,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ImportAccountsSchema
+## Uploads source accounts schema template
 
 > Schema ImportAccountsSchema(ctx, id).File(file).Execute()
 
-Uploads source accounts schema template
+This API uploads a source schema template file to configure a source's account attributes.
 
+To retrieve the file to modify and upload, log into Identity Now. 
 
+Click **Admin** -> **Connections** -> **Sources** -> **`{SourceName}`** -> **Import Data** -> **Account Schema** -> **Options** -> **Download Schema**
+
+>**NOTE: This API is designated only for Delimited File sources.**
 
 ### Example
 
@@ -895,16 +891,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "8c190e6787aa4ed9a90bd9d5344523fb" // string | The Source id
     file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.ImportAccountsSchema(context.Background(), id).File(file).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.ImportAccountsSchema(context.Background(), id).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportAccountsSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -950,13 +946,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ImportConnectorFile
+## Upload connector file to source
 
 > Source ImportConnectorFile(ctx, sourceId).File(file).Execute()
 
-Upload connector file to source
-
-
+This uploads a supplemental source connector file (like jdbc driver jars) to a source's S3 bucket. This also sends ETS and Audit events.
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -967,16 +962,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
     file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.ImportConnectorFile(context.Background(), sourceId).File(file).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.ImportConnectorFile(context.Background(), sourceId).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportConnectorFile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1022,13 +1017,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ImportEntitlementsSchema
+## Uploads source entitlements schema template
 
 > Schema ImportEntitlementsSchema(ctx, id).SchemaName(schemaName).File(file).Execute()
 
-Uploads source entitlements schema template
+This API uploads a source schema template file to configure a source's entitlement attributes.
 
+To retrieve the file to modify and upload, log into Identity Now. 
 
+Click **Admin** -> **Connections** -> **Sources** -> **`{SourceName}`** -> **Import Data** -> **Import Entitlements** -> **Download**
+
+>**NOTE: This API is designated only for Delimited File sources.**
 
 ### Example
 
@@ -1039,7 +1038,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -1047,9 +1046,9 @@ func main() {
     schemaName := "?schemaName=group" // string | Name of entitlement schema (optional)
     file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.ImportEntitlementsSchema(context.Background(), id).SchemaName(schemaName).File(file).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.ImportEntitlementsSchema(context.Background(), id).SchemaName(schemaName).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ImportEntitlementsSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1096,13 +1095,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListProvisioningPolicies
+## Lists ProvisioningPolicies
 
 > []ProvisioningPolicyDto ListProvisioningPolicies(ctx, sourceId).Execute()
 
-Lists ProvisioningPolicies
-
-
+This end-point lists all the ProvisioningPolicies in IdentityNow.
+A token with API, or ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -1113,15 +1111,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.ListProvisioningPolicies(context.Background(), sourceId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.ListProvisioningPolicies(context.Background(), sourceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListProvisioningPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1166,12 +1164,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListSourceSchemas
+## List Schemas on a Source
 
 > []Schema ListSourceSchemas(ctx, sourceId).IncludeTypes(includeTypes).Execute()
 
-List Schemas on a Source
-
+Lists the Schemas that exist on the specified Source in IdentityNow.
 
 
 ### Example
@@ -1183,16 +1180,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source ID.
     includeTypes := "group" // string | If set to 'group', then the account schema is filtered and only group schemas are returned. Only a value of 'group' is recognized. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.ListSourceSchemas(context.Background(), sourceId).IncludeTypes(includeTypes).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.ListSourceSchemas(context.Background(), sourceId).IncludeTypes(includeTypes).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListSourceSchemas``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1238,13 +1235,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListSources
+## Lists all sources in IdentityNow.
 
 > []Source ListSources(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSubadmin(forSubadmin).Execute()
 
-Lists all sources in IdentityNow.
-
-
+This end-point lists all the sources in IdentityNow.
+A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or ROLE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -1255,7 +1251,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -1266,9 +1262,9 @@ func main() {
     sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **type, created, modified, name, owner.name, healthy, status, id, description, owner.id, accountCorrelationConfig.id, accountCorrelationConfig.name, managerCorrelationRule.type, managerCorrelationRule.id, managerCorrelationRule.name, authoritative, managementWorkgroup.id, connectorName, connectionType** (optional)
     forSubadmin := "name" // string | Filter the returned list of sources for the identity specified by the parameter, which is the id of an identity with the role SOURCE_SUBADMIN. By convention, the value **me** indicates the identity id of the current user. Subadmins may only view Sources which they are able to administer; all other Sources will be filtered out when this parameter is set. If the current user is a SOURCE_SUBADMIN but fails to pass a valid value for this parameter, a 403 Forbidden is returned. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.ListSources(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSubadmin(forSubadmin).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.ListSources(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).ForSubadmin(forSubadmin).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.ListSources``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1314,13 +1310,14 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutProvisioningPolicy
+## Update Provisioning Policy by UsageType
 
 > ProvisioningPolicyDto PutProvisioningPolicy(ctx, sourceId, usageType).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
 
-Update Provisioning Policy by UsageType
-
-
+This end-point updates the provisioning policy with the specified usage on the specified source in IdentityNow.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
+A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -1331,17 +1328,17 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source ID.
-    usageType := openapiclient.UsageType("CREATE") // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
-    provisioningPolicyDto := *openapiclient.NewProvisioningPolicyDto("example provisioning policy for inactive identities") // ProvisioningPolicyDto | 
+    usageType := sailpoint.UsageType("CREATE") // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    provisioningPolicyDto := *sailpoint.NewProvisioningPolicyDto("example provisioning policy for inactive identities") // ProvisioningPolicyDto | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.PutProvisioningPolicy(context.Background(), sourceId, usageType).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.PutProvisioningPolicy(context.Background(), sourceId, usageType).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutProvisioningPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1389,12 +1386,25 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutSource
+## Update Source (Full)
 
 > Source PutSource(ctx, id).Source(source).Execute()
 
-Update Source (Full)
+This API updates a source in IdentityNow, using a full object representation. In other words, the existing Source
+configuration is completely replaced.
 
+Some fields are immutable and cannot be changed, such as:
+
+* id
+* type
+* authoritative
+* connector
+* connectorClass
+* passwordPolicies
+
+Attempts to modify these fields will result in a 400 error.
+
+A token with ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 
 ### Example
@@ -1406,16 +1416,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c9180835d191a86015d28455b4a2329" // string | The Source id
-    source := *openapiclient.NewSource("My Source", *openapiclient.NewSourceOwner(), "active-directory") // Source | 
+    source := *sailpoint.NewSource("My Source", *sailpoint.NewSourceOwner(), "active-directory") // Source | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.PutSource(context.Background(), id).Source(source).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.PutSource(context.Background(), id).Source(source).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1461,12 +1471,20 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutSourceSchema
+## Update Source Schema (Full)
 
 > Schema PutSourceSchema(ctx, sourceId, schemaId).Schema(schema).Execute()
 
-Update Source Schema (Full)
+This API will completely replace an existing Schema with the submitted payload. Some fields of the Schema cannot be updated. These fields are listed below.
 
+* id
+* name
+* created
+* modified
+
+Any attempt to modify these fields will result in an error response with a status code of 400.
+
+> `id` must remain in the request body, but it cannot be changed.  If `id` is omitted from the request body, the result will be a 400 error.
 
 
 ### Example
@@ -1478,17 +1496,17 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
     schemaId := "2c9180835d191a86015d28455b4a2329" // string | The Schema id.
-    schema := *openapiclient.NewSchema() // Schema | 
+    schema := *sailpoint.NewSchema() // Schema | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.PutSourceSchema(context.Background(), sourceId, schemaId).Schema(schema).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.PutSourceSchema(context.Background(), sourceId, schemaId).Schema(schema).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.PutSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1536,13 +1554,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateProvisioningPoliciesInBulk
+## Bulk Update Provisioning Policies
 
 > []ProvisioningPolicyDto UpdateProvisioningPoliciesInBulk(ctx, sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
 
-Bulk Update Provisioning Policies
-
-
+This end-point updates a list of provisioning policies on the specified source in IdentityNow.
+A token with API, or ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -1553,16 +1570,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
-    provisioningPolicyDto := []openapiclient.ProvisioningPolicyDto{*openapiclient.NewProvisioningPolicyDto("example provisioning policy for inactive identities")} // []ProvisioningPolicyDto | 
+    provisioningPolicyDto := []sailpoint.ProvisioningPolicyDto{*sailpoint.NewProvisioningPolicyDto("example provisioning policy for inactive identities")} // []ProvisioningPolicyDto | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPoliciesInBulk(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.UpdateProvisioningPoliciesInBulk(context.Background(), sourceId).ProvisioningPolicyDto(provisioningPolicyDto).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateProvisioningPoliciesInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1608,13 +1625,14 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateProvisioningPolicy
+## Partial update of Provisioning Policy
 
 > ProvisioningPolicyDto UpdateProvisioningPolicy(ctx, sourceId, usageType).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Partial update of Provisioning Policy
-
-
+This API selectively updates an existing Provisioning Policy using a JSONPatch payload.
+Transforms can be used in the provisioning policy to create a new attribute that you only need during provisioning.
+Refer to [Transforms in Provisioning Policies](https://developer.sailpoint.com/idn/docs/transforms/guides/transforms-in-provisioning-policies) for more information.
+A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -1625,17 +1643,17 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
-    usageType := openapiclient.UsageType("CREATE") // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the schema.
+    usageType := sailpoint.UsageType("CREATE") // UsageType | The type of provisioning policy usage.  In IdentityNow, a source can support various provisioning operations. For example, when a joiner is added to a source, this may trigger both CREATE and UPDATE provisioning operations.  Each usage type is considered a provisioning policy.  A source can have any number of these provisioning policies defined.  These are the common usage types:  CREATE - This usage type relates to 'Create Account Profile', the provisioning template for the account to be created. For example, this would be used for a joiner on a source.   UPDATE - This usage type relates to 'Update Account Profile', the provisioning template for the 'Update' connector operations. For example, this would be used for an attribute sync on a source. ENABLE - This usage type relates to 'Enable Account Profile', the provisioning template for the account to be enabled. For example, this could be used for a joiner on a source once the joiner's account is created.  DISABLE - This usage type relates to 'Disable Account Profile', the provisioning template for the account to be disabled. For example, this could be used when a leaver is removed temporarily from a source.  You can use these four usage types for all your provisioning policy needs. 
+    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateProvisioningPolicy(context.Background(), sourceId, usageType).JsonPatchOperation(jsonPatchOperation).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.UpdateProvisioningPolicy(context.Background(), sourceId, usageType).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateProvisioningPolicy``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1683,12 +1701,27 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateSource
+## Update Source (Partial)
 
 > Source UpdateSource(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Update Source (Partial)
+This API partially updates a source in IdentityNow, using a list of patch operations according to the
+[JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
+Some fields are immutable and cannot be changed, such as:
+
+* id
+* type
+* authoritative
+* created
+* modified
+* connector
+* connectorClass
+* passwordPolicies
+
+Attempts to modify these fields will result in a 400 error.
+
+A token with ORG_ADMIN, SOURCE_ADMIN, SOURCE_SUBADMIN, or API authority is required to call this API.
 
 
 ### Example
@@ -1700,16 +1733,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c9180835d191a86015d28455b4a2329" // string | The Source id
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow.
+    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of account update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Any password changes are submitted as plain-text and encrypted upon receipt in IdentityNow.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateSource(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.UpdateSource(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1755,12 +1788,39 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateSourceSchema
+## Update Source Schema (Partial)
 
 > Schema UpdateSourceSchema(ctx, sourceId, schemaId).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Update Source Schema (Partial)
+Use this API to selectively update an existing Schema using a JSONPatch payload. 
 
+The following schema fields are immutable and cannot be updated:
+
+- id
+- name
+- created
+- modified
+
+
+To switch an account attribute to a group entitlement, you need to have the following in place:
+
+- `isEntitlement: true`
+- Must define a schema for the group and [add it to the source](https://developer.sailpoint.com/idn/api/v3/create-source-schema) before updating the `isGroup` flag.  For example, here is the `group` account attribute referencing a schema that defines the group:
+```json
+{
+    "name": "groups",
+    "type": "STRING",
+    "schema": {
+        "type": "CONNECTOR_SCHEMA",
+        "id": "2c9180887671ff8c01767b4671fc7d60",
+        "name": "group"
+    },
+    "description": "The groups, roles etc. that reference account group objects",
+    "isMulti": true,
+    "isEntitlement": true,
+    "isGroup": true
+}
+```
 
 
 ### Example
@@ -1772,17 +1832,17 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c9180835d191a86015d28455b4a2329" // string | The Source id.
     schemaId := "2c9180835d191a86015d28455b4a2329" // string | The Schema id.
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the schema.
+    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | The JSONPatch payload used to update the schema.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SourcesAPI.UpdateSourceSchema(context.Background(), sourceId, schemaId).JsonPatchOperation(jsonPatchOperation).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SourcesAPI.UpdateSourceSchema(context.Background(), sourceId, schemaId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SourcesAPI.UpdateSourceSchema``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

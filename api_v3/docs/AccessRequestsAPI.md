@@ -12,13 +12,12 @@ Method | HTTP request | Description
 
 
 
-## CancelAccessRequest
+## Cancel Access Request
 
 > map[string]interface{} CancelAccessRequest(ctx).CancelAccessRequest(cancelAccessRequest).Execute()
 
-Cancel Access Request
-
-
+This API endpoint cancels a pending access request. An access request can be cancelled only if it has not passed the approval step.
+Any token with ORG_ADMIN authority or token of the user who originally requested the access request is required to cancel it.
 
 ### Example
 
@@ -29,15 +28,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    cancelAccessRequest := *openapiclient.NewCancelAccessRequest("2c9180835d2e5168015d32f890ca1581", "I requested this role by mistake.") // CancelAccessRequest | 
+    cancelAccessRequest := *sailpoint.NewCancelAccessRequest("2c9180835d2e5168015d32f890ca1581", "I requested this role by mistake.") // CancelAccessRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.CancelAccessRequest(context.Background()).CancelAccessRequest(cancelAccessRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccessRequestsAPI.CancelAccessRequest(context.Background()).CancelAccessRequest(cancelAccessRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CancelAccessRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -78,12 +77,42 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateAccessRequest
+## Submit an Access Request
 
 > map[string]interface{} CreateAccessRequest(ctx).AccessRequest(accessRequest).Execute()
 
-Submit an Access Request
+This submits the access request into IdentityNow, where it will follow any IdentityNow approval processes.
 
+Access requests are processed asynchronously by IdentityNow.  A success response from this endpoint means the request
+has been submitted to IDN and is queued for processing.  Because this endpoint is asynchronous, it will not return an error
+if you submit duplicate access requests in quick succession, or you submit an access request for access that is already in progress, approved, or rejected.
+It is best practice to check for any existing access requests that reference the same access items before submitting a new access request.  This can
+be accomplished by using the [access request status](https://developer.sailpoint.com/idn/api/v3/list-access-request-status) or the [pending access request approvals](https://developer.sailpoint.com/idn/api/v3/list-pending-approvals) endpoints.  You can also
+use the [search API](https://developer.sailpoint.com/idn/api/v3/search) to check the existing access items that an identity has before submitting
+an access request to ensure you are not requesting access that is already granted.
+
+There are two types of access request:
+
+__GRANT_ACCESS__
+* Can be requested for multiple identities in a single request.
+* Supports self request and request on behalf of other users. Refer to the [Get Access Request Configuration](https://developer.sailpoint.com/idn/api/v3/get-access-request-config) endpoint for request configuration options.  
+* Allows any authenticated token (except API) to call this endpoint to request to grant access to themselves. Depending on the configuration, a user can request access for others.
+* Roles, access profiles and entitlements can be requested.
+* While requesting entitlements, maximum of 25 entitlements and 10 recipients are allowed in a request.
+ 
+__REVOKE_ACCESS__
+* Can only be requested for a single identity at a time.
+* You cannot use an access request to revoke access from an identity if that access has been granted by role membership or by birthright provisioning. 
+* Does not support self request. Only manager can request to revoke access for their directly managed employees.
+* If a `removeDate` is specified, then the access will be removed on that date and time only for roles and access profiles. Entitlements are currently unsupported for `removeDate`.
+* Roles, access profiles, and entitlements can be requested for revocation.
+* Revoke requests for entitlements are limited to 1 entitlement per access request currently.
+* [Roles, Access Profiles] You can specify a `removeDate` if the access doesn't already have a sunset date. The `removeDate` must be a future date, in the UTC timezone. 
+* Allows a manager to request to revoke access for direct employees. A token with ORG_ADMIN authority can also request to revoke access from anyone.
+
+>**Note:** There is no indication to the approver in the IdentityNow UI that the approval request is for a revoke action. Take this into consideration when calling this API.
+
+A token with API authority cannot be used to call this endpoint. 
 
 
 ### Example
@@ -95,15 +124,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    accessRequest := *openapiclient.NewAccessRequest([]string{"2c918084660f45d6016617daa9210584"}, []openapiclient.AccessRequestItem{*openapiclient.NewAccessRequestItem("ACCESS_PROFILE", "2c9180835d2e5168015d32f890ca1581")}) // AccessRequest | 
+    accessRequest := *sailpoint.NewAccessRequest([]string{"2c918084660f45d6016617daa9210584"}, []sailpoint.AccessRequestItem{*sailpoint.NewAccessRequestItem("ACCESS_PROFILE", "2c9180835d2e5168015d32f890ca1581")}) // AccessRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.CreateAccessRequest(context.Background()).AccessRequest(accessRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccessRequestsAPI.CreateAccessRequest(context.Background()).AccessRequest(accessRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.CreateAccessRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -144,13 +173,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAccessRequestConfig
+## Get Access Request Configuration
 
 > AccessRequestConfig GetAccessRequestConfig(ctx).Execute()
 
-Get Access Request Configuration
-
-
+This endpoint returns the current access-request configuration.
 
 ### Example
 
@@ -161,14 +188,14 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccessRequestsAPI.GetAccessRequestConfig(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.GetAccessRequestConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -205,13 +232,12 @@ Other parameters are passed through a pointer to a apiGetAccessRequestConfigRequ
 [[Back to README]](../README.md)
 
 
-## ListAccessRequestStatus
+## Access Request Status
 
 > []RequestedItemStatus ListAccessRequestStatus(ctx).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
 
-Access Request Status
-
-
+The Access Request Status API returns a list of access request statuses based on the specified query parameters.
+Any token with any authority can request their own status. A token with ORG_ADMIN authority is required to call this API to get a list of statuses for other users.
 
 ### Example
 
@@ -222,7 +248,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -236,9 +262,9 @@ func main() {
     filters := "accountActivityItemId eq "2c918086771c86df0177401efcdf54c0"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **accountActivityItemId**: *eq, in, ge, gt, le, lt, ne, isnull, sw* (optional)
     sorters := "created" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified, accountActivityItemId, name** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccessRequestsAPI.ListAccessRequestStatus(context.Background()).RequestedFor(requestedFor).RequestedBy(requestedBy).RegardingIdentity(regardingIdentity).AssignedTo(assignedTo).Count(count).Limit(limit).Offset(offset).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.ListAccessRequestStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -287,13 +313,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SetAccessRequestConfig
+## Update Access Request Configuration
 
 > AccessRequestConfig SetAccessRequestConfig(ctx).AccessRequestConfig(accessRequestConfig).Execute()
 
-Update Access Request Configuration
-
-
+This endpoint replaces the current access-request configuration.
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -304,15 +329,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    accessRequestConfig := *openapiclient.NewAccessRequestConfig() // AccessRequestConfig | 
+    accessRequestConfig := *sailpoint.NewAccessRequestConfig() // AccessRequestConfig | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.AccessRequestsAPI.SetAccessRequestConfig(context.Background()).AccessRequestConfig(accessRequestConfig).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AccessRequestsAPI.SetAccessRequestConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

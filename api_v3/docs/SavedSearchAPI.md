@@ -13,12 +13,11 @@ Method | HTTP request | Description
 
 
 
-## CreateSavedSearch
+## Create a saved search
 
 > SavedSearch CreateSavedSearch(ctx).CreateSavedSearchRequest(createSavedSearchRequest).Execute()
 
-Create a saved search
-
+Creates a new saved search.
 
 
 ### Example
@@ -30,15 +29,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    createSavedSearchRequest := *openapiclient.NewCreateSavedSearchRequest([]openapiclient.Index{openapiclient.Index("accessprofiles")}, "@accounts(disabled:true)") // CreateSavedSearchRequest | The saved search to persist.
+    createSavedSearchRequest := *sailpoint.NewCreateSavedSearchRequest([]sailpoint.Index{sailpoint.Index("accessprofiles")}, "@accounts(disabled:true)") // CreateSavedSearchRequest | The saved search to persist.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchAPI.CreateSavedSearch(context.Background()).CreateSavedSearchRequest(createSavedSearchRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SavedSearchAPI.CreateSavedSearch(context.Background()).CreateSavedSearchRequest(createSavedSearchRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.CreateSavedSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -79,12 +78,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteSavedSearch
+## Delete document by ID
 
 > DeleteSavedSearch(ctx, id).Execute()
 
-Delete document by ID
-
+Deletes the specified saved search.
 
 
 ### Example
@@ -96,15 +94,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SavedSearchAPI.DeleteSavedSearch(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.SavedSearchAPI.DeleteSavedSearch(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.DeleteSavedSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -147,12 +145,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ExecuteSavedSearch
+## Execute a saved search by ID
 
 > ExecuteSavedSearch(ctx, id).SearchArguments(searchArguments).Execute()
 
-Execute a saved search by ID
-
+Executes the specified saved search.
 
 
 ### Example
@@ -164,16 +161,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
-    searchArguments := *openapiclient.NewSearchArguments() // SearchArguments | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. 
+    searchArguments := *sailpoint.NewSearchArguments() // SearchArguments | When saved search execution is triggered by a scheduled search, *scheduleId* will specify the ID of the triggering scheduled search.  If *scheduleId* is not specified (when execution is triggered by a UI test), the *owner* and *recipients* arguments must be provided. 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SavedSearchAPI.ExecuteSavedSearch(context.Background(), id).SearchArguments(searchArguments).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.SavedSearchAPI.ExecuteSavedSearch(context.Background(), id).SearchArguments(searchArguments).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.ExecuteSavedSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -217,12 +214,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSavedSearch
+## Return saved search by ID
 
 > SavedSearch GetSavedSearch(ctx, id).Execute()
 
-Return saved search by ID
-
+Returns the specified saved search.
 
 
 ### Example
@@ -234,15 +230,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchAPI.GetSavedSearch(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SavedSearchAPI.GetSavedSearch(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.GetSavedSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -287,12 +283,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListSavedSearches
+## A list of Saved Searches
 
 > []SavedSearch ListSavedSearches(ctx).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
 
-A list of Saved Searches
-
+Returns a list of saved searches.
 
 
 ### Example
@@ -304,7 +299,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -313,9 +308,9 @@ func main() {
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     filters := "owner.id eq "7a724640-0c17-4ce9-a8c3-4a89738459c8"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq* (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchAPI.ListSavedSearches(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SavedSearchAPI.ListSavedSearches(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.ListSavedSearches``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -359,12 +354,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutSavedSearch
+## Updates an existing saved search 
 
 > SavedSearch PutSavedSearch(ctx, id).SavedSearch(savedSearch).Execute()
 
-Updates an existing saved search 
+Updates an existing saved search. 
 
+>**NOTE: You cannot update the `owner` of the saved search.**
 
 
 ### Example
@@ -376,16 +372,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
-    savedSearch := *openapiclient.NewSavedSearch([]openapiclient.Index{openapiclient.Index("accessprofiles")}, "@accounts(disabled:true)") // SavedSearch | The saved search to persist.
+    savedSearch := *sailpoint.NewSavedSearch([]sailpoint.Index{sailpoint.Index("accessprofiles")}, "@accounts(disabled:true)") // SavedSearch | The saved search to persist.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SavedSearchAPI.PutSavedSearch(context.Background(), id).SavedSearch(savedSearch).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SavedSearchAPI.PutSavedSearch(context.Background(), id).SavedSearch(savedSearch).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SavedSearchAPI.PutSavedSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

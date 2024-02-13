@@ -13,12 +13,11 @@ Method | HTTP request | Description
 
 
 
-## CreateScheduledSearch
+## Create a new scheduled search
 
 > ScheduledSearch CreateScheduledSearch(ctx).CreateScheduledSearchRequest(createScheduledSearchRequest).Execute()
 
-Create a new scheduled search
-
+Creates a new scheduled search.
 
 
 ### Example
@@ -30,15 +29,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    createScheduledSearchRequest := *openapiclient.NewCreateScheduledSearchRequest("554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule1(openapiclient.ScheduleType("DAILY"), *openapiclient.NewSchedule1Hours(openapiclient.SelectorType("LIST"), []string{"Values_example"})), []openapiclient.SearchScheduleRecipientsInner{*openapiclient.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}) // CreateScheduledSearchRequest | The scheduled search to persist.
+    createScheduledSearchRequest := *sailpoint.NewCreateScheduledSearchRequest("554f1511-f0a1-4744-ab14-599514d3e57c", *sailpoint.NewSchedule1(sailpoint.ScheduleType("DAILY"), *sailpoint.NewSchedule1Hours(sailpoint.SelectorType("LIST"), []string{"Values_example"})), []sailpoint.SearchScheduleRecipientsInner{*sailpoint.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}) // CreateScheduledSearchRequest | The scheduled search to persist.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearchAPI.CreateScheduledSearch(context.Background()).CreateScheduledSearchRequest(createScheduledSearchRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ScheduledSearchAPI.CreateScheduledSearch(context.Background()).CreateScheduledSearchRequest(createScheduledSearchRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.CreateScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -79,12 +78,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteScheduledSearch
+## Delete a Scheduled Search
 
 > DeleteScheduledSearch(ctx, id).Execute()
 
-Delete a Scheduled Search
-
+Deletes the specified scheduled search.
 
 
 ### Example
@@ -96,15 +94,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ScheduledSearchAPI.DeleteScheduledSearch(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.ScheduledSearchAPI.DeleteScheduledSearch(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.DeleteScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -147,13 +145,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetScheduledSearch
+## Get a Scheduled Search
 
 > ScheduledSearch GetScheduledSearch(ctx, id).Execute()
 
-Get a Scheduled Search
-
-
+Returns the specified scheduled search.
 
 ### Example
 
@@ -164,15 +160,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearchAPI.GetScheduledSearch(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ScheduledSearchAPI.GetScheduledSearch(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.GetScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -217,12 +213,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListScheduledSearch
+## List scheduled searches
 
 > []ScheduledSearch ListScheduledSearch(ctx).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
 
-List scheduled searches
-
+Returns a list of scheduled searches.
 
 
 ### Example
@@ -234,7 +229,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -243,9 +238,9 @@ func main() {
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     filters := "savedSearchId eq "6cc0945d-9eeb-4948-9033-72d066e1153e"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **savedSearchId**: *eq* (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearchAPI.ListScheduledSearch(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ScheduledSearchAPI.ListScheduledSearch(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.ListScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -289,12 +284,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UnsubscribeScheduledSearch
+## Unsubscribe a recipient from Scheduled Search
 
 > UnsubscribeScheduledSearch(ctx, id).TypedReference(typedReference).Execute()
 
-Unsubscribe a recipient from Scheduled Search
-
+Unsubscribes a recipient from the specified scheduled search.
 
 
 ### Example
@@ -306,16 +300,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
-    typedReference := *openapiclient.NewTypedReference(openapiclient.DtoType("ACCOUNT_CORRELATION_CONFIG"), "2c91808568c529c60168cca6f90c1313") // TypedReference | The recipient to be removed from the scheduled search. 
+    typedReference := *sailpoint.NewTypedReference(sailpoint.DtoType("ACCOUNT_CORRELATION_CONFIG"), "2c91808568c529c60168cca6f90c1313") // TypedReference | The recipient to be removed from the scheduled search. 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ScheduledSearchAPI.UnsubscribeScheduledSearch(context.Background(), id).TypedReference(typedReference).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.ScheduledSearchAPI.UnsubscribeScheduledSearch(context.Background(), id).TypedReference(typedReference).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.UnsubscribeScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -359,12 +353,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateScheduledSearch
+## Update an existing Scheduled Search
 
 > ScheduledSearch UpdateScheduledSearch(ctx, id).ScheduledSearch(scheduledSearch).Execute()
 
-Update an existing Scheduled Search
-
+Updates an existing scheduled search.
 
 
 ### Example
@@ -376,16 +369,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
-    scheduledSearch := *openapiclient.NewScheduledSearch("554f1511-f0a1-4744-ab14-599514d3e57c", *openapiclient.NewSchedule1(openapiclient.ScheduleType("DAILY"), *openapiclient.NewSchedule1Hours(openapiclient.SelectorType("LIST"), []string{"Values_example"})), []openapiclient.SearchScheduleRecipientsInner{*openapiclient.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}, "0de46054-fe90-434a-b84e-c6b3359d0c64", *openapiclient.NewScheduledSearchAllOfOwner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67"), "2c9180867624cbd7017642d8c8c81f67") // ScheduledSearch | The scheduled search to persist.
+    scheduledSearch := *sailpoint.NewScheduledSearch("554f1511-f0a1-4744-ab14-599514d3e57c", *sailpoint.NewSchedule1(sailpoint.ScheduleType("DAILY"), *sailpoint.NewSchedule1Hours(sailpoint.SelectorType("LIST"), []string{"Values_example"})), []sailpoint.SearchScheduleRecipientsInner{*sailpoint.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}, "0de46054-fe90-434a-b84e-c6b3359d0c64", *sailpoint.NewScheduledSearchAllOfOwner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67"), "2c9180867624cbd7017642d8c8c81f67") // ScheduledSearch | The scheduled search to persist.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScheduledSearchAPI.UpdateScheduledSearch(context.Background(), id).ScheduledSearch(scheduledSearch).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ScheduledSearchAPI.UpdateScheduledSearch(context.Background(), id).ScheduledSearch(scheduledSearch).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.UpdateScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

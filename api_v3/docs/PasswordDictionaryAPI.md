@@ -9,13 +9,40 @@ Method | HTTP request | Description
 
 
 
-## GetPasswordDictionary
+## Get Password Dictionary
 
 > string GetPasswordDictionary(ctx).Execute()
 
-Get Password Dictionary
+This gets password dictionary for the organization.
+A token with ORG_ADMIN authority is required to call this API.
+The password dictionary file can contain lines that are:
+1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
+2. empty lines
+3. locale line - the first line that starts with "locale=" is considered to be locale line, the rest are treated as normal content lines
+4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;
+        maximum length of the line is 128 Unicode codepoints
 
 
+Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).
+  Password dict file must contain UTF-8 characters only.
+
+# Sample password text file
+
+```
+
+# Password dictionary small test file
+
+locale=en_US
+
+# Password dictionary prohibited words
+
+qwerty
+abcd
+aaaaa
+password
+qazxsws
+
+```
 
 ### Example
 
@@ -26,14 +53,14 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PasswordDictionaryAPI.GetPasswordDictionary(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.GetPasswordDictionary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,13 +97,40 @@ Other parameters are passed through a pointer to a apiGetPasswordDictionaryReque
 [[Back to README]](../README.md)
 
 
-## PutPasswordDictionary
+## Update Password Dictionary
 
 > PutPasswordDictionary(ctx).File(file).Execute()
 
-Update Password Dictionary
+This updates password dictionary for the organization.
+A token with ORG_ADMIN authority is required to call this API.
+The password dictionary file can contain lines that are:
+1. comment lines - the first character is '#', can be 128 Unicode codepoints in length, and are ignored during processing
+2. empty lines
+3. locale line - the first line that starts with "locale=" is considered to be locale line, the rest are treated as normal content lines
+4. line containing the password dictionary word - it must start with non-whitespace character and only non-whitespace characters are allowed;
+        maximum length of the line is 128 Unicode codepoints
 
 
+Password dictionary file may not contain more than 2,500 lines (not counting whitespace lines, comment lines and locale line).
+  Password dict file must contain UTF-8 characters only.
+
+# Sample password text file
+
+```
+
+# Password dictionary small test file
+
+locale=en_US
+
+# Password dictionary prohibited words
+
+qwerty
+abcd
+aaaaa
+password
+qazxsws
+
+```
 
 ### Example
 
@@ -87,15 +141,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     file := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).File(file).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.PasswordDictionaryAPI.PutPasswordDictionary(context.Background()).File(file).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordDictionaryAPI.PutPasswordDictionary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

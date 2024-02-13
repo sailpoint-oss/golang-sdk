@@ -39,13 +39,11 @@ Method | HTTP request | Description
 
 
 
-## ApproveNonEmployeeRequest
+## Approve a Non-Employee Request
 
 > NonEmployeeApprovalItem ApproveNonEmployeeRequest(ctx, id).NonEmployeeApprovalDecision(nonEmployeeApprovalDecision).Execute()
 
-Approve a Non-Employee Request
-
-
+Approves a non-employee approval request and notifies the next approver. The current user must be the requested approver.
 
 ### Example
 
@@ -56,16 +54,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "e136567de87e4d029e60b3c3c55db56d" // string | Non-Employee approval item id (UUID)
-    nonEmployeeApprovalDecision := *openapiclient.NewNonEmployeeApprovalDecision() // NonEmployeeApprovalDecision | 
+    nonEmployeeApprovalDecision := *sailpoint.NewNonEmployeeApprovalDecision() // NonEmployeeApprovalDecision | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequest(context.Background(), id).NonEmployeeApprovalDecision(nonEmployeeApprovalDecision).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequest(context.Background(), id).NonEmployeeApprovalDecision(nonEmployeeApprovalDecision).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ApproveNonEmployeeRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -111,13 +109,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateNonEmployeeRecord
+## Create Non-Employee Record
 
 > NonEmployeeRecord CreateNonEmployeeRecord(ctx).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
 
-Create Non-Employee Record
-
-
+This request will create a non-employee record.
+Requires role context of `idn:nesr:create`
 
 ### Example
 
@@ -129,15 +126,15 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    nonEmployeeRequestBody := *openapiclient.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5555555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-Employee record creation request body.
+    nonEmployeeRequestBody := *sailpoint.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5555555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-Employee record creation request body.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecord(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecord(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -178,13 +175,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateNonEmployeeRequest
+## Create Non-Employee Request
 
 > NonEmployeeRequest CreateNonEmployeeRequest(ctx).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
 
-Create Non-Employee Request
-
-
+This request will create a non-employee request and notify the approver. Requires role context of `idn:nesr:create` or the user must own the source.
 
 ### Example
 
@@ -196,15 +191,15 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    nonEmployeeRequestBody := *openapiclient.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5555555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-Employee creation request body
+    nonEmployeeRequestBody := *sailpoint.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5555555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-Employee creation request body
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequest(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequest(context.Background()).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -245,13 +240,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateNonEmployeeSource
+## Create Non-Employee Source
 
 > NonEmployeeSourceWithCloudExternalId CreateNonEmployeeSource(ctx).NonEmployeeSourceRequestBody(nonEmployeeSourceRequestBody).Execute()
 
-Create Non-Employee Source
-
-
+This request will create a non-employee source. Requires role context of `idn:nesr:create`
 
 ### Example
 
@@ -262,15 +255,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    nonEmployeeSourceRequestBody := *openapiclient.NewNonEmployeeSourceRequestBody("Retail", "Source description", *openapiclient.NewNonEmployeeIdnUserRequest("2c91808570313110017040b06f344ec9")) // NonEmployeeSourceRequestBody | Non-Employee source creation request body.
+    nonEmployeeSourceRequestBody := *sailpoint.NewNonEmployeeSourceRequestBody("Retail", "Source description", *sailpoint.NewNonEmployeeIdnUserRequest("2c91808570313110017040b06f344ec9")) // NonEmployeeSourceRequestBody | Non-Employee source creation request body.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSource(context.Background()).NonEmployeeSourceRequestBody(nonEmployeeSourceRequestBody).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSource(context.Background()).NonEmployeeSourceRequestBody(nonEmployeeSourceRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -311,13 +304,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateNonEmployeeSourceSchemaAttributes
+## Create a new Schema Attribute for Non-Employee Source
 
 > NonEmployeeSchemaAttribute CreateNonEmployeeSourceSchemaAttributes(ctx, sourceId).NonEmployeeSchemaAttributeBody(nonEmployeeSchemaAttributeBody).Execute()
 
-Create a new Schema Attribute for Non-Employee Source
-
-
+This API creates a new schema attribute for Non-Employee Source. The schema technical name must be unique in the source. Attempts to create a schema attribute with an existing name will result in a "400.1.409 Reference conflict" response. At most, 10 custom attributes can be created per schema. Attempts to create more than 10 will result in a "400.1.4 Limit violation" response.
+Requires role context of `idn:nesr:create`
 
 ### Example
 
@@ -328,16 +320,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | The Source id
-    nonEmployeeSchemaAttributeBody := *openapiclient.NewNonEmployeeSchemaAttributeBody("TEXT", "Account Name", "account.name") // NonEmployeeSchemaAttributeBody | 
+    nonEmployeeSchemaAttributeBody := *sailpoint.NewNonEmployeeSchemaAttributeBody("TEXT", "Account Name", "account.name") // NonEmployeeSchemaAttributeBody | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).NonEmployeeSchemaAttributeBody(nonEmployeeSchemaAttributeBody).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).NonEmployeeSchemaAttributeBody(nonEmployeeSchemaAttributeBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.CreateNonEmployeeSourceSchemaAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -383,13 +375,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteNonEmployeeRecord
+## Delete Non-Employee Record
 
 > DeleteNonEmployeeRecord(ctx, id).Execute()
 
-Delete Non-Employee Record
-
-
+This request will delete a non-employee record.
+Requires role context of `idn:nesr:delete`
 
 ### Example
 
@@ -400,15 +391,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Non-Employee record id (UUID)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecord(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecord(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -451,13 +442,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteNonEmployeeRecordsInBulk
+## Delete Multiple Non-Employee Records
 
 > DeleteNonEmployeeRecordsInBulk(ctx).DeleteNonEmployeeRecordsInBulkRequest(deleteNonEmployeeRecordsInBulkRequest).Execute()
 
-Delete Multiple Non-Employee Records
-
-
+This request will delete multiple non-employee records based on the non-employee ids provided. Requires role context of `idn:nesr:delete`
 
 ### Example
 
@@ -468,15 +457,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    deleteNonEmployeeRecordsInBulkRequest := *openapiclient.NewDeleteNonEmployeeRecordsInBulkRequest([]string{"Ids_example"}) // DeleteNonEmployeeRecordsInBulkRequest | Non-Employee bulk delete request body.
+    deleteNonEmployeeRecordsInBulkRequest := *sailpoint.NewDeleteNonEmployeeRecordsInBulkRequest([]string{"Ids_example"}) // DeleteNonEmployeeRecordsInBulkRequest | Non-Employee bulk delete request body.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordsInBulk(context.Background()).DeleteNonEmployeeRecordsInBulkRequest(deleteNonEmployeeRecordsInBulkRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordsInBulk(context.Background()).DeleteNonEmployeeRecordsInBulkRequest(deleteNonEmployeeRecordsInBulkRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRecordsInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -515,13 +504,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteNonEmployeeRequest
+## Delete Non-Employee Request
 
 > DeleteNonEmployeeRequest(ctx, id).Execute()
 
-Delete Non-Employee Request
-
-
+This request will delete a non-employee request. 
+Requires role context of `idn:nesr:delete`
 
 ### Example
 
@@ -532,15 +520,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ac110005-7156-1150-8171-5b292e3e0084" // string | Non-Employee request id in the UUID format
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRequest(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRequest(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -583,12 +571,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteNonEmployeeSchemaAttribute
+## Delete a Schema Attribute for Non-Employee Source
 
 > DeleteNonEmployeeSchemaAttribute(ctx, attributeId, sourceId).Execute()
 
-Delete a Schema Attribute for Non-Employee Source
-
+This end-point deletes a specific schema attribute for a non-employee source.
+Requires role context of `idn:nesr:delete`
 
 
 ### Example
@@ -600,16 +588,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     attributeId := "ef38f94347e94562b5bb8424a56397d8" // string | The Schema Attribute Id (UUID)
     sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | The Source id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSchemaAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -654,13 +642,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteNonEmployeeSource
+## Delete Non-Employee Source
 
 > DeleteNonEmployeeSource(ctx, sourceId).Execute()
 
-Delete Non-Employee Source
-
-
+This request will delete a non-employee source. Requires role context of `idn:nesr:delete`.
 
 ### Example
 
@@ -671,15 +657,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "e136567de87e4d029e60b3c3c55db56d" // string | Source Id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSource(context.Background(), sourceId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSource(context.Background(), sourceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -722,13 +708,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteNonEmployeeSourceSchemaAttributes
+## Delete all custom schema attributes for Non-Employee Source
 
 > DeleteNonEmployeeSourceSchemaAttributes(ctx, sourceId).Execute()
 
-Delete all custom schema attributes for Non-Employee Source
-
-
+This end-point deletes all custom schema attributes for a non-employee source. Requires role context of `idn:nesr:delete`
 
 ### Example
 
@@ -739,15 +723,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | The Source id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.DeleteNonEmployeeSourceSchemaAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -790,13 +774,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ExportNonEmployeeRecords
+## Exports Non-Employee Records to CSV
 
 > ExportNonEmployeeRecords(ctx, id).Execute()
 
-Exports Non-Employee Records to CSV
-
-
+This requests a CSV download for all non-employees from a provided source. Requires role context of `idn:nesr:read`
 
 ### Example
 
@@ -807,15 +789,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "e136567de87e4d029e60b3c3c55db56d" // string | Source Id (UUID)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeRecords(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeRecords(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ExportNonEmployeeRecords``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -858,13 +840,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ExportNonEmployeeSourceSchemaTemplate
+## Exports Source Schema Template
 
 > ExportNonEmployeeSourceSchemaTemplate(ctx, id).Execute()
 
-Exports Source Schema Template
-
-
+This requests a download for the Source Schema Template for a provided source. Requires role context of `idn:nesr:read`
 
 ### Example
 
@@ -875,15 +855,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id (UUID)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeSourceSchemaTemplate(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ExportNonEmployeeSourceSchemaTemplate(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ExportNonEmployeeSourceSchemaTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -926,13 +906,14 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetNonEmployeeApproval
+## Get a non-employee approval item detail
 
 > NonEmployeeApprovalItemDetail GetNonEmployeeApproval(ctx, id).IncludeDetail(includeDetail).Execute()
 
-Get a non-employee approval item detail
-
-
+Gets a non-employee approval item detail. There are two contextual uses for this endpoint:
+  1. The user has the role context of `idn:nesr:read`, in which case they
+can get any approval.
+  2. The user owns the requested approval.
 
 ### Example
 
@@ -943,16 +924,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "e136567de87e4d029e60b3c3c55db56d" // string | Non-Employee approval item id (UUID)
     includeDetail := true // bool | The object nonEmployeeRequest will not be included detail when set to false. *Default value is true* (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApproval(context.Background(), id).IncludeDetail(includeDetail).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApproval(context.Background(), id).IncludeDetail(includeDetail).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApproval``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -998,13 +979,15 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetNonEmployeeApprovalSummary
+## Get Summary of Non-Employee Approval Requests
 
 > NonEmployeeApprovalSummary GetNonEmployeeApprovalSummary(ctx, requestedFor).Execute()
 
-Get Summary of Non-Employee Approval Requests
-
-
+This request will retrieve a summary of non-employee approval requests. There are two contextual uses for the `requested-for` path parameter:
+  1. The user has the role context of `idn:nesr:read`, in which case he or
+she may request a summary of all non-employee approval requests assigned to a particular approver by passing in that approver's id.
+  2. The current user is an approver, in which case "me" should be provided
+as the `requested-for` value. This will provide the approver with a summary of the approval items assigned to him or her.
 
 ### Example
 
@@ -1015,15 +998,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     requestedFor := "2c91808280430dfb0180431a59440460" // string | The identity (UUID) of the approver for whom for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummary(context.Background(), requestedFor).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummary(context.Background(), requestedFor).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeApprovalSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1068,12 +1051,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetNonEmployeeBulkUploadStatus
+## Obtain the status of bulk upload on the source
 
 > NonEmployeeBulkUploadStatus GetNonEmployeeBulkUploadStatus(ctx, id).Execute()
 
-Obtain the status of bulk upload on the source
-
+The nonEmployeeBulkUploadStatus API returns the status of the newest bulk upload job for the specified source.
+Requires role context of `idn:nesr:read`
 
 
 ### Example
@@ -1085,15 +1068,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "e136567de87e4d029e60b3c3c55db56d" // string | Source ID (UUID)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatus(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatus(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeBulkUploadStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1138,13 +1121,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetNonEmployeeRecord
+## Get a Non-Employee Record
 
 > NonEmployeeRecord GetNonEmployeeRecord(ctx, id).Execute()
 
-Get a Non-Employee Record
-
-
+This gets a non-employee record.
+Requires role context of `idn:nesr:read`
 
 ### Example
 
@@ -1155,15 +1137,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Non-Employee record id (UUID)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecord(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecord(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1208,13 +1190,15 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetNonEmployeeRequest
+## Get a Non-Employee Request
 
 > NonEmployeeRequest GetNonEmployeeRequest(ctx, id).Execute()
 
-Get a Non-Employee Request
-
-
+This gets a non-employee request.
+There are two contextual uses for this endpoint:
+  1. The user has the role context of `idn:nesr:read`, in this case the user
+can get the non-employee request for any user.
+  2. The user must be the owner of the non-employee request.
 
 ### Example
 
@@ -1225,15 +1209,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ac110005-7156-1150-8171-5b292e3e0084" // string | Non-Employee request id (UUID)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequest(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequest(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1278,13 +1262,15 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetNonEmployeeRequestSummary
+## Get Summary of Non-Employee Requests
 
 > NonEmployeeRequestSummary GetNonEmployeeRequestSummary(ctx, requestedFor).Execute()
 
-Get Summary of Non-Employee Requests
-
-
+This request will retrieve a summary of non-employee requests. There are two contextual uses for the `requested-for` path parameter:
+  1. The user has the role context of `idn:nesr:read`, in which case he or
+she may request a summary of all non-employee approval requests assigned to a particular account manager by passing in that manager's id.
+  2. The current user is an account manager, in which case "me" should be
+provided as the `requested-for` value. This will provide the user with a summary of the non-employee requests in the source(s) he or she manages.
 
 ### Example
 
@@ -1295,15 +1281,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     requestedFor := "2c91808280430dfb0180431a59440460" // string | The identity (UUID) of the non-employee account manager for whom the summary is being retrieved. Use \"me\" instead to indicate the current user.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummary(context.Background(), requestedFor).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummary(context.Background(), requestedFor).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeRequestSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1348,13 +1334,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetNonEmployeeSchemaAttribute
+## Get Schema Attribute Non-Employee Source
 
 > NonEmployeeSchemaAttribute GetNonEmployeeSchemaAttribute(ctx, attributeId, sourceId).Execute()
 
-Get Schema Attribute Non-Employee Source
-
-
+This API gets a schema attribute by Id for the specified Non-Employee SourceId. Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
 
 ### Example
 
@@ -1365,16 +1349,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     attributeId := "ef38f94347e94562b5bb8424a56397d8" // string | The Schema Attribute Id (UUID)
     sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | The Source id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSchemaAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1421,13 +1405,15 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetNonEmployeeSource
+## Get a Non-Employee Source
 
 > NonEmployeeSource GetNonEmployeeSource(ctx, sourceId).Execute()
 
-Get a Non-Employee Source
-
-
+This gets a non-employee source. There are two contextual uses for the requested-for path parameter: 
+  1. The user has the role context of `idn:nesr:read`, in which case he or
+she may request any source.
+  2. The current user is an account manager, in which case the user can only
+request sources that they own.
 
 ### Example
 
@@ -1438,15 +1424,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "2c91808b7c28b350017c2a2ec5790aa1" // string | Source Id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSource(context.Background(), sourceId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSource(context.Background(), sourceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1491,13 +1477,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetNonEmployeeSourceSchemaAttributes
+## List Schema Attributes Non-Employee Source
 
 > []NonEmployeeSchemaAttribute GetNonEmployeeSourceSchemaAttributes(ctx, sourceId).Execute()
 
-List Schema Attributes Non-Employee Source
-
-
+This API gets the list of schema attributes for the specified Non-Employee SourceId. There are 8 mandatory attributes added to each new Non-Employee Source automatically. Additionaly, user can add up to 10 custom attributes. This interface returns all the mandatory attributes followed by any custom attributes. At most, a total of 18 attributes will be returned.
+Requires role context of `idn:nesr:read` or the user must be an account manager of the source.
 
 ### Example
 
@@ -1508,15 +1493,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | The Source id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributes(context.Background(), sourceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.GetNonEmployeeSourceSchemaAttributes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1561,13 +1546,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ImportNonEmployeeRecordsInBulk
+## Imports, or Updates, Non-Employee Records
 
 > NonEmployeeBulkUploadJob ImportNonEmployeeRecordsInBulk(ctx, id).Data(data).Execute()
 
-Imports, or Updates, Non-Employee Records
-
-
+This post will import, or update, Non-Employee records found in the CSV. Requires role context of `idn:nesr:create`
 
 ### Example
 
@@ -1578,16 +1561,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "e136567de87e4d029e60b3c3c55db56d" // string | Source Id (UUID)
     data := os.NewFile(1234, "some_file") // *os.File | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulk(context.Background(), id).Data(data).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulk(context.Background(), id).Data(data).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ImportNonEmployeeRecordsInBulk``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1633,13 +1616,15 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListNonEmployeeApprovals
+## Get List of Non-Employee Approval Requests
 
 > []NonEmployeeApprovalItem ListNonEmployeeApprovals(ctx).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
-Get List of Non-Employee Approval Requests
-
-
+This gets a list of non-employee approval requests.
+There are two contextual uses for this endpoint:
+  1. The user has the role context of `idn:nesr:read`, in which case they
+can list the approvals for any approver.
+  2. The user owns the requested approval.
 
 ### Example
 
@@ -1650,7 +1635,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -1661,9 +1646,9 @@ func main() {
     filters := "approvalStatus eq "Pending"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **approvalStatus**: *eq* (optional)
     sorters := "created" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovals(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovals(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeApprovals``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1709,13 +1694,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListNonEmployeeRecords
+## List Non-Employee Records
 
 > []NonEmployeeRecord ListNonEmployeeRecords(ctx).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
 
-List Non-Employee Records
-
-
+This gets a list of non-employee records. There are two contextual uses for this endpoint:
+  1. The user has the role context of `idn:nesr:read`, in which case they can get a list of all of the non-employees.
+  2. The user is an account manager, in which case they can get a list of the non-employees that they manage.
 
 ### Example
 
@@ -1726,7 +1711,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -1736,9 +1721,9 @@ func main() {
     sorters := "accountName,sourceId" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, accountName, sourceId, manager, firstName, lastName, email, phone, startDate, endDate, created, modified** (optional)
     filters := "sourceId eq "2c91808568c529c60168cca6f90c1313"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq* (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecords(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecords(context.Background()).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRecords``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1783,13 +1768,15 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListNonEmployeeRequests
+## List Non-Employee Requests
 
 > []NonEmployeeRequest ListNonEmployeeRequests(ctx).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
 
-List Non-Employee Requests
-
-
+This gets a list of non-employee requests. There are two contextual uses for the `requested-for` path parameter:
+  1. The user has the role context of `idn:nesr:read`, in which case he or
+she may request a list non-employee requests assigned to a particular account manager by passing in that manager's id.
+  2. The current user is an account manager, in which case "me" should be
+provided as the `requested-for` value. This will provide the user with a list of the non-employee requests in the source(s) he or she manages.
 
 ### Example
 
@@ -1800,7 +1787,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -1811,9 +1798,9 @@ func main() {
     sorters := "created,approvalStatus" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, approvalStatus, firstName, lastName, email, phone, accountName, startDate, endDate** (optional)
     filters := "sourceId eq "2c91808568c529c60168cca6f90c1313"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **sourceId**: *eq*  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequests(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequests(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeRequests``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1859,13 +1846,15 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListNonEmployeeSources
+## List Non-Employee Sources
 
 > []NonEmployeeSourceWithNECount ListNonEmployeeSources(ctx).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).NonEmployeeCount(nonEmployeeCount).Sorters(sorters).Execute()
 
-List Non-Employee Sources
-
-
+This gets a list of non-employee sources. There are two contextual uses for the requested-for path parameter: 
+  1. The user has the role context of `idn:nesr:read`, in which case he or
+she may request a list sources assigned to a particular account manager by passing in that manager's id.
+  2. The current user is an account manager, in which case "me" should be
+provided as the `requested-for` value. This will provide the user with a list of the sources that he or she owns.
 
 ### Example
 
@@ -1876,7 +1865,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -1887,9 +1876,9 @@ func main() {
     nonEmployeeCount := true // bool | The flag to determine whether return a non-employee count associate with source. (optional)
     sorters := "name,created" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name, created, sourceId** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.ListNonEmployeeSources(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).NonEmployeeCount(nonEmployeeCount).Sorters(sorters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.ListNonEmployeeSources(context.Background()).RequestedFor(requestedFor).Limit(limit).Offset(offset).Count(count).NonEmployeeCount(nonEmployeeCount).Sorters(sorters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.ListNonEmployeeSources``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1935,13 +1924,15 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchNonEmployeeRecord
+## Patch Non-Employee Record
 
 > NonEmployeeRecord PatchNonEmployeeRecord(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Patch Non-Employee Record
-
-
+This request will patch a non-employee record. There are two contextual uses for this endpoint:
+  1. The user has the role context of `idn:nesr:update`, in which case they
+update all available fields.
+  2. The user is owner of the source, in this case they can only update the
+end date.
 
 ### Example
 
@@ -1952,16 +1943,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Non-employee record id (UUID)
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of non-employee update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecord(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecord(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2007,12 +1998,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchNonEmployeeSchemaAttribute
+## Patch a Schema Attribute for Non-Employee Source
 
 > NonEmployeeSchemaAttribute PatchNonEmployeeSchemaAttribute(ctx, attributeId, sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Patch a Schema Attribute for Non-Employee Source
-
+This end-point patches a specific schema attribute for a non-employee SourceId.
+Requires role context of `idn:nesr:update`
 
 
 ### Example
@@ -2024,17 +2015,17 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     attributeId := "ef38f94347e94562b5bb8424a56397d8" // string | The Schema Attribute Id (UUID)
     sourceId := "ef38f94347e94562b5bb8424a56397d8" // string | The Source id
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
+    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of schema attribute update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. The following properties are allowed for update ':' 'label', 'helpText', 'placeholder', 'required'.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttribute(context.Background(), attributeId, sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSchemaAttribute``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2082,13 +2073,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchNonEmployeeSource
+## Patch a Non-Employee Source
 
 > NonEmployeeSource PatchNonEmployeeSource(ctx, sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Patch a Non-Employee Source
-
-
+patch a non-employee source. (partial update) <br/> Patchable field: **name, description, approvers, accountManagers** Requires role context of `idn:nesr:update`.
 
 ### Example
 
@@ -2099,16 +2088,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     sourceId := "e136567de87e4d029e60b3c3c55db56d" // string | Source Id
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of non-employee source update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSource(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSource(context.Background(), sourceId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.PatchNonEmployeeSource``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2154,13 +2143,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RejectNonEmployeeRequest
+## Reject a Non-Employee Request
 
 > NonEmployeeApprovalItem RejectNonEmployeeRequest(ctx, id).NonEmployeeRejectApprovalDecision(nonEmployeeRejectApprovalDecision).Execute()
 
-Reject a Non-Employee Request
-
-
+This endpoint will reject an approval item request and notify user. The current user must be the requested approver.
 
 ### Example
 
@@ -2171,16 +2158,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "e136567de87e4d029e60b3c3c55db56d" // string | Non-Employee approval item id (UUID)
-    nonEmployeeRejectApprovalDecision := *openapiclient.NewNonEmployeeRejectApprovalDecision("approved") // NonEmployeeRejectApprovalDecision | 
+    nonEmployeeRejectApprovalDecision := *sailpoint.NewNonEmployeeRejectApprovalDecision("approved") // NonEmployeeRejectApprovalDecision | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequest(context.Background(), id).NonEmployeeRejectApprovalDecision(nonEmployeeRejectApprovalDecision).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequest(context.Background(), id).NonEmployeeRejectApprovalDecision(nonEmployeeRejectApprovalDecision).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.RejectNonEmployeeRequest``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2226,13 +2213,15 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateNonEmployeeRecord
+## Update Non-Employee Record
 
 > NonEmployeeRecord UpdateNonEmployeeRecord(ctx, id).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
 
-Update Non-Employee Record
-
-
+This request will update a non-employee record. There are two contextual uses for this endpoint:
+  1. The user has the role context of `idn:nesr:update`, in which case they
+update all available fields.
+  2. The user is owner of the source, in this case they can only update the
+end date.
 
 ### Example
 
@@ -2244,16 +2233,16 @@ import (
     "fmt"
     "os"
     "time"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Non-employee record id (UUID)
-    nonEmployeeRequestBody := *openapiclient.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5555555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
+    nonEmployeeRequestBody := *sailpoint.NewNonEmployeeRequestBody("william.smith", "William", "Smith", "william.smith@example.com", "5555555555", "jane.doe", "2c91808568c529c60168cca6f90c1313", time.Now(), time.Now()) // NonEmployeeRequestBody | Non-employee record creation request body. Attributes are restricted by user type. Owner of source can update end date. Organization admins can update all available fields.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecord(context.Background(), id).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecord(context.Background(), id).NonEmployeeRequestBody(nonEmployeeRequestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NonEmployeeLifecycleManagementAPI.UpdateNonEmployeeRecord``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

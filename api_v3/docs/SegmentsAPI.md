@@ -12,13 +12,13 @@ Method | HTTP request | Description
 
 
 
-## CreateSegment
+## Create Segment
 
 > Segment CreateSegment(ctx).Segment(segment).Execute()
 
-Create Segment
-
-
+This API creates a segment. 
+>**Note:** Segment definitions may take time to propagate to all identities.
+A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -29,15 +29,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    segment := *openapiclient.NewSegment() // Segment | 
+    segment := *sailpoint.NewSegment() // Segment | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SegmentsAPI.CreateSegment(context.Background()).Segment(segment).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SegmentsAPI.CreateSegment(context.Background()).Segment(segment).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.CreateSegment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -78,13 +78,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteSegment
+## Delete Segment by ID
 
 > DeleteSegment(ctx, id).Execute()
 
-Delete Segment by ID
-
-
+This API deletes the segment specified by the given ID.
+>**Note:** that segment deletion may take some time to become effective.
+A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -95,15 +95,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The segment ID to delete.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SegmentsAPI.DeleteSegment(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.SegmentsAPI.DeleteSegment(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.DeleteSegment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,13 +146,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetSegment
+## Get Segment by ID
 
 > Segment GetSegment(ctx, id).Execute()
 
-Get Segment by ID
-
-
+This API returns the segment specified by the given ID.
+A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -163,15 +162,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The segment ID to retrieve.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SegmentsAPI.GetSegment(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SegmentsAPI.GetSegment(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.GetSegment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -216,13 +215,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListSegments
+## List Segments
 
 > []Segment ListSegments(ctx).Limit(limit).Offset(offset).Count(count).Execute()
 
-List Segments
-
-
+This API returns a list of all segments. 
+A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -233,7 +231,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -241,9 +239,9 @@ func main() {
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SegmentsAPI.ListSegments(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SegmentsAPI.ListSegments(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.ListSegments``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -286,13 +284,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchSegment
+## Update Segment
 
 > Segment PatchSegment(ctx, id).RequestBody(requestBody).Execute()
 
-Update Segment
-
-
+Use this API to update segment fields by using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+>**Note:** Changes to a segment may take some time to propagate to all identities.
+A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -303,16 +301,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The segment ID to modify.
     requestBody := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} | A list of segment update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * description * owner * visibilityCriteria * active 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SegmentsAPI.PatchSegment(context.Background(), id).RequestBody(requestBody).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.SegmentsAPI.PatchSegment(context.Background(), id).RequestBody(requestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SegmentsAPI.PatchSegment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

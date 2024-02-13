@@ -15,13 +15,11 @@ Method | HTTP request | Description
 
 
 
-## DeleteTaggedObject
+## Delete Tagged Object
 
 > DeleteTaggedObject(ctx, type_, id).Execute()
 
-Delete Tagged Object
-
-
+This deletes a tagged object for the specified type.
 
 ### Example
 
@@ -32,16 +30,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     type_ := "ROLE" // string | The type of tagged object to delete.
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to delete.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.TaggedObjectsAPI.DeleteTaggedObject(context.Background(), type_, id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.TaggedObjectsAPI.DeleteTaggedObject(context.Background(), type_, id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.DeleteTaggedObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -86,13 +84,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteTagsToManyObject
+## Remove Tags from Multiple Objects
 
 > DeleteTagsToManyObject(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
 
-Remove Tags from Multiple Objects
+This API removes tags from multiple objects.
 
-
+A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -103,15 +101,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    bulkTaggedObject := *openapiclient.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulkTaggedObject := *sailpoint.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.TaggedObjectsAPI.DeleteTagsToManyObject(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.DeleteTagsToManyObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -150,13 +148,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetTaggedObject
+## Get Tagged Object
 
 > TaggedObject GetTaggedObject(ctx, type_, id).Execute()
 
-Get Tagged Object
-
-
+This gets a tagged object for the specified type.
 
 ### Example
 
@@ -167,16 +163,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     type_ := "ROLE" // string | The type of tagged object to retrieve.
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to retrieve.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsAPI.GetTaggedObject(context.Background(), type_, id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.TaggedObjectsAPI.GetTaggedObject(context.Background(), type_, id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.GetTaggedObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -223,13 +219,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListTaggedObjects
+## List Tagged Objects
 
 > []TaggedObject ListTaggedObjects(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
 
-List Tagged Objects
+This API returns a list of all tagged objects.
 
-
+Any authenticated token may be used to call this API.
 
 ### Example
 
@@ -240,7 +236,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -249,9 +245,9 @@ func main() {
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     filters := "tagName eq "BU_FINANCE"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq, in*  **objectRef.type**: *eq, in*  **tagName**: *eq, in* (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsAPI.ListTaggedObjects(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.TaggedObjectsAPI.ListTaggedObjects(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.ListTaggedObjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -295,13 +291,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListTaggedObjectsByType
+## List Tagged Objects by Type
 
 > []TaggedObject ListTaggedObjectsByType(ctx, type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
 
-List Tagged Objects by Type
+This API returns a list of all tagged objects by type.
 
-
+Any authenticated token may be used to call this API.
 
 ### Example
 
@@ -312,7 +308,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -322,9 +318,9 @@ func main() {
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     filters := "objectRef.id eq "2c91808568c529c60168cca6f90c1313"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **objectRef.id**: *eq*  **objectRef.type**: *eq* (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsAPI.ListTaggedObjectsByType(context.Background(), type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.TaggedObjectsAPI.ListTaggedObjectsByType(context.Background(), type_).Limit(limit).Offset(offset).Count(count).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.ListTaggedObjectsByType``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,13 +369,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutTaggedObject
+## Update Tagged Object
 
 > TaggedObject PutTaggedObject(ctx, type_, id).TaggedObject(taggedObject).Execute()
 
-Update Tagged Object
-
-
+This updates a tagged object for the specified type.
 
 ### Example
 
@@ -390,17 +384,17 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     type_ := "ROLE" // string | The type of tagged object to update.
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the object reference to update.
-    taggedObject := *openapiclient.NewTaggedObject() // TaggedObject | 
+    taggedObject := *sailpoint.NewTaggedObject() // TaggedObject | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsAPI.PutTaggedObject(context.Background(), type_, id).TaggedObject(taggedObject).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.TaggedObjectsAPI.PutTaggedObject(context.Background(), type_, id).TaggedObject(taggedObject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.PutTaggedObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -448,13 +442,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SetTagToObject
+## Add Tag to Object
 
 > SetTagToObject(ctx).TaggedObject(taggedObject).Execute()
 
-Add Tag to Object
+This adds a tag to an object.
 
-
+Any authenticated token may be used to call this API.
 
 ### Example
 
@@ -465,15 +459,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    taggedObject := *openapiclient.NewTaggedObject() // TaggedObject | 
+    taggedObject := *sailpoint.NewTaggedObject() // TaggedObject | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.TaggedObjectsAPI.SetTagToObject(context.Background()).TaggedObject(taggedObject).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.TaggedObjectsAPI.SetTagToObject(context.Background()).TaggedObject(taggedObject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.SetTagToObject``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -512,13 +506,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SetTagsToManyObjects
+## Tag Multiple Objects
 
 > BulkTaggedObject SetTagsToManyObjects(ctx).BulkTaggedObject(bulkTaggedObject).Execute()
 
-Tag Multiple Objects
+This API adds tags to multiple objects.
 
-
+A token with API, CERT_ADMIN, ORG_ADMIN, REPORT_ADMIN, ROLE_ADMIN, ROLE_SUBADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is required to call this API.
 
 ### Example
 
@@ -529,15 +523,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    bulkTaggedObject := *openapiclient.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
+    bulkTaggedObject := *sailpoint.NewBulkTaggedObject() // BulkTaggedObject | Supported object types are ACCESS_PROFILE, APPLICATION, CAMPAIGN, ENTITLEMENT, IDENTITY, ROLE, SOD_POLICY, SOURCE.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.TaggedObjectsAPI.SetTagsToManyObjects(context.Background()).BulkTaggedObject(bulkTaggedObject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TaggedObjectsAPI.SetTagsToManyObjects``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

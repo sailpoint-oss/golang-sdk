@@ -10,13 +10,13 @@ Method | HTTP request | Description
 
 
 
-## CreatePasswordOrgConfig
+## Create Password Org Config
 
 > PasswordOrgConfig CreatePasswordOrgConfig(ctx).PasswordOrgConfig(passwordOrgConfig).Execute()
 
-Create Password Org Config
-
-
+This API creates the password org config. Unspecified fields will use default value.
+To be able to use the custom password instructions, you must set the `customInstructionsEnabled` field to "true".
+Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
 ### Example
 
@@ -27,15 +27,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    passwordOrgConfig := *openapiclient.NewPasswordOrgConfig() // PasswordOrgConfig | 
+    passwordOrgConfig := *sailpoint.NewPasswordOrgConfig() // PasswordOrgConfig | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationAPI.CreatePasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PasswordConfigurationAPI.CreatePasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.CreatePasswordOrgConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -76,13 +76,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetPasswordOrgConfig
+## Get Password Org Config
 
 > PasswordOrgConfig GetPasswordOrgConfig(ctx).Execute()
 
-Get Password Org Config
-
-
+This API returns the password org config . Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:read'
 
 ### Example
 
@@ -93,14 +91,14 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationAPI.GetPasswordOrgConfig(context.Background()).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PasswordConfigurationAPI.GetPasswordOrgConfig(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.GetPasswordOrgConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -137,13 +135,13 @@ Other parameters are passed through a pointer to a apiGetPasswordOrgConfigReques
 [[Back to README]](../README.md)
 
 
-## PutPasswordOrgConfig
+## Update Password Org Config
 
 > PasswordOrgConfig PutPasswordOrgConfig(ctx).PasswordOrgConfig(passwordOrgConfig).Execute()
 
-Update Password Org Config
-
-
+This API updates the password org config for specified fields. Other fields will keep original value.
+You must set the `customInstructionsEnabled` field to "true" to be able to use custom password instructions. 
+Requires ORG_ADMIN, API role or authorization scope of 'idn:password-org-config:write'
 
 ### Example
 
@@ -154,15 +152,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    passwordOrgConfig := *openapiclient.NewPasswordOrgConfig() // PasswordOrgConfig | 
+    passwordOrgConfig := *sailpoint.NewPasswordOrgConfig() // PasswordOrgConfig | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordConfigurationAPI.PutPasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PasswordConfigurationAPI.PutPasswordOrgConfig(context.Background()).PasswordOrgConfig(passwordOrgConfig).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordConfigurationAPI.PutPasswordOrgConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

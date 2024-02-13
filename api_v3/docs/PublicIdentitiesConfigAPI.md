@@ -9,13 +9,11 @@ Method | HTTP request | Description
 
 
 
-## GetPublicIdentityConfig
+## Get the Public Identities Configuration
 
 > PublicIdentityConfig GetPublicIdentityConfig(ctx).Execute()
 
-Get the Public Identities Configuration
-
-
+Returns the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
 
 ### Example
 
@@ -26,14 +24,14 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentitiesConfigAPI.GetPublicIdentityConfig(context.Background()).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PublicIdentitiesConfigAPI.GetPublicIdentityConfig(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.GetPublicIdentityConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -70,13 +68,11 @@ Other parameters are passed through a pointer to a apiGetPublicIdentityConfigReq
 [[Back to README]](../README.md)
 
 
-## UpdatePublicIdentityConfig
+## Update the Public Identities Configuration
 
 > PublicIdentityConfig UpdatePublicIdentityConfig(ctx).PublicIdentityConfig(publicIdentityConfig).Execute()
 
-Update the Public Identities Configuration
-
-
+Updates the publicly visible attributes of an identity available to request approvers for Access Requests and Certification Campaigns. A token with ORG ADMIN authority is required to call this API.
 
 ### Example
 
@@ -87,15 +83,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    publicIdentityConfig := *openapiclient.NewPublicIdentityConfig() // PublicIdentityConfig | 
+    publicIdentityConfig := *sailpoint.NewPublicIdentityConfig() // PublicIdentityConfig | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig(context.Background()).PublicIdentityConfig(publicIdentityConfig).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig(context.Background()).PublicIdentityConfig(publicIdentityConfig).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesConfigAPI.UpdatePublicIdentityConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

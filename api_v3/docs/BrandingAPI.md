@@ -12,13 +12,12 @@ Method | HTTP request | Description
 
 
 
-## CreateBrandingItem
+## Create a branding item
 
 > BrandingItem CreateBrandingItem(ctx).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
 
-Create a branding item
-
-
+This API endpoint creates a branding item.
+A token with API, ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -29,7 +28,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -42,9 +41,9 @@ func main() {
     loginInformationalMessage := "loginInformationalMessage_example" // string | login information message (optional)
     fileStandard := os.NewFile(1234, "some_file") // *os.File | png file with logo (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingAPI.CreateBrandingItem(context.Background()).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.BrandingAPI.CreateBrandingItem(context.Background()).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.CreateBrandingItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -92,13 +91,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteBranding
+## Delete a branding item
 
 > DeleteBranding(ctx, name).Execute()
 
-Delete a branding item
-
-
+This API endpoint delete information for an existing branding item by name.
+A token with API, ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -109,15 +107,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     name := "default" // string | The name of the branding item to be deleted
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.BrandingAPI.DeleteBranding(context.Background(), name).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.BrandingAPI.DeleteBranding(context.Background(), name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.DeleteBranding``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -160,13 +158,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetBranding
+## Get a branding item
 
 > BrandingItem GetBranding(ctx, name).Execute()
 
-Get a branding item
-
-
+This API endpoint retrieves information for an existing branding item by name.
+A token with API, ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -177,15 +174,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     name := "default" // string | The name of the branding item to be retrieved
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingAPI.GetBranding(context.Background(), name).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.BrandingAPI.GetBranding(context.Background(), name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBranding``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -230,13 +227,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetBrandingList
+## List of branding items
 
 > []BrandingItem GetBrandingList(ctx).Execute()
 
-List of branding items
+This API endpoint returns a list of branding items.
 
-
+A token with API, ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -247,14 +244,14 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingAPI.GetBrandingList(context.Background()).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.BrandingAPI.GetBrandingList(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.GetBrandingList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -291,13 +288,12 @@ Other parameters are passed through a pointer to a apiGetBrandingListRequest str
 [[Back to README]](../README.md)
 
 
-## SetBrandingItem
+## Update a branding item
 
 > BrandingItem SetBrandingItem(ctx, name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
 
-Update a branding item
-
-
+This API endpoint updates information for an existing branding item.
+A token with API, ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -308,7 +304,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -322,9 +318,9 @@ func main() {
     loginInformationalMessage := "loginInformationalMessage_example" // string | login information message (optional)
     fileStandard := os.NewFile(1234, "some_file") // *os.File | png file with logo (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingAPI.SetBrandingItem(context.Background(), name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.BrandingAPI.SetBrandingItem(context.Background(), name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.SetBrandingItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

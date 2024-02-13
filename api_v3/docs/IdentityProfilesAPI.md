@@ -15,13 +15,17 @@ Method | HTTP request | Description
 
 
 
-## DeleteIdentityProfile
+## Delete an Identity Profile
 
 > TaskResultSimplified DeleteIdentityProfile(ctx, identityProfileId).Execute()
 
-Delete an Identity Profile
+This deletes an Identity Profile based on ID.
 
+On success, this endpoint will return a reference to the bulk delete task result.
 
+A token with ORG_ADMIN authority is required to call this API.
+
+The following rights are required to access this endpoint: idn:identity-profile:delete
 
 ### Example
 
@@ -32,15 +36,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | The Identity Profile ID.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.DeleteIdentityProfile(context.Background(), identityProfileId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.IdentityProfilesAPI.DeleteIdentityProfile(context.Background(), identityProfileId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.DeleteIdentityProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -85,13 +89,17 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteIdentityProfiles
+## Delete Identity Profiles
 
 > TaskResultSimplified DeleteIdentityProfiles(ctx).RequestBody(requestBody).Execute()
 
-Delete Identity Profiles
+This deletes multiple Identity Profiles via a list of supplied IDs.
 
+On success, this endpoint will return a reference to the bulk delete task result.
 
+A token with ORG_ADMIN authority is required to call this API.
+
+The following rights are required to access this endpoint: idn:identity-profile:delete
 
 ### Example
 
@@ -102,15 +110,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     requestBody := []string{"Property_example"} // []string | Identity Profile bulk delete request body.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.DeleteIdentityProfiles(context.Background()).RequestBody(requestBody).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.IdentityProfilesAPI.DeleteIdentityProfiles(context.Background()).RequestBody(requestBody).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.DeleteIdentityProfiles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -151,13 +159,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ExportIdentityProfiles
+## Export Identity Profiles
 
 > []IdentityProfileExportedObject ExportIdentityProfiles(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
-Export Identity Profiles
-
-
+This exports existing identity profiles in the format specified by the sp-config service.
 
 ### Example
 
@@ -168,7 +174,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -178,9 +184,9 @@ func main() {
     filters := "id eq "ef38f94347e94562b5bb8424a56397d8"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne*  **name**: *eq, ne*  **priority**: *eq, ne* (optional)
     sorters := "id,name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.ExportIdentityProfiles(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.IdentityProfilesAPI.ExportIdentityProfiles(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ExportIdentityProfiles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -225,13 +231,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetDefaultIdentityAttributeConfig
+## Get default Identity Attribute Config
 
 > IdentityAttributeConfig GetDefaultIdentityAttributeConfig(ctx, identityProfileId).Execute()
 
-Get default Identity Attribute Config
-
-
+This returns the default identity attribute config.
+A token with ORG_ADMIN authority is required to call this API to get the default identity attribute config.
 
 ### Example
 
@@ -242,15 +247,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | The Identity Profile ID.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.GetDefaultIdentityAttributeConfig(context.Background(), identityProfileId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.IdentityProfilesAPI.GetDefaultIdentityAttributeConfig(context.Background(), identityProfileId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.GetDefaultIdentityAttributeConfig``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -295,13 +300,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetIdentityProfile
+## Get single Identity Profile
 
 > IdentityProfile GetIdentityProfile(ctx, identityProfileId).Execute()
 
-Get single Identity Profile
-
-
+This returns a single Identity Profile based on ID.
+A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -312,15 +316,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | The Identity Profile ID.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.GetIdentityProfile(context.Background(), identityProfileId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.IdentityProfilesAPI.GetIdentityProfile(context.Background(), identityProfileId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.GetIdentityProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -365,13 +369,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ImportIdentityProfiles
+## Import Identity Profiles
 
 > ObjectImportResult ImportIdentityProfiles(ctx).IdentityProfileExportedObject(identityProfileExportedObject).Execute()
 
-Import Identity Profiles
-
-
+This imports previously exported identity profiles.
 
 ### Example
 
@@ -382,15 +384,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    identityProfileExportedObject := []openapiclient.IdentityProfileExportedObject{*openapiclient.NewIdentityProfileExportedObject()} // []IdentityProfileExportedObject | Previously exported Identity Profiles.
+    identityProfileExportedObject := []sailpoint.IdentityProfileExportedObject{*sailpoint.NewIdentityProfileExportedObject()} // []IdentityProfileExportedObject | Previously exported Identity Profiles.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.ImportIdentityProfiles(context.Background()).IdentityProfileExportedObject(identityProfileExportedObject).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.IdentityProfilesAPI.ImportIdentityProfiles(context.Background()).IdentityProfileExportedObject(identityProfileExportedObject).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ImportIdentityProfiles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -431,13 +433,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListIdentityProfiles
+## Identity Profiles List
 
 > []IdentityProfile ListIdentityProfiles(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
 
-Identity Profiles List
-
-
+This returns a list of Identity Profiles based on the specified query parameters.
+A token with ORG_ADMIN or API authority is required to call this API to get a list of Identity Profiles.
 
 ### Example
 
@@ -448,7 +449,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -458,9 +459,9 @@ func main() {
     filters := "id eq "ef38f94347e94562b5bb8424a56397d8"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, ne, ge, gt, in, le, lt, isnull, sw*  **name**: *eq, ne, in, le, lt, isnull, sw*  **priority**: *eq, ne* (optional)
     sorters := "id,name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **id, name, priority, created, modified, owner.id, owner.name** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.ListIdentityProfiles(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.IdentityProfilesAPI.ListIdentityProfiles(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).Sorters(sorters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.ListIdentityProfiles``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -505,13 +506,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SyncIdentityProfile
+## Process identities under profile
 
 > map[string]interface{} SyncIdentityProfile(ctx, identityProfileId).Execute()
 
-Process identities under profile
+Process identities under the profile
 
-
+A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -522,15 +523,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | The Identity Profile ID to be processed
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IdentityProfilesAPI.SyncIdentityProfile(context.Background(), identityProfileId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.IdentityProfilesAPI.SyncIdentityProfile(context.Background(), identityProfileId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `IdentityProfilesAPI.SyncIdentityProfile``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

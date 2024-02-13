@@ -17,13 +17,11 @@ Method | HTTP request | Description
 
 
 
-## CreateServiceDeskIntegration
+## Create new Service Desk integration
 
 > ServiceDeskIntegrationDto CreateServiceDeskIntegration(ctx).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
 
-Create new Service Desk integration
-
-
+Create a new Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
 ### Example
 
@@ -34,15 +32,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    serviceDeskIntegrationDto := *openapiclient.NewServiceDeskIntegrationDto("Service Desk Integration Name", "A very nice Service Desk integration", "ServiceNowSDIM", map[string]interface{}{"key": interface{}(123)}) // ServiceDeskIntegrationDto | The specifics of a new integration to create
+    serviceDeskIntegrationDto := *sailpoint.NewServiceDeskIntegrationDto("Service Desk Integration Name", "A very nice Service Desk integration", "ServiceNowSDIM", map[string]interface{}{"key": interface{}(123)}) // ServiceDeskIntegrationDto | The specifics of a new integration to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.CreateServiceDeskIntegration(context.Background()).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ServiceDeskIntegrationAPI.CreateServiceDeskIntegration(context.Background()).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.CreateServiceDeskIntegration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -83,13 +81,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteServiceDeskIntegration
+## Delete a Service Desk integration
 
 > DeleteServiceDeskIntegration(ctx, id).Execute()
 
-Delete a Service Desk integration
-
-
+Delete an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
 ### Example
 
@@ -100,15 +96,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "anId" // string | ID of Service Desk integration to delete
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegration(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.ServiceDeskIntegrationAPI.DeleteServiceDeskIntegration(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.DeleteServiceDeskIntegration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -151,13 +147,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetServiceDeskIntegration
+## Get a Service Desk integration
 
 > ServiceDeskIntegrationDto GetServiceDeskIntegration(ctx, id).Execute()
 
-Get a Service Desk integration
-
-
+Get an existing Service Desk integration by ID.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
 ### Example
 
@@ -168,15 +162,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "anId" // string | ID of the Service Desk integration to get
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegration(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ServiceDeskIntegrationAPI.GetServiceDeskIntegration(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -221,13 +215,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetServiceDeskIntegrationTemplate
+## Service Desk integration template by scriptName.
 
 > ServiceDeskIntegrationTemplateDto GetServiceDeskIntegrationTemplate(ctx, scriptName).Execute()
 
-Service Desk integration template by scriptName.
-
-
+This API endpoint returns an existing Service Desk integration template by scriptName.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
 ### Example
 
@@ -238,15 +230,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     scriptName := "aScriptName" // string | The scriptName value of the Service Desk integration template to get
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate(context.Background(), scriptName).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate(context.Background(), scriptName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTemplate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -291,13 +283,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetServiceDeskIntegrationTypes
+## Service Desk Integration Types List.
 
 > []ServiceDeskIntegrationTemplateType GetServiceDeskIntegrationTypes(ctx).Execute()
 
-Service Desk Integration Types List.
-
-
+This API endpoint returns the current list of supported Service Desk integration types.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
 ### Example
 
@@ -308,14 +298,14 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes(context.Background()).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrationTypes``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -352,13 +342,11 @@ Other parameters are passed through a pointer to a apiGetServiceDeskIntegrationT
 [[Back to README]](../README.md)
 
 
-## GetServiceDeskIntegrations
+## List existing Service Desk Integrations
 
 > []ServiceDeskIntegrationDto GetServiceDeskIntegrations(ctx).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
 
-List existing Service Desk Integrations
-
-
+Get a list of ServiceDeskIntegrationDto for existing Service Desk Integrations.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
 ### Example
 
@@ -369,7 +357,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -379,9 +367,9 @@ func main() {
     filters := "name eq "John Doe"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **id**: *eq, in*  **name**: *eq*  **type**: *eq, in*  **cluster**: *eq, in* (optional)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetServiceDeskIntegrations(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ServiceDeskIntegrationAPI.GetServiceDeskIntegrations(context.Background()).Offset(offset).Limit(limit).Sorters(sorters).Filters(filters).Count(count).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetServiceDeskIntegrations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -426,13 +414,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetStatusCheckDetails
+## Get the time check configuration
 
 > QueuedCheckConfigDetails GetStatusCheckDetails(ctx).Execute()
 
-Get the time check configuration
-
-
+Get the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
 ### Example
 
@@ -443,14 +429,14 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.GetStatusCheckDetails(context.Background()).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ServiceDeskIntegrationAPI.GetStatusCheckDetails(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.GetStatusCheckDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -487,13 +473,11 @@ Other parameters are passed through a pointer to a apiGetStatusCheckDetailsReque
 [[Back to README]](../README.md)
 
 
-## PatchServiceDeskIntegration
+## Service Desk Integration Update PATCH
 
 > ServiceDeskIntegrationDto PatchServiceDeskIntegration(ctx, id).PatchServiceDeskIntegrationRequest(patchServiceDeskIntegrationRequest).Execute()
 
-Service Desk Integration Update PATCH
-
-
+Update an existing ServiceDeskIntegration by ID with a PATCH request.
 
 ### Example
 
@@ -504,16 +488,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "anId" // string | ID of the Service Desk integration to update
-    patchServiceDeskIntegrationRequest := *openapiclient.NewPatchServiceDeskIntegrationRequest() // PatchServiceDeskIntegrationRequest | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
+    patchServiceDeskIntegrationRequest := *sailpoint.NewPatchServiceDeskIntegrationRequest() // PatchServiceDeskIntegrationRequest | A list of SDIM update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  Only `replace` operations are accepted by this endpoint.  A 403 Forbidden Error indicates that you attempted to PATCH a operation that is not allowed. 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PatchServiceDeskIntegration(context.Background(), id).PatchServiceDeskIntegrationRequest(patchServiceDeskIntegrationRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ServiceDeskIntegrationAPI.PatchServiceDeskIntegration(context.Background(), id).PatchServiceDeskIntegrationRequest(patchServiceDeskIntegrationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.PatchServiceDeskIntegration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -559,13 +543,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutServiceDeskIntegration
+## Update a Service Desk integration
 
 > ServiceDeskIntegrationDto PutServiceDeskIntegration(ctx, id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
 
-Update a Service Desk integration
-
-
+Update an existing Service Desk integration by ID with updated value in JSON form as the request body.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
 ### Example
 
@@ -576,16 +558,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "anId" // string | ID of the Service Desk integration to update
-    serviceDeskIntegrationDto := *openapiclient.NewServiceDeskIntegrationDto("Service Desk Integration Name", "A very nice Service Desk integration", "ServiceNowSDIM", map[string]interface{}{"key": interface{}(123)}) // ServiceDeskIntegrationDto | The specifics of the integration to update
+    serviceDeskIntegrationDto := *sailpoint.NewServiceDeskIntegrationDto("Service Desk Integration Name", "A very nice Service Desk integration", "ServiceNowSDIM", map[string]interface{}{"key": interface{}(123)}) // ServiceDeskIntegrationDto | The specifics of the integration to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.PutServiceDeskIntegration(context.Background(), id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ServiceDeskIntegrationAPI.PutServiceDeskIntegration(context.Background(), id).ServiceDeskIntegrationDto(serviceDeskIntegrationDto).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.PutServiceDeskIntegration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -631,13 +613,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateStatusCheckDetails
+## Update the time check configuration
 
 > QueuedCheckConfigDetails UpdateStatusCheckDetails(ctx).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
 
-Update the time check configuration
-
-
+Update the time check configuration of queued SDIM tickets.  A token with Org Admin or Service Desk Admin authority is required to access this endpoint.
 
 ### Example
 
@@ -648,15 +628,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    queuedCheckConfigDetails := *openapiclient.NewQueuedCheckConfigDetails("30", "2") // QueuedCheckConfigDetails | the modified time check configuration
+    queuedCheckConfigDetails := *sailpoint.NewQueuedCheckConfigDetails("30", "2") // QueuedCheckConfigDetails | the modified time check configuration
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ServiceDeskIntegrationAPI.UpdateStatusCheckDetails(context.Background()).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.ServiceDeskIntegrationAPI.UpdateStatusCheckDetails(context.Background()).QueuedCheckConfigDetails(queuedCheckConfigDetails).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceDeskIntegrationAPI.UpdateStatusCheckDetails``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

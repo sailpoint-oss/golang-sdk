@@ -13,13 +13,12 @@ Method | HTTP request | Description
 
 
 
-## CreateLifecycleState
+## Create Lifecycle State
 
 > LifecycleState CreateLifecycleState(ctx, identityProfileId).LifecycleState(lifecycleState).Execute()
 
-Create Lifecycle State
-
-
+This API creates a new Lifecycle State.
+A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -30,16 +29,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     identityProfileId := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Profile ID
-    lifecycleState := *openapiclient.NewLifecycleState("aName", "Technical Name") // LifecycleState | Lifecycle State
+    lifecycleState := *sailpoint.NewLifecycleState("aName", "Technical Name") // LifecycleState | Lifecycle State
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesAPI.CreateLifecycleState(context.Background(), identityProfileId).LifecycleState(lifecycleState).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.LifecycleStatesAPI.CreateLifecycleState(context.Background(), identityProfileId).LifecycleState(lifecycleState).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.CreateLifecycleState``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -85,13 +84,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteLifecycleState
+## Delete Lifecycle State by ID
 
 > LifecyclestateDeleted DeleteLifecycleState(ctx, identityProfileId, lifecycleStateId).Execute()
 
-Delete Lifecycle State by ID
-
-
+This endpoint deletes the Lifecycle State using its ID.
+A token with API, or ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -102,16 +100,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity Profile ID
     lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle State ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesAPI.DeleteLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.LifecycleStatesAPI.DeleteLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.DeleteLifecycleState``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -158,13 +156,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetLifecycleState
+## Retrieves Lifecycle State
 
 > LifecycleState GetLifecycleState(ctx, identityProfileId, lifecycleStateId).Execute()
 
-Retrieves Lifecycle State
-
-
+This endpoint retrieves a Lifecycle State.
+A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -175,16 +172,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity Profile ID
     lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle State ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesAPI.GetLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.LifecycleStatesAPI.GetLifecycleState(context.Background(), identityProfileId, lifecycleStateId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.GetLifecycleState``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -231,13 +228,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListLifecycleStates
+## Lists LifecycleStates
 
 > []LifecycleState ListLifecycleStates(ctx, identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
 
-Lists LifecycleStates
-
-
+This end-point lists all the LifecycleStates associated with IdentityProfiles.
+A token with API, or ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -248,7 +244,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -258,9 +254,9 @@ func main() {
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
     sorters := "created,modified" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **created, modified** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.LifecycleStatesAPI.ListLifecycleStates(context.Background(), identityProfileId).Limit(limit).Offset(offset).Count(count).Sorters(sorters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.ListLifecycleStates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -309,13 +305,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## SetLifecycleState
+## Set Lifecycle State
 
 > SetLifecycleState200Response SetLifecycleState(ctx, identityId).SetLifecycleStateRequest(setLifecycleStateRequest).Execute()
 
-Set Lifecycle State
-
-
+This endpoint will set/update an identity's lifecycle state to the one provided and updates the corresponding Identity Profile.
+A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -326,16 +321,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     identityId := "2c9180857893f1290178944561990364" // string | The ID of the identity to update
-    setLifecycleStateRequest := *openapiclient.NewSetLifecycleStateRequest() // SetLifecycleStateRequest | 
+    setLifecycleStateRequest := *sailpoint.NewSetLifecycleStateRequest() // SetLifecycleStateRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesAPI.SetLifecycleState(context.Background(), identityId).SetLifecycleStateRequest(setLifecycleStateRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.LifecycleStatesAPI.SetLifecycleState(context.Background(), identityId).SetLifecycleStateRequest(setLifecycleStateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.SetLifecycleState``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -381,13 +376,12 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateLifecycleStates
+## Update Lifecycle State
 
 > LifecycleState UpdateLifecycleStates(ctx, identityProfileId, lifecycleStateId).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Update Lifecycle State
-
-
+This endpoint updates individual Lifecycle State fields using the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+A token with ORG_ADMIN or API authority is required to call this API.
 
 ### Example
 
@@ -398,17 +392,17 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     identityProfileId := "2b838de9-db9b-abcf-e646-d4f274ad4238" // string | Identity Profile ID
     lifecycleStateId := "ef38f94347e94562b5bb8424a56397d8" // string | Lifecycle State ID
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption 
+    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of lifecycle state update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields can be updated: * enabled * description * accountActions * accessProfileIds * emailNotificationOption 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LifecycleStatesAPI.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).JsonPatchOperation(jsonPatchOperation).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.LifecycleStatesAPI.UpdateLifecycleStates(context.Background(), identityProfileId, lifecycleStateId).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LifecycleStatesAPI.UpdateLifecycleStates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

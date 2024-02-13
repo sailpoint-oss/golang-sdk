@@ -8,11 +8,11 @@ Method | HTTP request | Description
 
 
 
-## GetPublicIdentities
+## Get a list of public identities
 
 > []PublicIdentity GetPublicIdentities(ctx).Limit(limit).Offset(offset).Count(count).Filters(filters).AddCoreFilters(addCoreFilters).Sorters(sorters).Execute()
 
-Get a list of public identities
+
 
 ### Example
 
@@ -23,7 +23,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -34,9 +34,9 @@ func main() {
     addCoreFilters := false // bool | If *true*, only get identities which satisfy ALL the following criteria in addition to any criteria specified by *filters*:   - Should be either correlated or protected.   - Should not be \"spadmin\" or \"cloudadmin\".   - uid should not be null.   - lastname should not be null.   - email should not be null. (optional) (default to false)
     sorters := "name" // string | Sort results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#sorting-results)  Sorting is supported for the following fields: **name** (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PublicIdentitiesAPI.GetPublicIdentities(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).AddCoreFilters(addCoreFilters).Sorters(sorters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PublicIdentitiesAPI.GetPublicIdentities(context.Background()).Limit(limit).Offset(offset).Count(count).Filters(filters).AddCoreFilters(addCoreFilters).Sorters(sorters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PublicIdentitiesAPI.GetPublicIdentities``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

@@ -12,13 +12,11 @@ Method | HTTP request | Description
 {{#operations}}
 {{#operation}}
 
-## {{{operationId}}}
+## {{{summary}}}
 
 > {{#returnType}}{{{.}}} {{/returnType}}{{{operationId}}}(ctx{{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
 
-{{{summary}}}{{#notes}}
-
-{{{unespacedNotes}}}{{/notes}}
+{{#notes}}{{{unescapedNotes}}}{{/notes}}
 
 ### Example
 
@@ -40,9 +38,9 @@ func main() {
     {{paramName}} := {{{vendorExtensions.x-go-example}}} // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
     {{/allParams}}
 
-    configuration := {{goImportAlias}}.NewConfiguration()
+    configuration := {{goImportAlias}}.NewDefaultConfiguration()
     apiClient := {{goImportAlias}}.NewAPIClient(configuration)
-    {{#returnType}}resp, {{/returnType}}r, err := apiClient.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
+    {{#returnType}}resp, {{/returnType}}r, err := apiClient.{{subModuleName}}.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

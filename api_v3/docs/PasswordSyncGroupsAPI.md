@@ -12,13 +12,11 @@ Method | HTTP request | Description
 
 
 
-## CreatePasswordSyncGroup
+## Create Password Sync Group
 
 > PasswordSyncGroup CreatePasswordSyncGroup(ctx).PasswordSyncGroup(passwordSyncGroup).Execute()
 
-Create Password Sync Group
-
-
+This API creates a password sync group based on the specifications provided. A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -29,15 +27,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    passwordSyncGroup := *openapiclient.NewPasswordSyncGroup() // PasswordSyncGroup | 
+    passwordSyncGroup := *sailpoint.NewPasswordSyncGroup() // PasswordSyncGroup | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).PasswordSyncGroup(passwordSyncGroup).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PasswordSyncGroupsAPI.CreatePasswordSyncGroup(context.Background()).PasswordSyncGroup(passwordSyncGroup).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.CreatePasswordSyncGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -78,13 +76,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeletePasswordSyncGroup
+## Delete Password Sync Group by ID
 
 > DeletePasswordSyncGroup(ctx, id).Execute()
 
-Delete Password Sync Group by ID
-
-
+This API deletes the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -95,15 +91,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "6881f631-3bd5-4213-9c75-8e05cc3e35dd" // string | The ID of password sync group to delete.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.PasswordSyncGroupsAPI.DeletePasswordSyncGroup(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.DeletePasswordSyncGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -146,13 +142,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetPasswordSyncGroup
+## Get Password Sync Group by ID
 
 > PasswordSyncGroup GetPasswordSyncGroup(ctx, id).Execute()
 
-Get Password Sync Group by ID
-
-
+This API returns the sync group for the specified ID. A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -163,15 +157,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "6881f631-3bd5-4213-9c75-8e05cc3e35dd" // string | The ID of password sync group to retrieve.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PasswordSyncGroupsAPI.GetPasswordSyncGroup(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -216,13 +210,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetPasswordSyncGroups
+## Get Password Sync Group List
 
 > []PasswordSyncGroup GetPasswordSyncGroups(ctx).Limit(limit).Offset(offset).Count(count).Execute()
 
-Get Password Sync Group List
-
-
+This API returns a list of password sync groups. A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -233,7 +225,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
@@ -241,9 +233,9 @@ func main() {
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
     count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PasswordSyncGroupsAPI.GetPasswordSyncGroups(context.Background()).Limit(limit).Offset(offset).Count(count).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.GetPasswordSyncGroups``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -286,13 +278,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdatePasswordSyncGroup
+## Update Password Sync Group by ID
 
 > PasswordSyncGroup UpdatePasswordSyncGroup(ctx, id).PasswordSyncGroup(passwordSyncGroup).Execute()
 
-Update Password Sync Group by ID
-
-
+This API updates the specified password sync group. A token with ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -303,16 +293,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "6881f631-3bd5-4213-9c75-8e05cc3e35dd" // string | The ID of password sync group to update.
-    passwordSyncGroup := *openapiclient.NewPasswordSyncGroup() // PasswordSyncGroup | 
+    passwordSyncGroup := *sailpoint.NewPasswordSyncGroup() // PasswordSyncGroup | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).PasswordSyncGroup(passwordSyncGroup).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PasswordSyncGroupsAPI.UpdatePasswordSyncGroup(context.Background(), id).PasswordSyncGroup(passwordSyncGroup).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PasswordSyncGroupsAPI.UpdatePasswordSyncGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

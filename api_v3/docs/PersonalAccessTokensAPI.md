@@ -11,13 +11,11 @@ Method | HTTP request | Description
 
 
 
-## CreatePersonalAccessToken
+## Create Personal Access Token
 
 > CreatePersonalAccessTokenResponse CreatePersonalAccessToken(ctx).CreatePersonalAccessTokenRequest(createPersonalAccessTokenRequest).Execute()
 
-Create Personal Access Token
-
-
+This creates a personal access token.
 
 ### Example
 
@@ -28,15 +26,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    createPersonalAccessTokenRequest := *openapiclient.NewCreatePersonalAccessTokenRequest("NodeJS Integration") // CreatePersonalAccessTokenRequest | Name and scope of personal access token.
+    createPersonalAccessTokenRequest := *sailpoint.NewCreatePersonalAccessTokenRequest("NodeJS Integration") // CreatePersonalAccessTokenRequest | Name and scope of personal access token.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokensAPI.CreatePersonalAccessToken(context.Background()).CreatePersonalAccessTokenRequest(createPersonalAccessTokenRequest).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PersonalAccessTokensAPI.CreatePersonalAccessToken(context.Background()).CreatePersonalAccessTokenRequest(createPersonalAccessTokenRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.CreatePersonalAccessToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -77,13 +75,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeletePersonalAccessToken
+## Delete Personal Access Token
 
 > DeletePersonalAccessToken(ctx, id).Execute()
 
-Delete Personal Access Token
-
-
+This deletes a personal access token.
 
 ### Example
 
@@ -94,15 +90,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The personal access token id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PersonalAccessTokensAPI.DeletePersonalAccessToken(context.Background(), id).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    r, err := apiClient.V3.PersonalAccessTokensAPI.DeletePersonalAccessToken(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.DeletePersonalAccessToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -145,13 +141,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListPersonalAccessTokens
+## List Personal Access Tokens
 
 > []GetPersonalAccessTokenResponse ListPersonalAccessTokens(ctx).OwnerId(ownerId).Filters(filters).Execute()
 
-List Personal Access Tokens
-
-
+This gets a collection of personal access tokens associated with the optional `owner-id`.  query parameter. If the `owner-id` query parameter is omitted, all personal access tokens  for a tenant will be retrieved, but the caller must have the 'idn:all-personal-access-tokens:read' right.
 
 ### Example
 
@@ -162,16 +156,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     ownerId := "2c9180867b50d088017b554662fb281e" // string | The identity ID of the owner whose personal access tokens should be listed.  If \"me\", the caller should have the following right: 'idn:my-personal-access-tokens:read' If an actual owner ID or if the `owner-id` parameter is omitted in the request,  the caller should have the following right: 'idn:all-personal-access-tokens:read'.  If the caller has the following right, then managed personal access tokens associated with `owner-id`  will be retrieved: 'idn:managed-personal-access-tokens:read' (optional)
     filters := "lastUsed le 2023-02-05T10:59:27.214Z" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **lastUsed**: *le, isnull* (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokensAPI.ListPersonalAccessTokens(context.Background()).OwnerId(ownerId).Filters(filters).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PersonalAccessTokensAPI.ListPersonalAccessTokens(context.Background()).OwnerId(ownerId).Filters(filters).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.ListPersonalAccessTokens``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -213,13 +207,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PatchPersonalAccessToken
+## Patch Personal Access Token
 
 > GetPersonalAccessTokenResponse PatchPersonalAccessToken(ctx, id).JsonPatchOperation(jsonPatchOperation).Execute()
 
-Patch Personal Access Token
-
-
+This performs a targeted update to the field(s) of a Personal Access Token.
 
 ### Example
 
@@ -230,16 +222,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | The Personal Access Token id
-    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope 
+    jsonPatchOperation := []sailpoint.JsonPatchOperation{*sailpoint.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of OAuth client update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.  The following fields are patchable: * name * scope 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PersonalAccessTokensAPI.PatchPersonalAccessToken(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.PersonalAccessTokensAPI.PatchPersonalAccessToken(context.Background(), id).JsonPatchOperation(jsonPatchOperation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersonalAccessTokensAPI.PatchPersonalAccessToken``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
