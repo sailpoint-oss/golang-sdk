@@ -23,7 +23,7 @@ var _ MappedNullable = &EventDocument{}
 type EventDocument struct {
 	Id string `json:"id"`
 	Name string `json:"name"`
-	Type DocumentType `json:"_type"`
+	DocumentType DocumentType `json:"_type"`
 	// ISO-8601 date-time referring to the time when the object was created.
 	Created NullableTime `json:"created,omitempty"`
 	// ISO-8601 date-time referring to the date-time when object was queued to be synced into search database for use in the search API.   This date-time changes anytime there is an update to the object, which triggers a synchronization event being sent to the search database.  There may be some delay between the `synced` time and the time when the updated data is actually available in the search API. 
@@ -67,7 +67,7 @@ func NewEventDocument(id string, name string, type_ DocumentType) *EventDocument
 	this := EventDocument{}
 	this.Id = id
 	this.Name = name
-	this.Type = type_
+	this.DocumentType = type_
 	return &this
 }
 
@@ -128,27 +128,27 @@ func (o *EventDocument) SetName(v string) {
 }
 
 // GetType returns the Type field value
-func (o *EventDocument) GetType() DocumentType {
+func (o *EventDocument) GetDocumentType() DocumentType {
 	if o == nil {
 		var ret DocumentType
 		return ret
 	}
 
-	return o.Type
+	return o.DocumentType
 }
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *EventDocument) GetTypeOk() (*DocumentType, bool) {
+func (o *EventDocument) GetDocumentTypeOk() (*DocumentType, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Type, true
+	return &o.DocumentType, true
 }
 
 // SetType sets field value
-func (o *EventDocument) SetType(v DocumentType) {
-	o.Type = v
+func (o *EventDocument) SetDocumentType(v DocumentType) {
+	o.DocumentType = v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
