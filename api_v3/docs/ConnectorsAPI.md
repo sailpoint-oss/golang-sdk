@@ -1,0 +1,870 @@
+# \ConnectorsAPI
+
+All URIs are relative to *https://sailpoint.api.identitynow.com/v3*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**CreateCustomConnector**](ConnectorsAPI.md#CreateCustomConnector) | **Post** /connectors | Create custom connector
+[**DeleteCustomConnector**](ConnectorsAPI.md#DeleteCustomConnector) | **Delete** /connectors/{scriptName} | 
+[**GetConnector**](ConnectorsAPI.md#GetConnector) | **Get** /connectors/{scriptName} | 
+[**GetConnectorCorrelationConfig**](ConnectorsAPI.md#GetConnectorCorrelationConfig) | **Get** /connectors/{scriptName}/correlation-config | 
+[**GetConnectorSourceConfig**](ConnectorsAPI.md#GetConnectorSourceConfig) | **Get** /connectors/{scriptName}/source-config | 
+[**GetConnectorSourceTemplate**](ConnectorsAPI.md#GetConnectorSourceTemplate) | **Get** /connectors/{scriptName}/source-template | 
+[**GetConnectorTranslations**](ConnectorsAPI.md#GetConnectorTranslations) | **Get** /connectors/{scriptName}/translations/{locale} | 
+[**PutCorrelationConfig**](ConnectorsAPI.md#PutCorrelationConfig) | **Put** /connectors/{scriptName}/correlation-config | 
+[**PutSourceConfig**](ConnectorsAPI.md#PutSourceConfig) | **Put** /connectors/{scriptName}/source-config | 
+[**PutSourceTemplate**](ConnectorsAPI.md#PutSourceTemplate) | **Put** /connectors/{scriptName}/source-template | 
+[**PutTranslations**](ConnectorsAPI.md#PutTranslations) | **Put** /connectors/{scriptName}/translations/{locale} | 
+[**UpdateConnector**](ConnectorsAPI.md#UpdateConnector) | **Patch** /connectors/{scriptName} | 
+
+
+
+## CreateCustomConnector
+
+> V3ConnectorDto CreateCustomConnector(ctx).V3CreateConnectorDto(v3CreateConnectorDto).Execute()
+
+Create custom connector
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    v3CreateConnectorDto := *openapiclient.NewV3CreateConnectorDto("custom connector", "sailpoint.connector.OpenConnectorAdapter") // V3CreateConnectorDto | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ConnectorsAPI.CreateCustomConnector(context.Background()).V3CreateConnectorDto(v3CreateConnectorDto).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.CreateCustomConnector``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateCustomConnector`: V3ConnectorDto
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.CreateCustomConnector`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateCustomConnectorRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **v3CreateConnectorDto** | [**V3CreateConnectorDto**](V3CreateConnectorDto.md) |  | 
+
+### Return type
+
+[**V3ConnectorDto**](V3ConnectorDto.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteCustomConnector
+
+> DeleteCustomConnector(ctx, scriptName).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ConnectorsAPI.DeleteCustomConnector(context.Background(), scriptName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.DeleteCustomConnector``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteCustomConnectorRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetConnector
+
+> ConnectorDetail GetConnector(ctx, scriptName).Locale(locale).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    locale := "de" // string | The locale to apply to the config. If no viable locale is given, it will default to \"en\" (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ConnectorsAPI.GetConnector(context.Background(), scriptName).Locale(locale).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnector``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetConnector`: ConnectorDetail
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.GetConnector`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetConnectorRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **locale** | **string** | The locale to apply to the config. If no viable locale is given, it will default to \&quot;en\&quot; | 
+
+### Return type
+
+[**ConnectorDetail**](ConnectorDetail.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetConnectorCorrelationConfig
+
+> string GetConnectorCorrelationConfig(ctx, scriptName).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ConnectorsAPI.GetConnectorCorrelationConfig(context.Background(), scriptName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorCorrelationConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetConnectorCorrelationConfig`: string
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.GetConnectorCorrelationConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetConnectorCorrelationConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/xml, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetConnectorSourceConfig
+
+> string GetConnectorSourceConfig(ctx, scriptName).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ConnectorsAPI.GetConnectorSourceConfig(context.Background(), scriptName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorSourceConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetConnectorSourceConfig`: string
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.GetConnectorSourceConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetConnectorSourceConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/xml, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetConnectorSourceTemplate
+
+> string GetConnectorSourceTemplate(ctx, scriptName).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ConnectorsAPI.GetConnectorSourceTemplate(context.Background(), scriptName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorSourceTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetConnectorSourceTemplate`: string
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.GetConnectorSourceTemplate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetConnectorSourceTemplateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/xml, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetConnectorTranslations
+
+> string GetConnectorTranslations(ctx, scriptName, locale).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    locale := "de" // string | The locale to apply to the config. If no viable locale is given, it will default to \"en\"
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ConnectorsAPI.GetConnectorTranslations(context.Background(), scriptName, locale).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.GetConnectorTranslations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetConnectorTranslations`: string
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.GetConnectorTranslations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+**locale** | **string** | The locale to apply to the config. If no viable locale is given, it will default to \&quot;en\&quot; | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetConnectorTranslationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PutCorrelationConfig
+
+> UpdateDetail PutCorrelationConfig(ctx, scriptName).File(file).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    file := os.NewFile(1234, "some_file") // *os.File | connector correlation config xml file
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ConnectorsAPI.PutCorrelationConfig(context.Background(), scriptName).File(file).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutCorrelationConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutCorrelationConfig`: UpdateDetail
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutCorrelationConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutCorrelationConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** | connector correlation config xml file | 
+
+### Return type
+
+[**UpdateDetail**](UpdateDetail.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PutSourceConfig
+
+> UpdateDetail PutSourceConfig(ctx, scriptName).File(file).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    file := os.NewFile(1234, "some_file") // *os.File | connector source config xml file
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ConnectorsAPI.PutSourceConfig(context.Background(), scriptName).File(file).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutSourceConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutSourceConfig`: UpdateDetail
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutSourceConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutSourceConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** | connector source config xml file | 
+
+### Return type
+
+[**UpdateDetail**](UpdateDetail.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PutSourceTemplate
+
+> UpdateDetail PutSourceTemplate(ctx, scriptName).File(file).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    file := os.NewFile(1234, "some_file") // *os.File | connector source template xml file
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ConnectorsAPI.PutSourceTemplate(context.Background(), scriptName).File(file).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutSourceTemplate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutSourceTemplate`: UpdateDetail
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutSourceTemplate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutSourceTemplateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** | connector source template xml file | 
+
+### Return type
+
+[**UpdateDetail**](UpdateDetail.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PutTranslations
+
+> UpdateDetail PutTranslations(ctx, scriptName, locale).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    locale := "de" // string | The locale to apply to the config. If no viable locale is given, it will default to \"en\"
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ConnectorsAPI.PutTranslations(context.Background(), scriptName, locale).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.PutTranslations``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PutTranslations`: UpdateDetail
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.PutTranslations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+**locale** | **string** | The locale to apply to the config. If no viable locale is given, it will default to \&quot;en\&quot; | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutTranslationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**UpdateDetail**](UpdateDetail.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateConnector
+
+> ConnectorDetail UpdateConnector(ctx, scriptName).JsonPatchOperation(jsonPatchOperation).Execute()
+
+
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    scriptName := "aScriptName" // string | The scriptName value of the connector. Scriptname is the unique id generated at connector creation.
+    jsonPatchOperation := []openapiclient.JsonPatchOperation{*openapiclient.NewJsonPatchOperation("replace", "/description")} // []JsonPatchOperation | A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ConnectorsAPI.UpdateConnector(context.Background(), scriptName).JsonPatchOperation(jsonPatchOperation).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ConnectorsAPI.UpdateConnector``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateConnector`: ConnectorDetail
+    fmt.Fprintf(os.Stdout, "Response from `ConnectorsAPI.UpdateConnector`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**scriptName** | **string** | The scriptName value of the connector. Scriptname is the unique id generated at connector creation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateConnectorRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **jsonPatchOperation** | [**[]JsonPatchOperation**](JsonPatchOperation.md) | A list of connector detail update operations according to the [JSON Patch](https://tools.ietf.org/html/rfc6902) standard. | 
+
+### Return type
+
+[**ConnectorDetail**](ConnectorDetail.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+

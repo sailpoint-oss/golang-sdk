@@ -15,6 +15,7 @@ api_certification_campaign_filters.go
 api_certification_campaigns.go
 api_certification_summaries.go
 api_certifications.go
+api_connectors.go
 api_global_tenant_security_settings.go
 api_identity_profiles.go
 api_lifecycle_states.go
@@ -183,6 +184,8 @@ docs/CompletedApprovalReviewerComment.md
 docs/CompletedApprovalState.md
 docs/CompletionStatus.md
 docs/ConflictingAccessCriteria.md
+docs/ConnectorDetail.md
+docs/ConnectorsAPI.md
 docs/CreateOAuthClientRequest.md
 docs/CreateOAuthClientResponse.md
 docs/CreatePersonalAccessTokenRequest.md
@@ -351,7 +354,10 @@ docs/PublicIdentitiesConfigAPI.md
 docs/PublicIdentity.md
 docs/PublicIdentityAttributeConfig.md
 docs/PublicIdentityConfig.md
+docs/PutCorrelationConfigRequest.md
 docs/PutPasswordDictionaryRequest.md
+docs/PutSourceConfigRequest.md
+docs/PutSourceTemplateRequest.md
 docs/Query.md
 docs/QueryResultFilter.md
 docs/QueryType.md
@@ -496,7 +502,10 @@ docs/TransformRead.md
 docs/TransformsAPI.md
 docs/TypeAheadQuery.md
 docs/TypedReference.md
+docs/UpdateDetail.md
 docs/UsageType.md
+docs/V3ConnectorDto.md
+docs/V3CreateConnectorDto.md
 docs/Value.md
 docs/ViolationContext.md
 docs/ViolationContextPolicy.md
@@ -640,6 +649,7 @@ model_completed_approval_reviewer_comment.go
 model_completed_approval_state.go
 model_completion_status.go
 model_conflicting_access_criteria.go
+model_connector_detail.go
 model_create_o_auth_client_request.go
 model_create_o_auth_client_response.go
 model_create_personal_access_token_request.go
@@ -796,7 +806,10 @@ model_provisioning_state.go
 model_public_identity.go
 model_public_identity_attribute_config.go
 model_public_identity_config.go
+model_put_correlation_config_request.go
 model_put_password_dictionary_request.go
+model_put_source_config_request.go
+model_put_source_template_request.go
 model_query.go
 model_query_result_filter.go
 model_query_type.go
@@ -927,7 +940,10 @@ model_transform_definition_attributes_value.go
 model_transform_read.go
 model_type_ahead_query.go
 model_typed_reference.go
+model_update_detail.go
 model_usage_type.go
+model_v3_connector_dto.go
+model_v3_create_connector_dto.go
 model_value.go
 model_violation_context.go
 model_violation_context_policy.go
@@ -953,6 +969,7 @@ test/api_certification_campaign_filters_test.go
 test/api_certification_campaigns_test.go
 test/api_certification_summaries_test.go
 test/api_certifications_test.go
+test/api_connectors_test.go
 test/api_global_tenant_security_settings_test.go
 test/api_identity_profiles_test.go
 test/api_lifecycle_states_test.go

@@ -160,6 +160,18 @@ Class | Method | HTTP request | Description
 *CertificationsAPI* | [**ReassignIdentityCertifications**](docs/CertificationsAPI.md#reassignidentitycertifications) | **Post** /certifications/{id}/reassign | Reassign Identities or Items
 *CertificationsAPI* | [**SignOffIdentityCertification**](docs/CertificationsAPI.md#signoffidentitycertification) | **Post** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
 *CertificationsAPI* | [**SubmitReassignCertsAsync**](docs/CertificationsAPI.md#submitreassigncertsasync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
+*ConnectorsAPI* | [**CreateCustomConnector**](docs/ConnectorsAPI.md#createcustomconnector) | **Post** /connectors | Create custom connector
+*ConnectorsAPI* | [**DeleteCustomConnector**](docs/ConnectorsAPI.md#deletecustomconnector) | **Delete** /connectors/{scriptName} | 
+*ConnectorsAPI* | [**GetConnector**](docs/ConnectorsAPI.md#getconnector) | **Get** /connectors/{scriptName} | 
+*ConnectorsAPI* | [**GetConnectorCorrelationConfig**](docs/ConnectorsAPI.md#getconnectorcorrelationconfig) | **Get** /connectors/{scriptName}/correlation-config | 
+*ConnectorsAPI* | [**GetConnectorSourceConfig**](docs/ConnectorsAPI.md#getconnectorsourceconfig) | **Get** /connectors/{scriptName}/source-config | 
+*ConnectorsAPI* | [**GetConnectorSourceTemplate**](docs/ConnectorsAPI.md#getconnectorsourcetemplate) | **Get** /connectors/{scriptName}/source-template | 
+*ConnectorsAPI* | [**GetConnectorTranslations**](docs/ConnectorsAPI.md#getconnectortranslations) | **Get** /connectors/{scriptName}/translations/{locale} | 
+*ConnectorsAPI* | [**PutCorrelationConfig**](docs/ConnectorsAPI.md#putcorrelationconfig) | **Put** /connectors/{scriptName}/correlation-config | 
+*ConnectorsAPI* | [**PutSourceConfig**](docs/ConnectorsAPI.md#putsourceconfig) | **Put** /connectors/{scriptName}/source-config | 
+*ConnectorsAPI* | [**PutSourceTemplate**](docs/ConnectorsAPI.md#putsourcetemplate) | **Put** /connectors/{scriptName}/source-template | 
+*ConnectorsAPI* | [**PutTranslations**](docs/ConnectorsAPI.md#puttranslations) | **Put** /connectors/{scriptName}/translations/{locale} | 
+*ConnectorsAPI* | [**UpdateConnector**](docs/ConnectorsAPI.md#updateconnector) | **Patch** /connectors/{scriptName} | 
 *GlobalTenantSecuritySettingsAPI* | [**CreateAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#createauthorgnetworkconfig) | **Post** /auth-org/network-config | Create security network configuration.
 *GlobalTenantSecuritySettingsAPI* | [**GetAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#getauthorgnetworkconfig) | **Get** /auth-org/network-config | Get security network configuration.
 *GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgnetworkconfig) | **Patch** /auth-org/network-config | Update security network configuration.
@@ -479,6 +491,7 @@ Class | Method | HTTP request | Description
  - [CompletedApprovalState](docs/CompletedApprovalState.md)
  - [CompletionStatus](docs/CompletionStatus.md)
  - [ConflictingAccessCriteria](docs/ConflictingAccessCriteria.md)
+ - [ConnectorDetail](docs/ConnectorDetail.md)
  - [CreateOAuthClientRequest](docs/CreateOAuthClientRequest.md)
  - [CreateOAuthClientResponse](docs/CreateOAuthClientResponse.md)
  - [CreatePersonalAccessTokenRequest](docs/CreatePersonalAccessTokenRequest.md)
@@ -635,7 +648,10 @@ Class | Method | HTTP request | Description
  - [PublicIdentity](docs/PublicIdentity.md)
  - [PublicIdentityAttributeConfig](docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityConfig](docs/PublicIdentityConfig.md)
+ - [PutCorrelationConfigRequest](docs/PutCorrelationConfigRequest.md)
  - [PutPasswordDictionaryRequest](docs/PutPasswordDictionaryRequest.md)
+ - [PutSourceConfigRequest](docs/PutSourceConfigRequest.md)
+ - [PutSourceTemplateRequest](docs/PutSourceTemplateRequest.md)
  - [Query](docs/Query.md)
  - [QueryResultFilter](docs/QueryResultFilter.md)
  - [QueryType](docs/QueryType.md)
@@ -766,7 +782,10 @@ Class | Method | HTTP request | Description
  - [TransformRead](docs/TransformRead.md)
  - [TypeAheadQuery](docs/TypeAheadQuery.md)
  - [TypedReference](docs/TypedReference.md)
+ - [UpdateDetail](docs/UpdateDetail.md)
  - [UsageType](docs/UsageType.md)
+ - [V3ConnectorDto](docs/V3ConnectorDto.md)
+ - [V3CreateConnectorDto](docs/V3CreateConnectorDto.md)
  - [Value](docs/Value.md)
  - [ViolationContext](docs/ViolationContext.md)
  - [ViolationContextPolicy](docs/ViolationContextPolicy.md)

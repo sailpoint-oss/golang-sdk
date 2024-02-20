@@ -360,6 +360,22 @@ tags:
     For example, An inclusion campaign filter is created with a source of Source 1, an operation of Equals, and an entitlement of Entitlement 1. When this filter is selected, only users who have Entitlement 1 are included in the campaign, and only Entitlement 1 is shown in the certification.
   name: Certification Campaign Filters
 - description: |
+    Use this API to implement connector functionality.
+    With this functionality in place, administrators can view available connectors.
+
+    Connectors are the bridges IdentityNow uses to communicate with and aggregate data from sources.
+    For example, if it is necessary to set up a connection between IdentityNow and the Active Directory source, a connector can bridge the two and enable IdentityNow to synchronize data between the systems.
+    This ensures account entitlements and states are correct throughout the organization.
+
+    In IdentityNow, administrators can use the Connections drop-down menu and select Sources to view the available source connectors.
+
+    Refer to [IdentityNow Connectors](https://documentation.sailpoint.com/connectors/identitynow/landingpages/help/landingpages/identitynow_connectivity_landing.html) for more information about the connectors available in IdentityNow.
+
+    Refer to [SaaS Connectivity](https://developer.sailpoint.com/idn/docs/saas-connectivity) for more information about the SaaS custom connectors that do not need VAs (virtual appliances) to communicate with their sources.
+
+    Refer to [Managing Sources](https://documentation.sailpoint.com/saas/help/sources/managing_sources.html) for more information about using connectors in IdentityNow.
+  name: Connectors
+- description: |
     Use this API to implement and customize global tenant security settings.
     With this functionality in place, administrators can manage the global security settings that a tenant/org has.
     This API can be used to configure the networks and Geographies allowed to access IdentityNow URLs.
@@ -10661,6 +10677,1346 @@ paths:
       summary: List of Pending Certification Tasks
       tags:
       - Certifications
+  /connectors:
+    post:
+      description: |-
+        Create custom connector.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: createCustomConnector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/V3CreateConnectorDto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V3ConnectorDto'
+          description: A Connector Dto object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:create
+      summary: Create custom connector
+      tags:
+      - Connectors
+  /connectors/{scriptName}:
+    delete:
+      description: |-
+        Delete a custom connector that using its script name.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: deleteCustomConnector
+      parameters:
+      - description: The scriptName value of the connector. Scriptname is the unique
+          id generated at connector creation.
+        explode: false
+        in: path
+        name: scriptName
+        required: true
+        schema:
+          example: aScriptName
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:delete
+      tags:
+      - Connectors
+    get:
+      description: |-
+        Fetches a connector that using its script name.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: getConnector
+      parameters:
+      - description: The scriptName value of the connector. Scriptname is the unique
+          id generated at connector creation.
+        explode: false
+        in: path
+        name: scriptName
+        required: true
+        schema:
+          example: aScriptName
+          type: string
+        style: simple
+      - description: "The locale to apply to the config. If no viable locale is given,\
+          \ it will default to \"en\""
+        in: query
+        name: locale
+        schema:
+          enum:
+          - de
+          - "false"
+          - fi
+          - sv
+          - ru
+          - pt
+          - ko
+          - zh-TW
+          - en
+          - it
+          - fr
+          - zh-CN
+          - hu
+          - es
+          - cs
+          - ja
+          - pl
+          - da
+          - nl
+          example: de
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorDetail'
+          description: A Connector Dto object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:read
+      tags:
+      - Connectors
+    patch:
+      description: |-
+        Patch a custom connector that using its script name.
+        A token with ORG_ADMIN authority is required to call this API. The following fields are patchable: * connectorMetadata * applicationXml * correlationConfigXml * sourceConfigXml
+      operationId: updateConnector
+      parameters:
+      - description: The scriptName value of the connector. Scriptname is the unique
+          id generated at connector creation.
+        explode: false
+        in: path
+        name: scriptName
+        required: true
+        schema:
+          example: aScriptName
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        description: "A list of connector detail update operations according to the\
+          \ [JSON Patch](https://tools.ietf.org/html/rfc6902) standard."
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectorDetail'
+          description: A updated Connector Dto object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:update
+      tags:
+      - Connectors
+  /connectors/{scriptName}/source-config:
+    get:
+      description: |-
+        Fetches a connector's source config using its script name.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: getConnectorSourceConfig
+      parameters:
+      - description: The scriptName value of the connector. Scriptname is the unique
+          id generated at connector creation.
+        explode: false
+        in: path
+        name: scriptName
+        required: true
+        schema:
+          example: aScriptName
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/xml:
+              schema:
+                type: string
+          description: The connector's source template
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:read
+      tags:
+      - Connectors
+    put:
+      description: |-
+        Update a connector's source config using its script name.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: putSourceConfig
+      parameters:
+      - description: The scriptName value of the connector. Scriptname is the unique
+          id generated at connector creation.
+        explode: false
+        in: path
+        name: scriptName
+        required: true
+        schema:
+          example: aScriptName
+          type: string
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/putSourceConfig_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateDetail'
+          description: The connector's update detail
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:update
+      tags:
+      - Connectors
+  /connectors/{scriptName}/translations/{locale}:
+    get:
+      description: |-
+        Fetches a connector's translations using its script name.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: getConnectorTranslations
+      parameters:
+      - description: The scriptName value of the connector. Scriptname is the unique
+          id generated at connector creation.
+        explode: false
+        in: path
+        name: scriptName
+        required: true
+        schema:
+          example: aScriptName
+          type: string
+        style: simple
+      - description: "The locale to apply to the config. If no viable locale is given,\
+          \ it will default to \"en\""
+        in: path
+        name: locale
+        required: true
+        schema:
+          enum:
+          - de
+          - "false"
+          - fi
+          - sv
+          - ru
+          - pt
+          - ko
+          - zh-TW
+          - en
+          - it
+          - fr
+          - zh-CN
+          - hu
+          - es
+          - cs
+          - ja
+          - pl
+          - da
+          - nl
+          example: de
+          type: string
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: The connector's translations
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:read
+      tags:
+      - Connectors
+    put:
+      description: |-
+        Update a connector's translations using its script name.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: putTranslations
+      parameters:
+      - description: The scriptName value of the connector. Scriptname is the unique
+          id generated at connector creation.
+        explode: false
+        in: path
+        name: scriptName
+        required: true
+        schema:
+          example: aScriptName
+          type: string
+        style: simple
+      - description: "The locale to apply to the config. If no viable locale is given,\
+          \ it will default to \"en\""
+        in: path
+        name: locale
+        required: true
+        schema:
+          enum:
+          - de
+          - "false"
+          - fi
+          - sv
+          - ru
+          - pt
+          - ko
+          - zh-TW
+          - en
+          - it
+          - fr
+          - zh-CN
+          - hu
+          - es
+          - cs
+          - ja
+          - pl
+          - da
+          - nl
+          example: de
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateDetail'
+          description: The connector's update detail
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:update
+      tags:
+      - Connectors
+  /connectors/{scriptName}/source-template:
+    get:
+      description: |-
+        Fetches a connector's source template using its script name.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: getConnectorSourceTemplate
+      parameters:
+      - description: The scriptName value of the connector. Scriptname is the unique
+          id generated at connector creation.
+        explode: false
+        in: path
+        name: scriptName
+        required: true
+        schema:
+          example: aScriptName
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/xml:
+              schema:
+                type: string
+          description: The connector's source template
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:read
+      tags:
+      - Connectors
+    put:
+      description: |-
+        Update a connector's source template using its script name.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: putSourceTemplate
+      parameters:
+      - description: The scriptName value of the connector. Scriptname is the unique
+          id generated at connector creation.
+        explode: false
+        in: path
+        name: scriptName
+        required: true
+        schema:
+          example: aScriptName
+          type: string
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/putSourceTemplate_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateDetail'
+          description: The connector's update detail
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:update
+      tags:
+      - Connectors
+  /connectors/{scriptName}/correlation-config:
+    get:
+      description: |-
+        Fetches a connector's correlation config using its script name.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: getConnectorCorrelationConfig
+      parameters:
+      - description: The scriptName value of the connector. Scriptname is the unique
+          id generated at connector creation.
+        explode: false
+        in: path
+        name: scriptName
+        required: true
+        schema:
+          example: aScriptName
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/xml:
+              schema:
+                type: string
+          description: The connector's correlation config
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:read
+      tags:
+      - Connectors
+    put:
+      description: |-
+        Update a connector's correlation config using its script name.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: putCorrelationConfig
+      parameters:
+      - description: The scriptName value of the connector. Scriptname is the unique
+          id generated at connector creation.
+        explode: false
+        in: path
+        name: scriptName
+        required: true
+        schema:
+          example: aScriptName
+          type: string
+        style: simple
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/putCorrelationConfig_request'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateDetail'
+          description: The connector's update detail
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:update
+      tags:
+      - Connectors
   /identities/{identity-id}/set-lifecycle-state:
     post:
       description: |-
@@ -38594,6 +39950,356 @@ components:
           readOnly: true
           type: string
       type: object
+    V3CreateConnectorDto:
+      example:
+        name: custom connector
+        directConnect: true
+        className: sailpoint.connector.OpenConnectorAdapter
+        type: custom connector type
+        status: RELEASED
+      properties:
+        name:
+          description: The connector name. Need to be unique per tenant. The name
+            will able be used to derive a url friendly unique scriptname that will
+            be in response. Script name can then be used for all update endpoints
+          example: custom connector
+          type: string
+        type:
+          description: The connector type. If not specified will be defaulted to 'custom
+            '+name
+          example: custom connector type
+          type: string
+        className:
+          description: "The connector class name. If you are implementing openconnector\
+            \ standard (what is recommended), then this need to be set to sailpoint.connector.OpenConnectorAdapter"
+          example: sailpoint.connector.OpenConnectorAdapter
+          type: string
+        directConnect:
+          default: true
+          description: true if the source is a direct connect source
+          example: true
+          type: boolean
+        status:
+          description: The connector status
+          enum:
+          - DEVELOPMENT
+          - DEMO
+          - RELEASED
+          example: RELEASED
+          type: string
+      required:
+      - className
+      - name
+      title: custom connector create request
+      type: object
+    V3ConnectorDto:
+      example:
+        features:
+        - PROVISIONING
+        - SYNC_PROVISIONING
+        - SEARCH
+        - UNSTRUCTURED_TARGETS
+        name: name
+        scriptName: servicenow
+        directConnect: true
+        className: sailpoint.connector.OpenConnectorAdapter
+        type: ServiceNow
+        connectorMetadata:
+          supportedUI: ANGULAR
+          platform: ccg
+          shortDesc: connector description
+        status: RELEASED
+      properties:
+        name:
+          description: The connector name
+          example: name
+          type: string
+        type:
+          description: The connector type
+          example: ServiceNow
+          type: string
+        scriptName:
+          description: The connector script name
+          example: servicenow
+          type: string
+        className:
+          description: The connector class name.
+          example: sailpoint.connector.OpenConnectorAdapter
+          type: string
+        features:
+          description: The list of features supported by the connector
+          example:
+          - PROVISIONING
+          - SYNC_PROVISIONING
+          - SEARCH
+          - UNSTRUCTURED_TARGETS
+          items:
+            type: string
+          nullable: true
+          type: array
+        directConnect:
+          default: false
+          description: true if the source is a direct connect source
+          example: true
+          type: boolean
+        connectorMetadata:
+          additionalProperties: true
+          description: A map containing metadata pertinent to the connector
+          example:
+            supportedUI: ANGULAR
+            platform: ccg
+            shortDesc: connector description
+          type: object
+        status:
+          description: The connector status
+          enum:
+          - DEPRECATED
+          - DEVELOPMENT
+          - DEMO
+          - RELEASED
+          example: RELEASED
+          type: string
+      title: custom connector response object
+      type: object
+    ConnectorDetail:
+      example:
+        applicationXml: |
+          <?xml version='1.0' encoding='UTF-8'?>
+          <!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+          <Application connector="sailpoint.connector.OpenConnectorAdapter" name="custom Atlassian Suite - Cloud" type="custom Atlassian Suite - Cloud"/>
+        uploadedFiles:
+        - pod/org/connectorFiles/testconnector/test1.jar
+        translationProperties:
+          de: |-
+            # Copyright (C) 2024 SailPoint Technologies, Inc.  All rights reserved.
+            # DO NOT EDIT. This file is generated by "sailpointTranslate" command.
+            menuLabel_ConnectionSettings=Verbindungseinstellungen
+            menuLabel_AggregationSettings=Aggregationseinstellungen
+            sectionLabel_AuthenticationSettings=Verbindungseinstellungen
+            sectionLabel_AggregationSettings=Aggregationseinstellungen
+            sectionInfo_AuthenticationSettings=Konfigurieren Sie eine direkte Verbindung zwischen der Quelle Delinea Secret Server On-Premise und IdentityNow.<br><br>Geben Sie bei <strong>Zeit\u00fcberschreitung bei Verbindung</strong> die maximal erlaubte Zeitdauer (in Minuten) f\u00fcr die Verbindung von IdentityNow mit der Quelle ein.<br><br>Geben Sie die <strong>Host-URL</strong> der Delinea-SCIM-Serverquelle ein.<br><br>Geben Sie den <strong>API-Token</strong> der Quelle zur Authentifizierung ein.
+            sectionInfo_AggregationSettings=Geben Sie die Einstellungen f\u00fcr Ihre Aggregation an.<br><br>Geben Sie in das Feld  <strong>Seitengr\u00f6\u00dfe</strong> die Anzahl an Kontoeintr\u00e4gen ein, die auf einer einzelnen Seite aggregiert werden sollen, wenn gro\u00dfe Datens\u00e4tze durchlaufen werden.<br>\n<br>Geben Sie im <strong>Kontofilter</strong> die Bedingungen f\u00fcr den Kontofilter an. Beispiel: userName sw "S"<br><br>Geben Sie im <strong>Gruppenfilter</strong> die Gruppenfilterbedingungen an. Beispiel: displayName sw "S".
+            placeHolder_accAggregation=userName sw "S"
+            placeHolder_grpAggregation=displayName sw "S"
+            placeHolder_host=https://{Delinea_SCIM_Server_host}/v2
+            docLinkLabel_AuthenticationSettings=Mehr \u00fcber Verbindungseinstellungen
+            docLinkLabel_Filters=Mehr \u00fcber Konto- und Gruppenfilter
+            HostURL=Host-URL
+            ConnectionTimeout=Zeit\u00fcberschreitung bei Verbindung
+            API_TOKEN=API-Token
+            JSONPathMapping=JSON-Path-Attribut-Mapping
+            FilterConditionForAccounts=Kontofilter
+            FilterConditionForGroups=Gruppenfilter
+            Page_Size=Seitengr\u00f6\u00dfe
+            SchemaAttribute=Schema-Attribut
+            JSONpath=JSON-Pfad
+            ShortDesc=Das Integrationsmodul IdentityNow f\u00fcr Delinea Secret Server On-Premise bietet die M\u00f6glichkeit einer tiefen Governance f\u00fcr Konten und Gruppen. Es unterst\u00fctzt au\u00dferdem das End-to-End-Lebenszyklus-Management.
+        directConnect: true
+        className: class name
+        type: ServiceNow
+        fileUpload: true
+        sourceConfigFrom: sp-connect
+        sourceConfig: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"\
+          ?><!-- Copyright (C) 2023 SailPoint Technologies, Inc.  All rights reserved.\
+          \ --><Form xmlns=\"http://www.sailpoint.com/xsd/sailpoint_form_2_0.xsd\"\
+          \ connectorName=\"custom Atlassian Suite - Cloud\" directConnect=\"true\"\
+          \ fileUpload=\"true\" name=\"Custom Atlassian Suite - Cloud\" status=\"\
+          released\" type=\"SourceConfig\">\n    <BaseConfig>\n        <Field maxFiles=\"\
+          10\" maxSize=\"300\" name=\"fileUpload\" supportedExtensions=\"jar\" type=\"\
+          fileupload\" validateJSON=\"false\"/>\n    </BaseConfig>\n  \n\n \n</Form>"
+        name: name
+        correlationConfigXml: "<?xml version='1.0' encoding='UTF-8'?>\n<!-- Copyright\
+          \ (C) 2021 SailPoint Technologies, Inc.  All rights reserved. -->\n\n<!DOCTYPE\
+          \ CorrelationConfig PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\n\n<CorrelationConfig\
+          \ name=\"custom Atlassian Suite - Cloud Account Correlation Config\">\n\t\
+          <AttributeAssignments>\n\t\t<Filter operation=\"EQ\" property=\"email\"\
+          \ value=\"mail\"/>\n\t\t<Filter operation=\"EQ\" property=\"empId\" value=\"\
+          employeeNumber\"/>\n\t\t<Filter operation=\"EQ\" property=\"displayName\"\
+          \ value=\"cn\"/>\n\t</AttributeAssignments>\n</CorrelationConfig>\n"
+        sourceConfigXml: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"\
+          ?><!-- Copyright (C) 2023 SailPoint Technologies, Inc.  All rights reserved.\
+          \ --><Form xmlns=\"http://www.sailpoint.com/xsd/sailpoint_form_2_0.xsd\"\
+          \ connectorName=\"custom Atlassian Suite - Cloud\" directConnect=\"true\"\
+          \ fileUpload=\"true\" name=\"Custom Atlassian Suite - Cloud\" status=\"\
+          released\" type=\"SourceConfig\">\n    <BaseConfig>\n        <Field maxFiles=\"\
+          10\" maxSize=\"300\" name=\"fileUpload\" supportedExtensions=\"jar\" type=\"\
+          fileupload\" validateJSON=\"false\"/>\n    </BaseConfig>\n  \n\n \n</Form>"
+        scriptName: servicenow
+        s3Location: custom-connector/scriptname
+        connectorMetadata:
+          supportedUI: EXTJS
+          platform: ccg
+          shortDesc: connector description
+        status: RELEASED
+      properties:
+        name:
+          description: The connector name
+          example: name
+          type: string
+        type:
+          description: The connector type
+          example: ServiceNow
+          type: string
+        className:
+          description: The connector class name
+          example: class name
+          type: string
+        scriptName:
+          description: The connector script name
+          example: servicenow
+          type: string
+        applicationXml:
+          description: The connector application xml
+          example: |
+            <?xml version='1.0' encoding='UTF-8'?>
+            <!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+            <Application connector="sailpoint.connector.OpenConnectorAdapter" name="custom Atlassian Suite - Cloud" type="custom Atlassian Suite - Cloud"/>
+          type: string
+        correlationConfigXml:
+          description: The connector correlation config xml
+          example: "<?xml version='1.0' encoding='UTF-8'?>\n<!-- Copyright (C) 2021\
+            \ SailPoint Technologies, Inc.  All rights reserved. -->\n\n<!DOCTYPE\
+            \ CorrelationConfig PUBLIC \"sailpoint.dtd\" \"sailpoint.dtd\">\n\n<CorrelationConfig\
+            \ name=\"custom Atlassian Suite - Cloud Account Correlation Config\">\n\
+            \t<AttributeAssignments>\n\t\t<Filter operation=\"EQ\" property=\"email\"\
+            \ value=\"mail\"/>\n\t\t<Filter operation=\"EQ\" property=\"empId\" value=\"\
+            employeeNumber\"/>\n\t\t<Filter operation=\"EQ\" property=\"displayName\"\
+            \ value=\"cn\"/>\n\t</AttributeAssignments>\n</CorrelationConfig>\n"
+          type: string
+        sourceConfigXml:
+          description: The connector source config xml
+          example: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!--\
+            \ Copyright (C) 2023 SailPoint Technologies, Inc.  All rights reserved.\
+            \ --><Form xmlns=\"http://www.sailpoint.com/xsd/sailpoint_form_2_0.xsd\"\
+            \ connectorName=\"custom Atlassian Suite - Cloud\" directConnect=\"true\"\
+            \ fileUpload=\"true\" name=\"Custom Atlassian Suite - Cloud\" status=\"\
+            released\" type=\"SourceConfig\">\n    <BaseConfig>\n        <Field maxFiles=\"\
+            10\" maxSize=\"300\" name=\"fileUpload\" supportedExtensions=\"jar\" type=\"\
+            fileupload\" validateJSON=\"false\"/>\n    </BaseConfig>\n  \n\n \n</Form>"
+          type: string
+        sourceConfig:
+          description: The connector source config
+          example: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!--\
+            \ Copyright (C) 2023 SailPoint Technologies, Inc.  All rights reserved.\
+            \ --><Form xmlns=\"http://www.sailpoint.com/xsd/sailpoint_form_2_0.xsd\"\
+            \ connectorName=\"custom Atlassian Suite - Cloud\" directConnect=\"true\"\
+            \ fileUpload=\"true\" name=\"Custom Atlassian Suite - Cloud\" status=\"\
+            released\" type=\"SourceConfig\">\n    <BaseConfig>\n        <Field maxFiles=\"\
+            10\" maxSize=\"300\" name=\"fileUpload\" supportedExtensions=\"jar\" type=\"\
+            fileupload\" validateJSON=\"false\"/>\n    </BaseConfig>\n  \n\n \n</Form>"
+          type: string
+        sourceConfigFrom:
+          description: The connector source config origin
+          example: sp-connect
+          type: string
+        s3Location:
+          description: storage path key for this connector
+          example: custom-connector/scriptname
+          type: string
+        uploadedFiles:
+          description: The list of uploaded files supported by the connector. If there
+            was any executable files uploaded to thee connector. Typically this be
+            empty as the executable be uploaded at source creation.
+          example:
+          - pod/org/connectorFiles/testconnector/test1.jar
+          items:
+            type: string
+          nullable: true
+          type: array
+        fileUpload:
+          default: false
+          description: true if the source is file upload
+          example: true
+          type: boolean
+        directConnect:
+          default: false
+          description: true if the source is a direct connect source
+          example: true
+          type: boolean
+        translationProperties:
+          additionalProperties: true
+          description: A map containing translation attributes by loacale key
+          example:
+            de: |-
+              # Copyright (C) 2024 SailPoint Technologies, Inc.  All rights reserved.
+              # DO NOT EDIT. This file is generated by "sailpointTranslate" command.
+              menuLabel_ConnectionSettings=Verbindungseinstellungen
+              menuLabel_AggregationSettings=Aggregationseinstellungen
+              sectionLabel_AuthenticationSettings=Verbindungseinstellungen
+              sectionLabel_AggregationSettings=Aggregationseinstellungen
+              sectionInfo_AuthenticationSettings=Konfigurieren Sie eine direkte Verbindung zwischen der Quelle Delinea Secret Server On-Premise und IdentityNow.<br><br>Geben Sie bei <strong>Zeit\u00fcberschreitung bei Verbindung</strong> die maximal erlaubte Zeitdauer (in Minuten) f\u00fcr die Verbindung von IdentityNow mit der Quelle ein.<br><br>Geben Sie die <strong>Host-URL</strong> der Delinea-SCIM-Serverquelle ein.<br><br>Geben Sie den <strong>API-Token</strong> der Quelle zur Authentifizierung ein.
+              sectionInfo_AggregationSettings=Geben Sie die Einstellungen f\u00fcr Ihre Aggregation an.<br><br>Geben Sie in das Feld  <strong>Seitengr\u00f6\u00dfe</strong> die Anzahl an Kontoeintr\u00e4gen ein, die auf einer einzelnen Seite aggregiert werden sollen, wenn gro\u00dfe Datens\u00e4tze durchlaufen werden.<br>\n<br>Geben Sie im <strong>Kontofilter</strong> die Bedingungen f\u00fcr den Kontofilter an. Beispiel: userName sw "S"<br><br>Geben Sie im <strong>Gruppenfilter</strong> die Gruppenfilterbedingungen an. Beispiel: displayName sw "S".
+              placeHolder_accAggregation=userName sw "S"
+              placeHolder_grpAggregation=displayName sw "S"
+              placeHolder_host=https://{Delinea_SCIM_Server_host}/v2
+              docLinkLabel_AuthenticationSettings=Mehr \u00fcber Verbindungseinstellungen
+              docLinkLabel_Filters=Mehr \u00fcber Konto- und Gruppenfilter
+              HostURL=Host-URL
+              ConnectionTimeout=Zeit\u00fcberschreitung bei Verbindung
+              API_TOKEN=API-Token
+              JSONPathMapping=JSON-Path-Attribut-Mapping
+              FilterConditionForAccounts=Kontofilter
+              FilterConditionForGroups=Gruppenfilter
+              Page_Size=Seitengr\u00f6\u00dfe
+              SchemaAttribute=Schema-Attribut
+              JSONpath=JSON-Pfad
+              ShortDesc=Das Integrationsmodul IdentityNow f\u00fcr Delinea Secret Server On-Premise bietet die M\u00f6glichkeit einer tiefen Governance f\u00fcr Konten und Gruppen. Es unterst\u00fctzt au\u00dferdem das End-to-End-Lebenszyklus-Management.
+          type: object
+        connectorMetadata:
+          additionalProperties: true
+          description: A map containing metadata pertinent to the UI to be used
+          example:
+            supportedUI: EXTJS
+            platform: ccg
+            shortDesc: connector description
+          type: object
+        status:
+          description: The connector status
+          enum:
+          - DEPRECATED
+          - DEVELOPMENT
+          - DEMO
+          - RELEASED
+          example: RELEASED
+          type: string
+      type: object
+    UpdateDetail:
+      example:
+        updatedFiles:
+        - pod/org/connectorFiles/testconnector/test1.jar
+        scriptName: servicenow
+        message: "unsupported xsd version, please ensure latest xsd version http://www.sailpoint.com/xsd/sailpoint_form_2_0.xsd\
+          \ is used for source config"
+        status: ERROR
+      properties:
+        message:
+          description: The detailed message for an update. Typically the relevent
+            error message when status is error.
+          example: "unsupported xsd version, please ensure latest xsd version http://www.sailpoint.com/xsd/sailpoint_form_2_0.xsd\
+            \ is used for source config"
+          type: string
+        scriptName:
+          description: The connector script name
+          example: servicenow
+          type: string
+        updatedFiles:
+          description: The list of updated files supported by the connector
+          example:
+          - pod/org/connectorFiles/testconnector/test1.jar
+          items:
+            type: string
+          nullable: true
+          type: array
+        status:
+          description: The connector update status
+          enum:
+          - ERROR
+          - UPDATED
+          - UNCHANGED
+          - SKIPPED
+          example: ERROR
+          type: string
+      type: object
     LifecycleState:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
@@ -47134,6 +48840,33 @@ components:
       oneOf:
       - $ref: '#/components/schemas/SlimCampaign'
       - $ref: '#/components/schemas/Campaign'
+    putSourceConfig_request:
+      properties:
+        file:
+          description: connector source config xml file
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
+    putSourceTemplate_request:
+      properties:
+        file:
+          description: connector source template xml file
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
+    putCorrelationConfig_request:
+      properties:
+        file:
+          description: connector correlation config xml file
+          format: binary
+          type: string
+      required:
+      - file
+      type: object
     setLifecycleState_request:
       properties:
         lifecycleStateId:
