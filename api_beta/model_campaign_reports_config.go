@@ -43,9 +43,9 @@ func NewCampaignReportsConfigWithDefaults() *CampaignReportsConfig {
 	return &this
 }
 
-// GetIdentityAttributeColumns returns the IdentityAttributeColumns field value if set, zero value otherwise.
+// GetIdentityAttributeColumns returns the IdentityAttributeColumns field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CampaignReportsConfig) GetIdentityAttributeColumns() []string {
-	if o == nil || isNil(o.IdentityAttributeColumns) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -54,6 +54,7 @@ func (o *CampaignReportsConfig) GetIdentityAttributeColumns() []string {
 
 // GetIdentityAttributeColumnsOk returns a tuple with the IdentityAttributeColumns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CampaignReportsConfig) GetIdentityAttributeColumnsOk() ([]string, bool) {
 	if o == nil || isNil(o.IdentityAttributeColumns) {
 		return nil, false
@@ -63,7 +64,7 @@ func (o *CampaignReportsConfig) GetIdentityAttributeColumnsOk() ([]string, bool)
 
 // HasIdentityAttributeColumns returns a boolean if a field has been set.
 func (o *CampaignReportsConfig) HasIdentityAttributeColumns() bool {
-	if o != nil && !isNil(o.IdentityAttributeColumns) {
+	if o != nil && isNil(o.IdentityAttributeColumns) {
 		return true
 	}
 
@@ -85,7 +86,7 @@ func (o CampaignReportsConfig) MarshalJSON() ([]byte, error) {
 
 func (o CampaignReportsConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.IdentityAttributeColumns) {
+	if o.IdentityAttributeColumns != nil {
 		toSerialize["identityAttributeColumns"] = o.IdentityAttributeColumns
 	}
 

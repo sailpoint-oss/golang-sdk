@@ -30,7 +30,7 @@ type AccountActivity struct {
 	Modified NullableTime `json:"modified,omitempty"`
 	// When the activity was completed
 	Completed NullableTime `json:"completed,omitempty"`
-	CompletionStatus NullableCompletionStatus `json:"completionStatus,omitempty"`
+	CompletionStatus *CompletionStatus `json:"completionStatus,omitempty"`
 	// The type of action the activity performed.  Please see the following list of types.  This list may grow over time.  - CloudAutomated - IdentityAttributeUpdate - appRequest - LifecycleStateChange - AccountStateUpdate - AccountAttributeUpdate - CloudPasswordRequest - Attribute Synchronization Refresh - Certification - Identity Refresh - Lifecycle Change Refresh   [Learn more here](https://documentation.sailpoint.com/saas/help/search/searchable-fields.html#searching-account-activity-data). 
 	Type NullableString `json:"type,omitempty"`
 	RequesterIdentitySummary NullableIdentitySummary `json:"requesterIdentitySummary,omitempty"`
@@ -246,46 +246,36 @@ func (o *AccountActivity) UnsetCompleted() {
 	o.Completed.Unset()
 }
 
-// GetCompletionStatus returns the CompletionStatus field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCompletionStatus returns the CompletionStatus field value if set, zero value otherwise.
 func (o *AccountActivity) GetCompletionStatus() CompletionStatus {
-	if o == nil || isNil(o.CompletionStatus.Get()) {
+	if o == nil || isNil(o.CompletionStatus) {
 		var ret CompletionStatus
 		return ret
 	}
-	return *o.CompletionStatus.Get()
+	return *o.CompletionStatus
 }
 
 // GetCompletionStatusOk returns a tuple with the CompletionStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountActivity) GetCompletionStatusOk() (*CompletionStatus, bool) {
-	if o == nil {
+	if o == nil || isNil(o.CompletionStatus) {
 		return nil, false
 	}
-	return o.CompletionStatus.Get(), o.CompletionStatus.IsSet()
+	return o.CompletionStatus, true
 }
 
 // HasCompletionStatus returns a boolean if a field has been set.
 func (o *AccountActivity) HasCompletionStatus() bool {
-	if o != nil && o.CompletionStatus.IsSet() {
+	if o != nil && !isNil(o.CompletionStatus) {
 		return true
 	}
 
 	return false
 }
 
-// SetCompletionStatus gets a reference to the given NullableCompletionStatus and assigns it to the CompletionStatus field.
+// SetCompletionStatus gets a reference to the given CompletionStatus and assigns it to the CompletionStatus field.
 func (o *AccountActivity) SetCompletionStatus(v CompletionStatus) {
-	o.CompletionStatus.Set(&v)
-}
-// SetCompletionStatusNil sets the value for CompletionStatus to be an explicit nil
-func (o *AccountActivity) SetCompletionStatusNil() {
-	o.CompletionStatus.Set(nil)
-}
-
-// UnsetCompletionStatus ensures that no value is present for CompletionStatus, not even an explicit nil
-func (o *AccountActivity) UnsetCompletionStatus() {
-	o.CompletionStatus.Unset()
+	o.CompletionStatus = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -480,9 +470,9 @@ func (o *AccountActivity) SetWarnings(v []string) {
 	o.Warnings = v
 }
 
-// GetItems returns the Items field value if set, zero value otherwise.
+// GetItems returns the Items field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccountActivity) GetItems() []AccountActivityItem {
-	if o == nil || isNil(o.Items) {
+	if o == nil {
 		var ret []AccountActivityItem
 		return ret
 	}
@@ -491,6 +481,7 @@ func (o *AccountActivity) GetItems() []AccountActivityItem {
 
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccountActivity) GetItemsOk() ([]AccountActivityItem, bool) {
 	if o == nil || isNil(o.Items) {
 		return nil, false
@@ -500,7 +491,7 @@ func (o *AccountActivity) GetItemsOk() ([]AccountActivityItem, bool) {
 
 // HasItems returns a boolean if a field has been set.
 func (o *AccountActivity) HasItems() bool {
-	if o != nil && !isNil(o.Items) {
+	if o != nil && isNil(o.Items) {
 		return true
 	}
 
@@ -602,8 +593,8 @@ func (o AccountActivity) ToMap() (map[string]interface{}, error) {
 	if o.Completed.IsSet() {
 		toSerialize["completed"] = o.Completed.Get()
 	}
-	if o.CompletionStatus.IsSet() {
-		toSerialize["completionStatus"] = o.CompletionStatus.Get()
+	if !isNil(o.CompletionStatus) {
+		toSerialize["completionStatus"] = o.CompletionStatus
 	}
 	if o.Type.IsSet() {
 		toSerialize["type"] = o.Type.Get()
@@ -620,7 +611,7 @@ func (o AccountActivity) ToMap() (map[string]interface{}, error) {
 	if o.Warnings != nil {
 		toSerialize["warnings"] = o.Warnings
 	}
-	if !isNil(o.Items) {
+	if o.Items != nil {
 		toSerialize["items"] = o.Items
 	}
 	if !isNil(o.ExecutionStatus) {

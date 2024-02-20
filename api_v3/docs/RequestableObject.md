@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Human-readable display name of the requestable object | [optional] 
 **Created** | Pointer to **time.Time** | The time when the requestable object was created | [optional] 
 **Modified** | Pointer to **NullableTime** | The time when the requestable object was last modified | [optional] 
-**Description** | Pointer to **string** | Description of the requestable object. | [optional] 
+**Description** | Pointer to **NullableString** | Description of the requestable object. | [optional] 
 **Type** | Pointer to [**RequestableObjectType**](RequestableObjectType.md) |  | [optional] 
 **RequestStatus** | Pointer to [**RequestableObjectRequestStatus**](RequestableObjectRequestStatus.md) |  | [optional] 
 **IdentityRequestId** | Pointer to **NullableString** | If *requestStatus* is *PENDING*, indicates the id of the associated account activity. | [optional] 
@@ -169,6 +169,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *RequestableObject) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *RequestableObject) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetType
 
 `func (o *RequestableObject) GetType() RequestableObjectType`

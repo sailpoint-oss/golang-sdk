@@ -4245,7 +4245,7 @@ paths:
                     uuid: "{e4218fa4-da52-4bb0-aa41-d2dcc08a7ad8}"
               schema:
                 items:
-                  $ref: '#/components/schemas/listAccounts_200_response_inner'
+                  $ref: '#/components/schemas/Account'
                 type: array
           description: List of account objects
         "400":
@@ -26018,9 +26018,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/NotificationTemplateContext'
-                type: array
+                $ref: '#/components/schemas/NotificationTemplateContext'
           description: Notification template context attributes for a specific tenant.
         "400":
           content:
@@ -52645,20 +52643,24 @@ components:
         provisioningCriteria:
           children:
           - children:
-            - attribute: email
+            - children: children
+              attribute: email
               operation: EQUALS
               value: carlee.cert1c9f9b6fd@mailinator.com
-            - attribute: email
+            - children: children
+              attribute: email
               operation: EQUALS
               value: carlee.cert1c9f9b6fd@mailinator.com
             attribute: email
             operation: EQUALS
             value: carlee.cert1c9f9b6fd@mailinator.com
           - children:
-            - attribute: email
+            - children: children
+              attribute: email
               operation: EQUALS
               value: carlee.cert1c9f9b6fd@mailinator.com
-            - attribute: email
+            - children: children
+              attribute: email
               operation: EQUALS
               value: carlee.cert1c9f9b6fd@mailinator.com
             attribute: email
@@ -52885,10 +52887,7 @@ components:
       type: array
     Entitlement:
       example:
-        owner:
-          name: identity 1
-          id: 2a2fdacca5e345f18bf7970cfbb8fec2
-          type: IDENTITY
+        owner: null
         created: 2020-10-08T18:33:52.029Z
         description: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
         source:
@@ -52908,9 +52907,7 @@ components:
           - SELECT
           - SELECT
           target: SYS.GV_$TRANSACTION
-        manuallyUpdatedFields:
-          DESCRIPTION: true
-          DISPLAY_NAME: true
+        manuallyUpdatedFields: null
         name: LauncherTest2
         modified: 2020-10-08T18:33:52.029Z
         sourceSchemaObjectType: group
@@ -52943,6 +52940,7 @@ components:
         attribute:
           description: The entitlement attribute name
           example: memberOf
+          nullable: true
           type: string
         value:
           description: The value of the entitlement
@@ -52965,6 +52963,7 @@ components:
         description:
           description: The description of the entitlement
           example: "CN=LauncherTest2,OU=LauncherTestOrg,OU=slpt-automation,DC=TestAutomationAD,DC=local"
+          nullable: true
           type: string
         requestable:
           default: false
@@ -52980,7 +52979,7 @@ components:
         source:
           $ref: '#/components/schemas/Entitlement_source'
         owner:
-          $ref: '#/components/schemas/OwnerReferenceDto'
+          $ref: '#/components/schemas/Entitlement_owner'
         directPermissions:
           items:
             $ref: '#/components/schemas/PermissionDto'
@@ -52996,7 +52995,7 @@ components:
           nullable: true
           type: array
         manuallyUpdatedFields:
-          $ref: '#/components/schemas/ManuallyUpdatedFieldsDTO'
+          $ref: '#/components/schemas/Entitlement_manuallyUpdatedFields'
       type: object
     AccessRequest:
       example:
@@ -53216,10 +53215,7 @@ components:
             id: 2c7180a46faadee4016fb4e018c20642
             type: IDENTITY
           scheme: MANAGER
-          currentOwner:
-            name: Allen Albertson
-            id: 2c3780a46faadee4016fb4e018c20652
-            type: IDENTITY
+          currentOwner: null
           modified: 2019-08-23T18:52:57.398Z
           comment: I approve this request
           forwarded: false
@@ -53239,10 +53235,7 @@ components:
             id: 2c7180a46faadee4016fb4e018c20642
             type: IDENTITY
           scheme: MANAGER
-          currentOwner:
-            name: Allen Albertson
-            id: 2c3780a46faadee4016fb4e018c20652
-            type: IDENTITY
+          currentOwner: null
           modified: 2019-08-23T18:52:57.398Z
           comment: I approve this request
           forwarded: false
@@ -53250,98 +53243,17 @@ components:
         cancelable: true
         requestType: GRANT_ACCESS
         created: 2019-08-23T18:40:35.772Z
-        requesterComment:
-          created: 2017-07-11T18:45:37.098Z
-          comment: This is a comment.
-        preApprovalTriggerDetails:
-          decision: APPROVED
-          comment: Access is Approved
-          reviewer: John Doe
+        requesterComment: null
+        preApprovalTriggerDetails: null
         description: This is the Engineering role that engineers are granted.
         type: ACCESS_PROFILE
         errorMessages:
         - null
         - null
-        sodViolationContext:
-          violationCheckResult:
-            clientMetadata:
-              requestedAppName: test-app
-              requestedAppId: 2c91808f7892918f0178b78da4a305a1
-            violationContexts:
-            - conflictingAccessCriteria:
-                leftCriteria:
-                  criteriaList:
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                rightCriteria:
-                  criteriaList:
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-              policy:
-                name: Business SOD Policy
-                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-                type: SOD_POLICY
-            - conflictingAccessCriteria:
-                leftCriteria:
-                  criteriaList:
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                rightCriteria:
-                  criteriaList:
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-                  - existing: true
-                    name: My HR Entitlement
-                    id: 2c918085771e9d3301773b3cb66f6398
-                    type: IDENTITY
-              policy:
-                name: Business SOD Policy
-                id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-                type: SOD_POLICY
-            violatedPolicies:
-            - name: Business SOD Policy
-              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-              type: SOD_POLICY
-            - name: Business SOD Policy
-              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-              type: SOD_POLICY
-            message:
-              localeOrigin: DEFAULT
-              text: The request was syntactically correct but its content is semantically
-                invalid.
-              locale: en-US
-          state: SUCCESS
-          uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
-        cancelledRequestDetails:
-          owner:
-            name: Support
-            id: 2c9180a46faadee4016fb4e018c20639
-            type: IDENTITY
-          modified: 2019-12-20T09:17:12.192Z
-          comment: This request must be cancelled.
+        sodViolationContext: null
+        cancelledRequestDetails: null
         accessRequestId: 2b838de9-db9b-abcf-e646-d4f274ad4238
-        provisioningDetails:
-          orderedSubPhaseReferences: manualWorkItemDetails
+        provisioningDetails: null
         accountActivityItemId: 2c9180926cbfbddd016cbfc7c3b10010
         name: AccessProfile1
         manualWorkItemDetails:
@@ -53412,6 +53324,7 @@ components:
         name:
           description: Human-readable display name of the item being requested.
           example: AccessProfile1
+          nullable: true
           type: string
         type:
           description: Type of requested object.
@@ -53419,10 +53332,12 @@ components:
           - ACCESS_PROFILE
           - ROLE
           - ENTITLEMENT
+          - null
           example: ACCESS_PROFILE
+          nullable: true
           type: string
         cancelledRequestDetails:
-          $ref: '#/components/schemas/CancelledRequestDetails'
+          $ref: '#/components/schemas/RequestedItemStatus_cancelledRequestDetails'
         errorMessages:
           description: "List of list of localized error messages, if any, encountered\
             \ during the approval/provisioning process."
@@ -53453,6 +53368,7 @@ components:
           description: When the request was last modified.
           example: 2019-08-23T18:52:59.162Z
           format: date-time
+          nullable: true
           type: string
         created:
           description: When the request was created.
@@ -53469,22 +53385,24 @@ components:
           minItems: 1
           type: array
         requesterComment:
-          $ref: '#/components/schemas/CommentDto_1'
+          $ref: '#/components/schemas/RequestedItemStatus_requesterComment'
         sodViolationContext:
-          $ref: '#/components/schemas/SodViolationContextCheckCompleted'
+          $ref: '#/components/schemas/RequestedItemStatus_sodViolationContext'
         provisioningDetails:
-          $ref: '#/components/schemas/ProvisioningDetails'
+          $ref: '#/components/schemas/RequestedItemStatus_provisioningDetails'
         preApprovalTriggerDetails:
-          $ref: '#/components/schemas/PreApprovalTriggerDetails'
+          $ref: '#/components/schemas/RequestedItemStatus_preApprovalTriggerDetails'
         accessRequestPhases:
           description: "A list of Phases that the Access Request has gone through\
             \ in order, to help determine the status of the request."
           items:
             $ref: '#/components/schemas/AccessRequestPhases'
+          nullable: true
           type: array
         description:
           description: Description associated to the requested object.
           example: This is the Engineering role that engineers are granted.
+          nullable: true
           type: string
         removeDate:
           description: When the role access is scheduled for removal.
@@ -53500,7 +53418,6 @@ components:
         accessRequestId:
           description: This is the account activity id.
           example: 2b838de9-db9b-abcf-e646-d4f274ad4238
-          format: string
           type: string
         clientMetadata:
           additionalProperties:
@@ -53545,11 +53462,23 @@ components:
         created: 2017-07-11T18:45:37.098Z
         previousReviewersComments:
         - created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
           comment: This is a comment.
         - created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
           comment: This is a comment.
         requesterComment:
           created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
           comment: This is a comment.
         currentRemoveDate: 2020-07-11T00:00:00Z
         requestedObject:
@@ -53753,16 +53682,32 @@ components:
           type: IDENTITY
         reviewerComment: null
         removeDate: 2020-07-11T00:00:00Z
+        clientMetadata:
+          requestedAppName: test-app
+          requestedAppId: 2c91808f7892918f0178b78da4a305a1
+        requestedAccounts: requestedAccounts
         requestType: GRANT_ACCESS
         commentRequiredWhenRejected: true
         created: 2017-07-11T18:45:37.098Z
         previousReviewersComments:
         - created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
           comment: This is a comment.
         - created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
           comment: This is a comment.
         requesterComment:
           created: 2017-07-11T18:45:37.098Z
+          author:
+            name: john.doe
+            id: 2c9180847e25f377017e2ae8cae4650b
+            type: IDENTITY
           comment: This is a comment.
         currentRemoveDate: 2020-07-11T00:00:00Z
         reviewedBy:
@@ -53863,6 +53808,11 @@ components:
           comment: Forwarding from Frank to Al
         state: APPROVED
         removeDateUpdateRequested: true
+        preApprovalTriggerResult:
+          date: 2022-06-07T19:18:40.748Z
+          decision: APPROVED
+          comment: This request was autoapproved by our automated ETS subscriber
+          reviewer: Automated AR Approval
       properties:
         id:
           description: The approval id.
@@ -53947,6 +53897,19 @@ components:
           type: string
         sodViolationContext:
           $ref: '#/components/schemas/SodViolationContextCheckCompleted_1'
+        preApprovalTriggerResult:
+          $ref: '#/components/schemas/CompletedApproval_preApprovalTriggerResult'
+        clientMetadata:
+          additionalProperties:
+            type: string
+          description: Arbitrary key-value pairs provided during the request.
+          example:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          type: object
+        requestedAccounts:
+          nullable: true
+          type: string
       type: object
     CommentDto:
       example:
@@ -54099,116 +54062,6 @@ components:
       - access
       - identityId
       type: object
-    SlimAccount:
-      allOf:
-      - $ref: '#/components/schemas/BaseCommonDto'
-      - properties:
-          uuid:
-            description: Unique ID from the owning source
-            example: 2c9180857893f12901789445619b0366
-            nullable: true
-            type: string
-          nativeIdentity:
-            description: The native identifier of the account
-            example: brandin.gray
-            type: string
-          description:
-            description: The description for the account
-            example: Brandin Gray the CEO of Silly Inc.
-            nullable: true
-            type: string
-          disabled:
-            description: Whether the account is disabled
-            example: false
-            type: boolean
-          locked:
-            description: Whether the account is locked
-            example: false
-            type: boolean
-          manuallyCorrelated:
-            description: Whether the account was manually correlated
-            example: false
-            type: boolean
-          hasEntitlements:
-            description: Whether the account has any entitlements associated with
-              it
-            example: true
-            type: boolean
-          sourceId:
-            description: The ID of the source for which this account belongs
-            example: 2c9180835d2e5168015d32f890ca1581
-            type: string
-          sourceName:
-            description: The name of the source
-            example: Large Source
-            type: string
-          identityId:
-            description: The ID of the identity for which this account is correlated
-              to if not uncorrelated
-            example: 4b9163835d2e5168015d32f890ca5936
-            type: string
-          attributes:
-            additionalProperties: true
-            description: A map containing attributes associated with the account
-            example:
-              firstName: SailPoint
-              lastName: Support
-              displayName: SailPoint Support
-            type: object
-        type: object
-      title: Slim Account
-      type: object
-    FullAccount:
-      allOf:
-      - $ref: '#/components/schemas/SlimAccount'
-      - properties:
-          authoritative:
-            description: Whether this account belongs to an authoritative source
-            example: false
-            type: boolean
-          systemAccount:
-            description: Whether this account is for the IdentityNow source
-            example: false
-            type: boolean
-          uncorrelated:
-            description: True if this account is not correlated to an identity
-            example: false
-            type: boolean
-          features:
-            description: A string list containing the owning source's features
-            example: ENABLE
-            nullable: true
-            type: string
-        type: object
-      title: Full Account
-      type: object
-    AccountAttributesCreate:
-      example:
-        attributes:
-          sourceId: 34bfcbe116c9407464af37acbaf7a4dc
-          city: Austin
-          displayName: John Doe
-          userName: jdoe
-          sAMAccountName: jDoe
-          mail: john.doe@sailpoint.com
-      properties:
-        attributes:
-          $ref: '#/components/schemas/AccountAttributesCreate_attributes'
-      required:
-      - attributes
-      type: object
-    AccountsAsyncResult:
-      description: Accounts async response containing details on started async process
-      example:
-        id: 2c91808474683da6017468693c260195
-      properties:
-        id:
-          description: id of the task
-          example: 2c91808474683da6017468693c260195
-          type: string
-      required:
-      - id
-      type: object
     Account:
       allOf:
       - $ref: '#/components/schemas/BaseCommonDto'
@@ -54279,6 +54132,15 @@ components:
             description: Indicates if the account has entitlements
             example: true
             type: boolean
+          identity:
+            $ref: '#/components/schemas/BaseReferenceDto'
+          sourceOwner:
+            $ref: '#/components/schemas/BaseReferenceDto'
+          features:
+            description: A string list containing the owning source's features
+            example: ENABLE
+            nullable: true
+            type: string
         required:
         - attributes
         - authoritative
@@ -54292,6 +54154,33 @@ components:
         - systemAccount
         - uncorrelated
         type: object
+    AccountAttributesCreate:
+      example:
+        attributes:
+          sourceId: 34bfcbe116c9407464af37acbaf7a4dc
+          city: Austin
+          displayName: John Doe
+          userName: jdoe
+          sAMAccountName: jDoe
+          mail: john.doe@sailpoint.com
+      properties:
+        attributes:
+          $ref: '#/components/schemas/AccountAttributesCreate_attributes'
+      required:
+      - attributes
+      type: object
+    AccountsAsyncResult:
+      description: Accounts async response containing details on started async process
+      example:
+        id: 2c91808474683da6017468693c260195
+      properties:
+        id:
+          description: id of the task
+          example: 2c91808474683da6017468693c260195
+          type: string
+      required:
+      - id
+      type: object
     AccountAttributes:
       example:
         attributes:
@@ -54420,7 +54309,7 @@ components:
         id: 2c9180835d2e5168015d32f890ca1581
         completionStatus: SUCCESS
         items:
-        - approvalStatus: FINISHED
+        - approvalStatus: ""
           reviewerComment:
             date: 2017-07-11T18:45:37.098Z
             commenterName: Adam Kennedy
@@ -54453,9 +54342,9 @@ components:
           name: 48c545831b264409a81befcabb0e3c5a
           id: 48c545831b264409a81befcabb0e3c5a
           attribute: detectedRoles
-          operation: ADD
+          operation: ""
           value: "Treasury Analyst [AccessProfile-1529010191212]"
-        - approvalStatus: FINISHED
+        - approvalStatus: ""
           reviewerComment:
             date: 2017-07-11T18:45:37.098Z
             commenterName: Adam Kennedy
@@ -54488,7 +54377,7 @@ components:
           name: 48c545831b264409a81befcabb0e3c5a
           id: 48c545831b264409a81befcabb0e3c5a
           attribute: detectedRoles
-          operation: ADD
+          operation: ""
           value: "Treasury Analyst [AccessProfile-1529010191212]"
         errors:
         - "sailpoint.connector.ConnectorException: java.lang.InterruptedException:\
@@ -54509,15 +54398,18 @@ components:
         modified:
           example: 2018-06-25T20:22:28.104Z
           format: date-time
+          nullable: true
           type: string
         completed:
           example: 2018-10-19T13:49:37.385Z
           format: date-time
+          nullable: true
           type: string
         completionStatus:
           $ref: '#/components/schemas/CompletionStatus'
         type:
           example: appRequest
+          nullable: true
           type: string
         requesterIdentitySummary:
           $ref: '#/components/schemas/IdentitySummary'
@@ -54530,15 +54422,18 @@ components:
             \ after 60 seconds."
           items:
             type: string
+          nullable: true
           type: array
         warnings:
           items:
             type: string
+          nullable: true
           type: array
           example: null
         items:
           items:
             $ref: '#/components/schemas/AccountActivityItem'
+          nullable: true
           type: array
         executionStatus:
           $ref: '#/components/schemas/ExecutionStatus'
@@ -54547,6 +54442,7 @@ components:
             type: string
           description: "Arbitrary key-value pairs, if any were included in the corresponding\
             \ access request"
+          nullable: true
           type: object
         cancelable:
           description: Whether the account activity can be canceled before completion
@@ -54843,6 +54739,7 @@ components:
           - lastname
           items:
             type: string
+          nullable: true
           type: array
       title: Campaign Reports Configuration
       type: object
@@ -55749,10 +55646,16 @@ components:
           id: id
           type: null
           ownerId: ownerId
+        createdByUser: false
+        id: 555ab47a-0d32-4813-906f-adf3567de6a4
         reviewedByUser: true
         status: status
         lastReviewed: 2000-01-23T04:56:07.000+00:00
       properties:
+        id:
+          description: Unique ID of the common access item
+          example: 555ab47a-0d32-4813-906f-adf3567de6a4
+          type: string
         access:
           $ref: '#/components/schemas/CommonAccessItemAccess'
         status:
@@ -55767,8 +55670,13 @@ components:
           type: boolean
         lastReviewed:
           format: date-time
+          nullable: true
           readOnly: true
           type: string
+        createdByUser:
+          default: false
+          example: false
+          type: boolean
       type: object
     CommonAccessItemRequest:
       example:
@@ -56093,12 +56001,14 @@ components:
           emailAddress:
             description: The email address of the identity
             example: sender@example.com
+            nullable: true
             type: string
           processingState:
             description: The processing state of the identity
             enum:
             - ERROR
             - OK
+            - null
             example: ERROR
             nullable: true
             type: string
@@ -56137,7 +56047,7 @@ components:
               ,\"lastname\":\"white\"}"
             type: object
           lifecycleState:
-            $ref: '#/components/schemas/LifecycleStateDto'
+            $ref: '#/components/schemas/IdentityDto_lifecycleState'
         title: IdentityDto
         type: object
     IdentityAssociationDetails:
@@ -57384,13 +57294,26 @@ components:
     ManagedCluster:
       description: Managed Cluster
       example:
-        publicKeyThumbprint: obc6pLiulGbtZ
         pod: megapod-useast1
-        org: denali
         configuration:
           clusterExternalId: externalId
           ccgVersion: 77.0.0
         description: A short description of the managed cluster.
+        publicKeyCertificate: '-----BEGIN CERTIFICATE-----TCCAb2gAwIBAgIBADANBgkqhkiG9w0BAQsFADAuMQ0wCwYDVQQD-----END
+          CERTIFICATE-----'
+        publicKey: '-----BEGIN PUBLIC KEY-----jANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3WgnsxP52MDgBTfHR+5n4-----END
+          PUBLIC KEY-----'
+        type: idn
+        redis:
+          redisHost: megapod-useast1-shared-redis.cloud.sailpoint.com
+          redisPort: 6379
+        createdAt: 2023-08-04T20:48:01.865Z
+        clientType: CCG
+        id: aClusterId
+        pinnedConfig: false
+        updatedAt: 2023-08-04T20:48:01.865Z
+        publicKeyThumbprint: obc6pLiulGbtZ
+        org: denali
         logConfiguration:
           durationMinutes: 120
           rootLevel: INFO
@@ -57398,19 +57321,10 @@ components:
           expiration: 2020-12-15T19:13:36.079Z
           logLevels: INFO
         operational: false
-        publicKeyCertificate: '-----BEGIN CERTIFICATE-----TCCAb2gAwIBAgIBADANBgkqhkiG9w0BAQsFADAuMQ0wCwYDVQQD-----END
-          CERTIFICATE-----'
-        publicKey: '-----BEGIN PUBLIC KEY-----jANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3WgnsxP52MDgBTfHR+5n4-----END
-          PUBLIC KEY-----'
         alertKey: LIMITED_RESOURCES
-        type: idn
         clientIds:
         - "1244"
         - "1245"
-        redis:
-          redisHost: megapod-useast1-shared-redis.cloud.sailpoint.com
-          redisPort: 6379
-        clientType: CCG
         serviceCount: 6
         ccgVersion: v01
         ccId: "1533"
@@ -57424,8 +57338,6 @@ components:
           queue:
             name: megapod-useast1-denali-lwt-cluster-1533
             region: us-east-1
-        id: aClusterId
-        pinnedConfig: false
         status: NORMAL
       properties:
         id:
@@ -57527,6 +57439,18 @@ components:
           description: "CC ID only used in calling CC, will be removed without notice\
             \ when Migration to CEGS is finished"
           example: "1533"
+          type: string
+        createdAt:
+          description: The date/time this cluster was created
+          example: 2023-08-04T20:48:01.865Z
+          format: date-time
+          nullable: true
+          type: string
+        updatedAt:
+          description: The date/time this cluster was last updated
+          example: 2023-08-04T20:48:01.865Z
+          format: date-time
+          nullable: true
           type: string
       required:
       - ccgVersion
@@ -57985,6 +57909,7 @@ components:
         subject:
           description: The subject of the default template
           example: "You have $numberOfPendingTasks $taskTasks to complete in ${__global.productName}."
+          nullable: true
           type: string
         header:
           deprecated: true
@@ -58007,15 +57932,18 @@ components:
         from:
           description: The "From:" address of the default template
           example: $__global.emailFromAddress
+          nullable: true
           type: string
         replyTo:
           description: The "Reply To" field of the default template
           example: $__global.emailFromAddress
+          nullable: true
           type: string
         description:
           description: The description of the default template
           example: Daily digest - sent if number of outstanding tasks for task owner
             > 0
+          nullable: true
           type: string
       type: object
     TemplateDto:
@@ -58645,6 +58573,7 @@ components:
       example:
         snapshotDate: 2021-05-01T18:40:35.772Z
         totalIdentities: 5000
+        totalIgnored: 0
         totalOutliers: 50
         type: LOW_SIMILARITY
       properties:
@@ -58667,6 +58596,10 @@ components:
         totalIdentities:
           description: Total number of identities for the customer making the request
           example: 5000
+          type: integer
+        totalIgnored:
+          default: 0
+          example: 0
           type: integer
       type: object
     LatestOutlierSummary:
@@ -58767,17 +58700,21 @@ components:
           enum:
           - MANUAL
           - AUTOMATIC
+          - null
           example: MANUAL
+          nullable: true
           type: string
         unignoreDate:
           description: shows date when last time has been unignored outlier
           example: 2021-06-01T18:40:35.772Z
           format: date-time
+          nullable: true
           type: string
         ignoreDate:
           description: shows date when last time has been ignored outlier
           example: 2021-06-01T18:40:35.772Z
           format: date-time
+          nullable: true
           type: string
       type: object
     OutlierContributingFeature:
@@ -59078,7 +59015,9 @@ components:
       type: object
     PasswordSyncGroup:
       example:
+        created: 2023-03-16T04:00:00Z
         name: Password Sync Group 1
+        modified: 2023-03-16T04:00:00Z
         passwordPolicyId: 2c91808d744ba0ce01746f93b6204501
         id: 6881f631-3bd5-4213-9c75-8e05cc3e35dd
         sourceIds:
@@ -59105,6 +59044,18 @@ components:
           items:
             type: string
           type: array
+        created:
+          description: The date and time this sync group was created
+          example: 2023-03-16T04:00:00Z
+          format: date-time
+          nullable: true
+          type: string
+        modified:
+          description: The date and time this sync group was last modified
+          example: 2023-03-16T04:00:00Z
+          format: date-time
+          nullable: true
+          type: string
       type: object
     PasswordOrgConfig:
       example:
@@ -59151,6 +59102,7 @@ components:
           type: IDENTITY
         lastUsed: 2017-07-11T18:45:37.098Z
         created: 2017-07-11T18:45:37.098Z
+        managed: false
         scope:
         - demo:personal-access-token-scope:first
         - demo:personal-access-token-scope:second
@@ -59195,6 +59147,13 @@ components:
           format: date-time
           nullable: true
           type: string
+        managed:
+          default: false
+          description: "If true, this token is managed by the SailPoint platform,\
+            \ and is not visible in the user interface. For example, Workflows will\
+            \ create managed personal access tokens for users who create workflows."
+          example: false
+          type: boolean
       required:
       - created
       - id
@@ -59312,6 +59271,7 @@ components:
           description: the date/time of the modification
           example: 2018-06-25T20:22:28.104Z
           format: date-time
+          nullable: true
           type: string
       type: object
     NotificationTemplateContext:
@@ -59332,6 +59292,7 @@ components:
               loginInformationalMessage: null
       properties:
         attributes:
+          additionalProperties: true
           description: A JSON object that stores the context.
           example:
             productUrl: https://test-org.identitysoon.com
@@ -59388,11 +59349,18 @@ components:
     ConfigType:
       description: Type of Reassignment Configuration.
       example:
-        internalName: ACCESS_REQUESTS
+        internalName: accessRequests
         displayName: Access Requests
         description: Reassign Access Request Work Items for an identity
+        priority: 1
+        internalNameCamel: ACCESS_REQUESTS
       properties:
+        priority:
+          example: 1
+          type: integer
         internalName:
+          $ref: '#/components/schemas/ConfigTypeEnumCamel'
+        internalNameCamel:
           $ref: '#/components/schemas/ConfigTypeEnum'
         displayName:
           description: Human readable display name of the type to be shown on UI
@@ -59644,6 +59612,7 @@ components:
       enum:
       - ACCESS_PROFILE
       - ROLE
+      - ENTITLEMENT
       example: ACCESS_PROFILE
       type: string
     RequestableObjectRequestStatus:
@@ -59658,6 +59627,7 @@ components:
       - AVAILABLE
       - PENDING
       - ASSIGNED
+      - null
       example: AVAILABLE
       type: string
     RequestableObject:
@@ -59675,7 +59645,7 @@ components:
         identityRequestId: identityRequestId
         id: 2c9180835d2e5168015d32f890ca1581
         type: ACCESS_PROFILE
-        requestStatus: AVAILABLE
+        requestStatus: ""
       properties:
         id:
           description: Id of the requestable object itself
@@ -59699,11 +59669,15 @@ components:
         description:
           description: Description of the requestable object.
           example: "Access to research information, lab results, and schematics."
+          nullable: true
           type: string
         type:
           $ref: '#/components/schemas/RequestableObjectType'
         requestStatus:
-          $ref: '#/components/schemas/RequestableObjectRequestStatus'
+          allOf:
+          - $ref: '#/components/schemas/RequestableObjectRequestStatus'
+          - nullable: true
+            type: object
         identityRequestId:
           description: "If *requestStatus* is *PENDING*, indicates the id of the associated\
             \ account activity."
@@ -60694,7 +60668,6 @@ components:
         entitlements:
           items:
             $ref: '#/components/schemas/EntitlementRef'
-          nullable: true
           type: array
         membership:
           $ref: '#/components/schemas/RoleMembershipSelector'
@@ -63213,6 +63186,7 @@ components:
       example:
         schedule:
           hours: null
+          months: null
           timeZoneId: America/Chicago
           days: null
           expiration: 2018-06-25T20:22:28.104Z
@@ -65662,6 +65636,7 @@ components:
       - EXPIRED
       - PENDING
       - CANCELED
+      - null
       example: FINISHED
       type: string
     WorkItemType:
@@ -65832,6 +65807,7 @@ components:
         name:
           description: Entitlement's display name.
           example: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
+          nullable: true
           type: string
       type: object
     Requestability:
@@ -65888,20 +65864,24 @@ components:
       example:
         children:
         - children:
-          - attribute: email
+          - children: children
+            attribute: email
             operation: EQUALS
             value: carlee.cert1c9f9b6fd@mailinator.com
-          - attribute: email
+          - children: children
+            attribute: email
             operation: EQUALS
             value: carlee.cert1c9f9b6fd@mailinator.com
           attribute: email
           operation: EQUALS
           value: carlee.cert1c9f9b6fd@mailinator.com
         - children:
-          - attribute: email
+          - children: children
+            attribute: email
             operation: EQUALS
             value: carlee.cert1c9f9b6fd@mailinator.com
-          - attribute: email
+          - children: children
+            attribute: email
             operation: EQUALS
             value: carlee.cert1c9f9b6fd@mailinator.com
           attribute: email
@@ -65950,6 +65930,7 @@ components:
         locale:
           description: "The locale for the message text, a BCP 47 language tag."
           example: en-US
+          nullable: true
           type: string
         localeOrigin:
           $ref: '#/components/schemas/LocaleOrigin'
@@ -66017,10 +65998,6 @@ components:
       type: object
     OwnerReferenceDto:
       description: Simplified DTO for the owner object of the entitlement
-      example:
-        name: identity 1
-        id: 2a2fdacca5e345f18bf7970cfbb8fec2
-        type: IDENTITY
       properties:
         id:
           description: The owner id for the entitlement
@@ -66038,9 +66015,6 @@ components:
           type: string
       type: object
     ManuallyUpdatedFieldsDTO:
-      example:
-        DESCRIPTION: true
-        DISPLAY_NAME: true
       properties:
         DISPLAY_NAME:
           default: false
@@ -66063,7 +66037,9 @@ components:
       enum:
       - GRANT_ACCESS
       - REVOKE_ACCESS
+      - null
       example: GRANT_ACCESS
+      nullable: true
       type: string
     AccessRequestItem:
       example:
@@ -66106,10 +66082,10 @@ components:
           type: object
         removeDate:
           description: |
-            The date the role or access profile is no longer assigned to the specified identity.
+            The date the role or access profile is no longer assigned to the specified identity. Also known as the expiration date.
             * Specify a date in the future.
             * The current SLA for the deprovisioning is 24 hours.
-            * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity.
+            * This date can be modified to either extend or decrease the duration of access item assignments for the specified identity. You can change the expiration date for requests for yourself or direct reports, but you cannot remove an expiration date on an already approved item. If the access request has not been approved, you can cancel it and submit a new one without the expiration. If it has already been approved, then you have to revoke the access and then re-request without the expiration.
             * Currently it is not supported for entitlements.
           example: 2020-07-11T21:23:15Z
           format: date-time
@@ -66148,11 +66124,13 @@ components:
             \ are configured, then this is the number of days to wait before escalation."
           example: 0
           format: int32
+          nullable: true
           type: integer
         daysBetweenReminders:
           description: Number of days to wait between reminder notifications.
           example: 0
           format: int32
+          nullable: true
           type: integer
         maxReminders:
           description: Maximum number of reminder notification to send to the reviewer
@@ -66160,6 +66138,7 @@ components:
           example: 1
           format: int32
           minimum: 1
+          nullable: true
           type: integer
         fallbackApproverRef:
           $ref: '#/components/schemas/IdentityReferenceWithNameAndEmail'
@@ -66194,17 +66173,11 @@ components:
             Multiple schemes must be comma-separated. The valid schemes are "entitlementOwner", "sourceOwner", "manager" and "workgroup:{id}".
             Multiple workgroups (governance groups) can be used.
           example: "entitlementOwner, sourceOwner, manager, workgroup:2c918084660f45d6016617daa9210584"
+          nullable: true
           type: string
       type: object
     CancelledRequestDetails:
       description: Provides additional details for a request that has been cancelled.
-      example:
-        owner:
-          name: Support
-          id: 2c9180a46faadee4016fb4e018c20639
-          type: IDENTITY
-        modified: 2019-12-20T09:17:12.192Z
-        comment: This request must be cancelled.
       properties:
         comment:
           description: Comment made by the owner when cancelling the associated request.
@@ -66264,10 +66237,7 @@ components:
           id: 2c7180a46faadee4016fb4e018c20642
           type: IDENTITY
         scheme: MANAGER
-        currentOwner:
-          name: Allen Albertson
-          id: 2c3780a46faadee4016fb4e018c20652
-          type: IDENTITY
+        currentOwner: null
         modified: 2019-08-23T18:52:57.398Z
         comment: I approve this request
         forwarded: false
@@ -66282,11 +66252,12 @@ components:
         originalOwner:
           $ref: '#/components/schemas/ApprovalStatusDto_originalOwner'
         currentOwner:
-          $ref: '#/components/schemas/AccessItemReviewedBy'
+          $ref: '#/components/schemas/ApprovalStatusDto_currentOwner'
         modified:
           description: Time at which item was modified.
           example: 2019-08-23T18:52:57.398Z
           format: date-time
+          nullable: true
           type: string
         status:
           $ref: '#/components/schemas/ManualWorkItemState'
@@ -66297,16 +66268,19 @@ components:
             \ generated."
           items:
             $ref: '#/components/schemas/ErrorMessageDto'
+          nullable: true
           type: array
         comment:
           description: "Comment, if any, provided by the approver."
           example: I approve this request
+          nullable: true
           type: string
         removeDate:
           description: The date the role or access profile is no longer assigned to
             the specified identity.
           example: 2020-07-11T00:00:00Z
           format: date-time
+          nullable: true
           type: string
       type: object
     ManualWorkItemDetails:
@@ -66357,6 +66331,7 @@ components:
           description: The history of approval forward action.
           items:
             $ref: '#/components/schemas/ApprovalForwardHistory'
+          nullable: true
           type: array
       type: object
     AccessItemRequester:
@@ -66407,6 +66382,10 @@ components:
     CommentDto_1:
       example:
         created: 2017-07-11T18:45:37.098Z
+        author:
+          name: john.doe
+          id: 2c9180847e25f377017e2ae8cae4650b
+          type: IDENTITY
         comment: This is a comment.
       properties:
         comment:
@@ -66419,98 +66398,31 @@ components:
           example: 2017-07-11T18:45:37.098Z
           format: date-time
           type: string
+        author:
+          $ref: '#/components/schemas/CommentDto_1_author'
       type: object
     SodViolationContextCheckCompleted:
       description: An object referencing a completed SOD violation check
-      example:
-        violationCheckResult:
-          clientMetadata:
-            requestedAppName: test-app
-            requestedAppId: 2c91808f7892918f0178b78da4a305a1
-          violationContexts:
-          - conflictingAccessCriteria:
-              leftCriteria:
-                criteriaList:
-                - existing: true
-                  name: My HR Entitlement
-                  id: 2c918085771e9d3301773b3cb66f6398
-                  type: IDENTITY
-                - existing: true
-                  name: My HR Entitlement
-                  id: 2c918085771e9d3301773b3cb66f6398
-                  type: IDENTITY
-              rightCriteria:
-                criteriaList:
-                - existing: true
-                  name: My HR Entitlement
-                  id: 2c918085771e9d3301773b3cb66f6398
-                  type: IDENTITY
-                - existing: true
-                  name: My HR Entitlement
-                  id: 2c918085771e9d3301773b3cb66f6398
-                  type: IDENTITY
-            policy:
-              name: Business SOD Policy
-              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-              type: SOD_POLICY
-          - conflictingAccessCriteria:
-              leftCriteria:
-                criteriaList:
-                - existing: true
-                  name: My HR Entitlement
-                  id: 2c918085771e9d3301773b3cb66f6398
-                  type: IDENTITY
-                - existing: true
-                  name: My HR Entitlement
-                  id: 2c918085771e9d3301773b3cb66f6398
-                  type: IDENTITY
-              rightCriteria:
-                criteriaList:
-                - existing: true
-                  name: My HR Entitlement
-                  id: 2c918085771e9d3301773b3cb66f6398
-                  type: IDENTITY
-                - existing: true
-                  name: My HR Entitlement
-                  id: 2c918085771e9d3301773b3cb66f6398
-                  type: IDENTITY
-            policy:
-              name: Business SOD Policy
-              id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-              type: SOD_POLICY
-          violatedPolicies:
-          - name: Business SOD Policy
-            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-            type: SOD_POLICY
-          - name: Business SOD Policy
-            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-            type: SOD_POLICY
-          message:
-            localeOrigin: DEFAULT
-            text: The request was syntactically correct but its content is semantically
-              invalid.
-            locale: en-US
-        state: SUCCESS
-        uuid: f73d16e9-a038-46c5-b217-1246e15fdbdd
       properties:
         state:
           description: The status of SOD violation check
           enum:
           - SUCCESS
           - ERROR
+          - null
           example: SUCCESS
+          nullable: true
           type: string
         uuid:
           description: The id of the Violation check event
           example: f73d16e9-a038-46c5-b217-1246e15fdbdd
+          nullable: true
           type: string
         violationCheckResult:
           $ref: '#/components/schemas/SodViolationCheckResult'
       type: object
     ProvisioningDetails:
       description: Provides additional details about provisioning for this request.
-      example:
-        orderedSubPhaseReferences: manualWorkItemDetails
       properties:
         orderedSubPhaseReferences:
           description: "Ordered CSV of sub phase references to objects that contain\
@@ -66523,10 +66435,6 @@ components:
     PreApprovalTriggerDetails:
       description: Provides additional details about the pre-approval trigger for
         this request.
-      example:
-        decision: APPROVED
-        comment: Access is Approved
-        reviewer: John Doe
       properties:
         comment:
           description: Comment left for the pre-approval decision
@@ -66563,6 +66471,7 @@ components:
           description: The time that this phase finished.
           example: 2020-07-12T00:00:00Z
           format: date-time
+          nullable: true
           type: string
         name:
           description: The name of this phase.
@@ -66575,6 +66484,7 @@ components:
           - EXECUTING
           - COMPLETED
           - CANCELLED
+          - NOT_EXECUTED
           example: COMPLETED
           type: string
         result:
@@ -66582,13 +66492,16 @@ components:
           enum:
           - SUCCESSFUL
           - FAILED
+          - null
           example: SUCCESSFUL
+          nullable: true
           type: string
         phaseReference:
           description: "A reference to another object on the RequestedItemStatus that\
             \ contains more details about the phase. Note that for the Provisioning\
             \ phase, this will be empty if there are no manual work items."
           example: approvalDetails
+          nullable: true
           type: string
       type: object
     AccessItemRequesterDto:
@@ -66872,6 +66785,17 @@ components:
         type:
           $ref: '#/components/schemas/AccessRequestRecommendationItemType'
       type: object
+    BaseReferenceDto:
+      properties:
+        id:
+          description: the application ID
+          example: ff8081814d977c21014da056804a0af3
+          type: string
+        name:
+          description: the application name
+          example: Github
+          type: string
+      type: object
     CompletionStatus:
       description: The status after completion.
       enum:
@@ -66879,6 +66803,7 @@ components:
       - FAILURE
       - INCOMPLETE
       - PENDING
+      - null
       example: SUCCESS
       nullable: true
       type: string
@@ -66910,7 +66835,7 @@ components:
       type: object
     AccountActivityItem:
       example:
-        approvalStatus: FINISHED
+        approvalStatus: ""
         reviewerComment:
           date: 2017-07-11T18:45:37.098Z
           commenterName: Adam Kennedy
@@ -66943,7 +66868,7 @@ components:
         name: 48c545831b264409a81befcabb0e3c5a
         id: 48c545831b264409a81befcabb0e3c5a
         attribute: detectedRoles
-        operation: ADD
+        operation: ""
         value: "Treasury Analyst [AccessProfile-1529010191212]"
       properties:
         id:
@@ -66960,7 +66885,10 @@ components:
           format: date-time
           type: string
         approvalStatus:
-          $ref: '#/components/schemas/WorkItemState'
+          allOf:
+          - $ref: '#/components/schemas/WorkItemState'
+          - nullable: true
+            type: object
         provisioningStatus:
           $ref: '#/components/schemas/ProvisioningState'
         requesterComment:
@@ -66970,7 +66898,10 @@ components:
         reviewerComment:
           $ref: '#/components/schemas/Comment'
         operation:
-          $ref: '#/components/schemas/AccountActivityItemOperation'
+          allOf:
+          - $ref: '#/components/schemas/AccountActivityItemOperation'
+          - nullable: true
+            type: object
         attribute:
           description: Attribute to which account activity applies
           example: detectedRoles
@@ -67168,6 +67099,7 @@ components:
           type: string
         description:
           description: Common access description
+          nullable: true
           type: string
         ownerName:
           description: Common access owner name
@@ -68020,6 +67952,15 @@ components:
       - PHONE
       - SLACK
       - TEAMS
+      type: string
+    ConfigTypeEnumCamel:
+      description: Enum list of valid work types that can be selected for a Reassignment
+        Configuration
+      enum:
+      - accessRequests
+      - certifications
+      - manualTasks
+      example: accessRequests
       type: string
     Identity_1:
       description: The definition of an Identity according to the Reassignment Configuration
@@ -70229,6 +70170,7 @@ components:
       description: The schedule information.
       example:
         hours: null
+        months: null
         timeZoneId: America/Chicago
         days: null
         expiration: 2018-06-25T20:22:28.104Z
@@ -70236,6 +70178,8 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/ScheduleType'
+        months:
+          $ref: '#/components/schemas/Schedule_1_months'
         days:
           $ref: '#/components/schemas/Schedule_1_days'
         hours:
@@ -71014,10 +70958,12 @@ components:
         a specific Access Profile
       example:
         children:
-        - attribute: email
+        - children: children
+          attribute: email
           operation: EQUALS
           value: carlee.cert1c9f9b6fd@mailinator.com
-        - attribute: email
+        - children: children
+          attribute: email
           operation: EQUALS
           value: carlee.cert1c9f9b6fd@mailinator.com
         attribute: email
@@ -71060,14 +71006,12 @@ components:
       enum:
       - DEFAULT
       - REQUEST
+      - null
       example: DEFAULT
+      nullable: true
       type: string
     AccessItemReviewedBy:
       description: Identity who reviewed the access item request.
-      example:
-        name: Allen Albertson
-        id: 2c3780a46faadee4016fb4e018c20652
-        type: IDENTITY
       properties:
         type:
           description: DTO type of identity who reviewed the access item request.
@@ -71118,73 +71062,6 @@ components:
       type: string
     SodViolationCheckResult:
       description: The inner object representing the completed SOD Violation check
-      example:
-        clientMetadata:
-          requestedAppName: test-app
-          requestedAppId: 2c91808f7892918f0178b78da4a305a1
-        violationContexts:
-        - conflictingAccessCriteria:
-            leftCriteria:
-              criteriaList:
-              - existing: true
-                name: My HR Entitlement
-                id: 2c918085771e9d3301773b3cb66f6398
-                type: IDENTITY
-              - existing: true
-                name: My HR Entitlement
-                id: 2c918085771e9d3301773b3cb66f6398
-                type: IDENTITY
-            rightCriteria:
-              criteriaList:
-              - existing: true
-                name: My HR Entitlement
-                id: 2c918085771e9d3301773b3cb66f6398
-                type: IDENTITY
-              - existing: true
-                name: My HR Entitlement
-                id: 2c918085771e9d3301773b3cb66f6398
-                type: IDENTITY
-          policy:
-            name: Business SOD Policy
-            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-            type: SOD_POLICY
-        - conflictingAccessCriteria:
-            leftCriteria:
-              criteriaList:
-              - existing: true
-                name: My HR Entitlement
-                id: 2c918085771e9d3301773b3cb66f6398
-                type: IDENTITY
-              - existing: true
-                name: My HR Entitlement
-                id: 2c918085771e9d3301773b3cb66f6398
-                type: IDENTITY
-            rightCriteria:
-              criteriaList:
-              - existing: true
-                name: My HR Entitlement
-                id: 2c918085771e9d3301773b3cb66f6398
-                type: IDENTITY
-              - existing: true
-                name: My HR Entitlement
-                id: 2c918085771e9d3301773b3cb66f6398
-                type: IDENTITY
-          policy:
-            name: Business SOD Policy
-            id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-            type: SOD_POLICY
-        violatedPolicies:
-        - name: Business SOD Policy
-          id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-          type: SOD_POLICY
-        - name: Business SOD Policy
-          id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-          type: SOD_POLICY
-        message:
-          localeOrigin: DEFAULT
-          text: The request was syntactically correct but its content is semantically
-            invalid.
-          locale: en-US
       properties:
         message:
           $ref: '#/components/schemas/ErrorMessageDto'
@@ -71197,15 +71074,18 @@ components:
           example:
             requestedAppName: test-app
             requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          nullable: true
           type: object
         violationContexts:
           items:
             $ref: '#/components/schemas/SodViolationContext'
+          nullable: true
           type: array
         violatedPolicies:
           description: A list of the SOD policies that were violated.
           items:
             $ref: '#/components/schemas/SodPolicyDto'
+          nullable: true
           type: array
       type: object
     ReassignmentType:
@@ -71348,6 +71228,8 @@ components:
       - UNLOCK
       - LOCK
       - REMOVE
+      - SET
+      - null
       example: ADD
       type: string
     AccountRequestInfo:
@@ -71991,6 +71873,7 @@ components:
       - WEEKLY
       - MONTHLY
       - CALENDAR
+      - ANNUALLY
       example: WEEKLY
       type: string
     Selector:
@@ -72330,6 +72213,7 @@ components:
       description: Defines matching criteria for an Account to be provisioned with
         a specific Access Profile
       example:
+        children: children
         attribute: email
         operation: EQUALS
         value: carlee.cert1c9f9b6fd@mailinator.com
@@ -72351,35 +72235,16 @@ components:
             \ type."
           example: carlee.cert1c9f9b6fd@mailinator.com
           type: string
+        children:
+          description: "Array of child criteria. Required if the operation is AND\
+            \ or OR, otherwise it must be left null. A maximum of three levels of\
+            \ criteria are supported, including leaf nodes."
+          nullable: true
+          type: string
+          example: null
       type: object
     SodViolationContext:
       description: The contextual information of the violated criteria
-      example:
-        conflictingAccessCriteria:
-          leftCriteria:
-            criteriaList:
-            - existing: true
-              name: My HR Entitlement
-              id: 2c918085771e9d3301773b3cb66f6398
-              type: IDENTITY
-            - existing: true
-              name: My HR Entitlement
-              id: 2c918085771e9d3301773b3cb66f6398
-              type: IDENTITY
-          rightCriteria:
-            criteriaList:
-            - existing: true
-              name: My HR Entitlement
-              id: 2c918085771e9d3301773b3cb66f6398
-              type: IDENTITY
-            - existing: true
-              name: My HR Entitlement
-              id: 2c918085771e9d3301773b3cb66f6398
-              type: IDENTITY
-        policy:
-          name: Business SOD Policy
-          id: 0f11f2a4-7c94-4bf3-a2bd-742580fe3bde
-          type: SOD_POLICY
       properties:
         policy:
           $ref: '#/components/schemas/SodPolicyDto'
@@ -72633,11 +72498,6 @@ components:
       type: object
     SodExemptCriteria:
       description: Details of the Entitlement criteria
-      example:
-        existing: true
-        name: My HR Entitlement
-        id: 2c918085771e9d3301773b3cb66f6398
-        type: IDENTITY
       properties:
         existing:
           default: false
@@ -72795,10 +72655,6 @@ components:
           example: ' API/Feature not enabled for your organization.'
           type: object
       type: object
-    listAccounts_200_response_inner:
-      anyOf:
-      - $ref: '#/components/schemas/SlimAccount'
-      - $ref: '#/components/schemas/FullAccount'
     getActiveCampaigns_200_response_inner:
       oneOf:
       - $ref: '#/components/schemas/slimcampaign'
@@ -73645,8 +73501,55 @@ components:
         name:
           description: The source name
           example: ODS-AD-Source
+          nullable: true
           type: string
       type: object
+    Entitlement_owner:
+      allOf:
+      - $ref: '#/components/schemas/OwnerReferenceDto'
+      - nullable: true
+        type: object
+    Entitlement_manuallyUpdatedFields:
+      allOf:
+      - $ref: '#/components/schemas/ManuallyUpdatedFieldsDTO'
+      - description: "Object contains entitlement manually updated fields. Field value\
+          \ is true if is was updated manually via entitlement import csv or patch\
+          \ endpoint. Field value is false if that property value has not been changed\
+          \ after first entitlement aggregation. Values for all manually updatable\
+          \ fields must be specified. For now only two entitlement fields support\
+          \ this: DISPLAY_NAME and DESCRIPTION."
+        example:
+          DISPLAY_NAME: true
+          DESCRIPTION: true
+        nullable: true
+        type: object
+    RequestedItemStatus_cancelledRequestDetails:
+      allOf:
+      - $ref: '#/components/schemas/CancelledRequestDetails'
+      - nullable: true
+        type: object
+    RequestedItemStatus_requesterComment:
+      allOf:
+      - $ref: '#/components/schemas/CommentDto_1'
+      - description: The requester's comment.
+        nullable: true
+        type: object
+    RequestedItemStatus_sodViolationContext:
+      allOf:
+      - $ref: '#/components/schemas/SodViolationContextCheckCompleted'
+      - description: The details of the SOD violations for the associated approval.
+        nullable: true
+        type: object
+    RequestedItemStatus_provisioningDetails:
+      allOf:
+      - $ref: '#/components/schemas/ProvisioningDetails'
+      - nullable: true
+        type: object
+    RequestedItemStatus_preApprovalTriggerDetails:
+      allOf:
+      - $ref: '#/components/schemas/PreApprovalTriggerDetails'
+      - nullable: true
+        type: object
     CompletedApproval_reviewedBy:
       description: Identity who reviewed the access item request.
       example:
@@ -73675,6 +73578,33 @@ components:
       - $ref: '#/components/schemas/CommentDto'
       description: The approval's reviewer's comment.
       nullable: true
+      type: object
+    CompletedApproval_preApprovalTriggerResult:
+      description: "If the access request submitted event trigger is configured and\
+        \ this access request was intercepted by it, then this is the result of the\
+        \ trigger's decision to either approve or deny the request."
+      example:
+        date: 2022-06-07T19:18:40.748Z
+        decision: APPROVED
+        comment: This request was autoapproved by our automated ETS subscriber
+        reviewer: Automated AR Approval
+      nullable: true
+      properties:
+        comment:
+          description: The comment from the trigger
+          example: This request was autoapproved by our automated ETS subscriber
+          type: string
+        decision:
+          $ref: '#/components/schemas/CompletedApprovalState'
+        reviewer:
+          description: The name of the approver
+          example: Automated AR Approval
+          type: string
+        date:
+          description: The date and time the trigger decided on the request
+          example: 2022-06-07T19:18:40.748Z
+          format: date-time
+          type: string
       type: object
     CommentDto_author:
       example:
@@ -74066,6 +73996,7 @@ components:
       type: object
     IdentityDto_managerRef:
       description: Identity's manager.
+      nullable: true
       properties:
         type:
           description: DTO type of identity's manager.
@@ -74083,6 +74014,13 @@ components:
           type: string
       type: object
       example: null
+    IdentityDto_lifecycleState:
+      allOf:
+      - $ref: '#/components/schemas/LifecycleStateDto'
+      - description: Lifecycle state details that include lifecycle state name and
+          whether this lifecycle state has been set manually
+        nullable: true
+        type: object
     IdentityAssociationDetails_associationDetails_inner:
       properties:
         associationType:
@@ -74598,6 +74536,11 @@ components:
           example: Michael Michaels
           type: string
       type: object
+    ApprovalStatusDto_currentOwner:
+      allOf:
+      - $ref: '#/components/schemas/AccessItemReviewedBy'
+      - nullable: true
+        type: object
     ManualWorkItemDetails_originalOwner:
       description: "Identity of original work item owner, if the work item has been\
         \ forwarded."
@@ -74605,6 +74548,7 @@ components:
         name: Michael Michaels
         id: 2c7180a46faadee4016fb4e018c20642
         type: IDENTITY
+      nullable: true
       properties:
         type:
           description: DTO type of original work item owner's identity.
@@ -74628,6 +74572,7 @@ components:
         name: Allen Albertson
         id: 2c3780a46faadee4016fb4e018c20652
         type: IDENTITY
+      nullable: true
       properties:
         type:
           description: DTO type of current work item owner's identity.
@@ -74644,6 +74589,29 @@ components:
           description: Display name of current work item owner.
           example: Allen Albertson
           type: string
+      type: object
+    CommentDto_1_author:
+      description: Author of the comment
+      example:
+        name: john.doe
+        id: 2c9180847e25f377017e2ae8cae4650b
+        type: IDENTITY
+      properties:
+        type:
+          description: The type of object
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: The unique ID of the object
+          example: 2c9180847e25f377017e2ae8cae4650b
+          type: string
+        name:
+          description: The display name of the object
+          example: john.doe
+          type: string
+      readOnly: true
       type: object
     IdentityEntities_identityEntity:
       properties:
@@ -76035,6 +76003,20 @@ components:
       - $ref: '#/components/schemas/OwnerDto'
       - nullable: true
         type: object
+    Schedule_1_months:
+      allOf:
+      - $ref: '#/components/schemas/Selector'
+      - description: |
+          The months to execute the search. This only applies to schedules with a type of `ANNUALLY`.
+        example:
+          type: LIST
+          values:
+          - "3"
+          - "6"
+          - "9"
+          - "12"
+        nullable: true
+        type: object
     Schedule_1_days:
       allOf:
       - $ref: '#/components/schemas/Selector'
@@ -76043,7 +76025,7 @@ components:
 
           If `type` is `WEEKLY`, the values will be `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, and `SUN`.
 
-          If `type` is `MONTHLY`, the values will be a number in double quotes, like `"1"`, `"10"`, or `"28"`.  Optionally, the value `"L"` can be used to refer to the last day of the month.
+          If `type` is `MONTHLY` or `ANNUALLY`, the values will be a number in double quotes, like `"1"`, `"10"`, or `"28"`.  Optionally, the value `"L"` can be used to refer to the last day of the month.
         example:
           type: LIST
           values:
@@ -76126,16 +76108,6 @@ components:
       type: object
       x-go-name: Config
     SodViolationContext_conflictingAccessCriteria_leftCriteria:
-      example:
-        criteriaList:
-        - existing: true
-          name: My HR Entitlement
-          id: 2c918085771e9d3301773b3cb66f6398
-          type: IDENTITY
-        - existing: true
-          name: My HR Entitlement
-          id: 2c918085771e9d3301773b3cb66f6398
-          type: IDENTITY
       properties:
         criteriaList:
           items:
@@ -76145,27 +76117,6 @@ components:
     SodViolationContext_conflictingAccessCriteria:
       description: The object which contains the left and right hand side of the entitlements
         that got violated according to the policy.
-      example:
-        leftCriteria:
-          criteriaList:
-          - existing: true
-            name: My HR Entitlement
-            id: 2c918085771e9d3301773b3cb66f6398
-            type: IDENTITY
-          - existing: true
-            name: My HR Entitlement
-            id: 2c918085771e9d3301773b3cb66f6398
-            type: IDENTITY
-        rightCriteria:
-          criteriaList:
-          - existing: true
-            name: My HR Entitlement
-            id: 2c918085771e9d3301773b3cb66f6398
-            type: IDENTITY
-          - existing: true
-            name: My HR Entitlement
-            id: 2c918085771e9d3301773b3cb66f6398
-            type: IDENTITY
       properties:
         leftCriteria:
           $ref: '#/components/schemas/SodViolationContext_conflictingAccessCriteria_leftCriteria'

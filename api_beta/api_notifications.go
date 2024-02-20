@@ -1475,7 +1475,7 @@ type ApiGetNotificationsTemplateContextRequest struct {
 	ApiService *NotificationsAPIService
 }
 
-func (r ApiGetNotificationsTemplateContextRequest) Execute() ([]NotificationTemplateContext, *http.Response, error) {
+func (r ApiGetNotificationsTemplateContextRequest) Execute() (*NotificationTemplateContext, *http.Response, error) {
 	return r.ApiService.GetNotificationsTemplateContextExecute(r)
 }
 
@@ -1499,13 +1499,13 @@ func (a *NotificationsAPIService) GetNotificationsTemplateContext(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []NotificationTemplateContext
-func (a *NotificationsAPIService) GetNotificationsTemplateContextExecute(r ApiGetNotificationsTemplateContextRequest) ([]NotificationTemplateContext, *http.Response, error) {
+//  @return NotificationTemplateContext
+func (a *NotificationsAPIService) GetNotificationsTemplateContextExecute(r ApiGetNotificationsTemplateContextRequest) (*NotificationTemplateContext, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []NotificationTemplateContext
+		localVarReturnValue  *NotificationTemplateContext
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetNotificationsTemplateContext")

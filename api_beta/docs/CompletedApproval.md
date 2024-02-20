@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | When the approval was created. | [optional] 
 **Modified** | Pointer to **time.Time** | When the approval was modified last time. | [optional] 
 **RequestCreated** | Pointer to **time.Time** | When the access-request was created. | [optional] 
-**RequestType** | Pointer to [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
+**RequestType** | Pointer to [**NullableAccessRequestType**](AccessRequestType.md) |  | [optional] 
 **Requester** | Pointer to [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | [optional] 
 **RequestedFor** | Pointer to [**[]AccessItemRequestedForDto**](AccessItemRequestedForDto.md) | Identities access was requested for. | [optional] 
 **ReviewedBy** | Pointer to [**CompletedApprovalReviewedBy**](CompletedApprovalReviewedBy.md) |  | [optional] 
@@ -25,6 +25,9 @@ Name | Type | Description | Notes
 **RemoveDateUpdateRequested** | Pointer to **bool** | If true, then the request was to change the remove date or sunset date. | [optional] [default to false]
 **CurrentRemoveDate** | Pointer to **NullableTime** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
 **SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted1**](SodViolationContextCheckCompleted1.md) |  | [optional] 
+**PreApprovalTriggerResult** | Pointer to [**NullableCompletedApprovalPreApprovalTriggerResult**](CompletedApprovalPreApprovalTriggerResult.md) |  | [optional] 
+**ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs provided during the request. | [optional] 
+**RequestedAccounts** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -195,6 +198,16 @@ SetRequestType sets RequestType field to given value.
 
 HasRequestType returns a boolean if a field has been set.
 
+### SetRequestTypeNil
+
+`func (o *CompletedApproval) SetRequestTypeNil(b bool)`
+
+ SetRequestTypeNil sets the value for RequestType to be an explicit nil
+
+### UnsetRequestType
+`func (o *CompletedApproval) UnsetRequestType()`
+
+UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
 ### GetRequester
 
 `func (o *CompletedApproval) GetRequester() AccessItemRequesterDto`
@@ -600,6 +613,101 @@ SetSodViolationContext sets SodViolationContext field to given value.
 
 HasSodViolationContext returns a boolean if a field has been set.
 
+### GetPreApprovalTriggerResult
+
+`func (o *CompletedApproval) GetPreApprovalTriggerResult() CompletedApprovalPreApprovalTriggerResult`
+
+GetPreApprovalTriggerResult returns the PreApprovalTriggerResult field if non-nil, zero value otherwise.
+
+### GetPreApprovalTriggerResultOk
+
+`func (o *CompletedApproval) GetPreApprovalTriggerResultOk() (*CompletedApprovalPreApprovalTriggerResult, bool)`
+
+GetPreApprovalTriggerResultOk returns a tuple with the PreApprovalTriggerResult field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreApprovalTriggerResult
+
+`func (o *CompletedApproval) SetPreApprovalTriggerResult(v CompletedApprovalPreApprovalTriggerResult)`
+
+SetPreApprovalTriggerResult sets PreApprovalTriggerResult field to given value.
+
+### HasPreApprovalTriggerResult
+
+`func (o *CompletedApproval) HasPreApprovalTriggerResult() bool`
+
+HasPreApprovalTriggerResult returns a boolean if a field has been set.
+
+### SetPreApprovalTriggerResultNil
+
+`func (o *CompletedApproval) SetPreApprovalTriggerResultNil(b bool)`
+
+ SetPreApprovalTriggerResultNil sets the value for PreApprovalTriggerResult to be an explicit nil
+
+### UnsetPreApprovalTriggerResult
+`func (o *CompletedApproval) UnsetPreApprovalTriggerResult()`
+
+UnsetPreApprovalTriggerResult ensures that no value is present for PreApprovalTriggerResult, not even an explicit nil
+### GetClientMetadata
+
+`func (o *CompletedApproval) GetClientMetadata() map[string]string`
+
+GetClientMetadata returns the ClientMetadata field if non-nil, zero value otherwise.
+
+### GetClientMetadataOk
+
+`func (o *CompletedApproval) GetClientMetadataOk() (*map[string]string, bool)`
+
+GetClientMetadataOk returns a tuple with the ClientMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientMetadata
+
+`func (o *CompletedApproval) SetClientMetadata(v map[string]string)`
+
+SetClientMetadata sets ClientMetadata field to given value.
+
+### HasClientMetadata
+
+`func (o *CompletedApproval) HasClientMetadata() bool`
+
+HasClientMetadata returns a boolean if a field has been set.
+
+### GetRequestedAccounts
+
+`func (o *CompletedApproval) GetRequestedAccounts() string`
+
+GetRequestedAccounts returns the RequestedAccounts field if non-nil, zero value otherwise.
+
+### GetRequestedAccountsOk
+
+`func (o *CompletedApproval) GetRequestedAccountsOk() (*string, bool)`
+
+GetRequestedAccountsOk returns a tuple with the RequestedAccounts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedAccounts
+
+`func (o *CompletedApproval) SetRequestedAccounts(v string)`
+
+SetRequestedAccounts sets RequestedAccounts field to given value.
+
+### HasRequestedAccounts
+
+`func (o *CompletedApproval) HasRequestedAccounts() bool`
+
+HasRequestedAccounts returns a boolean if a field has been set.
+
+### SetRequestedAccountsNil
+
+`func (o *CompletedApproval) SetRequestedAccountsNil(b bool)`
+
+ SetRequestedAccountsNil sets the value for RequestedAccounts to be an explicit nil
+
+### UnsetRequestedAccounts
+`func (o *CompletedApproval) UnsetRequestedAccounts()`
+
+UnsetRequestedAccounts ensures that no value is present for RequestedAccounts, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

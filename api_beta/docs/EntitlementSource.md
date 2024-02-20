@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The source ID | [optional] 
 **Type** | Pointer to **string** | The source type, will always be \&quot;SOURCE\&quot; | [optional] 
-**Name** | Pointer to **string** | The source name | [optional] 
+**Name** | Pointer to **NullableString** | The source name | [optional] 
 
 ## Methods
 
@@ -102,6 +102,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *EntitlementSource) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *EntitlementSource) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

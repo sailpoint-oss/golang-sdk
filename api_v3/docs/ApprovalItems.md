@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The approval item&#39;s ID | [optional] 
-**Account** | Pointer to **string** | The account referenced by the approval item | [optional] 
+**Account** | Pointer to **NullableString** | The account referenced by the approval item | [optional] 
 **Application** | Pointer to **string** | The name of the application/source | [optional] 
-**Name** | Pointer to **string** | The attribute&#39;s name | [optional] 
+**Name** | Pointer to **NullableString** | The attribute&#39;s name | [optional] 
 **Operation** | Pointer to **string** | The attribute&#39;s operation | [optional] 
-**Value** | Pointer to **string** | The attribute&#39;s value | [optional] 
+**Value** | Pointer to **NullableString** | The attribute&#39;s value | [optional] 
 **State** | Pointer to [**WorkItemState**](WorkItemState.md) |  | [optional] 
 
 ## Methods
@@ -81,6 +81,16 @@ SetAccount sets Account field to given value.
 
 HasAccount returns a boolean if a field has been set.
 
+### SetAccountNil
+
+`func (o *ApprovalItems) SetAccountNil(b bool)`
+
+ SetAccountNil sets the value for Account to be an explicit nil
+
+### UnsetAccount
+`func (o *ApprovalItems) UnsetAccount()`
+
+UnsetAccount ensures that no value is present for Account, not even an explicit nil
 ### GetApplication
 
 `func (o *ApprovalItems) GetApplication() string`
@@ -131,6 +141,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *ApprovalItems) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *ApprovalItems) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetOperation
 
 `func (o *ApprovalItems) GetOperation() string`
@@ -181,6 +201,16 @@ SetValue sets Value field to given value.
 
 HasValue returns a boolean if a field has been set.
 
+### SetValueNil
+
+`func (o *ApprovalItems) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *ApprovalItems) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 ### GetState
 
 `func (o *ApprovalItems) GetState() WorkItemState`

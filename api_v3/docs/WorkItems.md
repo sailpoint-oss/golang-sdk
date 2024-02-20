@@ -5,21 +5,21 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | ID of the work item | [optional] 
-**RequesterId** | Pointer to **string** | ID of the requester | [optional] 
-**RequesterDisplayName** | Pointer to **string** | The displayname of the requester | [optional] 
-**OwnerId** | Pointer to **string** | The ID of the owner | [optional] 
+**RequesterId** | Pointer to **NullableString** | ID of the requester | [optional] 
+**RequesterDisplayName** | Pointer to **NullableString** | The displayname of the requester | [optional] 
+**OwnerId** | Pointer to **NullableString** | The ID of the owner | [optional] 
 **OwnerName** | Pointer to **string** | The name of the owner | [optional] 
 **Created** | Pointer to **time.Time** | Time when the work item was created | [optional] 
-**Modified** | Pointer to **time.Time** | Time when the work item was last updated | [optional] 
+**Modified** | Pointer to **NullableTime** | Time when the work item was last updated | [optional] 
 **Description** | Pointer to **string** | The description of the work item | [optional] 
-**State** | Pointer to [**WorkItemState**](WorkItemState.md) |  | [optional] 
-**Type** | Pointer to [**WorkItemType**](WorkItemType.md) |  | [optional] 
-**RemediationItems** | Pointer to [**RemediationItemDetails**](RemediationItemDetails.md) |  | [optional] 
-**ApprovalItems** | Pointer to [**ApprovalItemDetails**](ApprovalItemDetails.md) |  | [optional] 
-**Name** | Pointer to **string** | The work item name | [optional] 
-**Completed** | Pointer to **time.Time** | The time at which the work item completed | [optional] 
-**NumItems** | Pointer to **int32** | The number of items in the work item | [optional] 
-**Form** | Pointer to [**FormDetails**](FormDetails.md) |  | [optional] 
+**State** | Pointer to [**WorkItemStateManualWorkItems**](WorkItemStateManualWorkItems.md) |  | [optional] 
+**Type** | Pointer to [**WorkItemTypeManualWorkItems**](WorkItemTypeManualWorkItems.md) |  | [optional] 
+**RemediationItems** | Pointer to [**[]RemediationItemDetails**](RemediationItemDetails.md) | A list of remediation items | [optional] 
+**ApprovalItems** | Pointer to [**[]ApprovalItemDetails**](ApprovalItemDetails.md) | A list of items that need to be approved | [optional] 
+**Name** | Pointer to **NullableString** | The work item name | [optional] 
+**Completed** | Pointer to **NullableTime** | The time at which the work item completed | [optional] 
+**NumItems** | Pointer to **NullableInt32** | The number of items in the work item | [optional] 
+**Form** | Pointer to [**WorkItemsForm**](WorkItemsForm.md) |  | [optional] 
 **Errors** | Pointer to **[]string** | An array of errors that ocurred during the work item | [optional] 
 
 ## Methods
@@ -91,6 +91,16 @@ SetRequesterId sets RequesterId field to given value.
 
 HasRequesterId returns a boolean if a field has been set.
 
+### SetRequesterIdNil
+
+`func (o *WorkItems) SetRequesterIdNil(b bool)`
+
+ SetRequesterIdNil sets the value for RequesterId to be an explicit nil
+
+### UnsetRequesterId
+`func (o *WorkItems) UnsetRequesterId()`
+
+UnsetRequesterId ensures that no value is present for RequesterId, not even an explicit nil
 ### GetRequesterDisplayName
 
 `func (o *WorkItems) GetRequesterDisplayName() string`
@@ -116,6 +126,16 @@ SetRequesterDisplayName sets RequesterDisplayName field to given value.
 
 HasRequesterDisplayName returns a boolean if a field has been set.
 
+### SetRequesterDisplayNameNil
+
+`func (o *WorkItems) SetRequesterDisplayNameNil(b bool)`
+
+ SetRequesterDisplayNameNil sets the value for RequesterDisplayName to be an explicit nil
+
+### UnsetRequesterDisplayName
+`func (o *WorkItems) UnsetRequesterDisplayName()`
+
+UnsetRequesterDisplayName ensures that no value is present for RequesterDisplayName, not even an explicit nil
 ### GetOwnerId
 
 `func (o *WorkItems) GetOwnerId() string`
@@ -141,6 +161,16 @@ SetOwnerId sets OwnerId field to given value.
 
 HasOwnerId returns a boolean if a field has been set.
 
+### SetOwnerIdNil
+
+`func (o *WorkItems) SetOwnerIdNil(b bool)`
+
+ SetOwnerIdNil sets the value for OwnerId to be an explicit nil
+
+### UnsetOwnerId
+`func (o *WorkItems) UnsetOwnerId()`
+
+UnsetOwnerId ensures that no value is present for OwnerId, not even an explicit nil
 ### GetOwnerName
 
 `func (o *WorkItems) GetOwnerName() string`
@@ -216,6 +246,16 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
+### SetModifiedNil
+
+`func (o *WorkItems) SetModifiedNil(b bool)`
+
+ SetModifiedNil sets the value for Modified to be an explicit nil
+
+### UnsetModified
+`func (o *WorkItems) UnsetModified()`
+
+UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetDescription
 
 `func (o *WorkItems) GetDescription() string`
@@ -243,20 +283,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetState
 
-`func (o *WorkItems) GetState() WorkItemState`
+`func (o *WorkItems) GetState() WorkItemStateManualWorkItems`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *WorkItems) GetStateOk() (*WorkItemState, bool)`
+`func (o *WorkItems) GetStateOk() (*WorkItemStateManualWorkItems, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *WorkItems) SetState(v WorkItemState)`
+`func (o *WorkItems) SetState(v WorkItemStateManualWorkItems)`
 
 SetState sets State field to given value.
 
@@ -268,20 +308,20 @@ HasState returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *WorkItems) GetType() WorkItemType`
+`func (o *WorkItems) GetType() WorkItemTypeManualWorkItems`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *WorkItems) GetTypeOk() (*WorkItemType, bool)`
+`func (o *WorkItems) GetTypeOk() (*WorkItemTypeManualWorkItems, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *WorkItems) SetType(v WorkItemType)`
+`func (o *WorkItems) SetType(v WorkItemTypeManualWorkItems)`
 
 SetType sets Type field to given value.
 
@@ -293,20 +333,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetRemediationItems
 
-`func (o *WorkItems) GetRemediationItems() RemediationItemDetails`
+`func (o *WorkItems) GetRemediationItems() []RemediationItemDetails`
 
 GetRemediationItems returns the RemediationItems field if non-nil, zero value otherwise.
 
 ### GetRemediationItemsOk
 
-`func (o *WorkItems) GetRemediationItemsOk() (*RemediationItemDetails, bool)`
+`func (o *WorkItems) GetRemediationItemsOk() (*[]RemediationItemDetails, bool)`
 
 GetRemediationItemsOk returns a tuple with the RemediationItems field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRemediationItems
 
-`func (o *WorkItems) SetRemediationItems(v RemediationItemDetails)`
+`func (o *WorkItems) SetRemediationItems(v []RemediationItemDetails)`
 
 SetRemediationItems sets RemediationItems field to given value.
 
@@ -316,22 +356,32 @@ SetRemediationItems sets RemediationItems field to given value.
 
 HasRemediationItems returns a boolean if a field has been set.
 
+### SetRemediationItemsNil
+
+`func (o *WorkItems) SetRemediationItemsNil(b bool)`
+
+ SetRemediationItemsNil sets the value for RemediationItems to be an explicit nil
+
+### UnsetRemediationItems
+`func (o *WorkItems) UnsetRemediationItems()`
+
+UnsetRemediationItems ensures that no value is present for RemediationItems, not even an explicit nil
 ### GetApprovalItems
 
-`func (o *WorkItems) GetApprovalItems() ApprovalItemDetails`
+`func (o *WorkItems) GetApprovalItems() []ApprovalItemDetails`
 
 GetApprovalItems returns the ApprovalItems field if non-nil, zero value otherwise.
 
 ### GetApprovalItemsOk
 
-`func (o *WorkItems) GetApprovalItemsOk() (*ApprovalItemDetails, bool)`
+`func (o *WorkItems) GetApprovalItemsOk() (*[]ApprovalItemDetails, bool)`
 
 GetApprovalItemsOk returns a tuple with the ApprovalItems field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApprovalItems
 
-`func (o *WorkItems) SetApprovalItems(v ApprovalItemDetails)`
+`func (o *WorkItems) SetApprovalItems(v []ApprovalItemDetails)`
 
 SetApprovalItems sets ApprovalItems field to given value.
 
@@ -341,6 +391,16 @@ SetApprovalItems sets ApprovalItems field to given value.
 
 HasApprovalItems returns a boolean if a field has been set.
 
+### SetApprovalItemsNil
+
+`func (o *WorkItems) SetApprovalItemsNil(b bool)`
+
+ SetApprovalItemsNil sets the value for ApprovalItems to be an explicit nil
+
+### UnsetApprovalItems
+`func (o *WorkItems) UnsetApprovalItems()`
+
+UnsetApprovalItems ensures that no value is present for ApprovalItems, not even an explicit nil
 ### GetName
 
 `func (o *WorkItems) GetName() string`
@@ -366,6 +426,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *WorkItems) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *WorkItems) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetCompleted
 
 `func (o *WorkItems) GetCompleted() time.Time`
@@ -391,6 +461,16 @@ SetCompleted sets Completed field to given value.
 
 HasCompleted returns a boolean if a field has been set.
 
+### SetCompletedNil
+
+`func (o *WorkItems) SetCompletedNil(b bool)`
+
+ SetCompletedNil sets the value for Completed to be an explicit nil
+
+### UnsetCompleted
+`func (o *WorkItems) UnsetCompleted()`
+
+UnsetCompleted ensures that no value is present for Completed, not even an explicit nil
 ### GetNumItems
 
 `func (o *WorkItems) GetNumItems() int32`
@@ -416,22 +496,32 @@ SetNumItems sets NumItems field to given value.
 
 HasNumItems returns a boolean if a field has been set.
 
+### SetNumItemsNil
+
+`func (o *WorkItems) SetNumItemsNil(b bool)`
+
+ SetNumItemsNil sets the value for NumItems to be an explicit nil
+
+### UnsetNumItems
+`func (o *WorkItems) UnsetNumItems()`
+
+UnsetNumItems ensures that no value is present for NumItems, not even an explicit nil
 ### GetForm
 
-`func (o *WorkItems) GetForm() FormDetails`
+`func (o *WorkItems) GetForm() WorkItemsForm`
 
 GetForm returns the Form field if non-nil, zero value otherwise.
 
 ### GetFormOk
 
-`func (o *WorkItems) GetFormOk() (*FormDetails, bool)`
+`func (o *WorkItems) GetFormOk() (*WorkItemsForm, bool)`
 
 GetFormOk returns a tuple with the Form field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetForm
 
-`func (o *WorkItems) SetForm(v FormDetails)`
+`func (o *WorkItems) SetForm(v WorkItemsForm)`
 
 SetForm sets Form field to given value.
 

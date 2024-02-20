@@ -20,11 +20,11 @@ var _ MappedNullable = &ApprovalReminderAndEscalationConfig{}
 // ApprovalReminderAndEscalationConfig struct for ApprovalReminderAndEscalationConfig
 type ApprovalReminderAndEscalationConfig struct {
 	// Number of days to wait before the first reminder. If no reminders are configured, then this is the number of days to wait before escalation.
-	DaysUntilEscalation *int32 `json:"daysUntilEscalation,omitempty"`
+	DaysUntilEscalation NullableInt32 `json:"daysUntilEscalation,omitempty"`
 	// Number of days to wait between reminder notifications.
-	DaysBetweenReminders *int32 `json:"daysBetweenReminders,omitempty"`
+	DaysBetweenReminders NullableInt32 `json:"daysBetweenReminders,omitempty"`
 	// Maximum number of reminder notification to send to the reviewer before approval escalation.
-	MaxReminders *int32 `json:"maxReminders,omitempty"`
+	MaxReminders NullableInt32 `json:"maxReminders,omitempty"`
 	FallbackApproverRef NullableIdentityReferenceWithNameAndEmail `json:"fallbackApproverRef,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -48,100 +48,130 @@ func NewApprovalReminderAndEscalationConfigWithDefaults() *ApprovalReminderAndEs
 	return &this
 }
 
-// GetDaysUntilEscalation returns the DaysUntilEscalation field value if set, zero value otherwise.
+// GetDaysUntilEscalation returns the DaysUntilEscalation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalReminderAndEscalationConfig) GetDaysUntilEscalation() int32 {
-	if o == nil || isNil(o.DaysUntilEscalation) {
+	if o == nil || isNil(o.DaysUntilEscalation.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.DaysUntilEscalation
+	return *o.DaysUntilEscalation.Get()
 }
 
 // GetDaysUntilEscalationOk returns a tuple with the DaysUntilEscalation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalReminderAndEscalationConfig) GetDaysUntilEscalationOk() (*int32, bool) {
-	if o == nil || isNil(o.DaysUntilEscalation) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DaysUntilEscalation, true
+	return o.DaysUntilEscalation.Get(), o.DaysUntilEscalation.IsSet()
 }
 
 // HasDaysUntilEscalation returns a boolean if a field has been set.
 func (o *ApprovalReminderAndEscalationConfig) HasDaysUntilEscalation() bool {
-	if o != nil && !isNil(o.DaysUntilEscalation) {
+	if o != nil && o.DaysUntilEscalation.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDaysUntilEscalation gets a reference to the given int32 and assigns it to the DaysUntilEscalation field.
+// SetDaysUntilEscalation gets a reference to the given NullableInt32 and assigns it to the DaysUntilEscalation field.
 func (o *ApprovalReminderAndEscalationConfig) SetDaysUntilEscalation(v int32) {
-	o.DaysUntilEscalation = &v
+	o.DaysUntilEscalation.Set(&v)
+}
+// SetDaysUntilEscalationNil sets the value for DaysUntilEscalation to be an explicit nil
+func (o *ApprovalReminderAndEscalationConfig) SetDaysUntilEscalationNil() {
+	o.DaysUntilEscalation.Set(nil)
 }
 
-// GetDaysBetweenReminders returns the DaysBetweenReminders field value if set, zero value otherwise.
+// UnsetDaysUntilEscalation ensures that no value is present for DaysUntilEscalation, not even an explicit nil
+func (o *ApprovalReminderAndEscalationConfig) UnsetDaysUntilEscalation() {
+	o.DaysUntilEscalation.Unset()
+}
+
+// GetDaysBetweenReminders returns the DaysBetweenReminders field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalReminderAndEscalationConfig) GetDaysBetweenReminders() int32 {
-	if o == nil || isNil(o.DaysBetweenReminders) {
+	if o == nil || isNil(o.DaysBetweenReminders.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.DaysBetweenReminders
+	return *o.DaysBetweenReminders.Get()
 }
 
 // GetDaysBetweenRemindersOk returns a tuple with the DaysBetweenReminders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalReminderAndEscalationConfig) GetDaysBetweenRemindersOk() (*int32, bool) {
-	if o == nil || isNil(o.DaysBetweenReminders) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DaysBetweenReminders, true
+	return o.DaysBetweenReminders.Get(), o.DaysBetweenReminders.IsSet()
 }
 
 // HasDaysBetweenReminders returns a boolean if a field has been set.
 func (o *ApprovalReminderAndEscalationConfig) HasDaysBetweenReminders() bool {
-	if o != nil && !isNil(o.DaysBetweenReminders) {
+	if o != nil && o.DaysBetweenReminders.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDaysBetweenReminders gets a reference to the given int32 and assigns it to the DaysBetweenReminders field.
+// SetDaysBetweenReminders gets a reference to the given NullableInt32 and assigns it to the DaysBetweenReminders field.
 func (o *ApprovalReminderAndEscalationConfig) SetDaysBetweenReminders(v int32) {
-	o.DaysBetweenReminders = &v
+	o.DaysBetweenReminders.Set(&v)
+}
+// SetDaysBetweenRemindersNil sets the value for DaysBetweenReminders to be an explicit nil
+func (o *ApprovalReminderAndEscalationConfig) SetDaysBetweenRemindersNil() {
+	o.DaysBetweenReminders.Set(nil)
 }
 
-// GetMaxReminders returns the MaxReminders field value if set, zero value otherwise.
+// UnsetDaysBetweenReminders ensures that no value is present for DaysBetweenReminders, not even an explicit nil
+func (o *ApprovalReminderAndEscalationConfig) UnsetDaysBetweenReminders() {
+	o.DaysBetweenReminders.Unset()
+}
+
+// GetMaxReminders returns the MaxReminders field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApprovalReminderAndEscalationConfig) GetMaxReminders() int32 {
-	if o == nil || isNil(o.MaxReminders) {
+	if o == nil || isNil(o.MaxReminders.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.MaxReminders
+	return *o.MaxReminders.Get()
 }
 
 // GetMaxRemindersOk returns a tuple with the MaxReminders field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApprovalReminderAndEscalationConfig) GetMaxRemindersOk() (*int32, bool) {
-	if o == nil || isNil(o.MaxReminders) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaxReminders, true
+	return o.MaxReminders.Get(), o.MaxReminders.IsSet()
 }
 
 // HasMaxReminders returns a boolean if a field has been set.
 func (o *ApprovalReminderAndEscalationConfig) HasMaxReminders() bool {
-	if o != nil && !isNil(o.MaxReminders) {
+	if o != nil && o.MaxReminders.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMaxReminders gets a reference to the given int32 and assigns it to the MaxReminders field.
+// SetMaxReminders gets a reference to the given NullableInt32 and assigns it to the MaxReminders field.
 func (o *ApprovalReminderAndEscalationConfig) SetMaxReminders(v int32) {
-	o.MaxReminders = &v
+	o.MaxReminders.Set(&v)
+}
+// SetMaxRemindersNil sets the value for MaxReminders to be an explicit nil
+func (o *ApprovalReminderAndEscalationConfig) SetMaxRemindersNil() {
+	o.MaxReminders.Set(nil)
+}
+
+// UnsetMaxReminders ensures that no value is present for MaxReminders, not even an explicit nil
+func (o *ApprovalReminderAndEscalationConfig) UnsetMaxReminders() {
+	o.MaxReminders.Unset()
 }
 
 // GetFallbackApproverRef returns the FallbackApproverRef field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -196,14 +226,14 @@ func (o ApprovalReminderAndEscalationConfig) MarshalJSON() ([]byte, error) {
 
 func (o ApprovalReminderAndEscalationConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.DaysUntilEscalation) {
-		toSerialize["daysUntilEscalation"] = o.DaysUntilEscalation
+	if o.DaysUntilEscalation.IsSet() {
+		toSerialize["daysUntilEscalation"] = o.DaysUntilEscalation.Get()
 	}
-	if !isNil(o.DaysBetweenReminders) {
-		toSerialize["daysBetweenReminders"] = o.DaysBetweenReminders
+	if o.DaysBetweenReminders.IsSet() {
+		toSerialize["daysBetweenReminders"] = o.DaysBetweenReminders.Get()
 	}
-	if !isNil(o.MaxReminders) {
-		toSerialize["maxReminders"] = o.MaxReminders
+	if o.MaxReminders.IsSet() {
+		toSerialize["maxReminders"] = o.MaxReminders.Get()
 	}
 	if o.FallbackApproverRef.IsSet() {
 		toSerialize["fallbackApproverRef"] = o.FallbackApproverRef.Get()

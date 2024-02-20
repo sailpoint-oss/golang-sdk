@@ -21,6 +21,8 @@
 
 * `AGGREGATED_ENTITLEMENT` (value: `"AGGREGATED_ENTITLEMENT"`)
 
+* `INVALID_CERTIFIABLE_ENTITY` (value: `"INVALID_CERTIFIABLE_ENTITY"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

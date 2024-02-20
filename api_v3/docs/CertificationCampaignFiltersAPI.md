@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ## ListCampaignFilters
 
-> []CampaignFilterDetails ListCampaignFilters(ctx).Limit(limit).Start(start).IncludeSystemFilters(includeSystemFilters).Execute()
+> ListCampaignFilters200Response ListCampaignFilters(ctx).Limit(limit).Start(start).IncludeSystemFilters(includeSystemFilters).Execute()
 
 List Campaign Filters
 
@@ -244,7 +244,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `CertificationCampaignFiltersAPI.ListCampaignFilters``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListCampaignFilters`: []CampaignFilterDetails
+    // response from `ListCampaignFilters`: ListCampaignFilters200Response
     fmt.Fprintf(os.Stdout, "Response from `CertificationCampaignFiltersAPI.ListCampaignFilters`: %v\n", resp)
 }
 ```
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]CampaignFilterDetails**](CampaignFilterDetails.md)
+[**ListCampaignFilters200Response**](ListCampaignFilters200Response.md)
 
 ### Authorization
 

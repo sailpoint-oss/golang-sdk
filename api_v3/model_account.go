@@ -59,6 +59,8 @@ type Account struct {
 	HasEntitlements bool `json:"hasEntitlements"`
 	Identity *BaseReferenceDto `json:"identity,omitempty"`
 	SourceOwner *BaseReferenceDto `json:"sourceOwner,omitempty"`
+	// A string list containing the owning source's features
+	Features NullableString `json:"features,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -657,6 +659,48 @@ func (o *Account) SetSourceOwner(v BaseReferenceDto) {
 	o.SourceOwner = &v
 }
 
+// GetFeatures returns the Features field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Account) GetFeatures() string {
+	if o == nil || isNil(o.Features.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Features.Get()
+}
+
+// GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Account) GetFeaturesOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Features.Get(), o.Features.IsSet()
+}
+
+// HasFeatures returns a boolean if a field has been set.
+func (o *Account) HasFeatures() bool {
+	if o != nil && o.Features.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFeatures gets a reference to the given NullableString and assigns it to the Features field.
+func (o *Account) SetFeatures(v string) {
+	o.Features.Set(&v)
+}
+// SetFeaturesNil sets the value for Features to be an explicit nil
+func (o *Account) SetFeaturesNil() {
+	o.Features.Set(nil)
+}
+
+// UnsetFeatures ensures that no value is present for Features, not even an explicit nil
+func (o *Account) UnsetFeatures() {
+	o.Features.Unset()
+}
+
 func (o Account) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -696,6 +740,9 @@ func (o Account) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.SourceOwner) {
 		toSerialize["sourceOwner"] = o.SourceOwner
+	}
+	if o.Features.IsSet() {
+		toSerialize["features"] = o.Features.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -767,6 +814,7 @@ func (o *Account) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "hasEntitlements")
 		delete(additionalProperties, "identity")
 		delete(additionalProperties, "sourceOwner")
+		delete(additionalProperties, "features")
 		o.AdditionalProperties = additionalProperties
 	}
 

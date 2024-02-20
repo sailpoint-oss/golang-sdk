@@ -30,7 +30,7 @@ type PendingApproval struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// When the access-request was created.
 	RequestCreated *time.Time `json:"requestCreated,omitempty"`
-	RequestType *AccessRequestType `json:"requestType,omitempty"`
+	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
 	// Identities access was requested for.
 	RequestedFor []AccessItemRequestedFor `json:"requestedFor,omitempty"`
@@ -241,36 +241,46 @@ func (o *PendingApproval) SetRequestCreated(v time.Time) {
 	o.RequestCreated = &v
 }
 
-// GetRequestType returns the RequestType field value if set, zero value otherwise.
+// GetRequestType returns the RequestType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PendingApproval) GetRequestType() AccessRequestType {
-	if o == nil || isNil(o.RequestType) {
+	if o == nil || isNil(o.RequestType.Get()) {
 		var ret AccessRequestType
 		return ret
 	}
-	return *o.RequestType
+	return *o.RequestType.Get()
 }
 
 // GetRequestTypeOk returns a tuple with the RequestType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PendingApproval) GetRequestTypeOk() (*AccessRequestType, bool) {
-	if o == nil || isNil(o.RequestType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RequestType, true
+	return o.RequestType.Get(), o.RequestType.IsSet()
 }
 
 // HasRequestType returns a boolean if a field has been set.
 func (o *PendingApproval) HasRequestType() bool {
-	if o != nil && !isNil(o.RequestType) {
+	if o != nil && o.RequestType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRequestType gets a reference to the given AccessRequestType and assigns it to the RequestType field.
+// SetRequestType gets a reference to the given NullableAccessRequestType and assigns it to the RequestType field.
 func (o *PendingApproval) SetRequestType(v AccessRequestType) {
-	o.RequestType = &v
+	o.RequestType.Set(&v)
+}
+// SetRequestTypeNil sets the value for RequestType to be an explicit nil
+func (o *PendingApproval) SetRequestTypeNil() {
+	o.RequestType.Set(nil)
+}
+
+// UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
+func (o *PendingApproval) UnsetRequestType() {
+	o.RequestType.Unset()
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
@@ -714,8 +724,8 @@ func (o PendingApproval) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.RequestCreated) {
 		toSerialize["requestCreated"] = o.RequestCreated
 	}
-	if !isNil(o.RequestType) {
-		toSerialize["requestType"] = o.RequestType
+	if o.RequestType.IsSet() {
+		toSerialize["requestType"] = o.RequestType.Get()
 	}
 	if !isNil(o.Requester) {
 		toSerialize["requester"] = o.Requester

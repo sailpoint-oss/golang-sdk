@@ -119,6 +119,7 @@ docs/ApprovalScheme.md
 docs/ApprovalSchemeForRole.md
 docs/ApprovalStatus.md
 docs/ApprovalStatusDto.md
+docs/ApprovalStatusDtoCurrentOwner.md
 docs/ApprovalStatusDtoOriginalOwner.md
 docs/ApprovalSummary.md
 docs/ArrayInner.md
@@ -179,7 +180,10 @@ docs/ClientType.md
 docs/Column.md
 docs/Comment.md
 docs/CommentDto.md
+docs/CommentDtoAuthor.md
 docs/CompletedApproval.md
+docs/CompletedApprovalPreApprovalTriggerResult.md
+docs/CompletedApprovalRequesterComment.md
 docs/CompletedApprovalReviewerComment.md
 docs/CompletedApprovalState.md
 docs/CompletionStatus.md
@@ -208,6 +212,7 @@ docs/EntitlementDocument.md
 docs/EntitlementDocumentAllOfSource.md
 docs/EntitlementDto.md
 docs/EntitlementRef.md
+docs/EntitlementRef1.md
 docs/EntitlementRequestConfig.md
 docs/EntitlementSource.md
 docs/EntitlementSummary.md
@@ -222,6 +227,7 @@ docs/ExceptionCriteriaCriteriaListInner.md
 docs/ExecutionStatus.md
 docs/ExpansionItem.md
 docs/Expression.md
+docs/ExpressionChildrenInner.md
 docs/FieldDetailsDto.md
 docs/Filter.md
 docs/FilterAggregation.md
@@ -271,6 +277,7 @@ docs/LifecycleStatesAPI.md
 docs/LifecyclestateDeleted.md
 docs/ListAccessProfiles401Response.md
 docs/ListAccessProfiles429Response.md
+docs/ListCampaignFilters200Response.md
 docs/LocaleOrigin.md
 docs/ManagerCorrelationMapping.md
 docs/ManualWorkItemDetails.md
@@ -386,7 +393,12 @@ docs/RequestableObjectRequestStatus.md
 docs/RequestableObjectType.md
 docs/RequestableObjectsAPI.md
 docs/RequestedItemStatus.md
+docs/RequestedItemStatusCancelledRequestDetails.md
+docs/RequestedItemStatusPreApprovalTriggerDetails.md
+docs/RequestedItemStatusProvisioningDetails.md
 docs/RequestedItemStatusRequestState.md
+docs/RequestedItemStatusRequesterComment.md
+docs/RequestedItemStatusSodViolationContext.md
 docs/ReviewDecision.md
 docs/ReviewReassign.md
 docs/ReviewRecommendation.md
@@ -424,6 +436,7 @@ docs/Schedule.md
 docs/Schedule1.md
 docs/Schedule1Days.md
 docs/Schedule1Hours.md
+docs/Schedule1Months.md
 docs/ScheduleDays.md
 docs/ScheduleHours.md
 docs/ScheduleMonths.md
@@ -443,6 +456,7 @@ docs/SearchSchedule.md
 docs/SearchScheduleRecipientsInner.md
 docs/SectionDetails.md
 docs/Segment.md
+docs/SegmentVisibilityCriteria.md
 docs/SegmentsAPI.md
 docs/Selector.md
 docs/SelectorType.md
@@ -476,6 +490,7 @@ docs/SourceClusterDto.md
 docs/SourceFeature.md
 docs/SourceHealthDto.md
 docs/SourceManagementWorkgroup.md
+docs/SourceManagerCorrelationMapping.md
 docs/SourceManagerCorrelationRule.md
 docs/SourceOwner.md
 docs/SourcePasswordPoliciesInner.md
@@ -514,10 +529,12 @@ docs/ViolationOwnerAssignmentConfigOwnerRef.md
 docs/ViolationPrediction.md
 docs/VisibilityCriteria.md
 docs/WorkItemState.md
-docs/WorkItemType.md
+docs/WorkItemStateManualWorkItems.md
+docs/WorkItemTypeManualWorkItems.md
 docs/WorkItems.md
 docs/WorkItemsAPI.md
 docs/WorkItemsCount.md
+docs/WorkItemsForm.md
 docs/WorkItemsSummary.md
 git_push.sh
 go.mod
@@ -590,6 +607,7 @@ model_approval_scheme.go
 model_approval_scheme_for_role.go
 model_approval_status.go
 model_approval_status_dto.go
+model_approval_status_dto_current_owner.go
 model_approval_status_dto_original_owner.go
 model_approval_summary.go
 model_array_inner.go
@@ -644,7 +662,10 @@ model_client_type.go
 model_column.go
 model_comment.go
 model_comment_dto.go
+model_comment_dto_author.go
 model_completed_approval.go
+model_completed_approval_pre_approval_trigger_result.go
+model_completed_approval_requester_comment.go
 model_completed_approval_reviewer_comment.go
 model_completed_approval_state.go
 model_completion_status.go
@@ -672,6 +693,7 @@ model_entitlement_document.go
 model_entitlement_document_all_of_source.go
 model_entitlement_dto.go
 model_entitlement_ref.go
+model_entitlement_ref_1.go
 model_entitlement_request_config.go
 model_entitlement_source.go
 model_entitlement_summary.go
@@ -686,6 +708,7 @@ model_exception_criteria_criteria_list_inner.go
 model_execution_status.go
 model_expansion_item.go
 model_expression.go
+model_expression_children_inner.go
 model_field_details_dto.go
 model_filter.go
 model_filter_aggregation.go
@@ -732,6 +755,7 @@ model_lifecycle_state.go
 model_lifecyclestate_deleted.go
 model_list_access_profiles_401_response.go
 model_list_access_profiles_429_response.go
+model_list_campaign_filters_200_response.go
 model_locale_origin.go
 model_manager_correlation_mapping.go
 model_manual_work_item_details.go
@@ -836,7 +860,12 @@ model_requestable_object_reference.go
 model_requestable_object_request_status.go
 model_requestable_object_type.go
 model_requested_item_status.go
+model_requested_item_status_cancelled_request_details.go
+model_requested_item_status_pre_approval_trigger_details.go
+model_requested_item_status_provisioning_details.go
 model_requested_item_status_request_state.go
+model_requested_item_status_requester_comment.go
+model_requested_item_status_sod_violation_context.go
 model_review_decision.go
 model_review_reassign.go
 model_review_recommendation.go
@@ -870,6 +899,7 @@ model_schedule.go
 model_schedule_1.go
 model_schedule_1_days.go
 model_schedule_1_hours.go
+model_schedule_1_months.go
 model_schedule_days.go
 model_schedule_hours.go
 model_schedule_months.go
@@ -887,6 +917,7 @@ model_search_schedule.go
 model_search_schedule_recipients_inner.go
 model_section_details.go
 model_segment.go
+model_segment_visibility_criteria.go
 model_selector.go
 model_selector_type.go
 model_service_desk_integration_dto.go
@@ -918,6 +949,7 @@ model_source_cluster_dto.go
 model_source_feature.go
 model_source_health_dto.go
 model_source_management_workgroup.go
+model_source_manager_correlation_mapping.go
 model_source_manager_correlation_rule.go
 model_source_owner.go
 model_source_password_policies_inner.go
@@ -952,9 +984,11 @@ model_violation_owner_assignment_config_owner_ref.go
 model_violation_prediction.go
 model_visibility_criteria.go
 model_work_item_state.go
-model_work_item_type.go
+model_work_item_state_manual_work_items.go
+model_work_item_type_manual_work_items.go
 model_work_items.go
 model_work_items_count.go
+model_work_items_form.go
 model_work_items_summary.go
 response.go
 test/api_access_profiles_test.go

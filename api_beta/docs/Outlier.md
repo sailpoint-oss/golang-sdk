@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **Ignored** | Pointer to **bool** | Flag whether or not the outlier has been ignored | [optional] 
 **Attributes** | Pointer to **map[string]interface{}** | Object containing mapped identity attributes | [optional] 
 **Score** | Pointer to **float32** | The outlier score determined by the detection engine ranging from 0..1 | [optional] 
-**UnignoreType** | Pointer to **string** | Enum value of if the outlier manually or automatically un-ignored. Will be NULL if outlier is not ignored | [optional] 
-**UnignoreDate** | Pointer to **time.Time** | shows date when last time has been unignored outlier | [optional] 
-**IgnoreDate** | Pointer to **time.Time** | shows date when last time has been ignored outlier | [optional] 
+**UnignoreType** | Pointer to **NullableString** | Enum value of if the outlier manually or automatically un-ignored. Will be NULL if outlier is not ignored | [optional] 
+**UnignoreDate** | Pointer to **NullableTime** | shows date when last time has been unignored outlier | [optional] 
+**IgnoreDate** | Pointer to **NullableTime** | shows date when last time has been ignored outlier | [optional] 
 
 ## Methods
 
@@ -260,6 +260,16 @@ SetUnignoreType sets UnignoreType field to given value.
 
 HasUnignoreType returns a boolean if a field has been set.
 
+### SetUnignoreTypeNil
+
+`func (o *Outlier) SetUnignoreTypeNil(b bool)`
+
+ SetUnignoreTypeNil sets the value for UnignoreType to be an explicit nil
+
+### UnsetUnignoreType
+`func (o *Outlier) UnsetUnignoreType()`
+
+UnsetUnignoreType ensures that no value is present for UnignoreType, not even an explicit nil
 ### GetUnignoreDate
 
 `func (o *Outlier) GetUnignoreDate() time.Time`
@@ -285,6 +295,16 @@ SetUnignoreDate sets UnignoreDate field to given value.
 
 HasUnignoreDate returns a boolean if a field has been set.
 
+### SetUnignoreDateNil
+
+`func (o *Outlier) SetUnignoreDateNil(b bool)`
+
+ SetUnignoreDateNil sets the value for UnignoreDate to be an explicit nil
+
+### UnsetUnignoreDate
+`func (o *Outlier) UnsetUnignoreDate()`
+
+UnsetUnignoreDate ensures that no value is present for UnignoreDate, not even an explicit nil
 ### GetIgnoreDate
 
 `func (o *Outlier) GetIgnoreDate() time.Time`
@@ -310,6 +330,16 @@ SetIgnoreDate sets IgnoreDate field to given value.
 
 HasIgnoreDate returns a boolean if a field has been set.
 
+### SetIgnoreDateNil
+
+`func (o *Outlier) SetIgnoreDateNil(b bool)`
+
+ SetIgnoreDateNil sets the value for IgnoreDate to be an explicit nil
+
+### UnsetIgnoreDate
+`func (o *Outlier) UnsetIgnoreDate()`
+
+UnsetIgnoreDate ensures that no value is present for IgnoreDate, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -622,7 +622,7 @@ Name | Type | Description  | Notes
 
 ## GetNotificationsTemplateContext
 
-> []NotificationTemplateContext GetNotificationsTemplateContext(ctx).Execute()
+> NotificationTemplateContext GetNotificationsTemplateContext(ctx).Execute()
 
 Get Notification Template Context
 
@@ -649,7 +649,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NotificationsAPI.GetNotificationsTemplateContext``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetNotificationsTemplateContext`: []NotificationTemplateContext
+    // response from `GetNotificationsTemplateContext`: NotificationTemplateContext
     fmt.Fprintf(os.Stdout, "Response from `NotificationsAPI.GetNotificationsTemplateContext`: %v\n", resp)
 }
 ```
@@ -665,7 +665,7 @@ Other parameters are passed through a pointer to a apiGetNotificationsTemplateCo
 
 ### Return type
 
-[**[]NotificationTemplateContext**](NotificationTemplateContext.md)
+[**NotificationTemplateContext**](NotificationTemplateContext.md)
 
 ### Authorization
 

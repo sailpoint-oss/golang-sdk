@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **AccountManagers** | Pointer to [**[]NonEmployeeIdentityReferenceWithId**](NonEmployeeIdentityReferenceWithId.md) | List of account managers | [optional] 
 **Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
 **Created** | Pointer to **time.Time** | When the request was created. | [optional] 
-**NonEmployeeCount** | Pointer to **int32** | Number of non-employee records associated with this source. | [optional] 
+**NonEmployeeCount** | Pointer to **NullableInt32** | Number of non-employee records associated with this source. | [optional] 
 
 ## Methods
 
@@ -258,6 +258,16 @@ SetNonEmployeeCount sets NonEmployeeCount field to given value.
 
 HasNonEmployeeCount returns a boolean if a field has been set.
 
+### SetNonEmployeeCountNil
+
+`func (o *NonEmployeeSourceWithNECount) SetNonEmployeeCountNil(b bool)`
+
+ SetNonEmployeeCountNil sets the value for NonEmployeeCount to be an explicit nil
+
+### UnsetNonEmployeeCount
+`func (o *NonEmployeeSourceWithNECount) UnsetNonEmployeeCount()`
+
+UnsetNonEmployeeCount ensures that no value is present for NonEmployeeCount, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

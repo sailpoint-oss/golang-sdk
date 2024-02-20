@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Common access ID | [optional] 
 **Type** | Pointer to [**CommonAccessType**](CommonAccessType.md) |  | [optional] 
 **Name** | Pointer to **string** | Common access name | [optional] 
-**Description** | Pointer to **string** | Common access description | [optional] 
+**Description** | Pointer to **NullableString** | Common access description | [optional] 
 **OwnerName** | Pointer to **string** | Common access owner name | [optional] 
 **OwnerId** | Pointer to **string** | Common access owner ID | [optional] 
 
@@ -130,6 +130,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *CommonAccessItemAccess) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *CommonAccessItemAccess) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetOwnerName
 
 `func (o *CommonAccessItemAccess) GetOwnerName() string`

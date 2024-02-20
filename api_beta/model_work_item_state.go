@@ -26,6 +26,7 @@ const (
 	WORKITEMSTATE_EXPIRED WorkItemState = "EXPIRED"
 	WORKITEMSTATE_PENDING WorkItemState = "PENDING"
 	WORKITEMSTATE_CANCELED WorkItemState = "CANCELED"
+	WORKITEMSTATE_NULL WorkItemState = "null"
 )
 
 // All allowed values of WorkItemState enum
@@ -36,6 +37,7 @@ var AllowedWorkItemStateEnumValues = []WorkItemState{
 	"EXPIRED",
 	"PENDING",
 	"CANCELED",
+	"null",
 }
 
 func (v *WorkItemState) UnmarshalJSON(src []byte) error {

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** | When the approval was created. | [optional] 
 **Modified** | Pointer to **time.Time** | When the approval was modified last time. | [optional] 
 **RequestCreated** | Pointer to **time.Time** | When the access-request was created. | [optional] 
-**RequestType** | Pointer to [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
+**RequestType** | Pointer to [**NullableAccessRequestType**](AccessRequestType.md) |  | [optional] 
 **Requester** | Pointer to [**AccessItemRequesterDto**](AccessItemRequesterDto.md) |  | [optional] 
 **RequestedFor** | Pointer to [**[]AccessItemRequestedForDto**](AccessItemRequestedForDto.md) | Identities access was requested for. | [optional] 
 **Owner** | Pointer to [**AccessItemOwnerDto**](AccessItemOwnerDto.md) |  | [optional] 
@@ -193,6 +193,16 @@ SetRequestType sets RequestType field to given value.
 
 HasRequestType returns a boolean if a field has been set.
 
+### SetRequestTypeNil
+
+`func (o *PendingApproval) SetRequestTypeNil(b bool)`
+
+ SetRequestTypeNil sets the value for RequestType to be an explicit nil
+
+### UnsetRequestType
+`func (o *PendingApproval) UnsetRequestType()`
+
+UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
 ### GetRequester
 
 `func (o *PendingApproval) GetRequester() AccessItemRequesterDto`

@@ -30,15 +30,15 @@ type CompletedApproval struct {
 	Modified *time.Time `json:"modified,omitempty"`
 	// When the access-request was created.
 	RequestCreated *time.Time `json:"requestCreated,omitempty"`
-	RequestType *AccessRequestType `json:"requestType,omitempty"`
+	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
 	// Identities access was requested for.
 	RequestedFor []AccessItemRequestedFor `json:"requestedFor,omitempty"`
 	ReviewedBy *AccessItemReviewedBy `json:"reviewedBy,omitempty"`
 	Owner *OwnerDto `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
-	RequesterComment *CommentDto `json:"requesterComment,omitempty"`
-	ReviewerComment NullableCompletedApprovalReviewerComment `json:"reviewerComment,omitempty"`
+	RequesterComment *CompletedApprovalRequesterComment `json:"requesterComment,omitempty"`
+	ReviewerComment *CompletedApprovalReviewerComment `json:"reviewerComment,omitempty"`
 	// The history of the previous reviewers comments.
 	PreviousReviewersComments []CommentDto `json:"previousReviewersComments,omitempty"`
 	// The history of approval forward action.
@@ -53,6 +53,10 @@ type CompletedApproval struct {
 	// The remove date or sunset date that was assigned at the time of the request.
 	CurrentRemoveDate NullableTime `json:"currentRemoveDate,omitempty"`
 	SodViolationContext *SodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
+	PreApprovalTriggerResult NullableCompletedApprovalPreApprovalTriggerResult `json:"preApprovalTriggerResult,omitempty"`
+	// Arbitrary key-value pairs provided during the request.
+	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
+	RequestedAccounts NullableString `json:"requestedAccounts,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -243,36 +247,46 @@ func (o *CompletedApproval) SetRequestCreated(v time.Time) {
 	o.RequestCreated = &v
 }
 
-// GetRequestType returns the RequestType field value if set, zero value otherwise.
+// GetRequestType returns the RequestType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CompletedApproval) GetRequestType() AccessRequestType {
-	if o == nil || isNil(o.RequestType) {
+	if o == nil || isNil(o.RequestType.Get()) {
 		var ret AccessRequestType
 		return ret
 	}
-	return *o.RequestType
+	return *o.RequestType.Get()
 }
 
 // GetRequestTypeOk returns a tuple with the RequestType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CompletedApproval) GetRequestTypeOk() (*AccessRequestType, bool) {
-	if o == nil || isNil(o.RequestType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RequestType, true
+	return o.RequestType.Get(), o.RequestType.IsSet()
 }
 
 // HasRequestType returns a boolean if a field has been set.
 func (o *CompletedApproval) HasRequestType() bool {
-	if o != nil && !isNil(o.RequestType) {
+	if o != nil && o.RequestType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRequestType gets a reference to the given AccessRequestType and assigns it to the RequestType field.
+// SetRequestType gets a reference to the given NullableAccessRequestType and assigns it to the RequestType field.
 func (o *CompletedApproval) SetRequestType(v AccessRequestType) {
-	o.RequestType = &v
+	o.RequestType.Set(&v)
+}
+// SetRequestTypeNil sets the value for RequestType to be an explicit nil
+func (o *CompletedApproval) SetRequestTypeNil() {
+	o.RequestType.Set(nil)
+}
+
+// UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
+func (o *CompletedApproval) UnsetRequestType() {
+	o.RequestType.Unset()
 }
 
 // GetRequester returns the Requester field value if set, zero value otherwise.
@@ -436,9 +450,9 @@ func (o *CompletedApproval) SetRequestedObject(v RequestableObjectReference) {
 }
 
 // GetRequesterComment returns the RequesterComment field value if set, zero value otherwise.
-func (o *CompletedApproval) GetRequesterComment() CommentDto {
+func (o *CompletedApproval) GetRequesterComment() CompletedApprovalRequesterComment {
 	if o == nil || isNil(o.RequesterComment) {
-		var ret CommentDto
+		var ret CompletedApprovalRequesterComment
 		return ret
 	}
 	return *o.RequesterComment
@@ -446,7 +460,7 @@ func (o *CompletedApproval) GetRequesterComment() CommentDto {
 
 // GetRequesterCommentOk returns a tuple with the RequesterComment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetRequesterCommentOk() (*CommentDto, bool) {
+func (o *CompletedApproval) GetRequesterCommentOk() (*CompletedApprovalRequesterComment, bool) {
 	if o == nil || isNil(o.RequesterComment) {
 		return nil, false
 	}
@@ -462,51 +476,41 @@ func (o *CompletedApproval) HasRequesterComment() bool {
 	return false
 }
 
-// SetRequesterComment gets a reference to the given CommentDto and assigns it to the RequesterComment field.
-func (o *CompletedApproval) SetRequesterComment(v CommentDto) {
+// SetRequesterComment gets a reference to the given CompletedApprovalRequesterComment and assigns it to the RequesterComment field.
+func (o *CompletedApproval) SetRequesterComment(v CompletedApprovalRequesterComment) {
 	o.RequesterComment = &v
 }
 
-// GetReviewerComment returns the ReviewerComment field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetReviewerComment returns the ReviewerComment field value if set, zero value otherwise.
 func (o *CompletedApproval) GetReviewerComment() CompletedApprovalReviewerComment {
-	if o == nil || isNil(o.ReviewerComment.Get()) {
+	if o == nil || isNil(o.ReviewerComment) {
 		var ret CompletedApprovalReviewerComment
 		return ret
 	}
-	return *o.ReviewerComment.Get()
+	return *o.ReviewerComment
 }
 
 // GetReviewerCommentOk returns a tuple with the ReviewerComment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CompletedApproval) GetReviewerCommentOk() (*CompletedApprovalReviewerComment, bool) {
-	if o == nil {
+	if o == nil || isNil(o.ReviewerComment) {
 		return nil, false
 	}
-	return o.ReviewerComment.Get(), o.ReviewerComment.IsSet()
+	return o.ReviewerComment, true
 }
 
 // HasReviewerComment returns a boolean if a field has been set.
 func (o *CompletedApproval) HasReviewerComment() bool {
-	if o != nil && o.ReviewerComment.IsSet() {
+	if o != nil && !isNil(o.ReviewerComment) {
 		return true
 	}
 
 	return false
 }
 
-// SetReviewerComment gets a reference to the given NullableCompletedApprovalReviewerComment and assigns it to the ReviewerComment field.
+// SetReviewerComment gets a reference to the given CompletedApprovalReviewerComment and assigns it to the ReviewerComment field.
 func (o *CompletedApproval) SetReviewerComment(v CompletedApprovalReviewerComment) {
-	o.ReviewerComment.Set(&v)
-}
-// SetReviewerCommentNil sets the value for ReviewerComment to be an explicit nil
-func (o *CompletedApproval) SetReviewerCommentNil() {
-	o.ReviewerComment.Set(nil)
-}
-
-// UnsetReviewerComment ensures that no value is present for ReviewerComment, not even an explicit nil
-func (o *CompletedApproval) UnsetReviewerComment() {
-	o.ReviewerComment.Unset()
+	o.ReviewerComment = &v
 }
 
 // GetPreviousReviewersComments returns the PreviousReviewersComments field value if set, zero value otherwise.
@@ -785,6 +789,122 @@ func (o *CompletedApproval) SetSodViolationContext(v SodViolationContextCheckCom
 	o.SodViolationContext = &v
 }
 
+// GetPreApprovalTriggerResult returns the PreApprovalTriggerResult field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CompletedApproval) GetPreApprovalTriggerResult() CompletedApprovalPreApprovalTriggerResult {
+	if o == nil || isNil(o.PreApprovalTriggerResult.Get()) {
+		var ret CompletedApprovalPreApprovalTriggerResult
+		return ret
+	}
+	return *o.PreApprovalTriggerResult.Get()
+}
+
+// GetPreApprovalTriggerResultOk returns a tuple with the PreApprovalTriggerResult field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CompletedApproval) GetPreApprovalTriggerResultOk() (*CompletedApprovalPreApprovalTriggerResult, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PreApprovalTriggerResult.Get(), o.PreApprovalTriggerResult.IsSet()
+}
+
+// HasPreApprovalTriggerResult returns a boolean if a field has been set.
+func (o *CompletedApproval) HasPreApprovalTriggerResult() bool {
+	if o != nil && o.PreApprovalTriggerResult.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPreApprovalTriggerResult gets a reference to the given NullableCompletedApprovalPreApprovalTriggerResult and assigns it to the PreApprovalTriggerResult field.
+func (o *CompletedApproval) SetPreApprovalTriggerResult(v CompletedApprovalPreApprovalTriggerResult) {
+	o.PreApprovalTriggerResult.Set(&v)
+}
+// SetPreApprovalTriggerResultNil sets the value for PreApprovalTriggerResult to be an explicit nil
+func (o *CompletedApproval) SetPreApprovalTriggerResultNil() {
+	o.PreApprovalTriggerResult.Set(nil)
+}
+
+// UnsetPreApprovalTriggerResult ensures that no value is present for PreApprovalTriggerResult, not even an explicit nil
+func (o *CompletedApproval) UnsetPreApprovalTriggerResult() {
+	o.PreApprovalTriggerResult.Unset()
+}
+
+// GetClientMetadata returns the ClientMetadata field value if set, zero value otherwise.
+func (o *CompletedApproval) GetClientMetadata() map[string]string {
+	if o == nil || isNil(o.ClientMetadata) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.ClientMetadata
+}
+
+// GetClientMetadataOk returns a tuple with the ClientMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CompletedApproval) GetClientMetadataOk() (*map[string]string, bool) {
+	if o == nil || isNil(o.ClientMetadata) {
+		return nil, false
+	}
+	return o.ClientMetadata, true
+}
+
+// HasClientMetadata returns a boolean if a field has been set.
+func (o *CompletedApproval) HasClientMetadata() bool {
+	if o != nil && !isNil(o.ClientMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientMetadata gets a reference to the given map[string]string and assigns it to the ClientMetadata field.
+func (o *CompletedApproval) SetClientMetadata(v map[string]string) {
+	o.ClientMetadata = &v
+}
+
+// GetRequestedAccounts returns the RequestedAccounts field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CompletedApproval) GetRequestedAccounts() string {
+	if o == nil || isNil(o.RequestedAccounts.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.RequestedAccounts.Get()
+}
+
+// GetRequestedAccountsOk returns a tuple with the RequestedAccounts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CompletedApproval) GetRequestedAccountsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RequestedAccounts.Get(), o.RequestedAccounts.IsSet()
+}
+
+// HasRequestedAccounts returns a boolean if a field has been set.
+func (o *CompletedApproval) HasRequestedAccounts() bool {
+	if o != nil && o.RequestedAccounts.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedAccounts gets a reference to the given NullableString and assigns it to the RequestedAccounts field.
+func (o *CompletedApproval) SetRequestedAccounts(v string) {
+	o.RequestedAccounts.Set(&v)
+}
+// SetRequestedAccountsNil sets the value for RequestedAccounts to be an explicit nil
+func (o *CompletedApproval) SetRequestedAccountsNil() {
+	o.RequestedAccounts.Set(nil)
+}
+
+// UnsetRequestedAccounts ensures that no value is present for RequestedAccounts, not even an explicit nil
+func (o *CompletedApproval) UnsetRequestedAccounts() {
+	o.RequestedAccounts.Unset()
+}
+
 func (o CompletedApproval) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -810,8 +930,8 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.RequestCreated) {
 		toSerialize["requestCreated"] = o.RequestCreated
 	}
-	if !isNil(o.RequestType) {
-		toSerialize["requestType"] = o.RequestType
+	if o.RequestType.IsSet() {
+		toSerialize["requestType"] = o.RequestType.Get()
 	}
 	if !isNil(o.Requester) {
 		toSerialize["requester"] = o.Requester
@@ -831,8 +951,8 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.RequesterComment) {
 		toSerialize["requesterComment"] = o.RequesterComment
 	}
-	if o.ReviewerComment.IsSet() {
-		toSerialize["reviewerComment"] = o.ReviewerComment.Get()
+	if !isNil(o.ReviewerComment) {
+		toSerialize["reviewerComment"] = o.ReviewerComment
 	}
 	if !isNil(o.PreviousReviewersComments) {
 		toSerialize["previousReviewersComments"] = o.PreviousReviewersComments
@@ -857,6 +977,15 @@ func (o CompletedApproval) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.SodViolationContext) {
 		toSerialize["sodViolationContext"] = o.SodViolationContext
+	}
+	if o.PreApprovalTriggerResult.IsSet() {
+		toSerialize["preApprovalTriggerResult"] = o.PreApprovalTriggerResult.Get()
+	}
+	if !isNil(o.ClientMetadata) {
+		toSerialize["clientMetadata"] = o.ClientMetadata
+	}
+	if o.RequestedAccounts.IsSet() {
+		toSerialize["requestedAccounts"] = o.RequestedAccounts.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -897,6 +1026,9 @@ func (o *CompletedApproval) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "removeDateUpdateRequested")
 		delete(additionalProperties, "currentRemoveDate")
 		delete(additionalProperties, "sodViolationContext")
+		delete(additionalProperties, "preApprovalTriggerResult")
+		delete(additionalProperties, "clientMetadata")
+		delete(additionalProperties, "requestedAccounts")
 		o.AdditionalProperties = additionalProperties
 	}
 
