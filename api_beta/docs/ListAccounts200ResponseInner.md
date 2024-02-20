@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **Authoritative** | Pointer to **bool** | Whether this account belongs to an authoritative source | [optional] 
 **SystemAccount** | Pointer to **bool** | Whether this account is for the IdentityNow source | [optional] 
 **Uncorrelated** | Pointer to **bool** | True if this account is not correlated to an identity | [optional] 
-**Features** | Pointer to **string** | A string list containing the owning source&#39;s features | [optional] 
+**Features** | Pointer to **NullableString** | A string list containing the owning source&#39;s features | [optional] 
 
 ## Methods
 
@@ -533,6 +533,16 @@ SetFeatures sets Features field to given value.
 
 HasFeatures returns a boolean if a field has been set.
 
+### SetFeaturesNil
+
+`func (o *ListAccounts200ResponseInner) SetFeaturesNil(b bool)`
+
+ SetFeaturesNil sets the value for Features to be an explicit nil
+
+### UnsetFeatures
+`func (o *ListAccounts200ResponseInner) UnsetFeatures()`
+
+UnsetFeatures ensures that no value is present for Features, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

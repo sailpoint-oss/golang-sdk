@@ -43,6 +43,7 @@ CreateAccount Create Account
 
 This API submits an account creation task and returns the task ID.  
 The `sourceId` where this account will be created must be included in the `attributes` object.
+>**Note: This API only supports account creation for file based sources.**
 A token with ORG_ADMIN authority is required to call this API.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -204,6 +205,7 @@ DeleteAccount Delete Account
 
 Use this API to delete an account. 
 This endpoint submits an account delete task and returns the task ID. 
+This endpoint only deletes the account from IdentityNow, not the source itself, which can result in the account's returning with the next aggregation between the source and IdentityNow.  To avoid this scenario, it is recommended that you [disable accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather than delete them. This will also allow you to reenable the accounts in the future. 
 A token with ORG_ADMIN authority is required to call this API.
 >**NOTE: You can only delete accounts from sources of the "DelimitedFile" type.**
 

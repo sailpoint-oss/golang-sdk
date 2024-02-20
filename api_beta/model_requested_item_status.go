@@ -40,7 +40,8 @@ type RequestedItemStatus struct {
 	// When the request was created.
 	Created *time.Time `json:"created,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
-	RequestedFor *AccessItemRequestedFor `json:"requestedFor,omitempty"`
+	// Identities access was requested for.
+	RequestedFor []AccessItemRequestedFor `json:"requestedFor,omitempty"`
 	RequesterComment *CommentDto1 `json:"requesterComment,omitempty"`
 	SodViolationContext *SodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
 	ProvisioningDetails *ProvisioningDetails `json:"provisioningDetails,omitempty"`
@@ -68,6 +69,8 @@ type _RequestedItemStatus RequestedItemStatus
 // will change when the set of required properties is changed
 func NewRequestedItemStatus() *RequestedItemStatus {
 	this := RequestedItemStatus{}
+	var cancelable bool = false
+	this.Cancelable = &cancelable
 	return &this
 }
 
@@ -76,6 +79,8 @@ func NewRequestedItemStatus() *RequestedItemStatus {
 // but it doesn't guarantee that properties required by API are set
 func NewRequestedItemStatusWithDefaults() *RequestedItemStatus {
 	this := RequestedItemStatus{}
+	var cancelable bool = false
+	this.Cancelable = &cancelable
 	return &this
 }
 
@@ -466,17 +471,17 @@ func (o *RequestedItemStatus) SetRequester(v AccessItemRequester) {
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetRequestedFor() AccessItemRequestedFor {
+func (o *RequestedItemStatus) GetRequestedFor() []AccessItemRequestedFor {
 	if o == nil || isNil(o.RequestedFor) {
-		var ret AccessItemRequestedFor
+		var ret []AccessItemRequestedFor
 		return ret
 	}
-	return *o.RequestedFor
+	return o.RequestedFor
 }
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetRequestedForOk() (*AccessItemRequestedFor, bool) {
+func (o *RequestedItemStatus) GetRequestedForOk() ([]AccessItemRequestedFor, bool) {
 	if o == nil || isNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -492,9 +497,9 @@ func (o *RequestedItemStatus) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given AccessItemRequestedFor and assigns it to the RequestedFor field.
-func (o *RequestedItemStatus) SetRequestedFor(v AccessItemRequestedFor) {
-	o.RequestedFor = &v
+// SetRequestedFor gets a reference to the given []AccessItemRequestedFor and assigns it to the RequestedFor field.
+func (o *RequestedItemStatus) SetRequestedFor(v []AccessItemRequestedFor) {
+	o.RequestedFor = v
 }
 
 // GetRequesterComment returns the RequesterComment field value if set, zero value otherwise.

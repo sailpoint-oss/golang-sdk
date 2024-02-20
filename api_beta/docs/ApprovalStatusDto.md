@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] 
+**Forwarded** | Pointer to **bool** | True if the request for this item was forwarded from one owner to another. | [optional] [default to false]
 **OriginalOwner** | Pointer to [**ApprovalStatusDtoOriginalOwner**](ApprovalStatusDtoOriginalOwner.md) |  | [optional] 
 **CurrentOwner** | Pointer to [**AccessItemReviewedBy**](AccessItemReviewedBy.md) |  | [optional] 
 **Modified** | Pointer to **time.Time** | Time at which item was modified. | [optional] 

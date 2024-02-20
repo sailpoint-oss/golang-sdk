@@ -40,6 +40,8 @@ type _ManualWorkItemDetails ManualWorkItemDetails
 // will change when the set of required properties is changed
 func NewManualWorkItemDetails() *ManualWorkItemDetails {
 	this := ManualWorkItemDetails{}
+	var forwarded bool = false
+	this.Forwarded = &forwarded
 	return &this
 }
 
@@ -48,6 +50,8 @@ func NewManualWorkItemDetails() *ManualWorkItemDetails {
 // but it doesn't guarantee that properties required by API are set
 func NewManualWorkItemDetailsWithDefaults() *ManualWorkItemDetails {
 	this := ManualWorkItemDetails{}
+	var forwarded bool = false
+	this.Forwarded = &forwarded
 	return &this
 }
 

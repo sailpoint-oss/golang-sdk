@@ -58,7 +58,7 @@ type FullAccount struct {
 	// True if this account is not correlated to an identity
 	Uncorrelated *bool `json:"uncorrelated,omitempty"`
 	// A string list containing the owning source's features
-	Features *string `json:"features,omitempty"`
+	Features NullableString `json:"features,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -670,36 +670,46 @@ func (o *FullAccount) SetUncorrelated(v bool) {
 	o.Uncorrelated = &v
 }
 
-// GetFeatures returns the Features field value if set, zero value otherwise.
+// GetFeatures returns the Features field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *FullAccount) GetFeatures() string {
-	if o == nil || isNil(o.Features) {
+	if o == nil || isNil(o.Features.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Features
+	return *o.Features.Get()
 }
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FullAccount) GetFeaturesOk() (*string, bool) {
-	if o == nil || isNil(o.Features) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Features, true
+	return o.Features.Get(), o.Features.IsSet()
 }
 
 // HasFeatures returns a boolean if a field has been set.
 func (o *FullAccount) HasFeatures() bool {
-	if o != nil && !isNil(o.Features) {
+	if o != nil && o.Features.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFeatures gets a reference to the given string and assigns it to the Features field.
+// SetFeatures gets a reference to the given NullableString and assigns it to the Features field.
 func (o *FullAccount) SetFeatures(v string) {
-	o.Features = &v
+	o.Features.Set(&v)
+}
+// SetFeaturesNil sets the value for Features to be an explicit nil
+func (o *FullAccount) SetFeaturesNil() {
+	o.Features.Set(nil)
+}
+
+// UnsetFeatures ensures that no value is present for Features, not even an explicit nil
+func (o *FullAccount) UnsetFeatures() {
+	o.Features.Unset()
 }
 
 func (o FullAccount) MarshalJSON() ([]byte, error) {
@@ -758,8 +768,8 @@ func (o FullAccount) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Uncorrelated) {
 		toSerialize["uncorrelated"] = o.Uncorrelated
 	}
-	if !isNil(o.Features) {
-		toSerialize["features"] = o.Features
+	if o.Features.IsSet() {
+		toSerialize["features"] = o.Features.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

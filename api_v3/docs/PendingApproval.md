@@ -11,16 +11,16 @@ Name | Type | Description | Notes
 **RequestCreated** | Pointer to **time.Time** | When the access-request was created. | [optional] 
 **RequestType** | Pointer to [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
 **Requester** | Pointer to [**AccessItemRequester**](AccessItemRequester.md) |  | [optional] 
-**RequestedFor** | Pointer to [**AccessItemRequestedFor**](AccessItemRequestedFor.md) |  | [optional] 
+**RequestedFor** | Pointer to [**[]AccessItemRequestedFor**](AccessItemRequestedFor.md) | Identities access was requested for. | [optional] 
 **Owner** | Pointer to [**PendingApprovalOwner**](PendingApprovalOwner.md) |  | [optional] 
 **RequestedObject** | Pointer to [**RequestableObjectReference**](RequestableObjectReference.md) |  | [optional] 
 **RequesterComment** | Pointer to [**CommentDto**](CommentDto.md) |  | [optional] 
 **PreviousReviewersComments** | Pointer to [**[]CommentDto**](CommentDto.md) | The history of the previous reviewers comments. | [optional] 
 **ForwardHistory** | Pointer to [**[]ApprovalForwardHistory**](ApprovalForwardHistory.md) | The history of approval forward action. | [optional] 
-**CommentRequiredWhenRejected** | Pointer to **bool** | When true the rejector has to provide comments when rejecting | [optional] 
+**CommentRequiredWhenRejected** | Pointer to **bool** | When true the rejector has to provide comments when rejecting | [optional] [default to false]
 **ActionInProcess** | Pointer to [**PendingApprovalAction**](PendingApprovalAction.md) |  | [optional] 
 **RemoveDate** | Pointer to **time.Time** | The date the role or access profile is no longer assigned to the specified identity. | [optional] 
-**RemoveDateUpdateRequested** | Pointer to **bool** | If true, then the request is to change the remove date or sunset date. | [optional] 
+**RemoveDateUpdateRequested** | Pointer to **bool** | If true, then the request is to change the remove date or sunset date. | [optional] [default to false]
 **CurrentRemoveDate** | Pointer to **time.Time** | The remove date or sunset date that was assigned at the time of the request. | [optional] 
 **SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 
@@ -220,20 +220,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *PendingApproval) GetRequestedFor() AccessItemRequestedFor`
+`func (o *PendingApproval) GetRequestedFor() []AccessItemRequestedFor`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *PendingApproval) GetRequestedForOk() (*AccessItemRequestedFor, bool)`
+`func (o *PendingApproval) GetRequestedForOk() (*[]AccessItemRequestedFor, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *PendingApproval) SetRequestedFor(v AccessItemRequestedFor)`
+`func (o *PendingApproval) SetRequestedFor(v []AccessItemRequestedFor)`
 
 SetRequestedFor sets RequestedFor field to given value.
 

@@ -32,7 +32,8 @@ type CompletedApproval struct {
 	RequestCreated *time.Time `json:"requestCreated,omitempty"`
 	RequestType *AccessRequestType `json:"requestType,omitempty"`
 	Requester *AccessItemRequesterDto `json:"requester,omitempty"`
-	RequestedFor *AccessItemRequestedForDto `json:"requestedFor,omitempty"`
+	// Identities access was requested for.
+	RequestedFor []AccessItemRequestedForDto `json:"requestedFor,omitempty"`
 	ReviewedBy *CompletedApprovalReviewedBy `json:"reviewedBy,omitempty"`
 	Owner *AccessItemOwnerDto `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
@@ -63,6 +64,10 @@ type _CompletedApproval CompletedApproval
 // will change when the set of required properties is changed
 func NewCompletedApproval() *CompletedApproval {
 	this := CompletedApproval{}
+	var commentRequiredWhenRejected bool = false
+	this.CommentRequiredWhenRejected = &commentRequiredWhenRejected
+	var removeDateUpdateRequested bool = false
+	this.RemoveDateUpdateRequested = &removeDateUpdateRequested
 	return &this
 }
 
@@ -71,6 +76,10 @@ func NewCompletedApproval() *CompletedApproval {
 // but it doesn't guarantee that properties required by API are set
 func NewCompletedApprovalWithDefaults() *CompletedApproval {
 	this := CompletedApproval{}
+	var commentRequiredWhenRejected bool = false
+	this.CommentRequiredWhenRejected = &commentRequiredWhenRejected
+	var removeDateUpdateRequested bool = false
+	this.RemoveDateUpdateRequested = &removeDateUpdateRequested
 	return &this
 }
 
@@ -299,17 +308,17 @@ func (o *CompletedApproval) SetRequester(v AccessItemRequesterDto) {
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *CompletedApproval) GetRequestedFor() AccessItemRequestedForDto {
+func (o *CompletedApproval) GetRequestedFor() []AccessItemRequestedForDto {
 	if o == nil || isNil(o.RequestedFor) {
-		var ret AccessItemRequestedForDto
+		var ret []AccessItemRequestedForDto
 		return ret
 	}
-	return *o.RequestedFor
+	return o.RequestedFor
 }
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CompletedApproval) GetRequestedForOk() (*AccessItemRequestedForDto, bool) {
+func (o *CompletedApproval) GetRequestedForOk() ([]AccessItemRequestedForDto, bool) {
 	if o == nil || isNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -325,9 +334,9 @@ func (o *CompletedApproval) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given AccessItemRequestedForDto and assigns it to the RequestedFor field.
-func (o *CompletedApproval) SetRequestedFor(v AccessItemRequestedForDto) {
-	o.RequestedFor = &v
+// SetRequestedFor gets a reference to the given []AccessItemRequestedForDto and assigns it to the RequestedFor field.
+func (o *CompletedApproval) SetRequestedFor(v []AccessItemRequestedForDto) {
+	o.RequestedFor = v
 }
 
 // GetReviewedBy returns the ReviewedBy field value if set, zero value otherwise.

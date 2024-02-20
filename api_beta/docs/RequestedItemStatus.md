@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
 **Created** | Pointer to **time.Time** | When the request was created. | [optional] 
 **Requester** | Pointer to [**AccessItemRequester**](AccessItemRequester.md) |  | [optional] 
-**RequestedFor** | Pointer to [**AccessItemRequestedFor**](AccessItemRequestedFor.md) |  | [optional] 
+**RequestedFor** | Pointer to [**[]AccessItemRequestedFor**](AccessItemRequestedFor.md) | Identities access was requested for. | [optional] 
 **RequesterComment** | Pointer to [**CommentDto1**](CommentDto1.md) |  | [optional] 
 **SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
 **ProvisioningDetails** | Pointer to [**ProvisioningDetails**](ProvisioningDetails.md) |  | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **AccessRequestPhases** | Pointer to [**[]AccessRequestPhases**](AccessRequestPhases.md) | A list of Phases that the Access Request has gone through in order, to help determine the status of the request. | [optional] 
 **Description** | Pointer to **string** | Description associated to the requested object. | [optional] 
 **RemoveDate** | Pointer to **NullableTime** | When the role access is scheduled for removal. | [optional] 
-**Cancelable** | Pointer to **bool** | True if the request can be canceled. | [optional] 
+**Cancelable** | Pointer to **bool** | True if the request can be canceled. | [optional] [default to false]
 **AccessRequestId** | Pointer to **string** | This is the account activity id. | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs, if any were included in the corresponding access request | [optional] 
 
@@ -369,20 +369,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *RequestedItemStatus) GetRequestedFor() AccessItemRequestedFor`
+`func (o *RequestedItemStatus) GetRequestedFor() []AccessItemRequestedFor`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *RequestedItemStatus) GetRequestedForOk() (*AccessItemRequestedFor, bool)`
+`func (o *RequestedItemStatus) GetRequestedForOk() (*[]AccessItemRequestedFor, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *RequestedItemStatus) SetRequestedFor(v AccessItemRequestedFor)`
+`func (o *RequestedItemStatus) SetRequestedFor(v []AccessItemRequestedFor)`
 
 SetRequestedFor sets RequestedFor field to given value.
 

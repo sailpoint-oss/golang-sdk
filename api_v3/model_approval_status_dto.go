@@ -45,6 +45,8 @@ type _ApprovalStatusDto ApprovalStatusDto
 // will change when the set of required properties is changed
 func NewApprovalStatusDto() *ApprovalStatusDto {
 	this := ApprovalStatusDto{}
+	var forwarded bool = false
+	this.Forwarded = &forwarded
 	return &this
 }
 
@@ -53,6 +55,8 @@ func NewApprovalStatusDto() *ApprovalStatusDto {
 // but it doesn't guarantee that properties required by API are set
 func NewApprovalStatusDtoWithDefaults() *ApprovalStatusDto {
 	this := ApprovalStatusDto{}
+	var forwarded bool = false
+	this.Forwarded = &forwarded
 	return &this
 }
 

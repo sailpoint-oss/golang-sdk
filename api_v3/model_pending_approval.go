@@ -32,7 +32,8 @@ type PendingApproval struct {
 	RequestCreated *time.Time `json:"requestCreated,omitempty"`
 	RequestType *AccessRequestType `json:"requestType,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
-	RequestedFor *AccessItemRequestedFor `json:"requestedFor,omitempty"`
+	// Identities access was requested for.
+	RequestedFor []AccessItemRequestedFor `json:"requestedFor,omitempty"`
 	Owner *PendingApprovalOwner `json:"owner,omitempty"`
 	RequestedObject *RequestableObjectReference `json:"requestedObject,omitempty"`
 	RequesterComment *CommentDto `json:"requesterComment,omitempty"`
@@ -61,6 +62,10 @@ type _PendingApproval PendingApproval
 // will change when the set of required properties is changed
 func NewPendingApproval() *PendingApproval {
 	this := PendingApproval{}
+	var commentRequiredWhenRejected bool = false
+	this.CommentRequiredWhenRejected = &commentRequiredWhenRejected
+	var removeDateUpdateRequested bool = false
+	this.RemoveDateUpdateRequested = &removeDateUpdateRequested
 	return &this
 }
 
@@ -69,6 +74,10 @@ func NewPendingApproval() *PendingApproval {
 // but it doesn't guarantee that properties required by API are set
 func NewPendingApprovalWithDefaults() *PendingApproval {
 	this := PendingApproval{}
+	var commentRequiredWhenRejected bool = false
+	this.CommentRequiredWhenRejected = &commentRequiredWhenRejected
+	var removeDateUpdateRequested bool = false
+	this.RemoveDateUpdateRequested = &removeDateUpdateRequested
 	return &this
 }
 
@@ -297,17 +306,17 @@ func (o *PendingApproval) SetRequester(v AccessItemRequester) {
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *PendingApproval) GetRequestedFor() AccessItemRequestedFor {
+func (o *PendingApproval) GetRequestedFor() []AccessItemRequestedFor {
 	if o == nil || isNil(o.RequestedFor) {
-		var ret AccessItemRequestedFor
+		var ret []AccessItemRequestedFor
 		return ret
 	}
-	return *o.RequestedFor
+	return o.RequestedFor
 }
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PendingApproval) GetRequestedForOk() (*AccessItemRequestedFor, bool) {
+func (o *PendingApproval) GetRequestedForOk() ([]AccessItemRequestedFor, bool) {
 	if o == nil || isNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -323,9 +332,9 @@ func (o *PendingApproval) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given AccessItemRequestedFor and assigns it to the RequestedFor field.
-func (o *PendingApproval) SetRequestedFor(v AccessItemRequestedFor) {
-	o.RequestedFor = &v
+// SetRequestedFor gets a reference to the given []AccessItemRequestedFor and assigns it to the RequestedFor field.
+func (o *PendingApproval) SetRequestedFor(v []AccessItemRequestedFor) {
+	o.RequestedFor = v
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise.

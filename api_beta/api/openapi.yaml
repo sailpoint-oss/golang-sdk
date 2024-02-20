@@ -4314,7 +4314,8 @@ paths:
     post:
       description: "This API submits an account creation task and returns the task\
         \ ID.  \nThe `sourceId` where this account will be created must be included\
-        \ in the `attributes` object.\nA token with ORG_ADMIN authority is required\
+        \ in the `attributes` object.\n>**Note: This API only supports account creation\
+        \ for file based sources.**\nA token with ORG_ADMIN authority is required\
         \ to call this API."
       operationId: createAccount
       requestBody:
@@ -4395,9 +4396,15 @@ paths:
   /accounts/{id}:
     delete:
       description: "Use this API to delete an account. \nThis endpoint submits an\
-        \ account delete task and returns the task ID. \nA token with ORG_ADMIN authority\
-        \ is required to call this API.\n>**NOTE:** You can only delete accounts from\
-        \ sources of the \"DelimitedFile\" type.**"
+        \ account delete task and returns the task ID. \nThis endpoint only deletes\
+        \ the account from IdentityNow, not the source itself, which can result in\
+        \ the account's returning with the next aggregation between the source and\
+        \ IdentityNow.  To avoid this scenario, it is recommended that you [disable\
+        \ accounts](https://developer.sailpoint.com/idn/api/v3/disable-account) rather\
+        \ than delete them. This will also allow you to reenable the accounts in the\
+        \ future. \nA token with ORG_ADMIN authority is required to call this API.\n\
+        >**NOTE:** You can only delete accounts from sources of the \"DelimitedFile\"\
+        \ type.**"
       operationId: deleteAccount
       parameters:
       - description: Account ID.
@@ -53015,6 +53022,27 @@ components:
           comment: Requesting access profile for John Doe
           id: 2c9180835d2e5168015d32f890ca1581
           type: ACCESS_PROFILE
+        - clientMetadata:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          removeDate: 2020-07-11T21:23:15Z
+          comment: Requesting access profile for John Doe
+          id: 2c9180835d2e5168015d32f890ca1581
+          type: ACCESS_PROFILE
+        - clientMetadata:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          removeDate: 2020-07-11T21:23:15Z
+          comment: Requesting access profile for John Doe
+          id: 2c9180835d2e5168015d32f890ca1581
+          type: ACCESS_PROFILE
+        - clientMetadata:
+            requestedAppName: test-app
+            requestedAppId: 2c91808f7892918f0178b78da4a305a1
+          removeDate: 2020-07-11T21:23:15Z
+          comment: Requesting access profile for John Doe
+          id: 2c9180835d2e5168015d32f890ca1581
+          type: ACCESS_PROFILE
       properties:
         requestedFor:
           description: "A list of Identity IDs for whom the Access is requested. If\
@@ -53028,6 +53056,8 @@ components:
         requestedItems:
           items:
             $ref: '#/components/schemas/AccessRequestItem'
+          maxItems: 25
+          minItems: 1
           type: array
         clientMetadata:
           additionalProperties:
@@ -53151,7 +53181,19 @@ components:
           id: 2c7180a46faadee4016fb4e018c20648
           type: IDENTITY
         requestedFor:
-          name: Robert Robinson
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
           id: 2c4180a46faadee4016fb4e018c20626
           type: IDENTITY
         removeDate: 2019-10-23T00:00:00Z
@@ -53420,7 +53462,12 @@ components:
         requester:
           $ref: '#/components/schemas/AccessItemRequester'
         requestedFor:
-          $ref: '#/components/schemas/AccessItemRequestedFor'
+          description: Identities access was requested for.
+          items:
+            $ref: '#/components/schemas/AccessItemRequestedFor'
+          maxItems: 10
+          minItems: 1
+          type: array
         requesterComment:
           $ref: '#/components/schemas/CommentDto_1'
         sodViolationContext:
@@ -53446,6 +53493,7 @@ components:
           nullable: true
           type: string
         cancelable:
+          default: false
           description: True if the request can be canceled.
           example: true
           type: boolean
@@ -53472,7 +53520,19 @@ components:
           id: 2c7180a46faadee4016fb4e018c20648
           type: IDENTITY
         requestedFor:
-          name: Robert Robinson
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
           id: 2c4180a46faadee4016fb4e018c20626
           type: IDENTITY
         owner:
@@ -53615,7 +53675,12 @@ components:
         requester:
           $ref: '#/components/schemas/AccessItemRequesterDto'
         requestedFor:
-          $ref: '#/components/schemas/AccessItemRequestedForDto'
+          description: Identities access was requested for.
+          items:
+            $ref: '#/components/schemas/AccessItemRequestedForDto'
+          maxItems: 10
+          minItems: 1
+          type: array
         owner:
           $ref: '#/components/schemas/AccessItemOwnerDto'
         requestedObject:
@@ -53633,6 +53698,7 @@ components:
             $ref: '#/components/schemas/ApprovalForwardHistory'
           type: array
         commentRequiredWhenRejected:
+          default: false
           description: When true the rejector has to provide comments when rejecting
           example: true
           type: boolean
@@ -53645,6 +53711,7 @@ components:
           format: date-time
           type: string
         removeDateUpdateRequested:
+          default: false
           description: "If true, then the request is to change the remove date or\
             \ sunset date."
           example: true
@@ -53665,7 +53732,19 @@ components:
           id: 2c7180a46faadee4016fb4e018c20648
           type: IDENTITY
         requestedFor:
-          name: Robert Robinson
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
+          id: 2c4180a46faadee4016fb4e018c20626
+          type: IDENTITY
+        - name: Robert Robinson
           id: 2c4180a46faadee4016fb4e018c20626
           type: IDENTITY
         owner:
@@ -53813,7 +53892,12 @@ components:
         requester:
           $ref: '#/components/schemas/AccessItemRequesterDto'
         requestedFor:
-          $ref: '#/components/schemas/AccessItemRequestedForDto'
+          description: Identities access was requested for.
+          items:
+            $ref: '#/components/schemas/AccessItemRequestedForDto'
+          maxItems: 10
+          minItems: 1
+          type: array
         reviewedBy:
           $ref: '#/components/schemas/CompletedApproval_reviewedBy'
         owner:
@@ -53835,6 +53919,7 @@ components:
             $ref: '#/components/schemas/ApprovalForwardHistory'
           type: array
         commentRequiredWhenRejected:
+          default: false
           description: When true the rejector has to provide comments when rejecting
           example: true
           type: boolean
@@ -53848,6 +53933,7 @@ components:
           nullable: true
           type: string
         removeDateUpdateRequested:
+          default: false
           description: "If true, then the request was to change the remove date or\
             \ sunset date."
           example: true
@@ -54019,7 +54105,7 @@ components:
       - properties:
           uuid:
             description: Unique ID from the owning source
-            format: uuid
+            example: 2c9180857893f12901789445619b0366
             nullable: true
             type: string
           nativeIdentity:
@@ -54091,6 +54177,7 @@ components:
           features:
             description: A string list containing the owning source's features
             example: ENABLE
+            nullable: true
             type: string
         type: object
       title: Full Account
@@ -66187,6 +66274,7 @@ components:
         status: PENDING
       properties:
         forwarded:
+          default: false
           description: True if the request for this item was forwarded from one owner
             to another.
           example: false
@@ -66249,6 +66337,7 @@ components:
         status: PENDING
       properties:
         forwarded:
+          default: false
           description: True if the request for this item was forwarded from one owner
             to another.
           example: true
@@ -69213,12 +69302,18 @@ components:
           example: 4b4d982dddff4267ab12f0f1e72b5a6d
           type: string
         requestedFor:
-          allOf:
-          - $ref: '#/components/schemas/AccessItemRequestedForDto'
+          description: Identities access was requested for.
+          items:
+            $ref: '#/components/schemas/AccessItemRequestedForDto'
+          maxItems: 10
+          minItems: 1
+          type: array
         requestedItems:
           description: The access items that are being requested.
           items:
             $ref: '#/components/schemas/AccessRequestDynamicApprover_requestedItems_inner'
+          maxItems: 25
+          minItems: 1
           type: array
         requestedBy:
           allOf:
@@ -69237,12 +69332,16 @@ components:
           example: 2c91808b6ef1d43e016efba0ce470904
           type: string
         requestedFor:
-          allOf:
-          - $ref: '#/components/schemas/AccessItemRequestedForDto'
+          description: Identities access was requested for.
+          items:
+            $ref: '#/components/schemas/AccessItemRequestedForDto'
+          maxItems: 10
+          minItems: 1
           required:
           - id
           - name
           - type
+          type: array
         requestedItemsStatus:
           description: Details on the outcome of each access item.
           items:
@@ -69269,16 +69368,22 @@ components:
           example: 2c91808b6ef1d43e016efba0ce470904
           type: string
         requestedFor:
-          allOf:
-          - $ref: '#/components/schemas/AccessItemRequestedForDto'
+          description: Identities access was requested for.
+          items:
+            $ref: '#/components/schemas/AccessItemRequestedForDto'
+          maxItems: 10
+          minItems: 1
           required:
           - id
           - name
           - type
+          type: array
         requestedItems:
           description: Details of the access items being requested.
           items:
             $ref: '#/components/schemas/AccessRequestPreApproval_requestedItems_inner'
+          maxItems: 25
+          minItems: 1
           type: array
         requestedBy:
           allOf:
@@ -72535,6 +72640,7 @@ components:
         type: IDENTITY
       properties:
         existing:
+          default: false
           description: If the entitlement already belonged to the user or not.
           example: true
           type: boolean
@@ -72558,6 +72664,7 @@ components:
         type: IDENTITY
       properties:
         existing:
+          default: false
           description: If the entitlement already belonged to the user or not.
           example: true
           type: boolean
