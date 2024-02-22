@@ -41,7 +41,7 @@ GetAccessRequestIdentityMetrics Return access request identity metrics
 Use this API to return information access metrics.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param identityId Identity's ID.
+ @param identityId Manager's identity ID.
  @param requestedObjectId Requested access item's ID.
  @param type_ Requested access item's type.
  @return ApiGetAccessRequestIdentityMetricsRequest

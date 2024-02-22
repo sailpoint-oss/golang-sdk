@@ -50652,7 +50652,7 @@ paths:
       description: Use this API to return information access metrics.
       operationId: getAccessRequestIdentityMetrics
       parameters:
-      - description: Identity's ID.
+      - description: Manager's identity ID.
         example: 7025c863-c270-4ba6-beea-edf3cb091573
         in: path
         name: identityId
@@ -50684,7 +50684,7 @@ paths:
                   $ref: ../schemas/AccessRequestIdentityMetrics.yaml
                 type: object
           description: Summary of the resource access and source activity for the
-            group of identities sharing a manager with the provided identity.
+            direct reports of the provided manager.
         "400":
           content:
             application/json:
