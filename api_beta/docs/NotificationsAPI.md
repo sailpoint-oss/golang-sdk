@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**ListNotificationTemplateDefaults**](NotificationsAPI.md#ListNotificationTemplateDefaults) | **Get** /notification-template-defaults | List Notification Template Defaults
 [**ListNotificationTemplates**](NotificationsAPI.md#ListNotificationTemplates) | **Get** /notification-templates | List Notification Templates
 [**PutMailFromAttributes**](NotificationsAPI.md#PutMailFromAttributes) | **Put** /mail-from-attributes | Change MAIL FROM domain
-[**PutNotificationPreference**](NotificationsAPI.md#PutNotificationPreference) | **Put** /notification-preferences/{key} | Overwrite the preferences for the given notification key.
+[**PutNotificationPreference**](NotificationsAPI.md#PutNotificationPreference) | **Put** /notification-preferences/{key} | Overwrite preferences notification key.
 [**SendTestNotification**](NotificationsAPI.md#SendTestNotification) | **Post** /send-test-notification | Send Test Notification
 
 
@@ -501,7 +501,7 @@ import (
 )
 
 func main() {
-    key := "key_example" // string | The notification key.
+    key := "cloud_manual_work_item_summary" // string | The notification key.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -778,7 +778,7 @@ import (
 func main() {
     limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
     offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    filters := "filters_example" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, sw*  **medium**: *eq, sw*  **locale**: *eq, sw* (optional)
+    filters := "key eq "cloud_manual_work_item_summary"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **key**: *eq, in, sw*  **medium**: *eq, sw*  **locale**: *eq, sw* (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -965,7 +965,7 @@ Name | Type | Description  | Notes
 
 > PreferencesDto PutNotificationPreference(ctx, key).PreferencesDto(preferencesDto).Execute()
 
-Overwrite the preferences for the given notification key.
+Overwrite preferences notification key.
 
 
 
@@ -982,7 +982,7 @@ import (
 )
 
 func main() {
-    key := "key_example" // string | The notification key.
+    key := "cloud_manual_work_item_summary" // string | The notification key.
     preferencesDto := *openapiclient.NewPreferencesDto() // PreferencesDto | 
 
     configuration := openapiclient.NewConfiguration()

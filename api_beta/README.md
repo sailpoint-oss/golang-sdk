@@ -341,7 +341,7 @@ Class | Method | HTTP request | Description
 *NotificationsAPI* | [**ListNotificationTemplateDefaults**](docs/NotificationsAPI.md#listnotificationtemplatedefaults) | **Get** /notification-template-defaults | List Notification Template Defaults
 *NotificationsAPI* | [**ListNotificationTemplates**](docs/NotificationsAPI.md#listnotificationtemplates) | **Get** /notification-templates | List Notification Templates
 *NotificationsAPI* | [**PutMailFromAttributes**](docs/NotificationsAPI.md#putmailfromattributes) | **Put** /mail-from-attributes | Change MAIL FROM domain
-*NotificationsAPI* | [**PutNotificationPreference**](docs/NotificationsAPI.md#putnotificationpreference) | **Put** /notification-preferences/{key} | Overwrite the preferences for the given notification key.
+*NotificationsAPI* | [**PutNotificationPreference**](docs/NotificationsAPI.md#putnotificationpreference) | **Put** /notification-preferences/{key} | Overwrite preferences notification key.
 *NotificationsAPI* | [**SendTestNotification**](docs/NotificationsAPI.md#sendtestnotification) | **Post** /send-test-notification | Send Test Notification
 *OAuthClientsAPI* | [**CreateOauthClient**](docs/OAuthClientsAPI.md#createoauthclient) | **Post** /oauth-clients | Create OAuth Client
 *OAuthClientsAPI* | [**DeleteOauthClient**](docs/OAuthClientsAPI.md#deleteoauthclient) | **Delete** /oauth-clients/{id} | Delete OAuth Client

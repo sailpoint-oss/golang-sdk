@@ -21673,8 +21673,7 @@ paths:
   /notification-template-defaults:
     get:
       description: "This lists the default templates used for notifications, such\
-        \ as emails from IdentityNow. Since this is a beta feature, it doesn't include\
-        \ all the templates."
+        \ as emails from IdentityNow."
       operationId: listNotificationTemplateDefaults
       parameters:
       - description: |-
@@ -21715,6 +21714,7 @@ paths:
         in: query
         name: filters
         schema:
+          example: key eq "cloud_manual_work_item_summary"
           type: string
       responses:
         "200":
@@ -21781,13 +21781,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:notification-template-defaults:read
       summary: List Notification Template Defaults
       tags:
       - Notifications
   /notification-templates:
     get:
-      description: "This lists the templates that you have modified for your site.\
-        \ Since this is a beta feature, it doesn't include all your modified templates."
+      description: This lists the templates that you have modified for your site.
       operationId: listNotificationTemplates
       parameters:
       - description: |-
@@ -21895,6 +21897,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:notification-templates:read
       summary: List Notification Templates
       tags:
       - Notifications
@@ -21975,6 +21980,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:notification-templates:create
       summary: Create Notification Template
       tags:
       - Notifications
@@ -22063,8 +22071,8 @@ paths:
   /notification-templates/bulk-delete:
     post:
       description: "This lets you bulk delete templates that you previously created\
-        \ for your site. Since this is a beta feature, you can only delete a subset\
-        \ of your notifications, i.e. ones that show up in the list call."
+        \ for your site. Since this is a beta feature, please contact support to enable\
+        \ usage."
       operationId: deleteNotificationTemplatesInBulk
       requestBody:
         content:
@@ -22134,6 +22142,9 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:notification-templates:delete
       summary: Bulk Delete Notification Templates
       tags:
       - Notifications
@@ -26007,11 +26018,8 @@ paths:
   /notification-template-context:
     get:
       description: |-
-        The notification service (Hermes) maintains metadata to construct the notification templates or supply any information during the event propagation.  The data-store where this information is retrieved is  called "Global Context" (a.k.a. notification template context). It defines a set of attributes
+        The notification service maintains metadata to construct the notification templates or supply any information during the event propagation. The data-store where this information is retrieved is called "Global Context" (a.k.a. notification template context). It defines a set of attributes
          that will be available per tenant (organization).
-
-        Regarding authorization, the access token contains the tenant and will grant access to the one requested.
-        Requires the following security scope:  idn:notification-templates:read
       operationId: getNotificationsTemplateContext
       responses:
         "200":
@@ -26076,17 +26084,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponseDto'
           description: Internal Server Error - Returned if there is an unexpected
             error.
+      security:
+      - UserContextAuth:
+        - idn:notification-templates:read
       summary: Get Notification Template Context
       tags:
       - Notifications
   /notification-preferences/{key}:
     get:
-      description: |-
-        Returns the notification preferences for tenant.  Note that if the key doesn't exist, then a 404 will be returned.
-        Request will require the following legacy roles:  ORG_ADMIN and API
+      description: "Returns the notification preferences for tenant.  Note that if\
+        \ the key doesn't exist, then a 404 will be returned."
       operationId: getNotificationPreference
       parameters:
       - description: The notification key.
+        example: cloud_manual_work_item_summary
         in: path
         name: key
         required: true
@@ -26156,23 +26167,37 @@ paths:
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:notification-preferences:read
       summary: Get Notification Preferences for tenant.
       tags:
       - Notifications
     put:
-      description: "In the notification world, a notification flows through these\
-        \ salient stages - \n 1. Interest matching, \n 2. Preferences \n 3. Template\
-        \ Rendering. \n\nThe default notification preferences make up a part of the\
-        \ second stage, along with user preferences (which is a future goal). The\
-        \ expectation is for  admins to be able to set default preferences for their\
-        \ org, like opting in to or out of certain notifications, and configuring\
-        \ future preferences as  we tack on more features. The key in the Dto is not\
-        \ necessary but if it is provided and doesn't match the key in the URI, then\
-        \ a 400 will be thrown. \nRequest will require the following legacy roles:\
-        \  ORG_ADMIN and API"
+      description: "Allows admins to opt in to or out of certain notifications for\
+        \ their org. The default state is opted in. `key` is optional but if it is\
+        \ provided and doesn't match the key in the URI, then a 400 will be thrown."
       operationId: putNotificationPreference
       parameters:
       - description: The notification key.
+        example: cloud_manual_work_item_summary
         in: path
         name: key
         required: true
@@ -26249,7 +26274,27 @@ paths:
           description: Too Many Requests - Returned in response to too many requests
             in a given period of time - rate limited. The Retry-After header in the
             response includes how long to wait before trying again.
-      summary: Overwrite the preferences for the given notification key.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:notification-preferences:create
+      summary: Overwrite preferences notification key.
       tags:
       - Notifications
   /reassignment-configurations/types:
