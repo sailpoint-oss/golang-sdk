@@ -360,6 +360,24 @@ Class | Method | HTTP request | Description
 *WorkItemsAPI* | [**RejectApprovalItem**](docs/WorkItemsAPI.md#rejectapprovalitem) | **Post** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 *WorkItemsAPI* | [**RejectApprovalItemsInBulk**](docs/WorkItemsAPI.md#rejectapprovalitemsinbulk) | **Post** /work-items/bulk-reject/{id} | Bulk reject Approval Items
 *WorkItemsAPI* | [**SubmitAccountSelection**](docs/WorkItemsAPI.md#submitaccountselection) | **Post** /work-items/{id}/submit-account-selection | Submit Account Selections
+*WorkflowsAPI* | [**CancelWorkflowExecution**](docs/WorkflowsAPI.md#cancelworkflowexecution) | **Post** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
+*WorkflowsAPI* | [**CreateExternalExecuteWorkflow**](docs/WorkflowsAPI.md#createexternalexecuteworkflow) | **Post** /workflows/execute/external/{id} | Execute Workflow via External Trigger
+*WorkflowsAPI* | [**CreateWorkflow**](docs/WorkflowsAPI.md#createworkflow) | **Post** /workflows/{id} | Create Workflow
+*WorkflowsAPI* | [**CreateWorkflowExternalTrigger**](docs/WorkflowsAPI.md#createworkflowexternaltrigger) | **Post** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
+*WorkflowsAPI* | [**DeleteWorkflow**](docs/WorkflowsAPI.md#deleteworkflow) | **Delete** /workflows/{id} | Delete Workflow By Id
+*WorkflowsAPI* | [**GetWorkflow**](docs/WorkflowsAPI.md#getworkflow) | **Get** /workflows/{id} | Get Workflow By Id
+*WorkflowsAPI* | [**GetWorkflowExecution**](docs/WorkflowsAPI.md#getworkflowexecution) | **Get** /workflow-executions/{id} | Get a Workflow Execution
+*WorkflowsAPI* | [**GetWorkflowExecutionHistory**](docs/WorkflowsAPI.md#getworkflowexecutionhistory) | **Get** /workflow-executions/{id}/history | Get Workflow Execution History
+*WorkflowsAPI* | [**ListCompleteWorkflowLibrary**](docs/WorkflowsAPI.md#listcompleteworkflowlibrary) | **Get** /workflow-library | List Complete Workflow Library
+*WorkflowsAPI* | [**ListWorkflowExecutions**](docs/WorkflowsAPI.md#listworkflowexecutions) | **Get** /workflows/{id}/executions | List Workflow Executions
+*WorkflowsAPI* | [**ListWorkflowLibraryActions**](docs/WorkflowsAPI.md#listworkflowlibraryactions) | **Get** /workflow-library/actions | List Workflow Library Actions
+*WorkflowsAPI* | [**ListWorkflowLibraryOperators**](docs/WorkflowsAPI.md#listworkflowlibraryoperators) | **Get** /workflow-library/operators | List Workflow Library Operators
+*WorkflowsAPI* | [**ListWorkflowLibraryTriggers**](docs/WorkflowsAPI.md#listworkflowlibrarytriggers) | **Get** /workflow-library/triggers | List Workflow Library Triggers
+*WorkflowsAPI* | [**ListWorkflows**](docs/WorkflowsAPI.md#listworkflows) | **Get** /workflows | List Workflows
+*WorkflowsAPI* | [**PatchWorkflow**](docs/WorkflowsAPI.md#patchworkflow) | **Patch** /workflows/{id} | Patch Workflow
+*WorkflowsAPI* | [**PutWorkflow**](docs/WorkflowsAPI.md#putworkflow) | **Put** /workflows/{id} | Update Workflow
+*WorkflowsAPI* | [**TestExternalExecuteWorkflow**](docs/WorkflowsAPI.md#testexternalexecuteworkflow) | **Post** /workflows/execute/external/{id}/test | Test Workflow via External Trigger
+*WorkflowsAPI* | [**TestWorkflow**](docs/WorkflowsAPI.md#testworkflow) | **Post** /workflows/{id}/test | Test Workflow By Id
 
 
 ## Documentation For Models
@@ -496,12 +514,15 @@ Class | Method | HTTP request | Description
  - [CompletionStatus](docs/CompletionStatus.md)
  - [ConflictingAccessCriteria](docs/ConflictingAccessCriteria.md)
  - [ConnectorDetail](docs/ConnectorDetail.md)
+ - [CreateExternalExecuteWorkflow200Response](docs/CreateExternalExecuteWorkflow200Response.md)
+ - [CreateExternalExecuteWorkflowRequest](docs/CreateExternalExecuteWorkflowRequest.md)
  - [CreateOAuthClientRequest](docs/CreateOAuthClientRequest.md)
  - [CreateOAuthClientResponse](docs/CreateOAuthClientResponse.md)
  - [CreatePersonalAccessTokenRequest](docs/CreatePersonalAccessTokenRequest.md)
  - [CreatePersonalAccessTokenResponse](docs/CreatePersonalAccessTokenResponse.md)
  - [CreateSavedSearchRequest](docs/CreateSavedSearchRequest.md)
  - [CreateScheduledSearchRequest](docs/CreateScheduledSearchRequest.md)
+ - [CreateWorkflowRequest](docs/CreateWorkflowRequest.md)
  - [CriteriaType](docs/CriteriaType.md)
  - [DataAccess](docs/DataAccess.md)
  - [DataAccessCategoriesInner](docs/DataAccessCategoriesInner.md)
@@ -525,6 +546,7 @@ Class | Method | HTTP request | Description
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [Event](docs/Event.md)
+ - [EventAttributes](docs/EventAttributes.md)
  - [EventDocument](docs/EventDocument.md)
  - [ExceptionAccessCriteria](docs/ExceptionAccessCriteria.md)
  - [ExceptionCriteria](docs/ExceptionCriteria.md)
@@ -534,6 +556,7 @@ Class | Method | HTTP request | Description
  - [ExpansionItem](docs/ExpansionItem.md)
  - [Expression](docs/Expression.md)
  - [ExpressionChildrenInner](docs/ExpressionChildrenInner.md)
+ - [ExternalAttributes](docs/ExternalAttributes.md)
  - [FieldDetailsDto](docs/FieldDetailsDto.md)
  - [Filter](docs/Filter.md)
  - [FilterAggregation](docs/FilterAggregation.md)
@@ -581,6 +604,7 @@ Class | Method | HTTP request | Description
  - [ListAccessProfiles401Response](docs/ListAccessProfiles401Response.md)
  - [ListAccessProfiles429Response](docs/ListAccessProfiles429Response.md)
  - [ListCampaignFilters200Response](docs/ListCampaignFilters200Response.md)
+ - [ListCompleteWorkflowLibrary200ResponseInner](docs/ListCompleteWorkflowLibrary200ResponseInner.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
  - [ManualWorkItemDetails](docs/ManualWorkItemDetails.md)
@@ -729,6 +753,7 @@ Class | Method | HTTP request | Description
  - [ScheduleHours](docs/ScheduleHours.md)
  - [ScheduleMonths](docs/ScheduleMonths.md)
  - [ScheduleType](docs/ScheduleType.md)
+ - [ScheduledAttributes](docs/ScheduledAttributes.md)
  - [ScheduledSearch](docs/ScheduledSearch.md)
  - [ScheduledSearchAllOfOwner](docs/ScheduledSearchAllOfOwner.md)
  - [ScheduledSearchName](docs/ScheduledSearchName.md)
@@ -790,6 +815,10 @@ Class | Method | HTTP request | Description
  - [TaskResultDetailsReturnsInner](docs/TaskResultDetailsReturnsInner.md)
  - [TaskResultDto](docs/TaskResultDto.md)
  - [TaskResultSimplified](docs/TaskResultSimplified.md)
+ - [TestExternalExecuteWorkflow200Response](docs/TestExternalExecuteWorkflow200Response.md)
+ - [TestExternalExecuteWorkflowRequest](docs/TestExternalExecuteWorkflowRequest.md)
+ - [TestWorkflow200Response](docs/TestWorkflow200Response.md)
+ - [TestWorkflowRequest](docs/TestWorkflowRequest.md)
  - [TextQuery](docs/TextQuery.md)
  - [Transform](docs/Transform.md)
  - [TransformDefinition](docs/TransformDefinition.md)
@@ -815,6 +844,20 @@ Class | Method | HTTP request | Description
  - [WorkItemsCount](docs/WorkItemsCount.md)
  - [WorkItemsForm](docs/WorkItemsForm.md)
  - [WorkItemsSummary](docs/WorkItemsSummary.md)
+ - [Workflow](docs/Workflow.md)
+ - [WorkflowAllOfCreator](docs/WorkflowAllOfCreator.md)
+ - [WorkflowBody](docs/WorkflowBody.md)
+ - [WorkflowBodyOwner](docs/WorkflowBodyOwner.md)
+ - [WorkflowDefinition](docs/WorkflowDefinition.md)
+ - [WorkflowExecution](docs/WorkflowExecution.md)
+ - [WorkflowExecutionEvent](docs/WorkflowExecutionEvent.md)
+ - [WorkflowLibraryAction](docs/WorkflowLibraryAction.md)
+ - [WorkflowLibraryFormFields](docs/WorkflowLibraryFormFields.md)
+ - [WorkflowLibraryOperator](docs/WorkflowLibraryOperator.md)
+ - [WorkflowLibraryTrigger](docs/WorkflowLibraryTrigger.md)
+ - [WorkflowOAuthClient](docs/WorkflowOAuthClient.md)
+ - [WorkflowTrigger](docs/WorkflowTrigger.md)
+ - [WorkflowTriggerAttributes](docs/WorkflowTriggerAttributes.md)
 
 
 ## Documentation For Authorization
