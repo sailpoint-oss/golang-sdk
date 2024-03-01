@@ -119,6 +119,11 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**ReloadAccount**](docs/AccountsAPI.md#reloadaccount) | **Post** /accounts/{id}/reload | Reload Account
 *AccountsAPI* | [**UnlockAccount**](docs/AccountsAPI.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock Account
 *AccountsAPI* | [**UpdateAccount**](docs/AccountsAPI.md#updateaccount) | **Patch** /accounts/{id} | Update Account
+*AuthProfileAPI* | [**CreateProfileConfig**](docs/AuthProfileAPI.md#createprofileconfig) | **Post** /auth-profiles/{id} | Create Auth Profile.
+*AuthProfileAPI* | [**DeleteProfileConfig**](docs/AuthProfileAPI.md#deleteprofileconfig) | **Delete** /auth-profiles/{id} | Delete the specified Auth Profile
+*AuthProfileAPI* | [**GetProfileConfig**](docs/AuthProfileAPI.md#getprofileconfig) | **Get** /auth-profiles/{id} | Get Auth Profile.
+*AuthProfileAPI* | [**GetProfileConfigList**](docs/AuthProfileAPI.md#getprofileconfiglist) | **Get** /auth-profiles | Get list of Auth Profiles.
+*AuthProfileAPI* | [**PatchProfileConfig**](docs/AuthProfileAPI.md#patchprofileconfig) | **Patch** /auth-profiles/{id} | Patch a specified Auth Profile
 *CertificationCampaignsAPI* | [**CompleteCampaign**](docs/CertificationCampaignsAPI.md#completecampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
 *CertificationCampaignsAPI* | [**CreateCampaign**](docs/CertificationCampaignsAPI.md#createcampaign) | **Post** /campaigns | Create a campaign
 *CertificationCampaignsAPI* | [**CreateCampaignTemplate**](docs/CertificationCampaignsAPI.md#createcampaigntemplate) | **Post** /campaign-templates | Create a Campaign Template
@@ -664,6 +669,9 @@ Class | Method | HTTP request | Description
  - [AttributeDefinitionType](docs/AttributeDefinitionType.md)
  - [AttributesChanged](docs/AttributesChanged.md)
  - [AuditDetails](docs/AuditDetails.md)
+ - [AuthProfile](docs/AuthProfile.md)
+ - [AuthProfileRequest](docs/AuthProfileRequest.md)
+ - [AuthProfileSummary](docs/AuthProfileSummary.md)
  - [BaseCommonDto](docs/BaseCommonDto.md)
  - [BaseCommonDto1](docs/BaseCommonDto1.md)
  - [BaseReferenceDto](docs/BaseReferenceDto.md)

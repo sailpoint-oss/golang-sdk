@@ -6605,6 +6605,415 @@ paths:
       summary: In-progress Account Aggregation status
       tags:
       - Account Aggregations
+  /auth-profiles:
+    get:
+      description: This API returns a list of auth profiles.
+      operationId: getProfileConfigList
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthProfileSummary'
+          description: List of Auth Profiles
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:auth-profile:read
+      summary: Get list of Auth Profiles.
+      tags:
+      - Auth Profile
+  /auth-profiles/{id}:
+    delete:
+      description: This API deletes an existing Auth Profile.
+      operationId: deleteProfileConfig
+      parameters:
+      - description: ID of the Access Profile to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+      responses:
+        "204":
+          description: No content - indicates the request was successful but there
+            is no content to be returned in the response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:auth-profile:delete
+      summary: Delete the specified Auth Profile
+      tags:
+      - Auth Profile
+    get:
+      description: This API returns auth profile information.
+      operationId: getProfileConfig
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthProfile'
+          description: Auth Profile
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:auth-profile:read
+      summary: Get Auth Profile.
+      tags:
+      - Auth Profile
+    patch:
+      description: |-
+        This API updates an existing Auth Profile. The following fields are patchable:
+        **offNetwork**, **untrustedGeography**, **applicationId**, **applicationName**, **type**
+      operationId: patchProfileConfig
+      parameters:
+      - description: ID of the Auth Profile to patch
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/JsonPatchOperation'
+              type: array
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthProfile'
+          description: Responds with the Access Profile as updated.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:auth-profile:update
+      summary: Patch a specified Auth Profile
+      tags:
+      - Auth Profile
+    post:
+      description: This API creates an auth profile.
+      operationId: createProfileConfig
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthProfileRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthProfile'
+          description: Auth Profile details
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:auth-profile:create
+      summary: Create Auth Profile.
+      tags:
+      - Auth Profile
   /campaigns:
     get:
       deprecated: true
@@ -54545,6 +54954,114 @@ components:
             \ status is ACCOUNTS_COLLECTED or COMPLETED.*"
           example: 150
           type: integer
+      type: object
+    AuthProfileSummary:
+      example:
+        id: 2c91808458ae7a4f0158b1bbf8af0628
+        tenant: test-tenant
+      properties:
+        tenant:
+          description: Tenant name.
+          example: test-tenant
+          type: string
+        id:
+          description: Identity ID.
+          example: 2c91808458ae7a4f0158b1bbf8af0628
+          type: string
+      type: object
+    AuthProfile:
+      example:
+        offNetwork: true
+        strongAuthLogin: true
+        name: EndToEnd-Profile
+        untrustedGeography: true
+        applicationId: 2c91808458ae7a4f0158b1bbf8af0628
+        type: PTA
+        applicationName: EndToEnd-Source
+      properties:
+        name:
+          description: Authentication Profile name.
+          example: EndToEnd-Profile
+          type: string
+        offNetwork:
+          default: false
+          description: Use it to block access from off network.
+          example: true
+          type: boolean
+        untrustedGeography:
+          default: false
+          description: Use it to block access from untrusted geoographies.
+          example: true
+          type: boolean
+        applicationId:
+          description: Application ID.
+          example: 2c91808458ae7a4f0158b1bbf8af0628
+          type: string
+        applicationName:
+          description: Application name.
+          example: EndToEnd-Source
+          type: string
+        type:
+          description: Type of the Authentication Profile.
+          enum:
+          - BLOCK
+          - MFA
+          - NON_PTA
+          - PTA
+          example: PTA
+          type: string
+        strongAuthLogin:
+          default: false
+          description: Use it to enable strong authentication.
+          example: true
+          type: boolean
+      type: object
+    AuthProfileRequest:
+      example:
+        offNetwork: true
+        strongAuthLogin: true
+        name: EndToEnd-Profile
+        untrustedGeography: true
+        applicationId: 2c91808458ae7a4f0158b1bbf8af0628
+        type: PTA
+        applicationName: EndToEnd-Source
+      properties:
+        name:
+          description: Authentication Profile name.
+          example: EndToEnd-Profile
+          type: string
+        offNetwork:
+          default: false
+          description: Use it to block access from off network.
+          example: true
+          type: boolean
+        untrustedGeography:
+          default: false
+          description: Use it to block access from untrusted geoographies.
+          example: true
+          type: boolean
+        applicationId:
+          description: Application ID.
+          example: 2c91808458ae7a4f0158b1bbf8af0628
+          type: string
+        applicationName:
+          description: Application name.
+          example: EndToEnd-Source
+          type: string
+        type:
+          description: Type of the Authentication Profile.
+          enum:
+          - BLOCK
+          - MFA
+          - NON_PTA
+          - PTA
+          example: PTA
+          type: string
+        strongAuthLogin:
+          default: false
+          description: Use it to enable strong authentication.
+          example: true
+          type: boolean
       type: object
     Campaign:
       allOf:

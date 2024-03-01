@@ -11,6 +11,7 @@ api_account_activities.go
 api_account_aggregations.go
 api_account_usages.go
 api_accounts.go
+api_auth_profile.go
 api_certification_campaigns.go
 api_certifications.go
 api_connector_rule_management.go
@@ -193,6 +194,10 @@ docs/AttributeDefinitionSchema.md
 docs/AttributeDefinitionType.md
 docs/AttributesChanged.md
 docs/AuditDetails.md
+docs/AuthProfile.md
+docs/AuthProfileAPI.md
+docs/AuthProfileRequest.md
+docs/AuthProfileSummary.md
 docs/BaseCommonDto.md
 docs/BaseCommonDto1.md
 docs/BaseReferenceDto.md
@@ -988,6 +993,9 @@ model_attribute_definition_schema.go
 model_attribute_definition_type.go
 model_attributes_changed.go
 model_audit_details.go
+model_auth_profile.go
+model_auth_profile_request.go
+model_auth_profile_summary.go
 model_base_common_dto.go
 model_base_common_dto_1.go
 model_base_reference_dto.go
@@ -1617,6 +1625,7 @@ test/api_account_activities_test.go
 test/api_account_aggregations_test.go
 test/api_account_usages_test.go
 test/api_accounts_test.go
+test/api_auth_profile_test.go
 test/api_certification_campaigns_test.go
 test/api_certifications_test.go
 test/api_connector_rule_management_test.go
