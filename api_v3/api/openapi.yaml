@@ -10680,105 +10680,6 @@ paths:
       summary: List of Pending Certification Tasks
       tags:
       - Certifications
-  /connectors:
-    post:
-      description: |-
-        Create custom connector.
-        A token with ORG_ADMIN authority is required to call this API.
-      operationId: createCustomConnector
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/V3CreateConnectorDto'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/V3ConnectorDto'
-          description: A Connector Dto object
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Client Error - Returned if the request body is invalid.
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_401_response'
-          description: "Unauthorized - Returned if there is no authorization header,\
-            \ or if the JWT token is expired."
-        "403":
-          content:
-            application/json:
-              examples:
-                "403":
-                  summary: An example of a 403 response object
-                  value:
-                    detailCode: 403 Forbidden
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server understood the request but refuses to authorize
-                        it.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: "Forbidden - Returned if the user you are running as, doesn't\
-            \ have access to this end-point."
-        "404":
-          content:
-            application/json:
-              examples:
-                "404":
-                  summary: An example of a 404 response object
-                  value:
-                    detailCode: 404 Not found
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: The server did not find a current representation for the
-                        target resource.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Not Found - returned if the request URL refers to a resource
-            or object that does not exist
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/listAccessProfiles_429_response'
-          description: Too Many Requests - Returned in response to too many requests
-            in a given period of time - rate limited. The Retry-After header in the
-            response includes how long to wait before trying again.
-        "500":
-          content:
-            application/json:
-              examples:
-                "500":
-                  summary: An example of a 500 response object
-                  value:
-                    detailCode: 500.0 Internal Fault
-                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
-                    messages:
-                    - locale: en-US
-                      localeOrigin: DEFAULT
-                      text: An internal fault occurred.
-              schema:
-                $ref: '#/components/schemas/ErrorResponseDto'
-          description: Internal Server Error - Returned if there is an unexpected
-            error.
-      security:
-      - UserContextAuth:
-        - idn:connector-config:create
-      summary: Create custom connector
-      tags:
-      - Connectors
   /connectors/{scriptName}:
     delete:
       description: |-
@@ -12018,6 +11919,105 @@ paths:
       security:
       - UserContextAuth:
         - idn:connector-config:update
+      tags:
+      - Connectors
+  /connectors:
+    post:
+      description: |-
+        Create custom connector.
+        A token with ORG_ADMIN authority is required to call this API.
+      operationId: createCustomConnector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/V3CreateConnectorDto'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V3ConnectorDto'
+          description: A Connector Dto object
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:connector-config:create
+      summary: Create custom connector
       tags:
       - Connectors
   /identities/{identity-id}/set-lifecycle-state:
@@ -41924,117 +41924,6 @@ components:
           readOnly: true
           type: string
       type: object
-    V3CreateConnectorDto:
-      example:
-        name: custom connector
-        directConnect: true
-        className: sailpoint.connector.OpenConnectorAdapter
-        type: custom connector type
-        status: RELEASED
-      properties:
-        name:
-          description: The connector name. Need to be unique per tenant. The name
-            will able be used to derive a url friendly unique scriptname that will
-            be in response. Script name can then be used for all update endpoints
-          example: custom connector
-          type: string
-        type:
-          description: The connector type. If not specified will be defaulted to 'custom
-            '+name
-          example: custom connector type
-          type: string
-        className:
-          description: "The connector class name. If you are implementing openconnector\
-            \ standard (what is recommended), then this need to be set to sailpoint.connector.OpenConnectorAdapter"
-          example: sailpoint.connector.OpenConnectorAdapter
-          type: string
-        directConnect:
-          default: true
-          description: true if the source is a direct connect source
-          example: true
-          type: boolean
-        status:
-          description: The connector status
-          enum:
-          - DEVELOPMENT
-          - DEMO
-          - RELEASED
-          example: RELEASED
-          type: string
-      required:
-      - className
-      - name
-      title: custom connector create request
-      type: object
-    V3ConnectorDto:
-      example:
-        features:
-        - PROVISIONING
-        - SYNC_PROVISIONING
-        - SEARCH
-        - UNSTRUCTURED_TARGETS
-        name: name
-        scriptName: servicenow
-        directConnect: true
-        className: sailpoint.connector.OpenConnectorAdapter
-        type: ServiceNow
-        connectorMetadata:
-          supportedUI: ANGULAR
-          platform: ccg
-          shortDesc: connector description
-        status: RELEASED
-      properties:
-        name:
-          description: The connector name
-          example: name
-          type: string
-        type:
-          description: The connector type
-          example: ServiceNow
-          type: string
-        scriptName:
-          description: The connector script name
-          example: servicenow
-          type: string
-        className:
-          description: The connector class name.
-          example: sailpoint.connector.OpenConnectorAdapter
-          type: string
-        features:
-          description: The list of features supported by the connector
-          example:
-          - PROVISIONING
-          - SYNC_PROVISIONING
-          - SEARCH
-          - UNSTRUCTURED_TARGETS
-          items:
-            type: string
-          nullable: true
-          type: array
-        directConnect:
-          default: false
-          description: true if the source is a direct connect source
-          example: true
-          type: boolean
-        connectorMetadata:
-          additionalProperties: true
-          description: A map containing metadata pertinent to the connector
-          example:
-            supportedUI: ANGULAR
-            platform: ccg
-            shortDesc: connector description
-          type: object
-        status:
-          description: The connector status
-          enum:
-          - DEPRECATED
-          - DEVELOPMENT
-          - DEMO
-          - RELEASED
-          example: RELEASED
-          type: string
-      title: custom connector response object
-      type: object
     ConnectorDetail:
       example:
         applicationXml: |
@@ -42273,6 +42162,117 @@ components:
           - SKIPPED
           example: ERROR
           type: string
+      type: object
+    V3CreateConnectorDto:
+      example:
+        name: custom connector
+        directConnect: true
+        className: sailpoint.connector.OpenConnectorAdapter
+        type: custom connector type
+        status: RELEASED
+      properties:
+        name:
+          description: The connector name. Need to be unique per tenant. The name
+            will able be used to derive a url friendly unique scriptname that will
+            be in response. Script name can then be used for all update endpoints
+          example: custom connector
+          type: string
+        type:
+          description: The connector type. If not specified will be defaulted to 'custom
+            '+name
+          example: custom connector type
+          type: string
+        className:
+          description: "The connector class name. If you are implementing openconnector\
+            \ standard (what is recommended), then this need to be set to sailpoint.connector.OpenConnectorAdapter"
+          example: sailpoint.connector.OpenConnectorAdapter
+          type: string
+        directConnect:
+          default: true
+          description: true if the source is a direct connect source
+          example: true
+          type: boolean
+        status:
+          description: The connector status
+          enum:
+          - DEVELOPMENT
+          - DEMO
+          - RELEASED
+          example: RELEASED
+          type: string
+      required:
+      - className
+      - name
+      title: custom connector create request
+      type: object
+    V3ConnectorDto:
+      example:
+        features:
+        - PROVISIONING
+        - SYNC_PROVISIONING
+        - SEARCH
+        - UNSTRUCTURED_TARGETS
+        name: name
+        scriptName: servicenow
+        directConnect: true
+        className: sailpoint.connector.OpenConnectorAdapter
+        type: ServiceNow
+        connectorMetadata:
+          supportedUI: ANGULAR
+          platform: ccg
+          shortDesc: connector description
+        status: RELEASED
+      properties:
+        name:
+          description: The connector name
+          example: name
+          type: string
+        type:
+          description: The connector type
+          example: ServiceNow
+          type: string
+        scriptName:
+          description: The connector script name
+          example: servicenow
+          type: string
+        className:
+          description: The connector class name.
+          example: sailpoint.connector.OpenConnectorAdapter
+          type: string
+        features:
+          description: The list of features supported by the connector
+          example:
+          - PROVISIONING
+          - SYNC_PROVISIONING
+          - SEARCH
+          - UNSTRUCTURED_TARGETS
+          items:
+            type: string
+          nullable: true
+          type: array
+        directConnect:
+          default: false
+          description: true if the source is a direct connect source
+          example: true
+          type: boolean
+        connectorMetadata:
+          additionalProperties: true
+          description: A map containing metadata pertinent to the connector
+          example:
+            supportedUI: ANGULAR
+            platform: ccg
+            shortDesc: connector description
+          type: object
+        status:
+          description: The connector status
+          enum:
+          - DEPRECATED
+          - DEVELOPMENT
+          - DEMO
+          - RELEASED
+          example: RELEASED
+          type: string
+      title: custom connector response object
       type: object
     LifecycleState:
       allOf:
