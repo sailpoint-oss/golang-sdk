@@ -164,6 +164,8 @@ type APIClient struct {
 
 	TaskManagementAPI *TaskManagementAPIService
 
+	TenantAPI *TenantAPIService
+
 	TransformsAPI *TransformsAPIService
 
 	TriggersAPI *TriggersAPIService
@@ -247,6 +249,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SourcesAPI = (*SourcesAPIService)(&c.common)
 	c.TaggedObjectsAPI = (*TaggedObjectsAPIService)(&c.common)
 	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)
+	c.TenantAPI = (*TenantAPIService)(&c.common)
 	c.TransformsAPI = (*TransformsAPIService)(&c.common)
 	c.TriggersAPI = (*TriggersAPIService)(&c.common)
 	c.WorkItemsAPI = (*WorkItemsAPIService)(&c.common)

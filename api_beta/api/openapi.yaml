@@ -892,6 +892,8 @@ tags:
     \ for more information about tagging objects in IdentityNow. \n"
   name: Tagged Objects
 - name: Task Management
+- description: API for reading tenant details.
+  name: Tenant
 - description: "Operations for creating, managing, and deleting transforms"
   name: Transforms
 - description: |
@@ -40661,6 +40663,97 @@ paths:
       summary: Remove Tags from Multiple Objects
       tags:
       - Tagged Objects
+  /tenant:
+    get:
+      description: This rest endpoint can be used to retrieve tenant details.
+      operationId: getTenant
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tenant'
+          description: Tenant Info
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "404":
+          content:
+            application/json:
+              examples:
+                "404":
+                  summary: An example of a 404 response object
+                  value:
+                    detailCode: 404 Not found
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server did not find a current representation for the
+                        target resource.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Not Found - returned if the request URL refers to a resource
+            or object that does not exist
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - sp:tenant:read
+      summary: Get Tenant Information.
+      tags:
+      - Tenant
   /transforms:
     get:
       description: |-
@@ -62921,6 +63014,90 @@ components:
           example: MERGE
           type: string
       type: object
+    Tenant:
+      example:
+        pod: example-pod
+        name: acme
+        fullName: "Acme, Inc"
+        description: Description of the Tenant
+        id: 2c91808568c529c60168cca6f90c1324
+        region: us-east-1
+        products:
+        - productRegion: us-east-1
+          reason: Reason
+          notes: Example notes
+          productTenantId: tenant#product
+          productName: idn
+          url: https://tenant-name.identitynow.com
+          productRight: idn:ui:view
+          lastUpdated: 2020-05-19T13:49:37.385Z
+          orgType: test
+          licenses:
+          - legacyFeatureName: ACCESS_REQUEST
+            licenseId: idn:access-request
+          - legacyFeatureName: ACCESS_REQUEST
+            licenseId: idn:access-request
+          dateCreated: 2020-05-19T13:49:37.385Z
+          apiUrl: https://tenant-name.api.identitynow.com
+          zone: Deployment zone for the Product
+          statusDateTime: 2020-05-19T13:49:37.385Z
+          attributes:
+            domain: https://tenant-name.identitynow.com
+            maxRegisteredUsers: 250
+          status: active
+        - productRegion: us-east-1
+          reason: Reason
+          notes: Example notes
+          productTenantId: tenant#product
+          productName: idn
+          url: https://tenant-name.identitynow.com
+          productRight: idn:ui:view
+          lastUpdated: 2020-05-19T13:49:37.385Z
+          orgType: test
+          licenses:
+          - legacyFeatureName: ACCESS_REQUEST
+            licenseId: idn:access-request
+          - legacyFeatureName: ACCESS_REQUEST
+            licenseId: idn:access-request
+          dateCreated: 2020-05-19T13:49:37.385Z
+          apiUrl: https://tenant-name.api.identitynow.com
+          zone: Deployment zone for the Product
+          statusDateTime: 2020-05-19T13:49:37.385Z
+          attributes:
+            domain: https://tenant-name.identitynow.com
+            maxRegisteredUsers: 250
+          status: active
+      properties:
+        id:
+          description: The unique identifier for the Tenant
+          example: 2c91808568c529c60168cca6f90c1324
+          readOnly: true
+          type: string
+        name:
+          description: Abbreviated name of the Tenant
+          example: acme
+          type: string
+        fullName:
+          description: Human-readable name of the Tenant
+          example: "Acme, Inc"
+          type: string
+        pod:
+          description: Deployment pod for the Tenant
+          example: example-pod
+          type: string
+        region:
+          description: Deployment region for the Tenant
+          example: us-east-1
+          type: string
+        description:
+          description: Description of the Tenant
+          example: Description of the Tenant
+          type: string
+        products:
+          items:
+            $ref: '#/components/schemas/Product'
+          type: array
+      type: object
     TransformRead:
       allOf:
       - $ref: '#/components/schemas/Transform'
@@ -69789,6 +69966,117 @@ components:
           nullable: true
           type: string
       type: object
+    Product:
+      example:
+        productRegion: us-east-1
+        reason: Reason
+        notes: Example notes
+        productTenantId: tenant#product
+        productName: idn
+        url: https://tenant-name.identitynow.com
+        productRight: idn:ui:view
+        lastUpdated: 2020-05-19T13:49:37.385Z
+        orgType: test
+        licenses:
+        - legacyFeatureName: ACCESS_REQUEST
+          licenseId: idn:access-request
+        - legacyFeatureName: ACCESS_REQUEST
+          licenseId: idn:access-request
+        dateCreated: 2020-05-19T13:49:37.385Z
+        apiUrl: https://tenant-name.api.identitynow.com
+        zone: Deployment zone for the Product
+        statusDateTime: 2020-05-19T13:49:37.385Z
+        attributes:
+          domain: https://tenant-name.identitynow.com
+          maxRegisteredUsers: 250
+        status: active
+      properties:
+        productName:
+          description: Name of the Product
+          example: idn
+          type: string
+        url:
+          description: URL of the Product
+          example: https://tenant-name.identitynow.com
+          type: string
+        productTenantId:
+          description: An identifier for a specific product-tenant combination
+          example: tenant#product
+          type: string
+        productRegion:
+          description: Product region
+          example: us-east-1
+          type: string
+        productRight:
+          description: Right needed for the Product
+          example: idn:ui:view
+          type: string
+        apiUrl:
+          description: API URL of the Product
+          example: https://tenant-name.api.identitynow.com
+          nullable: true
+          type: string
+        licenses:
+          items:
+            $ref: '#/components/schemas/License'
+          type: array
+        attributes:
+          additionalProperties: true
+          description: Additional attributes for a product
+          example:
+            domain: https://tenant-name.identitynow.com
+            maxRegisteredUsers: 250
+          type: object
+        zone:
+          description: Zone
+          example: Deployment zone for the Product
+          type: string
+        status:
+          description: Status of the product
+          example: active
+          type: string
+        statusDateTime:
+          description: Status datetime
+          example: 2020-05-19T13:49:37.385Z
+          format: date-time
+          type: string
+        reason:
+          description: If there's a tenant provisioning failure then reason will have
+            the description of error
+          example: Reason
+          type: string
+        notes:
+          description: Product could have additional notes added during tenant provisioning.
+          example: Example notes
+          type: string
+        dateCreated:
+          description: Date when the product was created
+          example: 2020-05-19T13:49:37.385Z
+          format: date-time
+          nullable: true
+          type: string
+        lastUpdated:
+          description: Date when the product was last updated
+          example: 2020-05-19T13:49:37.385Z
+          format: date-time
+          nullable: true
+          type: string
+        orgType:
+          description: Type of org
+          enum:
+          - development
+          - staging
+          - production
+          - test
+          - partner
+          - training
+          - demonstration
+          - sandbox
+          - null
+          example: test
+          nullable: true
+          type: string
+      type: object
     TriggerType:
       description: The type of trigger.
       enum:
@@ -72258,6 +72546,20 @@ components:
       required:
       - locale
       - message
+      type: object
+    License:
+      example:
+        legacyFeatureName: ACCESS_REQUEST
+        licenseId: idn:access-request
+      properties:
+        licenseId:
+          description: Name of the license
+          example: idn:access-request
+          type: string
+        legacyFeatureName:
+          description: Legacy name of the license
+          example: ACCESS_REQUEST
+          type: string
       type: object
     AccessItemApproverDto:
       description: Identity who approved the access item request.

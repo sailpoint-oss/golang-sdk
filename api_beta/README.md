@@ -490,6 +490,7 @@ Class | Method | HTTP request | Description
 *TaskManagementAPI* | [**GetTaskStatus**](docs/TaskManagementAPI.md#gettaskstatus) | **Get** /task-status/{id} | Get task status by ID.
 *TaskManagementAPI* | [**GetTaskStatusList**](docs/TaskManagementAPI.md#gettaskstatuslist) | **Get** /task-status | Retrieve a task status list.
 *TaskManagementAPI* | [**UpdateTaskStatus**](docs/TaskManagementAPI.md#updatetaskstatus) | **Patch** /task-status/{id} | Update task status by ID
+*TenantAPI* | [**GetTenant**](docs/TenantAPI.md#gettenant) | **Get** /tenant | Get Tenant Information.
 *TransformsAPI* | [**CreateTransform**](docs/TransformsAPI.md#createtransform) | **Post** /transforms | Create transform
 *TransformsAPI* | [**DeleteTransform**](docs/TransformsAPI.md#deletetransform) | **Delete** /transforms/{id} | Delete a transform
 *TransformsAPI* | [**GetTransform**](docs/TransformsAPI.md#gettransform) | **Get** /transforms/{id} | Transform by ID
@@ -912,6 +913,7 @@ Class | Method | HTTP request | Description
  - [KbaAuthResponse](docs/KbaAuthResponse.md)
  - [KbaAuthResponseItem](docs/KbaAuthResponseItem.md)
  - [LatestOutlierSummary](docs/LatestOutlierSummary.md)
+ - [License](docs/License.md)
  - [LifecycleState](docs/LifecycleState.md)
  - [LifecycleStateDto](docs/LifecycleStateDto.md)
  - [ListAccessProfiles401Response](docs/ListAccessProfiles401Response.md)
@@ -1017,6 +1019,7 @@ Class | Method | HTTP request | Description
  - [PreferencesDto](docs/PreferencesDto.md)
  - [PreviewDataSourceResponse](docs/PreviewDataSourceResponse.md)
  - [ProcessIdentitiesRequest](docs/ProcessIdentitiesRequest.md)
+ - [Product](docs/Product.md)
  - [ProvisioningCompleted](docs/ProvisioningCompleted.md)
  - [ProvisioningCompletedAccountRequestsInner](docs/ProvisioningCompletedAccountRequestsInner.md)
  - [ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner](docs/ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.md)
@@ -1229,6 +1232,7 @@ Class | Method | HTTP request | Description
  - [TemplateBulkDeleteDto](docs/TemplateBulkDeleteDto.md)
  - [TemplateDto](docs/TemplateDto.md)
  - [TemplateDtoDefault](docs/TemplateDtoDefault.md)
+ - [Tenant](docs/Tenant.md)
  - [TenantConfigurationDetails](docs/TenantConfigurationDetails.md)
  - [TenantConfigurationRequest](docs/TenantConfigurationRequest.md)
  - [TenantConfigurationResponse](docs/TenantConfigurationResponse.md)

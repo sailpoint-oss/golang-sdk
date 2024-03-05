@@ -59,6 +59,7 @@ api_sources.go
 api_sp_config.go
 api_tagged_objects.go
 api_task_management.go
+api_tenant.go
 api_transforms.go
 api_triggers.go
 api_work_items.go
@@ -457,6 +458,7 @@ docs/KbaAnswerRequestItem.md
 docs/KbaAuthResponse.md
 docs/KbaAuthResponseItem.md
 docs/LatestOutlierSummary.md
+docs/License.md
 docs/LifecycleState.md
 docs/LifecycleStateDto.md
 docs/LifecycleStatesAPI.md
@@ -576,6 +578,7 @@ docs/PreApprovalTriggerDetails.md
 docs/PreferencesDto.md
 docs/PreviewDataSourceResponse.md
 docs/ProcessIdentitiesRequest.md
+docs/Product.md
 docs/ProvisioningCompleted.md
 docs/ProvisioningCompletedAccountRequestsInner.md
 docs/ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.md
@@ -802,6 +805,8 @@ docs/TaskStatusMessage.md
 docs/TemplateBulkDeleteDto.md
 docs/TemplateDto.md
 docs/TemplateDtoDefault.md
+docs/Tenant.md
+docs/TenantAPI.md
 docs/TenantConfigurationDetails.md
 docs/TenantConfigurationRequest.md
 docs/TenantConfigurationResponse.md
@@ -1236,6 +1241,7 @@ model_kba_answer_request_item.go
 model_kba_auth_response.go
 model_kba_auth_response_item.go
 model_latest_outlier_summary.go
+model_license.go
 model_lifecycle_state.go
 model_lifecycle_state_dto.go
 model_list_access_profiles_401_response.go
@@ -1341,6 +1347,7 @@ model_pre_approval_trigger_details.go
 model_preferences_dto.go
 model_preview_data_source_response.go
 model_process_identities_request.go
+model_product.go
 model_provisioning_completed.go
 model_provisioning_completed_account_requests_inner.go
 model_provisioning_completed_account_requests_inner_attribute_requests_inner.go
@@ -1553,6 +1560,7 @@ model_task_status_message.go
 model_template_bulk_delete_dto.go
 model_template_dto.go
 model_template_dto_default.go
+model_tenant.go
 model_tenant_configuration_details.go
 model_tenant_configuration_request.go
 model_tenant_configuration_response.go
@@ -1673,6 +1681,7 @@ test/api_sources_test.go
 test/api_sp_config_test.go
 test/api_tagged_objects_test.go
 test/api_task_management_test.go
+test/api_tenant_test.go
 test/api_transforms_test.go
 test/api_triggers_test.go
 test/api_work_items_test.go
