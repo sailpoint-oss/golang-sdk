@@ -12,10 +12,13 @@ Name | Type | Description | Notes
 **Columns** | Pointer to [**map[string][]Column**](array.md) | The columns to be returned (specifies the order in which they will be presented) for each document type.  The currently supported document types are: _accessprofile_, _accountactivity_, _account_, _aggregation_, _entitlement_, _event_, _identity_, and _role_.  | [optional] 
 **Query** | **string** | The search query using Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL.  | 
 **Fields** | Pointer to **[]string** | The fields to be searched against in a multi-field query.  | [optional] 
+**OrderBy** | Pointer to **map[string][]string** | Sort by index. This takes precedence over the &#x60;sort&#x60; property.  | [optional] 
 **Sort** | Pointer to **[]string** | The fields to be used to sort the search results.  | [optional] 
 **Filters** | Pointer to [**NullableSavedSearchDetailFilters**](SavedSearchDetailFilters.md) |  | [optional] 
 **Id** | Pointer to **string** | The saved search ID.  | [optional] 
 **Owner** | Pointer to [**TypedReference**](TypedReference.md) |  | [optional] 
+**OwnerId** | Pointer to **string** | The ID of the identity that owns this saved search. | [optional] 
+**Public** | Pointer to **bool** | Whether this saved search is visible to anyone but the owner. This field will always be false as there is no way to set a saved search as public at this time. | [optional] [default to false]
 
 ## Methods
 
@@ -266,6 +269,41 @@ HasFields returns a boolean if a field has been set.
 `func (o *SavedSearch) UnsetFields()`
 
 UnsetFields ensures that no value is present for Fields, not even an explicit nil
+### GetOrderBy
+
+`func (o *SavedSearch) GetOrderBy() map[string][]string`
+
+GetOrderBy returns the OrderBy field if non-nil, zero value otherwise.
+
+### GetOrderByOk
+
+`func (o *SavedSearch) GetOrderByOk() (*map[string][]string, bool)`
+
+GetOrderByOk returns a tuple with the OrderBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderBy
+
+`func (o *SavedSearch) SetOrderBy(v map[string][]string)`
+
+SetOrderBy sets OrderBy field to given value.
+
+### HasOrderBy
+
+`func (o *SavedSearch) HasOrderBy() bool`
+
+HasOrderBy returns a boolean if a field has been set.
+
+### SetOrderByNil
+
+`func (o *SavedSearch) SetOrderByNil(b bool)`
+
+ SetOrderByNil sets the value for OrderBy to be an explicit nil
+
+### UnsetOrderBy
+`func (o *SavedSearch) UnsetOrderBy()`
+
+UnsetOrderBy ensures that no value is present for OrderBy, not even an explicit nil
 ### GetSort
 
 `func (o *SavedSearch) GetSort() []string`
@@ -291,6 +329,16 @@ SetSort sets Sort field to given value.
 
 HasSort returns a boolean if a field has been set.
 
+### SetSortNil
+
+`func (o *SavedSearch) SetSortNil(b bool)`
+
+ SetSortNil sets the value for Sort to be an explicit nil
+
+### UnsetSort
+`func (o *SavedSearch) UnsetSort()`
+
+UnsetSort ensures that no value is present for Sort, not even an explicit nil
 ### GetFilters
 
 `func (o *SavedSearch) GetFilters() SavedSearchDetailFilters`
@@ -375,6 +423,56 @@ SetOwner sets Owner field to given value.
 `func (o *SavedSearch) HasOwner() bool`
 
 HasOwner returns a boolean if a field has been set.
+
+### GetOwnerId
+
+`func (o *SavedSearch) GetOwnerId() string`
+
+GetOwnerId returns the OwnerId field if non-nil, zero value otherwise.
+
+### GetOwnerIdOk
+
+`func (o *SavedSearch) GetOwnerIdOk() (*string, bool)`
+
+GetOwnerIdOk returns a tuple with the OwnerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwnerId
+
+`func (o *SavedSearch) SetOwnerId(v string)`
+
+SetOwnerId sets OwnerId field to given value.
+
+### HasOwnerId
+
+`func (o *SavedSearch) HasOwnerId() bool`
+
+HasOwnerId returns a boolean if a field has been set.
+
+### GetPublic
+
+`func (o *SavedSearch) GetPublic() bool`
+
+GetPublic returns the Public field if non-nil, zero value otherwise.
+
+### GetPublicOk
+
+`func (o *SavedSearch) GetPublicOk() (*bool, bool)`
+
+GetPublicOk returns a tuple with the Public field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublic
+
+`func (o *SavedSearch) SetPublic(v bool)`
+
+SetPublic sets Public field to given value.
+
+### HasPublic
+
+`func (o *SavedSearch) HasPublic() bool`
+
+HasPublic returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

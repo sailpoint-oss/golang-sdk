@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Modified** | Pointer to **time.Time** | The time when the segment is modified. | [optional] 
 **Description** | Pointer to **string** | The segment&#39;s optional description. | [optional] 
 **Owner** | Pointer to [**NullableOwnerReferenceSegments**](OwnerReferenceSegments.md) |  | [optional] 
-**VisibilityCriteria** | Pointer to [**VisibilityCriteria**](VisibilityCriteria.md) |  | [optional] 
+**VisibilityCriteria** | Pointer to [**SegmentVisibilityCriteria**](SegmentVisibilityCriteria.md) |  | [optional] 
 **Active** | Pointer to **bool** | This boolean indicates whether the segment is currently active. Inactive segments have no effect. | [optional] [default to false]
 
 ## Methods
@@ -194,20 +194,20 @@ HasOwner returns a boolean if a field has been set.
 UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 ### GetVisibilityCriteria
 
-`func (o *Segment) GetVisibilityCriteria() VisibilityCriteria`
+`func (o *Segment) GetVisibilityCriteria() SegmentVisibilityCriteria`
 
 GetVisibilityCriteria returns the VisibilityCriteria field if non-nil, zero value otherwise.
 
 ### GetVisibilityCriteriaOk
 
-`func (o *Segment) GetVisibilityCriteriaOk() (*VisibilityCriteria, bool)`
+`func (o *Segment) GetVisibilityCriteriaOk() (*SegmentVisibilityCriteria, bool)`
 
 GetVisibilityCriteriaOk returns a tuple with the VisibilityCriteria field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVisibilityCriteria
 
-`func (o *Segment) SetVisibilityCriteria(v VisibilityCriteria)`
+`func (o *Segment) SetVisibilityCriteria(v SegmentVisibilityCriteria)`
 
 SetVisibilityCriteria sets VisibilityCriteria field to given value.
 

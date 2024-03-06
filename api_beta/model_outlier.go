@@ -37,11 +37,11 @@ type Outlier struct {
 	// The outlier score determined by the detection engine ranging from 0..1
 	Score *float32 `json:"score,omitempty"`
 	// Enum value of if the outlier manually or automatically un-ignored. Will be NULL if outlier is not ignored
-	UnignoreType *string `json:"unignoreType,omitempty"`
+	UnignoreType NullableString `json:"unignoreType,omitempty"`
 	// shows date when last time has been unignored outlier
-	UnignoreDate *time.Time `json:"unignoreDate,omitempty"`
+	UnignoreDate NullableTime `json:"unignoreDate,omitempty"`
 	// shows date when last time has been ignored outlier
-	IgnoreDate *time.Time `json:"ignoreDate,omitempty"`
+	IgnoreDate NullableTime `json:"ignoreDate,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -320,100 +320,130 @@ func (o *Outlier) SetScore(v float32) {
 	o.Score = &v
 }
 
-// GetUnignoreType returns the UnignoreType field value if set, zero value otherwise.
+// GetUnignoreType returns the UnignoreType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Outlier) GetUnignoreType() string {
-	if o == nil || isNil(o.UnignoreType) {
+	if o == nil || isNil(o.UnignoreType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UnignoreType
+	return *o.UnignoreType.Get()
 }
 
 // GetUnignoreTypeOk returns a tuple with the UnignoreType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Outlier) GetUnignoreTypeOk() (*string, bool) {
-	if o == nil || isNil(o.UnignoreType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UnignoreType, true
+	return o.UnignoreType.Get(), o.UnignoreType.IsSet()
 }
 
 // HasUnignoreType returns a boolean if a field has been set.
 func (o *Outlier) HasUnignoreType() bool {
-	if o != nil && !isNil(o.UnignoreType) {
+	if o != nil && o.UnignoreType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUnignoreType gets a reference to the given string and assigns it to the UnignoreType field.
+// SetUnignoreType gets a reference to the given NullableString and assigns it to the UnignoreType field.
 func (o *Outlier) SetUnignoreType(v string) {
-	o.UnignoreType = &v
+	o.UnignoreType.Set(&v)
+}
+// SetUnignoreTypeNil sets the value for UnignoreType to be an explicit nil
+func (o *Outlier) SetUnignoreTypeNil() {
+	o.UnignoreType.Set(nil)
 }
 
-// GetUnignoreDate returns the UnignoreDate field value if set, zero value otherwise.
+// UnsetUnignoreType ensures that no value is present for UnignoreType, not even an explicit nil
+func (o *Outlier) UnsetUnignoreType() {
+	o.UnignoreType.Unset()
+}
+
+// GetUnignoreDate returns the UnignoreDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Outlier) GetUnignoreDate() time.Time {
-	if o == nil || isNil(o.UnignoreDate) {
+	if o == nil || isNil(o.UnignoreDate.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.UnignoreDate
+	return *o.UnignoreDate.Get()
 }
 
 // GetUnignoreDateOk returns a tuple with the UnignoreDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Outlier) GetUnignoreDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UnignoreDate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UnignoreDate, true
+	return o.UnignoreDate.Get(), o.UnignoreDate.IsSet()
 }
 
 // HasUnignoreDate returns a boolean if a field has been set.
 func (o *Outlier) HasUnignoreDate() bool {
-	if o != nil && !isNil(o.UnignoreDate) {
+	if o != nil && o.UnignoreDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUnignoreDate gets a reference to the given time.Time and assigns it to the UnignoreDate field.
+// SetUnignoreDate gets a reference to the given NullableTime and assigns it to the UnignoreDate field.
 func (o *Outlier) SetUnignoreDate(v time.Time) {
-	o.UnignoreDate = &v
+	o.UnignoreDate.Set(&v)
+}
+// SetUnignoreDateNil sets the value for UnignoreDate to be an explicit nil
+func (o *Outlier) SetUnignoreDateNil() {
+	o.UnignoreDate.Set(nil)
 }
 
-// GetIgnoreDate returns the IgnoreDate field value if set, zero value otherwise.
+// UnsetUnignoreDate ensures that no value is present for UnignoreDate, not even an explicit nil
+func (o *Outlier) UnsetUnignoreDate() {
+	o.UnignoreDate.Unset()
+}
+
+// GetIgnoreDate returns the IgnoreDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Outlier) GetIgnoreDate() time.Time {
-	if o == nil || isNil(o.IgnoreDate) {
+	if o == nil || isNil(o.IgnoreDate.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.IgnoreDate
+	return *o.IgnoreDate.Get()
 }
 
 // GetIgnoreDateOk returns a tuple with the IgnoreDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Outlier) GetIgnoreDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.IgnoreDate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IgnoreDate, true
+	return o.IgnoreDate.Get(), o.IgnoreDate.IsSet()
 }
 
 // HasIgnoreDate returns a boolean if a field has been set.
 func (o *Outlier) HasIgnoreDate() bool {
-	if o != nil && !isNil(o.IgnoreDate) {
+	if o != nil && o.IgnoreDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIgnoreDate gets a reference to the given time.Time and assigns it to the IgnoreDate field.
+// SetIgnoreDate gets a reference to the given NullableTime and assigns it to the IgnoreDate field.
 func (o *Outlier) SetIgnoreDate(v time.Time) {
-	o.IgnoreDate = &v
+	o.IgnoreDate.Set(&v)
+}
+// SetIgnoreDateNil sets the value for IgnoreDate to be an explicit nil
+func (o *Outlier) SetIgnoreDateNil() {
+	o.IgnoreDate.Set(nil)
+}
+
+// UnsetIgnoreDate ensures that no value is present for IgnoreDate, not even an explicit nil
+func (o *Outlier) UnsetIgnoreDate() {
+	o.IgnoreDate.Unset()
 }
 
 func (o Outlier) MarshalJSON() ([]byte, error) {
@@ -450,14 +480,14 @@ func (o Outlier) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Score) {
 		toSerialize["score"] = o.Score
 	}
-	if !isNil(o.UnignoreType) {
-		toSerialize["unignoreType"] = o.UnignoreType
+	if o.UnignoreType.IsSet() {
+		toSerialize["unignoreType"] = o.UnignoreType.Get()
 	}
-	if !isNil(o.UnignoreDate) {
-		toSerialize["unignoreDate"] = o.UnignoreDate
+	if o.UnignoreDate.IsSet() {
+		toSerialize["unignoreDate"] = o.UnignoreDate.Get()
 	}
-	if !isNil(o.IgnoreDate) {
-		toSerialize["ignoreDate"] = o.IgnoreDate
+	if o.IgnoreDate.IsSet() {
+		toSerialize["ignoreDate"] = o.IgnoreDate.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

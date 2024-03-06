@@ -296,9 +296,9 @@ func (o *Role) SetAccessProfiles(v []AccessProfileRef) {
 	o.AccessProfiles = v
 }
 
-// GetEntitlements returns the Entitlements field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEntitlements returns the Entitlements field value if set, zero value otherwise.
 func (o *Role) GetEntitlements() []EntitlementRef {
-	if o == nil {
+	if o == nil || isNil(o.Entitlements) {
 		var ret []EntitlementRef
 		return ret
 	}
@@ -307,7 +307,6 @@ func (o *Role) GetEntitlements() []EntitlementRef {
 
 // GetEntitlementsOk returns a tuple with the Entitlements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Role) GetEntitlementsOk() ([]EntitlementRef, bool) {
 	if o == nil || isNil(o.Entitlements) {
 		return nil, false
@@ -317,7 +316,7 @@ func (o *Role) GetEntitlementsOk() ([]EntitlementRef, bool) {
 
 // HasEntitlements returns a boolean if a field has been set.
 func (o *Role) HasEntitlements() bool {
-	if o != nil && isNil(o.Entitlements) {
+	if o != nil && !isNil(o.Entitlements) {
 		return true
 	}
 
@@ -588,7 +587,7 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	if o.AccessProfiles != nil {
 		toSerialize["accessProfiles"] = o.AccessProfiles
 	}
-	if o.Entitlements != nil {
+	if !isNil(o.Entitlements) {
 		toSerialize["entitlements"] = o.Entitlements
 	}
 	if o.Membership.IsSet() {

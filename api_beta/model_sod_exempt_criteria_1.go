@@ -37,6 +37,8 @@ type _SodExemptCriteria1 SodExemptCriteria1
 // will change when the set of required properties is changed
 func NewSodExemptCriteria1() *SodExemptCriteria1 {
 	this := SodExemptCriteria1{}
+	var existing bool = false
+	this.Existing = &existing
 	return &this
 }
 
@@ -45,6 +47,8 @@ func NewSodExemptCriteria1() *SodExemptCriteria1 {
 // but it doesn't guarantee that properties required by API are set
 func NewSodExemptCriteria1WithDefaults() *SodExemptCriteria1 {
 	this := SodExemptCriteria1{}
+	var existing bool = false
+	this.Existing = &existing
 	return &this
 }
 

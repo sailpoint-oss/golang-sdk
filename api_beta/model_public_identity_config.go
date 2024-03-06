@@ -23,7 +23,7 @@ type PublicIdentityConfig struct {
 	Attributes []PublicIdentityAttributeConfig `json:"attributes,omitempty"`
 	ModifiedBy NullableIdentityReference `json:"modifiedBy,omitempty"`
 	// the date/time of the modification
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified NullableTime `json:"modified,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -120,36 +120,46 @@ func (o *PublicIdentityConfig) UnsetModifiedBy() {
 	o.ModifiedBy.Unset()
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise.
+// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PublicIdentityConfig) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || isNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.Modified
+	return *o.Modified.Get()
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PublicIdentityConfig) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Modified, true
+	return o.Modified.Get(), o.Modified.IsSet()
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *PublicIdentityConfig) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && o.Modified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+// SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
 func (o *PublicIdentityConfig) SetModified(v time.Time) {
-	o.Modified = &v
+	o.Modified.Set(&v)
+}
+// SetModifiedNil sets the value for Modified to be an explicit nil
+func (o *PublicIdentityConfig) SetModifiedNil() {
+	o.Modified.Set(nil)
+}
+
+// UnsetModified ensures that no value is present for Modified, not even an explicit nil
+func (o *PublicIdentityConfig) UnsetModified() {
+	o.Modified.Unset()
 }
 
 func (o PublicIdentityConfig) MarshalJSON() ([]byte, error) {
@@ -168,8 +178,8 @@ func (o PublicIdentityConfig) ToMap() (map[string]interface{}, error) {
 	if o.ModifiedBy.IsSet() {
 		toSerialize["modifiedBy"] = o.ModifiedBy.Get()
 	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
+	if o.Modified.IsSet() {
+		toSerialize["modified"] = o.Modified.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

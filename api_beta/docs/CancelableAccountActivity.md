@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | ID of the account activity itself | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Created** | Pointer to **time.Time** |  | [optional] 
-**Modified** | Pointer to **time.Time** |  | [optional] 
-**Completed** | Pointer to **time.Time** |  | [optional] 
+**Modified** | Pointer to **NullableTime** |  | [optional] 
+**Completed** | Pointer to **NullableTime** |  | [optional] 
 **CompletionStatus** | Pointer to [**NullableCompletionStatus**](CompletionStatus.md) |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] 
+**Type** | Pointer to **NullableString** |  | [optional] 
 **RequesterIdentitySummary** | Pointer to [**NullableIdentitySummary**](IdentitySummary.md) |  | [optional] 
 **TargetIdentitySummary** | Pointer to [**NullableIdentitySummary**](IdentitySummary.md) |  | [optional] 
 **Errors** | Pointer to **[]string** |  | [optional] 
@@ -140,6 +140,16 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
+### SetModifiedNil
+
+`func (o *CancelableAccountActivity) SetModifiedNil(b bool)`
+
+ SetModifiedNil sets the value for Modified to be an explicit nil
+
+### UnsetModified
+`func (o *CancelableAccountActivity) UnsetModified()`
+
+UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetCompleted
 
 `func (o *CancelableAccountActivity) GetCompleted() time.Time`
@@ -165,6 +175,16 @@ SetCompleted sets Completed field to given value.
 
 HasCompleted returns a boolean if a field has been set.
 
+### SetCompletedNil
+
+`func (o *CancelableAccountActivity) SetCompletedNil(b bool)`
+
+ SetCompletedNil sets the value for Completed to be an explicit nil
+
+### UnsetCompleted
+`func (o *CancelableAccountActivity) UnsetCompleted()`
+
+UnsetCompleted ensures that no value is present for Completed, not even an explicit nil
 ### GetCompletionStatus
 
 `func (o *CancelableAccountActivity) GetCompletionStatus() CompletionStatus`
@@ -225,6 +245,16 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *CancelableAccountActivity) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *CancelableAccountActivity) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetRequesterIdentitySummary
 
 `func (o *CancelableAccountActivity) GetRequesterIdentitySummary() IdentitySummary`
@@ -320,6 +350,16 @@ SetErrors sets Errors field to given value.
 
 HasErrors returns a boolean if a field has been set.
 
+### SetErrorsNil
+
+`func (o *CancelableAccountActivity) SetErrorsNil(b bool)`
+
+ SetErrorsNil sets the value for Errors to be an explicit nil
+
+### UnsetErrors
+`func (o *CancelableAccountActivity) UnsetErrors()`
+
+UnsetErrors ensures that no value is present for Errors, not even an explicit nil
 ### GetWarnings
 
 `func (o *CancelableAccountActivity) GetWarnings() []string`
@@ -345,6 +385,16 @@ SetWarnings sets Warnings field to given value.
 
 HasWarnings returns a boolean if a field has been set.
 
+### SetWarningsNil
+
+`func (o *CancelableAccountActivity) SetWarningsNil(b bool)`
+
+ SetWarningsNil sets the value for Warnings to be an explicit nil
+
+### UnsetWarnings
+`func (o *CancelableAccountActivity) UnsetWarnings()`
+
+UnsetWarnings ensures that no value is present for Warnings, not even an explicit nil
 ### GetItems
 
 `func (o *CancelableAccountActivity) GetItems() []AccountActivityItem`
@@ -370,6 +420,16 @@ SetItems sets Items field to given value.
 
 HasItems returns a boolean if a field has been set.
 
+### SetItemsNil
+
+`func (o *CancelableAccountActivity) SetItemsNil(b bool)`
+
+ SetItemsNil sets the value for Items to be an explicit nil
+
+### UnsetItems
+`func (o *CancelableAccountActivity) UnsetItems()`
+
+UnsetItems ensures that no value is present for Items, not even an explicit nil
 ### GetExecutionStatus
 
 `func (o *CancelableAccountActivity) GetExecutionStatus() ExecutionStatus`
@@ -420,6 +480,16 @@ SetClientMetadata sets ClientMetadata field to given value.
 
 HasClientMetadata returns a boolean if a field has been set.
 
+### SetClientMetadataNil
+
+`func (o *CancelableAccountActivity) SetClientMetadataNil(b bool)`
+
+ SetClientMetadataNil sets the value for ClientMetadata to be an explicit nil
+
+### UnsetClientMetadata
+`func (o *CancelableAccountActivity) UnsetClientMetadata()`
+
+UnsetClientMetadata ensures that no value is present for ClientMetadata, not even an explicit nil
 ### GetCancelable
 
 `func (o *CancelableAccountActivity) GetCancelable() bool`

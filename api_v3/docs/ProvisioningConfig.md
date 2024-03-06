@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **UniversalManager** | Pointer to **bool** | Specifies whether this configuration is used to manage provisioning requests for all sources from the org.  If true, no managedResourceRefs are allowed. | [optional] [readonly] [default to false]
 **ManagedResourceRefs** | Pointer to [**[]ServiceDeskSource**](ServiceDeskSource.md) | References to sources for the Service Desk integration template.  May only be specified if universalManager is false. | [optional] 
-**PlanInitializerScript** | Pointer to [**ProvisioningConfigPlanInitializerScript**](ProvisioningConfigPlanInitializerScript.md) |  | [optional] 
+**PlanInitializerScript** | Pointer to [**NullableProvisioningConfigPlanInitializerScript**](ProvisioningConfigPlanInitializerScript.md) |  | [optional] 
 **NoProvisioningRequests** | Pointer to **bool** | Name of an attribute that when true disables the saving of ProvisioningRequest objects whenever plans are sent through this integration. | [optional] [default to false]
 **ProvisioningRequestExpiration** | Pointer to **int32** | When saving pending requests is enabled, this defines the number of hours the request is allowed to live before it is considered expired and no longer affects plan compilation. | [optional] 
 
@@ -104,6 +104,16 @@ SetPlanInitializerScript sets PlanInitializerScript field to given value.
 
 HasPlanInitializerScript returns a boolean if a field has been set.
 
+### SetPlanInitializerScriptNil
+
+`func (o *ProvisioningConfig) SetPlanInitializerScriptNil(b bool)`
+
+ SetPlanInitializerScriptNil sets the value for PlanInitializerScript to be an explicit nil
+
+### UnsetPlanInitializerScript
+`func (o *ProvisioningConfig) UnsetPlanInitializerScript()`
+
+UnsetPlanInitializerScript ensures that no value is present for PlanInitializerScript, not even an explicit nil
 ### GetNoProvisioningRequests
 
 `func (o *ProvisioningConfig) GetNoProvisioningRequests() bool`

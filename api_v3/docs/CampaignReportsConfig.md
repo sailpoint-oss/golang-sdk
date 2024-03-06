@@ -50,6 +50,16 @@ SetIdentityAttributeColumns sets IdentityAttributeColumns field to given value.
 
 HasIdentityAttributeColumns returns a boolean if a field has been set.
 
+### SetIdentityAttributeColumnsNil
+
+`func (o *CampaignReportsConfig) SetIdentityAttributeColumnsNil(b bool)`
+
+ SetIdentityAttributeColumnsNil sets the value for IdentityAttributeColumns to be an explicit nil
+
+### UnsetIdentityAttributeColumns
+`func (o *CampaignReportsConfig) UnsetIdentityAttributeColumns()`
+
+UnsetIdentityAttributeColumns ensures that no value is present for IdentityAttributeColumns, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

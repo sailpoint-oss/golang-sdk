@@ -546,7 +546,7 @@ func (r ApiDeleteNotificationTemplatesInBulkRequest) Execute() (*http.Response, 
 /*
 DeleteNotificationTemplatesInBulk Bulk Delete Notification Templates
 
-This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, you can only delete a subset of your notifications, i.e. ones that show up in the list call.
+This lets you bulk delete templates that you previously created for your site. Since this is a beta feature, please contact support to enable usage.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiDeleteNotificationTemplatesInBulkRequest
@@ -1169,7 +1169,6 @@ func (r ApiGetNotificationPreferenceRequest) Execute() (*PreferencesDto, *http.R
 GetNotificationPreference Get Notification Preferences for tenant.
 
 Returns the notification preferences for tenant.  Note that if the key doesn't exist, then a 404 will be returned.
-Request will require the following legacy roles:  ORG_ADMIN and API
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param key The notification key.
@@ -1290,6 +1289,17 @@ func (a *NotificationsAPIService) GetNotificationPreferenceExecute(r ApiGetNotif
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1475,18 +1485,15 @@ type ApiGetNotificationsTemplateContextRequest struct {
 	ApiService *NotificationsAPIService
 }
 
-func (r ApiGetNotificationsTemplateContextRequest) Execute() ([]NotificationTemplateContext, *http.Response, error) {
+func (r ApiGetNotificationsTemplateContextRequest) Execute() (*NotificationTemplateContext, *http.Response, error) {
 	return r.ApiService.GetNotificationsTemplateContextExecute(r)
 }
 
 /*
 GetNotificationsTemplateContext Get Notification Template Context
 
-The notification service (Hermes) maintains metadata to construct the notification templates or supply any information during the event propagation.  The data-store where this information is retrieved is  called "Global Context" (a.k.a. notification template context). It defines a set of attributes
+The notification service maintains metadata to construct the notification templates or supply any information during the event propagation. The data-store where this information is retrieved is called "Global Context" (a.k.a. notification template context). It defines a set of attributes
  that will be available per tenant (organization).
-
-Regarding authorization, the access token contains the tenant and will grant access to the one requested.
-Requires the following security scope:  idn:notification-templates:read
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetNotificationsTemplateContextRequest
@@ -1499,13 +1506,13 @@ func (a *NotificationsAPIService) GetNotificationsTemplateContext(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []NotificationTemplateContext
-func (a *NotificationsAPIService) GetNotificationsTemplateContextExecute(r ApiGetNotificationsTemplateContextRequest) ([]NotificationTemplateContext, *http.Response, error) {
+//  @return NotificationTemplateContext
+func (a *NotificationsAPIService) GetNotificationsTemplateContextExecute(r ApiGetNotificationsTemplateContextRequest) (*NotificationTemplateContext, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []NotificationTemplateContext
+		localVarReturnValue  *NotificationTemplateContext
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.GetNotificationsTemplateContext")
@@ -1861,7 +1868,7 @@ func (r ApiListNotificationTemplateDefaultsRequest) Execute() ([]TemplateDtoDefa
 /*
 ListNotificationTemplateDefaults List Notification Template Defaults
 
-This lists the default templates used for notifications, such as emails from IdentityNow. Since this is a beta feature, it doesn't include all the templates.
+This lists the default templates used for notifications, such as emails from IdentityNow.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNotificationTemplateDefaultsRequest
@@ -2050,7 +2057,7 @@ func (r ApiListNotificationTemplatesRequest) Execute() ([]TemplateDto, *http.Res
 /*
 ListNotificationTemplates List Notification Templates
 
-This lists the templates that you have modified for your site. Since this is a beta feature, it doesn't include all your modified templates.
+This lists the templates that you have modified for your site.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiListNotificationTemplatesRequest
@@ -2387,15 +2394,9 @@ func (r ApiPutNotificationPreferenceRequest) Execute() (*PreferencesDto, *http.R
 }
 
 /*
-PutNotificationPreference Overwrite the preferences for the given notification key.
+PutNotificationPreference Overwrite preferences notification key.
 
-In the notification world, a notification flows through these salient stages - 
- 1. Interest matching, 
- 2. Preferences 
- 3. Template Rendering. 
-
-The default notification preferences make up a part of the second stage, along with user preferences (which is a future goal). The expectation is for  admins to be able to set default preferences for their org, like opting in to or out of certain notifications, and configuring future preferences as  we tack on more features. The key in the Dto is not necessary but if it is provided and doesn't match the key in the URI, then a 400 will be thrown. 
-Request will require the following legacy roles:  ORG_ADMIN and API
+Allows admins to opt in to or out of certain notifications for their org. The default state is opted in. `key` is optional but if it is provided and doesn't match the key in the URI, then a 400 will be thrown.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param key The notification key.
@@ -2521,6 +2522,17 @@ func (a *NotificationsAPIService) PutNotificationPreferenceExecute(r ApiPutNotif
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
 			var v ListAccessProfiles429Response
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponseDto
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

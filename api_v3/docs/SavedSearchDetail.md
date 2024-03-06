@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Columns** | Pointer to [**map[string][]Column**](array.md) | The columns to be returned (specifies the order in which they will be presented) for each document type.  The currently supported document types are: _accessprofile_, _accountactivity_, _account_, _aggregation_, _entitlement_, _event_, _identity_, and _role_.  | [optional] 
 **Query** | **string** | The search query using Elasticsearch [Query String Query](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl-query-string-query.html#query-string) syntax from the Query DSL.  | 
 **Fields** | Pointer to **[]string** | The fields to be searched against in a multi-field query.  | [optional] 
+**OrderBy** | Pointer to **map[string][]string** | Sort by index. This takes precedence over the &#x60;sort&#x60; property.  | [optional] 
 **Sort** | Pointer to **[]string** | The fields to be used to sort the search results.  | [optional] 
 **Filters** | Pointer to [**NullableSavedSearchDetailFilters**](SavedSearchDetailFilters.md) |  | [optional] 
 
@@ -202,6 +203,41 @@ HasFields returns a boolean if a field has been set.
 `func (o *SavedSearchDetail) UnsetFields()`
 
 UnsetFields ensures that no value is present for Fields, not even an explicit nil
+### GetOrderBy
+
+`func (o *SavedSearchDetail) GetOrderBy() map[string][]string`
+
+GetOrderBy returns the OrderBy field if non-nil, zero value otherwise.
+
+### GetOrderByOk
+
+`func (o *SavedSearchDetail) GetOrderByOk() (*map[string][]string, bool)`
+
+GetOrderByOk returns a tuple with the OrderBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrderBy
+
+`func (o *SavedSearchDetail) SetOrderBy(v map[string][]string)`
+
+SetOrderBy sets OrderBy field to given value.
+
+### HasOrderBy
+
+`func (o *SavedSearchDetail) HasOrderBy() bool`
+
+HasOrderBy returns a boolean if a field has been set.
+
+### SetOrderByNil
+
+`func (o *SavedSearchDetail) SetOrderByNil(b bool)`
+
+ SetOrderByNil sets the value for OrderBy to be an explicit nil
+
+### UnsetOrderBy
+`func (o *SavedSearchDetail) UnsetOrderBy()`
+
+UnsetOrderBy ensures that no value is present for OrderBy, not even an explicit nil
 ### GetSort
 
 `func (o *SavedSearchDetail) GetSort() []string`
@@ -227,6 +263,16 @@ SetSort sets Sort field to given value.
 
 HasSort returns a boolean if a field has been set.
 
+### SetSortNil
+
+`func (o *SavedSearchDetail) SetSortNil(b bool)`
+
+ SetSortNil sets the value for Sort to be an explicit nil
+
+### UnsetSort
+`func (o *SavedSearchDetail) UnsetSort()`
+
+UnsetSort ensures that no value is present for Sort, not even an explicit nil
 ### GetFilters
 
 `func (o *SavedSearchDetail) GetFilters() SavedSearchDetailFilters`

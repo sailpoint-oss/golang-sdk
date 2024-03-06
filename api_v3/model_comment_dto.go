@@ -24,6 +24,7 @@ type CommentDto struct {
 	Comment NullableString `json:"comment,omitempty"`
 	// Date and time comment was created.
 	Created *time.Time `json:"created,omitempty"`
+	Author *CommentDtoAuthor `json:"author,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -120,6 +121,38 @@ func (o *CommentDto) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
+// GetAuthor returns the Author field value if set, zero value otherwise.
+func (o *CommentDto) GetAuthor() CommentDtoAuthor {
+	if o == nil || isNil(o.Author) {
+		var ret CommentDtoAuthor
+		return ret
+	}
+	return *o.Author
+}
+
+// GetAuthorOk returns a tuple with the Author field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommentDto) GetAuthorOk() (*CommentDtoAuthor, bool) {
+	if o == nil || isNil(o.Author) {
+		return nil, false
+	}
+	return o.Author, true
+}
+
+// HasAuthor returns a boolean if a field has been set.
+func (o *CommentDto) HasAuthor() bool {
+	if o != nil && !isNil(o.Author) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthor gets a reference to the given CommentDtoAuthor and assigns it to the Author field.
+func (o *CommentDto) SetAuthor(v CommentDtoAuthor) {
+	o.Author = &v
+}
+
 func (o CommentDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -135,6 +168,9 @@ func (o CommentDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !isNil(o.Created) {
 		toSerialize["created"] = o.Created
+	}
+	if !isNil(o.Author) {
+		toSerialize["author"] = o.Author
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -156,6 +192,7 @@ func (o *CommentDto) UnmarshalJSON(bytes []byte) (err error) {
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
 		delete(additionalProperties, "comment")
 		delete(additionalProperties, "created")
+		delete(additionalProperties, "author")
 		o.AdditionalProperties = additionalProperties
 	}
 

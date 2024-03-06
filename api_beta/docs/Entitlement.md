@@ -8,19 +8,19 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The entitlement name | [optional] 
 **Created** | Pointer to **time.Time** | Time when the entitlement was created | [optional] 
 **Modified** | Pointer to **time.Time** | Time when the entitlement was last modified | [optional] 
-**Attribute** | Pointer to **string** | The entitlement attribute name | [optional] 
+**Attribute** | Pointer to **NullableString** | The entitlement attribute name | [optional] 
 **Value** | Pointer to **string** | The value of the entitlement | [optional] 
 **SourceSchemaObjectType** | Pointer to **string** | The object type of the entitlement from the source schema | [optional] 
 **Privileged** | Pointer to **bool** | True if the entitlement is privileged | [optional] [default to false]
 **CloudGoverned** | Pointer to **bool** | True if the entitlement is cloud governed | [optional] [default to false]
-**Description** | Pointer to **string** | The description of the entitlement | [optional] 
+**Description** | Pointer to **NullableString** | The description of the entitlement | [optional] 
 **Requestable** | Pointer to **bool** | True if the entitlement is requestable | [optional] [default to false]
 **Attributes** | Pointer to **map[string]interface{}** | A map of free-form key-value pairs from the source system | [optional] 
 **Source** | Pointer to [**EntitlementSource**](EntitlementSource.md) |  | [optional] 
-**Owner** | Pointer to [**OwnerReferenceDto**](OwnerReferenceDto.md) |  | [optional] 
+**Owner** | Pointer to [**EntitlementOwner**](EntitlementOwner.md) |  | [optional] 
 **DirectPermissions** | Pointer to [**[]PermissionDto**](PermissionDto.md) |  | [optional] 
 **Segments** | Pointer to **[]string** | List of IDs of segments, if any, to which this Entitlement is assigned. | [optional] 
-**ManuallyUpdatedFields** | Pointer to [**ManuallyUpdatedFieldsDTO**](ManuallyUpdatedFieldsDTO.md) |  | [optional] 
+**ManuallyUpdatedFields** | Pointer to [**EntitlementManuallyUpdatedFields**](EntitlementManuallyUpdatedFields.md) |  | [optional] 
 
 ## Methods
 
@@ -166,6 +166,16 @@ SetAttribute sets Attribute field to given value.
 
 HasAttribute returns a boolean if a field has been set.
 
+### SetAttributeNil
+
+`func (o *Entitlement) SetAttributeNil(b bool)`
+
+ SetAttributeNil sets the value for Attribute to be an explicit nil
+
+### UnsetAttribute
+`func (o *Entitlement) UnsetAttribute()`
+
+UnsetAttribute ensures that no value is present for Attribute, not even an explicit nil
 ### GetValue
 
 `func (o *Entitlement) GetValue() string`
@@ -291,6 +301,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *Entitlement) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *Entitlement) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetRequestable
 
 `func (o *Entitlement) GetRequestable() bool`
@@ -368,20 +388,20 @@ HasSource returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *Entitlement) GetOwner() OwnerReferenceDto`
+`func (o *Entitlement) GetOwner() EntitlementOwner`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *Entitlement) GetOwnerOk() (*OwnerReferenceDto, bool)`
+`func (o *Entitlement) GetOwnerOk() (*EntitlementOwner, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *Entitlement) SetOwner(v OwnerReferenceDto)`
+`func (o *Entitlement) SetOwner(v EntitlementOwner)`
 
 SetOwner sets Owner field to given value.
 
@@ -453,20 +473,20 @@ HasSegments returns a boolean if a field has been set.
 UnsetSegments ensures that no value is present for Segments, not even an explicit nil
 ### GetManuallyUpdatedFields
 
-`func (o *Entitlement) GetManuallyUpdatedFields() ManuallyUpdatedFieldsDTO`
+`func (o *Entitlement) GetManuallyUpdatedFields() EntitlementManuallyUpdatedFields`
 
 GetManuallyUpdatedFields returns the ManuallyUpdatedFields field if non-nil, zero value otherwise.
 
 ### GetManuallyUpdatedFieldsOk
 
-`func (o *Entitlement) GetManuallyUpdatedFieldsOk() (*ManuallyUpdatedFieldsDTO, bool)`
+`func (o *Entitlement) GetManuallyUpdatedFieldsOk() (*EntitlementManuallyUpdatedFields, bool)`
 
 GetManuallyUpdatedFieldsOk returns a tuple with the ManuallyUpdatedFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetManuallyUpdatedFields
 
-`func (o *Entitlement) SetManuallyUpdatedFields(v ManuallyUpdatedFieldsDTO)`
+`func (o *Entitlement) SetManuallyUpdatedFields(v EntitlementManuallyUpdatedFields)`
 
 SetManuallyUpdatedFields sets ManuallyUpdatedFields field to given value.
 

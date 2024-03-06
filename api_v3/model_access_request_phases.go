@@ -23,15 +23,15 @@ type AccessRequestPhases struct {
 	// The time that this phase started.
 	Started *time.Time `json:"started,omitempty"`
 	// The time that this phase finished.
-	Finished *time.Time `json:"finished,omitempty"`
+	Finished NullableTime `json:"finished,omitempty"`
 	// The name of this phase.
 	Name *string `json:"name,omitempty"`
 	// The state of this phase.
 	State *string `json:"state,omitempty"`
 	// The state of this phase.
-	Result *string `json:"result,omitempty"`
+	Result NullableString `json:"result,omitempty"`
 	// A reference to another object on the RequestedItemStatus that contains more details about the phase. Note that for the Provisioning phase, this will be empty if there are no manual work items.
-	PhaseReference *string `json:"phaseReference,omitempty"`
+	PhaseReference NullableString `json:"phaseReference,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,36 +86,46 @@ func (o *AccessRequestPhases) SetStarted(v time.Time) {
 	o.Started = &v
 }
 
-// GetFinished returns the Finished field value if set, zero value otherwise.
+// GetFinished returns the Finished field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestPhases) GetFinished() time.Time {
-	if o == nil || isNil(o.Finished) {
+	if o == nil || isNil(o.Finished.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.Finished
+	return *o.Finished.Get()
 }
 
 // GetFinishedOk returns a tuple with the Finished field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessRequestPhases) GetFinishedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Finished) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Finished, true
+	return o.Finished.Get(), o.Finished.IsSet()
 }
 
 // HasFinished returns a boolean if a field has been set.
 func (o *AccessRequestPhases) HasFinished() bool {
-	if o != nil && !isNil(o.Finished) {
+	if o != nil && o.Finished.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFinished gets a reference to the given time.Time and assigns it to the Finished field.
+// SetFinished gets a reference to the given NullableTime and assigns it to the Finished field.
 func (o *AccessRequestPhases) SetFinished(v time.Time) {
-	o.Finished = &v
+	o.Finished.Set(&v)
+}
+// SetFinishedNil sets the value for Finished to be an explicit nil
+func (o *AccessRequestPhases) SetFinishedNil() {
+	o.Finished.Set(nil)
+}
+
+// UnsetFinished ensures that no value is present for Finished, not even an explicit nil
+func (o *AccessRequestPhases) UnsetFinished() {
+	o.Finished.Unset()
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -182,68 +192,88 @@ func (o *AccessRequestPhases) SetState(v string) {
 	o.State = &v
 }
 
-// GetResult returns the Result field value if set, zero value otherwise.
+// GetResult returns the Result field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestPhases) GetResult() string {
-	if o == nil || isNil(o.Result) {
+	if o == nil || isNil(o.Result.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Result
+	return *o.Result.Get()
 }
 
 // GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessRequestPhases) GetResultOk() (*string, bool) {
-	if o == nil || isNil(o.Result) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Result, true
+	return o.Result.Get(), o.Result.IsSet()
 }
 
 // HasResult returns a boolean if a field has been set.
 func (o *AccessRequestPhases) HasResult() bool {
-	if o != nil && !isNil(o.Result) {
+	if o != nil && o.Result.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetResult gets a reference to the given string and assigns it to the Result field.
+// SetResult gets a reference to the given NullableString and assigns it to the Result field.
 func (o *AccessRequestPhases) SetResult(v string) {
-	o.Result = &v
+	o.Result.Set(&v)
+}
+// SetResultNil sets the value for Result to be an explicit nil
+func (o *AccessRequestPhases) SetResultNil() {
+	o.Result.Set(nil)
 }
 
-// GetPhaseReference returns the PhaseReference field value if set, zero value otherwise.
+// UnsetResult ensures that no value is present for Result, not even an explicit nil
+func (o *AccessRequestPhases) UnsetResult() {
+	o.Result.Unset()
+}
+
+// GetPhaseReference returns the PhaseReference field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequestPhases) GetPhaseReference() string {
-	if o == nil || isNil(o.PhaseReference) {
+	if o == nil || isNil(o.PhaseReference.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PhaseReference
+	return *o.PhaseReference.Get()
 }
 
 // GetPhaseReferenceOk returns a tuple with the PhaseReference field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessRequestPhases) GetPhaseReferenceOk() (*string, bool) {
-	if o == nil || isNil(o.PhaseReference) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PhaseReference, true
+	return o.PhaseReference.Get(), o.PhaseReference.IsSet()
 }
 
 // HasPhaseReference returns a boolean if a field has been set.
 func (o *AccessRequestPhases) HasPhaseReference() bool {
-	if o != nil && !isNil(o.PhaseReference) {
+	if o != nil && o.PhaseReference.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPhaseReference gets a reference to the given string and assigns it to the PhaseReference field.
+// SetPhaseReference gets a reference to the given NullableString and assigns it to the PhaseReference field.
 func (o *AccessRequestPhases) SetPhaseReference(v string) {
-	o.PhaseReference = &v
+	o.PhaseReference.Set(&v)
+}
+// SetPhaseReferenceNil sets the value for PhaseReference to be an explicit nil
+func (o *AccessRequestPhases) SetPhaseReferenceNil() {
+	o.PhaseReference.Set(nil)
+}
+
+// UnsetPhaseReference ensures that no value is present for PhaseReference, not even an explicit nil
+func (o *AccessRequestPhases) UnsetPhaseReference() {
+	o.PhaseReference.Unset()
 }
 
 func (o AccessRequestPhases) MarshalJSON() ([]byte, error) {
@@ -259,8 +289,8 @@ func (o AccessRequestPhases) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Started) {
 		toSerialize["started"] = o.Started
 	}
-	if !isNil(o.Finished) {
-		toSerialize["finished"] = o.Finished
+	if o.Finished.IsSet() {
+		toSerialize["finished"] = o.Finished.Get()
 	}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
@@ -268,11 +298,11 @@ func (o AccessRequestPhases) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.State) {
 		toSerialize["state"] = o.State
 	}
-	if !isNil(o.Result) {
-		toSerialize["result"] = o.Result
+	if o.Result.IsSet() {
+		toSerialize["result"] = o.Result.Get()
 	}
-	if !isNil(o.PhaseReference) {
-		toSerialize["phaseReference"] = o.PhaseReference
+	if o.PhaseReference.IsSet() {
+		toSerialize["phaseReference"] = o.PhaseReference.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

@@ -20,13 +20,16 @@ var _ MappedNullable = &CommonAccessResponse{}
 
 // CommonAccessResponse struct for CommonAccessResponse
 type CommonAccessResponse struct {
+	// Unique ID of the common access item
+	Id *string `json:"id,omitempty"`
 	Access *CommonAccessItemAccess `json:"access,omitempty"`
 	// CONFIRMED or DENIED
 	Status *string `json:"status,omitempty"`
 	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
 	// true if user has confirmed or denied status
 	ReviewedByUser *bool `json:"reviewedByUser,omitempty"`
-	LastReviewed *time.Time `json:"lastReviewed,omitempty"`
+	LastReviewed NullableTime `json:"lastReviewed,omitempty"`
+	CreatedByUser *bool `json:"createdByUser,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -38,6 +41,8 @@ type _CommonAccessResponse CommonAccessResponse
 // will change when the set of required properties is changed
 func NewCommonAccessResponse() *CommonAccessResponse {
 	this := CommonAccessResponse{}
+	var createdByUser bool = false
+	this.CreatedByUser = &createdByUser
 	return &this
 }
 
@@ -46,7 +51,41 @@ func NewCommonAccessResponse() *CommonAccessResponse {
 // but it doesn't guarantee that properties required by API are set
 func NewCommonAccessResponseWithDefaults() *CommonAccessResponse {
 	this := CommonAccessResponse{}
+	var createdByUser bool = false
+	this.CreatedByUser = &createdByUser
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *CommonAccessResponse) GetId() string {
+	if o == nil || isNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonAccessResponse) GetIdOk() (*string, bool) {
+	if o == nil || isNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *CommonAccessResponse) HasId() bool {
+	if o != nil && !isNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *CommonAccessResponse) SetId(v string) {
+	o.Id = &v
 }
 
 // GetAccess returns the Access field value if set, zero value otherwise.
@@ -177,36 +216,78 @@ func (o *CommonAccessResponse) SetReviewedByUser(v bool) {
 	o.ReviewedByUser = &v
 }
 
-// GetLastReviewed returns the LastReviewed field value if set, zero value otherwise.
+// GetLastReviewed returns the LastReviewed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CommonAccessResponse) GetLastReviewed() time.Time {
-	if o == nil || isNil(o.LastReviewed) {
+	if o == nil || isNil(o.LastReviewed.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.LastReviewed
+	return *o.LastReviewed.Get()
 }
 
 // GetLastReviewedOk returns a tuple with the LastReviewed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CommonAccessResponse) GetLastReviewedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.LastReviewed) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastReviewed, true
+	return o.LastReviewed.Get(), o.LastReviewed.IsSet()
 }
 
 // HasLastReviewed returns a boolean if a field has been set.
 func (o *CommonAccessResponse) HasLastReviewed() bool {
-	if o != nil && !isNil(o.LastReviewed) {
+	if o != nil && o.LastReviewed.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastReviewed gets a reference to the given time.Time and assigns it to the LastReviewed field.
+// SetLastReviewed gets a reference to the given NullableTime and assigns it to the LastReviewed field.
 func (o *CommonAccessResponse) SetLastReviewed(v time.Time) {
-	o.LastReviewed = &v
+	o.LastReviewed.Set(&v)
+}
+// SetLastReviewedNil sets the value for LastReviewed to be an explicit nil
+func (o *CommonAccessResponse) SetLastReviewedNil() {
+	o.LastReviewed.Set(nil)
+}
+
+// UnsetLastReviewed ensures that no value is present for LastReviewed, not even an explicit nil
+func (o *CommonAccessResponse) UnsetLastReviewed() {
+	o.LastReviewed.Unset()
+}
+
+// GetCreatedByUser returns the CreatedByUser field value if set, zero value otherwise.
+func (o *CommonAccessResponse) GetCreatedByUser() bool {
+	if o == nil || isNil(o.CreatedByUser) {
+		var ret bool
+		return ret
+	}
+	return *o.CreatedByUser
+}
+
+// GetCreatedByUserOk returns a tuple with the CreatedByUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonAccessResponse) GetCreatedByUserOk() (*bool, bool) {
+	if o == nil || isNil(o.CreatedByUser) {
+		return nil, false
+	}
+	return o.CreatedByUser, true
+}
+
+// HasCreatedByUser returns a boolean if a field has been set.
+func (o *CommonAccessResponse) HasCreatedByUser() bool {
+	if o != nil && !isNil(o.CreatedByUser) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatedByUser gets a reference to the given bool and assigns it to the CreatedByUser field.
+func (o *CommonAccessResponse) SetCreatedByUser(v bool) {
+	o.CreatedByUser = &v
 }
 
 func (o CommonAccessResponse) MarshalJSON() ([]byte, error) {
@@ -219,6 +300,9 @@ func (o CommonAccessResponse) MarshalJSON() ([]byte, error) {
 
 func (o CommonAccessResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !isNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !isNil(o.Access) {
 		toSerialize["access"] = o.Access
 	}
@@ -229,7 +313,12 @@ func (o CommonAccessResponse) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.ReviewedByUser) {
 		toSerialize["reviewedByUser"] = o.ReviewedByUser
 	}
-	// skip: lastReviewed is readOnly
+	if o.LastReviewed.IsSet() {
+		toSerialize["lastReviewed"] = o.LastReviewed.Get()
+	}
+	if !isNil(o.CreatedByUser) {
+		toSerialize["createdByUser"] = o.CreatedByUser
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -248,11 +337,13 @@ func (o *CommonAccessResponse) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "access")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "lastUpdated")
 		delete(additionalProperties, "reviewedByUser")
 		delete(additionalProperties, "lastReviewed")
+		delete(additionalProperties, "createdByUser")
 		o.AdditionalProperties = additionalProperties
 	}
 

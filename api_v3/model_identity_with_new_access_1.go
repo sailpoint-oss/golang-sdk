@@ -23,7 +23,7 @@ type IdentityWithNewAccess1 struct {
 	// Set of identity IDs to be checked.
 	IdentityId string `json:"identityId"`
 	// The bundle of access profiles to be added to the identities specified. All references must be ENTITLEMENT type.
-	AccessRefs []EntitlementRef `json:"accessRefs"`
+	AccessRefs []EntitlementRef1 `json:"accessRefs"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on completion of the violation check.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -35,7 +35,7 @@ type _IdentityWithNewAccess1 IdentityWithNewAccess1
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIdentityWithNewAccess1(identityId string, accessRefs []EntitlementRef) *IdentityWithNewAccess1 {
+func NewIdentityWithNewAccess1(identityId string, accessRefs []EntitlementRef1) *IdentityWithNewAccess1 {
 	this := IdentityWithNewAccess1{}
 	this.IdentityId = identityId
 	this.AccessRefs = accessRefs
@@ -75,9 +75,9 @@ func (o *IdentityWithNewAccess1) SetIdentityId(v string) {
 }
 
 // GetAccessRefs returns the AccessRefs field value
-func (o *IdentityWithNewAccess1) GetAccessRefs() []EntitlementRef {
+func (o *IdentityWithNewAccess1) GetAccessRefs() []EntitlementRef1 {
 	if o == nil {
-		var ret []EntitlementRef
+		var ret []EntitlementRef1
 		return ret
 	}
 
@@ -86,7 +86,7 @@ func (o *IdentityWithNewAccess1) GetAccessRefs() []EntitlementRef {
 
 // GetAccessRefsOk returns a tuple with the AccessRefs field value
 // and a boolean to check if the value has been set.
-func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]EntitlementRef, bool) {
+func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]EntitlementRef1, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *IdentityWithNewAccess1) GetAccessRefsOk() ([]EntitlementRef, bool) {
 }
 
 // SetAccessRefs sets field value
-func (o *IdentityWithNewAccess1) SetAccessRefs(v []EntitlementRef) {
+func (o *IdentityWithNewAccess1) SetAccessRefs(v []EntitlementRef1) {
 	o.AccessRefs = v
 }
 

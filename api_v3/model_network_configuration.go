@@ -51,9 +51,9 @@ func NewNetworkConfigurationWithDefaults() *NetworkConfiguration {
 	return &this
 }
 
-// GetRange returns the Range field value if set, zero value otherwise.
+// GetRange returns the Range field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NetworkConfiguration) GetRange() []string {
-	if o == nil || isNil(o.Range) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -62,6 +62,7 @@ func (o *NetworkConfiguration) GetRange() []string {
 
 // GetRangeOk returns a tuple with the Range field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkConfiguration) GetRangeOk() ([]string, bool) {
 	if o == nil || isNil(o.Range) {
 		return nil, false
@@ -71,7 +72,7 @@ func (o *NetworkConfiguration) GetRangeOk() ([]string, bool) {
 
 // HasRange returns a boolean if a field has been set.
 func (o *NetworkConfiguration) HasRange() bool {
-	if o != nil && !isNil(o.Range) {
+	if o != nil && isNil(o.Range) {
 		return true
 	}
 
@@ -83,9 +84,9 @@ func (o *NetworkConfiguration) SetRange(v []string) {
 	o.Range = v
 }
 
-// GetGeolocation returns the Geolocation field value if set, zero value otherwise.
+// GetGeolocation returns the Geolocation field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NetworkConfiguration) GetGeolocation() []string {
-	if o == nil || isNil(o.Geolocation) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -94,6 +95,7 @@ func (o *NetworkConfiguration) GetGeolocation() []string {
 
 // GetGeolocationOk returns a tuple with the Geolocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkConfiguration) GetGeolocationOk() ([]string, bool) {
 	if o == nil || isNil(o.Geolocation) {
 		return nil, false
@@ -103,7 +105,7 @@ func (o *NetworkConfiguration) GetGeolocationOk() ([]string, bool) {
 
 // HasGeolocation returns a boolean if a field has been set.
 func (o *NetworkConfiguration) HasGeolocation() bool {
-	if o != nil && !isNil(o.Geolocation) {
+	if o != nil && isNil(o.Geolocation) {
 		return true
 	}
 
@@ -157,10 +159,10 @@ func (o NetworkConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o NetworkConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Range) {
+	if o.Range != nil {
 		toSerialize["range"] = o.Range
 	}
-	if !isNil(o.Geolocation) {
+	if o.Geolocation != nil {
 		toSerialize["geolocation"] = o.Geolocation
 	}
 	if !isNil(o.Whitelisted) {

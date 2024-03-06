@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | The name of the default template | [optional] 
 **Medium** | Pointer to **string** | The message medium. More mediums may be added in the future. | [optional] 
 **Locale** | Pointer to **string** | The locale for the message text, a BCP 47 language tag. | [optional] 
-**Subject** | Pointer to **string** | The subject of the default template | [optional] 
+**Subject** | Pointer to **NullableString** | The subject of the default template | [optional] 
 **Header** | Pointer to **NullableString** | The header value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
 **Body** | Pointer to **string** | The body of the default template | [optional] 
 **Footer** | Pointer to **NullableString** | The footer value is now located within the body field. If included with non-null values, will result in a 400. | [optional] 
-**From** | Pointer to **string** | The \&quot;From:\&quot; address of the default template | [optional] 
-**ReplyTo** | Pointer to **string** | The \&quot;Reply To\&quot; field of the default template | [optional] 
-**Description** | Pointer to **string** | The description of the default template | [optional] 
+**From** | Pointer to **NullableString** | The \&quot;From:\&quot; address of the default template | [optional] 
+**ReplyTo** | Pointer to **NullableString** | The \&quot;Reply To\&quot; field of the default template | [optional] 
+**Description** | Pointer to **NullableString** | The description of the default template | [optional] 
 
 ## Methods
 
@@ -160,6 +160,16 @@ SetSubject sets Subject field to given value.
 
 HasSubject returns a boolean if a field has been set.
 
+### SetSubjectNil
+
+`func (o *TemplateDtoDefault) SetSubjectNil(b bool)`
+
+ SetSubjectNil sets the value for Subject to be an explicit nil
+
+### UnsetSubject
+`func (o *TemplateDtoDefault) UnsetSubject()`
+
+UnsetSubject ensures that no value is present for Subject, not even an explicit nil
 ### GetHeader
 
 `func (o *TemplateDtoDefault) GetHeader() string`
@@ -280,6 +290,16 @@ SetFrom sets From field to given value.
 
 HasFrom returns a boolean if a field has been set.
 
+### SetFromNil
+
+`func (o *TemplateDtoDefault) SetFromNil(b bool)`
+
+ SetFromNil sets the value for From to be an explicit nil
+
+### UnsetFrom
+`func (o *TemplateDtoDefault) UnsetFrom()`
+
+UnsetFrom ensures that no value is present for From, not even an explicit nil
 ### GetReplyTo
 
 `func (o *TemplateDtoDefault) GetReplyTo() string`
@@ -305,6 +325,16 @@ SetReplyTo sets ReplyTo field to given value.
 
 HasReplyTo returns a boolean if a field has been set.
 
+### SetReplyToNil
+
+`func (o *TemplateDtoDefault) SetReplyToNil(b bool)`
+
+ SetReplyToNil sets the value for ReplyTo to be an explicit nil
+
+### UnsetReplyTo
+`func (o *TemplateDtoDefault) UnsetReplyTo()`
+
+UnsetReplyTo ensures that no value is present for ReplyTo, not even an explicit nil
 ### GetDescription
 
 `func (o *TemplateDtoDefault) GetDescription() string`
@@ -330,6 +360,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *TemplateDtoDefault) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *TemplateDtoDefault) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

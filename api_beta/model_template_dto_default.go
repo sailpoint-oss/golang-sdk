@@ -28,7 +28,7 @@ type TemplateDtoDefault struct {
 	// The locale for the message text, a BCP 47 language tag.
 	Locale *string `json:"locale,omitempty"`
 	// The subject of the default template
-	Subject *string `json:"subject,omitempty"`
+	Subject NullableString `json:"subject,omitempty"`
 	// The header value is now located within the body field. If included with non-null values, will result in a 400.
 	// Deprecated
 	Header NullableString `json:"header,omitempty"`
@@ -38,11 +38,11 @@ type TemplateDtoDefault struct {
 	// Deprecated
 	Footer NullableString `json:"footer,omitempty"`
 	// The \"From:\" address of the default template
-	From *string `json:"from,omitempty"`
+	From NullableString `json:"from,omitempty"`
 	// The \"Reply To\" field of the default template
-	ReplyTo *string `json:"replyTo,omitempty"`
+	ReplyTo NullableString `json:"replyTo,omitempty"`
 	// The description of the default template
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -193,36 +193,46 @@ func (o *TemplateDtoDefault) SetLocale(v string) {
 	o.Locale = &v
 }
 
-// GetSubject returns the Subject field value if set, zero value otherwise.
+// GetSubject returns the Subject field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDtoDefault) GetSubject() string {
-	if o == nil || isNil(o.Subject) {
+	if o == nil || isNil(o.Subject.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Subject
+	return *o.Subject.Get()
 }
 
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TemplateDtoDefault) GetSubjectOk() (*string, bool) {
-	if o == nil || isNil(o.Subject) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Subject, true
+	return o.Subject.Get(), o.Subject.IsSet()
 }
 
 // HasSubject returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasSubject() bool {
-	if o != nil && !isNil(o.Subject) {
+	if o != nil && o.Subject.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSubject gets a reference to the given string and assigns it to the Subject field.
+// SetSubject gets a reference to the given NullableString and assigns it to the Subject field.
 func (o *TemplateDtoDefault) SetSubject(v string) {
-	o.Subject = &v
+	o.Subject.Set(&v)
+}
+// SetSubjectNil sets the value for Subject to be an explicit nil
+func (o *TemplateDtoDefault) SetSubjectNil() {
+	o.Subject.Set(nil)
+}
+
+// UnsetSubject ensures that no value is present for Subject, not even an explicit nil
+func (o *TemplateDtoDefault) UnsetSubject() {
+	o.Subject.Unset()
 }
 
 // GetHeader returns the Header field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -347,100 +357,130 @@ func (o *TemplateDtoDefault) UnsetFooter() {
 	o.Footer.Unset()
 }
 
-// GetFrom returns the From field value if set, zero value otherwise.
+// GetFrom returns the From field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDtoDefault) GetFrom() string {
-	if o == nil || isNil(o.From) {
+	if o == nil || isNil(o.From.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.From
+	return *o.From.Get()
 }
 
 // GetFromOk returns a tuple with the From field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TemplateDtoDefault) GetFromOk() (*string, bool) {
-	if o == nil || isNil(o.From) {
+	if o == nil {
 		return nil, false
 	}
-	return o.From, true
+	return o.From.Get(), o.From.IsSet()
 }
 
 // HasFrom returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasFrom() bool {
-	if o != nil && !isNil(o.From) {
+	if o != nil && o.From.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFrom gets a reference to the given string and assigns it to the From field.
+// SetFrom gets a reference to the given NullableString and assigns it to the From field.
 func (o *TemplateDtoDefault) SetFrom(v string) {
-	o.From = &v
+	o.From.Set(&v)
+}
+// SetFromNil sets the value for From to be an explicit nil
+func (o *TemplateDtoDefault) SetFromNil() {
+	o.From.Set(nil)
 }
 
-// GetReplyTo returns the ReplyTo field value if set, zero value otherwise.
+// UnsetFrom ensures that no value is present for From, not even an explicit nil
+func (o *TemplateDtoDefault) UnsetFrom() {
+	o.From.Unset()
+}
+
+// GetReplyTo returns the ReplyTo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDtoDefault) GetReplyTo() string {
-	if o == nil || isNil(o.ReplyTo) {
+	if o == nil || isNil(o.ReplyTo.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ReplyTo
+	return *o.ReplyTo.Get()
 }
 
 // GetReplyToOk returns a tuple with the ReplyTo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TemplateDtoDefault) GetReplyToOk() (*string, bool) {
-	if o == nil || isNil(o.ReplyTo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ReplyTo, true
+	return o.ReplyTo.Get(), o.ReplyTo.IsSet()
 }
 
 // HasReplyTo returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasReplyTo() bool {
-	if o != nil && !isNil(o.ReplyTo) {
+	if o != nil && o.ReplyTo.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReplyTo gets a reference to the given string and assigns it to the ReplyTo field.
+// SetReplyTo gets a reference to the given NullableString and assigns it to the ReplyTo field.
 func (o *TemplateDtoDefault) SetReplyTo(v string) {
-	o.ReplyTo = &v
+	o.ReplyTo.Set(&v)
+}
+// SetReplyToNil sets the value for ReplyTo to be an explicit nil
+func (o *TemplateDtoDefault) SetReplyToNil() {
+	o.ReplyTo.Set(nil)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// UnsetReplyTo ensures that no value is present for ReplyTo, not even an explicit nil
+func (o *TemplateDtoDefault) UnsetReplyTo() {
+	o.ReplyTo.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TemplateDtoDefault) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TemplateDtoDefault) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *TemplateDtoDefault) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *TemplateDtoDefault) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *TemplateDtoDefault) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *TemplateDtoDefault) UnsetDescription() {
+	o.Description.Unset()
 }
 
 func (o TemplateDtoDefault) MarshalJSON() ([]byte, error) {
@@ -465,8 +505,8 @@ func (o TemplateDtoDefault) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.Locale) {
 		toSerialize["locale"] = o.Locale
 	}
-	if !isNil(o.Subject) {
-		toSerialize["subject"] = o.Subject
+	if o.Subject.IsSet() {
+		toSerialize["subject"] = o.Subject.Get()
 	}
 	if o.Header.IsSet() {
 		toSerialize["header"] = o.Header.Get()
@@ -477,14 +517,14 @@ func (o TemplateDtoDefault) ToMap() (map[string]interface{}, error) {
 	if o.Footer.IsSet() {
 		toSerialize["footer"] = o.Footer.Get()
 	}
-	if !isNil(o.From) {
-		toSerialize["from"] = o.From
+	if o.From.IsSet() {
+		toSerialize["from"] = o.From.Get()
 	}
-	if !isNil(o.ReplyTo) {
-		toSerialize["replyTo"] = o.ReplyTo
+	if o.ReplyTo.IsSet() {
+		toSerialize["replyTo"] = o.ReplyTo.Get()
 	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

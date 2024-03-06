@@ -160,6 +160,18 @@ Class | Method | HTTP request | Description
 *CertificationsAPI* | [**ReassignIdentityCertifications**](docs/CertificationsAPI.md#reassignidentitycertifications) | **Post** /certifications/{id}/reassign | Reassign Identities or Items
 *CertificationsAPI* | [**SignOffIdentityCertification**](docs/CertificationsAPI.md#signoffidentitycertification) | **Post** /certifications/{id}/sign-off | Finalize Identity Certification Decisions
 *CertificationsAPI* | [**SubmitReassignCertsAsync**](docs/CertificationsAPI.md#submitreassigncertsasync) | **Post** /certifications/{id}/reassign-async | Reassign Certifications Asynchronously
+*ConnectorsAPI* | [**CreateCustomConnector**](docs/ConnectorsAPI.md#createcustomconnector) | **Post** /connectors | Create custom connector
+*ConnectorsAPI* | [**DeleteCustomConnector**](docs/ConnectorsAPI.md#deletecustomconnector) | **Delete** /connectors/{scriptName} | 
+*ConnectorsAPI* | [**GetConnector**](docs/ConnectorsAPI.md#getconnector) | **Get** /connectors/{scriptName} | 
+*ConnectorsAPI* | [**GetConnectorCorrelationConfig**](docs/ConnectorsAPI.md#getconnectorcorrelationconfig) | **Get** /connectors/{scriptName}/correlation-config | 
+*ConnectorsAPI* | [**GetConnectorSourceConfig**](docs/ConnectorsAPI.md#getconnectorsourceconfig) | **Get** /connectors/{scriptName}/source-config | 
+*ConnectorsAPI* | [**GetConnectorSourceTemplate**](docs/ConnectorsAPI.md#getconnectorsourcetemplate) | **Get** /connectors/{scriptName}/source-template | 
+*ConnectorsAPI* | [**GetConnectorTranslations**](docs/ConnectorsAPI.md#getconnectortranslations) | **Get** /connectors/{scriptName}/translations/{locale} | 
+*ConnectorsAPI* | [**PutCorrelationConfig**](docs/ConnectorsAPI.md#putcorrelationconfig) | **Put** /connectors/{scriptName}/correlation-config | 
+*ConnectorsAPI* | [**PutSourceConfig**](docs/ConnectorsAPI.md#putsourceconfig) | **Put** /connectors/{scriptName}/source-config | 
+*ConnectorsAPI* | [**PutSourceTemplate**](docs/ConnectorsAPI.md#putsourcetemplate) | **Put** /connectors/{scriptName}/source-template | 
+*ConnectorsAPI* | [**PutTranslations**](docs/ConnectorsAPI.md#puttranslations) | **Put** /connectors/{scriptName}/translations/{locale} | 
+*ConnectorsAPI* | [**UpdateConnector**](docs/ConnectorsAPI.md#updateconnector) | **Patch** /connectors/{scriptName} | 
 *GlobalTenantSecuritySettingsAPI* | [**CreateAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#createauthorgnetworkconfig) | **Post** /auth-org/network-config | Create security network configuration.
 *GlobalTenantSecuritySettingsAPI* | [**GetAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#getauthorgnetworkconfig) | **Get** /auth-org/network-config | Get security network configuration.
 *GlobalTenantSecuritySettingsAPI* | [**PatchAuthOrgNetworkConfig**](docs/GlobalTenantSecuritySettingsAPI.md#patchauthorgnetworkconfig) | **Patch** /auth-org/network-config | Update security network configuration.
@@ -348,6 +360,24 @@ Class | Method | HTTP request | Description
 *WorkItemsAPI* | [**RejectApprovalItem**](docs/WorkItemsAPI.md#rejectapprovalitem) | **Post** /work-items/{id}/reject/{approvalItemId} | Reject an Approval Item
 *WorkItemsAPI* | [**RejectApprovalItemsInBulk**](docs/WorkItemsAPI.md#rejectapprovalitemsinbulk) | **Post** /work-items/bulk-reject/{id} | Bulk reject Approval Items
 *WorkItemsAPI* | [**SubmitAccountSelection**](docs/WorkItemsAPI.md#submitaccountselection) | **Post** /work-items/{id}/submit-account-selection | Submit Account Selections
+*WorkflowsAPI* | [**CancelWorkflowExecution**](docs/WorkflowsAPI.md#cancelworkflowexecution) | **Post** /workflow-executions/{id}/cancel | Cancel Workflow Execution by ID
+*WorkflowsAPI* | [**CreateExternalExecuteWorkflow**](docs/WorkflowsAPI.md#createexternalexecuteworkflow) | **Post** /workflows/execute/external/{id} | Execute Workflow via External Trigger
+*WorkflowsAPI* | [**CreateWorkflow**](docs/WorkflowsAPI.md#createworkflow) | **Post** /workflows/{id} | Create Workflow
+*WorkflowsAPI* | [**CreateWorkflowExternalTrigger**](docs/WorkflowsAPI.md#createworkflowexternaltrigger) | **Post** /workflows/{id}/external/oauth-clients | Generate External Trigger OAuth Client
+*WorkflowsAPI* | [**DeleteWorkflow**](docs/WorkflowsAPI.md#deleteworkflow) | **Delete** /workflows/{id} | Delete Workflow By Id
+*WorkflowsAPI* | [**GetWorkflow**](docs/WorkflowsAPI.md#getworkflow) | **Get** /workflows/{id} | Get Workflow By Id
+*WorkflowsAPI* | [**GetWorkflowExecution**](docs/WorkflowsAPI.md#getworkflowexecution) | **Get** /workflow-executions/{id} | Get a Workflow Execution
+*WorkflowsAPI* | [**GetWorkflowExecutionHistory**](docs/WorkflowsAPI.md#getworkflowexecutionhistory) | **Get** /workflow-executions/{id}/history | Get Workflow Execution History
+*WorkflowsAPI* | [**ListCompleteWorkflowLibrary**](docs/WorkflowsAPI.md#listcompleteworkflowlibrary) | **Get** /workflow-library | List Complete Workflow Library
+*WorkflowsAPI* | [**ListWorkflowExecutions**](docs/WorkflowsAPI.md#listworkflowexecutions) | **Get** /workflows/{id}/executions | List Workflow Executions
+*WorkflowsAPI* | [**ListWorkflowLibraryActions**](docs/WorkflowsAPI.md#listworkflowlibraryactions) | **Get** /workflow-library/actions | List Workflow Library Actions
+*WorkflowsAPI* | [**ListWorkflowLibraryOperators**](docs/WorkflowsAPI.md#listworkflowlibraryoperators) | **Get** /workflow-library/operators | List Workflow Library Operators
+*WorkflowsAPI* | [**ListWorkflowLibraryTriggers**](docs/WorkflowsAPI.md#listworkflowlibrarytriggers) | **Get** /workflow-library/triggers | List Workflow Library Triggers
+*WorkflowsAPI* | [**ListWorkflows**](docs/WorkflowsAPI.md#listworkflows) | **Get** /workflows | List Workflows
+*WorkflowsAPI* | [**PatchWorkflow**](docs/WorkflowsAPI.md#patchworkflow) | **Patch** /workflows/{id} | Patch Workflow
+*WorkflowsAPI* | [**PutWorkflow**](docs/WorkflowsAPI.md#putworkflow) | **Put** /workflows/{id} | Update Workflow
+*WorkflowsAPI* | [**TestExternalExecuteWorkflow**](docs/WorkflowsAPI.md#testexternalexecuteworkflow) | **Post** /workflows/execute/external/{id}/test | Test Workflow via External Trigger
+*WorkflowsAPI* | [**TestWorkflow**](docs/WorkflowsAPI.md#testworkflow) | **Post** /workflows/{id}/test | Test Workflow By Id
 
 
 ## Documentation For Models
@@ -420,6 +450,7 @@ Class | Method | HTTP request | Description
  - [ApprovalSchemeForRole](docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](docs/ApprovalStatus.md)
  - [ApprovalStatusDto](docs/ApprovalStatusDto.md)
+ - [ApprovalStatusDtoCurrentOwner](docs/ApprovalStatusDtoCurrentOwner.md)
  - [ApprovalStatusDtoOriginalOwner](docs/ApprovalStatusDtoOriginalOwner.md)
  - [ApprovalSummary](docs/ApprovalSummary.md)
  - [ArrayInner](docs/ArrayInner.md)
@@ -474,17 +505,24 @@ Class | Method | HTTP request | Description
  - [Column](docs/Column.md)
  - [Comment](docs/Comment.md)
  - [CommentDto](docs/CommentDto.md)
+ - [CommentDtoAuthor](docs/CommentDtoAuthor.md)
  - [CompletedApproval](docs/CompletedApproval.md)
+ - [CompletedApprovalPreApprovalTriggerResult](docs/CompletedApprovalPreApprovalTriggerResult.md)
+ - [CompletedApprovalRequesterComment](docs/CompletedApprovalRequesterComment.md)
  - [CompletedApprovalReviewerComment](docs/CompletedApprovalReviewerComment.md)
  - [CompletedApprovalState](docs/CompletedApprovalState.md)
  - [CompletionStatus](docs/CompletionStatus.md)
  - [ConflictingAccessCriteria](docs/ConflictingAccessCriteria.md)
+ - [ConnectorDetail](docs/ConnectorDetail.md)
+ - [CreateExternalExecuteWorkflow200Response](docs/CreateExternalExecuteWorkflow200Response.md)
+ - [CreateExternalExecuteWorkflowRequest](docs/CreateExternalExecuteWorkflowRequest.md)
  - [CreateOAuthClientRequest](docs/CreateOAuthClientRequest.md)
  - [CreateOAuthClientResponse](docs/CreateOAuthClientResponse.md)
  - [CreatePersonalAccessTokenRequest](docs/CreatePersonalAccessTokenRequest.md)
  - [CreatePersonalAccessTokenResponse](docs/CreatePersonalAccessTokenResponse.md)
  - [CreateSavedSearchRequest](docs/CreateSavedSearchRequest.md)
  - [CreateScheduledSearchRequest](docs/CreateScheduledSearchRequest.md)
+ - [CreateWorkflowRequest](docs/CreateWorkflowRequest.md)
  - [CriteriaType](docs/CriteriaType.md)
  - [DataAccess](docs/DataAccess.md)
  - [DataAccessCategoriesInner](docs/DataAccessCategoriesInner.md)
@@ -501,12 +539,14 @@ Class | Method | HTTP request | Description
  - [EntitlementDocumentAllOfSource](docs/EntitlementDocumentAllOfSource.md)
  - [EntitlementDto](docs/EntitlementDto.md)
  - [EntitlementRef](docs/EntitlementRef.md)
+ - [EntitlementRef1](docs/EntitlementRef1.md)
  - [EntitlementRequestConfig](docs/EntitlementRequestConfig.md)
  - [EntitlementSource](docs/EntitlementSource.md)
  - [EntitlementSummary](docs/EntitlementSummary.md)
  - [ErrorMessageDto](docs/ErrorMessageDto.md)
  - [ErrorResponseDto](docs/ErrorResponseDto.md)
  - [Event](docs/Event.md)
+ - [EventAttributes](docs/EventAttributes.md)
  - [EventDocument](docs/EventDocument.md)
  - [ExceptionAccessCriteria](docs/ExceptionAccessCriteria.md)
  - [ExceptionCriteria](docs/ExceptionCriteria.md)
@@ -515,6 +555,8 @@ Class | Method | HTTP request | Description
  - [ExecutionStatus](docs/ExecutionStatus.md)
  - [ExpansionItem](docs/ExpansionItem.md)
  - [Expression](docs/Expression.md)
+ - [ExpressionChildrenInner](docs/ExpressionChildrenInner.md)
+ - [ExternalAttributes](docs/ExternalAttributes.md)
  - [FieldDetailsDto](docs/FieldDetailsDto.md)
  - [Filter](docs/Filter.md)
  - [FilterAggregation](docs/FilterAggregation.md)
@@ -561,6 +603,8 @@ Class | Method | HTTP request | Description
  - [LifecyclestateDeleted](docs/LifecyclestateDeleted.md)
  - [ListAccessProfiles401Response](docs/ListAccessProfiles401Response.md)
  - [ListAccessProfiles429Response](docs/ListAccessProfiles429Response.md)
+ - [ListCampaignFilters200Response](docs/ListCampaignFilters200Response.md)
+ - [ListCompleteWorkflowLibrary200ResponseInner](docs/ListCompleteWorkflowLibrary200ResponseInner.md)
  - [LocaleOrigin](docs/LocaleOrigin.md)
  - [ManagerCorrelationMapping](docs/ManagerCorrelationMapping.md)
  - [ManualWorkItemDetails](docs/ManualWorkItemDetails.md)
@@ -635,7 +679,10 @@ Class | Method | HTTP request | Description
  - [PublicIdentity](docs/PublicIdentity.md)
  - [PublicIdentityAttributeConfig](docs/PublicIdentityAttributeConfig.md)
  - [PublicIdentityConfig](docs/PublicIdentityConfig.md)
+ - [PutCorrelationConfigRequest](docs/PutCorrelationConfigRequest.md)
  - [PutPasswordDictionaryRequest](docs/PutPasswordDictionaryRequest.md)
+ - [PutSourceConfigRequest](docs/PutSourceConfigRequest.md)
+ - [PutSourceTemplateRequest](docs/PutSourceTemplateRequest.md)
  - [Query](docs/Query.md)
  - [QueryResultFilter](docs/QueryResultFilter.md)
  - [QueryType](docs/QueryType.md)
@@ -662,7 +709,12 @@ Class | Method | HTTP request | Description
  - [RequestableObjectRequestStatus](docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](docs/RequestableObjectType.md)
  - [RequestedItemStatus](docs/RequestedItemStatus.md)
+ - [RequestedItemStatusCancelledRequestDetails](docs/RequestedItemStatusCancelledRequestDetails.md)
+ - [RequestedItemStatusPreApprovalTriggerDetails](docs/RequestedItemStatusPreApprovalTriggerDetails.md)
+ - [RequestedItemStatusProvisioningDetails](docs/RequestedItemStatusProvisioningDetails.md)
  - [RequestedItemStatusRequestState](docs/RequestedItemStatusRequestState.md)
+ - [RequestedItemStatusRequesterComment](docs/RequestedItemStatusRequesterComment.md)
+ - [RequestedItemStatusSodViolationContext](docs/RequestedItemStatusSodViolationContext.md)
  - [ReviewDecision](docs/ReviewDecision.md)
  - [ReviewReassign](docs/ReviewReassign.md)
  - [ReviewRecommendation](docs/ReviewRecommendation.md)
@@ -696,10 +748,12 @@ Class | Method | HTTP request | Description
  - [Schedule1](docs/Schedule1.md)
  - [Schedule1Days](docs/Schedule1Days.md)
  - [Schedule1Hours](docs/Schedule1Hours.md)
+ - [Schedule1Months](docs/Schedule1Months.md)
  - [ScheduleDays](docs/ScheduleDays.md)
  - [ScheduleHours](docs/ScheduleHours.md)
  - [ScheduleMonths](docs/ScheduleMonths.md)
  - [ScheduleType](docs/ScheduleType.md)
+ - [ScheduledAttributes](docs/ScheduledAttributes.md)
  - [ScheduledSearch](docs/ScheduledSearch.md)
  - [ScheduledSearchAllOfOwner](docs/ScheduledSearchAllOfOwner.md)
  - [ScheduledSearchName](docs/ScheduledSearchName.md)
@@ -713,6 +767,7 @@ Class | Method | HTTP request | Description
  - [SearchScheduleRecipientsInner](docs/SearchScheduleRecipientsInner.md)
  - [SectionDetails](docs/SectionDetails.md)
  - [Segment](docs/Segment.md)
+ - [SegmentVisibilityCriteria](docs/SegmentVisibilityCriteria.md)
  - [Selector](docs/Selector.md)
  - [SelectorType](docs/SelectorType.md)
  - [ServiceDeskIntegrationDto](docs/ServiceDeskIntegrationDto.md)
@@ -744,6 +799,7 @@ Class | Method | HTTP request | Description
  - [SourceFeature](docs/SourceFeature.md)
  - [SourceHealthDto](docs/SourceHealthDto.md)
  - [SourceManagementWorkgroup](docs/SourceManagementWorkgroup.md)
+ - [SourceManagerCorrelationMapping](docs/SourceManagerCorrelationMapping.md)
  - [SourceManagerCorrelationRule](docs/SourceManagerCorrelationRule.md)
  - [SourceOwner](docs/SourceOwner.md)
  - [SourcePasswordPoliciesInner](docs/SourcePasswordPoliciesInner.md)
@@ -759,6 +815,10 @@ Class | Method | HTTP request | Description
  - [TaskResultDetailsReturnsInner](docs/TaskResultDetailsReturnsInner.md)
  - [TaskResultDto](docs/TaskResultDto.md)
  - [TaskResultSimplified](docs/TaskResultSimplified.md)
+ - [TestExternalExecuteWorkflow200Response](docs/TestExternalExecuteWorkflow200Response.md)
+ - [TestExternalExecuteWorkflowRequest](docs/TestExternalExecuteWorkflowRequest.md)
+ - [TestWorkflow200Response](docs/TestWorkflow200Response.md)
+ - [TestWorkflowRequest](docs/TestWorkflowRequest.md)
  - [TextQuery](docs/TextQuery.md)
  - [Transform](docs/Transform.md)
  - [TransformDefinition](docs/TransformDefinition.md)
@@ -766,7 +826,10 @@ Class | Method | HTTP request | Description
  - [TransformRead](docs/TransformRead.md)
  - [TypeAheadQuery](docs/TypeAheadQuery.md)
  - [TypedReference](docs/TypedReference.md)
+ - [UpdateDetail](docs/UpdateDetail.md)
  - [UsageType](docs/UsageType.md)
+ - [V3ConnectorDto](docs/V3ConnectorDto.md)
+ - [V3CreateConnectorDto](docs/V3CreateConnectorDto.md)
  - [Value](docs/Value.md)
  - [ViolationContext](docs/ViolationContext.md)
  - [ViolationContextPolicy](docs/ViolationContextPolicy.md)
@@ -775,10 +838,26 @@ Class | Method | HTTP request | Description
  - [ViolationPrediction](docs/ViolationPrediction.md)
  - [VisibilityCriteria](docs/VisibilityCriteria.md)
  - [WorkItemState](docs/WorkItemState.md)
- - [WorkItemType](docs/WorkItemType.md)
+ - [WorkItemStateManualWorkItems](docs/WorkItemStateManualWorkItems.md)
+ - [WorkItemTypeManualWorkItems](docs/WorkItemTypeManualWorkItems.md)
  - [WorkItems](docs/WorkItems.md)
  - [WorkItemsCount](docs/WorkItemsCount.md)
+ - [WorkItemsForm](docs/WorkItemsForm.md)
  - [WorkItemsSummary](docs/WorkItemsSummary.md)
+ - [Workflow](docs/Workflow.md)
+ - [WorkflowAllOfCreator](docs/WorkflowAllOfCreator.md)
+ - [WorkflowBody](docs/WorkflowBody.md)
+ - [WorkflowBodyOwner](docs/WorkflowBodyOwner.md)
+ - [WorkflowDefinition](docs/WorkflowDefinition.md)
+ - [WorkflowExecution](docs/WorkflowExecution.md)
+ - [WorkflowExecutionEvent](docs/WorkflowExecutionEvent.md)
+ - [WorkflowLibraryAction](docs/WorkflowLibraryAction.md)
+ - [WorkflowLibraryFormFields](docs/WorkflowLibraryFormFields.md)
+ - [WorkflowLibraryOperator](docs/WorkflowLibraryOperator.md)
+ - [WorkflowLibraryTrigger](docs/WorkflowLibraryTrigger.md)
+ - [WorkflowOAuthClient](docs/WorkflowOAuthClient.md)
+ - [WorkflowTrigger](docs/WorkflowTrigger.md)
+ - [WorkflowTriggerAttributes](docs/WorkflowTriggerAttributes.md)
 
 
 ## Documentation For Authorization

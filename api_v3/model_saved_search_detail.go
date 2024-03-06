@@ -33,6 +33,8 @@ type SavedSearchDetail struct {
 	Query string `json:"query"`
 	// The fields to be searched against in a multi-field query. 
 	Fields []string `json:"fields,omitempty"`
+	// Sort by index. This takes precedence over the `sort` property. 
+	OrderBy map[string][]string `json:"orderBy,omitempty"`
 	// The fields to be used to sort the search results. 
 	Sort []string `json:"sort,omitempty"`
 	Filters NullableSavedSearchDetailFilters `json:"filters,omitempty"`
@@ -257,9 +259,42 @@ func (o *SavedSearchDetail) SetFields(v []string) {
 	o.Fields = v
 }
 
-// GetSort returns the Sort field value if set, zero value otherwise.
+// GetOrderBy returns the OrderBy field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SavedSearchDetail) GetOrderBy() map[string][]string {
+	if o == nil {
+		var ret map[string][]string
+		return ret
+	}
+	return o.OrderBy
+}
+
+// GetOrderByOk returns a tuple with the OrderBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SavedSearchDetail) GetOrderByOk() (*map[string][]string, bool) {
+	if o == nil || isNil(o.OrderBy) {
+		return nil, false
+	}
+	return &o.OrderBy, true
+}
+
+// HasOrderBy returns a boolean if a field has been set.
+func (o *SavedSearchDetail) HasOrderBy() bool {
+	if o != nil && isNil(o.OrderBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrderBy gets a reference to the given map[string][]string and assigns it to the OrderBy field.
+func (o *SavedSearchDetail) SetOrderBy(v map[string][]string) {
+	o.OrderBy = v
+}
+
+// GetSort returns the Sort field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SavedSearchDetail) GetSort() []string {
-	if o == nil || isNil(o.Sort) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -268,6 +303,7 @@ func (o *SavedSearchDetail) GetSort() []string {
 
 // GetSortOk returns a tuple with the Sort field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SavedSearchDetail) GetSortOk() ([]string, bool) {
 	if o == nil || isNil(o.Sort) {
 		return nil, false
@@ -277,7 +313,7 @@ func (o *SavedSearchDetail) GetSortOk() ([]string, bool) {
 
 // HasSort returns a boolean if a field has been set.
 func (o *SavedSearchDetail) HasSort() bool {
-	if o != nil && !isNil(o.Sort) {
+	if o != nil && isNil(o.Sort) {
 		return true
 	}
 
@@ -355,7 +391,10 @@ func (o SavedSearchDetail) ToMap() (map[string]interface{}, error) {
 	if o.Fields != nil {
 		toSerialize["fields"] = o.Fields
 	}
-	if !isNil(o.Sort) {
+	if o.OrderBy != nil {
+		toSerialize["orderBy"] = o.OrderBy
+	}
+	if o.Sort != nil {
 		toSerialize["sort"] = o.Sort
 	}
 	if o.Filters.IsSet() {
@@ -407,6 +446,7 @@ func (o *SavedSearchDetail) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "columns")
 		delete(additionalProperties, "query")
 		delete(additionalProperties, "fields")
+		delete(additionalProperties, "orderBy")
 		delete(additionalProperties, "sort")
 		delete(additionalProperties, "filters")
 		o.AdditionalProperties = additionalProperties

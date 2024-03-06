@@ -21,10 +21,10 @@ var _ MappedNullable = &RequestedItemStatus{}
 // RequestedItemStatus struct for RequestedItemStatus
 type RequestedItemStatus struct {
 	// Human-readable display name of the item being requested.
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	// Type of requested object.
-	Type *string `json:"type,omitempty"`
-	CancelledRequestDetails *CancelledRequestDetails `json:"cancelledRequestDetails,omitempty"`
+	Type NullableString `json:"type,omitempty"`
+	CancelledRequestDetails *RequestedItemStatusCancelledRequestDetails `json:"cancelledRequestDetails,omitempty"`
 	// List of list of localized error messages, if any, encountered during the approval/provisioning process.
 	ErrorMessages [][]ErrorMessageDto `json:"errorMessages,omitempty"`
 	State *RequestedItemStatusRequestState `json:"state,omitempty"`
@@ -34,21 +34,22 @@ type RequestedItemStatus struct {
 	ManualWorkItemDetails []ManualWorkItemDetails `json:"manualWorkItemDetails,omitempty"`
 	// Id of associated account activity item.
 	AccountActivityItemId *string `json:"accountActivityItemId,omitempty"`
-	RequestType *AccessRequestType `json:"requestType,omitempty"`
+	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
 	// When the request was last modified.
-	Modified *time.Time `json:"modified,omitempty"`
+	Modified NullableTime `json:"modified,omitempty"`
 	// When the request was created.
 	Created *time.Time `json:"created,omitempty"`
 	Requester *AccessItemRequester `json:"requester,omitempty"`
-	RequestedFor *AccessItemRequestedFor `json:"requestedFor,omitempty"`
-	RequesterComment *CommentDto1 `json:"requesterComment,omitempty"`
-	SodViolationContext *SodViolationContextCheckCompleted `json:"sodViolationContext,omitempty"`
-	ProvisioningDetails *ProvisioningDetails `json:"provisioningDetails,omitempty"`
-	PreApprovalTriggerDetails *PreApprovalTriggerDetails `json:"preApprovalTriggerDetails,omitempty"`
+	// Identities access was requested for.
+	RequestedFor []AccessItemRequestedFor `json:"requestedFor,omitempty"`
+	RequesterComment *RequestedItemStatusRequesterComment `json:"requesterComment,omitempty"`
+	SodViolationContext *RequestedItemStatusSodViolationContext `json:"sodViolationContext,omitempty"`
+	ProvisioningDetails *RequestedItemStatusProvisioningDetails `json:"provisioningDetails,omitempty"`
+	PreApprovalTriggerDetails *RequestedItemStatusPreApprovalTriggerDetails `json:"preApprovalTriggerDetails,omitempty"`
 	// A list of Phases that the Access Request has gone through in order, to help determine the status of the request.
 	AccessRequestPhases []AccessRequestPhases `json:"accessRequestPhases,omitempty"`
 	// Description associated to the requested object.
-	Description *string `json:"description,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	// When the role access is scheduled for removal.
 	RemoveDate NullableTime `json:"removeDate,omitempty"`
 	// True if the request can be canceled.
@@ -68,6 +69,8 @@ type _RequestedItemStatus RequestedItemStatus
 // will change when the set of required properties is changed
 func NewRequestedItemStatus() *RequestedItemStatus {
 	this := RequestedItemStatus{}
+	var cancelable bool = false
+	this.Cancelable = &cancelable
 	return &this
 }
 
@@ -76,77 +79,99 @@ func NewRequestedItemStatus() *RequestedItemStatus {
 // but it doesn't guarantee that properties required by API are set
 func NewRequestedItemStatusWithDefaults() *RequestedItemStatus {
 	this := RequestedItemStatus{}
+	var cancelable bool = false
+	this.Cancelable = &cancelable
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestedItemStatus) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || isNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RequestedItemStatus) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *RequestedItemStatus) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *RequestedItemStatus) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *RequestedItemStatus) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *RequestedItemStatus) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestedItemStatus) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || isNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RequestedItemStatus) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *RequestedItemStatus) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
 func (o *RequestedItemStatus) SetType(v string) {
-	o.Type = &v
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *RequestedItemStatus) SetTypeNil() {
+	o.Type.Set(nil)
+}
+
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *RequestedItemStatus) UnsetType() {
+	o.Type.Unset()
 }
 
 // GetCancelledRequestDetails returns the CancelledRequestDetails field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetCancelledRequestDetails() CancelledRequestDetails {
+func (o *RequestedItemStatus) GetCancelledRequestDetails() RequestedItemStatusCancelledRequestDetails {
 	if o == nil || isNil(o.CancelledRequestDetails) {
-		var ret CancelledRequestDetails
+		var ret RequestedItemStatusCancelledRequestDetails
 		return ret
 	}
 	return *o.CancelledRequestDetails
@@ -154,7 +179,7 @@ func (o *RequestedItemStatus) GetCancelledRequestDetails() CancelledRequestDetai
 
 // GetCancelledRequestDetailsOk returns a tuple with the CancelledRequestDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetCancelledRequestDetailsOk() (*CancelledRequestDetails, bool) {
+func (o *RequestedItemStatus) GetCancelledRequestDetailsOk() (*RequestedItemStatusCancelledRequestDetails, bool) {
 	if o == nil || isNil(o.CancelledRequestDetails) {
 		return nil, false
 	}
@@ -170,8 +195,8 @@ func (o *RequestedItemStatus) HasCancelledRequestDetails() bool {
 	return false
 }
 
-// SetCancelledRequestDetails gets a reference to the given CancelledRequestDetails and assigns it to the CancelledRequestDetails field.
-func (o *RequestedItemStatus) SetCancelledRequestDetails(v CancelledRequestDetails) {
+// SetCancelledRequestDetails gets a reference to the given RequestedItemStatusCancelledRequestDetails and assigns it to the CancelledRequestDetails field.
+func (o *RequestedItemStatus) SetCancelledRequestDetails(v RequestedItemStatusCancelledRequestDetails) {
 	o.CancelledRequestDetails = &v
 }
 
@@ -337,68 +362,88 @@ func (o *RequestedItemStatus) SetAccountActivityItemId(v string) {
 	o.AccountActivityItemId = &v
 }
 
-// GetRequestType returns the RequestType field value if set, zero value otherwise.
+// GetRequestType returns the RequestType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestedItemStatus) GetRequestType() AccessRequestType {
-	if o == nil || isNil(o.RequestType) {
+	if o == nil || isNil(o.RequestType.Get()) {
 		var ret AccessRequestType
 		return ret
 	}
-	return *o.RequestType
+	return *o.RequestType.Get()
 }
 
 // GetRequestTypeOk returns a tuple with the RequestType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RequestedItemStatus) GetRequestTypeOk() (*AccessRequestType, bool) {
-	if o == nil || isNil(o.RequestType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RequestType, true
+	return o.RequestType.Get(), o.RequestType.IsSet()
 }
 
 // HasRequestType returns a boolean if a field has been set.
 func (o *RequestedItemStatus) HasRequestType() bool {
-	if o != nil && !isNil(o.RequestType) {
+	if o != nil && o.RequestType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRequestType gets a reference to the given AccessRequestType and assigns it to the RequestType field.
+// SetRequestType gets a reference to the given NullableAccessRequestType and assigns it to the RequestType field.
 func (o *RequestedItemStatus) SetRequestType(v AccessRequestType) {
-	o.RequestType = &v
+	o.RequestType.Set(&v)
+}
+// SetRequestTypeNil sets the value for RequestType to be an explicit nil
+func (o *RequestedItemStatus) SetRequestTypeNil() {
+	o.RequestType.Set(nil)
 }
 
-// GetModified returns the Modified field value if set, zero value otherwise.
+// UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
+func (o *RequestedItemStatus) UnsetRequestType() {
+	o.RequestType.Unset()
+}
+
+// GetModified returns the Modified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestedItemStatus) GetModified() time.Time {
-	if o == nil || isNil(o.Modified) {
+	if o == nil || isNil(o.Modified.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.Modified
+	return *o.Modified.Get()
 }
 
 // GetModifiedOk returns a tuple with the Modified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RequestedItemStatus) GetModifiedOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Modified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Modified, true
+	return o.Modified.Get(), o.Modified.IsSet()
 }
 
 // HasModified returns a boolean if a field has been set.
 func (o *RequestedItemStatus) HasModified() bool {
-	if o != nil && !isNil(o.Modified) {
+	if o != nil && o.Modified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetModified gets a reference to the given time.Time and assigns it to the Modified field.
+// SetModified gets a reference to the given NullableTime and assigns it to the Modified field.
 func (o *RequestedItemStatus) SetModified(v time.Time) {
-	o.Modified = &v
+	o.Modified.Set(&v)
+}
+// SetModifiedNil sets the value for Modified to be an explicit nil
+func (o *RequestedItemStatus) SetModifiedNil() {
+	o.Modified.Set(nil)
+}
+
+// UnsetModified ensures that no value is present for Modified, not even an explicit nil
+func (o *RequestedItemStatus) UnsetModified() {
+	o.Modified.Unset()
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
@@ -466,17 +511,17 @@ func (o *RequestedItemStatus) SetRequester(v AccessItemRequester) {
 }
 
 // GetRequestedFor returns the RequestedFor field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetRequestedFor() AccessItemRequestedFor {
+func (o *RequestedItemStatus) GetRequestedFor() []AccessItemRequestedFor {
 	if o == nil || isNil(o.RequestedFor) {
-		var ret AccessItemRequestedFor
+		var ret []AccessItemRequestedFor
 		return ret
 	}
-	return *o.RequestedFor
+	return o.RequestedFor
 }
 
 // GetRequestedForOk returns a tuple with the RequestedFor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetRequestedForOk() (*AccessItemRequestedFor, bool) {
+func (o *RequestedItemStatus) GetRequestedForOk() ([]AccessItemRequestedFor, bool) {
 	if o == nil || isNil(o.RequestedFor) {
 		return nil, false
 	}
@@ -492,15 +537,15 @@ func (o *RequestedItemStatus) HasRequestedFor() bool {
 	return false
 }
 
-// SetRequestedFor gets a reference to the given AccessItemRequestedFor and assigns it to the RequestedFor field.
-func (o *RequestedItemStatus) SetRequestedFor(v AccessItemRequestedFor) {
-	o.RequestedFor = &v
+// SetRequestedFor gets a reference to the given []AccessItemRequestedFor and assigns it to the RequestedFor field.
+func (o *RequestedItemStatus) SetRequestedFor(v []AccessItemRequestedFor) {
+	o.RequestedFor = v
 }
 
 // GetRequesterComment returns the RequesterComment field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetRequesterComment() CommentDto1 {
+func (o *RequestedItemStatus) GetRequesterComment() RequestedItemStatusRequesterComment {
 	if o == nil || isNil(o.RequesterComment) {
-		var ret CommentDto1
+		var ret RequestedItemStatusRequesterComment
 		return ret
 	}
 	return *o.RequesterComment
@@ -508,7 +553,7 @@ func (o *RequestedItemStatus) GetRequesterComment() CommentDto1 {
 
 // GetRequesterCommentOk returns a tuple with the RequesterComment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetRequesterCommentOk() (*CommentDto1, bool) {
+func (o *RequestedItemStatus) GetRequesterCommentOk() (*RequestedItemStatusRequesterComment, bool) {
 	if o == nil || isNil(o.RequesterComment) {
 		return nil, false
 	}
@@ -524,15 +569,15 @@ func (o *RequestedItemStatus) HasRequesterComment() bool {
 	return false
 }
 
-// SetRequesterComment gets a reference to the given CommentDto1 and assigns it to the RequesterComment field.
-func (o *RequestedItemStatus) SetRequesterComment(v CommentDto1) {
+// SetRequesterComment gets a reference to the given RequestedItemStatusRequesterComment and assigns it to the RequesterComment field.
+func (o *RequestedItemStatus) SetRequesterComment(v RequestedItemStatusRequesterComment) {
 	o.RequesterComment = &v
 }
 
 // GetSodViolationContext returns the SodViolationContext field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetSodViolationContext() SodViolationContextCheckCompleted {
+func (o *RequestedItemStatus) GetSodViolationContext() RequestedItemStatusSodViolationContext {
 	if o == nil || isNil(o.SodViolationContext) {
-		var ret SodViolationContextCheckCompleted
+		var ret RequestedItemStatusSodViolationContext
 		return ret
 	}
 	return *o.SodViolationContext
@@ -540,7 +585,7 @@ func (o *RequestedItemStatus) GetSodViolationContext() SodViolationContextCheckC
 
 // GetSodViolationContextOk returns a tuple with the SodViolationContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetSodViolationContextOk() (*SodViolationContextCheckCompleted, bool) {
+func (o *RequestedItemStatus) GetSodViolationContextOk() (*RequestedItemStatusSodViolationContext, bool) {
 	if o == nil || isNil(o.SodViolationContext) {
 		return nil, false
 	}
@@ -556,15 +601,15 @@ func (o *RequestedItemStatus) HasSodViolationContext() bool {
 	return false
 }
 
-// SetSodViolationContext gets a reference to the given SodViolationContextCheckCompleted and assigns it to the SodViolationContext field.
-func (o *RequestedItemStatus) SetSodViolationContext(v SodViolationContextCheckCompleted) {
+// SetSodViolationContext gets a reference to the given RequestedItemStatusSodViolationContext and assigns it to the SodViolationContext field.
+func (o *RequestedItemStatus) SetSodViolationContext(v RequestedItemStatusSodViolationContext) {
 	o.SodViolationContext = &v
 }
 
 // GetProvisioningDetails returns the ProvisioningDetails field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetProvisioningDetails() ProvisioningDetails {
+func (o *RequestedItemStatus) GetProvisioningDetails() RequestedItemStatusProvisioningDetails {
 	if o == nil || isNil(o.ProvisioningDetails) {
-		var ret ProvisioningDetails
+		var ret RequestedItemStatusProvisioningDetails
 		return ret
 	}
 	return *o.ProvisioningDetails
@@ -572,7 +617,7 @@ func (o *RequestedItemStatus) GetProvisioningDetails() ProvisioningDetails {
 
 // GetProvisioningDetailsOk returns a tuple with the ProvisioningDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetProvisioningDetailsOk() (*ProvisioningDetails, bool) {
+func (o *RequestedItemStatus) GetProvisioningDetailsOk() (*RequestedItemStatusProvisioningDetails, bool) {
 	if o == nil || isNil(o.ProvisioningDetails) {
 		return nil, false
 	}
@@ -588,15 +633,15 @@ func (o *RequestedItemStatus) HasProvisioningDetails() bool {
 	return false
 }
 
-// SetProvisioningDetails gets a reference to the given ProvisioningDetails and assigns it to the ProvisioningDetails field.
-func (o *RequestedItemStatus) SetProvisioningDetails(v ProvisioningDetails) {
+// SetProvisioningDetails gets a reference to the given RequestedItemStatusProvisioningDetails and assigns it to the ProvisioningDetails field.
+func (o *RequestedItemStatus) SetProvisioningDetails(v RequestedItemStatusProvisioningDetails) {
 	o.ProvisioningDetails = &v
 }
 
 // GetPreApprovalTriggerDetails returns the PreApprovalTriggerDetails field value if set, zero value otherwise.
-func (o *RequestedItemStatus) GetPreApprovalTriggerDetails() PreApprovalTriggerDetails {
+func (o *RequestedItemStatus) GetPreApprovalTriggerDetails() RequestedItemStatusPreApprovalTriggerDetails {
 	if o == nil || isNil(o.PreApprovalTriggerDetails) {
-		var ret PreApprovalTriggerDetails
+		var ret RequestedItemStatusPreApprovalTriggerDetails
 		return ret
 	}
 	return *o.PreApprovalTriggerDetails
@@ -604,7 +649,7 @@ func (o *RequestedItemStatus) GetPreApprovalTriggerDetails() PreApprovalTriggerD
 
 // GetPreApprovalTriggerDetailsOk returns a tuple with the PreApprovalTriggerDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RequestedItemStatus) GetPreApprovalTriggerDetailsOk() (*PreApprovalTriggerDetails, bool) {
+func (o *RequestedItemStatus) GetPreApprovalTriggerDetailsOk() (*RequestedItemStatusPreApprovalTriggerDetails, bool) {
 	if o == nil || isNil(o.PreApprovalTriggerDetails) {
 		return nil, false
 	}
@@ -620,14 +665,14 @@ func (o *RequestedItemStatus) HasPreApprovalTriggerDetails() bool {
 	return false
 }
 
-// SetPreApprovalTriggerDetails gets a reference to the given PreApprovalTriggerDetails and assigns it to the PreApprovalTriggerDetails field.
-func (o *RequestedItemStatus) SetPreApprovalTriggerDetails(v PreApprovalTriggerDetails) {
+// SetPreApprovalTriggerDetails gets a reference to the given RequestedItemStatusPreApprovalTriggerDetails and assigns it to the PreApprovalTriggerDetails field.
+func (o *RequestedItemStatus) SetPreApprovalTriggerDetails(v RequestedItemStatusPreApprovalTriggerDetails) {
 	o.PreApprovalTriggerDetails = &v
 }
 
-// GetAccessRequestPhases returns the AccessRequestPhases field value if set, zero value otherwise.
+// GetAccessRequestPhases returns the AccessRequestPhases field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestedItemStatus) GetAccessRequestPhases() []AccessRequestPhases {
-	if o == nil || isNil(o.AccessRequestPhases) {
+	if o == nil {
 		var ret []AccessRequestPhases
 		return ret
 	}
@@ -636,6 +681,7 @@ func (o *RequestedItemStatus) GetAccessRequestPhases() []AccessRequestPhases {
 
 // GetAccessRequestPhasesOk returns a tuple with the AccessRequestPhases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RequestedItemStatus) GetAccessRequestPhasesOk() ([]AccessRequestPhases, bool) {
 	if o == nil || isNil(o.AccessRequestPhases) {
 		return nil, false
@@ -645,7 +691,7 @@ func (o *RequestedItemStatus) GetAccessRequestPhasesOk() ([]AccessRequestPhases,
 
 // HasAccessRequestPhases returns a boolean if a field has been set.
 func (o *RequestedItemStatus) HasAccessRequestPhases() bool {
-	if o != nil && !isNil(o.AccessRequestPhases) {
+	if o != nil && isNil(o.AccessRequestPhases) {
 		return true
 	}
 
@@ -657,36 +703,46 @@ func (o *RequestedItemStatus) SetAccessRequestPhases(v []AccessRequestPhases) {
 	o.AccessRequestPhases = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RequestedItemStatus) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || isNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RequestedItemStatus) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *RequestedItemStatus) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *RequestedItemStatus) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *RequestedItemStatus) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *RequestedItemStatus) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetRemoveDate returns the RemoveDate field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -838,11 +894,11 @@ func (o RequestedItemStatus) MarshalJSON() ([]byte, error) {
 
 func (o RequestedItemStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
 	if !isNil(o.CancelledRequestDetails) {
 		toSerialize["cancelledRequestDetails"] = o.CancelledRequestDetails
@@ -862,11 +918,11 @@ func (o RequestedItemStatus) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.AccountActivityItemId) {
 		toSerialize["accountActivityItemId"] = o.AccountActivityItemId
 	}
-	if !isNil(o.RequestType) {
-		toSerialize["requestType"] = o.RequestType
+	if o.RequestType.IsSet() {
+		toSerialize["requestType"] = o.RequestType.Get()
 	}
-	if !isNil(o.Modified) {
-		toSerialize["modified"] = o.Modified
+	if o.Modified.IsSet() {
+		toSerialize["modified"] = o.Modified.Get()
 	}
 	if !isNil(o.Created) {
 		toSerialize["created"] = o.Created
@@ -889,11 +945,11 @@ func (o RequestedItemStatus) ToMap() (map[string]interface{}, error) {
 	if !isNil(o.PreApprovalTriggerDetails) {
 		toSerialize["preApprovalTriggerDetails"] = o.PreApprovalTriggerDetails
 	}
-	if !isNil(o.AccessRequestPhases) {
+	if o.AccessRequestPhases != nil {
 		toSerialize["accessRequestPhases"] = o.AccessRequestPhases
 	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if o.RemoveDate.IsSet() {
 		toSerialize["removeDate"] = o.RemoveDate.Get()

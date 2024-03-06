@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Owner** | [**PatOwner**](PatOwner.md) |  | 
 **Created** | **time.Time** | The date and time, down to the millisecond, when this personal access token was created. | 
 **LastUsed** | Pointer to **NullableTime** | The date and time, down to the millisecond, when this personal access token was last used to generate an access token. This timestamp does not get updated on every PAT usage, but only once a day. This property can be useful for identifying which PATs are no longer actively used and can be removed. | [optional] 
+**Managed** | Pointer to **bool** | If true, this token is managed by the SailPoint platform, and is not visible in the user interface. For example, Workflows will create managed personal access tokens for users who create workflows. | [optional] [default to false]
 
 ## Methods
 
@@ -175,6 +176,31 @@ HasLastUsed returns a boolean if a field has been set.
 `func (o *GetPersonalAccessTokenResponse) UnsetLastUsed()`
 
 UnsetLastUsed ensures that no value is present for LastUsed, not even an explicit nil
+### GetManaged
+
+`func (o *GetPersonalAccessTokenResponse) GetManaged() bool`
+
+GetManaged returns the Managed field if non-nil, zero value otherwise.
+
+### GetManagedOk
+
+`func (o *GetPersonalAccessTokenResponse) GetManagedOk() (*bool, bool)`
+
+GetManagedOk returns a tuple with the Managed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManaged
+
+`func (o *GetPersonalAccessTokenResponse) SetManaged(v bool)`
+
+SetManaged sets Managed field to given value.
+
+### HasManaged
+
+`func (o *GetPersonalAccessTokenResponse) HasManaged() bool`
+
+HasManaged returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

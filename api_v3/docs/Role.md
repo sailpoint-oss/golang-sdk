@@ -249,16 +249,6 @@ SetEntitlements sets Entitlements field to given value.
 
 HasEntitlements returns a boolean if a field has been set.
 
-### SetEntitlementsNil
-
-`func (o *Role) SetEntitlementsNil(b bool)`
-
- SetEntitlementsNil sets the value for Entitlements to be an explicit nil
-
-### UnsetEntitlements
-`func (o *Role) UnsetEntitlements()`
-
-UnsetEntitlements ensures that no value is present for Entitlements, not even an explicit nil
 ### GetMembership
 
 `func (o *Role) GetMembership() RoleMembershipSelector`

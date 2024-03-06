@@ -29,6 +29,8 @@ type PublicIdentity struct {
 	Email NullableString `json:"email,omitempty"`
 	// The lifecycle status for the identity
 	Status NullableString `json:"status,omitempty"`
+	// The current state of the identity, which determines how Identity Security Cloud interacts with the identity. An identity that is Active will be included identity picklists in Request Center, identity processing, and more. Identities that are Inactive will be excluded from these features. 
+	IdentityState NullableString `json:"identityState,omitempty"`
 	Manager NullableIdentityReference `json:"manager,omitempty"`
 	// The public identity attributes of the identity
 	Attributes []IdentityAttribute `json:"attributes,omitempty"`
@@ -234,6 +236,48 @@ func (o *PublicIdentity) UnsetStatus() {
 	o.Status.Unset()
 }
 
+// GetIdentityState returns the IdentityState field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PublicIdentity) GetIdentityState() string {
+	if o == nil || isNil(o.IdentityState.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.IdentityState.Get()
+}
+
+// GetIdentityStateOk returns a tuple with the IdentityState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PublicIdentity) GetIdentityStateOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IdentityState.Get(), o.IdentityState.IsSet()
+}
+
+// HasIdentityState returns a boolean if a field has been set.
+func (o *PublicIdentity) HasIdentityState() bool {
+	if o != nil && o.IdentityState.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIdentityState gets a reference to the given NullableString and assigns it to the IdentityState field.
+func (o *PublicIdentity) SetIdentityState(v string) {
+	o.IdentityState.Set(&v)
+}
+// SetIdentityStateNil sets the value for IdentityState to be an explicit nil
+func (o *PublicIdentity) SetIdentityStateNil() {
+	o.IdentityState.Set(nil)
+}
+
+// UnsetIdentityState ensures that no value is present for IdentityState, not even an explicit nil
+func (o *PublicIdentity) UnsetIdentityState() {
+	o.IdentityState.Unset()
+}
+
 // GetManager returns the Manager field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PublicIdentity) GetManager() IdentityReference {
 	if o == nil || isNil(o.Manager.Get()) {
@@ -333,6 +377,9 @@ func (o PublicIdentity) ToMap() (map[string]interface{}, error) {
 	if o.Status.IsSet() {
 		toSerialize["status"] = o.Status.Get()
 	}
+	if o.IdentityState.IsSet() {
+		toSerialize["identityState"] = o.IdentityState.Get()
+	}
 	if o.Manager.IsSet() {
 		toSerialize["manager"] = o.Manager.Get()
 	}
@@ -362,6 +409,7 @@ func (o *PublicIdentity) UnmarshalJSON(bytes []byte) (err error) {
 		delete(additionalProperties, "alias")
 		delete(additionalProperties, "email")
 		delete(additionalProperties, "status")
+		delete(additionalProperties, "identityState")
 		delete(additionalProperties, "manager")
 		delete(additionalProperties, "attributes")
 		o.AdditionalProperties = additionalProperties

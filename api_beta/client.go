@@ -68,6 +68,8 @@ type APIClient struct {
 
 	AccountsAPI *AccountsAPIService
 
+	AuthProfileAPI *AuthProfileAPIService
+
 	CertificationCampaignsAPI *CertificationCampaignsAPIService
 
 	CertificationsAPI *CertificationsAPIService
@@ -162,6 +164,8 @@ type APIClient struct {
 
 	TaskManagementAPI *TaskManagementAPIService
 
+	TenantAPI *TenantAPIService
+
 	TransformsAPI *TransformsAPIService
 
 	TriggersAPI *TriggersAPIService
@@ -197,6 +201,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccountAggregationsAPI = (*AccountAggregationsAPIService)(&c.common)
 	c.AccountUsagesAPI = (*AccountUsagesAPIService)(&c.common)
 	c.AccountsAPI = (*AccountsAPIService)(&c.common)
+	c.AuthProfileAPI = (*AuthProfileAPIService)(&c.common)
 	c.CertificationCampaignsAPI = (*CertificationCampaignsAPIService)(&c.common)
 	c.CertificationsAPI = (*CertificationsAPIService)(&c.common)
 	c.ConnectorRuleManagementAPI = (*ConnectorRuleManagementAPIService)(&c.common)
@@ -244,6 +249,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SourcesAPI = (*SourcesAPIService)(&c.common)
 	c.TaggedObjectsAPI = (*TaggedObjectsAPIService)(&c.common)
 	c.TaskManagementAPI = (*TaskManagementAPIService)(&c.common)
+	c.TenantAPI = (*TenantAPIService)(&c.common)
 	c.TransformsAPI = (*TransformsAPIService)(&c.common)
 	c.TriggersAPI = (*TriggersAPIService)(&c.common)
 	c.WorkItemsAPI = (*WorkItemsAPIService)(&c.common)

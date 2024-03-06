@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AllowEntitlementRequest** | Pointer to **bool** | Flag for allowing entitlement request. | [optional] 
 **RequestCommentsRequired** | Pointer to **bool** | Flag for requiring comments while submitting an entitlement request. | [optional] [default to false]
 **DeniedCommentsRequired** | Pointer to **bool** | Flag for requiring comments while rejecting an entitlement request. | [optional] [default to false]
-**GrantRequestApprovalSchemes** | Pointer to **string** | Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \&quot;entitlementOwner\&quot;, \&quot;sourceOwner\&quot;, \&quot;manager\&quot; and \&quot;workgroup:{id}\&quot;. Multiple workgroups (governance groups) can be used.  | [optional] [default to "sourceOwner"]
+**GrantRequestApprovalSchemes** | Pointer to **NullableString** | Approval schemes for granting entitlement request. This can be empty if no approval is needed. Multiple schemes must be comma-separated. The valid schemes are \&quot;entitlementOwner\&quot;, \&quot;sourceOwner\&quot;, \&quot;manager\&quot; and \&quot;workgroup:{id}\&quot;. Multiple workgroups (governance groups) can be used.  | [optional] [default to "sourceOwner"]
 
 ## Methods
 
@@ -128,6 +128,16 @@ SetGrantRequestApprovalSchemes sets GrantRequestApprovalSchemes field to given v
 
 HasGrantRequestApprovalSchemes returns a boolean if a field has been set.
 
+### SetGrantRequestApprovalSchemesNil
+
+`func (o *EntitlementRequestConfig1) SetGrantRequestApprovalSchemesNil(b bool)`
+
+ SetGrantRequestApprovalSchemesNil sets the value for GrantRequestApprovalSchemes to be an explicit nil
+
+### UnsetGrantRequestApprovalSchemes
+`func (o *EntitlementRequestConfig1) UnsetGrantRequestApprovalSchemes()`
+
+UnsetGrantRequestApprovalSchemes ensures that no value is present for GrantRequestApprovalSchemes, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,27 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Human-readable display name of the item being requested. | [optional] 
-**Type** | Pointer to **string** | Type of requested object. | [optional] 
-**CancelledRequestDetails** | Pointer to [**CancelledRequestDetails**](CancelledRequestDetails.md) |  | [optional] 
+**Name** | Pointer to **NullableString** | Human-readable display name of the item being requested. | [optional] 
+**Type** | Pointer to **NullableString** | Type of requested object. | [optional] 
+**CancelledRequestDetails** | Pointer to [**RequestedItemStatusCancelledRequestDetails**](RequestedItemStatusCancelledRequestDetails.md) |  | [optional] 
 **ErrorMessages** | Pointer to [**[][]ErrorMessageDto**]([]ErrorMessageDto.md) | List of list of localized error messages, if any, encountered during the approval/provisioning process. | [optional] 
 **State** | Pointer to [**RequestedItemStatusRequestState**](RequestedItemStatusRequestState.md) |  | [optional] 
 **ApprovalDetails** | Pointer to [**[]ApprovalStatusDto**](ApprovalStatusDto.md) | Approval details for each item. | [optional] 
 **ManualWorkItemDetails** | Pointer to [**[]ManualWorkItemDetails**](ManualWorkItemDetails.md) | Manual work items created for provisioning the item. | [optional] 
 **AccountActivityItemId** | Pointer to **string** | Id of associated account activity item. | [optional] 
-**RequestType** | Pointer to [**AccessRequestType**](AccessRequestType.md) |  | [optional] 
-**Modified** | Pointer to **time.Time** | When the request was last modified. | [optional] 
+**RequestType** | Pointer to [**NullableAccessRequestType**](AccessRequestType.md) |  | [optional] 
+**Modified** | Pointer to **NullableTime** | When the request was last modified. | [optional] 
 **Created** | Pointer to **time.Time** | When the request was created. | [optional] 
 **Requester** | Pointer to [**AccessItemRequester**](AccessItemRequester.md) |  | [optional] 
-**RequestedFor** | Pointer to [**AccessItemRequestedFor**](AccessItemRequestedFor.md) |  | [optional] 
-**RequesterComment** | Pointer to [**CommentDto**](CommentDto.md) |  | [optional] 
-**SodViolationContext** | Pointer to [**SodViolationContextCheckCompleted**](SodViolationContextCheckCompleted.md) |  | [optional] 
-**ProvisioningDetails** | Pointer to [**ProvisioningDetails**](ProvisioningDetails.md) |  | [optional] 
-**PreApprovalTriggerDetails** | Pointer to [**PreApprovalTriggerDetails**](PreApprovalTriggerDetails.md) |  | [optional] 
+**RequestedFor** | Pointer to [**[]AccessItemRequestedFor**](AccessItemRequestedFor.md) | Identities access was requested for. | [optional] 
+**RequesterComment** | Pointer to [**RequestedItemStatusRequesterComment**](RequestedItemStatusRequesterComment.md) |  | [optional] 
+**SodViolationContext** | Pointer to [**RequestedItemStatusSodViolationContext**](RequestedItemStatusSodViolationContext.md) |  | [optional] 
+**ProvisioningDetails** | Pointer to [**RequestedItemStatusProvisioningDetails**](RequestedItemStatusProvisioningDetails.md) |  | [optional] 
+**PreApprovalTriggerDetails** | Pointer to [**RequestedItemStatusPreApprovalTriggerDetails**](RequestedItemStatusPreApprovalTriggerDetails.md) |  | [optional] 
 **AccessRequestPhases** | Pointer to [**[]AccessRequestPhases**](AccessRequestPhases.md) | A list of Phases that the Access Request has gone through in order, to help determine the status of the request. | [optional] 
-**Description** | Pointer to **string** | Description associated to the requested object. | [optional] 
+**Description** | Pointer to **NullableString** | Description associated to the requested object. | [optional] 
 **RemoveDate** | Pointer to **NullableTime** | When the role access is scheduled for removal. | [optional] 
-**Cancelable** | Pointer to **bool** | True if the request can be canceled. | [optional] 
+**Cancelable** | Pointer to **bool** | True if the request can be canceled. | [optional] [default to false]
 **AccessRequestId** | Pointer to **string** | This is the account activity id. | [optional] 
 **ClientMetadata** | Pointer to **map[string]string** | Arbitrary key-value pairs, if any were included in the corresponding access request | [optional] 
 
@@ -72,6 +72,16 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### SetNameNil
+
+`func (o *RequestedItemStatus) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *RequestedItemStatus) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetType
 
 `func (o *RequestedItemStatus) GetType() string`
@@ -97,22 +107,32 @@ SetType sets Type field to given value.
 
 HasType returns a boolean if a field has been set.
 
+### SetTypeNil
+
+`func (o *RequestedItemStatus) SetTypeNil(b bool)`
+
+ SetTypeNil sets the value for Type to be an explicit nil
+
+### UnsetType
+`func (o *RequestedItemStatus) UnsetType()`
+
+UnsetType ensures that no value is present for Type, not even an explicit nil
 ### GetCancelledRequestDetails
 
-`func (o *RequestedItemStatus) GetCancelledRequestDetails() CancelledRequestDetails`
+`func (o *RequestedItemStatus) GetCancelledRequestDetails() RequestedItemStatusCancelledRequestDetails`
 
 GetCancelledRequestDetails returns the CancelledRequestDetails field if non-nil, zero value otherwise.
 
 ### GetCancelledRequestDetailsOk
 
-`func (o *RequestedItemStatus) GetCancelledRequestDetailsOk() (*CancelledRequestDetails, bool)`
+`func (o *RequestedItemStatus) GetCancelledRequestDetailsOk() (*RequestedItemStatusCancelledRequestDetails, bool)`
 
 GetCancelledRequestDetailsOk returns a tuple with the CancelledRequestDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCancelledRequestDetails
 
-`func (o *RequestedItemStatus) SetCancelledRequestDetails(v CancelledRequestDetails)`
+`func (o *RequestedItemStatus) SetCancelledRequestDetails(v RequestedItemStatusCancelledRequestDetails)`
 
 SetCancelledRequestDetails sets CancelledRequestDetails field to given value.
 
@@ -292,6 +312,16 @@ SetRequestType sets RequestType field to given value.
 
 HasRequestType returns a boolean if a field has been set.
 
+### SetRequestTypeNil
+
+`func (o *RequestedItemStatus) SetRequestTypeNil(b bool)`
+
+ SetRequestTypeNil sets the value for RequestType to be an explicit nil
+
+### UnsetRequestType
+`func (o *RequestedItemStatus) UnsetRequestType()`
+
+UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
 ### GetModified
 
 `func (o *RequestedItemStatus) GetModified() time.Time`
@@ -317,6 +347,16 @@ SetModified sets Modified field to given value.
 
 HasModified returns a boolean if a field has been set.
 
+### SetModifiedNil
+
+`func (o *RequestedItemStatus) SetModifiedNil(b bool)`
+
+ SetModifiedNil sets the value for Modified to be an explicit nil
+
+### UnsetModified
+`func (o *RequestedItemStatus) UnsetModified()`
+
+UnsetModified ensures that no value is present for Modified, not even an explicit nil
 ### GetCreated
 
 `func (o *RequestedItemStatus) GetCreated() time.Time`
@@ -369,20 +409,20 @@ HasRequester returns a boolean if a field has been set.
 
 ### GetRequestedFor
 
-`func (o *RequestedItemStatus) GetRequestedFor() AccessItemRequestedFor`
+`func (o *RequestedItemStatus) GetRequestedFor() []AccessItemRequestedFor`
 
 GetRequestedFor returns the RequestedFor field if non-nil, zero value otherwise.
 
 ### GetRequestedForOk
 
-`func (o *RequestedItemStatus) GetRequestedForOk() (*AccessItemRequestedFor, bool)`
+`func (o *RequestedItemStatus) GetRequestedForOk() (*[]AccessItemRequestedFor, bool)`
 
 GetRequestedForOk returns a tuple with the RequestedFor field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequestedFor
 
-`func (o *RequestedItemStatus) SetRequestedFor(v AccessItemRequestedFor)`
+`func (o *RequestedItemStatus) SetRequestedFor(v []AccessItemRequestedFor)`
 
 SetRequestedFor sets RequestedFor field to given value.
 
@@ -394,20 +434,20 @@ HasRequestedFor returns a boolean if a field has been set.
 
 ### GetRequesterComment
 
-`func (o *RequestedItemStatus) GetRequesterComment() CommentDto`
+`func (o *RequestedItemStatus) GetRequesterComment() RequestedItemStatusRequesterComment`
 
 GetRequesterComment returns the RequesterComment field if non-nil, zero value otherwise.
 
 ### GetRequesterCommentOk
 
-`func (o *RequestedItemStatus) GetRequesterCommentOk() (*CommentDto, bool)`
+`func (o *RequestedItemStatus) GetRequesterCommentOk() (*RequestedItemStatusRequesterComment, bool)`
 
 GetRequesterCommentOk returns a tuple with the RequesterComment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequesterComment
 
-`func (o *RequestedItemStatus) SetRequesterComment(v CommentDto)`
+`func (o *RequestedItemStatus) SetRequesterComment(v RequestedItemStatusRequesterComment)`
 
 SetRequesterComment sets RequesterComment field to given value.
 
@@ -419,20 +459,20 @@ HasRequesterComment returns a boolean if a field has been set.
 
 ### GetSodViolationContext
 
-`func (o *RequestedItemStatus) GetSodViolationContext() SodViolationContextCheckCompleted`
+`func (o *RequestedItemStatus) GetSodViolationContext() RequestedItemStatusSodViolationContext`
 
 GetSodViolationContext returns the SodViolationContext field if non-nil, zero value otherwise.
 
 ### GetSodViolationContextOk
 
-`func (o *RequestedItemStatus) GetSodViolationContextOk() (*SodViolationContextCheckCompleted, bool)`
+`func (o *RequestedItemStatus) GetSodViolationContextOk() (*RequestedItemStatusSodViolationContext, bool)`
 
 GetSodViolationContextOk returns a tuple with the SodViolationContext field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSodViolationContext
 
-`func (o *RequestedItemStatus) SetSodViolationContext(v SodViolationContextCheckCompleted)`
+`func (o *RequestedItemStatus) SetSodViolationContext(v RequestedItemStatusSodViolationContext)`
 
 SetSodViolationContext sets SodViolationContext field to given value.
 
@@ -444,20 +484,20 @@ HasSodViolationContext returns a boolean if a field has been set.
 
 ### GetProvisioningDetails
 
-`func (o *RequestedItemStatus) GetProvisioningDetails() ProvisioningDetails`
+`func (o *RequestedItemStatus) GetProvisioningDetails() RequestedItemStatusProvisioningDetails`
 
 GetProvisioningDetails returns the ProvisioningDetails field if non-nil, zero value otherwise.
 
 ### GetProvisioningDetailsOk
 
-`func (o *RequestedItemStatus) GetProvisioningDetailsOk() (*ProvisioningDetails, bool)`
+`func (o *RequestedItemStatus) GetProvisioningDetailsOk() (*RequestedItemStatusProvisioningDetails, bool)`
 
 GetProvisioningDetailsOk returns a tuple with the ProvisioningDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProvisioningDetails
 
-`func (o *RequestedItemStatus) SetProvisioningDetails(v ProvisioningDetails)`
+`func (o *RequestedItemStatus) SetProvisioningDetails(v RequestedItemStatusProvisioningDetails)`
 
 SetProvisioningDetails sets ProvisioningDetails field to given value.
 
@@ -469,20 +509,20 @@ HasProvisioningDetails returns a boolean if a field has been set.
 
 ### GetPreApprovalTriggerDetails
 
-`func (o *RequestedItemStatus) GetPreApprovalTriggerDetails() PreApprovalTriggerDetails`
+`func (o *RequestedItemStatus) GetPreApprovalTriggerDetails() RequestedItemStatusPreApprovalTriggerDetails`
 
 GetPreApprovalTriggerDetails returns the PreApprovalTriggerDetails field if non-nil, zero value otherwise.
 
 ### GetPreApprovalTriggerDetailsOk
 
-`func (o *RequestedItemStatus) GetPreApprovalTriggerDetailsOk() (*PreApprovalTriggerDetails, bool)`
+`func (o *RequestedItemStatus) GetPreApprovalTriggerDetailsOk() (*RequestedItemStatusPreApprovalTriggerDetails, bool)`
 
 GetPreApprovalTriggerDetailsOk returns a tuple with the PreApprovalTriggerDetails field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPreApprovalTriggerDetails
 
-`func (o *RequestedItemStatus) SetPreApprovalTriggerDetails(v PreApprovalTriggerDetails)`
+`func (o *RequestedItemStatus) SetPreApprovalTriggerDetails(v RequestedItemStatusPreApprovalTriggerDetails)`
 
 SetPreApprovalTriggerDetails sets PreApprovalTriggerDetails field to given value.
 
@@ -517,6 +557,16 @@ SetAccessRequestPhases sets AccessRequestPhases field to given value.
 
 HasAccessRequestPhases returns a boolean if a field has been set.
 
+### SetAccessRequestPhasesNil
+
+`func (o *RequestedItemStatus) SetAccessRequestPhasesNil(b bool)`
+
+ SetAccessRequestPhasesNil sets the value for AccessRequestPhases to be an explicit nil
+
+### UnsetAccessRequestPhases
+`func (o *RequestedItemStatus) UnsetAccessRequestPhases()`
+
+UnsetAccessRequestPhases ensures that no value is present for AccessRequestPhases, not even an explicit nil
 ### GetDescription
 
 `func (o *RequestedItemStatus) GetDescription() string`
@@ -542,6 +592,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *RequestedItemStatus) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *RequestedItemStatus) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetRemoveDate
 
 `func (o *RequestedItemStatus) GetRemoveDate() time.Time`

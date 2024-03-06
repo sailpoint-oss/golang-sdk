@@ -119,6 +119,11 @@ Class | Method | HTTP request | Description
 *AccountsAPI* | [**ReloadAccount**](docs/AccountsAPI.md#reloadaccount) | **Post** /accounts/{id}/reload | Reload Account
 *AccountsAPI* | [**UnlockAccount**](docs/AccountsAPI.md#unlockaccount) | **Post** /accounts/{id}/unlock | Unlock Account
 *AccountsAPI* | [**UpdateAccount**](docs/AccountsAPI.md#updateaccount) | **Patch** /accounts/{id} | Update Account
+*AuthProfileAPI* | [**CreateProfileConfig**](docs/AuthProfileAPI.md#createprofileconfig) | **Post** /auth-profiles/{id} | Create Auth Profile.
+*AuthProfileAPI* | [**DeleteProfileConfig**](docs/AuthProfileAPI.md#deleteprofileconfig) | **Delete** /auth-profiles/{id} | Delete the specified Auth Profile
+*AuthProfileAPI* | [**GetProfileConfig**](docs/AuthProfileAPI.md#getprofileconfig) | **Get** /auth-profiles/{id} | Get Auth Profile.
+*AuthProfileAPI* | [**GetProfileConfigList**](docs/AuthProfileAPI.md#getprofileconfiglist) | **Get** /auth-profiles | Get list of Auth Profiles.
+*AuthProfileAPI* | [**PatchProfileConfig**](docs/AuthProfileAPI.md#patchprofileconfig) | **Patch** /auth-profiles/{id} | Patch a specified Auth Profile
 *CertificationCampaignsAPI* | [**CompleteCampaign**](docs/CertificationCampaignsAPI.md#completecampaign) | **Post** /campaigns/{id}/complete | Complete a Campaign
 *CertificationCampaignsAPI* | [**CreateCampaign**](docs/CertificationCampaignsAPI.md#createcampaign) | **Post** /campaigns | Create a campaign
 *CertificationCampaignsAPI* | [**CreateCampaignTemplate**](docs/CertificationCampaignsAPI.md#createcampaigntemplate) | **Post** /campaign-templates | Create a Campaign Template
@@ -341,7 +346,7 @@ Class | Method | HTTP request | Description
 *NotificationsAPI* | [**ListNotificationTemplateDefaults**](docs/NotificationsAPI.md#listnotificationtemplatedefaults) | **Get** /notification-template-defaults | List Notification Template Defaults
 *NotificationsAPI* | [**ListNotificationTemplates**](docs/NotificationsAPI.md#listnotificationtemplates) | **Get** /notification-templates | List Notification Templates
 *NotificationsAPI* | [**PutMailFromAttributes**](docs/NotificationsAPI.md#putmailfromattributes) | **Put** /mail-from-attributes | Change MAIL FROM domain
-*NotificationsAPI* | [**PutNotificationPreference**](docs/NotificationsAPI.md#putnotificationpreference) | **Put** /notification-preferences/{key} | Overwrite the preferences for the given notification key.
+*NotificationsAPI* | [**PutNotificationPreference**](docs/NotificationsAPI.md#putnotificationpreference) | **Put** /notification-preferences/{key} | Overwrite preferences notification key.
 *NotificationsAPI* | [**SendTestNotification**](docs/NotificationsAPI.md#sendtestnotification) | **Post** /send-test-notification | Send Test Notification
 *OAuthClientsAPI* | [**CreateOauthClient**](docs/OAuthClientsAPI.md#createoauthclient) | **Post** /oauth-clients | Create OAuth Client
 *OAuthClientsAPI* | [**DeleteOauthClient**](docs/OAuthClientsAPI.md#deleteoauthclient) | **Delete** /oauth-clients/{id} | Delete OAuth Client
@@ -485,6 +490,7 @@ Class | Method | HTTP request | Description
 *TaskManagementAPI* | [**GetTaskStatus**](docs/TaskManagementAPI.md#gettaskstatus) | **Get** /task-status/{id} | Get task status by ID.
 *TaskManagementAPI* | [**GetTaskStatusList**](docs/TaskManagementAPI.md#gettaskstatuslist) | **Get** /task-status | Retrieve a task status list.
 *TaskManagementAPI* | [**UpdateTaskStatus**](docs/TaskManagementAPI.md#updatetaskstatus) | **Patch** /task-status/{id} | Update task status by ID
+*TenantAPI* | [**GetTenant**](docs/TenantAPI.md#gettenant) | **Get** /tenant | Get Tenant Information.
 *TransformsAPI* | [**CreateTransform**](docs/TransformsAPI.md#createtransform) | **Post** /transforms | Create transform
 *TransformsAPI* | [**DeleteTransform**](docs/TransformsAPI.md#deletetransform) | **Delete** /transforms/{id} | Delete a transform
 *TransformsAPI* | [**GetTransform**](docs/TransformsAPI.md#gettransform) | **Get** /transforms/{id} | Transform by ID
@@ -650,6 +656,7 @@ Class | Method | HTTP request | Description
  - [ApprovalSchemeForRole](docs/ApprovalSchemeForRole.md)
  - [ApprovalStatus](docs/ApprovalStatus.md)
  - [ApprovalStatusDto](docs/ApprovalStatusDto.md)
+ - [ApprovalStatusDtoCurrentOwner](docs/ApprovalStatusDtoCurrentOwner.md)
  - [ApprovalStatusDtoOriginalOwner](docs/ApprovalStatusDtoOriginalOwner.md)
  - [ApprovalSummary](docs/ApprovalSummary.md)
  - [Argument](docs/Argument.md)
@@ -663,8 +670,12 @@ Class | Method | HTTP request | Description
  - [AttributeDefinitionType](docs/AttributeDefinitionType.md)
  - [AttributesChanged](docs/AttributesChanged.md)
  - [AuditDetails](docs/AuditDetails.md)
+ - [AuthProfile](docs/AuthProfile.md)
+ - [AuthProfileRequest](docs/AuthProfileRequest.md)
+ - [AuthProfileSummary](docs/AuthProfileSummary.md)
  - [BaseCommonDto](docs/BaseCommonDto.md)
  - [BaseCommonDto1](docs/BaseCommonDto1.md)
+ - [BaseReferenceDto](docs/BaseReferenceDto.md)
  - [BasicAuthConfig](docs/BasicAuthConfig.md)
  - [BearerTokenAuthConfig](docs/BearerTokenAuthConfig.md)
  - [BeforeProvisioningRuleDto](docs/BeforeProvisioningRuleDto.md)
@@ -703,6 +714,7 @@ Class | Method | HTTP request | Description
  - [Comment](docs/Comment.md)
  - [CommentDto](docs/CommentDto.md)
  - [CommentDto1](docs/CommentDto1.md)
+ - [CommentDto1Author](docs/CommentDto1Author.md)
  - [CommentDtoAuthor](docs/CommentDtoAuthor.md)
  - [CommonAccessIDStatus](docs/CommonAccessIDStatus.md)
  - [CommonAccessItemAccess](docs/CommonAccessItemAccess.md)
@@ -715,6 +727,7 @@ Class | Method | HTTP request | Description
  - [CompleteInvocation](docs/CompleteInvocation.md)
  - [CompleteInvocationInput](docs/CompleteInvocationInput.md)
  - [CompletedApproval](docs/CompletedApproval.md)
+ - [CompletedApprovalPreApprovalTriggerResult](docs/CompletedApprovalPreApprovalTriggerResult.md)
  - [CompletedApprovalReviewedBy](docs/CompletedApprovalReviewedBy.md)
  - [CompletedApprovalReviewerComment](docs/CompletedApprovalReviewerComment.md)
  - [CompletedApprovalState](docs/CompletedApprovalState.md)
@@ -725,6 +738,7 @@ Class | Method | HTTP request | Description
  - [ConfigObject](docs/ConfigObject.md)
  - [ConfigType](docs/ConfigType.md)
  - [ConfigTypeEnum](docs/ConfigTypeEnum.md)
+ - [ConfigTypeEnumCamel](docs/ConfigTypeEnumCamel.md)
  - [ConfigurationDetailsResponse](docs/ConfigurationDetailsResponse.md)
  - [ConfigurationItemRequest](docs/ConfigurationItemRequest.md)
  - [ConfigurationItemResponse](docs/ConfigurationItemResponse.md)
@@ -764,6 +778,8 @@ Class | Method | HTTP request | Description
  - [EntitlementAccessRequestConfig](docs/EntitlementAccessRequestConfig.md)
  - [EntitlementApprovalScheme](docs/EntitlementApprovalScheme.md)
  - [EntitlementBulkUpdateRequest](docs/EntitlementBulkUpdateRequest.md)
+ - [EntitlementManuallyUpdatedFields](docs/EntitlementManuallyUpdatedFields.md)
+ - [EntitlementOwner](docs/EntitlementOwner.md)
  - [EntitlementRef](docs/EntitlementRef.md)
  - [EntitlementRequestConfig](docs/EntitlementRequestConfig.md)
  - [EntitlementRequestConfig1](docs/EntitlementRequestConfig1.md)
@@ -811,7 +827,6 @@ Class | Method | HTTP request | Description
  - [FormOwner](docs/FormOwner.md)
  - [FormUsedBy](docs/FormUsedBy.md)
  - [ForwardApprovalDto](docs/ForwardApprovalDto.md)
- - [FullAccount](docs/FullAccount.md)
  - [Fullcampaign](docs/Fullcampaign.md)
  - [FullcampaignAllOfFilter](docs/FullcampaignAllOfFilter.md)
  - [FullcampaignAllOfRoleCompositionCampaignInfo](docs/FullcampaignAllOfRoleCompositionCampaignInfo.md)
@@ -853,6 +868,7 @@ Class | Method | HTTP request | Description
  - [IdentityCreatedIdentity](docs/IdentityCreatedIdentity.md)
  - [IdentityDeleted](docs/IdentityDeleted.md)
  - [IdentityDeletedIdentity](docs/IdentityDeletedIdentity.md)
+ - [IdentityDtoLifecycleState](docs/IdentityDtoLifecycleState.md)
  - [IdentityDtoManagerRef](docs/IdentityDtoManagerRef.md)
  - [IdentityEntities](docs/IdentityEntities.md)
  - [IdentityEntitiesIdentityEntity](docs/IdentityEntitiesIdentityEntity.md)
@@ -897,11 +913,11 @@ Class | Method | HTTP request | Description
  - [KbaAuthResponse](docs/KbaAuthResponse.md)
  - [KbaAuthResponseItem](docs/KbaAuthResponseItem.md)
  - [LatestOutlierSummary](docs/LatestOutlierSummary.md)
+ - [License](docs/License.md)
  - [LifecycleState](docs/LifecycleState.md)
  - [LifecycleStateDto](docs/LifecycleStateDto.md)
  - [ListAccessProfiles401Response](docs/ListAccessProfiles401Response.md)
  - [ListAccessProfiles429Response](docs/ListAccessProfiles429Response.md)
- - [ListAccounts200ResponseInner](docs/ListAccounts200ResponseInner.md)
  - [ListCompleteWorkflowLibrary200ResponseInner](docs/ListCompleteWorkflowLibrary200ResponseInner.md)
  - [ListFormDefinitionsByTenantResponse](docs/ListFormDefinitionsByTenantResponse.md)
  - [ListFormElementDataByElementIDResponse](docs/ListFormElementDataByElementIDResponse.md)
@@ -1003,6 +1019,7 @@ Class | Method | HTTP request | Description
  - [PreferencesDto](docs/PreferencesDto.md)
  - [PreviewDataSourceResponse](docs/PreviewDataSourceResponse.md)
  - [ProcessIdentitiesRequest](docs/ProcessIdentitiesRequest.md)
+ - [Product](docs/Product.md)
  - [ProvisioningCompleted](docs/ProvisioningCompleted.md)
  - [ProvisioningCompletedAccountRequestsInner](docs/ProvisioningCompletedAccountRequestsInner.md)
  - [ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner](docs/ProvisioningCompletedAccountRequestsInnerAttributeRequestsInner.md)
@@ -1047,7 +1064,12 @@ Class | Method | HTTP request | Description
  - [RequestableObjectRequestStatus](docs/RequestableObjectRequestStatus.md)
  - [RequestableObjectType](docs/RequestableObjectType.md)
  - [RequestedItemStatus](docs/RequestedItemStatus.md)
+ - [RequestedItemStatusCancelledRequestDetails](docs/RequestedItemStatusCancelledRequestDetails.md)
+ - [RequestedItemStatusPreApprovalTriggerDetails](docs/RequestedItemStatusPreApprovalTriggerDetails.md)
+ - [RequestedItemStatusProvisioningDetails](docs/RequestedItemStatusProvisioningDetails.md)
  - [RequestedItemStatusRequestState](docs/RequestedItemStatusRequestState.md)
+ - [RequestedItemStatusRequesterComment](docs/RequestedItemStatusRequesterComment.md)
+ - [RequestedItemStatusSodViolationContext](docs/RequestedItemStatusSodViolationContext.md)
  - [ResourceBundleMessage](docs/ResourceBundleMessage.md)
  - [ResourceObject](docs/ResourceObject.md)
  - [ResourceObjectsRequest](docs/ResourceObjectsRequest.md)
@@ -1111,6 +1133,7 @@ Class | Method | HTTP request | Description
  - [Schedule1](docs/Schedule1.md)
  - [Schedule1Days](docs/Schedule1Days.md)
  - [Schedule1Hours](docs/Schedule1Hours.md)
+ - [Schedule1Months](docs/Schedule1Months.md)
  - [ScheduleDays](docs/ScheduleDays.md)
  - [ScheduleHours](docs/ScheduleHours.md)
  - [ScheduleMonths](docs/ScheduleMonths.md)
@@ -1131,7 +1154,6 @@ Class | Method | HTTP request | Description
  - [ServiceDeskIntegrationTemplateDto](docs/ServiceDeskIntegrationTemplateDto.md)
  - [ServiceDeskIntegrationTemplateType](docs/ServiceDeskIntegrationTemplateType.md)
  - [ServiceDeskSource](docs/ServiceDeskSource.md)
- - [SlimAccount](docs/SlimAccount.md)
  - [Slimcampaign](docs/Slimcampaign.md)
  - [SodExemptCriteria](docs/SodExemptCriteria.md)
  - [SodExemptCriteria1](docs/SodExemptCriteria1.md)
@@ -1210,6 +1232,7 @@ Class | Method | HTTP request | Description
  - [TemplateBulkDeleteDto](docs/TemplateBulkDeleteDto.md)
  - [TemplateDto](docs/TemplateDto.md)
  - [TemplateDtoDefault](docs/TemplateDtoDefault.md)
+ - [Tenant](docs/Tenant.md)
  - [TenantConfigurationDetails](docs/TenantConfigurationDetails.md)
  - [TenantConfigurationRequest](docs/TenantConfigurationRequest.md)
  - [TenantConfigurationResponse](docs/TenantConfigurationResponse.md)

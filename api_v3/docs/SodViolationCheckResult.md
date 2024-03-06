@@ -78,6 +78,16 @@ SetClientMetadata sets ClientMetadata field to given value.
 
 HasClientMetadata returns a boolean if a field has been set.
 
+### SetClientMetadataNil
+
+`func (o *SodViolationCheckResult) SetClientMetadataNil(b bool)`
+
+ SetClientMetadataNil sets the value for ClientMetadata to be an explicit nil
+
+### UnsetClientMetadata
+`func (o *SodViolationCheckResult) UnsetClientMetadata()`
+
+UnsetClientMetadata ensures that no value is present for ClientMetadata, not even an explicit nil
 ### GetViolationContexts
 
 `func (o *SodViolationCheckResult) GetViolationContexts() []SodViolationContext`
@@ -103,6 +113,16 @@ SetViolationContexts sets ViolationContexts field to given value.
 
 HasViolationContexts returns a boolean if a field has been set.
 
+### SetViolationContextsNil
+
+`func (o *SodViolationCheckResult) SetViolationContextsNil(b bool)`
+
+ SetViolationContextsNil sets the value for ViolationContexts to be an explicit nil
+
+### UnsetViolationContexts
+`func (o *SodViolationCheckResult) UnsetViolationContexts()`
+
+UnsetViolationContexts ensures that no value is present for ViolationContexts, not even an explicit nil
 ### GetViolatedPolicies
 
 `func (o *SodViolationCheckResult) GetViolatedPolicies() []SodPolicyDto`
@@ -128,6 +148,16 @@ SetViolatedPolicies sets ViolatedPolicies field to given value.
 
 HasViolatedPolicies returns a boolean if a field has been set.
 
+### SetViolatedPoliciesNil
+
+`func (o *SodViolationCheckResult) SetViolatedPoliciesNil(b bool)`
+
+ SetViolatedPoliciesNil sets the value for ViolatedPolicies to be an explicit nil
+
+### UnsetViolatedPolicies
+`func (o *SodViolationCheckResult) UnsetViolatedPolicies()`
+
+UnsetViolatedPolicies ensures that no value is present for ViolatedPolicies, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

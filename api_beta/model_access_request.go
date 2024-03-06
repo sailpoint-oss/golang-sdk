@@ -22,7 +22,7 @@ var _ MappedNullable = &AccessRequest{}
 type AccessRequest struct {
 	// A list of Identity IDs for whom the Access is requested. If it's a Revoke request, there can only be one Identity ID.
 	RequestedFor []string `json:"requestedFor"`
-	RequestType *AccessRequestType `json:"requestType,omitempty"`
+	RequestType NullableAccessRequestType `json:"requestType,omitempty"`
 	RequestedItems []AccessRequestItem `json:"requestedItems"`
 	// Arbitrary key-value pairs. They will never be processed by the IdentityNow system but will be returned on associated APIs such as /account-activities.
 	ClientMetadata *map[string]string `json:"clientMetadata,omitempty"`
@@ -74,36 +74,46 @@ func (o *AccessRequest) SetRequestedFor(v []string) {
 	o.RequestedFor = v
 }
 
-// GetRequestType returns the RequestType field value if set, zero value otherwise.
+// GetRequestType returns the RequestType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AccessRequest) GetRequestType() AccessRequestType {
-	if o == nil || isNil(o.RequestType) {
+	if o == nil || isNil(o.RequestType.Get()) {
 		var ret AccessRequestType
 		return ret
 	}
-	return *o.RequestType
+	return *o.RequestType.Get()
 }
 
 // GetRequestTypeOk returns a tuple with the RequestType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessRequest) GetRequestTypeOk() (*AccessRequestType, bool) {
-	if o == nil || isNil(o.RequestType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RequestType, true
+	return o.RequestType.Get(), o.RequestType.IsSet()
 }
 
 // HasRequestType returns a boolean if a field has been set.
 func (o *AccessRequest) HasRequestType() bool {
-	if o != nil && !isNil(o.RequestType) {
+	if o != nil && o.RequestType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRequestType gets a reference to the given AccessRequestType and assigns it to the RequestType field.
+// SetRequestType gets a reference to the given NullableAccessRequestType and assigns it to the RequestType field.
 func (o *AccessRequest) SetRequestType(v AccessRequestType) {
-	o.RequestType = &v
+	o.RequestType.Set(&v)
+}
+// SetRequestTypeNil sets the value for RequestType to be an explicit nil
+func (o *AccessRequest) SetRequestTypeNil() {
+	o.RequestType.Set(nil)
+}
+
+// UnsetRequestType ensures that no value is present for RequestType, not even an explicit nil
+func (o *AccessRequest) UnsetRequestType() {
+	o.RequestType.Unset()
 }
 
 // GetRequestedItems returns the RequestedItems field value
@@ -173,8 +183,8 @@ func (o AccessRequest) MarshalJSON() ([]byte, error) {
 func (o AccessRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["requestedFor"] = o.RequestedFor
-	if !isNil(o.RequestType) {
-		toSerialize["requestType"] = o.RequestType
+	if o.RequestType.IsSet() {
+		toSerialize["requestType"] = o.RequestType.Get()
 	}
 	toSerialize["requestedItems"] = o.RequestedItems
 	if !isNil(o.ClientMetadata) {

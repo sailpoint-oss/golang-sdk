@@ -8,12 +8,12 @@ Name | Type | Description | Notes
 **Name** | **string** | Human-readable name of the source | 
 **Description** | Pointer to **string** | Human-readable description of the source | [optional] 
 **Owner** | [**SourceOwner**](SourceOwner.md) |  | 
-**Cluster** | Pointer to [**SourceCluster**](SourceCluster.md) |  | [optional] 
-**AccountCorrelationConfig** | Pointer to [**SourceAccountCorrelationConfig**](SourceAccountCorrelationConfig.md) |  | [optional] 
-**AccountCorrelationRule** | Pointer to [**SourceAccountCorrelationRule**](SourceAccountCorrelationRule.md) |  | [optional] 
-**ManagerCorrelationMapping** | Pointer to [**ManagerCorrelationMapping**](ManagerCorrelationMapping.md) |  | [optional] 
-**ManagerCorrelationRule** | Pointer to [**SourceManagerCorrelationRule**](SourceManagerCorrelationRule.md) |  | [optional] 
-**BeforeProvisioningRule** | Pointer to [**SourceBeforeProvisioningRule**](SourceBeforeProvisioningRule.md) |  | [optional] 
+**Cluster** | Pointer to [**NullableSourceCluster**](SourceCluster.md) |  | [optional] 
+**AccountCorrelationConfig** | Pointer to [**NullableSourceAccountCorrelationConfig**](SourceAccountCorrelationConfig.md) |  | [optional] 
+**AccountCorrelationRule** | Pointer to [**NullableSourceAccountCorrelationRule**](SourceAccountCorrelationRule.md) |  | [optional] 
+**ManagerCorrelationMapping** | Pointer to [**SourceManagerCorrelationMapping**](SourceManagerCorrelationMapping.md) |  | [optional] 
+**ManagerCorrelationRule** | Pointer to [**NullableSourceManagerCorrelationRule**](SourceManagerCorrelationRule.md) |  | [optional] 
+**BeforeProvisioningRule** | Pointer to [**NullableSourceBeforeProvisioningRule**](SourceBeforeProvisioningRule.md) |  | [optional] 
 **Schemas** | Pointer to [**[]SourceSchemasInner**](SourceSchemasInner.md) | List of references to Schema objects | [optional] 
 **PasswordPolicies** | Pointer to [**[]SourcePasswordPoliciesInner**](SourcePasswordPoliciesInner.md) | List of references to the associated PasswordPolicy objects. | [optional] 
 **Features** | Pointer to [**[]SourceFeature**](SourceFeature.md) | Optional features that can be supported by a source. | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **ConnectorAttributes** | Pointer to **map[string]interface{}** | Connector specific configuration; will differ from type to type. | [optional] 
 **DeleteThreshold** | Pointer to **int32** | Number from 0 to 100 that specifies when to skip the delete phase. | [optional] 
 **Authoritative** | Pointer to **bool** | When true indicates the source is referenced by an IdentityProfile. | [optional] [default to false]
-**ManagementWorkgroup** | Pointer to [**SourceManagementWorkgroup**](SourceManagementWorkgroup.md) |  | [optional] 
+**ManagementWorkgroup** | Pointer to [**NullableSourceManagementWorkgroup**](SourceManagementWorkgroup.md) |  | [optional] 
 **Healthy** | Pointer to **bool** | When true indicates a healthy source | [optional] [default to false]
 **Status** | Pointer to **string** | A status identifier, giving specific information on why a source is healthy or not | [optional] 
 **Since** | Pointer to **string** | Timestamp showing when a source health check was last performed | [optional] 
@@ -168,6 +168,16 @@ SetCluster sets Cluster field to given value.
 
 HasCluster returns a boolean if a field has been set.
 
+### SetClusterNil
+
+`func (o *Source) SetClusterNil(b bool)`
+
+ SetClusterNil sets the value for Cluster to be an explicit nil
+
+### UnsetCluster
+`func (o *Source) UnsetCluster()`
+
+UnsetCluster ensures that no value is present for Cluster, not even an explicit nil
 ### GetAccountCorrelationConfig
 
 `func (o *Source) GetAccountCorrelationConfig() SourceAccountCorrelationConfig`
@@ -193,6 +203,16 @@ SetAccountCorrelationConfig sets AccountCorrelationConfig field to given value.
 
 HasAccountCorrelationConfig returns a boolean if a field has been set.
 
+### SetAccountCorrelationConfigNil
+
+`func (o *Source) SetAccountCorrelationConfigNil(b bool)`
+
+ SetAccountCorrelationConfigNil sets the value for AccountCorrelationConfig to be an explicit nil
+
+### UnsetAccountCorrelationConfig
+`func (o *Source) UnsetAccountCorrelationConfig()`
+
+UnsetAccountCorrelationConfig ensures that no value is present for AccountCorrelationConfig, not even an explicit nil
 ### GetAccountCorrelationRule
 
 `func (o *Source) GetAccountCorrelationRule() SourceAccountCorrelationRule`
@@ -218,22 +238,32 @@ SetAccountCorrelationRule sets AccountCorrelationRule field to given value.
 
 HasAccountCorrelationRule returns a boolean if a field has been set.
 
+### SetAccountCorrelationRuleNil
+
+`func (o *Source) SetAccountCorrelationRuleNil(b bool)`
+
+ SetAccountCorrelationRuleNil sets the value for AccountCorrelationRule to be an explicit nil
+
+### UnsetAccountCorrelationRule
+`func (o *Source) UnsetAccountCorrelationRule()`
+
+UnsetAccountCorrelationRule ensures that no value is present for AccountCorrelationRule, not even an explicit nil
 ### GetManagerCorrelationMapping
 
-`func (o *Source) GetManagerCorrelationMapping() ManagerCorrelationMapping`
+`func (o *Source) GetManagerCorrelationMapping() SourceManagerCorrelationMapping`
 
 GetManagerCorrelationMapping returns the ManagerCorrelationMapping field if non-nil, zero value otherwise.
 
 ### GetManagerCorrelationMappingOk
 
-`func (o *Source) GetManagerCorrelationMappingOk() (*ManagerCorrelationMapping, bool)`
+`func (o *Source) GetManagerCorrelationMappingOk() (*SourceManagerCorrelationMapping, bool)`
 
 GetManagerCorrelationMappingOk returns a tuple with the ManagerCorrelationMapping field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetManagerCorrelationMapping
 
-`func (o *Source) SetManagerCorrelationMapping(v ManagerCorrelationMapping)`
+`func (o *Source) SetManagerCorrelationMapping(v SourceManagerCorrelationMapping)`
 
 SetManagerCorrelationMapping sets ManagerCorrelationMapping field to given value.
 
@@ -268,6 +298,16 @@ SetManagerCorrelationRule sets ManagerCorrelationRule field to given value.
 
 HasManagerCorrelationRule returns a boolean if a field has been set.
 
+### SetManagerCorrelationRuleNil
+
+`func (o *Source) SetManagerCorrelationRuleNil(b bool)`
+
+ SetManagerCorrelationRuleNil sets the value for ManagerCorrelationRule to be an explicit nil
+
+### UnsetManagerCorrelationRule
+`func (o *Source) UnsetManagerCorrelationRule()`
+
+UnsetManagerCorrelationRule ensures that no value is present for ManagerCorrelationRule, not even an explicit nil
 ### GetBeforeProvisioningRule
 
 `func (o *Source) GetBeforeProvisioningRule() SourceBeforeProvisioningRule`
@@ -293,6 +333,16 @@ SetBeforeProvisioningRule sets BeforeProvisioningRule field to given value.
 
 HasBeforeProvisioningRule returns a boolean if a field has been set.
 
+### SetBeforeProvisioningRuleNil
+
+`func (o *Source) SetBeforeProvisioningRuleNil(b bool)`
+
+ SetBeforeProvisioningRuleNil sets the value for BeforeProvisioningRule to be an explicit nil
+
+### UnsetBeforeProvisioningRule
+`func (o *Source) UnsetBeforeProvisioningRule()`
+
+UnsetBeforeProvisioningRule ensures that no value is present for BeforeProvisioningRule, not even an explicit nil
 ### GetSchemas
 
 `func (o *Source) GetSchemas() []SourceSchemasInner`
@@ -343,6 +393,16 @@ SetPasswordPolicies sets PasswordPolicies field to given value.
 
 HasPasswordPolicies returns a boolean if a field has been set.
 
+### SetPasswordPoliciesNil
+
+`func (o *Source) SetPasswordPoliciesNil(b bool)`
+
+ SetPasswordPoliciesNil sets the value for PasswordPolicies to be an explicit nil
+
+### UnsetPasswordPolicies
+`func (o *Source) UnsetPasswordPolicies()`
+
+UnsetPasswordPolicies ensures that no value is present for PasswordPolicies, not even an explicit nil
 ### GetFeatures
 
 `func (o *Source) GetFeatures() []SourceFeature`
@@ -538,6 +598,16 @@ SetManagementWorkgroup sets ManagementWorkgroup field to given value.
 
 HasManagementWorkgroup returns a boolean if a field has been set.
 
+### SetManagementWorkgroupNil
+
+`func (o *Source) SetManagementWorkgroupNil(b bool)`
+
+ SetManagementWorkgroupNil sets the value for ManagementWorkgroup to be an explicit nil
+
+### UnsetManagementWorkgroup
+`func (o *Source) UnsetManagementWorkgroup()`
+
+UnsetManagementWorkgroup ensures that no value is present for ManagementWorkgroup, not even an explicit nil
 ### GetHealthy
 
 `func (o *Source) GetHealthy() bool`
