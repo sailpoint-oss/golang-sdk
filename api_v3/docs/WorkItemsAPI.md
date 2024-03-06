@@ -21,9 +21,40 @@ Method | HTTP request | Description
 
 ## Approve an Approval Item
 
-> WorkItems ApproveApprovalItem(ctx, id, approvalItemId).Execute()
 
 This API approves an Approval Item. Either an admin, or the owning/current user must make this request.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the work item
+Path   | approvalItemId | **string** | True  | The ID of the approval item.
+
+
+### Return type
+
+[**WorkItems**](WorkItems.md)
+
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A work items details object. | WorkItems
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
+
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 ### Example
 
@@ -34,12 +65,18 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
-    approvalItemId := "1211bcaa32112bcef6122adb21cef1ac" // string | The ID of the approval item.
+
+//ApproveApprovalItem
+
+    id := "ef38f94347e94562b5bb8424a56397d8"
+    approvalItemId := "1211bcaa32112bcef6122adb21cef1ac"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -53,32 +90,35 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the work item | 
-**approvalItemId** | **string** | The ID of the approval item. | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiApproveApprovalItemRequest struct via the builder pattern
+## Bulk approve Approval Items
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
 
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the work item
 
 
 ### Return type
 
 [**WorkItems**](WorkItems.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A work items details object. | WorkItems
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -89,13 +129,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Bulk approve Approval Items
-
-> WorkItems ApproveApprovalItemsInBulk(ctx, id).Execute()
-
-This API bulk approves Approval Items. Either an admin, or the owning/current user must make this request.
-
 ### Example
 
 ```go
@@ -105,11 +138,17 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
+
+//ApproveApprovalItemsInBulk
+
+    id := "ef38f94347e94562b5bb8424a56397d8"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -123,30 +162,35 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the work item | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiApproveApprovalItemsInBulkRequest struct via the builder pattern
+## Complete a Work Item
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+This API completes a work item. Either an admin, or the owning/current user must make this request.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the work item
 
 
 ### Return type
 
 [**WorkItems**](WorkItems.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A WorkItems object | WorkItems
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -157,13 +201,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Complete a Work Item
-
-> WorkItems CompleteWorkItem(ctx, id).Execute()
-
-This API completes a work item. Either an admin, or the owning/current user must make this request.
-
 ### Example
 
 ```go
@@ -173,11 +210,17 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
+
+//CompleteWorkItem
+
+    id := "ef38f94347e94562b5bb8424a56397d8"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -191,30 +234,37 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the work item | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCompleteWorkItemRequest struct via the builder pattern
+## Completed Work Items
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | ownerId | **string** |   (optional) | The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request.
+  Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
 
 
 ### Return type
 
-[**WorkItems**](WorkItems.md)
+[**[]WorkItems**](WorkItems.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of completed work items. | []WorkItems
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -225,13 +275,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Completed Work Items
-
-> []WorkItems GetCompletedWorkItems(ctx).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
-
-This gets a collection of completed work items belonging to either the specified user(admin required), or the current user.
-
 ### Example
 
 ```go
@@ -241,18 +284,24 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    ownerId := "1211bcaa32112bcef6122adb21cef1ac" // string | The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request. (optional)
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
+
+//GetCompletedWorkItems
+
+    //ownerId := "1211bcaa32112bcef6122adb21cef1ac"
+    //limit := int32(250)
+    //offset := int32(0)
+    //count := true
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.WorkItemsAPI.GetCompletedWorkItems(context.Background()).OwnerId(ownerId).Limit(limit).Offset(offset).Count(count).Execute()
+    resp, r, err := apiClient.V3.WorkItemsAPI.GetCompletedWorkItems(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCompletedWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -262,29 +311,34 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCompletedWorkItemsRequest struct via the builder pattern
+## Count Completed Work Items
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ownerId** | **string** | The id of the owner of the work item list being requested.  Either an admin, or the owning/current user must make this request. | 
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
+This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | ownerId | **string** |   (optional) | ID of the work item owner.
+
 
 ### Return type
 
-[**[]WorkItems**](WorkItems.md)
+[**WorkItemsCount**](WorkItemsCount.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of work items | WorkItemsCount
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -295,13 +349,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Count Completed Work Items
-
-> WorkItemsCount GetCountCompletedWorkItems(ctx).OwnerId(ownerId).Execute()
-
-This gets a count of completed work items belonging to either the specified user(admin required), or the current user.
-
 ### Example
 
 ```go
@@ -311,15 +358,21 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    ownerId := "1211bcaa32112bcef6122adb21cef1ac" // string | ID of the work item owner. (optional)
+
+//GetCountCompletedWorkItems
+
+    //ownerId := "1211bcaa32112bcef6122adb21cef1ac"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.V3.WorkItemsAPI.GetCountCompletedWorkItems(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountCompletedWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -329,26 +382,34 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCountCompletedWorkItemsRequest struct via the builder pattern
+## Count Work Items
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ownerId** | **string** | ID of the work item owner. | 
+This gets a count of work items belonging to either the specified user(admin required), or the current user.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | ownerId | **string** |   (optional) | ID of the work item owner.
+
 
 ### Return type
 
 [**WorkItemsCount**](WorkItemsCount.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of work items | WorkItemsCount
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -359,13 +420,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Count Work Items
-
-> WorkItemsCount GetCountWorkItems(ctx).OwnerId(ownerId).Execute()
-
-This gets a count of work items belonging to either the specified user(admin required), or the current user.
-
 ### Example
 
 ```go
@@ -375,15 +429,21 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    ownerId := "ef38f94347e94562b5bb8424a56397d8" // string | ID of the work item owner. (optional)
+
+//GetCountWorkItems
+
+    //ownerId := "ef38f94347e94562b5bb8424a56397d8"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.WorkItemsAPI.GetCountWorkItems(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.V3.WorkItemsAPI.GetCountWorkItems(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetCountWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -393,26 +453,34 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetCountWorkItemsRequest struct via the builder pattern
+## Get a Work Item
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ownerId** | **string** | ID of the work item owner. | 
+This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | ID of the work item.
+
 
 ### Return type
 
-[**WorkItemsCount**](WorkItemsCount.md)
+[**WorkItems**](WorkItems.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The work item with the given ID. | WorkItems
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -423,13 +491,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Get a Work Item
-
-> WorkItems GetWorkItem(ctx, id).Execute()
-
-This gets the details of a Work Item belonging to either the specified user(admin required), or the current user.
-
 ### Example
 
 ```go
@@ -439,11 +500,17 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "2c9180835d191a86015d28455b4a2329" // string | ID of the work item.
+
+//GetWorkItem
+
+    id := "2c9180835d191a86015d28455b4a2329"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -457,30 +524,34 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the work item. | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetWorkItemRequest struct via the builder pattern
+## Work Items Summary
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+This gets a summary of work items belonging to either the specified user(admin required), or the current user.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | ownerId | **string** |   (optional) | ID of the work item owner.
 
 
 ### Return type
 
-[**WorkItems**](WorkItems.md)
+[**WorkItemsSummary**](WorkItemsSummary.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of work items | WorkItemsSummary
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -491,13 +562,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Work Items Summary
-
-> WorkItemsSummary GetWorkItemsSummary(ctx).OwnerId(ownerId).Execute()
-
-This gets a summary of work items belonging to either the specified user(admin required), or the current user.
-
 ### Example
 
 ```go
@@ -507,15 +571,21 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    ownerId := "1211bcaa32112bcef6122adb21cef1ac" // string | ID of the work item owner. (optional)
+
+//GetWorkItemsSummary
+
+    //ownerId := "1211bcaa32112bcef6122adb21cef1ac"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.WorkItemsAPI.GetWorkItemsSummary(context.Background()).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.V3.WorkItemsAPI.GetWorkItemsSummary(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.GetWorkItemsSummary``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -525,26 +595,37 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetWorkItemsSummaryRequest struct via the builder pattern
+## List Work Items
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ownerId** | **string** | ID of the work item owner. | 
+This gets a collection of work items belonging to either the specified user(admin required), or the current user.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | ownerId | **string** |   (optional) | ID of the work item owner.
+
 
 ### Return type
 
-[**WorkItemsSummary**](WorkItemsSummary.md)
+[**[]WorkItems**](WorkItems.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | List of work items | []WorkItems
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -555,13 +636,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## List Work Items
-
-> []WorkItems ListWorkItems(ctx).Limit(limit).Offset(offset).Count(count).OwnerId(ownerId).Execute()
-
-This gets a collection of work items belonging to either the specified user(admin required), or the current user.
-
 ### Example
 
 ```go
@@ -571,18 +645,24 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    ownerId := "1211bcaa32112bcef6122adb21cef1ac" // string | ID of the work item owner. (optional)
+
+//ListWorkItems
+
+    //limit := int32(250)
+    //offset := int32(0)
+    //count := true
+    //ownerId := "1211bcaa32112bcef6122adb21cef1ac"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.WorkItemsAPI.ListWorkItems(context.Background()).Limit(limit).Offset(offset).Count(count).OwnerId(ownerId).Execute()
+    resp, r, err := apiClient.V3.WorkItemsAPI.ListWorkItems(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `WorkItemsAPI.ListWorkItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -592,29 +672,36 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListWorkItemsRequest struct via the builder pattern
+## Reject an Approval Item
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **ownerId** | **string** | ID of the work item owner. | 
+This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the work item
+Path   | approvalItemId | **string** | True  | The ID of the approval item.
+
 
 ### Return type
 
-[**[]WorkItems**](WorkItems.md)
+[**WorkItems**](WorkItems.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A work items details object. | WorkItems
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -625,13 +712,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Reject an Approval Item
-
-> WorkItems RejectApprovalItem(ctx, id, approvalItemId).Execute()
-
-This API rejects an Approval Item. Either an admin, or the owning/current user must make this request.
-
 ### Example
 
 ```go
@@ -641,12 +721,18 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
-    approvalItemId := "1211bcaa32112bcef6122adb21cef1ac" // string | The ID of the approval item.
+
+//RejectApprovalItem
+
+    id := "ef38f94347e94562b5bb8424a56397d8"
+    approvalItemId := "1211bcaa32112bcef6122adb21cef1ac"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -660,32 +746,35 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the work item | 
-**approvalItemId** | **string** | The ID of the approval item. | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRejectApprovalItemRequest struct via the builder pattern
+## Bulk reject Approval Items
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
 
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the work item
 
 
 ### Return type
 
 [**WorkItems**](WorkItems.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A work items details object. | WorkItems
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -696,13 +785,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Bulk reject Approval Items
-
-> WorkItems RejectApprovalItemsInBulk(ctx, id).Execute()
-
-This API bulk rejects Approval Items. Either an admin, or the owning/current user must make this request.
-
 ### Example
 
 ```go
@@ -712,11 +794,17 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
+
+//RejectApprovalItemsInBulk
+
+    id := "ef38f94347e94562b5bb8424a56397d8"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -730,46 +818,45 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the work item | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRejectApprovalItemsInBulkRequest struct via the builder pattern
+## Submit Account Selections
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+This API submits account selections. Either an admin, or the owning/current user must make this request.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | The ID of the work item
+ Body  | requestBody | **map[string]interface{}** | True  | Account Selection Data map, keyed on fieldName
 
 
 ### Return type
 
 [**WorkItems**](WorkItems.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A work items details object. | WorkItems
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-
-## Submit Account Selections
-
-> WorkItems SubmitAccountSelection(ctx, id).RequestBody(requestBody).Execute()
-
-This API submits account selections. Either an admin, or the owning/current user must make this request.
 
 ### Example
 
@@ -780,12 +867,18 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "ef38f94347e94562b5bb8424a56397d8" // string | The ID of the work item
-    requestBody := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} | Account Selection Data map, keyed on fieldName
+
+//SubmitAccountSelection
+
+    id := "ef38f94347e94562b5bb8424a56397d8"
+    requestBody := map[string]interface{}{"key": interface{}(123)}
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -799,38 +892,5 @@ func main() {
 }
 ```
 
-### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The ID of the work item | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSubmitAccountSelectionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **requestBody** | **map[string]interface{}** | Account Selection Data map, keyed on fieldName | 
-
-### Return type
-
-[**WorkItems**](WorkItems.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 

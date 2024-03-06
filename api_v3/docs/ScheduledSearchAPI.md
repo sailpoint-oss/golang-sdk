@@ -15,10 +15,40 @@ Method | HTTP request | Description
 
 ## Create a new scheduled search
 
-> ScheduledSearch CreateScheduledSearch(ctx).CreateScheduledSearchRequest(createScheduledSearchRequest).Execute()
 
 Creates a new scheduled search.
 
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+ Body  | createScheduledSearchRequest | [**CreateScheduledSearchRequest**](CreateScheduledSearchRequest.md) | True  | The scheduled search to persist.
+
+
+### Return type
+
+[**ScheduledSearch**](ScheduledSearch.md)
+
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+201 | The persisted scheduled search. | ScheduledSearch
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
+
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 ### Example
 
@@ -29,11 +59,17 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    createScheduledSearchRequest := *sailpoint.NewCreateScheduledSearchRequest("554f1511-f0a1-4744-ab14-599514d3e57c", *sailpoint.NewSchedule1(sailpoint.ScheduleType("DAILY"), *sailpoint.NewSchedule1Hours(sailpoint.SelectorType("LIST"), []string{"Values_example"})), []sailpoint.SearchScheduleRecipientsInner{*sailpoint.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}) // CreateScheduledSearchRequest | The scheduled search to persist.
+
+//CreateScheduledSearch
+
+    createScheduledSearchRequest := *sailpoint.NewCreateScheduledSearchRequest("554f1511-f0a1-4744-ab14-599514d3e57c", *sailpoint.NewSchedule1(sailpoint.ScheduleType("DAILY"), *sailpoint.NewSchedule1Hours(sailpoint.SelectorType("LIST"), []string{"Values_example"})), []sailpoint.SearchScheduleRecipientsInner{*sailpoint.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")})
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -47,43 +83,45 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateScheduledSearchRequest struct via the builder pattern
+## Delete a Scheduled Search
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createScheduledSearchRequest** | [**CreateScheduledSearchRequest**](CreateScheduledSearchRequest.md) | The scheduled search to persist. | 
+Deletes the specified scheduled search.
+
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | ID of the requested document.
+
 
 ### Return type
 
-[**ScheduledSearch**](ScheduledSearch.md)
+ (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No Content - Indicates the request was successful but there is no content to be returned in the response. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-
-## Delete a Scheduled Search
-
-> DeleteScheduledSearch(ctx, id).Execute()
-
-Deletes the specified scheduled search.
-
 
 ### Example
 
@@ -94,11 +132,17 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
+
+//DeleteScheduledSearch
+
+    id := "2c91808568c529c60168cca6f90c1313"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -110,30 +154,35 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the requested document. | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteScheduledSearchRequest struct via the builder pattern
+## Get a Scheduled Search
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+Returns the specified scheduled search.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | ID of the requested document.
 
 
 ### Return type
 
- (empty response body)
+[**ScheduledSearch**](ScheduledSearch.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The requested scheduled search. | ScheduledSearch
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -144,13 +193,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Get a Scheduled Search
-
-> ScheduledSearch GetScheduledSearch(ctx, id).Execute()
-
-Returns the specified scheduled search.
-
 ### Example
 
 ```go
@@ -160,11 +202,17 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
+
+//GetScheduledSearch
+
+    id := "2c91808568c529c60168cca6f90c1313"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -178,30 +226,39 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the requested document. | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetScheduledSearchRequest struct via the builder pattern
+## List scheduled searches
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+Returns a list of scheduled searches.
+
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+  Query | offset | **int32** |   (optional) (default to 0) | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | limit | **int32** |   (optional) (default to 250) | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | count | **bool** |   (optional) (default to false) | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information.
+  Query | filters | **string** |   (optional) | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **savedSearchId**: *eq*
 
 
 ### Return type
 
-[**ScheduledSearch**](ScheduledSearch.md)
+[**[]ScheduledSearch**](ScheduledSearch.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The list of requested scheduled searches. | []ScheduledSearch
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -212,14 +269,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## List scheduled searches
-
-> []ScheduledSearch ListScheduledSearch(ctx).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
-
-Returns a list of scheduled searches.
-
-
 ### Example
 
 ```go
@@ -229,18 +278,24 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    offset := int32(0) // int32 | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 0)
-    limit := int32(250) // int32 | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to 250)
-    count := true // bool | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count=true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. (optional) (default to false)
-    filters := "savedSearchId eq "6cc0945d-9eeb-4948-9033-72d066e1153e"" // string | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **savedSearchId**: *eq* (optional)
+
+//ListScheduledSearch
+
+    //offset := int32(0)
+    //limit := int32(250)
+    //count := true
+    //filters := "savedSearchId eq "6cc0945d-9eeb-4948-9033-72d066e1153e""
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.ScheduledSearchAPI.ListScheduledSearch(context.Background()).Offset(offset).Limit(limit).Count(count).Filters(filters).Execute()
+    resp, r, err := apiClient.V3.ScheduledSearchAPI.ListScheduledSearch(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ScheduledSearchAPI.ListScheduledSearch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -250,46 +305,43 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListScheduledSearchRequest struct via the builder pattern
+## Unsubscribe a recipient from Scheduled Search
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offset** | **int32** | Offset into the full result set. Usually specified with *limit* to paginate through the results. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 0]
- **limit** | **int32** | Max number of results to return. See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to 250]
- **count** | **bool** | If *true* it will populate the *X-Total-Count* response header with the number of results that would be returned if *limit* and *offset* were ignored.  Since requesting a total count can have a performance impact, it is recommended not to send **count&#x3D;true** if that value will not be used.  See [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters) for more information. | [default to false]
- **filters** | **string** | Filter results using the standard syntax described in [V3 API Standard Collection Parameters](https://developer.sailpoint.com/idn/api/standard-collection-parameters#filtering-results)  Filtering is supported for the following fields and operators:  **owner.id**: *eq*  **savedSearchId**: *eq* | 
+Unsubscribes a recipient from the specified scheduled search.
+
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | ID of the requested document.
+ Body  | typedReference | [**TypedReference**](TypedReference.md) | True  | The recipient to be removed from the scheduled search. 
+
 
 ### Return type
 
-[**[]ScheduledSearch**](ScheduledSearch.md)
+ (empty response body)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No Content - Indicates the request was successful but there is no content to be returned in the response. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-
-## Unsubscribe a recipient from Scheduled Search
-
-> UnsubscribeScheduledSearch(ctx, id).TypedReference(typedReference).Execute()
-
-Unsubscribes a recipient from the specified scheduled search.
-
 
 ### Example
 
@@ -300,12 +352,18 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
-    typedReference := *sailpoint.NewTypedReference(sailpoint.DtoType("ACCOUNT_CORRELATION_CONFIG"), "2c91808568c529c60168cca6f90c1313") // TypedReference | The recipient to be removed from the scheduled search. 
+
+//UnsubscribeScheduledSearch
+
+    id := "2c91808568c529c60168cca6f90c1313"
+    typedReference := *sailpoint.NewTypedReference(sailpoint.DtoType("ACCOUNT_CORRELATION_CONFIG"), "2c91808568c529c60168cca6f90c1313")
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -317,31 +375,37 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the requested document. | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUnsubscribeScheduledSearchRequest struct via the builder pattern
+## Update an existing Scheduled Search
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+Updates an existing scheduled search.
 
- **typedReference** | [**TypedReference**](TypedReference.md) | The recipient to be removed from the scheduled search.  | 
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | id | **string** | True  | ID of the requested document.
+ Body  | scheduledSearch | [**ScheduledSearch**](ScheduledSearch.md) | True  | The scheduled search to persist.
+
 
 ### Return type
 
- (empty response body)
+[**ScheduledSearch**](ScheduledSearch.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | The persisted scheduled search. | ScheduledSearch
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -352,14 +416,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Update an existing Scheduled Search
-
-> ScheduledSearch UpdateScheduledSearch(ctx, id).ScheduledSearch(scheduledSearch).Execute()
-
-Updates an existing scheduled search.
-
-
 ### Example
 
 ```go
@@ -369,12 +425,18 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    id := "2c91808568c529c60168cca6f90c1313" // string | ID of the requested document.
-    scheduledSearch := *sailpoint.NewScheduledSearch("554f1511-f0a1-4744-ab14-599514d3e57c", *sailpoint.NewSchedule1(sailpoint.ScheduleType("DAILY"), *sailpoint.NewSchedule1Hours(sailpoint.SelectorType("LIST"), []string{"Values_example"})), []sailpoint.SearchScheduleRecipientsInner{*sailpoint.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}, "0de46054-fe90-434a-b84e-c6b3359d0c64", *sailpoint.NewScheduledSearchAllOfOwner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67"), "2c9180867624cbd7017642d8c8c81f67") // ScheduledSearch | The scheduled search to persist.
+
+//UpdateScheduledSearch
+
+    id := "2c91808568c529c60168cca6f90c1313"
+    scheduledSearch := *sailpoint.NewScheduledSearch("554f1511-f0a1-4744-ab14-599514d3e57c", *sailpoint.NewSchedule1(sailpoint.ScheduleType("DAILY"), *sailpoint.NewSchedule1Hours(sailpoint.SelectorType("LIST"), []string{"Values_example"})), []sailpoint.SearchScheduleRecipientsInner{*sailpoint.NewSearchScheduleRecipientsInner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67")}, "0de46054-fe90-434a-b84e-c6b3359d0c64", *sailpoint.NewScheduledSearchAllOfOwner("IDENTITY", "2c9180867624cbd7017642d8c8c81f67"), "2c9180867624cbd7017642d8c8c81f67")
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -388,38 +450,5 @@ func main() {
 }
 ```
 
-### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | ID of the requested document. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateScheduledSearchRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **scheduledSearch** | [**ScheduledSearch**](ScheduledSearch.md) | The scheduled search to persist. | 
-
-### Return type
-
-[**ScheduledSearch**](ScheduledSearch.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 

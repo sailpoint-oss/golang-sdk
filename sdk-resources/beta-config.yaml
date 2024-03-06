@@ -9,3 +9,4 @@ gitRepoId: golang-sdk/v2
 gitUserId: sailpoint-oss
 goImportAlias: sailpoint
 subModuleName: Beta
+moduleImportPath: github.com/sailpoint-oss/golang-sdk/v2/api_beta

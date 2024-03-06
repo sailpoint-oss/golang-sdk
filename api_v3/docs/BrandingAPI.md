@@ -14,72 +14,37 @@ Method | HTTP request | Description
 
 ## Create a branding item
 
-> BrandingItem CreateBrandingItem(ctx).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
 
 This API endpoint creates a branding item.
 A token with API, ORG_ADMIN authority is required to call this API.
 
-### Example
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+   | name | **string** | True  | name of branding item
+   | productName | **string** | True  | product name
+   | actionButtonColor | **string** |   (optional) | hex value of color for action button
+   | activeLinkColor | **string** |   (optional) | hex value of color for link
+   | navigationColor | **string** |   (optional) | hex value of color for navigation bar
+   | emailFromAddress | **string** |   (optional) | email from address
+   | loginInformationalMessage | **string** |   (optional) | login information message
+   | fileStandard | ***os.File** |   (optional) | png file with logo
 
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
-)
-
-func main() {
-    name := "name_example" // string | name of branding item
-    productName := "productName_example" // string | product name
-    actionButtonColor := "actionButtonColor_example" // string | hex value of color for action button (optional)
-    activeLinkColor := "activeLinkColor_example" // string | hex value of color for link (optional)
-    navigationColor := "navigationColor_example" // string | hex value of color for navigation bar (optional)
-    emailFromAddress := "emailFromAddress_example" // string | email from address (optional)
-    loginInformationalMessage := "loginInformationalMessage_example" // string | login information message (optional)
-    fileStandard := os.NewFile(1234, "some_file") // *os.File | png file with logo (optional)
-
-    configuration := sailpoint.NewDefaultConfiguration()
-    apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.BrandingAPI.CreateBrandingItem(context.Background()).Name(name).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.CreateBrandingItem``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateBrandingItem`: BrandingItem
-    fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.CreateBrandingItem`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateBrandingItemRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string** | name of branding item | 
- **productName** | **string** | product name | 
- **actionButtonColor** | **string** | hex value of color for action button | 
- **activeLinkColor** | **string** | hex value of color for link | 
- **navigationColor** | **string** | hex value of color for navigation bar | 
- **emailFromAddress** | **string** | email from address | 
- **loginInformationalMessage** | **string** | login information message | 
- **fileStandard** | ***os.File** | png file with logo | 
 
 ### Return type
 
 [**BrandingItem**](BrandingItem.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+201 | Branding item created | BrandingItem
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -90,13 +55,85 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
+    sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+
+//CreateBrandingItem
+
+    name := "name_example"
+    productName := "productName_example"
+    //actionButtonColor := "actionButtonColor_example"
+    //activeLinkColor := "activeLinkColor_example"
+    //navigationColor := "navigationColor_example"
+    //emailFromAddress := "emailFromAddress_example"
+    //loginInformationalMessage := "loginInformationalMessage_example"
+    //fileStandard := os.NewFile(1234, "some_file")
+
+
+
+    configuration := sailpoint.NewDefaultConfiguration()
+    apiClient := sailpoint.NewAPIClient(configuration)
+    resp, r, err := apiClient.V3.BrandingAPI.CreateBrandingItem(context.Background()).Name(name).ProductName(productName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.CreateBrandingItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateBrandingItem`: BrandingItem
+    fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.CreateBrandingItem`: %v\n", resp)
+}
+```
+
+
+
 
 ## Delete a branding item
 
-> DeleteBranding(ctx, name).Execute()
 
 This API endpoint delete information for an existing branding item by name.
 A token with API, ORG_ADMIN authority is required to call this API.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | name | **string** | True  | The name of the branding item to be deleted
+
+
+### Return type
+
+ (empty response body)
+
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+204 | No content - indicates the request was successful but there is no content to be returned in the response. | 
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
+
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 ### Example
 
@@ -107,11 +144,17 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    name := "default" // string | The name of the branding item to be deleted
+
+//DeleteBranding
+
+    name := "default"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -123,30 +166,36 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | The name of the branding item to be deleted | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteBrandingRequest struct via the builder pattern
+## Get a branding item
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+This API endpoint retrieves information for an existing branding item by name.
+A token with API, ORG_ADMIN authority is required to call this API.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | name | **string** | True  | The name of the branding item to be retrieved
 
 
 ### Return type
 
- (empty response body)
+[**BrandingItem**](BrandingItem.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A branding item object | BrandingItem
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -157,14 +206,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## Get a branding item
-
-> BrandingItem GetBranding(ctx, name).Execute()
-
-This API endpoint retrieves information for an existing branding item by name.
-A token with API, ORG_ADMIN authority is required to call this API.
-
 ### Example
 
 ```go
@@ -174,11 +215,17 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    name := "default" // string | The name of the branding item to be retrieved
+
+//GetBranding
+
+    name := "default"
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -192,30 +239,35 @@ func main() {
 }
 ```
 
-### Path Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | The name of the branding item to be retrieved | 
 
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetBrandingRequest struct via the builder pattern
+## List of branding items
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+This API endpoint returns a list of branding items.
+
+A token with API, ORG_ADMIN authority is required to call this API.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
 
 
 ### Return type
 
-[**BrandingItem**](BrandingItem.md)
+[**[]BrandingItem**](BrandingItem.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | A list of branding items. | []BrandingItem
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
@@ -226,15 +278,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
 
-
-## List of branding items
-
-> []BrandingItem GetBrandingList(ctx).Execute()
-
-This API endpoint returns a list of branding items.
-
-A token with API, ORG_ADMIN authority is required to call this API.
-
 ### Example
 
 ```go
@@ -244,10 +287,16 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
+
+//GetBrandingList
+
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
@@ -261,39 +310,53 @@ func main() {
 }
 ```
 
-### Path Parameters
 
-This endpoint does not need any parameter.
 
-### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetBrandingListRequest struct via the builder pattern
+## Update a branding item
+
+
+This API endpoint updates information for an existing branding item.
+A token with API, ORG_ADMIN authority is required to call this API.
+
+### Parameters 
+Param Type | Name | Data Type | Required  | Description
+------------- | ------------- | ------------- | ------------- | ------------- 
+Path   | name | **string** | True  | The name of the branding item to be retrieved
+   | name2 | **string** | True  | name of branding item
+   | productName | **string** | True  | product name
+   | actionButtonColor | **string** |   (optional) | hex value of color for action button
+   | activeLinkColor | **string** |   (optional) | hex value of color for link
+   | navigationColor | **string** |   (optional) | hex value of color for navigation bar
+   | emailFromAddress | **string** |   (optional) | email from address
+   | loginInformationalMessage | **string** |   (optional) | login information message
+   | fileStandard | ***os.File** |   (optional) | png file with logo
 
 
 ### Return type
 
-[**[]BrandingItem**](BrandingItem.md)
+[**BrandingItem**](BrandingItem.md)
 
-### Authorization
+### Responses
+Code | Description  | Data Type
+------------- | ------------- | -------------
+200 | Branding item updated | BrandingItem
+400 | Client Error - Returned if the request body is invalid. | ErrorResponseDto
+401 | Unauthorized - Returned if there is no authorization header, or if the JWT token is expired. | ListAccessProfiles401Response
+403 | Forbidden - Returned if the user you are running as, doesn&#39;t have access to this end-point. | ErrorResponseDto
+404 | Not Found - returned if the request URL refers to a resource or object that does not exist | ErrorResponseDto
+429 | Too Many Requests - Returned in response to too many requests in a given period of time - rate limited. The Retry-After header in the response includes how long to wait before trying again. | ListAccessProfiles429Response
+500 | Internal Server Error - Returned if there is an unexpected error. | ErrorResponseDto
 
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
 [[Back to README]](../README.md)
-
-
-## Update a branding item
-
-> BrandingItem SetBrandingItem(ctx, name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
-
-This API endpoint updates information for an existing branding item.
-A token with API, ORG_ADMIN authority is required to call this API.
 
 ### Example
 
@@ -304,23 +367,29 @@ import (
     "context"
     "fmt"
     "os"
+    v3 "github.com/sailpoint-oss/golang-sdk/v2/api_v3"
     sailpoint "github.com/sailpoint-oss/golang-sdk/v2"
 )
 
 func main() {
-    name := "default" // string | The name of the branding item to be retrieved
-    name2 := "name_example" // string | name of branding item
-    productName := "productName_example" // string | product name
-    actionButtonColor := "actionButtonColor_example" // string | hex value of color for action button (optional)
-    activeLinkColor := "activeLinkColor_example" // string | hex value of color for link (optional)
-    navigationColor := "navigationColor_example" // string | hex value of color for navigation bar (optional)
-    emailFromAddress := "emailFromAddress_example" // string | email from address (optional)
-    loginInformationalMessage := "loginInformationalMessage_example" // string | login information message (optional)
-    fileStandard := os.NewFile(1234, "some_file") // *os.File | png file with logo (optional)
+
+//SetBrandingItem
+
+    name := "default"
+    name2 := "name_example"
+    productName := "productName_example"
+    //actionButtonColor := "actionButtonColor_example"
+    //activeLinkColor := "activeLinkColor_example"
+    //navigationColor := "navigationColor_example"
+    //emailFromAddress := "emailFromAddress_example"
+    //loginInformationalMessage := "loginInformationalMessage_example"
+    //fileStandard := os.NewFile(1234, "some_file")
+
+
 
     configuration := sailpoint.NewDefaultConfiguration()
     apiClient := sailpoint.NewAPIClient(configuration)
-    resp, r, err := apiClient.V3.BrandingAPI.SetBrandingItem(context.Background(), name).Name2(name2).ProductName(productName).ActionButtonColor(actionButtonColor).ActiveLinkColor(activeLinkColor).NavigationColor(navigationColor).EmailFromAddress(emailFromAddress).LoginInformationalMessage(loginInformationalMessage).FileStandard(fileStandard).Execute()
+    resp, r, err := apiClient.V3.BrandingAPI.SetBrandingItem(context.Background(), name).Name2(name2).ProductName(productName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.SetBrandingItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -330,45 +399,5 @@ func main() {
 }
 ```
 
-### Path Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | The name of the branding item to be retrieved | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetBrandingItemRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **name2** | **string** | name of branding item | 
- **productName** | **string** | product name | 
- **actionButtonColor** | **string** | hex value of color for action button | 
- **activeLinkColor** | **string** | hex value of color for link | 
- **navigationColor** | **string** | hex value of color for navigation bar | 
- **emailFromAddress** | **string** | email from address | 
- **loginInformationalMessage** | **string** | login information message | 
- **fileStandard** | ***os.File** | png file with logo | 
-
-### Return type
-
-[**BrandingItem**](BrandingItem.md)
-
-### Authorization
-
-[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 

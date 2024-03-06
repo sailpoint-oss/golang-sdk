@@ -35251,9 +35251,9 @@ components:
       description: Access Profile
       example:
         owner:
-          name: support
-          id: 2c9180a46faadee4016fb4e018c20639
           type: IDENTITY
+          id: 2c9180a46faadee4016fb4e018c20639
+          name: support
         entitlements:
         - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
           id: 2c91809773dee32014e13e122092014e
@@ -35348,7 +35348,7 @@ components:
           example: true
           type: boolean
         owner:
-          $ref: '#/components/schemas/OwnerReference'
+          $ref: '#/components/schemas/AccessProfile_owner'
         source:
           $ref: '#/components/schemas/AccessProfileSourceRef'
         entitlements:
@@ -40015,6 +40015,13 @@ components:
           name: support
           id: 2c9180a46faadee4016fb4e018c20639
           type: IDENTITY
+        entitlements:
+        - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
+          id: 2c91809773dee32014e13e122092014e
+          type: ENTITLEMENT
+        - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
+          id: 2c91809773dee32014e13e122092014e
+          type: ENTITLEMENT
         created: 2021-03-01T22:32:58.104Z
         description: Urna amet cursus pellentesque nisl orci maximus lorem nisl euismod
           fusce morbi placerat adipiscing maecenas nisi tristique et metus et lacus
@@ -40106,13 +40113,6 @@ components:
         - name: Access Profile 2567
           id: ff808081751e6e129f1518161919ecca
           type: ACCESS_PROFILE
-        Entitlements:
-        - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
-          id: 2c91809773dee32014e13e122092014e
-          type: ENTITLEMENT
-        - name: "CN=entitlement.490efde5,OU=OrgCo,OU=ServiceDept,DC=HQAD,DC=local"
-          id: 2c91809773dee32014e13e122092014e
-          type: ENTITLEMENT
         name: Role 2567
         modified: 2021-03-02T20:22:28.104Z
         id: 2c918086749d78830174a1a40e121518
@@ -40155,7 +40155,7 @@ components:
             $ref: '#/components/schemas/AccessProfileRef'
           nullable: true
           type: array
-        Entitlements:
+        entitlements:
           items:
             $ref: '#/components/schemas/EntitlementRef'
           nullable: true
@@ -42496,33 +42496,6 @@ components:
         sections:
           $ref: '#/components/schemas/SectionDetails'
       type: object
-    OwnerReference:
-      description: The owner of this object.
-      example:
-        name: support
-        id: 2c9180a46faadee4016fb4e018c20639
-        type: IDENTITY
-      nullable: false
-      properties:
-        type:
-          description: "Owner type. This field must be either left null or set to\
-            \ 'IDENTITY' on input, otherwise a 400 Bad Request error will result."
-          enum:
-          - IDENTITY
-          example: IDENTITY
-          type: string
-        id:
-          description: Identity id
-          example: 2c9180a46faadee4016fb4e018c20639
-          type: string
-        name:
-          description: "Human-readable display name of the owner. It may be left null\
-            \ or omitted in a POST or PATCH. If set, it must match the current value\
-            \ of the owner's display name, otherwise a 400 Bad Request error will\
-            \ result."
-          example: support
-          type: string
-      type: object
     AccessProfileSourceRef:
       example:
         name: ODS-AD-SOURCE
@@ -44448,6 +44421,33 @@ components:
         name:
           description: The attribute display name
           example: Country
+          type: string
+      type: object
+    OwnerReference:
+      description: The owner of this object.
+      example:
+        name: support
+        id: 2c9180a46faadee4016fb4e018c20639
+        type: IDENTITY
+      nullable: false
+      properties:
+        type:
+          description: "Owner type. This field must be either left null or set to\
+            \ 'IDENTITY' on input, otherwise a 400 Bad Request error will result."
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Identity id
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: "Human-readable display name of the owner. It may be left null\
+            \ or omitted in a POST or PATCH. If set, it must match the current value\
+            \ of the owner's display name, otherwise a 400 Bad Request error will\
+            \ result."
+          example: support
           type: string
       type: object
     AccessProfileRef:
@@ -47798,6 +47798,33 @@ components:
         name:
           description: Human-readable display name of the management workgroup
           example: My Management Workgroup
+          type: string
+      type: object
+    AccessProfile_owner:
+      description: The owner of this object.
+      example:
+        type: IDENTITY
+        id: 2c9180a46faadee4016fb4e018c20639
+        name: support
+      nullable: false
+      properties:
+        type:
+          description: "Owner type. This field must be either left null or set to\
+            \ 'IDENTITY' on input, otherwise a 400 Bad Request error will result."
+          enum:
+          - IDENTITY
+          example: IDENTITY
+          type: string
+        id:
+          description: Identity id
+          example: 2c9180a46faadee4016fb4e018c20639
+          type: string
+        name:
+          description: "Human-readable display name of the owner. It may be left null\
+            \ or omitted in a POST or PATCH. If set, it must match the current value\
+            \ of the owner's display name, otherwise a 400 Bad Request error will\
+            \ result."
+          example: support
           type: string
       type: object
     array_inner:
