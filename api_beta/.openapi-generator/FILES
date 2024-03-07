@@ -441,9 +441,9 @@ docs/IdentitySyncJob.md
 docs/IdentitySyncPayload.md
 docs/IdentityWithNewAccess.md
 docs/IdentityWithNewAccessAccessRefsInner.md
+docs/ImportEntitlementCsvRequest.md
 docs/ImportFormDefinitions202Response.md
 docs/ImportFormDefinitions202ResponseErrorsInner.md
-docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportObject.md
 docs/ImportOptions.md
 docs/ImportSpConfigRequest.md
@@ -471,6 +471,7 @@ docs/ListFormInstancesByTenantResponse.md
 docs/ListIdentityAccessItems200ResponseInner.md
 docs/ListPredefinedSelectOptionsResponse.md
 docs/ListWorkgroupMembers200ResponseInner.md
+docs/LoadEntitlementTask.md
 docs/LocaleOrigin.md
 docs/LocalizedMessage.md
 docs/LookupStep.md
@@ -1224,9 +1225,9 @@ model_identity_sync_job.go
 model_identity_sync_payload.go
 model_identity_with_new_access.go
 model_identity_with_new_access_access_refs_inner.go
+model_import_entitlement_csv_request.go
 model_import_form_definitions_202_response.go
 model_import_form_definitions_202_response_errors_inner.go
-model_import_non_employee_records_in_bulk_request.go
 model_import_object.go
 model_import_options.go
 model_import_sp_config_request.go
@@ -1253,6 +1254,7 @@ model_list_form_instances_by_tenant_response.go
 model_list_identity_access_items_200_response_inner.go
 model_list_predefined_select_options_response.go
 model_list_workgroup_members_200_response_inner.go
+model_load_entitlement_task.go
 model_locale_origin.go
 model_localized_message.go
 model_lookup_step.go

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetEntitlement**](EntitlementsAPI.md#GetEntitlement) | **Get** /entitlements/{id} | Get an entitlement
 [**GetEntitlementRequestConfig**](EntitlementsAPI.md#GetEntitlementRequestConfig) | **Get** /entitlements/{id}/entitlement-request-config | Get Entitlement Request Config
+[**ImportEntitlementCsv**](EntitlementsAPI.md#ImportEntitlementCsv) | **Post** /entitlements/aggregate/sources/{id} | Import Entitlement CSV File
 [**ListEntitlementChildren**](EntitlementsAPI.md#ListEntitlementChildren) | **Get** /entitlements/{id}/children | List of entitlements children
 [**ListEntitlementParents**](EntitlementsAPI.md#ListEntitlementParents) | **Get** /entitlements/{id}/parents | List of entitlements parents
 [**ListEntitlements**](EntitlementsAPI.md#ListEntitlements) | **Get** /entitlements | Gets a list of entitlements.
@@ -148,6 +149,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ImportEntitlementCsv
+
+> LoadEntitlementTask ImportEntitlementCsv(ctx, id).Data(data).Execute()
+
+Import Entitlement CSV File
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    id := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id
+    data := os.NewFile(1234, "some_file") // *os.File | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EntitlementsAPI.ImportEntitlementCsv(context.Background(), id).Data(data).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ImportEntitlementCsv``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportEntitlementCsv`: LoadEntitlementTask
+    fmt.Fprintf(os.Stdout, "Response from `EntitlementsAPI.ImportEntitlementCsv`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Source Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiImportEntitlementCsvRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **data** | ***os.File** |  | 
+
+### Return type
+
+[**LoadEntitlementTask**](LoadEntitlementTask.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

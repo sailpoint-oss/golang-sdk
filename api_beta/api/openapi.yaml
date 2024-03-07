@@ -12402,6 +12402,93 @@ paths:
       summary: Replace Entitlement Request Config
       tags:
       - Entitlements
+  /entitlements/aggregate/sources/{id}:
+    post:
+      description: 'Uploads a comma separated file (CSV) to a delimited file source
+        and starts an entitlement aggregation on the source.   '
+      operationId: importEntitlementCsv
+      parameters:
+      - description: Source Id
+        example: ef38f94347e94562b5bb8424a56397d8
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/importEntitlementCsv_request'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoadEntitlementTask'
+          description: Load Entitlements Task
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:entitlements:manage
+      summary: Import Entitlement CSV File
+      tags:
+      - Entitlements
   /generate-password-reset-token/digit:
     post:
       description: This API is used to generate a digit token for password management.
@@ -18855,7 +18942,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/importNonEmployeeRecordsInBulk_request'
+              $ref: '#/components/schemas/importEntitlementCsv_request'
       responses:
         "202":
           content:
@@ -56001,6 +56088,66 @@ components:
         accessRequestConfig:
           $ref: '#/components/schemas/EntitlementAccessRequestConfig'
       type: object
+    LoadEntitlementTask:
+      example:
+        uniqueName: Cloud Group Aggregation
+        created: 2020-07-11T21:23:15Z
+        description: Aggregate from the specified application
+        returns:
+        - displayLabel: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_APPLICATIONS
+          attributeName: applications
+        - displayLabel: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_TOTAL
+          attributeName: total
+        - displayLabel: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_CREATED
+          attributeName: groupsCreated
+        - displayLabel: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_UPDATED
+          attributeName: groupsUpdated
+        - displayLabel: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_DELETED
+          attributeName: groupsDeleted
+        id: ef38f94347e94562b5bb8424a56397d8
+        type: QUARTZ
+        launcher: John Doe
+      properties:
+        id:
+          description: System-generated unique ID of the task this taskStatus represents
+          example: ef38f94347e94562b5bb8424a56397d8
+          type: string
+        type:
+          description: Type of task this task represents
+          example: QUARTZ
+          type: string
+        uniqueName:
+          description: The name of the task
+          example: Cloud Group Aggregation
+          type: string
+        description:
+          description: The description of the task
+          example: Aggregate from the specified application
+          type: string
+        launcher:
+          description: The user who initiated the task
+          example: John Doe
+          type: string
+        created:
+          description: The creation date of the task
+          example: 2020-07-11T21:23:15Z
+          format: date-time
+          type: string
+        returns:
+          description: Return values from the task
+          example:
+          - displayLabel: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_APPLICATIONS
+            attributeName: applications
+          - displayLabel: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_TOTAL
+            attributeName: total
+          - displayLabel: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_CREATED
+            attributeName: groupsCreated
+          - displayLabel: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_UPDATED
+            attributeName: groupsUpdated
+          - displayLabel: TASK_OUT_ACCOUNT_GROUP_AGGREGATION_DELETED
+            attributeName: groupsDeleted
+          type: object
+      type: object
     PasswordDigitTokenReset:
       example:
         durationMinutes: 5
@@ -73522,6 +73669,14 @@ components:
       oneOf:
       - $ref: '#/components/schemas/slimcampaign'
       - $ref: '#/components/schemas/Campaign'
+    importEntitlementCsv_request:
+      properties:
+        data:
+          format: binary
+          type: string
+      required:
+      - data
+      type: object
     listIdentityAccessItems_200_response_inner:
       oneOf:
       - $ref: '#/components/schemas/AccessItemAccessProfileResponse'
@@ -73547,14 +73702,6 @@ components:
           type: array
       required:
       - ids
-      type: object
-    importNonEmployeeRecordsInBulk_request:
-      properties:
-        data:
-          format: binary
-          type: string
-      required:
-      - data
       type: object
     putPasswordDictionary_request:
       properties:

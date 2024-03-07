@@ -1,4 +1,4 @@
-# ImportNonEmployeeRecordsInBulkRequest
+# ImportEntitlementCsvRequest
 
 ## Properties
 
@@ -8,39 +8,39 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewImportNonEmployeeRecordsInBulkRequest
+### NewImportEntitlementCsvRequest
 
-`func NewImportNonEmployeeRecordsInBulkRequest(data *os.File, ) *ImportNonEmployeeRecordsInBulkRequest`
+`func NewImportEntitlementCsvRequest(data *os.File, ) *ImportEntitlementCsvRequest`
 
-NewImportNonEmployeeRecordsInBulkRequest instantiates a new ImportNonEmployeeRecordsInBulkRequest object
+NewImportEntitlementCsvRequest instantiates a new ImportEntitlementCsvRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewImportNonEmployeeRecordsInBulkRequestWithDefaults
+### NewImportEntitlementCsvRequestWithDefaults
 
-`func NewImportNonEmployeeRecordsInBulkRequestWithDefaults() *ImportNonEmployeeRecordsInBulkRequest`
+`func NewImportEntitlementCsvRequestWithDefaults() *ImportEntitlementCsvRequest`
 
-NewImportNonEmployeeRecordsInBulkRequestWithDefaults instantiates a new ImportNonEmployeeRecordsInBulkRequest object
+NewImportEntitlementCsvRequestWithDefaults instantiates a new ImportEntitlementCsvRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ImportNonEmployeeRecordsInBulkRequest) GetData() *os.File`
+`func (o *ImportEntitlementCsvRequest) GetData() *os.File`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ImportNonEmployeeRecordsInBulkRequest) GetDataOk() (**os.File, bool)`
+`func (o *ImportEntitlementCsvRequest) GetDataOk() (**os.File, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ImportNonEmployeeRecordsInBulkRequest) SetData(v *os.File)`
+`func (o *ImportEntitlementCsvRequest) SetData(v *os.File)`
 
 SetData sets Data field to given value.
 

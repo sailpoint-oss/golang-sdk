@@ -16,37 +16,37 @@ import (
 	"fmt"
 )
 
-// checks if the ImportNonEmployeeRecordsInBulkRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ImportNonEmployeeRecordsInBulkRequest{}
+// checks if the ImportEntitlementCsvRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ImportEntitlementCsvRequest{}
 
-// ImportNonEmployeeRecordsInBulkRequest struct for ImportNonEmployeeRecordsInBulkRequest
-type ImportNonEmployeeRecordsInBulkRequest struct {
+// ImportEntitlementCsvRequest struct for ImportEntitlementCsvRequest
+type ImportEntitlementCsvRequest struct {
 	Data *os.File `json:"data"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _ImportNonEmployeeRecordsInBulkRequest ImportNonEmployeeRecordsInBulkRequest
+type _ImportEntitlementCsvRequest ImportEntitlementCsvRequest
 
-// NewImportNonEmployeeRecordsInBulkRequest instantiates a new ImportNonEmployeeRecordsInBulkRequest object
+// NewImportEntitlementCsvRequest instantiates a new ImportEntitlementCsvRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportNonEmployeeRecordsInBulkRequest(data *os.File) *ImportNonEmployeeRecordsInBulkRequest {
-	this := ImportNonEmployeeRecordsInBulkRequest{}
+func NewImportEntitlementCsvRequest(data *os.File) *ImportEntitlementCsvRequest {
+	this := ImportEntitlementCsvRequest{}
 	this.Data = data
 	return &this
 }
 
-// NewImportNonEmployeeRecordsInBulkRequestWithDefaults instantiates a new ImportNonEmployeeRecordsInBulkRequest object
+// NewImportEntitlementCsvRequestWithDefaults instantiates a new ImportEntitlementCsvRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewImportNonEmployeeRecordsInBulkRequestWithDefaults() *ImportNonEmployeeRecordsInBulkRequest {
-	this := ImportNonEmployeeRecordsInBulkRequest{}
+func NewImportEntitlementCsvRequestWithDefaults() *ImportEntitlementCsvRequest {
+	this := ImportEntitlementCsvRequest{}
 	return &this
 }
 
 // GetData returns the Data field value
-func (o *ImportNonEmployeeRecordsInBulkRequest) GetData() *os.File {
+func (o *ImportEntitlementCsvRequest) GetData() *os.File {
 	if o == nil {
 		var ret *os.File
 		return ret
@@ -57,7 +57,7 @@ func (o *ImportNonEmployeeRecordsInBulkRequest) GetData() *os.File {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *ImportNonEmployeeRecordsInBulkRequest) GetDataOk() (**os.File, bool) {
+func (o *ImportEntitlementCsvRequest) GetDataOk() (**os.File, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,11 +65,11 @@ func (o *ImportNonEmployeeRecordsInBulkRequest) GetDataOk() (**os.File, bool) {
 }
 
 // SetData sets field value
-func (o *ImportNonEmployeeRecordsInBulkRequest) SetData(v *os.File) {
+func (o *ImportEntitlementCsvRequest) SetData(v *os.File) {
 	o.Data = v
 }
 
-func (o ImportNonEmployeeRecordsInBulkRequest) MarshalJSON() ([]byte, error) {
+func (o ImportEntitlementCsvRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -77,7 +77,7 @@ func (o ImportNonEmployeeRecordsInBulkRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ImportNonEmployeeRecordsInBulkRequest) ToMap() (map[string]interface{}, error) {
+func (o ImportEntitlementCsvRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["data"] = o.Data
 
@@ -88,7 +88,7 @@ func (o ImportNonEmployeeRecordsInBulkRequest) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-func (o *ImportNonEmployeeRecordsInBulkRequest) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ImportEntitlementCsvRequest) UnmarshalJSON(bytes []byte) (err error) {
     // This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -110,10 +110,10 @@ func (o *ImportNonEmployeeRecordsInBulkRequest) UnmarshalJSON(bytes []byte) (err
 		}
 	}
 
-	varImportNonEmployeeRecordsInBulkRequest := _ImportNonEmployeeRecordsInBulkRequest{}
+	varImportEntitlementCsvRequest := _ImportEntitlementCsvRequest{}
 
-	if err = json.Unmarshal(bytes, &varImportNonEmployeeRecordsInBulkRequest); err == nil {
-	*o = ImportNonEmployeeRecordsInBulkRequest(varImportNonEmployeeRecordsInBulkRequest)
+	if err = json.Unmarshal(bytes, &varImportEntitlementCsvRequest); err == nil {
+	*o = ImportEntitlementCsvRequest(varImportEntitlementCsvRequest)
 }
 
 	additionalProperties := make(map[string]interface{})
@@ -126,38 +126,38 @@ func (o *ImportNonEmployeeRecordsInBulkRequest) UnmarshalJSON(bytes []byte) (err
 	return err
 }
 
-type NullableImportNonEmployeeRecordsInBulkRequest struct {
-	value *ImportNonEmployeeRecordsInBulkRequest
+type NullableImportEntitlementCsvRequest struct {
+	value *ImportEntitlementCsvRequest
 	isSet bool
 }
 
-func (v NullableImportNonEmployeeRecordsInBulkRequest) Get() *ImportNonEmployeeRecordsInBulkRequest {
+func (v NullableImportEntitlementCsvRequest) Get() *ImportEntitlementCsvRequest {
 	return v.value
 }
 
-func (v *NullableImportNonEmployeeRecordsInBulkRequest) Set(val *ImportNonEmployeeRecordsInBulkRequest) {
+func (v *NullableImportEntitlementCsvRequest) Set(val *ImportEntitlementCsvRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableImportNonEmployeeRecordsInBulkRequest) IsSet() bool {
+func (v NullableImportEntitlementCsvRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableImportNonEmployeeRecordsInBulkRequest) Unset() {
+func (v *NullableImportEntitlementCsvRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableImportNonEmployeeRecordsInBulkRequest(val *ImportNonEmployeeRecordsInBulkRequest) *NullableImportNonEmployeeRecordsInBulkRequest {
-	return &NullableImportNonEmployeeRecordsInBulkRequest{value: val, isSet: true}
+func NewNullableImportEntitlementCsvRequest(val *ImportEntitlementCsvRequest) *NullableImportEntitlementCsvRequest {
+	return &NullableImportEntitlementCsvRequest{value: val, isSet: true}
 }
 
-func (v NullableImportNonEmployeeRecordsInBulkRequest) MarshalJSON() ([]byte, error) {
+func (v NullableImportEntitlementCsvRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableImportNonEmployeeRecordsInBulkRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableImportEntitlementCsvRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
