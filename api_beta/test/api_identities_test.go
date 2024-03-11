@@ -63,6 +63,35 @@ func Test_api_beta_IdentitiesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test IdentitiesAPIService GetRoleAssignment", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityId string
+		var assignmentId string
+
+		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.GetRoleAssignment(context.Background(), identityId, assignmentId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test IdentitiesAPIService GetRoleAssignments", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var identityId string
+
+		resp, httpRes, err := apiClient.API_BETA.IdentitiesAPI.GetRoleAssignments(context.Background(), identityId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test IdentitiesAPIService ListIdentities", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

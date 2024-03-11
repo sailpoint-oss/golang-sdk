@@ -250,6 +250,8 @@ Class | Method | HTTP request | Description
 *IdentitiesAPI* | [**DeleteIdentity**](docs/IdentitiesAPI.md#deleteidentity) | **Delete** /identities/{id} | Deletes an identity.
 *IdentitiesAPI* | [**GetIdentity**](docs/IdentitiesAPI.md#getidentity) | **Get** /identities/{id} | Identity Details
 *IdentitiesAPI* | [**GetIdentityOwnershipDetails**](docs/IdentitiesAPI.md#getidentityownershipdetails) | **Get** /identities/{identityId}/ownership | Get ownership details
+*IdentitiesAPI* | [**GetRoleAssignment**](docs/IdentitiesAPI.md#getroleassignment) | **Get** /identities/{identityId}/role-assignments/{assignmentId} | Get role assignment
+*IdentitiesAPI* | [**GetRoleAssignments**](docs/IdentitiesAPI.md#getroleassignments) | **Get** /identities/{identityId}/role-assignments | Get role assignments
 *IdentitiesAPI* | [**ListIdentities**](docs/IdentitiesAPI.md#listidentities) | **Get** /identities | List Identities
 *IdentitiesAPI* | [**StartIdentityProcessing**](docs/IdentitiesAPI.md#startidentityprocessing) | **Post** /identities/process | Process a list of identityIds
 *IdentitiesAPI* | [**SynchronizeAttributesForIdentity**](docs/IdentitiesAPI.md#synchronizeattributesforidentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
@@ -584,6 +586,7 @@ Class | Method | HTTP request | Description
  - [AccessRecommendationMessage](docs/AccessRecommendationMessage.md)
  - [AccessRequest](docs/AccessRequest.md)
  - [AccessRequestConfig](docs/AccessRequestConfig.md)
+ - [AccessRequestContext](docs/AccessRequestContext.md)
  - [AccessRequestDynamicApprover](docs/AccessRequestDynamicApprover.md)
  - [AccessRequestDynamicApprover1](docs/AccessRequestDynamicApprover1.md)
  - [AccessRequestDynamicApproverRequestedItemsInner](docs/AccessRequestDynamicApproverRequestedItemsInner.md)
@@ -630,6 +633,7 @@ Class | Method | HTTP request | Description
  - [AccountCorrelatedAccount](docs/AccountCorrelatedAccount.md)
  - [AccountCorrelatedIdentity](docs/AccountCorrelatedIdentity.md)
  - [AccountCorrelatedSource](docs/AccountCorrelatedSource.md)
+ - [AccountInfoDto](docs/AccountInfoDto.md)
  - [AccountRequestInfo](docs/AccountRequestInfo.md)
  - [AccountStatusChanged](docs/AccountStatusChanged.md)
  - [AccountStatusChangedAccount](docs/AccountStatusChangedAccount.md)
@@ -754,6 +758,8 @@ Class | Method | HTTP request | Description
  - [ConnectorRuleUpdateRequest](docs/ConnectorRuleUpdateRequest.md)
  - [ConnectorRuleValidationResponse](docs/ConnectorRuleValidationResponse.md)
  - [ConnectorRuleValidationResponseDetailsInner](docs/ConnectorRuleValidationResponseDetailsInner.md)
+ - [ContextAttributeDto](docs/ContextAttributeDto.md)
+ - [ContextAttributeDtoValue](docs/ContextAttributeDtoValue.md)
  - [CorrelatedGovernanceEvent](docs/CorrelatedGovernanceEvent.md)
  - [CreateDomainDkim405Response](docs/CreateDomainDkim405Response.md)
  - [CreateFormDefinitionFileRequestRequest](docs/CreateFormDefinitionFileRequestRequest.md)
@@ -840,6 +846,7 @@ Class | Method | HTTP request | Description
  - [GetHistoricalIdentityEvents200ResponseInner](docs/GetHistoricalIdentityEvents200ResponseInner.md)
  - [GetOAuthClientResponse](docs/GetOAuthClientResponse.md)
  - [GetPersonalAccessTokenResponse](docs/GetPersonalAccessTokenResponse.md)
+ - [GetRoleAssignments200ResponseInner](docs/GetRoleAssignments200ResponseInner.md)
  - [GrantType](docs/GrantType.md)
  - [HttpAuthenticationType](docs/HttpAuthenticationType.md)
  - [HttpConfig](docs/HttpConfig.md)
@@ -1082,6 +1089,8 @@ Class | Method | HTTP request | Description
  - [Revocability](docs/Revocability.md)
  - [RevocabilityForRole](docs/RevocabilityForRole.md)
  - [Role](docs/Role.md)
+ - [RoleAssignmentDto](docs/RoleAssignmentDto.md)
+ - [RoleAssignmentRef](docs/RoleAssignmentRef.md)
  - [RoleAssignmentSourceType](docs/RoleAssignmentSourceType.md)
  - [RoleBulkDeleteRequest](docs/RoleBulkDeleteRequest.md)
  - [RoleCriteriaKey](docs/RoleCriteriaKey.md)
@@ -1099,6 +1108,7 @@ Class | Method | HTTP request | Description
  - [RoleInsightsResponse](docs/RoleInsightsResponse.md)
  - [RoleInsightsRole](docs/RoleInsightsRole.md)
  - [RoleInsightsSummary](docs/RoleInsightsSummary.md)
+ - [RoleMatchDto](docs/RoleMatchDto.md)
  - [RoleMembershipIdentity](docs/RoleMembershipIdentity.md)
  - [RoleMembershipSelector](docs/RoleMembershipSelector.md)
  - [RoleMembershipSelectorType](docs/RoleMembershipSelectorType.md)
@@ -1127,6 +1137,7 @@ Class | Method | HTTP request | Description
  - [RoleMiningSessionScopingMethod](docs/RoleMiningSessionScopingMethod.md)
  - [RoleMiningSessionState](docs/RoleMiningSessionState.md)
  - [RoleMiningSessionStatus](docs/RoleMiningSessionStatus.md)
+ - [RoleTargetDto](docs/RoleTargetDto.md)
  - [SavedSearchComplete](docs/SavedSearchComplete.md)
  - [SavedSearchCompleteSearchResults](docs/SavedSearchCompleteSearchResults.md)
  - [SavedSearchCompleteSearchResultsAccount](docs/SavedSearchCompleteSearchResultsAccount.md)

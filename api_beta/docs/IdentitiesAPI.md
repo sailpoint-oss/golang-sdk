@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**DeleteIdentity**](IdentitiesAPI.md#DeleteIdentity) | **Delete** /identities/{id} | Deletes an identity.
 [**GetIdentity**](IdentitiesAPI.md#GetIdentity) | **Get** /identities/{id} | Identity Details
 [**GetIdentityOwnershipDetails**](IdentitiesAPI.md#GetIdentityOwnershipDetails) | **Get** /identities/{identityId}/ownership | Get ownership details
+[**GetRoleAssignment**](IdentitiesAPI.md#GetRoleAssignment) | **Get** /identities/{identityId}/role-assignments/{assignmentId} | Get role assignment
+[**GetRoleAssignments**](IdentitiesAPI.md#GetRoleAssignments) | **Get** /identities/{identityId}/role-assignments | Get role assignments
 [**ListIdentities**](IdentitiesAPI.md#ListIdentities) | **Get** /identities | List Identities
 [**StartIdentityProcessing**](IdentitiesAPI.md#StartIdentityProcessing) | **Post** /identities/process | Process a list of identityIds
 [**SynchronizeAttributesForIdentity**](IdentitiesAPI.md#SynchronizeAttributesForIdentity) | **Post** /identities/{identityId}/synchronize-attributes | Attribute synchronization for single identity.
@@ -206,6 +208,151 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**IdentityOwnershipAssociationDetails**](IdentityOwnershipAssociationDetails.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRoleAssignment
+
+> RoleAssignmentDto GetRoleAssignment(ctx, identityId, assignmentId).Execute()
+
+Get role assignment
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    identityId := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Id
+    assignmentId := "1cbb0705b38c4226b1334eadd8874086" // string | Assignment Id
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentitiesAPI.GetRoleAssignment(context.Background(), identityId, assignmentId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetRoleAssignment``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetRoleAssignment`: RoleAssignmentDto
+    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.GetRoleAssignment`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**identityId** | **string** | Identity Id | 
+**assignmentId** | **string** | Assignment Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRoleAssignmentRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**RoleAssignmentDto**](RoleAssignmentDto.md)
+
+### Authorization
+
+[UserContextAuth](../README.md#UserContextAuth), [UserContextAuth](../README.md#UserContextAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRoleAssignments
+
+> []GetRoleAssignments200ResponseInner GetRoleAssignments(ctx, identityId).RoleId(roleId).RoleName(roleName).Execute()
+
+Get role assignments
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/sailpoint-oss/golang-sdk/v2"
+)
+
+func main() {
+    identityId := "ef38f94347e94562b5bb8424a56397d8" // string | Identity Id to get the role assignments for
+    roleId := "e7697a1e96d04db1ac7b0f4544915d2c" // string | Role Id to filter the role assignments with (optional)
+    roleName := "Engineer" // string | Role name to filter the role assignments with (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.IdentitiesAPI.GetRoleAssignments(context.Background(), identityId).RoleId(roleId).RoleName(roleName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `IdentitiesAPI.GetRoleAssignments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetRoleAssignments`: []GetRoleAssignments200ResponseInner
+    fmt.Fprintf(os.Stdout, "Response from `IdentitiesAPI.GetRoleAssignments`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**identityId** | **string** | Identity Id to get the role assignments for | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRoleAssignmentsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **roleId** | **string** | Role Id to filter the role assignments with | 
+ **roleName** | **string** | Role name to filter the role assignments with | 
+
+### Return type
+
+[**[]GetRoleAssignments200ResponseInner**](GetRoleAssignments200ResponseInner.md)
 
 ### Authorization
 

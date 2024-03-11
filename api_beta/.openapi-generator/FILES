@@ -102,6 +102,7 @@ docs/AccessRecommendationMessage.md
 docs/AccessRequest.md
 docs/AccessRequestApprovalsAPI.md
 docs/AccessRequestConfig.md
+docs/AccessRequestContext.md
 docs/AccessRequestDynamicApprover.md
 docs/AccessRequestDynamicApprover1.md
 docs/AccessRequestDynamicApproverRequestedItemsInner.md
@@ -152,6 +153,7 @@ docs/AccountCorrelated.md
 docs/AccountCorrelatedAccount.md
 docs/AccountCorrelatedIdentity.md
 docs/AccountCorrelatedSource.md
+docs/AccountInfoDto.md
 docs/AccountRequestInfo.md
 docs/AccountStatusChanged.md
 docs/AccountStatusChangedAccount.md
@@ -283,6 +285,8 @@ docs/ConnectorRuleUpdateRequest.md
 docs/ConnectorRuleValidationResponse.md
 docs/ConnectorRuleValidationResponseDetailsInner.md
 docs/ConnectorsAPI.md
+docs/ContextAttributeDto.md
+docs/ContextAttributeDtoValue.md
 docs/CorrelatedGovernanceEvent.md
 docs/CreateDomainDkim405Response.md
 docs/CreateFormDefinitionFileRequestRequest.md
@@ -372,6 +376,7 @@ docs/GetActiveCampaigns200ResponseInner.md
 docs/GetHistoricalIdentityEvents200ResponseInner.md
 docs/GetOAuthClientResponse.md
 docs/GetPersonalAccessTokenResponse.md
+docs/GetRoleAssignments200ResponseInner.md
 docs/GovernanceGroupsAPI.md
 docs/GrantType.md
 docs/HttpAuthenticationType.md
@@ -642,6 +647,8 @@ docs/Reviewer.md
 docs/Revocability.md
 docs/RevocabilityForRole.md
 docs/Role.md
+docs/RoleAssignmentDto.md
+docs/RoleAssignmentRef.md
 docs/RoleAssignmentSourceType.md
 docs/RoleBulkDeleteRequest.md
 docs/RoleCriteriaKey.md
@@ -660,6 +667,7 @@ docs/RoleInsightsInsight.md
 docs/RoleInsightsResponse.md
 docs/RoleInsightsRole.md
 docs/RoleInsightsSummary.md
+docs/RoleMatchDto.md
 docs/RoleMembershipIdentity.md
 docs/RoleMembershipSelector.md
 docs/RoleMembershipSelectorType.md
@@ -688,6 +696,7 @@ docs/RoleMiningSessionScope.md
 docs/RoleMiningSessionScopingMethod.md
 docs/RoleMiningSessionState.md
 docs/RoleMiningSessionStatus.md
+docs/RoleTargetDto.md
 docs/RolesAPI.md
 docs/SODPolicyAPI.md
 docs/SODViolationsAPI.md
@@ -913,6 +922,7 @@ model_access_profile_usage_used_by_inner.go
 model_access_recommendation_message.go
 model_access_request.go
 model_access_request_config.go
+model_access_request_context.go
 model_access_request_dynamic_approver.go
 model_access_request_dynamic_approver_1.go
 model_access_request_dynamic_approver_requested_items_inner.go
@@ -959,6 +969,7 @@ model_account_correlated.go
 model_account_correlated_account.go
 model_account_correlated_identity.go
 model_account_correlated_source.go
+model_account_info_dto.go
 model_account_request_info.go
 model_account_status_changed.go
 model_account_status_changed_account.go
@@ -1083,6 +1094,8 @@ model_connector_rule_response.go
 model_connector_rule_update_request.go
 model_connector_rule_validation_response.go
 model_connector_rule_validation_response_details_inner.go
+model_context_attribute_dto.go
+model_context_attribute_dto_value.go
 model_correlated_governance_event.go
 model_create_domain_dkim_405_response.go
 model_create_form_definition_file_request_request.go
@@ -1169,6 +1182,7 @@ model_get_active_campaigns_200_response_inner.go
 model_get_historical_identity_events_200_response_inner.go
 model_get_o_auth_client_response.go
 model_get_personal_access_token_response.go
+model_get_role_assignments_200_response_inner.go
 model_grant_type.go
 model_http_authentication_type.go
 model_http_config.go
@@ -1411,6 +1425,8 @@ model_reviewer.go
 model_revocability.go
 model_revocability_for_role.go
 model_role.go
+model_role_assignment_dto.go
+model_role_assignment_ref.go
 model_role_assignment_source_type.go
 model_role_bulk_delete_request.go
 model_role_criteria_key.go
@@ -1428,6 +1444,7 @@ model_role_insights_insight.go
 model_role_insights_response.go
 model_role_insights_role.go
 model_role_insights_summary.go
+model_role_match_dto.go
 model_role_membership_identity.go
 model_role_membership_selector.go
 model_role_membership_selector_type.go
@@ -1456,6 +1473,7 @@ model_role_mining_session_scope.go
 model_role_mining_session_scoping_method.go
 model_role_mining_session_state.go
 model_role_mining_session_status.go
+model_role_target_dto.go
 model_saved_search_complete.go
 model_saved_search_complete_search_results.go
 model_saved_search_complete_search_results_account.go
