@@ -18942,7 +18942,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/importEntitlementCsv_request'
+              $ref: '#/components/schemas/importNonEmployeeRecordsInBulk_request'
       responses:
         "202":
           content:
@@ -73674,8 +73674,6 @@ components:
         data:
           format: binary
           type: string
-      required:
-      - data
       type: object
     listIdentityAccessItems_200_response_inner:
       oneOf:
@@ -73702,6 +73700,14 @@ components:
           type: array
       required:
       - ids
+      type: object
+    importNonEmployeeRecordsInBulk_request:
+      properties:
+        data:
+          format: binary
+          type: string
+      required:
+      - data
       type: object
     putPasswordDictionary_request:
       properties:

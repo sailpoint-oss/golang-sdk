@@ -178,7 +178,7 @@ import (
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id
-    data := os.NewFile(1234, "some_file") // *os.File | 
+    data := os.NewFile(1234, "some_file") // *os.File |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -444,6 +444,7 @@ docs/IdentityWithNewAccessAccessRefsInner.md
 docs/ImportEntitlementCsvRequest.md
 docs/ImportFormDefinitions202Response.md
 docs/ImportFormDefinitions202ResponseErrorsInner.md
+docs/ImportNonEmployeeRecordsInBulkRequest.md
 docs/ImportObject.md
 docs/ImportOptions.md
 docs/ImportSpConfigRequest.md
@@ -1228,6 +1229,7 @@ model_identity_with_new_access_access_refs_inner.go
 model_import_entitlement_csv_request.go
 model_import_form_definitions_202_response.go
 model_import_form_definitions_202_response_errors_inner.go
+model_import_non_employee_records_in_bulk_request.go
 model_import_object.go
 model_import_options.go
 model_import_sp_config_request.go

@@ -900,6 +900,7 @@ Class | Method | HTTP request | Description
  - [ImportEntitlementCsvRequest](docs/ImportEntitlementCsvRequest.md)
  - [ImportFormDefinitions202Response](docs/ImportFormDefinitions202Response.md)
  - [ImportFormDefinitions202ResponseErrorsInner](docs/ImportFormDefinitions202ResponseErrorsInner.md)
+ - [ImportNonEmployeeRecordsInBulkRequest](docs/ImportNonEmployeeRecordsInBulkRequest.md)
  - [ImportObject](docs/ImportObject.md)
  - [ImportOptions](docs/ImportOptions.md)
  - [ImportSpConfigRequest](docs/ImportSpConfigRequest.md)

@@ -414,9 +414,6 @@ func (a *EntitlementsAPIService) ImportEntitlementCsvExecute(r ApiImportEntitlem
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.data == nil {
-		return localVarReturnValue, nil, reportError("data is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}

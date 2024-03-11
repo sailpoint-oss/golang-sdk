@@ -1,54 +1,49 @@
-# ImportEntitlementCsvRequest
+# ImportNonEmployeeRecordsInBulkRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to ***os.File** |  | [optional] 
+**Data** | ***os.File** |  | 
 
 ## Methods
 
-### NewImportEntitlementCsvRequest
+### NewImportNonEmployeeRecordsInBulkRequest
 
-`func NewImportEntitlementCsvRequest() *ImportEntitlementCsvRequest`
+`func NewImportNonEmployeeRecordsInBulkRequest(data *os.File, ) *ImportNonEmployeeRecordsInBulkRequest`
 
-NewImportEntitlementCsvRequest instantiates a new ImportEntitlementCsvRequest object
+NewImportNonEmployeeRecordsInBulkRequest instantiates a new ImportNonEmployeeRecordsInBulkRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewImportEntitlementCsvRequestWithDefaults
+### NewImportNonEmployeeRecordsInBulkRequestWithDefaults
 
-`func NewImportEntitlementCsvRequestWithDefaults() *ImportEntitlementCsvRequest`
+`func NewImportNonEmployeeRecordsInBulkRequestWithDefaults() *ImportNonEmployeeRecordsInBulkRequest`
 
-NewImportEntitlementCsvRequestWithDefaults instantiates a new ImportEntitlementCsvRequest object
+NewImportNonEmployeeRecordsInBulkRequestWithDefaults instantiates a new ImportNonEmployeeRecordsInBulkRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *ImportEntitlementCsvRequest) GetData() *os.File`
+`func (o *ImportNonEmployeeRecordsInBulkRequest) GetData() *os.File`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *ImportEntitlementCsvRequest) GetDataOk() (**os.File, bool)`
+`func (o *ImportNonEmployeeRecordsInBulkRequest) GetDataOk() (**os.File, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *ImportEntitlementCsvRequest) SetData(v *os.File)`
+`func (o *ImportNonEmployeeRecordsInBulkRequest) SetData(v *os.File)`
 
 SetData sets Data field to given value.
 
-### HasData
-
-`func (o *ImportEntitlementCsvRequest) HasData() bool`
-
-HasData returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
