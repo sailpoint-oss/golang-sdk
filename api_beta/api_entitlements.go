@@ -364,11 +364,11 @@ type ApiImportEntitlementCsvRequest struct {
 	ctx context.Context
 	ApiService *EntitlementsAPIService
 	id string
-	data *os.File
+	csvFile *os.File
 }
 
-func (r ApiImportEntitlementCsvRequest) Data(data *os.File) ApiImportEntitlementCsvRequest {
-	r.data = data
+func (r ApiImportEntitlementCsvRequest) CsvFile(csvFile *os.File) ApiImportEntitlementCsvRequest {
+	r.csvFile = csvFile
 	return r
 }
 
@@ -414,6 +414,9 @@ func (a *EntitlementsAPIService) ImportEntitlementCsvExecute(r ApiImportEntitlem
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.csvFile == nil {
+		return localVarReturnValue, nil, reportError("csvFile is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -432,20 +435,20 @@ func (a *EntitlementsAPIService) ImportEntitlementCsvExecute(r ApiImportEntitlem
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	var dataLocalVarFormFileName string
-	var dataLocalVarFileName     string
-	var dataLocalVarFileBytes    []byte
+	var csvFileLocalVarFormFileName string
+	var csvFileLocalVarFileName     string
+	var csvFileLocalVarFileBytes    []byte
 
-	dataLocalVarFormFileName = "data"
-	dataLocalVarFile := r.data
+	csvFileLocalVarFormFileName = "csvFile"
+	csvFileLocalVarFile := r.csvFile
 
-	if dataLocalVarFile != nil {
-		fbs, _ := io.ReadAll(dataLocalVarFile)
+	if csvFileLocalVarFile != nil {
+		fbs, _ := io.ReadAll(csvFileLocalVarFile)
 
-		dataLocalVarFileBytes = fbs
-		dataLocalVarFileName = dataLocalVarFile.Name()
-		dataLocalVarFile.Close()
-		formFiles = append(formFiles, formFile{fileBytes: dataLocalVarFileBytes, fileName: dataLocalVarFileName, formFileName: dataLocalVarFormFileName})
+		csvFileLocalVarFileBytes = fbs
+		csvFileLocalVarFileName = csvFileLocalVarFile.Name()
+		csvFileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: csvFileLocalVarFileBytes, fileName: csvFileLocalVarFileName, formFileName: csvFileLocalVarFormFileName})
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

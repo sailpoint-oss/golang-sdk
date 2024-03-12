@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## ImportEntitlementCsv
 
-> LoadEntitlementTask ImportEntitlementCsv(ctx, id).Data(data).Execute()
+> LoadEntitlementTask ImportEntitlementCsv(ctx, id).CsvFile(csvFile).Execute()
 
 Import Entitlement CSV File
 
@@ -178,11 +178,11 @@ import (
 
 func main() {
     id := "ef38f94347e94562b5bb8424a56397d8" // string | Source Id
-    data := os.NewFile(1234, "some_file") // *os.File |  (optional)
+    csvFile := os.NewFile(1234, "some_file") // *os.File | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EntitlementsAPI.ImportEntitlementCsv(context.Background(), id).Data(data).Execute()
+    resp, r, err := apiClient.EntitlementsAPI.ImportEntitlementCsv(context.Background(), id).CsvFile(csvFile).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EntitlementsAPI.ImportEntitlementCsv``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -208,7 +208,7 @@ Other parameters are passed through a pointer to a apiImportEntitlementCsvReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **data** | ***os.File** |  | 
+ **csvFile** | ***os.File** |  | 
 
 ### Return type
 

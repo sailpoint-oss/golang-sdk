@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to ***os.File** |  | [optional] 
+**CsvFile** | ***os.File** |  | 
 
 ## Methods
 
 ### NewImportEntitlementCsvRequest
 
-`func NewImportEntitlementCsvRequest() *ImportEntitlementCsvRequest`
+`func NewImportEntitlementCsvRequest(csvFile *os.File, ) *ImportEntitlementCsvRequest`
 
 NewImportEntitlementCsvRequest instantiates a new ImportEntitlementCsvRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,30 +25,25 @@ NewImportEntitlementCsvRequestWithDefaults instantiates a new ImportEntitlementC
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetData
+### GetCsvFile
 
-`func (o *ImportEntitlementCsvRequest) GetData() *os.File`
+`func (o *ImportEntitlementCsvRequest) GetCsvFile() *os.File`
 
-GetData returns the Data field if non-nil, zero value otherwise.
+GetCsvFile returns the CsvFile field if non-nil, zero value otherwise.
 
-### GetDataOk
+### GetCsvFileOk
 
-`func (o *ImportEntitlementCsvRequest) GetDataOk() (**os.File, bool)`
+`func (o *ImportEntitlementCsvRequest) GetCsvFileOk() (**os.File, bool)`
 
-GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
+GetCsvFileOk returns a tuple with the CsvFile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetData
+### SetCsvFile
 
-`func (o *ImportEntitlementCsvRequest) SetData(v *os.File)`
+`func (o *ImportEntitlementCsvRequest) SetCsvFile(v *os.File)`
 
-SetData sets Data field to given value.
+SetCsvFile sets CsvFile field to given value.
 
-### HasData
-
-`func (o *ImportEntitlementCsvRequest) HasData() bool`
-
-HasData returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

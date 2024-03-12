@@ -13,6 +13,7 @@ package api_beta
 import (
 	"encoding/json"
 	"os"
+	"fmt"
 )
 
 // checks if the ImportEntitlementCsvRequest type satisfies the MappedNullable interface at compile time
@@ -20,7 +21,7 @@ var _ MappedNullable = &ImportEntitlementCsvRequest{}
 
 // ImportEntitlementCsvRequest struct for ImportEntitlementCsvRequest
 type ImportEntitlementCsvRequest struct {
-	Data **os.File `json:"data,omitempty"`
+	CsvFile *os.File `json:"csvFile"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -30,8 +31,9 @@ type _ImportEntitlementCsvRequest ImportEntitlementCsvRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportEntitlementCsvRequest() *ImportEntitlementCsvRequest {
+func NewImportEntitlementCsvRequest(csvFile *os.File) *ImportEntitlementCsvRequest {
 	this := ImportEntitlementCsvRequest{}
+	this.CsvFile = csvFile
 	return &this
 }
 
@@ -43,36 +45,28 @@ func NewImportEntitlementCsvRequestWithDefaults() *ImportEntitlementCsvRequest {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
-func (o *ImportEntitlementCsvRequest) GetData() *os.File {
-	if o == nil || isNil(o.Data) {
+// GetCsvFile returns the CsvFile field value
+func (o *ImportEntitlementCsvRequest) GetCsvFile() *os.File {
+	if o == nil {
 		var ret *os.File
 		return ret
 	}
-	return *o.Data
+
+	return o.CsvFile
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetCsvFileOk returns a tuple with the CsvFile field value
 // and a boolean to check if the value has been set.
-func (o *ImportEntitlementCsvRequest) GetDataOk() (**os.File, bool) {
-	if o == nil || isNil(o.Data) {
+func (o *ImportEntitlementCsvRequest) GetCsvFileOk() (**os.File, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Data, true
+	return &o.CsvFile, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *ImportEntitlementCsvRequest) HasData() bool {
-	if o != nil && !isNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given *os.File and assigns it to the Data field.
-func (o *ImportEntitlementCsvRequest) SetData(v *os.File) {
-	o.Data = &v
+// SetCsvFile sets field value
+func (o *ImportEntitlementCsvRequest) SetCsvFile(v *os.File) {
+	o.CsvFile = v
 }
 
 func (o ImportEntitlementCsvRequest) MarshalJSON() ([]byte, error) {
@@ -85,9 +79,7 @@ func (o ImportEntitlementCsvRequest) MarshalJSON() ([]byte, error) {
 
 func (o ImportEntitlementCsvRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.Data) {
-		toSerialize["data"] = o.Data
-	}
+	toSerialize["csvFile"] = o.CsvFile
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -97,6 +89,27 @@ func (o ImportEntitlementCsvRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ImportEntitlementCsvRequest) UnmarshalJSON(bytes []byte) (err error) {
+    // This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"csvFile",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(bytes, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varImportEntitlementCsvRequest := _ImportEntitlementCsvRequest{}
 
 	if err = json.Unmarshal(bytes, &varImportEntitlementCsvRequest); err == nil {
@@ -106,7 +119,7 @@ func (o *ImportEntitlementCsvRequest) UnmarshalJSON(bytes []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "data")
+		delete(additionalProperties, "csvFile")
 		o.AdditionalProperties = additionalProperties
 	}
 

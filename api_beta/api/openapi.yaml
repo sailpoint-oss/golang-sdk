@@ -74093,9 +74093,11 @@ components:
       - $ref: '#/components/schemas/Campaign'
     importEntitlementCsv_request:
       properties:
-        data:
+        csvFile:
           format: binary
           type: string
+      required:
+      - csvFile
       type: object
     listIdentityAccessItems_200_response_inner:
       oneOf:
