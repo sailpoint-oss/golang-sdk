@@ -1157,8 +1157,6 @@ A token with API, ORG_ADMIN, SOURCE_ADMIN, or SOURCE_SUBADMIN authority is requi
 
 > You can only add or replace **entitlements** that exist on the source that the access profile is attached to. You can use the **list entitlements** endpoint with the **filters** query parameter to get a list of available entitlements on the access profile's source.
 
->  Patching the value of the **requestable** field is only supported for customers enabled with the new Request Center. Otherwise, attempting to modify this field results in a 400 error.
-
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Access Profile to patch
  @return ApiPatchAccessProfileRequest
