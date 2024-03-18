@@ -187,6 +187,7 @@ Class | Method | HTTP request | Description
 *EntitlementsAPI* | [**ListEntitlements**](docs/EntitlementsAPI.md#listentitlements) | **Get** /entitlements | Gets a list of entitlements.
 *EntitlementsAPI* | [**PatchEntitlement**](docs/EntitlementsAPI.md#patchentitlement) | **Patch** /entitlements/{id} | Patch an entitlement
 *EntitlementsAPI* | [**PutEntitlementRequestConfig**](docs/EntitlementsAPI.md#putentitlementrequestconfig) | **Put** /entitlements/{id}/entitlement-request-config | Replace Entitlement Request Config
+*EntitlementsAPI* | [**ResetSourceEntitlements**](docs/EntitlementsAPI.md#resetsourceentitlements) | **Post** /entitlements/reset/sources/{id} | Reset Source Entitlements
 *EntitlementsAPI* | [**UpdateEntitlementsInBulk**](docs/EntitlementsAPI.md#updateentitlementsinbulk) | **Post** /entitlements/bulk-update | Bulk update an entitlement list
 *GovernanceGroupsAPI* | [**CreateWorkgroup**](docs/GovernanceGroupsAPI.md#createworkgroup) | **Post** /workgroups | Create a new Governance Group.
 *GovernanceGroupsAPI* | [**DeleteWorkgroup**](docs/GovernanceGroupsAPI.md#deleteworkgroup) | **Delete** /workgroups/{id} | Delete a Governance Group
@@ -791,6 +792,7 @@ Class | Method | HTTP request | Description
  - [EntitlementRequestConfig](docs/EntitlementRequestConfig.md)
  - [EntitlementRequestConfig1](docs/EntitlementRequestConfig1.md)
  - [EntitlementSource](docs/EntitlementSource.md)
+ - [EntitlementSourceResetBaseReferenceDto](docs/EntitlementSourceResetBaseReferenceDto.md)
  - [EntityCreatedByDTO](docs/EntityCreatedByDTO.md)
  - [Error](docs/Error.md)
  - [ErrorMessage](docs/ErrorMessage.md)

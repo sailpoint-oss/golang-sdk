@@ -12400,6 +12400,87 @@ paths:
       summary: Replace Entitlement Request Config
       tags:
       - Entitlements
+  /entitlements/reset/sources/{id}:
+    post:
+      description: Removes all entitlements on a specific source.
+      operationId: resetSourceEntitlements
+      parameters:
+      - description: ID of source for the entitlement reset
+        in: path
+        name: id
+        required: true
+        schema:
+          example: 2c91808a7813090a017814121919ecca
+          type: string
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntitlementSourceResetBaseReferenceDto'
+          description: Entitlement source reset task result
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Client Error - Returned if the request body is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_401_response'
+          description: "Unauthorized - Returned if there is no authorization header,\
+            \ or if the JWT token is expired."
+        "403":
+          content:
+            application/json:
+              examples:
+                "403":
+                  summary: An example of a 403 response object
+                  value:
+                    detailCode: 403 Forbidden
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: The server understood the request but refuses to authorize
+                        it.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: "Forbidden - Returned if the user you are running as, doesn't\
+            \ have access to this end-point."
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listAccessProfiles_429_response'
+          description: Too Many Requests - Returned in response to too many requests
+            in a given period of time - rate limited. The Retry-After header in the
+            response includes how long to wait before trying again.
+        "500":
+          content:
+            application/json:
+              examples:
+                "500":
+                  summary: An example of a 500 response object
+                  value:
+                    detailCode: 500.0 Internal Fault
+                    trackingId: b21b1f7ce4da4d639f2c62a57171b427
+                    messages:
+                    - locale: en-US
+                      localeOrigin: DEFAULT
+                      text: An internal fault occurred.
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+          description: Internal Server Error - Returned if there is an unexpected
+            error.
+      security:
+      - UserContextAuth:
+        - idn:entitlement:update
+      summary: Reset Source Entitlements
+      tags:
+      - Entitlements
   /entitlements/aggregate/sources/{id}:
     post:
       description: 'Uploads a comma separated file (CSV) to a delimited file source
@@ -56307,6 +56388,26 @@ components:
       properties:
         accessRequestConfig:
           $ref: '#/components/schemas/EntitlementAccessRequestConfig'
+      type: object
+    EntitlementSourceResetBaseReferenceDto:
+      example:
+        name: Entitlement Source Reset
+        id: 2c91808568c529c60168cca6f90c1313
+        type: TASK_RESULT
+      properties:
+        type:
+          description: The DTO type
+          example: TASK_RESULT
+          type: string
+        id:
+          description: The task ID of the object to which this reference applies
+          example: 2c91808568c529c60168cca6f90c1313
+          type: string
+        name:
+          description: Human-readable display name of the object to which this reference
+            applies
+          example: Entitlement Source Reset
+          type: string
       type: object
     LoadEntitlementTask:
       example:
